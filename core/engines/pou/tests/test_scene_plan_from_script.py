@@ -66,6 +66,7 @@ def test_plan_is_contiguous_classified_and_split():
 
 def test_tail_is_split_into_short_motion_scenes():
     plan = build_plan(SCRIPT, words(20), tail_seconds=12, body_hold=6.0)
+    assert plan["metadata"]["minute_exceptions"][0]["minute"] == 1  # the tail's minute is exempt from density
     tail = [s for s in plan["scenes"] if s["description"].startswith("end-screen hold")]
     assert len(tail) == 2 and all(s["end_seconds"] - s["start_seconds"] <= 6.0 for s in tail)
     assert all(plan["metadata"]["change_classes"][s["id"]] == "motion" for s in tail)
@@ -92,3 +93,20 @@ def test_scene_ids_are_stable_across_narration_pace():
     conts = [s["id"] for s in slow["scenes"] if s["id"].startswith("s003") and not s["required_assets"]]
     assert conts and conts[0] == "s003c1"
     assert all(s["id"].startswith("e") for s in fast["scenes"] if "end-screen" in s["description"])
+
+
+def test_align_tolerates_transcriber_token_splits():
+    """Whisper writes '5.7' as '5' '.7' and 'eight-hour' as '8' '-hour'; the beat after such a
+    split must still start where its own first word is spoken, not one token late per split."""
+    from scene_plan_from_script import align
+
+    beats = parse_script(SCRIPT)  # 6 + 4 + 10 words
+    # transcript: first beat's six words, then the second beat with its number split into 3 tokens
+    spoken = ["one", "two", "three", "four", "five", "six", "7", ".5", "8", "nine", "ten"]
+    spoken += [f"w{i}" for i in range(10)]  # third beat, words transcribed differently
+    toks = [{"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5} for i, w in enumerate(spoken)]
+    toks[11]["word"] = "eleven"  # one anchor word in the third beat matches
+    spans = align(beats, toks)
+    assert spans[0][0] == 0.0
+    assert spans[1][0] == 6.0           # "seven" (transcribed "7") at t=6
+    assert spans[2][0] == 11.0          # "eleven" at t=11, despite the extra token before it

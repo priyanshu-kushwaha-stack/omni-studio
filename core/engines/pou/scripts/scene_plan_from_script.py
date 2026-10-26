@@ -12,6 +12,7 @@ Word timestamps: a JSON list of {"word": str, "start": float, "end": float} (fas
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import math
 import re
@@ -69,35 +70,56 @@ def parse_script(text: str) -> list[dict]:
 
 
 def align(beats: list[dict], words: list[dict]) -> list[tuple[float, float]]:
-    """Assign (start, end) to each beat by walking the narration words in order."""
+    """Assign (start, end) to each beat by matching the script's words to the transcriber's tokens.
+
+    Transcribers split or merge tokens ("5.7" -> "5" ".7", "eight-hour" -> "8" "-hour"), so
+    counting tokens drifts late over a long read. Instead the whole script is sequence-aligned to
+    the token stream; a beat starts where its first word (or the nearest aligned neighbour) is
+    spoken, and runs to the next beat's start.
+    """
     spoken = [(normalise(w["word"]), float(w["start"]), float(w["end"])) for w in words]
     spoken = [(toks[0], s, e) for toks, s, e in spoken if toks]
-    times: list[tuple[float, float]] = []
-    i = 0
+    script: list[str] = []
+    first_idx: list[int | None] = []
     for b in beats:
-        n = len(b["words"])
-        if n == 0:
-            times.append((None, None))
-            continue
-        start = spoken[i][1] if i < len(spoken) else spoken[-1][2]
-        j = min(i + n, len(spoken))
-        end = spoken[j - 1][2] if j > i else start
-        times.append((start, end))
-        i = j
-    # fill beats with no words (rare) and make contiguous
+        first_idx.append(len(script) if b["words"] else None)
+        script.extend(b["words"])
+    matched: dict[int, int] = {}
+    sm = difflib.SequenceMatcher(None, script, [t for t, _, _ in spoken], autojunk=False)
+    for a, b_, n in sm.get_matching_blocks():
+        for k in range(n):
+            matched[a + k] = b_ + k
+
+    def spoken_index(i: int) -> int:
+        """Token index for script word i: exact match, else interpolated between matched neighbours."""
+        if i in matched:
+            return matched[i]
+        lo = max((k for k in matched if k < i), default=None)
+        hi = min((k for k in matched if k > i), default=None)
+        if lo is None and hi is None:
+            return min(i, len(spoken) - 1)
+        if lo is None:
+            return max(0, matched[hi] - (hi - i))
+        if hi is None:
+            return min(len(spoken) - 1, matched[lo] + (i - lo))
+        frac = (i - lo) / (hi - lo)
+        return min(len(spoken) - 1, round(matched[lo] + frac * (matched[hi] - matched[lo])))
+
+    starts: list[float | None] = []
+    for fi in first_idx:
+        starts.append(None if fi is None else spoken[spoken_index(fi)][1])
     out: list[tuple[float, float]] = []
-    for k, (s, e) in enumerate(times):
-        if s is None:
+    for k, s in enumerate(starts):
+        if s is None:  # a beat with no narration: zero-length at the previous end
             s = out[-1][1] if out else 0.0
-            e = s
-        out.append((s, e))
+        out.append((s, s))
     contiguous = []
-    for k, (s, e) in enumerate(out):
-        nxt = out[k + 1][0] if k + 1 < len(out) else e
+    for k, (s, _) in enumerate(out):
+        nxt = out[k + 1][0] if k + 1 < len(out) else s
         contiguous.append((s, max(nxt, s + 0.5)))
     if contiguous:
-        s, e = contiguous[-1]
-        contiguous[-1] = (s, max(e, spoken[-1][2] + 1.0))
+        s, _ = contiguous[-1]
+        contiguous[-1] = (s, max(s + 0.5, spoken[-1][2] + 1.0))
     return contiguous
 
 
@@ -155,8 +177,13 @@ def build_plan(script_text: str, words: list[dict], *, playbook: str = "stickman
         classes[sid] = "motion"
         t += seg
         remaining -= seg
+    exceptions = []
+    if tail_seconds > 0 and scenes:
+        # the end-screen tail is quiet by design; exempt the minute it falls in from the density rule
+        exceptions.append({"minute": int(math.ceil(scenes[-1]["end_seconds"] / 60)),
+                           "reason": f"end-screen tail ({tail_seconds:.0f} s kept quiet for end screens)"})
     return {"version": "1.0", "style_playbook": playbook, "scenes": scenes,
-            "metadata": {"change_classes": classes, "minute_exceptions": [],
+            "metadata": {"change_classes": classes, "minute_exceptions": exceptions,
                          "source": "scripts/scene_plan_from_script.py"}}
 
 
