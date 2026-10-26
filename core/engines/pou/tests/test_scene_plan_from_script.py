@@ -80,3 +80,15 @@ def test_schema_fields_only(tmp_path: Path):
     for s in plan["scenes"]:
         assert set(s) <= allowed
     json.dumps(plan)
+
+
+def test_scene_ids_are_stable_across_narration_pace():
+    """A faster or slower read changes how many continuation segments a beat needs, never the
+    ids that stills, clips and overlays are keyed by."""
+    slow = build_plan(SCRIPT, words(20, step=1.6), tail_seconds=12, body_hold=6.0)
+    fast = build_plan(SCRIPT, words(20, step=0.4), tail_seconds=12, body_hold=6.0)
+    firsts = lambda p: [s["id"] for s in p["scenes"] if s["required_assets"]]  # noqa: E731
+    assert firsts(slow) == firsts(fast) == ["s001", "s002", "s003"]
+    conts = [s["id"] for s in slow["scenes"] if s["id"].startswith("s003") and not s["required_assets"]]
+    assert conts and conts[0] == "s003c1"
+    assert all(s["id"].startswith("e") for s in fast["scenes"] if "end-screen" in s["description"])

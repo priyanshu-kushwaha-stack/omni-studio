@@ -108,7 +108,7 @@ def build_plan(script_text: str, words: list[dict], *, playbook: str = "stickman
     spans = align(beats, words)
     scenes: list[dict] = []
     classes: dict[str, str] = {}
-    n = 0
+    n = 0  # beat index: ids are keyed by the beat, so a new narration pace never renames an asset
     for b, (start, end) in zip(beats, spans):
         cls, stype, movement = classify(b["beat"])
         limit = hook_hold if start < hook_seconds else body_hold
@@ -116,11 +116,11 @@ def build_plan(script_text: str, words: list[dict], *, playbook: str = "stickman
         n_segs = max(1, math.ceil(duration / limit - 1e-9))
         seg = duration / n_segs
         first = True
+        n += 1
         for k in range(n_segs):
-            n += 1
             t = start + k * seg
             seg_end = end if k == n_segs - 1 else start + (k + 1) * seg
-            sid = f"s{n:03d}"
+            sid = f"s{n:03d}" if k == 0 else f"s{n:03d}c{k}"
             scenes.append({
                 "id": sid,
                 "type": stype if first else "animation",
@@ -138,10 +138,11 @@ def build_plan(script_text: str, words: list[dict], *, playbook: str = "stickman
     # end-screen tail: slow push-in continuations of the last drawing, never longer than the body hold
     t = scenes[-1]["end_seconds"] if scenes else 0.0
     remaining = tail_seconds
+    tail = 0
     while remaining > 1e-6:
-        n += 1
+        tail += 1
         seg = min(body_hold, remaining)
-        sid = f"s{n:03d}"
+        sid = f"e{tail:02d}"
         scenes.append({
             "id": sid, "type": "animation",
             "description": "end-screen hold: slow push-in on the final drawing, right third of the frame kept quiet",
