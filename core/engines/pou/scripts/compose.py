@@ -374,11 +374,11 @@ def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, 
         n += len(music)
         chain = "".join(labels) + (f"concat=n={len(labels)}:v=0:a=1" if len(labels) > 1 else "anull")
         parts.append(f"{chain},atrim=0:{total:.3f},volume={music_gain_db}dB,afade=t=in:d=1.5,afade=t=out:st={max(0, total - 3):.3f}:d=3[music]")
-        parts.append("[0:a]aformat=sample_rates=48000:channel_layouts=stereo,asplit=2[nar][side]")
+        parts.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,apad=whole_dur={total:.3f},asplit=2[nar][side]")
         parts.append("[music][side]sidechaincompress=threshold=0.015:ratio=5:attack=40:release=700:makeup=1[ducked]")
         mix_in.append("[ducked]")
     else:
-        parts.append("[0:a]aformat=sample_rates=48000:channel_layouts=stereo[nar]")
+        parts.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,apad=whole_dur={total:.3f}[nar]")
     for i, s in enumerate(sfx):
         cmd += ["-i", str(s.path)]
         ms = int(s.at * 1000)

@@ -88,3 +88,16 @@ def test_sfx_plan_pencil_on_drawings_page_on_section_turn(tmp_path):
         (sfx_dir / n).write_bytes(b"")
     sfx = compose.plan_sfx(groups, [], sfx_dir, None)
     assert [(s.path.name, s.at) for s in sfx] == [("pencil.wav", 0.0), ("page.wav", 4.0)]
+
+
+def test_mix_audio_pads_to_total_when_narration_is_shorter(tmp_path):
+    """The end-screen tail runs past the narration; the mix must not stop with the voice."""
+    import subprocess
+    nar = tmp_path / "nar.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=frequency=440:duration=1",
+                    "-ar", "48000", str(nar)], check=True)
+    out = tmp_path / "mix.wav"
+    compose.mix_audio(nar, [], [], 3.0, out, -24.0)
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(out)],
+                               capture_output=True, text=True, check=True).stdout.strip())
+    assert abs(dur - 3.0) < 0.1
