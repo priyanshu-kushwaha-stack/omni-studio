@@ -36,3 +36,7 @@ def test_split_parts_groups_sections():
     parts = split_parts(sections(SCRIPT), "1-2")
     assert len(parts) == 1 and parts[0]["sections"] == ["[00:00] One", "[00:45] Two"]
     assert parts[0]["text"].endswith("Second line. The Chimane in Bolivia.")
+
+
+def test_clean_strips_grouped_claim_refs():
+    assert clean("has *insomnia* (c01, c05).") == "has insomnia."

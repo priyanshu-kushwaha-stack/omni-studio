@@ -101,3 +101,14 @@ def test_mix_audio_pads_to_total_when_narration_is_shorter(tmp_path):
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(out)],
                                capture_output=True, text=True, check=True).stdout.strip())
     assert abs(dur - 3.0) < 0.1
+
+
+def test_find_phrase_matches_digits_and_split_numbers():
+    words = [{"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5} for i, w in
+             enumerate(["did", "not", "sleep", "8", "hours.", "more", "than", "2", ",000", "in", "6", ".5", "hours,", "10", "-30%."])]
+    assert compose.find_phrase(words, "eight hours")[0] == 3.0       # spelled anchor, digit token
+    assert compose.find_phrase(words, "than 2000")[0] == 6.0         # one anchor number, two tokens
+    assert compose.find_phrase(words, "than 2,000")[0] == 6.0
+    assert compose.find_phrase(words, "6 .5")[0] == 10.0             # whisper-style anchor still works
+    assert compose.find_phrase(words, "6.5 hours")[0] == 10.0
+    assert compose.find_phrase(words, "ten to thirty") is None       # words that are not spoken stay unmatched

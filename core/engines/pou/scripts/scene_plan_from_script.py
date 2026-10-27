@@ -19,7 +19,7 @@ import re
 from pathlib import Path
 
 SECTION_RE = re.compile(r"^## \[(\d{2}):(\d{2})\] (.+)$")
-CLAIM_RE = re.compile(r"\s*\(c\d\d\)")
+CLAIM_RE = re.compile(r"\s*\(c\d+(?:,\s*c\d+)*\)")
 WORD_RE = re.compile(r"[a-z0-9']+")
 
 CARD_WORDS = ("card", "counter", "label", "bar ", "bars", "chart", "stat", "ticks", "tick at", "split card", "comparison")

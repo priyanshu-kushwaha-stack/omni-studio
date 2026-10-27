@@ -91,18 +91,49 @@ def _norm(tok: str) -> str:
     return _norm_re.sub("", tok.lower()).strip(".")
 
 
+_NUMBER_WORDS = {"zero": "0", "one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6", "seven": "7",
+                 "eight": "8", "nine": "9", "ten": "10", "eleven": "11", "twelve": "12", "thirteen": "13",
+                 "fourteen": "14", "fifteen": "15", "sixteen": "16", "seventeen": "17", "eighteen": "18",
+                 "nineteen": "19", "twenty": "20", "thirty": "30", "forty": "40", "fifty": "50", "sixty": "60",
+                 "seventy": "70", "eighty": "80", "ninety": "90"}
+_chunk_re = re.compile(r"[a-z0-9]+")
+
+
+def _chunks(tok: str) -> list[str]:
+    """Alphanumeric pieces of a token, number words as digits: '-30%.' -> ['30'], 'eight' -> ['8']."""
+    return [_NUMBER_WORDS.get(c, c) for c in _chunk_re.findall(tok.lower().replace("\u2019", "'"))]
+
+
 def find_phrase(words: list[dict], phrase: str, not_before: float = 0.0) -> tuple[float, float] | None:
-    """(start, end) of the first occurrence of phrase (as spoken tokens) at or after not_before."""
-    target = [_norm(t) for t in phrase.split() if _norm(t)]
+    """(start, end) of the first occurrence of phrase (as spoken tokens) at or after not_before.
+
+    Matching is on alphanumeric chunks with number words read as digits, and a digit chunk in the
+    phrase may span several consecutive digit chunks in the transcript ("2000" == "2" ",000"), so
+    the same anchor works whether the transcriber wrote "eight hours", "8 hours" or "2,000".
+    """
+    target = [c for t in phrase.split() for c in _chunks(t)]
     if not target:
         return None
-    toks = [_norm(w["word"]) for w in words]
-    n = len(target)
-    for i in range(len(words) - n + 1):
-        if words[i]["start"] < not_before - 0.05:
+    stream = [(c, i) for i, w in enumerate(words) for c in _chunks(w["word"])]
+    for s0 in range(len(stream)):
+        if words[stream[s0][1]]["start"] < not_before - 0.05:
             continue
-        if toks[i:i + n] == target:
-            return words[i]["start"], words[i + n - 1]["end"]
+        si, ti = s0, 0
+        while ti < len(target) and si < len(stream):
+            c = stream[si][0]
+            if c == target[ti]:
+                si += 1; ti += 1
+            elif target[ti].isdigit() and c.isdigit() and target[ti].startswith(c):
+                acc, sj = c, si + 1
+                while sj < len(stream) and stream[sj][0].isdigit() and len(acc) < len(target[ti]):
+                    acc += stream[sj][0]; sj += 1
+                if acc != target[ti]:
+                    break
+                si, ti = sj, ti + 1
+            else:
+                break
+        if ti == len(target):
+            return words[stream[s0][1]]["start"], words[stream[si - 1][1]]["end"]
     return None
 
 

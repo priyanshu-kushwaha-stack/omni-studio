@@ -16,7 +16,7 @@ SPEECH_RESPELL = {"Tsimane": "Chimane"}  # same people, spelling the TTS reads c
 
 
 def clean(line: str) -> str:
-    line = re.sub(r"\s*\(c\d+\)", "", line)
+    line = re.sub(r"\s*\(c\d+(?:,\s*c\d+)*\)", "", line)
     line = re.sub(r"\*(.+?)\*", r"\1", line)
     for a, b in SPEECH_RESPELL.items():
         line = line.replace(a, b)

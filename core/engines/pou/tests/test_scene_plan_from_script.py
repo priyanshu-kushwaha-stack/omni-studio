@@ -110,3 +110,8 @@ def test_align_tolerates_transcriber_token_splits():
     assert spans[0][0] == 0.0
     assert spans[1][0] == 6.0           # "seven" (transcribed "7") at t=6
     assert spans[2][0] == 11.0          # "eleven" at t=11, despite the extra token before it
+
+
+def test_parse_strips_grouped_claim_refs_from_word_counts():
+    beats = parse_script(SCRIPT.replace("seven eight nine *ten* (c01).", "seven eight nine *ten* (c01, c05)."))
+    assert len(beats[1]["words"]) == 4
