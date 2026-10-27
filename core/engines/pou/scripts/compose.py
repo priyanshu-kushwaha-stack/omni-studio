@@ -509,6 +509,31 @@ def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, unt
             "clips": sum(1 for g in groups if g.clip), "overlays": len(overlays), "sfx": len(sfx)}
 
 
+def remix(video_dir: Path, *, narration: Path, words_path: Path, video_in: Path, out: Path, music: list[Path],
+          music_gain_db: float, use_clips: bool, scratch: Path, mix_out: Path | None = None) -> dict:
+    """Dub track: the same music bed, ducking and SFX plan as render(), mixed under another narration and
+    muxed onto an already rendered video (no frames re-rendered, no captions: the words are the English ones)."""
+    plan = json.loads((video_dir / "scene_plan.json").read_text())
+    words = json.loads(words_path.read_text())
+    stills = video_dir / "assets" / "stills"
+    clips = video_dir / "assets" / "clips" if use_clips else None
+    groups = build_groups(plan, stills, clips, None)
+    total = groups[-1].end
+    specs = json.loads((video_dir / "overlays.json").read_text()) if (video_dir / "overlays.json").exists() else []
+    overlays = resolve_overlays(specs, words, groups, None)
+    sfx = plan_sfx(groups, overlays, video_dir / "assets" / "sfx", None)
+    scratch.mkdir(parents=True, exist_ok=True)
+    audio = scratch / "mix.wav"
+    mix_audio(narration, music, sfx, total, audio, music_gain_db)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video_in), "-i", str(audio), "-map", "0:v:0", "-map", "1:a:0",
+                    "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", str(out)], check=True)
+    if mix_out:
+        mix_out.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(audio), "-c:a", "aac", "-b:a", "192k", str(mix_out)], check=True)
+    return {"out": str(out), "mix": str(mix_out) if mix_out else None, "seconds": total, "sfx": len(sfx)}
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("video_dir", type=Path)
@@ -522,8 +547,15 @@ def main() -> None:
     p.add_argument("--music-gain-db", type=float, default=-24.0)
     p.add_argument("--no-clips", action="store_true", help="ignore assets/clips (stills only)")
     p.add_argument("--scratch", type=Path, default=Path(tempfile.gettempdir()) / "fc-compose")
+    p.add_argument("--video-in", type=Path, default=None, help="dub mode: reuse this render's picture, mix the new narration under it")
+    p.add_argument("--mix-out", type=Path, default=None, help="dub mode: also write the mixed audio alone (m4a) for a YouTube audio track")
     a = p.parse_args()
     w, h = (int(v) for v in a.size.split("x"))
+    if a.video_in:
+        info = remix(a.video_dir, narration=a.narration, words_path=a.words, video_in=a.video_in, out=a.out, music=a.music,
+                     music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch, mix_out=a.mix_out)
+        print(json.dumps(info, indent=1))
+        return
     info = render(a.video_dir, narration=a.narration, words_path=a.words, out=a.out, until=a.until, width=w, height=h,
                   fps=a.fps, music=a.music, music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch)
     print(json.dumps(info, indent=1))
