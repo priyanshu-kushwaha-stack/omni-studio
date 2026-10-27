@@ -192,8 +192,9 @@ def main() -> None:
     p.add_argument("script", type=Path)
     p.add_argument("words", type=Path, help="JSON list of {word,start,end}")
     p.add_argument("-o", "--out", type=Path, required=True)
+    p.add_argument("--tail-seconds", type=float, default=12.0, help="end-screen hold after the last word (12 for a video, ~3 for a trailer)")
     a = p.parse_args()
-    plan = build_plan(a.script.read_text(), json.loads(a.words.read_text()))
+    plan = build_plan(a.script.read_text(), json.loads(a.words.read_text()), tail_seconds=a.tail_seconds)
     a.out.write_text(json.dumps(plan, indent=2) + "\n")
     print(f"{len(plan['scenes'])} scenes -> {a.out}")
 

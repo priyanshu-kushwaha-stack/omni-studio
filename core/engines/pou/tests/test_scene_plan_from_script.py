@@ -115,3 +115,9 @@ def test_align_tolerates_transcriber_token_splits():
 def test_parse_strips_grouped_claim_refs_from_word_counts():
     beats = parse_script(SCRIPT.replace("seven eight nine *ten* (c01).", "seven eight nine *ten* (c01, c05)."))
     assert len(beats[1]["words"]) == 4
+
+
+def test_short_tail_for_a_trailer():
+    plan = build_plan(SCRIPT, words(20), tail_seconds=3, body_hold=6.0)
+    tail = [s for s in plan["scenes"] if s["id"].startswith("e")]
+    assert len(tail) == 1 and abs(tail[0]["end_seconds"] - tail[0]["start_seconds"] - 3.0) < 0.01
