@@ -27,23 +27,47 @@ def _fit(img: Image.Image, h: int) -> Image.Image:
     return img.convert("RGBA").resize((w, h), Image.LANCZOS)
 
 
+def _key_paper(img: Image.Image, tol: int = 34) -> Image.Image:
+    """Make the drawing's own paper transparent so it sits on the banner paper without a box.
+    The paper colour is sampled at the four corners; pixels within `tol` of it fade to transparent."""
+    import numpy as np
+    a = np.asarray(img.convert("RGBA")).astype(np.int16)
+    corners = np.array([a[0, 0, :3], a[0, -1, :3], a[-1, 0, :3], a[-1, -1, :3]]).mean(axis=0)
+    dist = np.abs(a[:, :, :3] - corners).max(axis=2)
+    alpha = np.clip((dist - tol // 2) * (255 / tol), 0, 255).astype(np.uint8)
+    a[:, :, 3] = np.minimum(a[:, :, 3], alpha)
+    return Image.fromarray(a.astype(np.uint8), "RGBA")
+
+
 def banner(mascot: Path, title: str, tagline: str, cadence: str, strip: list[Path], out: Path, seed: int = 7,
            title_size: int = 170) -> Path:
     rng = random.Random(seed)
     img = Image.new("RGB", BANNER, PAPER)
     x0, y0, x1, y1 = _safe_box()
-    sx = 80
-    for p in strip:  # faint drawings in the top band, outside the safe area
-        d = _fit(Image.open(p), 260)
-        faded = Image.blend(Image.new("RGBA", d.size, (*PAPER, 255)), d, 0.28)
-        img.paste(faded, (sx, 60), faded)
-        sx += d.width + 120
-    m = _fit(Image.open(mascot), SAFE[1] - 60)
+    if strip:  # faint drawings spread across the top band, outside the safe area
+        ds = [_key_paper(_fit(Image.open(p), 260)) for p in strip]
+        for d in ds:
+            d.putalpha(d.getchannel("A").point(lambda v: int(v * 0.35)))
+        gap = (BANNER[0] - sum(d.width for d in ds)) // (len(ds) + 1)
+        sx = gap
+        for d in ds:
+            img.paste(d, (sx, 70), d)
+            sx += d.width + gap
+    m = _key_paper(_fit(Image.open(mascot), SAFE[1] - 60))
     img.paste(m, (x0 + 30, y0 + 30), m)
     draw = ImageDraw.Draw(img)
     tx = x0 + 30 + m.width + 50
-    f_title = load_font(title_size)
-    f_tag = load_font(64)
+    avail = x1 - 30 - tx  # text must end inside the safe area
+
+    def fitting(text: str, size: int):
+        f = load_font(size)
+        while size > 24 and draw.textbbox((0, 0), text, font=f)[2] > avail:
+            size -= 4
+            f = load_font(size)
+        return f, size
+
+    f_title, title_size = fitting(title, title_size)
+    f_tag, _ = fitting(tagline, 64)
     f_cad = load_font(48)
     draw.text((tx, y0 + 40), title, font=f_title, fill=INK)
     draw.text((tx + 6, y0 + 40 + int(title_size * 1.12)), tagline, font=f_tag, fill=INK)

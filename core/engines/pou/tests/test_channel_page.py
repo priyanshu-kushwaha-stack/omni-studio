@@ -44,3 +44,15 @@ def test_watermark_is_square_with_transparent_corners(tmp_path):
     img = Image.open(out)
     assert img.size == (150, 150) and img.mode == "RGBA"
     assert img.getpixel((0, 0))[3] == 0 and img.getpixel((75, 75))[3] == 255
+
+
+def test_banner_text_stays_inside_safe_area_right_edge(tmp_path):
+    mascot = _png(tmp_path / "m.png", (300, 300), (43, 43, 43))
+    long_tag = "How humans actually work, actually lived, and what happens next, and more words"
+    out = cp.banner(mascot, "Professor of Us", long_tag, "New video every week", [], tmp_path / "b.png")
+    img = Image.open(out).convert("L")
+    x0 = (cp.BANNER[0] - cp.SAFE[0]) // 2
+    y0 = (cp.BANNER[1] - cp.SAFE[1]) // 2
+    # the last 20 px column inside the safe area must be paper only (no glyph touches the edge)
+    edge = img.crop((x0 + cp.SAFE[0] - 20, y0, x0 + cp.SAFE[0], y0 + cp.SAFE[1]))
+    assert min(edge.getdata()) > 200
