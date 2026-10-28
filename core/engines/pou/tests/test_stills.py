@@ -42,3 +42,23 @@ def test_generate_out_dir_is_scratch_without_provenance(tmp_path):
     outs = stills.generate(vd, scenes=None, backend=fake, out_dir=tmp_path / "cmp" / "ckpt150")
     assert outs == [tmp_path / "cmp" / "ckpt150" / "s001.png"]
     assert not (vd / "assets" / "provenance.csv").exists() and not (vd / "assets" / "stills").exists()
+
+
+def test_literal_strips_stage_directions():
+    beat = '(custom-made frames; change every 2-4 s here) a ring of twenty tiny figures around one fire draws in; a wrist monitor draws onto one arm, then every arm'
+    out = stills.literal(beat)
+    assert "draws" not in out and "custom-made" not in out and "then every arm" not in out
+    assert out.startswith("a ring of twenty tiny figures around one fire")
+    assert "a wrist monitor" in out
+
+
+def test_prompt_uses_override_from_prompts_json(tmp_path):
+    vd = tmp_path / "v"; (vd / "assets").mkdir(parents=True)
+    (vd / "scene_plan.json").write_text(json.dumps({"scenes": [{"id": "s040", "description": "a G/wi camp at night"}]}))
+    (vd / "assets" / "prompts.json").write_text(json.dumps({"s040": "a hunter-gatherer camp at night, no tents"}))
+    seen = []
+
+    def fake(prompt: str, seed: int, w: int, h: int, out: Path) -> Path:
+        seen.append(prompt); Image.new("RGB", (w, h)).save(out); return out
+    stills.generate(vd, scenes=None, backend=fake, out_dir=tmp_path / "o")
+    assert "no tents" in seen[0] and "G/wi" not in seen[0]
