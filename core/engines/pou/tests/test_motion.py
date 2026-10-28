@@ -49,3 +49,19 @@ def test_flicker_changes_only_accent_pixels():
     far = ~acc & ~ink
     far[25:65, 55:95] = False                           # allow the 1 px breathing ring around the blob
     assert not changed[far].any()
+
+
+def test_sprite_moves_the_cutout_and_leaves_paper_behind():
+    f = _still()
+    g = motion.sprite(f, box=(5, 70, 25, 85), path=[(0, 0), (100, -50)], t=1.0, duration=1.0, paper=PAPER)
+    assert tuple(g[80, 10]) == PAPER                        # origin is paper now
+    assert (g[20:40, 100:130] != np.array(PAPER)).any()     # ink landed near the end of the path
+
+
+def test_trace_order_runs_along_the_stroke():
+    f = _still()
+    ink, _ = motion.masks(f, PAPER)
+    order = motion.trace_order(ink)
+    assert order.shape == ink.shape and order[~ink].min() == 1.0
+    on = order[ink]
+    assert on.min() < 0.05 and on.max() > 0.95

@@ -70,3 +70,76 @@ def flicker(frame: np.ndarray, accent: np.ndarray, t: float, seed: int = 0) -> n
     if accent.any():
         out[new] = frame[accent].mean(axis=0)
     return out.astype(np.uint8)
+
+
+def sprite(frame: np.ndarray, box: tuple[int, int, int, int], path: list[tuple[float, float]], t: float,
+           duration: float, paper: tuple[int, int, int]) -> np.ndarray:
+    """Cut the box out, fill its place with paper, paste it along the path (offsets in px) with a walk bob."""
+    x0, y0, x1, y1 = box
+    cut = frame[y0:y1, x0:x1].copy()
+    out = frame.copy()
+    out[y0:y1, x0:x1] = np.array(paper, dtype=np.uint8)
+    u = min(1.0, max(0.0, t / max(duration, 1e-6)))
+    seg = u * (len(path) - 1)
+    i = min(int(seg), len(path) - 2)
+    f = seg - i
+    dx = path[i][0] + (path[i + 1][0] - path[i][0]) * f
+    dy = path[i][1] + (path[i + 1][1] - path[i][1]) * f + 2 * np.sin(2 * np.pi * 4 * t)
+    px, py = int(round(x0 + dx)), int(round(y0 + dy))
+    h, w = cut.shape[:2]
+    H, W = out.shape[:2]
+    sx0, sy0 = max(0, -px), max(0, -py)
+    dx0, dy0 = max(0, px), max(0, py)
+    cw, ch = min(w - sx0, W - dx0), min(h - sy0, H - dy0)
+    if cw > 0 and ch > 0:
+        patch = cut[sy0:sy0 + ch, sx0:sx0 + cw]
+        keep = (np.array(paper, dtype=np.int16) - patch.astype(np.int16)).max(axis=2) > 30
+        region = out[dy0:dy0 + ch, dx0:dx0 + cw]
+        region[keep] = patch[keep]
+    return out
+
+
+def trace_order(ink: np.ndarray, seed: int = 0) -> np.ndarray:
+    """Per-pixel reveal order in [0,1] along the stroke: BFS distance over the skeleton from its far end,
+    spread back to the full stroke width. Non-ink pixels are 1.0 (revealed last / never)."""
+    from collections import deque
+    from scipy import ndimage
+    from skimage.morphology import skeletonize
+    order = np.ones(ink.shape, dtype=np.float32)
+    skel = skeletonize(ink)
+    if not skel.any():
+        return order
+    ys, xs = np.nonzero(skel)
+    cy, cx = ys.mean(), xs.mean()
+    start = int(np.argmax((ys - cy) ** 2 + (xs - cx) ** 2))
+    dist = np.full(ink.shape, -1, dtype=np.int32)
+    q = deque([(int(ys[start]), int(xs[start]))])
+    dist[ys[start], xs[start]] = 0
+    H, W = ink.shape
+    while q:
+        y, x = q.popleft()
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                ny, nx = y + dy, x + dx
+                if 0 <= ny < H and 0 <= nx < W and skel[ny, nx] and dist[ny, nx] < 0:
+                    dist[ny, nx] = dist[y, x] + 1
+                    q.append((ny, nx))
+    # disconnected skeleton pieces: order them after the main stroke, by their own BFS from any pixel
+    while (skel & (dist < 0)).any():
+        base = dist.max() + 1
+        sy, sx = np.argwhere(skel & (dist < 0))[0]
+        q = deque([(int(sy), int(sx))])
+        dist[sy, sx] = base
+        while q:
+            y, x = q.popleft()
+            for dy in (-1, 0, 1):
+                for dx in (-1, 0, 1):
+                    ny, nx = y + dy, x + dx
+                    if 0 <= ny < H and 0 <= nx < W and skel[ny, nx] and dist[ny, nx] < 0:
+                        dist[ny, nx] = dist[y, x] + 1
+                        q.append((ny, nx))
+    dist_f = dist.astype(np.float32)
+    idx = ndimage.distance_transform_edt(~skel, return_distances=False, return_indices=True)
+    spread = dist_f[idx[0], idx[1]]
+    order[ink] = spread[ink] / max(float(dist.max()), 1.0)
+    return order
