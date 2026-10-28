@@ -19,7 +19,7 @@ from typing import Callable
 MEDIA_PY = Path(__file__).resolve().parent.parent / ".venv-media" / "bin" / "python"
 WHISPER_PY = Path.home() / "Exploration" / "sandbox" / "openmontage" / ".venv" / "bin" / "python"
 
-Backend = Callable[[list[tuple[str, Path]], Path], list[Path]]   # (jobs of (text, out), voice_ref) -> outs
+Backend = Callable[[list[tuple[str, Path]], Path, str | None], list[Path]]   # (jobs of (text, out), voice_ref, voice_text) -> outs
 ENGINE_MAX_WORDS = {"qwen3": 200, "chatterbox": 50}
 
 
@@ -68,12 +68,12 @@ def join(parts: list[Path], out: Path, gap: float) -> Path:
 
 
 def read(text: str, engine: str, out: Path, voice_ref: Path, backend: Backend | None = None,
-         max_words: int | None = None, gap: float = 0.35) -> Path:
+         max_words: int | None = None, gap: float = 0.35, voice_text: str | None = None) -> Path:
     backend = backend or BACKENDS[engine]
     max_words = max_words or ENGINE_MAX_WORDS.get(engine, 200)
     out.parent.mkdir(parents=True, exist_ok=True)
     jobs = [(c, out.with_name(f"{out.stem}.part{i:02d}.wav")) for i, c in enumerate(chunk(text, max_words), 1)]
-    parts = backend(jobs, voice_ref)
+    parts = backend(jobs, voice_ref, voice_text)
     return join(parts, out, gap)
 
 
@@ -106,9 +106,9 @@ def check(wav: Path, text: str, whisper_python: Path = WHISPER_PY) -> float:
 
 # ---------------------------------------------------------------- real engines (run in .venv-media)
 
-def _run_media(code: str, jobs: list[tuple[str, Path]], voice_ref: Path) -> list[Path]:
-    """Run `code` once in .venv-media with JOBS (list of [text, out]) and VOICE on stdin, so the model loads once."""
-    payload = json.dumps({"voice": str(voice_ref), "jobs": [[t, str(o)] for t, o in jobs]})
+def _run_media(code: str, jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | None) -> list[Path]:
+    """Run `code` once in .venv-media with the job list, the voice clip and its transcript on stdin (one model load)."""
+    payload = json.dumps({"voice": str(voice_ref), "voice_text": voice_text, "jobs": [[t, str(o)] for t, o in jobs]})
     subprocess.run([str(MEDIA_PY), "-c", code], input=payload, text=True, check=True)
     missing = [o for _, o in jobs if not o.exists()]
     if missing:
@@ -119,14 +119,17 @@ def _run_media(code: str, jobs: list[tuple[str, Path]], voice_ref: Path) -> list
 _QWEN3 = """import sys, json, shutil
 from pathlib import Path
 from mlx_audio.tts.generate import generate_audio
+from mlx_audio.tts.utils import load_model
 spec = json.load(sys.stdin)
+model = load_model("mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16")
 for text, out in spec["jobs"]:
     out = Path(out); prefix = out.with_suffix("")
-    generate_audio(text=text, model_path="mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16", ref_audio=spec["voice"],
+    generate_audio(text=text, model=model, ref_audio=spec["voice"], ref_text=spec.get("voice_text"),
                    file_prefix=str(prefix), audio_format="wav", join_audio=True, verbose=False)
-    for c in (out, out.with_name(out.stem + "_000.wav")):
-        if c.exists() and c != out:
+    for c in (out.with_name(out.stem + "_000.wav"),):
+        if c.exists():
             shutil.move(c, out)
+    print(out, flush=True)
 """
 
 _CHATTERBOX = """import sys, json, torchaudio as ta
@@ -140,12 +143,12 @@ for text, out in spec["jobs"]:
 """
 
 
-def _qwen3(jobs: list[tuple[str, Path]], voice_ref: Path) -> list[Path]:
-    return _run_media(_QWEN3, jobs, voice_ref)
+def _qwen3(jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | None) -> list[Path]:
+    return _run_media(_QWEN3, jobs, voice_ref, voice_text)
 
 
-def _chatterbox(jobs: list[tuple[str, Path]], voice_ref: Path) -> list[Path]:
-    return _run_media(_CHATTERBOX, jobs, voice_ref)
+def _chatterbox(jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | None) -> list[Path]:
+    return _run_media(_CHATTERBOX, jobs, voice_ref, voice_text)
 
 
 BACKENDS: dict[str, Backend] = {"qwen3": _qwen3, "chatterbox": _chatterbox}
@@ -155,14 +158,16 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("text", type=Path, help="plain text file (output of narration_text.py, one part)")
     p.add_argument("--engine", choices=sorted(BACKENDS), required=True)
-    p.add_argument("--voice-ref", type=Path, required=True, help="clean wav of the owner's voice (10 s to 3 min)")
+    p.add_argument("--voice-ref", type=Path, required=True, help="clean wav of the owner's voice (qwen3: 10-30 s; chatterbox uses the first 10 s)")
+    p.add_argument("--voice-text", type=Path, help="transcript of --voice-ref (qwen3 clones better with it; otherwise it transcribes the clip itself)")
     p.add_argument("-o", "--out", type=Path, required=True)
     p.add_argument("--max-words", type=int, default=None, help="chunk size; default per engine (qwen3 200, chatterbox 50)")
     p.add_argument("--gap", type=float, default=0.35)
     p.add_argument("--check", action="store_true", help="transcribe the result and print the word error rate")
     a = p.parse_args()
     text = a.text.read_text().strip()
-    out = read(text, a.engine, a.out, a.voice_ref, max_words=a.max_words, gap=a.gap)
+    voice_text = a.voice_text.read_text().strip() if a.voice_text else None
+    out = read(text, a.engine, a.out, a.voice_ref, max_words=a.max_words, gap=a.gap, voice_text=voice_text)
     info = {"out": str(out), "chunks": len(chunk(text, a.max_words or ENGINE_MAX_WORDS.get(a.engine, 200)))}
     if a.check:
         info["wer"] = round(check(out, text), 4)

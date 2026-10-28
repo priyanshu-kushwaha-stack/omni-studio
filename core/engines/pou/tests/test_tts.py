@@ -16,7 +16,7 @@ def test_chunk_splits_at_sentence_ends_under_the_limit():
 
 
 def _fake_backend(sr=48000):
-    def run(jobs, voice_ref: Path):
+    def run(jobs, voice_ref: Path, voice_text=None):
         outs = []
         for text, out in jobs:
             n = len(text.split())
