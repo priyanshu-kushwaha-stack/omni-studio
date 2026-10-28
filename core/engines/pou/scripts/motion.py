@@ -110,8 +110,7 @@ def trace_order(ink: np.ndarray, seed: int = 0) -> np.ndarray:
     if not skel.any():
         return order
     ys, xs = np.nonzero(skel)
-    cy, cx = ys.mean(), xs.mean()
-    start = int(np.argmax((ys - cy) ** 2 + (xs - cx) ** 2))
+    start = int(np.argmin(xs * 4 + ys))   # begin at the left end, so a trace draws left to right like a pen
     dist = np.full(ink.shape, -1, dtype=np.int32)
     q = deque([(int(ys[start]), int(xs[start]))])
     dist[ys[start], xs[start]] = 0
