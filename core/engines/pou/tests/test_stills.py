@@ -30,3 +30,15 @@ def test_generate_writes_1080p_for_requested_scenes_and_logs(tmp_path):
     assert calls[0][2:] == (1024, 576) and "a bed" in calls[0][0]
     rows = list(csv.DictReader((vd / "assets" / "provenance.csv").open()))
     assert rows[-1]["file"] == "stills/s002.png" and rows[-1]["usd"] == "0" and rows[-1]["model"].startswith("flux2-klein")
+
+
+def test_generate_out_dir_is_scratch_without_provenance(tmp_path):
+    vd = tmp_path / "v"; (vd / "assets").mkdir(parents=True)
+    (vd / "scene_plan.json").write_text(json.dumps({"scenes": [{"id": "s001", "description": "a fire"}]}))
+
+    def fake(prompt: str, seed: int, w: int, h: int, out: Path) -> Path:
+        Image.new("RGB", (w, h)).save(out)
+        return out
+    outs = stills.generate(vd, scenes=None, backend=fake, out_dir=tmp_path / "cmp" / "ckpt150")
+    assert outs == [tmp_path / "cmp" / "ckpt150" / "s001.png"]
+    assert not (vd / "assets" / "provenance.csv").exists() and not (vd / "assets" / "stills").exists()

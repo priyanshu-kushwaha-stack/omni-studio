@@ -46,15 +46,19 @@ def mflux_backend(p: str, seed: int, w: int, h: int, out: Path, steps: int = 4, 
 
 
 def generate(video_dir: Path, scenes: list[str] | None, backend: Backend | None = None, accent: str = "ochre",
-             seed: int = 7) -> list[Path]:
-    backend = backend or mflux_backend
+             seed: int = 7, out_dir: Path | None = None, lora: Path = LORA) -> list[Path]:
+    """Render the base scenes into <video>/assets/stills with a provenance row each. With OUT_DIR (a bake-off or
+    checkpoint comparison) the files go there instead and no provenance is written: those are not assets."""
+    if backend is None:
+        backend = lambda p, seed, w, h, out: mflux_backend(p, seed, w, h, out, lora=lora)  # noqa: E731
     plan = json.loads((video_dir / "scene_plan.json").read_text())
     base = [s for s in plan["scenes"] if re.fullmatch(r"s\d{3}", s["id"])]
     wanted = [s for s in base if scenes is None or s["id"] in scenes]
-    out_dir = video_dir / "assets" / "stills"
+    scratch = out_dir is not None
+    out_dir = out_dir or video_dir / "assets" / "stills"
     out_dir.mkdir(parents=True, exist_ok=True)
     prov = video_dir / "assets" / "provenance.csv"
-    if not prov.exists():
+    if not scratch and not prov.exists():
         prov.write_text("file,kind,source,model,license,credits,usd,note\n")
     outs = []
     for i, s in enumerate(wanted):
@@ -62,9 +66,10 @@ def generate(video_dir: Path, scenes: list[str] | None, backend: Backend | None 
         t0 = time.time()
         backend(prompt(s, accent), seed + i, 1024, 576, dest)
         Image.open(dest).convert("RGB").resize((1920, 1080), Image.LANCZOS).save(dest)
-        with prov.open("a", newline="") as f:
-            csv.writer(f).writerow([f"stills/{s['id']}.png", "image", "local", f"{MODEL}+pous_ink", "generated", 0, 0,
-                                    f"mflux on the Mac, {time.time() - t0:.0f} s, {time.strftime('%Y-%m-%d')}"])
+        if not scratch:
+            with prov.open("a", newline="") as f:
+                csv.writer(f).writerow([f"stills/{s['id']}.png", "image", "local", f"{MODEL}+pous_ink", "generated", 0, 0,
+                                        f"mflux on the Mac, {time.time() - t0:.0f} s, {time.strftime('%Y-%m-%d')}"])
         outs.append(dest)
     return outs
 
@@ -75,8 +80,10 @@ def main() -> None:
     p.add_argument("--scenes", nargs="*", default=None, help="scene ids; default all base scenes")
     p.add_argument("--accent", default="ochre")
     p.add_argument("--seed", type=int, default=7)
+    p.add_argument("--out-dir", type=Path, help="write here instead of <video>/assets/stills (no provenance rows)")
+    p.add_argument("--lora", type=Path, default=LORA, help="LoRA adapter to load (default channel/lora/pous_ink.safetensors)")
     a = p.parse_args()
-    outs = generate(a.video_dir, a.scenes, accent=a.accent, seed=a.seed)
+    outs = generate(a.video_dir, a.scenes, accent=a.accent, seed=a.seed, out_dir=a.out_dir, lora=a.lora)
     print(json.dumps({"stills": [str(o) for o in outs]}))
 
 
