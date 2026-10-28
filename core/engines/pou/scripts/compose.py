@@ -324,8 +324,8 @@ class Source:
         self._cache: tuple[int, np.ndarray] | None = None
         self.motion = motion.scaled(motion_spec, self.pw / src.width, self.ph / src.height) if motion_spec and not g.clip else None
         if self.motion and self.motion.get("effect") == "trace":
-            ink, _ = motion.masks(self.still_np, self.paper)
-            self.order = motion.trace_order(ink)
+            ink, acc = motion.masks(self.still_np, self.paper)
+            self.order = motion.trace_order(ink | acc)   # the accent trace draws in the same stroke order
             self.reveal_seconds = float(self.motion.get("seconds", 2.5))
 
     def base(self, t: float) -> np.ndarray:
