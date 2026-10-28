@@ -31,6 +31,9 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import motion  # noqa: E402
+
 PAPER = (0xF6, 0xF1, 0xE7)
 INK = (0x2B, 0x2B, 0x2B)
 COLORS = {"ink": INK, "rust": (0xB5, 0x53, 0x3C), "ochre": (0xD9, 0xA4, 0x41), "teal": (0x3A, 0x7D, 0x7B),
@@ -297,11 +300,13 @@ def reveal_order(h: int, w: int, seed: int) -> np.ndarray:
 class Source:
     """Frames of a still or a hero clip, pre-scaled, with push-in and reveal applied on request."""
 
-    def __init__(self, g: Group, W: int, H: int, scratch: Path, idx: int):
+    def __init__(self, g: Group, W: int, H: int, scratch: Path, idx: int, motion_spec: dict | None = None):
         self.g, self.W, self.H = g, W, H
         self.pw, self.ph = int(W * PRESCALE), int(H * PRESCALE)
         self.idx = idx
         self.frames: list[Path] = []
+        self.mcache: dict = {}
+        self.reveal_seconds = REVEAL_SECONDS
         if g.clip:
             d = scratch / f"clip_{g.scene_id}"
             d.mkdir(parents=True, exist_ok=True)
@@ -311,11 +316,17 @@ class Source:
                                 "-q:v", "2", str(d / "%04d.jpg")], check=True)
             self.frames = sorted(d.glob("*.jpg"))
             self.clip_fps = _probe_fps(g.clip)
-        self.still = Image.open(g.still).convert("RGB").resize((self.pw, self.ph), Image.LANCZOS)
+        src = Image.open(g.still).convert("RGB")
+        self.still = src.resize((self.pw, self.ph), Image.LANCZOS)
         self.still_np = np.asarray(self.still)
         self.paper = paper_color(self.still_np)
         self.order = reveal_order(self.ph, self.pw, idx) if not g.clip else None
         self._cache: tuple[int, np.ndarray] | None = None
+        self.motion = motion.scaled(motion_spec, self.pw / src.width, self.ph / src.height) if motion_spec and not g.clip else None
+        if self.motion and self.motion.get("effect") == "trace":
+            ink, _ = motion.masks(self.still_np, self.paper)
+            self.order = motion.trace_order(ink)
+            self.reveal_seconds = float(self.motion.get("seconds", 2.5))
 
     def base(self, t: float) -> np.ndarray:
         if self.frames:
@@ -326,8 +337,10 @@ class Source:
             arr = np.asarray(Image.open(self.frames[k]).convert("RGB"))
             self._cache = (k, arr)
             return arr
-        p = (t - self.g.start) / REVEAL_SECONDS
+        p = (t - self.g.start) / self.reveal_seconds
         if p >= 1.0:
+            if self.motion:
+                return motion.apply(self.motion, self.still_np, t - self.g.start - self.reveal_seconds, self.paper, self.mcache)
             return self.still_np
         p = 0.06 + 0.94 * _ease(max(0.0, p))
         mask = (self.order < p)[..., None]
@@ -457,7 +470,8 @@ def write_srt(cues: list[tuple[float, float, str]], path: Path) -> None:
 # ---------------------------------------------------------------- render
 
 def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, until: float | None, width: int, height: int,
-           fps: int, music: list[Path], music_gain_db: float, use_clips: bool, scratch: Path) -> dict:
+           fps: int, music: list[Path], music_gain_db: float, use_clips: bool, scratch: Path,
+           motion_specs: dict | None = None) -> dict:
     plan = json.loads((video_dir / "scene_plan.json").read_text())
     words = json.loads(words_path.read_text())
     stills = video_dir / "assets" / "stills"
@@ -472,7 +486,8 @@ def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, unt
     sfx = plan_sfx(groups, overlays, video_dir / "assets" / "sfx", until)
 
     scratch.mkdir(parents=True, exist_ok=True)
-    sources = [Source(g, width, height, scratch, i) for i, g in enumerate(groups)]
+    specs_m = motion_specs or {}
+    sources = [Source(g, width, height, scratch, i, motion_spec=specs_m.get(g.scene_id)) for i, g in enumerate(groups)]
     video_only = scratch / "video_only.mp4"
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{width}x{height}",
            "-r", str(fps), "-i", "-", "-an", "-c:v", "libx264", "-preset", "fast", "-crf", "19", "-pix_fmt", "yuv420p",
@@ -549,6 +564,8 @@ def main() -> None:
     p.add_argument("--scratch", type=Path, default=Path(tempfile.gettempdir()) / "fc-compose")
     p.add_argument("--video-in", type=Path, default=None, help="dub mode: reuse this render's picture, mix the new narration under it")
     p.add_argument("--mix-out", type=Path, default=None, help="dub mode: also write the mixed audio alone (m4a) for a YouTube audio track")
+    p.add_argument("--motion", nargs="?", const="__default__", default=None,
+                   help="apply procedural motion from motion.json (optionally a path): boil, flicker, sprite, trace")
     a = p.parse_args()
     w, h = (int(v) for v in a.size.split("x"))
     if a.video_in:
@@ -556,8 +573,13 @@ def main() -> None:
                      music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch, mix_out=a.mix_out)
         print(json.dumps(info, indent=1))
         return
+    specs_m = None
+    if a.motion is not None:
+        mpath = a.video_dir / "motion.json" if a.motion == "__default__" else Path(a.motion)
+        specs_m = motion.load_specs(mpath)
     info = render(a.video_dir, narration=a.narration, words_path=a.words, out=a.out, until=a.until, width=w, height=h,
-                  fps=a.fps, music=a.music, music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch)
+                  fps=a.fps, music=a.music, music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch,
+                  motion_specs=specs_m)
     print(json.dumps(info, indent=1))
 
 

@@ -112,3 +112,39 @@ def test_find_phrase_matches_digits_and_split_numbers():
     assert compose.find_phrase(words, "6 .5")[0] == 10.0             # whisper-style anchor still works
     assert compose.find_phrase(words, "6.5 hours")[0] == 10.0
     assert compose.find_phrase(words, "ten to thirty") is None       # words that are not spoken stay unmatched
+
+
+def _inked_group(tmp_path: Path):
+    from PIL import ImageDraw
+    im = Image.new("RGB", (64, 36), compose.PAPER)
+    ImageDraw.Draw(im).line((4, 30, 60, 6), fill=compose.INK, width=2)
+    p = tmp_path / "s001.png"
+    im.save(p)
+    return compose.Group("s001", 0.0, 8.0, "illustration", still=p)
+
+
+def test_source_applies_motion_after_the_reveal(tmp_path):
+    g = _inked_group(tmp_path)
+    plain = compose.Source(g, 64, 36, tmp_path / "scr", 0)
+    moving = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil", "amp": 2.0})
+    assert np.array_equal(plain.base(0.1), moving.base(0.1))          # reveal untouched
+    a, b = moving.base(5.0), moving.base(5.2)
+    assert not np.array_equal(a, b)                                      # ink boils after the reveal
+    assert np.array_equal(moving.base(5.0), moving.base(5.02))          # same 0.1 s step, cached
+
+
+def test_source_trace_uses_stroke_order_and_longer_reveal(tmp_path):
+    g = _inked_group(tmp_path)
+    tr = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "trace", "seconds": 2.0})
+    assert tr.reveal_seconds == 2.0
+    early = tr.base(0.5)
+    ink_rows = (early != np.array(compose.PAPER)).any(axis=2)
+    assert 0 < ink_rows.sum() < (tr.still_np != np.array(compose.PAPER)).any(axis=2).sum()
+
+
+def test_load_specs_accepts_list_and_dict(tmp_path):
+    import motion
+    (tmp_path / "a.json").write_text(json.dumps([{"scene": "s001", "effect": "boil"}]))
+    (tmp_path / "b.json").write_text(json.dumps({"s002": {"effect": "flicker"}}))
+    assert motion.load_specs(tmp_path / "a.json")["s001"]["effect"] == "boil"
+    assert motion.load_specs(tmp_path / "b.json")["s002"] == {"effect": "flicker", "scene": "s002"}

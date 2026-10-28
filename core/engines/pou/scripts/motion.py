@@ -143,3 +143,49 @@ def trace_order(ink: np.ndarray, seed: int = 0) -> np.ndarray:
     spread = dist_f[idx[0], idx[1]]
     order[ink] = spread[ink] / max(float(dist.max()), 1.0)
     return order
+
+
+def load_specs(path: Path) -> dict[str, dict]:
+    """motion.json as a list of {"scene": id, "effect": ...} or a dict keyed by scene id."""
+    data = json.loads(Path(path).read_text())
+    if isinstance(data, list):
+        return {d["scene"]: d for d in data}
+    return {k: (dict(v, scene=k) if isinstance(v, dict) else v) for k, v in data.items()}
+
+
+def scaled(spec: dict, sx: float, sy: float) -> dict:
+    """A copy of the spec with box and path (authored in the still's own pixels) scaled to the working size."""
+    out = dict(spec)
+    if "box" in spec:
+        x0, y0, x1, y1 = spec["box"]
+        out["box"] = (int(x0 * sx), int(y0 * sy), int(x1 * sx), int(y1 * sy))
+    if "path" in spec:
+        out["path"] = [(p[0] * sx, p[1] * sy) for p in spec["path"]]
+    return out
+
+
+def apply(spec: dict, still: np.ndarray, t_rel: float, paper: tuple[int, int, int], cache: dict) -> np.ndarray:
+    """One motion frame for a still, t_rel seconds after the reveal finished. cache keeps the masks and the
+    last frame per 0.1 s step, so three consecutive video frames share one computation."""
+    eff = spec.get("effect")
+    if eff not in ("boil", "flicker", "sprite"):
+        return still
+    if "masks" not in cache:
+        cache["masks"] = masks(still, paper)
+    ink, acc = cache["masks"]
+    key = (eff, int(t_rel * STEP_HZ)) if eff != "sprite" else (eff, round(t_rel, 3))
+    hit = cache.get("frame")
+    if hit and hit[0] == key:
+        return hit[1]
+    seed = int(spec.get("seed", 0))
+    if eff == "boil":
+        out = boil(still, ink, t_rel, amp=float(spec.get("amp", 1.5)), seed=seed)
+    elif eff == "flicker":
+        out = flicker(still, acc, t_rel, seed=seed)
+        if spec.get("boil", True):
+            out = boil(out, ink, t_rel, amp=float(spec.get("amp", 1.0)), seed=seed + 1)
+    else:
+        out = sprite(still, tuple(spec["box"]), [tuple(p) for p in spec["path"]], t_rel,
+                     float(spec.get("duration", 3.0)), paper)
+    cache["frame"] = (key, out)
+    return out
