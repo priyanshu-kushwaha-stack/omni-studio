@@ -60,3 +60,26 @@ def test_join_accepts_float_wavs(tmp_path):
     with wave.open(str(out)) as w:
         assert w.getsampwidth() == 2
         assert abs(w.getnframes() / w.getframerate() - 0.5) < 0.02
+
+
+def test_eleven_backend_writes_pcm16_wavs_and_counts_credits(tmp_path, monkeypatch):
+    sent = []
+
+    def fake_post(text: str) -> bytes:
+        sent.append(text)
+        return b"\x00\x00" * 2400            # 0.1 s of silence at 24 kHz
+    jobs = [("Hello there.", tmp_path / "a.part01.wav"), ("Second chunk.", tmp_path / "a.part02.wav")]
+    outs = tts._eleven(jobs, tmp_path / "unused.wav", None, post=fake_post)
+    assert sent == ["Hello there.", "Second chunk."] and [o.name for o in outs] == ["a.part01.wav", "a.part02.wav"]
+    with wave.open(str(outs[0])) as w:
+        assert (w.getframerate(), w.getsampwidth(), w.getnchannels(), w.getnframes()) == (24000, 2, 1, 2400)
+    assert tts.eleven_credits("x" * 9398) == 4699      # video 1 narration at Turbo rates
+
+
+def test_eleven_backend_refuses_without_keys(tmp_path, monkeypatch):
+    monkeypatch.delenv("ELEVENLABS_API_KEY", raising=False)
+    monkeypatch.delenv("ELEVEN_VOICE_ID", raising=False)
+    monkeypatch.setattr(tts, "_load_env_local", lambda: None)
+    import pytest
+    with pytest.raises(SystemExit):
+        tts._eleven([("hi", tmp_path / "x.wav")], tmp_path / "v.wav", None)

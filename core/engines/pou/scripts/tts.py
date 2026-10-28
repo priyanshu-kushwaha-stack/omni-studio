@@ -4,11 +4,13 @@ Long scripts are read in chunks at sentence ends (open models fail on long text:
 into babble past ~40 s, so its chunks are ~50 words; Qwen3 holds ~200), the engine is loaded once per run, the
 result is checked against the text with faster-whisper (WER), and the chunks are joined with short gaps into
 one 16-bit narration wav that the rest of the pipeline reads as before.
-Engines: qwen3 (mlx-audio, Qwen3-TTS 1.7B Base), chatterbox (chatterbox-tts), eleven (the existing Higgsfield
-read, used only as the control in the blind test, not generated here)."""
+Engines: qwen3 (mlx-audio, Qwen3-TTS 1.7B Base), chatterbox (chatterbox-tts), eleven (ElevenLabs API, direct:
+ELEVENLABS_API_KEY and ELEVEN_VOICE_ID from .env.local, Turbo v2.5 at 0.5 credit per character; the owner's clone
+is made once in the ElevenLabs app from the same 2:24 read and its id pasted into .env.local)."""
 from __future__ import annotations
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -20,7 +22,9 @@ MEDIA_PY = Path(__file__).resolve().parent.parent / ".venv-media" / "bin" / "pyt
 WHISPER_PY = Path.home() / "Exploration" / "sandbox" / "openmontage" / ".venv" / "bin" / "python"
 
 Backend = Callable[[list[tuple[str, Path]], Path, str | None], list[Path]]   # (jobs of (text, out), voice_ref, voice_text) -> outs
-ENGINE_MAX_WORDS = {"qwen3": 200, "chatterbox": 50}
+ENGINE_MAX_WORDS = {"qwen3": 200, "chatterbox": 50, "eleven": 400}
+ELEVEN_MODEL = "eleven_turbo_v2_5"
+ELEVEN_CREDITS_PER_CHAR = 0.5
 
 
 def chunk(text: str, max_words: int = 400) -> list[str]:
@@ -151,14 +155,57 @@ def _chatterbox(jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str |
     return _run_media(_CHATTERBOX, jobs, voice_ref, voice_text)
 
 
-BACKENDS: dict[str, Backend] = {"qwen3": _qwen3, "chatterbox": _chatterbox}
+def _load_env_local() -> None:
+    env = Path(__file__).resolve().parent.parent / ".env.local"
+    if env.exists():
+        for line in env.read_text().splitlines():
+            if "=" in line and not line.lstrip().startswith("#"):
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip())
+
+
+def _eleven(jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | None,
+            post: Callable[..., bytes] | None = None) -> list[Path]:
+    """ElevenLabs text-to-speech, one request per chunk, PCM 24 kHz straight into 16-bit wavs.
+    voice_ref is ignored (the clone lives in the ElevenLabs account as ELEVEN_VOICE_ID)."""
+    _load_env_local()
+    key, voice = os.environ.get("ELEVENLABS_API_KEY", ""), os.environ.get("ELEVEN_VOICE_ID", "")
+    if post is None and not (key and voice):
+        raise SystemExit("eleven needs ELEVENLABS_API_KEY and ELEVEN_VOICE_ID in .env.local")
+    if post is None:
+        import requests
+
+        def post(text: str) -> bytes:
+            r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}",
+                              params={"output_format": "pcm_24000"},
+                              headers={"xi-api-key": key, "Content-Type": "application/json"},
+                              json={"text": text, "model_id": ELEVEN_MODEL,
+                                    "voice_settings": {"stability": 0.45, "similarity_boost": 0.8, "style": 0.2}},
+                              timeout=300)
+            r.raise_for_status()
+            return r.content
+    outs = []
+    for text, out in jobs:
+        pcm = post(text)
+        with wave.open(str(out), "wb") as w:
+            w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000)
+            w.writeframes(pcm)
+        outs.append(out)
+    return outs
+
+
+def eleven_credits(text: str) -> int:
+    return int(len(text) * ELEVEN_CREDITS_PER_CHAR + 0.5)
+
+
+BACKENDS: dict[str, Backend] = {"qwen3": _qwen3, "chatterbox": _chatterbox, "eleven": _eleven}
 
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("text", type=Path, help="plain text file (output of narration_text.py, one part)")
     p.add_argument("--engine", choices=sorted(BACKENDS), required=True)
-    p.add_argument("--voice-ref", type=Path, required=True, help="clean wav of the owner's voice (qwen3: 10-30 s; chatterbox uses the first 10 s)")
+    p.add_argument("--voice-ref", type=Path, default=Path("/dev/null"), help="clean wav of the owner's voice (qwen3: 10-30 s; chatterbox uses the first 10 s; eleven ignores it)")
     p.add_argument("--voice-text", type=Path, help="transcript of --voice-ref (qwen3 clones better with it; otherwise it transcribes the clip itself)")
     p.add_argument("-o", "--out", type=Path, required=True)
     p.add_argument("--max-words", type=int, default=None, help="chunk size; default per engine (qwen3 200, chatterbox 50)")
@@ -169,6 +216,8 @@ def main() -> None:
     voice_text = a.voice_text.read_text().strip() if a.voice_text else None
     out = read(text, a.engine, a.out, a.voice_ref, max_words=a.max_words, gap=a.gap, voice_text=voice_text)
     info = {"out": str(out), "chunks": len(chunk(text, a.max_words or ENGINE_MAX_WORDS.get(a.engine, 200)))}
+    if a.engine == "eleven":
+        info["eleven_credits"] = eleven_credits(text)
     if a.check:
         info["wer"] = round(check(out, text), 4)
     print(json.dumps(info))
