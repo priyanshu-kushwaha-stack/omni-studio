@@ -338,3 +338,32 @@ def test_ring_and_circle_draw_on_around_the_clock():
     drawn = frame < 200
     h = ov.image.height
     assert drawn[: h // 2].any() and not drawn[h // 2 + 10:h].any()          # first quarter only: top-right arc
+
+
+def _sfx_files(tmp_path, names=("pencil", "page", "sting", "pop", "tick", "whoosh")):
+    d = tmp_path / "sfx_all"
+    d.mkdir(exist_ok=True)
+    for n in names:
+        (d / f"{n}.wav").write_bytes(b"")
+    return d
+
+
+def test_long_form_pencils_at_most_one_per_4s(tmp_path):
+    d = _sfx_files(tmp_path)
+    groups = [compose.Group(f"s{i:03d}", i * 1.5, i * 1.5 + 1.5, "illustration", section="a") for i in range(10)]
+    starts = [s.at for s in compose.plan_sfx(groups, [], d, None) if s.path.name == "pencil.wav"]
+    assert all(b - a >= 4.0 for a, b in zip(starts, starts[1:])) and starts[0] == 0.0
+
+
+def test_quiz_parts_carry_their_sfx_and_quiz_plates_whoosh_sparingly(tmp_path):
+    d = _sfx_files(tmp_path)
+    groups = [compose.Group("a", 0, 5, "quiz"), compose.Group("b", 5, 6, "character"), compose.Group("c", 6, 12, "quiz"),
+              compose.Group("d", 14, 20, "quiz")]
+    ovs = [compose.Overlay({"kind": "card", "sfx": "pop"}, 1.0, 4.0), compose.Overlay({"kind": "number", "sfx": "tick"}, 1.1, 2.0),
+           compose.Overlay({"kind": "circle", "sfx": "sting"}, 3.5, 5.0)]
+    sfx = compose.plan_sfx(groups, ovs, d, None)
+    names = [(s.path.name, s.at) for s in sfx]
+    assert ("pop.wav", 1.0) in names and ("tick.wav", 1.1) in names and ("sting.wav", 3.5) in names
+    whooshes = [at for n, at in names if n == "whoosh.wav"]
+    assert whooshes == [0, 14]            # the plate at 6 s is within 8 s of the one at 0 s
+    assert next(s for s in sfx if s.path.name == "pop.wav").gain_db == compose.SFX_GAIN["pop"]

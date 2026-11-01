@@ -502,24 +502,33 @@ class Sfx:
 SHORT_SFX_GAP = 5.0      # Shorts: at most one pencil per 5 s, no page turns (owner, Shorts draft v2: "a lot of noise")
 
 
+LONG_PENCIL_GAP = 4.0    # long form: at most one pencil per 4 s (energy pass: cuts come every 2-4 s)
+WHOOSH_GAP = 8.0
+SFX_GAIN = {"pop": -12, "tick": -14, "sting": -8, "whoosh": -16}
+
+
 def plan_sfx(groups: list[Group], overlays: list[Overlay], sfx_dir: Path, until: float | None,
              short: bool = False) -> list[Sfx]:
     out: list[Sfx] = []
-    pencil, page, sting = sfx_dir / "pencil.wav", sfx_dir / "page.wav", sfx_dir / "sting.wav"
-    last_section, last_pencil = None, -1e9
+    pencil, page, whoosh = sfx_dir / "pencil.wav", sfx_dir / "page.wav", sfx_dir / "whoosh.wav"
+    gap = SHORT_SFX_GAP if short else LONG_PENCIL_GAP
+    last_section, last_pencil, last_whoosh = None, -1e9, -1e9
     for g in groups:
         if not short and g.section != last_section and last_section is not None and page.exists():
             out.append(Sfx(page, g.start, -6))
         last_section = g.section
-        if g.klass in PENCIL_CLASSES and not g.clip and pencil.exists():
-            if not short:
-                out.append(Sfx(pencil, g.start, -14))
-            elif g.start - last_pencil >= SHORT_SFX_GAP:
-                out.append(Sfx(pencil, g.start, -26))
-                last_pencil = g.start
+        if g.klass == "quiz" and whoosh.exists() and g.start - last_whoosh >= WHOOSH_GAP:
+            out.append(Sfx(whoosh, g.start, SFX_GAIN["whoosh"]))
+            last_whoosh = g.start
+        if g.klass in PENCIL_CLASSES and not g.clip and pencil.exists() and g.start - last_pencil >= gap:
+            out.append(Sfx(pencil, g.start, -26 if short else -14))
+            last_pencil = g.start
     for ov in overlays:
-        if ov.spec.get("sfx") == "sting" and sting.exists():
-            out.append(Sfx(sting, ov.start, -16 if short else -8))
+        name = ov.spec.get("sfx")
+        f = sfx_dir / f"{name}.wav" if name else None
+        if f and f.exists():
+            gain = (-16 if short else -8) if name == "sting" else SFX_GAIN.get(name, -12)
+            out.append(Sfx(f, ov.start, gain))
     return [s for s in out if until is None or s.at < until]
 
 
