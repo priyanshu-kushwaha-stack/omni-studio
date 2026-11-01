@@ -122,3 +122,24 @@ def test_speaker_labels_are_not_counted_as_words():
     from script_lint import narration_words
     text = "## [00:00] A\n> VISUAL: x\nOOG: I am old.\nYOU: No way.\nPROF: Yes.\nPlain narration here.\n"
     assert narration_words(text) == 3 + 2 + 1 + 3
+
+
+def _quiz_script(quiz_lines):
+    base = make_script()
+    return base.replace("## [02:00] One", "## [02:00] One\n" + "\n".join(quiz_lines), 1)
+
+
+def test_quiz_after_ask_with_one_answer_passes():
+    f = by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: 15 | *35 | 55"]), 14))
+    assert f[27].ok
+
+
+def test_quiz_needs_ask_before_it_and_exactly_one_answer():
+    assert not by_item(lint_script(_quiz_script(["> QUIZ: 15 | *35 | 55"]), 14))[27].ok
+    assert not by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: 15 | 35 | 55"]), 14))[27].ok
+    assert not by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: *15 | *35"]), 14))[27].ok
+    assert not by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: *15 | 2 | 3 | 4"]), 14))[27].ok
+
+
+def test_no_quiz_lines_passes():
+    assert by_item(lint_script(make_script(), 14))[27].ok

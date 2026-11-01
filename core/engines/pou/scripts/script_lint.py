@@ -119,6 +119,20 @@ def lint_script(text: str, target_minutes: int, wpm: int = 155) -> list[Finding]
             weak_emp.append(title)
     findings.append(Finding(26, not weak_vis, "; ".join(weak_vis) or "visual beats ok (1 per 10 s; 3-6 s density is checked on scene_plan.json)"))
     findings.append(Finding(20, not weak_emp, f"no emphasis in: {weak_emp} (advisory)" if weak_emp else "emphasis marked in every section", "advisory"))
+    bad_quiz = []
+    lines = [l.strip() for l in text.splitlines()]
+    for i, l in enumerate(lines):
+        if not l.startswith("> QUIZ:"):
+            continue
+        cards = [c.strip() for c in l[len("> QUIZ:"):].split("|") if c.strip()]
+        prev = next((p for p in reversed(lines[:i]) if p), "")
+        if not prev.startswith("> ASK:"):
+            bad_quiz.append(f"line {i + 1}: not right after an ASK")
+        if not 2 <= len(cards) <= 3:
+            bad_quiz.append(f"line {i + 1}: {len(cards)} cards")
+        if sum(c.startswith("*") for c in cards) != 1:
+            bad_quiz.append(f"line {i + 1}: needs exactly one *answer")
+    findings.append(Finding(27, not bad_quiz, "; ".join(bad_quiz) or "quiz cues ok"))
     return sorted(findings)
 
 

@@ -164,3 +164,10 @@ def test_wordless_beat_starts_after_the_previous_beats_last_word():
     assert spans[0] == (0.0, 1.2)
     assert spans[1] == (1.2, 3.0)
     assert spans[2][0] == 3.0
+
+
+def test_quiz_cue_adds_no_spoken_words():
+    text = ("## [00:00] A\n> VISUAL: board\n> ASK: What's the average?\n> QUIZ: 15 | *~35 | 55\nYOU: Fifty-five?\n")
+    beats = parse_script(text)
+    words = [w for b in beats for w in b["words"]]
+    assert "15" not in words and "55" not in words and "quiz" not in words
