@@ -186,12 +186,18 @@ def face_boxes(video_dir: Path, W: int, H: int) -> dict[str, list[Box]]:
     out: dict[str, list[Box]] = {}
     for sid in set(chars) | set(anim.get("copies", {})):
         src = anim.get("copies", {}).get(sid, sid)
-        eyes = chars.get(src, {}).get("eyes")
-        if not eyes:
-            continue
-        xs, ys, r = [e[0] for e in eyes], [e[1] for e in eyes], max(e[2] for e in eyes)
-        pad = 0.04 * W
-        out[sid] = [(min(xs) - 2.2 * r - pad, min(ys) - 2.6 * r - pad, max(xs) + 2.2 * r + pad, max(ys) + 2.6 * r + pad)]
+        spec = chars.get(src, {})
+        boxes = []
+        for c in spec if isinstance(spec, list) else [spec]:   # a list is a dialogue shot: one face per character
+            eyes = c.get("eyes")
+            if not eyes:
+                continue
+            pts = [(e[0], e[1]) for e in eyes] + ([tuple(c["mouth"][:2])] if c.get("mouth") else [])
+            xs, ys, r = [p[0] for p in pts], [p[1] for p in pts], max(e[2] for e in eyes)
+            pad = 0.04 * W
+            boxes.append((min(xs) - 2.2 * r - pad, min(ys) - 2.6 * r - pad, max(xs) + 2.2 * r + pad, max(ys) + 2.6 * r + pad))
+        if boxes:
+            out[sid] = boxes
     return out
 
 

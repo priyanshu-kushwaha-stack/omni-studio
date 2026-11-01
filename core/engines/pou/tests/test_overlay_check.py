@@ -61,3 +61,16 @@ def test_text_on_a_face_fails_even_on_light_ink():
     zones = oc.forbidden_zones(1080, 1920, 5.0, 50.0)
     j = oc.judge((300, 1000, 700, 1100), mask, zones, [], (1080, 1920), faces=[(400, 950, 600, 1150)])
     assert j["verdict"] == "fail" and "face" in j["why"]
+
+
+def test_face_boxes_cover_every_character_of_a_dialogue_shot(tmp_path):
+    import json
+    anim = {"characters": {"s001": [{"name": "you", "eyes": [[400, 300, 30]], "mouth": [390, 380, 40]},
+                                    {"name": "oog", "eyes": [[1400, 500, 28]]}]},
+            "copies": {"s001x05": "s001"}}
+    (tmp_path / "anim.json").write_text(json.dumps(anim))
+    boxes = oc.face_boxes(tmp_path, 1920, 1080)
+    assert len(boxes["s001"]) == 2 and boxes["s001x05"] == boxes["s001"]
+    you, oog = sorted(boxes["s001"])
+    assert you[0] < 400 < you[2] and you[1] < 380 < you[3]     # eye and mouth inside
+    assert oog[0] < 1400 < oog[2]
