@@ -126,6 +126,10 @@ def _box(ov: compose.Overlay) -> Box:
     return (ov.x, ov.y, ov.x + ov.image.width, ov.y + ov.image.height)
 
 
+def same_quiz(a: dict, b: dict) -> bool:
+    return a.get("quiz") is not None and a.get("quiz") == b.get("quiz")
+
+
 def analyse(video_dir: Path, words_path: Path, W: int, H: int, captions: bool) -> tuple[list[dict], dict]:
     plan = json.loads((video_dir / "scene_plan.json").read_text())
     words = json.loads(words_path.read_text())
@@ -156,11 +160,13 @@ def analyse(video_dir: Path, words_path: Path, W: int, H: int, captions: bool) -
     results = []
     everything = ovs + caps
     for ov in everything:
+        if ov.spec.get("kind") in ("circle", "cross"):
+            continue   # marks sit on their card on purpose
         is_cap = ov.spec.get("kind") == "caption"
         t0 = ov.start + (compose.REVEAL_SECONDS if not is_cap else 0.0)
         times = sorted({min(max(t0, ov.start), ov.end - 0.05), (ov.start + ov.end) / 2, ov.end - 0.05})
         box = _box(ov)
-        others = [_box(o) for o in everything if o is not ov and o.start < ov.end and ov.start < o.end]
+        others = [_box(o) for o in everything if o is not ov and o.start < ov.end and ov.start < o.end and not same_quiz(o.spec, ov.spec)]
         worst = None
         for t in times:
             gi = by_scene.get(ov.spec.get("scene"), None) if not is_cap else None
@@ -242,6 +248,8 @@ def fix(results: list[dict], ctx: dict, W: int, H: int) -> int:
         if r["verdict"] != "fail" or r["caption"]:
             continue
         ov = r["ov"]
+        if ov.spec.get("quiz"):
+            continue   # quiz parts move together: change the quiz's "board" in overlays.json instead
         others = [p["box"] for p in placed if p["ov"].start < ov.end and ov.start < p["ov"].end]
         others += ctx["faces"].get(ctx["groups"][r["gi"]].scene_id, [])   # faces are no-go boxes too
         mask = ctx["mask_at"](r["gi"], r["t"])

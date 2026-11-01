@@ -74,3 +74,9 @@ def test_face_boxes_cover_every_character_of_a_dialogue_shot(tmp_path):
     you, oog = sorted(boxes["s001"])
     assert you[0] < 400 < you[2] and you[1] < 380 < you[3]     # eye and mouth inside
     assert oog[0] < 1400 < oog[2]
+
+
+def test_parts_of_one_quiz_do_not_clash_but_two_quizzes_do():
+    assert oc.same_quiz({"quiz": "q2"}, {"quiz": "q2"})
+    assert not oc.same_quiz({"quiz": "q2"}, {"quiz": "q3"})
+    assert not oc.same_quiz({}, {})
