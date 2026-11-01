@@ -66,6 +66,7 @@ class Group:
     still: Path | None = None
     clip: Path | None = None
     section: str = ""
+    punches: list = field(default_factory=list)   # (time, focus [fx, fy] | None) camera punch-ins
 
 
 def build_groups(plan: dict, stills: Path, clips: Path | None, until: float | None = None) -> list[Group]:
@@ -340,6 +341,32 @@ def overlay_alpha(ov: Overlay, t: float) -> tuple[float, float]:
     return max(0.0, min(a_in, a_out)), _ease(frac)
 
 
+PUNCH = 0.08            # extra zoom at the peak of a punch-in
+
+
+def punch_env(dt: float) -> float:
+    """0 before the punch, eases to 1 by 0.15 s, decays back to 0 by 1.0 s."""
+    if dt < 0 or dt >= 1.0:
+        return 0.0
+    if dt < 0.15:
+        return _ease(dt / 0.15)
+    return 1.0 - _ease((dt - 0.15) / 0.85)
+
+
+def attach_punches(groups: list[Group], overlays: list[Overlay]) -> list[Overlay]:
+    """Register a punch-in at every quiz reveal circle and `punch` item; return overlays without the punch items."""
+    kept = []
+    for ov in overlays:
+        kind = ov.spec.get("kind")
+        if kind in ("circle", "punch"):
+            g = next((g for g in groups if g.start <= ov.start < g.end), None)
+            if g is not None:
+                g.punches.append((ov.start, ov.spec.get("focus")))
+        if kind != "punch":
+            kept.append(ov)
+    return kept
+
+
 def _ease(x: float) -> float:
     return x * x * (3 - 2 * x)
 
@@ -469,9 +496,18 @@ class Source:
         for b in g.boundaries:
             if t >= b:
                 push += BOUNDARY_PUSH * _ease(min(1.0, (t - b) / BOUNDARY_EASE))
-        scale = min(PRESCALE - 0.005, 1.0 + slow + push)
+        env, focus = 0.0, None
+        for p, f in g.punches:
+            e = punch_env(t - p)
+            if e > env:
+                env, focus = e, f
+        scale = min(PRESCALE - 0.005, 1.0 + slow + push + PUNCH * env)
         pan = 0.5 + (0.12 if self.idx % 3 == 0 else -0.12) * (u - 0.5)
-        return scale, pan, 0.5
+        py = 0.5
+        if focus:
+            pan += (focus[0] - pan) * env
+            py += (focus[1] - py) * env
+        return scale, min(1.0, max(0.0, pan)), min(1.0, max(0.0, py))
 
     def frame(self, t: float) -> np.ndarray:
         arr = self.base(t)
@@ -682,6 +718,7 @@ def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, unt
     total = groups[-1].end if until is None else min(until, groups[-1].end)
     specs = json.loads((video_dir / "overlays.json").read_text()) if (video_dir / "overlays.json").exists() else []
     overlays = resolve_overlays(specs, words, groups, until)
+    overlays = attach_punches(groups, overlays)
     sfx = plan_sfx(groups, overlays, video_dir / "assets" / "sfx", until, short=height > width)
     if burn_captions:
         overlays += caption_overlays(words, until, layout=load_caption_layout(video_dir), groups=groups)
@@ -739,7 +776,7 @@ def remix(video_dir: Path, *, narration: Path, words_path: Path, video_in: Path,
     groups = build_groups(plan, stills, clips, None)
     total = groups[-1].end
     specs = json.loads((video_dir / "overlays.json").read_text()) if (video_dir / "overlays.json").exists() else []
-    overlays = resolve_overlays(specs, words, groups, None)
+    overlays = [o for o in resolve_overlays(specs, words, groups, None) if o.spec.get("kind") != "punch"]
     sfx = plan_sfx(groups, overlays, video_dir / "assets" / "sfx", None)
     scratch.mkdir(parents=True, exist_ok=True)
     audio = scratch / "mix.wav"

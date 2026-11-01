@@ -1,3 +1,4 @@
+import pytest
 import json
 from pathlib import Path
 
@@ -395,3 +396,29 @@ def test_mix_audio_with_a_duck_window_is_quieter_inside_it(tmp_path):
     x = np.frombuffer(raw, np.float32)
     rms = lambda a, b: float(np.sqrt(np.mean(x[int(a * 8000):int(b * 8000)] ** 2)))
     assert rms(2.2, 2.8) < 0.1 * rms(1.6, 1.9)
+
+
+def test_punch_env_rises_fast_and_settles():
+    assert compose.punch_env(-0.1) == 0 and compose.punch_env(1.2) == 0
+    assert compose.punch_env(0.15) == pytest.approx(1.0, abs=0.05)
+    assert 0 < compose.punch_env(0.6) < 1
+
+
+def test_punch_never_exceeds_prescale_even_on_top_of_drift_and_pushes(tmp_path):
+    still = tmp_path / "a.png"
+    Image.new("RGB", (192, 108), compose.PAPER).save(still)
+    g = compose.Group("a", 0.0, 6.0, "illustration", boundaries=[1.0, 2.0, 3.0], still=still)
+    g.punches = [(3.1, None)]
+    src = compose.Source(g, 192, 108, tmp_path, 0)
+    peak = src.zoom(3.25)[0]
+    assert peak < compose.PRESCALE and peak > src.zoom(2.9)[0] + 0.03
+
+
+def test_attach_punches_from_reveal_circles_and_punch_items():
+    g = compose.Group("a", 0, 10, "illustration")
+    ovs = [compose.Overlay({"kind": "circle", "quiz": "q"}, 4.0, 9.0),
+           compose.Overlay({"kind": "punch", "focus": [0.3, 0.4]}, 7.0, 7.1),
+           compose.Overlay({"kind": "card"}, 1.0, 9.0)]
+    kept = compose.attach_punches([g], ovs)
+    assert [o.spec["kind"] for o in kept] == ["circle", "card"]
+    assert g.punches == [(4.0, None), (7.0, [0.3, 0.4])]

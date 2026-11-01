@@ -289,7 +289,7 @@ def cmd_render(stage_path: Path, out: Path, audio_from: Path | None, only: list[
     groups = compose.build_groups(plan, video_dir / "assets" / "stills", None, None)
     draw_ovs = stage.get("overlays", True) if overlays is None else overlays
     specs = json.loads((video_dir / "overlays.json").read_text()) if draw_ovs else []
-    ovs = compose.resolve_overlays(specs, words, groups, None)
+    ovs = [o for o in compose.resolve_overlays(specs, words, groups, None) if o.spec.get("kind") != "punch"]
     compose.place_overlays(ovs, W, H)
     frames = []
     for a, b in stage["ranges"]:

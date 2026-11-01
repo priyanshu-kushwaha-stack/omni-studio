@@ -137,6 +137,7 @@ def analyse(video_dir: Path, words_path: Path, W: int, H: int, captions: bool) -
     total = groups[-1].end
     specs = json.loads((video_dir / "overlays.json").read_text())
     ovs = compose.resolve_overlays(specs, words, groups, None)
+    ovs = [o for o in ovs if o.spec.get("kind") != "punch"]
     faces = face_boxes(video_dir, W, H)
     layout = compose.load_caption_layout(video_dir)
     caps = compose.caption_overlays(words, None, layout=layout, groups=groups) if captions else []
