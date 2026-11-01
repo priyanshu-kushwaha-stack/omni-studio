@@ -158,6 +158,7 @@ class Overlay:
 
 QUIZ_RING_SECONDS = 3.0
 QUIZ_POP_GAP = 0.3
+QUIZ_MIN_COUNTDOWN = 1.0   # least ring time a quiz needs, else it is skipped
 
 
 def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tuple[dict, float, float]]:
@@ -179,11 +180,13 @@ def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tu
             out.append(({**base, "kind": "cross", "text": text, "pos": [x, cy]}, reveal + 0.15, end))
     ring_end = min(t_ring + QUIZ_RING_SECONDS, reveal - 0.3)
     out.append(({**base, "kind": "ring", "w": 170, "h": 170, "pos": [(x0 + x1) / 2, ry]}, t_ring, ring_end))
-    step = (ring_end - t_ring) / 3
+    d0 = min(t_ring + (n - 1) * QUIZ_POP_GAP + 0.15, ring_end)   # digits start after the last card pop
+    step = (ring_end - d0) / 3
     for k, d in enumerate("321"):
         out.append(({**base, "kind": "number", "size": 96, "text": d, "pos": [(x0 + x1) / 2, ry], "sfx": "tick"},
-                    t_ring + k * step, t_ring + (k + 1) * step))
-    out.append(({**base, "kind": "circle", "text": cards[ans], "pos": [xs[ans], cy], "sfx": "sting", "color": "ochre"},
+                    d0 + k * step, d0 + (k + 1) * step))
+    out.append(({**base, "kind": "circle", "text": cards[ans], "pos": [xs[ans], cy], "sfx": "sting", "color": "ochre",
+                 "focus": [xs[ans], cy]},
                 reveal, end))
     if spec.get("note"):
         out.append(({**base, "kind": "label", "size": 40, "color": "muted", "text": spec["note"],
@@ -199,10 +202,14 @@ def resolve_overlays(specs: list[dict], words: list[dict], groups: list[Group], 
         if g is None:
             continue
         if spec.get("kind") == "quiz":
-            a = find_phrase(words, spec["ask_anchor"], not_before=g.start - 1.0)
-            r = find_phrase(words, spec["reveal_anchor"], not_before=(a[1] if a else g.start))
+            ask_a, rev_a = spec.get("ask_anchor"), spec.get("reveal_anchor")
+            a = find_phrase(words, ask_a, not_before=g.start - 1.0) if ask_a else None
+            r = find_phrase(words, rev_a, not_before=(a[1] if a else g.start)) if rev_a and a else None
             if a is None or r is None:
-                print(f"warn: quiz {spec['id']} anchors not found; skipped", file=sys.stderr)
+                print(f"warn: quiz {spec.get('id')} anchors missing or not found; skipped", file=sys.stderr)
+                continue
+            if (r[0] - 0.1) < a[1] + 0.1 + QUIZ_MIN_COUNTDOWN:
+                print(f"warn: quiz {spec.get('id')} too short for the countdown; skipped", file=sys.stderr)
                 continue
             for part, s0, s1 in quiz_parts(spec, a[1], r[0] - 0.1, g.end):
                 if until is None or s0 < until:
@@ -338,7 +345,7 @@ def overlay_alpha(ov: Overlay, t: float) -> tuple[float, float]:
     a_in = min(1.0, (t - ov.start) / 0.12) if t >= ov.start else 0.0
     a_out = min(1.0, (ov.end - t) / 0.25)
     frac = min(1.0, max(0.0, (t - ov.start) / write))
-    return max(0.0, min(a_in, a_out)), _ease(frac)
+    return max(0.0, min(a_in, a_out)), (frac if kind == "ring" else _ease(frac))
 
 
 PUNCH = 0.08            # extra zoom at the peak of a punch-in
@@ -501,7 +508,8 @@ class Source:
             e = punch_env(t - p)
             if e > env:
                 env, focus = e, f
-        scale = min(PRESCALE - 0.005, 1.0 + slow + push + PUNCH * env)
+        base = 1.0 + slow + push
+        scale = min(PRESCALE - 0.005, base + min(PUNCH, max(0.0, PRESCALE - 0.005 - base)) * env)
         pan = 0.5 + (0.12 if self.idx % 3 == 0 else -0.12) * (u - 0.5)
         py = 0.5
         if focus:
@@ -540,6 +548,7 @@ SHORT_SFX_GAP = 5.0      # Shorts: at most one pencil per 5 s, no page turns (ow
 
 LONG_PENCIL_GAP = 4.0    # long form: at most one pencil per 4 s (energy pass: cuts come every 2-4 s)
 WHOOSH_GAP = 8.0
+OVERLAY_SFX = {"pop", "tick", "sting"}
 SFX_GAIN = {"pop": -12, "tick": -14, "sting": -8, "whoosh": -16}
 
 
@@ -561,6 +570,8 @@ def plan_sfx(groups: list[Group], overlays: list[Overlay], sfx_dir: Path, until:
             last_pencil = g.start
     for ov in overlays:
         name = ov.spec.get("sfx")
+        if name not in OVERLAY_SFX:
+            continue
         f = sfx_dir / f"{name}.wav" if name else None
         if f and f.exists():
             gain = (-16 if short else -8) if name == "sting" else SFX_GAIN.get(name, -12)
@@ -583,6 +594,8 @@ def quiz_audio(overlays: list[Overlay]) -> tuple[list[tuple[float, float, float]
     for o in overlays:
         if o.spec.get("kind") == "circle" and o.spec.get("quiz") in rings:
             r0, rev = rings[o.spec["quiz"]].start, o.start
+            if rev - 0.3 <= r0:
+                continue
             duck += [(r0, rev - 0.3, -10.0), (rev - 0.3, rev, -60.0)]
             cues.append((r0, rev - 0.3))
     return duck, cues

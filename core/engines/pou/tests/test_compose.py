@@ -316,12 +316,12 @@ def test_quiz_cards_sit_inside_the_board_left_to_right():
 
 def test_resolve_overlays_expands_a_quiz_from_its_anchors():
     words = [{"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in
-             enumerate("what's the average fifty five roughly thirty five".split())]
+             enumerate("what's the average fifty five um um um um roughly thirty five".split())]
     g = compose.Group("s001", 0.0, 10.0, "illustration")
     spec = dict(QUIZ, ask_anchor="what's the average", reveal_anchor="roughly thirty five")
     ovs = compose.resolve_overlays([spec], words, [g], None)
     circle = next(o for o in ovs if o.spec["kind"] == "circle")
-    assert abs(circle.start - 2.5) < 0.2                   # "roughly" starts at 2.5 s
+    assert abs(circle.start - 4.5) < 0.2                   # "roughly" starts at 4.5 s
     first_card = min(o.start for o in ovs if o.spec["kind"] == "card")
     assert abs(first_card - (1.4 + 0.1)) < 1e-6           # "average" ends at 1.4 s
 
@@ -422,3 +422,66 @@ def test_attach_punches_from_reveal_circles_and_punch_items():
     kept = compose.attach_punches([g], ovs)
     assert [o.spec["kind"] for o in kept] == ["circle", "card"]
     assert g.punches == [(4.0, None), (7.0, [0.3, 0.4])]
+
+
+# ---- final-fix review findings
+
+def test_short_or_broken_quiz_warns_and_is_skipped(capsys):
+    words = [{"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in
+             enumerate("what's the average fifty five roughly thirty five".split())]
+    g = compose.Group("s001", 0.0, 10.0, "illustration")
+    missing = dict(QUIZ, ask_anchor="what's the average")                       # no reveal_anchor key
+    assert compose.resolve_overlays([missing], words, [g], None) == []
+    assert "quiz q2" in capsys.readouterr().err
+    short = dict(QUIZ, ask_anchor="what's the average", reveal_anchor="fifty five")   # reveal 0.9 s after ask end
+    assert compose.resolve_overlays([short], words, [g], None) == []
+    assert "warn" in capsys.readouterr().err
+
+
+def test_quiz_audio_skips_a_quiz_with_no_room_for_the_countdown():
+    ovs = [compose.Overlay({"kind": "ring", "quiz": "q"}, 10.0, 10.1), compose.Overlay({"kind": "circle", "quiz": "q"}, 10.2, 20)]
+    assert compose.quiz_audio(ovs) == ([], [])
+
+
+def test_punch_settles_back_even_after_many_boundaries(tmp_path):
+    still = tmp_path / "a.png"
+    Image.new("RGB", (192, 108), compose.PAPER).save(still)
+    g = compose.Group("a", 0.0, 10.0, "illustration", boundaries=[0.5, 1.0, 1.5, 2.0, 2.5], still=still)
+    nopunch = compose.Source(g, 192, 108, tmp_path, 0)
+    plain = [nopunch.zoom(t)[0] for t in (3.25, 3.4, 3.6, 3.8, 4.8)]
+    g2 = compose.Group("a", 0.0, 10.0, "illustration", boundaries=g.boundaries, still=still)
+    g2.punches = [(3.1, None)]
+    src = compose.Source(g2, 192, 108, tmp_path, 0)
+    assert src.zoom(3.25)[0] > src.zoom(3.09)[0] + 0.005          # peak above the pre-punch zoom
+    decay = [src.zoom(t)[0] for t in (3.25, 3.4, 3.6, 3.8)]
+    assert all(a > b for a, b in zip(decay, decay[1:]))             # no plateau at the clamp
+    assert src.zoom(4.3)[0] == pytest.approx(nopunch.zoom(4.3)[0])  # 1.2 s on: settled
+
+
+def test_countdown_ring_sweeps_linearly():
+    ov = compose.Overlay({"kind": "ring"}, 10.0, 13.0)
+    assert compose.overlay_alpha(ov, 11.0)[1] == pytest.approx(1 / 3, abs=1e-6)
+    lab = compose.Overlay({"kind": "label"}, 0.0, 5.0)
+    assert compose.overlay_alpha(lab, 0.175)[1] == pytest.approx(compose._ease(0.5))
+
+
+def test_countdown_digits_start_after_the_last_card_pop():
+    parts = compose.quiz_parts(QUIZ, 10.0, 14.5, 20.0)
+    digits = [p for p in parts if p[0]["kind"] == "number"]
+    last_pop = 10.1 + 2 * compose.QUIZ_POP_GAP
+    ring = next(p for p in parts if p[0]["kind"] == "ring")
+    assert digits[0][1] == pytest.approx(last_pop + 0.15) and digits[-1][2] == pytest.approx(ring[2])
+    assert ring[1] == pytest.approx(10.1)
+
+
+def test_reveal_circle_focuses_its_own_card():
+    parts = compose.quiz_parts(QUIZ, 10.0, 14.5, 20.0)
+    circle = next(p[0] for p in parts if p[0]["kind"] == "circle")
+    assert circle["focus"] == circle["pos"]
+
+
+def test_overlay_sfx_outside_the_allowlist_is_ignored(tmp_path):
+    d = _sfx_files(tmp_path)
+    ovs = [compose.Overlay({"kind": "label", "sfx": "pencil"}, 3.0, 5.0), compose.Overlay({"kind": "label", "sfx": "pop"}, 4.0, 5.0)]
+    out = compose.plan_sfx([], ovs, d, None)
+    assert [s.path.stem for s in out] == ["pop"]
