@@ -155,12 +155,57 @@ class Overlay:
     rot: float = 0.0
 
 
+QUIZ_RING_SECONDS = 3.0
+QUIZ_POP_GAP = 0.3
+
+
+def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tuple[dict, float, float]]:
+    """A quiz as plain overlay parts: cards pop in one by one on the board, a ring closes over 3 s with 3-2-1,
+    and at the reveal the right card gets a drawn circle; wrong cards are struck, or fade if listed in `fade`."""
+    x0, y0, x1, y1 = spec["board"]
+    cards, ans, fade = spec["cards"], int(spec["answer"]), set(spec.get("fade", []))
+    n = len(cards)
+    base = {"quiz": spec["id"], "scene": spec["scene"]}
+    cy, ry = y0 + 0.36 * (y1 - y0), y0 + 0.80 * (y1 - y0)
+    xs = [x0 + (x1 - x0) * (i + 0.5) / n for i in range(n)]
+    out: list[tuple[dict, float, float]] = []
+    t_ring = ask_end + 0.1
+    for i, (text, x) in enumerate(zip(cards, xs)):
+        t = t_ring + i * QUIZ_POP_GAP
+        stop = reveal + 0.6 if i in fade and i != ans else end
+        out.append(({**base, "kind": "card", "text": text, "pos": [x, cy], "sfx": "pop"}, t, stop))
+        if i != ans and i not in fade:
+            out.append(({**base, "kind": "cross", "text": text, "pos": [x, cy]}, reveal + 0.15, end))
+    ring_end = min(t_ring + QUIZ_RING_SECONDS, reveal - 0.3)
+    out.append(({**base, "kind": "ring", "w": 170, "h": 170, "pos": [(x0 + x1) / 2, ry]}, t_ring, ring_end))
+    step = (ring_end - t_ring) / 3
+    for k, d in enumerate("321"):
+        out.append(({**base, "kind": "number", "size": 96, "text": d, "pos": [(x0 + x1) / 2, ry], "sfx": "tick"},
+                    t_ring + k * step, t_ring + (k + 1) * step))
+    out.append(({**base, "kind": "circle", "text": cards[ans], "pos": [xs[ans], cy], "sfx": "sting", "color": "ochre"},
+                reveal, end))
+    if spec.get("note"):
+        out.append(({**base, "kind": "label", "size": 40, "color": "muted", "text": spec["note"],
+                     "pos": [xs[ans], y0 + 0.58 * (y1 - y0)]}, reveal + 0.4, end))
+    return out
+
+
 def resolve_overlays(specs: list[dict], words: list[dict], groups: list[Group], until: float | None) -> list[Overlay]:
     by_scene = {g.scene_id: g for g in groups}
     out: list[Overlay] = []
     for spec in specs:
         g = by_scene.get(spec.get("scene", ""))
         if g is None:
+            continue
+        if spec.get("kind") == "quiz":
+            a = find_phrase(words, spec["ask_anchor"], not_before=g.start - 1.0)
+            r = find_phrase(words, spec["reveal_anchor"], not_before=(a[1] if a else g.start))
+            if a is None or r is None:
+                print(f"warn: quiz {spec['id']} anchors not found; skipped", file=sys.stderr)
+                continue
+            for part, s0, s1 in quiz_parts(spec, a[1], r[0] - 0.1, g.end):
+                if until is None or s0 < until:
+                    out.append(Overlay(part, s0, s1 if until is None else min(s1, until)))
             continue
         t0 = g.start
         if "anchor" in spec:
@@ -203,6 +248,8 @@ def _wobbly_rect(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], colo
 
 def render_overlay(spec: dict, W: int, H: int, rng: random.Random) -> Image.Image:
     kind = spec.get("kind", "label")
+    if kind in ("ring", "circle", "cross"):
+        return _render_mark(spec, W, H, rng)
     color = COLORS.get(spec.get("color", "ink"), INK)
     scale = min(W, H) / 1080 * (VERTICAL_TEXT if H > W else 1.0)   # Shorts are read on a phone
     size = int(spec.get("size", {"label": 68, "number": 150, "card": 60, "chapter": 48, "strike": 96,
@@ -241,6 +288,32 @@ def render_overlay(spec: dict, W: int, H: int, rng: random.Random) -> Image.Imag
     return img
 
 
+def _render_mark(spec: dict, W: int, H: int, rng: random.Random) -> Image.Image:
+    """Hollow pencil marks: the countdown ring, the reveal circle round the right card, a cross over a wrong one.
+    circle/cross take their size from the card text they mark."""
+    kind = spec["kind"]
+    scale = min(W, H) / 1080
+    if kind == "ring":
+        w = h = int(spec.get("w", 170) * scale)
+    else:
+        card = render_overlay({"kind": "card", "text": spec["text"]}, W, H, random.Random(0))
+        w, h = card.width + int(40 * scale), card.height + int(30 * scale)
+    img = Image.new("RGBA", (w + 8, h + 8), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    lw = max(4, int(7 * scale))
+    col = (*COLORS.get(spec.get("color", "rust" if kind == "cross" else "ink"), INK), 255)
+    if kind == "cross":
+        d.line([(8, h * 0.8), (w * 0.5, h * 0.45 + rng.uniform(-4, 4)), (w - 8, h * 0.2)], fill=col, width=lw + 2, joint="curve")
+    else:
+        pts = []
+        for k in range(73):
+            a = -math.pi / 2 + 2 * math.pi * k / 72 * (1.04 if kind == "circle" else 1.0)
+            rr = 1 + (rng.uniform(-0.015, 0.015) if kind == "circle" else 0)
+            pts.append((4 + w / 2 + (w / 2 - lw) * rr * math.cos(a), 4 + h / 2 + (h / 2 - lw) * rr * math.sin(a)))
+        d.line(pts, fill=col, width=lw, joint="curve")
+    return img
+
+
 def place_overlays(ovs: list[Overlay], W: int, H: int, seed: int = 7) -> None:
     rng = random.Random(seed)
     for ov in ovs:
@@ -248,7 +321,8 @@ def place_overlays(ovs: list[Overlay], W: int, H: int, seed: int = 7) -> None:
         fx, fy = ov.spec.get("pos", [0.5, 0.12])
         ov.x = int(fx * W - ov.image.width / 2)
         ov.y = int(fy * H - ov.image.height / 2)
-        ov.rot = rng.uniform(-1.6, 1.6)
+        r = rng.uniform(-1.6, 1.6)   # always drawn, so the rng sequence stays stable
+        ov.rot = 0.0 if ov.spec.get("kind") in ("ring", "circle") else r
         if ov.rot:
             ov.image = ov.image.rotate(ov.rot, resample=Image.BICUBIC, expand=True)
 
@@ -259,7 +333,7 @@ def overlay_alpha(ov: Overlay, t: float) -> tuple[float, float]:
     if kind == "caption":            # burnt-in captions cut on and off with the words
         on = 1.0 if ov.start <= t < ov.end else 0.0
         return on, 1.0
-    write = 0.35 if kind != "strike" else 0.25
+    write = {"strike": 0.25, "ring": max(0.1, ov.end - ov.start), "circle": 0.45, "cross": 0.25}.get(kind, 0.35)
     a_in = min(1.0, (t - ov.start) / 0.12) if t >= ov.start else 0.0
     a_out = min(1.0, (ov.end - t) / 0.25)
     frac = min(1.0, max(0.0, (t - ov.start) / write))
@@ -281,9 +355,15 @@ def composite(frame: np.ndarray, ov: Overlay, alpha: float, frac: float) -> None
         return
     arr = np.asarray(im, dtype=np.float32)[sy:sy + (y1 - y0), sx:sx + (x1 - x0)]
     a = arr[..., 3:4] / 255.0 * alpha
-    if frac < 1.0:  # write-on: reveal left to right with a soft edge
-        cols = np.arange(arr.shape[1], dtype=np.float32) / max(1, arr.shape[1] - 1)
-        edge = np.clip((frac * 1.15 - cols) / 0.15, 0, 1)[None, :, None]
+    if frac < 1.0:
+        if ov.spec.get("kind") in ("ring", "circle"):   # draw on clockwise from 12 o'clock
+            hh, ww = im.height, im.width
+            yy, xx = np.mgrid[0:hh, 0:ww]
+            ang = (np.arctan2(xx - ww / 2, -(yy - hh / 2)) % (2 * np.pi)) / (2 * np.pi)
+            edge = (ang < frac).astype(np.float32)[sy:sy + (y1 - y0), sx:sx + (x1 - x0), None]
+        else:            # write-on: reveal left to right with a soft edge
+            cols = np.arange(arr.shape[1], dtype=np.float32) / max(1, arr.shape[1] - 1)
+            edge = np.clip((frac * 1.15 - cols) / 0.15, 0, 1)[None, :, None]
         a = a * edge
     region = frame[y0:y1, x0:x1].astype(np.float32)
     frame[y0:y1, x0:x1] = (region * (1 - a) + arr[..., :3] * a).astype(np.uint8)

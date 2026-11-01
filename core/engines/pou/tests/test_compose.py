@@ -280,3 +280,61 @@ def test_captions_rejoin_split_words():
              {"word": "X", "start": 1.4, "end": 1.5}, {"word": "T.", "start": 1.5, "end": 1.6}]
     text = " ".join(o.spec["text"] for o in compose.caption_overlays(words, None))
     assert "twenty-five" in text and "TBXT." in text
+
+
+QUIZ = {"id": "q2", "kind": "quiz", "scene": "s001", "board": [0.5, 0.1, 0.9, 0.6],
+        "cards": ["15", "~35", "55"], "answer": 1, "fade": [2], "note": "+ diet"}
+
+
+def test_quiz_parts_pop_cards_then_ring_then_reveal():
+    parts = compose.quiz_parts(QUIZ, ask_end=10.0, reveal=14.5, end=20.0)
+    kinds = [p[0]["kind"] for p in parts]
+    assert kinds.count("card") == 3 and kinds.count("ring") == 1 and kinds.count("number") == 3
+    cards = [p for p in parts if p[0]["kind"] == "card"]
+    assert [round(c[1], 2) for c in cards] == [10.1, 10.4, 10.7]          # pop one after another
+    ring = next(p for p in parts if p[0]["kind"] == "ring")
+    assert ring[1] == 10.1 and abs(ring[2] - (10.1 + compose.QUIZ_RING_SECONDS)) < 1e-6
+    digits = [p for p in parts if p[0]["kind"] == "number"]
+    assert [d[0]["text"] for d in digits] == ["3", "2", "1"] and all(d[0]["sfx"] == "tick" for d in digits)
+    circle = next(p for p in parts if p[0]["kind"] == "circle")
+    assert circle[1] == 14.5 and circle[0]["sfx"] == "sting"
+    crosses = [p for p in parts if p[0]["kind"] == "cross"]
+    assert len(crosses) == 1                       # card 0 struck; card 2 fades instead
+    assert cards[2][2] < 15.5 and cards[1][2] == 20.0 and cards[0][2] == 20.0
+    note = next(p for p in parts if p[0]["kind"] == "label")
+    assert note[0]["text"] == "+ diet" and note[1] >= 14.5
+    assert all(p[0]["quiz"] == "q2" and p[0]["scene"] == "s001" for p in parts)
+
+
+def test_quiz_cards_sit_inside_the_board_left_to_right():
+    parts = compose.quiz_parts(QUIZ, 10.0, 14.5, 20.0)
+    xs = [p[0]["pos"][0] for p in parts if p[0]["kind"] == "card"]
+    assert xs == sorted(xs) and 0.5 < xs[0] and xs[-1] < 0.9
+    assert all(0.1 < p[0]["pos"][1] < 0.6 for p in parts)
+
+
+def test_resolve_overlays_expands_a_quiz_from_its_anchors():
+    words = [{"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in
+             enumerate("what's the average fifty five roughly thirty five".split())]
+    g = compose.Group("s001", 0.0, 10.0, "illustration")
+    spec = dict(QUIZ, ask_anchor="what's the average", reveal_anchor="roughly thirty five")
+    ovs = compose.resolve_overlays([spec], words, [g], None)
+    circle = next(o for o in ovs if o.spec["kind"] == "circle")
+    assert abs(circle.start - 2.5) < 0.2                   # "roughly" starts at 2.5 s
+    first_card = min(o.start for o in ovs if o.spec["kind"] == "card")
+    assert abs(first_card - (1.4 + 0.1)) < 1e-6           # "average" ends at 1.4 s
+
+
+def test_ring_and_circle_draw_on_around_the_clock():
+    rng = compose.random.Random(1)
+    for kind in ("ring", "circle"):
+        img = compose.render_overlay({"kind": kind, "w": 200, "h": 200, "text": "35"}, 1920, 1080, rng)
+        a = np.asarray(img)[..., 3]
+        assert a.sum() > 0 and a[a.shape[0] // 2, a.shape[1] // 2] == 0      # hollow
+    frame = np.full((300, 300, 3), 250, np.uint8)
+    ov = compose.Overlay({"kind": "ring", "w": 200, "h": 200}, 0, 3)
+    ov.image = compose.render_overlay(ov.spec, 1920, 1080, rng)
+    compose.composite(frame, ov, 1.0, 0.25)
+    drawn = frame < 200
+    h = ov.image.height
+    assert drawn[: h // 2].any() and not drawn[h // 2 + 10:h].any()          # first quarter only: top-right arc
