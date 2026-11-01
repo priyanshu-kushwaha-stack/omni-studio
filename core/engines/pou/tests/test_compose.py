@@ -367,3 +367,31 @@ def test_quiz_parts_carry_their_sfx_and_quiz_plates_whoosh_sparingly(tmp_path):
     whooshes = [at for n, at in names if n == "whoosh.wav"]
     assert whooshes == [0, 14]            # the plate at 6 s is within 8 s of the one at 0 s
     assert next(s for s in sfx if s.path.name == "pop.wav").gain_db == compose.SFX_GAIN["pop"]
+
+
+def test_volume_expr_is_unity_outside_windows():
+    e = compose.volume_expr([(1.0, 2.0, -10.0)])
+    assert "between(t,1.000,2.000)" in e and e.startswith("if(")
+    assert compose.volume_expr([]) == "1"
+
+
+def test_quiz_audio_ducks_under_the_countdown_and_silences_before_the_reveal():
+    ovs = [compose.Overlay({"kind": "ring", "quiz": "q"}, 10.0, 13.0), compose.Overlay({"kind": "circle", "quiz": "q"}, 14.5, 20)]
+    duck, cues = compose.quiz_audio(ovs)
+    assert (10.0, 14.2, -10.0) in duck and (14.2, 14.5, -60.0) in duck
+    assert cues == [(10.0, 14.2)]
+
+
+def test_mix_audio_with_a_duck_window_is_quieter_inside_it(tmp_path):
+    import subprocess
+    nar = tmp_path / "nar.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "4", str(nar)], check=True)
+    mus = tmp_path / "mus.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=frequency=330:duration=4", "-ar", "48000", str(mus)], check=True)
+    out = tmp_path / "mix.wav"
+    compose.mix_audio(nar, [mus], [], 4.0, out, -12.0, duck=[(2.0, 3.0, -40.0)])
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "8000", "-"],
+                         capture_output=True, check=True).stdout
+    x = np.frombuffer(raw, np.float32)
+    rms = lambda a, b: float(np.sqrt(np.mean(x[int(a * 8000):int(b * 8000)] ** 2)))
+    assert rms(2.2, 2.8) < 0.1 * rms(1.6, 1.9)

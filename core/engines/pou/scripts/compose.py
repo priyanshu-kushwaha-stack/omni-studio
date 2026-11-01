@@ -532,7 +532,28 @@ def plan_sfx(groups: list[Group], overlays: list[Overlay], sfx_dir: Path, until:
     return [s for s in out if until is None or s.at < until]
 
 
-def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, out: Path, music_gain_db: float) -> None:
+def volume_expr(duck: list[tuple[float, float, float]]) -> str:
+    """ffmpeg `volume` expression: unity, except gain_db inside each (t0, t1, gain_db) window."""
+    expr = "1"
+    for t0, t1, db in reversed(duck):
+        expr = f"if(between(t,{t0:.3f},{t1:.3f}),{10 ** (db / 20):.5f},{expr})"
+    return expr
+
+
+def quiz_audio(overlays: list[Overlay]) -> tuple[list[tuple[float, float, float]], list[tuple[float, float]]]:
+    """Duck windows for the music bed and quiz-cue windows, from the ring/circle parts of each quiz."""
+    rings = {o.spec["quiz"]: o for o in overlays if o.spec.get("kind") == "ring" and o.spec.get("quiz")}
+    duck, cues = [], []
+    for o in overlays:
+        if o.spec.get("kind") == "circle" and o.spec.get("quiz") in rings:
+            r0, rev = rings[o.spec["quiz"]].start, o.start
+            duck += [(r0, rev - 0.3, -10.0), (rev - 0.3, rev, -60.0)]
+            cues.append((r0, rev - 0.3))
+    return duck, cues
+
+
+def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, out: Path, music_gain_db: float,
+              duck=(), cues=()) -> None:
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", str(narration)]
     parts: list[str] = []
     mix_in = ["[nar]"]
@@ -546,7 +567,8 @@ def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, 
             labels.append(f"[mu{k}]")
         n += len(music)
         chain = "".join(labels) + (f"concat=n={len(labels)}:v=0:a=1" if len(labels) > 1 else "anull")
-        parts.append(f"{chain},atrim=0:{total:.3f},volume={music_gain_db}dB,afade=t=in:d=1.5,afade=t=out:st={max(0, total - 3):.3f}:d=3[music]")
+        parts.append(f"{chain},atrim=0:{total:.3f},volume={music_gain_db}dB,volume='{volume_expr(list(duck))}':eval=frame,"
+                     f"afade=t=in:d=1.5,afade=t=out:st={max(0, total - 3):.3f}:d=3[music]")
         parts.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,apad=whole_dur={total:.3f},asplit=2[nar][side]")
         parts.append("[music][side]sidechaincompress=threshold=0.015:ratio=5:attack=40:release=700:makeup=1[ducked]")
         mix_in.append("[ducked]")
@@ -557,6 +579,13 @@ def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, 
         ms = int(s.at * 1000)
         parts.append(f"[{n + i}:a]aformat=sample_rates=48000:channel_layouts=stereo,volume={s.gain_db}dB,adelay={ms}|{ms}[sfx{i}]")
         mix_in.append(f"[sfx{i}]")
+    k0 = n + len(sfx)
+    for j, (path, at, dur, gain) in enumerate(cues):
+        cmd += ["-stream_loop", "-1", "-i", str(path)]
+        ms = int(at * 1000)
+        parts.append(f"[{k0 + j}:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=0:{dur:.3f},"
+                     f"afade=t=out:st={max(0, dur - 0.12):.3f}:d=0.12,volume={gain}dB,adelay={ms}|{ms}[cue{j}]")
+        mix_in.append(f"[cue{j}]")
     parts.append("".join(mix_in) + f"amix=inputs={len(mix_in)}:duration=first:normalize=0,atrim=0:{total:.3f},loudnorm=I=-14:TP=-1.5:LRA=11[out]")
     cmd += ["-filter_complex", ";".join(parts), "-map", "[out]", "-c:a", "pcm_s16le", str(out)]
     subprocess.run(cmd, check=True)
@@ -641,7 +670,8 @@ def write_srt(cues: list[tuple[float, float, str]], path: Path) -> None:
 
 def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, until: float | None, width: int, height: int,
            fps: int, music: list[Path], music_gain_db: float, use_clips: bool, scratch: Path,
-           motion_specs: dict | None = None, burn_captions: bool = False) -> dict:
+           motion_specs: dict | None = None, burn_captions: bool = False,
+           quiz_music: Path | None = None, quiz_music_gain_db: float = -20.0) -> dict:
     plan = json.loads((video_dir / "scene_plan.json").read_text())
     words = json.loads(words_path.read_text())
     stills = video_dir / "assets" / "stills"
@@ -656,6 +686,8 @@ def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, unt
     if burn_captions:
         overlays += caption_overlays(words, until, layout=load_caption_layout(video_dir), groups=groups)
     place_overlays(overlays, width, height)
+    duck, cue_windows = quiz_audio(overlays)
+    cues = [(quiz_music, a, b - a, quiz_music_gain_db) for a, b in cue_windows] if quiz_music else []
 
     scratch.mkdir(parents=True, exist_ok=True)
     specs_m = motion_specs or {}
@@ -685,7 +717,7 @@ def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, unt
         raise SystemExit("video encode failed")
 
     audio = scratch / "mix.wav"
-    mix_audio(narration, music, sfx, total, audio, music_gain_db)
+    mix_audio(narration, music, sfx, total, audio, music_gain_db, duck=duck, cues=cues)
     out.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video_only), "-i", str(audio), "-c:v", "copy",
                     "-c:a", "aac", "-b:a", "192k", "-shortest", str(out)], check=True)
@@ -732,6 +764,8 @@ def main() -> None:
     p.add_argument("--fps", type=int, default=30)
     p.add_argument("--music", type=Path, action="append", default=[], help="music cue(s), played in order and looped")
     p.add_argument("--music-gain-db", type=float, default=-24.0)
+    p.add_argument("--quiz-music", type=Path, default=None, help="loop played (timed) under each quiz countdown")
+    p.add_argument("--quiz-music-gain-db", type=float, default=-20.0)
     p.add_argument("--no-clips", action="store_true", help="ignore assets/clips (stills only)")
     p.add_argument("--scratch", type=Path, default=Path(tempfile.gettempdir()) / "fc-compose")
     p.add_argument("--video-in", type=Path, default=None, help="dub mode: reuse this render's picture, mix the new narration under it")
@@ -752,7 +786,8 @@ def main() -> None:
         specs_m = motion.load_specs(mpath)
     info = render(a.video_dir, narration=a.narration, words_path=a.words, out=a.out, until=a.until, width=w, height=h,
                   fps=a.fps, music=a.music, music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch,
-                  motion_specs=specs_m, burn_captions=a.burn_captions)
+                  motion_specs=specs_m, burn_captions=a.burn_captions,
+                  quiz_music=a.quiz_music, quiz_music_gain_db=a.quiz_music_gain_db)
     print(json.dumps(info, indent=1))
 
 
