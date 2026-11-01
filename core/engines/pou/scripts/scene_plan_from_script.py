@@ -58,6 +58,10 @@ def parse_script(text: str) -> list[dict]:
             continue
         if line.startswith("> VISUAL:"):
             beats.append({"section": section, "beat": line[len("> VISUAL:"):].strip(), "words": []})
+        elif line.startswith("> ASK:"):  # a question to the viewer: read aloud, so it is narration
+            if not beats:
+                beats.append({"section": section, "beat": "(no beat)", "words": []})
+            beats[-1]["words"].extend(normalise(CLAIM_RE.sub("", line[len("> ASK:"):]).replace("*", "")))
         elif line.startswith("> ") or line.startswith("#") or not line.strip():
             continue
         elif line.startswith(("template:", "target_minutes:", "status:", "hook:")):
@@ -102,15 +106,33 @@ def align(beats: list[dict], words: list[dict]) -> list[tuple[float, float]]:
             return max(0, matched[hi] - (hi - i))
         if hi is None:
             return min(len(spoken) - 1, matched[lo] + (i - lo))
-        frac = (i - lo) / (hi - lo)
-        return min(len(spoken) - 1, round(matched[lo] + frac * (matched[hi] - matched[lo])))
+        # map the unmatched script run (lo, hi) onto the unmatched spoken run between their matches, so
+        # "two hundred and five" against "205" starts on "205"; an empty spoken run means the words were
+        # dropped, and the beat starts on the next spoken word
+        gap = matched[hi] - matched[lo] - 1
+        if gap <= 0:
+            return matched[hi]
+        frac = (i - lo - 1) / max(1, hi - lo - 2)
+        return min(len(spoken) - 1, matched[lo] + 1 + round(frac * (gap - 1)))
 
     starts: list[float | None] = []
     for fi in first_idx:
         starts.append(None if fi is None else spoken[spoken_index(fi)][1])
+    # a beat with no narration of its own fills the pause after the previous beat's last word
+    # (+0.2 s), when that pause leaves it at least 0.5 s before the next spoken beat
+    last_end: list[float | None] = []
+    for b, fi in zip(beats, first_idx):
+        last_end.append(None if fi is None else spoken[spoken_index(fi + len(b["words"]) - 1)][2])
+    for k, s in enumerate(starts):
+        if s is not None:
+            continue
+        prev = next((last_end[j] for j in range(k - 1, -1, -1) if last_end[j] is not None), None)
+        nxt = next((starts[j] for j in range(k + 1, len(starts)) if starts[j] is not None), None)
+        if prev is not None and (nxt is None or nxt - (prev + 0.2) >= 0.5):
+            starts[k] = round(prev + 0.2, 3)
     out: list[tuple[float, float]] = []
     for k, s in enumerate(starts):
-        if s is None:  # a beat with no narration: zero-length at the previous end
+        if s is None:  # a wordless beat with no room in a pause: zero-length at the previous end
             s = out[-1][1] if out else 0.0
         out.append((s, s))
     contiguous = []

@@ -62,3 +62,14 @@ def test_prompt_uses_override_from_prompts_json(tmp_path):
         seen.append(prompt); Image.new("RGB", (w, h)).save(out); return out
     stills.generate(vd, scenes=None, backend=fake, out_dir=tmp_path / "o")
     assert "no tents" in seen[0] and "G/wi" not in seen[0]
+
+
+def test_mflux_backend_overwrites_existing_still(tmp_path, monkeypatch):
+    # mflux never overwrites: with dest present it writes dest_1.png and the old drawing survives a re-roll.
+    import stills
+    dest = tmp_path / "s001.png"
+    dest.write_bytes(b"old")
+    seen = {}
+    monkeypatch.setattr(stills.subprocess, "run", lambda cmd, check: seen.setdefault("exists", dest.exists()))
+    stills.mflux_backend("p", 1, 64, 36, dest)
+    assert seen["exists"] is False

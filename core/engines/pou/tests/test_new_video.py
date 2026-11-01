@@ -24,7 +24,9 @@ def test_script_template_has_required_sections(tmp_path):
     text = (d / "script.md").read_text()
     assert "template: mystery" in text
     assert "## [00:00]" in text
-    assert text.count("> RE-ENGAGE:") >= 3
+    assert "target_minutes: 5" in text
+    assert text.count("> RE-ENGAGE:") == 1  # 5-min format: one midpoint cue
+    assert "## [04:20] Take-home" in text
     assert "> VISUAL:" in text
     assert "## Sources" in text
 

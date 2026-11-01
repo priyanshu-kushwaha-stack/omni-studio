@@ -121,3 +121,46 @@ def test_short_tail_for_a_trailer():
     plan = build_plan(SCRIPT, words(20), tail_seconds=3, body_hold=6.0)
     tail = [s for s in plan["scenes"] if s["id"].startswith("e")]
     assert len(tail) == 1 and abs(tail[0]["end_seconds"] - tail[0]["start_seconds"] - 3.0) < 0.01
+
+
+def test_align_number_words_start_on_the_numeral_not_the_word_before():
+    """'two hundred and five people' is transcribed '205 people': four unmatched script words face
+    one spoken token. The beat must start on '205', not snap back to the previous beat's word."""
+    from scene_plan_from_script import align
+
+    beats = parse_script("## [00:00] A\n> VISUAL: x\nThey resist less.\n"
+                         "> VISUAL: y\nLess.\n"
+                         "> VISUAL: z\nTwo hundred and five people. Beepers.\n")
+    spoken = ["They", "resist", "less.", "Less.", "205", "people.", "Beepers."]
+    toks = [{"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5} for i, w in enumerate(spoken)]
+    spans = align(beats, toks)
+    assert [s for s, _ in spans] == [0.0, 3.0, 4.0]
+
+
+def test_ask_lines_are_spoken_and_start_their_beat():
+    """`> ASK:` lines are read aloud (a direct question to the viewer), so a beat that opens on one
+    starts when the question is asked, not at the previous beat."""
+    from scene_plan_from_script import align
+
+    beats = parse_script("## [00:00] A\n> VISUAL: x\nOne two.\n"
+                         "> VISUAL: y\n> ASK: Guess which animal?\nThe platypus.\n")
+    assert beats[1]["words"] == ["guess", "which", "animal", "the", "platypus"]
+    spoken = ["One", "two.", "Guess", "which", "animal?", "The", "platypus."]
+    toks = [{"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5} for i, w in enumerate(spoken)]
+    assert [s for s, _ in align(beats, toks)] == [0.0, 2.0]
+
+
+def test_wordless_beat_starts_after_the_previous_beats_last_word():
+    """A beat with no narration of its own (a visual gag in a pause) fills the pause after the
+    previous beat's last word, instead of a 0.5 s blip at the previous beat's start."""
+    from scene_plan_from_script import align
+
+    beats = parse_script("## [00:00] A\n> VISUAL: x\nCase closed?\n"
+                         "> VISUAL: rip\n"
+                         "> VISUAL: jars\nWake people.\n")
+    toks = [{"word": "Case", "start": 0.0, "end": 0.4}, {"word": "closed?", "start": 0.5, "end": 1.0},
+            {"word": "Wake", "start": 3.0, "end": 3.3}, {"word": "people.", "start": 3.4, "end": 3.8}]
+    spans = align(beats, toks)
+    assert spans[0] == (0.0, 1.2)
+    assert spans[1] == (1.2, 3.0)
+    assert spans[2][0] == 3.0

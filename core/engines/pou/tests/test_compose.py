@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageDraw
 
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
@@ -142,9 +142,141 @@ def test_source_trace_uses_stroke_order_and_longer_reveal(tmp_path):
     assert 0 < ink_rows.sum() < (tr.still_np != np.array(compose.PAPER)).any(axis=2).sum()
 
 
+def test_source_reveal_zero_shows_the_drawing_at_once(tmp_path):
+    # reaction shots (a double-take, a character popping in) must not ink in over 0.9 s
+    g = _inked_group(tmp_path)
+    snap = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil", "reveal": 0})
+    assert snap.reveal_seconds == 0
+    ink = lambda a: (a != np.array(snap.paper)).any(axis=2).sum()
+    plain = compose.Source(g, 64, 36, tmp_path / "scr", 0)
+    assert ink(snap.base(0.0)) >= 0.9 * ink(snap.still_np) > ink(plain.base(0.0))
+    slow = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil", "reveal": 0.3})
+    assert slow.reveal_seconds == 0.3
+
+
 def test_load_specs_accepts_list_and_dict(tmp_path):
     import motion
     (tmp_path / "a.json").write_text(json.dumps([{"scene": "s001", "effect": "boil"}]))
     (tmp_path / "b.json").write_text(json.dumps({"s002": {"effect": "flicker"}}))
     assert motion.load_specs(tmp_path / "a.json")["s001"]["effect"] == "boil"
     assert motion.load_specs(tmp_path / "b.json")["s002"] == {"effect": "flicker", "scene": "s002"}
+
+
+# ---------------------------------------------------------------- 9:16 Shorts mode
+
+def test_source_crops_a_wide_still_to_a_vertical_frame_without_squashing(tmp_path):
+    im = Image.new("RGB", (160, 90), compose.PAPER)
+    ImageDraw.Draw(im).rectangle((70, 35, 89, 54), fill=compose.INK)      # 20x20 square, centred
+    p = tmp_path / "s001.png"
+    im.save(p)
+    src = compose.Source(compose.Group("s001", 0.0, 4.0, "illustration", still=p), 90, 160, tmp_path / "scr", 0)
+    assert src.still_np.shape[:2] == (src.ph, src.pw)
+    ys, xs = np.where((src.still_np < 100).all(axis=2))
+    h, w = np.ptp(ys) + 1, np.ptp(xs) + 1
+    assert abs(h - w) <= 2                                                # still a square, not a tall rectangle
+    assert abs((xs.min() + xs.max()) / 2 - src.pw / 2) <= 2               # crop is centred
+
+
+def test_overlay_text_is_larger_on_a_vertical_frame():
+    # Shorts are watched on a phone: labels sized like 16:9 read too small (draft v1), so 9:16 gets 1.5x
+    rng = lambda: compose.random.Random(1)
+    wide = compose.render_overlay({"kind": "label", "text": "70 kg"}, 1920, 1080, rng())
+    tall = compose.render_overlay({"kind": "label", "text": "70 kg"}, 1080, 1920, rng())
+    assert 1.4 < tall.height / wide.height < 1.6
+
+
+def test_caption_overlays_are_short_lines_in_the_lower_middle():
+    ovs = compose.caption_overlays(WORDS, until=None)
+    assert [o.spec["text"] for o in ovs][:2] == ["Twenty nights,", "22 people."]
+    assert all(o.spec["kind"] == "caption" and o.spec["pos"][1] > 0.6 for o in ovs)
+    assert all(len(o.spec["text"]) <= 24 for o in ovs)
+    assert ovs[0].start == 0.0 and ovs[0].end >= 0.6
+
+
+def test_captions_appear_at_once_without_write_on():
+    ov = compose.Overlay({"kind": "caption", "text": "hi"}, 1.0, 2.0)
+    a, frac = compose.overlay_alpha(ov, 1.0)
+    assert a == 1.0 and frac == 1.0
+
+
+def _clip_group(tmp_path: Path, seconds: float = 2.0):
+    import subprocess
+    g = _inked_group(tmp_path)
+    clip = tmp_path / "s001.mp4"
+    # frame n shows n on a counter, so the frame index read back is unambiguous
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"color=c=white:s=64x36:r=30:d={seconds}",
+                    "-vf", "geq=r='mod(N*4\\,256)':g='mod(N*4\\,256)':b='mod(N*4\\,256)'", "-pix_fmt", "yuv444p",
+                    "-c:v", "libx264", "-qp", "0", str(clip)], check=True)
+    g.clip = clip
+    return g
+
+
+def test_clip_rate_defaults_to_clip_rate_and_motion_json_overrides_it(tmp_path):
+    g = _clip_group(tmp_path)
+    plain = compose.Source(g, 64, 36, tmp_path / "scr", 0)
+    boiled = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil"})
+    real = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil", "clip_rate": 1.0})
+    assert plain.clip_rate == boiled.clip_rate == compose.CLIP_RATE == 0.75   # videos 1 and 2 unchanged
+    assert real.clip_rate == 1.0
+    lum = lambda a: float(a.mean())
+    t = 1.0   # 30 frames in: frame 22 at 0.75x, frame 30 at 1.0x
+    assert abs(lum(plain.base(t)) - 22 * 4) < 3
+    assert abs(lum(real.base(t)) - 30 * 4) < 3
+
+
+def test_clip_cache_follows_the_clip_file(tmp_path):
+    import os
+    g = _clip_group(tmp_path, 1.0)
+    compose.Source(g, 64, 36, tmp_path / "scr", 0)
+    first = sorted((tmp_path / "scr").glob("clip_s001*"))
+    os.utime(g.clip, (1, 1))   # the clip was re-rendered: its frames must be extracted again
+    compose.Source(g, 64, 36, tmp_path / "scr", 0)
+    assert len(sorted((tmp_path / "scr").glob("clip_s001*"))) == len(first) + 1
+
+
+def _sfx_dir(tmp_path):
+    d = tmp_path / "sfx"
+    d.mkdir()
+    for n in ("pencil", "page", "sting"):
+        (d / f"{n}.wav").write_bytes(b"")
+    return d
+
+
+def test_short_sfx_are_sparse_and_quiet(tmp_path):
+    # Shorts cut every 2-3 s; a pencil at every drawing and a page at every section was "a lot of noise"
+    d = _sfx_dir(tmp_path)
+    groups = [compose.Group(f"s{i:03d}", i * 2.5, i * 2.5 + 2.5, "illustration", section=f"sec{i // 2}") for i in range(12)]
+    long_form = compose.plan_sfx(groups, [], d, None)
+    short = compose.plan_sfx(groups, [], d, None, short=True)
+    assert len(short) <= 6 < len(long_form)
+    assert not any(s.path.name == "page.wav" for s in short)
+    starts = sorted(s.at for s in short)
+    assert all(b - a >= 5.0 for a, b in zip(starts, starts[1:]))
+    assert max(s.gain_db for s in short) <= -24
+
+
+def test_caption_layout_sets_width_x_and_per_scene_height(tmp_path):
+    # layout written by overlay_check --fix: shorter lines, nudged left of the Shorts buttons, a height per shot
+    groups = [compose.Group("s001", 0.0, 1.0, "illustration"), compose.Group("s002", 1.0, 3.0, "illustration")]
+    layout = {"max_chars": 16, "x": 0.45, "y": {"s001": 0.62, "s002": 0.74}}
+    ovs = compose.caption_overlays(WORDS, None, layout=layout, groups=groups)
+    assert all(len(o.spec["text"]) <= 16 and o.spec["pos"][0] == 0.45 for o in ovs)
+    assert ovs[0].spec["pos"][1] == 0.62
+    assert any(o.spec["pos"][1] == 0.74 for o in ovs if o.start >= 1.0)
+
+
+def test_caption_has_a_soft_paper_backing():
+    # captions cross busy drawings in Shorts (owner: text placement); a translucent paper pill keeps them legible
+    im = compose.render_overlay({"kind": "caption", "text": "Argentavis,"}, 1080, 1920, compose.random.Random(1))
+    a = np.asarray(im)[..., 3]
+    corner_band = a[a.shape[0] // 2, 8]            # left edge, mid-height: backing, not text
+    assert 150 <= corner_band < 255
+
+
+def test_captions_rejoin_split_words():
+    words = [{"word": "about", "start": 0.0, "end": 0.2}, {"word": "twenty", "start": 0.2, "end": 0.4},
+             {"word": "-five", "start": 0.4, "end": 0.6}, {"word": "called", "start": 1.0, "end": 1.2},
+             {"word": "T", "start": 1.2, "end": 1.3}, {"word": "B", "start": 1.3, "end": 1.4},
+             {"word": "X", "start": 1.4, "end": 1.5}, {"word": "T.", "start": 1.5, "end": 1.6}]
+    text = " ".join(o.spec["text"] for o in compose.caption_overlays(words, None))
+    assert "twenty-five" in text and "TBXT." in text

@@ -50,6 +50,13 @@ def test_counts_only_narration_words():
 def test_re_engage_windows_cover_the_back_half():
     assert re_engage_windows(600) == [180, 360, 540]
     assert re_engage_windows(813) == [180, 360, 540, 720]
+
+
+def test_short_scripts_get_one_midpoint_re_engagement():
+    # 5-min format: 3:00 would sit on the take-home, so the cue goes at the midpoint.
+    assert re_engage_windows(300) == [150]
+    assert re_engage_windows(270) == [135]
+    assert re_engage_windows(360) == [180]
     assert re_engage_windows(200) == []
 
 
@@ -108,3 +115,10 @@ def test_advisory_findings_never_block():
     findings = lint_script(make_script(first_digit=False, emphasis=False), target_minutes=14)
     assert hard_failures(findings) == []
     assert hard_failures(lint_script(make_script(sources=1), target_minutes=14))
+
+
+def test_speaker_labels_are_not_counted_as_words():
+    """Dialogue lines ('OOG: I am old.') are spoken without the label (channel/cast.md format)."""
+    from script_lint import narration_words
+    text = "## [00:00] A\n> VISUAL: x\nOOG: I am old.\nYOU: No way.\nPROF: Yes.\nPlain narration here.\n"
+    assert narration_words(text) == 3 + 2 + 1 + 3

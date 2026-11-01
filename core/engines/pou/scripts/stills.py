@@ -55,6 +55,7 @@ def mflux_backend(p: str, seed: int, w: int, h: int, out: Path, steps: int = 4, 
            "--steps", str(steps), "-q", "8", "--output", str(out)]
     if lora.exists():
         cmd += ["--lora-paths", str(lora)]
+    out.unlink(missing_ok=True)  # mflux never overwrites: it would write <name>_1.png and keep the old drawing
     subprocess.run(cmd, check=True)
     return out
 

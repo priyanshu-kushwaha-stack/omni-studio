@@ -21,6 +21,7 @@ GREETINGS = ["welcome back", "welcome", "hey guys", "my name is", "in today's vi
 ENDING_LANGUAGE = ["to sum up", "in conclusion", "at the end of the day", "to wrap up", "finally,"]
 RE_ENGAGE_EVERY = 180  # seconds
 RE_ENGAGE_TOLERANCE = 45  # seconds either side
+SHORT_FORMAT = (240, 360)  # seconds; scripts in this range get one midpoint re-engagement
 
 
 def _sections(text: str):
@@ -45,8 +46,11 @@ def _sections(text: str):
         yield cur
 
 
+SPEAKER_RE = re.compile(r"^[A-Z][A-Z ]{1,15}:\s*")  # dialogue label ("OOG: ..."), not spoken (channel/cast.md)
+
+
 def _words(lines) -> list[str]:
-    return " ".join(lines).split()
+    return " ".join(SPEAKER_RE.sub("", l) for l in lines).split()
 
 
 def narration_words(text: str) -> int:
@@ -59,7 +63,12 @@ def _sources(text: str) -> int:
 
 
 def re_engage_windows(total_seconds: float) -> list[int]:
-    """Planned re-engagement points: every ~3 minutes up to 60 s before the end."""
+    """Planned re-engagement points: every ~3 minutes up to 60 s before the end.
+
+    Scripts of 4-6 minutes (the 5-min ramp format) get one cue at the midpoint instead.
+    """
+    if SHORT_FORMAT[0] <= total_seconds <= SHORT_FORMAT[1]:
+        return [round(total_seconds / 2)]
     return [RE_ENGAGE_EVERY * k for k in range(1, int((total_seconds - 60) // RE_ENGAGE_EVERY) + 1)]
 
 

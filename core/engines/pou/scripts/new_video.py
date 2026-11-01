@@ -79,47 +79,49 @@ status: sourced | contested | spot-checked (you opened the URL and found the quo
 SCRIPT = """# Script (G2)
 
 template: mystery  # mystery | essay | list | documentary
-target_minutes: 11
+target_minutes: 5
 status: draft  # draft | approved
 hook: hooks/hook-1.md  # the bake-off winner
 
-## [00:00] The question
+## [00:00] Prove the title
 > VISUAL: (custom-made frames; change every 2-4 s here)
-Narration with *one* emphasised word per sentence.
+A concrete image or number in the first 10 s. No preamble. *One* emphasised word per sentence.
 
-## [00:45] The common answer
+## [00:10] Why it matters to you
 > VISUAL:
-Narration.
+Second hook: name the viewer's personal stake.
 
-## [02:00] But
+## [00:30] Agenda
 > VISUAL:
-Narration.
+One line: "three things...".
 
-## [03:00] Evidence trail
-> RE-ENGAGE: (~3:00 tease, reversal or question)
+## [00:40] Beat 1
 > VISUAL:
-Narration.
+Evidence, then twist, then "so for you...".
 
-## [06:00] The reversal
-> RE-ENGAGE: (~6:00)
+## [01:50] Beat 2
 > VISUAL:
-Narration.
+Evidence, then twist, then "so for you...".
 
-## [07:30] The real answer
+## [02:30] Beat 3
+> RE-ENGAGE: (~2:30 midpoint: reversal or open loop)
 > VISUAL:
-Narration.
+Evidence, then twist, then "so for you...".
 
-## [09:00] The strange leftover fact
-> RE-ENGAGE: (~9:00)
+## [03:30] Beat 4 (optional)
 > VISUAL:
-Narration.
+Evidence, then twist, then "so for you...".
 
-## [10:30] Stop
+## [04:20] Take-home
+> VISUAL:
+1-3 practical takeaways, each backed by a row in claims.md.
+
+## [04:50] Stop
 > VISUAL: (the last 10-15 s leave room for end screens)
-Payoff. One sentence. Stop.
+Subscribe line. Stop.
 
 ## Chapters
-00:00 The question
+00:00 Prove the title
 
 ## Sources
 - https://

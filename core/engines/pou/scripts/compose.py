@@ -9,7 +9,9 @@ Layers, bottom to top:
   2. overlays: handwriting-font labels, numbers, cards and chapter titles from overlays.json, timed
      to the narration words (anchor phrases), written on left to right.
 Audio: narration, a music bed ducked under the voice, pencil / page / sting effects at reveals and
-section turns, then loudness-normalised. Captions are written as an SRT sidecar, never burned in.
+section turns, then loudness-normalised. Captions are written as an SRT sidecar; long-form never burns
+them in. Shorts (--size 1080x1920 --burn-captions) burn short caption lines into the lower middle, and
+any still whose aspect differs from the frame is cover-cropped from the centre, never stretched.
 
 Everything is driven by the word timings, so a new narration only needs faster-whisper re-run and
 scene_plan_from_script.py; overlays retime themselves.
@@ -47,7 +49,9 @@ REVEAL_SECONDS = 0.9
 BOUNDARY_PUSH = 0.022    # extra zoom at each continuation boundary
 BOUNDARY_EASE = 0.45
 CLIP_RATE = 0.75         # hero clips play slower than real time (subtle motion reads better)
+                         # motion.json "clip_rate" overrides it per scene (puppet clips are timed to the words: 1.0)
 PENCIL_CLASSES = {"illustration", "diagram", "character"}
+VERTICAL_TEXT = 1.5      # 9:16 overlay text scale vs 16:9 (labels read too small on a phone at 1.0)
 
 
 # ---------------------------------------------------------------- plan -> groups
@@ -200,8 +204,9 @@ def _wobbly_rect(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], colo
 def render_overlay(spec: dict, W: int, H: int, rng: random.Random) -> Image.Image:
     kind = spec.get("kind", "label")
     color = COLORS.get(spec.get("color", "ink"), INK)
-    scale = H / 1080
-    size = int(spec.get("size", {"label": 68, "number": 150, "card": 60, "chapter": 48, "strike": 96}.get(kind, 68)) * scale)
+    scale = min(W, H) / 1080 * (VERTICAL_TEXT if H > W else 1.0)   # Shorts are read on a phone
+    size = int(spec.get("size", {"label": 68, "number": 150, "card": 60, "chapter": 48, "strike": 96,
+                                 "caption": 72}.get(kind, 68)) * scale)
     font = load_font(size)
     pad = int(18 * scale)
     text = spec.get("text", "")
@@ -209,13 +214,15 @@ def render_overlay(spec: dict, W: int, H: int, rng: random.Random) -> Image.Imag
     cap_font = load_font(int(size * 0.42)) if caption else None
 
     tmp = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
-    tw, th = tmp.textbbox((0, 0), text, font=font)[2:]
+    tw, th = tmp.textbbox((0, 0), text, font=font, stroke_width=max(3, int(6 * scale)))[2:]   # multi-line cards too
     cw, ch = (tmp.textbbox((0, 0), caption, font=cap_font)[2:] if caption else (0, 0))
     w = max(tw, cw) + 2 * pad + (int(40 * scale) if kind == "chapter" else 0)
     h = th + (ch + int(6 * scale) if caption else 0) + 2 * pad
     img = Image.new("RGBA", (w + 8, h + 8), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     halo = (*PAPER, 235)
+    if kind == "caption":   # translucent paper pill: legible over busy drawings, the drawing still shows through
+        d.rounded_rectangle((2, 2, w + 4, h + 4), radius=int(28 * scale), fill=(*PAPER, 205))
     if kind == "card":
         d.rectangle((4, 4, w + 2, h + 2), fill=(*PAPER, 245))
         _wobbly_rect(d, (6, 6, w, h), (*color, 255), max(3, int(4 * scale)), rng)
@@ -249,6 +256,9 @@ def place_overlays(ovs: list[Overlay], W: int, H: int, seed: int = 7) -> None:
 def overlay_alpha(ov: Overlay, t: float) -> tuple[float, float]:
     """(global alpha, write-on fraction) at time t."""
     kind = ov.spec.get("kind", "label")
+    if kind == "caption":            # burnt-in captions cut on and off with the words
+        on = 1.0 if ov.start <= t < ov.end else 0.0
+        return on, 1.0
     write = 0.35 if kind != "strike" else 0.25
     a_in = min(1.0, (t - ov.start) / 0.12) if t >= ov.start else 0.0
     a_out = min(1.0, (ov.end - t) / 0.25)
@@ -281,6 +291,24 @@ def composite(frame: np.ndarray, ov: Overlay, alpha: float, frac: float) -> None
 
 # ---------------------------------------------------------------- base sources
 
+def cover(img: Image.Image, w: int, h: int) -> tuple[Image.Image, float, int, int]:
+    """Resize to cover w x h and crop the centre: (image, scale, crop x offset, crop y offset) in scaled pixels."""
+    k = max(w / img.width, h / img.height)
+    sw, sh = max(w, round(img.width * k)), max(h, round(img.height * k))
+    ox, oy = (sw - w) // 2, (sh - h) // 2
+    return img.resize((sw, sh), Image.LANCZOS).crop((ox, oy, ox + w, oy + h)), k, ox, oy
+
+
+def _shift_motion(spec: dict, ox: int, oy: int) -> dict:
+    out = dict(spec)
+    if "box" in spec:
+        x0, y0, x1, y1 = spec["box"]
+        out["box"] = (x0 - ox, y0 - oy, x1 - ox, y1 - oy)
+    if "path" in spec:
+        out["path"] = [(x - ox, y - oy) for x, y in spec["path"]]
+    return out
+
+
 def paper_color(img: np.ndarray) -> tuple[int, int, int]:
     border = np.concatenate([img[:8].reshape(-1, 3), img[-8:].reshape(-1, 3), img[:, :8].reshape(-1, 3), img[:, -8:].reshape(-1, 3)])
     return tuple(int(v) for v in np.median(border, axis=0))
@@ -307,8 +335,10 @@ class Source:
         self.frames: list[Path] = []
         self.mcache: dict = {}
         self.reveal_seconds = REVEAL_SECONDS
+        self.clip_rate = float(motion_spec.get("clip_rate", CLIP_RATE)) if motion_spec else CLIP_RATE
         if g.clip:
-            d = scratch / f"clip_{g.scene_id}"
+            st = g.clip.stat()   # a re-rendered clip gets fresh frames, never the cached ones of an older file
+            d = scratch / f"clip_{g.scene_id}_{st.st_size}_{int(st.st_mtime)}"
             d.mkdir(parents=True, exist_ok=True)
             if not any(d.glob("*.jpg")):
                 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(g.clip),
@@ -317,27 +347,29 @@ class Source:
             self.frames = sorted(d.glob("*.jpg"))
             self.clip_fps = _probe_fps(g.clip)
         src = Image.open(g.still).convert("RGB")
-        self.still = src.resize((self.pw, self.ph), Image.LANCZOS)
+        self.still, k, ox, oy = cover(src, self.pw, self.ph)
         self.still_np = np.asarray(self.still)
         self.paper = paper_color(self.still_np)
         self.order = reveal_order(self.ph, self.pw, idx) if not g.clip else None
         self._cache: tuple[int, np.ndarray] | None = None
-        self.motion = motion.scaled(motion_spec, self.pw / src.width, self.ph / src.height) if motion_spec and not g.clip else None
+        self.motion = _shift_motion(motion.scaled(motion_spec, k, k), ox, oy) if motion_spec and not g.clip else None
         if self.motion and self.motion.get("effect") == "trace":
             ink, acc = motion.masks(self.still_np, self.paper)
             self.order = motion.trace_order(ink | acc)   # the accent trace draws in the same stroke order
             self.reveal_seconds = float(self.motion.get("seconds", 2.5))
+        if motion_spec and "reveal" in motion_spec and not g.clip:
+            self.reveal_seconds = float(motion_spec["reveal"])   # 0 = cut straight to the drawing (reaction shots)
 
     def base(self, t: float) -> np.ndarray:
         if self.frames:
-            k = int((t - self.g.start) * self.clip_fps * CLIP_RATE)
+            k = int((t - self.g.start) * self.clip_fps * self.clip_rate)
             k = min(k, len(self.frames) - 1)
             if self._cache and self._cache[0] == k:
                 return self._cache[1]
             arr = np.asarray(Image.open(self.frames[k]).convert("RGB"))
             self._cache = (k, arr)
             return arr
-        p = (t - self.g.start) / self.reveal_seconds
+        p = (t - self.g.start) / self.reveal_seconds if self.reveal_seconds > 0 else 1.0
         if p >= 1.0:
             if self.motion:
                 return motion.apply(self.motion, self.still_np, t - self.g.start - self.reveal_seconds, self.paper, self.mcache)
@@ -387,19 +419,27 @@ class Sfx:
     gain_db: float = 0.0
 
 
-def plan_sfx(groups: list[Group], overlays: list[Overlay], sfx_dir: Path, until: float | None) -> list[Sfx]:
+SHORT_SFX_GAP = 5.0      # Shorts: at most one pencil per 5 s, no page turns (owner, Shorts draft v2: "a lot of noise")
+
+
+def plan_sfx(groups: list[Group], overlays: list[Overlay], sfx_dir: Path, until: float | None,
+             short: bool = False) -> list[Sfx]:
     out: list[Sfx] = []
     pencil, page, sting = sfx_dir / "pencil.wav", sfx_dir / "page.wav", sfx_dir / "sting.wav"
-    last_section = None
+    last_section, last_pencil = None, -1e9
     for g in groups:
-        if g.section != last_section and last_section is not None and page.exists():
+        if not short and g.section != last_section and last_section is not None and page.exists():
             out.append(Sfx(page, g.start, -6))
         last_section = g.section
         if g.klass in PENCIL_CLASSES and not g.clip and pencil.exists():
-            out.append(Sfx(pencil, g.start, -14))
+            if not short:
+                out.append(Sfx(pencil, g.start, -14))
+            elif g.start - last_pencil >= SHORT_SFX_GAP:
+                out.append(Sfx(pencil, g.start, -26))
+                last_pencil = g.start
     for ov in overlays:
         if ov.spec.get("sfx") == "sting" and sting.exists():
-            out.append(Sfx(sting, ov.start, -8))
+            out.append(Sfx(sting, ov.start, -16 if short else -8))
     return [s for s in out if until is None or s.at < until]
 
 
@@ -435,7 +475,8 @@ def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, 
 
 # ---------------------------------------------------------------- captions
 
-def srt_cues(words: list[dict], until: float | None = None, max_chars: int = 38, max_dur: float = 3.5) -> list[tuple[float, float, str]]:
+def srt_cues(words: list[dict], until: float | None = None, max_chars: int = 38, max_dur: float = 3.5,
+             breaks: tuple[str, ...] = (".", "?", "!"), max_gap: float = 0.8) -> list[tuple[float, float, str]]:
     cues: list[tuple[float, float, str]] = []
     cur: list[dict] = []
 
@@ -449,12 +490,52 @@ def srt_cues(words: list[dict], until: float | None = None, max_chars: int = 38,
         if cur:
             text_len = len(" ".join(x["word"] for x in cur)) + 1 + len(w["word"])
             gap = w["start"] - cur[-1]["end"]
-            if text_len > max_chars or w["start"] - cur[0]["start"] > max_dur or gap > 0.8 or cur[-1]["word"].endswith((".", "?", "!")):
+            if text_len > max_chars or w["start"] - cur[0]["start"] > max_dur or gap > max_gap or cur[-1]["word"].endswith(breaks):
                 flush()
                 cur = []
         cur.append(w)
     flush()
     return cues
+
+
+def caption_overlays(words: list[dict], until: float | None, pos_y: float = 0.70, layout: dict | None = None,
+                     groups: list[Group] | None = None) -> list[Overlay]:
+    """Burnt-in caption lines for Shorts, sentence-split, held until the next line. `layout` (caption_layout.json,
+    written by overlay_check.py --fix) sets max_chars, x, and a height per scene so lines avoid the drawing."""
+    layout = layout or {}
+    max_chars, x = int(layout.get("max_chars", 24)), float(layout.get("x", 0.5))
+    words = _rejoin(words)
+    ys = layout.get("y", {})
+    cues = srt_cues(words, until, max_chars=max_chars, max_dur=2.0, breaks=(".", "?", "!", ",", "...", ";"), max_gap=0.35)
+    out = []
+    for i, (a, b, text) in enumerate(cues):
+        end = cues[i + 1][0] if i + 1 < len(cues) and cues[i + 1][0] - b < 0.6 else b + 0.15
+        y = pos_y
+        if groups and ys:
+            g = [g for g in groups if g.start <= a + 1e-6]
+            y = float(ys.get(g[-1].scene_id, pos_y)) if g else pos_y
+        out.append(Overlay({"kind": "caption", "text": text, "pos": [x, y]}, a, end))
+    return out
+
+
+def _rejoin(words: list[dict]) -> list[dict]:
+    """Undo transcriber splits that read badly on screen: 'twenty' '-five' -> 'twenty-five', 'T' 'B' 'X' 'T.' -> 'TBXT.'"""
+    out: list[dict] = []
+    for w in words:
+        tok = w["word"].strip()
+        prev = out[-1]["word"] if out else ""
+        letter = len(tok.rstrip(".,?!")) == 1 and tok[:1].isupper() and tok[:1] not in "AI"
+        spelling = prev.isalpha() and prev.isupper() and len(prev) <= 4   # 'T', 'TB', 'TBX': a word being spelt out
+        if out and (tok.startswith("-") or (letter and spelling)):
+            out[-1] = dict(out[-1], word=prev + tok, end=w["end"])
+        else:
+            out.append(dict(w, word=tok))
+    return out
+
+
+def load_caption_layout(video_dir: Path) -> dict:
+    p = video_dir / "caption_layout.json"
+    return json.loads(p.read_text()) if p.exists() else {}
 
 
 def write_srt(cues: list[tuple[float, float, str]], path: Path) -> None:
@@ -471,7 +552,7 @@ def write_srt(cues: list[tuple[float, float, str]], path: Path) -> None:
 
 def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, until: float | None, width: int, height: int,
            fps: int, music: list[Path], music_gain_db: float, use_clips: bool, scratch: Path,
-           motion_specs: dict | None = None) -> dict:
+           motion_specs: dict | None = None, burn_captions: bool = False) -> dict:
     plan = json.loads((video_dir / "scene_plan.json").read_text())
     words = json.loads(words_path.read_text())
     stills = video_dir / "assets" / "stills"
@@ -482,8 +563,10 @@ def render(video_dir: Path, *, narration: Path, words_path: Path, out: Path, unt
     total = groups[-1].end if until is None else min(until, groups[-1].end)
     specs = json.loads((video_dir / "overlays.json").read_text()) if (video_dir / "overlays.json").exists() else []
     overlays = resolve_overlays(specs, words, groups, until)
+    sfx = plan_sfx(groups, overlays, video_dir / "assets" / "sfx", until, short=height > width)
+    if burn_captions:
+        overlays += caption_overlays(words, until, layout=load_caption_layout(video_dir), groups=groups)
     place_overlays(overlays, width, height)
-    sfx = plan_sfx(groups, overlays, video_dir / "assets" / "sfx", until)
 
     scratch.mkdir(parents=True, exist_ok=True)
     specs_m = motion_specs or {}
@@ -566,6 +649,7 @@ def main() -> None:
     p.add_argument("--mix-out", type=Path, default=None, help="dub mode: also write the mixed audio alone (m4a) for a YouTube audio track")
     p.add_argument("--motion", nargs="?", const="__default__", default=None,
                    help="apply procedural motion from motion.json (optionally a path): boil, flicker, sprite, trace")
+    p.add_argument("--burn-captions", action="store_true", help="Shorts: burn caption lines into the lower middle")
     a = p.parse_args()
     w, h = (int(v) for v in a.size.split("x"))
     if a.video_in:
@@ -579,7 +663,7 @@ def main() -> None:
         specs_m = motion.load_specs(mpath)
     info = render(a.video_dir, narration=a.narration, words_path=a.words, out=a.out, until=a.until, width=w, height=h,
                   fps=a.fps, music=a.music, music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch,
-                  motion_specs=specs_m)
+                  motion_specs=specs_m, burn_captions=a.burn_captions)
     print(json.dumps(info, indent=1))
 
 
