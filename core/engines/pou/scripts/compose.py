@@ -179,9 +179,10 @@ def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tu
         out.append(({**base, "kind": "card", "text": text, "pos": [x, cy], "sfx": "pop"}, t, stop))
         if i != ans and i not in fade:
             out.append(({**base, "kind": "cross", "text": text, "pos": [x, cy]}, reveal + 0.15, end))
-    ring_end = min(t_ring + QUIZ_RING_SECONDS, reveal - 0.3)
-    out.append(({**base, "kind": "ring", "w": 170, "h": 170, "pos": ring_pos}, t_ring, ring_end))
-    d0 = min(t_ring + (n - 1) * QUIZ_POP_GAP + 0.15, ring_end)   # digits start after the last card pop
+    d0 = t_ring + (n - 1) * QUIZ_POP_GAP + 0.15                   # ring and 3-2-1 start after the last card pop
+    ring_end = min(d0 + QUIZ_RING_SECONDS, reveal - 0.3)
+    d0 = min(d0, ring_end)
+    out.append(({**base, "kind": "ring", "w": 170, "h": 170, "pos": ring_pos}, d0, ring_end))
     step = (ring_end - d0) / 3
     for k, d in enumerate("321"):
         out.append(({**base, "kind": "number", "size": 96, "text": d, "pos": ring_pos, "sfx": "tick"},
@@ -191,7 +192,7 @@ def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tu
                 reveal, end))
     if spec.get("note"):
         out.append(({**base, "kind": "label", "size": 50, "color": "rust", "text": spec["note"],
-                     "pos": [xs[ans], y0 + 0.88 * (y1 - y0)]}, reveal + 0.4, end))
+                     "pos": list(spec.get("note_pos") or [xs[ans], y0 + 0.88 * (y1 - y0)])}, reveal + 0.4, end))
     return out
 
 

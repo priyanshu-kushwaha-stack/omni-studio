@@ -294,7 +294,8 @@ def test_quiz_parts_pop_cards_then_ring_then_reveal():
     cards = [p for p in parts if p[0]["kind"] == "card"]
     assert [round(c[1], 2) for c in cards] == [10.1, 10.4, 10.7]          # pop one after another
     ring = next(p for p in parts if p[0]["kind"] == "ring")
-    assert ring[1] == 10.1 and abs(ring[2] - (10.1 + compose.QUIZ_RING_SECONDS)) < 1e-6
+    d0 = 10.1 + 2 * compose.QUIZ_POP_GAP + 0.15
+    assert ring[1] == pytest.approx(d0) and ring[2] == pytest.approx(d0 + compose.QUIZ_RING_SECONDS)
     digits = [p for p in parts if p[0]["kind"] == "number"]
     assert [d[0]["text"] for d in digits] == ["3", "2", "1"] and all(d[0]["sfx"] == "tick" for d in digits)
     circle = next(p for p in parts if p[0]["kind"] == "circle")
@@ -535,7 +536,13 @@ def test_countdown_digits_start_after_the_last_card_pop():
     last_pop = 10.1 + 2 * compose.QUIZ_POP_GAP
     ring = next(p for p in parts if p[0]["kind"] == "ring")
     assert digits[0][1] == pytest.approx(last_pop + 0.15) and digits[-1][2] == pytest.approx(ring[2])
-    assert ring[1] == pytest.approx(10.1)
+    assert ring[1] == pytest.approx(digits[0][1])   # G5 note: ring and 3-2-1 start together
+
+
+def test_countdown_ring_shortens_when_the_reveal_comes_early():
+    parts = compose.quiz_parts(QUIZ, 10.0, 12.5, 20.0)
+    ring = next(p for p in parts if p[0]["kind"] == "ring")
+    assert ring[2] == pytest.approx(12.2) and ring[1] == pytest.approx(10.85)
 
 
 def test_reveal_circle_focuses_its_own_card():
@@ -549,3 +556,9 @@ def test_overlay_sfx_outside_the_allowlist_is_ignored(tmp_path):
     ovs = [compose.Overlay({"kind": "label", "sfx": "pencil"}, 3.0, 5.0), compose.Overlay({"kind": "label", "sfx": "pop"}, 4.0, 5.0)]
     out = compose.plan_sfx([], ovs, d, None)
     assert [s.path.stem for s in out] == ["pop"]
+
+
+def test_quiz_note_pos_override():
+    parts = compose.quiz_parts({**QUIZ, "note_pos": [0.7, 0.5]}, 10.0, 14.5, 20.0)
+    note = next(p for p in parts if p[0]["kind"] == "label")
+    assert note[0]["pos"] == [0.7, 0.5]
