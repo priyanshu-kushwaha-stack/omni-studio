@@ -579,12 +579,50 @@ def plan_sfx(groups: list[Group], overlays: list[Overlay], sfx_dir: Path, until:
     return [s for s in out if until is None or s.at < until]
 
 
+DUCK_RAMP = 0.06   # seconds: gain changes at duck-window edges are linear ramps this long (a step clicks)
+
+
+def _duck_level(duck, t: float) -> float:
+    for t0, t1, db in duck:
+        if t0 <= t < t1:
+            return 10 ** (db / 20)
+    return 1.0
+
+
+def _duck_points(duck) -> list[tuple[float, float]]:
+    """Breakpoints (t, gain) of the piecewise-linear envelope: each edge ramps over DUCK_RAMP, centred on it."""
+    pts: list[tuple[float, float]] = []
+    h = DUCK_RAMP / 2
+    for e in sorted({x for w in duck for x in w[:2]}):
+        before, after = _duck_level(duck, e - 1e-9), _duck_level(duck, e + 1e-9)
+        if abs(before - after) < 1e-9:
+            continue
+        x0 = max(e - h, pts[-1][0] + 1e-6) if pts else e - h
+        pts += [(x0, before), (max(e + h, x0 + 1e-6), after)]
+    return pts
+
+
+def duck_gain(duck, t: float) -> float:
+    """Linear gain of the music bed at time t: unity outside the (t0, t1, gain_db) windows, ramped at their edges."""
+    pts = _duck_points(duck)
+    if not pts or t <= pts[0][0]:
+        return 1.0 if not pts else pts[0][1]
+    for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
+        if t < xb:
+            return ya + (yb - ya) * (t - xa) / (xb - xa)
+    return pts[-1][1]
+
+
 def volume_expr(duck: list[tuple[float, float, float]]) -> str:
-    """ffmpeg `volume` expression: unity, except gain_db inside each (t0, t1, gain_db) window."""
-    expr = "1"
-    for t0, t1, db in reversed(duck):
-        expr = f"if(between(t,{t0:.3f},{t1:.3f}),{10 ** (db / 20):.5f},{expr})"
-    return expr
+    """ffmpeg `volume` expression equal to duck_gain(duck, t): nested if(lt(t,x),lerp,...) over the envelope."""
+    pts = _duck_points(duck)
+    if not pts:
+        return "1"
+    expr = f"{pts[-1][1]:.5f}"
+    for (xa, ya), (xb, yb) in reversed(list(zip(pts, pts[1:]))):
+        seg = f"{ya:.5f}" if abs(ya - yb) < 1e-9 else f"{ya:.5f}+({yb - ya:.6f})*(t-{xa:.4f})/{xb - xa:.4f}"
+        expr = f"if(lt(t,{xb:.4f}),{seg},{expr})"
+    return f"if(lt(t,{pts[0][0]:.4f}),{pts[0][1]:.5f},{expr})"
 
 
 def quiz_audio(overlays: list[Overlay]) -> tuple[list[tuple[float, float, float]], list[tuple[float, float]]]:
@@ -616,7 +654,7 @@ def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, 
             labels.append(f"[mu{k}]")
         n += len(music)
         chain = "".join(labels) + (f"concat=n={len(labels)}:v=0:a=1" if len(labels) > 1 else "anull")
-        parts.append(f"{chain},atrim=0:{total:.3f},volume={music_gain_db}dB,volume='{volume_expr(list(duck))}':eval=frame,"
+        parts.append(f"{chain},atrim=0:{total:.3f},volume={music_gain_db}dB,asetnsamples=n=48:p=0,volume='{volume_expr(list(duck))}':eval=frame,"
                      f"afade=t=in:d=1.5,afade=t=out:st={max(0, total - 3):.3f}:d=3[music]")
         parts.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,apad=whole_dur={total:.3f},asplit=2[nar][side]")
         parts.append("[music][side]sidechaincompress=threshold=0.015:ratio=5:attack=40:release=700:makeup=1[ducked]")
@@ -633,7 +671,7 @@ def mix_audio(narration: Path, music: list[Path], sfx: list[Sfx], total: float, 
         cmd += ["-stream_loop", "-1", "-i", str(path)]
         ms = int(at * 1000)
         parts.append(f"[{k0 + j}:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=0:{dur:.3f},"
-                     f"afade=t=out:st={max(0, dur - 0.12):.3f}:d=0.12,volume={gain}dB,adelay={ms}|{ms}[cue{j}]")
+                     f"afade=t=in:d=0.03,afade=t=out:st={max(0, dur - 0.12):.3f}:d=0.12,volume={gain}dB,adelay={ms}|{ms}[cue{j}]")
         mix_in.append(f"[cue{j}]")
     parts.append("".join(mix_in) + f"amix=inputs={len(mix_in)}:duration=first:normalize=0,atrim=0:{total:.3f},loudnorm=I=-14:TP=-1.5:LRA=11[out]")
     cmd += ["-filter_complex", ";".join(parts), "-map", "[out]", "-c:a", "pcm_s16le", str(out)]

@@ -372,8 +372,61 @@ def test_quiz_parts_carry_their_sfx_and_quiz_plates_whoosh_sparingly(tmp_path):
 
 def test_volume_expr_is_unity_outside_windows():
     e = compose.volume_expr([(1.0, 2.0, -10.0)])
-    assert "between(t,1.000,2.000)" in e and e.startswith("if(")
+    assert e.startswith("if(") and "lt(t," in e
     assert compose.volume_expr([]) == "1"
+
+
+ADJ = [(10.0, 14.2, -10.0), (14.2, 14.5, -60.0), (20.0, 25.0, -10.0)]
+
+
+def _eval_expr(expr, t):
+    """Tiny evaluator for the nested if(lt(t,x),a,b) / numeric expressions volume_expr emits."""
+    import re
+    py = re.sub(r"\blt\(", "_lt(", expr)
+    py = re.sub(r"\bif\(", "_if(", py)
+    return eval(py, {"_lt": lambda a, b: a < b, "_if": lambda c, a, b: a if c else b, "t": t})
+
+
+def test_duck_gain_is_continuous_and_matches_windows():
+    r = compose.DUCK_RAMP
+    g = lambda t: compose.duck_gain(ADJ, t)
+    assert g(5.0) == 1.0 and g(17.0) == 1.0 and g(30.0) == 1.0
+    assert g(12.0) == pytest.approx(10 ** (-10 / 20)) and g(22.0) == pytest.approx(10 ** (-10 / 20))
+    assert g(14.35) == pytest.approx(10 ** (-60 / 20))
+    max_step = (1.0 / r) * 0.001 * 1.01          # steepest ramp: full unity swing over DUCK_RAMP, per 1 ms
+    prev = g(0.0)
+    for k in range(1, 30001):
+        cur = g(k * 0.001)
+        assert abs(cur - prev) <= max_step
+        prev = cur
+    # at the shared edge it goes -10 dB -> -60 dB without rising back toward unity
+    hi = 10 ** (-10 / 20)
+    assert all(g(14.2 + d / 1000) <= hi + 1e-9 for d in range(-60, 61))
+
+
+def test_volume_expr_matches_duck_gain():
+    e = compose.volume_expr(ADJ)
+    for k in range(0, 3000):
+        t = k * 0.01
+        assert _eval_expr(e, t) == pytest.approx(compose.duck_gain(ADJ, t), abs=1e-3)
+
+
+def test_mix_audio_duck_edges_do_not_click(tmp_path):
+    import subprocess
+    nar = tmp_path / "nar.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "6", str(nar)], check=True)
+    mus = tmp_path / "mus.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=frequency=330:duration=6", "-ar", "48000", str(mus)], check=True)
+    out = tmp_path / "mix.wav"
+    compose.mix_audio(nar, [mus], [], 6.0, out, -12.0, duck=[(2.0, 3.5, -10.0), (3.5, 4.0, -60.0)])
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "48000", "-"],
+                         capture_output=True, check=True).stdout
+    x = np.frombuffer(raw, np.float32)
+    d = np.abs(np.diff(x))
+    ref = float(np.median(d[int(1.6 * 48000):int(1.9 * 48000)]))   # steady, un-ducked, past the fade-in
+    for edge in (2.0, 3.5, 4.0):
+        seg = d[int((edge - 0.1) * 48000):int((edge + 0.1) * 48000)]
+        assert seg.max() < 3 * ref, f"click at {edge}s: {seg.max():.5f} vs median {ref:.5f}"
 
 
 def test_quiz_audio_ducks_under_the_countdown_and_silences_before_the_reveal():
