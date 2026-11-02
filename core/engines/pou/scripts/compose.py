@@ -190,8 +190,8 @@ def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tu
                  "focus": [xs[ans], cy]},
                 reveal, end))
     if spec.get("note"):
-        out.append(({**base, "kind": "label", "size": 40, "color": "muted", "text": spec["note"],
-                     "pos": [xs[ans], y0 + 0.75 * (y1 - y0)]}, reveal + 0.4, end))
+        out.append(({**base, "kind": "label", "size": 50, "color": "rust", "text": spec["note"],
+                     "pos": [xs[ans], y0 + 0.88 * (y1 - y0)]}, reveal + 0.4, end))
     return out
 
 
