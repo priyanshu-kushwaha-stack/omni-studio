@@ -169,6 +169,7 @@ def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tu
     n = len(cards)
     base = {"quiz": spec["id"], "scene": spec["scene"]}
     cy, ry = y0 + 0.36 * (y1 - y0), y0 + 0.80 * (y1 - y0)
+    ring_pos = list(spec.get("ring_pos") or [(x0 + x1) / 2, ry])   # override when the board's foot is busy
     xs = [x0 + (x1 - x0) * (i + 0.5) / n for i in range(n)]
     out: list[tuple[dict, float, float]] = []
     t_ring = ask_end + 0.1
@@ -179,18 +180,18 @@ def quiz_parts(spec: dict, ask_end: float, reveal: float, end: float) -> list[tu
         if i != ans and i not in fade:
             out.append(({**base, "kind": "cross", "text": text, "pos": [x, cy]}, reveal + 0.15, end))
     ring_end = min(t_ring + QUIZ_RING_SECONDS, reveal - 0.3)
-    out.append(({**base, "kind": "ring", "w": 170, "h": 170, "pos": [(x0 + x1) / 2, ry]}, t_ring, ring_end))
+    out.append(({**base, "kind": "ring", "w": 170, "h": 170, "pos": ring_pos}, t_ring, ring_end))
     d0 = min(t_ring + (n - 1) * QUIZ_POP_GAP + 0.15, ring_end)   # digits start after the last card pop
     step = (ring_end - d0) / 3
     for k, d in enumerate("321"):
-        out.append(({**base, "kind": "number", "size": 96, "text": d, "pos": [(x0 + x1) / 2, ry], "sfx": "tick"},
+        out.append(({**base, "kind": "number", "size": 96, "text": d, "pos": ring_pos, "sfx": "tick"},
                     d0 + k * step, d0 + (k + 1) * step))
     out.append(({**base, "kind": "circle", "text": cards[ans], "pos": [xs[ans], cy], "sfx": "sting", "color": "ochre",
                  "focus": [xs[ans], cy]},
                 reveal, end))
     if spec.get("note"):
         out.append(({**base, "kind": "label", "size": 40, "color": "muted", "text": spec["note"],
-                     "pos": [xs[ans], y0 + 0.58 * (y1 - y0)]}, reveal + 0.4, end))
+                     "pos": [xs[ans], y0 + 0.75 * (y1 - y0)]}, reveal + 0.4, end))
     return out
 
 

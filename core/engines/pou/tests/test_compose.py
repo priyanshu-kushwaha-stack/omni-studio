@@ -314,6 +314,17 @@ def test_quiz_cards_sit_inside_the_board_left_to_right():
     assert all(0.1 < p[0]["pos"][1] < 0.6 for p in parts)
 
 
+def test_quiz_ring_can_sit_off_the_board_and_the_note_clears_the_cards():
+    # video 5: the ring under the board covered You's face; it moves to empty paper beside the board
+    parts = compose.quiz_parts(dict(QUIZ, ring_pos=[0.19, 0.28]), 10.0, 14.5, 20.0)
+    ring = next(p for p in parts if p[0]["kind"] == "ring")
+    digits = [p for p in parts if p[0]["kind"] == "number"]
+    assert ring[0]["pos"] == [0.19, 0.28] and all(d[0]["pos"] == [0.19, 0.28] for d in digits)
+    card_y = next(p for p in parts if p[0]["kind"] == "card")[0]["pos"][1]
+    note_y = next(p for p in parts if p[0]["kind"] == "label")[0]["pos"][1]
+    assert note_y - card_y >= 0.35 * (QUIZ["board"][3] - QUIZ["board"][1])   # well below the card row
+
+
 def test_resolve_overlays_expands_a_quiz_from_its_anchors():
     words = [{"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in
              enumerate("what's the average fifty five um um um um roughly thirty five".split())]
