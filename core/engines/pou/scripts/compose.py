@@ -550,7 +550,7 @@ SHORT_SFX_GAP = 5.0      # Shorts: at most one pencil per 5 s, no page turns (ow
 LONG_PENCIL_GAP = 4.0    # long form: at most one pencil per 4 s (energy pass: cuts come every 2-4 s)
 WHOOSH_GAP = 8.0
 OVERLAY_SFX = {"pop", "tick", "sting"}
-SFX_GAIN = {"pop": -12, "tick": -14, "sting": -8, "whoosh": -16}
+SFX_GAIN = {"pop": -18, "tick": -20, "sting": -8, "whoosh": -16}   # pop/tick -6 dB: owner heard "very little pops" (2026-11-02)
 
 
 def plan_sfx(groups: list[Group], overlays: list[Overlay], sfx_dir: Path, until: float | None,
