@@ -5,7 +5,7 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 
 | File | Change | Why |
 |---|---|---|
-| `tools/video/hyperframes_compose.py` | Adds `_locked_npm_spec()` and `_NPM_SPEC`, read from `core/lock.yaml`. `_resolve_npm_package`, `_probe_cli` and `_run_hf` use the spec. Sets `HYPERFRAMES_NO_TELEMETRY=1` and `DISABLE_TELEMETRY=1` at import | Pin HyperFrames; telemetry off |
+| `tools/video/hyperframes_compose.py` | Adds `_locked_npm_spec()` and `_NPM_SPEC`, read from `core/lock.yaml`. `_resolve_npm_package`, `_probe_cli` and `_run_hf` use the spec. Sets `HYPERFRAMES_NO_TELEMETRY=1` and `DISABLE_TELEMETRY=1` at import. Raises the `npm view` timeout from 5 s to 30 s | Pin HyperFrames; telemetry off; `npm view` takes about 5 s on this machine, so the old limit falsely reported the runtime as unavailable |
 | `tools/tool_registry.py` | Adds `DISABLED_TOOLS`, read from `core/studio/config/disabled_tools.yaml`. `register()` ignores those names and `register_module()` does not report them | Tool denylist |
 | `tools/video/video_compose.py` | Accepts `render_runtime="external"`. One branch in `_render` calls the new `_accept_external_render`, which checks the file and runs the final review without rendering. Docstring and error text updated | `external` runtime |
 | `schemas/artifacts/edit_decisions.schema.json` | Adds `external` to the `render_runtime` enum | `external` runtime |

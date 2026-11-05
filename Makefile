@@ -26,4 +26,4 @@ new-channel:
 upstream-pull:
 	@test -n "$(SHA)" || { echo "usage: make upstream-pull SHA=<upstream commit>" >&2; exit 2; }
 	cd $(ROOT) && git subtree pull --prefix=core/openmontage upstream $(SHA) \
-		-m "chore: pull OpenMontage $(SHA)" -m "Co-authored-by: omnigent <noreply@omnigent.ai>"
+		-m "$$(printf 'chore: pull OpenMontage %s\n\nCo-authored-by: omnigent <noreply@omnigent.ai>' '$(SHA)')"
