@@ -1,5 +1,7 @@
 PYTHON_VERSION ?= 3.10
 VENV_DIR ?= .venv
+# omni-studio patch (core/PATCHES.md): the pinned version comes from core/lock.yaml.
+HYPERFRAMES_SPEC := hyperframes@$(shell awk '/^hyperframes:/{f=1} f&&/version:/{print $$2; exit}' ../lock.yaml)
 BASE_PYTHON ?= $(shell command -v python$(PYTHON_VERSION) 2>/dev/null || command -v python3 2>/dev/null || command -v python 2>/dev/null)
 RUN_PYTHON = $(shell for dir in "$$VIRTUAL_ENV" "$$CONDA_PREFIX" "$(VENV_DIR)"; do if [ -n "$$dir" ] && [ -x "$$dir/bin/python" ]; then printf "%s/bin/python" "$$dir"; exit 0; elif [ -n "$$dir" ] && [ -x "$$dir/Scripts/python.exe" ]; then printf "%s/Scripts/python.exe" "$$dir"; exit 0; fi; done; if [ "$(OS)" = "Windows_NT" ]; then printf "%s/Scripts/python.exe" "$(VENV_DIR)"; else printf "%s/bin/python" "$(VENV_DIR)"; fi)
 PIP = $(RUN_PYTHON) -m pip
@@ -64,7 +66,7 @@ setup: ensure-venv
 	@echo "==> Installing HyperFrames runtime (cache-warm via npx)..."
 	@echo "    Pulls the 'hyperframes' npm package into the local npx cache so the"
 	@echo "    first render doesn't pay a 30-60s cold-fetch penalty. ~20MB of disk."
-	@npx --yes hyperframes --version >/dev/null 2>&1 && echo "    HyperFrames CLI cached (npx)" || echo "  [skip] HyperFrames cache-warm failed — offline or npm unavailable; first render will fetch on demand"
+	@npx --yes $(HYPERFRAMES_SPEC) --version >/dev/null 2>&1 && echo "    HyperFrames CLI cached (npx)" || echo "  [skip] HyperFrames cache-warm failed — offline or npm unavailable; first render will fetch on demand"
 	@$(RUN_PYTHON) -c "from tools.video.hyperframes_compose import HyperFramesCompose; HyperFramesCompose._npm_resolve_cache=None; c=HyperFramesCompose()._runtime_check(); print(f'    HyperFrames runtime_available={c[\"runtime_available\"]}, npm={c.get(\"npm_package_version\") or c.get(\"npm_resolve_error\")}'); [print(f'    note: {r}') for r in c['reasons']]" || echo "  [skip] HyperFrames check failed — runtime can be set up later"
 	@echo ""
 	$(RUN_PYTHON) -c "import shutil, os; e=os.path.exists('.env'); shutil.copy('.env.example','.env') if not e else None; print('==> Created .env from .env.example — add your API keys there.' if not e else '==> .env already exists — skipping.')"
@@ -105,9 +107,9 @@ hyperframes-doctor: ensure-venv
 	$(RUN_PYTHON) -c "from tools.video.hyperframes_compose import HyperFramesCompose; r=HyperFramesCompose().execute({'operation':'doctor'}); import json; print(json.dumps(r.data, indent=2)); print('OK' if r.success else f'FAIL: {r.error}')"
 
 hyperframes-warm:
-	@echo "==> Refreshing the HyperFrames npx cache to latest..."
+	@echo "==> Refreshing the HyperFrames npx cache for the pinned version..."
 	@echo "    Uses --prefer-online so npx picks up new releases since your last run."
-	npx --yes --prefer-online hyperframes --version
+	npx --yes --prefer-online $(HYPERFRAMES_SPEC) --version
 	@echo "==> Cache warm complete."
 
 demo: ensure-venv

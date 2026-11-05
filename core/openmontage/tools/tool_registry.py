@@ -9,8 +9,11 @@ from __future__ import annotations
 import importlib
 import inspect
 import pkgutil
+from pathlib import Path
 from types import ModuleType
 from typing import Any, Optional
+
+import yaml
 
 from tools.base_tool import BaseTool, ToolStatus, ToolTier, ToolStability
 
@@ -52,6 +55,15 @@ def _scrub_unicode_dashes(value: Any) -> Any:
     return value
 
 
+def _load_disabled_tools() -> frozenset[str]:
+    """omni-studio patch (core/PATCHES.md): names in the denylist never register."""
+    path = Path(__file__).resolve().parents[2] / "studio" / "config" / "disabled_tools.yaml"
+    return frozenset(yaml.safe_load(path.read_text(encoding="utf-8"))["disabled"])
+
+
+DISABLED_TOOLS = _load_disabled_tools()
+
+
 class ToolRegistry:
     """Central registry of all OpenMontage tools."""
 
@@ -63,6 +75,8 @@ class ToolRegistry:
         """Register a tool instance."""
         if not tool.name:
             raise ValueError("Tool must have a non-empty name")
+        if tool.name in DISABLED_TOOLS:
+            return
         self._tools[tool.name] = tool
 
     def clear(self) -> None:
@@ -80,7 +94,8 @@ class ToolRegistry:
                 continue
             tool = cls()
             self.register(tool)
-            registered.append(tool.name)
+            if tool.name not in DISABLED_TOOLS:
+                registered.append(tool.name)
         return registered
 
     @staticmethod

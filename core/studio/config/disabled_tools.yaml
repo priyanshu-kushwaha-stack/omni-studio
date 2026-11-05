@@ -1,0 +1,5 @@
+# Tools the owner has banned. tools/tool_registry.py refuses to register these,
+# so they never appear in discovery, selectors or capability menus.
+disabled:
+  - lip_sync
+  - h3_max_video

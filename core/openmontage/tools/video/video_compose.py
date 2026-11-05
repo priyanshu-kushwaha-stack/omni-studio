@@ -14,6 +14,9 @@ Routing is driven by `edit_decisions.render_runtime` (locked at proposal):
                  registry blocks. Added in the parallel-runtime initiative.
 - `ffmpeg`     → FFmpeg concat/trim. Used only for simple video cuts without
                  composition, or when the approved path explicitly names FFmpeg.
+- `external`   → omni-studio patch (core/PATCHES.md): a renderer outside
+                 OpenMontage already wrote `output_path`; this tool renders
+                 nothing and only runs the final self-review.
 
 Authoring mode is orthogonal to runtime. Setting
 `edit_decisions.composition_mode = "atelier"` (or `renderer_family="bespoke"`)
@@ -1551,20 +1554,23 @@ class VideoCompose(BaseTool):
                     "it MUST be locked at proposal stage (proposal_packet."
                     "production_plan.render_runtime) and carried forward through "
                     "edit_decisions.render_runtime. Valid values: 'remotion', "
-                    "'hyperframes', 'ffmpeg'. Re-run the proposal stage with an "
+                    "'hyperframes', 'ffmpeg', 'external'. Re-run the proposal stage with an "
                     "explicit runtime choice — do NOT default this field."
                 ),
             )
 
-        if render_runtime not in {"remotion", "hyperframes", "ffmpeg"}:
+        if render_runtime not in {"remotion", "hyperframes", "ffmpeg", "external"}:
             return ToolResult(
                 success=False,
                 error=(
                     f"Unknown render_runtime {render_runtime!r}. "
-                    f"Valid values: remotion, hyperframes, ffmpeg. "
+                    f"Valid values: remotion, hyperframes, ffmpeg, external. "
                     f"render_runtime must be set at proposal stage."
                 ),
             )
+
+        if render_runtime == "external":
+            return self._accept_external_render(inputs, edit_decisions)
 
         # --- Atelier (bespoke) mode -------------------------------------
         # Hand-authored, project-local Remotion composition. Deliberately
@@ -1880,6 +1886,50 @@ class VideoCompose(BaseTool):
                 )
 
         return render_result
+
+    def _accept_external_render(
+        self, inputs: dict[str, Any], edit_decisions: dict[str, Any]
+    ) -> ToolResult:
+        """omni-studio patch (core/PATCHES.md): review a render made outside OpenMontage.
+
+        Nothing is rendered and no other engine is substituted. A missing file
+        is a blocker for the agent to surface.
+        """
+        output_path = Path(inputs.get("output_path") or "")
+        if not output_path.is_file():
+            return ToolResult(
+                success=False,
+                error=(
+                    f"render_runtime='external' was locked, but the external render "
+                    f"{output_path} does not exist. Run the external renderer first; "
+                    f"do not substitute another runtime."
+                ),
+            )
+        final_review = self._run_final_review(
+            output_path,
+            edit_decisions,
+            inputs.get("proposal_packet"),
+            narration_transcript_path=inputs.get("narration_transcript_path"),
+            script_text=inputs.get("script_text") or self._read_text_file(
+                inputs.get("script_path")
+            ),
+        )
+        data = {
+            "render_runtime": "external",
+            "output": str(output_path),
+            "final_review": final_review,
+            "final_review_status": final_review["status"],
+        }
+        if final_review["status"] == "fail":
+            return ToolResult(
+                success=False,
+                error=(
+                    "Post-render self-review FAILED (external). The output is not presentable.\n"
+                    + "\n".join(f"  • {i}" for i in final_review.get("issues_found", []))
+                ),
+                data=data,
+            )
+        return ToolResult(success=True, data=data)
 
     def _render_via_ffmpeg(
         self,
