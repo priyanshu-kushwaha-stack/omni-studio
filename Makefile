@@ -1,7 +1,6 @@
 ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 OPENMONTAGE := $(ROOT)/core/openmontage
 PYTHON := $(ROOT)/.venv/bin/python
-BACKLOT_PORT ?= 4760
 
 export PYTHONPATH := $(OPENMONTAGE):$(ROOT)/core
 export PYTHONDONTWRITEBYTECODE := 1
@@ -10,17 +9,22 @@ export DISABLE_TELEMETRY := 1
 
 .PHONY: test board new-channel upstream-pull
 
+# Upstream tests that assert a tool the owner banned is still discovered. They cannot pass
+# with the denylist on. core/studio/tests asserts the opposite for every denylisted name.
+DESELECT := --deselect core/openmontage/tests/contracts/test_kling_official_avatar.py::test_registry_discovers_kling_lip_sync
+
 test:
-	cd $(OPENMONTAGE) && $(PYTHON) -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles tests/test_network_guard.py -q -p no:cacheprovider
+	cd $(OPENMONTAGE) && $(PYTHON) -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles tests/test_network_guard.py -q -p no:cacheprovider $(DESELECT)
 	cd $(ROOT) && $(PYTHON) -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib
 
-# Port 4750 belongs to the owner's existing Backlot.
+# One board per channel, on ports from 4761. Port 4750 belongs to the owner's existing Backlot.
 board:
-	cd $(OPENMONTAGE) && BACKLOT_PORT=$(BACKLOT_PORT) $(PYTHON) -m backlot open $(PROJECT)
+	@test -n "$(CHANNEL)" || { echo "usage: make board CHANNEL=<slug>" >&2; exit 2; }
+	$(PYTHON) -m studio.cli board $(CHANNEL)
 
 new-channel:
-	@echo "new-channel: the channel layer is Phase 2 and does not exist yet." >&2
-	@exit 1
+	@test -n "$(SLUG)" || { echo "usage: make new-channel SLUG=<slug>" >&2; exit 2; }
+	$(PYTHON) -m studio.cli new-channel $(SLUG)
 
 # Full history, no --squash. After a pull, update core/lock.yaml and re-check core/PATCHES.md.
 upstream-pull:

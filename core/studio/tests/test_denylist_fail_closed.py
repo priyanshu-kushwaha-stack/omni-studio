@@ -10,6 +10,7 @@ from pathlib import Path
 
 import pytest
 
+import tools.tool_registry as tool_registry
 from tools.tool_registry import DISABLED_TOOLS, ToolRegistry, _load_disabled_tools
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -24,6 +25,9 @@ BAD_FILES = {
     "null_entry": ("disabled:\n  - lip_sync\n  -\n", "non-empty string"),
     "empty_entry": ('disabled:\n  - lip_sync\n  - ""\n', "non-empty string"),
     "blank_entry": ('disabled:\n  - lip_sync\n  - "  "\n', "non-empty string"),
+    "empty_list": ("disabled: []\n", "must not be empty"),
+    "leading_space": ('disabled:\n  - " lip_sync"\n', "surrounding whitespace"),
+    "trailing_space": ('disabled:\n  - "lip_sync "\n', "surrounding whitespace"),
     "missing_key": ("enabled:\n  - lip_sync\n", "missing the 'disabled' key"),
     "empty_file": ("", "missing the 'disabled' key"),
     "top_level_list": ("- lip_sync\n", "missing the 'disabled' key"),
@@ -66,6 +70,33 @@ def test_valid_denylist_disables_the_owner_tools():
         assert fresh.get(name) is None
 
 
+def test_denylist_name_matching_no_real_tool_stops_discovery(monkeypatch):
+    monkeypatch.setattr(tool_registry, "DISABLED_TOOLS", DISABLED_TOOLS | {"lip_synk"})
+    fresh = ToolRegistry()
+    with pytest.raises(RuntimeError) as exc:
+        fresh.ensure_discovered()
+    assert "disabled_tools.yaml" in str(exc.value)
+    assert "lip_synk" in str(exc.value)
+    assert "match no real tool" in str(exc.value)
+    # Refuses to proceed: nothing stays registered, and a second call raises again.
+    assert fresh.list_all() == []
+    with pytest.raises(RuntimeError):
+        fresh.ensure_discovered()
+
+
+def test_partial_discovery_does_not_judge_denylist_names():
+    # Only a walk of all of tools/ knows every real name.
+    fresh = ToolRegistry()
+    fresh.discover("tools.subtitle")
+    assert fresh.list_all()
+
+
+def test_every_real_denylist_name_is_a_real_tool():
+    fresh = ToolRegistry()
+    fresh.ensure_discovered()
+    assert DISABLED_TOOLS <= fresh._seen_tool_names
+
+
 def test_valid_denylist_file_parses_to_exact_names(tmp_path):
     path = tmp_path / "disabled_tools.yaml"
     path.write_text("disabled:\n  - lip_sync\n  - h3_max_video\n", encoding="utf-8")
@@ -96,8 +127,10 @@ def _import_registry_with_denylist(tmp_path: Path, content: str | None) -> subpr
         ("enabled: []\n", "missing the 'disabled' key"),
         ("disabled: [lip_sync\n", "not valid YAML"),
         (None, "cannot be read"),
+        ("disabled: []\n", "must not be empty"),
+        ('disabled:\n  - "lip_sync "\n', "surrounding whitespace"),
     ],
-    ids=["string", "missing_key", "malformed", "missing_file"],
+    ids=["string", "missing_key", "malformed", "missing_file", "empty", "whitespace"],
 )
 def test_registry_refuses_to_import_with_a_bad_denylist(tmp_path, content, problem):
     proc = _import_registry_with_denylist(tmp_path, content)

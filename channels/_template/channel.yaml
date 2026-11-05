@@ -1,0 +1,19 @@
+# Validated by core/studio/channels.py. Unknown fields and bad values are errors.
+id: __SLUG__
+youtube_channel_id: null        # UC + 22 characters. Required once status is testing or live.
+status: draft                   # draft | testing | live | paused
+niche: "Say what this channel is about"
+risk_class: B                   # A | B | C
+made_for_kids: false
+# Format name -> OpenMontage pipeline in core/openmontage/pipeline_defs/.
+formats:
+  explainer: animated-explainer
+playbook: __SLUG__              # Loads by name through styles/custom/__SLUG__.yaml.
+voices: voices.yaml             # Relative to this folder.
+music:
+  default: null                 # Must be in allowed when set.
+  allowed: []
+cadence: weekly                 # daily | weekly | biweekly | monthly
+budget_usd_per_video: 0         # A hard cap. 0 means no paid calls.
+review_level: full              # full | standard | light. Recorded only: gates come from the pipeline.
+upload_token_path: null         # Under ~/.config/omni-studio/. Required once status is live.

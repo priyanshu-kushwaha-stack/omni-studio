@@ -75,7 +75,7 @@ setup: ensure-venv
 	@echo "  Optional: add API keys to .env to unlock cloud providers."
 	@echo "  Optional: run 'make install-gpu' if you have an NVIDIA GPU."
 	@echo "  Optional: run 'make hyperframes-doctor' to fully validate the HyperFrames runtime."
-	@echo "  Optional: run 'make hyperframes-warm' anytime to refresh the npx cache to the latest hyperframes version."
+	@echo "  Optional: run 'make hyperframes-warm' anytime to refresh the npx cache for the pinned hyperframes version."
 
 # ---- Individual installs ----
 
@@ -108,7 +108,7 @@ hyperframes-doctor: ensure-venv
 
 hyperframes-warm:
 	@echo "==> Refreshing the HyperFrames npx cache for the pinned version..."
-	@echo "    Uses --prefer-online so npx picks up new releases since your last run."
+	@echo "    Uses --prefer-online so npx re-checks the registry for that exact version."
 	npx --yes --prefer-online $(HYPERFRAMES_SPEC) --version
 	@echo "==> Cache warm complete."
 

@@ -1905,6 +1905,15 @@ class VideoCompose(BaseTool):
                     f"do not substitute another runtime."
                 ),
             )
+        if output_path.stat().st_size == 0:
+            return ToolResult(
+                success=False,
+                error=(
+                    f"render_runtime='external' was locked, but the external render "
+                    f"{output_path} is empty (0 bytes). Re-run the external renderer; "
+                    f"do not substitute another runtime."
+                ),
+            )
         final_review = self._run_final_review(
             output_path,
             edit_decisions,

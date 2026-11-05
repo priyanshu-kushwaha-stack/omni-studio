@@ -3,3 +3,6 @@
 disabled:
   - lip_sync
   - h3_max_video
+  - kling_lip_sync
+  - minimax_video
+  - minimax_fal_video
