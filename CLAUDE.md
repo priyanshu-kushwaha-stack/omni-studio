@@ -1,7 +1,7 @@
 # omni-studio
 
 Private multi-channel YouTube studio. OpenMontage is a full-history git subtree in
-`core/openmontage/`. The studio layer is `core/studio/`. Channels arrive in Phase 2.
+`core/openmontage/`. The studio layer is `core/studio/`. Channels live in `channels/<slug>/`.
 
 ## Using OpenMontage from this root
 
@@ -16,7 +16,7 @@ Private multi-channel YouTube studio. OpenMontage is a full-history git subtree 
 | `skills/` (Layer 2) | `core/openmontage/skills/` |
 | `.agents/skills/` (Layer 3) | `core/openmontage/.agents/skills/` |
 | `pipeline_defs/`, `schemas/`, `styles/`, `tools/` | `core/openmontage/<same>` |
-| `projects/<id>/` output | `core/openmontage/projects/<id>/` (gitignored) |
+| `projects/<id>/` output | `channels/<slug>/videos/<id>/`, the channel's `OPENMONTAGE_PROJECTS_DIR` |
 
 Run OpenMontage's Python commands from `core/openmontage/` using the root venv and an
 absolute `PYTHONPATH`:
@@ -31,14 +31,27 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 | Command | What it does |
 |---|---|
 | `make test` | Upstream core suites, then `core/studio/tests` |
-| `make board PROJECT=<id>` | Opens Backlot on port 4760. Port 4750 is the owner's other board |
-| `make new-channel` | Stub until Phase 2 |
+| `make board CHANNEL=<slug>` | That channel's Backlot board, on a port from 4761. Port 4750 is the owner's other board |
+| `make new-channel SLUG=<slug>` | Same as `omni new-channel` |
 | `make upstream-pull SHA=<commit>` | `git subtree pull`, full history, no squash |
-| `.venv/bin/omni status` | Pins, runtimes, disabled tools |
+| `.venv/bin/omni status` | Pins, runtimes, disabled tools, and every channel with its pending gates |
+| `omni new-channel <slug>` | Scaffold from `channels/_template` and link the playbook |
+| `omni new-video <slug> "<title>" --format <name>` | Project folder with the channel's budget |
+| `omni approve <slug> <video> <stage>` | Pass a gate. Only when the owner says so |
+| `omni check [<slug>]` | Validate channels |
+| `omni fix <slug> --format --stage --severity --example` | Record a note in `core/studio/issues/` |
+
+Before running OpenMontage for a channel, export the line `omni new-video` prints:
+`OPENMONTAGE_PROJECTS_DIR=<root>/channels/<slug>/videos`. Track spend with
+`studio.channels.tracker_for(channel, video_id)`, which caps at the channel's budget. Tools do
+not call it for you. Do not render with files in `remotion-composer/public/`; `video_compose`
+staging keeps same-named assets from different channels apart.
 
 ## Gates
 
-Seven human gates. Never skip one, and only the owner passes a gate.
+Seven human gates. Never skip one, and only the owner passes a gate. Agents write
+`awaiting_human` and stop. Never call `write_checkpoint` with `human_approved=True` or run
+`omni approve` yourself unless the owner told you to approve that stage.
 
 | Gate | Owner approves |
 |---|---|

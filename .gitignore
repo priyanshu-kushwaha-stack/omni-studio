@@ -18,3 +18,11 @@ __pycache__/
 # Build and tool output
 *.egg-info/
 node_modules/
+
+# Channels: video text is tracked, assets and renders are not
+channels/*/videos/*/assets/
+channels/*/videos/*/renders/
+channels/*/videos/*/events.jsonl
+channels/*/lora/*
+!channels/*/lora/.gitkeep
+channels/*/.board.json

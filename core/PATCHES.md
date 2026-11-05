@@ -20,6 +20,14 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 |---|---|
 | `STUDIO_PATHS.md` | Says OpenMontage's docs are relative to this folder |
 
+## Generated links
+
+`omni new-channel <slug>` adds `styles/custom/<slug>.yaml`, a relative symlink to
+`../../../../channels/<slug>/playbook.yaml`. Upstream loads playbooks by file name, so this file
+is named for the channel rather than `studio`. Nothing else is written inside `core/openmontage/`.
+It adds no code and needs no re-check after an upstream pull. `styles/custom/` holds no other file
+in this repo.
+
 ## Upstream tests the denylist affects
 
 No upstream test file is edited for this. Root `Makefile` deselects
