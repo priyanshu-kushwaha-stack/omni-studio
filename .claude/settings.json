@@ -1,0 +1,7 @@
+{
+  "env": {
+    "HYPERFRAMES_NO_TELEMETRY": "1",
+    "DISABLE_TELEMETRY": "1",
+    "BACKLOT_PORT": "4760"
+  }
+}
