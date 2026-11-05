@@ -58,9 +58,9 @@ say in one line why not, then re-present.
 
 - Banned: `lip_sync`, Wav2Lip, H3 models, and the line-boil or wobble effect. Use camera
   moves and puppet hands, eyes and faces for life.
-- Disabled tools are listed in `core/studio/config/disabled_tools.yaml`. MiniMax H3 is also
-  the default model of some tools that remain enabled (`minimax_video`, for example), and
-  `kling_lip_sync` remains registered. Do not select them.
+- Disabled tools are listed in `core/studio/config/disabled_tools.yaml`. `atlas_video` and
+  `comfyui_video` stay enabled because they default to other models, but each can still select
+  MiniMax H3 if asked. Never pass them `minimax/h3/*`, `minimax_h3_api` or `minimax_h3_local`.
 - No paid provider call without the owner's approval. Announce tool, provider, model and
   cost first.
 - Keep secrets in `~/.config/omni-studio/`. Never read or print them.

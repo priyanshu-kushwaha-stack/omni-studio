@@ -79,11 +79,17 @@ def _load_disabled_tools(path: Path = _DISABLED_TOOLS_PATH) -> frozenset[str]:
         raise RuntimeError(
             f"Tool denylist {path}: 'disabled' must be a list, got {type(names).__name__}"
         )
+    if not names:
+        raise RuntimeError(f"Tool denylist {path}: 'disabled' must not be empty")
     for name in names:
         if not isinstance(name, str) or not name.strip():
             raise RuntimeError(
                 f"Tool denylist {path}: every 'disabled' entry must be a non-empty string, "
                 f"got {name!r}"
+            )
+        if name != name.strip():
+            raise RuntimeError(
+                f"Tool denylist {path}: entry {name!r} has surrounding whitespace"
             )
     return frozenset(names)
 
@@ -97,6 +103,7 @@ class ToolRegistry:
     def __init__(self) -> None:
         self._tools: dict[str, BaseTool] = {}
         self._discovered_packages: set[str] = set()
+        self._seen_tool_names: set[str] = set()
 
     def register(self, tool: BaseTool) -> None:
         """Register a tool instance."""
@@ -120,6 +127,7 @@ class ToolRegistry:
             if cls.__module__ != module.__name__ or inspect.isabstract(cls):
                 continue
             tool = cls()
+            self._seen_tool_names.add(tool.name)
             self.register(tool)
             if tool.name not in DISABLED_TOOLS:
                 registered.append(tool.name)
@@ -171,6 +179,16 @@ class ToolRegistry:
                 continue
             module = importlib.import_module(module_info.name)
             discovered.extend(self.register_module(module))
+
+        # omni-studio patch (core/PATCHES.md): a denylist name that matches no
+        # real tool is probably a typo hiding a tool the owner meant to ban. This
+        # runs here because only a full walk of tools/ knows every real name.
+        unknown = DISABLED_TOOLS - self._seen_tool_names
+        if package_name == "tools" and unknown:
+            self.clear()
+            raise RuntimeError(
+                f"Tool denylist {_DISABLED_TOOLS_PATH}: {sorted(unknown)} match no real tool"
+            )
 
         self._discovered_packages.add(package_name)
         return discovered

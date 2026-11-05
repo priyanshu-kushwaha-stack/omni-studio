@@ -10,8 +10,12 @@ export DISABLE_TELEMETRY := 1
 
 .PHONY: test board new-channel upstream-pull
 
+# Upstream tests that assert a tool the owner banned is still discovered. They cannot pass
+# with the denylist on. core/studio/tests asserts the opposite for every denylisted name.
+DESELECT := --deselect core/openmontage/tests/contracts/test_kling_official_avatar.py::test_registry_discovers_kling_lip_sync
+
 test:
-	cd $(OPENMONTAGE) && $(PYTHON) -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles tests/test_network_guard.py -q -p no:cacheprovider
+	cd $(OPENMONTAGE) && $(PYTHON) -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles tests/test_network_guard.py -q -p no:cacheprovider $(DESELECT)
 	cd $(ROOT) && $(PYTHON) -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib
 
 # Port 4750 belongs to the owner's existing Backlot.

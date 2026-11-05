@@ -39,12 +39,26 @@ def _discover_tools() -> set[str]:
     return set(registry.list_all())
 
 
+def _denylist() -> list[str]:
+    sys.path.insert(0, str(OPENMONTAGE))
+    from tools.tool_registry import DISABLED_TOOLS
+
+    return sorted(DISABLED_TOOLS)
+
+
+def _child_telemetry_env() -> dict[str, str | None]:
+    """What a HyperFrames child receives. Importing the tool sets these, whatever the shell had."""
+    sys.path.insert(0, str(OPENMONTAGE))
+    import tools.video.hyperframes_compose  # noqa: F401
+
+    return {name: os.environ.get(name) for name in ("HYPERFRAMES_NO_TELEMETRY", "DISABLE_TELEMETRY")}
+
+
 def status() -> int:
     lock = yaml.safe_load((CORE / "lock.yaml").read_text(encoding="utf-8"))
-    denylist = yaml.safe_load(
-        (CORE / "studio" / "config" / "disabled_tools.yaml").read_text(encoding="utf-8")
-    )["disabled"]
+    denylist = _denylist()
     tools = _discover_tools()
+    telemetry = _child_telemetry_env()
     leaked = sorted(set(denylist) & tools)
     secrets_dir = Path.home() / ".config" / "omni-studio"
 
@@ -56,8 +70,7 @@ def status() -> int:
     print(f"ffmpeg       {shutil.which('ffmpeg') or 'missing'}")
     print(f"hyperframes  {lock['hyperframes']['version']} (locked)")
     print(f"remotion     {lock['remotion']['version']} (locked), installed: {_installed_remotion()}")
-    print(f"telemetry    HYPERFRAMES_NO_TELEMETRY={os.environ.get('HYPERFRAMES_NO_TELEMETRY')} "
-          f"DISABLE_TELEMETRY={os.environ.get('DISABLE_TELEMETRY')}")
+    print("telemetry    " + " ".join(f"{name}={value}" for name, value in telemetry.items()))
     print(f"tools        {len(tools)} discovered")
     print(f"disabled     {', '.join(denylist)}: {'LEAKED ' + ', '.join(leaked) if leaked else 'absent'}")
     print(f"secrets dir  {'present' if secrets_dir.is_dir() else 'missing'} ({secrets_dir})")

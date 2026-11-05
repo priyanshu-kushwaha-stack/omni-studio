@@ -56,7 +56,9 @@ def test_hyperframes_telemetry_is_off_for_child_processes():
 
 
 def test_denylist_names_the_owner_tools():
-    assert {"lip_sync", "h3_max_video"} <= set(DENYLIST["disabled"])
+    assert {
+        "lip_sync", "h3_max_video", "kling_lip_sync", "minimax_video", "minimax_fal_video",
+    } <= set(DENYLIST["disabled"])
 
 
 def test_disabled_tools_are_not_discovered():
@@ -80,7 +82,8 @@ def test_disabled_tools_cannot_be_registered_directly():
 def test_disabled_tools_are_absent_from_capability_routing():
     registry.ensure_discovered()
     names = {t.name for t in registry.get_by_capability("video_generation")}
-    assert "h3_max_video" not in names
+    assert not names & {"h3_max_video", "minimax_video", "minimax_fal_video"}
+    assert "kling_lip_sync" not in {t.name for t in registry.get_by_capability("avatar")}
     listed = {
         entry["name"] for entries in registry.capability_catalog().values() for entry in entries
     }
@@ -150,8 +153,17 @@ def test_external_runtime_accepts_a_finished_render_without_rendering(tmp_path):
     result = VideoCompose().execute(_external_inputs(out))
     assert result.data["render_runtime"] == "external"
     assert result.data["output"] == str(out)
-    assert "final_review" in result.data
+    assert result.success is True, result.error
+    assert result.data["final_review_status"] != "fail"
     assert out.stat().st_mtime_ns == before
+
+
+def test_external_runtime_rejects_a_zero_byte_render(tmp_path):
+    out = tmp_path / "empty.mp4"
+    out.touch()
+    result = VideoCompose().execute(_external_inputs(out))
+    assert result.success is False
+    assert "empty" in result.error and "empty.mp4" in result.error
 
 
 def test_unknown_runtime_still_rejected(tmp_path):
@@ -162,14 +174,55 @@ def test_unknown_runtime_still_rejected(tmp_path):
     assert "external" in result.error
 
 
-def test_omni_status_runs_without_pythonpath():
-    env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
-    env["PYTHONPATH"] = str(ROOT / "core")
-    proc = subprocess.run(
-        [sys.executable, "-m", "studio.cli", "status"],
-        capture_output=True, text=True, env=env, cwd="/", timeout=180,
-    )
+def _assert_clean_status(proc: subprocess.CompletedProcess) -> None:
     assert proc.returncode == 0, proc.stderr
     assert "hyperframes" in proc.stdout and "0.9.16" in proc.stdout
     assert "d21f5d4" in proc.stdout
-    assert "lip_sync" in proc.stdout and "h3_max_video" in proc.stdout
+    for name in DENYLIST["disabled"]:
+        assert name in proc.stdout
+    assert "LEAKED" not in proc.stdout
+    assert ": absent" in proc.stdout
+
+
+def _shell_env(**extra: str) -> dict[str, str]:
+    """A plain shell: nothing Make or Claude would have exported."""
+    drop = {"PYTHONPATH", "HYPERFRAMES_NO_TELEMETRY", "DISABLE_TELEMETRY"}
+    return {**{k: v for k, v in os.environ.items() if k not in drop}, **extra}
+
+
+def test_omni_status_runs_from_outside_the_repo():
+    proc = subprocess.run(
+        [sys.executable, "-m", "studio.cli", "status"],
+        capture_output=True, text=True, env=_shell_env(PYTHONPATH=str(ROOT / "core")),
+        cwd="/", timeout=180,
+    )
+    _assert_clean_status(proc)
+
+
+def test_omni_status_console_script_runs_without_pythonpath():
+    proc = subprocess.run(
+        [str(Path(sys.executable).parent / "omni"), "status"],
+        capture_output=True, text=True, env=_shell_env(), cwd="/", timeout=180,
+    )
+    _assert_clean_status(proc)
+
+
+@pytest.mark.parametrize("shell_value", [None, "0"], ids=["unset", "shell_says_0"])
+def test_omni_status_reports_what_a_child_receives_outside_make(shell_value):
+    extra = {} if shell_value is None else {
+        "HYPERFRAMES_NO_TELEMETRY": shell_value, "DISABLE_TELEMETRY": shell_value,
+    }
+    proc = subprocess.run(
+        [str(Path(sys.executable).parent / "omni"), "status"],
+        capture_output=True, text=True, env=_shell_env(**extra), cwd="/", timeout=180,
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert "HYPERFRAMES_NO_TELEMETRY=1 DISABLE_TELEMETRY=1" in proc.stdout
+
+
+def test_omni_status_fails_and_says_leaked_when_a_tool_leaks(monkeypatch, capsys):
+    from studio import cli
+
+    monkeypatch.setattr(cli, "_discover_tools", lambda: {"video_compose", "lip_sync"})
+    assert cli.main(["status"]) == 1
+    assert "LEAKED lip_sync" in capsys.readouterr().out
