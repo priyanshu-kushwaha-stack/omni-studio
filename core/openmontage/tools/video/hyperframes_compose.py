@@ -25,6 +25,8 @@ import time
 from pathlib import Path
 from typing import Any, Optional
 
+import yaml
+
 from tools.base_tool import (
     BaseTool,
     Determinism,
@@ -46,6 +48,17 @@ log = logging.getLogger("hyperframes_compose")
 _IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".bmp", ".tiff", ".tif", ".webp", ".gif"}
 _VIDEO_EXTENSIONS = {".mp4", ".mov", ".webm", ".mkv", ".m4v"}
 _AUDIO_EXTENSIONS = {".mp3", ".wav", ".m4a", ".aac", ".ogg", ".flac"}
+
+# omni-studio patch (core/PATCHES.md): telemetry off for the CLI child processes.
+os.environ["HYPERFRAMES_NO_TELEMETRY"] = "1"
+os.environ["DISABLE_TELEMETRY"] = "1"
+
+
+def _locked_npm_spec() -> str:
+    """omni-studio patch (core/PATCHES.md): the CLI version comes from core/lock.yaml."""
+    lock_path = Path(__file__).resolve().parents[3] / "lock.yaml"
+    pin = yaml.safe_load(lock_path.read_text(encoding="utf-8"))["hyperframes"]
+    return f"{pin['npm']}@{pin['version']}"
 
 
 class HyperFramesCompose(BaseTool):
@@ -241,6 +254,7 @@ class HyperFramesCompose(BaseTool):
 
     _NODE_FLOOR_MAJOR = 22
     _NPM_PACKAGE = "hyperframes"  # published npm name (NOT @hyperframes/cli — that's 404)
+    _NPM_SPEC = _locked_npm_spec()
     # Process-level cache for the npm resolve check. Shape:
     #   {"version": "0.4.5"}   → package resolves
     #   {"error": "<short>"}   → resolution failed (offline, unpublished, etc.)
@@ -276,7 +290,7 @@ class HyperFramesCompose(BaseTool):
         on PATH, which meant `runtime_available: True` on any machine with
         Node + FFmpeg — even offline, even if npm was down, even if the
         package was unpublished. This method performs a cheap
-        `npm view hyperframes version` (5s timeout) and caches the answer
+        `npm view hyperframes version` (30s timeout) and caches the answer
         for the rest of the process.
 
         Returns {"version": "X.Y.Z"} on success, {"error": "<short>"} on any
@@ -292,13 +306,13 @@ class HyperFramesCompose(BaseTool):
 
         try:
             proc = subprocess.run(
-                [npm, "view", cls._NPM_PACKAGE, "version"],
+                [npm, "view", cls._NPM_SPEC, "version"],
                 capture_output=True,
                 text=True,
-                timeout=5,
+                timeout=30,
             )
         except subprocess.TimeoutExpired:
-            cls._npm_resolve_cache = {"error": "timeout (5s) — offline or slow registry"}
+            cls._npm_resolve_cache = {"error": "timeout (30s) — offline or slow registry"}
             return cls._npm_resolve_cache
         except (OSError, subprocess.SubprocessError) as e:
             cls._npm_resolve_cache = {"error": f"npm view failed: {type(e).__name__}"}
@@ -342,7 +356,7 @@ class HyperFramesCompose(BaseTool):
 
         try:
             proc = subprocess.run(
-                [npx, "--yes", cls._NPM_PACKAGE, "doctor", "--json"],
+                [npx, "--yes", cls._NPM_SPEC, "doctor", "--json"],
                 capture_output=True,
                 text=True,
                 timeout=20,
@@ -1360,7 +1374,7 @@ class HyperFramesCompose(BaseTool):
         want to raise CalledProcessError on non-zero exits — the caller
         parses lint/validate/render exit codes itself.
         """
-        cmd = ["npx", "--yes", "hyperframes", *args]
+        cmd = ["npx", "--yes", self._NPM_SPEC, *args]
         # On Windows, resolve the .cmd wrapper so subprocess can find it
         # without shell=True.
         if os.name == "nt":

@@ -14,3 +14,7 @@ __pycache__/
 *.mov
 *.wav
 *.safetensors
+
+# Build and tool output
+*.egg-info/
+node_modules/

@@ -1,0 +1,21 @@
+# Every outside tool omni-studio runs is pinned here.
+# tools/video/hyperframes_compose.py reads hyperframes.version at import.
+upstream:
+  repo: https://github.com/calesthio/OpenMontage.git
+  commit: d21f5d4eaa08422b09c7091757a05affcbabb35b
+  prefix: core/openmontage
+hyperframes:
+  npm: hyperframes
+  version: 0.9.16
+remotion:
+  npm: remotion
+  version: 4.0.484
+  installed_by: npm ci in core/openmontage/remotion-composer (package-lock.json)
+skills:
+  # Git tree hashes of the skills vendored with the upstream commit above.
+  vendored:
+    core/openmontage/skills: 2fcc98358735ab2cb2f36a1ade592d9c8735752f
+    core/openmontage/.agents/skills: e60fcef3be57b8b928ce5c7b0d924510c49c56ff
+    core/openmontage/.claude/skills: 5c3347ccaee44878ad91d1cb26dd7d1fb9ebe29b
+  # Add an entry only after reviewing the skill's contents.
+  third_party_installed: []
