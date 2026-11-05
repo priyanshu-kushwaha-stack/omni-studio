@@ -1,0 +1,16 @@
+# Environments
+.venv/
+.venv-media/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets live in ~/.config/omni-studio/, never in this repo
+.env
+*.token
+
+# Media and model weights
+*.mp4
+*.mov
+*.wav
+*.safetensors
