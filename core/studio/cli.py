@@ -106,6 +106,10 @@ def _print_channels() -> int:
               f"${config.budget_usd_per_video}/video  {len(videos)} video(s)  "
               f"board {_running_board_url(channel) or 'stopped'}")
         for video in videos:
+            if "error" in video:
+                failed = 1
+                print(f"    {video['id']}  REFUSED: {video['error']}")
+                continue
             gates = ", ".join(video["awaiting"]) or "none"
             budget = video["budget_usd"]
             of_budget = f"of ${budget:.2f}" if budget is not None else "with no cost log"

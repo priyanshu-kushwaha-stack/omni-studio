@@ -34,6 +34,8 @@ ROOT = Path(__file__).resolve().parents[2]
 OPENMONTAGE = ROOT / "core" / "openmontage"
 
 SLUG_RE = re.compile(r"^[a-z]+(-[a-z]+)*$")
+# What new_video names a folder: <date>_<title slug>.
+VIDEO_ID_RE = re.compile(r"^\d{4}-\d{2}-\d{2}_[a-z0-9]+(-[a-z0-9]+)*$")
 YOUTUBE_ID_RE = re.compile(r"^UC[\w-]{22}$")
 TOKEN_DIR = "~/.config/omni-studio/"
 SEVERITIES = ("low", "medium", "high")
@@ -184,9 +186,39 @@ def _check_cross_fields(slug: str, channel_dir: Path, config: ChannelConfig) -> 
     return problems
 
 
+def _channel_dir(slug: str) -> Path:
+    """channels/<slug>, refused unless the slug is plain and the folder stays in channels/."""
+    if not isinstance(slug, str) or not SLUG_RE.fullmatch(slug):
+        raise ChannelError(
+            f"Bad channel slug {slug!r}: use lowercase words and hyphens, no numbers"
+        )
+    channel_dir = channels_dir() / slug
+    if not channel_dir.resolve().is_relative_to(channels_dir().resolve()):
+        raise ChannelError(f"Channel {slug!r} resolves outside {channels_dir()}")
+    return channel_dir
+
+
+def video_dir(channel: Channel, video_id: str) -> Path:
+    """videos/<video_id>, refused unless the id is a date_slug and the folder stays in videos/.
+
+    Paths are resolved, so neither ``..`` nor a symlink can reach another channel.
+    """
+    if not isinstance(video_id, str) or not VIDEO_ID_RE.fullmatch(video_id):
+        raise ChannelError(
+            f"Bad video id {video_id!r}: expected <YYYY-MM-DD>_<slug>, as omni new-video makes"
+        )
+    videos = channel.videos_dir.resolve()
+    if not videos.is_relative_to(channel.dir.resolve()):
+        raise ChannelError(f"{channel.videos_dir} resolves outside channel {channel.slug!r}")
+    path = channel.videos_dir / video_id
+    if not path.resolve().is_relative_to(videos):
+        raise ChannelError(f"Video {video_id!r} resolves outside {channel.videos_dir}")
+    return path
+
+
 def load_channel(slug: str) -> Channel:
     """Load and fully validate one channel, or raise ChannelError naming every problem."""
-    channel_dir = channels_dir() / slug
+    channel_dir = _channel_dir(slug)
     path = channel_dir / "channel.yaml"
     try:
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -262,7 +294,7 @@ def tracker_for(channel: Channel, video_id: str):
     return CostTracker(
         budget_total_usd=float(channel.config.budget_usd_per_video),
         mode=BudgetMode.CAP,
-        cost_log_path=channel.videos_dir / video_id / "cost_log.json",
+        cost_log_path=video_dir(channel, video_id) / "cost_log.json",
     )
 
 
@@ -280,7 +312,7 @@ def new_video(channel: Channel, title: str, format_name: str, on: Optional[date]
             f"Its formats: {sorted(channel.config.formats)}"
         )
     video_id = f"{(on or date.today()).isoformat()}_{_slugify(title)}"
-    if (channel.videos_dir / video_id).exists():
+    if video_dir(channel, video_id).exists():
         raise ChannelError(f"Video {video_id!r} already exists in channel {channel.slug!r}")
 
     project = init_project(
@@ -308,7 +340,7 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
     _upstream()
     from lib.checkpoint import CheckpointValidationError, read_checkpoint, write_checkpoint
 
-    if not (channel.videos_dir / video_id).is_dir():
+    if not video_dir(channel, video_id).is_dir():
         raise ChannelError(f"No video {video_id!r} in channel {channel.slug!r}")
     checkpoint = read_checkpoint(channel.videos_dir, video_id, stage)
     if checkpoint is None:
@@ -397,6 +429,11 @@ def video_summaries(channel: Channel) -> list[dict[str, Any]]:
     if not channel.videos_dir.is_dir():
         return summaries
     for project in sorted(p for p in channel.videos_dir.iterdir() if p.is_dir()):
+        try:
+            video_dir(channel, project.name)
+        except ChannelError as exc:
+            summaries.append({"id": project.name, "error": str(exc)})
+            continue
         awaiting = []
         for path in sorted(project.glob("checkpoint_*.json")):
             checkpoint = json.loads(path.read_text(encoding="utf-8"))

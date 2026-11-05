@@ -397,7 +397,7 @@ def test_approve_refuses_when_nothing_awaits(gated_video, capsys):
     assert cli.main(["approve", "sample", video, "research"]) == 2
     assert "nothing to approve" in capsys.readouterr().err
 
-    assert cli.main(["approve", "sample", "no-such-video", "research"]) == 2
+    assert cli.main(["approve", "sample", "2026-01-01_no-such-video", "research"]) == 2
     assert "No video" in capsys.readouterr().err
 
 
@@ -413,6 +413,146 @@ def test_approve_cannot_skip_an_earlier_stage(gated_video, capsys):
     assert cli.main(["approve", "sample", video, "script"]) == 2
     assert "PREREQUISITE VIOLATION" in capsys.readouterr().err
     assert read_checkpoint(channel.videos_dir, video, "script")["status"] == "awaiting_human"
+
+
+def test_a_second_approve_after_a_passed_gate_is_refused(gated_video, capsys):
+    channel, video = gated_video
+    write_stage(channel, video, "research", "awaiting_human")
+    assert cli.main(["approve", "sample", video, "research"]) == 0
+    before = (channel.videos_dir / video / "checkpoint_research.json").read_text("utf-8")
+    capsys.readouterr()
+    assert cli.main(["approve", "sample", video, "research"]) == 2
+    assert "'completed', not 'awaiting_human'" in capsys.readouterr().err
+    assert (channel.videos_dir / video / "checkpoint_research.json").read_text("utf-8") == before
+
+
+# --- slugs and video ids cannot leave their folders ---
+
+VIDEO = "2026-11-05_same"
+
+
+@pytest.fixture()
+def victim(studio_root):
+    """A channel with a gate awaiting approval, and a second channel to attack it from."""
+    target = smoke_channel("victim", 3)
+    channels.new_video(target, "Same", "smoke", on=date(2026, 11, 5))
+    write_stage(target, VIDEO, "research", "awaiting_human")
+    attacker = smoke_channel("attacker", 3)
+    return target, attacker
+
+
+def bad_video_ids(target: channels.Channel, attacker: channels.Channel) -> dict[str, str]:
+    link = attacker.videos_dir / "2026-11-05_link"
+    link.symlink_to(target.videos_dir / VIDEO, target_is_directory=True)
+    return {
+        "dotdot": f"../../victim/videos/{VIDEO}",
+        "dotdot_after_id": f"{VIDEO}/../../../victim/videos/{VIDEO}",
+        "absolute": str(target.videos_dir / VIDEO),
+        "symlink_out": link.name,
+    }
+
+
+def assert_victim_untouched(target: channels.Channel) -> None:
+    checkpoint = read_checkpoint(target.videos_dir, VIDEO, "research")
+    assert checkpoint["status"] == "awaiting_human" and checkpoint["human_approved"] is False
+
+
+@pytest.mark.parametrize("kind", ["dotdot", "dotdot_after_id", "absolute", "symlink_out"])
+def test_approve_refuses_a_video_id_that_leaves_the_channel(victim, kind, capsys):
+    target, attacker = victim
+    video_id = bad_video_ids(target, attacker)[kind]
+    assert cli.main(["approve", "attacker", video_id, "research"]) == 2
+    err = capsys.readouterr().err
+    assert "Bad video id" in err or "resolves outside" in err
+    with pytest.raises(ChannelError):
+        channels.approve_stage(attacker, video_id, "research")
+    assert_victim_untouched(target)
+
+
+@pytest.mark.parametrize("kind", ["dotdot", "dotdot_after_id", "absolute", "symlink_out"])
+def test_budget_tracker_refuses_a_video_id_that_leaves_the_channel(victim, kind):
+    target, attacker = victim
+    video_id = bad_video_ids(target, attacker)[kind]
+    before = (target.videos_dir / VIDEO / "cost_log.json").read_text("utf-8")
+    with pytest.raises(ChannelError, match="Bad video id|resolves outside"):
+        channels.tracker_for(attacker, video_id)
+    assert (target.videos_dir / VIDEO / "cost_log.json").read_text("utf-8") == before
+
+
+def test_symlink_to_a_folder_inside_the_channel_is_still_accepted(victim):
+    _, attacker = victim
+    channels.new_video(attacker, "Real", "smoke", on=date(2026, 11, 5))
+    (attacker.videos_dir / "2026-11-05_alias").symlink_to(
+        attacker.videos_dir / "2026-11-05_real", target_is_directory=True
+    )
+    assert channels.tracker_for(attacker, "2026-11-05_alias").budget_total_usd == 3
+
+
+def test_a_videos_folder_symlinked_out_of_the_channel_is_refused(victim, capsys):
+    target, attacker = victim
+    shutil.rmtree(attacker.videos_dir)
+    attacker.videos_dir.symlink_to(target.videos_dir, target_is_directory=True)
+    assert cli.main(["approve", "attacker", VIDEO, "research"]) == 2
+    assert "resolves outside channel 'attacker'" in capsys.readouterr().err
+    with pytest.raises(ChannelError, match="resolves outside"):
+        channels.tracker_for(attacker, VIDEO)
+    assert_victim_untouched(target)
+
+
+def test_status_flags_a_video_symlinked_out_of_the_channel(victim, monkeypatch, capsys):
+    target, attacker = victim
+    bad_video_ids(target, attacker)
+    monkeypatch.setattr(cli, "_discover_tools", lambda: {"video_compose"})
+    assert cli.main(["status"]) == 1
+    assert "2026-11-05_link  REFUSED" in capsys.readouterr().out
+
+
+def bad_slugs(studio_root: Path, target: channels.Channel) -> dict[str, str]:
+    outside = studio_root.parent / "elsewhere"
+    shutil.copytree(target.dir, outside)
+    (channels.channels_dir() / "linked").symlink_to(outside, target_is_directory=True)
+    return {
+        "dotdot": "../channels/victim",
+        "absolute": str(target.dir),
+        "number": "victim1",
+        "underscore": "_template",
+        "upper": "Victim",
+        "symlink_out": "linked",
+    }
+
+
+SLUG_COMMANDS = {
+    "approve": lambda slug: ["approve", slug, VIDEO, "research"],
+    "board": lambda slug: ["board", slug, "--no-open"],
+    "check": lambda slug: ["check", slug],
+    "fix": lambda slug: ["fix", slug, "--format", "smoke", "--stage", "script",
+                         "--severity", "low", "--example", "x"],
+    "new-video": lambda slug: ["new-video", slug, "Another", "--format", "smoke"],
+}
+
+
+@pytest.mark.parametrize("kind", ["dotdot", "absolute", "number", "underscore", "upper", "symlink_out"])
+def test_load_channel_refuses_bad_slugs(victim, studio_root, kind):
+    target, _ = victim
+    slug = bad_slugs(studio_root, target)[kind]
+    with pytest.raises(ChannelError, match="Bad channel slug|resolves outside"):
+        channels.load_channel(slug)
+
+
+@pytest.mark.parametrize("command", sorted(SLUG_COMMANDS))
+@pytest.mark.parametrize("kind", ["dotdot", "absolute", "number", "symlink_out"])
+def test_every_command_refuses_bad_slugs(victim, studio_root, command, kind, capsys):
+    target, _ = victim
+    slug = bad_slugs(studio_root, target)[kind]
+    # check reports a failed channel (exit 1); every other command refuses (exit 2).
+    assert cli.main(SLUG_COMMANDS[command](slug)) == (1 if command == "check" else 2)
+    captured = capsys.readouterr()
+    said = captured.out + captured.err
+    assert "Bad channel slug" in said or "resolves outside" in said
+    assert_victim_untouched(target)
+    assert not list(channels.issues_dir().glob("*.yaml"))
+    assert not (target.dir / ".board.json").exists()
+    assert sorted(p.name for p in target.videos_dir.iterdir() if p.is_dir()) == [VIDEO]
 
 
 # --- fix, check, status ---
@@ -518,6 +658,8 @@ def test_each_channel_gets_its_own_board_and_none_on_the_owners_port(studio_root
     reason="Remotion is not installed",
 )
 def test_same_named_assets_render_each_channels_own_image(tmp_path):
+    public = REAL_ROOT / "core" / "openmontage" / "remotion-composer" / "public"
+    public_before = sorted(str(p.relative_to(public)) for p in public.rglob("*"))
     colours = {"red": (220, 30, 30), "blue": (30, 60, 220)}
     for name, colour in colours.items():
         image = tmp_path / name / "assets" / "images" / "hero.png"
@@ -550,3 +692,4 @@ def test_same_named_assets_render_each_channels_own_image(tmp_path):
         with Image.open(frame) as opened:
             pixel = opened.convert("RGB").getpixel((opened.width // 2, opened.height // 2))
         assert all(abs(got - want) < 25 for got, want in zip(pixel, colour)), (name, pixel)
+    assert sorted(str(p.relative_to(public)) for p in public.rglob("*")) == public_before

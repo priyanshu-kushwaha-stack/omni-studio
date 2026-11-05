@@ -25,8 +25,9 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 `omni new-channel <slug>` adds `styles/custom/<slug>.yaml`, a relative symlink to
 `../../../../channels/<slug>/playbook.yaml`. Upstream loads playbooks by file name, so this file
 is named for the channel rather than `studio`. Nothing else is written inside `core/openmontage/`.
-It adds no code and needs no re-check after an upstream pull. `styles/custom/` holds no other file
-in this repo.
+It adds no code and needs no re-check after an upstream pull. Root `.gitignore` ignores
+`core/openmontage/styles/custom/*.yaml`, so these links are never committed; a fresh clone has none
+until each channel's link is made again.
 
 ## Upstream tests the denylist affects
 
@@ -34,6 +35,12 @@ No upstream test file is edited for this. Root `Makefile` deselects
 `tests/contracts/test_kling_official_avatar.py::test_registry_discovers_kling_lip_sync`, which
 asserts a banned tool is discovered. `test_agent_skill_pointer_resolves` is generated per
 registered tool, so each denylisted tool removes its cases from the collected count.
+
+`tests/tools` is not in `make test`. Two of its tests are red by design because they assert a
+banned tool is discovered: `tests/tools/test_minimax_video.py::test_minimax_video_is_discovered_as_direct_provider`
+(`minimax_video`, which defaults to H3) and
+`tests/tools/test_new_video_model_support.py::test_fal_gemini_omni_and_minimax_h3_are_discovered_and_submit`
+(`minimax_fal_video`, which can only run H3).
 
 ## Known unpinned text
 
