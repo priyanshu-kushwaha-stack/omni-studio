@@ -55,10 +55,37 @@ def _scrub_unicode_dashes(value: Any) -> Any:
     return value
 
 
-def _load_disabled_tools() -> frozenset[str]:
-    """omni-studio patch (core/PATCHES.md): names in the denylist never register."""
-    path = Path(__file__).resolve().parents[2] / "studio" / "config" / "disabled_tools.yaml"
-    return frozenset(yaml.safe_load(path.read_text(encoding="utf-8"))["disabled"])
+_DISABLED_TOOLS_PATH = (
+    Path(__file__).resolve().parents[2] / "studio" / "config" / "disabled_tools.yaml"
+)
+
+
+def _load_disabled_tools(path: Path = _DISABLED_TOOLS_PATH) -> frozenset[str]:
+    """omni-studio patch (core/PATCHES.md): names in the denylist never register.
+
+    Fails closed: any problem with the file raises, so the registry cannot load
+    and no disabled tool can silently register.
+    """
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError) as exc:
+        raise RuntimeError(f"Tool denylist {path} cannot be read: {exc}") from exc
+    except yaml.YAMLError as exc:
+        raise RuntimeError(f"Tool denylist {path} is not valid YAML: {exc}") from exc
+    if not isinstance(data, dict) or "disabled" not in data:
+        raise RuntimeError(f"Tool denylist {path} is missing the 'disabled' key")
+    names = data["disabled"]
+    if not isinstance(names, list):
+        raise RuntimeError(
+            f"Tool denylist {path}: 'disabled' must be a list, got {type(names).__name__}"
+        )
+    for name in names:
+        if not isinstance(name, str) or not name.strip():
+            raise RuntimeError(
+                f"Tool denylist {path}: every 'disabled' entry must be a non-empty string, "
+                f"got {name!r}"
+            )
+    return frozenset(names)
 
 
 DISABLED_TOOLS = _load_disabled_tools()
