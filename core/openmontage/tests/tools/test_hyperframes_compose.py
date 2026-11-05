@@ -1241,6 +1241,7 @@ def test_edit_decisions_schema_accepts_render_runtime():
         "remotion",
         "hyperframes",
         "ffmpeg",
+        "external",
     ]
 
 

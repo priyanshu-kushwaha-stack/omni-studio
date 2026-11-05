@@ -11,7 +11,7 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | `schemas/artifacts/edit_decisions.schema.json` | Adds `external` to the `render_runtime` enum | `external` runtime |
 | `schemas/artifacts/proposal_packet.schema.json` | Adds `external` to the `render_runtime` enum | `external` runtime |
 | `schemas/artifacts/final_review.schema.json` | Adds `external` to the `render_runtime_used` enum | `external` runtime |
-| `tests/tools/test_hyperframes_compose.py` | `test_proposal_packet_schema_accepts_render_runtime` expects `external` | That assertion pins the enum changed above |
+| `tests/tools/test_hyperframes_compose.py` | `test_proposal_packet_schema_accepts_render_runtime` and `test_edit_decisions_schema_accepts_render_runtime` expect `external` | Those assertions pin the enums changed above |
 | `Makefile` | Adds `HYPERFRAMES_SPEC`, read from `core/lock.yaml`. `setup` and `hyperframes-warm` fetch that version | Pin HyperFrames in cache warmers |
 
 ## New files with `studio` names
