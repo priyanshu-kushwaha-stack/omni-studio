@@ -1,6 +1,6 @@
 # Validated by core/studio/channels.py. Unknown fields and bad values are errors.
 id: see-underneath
-youtube_channel_id: null        # UC + 22 characters. Required once status is testing or live.
+youtube_channel_id: UC3Lf--6pLGv6eEEviASRxtQ   # @SeeUnderneath, page set up 2026-11-06
 status: draft                   # draft | testing | live | paused
 niche: "Explainers of the everyday science people stopped questioning"
 risk_class: B                   # A | B | C

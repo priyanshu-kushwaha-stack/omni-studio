@@ -1,6 +1,6 @@
 # Validated by core/studio/channels.py. Unknown fields and bad values are errors.
 id: power-and-citizen
-youtube_channel_id: null        # UC + 22 characters. Required once status is testing or live.
+youtube_channel_id: UC8w3De7erLltACMlOeQzJaA   # @PowerAndCitizen, page set up 2026-11-06
 status: draft                   # draft | testing | live | paused
 niche: "How countries are governed, compared across countries, and what each system asks of a citizen"
 risk_class: B                   # A | B | C

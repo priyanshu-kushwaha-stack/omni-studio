@@ -23,3 +23,16 @@ A/B/C was chosen on the first look.
   --picture channels/say-suppose/page/candidates/a-rings.png
   --scene channels/say-suppose/page/candidates/banner-scene-cropped.png`
 - `candidates/` is git-ignored. The tracked `avatar.png`, `banner.png` and `watermark.png` are the record.
+
+## Studio session (2026-11-06, agent-driven Chrome; owner said "Publish all three")
+- Branding: picture `avatar.png`, banner `banner.png` (name and line inside "Viewable on all devices"),
+  watermark `watermark.png` on "Entire video". Published.
+- Basic info: description from `about.md`. Handle @SaySuppose: already set.
+- Settings, Channel: country India, 8 keywords (150 of 500 characters). Saved.
+- Channel id `UC_Ve59ry_JYiX8sUaSOV8sQ`, recorded in `channel.yaml`.
+- Not done: contact email (owner enters it; never in the repo), links, trailer, featured video.
+
+## Verification
+- Signed-out fetch of `https://www.youtube.com/@SaySuppose`: name, description and keywords match `about.md`;
+  the served picture and banner are the uploaded files.
+- Country is not on the public page; it was read back as India in Studio before "Settings saved".

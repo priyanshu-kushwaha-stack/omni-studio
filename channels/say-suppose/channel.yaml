@@ -1,6 +1,6 @@
 # Validated by core/studio/channels.py. Unknown fields and bad values are errors.
 id: say-suppose
-youtube_channel_id: null        # UC + 22 characters. Required once status is testing or live.
+youtube_channel_id: UC_Ve59ry_JYiX8sUaSOV8sQ   # @SaySuppose, page set up 2026-11-06
 status: draft                   # draft | testing | live | paused
 niche: "One what-if per video, followed through with real physics, biology, history and economics"
 risk_class: B                   # A | B | C
