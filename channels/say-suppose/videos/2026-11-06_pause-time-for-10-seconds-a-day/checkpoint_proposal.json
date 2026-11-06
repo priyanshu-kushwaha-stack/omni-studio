@@ -3,11 +3,11 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-06T11:12:29.355763+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-06T13:12:15.494329+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -154,5 +154,14 @@
       ]
     }
   },
-  "style_playbook": "say-suppose"
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-06T13:12:15.471137+00:00",
+      "via": "omni approve",
+      "proof": "d99ec06c16ab64ae4fc00a6193bbb7fe8181119425b13dc284f88478b204332a",
+      "note": "Owner, 2026-11-06, in chat: 'A for both'. Pair A."
+    }
+  }
 }

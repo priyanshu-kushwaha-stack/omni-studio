@@ -1,6 +1,6 @@
 # Packaging: pause time for 10 seconds a day
 
-status: awaiting the owner (G1)
+status: G1 passed by the owner, 2026-11-06 ("A for both"): pair A
 topic, in the owner's words (2026-11-06): "What if you could pause time for only 10 seconds in a day ?"
 
 ## Premise

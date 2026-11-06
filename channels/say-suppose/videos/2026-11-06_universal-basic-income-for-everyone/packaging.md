@@ -1,6 +1,6 @@
 # Packaging: universal basic income for everyone
 
-status: awaiting the owner (G1)
+status: G1 passed by the owner, 2026-11-06 ("A for both"): pair A
 topic, in the owner's words (2026-11-06): "What would happen if everyone if given Basic Universal Income ?"
 
 ## Premise

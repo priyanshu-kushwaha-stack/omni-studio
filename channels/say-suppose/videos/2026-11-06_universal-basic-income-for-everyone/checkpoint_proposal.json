@@ -3,11 +3,11 @@
   "project_id": "2026-11-06_universal-basic-income-for-everyone",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-06T11:12:29.456196+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-06T13:12:16.408094+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -154,5 +154,14 @@
       ]
     }
   },
-  "style_playbook": "say-suppose"
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-06T13:12:16.387360+00:00",
+      "via": "omni approve",
+      "proof": "918fceeb08c38486ab1155d259e11827d66e2c2f6f6fcb11d3c975aa65853fd9",
+      "note": "Owner, 2026-11-06, in chat: 'A for both'. Pair A."
+    }
+  }
 }
