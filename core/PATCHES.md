@@ -28,6 +28,8 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | `skills/studio/studio-dialogue-*.md` | One stage skill per gate |
 | `pipeline_defs/studio-short.yaml` | Seven owner gates G1-G7 for 9:16 Shorts (Shorts sound and ending rule); `metadata.studio_checks` |
 | `skills/studio/studio-short-*.md` | One stage skill per gate for Shorts |
+| `pipeline_defs/studio-whatif.yaml` | Seven owner gates G1-G7 for Say Suppose's second-person what-if stories; `metadata.studio_checks`. No engine tools yet: the paper-cut rig is not in this repo |
+| `skills/studio/studio-whatif-*.md` | One stage skill per gate for what-if stories |
 
 ## Generated links
 
