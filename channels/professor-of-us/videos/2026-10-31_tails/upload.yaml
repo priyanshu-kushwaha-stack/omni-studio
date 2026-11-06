@@ -1,0 +1,21 @@
+# omni upload metadata (core/studio/publish/youtube.py). Privacy is always private and is not a field here.
+# Text from publish.md. The file is the owner-approved no-boil re-render (approval.md), not the published draft_v5.
+file: renders/rerender_noboil.mp4
+title: "You Had a Tail. Here's Where It Went."
+description: |
+  You had a tail, around week five in the womb, about a sixth of your body. By week eight it's gone. Apes lost theirs about 25 million years ago, and in 2024 scientists found a "jumping gene" in a tail gene that may have helped. The researchers suspect it came with a price.
+
+  Sources
+  Giri & Chavan (2019), human tail review: https://pmc.ncbi.nlm.nih.gov/articles/PMC6417348/
+  Fallon & Simandl (1978), how the embryo's tail disappears: https://pubmed.ncbi.nlm.nih.gov/677043/
+  Xia et al. (2024), Nature, on the genetic basis of tail loss: https://pmc.ncbi.nlm.nih.gov/articles/PMC10901737/ and https://pubmed.ncbi.nlm.nih.gov/38418917/
+  Coccyx anatomy (StatPearls): https://pubmed.ncbi.nlm.nih.gov/33085286/
+  Lirette et al. (2014), coccydynia and the sitting tripod: https://pubmed.ncbi.nlm.nih.gov/24688338/
+
+  Illustrations are hand-styled drawings made for this Short; the narration is the creator's own cloned voice.
+
+  #shorts #evolution #humanbody #science
+tags: [shorts, evolution, human body, science, tailbone]
+# publish.md: "Audience: not made for kids" and "Altered content disclosure: No".
+made_for_kids: false
+contains_synthetic_media: false

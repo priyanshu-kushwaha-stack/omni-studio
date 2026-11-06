@@ -30,3 +30,19 @@ skills:
     core/openmontage/.claude/skills: 5c3347ccaee44878ad91d1cb26dd7d1fb9ebe29b
   # Add an entry only after reviewing the skill's contents.
   third_party_installed: []
+youtubeuploader:
+  # core/studio/publish/youtube.py runs only this binary, after re-hashing it. Install with
+  # `.venv/bin/omni upload --install`: it fetches the release tarball, checks tarball_sha256, extracts the binary
+  # into install_dir (git-ignored) and checks binary_sha256. Read at this tag: files.go LoadVideoMeta sets
+  # status.selfDeclaredMadeForKids from metaJSON "madeForKids" and status.containsSyntheticMedia from
+  # "containsSyntheticMedia", and force-sends both (false is sent, not omitted). Neither has a CLI flag.
+  repo: https://github.com/porjo/youtubeuploader
+  version: 1.25.5
+  tag: v1.25.5
+  commit: 301e5635160b3373f1548537a1bca1a3aaa9aa72
+  install_dir: .tools/youtubeuploader/1.25.5
+  platforms:
+    Darwin_arm64:
+      asset: youtubeuploader_1.25.5_Darwin_arm64.tar.gz
+      tarball_sha256: 89b29cbdb5db46a1607e6a4767c1718aa12bf7a22e566e10d174f329f4a48a73
+      binary_sha256: 6473b246b6dad7baa5cbfcae0c10555ffaeac466049b9e613c4ca1907af751be
