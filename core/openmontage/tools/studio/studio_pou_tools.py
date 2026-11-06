@@ -135,7 +135,8 @@ class _PouEngineTool(BaseTool):
 
 class PouTts(_PouEngineTool):
     name = "pou_tts"
-    capability = "tts"
+    # Not "tts": upstream's catalog contract pins the exact set of tts providers.
+    capability = "studio_tts"
     script = "tts.py"
     media = True
     determinism = Determinism.STOCHASTIC

@@ -49,6 +49,19 @@ banned tool is discovered: `tests/tools/test_minimax_video.py::test_minimax_vide
 `tests/tools/test_new_video_model_support.py::test_fal_gemini_omni_and_minimax_h3_are_discovered_and_submit`
 (`minimax_fal_video`, which can only run H3).
 
+## Upstream tests that channel playbooks affect
+
+No upstream test file is edited for this either. `tests/contracts/test_remotion_theme_playbook_keys.py` and
+`test_theme_text_contrast_contract.py` enumerate `list_playbooks()`, which includes `styles/custom/`, and then
+read `styles/<name>.yaml`, so any real channel link fails them. Root `Makefile` loads `-p studio.pytest_upstream`
+(`core/studio/pytest_upstream.py`), which hides channel links from that enumeration for the upstream run only.
+`core/studio/tests/test_channel_playbooks.py` runs the same checks on each channel playbook by its real path.
+professor-of-us fails upstream's caption contrast (dark bar on cream paper, 1.7:1); that test is a strict xfail
+because the channel renders outside `video_compose`.
+
+`pou_tts` declares capability `studio_tts`, not `tts`: `test_phase3_contracts.py::test_registry_catalog_views`
+pins the exact set of tts providers.
+
 ## Known unpinned text
 
 Upstream docs and skills such as `skills/core/hyperframes.md` still say `npx hyperframes`, and
