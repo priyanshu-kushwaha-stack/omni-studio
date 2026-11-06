@@ -1,8 +1,9 @@
 # Owner rules for Professor of Us
 
 Six rules from the owner's review notes (sourced from the owner's memory notes
-`feedback-*.md`, 2026-10-30 to 2026-11-02). Each names its automated check, or is a G6 watch item when no
-check exists. `core/studio/tests/test_rules.py` keeps this table and the files in step.
+`feedback-*.md`, 2026-10-30 to 2026-11-06). Each names its automated check, or is a G6 watch item when no
+check exists. `core/studio/tests/test_studio_tools.py` (`test_six_rules_each_name_a_check_or_a_g6_watch_item`) keeps this
+table and the files in step.
 
 | Rule | Check | Kind |
 |---|---|---|

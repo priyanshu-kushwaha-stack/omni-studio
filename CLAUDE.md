@@ -106,7 +106,8 @@ say in one line why not, then re-present.
 Video craft rules, from the owner's notes on Professor of Us:
 
 - Characters talk to each other in distinct voices, not documentary narration.
-- Ask the viewer a question, pause, then answer, about every 20-30 s.
+- Ask a question about every 20-30 s inside the dialogue; a character answers at once. No pause, no quiz boards
+  (owner, 2026-11-06).
 - Audio: fade line edges, mute end-of-take pops, ramp music ducks, and scan for clicks
   before handing audio over.
 - On-screen text stays UI-safe, off the drawing, off faces, and never overlaps.

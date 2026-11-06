@@ -52,38 +52,138 @@ def test_command_refuses_unknown_or_unsafe_channels(slug):
         pou.PouCompose().command({"channel": slug, "args": []})
 
 
+CH = "professor-of-us"
+
+
 def test_paid_tts_needs_the_owners_approval():
-    args = ["t.txt", "--engine", "eleven", "-o", "x.wav"]
-    result = pou.PouTts().execute({"channel": "professor-of-us", "args": args})
+    args = ["t.txt", "-o", "x.wav"]
+    result = pou.PouTts().execute({"channel": CH, "engine": "eleven", "args": args})
     assert not result.success and "paid provider call" in result.error
-    with pytest.raises(PermissionError):
-        pou.PouTts().command({"channel": "professor-of-us", "args": ["t.txt", "--engine=eleven", "-o", "x"]})
-    cmd, _ = pou.PouTts().command({"channel": "professor-of-us", "args": args, "owner_approved_paid_call": True})
-    assert "eleven" in cmd
-    cmd, _ = pou.PouTts().command({"channel": "professor-of-us", "args": ["t.txt", "--engine", "qwen3", "-o", "x"]})
-    assert "qwen3" in cmd
+    cmd, _ = pou.PouTts().command({"channel": CH, "engine": "eleven", "args": args, "owner_approved_paid_call": True})
+    assert cmd[-2:] == ["--engine", "eleven"]
+    cmd, _ = pou.PouTts().command({"channel": CH, "engine": "qwen3", "args": args})
+    assert cmd[-2:] == ["--engine", "qwen3"]
+
+
+@pytest.mark.parametrize("engine, args, error", [
+    # review finding 5: argparse abbreviation reached tts.py as --engine eleven
+    ("qwen3", ["t.txt", "--eng", "eleven", "-o", "x"], ValueError),
+    # review finding 5: last --engine won inside tts.py
+    ("qwen3", ["t.txt", "--engine", "eleven", "-o", "x"], ValueError),
+    ("qwen3", ["t.txt", "--engine=eleven", "-o", "x"], ValueError),
+    (None, ["t.txt", "--engine", "eleven", "-o", "x"], ValueError),
+    ("elevenlabs", ["t.txt", "-o", "x"], ValueError),
+])
+def test_tts_engine_bypasses_are_refused(engine, args, error):
+    with pytest.raises(error):
+        pou.PouTts().command({"channel": CH, "engine": engine, "args": args})
+
+
+def test_tts_script_itself_refuses_a_repeated_or_abbreviated_engine(tmp_path):
+    script = REAL_ROOT / "core" / "engines" / "pou" / "scripts" / "tts.py"
+    for argv in (["--engine", "qwen3", "--engine", "eleven"], ["--eng", "eleven"]):
+        proc = subprocess.run([sys.executable, str(script), "t.txt", *argv, "-o", str(tmp_path / "x.wav")],
+                              capture_output=True, text=True, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+        assert proc.returncode == 2, proc.stderr
+
+
+def _stage(tmp_path, **scene):
+    stage = tmp_path / "stage.json"
+    stage.write_text(json.dumps({"scenes": [{"id": "s001", **scene}]}))
+    return stage
 
 
 def test_boil_is_refused(tmp_path):
     video = tmp_path / "v"
     video.mkdir()
+    base = ["--narration", "n.wav", "--words", "w.json", "-o", "o.mp4"]
     (video / "motion.json").write_text(json.dumps([{"scene": "s001", "effect": "boil"}]))
     with pytest.raises(PermissionError, match="line boil"):
-        pou.PouCompose().command({"channel": "professor-of-us", "args": [str(video), "--motion"]})
+        pou.PouCompose().command({"channel": CH, "args": [str(video), *base, "--motion"]})
     other = tmp_path / "m.json"
     other.write_text(json.dumps([{"scene": "s002", "effect": "boil"}]))
     with pytest.raises(PermissionError, match="s002"):
-        pou.PouCompose().command({"channel": "professor-of-us", "args": [str(video), "--motion", str(other)]})
-    stage = tmp_path / "stage.json"
-    stage.write_text(json.dumps({"scenes": [{"id": "s001", "boil": True}]}))
+        pou.PouCompose().command({"channel": CH, "args": [str(video), *base, "--motion", str(other)]})
+    with pytest.raises(PermissionError, match="line boil"):
+        pou.PouPuppet().command({"channel": CH, "args": ["clips", str(_stage(tmp_path, boil=True))]})
+
+
+def test_motion_equals_path_is_checked(tmp_path):
+    """Review finding 3: --motion=path skipped the scan."""
+    other = tmp_path / "m.json"
+    other.write_text(json.dumps([{"scene": "s002", "effect": "boil"}]))
+    args = [str(tmp_path), "--narration", "n", "--words", "w", "-o", "o", f"--motion={other}"]
+    with pytest.raises(PermissionError, match="s002"):
+        pou.PouCompose().command({"channel": CH, "args": args})
+    with pytest.raises(ValueError, match="bad arguments"):     # --mot would abbreviate to --motion
+        pou.PouCompose().command({"channel": CH, "args": [*args[:-1], "--mot", str(other)]})
+
+
+@pytest.mark.parametrize("shape", ["list", "dict"])
+def test_flicker_with_boil_is_refused_and_plain_flicker_allowed(tmp_path, shape):
+    """Review finding 2: flicker boiled by default and the scan only matched effect == boil."""
+    def write(spec):
+        data = [{"scene": "s003", **spec}] if shape == "list" else {"s003": spec}
+        (tmp_path / "motion.json").write_text(json.dumps(data))
+    args = [str(tmp_path), "--narration", "n", "--words", "w", "-o", "o", "--motion"]
+    write({"effect": "flicker", "boil": True})
+    with pytest.raises(PermissionError, match="s003"):
+        pou.PouCompose().command({"channel": CH, "args": args})
+    write({"effect": "flicker", "boil": {"amp": 1.0}})
+    with pytest.raises(PermissionError, match="s003"):
+        pou.PouCompose().command({"channel": CH, "args": args})
+    write({"effect": "flicker"})                               # boil now off unless opted in
+    pou.PouCompose().command({"channel": CH, "args": args})
+    write({"effect": "boil"})
+    with pytest.raises(PermissionError):
+        pou.PouCompose().command({"channel": CH, "args": args})
+
+
+@pytest.mark.parametrize("scene, refused", [
+    ({}, False),                       # review finding 1: omitted used to mean boil {"amp": 1.0}
+    ({"boil": False}, False),
+    ({"boil": True}, True),
+    ({"boil": {"amp": 1.0}}, True),
+])
+def test_stage_boil_refusal_matches_what_the_engine_would_do(tmp_path, scene, refused):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "studio_test_puppet_render", REAL_ROOT / "core" / "engines" / "pou" / "scripts" / "puppet_render.py")
+    puppet_render = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(puppet_render)
+    assert (puppet_render.boil_settings(scene) is not None) is refused
+    stage = _stage(tmp_path, **scene)
+    for argv in (["clips", str(stage)], ["render", str(stage), "-o", "x.mp4"], ["frames", str(stage), "1", "--dir", "d"]):
+        if refused:
+            with pytest.raises(PermissionError):
+                pou.PouPuppet().command({"channel": CH, "args": argv})
+        else:
+            pou.PouPuppet().command({"channel": CH, "args": argv})
+
+
+@pytest.mark.parametrize("argv", [
+    ["render", "--workers", "2", "{stage}", "-o", "x.mp4"],   # review finding 4: args[1] was an option
+    ["clips", "--workers", "2", "{stage}"],
+    ["clips", "--only", "s1", "--workers", "2", "{stage}"],
+    ["frames", "--dir", "d", "{stage}", "1.0"],
+])
+def test_puppet_stage_is_found_behind_options(tmp_path, argv):
+    stage = _stage(tmp_path, boil=True)
     with pytest.raises(PermissionError, match="boil"):
-        pou.PouPuppet().command({"channel": "professor-of-us", "args": ["clips", str(stage)]})
+        pou.PouPuppet().command({"channel": CH, "args": [a.replace("{stage}", str(stage)) for a in argv]})
+
+
+def test_puppet_args_that_hide_the_stage_are_refused(tmp_path):
+    stage = _stage(tmp_path, boil=True)
+    with pytest.raises(ValueError, match="bad arguments"):    # --only swallows the stage: no stage parsed
+        pou.PouPuppet().command({"channel": CH, "args": ["clips", "--only", "s1", str(stage)]})
 
 
 def test_the_tails_short_has_no_boil():
     assert pou.boil_in_motion(REAL_ROOT / TAILS / "motion.json") == []
     assert pou.boil_in_stage(REAL_ROOT / TAILS / "stage.json") == []
-    pou.PouCompose().command({"channel": "professor-of-us", "args": [TAILS, "--motion"]})
+    pou.PouCompose().command({"channel": CH, "args": [TAILS, "--narration", "n", "--words", "w", "-o", "o",
+                                                      "--motion"]})
 
 
 def test_overlay_check_tool_runs_the_engine():

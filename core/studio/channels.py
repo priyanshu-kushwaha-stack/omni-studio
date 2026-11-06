@@ -389,14 +389,16 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
     from lib import studio_approval
 
     at = datetime.now(timezone.utc).isoformat()
+    try:
+        # The only proof lib/checkpoint.py accepts for a gated stage of a channel project.
+        proof = studio_approval.sign(video_id, stage, checkpoint["pipeline_type"], checkpoint["artifacts"], at)
+    except studio_approval.ApprovalRefused as exc:
+        raise ChannelError(str(exc)) from exc
     approval: dict[str, Any] = {
         "by": getpass.getuser(),
         "at": at,
         "via": studio_approval.VIA,
-        # The only proof lib/checkpoint.py accepts for a gated stage of a channel project.
-        "proof": studio_approval.sign(
-            video_id, stage, checkpoint["pipeline_type"], checkpoint["artifacts"], at
-        ),
+        "proof": proof,
     }
     if note:
         approval["note"] = note

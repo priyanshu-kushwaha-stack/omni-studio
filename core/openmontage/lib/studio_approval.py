@@ -18,6 +18,7 @@ import hmac
 import json
 import os
 import secrets
+import stat
 from pathlib import Path
 from typing import Any, Optional
 
@@ -34,9 +35,19 @@ def key_path() -> Path:
     return Path(os.environ.get(KEY_ENV) or DEFAULT_KEY).expanduser()
 
 
+def _check_key_file(path: Path) -> None:
+    """The key must be a regular file, not a symlink, readable by its owner only (mode 600)."""
+    if path.is_symlink():
+        raise ApprovalRefused(f"approval key {path} is a symlink; replace it with a regular file (mode 600)")
+    mode = stat.S_IMODE(path.stat().st_mode)
+    if mode & 0o077:
+        raise ApprovalRefused(f"approval key {path} has mode {mode:o}; it must be 600 (chmod 600 {path})")
+
+
 def _key(create: bool) -> Optional[bytes]:
     path = key_path()
-    if path.is_file():
+    if path.is_symlink() or path.is_file():
+        _check_key_file(path)
         return path.read_bytes().strip() or None
     if not create:
         return None

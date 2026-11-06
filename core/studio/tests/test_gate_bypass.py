@@ -126,3 +126,28 @@ def test_projects_outside_a_channel_keep_upstream_behaviour(tmp_path):
 def test_default_key_lives_in_the_secrets_folder(monkeypatch):
     monkeypatch.delenv(studio_approval.KEY_ENV)
     assert studio_approval.key_path() == Path.home() / ".config" / "omni-studio" / "approval.key"
+
+
+def test_a_world_readable_key_is_refused(video):
+    _write(video, "research", "awaiting_human")
+    key = studio_approval.key_path()
+    studio_approval._key(create=True)
+    key.chmod(0o644)
+    assert cli.main(["approve", "sample", VIDEO, "research"]) == 2
+    with pytest.raises(studio_approval.ApprovalRefused, match="mode 644"):
+        studio_approval.verify(VIDEO, "research", "framework-smoke", {}, {"approval": {
+            "via": "omni approve", "at": "x", "proof": "0" * 64}})
+    key.chmod(0o600)
+    assert cli.main(["approve", "sample", VIDEO, "research"]) == 0
+
+
+def test_a_symlinked_key_is_refused(video, tmp_path, monkeypatch):
+    _write(video, "research", "awaiting_human")
+    real = tmp_path / "elsewhere.key"
+    real.write_text("k" * 64)
+    real.chmod(0o600)
+    link = tmp_path / "link.key"
+    link.symlink_to(real)
+    monkeypatch.setenv(studio_approval.KEY_ENV, str(link))
+    assert cli.main(["approve", "sample", VIDEO, "research"]) == 2
+    assert read_checkpoint(video.videos_dir, VIDEO, "research")["status"] == "awaiting_human"

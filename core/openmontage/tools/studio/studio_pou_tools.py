@@ -12,6 +12,9 @@ unless the owner approved that call.
 
 from __future__ import annotations
 
+import contextlib
+import importlib.util
+import io
 import json
 import os
 import re
@@ -42,25 +45,47 @@ PAID_TTS_ENGINES = {"eleven"}
 BOIL_REFUSAL = "line boil / wobble is banned by the owner (core/studio/rules/no-line-boil.md)"
 
 
-def _resolve(arg: str) -> Path:
+def _engine_module(name: str):
+    """Load an engine module by file under a private name (no sys.path change, so no name clashes)."""
+    spec = importlib.util.spec_from_file_location(f"studio_pou_{name}", ENGINE / f"{name}.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+_cli_args = _engine_module("cli_args")   # argparse only
+_motion = _engine_module("motion")       # numpy and PIL only
+
+
+def _resolve(arg: str | Path) -> Path:
     path = Path(arg).expanduser()
     return path if path.is_absolute() else STUDIO_ROOT / path
 
 
+def parse_args(parser, args: list[str]):
+    """Parse argv exactly as the engine script will, or raise ValueError with argparse's message."""
+    err = io.StringIO()
+    try:
+        with contextlib.redirect_stderr(err):
+            return parser.parse_args(args)
+    except SystemExit as exc:
+        raise ValueError(f"bad arguments for the engine: {err.getvalue().strip() or exc}") from None
+
+
 def boil_in_motion(motion_json: Path) -> list[str]:
-    """Scenes of a motion.json that ask for the boil effect."""
+    """Scenes whose motion would boil, read with the engine's own loader (list or dict form)."""
     if not motion_json.is_file():
         return []
-    specs = json.loads(motion_json.read_text(encoding="utf-8"))
-    return [str(m.get("scene")) for m in specs if isinstance(m, dict) and m.get("effect") == "boil"]
+    specs = _motion.load_specs(motion_json)
+    return [str(k) for k, spec in specs.items() if _motion.boil_effective(spec)]
 
 
 def boil_in_stage(stage_json: Path) -> list[str]:
-    """Scenes of a puppet stage.json with boil switched on."""
+    """Scenes of a puppet stage.json that opt into boil (puppet_render.boil_settings: any truthy "boil")."""
     if not stage_json.is_file():
         return []
     stage = json.loads(stage_json.read_text(encoding="utf-8"))
-    return [str(sc.get("id")) for sc in stage.get("scenes", []) if sc.get("boil")]
+    return [str(sc.get("id")) for sc in stage.get("scenes", []) if isinstance(sc, dict) and sc.get("boil")]
 
 _INPUT_SCHEMA = {
     "type": "object",
@@ -144,24 +169,31 @@ class PouTts(_PouEngineTool):
     best_for = ["Professor of Us narration with the owner's cloned voice on local engines (qwen3, chatterbox)"]
     not_good_for = ["paid ElevenLabs calls without the owner's approval"]
     resource_profile = ResourceProfile(cpu_cores=4, ram_mb=16000, vram_mb=8000, disk_mb=500)
-    input_schema = {**_INPUT_SCHEMA, "properties": {
+    input_schema = {**_INPUT_SCHEMA, "required": ["channel", "engine", "args"], "properties": {
         **_INPUT_SCHEMA["properties"],
+        "engine": {"type": "string", "enum": list(_cli_args.TTS_ENGINES),
+                   "description": "TTS engine; the tool passes --engine itself, so args must not"},
+        "args": {"type": "array", "items": {"type": "string"},
+                 "description": "tts.py arguments other than --engine; paths relative to the omni-studio root"},
         "owner_approved_paid_call": {"type": "boolean", "default": False,
-                                     "description": "required for --engine eleven (ElevenLabs, paid)"}}}
+                                     "description": "required for engine eleven (ElevenLabs, paid)"}}}
 
     def _refuse(self, args: list[str]) -> str | None:
         return None
 
     def command(self, inputs: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
+        engine = inputs.get("engine")
+        if engine not in _cli_args.TTS_ENGINES:
+            raise ValueError(f"engine must be one of {list(_cli_args.TTS_ENGINES)}, got {engine!r}")
         args = [str(a) for a in inputs.get("args", [])]
-        engine = next((args[i + 1] for i, a in enumerate(args[:-1]) if a == "--engine"), None)
-        engine = engine or next((a.split("=", 1)[1] for a in args if a.startswith("--engine=")), None)
-        if engine in PAID_TTS_ENGINES and inputs.get("owner_approved_paid_call") is not True:
+        # tts.py refuses abbreviations and a repeated --engine, so this parse is the engine it will run.
+        effective = parse_args(_cli_args.tts_parser(), [*args, "--engine", engine]).engine
+        if effective in PAID_TTS_ENGINES and inputs.get("owner_approved_paid_call") is not True:
             raise PermissionError(
-                f"--engine {engine} is a paid provider call (ElevenLabs). Announce tool, provider, model and cost, "
+                f"engine {effective} is a paid provider call (ElevenLabs). Announce tool, provider, model and cost, "
                 f"get the owner's approval, then pass owner_approved_paid_call=true"
             )
-        return super().command(inputs)
+        return super().command({**inputs, "args": [*args, "--engine", engine]})
 
 
 class PouStills(_PouEngineTool):
@@ -189,10 +221,11 @@ class PouPuppet(_PouEngineTool):
     resource_profile = ResourceProfile(cpu_cores=6, ram_mb=4000)
 
     def _refuse(self, args: list[str]) -> str | None:
-        if args and args[0] in {"render", "clips", "frames"} and len(args) > 1:
-            boiled = boil_in_stage(_resolve(args[1]))
+        parsed = parse_args(_cli_args.puppet_render_parser(), args)
+        if parsed.cmd in {"render", "clips", "frames"}:
+            boiled = boil_in_stage(_resolve(parsed.stage))
             if boiled:
-                return f"{BOIL_REFUSAL}: stage scenes {boiled} have boil: true"
+                return f"{BOIL_REFUSAL}: stage scenes {boiled} opt into boil"
         return None
 
 
@@ -206,13 +239,11 @@ class PouCompose(_PouEngineTool):
     resource_profile = ResourceProfile(cpu_cores=6, ram_mb=6000, disk_mb=2000)
 
     def _refuse(self, args: list[str]) -> str | None:
-        if "--motion" not in args or not args:
+        motion_json = _cli_args.compose_motion_path(parse_args(_cli_args.compose_parser(), args))
+        if motion_json is None:
             return None
-        i = args.index("--motion")
-        given = args[i + 1] if i + 1 < len(args) and not args[i + 1].startswith("-") else None
-        motion_json = _resolve(given) if given else _resolve(args[0]) / "motion.json"
-        boiled = boil_in_motion(motion_json)
-        return f"{BOIL_REFUSAL}: motion.json scenes {boiled} use effect boil" if boiled else None
+        boiled = boil_in_motion(_resolve(motion_json))
+        return f"{BOIL_REFUSAL}: motion scenes {boiled} would boil (effect boil, or flicker with boil)" if boiled else None
 
 
 class StudioOverlayCheck(_PouEngineTool):
