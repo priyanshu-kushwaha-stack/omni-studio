@@ -1,6 +1,5 @@
 import { createContext, useContext } from "react";
 import { AbsoluteFill } from "remotion";
-import { HEIGHT, WIDTH } from "../theme";
 
 /** Screen-space light: a soft glow on a light source, in output pixels. */
 export interface Glow { x: number; y: number; r: number; color: string; strength?: number }
@@ -18,8 +17,6 @@ export interface Look {
   glows?: Glow[];
   /** A pale band of haze across the lower frame, 0 to 1. */
   haze?: number;
-  /** Letterbox bar height in px. */
-  bars?: number;
   /** CSS filter on the whole world, e.g. contrast and saturation for a filmic grade. */
   film?: string;
   /** Darkness of the edge vignette, 0 to 1. */
@@ -55,17 +52,6 @@ export const Light: React.FC = () => {
         <AbsoluteFill key={i} style={{ mixBlendMode: "screen", opacity: g.strength ?? 1,
           background: `radial-gradient(circle at ${g.x}px ${g.y}px, ${g.color} 0%, rgba(0,0,0,0) ${g.r}px)` }} />
       ))}
-    </AbsoluteFill>
-  );
-};
-
-export const Bars: React.FC = () => {
-  const { bars } = useLook();
-  if (!bars) return null;
-  return (
-    <AbsoluteFill style={{ pointerEvents: "none" }}>
-      <div style={{ position: "absolute", left: 0, top: 0, width: WIDTH, height: bars, background: "#000" }} />
-      <div style={{ position: "absolute", left: 0, top: HEIGHT - bars, width: WIDTH, height: bars, background: "#000" }} />
     </AbsoluteFill>
   );
 };
