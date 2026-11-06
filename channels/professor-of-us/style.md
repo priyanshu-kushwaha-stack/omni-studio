@@ -19,11 +19,13 @@ Visual density is unchanged: ≥ 8 changes per minute, 2-4 s changes in the hook
 
 **Ask the viewer (owner note 2026-10-30, after video 2):** put a direct question to the viewer every ~20-30 s ("Guess how many were left.", "What should it report?", "Which would *you* trust?"), marked `> ASK:` in the script. Ask, pause ~1 s so they guess, then answer. Prefer guess-the-number, predict-the-result and which-would-you-pick questions over rhetorical ones. Questions set up a fact; they never carry a new one. Reason: video 2 lost the owner's attention in places, felt heavy or plain, and the viewer felt disconnected.
 
+**No quiz boards, no ask pauses (owner note 2026-11-06, video 6 rough cut):** the three-option quiz boards with a countdown "kill the connectivity" and read like a kids' video; "we don't need to take a pause". Questions stay, but as part of the conversation: the Professor asks, and You or Oog answers straight away at the normal line gap. No `> QUIZ:` lines, no answer cards, no countdown, no held silence after an ask. This replaces the ~1 s pause above and video 5's quiz format.
+
 ## Shorts (owner decision 2026-10-31; reverses the 2026-10-24 "no Shorts" rule)
 Shorts are a discovery funnel into the long videos, not an income line (the 2026-10-24 receipts check still holds: Shorts RPM is a fraction of long-form).
 - One question, one answer, one twist. 45-55 s, ≈ 130-145 words at 160-170 wpm, 9:16 vertical (1080x1920).
 - The question lands in the first 2 s, on screen and spoken. No intro, no channel name.
-- `> ASK:` once early (pause ~0.7 s), then the answer; the twist in the last third; the last line loops back into the first.
+- `> ASK:` once early (no pause, owner 2026-11-06), then the answer; the twist in the last third; the last line loops back into the first.
 - One end-line pointing to a related long video when one exists (pinned comment + related-video link in Studio).
 - Same claims rule as long-form: every number and finding has a row in the Short's `claims.md`.
 - Text placement gate (owner, 2026-10-31): run `scripts/overlay_check.py <dir> --fix` before every render. It fails any label or caption that runs off the frame, sits under the Shorts player UI (top 6 %, bottom 20 %, right 14 % below 40 % height) or the long-form end-screen third, covers the drawing (> 4 % ink), sits on a rigged face, or overlaps other text; `--fix` moves labels to the nearest clear paper (shrinking big cards if needed) and, with `--captions` (only when a render burns them), writes `caption_layout.json`. A label with no clear spot is dropped when the caption already says it.

@@ -1,0 +1,14 @@
+channel: professor-of-us
+format: short
+stage: publish_prep
+severity: high
+example: 'PR #4 review: qc media was not bound to the deliverable (media_sha256 stored
+  and ignored); qc on a clean file could approve while upload.yaml named an unchecked
+  render'
+recorded_at: '2026-11-06T06:26:14.590464+00:00'
+note: 'fixed: publish_prep qc must run on upload.yaml''s file (deliverable check)
+  and on the render approved at G6; omni approve refuses a file changed since qc and
+  signs path+sha256 (studio_approval.sign_media); omni upload re-hashes and refuses
+  another path or changed content, again right before exec. Also: omni youtube-auth
+  does consent + channels.list(mine=true) before saving the token, so the first upload
+  no longer does its own consent'

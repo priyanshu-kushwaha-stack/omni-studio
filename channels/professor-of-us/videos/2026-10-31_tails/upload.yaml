@@ -1,6 +1,8 @@
 # omni upload metadata (core/studio/publish/youtube.py). Privacy is always private and is not a field here.
 # Text from publish.md. The file is the owner-approved no-boil re-render (approval.md), not the published draft_v5.
 file: renders/rerender_noboil.mp4
+# Imported before omni-studio with no pipeline: approved with `omni approve-upload`, never inferred.
+legacy_upload: true
 title: "You Had a Tail. Here's Where It Went."
 description: |
   You had a tail, around week five in the womb, about a sixth of your body. By week eight it's gone. Apes lost theirs about 25 million years ago, and in 2024 scientists found a "jumping gene" in a tail gene that may have helped. The researchers suspect it came with a price.

@@ -44,6 +44,8 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 | `omni qc <slug> <video> <stage> [--media f]` | Run a stage's automated checks (claims, quiz boards, loudness, clicks, similarity, upload request); writes `videos/<id>/qc/<stage>.json` |
 | `omni similar <slug> <video>` | Near-duplicate check against every other channel and the channel's recent videos |
 | `omni upload <slug> <video>` | Dry run (the default) of a private YouTube upload through the pinned youtubeuploader. `--install` installs the pinned binary into `.tools/` |
+| `omni youtube-auth <slug>` | Owner only. Google consent for the channel; the token is saved only if `channels.list(mine=true)` is the channel's `youtube_channel_id` |
+| `omni approve-upload <slug> <video> --format <f>` | Owner only. For an imported video marked `legacy_upload: true` in its `upload.yaml` and with no pipeline state (no project.json, no `checkpoint_*.json`), e.g. the tails Short: runs the publish_prep checks on `upload.yaml`'s file and signs its sha256 and the upload metadata digest |
 
 Before running OpenMontage for a channel, export the line `omni new-video` prints:
 `OPENMONTAGE_PROJECTS_DIR=<root>/channels/<slug>/videos`. Track spend with
@@ -90,8 +92,29 @@ loudness, clicks or similarity check is red. A check never passes a gate by itse
 
 Agents never upload and never make a video public. `omni upload` is a dry run unless `--run --confirm
 <slug>/<video>` is given, and an agent passes `--run` only when the owner asked for that exact upload. Uploads are
-always private: public, unlisted and any schedule (`publishAt`) are refused before the binary runs, and
-`made_for_kids` and `contains_synthetic_media` must both be answered (channel.yaml or the video's `upload.yaml`). Done means the owner watched or
+always private and there is no privacy flag: public, unlisted and any schedule (`publishAt`) in `upload.yaml` are
+refused before the binary runs, and `made_for_kids` and `contains_synthetic_media` must both be answered
+(channel.yaml or the video's `upload.yaml`). The upload must be the exact file the checks passed on: `omni approve`
+of publish_prep (G7), or `omni approve-upload` for a `legacy_upload: true` video with no pipeline state, signs that
+file's path and sha256 and a digest of the upload metadata (the metaJSON: title, description, tags, category,
+language, privacy, kids and AI answers). `omni upload` re-hashes the file, refuses any other path, changed content
+or changed metadata, and gives youtubeuploader a private copy (0700 temp dir) hashed after copying. A pipeline video
+cannot reach G7 without a valid G6 media proof: publish_prep's `deliverable` check fails when final_watch is
+unapproved or its media proof is missing, forged or edited (the G6 stage proof covers approval.media).
+youtubeuploader cannot do consent without uploading, and its own first-run consent could not check the channel
+first, so `omni upload --run` needs a token made by `omni youtube-auth`, which checks the channel before saving it
+(PKCE S256, loopback redirect only).
+
+Test upload, owner only: set the title in `upload.yaml` (e.g. `[TEST] ...`) BEFORE `omni approve-upload` (or
+before G7), because the approval signs the metadata. Any later change to the title, description, tags, category,
+language or the kids or AI answer needs the owner to approve again; restoring the approved text matches again.
+
+Who can approve: `omni approve` and `omni approve-upload` are owner-only by convention, backed by the approval key
+(`~/.config/omni-studio/approval.key`, mode 600). The key is not a security boundary against a process running as
+the owner: an agent with shell access that read or used that key could approve its own work. So agents never
+read, copy, create or chmod the approval key, never set `OMNI_STUDIO_APPROVAL_KEY`, and never run `omni approve` or
+`omni approve-upload`, unless the owner told them to approve that exact stage or upload.
+Done means the owner watched or
 listened, not that tests passed. Owner review notes are a to-do list: apply each one or
 say in one line why not, then re-present.
 
