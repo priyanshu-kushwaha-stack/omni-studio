@@ -92,3 +92,21 @@ def test_variation_checker_is_not_a_cross_video_check():
 
     assert "variation_checker" in similarity.__doc__
     assert check_scene_variation([])["verdict"] == "fail"
+
+
+def test_unreadable_render_elsewhere_is_skipped_not_fatal(two_channels, media):
+    alpha, beta, original = two_channels
+    broken = channels.new_video(alpha, "Broken Render", "short", on=date(2026, 11, 5))
+    (broken / "renders" / "x.mp4").write_bytes(b"\x00")
+    copy = _video(beta, "You Had a Tail! Here's Where It Went", _script(1), 7, "testsrc2", media)
+    report = similarity.check("beta", copy)
+    assert any("render frames unreadable" in s for s in report["skipped"])
+    assert any(f"alpha/{original}" in p for p in report["problems"])
+
+
+def test_unreadable_render_of_the_checked_video_fails(studio_root):
+    channel = studio_root("alpha")
+    folder = channels.new_video(channel, "Broken", "short", on=date(2026, 11, 6))
+    (folder / "renders" / "x.mp4").write_bytes(b"\x00")
+    report = similarity.check("alpha", folder.name)
+    assert not report["ok"] and "cannot read this video's render frames" in report["problems"][0]

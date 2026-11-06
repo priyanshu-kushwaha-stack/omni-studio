@@ -97,12 +97,19 @@ def image_hash(path: Path) -> int:
         return _dhash_gray(img.convert("L").resize((9, 8), Image.LANCZOS).tobytes())
 
 
+class UnreadableMedia(Exception):
+    """ffmpeg could not decode a render's frames."""
+
+
 def frame_hashes(media: Path, every_s: float, max_frames: int) -> list[int]:
-    raw = subprocess.run(
+    proc = subprocess.run(
         ["ffmpeg", "-v", "error", "-i", str(media), "-vf", f"fps=1/{every_s},scale=9:8,format=gray",
          "-frames:v", str(max_frames), "-f", "rawvideo", "-"],
-        capture_output=True, check=True,
-    ).stdout
+        capture_output=True,
+    )
+    if proc.returncode != 0:
+        raise UnreadableMedia(f"{media}: {proc.stderr.decode(errors='replace').strip().splitlines()[-1:]}")
+    raw = proc.stdout
     return [_dhash_gray(raw[i:i + 72]) for i in range(0, len(raw) - 71, 72)]
 
 
@@ -116,16 +123,20 @@ def render_of(video_dir: Path) -> Optional[Path]:
     return renders[-1] if renders else None
 
 
+def _thumb_hash(video_dir: Path) -> Optional[int]:
+    thumb = next((video_dir / n for n in THUMB_NAMES if (video_dir / n).is_file()), None)
+    return image_hash(thumb) if thumb else None
+
+
 def features(channel: str, video_dir: Path, cfg: dict[str, Any], media: Optional[Path] = None) -> Features:
     script = video_dir / "script.md"
-    thumb = next((video_dir / n for n in THUMB_NAMES if (video_dir / n).is_file()), None)
     media = media or render_of(video_dir)
     return Features(
         channel=channel,
         video=video_dir.name,
         title=title_of(video_dir),
         shingles=shingles(script.read_text(encoding="utf-8")) if script.is_file() else set(),
-        thumbnail=image_hash(thumb) if thumb else None,
+        thumbnail=_thumb_hash(video_dir),
         frames=frame_hashes(media, cfg["frame_every_s"], cfg["max_frames"]) if media else [],
     )
 
@@ -183,13 +194,28 @@ def check(channel_slug: str, video_id: str, media: Optional[Path] = None,
           cfg: Optional[dict[str, Any]] = None) -> dict[str, Any]:
     cfg = cfg or load_config()
     channel = channels.load_channel(channel_slug)
-    mine = features(channel_slug, channels.video_dir(channel, video_id), cfg, media)
-    problems, compared = [], 0
+    try:
+        mine = features(channel_slug, channels.video_dir(channel, video_id), cfg, media)
+    except UnreadableMedia as exc:
+        return {"check": "similarity", "ok": False, "compared": 0, "skipped": [],
+                "problems": [f"cannot read this video's render frames: {exc}"], "features": {}}
+    problems, skipped, compared = [], [], 0
     for slug, other_dir in corpus(channel_slug, video_id, cfg):
         compared += 1
-        for hit in compare(mine, features(slug, other_dir, cfg), cfg):
+        try:
+            other = features(slug, other_dir, cfg)
+        except UnreadableMedia:
+            # An unreadable render elsewhere must not hide every other comparison: compare its text and
+            # thumbnail, and report that its frames were skipped.
+            other = Features(slug, other_dir.name, title_of(other_dir),
+                             shingles((other_dir / "script.md").read_text(encoding="utf-8"))
+                             if (other_dir / "script.md").is_file() else set(),
+                             _thumb_hash(other_dir), [])
+            skipped.append(f"{slug}/{other_dir.name}: render frames unreadable, compared title/script/thumbnail")
+        for hit in compare(mine, other, cfg):
             scope = "same channel" if slug == channel_slug else "other channel"
             problems.append(f"near-duplicate of {slug}/{other_dir.name} ({scope}): {hit}")
-    return {"check": "similarity", "ok": not problems, "compared": compared, "problems": problems,
+    return {"check": "similarity", "ok": not problems, "compared": compared, "skipped": skipped,
+            "problems": problems,
             "features": {"title": mine.title, "shingles": len(mine.shingles),
                          "thumbnail": mine.thumbnail is not None, "frames": len(mine.frames)}}

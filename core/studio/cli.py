@@ -267,6 +267,8 @@ def similar(slug: str, video: str, media: str | None) -> int:
 
     report = similarity.check(slug, video, Path(media) if media else None)
     print(f"similarity {slug}/{video}: compared with {report['compared']} video(s); features {report['features']}")
+    for note in report.get("skipped", []):
+        print(f"  [skip] {note}")
     for problem in report["problems"]:
         print(f"  [FAIL] {problem}")
     print("  ok" if report["ok"] else "  FAILED")
