@@ -416,7 +416,7 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
 
     # Automated checks for this stage (pipeline metadata.studio_checks) must pass before the owner's
     # approval is signed. They never pass a gate on their own.
-    checks.require_passing(channel, video_id, stage, checkpoint["pipeline_type"])
+    report = checks.require_passing(channel, video_id, stage, checkpoint["pipeline_type"])
 
     at = datetime.now(timezone.utc).isoformat()
     try:
@@ -430,6 +430,10 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
         "via": studio_approval.VIA,
         "proof": proof,
     }
+    media = checks.media_proof(video_id, stage, report, at)
+    if media:
+        # Binds this approval to the exact file the checks ran on; omni upload re-hashes against it.
+        approval["media"] = media
     if note:
         approval["note"] = note
     try:

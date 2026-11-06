@@ -44,6 +44,8 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 | `omni qc <slug> <video> <stage> [--media f]` | Run a stage's automated checks (claims, quiz boards, loudness, clicks, similarity, upload request); writes `videos/<id>/qc/<stage>.json` |
 | `omni similar <slug> <video>` | Near-duplicate check against every other channel and the channel's recent videos |
 | `omni upload <slug> <video>` | Dry run (the default) of a private YouTube upload through the pinned youtubeuploader. `--install` installs the pinned binary into `.tools/` |
+| `omni youtube-auth <slug>` | Owner only. Google consent for the channel; the token is saved only if `channels.list(mine=true)` is the channel's `youtube_channel_id` |
+| `omni approve-upload <slug> <video> --format <f>` | Owner only. For an imported video with no pipeline (e.g. the tails Short): runs the publish_prep checks on `upload.yaml`'s file and signs its sha256 |
 
 Before running OpenMontage for a channel, export the line `omni new-video` prints:
 `OPENMONTAGE_PROJECTS_DIR=<root>/channels/<slug>/videos`. Track spend with
@@ -90,8 +92,14 @@ loudness, clicks or similarity check is red. A check never passes a gate by itse
 
 Agents never upload and never make a video public. `omni upload` is a dry run unless `--run --confirm
 <slug>/<video>` is given, and an agent passes `--run` only when the owner asked for that exact upload. Uploads are
-always private: public, unlisted and any schedule (`publishAt`) are refused before the binary runs, and
-`made_for_kids` and `contains_synthetic_media` must both be answered (channel.yaml or the video's `upload.yaml`). Done means the owner watched or
+always private and there is no privacy flag: public, unlisted and any schedule (`publishAt`) in `upload.yaml` are
+refused before the binary runs, and `made_for_kids` and `contains_synthetic_media` must both be answered
+(channel.yaml or the video's `upload.yaml`). The upload must be the exact file the checks passed on: `omni approve`
+of publish_prep (G7), or `omni approve-upload` for a video with no pipeline, signs that file's path and sha256, and
+`omni upload` re-hashes the file and refuses any other path or changed content. youtubeuploader cannot do consent
+without uploading, and its own first-run consent could not check the channel first, so `omni upload --run` needs a
+token made by `omni youtube-auth`, which checks the channel before saving it.
+Done means the owner watched or
 listened, not that tests passed. Owner review notes are a to-do list: apply each one or
 say in one line why not, then re-present.
 
