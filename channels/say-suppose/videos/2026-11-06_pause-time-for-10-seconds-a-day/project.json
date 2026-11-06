@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "created_at": "2026-11-06T11:06:59.935333+00:00",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "title": "Pause Time for 10 Seconds a Day",
+  "pipeline_type": "studio-whatif",
+  "style_playbook": "say-suppose",
+  "channel": "say-suppose",
+  "format": "story"
+}
