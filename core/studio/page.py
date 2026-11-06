@@ -1,7 +1,7 @@
 """Channel-page artwork: the picture, banner, banner crops and watermark for a channel.
 
 Lettering is drawn here, never inside a generated image. Two channels have a code-drawn picture; Say
-Suppose's is an illustration the owner picked, and its banner is lettered over an illustrated scene.
+Suppose's is an illustration the owner picked, and its banner is lettered on the calm left of a scene.
 The Professor of Us page keeps its own script (core/engines/pou/scripts/channel_page.py).
 
     python -m studio.page build <slug> -o channels/<slug>/page [--picture img] [--scene img]
@@ -244,23 +244,19 @@ def banner(slug: str, out: Path, scene: Path | None = None) -> dict[str, Box]:
     else:
         if scene is None:
             raise PageError(f"{slug} needs its illustrated scene: pass the scene image")
+        # The scene keeps its subject on the right and calm space on the left, where the lettering goes.
         img = _cover(Image.open(scene).convert("RGB"), BANNER)
-        band = Image.new("RGB", (BANNER[0], SAFE[1] + 120), brand.ground)
-        img.paste(Image.blend(img.crop((0, y0 - 60, BANNER[0], y1 + 60)), band, 0.78), (0, y0 - 60))
         draw = ImageDraw.Draw(img)
         left = x0 + pad
         line_fill = brand.soft
 
-    width = x1 - pad - left
+    width = (x1 - pad if slug in _MARKS else x0 + round(0.62 * SAFE[0])) - left
     name_font = _fit(draw, brand.name, brand.name_font, 168, width)
-    line_font = _fit(draw, brand.line, brand.line_font, 58, width)
-    (name_w, name_h), (line_w, line_h) = _ink_size(draw, brand.name, name_font), _ink_size(draw, brand.line, line_font)
+    line_font = _fit(draw, brand.line, brand.line_font, 58, width - 4)     # The line is indented 4 px.
+    name_h, line_h = _ink_size(draw, brand.name, name_font)[1], _ink_size(draw, brand.line, line_font)[1]
     top = y0 + (SAFE[1] - (name_h + gap + line_h)) // 2
-    centred = slug not in _MARKS
-    boxes["name"] = _text(draw, left + (width - name_w) // 2 if centred else left, top,
-                          brand.name, name_font, brand.ink)
-    boxes["line"] = _text(draw, left + (width - line_w) // 2 if centred else left + 4, top + name_h + gap,
-                          brand.line, line_font, line_fill)
+    boxes["name"] = _text(draw, left, top, brand.name, name_font, brand.ink)
+    boxes["line"] = _text(draw, left + 4, top + name_h + gap, brand.line, line_font, line_fill)
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out)
     return boxes

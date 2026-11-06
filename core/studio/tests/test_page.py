@@ -129,11 +129,13 @@ def test_say_suppose_banner_needs_its_scene(tmp_path):
         page.banner("say-suppose", tmp_path / "b.png")
 
 
-def test_say_suppose_banner_keeps_the_scene_outside_the_text_band(tmp_path):
-    out, _ = _banner("say-suppose", tmp_path)
+def test_say_suppose_lettering_keeps_to_the_left_and_leaves_the_scene_alone(tmp_path):
+    out, boxes = _banner("say-suppose", tmp_path)
+    x0, _, _, _ = page.safe_box()
+    assert max(boxes["name"][2], boxes["line"][2]) <= x0 + 0.62 * page.SAFE[0]
     img = Image.open(out).convert("RGB")
-    assert img.getpixel((40, 40)) == _rgb("#3A2F8F")
-    assert img.getpixel((40, 1400)) == _rgb("#3A2F8F")
+    for spot in ((40, 40), (40, 1400), (1900, 720), (2500, 720)):
+        assert img.getpixel(spot) == _rgb("#3A2F8F"), spot
 
 
 def test_crops_are_the_three_views_youtube_shows(tmp_path):
