@@ -14,7 +14,8 @@ music:
   default: null                 # Each video gets its own score (style.md, Voice and sound); no channel-wide track.
   allowed: []
 cadence: daily                  # The owner's target (2026-11-06). style.md says what daily needs first.
-budget_usd_per_video: 0         # A hard cap. 0 means no paid calls until the owner sets a budget (narration is paid).
+budget_usd_per_video: 5         # Owner, 2026-11-07: "Set the channel budget so it allows narration". Higgsfield bills credits
+                                # from the owner's plan (no dollar rate shown); each video's costs.md records credits.
 review_level: full              # full | standard | light. Recorded only: gates come from the pipeline.
 upload_token_path: null         # Under ~/.config/omni-studio/. Required once status is live.
 loudness:                       # Format name -> mix targets, checked before the edit and final-watch gates.

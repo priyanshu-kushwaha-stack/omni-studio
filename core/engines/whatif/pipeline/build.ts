@@ -8,7 +8,7 @@
  * quote is over it. Only the studio tool passes --max-credits, and only with the owner's approval.
  */
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
 import { parseArgs } from "node:util";
 import { buildTimeline, type LineAudio, type VideoScript } from "../src/kit/timeline";
@@ -35,13 +35,22 @@ const clips = script.lines.map((line, i) => {
   return { spoken, raw: join(out, `${name}.wav`), file: `${sub}/${name}.tight.wav`, path: join(out, `${name}.tight.wav`) };
 });
 
+// A take bought under another line number (a test run, a reordered script) is the same take: reuse it by its hash.
+const onDisk = readdirSync(out);
+for (const c of clips) {
+  if (existsSync(c.raw)) continue;
+  const hash = basename(c.raw, ".wav").split("-").pop();
+  const twin = onDisk.find((f) => f.endsWith(`-${hash}.wav`) && !f.endsWith(".tight.wav"));
+  if (twin) copyFileSync(join(out, twin), c.raw);
+}
 const pending = clips.filter((c) => !existsSync(c.raw));
 if (pending.length) {
   let credits = 0;
   for (const c of pending) credits += await cost(c.spoken, voice);
   console.log(`${pending.length} new take(s), quoted ${credits.toFixed(2)} credits`);
   if (maxCredits === undefined) throw new Error("new takes are paid calls: pass --max-credits with the owner's approval");
-  if (credits > maxCredits) throw new Error(`quote ${credits.toFixed(2)} is over the approved ${maxCredits} credits`);
+  // Credits are priced in hundredths; compare in hundredths so 0.46 + 0.23 is not 0.6900000000000001 > 0.69.
+  if (Math.round(credits * 100) > Math.round(maxCredits * 100)) throw new Error(`quote ${credits.toFixed(2)} is over the approved ${maxCredits} credits`);
 }
 for (const c of pending) {
   await synthesize(c.spoken, voice, c.raw);

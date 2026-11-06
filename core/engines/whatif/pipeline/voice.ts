@@ -11,7 +11,8 @@ const WHISPER_PY = process.env.WHISPER_PY ?? resolve(HERE, "../../../../.venv-me
 
 function run(cmd: string, args: string[]): Promise<string> {
   return new Promise((resolve, reject) => {
-    const p = spawn(cmd, args);
+    // stdin closed: the Higgsfield CLI otherwise waits on it and never returns.
+    const p = spawn(cmd, args, { stdio: ["ignore", "pipe", "pipe"] });
     let out = "";
     let err = "";
     p.stdout.on("data", (d) => (out += d));
