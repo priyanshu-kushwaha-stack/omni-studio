@@ -46,3 +46,18 @@ youtubeuploader:
       asset: youtubeuploader_1.25.5_Darwin_arm64.tar.gz
       tarball_sha256: 89b29cbdb5db46a1607e6a4767c1718aa12bf7a22e566e10d174f329f4a48a73
       binary_sha256: 6473b246b6dad7baa5cbfcae0c10555ffaeac466049b9e613c4ca1907af751be
+whatif_engine:
+  # core/engines/whatif, imported 2026-11-06 from the owner's sample (~/Exploration/sandbox/what-if-pause, no commits).
+  # Exact versions are in its pnpm-lock.yaml; install with `pnpm install --frozen-lockfile` in that folder.
+  package_manager: pnpm 9.15.9
+  remotion: 4.0.484          # remotion, @remotion/cli, google-fonts, motion-blur, noise, paths
+  react: 18.3.1
+  dev: [typescript 5.9.3, vitest 2.1.9, tsx 4.23.15]
+  calls: higgsfield CLI 1.1.23 (narration quotes and takes; paid, owner-approved only)
+yt_dlp:
+  # Used once, 2026-11-06, for the Say Suppose reference study; YouTube blocked it and the owner supplied the files.
+  # Installed with uv into the git-ignored .tools/yt-dlp venv, outside the studio's two venvs.
+  pip: yt-dlp
+  version: 2026.10.21
+  install_dir: .tools/yt-dlp
+

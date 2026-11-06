@@ -28,8 +28,9 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | `skills/studio/studio-dialogue-*.md` | One stage skill per gate |
 | `pipeline_defs/studio-short.yaml` | Seven owner gates G1-G7 for 9:16 Shorts (Shorts sound and ending rule); `metadata.studio_checks` |
 | `skills/studio/studio-short-*.md` | One stage skill per gate for Shorts |
-| `pipeline_defs/studio-whatif.yaml` | Seven owner gates G1-G7 for Say Suppose's second-person what-if stories; `metadata.studio_checks`. No engine tools yet: the paper-cut rig is not in this repo |
+| `pipeline_defs/studio-whatif.yaml` | Seven owner gates G1-G7 for Say Suppose's second-person what-if stories; `metadata.studio_checks`; names the `whatif_*` tools |
 | `skills/studio/studio-whatif-*.md` | One stage skill per gate for what-if stories |
+| `tools/studio/studio_whatif_tools.py` | `whatif_story`, `whatif_narration`, `whatif_render`, `whatif_stills`: the what-if engine (`core/engines/whatif`) by subprocess, auto-discovered. `whatif_narration` passes a credit cap only with the owner's approval |
 
 ## Generated links
 

@@ -9,8 +9,9 @@
 # G7 publish_prep. G2, G5 and G7 are not named script/edit/publish because those names require upstream
 # artifacts (script, edit_decisions, publish_log); these stages carry script.md, claims.md and the render.
 #
-# The engine (the rig in ~/Exploration/sandbox/what-if-pause) is not in this repo yet. Until it is, stages
-# from narration on name no tools, and their skills say what the engine has to provide.
+# The engine is core/engines/whatif (imported from the owner's sample on 2026-11-06), run through the whatif_* studio
+# tools (tools/studio/studio_whatif_tools.py). whatif_narration makes paid calls only with the owner's approval and a
+# credit cap.
 name: studio-whatif
 version: "1.0"
 description: >
@@ -89,7 +90,9 @@ stages:
   - name: narration
     skill: studio/studio-whatif-narration
     produces: []
-    tools_available: []
+    tools_available:
+      - whatif_story
+      - whatif_narration
     checkpoint_required: true
     human_approval_default: true
     review_focus:
@@ -101,7 +104,9 @@ stages:
   - name: rough_cut
     skill: studio/studio-whatif-rough-cut
     produces: []
-    tools_available: []
+    tools_available:
+      - whatif_render
+      - whatif_stills
     checkpoint_required: true
     human_approval_default: true
     review_focus:
@@ -113,7 +118,9 @@ stages:
   - name: final_edit
     skill: studio/studio-whatif-edit
     produces: []
-    tools_available: []
+    tools_available:
+      - whatif_render
+      - whatif_stills
     checkpoint_required: true
     human_approval_default: true
     review_focus:
