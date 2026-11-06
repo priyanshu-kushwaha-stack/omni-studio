@@ -9,7 +9,8 @@ Columns are found by header name, so extra columns are fine. The check fails whe
 - a row has no claim text, no http(s) source, or a status outside SOURCED_STATUSES (blank, "todo",
   "unsourced", "needs source" ... all fail);
 - the script cites an id (`(c03)`, `(c08, c10)`) that has no row, or whose row is `dropped`;
-- a spoken script line has a digit (a number, a date, a count) but cites no claim id.
+- a spoken script line has a number (digits, or words such as 'twenty twenty-four', 'three million')
+  but cites no claim id.
 
 `omni approve` runs this before the script and narration gates (metadata.studio_checks in the pipelines).
 """
@@ -26,6 +27,13 @@ ID_RE = re.compile(r"^c\d{2,3}$")
 CITE_RE = re.compile(r"\(((?:c\d{2,3})(?:\s*,\s*c\d{2,3})*)\)")
 URL_RE = re.compile(r"https?://\S+")
 SPEAKER_RE = re.compile(r"^[A-Z][A-Z ]{1,15}:\s*")
+# Numbers written as words count as spoken numbers too. "one" is left out on purpose: "no one", "one of",
+# "the one" are not claims.
+NUMBER_WORDS = re.compile(
+    r"\b(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|"
+    r"seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|hundreds|"
+    r"thousand|thousands|million|millions|billion|billions|trillion|dozen|dozens|half|third|quarter|"
+    r"percent|per cent)\b", re.IGNORECASE)
 
 
 @dataclass
@@ -138,7 +146,8 @@ def check(video_dir: Path) -> LedgerReport:
                     problems.append(f"script.md:{n}: cites {cid}, which has no row in {ledger.name}")
                 elif by_id[cid].status == DROPPED:
                     problems.append(f"script.md:{n}: cites {cid}, which the ledger marks dropped")
-            if re.search(r"\d", CITE_RE.sub("", text)) and not cited:
+            spoken = CITE_RE.sub("", text)
+            if (re.search(r"\d", spoken) or NUMBER_WORDS.search(spoken)) and not cited:
                 problems.append(f"script.md:{n}: spoken number with no claim id: {text[:70]!r}")
     else:
         problems.append(f"no script: {script} is missing, so the ledger cannot be checked against it")
