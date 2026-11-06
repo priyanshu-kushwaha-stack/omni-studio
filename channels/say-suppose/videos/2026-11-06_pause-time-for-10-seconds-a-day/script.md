@@ -1,7 +1,7 @@
 # Script: What If You Could Pause Time for 10 Seconds a Day?
 
 format: story
-status: draft v3 for G2 (review rounds 1 and 2 applied: review-g2-round1.md, review-g2-round2.md)
+status: draft v4 for G2 (review rounds 1 to 3 applied: review-g2-round1.md, review-g2-round2.md, review-g2-round3.md)
 claims: claims.md
 
 ## [00:00] The change
@@ -14,9 +14,11 @@ So what if you could pause time for ten seconds a day?
 > SCENE: Colour floods back. The cat lands. The alarm finishes its ring.
 
 ## [00:20] The rule
-> SCENE: The split-flap counter drops in, top right, reading 10.
+> SCENE: The split-flap counter drops in, top right, reading 10. You snap; the bedroom goes grey.
 Ten seconds. Once a day. Everyone and everything stops. Except you.
+> SCENE: The counter flips down to 0. Colour snaps back; the cat finishes its jump.
 When the ten run out, the world starts again, and nobody knows.
+> SCENE: A bedside clock turns to midnight. The counter's flaps blank, then flip back to 10.
 And unused seconds vanish at midnight.
 > SCENE: Grey. You wave a hand through the frozen dust. It parts around your fingers.
 You test it. You wave a hand through the air, and the dust parts around your fingers.
@@ -25,7 +27,7 @@ Real physics would wreck this power. Stopped air would trap you like a fly in gl
 > SCENE: Black frame. Only your two eyes, blinking.
 And stopped light couldn't reach your eyes (c02).
 > SCENE: The block shatters into paper flakes. Colour returns.
-So we cheat. Air moves for you, you can see, and whatever you touch moves with you, and forgets its speed.
+So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.
 > SCENE: You hold up one finger, thinking.
 So, what's your first pause for?
 > SCENE: You glance at the coffee machine and grin.
@@ -84,11 +86,12 @@ Six. Five. Four.
 Three. Two. One.
 > SCENE: Colour returns. The bus brakes, horn blaring, through the crossing, and flattens the ball. The kid blinks at the pavement.
 The bus screams through an empty crossing. The ball doesn't make it. The kid does.
-> SCENE: The stopped bus, from above. A paper tape measure unrolls back up the road behind it.
+> SCENE: Wide, side-on. The bus at rest past the crossing. A paper tape measure unrolls from its bumper back up the road; the first stretch is a second colour.
 > TAG: 23 M
 A car at 48 kilometres an hour needs about 23 metres to stop (c14).
-Nine of them go by before the brakes even touch (c14). This was a bus.
-> SCENE: The crossing, quiet now. The kid's cap lies on the kerb.
+> TAG: 9 M
+Nine of those metres go by before the brakes even touch (c14). And this is a bus.
+> SCENE: Close on the kerb: the kid's cap. Then the kid, picking it up.
 Worldwide, for anyone aged 5 to 29, roads are the leading cause of death (c12).
 Nobody could have stopped that bus. You didn't need to. You just needed ten seconds.
 > SCENE: The kid's mother runs over and hugs the kid, then turns to thank the shaken bus driver. You stand at the edge of the frame.
@@ -97,25 +100,27 @@ The kid's mother runs over, shaking. She thanks the bus driver. Nobody thanks yo
 You walk home the long way. Your hands won't stop shaking.
 
 ## [03:30] The catch
-> SCENE: Night. You at home, staring at your hands.
+> SCENE: Night. Close on your hands, still trembling. Then your face in the dark. Then you at the window, looking down at the street.
 You saved a life with ten seconds. That feels free.
 It is not free.
 Your body keeps ageing through every pause. Ten seconds a day that nobody else lives.
 And now you know what ten seconds can do. So you can't stop watching.
+> SCENE: Morning. Kitchen. Your elbow knocks the mug. Your hand twitches towards a snap.
+Then one morning you're tired. The mug tips. Coffee, or keep them just in case?
+> SCENE: You snap. Grey. You catch the mug. Colour. You sip, pleased with yourself.
+Just this once. Coffee.
+> SCENE: That afternoon. Stairs at a metro station. An old man misses a step. You snap. Nothing happens: the counter reads 0.
+That afternoon, an old man misses a step on the station stairs. You snap your fingers. Nothing.
+> SCENE: The old man falls the last three steps. People rush to him. He sits up, rubbing his arm.
+He's all right. Bruised. You're not.
 > TAG: MONTH 6
-> SCENE: Montage, two seconds each, the counter top right: you at the crossing, watching. You on a bus, watching. You at a window, watching.
-Coffee today, or keep them just in case?
-You keep them. In your pocket. Every single day.
-> TAG: 1 HOUR A YEAR
-Ten seconds a day comes to about an hour a year.
-An hour that belongs to nobody but you, and you can't stop guarding it.
-> SCENE: Work. The lift doors start to close. Your hand hovers, fingers ready to snap.
-The lift door's closing. Pause it, or wait for the next one?
-> SCENE: You step back and let the doors close.
-Wait. Today might still need them.
+> SCENE: Montage, two seconds each, the counter top right reading 10: you at the crossing, watching. You on a bus, watching. You on the stairs, watching.
+You never spend them on coffee again. You keep them in your pocket. Every single day.
 > SCENE: Bedroom, midnight. The counter still reads 10. You lie awake, then snap. Grey. The city outside the window hangs still.
 Some days nothing happens. So at midnight you spend them on nothing at all.
 Ten seconds of a city holding its breath, just for you.
+> SCENE: Across the street, in a frozen grey building, a curtain in one window swings shut. The counter flips to 0. Colour. You stare at the window.
+Except, across the street, in a window that should be frozen, a curtain just moved.
 
 ## [04:30] The long run
 > SCENE: A daydream cloud over your head: you in front of a bank vault, the counter at 10.
@@ -124,29 +129,32 @@ Ten seconds gets you to the counter. It doesn't open a vault.
 > SCENE: The cloud pops.
 It turns out ten seconds is too small for greed. It's exactly the right size for an accident.
 > SCENE: A cyclist wobbles towards a bottle in the road. You snap, nudge the bottle into the gutter and step back. Colour. The cyclist rides on.
+> SCENE: Quick cuts, two seconds each: a pan handle you turn inward; a toddler you lift back from the top stair; a gate you latch.
 A bottle under a bike wheel. A pan about to tip. A toddler at the top of the stairs.
 You become the reason small disasters don't happen.
 > SCENE: You at a café table with your best friend. You open your mouth. Then close it.
 Do you tell your best friend? You open your mouth. Then you close it.
 Who would believe you? And what would they ask you to pause for?
 > TAG: YEAR 40
-> SCENE: The same street through the seasons: leaves, rain, snow, sun. You age a little in each.
-> SCENE: You, older, at a corner. Your eyes flick to a wobbling ladder, a loose dog, a driver looking at a phone.
+> SCENE: The same street through the seasons: leaves, rain, snow, sun. You age a little in each. In one frozen winter frame, far back, the figure in the long dark coat stands among the grey crowd, facing you.
+> SCENE: You, older, grey in the tuft, at a corner. Your eyes flick to a wobbling ladder, a loose dog, a driver looking at a phone.
 Forty years in, you read a street like a weather map. A wobbling ladder. A loose dog. A driver looking at a phone.
 You see the accident before it happens. Most days, you don't even need the pause.
-And those extra seconds you live? Different people living through different amounts of time sounds made up. It isn't.
+> SCENE: Two paper clocks side by side. Yours gives a small extra tick every day.
+Your body has lived every one of those pauses. Eighty years of them come to about three days and nine hours.
 > SCENE: The sky. The space station glides across.
 > TAG: MILLISECONDS
-After six months on the space station, astronauts come home a few thousandths of a second younger than if they'd stayed on the ground (c15).
-Your pauses add up much faster. Eighty years of them come to about three and a third days.
+Real time gaps are far smaller. Six months on the space station leaves astronauts a few thousandths of a second younger than if they'd stayed on the ground (c15).
 > SCENE: A mirror. You squint at your reflection. Beside it, not on your face, a tag.
-> TAG: 3⅓ DAYS
-Three and a third days older than everyone you grew up with. You'd barely notice.
+> TAG: 3 DAYS 9 HOURS
+That's how much older you are than everyone you grew up with. You'd barely notice.
+> SCENE: Pull back from the mirror to the window, and the street below full of strangers.
 The bigger cost is the watching. A whole life spent ten seconds at a time, on strangers who'll never know your name.
 
 ## [06:15] Back to you
-> SCENE: The hallway clock again. The second hand sticks, then jumps.
-Here's the real part. You can't pause the world. But every time you move your eyes, your brain stretches a moment, and a clock can catch it (c10).
+> SCENE: The crossing from day twelve, ordinary and busy. People cross looking at their phones. One looks up.
+Here's the real part. Nobody gets ten frozen seconds. But anyone can look up from their phone at a crossing.
+> SCENE: You, weighing a coffee mug in one hand and the counter in the other.
 So what would you do with your ten seconds? Spend them every morning, or save them for a day that might never come?
 Tell us below. The best what-ifs become videos.
 > SCENE: The street, evening. You snap. The crowd freezes, grey. You turn to walk home.
@@ -155,10 +163,11 @@ And then you notice something.
 Someone else is still moving.
 > SCENE: The stranger stops. Turns. Looks straight at you.
 And they're looking right at you.
+> BUBBLE: The stranger: "Nice catch. Day twelve."
 > SCENE: Black for one second. Then a quiet end card: you, small, in the left two-thirds; the right third empty for end screens.
 
 ## Word count
-908 spoken words (claims.spoken_lines, cites removed). With the countdown and action holds, about 6:45.
+906 spoken words (claims.spoken_lines, cites removed). With the countdown and action holds, about 6:45.
 
 ## Narration notes (for G3; not spoken)
 - Each line is one take. Feed the voice a spelled-out text and keep the digits in this script for the claims check:
@@ -167,7 +176,7 @@ And they're looking right at you.
 - "Chronostasis": respell for the voice as "krono-STAY-sis".
 - The countdown ("Nine. Eight. Seven." to "Three. Two. One.") is one take with a break between numbers, sliced to
   the counter, and kept out of the 1.1 speed-up so each number lasts about a second. Steady, a little breathless.
-- One- and two-word lines ("Pause.", "You run.", "Vanish.", "Not today.") are generated inside a carrier phrase and
+- One- and two-word lines ("Pause.", "You run.", "Vanish.", "Not today.", "Just this once. Coffee.") are generated inside a carrier phrase and
   trimmed. "You hit pause." and "It is not free.": a beat before, quiet. The last three lines: slower, hushed.
 
 ## Not said

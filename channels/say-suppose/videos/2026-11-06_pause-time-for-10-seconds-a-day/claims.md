@@ -28,4 +28,4 @@ the stranger) is invented and carries no row. Where a spoken number is worked ou
 ## Story arithmetic (no row needed, spoken in words)
 
 - Ten seconds a day for a year: 3,650 seconds, "about an hour".
-- Ten seconds a day for eighty years: 292,000 seconds, 3.38 days, "about three and a third days".
+- Ten seconds a day for eighty years: 292,000 seconds = 81.1 hours, "about three days and nine hours".
