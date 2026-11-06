@@ -381,8 +381,9 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_argument("channel")
     sub.add_argument("--replace", action="store_true", help="redo consent over an existing token")
 
-    sub = commands.add_parser("approve-upload", help="owner only: approve the upload of a video that has no "
-                                                     "pipeline (imported); signs the checked file's sha256")
+    sub = commands.add_parser("approve-upload", help="owner only: approve the upload of an imported video "
+                                                     "marked legacy_upload: true with no pipeline state; signs the "
+                                                     "checked file's sha256 and the upload metadata digest")
     sub.add_argument("channel")
     sub.add_argument("video")
     sub.add_argument("--format", required=True, dest="format_name")

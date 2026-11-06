@@ -174,10 +174,10 @@ import yaml  # noqa: E402
 from studio.publish import youtube  # noqa: E402
 
 
-def _upload_yaml(folder, render):
+def _upload_yaml(folder, render, **extra):
     (folder / "upload.yaml").write_text(yaml.safe_dump({
         "file": str(render.relative_to(folder)), "title": "Why We Yawn", "description": "https://example.org/yawn",
-        "tags": ["science"]}))
+        "tags": ["science"], **extra}))
 
 
 def test_publish_binds_qc_approval_and_upload_to_one_file(studio_root, media, capsys):
@@ -252,20 +252,25 @@ def test_publish_binds_qc_approval_and_upload_to_one_file(studio_root, media, ca
     print("\n" + "\n".join(log))
 
 
-def test_approve_upload_for_a_video_with_no_pipeline(studio_root, media):
-    channel = studio_root("dummy")
+def _legacy_video(channel, media, **extra):
     folder = channel.videos_dir / "2026-10-31_old-short"
     (folder / "narration").mkdir(parents=True)
     (folder / "script.md").write_text(SCRIPT)
     (folder / "claims.md").write_text(CLAIMS)
     render, words = media("good", container="mp4", folder=folder / "renders")
     words.rename(folder / "narration" / "words.json")
-    _upload_yaml(folder, render)
+    _upload_yaml(folder, render, **extra)
+    return folder, render
+
+
+def test_approve_upload_for_a_video_with_no_pipeline(studio_root, media):
+    channel = studio_root("dummy")
+    folder, render = _legacy_video(channel, media, legacy_upload=True)
     with pytest.raises(ChannelError, match="no upload_approval.json"):
         checks.approved_upload_media(channel, folder.name)
     path = checks.approve_upload("dummy", folder.name, "short", "owner, test only")
     record = checks.approved_upload_media(channel, folder.name)
-    assert record["sha256"] == checks._sha256(render)
+    assert record["sha256"] == checks._sha256(render) and record["metadata_sha256"]
     assert youtube.approved_media_problems(youtube.build_request("dummy", folder.name)) == []
 
     forged = json.loads(path.read_text())
@@ -275,7 +280,7 @@ def test_approve_upload_for_a_video_with_no_pipeline(studio_root, media):
         checks.approved_upload_media(channel, folder.name)
 
     loud, _ = media("loud", container="mp4", folder=folder / "renders" / "loud")
-    _upload_yaml(folder, loud)
+    _upload_yaml(folder, loud, legacy_upload=True)
     with pytest.raises(ChannelError, match="loudness: too loud"):
         checks.approve_upload("dummy", folder.name, "short")
 
@@ -285,3 +290,150 @@ def test_approve_upload_refuses_a_pipeline_project(studio_root):
     channels.new_video(channel, "Why We Yawn", "short", on=date(2026, 11, 6))
     with pytest.raises(ChannelError, match="approve publish_prep with omni approve"):
         checks.approve_upload("dummy", VIDEO, "short")
+
+
+# --- review fixes (cross-vendor review of PR #5): planted faults ---
+
+
+def test_planted_no_legacy_marker_refuses_approve_upload(studio_root, media):
+    """approve-upload is never inferred from a missing project.json: the video must say legacy_upload: true."""
+    channel = studio_root("dummy")
+    folder, _ = _legacy_video(channel, media)
+    with pytest.raises(ChannelError, match="legacy_upload: true"):
+        checks.approve_upload("dummy", folder.name, "short")
+    with pytest.raises(ChannelError, match=r"publish_prep \(G7\).*is not approved"):
+        checks.approved_upload_media(channel, folder.name)
+    assert not (folder / checks.UPLOAD_APPROVAL).exists()
+
+
+def test_planted_deleted_project_json_does_not_open_approve_upload(studio_root, media):
+    """Deleting project.json while checkpoints exist must not let approve-upload skip G1-G7, marker or not."""
+    log = []
+    channel, folder, good = _walk_to_g6(studio_root, media, log)
+    (folder / "project.json").unlink()
+    _upload_yaml(folder, good, legacy_upload=True)
+    with pytest.raises(ChannelError, match=r"has pipeline state \(checkpoint_"):
+        checks.approve_upload("dummy", VIDEO, "short")
+    with pytest.raises(ChannelError, match=r"publish_prep \(G7\)"):
+        checks.approved_upload_media(channel, VIDEO)
+    # history copies alone still count as pipeline state
+    for cp in folder.glob("checkpoint_*.json"):
+        cp.unlink()
+    assert any("checkpoint_" in p for p in checks.pipeline_state(folder))
+    with pytest.raises(ChannelError, match="has pipeline state"):
+        checks.approve_upload("dummy", VIDEO, "short")
+
+
+def _approve_g6_then_qc(studio_root, media):
+    log = []
+    channel, folder, good = _walk_to_g6(studio_root, media, log)
+    channels.approve_stage(channel, VIDEO, "final_watch", "dummy owner, test only")
+    _upload_yaml(folder, good)
+    return channel, folder, good
+
+
+def _deliverable(channel, folder, good):
+    return checks._deliverable_check(channel, VIDEO, good.resolve())
+
+
+def test_planted_g6_media_proof_stripped_fails_the_deliverable_check(studio_root, media):
+    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+    assert _deliverable(channel, folder, good)["ok"]
+    path = folder / "checkpoint_final_watch.json"
+    data = json.loads(path.read_text())
+    del data["metadata"]["approval"]["media"]
+    path.write_text(json.dumps(data))
+    result = _deliverable(channel, folder, good)
+    assert not result["ok"] and "final_watch approval is invalid" in result["problems"][0]
+    # the stage proof itself no longer verifies, so OpenMontage also treats G6 as unapproved
+    from lib import studio_approval
+    with pytest.raises(studio_approval.ApprovalRefused, match="approval.media"):
+        studio_approval.verify(VIDEO, "final_watch", data["pipeline_type"], data["artifacts"], data["metadata"])
+    assert cli.main(["qc", "dummy", VIDEO, "publish_prep"]) == 1
+
+
+def test_planted_g6_media_proof_edited_fails_the_deliverable_check(studio_root, media):
+    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+    path = folder / "checkpoint_final_watch.json"
+    data = json.loads(path.read_text())
+    data["metadata"]["approval"]["media"]["sha256"] = checks._sha256(good).replace(
+        checks._sha256(good)[0], "f" if checks._sha256(good)[0] != "f" else "e", 1)
+    path.write_text(json.dumps(data))
+    result = _deliverable(channel, folder, good)
+    assert not result["ok"] and "final_watch approval is invalid" in result["problems"][0]
+
+
+def _resign_final_watch(folder, media_record):
+    """Re-sign the stage proof (the test holds the key) around a chosen media record."""
+    from lib import studio_approval
+    path = folder / "checkpoint_final_watch.json"
+    data = json.loads(path.read_text())
+    approval = data["metadata"]["approval"]
+    if media_record is None:
+        approval.pop("media", None)
+    else:
+        approval["media"] = media_record
+    approval["proof"] = studio_approval.sign(VIDEO, "final_watch", data["pipeline_type"], data["artifacts"],
+                                             approval["at"], media_record)
+    path.write_text(json.dumps(data))
+    return approval
+
+
+def test_planted_g6_without_media_proof_fails_as_missing(studio_root, media):
+    """An approval with a valid stage proof but no media record (e.g. approved before media binding) fails."""
+    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+    _resign_final_watch(folder, None)
+    result = _deliverable(channel, folder, good)
+    assert not result["ok"] and "no media proof (missing)" in result["problems"][0]
+
+
+def test_planted_g6_forged_media_proof_fails_as_forged(studio_root, media):
+    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+    record = json.loads((folder / "checkpoint_final_watch.json").read_text())["metadata"]["approval"]["media"]
+    _resign_final_watch(folder, {**record, "proof": "0" * 64})
+    result = _deliverable(channel, folder, good)
+    assert not result["ok"] and "media proof is forged or edited" in result["problems"][0]
+
+
+def test_planted_g6_not_approved_fails_the_deliverable_check(studio_root, media):
+    log = []
+    channel, folder, good = _walk_to_g6(studio_root, media, log)
+    _upload_yaml(folder, good)
+    result = _deliverable(channel, folder, good)
+    assert not result["ok"] and "G6: final_watch is not approved" in result["problems"][0]
+
+
+def test_planted_metadata_changed_after_approval_is_refused(studio_root, media):
+    channel = studio_root("dummy")
+    # the owner's test-upload flow: set the [TEST] title BEFORE approve-upload, and it uploads as approved
+    folder, render = _legacy_video(channel, media, legacy_upload=True, title="[TEST] Why We Yawn")
+    checks.approve_upload("dummy", folder.name, "short", "owner, test only")
+    req = youtube.build_request("dummy", folder.name)
+    assert req.metadata["title"] == "[TEST] Why We Yawn" and youtube.approved_media_problems(req) == []
+    for change in ({"title": "Why We Yawn"}, {"tags": ["science", "extra"]}, {"description": "new"},
+                   {"contains_synthetic_media": True}, {"language": "hi"}, {"category_id": "22"}):
+        data = {"title": "[TEST] Why We Yawn", **change}
+        _upload_yaml(folder, render, legacy_upload=True, **data)
+        problems = youtube.approved_media_problems(youtube.build_request("dummy", folder.name))
+        assert any("metadata" in p and "changed after approval" in p for p in problems), change
+    _upload_yaml(folder, render, legacy_upload=True, title="[TEST] Why We Yawn")
+    assert youtube.approved_media_problems(youtube.build_request("dummy", folder.name)) == []
+
+
+def test_planted_approval_without_metadata_digest_is_refused(studio_root, media):
+    from lib import studio_approval
+    channel = studio_root("dummy")
+    folder, render = _legacy_video(channel, media, legacy_upload=True)
+    path = checks.approve_upload("dummy", folder.name, "short", "owner, test only")
+    data = json.loads(path.read_text())
+    m = data["media"]
+    del m["metadata_sha256"]
+    m["proof"] = studio_approval.sign_media(folder.name, checks.LEGACY_UPLOAD_STAGE, m["media"], m["sha256"], m["at"])
+    path.write_text(json.dumps(data))
+    problems = youtube.approved_media_problems(youtube.build_request("dummy", folder.name))
+    assert any("signs no upload metadata digest" in p for p in problems)
+
+
+def test_tails_short_is_marked_legacy_upload():
+    tails = REAL_ROOT / "channels" / "professor-of-us" / "videos" / "2026-10-31_tails"
+    assert checks.legacy_upload(tails) and checks.pipeline_state(tails) == []

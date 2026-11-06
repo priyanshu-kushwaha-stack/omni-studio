@@ -420,8 +420,12 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
 
     at = datetime.now(timezone.utc).isoformat()
     try:
+        # Binds this approval to the exact file the checks ran on (and, at publish_prep, the upload metadata);
+        # omni upload re-hashes against it. The stage proof below covers this record too.
+        media = checks.media_proof(channel, video_id, stage, report, at)
         # The only proof lib/checkpoint.py accepts for a gated stage of a channel project.
-        proof = studio_approval.sign(video_id, stage, checkpoint["pipeline_type"], checkpoint["artifacts"], at)
+        proof = studio_approval.sign(video_id, stage, checkpoint["pipeline_type"], checkpoint["artifacts"], at,
+                                     media)
     except studio_approval.ApprovalRefused as exc:
         raise ChannelError(str(exc)) from exc
     approval: dict[str, Any] = {
@@ -430,9 +434,7 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
         "via": studio_approval.VIA,
         "proof": proof,
     }
-    media = checks.media_proof(video_id, stage, report, at)
     if media:
-        # Binds this approval to the exact file the checks ran on; omni upload re-hashes against it.
         approval["media"] = media
     if note:
         approval["note"] = note

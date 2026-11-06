@@ -7,12 +7,20 @@ asks channels.list(mine=true) which channel the new token belongs to, and only i
 youtube_channel_id writes the token to the channel's cache file, in the JSON youtubeuploader's CacheFile reads
 (golang.org/x/oauth2 Token: access_token, token_type, refresh_token, expiry). A wrong channel is refused and
 nothing is written. Token values are never printed.
+
+The consent uses PKCE (RFC 7636, S256): a fresh code_verifier per run, its SHA-256 challenge in the consent URL,
+and the verifier in the token exchange, so an intercepted code is useless on its own. The redirect URI must be
+loopback (http on localhost, 127.0.0.1 or [::1]); anything else is refused before the browser opens, so the code
+never goes to another host.
 """
 
 from __future__ import annotations
 
+import base64
+import hashlib
 import http.server
 import json
+import socket
 import os
 import secrets as pysecrets
 import tempfile
@@ -37,8 +45,27 @@ TOKEN_URI = "https://oauth2.googleapis.com/token"
 API = "https://www.googleapis.com/youtube/v3"
 
 
+LOOPBACK_HOSTS = {"localhost", "127.0.0.1", "::1"}
+
+
 class AuthRefused(Exception):
     pass
+
+
+def check_redirect(redirect: str) -> str:
+    """Only an http loopback redirect URI with an explicit host is allowed."""
+    parsed = urllib.parse.urlparse(redirect)
+    if parsed.scheme != "http" or (parsed.hostname or "").lower() not in LOOPBACK_HOSTS:
+        raise AuthRefused(f"redirect URI {redirect!r} is not loopback (http://localhost, 127.0.0.1 or [::1]); "
+                          "refused before consent, nothing written")
+    return redirect
+
+
+def pkce_pair() -> tuple[str, str]:
+    """(code_verifier, S256 code_challenge), RFC 7636."""
+    verifier = pysecrets.token_urlsafe(64)  # 86 characters, within 43-128
+    challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode("ascii")).digest()).rstrip(b"=").decode()
+    return verifier, challenge
 
 
 def client_config(path: Path) -> dict:
@@ -69,7 +96,12 @@ def wait_for_code(redirect: str, state: str, timeout: float = 300) -> str:
         def log_message(self, *args):
             pass
 
-    server = http.server.HTTPServer((parsed.hostname or "localhost", parsed.port or 80), Handler)
+    host = check_redirect(redirect) and parsed.hostname
+
+    class Server(http.server.HTTPServer):
+        address_family = socket.AF_INET6 if host == "::1" else socket.AF_INET
+
+    server = Server((host, parsed.port or 80), Handler)
     server.timeout = timeout
     thread = threading.Thread(target=server.handle_request)
     thread.start()
@@ -94,11 +126,13 @@ def authorize(slug: str, *, replace: bool = False,
     if token_file.exists() and not replace:
         raise AuthRefused(f"{youtube._home(token_file)} already exists; pass --replace to redo consent")
     client = client_config(youtube.client_secret_path())
-    redirect = (client.get("redirect_uris") or [DEFAULT_REDIRECT])[0]
+    redirect = check_redirect((client.get("redirect_uris") or [DEFAULT_REDIRECT])[0])
     state = pysecrets.token_urlsafe(24)
+    verifier, challenge = pkce_pair()
     url = (client.get("auth_uri") or AUTH_URI) + "?" + urllib.parse.urlencode({
         "client_id": client["client_id"], "redirect_uri": redirect, "response_type": "code",
-        "scope": " ".join(SCOPES), "access_type": "offline", "prompt": "consent", "state": state})
+        "scope": " ".join(SCOPES), "access_type": "offline", "prompt": "consent", "state": state,
+        "code_challenge": challenge, "code_challenge_method": "S256"})
     say(f"Opening Google consent for {slug}. Pick the channel {expected} (the brand account, not a personal "
         f"channel). If no browser opens, visit:\n{url}")
     open_url(url)
@@ -106,7 +140,7 @@ def authorize(slug: str, *, replace: bool = False,
 
     body = urllib.parse.urlencode({"code": code, "client_id": client["client_id"],
                                    "client_secret": client["client_secret"], "redirect_uri": redirect,
-                                   "grant_type": "authorization_code"}).encode()
+                                   "grant_type": "authorization_code", "code_verifier": verifier}).encode()
     with opener(urllib.request.Request(client.get("token_uri") or TOKEN_URI, data=body), timeout=30) as resp:
         grant = json.loads(resp.read())
     if not grant.get("refresh_token"):

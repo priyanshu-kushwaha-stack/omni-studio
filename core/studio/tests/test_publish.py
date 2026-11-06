@@ -226,6 +226,7 @@ def _ready(video, monkeypatch):
     monkeypatch.setattr(youtube, "verify_binary", lambda: [])
     # The file-binding rule has its own end-to-end tests (test_studio_short.py); here it is satisfied.
     monkeypatch.setattr(youtube, "approved_media_problems", lambda req: [])
+    monkeypatch.setattr(youtube, "_approved", lambda req: {"sha256": hashlib.sha256(req.file.read_bytes()).hexdigest()})
     youtube.client_secret_path().parent.mkdir(parents=True, exist_ok=True)
     youtube.client_secret_path().write_text("{}")
     req.token.write_text("{}")
@@ -437,3 +438,82 @@ def test_consent_callback_checks_state(tmp_path):
         assert out.get("code") == expect, out
         if expect is None:
             assert "state mismatch" in out["error"]
+
+
+# --- review fixes: PKCE, loopback-only redirect, private copy for the binary ---
+
+
+def test_youtube_auth_uses_pkce_s256(studio_root):
+    import base64
+    import urllib.parse
+
+    channel = _client(studio_root)
+    bodies = []
+    opener, _ = _auth_opener(channel.config.youtube_channel_id)
+
+    def recording(request, timeout):
+        if request.data:
+            bodies.append(urllib.parse.parse_qs(request.data.decode()))
+        return opener(request, timeout)
+
+    urls = []
+    youtube_auth.authorize("alpha", open_url=urls.append, get_code=lambda r, s: "code1", opener=recording,
+                           say=lambda m: None)
+    query = urllib.parse.parse_qs(urllib.parse.urlparse(urls[0]).query)
+    assert query["code_challenge_method"] == ["S256"]
+    verifier = bodies[0]["code_verifier"][0]
+    assert 43 <= len(verifier) <= 128
+    expected = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b"=").decode()
+    assert query["code_challenge"] == [expected]
+
+
+@pytest.mark.parametrize("redirect", ["https://evil.example/cb", "http://example.com:8080/oauth2callback",
+                                      "http://localhost.evil.example/cb", "http://10.0.0.5:8080/cb",
+                                      "urn:ietf:wg:oauth:2.0:oob"])
+def test_planted_non_loopback_redirect_is_refused_before_consent(studio_root, redirect):
+    channel = _client(studio_root)
+    path = youtube.client_secret_path()
+    path.write_text(json.dumps({"web": {"client_id": "cid", "client_secret": "csec", "redirect_uris": [redirect]}}))
+    opened = []
+    with pytest.raises(youtube_auth.AuthRefused, match="not loopback"):
+        youtube_auth.authorize("alpha", open_url=opened.append, get_code=lambda r, s: "c",
+                               opener=lambda *a, **k: pytest.fail("no network"), say=lambda m: None)
+    assert opened == [] and not youtube.token_path(channel).exists()
+
+
+@pytest.mark.parametrize("redirect", ["http://localhost:8080/cb", "http://127.0.0.1:9/cb", "http://[::1]:8080/cb"])
+def test_loopback_redirects_are_allowed(redirect):
+    assert youtube_auth.check_redirect(redirect) == redirect
+
+
+def test_run_gives_the_binary_a_private_copy_hashed_against_the_approval(video, monkeypatch):
+    import stat
+
+    req = _ready(video, monkeypatch)
+    seen = {}
+
+    def runner(cmd, **kwargs):
+        path = Path(cmd[cmd.index("-filename") + 1])
+        seen.update(path=path, data=path.read_bytes(), mode=stat.S_IMODE(path.parent.stat().st_mode))
+        return _runner([])(cmd, **kwargs)
+
+    api = FakeAPI(req.youtube_channel_id, {**GOOD_STATUS, "channelId": req.youtube_channel_id})
+    youtube.run(req, "alpha/" + VIDEO, api=api, runner=runner)
+    assert seen["path"] != req.file and seen["data"] == req.file.read_bytes() and seen["mode"] == 0o700
+    assert not seen["path"].exists()  # cleaned up
+
+
+def test_planted_swap_during_copy_is_refused_before_exec(video, monkeypatch):
+    req = _ready(video, monkeypatch)
+    real_copy = youtube.shutil.copyfile
+
+    def swapping_copy(src, dst):
+        real_copy(src, dst)
+        Path(dst).write_bytes(b"other bytes")  # the file changed between the last check and the copy
+
+    monkeypatch.setattr(youtube.shutil, "copyfile", swapping_copy)
+    calls = []
+    with pytest.raises(youtube.UploadRefused, match="private copy .* not the approved sha256"):
+        youtube.run(req, "alpha/" + VIDEO, api=FakeAPI(req.youtube_channel_id, {}),
+                    runner=lambda *a, **k: calls.append(a))
+    assert calls == []
