@@ -1,7 +1,7 @@
 # Script: What If You Could Pause Time for 10 Seconds a Day?
 
 format: story
-status: draft v2 for G2 (round 1 review applied, see review-g2-round1.md)
+status: draft v3 for G2 (review rounds 1 and 2 applied: review-g2-round1.md, review-g2-round2.md)
 claims: claims.md
 
 ## [00:00] The change
@@ -15,17 +15,17 @@ So what if you could pause time for ten seconds a day?
 
 ## [00:20] The rule
 > SCENE: The split-flap counter drops in, top right, reading 10.
-Ten seconds. Once a day. Then the world starts again, and nobody knows.
-Everyone and everything stops. Except you.
+Ten seconds. Once a day. Everyone and everything stops. Except you.
+When the ten run out, the world starts again, and nobody knows.
+And unused seconds vanish at midnight.
 > SCENE: Grey. You wave a hand through the frozen dust. It parts around your fingers.
 You test it. You wave a hand through the air, and the dust parts around your fingers.
 > SCENE: Grey again. A translucent amber block snaps shut around you. You push against it, stuck.
-Real physics would wreck this power instantly. Stopped air would trap you, like a fly in glass (c01).
+Real physics would wreck this power. Stopped air would trap you like a fly in glass (c01).
 > SCENE: Black frame. Only your two eyes, blinking.
-And stopped light couldn't reach your eyes, so you'd be blind (c02).
+And stopped light couldn't reach your eyes (c02).
 > SCENE: The block shatters into paper flakes. Colour returns.
-So we cheat three times. Air moves for you. You can see. And whatever you touch moves with you.
-Every fact in this video is real.
+So we cheat. Air moves for you, you can see, and whatever you touch moves with you, and forgets its speed.
 > SCENE: You hold up one finger, thinking.
 So, what's your first pause for?
 > SCENE: You glance at the coffee machine and grin.
@@ -38,16 +38,12 @@ A mug falls a metre in about 0.45 seconds (c04). Usually, you just watch it go.
 Not today.
 > SCENE: You snap. Grey. The mug hangs in mid-air, the coffee frozen in droplets.
 Pause.
-You stroll over. There's no rush. A brisk walker covers about 14 metres in ten seconds (c05).
+You stroll over. There's no rush. At a normal walking pace, you cover up to about 14 metres in ten seconds (c05).
 > TAG: 14 M
 > SCENE: You pluck the mug out of the air, turn it upright and scoop the droplets back in. A smirk.
 You catch your falling coffee.
 > SCENE: Colour returns. You sip.
 Ten seconds is more time than it sounds.
-> SCENE: You jog on the spot beside a paper running track.
-> TAG: 9.58 S
-The fastest 100 metres ever run took 9.58 seconds (c06). In theory, that's a whole sprint.
-You're not that fast. You don't need to be.
 > SCENE: Hallway at work. Your boss steps out of an office, waving.
 > BUBBLE: Boss: "Got a minu—"
 Your boss spots you in the hallway. Stop and chat, or vanish?
@@ -90,23 +86,26 @@ Three. Two. One.
 The bus screams through an empty crossing. The ball doesn't make it. The kid does.
 > SCENE: The stopped bus, from above. A paper tape measure unrolls back up the road behind it.
 > TAG: 23 M
-Even an alert driver needs about 23 metres to stop a car at 48 kilometres an hour (c14). This was a bus.
-And road designers allow 2.5 seconds between a driver seeing danger and starting to brake (c13).
-> SCENE: The crossing, quiet now. Tags stamp onto the road one by one.
-> TAG: 1.16 MILLION
-Worldwide, road crashes kill about 1.16 million people a year (c11).
-For anyone aged 5 to 29, they're the leading cause of death (c12).
+A car at 48 kilometres an hour needs about 23 metres to stop (c14).
+Nine of them go by before the brakes even touch (c14). This was a bus.
+> SCENE: The crossing, quiet now. The kid's cap lies on the kerb.
+Worldwide, for anyone aged 5 to 29, roads are the leading cause of death (c12).
 Nobody could have stopped that bus. You didn't need to. You just needed ten seconds.
 > SCENE: The kid's mother runs over and hugs the kid, then turns to thank the shaken bus driver. You stand at the edge of the frame.
 The kid's mother runs over, shaking. She thanks the bus driver. Nobody thanks you. Nobody knows to.
+> SCENE: You walk away down the street, hands in pockets. Your hands tremble.
+You walk home the long way. Your hands won't stop shaking.
 
 ## [03:30] The catch
 > SCENE: Night. You at home, staring at your hands.
 You saved a life with ten seconds. That feels free.
 It is not free.
-Now you know what ten seconds can do. So every day you waste them feels like a choice.
+Your body keeps ageing through every pause. Ten seconds a day that nobody else lives.
+And now you know what ten seconds can do. So you can't stop watching.
+> TAG: MONTH 6
 > SCENE: Montage, two seconds each, the counter top right: you at the crossing, watching. You on a bus, watching. You at a window, watching.
-You stop spending them on coffee. You keep them in your pocket. Just in case.
+Coffee today, or keep them just in case?
+You keep them. In your pocket. Every single day.
 > TAG: 1 HOUR A YEAR
 Ten seconds a day comes to about an hour a year.
 An hour that belongs to nobody but you, and you can't stop guarding it.
@@ -130,23 +129,24 @@ You become the reason small disasters don't happen.
 > SCENE: You at a café table with your best friend. You open your mouth. Then close it.
 Do you tell your best friend? You open your mouth. Then you close it.
 Who would believe you? And what would they ask you to pause for?
+> TAG: YEAR 40
 > SCENE: The same street through the seasons: leaves, rain, snow, sun. You age a little in each.
-But every pause, you live ten seconds that nobody else does. Your body ages through them.
-Different people living through different amounts of time sounds made up. It isn't.
+> SCENE: You, older, at a corner. Your eyes flick to a wobbling ladder, a loose dog, a driver looking at a phone.
+Forty years in, you read a street like a weather map. A wobbling ladder. A loose dog. A driver looking at a phone.
+You see the accident before it happens. Most days, you don't even need the pause.
+And those extra seconds you live? Different people living through different amounts of time sounds made up. It isn't.
 > SCENE: The sky. The space station glides across.
-> TAG: 0.007 S
-After six months on the space station, astronauts come home 0.007 seconds younger than if they'd stayed on the ground (c15).
-> SCENE: You on a staircase. A clock beside you on the top step ticks a hair faster than a clock on the bottom step.
-Live one foot higher than your twin, and over 79 years you'd age about 90 billionths of a second more (c16).
+> TAG: MILLISECONDS
+After six months on the space station, astronauts come home a few thousandths of a second younger than if they'd stayed on the ground (c15).
 Your pauses add up much faster. Eighty years of them come to about three and a third days.
 > SCENE: A mirror. You squint at your reflection. Beside it, not on your face, a tag.
 > TAG: 3⅓ DAYS
-Three and a third days older than your twin. Nobody would ever notice.
-That's what this power really costs. Days of your life, spent ten seconds at a time, on strangers who'll never know your name.
+Three and a third days older than everyone you grew up with. You'd barely notice.
+The bigger cost is the watching. A whole life spent ten seconds at a time, on strangers who'll never know your name.
 
 ## [06:15] Back to you
 > SCENE: The hallway clock again. The second hand sticks, then jumps.
-Here's the real part. You can't pause the world. But your brain already makes a clock seem to stop, every time you move your eyes (c10).
+Here's the real part. You can't pause the world. But every time you move your eyes, your brain stretches a moment, and a clock can catch it (c10).
 So what would you do with your ten seconds? Spend them every morning, or save them for a day that might never come?
 Tell us below. The best what-ifs become videos.
 > SCENE: The street, evening. You snap. The crowd freezes, grey. You turn to walk home.
@@ -158,15 +158,12 @@ And they're looking right at you.
 > SCENE: Black for one second. Then a quiet end card: you, small, in the left two-thirds; the right third empty for end screens.
 
 ## Word count
-908 spoken words (claims.spoken_lines, cites removed). With the countdown and action holds, about 7 minutes.
+908 spoken words (claims.spoken_lines, cites removed). With the countdown and action holds, about 6:45.
 
 ## Narration notes (for G3; not spoken)
 - Each line is one take. Feed the voice a spelled-out text and keep the digits in this script for the claims check:
-  "0.45" → "nought point four five"; "14 metres" → "fourteen metres"; "100 metres ... 9.58" → "a hundred metres ...
-  nine point five eight"; "23 metres ... 48 kilometres an hour" → "twenty-three metres ... forty-eight kilometres an
-  hour"; "2.5 seconds" → "two and a half seconds"; "1.16 million" → "one point one six million"; "5 to 29" → "five
-  to twenty-nine"; "0.007 seconds" → "seven thousandths of a second"; "79 years ... 90 billionths" → "seventy-nine
-  years ... ninety billionths".
+  "0.45" → "nought point four five"; "14 metres" → "fourteen metres"; "23 metres ... 48 kilometres an hour" → "twenty-three metres ... forty-eight kilometres an
+  hour"; "5 to 29" → "five to twenty-nine".
 - "Chronostasis": respell for the voice as "krono-STAY-sis".
 - The countdown ("Nine. Eight. Seven." to "Three. Two. One.") is one take with a break between numbers, sliced to
   the counter, and kept out of the 1.1 speed-up so each number lasts about a second. Steady, a little breathless.
@@ -175,9 +172,13 @@ And they're looking right at you.
 
 ## Not said
 - No bus stopping distance was found in a source, so the script gives the car figure (c14) and says "This was a bus".
-- Dropped after review: the atomic-clock definition of a second (c03), typing (c07) and heartbeat (c08) speeds,
-  reading speed (c18), and the GPS drift (c17), which physicists dispute.
-- The 14 metres in c05 is a brisk walker's: the fastest age group's mean.
+- Dropped after review round 1: the atomic-clock second (c03), typing (c07), heartbeat (c08), reading speed (c18),
+  and the GPS drift (c17), which physicists dispute.
+- Dropped after review round 2: the sprint record (c06), road deaths per year (c11), the 2.5 s design allowance
+  (c13), which clashes with the 23 m figure, and the one-foot-higher twin (c16).
+- ESA's 0.007 s for six months is said as "a few thousandths of a second": the figure is higher than the
+  station's speed and height give (about 0.0045 s), so c15 is contested.
+- The 14 metres in c05 is the fastest age group's mean comfortable walking speed, so it is said as "up to".
 
 ## Sources
 The source list for the description is the URL column of `claims.md`.
