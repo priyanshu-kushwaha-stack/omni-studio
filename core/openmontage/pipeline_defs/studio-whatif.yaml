@@ -83,7 +83,7 @@ stages:
       - Every real-world number, date, name or finding cites a claims.md row; story numbers are in words
       - What the viewer does in the story is never stated as fact; uncertainty is spoken
     success_criteria:
-      - script.md is 900 to 1,100 words and follows the beats in channels/<slug>/style.md
+      - script.md is 750 to 900 words, 15 to 20% wordless, and follows the beats in channels/<slug>/style.md
       - claims ledger complete, a source for every factual claim (omni qc ... story_script)
 
   - name: narration

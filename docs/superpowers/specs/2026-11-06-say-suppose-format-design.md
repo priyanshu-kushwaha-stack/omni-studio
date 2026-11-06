@@ -213,3 +213,18 @@ change to the other three channels.
   approval and sits at G2 `awaiting_human`, with `script.md`, a `claims.md` in which every row has a source, and
   `omni qc say-suppose <video> story_script` passing.
 - No asset has been generated and no paid call made.
+
+## Amendment, 2026-11-06 (owner: "Adopt all")
+
+After the reference study (`docs/research/2026-11-06-say-suppose-reference-study.md`) the owner adopted all eleven
+proposals. They replace the matching rules above; `channels/say-suppose/style.md` is the current statement.
+
+- Pace: about 115 words a minute, 750 to 900 words, 15 to 20% wordless (`> HOLD:`); no speed-up on narration.
+- Light: a mood per scene (`> MOOD:` morning, day, dusk, night, lamp, frozen) with grade, rim light, depth of field,
+  glows and vignette. The pause adds letterbox bars only while time is stopped.
+- Faces: brows and eyelids; a reaction within 2 seconds of every reveal. Shot variety, motion blur, drawn facts.
+- Source tags on screen for cited numbers, from `claims.md`.
+- Story: a person to lose, the cost near 60%, a choice at 75 to 80%, a planted line paid off at the end.
+- Sound: a score per video (ElevenLabs Music v2.5 through Higgsfield, or Pixabay); narration on Eleven v4 with Arthur
+  and per-line direction (quoted 2026-11-06: 0.23 credits for a test line; 8.72 credits per minute of music).
+

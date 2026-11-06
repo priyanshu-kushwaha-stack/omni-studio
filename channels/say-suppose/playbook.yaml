@@ -39,8 +39,8 @@ motion:
     transition_duration_seconds: 0.2
 
 audio:
-  voice_style: "one narrator in second person, present tense; dry, warm, exact; about 140 words a minute across action holds; no hype"
-  music_mood: "a quiet synthesised bed under the voice; no licensed music, no vocals"
+  voice_style: "one narrator in second person, present tense; dry, warm, exact; about 115 words a minute with 15-20% wordless beats; directed per line; no hype"
+  music_mood: "a score per video with a theme for 'you'; cues change at the beats; rises in wordless beats, ducks under the voice; no vocals"
   music_volume: 0.08
   sfx_style: "synthesised effects on actions and on the rule device; never on every change"
 
@@ -51,11 +51,14 @@ asset_generation:
     - "No generated images: every frame is drawn in code as flat paper-cut shapes"
     - "The viewer's figure: mustard head (#F2B632) with a tuft, teal scarf (#1D9A8F), ink body (#23252B)"
     - "Crimson (#D8344F) only for the stranger and for alarms"
-    - "On-screen text only as a paper tag, a split-flap counter or a speech bubble, in Rubik 800"
+    - "On-screen text only as a paper tag, a split-flap counter, a speech bubble or a source tag, in Rubik 800"
+    - "Every scene has a mood light (grade, rim light, depth of field, glows, vignette); flat daylight is the exception"
 
 quality_rules:
   - "Something changes every 2 to 4 seconds; no hold longer than 6 seconds"
   - "Motion is timed to cue words, never to hard-coded times"
+  - "15 to 20% of the runtime is wordless; the biggest beat gets 8 to 10 wordless seconds"
+  - "A face reaction within 2 seconds of every reveal"
   - "No frame is an AI image and no clip is AI video"
   - "Every spoken real-world number, date, name or finding has a claims.md row; story numbers are in words"
   - "On-screen text stays off faces, inside the safe area, and never overlaps other text"

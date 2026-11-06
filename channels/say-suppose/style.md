@@ -1,7 +1,8 @@
 # Say Suppose style
 
 How this channel looks and sounds, beyond what `playbook.yaml` can hold. Design and the owner's decisions:
-`docs/superpowers/specs/2026-11-06-say-suppose-format-design.md` (2026-11-06).
+`docs/superpowers/specs/2026-11-06-say-suppose-format-design.md` (2026-11-06). Quality rules from the reference study,
+all adopted by the owner on 2026-11-06 ("Adopt all"): `docs/research/2026-11-06-say-suppose-reference-study.md`.
 
 ## The format: a what-if you live through
 
@@ -20,9 +21,20 @@ everything it says about how the world works is real and sourced. English, 16:9,
 The clock labels change with the topic (hours, year, century; or day, decade, forever). There are always three
 jumps and each is bigger than the last.
 
+### Story craft (reference study, adopted 2026-11-06)
+
+- **A person to lose.** The viewer cares about a person, not the power. The cost lands near 60% of the runtime; at
+  75 to 80% comes a choice between the power and that person.
+- **Plant and pay off.** One line in the first minute comes back, in the same or mirrored words, in the last minute.
+- **Wordless peaks.** The biggest beat gets 8 to 10 seconds with no narration: the music swells or drops, the colour
+  drains, motion slows. Peaks are cut at half the usual rate.
+- **Humour breaks tension**, about once a minute in the first half.
+- **End on a twist and one question** to the viewer.
+
 ## Script rules
 
-- 900 to 1,100 words. Action holds the screen between lines, so a video averages about 140 words a minute.
+- 750 to 900 words, spoken at about 115 words a minute. 15 to 20% of the runtime is wordless: `> HOLD:` lines
+  where action and music carry the story. (Was 900 to 1,100 at about 140; changed by the reference study.)
 - Second person, present tense, short sentences. The narrator is dry, warm and exact, and never hypes.
 - About once a minute the narrator puts a choice to you and the figure answers at once by acting. No held pause,
   no quiz board, no countdown that waits for the viewer.
@@ -70,6 +82,30 @@ three painted looks, then that sample re-coloured and on a painted backdrop, and
 - Motion is timed to spoken words through named cues, never to hard-coded times, so a new voice take re-times
   the scene.
 
+### Light, faces and shots (reference study, adopted 2026-11-06)
+
+- **A mood light for every scene,** named in the script with `> MOOD:`: `morning`, `day`, `dusk`, `night`, `lamp`
+  (one practical source, for grief or fear) and `frozen` (inside a pause). Each sets a colour grade, a rim light on the
+  figures, depth of field on near and far layers, glows on light sources and a vignette. The sample's flat daylight
+  is `day`, used sparingly.
+- **The pause has its own signature:** the world drains to grey, and letterbox bars slide in only while time is
+  stopped, then slide out as colour returns. No permanent letterbox.
+- **Faces act with brows and eyelids:** sceptical, worried, sad, shocked, determined, relieved, afraid. A face
+  reaction follows every reveal within 2 seconds.
+- **Shot variety:** wides to set a place, close-ups for feeling, an insert or top-down shot every 20 to 30 s,
+  over-the-shoulder with a blurred foreground head. Motion blur on fast moves; a slow-motion ghost at the peak.
+- **Facts are drawn:** a number against a normal number, on the scene; paper diagrams that draw themselves (a tape
+  from a bumper, a fall arc).
+- **Source tags:** when a cited number is spoken, a small paper tag in a lower corner names its source ("UK Highway
+  Code"). The text comes from the `claims.md` row, so it is never typed twice. None of the reference channels do
+  this; it is ours.
+
+## Signatures not to copy
+
+From the reference study: Ifverse's black round-headed figures with white eyes, permanent letterbox with magenta
+dusk, head-filling close-ups with a glowing brain trace, "What if your ___ was 10x ___?" cards and its coffee-cup
+cold open; ConChaser's neon counters over heads and dark pill captions; Primal Space's colour-coded ghost figures.
+
 ## Thumbnails
 
 You, large, mid-reaction, with one prop that carries the what-if. At most three words, on a stamped tag in
@@ -88,10 +124,14 @@ repeats the title.
 
 ## Voice and sound
 
-- Narrator: Arthur (`voices.yaml`). One take per line, cached by a hash of voice and text. Silences capped at
-  0.3 s, then `atempo 1.1`.
-- Every narration call is paid: tool, provider, model and cost are announced and approved first.
-- Sound effects and the quiet bed are synthesised with ffmpeg. No licensed music.
+- Narrator: Arthur (`voices.yaml`), on ElevenLabs Eleven v4 through Higgsfield, with per-line delivery direction
+  (hushed, breathless, dry) from the script's narration notes. One take per line, cached by a hash of voice and text.
+  Silences capped at 0.3 s. No speed-up: the slower pace is the point.
+- **A score per video,** with cues that change at the beats: a theme for "you", a cold cue for the catch, silence
+  before the twist. Music rises to near voice level in `> HOLD:` beats and ducks under the voice elsewhere. Source:
+  ElevenLabs Music v2.5 through Higgsfield, or tracks from the Pixabay music library; never a track with unclear rights.
+- Sound effects are synthesised with ffmpeg.
+- Every narration and music call is paid: tool, provider, model and cost are announced and approved first.
 - Mix: -14 LUFS integrated within 1 LU, true peak at most -1 dBTP (`channel.yaml` `loudness.story`).
 
 ## Shorts

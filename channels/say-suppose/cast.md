@@ -19,6 +19,9 @@ Whether the stranger appears in every video is an open item for the owner (spec,
 - `> SCENE:` a set and what happens in it. Not spoken.
 - `> BUBBLE:` a speech bubble, four words or fewer, with who says it. Not spoken.
 - `> TAG:` a stamped label or counter value on screen. Not spoken.
+- `> MOOD:` the light for the scenes that follow: `morning`, `day`, `dusk`, `night`, `lamp` or `frozen`. Not spoken.
+- `> HOLD:` a wordless beat and how long it lasts, with what the picture and music do. Not spoken.
+- Source tags need no line: every spoken line that cites a ledger row shows that row's source on screen.
 - A choice put to you is an ordinary narrator line. The figure answers at once by acting. No held pause, no quiz
   board.
 - **Digits mean facts.** A spoken digit must cite a `claims.md` row, e.g. `(c07)`. Story numbers are written as

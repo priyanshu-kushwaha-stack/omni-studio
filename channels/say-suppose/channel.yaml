@@ -11,7 +11,7 @@ formats:
 playbook: say-suppose              # Loads by name through styles/custom/say-suppose.yaml.
 voices: voices.yaml             # Relative to this folder.
 music:
-  default: null                 # No licensed music: the bed and effects are synthesised by the engine.
+  default: null                 # Each video gets its own score (style.md, Voice and sound); no channel-wide track.
   allowed: []
 cadence: daily                  # The owner's target (2026-11-06). style.md says what daily needs first.
 budget_usd_per_video: 0         # A hard cap. 0 means no paid calls until the owner sets a budget (narration is paid).
