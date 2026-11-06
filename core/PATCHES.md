@@ -22,7 +22,7 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | File | Purpose |
 |---|---|
 | `STUDIO_PATHS.md` | Says OpenMontage's docs are relative to this folder |
-| `lib/studio_approval.py` | HMAC proof for `omni approve` (and `sign_media`/`verify_media`, binding an approval to a file's sha256), keyed from `~/.config/omni-studio/approval.key` (made on first approval, mode 600); `verify` is what `lib/checkpoint.py` calls |
+| `lib/studio_approval.py` | HMAC proof for `omni approve` (and `sign_media`/`verify_media`, binding an approval to a file's sha256 and, for publish approvals, the upload metadata digest; the stage proof also covers `approval.media`), keyed from `~/.config/omni-studio/approval.key` (made on first approval, mode 600); `verify` is what `lib/checkpoint.py` calls |
 | `tools/studio/__init__.py`, `tools/studio/studio_pou_tools.py` | `pou_tts`, `pou_stills`, `pou_puppet`, `pou_compose`, `overlay_check`: the Professor of Us engine (`core/engines/pou`) by subprocess, auto-discovered |
 | `pipeline_defs/studio-dialogue.yaml` | Seven owner gates G1-G7 for dialogue explainers; `metadata.studio_checks` per stage |
 | `skills/studio/studio-dialogue-*.md` | One stage skill per gate |
