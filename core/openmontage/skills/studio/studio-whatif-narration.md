@@ -2,7 +2,7 @@
 
 1. `whatif_story` turns the approved `script.md` into `story.json` (spoken lines, holds, moods, cited sources).
    Where a line needs numbers spelled out or a delivery direction (`[whispers]`, `[dry]`), add it to
-   `narration/say.yaml` as `"<script line>": "<what the voice says>"`; the script keeps its digits for the claims
+   `say.yaml` (in the video folder, tracked) as `"<script line>": "<what the voice says>"`; the script keeps its digits for the claims
    check. Directions come from the script's "Narration notes".
 2. The voice comes from `channels/<slug>/voices.yaml` (Arthur on Eleven v4). Every new take is paid: quote first with
    `higgsfield generate cost` per line (the build also quotes), announce tool, provider, model and total to the owner,

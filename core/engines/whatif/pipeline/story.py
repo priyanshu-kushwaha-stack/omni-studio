@@ -3,7 +3,7 @@
     python story.py <video folder>          writes <video folder>/story.json
 
 A video folder is channels/<slug>/videos/<id>/. Reads its script.md (the owner-approved script), claims.md (the
-source of every cited id), narration/say.yaml (optional: the text the voice speaks for a line, when numbers need
+source of every cited id), say.yaml (optional: the text the voice speaks for a line, when numbers need
 spelling out or the delivery needs a direction such as "[whispers]"), and the channel's voices.yaml. Keeps any
 named cues already in story.json: cues are added at the rough cut.
 
@@ -65,7 +65,7 @@ def _voice(channel: Path) -> dict:
 def build(video: Path) -> dict:
     video = Path(video)
     ledger = _ledger((video / "claims.md").read_text(encoding="utf-8"))
-    say_path = video / "narration" / "say.yaml"
+    say_path = video / "say.yaml"
     say = yaml.safe_load(say_path.read_text(encoding="utf-8")) or {} if say_path.is_file() else {}
 
     lines: list[dict] = []
@@ -115,7 +115,7 @@ def build(video: Path) -> dict:
     for key, spoken in say.items():
         key = str(key).strip()
         if key not in by_text:
-            raise ValueError(f"narration/say.yaml: {key!r} is not a spoken line of script.md")
+            raise ValueError(f"say.yaml: {key!r} is not a spoken line of script.md")
         by_text[key]["say"] = str(spoken)
 
     old = video / "story.json"

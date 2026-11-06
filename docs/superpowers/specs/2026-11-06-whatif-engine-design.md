@@ -34,7 +34,7 @@ in a channel folder needs no packages of its own.
 - `> HOLD: N s` becomes a wordless gap of N seconds after the previous line;
 - `> MOOD:` sets the mood for the lines after it;
 - each line's ledger ids are kept, so the renderer can show the source tag from `claims.md`;
-- the spoken text of a take comes from `narration/say.yaml` when the script line needs spelling out or direction
+- the spoken text of a take comes from `say.yaml` in the video folder when the script line needs spelling out or direction
   (numbers spelled, `[whispers]`), so the script keeps its digits.
 
 Named cues for animation (`{line, word}`) are added at the rough-cut stage in `story.json`.

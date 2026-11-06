@@ -54,8 +54,7 @@ def _video(tmp_path: Path, say: str | None = None) -> Path:
     (video / "claims.md").write_text(CLAIMS)
     (channel / "voices.yaml").write_text(VOICES)
     if say is not None:
-        (video / "narration").mkdir()
-        (video / "narration" / "say.yaml").write_text(say)
+        (video / "say.yaml").write_text(say)
     return video
 
 
