@@ -1,0 +1,29 @@
+{
+  "name": "whatif-engine",
+  "private": true,
+  "type": "module",
+  "description": "omni-studio paper-cut engine for what-if stories (Say Suppose). Imported from the owner's what-if-pause sample on 2026-11-06.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "sfx": "bash pipeline/sfx.sh public/sfx",
+    "studio:sample": "remotion studio examples/pause-sample/index.ts --props=public/pause/props.json"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "@remotion/google-fonts": "4.0.484",
+    "@remotion/motion-blur": "4.0.484",
+    "@remotion/noise": "4.0.484",
+    "@remotion/paths": "4.0.484",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.484"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^18",
+    "tsx": "^4",
+    "typescript": "^5.6",
+    "vitest": "^2"
+  }
+}
