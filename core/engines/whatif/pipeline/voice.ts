@@ -1,10 +1,13 @@
 import { spawn } from "node:child_process";
 import { writeFileSync } from "node:fs";
-import { homedir, tmpdir } from "node:os";
-import { join } from "node:path";
+import { tmpdir } from "node:os";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { VoiceSpec } from "../src/kit/timeline";
 
-const WHISPER_PY = process.env.WHISPER_PY ?? join(homedir(), "Exploration/sandbox/samaaj-system/.venv/bin/python");
+const HERE = dirname(fileURLToPath(import.meta.url));
+/** faster-whisper lives in the studio's media venv; the studio tool passes WHISPER_PY when it runs from a worktree. */
+const WHISPER_PY = process.env.WHISPER_PY ?? resolve(HERE, "../../../../.venv-media/bin/python");
 
 function run(cmd: string, args: string[]): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -20,10 +23,17 @@ function run(cmd: string, args: string[]): Promise<string> {
   });
 }
 
-const args = (cmd: "create" | "cost", v: VoiceSpec, text: string) => [
-  "generate", cmd, v.model, "--prompt", text, "--variant", v.variant,
-  "--voice_type", v.voiceType, "--voice_id", v.voiceId, "--json",
-];
+/** Higgsfield CLI arguments for one take. Eleven v4 takes a one-turn dialogue (direction such as "[whispers]" goes in
+ *  the text); text2speech_v2 takes a prompt and an engine variant. */
+export function args(cmd: "create" | "cost", v: VoiceSpec, text: string): string[] {
+  if (v.model === "elevenlabs_v4" || v.model === "elevenlabs_v4_turbo") {
+    const turn = [{ text, voice_type: v.voiceType, voice_id: v.voiceId }];
+    return ["generate", cmd, v.model, "--dialogue", JSON.stringify(turn), "--json"];
+  }
+  if (!v.variant) throw new Error(`voice model ${v.model} needs a variant`);
+  return ["generate", cmd, v.model, "--prompt", text, "--variant", v.variant,
+    "--voice_type", v.voiceType, "--voice_id", v.voiceId, "--json"];
+}
 
 function find(json: unknown, key: string): unknown {
   if (Array.isArray(json)) {
@@ -64,11 +74,12 @@ export async function synthesize(text: string, v: VoiceSpec, outWav: string): Pr
   await run("ffmpeg", ["-v", "error", "-y", "-i", tmp, "-ac", "1", "-ar", "44100", outWav]);
 }
 
-/** Caps pauses inside a raw clip and quickens it, so raw takes stay untouched and are never re-billed. */
-export async function tighten(rawWav: string, outWav: string): Promise<void> {
+/** Caps pauses inside a raw clip (and changes its speed if tempo is not 1), so raw takes stay untouched and are
+ *  never re-billed. The channel's slow pace means tempo 1; the owner's sample used 1.1. */
+export async function tighten(rawWav: string, outWav: string, tempo = 1): Promise<void> {
   const filter = [
     "silenceremove=start_periods=1:start_threshold=-40dB:stop_periods=-1:stop_duration=0.3:stop_silence=0.3:stop_threshold=-40dB",
-    "atempo=1.1",
+    ...(tempo !== 1 ? [`atempo=${tempo}`] : []),
     "afade=t=in:d=0.01",
   ].join(",");
   await run("ffmpeg", ["-v", "error", "-y", "-i", rawWav, "-af", filter, outWav]);
@@ -94,5 +105,5 @@ export async function probeSeconds(file: string): Promise<number> {
 
 /** Word timings via faster-whisper; writes <wav>.words.json next to each WAV. */
 export async function transcribe(wavs: string[]): Promise<void> {
-  if (wavs.length) await run(WHISPER_PY, [join(process.cwd(), "pipeline/transcribe.py"), ...wavs]);
+  if (wavs.length) await run(WHISPER_PY, [join(HERE, "transcribe.py"), ...wavs]);
 }

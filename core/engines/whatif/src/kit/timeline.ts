@@ -1,7 +1,16 @@
 import { alignWords, type AsrWord } from "./align";
 
-export interface VoiceSpec { model: string; variant: string; voiceType: string; voiceId: string }
-export interface ScriptLine { text: string; gapAfterSec: number }
+export interface VoiceSpec { model: string; variant?: string; voiceType: string; voiceId: string }
+export interface ScriptLine {
+  text: string;
+  gapAfterSec: number;
+  /** What the voice speaks, when it differs from the script (numbers spelled out, a direction like "[whispers]"). */
+  say?: string;
+  /** The light for this line's scene (kit/stage/moods). */
+  mood?: string;
+  /** Ledger ids cited on this line; their sources show as a tag. */
+  claims?: string[];
+}
 export interface CueAnchor { line: number; word: string }
 
 export interface VideoScript {
@@ -11,6 +20,10 @@ export interface VideoScript {
   tailSec: number;
   lines: ScriptLine[];
   cues: Record<string, CueAnchor>;
+  /** Claim id -> source URL, for on-screen source tags. */
+  sources?: Record<string, string>;
+  /** Speed applied to takes when tightening; 1 unless the story says otherwise. */
+  tempo?: number;
 }
 
 export interface Silence { start: number; end: number }

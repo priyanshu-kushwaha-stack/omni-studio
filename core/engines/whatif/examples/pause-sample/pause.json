@@ -1,46 +1,160 @@
 {
   "id": "pause",
-  "voice": { "model": "text2speech_v2", "variant": "elevenlabs", "voiceType": "preset", "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346" },
+  "voice": {
+    "model": "text2speech_v2",
+    "variant": "elevenlabs",
+    "voiceType": "preset",
+    "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346"
+  },
+  "tempo": 1.1,
   "leadInSec": 0.4,
   "tailSec": 1.8,
   "lines": [
-    { "text": "You wake up and discover you can pause time.", "gapAfterSec": 0.35 },
-    { "text": "Ten seconds. Once a day.", "gapAfterSec": 0.5 },
-    { "text": "At first, you use it for dumb things.", "gapAfterSec": 0.2 },
-    { "text": "You catch your falling coffee.", "gapAfterSec": 0.4 },
-    { "text": "You dodge your boss in the hallway.", "gapAfterSec": 0.6 },
-    { "text": "Then, on day twelve, a bus runs a red light.", "gapAfterSec": 0.15 },
-    { "text": "There's a kid in the road.", "gapAfterSec": 0.3 },
-    { "text": "You hit pause.", "gapAfterSec": 0.6 },
-    { "text": "You run.", "gapAfterSec": 0.1 },
-    { "text": "Nine. Eight. Seven.", "gapAfterSec": 0.5 },
-    { "text": "And then you notice something.", "gapAfterSec": 0.6 },
-    { "text": "Someone else is still moving.", "gapAfterSec": 0.6 },
-    { "text": "And they're looking right at you.", "gapAfterSec": 0 }
+    {
+      "text": "You wake up and discover you can pause time.",
+      "gapAfterSec": 0.35
+    },
+    {
+      "text": "Ten seconds. Once a day.",
+      "gapAfterSec": 0.5
+    },
+    {
+      "text": "At first, you use it for dumb things.",
+      "gapAfterSec": 0.2
+    },
+    {
+      "text": "You catch your falling coffee.",
+      "gapAfterSec": 0.4
+    },
+    {
+      "text": "You dodge your boss in the hallway.",
+      "gapAfterSec": 0.6
+    },
+    {
+      "text": "Then, on day twelve, a bus runs a red light.",
+      "gapAfterSec": 0.15
+    },
+    {
+      "text": "There's a kid in the road.",
+      "gapAfterSec": 0.3
+    },
+    {
+      "text": "You hit pause.",
+      "gapAfterSec": 0.6
+    },
+    {
+      "text": "You run.",
+      "gapAfterSec": 0.1
+    },
+    {
+      "text": "Nine. Eight. Seven.",
+      "gapAfterSec": 0.5
+    },
+    {
+      "text": "And then you notice something.",
+      "gapAfterSec": 0.6
+    },
+    {
+      "text": "Someone else is still moving.",
+      "gapAfterSec": 0.6
+    },
+    {
+      "text": "And they're looking right at you.",
+      "gapAfterSec": 0
+    }
   ],
   "cues": {
-    "wake": { "line": 0, "word": "wake" },
-    "teasePause": { "line": 0, "word": "pause" },
-    "ten": { "line": 1, "word": "Ten" },
-    "once": { "line": 1, "word": "Once" },
-    "dumb": { "line": 2, "word": "dumb" },
-    "catch": { "line": 3, "word": "catch" },
-    "coffee": { "line": 3, "word": "coffee" },
-    "dodge": { "line": 4, "word": "dodge" },
-    "hallway": { "line": 4, "word": "hallway" },
-    "day12": { "line": 5, "word": "day" },
-    "bus": { "line": 5, "word": "bus" },
-    "red": { "line": 5, "word": "red" },
-    "kid": { "line": 6, "word": "kid" },
-    "pause": { "line": 7, "word": "pause" },
-    "run": { "line": 8, "word": "run" },
-    "nine": { "line": 9, "word": "Nine" },
-    "eight": { "line": 9, "word": "Eight" },
-    "seven": { "line": 9, "word": "Seven" },
-    "notice": { "line": 10, "word": "notice" },
-    "someone": { "line": 11, "word": "Someone" },
-    "moving": { "line": 11, "word": "moving" },
-    "looking": { "line": 12, "word": "looking" },
-    "you": { "line": 12, "word": "you" }
+    "wake": {
+      "line": 0,
+      "word": "wake"
+    },
+    "teasePause": {
+      "line": 0,
+      "word": "pause"
+    },
+    "ten": {
+      "line": 1,
+      "word": "Ten"
+    },
+    "once": {
+      "line": 1,
+      "word": "Once"
+    },
+    "dumb": {
+      "line": 2,
+      "word": "dumb"
+    },
+    "catch": {
+      "line": 3,
+      "word": "catch"
+    },
+    "coffee": {
+      "line": 3,
+      "word": "coffee"
+    },
+    "dodge": {
+      "line": 4,
+      "word": "dodge"
+    },
+    "hallway": {
+      "line": 4,
+      "word": "hallway"
+    },
+    "day12": {
+      "line": 5,
+      "word": "day"
+    },
+    "bus": {
+      "line": 5,
+      "word": "bus"
+    },
+    "red": {
+      "line": 5,
+      "word": "red"
+    },
+    "kid": {
+      "line": 6,
+      "word": "kid"
+    },
+    "pause": {
+      "line": 7,
+      "word": "pause"
+    },
+    "run": {
+      "line": 8,
+      "word": "run"
+    },
+    "nine": {
+      "line": 9,
+      "word": "Nine"
+    },
+    "eight": {
+      "line": 9,
+      "word": "Eight"
+    },
+    "seven": {
+      "line": 9,
+      "word": "Seven"
+    },
+    "notice": {
+      "line": 10,
+      "word": "notice"
+    },
+    "someone": {
+      "line": 11,
+      "word": "Someone"
+    },
+    "moving": {
+      "line": 11,
+      "word": "moving"
+    },
+    "looking": {
+      "line": 12,
+      "word": "looking"
+    },
+    "you": {
+      "line": 12,
+      "word": "you"
+    }
   }
 }
