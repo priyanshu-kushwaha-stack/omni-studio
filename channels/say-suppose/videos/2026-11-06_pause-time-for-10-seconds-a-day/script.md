@@ -1,7 +1,7 @@
 # Script: What If You Could Pause Time for 10 Seconds a Day?
 
 format: story
-status: draft v6 for G2 (the owner adopted the reference study's rules; v5 passed G2 before them)
+status: v6, G2 passed by the owner 2026-11-07 ("Approve v6")
 claims: claims.md
 
 ## [00:00] The change

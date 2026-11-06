@@ -10,7 +10,7 @@
   "lines": [
     {
       "text": "On day twelve, all that stands between a bus and a kid is ten seconds.",
-      "say": "On day twelve, all that stands between a bus and a kid is ten seconds.",
+      "say": "[low, slow] On day twelve, all that stands between a bus and a kid is ten seconds.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
@@ -83,14 +83,14 @@
     },
     {
       "text": "Something selfish. Obviously.",
-      "say": "Something selfish. Obviously.",
+      "say": "[dry] Something selfish. Obviously.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
     },
     {
       "text": "A phone falls a metre in about 0.45 seconds. Usually, you just watch it go.",
-      "say": "A phone falls a metre in about 0.45 seconds. Usually, you just watch it go.",
+      "say": "A phone falls a metre in about nought point four five seconds. Usually, you just watch it go.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -106,7 +106,7 @@
     },
     {
       "text": "You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about 10 to 14 metres.",
-      "say": "You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about 10 to 14 metres.",
+      "say": "You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about ten to fourteen metres.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -129,7 +129,7 @@
     },
     {
       "text": "Vanish.",
-      "say": "Vanish.",
+      "say": "[dry] Vanish.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
@@ -210,7 +210,7 @@
     },
     {
       "text": "There's a kid in the road.",
-      "say": "There's a kid in the road.",
+      "say": "[sharp] There's a kid in the road.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
@@ -231,7 +231,7 @@
     },
     {
       "text": "You hit pause.",
-      "say": "You hit pause.",
+      "say": "[quietly] You hit pause.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
@@ -245,21 +245,21 @@
     },
     {
       "text": "Nine. Eight. Seven.",
-      "say": "Nine. Eight. Seven.",
+      "say": "[breathless] Nine. Eight. Seven.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
     },
     {
       "text": "Six. Five. Four.",
-      "say": "Six. Five. Four.",
+      "say": "[breathless] Six. Five. Four.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
     },
     {
       "text": "Three. Two. One.",
-      "say": "Three. Two. One.",
+      "say": "[breathless] Three. Two. One.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
@@ -273,7 +273,7 @@
     },
     {
       "text": "A car at 48 kilometres an hour needs about 23 metres to stop. And this is a bus.",
-      "say": "A car at 48 kilometres an hour needs about 23 metres to stop. And this is a bus.",
+      "say": "A car at forty-eight kilometres an hour needs about twenty-three metres to stop. [deadpan] And this is a bus.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": [
@@ -296,7 +296,7 @@
     },
     {
       "text": "It is not free.",
-      "say": "It is not free.",
+      "say": "[low] It is not free.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
@@ -338,7 +338,7 @@
     },
     {
       "text": "She's all right. Bruised. You're not.",
-      "say": "She's all right. Bruised. You're not.",
+      "say": "[quietly] She's all right. Bruised. [pause] You're not.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
@@ -366,7 +366,7 @@
     },
     {
       "text": "Ten seconds of a city holding its breath, just for you.",
-      "say": "Ten seconds of a city holding its breath, just for you.",
+      "say": "[hushed] Ten seconds of a city holding its breath, just for you.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
@@ -494,21 +494,21 @@
     },
     {
       "text": "Someone else is still moving.",
-      "say": "Someone else is still moving.",
+      "say": "[hushed] Someone else is still moving.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
     },
     {
       "text": "And they're looking right at you.",
-      "say": "And they're looking right at you.",
+      "say": "[hushed] And they're looking right at you.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
     },
     {
       "text": "Somebody knows.",
-      "say": "Somebody knows.",
+      "say": "[whispers] Somebody knows.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
       "claims": []
