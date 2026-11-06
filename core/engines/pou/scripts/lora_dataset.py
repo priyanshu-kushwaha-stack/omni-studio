@@ -7,9 +7,13 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pou_paths  # noqa: E402
 
 STYLE_TRIGGER = "pous_ink"
 FIGURE_TRIGGER = "pous_you"
@@ -67,11 +71,11 @@ def build(refs: Path, stills: Path, plan: Path, out: Path, accent: str = "ochre"
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--refs", type=Path, default=Path("channel/style_refs"))
+    p.add_argument("--refs", type=Path, default=pou_paths.path("rigs").parent / "style_refs")
     p.add_argument("--stills", type=Path, required=True)
     p.add_argument("--plan", type=Path, required=True)
     p.add_argument("--accent", default="ochre")
-    p.add_argument("-o", "--out", type=Path, default=Path("channel/lora/dataset"))
+    p.add_argument("-o", "--out", type=Path, default=pou_paths.path("lora").parent / "dataset")
     a = p.parse_args()
     pairs = build(a.refs, a.stills, a.plan, a.out, a.accent)
     print(f"{len(pairs)} images -> {a.out}")

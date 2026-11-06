@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build cut-out rigs from stills and render puppet scenes timed to narration words.
 
-  build  channel/rigs/<char>.json            cut every pose's parts out of its source still ->
-                                             channel/rigs/<char>/<pose>/{<part>.png, mask.png, parts.json}
+  build  rigs/<char>.json                    cut every pose's parts out of its source still ->
+                                             rigs/<char>/<pose>/{<part>.png, mask.png, parts.json}
   render <stage.json> -o out.mp4             render the stage's frame ranges (plates + puppets + boil + reveal +
                                              the video's overlays.json), muxed with audio cut from --audio-from
 
@@ -35,8 +35,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import compose  # noqa: E402
 import motion  # noqa: E402
 import puppet as pp  # noqa: E402
+import pou_paths  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = pou_paths.channel_dir()   # the channel folder; video paths in rigs and stages are relative to it
 
 
 # ---------------------------------------------------------------- build
@@ -280,7 +281,7 @@ def cmd_render(stage_path: Path, out: Path, audio_from: Path | None, only: list[
         stage["ranges"] = ranges
     video_dir = ROOT / stage["video_dir"]
     words = json.loads((ROOT / stage["words"]).read_text())
-    rigs_dir = ROOT / stage.get("rigs", "channel/rigs")
+    rigs_dir = ROOT / stage.get("rigs", "rigs")
     plates_dir = ROOT / stage["plates"] if "plates" in stage else stage_path.parent / "plates"
     fps = int(stage.get("fps", 30))
     scenes = [Scene(s, rigs_dir, plates_dir, words) for s in stage["scenes"] if not only or s["id"] in only]
@@ -347,7 +348,7 @@ def cmd_render(stage_path: Path, out: Path, audio_from: Path | None, only: list[
 def cmd_frames(stage_path: Path, times: list[float], out_dir: Path) -> None:
     stage = json.loads(stage_path.read_text())
     words = json.loads((ROOT / stage["words"]).read_text())
-    rigs_dir = ROOT / stage.get("rigs", "channel/rigs")
+    rigs_dir = ROOT / stage.get("rigs", "rigs")
     out_dir.mkdir(parents=True, exist_ok=True)
     cache: dict[str, Scene] = {}
     for t in times:

@@ -305,17 +305,23 @@ def sheet(results: list[dict], ctx: dict, W: int, H: int, out: Path) -> None:
     img.save(out)
 
 
+def is_short(video_dir: Path) -> bool:
+    """A Short lives under shorts/ (the original repo layout) or carries its short_rigs.py spec, anim.json
+    (omni-studio keeps Shorts in channels/<slug>/videos/ next to the long videos)."""
+    return "shorts" in video_dir.resolve().parts or (video_dir / "anim.json").is_file()
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("video_dir", type=Path)
     p.add_argument("--words", type=Path, default=None, help="default: <video_dir>/narration/words.json")
-    p.add_argument("--size", default=None, help="WxH; default 1080x1920 for shorts/, else 1920x1080")
+    p.add_argument("--size", default=None, help="WxH; default 1080x1920 for a Short (under shorts/ or with anim.json), else 1920x1080")
     p.add_argument("--captions", action="store_true", help="include burnt-in captions (only if the render burns them)")
     p.add_argument("--fix", action="store_true", help="move failing labels to the nearest clear spot")
     p.add_argument("--sheet", type=Path, default=None, help="contact sheet of warn/fail items")
     a = p.parse_args()
     vd = a.video_dir
-    size = a.size or ("1080x1920" if "shorts" in vd.resolve().parts else "1920x1080")
+    size = a.size or ("1080x1920" if is_short(vd) else "1920x1080")
     W, H = (int(v) for v in size.split("x"))
     words = a.words or vd / "narration" / "words.json"
     captions = a.captions   # owner 2026-10-31: no subtitles on the Shorts, so captions are opt-in

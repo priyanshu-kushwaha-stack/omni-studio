@@ -35,13 +35,14 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import motion  # noqa: E402
+import pou_paths  # noqa: E402
 
 PAPER = (0xF6, 0xF1, 0xE7)
 INK = (0x2B, 0x2B, 0x2B)
 COLORS = {"ink": INK, "rust": (0xB5, 0x53, 0x3C), "ochre": (0xD9, 0xA4, 0x41), "teal": (0x3A, 0x7D, 0x7B),
           "muted": (0x8A, 0x83, 0x78)}
 FONT_CANDIDATES = [
-    Path(__file__).resolve().parent.parent / "channel" / "fonts" / "PatrickHand-Regular.ttf",
+    pou_paths.path("font"),
     Path("/System/Library/Fonts/Supplemental/Bradley Hand Bold.ttf"),
 ]
 PRESCALE = 1.16          # sources are kept this much larger than the frame so push-ins never upsample

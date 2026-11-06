@@ -28,6 +28,15 @@ dev = [
     "pytest-asyncio>=0.23",
     "httpx>=0.24",
 ]
+# The Professor of Us engine (core/engines/pou), pinned as faceless-channel's requirements-dev.txt.
+# Media models (torch, mlx, chatterbox, mflux) live in .venv-media: requirements-media.txt.
+engine = [
+    "scipy==1.18.1",
+    "scikit-image==0.26.0",
+]
+
+[tool.uv]
+default-groups = ["dev", "engine"]
 
 [project.scripts]
 omni = "studio.cli:main"

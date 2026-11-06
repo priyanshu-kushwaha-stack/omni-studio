@@ -8,15 +8,18 @@ import csv
 import json
 import re
 import subprocess
+import sys
 import time
 from pathlib import Path
 from typing import Callable
 
 from PIL import Image
 
-ROOT = Path(__file__).resolve().parent.parent
-MFLUX = ROOT / ".venv-media" / "bin" / "mflux-generate-flux2"
-LORA = ROOT / "channel" / "lora" / "pous_ink.safetensors"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pou_paths  # noqa: E402
+
+MFLUX = pou_paths.path("mflux")
+LORA = pou_paths.path("lora")
 MODEL = "flux2-klein-4b"
 STYLE_TRIGGER, FIGURE_TRIGGER = "pous_ink", "pous_you"
 FIGURE_WORDS = re.compile(r"\"you\"|\byou figure\b|satchel", re.I)
@@ -98,7 +101,7 @@ def main() -> None:
     p.add_argument("--accent", default="ochre")
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--out-dir", type=Path, help="write here instead of <video>/assets/stills (no provenance rows)")
-    p.add_argument("--lora", type=Path, default=LORA, help="LoRA adapter to load (default channel/lora/pous_ink.safetensors)")
+    p.add_argument("--lora", type=Path, default=LORA, help="LoRA adapter to load (default: lora in the channel engine.yaml)")
     a = p.parse_args()
     outs = generate(a.video_dir, a.scenes, accent=a.accent, seed=a.seed, out_dir=a.out_dir, lora=a.lora)
     print(json.dumps({"stills": [str(o) for o in outs]}))

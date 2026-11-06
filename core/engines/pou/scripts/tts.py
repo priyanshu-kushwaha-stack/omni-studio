@@ -5,8 +5,8 @@ into babble past ~40 s, so its chunks are ~50 words; Qwen3 holds ~200), the engi
 result is checked against the text with faster-whisper (WER), and the chunks are joined with short gaps into
 one 16-bit narration wav that the rest of the pipeline reads as before.
 Engines: qwen3 (mlx-audio, Qwen3-TTS 1.7B Base), chatterbox (chatterbox-tts), eleven (ElevenLabs API, direct:
-ELEVENLABS_API_KEY and ELEVEN_VOICE_ID from .env.local, Turbo v2.5 at 0.5 credit per character; the owner's clone
-is made once in the ElevenLabs app from the same 2:24 read and its id pasted into .env.local)."""
+ELEVENLABS_API_KEY and ELEVEN_VOICE_ID from the secrets_env file in engine.yaml (under ~/.config/omni-studio/), Turbo v2.5 at 0.5 credit per character; the owner's clone
+is made once in the ElevenLabs app from the same 2:24 read and its id pasted into that file)."""
 from __future__ import annotations
 import argparse
 import json
@@ -18,8 +18,11 @@ import wave
 from pathlib import Path
 from typing import Callable
 
-MEDIA_PY = Path(__file__).resolve().parent.parent / ".venv-media" / "bin" / "python"
-WHISPER_PY = Path.home() / "Exploration" / "sandbox" / "openmontage" / ".venv" / "bin" / "python"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pou_paths  # noqa: E402
+
+MEDIA_PY = pou_paths.path("media_python")
+WHISPER_PY = pou_paths.path("whisper_python")
 
 Backend = Callable[[list[tuple[str, Path]], Path, str | None], list[Path]]   # (jobs of (text, out), voice_ref, voice_text) -> outs
 ENGINE_MAX_WORDS = {"qwen3": 200, "chatterbox": 50, "eleven": 400}
@@ -156,7 +159,7 @@ def _chatterbox(jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str |
 
 
 def _load_env_local() -> None:
-    env = Path(__file__).resolve().parent.parent / ".env.local"
+    env = pou_paths.path("secrets_env")
     if env.exists():
         for line in env.read_text().splitlines():
             if "=" in line and not line.lstrip().startswith("#"):
@@ -171,7 +174,7 @@ def _eleven(jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | Non
     _load_env_local()
     key, voice = os.environ.get("ELEVENLABS_API_KEY", ""), os.environ.get("ELEVEN_VOICE_ID", "")
     if post is None and not (key and voice):
-        raise SystemExit("eleven needs ELEVENLABS_API_KEY and ELEVEN_VOICE_ID in .env.local")
+        raise SystemExit("eleven needs ELEVENLABS_API_KEY and ELEVEN_VOICE_ID in the secrets_env file named in engine.yaml")
     if post is None:
         import requests
 

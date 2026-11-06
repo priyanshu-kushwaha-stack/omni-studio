@@ -33,8 +33,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import compose  # noqa: E402
 import puppet  # noqa: E402
 import motion  # noqa: E402
+import pou_paths  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = pou_paths.channel_dir()   # the channel folder; video paths in rigs and stages are relative to it
 BLINK_EVERY = 2.6
 
 
