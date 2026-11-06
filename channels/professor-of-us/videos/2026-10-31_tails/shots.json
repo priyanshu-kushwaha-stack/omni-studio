@@ -1,0 +1,92 @@
+[
+ {
+  "id": "s001",
+  "anchor": "You had a tail",
+  "class": "character"
+ },
+ {
+  "id": "s001c1",
+  "anchor": "A real one",
+  "class": "character"
+ },
+ {
+  "id": "s002",
+  "anchor": "Guess when",
+  "class": "character"
+ },
+ {
+  "id": "s002c1",
+  "anchor": "Week five",
+  "class": "illustration"
+ },
+ {
+  "id": "s003",
+  "anchor": "By week eight",
+  "class": "illustration"
+ },
+ {
+  "id": "s003c1",
+  "anchor": "cleared away",
+  "class": "illustration"
+ },
+ {
+  "id": "s004",
+  "anchor": "Apes lost",
+  "class": "illustration"
+ },
+ {
+  "id": "s005c1",
+  "anchor": "In 2024",
+  "class": "character"
+ },
+ {
+  "id": "s005",
+  "anchor": "a jumping gene",
+  "class": "illustration"
+ },
+ {
+  "id": "s005c2",
+  "anchor": "Recreate its effect",
+  "class": "illustration"
+ },
+ {
+  "id": "s006",
+  "anchor": "they're born",
+  "class": "illustration"
+ },
+ {
+  "id": "s006c1",
+  "anchor": "none at all",
+  "class": "illustration"
+ },
+ {
+  "id": "s007",
+  "anchor": "But some of those",
+  "class": "illustration"
+ },
+ {
+  "id": "s008",
+  "anchor": "So the researchers",
+  "class": "character"
+ },
+ {
+  "id": "s008c1",
+  "anchor": "one we may",
+  "class": "character"
+ },
+ {
+  "id": "s009",
+  "anchor": "not junk",
+  "class": "illustration"
+ },
+ {
+  "id": "s009c1",
+  "anchor": "Right now",
+  "class": "character"
+ },
+ {
+  "id": "s010",
+  "anchor": "the tail you already",
+  "class": "character"
+ }
+]

@@ -223,6 +223,14 @@ def approve(slug: str, video: str, stage: str, note: str | None) -> int:
     return 0
 
 
+def link() -> int:
+    """Re-create every channel's git-ignored playbook link (needed after a fresh clone)."""
+    for slug, what in channels.link_playbooks():
+        print(f"{slug}: {what} {channels.custom_styles_dir() / (slug + '.yaml')} -> "
+              f"{channels.playbook_link_target(slug)}")
+    return 0
+
+
 def check(slug: str | None) -> int:
     slugs = [slug] if slug else channels.list_slugs()
     if not slugs:
@@ -269,6 +277,8 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_argument("stage")
     sub.add_argument("--note")
 
+    commands.add_parser("link", help="re-create every channel's playbook link in styles/custom/")
+
     sub = commands.add_parser("check", help="validate one channel, or all of them")
     sub.add_argument("channel", nargs="?")
 
@@ -292,6 +302,8 @@ def main(argv: list[str] | None = None) -> int:
             return board(args.channel, stop=args.stop, open_browser=not args.no_open)
         if args.command == "approve":
             return approve(args.channel, args.video, args.stage, args.note)
+        if args.command == "link":
+            return link()
         if args.command == "check":
             return check(args.channel)
         return fix(args.channel, args.format_name, args.stage, args.severity, args.example, args.note)

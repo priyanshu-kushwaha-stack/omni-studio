@@ -1,0 +1,31 @@
+# Character -> tool, voice id and settings, from cast.md and voice.md (faceless-channel, 2026-11-01).
+# No keys or tokens here: ElevenLabs keys sit in ~/.config/omni-studio/professor-of-us.env (engine.yaml).
+# Higgsfield and ElevenLabs calls are paid: announce and get the owner's approval first.
+voices:
+  professor:
+    label: PROF
+    tool: higgsfield qwen_audio_tts
+    voice_type: element
+    voice_id: 891aae2c-f2b3-44bd-bb67-c78a4bad7594   # "Priyanshu EN", the owner's clone
+    settings: {instruction: "<=128 chars of delivery", format: wav, sample_rate: 48000}
+    local_fallback: {tool: pou_tts, engine: qwen3}    # owner clone from the 2:24 read; lost the 2026-10-28 blind test
+  oog:
+    label: OOG
+    tool: higgsfield seed_audio
+    voice_type: preset
+    voice_id: 195e386a-cb61-5c1b-a53b-0e2f0669c408   # Knox
+    backup_voice_id: 1ad38ba4-9cc4-4f2f-9fde-b0fefdf67ae5   # Gideon
+    settings: {speech_rate: -10, pitch_rate: -2, format: wav, sample_rate: 48000}
+  you:
+    label: YOU
+    tool: higgsfield seed_audio
+    voice_type: preset
+    voice_id: 1ffcdbb3-078b-5491-959d-359e3021e917   # Cody
+    settings: {speech_rate: 0, format: wav, sample_rate: 48000}
+    stitch: "atempo=1.20,agate=threshold=0.04:ratio=4:range=0.06:attack=3:release=40"
+  grandma:
+    label: GRANDMA
+    tool: higgsfield seed_audio
+    voice_type: preset
+    voice_id: d081b915-6623-4a44-bacf-80d0f1c90a03   # Nora
+    settings: {speech_rate: -5, format: wav, sample_rate: 48000}

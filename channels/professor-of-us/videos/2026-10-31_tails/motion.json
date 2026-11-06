@@ -1,0 +1,84 @@
+[
+ {
+  "scene": "s001",
+  "clip_rate": 1.0
+ },
+ {
+  "scene": "s001c1",
+  "clip_rate": 1.0
+ },
+ {
+  "scene": "s002",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s002c1",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s003",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s003c1",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s004",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s005c1",
+  "clip_rate": 1.0
+ },
+ {
+  "scene": "s005",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s005c2",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s006",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s006c1",
+  "clip_rate": 1.0
+ },
+ {
+  "scene": "s007",
+  "effect": "none",
+  "reveal": 0.45
+ },
+ {
+  "scene": "s008",
+  "clip_rate": 1.0
+ },
+ {
+  "scene": "s008c1",
+  "clip_rate": 1.0
+ },
+ {
+  "scene": "s009",
+  "effect": "none",
+  "reveal": 0
+ },
+ {
+  "scene": "s009c1",
+  "clip_rate": 1.0
+ },
+ {
+  "scene": "s010",
+  "clip_rate": 1.0
+ }
+]

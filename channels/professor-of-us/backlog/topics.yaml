@@ -1,0 +1,497 @@
+# Written by the Scout and by you, read by /packager.
+# status: seed | candidate | selected | packaged | published | dropped
+# template: mystery | essay | list | documentary (spec section 2.2; essay only for practical titles)
+# rank: your hand scores 1-5 after watching top videos (Task 14); null until then
+# outlier_ratio: views of the nearest source video / median views of that channel's recent uploads, if known
+topics:
+  - id: t001
+    title_draft: "Why Your Brain Still Thinks It's 50,000 BC (And How That Runs Your Day)"
+    pattern: why-actually
+    template: mystery
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 3.3
+    source_video: "https://www.youtube.com/watch?v=5gNCbiZ670M"
+    source_channel: "@TrustMeBroOfficial"
+    competition_density: 0  # 2026-10-28 scout: 'your brain is still stuck in the stone age' + 'useless ancient instincts'; 0 long-form >100K since 2025-10-28, ~10 clone uploads all <2K views
+    five_min_fit: med
+    payoff: "Spot two mismatch reflexes (snacking on cue, threat-scanning feeds) and add one friction step to each"
+    evidence_strength: "contested: mismatch idea is solid (Lieberman 2013 'The Story of the Human Body') but many evo-psych claims are just-so stories; needs the contested-claims list"
+    note: "evolutionary-psychology framing; needs a contested-claims list (review section 7)"
+  - id: t002
+    title_draft: "How Did Ancient Humans Actually Sleep? (It Wasn't 8 Hours)"
+    pattern: how-actually
+    template: mystery
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: null
+    source_channel: null
+  - id: t003
+    title_draft: "Every Way Humans Kept Time Before Clocks, Explained"
+    pattern: every-x-explained
+    template: list
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: null
+    source_channel: null
+    competition_density: 0  # 'how did people tell time before clocks': 4 matches >100K but all 61-119 s vertical Shorts; 0 over 3 min
+    five_min_fit: med
+    payoff: "Morning outdoor light anchors your body clock better than an alarm"
+    evidence_strength: "medium: Wright 2013 Curr Biol (camping shifts melatonin ~2 h); drifts into sleep, which is excluded"
+  - id: t004
+    title_draft: "What Boredom Was Actually Like Before Phones"
+    pattern: what-actually-like
+    template: mystery
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 586.7
+    source_video: "https://www.youtube.com/watch?v=G7tf0IZUlHY"
+    source_channel: "GranKhelafa (non-competitor; median over 12 long uploads)"
+    competition_density: 3  # 'how did ancient humans deal with boredom': GranKhelafa 1.84M, Ancient Life 469K (Egypt), Dane 175K; none sources the science. General 'boredom is good for you' space is crowded (HBR 17.8M, Veritasium 7.4M all-time)
+    five_min_fit: high
+    payoff: "Give your brain 10-15 phone-free minutes a day; boredom is the signal that drives new ideas"
+    evidence_strength: "strong: Wilson 2014 Science (people chose electric shocks over 15 min alone with their thoughts); Mann & Cadman 2014 Creativity Res J (boring task raised creative output)"
+  - id: t005
+    title_draft: "Why Humans Are the Only Animal That Gets Embarrassed"
+    pattern: why-actually
+    template: mystery
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: null
+    source_channel: null
+    competition_density: 0  # 'why do humans blush embarrassment evolution': 0 >100K; best upload 1.9K views (demand unproven)
+    five_min_fit: med
+    payoff: "Blushing reads as an apology; people trust you more after a visible blush"
+    evidence_strength: "medium: Dijk 2011 Emotion (blushing after a mistake restores trust)"
+  - id: t006
+    title_draft: "How Did People Remember Anything Before Writing?"
+    pattern: how-actually
+    template: mystery
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: null
+    source_channel: null
+    competition_density: 0  # 'how did ancient people remember before writing': 0 in-lane >100K; 5 clone uploads at 60-110 views; general memory-technique videos do well (Raj Shamani 1.9M)
+    five_min_fit: high
+    payoff: "Use a route you know (memory palace / songline) to memorise any list in one pass"
+    evidence_strength: "strong: Reser 2021 PLOS ONE (Aboriginal songline method beat memory palace in medical students); Dresler 2017 Neuron (6 weeks of method-of-loci training, gains lasting 4 months)"
+  - id: t007
+    title_draft: "What 300,000 Years of Hunger Did to Your Brain"
+    pattern: what-actually-like
+    template: mystery
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: null
+    source_channel: null
+    competition_density: 3  # merged into t023 (meal timing); '3 meals' space: Past Tense 1.36M, Think Science 6.76M (OMAD), Zenn 904K
+    five_min_fit: high
+    payoff: "See t023"
+    evidence_strength: "see t023"
+  - id: t008
+    title_draft: "Every Major Theory of Why We Dream, Explained"
+    pattern: every-x-explained
+    template: list
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: null
+    source_channel: null
+  - id: t009
+    title_draft: "Why Did Humans Start Cooking? Your Brain Is the Answer"
+    pattern: why-actually
+    template: mystery
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: null
+    source_channel: null
+    competition_density: 5  # 'why did humans start cooking food': TIL Science 976K (2 min), Neon Rush 300K, Ancient Human Files 196K, Stickly 176K, Polo 148K
+    five_min_fit: med
+    payoff: "Cooking unlocks calories: cooked starch and protein give you more energy than raw"
+    evidence_strength: "strong: Carmody 2011 PNAS (cooked food yields more energy in mice); Wrangham 2009 'Catching Fire'"
+  - id: t010
+    title_draft: "What a Single Day Actually Felt Like 20,000 Years Ago"
+    pattern: what-actually-like
+    template: documentary
+    status: seed
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 54.6
+    source_video: "https://www.youtube.com/watch?v=49_Ph2q6uIM"
+    source_channel: "@inkexplainer96"
+    competition_density: 7+  # not searched directly; counted from overlapping searches: Ink Explainer 16.8M, Axen 3.4M, Sleepy Time 2.8M, Joe Bartolozzi 2.0M, Zenn 454K, Mack 418K, MoreBeckBros 278K
+    five_min_fit: low
+    payoff: "Weak: foragers worked fewer hours, but the take-home is vague"
+    evidence_strength: "medium: Dyble 2019 Nat Hum Behav (Agta foragers ~10 h/week more leisure than farmers)"
+
+# Candidates from the 2026-10-24 scan of the five verified long-form channels (see research_notes/Faceless revenue claims check/).
+# outlier_ratio = source video views / that channel's median recent views. Hand ranks are yours.
+  - id: t011
+    title_draft: "Every Trait You Inherited From Extinct Humans (And What It Still Does to You)"
+    pattern: every-x-explained
+    template: list
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 8.8
+    source_video: "https://www.youtube.com/watch?v=pcdJhfVd-UE"
+    source_channel: "@EverythingProfessor"
+    competition_density: 3  # 'neanderthal dna traits you have': Probably Makes Sense 202K ('8 Signs You're More Neanderthal', 98.6x), Highly Compelling 324K, Dwarkesh/Reich 351K interview. EverythingProfessor source video re-measured 12.1x on 2026-10-28
+    five_min_fit: med
+    payoff: "Know which inherited variants matter (e.g. the Neanderthal chr3 COVID-risk haplotype, pain sensitivity)"
+    evidence_strength: "strong: Zeberg & Paabo 2020 Nature (chr3 COVID-19 risk haplotype); Zeberg 2020 Curr Biol (Neanderthal SCN9A variant, pain sensitivity)"
+    note: "Neanderthal/Denisovan DNA traits. Evidence: EverythingProfessor 'Every Rare DNA Trait You Might Have' 1.0M (8.8x) + 'Every Hidden Advantage Of Your Ancestry' 266K 2026-10-25 search: Explains A Lot '8 Weird Traits You Actually Got from Neanderthal DNA' 1.2M (Aug 2025, 42K-sub channel), BloomHarmonics 304K. Strong video 2/3 in list template."
+  - id: t012
+    title_draft: "How Did Ancient Humans Actually Sleep? (It Wasn't 8 Hours)"
+    pattern: how-actually
+    template: mystery
+    status: packaged  # selected and G1 approved 2026-10-25
+    rank: {surprise: 5, stakes: 4, visual: 5, watch_to_end: 5}  # agent proposal, owner said "looks fine" 2026-10-25
+    outlier_ratio: 5.9
+    source_video: "https://www.youtube.com/watch?v=Tc77oQf00xw"
+    source_channel: "@EverythingProfessor"
+    note: "seed t002 upgraded: sleep is proven on two channels this month. Evidence: EverythingProfessor 'Every Type of Sleep' 672K (5.9x, 14 d); Zenn ancient-humans series 450K-900K 2026-10-25 search (medium length, since 2024-10, by views): Zenn 'What Did Ancient Humans Do at Night?' 8.09M (its transcript states two-phase sleep as fact; our 'but' beat), Stickly 'Why Do Predators Ignore Sleeping Humans?' 2.2M, Mr. Hell 'Really Do at Night' 703K on a 5K-sub channel, Infographics 'Sleep During Ice Age' 444K. No video yet owns the sleep-duration science (Yetish 2015, Samson 2017). Agent recommendation for video 1."
+  - id: t013
+    title_draft: "The Experiment That Predicted How Societies Collapse"
+    pattern: named-effect
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 182.1
+    source_video: "https://www.youtube.com/watch?v=LuCans9euxY"
+    source_channel: "@Zenn0009"
+    competition_density: not re-measured  # 2026-10-25: Calhoun/Universe 25 owned by Zenn 5.1M; non-Zenn uploads <10K
+    five_min_fit: med
+    payoff: "Weak for 5-min: the take-home about crowding is contested"
+    evidence_strength: "contested: Calhoun 1973; human crowding studies do not replicate the 'behavioral sink'"
+    note: "named psychology experiments; pick one Zenn has not done (Rat Park, the Monster Study, the Third Wave, Robbers Cave). Evidence: Zenn 'The Calhoun Effect' 5.1M (182x), 'The Slotow Effect' 357K, 'The Minnesota Effect' 149K 2026-10-25 search: the title space is owned by Calhoun/Universe 25 (Zenn 5.1M); every non-Zenn upload since 2025 is under 10K views. Parked unless a different named experiment proves demand."
+  - id: t014
+    title_draft: "Every Way Ancient Humans Died, Explained"
+    pattern: every-x-explained
+    template: list
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 1.1
+    source_video: "https://www.youtube.com/watch?v=VsqO1rLOn0w"
+    source_channel: "@TrustMeBroOfficial"
+    competition_density: 1  # 'how did ancient humans die': only The Thought Vortex 'Why Most Ancient Humans Died Before 30' 169K is on topic; overlaps t022
+    five_min_fit: low
+    payoff: "Folded into t022 (lifespan); as a list it lacks a single take-home"
+    evidence_strength: "medium: skeletal trauma and paleopathology surveys"
+    note: "causes of death by era with skeleton evidence. Evidence: Trust Me Bro 'Every Body On Mount Everest Explained' 796K; 'The Worst Jobs In Every Time Period' 589K"
+  - id: t015
+    title_draft: "Things About Your Body That Sound Fake But Are True"
+    pattern: sounds-fake-true
+    template: list
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 3.3
+    source_video: "https://www.youtube.com/watch?v=gdWRcVovAXQ"
+    source_channel: "@TrustMeBroOfficial"
+    competition_density: 0  # long-form; space is dominated by Shorts (FactoHolic 'Sounds Fake But True' 25.4M at ~1 min)
+    five_min_fit: low
+    payoff: "Diffuse list; no single take-home"
+    evidence_strength: "mixed per fact"
+    note: "body facts with named studies. Evidence: Trust Me Bro 'Things That Sound Fake But Were Proven True' 838K; EverythingProfessor 'Strangest Things Your Body Does' 372K (3.3x)"
+  - id: t016
+    title_draft: "Everyday Things You Do That Would Terrify a Caveman"
+    pattern: what-actually-like
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 6.6
+    source_video: "https://www.youtube.com/watch?v=tL7usSGf4rU"
+    source_channel: "@EverythingProfessor"
+    competition_density: 0  # 'what would a caveman think of modern life': 0 >100K, ~20 clone uploads under 8K
+    five_min_fit: low
+    payoff: "Weak: novelty, not a take-home"
+    evidence_strength: "n/a"
+    note: "modern life through ancient eyes. Evidence: EverythingProfessor 'Everyday Things You DONT Understand' 744K (6.6x); 'Everyday Things That Used to Be Deadly' 147K; Zenn 'What Did Ancient Humans Do All Day' 452K"
+  - id: t017
+    title_draft: "The Worst Ways to Die in Every Time Period"
+    pattern: every-time-period
+    template: list
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 0.8
+    source_video: "https://www.youtube.com/watch?v=mCJ-TdavSds"
+    source_channel: "@TrustMeBroOfficial"
+    competition_density: not measured  # dark-history list, outside the 5-min useful brief
+    five_min_fit: low
+    payoff: "None (entertainment list)"
+    evidence_strength: "n/a"
+    note: "dark history listicle, 25 min format. Evidence: Trust Me Bro 'Worst Jobs In Every Time Period' 589K, 'Deadliest Weapons In Every Time Period' 589K"
+  - id: t018
+    title_draft: "How Did Ancient Humans Have Fun? (Games, Drugs, and Worse)"
+    pattern: how-actually
+    template: documentary
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 1.2
+    source_video: "https://www.youtube.com/watch?v=SsAgEXJ42SY"
+    source_channel: "@TrustMeBroOfficial"
+    competition_density: 6  # 'how did ancient humans have fun': Lore Explained 4.79M, GranKhelafa 1.84M, Stickstory 918K, Trust Me Bro 898K, Bro Said So 387K, Ink Explainer 277K
+    five_min_fit: med
+    payoff: "Weak: play and music are good for you, but generic"
+    evidence_strength: "medium"
+    note: "leisure before civilisation; drugs angle is crowded (Professor Historian x3), fun angle is not. Evidence: Trust Me Bro 'How Did Ancient Humans Have Fun?' 893K; Zenn 'What Did Ancient Humans Actually Eat?' 901K (32x)"
+  - id: t019
+    title_draft: "Mysterious Gaps in Human History We Still Can't Explain"
+    pattern: mystery-gaps
+    template: list
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 1.2
+    source_video: "https://www.youtube.com/watch?v=RdYrmOSW930"
+    source_channel: "@TrustMeBroOfficial"
+    competition_density: 12  # 'mysterious gaps in human history': 12 matching uploads >100K; crowded and outside brain/body lane
+    five_min_fit: low
+    payoff: "None"
+    evidence_strength: "n/a"
+    note: "population bottleneck, missing millennia, lost skills. Evidence: Trust Me Bro 'Mysterious Gaps In History' 872K; 'Crazy Finds Archaeologists Can't Explain' 643K"
+  - id: t020
+    title_draft: "Memory Glitches Your Brain Has (And Why Evolution Left Them In)"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 1.5
+    source_video: "https://www.youtube.com/watch?v=njTu380eh14"
+    source_channel: "@EverythingProfessor"
+    competition_density: 3  # 'memory glitches deja vu brain': Brainosophy 6.29M 'Every Reality Glitch', Imtinan 745K, EverythingProfessor 178K
+    five_min_fit: med
+    payoff: "Walking through a doorway resets working memory: say the task out loud before you move"
+    evidence_strength: "strong: Radvansky 2011 Q J Exp Psychol (doorway effect); Brown 2003 Psychol Bull (deja vu review)"
+    note: "false memory, deja vu, doorway effect, each with the evolutionary reason. Evidence: EverythingProfessor 'Memory Glitches YOU Might Experience' 174K; 'Every Weird Body Glitch' (new)"
+
+# Candidates from the 2026-10-28 five-minute topic scout (research_notes/2026-10-28 five-minute topic scout.md).
+# competition_density = long-form uploads (>= 61 s) published since 2025-10-28 with > 100K views in the same title space (YouTube search, order=viewCount, top 50).
+# outlier_ratio = source video views / median of that channel's last 20 uploads of 3 min or more, measured 2026-10-28.
+  - id: t021
+    title_draft: "Why Did Ancient Humans Never Need Glasses?"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 131.3
+    source_video: "https://www.youtube.com/watch?v=F5obkwKyy3I"
+    source_channel: "Boneink (non-competitor, 5.5K subs)"
+    competition_density: 1  # 'did ancient humans have better eyesight': only Boneink 'How Did Ancient Humans Survive Without Glasses?' 301K (survival angle). ~10 clones at 1-14K. All-time demand: Vox 'Why so many people need glasses now' 3.5M (2023), History Dose 'Bad Eyesight Before Glasses' 2.26M (2018, 27x)
+    five_min_fit: high
+    payoff: "Two hours of daylight a day is the best-tested way to keep a child's eyes from becoming short-sighted; for adults, near-work breaks ease strain but evidence on progression is weaker"
+    evidence_strength: "strong: He 2015 JAMA (cluster RCT, +40 min outdoors/day cut 3-yr myopia incidence 39.5% -> 30.4%); Rose 2008 Arch Ophthalmol (Chinese-heritage 6-7 yr olds: 3.3% myopic in Sydney vs 29.1% Singapore); Holden 2016 Ophthalmology (half the world myopic by 2050)"
+    note: "myopia mismatch; the science angle (outdoor light -> retinal dopamine -> eyeball growth) is unowned in the ancient frame. Closest analogue to video 1's gap."
+  - id: t022
+    title_draft: "How Long Did Ancient Humans Actually Live? (Not 30)"
+    pattern: myth-actually
+    template: mystery
+    status: selected  # owner picked as video 5 on 2026-11-01 ("lets go with the first one"); folder videos/2026-11-01_ancient-lifespan
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 202.7
+    source_video: "https://www.youtube.com/watch?v=iMW2UmvN4jI"
+    source_channel: "The Thought Vortex (non-competitor, 26.9K subs)"
+    competition_density: 1  # 'did ancient humans really die at 30': The Thought Vortex 169K; Mack 'Why Did Ancient Humans Die Young?' 81K (14.2x); Stickly 'At What Age Did Most Ancient Humans Die?' 33K (10.5x). Most titles repeat the myth; none debunks it with Gurven & Kaplan
+    five_min_fit: high
+    payoff: "The foragers who made it past childhood often lived into their 70s on lots of walking; the Tsimane have the healthiest arteries ever measured. Steps help most up to ~6-8K a day (60+) or 8-10K (under 60)"
+    evidence_strength: "strong: Gurven & Kaplan 2007 Popul Dev Rev (modal adult age at death 68-78 in hunter-gatherers); Kaplan 2017 Lancet (Tsimane: lowest coronary calcium recorded); Paluch 2022 Lancet Public Health (steps and mortality meta-analysis)"
+    note: "myth-buster; absorbs t014 and the walking/steps angle."
+  - id: t023
+    title_draft: "Why Do You Eat 3 Meals a Day? (Your Ancestors Didn't)"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 243.5
+    source_video: "https://www.youtube.com/watch?v=N2Y4-_dkKe0"
+    source_channel: "Past Tense (non-competitor, 27.3K subs)"
+    competition_density: 3  # 'did ancient humans eat three meals a day': Past Tense 'Why Humans Eat 3 Meals a Day' 1.36M; Think Science 'Eat Once A Day' 6.76M (health angle); Zenn 'What Did Ancient Humans Actually Eat?' 904K. Broader 'what did ancient humans eat' space is crowded (9)
+    five_min_fit: high
+    payoff: "Meal count matters less than you think: trials show time-restricted eating adds little beyond eating less; eating late raises next-day hunger"
+    evidence_strength: "strong: Liu 2022 NEJM (time-restricted eating no better than calorie restriction over 12 months); Lowe 2020 JAMA Intern Med (TREAT trial); Vujovic 2022 Cell Metab (late eating raises hunger)"
+    note: "absorbs seed t007 (hunger). Risk: diet space is noisy; keep to the trial evidence."
+  - id: t024
+    title_draft: "When Did Humans Start Drinking? (Your Liver Is 10 Million Years Old)"
+    pattern: when-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 3.0
+    source_video: "https://www.youtube.com/watch?v=9AFO6MHy8y4"
+    source_channel: "@inkexplainer96"
+    competition_density: 2  # 'when did humans start drinking alcohol': Ink Explainer 930K (6 min, 3.0x), Mack 274K (48.2x). Neither is a body/science video by title
+    five_min_fit: high
+    payoff: "If you flush red after one drink, that is an enzyme warning (ALDH2), not a tolerance problem; your liver clears roughly one drink an hour no matter what you do"
+    evidence_strength: "strong: Carrigan 2015 PNAS (ADH4 mutation ~10 Mya let ancestors digest ethanol 40x faster); Brooks 2009 PLoS Med (alcohol flushing and oesophageal cancer risk)"
+    note: "drunken-monkey hypothesis; good visual (fallen fruit, apes)."
+  - id: t025
+    title_draft: "Why Can't Most Adults Drink Milk? (Your Ancestors Did Anyway)"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 216.3
+    source_video: "https://www.youtube.com/watch?v=oUvYsIHWp-U"
+    source_channel: "Caze (non-competitor, 1.4K subs)"
+    competition_density: 1  # 'why can't adults drink milk lactose evolution': Caze 173K only; Sleepy Time Historian 33K, Bright Psycho 37K. Stickly 'Why Couldn't Most Ancient Humans Drink Milk?' 4.5x on its channel
+    five_min_fit: high
+    payoff: "Most lactose-intolerant people can handle about a cup of milk with a meal; yogurt and hard cheese are low in lactose"
+    evidence_strength: "strong: Evershed 2022 Nature (Europeans drank milk for millennia before lactase persistence spread; famine and disease drove selection); Suchy 2010 NIH consensus (most tolerate ~12 g lactose)"
+    note: "good twist beat (the mutation didn't spread because milk was common)."
+  - id: t026
+    title_draft: "Cavemen Never Brushed. Why Were Their Teeth Better?"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 9.4
+    source_video: "https://www.youtube.com/watch?v=li1kO3hg4iE"
+    source_channel: "TED-Ed (all-time, 2023)"
+    competition_density: 0  # 'why ancient humans had perfect teeth without toothbrush' + 'did cavemen have cavities': 0 >100K since 2025-10-28 but ~15 clone uploads all under 5K (demand not converting). All-time owner: TED-Ed 4.9M (crooked teeth), History Dose 151K (2019)
+    five_min_fit: high
+    payoff: "It is how often sugar touches your teeth, not how much: keep sweets to mealtimes and use fluoride"
+    evidence_strength: "strong: Adler 2013 Nat Genet (oral bacteria shifted to cavity-causing species with farming and again with industrial sugar); Moynihan & Kelly 2014 J Dent Res (sugar and caries systematic review)"
+    note: "TED-Ed owns crooked teeth/jaw; the cavity-bacteria angle is open. Clone failures are a warning."
+  - id: t027
+    title_draft: "Why Did Ancient Humans Sit All Day and Stay Healthy?"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 4.6
+    source_video: "https://www.youtube.com/watch?v=awnQru96lGI"
+    source_channel: "Movesmethod (ratio unreliable: only 2 long uploads in its last 50)"
+    competition_density: 1  # 'how did ancient humans sit squat sitting': Movesmethod '6 Ancient Movements That Undo Years of Sitting' 390K; one clone at 95 views
+    five_min_fit: med
+    payoff: "Sit like a forager: squat or kneel and get up often; 'active rest' keeps your leg muscles working"
+    evidence_strength: "strong: Raichlen 2020 PNAS (Hadza sit ~10 h/day but in squats/kneels with higher muscle activity)"
+    note: "could be a beat inside t022 instead of its own video."
+  - id: t028
+    title_draft: "Why Can't You Remember Being a Baby?"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: 90.5
+    source_video: "https://www.youtube.com/watch?v=royoy7-PyTw"
+    source_channel: "@Zenn0009"
+    competition_density: 4  # Zenn 1.89M, Infographics Show 694K, Be Smart (PBS) 545K owns the science, ByAizen 349K
+    five_min_fit: med
+    payoff: "Your earliest 'memories' are mostly rebuilt from photos and stories; treat them as reconstructions"
+    evidence_strength: "strong: Bauer 2014 Memory (childhood amnesia onset ~7 yrs); Yates 2025 Science (infants do encode memories in hippocampus)"
+    note: "proven demand but the science angle is taken (Be Smart) and the payoff is thin."
+# Added 2026-10-28 from the second, curiosity-first scout (owner asked for "more exciting, interesting and curious" topics).
+  - id: t029
+    title_draft: "Humans Almost Went Extinct. About 1,300 Survived."
+    pattern: how-actually
+    template: mystery
+    status: selected  # picked 2026-10-28; moved to video 3 on 2026-10-29 when the owner chose t032 for video 2 (research, claims and script variants A-C done)
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null  # source channels' medians not measured
+    source_video: "search: 'humans almost went extinct 900000 years ago' (all-time by views)"
+    source_channel: "ExtinctZoo 3.1M 'This Killed All But 1,000 Humans 900,000 Years Ago'; SciShow 915K"
+    competition_density: 3  # last 12 months: New Scientist 1.07M 'We Might Be Wrong About Humanity's Near Extinction', Dave Explains 644K 'How Humanity Almost Ended (4 Times)', one more over 100K
+    five_min_fit: high
+    payoff: "Every stranger is your distant cousin: why humans are so genetically alike, and how scientists read history from your DNA"
+    evidence_strength: "to verify: Hu et al. 2023 Science (bottleneck ~930-813 kya, ~1,280 breeding individuals) and its published critiques; Toba hypothesis and rebuttals"
+    note: "mystery shape like video 1: dramatic headline number vs the scientists disputing it. 5-min format."
+  - id: t030
+    title_draft: "Humans Are the Most Terrifying Hunters on Earth (No Fur, All Sweat)"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: "search: 'humans are born to run persistence hunting' (all-time by views)"
+    source_channel: "Spds 5.6M 'Humans are Terrifying.'; Insider Tech 1.45M; PBS Eons 'How Humans Lost Their Fur' 3.9M"
+    competition_density: 0  # running angle, last 12 months; fur angle 2
+    five_min_fit: high
+    payoff: "You are built for long, slow movement in heat: what that says about exercise and sweating"
+    evidence_strength: "to verify: Bramble & Lieberman 2004 Nature; Morin & Winterhalder 2024 Nature Human Behaviour"
+    note: "agent's first recommendation in the curiosity scout; strong video 3 candidate."
+  - id: t031
+    title_draft: "Why Are You the Only Animal With a Chin?"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: "search: 'why do humans have chins' (all-time by views)"
+    source_channel: "TED-Ed 'Why do we have crooked teeth...' 4.9M; PBS Eons 803K; last 12 months Anton Petrov 310K"
+    competition_density: 1
+    five_min_fit: high
+    payoff: "Soft food shrank our jaws: why wisdom teeth don't fit, and chewing in childhood shapes the face"
+    evidence_strength: "to verify"
+    note: "fold in the jaw/wisdom-teeth angle."
+  - id: t032
+    title_draft: "Why Your Brain Resists Discipline (And What Actually Works)"
+    pattern: why-actually
+    template: mystery
+    status: selected  # owner picked as video 2 on 2026-10-29 ("yes lets go ahead"), evolution angle
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    outlier_ratio: null
+    source_video: "search: 'why you can't stay disciplined' / 'dopamine discipline brain' (last 12 months)"
+    source_channel: "PsychToons 'Psychology of Discipline' 4.36M; Jay Shetty 1.90M; Capril Arora 'Neuroscience of Discipline' 1.56M; Mel Robbins 837K"
+    competition_density: 9  # 'dopamine discipline brain' 9 over 100K, 'why you can't stay disciplined' 6; evolutionary angle ('wired for laziness') 0, best 14K; 'willpower myth' 0
+    five_min_fit: high
+    payoff: "Stop relying on willpower: change the environment and build habits so there is less to resist"
+    evidence_strength: "to verify: Hagger et al. 2016 (23-lab ego-depletion replication, near-zero effect); Hofmann et al. 2012 (people high in self-control report fewer temptations); Galla & Duckworth 2015 (habits explain self-control); energy-conservation / effort-cost research"
+    note: "crowded in self-help; differentiate through the ancient-humans door (why a forager brain avoids effort) plus the willpower-myth reversal. Off the launch lane unless framed that way."
+# Added 2026-11-01 from the third scout (34 ideas, YouTube Data API; counts = long-form >100K views in the last 12 months).
+  - id: t033
+    title_draft: "Your Appendix Isn't Useless"
+    pattern: myth-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    competition_density: 7  # mostly kids/Shorts; Doctor Myro Shorts 'We were wrong about the appendix' 4.9M and 'What an appendix REALLY does' 1.5M (12 months)
+    five_min_fit: high
+    payoff: "Uncomplicated appendicitis can often be treated with antibiotics (CODA trial, NEJM 2020; to verify)"
+    evidence_strength: "to verify: appendix evolved independently 30+ times in mammals (Smith et al.); safe-house for gut bacteria hypothesis"
+    note: "strongest Shorts demand in the scout; pairs well with a Short."
+  - id: t034
+    title_draft: "Why Do You Get Bored? (People Chose Electric Shocks Instead)"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    competition_density: 4  # ancient frame proven: Lore Explained 'What Did Ancient Humans Do For Pleasure?' 5.1M, GranKhelafa 'How did Ancient humans Kill boredom?' 1.8M (12 months); Vsauce 'Why Do We Get Bored?' 13M all-time
+    five_min_fit: high
+    payoff: "Boredom drives creativity; don't fill every gap with the phone (to verify)"
+    evidence_strength: "to verify: Wilson et al. 2014 Science (people chose self-shocks over 6-15 min alone thinking)"
+    note: "best hook in the scout; the shock study itself has no YouTube owner."
+  - id: t035
+    title_draft: "Did Ancient Humans Get Cancer?"
+    pattern: how-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    competition_density: 4  # Past Tense 'Did Ancient Humans get Cancer?' 320K (6:32); Mente Animada (Spanish) 660K
+    five_min_fit: med
+    payoff: "Cancer risk is mostly age plus a few modern exposures (to verify)"
+    evidence_strength: "to verify: 1.7-million-year-old osteosarcoma in a hominin foot bone (Odes et al. 2016)"
+    note: "English science version is open."
+  - id: t036
+    title_draft: "Why Do Allergies Exist? (Your Ancestors Barely Had Them)"
+    pattern: why-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    competition_density: 0  # Be Smart 730K all-time; nothing >100K in 12 months
+    five_min_fit: high
+    payoff: "Early peanut introduction cut peanut allergy ~80% (LEAP, NEJM 2015; to verify)"
+    evidence_strength: "to verify: Amish vs Hutterite children (Stein et al. NEJM 2016); hygiene / old-friends hypothesis"
+    note: "wildcard: open space and the most useful take-home, but demand is less proven."
+  - id: t037
+    title_draft: "How Did Ancient Women Handle Their Periods?"
+    pattern: how-actually
+    template: mystery
+    status: candidate
+    rank: {surprise: null, stakes: null, visual: null, watch_to_end: null}
+    competition_density: 11  # Venn Stories 1.19M, Mack 830K, Mente Animada 520K (12 months)
+    five_min_fit: med
+    payoff: "Foragers have ~100 periods in a lifetime vs ~400 today (to verify: Strassmann 1997)"
+    evidence_strength: "to verify"
+    note: "big demand, crowded, sensitive; owner's call."

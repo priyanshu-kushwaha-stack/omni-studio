@@ -7,7 +7,7 @@ export PYTHONDONTWRITEBYTECODE := 1
 export HYPERFRAMES_NO_TELEMETRY := 1
 export DISABLE_TELEMETRY := 1
 
-.PHONY: test board new-channel upstream-pull
+.PHONY: test board new-channel upstream-pull links
 
 # Upstream tests that assert a tool the owner banned is still discovered. They cannot pass
 # with the denylist on. core/studio/tests asserts the opposite for every denylisted name.
@@ -16,6 +16,11 @@ DESELECT := --deselect core/openmontage/tests/contracts/test_kling_official_avat
 test:
 	cd $(OPENMONTAGE) && $(PYTHON) -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles tests/test_network_guard.py -q -p no:cacheprovider $(DESELECT)
 	cd $(ROOT) && $(PYTHON) -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib
+	cd $(ROOT) && $(PYTHON) -m pytest core/engines/pou/tests -q -p no:cacheprovider
+
+# The playbook links in core/openmontage/styles/custom/ are git-ignored; a fresh clone needs this once.
+links:
+	$(PYTHON) -m studio.cli link
 
 # One board per channel, on ports from 4761. Port 4750 belongs to the owner's existing Backlot.
 board:

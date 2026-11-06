@@ -28,3 +28,13 @@ channels/*/lora/*
 channels/*/.board.json
 # omni new-channel makes these links. They are not committed.
 core/openmontage/styles/custom/*.yaml
+*.mp3
+*.m4a
+# Channel media that stays local: built rig cut-outs, narration stems, per-video rig parts, music cues.
+# Rig specs (rigs/*.json), the LoRA notes and the channel font are tracked.
+channels/*/rigs/*/
+channels/*/videos/*/narration/
+channels/*/videos/*/rigs/*/
+channels/*/music/
+!channels/*/lora/README.md
+!channels/*/lora/train.json

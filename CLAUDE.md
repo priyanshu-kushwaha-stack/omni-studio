@@ -30,9 +30,10 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 
 | Command | What it does |
 |---|---|
-| `make test` | Upstream core suites, then `core/studio/tests` |
+| `make test` | Upstream core suites, then `core/studio/tests`, then the engine's `core/engines/pou/tests` |
 | `make board CHANNEL=<slug>` | That channel's Backlot board, on a port from 4761. Port 4750 is the owner's other board |
 | `make new-channel SLUG=<slug>` | Same as `omni new-channel` |
+| `make links` / `omni link` | Re-create every channel's git-ignored playbook link. Run once after a fresh clone |
 | `make upstream-pull SHA=<commit>` | `git subtree pull`, full history, no squash |
 | `.venv/bin/omni status` | Pins, runtimes, disabled tools, and every channel with its pending gates |
 | `omni new-channel <slug>` | Scaffold from `channels/_template` and link the playbook |
@@ -47,10 +48,25 @@ Before running OpenMontage for a channel, export the line `omni new-video` print
 not call it for you. Do not render with files in `remotion-composer/public/`; `video_compose`
 staging keeps same-named assets from different channels apart.
 
+## Professor of Us engine
+
+`core/engines/pou/` is faceless-channel's `scripts/` and `tests/`, imported with history. The scripts import each
+other as siblings (`import compose`), so keep them in one folder. They read channel paths from
+`channels/<slug>/engine.yaml` through `scripts/pou_paths.py`; `POU_CHANNEL_DIR` picks the channel (default
+`channels/professor-of-us`). Paths stored in a video (stage.json, rig sources) are relative to the channel folder.
+
+Run the engine through the studio tools (`pou_tts`, `pou_stills`, `pou_puppet`, `pou_compose`,
+`overlay_check`), or directly with `.venv/bin/python core/engines/pou/scripts/<script>.py`. Media models run in
+`.venv-media` (NumPy 1.26, torch, mlx, mflux, chatterbox), built from `requirements-media.lock.txt` with
+`uv pip install --no-deps`; the core `.venv` keeps NumPy 2.x. Before every render run `overlay_check.py --fix`
+and, on the result, `audio_check.py`. The owner's craft rules and their checks are in `core/studio/rules/`.
+
 ## Gates
 
 Seven human gates. Never skip one, and only the owner passes a gate. Agents write
-`awaiting_human` and stop. Never call `write_checkpoint` with `human_approved=True` or run
+`awaiting_human` and stop. On a channel project, OpenMontage accepts an approval only with the proof
+`omni approve` writes (`lib/studio_approval.py`, patch 9): a direct `write_checkpoint(human_approved=True)` or
+a hand-edited checkpoint is refused. Never call `write_checkpoint` with `human_approved=True` or run
 `omni approve` yourself unless the owner told you to approve that stage.
 
 | Gate | Owner approves |
@@ -62,6 +78,8 @@ Seven human gates. Never skip one, and only the owner passes a gate. Agents writ
 | G5 | Edit |
 | G6 | Final watch at 1x, with cold viewers |
 | G7 | Publish, by hand in YouTube Studio, private first |
+
+`review_level` in channel.yaml is a recorded label only: it never skips or adds a gate.
 
 Agents never upload and never make a video public. Done means the owner watched or
 listened, not that tests passed. Owner review notes are a to-do list: apply each one or

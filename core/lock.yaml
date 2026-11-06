@@ -11,6 +11,17 @@ remotion:
   npm: remotion
   version: 4.0.484
   installed_by: npm ci in core/openmontage/remotion-composer (package-lock.json)
+git_filter_repo:
+  # Imported core/engines/pou with history (Phase 3). Installed in a throwaway venv, not in .venv.
+  pip: git-filter-repo
+  version: 2.47.0
+  imported_from: ~/Exploration/projects/faceless-channel a2c04b002735c4d1699ad3032318b7a879259f21 (scripts/, tests/)
+media_venv:
+  # .venv-media for the Professor of Us engine: NumPy 1.26.4, torch 2.6.0, mlx 0.32.4, mflux 0.24.0,
+  # chatterbox-tts 0.1.7, mlx-audio 0.6.2, transformers 5.2.0, faster-whisper 1.2.1, Python 3.12.
+  # The exact set is requirements-media.lock.txt, installed with uv pip install --no-deps.
+  top_level: requirements-media.txt
+  exact: requirements-media.lock.txt
 skills:
   # Git tree hashes of the skills vendored with the upstream commit above.
   vendored:
