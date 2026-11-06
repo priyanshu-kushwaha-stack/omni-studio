@@ -31,7 +31,7 @@ Real physics would wreck this power. Stopped air would seal you in like a fly in
 So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.
 > SCENE: You hold up one finger, thinking.
 So, what's your first pause for?
-Something stupid. Obviously.
+Something selfish. Obviously.
 
 ## [00:50] The first days
 > MOOD: day
@@ -39,7 +39,7 @@ Something stupid. Obviously.
 > TAG: 0.45 S
 A phone falls a metre in about 0.45 seconds (c04). Usually, you just watch it go.
 Not today.
-> SCENE: You snap. Grey, bars in. The phone hangs a hand's width above the floor. A tape stretches across the kitchen as you walk.
+> SCENE: You snap. Grey, bars in. The phone hangs a hand's width above the floor. The camera pulls out side-on through the walls; a paper tape runs past the rooms as you walk.
 You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about 10 to 14 metres (c05).
 > TAG: 10–14 M
 > SCENE: Close on your hand plucking the phone out of the air. Colour, bars out. You check the screen: not a crack. A smirk.
@@ -56,7 +56,7 @@ The last samosa. A colleague's hand is already reaching. Do you let it go?
 Of course not. You're not a saint. You're a person with ten seconds.
 > MOOD: lamp
 > SCENE: Home, evening, one warm lamp. Your mother's chappal flies across the room at your head. You snap. Grey. It hangs mid-air. You step one pace left. Colour. It sails past. She stares at her hand, then laughs.
-Your mother's chappal, mid-air, headed for your head? You step aside. She never works out how she missed.
+Your mother's chappal, mid-air, aimed at your head? You step aside. She never works out how she missed.
 > MOOD: day
 > SCENE: Close on the hallway wall clock. Your eyes dart to it. The second hand sticks for a beat, then jumps.
 You've felt a tiny pause before.
@@ -69,9 +69,9 @@ Your brain has been editing time for you all your life. Now you've got the remot
 
 ## [02:30] The first year
 > MOOD: dusk
+> SCENE: Street at dusk. Crowds, pigeons, a zebra crossing. A bus comes down the road.
 > TAG: DAY 12
 Then comes day twelve. You're walking home.
-> SCENE: Street at dusk. Crowds, pigeons, a zebra crossing. A bus comes down the road.
 A bus runs a red light.
 > SCENE: A school-age kid in a blue cap chases a ball onto the crossing. Close on your face: eyes wide, brows up.
 There's a kid in the road.
@@ -113,14 +113,14 @@ Just this once.
 > MOOD: lamp
 > SCENE: That evening, home, one lamp. Your mother at the top of the stairs, carrying a basket of washing. She misses a step. You snap. Nothing: the counter reads 0.
 That evening, your mother misses a step on the stairs. You snap your fingers. Nothing.
-> HOLD: 8 s. Slow motion, colour draining. She falls the last three steps. The music drops to a single held note, then nothing. You kneel beside her. She sits up, rubbing her arm, and waves you off.
+> HOLD: 8 s. Slow motion; the warm lamp stays, the shadows deepen and the vignette closes in (no grey: the pause failed). She falls the last three steps. The music drops to a single held note, then nothing. You kneel beside her. She sits up, rubbing her arm, and waves you off.
 She's all right. Bruised. You're not.
 > MOOD: night
 > SCENE: Night. You in bed, eyes open, the counter on the wall reading 10.
 That night, you lie awake doing the maths of every second you've ever wasted.
 > TAG: MONTH 6
 > SCENE: Montage, two seconds each, the counter top right reading 10: you at the crossing, watching. You on the bus, watching. You at the foot of the stairs, watching your mother come down.
-You never spend them on yourself again.
+You almost never spend them on yourself again.
 > SCENE: Bedroom, midnight. The counter still reads 10. You lie awake, then snap. Grey. The city outside the window hangs still.
 Some days nothing happens. So at midnight you spend them on nothing at all.
 > HOLD: 4 s. The frozen city, just for you. A held chord.
@@ -130,7 +130,7 @@ Except, across the street, a curtain moves. In a window that should be frozen.
 
 ## [04:30] The long run
 > SCENE: You at your window, night after night, watching the building across the street. The curtain never moves.
-The curtain never moves again. Slowly, you get on with your life.
+The curtain never moves again. But every midnight, you check.
 > MOOD: day
 > SCENE: A daydream cloud over your head: you in front of a bank vault, the counter at 10.
 People always ask what you'd do with a superpower. Rob a bank?
@@ -142,31 +142,29 @@ Ten seconds is too small for greed. It's exactly the right size for an accident.
 You become the reason small disasters don't happen.
 > MOOD: lamp
 > SCENE: Home, one lamp. Your mother, older now, watching you watch her on the stairs. Close on her raised brows.
-Your mother asks why you always wait at the bottom of the stairs.
-> SCENE: Close on your face. You open your mouth. Then close it.
-Do you tell her? You open your mouth, then close it.
+Your mother asks you to stop waiting at the bottom of the stairs.
+Promise her, or keep watching?
+> SCENE: You stay on the bottom step. She shakes her head, and smiles, and takes your hand on the way down.
+You stay on the bottom step.
 > MOOD: dusk
 > TAG: YEAR 40
-> SCENE: The same street through the seasons: leaves, rain, snow, sun. You age a little in each. In one frozen winter frame, far back, the figure in the long dark coat stands among the grey crowd, facing you.
+> HOLD: 4 s. The same street through the seasons: leaves, rain, snow, sun. You age a little in each. In one frozen winter frame, far back, the figure in the long dark coat stands among the grey crowd, facing you.
 > SCENE: You, older, grey in the tuft, at a corner. Your eyes flick to a wobbling ladder, a loose dog, a driver looking at a phone.
 Forty years in, you read a street like a weather map.
 You see the accident before it happens. Most days, you don't even need the pause.
 > SCENE: Two paper clocks side by side. Yours gives a small extra tick every day.
-Your body lives every one of those pauses. Over eighty years, they add up to about three days and nine hours.
+Your body lives every one of those pauses. Over fifty years, they add up to about two days.
 > MOOD: lamp
 > SCENE: A mirror. You squint at your reflection. Beside it, not on your face, a tag.
-> TAG: 3 DAYS 9 HOURS
-By eighty, that's how much older you'll be than everyone you grew up with. You'd barely notice.
+> TAG: 2 DAYS
+That's how much older you are than everyone you grew up with. You'd barely notice.
 > SCENE: Pull back from the mirror to the window, and the street below full of strangers.
 The bigger cost is the watching. A whole life spent ten seconds at a time, on strangers who'll never know your name.
 
 ## [06:15] Back to you
 > MOOD: dusk
-> SCENE: The crossing from day twelve, ordinary and busy. A car approaches; the split-flap counter shows a sliver of a second.
-Here's the real part. Nobody gets ten frozen seconds. A real driver gets under one, before the brakes even touch (c14).
-> SCENE: You, weighing your phone in one hand and the counter in the other.
-So what would you do with your ten seconds? Spend them every morning, or save them for a day that might never come?
-Tell us below. The best what-ifs become videos.
+> SCENE: The crossing from day twelve, ordinary and busy. A car approaches; a paper tag beside the driver reads 1.5 S.
+Here's the real part. Nobody gets ten frozen seconds. Road designers assume a driver needs a second and a half just to notice danger (c13).
 > SCENE: The street, evening. You snap. The crowd freezes, grey; bars slide in. You turn to walk home.
 > MOOD: frozen
 And then you notice something.
@@ -176,22 +174,25 @@ Someone else is still moving.
 And they're looking right at you.
 Somebody knows.
 > BUBBLE: The stranger: "Nice catch. Day twelve."
-> SCENE: Black for one second. Then a quiet end card: you, small, in the left two-thirds; the right third empty for end screens.
+> SCENE: Black for one second. Then a quiet end card: you, small, in the left two-thirds, weighing your phone in one hand and a paper copy of the counter in the other; the right third empty for end screens.
+So what would you spend your ten seconds on? Tell us below. The best what-ifs become videos.
 
 ## Word count
-794 spoken words (claims.spoken_lines, cites removed): 6.9 minutes at 115 words a minute, plus 24 s of
-explicit holds and the action between lines; about 7:30 to 7:45 in all.
+778 spoken words (claims.spoken_lines, cites removed): 6.8 minutes at 115 words a minute, plus 28 s of
+explicit holds and the action between lines; about 7:30 in all.
 
 ## Narration notes (for G3; not spoken)
 - Voice: Arthur on Eleven v4 (`voices.yaml`). Each line is one take; the take text spells numbers out, and the
   delivery direction goes in front of it in square brackets. The script keeps digits for the claims check.
 - Spelled out: "0.45" → "nought point four five"; "10 to 14 metres" → "ten to fourteen metres"; "48 kilometres an
-  hour ... 23 metres" → "forty-eight kilometres an hour ... twenty-three metres". "Chronostasis" → "krono-STAY-sis".
+  hour ... 23 metres" → "forty-eight kilometres an hour ... twenty-three metres"; "a second and a half" stays in words. "Chronostasis" → "krono-STAY-sis".
 - Directions: the opening line [low, slow]; "Something stupid. Obviously." [dry]; "Vanish." [dry, quick];
   "There's a kid in the road." [sharp]; "You hit pause." [quiet, a beat before]; the countdown, one take,
   [breathless, steady], sliced to the counter; "It is not free." [a beat before, low]; "She's all right. Bruised.
   You're not." [quiet]; "Ten seconds of a city holding its breath" [hushed, warm]; the last three lines [hushed];
-  "Somebody knows." [whispers].
+  "Somebody knows." [whispers]. "Nine. Eight. Seven." to "Three. Two. One.": one take per number, breathless and quickening,
+  each cut to a counter flip. "You're not." is its own take after "She's all right. Bruised.": lower, slower.
+  "And this is a bus." is its own take: deadpan.
 - No speed-up on any take: the pace is about 115 words a minute by design.
 
 ## Not said
