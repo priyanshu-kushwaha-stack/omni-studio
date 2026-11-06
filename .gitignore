@@ -44,3 +44,7 @@ core/reference/**/media/
 .tools/
 # omni qc reports are re-run by omni approve; local evidence only
 channels/*/videos/*/qc/
+
+# Channel page: the final picture, banner and watermark are tracked; candidates and preview crops are not.
+channels/*/page/candidates/
+channels/*/page/crops/
