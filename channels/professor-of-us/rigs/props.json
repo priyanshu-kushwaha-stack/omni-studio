@@ -1,0 +1,50 @@
+{
+ "name": "props",
+ "about": "Object rigs. gauge/needle swings about the hub.",
+ "poses": {
+  "gauge": {
+   "source": "videos/2026-10-29_effort-brain/assets/stills/s020.png",
+   "parts": {
+    "needle": {
+     "region": {
+      "ellipses": [
+       [
+        1440,
+        525,
+        19,
+        19
+       ]
+      ],
+      "polys": [
+       [
+        [
+         1428,
+         512
+        ],
+        [
+         1612,
+         352
+        ],
+        [
+         1630,
+         372
+        ],
+        [
+         1452,
+         540
+        ]
+       ]
+      ]
+     },
+     "ink_only": true,
+     "grow": 4,
+     "pivot": [
+      1440,
+      525
+     ],
+     "z": 1
+    }
+   }
+  }
+ }
+}

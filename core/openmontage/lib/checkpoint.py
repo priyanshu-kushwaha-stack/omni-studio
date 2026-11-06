@@ -328,10 +328,20 @@ def _enforce_stage_prerequisites(
         if checkpoint.get("status") != "completed":
             incomplete.append(predecessor)
             continue
-        if _stage_requires_approval(pipeline_type, predecessor) and not checkpoint.get(
+        predecessor_gated = _stage_requires_approval(pipeline_type, predecessor)
+        if predecessor_gated and not checkpoint.get("human_approved"):
+            unapproved.append(predecessor)
+        elif (predecessor_gated or checkpoint.get("human_approval_required")) and checkpoint.get(
             "human_approved"
         ):
-            unapproved.append(predecessor)
+            # omni-studio patch (core/PATCHES.md): channel projects need an `omni approve` proof.
+            from lib import studio_approval
+            if studio_approval.is_studio_project(pipeline_dir, project_id):
+                try:
+                    studio_approval.verify(project_id, predecessor, pipeline_type,
+                                           checkpoint.get("artifacts", {}), checkpoint.get("metadata"))
+                except studio_approval.ApprovalRefused:
+                    unapproved.append(predecessor)
 
     if incomplete or unapproved:
         details = []
@@ -492,6 +502,15 @@ def write_checkpoint(
                 f"user, END YOUR TURN, and only after the user approves "
                 f"re-write with status='completed', human_approved=True."
             )
+        if human_approved:
+            # omni-studio patch (core/PATCHES.md): on a channel project only
+            # `omni approve` can mark a gated stage approved.
+            from lib import studio_approval
+            if studio_approval.is_studio_project(pipeline_dir, project_id):
+                try:
+                    studio_approval.verify(project_id, stage, pipeline_type, artifacts, metadata)
+                except studio_approval.ApprovalRefused as exc:
+                    raise CheckpointValidationError(f"GATE VIOLATION: {exc}") from exc
 
     _enforce_stage_prerequisites(
         pipeline_dir,

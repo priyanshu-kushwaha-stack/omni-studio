@@ -1,0 +1,436 @@
+{
+ "name": "tails",
+ "about": "auto rig for videos/2026-10-31_tails (scripts/short_rigs.py)",
+ "poses": {
+  "s001_char": {
+   "source": "videos/2026-10-31_tails/assets/stills/s001.png",
+   "parts": {
+    "head": {
+     "region": {
+      "ellipses": [
+       [
+        465,
+        690,
+        52,
+        52
+       ],
+       [
+        582,
+        680,
+        49,
+        49
+       ]
+      ]
+     },
+     "pivot": [
+      465,
+      690
+     ],
+     "z": 2,
+     "grow": 3,
+     "erase": {
+      "ellipses": [
+       [
+        478,
+        682,
+        18,
+        22
+       ],
+       [
+        582,
+        666,
+        18,
+        20
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "s001Eye0",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        478,
+        682,
+        41,
+        41
+       ],
+       "pupil": [
+        478,
+        682,
+        16,
+        20
+       ]
+      },
+      {
+       "name": "s001Eye1",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        582,
+        666,
+        37,
+        37
+       ],
+       "pupil": [
+        582,
+        666,
+        16,
+        18
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "s001c1_char": {
+   "source": "videos/2026-10-31_tails/assets/stills/s001c1.png",
+   "parts": {
+    "head": {
+     "region": {
+      "ellipses": [
+       [
+        555,
+        752,
+        130,
+        128
+       ]
+      ],
+      "minus": {
+       "rects": [
+        [
+         405,
+         878,
+         705,
+         920
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      555,
+      878
+     ],
+     "z": 2,
+     "grow": 3,
+     "erase": {
+      "ellipses": [
+       [
+        598,
+        748,
+        12,
+        22
+       ],
+       [
+        676,
+        756,
+        13,
+        20
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "s001c1Eye0",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        598,
+        748,
+        37,
+        37
+       ],
+       "pupil": [
+        598,
+        748,
+        10,
+        20
+       ]
+      },
+      {
+       "name": "s001c1Eye1",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        676,
+        756,
+        31,
+        31
+       ],
+       "pupil": [
+        676,
+        756,
+        10,
+        18
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "s005c1_char": {
+   "source": "videos/2026-10-31_tails/assets/stills/s005c1.png",
+   "parts": {
+    "head": {
+     "region": {
+      "ellipses": [
+       [
+        477,
+        818,
+        46,
+        46
+       ],
+       [
+        582,
+        815,
+        46,
+        46
+       ]
+      ]
+     },
+     "pivot": [
+      477,
+      818
+     ],
+     "z": 2,
+     "grow": 3,
+     "erase": {
+      "ellipses": [
+       [
+        477,
+        820,
+        16,
+        27
+       ],
+       [
+        582,
+        818,
+        14,
+        26
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "s005c1Eye0",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        477,
+        820,
+        43,
+        43
+       ],
+       "pupil": [
+        477,
+        820,
+        13,
+        24
+       ]
+      },
+      {
+       "name": "s005c1Eye1",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        582,
+        818,
+        42,
+        42
+       ],
+       "pupil": [
+        582,
+        818,
+        12,
+        24
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "s006c1_hero": {
+   "source": "videos/2026-10-31_tails/assets/stills/s006c1.png",
+   "parts": {
+    "hero": {
+     "region": {
+      "rects": [
+       [
+        370,
+        1110,
+        610,
+        1580
+       ]
+      ]
+     },
+     "pivot": [
+      490,
+      1570
+     ],
+     "z": 1,
+     "grow": 3
+    }
+   }
+  },
+  "s008_char": {
+   "source": "videos/2026-10-31_tails/assets/stills/s008.png",
+   "parts": {
+    "head": {
+     "region": {
+      "ellipses": [
+       [
+        612,
+        495,
+        44,
+        44
+       ]
+      ]
+     },
+     "pivot": [
+      612,
+      495
+     ],
+     "z": 2,
+     "grow": 3,
+     "erase": {
+      "ellipses": [
+       [
+        617,
+        490,
+        14,
+        24
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "s008Eye0",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        617,
+        490,
+        39,
+        39
+       ],
+       "pupil": [
+        617,
+        490,
+        11,
+        22
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "s008_tag": {
+   "source": "videos/2026-10-31_tails/assets/stills/s008.png",
+   "parts": {
+    "tag": {
+     "region": {
+      "rects": [
+       [
+        630,
+        1050,
+        900,
+        1380
+       ]
+      ]
+     },
+     "pivot": [
+      612,
+      1080
+     ],
+     "z": 1,
+     "grow": 3
+    }
+   }
+  },
+  "s009c1_char": {
+   "source": "videos/2026-10-31_tails/assets/stills/s009c1.png",
+   "parts": {
+    "head": {
+     "region": {
+      "ellipses": [
+       [
+        548,
+        630,
+        150,
+        150
+       ]
+      ],
+      "minus": {
+       "rects": [
+        [
+         378,
+         790,
+         718,
+         820
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      548,
+      790
+     ],
+     "z": 2,
+     "grow": 3,
+     "erase": {
+      "ellipses": [
+       [
+        527,
+        663,
+        16,
+        28
+       ],
+       [
+        657,
+        660,
+        14,
+        26
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "s009c1Eye0",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        527,
+        663,
+        45,
+        45
+       ],
+       "pupil": [
+        527,
+        663,
+        13,
+        25
+       ]
+      },
+      {
+       "name": "s009c1Eye1",
+       "kind": "eye",
+       "dot": false,
+       "lens": [
+        657,
+        660,
+        43,
+        43
+       ],
+       "pupil": [
+        657,
+        660,
+        12,
+        24
+       ]
+      }
+     ]
+    }
+   }
+  }
+ }
+}

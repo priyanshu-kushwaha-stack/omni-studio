@@ -266,12 +266,47 @@ def create_channel(slug: str) -> Channel:
                     path.read_text(encoding="utf-8").replace("__SLUG__", slug), encoding="utf-8"
                 )
         link.parent.mkdir(parents=True, exist_ok=True)
-        link.symlink_to(f"../../../../channels/{slug}/playbook.yaml")
+        link.symlink_to(playbook_link_target(slug))
         return load_channel(slug)
     except Exception:
         link.unlink(missing_ok=True)
         shutil.rmtree(target, ignore_errors=True)
         raise
+
+
+def playbook_link_target(slug: str) -> str:
+    return f"../../../../channels/{slug}/playbook.yaml"
+
+
+def link_playbooks() -> list[tuple[str, str]]:
+    """Re-create styles/custom/<slug>.yaml -> ../../../../channels/<slug>/playbook.yaml for every channel.
+
+    The links are git-ignored, so a fresh clone has none. Returns (slug, what happened) per channel. A link
+    that already points at the right file is left alone; a wrong link is replaced; a regular file there is
+    refused, because it is someone's playbook rather than a link this command made.
+    """
+    folder = custom_styles_dir()
+    folder.mkdir(parents=True, exist_ok=True)
+    results = []
+    for slug in list_slugs():
+        _channel_dir(slug)
+        link = folder / f"{slug}.yaml"
+        target = playbook_link_target(slug)
+        if link.is_symlink():
+            if os.readlink(link) == target:
+                results.append((slug, "ok"))
+                continue
+            link.unlink()
+            link.symlink_to(target)
+            results.append((slug, "replaced"))
+        elif link.exists():
+            raise ChannelError(f"{link} is a regular file, not a link; move it before linking {slug!r}")
+        else:
+            link.symlink_to(target)
+            results.append((slug, "created"))
+        if not link.resolve().is_file():
+            raise ChannelError(f"{link} -> {target} does not resolve: channels/{slug}/playbook.yaml is missing")
+    return results
 
 
 def _slugify(title: str) -> str:
@@ -335,7 +370,8 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
     """Pass a gate: rewrite an awaiting_human checkpoint as completed and approved.
 
     Goes through OpenMontage's write_checkpoint, so its schema, artifact and
-    earlier-stage checks all still apply.
+    earlier-stage checks all still apply. The approval carries an HMAC proof
+    (lib/studio_approval.py); without it OpenMontage refuses the approval.
     """
     _upstream()
     from lib.checkpoint import CheckpointValidationError, read_checkpoint, write_checkpoint
@@ -350,10 +386,19 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
             f"Stage {stage!r} of {video_id!r} is {checkpoint['status']!r}, not "
             f"'awaiting_human', so there is nothing to approve"
         )
+    from lib import studio_approval
+
+    at = datetime.now(timezone.utc).isoformat()
+    try:
+        # The only proof lib/checkpoint.py accepts for a gated stage of a channel project.
+        proof = studio_approval.sign(video_id, stage, checkpoint["pipeline_type"], checkpoint["artifacts"], at)
+    except studio_approval.ApprovalRefused as exc:
+        raise ChannelError(str(exc)) from exc
     approval: dict[str, Any] = {
         "by": getpass.getuser(),
-        "at": datetime.now(timezone.utc).isoformat(),
-        "via": "omni approve",
+        "at": at,
+        "via": studio_approval.VIA,
+        "proof": proof,
     }
     if note:
         approval["note"] = note

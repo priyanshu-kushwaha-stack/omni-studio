@@ -1,0 +1,9 @@
+# Paths the Professor of Us engine (core/engines/pou) reads, through scripts/pou_paths.py.
+# Relative entries are relative to this folder; "~" is expanded. Unknown keys are errors.
+font: fonts/PatrickHand-Regular.ttf
+rigs: rigs
+lora: lora/pous_ink.safetensors          # 92 MB, git-ignored; copy it in by hand on a new machine
+media_python: ../../.venv-media/bin/python
+mflux: ../../.venv-media/bin/mflux-generate-flux2
+whisper_python: ../../.venv-media/bin/python
+secrets_env: ~/.config/omni-studio/professor-of-us.env   # ELEVENLABS_API_KEY, ELEVEN_VOICE_ID. Never committed

@@ -1,0 +1,152 @@
+[
+ {
+  "scene": "s001",
+  "anchor": "You had a tail",
+  "kind": "card",
+  "text": "YOU HAD A TAIL?",
+  "pos": [
+   0.5,
+   0.12
+  ],
+  "size": 84,
+  "hold": "scene",
+  "id": "o001"
+ },
+ {
+  "scene": "s002",
+  "anchor": "Guess when",
+  "kind": "label",
+  "text": "when??",
+  "pos": [
+   0.5,
+   0.14
+  ],
+  "color": "rust",
+  "size": 110,
+  "id": "o002"
+ },
+ {
+  "scene": "s002c1",
+  "anchor": "Week five",
+  "kind": "number",
+  "text": "week 5",
+  "pos": [
+   0.5,
+   0.18
+  ],
+  "caption": "in the womb \u00b7 1/6 of you",
+  "id": "o003"
+ },
+ {
+  "scene": "s003",
+  "anchor": "week eight",
+  "kind": "label",
+  "text": "week 8: gone",
+  "pos": [
+   0.5,
+   0.12
+  ],
+  "color": "rust",
+  "id": "o005"
+ },
+ {
+  "scene": "s004",
+  "anchor": "twenty-five million",
+  "kind": "number",
+  "text": "25 million",
+  "pos": [
+   0.56,
+   0.16
+  ],
+  "caption": "years ago",
+  "id": "o006",
+  "size": 105
+ },
+ {
+  "scene": "s005c1",
+  "anchor": "In 2024",
+  "kind": "label",
+  "text": "2024",
+  "pos": [
+   0.54,
+   0.12
+  ],
+  "color": "ochre",
+  "id": "o007"
+ },
+ {
+  "scene": "s005",
+  "anchor": "called",
+  "kind": "card",
+  "text": "TBXT",
+  "pos": [
+   0.2,
+   0.46
+  ],
+  "size": 84,
+  "id": "o009"
+ },
+ {
+  "scene": "s007",
+  "anchor": "spina bifida",
+  "kind": "label",
+  "text": "spine defects",
+  "pos": [
+   0.5,
+   0.12
+  ],
+  "color": "rust",
+  "sfx": "sting",
+  "id": "o011"
+ },
+ {
+  "scene": "s008",
+  "anchor": "a price",
+  "kind": "label",
+  "text": "the price?",
+  "pos": [
+   0.5,
+   0.12
+  ],
+  "color": "rust",
+  "id": "o012"
+ },
+ {
+  "scene": "s009",
+  "anchor": "not junk",
+  "kind": "label",
+  "text": "not junk",
+  "pos": [
+   0.5,
+   0.12
+  ],
+  "color": "ochre",
+  "id": "o013"
+ },
+ {
+  "scene": "s009c1",
+  "anchor": "sitting on it",
+  "kind": "label",
+  "text": "your tailbone",
+  "pos": [
+   0.48,
+   0.18
+  ],
+  "color": "ochre",
+  "id": "o014",
+  "size": 57
+ },
+ {
+  "scene": "s010",
+  "anchor": "the tail you already",
+  "kind": "card",
+  "text": "YOU HAD A TAIL",
+  "pos": [
+   0.5,
+   0.12
+  ],
+  "size": 84,
+  "hold": "scene",
+  "id": "o015"
+ }
+]

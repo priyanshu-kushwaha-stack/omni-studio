@@ -1,0 +1,1267 @@
+{
+ "name": "v3",
+ "about": "Video 3 (human bottleneck) poses, cut from its own stills. Coordinates are in the source still's pixels. Part names carry the character so two poses can share a scene.",
+ "poses": {
+  "you_doubletake": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s002.png",
+   "parts": {
+    "head": {
+     "region": {
+      "ellipses": [
+       [
+        1365,
+        358,
+        262,
+        206
+       ]
+      ]
+     },
+     "pivot": [
+      1345,
+      565
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        1338,
+        300,
+        19,
+        29
+       ],
+       [
+        1534,
+        328,
+        20,
+        27
+       ]
+      ],
+      "rects": [
+       [
+        1215,
+        395,
+        1425,
+        535
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "eyeL",
+       "kind": "eye",
+       "lens": [
+        1300,
+        302,
+        69,
+        68
+       ],
+       "pupil": [
+        1338,
+        300,
+        15,
+        25
+       ]
+      },
+      {
+       "name": "eyeR",
+       "kind": "eye",
+       "lens": [
+        1498,
+        330,
+        68,
+        68
+       ],
+       "pupil": [
+        1534,
+        328,
+        16,
+        23
+       ]
+      }
+     ]
+    },
+    "mouth": {
+     "region": {
+      "rects": [
+       [
+        1215,
+        395,
+        1425,
+        535
+       ]
+      ]
+     },
+     "pivot": [
+      1312,
+      462
+     ],
+     "parent": "head",
+     "z": 3,
+     "ink_only": true,
+     "fill_holes": true,
+     "largest": true
+    }
+   }
+  },
+  "you_scratch": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s005.png",
+   "parts": {
+    "head": {
+     "region": {
+      "polys": [
+       [
+        [
+         355,
+         335
+        ],
+        [
+         700,
+         335
+        ],
+        [
+         700,
+         505
+        ],
+        [
+         612,
+         522
+        ],
+        [
+         462,
+         522
+        ],
+        [
+         355,
+         512
+        ]
+       ]
+      ],
+      "minus": {
+       "ellipses": [
+        [
+         655,
+         278,
+         104,
+         100
+        ]
+       ],
+       "polys": [
+        [
+         [
+          600,
+          330
+         ],
+         [
+          700,
+          330
+         ],
+         [
+          700,
+          395
+         ],
+         [
+          600,
+          395
+         ]
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      532,
+      518
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        514,
+        422,
+        9,
+        12
+       ],
+       [
+        582,
+        419,
+        8,
+        12
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "eyeL",
+       "kind": "eye",
+       "lens": [
+        502,
+        420,
+        24,
+        24
+       ],
+       "pupil": [
+        514,
+        422,
+        6,
+        9
+       ]
+      },
+      {
+       "name": "eyeR",
+       "kind": "eye",
+       "lens": [
+        570,
+        418,
+        22,
+        24
+       ],
+       "pupil": [
+        582,
+        419,
+        5,
+        9
+       ]
+      },
+      {
+       "name": "brows",
+       "kind": "brows",
+       "at": [
+        536,
+        384
+       ],
+       "weight": 5.5,
+       "shapes": {
+        "puzzled": [
+         [
+          [
+           -50,
+           5
+          ],
+          [
+           -36,
+           -5
+          ],
+          [
+           -20,
+           -2
+          ]
+         ],
+         [
+          [
+           20,
+           1
+          ],
+          [
+           34,
+           4
+          ],
+          [
+           50,
+           3
+          ]
+         ]
+        ],
+        "up": [
+         [
+          [
+           -50,
+           2
+          ],
+          [
+           -36,
+           -7
+          ],
+          [
+           -20,
+           -4
+          ]
+         ],
+         [
+          [
+           20,
+           -4
+          ],
+          [
+           34,
+           -7
+          ],
+          [
+           50,
+           2
+          ]
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    "balloon": {
+     "region": {
+      "ellipses": [
+       [
+        655,
+        278,
+        106,
+        102
+       ]
+      ],
+      "polys": [
+       [
+        [
+         600,
+         330
+        ],
+        [
+         660,
+         360
+        ],
+        [
+         640,
+         395
+        ],
+        [
+         595,
+         400
+        ]
+       ]
+      ]
+     },
+     "pivot": [
+      618,
+      392
+     ],
+     "z": 3
+    }
+   }
+  },
+  "oog_furs": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s014.png",
+   "parts": {
+    "body": {
+     "region": {
+      "rects": [
+       [
+        425,
+        195,
+        962,
+        776
+       ]
+      ]
+     },
+     "pivot": [
+      700,
+      778
+     ],
+     "z": 1,
+     "erase": {
+      "ellipses": [
+       [
+        718,
+        362,
+        11,
+        17
+       ],
+       [
+        776,
+        356,
+        10,
+        16
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "eyeL",
+       "kind": "eye",
+       "lens": [
+        718,
+        362,
+        8,
+        14
+       ],
+       "pupil": [
+        718,
+        362,
+        8,
+        14
+       ],
+       "dot": true
+      },
+      {
+       "name": "eyeR",
+       "kind": "eye",
+       "lens": [
+        776,
+        356,
+        7,
+        13
+       ],
+       "pupil": [
+        776,
+        356,
+        7,
+        13
+       ],
+       "dot": true
+      }
+     ]
+    },
+    "flame": {
+     "region": {
+      "rects": [
+       [
+        1100,
+        510,
+        1320,
+        762
+       ]
+      ]
+     },
+     "pivot": [
+      1205,
+      765
+     ],
+     "z": 1
+    }
+   }
+  },
+  "oog_pat": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s023.png",
+   "parts": {
+    "head": {
+     "region": {
+      "ellipses": [
+       [
+        505,
+        398,
+        118,
+        102
+       ]
+      ],
+      "polys": [
+       [
+        [
+         585,
+         340
+        ],
+        [
+         660,
+         360
+        ],
+        [
+         705,
+         470
+        ],
+        [
+         700,
+         512
+        ],
+        [
+         660,
+         512
+        ],
+        [
+         600,
+         430
+        ]
+       ]
+      ]
+     },
+     "pivot": [
+      535,
+      505
+     ],
+     "z": 2
+    },
+    "fist": {
+     "region": {
+      "ellipses": [
+       [
+        530,
+        550,
+        40,
+        42
+       ]
+      ]
+     },
+     "pivot": [
+      530,
+      552
+     ],
+     "z": 3,
+     "ink_only": true,
+     "fill_holes": true,
+     "largest": true
+    }
+   }
+  },
+  "s033_point": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s033.png",
+   "parts": {
+    "oogArm": {
+     "region": {
+      "polys": [
+       [
+        [
+         704,
+         498
+        ],
+        [
+         925,
+         498
+        ],
+        [
+         925,
+         556
+        ],
+        [
+         835,
+         556
+        ],
+        [
+         704,
+         538
+        ]
+       ]
+      ]
+     },
+     "pivot": [
+      700,
+      521
+     ],
+     "z": 3
+    },
+    "cousinArm": {
+     "region": {
+      "polys": [
+       [
+        [
+         940,
+         498
+        ],
+        [
+         1148,
+         503
+        ],
+        [
+         1148,
+         534
+        ],
+        [
+         1040,
+         556
+        ],
+        [
+         940,
+         556
+        ]
+       ]
+      ]
+     },
+     "pivot": [
+      1152,
+      518
+     ],
+     "z": 3
+    }
+   }
+  },
+  "group_hug": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s041.png",
+   "parts": {
+    "group": {
+     "region": {
+      "rects": [
+       [
+        480,
+        60,
+        1340,
+        995
+       ]
+      ]
+     },
+     "pivot": [
+      905,
+      965
+     ],
+     "z": 1,
+     "grow": 2
+    }
+   }
+  },
+  "busstop_a": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s001.png",
+   "parts": {
+    "youHead": {
+     "region": {
+      "ellipses": [
+       [
+        548,
+        557,
+        110,
+        92
+       ]
+      ],
+      "minus": {
+       "rects": [
+        [
+         400,
+         642,
+         700,
+         700
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      556,
+      642
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        537,
+        542,
+        9,
+        11
+       ],
+       [
+        609,
+        540,
+        9,
+        11
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "youEyeL",
+       "kind": "eye",
+       "lens": [
+        526,
+        543,
+        26,
+        25
+       ],
+       "pupil": [
+        537,
+        542,
+        6,
+        8
+       ]
+      },
+      {
+       "name": "youEyeR",
+       "kind": "eye",
+       "lens": [
+        604,
+        540,
+        24,
+        24
+       ],
+       "pupil": [
+        609,
+        540,
+        6,
+        8
+       ]
+      }
+     ]
+    },
+    "strHead": {
+     "region": {
+      "ellipses": [
+       [
+        1222,
+        440,
+        116,
+        108
+       ]
+      ],
+      "minus": {
+       "rects": [
+        [
+         1050,
+         537,
+         1400,
+         600
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      1228,
+      538
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        1188,
+        436,
+        9,
+        16
+       ],
+       [
+        1248,
+        439,
+        11,
+        16
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "strEyeL",
+       "kind": "eye",
+       "lens": [
+        1188,
+        436,
+        11,
+        16
+       ],
+       "pupil": [
+        1188,
+        436,
+        6,
+        13
+       ],
+       "dot": true
+      },
+      {
+       "name": "strEyeR",
+       "kind": "eye",
+       "lens": [
+        1248,
+        439,
+        13,
+        16
+       ],
+       "pupil": [
+        1248,
+        439,
+        8,
+        13
+       ],
+       "dot": true
+      }
+     ]
+    }
+   }
+  },
+  "busstop_b": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s039.png",
+   "parts": {
+    "youHead": {
+     "region": {
+      "ellipses": [
+       [
+        745,
+        535,
+        72,
+        52
+       ]
+      ]
+     },
+     "pivot": [
+      745,
+      600
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        726,
+        536,
+        9,
+        12
+       ],
+       [
+        784,
+        533,
+        9,
+        10
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "youEyeL",
+       "kind": "eye",
+       "lens": [
+        714,
+        536,
+        23,
+        23
+       ],
+       "pupil": [
+        726,
+        536,
+        6,
+        9
+       ]
+      },
+      {
+       "name": "youEyeR",
+       "kind": "eye",
+       "lens": [
+        776,
+        530,
+        20,
+        22
+       ],
+       "pupil": [
+        784,
+        533,
+        6,
+        7
+       ]
+      }
+     ]
+    },
+    "strHead": {
+     "region": {
+      "ellipses": [
+       [
+        1190,
+        532,
+        60,
+        34
+       ]
+      ]
+     },
+     "pivot": [
+      1190,
+      600
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        1166,
+        530,
+        10,
+        17
+       ],
+       [
+        1215,
+        530,
+        9,
+        16
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "strEyeL",
+       "kind": "eye",
+       "lens": [
+        1166,
+        530,
+        12,
+        18
+       ],
+       "pupil": [
+        1166,
+        530,
+        7,
+        14
+       ],
+       "dot": true
+      },
+      {
+       "name": "strEyeR",
+       "kind": "eye",
+       "lens": [
+        1215,
+        530,
+        11,
+        17
+       ],
+       "pupil": [
+        1215,
+        530,
+        6,
+        13
+       ],
+       "dot": true
+      }
+     ]
+    }
+   }
+  },
+  "fireside": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s042.png",
+   "parts": {
+    "oogHead": {
+     "region": {
+      "ellipses": [
+       [
+        385,
+        350,
+        172,
+        126
+       ]
+      ],
+      "minus": {
+       "rects": [
+        [
+         445,
+         462,
+         620,
+         640
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      392,
+      478
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        378,
+        386,
+        11,
+        17
+       ],
+       [
+        438,
+        384,
+        9,
+        16
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "oogEyeL",
+       "kind": "eye",
+       "lens": [
+        378,
+        386,
+        8,
+        14
+       ],
+       "pupil": [
+        378,
+        386,
+        8,
+        14
+       ],
+       "dot": true
+      },
+      {
+       "name": "oogEyeR",
+       "kind": "eye",
+       "lens": [
+        438,
+        384,
+        6,
+        13
+       ],
+       "pupil": [
+        438,
+        384,
+        6,
+        13
+       ],
+       "dot": true
+      }
+     ]
+    },
+    "youHead": {
+     "region": {
+      "ellipses": [
+       [
+        874,
+        392,
+        112,
+        84
+       ]
+      ],
+      "minus": {
+       "rects": [
+        [
+         650,
+         440,
+         800,
+         560
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      872,
+      476
+     ],
+     "z": 2,
+     "erase": {
+      "ellipses": [
+       [
+        810,
+        391,
+        9,
+        12
+       ],
+       [
+        884,
+        394,
+        9,
+        13
+       ]
+      ]
+     },
+     "features": [
+      {
+       "name": "youEyeL",
+       "kind": "eye",
+       "lens": [
+        811,
+        391,
+        23,
+        23
+       ],
+       "pupil": [
+        810,
+        391,
+        6,
+        9
+       ]
+      },
+      {
+       "name": "youEyeR",
+       "kind": "eye",
+       "lens": [
+        887,
+        393,
+        25,
+        24
+       ],
+       "pupil": [
+        884,
+        394,
+        6,
+        10
+       ]
+      }
+     ]
+    },
+    "flame": {
+     "region": {
+      "rects": [
+       [
+        565,
+        535,
+        712,
+        742
+       ]
+      ]
+     },
+     "pivot": [
+      640,
+      745
+     ],
+     "z": 1
+    }
+   }
+  },
+  "campfire": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s013.png",
+   "parts": {
+    "flame": {
+     "region": {
+      "rects": [
+       [
+        898,
+        612,
+        1018,
+        752
+       ]
+      ]
+     },
+     "pivot": [
+      958,
+      756
+     ],
+     "z": 1
+    }
+   }
+  },
+  "machine_a": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s021.png",
+   "parts": {
+    "machine": {
+     "region": {
+      "rects": [
+       [
+        985,
+        290,
+        1400,
+        850
+       ]
+      ],
+      "minus": {
+       "rects": [
+        [
+         1225,
+         295,
+         1385,
+         482
+        ]
+       ]
+      }
+     },
+     "pivot": [
+      1195,
+      845
+     ],
+     "z": 1
+    },
+    "lamp": {
+     "region": {
+      "rects": [
+       [
+        1225,
+        295,
+        1385,
+        482
+       ]
+      ]
+     },
+     "pivot": [
+      1345,
+      482
+     ],
+     "parent": "machine",
+     "z": 2
+    }
+   }
+  },
+  "machine_b": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s022.png",
+   "parts": {
+    "lamp": {
+     "region": {
+      "polys": [
+       [
+        [
+         470,
+         70
+        ],
+        [
+         600,
+         60
+        ],
+        [
+         720,
+         40
+        ],
+        [
+         730,
+         280
+        ],
+        [
+         560,
+         280
+        ],
+        [
+         470,
+         210
+        ]
+       ]
+      ]
+     },
+     "pivot": [
+      495,
+      105
+     ],
+     "z": 3
+    },
+    "sciHead": {
+     "region": {
+      "ellipses": [
+       [
+        1460,
+        525,
+        118,
+        92
+       ]
+      ]
+     },
+     "pivot": [
+      1462,
+      610
+     ],
+     "z": 2
+    }
+   }
+  },
+  "fog": {
+   "source": "videos/2026-10-28_human-bottleneck/assets/stills/s027.png",
+   "parts": {
+    "fog": {
+     "region": {
+      "polys": [
+       [
+        [
+         890,
+         380
+        ],
+        [
+         1010,
+         290
+        ],
+        [
+         1040,
+         230
+        ],
+        [
+         1280,
+         200
+        ],
+        [
+         1380,
+         160
+        ],
+        [
+         1600,
+         100
+        ],
+        [
+         1920,
+         90
+        ],
+        [
+         1920,
+         870
+        ],
+        [
+         1460,
+         860
+        ],
+        [
+         900,
+         830
+        ],
+        [
+         880,
+         600
+        ]
+       ]
+      ]
+     },
+     "pivot": [
+      1400,
+      830
+     ],
+     "z": 1,
+     "solid": true,
+     "feather": 6
+    }
+   }
+  }
+ }
+}

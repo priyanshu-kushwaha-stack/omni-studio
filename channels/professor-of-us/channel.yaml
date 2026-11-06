@@ -1,0 +1,21 @@
+# Validated by core/studio/channels.py. Unknown fields and bad values are errors.
+# Imported from ~/Exploration/projects/faceless-channel (channel/style.md, channel/page) on 2026-11-06.
+id: professor-of-us
+youtube_channel_id: UCCJhLDNsse7yozGn4EdGgJQ   # @ProfessorofUs, created 2026-10-24
+status: live
+niche: "Illustrated curiosity explainers about ancient humans, the body and the brain, told as dialogue between a recurring cast"
+risk_class: B                   # A | B | C. Original drawings and the owner's cloned voice; science claims cited in claims.md
+made_for_kids: false            # faceless-channel publish sheets: "Audience: not made for kids"
+# Format name -> OpenMontage pipeline in core/openmontage/pipeline_defs/.
+formats:
+  dialogue: studio-dialogue
+  short: studio-dialogue
+playbook: professor-of-us       # Loads by name through styles/custom/professor-of-us.yaml.
+voices: voices.yaml
+music:
+  default: cue-01-question      # music/cue-01-question.mp3, git-ignored, copied from the sandbox music_library
+  allowed: [cue-01-question]
+cadence: weekly
+budget_usd_per_video: 0         # A hard cap. 0 means no paid calls until the owner sets a budget.
+review_level: full              # Recorded only. Gates come from the pipeline; no level skips one.
+upload_token_path: ~/.config/omni-studio/youtube/professor-of-us.token

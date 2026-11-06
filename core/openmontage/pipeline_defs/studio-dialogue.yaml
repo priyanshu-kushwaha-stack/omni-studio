@@ -1,0 +1,135 @@
+# omni-studio pipeline (new file, see core/PATCHES.md). Professor of Us: dialogue explainers and Shorts.
+# Every stage is a human gate. Agents write status awaiting_human and stop; only `omni approve` passes a
+# gate (lib/studio_approval.py). Renders come from the Professor of Us engine (core/engines/pou) through
+# the studio tools, so render_runtime is "external": video_compose's Remotion and HyperFrames paths are
+# not used. Talking puppets come from the engine (puppet.py mouth_envelope/talk_keys, short_rigs.py
+# dialogue_actions), never from character_rig_renderer, lip_sync or any line-boil effect.
+#
+# Gate -> stage: G1 proposal, G2 dialogue_script, G3 narration, G4 rough_cut, G5 final_edit,
+# G6 final_watch, G7 publish_prep. G2, G5 and G7 are not named script/edit/publish because those names
+# require upstream artifacts (script, edit_decisions, publish_log); these stages carry the engine's files.
+name: studio-dialogue
+version: "1.0"
+description: >
+  Professor of Us: a cast of recurring characters argue a science question out loud, the Professor
+  settles it with cited claims, and the viewer is asked to guess every 20-30 s. Hand-drawn stills,
+  code puppets, ducked music. Long-form 16:9 and Shorts 9:16. Seven owner gates, G1-G7.
+category: custom
+stability: beta
+default_checkpoint_policy: manual_all
+
+extensions:
+  custom_scripts: true
+  custom_playbooks: true
+  custom_skills: true
+  custom_tools: true
+
+required_skills:
+  - studio/studio-dialogue-proposal
+  - studio/studio-dialogue-script
+  - studio/studio-dialogue-narration
+  - studio/studio-dialogue-rough-cut
+  - studio/studio-dialogue-edit
+  - studio/studio-dialogue-final-watch
+  - studio/studio-dialogue-publish
+  - meta/checkpoint-protocol
+
+compatible_playbooks:
+  recommended:
+    - professor-of-us
+  custom_allowed: true
+
+stages:
+  - name: proposal
+    skill: studio/studio-dialogue-proposal
+    produces:
+      - proposal_packet
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G1 packaging, title and thumbnail read as one promise
+      - render_runtime is external and the decision is logged
+    success_criteria:
+      - Schema-valid proposal_packet with render_runtime external
+      - packaging.md has the chosen title and thumbnail
+
+  - name: dialogue_script
+    skill: studio/studio-dialogue-script
+    required_artifacts_in:
+      - proposal_packet
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G2 the owner reads script.md in full before any asset is generated
+      - Characters talk to each other in distinct voices (core/studio/rules/dialogue-characters.md)
+      - A viewer question about every 20-30 s (core/studio/rules/viewer-questions.md)
+    success_criteria:
+      - script.md lints clean (script_lint.py) and every spoken number has a claims.md row
+
+  - name: narration
+    skill: studio/studio-dialogue-narration
+    produces: []
+    tools_available:
+      - pou_tts
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G3 narration lock, each speaker in their cast voice
+      - No clicks or end-of-take pops (core/studio/rules/no-audio-clicks.md)
+    success_criteria:
+      - narration wav, words.json and lines.json exist; audio_check.py has no gap bursts or steps
+
+  - name: rough_cut
+    skill: studio/studio-dialogue-rough-cut
+    produces: []
+    tools_available:
+      - pou_stills
+      - pou_puppet
+      - pou_compose
+      - overlay_check
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G4 rough cut, scene density (scene_plan_check.py), no line boil
+    success_criteria:
+      - scene_plan_check.py passes; overlay_check.py --fix exits 0 before the render
+
+  - name: final_edit
+    skill: studio/studio-dialogue-edit
+    produces: []
+    tools_available:
+      - pou_puppet
+      - pou_compose
+      - overlay_check
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G5 edit, puppets talk on their own lines, text placement, music ducks ramp
+    success_criteria:
+      - overlay_check.py --fix exits 0; audio_check.py on the render exits 0
+
+  - name: final_watch
+    skill: studio/studio-dialogue-final-watch
+    produces: []
+    tools_available:
+      - overlay_check
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G6 the owner watches at 1x, with cold viewers, against the watch list in core/studio/rules/
+    success_criteria:
+      - Every G6 watch item answered by the owner
+
+  - name: publish_prep
+    skill: studio/studio-dialogue-publish
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G7 publish sheet complete; the owner uploads by hand in YouTube Studio, private first
+    success_criteria:
+      - publish.md written; nothing uploaded by an agent
