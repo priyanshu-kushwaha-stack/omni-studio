@@ -1,0 +1,25 @@
+# Validated by core/studio/channels.py. Unknown fields and bad values are errors.
+id: say-suppose
+youtube_channel_id: null        # UC + 22 characters. Required once status is testing or live.
+status: draft                   # draft | testing | live | paused
+niche: "One what-if per video, followed through with real physics, biology, history and economics"
+risk_class: B                   # A | B | C
+made_for_kids: false
+# Format name -> OpenMontage pipeline in core/openmontage/pipeline_defs/.
+formats:
+  explainer: animated-explainer
+playbook: say-suppose              # Loads by name through styles/custom/say-suppose.yaml.
+voices: voices.yaml             # Relative to this folder.
+music:
+  default: null                 # Must be in allowed when set.
+  allowed: []
+cadence: weekly                 # daily | weekly | biweekly | monthly
+budget_usd_per_video: 0         # A hard cap. 0 means no paid calls.
+review_level: full              # full | standard | light. Recorded only: gates come from the pipeline.
+upload_token_path: null         # Under ~/.config/omni-studio/. Required once status is live.
+loudness:                       # Format name -> mix targets, checked before the edit and final-watch gates.
+  explainer: {integrated_lufs: -14, tolerance_lu: 1, true_peak_dbtp_max: -1, lra_lu_max: 11}
+upload:                         # omni upload defaults. Privacy is always private.
+  contains_synthetic_media: null  # true | false. null: every video answers it in its upload.yaml.
+  category_id: "27"
+  language: en

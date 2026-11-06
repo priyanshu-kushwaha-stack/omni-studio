@@ -1,0 +1,46 @@
+# Starting point for say-suppose. Validated by schemas/styles/playbook.schema.json.
+identity:
+  name: "say-suppose"
+  category: custom
+  mood: clear, calm
+  pace: moderate
+  best_for: "Replace with what this channel makes"
+
+visual_language:
+  color_palette:
+    primary: ["#2563EB"]
+    accent: ["#F59E0B"]
+    background: "#FFFFFF"
+    text: "#1F2937"
+    muted: "#6B7280"
+  composition: centered, generous whitespace
+  texture: clean flat
+
+typography:
+  headings:
+    font: "Inter"
+    weight: 700
+  body:
+    font: "Inter"
+    weight: 400
+
+motion:
+  transitions: [fade]
+  animation_style: "ease-in-out"
+  pacing_rules:
+    min_scene_hold_seconds: 2.5
+    max_scene_hold_seconds: 12
+
+audio:
+  voice_style: "clear, moderate pace"
+  music_mood: "quiet"
+  music_volume: 0.08
+
+asset_generation:
+  image_prompt_prefix: ""
+  image_negative_prompt: ""
+  consistency_anchors:
+    - "Replace with what every image on this channel shares"
+
+quality_rules:
+  - "Minimum contrast ratio 4.5:1 for all text"
