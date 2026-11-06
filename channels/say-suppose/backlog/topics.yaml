@@ -1,0 +1,23 @@
+# What-ifs for Say Suppose. `picked` ones have a video folder; `proposed` ones were shown to the owner.
+topics:
+  - what_if: "What if you could pause time for only 10 seconds in a day?"
+    status: picked            # owner, 2026-11-06, in the owner's words
+    source: owner
+  - what_if: "What would happen if everyone is given Universal Basic Income?"
+    status: picked            # owner, 2026-11-06, in the owner's words
+    source: owner
+  - what_if: "What if you never had to sleep again?"
+    status: proposed          # shown 2026-11-06, not picked
+    source: agent
+  - what_if: "What if you stopped aging at 25?"
+    status: proposed
+    source: agent
+  - what_if: "What if all money vanished overnight?"
+    status: proposed
+    source: agent
+  - what_if: "What if the Moon vanished tonight?"
+    status: proposed          # also the first example in page/about.md
+    source: agent
+  - what_if: "What if you could never lie again?"
+    status: proposed
+    source: agent

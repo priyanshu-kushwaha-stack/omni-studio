@@ -1,2 +1,12 @@
 # Character name -> tool, voice id and settings. Keys and tokens do not belong here.
-voices: {}
+# Every Higgsfield call is paid: announce tool, provider, model and cost, and get the owner's approval first.
+voices:
+  narrator:
+    label: NARR
+    tool: higgsfield text2speech_v2
+    variant: elevenlabs
+    voice_type: preset
+    voice_id: 30fc8796-ceb6-4a66-b3a7-4a145ef7f346   # Arthur. The owner kept the sample's voice (2026-11-06)
+    settings: {format: wav}
+    takes: one per script line, cached by a hash of voice and text
+    stitch: "silence capped at 0.3 s, then atempo=1.1"

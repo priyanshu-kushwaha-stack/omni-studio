@@ -3,22 +3,22 @@ id: say-suppose
 youtube_channel_id: UC_Ve59ry_JYiX8sUaSOV8sQ   # @SaySuppose, page set up 2026-11-06
 status: draft                   # draft | testing | live | paused
 niche: "One what-if per video, followed through with real physics, biology, history and economics"
-risk_class: B                   # A | B | C
+risk_class: B                   # A | B | C. Original code-drawn art and a preset voice; real-world claims cited in claims.md
 made_for_kids: false
 # Format name -> OpenMontage pipeline in core/openmontage/pipeline_defs/.
 formats:
-  explainer: animated-explainer
+  story: studio-whatif            # 6 to 8 minutes, 16:9, seven owner gates. Shorts get their own pipeline later (style.md)
 playbook: say-suppose              # Loads by name through styles/custom/say-suppose.yaml.
 voices: voices.yaml             # Relative to this folder.
 music:
-  default: null                 # Must be in allowed when set.
+  default: null                 # No licensed music: the bed and effects are synthesised by the engine.
   allowed: []
-cadence: weekly                 # daily | weekly | biweekly | monthly
-budget_usd_per_video: 0         # A hard cap. 0 means no paid calls.
+cadence: daily                  # The owner's target (2026-11-06). style.md says what daily needs first.
+budget_usd_per_video: 0         # A hard cap. 0 means no paid calls until the owner sets a budget (narration is paid).
 review_level: full              # full | standard | light. Recorded only: gates come from the pipeline.
 upload_token_path: null         # Under ~/.config/omni-studio/. Required once status is live.
 loudness:                       # Format name -> mix targets, checked before the edit and final-watch gates.
-  explainer: {integrated_lufs: -14, tolerance_lu: 1, true_peak_dbtp_max: -1, lra_lu_max: 11}
+  story: {integrated_lufs: -14, tolerance_lu: 1, true_peak_dbtp_max: -1, lra_lu_max: 11}
 upload:                         # omni upload defaults. Privacy is always private.
   contains_synthetic_media: null  # true | false. null: every video answers it in its upload.yaml.
   category_id: "27"
