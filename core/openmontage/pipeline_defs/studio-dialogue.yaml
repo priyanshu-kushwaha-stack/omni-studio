@@ -1,4 +1,4 @@
-# omni-studio pipeline (new file, see core/PATCHES.md). Professor of Us: dialogue explainers and Shorts.
+# omni-studio pipeline (new file, see core/PATCHES.md). Professor of Us: dialogue explainers (Shorts: studio-short).
 # Every stage is a human gate. Agents write status awaiting_human and stop; only `omni approve` passes a
 # gate (lib/studio_approval.py). Renders come from the Professor of Us engine (core/engines/pou) through
 # the studio tools, so render_runtime is "external": video_compose's Remotion and HyperFrames paths are
@@ -13,7 +13,7 @@ version: "1.0"
 description: >
   Professor of Us: a cast of recurring characters argue a science question out loud, the Professor
   settles it with cited claims, and the viewer is asked to guess every 20-30 s. Hand-drawn stills,
-  code puppets, ducked music. Long-form 16:9 and Shorts 9:16. Seven owner gates, G1-G7.
+  code puppets, ducked music. Long-form 16:9 (Shorts use studio-short). Seven owner gates, G1-G7.
 category: custom
 stability: beta
 default_checkpoint_policy: manual_all
@@ -38,6 +38,15 @@ compatible_playbooks:
   recommended:
     - professor-of-us
   custom_allowed: true
+
+# Automated checks per stage: `omni qc` runs them, `omni approve` re-runs them before it signs (core/studio/checks.py).
+metadata:
+  studio_checks:
+    dialogue_script: [claims, no_quiz_boards]
+    narration: [claims, clicks]
+    final_edit: [loudness, clicks, similarity]
+    final_watch: [loudness, clicks, similarity]
+    publish_prep: [claims, loudness, clicks, similarity, upload_request]
 
 stages:
   - name: proposal
@@ -68,6 +77,7 @@ stages:
       - A question about every 20-30 s, answered at once in the dialogue, no pause, no quiz boards (core/studio/rules/viewer-questions.md)
     success_criteria:
       - script.md lints clean (script_lint.py) and every spoken number has a claims.md row
+      - claims ledger complete, a source for every factual claim (omni qc ... dialogue_script)
 
   - name: narration
     skill: studio/studio-dialogue-narration
@@ -109,7 +119,7 @@ stages:
     review_focus:
       - G5 edit, puppets talk on their own lines, text placement, music ducks ramp
     success_criteria:
-      - overlay_check.py --fix exits 0; audio_check.py on the render exits 0
+      - overlay_check.py --fix exits 0; omni qc final_edit passes (loudness, clicks, similarity)
 
   - name: final_watch
     skill: studio/studio-dialogue-final-watch
@@ -130,6 +140,6 @@ stages:
     checkpoint_required: true
     human_approval_default: true
     review_focus:
-      - G7 publish sheet complete; the owner uploads by hand in YouTube Studio, private first
+      - G7 publish sheet and upload.yaml complete (kids and AI disclosure answered); private first
     success_criteria:
-      - publish.md written; nothing uploaded by an agent
+      - publish.md and upload.yaml written; omni upload --dry-run prints a private upload; nothing uploaded by an agent

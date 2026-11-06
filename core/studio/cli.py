@@ -253,6 +253,51 @@ def fix(slug: str, format_name: str, stage: str, severity: str, example: str, no
     return 0
 
 
+def qc(slug: str, video: str, stage: str, media: str | None, words: str | None, format_name: str | None) -> int:
+    from studio import checks
+
+    report = checks.run_stage(slug, video, stage, Path(media) if media else None, Path(words) if words else None,
+                              format_name)
+    print(checks.format_report(report))
+    return 0 if report["ok"] else 1
+
+
+def similar(slug: str, video: str, media: str | None) -> int:
+    from studio import similarity
+
+    report = similarity.check(slug, video, Path(media) if media else None)
+    print(f"similarity {slug}/{video}: compared with {report['compared']} video(s); features {report['features']}")
+    for problem in report["problems"]:
+        print(f"  [FAIL] {problem}")
+    print("  ok" if report["ok"] else "  FAILED")
+    return 0 if report["ok"] else 1
+
+
+def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | None, first_auth: bool,
+           privacy: str | None, install: bool) -> int:
+    """Dry run by default. Never public, never scheduled (core/studio/publish/youtube.py)."""
+    from studio.publish import youtube
+
+    try:
+        if install:
+            print(f"installed {youtube.install().relative_to(ROOT)} "
+                  f"(youtubeuploader {youtube.lock()['version']}, sha256 matches core/lock.yaml)")
+            return 0
+        if not slug or not video:
+            print("error: omni upload <channel> <video>", file=sys.stderr)
+            return 2
+        request = youtube.build_request(slug, video, privacy=privacy)
+        if not run:
+            print(youtube.dry_run(request))
+            return 0
+        log = youtube.run(request, confirm or "", first_auth=first_auth)
+        print(f"uploaded {log['youtube_video_id']} private; read-back ok: {json.dumps(log['readback'])}")
+        return 0
+    except youtube.UploadRefused as exc:
+        print(f"REFUSED: {exc}", file=sys.stderr)
+        return 3
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="omni", description="omni-studio command line")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -290,6 +335,30 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_argument("--example", required=True)
     sub.add_argument("--note")
 
+    sub = commands.add_parser("qc", help="run a stage's automated checks and write videos/<id>/qc/<stage>.json")
+    sub.add_argument("channel")
+    sub.add_argument("video")
+    sub.add_argument("stage")
+    sub.add_argument("--media", help="the render or audio file to check")
+    sub.add_argument("--words", help="narration words.json (default: <video>/narration/words.json)")
+    sub.add_argument("--format", dest="format_name", help="the channel format, for videos with no project.json")
+
+    sub = commands.add_parser("similar", help="compare a video with every other channel and recent ones")
+    sub.add_argument("channel")
+    sub.add_argument("video")
+    sub.add_argument("--media")
+
+    sub = commands.add_parser("upload", help="private YouTube upload through the pinned youtubeuploader; "
+                                             "dry run unless --run")
+    sub.add_argument("channel", nargs="?")
+    sub.add_argument("video", nargs="?")
+    sub.add_argument("--dry-run", action="store_true", help="the default: print the command and metadata")
+    sub.add_argument("--run", action="store_true", help="really upload (owner only), private")
+    sub.add_argument("--confirm", help="with --run: <channel>/<video>, typed out")
+    sub.add_argument("--first-auth", action="store_true", help="with --run: no token yet; opens Google consent")
+    sub.add_argument("--privacy", help="refused unless 'private'")
+    sub.add_argument("--install", action="store_true", help="install the pinned youtubeuploader into .tools/")
+
     args = parser.parse_args(argv)
     try:
         if args.command == "status":
@@ -306,6 +375,15 @@ def main(argv: list[str] | None = None) -> int:
             return link()
         if args.command == "check":
             return check(args.channel)
+        if args.command == "qc":
+            return qc(args.channel, args.video, args.stage, args.media, args.words, args.format_name)
+        if args.command == "similar":
+            return similar(args.channel, args.video, args.media)
+        if args.command == "upload":
+            if args.run and args.dry_run:
+                parser.error("--run and --dry-run together")
+            return upload(args.channel, args.video, run=args.run, confirm=args.confirm, first_auth=args.first_auth,
+                          privacy=args.privacy, install=args.install)
         return fix(args.channel, args.format_name, args.stage, args.severity, args.example, args.note)
     except ChannelError as exc:
         print(f"error: {exc}", file=sys.stderr)

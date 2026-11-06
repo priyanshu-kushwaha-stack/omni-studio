@@ -1,0 +1,10 @@
+# Thresholds for core/studio/similarity.py. A video fails when ANY metric crosses its threshold against any video
+# of another channel, or one of its own channel's most recent videos.
+same_channel_recent: 10     # how many of the channel's latest other videos to compare against
+frame_every_s: 2            # sample one frame every N seconds of the render
+max_frames: 300             # cap per video (10 minutes at 2 s)
+title_ratio: 0.85           # difflib ratio or word Jaccard of normalised titles, 0..1
+script_jaccard: 0.35        # Jaccard of 5-word shingles of the spoken script, 0..1
+thumbnail_hamming: 8        # dHash distance (0..64) at or under which two thumbnails are near-duplicates
+frame_hamming: 6            # dHash distance at or under which two frames match
+frame_match_share: 0.5      # share of this video's frames with a matching frame in the other video

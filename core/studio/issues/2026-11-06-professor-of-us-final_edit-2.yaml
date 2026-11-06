@@ -1,0 +1,10 @@
+channel: professor-of-us
+format: short
+stage: final_edit
+severity: medium
+example: 'similarity has thin coverage on the real corpus: only the tails Short has
+  renders on this machine and no Professor of Us video has a thumbnail file in its
+  folder, so frames and thumbnails are compared for 1 of 3 videos; long-form videos
+  1-6 live in faceless-channel and are not in the corpus'
+recorded_at: '2026-11-06T05:47:49.327242+00:00'
+note: drop thumbnail.png into each video folder and keep renders local for full coverage

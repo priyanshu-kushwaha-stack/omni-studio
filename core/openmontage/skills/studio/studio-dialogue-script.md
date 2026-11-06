@@ -5,6 +5,7 @@
    Rule: `core/studio/rules/dialogue-characters.md`.
 2. Put a `> ASK:` question about every 20-30 s inside the dialogue: a character answers at once, no pause, no
    `> QUIZ:` boards (`core/studio/rules/viewer-questions.md`). A question never carries a new fact.
-3. Every spoken number gets a row in `claims.md`.
+3. Every spoken number, date, name or finding gets a row in `claims.md` (id, claim, source URL, status) and is
+   cited inline, e.g. `(c03)`. `.venv/bin/omni qc <slug> <video> dialogue_script` must pass (claims, no quiz boards).
 4. Lint: `.venv/bin/python core/engines/pou/scripts/script_lint.py <video>/script.md --target-minutes 5`.
 5. `status: awaiting_human`, then stop. The owner reads the whole script before any asset is generated.

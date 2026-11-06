@@ -139,7 +139,7 @@ def test_live_channel_with_everything_loads(studio_root):
         channel.dir,
         status="live",
         youtube_channel_id="UC" + "a" * 22,
-        upload_token_path="~/.config/omni-studio/sample.json",
+        upload_token_path="~/.config/omni-studio/youtube/sample.token",
         music={"default": "a.mp3", "allowed": ["a.mp3"]},
     )
     assert channels.load_channel("sample").config.status == "live"
@@ -693,3 +693,10 @@ def test_same_named_assets_render_each_channels_own_image(tmp_path):
             pixel = opened.convert("RGB").getpixel((opened.width // 2, opened.height // 2))
         assert all(abs(got - want) < 25 for got, want in zip(pixel, colour)), (name, pixel)
     assert sorted(str(p.relative_to(public)) for p in public.rglob("*")) == public_before
+
+
+def test_upload_token_must_be_the_channels_own_youtube_token(studio_root):
+    channel = channels.create_channel("sample")
+    edit_channel(channel.dir, upload_token_path="~/.config/omni-studio/youtube/other.token")
+    with pytest.raises(ChannelError, match="youtube/sample.token, one token per channel"):
+        channels.load_channel("sample")

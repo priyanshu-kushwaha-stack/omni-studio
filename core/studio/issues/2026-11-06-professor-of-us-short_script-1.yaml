@@ -1,0 +1,9 @@
+channel: professor-of-us
+format: short
+stage: short_script
+severity: medium
+example: 'script_lint.py is long-form only: its word budget (150 wpm x minutes) and
+  RE-ENGAGE windows fail every 1-minute Short, so studio-short''s short_script gate
+  runs claims + script_lint item 27 (no quiz boards) only'
+recorded_at: '2026-11-06T05:47:48.454284+00:00'
+note: a Short-specific lint (130-145 words, one ASK, loop line) is not built

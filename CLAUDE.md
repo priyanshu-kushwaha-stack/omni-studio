@@ -41,6 +41,9 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 | `omni approve <slug> <video> <stage>` | Pass a gate. Only when the owner says so |
 | `omni check [<slug>]` | Validate channels |
 | `omni fix <slug> --format --stage --severity --example` | Record a note in `core/studio/issues/` |
+| `omni qc <slug> <video> <stage> [--media f]` | Run a stage's automated checks (claims, quiz boards, loudness, clicks, similarity, upload request); writes `videos/<id>/qc/<stage>.json` |
+| `omni similar <slug> <video>` | Near-duplicate check against every other channel and the channel's recent videos |
+| `omni upload <slug> <video>` | Dry run (the default) of a private YouTube upload through the pinned youtubeuploader. `--install` installs the pinned binary into `.tools/` |
 
 Before running OpenMontage for a channel, export the line `omni new-video` prints:
 `OPENMONTAGE_PROJECTS_DIR=<root>/channels/<slug>/videos`. Track spend with
@@ -77,11 +80,18 @@ a hand-edited checkpoint is refused. Never call `write_checkpoint` with `human_a
 | G4 | Rough cut |
 | G5 | Edit |
 | G6 | Final watch at 1x, with cold viewers |
-| G7 | Publish, by hand in YouTube Studio, private first |
+| G7 | Publish: upload private first; the public flip is by hand in YouTube Studio |
+
+Pipelines name automated checks per stage in `metadata.studio_checks` (`core/studio/checks.py`). `omni approve`
+re-runs them and refuses to sign while any fails, so the owner's approval can't pass a gate whose claims ledger,
+loudness, clicks or similarity check is red. A check never passes a gate by itself.
 
 `review_level` in channel.yaml is a recorded label only: it never skips or adds a gate.
 
-Agents never upload and never make a video public. Done means the owner watched or
+Agents never upload and never make a video public. `omni upload` is a dry run unless `--run --confirm
+<slug>/<video>` is given, and an agent passes `--run` only when the owner asked for that exact upload. Uploads are
+always private: public, unlisted and any schedule (`publishAt`) are refused before the binary runs, and
+`made_for_kids` and `contains_synthetic_media` must both be answered (channel.yaml or the video's `upload.yaml`). Done means the owner watched or
 listened, not that tests passed. Owner review notes are a to-do list: apply each one or
 say in one line why not, then re-present.
 
@@ -94,9 +104,10 @@ say in one line why not, then re-present.
   MiniMax H3 if asked. Never pass them `minimax/h3/*`, `minimax_h3_api` or `minimax_h3_local`.
 - No paid provider call without the owner's approval. Announce tool, provider, model and
   cost first.
-- Keep secrets in `~/.config/omni-studio/`. Never read or print them.
+- Keep secrets in `~/.config/omni-studio/`. Never read or print them. Only `omni upload --run` reads the OAuth
+  client and the channel token, in memory, to upload and read the result back.
 - Keep rendered media, LoRA weights and virtualenvs out of git.
-- Pin every outside tool in `core/lock.yaml`. Skills may say `npx hyperframes`; always run
+- Pin every outside tool in `core/lock.yaml` (youtubeuploader is pinned with the sha256 of its tarball and binary). Skills may say `npx hyperframes`; always run
   the version from the lock, `npx hyperframes@0.9.16`. Review a third-party skill before
   installing it, then record it in the lock.
 - Never push to or open anything against `calesthio/OpenMontage`. `gh` defaults to that

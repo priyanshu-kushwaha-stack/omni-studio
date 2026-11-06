@@ -40,3 +40,7 @@ channels/*/music/
 !channels/*/lora/train.json
 # Reference clips: metadata (core/reference/**/*.yaml) is tracked, media is not.
 core/reference/**/media/
+# Pinned outside binaries (core/lock.yaml), installed by omni upload --install
+.tools/
+# omni qc reports are re-run by omni approve; local evidence only
+channels/*/videos/*/qc/
