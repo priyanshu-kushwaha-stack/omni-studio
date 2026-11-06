@@ -3,7 +3,7 @@
 
   build  rigs/<char>.json                    cut every pose's parts out of its source still ->
                                              rigs/<char>/<pose>/{<part>.png, mask.png, parts.json}
-  render <stage.json> -o out.mp4             render the stage's frame ranges (plates + puppets + boil + reveal +
+  render <stage.json> -o out.mp4             render the stage's frame ranges (plates + puppets + reveal + opt-in boil +
                                              the video's overlays.json), muxed with audio cut from --audio-from
 
 A rig file (all coordinates in the source still's pixels):
@@ -19,7 +19,6 @@ A stage file lists scenes (still, start, end, the poses placed on it, plate fixe
 idle breathing) and the output frame ranges. See videos/2026-10-29_effort-brain/tests/animation/stage.json."""
 from __future__ import annotations
 
-import argparse
 import json
 import math
 import subprocess
@@ -36,8 +35,18 @@ import compose  # noqa: E402
 import motion  # noqa: E402
 import puppet as pp  # noqa: E402
 import pou_paths  # noqa: E402
+import cli_args  # noqa: E402
 
 ROOT = pou_paths.channel_dir()   # the channel folder; video paths in rigs and stages are relative to it
+
+
+def boil_settings(spec: dict) -> dict | None:
+    """A stage scene's line boil, off unless the scene opts in with "boil": true or {"amp": ..., "seed": ...}.
+    The owner banned boil (core/studio/rules/no-line-boil.md); the studio tool refuses any opt-in."""
+    b = spec.get("boil", False)
+    if not b:
+        return None
+    return b if isinstance(b, dict) else {}
 
 
 # ---------------------------------------------------------------- build
@@ -264,8 +273,8 @@ class Scene:
         for p in sorted(self.parts.values(), key=lambda p: p.z):
             img = pp.draw_features(p, state, self.weight)
             pp.place(out, img, mat(p.name), p.origin, self.occluders.get(p.clip) if p.clip else None)
-        b = self.spec.get("boil", {"amp": 1.0})
-        if b:
+        b = boil_settings(self.spec)
+        if b is not None:
             out = pp.boil_like_compose(out, self.paper, t - self.start, float(b.get("amp", 1.0)), int(b.get("seed", 0)))
         rv = float(self.spec.get("reveal", 0))
         if rv > 0 and t - self.start < rv:
@@ -429,27 +438,7 @@ def cmd_clips(stage_path: Path, only: list[str] | None, workers: int) -> list[di
 
 
 def main() -> None:
-    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    sub = p.add_subparsers(dest="cmd", required=True)
-    b = sub.add_parser("build")
-    b.add_argument("rigs", type=Path, nargs="+")
-    r = sub.add_parser("render")
-    r.add_argument("stage", type=Path)
-    r.add_argument("-o", "--out", type=Path, required=True)
-    r.add_argument("--audio-from", type=Path, default=None, help="cut the same ranges' audio from this render")
-    r.add_argument("--only", nargs="*", default=None, help="scene ids (preview a single scene)")
-    r.add_argument("--workers", type=int, default=6)
-    r.add_argument("--ranges", default=None, help="override the stage's ranges: 133.68:142.61[,a:b]")
-    c = sub.add_parser("check", help="action start frame vs word time")
-    c.add_argument("stage", type=Path)
-    cl = sub.add_parser("clips", help="render each scene to <video>/assets/clips/<id>.mp4 (no overlays, no audio)")
-    cl.add_argument("stage", type=Path)
-    cl.add_argument("--only", nargs="*", default=None)
-    cl.add_argument("--workers", type=int, default=6)
-    f = sub.add_parser("frames", help="render single frames to PNG (previews, contact sheets)")
-    f.add_argument("stage", type=Path)
-    f.add_argument("times", type=float, nargs="+")
-    f.add_argument("--dir", type=Path, required=True)
+    p = cli_args.puppet_render_parser(__doc__)
     a = p.parse_args()
     if a.cmd == "build":
         for rp in a.rigs:

@@ -18,7 +18,6 @@ scene_plan_from_script.py; overlays retime themselves.
 """
 from __future__ import annotations
 
-import argparse
 import json
 import math
 import random
@@ -36,6 +35,7 @@ from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import motion  # noqa: E402
 import pou_paths  # noqa: E402
+import cli_args  # noqa: E402
 
 PAPER = (0xF6, 0xF1, 0xE7)
 INK = (0x2B, 0x2B, 0x2B)
@@ -845,26 +845,10 @@ def remix(video_dir: Path, *, narration: Path, words_path: Path, video_in: Path,
 
 
 def main() -> None:
-    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("video_dir", type=Path)
-    p.add_argument("--narration", type=Path, required=True)
-    p.add_argument("--words", type=Path, required=True)
-    p.add_argument("-o", "--out", type=Path, required=True)
-    p.add_argument("--until", type=float, default=None)
-    p.add_argument("--size", default="1920x1080")
-    p.add_argument("--fps", type=int, default=30)
-    p.add_argument("--music", type=Path, action="append", default=[], help="music cue(s), played in order and looped")
-    p.add_argument("--music-gain-db", type=float, default=-24.0)
-    p.add_argument("--quiz-music", type=Path, default=None, help="loop played (timed) under each quiz countdown")
-    p.add_argument("--quiz-music-gain-db", type=float, default=-20.0)
-    p.add_argument("--no-clips", action="store_true", help="ignore assets/clips (stills only)")
-    p.add_argument("--scratch", type=Path, default=Path(tempfile.gettempdir()) / "fc-compose")
-    p.add_argument("--video-in", type=Path, default=None, help="dub mode: reuse this render's picture, mix the new narration under it")
-    p.add_argument("--mix-out", type=Path, default=None, help="dub mode: also write the mixed audio alone (m4a) for a YouTube audio track")
-    p.add_argument("--motion", nargs="?", const="__default__", default=None,
-                   help="apply procedural motion from motion.json (optionally a path): boil, flicker, sprite, trace")
-    p.add_argument("--burn-captions", action="store_true", help="Shorts: burn caption lines into the lower middle")
+    p = cli_args.compose_parser(__doc__)
     a = p.parse_args()
+    if a.scratch is None:
+        a.scratch = Path(tempfile.gettempdir()) / "fc-compose"
     w, h = (int(v) for v in a.size.split("x"))
     if a.video_in:
         info = remix(a.video_dir, narration=a.narration, words_path=a.words, video_in=a.video_in, out=a.out, music=a.music,
@@ -873,8 +857,7 @@ def main() -> None:
         return
     specs_m = None
     if a.motion is not None:
-        mpath = a.video_dir / "motion.json" if a.motion == "__default__" else Path(a.motion)
-        specs_m = motion.load_specs(mpath)
+        specs_m = motion.load_specs(cli_args.compose_motion_path(a))
     info = render(a.video_dir, narration=a.narration, words_path=a.words, out=a.out, until=a.until, width=w, height=h,
                   fps=a.fps, music=a.music, music_gain_db=a.music_gain_db, use_clips=not a.no_clips, scratch=a.scratch,
                   motion_specs=specs_m, burn_captions=a.burn_captions,

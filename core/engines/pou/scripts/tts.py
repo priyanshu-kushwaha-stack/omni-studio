@@ -8,7 +8,6 @@ Engines: qwen3 (mlx-audio, Qwen3-TTS 1.7B Base), chatterbox (chatterbox-tts), el
 ELEVENLABS_API_KEY and ELEVEN_VOICE_ID from the secrets_env file in engine.yaml (under ~/.config/omni-studio/), Turbo v2.5 at 0.5 credit per character; the owner's clone
 is made once in the ElevenLabs app from the same 2:24 read and its id pasted into that file)."""
 from __future__ import annotations
-import argparse
 import json
 import os
 import re
@@ -20,6 +19,7 @@ from typing import Callable
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pou_paths  # noqa: E402
+import cli_args  # noqa: E402
 
 MEDIA_PY = pou_paths.path("media_python")
 WHISPER_PY = pou_paths.path("whisper_python")
@@ -205,15 +205,7 @@ BACKENDS: dict[str, Backend] = {"qwen3": _qwen3, "chatterbox": _chatterbox, "ele
 
 
 def main() -> None:
-    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("text", type=Path, help="plain text file (output of narration_text.py, one part)")
-    p.add_argument("--engine", choices=sorted(BACKENDS), required=True)
-    p.add_argument("--voice-ref", type=Path, default=Path("/dev/null"), help="clean wav of the owner's voice (qwen3: 10-30 s; chatterbox uses the first 10 s; eleven ignores it)")
-    p.add_argument("--voice-text", type=Path, help="transcript of --voice-ref (qwen3 clones better with it; otherwise it transcribes the clip itself)")
-    p.add_argument("-o", "--out", type=Path, required=True)
-    p.add_argument("--max-words", type=int, default=None, help="chunk size; default per engine (qwen3 200, chatterbox 50)")
-    p.add_argument("--gap", type=float, default=0.35)
-    p.add_argument("--check", action="store_true", help="transcribe the result and print the word error rate")
+    p = cli_args.tts_parser(__doc__)
     a = p.parse_args()
     text = a.text.read_text().strip()
     voice_text = a.voice_text.read_text().strip() if a.voice_text else None

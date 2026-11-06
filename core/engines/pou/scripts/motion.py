@@ -163,6 +163,14 @@ def scaled(spec: dict, sx: float, sy: float) -> dict:
     return out
 
 
+def boil_effective(spec: dict) -> bool:
+    """Whether apply() would boil this scene's ink: effect "boil", or "flicker" that opts in with "boil"."""
+    if not isinstance(spec, dict):
+        return False
+    eff = spec.get("effect")
+    return eff == "boil" or (eff == "flicker" and bool(spec.get("boil", False)))
+
+
 def apply(spec: dict, still: np.ndarray, t_rel: float, paper: tuple[int, int, int], cache: dict) -> np.ndarray:
     """One motion frame for a still, t_rel seconds after the reveal finished. cache keeps the masks and the
     last frame per 0.1 s step, so three consecutive video frames share one computation."""
@@ -177,11 +185,11 @@ def apply(spec: dict, still: np.ndarray, t_rel: float, paper: tuple[int, int, in
     if hit and hit[0] == key:
         return hit[1]
     seed = int(spec.get("seed", 0))
-    if eff == "boil":
+    if eff == "boil":   # opt-in only; the owner banned boil and the studio tool refuses it
         out = boil(still, ink, t_rel, amp=float(spec.get("amp", 1.5)), seed=seed)
     elif eff == "flicker":
         out = flicker(still, acc, t_rel, seed=seed)
-        if spec.get("boil", True):
+        if spec.get("boil", False):   # opt-in only: the owner banned boil
             out = boil(out, ink, t_rel, amp=float(spec.get("amp", 1.0)), seed=seed + 1)
     else:
         out = sprite(still, tuple(spec["box"]), [tuple(p) for p in spec["path"]], t_rel,
