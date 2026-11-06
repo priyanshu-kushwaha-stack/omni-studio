@@ -30,6 +30,10 @@ ROOT = Path(__file__).resolve().parents[2]
 ENGINE = ROOT / "core" / "engines" / "pou" / "scripts"
 KNOWN = ("claims", "no_quiz_boards", "loudness", "clicks", "similarity", "upload_request")
 MEDIA_CHECKS = {"loudness", "clicks", "similarity"}
+PUBLISH_STAGE = "publish_prep"
+WATCH_STAGE = "final_watch"
+LEGACY_UPLOAD_STAGE = "upload"   # media proof stage name for `omni approve-upload` (videos with no pipeline)
+UPLOAD_APPROVAL = "upload_approval.json"
 
 
 @lru_cache(maxsize=1)
@@ -128,6 +132,51 @@ def run_check(name: str, channel: channels.Channel, video_id: str, fmt: str, pip
     raise ChannelError(f"unknown check {name!r}")
 
 
+def deliverable(folder: Path) -> Optional[Path]:
+    """The file upload.yaml would upload, resolved, or None."""
+    import yaml
+
+    upload = folder / "upload.yaml"
+    if not upload.is_file():
+        return None
+    data = yaml.safe_load(upload.read_text(encoding="utf-8")) or {}
+    return (folder / str(data["file"])).resolve() if isinstance(data, dict) and data.get("file") else None
+
+
+def _approved_media_record(channel: channels.Channel, video_id: str, stage: str) -> Optional[dict[str, str]]:
+    """The verified media proof `omni approve` stored on an approved stage, or None."""
+    channels._upstream()
+    from lib import studio_approval
+    from lib.checkpoint import read_checkpoint
+
+    checkpoint = read_checkpoint(channel.videos_dir, video_id, stage)
+    if not checkpoint or checkpoint.get("status") != "completed" or not checkpoint.get("human_approved"):
+        return None
+    record = ((checkpoint.get("metadata") or {}).get("approval") or {}).get("media")
+    try:
+        return studio_approval.verify_media(video_id, stage, record)
+    except studio_approval.ApprovalRefused:
+        return None
+
+
+def _deliverable_check(channel: channels.Channel, video_id: str, media: Optional[Path]) -> dict[str, Any]:
+    """publish_prep: the checked file is the file upload.yaml uploads, and the one the owner watched at G6."""
+    folder = channels.video_dir(channel, video_id)
+    target = deliverable(folder)
+    problems = []
+    if target is None:
+        problems.append("upload.yaml names no file, so the checks cannot be bound to the upload")
+    elif media is None or media.resolve() != target:
+        problems.append(f"qc ran on {_rel(media) if media else 'no file'}, but upload.yaml uploads "
+                        f"{_rel(target)}: run omni qc on the file that will be uploaded")
+    elif target.is_file():
+        watched = _approved_media_record(channel, video_id, WATCH_STAGE)
+        if watched and watched["sha256"] != _sha256(target):
+            problems.append(f"{_rel(target)} is not the render the owner approved at final_watch "
+                            f"({watched['media']}, sha256 {watched['sha256'][:12]}...)")
+    return {"check": "deliverable", "ok": not problems, "problems": problems}
+
+
 def run_stage(slug: str, video_id: str, stage: str, media: Optional[Path] = None, words: Optional[Path] = None,
               format_name: Optional[str] = None, write: bool = True) -> dict[str, Any]:
     channel = channels.load_channel(slug)
@@ -138,10 +187,14 @@ def run_stage(slug: str, video_id: str, stage: str, media: Optional[Path] = None
     names = stage_checks(pipeline, stage)
     if media is None and stage == "narration":
         media = folder / "narration" / "narration.wav"
+    if media is None and stage == PUBLISH_STAGE:
+        media = deliverable(folder)
     if words is None and (folder / "narration" / "words.json").is_file():
         words = folder / "narration" / "words.json"
     media = Path(media).resolve() if media else None
     results = [run_check(n, channel, video_id, fmt, pipeline, media, words) for n in names]
+    if stage == PUBLISH_STAGE and names:
+        results.append(_deliverable_check(channel, video_id, media))
     report = {
         "channel": slug, "video": video_id, "stage": stage, "format": fmt, "pipeline": pipeline,
         "at": datetime.now(timezone.utc).isoformat(),
@@ -171,11 +224,76 @@ def require_passing(channel: channels.Channel, video_id: str, stage: str,
     inputs = previous.get("inputs", {})
     media = ROOT / inputs["media"] if inputs.get("media") else None
     words = ROOT / inputs["words"] if inputs.get("words") else None
+    if MEDIA_CHECKS & set(stage_checks(pipeline, stage)):
+        if media is None or not inputs.get("media_sha256"):
+            raise ChannelError(f"the {stage!r} qc report names no checked file and sha256; run omni qc with --media")
+        if not media.is_file() or _sha256(media) != inputs["media_sha256"]:
+            raise ChannelError(f"{inputs['media']} changed (or is gone) since omni qc checked it "
+                               f"(sha256 {inputs['media_sha256'][:12]}...); run omni qc again")
     report = run_stage(channel.slug, video_id, stage, media, words, format_name=previous.get("format"))
     if not report["ok"]:
         failed = [f"{r['check']}: {p}" for r in report["checks"] if not r["ok"] for p in r["problems"]]
         raise ChannelError(f"stage {stage!r} cannot pass while its checks fail:\n  " + "\n  ".join(failed))
     return report
+
+
+def media_proof(video_id: str, stage: str, report: Optional[dict[str, Any]], at: str) -> Optional[dict[str, str]]:
+    """Signed {media, sha256, at, proof} for an approval whose checks ran on a file."""
+    inputs = (report or {}).get("inputs") or {}
+    if not inputs.get("media") or not inputs.get("media_sha256"):
+        return None
+    channels._upstream()
+    from lib import studio_approval
+
+    return {"media": inputs["media"], "sha256": inputs["media_sha256"], "at": at,
+            "proof": studio_approval.sign_media(video_id, stage, inputs["media"], inputs["media_sha256"], at)}
+
+
+def approve_upload(slug: str, video_id: str, format_name: str, note: Optional[str] = None) -> Path:
+    """Owner only. For a video with no pipeline project (imported before omni-studio, e.g. the tails Short):
+    run the publish_prep checks on upload.yaml's file and sign its sha256 into upload_approval.json."""
+    import getpass
+
+    channel = channels.load_channel(slug)
+    folder = channels.video_dir(channel, video_id)
+    if (folder / "project.json").is_file():
+        raise ChannelError(f"{slug}/{video_id} is a pipeline project: approve publish_prep with omni approve")
+    report = run_stage(slug, video_id, PUBLISH_STAGE, format_name=format_name)
+    if not report["ok"]:
+        failed = [f"{r['check']}: {p}" for r in report["checks"] if not r["ok"] for p in r["problems"]]
+        raise ChannelError("upload cannot be approved while its checks fail:\n  " + "\n  ".join(failed))
+    at = datetime.now(timezone.utc).isoformat()
+    record = {"by": getpass.getuser(), "at": at, "via": "omni approve-upload",
+              "media": media_proof(video_id, LEGACY_UPLOAD_STAGE, report, at)}
+    if note:
+        record["note"] = note
+    out = folder / UPLOAD_APPROVAL
+    out.write_text(json.dumps(record, indent=2), encoding="utf-8")
+    return out
+
+
+def approved_upload_media(channel: channels.Channel, video_id: str) -> dict[str, str]:
+    """The media proof an upload must match: the approved publish_prep (G7), or omni approve-upload for a
+    video with no pipeline. Raises ChannelError when there is none."""
+    channels._upstream()
+    from lib import studio_approval
+
+    folder = channels.video_dir(channel, video_id)
+    record = _approved_media_record(channel, video_id, PUBLISH_STAGE)
+    if record:
+        return record
+    if (folder / "project.json").is_file():
+        raise ChannelError(f"publish_prep (G7) of {channel.slug}/{video_id} is not approved with a checked file "
+                           "(omni qc ... publish_prep, then the owner runs omni approve ... publish_prep)")
+    legacy = folder / UPLOAD_APPROVAL
+    if not legacy.is_file():
+        raise ChannelError(f"{channel.slug}/{video_id} has no pipeline and no {UPLOAD_APPROVAL}: the owner runs "
+                           f"omni approve-upload {channel.slug} {video_id} --format <format> first")
+    data = json.loads(legacy.read_text(encoding="utf-8"))
+    try:
+        return studio_approval.verify_media(video_id, LEGACY_UPLOAD_STAGE, data.get("media"))
+    except studio_approval.ApprovalRefused as exc:
+        raise ChannelError(f"{UPLOAD_APPROVAL}: {exc}") from exc
 
 
 def format_report(report: dict[str, Any]) -> str:

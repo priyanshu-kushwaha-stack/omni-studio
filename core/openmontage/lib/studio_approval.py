@@ -99,3 +99,31 @@ def verify(project_id: str, stage: str, pipeline_type: Optional[str], artifacts:
             f"approval of stage {stage!r} of {project_id!r} does not match: it was not made by `omni approve`, "
             f"or the checkpoint changed after approval"
         )
+
+
+# --- media approvals: bind an approval to the exact file the checks ran on ---
+
+
+def _media_message(project_id: str, stage: str, media: str, sha256: str, at: str) -> bytes:
+    return json.dumps({"project_id": project_id, "stage": stage, "media": media, "media_sha256": sha256,
+                       "at": at, "via": VIA}, sort_keys=True).encode()
+
+
+def sign_media(project_id: str, stage: str, media: str, sha256: str, at: str) -> str:
+    """Called only by `omni approve` and `omni approve-upload`, after the stage's checks passed on `media`."""
+    key = _key(create=True)
+    return hmac.new(key, _media_message(project_id, stage, media, sha256, at), hashlib.sha256).hexdigest()
+
+
+def verify_media(project_id: str, stage: str, record: Any) -> dict[str, str]:
+    """Return {media, sha256, at} when `record` is a media proof `sign_media` made, else raise."""
+    if not isinstance(record, dict) or not all(record.get(k) for k in ("media", "sha256", "at", "proof")):
+        raise ApprovalRefused(f"stage {stage!r} of {project_id!r} has no media approval")
+    key = _key(create=False)
+    if key is None:
+        raise ApprovalRefused(f"no approval key at {key_path()}, so the media approval cannot be checked")
+    expected = hmac.new(key, _media_message(project_id, stage, str(record["media"]), str(record["sha256"]),
+                                            str(record["at"])), hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(expected, str(record["proof"])):
+        raise ApprovalRefused(f"media approval of {stage!r} of {project_id!r} was not made by `omni approve`")
+    return {"media": str(record["media"]), "sha256": str(record["sha256"]), "at": str(record["at"])}

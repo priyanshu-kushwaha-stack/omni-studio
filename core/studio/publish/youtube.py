@@ -128,14 +128,11 @@ def assert_private(meta: dict[str, Any]) -> None:
         raise UploadRefused("refused before the uploader ran:\n  " + "\n  ".join(problems))
 
 
-def build_request(slug: str, video_id: str, privacy: Optional[str] = None,
-                  upload_yaml: Optional[Path] = None) -> UploadRequest:
+def build_request(slug: str, video_id: str, upload_yaml: Optional[Path] = None) -> UploadRequest:
     channel = channels.load_channel(slug)
     folder = channels.video_dir(channel, video_id)
     path = upload_yaml or folder / "upload.yaml"
     problems: list[str] = []
-    if privacy is not None and privacy != "private":
-        problems.append(f"--privacy {privacy!r} is refused: uploads are always private")
     if not path.is_file():
         raise UploadRefused(f"no upload metadata: {path} is missing (see skills/studio/studio-short-publish.md)")
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
@@ -280,27 +277,46 @@ def printable(cmd: list[str]) -> str:
     return " \\\n    ".join(lines)
 
 
-def fallback_tokens() -> list[Path]:
-    """Where youtubeuploader looks when -cache/-secrets do not exist (oauth.go: os.UserConfigDir())."""
-    bases = [Path.home() / "Library" / "Application Support", Path.home() / ".config"]
-    return [b / "youtubeuploader" / n for b in bases for n in ("request.token", "client_secrets.json")]
+def approved_media_problems(req: UploadRequest) -> list[str]:
+    """The file must be the one whose checks passed at the approved G7 (or omni approve-upload): same path
+    and the same sha256, re-hashed now."""
+    from studio import checks
+    from studio.channels import ChannelError
+
+    channel = channels.load_channel(req.channel)
+    try:
+        approved = checks.approved_upload_media(channel, req.video)
+    except ChannelError as exc:
+        return [str(exc)]
+    problems = []
+    rel = checks._rel(req.file.resolve())
+    if approved["media"] != rel:
+        problems.append(f"upload.yaml uploads {rel}, but the approval covers {approved['media']}")
+    actual = checks._sha256(req.file) if req.file.is_file() else None
+    if actual != approved["sha256"]:
+        problems.append(f"{rel} sha256 {str(actual)[:12]}... is not the approved {approved['sha256'][:12]}...: "
+                        "the file changed after approval")
+    return problems
 
 
-def preflight(req: UploadRequest, first_auth: bool = False) -> list[str]:
+def preflight(req: UploadRequest) -> list[str]:
     problems = verify_binary()
     if not client_secret_path().is_file():
         problems.append(f"OAuth client secret missing: {_home(client_secret_path())}")
     if not req.token.is_file():
-        stray = [p for p in fallback_tokens() if p.exists()]
-        if stray:
-            problems.append("no channel token yet, and youtubeuploader would fall back to "
-                            + ", ".join(_home(p) for p in stray) + " (another account?); move it away first")
-        if not first_auth:
-            problems.append(f"no token at {_home(req.token)}: the first run opens a browser for Google consent; "
-                            "pass --first-auth with the owner at the keyboard")
+        # Never let youtubeuploader run without our token: it would start its own consent (no channel check)
+        # or fall back to a token in os.UserConfigDir()/youtubeuploader/.
+        problems.append(f"no token at {_home(req.token)}: the owner runs `omni youtube-auth {req.channel}` first "
+                        "(consent, then the token's channel is checked before the token is saved)")
     if not req.youtube_channel_id:
         problems.append(f"channel {req.channel!r} has no youtube_channel_id to check the upload against")
-    return problems
+    return problems + approved_media_problems(req)
+
+
+def _file_sha(path: Path) -> str:
+    from studio import checks
+
+    return checks._sha256(path) if path.is_file() else "(missing)"
 
 
 def dry_run(req: UploadRequest) -> str:
@@ -314,7 +330,8 @@ def dry_run(req: UploadRequest) -> str:
         f"kids      madeForKids={json.dumps(req.metadata['madeForKids'])}  -> status.selfDeclaredMadeForKids",
         f"AI        containsSyntheticMedia={json.dumps(req.metadata['containsSyntheticMedia'])}  "
         "-> status.containsSyntheticMedia (altered or synthetic content)",
-        f"channel   {req.youtube_channel_id} (checked against the token's channel before and after upload)",
+        f"channel   {req.youtube_channel_id} (the token's channel is checked at consent, before upload and after)",
+        f"sha256    {_file_sha(req.file)}  (must match the approved G7 / approve-upload record)",
         "metaJSON  " + json.dumps(req.metadata, indent=2, ensure_ascii=False).replace("\n", "\n          "),
         "command   " + printable(cmd),
         "secrets   -secrets and -cache name files in ~/.config/omni-studio/youtube/; their contents are never "
@@ -329,24 +346,26 @@ def dry_run(req: UploadRequest) -> str:
 # --- the real run (never by an agent without the owner asking) ---
 
 
-def run(req: UploadRequest, confirm: str, first_auth: bool = False, api=None,
+def run(req: UploadRequest, confirm: str, api=None,
         runner: Callable[..., subprocess.CompletedProcess] = subprocess.run) -> dict[str, Any]:
     from studio.publish import youtube_api
 
     if confirm != f"{req.channel}/{req.video}":
         raise UploadRefused(f"--confirm must be exactly {req.channel}/{req.video}")
-    problems = preflight(req, first_auth)
+    problems = preflight(req)
     if problems:
         raise UploadRefused("preflight failed:\n  " + "\n  ".join(problems))
     api = api or youtube_api.YouTubeAPI(client_secret_path(), req.token)
-    if req.token.is_file():
-        mine = api.mine_channel_id()
-        if mine != req.youtube_channel_id:
-            raise UploadRefused(f"the token belongs to channel {mine}, not {req.youtube_channel_id}; refused")
+    mine = api.mine_channel_id()
+    if mine != req.youtube_channel_id:
+        raise UploadRefused(f"the token belongs to channel {mine}, not {req.youtube_channel_id}; refused")
     with tempfile.TemporaryDirectory(prefix="omni-upload-") as tmp:
         meta_path, out_path = Path(tmp) / "meta.json", Path(tmp) / "uploaded.json"
         meta_path.write_text(json.dumps(req.metadata, ensure_ascii=False), encoding="utf-8")
         assert_private(json.loads(meta_path.read_text(encoding="utf-8")))
+        late = approved_media_problems(req)  # re-hash right before exec
+        if late:
+            raise UploadRefused("refused before the uploader ran:\n  " + "\n  ".join(late))
         proc = runner(command(req, meta_path, out_path), capture_output=True, text=True)
         if proc.returncode != 0 or not out_path.is_file():
             raise UploadRefused(f"youtubeuploader failed (exit {proc.returncode}): {proc.stderr.strip()[-400:]}")
@@ -356,7 +375,7 @@ def run(req: UploadRequest, confirm: str, first_auth: bool = False, api=None,
     checks = youtube_api.verify_readback(readback, req.metadata, req.youtube_channel_id)
     log = {"channel": req.channel, "video": req.video, "youtube_video_id": video_id,
            "requested": req.metadata, "readback": readback, "readback_problems": checks}
-    folder = req.file.parent if req.file.parent.name != "renders" else req.file.parent.parent
+    folder = channels.video_dir(channels.load_channel(req.channel), req.video)
     (folder / "upload_log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
     if checks:
         raise UploadRefused(f"uploaded {video_id} but the read-back disagrees; fix it in YouTube Studio now:\n  "
