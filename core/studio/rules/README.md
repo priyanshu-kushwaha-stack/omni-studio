@@ -7,7 +7,7 @@ table and the files in step.
 
 | Rule | Check | Kind |
 |---|---|---|
-| [viewer-questions](viewer-questions.md) | none for spacing; G6 watch | watch |
+| [viewer-questions](viewer-questions.md) | none for spacing (G6 watch); `script_lint.py` item 27 fails `> QUIZ:` boards | watch |
 | [no-line-boil](no-line-boil.md) | `pou_compose` / `pou_puppet` refuse boil (`boil_in_motion`, `boil_in_stage`) | automated |
 | [shorts-sound-ending](shorts-sound-ending.md) | `compose.plan_sfx(short=True)`; `audio_check.py --short` tail | automated |
 | [text-placement](text-placement.md) | `overlay_check.py --fix` before every render | automated |

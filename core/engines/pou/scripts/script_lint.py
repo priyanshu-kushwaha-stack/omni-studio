@@ -3,6 +3,7 @@
 
 Hard checks exit 1. Advisory checks (items 7 and 20) print WARN and never block:
 a formula is a prompt for the writer, not a rule the viewer cares about.
+Item 27 fails on any `> QUIZ:` board (owner rule 2026-11-06: questions are answered at once in the dialogue).
 Visual density at 3-6 s is NOT checked here; `> VISUAL:` cues are beats (one per
 ~10 s). The 3-6 s rule is enforced on scene_plan.json by scripts/scene_plan_check.py.
 """
@@ -119,20 +120,13 @@ def lint_script(text: str, target_minutes: int, wpm: int = 155) -> list[Finding]
             weak_emp.append(title)
     findings.append(Finding(26, not weak_vis, "; ".join(weak_vis) or "visual beats ok (1 per 10 s; 3-6 s density is checked on scene_plan.json)"))
     findings.append(Finding(20, not weak_emp, f"no emphasis in: {weak_emp} (advisory)" if weak_emp else "emphasis marked in every section", "advisory"))
-    bad_quiz = []
-    lines = [l.strip() for l in text.splitlines()]
-    for i, l in enumerate(lines):
-        if not l.startswith("> QUIZ:"):
-            continue
-        cards = [c.strip() for c in l[len("> QUIZ:"):].split("|") if c.strip()]
-        prev = next((p for p in reversed(lines[:i]) if p), "")
-        if not prev.startswith("> ASK:"):
-            bad_quiz.append(f"line {i + 1}: not right after an ASK")
-        if not 2 <= len(cards) <= 3:
-            bad_quiz.append(f"line {i + 1}: {len(cards)} cards")
-        if sum(c.startswith("*") for c in cards) != 1:
-            bad_quiz.append(f"line {i + 1}: needs exactly one *answer")
-    findings.append(Finding(27, not bad_quiz, "; ".join(bad_quiz) or "quiz cues ok"))
+    # Item 27: no quiz boards. Owner rule 2026-11-06 (core/studio/rules/viewer-questions.md): a question is
+    # answered at once inside the dialogue, with no pause and no three-option board. compose.py still renders
+    # `> QUIZ:` for already-approved videos; new scripts fail here.
+    boards = [i + 1 for i, l in enumerate(text.splitlines()) if l.strip().startswith("> QUIZ:")]
+    detail = (f"quiz board at line(s) {boards}: ask inside the dialogue and have a character answer at once, "
+              "no pause, no quiz boards (owner 2026-11-06)") if boards else "no quiz boards"
+    findings.append(Finding(27, not boards, detail))
     return sorted(findings)
 
 

@@ -17,7 +17,7 @@ Owner note after video 4: the format still felt like a documentary, so from vide
 ## Script format
 - Narration and the Professor: `PROF:` lines (a bare prose line is also read as the Professor).
 - Dialogue: `OOG:`, `YOU:`, `GRANDMA:` at the start of a line.
-- `> SAY:` still sets delivery for the next Professor line; `> ASK:` is a Professor line to camera followed by a ~1.2 s pause, or 3 s when a `> QUIZ: A | *B | C` line follows it (answer cards + a 3-2-1 countdown on the quiz board; the next character line is a guess, then ~0.5 s before the reveal; video 5 energy pass, 2026-11-01).
+- `> SAY:` still sets delivery for the next Professor line; `> ASK:` is a question inside the dialogue that a character answers at once, at the normal line gap. No `> QUIZ:` boards and no pause (owner 2026-11-06, `core/studio/rules/viewer-questions.md`; `script_lint.py` item 27 fails a board). Video 5's quiz boards and holds (2026-11-01) are history, not the format.
 - About half the runtime is two-character dialogue; each section opens on a disagreement (You's myth vs Oog's or Grandma's reality) that the Professor settles with a claim from `claims.md`. Characters never state a contested claim as settled fact.
 
 ## On screen

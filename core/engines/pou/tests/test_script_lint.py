@@ -129,16 +129,19 @@ def _quiz_script(quiz_lines):
     return base.replace("## [02:00] One", "## [02:00] One\n" + "\n".join(quiz_lines), 1)
 
 
-def test_quiz_after_ask_with_one_answer_passes():
+def test_quiz_board_fails_even_when_well_formed():
+    # Owner rule 2026-11-06: no quiz boards; a character answers the question at once.
     f = by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: 15 | *35 | 55"]), 14))
-    assert f[27].ok
+    assert not f[27].ok and f[27].level == "fail"
+    assert "no quiz boards" in f[27].detail and "line(s)" in f[27].detail
 
 
-def test_quiz_needs_ask_before_it_and_exactly_one_answer():
-    assert not by_item(lint_script(_quiz_script(["> QUIZ: 15 | *35 | 55"]), 14))[27].ok
-    assert not by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: 15 | 35 | 55"]), 14))[27].ok
-    assert not by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: *15 | *35"]), 14))[27].ok
-    assert not by_item(lint_script(_quiz_script(["> ASK: Guess?", "> QUIZ: *15 | 2 | 3 | 4"]), 14))[27].ok
+def test_every_quiz_board_shape_fails():
+    for lines in (["> QUIZ: 15 | *35 | 55"], ["> ASK: Guess?", "> QUIZ: 15 | 35 | 55"],
+                  ["> ASK: Guess?", "> QUIZ: *15 | *35"], ["> ASK: Guess?", "> QUIZ: *15 | 2 | 3 | 4"]):
+        f = by_item(lint_script(_quiz_script(lines), 14))
+        assert not f[27].ok
+        assert f[27] in hard_failures(lint_script(_quiz_script(lines), 14))
 
 
 def test_no_quiz_lines_passes():

@@ -65,7 +65,7 @@ stages:
     review_focus:
       - G2 the owner reads script.md in full before any asset is generated
       - Characters talk to each other in distinct voices (core/studio/rules/dialogue-characters.md)
-      - A viewer question about every 20-30 s (core/studio/rules/viewer-questions.md)
+      - A question about every 20-30 s, answered at once in the dialogue, no pause, no quiz boards (core/studio/rules/viewer-questions.md)
     success_criteria:
       - script.md lints clean (script_lint.py) and every spoken number has a claims.md row
 
