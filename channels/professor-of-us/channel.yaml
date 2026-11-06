@@ -9,7 +9,7 @@ made_for_kids: false            # faceless-channel publish sheets: "Audience: no
 # Format name -> OpenMontage pipeline in core/openmontage/pipeline_defs/.
 formats:
   dialogue: studio-dialogue
-  short: studio-dialogue
+  short: studio-short
 playbook: professor-of-us       # Loads by name through styles/custom/professor-of-us.yaml.
 voices: voices.yaml
 music:
@@ -19,3 +19,15 @@ cadence: weekly
 budget_usd_per_video: 0         # A hard cap. 0 means no paid calls until the owner sets a budget.
 review_level: full              # Recorded only. Gates come from the pipeline; no level skips one.
 upload_token_path: ~/.config/omni-studio/youtube/professor-of-us.token
+# Mix targets per format (core/studio/qc/loudness.py, EBU R128 via ffmpeg ebur128). YouTube normalises to about
+# -14 LUFS; the approved tails Short measures -14.2 LUFS integrated, -1.4 dBTP, 2.6 LU.
+loudness:
+  dialogue: {integrated_lufs: -14, tolerance_lu: 1, true_peak_dbtp_max: -1, lra_lu_max: 11}
+  short: {integrated_lufs: -14, tolerance_lu: 1, true_peak_dbtp_max: -1, lra_lu_max: 8}
+# omni upload defaults. Privacy is always private and is not configurable.
+upload:
+  # Altered or synthetic content: "No" on every publish sheet so far (stylised illustrations; the creator's own
+  # cloned voice), e.g. videos/2026-10-31_tails/publish.md. A video can override it in its upload.yaml.
+  contains_synthetic_media: false
+  category_id: "27"             # Education
+  language: en

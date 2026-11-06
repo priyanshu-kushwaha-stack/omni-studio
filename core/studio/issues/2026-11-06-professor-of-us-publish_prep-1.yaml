@@ -1,0 +1,12 @@
+channel: professor-of-us
+format: short
+stage: publish_prep
+severity: high
+example: youtubeuploader 1.25.5 (oauth.go BuildOAuthHTTPClient/readConfig) silently
+  falls back to os.UserConfigDir()/youtubeuploader/request.token and client_secrets.json
+  when the -cache or -secrets path does not exist, so a first run could upload with
+  another account's token
+recorded_at: '2026-11-06T05:47:47.313113+00:00'
+note: 'guarded: preflight refuses when our token is missing and a fallback file exists,
+  and checks the token''s channel (channels.list mine=true) against youtube_channel_id
+  before upload; read-back checks channelId after'

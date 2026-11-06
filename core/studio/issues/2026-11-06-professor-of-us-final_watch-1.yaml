@@ -1,0 +1,9 @@
+channel: professor-of-us
+format: short
+stage: final_watch
+severity: low
+example: the studio-short end-to-end run (test_studio_short_end_to_end_up_to_g6) uses
+  synthesized 9:16 media (ffmpeg lavfi + tone words), not engine renders from pou_stills/pou_puppet/pou_compose
+recorded_at: '2026-11-06T05:47:49.701062+00:00'
+note: an engine render of a dummy Short needs rigs, stills and the media venv; not
+  run in Phase 4

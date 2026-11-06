@@ -1,0 +1,9 @@
+channel: professor-of-us
+format: short
+stage: final_edit
+severity: low
+example: ffmpeg loudnorm analysis reported LRA 8.9 LU on a 25 s synthetic track that
+  ebur128 measures at 1.2 LU; the loudness check now uses the ebur128 summary (I,
+  LRA, true peak with peak=true)
+recorded_at: '2026-11-06T05:47:48.918472+00:00'
+note: 'tails rerender_noboil: loudnorm -14.29/-1.36/2.50, ebur128 -14.2/-1.40/2.6'

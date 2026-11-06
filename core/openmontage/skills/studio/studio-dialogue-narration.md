@@ -8,5 +8,6 @@
 3. Word timings into `narration/words.json` (faster-whisper in `.venv-media`), per-line files and
    `narration/lines.json` for the talking puppets.
 4. Check: `.venv/bin/python core/engines/pou/scripts/audio_check.py <video>/narration/narration.wav --words
-   <video>/narration/words.json`. No gap bursts, no steps (`core/studio/rules/no-audio-clicks.md`).
+   <video>/narration/words.json`. No gap bursts, no steps (`core/studio/rules/no-audio-clicks.md`). Then
+   `.venv/bin/omni qc <slug> <video> narration` (claims, clicks) must pass.
 5. `status: awaiting_human`, then stop.

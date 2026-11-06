@@ -1,0 +1,17 @@
+# Approved reference clip for the Short format (9:16). Metadata only: the media is git-ignored and stays in the
+# channel's renders folder. `studio.reference.verify()` re-hashes the file and fails if it changed.
+format: short
+pipeline: studio-short
+channel: professor-of-us
+video: 2026-10-31_tails
+path: channels/professor-of-us/videos/2026-10-31_tails/renders/rerender_noboil.mp4
+sha256: eb5183e92ce9a517158345a1c7b25485869f9a440e08301537dfd290b5aec244
+bytes: 25320680
+width: 1080
+height: 1920
+duration_s: 53.02
+approved_by: owner
+approved_on: 2026-11-06
+approval_note: channels/professor-of-us/videos/2026-10-31_tails/approval.md
+why: the owner watched the re-render with line boil off and approved it as how a Short should look and sound
+  (code puppets and camera moves, one quiet pencil per 5 s, no page turns, 2.4 s fade-out tail)

@@ -1,0 +1,150 @@
+# omni-studio pipeline (new file, see core/PATCHES.md). Professor of Us Shorts: 9:16, 45-58 s, dialogue between
+# the cast, code puppets. Same seven owner gates as studio-dialogue; agents write awaiting_human and stop, and
+# only `omni approve` passes a gate (lib/studio_approval.py). Renders come from the Professor of Us engine
+# (core/engines/pou), so render_runtime is "external".
+#
+# Shorts rule (core/studio/rules/shorts-sound-ending.md): one quiet pencil per 5 s at -26 dB, no page turns, a
+# 2.4 s fade-out tail after the last word, code puppets (short_rigs.py + puppet_render.py), never AI motion clips
+# and never line boil or wobble. Approved reference: core/reference/short/tails-rerender-noboil.yaml.
+#
+# metadata.studio_checks: automated checks `omni qc` runs per stage and `omni approve` re-runs before it signs.
+# A gate with checks cannot pass while any of them fails (core/studio/checks.py).
+name: studio-short
+version: "1.0"
+description: >
+  Professor of Us Shorts: one question, argued by two of the cast and settled by the Professor with a cited
+  claim, in under a minute. 9:16 hand-drawn stills, code puppets, one quiet pencil per 5 s, no page turns,
+  a 2.4 s fade-out tail that loops back to the hook. Seven owner gates, G1-G7.
+category: custom
+stability: beta
+default_checkpoint_policy: manual_all
+
+extensions:
+  custom_scripts: true
+  custom_playbooks: true
+  custom_skills: true
+  custom_tools: true
+
+required_skills:
+  - studio/studio-short-proposal
+  - studio/studio-short-script
+  - studio/studio-short-narration
+  - studio/studio-short-rough-cut
+  - studio/studio-short-edit
+  - studio/studio-short-final-watch
+  - studio/studio-short-publish
+  - meta/checkpoint-protocol
+
+compatible_playbooks:
+  recommended:
+    - professor-of-us
+  custom_allowed: true
+
+metadata:
+  aspect: "9:16"
+  size: 1080x1920
+  max_seconds: 58
+  reference: core/reference/short/tails-rerender-noboil.yaml
+  studio_checks:
+    short_script: [claims, no_quiz_boards]
+    narration: [claims, clicks]
+    final_edit: [loudness, clicks, similarity]
+    final_watch: [loudness, clicks, similarity]
+    publish_prep: [claims, loudness, clicks, similarity, upload_request]
+
+stages:
+  - name: proposal
+    skill: studio/studio-short-proposal
+    produces:
+      - proposal_packet
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G1 packaging, the title and the first frame make one promise in under 40 characters
+      - render_runtime is external and the decision is logged
+    success_criteria:
+      - Schema-valid proposal_packet with render_runtime external
+      - packaging.md has the chosen title and the hook frame
+
+  - name: short_script
+    skill: studio/studio-short-script
+    required_artifacts_in:
+      - proposal_packet
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G2 the owner reads script.md in full before any asset is generated
+      - Two of the cast talk to each other in distinct voices (core/studio/rules/dialogue-characters.md)
+      - A question answered at once in the dialogue, no pause, no quiz boards (core/studio/rules/viewer-questions.md)
+      - The last line loops back into the first
+    success_criteria:
+      - claims ledger complete, a source for every factual claim (omni qc ... short_script)
+      - no `> QUIZ:` board (script_lint.py item 27)
+
+  - name: narration
+    skill: studio/studio-short-narration
+    produces: []
+    tools_available:
+      - pou_tts
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G3 narration lock, each speaker in their cast voice
+      - No clicks or end-of-take pops (core/studio/rules/no-audio-clicks.md)
+    success_criteria:
+      - narration wav, words.json and lines.json exist; omni qc narration passes (claims, clicks)
+
+  - name: rough_cut
+    skill: studio/studio-short-rough-cut
+    produces: []
+    tools_available:
+      - pou_stills
+      - pou_puppet
+      - pou_compose
+      - overlay_check
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G4 rough cut, a picture change every 2-4 s (short_plan.py), code puppets, no line boil, no AI clips
+    success_criteria:
+      - overlay_check.py --fix exits 0 before the render; render is 1080x1920
+
+  - name: final_edit
+    skill: studio/studio-short-edit
+    produces: []
+    tools_available:
+      - pou_puppet
+      - pou_compose
+      - overlay_check
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G5 edit, pencils at most one per 5 s, no page turns, 2.4 s fade-out tail, text placement
+    success_criteria:
+      - omni qc final_edit passes (loudness, clicks with the Short tail, similarity)
+
+  - name: final_watch
+    skill: studio/studio-short-final-watch
+    produces: []
+    tools_available:
+      - overlay_check
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G6 the owner watches at 1x on a phone, with cold viewers, against the watch list in core/studio/rules/
+    success_criteria:
+      - Every G6 watch item answered by the owner; omni qc final_watch passes
+
+  - name: publish_prep
+    skill: studio/studio-short-publish
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G7 upload.yaml complete (kids and AI disclosure answered), privacy private, no schedule
+    success_criteria:
+      - omni upload --dry-run prints a private upload; nothing uploaded without the owner

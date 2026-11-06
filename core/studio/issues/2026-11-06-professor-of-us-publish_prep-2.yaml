@@ -1,0 +1,11 @@
+channel: professor-of-us
+format: short
+stage: publish_prep
+severity: medium
+example: 'youtubeuploader has no auth-only mode: the first Google consent happens
+  inside the first real upload (-filename is required before OAuth), so the token''s
+  channel cannot be checked before that first upload'
+recorded_at: '2026-11-06T05:47:47.879712+00:00'
+note: the proposed test upload is also the consent run; the owner must pick the Professor
+  of Us brand account on the consent screen; read-back verifies channelId. A small
+  auth-only helper would close this

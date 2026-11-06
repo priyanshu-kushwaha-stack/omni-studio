@@ -203,7 +203,7 @@ def test_professor_of_us_validates():
     config = channel.config
     assert config.status == "live" and config.made_for_kids is False and config.review_level == "full"
     assert config.upload_token_path == "~/.config/omni-studio/youtube/professor-of-us.token"
-    assert set(config.formats.values()) == {"studio-dialogue"}
+    assert set(config.formats.values()) == {"studio-dialogue", "studio-short"}
 
 
 def test_engine_yaml_names_only_channel_or_secrets_paths():

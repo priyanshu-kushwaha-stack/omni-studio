@@ -60,6 +60,25 @@ class Music(_Strict):
     allowed: list[str] = Field(...)
 
 
+class LoudnessTarget(_Strict):
+    """Mix targets for one format, checked by core/studio/qc/loudness.py (ffmpeg ebur128, EBU R128)."""
+
+    integrated_lufs: Union[StrictInt, StrictFloat] = Field(ge=-30, le=-5)
+    tolerance_lu: Union[StrictInt, StrictFloat] = Field(gt=0, le=3)
+    true_peak_dbtp_max: Union[StrictInt, StrictFloat] = Field(ge=-9, le=0)
+    lra_lu_max: Union[StrictInt, StrictFloat] = Field(gt=0, le=30)
+
+
+class UploadDefaults(_Strict):
+    """Channel defaults for `omni upload`. A video's upload.yaml may override them, never the privacy."""
+
+    # YouTube status.containsSyntheticMedia ("altered or synthetic content"). Required key; null means every
+    # video must answer it in its own upload.yaml, and the upload is refused until it does.
+    contains_synthetic_media: Optional[StrictBool] = Field(...)
+    category_id: str = Field(default="27", pattern=r"^\d{1,3}$")
+    language: str = Field(default="en", min_length=2, max_length=8)
+
+
 class ChannelConfig(_Strict):
     id: str
     youtube_channel_id: Optional[str] = Field(...)
@@ -75,6 +94,9 @@ class ChannelConfig(_Strict):
     budget_usd_per_video: Union[StrictInt, StrictFloat] = Field(ge=0, allow_inf_nan=False)
     review_level: Literal["full", "standard", "light"]
     upload_token_path: Optional[str] = Field(...)
+    # Format name -> mix targets. A format with no entry fails its loudness check (checks.py), not the load.
+    loudness: dict[str, LoudnessTarget] = Field(...)
+    upload: UploadDefaults = Field(...)
 
     @field_validator("id")
     @classmethod
@@ -160,6 +182,9 @@ def _check_cross_fields(slug: str, channel_dir: Path, config: ChannelConfig) -> 
         problems.append("upload_token_path: required when status is live")
     if config.music.default is not None and config.music.default not in config.music.allowed:
         problems.append(f"music.default: {config.music.default!r} is not in music.allowed")
+
+    if config.upload_token_path and not config.upload_token_path.endswith(f"/youtube/{slug}.token"):
+        problems.append(f"upload_token_path: must be ~/.config/omni-studio/youtube/{slug}.token, one token per channel")
 
     for name, pipeline in config.formats.items():
         if not (OPENMONTAGE / "pipeline_defs" / f"{pipeline}.yaml").is_file():
@@ -387,6 +412,11 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
             f"'awaiting_human', so there is nothing to approve"
         )
     from lib import studio_approval
+    from studio import checks
+
+    # Automated checks for this stage (pipeline metadata.studio_checks) must pass before the owner's
+    # approval is signed. They never pass a gate on their own.
+    checks.require_passing(channel, video_id, stage, checkpoint["pipeline_type"])
 
     at = datetime.now(timezone.utc).isoformat()
     try:
