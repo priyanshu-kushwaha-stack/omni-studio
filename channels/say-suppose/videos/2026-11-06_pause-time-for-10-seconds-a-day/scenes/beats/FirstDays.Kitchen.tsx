@@ -10,7 +10,7 @@ import { Counter, evenTicks } from "../parts";
 import { blinking, camAt, current, HERO, linear, mix, ramp, type Shot } from "../shared";
 import { armTo, blendArm, body, CROUCH, firstDaysPauses, Sfx } from "./FirstDays.common";
 
-/** Lines 11-14: the phone. Kitchen (the sample's, as the first room of a house drawn in section), the side-on
+/** Lines 10-13: the phone. Kitchen (the sample's, as the first room of a house drawn in section), the side-on
  *  cutaway with the tape, and the catch. */
 
 const FLOOR = 880;
@@ -123,20 +123,21 @@ const House: React.FC<{ cam: Camera }> = ({ cam }) => {
 export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, t, wc, cues, clips } = shot;
   const pause = firstDaysPauses(cues, clips).phone;
-  const l11 = clips[11].from;
-  const l13 = clips[13].from;
-  const l14 = clips[14].from;
+  const lPhone = clips[10].from;
+  const lStroll = clips[12].from;
+  const lCrack = clips[13].from;
+  const catchAt = lCrack - 20;
 
   // The phone: a slow-motion tumble from your hand (world time), frozen at the snap, plucked at line 14.
   const fallLen = wc(cues.snap2) - wc(cues.slip);
   const k = Math.min(1, Math.max(0, (t - wc(cues.slip)) / fallLen));
   const fallen = { x: mix(P0.x, P1.x, k), y: mix(P0.y, P1.y, Math.pow(k, 1.35)) };
-  const grab = l14 + 8;
+  const grab = lCrack + 8;
   const grabbed = frame >= grab;
 
   // Shots.
   const shotName = current(frame, [
-    [shot.from, "hands"], [l11 + 97, "tumble"], [l11 + 157, "face"], [clips[12].from, "snap"], [l13, "pull"], [l13 + 236, "catch"],
+    [shot.from, "hands"], [lPhone + 88, "tumble"], [lPhone + 142, "face"], [clips[11].from, "snap"], [lStroll, "pull"], [catchAt, "catch"],
   ] as [number, string][]);
 
   // You. Before the snap: slow-motion fumble. Snap on "today". Stroll right with the tape, turn back. Then the catch.
@@ -155,7 +156,7 @@ export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
   if (frame < cues.slip) {
     pose = { ...STAND, armF: armTo(x, y, STAND, 1, 1, P0.x, P0.y) };
     held = <Phone rotate={-14} />;
-  } else if (frame < clips[12].from) {
+  } else if (frame < clips[11].from) {
     const slow = ramp(frame, cues.slip, cues.slip + 120);
     const base = lerpPose(STAND, { ...STAND, lean: 9, drop: 8, armB: [-30, 30] }, slow);
     const hand = armTo(x, y, base, 1, 1, P0.x, P0.y);
@@ -165,7 +166,7 @@ export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
     brows = frame > cues.slip + 40 ? "worry" : "raised";
     eyes = mix(1, 1.3, ramp(frame, cues.slip, cues.slip + 30));
     look = { x: 0.6, y: 0.9 };
-    if (frame > l11 + 157) { mouth = "wobble"; brows = "worry"; }
+    if (frame > lPhone + 142) { mouth = "wobble"; brows = "worry"; }
   } else if (frame < walkStart) {
     const snap = ramp(frame, cues.snap2 - 6, cues.snap2);
     const relax = ramp(frame, cues.snap2 + 14, cues.snap2 + 30);
@@ -173,7 +174,7 @@ export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
     brows = frame < cues.snap2 + 14 ? "angry" : "raised";
     mouth = frame < cues.snap2 + 18 ? "flat" : "smirk";
     look = frame < cues.snap2 + 16 ? { x: 0.7, y: 0.5 } : { x: 0.7, y: 0.9 };
-  } else if (frame < l13 + 236) {
+  } else if (frame < catchAt) {
     const walking = walkK > 0 && walkK < 1 || (frame > cues.tape + 25);
     const phase = (mix(HERO_X, WALK_TO, walkK) + back) / 24;
     pose = walking ? walkPose(phase) : STAND;
@@ -189,7 +190,7 @@ export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
     const rest: [number, number] = [30, 40];
     const head = body(x, y, base, -1).head;
     const check = armTo(x, y, base, -1, 1, head.x - 78, head.y + 58);
-    let arm = blendArm(rest, toPhone, ramp(frame, l13 + 240, grab));
+    let arm = blendArm(rest, toPhone, ramp(frame, catchAt + 4, grab));
     arm = blendArm(arm, check, up);
     pose = { ...base, armF: arm };
     look = up > 0.5 ? { x: 0.8, y: 0.5 } : { x: 0.9, y: 0.7 };
@@ -200,25 +201,25 @@ export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
   }
 
   const hero = body(x, y, pose, facing);
-  const camKitchen: Camera = camAt(frame, [[shot.from, { x: 1080, y: 640, zoom: 1.75 }], [l11 + 97, { x: 1095, y: 655, zoom: 1.95 }]]);
+  const camKitchen: Camera = camAt(frame, [[shot.from, { x: 1080, y: 640, zoom: 1.75 }], [lPhone + 88, { x: 1095, y: 655, zoom: 1.95 }]]);
   const cams: Record<string, Camera> = {
     hands: camKitchen,
-    tumble: camAt(frame, [[l11 + 97, { x: 1150, y: 790, zoom: 2.5 }], [l11 + 157, { x: 1160, y: 800, zoom: 2.75 }]]),
+    tumble: camAt(frame, [[lPhone + 88, { x: 1150, y: 790, zoom: 2.5 }], [lPhone + 142, { x: 1160, y: 800, zoom: 2.75 }]]),
     face: drift(closeUp(hero.head.x + 20, hero.head.y, 2.7), frame, "face2"),
-    snap: camAt(frame, [[clips[12].from, { x: 1110, y: 690, zoom: 1.55 }], [l13, { x: 1130, y: 700, zoom: 1.65 }]]),
-    pull: camAt(frame, [[l13 + 95, { x: 1750, y: 390, zoom: 0.47 }], [l13 + 236, { x: 1790, y: 400, zoom: 0.5 }]]),
-    catch: camAt(frame, [[l13 + 236, { x: 1222, y: 790, zoom: 2.5 }], [grab, { x: 1222, y: 780, zoom: 2.55 }], [grab + 24, { x: 1240, y: 660, zoom: 2.45 }], [shot.to, { x: 1236, y: 650, zoom: 2.6 }]]),
+    snap: camAt(frame, [[clips[11].from, { x: 1110, y: 690, zoom: 1.55 }], [lStroll, { x: 1130, y: 700, zoom: 1.65 }]]),
+    pull: camAt(frame, [[lStroll + 95, { x: 1750, y: 390, zoom: 0.47 }], [catchAt, { x: 1790, y: 400, zoom: 0.5 }]]),
+    catch: camAt(frame, [[catchAt, { x: 1222, y: 790, zoom: 2.5 }], [grab, { x: 1222, y: 780, zoom: 2.55 }], [grab + 24, { x: 1240, y: 660, zoom: 2.45 }], [shot.to, { x: 1236, y: 650, zoom: 2.6 }]]),
   };
   let cam = cams[shotName];
-  if (shotName === "pull" && frame < l13 + 95) {
+  if (shotName === "pull" && frame < lStroll + 95) {
     // Pull out through the walls: eased, with the view's width (1/zoom) growing evenly.
-    const k2 = ramp(frame, l13, l13 + 95);
+    const k2 = ramp(frame, lStroll, lStroll + 95);
     cam = { x: mix(1130, 1750, k2), y: mix(700, 390, k2), zoom: 1 / mix(1 / 1.65, 1 / 0.47, k2) };
   }
 
   const snapCam = cams.snap;
   const snapHand = body(HERO_X, FEET, SNAP, 1).handF;
-  const origin = frame < l13 + 100 ? toScreen(snapCam, snapHand.x, snapHand.y) : toScreen(cam, P1.x, P1.y);
+  const origin = frame < lStroll + 100 ? toScreen(snapCam, snapHand.x, snapHand.y) : toScreen(cam, P1.x, P1.y);
 
   const tapeEnd = mix(HERO_X, WALK_TO, walkK);
   const back_ = (
@@ -235,7 +236,7 @@ export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
   const tapeTicks = Array.from({ length: 13 }, (_, i) => HERO_X + i * 175).filter((tx) => tx <= tapeEnd + 1);
   const actors = (
     <>
-      {walkK > 0 && frame < l13 + 236 && (
+      {walkK > 0 && frame < catchAt && (
         <g>
           <DrawLine d={`M${HERO_X} ${TAPE_Y} H${WALK_TO}`} from={walkStart} to={cues.tape} color={INK} width={42} />
           <DrawLine d={`M${HERO_X} ${TAPE_Y} H${WALK_TO}`} from={walkStart} to={cues.tape} color={MUSTARD} width={30} />
@@ -263,7 +264,7 @@ export const Kitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
   return (
     <AbsoluteFill>
       <Stage cam={cam} radius={waveRadius(frame, pause)} origin={origin} back={back_} actors={actors} />
-      {shotName === "hands" && <Tag at={l11 + 56} text="0.45 S" x={1250} y={190} size={72} tilt={-3} />}
+      {shotName === "hands" && <Tag at={lPhone + 51} text="0.45 S" x={1250} y={190} size={72} tilt={-3} />}
       {shotName === "pull" && <Tag at={cues.tape} text="10–14 M" x={Math.min(1500, tapeScreen.x - 120)} y={tapeScreen.y + 34} size={60} tilt={2} bg="#d8344f" color="#fff6e3" />}
       <Counter ticks={evenTicks(pause.from, pause.to)} until={pause.to} />
       <Sfx at={cues.slip + 2} name="whoosh" volume={0.25} />

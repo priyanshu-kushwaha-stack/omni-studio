@@ -10,7 +10,7 @@ import { HomeBack, FLOOR_Y, LAMP, stepTop } from "../sets/Home";
 import { blinking, camAt, current, HERO, MOTHER, mix, ramp, type Shot } from "../shared";
 import { armTo, blendArm, body, firstDaysPauses, Sfx } from "./FirstDays.common";
 
-/** Line 19: home, the lamp. Your mother's chappal flies at your head; snap; it hangs; you step aside; it sails past
+/** Line 18: home, the lamp. Your mother's chappal flies at your head; snap; it hangs; you step aside; it sails past
  *  and slaps the stairs; she stares at her hand, then laughs. */
 
 const FEET = FLOOR_Y + 25;
@@ -31,10 +31,10 @@ const Chappal: React.FC<{ rotate?: number }> = ({ rotate = 0 }) => (
 export const HomeLamp: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, t, wc, cues, clips } = shot;
   const pause = firstDaysPauses(cues, clips).chappal;
-  const l19 = clips[19].from;
-  const end = clips[20].from;
+  const lChappal = clips[18].from;
+  const end = clips[19].from;
 
-  const shotName = current(frame, [[l19, "throw"], [cues.chappal + 15, "face"], [cues.step - 35, "step"], [cues.laugh - 5, "mother"]] as [number, string][]);
+  const shotName = current(frame, [[lChappal, "throw"], [cues.chappal + 15, "face"], [cues.step - 35, "step"], [cues.laugh - 5, "mother"]] as [number, string][]);
 
   // Mother: wind up, throw (released 9 frames before the snap), follow through; then look at her hand; then laugh.
   const release = wc(cues.chappal) - 9;
@@ -69,7 +69,7 @@ export const HomeLamp: React.FC<{ shot: Shot }> = ({ shot }) => {
   const snap = ramp(frame, cues.chappal - 5, cues.chappal);
   const relax = ramp(frame, cues.chappal + 16, cues.chappal + 30);
   let pose: Pose = lerpPose(lerpPose(STAND, SNAP, snap), STAND, relax);
-  const pokeK = ramp(frame, cues.chappal + 58, cues.chappal + 66) * (1 - ramp(frame, cues.chappal + 72, cues.chappal + 80));
+  const pokeK = ramp(frame, cues.chappal + 38, cues.chappal + 46) * (1 - ramp(frame, cues.chappal + 52, cues.chappal + 60));
   pose = { ...pose, armF: blendArm(pose.armF, armTo(HERO_X, FEET, STAND, -1, 1, frozenAt.x + 30, frozenAt.y), pokeK) };
   const stepK = ramp(frame, cues.step - 8, cues.step + 6);
   const x = mix(HERO_X, STEP_TO, stepK);
@@ -79,7 +79,7 @@ export const HomeLamp: React.FC<{ shot: Shot }> = ({ shot }) => {
   const snapHand = body(HERO_X, FEET, SNAP, -1).handF;
 
   const cams: Record<string, Camera> = {
-    throw: camAt(frame, [[l19, { x: 860, y: 640, zoom: 1.3 }], [cues.chappal + 15, { x: 870, y: 635, zoom: 1.36 }]]),
+    throw: camAt(frame, [[lChappal, { x: 860, y: 640, zoom: 1.3 }], [cues.chappal + 15, { x: 870, y: 635, zoom: 1.36 }]]),
     face: camAt(frame, [[cues.chappal + 15, closeUp(youHead.x - 60, youHead.y, 2.7)], [cues.step - 35, closeUp(youHead.x - 60, youHead.y, 3.1)]]),
     step: camAt(frame, [[cues.step - 35, { x: 1010, y: 640, zoom: 1.32 }], [cues.laugh - 5, { x: 990, y: 640, zoom: 1.38 }]]),
     mother: drift(closeUp(momHead.x + 210, momHead.y, 2.3), frame, "mom"),

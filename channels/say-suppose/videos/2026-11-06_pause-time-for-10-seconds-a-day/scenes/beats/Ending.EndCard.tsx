@@ -6,7 +6,7 @@ import { moodLook } from "@whatif/kit/stage/moods";
 import { Layer, Stage, toScreen } from "@whatif/kit/stage/Stage";
 import { HEIGHT, INK, WIDTH } from "@whatif/kit/theme";
 import { Counter } from "../parts";
-import { blinking, camAt, HERO, linear, mix, noise, ramp } from "../shared";
+import { blinking, HERO, linear, mix, noise, ramp } from "../shared";
 
 const X = 600;
 const FLOOR = 880;
@@ -27,15 +27,17 @@ const SKY = (
 
 /** The end card: you, small, in the left two-thirds, weighing your phone against a paper counter. The right third
  *  stays empty for YouTube's end screens, and nothing sits in the lower right. */
-export const EndCard: React.FC<{ frame: number; from: number }> = ({ frame, from }) => {
-  // The script marks line 70 frozen, but the pause has ended: light the end card as a calm evening.
+export const EndCard: React.FC<{ frame: number; from: number; to: number }> = ({ frame, from, to }) => {
+  // The script marks line 64 frozen, but the pause has ended: light the end card as a calm evening.
   const look = moodLook("dusk");
   const rel = frame - from;
-  const cam = camAt(frame, [[from, { x: 960, y: 540, zoom: 1 }], [from + 270, { x: 905, y: 560, zoom: 1.06 }]]);
+  // A slow push-in across the whole card, towards you; the right third stays sky and floor at every zoom.
+  const push = ramp(frame, from, to);
+  const cam = { x: mix(960, 850, push), y: mix(540, 600, push), zoom: mix(1, 1.2, push) };
 
   // Weighing: one hand rises as the other falls, slowly.
   const w = Math.sin(rel * 0.075) * ramp(rel, 6, 30);
-  const phase = rel < 70 ? 0 : rel < 140 ? 1 : rel < 200 ? 0 : 2;
+  const phase = rel < 60 ? 0 : rel < 120 ? 1 : rel < 170 ? 0 : 2;
   const eyesOn = [{ x: 0.9, y: 0.3 }, { x: -0.8, y: 0.3 }, { x: -0.15, y: 0.1 }][phase];
   const tilt = [4, -5, 0][phase];
   const pose: Pose = { ...STAND, tilt, armF: [72 + 14 * w, 28], armB: [-72 + 14 * w, -26] };

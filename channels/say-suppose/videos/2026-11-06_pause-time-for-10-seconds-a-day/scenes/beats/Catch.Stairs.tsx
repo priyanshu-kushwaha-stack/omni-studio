@@ -41,18 +41,19 @@ const surfaceAt = (x: number) => {
   return n <= 0 ? FLOOR_Y : FLOOR_Y - Math.min(10, n) * STEP_H;
 };
 
-/** Lines 44-45 and the 8 s hold: your mother misses a step, your snap does nothing, she falls the last steps in slow
+/** Lines 41-42 (v7) and the 4.5 s hold: your mother misses a step, your snap does nothing, she falls the last steps in slow
  *  motion, you kneel by her, she sits up and waves you off; then her bruised arm, then your face. No pause here. */
 export const Stairs: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, cues, clips } = shot;
-  const c44 = clips[44].from;
+  const c44 = clips[41].from;
   const slip = cues.stairs;
   const click = cues.nothing - 30;
-  const hold = clips[44].from + clips[44].frames;
-  const c45 = clips[45].from;
+  const hold = clips[41].from + clips[41].frames;
+  const c45 = clips[42].from;
+  const rubAt = c45 + 16;
 
   // Slow motion: from the slip on, the fall runs on its own slow clock (in frames of the fall).
-  const tau = interpolate(frame, [slip, slip + 20, hold, hold + 100, hold + 240], [0, 12, 22, 62, 140], clamp);
+  const tau = interpolate(frame, [slip, slip + 20, hold, hold + 60, hold + 150], [0, 12, 22, 62, 100], clamp);
   const p = interpolate(tau, [0, 12, 22, 62], [0, 0.18, 0.32, 1], clamp);
 
   // Your mother: down the stairs with the basket, the slip, the bumps down three steps, then sitting up.
@@ -81,12 +82,12 @@ export const Stairs: React.FC<{ shot: Shot }> = ({ shot }) => {
       mPose = lerpPose(FLAIL, RECLINE, smooth(u * 1.3));
     }
   }
-  const sitUp = ramp(frame, hold + 160, hold + 196);
-  const waveOff = frame >= hold + 196 && frame < c45;
-  const rub = frame >= c45 - 6;
+  const sitUp = ramp(frame, hold + 84, hold + 108);
+  const waveOff = frame >= hold + 108 && frame < rubAt;
+  const rub = frame >= rubAt;
   if (sitUp > 0) {
     rot = mix(60, 6, sitUp);
-    const SITTING: Pose = { ...SIT, lean: -4, armB: [24, 20], armF: waveOff ? [110 + Math.sin((frame - hold - 196) * 0.42) * 22, 60] : rub ? reach(-6, 30 + Math.sin(frame * 0.22) * 9) : [40, 40] };
+    const SITTING: Pose = { ...SIT, lean: -4, armB: [24, 20], armF: waveOff ? [110 + Math.sin((frame - hold - 108) * 0.42) * 22, 60] : rub ? reach(-6, 30 + Math.sin(frame * 0.22) * 9) : [40, 40] };
     if (rub) SITTING.armB = [-14, 10];
     mPose = lerpPose(RECLINE, SITTING, sitUp);
   }
@@ -98,7 +99,7 @@ export const Stairs: React.FC<{ shot: Shot }> = ({ shot }) => {
       : sitUp < 1
         ? { mouth: "frown" as const, brows: "worry" as const, lids: 0.55, eyes: 1, look: { x: 0.2, y: -0.3 } }
         : rub
-          ? { mouth: frame >= c45 + 30 ? ("smile" as const) : ("wobble" as const), brows: "worry" as const, lids: 0.35, eyes: 1, look: { x: -0.2, y: 0.4 } }
+          ? { mouth: frame >= rubAt + 14 ? ("smile" as const) : ("wobble" as const), brows: "worry" as const, lids: 0.35, eyes: 1, look: { x: -0.2, y: 0.4 } }
           : { mouth: "smile" as const, brows: "worry" as const, lids: 0.3, eyes: 1, look: { x: 0.8, y: 0.1 } };
 
   // The basket and the washing fly on the slow clock and settle where they land.
@@ -115,8 +116,8 @@ export const Stairs: React.FC<{ shot: Shot }> = ({ shot }) => {
   const turn = slip + 6;
   const raise = ramp(frame, click - 18, click - 2);
   const lower = ramp(frame, cues.nothing + 4, hold);
-  const runK = linear(frame, hold, hold + 110);
-  const kneelK = ramp(frame, hold + 104, hold + 124);
+  const runK = linear(frame, hold, hold + 62);
+  const kneelK = ramp(frame, hold + 56, hold + 72);
   let hx = 760;
   let hPose: Pose = { ...STAND, armF: [48, 62], tilt: 8 };
   if (frame >= turn) hPose = lerpPose(hPose, { ...STAND, armF: [30, 20] }, ramp(frame, turn, turn + 8));
@@ -133,7 +134,7 @@ export const Stairs: React.FC<{ shot: Shot }> = ({ shot }) => {
     : frame < cues.nothing
       ? { mouth: frame < click ? ("o" as const) : ("open" as const), brows: frame < click ? ("raised" as const) : ("worry" as const), lids: 0, eyes: 1.35, look: { x: 0.9, y: -0.35 } }
       : frame < c45
-        ? { mouth: frame < hold + 110 ? ("open" as const) : ("wobble" as const), brows: "worry" as const, lids: 0.1, eyes: 1.25, look: { x: 0.9, y: 0.25 } }
+        ? { mouth: frame < hold + 64 ? ("open" as const) : ("wobble" as const), brows: "worry" as const, lids: 0.1, eyes: 1.25, look: { x: 0.9, y: 0.25 } }
         : { mouth: "wobble" as const, brows: "sad" as const, lids: 0.55, eyes: 1, look: { x: 0.5, y: 0.5 } };
 
   const phone = (() => {
@@ -144,21 +145,21 @@ export const Stairs: React.FC<{ shot: Shot }> = ({ shot }) => {
 
   // Shots.
   const name = current(frame, [
-    [c44, "wide"], [turn + 7, "face"], [click - 30, "two"], [cues.nothing - 3, "fall"], [hold + 101, "foot"],
-    [hold + 171, "close"], [c45, "arm"], [cues.notyou - 12, "you"],
+    [c44, "wide"], [turn + 7, "face"], [click - 30, "two"], [cues.nothing - 3, "fall"], [hold + 56, "foot"],
+    [hold + 96, "close"], [rubAt, "arm"], [cues.notyou - 12, "you"],
   ] as [number, string][]);
   const kneelHead = { x: 1000 + 31, y: FLOOR_Y - 205 };
   const cam: Camera =
     name === "wide" ? camAt(frame, [[c44, { x: 1150, y: 600, zoom: 1.04 }], [turn + 7, { x: 1170, y: 612, zoom: 1.1 }]])
     : name === "face" ? drift({ x: 790, y: 636, zoom: 2.5 }, frame, "face")
     : name === "two" ? camAt(frame, [[click - 30, { x: 1060, y: 610, zoom: 1.42 }], [cues.nothing, { x: 1075, y: 615, zoom: 1.5 }]])
-    : name === "fall" ? camAt(frame, [[cues.nothing - 3, { x: 1110, y: 620, zoom: 1.08 }], [hold + 101, { x: 1150, y: 690, zoom: 1.32 }]])
+    : name === "fall" ? camAt(frame, [[cues.nothing - 3, { x: 1110, y: 620, zoom: 1.08 }], [hold + 56, { x: 1150, y: 690, zoom: 1.32 }]])
     : name === "foot" ? drift({ x: 1110, y: 745, zoom: 1.9 }, frame, "foot")
-    : name === "close" ? camAt(frame, [[hold + 171, { x: 1110, y: 760, zoom: 2.05 }], [c45, { x: 1120, y: 765, zoom: 2.25 }]])
+    : name === "close" ? camAt(frame, [[hold + 96, { x: 1110, y: 760, zoom: 2.05 }], [rubAt, { x: 1120, y: 765, zoom: 2.25 }]])
     : name === "arm" ? drift({ x: mother.x - 10, y: mother.y - 205, zoom: 3.8 }, frame, "arm")
     : drift({ x: kneelHead.x + 10, y: kneelHead.y + 22, zoom: 2.9 }, frame, "you");
 
-  const dark = ramp(frame, cues.nothing, hold + 200);
+  const dark = ramp(frame, cues.nothing, hold + 110);
   const lamp = toScreen(cam, LAMP.x, LAMP.y + 40);
   const heroHand = handWorld(hx, FLOOR_Y, hPose, 1, facing);
 
@@ -167,7 +168,7 @@ export const Stairs: React.FC<{ shot: Shot }> = ({ shot }) => {
     <>
       <Figure x={mother.x} y={mother.y} scale={M_SCALE} facing={-1} rotate={rot} pose={mPose} {...MOTHER} {...mFace}
         blink={blinking(frame, 5) && frame < slip} held={frame < slip + 2 ? <g transform="translate(-6 10)"><Basket /></g> : undefined} />
-      {sitUp >= 1 && frame >= c45 + 40 && <circle cx={mother.x - 20} cy={mother.y - 175} r={7} fill="#8a5aa8" opacity={0.8} />}
+      {sitUp >= 1 && frame >= rubAt + 18 && <circle cx={mother.x - 20} cy={mother.y - 175} r={7} fill="#8a5aa8" opacity={0.8} />}
       {frame >= slip + 2 && <g transform={`translate(${basketAt.x} ${basketAt.y}) rotate(${basketAt.r})`}><Basket /></g>}
       {frame >= slip + 4 && CLOTHES.map((c, i) => {
         const tt = Math.max(0, tau - 4 - i);

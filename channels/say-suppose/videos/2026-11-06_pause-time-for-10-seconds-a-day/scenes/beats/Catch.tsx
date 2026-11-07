@@ -18,11 +18,11 @@ import { Stairs } from "./Catch.Stairs";
 
 const FPS = 30;
 
-/** Beat 4's time-stops: the bus ("once" to 0.8 s after line 43) and midnight ("midnight" through line 50's curtain,
- *  colour back 0.6 s after line 50). */
+/** Beat 4's time-stops (script v7): the bus ("once" to 0.8 s after line 40) and midnight ("midnight" through
+ *  line 47's curtain, colour back 0.6 s after line 47). */
 const pauses = (cues: Record<string, number>, clips: Clip[]): Pause[] => [
-  { from: cues.once, to: lineEnd(clips, 43) + Math.round(0.8 * FPS) },
-  { from: cues.midnight2, to: lineEnd(clips, 50) + Math.round(0.6 * FPS) },
+  { from: cues.once, to: lineEnd(clips, 40) + Math.round(0.8 * FPS) },
+  { from: cues.midnight2, to: lineEnd(clips, 47) + Math.round(0.6 * FPS) },
 ];
 
 const AT_WINDOW = 1262;
@@ -83,14 +83,17 @@ const NightRoom: React.FC<{ shot: Shot; mid: Pause }> = ({ shot, mid }) => {
   const paused = frame >= mid.from && frame < mid.to;
   const shut = ramp(frame, cues.curtain, cues.curtain + 16);
   const c = (i: number) => clips[i].from;
+  const winStart = c(37) + Math.round(clips[37].frames * 0.55);
+  const eyesStart = cues.window - 34;
+  const third = Math.round((shot.to - c(48)) / 3);
 
   const name = current(frame, [
-    [shot.from, "hands"], [c(39), "face"], [lineEnd(clips, 39) + 6, "room"], [cues.window - 247, "window"], [c(41), "street"],
-    [c(41) + 106, "eyes"],
-    [c(46), "awake"], [cues.awake + 50, "awakeClose"],
-    [cues.midnight2 - 29, "bed"], [cues.midnight2 + 31, "rise"], [lineEnd(clips, 48), "city"], [c(49), "pan"],
-    [c(49) + 78, "peace"], [c(50), "curtain"], [cues.curtain + 19, "react"], [cues.curtain + 55, "both"],
-    [c(51), "night0"], [c(51) + 51, "night1"], [c(51) + 102, "night2"],
+    [shot.from, "hands"], [c(36), "face"], [lineEnd(clips, 36) + 6, "room"], [winStart, "window"], [c(38), "street"],
+    [eyesStart, "eyes"],
+    [c(43), "awake"], [cues.awake + 50, "awakeClose"],
+    [cues.midnight2 - 29, "bed"], [cues.midnight2 + 31, "rise"], [lineEnd(clips, 45), "city"], [c(46), "pan"],
+    [c(46) + 70, "peace"], [c(47), "curtain"], [cues.curtain + 19, "react"], [cues.curtain + 55, "both"],
+    [c(48), "night0"], [c(48) + third, "night1"], [c(48) + 2 * third, "night2"],
   ] as [number, string][]);
 
   // Where you are and what you do.
@@ -108,15 +111,15 @@ const NightRoom: React.FC<{ shot: Shot; mid: Pause }> = ({ shot, mid }) => {
     x = SEATED.x; y = SEATED.y; pose = SEAT;
     face = { mouth: "flat", brows: "worry", lids: frame >= cues.free - 6 ? 0.55 : 0.3, eyes: 1, look: frame >= cues.free - 6 ? { x: 0.3, y: 0.7 } : { x: 0.7, y: 0.2 } };
   } else if (name === "room") {
-    const stand = ramp(frame, c(40) + 36, c(40) + 50);
-    const walk = linear(frame, c(40) + 52, cues.window - 250);
+    const stand = ramp(frame, c(37) + 36, c(37) + 50);
+    const walk = linear(frame, c(37) + 52, winStart - 3);
     x = mix(SEATED.x, AT_WINDOW, walk); y = mix(SEATED.y, N_FLOOR, stand);
-    pose = walk > 0 && walk < 1 ? walkPose((frame - c(40)) * 0.26) : lerpPose(SEAT, STAND, stand);
+    pose = walk > 0 && walk < 1 ? walkPose((frame - c(37)) * 0.26) : lerpPose(SEAT, STAND, stand);
     face = { mouth: "flat", brows: "worry", lids: 0.35, eyes: 1, look: { x: 0.8, y: 0.15 } };
   } else if (name === "window" || name === "eyes") {
-    const k = frame - c(40);
+    const k = frame - c(37);
     face = { mouth: "flat", brows: name === "eyes" ? "flat" : "worry", lids: name === "eyes" ? 0.2 : 0.3, eyes: name === "eyes" ? 1.1 : 1,
-      look: name === "eyes" ? { x: mix(-0.3, 0.95, ramp(frame, c(41) + 106, c(41) + 150)), y: 0.45 } : { x: 0.6 + Math.sin(k / 30) * 0.35, y: 0.35 } };
+      look: name === "eyes" ? { x: mix(-0.3, 0.95, ramp(frame, eyesStart, eyesStart + 44)), y: 0.45 } : { x: 0.6 + Math.sin(k / 30) * 0.35, y: 0.35 } };
   } else if (name === "awake" || name === "awakeClose") {
     inBed = true;
     const step = Math.floor((frame - cues.awake) / 11);
@@ -129,12 +132,12 @@ const NightRoom: React.FC<{ shot: Shot; mid: Pause }> = ({ shot, mid }) => {
     face = { mouth: frame >= cues.midnight2 ? "smile" : "flat", brows: "flat", lids: frame >= cues.midnight2 ? 0.3 : 0.15, eyes: 1, look: { x: 0.9, y: -0.3 } };
   } else if (name === "rise") {
     const stand = ramp(frame, cues.midnight2 + 33, cues.midnight2 + 46);
-    const walk = linear(frame, cues.midnight2 + 46, lineEnd(clips, 48));
+    const walk = linear(frame, cues.midnight2 + 46, lineEnd(clips, 45));
     x = mix(SEATED.x, 1120, walk); y = mix(SEATED.y, N_FLOOR, stand);
     pose = walk > 0 && walk < 1 ? walkPose((frame - cues.midnight2) * 0.3) : lerpPose(SEAT, STAND, stand);
     face = { mouth: "smile", brows: "none", lids: 0.3, eyes: 1, look: { x: 0.9, y: 0 } };
   } else if (name === "city" || name === "peace") {
-    const k = frame - lineEnd(clips, 48);
+    const k = frame - lineEnd(clips, 45);
     face = { mouth: "smile", brows: "none", lids: name === "peace" ? 0.5 : 0.3, eyes: 1, look: { x: mix(0.2, 0.95, ramp(k, 0, 110)), y: mix(0.1, -0.25, ramp(k, 30, 110)) } };
   } else if (name === "react" || name === "both") {
     face = { mouth: frame >= mid.to ? "flat" : "o", brows: "raised", lids: 0, eyes: frame >= mid.to ? 1.15 : 1.35, look: { x: 0.95, y: -0.1 } };
@@ -158,30 +161,30 @@ const NightRoom: React.FC<{ shot: Shot; mid: Pause }> = ({ shot, mid }) => {
   let room = true;
   let focus: number | undefined;
   switch (name) {
-    case "hands": cam = drift({ x: 960, y: 560, zoom: mix(1, 1.08, ramp(frame, shot.from, c(39))) }, frame, "hands", 4); break;
+    case "hands": cam = drift({ x: 960, y: 560, zoom: mix(1, 1.08, ramp(frame, shot.from, c(36))) }, frame, "hands", 4); break;
     case "face": cam = drift(closeUp(head.x, head.y, 2.8), frame, "face"); break;
-    case "room": cam = camAt(frame, [[lineEnd(clips, 39) + 6, { x: 900, y: 560, zoom: 1.0 }], [cues.window - 247, { x: 1130, y: 550, zoom: 1.1 }]]); break;
-    case "window": cam = camAt(frame, [[cues.window - 247, { x: 1420, y: 520, zoom: 1.45 }], [c(41), { x: 1440, y: 540, zoom: 1.62 }]]); focus = 0.8; break;
-    case "street": cam = camAt(frame, [[c(41), camOnCity(0.78, 1250, 700, 2.0)], [c(41) + 106, camOnCity(0.78, 1560, 690, 2.25)]]); room = false; focus = 0.78; break;
+    case "room": cam = camAt(frame, [[lineEnd(clips, 36) + 6, { x: 900, y: 560, zoom: 1.0 }], [winStart, { x: 1130, y: 550, zoom: 1.1 }]]); break;
+    case "window": cam = camAt(frame, [[winStart, { x: 1420, y: 520, zoom: 1.45 }], [c(38), { x: 1440, y: 540, zoom: 1.62 }]]); focus = 0.8; break;
+    case "street": cam = camAt(frame, [[c(38), camOnCity(0.78, 1250, 700, 2.0)], [eyesStart, camOnCity(0.78, 1560, 690, 2.25)]]); room = false; focus = 0.78; break;
     case "eyes": cam = drift(closeUp(head.x, head.y, 3.4), frame, "eyes"); break;
-    case "awake": cam = camAt(frame, [[c(46), { x: 520, y: 620, zoom: 1.5 }], [cues.awake + 50, { x: 470, y: 630, zoom: 1.75 }]]); break;
+    case "awake": cam = camAt(frame, [[c(43), { x: 520, y: 620, zoom: 1.5 }], [cues.awake + 50, { x: 470, y: 630, zoom: 1.75 }]]); break;
     case "awakeClose": cam = camAt(frame, [[cues.awake + 50, { x: head.x + 40, y: head.y + 10, zoom: 2.7 }], [cues.month6, { x: head.x + 30, y: head.y + 10, zoom: 3.0 }]]); break;
     case "bed": cam = drift({ x: 430, y: 640, zoom: 1.6 }, frame, "bed"); break;
-    case "rise": cam = camAt(frame, [[cues.midnight2 + 31, { x: 920, y: 560, zoom: 1.02 }], [lineEnd(clips, 48), { x: 1000, y: 540, zoom: 1.08 }]]); break;
-    case "city": cam = camAt(frame, [[lineEnd(clips, 48), { x: 1390, y: 480, zoom: 1.32 }], [c(49), { x: 1430, y: 470, zoom: 1.6 }]]); focus = 0.6; break;
-    case "pan": cam = camAt(frame, [[c(49), camOnCity(OPP, 880, 540, 2.5)], [c(49) + 78, camOnCity(OPP, 1300, 520, 2.5)]]); room = false; focus = OPP; break;
+    case "rise": cam = camAt(frame, [[cues.midnight2 + 31, { x: 920, y: 560, zoom: 1.02 }], [lineEnd(clips, 45), { x: 1000, y: 540, zoom: 1.08 }]]); break;
+    case "city": cam = camAt(frame, [[lineEnd(clips, 45), { x: 1390, y: 480, zoom: 1.32 }], [c(46), { x: 1430, y: 470, zoom: 1.6 }]]); focus = 0.6; break;
+    case "pan": cam = camAt(frame, [[c(46), camOnCity(OPP, 880, 540, 2.5)], [c(46) + 70, camOnCity(OPP, 1300, 520, 2.5)]]); room = false; focus = OPP; break;
     case "peace": cam = drift(closeUp(head.x, head.y, 2.9), frame, "peace"); break;
-    case "curtain": cam = camAt(frame, [[c(50), cw(2.1)], [cues.curtain + 19, cw(3.6)]]); room = false; focus = OPP; break;
+    case "curtain": cam = camAt(frame, [[c(47), cw(2.1)], [cues.curtain + 19, cw(3.6)]]); room = false; focus = OPP; break;
     case "react": cam = drift(closeUp(head.x, head.y, 3.1), frame, "react"); break;
-    case "both": cam = camAt(frame, [[cues.curtain + 55, { x: 1400, y: 500, zoom: 1.5 }], [c(51), { x: 1410, y: 495, zoom: 1.62 }]]); focus = 0.6; break;
+    case "both": cam = camAt(frame, [[cues.curtain + 55, { x: 1400, y: 500, zoom: 1.5 }], [c(48), { x: 1410, y: 495, zoom: 1.62 }]]); focus = 0.6; break;
     default:
       cam = night === 0 ? drift({ x: 1395, y: 505, zoom: 1.55 }, frame, "n0")
         : night === 1 ? drift({ x: 1335, y: 560, zoom: 2.1 }, frame, "n1")
-        : camAt(frame, [[c(51) + 102, { x: 1120, y: 540, zoom: 1.12 }], [cues.check, { x: 1300, y: 560, zoom: 1.7 }]]);
+        : camAt(frame, [[c(48) + 2 * third, { x: 1120, y: 540, zoom: 1.12 }], [cues.check, { x: 1300, y: 560, zoom: 1.7 }]]);
       focus = 0.6;
   }
 
-  const clock = name === "bed" ? (frame >= cues.midnight2 ? "00:00" : "23:59") : name.startsWith("awake") ? "02:4" + Math.min(9, Math.max(0, Math.floor((frame - c(46)) / 40))) : "23:58";
+  const clock = name === "bed" ? (frame >= cues.midnight2 ? "00:00" : "23:59") : name.startsWith("awake") ? "02:4" + Math.min(9, Math.max(0, Math.floor((frame - c(43)) / 40))) : "23:58";
   const weather = name.startsWith("night") ? NIGHTS[night].weather : "clear";
   const moon = name.startsWith("night") ? NIGHTS[night].moon : 1;
   const radius = paused ? waveRadius(frame, mid) : 0;
@@ -190,7 +193,7 @@ const NightRoom: React.FC<{ shot: Shot; mid: Pause }> = ({ shot, mid }) => {
   const showHero = !["hands", "street", "pan", "curtain"].includes(name);
 
   const back = name === "hands"
-    ? <Layer cam={cam} depth={1}><g transform="translate(960 760) scale(1.5) translate(-960 -700)"><Hands frame={frame} from={shot.from} fist={ramp(frame, c(38) + 87, c(38) + 105)} /></g></Layer>
+    ? <Layer cam={cam} depth={1}><g transform="translate(960 760) scale(1.5) translate(-960 -700)"><Hands frame={frame} from={shot.from} fist={ramp(frame, c(35) + 78, c(35) + 94)} /></g></Layer>
     : <NightBack cam={cam} t={t} frame={frame} shut={shut} clock={clock} counter={name.startsWith("awake") ? "10" : undefined} weather={weather} moon={moon} room={room} />;
   const front = room && name !== "hands" ? <NightBedFront cam={cam} off={inBed ? 0 : 1} /> : undefined;
   const actors = showHero ? (
@@ -227,7 +230,7 @@ const Catch: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, cues, clips } = shot;
   const [bus, mid] = pauses(cues, clips);
   const scene = current(frame, [
-    [shot.from, "night"], [clips[42].from, "bus"], [clips[44].from, "stairs"], [clips[46].from, "night"],
+    [shot.from, "night"], [clips[39].from, "bus"], [clips[41].from, "stairs"], [clips[43].from, "night"],
     [cues.month6, "montage"], [cues.midnight2 - 29, "night"],
   ] as [number, string][]);
   return (
@@ -236,8 +239,8 @@ const Catch: React.FC<{ shot: Shot }> = ({ shot }) => {
       {scene === "bus" && <BusStop shot={shot} pause={bus} />}
       {scene === "stairs" && <Stairs shot={shot} />}
       {scene === "montage" && <Montage shot={shot} end={cues.midnight2 - 29} />}
-      <Sfx at={clips[42].from} name="street" volume={0.16} frames={bus.from - clips[42].from} />
-      <Sfx at={clips[42].from + 20} name="bus" volume={0.22} frames={bus.from - clips[42].from - 20} />
+      <Sfx at={clips[39].from} name="street" volume={0.16} frames={bus.from - clips[39].from} />
+      <Sfx at={clips[39].from + 20} name="bus" volume={0.22} frames={bus.from - clips[39].from - 20} />
       <Sfx at={bus.from} name="timestop" volume={0.45} />
       <Sfx at={bus.to - 12} name="resume" volume={0.35} />
       <Sfx at={cues.nothing - 30} name="pop" volume={0.25} />
@@ -248,5 +251,5 @@ const Catch: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const theCatch: Beat = { id: "catch", firstLine: 38, Component: Catch, pauses };
+export const theCatch: Beat = { id: "catch", firstLine: 35, Component: Catch, pauses };
 

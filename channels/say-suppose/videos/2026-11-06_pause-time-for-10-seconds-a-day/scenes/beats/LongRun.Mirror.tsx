@@ -6,6 +6,9 @@ import { drift } from "@whatif/kit/stage/shots";
 import { INK } from "@whatif/kit/theme";
 import { Tag } from "@whatif/kit/ui/Tag";
 import { blinking, camAt, linear, mix, noise, ramp, type Shot } from "../shared";
+import { LookContext } from "@whatif/kit/stage/Look";
+import { moodLook } from "@whatif/kit/stage/moods";
+import { SKY, StreetBack } from "../sets/Street";
 import { beatTimes, blendArm, Lit, You } from "./LongRun.parts";
 
 const FLOOR = 900;
@@ -46,11 +49,12 @@ const StreetBelow: React.FC<{ t: number }> = ({ t }) => (
   </g>
 );
 
-/** Lines 63-64: you squint at the mirror (2 DAYS beside it), then the camera pulls back to the window and the street of strangers. */
-export const MirrorScene: React.FC<{ shot: Shot }> = ({ shot }) => {
+/** Lines 58-59 (v7): you squint at the mirror (2 DAYS beside it), then the camera pulls back to the window and on
+ *  into the street of strangers below, which the Ending opens on. */
+const MirrorRoom: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, t, cues, clips } = shot;
   const b = beatTimes(cues, clips);
-  const notice = clips[63].from + 115; // "You'd barely notice."
+  const notice = clips[58].from + 91; // "You'd barely notice."
   const pull = b.pullBack;
   const end = shot.to;
 
@@ -68,8 +72,9 @@ export const MirrorScene: React.FC<{ shot: Shot }> = ({ shot }) => {
     [b.mirror, { x: 980, y: 640, zoom: 1.45 }],
     [pull, { x: 1000, y: 630, zoom: 1.65 }],
     [pull + 120, { x: 1420, y: 560, zoom: 1.15 }],
-    [cues.strangers - 6, { x: 1610, y: 540, zoom: 1.4 }],
-    [end, { x: 1650, y: 530, zoom: 1.52 }],
+    [cues.strangers - 36, { x: 1600, y: 560, zoom: 1.4 }],
+    [cues.strangers, { x: WINDOW.x + WINDOW.w / 2, y: WINDOW.y + 390, zoom: 3.8 }],
+    [end, { x: WINDOW.x + WINDOW.w / 2, y: WINDOW.y + 390, zoom: 4 }],
   ]), frame, "mirror", 4);
 
   const reflect = { x: MIRROR.x + 40, y: FLOOR - 4, scale: 1.0, facing: -1 as const };
@@ -138,6 +143,57 @@ export const MirrorScene: React.FC<{ shot: Shot }> = ({ shot }) => {
         <div style={{ position: "absolute", inset: 0, opacity: tagAlpha }}>
           <Tag at={cues.mirror} text="2 DAYS" x={Math.min(mirrorEdge.x, 1500)} y={interpolate(mirrorEdge.y, [0, 1080], [80, 900], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} size={76} />
         </div>
+      )}
+    </AbsoluteFill>
+  );
+};
+
+const STRANGERS = Array.from({ length: 15 }, (_, i) => {
+  const near = i >= 10;
+  return {
+    near,
+    dir: (i % 2 ? -1 : 1) as 1 | -1,
+    speed: 1.1 + noise(i + 40) * 1.2,
+    x0: near ? (i - 10) * 600 + noise(i) * 120 : i * 300 + noise(i + 20) * 90,
+    y: near ? 1008 + (i % 2) * 14 : 712 + (i % 3) * 7,
+    scale: near ? 1.15 + noise(i) * 0.1 : 0.6 + noise(i) * 0.1,
+    head: ["#7fa0c4", "#e6a0a0", "#7fc29b", "#b58fc7", "#d9c26a", "#c96f2d", "#e0a070"][i % 7],
+    coat: i % 4 === 1 ? ["#5d6f8a", "#7a5a48", "#4f6b5a"][i % 3] : undefined,
+  };
+});
+
+/** The street below at dusk, full of strangers walking: the beat ends here and the Ending opens on it. */
+const StreetOfStrangers: React.FC<{ frame: number; t: number; from: number; to: number }> = ({ frame, t, from, to }) => {
+  const cam: Camera = drift(camAt(frame, [[from, { x: 1050, y: 560, zoom: 1.32 }], [to, { x: 1020, y: 650, zoom: 1.12 }]]), frame, "strangers", 5);
+  const actors = (
+    <>
+      {[...STRANGERS].sort((a, b) => a.y - b.y).map((p, i) => {
+        const x = ((((p.x0 + p.dir * p.speed * t) % 3000) + 3000) % 3000) - 300;
+        return (
+          <Figure key={i} x={x} y={p.y} scale={p.scale} facing={p.dir} head={p.head} coat={p.coat} pose={walkPose(t * 0.28 + i * 1.7)}
+            look={{ x: 0.6, y: 0 }} mouth={i % 3 === 0 ? "smile" : "flat"} blink={blinking(frame, i)} time={t} />
+        );
+      })}
+    </>
+  );
+  return (
+    <LookContext.Provider value={moodLook("dusk")}>
+      <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} sky={SKY} back={<StreetBack cam={cam} frame={frame} t={t} />} actors={actors} />
+    </LookContext.Provider>
+  );
+};
+
+export const MirrorScene: React.FC<{ shot: Shot }> = ({ shot }) => {
+  const { frame, t, cues } = shot;
+  const fadeFrom = cues.strangers - 18;
+  const k = ramp(frame, fadeFrom, cues.strangers + 2);
+  return (
+    <AbsoluteFill>
+      {k < 1 && <MirrorRoom shot={shot} />}
+      {k > 0 && (
+        <AbsoluteFill style={{ opacity: k }}>
+          <StreetOfStrangers frame={frame} t={t} from={fadeFrom} to={shot.to} />
+        </AbsoluteFill>
       )}
     </AbsoluteFill>
   );

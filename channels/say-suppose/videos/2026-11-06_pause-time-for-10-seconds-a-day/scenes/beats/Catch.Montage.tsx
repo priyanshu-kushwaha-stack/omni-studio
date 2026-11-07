@@ -33,18 +33,19 @@ const Car: React.FC<{ x: number; y: number; color: string }> = ({ x, y, color })
   </g>
 );
 
-/** Line 47, MONTH 6: two-second shots of you watching, at the crossing, on the bus, at the foot of the stairs. */
+/** Line 44 (v7), MONTH 6: two-second shots of you watching, at the crossing, on the bus, at the foot of the stairs. */
 export const Montage: React.FC<{ shot: Shot; end: number }> = ({ shot, end }) => {
   const { frame, t, cues } = shot;
   const m = cues.month6;
-  const name = current(frame, [[m, "crossing"], [m + 50, "bus"], [m + 100, "stairs"]] as [number, string][]);
-  const local = frame - (name === "crossing" ? m : name === "bus" ? m + 50 : m + 100);
+  const len = Math.round((end - m) / 3);
+  const name = current(frame, [[m, "crossing"], [m + len, "bus"], [m + 2 * len, "stairs"]] as [number, string][]);
+  const local = frame - (name === "crossing" ? m : name === "bus" ? m + len : m + 2 * len);
   const dart = Math.floor(local / 13) % 3;
 
   let cam: Camera;
   let scene: React.ReactNode;
   if (name === "crossing") {
-    cam = drift({ x: mix(1080, 1120, local / 50), y: 760, zoom: 1.5 }, frame, "m1");
+    cam = drift({ x: mix(1080, 1120, local / len), y: 760, zoom: 1.5 }, frame, "m1");
     const lampAt = toScreen(cam, 872, 486);
     scene = (
       <Lit extra={{ glows: [{ x: lampAt.x, y: lampAt.y, r: 520, color: "rgba(255,214,140,0.55)" }] }}>
@@ -86,7 +87,7 @@ export const Montage: React.FC<{ shot: Shot; end: number }> = ({ shot, end }) =>
     );
   } else {
     cam = drift({ x: 1300, y: 640, zoom: 1.45 }, frame, "m3");
-    const st = mix(6, 3.2, ramp(frame, m + 100, end));
+    const st = mix(6, 3.2, ramp(frame, m + 2 * len, end));
     const mx = STAIR_X + (st - 0.5) * STEP_W;
     const my = FLOOR_Y - st * STEP_H - Math.abs(Math.sin(Math.PI * st)) * 5;
     const lamp = toScreen(cam, LAMP.x, LAMP.y + 40);

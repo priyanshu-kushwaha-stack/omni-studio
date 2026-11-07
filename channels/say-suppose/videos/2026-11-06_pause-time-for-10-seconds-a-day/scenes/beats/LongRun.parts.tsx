@@ -9,19 +9,19 @@ import { HERO, mix, MOTHER } from "../shared";
 export const SHORT = 34;
 export function beatTimes(cues: Record<string, number>, clips: Clip[]) {
   const L = (i: number) => clips[i].from;
-  const lane = cues.vault + 8;            // the cloud has popped: cut to the cricket
-  const hit = cues.six_hit - 20;          // bat meets ball
-  const cuts = L(55) + 94;                // "It's exactly the right size for an accident."
+  const lane = L(49);                     // the beat opens on the lane cricket
+  const hit = L(49) + 1;                  // bat meets ball on the first frames; "six" follows at once
+  const cuts = L(50) + 78;                // "It's exactly the right size for an accident."
   const bottleSnap = cuts + 12;
   const panCut = cuts + 80;
   const panSnap = panCut + 10;
   const todCut = cues.small - 14;
-  const mother = L(57);
-  const year40 = L(60);
-  const corner = L(61);
-  const clocks = L(62);
-  const mirror = L(63);
-  const pullBack = L(64);
+  const mother = L(52);
+  const year40 = L(55);
+  const corner = L(56);
+  const clocks = L(57);
+  const mirror = L(58);
+  const pullBack = L(59);
   return { lane, hit, cuts, bottleSnap, panCut, panSnap, todCut, mother, year40, corner, clocks, mirror, pullBack };
 }
 

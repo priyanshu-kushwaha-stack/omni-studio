@@ -9,10 +9,10 @@ import { armTo, beatTimes, blendArm, headAt, Lit, Mother, smooth, You } from "./
 export const MotherScene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, cues, clips } = shot;
   const b = beatTimes(cues, clips);
-  const q = clips[58].from;   // "Promise her, or keep watching?"
-  const watching = q + 33;    // "or keep watching"
+  const q = clips[53].from;   // "Promise her, or keep watching?"
+  const watching = q + 17;    // "or keep watching"
   const stay = cues.stay;
-  const end = clips[60].from;
+  const end = clips[55].from;
 
   // her walk down: from step 6 to step 2, then off the bottom step to the floor beside you
   const shake = linear(frame, stay + 22, stay + 58);

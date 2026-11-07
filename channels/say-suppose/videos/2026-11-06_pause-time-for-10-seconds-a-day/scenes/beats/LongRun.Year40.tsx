@@ -138,13 +138,13 @@ const Corner: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, t, cues, clips } = shot;
   const b = beatTimes(cues, clips);
   const start = b.corner;
-  const ladderLook = clips[61].from + 16;    // "accident"
+  const ladderLook = clips[56].from + 13;    // "accident"
   const dogLook = cues.before + 13;          // "it happens"
-  const carLook = clips[61].from + 87;       // "Most days"
+  const carLook = clips[56].from + 69;       // "Most days"
   const act = carLook + 4;
   const steady = act + 36;
   const whistle = act + 46;
-  const driverUp = clips[61].from + 147;     // "pause"
+  const driverUp = clips[56].from + 122;     // "pause"
 
   const stepK = ramp(frame, act, act + 26);
   const youX = mix(900, 1150, stepK);
@@ -165,7 +165,7 @@ const Corner: React.FC<{ shot: Shot }> = ({ shot }) => {
 
   const cam = cutAt(frame, [
     [start, drift(camAt(frame, [[start, { x: 1120, y: 780, zoom: 1.3 }], [act, { x: 1110, y: 770, zoom: 1.45 }]]), frame, "corner", 4)],
-    [act, drift(camAt(frame, [[act, { x: 1150, y: 760, zoom: 1.08 }], [clips[62].from, { x: 1170, y: 770, zoom: 1.14 }]]), frame, "corner2", 5)],
+    [act, drift(camAt(frame, [[act, { x: 1150, y: 760, zoom: 1.08 }], [clips[57].from, { x: 1170, y: 770, zoom: 1.14 }]]), frame, "corner2", 5)],
   ]);
   const look = frame < ladderLook ? { x: 0.5, y: 0 }
     : frame < dogLook ? { x: 1, y: -0.8 }

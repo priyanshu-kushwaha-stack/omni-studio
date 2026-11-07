@@ -10,7 +10,7 @@ import { Bubble, Counter, evenTicks } from "../parts";
 import { blinking, camAt, current, HERO, linear, mix, ramp, type Shot } from "../shared";
 import { armTo, blendArm, body, firstDaysPauses, onLayer, Sfx } from "./FirstDays.common";
 
-/** Lines 15-16 (the boss) and 20-24 (the clock that sticks, the remote): the office hallway from the owner's sample,
+/** Lines 14-15 (the boss) and 19-21 (the clock that sticks, the remote): the office hallway from the owner's sample,
  *  with an office door that opens and a wall clock. */
 
 const FLOOR = 800;
@@ -49,13 +49,13 @@ const Clock: React.FC<{ second: number }> = ({ second }) => {
 };
 
 /** The sample's hallway: wall, doors, frames and lights at depth 0.85; the floor and a plant at depth 1. */
-const HallBack: React.FC<{ cam: Camera; door?: number; second?: number }> = ({ cam, door = 0, second }) => (
+const HallBack: React.FC<{ cam: Camera; door?: number; second?: number; plain?: boolean; plant?: boolean }> = ({ cam, door = 0, second, plain, plant = true }) => (
   <>
     <Layer cam={cam} depth={WALL_DEPTH}>
       <rect x={-400} y={-300} width={3000} height={1500} fill="#f2dfc0" />
       <rect x={-400} y={560} width={3000} height={240} fill="#cf9d6e" />
       <rect x={-400} y={552} width={3000} height={12} fill="#8a5c3b" />
-      {[-140, 300, 740, 1180, 1620, 2060].map((d, i) => (
+      {!plain && [-140, 300, 740, 1180, 1620, 2060].map((d, i) => (
         <g key={d}>
           {d === BOSS_DOOR && door > 0 && <rect x={d} y={330} width={190} height={470} fill="#2d2a33" />}
           <g transform={d === BOSS_DOOR ? `translate(${d} 0) scale(${1 - 0.8 * door} 1) translate(${-d} 0)` : undefined}>
@@ -71,6 +71,12 @@ const HallBack: React.FC<{ cam: Camera; door?: number; second?: number }> = ({ c
           )}
         </g>
       ))}
+      {plain && [-180, 820, 2000].map((d) => (
+        <g key={d}>
+          <rect x={d} y={330} width={230} height={150} rx={5} fill="#fff6e3" stroke={INK} strokeWidth={6} />
+          <path d={`M${d + 20} 460 l50 -70 l34 40 l26 -26 l60 56Z`} fill="#7fc29b" opacity={0.85} />
+        </g>
+      ))}
       {second !== undefined && <Clock second={second} />}
       {[0, 440, 880, 1320, 1760, 2200].map((l) => (
         <rect key={l} x={l - 100} y={150} width={200} height={20} rx={8} fill="#fffbe6" />
@@ -80,22 +86,22 @@ const HallBack: React.FC<{ cam: Camera; door?: number; second?: number }> = ({ c
     <Layer cam={cam} depth={1}>
       <rect x={-500} y={FLOOR} width={3400} height={500} fill="#7d8c91" />
       <rect x={-500} y={FLOOR + 90} width={3400} height={10} fill="#677579" />
-      <g transform="translate(1810 800)">
+      {plant && <g transform="translate(1810 800)">
         <path d="M-46 0 L-34 -80 H34 L46 0Z" fill="#b55f3b" />
         <path d="M0 -80 Q-90 -160 -70 -230 Q-20 -190 0 -100 Q10 -210 60 -250 Q70 -160 0 -80Z" fill="#1d9a8f" />
-      </g>
+      </g>}
     </Layer>
   </>
 );
 
-/** Lines 15-16: the boss steps out waving; "Vanish." You tiptoe under his arm; he blinks at the empty hallway. */
+/** Lines 14-15: the boss steps out waving; "Vanish." You tiptoe under his arm; he blinks at the empty hallway. */
 export const BossHallway: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, t, wc, cues, clips } = shot;
   const pause = firstDaysPauses(cues, clips).boss;
-  const start = clips[15].from;
-  const end = clips[17].from;
+  const start = clips[14].from;
+  const end = clips[16].from;
 
-  const shotName = current(frame, [[start, "wide"], [start + 73, "you"], [start + 131, "two"], [pause.to, "boss"]] as [number, string][]);
+  const shotName = current(frame, [[start, "wide"], [start + 66, "you"], [cues.vanish - 34, "two"], [pause.to, "boss"]] as [number, string][]);
 
   // The boss: the door opens on "boss", he steps out and waves (world time, so he freezes).
   const out = ramp(t, wc(cues.boss), wc(cues.boss) + 20);
@@ -125,12 +131,12 @@ export const BossHallway: React.FC<{ shot: Shot }> = ({ shot }) => {
     pose = tiptoePose(frame * 0.55);
   }
   const hero = body(x, y, pose, 1);
-  const decide = cues.boss + 105; // "vanish?"
+  const decide = cues.boss + 96; // "vanish?"
 
   const cams: Record<string, Camera> = {
     wide: drift({ x: 1090, y: 560, zoom: 1.15 }, frame, "bw"),
     you: drift(closeUp(hero.head.x + 30, hero.head.y, 2.6), frame, "byou"),
-    two: camAt(frame, [[start + 131, { x: 1150, y: 580, zoom: 1.3 }], [pause.to, { x: 1190, y: 585, zoom: 1.38 }]]),
+    two: camAt(frame, [[cues.vanish - 34, { x: 1150, y: 580, zoom: 1.3 }], [pause.to, { x: 1190, y: 585, zoom: 1.38 }]]),
     boss: drift(closeUp(bossHead.x - 90, bossHead.y, 2.4), frame, "bboss"),
   };
   const cam = cams[shotName];
@@ -215,81 +221,76 @@ const Remote: React.FC<{ rotate?: number }> = ({ rotate = 0 }) => (
   </g>
 );
 
-/** Lines 20-24: the clock that sticks when your eyes jump to it, then the remote. Perception, not pauses. */
+/** Lines 19-21: the clock that sticks (one big insert), your face with the word, then the remote. Perception, not
+ *  pauses. Three compositions, all on a plain stretch of the hallway wall, so no door repeats behind you. */
 export const ClockHallway: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, cues, clips } = shot;
-  const X = 1450;
-  const l20 = clips[20].from;
-  const l21 = clips[21].from;
-  const l22 = clips[22].from;
-  const l23 = clips[23].from;
-  const l24 = clips[24].from;
-  // The tick lands on the glance, then sticks; the same again, shorter, on "clock" in line 23.
-  const glance1 = cues.stick - 6;
-  const glance2 = l23 + 125;
-  const sticks = [{ at: glance1 + 4, len: 45 }, { at: glance2 + 4, len: 26 }];
-  const base = glance1 - 30 * Math.ceil((glance1 - l20) / 30) - 30;
+  const X = 1600;
+  const lClock = clips[19].from;
+  const lReal = clips[20].from;
+  const lRemote = clips[21].from;
+  // A tick lands on "stick" and the hand holds for over two seconds, then jumps and ticks on.
+  const sticks = [{ at: cues.stick + 4, len: 40 }];
+  const base = cues.stick - 30 * Math.ceil((cues.stick - lClock) / 30) - 30;
   const second = secondHand(frame, base, sticks);
+  const jump = cues.stick + 30 + 40;
 
-  const shotName = current(frame, [
-    [l20, "clock"], [cues.clock, "you"], [l21, "two"], [glance1 - 16, "push"], [l22 + 10, "term"], [l23, "eyes"], [l23 + 89, "catch"], [l24, "remote"],
-  ] as [number, string][]);
+  const faceAt = jump + 8;
+  const walkEnd = cues.remote - 44;
+  const handAt = cues.remote - 30;
+  const shotName = current(frame, [[lClock, "clock"], [faceAt, "face"], [lRemote, "walk"], [handAt, "hand"]] as [number, string][]);
 
-  // Eye darts: on "pause" (20), on "glanced" and the glance before "stick" (21), three on "jump" (23), on "clock" (23).
-  const darts: [number, { x: number; y: number }][] = [
-    [l20, { x: 0.3, y: 0.3 }], [cues.clock, { x: 1, y: -0.9 }], [cues.clock + 30, { x: 0.4, y: 0.2 }],
-    [l21 + 13, { x: 1, y: -0.9 }], [l21 + 40, { x: 0.3, y: 0.3 }], [glance1, { x: 1, y: -0.9 }],
-    [l22 + 30, { x: 0.5, y: 0 }],
-    [cues.darts, { x: -0.9, y: 0.3 }], [cues.darts + 7, { x: 1, y: -0.6 }], [cues.darts + 14, { x: 0.1, y: 0.9 }], [cues.darts + 22, { x: 0.4, y: 0 }],
-    [glance2, { x: 1, y: -0.9 }], [glance2 + 48, { x: 0.5, y: 0 }],
-    [l24 + 30, { x: 0.2, y: 0 }], [l24 + 92, { x: 0.6, y: 0.9 }], [cues.remote + 22, { x: -0.1, y: 0.1 }],
-  ];
-  const look = darts.reduce((on, [at, l]) => (frame >= at ? l : on), darts[0][1]);
-
-  // The remote: your palm rises after "life", the remote drops in on "remote".
-  const palm = ramp(frame, l24 + 92, l24 + 115);
+  // You: looking up at the clock, then at us as the word lands; then a stroll, a palm, the remote.
+  const walkK = linear(frame, lRemote, walkEnd);
+  const x = shotName === "walk" ? mix(X - 330, X, walkK) : X;
+  const walking = shotName === "walk" && walkK < 1;
   const head = body(X, HERO_Y, STAND).head;
+  const palm = ramp(frame, walkEnd, walkEnd + 12);
   const palmAt = { x: X + 92, y: head.y + 150 };
   const arm = blendArm(STAND.armF, armTo(X, HERO_Y, STAND, 1, 1, palmAt.x, palmAt.y), palm);
-  const pose: Pose = { ...STAND, armF: arm };
+  const pose: Pose = walking ? walkPose(x / 15) : { ...STAND, armF: arm };
   const caught = frame >= cues.remote;
-  const fallY = mix(palmAt.y - 520, palmAt.y - 30, Math.pow(linear(frame, cues.remote - 14, cues.remote), 2));
+  const fallK = linear(frame, cues.remote - 14, cues.remote);
+  const fallY = mix(palmAt.y - 330, palmAt.y - 30, fallK * fallK);
 
-  const expression = (() => {
-    if (shotName === "remote") return caught ? { mouth: "smile" as const, brows: "raised" as const, lids: 0 } : { mouth: "smirk" as const, brows: "none" as const, lids: 0 };
-    if (frame >= glance2 + 14 && frame < l24) return { mouth: "flat" as const, brows: "flat" as const, lids: 0.45 };
-    if (frame >= glance1 + 8 && frame < l22 + 40) return { mouth: "o" as const, brows: "raised" as const, lids: 0 };
-    if (frame >= l22 + 40 && frame < l23) return { mouth: "smile" as const, brows: "raised" as const, lids: 0 };
-    return { mouth: "flat" as const, brows: "none" as const, lids: 0 };
-  })();
+  const looks: [number, { x: number; y: number }][] = [
+    [faceAt, { x: 1, y: -0.9 }], [lReal + 12, { x: 0.15, y: 0.05 }], [lReal + 40, { x: 1, y: -0.9 }], [lReal + 52, { x: 0.15, y: 0.05 }],
+    [lRemote, { x: 0.8, y: 0 }], [walkEnd - 6, { x: 0.6, y: 0.9 }], [cues.remote + 20, { x: 0.1, y: 0.05 }],
+  ];
+  const look = looks.reduce((on, [at, l]) => (frame >= at ? l : on), looks[0][1]);
+  const face = shotName === "face"
+    ? frame < lReal + 12
+      ? { mouth: "o" as const, brows: "raised" as const, lids: 0, eyes: 1.25 }
+      : frame < cues.term
+        ? { mouth: "smile" as const, brows: "none" as const, lids: 0, eyes: 1 }
+        : { mouth: "smirk" as const, brows: "raised" as const, lids: 0.15, eyes: 1 }
+    : caught
+      ? { mouth: "smile" as const, brows: "raised" as const, lids: 0, eyes: 1.1 }
+      : { mouth: "smirk" as const, brows: "none" as const, lids: 0, eyes: 1 };
 
-  const clockCam: Camera = { x: CLOCK.x / WALL_DEPTH + 40, y: CLOCK.y / WALL_DEPTH - 10, zoom: 3.2 };
+  const clockCam: Camera = { x: CLOCK.x / WALL_DEPTH, y: CLOCK.y / WALL_DEPTH, zoom: 4.2 };
   const cams: Record<string, Camera> = {
-    clock: drift(camAt(frame, [[l20, clockCam], [cues.clock, { ...clockCam, zoom: 3.5 }]]), frame, "clk"),
-    you: drift(closeUp(head.x + 40, head.y, 2.8), frame, "cy"),
-    two: camAt(frame, [[l21, { x: 1403, y: 520, zoom: 1.8 }], [glance1 - 16, { x: 1415, y: 515, zoom: 1.95 }]]),
-    push: camAt(frame, [[glance1 - 16, { x: 1440, y: 500, zoom: 2.1 }], [glance1 + 40, { x: 1520, y: 470, zoom: 2.6 }], [l22 + 10, { x: 1530, y: 465, zoom: 2.65 }]]),
-    term: drift({ x: 1403, y: 520, zoom: 1.9 }, frame, "ct"),
-    eyes: drift(closeUp(head.x - 30, head.y, 4.6), frame, "ce", 3),
-    catch: camAt(frame, [[l23 + 89, { x: 1403, y: 520, zoom: 1.9 }], [l24, { x: 1440, y: 500, zoom: 2.15 }]]),
-    remote: camAt(frame, [[l24, drift({ x: 1500, y: 600, zoom: 1.6 }, frame, "cr")], [cues.remote, { x: 1480, y: 640, zoom: 2.05 }], [shot.to, { x: 1478, y: 642, zoom: 2.15 }]]),
+    clock: drift(camAt(frame, [[lClock, clockCam], [cues.stick, { ...clockCam, zoom: 4.7 }], [faceAt, { ...clockCam, zoom: 5.3 }]]), frame, "clk", 3),
+    face: drift(camAt(frame, [[faceAt, { x: head.x + 100, y: head.y - 40, zoom: 3.1 }], [lRemote, { x: head.x + 95, y: head.y - 36, zoom: 3.35 }]]), frame, "cf"),
+    walk: camAt(frame, [[lRemote, { x: X - 250, y: 560, zoom: 1.45 }], [handAt, { x: X - 20, y: 570, zoom: 1.6 }]]),
+    hand: camAt(frame, [[handAt, { x: palmAt.x - 60, y: 690, zoom: 2.5 }], [shot.to, { x: palmAt.x - 70, y: 680, zoom: 2.75 }]]),
   };
   const cam = cams[shotName];
 
-  const back = <HallBack cam={cam} second={second} />;
-  const actors = (
+  const back = <HallBack cam={cam} second={second} plain plant={shotName !== "clock"} />;
+  const actors = shotName === "clock" ? null : (
     <>
-      {shotName === "remote" && !caught && frame >= cues.remote - 14 && (
-        <g transform={`translate(${palmAt.x} ${fallY}) rotate(${mix(-60, -20, linear(frame, cues.remote - 14, cues.remote))})`}><Remote /></g>
+      {shotName === "hand" && !caught && frame >= cues.remote - 14 && (
+        <g transform={`translate(${palmAt.x} ${fallY}) rotate(${mix(-150, -70, fallK)})`}><Remote /></g>
       )}
       <Figure
         {...HERO}
-        x={X} y={HERO_Y}
+        x={x} y={HERO_Y}
         pose={pose}
-        {...expression}
-        eyes={shotName === "eyes" ? 1.3 : frame >= glance1 && frame < glance1 + 40 ? 1.2 : 1}
+        {...face}
         look={look}
-        blink={blinking(frame, 11) && shotName !== "eyes"}
+        blink={blinking(frame, 11)}
+        flow={walking ? 0.25 : 0}
         time={frame}
         held={caught ? <g transform={`translate(0 ${-6 + 6 * Math.min(1, (frame - cues.remote) / 5)}) rotate(-70)`}><Remote /></g> : undefined}
       />
@@ -299,7 +300,7 @@ export const ClockHallway: React.FC<{ shot: Shot }> = ({ shot }) => {
   return (
     <AbsoluteFill>
       <Stage cam={cam} radius={0} origin={clockScreen} back={back} actors={actors} />
-      {shotName === "term" && <Tag at={cues.term} text="CHRONOSTASIS" x={300} y={250} size={64} tilt={-2} bg={CRIMSON} color="#fff6e3" />}
+      {shotName === "face" && <Tag at={cues.term} text="CHRONOSTASIS" x={1100} y={600} size={64} tilt={-2} bg={CRIMSON} color="#fff6e3" />}
       <Sfx at={cues.remote} name="pop" volume={0.45} until={shot.to} />
     </AbsoluteFill>
   );

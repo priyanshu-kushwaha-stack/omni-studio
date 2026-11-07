@@ -18,7 +18,7 @@ const DOOR = { x0: 118, x1: 232, y0: 630, y1: 850 };
 const SEAT_WIN = { x0: 250, x1: 350, y0: 640, y1: 724 };
 const KERB = { x: 1190, y: 1010, s: 1.3 };
 
-/** Lines 42-43: late for the bus; the doors close; you snap, stroll aboard through the frozen doors, and sit. */
+/** Lines 39-40 (v7): late for the bus; the doors close; you snap, stroll aboard through the frozen doors, and sit. */
 export const BusStop: React.FC<{ shot: Shot; pause: Pause }> = ({ shot, pause }) => {
   const { frame, t, wc, cues, clips } = shot;
   const paused = frame >= pause.from && frame < pause.to;
@@ -27,16 +27,16 @@ export const BusStop: React.FC<{ shot: Shot; pause: Pause }> = ({ shot, pause })
   const go = Math.max(0, t - (tOnce + 8));
   const busX = BF - go * go * 0.09;
 
-  const shotName = current(frame, [[clips[42].from, "wide"], [cues.doors, "doors"], [cues.doors + 44, "hand"], [clips[43].from - 10, "board"]] as [number, string][]);
+  const shotName = current(frame, [[clips[39].from, "wide"], [cues.doors, "doors"], [cues.doors + 44, "hand"], [clips[40].from - 10, "board"]] as [number, string][]);
   const cam: Camera =
-    shotName === "wide" ? camAt(frame, [[clips[42].from, { x: 980, y: 640, zoom: 1.05 }], [cues.doors, { x: 1200, y: 660, zoom: 1.1 }]])
+    shotName === "wide" ? camAt(frame, [[clips[39].from, { x: 980, y: 640, zoom: 1.05 }], [cues.doors, { x: 1200, y: 660, zoom: 1.1 }]])
     : shotName === "doors" ? drift({ x: 1340, y: 740, zoom: 1.6 }, frame, "door")
-    : shotName === "hand" ? camAt(frame, [[cues.doors + 44, { x: 1218, y: 740, zoom: 2.3 }], [clips[43].from - 10, { x: 1224, y: 728, zoom: 2.45 }]])
-    : camAt(frame, [[clips[43].from - 10, { x: 1350, y: 770, zoom: 1.42 }], [pause.to, { x: 1395, y: 752, zoom: 1.55 }]]);
+    : shotName === "hand" ? camAt(frame, [[cues.doors + 44, { x: 1218, y: 740, zoom: 2.3 }], [clips[40].from - 10, { x: 1224, y: 728, zoom: 2.45 }]])
+    : camAt(frame, [[clips[40].from - 10, { x: 1350, y: 770, zoom: 1.42 }], [pause.to, { x: 1395, y: 752, zoom: 1.55 }]]);
 
   // You: run in, stop at the kerb, hand twitching; snap; stroll to the doors and in; then sit by the window.
   const arrive = cues.doors + 24;
-  const run = linear(frame, clips[42].from, arrive);
+  const run = linear(frame, clips[39].from, arrive);
   const stroll = ramp(frame, pause.from + 9, pause.from + 35);
   const stepIn = linear(frame, pause.from + 35, pause.from + 45);
   const seated = frame >= pause.from + 44;
@@ -44,10 +44,10 @@ export const BusStop: React.FC<{ shot: Shot; pause: Pause }> = ({ shot, pause })
   let y = KERB.y;
   let s = KERB.s;
   let pose: Pose;
-  if (frame < arrive) pose = runPose((frame - clips[42].from) * 0.45);
+  if (frame < arrive) pose = runPose((frame - clips[39].from) * 0.45);
   else if (frame < cues.doors + 44) pose = lerpPose(runPose(0), { ...STAND, lean: 6, drop: 4 }, ramp(frame, arrive, arrive + 10));
-  else if (frame < clips[43].from + 5) pose = { ...STAND, armF: [70, 78] };
-  else if (frame < pause.from + 9) pose = lerpPose({ ...STAND, armF: [70, 78] }, SNAP, ramp(frame, clips[43].from + 5, pause.from));
+  else if (frame < clips[40].from + 5) pose = { ...STAND, armF: [70, 78] };
+  else if (frame < pause.from + 9) pose = lerpPose({ ...STAND, armF: [70, 78] }, SNAP, ramp(frame, clips[40].from + 5, pause.from));
   else pose = lerpPose(SNAP, walkPose((frame - pause.from) * 0.32), ramp(frame, pause.from + 6, pause.from + 14));
   if (frame >= pause.from + 9) {
     x = mix(KERB.x, 1378, stroll) + stepIn * 90;
@@ -55,20 +55,21 @@ export const BusStop: React.FC<{ shot: Shot; pause: Pause }> = ({ shot, pause })
     s = mix(KERB.s, 0.95, stroll);
   }
   const inDoor = frame >= pause.from + 33;
-  const twitch = frame >= cues.doors + 44 && frame < clips[43].from + 5 ? linear(frame, cues.doors + 44, clips[43].from) * 3 + (frame % 23 < 6 ? 0.4 : 0) : 0;
+  const twitch = frame >= cues.doors + 44 && frame < clips[40].from + 5 ? linear(frame, cues.doors + 44, clips[40].from) * 3 + (frame % 23 < 6 ? 0.4 : 0) : 0;
   const snapK = ramp(frame, pause.from - 6, pause.from);
   const forearm = pose.armF[0] + pose.armF[1];
   const hand = handWorld(x, y, pose, s, 1);
   const origin = toScreen(cam, hand.x, hand.y);
 
   const dartAt = frame - (cues.doors + 44);
+  const keep = clips[39].from + Math.round(clips[39].frames * 0.78);
   const look = shotName === "hand"
     ? (Math.floor(dartAt / 14) % 2 === 0 ? { x: 0.95, y: -0.1 } : { x: 0.35, y: 0.75 })
     : { x: 0.9, y: 0 };
-  const face = frame >= clips[43].from
+  const face = frame >= clips[40].from
     ? { mouth: "smirk" as const, brows: "raised" as const, lids: 0.25, eyes: 1 }
     : frame >= cues.doors + 44
-      ? { mouth: frame >= 6569 ? ("flat" as const) : ("o" as const), brows: frame >= 6569 ? ("angry" as const) : ("worry" as const), lids: frame >= 6569 ? 0.25 : 0, eyes: 1.15 }
+      ? { mouth: frame >= keep ? ("flat" as const) : ("o" as const), brows: frame >= keep ? ("angry" as const) : ("worry" as const), lids: frame >= keep ? 0.25 : 0, eyes: 1.15 }
       : { mouth: frame < arrive ? ("open" as const) : ("o" as const), brows: "worry" as const, lids: 0, eyes: 1.2 };
 
   const door = { a: busPoint(busX, DOOR.x0, DOOR.y0), b: busPoint(busX, DOOR.x1, DOOR.y1) };
@@ -126,7 +127,7 @@ export const BusStop: React.FC<{ shot: Shot; pause: Pause }> = ({ shot, pause })
         <g clipPath={clipId ? `url(#${clipId})` : undefined}>
           <Figure {...HERO} x={x} y={y} scale={s} pose={pose} {...face} look={look} time={frame} flow={frame < arrive ? 0.9 : 0.15}
             blink={!paused && blinking(frame, 2)}
-            held={shotName === "hand" || (frame >= clips[43].from && frame < pause.from + 10)
+            held={shotName === "hand" || (frame >= clips[40].from && frame < pause.from + 10)
               ? <Fingers angle={forearm} twitch={twitch} snap={snapK} /> : undefined} />
         </g>
       )}

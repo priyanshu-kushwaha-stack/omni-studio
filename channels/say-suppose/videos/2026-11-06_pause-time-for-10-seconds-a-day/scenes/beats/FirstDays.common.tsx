@@ -10,7 +10,7 @@ export const firstDaysPauses = (cues: Record<string, number>, clips: Clip[]) => 
   /** "Not today." until just after "crack", when the phone is in your hand. */
   phone: { from: cues.snap2, to: cues.crack + 8 } as Pause,
   /** "Vanish." until about a second after the line ends. */
-  boss: { from: cues.vanish, to: lineEnd(clips, 16) + 24 } as Pause,
+  boss: { from: cues.vanish, to: lineEnd(clips, 15) + 24 } as Pause,
   /** A short stop on "saint": swap the samosa for a napkin. */
   samosa: { from: cues.swap, to: cues.swap + 50 } as Pause,
   /** The chappal hangs until just after "aside". */

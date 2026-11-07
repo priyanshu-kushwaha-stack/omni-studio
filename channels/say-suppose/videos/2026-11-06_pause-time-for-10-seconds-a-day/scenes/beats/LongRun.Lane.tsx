@@ -6,7 +6,7 @@ import { drift } from "@whatif/kit/stage/shots";
 import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, HEIGHT, INK, PAPER, WIDTH } from "@whatif/kit/theme";
 import { Counter, evenTicks } from "../parts";
-import { blinking, camAt, cutAt, linear, mix, noise, ramp, type Shot } from "../shared";
+import { blinking, camAt, cutAt, lineEnd, linear, mix, noise, ramp, type Shot } from "../shared";
 import { armTo, beatTimes, blendArm, handAt, KID_HEADS, smooth, You } from "./LongRun.parts";
 
 /** The Lane: a narrow street-cricket lane between old houses. Feet at LANE_Y. */
@@ -123,107 +123,6 @@ const Bat: React.FC<{ angle: number }> = ({ angle }) => (
   </g>
 );
 
-/* ---------- the daydream: a thought cloud over you, sitting on the doorstep ---------- */
-
-const CLOUD = { x: 1230, y: 330 };
-const CLOUD_PUFFS: [number, number, number][] = [
-  [-200, -40, 130], [-60, -110, 140], [110, -100, 140], [230, -20, 120], [170, 90, 120], [0, 110, 130], [-170, 80, 120], [0, 0, 190],
-];
-
-const MiniCounter: React.FC<{ n: number; x: number; y: number }> = ({ n, x, y }) => (
-  <g transform={`translate(${x} ${y})`}>
-    <rect x={-30} y={-38} width={60} height={76} rx={10} fill={INK} />
-    <line x1={-30} x2={30} y1={0} y2={0} stroke="#000" strokeWidth={3} />
-    <text x={0} y={16} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={n > 9 ? 36 : 46} fill={PAPER}>{n}</text>
-  </g>
-);
-
-const Daydream: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const { frame, t, cues, clips } = shot;
-  const start = clips[52].from;
-  const bankAt = cues.bank - 8;
-  const runFrom = clips[53].from + 5;
-  const counterAt = clips[53].from + 44; // "counter."
-  const pop = cues.vault;
-
-  const cam = cutAt(frame, [
-    [start, drift(camAt(frame, [[start, { x: 1430, y: 520, zoom: 1.15 }], [bankAt, { x: 1400, y: 500, zoom: 1.25 }]]), frame, "dream")],
-    [bankAt, drift(camAt(frame, [[bankAt, { x: CLOUD.x + 10, y: CLOUD.y - 6, zoom: 2.05 }], [pop - 12, { x: CLOUD.x + 20, y: CLOUD.y - 6, zoom: 2.2 }]]), frame, "cloud", 4)],
-    [pop - 12, drift({ x: 1400, y: 520, zoom: 1.3 }, frame, "pop")],
-  ]);
-
-  // the cloud grows from thought puffs, holds, then bursts
-  const grow = smooth(linear(frame, start + 20, start + 46));
-  const burst = linear(frame, pop, pop + 7);
-  const cloudScale = grow * (1 + burst * 0.15);
-  const cloudAlpha = 1 - burst;
-  const bank = frame >= bankAt;
-
-  // mini you inside the cloud
-  const run = linear(frame, runFrom, counterAt);
-  const miniX = bank ? mix(1030, 1170, run) : 1230;
-  const miniPose: Pose = !bank
-    ? { ...STAND, armF: [40, -120], armB: [-40, 120] }
-    : run > 0 && run < 1 ? runPose((frame - runFrom) * 0.5)
-    : frame >= cues.vault - 22 ? { ...STAND, armF: [70, 60], armB: [-70, -60], tilt: 8 } : STAND;
-  const counterN = frame < runFrom ? 10 : Math.max(0, 10 - Math.floor(run * 10.99));
-  const shrug = frame >= cues.vault - 22;
-
-  const seated = { ...STAND, legF: [90, -90] as [number, number], legB: [86, -86] as [number, number], armF: [40, 50] as [number, number], armB: [30, 40] as [number, number], tilt: frame < pop ? -8 : 0 };
-  const youP = { x: STEP.x + 80, y: STEP.top + 112, scale: 1, facing: -1 as const, pose: seated };
-
-  const back = <LaneBack cam={cam} t={t} />;
-  const actors = (
-    <>
-      <Figure x={880} y={LANE_Y} scale={0.68} facing={-1} head={KID_HEADS[1]} pose={walkPose(t * 0.12)} look={{ x: 0.6, y: -0.2 }} mouth="smile" blink={blinking(frame, 4)} />
-      <g transform={`translate(860 ${LANE_Y - 230 - Math.abs(Math.sin(t * 0.18)) * 90})`}><circle r={15} fill={CRIMSON} stroke={INK} strokeWidth={4} /></g>
-      <You {...youP} mouth={frame < pop ? "smile" : frame < pop + 10 ? "o" : "flat"} brows={frame >= pop + 6 ? "flat" : "none"}
-        lids={frame < pop ? 0.35 : frame < pop + 8 ? 0 : 0.4} look={frame < pop ? { x: -0.6, y: -0.8 } : { x: 0.5, y: -0.5 }}
-        blink={frame >= pop + 2 && frame < pop + 6} time={frame} />
-      {/* thought puffs and the cloud */}
-      {cloudAlpha > 0 && (
-        <g opacity={cloudAlpha}>
-          {[[1500, 600, 16, start + 8], [1440, 530, 24, start + 14], [1360, 470, 32, start + 20]].map(([x, y, r, at], i) => frame >= at && (
-            <circle key={i} cx={x} cy={y} r={r * smooth(linear(frame, at, at + 6))} fill={PAPER} stroke={INK} strokeWidth={5} />
-          ))}
-          <g transform={`translate(${CLOUD.x} ${CLOUD.y}) scale(${cloudScale})`}>
-            {CLOUD_PUFFS.map(([x, y, r], i) => <circle key={`s${i}`} cx={x} cy={y} r={r + 6} fill={INK} />)}
-            {CLOUD_PUFFS.map(([x, y, r], i) => <circle key={i} cx={x} cy={y} r={r} fill={PAPER} />)}
-            <ellipse cx={0} cy={0} rx={280} ry={170} fill={bank ? "#dfe7ef" : "#fff3d6"} />
-            {!bank && Array.from({ length: 10 }, (_, i) => (
-              <line key={i} x1={0} y1={60} x2={Math.sin(i * 0.63) * 250} y2={60 + Math.cos(i * 0.63) * -200} stroke="#f2b632" strokeWidth={10} opacity={0.35} />
-            ))}
-            {bank && (
-              <g>
-                <rect x={-280} y={100} width={560} height={70} fill="#b9c3cd" />
-                <circle cx={150} cy={10} r={92} fill="#9aa3ad" stroke={INK} strokeWidth={8} />
-                <circle cx={150} cy={10} r={64} fill="#b9c3cd" stroke={INK} strokeWidth={5} />
-                <g transform={`rotate(${shrug ? Math.sin((frame - cues.vault + 22) * 0.9) * 4 : 0} 150 10)`}>
-                  {[0, 60, 120].map((a) => <line key={a} x1={150 - Math.cos((a * Math.PI) / 180) * 50} y1={10 - Math.sin((a * Math.PI) / 180) * 50} x2={150 + Math.cos((a * Math.PI) / 180) * 50} y2={10 + Math.sin((a * Math.PI) / 180) * 50} stroke={INK} strokeWidth={9} strokeLinecap="round" />)}
-                  <circle cx={150} cy={10} r={13} fill={INK} />
-                </g>
-                <rect x={-110} y={30} width={130} height={72} fill="#c98f5e" stroke={INK} strokeWidth={5} />
-                <rect x={-120} y={22} width={150} height={14} rx={4} fill={PAPER} stroke={INK} strokeWidth={4} />
-                {frame >= cues.bank && <MiniCounter n={counterN} x={-200} y={-80} />}
-              </g>
-            )}
-          </g>
-          <g transform={`translate(${CLOUD.x} ${CLOUD.y}) scale(${cloudScale}) translate(${-CLOUD.x} ${-CLOUD.y})`}>
-            <You x={miniX} y={CLOUD.y + (bank ? 102 : 150)} scale={bank ? 0.34 : 0.62} pose={miniPose} flow={bank ? (run > 0 && run < 1 ? 0.8 : 0.1) : 1} time={frame}
-              mouth={!bank ? "smile" : shrug ? "frown" : run > 0 ? "open" : "smirk"} brows={shrug ? "worry" : "none"} blink={blinking(frame, 9)} />
-          </g>
-        </g>
-      )}
-      {burst > 0 && burst < 1 && Array.from({ length: 16 }, (_, i) => {
-        const a = (i / 16) * Math.PI * 2;
-        const d = 180 + burst * 260 + noise(i) * 60;
-        return <rect key={i} x={CLOUD.x + Math.cos(a) * d} y={CLOUD.y + Math.sin(a) * d * 0.6} width={26} height={18} fill={PAPER} stroke={INK} strokeWidth={3} opacity={1 - burst} transform={`rotate(${i * 40 + burst * 90} ${CLOUD.x + Math.cos(a) * d} ${CLOUD.y + Math.sin(a) * d * 0.6})`} />;
-      })}
-    </>
-  );
-  return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} sky={LANE_SKY} back={back} actors={actors} front={<Bunting cam={cam} t={t} />} />;
-};
-
 /* ---------- the catch ---------- */
 
 const APEX = { x: 1560, y: 215 };
@@ -238,6 +137,7 @@ const Cricket: React.FC<{ shot: Shot }> = ({ shot }) => {
   const paused = frame >= pause.from && frame < pause.to;
   const hitT = wc(b.hit);
   const dt = t - hitT; // world frames since the hit (stands still in the pause)
+  const F = wc(cues.six_hit) - hitT; // flight time to the apex, where the pause catches it
 
   // ball: bowled, bounced, hit, skied to the apex (frozen there), then drops
   const release = hitT - 12;
@@ -245,9 +145,9 @@ const Cricket: React.FC<{ shot: Shot }> = ({ shot }) => {
   let ball = { x: 900, y: 700 };
   if (t >= release && t < bounce) { const k = (t - release) / 6; ball = { x: mix(900, 660, k), y: mix(690, LANE_Y - 14, k * k) }; }
   else if (t >= bounce && t < hitT) { const k = (t - bounce) / 6; ball = { x: mix(660, HIT_AT.x, k), y: mix(LANE_Y - 14, HIT_AT.y, Math.sqrt(k)) }; }
-  else if (dt >= 0 && dt <= 20) { const k = dt / 20; ball = { x: mix(HIT_AT.x, APEX.x, 1 - (1 - k) * (1 - k)), y: mix(HIT_AT.y, APEX.y, 1 - (1 - k) * (1 - k)) }; }
-  else if (dt > 20) ball = { x: APEX.x, y: Math.min(HAND_Y - 18, APEX.y + 0.5 * G * (dt - 20) ** 2) };
-  const inHands = dt > 20 && APEX.y + 0.5 * G * (dt - 20) ** 2 >= HAND_Y - 18;
+  else if (dt >= 0 && dt <= F) { const k = dt / F; ball = { x: mix(HIT_AT.x, APEX.x, 1 - (1 - k) * (1 - k)), y: mix(HIT_AT.y, APEX.y, 1 - (1 - k) * (1 - k)) }; }
+  else if (dt > F) ball = { x: APEX.x, y: Math.min(HAND_Y - 18, APEX.y + 0.5 * G * (dt - F) ** 2) };
+  const inHands = dt > F && APEX.y + 0.5 * G * (dt - F) ** 2 >= HAND_Y - 18;
   const caughtAt = cues.caught + 12;
   const cheer = frame >= caughtAt + 2;
 
@@ -267,7 +167,7 @@ const Cricket: React.FC<{ shot: Shot }> = ({ shot }) => {
   const raise = ramp(frame, caughtAt + 2, caughtAt + 10);
   armF = blendArm(armF, [150, 24], raise);
   armB = blendArm(armB, [-150, -20], raise);
-  const lower = ramp(frame, clips[55].from + 56, clips[55].from + 70); // "greed": look at the ball
+  const lower = ramp(frame, clips[50].from + 46, clips[50].from + 60); // "greed": look at the ball
   armF = blendArm(armF, armTo(youP, youX + 70, LANE_Y - 250), lower);
   armB = blendArm(armB, [-8, 10], lower);
   const pose: Pose = { ...body, armF, armB, tilt: frame >= cues.six_hit + 50 && !cheer ? -12 : body.tilt };
@@ -290,7 +190,7 @@ const Cricket: React.FC<{ shot: Shot }> = ({ shot }) => {
     [b.lane, camAt(frame, [[b.lane, { x: 990, y: 520, zoom: 0.96 }], [cues.six_hit, { x: 1010, y: 510, zoom: 1.0 }]])],
     [cues.six_hit + 28, drift(camAt(frame, [[cues.six_hit + 28, { x: 1480, y: 560, zoom: 1.12 }], [cues.caught, { x: 1500, y: 545, zoom: 1.24 }], [cues.caught + 12, { x: 1500, y: 560, zoom: 1.24 }]]), frame, "catch", 4)],
     [cues.caught + 28, drift({ x: 1050, y: 560, zoom: 1.0 }, frame, "erupt")],
-    [clips[54].from + clips[54].frames + 22, drift(camAt(frame, [[clips[54].from + clips[54].frames + 22, { x: 1470, y: 600, zoom: 1.65 }], [b.cuts, { x: 1480, y: 590, zoom: 1.8 }]]), frame, "hero")],
+    [lineEnd(clips, 49) + 20, drift(camAt(frame, [[lineEnd(clips, 49) + 20, { x: 1470, y: 600, zoom: 1.65 }], [b.cuts, { x: 1480, y: 590, zoom: 1.8 }]]), frame, "hero")],
   ]);
   const snapHand = handAt({ x: 1380, y: LANE_Y + 10, facing: -1, pose: SNAP });
   const origin = toScreen(cam, snapHand.x, snapHand.y);
@@ -313,7 +213,7 @@ const Cricket: React.FC<{ shot: Shot }> = ({ shot }) => {
         look={cheer ? (lower > 0.5 ? { x: 0.6, y: 0.4 } : { x: 0.4, y: -0.4 }) : frame >= cues.six_hit + 8 ? { x: 0.4, y: -1 } : { x: 0.6, y: -0.7 }}
         blink={blinking(frame, 2) && !paused} time={frame} flow={walk > 0 && walk < 1 ? 0.3 : 0} />
       {frame >= b.hit - 14 && <CricketBall x={heldBall.x} y={heldBall.y} spin={inHands ? 0 : t * 12} glow={paused} />}
-      {dt > 0 && dt < 20 && <path d={`M${HIT_AT.x} ${HIT_AT.y} Q${mix(HIT_AT.x, ball.x, 0.4)} ${mix(HIT_AT.y, ball.y, 0.8)} ${ball.x} ${ball.y}`} fill="none" stroke="#fff" strokeWidth={6} opacity={0.5} strokeDasharray="4 16" strokeLinecap="round" />}
+      {dt > 0 && dt < F && <path d={`M${HIT_AT.x} ${HIT_AT.y} Q${mix(HIT_AT.x, ball.x, 0.4)} ${mix(HIT_AT.y, ball.y, 0.8)} ${ball.x} ${ball.y}`} fill="none" stroke="#fff" strokeWidth={6} opacity={0.5} strokeDasharray="4 16" strokeLinecap="round" />}
     </>
   );
   return (
@@ -325,7 +225,6 @@ const Cricket: React.FC<{ shot: Shot }> = ({ shot }) => {
 };
 
 export const LaneScene: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const b = beatTimes(shot.cues, shot.clips);
-  return shot.frame < b.lane ? <Daydream shot={shot} /> : <Cricket shot={shot} />;
+  return <Cricket shot={shot} />;
 };
 

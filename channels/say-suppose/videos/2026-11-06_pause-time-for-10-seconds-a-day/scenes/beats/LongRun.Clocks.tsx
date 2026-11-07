@@ -41,8 +41,8 @@ export const Clocks: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, cues, clips } = shot;
   const b = beatTimes(cues, clips);
   const start = b.clocks;
-  const years = clips[62].from + 106;   // "Over fifty years"
-  const twoDays = clips[62].from + 181; // "two days"
+  const years = clips[57].from + 87;   // "Over fifty years"
+  const twoDays = clips[57].from + 149; // "two days"
   const end = b.mirror;
 
   // ordinary seconds, one a second, with a little overshoot on each tick

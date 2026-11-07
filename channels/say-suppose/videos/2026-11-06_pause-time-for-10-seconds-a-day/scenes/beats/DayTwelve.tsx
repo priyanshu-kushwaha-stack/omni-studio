@@ -7,15 +7,16 @@ import { drift } from "@whatif/kit/stage/shots";
 import { FastMove } from "@whatif/kit/stage/motion";
 import { CRIMSON, INK } from "@whatif/kit/theme";
 import type { Clip } from "@whatif/kit/timeline";
-import { DrawLine } from "@whatif/kit/ui/DrawLine";
 import { Tag } from "@whatif/kit/ui/Tag";
 import { Counter, type Tick } from "../parts";
 import { Ball, Bus, BUS_STOP_X, KID_FEET, LIGHT_X, Pigeon, SKY, StreetBack } from "../sets/Street";
 import { blinking, camAt, current, HERO, lineEnd, linear, mix, MOTHER, noise, ramp, STRANGER, type Beat, type Shot } from "../shared";
 
-/** Beat 3, "Day twelve" (scene_plan.md, lines 25 to 37): the walk home, the bus through the red light, the kid in the
- *  road, the pause, the rescue, the bus through the empty crossing, the 23 m tape, the mother, and you walking away.
- *  Frozen things (bus, kid, ball, crowd, pigeons) run on world time `t`; you run on `frame`. */
+/** Beat 3, "Day twelve" (script v7, lines 22 to 34): the walk home, the bus through the red light, the kid in the
+ *  road, the 23 m tape riding ahead of the moving bus, the pause, the rescue, the bus through the empty crossing, the
+ *  mother, and you walking away. Frozen things (bus, kid, ball, crowd, pigeons) run on world time; you run on `frame`.
+ *  From the `kid` cue to `pause` the world runs in slow motion (SLOW), so the bus is close enough for its 23 m tape to
+ *  reach past the kid, and it still meets the Opening's tableau when time stops. */
 
 type Cues = Record<string, number>;
 type Pt = { x: number; y: number };
@@ -24,6 +25,8 @@ interface Face { mouth: Mouth; brows: Brows; eyes: number; lids: number; look: P
 
 /** The bus, as in the sample: 11 world units a frame, its front at BUS_STOP_X when time stops. */
 const BUS_SPEED = 11;
+/** World speed between the `kid` cue and `pause`: the moment stretches. */
+const SLOW = 0.28;
 /** Braking after the pause: from BUS_SPEED to rest. */
 const BRAKE = 0.06;
 const BRAKE_FRAMES = BUS_SPEED / BRAKE;
@@ -106,6 +109,8 @@ interface Plan {
   /** World time: the kid leaves the far kerb, and the moment time stops. */
   k0: number;
   P: number;
+  /** World time in this beat: the film's clock, slowed from the kid cue until the pause. */
+  warp: (t: number) => number;
   lift: [number, number];
   carry: [number, number];
   lower: [number, number];
@@ -119,36 +124,42 @@ interface Plan {
 
 type ShotName =
   | "establish" | "walking" | "redlight" | "kid" | "face" | "neither" | "snap" | "tableau" | "sprint" | "grab"
-  | "carry" | "ballInsert" | "setDown" | "kerb" | "brake" | "crush" | "kidDoes" | "tape" | "mother" | "driver"
+  | "carry" | "ballInsert" | "setDown" | "kerb" | "brake" | "crush" | "kidDoes" | "stakes" | "busPunch" | "mother" | "driver"
   | "mother2" | "walkAway";
 
 function planOf(c: Cues, clips: Clip[], from: number, wc: (f: number) => number): Plan {
   const walkEnd = c.kid + 10;
   const thanks = c.mother + 77;
   const setDownCut = c.five + 16;
+  const S = wc(c.kid);
+  const Pt = wc(c.pause);
+  const warp = (t: number) => (t <= S ? t : t <= Pt ? S + SLOW * (t - S) : S + SLOW * (Pt - S) + (t - Pt));
   return {
     from,
     walkEnd,
     stopX: 170 + 2 * (walkEnd - from),
-    k0: wc(c.kid) - 14,
-    P: wc(c.pause),
+    k0: warp(wc(c.kid)) - 14,
+    P: warp(Pt),
+    warp,
     lift: [c.eight - 4, c.eight + 16],
     carry: [c.seven, setDownCut],
     lower: [setDownCut, c.four],
     stepBack: [c.three, c.two + 10],
     pant: c.two + 10,
     thanks,
-    backAway: [clips[36].from + 120, clips[36].from + 185],
-    walkAway: lineEnd(clips, 37),
+    backAway: [c.ball + 40, c.ball + 82],
+    walkAway: lineEnd(clips, 34),
     cuts: [
       [from, "establish"],
       [c.walk, "walking"],
-      [clips[26].from, "redlight"],
-      [clips[27].from, "kid"],
-      [clips[28].from, "face"],
+      [clips[23].from, "redlight"],
+      [clips[24].from, "kid"],
+      [clips[25].from, "stakes"],
+      [lineEnd(clips, 25) - 38, "busPunch"],
+      [clips[26].from, "face"],
       [c.neither, "neither"],
-      [clips[30].from, "snap"],
-      [lineEnd(clips, 30), "tableau"],
+      [clips[28].from, "snap"],
+      [lineEnd(clips, 28), "tableau"],
       [c.run, "sprint"],
       [c.nine, "grab"],
       [c.seven, "carry"],
@@ -158,11 +169,10 @@ function planOf(c: Cues, clips: Clip[], from: number, wc: (f: number) => number)
       [c.resume, "brake"],
       [c.ball - 12, "crush"],
       [c.ball + 28, "kidDoes"],
-      [clips[36].from, "tape"],
-      [clips[37].from, "mother"],
+      [clips[34].from, "mother"],
       [thanks, "driver"],
       [thanks + 34, "mother2"],
-      [lineEnd(clips, 37), "walkAway"],
+      [lineEnd(clips, 34), "walkAway"],
     ],
   };
 }
@@ -298,7 +308,7 @@ function heroOf(f: number, c: Cues, plan: Plan, kidTorso: Pt): Actor & Face & { 
     pose = { ...pose, armF: [pose.armF[0] + tremor(f, 0, shake), pose.armF[1] + tremor(f, 1.3, shake)], armB: [pose.armB[0] + tremor(f, 2.1, shake), pose.armB[1]] };
     face = { mouth: "o", brows: "raised", eyes: 1.35, lids: 0, look: { x: 1 - 2 * ramp(f, c.resume + 6, c.resume + 50), y: -0.1 }, blink: false };
     if (f >= c.ball + 28) face = { mouth: "wobble", brows: "worry", eyes: 1.1, lids: 0.15, look: { x: 0.8, y: 0.3 }, blink: blinking(f, 5) };
-    if (f >= c.tape23 - 30) face = { mouth: "flat", brows: "worry", eyes: 1, lids: 0.3, look: { x: 0.7, y: 0.2 }, blink: blinking(f, 5) };
+    if (f >= c.ball + 70) face = { mouth: "flat", brows: "worry", eyes: 1, lids: 0.3, look: { x: 0.7, y: 0.2 }, blink: blinking(f, 5) };
     if (f >= c.mother) face = { mouth: "flat", brows: "sad", eyes: 1, lids: 0.4, look: { x: 0.9, y: 0.2 }, blink: blinking(f, 5) };
     if (f >= c.nobody) face = { mouth: "flat", brows: "sad", eyes: 1, lids: 0.55, look: { x: 0.4, y: 0.6 }, blink: blinking(f, 5) };
     if (f >= plan.walkAway) {
@@ -439,8 +449,8 @@ const Crowd: React.FC<{ cam: Camera; t: number; frame: number; paused: boolean; 
 
 /* ------------------------------------------------------------------------------------------------ cameras */
 
-function cameraOf(name: ShotName, f: number, c: Cues, clips: Clip[], plan: Plan, hero: Actor): Camera {
-  const end30 = lineEnd(clips, 30);
+function cameraOf(name: ShotName, f: number, c: Cues, clips: Clip[], plan: Plan, hero: Actor, bus: { x: number }, crushX: number): Camera {
+  const end28 = lineEnd(clips, 28);
   const heroHead = { x: plan.stopX, y: 1010 - 264 * 1.3 };
   switch (name) {
     case "establish":
@@ -448,17 +458,21 @@ function cameraOf(name: ShotName, f: number, c: Cues, clips: Clip[], plan: Plan,
     case "walking":
       return { x: hero.x + 160, y: 760, zoom: 1.5 };
     case "redlight":
-      return camAt(f, [[clips[26].from, { x: 2560, y: 600, zoom: 1.12 }], [clips[27].from, { x: 2300, y: 612, zoom: 1.18 }]]);
+      return camAt(f, [[clips[23].from, { x: 2560, y: 600, zoom: 1.12 }], [clips[24].from, { x: 2300, y: 612, zoom: 1.18 }]]);
     case "kid":
-      return camAt(f, [[clips[27].from, { x: 1240, y: 770, zoom: 1.6 }], [clips[28].from, { x: 1265, y: 772, zoom: 1.74 }]]);
+      return camAt(f, [[clips[24].from, { x: 1240, y: 770, zoom: 1.6 }], [clips[25].from, { x: 1265, y: 772, zoom: 1.74 }]]);
+    case "stakes":
+      return camAt(f, [[clips[25].from, { x: 1930, y: 650, zoom: 0.82 }], [lineEnd(clips, 25) - 38, { x: 1830, y: 655, zoom: 0.86 }]]);
+    case "busPunch":
+      return { x: bus.x + 300, y: 730, zoom: mix(1.7, 2.15, linear(f, lineEnd(clips, 25) - 38, clips[26].from)) };
     case "face":
-      return camAt(f, [[clips[28].from, { x: heroHead.x + 95, y: heroHead.y + 30, zoom: 2.6 }], [c.neither, { x: heroHead.x + 100, y: heroHead.y + 28, zoom: 2.95 }]]);
+      return camAt(f, [[clips[26].from, { x: heroHead.x + 95, y: heroHead.y + 30, zoom: 2.6 }], [c.neither, { x: heroHead.x + 100, y: heroHead.y + 28, zoom: 2.95 }]]);
     case "neither":
-      return camAt(f, [[c.neither, { x: 1150, y: 690, zoom: 1.0 }], [clips[30].from, { x: 1135, y: 698, zoom: 1.06 }]]);
+      return camAt(f, [[c.neither, { x: 1150, y: 690, zoom: 1.0 }], [clips[28].from, { x: 1135, y: 698, zoom: 1.06 }]]);
     case "snap":
-      return camAt(f, [[clips[30].from, { x: 1000, y: 760, zoom: 1.28 }], [end30, { x: 1000, y: 755, zoom: 1.34 }]]);
+      return camAt(f, [[clips[28].from, { x: 1000, y: 760, zoom: 1.28 }], [end28, { x: 1000, y: 755, zoom: 1.34 }]]);
     case "tableau":
-      return camAt(f, [[end30, { x: 1090, y: 640, zoom: 1.04 }], [c.run, { x: 1080, y: 650, zoom: 1.1 }]]);
+      return camAt(f, [[end28, { x: 1090, y: 640, zoom: 1.04 }], [c.run, { x: 1080, y: 650, zoom: 1.1 }]]);
     case "sprint":
       return { x: hero.x + 130, y: mix(800, 760, linear(f, c.run, c.nine)), zoom: 1.35 };
     case "grab":
@@ -474,11 +488,9 @@ function cameraOf(name: ShotName, f: number, c: Cues, clips: Clip[], plan: Plan,
     case "brake":
       return camAt(f, [[c.resume, { x: 1100, y: 700, zoom: 1.04 }], [c.ball - 12, { x: 1050, y: 706, zoom: 1.09 }]]);
     case "crush":
-      return camAt(f, [[c.ball - 12, { x: 880, y: 858, zoom: 3.1 }], [c.ball + 28, { x: 850, y: 860, zoom: 3.25 }]]);
+      return camAt(f, [[c.ball - 12, { x: crushX + 20, y: 858, zoom: 3.1 }], [c.ball + 28, { x: crushX - 10, y: 860, zoom: 3.25 }]]);
     case "kidDoes":
-      return camAt(f, [[c.ball + 28, { x: 1170, y: 800, zoom: 1.75 }], [clips[36].from, { x: 1180, y: 805, zoom: 1.9 }]]);
-    case "tape":
-      return drift(camAt(f, [[clips[36].from, { x: 1150, y: 640, zoom: 0.86 }], [clips[37].from, { x: 1160, y: 645, zoom: 0.89 }]]), f, "tape", 6);
+      return camAt(f, [[c.ball + 28, { x: 1170, y: 800, zoom: 1.75 }], [clips[34].from, { x: 1160, y: 805, zoom: 1.9 }]]);
     case "mother":
       return drift({ x: 1624, y: 760, zoom: 1.15 }, f, "mother", 5);
     case "driver":
@@ -498,27 +510,28 @@ const CLOSE: ShotName[] = ["face", "ballInsert", "crush", "driver", "kidDoes", "
 const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const frame = useCurrentFrame();
   const { cues: c, clips } = shot;
-  const t = shot.wc(frame);
   const plan = planOf(c, clips, shot.from, shot.wc);
+  const t = plan.warp(shot.wc(frame));
   const pause = { from: c.pause, to: c.resume };
   const paused = frame >= pause.from && frame < pause.to;
   const name = current(frame, plan.cuts);
   const look = useLook();
 
   // Kid and you lean on each other (the carried kid follows your hands, your hands follow the kid).
-  const kidRough = (f: number) => kidOf(f, shot.wc(f), c, plan, (g) => heroOf(g, c, plan, { x: GRAB.x + 80, y: GRAB.y - 190 }));
+  const kidRough = (f: number) => kidOf(f, plan.warp(shot.wc(f)), c, plan, (g) => heroOf(g, c, plan, { x: GRAB.x + 80, y: GRAB.y - 190 }));
   const heroAt = (f: number) => heroOf(f, c, plan, kidRough(f).torso);
   const kid = kidOf(frame, t, c, plan, heroAt);
   const hero = heroOf(frame, c, plan, kid.torso);
   const mother = motherOf(frame, c, plan, kid.torso);
 
-  const cam = cameraOf(name, frame, c, clips, plan, hero);
   const crushTau = c.ball - c.resume;
   const bus = busOf(name, frame, t, c, plan);
+  const cam = cameraOf(name, frame, c, clips, plan, hero, bus, BUS_STOP_X + FRONT_WHEEL - braked(crushTau));
   const ball = ballOf(t, plan, crushTau);
   const tauBall = t - plan.P - crushTau;
   // The bumper punts the ball (behind the bus for that moment); after that it rolls in the near wheels' lane.
   const ballBehind = bus.tau >= 0 && bus.tau < 12;
+  const tapeOut = linear(frame, c.tape23 - 22, c.tape23 + 8);
   const hand = handOf(hero);
   const origin = toScreen(cam, hand.x, hand.y);
 
@@ -599,13 +612,13 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
           mouth={mother.mouth} brows={mother.brows} eyes={mother.eyes} lids={mother.lids} look={mother.look} blink={mother.blink} />
       )}
       {(kid.carriedBy || frame >= plan.lower[1]) && name !== "ballInsert" && <KidFigure kid={kid} t={t} />}
-      {/* Line 36: the tape from the bumper back up the road; a dashed run past it on "And this is a bus." */}
-      {frame >= clips[36].from && (
+      {/* Line 25: a paper tape from the moving bus's bumper, 23 m ahead of it, already past the kid. */}
+      {(name === "stakes" || name === "busPunch") && tapeOut > 0 && (
         <>
-          <rect x={BUS_REST - 44} y={884} width={46} height={40} rx={8} fill="#f2c94c" stroke={INK} strokeWidth={5} />
-          <DrawLine d={`M${BUS_REST - 6} 906 H${BUS_REST + TAPE_23}`} from={c.tape23 - 26} to={c.tape23 + 4} color="#ffd84a" width={16} dash />
-          {frame >= c.tape23 + 4 && <line x1={BUS_REST + TAPE_23} y1={884} x2={BUS_REST + TAPE_23} y2={928} stroke={INK} strokeWidth={6} strokeLinecap="round" />}
-          <DrawLine d={`M${BUS_REST + TAPE_23 + 12} 906 H${BUS_REST + TAPE_23 + 900}`} from={lineEnd(clips, 36) - 48} to={lineEnd(clips, 36) - 8} color="rgba(255,216,74,0.75)" width={11} dash />
+          <line x1={bus.x - 4} y1={906} x2={bus.x - 4 - TAPE_23 * tapeOut} y2={906} stroke="#ffd84a" strokeWidth={16} strokeLinecap="round" />
+          {tapeOut >= 1 && <line x1={bus.x - 4} y1={906} x2={bus.x - 4 - TAPE_23} y2={906} stroke="#fff" strokeWidth={5} strokeDasharray="12 18" opacity={0.6} />}
+          {tapeOut >= 1 && <line x1={bus.x - 4 - TAPE_23} y1={884} x2={bus.x - 4 - TAPE_23} y2={928} stroke={INK} strokeWidth={6} strokeLinecap="round" />}
+          <rect x={bus.x - 30} y={884} width={34} height={40} rx={8} fill="#ffd84a" stroke={INK} strokeWidth={5} />
         </>
       )}
     </>
@@ -640,6 +653,9 @@ const Sfx: React.FC<{ at: number; name: string; volume: number; frames?: number 
   </Sequence>
 );
 
+/** Screen spot for the 23 M tag in the stakes wide: above the tape's middle, clear of the kid and the source tag. */
+const TAG_23 = { x: 700, y: 520 };
+
 const DayTwelve: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, cues: c, clips } = shot;
   const ticks: Tick[] = [
@@ -647,15 +663,14 @@ const DayTwelve: React.FC<{ shot: Shot }> = ({ shot }) => {
     { at: c.five, n: 5 }, { at: c.four, n: 4 }, { at: c.three, n: 3 }, { at: c.two, n: 2 }, { at: c.one, n: 1 }, { at: c.resume, n: 0 },
   ];
   const sprint = frame >= c.run && frame < c.nine;
-  const tagTape = toScreen({ x: 1150, y: 640, zoom: 0.86 }, BUS_REST + TAPE_23, 906);
   return (
     <AbsoluteFill>
       <FastMove on={sprint}>
         <Scene shot={shot} />
       </FastMove>
-      {frame < clips[26].from && <Tag at={clips[25].from + 10} text="DAY 12" x={70} y={60} size={78} />}
+      {frame < clips[23].from && <Tag at={clips[22].from + 10} text="DAY 12" x={70} y={60} size={78} />}
       <Counter ticks={ticks} until={c.resume + 40} />
-      {frame >= clips[36].from && frame < clips[37].from && <Tag at={c.tape23} text="23 M" x={Math.round(tagTape.x - 60)} y={Math.round(tagTape.y - 190)} size={76} />}
+      {frame >= clips[25].from && frame < lineEnd(clips, 25) - 38 && <Tag at={c.tape23} text="23 M" x={TAG_23.x} y={TAG_23.y} size={76} />}
 
       <Sfx at={shot.from} name="street" volume={0.22} frames={c.pause - shot.from + 4} />
       <Sfx at={c.bus - 6} name="bus" volume={0.42} frames={c.pause - c.bus + 10} />
@@ -672,7 +687,7 @@ const DayTwelve: React.FC<{ shot: Shot }> = ({ shot }) => {
 
 export const dayTwelve: Beat = {
   id: "dayTwelve",
-  firstLine: 25,
+  firstLine: 22,
   Component: DayTwelve,
   pauses: (cues) => [{ from: cues.pause, to: cues.resume }],
 };

@@ -9,7 +9,7 @@ import { Counter, evenTicks } from "../parts";
 import { blinking, camAt, current, HERO, mix, ramp, type Shot } from "../shared";
 import { armTo, blendArm, body, firstDaysPauses, Sfx } from "./FirstDays.common";
 
-/** Lines 17-18: the office kitchen. One samosa, a colleague's hand already reaching; snap on "saint", swap it for a
+/** Lines 16-17: the office kitchen. One samosa, a colleague's hand already reaching; snap on "saint", swap it for a
  *  napkin, stroll off chewing; the colleague stares at the napkin. */
 
 const FLOOR = 860;
@@ -72,14 +72,14 @@ const OfficeBack: React.FC<{ cam: Camera }> = ({ cam }) => (
 export const OfficeKitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, t, wc, cues, clips } = shot;
   const pause = firstDaysPauses(cues, clips).samosa;
-  const l17 = clips[17].from;
-  const l18 = clips[18].from;
-  const end = clips[19].from;
+  const lSamosa = clips[16].from;
+  const lSaint = clips[17].from;
+  const end = clips[18].from;
 
-  const shotName = current(frame, [[l17, "samosa"], [l17 + 60, "two"], [l17 + 140, "you"], [l18 + 14, "snap"], [pause.to + 4, "stare"]] as [number, string][]);
+  const shotName = current(frame, [[lSamosa, "samosa"], [lSamosa + 55, "two"], [lSamosa + 128, "you"], [lSaint + 14, "snap"], [pause.to + 4, "stare"]] as [number, string][]);
 
   // Colleague: the hand creeps towards the samosa (world time), freezes, then lands on the napkin.
-  const creep = ramp(t, wc(l17 + 64), wc(cues.reach) + 20) * 0.55 + ramp(t, wc(cues.reach), wc(cues.swap)) * 0.3;
+  const creep = ramp(t, wc(lSamosa + 58), wc(cues.reach) + 20) * 0.55 + ramp(t, wc(cues.reach), wc(cues.swap)) * 0.3;
   const land = ramp(t, wc(pause.to), wc(pause.to) + 8);
   const collBase: Pose = { ...STAND, lean: mix(0, 14, creep) };
   const target = { x: mix(PLATE.x + 26, PLATE.x + 6, land), y: PLATE.y - 22 + land * 6 };
@@ -120,10 +120,10 @@ export const OfficeKitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
 
   const heroHead = body(HERO_X, FEET, STAND).head;
   const cams: Record<string, Camera> = {
-    samosa: camAt(frame, [[l17, insert(PLATE.x, PLATE.y - 40, 3.4)], [l17 + 60, insert(PLATE.x, PLATE.y - 34, 4.0)]]),
-    two: camAt(frame, [[l17 + 60, { x: 1005, y: 600, zoom: 1.45 }], [l17 + 140, { x: 1010, y: 605, zoom: 1.6 }]]),
+    samosa: camAt(frame, [[lSamosa, insert(PLATE.x, PLATE.y - 40, 3.4)], [lSamosa + 55, insert(PLATE.x, PLATE.y - 34, 4.0)]]),
+    two: camAt(frame, [[lSamosa + 55, { x: 1005, y: 600, zoom: 1.45 }], [lSamosa + 128, { x: 1010, y: 605, zoom: 1.6 }]]),
     you: drift(closeUp(heroHead.x + 50, heroHead.y, 2.6), frame, "oy"),
-    snap: camAt(frame, [[l18 + 14, { x: 990, y: 610, zoom: 1.55 }], [pause.to + 4, { x: 970, y: 612, zoom: 1.62 }]]),
+    snap: camAt(frame, [[lSaint + 14, { x: 990, y: 610, zoom: 1.55 }], [pause.to + 4, { x: 970, y: 612, zoom: 1.62 }]]),
     stare: camAt(frame, [[pause.to + 4, { x: 1060, y: 615, zoom: 2.3 }], [end, { x: 1068, y: 615, zoom: 2.5 }]]),
   };
   const cam = cams[shotName];
@@ -161,9 +161,9 @@ export const OfficeKitchen: React.FC<{ shot: Shot }> = ({ shot }) => {
         x={x} y={FEET} facing={facing}
         pose={pose}
         held={holding ? <g transform="rotate(-20)"><Samosa bitten={frame > takeAt + 12} /></g> : undefined}
-        mouth={chewing ? (Math.floor(frame / 5) % 2 ? "flat" : "smile") : frame >= l18 ? "smirk" : "flat"}
-        brows={frame >= l18 && frame < pause.from + 4 ? "angry" : frame >= l17 + 150 && frame < l18 ? "flat" : "none"}
-        lids={frame >= l17 + 150 && frame < l18 + 14 ? 0.35 : 0}
+        mouth={chewing ? (Math.floor(frame / 5) % 2 ? "flat" : "smile") : frame >= lSaint ? "smirk" : "flat"}
+        brows={frame >= lSaint && frame < pause.from + 4 ? "angry" : frame >= lSamosa + 136 && frame < lSaint ? "flat" : "none"}
+        lids={frame >= lSamosa + 136 && frame < lSaint + 14 ? 0.35 : 0}
         look={frame >= turnAt ? { x: 0.6, y: 0 } : { x: 0.8, y: 0.7 }}
         blink={blinking(frame, 9)}
         flow={frame >= turnAt ? 0.25 : 0}
