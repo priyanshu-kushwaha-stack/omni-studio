@@ -53,7 +53,9 @@ def test_say_suppose_uses_studio_whatif():
     channel = channels.load_channel("say-suppose")
     config = channel.config
     assert config.formats == {"story": "studio-whatif"}
-    assert config.cadence == "daily" and config.status == "draft" and config.budget_usd_per_video == 0
+    assert config.cadence == "daily" and config.status == "draft"
+    # Owner, 2026-11-07: "Set the channel budget so it allows narration".
+    assert config.budget_usd_per_video == 5
     assert config.loudness["story"].integrated_lufs == -14
     voices = yaml.safe_load((channel.dir / config.voices).read_text())["voices"]
     assert voices["narrator"]["voice_id"] == "30fc8796-ceb6-4a66-b3a7-4a145ef7f346"

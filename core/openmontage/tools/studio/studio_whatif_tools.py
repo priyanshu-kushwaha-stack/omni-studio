@@ -16,6 +16,7 @@ from __future__ import annotations
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import time
@@ -100,15 +101,40 @@ class _WhatifTool(BaseTool):
         if cmds and isinstance(cmds[0], str):
             cmds = [cmds]
         logs = []
+        timeout = float(inputs.get("timeout_seconds", 3600))
         for cmd in cmds:
-            proc = subprocess.run(cmd, cwd=ENGINE, env=env, capture_output=True, text=True,
-                                  timeout=float(inputs.get("timeout_seconds", 3600)))
-            logs.append({"command": cmd, "returncode": proc.returncode, "stdout": proc.stdout[-20000:],
-                         "stderr": proc.stderr[-20000:]})
+            # Own process group: on a timeout the whole tree goes, not just npx. Remotion's renderer outlives a killed
+            # npx and keeps rendering, competing with whatever runs next (2026-11-07).
+            proc = subprocess.Popen(cmd, cwd=ENGINE, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                    start_new_session=True)
+            try:
+                stdout, stderr = proc.communicate(timeout=timeout)
+            except subprocess.TimeoutExpired:
+                _kill_group(proc)
+                stdout, stderr = proc.communicate()
+                logs.append({"command": cmd, "returncode": None, "stdout": stdout[-20000:], "stderr": stderr[-20000:]})
+                return ToolResult(success=False, data={"runs": logs}, duration_seconds=time.time() - start,
+                                  error=f"{cmd[0]} timed out after {timeout:.0f} s; raise timeout_seconds")
+            logs.append({"command": cmd, "returncode": proc.returncode, "stdout": stdout[-20000:],
+                         "stderr": stderr[-20000:]})
             if proc.returncode != 0:
                 return ToolResult(success=False, data={"runs": logs}, duration_seconds=time.time() - start,
                                   error=f"{cmd[0]} exited {proc.returncode}")
         return ToolResult(success=True, data={"runs": logs}, duration_seconds=time.time() - start)
+
+
+def _kill_group(proc: subprocess.Popen) -> None:
+    """Stop a command and every process it started: TERM, then KILL after 5 s."""
+    for sig, wait in ((signal.SIGTERM, 5), (signal.SIGKILL, 5)):
+        try:
+            os.killpg(proc.pid, sig)
+        except ProcessLookupError:
+            return
+        try:
+            proc.wait(timeout=wait)
+            return
+        except subprocess.TimeoutExpired:
+            continue
 
 
 class WhatifStory(_WhatifTool):

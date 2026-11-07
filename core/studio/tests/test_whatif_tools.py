@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+import time
 from pathlib import Path
 
 import pytest
@@ -65,3 +67,31 @@ def test_render_writes_only_inside_the_studio(tmp_path):
     render, limit = cmds
     assert render[:3] == ["npx", "remotion", "render"]
     assert "alimiter=limit=0.84:level=false" in " ".join(limit)
+
+
+class _Sleeper(wt._WhatifTool):
+    """A command whose child outlives the shell that started it, as remotion's renderer outlives npx."""
+    name = "whatif_test_sleeper"
+
+    def __init__(self, pidfile: Path):
+        super().__init__()
+        self.pidfile = pidfile
+
+    def command(self, inputs):
+        return [["sh", "-c", f"sleep 60 & echo $! > {self.pidfile}; wait"]], dict(os.environ)
+
+
+def test_a_timeout_kills_the_whole_command_and_is_reported(tmp_path):
+    pidfile = tmp_path / "pid"
+    result = _Sleeper(pidfile).execute({"timeout_seconds": 2})
+    assert not result.success
+    assert "timed out" in result.error
+    child = int(pidfile.read_text())
+    for _ in range(20):
+        try:
+            os.kill(child, 0)
+        except ProcessLookupError:
+            return
+        time.sleep(0.1)
+    os.kill(child, 9)
+    pytest.fail("the command's child process survived the timeout")
