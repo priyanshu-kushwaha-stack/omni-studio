@@ -12,6 +12,25 @@ import { S1_FRAMES, SubscribeTag } from "../../../brand/Subscribe";
 import { BEATS } from "./beats";
 import { lastIndex, type Shot } from "./shared";
 
+/** The score's level (build_score.py makes assets/music/score.wav): low under every narration line, rising toward
+ *  the voice's level in the wordless holds (style.md). It dips DUCK_IN frames before a line and comes back over
+ *  DUCK_OUT frames after it, so no duck is a step. */
+const UNDER_VOICE = 0.16;
+const IN_HOLDS = 0.6;
+const DUCK_IN = 8;
+const DUCK_OUT = 18;
+
+export function scoreVolume(frame: number, clips: { from: number; frames: number }[]): number {
+  let duck = 0;
+  for (const c of clips) {
+    const end = c.from + c.frames;
+    if (frame >= c.from && frame < end) return UNDER_VOICE;
+    if (frame < c.from && c.from - frame < DUCK_IN) duck = Math.max(duck, 1 - (c.from - frame) / DUCK_IN);
+    if (frame >= end && frame - end < DUCK_OUT) duck = Math.max(duck, 1 - (frame - end) / DUCK_OUT);
+  }
+  return IN_HOLDS + (UNDER_VOICE - IN_HOLDS) * duck;
+}
+
 export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string> };
 
 /** The picture at the current frame: the beat on, lit by its line's mood (frozen while paused), pause bars, source tags
@@ -46,7 +65,7 @@ const Picture: React.FC<FilmProps> = ({ timeline, lines, sources }) => {
 };
 
 /** The whole video: the picture, the channel's title card after the hook (owner's pick, 2026-11-07: option C in
- *  channels/say-suppose/brand), a paper subscribe tag after the rescue, the narration and the bed. */
+ *  channels/say-suppose/brand), a paper subscribe tag after the rescue, the narration and the score. */
 export const Film: React.FC<FilmProps> = (props) => {
   const { clips, cues } = props.timeline;
   if (!clips.length) return <AbsoluteFill style={{ background: "#000" }} />;
@@ -73,7 +92,7 @@ export const Film: React.FC<FilmProps> = (props) => {
           <Audio src={staticFile(c.file)} />
         </Sequence>
       ))}
-      <Audio src={staticFile("sfx/pad.wav")} loop volume={0.22} />
+      <Audio src={staticFile("music/score.wav")} volume={(f) => scoreVolume(f, clips)} />
     </AbsoluteFill>
   );
 };
