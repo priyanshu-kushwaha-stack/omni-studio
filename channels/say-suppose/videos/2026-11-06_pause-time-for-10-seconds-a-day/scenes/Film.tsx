@@ -4,8 +4,6 @@ import { LookContext } from "@whatif/kit/stage/Look";
 import { moodLook, type MoodName } from "@whatif/kit/stage/moods";
 import { PauseBars } from "@whatif/kit/stage/PauseBars";
 import { Finish } from "@whatif/kit/stage/Stage";
-import { SourceTag } from "@whatif/kit/ui/SourceTag";
-import { sourceLabel } from "@whatif/kit/ui/source";
 import { worldClock } from "@whatif/kit/world/clock";
 import { C_FRAMES, Hi, IdentC } from "../../../brand/IdentC";
 import { S1_FRAMES, SubscribeTag } from "../../../brand/Subscribe";
@@ -33,9 +31,10 @@ export function scoreVolume(frame: number, clips: { from: number; frames: number
 
 export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string> };
 
-/** The picture at the current frame: the beat on, lit by its line's mood (frozen while paused), pause bars, source tags
- *  on cited lines and the paper finish. No narration or bed: the title card renders it again inside a <Freeze>. */
-const Picture: React.FC<FilmProps> = ({ timeline, lines, sources }) => {
+/** The picture at the current frame: the beat on, lit by its line's mood (frozen while paused), pause bars and the
+ *  paper finish. No narration or score: the title card renders it again inside a <Freeze>. Sources are not shown on
+ *  screen; they go in the description (owner, 2026-11-07). */
+const Picture: React.FC<FilmProps> = ({ timeline, lines }) => {
   const frame = useCurrentFrame();
   const { clips, cues } = timeline;
   const pauses = BEATS.flatMap((b) => b.pauses(cues, clips)).sort((a, b) => a.from - b.from);
@@ -56,9 +55,6 @@ const Picture: React.FC<FilmProps> = ({ timeline, lines, sources }) => {
         <beat.Component shot={shot} />
       </LookContext.Provider>
       <PauseBars frame={frame} pauses={pauses} />
-      {lines.map((l, i) => l.claims?.length ? (
-        <SourceTag key={i} text={sourceLabel(l.claims, sources)} from={clips[i].from} to={clips[i].from + clips[i].frames} />
-      ) : null)}
       <Finish />
     </AbsoluteFill>
   );

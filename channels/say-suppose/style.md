@@ -96,9 +96,8 @@ three painted looks, then that sample re-coloured and on a painted backdrop, and
   over-the-shoulder with a blurred foreground head. Motion blur on fast moves; a slow-motion ghost at the peak.
 - **Facts are drawn:** a number against a normal number, on the scene; paper diagrams that draw themselves (a tape
   from a bumper, a fall arc).
-- **Source tags:** when a cited number is spoken, a small paper tag in a lower corner names its source ("UK Highway
-  Code"). The text comes from the `claims.md` row, so it is never typed twice. None of the reference channels do
-  this; it is ours.
+- **Sources go in the description, not on screen** (owner, 2026-11-07: the tags made little sense in a story
+  channel). Every cited `claims.md` row is listed in the video's description at publish time.
 
 ## Opening, brand and calls to action
 

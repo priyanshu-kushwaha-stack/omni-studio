@@ -4,7 +4,7 @@ Scenes live in the video folder, `scenes/` with an `index.ts` entry, and import 
 (`core/engines/whatif/src/kit`; worked example: `core/engines/whatif/examples/pause-sample`).
 
 1. Build each `> SCENE:` from the kit, lit by its `> MOOD:` (`moodLook`), with pause bars, named expressions, shot
-   helpers and a source tag on every cited line. Use the kit: sets as layers at different depths, rigged figures, props. Reuse a
+   helpers, and the channel's rule for sources (Say Suppose: in the description, not on screen). Use the kit: sets as layers at different depths, rigged figures, props. Reuse a
    set before drawing a new one. No AI images and no AI video clips: everything on screen is drawn in code.
 2. Motion reads named cues anchored to spoken words, never hard-coded times, so a new voice take re-times the
    scene. Something changes every 2 to 4 seconds; no hold is longer than 6 seconds.
