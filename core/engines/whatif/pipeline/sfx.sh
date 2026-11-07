@@ -8,8 +8,10 @@ ff() { ffmpeg -v error -y "$@"; }
 ff -f lavfi -i "anoisesrc=d=0.5:c=pink:a=0.9" \
   -af "bandpass=f=1400:width_type=h:w=2200,afade=t=in:d=0.2,afade=t=out:st=0.22:d=0.28" -ar 44100 -ac 1 "$out/whoosh.wav"
 ff -f lavfi -i "aevalsrc='0.8*sin(2*PI*(900-2500*t)*t)*exp(-t*45)':d=0.09:s=44100" -ac 1 "$out/pop.wav"
-# Split-flap: a dry card clack over a low knock.
-ff -f lavfi -i "aevalsrc='0.8*(sin(2*PI*1900*t)*exp(-t*260)+0.8*sin(2*PI*210*t)*exp(-t*70))':d=0.14:s=44100" -ac 1 "$out/flip.wav"
+# Split-flap: a card clack over a low knock. A 3 ms attack and a slower decay keep the clack but not the 10 ms spike
+# that the click check
+# (core/studio/qc/clicks.py) flags when a flip lands on near-silence (G5, 2026-11-07).
+ff -f lavfi -i "aevalsrc='0.8*(1-exp(-t*900))*(0.7*sin(2*PI*1900*t)*exp(-t*90)+0.8*sin(2*PI*210*t)*exp(-t*28))':d=0.24:s=44100" -ac 1 "$out/flip.wav"
 # Mug catch: two inharmonic ceramic partials.
 ff -f lavfi -i "aevalsrc='0.45*(sin(2*PI*2350*t)+0.7*sin(2*PI*3710*t))*exp(-t*26)':d=0.35:s=44100" -ac 1 "$out/clink.wav"
 # Time stop: everything sucked downward into a thud with a long tail.

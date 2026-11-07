@@ -468,8 +468,8 @@ const Sound: React.FC<{ k: T }> = ({ k }) => (
     <Sfx at={k.stops - 3} name="timestop" volume={0.4} />
     {evenTicks(k.stops, k.restart - 8).slice(1).map((tk) => <Sfx key={tk.at} at={tk.at} name="flip" volume={0.35} />)}
     <Sfx at={k.restart - 13} name="resume" volume={0.3} />
-    <Sfx at={k.midnight} name="flip" volume={0.5} />
-    <Sfx at={k.midnight + 14} name="flip" volume={0.5} />
+    <Sfx at={k.midnight} name="flip" volume={0.25} />
+    <Sfx at={k.midnight + 14} name="flip" volume={0.25} />
     <Sfx at={k.seal - 3} name="timestop" volume={0.4} />
     {evenTicks(k.seal, k.resume - 8).slice(1).map((tk) => <Sfx key={tk.at} at={tk.at} name="flip" volume={0.3} />)}
     <Sfx at={k.resume - 13} name="resume" volume={0.3} />
