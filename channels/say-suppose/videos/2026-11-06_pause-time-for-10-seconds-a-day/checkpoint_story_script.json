@@ -3,21 +3,16 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
-  "status": "completed",
-  "timestamp": "2026-11-06T18:34:44.667649+00:00",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-07T11:04:12.987907+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": true,
+  "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "Script v6: the owner adopted the reference study's rules after passing v5. Read script.md in full.",
-    "approval": {
-      "by": "priyanshu.kushwaha",
-      "at": "2026-11-06T18:34:44.592632+00:00",
-      "via": "omni approve",
-      "proof": "ce5c34ad928c4d94241b217f399edb24187baa62452f0ce7c3e444ac34916a24",
-      "note": "Owner, 2026-11-07, in chat: 'Approve v6'. Script v6 (b7f31c3)."
-    }
+    "for_owner": "Reopened 2026-11-07: script v7 is v6 with the cuts the owner chose from review-g4-round1.md (lines 7, 20, 23, 52, 53, 65 cut; the 23 m fact moved before the rescue; four holds shortened). No new words.",
+    "script": "script.md",
+    "claims": "claims.md"
   }
 }

@@ -84,3 +84,35 @@ Quotes from `higgsfield generate cost` (free, nothing generated):
 
 Cutting or moving lines changes the G2-approved script, so each cut is the owner's call. Changing the voice reopens
 G3. Nothing here has been applied.
+
+## Applied (owner, 2026-11-07)
+
+**Voice.** After the A/B/C test, the owner chose "C: v4 at 1.1x". The same Eleven v4 takes play at 1.1x. The
+countdown stays at real speed.
+
+**Script, v7.** The owner picked these from the list above ("These ones"). All were built from cached takes, at no
+cost.
+
+| Change | v6 lines | Result |
+|---|---|---|
+| Chronostasis shrinks | 20, 23 cut | 21, 22 and 24 stay |
+| Physics: no-spend version of "merge 7-8" | 7 cut | 8 stays as recorded |
+| 23 m stopping fact | 36 moves | Now right after "There's a kid in the road.", as stakes |
+| Road-designers fact | 65 cut | |
+| Bank | 52-53 cut | |
+
+| Hold after | Before | After |
+|---|---|---|
+| The rescue | 4 s | 2.5 s |
+| The stairs fall | 8 s | 4.5 s |
+| The frozen city | 4 s | 2 s |
+| "notice something" | 6 s | 3 s |
+
+**Result.** 6:26 becomes 5:14, and the narration passes its claims and clicks checks. G2 and G3 are reopened for the
+owner.
+
+**Not taken this round:**
+- the grade (the animator's flat-daylight view);
+- cutting "Somebody knows";
+- the smaller framing fixes. Only the Opening's cold-open motion and the Ending's "Somebody knows" face and end-card
+  push are being done, alongside the restaging.
