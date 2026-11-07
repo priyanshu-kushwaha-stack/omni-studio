@@ -3,23 +3,17 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "narration",
-  "status": "completed",
-  "timestamp": "2026-11-07T03:41:42.469485+00:00",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-07T10:51:58.766852+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": true,
+  "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "Listen to narration/narration-as-generated.mp3 (6:15) and the 10% slower copy (6:57); choose the pace.",
+    "for_owner": "Reopened 2026-11-07: the owner chose \"C: v4 at 1.1x\" after the voice A/B. Same Eleven v4 takes sped to 1.1x, the countdown (lines 32-34) at real speed; 5:59 with holds. Listen to narration/narration-1.1x.mp3.",
     "media": "narration/narration.wav",
-    "credits": 28.06,
-    "approval": {
-      "by": "priyanshu.kushwaha",
-      "at": "2026-11-07T03:41:42.415244+00:00",
-      "via": "omni approve",
-      "proof": "f6feae9bf61f1d1597d8b4d6e5dd69df1ce538ff77679af1a56560ce77470138",
-      "note": "Owner, 2026-11-07, in chat: 'As generated' (keep the narration as generated, 6:15). 71 takes, 28.06 credits."
-    }
+    "tempo": 1.1,
+    "credits": 29.26
   }
 }
