@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { layerBlur } from "../src/kit/stage/Look";
+import { actorGrade, layerBlur } from "../src/kit/stage/Look";
 import { MOODS, moodLook, type MoodName } from "../src/kit/stage/moods";
 import { barHeight, BARS_FULL, BARS_SLIDE } from "../src/kit/stage/bars";
 import { sourceLabel } from "../src/kit/ui/source";
@@ -24,6 +24,25 @@ describe("moods", () => {
       if (name !== "day") expect(look.grade, name).toBeDefined();
     }
     expect(Object.keys(MOODS).sort()).toEqual([...names].sort());
+  });
+  it("keeps edges readable on a phone: no vignette darker than 0.45 (colour review, 2026-11-07)", () => {
+    for (const [name, look] of Object.entries(MOODS)) expect(look.vignette, name).toBeLessThanOrEqual(0.45);
+  });
+  it("freezes to a neutral grey, not lavender, like the owner's sample", () => {
+    const { top, bottom } = MOODS.frozen.grade!;
+    const spread = (hex: string) => {
+      const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+      return Math.max(r, g, b) - Math.min(r, g, b);
+    };
+    expect(spread(top)).toBeLessThanOrEqual(12);
+    expect(spread(bottom)).toBeLessThanOrEqual(12);
+  });
+  it("grades the characters lightly so mustard, teal and crimson stay the brand colours", () => {
+    for (const [name, look] of Object.entries(MOODS)) {
+      if (!look.grade) continue;
+      expect(actorGrade(look), name).toBeLessThanOrEqual(0.25);
+      expect(actorGrade(look), name).toBeLessThan(look.grade.opacity ?? 1);
+    }
   });
   it("refuses an unknown mood", () => {
     expect(() => moodLook("noon" as MoodName)).toThrow(/unknown mood/);

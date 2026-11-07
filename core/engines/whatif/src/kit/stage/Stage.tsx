@@ -86,9 +86,10 @@ export const Stage: React.FC<{
   return (
   <AbsoluteFill style={look.film ? { filter: look.film } : undefined}>
     <Dual cam={cam} radius={radius} origin={origin} sky={sky}>{back}</Dual>
+    <Light pass="world" />
     <Sheet cam={cam} style={rim}>{actors}</Sheet>
     {front && <Dual cam={cam} radius={radius} origin={origin}>{front}</Dual>}
-    <Light />
+    <Light pass="over" />
     {radius > 0 && radius < FULL && (
       <AbsoluteFill>
         <svg width={WIDTH} height={HEIGHT}>
