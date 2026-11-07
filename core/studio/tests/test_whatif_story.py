@@ -102,3 +102,18 @@ def test_the_pause_time_script_builds(tmp_path):
     assert len(out["lines"]) > 60
     assert {l["mood"] for l in out["lines"]} <= set(story.MOODS)
     assert all(set(l["claims"]) <= set(out["sources"]) for l in out["lines"])
+
+
+def test_timing_adds_action_time_and_cues(tmp_path):
+    video = _video(tmp_path)
+    (video / "timing.yaml").write_text("extra: {0: 1.5}\ncues:\n  bus: [0, bus]\n  stop: [1, stop]\n")
+    out = story.build(video)
+    assert out["lines"][0]["gapAfterSec"] == pytest.approx(story.GAP + 1.5)
+    assert out["cues"] == {"bus": {"line": 0, "word": "bus"}, "stop": {"line": 1, "word": "stop"}}
+
+
+def test_a_cue_word_missing_from_its_line_is_refused(tmp_path):
+    video = _video(tmp_path)
+    (video / "timing.yaml").write_text("cues:\n  oops: [0, tram]\n")
+    with pytest.raises(ValueError, match="tram"):
+        story.build(video)

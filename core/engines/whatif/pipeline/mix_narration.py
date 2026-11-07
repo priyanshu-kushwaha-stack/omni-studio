@@ -1,6 +1,6 @@
 """Stitch a video's narration takes into one track, placed where the timeline puts them.
 
-    python mix_narration.py <video folder> [--mute START:SECONDS,...]
+    python mix_narration.py <video folder> [--mute TAKE@OFFSET:SECONDS,...]
 
 Reads <video>/assets/narration/props.json (written by build.ts) and its tightened takes. Writes
 <video>/narration/narration.wav (48 kHz mono) and
@@ -9,8 +9,8 @@ reads by default. The narration/ folder is git-ignored.
 
 Clicks (core/studio/rules/no-audio-clicks.md): every take is faded 10 ms in and cut TAIL seconds after its last word
 with a FADE_OUT fade, which removes end-of-take pops. A burst between words inside a take (a breath click) is muted
-with --mute at its time in the whole track, as `omni qc ... narration` reports it; without --mute, the list in
-<video>/mutes.txt is used.
+with --mute as take number @ seconds into that take : length, so a mute stays on its click when timing moves the take;
+without --mute, the list in <video>/mutes.txt is used.
 """
 
 from __future__ import annotations
@@ -23,9 +23,11 @@ from pathlib import Path
 FPS = 30
 TAIL = 0.15
 FADE_OUT = 0.06
+# Margin around a mute: take starts snap to whole frames (1/30 s), so a click can move by up to 33 ms.
+MUTE_PAD = 0.04
 
 
-def mix(video: Path, mute: list[tuple[float, float]] = ()) -> tuple[Path, Path]:
+def mix(video: Path, mute: list[tuple[int, float, float]] = ()) -> tuple[Path, Path]:
     video = Path(video)
     takes = video / "assets" / "narration"
     props = json.loads((takes / "props.json").read_text(encoding="utf-8"))
@@ -51,7 +53,8 @@ def mix(video: Path, mute: list[tuple[float, float]] = ()) -> tuple[Path, Path]:
     total = timeline["totalFrames"] / FPS
     graph = ";".join(chains) + ";" + "".join(f"[a{i}]" for i in range(len(chains))) + \
         f"amix=inputs={len(chains)}:normalize=0:dropout_transition=0,apad=whole_dur={total:.3f}" + \
-        "".join(f",volume=0:enable='between(t,{s - 0.01:.3f},{s + d + 0.01:.3f})'" for s, d in mute) + "[out]"
+        "".join(f",volume=0:enable='between(t,{timeline['clips'][i]['from'] / FPS + o - MUTE_PAD:.3f},"
+                f"{timeline['clips'][i]['from'] / FPS + o + d + MUTE_PAD:.3f})'" for i, o, d in mute) + "[out]"
     wav = out / "narration.wav"
     subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-ac", "1",
                     "-ar", "48000", "-t", f"{total:.3f}", str(wav)], check=True)
@@ -64,6 +67,7 @@ if __name__ == "__main__":
     folder = Path(sys.argv[1])
     saved = folder / "mutes.txt"   # tracked in the video folder, so a re-stitch reproduces the approved track
     spec = sys.argv[sys.argv.index("--mute") + 1] if "--mute" in sys.argv else (saved.read_text().strip() if saved.is_file() else "")
-    mutes = [(float(a), float(b)) for a, b in (item.split(":") for item in spec.split(","))] if spec else []
+    mutes = [(int(item.split("@")[0]), float(item.split("@")[1].split(":")[0]), float(item.split(":")[1]))
+             for item in spec.split(",")] if spec else []
     wav, words = mix(Path(sys.argv[1]), mutes)
     print(f"{wav}\n{words}")

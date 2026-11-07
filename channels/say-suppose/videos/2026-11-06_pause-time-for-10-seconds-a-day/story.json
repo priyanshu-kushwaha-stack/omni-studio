@@ -32,7 +32,7 @@
     {
       "text": "So what if you could pause time for ten seconds a day?",
       "say": "So what if you could pause time for ten seconds a day?",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.35,
       "mood": "morning",
       "claims": []
     },
@@ -70,7 +70,7 @@
     {
       "text": "So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.",
       "say": "So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.85,
       "mood": "frozen",
       "claims": []
     },
@@ -100,7 +100,7 @@
     {
       "text": "Not today.",
       "say": "Not today.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.95,
       "mood": "day",
       "claims": []
     },
@@ -116,7 +116,7 @@
     {
       "text": "Not a crack.",
       "say": "Not a crack.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.85,
       "mood": "day",
       "claims": []
     },
@@ -130,14 +130,14 @@
     {
       "text": "Vanish.",
       "say": "[dry] Vanish.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.55,
       "mood": "day",
       "claims": []
     },
     {
       "text": "The last samosa. A colleague's hand is already reaching. Do you let it go?",
       "say": "The last samosa. A colleague's hand is already reaching. Do you let it go?",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.95,
       "mood": "day",
       "claims": []
     },
@@ -151,7 +151,7 @@
     {
       "text": "Your mother's chappal, mid-air, aimed at your head? You step aside. She never works out how she missed.",
       "say": "Your mother's chappal, mid-air, aimed at your head? You step aside. She never works out how she missed.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.15,
       "mood": "lamp",
       "claims": []
     },
@@ -190,7 +190,7 @@
     {
       "text": "Your brain has been editing time for you all your life. Now you've got the remote.",
       "say": "Your brain has been editing time for you all your life. Now you've got the remote.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.85,
       "mood": "day",
       "claims": []
     },
@@ -232,28 +232,28 @@
     {
       "text": "You hit pause.",
       "say": "[quietly] You hit pause.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.75,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "You run.",
       "say": "You run.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "frozen",
       "claims": []
     },
     {
       "text": "Nine. Eight. Seven.",
       "say": "[breathless] Nine. Eight. Seven.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "frozen",
       "claims": []
     },
     {
       "text": "Six. Five. Four.",
       "say": "[breathless] Six. Five. Four.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "frozen",
       "claims": []
     },
@@ -325,7 +325,7 @@
     {
       "text": "Just this once.",
       "say": "Just this once.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.15,
       "mood": "morning",
       "claims": []
     },
@@ -374,7 +374,7 @@
     {
       "text": "Except, across the street, a curtain moves. In a window that should be frozen.",
       "say": "Except, across the street, a curtain moves. In a window that should be frozen.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.95,
       "mood": "night",
       "claims": []
     },
@@ -402,14 +402,14 @@
     {
       "text": "Catch the six that wins your lane's cricket match? That, you do. Just the once.",
       "say": "Catch the six that wins your lane's cricket match? That, you do. Just the once.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "Ten seconds is too small for greed. It's exactly the right size for an accident.",
       "say": "Ten seconds is too small for greed. It's exactly the right size for an accident.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.35,
       "mood": "day",
       "claims": []
     },
@@ -509,7 +509,7 @@
     {
       "text": "Somebody knows.",
       "say": "[whispers] Somebody knows.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.15,
       "mood": "frozen",
       "claims": []
     },
@@ -531,5 +531,338 @@
     "c14": "https://assets.publishing.service.gov.uk/media/65f97642aa9b760011fbda4e/the-highway-code-stopping-distances.pdf",
     "c13": "https://completestreetdesignmanual.engineering.lacity.gov/e-400-general-roadway-design-elements/e-440-sight-distance/e-442-safe-stopping-distances"
   },
-  "cues": {}
+  "cues": {
+    "flash": {
+      "line": 0,
+      "word": "seconds"
+    },
+    "snap1": {
+      "line": 1,
+      "word": "pause"
+    },
+    "cat": {
+      "line": 2,
+      "word": "cat's"
+    },
+    "counter": {
+      "line": 4,
+      "word": "Ten"
+    },
+    "stops": {
+      "line": 4,
+      "word": "stops"
+    },
+    "restart": {
+      "line": 5,
+      "word": "starts"
+    },
+    "midnight": {
+      "line": 6,
+      "word": "midnight"
+    },
+    "amber": {
+      "line": 7,
+      "word": "seal"
+    },
+    "blind": {
+      "line": 7,
+      "word": "light"
+    },
+    "cheat": {
+      "line": 8,
+      "word": "cheat"
+    },
+    "air": {
+      "line": 8,
+      "word": "Air"
+    },
+    "see": {
+      "line": 8,
+      "word": "see"
+    },
+    "touch": {
+      "line": 8,
+      "word": "touch"
+    },
+    "grin": {
+      "line": 10,
+      "word": "selfish"
+    },
+    "slip": {
+      "line": 11,
+      "word": "phone"
+    },
+    "snap2": {
+      "line": 12,
+      "word": "today"
+    },
+    "tape": {
+      "line": 13,
+      "word": "covers"
+    },
+    "crack": {
+      "line": 14,
+      "word": "crack"
+    },
+    "boss": {
+      "line": 15,
+      "word": "boss"
+    },
+    "vanish": {
+      "line": 16,
+      "word": "Vanish"
+    },
+    "reach": {
+      "line": 17,
+      "word": "reaching"
+    },
+    "swap": {
+      "line": 18,
+      "word": "saint"
+    },
+    "chappal": {
+      "line": 19,
+      "word": "chappal"
+    },
+    "step": {
+      "line": 19,
+      "word": "aside"
+    },
+    "laugh": {
+      "line": 19,
+      "word": "missed"
+    },
+    "clock": {
+      "line": 20,
+      "word": "pause"
+    },
+    "stick": {
+      "line": 21,
+      "word": "stick"
+    },
+    "term": {
+      "line": 22,
+      "word": "chronostasis"
+    },
+    "darts": {
+      "line": 23,
+      "word": "jump"
+    },
+    "remote": {
+      "line": 24,
+      "word": "remote"
+    },
+    "walk": {
+      "line": 25,
+      "word": "walking"
+    },
+    "bus": {
+      "line": 26,
+      "word": "bus"
+    },
+    "red": {
+      "line": 26,
+      "word": "red"
+    },
+    "kid": {
+      "line": 27,
+      "word": "kid"
+    },
+    "shout": {
+      "line": 28,
+      "word": "shout"
+    },
+    "neither": {
+      "line": 29,
+      "word": "Neither"
+    },
+    "pause": {
+      "line": 30,
+      "word": "pause"
+    },
+    "run": {
+      "line": 31,
+      "word": "run"
+    },
+    "nine": {
+      "line": 32,
+      "word": "Nine"
+    },
+    "eight": {
+      "line": 32,
+      "word": "Eight"
+    },
+    "seven": {
+      "line": 32,
+      "word": "Seven"
+    },
+    "six": {
+      "line": 33,
+      "word": "Six"
+    },
+    "five": {
+      "line": 33,
+      "word": "Five"
+    },
+    "four": {
+      "line": 33,
+      "word": "Four"
+    },
+    "three": {
+      "line": 34,
+      "word": "Three"
+    },
+    "two": {
+      "line": 34,
+      "word": "Two"
+    },
+    "one": {
+      "line": 34,
+      "word": "One"
+    },
+    "resume": {
+      "line": 35,
+      "word": "screams"
+    },
+    "ball": {
+      "line": 35,
+      "word": "ball"
+    },
+    "tape23": {
+      "line": 36,
+      "word": "needs"
+    },
+    "mother": {
+      "line": 37,
+      "word": "mother"
+    },
+    "nobody": {
+      "line": 37,
+      "word": "Nobody"
+    },
+    "hands": {
+      "line": 38,
+      "word": "saved"
+    },
+    "free": {
+      "line": 39,
+      "word": "free"
+    },
+    "window": {
+      "line": 41,
+      "word": "watching"
+    },
+    "doors": {
+      "line": 42,
+      "word": "doors"
+    },
+    "once": {
+      "line": 43,
+      "word": "once"
+    },
+    "stairs": {
+      "line": 44,
+      "word": "misses"
+    },
+    "nothing": {
+      "line": 44,
+      "word": "Nothing"
+    },
+    "notyou": {
+      "line": 45,
+      "word": "not"
+    },
+    "awake": {
+      "line": 46,
+      "word": "awake"
+    },
+    "month6": {
+      "line": 47,
+      "word": "never"
+    },
+    "midnight2": {
+      "line": 48,
+      "word": "midnight"
+    },
+    "curtain": {
+      "line": 50,
+      "word": "curtain"
+    },
+    "check": {
+      "line": 51,
+      "word": "check"
+    },
+    "bank": {
+      "line": 52,
+      "word": "bank"
+    },
+    "vault": {
+      "line": 53,
+      "word": "vault"
+    },
+    "six_hit": {
+      "line": 54,
+      "word": "six"
+    },
+    "caught": {
+      "line": 54,
+      "word": "do"
+    },
+    "small": {
+      "line": 56,
+      "word": "disasters"
+    },
+    "asks": {
+      "line": 57,
+      "word": "stop"
+    },
+    "stay": {
+      "line": 59,
+      "word": "stay"
+    },
+    "year40": {
+      "line": 60,
+      "word": "Forty"
+    },
+    "before": {
+      "line": 61,
+      "word": "before"
+    },
+    "clocks": {
+      "line": 62,
+      "word": "pauses"
+    },
+    "mirror": {
+      "line": 63,
+      "word": "older"
+    },
+    "strangers": {
+      "line": 64,
+      "word": "strangers"
+    },
+    "designers": {
+      "line": 65,
+      "word": "designers"
+    },
+    "notice": {
+      "line": 66,
+      "word": "notice"
+    },
+    "moving": {
+      "line": 67,
+      "word": "moving"
+    },
+    "looking": {
+      "line": 68,
+      "word": "looking"
+    },
+    "knows": {
+      "line": 69,
+      "word": "knows"
+    },
+    "endcard": {
+      "line": 70,
+      "word": "spend"
+    }
+  }
 }
