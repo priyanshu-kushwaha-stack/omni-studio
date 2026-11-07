@@ -3,16 +3,23 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "narration",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-06T20:35:05.831978+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-07T03:41:42.469485+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
     "for_owner": "Listen to narration/narration-as-generated.mp3 (6:15) and the 10% slower copy (6:57); choose the pace.",
     "media": "narration/narration.wav",
-    "credits": 28.06
+    "credits": 28.06,
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-07T03:41:42.415244+00:00",
+      "via": "omni approve",
+      "proof": "f6feae9bf61f1d1597d8b4d6e5dd69df1ce538ff77679af1a56560ce77470138",
+      "note": "Owner, 2026-11-07, in chat: 'As generated' (keep the narration as generated, 6:15). 71 takes, 28.06 credits."
+    }
   }
 }
