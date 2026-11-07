@@ -1,0 +1,14 @@
+{
+  "extends": "../../../../../core/engines/whatif/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@whatif/kit/*": ["../../../../../core/engines/whatif/src/kit/*"],
+      "react": ["../../../../../core/engines/whatif/node_modules/@types/react"],
+      "react/*": ["../../../../../core/engines/whatif/node_modules/@types/react/*"],
+      "*": ["../../../../../core/engines/whatif/node_modules/@types/*", "../../../../../core/engines/whatif/node_modules/*", "../../../../../core/engines/whatif/node_modules/@remotion/*"]
+    },
+    "typeRoots": ["../../../../../core/engines/whatif/node_modules/@types"]
+  },
+  "include": ["."]
+}
