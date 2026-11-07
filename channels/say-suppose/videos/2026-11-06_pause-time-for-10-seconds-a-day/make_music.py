@@ -1,4 +1,7 @@
-"""The pause-time score, made locally with ACE-Step 1.5 (MIT, outputs usable commercially; core/lock.yaml `ace_step`).
+"""The pause-time score, made locally with ACE-Step 1.5 (MIT, outputs usable commercially). Its pin, `ace_step` in
+core/lock.yaml, comes from the Power & Citizen branch, where it was installed; it reaches this branch when that merges.
+This script uses the fast turbo model; the larger acestep-v15-xl-sft (50 steps) is the higher-quality option once its
+checkpoint has finished downloading.
 Free: no paid call. The owner asked for our own sound rather than library tracks (2026-11-07, G5).
 
     cd <omni-studio root>
