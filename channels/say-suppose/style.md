@@ -139,7 +139,8 @@ repeats the title.
 
 - Narrator: Arthur (`voices.yaml`), on ElevenLabs Eleven v4 through Higgsfield, with per-line delivery direction
   (hushed, breathless, dry) from the script's narration notes. One take per line, cached by a hash of voice and text.
-  Silences capped at 0.3 s. No speed-up: the slower pace is the point.
+  Silences capped at 0.3 s. Takes play at 1.1x, countdowns at real speed (owner, 2026-11-07, after the G4 voice A/B;
+  `timing.yaml` `tempo` and `tempo_lines`).
 - **A score per video,** with cues that change at the beats: a theme for "you", a cold cue for the catch, silence
   before the twist. Music rises to near voice level in `> HOLD:` beats and ducks under the voice elsewhere. Source:
   ElevenLabs Music v2.5 through Higgsfield, or tracks from the Pixabay music library; never a track with unclear rights.
