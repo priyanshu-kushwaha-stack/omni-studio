@@ -1,7 +1,7 @@
 # Script: What If You Could Pause Time for 10 Seconds a Day?
 
 format: story
-status: v6, G2 passed by the owner 2026-11-07 ("Approve v6")
+status: v7, the owner's cuts after the G4 review (2026-11-07, review-g4-round1.md); G2 reopened
 claims: claims.md
 
 ## [00:00] The change
@@ -25,9 +25,7 @@ When the ten run out, the world starts again, and nobody knows.
 > SCENE: A bedside clock turns to midnight. The counter's flaps blank, then flip back to 10.
 And unused seconds vanish at midnight.
 > MOOD: frozen
-> SCENE: Grey. A translucent amber block snaps shut around you; you push against it, stuck. Cut to black: only your two eyes, blinking.
-Real physics would wreck this power. Stopped air would seal you in like a fly in glass, and stopped light couldn't reach your eyes (c01, c02).
-> SCENE: The block shatters into paper flakes. Colour returns.
+> SCENE: Grey. Your breath stirs the frozen air. Your eyes catch the light. You lift a pillow, let go, and it hangs.
 So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.
 > SCENE: You hold up one finger, thinking.
 So, what's your first pause for?
@@ -59,11 +57,9 @@ Of course not. You're not a saint. You're a person with ten seconds.
 Your mother's chappal, mid-air, aimed at your head? You step aside. She never works out how she missed.
 > MOOD: day
 > SCENE: Close on the hallway wall clock. Your eyes dart to it. The second hand sticks for a beat, then jumps.
-You've felt a tiny pause before.
 Have you ever glanced at a clock and the second hand seemed to stick for a moment?
 > TAG: CHRONOSTASIS
 That's real. Scientists call it chronostasis (c09).
-It happens every time your eyes jump. You only notice when there's a clock to catch it (c10).
 > SCENE: A paper TV remote drops into your hand.
 Your brain has been editing time for you all your life. Now you've got the remote.
 
@@ -75,6 +71,9 @@ Then comes day twelve. You're walking home.
 A bus runs a red light.
 > SCENE: A school-age kid in a blue cap chases a ball onto the crossing. Close on your face: eyes wide, brows up.
 There's a kid in the road.
+> SCENE: Wide, side-on. A paper tape measure unrolls from the moving bus's bumper towards the kid, and runs past them.
+> TAG: 23 M
+A car at 48 kilometres an hour needs about 23 metres to stop (c14). And this is a bus.
 Do you shout? Do you run?
 Neither works. Not in time.
 > SCENE: Far back in the crowd, a figure in a long dark coat, with a crimson head, stands still, facing the wrong way. Nobody looks at them.
@@ -91,12 +90,9 @@ Three. Two. One.
 > MOOD: dusk
 > SCENE: Colour returns, bars out. The bus brakes, horn blaring, through the crossing, and flattens the ball. The kid blinks at the pavement.
 The bus screams through an empty crossing. The ball doesn't make it. The kid does.
-> SCENE: Wide, side-on. The bus at rest past the crossing. A paper tape measure unrolls from its bumper back up the road.
-> TAG: 23 M
-A car at 48 kilometres an hour needs about 23 metres to stop (c14). And this is a bus.
 > SCENE: The kid's mother runs over and hugs the kid, then turns to thank the shaken bus driver. You stand at the edge of the frame.
 The kid's mother runs over, shaking. She thanks the bus driver. Nobody thanks you. Nobody knows to.
-> HOLD: 4 s. You walk away down the street, hands in pockets, trembling. The music settles into the theme for you.
+> HOLD: 2.5 s. You walk away down the street, hands in pockets, trembling. The music settles into the theme for you.
 
 ## [03:30] The catch
 > MOOD: night
@@ -113,7 +109,7 @@ Just this once.
 > MOOD: lamp
 > SCENE: That evening, home, one lamp. Your mother at the top of the stairs, carrying a basket of washing. She misses a step. You snap. Nothing: the counter reads 0.
 That evening, your mother misses a step on the stairs. You snap your fingers. Nothing.
-> HOLD: 8 s. Slow motion; the warm lamp stays, the shadows deepen and the vignette closes in (no grey: the pause failed). She falls the last three steps. The music drops to a single held note, then nothing. You kneel beside her. She sits up, rubbing her arm, and waves you off.
+> HOLD: 4.5 s. Slow motion; the warm lamp stays, the shadows deepen and the vignette closes in (no grey: the pause failed). She falls the last three steps. The music drops to a single held note, then nothing. You kneel beside her. She sits up, rubbing her arm, and waves you off.
 She's all right. Bruised. You're not.
 > MOOD: night
 > SCENE: Night. You in bed, eyes open, the counter on the wall reading 10.
@@ -123,7 +119,7 @@ That night, you lie awake doing the maths of every second you've ever wasted.
 You almost never spend them on yourself again.
 > SCENE: Bedroom, midnight. The counter still reads 10. You lie awake, then snap. Grey. The city outside the window hangs still.
 Some days nothing happens. So at midnight you spend them on nothing at all.
-> HOLD: 4 s. The frozen city, just for you. A held chord.
+> HOLD: 2 s. The frozen city, just for you. A held chord.
 Ten seconds of a city holding its breath, just for you.
 > SCENE: Across the street, in a frozen grey building, a curtain in one window swings shut. The counter flips to 0. Colour. You stare at the window.
 Except, across the street, a curtain moves. In a window that should be frozen.
@@ -132,10 +128,7 @@ Except, across the street, a curtain moves. In a window that should be frozen.
 > SCENE: You at your window, night after night, watching the building across the street. The curtain never moves.
 The curtain never moves again. But every midnight, you check.
 > MOOD: day
-> SCENE: A daydream cloud over your head: you in front of a bank vault, the counter at 10.
-People always ask what you'd do with a superpower. Rob a bank?
-Ten seconds gets you to the counter. It doesn't open a vault.
-> SCENE: The cloud pops. Street cricket in a lane. A ball skied high towards the boundary wall. You snap. Grey. You walk under the frozen ball, hands cupped. Colour. It drops into your hands. The lane erupts.
+> SCENE: Street cricket in a lane. A ball skied high towards the boundary wall. You snap. Grey. You walk under the frozen ball, hands cupped. Colour. It drops into your hands. The lane erupts.
 Catch the six that wins your lane's cricket match? That, you do. Just the once.
 Ten seconds is too small for greed. It's exactly the right size for an accident.
 > SCENE: Quick cuts, two seconds each: a bottle you nudge from under a bike wheel; a pan handle you turn inward; a toddler you lift back from the top stair.
@@ -163,12 +156,10 @@ The bigger cost is the watching. A whole life spent ten seconds at a time, on st
 
 ## [06:15] Back to you
 > MOOD: dusk
-> SCENE: The crossing from day twelve, ordinary and busy. A car approaches; a paper tag beside the driver reads 1.5 S.
-Here's the real part. Nobody gets ten frozen seconds. Road designers assume a driver needs a second and a half just to notice danger (c13).
 > SCENE: The street, evening. You snap. The crowd freezes, grey; bars slide in. You turn to walk home.
 > MOOD: frozen
 And then you notice something.
-> HOLD: 6 s. Silence. In the frozen crowd, the figure in the long dark coat, with the crimson head, is walking. Slowly. Towards you.
+> HOLD: 3 s. Silence. In the frozen crowd, the figure in the long dark coat, with the crimson head, is walking. Slowly. Towards you.
 Someone else is still moving.
 > SCENE: The stranger stops. Turns. Looks straight at you. Close on your face: eyes wide, lids up, mouth open.
 And they're looking right at you.
@@ -193,7 +184,7 @@ explicit holds and the action between lines; about 7:30 in all.
   "Somebody knows." [whispers]. "Nine. Eight. Seven." to "Three. Two. One.": one take per number, breathless and quickening,
   each cut to a counter flip. "You're not." is its own take after "She's all right. Bruised.": lower, slower.
   "And this is a bus." is its own take: deadpan.
-- No speed-up on any take: the pace is about 115 words a minute by design.
+- Tempo 1.1 on every take except the countdown (owner, 2026-11-07: "C: v4 at 1.1x"; timing.yaml).
 
 ## Not said
 - No bus stopping distance was found in a source, so the script gives the car figure (c14) and says "And this is a

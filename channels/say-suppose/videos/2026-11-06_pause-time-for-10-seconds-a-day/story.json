@@ -58,16 +58,6 @@
       "claims": []
     },
     {
-      "text": "Real physics would wreck this power. Stopped air would seal you in like a fly in glass, and stopped light couldn't reach your eyes.",
-      "say": "Real physics would wreck this power. Stopped air would seal you in like a fly in glass, and stopped light couldn't reach your eyes.",
-      "gapAfterSec": 0.35,
-      "mood": "frozen",
-      "claims": [
-        "c01",
-        "c02"
-      ]
-    },
-    {
       "text": "So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.",
       "say": "So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.",
       "gapAfterSec": 0.85,
@@ -156,13 +146,6 @@
       "claims": []
     },
     {
-      "text": "You've felt a tiny pause before.",
-      "say": "You've felt a tiny pause before.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
       "text": "Have you ever glanced at a clock and the second hand seemed to stick for a moment?",
       "say": "Have you ever glanced at a clock and the second hand seemed to stick for a moment?",
       "gapAfterSec": 0.35,
@@ -176,15 +159,6 @@
       "mood": "day",
       "claims": [
         "c09"
-      ]
-    },
-    {
-      "text": "It happens every time your eyes jump. You only notice when there's a clock to catch it.",
-      "say": "It happens every time your eyes jump. You only notice when there's a clock to catch it.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c10"
       ]
     },
     {
@@ -214,6 +188,15 @@
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
+    },
+    {
+      "text": "A car at 48 kilometres an hour needs about 23 metres to stop. And this is a bus.",
+      "say": "A car at forty-eight kilometres an hour needs about twenty-three metres to stop. [deadpan] And this is a bus.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": [
+        "c14"
+      ]
     },
     {
       "text": "Do you shout? Do you run?",
@@ -275,18 +258,9 @@
       "claims": []
     },
     {
-      "text": "A car at 48 kilometres an hour needs about 23 metres to stop. And this is a bus.",
-      "say": "A car at forty-eight kilometres an hour needs about twenty-three metres to stop. [deadpan] And this is a bus.",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": [
-        "c14"
-      ]
-    },
-    {
       "text": "The kid's mother runs over, shaking. She thanks the bus driver. Nobody thanks you. Nobody knows to.",
       "say": "The kid's mother runs over, shaking. She thanks the bus driver. Nobody thanks you. Nobody knows to.",
-      "gapAfterSec": 4.0,
+      "gapAfterSec": 2.5,
       "mood": "dusk",
       "claims": []
     },
@@ -335,7 +309,7 @@
     {
       "text": "That evening, your mother misses a step on the stairs. You snap your fingers. Nothing.",
       "say": "That evening, your mother misses a step on the stairs. You snap your fingers. Nothing.",
-      "gapAfterSec": 8.0,
+      "gapAfterSec": 4.5,
       "mood": "lamp",
       "claims": []
     },
@@ -363,7 +337,7 @@
     {
       "text": "Some days nothing happens. So at midnight you spend them on nothing at all.",
       "say": "Some days nothing happens. So at midnight you spend them on nothing at all.",
-      "gapAfterSec": 4.0,
+      "gapAfterSec": 2.0,
       "mood": "night",
       "claims": []
     },
@@ -386,20 +360,6 @@
       "say": "The curtain never moves again. But every midnight, you check.",
       "gapAfterSec": 0.35,
       "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "People always ask what you'd do with a superpower. Rob a bank?",
-      "say": "People always ask what you'd do with a superpower. Rob a bank?",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Ten seconds gets you to the counter. It doesn't open a vault.",
-      "say": "Ten seconds gets you to the counter. It doesn't open a vault.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
       "claims": []
     },
     {
@@ -480,18 +440,9 @@
       "claims": []
     },
     {
-      "text": "Here's the real part. Nobody gets ten frozen seconds. Road designers assume a driver needs a second and a half just to notice danger.",
-      "say": "Here's the real part. Nobody gets ten frozen seconds. Road designers assume a driver needs a second and a half just to notice danger.",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": [
-        "c13"
-      ]
-    },
-    {
       "text": "And then you notice something.",
       "say": "And then you notice something.",
-      "gapAfterSec": 6.0,
+      "gapAfterSec": 3.0,
       "mood": "frozen",
       "claims": []
     },
@@ -525,14 +476,10 @@
     }
   ],
   "sources": {
-    "c01": "https://www.livescience.com/can-time-stop.html",
-    "c02": "https://www.livescience.com/can-time-stop.html",
     "c04": "https://openstax.org/books/college-physics-2e/pages/2-7-falling-objects",
     "c05": "https://pubmed.ncbi.nlm.nih.gov/21820535/",
     "c09": "https://pubmed.ncbi.nlm.nih.gov/11713528/",
-    "c10": "https://pubmed.ncbi.nlm.nih.gov/11713528/",
-    "c14": "https://assets.publishing.service.gov.uk/media/65f97642aa9b760011fbda4e/the-highway-code-stopping-distances.pdf",
-    "c13": "https://completestreetdesignmanual.engineering.lacity.gov/e-400-general-roadway-design-elements/e-440-sight-distance/e-442-safe-stopping-distances"
+    "c14": "https://assets.publishing.service.gov.uk/media/65f97642aa9b760011fbda4e/the-highway-code-stopping-distances.pdf"
   },
   "cues": {
     "flash": {
@@ -563,308 +510,280 @@
       "line": 6,
       "word": "midnight"
     },
-    "amber": {
-      "line": 7,
-      "word": "seal"
-    },
-    "blind": {
-      "line": 7,
-      "word": "light"
-    },
     "cheat": {
-      "line": 8,
+      "line": 7,
       "word": "cheat"
     },
     "air": {
-      "line": 8,
+      "line": 7,
       "word": "Air"
     },
     "see": {
-      "line": 8,
+      "line": 7,
       "word": "see"
     },
     "touch": {
-      "line": 8,
+      "line": 7,
       "word": "touch"
     },
     "grin": {
-      "line": 10,
+      "line": 9,
       "word": "selfish"
     },
     "slip": {
-      "line": 11,
+      "line": 10,
       "word": "phone"
     },
     "snap2": {
-      "line": 12,
+      "line": 11,
       "word": "today"
     },
     "tape": {
-      "line": 13,
+      "line": 12,
       "word": "covers"
     },
     "crack": {
-      "line": 14,
+      "line": 13,
       "word": "crack"
     },
     "boss": {
-      "line": 15,
+      "line": 14,
       "word": "boss"
     },
     "vanish": {
-      "line": 16,
+      "line": 15,
       "word": "Vanish"
     },
     "reach": {
-      "line": 17,
+      "line": 16,
       "word": "reaching"
     },
     "swap": {
-      "line": 18,
+      "line": 17,
       "word": "saint"
     },
     "chappal": {
-      "line": 19,
+      "line": 18,
       "word": "chappal"
     },
     "step": {
-      "line": 19,
+      "line": 18,
       "word": "aside"
     },
     "laugh": {
-      "line": 19,
+      "line": 18,
       "word": "missed"
     },
-    "clock": {
-      "line": 20,
-      "word": "pause"
-    },
     "stick": {
-      "line": 21,
+      "line": 19,
       "word": "stick"
     },
     "term": {
-      "line": 22,
+      "line": 20,
       "word": "chronostasis"
     },
-    "darts": {
-      "line": 23,
-      "word": "jump"
-    },
     "remote": {
-      "line": 24,
+      "line": 21,
       "word": "remote"
     },
     "walk": {
-      "line": 25,
+      "line": 22,
       "word": "walking"
     },
     "bus": {
-      "line": 26,
+      "line": 23,
       "word": "bus"
     },
     "red": {
-      "line": 26,
+      "line": 23,
       "word": "red"
     },
     "kid": {
-      "line": 27,
+      "line": 24,
       "word": "kid"
     },
     "shout": {
-      "line": 28,
+      "line": 26,
       "word": "shout"
     },
     "neither": {
-      "line": 29,
+      "line": 27,
       "word": "Neither"
     },
     "pause": {
-      "line": 30,
+      "line": 28,
       "word": "pause"
     },
     "run": {
-      "line": 31,
+      "line": 29,
       "word": "run"
     },
     "nine": {
-      "line": 32,
+      "line": 30,
       "word": "Nine"
     },
     "eight": {
-      "line": 32,
+      "line": 30,
       "word": "Eight"
     },
     "seven": {
-      "line": 32,
+      "line": 30,
       "word": "Seven"
     },
     "six": {
-      "line": 33,
+      "line": 31,
       "word": "Six"
     },
     "five": {
-      "line": 33,
+      "line": 31,
       "word": "Five"
     },
     "four": {
-      "line": 33,
+      "line": 31,
       "word": "Four"
     },
     "three": {
-      "line": 34,
+      "line": 32,
       "word": "Three"
     },
     "two": {
-      "line": 34,
+      "line": 32,
       "word": "Two"
     },
     "one": {
-      "line": 34,
+      "line": 32,
       "word": "One"
     },
     "resume": {
-      "line": 35,
+      "line": 33,
       "word": "screams"
     },
     "ball": {
-      "line": 35,
+      "line": 33,
       "word": "ball"
     },
     "tape23": {
-      "line": 36,
+      "line": 25,
       "word": "needs"
     },
     "mother": {
-      "line": 37,
+      "line": 34,
       "word": "mother"
     },
     "nobody": {
-      "line": 37,
+      "line": 34,
       "word": "Nobody"
     },
     "hands": {
-      "line": 38,
+      "line": 35,
       "word": "saved"
     },
     "free": {
-      "line": 39,
+      "line": 36,
       "word": "free"
     },
     "window": {
-      "line": 41,
+      "line": 38,
       "word": "watching"
     },
     "doors": {
-      "line": 42,
+      "line": 39,
       "word": "doors"
     },
     "once": {
-      "line": 43,
+      "line": 40,
       "word": "once"
     },
     "stairs": {
-      "line": 44,
+      "line": 41,
       "word": "misses"
     },
     "nothing": {
-      "line": 44,
+      "line": 41,
       "word": "Nothing"
     },
     "notyou": {
-      "line": 45,
+      "line": 42,
       "word": "not"
     },
     "awake": {
-      "line": 46,
+      "line": 43,
       "word": "awake"
     },
     "month6": {
-      "line": 47,
+      "line": 44,
       "word": "never"
     },
     "midnight2": {
-      "line": 48,
+      "line": 45,
       "word": "midnight"
     },
     "curtain": {
-      "line": 50,
+      "line": 47,
       "word": "curtain"
     },
     "check": {
-      "line": 51,
+      "line": 48,
       "word": "check"
     },
-    "bank": {
-      "line": 52,
-      "word": "bank"
-    },
-    "vault": {
-      "line": 53,
-      "word": "vault"
-    },
     "six_hit": {
-      "line": 54,
+      "line": 49,
       "word": "six"
     },
     "caught": {
-      "line": 54,
+      "line": 49,
       "word": "do"
     },
     "small": {
-      "line": 56,
+      "line": 51,
       "word": "disasters"
     },
     "asks": {
-      "line": 57,
+      "line": 52,
       "word": "stop"
     },
     "stay": {
-      "line": 59,
+      "line": 54,
       "word": "stay"
     },
     "year40": {
-      "line": 60,
+      "line": 55,
       "word": "Forty"
     },
     "before": {
-      "line": 61,
+      "line": 56,
       "word": "before"
     },
     "clocks": {
-      "line": 62,
+      "line": 57,
       "word": "pauses"
     },
     "mirror": {
-      "line": 63,
+      "line": 58,
       "word": "older"
     },
     "strangers": {
-      "line": 64,
+      "line": 59,
       "word": "strangers"
     },
-    "designers": {
-      "line": 65,
-      "word": "designers"
-    },
     "notice": {
-      "line": 66,
+      "line": 60,
       "word": "notice"
     },
     "moving": {
-      "line": 67,
+      "line": 61,
       "word": "moving"
     },
     "looking": {
-      "line": 68,
+      "line": 62,
       "word": "looking"
     },
     "knows": {
-      "line": 69,
+      "line": 63,
       "word": "knows"
     },
     "endcard": {
-      "line": 70,
+      "line": 64,
       "word": "spend"
     }
   },
