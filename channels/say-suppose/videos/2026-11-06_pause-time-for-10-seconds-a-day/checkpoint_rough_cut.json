@@ -3,17 +3,23 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "rough_cut",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-07T15:39:47.893041+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-07T15:59:36.784376+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
     "for_owner": "Watch renders/rough-cut-v8.mp4 (5:16): v7 plus the title-card opening (C), the paper subscribe tag after the rescue, the bus-shelter ad, like/subscribe/comment tags on the end card, and the two-expert colour fix. Score, sound design and loudness come at G5.",
     "media": "renders/rough-cut-v8.mp4",
     "preview": "renders/rough-cut-v8-preview.mp4",
-    "render_seconds": 316.3
+    "render_seconds": 316.3,
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-07T15:59:36.193225+00:00",
+      "via": "omni approve",
+      "proof": "83c05dc0d424776433c41ce83a931ceac3a475dd9a212f2c481fb1ad407ec6fd"
+    }
   }
 }
