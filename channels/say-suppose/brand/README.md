@@ -49,5 +49,8 @@ sound like one channel.
 - **Cost.** ElevenLabs Music v2.5, instrumental, 60 s each: 34.88 credits in all.
 - **Files.** Saved in `../page/candidates/theme/` (git-ignored, because media stays out of git). Any job can be
   fetched again with `higgsfield generate get <id> --json`.
+- **The owner's picks (2026-11-07).** Light: the first version (`e7d9677a`). Dark: the first version (`df65322c`).
+  Kept as `brand/music/theme-light.mp3` and `theme-dark.mp3`; that folder is git-ignored apart from its `.gitignore`.
+  Re-fetch them by job id on a fresh checkout.
 - **CLI gotcha.** `batch_size 2` makes two jobs, but the CLI's `create` prints only the first id. Find the second
   with `higgsfield generate list`.

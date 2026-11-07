@@ -11,7 +11,7 @@ Free: no paid call. The owner asked for our own sound rather than library tracks
 Five cues follow the film's beats (lengths from assets/narration/props.json, with a few seconds spare). Briefs follow
 channels/say-suppose/style.md: a theme for "you", a cold cue for the catch, near-silence before the twist; an
 underscore under one narrator, never a song: no vocals, no drum kit, no big drops, room left for speech. Three seeds
-per cue, so the owner picks by ear. Output: WAV into assets/music/ (git-ignored), peak -1 dBFS; the level is set in
+per cue, so the owner picks by ear, each styled on one of the channel's two themes. Output: WAV into assets/music/themed/ (git-ignored), peak -1 dBFS; the level is set in
 the mix, under the voice.
 """
 import subprocess
@@ -32,7 +32,12 @@ def _tools_dir() -> Path:
 
 
 ACE = _tools_dir() / "ace-step-1.5"
-OUT = HERE / "assets" / "music"
+OUT = HERE / "assets" / "music" / "themed"
+# The channel's themes (owner's picks, 2026-11-07; channels/say-suppose/brand/README.md): every cue takes one as its
+# style reference at low strength, so the score sounds like the channel without copying the tune.
+THEMES = HERE.parents[1] / "brand" / "music"
+THEME_OF = {"you": "light", "tension": "light", "catch": "dark", "longrun": "dark", "twist": "dark"}
+REFERENCE_STRENGTH = 0.2
 
 STYLE = ("whimsical cinematic underscore for an animated paper-cut story narrated by one voice, light orchestra, "
          "pizzicato strings, celesta, felt piano, soft woodwinds, instrumental, no vocals, no drum kit, sparse, "
@@ -71,10 +76,14 @@ def main(names: list[str]) -> None:
                    device="auto")
     for name in names:
         where, seconds, bpm, key, brief = CUES[name]
+        theme = THEMES / f"theme-{THEME_OF[name]}.mp3"
+        if not theme.is_file():
+            raise SystemExit(f"missing channel theme {theme}: fetch it with `higgsfield generate get <id>` (brand/README.md)")
         for seed in SEEDS:
             params = GenerationParams(
                 caption=f"{STYLE}; {brief}", lyrics="[Instrumental]", instrumental=True, duration=seconds,
                 bpm=bpm, keyscale=key, timesignature="4", inference_steps=8, shift=3.0, seed=seed, thinking=False,
+                reference_audio=str(theme), audio_cover_strength=REFERENCE_STRENGTH,
                 enable_normalization=True, normalization_db=-1.0)
             config = GenerationConfig(batch_size=1, use_random_seed=False, audio_format="wav")
             result = generate_music(dit, llm, params, config, save_dir=str(OUT / f"{name}-{seed}"))
