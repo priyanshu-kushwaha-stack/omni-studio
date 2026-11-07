@@ -32,7 +32,9 @@ export function args(cmd: "create" | "cost", v: VoiceSpec, text: string): string
     return ["generate", cmd, v.model, "--dialogue", JSON.stringify(turn), "--json"];
   }
   if (!v.variant) throw new Error(`voice model ${v.model} needs a variant`);
-  return ["generate", cmd, v.model, "--prompt", text, "--variant", v.variant,
+  // This route takes no direction: "[whispers]" would be spoken as a word.
+  const plain = text.replace(/\s*\[[^\]]*\]\s*/g, " ").trim();
+  return ["generate", cmd, v.model, "--prompt", plain, "--variant", v.variant,
     "--voice_type", v.voiceType, "--voice_id", v.voiceId, "--json"];
 }
 

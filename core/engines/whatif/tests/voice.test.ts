@@ -12,4 +12,8 @@ describe("voice CLI arguments", () => {
     expect(args("create", { model: "text2speech_v2", variant: "elevenlabs", ...arthur }, "Hi.")).toContain("--variant");
     expect(() => args("create", { model: "text2speech_v2", ...arthur }, "Hi.")).toThrow(/variant/);
   });
+  it("drops bracket directions for text2speech_v2, which would read them aloud", () => {
+    const a = args("create", { model: "text2speech_v2", variant: "elevenlabs", ...arthur }, "[quietly] Nobody knows. [beat] Ever.");
+    expect(a[a.indexOf("--prompt") + 1]).toBe("Nobody knows. Ever.");
+  });
 });
