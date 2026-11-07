@@ -3,17 +3,23 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "narration",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-07T10:51:58.766852+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-07T12:41:56.719805+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
     "for_owner": "Reopened 2026-11-07: the owner chose \"C: v4 at 1.1x\" after the voice A/B. Same Eleven v4 takes sped to 1.1x, the countdown (lines 32-34) at real speed; 5:59 with holds. Listen to narration/narration-1.1x.mp3.",
     "media": "narration/narration.wav",
     "tempo": 1.1,
-    "credits": 29.26
+    "credits": 29.26,
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-07T12:41:56.667121+00:00",
+      "via": "omni approve",
+      "proof": "ac562dd61dd1d07f558576ff243d5a93cbb250ba7655954e3ec1df161f6baaa1"
+    }
   }
 }

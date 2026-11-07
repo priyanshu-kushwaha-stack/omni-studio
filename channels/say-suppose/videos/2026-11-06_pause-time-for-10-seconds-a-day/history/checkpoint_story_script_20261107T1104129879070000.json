@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-07T11:04:12.987907+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "Reopened 2026-11-07: script v7 is v6 with the cuts the owner chose from review-g4-round1.md (lines 7, 20, 23, 52, 53, 65 cut; the 23 m fact moved before the rescue; four holds shortened). No new words.",
+    "script": "script.md",
+    "claims": "claims.md"
+  }
+}

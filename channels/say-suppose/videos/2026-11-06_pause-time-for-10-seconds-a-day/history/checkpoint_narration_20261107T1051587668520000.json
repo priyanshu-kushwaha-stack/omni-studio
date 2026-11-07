@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "narration",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-07T10:51:58.766852+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "Reopened 2026-11-07: the owner chose \"C: v4 at 1.1x\" after the voice A/B. Same Eleven v4 takes sped to 1.1x, the countdown (lines 32-34) at real speed; 5:59 with holds. Listen to narration/narration-1.1x.mp3.",
+    "media": "narration/narration.wav",
+    "tempo": 1.1,
+    "credits": 29.26
+  }
+}

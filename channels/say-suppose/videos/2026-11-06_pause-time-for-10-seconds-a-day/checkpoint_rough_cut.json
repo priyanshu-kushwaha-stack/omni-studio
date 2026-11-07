@@ -4,17 +4,17 @@
   "pipeline_type": "studio-whatif",
   "stage": "rough_cut",
   "status": "awaiting_human",
-  "timestamp": "2026-11-07T09:49:16.314496+00:00",
+  "timestamp": "2026-11-07T12:42:08.485328+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "Watch renders/rough-cut.mp4 (6:26) for structure and timing: every shot of scene_plan.md on its cue, light by mood, counters, tags and bubbles. Score, sound design and loudness come at G5.",
-    "media": "renders/rough-cut.mp4",
-    "scenes": "scenes/",
-    "render_seconds": 386.5,
+    "for_owner": "Watch renders/rough-cut-v7.mp4 (5:14): script v7 with the cuts chosen from review-g4-round1.md, narration at 1.1x (countdown at real speed). Score, sound design and loudness come at G5.",
+    "media": "renders/rough-cut-v7.mp4",
+    "preview": "renders/rough-cut-v7-preview.mp4",
+    "render_seconds": 313.6,
     "loudness_lufs": -18.3
   }
 }
