@@ -10,6 +10,8 @@ export interface ScriptLine {
   mood?: string;
   /** Ledger ids cited on this line; their sources show as a tag. */
   claims?: string[];
+  /** Speed for this take when it differs from the story's (a countdown kept at real time). */
+  tempo?: number;
 }
 export interface CueAnchor { line: number; word: string }
 

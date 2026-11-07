@@ -5,8 +5,8 @@
 A video folder is channels/<slug>/videos/<id>/. Reads its script.md (the owner-approved script), claims.md (the
 source of every cited id), say.yaml (optional: the text the voice speaks for a line, when numbers need
 spelling out or the delivery needs a direction such as "[whispers]"), timing.yaml (optional, the rough cut's:
-"extra" seconds of action after a line and named "cues" as [line, word]) and the channel's voices.yaml. Without a
-timing.yaml, cues already in story.json are kept.
+"extra" seconds of action after a line, named "cues" as [line, word], "tempo" for every take and "tempo_lines" as
+{line: tempo} exceptions) and the channel's voices.yaml. Without a timing.yaml, cues already in story.json are kept.
 
 Script rules (channels/say-suppose/cast.md): bare lines under "## [mm:ss]" headings are spoken; "> MOOD: x" sets the
 light for the lines after it; "> HOLD: N s" is a wordless gap of N seconds after the previous line; other "> " lines
@@ -121,9 +121,14 @@ def build(video: Path) -> dict:
 
     old = video / "story.json"
     cues = json.loads(old.read_text(encoding="utf-8")).get("cues", {}) if old.is_file() else {}
+    tempo = None
     timing_path = video / "timing.yaml"
     if timing_path.is_file():
         timing = yaml.safe_load(timing_path.read_text(encoding="utf-8")) or {}
+        if timing.get("tempo") is not None:
+            tempo = float(timing["tempo"])
+        for index, line_tempo in (timing.get("tempo_lines") or {}).items():
+            lines[int(index)]["tempo"] = float(line_tempo)
         for index, seconds in (timing.get("extra") or {}).items():
             lines[int(index)]["gapAfterSec"] = round(lines[int(index)]["gapAfterSec"] + float(seconds), 3)
         cues = {}
@@ -133,7 +138,7 @@ def build(video: Path) -> dict:
                 raise ValueError(f"timing.yaml cue {name}: {word!r} is not a word of line {index}: {lines[int(index)]['text']}")
             cues[name] = {"line": int(index), "word": str(word)}
     cited = [c for l in lines for c in l["claims"]]
-    return {
+    story = {
         "id": video.name,
         "voice": _voice(video.parent.parent),
         "leadInSec": lead_in,
@@ -142,6 +147,9 @@ def build(video: Path) -> dict:
         "sources": {cid: ledger[cid][0] for cid in dict.fromkeys(cited)},
         "cues": cues,
     }
+    if tempo is not None:
+        story["tempo"] = tempo
+    return story
 
 
 if __name__ == "__main__":

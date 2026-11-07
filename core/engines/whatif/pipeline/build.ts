@@ -13,7 +13,7 @@ import { basename, join } from "node:path";
 import { parseArgs } from "node:util";
 import { buildTimeline, type LineAudio, type VideoScript } from "../src/kit/timeline";
 import { FPS } from "../src/kit/theme";
-import { cost, probeSeconds, silences, synthesize, tighten, transcribe } from "./voice";
+import { cost, probeSeconds, silences, synthesize, tighten, tightName, transcribe } from "./voice";
 
 const { values } = parseArgs({
   options: { story: { type: "string" }, out: { type: "string" }, "max-credits": { type: "string" } },
@@ -32,7 +32,10 @@ const clips = script.lines.map((line, i) => {
   // Hash voice+spoken text into the name so edits re-generate (and re-bill) only the lines that changed.
   const hash = createHash("sha256").update(`${JSON.stringify(voice)}\n${spoken}`).digest("hex").slice(0, 8);
   const name = `line-${String(i + 1).padStart(2, "0")}-${hash}`;
-  return { spoken, raw: join(out, `${name}.wav`), file: `${sub}/${name}.tight.wav`, path: join(out, `${name}.tight.wav`) };
+  // Tempo is applied when tightening, so a new tempo re-uses the paid take and never re-bills it.
+  const tempo = line.tempo ?? script.tempo ?? 1;
+  const tight = tightName(name, tempo);
+  return { spoken, tempo, raw: join(out, `${name}.wav`), file: `${sub}/${tight}`, path: join(out, tight) };
 });
 
 // A take bought under another line number (a test run, a reordered script) is the same take: reuse it by its hash.
@@ -56,7 +59,7 @@ for (const c of pending) {
   await synthesize(c.spoken, voice, c.raw);
   console.log(`voice: ${c.spoken}`);
 }
-for (const c of clips) if (!existsSync(c.path)) await tighten(c.raw, c.path, script.tempo ?? 1);
+for (const c of clips) if (!existsSync(c.path)) await tighten(c.raw, c.path, c.tempo);
 await transcribe(clips.map((c) => c.path).filter((p) => !existsSync(`${p}.words.json`)));
 
 const audio: LineAudio[] = [];
@@ -69,6 +72,6 @@ for (const c of clips) {
   });
 }
 const timeline = buildTimeline(script, audio, FPS);
-writeFileSync(join(out, "props.json"), JSON.stringify({ timeline, lines: script.lines, sources: script.sources ?? {} }, null, 2));
+writeFileSync(join(out, "props.json"), JSON.stringify({ timeline, lines: script.lines, sources: script.sources ?? {}, tempo: script.tempo ?? 1 }, null, 2));
 console.log(`${(timeline.totalFrames / FPS).toFixed(1)}s`);
 for (const [id, f] of Object.entries(timeline.cues)) console.log(`${id}: ${f} (${(f / FPS).toFixed(2)}s)`);

@@ -10,7 +10,8 @@ reads by default. The narration/ folder is git-ignored.
 Clicks (core/studio/rules/no-audio-clicks.md): every take is faded 10 ms in and cut TAIL seconds after its last word
 with a FADE_OUT fade, which removes end-of-take pops. A burst between words inside a take (a breath click) is muted
 with --mute as take number @ seconds into that take : length, so a mute stays on its click when timing moves the take;
-without --mute, the list in <video>/mutes.txt is used.
+without --mute, the list in <video>/mutes.txt is used. Mutes are measured on the takes at normal speed; a line spoken
+at a tempo (props "tempo", or the line's own) has its mutes scaled to match.
 """
 
 from __future__ import annotations
@@ -27,11 +28,21 @@ FADE_OUT = 0.06
 MUTE_PAD = 0.04
 
 
+def at_tempo(mute: list[tuple[int, float, float]], lines: list[dict], tempo: float) -> list[tuple[int, float, float]]:
+    """Mutes are measured on the takes at normal speed; a take sped up by its tempo moves and shortens them."""
+    out = []
+    for i, offset, length in mute:
+        t = lines[i].get("tempo", tempo)
+        out.append((i, offset / t, length / t))
+    return out
+
+
 def mix(video: Path, mute: list[tuple[int, float, float]] = ()) -> tuple[Path, Path]:
     video = Path(video)
     takes = video / "assets" / "narration"
     props = json.loads((takes / "props.json").read_text(encoding="utf-8"))
     timeline = props["timeline"]
+    mute = at_tempo(list(mute), props["lines"], props.get("tempo", 1))
     out = video / "narration"
     out.mkdir(exist_ok=True)
 

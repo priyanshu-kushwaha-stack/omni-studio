@@ -117,3 +117,29 @@ def test_a_cue_word_missing_from_its_line_is_refused(tmp_path):
     (video / "timing.yaml").write_text("cues:\n  oops: [0, tram]\n")
     with pytest.raises(ValueError, match="tram"):
         story.build(video)
+
+
+def test_timing_sets_a_tempo_with_per_line_exceptions(tmp_path):
+    video = _video(tmp_path)
+    (video / "timing.yaml").write_text("tempo: 1.1\ntempo_lines: {2: 1.0}\n")
+    out = story.build(video)
+    assert out["tempo"] == pytest.approx(1.1)
+    assert "tempo" not in out["lines"][0]
+    assert out["lines"][2]["tempo"] == pytest.approx(1.0)
+
+
+def test_no_tempo_leaves_the_story_at_normal_speed(tmp_path):
+    out = story.build(_video(tmp_path))
+    assert "tempo" not in out
+    assert all("tempo" not in l for l in out["lines"])
+
+
+mix_spec = importlib.util.spec_from_file_location("whatif_mix", REAL_ROOT / "core/engines/whatif/pipeline/mix_narration.py")
+mix = importlib.util.module_from_spec(mix_spec)
+mix_spec.loader.exec_module(mix)
+
+
+def test_mutes_measured_at_normal_speed_follow_a_faster_take():
+    lines = [{"text": "a"}, {"text": "b", "tempo": 1.25}]
+    assert mix.at_tempo([(0, 1.0, 0.1), (1, 2.5, 0.05)], lines, 1.1) == [
+        (0, pytest.approx(1.0 / 1.1), pytest.approx(0.1 / 1.1)), (1, pytest.approx(2.0), pytest.approx(0.04))]

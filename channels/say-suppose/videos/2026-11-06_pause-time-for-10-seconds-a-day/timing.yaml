@@ -1,3 +1,7 @@
+# Owner, 2026-11-07, after the voice A/B: "C: v4 at 1.1x". The countdown (lines 32-34) stays at real speed so
+# the numbers keep about a second each, as the G4 reviewers asked.
+tempo: 1.1
+tempo_lines: {32: 1.0, 33: 1.0, 34: 1.0}
 # Rough-cut timing for the what-if engine (scene_plan.md). Not spoken; the approved script's words are unchanged.
 # extra: seconds of action added after a narration line, by line number (0 = first spoken line).
 # cues: name -> [line number, word in that line]. Scenes read the cue's frame, never a fixed time.

@@ -79,6 +79,10 @@ export async function synthesize(text: string, v: VoiceSpec, outWav: string): Pr
 
 /** Caps pauses inside a raw clip (and changes its speed if tempo is not 1), so raw takes stay untouched and are
  *  never re-billed. The channel's slow pace means tempo 1; the owner's sample used 1.1. */
+/** The tightened take's file name. A take at another tempo is another file, so changing the tempo re-tightens. */
+export const tightName = (name: string, tempo: number) =>
+  tempo === 1 ? `${name}.tight.wav` : `${name}.x${Math.round(tempo * 100)}.tight.wav`;
+
 export async function tighten(rawWav: string, outWav: string, tempo = 1): Promise<void> {
   const filter = [
     "silenceremove=start_periods=1:start_threshold=-40dB:stop_periods=-1:stop_duration=0.3:stop_silence=0.3:stop_threshold=-40dB",

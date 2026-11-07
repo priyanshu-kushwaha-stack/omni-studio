@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { args } from "../pipeline/voice";
+import { args, tightName } from "../pipeline/voice";
 
 describe("voice CLI arguments", () => {
   const arthur = { voiceType: "preset", voiceId: "30fc8796-ceb6-4a66-b3a7-4a145ef7f346" };
@@ -15,5 +15,9 @@ describe("voice CLI arguments", () => {
   it("drops bracket directions for text2speech_v2, which would read them aloud", () => {
     const a = args("create", { model: "text2speech_v2", variant: "elevenlabs", ...arthur }, "[quietly] Nobody knows. [beat] Ever.");
     expect(a[a.indexOf("--prompt") + 1]).toBe("Nobody knows. Ever.");
+  });
+  it("names a sped-up take by its tempo, so a new tempo re-tightens instead of reusing the old file", () => {
+    expect(tightName("line-05-ab12cd34", 1)).toBe("line-05-ab12cd34.tight.wav");
+    expect(tightName("line-05-ab12cd34", 1.1)).toBe("line-05-ab12cd34.x110.tight.wav");
   });
 });

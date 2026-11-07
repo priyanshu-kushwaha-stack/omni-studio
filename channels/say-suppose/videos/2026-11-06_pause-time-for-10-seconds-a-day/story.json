@@ -248,21 +248,24 @@
       "say": "[breathless] Nine. Eight. Seven.",
       "gapAfterSec": 0.65,
       "mood": "frozen",
-      "claims": []
+      "claims": [],
+      "tempo": 1.0
     },
     {
       "text": "Six. Five. Four.",
       "say": "[breathless] Six. Five. Four.",
       "gapAfterSec": 0.65,
       "mood": "frozen",
-      "claims": []
+      "claims": [],
+      "tempo": 1.0
     },
     {
       "text": "Three. Two. One.",
       "say": "[breathless] Three. Two. One.",
       "gapAfterSec": 0.35,
       "mood": "frozen",
-      "claims": []
+      "claims": [],
+      "tempo": 1.0
     },
     {
       "text": "The bus screams through an empty crossing. The ball doesn't make it. The kid does.",
@@ -864,5 +867,6 @@
       "line": 70,
       "word": "spend"
     }
-  }
+  },
+  "tempo": 1.1
 }
