@@ -18,12 +18,12 @@ export const MOODS: Record<MoodName, Look> = {
   },
   night: {
     dof: 6, focus: 1, rim: { color: "#9fd0ff", dx: -4, dy: -3 },
-    film: "contrast(1.2) saturate(1.1)", grade: { top: "#3d4396", bottom: "#0d0d26", opacity: 0.95 }, vignette: 0.8,
+    film: "contrast(1.15) saturate(1.05)", grade: { top: "#6b74c4", bottom: "#24244e", opacity: 0.8 }, vignette: 0.7,
   },
   lamp: {
     dof: 7, focus: 1, rim: { color: "#ffc98a", dx: 5, dy: -4 },
-    film: "contrast(1.25) saturate(1.15) brightness(0.88)", grade: { top: "#7a4a3a", bottom: "#1c1220", opacity: 0.9 },
-    vignette: 0.85,
+    film: "contrast(1.18) saturate(1.1) brightness(0.96)", grade: { top: "#d39a72", bottom: "#4a2e3a", opacity: 0.72 },
+    vignette: 0.72,
   },
   frozen: {
     dof: 9, focus: 1, rim: { color: "#fff3c4", dx: -5, dy: -4 },

@@ -10,9 +10,9 @@ export const evenTicks = (from: number, to: number): Tick[] =>
   Array.from({ length: 11 }, (_, i) => ({ at: Math.round(from + ((to - from) * i) / 10), n: 10 - i }));
 
 /** The paper countdown: a split-flap number that shows the latest tick at or before this frame. Screen pixels,
- *  top-right by default, clear of faces. Hidden before the first tick and after `until`. */
+ *  top-right by default, below the pause bars and clear of faces. Hidden before the first tick and after `until`. */
 export const Counter: React.FC<{ ticks: Tick[]; until?: number; x?: number; y?: number; scale?: number }> = ({
-  ticks, until = Infinity, x = 1670, y = 50, scale = 0.85,
+  ticks, until = Infinity, x = 1670, y = 92, scale = 0.85,
 }) => {
   const frame = useCurrentFrame();
   const i = ticks.reduce((on, k, j) => (frame >= k.at ? j : on), -1);

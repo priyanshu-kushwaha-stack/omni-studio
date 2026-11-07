@@ -1,13 +1,27 @@
-import { AbsoluteFill } from "remotion";
-import { FONT } from "@whatif/kit/fonts";
 import type { Beat, Shot } from "../shared";
+import { firstDaysPauses } from "./FirstDays.common";
+import { BossHallway, ClockHallway } from "./FirstDays.Hallway";
+import { HomeLamp } from "./FirstDays.Home";
+import { Kitchen } from "./FirstDays.Kitchen";
+import { OfficeKitchen } from "./FirstDays.Office";
 
-/** Placeholder until the beat is built (scene_plan.md, beat "FirstDays"). */
-const FirstDays: React.FC<{ shot: Shot }> = ({ shot }) => (
-  <AbsoluteFill style={{ background: "#23252B", color: "#F3E9D7", fontFamily: FONT, fontWeight: 800, fontSize: 64,
-    justifyContent: "center", alignItems: "center" }}>
-    FirstDays · frame {shot.frame - shot.from}
-  </AbsoluteFill>
-);
+/** Beat 2, the first days (scene_plan.md, lines 11 to 24): the phone, the boss, the samosa, the chappal, then the
+ *  clock that sticks and the remote. Each set is its own file, FirstDays.<Set>.tsx. */
+const FirstDays: React.FC<{ shot: Shot }> = ({ shot }) => {
+  const { frame, clips } = shot;
+  if (frame < clips[15].from) return <Kitchen shot={shot} />;
+  if (frame < clips[17].from) return <BossHallway shot={shot} />;
+  if (frame < clips[19].from) return <OfficeKitchen shot={shot} />;
+  if (frame < clips[20].from) return <HomeLamp shot={shot} />;
+  return <ClockHallway shot={shot} />;
+};
 
-export const firstDays: Beat = { id: "firstDays", firstLine: 11, Component: FirstDays, pauses: () => [] };
+export const firstDays: Beat = {
+  id: "firstDays",
+  firstLine: 11,
+  Component: FirstDays,
+  pauses: (cues, clips) => {
+    const p = firstDaysPauses(cues, clips);
+    return [p.phone, p.boss, p.samosa, p.chappal];
+  },
+};
