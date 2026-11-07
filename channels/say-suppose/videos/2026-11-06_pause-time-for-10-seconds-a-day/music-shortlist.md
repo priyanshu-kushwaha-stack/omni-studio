@@ -31,3 +31,22 @@ picks by ear on each link.
 3. **Silence.** It drops to silence just before "And then you notice something."
 4. **Sound effects.** They stay as they are, quiet.
 5. **Loudness.** The mix is set to the channel's -14 LUFS, then the G5 checks run: loudness, clicks and similarity.
+
+## Our own score, made locally (owner, 2026-11-07)
+
+**The owner's verdict on the shortlist.** "These are completely different options... First still felt good but others
+cannot say... what if we create our own sound? ... I don't want to compromise with the quality."
+
+**What was made.** `make_music.py` (tracked) generates the score locally with ACE-Step 1.5. It is MIT-licensed, its
+outputs can be used commercially, it is pinned in `core/lock.yaml`, and the Power & Citizen session already uses it.
+
+- 5 cues, sized to the timeline, 3 seeds each: 15 takes.
+- Cost: no paid call.
+- Takes are saved to `assets/music/<cue>-<seed>.wav` (git-ignored).
+
+**Listening files.** `renders/music-listen/cue-<cue>.mp3`. Each plays its stretch of the real narration three times,
+once over each take (seeds 11, 29, 47), with the music ducked under the voice.
+
+**Checks.** All 15 takes measure between -16.3 and -13.1 LUFS at full length. Nobody has listened to them yet.
+
+The Pixabay cue-1 pick the owner liked ("Quirky Sneaky", leberch) stays the fallback for cue 1.
