@@ -9,6 +9,35 @@ import { Counter, evenTicks } from "../parts";
 import { blinking, camAt, current, HERO, linear, mix, ramp, type Shot } from "../shared";
 import { Bus, SKY, StreetBack } from "../sets/Street";
 import { Fingers, handWorld, Lit } from "./Catch.rig";
+import { Poster } from "../../../../brand/Subscribe";
+
+/** The channel's ad on a bus shelter by the stop, in world units on the near pavement, left of the stop's post.
+ *  Part of the world: it greys and freezes with everything else during the pause. */
+const SH = { x0: 690, x1: 1012, roof: 572, base: 972, ad: { x: 716, y: 632, s: 0.7 } };
+const Shelter: React.FC = () => {
+  const ad = { w: 214 * SH.ad.s, h: 300 * SH.ad.s };
+  return (
+    <g>
+      <ellipse cx={(SH.x0 + SH.x1) / 2} cy={SH.base + 6} rx={(SH.x1 - SH.x0) / 2 + 26} ry={14} fill="#3a2414" opacity={0.28} />
+      <rect x={884} y={SH.roof + 30} width={118} height={SH.base - SH.roof - 90} fill="#d7e8e4" opacity={0.4} />
+      <path d={`M894 ${SH.roof + 46} L918 ${SH.roof + 46} L898 ${SH.roof + 110} Z`} fill="#ffffff" opacity={0.3} />
+      <rect x={890} y={862} width={108} height={14} rx={4} fill="#b5683a" />
+      <rect x={900} y={876} width={7} height={SH.base - 876} fill={INK} />
+      <rect x={982} y={876} width={7} height={SH.base - 876} fill={INK} />
+      <rect x={SH.x0 + 10} y={SH.roof + 8} width={11} height={SH.base - SH.roof - 8} rx={3} fill={INK} />
+      <rect x={SH.x1 - 21} y={SH.roof + 8} width={11} height={SH.base - SH.roof - 8} rx={3} fill={INK} />
+      <rect x={874} y={SH.roof + 8} width={9} height={SH.base - SH.roof - 8} rx={3} fill={INK} />
+      <rect x={SH.ad.x - 10} y={SH.ad.y - 10} width={ad.w + 20} height={ad.h + 20} rx={7} fill={INK} />
+      <g transform={`translate(${SH.ad.x} ${SH.ad.y}) scale(${SH.ad.s})`}>
+        <foreignObject x={0} y={0} width={214} height={300}><Poster w={214} h={300} /></foreignObject>
+      </g>
+      <path d={`M${SH.ad.x} ${SH.ad.y} h${ad.w * 0.5} L${SH.ad.x} ${SH.ad.y + ad.h * 0.45} Z`} fill="#ffffff" opacity={0.12} />
+      <rect x={SH.x0} y={SH.roof} width={SH.x1 - SH.x0} height={24} rx={8} fill="#1d9a8f" />
+      <rect x={SH.x0} y={SH.roof + 16} width={SH.x1 - SH.x0} height={9} rx={4} fill="#137a71" />
+      <rect x={SH.x0 + 12} y={SH.roof + 4} width={SH.x1 - SH.x0 - 24} height={5} rx={2.5} fill="#5cc4b9" opacity={0.7} />
+    </g>
+  );
+};
 
 /** The bus's front while it waits at the stop, and the bus drawn 1.3 times the set's size, wheels on the kerb. */
 const BF = 1150;
@@ -30,9 +59,9 @@ export const BusStop: React.FC<{ shot: Shot; pause: Pause }> = ({ shot, pause })
   const shotName = current(frame, [[clips[39].from, "wide"], [cues.doors, "doors"], [cues.doors + 44, "hand"], [clips[40].from - 10, "board"]] as [number, string][]);
   const cam: Camera =
     shotName === "wide" ? camAt(frame, [[clips[39].from, { x: 980, y: 640, zoom: 1.05 }], [cues.doors, { x: 1200, y: 660, zoom: 1.1 }]])
-    : shotName === "doors" ? drift({ x: 1340, y: 740, zoom: 1.6 }, frame, "door")
+    : shotName === "doors" ? drift({ x: 1275, y: 740, zoom: 1.6 }, frame, "door")
     : shotName === "hand" ? camAt(frame, [[cues.doors + 44, { x: 1218, y: 740, zoom: 2.3 }], [clips[40].from - 10, { x: 1224, y: 728, zoom: 2.45 }]])
-    : camAt(frame, [[clips[40].from - 10, { x: 1350, y: 770, zoom: 1.42 }], [pause.to, { x: 1395, y: 752, zoom: 1.55 }]]);
+    : camAt(frame, [[clips[40].from - 10, { x: 1290, y: 770, zoom: 1.42 }], [pause.to, { x: 1335, y: 752, zoom: 1.5 }]]);
 
   // You: run in, stop at the kerb, hand twitching; snap; stroll to the doors and in; then sit by the window.
   const arrive = cues.doors + 24;
@@ -79,6 +108,7 @@ export const BusStop: React.FC<{ shot: Shot; pause: Pause }> = ({ shot, pause })
   const back = (
     <>
       <StreetBack cam={cam} frame={frame} t={t} paused={paused} />
+      <Layer cam={cam} depth={1} flat><g transform="translate(40 0)"><Shelter /></g></Layer>
       <Layer cam={cam} depth={1}>
         {/* the stop: a post and its sign on the near pavement */}
         <rect x={1046} y={600} width={14} height={440} fill={INK} />

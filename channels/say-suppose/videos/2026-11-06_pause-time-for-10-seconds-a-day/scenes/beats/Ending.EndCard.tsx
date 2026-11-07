@@ -6,6 +6,7 @@ import { moodLook } from "@whatif/kit/stage/moods";
 import { Layer, Stage, toScreen } from "@whatif/kit/stage/Stage";
 import { HEIGHT, INK, WIDTH } from "@whatif/kit/theme";
 import { Counter } from "../parts";
+import { EndTags } from "./Ending.EndTags";
 import { blinking, HERO, linear, mix, noise, ramp } from "../shared";
 
 const X = 600;
@@ -27,13 +28,13 @@ const SKY = (
 
 /** The end card: you, small, in the left two-thirds, weighing your phone against a paper counter. The right third
  *  stays empty for YouTube's end screens, and nothing sits in the lower right. */
-export const EndCard: React.FC<{ frame: number; from: number; to: number }> = ({ frame, from, to }) => {
+export const EndCard: React.FC<{ frame: number; from: number; to: number; comment: number }> = ({ frame, from, to, comment }) => {
   // The script marks line 64 frozen, but the pause has ended: light the end card as a calm evening.
   const look = moodLook("dusk");
   const rel = frame - from;
   // A slow push-in across the whole card, towards you; the right third stays sky and floor at every zoom.
   const push = ramp(frame, from, to);
-  const cam = { x: mix(960, 850, push), y: mix(540, 600, push), zoom: mix(1, 1.2, push) };
+  const cam = { x: mix(960, 850, push), y: mix(540, 560, push), zoom: mix(1, 1.2, push) };
 
   // Weighing: one hand rises as the other falls, slowly.
   const w = Math.sin(rel * 0.075) * ramp(rel, 6, 30);
@@ -84,6 +85,7 @@ export const EndCard: React.FC<{ frame: number; from: number; to: number }> = ({
         <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} sky={SKY} back={backdrop} actors={hero} />
       </LookContext.Provider>
       <Counter ticks={[{ at: from + 8, n: 10 }]} x={counterAt.x - 48} y={counterAt.y - 112} scale={0.5} />
+      <EndTags comment={comment} />
       {fade > 0 && <AbsoluteFill style={{ background: "#000", opacity: mix(0, 1, fade) }} />}
     </AbsoluteFill>
   );

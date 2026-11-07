@@ -100,6 +100,19 @@ three painted looks, then that sample re-coloured and on a painted backdrop, and
   Code"). The text comes from the `claims.md` row, so it is never typed twice. None of the reference channels do
   this; it is ours.
 
+## Opening, brand and calls to action
+
+Owner, 2026-11-07:
+- **Opening.** Hook first, then a 3 to 4 s ident in our own visual language, never "welcome to the channel".
+- **Mid-video subscribe.** One subtle nudge with no voice, at a quiet moment or inside the world.
+- **End card.** Like, subscribe and comment tags in the left two-thirds; the right third stays empty for end screens.
+
+The parts and which video used which ident are in `brand/README.md`. The pause-time video uses the title card (C);
+the ringed Earth (A) and the split-flap board (B, quieter sound needed) are kept for later videos.
+
+**Colour (two-expert review, same day).** The world takes the mood; the characters keep their brand colours.
+Vignettes stay at 0.45 or lighter, and the freeze is a neutral grey (`core/engines/whatif/src/kit/stage/moods.ts`).
+
 ## Signatures not to copy
 
 From the reference study: Ifverse's black round-headed figures with white eyes, permanent letterbox with magenta

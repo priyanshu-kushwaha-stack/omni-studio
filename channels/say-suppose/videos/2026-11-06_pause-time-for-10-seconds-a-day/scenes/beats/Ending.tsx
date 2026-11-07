@@ -97,8 +97,10 @@ const Ending: React.FC<{ shot: Shot }> = ({ shot }) => {
     </>
   );
 
+  // "Tell us below": "Tell" starts 2.78 s into line 64's take (its words.json); no cue names that word.
+  const tellUsBelow = clips[64].from + Math.round(2.78 * 30);
   if (name === "black") return <AbsoluteFill style={{ background: "#000" }}>{sfx}</AbsoluteFill>;
-  if (name === "card") return <AbsoluteFill>{sfx}<EndCard frame={frame} from={cues.endcard} to={shot.to} /></AbsoluteFill>;
+  if (name === "card") return <AbsoluteFill>{sfx}<EndCard frame={frame} from={cues.endcard} to={shot.to} comment={tellUsBelow} /></AbsoluteFill>;
 
   // You: mid-stride as the beat opens, snap, lower the hand, turn for home, walk, stop, look back.
   const turnHome = n + 20;

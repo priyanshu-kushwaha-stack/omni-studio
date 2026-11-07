@@ -11,7 +11,7 @@
     {
       "text": "On day twelve, all that stands between a bus and a kid is ten seconds.",
       "say": "[low, slow] On day twelve, all that stands between a bus and a kid is ten seconds.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 3.0,
       "mood": "frozen",
       "claims": []
     },
