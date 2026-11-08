@@ -54,6 +54,14 @@ DENY_HOME = (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".ne
              ".claude/projects", "Exploration", "Sprinklr")
 
 
+# Other conversations and agent state of the two CLIs. Auth files (~/.cursor/cli-config.json,
+# ~/.claude/settings.json) and the installs stay readable so the CLIs can sign in.
+AGENT_STATE_DIRS = (".cursor/chats", ".cursor/agents", ".cursor/ai-tracking", ".claude/file-history",
+                    ".claude/sessions", ".claude/session-env", ".claude/plans", ".claude/paste-cache",
+                    ".claude/shell-snapshots", ".claude/jobs", ".claude/backups")
+AGENT_STATE_FILES = (".claude/history.jsonl",)
+
+
 SECRET_HOME = (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".netrc", ".local/state/omni-studio",
                ".claude/projects")
 
@@ -71,7 +79,8 @@ def is_secret_path(path: Path) -> bool:
 
 def deny_paths() -> list[Path]:
     home = _real_home()
-    paths = [(home / rel).resolve() for rel in DENY_HOME] + [ROOT.resolve()]
+    paths = [(home / rel).resolve() for rel in (*DENY_HOME, *AGENT_STATE_DIRS, *AGENT_STATE_FILES)]
+    paths.append(ROOT.resolve())
     try:
         common = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--path-format=absolute", "--git-common-dir"],
                                 capture_output=True, text=True, timeout=10).stdout.strip()
@@ -88,7 +97,11 @@ def _sb_quote(path: Path) -> str:
 
 def sandbox_profile(deny: list[Path]) -> str:
     # sandbox-exec matches real paths: /var/folders/... is /private/var/folders/... on macOS.
-    rules = "\n".join(f'(deny file-read* file-write* (subpath "{_sb_quote(p)}"))' for p in deny)
+    def rule(p: Path) -> str:
+        kind = "literal" if Path(p).is_file() else "subpath"  # a single file, or a folder (or a path not there yet)
+        return f'(deny file-read* file-write* ({kind} "{_sb_quote(p)}"))'
+
+    rules = "\n".join(rule(p) for p in deny)
     return f"(version 1)\n(allow default)\n{rules}\n"
 
 
@@ -110,7 +123,8 @@ def seat_prompt(brief: str, role: str, inputs: dict[str, str]) -> str:
 
 def build_command(model: str, prompt: str, registry: Optional[dict] = None) -> list[str]:
     if cli_of(model, registry) == "claude":
-        return ["claude", "-p", "--tools", "", "--strict-mcp-config", "--output-format", "json", "--model", model,
+        return ["claude", "-p", "--tools", "", "--strict-mcp-config", "--setting-sources",
+                "project", "--output-format", "json", "--model", model,
                 prompt]
     return ["cursor-agent", "-p", "--mode", "ask", "--trust", "--output-format", "json", "--model", model, prompt]
 
@@ -151,6 +165,10 @@ def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: C
              raw_dir: Optional[Path] = None, runner=None, timeout: float = 600,
              registry: Optional[dict] = None, draft_sha256: str = "", lint_overridden: bool = False) -> Verdict:
     family = family_of(seat.model, registry)
+    own_sha = sha256_text(inputs["draft"])
+    if draft_sha256 and draft_sha256 != own_sha:
+        raise ValueError("draft_sha256 does not match the draft in inputs")
+    draft_sha256 = own_sha
     prompt = seat_prompt(seat.brief.read_text(encoding="utf-8"), seat.role, inputs)
     cmd = build_command(seat.model, prompt, registry)
     version = cli_version(cli_of(seat.model, registry), runner)

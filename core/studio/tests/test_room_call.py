@@ -14,6 +14,7 @@ import pytest
 from studio.room import call as C
 from studio.room.config import SeatConfig
 from studio.room.ledger import Ledger
+from studio.room.snapshot import sha256_text
 
 REG = {"gpt-5.6-sol-high": {"family": "openai", "cli": "cursor"},
        "claude-sonnet-5-5": {"family": "anthropic", "cli": "claude"}}
@@ -53,6 +54,7 @@ def test_build_command_picks_the_cli():
     assert claude[:2] == ["claude", "-p"] and "--tools" in claude and claude[claude.index("--tools") + 1] == ""
     cursor = C.build_command("gpt-5.6-sol-high", "P", REG)
     assert cursor[:2] == ["cursor-agent", "-p"] and cursor[cursor.index("--mode") + 1] == "ask"
+    assert "--setting-sources" in claude and claude[claude.index("--setting-sources") + 1] == "project"
     assert "--force" not in cursor and "--yolo" not in cursor
 
 
@@ -84,6 +86,27 @@ def test_deny_paths_cover_secrets_projects_transcripts_and_the_ledger():
                 ".claude/projects", "Exploration", "Sprinklr"):
         assert (home / rel).resolve() in denied, rel
     assert C.ROOT.resolve() in denied
+
+
+def test_deny_paths_also_cover_other_conversations_and_agent_state():
+    home = _real_home()
+    denied = set(C.deny_paths())
+    for rel in (".cursor/chats", ".cursor/agents", ".cursor/ai-tracking", ".claude/history.jsonl",
+                ".claude/file-history", ".claude/sessions", ".claude/session-env", ".claude/plans",
+                ".claude/paste-cache", ".claude/shell-snapshots", ".claude/jobs", ".claude/backups"):
+        assert (home / rel).resolve() in denied, rel
+    for rel in (".cursor/cli-config.json", ".claude/settings.json", ".cursor", ".claude"):
+        assert (home / rel).resolve() not in denied, rel
+
+
+def test_the_profile_uses_literal_for_a_file_and_subpath_for_a_folder(tmp_path):
+    f = tmp_path / "history.jsonl"
+    f.write_text("x")
+    d = tmp_path / "chats"
+    d.mkdir()
+    profile = C.sandbox_profile([f, d])
+    assert f'(literal "{f.resolve()}")' in profile and f'(subpath "{d.resolve()}")' in profile
+    assert f'(subpath "{f.resolve()}")' not in profile
 
 
 def test_the_profile_escapes_quotes_and_backslashes(tmp_path):
@@ -219,10 +242,10 @@ def test_the_verdict_record_binds_the_draft_and_the_digest_covers_it(tmp_path):
     from studio.room.verdict import verdict_digest
     db = Ledger(tmp_path / "l.sqlite")
     out = tmp_path / "v.json"
-    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out, draft_sha256="d" * 64,
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out, draft_sha256=sha256_text("Hi"),
                runner=fake_runner([json.dumps({"result": json.dumps(VERDICT)})]), registry=REG)
     record = json.loads(out.read_text())
-    assert record["draft_sha256"] == "d" * 64 and "lint_overridden" not in record
+    assert record["draft_sha256"] == sha256_text("Hi") and "lint_overridden" not in record
     assert db.get(record["call_id"]).verdict_sha256 == verdict_digest(record)
     record["draft_sha256"] = "e" * 64
     assert db.get(record["call_id"]).verdict_sha256 != verdict_digest(record)
@@ -231,10 +254,10 @@ def test_the_verdict_record_binds_the_draft_and_the_digest_covers_it(tmp_path):
 def test_a_failed_seat_and_a_lint_override_are_recorded_too(tmp_path):
     db = Ledger(tmp_path / "l.sqlite")
     out = tmp_path / "v.json"
-    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out, draft_sha256="d" * 64,
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out, draft_sha256=sha256_text("Hi"),
                lint_overridden=True, runner=fake_runner(["junk", "junk"]), registry=REG)
     record = json.loads(out.read_text())
-    assert record["status"] == "failed" and record["draft_sha256"] == "d" * 64 and record["lint_overridden"] is True
+    assert record["status"] == "failed" and record["draft_sha256"] == sha256_text("Hi") and record["lint_overridden"] is True
 
 
 def test_secret_paths_are_recognised_by_their_real_home(tmp_path):
@@ -247,3 +270,19 @@ def test_secret_paths_are_recognised_by_their_real_home(tmp_path):
     link = tmp_path / "link.md"
     link.symlink_to(home / ".ssh" / "id_rsa")
     assert C.is_secret_path(link)
+
+
+def test_the_draft_hash_comes_from_the_draft_itself(tmp_path):
+    db = Ledger(tmp_path / "l.sqlite")
+    out = tmp_path / "v.json"
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out,
+               runner=fake_runner([json.dumps({"result": json.dumps(VERDICT)})]), registry=REG)
+    assert json.loads(out.read_text())["draft_sha256"] == sha256_text("Hi")
+
+
+def test_a_draft_hash_that_differs_from_the_draft_is_refused(tmp_path):
+    db = Ledger(tmp_path / "l.sqlite")
+    with pytest.raises(ValueError):
+        C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=tmp_path / "v.json",
+                   draft_sha256="d" * 64, runner=fake_runner([]), registry=REG)
+    assert db.count() == 0
