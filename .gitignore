@@ -50,3 +50,5 @@ channels/*/page/candidates/
 channels/*/page/crops/
 # Quality room: raw CLI output per call (verdicts and summaries are tracked)
 channels/*/videos/*/room/raw/
+# Quality room: the live canary written by the sandbox check
+.room-canary

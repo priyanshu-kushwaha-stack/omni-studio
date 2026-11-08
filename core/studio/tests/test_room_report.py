@@ -165,3 +165,29 @@ def test_write_report_tolerates_non_dict_items(tmp_path):
     rep = R.build_report(video, gate="g2", stage="x", channel="c", writer_family="w", ledger=Ledger(tmp_path / "l"), cap=9)
     R.write_report(video, rep)
     assert (video / "room-g2.md").is_file()
+
+
+def test_the_md_says_when_an_owner_notes_round_shipped_without_a_judge(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64)
+    _round(video, 2, "b" * 64, owner_notes=True)
+    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    _, md = R.write_report(video, rep)
+    assert "Shipped: round 2 (" in md.read_text() and "shipped by the owner-notes rule (no judge)" in md.read_text()
+    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    rep["rounds"][1]["owner_notes"] = False
+    _, md = R.write_report(video, rep)
+    assert "owner-notes rule" not in md.read_text()
+
+
+def test_the_md_names_the_candidate_rule_when_nothing_ships(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64, fact_blockers=BLOCK)
+    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    _, md = R.write_report(video, rep)
+    text = md.read_text()
+    assert "Shipped: none. No round is a candidate" in text and "no fact blocker" in text
+    assert "Missing mandatory roles" not in text

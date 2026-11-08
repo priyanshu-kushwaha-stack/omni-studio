@@ -146,8 +146,14 @@ def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
     ship = report["shipped"]
     focus = ship["round"] if ship else (report["rounds"][-1]["round"] if report["rounds"] else None)
     lines = [f"# Room report, {gate.upper()} ({report['stage']})", ""]
-    lines.append(f"Shipped: round {ship['round']} ({ship['artifact_sha256'][:12]})" if ship
-                 else "Shipped: none. No round passed lint with a clean fact seat, so the gate check will fail.")
+    shipped_round = next((r for r in report["rounds"] if ship and r["round"] == ship["round"]), None)
+    if ship:
+        by_notes = " (shipped by the owner-notes rule (no judge))" if shipped_round and shipped_round.get(
+            "owner_notes") else ""
+        lines.append(f"Shipped: round {ship['round']} ({ship['artifact_sha256'][:12]}){by_notes}")
+    else:
+        lines.append("Shipped: none. No round is a candidate (lint ok, an ok viewer, story and fact verdict, "
+                     "no fact blocker), so the gate check will fail.")
     lines += [f"Calls: {report['calls']} of {report['cap']}", "", f"## Open notes in round {focus}", ""]
     for rnd in load_rounds(video_dir, gate):
         if rnd["round"] != focus:
@@ -172,11 +178,6 @@ def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
                          for r in report["rounds"]
                          if r["round"] > ship["round"] and r.get("candidate") and not r["judge"]
                          and not r.get("owner_notes")]
-    missing = [r for r in MANDATORY if ship and not any(
-        v["role"] == r and v["status"] == "ok" for rnd in report["rounds"] if rnd["round"] == ship["round"]
-        for v in rnd["verdicts"])]
-    if missing:
-        lines += ["", f"Missing mandatory roles in the shipped round: {', '.join(missing)}"]
     md = video_dir / f"room-{gate}.md"
     md.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return js, md
