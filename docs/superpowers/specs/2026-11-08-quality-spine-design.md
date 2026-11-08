@@ -88,7 +88,7 @@ Seat scores are informational only; the stop rule uses blockers and the judge, n
 | Shared, in `core/studio/room/` | Per channel |
 |---|---|
 | Model call, verdict schema, call ledger, model-family registry | `room.yaml`: seats (role, brief, one model), caps, linter list, format parameters, research sources, `adopted` date, pitch clip mode |
-| Slop lint (word lists pinned in `core/lock.yaml`), "and then" joins, open vs closed loops, a ledger lint (every cited claim id has a non-empty verbatim quote) | Format parameters (interjection cadence, wordless share, word budget, wpm, speaker labels) and channel linters named in `room.yaml` (e.g. `script_lint.py` for Professor of Us) |
+| Slop lint (word lists in `core/studio/room/slop.yaml`, their sources recorded in `core/lock.yaml` in A2), "and then" joins, a ledger lint (every cited claim id has a non-empty verbatim quote). Open vs closed loops are judged by the story seat; no reliable deterministic check exists | Format parameters (interjection cadence, wordless share, word budget, wpm, speaker labels) and channel linters named in `room.yaml` (e.g. `script_lint.py` for Professor of Us) |
 | Judge, stop rule, round snapshots, reports, the `room` gate check | `room/seats/*.md` channel seat briefs |
 | Shared briefs for the three mandatory roles | `audience.md` (one named viewer, their job, 3-5 comparable channels, what makes them leave) and `taste.md` (owner notes, newest first) |
 | The `studio-room` skill (the process) | The pipeline's own stage names |
@@ -238,7 +238,7 @@ clip in the real voices.
 | Phase | Done when |
 |---|---|
 | A1 Core tools | call (with the read-denial test), verdict schema, ledger, family registry, lint, judge, snapshots and report writer exist with tests; one historical script per channel (a Power and Citizen draft, a Say Suppose draft, the dreams draft) run through the room, its notes compared with the hand-run panel and the owner's notes |
-| A2 Spine wiring | `room` check, approval binding, predecessor verification, `room.yaml` validation, template, repo test, CLAUDE.md section, `studio-room` skill; first channel adopted |
+| A2 Spine wiring | `room` check, approval binding, predecessor verification, `room.yaml` validation in `omni check`, template, repo test, CLAUDE.md section, `omni room` commands, pipelines pointing at the `studio-room` skill (written in A1); first channel adopted |
 | A3 Role skills | `studio-research`, `studio-writer` and seat briefs, each from its own niche research spec |
 | A4 Learning | per-video hypotheses against analytics exports; lessons that hold on two channels proposed for `core/studio/rules/` with owner sign-off |
 
