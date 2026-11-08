@@ -8,7 +8,7 @@ status: G7 prepared 2026-11-08, awaiting the owner. Nothing is uploaded.
 - **Thumbnail:** set by hand in Studio (the uploader does not set it). Two options in `renders/packaging/`:
   `thumb-film-7.jpg` (the film's own frame at the counter's 7) and `thumb-a.jpg` (the G1 mock).
 - **Audience:** not made for kids.
-- **Altered or synthetic content:** no (owner to confirm). The disclosure covers realistic content; this is a
+- **Altered or synthetic content:** no (owner confirmed, 2026-11-08). The disclosure covers realistic content; this is a
   stylised cartoon with a fictional narrator. The narration and music are AI-made, which the description says.
 - **Pinned comment:** "What would you do with your ten seconds? The best answers become videos."
 - **Hindi audio track:** after the upload, in Studio: Languages, this video, Add language, Hindi, Dub, upload
