@@ -62,5 +62,17 @@
         "height": 720
       }
     }
-  }
+  },
+  "captions": [
+    {
+      "language": "en",
+      "file": "subtitles/en.srt",
+      "id": "AUieDaYCbzPoCN1kiudbmYtf9_AfjGxISYUFPfz_t6U6"
+    },
+    {
+      "language": "hi",
+      "file": "subtitles/hi.srt",
+      "id": "AUieDabCpDap-iOGLSXveeLf5DO1j5hP2OmrWi_A25L3"
+    }
+  ]
 }
