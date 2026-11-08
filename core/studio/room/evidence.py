@@ -9,10 +9,12 @@ approval key, it is not a boundary against an agent that forges both the ledger 
 from __future__ import annotations
 
 import json
+import sqlite3
 from pathlib import Path
 from typing import Any
 
 from studio.room.ledger import Ledger
+from studio.room.report import read_meta
 from studio.room.snapshot import drafts_dir, load_draft, sha256_file
 from studio.room.verdict import LOCKED_ROLES, MANDATORY, verdict_digest
 
@@ -29,7 +31,7 @@ def _read_verdict(path: Path) -> Any:
 def verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Ledger) -> list[str]:
     try:
         return _verify(Path(video_dir), report, Path(artifact), ledger)
-    except (KeyError, TypeError, AttributeError, ValueError, OSError) as exc:  # fail closed on anything malformed
+    except (KeyError, TypeError, AttributeError, ValueError, OSError, sqlite3.Error, RecursionError) as exc:  # fail closed on anything malformed
         return [f"the room evidence is malformed ({type(exc).__name__}: {exc})"]
 
 
@@ -57,35 +59,54 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
     n = rnd["round"]
     if rnd.get("draft_sha256") != want:
         problems.append(f"round {n} reviewed a different draft than the one shipped")
+    try:
+        meta = read_meta(video_dir, str(report.get("gate")), n)
+    except (OSError, ValueError):
+        meta = None
+    if not isinstance(meta, dict) or meta.get("draft_sha256") != rnd.get("draft_sha256") \
+            or meta.get("lint") != rnd.get("lint"):
+        problems.append(f"round {n}: the report does not match meta.json")
     if not (rnd.get("lint") or {}).get("ok"):
         problems.append(f"round {n}: lint failed")
     writer = report.get("writer_family")
     if not writer:
         problems.append("the report names no writer family")
     verdicts = rnd.get("verdicts") or []
-    ok = [v for v in verdicts if v.get("status") == "ok"]
-    for role in MANDATORY:
-        if not any(v.get("role") == role for v in ok):
-            problems.append(f"round {n}: no ok {role} verdict")
-    if len({v.get("family") for v in ok if v.get("role") in MANDATORY} - {writer}) < 2:
-        problems.append(f"round {n}: mandatory seats need two or more families other than the writer's")
-    for v in ok:
-        if v.get("role") in LOCKED_ROLES and v.get("family") == writer:
-            problems.append(f"seat {v.get('seat')} ({v.get('role')}) is on the writer's family ({writer})")
-    judge = rnd.get("judge")
-    if judge and judge.get("family") == writer:
-        problems.append(f"the judge is on the writer's family ({writer})")
     video, gate = video_dir.name, report.get("gate")
-    seen: set[str] = set()
+    loaded: list[tuple[dict[str, Any], dict[str, Any] | None]] = []  # (report entry, verdict file or None)
     for v in verdicts:
-        seat, cid = v.get("seat"), str(v.get("call_id"))
+        seat = v.get("seat")
         raw = _read_verdict(video_dir / str(v.get("file")))
         if not isinstance(raw, dict):
             problems.append(f"verdict {seat}: file missing, unreadable or not an object")
+            loaded.append((v, None))
             continue
         if raw.get("call_id") != v.get("call_id") or raw.get("output_sha256") != v.get("output_sha256"):
             problems.append(f"verdict {seat}: file missing or edited after the report")
+            loaded.append((v, None))
             continue
+        blockers = raw.get("blockers")
+        if any(v.get(k) != raw.get(k) for k in ("seat", "role", "model", "family", "status")) \
+                or v.get("blockers") != (len(blockers) if isinstance(blockers, list) else None):
+            problems.append(f"verdict {seat}: the report does not match its verdict file")
+        loaded.append((v, raw))
+    ok = [raw for _, raw in loaded if raw is not None and raw.get("status") == "ok"]
+    for role in MANDATORY:
+        if not any(r.get("role") == role for r in ok):
+            problems.append(f"round {n}: no ok {role} verdict")
+    if len({r.get("family") for r in ok if r.get("role") in MANDATORY} - {writer}) < 2:
+        problems.append(f"round {n}: mandatory seats need two or more families other than the writer's")
+    for r in ok:
+        if r.get("role") in LOCKED_ROLES and r.get("family") == writer:
+            problems.append(f"seat {r.get('seat')} ({r.get('role')}) is on the writer's family ({writer})")
+    judge = rnd.get("judge")
+    if judge and judge.get("family") == writer:
+        problems.append(f"the judge is on the writer's family ({writer})")
+    seen: set[str] = set()
+    for v, raw in loaded:
+        if raw is None:
+            continue
+        seat, cid = v.get("seat"), str(v.get("call_id"))
         if cid in seen:
             problems.append(f"verdict {seat}: call {cid[:12]} is cited by more than one verdict")
         seen.add(cid)
@@ -93,14 +114,14 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         if row is None:
             problems.append(f"verdict {seat}: call {cid[:12]} is not in the call ledger")
         else:
-            if row.output_sha256 != raw.get("output_sha256") or (v.get("status") == "ok" and row.status != "ok"):
+            if row.output_sha256 != raw.get("output_sha256") or (raw.get("status") == "ok" and row.status != "ok"):
                 problems.append(f"verdict {seat}: does not match the call ledger")
             if (row.seat, row.model, row.family, row.video, row.gate, row.round) != (
                     raw.get("seat"), raw.get("model"), raw.get("family"), video, gate, n):
                 problems.append(f"verdict {seat}: call {cid[:12]} {MISMATCH}")
             if not row.verdict_sha256 or row.verdict_sha256 != verdict_digest(raw):
                 problems.append(f"verdict {seat}: file edited after the call")
-        if v.get("role") == "fact" and v.get("status") == "ok" and raw.get("blockers"):
+        if raw.get("role") == "fact" and raw.get("status") == "ok" and raw.get("blockers"):
             first = raw["blockers"][0]
             quote = first.get("quote") if isinstance(first, dict) else None
             problems.append(f"open fact blocker: \"{quote if isinstance(quote, str) else first!r}\"")

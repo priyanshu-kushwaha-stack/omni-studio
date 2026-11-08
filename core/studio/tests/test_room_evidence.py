@@ -225,3 +225,48 @@ def test_the_call_count_is_recomputed_from_the_ledger(tmp_path):
                    prompt_sha256="p", daily_cap=99, script_cap=99)
     report["cap"], report["calls"] = 4, 1  # the report understates the calls
     assert _has(E.verify(video, report, script, db), "calls", "cap")
+
+
+def _entry(report, seat):
+    return next(v for v in report["rounds"][0]["verdicts"] if v["seat"] == seat)
+
+
+def test_a_report_role_relabelled_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path, seats=(("viewer", "viewer", "xai"), ("story", "story", "openai"),
+                                                         ("fact", "fact", "google")))
+    _entry(report, "story")["role"] = "fact"
+    assert _has(E.verify(video, report, script, db), "verdict story", "report does not match its verdict file")
+
+
+def test_a_report_family_edited_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path, fact_family="anthropic")
+    _entry(report, "fact")["family"] = "google"
+    problems = E.verify(video, report, script, db)
+    assert _has(problems, "verdict fact", "report does not match its verdict file")
+    assert _has(problems, "writer's family")  # the file's family still decides the writer-family check
+
+
+def test_a_report_blocker_count_edited_fails(tmp_path):
+    blocker = {"quote": "Two sleeps", "why": "w", "fix": "f", "domain": "fact"}
+    video, script, report, db = _setup(tmp_path, fact_blockers=[blocker])
+    report["shipped"] = {"round": 1, "artifact_sha256": report["rounds"][0]["draft_sha256"]}
+    _entry(report, "fact")["blockers"] = 0
+    assert _has(E.verify(video, report, script, db), "verdict fact", "report does not match its verdict file")
+
+
+def test_a_report_round_lint_edited_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    R.write_meta(video, "g2", 1, report["rounds"][0]["draft_sha256"], {"ok": False, "problems": ["x"], "warnings": []})
+    report["rounds"][0]["lint"] = {"ok": True, "problems": [], "warnings": []}
+    assert _has(E.verify(video, report, script, db), "round 1", "report does not match meta.json")
+
+
+def test_a_ledger_sqlite_error_is_a_problem_not_a_crash(tmp_path, monkeypatch):
+    import sqlite3
+    video, script, report, db = _setup(tmp_path)
+
+    def boom(*a, **k):
+        raise sqlite3.OperationalError("database is locked")
+    monkeypatch.setattr(db, "get", boom)
+    problems = E.verify(video, report, script, db)
+    assert problems and _has(problems, "malformed")
