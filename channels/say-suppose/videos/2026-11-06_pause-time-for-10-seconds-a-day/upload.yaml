@@ -1,0 +1,35 @@
+# Private upload request for `omni upload` (G7). Agents never upload; the owner runs --run and makes it public by hand.
+file: renders/edit-v6.mp4
+title: What If You Could Pause Time for 10 Seconds a Day?
+description: |-
+  You wake up and you can stop the world. Ten seconds, once a day. What would you spend them on?
+
+  The first days, day twelve, the catch, and forty years lived ten seconds at a time.
+
+  What would you do with your ten seconds? Tell us in the comments. The best what-ifs become videos.
+
+  Chapters
+  0:00 Ten seconds
+  0:23 The rules
+  0:53 The first days
+  1:53 Day twelve
+  2:43 The catch
+  3:49 The long run
+  4:52 The twist
+
+  The power is made up. The numbers are real:
+  - A phone falls a metre in about 0.45 seconds: OpenStax, College Physics 2e, 2.7 Falling Objects
+    https://openstax.org/books/college-physics-2e/pages/2-7-falling-objects
+  - At a normal walking pace, ten seconds covers about 10 to 14 metres: Bohannon and Andrews (2011)
+    https://pubmed.ncbi.nlm.nih.gov/21820535/
+  - The clock that seems to stop when you glance at it is called chronostasis: Yarrow et al., Nature (2001)
+    https://pubmed.ncbi.nlm.nih.gov/11713528/
+  - A car at 48 km/h needs about 23 metres to stop: The Highway Code, typical stopping distances
+    https://assets.publishing.service.gov.uk/media/65f97642aa9b760011fbda4e/the-highway-code-stopping-distances.pdf
+
+  Narrated with an AI voice. Animated in code. Also available with a Hindi audio track.
+tags: [what if, pause time, stop time, time freeze, chronostasis, animated story, say suppose]
+made_for_kids: false
+# Altered or synthetic content: false, to be confirmed by the owner. The disclosure is for realistic content a viewer
+# could mistake for real people, places or events; this is a stylised paper-cut cartoon with a fictional narrator.
+contains_synthetic_media: false

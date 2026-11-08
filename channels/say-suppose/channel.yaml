@@ -17,7 +17,7 @@ cadence: daily                  # The owner's target (2026-11-06). style.md says
 budget_usd_per_video: 5         # Owner, 2026-11-07: "Set the channel budget so it allows narration". Higgsfield bills credits
                                 # from the owner's plan (no dollar rate shown); each video's costs.md records credits.
 review_level: full              # full | standard | light. Recorded only: gates come from the pipeline.
-upload_token_path: null         # Under ~/.config/omni-studio/. Required once status is live.
+upload_token_path: ~/.config/omni-studio/youtube/say-suppose.token   # The owner creates the OAuth token before the first real upload.
 loudness:                       # Format name -> mix targets, checked before the edit and final-watch gates.
   story: {integrated_lufs: -14, tolerance_lu: 1, true_peak_dbtp_max: -1, lra_lu_max: 11}
 upload:                         # omni upload defaults. Privacy is always private.
