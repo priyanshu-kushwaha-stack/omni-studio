@@ -71,3 +71,107 @@ def test_seat_refuses_before_lint(tmp_path, monkeypatch, capsys):
     assert cli.main(["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer",
                      "--config", str(channel / "room.yaml")]) == 2
     assert "run lint for round 1 first" in capsys.readouterr().err
+
+
+def _setup(tmp_path, monkeypatch, room=ROOM):
+    monkeypatch.setenv("OMNI_ROOM_LEDGER", str(tmp_path / "ledger.sqlite"))
+    channel = tmp_path / "professor-of-us"
+    channel.mkdir()
+    (channel / "room.yaml").write_text(room)
+    video = channel / "videos" / "2026-11-10_x"
+    video.mkdir(parents=True)
+    script = video / "script.md"
+    script.write_text("## [00:00] Hook\nPROF: Two sleeps.\nOOG: Ha.\n")
+    return video, script, str(channel / "room.yaml")
+
+
+def _lint(video, script, cfg, rnd=1, gate="g2", *extra):
+    return cli.main(["lint", str(video), gate, "--round", str(rnd), "--draft", str(script), "--config", cfg, *extra])
+
+
+def test_relint_of_a_different_draft_does_not_repoint_the_round(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    meta = (video / "room" / "g2" / "round-1" / "meta.json").read_text()
+    sha = json.loads(meta)["draft_sha256"]
+    assert _lint(video, script, cfg) == 0  # same draft: allowed
+    script.write_text("## [00:00] Hook\nPROF: Different.\nOOG: Ha.\n")
+    capsys.readouterr()
+    assert _lint(video, script, cfg) == 2
+    assert f"round 1 already reviewed draft {sha[:12]}; start round 2" in capsys.readouterr().err
+    assert json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["draft_sha256"] == sha
+
+
+def test_seat_input_rejects_draft_missing_equals_and_missing_file(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    base = ["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", cfg]
+    other = tmp_path / "other.md"
+    other.write_text("x")
+    capsys.readouterr()
+    assert cli.main(base + ["--input", f"draft={other}"]) == 2
+    assert "draft comes from the round's snapshot" in capsys.readouterr().err
+    assert cli.main(base + ["--input", str(other)]) == 2
+    assert "NAME=PATH" in capsys.readouterr().err
+    assert cli.main(base + ["--input", f"notes={tmp_path / 'nope.md'}"]) == 2
+    assert "nope.md" in capsys.readouterr().err
+
+
+def test_errors_exit_cleanly(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    bad = tmp_path / "bad.yaml"
+    bad.write_text("writer: [unclosed\n")
+    assert _lint(video, script, str(bad)) == 2
+    err = capsys.readouterr().err
+    assert "Traceback" not in err and err.strip()
+    assert _lint(video, tmp_path / "missing.md", cfg) == 2
+    assert capsys.readouterr().err.strip()
+    assert cli.main(["verify", str(video), "g2", "--artifact", str(script)]) == 1
+    assert "g2.json" in capsys.readouterr().out
+
+
+def test_seat_and_judge_validate_first(tmp_path, monkeypatch, capsys):
+    room = ROOM.replace("story editor, role: story, model: gpt-5.6-sol-high", "story editor, role: story, model: claude-opus-5-5")
+    video, script, cfg = _setup(tmp_path, monkeypatch, room)
+    assert _lint(video, script, cfg) == 0
+
+    def boom(*a, **k):
+        raise AssertionError("model call made")
+
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    capsys.readouterr()
+    assert cli.main(["seat", str(video), "g2", "--round", "1", "--seat", "story editor", "--config", cfg]) == 2
+    assert "writer's family" in capsys.readouterr().err
+    assert cli.main(["judge", str(video), "g2", "--round", "1", "--config", cfg]) == 2
+    assert "writer's family" in capsys.readouterr().err
+    from studio.room.ledger import Ledger
+    assert Ledger().count() == 0
+    assert not list((video / "room" / "g2" / "round-1").glob("story-editor.json"))
+
+
+def test_kind_defaults_by_gate_and_video_name_is_resolved(tmp_path):
+    assert cli._default_kind("g1", None) == "packaging"
+    assert cli._default_kind("g2", None) == "script"
+    assert cli._default_kind("g2", "packaging") == "packaging"
+
+
+def test_two_seats_with_one_file_name_are_refused(tmp_path, monkeypatch, capsys):
+    room = ROOM.replace("name: story editor", "name: Cold-Viewer!")
+    video, script, cfg = _setup(tmp_path, monkeypatch, room)
+    assert _lint(video, script, cfg) == 2
+    assert "same file name" in capsys.readouterr().err
+
+
+def test_judge_runs_when_rounds_one_and_two_are_candidates(tmp_path, monkeypatch):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    seats = ("cold viewer", "story editor", "fact reviewer")
+    for rnd in (1, 2):
+        if rnd == 2:
+            script.write_text("## [00:00] Hook\nPROF: Better.\nOOG: Ha.\n")
+        assert _lint(video, script, cfg, rnd) == 0
+        _fake(monkeypatch, [CLEAN] * 3)
+        for s in seats:
+            assert cli.main(["seat", str(video), "g2", "--round", str(rnd), "--seat", s, "--config", cfg]) == 0
+    _fake(monkeypatch, [{"winner": "A"}, {"winner": "B"}])
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 0
+    assert "winner" in json.loads((video / "room" / "g2" / "round-2" / "judge.json").read_text())

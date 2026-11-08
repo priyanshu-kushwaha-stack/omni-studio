@@ -8,6 +8,7 @@ free local engines.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
@@ -26,6 +27,11 @@ REQUIRED = ("writer", "judge", "rounds", "seats")
 
 class RoomConfigError(ValueError):
     pass
+
+
+def seat_slug(name: str) -> str:
+    """The file name a seat's verdict is stored under."""
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
 @dataclass
@@ -87,6 +93,12 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
                  for s in data["seats"]]
     except (KeyError, TypeError) as exc:
         raise RoomConfigError(f"{path}: every seat needs name, role, model and brief ({exc})") from exc
+    slugs: dict[str, str] = {}
+    for seat in seats:
+        other = slugs.setdefault(seat_slug(seat.name), seat.name)
+        if other != seat.name:
+            raise RoomConfigError(f"{path}: seats {other!r} and {seat.name!r} have the same file name "
+                                  f"{seat_slug(seat.name)!r}")
     return RoomConfig(writer=str(data["writer"]), judge=str(data["judge"]),
                       rounds=_int(data, "rounds", None, path), daily_cap=_int(data, "daily_cap", 80, path),
                       seats=seats, format=data.get("format") or {},

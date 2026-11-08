@@ -7,14 +7,13 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 from typing import Optional
 
 from studio.room import report as R
 from studio.room.call import CallContext, run_seat
-from studio.room.config import SEATS_DIR, derived_cap, load_room, validate
+from studio.room.config import SEATS_DIR, RoomConfigError, derived_cap, load_room, seat_slug, validate
 from studio.room.evidence import verify
 from studio.room.judge import run_judge
 from studio.room.ledger import CapReached, Ledger
@@ -23,13 +22,28 @@ from studio.room.models import family_of
 from studio.room.snapshot import load_draft, save_draft
 
 
-def _slug(name: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+_slug = seat_slug
+
+
+def _default_kind(gate: str, kind: Optional[str]) -> str:
+    return kind or ("packaging" if gate == "g1" else "script")
+
+
+def _video(args) -> Path:
+    return Path(args.video_dir).resolve()
+
+
+def _problems(cfg) -> int:
+    problems = validate(cfg)
+    if problems:
+        print("\n".join(problems), file=sys.stderr)
+        return 2
+    return 0
 
 
 def _ctx(args, cfg, rnd: int) -> CallContext:
     channel = args.channel or Path(args.config).resolve().parent.name
-    return CallContext(channel, Path(args.video_dir).name, args.gate, rnd, cfg.daily_cap, derived_cap(cfg))
+    return CallContext(channel, _video(args).name, args.gate, rnd, cfg.daily_cap, derived_cap(cfg))
 
 
 def _meta(video: Path, gate: str, n: int) -> Optional[dict]:
@@ -41,14 +55,19 @@ def _meta(video: Path, gate: str, n: int) -> Optional[dict]:
 
 def cmd_lint(args) -> int:
     cfg = load_room(Path(args.config))
-    video = Path(args.video_dir)
+    video = _video(args)
     sha = save_draft(video, Path(args.draft))
+    existing = _meta(video, args.gate, args.round)
+    if existing is not None and existing.get("draft_sha256") != sha:
+        print(f"round {args.round} already reviewed draft {str(existing.get('draft_sha256'))[:12]}; "
+              f"start round {args.round + 1}", file=sys.stderr)
+        return 2
     if args.ledger_file:
         ledger_file: Optional[Path] = Path(args.ledger_file)  # asked for explicitly: missing fails the lint
     else:
         default = Path(args.draft).parent / "claims.md"
         ledger_file = default if default.is_file() else None
-    rep = lint_draft(Path(args.draft), kind=args.kind, fmt=cfg.format, linters=cfg.linters, ledger=ledger_file)
+    rep = lint_draft(Path(args.draft), kind=_default_kind(args.gate, args.kind), fmt=cfg.format, linters=cfg.linters, ledger=ledger_file)
     R.write_meta(video, args.gate, args.round, sha, rep.as_dict())
     print(json.dumps({"round": args.round, "draft_sha256": sha, **rep.as_dict()}, indent=2))
     return 0 if rep.ok else 1
@@ -56,7 +75,9 @@ def cmd_lint(args) -> int:
 
 def cmd_seat(args) -> int:
     cfg = load_room(Path(args.config))
-    video = Path(args.video_dir)
+    if _problems(cfg):
+        return 2
+    video = _video(args)
     meta = _meta(video, args.gate, args.round)
     if meta is None:
         print(f"run lint for round {args.round} first", file=sys.stderr)
@@ -67,7 +88,16 @@ def cmd_seat(args) -> int:
         return 2
     inputs = {"draft": load_draft(video, meta["draft_sha256"])}
     for item in args.input or []:
-        name, _, path = item.partition("=")
+        name, eq, path = item.partition("=")
+        if not eq or not name or not path:
+            print(f"--input wants NAME=PATH, not {item!r}", file=sys.stderr)
+            return 2
+        if name == "draft":
+            print("draft comes from the round's snapshot", file=sys.stderr)
+            return 2
+        if not Path(path).is_file():
+            print(f"--input {name}: no such file {path}", file=sys.stderr)
+            return 2
         inputs[name] = Path(path).read_text(encoding="utf-8")
     out = R.round_dir(video, args.gate, args.round) / f"{_slug(seat.name)}.json"
     try:
@@ -82,7 +112,9 @@ def cmd_seat(args) -> int:
 
 def cmd_judge(args) -> int:
     cfg = load_room(Path(args.config))
-    video = Path(args.video_dir)
+    if _problems(cfg):
+        return 2
+    video = _video(args)
     rounds = R.load_rounds(video, args.gate)
     current = next((r for r in rounds if r["round"] == args.round), None)
     if current is None:
@@ -106,11 +138,9 @@ def cmd_judge(args) -> int:
 
 def cmd_report(args) -> int:
     cfg = load_room(Path(args.config))
-    problems = validate(cfg)
-    if problems:
-        print("\n".join(problems), file=sys.stderr)
+    if _problems(cfg):
         return 2
-    video = Path(args.video_dir)
+    video = _video(args)
     channel = args.channel or Path(args.config).resolve().parent.name
     rep = R.build_report(video, gate=args.gate, stage=args.stage, channel=channel,
                          writer_family=family_of(cfg.writer), ledger=Ledger(), cap=derived_cap(cfg))
@@ -120,9 +150,12 @@ def cmd_report(args) -> int:
 
 
 def cmd_verify(args) -> int:
-    video = Path(args.video_dir)
-    rep = json.loads((video / "room" / f"{args.gate}.json").read_text())
-    problems = verify(video, rep, Path(args.artifact), Ledger())
+    video = _video(args)
+    try:
+        rep = json.loads((video / "room" / f"{args.gate}.json").read_text(encoding="utf-8"))
+        problems = verify(video, rep, Path(args.artifact), Ledger())
+    except (OSError, ValueError) as exc:
+        problems = [f"room/{args.gate}.json cannot be read: {exc}"]
     print("\n".join(problems) if problems else "room evidence ok")
     return 1 if problems else 0
 
@@ -142,7 +175,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     common(s)
     s.add_argument("--round", type=int, required=True)
     s.add_argument("--draft", required=True)
-    s.add_argument("--kind", choices=["script", "packaging"], default="script")
+    s.add_argument("--kind", choices=["script", "packaging"])
     s.add_argument("--ledger-file")
     s.set_defaults(fn=cmd_lint)
     s = sub.add_parser("seat")
@@ -164,7 +197,11 @@ def main(argv: Optional[list[str]] = None) -> int:
     s.add_argument("--artifact", required=True)
     s.set_defaults(fn=cmd_verify)
     args = p.parse_args(argv)
-    return args.fn(args)
+    try:
+        return args.fn(args)
+    except (RoomConfigError, FileNotFoundError, json.JSONDecodeError, ValueError) as exc:
+        print(f"{args.cmd}: {exc}", file=sys.stderr)
+        return 1 if args.cmd == "verify" else 2
 
 
 if __name__ == "__main__":
