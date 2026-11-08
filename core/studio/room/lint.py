@@ -108,33 +108,44 @@ def cadence(text: str, *, wpm: float, max_gap_s: float, speakers: Optional[list[
     return problems
 
 
-def _quotes(ledger_text: str) -> Optional[dict[str, str]]:
+def _quotes(ledger_text: str) -> Optional[dict[str, tuple[str, str]]]:
+    """id -> (verbatim quote, status) from every table that has an id and a quote column; None if no table does."""
     lines = ledger_text.splitlines()
-    for i, line in enumerate(lines):
-        if not line.lstrip().startswith("|"):
+    rows: dict[str, tuple[str, str]] = {}
+    found, i = False, 0
+    while i < len(lines):
+        if not lines[i].lstrip().startswith("|"):
+            i += 1
             continue
-        header = [c.lower() for c in _cells(line)]
+        header = [c.lower() for c in _cells(lines[i])]
         id_col, quote_col = _column(header, "id"), _column(header, "verbatim", "quote")
-        if id_col is None or quote_col is None:
-            continue
-        quotes: dict[str, str] = {}
-        for row in lines[i + 2:]:
-            if not row.lstrip().startswith("|"):
-                break
-            cells = _cells(row) + [""] * len(header)
-            q = cells[quote_col].strip()
-            quotes[cells[id_col]] = "" if q.lower() in NO_QUOTE else q
-        return quotes
-    return None
+        status_col = _column(header, "status")
+        i += 1
+        while i < len(lines) and lines[i].lstrip().startswith("|"):
+            if id_col is not None and quote_col is not None and not set(lines[i].replace("|", "").strip()) <= set("-: "):
+                cells = _cells(lines[i]) + [""] * len(header)
+                q = cells[quote_col].strip()
+                rows[cells[id_col]] = ("" if q.lower() in NO_QUOTE else q,
+                                       cells[status_col].lower() if status_col is not None else "")
+            i += 1
+        found = found or (id_col is not None and quote_col is not None)
+    return rows if found else None
 
 
 def ledger_quotes(script_text: str, ledger_text: str) -> list[str]:
-    quotes = _quotes(ledger_text)
-    if quotes is None:
+    rows = _quotes(ledger_text)
+    if rows is None:
         return ["claims.md has no verbatim quote column"]
     cited = {c.strip() for _, line in spoken_lines(script_text) for g in CITE_RE.findall(line) for c in g.split(",")}
-    return [f"{cid}: cited in the script but its ledger row has no verbatim quote"
-            for cid in sorted(cited) if cid in quotes and not quotes[cid]]
+    problems = []
+    for cid in sorted(cited):
+        if cid not in rows:
+            problems.append(f"{cid}: cited but not in claims.md")
+        elif rows[cid][1] == "dropped":
+            problems.append(f"{cid}: cited in the script but its ledger row is marked dropped")
+        elif not rows[cid][0]:
+            problems.append(f"{cid}: cited in the script but its ledger row has no verbatim quote")
+    return problems
 
 
 def _label(cmd: list[str]) -> str:
@@ -144,7 +155,19 @@ def _label(cmd: list[str]) -> str:
     return " ".join(cmd[:2])
 
 
-def run_linters(commands: list[str], *, script: Path, video_dir: Path, runner=None) -> list[str]:
+def _linter_file_problem(template: str, cmd: list[str], channel_dir: Optional[Path]) -> Optional[str]:
+    """A linter is `{python} <file> ...` where the file is under ROOT/core or the channel folder (symlinks resolved)."""
+    if not template.startswith("{python} ") or len(cmd) < 2:
+        return "must start with '{python} ' followed by a script file"
+    roots = [(ROOT / "core").resolve()] + ([Path(channel_dir).resolve()] if channel_dir else [])
+    target = (ROOT / cmd[1]).resolve()  # relative paths are relative to the repo root, where linters run
+    if not target.is_file() or not any(target.is_relative_to(r) for r in roots):
+        return f"{cmd[1]!r} is not a file under core/ or the channel folder"
+    return None
+
+
+def run_linters(commands: list[str], *, script: Path, video_dir: Path, runner=None,
+                channel_dir: Optional[Path] = None) -> list[str]:
     runner = runner or subprocess.run
     values = {k: shlex.quote(str(v)) for k, v in
               {"python": sys.executable, "script": script, "video": video_dir, "root": ROOT}.items()}
@@ -156,6 +179,10 @@ def run_linters(commands: list[str], *, script: Path, video_dir: Path, runner=No
                 raise ValueError("empty command")
         except (KeyError, ValueError, IndexError) as e:
             problems.append(f"linter {template!r} is not a valid command template: {e!r}")
+            continue
+        refused = _linter_file_problem(template, cmd, channel_dir)
+        if refused:
+            problems.append(f"linter {template!r} is not run: {refused}")
             continue
         try:
             proc = runner(cmd, cwd=ROOT, capture_output=True, text=True, timeout=300)
@@ -172,7 +199,8 @@ def run_linters(commands: list[str], *, script: Path, video_dir: Path, runner=No
 
 
 def lint_draft(path: Path, *, kind: str, fmt: dict[str, Any], linters: list[str], ledger: Optional[Path] = None,
-               slop: Optional[dict[str, Any]] = None, runner=None) -> LintReport:
+               slop: Optional[dict[str, Any]] = None, runner=None,
+               channel_dir: Optional[Path] = None) -> LintReport:
     text = Path(path).read_text(encoding="utf-8")
     slop = load_slop() if slop is None else slop
     problems: list[str] = []
@@ -195,5 +223,6 @@ def lint_draft(path: Path, *, kind: str, fmt: dict[str, Any], linters: list[str]
             problems.append("claims.md is missing, so cited claims cannot be checked")
         elif ledger is not None:
             problems += ledger_quotes(text, Path(ledger).read_text(encoding="utf-8"))
-        problems += run_linters(linters, script=Path(path), video_dir=Path(path).parent, runner=runner)
+        problems += run_linters(linters, script=Path(path), video_dir=Path(path).parent, runner=runner,
+                                channel_dir=channel_dir)
     return LintReport(not problems, problems, warnings)

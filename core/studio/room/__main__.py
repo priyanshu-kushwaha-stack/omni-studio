@@ -103,7 +103,8 @@ def cmd_lint(args) -> int:
         default = Path(args.draft).parent / "claims.md"
         ledger_file = default if default.is_file() else None
     kind = _default_kind(args.gate, args.kind)
-    rep = lint_draft(Path(args.draft), kind=kind, fmt=cfg.format, linters=cfg.linters, ledger=ledger_file)
+    rep = lint_draft(Path(args.draft), kind=kind, fmt=cfg.format, linters=cfg.linters, ledger=ledger_file,
+                     channel_dir=cfg.channel_dir)
     R.write_meta(video, args.gate, args.round, sha, rep.as_dict(), owner_notes=args.owner_notes, kind=kind)
     print(json.dumps({"round": args.round, "draft_sha256": sha, **rep.as_dict()}, indent=2))
     return 0 if rep.ok else 1
