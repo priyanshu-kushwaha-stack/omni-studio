@@ -96,10 +96,21 @@ def test_relint_of_a_different_draft_does_not_repoint_the_round(tmp_path, monkey
     sha = json.loads(meta)["draft_sha256"]
     assert _lint(video, script, cfg) == 0  # same draft: allowed
     script.write_text("## [00:00] Hook\nPROF: Different.\nOOG: Ha.\n")
+    (video / "room" / "g2" / "round-1" / "story-editor.json").write_text("{}")  # a seat has reviewed round 1
     capsys.readouterr()
     assert _lint(video, script, cfg) == 2
     assert f"round 1 already reviewed draft {sha[:12]}; start round 2" in capsys.readouterr().err
     assert json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["draft_sha256"] == sha
+
+
+def test_relint_with_a_fixed_draft_is_allowed_until_a_seat_has_reviewed(tmp_path, monkeypatch):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    script.write_text("## [00:00] Hook\nPROF: Fixed.\nOOG: Ha.\n")
+    assert _lint(video, script, cfg) == 0
+    meta = json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())
+    from studio.room.snapshot import save_draft
+    assert meta["draft_sha256"] == save_draft(video, script)
 
 
 def test_seat_input_rejects_draft_missing_equals_and_missing_file(tmp_path, monkeypatch, capsys):

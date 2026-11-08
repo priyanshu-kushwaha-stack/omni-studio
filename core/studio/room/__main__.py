@@ -58,7 +58,8 @@ def cmd_lint(args) -> int:
     video = _video(args)
     sha = save_draft(video, Path(args.draft))
     existing = _meta(video, args.gate, args.round)
-    if existing is not None and existing.get("draft_sha256") != sha:
+    reviewed = any(f.name != "meta.json" for f in R.round_dir(video, args.gate, args.round).glob("*.json"))
+    if existing is not None and existing.get("draft_sha256") != sha and reviewed:
         print(f"round {args.round} already reviewed draft {str(existing.get('draft_sha256'))[:12]}; "
               f"start round {args.round + 1}", file=sys.stderr)
         return 2
