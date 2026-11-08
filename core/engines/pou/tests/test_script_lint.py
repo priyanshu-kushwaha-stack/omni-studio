@@ -146,3 +146,9 @@ def test_every_quiz_board_shape_fails():
 
 def test_no_quiz_lines_passes():
     assert by_item(lint_script(make_script(), 14))[27].ok
+
+
+def test_quiz_board_match_ignores_case_and_spacing():
+    for line in ("> quiz: 15 | *35 | 55", ">QUIZ: 15 | *35", "  >  Quiz : a | *b", ">quiz:a|*b"):
+        assert not by_item(lint_script(_quiz_script(["> ASK: Guess?", line]), 14))[27].ok, line
+    assert by_item(lint_script(_quiz_script(["> ASK: Guess? The quiz: none here"]), 14))[27].ok

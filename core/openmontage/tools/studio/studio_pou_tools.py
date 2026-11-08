@@ -37,6 +37,12 @@ from tools.base_tool import (
     ToolTier,
 )
 
+try:  # B1 timing (core/studio/jobs); discovery outside the studio layer simply runs untimed
+    from studio.jobs.timing import record_tool as _record_tool
+except ImportError:
+    def _record_tool(fn):
+        return fn
+
 STUDIO_ROOT = Path(__file__).resolve().parents[4]
 ENGINE = STUDIO_ROOT / "core" / "engines" / "pou" / "scripts"
 MEDIA_PYTHON = STUDIO_ROOT / ".venv-media" / "bin" / "python"
@@ -144,6 +150,7 @@ class _PouEngineTool(BaseTool):
         env = {**os.environ, "POU_CHANNEL_DIR": str(channel), "PYTHONDONTWRITEBYTECODE": "1"}
         return [str(self.python()), str(ENGINE / self.script), *args], env
 
+    @_record_tool
     def execute(self, inputs: dict[str, Any]) -> ToolResult:
         start = time.time()
         try:

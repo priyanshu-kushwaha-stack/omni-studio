@@ -17,6 +17,7 @@ from pathlib import Path
 
 Finding = namedtuple("Finding", "item ok detail level", defaults=("fail",))
 
+QUIZ_RE = re.compile(r"^\s*>\s*quiz\s*:", re.IGNORECASE)  # `> QUIZ:`, `>QUIZ:`, `> quiz :` ...
 SECTION_RE = re.compile(r"^## \[(\d{2}):(\d{2})\] (.+)$")
 GREETINGS = ["welcome back", "welcome", "hey guys", "my name is", "in today's video", "this channel"]
 ENDING_LANGUAGE = ["to sum up", "in conclusion", "at the end of the day", "to wrap up", "finally,"]
@@ -123,7 +124,7 @@ def lint_script(text: str, target_minutes: int, wpm: int = 155) -> list[Finding]
     # Item 27: no quiz boards. Owner rule 2026-11-06 (core/studio/rules/viewer-questions.md): a question is
     # answered at once inside the dialogue, with no pause and no three-option board. compose.py still renders
     # `> QUIZ:` for already-approved videos; new scripts fail here.
-    boards = [i + 1 for i, l in enumerate(text.splitlines()) if l.strip().startswith("> QUIZ:")]
+    boards = [i + 1 for i, l in enumerate(text.splitlines()) if QUIZ_RE.match(l)]
     detail = (f"quiz board at line(s) {boards}: ask inside the dialogue and have a character answer at once, "
               "no pause, no quiz boards (owner 2026-11-06)") if boards else "no quiz boards"
     findings.append(Finding(27, not boards, detail))

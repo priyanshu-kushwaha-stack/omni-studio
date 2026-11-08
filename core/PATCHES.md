@@ -22,8 +22,8 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | File | Purpose |
 |---|---|
 | `STUDIO_PATHS.md` | Says OpenMontage's docs are relative to this folder |
-| `lib/studio_approval.py` | HMAC proof for `omni approve`, keyed from `~/.config/omni-studio/approval.key` (made on first approval, mode 600); `verify` is what `lib/checkpoint.py` calls |
-| `tools/studio/__init__.py`, `tools/studio/studio_pou_tools.py` | `pou_tts`, `pou_stills`, `pou_puppet`, `pou_compose`, `overlay_check`: the Professor of Us engine (`core/engines/pou`) by subprocess, auto-discovered |
+| `lib/studio_approval.py` | HMAC proof for `omni approve` (and `sign_media`/`verify_media`, binding an approval to a file's sha256 and, for publish approvals, the upload metadata digest; the stage proof also covers `approval.media`), keyed from `~/.config/omni-studio/approval.key` (made on first approval, mode 600); `verify` is what `lib/checkpoint.py` calls |
+| `tools/studio/__init__.py`, `tools/studio/studio_pou_tools.py` | `pou_tts`, `pou_stills`, `pou_puppet`, `pou_compose`, `overlay_check`: the Professor of Us engine (`core/engines/pou`) by subprocess, auto-discovered; each tool run is timed through `studio.jobs.timing.record_tool` (a decorator that is a no-op when `studio` is not importable) |
 | `pipeline_defs/studio-dialogue.yaml` | Seven owner gates G1-G7 for dialogue explainers; `metadata.studio_checks` per stage |
 | `skills/studio/studio-dialogue-*.md` | One stage skill per gate |
 | `pipeline_defs/studio-short.yaml` | Seven owner gates G1-G7 for 9:16 Shorts (Shorts sound and ending rule); `metadata.studio_checks` |
@@ -31,6 +31,7 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | `pipeline_defs/studio-whatif.yaml` | Seven owner gates G1-G7 for Say Suppose's second-person what-if stories; `metadata.studio_checks`; names the `whatif_*` tools |
 | `skills/studio/studio-whatif-*.md` | One stage skill per gate for what-if stories |
 | `tools/studio/studio_whatif_tools.py` | `whatif_story`, `whatif_narration`, `whatif_render`, `whatif_stills`: the what-if engine (`core/engines/whatif`) by subprocess, auto-discovered. `whatif_narration` passes a credit cap only with the owner's approval |
+| `skills/studio/studio-room.md` | The quality room loop for G1 packaging and G2 script (`python -m studio.room`, `core/studio/room/`): lint, seats, judge, report, verify |
 
 ## Generated links
 

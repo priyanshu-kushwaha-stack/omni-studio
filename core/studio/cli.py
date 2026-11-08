@@ -275,9 +275,9 @@ def similar(slug: str, video: str, media: str | None) -> int:
     return 0 if report["ok"] else 1
 
 
-def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | None, first_auth: bool,
-           privacy: str | None, install: bool, thumbnail_only: bool = False, captions_only: bool = False) -> int:
-    """Dry run by default. Never public, never scheduled (core/studio/publish/youtube.py)."""
+def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | None, install: bool,
+           thumbnail_only: bool = False, captions_only: bool = False) -> int:
+    """Dry run by default. Always private, never scheduled (core/studio/publish/youtube.py)."""
     from studio.publish import youtube
 
     try:
@@ -288,7 +288,7 @@ def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | Non
         if not slug or not video:
             print("error: omni upload <channel> <video>", file=sys.stderr)
             return 2
-        request = youtube.build_request(slug, video, privacy=privacy)
+        request = youtube.build_request(slug, video)
         if captions_only and not run:
             print(f"DRY RUN: would add subtitles {sorted(request.captions)} to the video in upload_log.json; "
                   "pass --run --confirm to do it")
@@ -308,12 +308,30 @@ def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | Non
             log = youtube.set_thumbnail(request, confirm or "")
             print(f"thumbnail set on {log['youtube_video_id']}: {json.dumps(log['thumbnail'])}")
             return 0
-        log = youtube.run(request, confirm or "", first_auth=first_auth)
+        log = youtube.run(request, confirm or "")
         print(f"uploaded {log['youtube_video_id']} private; read-back ok: {json.dumps(log['readback'])}")
         return 0
     except youtube.UploadRefused as exc:
         print(f"REFUSED: {exc}", file=sys.stderr)
         return 3
+
+
+def youtube_auth(slug: str, replace: bool) -> int:
+    from studio.publish import youtube_auth as auth
+
+    try:
+        auth.authorize(slug, replace=replace)
+        return 0
+    except auth.AuthRefused as exc:
+        print(f"REFUSED: {exc}", file=sys.stderr)
+        return 3
+
+
+def approve_upload(slug: str, video: str, format_name: str, note: str | None) -> int:
+    from studio import checks
+
+    print(f"approved upload of {slug}/{video}: {checks.approve_upload(slug, video, format_name, note)}")
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -373,13 +391,24 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_argument("--dry-run", action="store_true", help="the default: print the command and metadata")
     sub.add_argument("--run", action="store_true", help="really upload (owner only), private")
     sub.add_argument("--confirm", help="with --run: <channel>/<video>, typed out")
-    sub.add_argument("--first-auth", action="store_true", help="with --run: no token yet; opens Google consent")
-    sub.add_argument("--privacy", help="refused unless 'private'")
     sub.add_argument("--install", action="store_true", help="install the pinned youtubeuploader into .tools/")
     sub.add_argument("--thumbnail-only", action="store_true",
                      help="with --run: set upload.yaml's thumbnail on the video already uploaded (upload_log.json)")
     sub.add_argument("--captions-only", action="store_true",
                      help="with --run: add upload.yaml's subtitle tracks to the video already uploaded")
+
+    sub = commands.add_parser("youtube-auth", help="owner only: Google consent for a channel; the token is saved "
+                                                   "only if it belongs to channel.yaml youtube_channel_id")
+    sub.add_argument("channel")
+    sub.add_argument("--replace", action="store_true", help="redo consent over an existing token")
+
+    sub = commands.add_parser("approve-upload", help="owner only: approve the upload of an imported video "
+                                                     "marked legacy_upload: true with no pipeline state; signs the "
+                                                     "checked file's sha256 and the upload metadata digest")
+    sub.add_argument("channel")
+    sub.add_argument("video")
+    sub.add_argument("--format", required=True, dest="format_name")
+    sub.add_argument("--note")
 
     args = parser.parse_args(argv)
     try:
@@ -404,9 +433,12 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "upload":
             if args.run and args.dry_run:
                 parser.error("--run and --dry-run together")
-            return upload(args.channel, args.video, run=args.run, confirm=args.confirm, first_auth=args.first_auth,
-                          privacy=args.privacy, install=args.install, thumbnail_only=args.thumbnail_only,
-                          captions_only=args.captions_only)
+            return upload(args.channel, args.video, run=args.run, confirm=args.confirm, install=args.install,
+                          thumbnail_only=args.thumbnail_only, captions_only=args.captions_only)
+        if args.command == "youtube-auth":
+            return youtube_auth(args.channel, args.replace)
+        if args.command == "approve-upload":
+            return approve_upload(args.channel, args.video, args.format_name, args.note)
         return fix(args.channel, args.format_name, args.stage, args.severity, args.example, args.note)
     except ChannelError as exc:
         print(f"error: {exc}", file=sys.stderr)
