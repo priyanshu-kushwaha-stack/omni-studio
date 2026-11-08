@@ -9,6 +9,7 @@ Checks:
   no_quiz_boards  script_lint.py item 27 (owner rule 2026-11-06)
   loudness        integrated LUFS, true peak and LRA against channel.yaml loudness.<format> (qc/loudness.py)
   clicks          audio_check.py bursts and steps; on Shorts also the 2.4 s fade-out tail (qc/clicks.py)
+  opening         a sound a phone can play within 0.5 s and the first word within 1 s (qc/opening.py)
   similarity      near-duplicates across channels and the channel's recent videos (studio/similarity.py)
   upload_request  upload.yaml makes a valid private upload with kids and AI answered (publish/youtube.py)
 """
@@ -28,8 +29,8 @@ from studio.channels import ChannelError
 
 ROOT = Path(__file__).resolve().parents[2]
 ENGINE = ROOT / "core" / "engines" / "pou" / "scripts"
-KNOWN = ("claims", "no_quiz_boards", "loudness", "clicks", "similarity", "upload_request")
-MEDIA_CHECKS = {"loudness", "clicks", "similarity"}
+KNOWN = ("claims", "no_quiz_boards", "loudness", "clicks", "opening", "similarity", "upload_request")
+MEDIA_CHECKS = {"loudness", "clicks", "opening", "similarity"}
 
 
 @lru_cache(maxsize=1)
@@ -113,6 +114,10 @@ def run_check(name: str, channel: channels.Channel, video_id: str, fmt: str, pip
 
         short = pipeline == "studio-short" and media.suffix.lower() in {".mp4", ".mov", ".m4v"}
         return clicks.check(media, words, short=short)
+    if name == "opening":
+        from studio.qc import opening
+
+        return opening.check(media, words)
     if name == "similarity":
         from studio import similarity
 

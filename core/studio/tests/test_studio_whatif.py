@@ -35,9 +35,9 @@ def test_studio_whatif_checks_per_gate():
     assert checks.stage_checks("studio-whatif", "narration") == ["claims", "clicks"]
     assert checks.stage_checks("studio-whatif", "rough_cut") == []
     for stage in ("final_edit", "final_watch"):
-        assert checks.stage_checks("studio-whatif", stage) == ["loudness", "clicks", "similarity"]
+        assert checks.stage_checks("studio-whatif", stage) == ["loudness", "clicks", "opening", "similarity"]
     assert checks.stage_checks("studio-whatif", "publish_prep") == [
-        "claims", "loudness", "clicks", "similarity", "upload_request"]
+        "claims", "loudness", "clicks", "opening", "similarity", "upload_request"]
 
 
 def test_studio_whatif_is_code_drawn_with_no_lip_sync_or_boil():

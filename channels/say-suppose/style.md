@@ -108,6 +108,10 @@ three painted looks, then that sample re-coloured and on a painted backdrop, and
 
 ## Opening, brand and calls to action
 
+- **No empty opening** (owner, 2026-11-08: "First 2 seconds are empty ... the attention span is so low these
+  days"): a sound a phone can play within 0.5 s and the first word within 1 s. `omni qc` checks it (`opening`) at the
+  edit, the final watch and publish.
+
 Owner, 2026-11-07:
 - **Opening.** Hook first, then a 3 to 4 s ident in our own visual language, never "welcome to the channel".
 - **Mid-video subscribe.** One subtle nudge with no voice, at a quiet moment or inside the world.

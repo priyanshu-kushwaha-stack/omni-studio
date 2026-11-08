@@ -7,7 +7,8 @@ claims: claims.md
 ## [00:00] The change
 > MOOD: frozen
 > SCENE: Flash-forward. A grey, frozen street at dusk. A bus a metre from a school-age kid on a crossing. The split-flap counter reads 7. Letterbox bars. Cut to black.
-> HOLD: 2 s. One low note, then silence.
+> HOLD: 0.2 s. One low note on the first frame, and the first words come at once (owner, 2026-11-08: no
+> empty seconds at the start; attention spans are short).
 On day twelve, all that stands between a bus and a kid is ten seconds.
 > MOOD: morning
 > SCENE: Bedroom, morning light through the curtain. The alarm clock rings. You snap your fingers at it, and the room drains to grey from your hand outward. Bars slide in. Dust hangs in the light.

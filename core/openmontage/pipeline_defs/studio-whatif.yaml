@@ -51,9 +51,9 @@ metadata:
   studio_checks:
     story_script: [claims]
     narration: [claims, clicks]
-    final_edit: [loudness, clicks, similarity]
-    final_watch: [loudness, clicks, similarity]
-    publish_prep: [claims, loudness, clicks, similarity, upload_request]
+    final_edit: [loudness, clicks, opening, similarity]
+    final_watch: [loudness, clicks, opening, similarity]
+    publish_prep: [claims, loudness, clicks, opening, similarity, upload_request]
 
 stages:
   - name: proposal

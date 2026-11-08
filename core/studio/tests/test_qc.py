@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+
 import pytest
 
 from studio.qc import clicks, loudness
@@ -66,3 +68,54 @@ def test_short_without_words_cannot_check_its_tail(media, tmp_path):
     wav, _ = media("good")
     report = clicks.check(wav, tmp_path / "missing.json", short=True)
     assert not report["ok"] and "words.json" in report["problems"][0]
+
+
+# ------------------------------------------------------------------------------------------------- opening
+
+def _opening_wav(path, parts):
+    """parts: [(seconds, kind)] with kind "silence", "low" (80 Hz, which a phone barely plays) or "voice" (1 kHz)."""
+    import wave
+
+    import numpy as np
+
+    sr, chunks = 48000, []
+    for seconds, kind in parts:
+        t = np.arange(int(seconds * sr)) / sr
+        hz = {"low": 80, "voice": 1000}.get(kind)
+        chunks.append(np.zeros_like(t) if hz is None else 0.3 * np.sin(2 * np.pi * hz * t))
+    pcm = (np.concatenate(chunks) * 32767).astype("<i2")
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(1), w.setsampwidth(2), w.setframerate(sr), w.writeframes(pcm.tobytes())
+    return path
+
+
+def _words(path, start):
+    path.write_text(json.dumps([{"word": "On", "start": start, "end": start + 0.2}]))
+    return path
+
+
+def test_opening_that_speaks_at_once_passes(tmp_path):
+    from studio.qc import opening
+
+    wav = _opening_wav(tmp_path / "a.wav", [(0.4, "low"), (2.0, "voice")])
+    report = opening.check(wav, _words(tmp_path / "w.json", 0.4))
+    assert report["ok"], report["problems"]
+    assert report["first_sound_s"] <= 0.5
+
+
+def test_low_note_then_late_voice_fails_as_empty_on_a_phone(tmp_path):
+    from studio.qc import opening
+
+    wav = _opening_wav(tmp_path / "v5.wav", [(2.4, "low"), (2.0, "voice")])   # the pause-time edit v5 opening
+    report = opening.check(wav, _words(tmp_path / "w.json", 2.4))
+    assert not report["ok"]
+    assert any("empty on a phone speaker" in p for p in report["problems"]), report
+    assert any("first word comes at 2.4 s" in p for p in report["problems"]), report
+
+
+def test_opening_without_words_cannot_time_the_first_word(tmp_path):
+    from studio.qc import opening
+
+    report = opening.check(_opening_wav(tmp_path / "a.wav", [(1.0, "voice")]))
+    assert not report["ok"]
+    assert any("no words.json" in p for p in report["problems"])
