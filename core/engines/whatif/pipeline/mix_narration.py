@@ -3,7 +3,7 @@
     python mix_narration.py <video folder> [--mute TAKE@OFFSET:SECONDS,...]
 
 Reads <video>/assets/narration/props.json (written by build.ts) and its tightened takes. Writes
-<video>/narration/narration.wav (48 kHz mono) and
+<video>/narration/narration.wav (48 kHz mono; a copy goes to assets/narration/ for the film to play) and
 <video>/narration/words.json (every word with its time in the whole track), which `omni qc <slug> <video> narration`
 reads by default. The narration/ folder is git-ignored.
 
@@ -17,6 +17,7 @@ at a tempo (props "tempo", or the line's own) has its mutes scaled to match.
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -69,6 +70,9 @@ def mix(video: Path, mute: list[tuple[int, float, float]] = ()) -> tuple[Path, P
     wav = out / "narration.wav"
     subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-ac", "1",
                     "-ar", "48000", "-t", f"{total:.3f}", str(wav)], check=True)
+    # The film plays this cleaned track, not the raw takes, so its trims, fades and mutes reach the render
+    # (G5, 2026-11-08: raw end-of-take pops reappeared in the edit's click check).
+    shutil.copyfile(wav, takes / "narration.wav")
     words_path = out / "words.json"
     words_path.write_text(json.dumps(words, indent=1), encoding="utf-8")
     return wav, words_path

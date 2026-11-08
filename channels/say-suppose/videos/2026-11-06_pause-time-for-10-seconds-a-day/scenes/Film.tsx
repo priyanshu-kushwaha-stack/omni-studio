@@ -86,11 +86,8 @@ export const Film: React.FC<FilmProps> = (props) => {
       <Sequence from={cues.hands} durationInFrames={S1_FRAMES}>
         <SubscribeTag />
       </Sequence>
-      {clips.map((c) => (
-        <Sequence key={c.file} from={c.from} durationInFrames={c.frames}>
-          <Audio src={staticFile(c.file)} />
-        </Sequence>
-      ))}
+      {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
+      <Audio src={staticFile("narration/narration.wav")} />
       <Audio src={staticFile("music/score.wav")} volume={(f) => scoreVolume(f, clips)} />
     </AbsoluteFill>
   );
