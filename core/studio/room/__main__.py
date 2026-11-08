@@ -58,14 +58,32 @@ def _channel(args) -> str:
 
 
 def _reviewed(args, video: Path) -> bool:
-    """A round is reviewed once it has a verdict or judge file, or a call row that never finished."""
+    """A round is reviewed once it has a verdict or judge file, or any call row at all (deleting files re-opens nothing)."""
     files = any(f.name != "meta.json" for f in R.round_dir(video, args.gate, args.round).glob("*.json"))
-    return files or Ledger().count(channel=_channel(args), video=video.name, gate=args.gate, round=args.round,
-                                   status="reserved") > 0
+    return files or Ledger().count(channel=_channel(args), video=video.name, gate=args.gate, round=args.round) > 0
 
 
-def _read_inputs(items: Optional[list[str]], reserved: tuple[str, ...] = ("draft",)) -> Optional[dict[str, str]]:
-    """NAME=PATH inputs for a prompt. None after printing the reason (exit 2). Secrets never go into a prompt."""
+def _confined(path: str, cfg, label: str) -> bool:
+    """Only files inside the channel folder (symlinks resolved) go into a prompt or become a draft: never a secret,
+    never another video's room verdicts. Prints the reason and returns False otherwise."""
+    p = Path(path)
+    if is_secret_path(p):
+        print(f"{label}: {path} is in a secrets folder and is never read into a prompt", file=sys.stderr)
+        return False
+    real, root = p.expanduser().resolve(), Path(cfg.channel_dir).resolve()
+    if not real.is_relative_to(root):
+        print(f"{label}: {path} is outside the channel folder {root}; only channel files are read", file=sys.stderr)
+        return False
+    parts = real.relative_to(root).parts
+    if len(parts) >= 3 and parts[0] == "videos" and parts[2] == "room":
+        print(f"{label}: {path} is inside a videos/*/room folder (other verdicts) and is never read",
+              file=sys.stderr)
+        return False
+    return True
+
+
+def _read_inputs(items: Optional[list[str]], cfg, reserved: tuple[str, ...] = ("draft",)) -> Optional[dict[str, str]]:
+    """NAME=PATH inputs for a prompt. None after printing the reason (exit 2). Only channel files; never secrets."""
     inputs: dict[str, str] = {}
     for item in items or []:
         name, eq, path = item.partition("=")
@@ -76,8 +94,7 @@ def _read_inputs(items: Optional[list[str]], reserved: tuple[str, ...] = ("draft
             print("draft comes from the round's snapshot" if name == "draft" else f"--input name {name!r} is reserved",
                   file=sys.stderr)
             return None
-        if is_secret_path(Path(path)):
-            print(f"--input {name}: {path} is in a secrets folder and is never read into a prompt", file=sys.stderr)
+        if not _confined(path, cfg, f"--input {name}"):
             return None
         if not Path(path).is_file():
             print(f"--input {name}: no such file {path}", file=sys.stderr)
@@ -93,8 +110,15 @@ def cmd_lint(args) -> int:
         print(f"--kind {args.kind} does not fit {args.gate}: {args.gate} reviews a "
               f"{_default_kind(args.gate, None)}", file=sys.stderr)
         return 2
+    if not args.owner_notes and args.round > cfg.rounds:
+        print(f"round {args.round} is above the room's limit of {cfg.rounds} rounds; ship the best candidate or "
+              "take owner notes (--owner-notes)", file=sys.stderr)
+        return 2
     if _reviewed(args, video):
         print(f"round {args.round} has been reviewed; start round {args.round + 1}", file=sys.stderr)
+        return 2
+    if not _confined(args.draft, cfg, "--draft") or (args.ledger_file and not _confined(
+            args.ledger_file, cfg, "--ledger-file")):
         return 2
     sha = save_draft(video, Path(args.draft))
     if args.ledger_file:
@@ -137,7 +161,12 @@ def cmd_seat(args) -> int:
         print(f"seat {seat.name!r} already has an ok verdict in round {args.round}; a re-run is allowed only "
               "after a failed one", file=sys.stderr)
         return 2
-    extra = _read_inputs(args.input)
+    if Ledger().count(channel=_channel(args), video=video.name, gate=args.gate, round=args.round,
+                      seat=seat.name, status="ok") > 0:
+        print(f"seat {seat.name!r} already has an ok call in round {args.round}; deleting its verdict file does "
+              "not buy a second opinion", file=sys.stderr)
+        return 2
+    extra = _read_inputs(args.input, cfg)
     if extra is None:
         return 2
     inputs = {"draft": load_draft(video, meta["draft_sha256"]), **extra}
@@ -162,13 +191,19 @@ def cmd_judge(args) -> int:
     if current is None:
         print(f"round {args.round} has no files", file=sys.stderr)
         return 2
-    inputs = _read_inputs(args.input, reserved=())
+    inputs = _read_inputs(args.input, cfg, reserved=("draft",))
     if inputs is None:
         return 2
     best = R.best_before(rounds, args.round)
     if best is None or not R.is_candidate(current):
         print(json.dumps({"judged": False, "why": "fewer than two candidates"}))
         return 0
+    if (R.round_dir(video, args.gate, args.round) / "judge.json").exists() or Ledger().count(
+            channel=_channel(args), video=video.name, gate=args.gate, round=args.round, seat="judge",
+            status="ok") > 0:
+        print(f"round {args.round} has already been judged; a judge runs once per round (start the next round)",
+              file=sys.stderr)
+        return 2
     try:
         res = run_judge(load_draft(video, current["draft_sha256"]), load_draft(video, best["draft_sha256"]),
                         model=cfg.judge, brief=(SEATS_DIR / "judge.md").read_text(encoding="utf-8"),
@@ -176,6 +211,10 @@ def cmd_judge(args) -> int:
                         out=R.round_dir(video, args.gate, args.round) / "judge.json", inputs=inputs)
     except CapReached as exc:
         print(str(exc), file=sys.stderr)
+        return 1
+    if res["winner"] is None:
+        print(f"the judge failed ({res['statuses']}); round {args.round} is unjudged and the earlier draft stays "
+              "best. Run the judge again in a new round or stop.", file=sys.stderr)
         return 1
     print(json.dumps({"judged": True, "winner": res["winner"], "picks": res["picks"]}))
     return 0

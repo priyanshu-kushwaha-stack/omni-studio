@@ -273,7 +273,7 @@ def test_an_ok_seat_cannot_be_rerun_but_a_failed_one_can(tmp_path, monkeypatch, 
 
 def test_seats_on_a_failed_lint_need_the_calibration_flag(tmp_path, monkeypatch, capsys):
     video, script, cfg = _setup(tmp_path, monkeypatch)
-    assert _lint(video, script, cfg, 1, "g2", "--ledger-file", str(tmp_path / "missing-claims.md")) == 1
+    assert _lint(video, script, cfg, 1, "g2", "--ledger-file", str(video / "missing-claims.md")) == 1  # adapted: inside the channel
     base = ["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", cfg]
     boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
     monkeypatch.setattr(call.subprocess, "run", boom)
@@ -323,7 +323,7 @@ def test_judge_takes_inputs_into_its_prompt(tmp_path, monkeypatch):
             script.write_text("## [00:00] Hook\nPROF: Better.\nOOG: Ha.\n")
         assert _lint(video, script, cfg, rnd) == 0
         _run_seats(video, cfg, monkeypatch, rnd)
-    aud = tmp_path / "audience.md"
+    aud = tmp_path / "professor-of-us" / "audience.md"  # adapted: inputs must live in the channel folder
     aud.write_text("Teens who like maps")
     prompts = []
 
@@ -337,3 +337,144 @@ def test_judge_takes_inputs_into_its_prompt(tmp_path, monkeypatch):
     assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg, "--input", f"audience.md={aud}"]) == 0
     assert len(prompts) == 2 and all("=== audience.md ===\nTeens who like maps" in p for p in prompts)
     assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg, "--input", "nonsense"]) == 2
+
+
+def _channel_of(video):
+    return video.parent.parent
+
+
+def test_inputs_must_live_inside_the_channel_folder(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    outside = tmp_path / "elsewhere.md"
+    outside.write_text("x")
+    inside = _channel_of(video) / "audience.md"
+    inside.write_text("Teens")
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    for sub, extra in (("seat", ["--seat", "cold viewer"]), ("judge", [])):
+        capsys.readouterr()
+        assert cli.main([sub, str(video), "g2", "--round", "1", "--config", cfg, *extra,
+                         "--input", f"x={outside}"]) == 2
+        assert "channel folder" in capsys.readouterr().err
+    link = _channel_of(video) / "sneaky.md"
+    link.symlink_to(outside)
+    assert cli.main(["seat", str(video), "g2", "--round", "1", "--config", cfg, "--seat", "cold viewer",
+                     "--input", f"x={link}"]) == 2
+    assert "channel folder" in capsys.readouterr().err
+
+
+def test_inputs_may_not_be_other_verdicts_under_a_videos_room_folder(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    other = _channel_of(video) / "videos" / "other" / "room" / "g2" / "round-1"
+    other.mkdir(parents=True)
+    (other / "story-editor.json").write_text("{}")
+    mine = video / "room" / "g2" / "round-1" / "meta.json"
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    for path in (other / "story-editor.json", mine):
+        capsys.readouterr()
+        assert cli.main(["seat", str(video), "g2", "--round", "1", "--config", cfg, "--seat", "cold viewer",
+                         "--input", f"x={path}"]) == 2
+        assert "room" in capsys.readouterr().err
+
+
+def test_the_judge_reserves_the_name_draft(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    for rnd in (1, 2):
+        assert _lint(video, script, cfg, rnd) == 0
+        _run_seats(video, cfg, monkeypatch, rnd)
+    f = _channel_of(video) / "a.md"
+    f.write_text("x")
+    capsys.readouterr()
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg, "--input", f"draft={f}"]) == 2
+    assert "draft" in capsys.readouterr().err
+
+
+def test_draft_and_ledger_file_must_live_inside_the_channel_folder(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    outside = tmp_path / "outside.md"
+    outside.write_text("PROF: Hi.\n")
+    capsys.readouterr()
+    assert _lint(video, outside, cfg) == 2
+    assert "channel folder" in capsys.readouterr().err
+    assert _lint(video, script, cfg, 1, "g2", "--ledger-file", str(outside)) == 2
+    assert "channel folder" in capsys.readouterr().err
+    assert not (video / "room" / "g2" / "round-1" / "meta.json").exists()
+    secret_ish = _channel_of(video) / "videos" / "other" / "room" / "g2" / "round-1" / "story-editor.json"
+    secret_ish.parent.mkdir(parents=True)
+    secret_ish.write_text("PROF: Hi.\n")
+    assert _lint(video, secret_ish, cfg) == 2
+
+
+def test_an_ordinary_round_above_the_limit_is_refused_but_owner_notes_may_exceed(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)  # rounds: 3
+    capsys.readouterr()
+    assert _lint(video, script, cfg, 4) == 2
+    assert "rounds" in capsys.readouterr().err
+    assert not (video / "room" / "g2" / "round-4" / "meta.json").exists()
+    assert _lint(video, script, cfg, 4, "g2", "--owner-notes") == 0
+    assert _lint(video, script, cfg, 3) == 0
+
+
+def test_a_ledger_row_of_any_status_locks_the_round(tmp_path, monkeypatch, capsys):
+    from studio.room.ledger import Ledger
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    db = Ledger()
+    cid = db.reserve(channel="professor-of-us", video=video.name, gate="g2", round=1, seat="x", model="m",
+                     family="f", prompt_sha256="p", daily_cap=99, script_cap=99)
+    db.finish(cid, status="failed", output_sha256="", duration_s=0)
+    capsys.readouterr()
+    assert _lint(video, script, cfg) == 2 and "has been reviewed" in capsys.readouterr().err
+
+
+def test_deleting_a_verdict_file_cannot_buy_a_second_opinion(tmp_path, monkeypatch, capsys):
+    from studio.room.ledger import Ledger
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    _run_seats(video, cfg, monkeypatch, seats=("cold viewer",))
+    (video / "room" / "g2" / "round-1" / "cold-viewer.json").unlink()
+    n = Ledger().count()
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    capsys.readouterr()
+    assert cli.main(["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", cfg]) == 2
+    assert "already" in capsys.readouterr().err and Ledger().count() == n
+
+
+def _two_candidate_rounds(video, script, cfg, monkeypatch):
+    for rnd in (1, 2):
+        if rnd == 2:
+            script.write_text("## [00:00] Hook\nPROF: Better.\nOOG: Ha.\n")
+        assert _lint(video, script, cfg, rnd) == 0
+        _run_seats(video, cfg, monkeypatch, rnd)
+
+
+def test_judge_refuses_a_second_run_in_the_round(tmp_path, monkeypatch, capsys):
+    from studio.room.ledger import Ledger
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    _two_candidate_rounds(video, script, cfg, monkeypatch)
+    _fake(monkeypatch, [{"winner": "A"}, {"winner": "B"}])
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 0
+    n = Ledger().count()
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    capsys.readouterr()
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 2
+    assert "already" in capsys.readouterr().err
+    (video / "room" / "g2" / "round-2" / "judge.json").unlink()  # deleting the file does not help
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 2
+    assert Ledger().count() == n
+
+
+def test_a_failed_judge_exits_1_and_is_unjudged(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    _two_candidate_rounds(video, script, cfg, monkeypatch)
+    monkeypatch.setattr(call.subprocess, "run", lambda cmd, **kw: subprocess.CompletedProcess(
+        cmd, 0, stdout="1\n" if cmd[-1] == "--version" else "junk", stderr=""))
+    capsys.readouterr()
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 1
+    assert "unjudged" in capsys.readouterr().err
+    assert json.loads((video / "room" / "g2" / "round-2" / "judge.json").read_text())["winner"] is None
