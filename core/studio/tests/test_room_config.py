@@ -1,0 +1,88 @@
+"""room.yaml: seats by role, one model each, family rules, a cap derived from the panel."""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+import pytest
+
+from studio.room import config as C
+
+REAL_ROOT = Path(__file__).resolve().parents[3]
+POU = REAL_ROOT / "channels" / "professor-of-us"
+
+BASE = """\
+writer: claude-opus-5-5
+judge: gpt-5.6-sol-high
+rounds: 3
+daily_cap: 80
+adopted: null
+pitch_clip: after_g2
+seats:
+  - {name: cold viewer, role: viewer, model: grok-4.7-high, brief: "shared:viewer"}
+  - {name: story editor, role: story, model: gpt-5.6-sol-high, brief: "shared:story"}
+  - {name: fact reviewer, role: fact, model: gemini-3.7-flash-high, brief: "shared:fact"}
+format: {wpm: 155}
+linters: []
+sources: []
+"""
+
+
+def _cfg(tmp_path, text=BASE):
+    (tmp_path / "room.yaml").write_text(text)
+    return C.load_room(tmp_path / "room.yaml")
+
+
+def test_the_professor_of_us_room_is_valid():
+    cfg = C.load_room(POU / "room.yaml")
+    assert C.validate(cfg) == []
+    assert {s.role for s in cfg.seats} >= {"viewer", "story", "fact"}
+
+
+def test_derived_cap(tmp_path):
+    cfg = _cfg(tmp_path)
+    assert C.derived_cap(cfg) == 3 * (3 + 2) + 3 * 3 + 3 + 2  # 29
+
+
+def test_a_missing_mandatory_role_fails(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("role: fact", "role: craft"))
+    assert any("missing mandatory role" in p for p in C.validate(cfg))
+
+
+def test_a_story_seat_on_the_writer_family_fails(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("role: story, model: gpt-5.6-sol-high", "role: story, model: claude-sonnet-5-5"))
+    assert any("story editor" in p and "writer's family" in p for p in C.validate(cfg))
+
+
+def test_a_judge_on_the_writer_family_fails(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("judge: gpt-5.6-sol-high", "judge: claude-sonnet-5-5"))
+    assert any("judge" in p for p in C.validate(cfg))
+
+
+def test_mandatory_seats_need_two_other_families(tmp_path):
+    text = BASE.replace("grok-4.7-high", "gpt-5.6-sol-high").replace("gemini-3.7-flash-high", "gpt-5.6-sol-high")
+    assert any("two or more families" in p for p in C.validate(_cfg(tmp_path, text)))
+
+
+def test_an_unknown_model_and_a_missing_brief_fail(tmp_path):
+    text = BASE.replace("grok-4.7-high", "mystery-1").replace('"shared:fact"', "room/seats/nope.md")
+    problems = C.validate(_cfg(tmp_path, text))
+    assert any("mystery-1" in p for p in problems) and any("nope.md" in p for p in problems)
+
+
+def test_a_daily_cap_below_one_script_fails(tmp_path):
+    assert any("daily cap" in p for p in C.validate(_cfg(tmp_path, BASE.replace("daily_cap: 80", "daily_cap: 10"))))
+
+
+def test_pre_g2_local_needs_only_local_voices(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("pitch_clip: after_g2", "pitch_clip: pre_g2_local"))
+    assert any("voices.yaml" in p for p in C.validate(cfg))
+    (tmp_path / "voices.yaml").write_text("voices:\n  narrator: {tool: qwen3}\n  citizen: {tool: chatterbox}\n")
+    assert C.validate(cfg) == []
+    (tmp_path / "voices.yaml").write_text("voices:\n  narrator: {tool: higgsfield elevenlabs_v4}\n")
+    assert any("not a free local engine" in p for p in C.validate(cfg))
+
+
+def test_a_missing_key_is_a_config_error(tmp_path):
+    with pytest.raises(C.RoomConfigError, match="seats"):
+        _cfg(tmp_path, "writer: claude-opus-5-5\njudge: gpt-5.6-sol-high\nrounds: 3\n")

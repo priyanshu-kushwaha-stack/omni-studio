@@ -1,0 +1,142 @@
+"""A channel's room.yaml: its seats (role, model, brief), caps, format parameters, linters and sources.
+
+Validation enforces the spine's invariants: the three mandatory roles, one model per seat from the registry,
+viewer/story/fact/neutrality seats and the judge never on the writer's family, mandatory seats spread over two or
+more other families, a daily cap that fits one script, and pre_g2_local only for channels whose voices are all
+free local engines.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from datetime import date
+from pathlib import Path
+from typing import Any, Optional
+
+import yaml
+
+from studio.room.models import UnknownModel, family_of, load_registry
+from studio.room.verdict import LOCKED_ROLES, MANDATORY, ROLES
+
+SEATS_DIR = Path(__file__).resolve().parent / "seats"
+PITCH_CLIPS = ("after_g2", "pre_g2_local")
+LOCAL_TTS = ("qwen3", "chatterbox", "kokoro")
+REQUIRED = ("writer", "judge", "rounds", "seats")
+
+
+class RoomConfigError(ValueError):
+    pass
+
+
+@dataclass
+class SeatConfig:
+    name: str
+    role: str
+    model: str
+    brief: Path
+
+
+@dataclass
+class RoomConfig:
+    writer: str
+    judge: str
+    rounds: int
+    daily_cap: int
+    seats: list[SeatConfig]
+    format: dict[str, Any] = field(default_factory=dict)
+    linters: list[str] = field(default_factory=list)
+    adopted: Optional[date] = None
+    pitch_clip: str = "after_g2"
+    sources: list[str] = field(default_factory=list)
+    path: Optional[Path] = None
+    channel_dir: Optional[Path] = None
+
+
+def _brief(value: str, channel_dir: Path) -> Path:
+    if value.startswith("shared:"):
+        return SEATS_DIR / f"{value[len('shared:'):]}.md"
+    return channel_dir / value
+
+
+def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
+    path = Path(path)
+    channel_dir = Path(channel_dir) if channel_dir else path.parent
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    missing = [k for k in REQUIRED if k not in data]
+    if missing:
+        raise RoomConfigError(f"{path}: missing {missing}")
+    try:
+        seats = [SeatConfig(str(s["name"]), str(s["role"]), str(s["model"]), _brief(str(s["brief"]), channel_dir))
+                 for s in data["seats"]]
+    except (KeyError, TypeError) as exc:
+        raise RoomConfigError(f"{path}: every seat needs name, role, model and brief ({exc})") from exc
+    return RoomConfig(writer=str(data["writer"]), judge=str(data["judge"]), rounds=int(data["rounds"]),
+                      daily_cap=int(data.get("daily_cap", 80)), seats=seats, format=data.get("format") or {},
+                      linters=list(data.get("linters") or []), adopted=data.get("adopted"),
+                      pitch_clip=str(data.get("pitch_clip", "after_g2")), sources=list(data.get("sources") or []),
+                      path=path, channel_dir=channel_dir)
+
+
+def derived_cap(cfg: RoomConfig) -> int:
+    seats = len(cfg.seats)
+    mandatory = sum(1 for s in cfg.seats if s.role in MANDATORY)
+    return cfg.rounds * (seats + 2) + cfg.rounds * seats + mandatory + 2
+
+
+def _voices_problems(channel_dir: Path) -> list[str]:
+    voices_file = channel_dir / "voices.yaml"
+    if not voices_file.is_file():
+        return ["pitch_clip pre_g2_local needs a voices.yaml"]
+    voices = (yaml.safe_load(voices_file.read_text(encoding="utf-8")) or {}).get("voices") or {}
+    if not voices:
+        return ["pitch_clip pre_g2_local needs a non-empty voices.yaml"]
+    return [f"pitch_clip pre_g2_local: voice {name!r} uses {v.get('tool')!r}, not a free local engine {LOCAL_TTS}"
+            for name, v in voices.items() if not isinstance(v, dict) or v.get("tool") not in LOCAL_TTS]
+
+
+def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
+    reg = load_registry() if registry is None else registry
+    problems: list[str] = []
+
+    def fam(model: str, what: str) -> Optional[str]:
+        try:
+            return family_of(model, reg)
+        except UnknownModel as exc:
+            problems.append(f"{what}: {exc}")
+            return None
+
+    writer = fam(cfg.writer, "writer")
+    judge = fam(cfg.judge, "judge")
+    if writer and judge == writer:
+        problems.append(f"judge {cfg.judge} is the writer's family ({writer})")
+    if not 1 <= cfg.rounds <= 5:
+        problems.append(f"rounds must be 1 to 5, not {cfg.rounds}")
+    seen: set[str] = set()
+    mandatory_families: set[str] = set()
+    for s in cfg.seats:
+        if s.name in seen:
+            problems.append(f"seat {s.name!r} appears twice")
+        seen.add(s.name)
+        if s.role not in ROLES:
+            problems.append(f"seat {s.name!r}: unknown role {s.role!r} (want one of {ROLES})")
+        f = fam(s.model, f"seat {s.name!r}")
+        if f and writer and s.role in LOCKED_ROLES and f == writer:
+            problems.append(f"seat {s.name!r} ({s.role}) is on the writer's family ({writer})")
+        if f and s.role in MANDATORY and f != writer:
+            mandatory_families.add(f)
+        if not s.brief.is_file():
+            problems.append(f"seat {s.name!r}: brief {s.brief} does not exist")
+    roles = {s.role for s in cfg.seats}
+    for role in MANDATORY:
+        if role not in roles:
+            problems.append(f"missing mandatory role {role!r}")
+    if len(mandatory_families) < 2:
+        problems.append("the viewer, story and fact seats need two or more families other than the writer's")
+    if cfg.pitch_clip not in PITCH_CLIPS:
+        problems.append(f"pitch_clip must be one of {PITCH_CLIPS}")
+    elif cfg.pitch_clip == "pre_g2_local" and cfg.channel_dir:
+        problems += _voices_problems(cfg.channel_dir)
+    cap = derived_cap(cfg)
+    if cfg.daily_cap < cap:
+        problems.append(f"daily cap {cfg.daily_cap} is below one script's derived cap {cap}")
+    return problems

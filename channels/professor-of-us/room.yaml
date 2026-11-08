@@ -1,0 +1,19 @@
+# The quality room for Professor of Us (docs/superpowers/specs/2026-11-08-quality-spine-design.md).
+# adopted stays null until A2 wires the room check; then it is the first video's date.
+writer: claude-opus-5-5
+judge: gpt-5.6-sol-high
+rounds: 3
+daily_cap: 80
+adopted: null
+pitch_clip: after_g2
+seats:
+  - {name: cold viewer, role: viewer, model: grok-4.7-high, brief: "shared:viewer"}
+  - {name: story editor, role: story, model: gpt-5.6-sol-high, brief: "shared:story"}
+  - {name: fact reviewer, role: fact, model: gemini-3.7-flash-high, brief: "shared:fact"}
+format:
+  wpm: 155
+  word_budget: [700, 900]          # style.md: 780-850 words for the 5-minute format, with slack
+  cadence: {marker: "> ASK:", max_gap_s: 30}   # core/studio/rules/viewer-questions.md
+linters:
+  - "{python} core/engines/pou/scripts/script_lint.py {script} --target-minutes 5"
+sources: [youtube_outliers, wikipedia_pageviews]
