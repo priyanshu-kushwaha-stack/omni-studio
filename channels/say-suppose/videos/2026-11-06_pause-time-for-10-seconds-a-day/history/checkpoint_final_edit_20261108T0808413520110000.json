@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-08T08:08:41.352011+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "Watch renders/edit-v5.mp4 (5:16) with sound. Applied the G5 notes: light music through the whole film, scene by scene, 26 dB under Arthur, two short silences; the film now plays the cleaned narration track; quieter flips and pops. qc final_edit passes.",
+    "media": "renders/edit-v5.mp4",
+    "preview": "renders/edit-v5-preview.mp4",
+    "loudness_lufs": -14.0,
+    "true_peak_dbtp": -1.4
+  }
+}

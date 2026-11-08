@@ -17,6 +17,8 @@ test:
 	cd $(OPENMONTAGE) && $(PYTHON) -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles tests/test_network_guard.py -q -p no:cacheprovider -p studio.pytest_upstream $(DESELECT)
 	cd $(ROOT) && $(PYTHON) -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib
 	cd $(ROOT) && $(PYTHON) -m pytest core/engines/pou/tests -q -p no:cacheprovider
+	@test -d $(ROOT)/core/engines/whatif/node_modules || { echo "core/engines/whatif: run 'pnpm install --frozen-lockfile' there first" >&2; exit 1; }
+	cd $(ROOT)/core/engines/whatif && npx vitest run && npx tsc --noEmit
 
 # The playbook links in core/openmontage/styles/custom/ are git-ignored; a fresh clone needs this once.
 links:

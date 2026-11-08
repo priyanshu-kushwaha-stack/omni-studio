@@ -1,0 +1,29 @@
+The cold open, the samosa, the countdown, and the short punches already sound like a person on camera. Most of the script still reads as careful written Hindi with English words dropped in: every clause finished, participles stacked, the landing buried in the sentence. That is the biggest problem. Tell it out loud — a fragment, the key word again, a question answered in the same breath — and let the line that carries the idea be one finished thought. The quiet, grim, and grinning lines are also packed past their room, so those beats will get rushed.
+
+4 | [warm] ये ten seconds... अब आपके हाथ में हैं। दिन में एक बार। सब रुक जाता है... सिवाय आपके। | The landing needs that pause, or it runs as one written sentence.
+7 | [playful, explaining] हाँ, थोड़ा cheat करते हैं। हवा आपके लिए चलती है — आप देख सकते हो। जो भी छुओगे, साथ चलेगा... छोड़ा? वहीं रुक गया। | The rules were one packed paragraph; the question gives the pause room.
+10 | [casual] Phone गिरा। एक meter गिरने में करीब zero point four five seconds। Normally? बस देखते रह जाते। | Over 6.5s; करीब keeps the "about".
+12 | [relaxed] आराम से जाते हो। कोई जल्दी नहीं। पैदल, ten seconds में करीब दस से चौदह meter। | "Normal speed" isn't a walking pace, and the line is too full for relaxed.
+16 | [tempted] आख़िरी समोसा। Colleague का हाथ already पहुँच रहा है। जाने दोगे? | समोसा is Hindi; Latin script will get an English accent.
+17 | [grinning] बिल्कुल नहीं। आप संत थोड़ी हो... एक इंसान, जिसके पास ten seconds हैं। | About 5 syllables a second; the second sentence was essay Hindi.
+18 | [laughing] मम्मी की चप्पल, हवा में, सीधा सिर पे? एक step side में। आज तक समझ नहीं आई... चूकी कैसे। | Too long once the joke's pauses land.
+19 | [leaning in] कभी घड़ी देखी? Seconds वाली सुई... पल भर अटकी लगी? | Too long; it should feel like a glance.
+21 | [wonder] आपका दिमाग़ पूरी ज़िंदगी time edit करता आया। अब remote आपके हाथ में है। | Too long for wonder; the remote line stays whole.
+27 | [grim] दोनों बेकार। Time ही नहीं है। | Grim was at a run; neither option works, and there is no time.
+34 | [quiet, bittersweet] बच्चे की माँ भागती आती है, काँप रही। Driver को thank you। आपको thank you कोई नहीं... किसी को पता ही नहीं। | A quiet line was a stack of participles, too fast to sit.
+37 | [serious] हर pause में आपकी उम्र बढ़ती रहती है। रोज़ के ten seconds... जो कोई और नहीं जीता। | बूढ़ी होती है means "turns into an old woman"; the fact is you keep ageing.
+38 | [heavy] अब पता है... ten seconds क्या कर सकते हैं। नज़र हटती ही नहीं। | Too full for heavy; the idiom already says you can't look away.
+42 | [quiet] वो ठीक हैं। थोड़ी चोट। आप... ठीक नहीं हो। | "Bruised" is a fragment; the full sentence ate the pause on आप.
+43 | [low, sleepless] उस रात आप सो नहीं पाते। हर second का हिसाब... जो कभी waste किया। | हर उस is written; the maths needs air.
+46 | [hushed, warm] शहर साँस रोकता है। Ten seconds, सिर्फ़ आपके लिए। | A 4s hush was at about 5 syllables a second.
+47 | [hushed, uneasy] सिवाय... सामने वाली building में पर्दा हिलता है। एक खिड़की, जो freeze होनी चाहिए। | Too long for hushed; this is how the line gets said.
+50 | [wise] Ten seconds लालच के लिए छोटे पड़ते हैं। Accident के लिए? एकदम सही size। | रोकने added "stopping"; the line is size — greed, then an accident.
+51 | [warm] आप वजह हो। छोटे-मोटे हादसे होते ही नहीं। | Too long for 3.6s; the point, then the result.
+52 | [tender] मम्मी बोलती हैं — stairs के नीचे मत खड़े रहो। | Too long for tender; direct speech is the landing.
+55 | [older, wise] चालीस साल बाद सड़क पढ़ते हो — जैसे weather map। | Over the room; same picture, spoken order.
+56 | [calm] Accident पहले से दिख जाता है। ज़्यादातर दिन pause की ज़रूरत ही नहीं। | Too long for calm; both facts stay.
+58 | [gentle] साथ बड़े हुए सब से दो दिन बड़े हो। पता भी नहीं चलता। | The relative clause was prose, and it overruns 5.2s.
+59 | [heavy] बड़ी कीमत है देखते रहना। ज़िंदगी ten seconds... अजनबियों पे। आपका नाम तक नहीं जानेंगे। | The heavy line was one written sentence, too long to sit in.
+62 | [whispers] वो आपको ही देख रहा है। | A whisper has 2.1s; ही does "right at you".
+
+Too long for the room: 10, 12, 17, 18, 19, 21, 27, 34, 38, 46, 47, 51, 52, 55, 56, 58, 59, 62. Tightest: 46, 17, 58, 62, 21, 56.

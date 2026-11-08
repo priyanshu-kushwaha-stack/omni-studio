@@ -1,4 +1,6 @@
-"""Read-only YouTube Data API calls for `omni upload`: whose channel a token is, and a video's status after upload.
+"""YouTube Data API calls for `omni upload`: whose channel a token is, a video's status after upload, its thumbnail
+(thumbnails.set, 50 quota units) and its subtitle tracks (captions.insert, 400 units; the `youtubepartner` scope
+youtubeuploader asks for allows it). Those two are the only writes.
 
 Uses the same OAuth client and token youtubeuploader uses (its scopes include `youtube`, which allows
 channels.list and videos.list). The access token is refreshed in memory and never written or printed; the token
@@ -14,6 +16,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 API = "https://www.googleapis.com/youtube/v3"
+UPLOAD_API = "https://www.googleapis.com/upload/youtube/v3"
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 
 
@@ -58,6 +61,30 @@ class YouTubeAPI:
                 "selfDeclaredMadeForKids": status.get("selfDeclaredMadeForKids"),
                 "madeForKids": status.get("madeForKids"),
                 "containsSyntheticMedia": status.get("containsSyntheticMedia")}
+
+    def set_thumbnail(self, video_id: str, image: Path) -> dict[str, Any]:
+        """Upload a JPG or PNG as the video's custom thumbnail; returns the sizes YouTube now serves."""
+        mime = "image/png" if Path(image).suffix.lower() == ".png" else "image/jpeg"
+        url = f"{UPLOAD_API}/thumbnails/set?{urllib.parse.urlencode({'videoId': video_id, 'uploadType': 'media'})}"
+        request = urllib.request.Request(url, data=Path(image).read_bytes(), method="POST", headers={
+            "Authorization": f"Bearer {self._access_token()}", "Content-Type": mime})
+        with self._open(request, timeout=120) as resp:
+            items = json.loads(resp.read()).get("items", [])
+        return items[0] if items else {}
+
+    def insert_caption(self, video_id: str, language: str, name: str, track: Path) -> dict[str, Any]:
+        """Upload an SRT or VTT file as a published subtitle track in `language`; returns the caption resource."""
+        boundary = "omni-studio-caption"
+        meta = json.dumps({"snippet": {"videoId": video_id, "language": language, "name": name, "isDraft": False}})
+        body = (f"--{boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{meta}\r\n"
+                f"--{boundary}\r\nContent-Type: application/octet-stream\r\n\r\n").encode() + \
+            Path(track).read_bytes() + f"\r\n--{boundary}--\r\n".encode()
+        url = f"{UPLOAD_API}/captions?{urllib.parse.urlencode({'part': 'snippet', 'uploadType': 'multipart'})}"
+        request = urllib.request.Request(url, data=body, method="POST", headers={
+            "Authorization": f"Bearer {self._access_token()}",
+            "Content-Type": f"multipart/related; boundary={boundary}"})
+        with self._open(request, timeout=120) as resp:
+            return json.loads(resp.read())
 
 
 def verify_readback(readback: dict[str, Any], requested: dict[str, Any], channel_id: Optional[str]) -> list[str]:

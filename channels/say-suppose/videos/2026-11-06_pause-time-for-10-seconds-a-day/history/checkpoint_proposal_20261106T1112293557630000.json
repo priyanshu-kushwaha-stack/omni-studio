@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-06T11:12:29.355763+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If You Could Pause Time for 10 Seconds a Day?",
+          "hook": "You wake up and discover you can pause time. Ten seconds. Once a day.",
+          "narrative_structure": "story",
+          "visual_approach": "Frozen grey street, you mid-sprint in colour, counter at 7",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_duration_seconds": 420,
+          "why_this_works": "The owner's question; the stakes are in the frame"
+        },
+        {
+          "id": "B",
+          "title": "What Can You Really Do in 10 Frozen Seconds?",
+          "hook": "Your coffee is falling. You have ten seconds nobody else gets.",
+          "narrative_structure": "story",
+          "visual_approach": "Grey kitchen, you catching the mug; tag DAY 1",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_duration_seconds": 420,
+          "why_this_works": "Leads with the practical question the facts answer"
+        },
+        {
+          "id": "C",
+          "title": "What If Time Stopped for 10 Seconds, but Not for You?",
+          "hook": "Everything stops. Then someone else moves.",
+          "narrative_structure": "story",
+          "visual_approach": "Frozen crowd, one crimson stranger walking; tag WHO MOVED?",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_duration_seconds": 420,
+          "why_this_works": "Strongest mystery, but shows the ending"
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "Agent's recommendation; the owner picks at G1. The owner's own question, with the counter as the thumbnail's only text."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/say-suppose-first-video-40c64e/channels/say-suppose/videos/2026-11-06_pause-time-for-10-seconds-a-day/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging: three title and thumbnail pairs, the premise, the runtime decision"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "research.md, claims.md and script.md; omni qc story_script (claims) must pass"
+          },
+          {
+            "stage": "narration",
+            "tools": [],
+            "approach": "Arthur, one paid take per line, quoted and approved first; needs the engine"
+          },
+          {
+            "stage": "rough_cut",
+            "tools": [],
+            "approach": "Code-drawn scenes timed to cue words; needs the engine"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Owner notes applied; loudness, clicks and similarity checks"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 0,
+        "budget_verdict": "no_budget_set",
+        "line_items": [
+          {
+            "tool": "higgsfield text2speech_v2",
+            "operation": "narration (Arthur), one take per line",
+            "estimated_usd": 0,
+            "notes": "Not estimated. Paid, in Higgsfield credits; quoted and approved at G3. The channel budget is 0, so no paid call can run until the owner sets one."
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    },
+    "decision_log": {
+      "version": "1.0",
+      "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+      "decisions": [
+        {
+          "decision_id": "d-001",
+          "stage": "proposal",
+          "category": "render_runtime_selection",
+          "subject": "Composition runtime",
+          "options_considered": [
+            {
+              "option_id": "external",
+              "label": "The channel's paper-cut engine (the pause-time rig)",
+              "score": 0.9,
+              "reason": "The look the owner approved on 2026-11-06; figures and props timed to cue words"
+            },
+            {
+              "option_id": "remotion",
+              "label": "Remotion through video_compose",
+              "score": 0.4,
+              "reason": "Same underlying library, but its stock scene types cannot draw rigged figures",
+              "rejected_because": "Would mean rebuilding the rig inside remotion-composer"
+            },
+            {
+              "option_id": "hyperframes",
+              "label": "HyperFrames through video_compose",
+              "score": 0.3,
+              "reason": "HTML and GSAP scenes; no rig, no cue timeline",
+              "rejected_because": "Would mean rewriting the approved look from scratch"
+            },
+            {
+              "option_id": "ffmpeg",
+              "label": "FFmpeg only",
+              "score": 0.0,
+              "reason": "Cuts and stills only",
+              "rejected_because": "Cannot animate figures"
+            }
+          ],
+          "selected": "external",
+          "reason": "Proposed to the owner at G1; the engine is not in this repo yet and must be imported before G3"
+        }
+      ]
+    }
+  },
+  "style_playbook": "say-suppose"
+}

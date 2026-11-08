@@ -1,0 +1,49 @@
+1. Verdict
+7.5 out of 10. Long stretches already sound like a person talking: the fragments, the samosa, the chappal, the चुटकी, and bus stays feminine. The spell breaks on the slow lines. They are still packed at a chatty length, so the hush, the grim beat, and the heavy landings will come out rushed. A few written words are still in there (चौकस, चीरती हुई, hallway, यानी). chronostasis and what-ifs are easy for the voice to mash. A few meanings have slid: selfish, sitting on the step, "some days", one video, and the bigger cost.
+
+2. Lines to change
+7 | [playful, explaining] अब हाँ, थोड़ा cheat तो करेंगे। हवा आपके लिए चलेगी, सब दिखेगा। जिसे छुओगे, वो साथ चलेगा... हाथ छोड़ा, तो freeze। | About 44 syllables in 9.8s, and the pauses still have to fit. Same rules, with air.
+9 | [dry grin] कुछ selfish। Obviously। | अपने लिए softens it. The joke is selfish, and that is the word people use.
+12 | [relaxed] आप आराम से जाते हो, कोई जल्दी नहीं। पैदल, ten seconds में दस से चौदह meter निकल जाते हैं। | भी adds an "even", as if walking were a surprise. The English is just an ordinary pace.
+14 | [sly] Corridor में boss ने देख लिया। रुक के बात करोगे... या ग़ायब? | Hallway is the English word left in place. People say corridor.
+18 | [laughing] मम्मी की चप्पल हवा में, सीधे सिर पे? थोड़ा side हो गए। मम्मी आज तक हैरान... निशाना चूका कैसे? | सीधे सिर पे is how it's said. The old line is about 36 syllables in 7.8s, so the laugh has no room.
+20 | [knowing] ये सच है। Scientists इसे chrono-stasis कहते हैं। | One lump, chronostasis, will get mashed. The hyphen gives the voice two beats, and the shorter line gives that word room.
+21 | [wonder] आपका दिमाग़ ज़िंदगी भर time edit करता रहा। अब remote हाथ में है। | करता आया है is narration-Hindi, and the line is about 28 syllables in 5.9s. करता रहा is how people say it.
+27 | [grim] दोनों बेकार। Time ही नहीं है। | The old line is about 4.4 a second. Grim needs weight. दोनों answers both चिल्लाओगे and भागोगे.
+33 | [release] Bus ख़ाली crossing फाड़ के निकल जाती है। Ball नहीं बची... बच्चा बच गया। | चीरती हुई is book Hindi. People say फाड़ के निकलना. The old line is about 27 syllables in 5.5s.
+34 | [quiet, bittersweet] बच्चे की माँ काँपती हुई भाग आती है। Driver को thank you। आपको thank you नहीं... पता ही नहीं किसी को। | Right picture, about 40 syllables. A quiet read needs closer to thirty. Both thank-yous stay, so आपको कोई नहीं cannot be heard as "you have no one".
+38 | [heavy] अब पता है, ten seconds क्या कर सकते हैं। नज़र हटती ही नहीं। | चौकस is a newspaper word. नज़र हटती ही नहीं is "you can't stop watching". The old line is about 5 a second.
+43 | [low, sleepless] उस रात नींद नहीं आती। हर waste second का हिसाब लगाते हो। | The maths line is right and too full for a sleepless night. This still does the count.
+44 | [resolved, sad] फिर खुद पे... शायद ही खर्च करते हो। | About 14 syllables plus a pause in 3.2s. खुद पे खर्च is how people say "spend on yourself", and शायद ही keeps "almost never".
+45 | [soft] कुछ-कुछ दिन कुछ होता ही नहीं। तो midnight पे, वो seconds आप बस... यूँ ही ख़र्च कर देते हो। | कुछ दिन means "for a few days". कुछ-कुछ दिन is "some days".
+46 | [hushed, warm] Ten seconds... शहर साँस रोक लेता है। आपके लिए। | The image is right and too long for a hush. पूरा and बस are the cut. Still a little quick in a 4.0s room.
+47 | [hushed, uneasy] पर सामने वाली खिड़की में पर्दा हिलता है। जो freeze होनी चाहिए थी। | Same picture, about 30 syllables. सामने वाली खिड़की keeps the window across the street.
+50 | [wise] लालच के लिए ten seconds बहुत कम हैं। एक accident के लिए? बस इतने काफ़ी हैं। | रोकने adds "stopping". The English is the size of the ten seconds: too little for greed, enough for an accident.
+51 | [warm] आपकी वजह से छोटे हादसे टलते हैं। | About 18 syllables in 3.6s. टलते हैं is spoken, and आपकी वजह से keeps "you become the reason".
+52 | [tender] मम्मी कहती हैं, नीचे वाली सीढ़ी पे मत रहो। | के पास is "near the stairs". She is asking you to stop waiting on the bottom step. This also fits a tender pace.
+54 | [soft, firm] आप फिर भी... सबसे नीचे वाली सीढ़ी पे ही रहते हो। | बैठे sits you down. The English is only that you stay, and it answers her मत रहो.
+58 | [gentle] साथ पले-बढ़े लोगों से आप दो दिन बड़े हो। पता भी नहीं। | यानी is a written connector, and the old line is about 4.4 a second. पता भी नहीं still says you'd barely notice.
+59 | [heavy] बड़ी क़ीमत है नज़र। ज़िंदगी भर ten-ten seconds ख़र्च, अजनबियों पे। वो आपका नाम नहीं जानेंगे। | असली means the real cost. The English says the bigger one, beside the two days. About 38 syllables cannot be said heavily in 8.3s. ten-ten keeps "at a time".
+62 | [whispers] आपको ही देख रहा है। | The old line is about 10 syllables plus a pause in 2.1s. This is the shortest complete line, and ही keeps "right at you".
+64 | [warm, inviting] तो बताओ यार — आप अपने ten seconds कहाँ ख़र्च करोगे? नीचे comment करो। जो best what ifs होंगे, उन पे videos बनेंगी। | video बनेगी is one video. The English says those what-ifs become videos. what-ifs as one token gets mashed. what ifs is two words.
+
+3. Lines still too long for their room
+3 — softly, wonder: about 22 syllables in 5.1s, about 4.3 a second. Locked, so it stays brisk.
+7 — about 44 syllables in 9.8s, before the pauses.
+18 — about 36 in 7.8s.
+20 — about 18 in 4.0s, with chronostasis to say clearly.
+21 — about 28 in 5.9s.
+27 — about 12 in 2.7s.
+33 — about 27 in 5.5s.
+34 — about 40 in 9.4s.
+38 — about 27 in 5.4s.
+43 — about 23 in 5.4s.
+44 — about 14 in 3.2s, plus the pause.
+46 — about 18 in 4.0s. The shorter line is still about 3.8 a second.
+47 — about 30 in 6.6s.
+51 — about 18 in 3.6s.
+52 — about 17 in 3.8s.
+58 — about 23 in 5.2s.
+59 — about 38 in 8.3s.
+62 — about 10 in 2.1s, plus the pause. आपको ही देख रहा है is still about 3.8 a second in a whisper slot.
+5 and 25 sit on the 4.5 ceiling. They fit only if you do not add pauses.

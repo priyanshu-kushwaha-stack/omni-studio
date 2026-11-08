@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-08T03:32:13.691799+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "Watch renders/edit-v1.mp4 (5:16) with sound: the score (channel theme under the title card and end card, five themed local cues), ducked under the voice; no on-screen source tags; -14 LUFS. qc final_edit passes (loudness, clicks, similarity).",
+    "media": "renders/edit-v1.mp4",
+    "preview": "renders/edit-v1-preview.mp4",
+    "loudness_lufs": -14.0,
+    "true_peak_dbtp": -1.5
+  }
+}

@@ -1,0 +1,49 @@
+1. Verdict
+8/10. The pacing, fragments, and chai-table warmth are mostly working now, especially in the opening setup and the office/samosa beats. What still breaks the spell are a few literal English calques ("इंसान हो यार, ten seconds वाले", "वो हर pause आपकी body ने जिया है", "साथ पले-बढ़े लोगों से"), unnatural Hinglish collocations ("Midnight पे", "हर midnight", "ten-ten seconds"), a couple of bookish/filmy phrases ("चीरती हुई", "चौकस रहती है"), and a few TTS pronunciation traps ("जीता", "छह", "what-ifs").
+
+2. Lines to change
+1 | [curious] पर day one? आप उठते हो... और पता चलता है, आप time pause कर सकते हो। | "आपके इशारे पे रुक जाता है" sounds filmy and drops the "discover" beat from the English.
+2 | [amused] Alarm बजते-बजते freeze। और cat? Bed से कूदी... और हवा में अटक गई। | "बीच में freeze" is vague; "बजते-बजते" captures "mid-ring" naturally.
+6 | [teasing] और use नहीं किए? आधी रात को... ग़ायब। | Nobody says "Midnight पे" in natural Hinglish; "आधी रात को" (or "रात बारह बजे") is how people actually talk.
+7 | [playful, explaining] अब हाँ, थोड़ा cheat तो करेंगे। आपके लिए हवा चलेगी, आपको सब दिखेगा। और जो भी छुओगे, वो साथ हिलेगा... हाथ छोड़ा, तो वहीं freeze। | "जिसे छुओगे, वो साथ चलेगा" sounds like a person walking with you rather than "anything you touch moves with you".
+10 | [casual] Phone एक meter गिरता है... करीब zero point four five seconds में। वैसे तो, आप बस देखते रह जाते हो। | Needs "वैसे तो" ("Usually") to set up the contrast in line 11 ("पर आज नहीं").
+12 | [relaxed] आप आराम से जाते हो, कोई जल्दी नहीं। पैदल भी, ten seconds में दस से चौदह meter आराम से cover हो जाते हैं। | "meter निकल जाते हैं" uses a time-passing idiom for distance; "cover हो जाते हैं" is natural Hinglish (and check TTS on "चौदह").
+14 | [sly] Corridor में boss ने देख लिया। रुक के बात करोगे... या ग़ायब? | Indians say "corridor", almost never American "hallway".
+17 | [grinning] बिल्कुल नहीं। संत थोड़ी हो आप... इंसान हो यार, और हाथ में ten seconds हैं। | "इंसान हो यार, ten seconds वाले" is a stiff calque of "a person with ten seconds" (sounds like "दस रुपये वाले").
+18 | [laughing] मम्मी की चप्पल हवा में, सीधा सिर की तरफ़? बस थोड़ा side हट गए। मम्मी आज तक हैरान हैं... निशाना चूका कैसे? | Trimmed 3 syllables so the 36-syllable line doesn't rush the laugh in 7.8 s.
+19 | [leaning in] कभी घड़ी देखी है, और लगा... second वाली सुई एक पल के लिए अटक गई? | "एक पल को" is literary/poetic; in conversation people say "एक पल के लिए" and "second वाली सुई".
+20 | [knowing] ये सच में होता है। Scientists इसे chronostasis कहते हैं। | Line text is fine, but verify AI voice pronunciation of "chronostasis" (may need phonetic respelling in TTS).
+22 | [lower, the story turns] फिर आता है... day twelve। आप पैदल घर जा रहे हो। | English says "walking home" ("पैदल"), which matters because you're on foot at the crossing.
+31 | [breathless, faster] छे। पाँच। चार। | AI voices frequently mispronounce Devanagari "छह" as "chahah"; "छे" forces clean pronunciation (or use English "Nine. Eight. Seven..." across 30–32 to match "ten seconds").
+33 | [release] ख़ाली crossing से bus धड़धड़ाती निकल जाती है। Ball नहीं बची... पर बच्चा बच गया। | "ख़ाली crossing को चीरती हुई" is bookish/dubbed melodrama and makes the line too long for 5.5 s.
+34 | [quiet, bittersweet] बच्चे की माँ काँपती हुई भाग के आती है। Driver को thank you बोलती है। पर आपको कोई thank you नहीं बोलता... किसी को पता ही नहीं है। | "पर आपको? कोई thank you नहीं" feels truncated without "बोलता".
+35 | [warm] Ten seconds में एक जान बचा ली। लगता है ना, बिल्कुल free है? | "लगा ना, बिल्कुल free था?" clashes in tense with line 36 ("पर free नहीं है") and in gender with feminine "जान".
+37 | [serious] हर pause में आपकी उम्र तो बढ़ ही रही है। रोज़ के वो ten seconds... जो कोई और नहीं जी रहा। | "जो कोई और नहीं जीता" sounds like "which nobody else won" (जीतना) to an Indian ear; "जी रहा" is unambiguous and natural.
+38 | [heavy] अब पता है, ten seconds क्या कर सकते हैं। तो आप... देखना बंद ही नहीं कर पाते। | "चौकस रहती है" is police-circular Hindi for "you can't stop watching", and 26 syllables is too fast for a heavy 5.4 s line.
+39 | [light, tempted] एक सुबह आप late हो, bus का door बंद हो रहा है। Bus पकड़ोगे, या seconds बचाओगे? | After "door बंद हो रहा है", bare "पकड़ोगे" sounds like catching the door rather than the bus.
+43 | [low, sleepless] उस रात नींद नहीं आती। बस हिसाब लगाते हो... हर उस second का, जो बेकार गया। | Trimmed slightly so `[low, sleepless]` doesn't rush 23 syllables and 3 pauses in 5.4 s.
+44 | [resolved, sad] फिर खुद पे... शायद ही कभी ख़र्च करते हो। | Transitive "use करते हो" felt dangling without an object, and "ख़र्च करते हो" matches "spend" while fitting 3.2 s at a sad pace.
+45 | [soft] कई दिन तो कुछ होता ही नहीं। तो आधी रात को, वो seconds आप बस... यूँ ही ख़र्च कर देते हो। | Avoids repeating "कुछ दिन कुछ" and replaces unnatural "midnight पे" with "आधी रात को".
+46 | [hushed, warm] Ten seconds... शहर साँस रोके खड़ा है। बस आपके लिए। | "साँस रोके खड़ा है" captures "holding its breath" better than "साँस रोक लेता है" and fits a hushed 4.0 s slot.
+47 | [hushed, uneasy] पर तभी... सड़क के उस पार, एक पर्दा हिलता है। उस खिड़की पे, जहाँ सब freeze होना चाहिए था। | "उस खिड़की में, जो freeze होनी चाहिए थी" sounds like the windowpane itself moves; "जहाँ सब freeze होना चाहिए था" is natural and trims 3 syllables for the hushed pace.
+48 | [uneasy] पर्दा फिर कभी नहीं हिलता। पर रोज़ आधी रात को... आप check करते हो। | Nobody says "हर midnight" in spoken Hinglish; "रोज़ आधी रात को" (or "हर रात बारह बजे") is natural.
+52 | [tender] मम्मी कहती हैं, सीढ़ियों पे मत बैठे रहा करो। | "मत खड़े रहा करो" (standing) contradicts line 54 where you stay sitting ("बैठे रहते हो") on the bottom step, and trims 2 syllables for 3.8 s.
+55 | [older, wise] चालीस साल बाद... आप सड़क को weather map सा पढ़ लेते हो। | Dropping "read" ("पढ़ लेते हो") turned "you read a street like a weather map" into "सड़क आपके लिए weather map है", which doesn't make sense in Hindi.
+57 | [reflective] वो हर एक pause आपकी body पे तो गुज़रा है। पचास साल में सब जोड़ो ना... तो करीब दो दिन बनते हैं। | "वो हर pause आपकी body ने जिया है" is a literal translation of "Your body lives every one of those pauses"; in Hindi time passes over the body ("body पे तो गुज़रा है").
+58 | [gentle] यानी जिनके साथ बड़े हुए, उनसे बस दो दिन बड़े हो। पता भी नहीं चलता। | "साथ पले-बढ़े लोगों से" is written participial Hindi; spoken Hindi uses a relative clause ("जिनके साथ बड़े हुए").
+59 | [heavy] असली क़ीमत है... हर वक़्त नज़र रखना। दस-दस second में पूरी ज़िंदगी ख़र्च कर दी... उन अजनबियों पे, जो आपका नाम तक नहीं जानेंगे। | Nobody says reduplicated English "ten-ten seconds" in Hinglish (and TTS reads it as "ten ten"); the natural idiom is "दस-दस second".
+62 | [whispers] और वो... आपको देख रहा है। | Trims 1 syllable so the whisper + ellipsis pause doesn't crowd 2.1 s.
+64 | [warm, inviting] तो बताओ यार — आप अपने ten seconds कहाँ ख़र्च करोगे? नीचे comment करो। जो best what-if ideas होंगे, उन पे हम video बनाएँगे। | TTS often reads plural "what-ifs" awkwardly, and "उन पे हम video बनाएँगे" sounds much warmer and more creator-like than passive "video बनेगी".
+
+3. Lines still too long for their room
+- Line 18 (7.8 s, `[laughing]`): 36 syllables + 4 pauses (4.6 syll/s while laughing).
+- Line 25 (7.3 s, `[fast, tense]`): 33 syllables + 2 pauses (4.5 syll/s; works only because the direction is `[fast, tense]`, but right on the ceiling).
+- Line 33 (5.5 s, `[release]`): 26 syllables + 2 pauses (4.7 syll/s; too crowded for a `[release]` beat).
+- Line 38 (5.4 s, `[heavy]`): 26 syllables + 3 pauses (4.8 syll/s; too fast for a `[heavy]` delivery).
+- Line 43 (5.4 s, `[low, sleepless]`): 23 syllables + 3 pauses (4.3 syll/s; tight for a slow, sleepless read).
+- Line 44 (3.2 s, `[resolved, sad]`): 14 syllables + pause (4.4 syll/s; tight for a sad, slow read).
+- Line 46 (4.0 s, `[hushed, warm]`): 17 syllables + 2 pauses (4.25 syll/s; tight for a hushed read).
+- Line 47 (6.6 s, `[hushed, uneasy]`): 28 syllables + 4 pauses (4.25 syll/s; tight for a hushed read with 4 internal stops).
+- Line 52 (3.8 s, `[tender]`): 17 syllables + comma pause (4.5 syll/s; slightly rushed for `[tender]`).
+- Line 58 (5.2 s, `[gentle]`): 23 syllables + 2 pauses (4.4 syll/s; slightly tight for `[gentle]`).
+- Line 62 (2.1 s, `[whispers]`): 9 syllables + ellipsis pause (4.3 syll/s; tight for a whisper).

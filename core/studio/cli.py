@@ -275,7 +275,8 @@ def similar(slug: str, video: str, media: str | None) -> int:
     return 0 if report["ok"] else 1
 
 
-def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | None, install: bool) -> int:
+def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | None, install: bool,
+           thumbnail_only: bool = False, captions_only: bool = False) -> int:
     """Dry run by default. Always private, never scheduled (core/studio/publish/youtube.py)."""
     from studio.publish import youtube
 
@@ -288,8 +289,24 @@ def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | Non
             print("error: omni upload <channel> <video>", file=sys.stderr)
             return 2
         request = youtube.build_request(slug, video)
+        if captions_only and not run:
+            print(f"DRY RUN: would add subtitles {sorted(request.captions)} to the video in upload_log.json; "
+                  "pass --run --confirm to do it")
+            return 0
+        if thumbnail_only and not run:
+            print(f"DRY RUN: would set {request.thumbnail} as the thumbnail of the video in upload_log.json; "
+                  "pass --run --confirm to do it")
+            return 0
         if not run:
             print(youtube.dry_run(request))
+            return 0
+        if captions_only:
+            log = youtube.set_captions(request, confirm or "")
+            print(f"subtitles added to {log['youtube_video_id']}: {json.dumps(log['captions'])}")
+            return 0
+        if thumbnail_only:
+            log = youtube.set_thumbnail(request, confirm or "")
+            print(f"thumbnail set on {log['youtube_video_id']}: {json.dumps(log['thumbnail'])}")
             return 0
         log = youtube.run(request, confirm or "")
         print(f"uploaded {log['youtube_video_id']} private; read-back ok: {json.dumps(log['readback'])}")
@@ -375,6 +392,10 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_argument("--run", action="store_true", help="really upload (owner only), private")
     sub.add_argument("--confirm", help="with --run: <channel>/<video>, typed out")
     sub.add_argument("--install", action="store_true", help="install the pinned youtubeuploader into .tools/")
+    sub.add_argument("--thumbnail-only", action="store_true",
+                     help="with --run: set upload.yaml's thumbnail on the video already uploaded (upload_log.json)")
+    sub.add_argument("--captions-only", action="store_true",
+                     help="with --run: add upload.yaml's subtitle tracks to the video already uploaded")
 
     sub = commands.add_parser("youtube-auth", help="owner only: Google consent for a channel; the token is saved "
                                                    "only if it belongs to channel.yaml youtube_channel_id")
@@ -412,7 +433,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "upload":
             if args.run and args.dry_run:
                 parser.error("--run and --dry-run together")
-            return upload(args.channel, args.video, run=args.run, confirm=args.confirm, install=args.install)
+            return upload(args.channel, args.video, run=args.run, confirm=args.confirm, install=args.install,
+                          thumbnail_only=args.thumbnail_only, captions_only=args.captions_only)
         if args.command == "youtube-auth":
             return youtube_auth(args.channel, args.replace)
         if args.command == "approve-upload":

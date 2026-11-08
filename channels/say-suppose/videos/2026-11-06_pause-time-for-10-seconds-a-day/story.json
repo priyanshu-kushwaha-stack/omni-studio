@@ -1,0 +1,791 @@
+{
+  "id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "voice": {
+    "model": "elevenlabs_v4",
+    "voiceType": "preset",
+    "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346"
+  },
+  "leadInSec": 0.6000000000000001,
+  "tailSec": 2.4,
+  "lines": [
+    {
+      "text": "On day twelve, all that stands between a bus and a kid is ten seconds.",
+      "say": "[low, slow] On day twelve, all that stands between a bus and a kid is ten seconds.",
+      "gapAfterSec": 3.0,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "But on day one, you just wake up and discover you can pause time.",
+      "say": "But on day one, you just wake up and discover you can pause time.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "The alarm's frozen mid-ring. Your cat's stuck halfway off the bed.",
+      "say": "The alarm's frozen mid-ring. Your cat's stuck halfway off the bed.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "So what if you could pause time for ten seconds a day?",
+      "say": "So what if you could pause time for ten seconds a day?",
+      "gapAfterSec": 1.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Ten seconds. Once a day. Everyone and everything stops. Except you.",
+      "say": "Ten seconds. Once a day. Everyone and everything stops. Except you.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "When the ten run out, the world starts again, and nobody knows.",
+      "say": "When the ten run out, the world starts again, and nobody knows.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "And unused seconds vanish at midnight.",
+      "say": "And unused seconds vanish at midnight.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.",
+      "say": "So we cheat. Air moves for you. You can see. And anything you touch moves with you, then stops dead when you let go.",
+      "gapAfterSec": 0.85,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "So, what's your first pause for?",
+      "say": "So, what's your first pause for?",
+      "gapAfterSec": 0.35,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "Something selfish. Obviously.",
+      "say": "[dry] Something selfish. Obviously.",
+      "gapAfterSec": 0.35,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "A phone falls a metre in about 0.45 seconds. Usually, you just watch it go.",
+      "say": "A phone falls a metre in about nought point four five seconds. Usually, you just watch it go.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c04"
+      ]
+    },
+    {
+      "text": "Not today.",
+      "say": "Not today.",
+      "gapAfterSec": 0.95,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about 10 to 14 metres.",
+      "say": "You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about ten to fourteen metres.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c05"
+      ]
+    },
+    {
+      "text": "Not a crack.",
+      "say": "Not a crack.",
+      "gapAfterSec": 0.85,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Your boss spots you in the hallway. Stop and chat, or vanish?",
+      "say": "Your boss spots you in the hallway. Stop and chat, or vanish?",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Vanish.",
+      "say": "[dry] Vanish.",
+      "gapAfterSec": 1.55,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The last samosa. A colleague's hand is already reaching. Do you let it go?",
+      "say": "The last samosa. A colleague's hand is already reaching. Do you let it go?",
+      "gapAfterSec": 0.95,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Of course not. You're not a saint. You're a person with ten seconds.",
+      "say": "Of course not. You're not a saint. You're a person with ten seconds.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Your mother's chappal, mid-air, aimed at your head? You step aside. She never works out how she missed.",
+      "say": "Your mother's chappal, mid-air, aimed at your head? You step aside. She never works out how she missed.",
+      "gapAfterSec": 1.15,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Have you ever glanced at a clock and the second hand seemed to stick for a moment?",
+      "say": "Have you ever glanced at a clock and the second hand seemed to stick for a moment?",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "That's real. Scientists call it chronostasis.",
+      "say": "That's real. Scientists call it chronostasis.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c09"
+      ]
+    },
+    {
+      "text": "Your brain has been editing time for you all your life. Now you've got the remote.",
+      "say": "Your brain has been editing time for you all your life. Now you've got the remote.",
+      "gapAfterSec": 0.85,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Then comes day twelve. You're walking home.",
+      "say": "Then comes day twelve. You're walking home.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "A bus runs a red light.",
+      "say": "A bus runs a red light.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "There's a kid in the road.",
+      "say": "[sharp] There's a kid in the road.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "A car at 48 kilometres an hour needs about 23 metres to stop. And this is a bus.",
+      "say": "A car at forty-eight kilometres an hour needs about twenty-three metres to stop. [deadpan] And this is a bus.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": [
+        "c14"
+      ]
+    },
+    {
+      "text": "Do you shout? Do you run?",
+      "say": "Do you shout? Do you run?",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Neither works. Not in time.",
+      "say": "Neither works. Not in time.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You hit pause.",
+      "say": "[quietly] You hit pause.",
+      "gapAfterSec": 0.75,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You run.",
+      "say": "You run.",
+      "gapAfterSec": 0.65,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "Nine. Eight. Seven.",
+      "say": "[breathless] Nine. Eight. Seven.",
+      "gapAfterSec": 0.65,
+      "mood": "frozen",
+      "claims": [],
+      "tempo": 1.0
+    },
+    {
+      "text": "Six. Five. Four.",
+      "say": "[breathless] Six. Five. Four.",
+      "gapAfterSec": 0.65,
+      "mood": "frozen",
+      "claims": [],
+      "tempo": 1.0
+    },
+    {
+      "text": "Three. Two. One.",
+      "say": "[breathless] Three. Two. One.",
+      "gapAfterSec": 0.35,
+      "mood": "frozen",
+      "claims": [],
+      "tempo": 1.0
+    },
+    {
+      "text": "The bus screams through an empty crossing. The ball doesn't make it. The kid does.",
+      "say": "The bus screams through an empty crossing. The ball doesn't make it. The kid does.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "The kid's mother runs over, shaking. She thanks the bus driver. Nobody thanks you. Nobody knows to.",
+      "say": "The kid's mother runs over, shaking. She thanks the bus driver. Nobody thanks you. Nobody knows to.",
+      "gapAfterSec": 2.5,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You saved a life with ten seconds. That feels free.",
+      "say": "You saved a life with ten seconds. That feels free.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "It is not free.",
+      "say": "[low] It is not free.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Your body keeps ageing through every pause. Ten seconds a day that nobody else lives.",
+      "say": "Your body keeps ageing through every pause. Ten seconds a day that nobody else lives.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "And now you know what ten seconds can do. So you can't stop watching.",
+      "say": "And now you know what ten seconds can do. So you can't stop watching.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "One morning you're late, and the bus doors are closing. Catch it, or keep your seconds?",
+      "say": "One morning you're late, and the bus doors are closing. Catch it, or keep your seconds?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Just this once.",
+      "say": "Just this once.",
+      "gapAfterSec": 1.15,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "That evening, your mother misses a step on the stairs. You snap your fingers. Nothing.",
+      "say": "That evening, your mother misses a step on the stairs. You snap your fingers. Nothing.",
+      "gapAfterSec": 4.5,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "She's all right. Bruised. You're not.",
+      "say": "[quietly] She's all right. Bruised. [pause] You're not.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "That night, you lie awake doing the maths of every second you've ever wasted.",
+      "say": "That night, you lie awake doing the maths of every second you've ever wasted.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You almost never spend them on yourself again.",
+      "say": "You almost never spend them on yourself again.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Some days nothing happens. So at midnight you spend them on nothing at all.",
+      "say": "Some days nothing happens. So at midnight you spend them on nothing at all.",
+      "gapAfterSec": 2.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Ten seconds of a city holding its breath, just for you.",
+      "say": "[hushed] Ten seconds of a city holding its breath, just for you.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Except, across the street, a curtain moves. In a window that should be frozen.",
+      "say": "Except, across the street, a curtain moves. In a window that should be frozen.",
+      "gapAfterSec": 0.95,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The curtain never moves again. But every midnight, you check.",
+      "say": "The curtain never moves again. But every midnight, you check.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Catch the six that wins your lane's cricket match? That, you do. Just the once.",
+      "say": "Catch the six that wins your lane's cricket match? That, you do. Just the once.",
+      "gapAfterSec": 1.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Ten seconds is too small for greed. It's exactly the right size for an accident.",
+      "say": "Ten seconds is too small for greed. It's exactly the right size for an accident.",
+      "gapAfterSec": 1.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You become the reason small disasters don't happen.",
+      "say": "You become the reason small disasters don't happen.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Your mother asks you to stop waiting at the bottom of the stairs.",
+      "say": "Your mother asks you to stop waiting at the bottom of the stairs.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Promise her, or keep watching?",
+      "say": "Promise her, or keep watching?",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You stay on the bottom step.",
+      "say": "You stay on the bottom step.",
+      "gapAfterSec": 4.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Forty years in, you read a street like a weather map.",
+      "say": "Forty years in, you read a street like a weather map.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You see the accident before it happens. Most days, you don't even need the pause.",
+      "say": "You see the accident before it happens. Most days, you don't even need the pause.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Your body lives every one of those pauses. Over fifty years, they add up to about two days.",
+      "say": "Your body lives every one of those pauses. Over fifty years, they add up to about two days.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "That's how much older you are than everyone you grew up with. You'd barely notice.",
+      "say": "That's how much older you are than everyone you grew up with. You'd barely notice.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "The bigger cost is the watching. A whole life spent ten seconds at a time, on strangers who'll never know your name.",
+      "say": "The bigger cost is the watching. A whole life spent ten seconds at a time, on strangers who'll never know your name.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "And then you notice something.",
+      "say": "And then you notice something.",
+      "gapAfterSec": 3.0,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "Someone else is still moving.",
+      "say": "[hushed] Someone else is still moving.",
+      "gapAfterSec": 0.35,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "And they're looking right at you.",
+      "say": "[hushed] And they're looking right at you.",
+      "gapAfterSec": 0.35,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "Somebody knows.",
+      "say": "[whispers] Somebody knows.",
+      "gapAfterSec": 1.15,
+      "mood": "frozen",
+      "claims": []
+    },
+    {
+      "text": "So what would you spend your ten seconds on? Tell us below. The best what-ifs become videos.",
+      "say": "So what would you spend your ten seconds on? Tell us below. The best what-ifs become videos.",
+      "gapAfterSec": 0.35,
+      "mood": "frozen",
+      "claims": []
+    }
+  ],
+  "sources": {
+    "c04": "https://openstax.org/books/college-physics-2e/pages/2-7-falling-objects",
+    "c05": "https://pubmed.ncbi.nlm.nih.gov/21820535/",
+    "c09": "https://pubmed.ncbi.nlm.nih.gov/11713528/",
+    "c14": "https://assets.publishing.service.gov.uk/media/65f97642aa9b760011fbda4e/the-highway-code-stopping-distances.pdf"
+  },
+  "cues": {
+    "flash": {
+      "line": 0,
+      "word": "seconds"
+    },
+    "snap1": {
+      "line": 1,
+      "word": "pause"
+    },
+    "cat": {
+      "line": 2,
+      "word": "cat's"
+    },
+    "counter": {
+      "line": 4,
+      "word": "Ten"
+    },
+    "stops": {
+      "line": 4,
+      "word": "stops"
+    },
+    "restart": {
+      "line": 5,
+      "word": "starts"
+    },
+    "midnight": {
+      "line": 6,
+      "word": "midnight"
+    },
+    "cheat": {
+      "line": 7,
+      "word": "cheat"
+    },
+    "air": {
+      "line": 7,
+      "word": "Air"
+    },
+    "see": {
+      "line": 7,
+      "word": "see"
+    },
+    "touch": {
+      "line": 7,
+      "word": "touch"
+    },
+    "grin": {
+      "line": 9,
+      "word": "selfish"
+    },
+    "slip": {
+      "line": 10,
+      "word": "phone"
+    },
+    "snap2": {
+      "line": 11,
+      "word": "today"
+    },
+    "tape": {
+      "line": 12,
+      "word": "covers"
+    },
+    "crack": {
+      "line": 13,
+      "word": "crack"
+    },
+    "boss": {
+      "line": 14,
+      "word": "boss"
+    },
+    "vanish": {
+      "line": 15,
+      "word": "Vanish"
+    },
+    "reach": {
+      "line": 16,
+      "word": "reaching"
+    },
+    "swap": {
+      "line": 17,
+      "word": "saint"
+    },
+    "chappal": {
+      "line": 18,
+      "word": "chappal"
+    },
+    "step": {
+      "line": 18,
+      "word": "aside"
+    },
+    "laugh": {
+      "line": 18,
+      "word": "missed"
+    },
+    "stick": {
+      "line": 19,
+      "word": "stick"
+    },
+    "term": {
+      "line": 20,
+      "word": "chronostasis"
+    },
+    "remote": {
+      "line": 21,
+      "word": "remote"
+    },
+    "walk": {
+      "line": 22,
+      "word": "walking"
+    },
+    "bus": {
+      "line": 23,
+      "word": "bus"
+    },
+    "red": {
+      "line": 23,
+      "word": "red"
+    },
+    "kid": {
+      "line": 24,
+      "word": "kid"
+    },
+    "shout": {
+      "line": 26,
+      "word": "shout"
+    },
+    "neither": {
+      "line": 27,
+      "word": "Neither"
+    },
+    "pause": {
+      "line": 28,
+      "word": "pause"
+    },
+    "run": {
+      "line": 29,
+      "word": "run"
+    },
+    "nine": {
+      "line": 30,
+      "word": "Nine"
+    },
+    "eight": {
+      "line": 30,
+      "word": "Eight"
+    },
+    "seven": {
+      "line": 30,
+      "word": "Seven"
+    },
+    "six": {
+      "line": 31,
+      "word": "Six"
+    },
+    "five": {
+      "line": 31,
+      "word": "Five"
+    },
+    "four": {
+      "line": 31,
+      "word": "Four"
+    },
+    "three": {
+      "line": 32,
+      "word": "Three"
+    },
+    "two": {
+      "line": 32,
+      "word": "Two"
+    },
+    "one": {
+      "line": 32,
+      "word": "One"
+    },
+    "resume": {
+      "line": 33,
+      "word": "screams"
+    },
+    "ball": {
+      "line": 33,
+      "word": "ball"
+    },
+    "tape23": {
+      "line": 25,
+      "word": "needs"
+    },
+    "mother": {
+      "line": 34,
+      "word": "mother"
+    },
+    "nobody": {
+      "line": 34,
+      "word": "Nobody"
+    },
+    "hands": {
+      "line": 35,
+      "word": "saved"
+    },
+    "free": {
+      "line": 36,
+      "word": "free"
+    },
+    "window": {
+      "line": 38,
+      "word": "watching"
+    },
+    "doors": {
+      "line": 39,
+      "word": "doors"
+    },
+    "once": {
+      "line": 40,
+      "word": "once"
+    },
+    "stairs": {
+      "line": 41,
+      "word": "misses"
+    },
+    "nothing": {
+      "line": 41,
+      "word": "Nothing"
+    },
+    "notyou": {
+      "line": 42,
+      "word": "not"
+    },
+    "awake": {
+      "line": 43,
+      "word": "awake"
+    },
+    "month6": {
+      "line": 44,
+      "word": "never"
+    },
+    "midnight2": {
+      "line": 45,
+      "word": "midnight"
+    },
+    "curtain": {
+      "line": 47,
+      "word": "curtain"
+    },
+    "check": {
+      "line": 48,
+      "word": "check"
+    },
+    "six_hit": {
+      "line": 49,
+      "word": "six"
+    },
+    "caught": {
+      "line": 49,
+      "word": "do"
+    },
+    "small": {
+      "line": 51,
+      "word": "disasters"
+    },
+    "asks": {
+      "line": 52,
+      "word": "stop"
+    },
+    "stay": {
+      "line": 54,
+      "word": "stay"
+    },
+    "year40": {
+      "line": 55,
+      "word": "Forty"
+    },
+    "before": {
+      "line": 56,
+      "word": "before"
+    },
+    "clocks": {
+      "line": 57,
+      "word": "pauses"
+    },
+    "mirror": {
+      "line": 58,
+      "word": "older"
+    },
+    "strangers": {
+      "line": 59,
+      "word": "strangers"
+    },
+    "notice": {
+      "line": 60,
+      "word": "notice"
+    },
+    "moving": {
+      "line": 61,
+      "word": "moving"
+    },
+    "looking": {
+      "line": 62,
+      "word": "looking"
+    },
+    "knows": {
+      "line": 63,
+      "word": "knows"
+    },
+    "endcard": {
+      "line": 64,
+      "word": "spend"
+    }
+  },
+  "tempo": 1.1
+}

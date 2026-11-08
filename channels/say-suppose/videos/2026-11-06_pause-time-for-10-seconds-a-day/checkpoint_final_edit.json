@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "completed",
+  "timestamp": "2026-11-08T12:31:41.503646+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "Watch renders/edit-v6.mp4 (5:14) with sound. Since v5: the first words come at 0.6 s instead of 2.4 s (owner, 2026-11-08: no empty opening); nothing else changed. qc final_edit passes, including the new opening check (sound at 0.1 s, first word at 0.6 s).",
+    "media": "renders/edit-v6.mp4",
+    "preview": "renders/edit-v6-preview.mp4",
+    "loudness_lufs": -14.0,
+    "true_peak_dbtp": -1.5,
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-08T12:31:41.437810+00:00",
+      "via": "omni approve",
+      "proof": "da2813391a031a6146e5a80206a42e1bd133fc74e68c72cadede0df6f4c9f9e3"
+    }
+  }
+}

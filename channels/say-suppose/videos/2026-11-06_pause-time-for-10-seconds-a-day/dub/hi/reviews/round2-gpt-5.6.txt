@@ -1,0 +1,41 @@
+Verdict: 8/10. अब script काफ़ी conversational है, लेकिन कुछ translated phrases, awkward collocations और meaning/gender slips अभी spell तोड़ते हैं।
+Science वाली lines और कुछ emotional lines में TTS pacing/pronunciation पर भी काम चाहिए।
+
+Lines to change:
+1 | [curious] पर day one? आप उठते हो... और पता चलता है, आप time pause कर सकते हो। | “इशारे पे” meaning बदल रहा था।
+2 | [amused] Alarm बजते-बजते freeze। और cat? Bed से कूदी... हवा में अटक गई। | ज़्यादा visual और spoken।
+5 | [matter-of-fact] Ten seconds बाद, दुनिया फिर चलती है। किसी को पता भी नहीं चलता। | “दुनिया फिर चालू” dubbed लगता है।
+6 | [teasing] और जो use नहीं किए? Midnight पे... ग़ायब। | “जो” के बिना अधूरा लगता है।
+7 | [playful, explaining] अब हाँ, थोड़ा cheat करेंगे। आपके लिए हवा चलती रहेगी, सब दिखेगा। और जो भी छुओगे, वो साथ चलेगा... छोड़ते ही वहीं freeze। | Pronouns और flow natural किए।
+10 | [casual] Phone को एक meter गिरने में... करीब zero point four five seconds लगते हैं। Normally, आप देखते रह जाते हो। | मौजूदा construction written लगता है।
+12 | [relaxed] आप आराम से उसकी तरफ़ चलते हो। कोई जल्दी नहीं। Normal walking speed पे भी, ten seconds में दस से चौदह meter चल सकते हो। | “meter निकल जाते हैं” unnatural।
+16 | [tempted] आख़िरी समोसा। Colleague का हाथ बस उस तक पहुँचने वाला है... लेने दोगे? | Referent अब साफ़ है।
+17 | [grinning] बिल्कुल नहीं। संत थोड़ी हो... इंसान हो यार। और ten seconds भी हैं। | “ten seconds वाले” dubbed लगता है।
+18 | [laughing] मम्मी की चप्पल हवा में... सीधी सिर की तरफ़? आप बस side हो गए। वो आज तक हैरान हैं—निशाना चूका कैसे? | “सीधी” gender सही; line tighter।
+19 | [leaning in] कभी घड़ी देखते हुए लगा है... second वाली सुई एक पल के लिए अटक गई? | ज़्यादा natural phrasing।
+20 | [knowing] ये सच में होता है। Scientists इसे chrono-stasis कहते हैं। | TTS cue; pronunciation “क्रोनो-स्टेसिस” verify करें।
+25 | [fast, tense] Forty-eight kilometres per hour वाली car को भी रुकने में करीब twenty-three meter लगते हैं। और ये तो bus है। | Unit grammar और spoken flow।
+33 | [release] Bus ख़ाली crossing से तेज़ी से निकल जाती है। Ball नहीं बची... पर बच्चा बच गया। | “crossing को चीरती हुई” bookish।
+34 | [quiet, bittersweet] बच्चे की माँ काँपती हुई भागकर आती है। Driver को thank you बोलती है। आपको नहीं... किसी को पता ही नहीं। | Quiet delivery के लिए tighter।
+35 | [warm] Ten seconds में एक जान बचा ली। लगता है ना... ये तो free था? | “लगा ना” का tense awkward था।
+37 | [serious] हर pause में आपकी उम्र बढ़ती रहती है। रोज़ के ten seconds... जो सिर्फ़ आप जीते हो। | कम translated, वही meaning।
+38 | [heavy] अब जानते हो, ten seconds क्या कर सकते हैं। बस फिर... नज़र हटती ही नहीं। | “नज़र चौकस” गलत collocation।
+39 | [light, tempted] एक सुबह आप late हो, bus के doors बंद हो रहे हैं। पकड़ोगे... या seconds बचाओगे? | Source में plural doors हैं।
+43 | [low, sleepless] उस रात नींद नहीं आती। पड़े-पड़े गिनते हो... अब तक कितने seconds waste किए। | Chai-conversation जैसा flow।
+44 | [resolved, sad] फिर ख़ुद के लिए... शायद ही pause करते हो। | Object ambiguity हटती है; shorter भी।
+45 | [soft] कुछ दिन कुछ होता ही नहीं। तो midnight पे आप वो seconds बस... यूँ ही ख़र्च कर देते हो। | Natural word order।
+46 | [hushed, warm] Ten seconds... शहर साँस रोकता है। बस आपके लिए। | Hushed room में current line लंबी है।
+47 | [hushed, uneasy] पर तभी... सामने वाली building की एक खिड़की में पर्दा हिलता है। जबकि सब कुछ freeze होना चाहिए था। | Freeze पर्दे/scene को होना था, खिड़की को नहीं।
+48 | [uneasy] पर्दा फिर नहीं हिलता। फिर भी, रोज़ midnight पे... आप check करते हो। | “हर midnight” unnatural।
+49 | [playful] गली के cricket match का winning six? उसे catch करना तो बनता है। बस एक बार। | “उसे” के बिना grammar अटकती है।
+52 | [tender] मम्मी कहती हैं, नीचे इंतज़ार मत करो। | Source waiting है, सिर्फ़ खड़े रहना नहीं।
+55 | [older, wise] चालीस साल बाद... सड़क को weather map की तरह पढ़ते हो। | “सड़क weather map है” में read वाला meaning खो गया था।
+57 | [reflective] हर pause में आपकी body की उम्र बढ़ी। पचास साल में सब जोड़ो ना... करीब दो दिन बनते हैं। | “Body ने pause जिया” translated लगता है।
+58 | [gentle] यानी साथ पले-बढ़े लोगों से आप दो दिन बड़े हो। पता भी नहीं चलता। | बीच का forced comma हटाएँ।
+59 | [heavy] बड़ी क़ीमत? ज़िंदगी भर नज़र रखना। बार-बार ten seconds... उन अजनबियों पर, जो आपका नाम तक नहीं जानेंगे। | “असली” meaning drift और “ten-ten” TTS risk।
+62 | [whispers] और नज़र... सीधे आप पर। | Unknown person का male gender हटता है।
+64 | [warm, inviting] तो बताओ यार—अपने ten seconds कहाँ ख़र्च करोगे? नीचे comment करो। जो best what ifs होंगे, उन पर हम videos बनाएँगे। | Agreement सही; hyphen हटने से TTS safer।
+
+Lines still too long for their room:
+3 | 5.1 s | Fixed wording [softly, wonder] में लगभग 5.6–6.0 s माँगती है।
+55 | 3.7 s | Revised wording भी [older, wise] pace पर लगभग 4.1 s माँगती है।

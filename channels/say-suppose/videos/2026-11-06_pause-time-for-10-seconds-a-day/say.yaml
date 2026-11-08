@@ -1,0 +1,20 @@
+# What the voice speaks for a script line, when it differs from the script: numbers spelled out, and delivery
+# directions in square brackets for Eleven v4. The script keeps its digits for the claims check. From the script's
+# "Narration notes" (v6, G2 passed 2026-11-07). Keys must match a spoken line of script.md exactly.
+"On day twelve, all that stands between a bus and a kid is ten seconds.": "[low, slow] On day twelve, all that stands between a bus and a kid is ten seconds."
+"Something selfish. Obviously.": "[dry] Something selfish. Obviously."
+"A phone falls a metre in about 0.45 seconds. Usually, you just watch it go.": "A phone falls a metre in about nought point four five seconds. Usually, you just watch it go."
+"You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about 10 to 14 metres.": "You stroll over. There's no rush. At an ordinary walking pace, ten seconds covers about ten to fourteen metres."
+"Vanish.": "[dry] Vanish."
+"There's a kid in the road.": "[sharp] There's a kid in the road."
+"You hit pause.": "[quietly] You hit pause."
+"Nine. Eight. Seven.": "[breathless] Nine. Eight. Seven."
+"Six. Five. Four.": "[breathless] Six. Five. Four."
+"Three. Two. One.": "[breathless] Three. Two. One."
+"A car at 48 kilometres an hour needs about 23 metres to stop. And this is a bus.": "A car at forty-eight kilometres an hour needs about twenty-three metres to stop. [deadpan] And this is a bus."
+"It is not free.": "[low] It is not free."
+"She's all right. Bruised. You're not.": "[quietly] She's all right. Bruised. [pause] You're not."
+"Ten seconds of a city holding its breath, just for you.": "[hushed] Ten seconds of a city holding its breath, just for you."
+"Someone else is still moving.": "[hushed] Someone else is still moving."
+"And they're looking right at you.": "[hushed] And they're looking right at you."
+"Somebody knows.": "[whispers] Somebody knows."

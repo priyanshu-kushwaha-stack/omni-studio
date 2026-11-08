@@ -1,0 +1,151 @@
+# omni-studio pipeline (new file, see core/PATCHES.md). Say Suppose: a what-if the viewer lives through.
+# Every stage is a human gate. Agents write status awaiting_human and stop; only `omni approve` passes a
+# gate (lib/studio_approval.py). The look is drawn in code: flat paper-cut sets and rigged figures timed to
+# the narrator's words. Renders come from the channel's own engine, so render_runtime is "external":
+# video_compose's Remotion and HyperFrames paths are not used. No AI images, no AI video clips, no lip-sync
+# and no line-boil effect.
+#
+# Gate -> stage: G1 proposal, G2 story_script, G3 narration, G4 rough_cut, G5 final_edit, G6 final_watch,
+# G7 publish_prep. G2, G5 and G7 are not named script/edit/publish because those names require upstream
+# artifacts (script, edit_decisions, publish_log); these stages carry script.md, claims.md and the render.
+#
+# The engine is core/engines/whatif (imported from the owner's sample on 2026-11-06), run through the whatif_* studio
+# tools (tools/studio/studio_whatif_tools.py). whatif_narration makes paid calls only with the owner's approval and a
+# credit cap.
+name: studio-whatif
+version: "1.0"
+description: >
+  Say Suppose: one what-if per video, told in second person by one narrator. The story is invented; every
+  claim about the real world is cited in claims.md. Code-drawn paper-cut scenes, 6 to 8 minutes, 16:9.
+  Seven owner gates, G1-G7.
+category: custom
+stability: beta
+default_checkpoint_policy: manual_all
+
+extensions:
+  custom_scripts: true
+  custom_playbooks: true
+  custom_skills: true
+  custom_tools: true
+
+required_skills:
+  - studio/studio-whatif-proposal
+  - studio/studio-whatif-script
+  - studio/studio-whatif-narration
+  - studio/studio-whatif-rough-cut
+  - studio/studio-whatif-edit
+  - studio/studio-whatif-final-watch
+  - studio/studio-whatif-publish
+  - meta/checkpoint-protocol
+
+compatible_playbooks:
+  recommended:
+    - say-suppose
+  custom_allowed: true
+
+# Automated checks per stage: `omni qc` runs them, `omni approve` re-runs them before it signs (core/studio/checks.py).
+metadata:
+  target_seconds: 420
+  min_seconds: 360
+  max_seconds: 480
+  studio_checks:
+    story_script: [claims]
+    narration: [claims, clicks]
+    final_edit: [loudness, clicks, opening, similarity]
+    final_watch: [loudness, clicks, opening, similarity]
+    publish_prep: [claims, loudness, clicks, opening, similarity, upload_request]
+
+stages:
+  - name: proposal
+    skill: studio/studio-whatif-proposal
+    produces:
+      - proposal_packet
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G1 packaging, title and thumbnail read as one promise
+      - render_runtime is external and the decision is logged
+    success_criteria:
+      - Schema-valid proposal_packet with render_runtime external
+      - packaging.md has three title and thumbnail pairs and the premise
+
+  - name: story_script
+    skill: studio/studio-whatif-script
+    required_artifacts_in:
+      - proposal_packet
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G2 the owner reads script.md in full before any asset is generated
+      - Second person, one narrator; three jumps on a clock, each bigger than the last
+      - Every real-world number, date, name or finding cites a claims.md row; story numbers are in words
+      - What the viewer does in the story is never stated as fact; uncertainty is spoken
+    success_criteria:
+      - script.md is 750 to 900 words, 15 to 20% wordless, and follows the beats in channels/<slug>/style.md
+      - claims ledger complete, a source for every factual claim (omni qc ... story_script)
+
+  - name: narration
+    skill: studio/studio-whatif-narration
+    produces: []
+    tools_available:
+      - whatif_story
+      - whatif_narration
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G3 narration lock in the channel's narrator voice
+      - No clicks or end-of-take pops (core/studio/rules/no-audio-clicks.md)
+    success_criteria:
+      - narration wav and words.json exist; omni qc narration passes (claims, clicks)
+
+  - name: rough_cut
+    skill: studio/studio-whatif-rough-cut
+    produces: []
+    tools_available:
+      - whatif_render
+      - whatif_stills
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G4 rough cut, something changes every 2 to 4 seconds, no hold over 6 seconds
+      - Motion reads cue words, never hard-coded times
+    success_criteria:
+      - A 1920x1080 render of the whole script with narration, in renders/
+
+  - name: final_edit
+    skill: studio/studio-whatif-edit
+    produces: []
+    tools_available:
+      - whatif_render
+      - whatif_stills
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G5 edit, every G4 note applied or answered, text placement, sound effects and bed under the voice
+    success_criteria:
+      - omni qc final_edit passes (loudness, clicks, similarity)
+
+  - name: final_watch
+    skill: studio/studio-whatif-final-watch
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G6 the owner watches at 1x, with cold viewers
+    success_criteria:
+      - Every G6 watch item answered by the owner; omni qc final_watch passes
+
+  - name: publish_prep
+    skill: studio/studio-whatif-publish
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G7 publish sheet and upload.yaml complete (kids and AI disclosure answered); private first
+    success_criteria:
+      - publish.md and upload.yaml written; omni upload --dry-run prints a private upload; nothing uploaded by an agent

@@ -328,6 +328,181 @@ def test_api_refreshes_in_memory_and_reads_status(tmp_path):
     assert token.read_text() == before and len(calls) == 2
 
 
+# --- the thumbnail ---
+
+
+def _thumb(folder, name="thumb.jpg", size=1000):
+    path = folder / "renders" / name
+    path.write_bytes(b"\xff\xd8" + b"\x00" * size)
+    return f"renders/{name}"
+
+
+def test_thumbnail_goes_to_the_uploader_and_the_dry_run(video):
+    channel, folder = video
+    _upload(folder, thumbnail=_thumb(folder))
+    req = youtube.build_request("alpha", VIDEO)
+    cmd = youtube.command(req, Path("m.json"), Path("o.json"))
+    assert cmd[cmd.index("-thumbnail") + 1] == str(folder / "renders" / "thumb.jpg")
+    assert "thumb.jpg" in youtube.dry_run(req)
+
+
+@pytest.mark.parametrize("make,needle", [
+    (lambda f: "../outside.jpg", "is not a file inside"),
+    (lambda f: _thumb(f, "thumb.gif"), "a JPG or PNG"),
+    (lambda f: _thumb(f, "big.jpg", size=youtube.MAX_THUMBNAIL), "at most 2 MB"),
+])
+def test_bad_thumbnail_is_refused(video, make, needle):
+    channel, folder = video
+    _upload(folder, thumbnail=make(folder))
+    assert needle in _refused("alpha", VIDEO)
+
+
+class FakeThumbAPI(FakeAPI):
+    def __init__(self, channel_id):
+        super().__init__(channel_id, {})
+        self.sent = []
+
+    def set_thumbnail(self, video_id, image):
+        self.sent.append((video_id, Path(image).name))
+        return {"default": {"url": "https://i.ytimg.com/vi/vid123/default.jpg"}}
+
+
+def test_thumbnail_only_sets_it_on_the_uploaded_video(video, monkeypatch):
+    channel, folder = video
+    _ready(video, monkeypatch)
+    _upload(folder, thumbnail=_thumb(folder))
+    req = youtube.build_request("alpha", VIDEO)
+    (folder / "upload_log.json").write_text(json.dumps({"youtube_video_id": "vid123"}))
+    api = FakeThumbAPI(req.youtube_channel_id)
+    log = youtube.set_thumbnail(req, "alpha/" + VIDEO, api=api)
+    assert api.sent == [("vid123", "thumb.jpg")]
+    assert json.loads((folder / "upload_log.json").read_text())["thumbnail"]["file"] == "renders/thumb.jpg"
+    assert log["youtube_video_id"] == "vid123"
+
+
+def test_thumbnail_only_refuses_without_confirm_upload_or_the_right_token(video, monkeypatch):
+    channel, folder = video
+    _ready(video, monkeypatch)
+    _upload(folder, thumbnail=_thumb(folder))
+    req = youtube.build_request("alpha", VIDEO)
+    with pytest.raises(youtube.UploadRefused, match="--confirm must be exactly"):
+        youtube.set_thumbnail(req, "alpha/other", api=FakeThumbAPI(req.youtube_channel_id))
+    with pytest.raises(youtube.UploadRefused, match="no uploaded video"):
+        youtube.set_thumbnail(req, "alpha/" + VIDEO, api=FakeThumbAPI(req.youtube_channel_id))
+    (folder / "upload_log.json").write_text(json.dumps({"youtube_video_id": "vid123"}))
+    with pytest.raises(youtube.UploadRefused, match="token belongs to channel"):
+        youtube.set_thumbnail(req, "alpha/" + VIDEO, api=FakeThumbAPI("UCsomeoneelse"))
+
+
+def test_api_posts_the_thumbnail_bytes(tmp_path):
+    secret, token, image = tmp_path / "s.json", tmp_path / "t.token", tmp_path / "t.jpg"
+    secret.write_text(json.dumps({"installed": {"client_id": "id", "client_secret": "sec"}}))
+    token.write_text(json.dumps({"refresh_token": "r"}))
+    image.write_bytes(b"\xff\xd8jpeg")
+    sent = []
+
+    class Resp(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    def opener(request, timeout):
+        if "oauth2" in request.full_url:
+            return Resp(json.dumps({"access_token": "fresh"}).encode())
+        sent.append((request.full_url, request.get_method(), request.data, request.headers["Content-type"]))
+        return Resp(json.dumps({"items": [{"default": {"url": "u"}}]}).encode())
+
+    served = youtube_api.YouTubeAPI(secret, token, opener=opener).set_thumbnail("v1", image)
+    assert served == {"default": {"url": "u"}}
+    url, method, data, mime = sent[0]
+    assert "upload/youtube/v3/thumbnails/set" in url and "videoId=v1" in url
+    assert method == "POST" and data == b"\xff\xd8jpeg" and mime == "image/jpeg"
+
+
+# --- subtitles ---
+
+
+def _srt(folder, lang):
+    path = folder / "subtitles" / f"{lang}.srt"
+    path.parent.mkdir(exist_ok=True)
+    path.write_text("1\n00:00:00,600 --> 00:00:02,000\nHello\n", encoding="utf-8")
+    return f"subtitles/{lang}.srt"
+
+
+class FakeCaptionAPI(FakeAPI):
+    def __init__(self, channel_id, status=None):
+        super().__init__(channel_id, status or {})
+        self.sent = []
+
+    def insert_caption(self, video_id, language, name, track):
+        self.sent.append((video_id, language, Path(track).name))
+        return {"id": f"cap-{language}"}
+
+
+def test_captions_are_validated(video):
+    channel, folder = video
+    _upload(folder, captions={"en": _srt(folder, "en"), "hi": "subtitles/missing.srt"})
+    assert "captions.hi" in _refused("alpha", VIDEO)
+    _upload(folder, captions={"english": _srt(folder, "en")})
+    assert "not a language code" in _refused("alpha", VIDEO)
+    _upload(folder, captions=["subtitles/en.srt"])
+    assert "a mapping of language code" in _refused("alpha", VIDEO)
+
+
+def test_captions_only_adds_each_track_to_the_uploaded_video(video, monkeypatch):
+    channel, folder = video
+    _ready(video, monkeypatch)
+    _upload(folder, captions={"en": _srt(folder, "en"), "hi": _srt(folder, "hi")})
+    req = youtube.build_request("alpha", VIDEO)
+    (folder / "upload_log.json").write_text(json.dumps({"youtube_video_id": "vid123"}))
+    api = FakeCaptionAPI(req.youtube_channel_id)
+    log = youtube.set_captions(req, "alpha/" + VIDEO, api=api)
+    assert sorted(api.sent) == [("vid123", "en", "en.srt"), ("vid123", "hi", "hi.srt")]
+    assert {c["language"]: c["id"] for c in log["captions"]} == {"en": "cap-en", "hi": "cap-hi"}
+    with pytest.raises(youtube.UploadRefused, match="token belongs to channel"):
+        youtube.set_captions(req, "alpha/" + VIDEO, api=FakeCaptionAPI("UCsomeoneelse"))
+
+
+def test_a_new_upload_adds_its_captions_after_a_good_readback(video, monkeypatch):
+    channel, folder = video
+    _ready(video, monkeypatch)
+    _upload(folder, captions={"en": _srt(folder, "en")})
+    req = youtube.build_request("alpha", VIDEO)
+    api = FakeCaptionAPI(req.youtube_channel_id, {**GOOD_STATUS, "channelId": req.youtube_channel_id})
+    log = youtube.run(req, "alpha/" + VIDEO, api=api, runner=_runner([]))
+    assert api.sent == [("vid123", "en", "en.srt")] and log["captions"][0]["id"] == "cap-en"
+
+
+def test_api_posts_a_multipart_caption(tmp_path):
+    secret, token, track = tmp_path / "s.json", tmp_path / "t.token", tmp_path / "hi.srt"
+    secret.write_text(json.dumps({"installed": {"client_id": "id", "client_secret": "sec"}}))
+    token.write_text(json.dumps({"refresh_token": "r"}))
+    track.write_text("1\n00:00:00,600 --> 00:00:02,000\nनमस्ते\n", encoding="utf-8")
+    sent = []
+
+    class Resp(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    def opener(request, timeout):
+        if "oauth2" in request.full_url:
+            return Resp(json.dumps({"access_token": "fresh"}).encode())
+        sent.append(request)
+        return Resp(json.dumps({"id": "cap1"}).encode())
+
+    caption = youtube_api.YouTubeAPI(secret, token, opener=opener).insert_caption("v1", "hi", "", track)
+    assert caption == {"id": "cap1"}
+    req = sent[0]
+    assert "upload/youtube/v3/captions" in req.full_url and "uploadType=multipart" in req.full_url
+    assert req.get_method() == "POST" and req.headers["Content-type"].startswith("multipart/related")
+    assert b'"language": "hi"' in req.data and "नमस्ते".encode() in req.data and b'"isDraft": false' in req.data
+
+
 # --- omni youtube-auth: consent, channel check, then the token ---
 
 from studio.publish import youtube_auth  # noqa: E402

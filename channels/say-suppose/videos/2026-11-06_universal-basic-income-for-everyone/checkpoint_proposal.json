@@ -1,0 +1,167 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_universal-basic-income-for-everyone",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "completed",
+  "timestamp": "2026-11-06T13:12:16.408094+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If Everyone Got Free Money Every Month?",
+          "hook": "Your phone buzzes. So does everyone else's. The same amount, for all of you, every month.",
+          "narrative_structure": "story",
+          "visual_approach": "You staring at your phone as a coin pops out, the street doing the same; tag NO STRINGS",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_duration_seconds": 420,
+          "why_this_works": "Plain promise; the thumbnail carries the condition"
+        },
+        {
+          "id": "B",
+          "title": "Would Anyone Still Work If Money Was Free?",
+          "hook": "The money arrives on a Monday. Do you go in?",
+          "narrative_structure": "story",
+          "visual_approach": "You strolling out of the office, the boss calling after you; tag I QUIT?",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_duration_seconds": 420,
+          "why_this_works": "The sharpest single question the trials answer"
+        },
+        {
+          "id": "C",
+          "title": "What If Nobody Had to Work to Eat?",
+          "hook": "The alarm goes off, and for the first time you do not have to obey it.",
+          "narrative_structure": "story",
+          "visual_approach": "You with feet on the table and a full plate, alarm clock tossed; tag ALARM OFF",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_duration_seconds": 420,
+          "why_this_works": "Fits a phone feed whole"
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "Agent's recommendation; the owner picks at G1. The plainest wording of the owner's question; the thumbnail adds 'no strings'."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/say-suppose-first-video-40c64e/channels/say-suppose/videos/2026-11-06_universal-basic-income-for-everyone/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging: three title and thumbnail pairs, the premise, the runtime decision"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "research.md, claims.md and script.md; omni qc story_script (claims) must pass"
+          },
+          {
+            "stage": "narration",
+            "tools": [],
+            "approach": "Arthur, one paid take per line, quoted and approved first; needs the engine"
+          },
+          {
+            "stage": "rough_cut",
+            "tools": [],
+            "approach": "Code-drawn scenes timed to cue words; needs the engine"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Owner notes applied; loudness, clicks and similarity checks"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 0,
+        "budget_verdict": "no_budget_set",
+        "line_items": [
+          {
+            "tool": "higgsfield text2speech_v2",
+            "operation": "narration (Arthur), one take per line",
+            "estimated_usd": 0,
+            "notes": "Not estimated. Paid, in Higgsfield credits; quoted and approved at G3. The channel budget is 0, so no paid call can run until the owner sets one."
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    },
+    "decision_log": {
+      "version": "1.0",
+      "project_id": "2026-11-06_universal-basic-income-for-everyone",
+      "decisions": [
+        {
+          "decision_id": "d-001",
+          "stage": "proposal",
+          "category": "render_runtime_selection",
+          "subject": "Composition runtime",
+          "options_considered": [
+            {
+              "option_id": "external",
+              "label": "The channel's paper-cut engine (the pause-time rig)",
+              "score": 0.9,
+              "reason": "The look the owner approved on 2026-11-06; figures and props timed to cue words"
+            },
+            {
+              "option_id": "remotion",
+              "label": "Remotion through video_compose",
+              "score": 0.4,
+              "reason": "Same underlying library, but its stock scene types cannot draw rigged figures",
+              "rejected_because": "Would mean rebuilding the rig inside remotion-composer"
+            },
+            {
+              "option_id": "hyperframes",
+              "label": "HyperFrames through video_compose",
+              "score": 0.3,
+              "reason": "HTML and GSAP scenes; no rig, no cue timeline",
+              "rejected_because": "Would mean rewriting the approved look from scratch"
+            },
+            {
+              "option_id": "ffmpeg",
+              "label": "FFmpeg only",
+              "score": 0.0,
+              "reason": "Cuts and stills only",
+              "rejected_because": "Cannot animate figures"
+            }
+          ],
+          "selected": "external",
+          "reason": "Proposed to the owner at G1; the engine is not in this repo yet and must be imported before G3"
+        }
+      ]
+    }
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-06T13:12:16.387360+00:00",
+      "via": "omni approve",
+      "proof": "918fceeb08c38486ab1155d259e11827d66e2c2f6f6fcb11d3c975aa65853fd9",
+      "note": "Owner, 2026-11-06, in chat: 'A for both'. Pair A."
+    }
+  }
+}

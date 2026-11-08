@@ -1,0 +1,65 @@
+ 0  starts +0.00 s from the English   7.0 s
+ 1  starts -0.00 s from the English   4.6 s
+ 2  starts +0.02 s from the English   5.0 s
+ 3  starts +0.34 s from the English   5.3 s  sped up 1.15x
+ 4  starts +0.68 s from the English   6.1 s  sped up 1.06x
+ 5  starts +0.45 s from the English   4.3 s
+ 6  starts +0.01 s from the English   3.0 s
+ 7  starts +0.02 s from the English   6.4 s
+ 8  starts -0.00 s from the English   2.9 s
+ 9  starts +0.34 s from the English   2.6 s
+10  starts +0.16 s from the English   5.6 s
+11  starts +0.00 s from the English   1.7 s
+12  starts -0.00 s from the English   6.4 s
+13  starts -0.00 s from the English   2.0 s
+14  starts -0.00 s from the English   3.7 s
+15  starts -0.00 s from the English   0.9 s
+16  starts +0.00 s from the English   4.3 s
+17  starts -0.60 s from the English   5.9 s  sped up 1.06x
+18  starts +0.45 s from the English   7.7 s  sped up 1.01x
+19  starts +0.45 s from the English   4.0 s
+20  starts -0.00 s from the English   4.0 s
+21  starts +0.12 s from the English   5.3 s
+22  starts -0.00 s from the English   3.2 s
+23  starts -0.00 s from the English   2.1 s
+24  starts +0.06 s from the English   1.2 s
+25  starts +0.00 s from the English   5.8 s
+26  starts +0.00 s from the English   1.6 s
+27  starts +0.00 s from the English   2.5 s
+28  starts +0.00 s from the English   1.6 s
+29  starts +0.00 s from the English   1.2 s
+30  starts -0.00 s from the English   3.1 s  (English take)
+31  starts +0.00 s from the English   3.4 s  (English take)
+32  starts +0.00 s from the English   3.1 s  (English take)
+33  starts -0.00 s from the English   5.0 s
+34  starts +0.00 s from the English   7.1 s
+35  starts +0.00 s from the English   3.9 s
+36  starts +0.00 s from the English   1.4 s
+37  starts +0.00 s from the English   6.0 s
+38  starts -0.00 s from the English   4.6 s
+39  starts +0.00 s from the English   5.3 s
+40  starts +0.07 s from the English   2.1 s
+41  starts +0.00 s from the English   8.1 s
+42  starts -0.60 s from the English   3.9 s
+43  starts +0.00 s from the English   4.3 s
+44  starts +0.00 s from the English   2.8 s
+45  starts +0.00 s from the English   6.3 s
+46  starts +0.00 s from the English   3.3 s
+47  starts +0.00 s from the English   5.2 s
+48  starts -0.00 s from the English   4.2 s
+49  starts +0.00 s from the English   5.0 s
+50  starts +0.00 s from the English   5.9 s
+51  starts +0.00 s from the English   2.5 s
+52  starts +0.00 s from the English   2.5 s
+53  starts +0.00 s from the English   2.6 s
+54  starts +0.20 s from the English   3.2 s
+55  starts -0.00 s from the English   3.8 s
+56  starts +0.23 s from the English   5.0 s
+57  starts +0.00 s from the English   5.5 s
+58  starts +0.00 s from the English   4.3 s
+59  starts +0.00 s from the English   7.0 s
+60  starts +0.00 s from the English   2.7 s
+61  starts +0.00 s from the English   1.5 s
+62  starts +0.00 s from the English   1.9 s
+63  starts +0.00 s from the English   1.2 s
+64  starts +0.00 s from the English   7.6 s

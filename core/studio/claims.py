@@ -10,7 +10,8 @@ Columns are found by header name, so extra columns are fine. The check fails whe
   "unsourced", "needs source" ... all fail);
 - the script cites an id (`(c03)`, `(c08, c10)`) that has no row, or whose row is `dropped`;
 - a spoken script line has a number (digits, or words such as 'twenty twenty-four', 'three million')
-  but cites no claim id.
+  but cites no claim id. With number_words=False (what-if stories, whose premise numbers are invented:
+  "ten seconds a day", "day twelve") only digits need an id; real figures are written as digits and cited.
 
 `omni approve` runs this before the script and narration gates (metadata.studio_checks in the pipelines).
 """
@@ -111,7 +112,7 @@ def spoken_lines(script: str) -> list[tuple[int, str]]:
     return out
 
 
-def check(video_dir: Path) -> LedgerReport:
+def check(video_dir: Path, number_words: bool = True) -> LedgerReport:
     video_dir = Path(video_dir)
     ledger = video_dir / "claims.md"
     if not ledger.is_file():
@@ -147,7 +148,7 @@ def check(video_dir: Path) -> LedgerReport:
                 elif by_id[cid].status == DROPPED:
                     problems.append(f"script.md:{n}: cites {cid}, which the ledger marks dropped")
             spoken = CITE_RE.sub("", text)
-            if (re.search(r"\d", spoken) or NUMBER_WORDS.search(spoken)) and not cited:
+            if (re.search(r"\d", spoken) or (number_words and NUMBER_WORDS.search(spoken))) and not cited:
                 problems.append(f"script.md:{n}: spoken number with no claim id: {text[:70]!r}")
     else:
         problems.append(f"no script: {script} is missing, so the ledger cannot be checked against it")

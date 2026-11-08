@@ -1,0 +1,95 @@
+import { AbsoluteFill, Audio, Freeze, Sequence, staticFile, useCurrentFrame } from "remotion";
+import type { ScriptLine, Timeline } from "@whatif/kit/timeline";
+import { LookContext } from "@whatif/kit/stage/Look";
+import { moodLook, type MoodName } from "@whatif/kit/stage/moods";
+import { PauseBars } from "@whatif/kit/stage/PauseBars";
+import { Finish } from "@whatif/kit/stage/Stage";
+import { worldClock } from "@whatif/kit/world/clock";
+import { C_FRAMES, Hi, IdentC } from "../../../brand/IdentC";
+import { S1_FRAMES, SubscribeTag } from "../../../brand/Subscribe";
+import { BEATS } from "./beats";
+import { lastIndex, type Shot } from "./shared";
+
+/** The score's level (build_score.py makes assets/music/score.wav): low under every narration line, rising toward
+ *  the voice's level in the wordless holds (style.md). It dips DUCK_IN frames before a line and comes back over
+ *  DUCK_OUT frames after it, so no duck is a step. */
+// Owner, 2026-11-08 (G5): music 26 dB under Arthur while he speaks. The narration measures -18.0 LUFS and the score's
+// pieces -15.8, so 0.039 puts the music at -44 LUFS under speech. In the holds it rises to 0.3, about 8 dB under him
+// ("keep it light").
+const UNDER_VOICE = 0.039;
+const IN_HOLDS = 0.3;
+const DUCK_IN = 8;
+const DUCK_OUT = 18;
+
+export function scoreVolume(frame: number, clips: { from: number; frames: number }[]): number {
+  let duck = 0;
+  for (const c of clips) {
+    const end = c.from + c.frames;
+    if (frame >= c.from && frame < end) return UNDER_VOICE;
+    if (frame < c.from && c.from - frame < DUCK_IN) duck = Math.max(duck, 1 - (c.from - frame) / DUCK_IN);
+    if (frame >= end && frame - end < DUCK_OUT) duck = Math.max(duck, 1 - (frame - end) / DUCK_OUT);
+  }
+  return IN_HOLDS + (UNDER_VOICE - IN_HOLDS) * duck;
+}
+
+/** narration: false renders the music-and-effects stem a dub track is mixed on (dub/<lang>/). */
+export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string>; narration?: boolean };
+
+/** The picture at the current frame: the beat on, lit by its line's mood (frozen while paused), pause bars and the
+ *  paper finish. No narration or score: the title card renders it again inside a <Freeze>. Sources are not shown on
+ *  screen; they go in the description (owner, 2026-11-07). */
+const Picture: React.FC<FilmProps> = ({ timeline, lines }) => {
+  const frame = useCurrentFrame();
+  const { clips, cues } = timeline;
+  const pauses = BEATS.flatMap((b) => b.pauses(cues, clips)).sort((a, b) => a.from - b.from);
+  const starts = BEATS.map((b) => (b.firstLine === 0 ? 0 : clips[b.firstLine].from));
+  const index = Math.max(0, lastIndex(starts, (s) => frame >= s));
+  const beat = BEATS[index];
+  const to = starts[index + 1] ?? timeline.totalFrames;
+  const wc = (f: number) => worldClock(f, pauses);
+  const shot: Shot = { frame, t: wc(frame), wc, cues, clips, lines, pauses, from: starts[index], to };
+
+  const lineIndex = Math.max(0, lastIndex(clips, (c) => frame >= c.from));
+  const paused = pauses.some((p) => frame >= p.from && frame < p.to);
+  const mood = (paused ? "frozen" : lines[lineIndex]?.mood ?? "day") as MoodName;
+
+  return (
+    <AbsoluteFill style={{ background: "#000" }}>
+      <LookContext.Provider value={moodLook(mood)}>
+        <beat.Component shot={shot} />
+      </LookContext.Provider>
+      <PauseBars frame={frame} pauses={pauses} />
+      <Finish />
+    </AbsoluteFill>
+  );
+};
+
+/** The whole video: the picture, the channel's title card after the hook (owner's pick, 2026-11-07: option C in
+ *  channels/say-suppose/brand), a paper subscribe tag after the rescue, the narration and the score. */
+export const Film: React.FC<FilmProps> = (props) => {
+  const { clips, cues } = props.timeline;
+  if (!clips.length) return <AbsoluteFill style={{ background: "#000" }} />;
+  // The card is made from the hook's last frozen frame and opens onto line 1's first frame; it ends as line 1 starts.
+  // <Freeze frame> takes film frames here: the faces render the film itself at those frames.
+  const cardFrom = clips[1].from - C_FRAMES;
+  const frozenHook = cues.flash - 2;
+  return (
+    <AbsoluteFill style={{ background: "#000" }}>
+      <Picture {...props} />
+      <Sequence from={cardFrom} durationInFrames={C_FRAMES}>
+        <IdentC
+          front={<Freeze frame={frozenHook}><Picture {...props} /></Freeze>}
+          back={<Freeze frame={clips[1].from}><Picture {...props} /></Freeze>}
+          title={["What if you could pause time", <>for <Hi>10 seconds</Hi> a day?</>]}
+        />
+      </Sequence>
+      {/* After the rescue, on your trembling hands: a quiet moment the story can spare. */}
+      <Sequence from={cues.hands} durationInFrames={S1_FRAMES}>
+        <SubscribeTag />
+      </Sequence>
+      {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
+      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} />}
+      <Audio src={staticFile("music/score.wav")} volume={(f) => scoreVolume(f, clips)} />
+    </AbsoluteFill>
+  );
+};

@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "rough_cut",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-07T09:49:16.314496+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "Watch renders/rough-cut.mp4 (6:26) for structure and timing: every shot of scene_plan.md on its cue, light by mood, counters, tags and bubbles. Score, sound design and loudness come at G5.",
+    "media": "renders/rough-cut.mp4",
+    "scenes": "scenes/",
+    "render_seconds": 386.5,
+    "loudness_lufs": -18.3
+  }
+}

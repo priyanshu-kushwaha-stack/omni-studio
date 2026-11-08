@@ -1,0 +1,60 @@
+1. Overall Verdict
+Not yet — right now it reads like sleek English copywriting translated sentence-by-sentence into Hindi, rather than an Indian storyteller talking to you on camera. The biggest problem is "subtitle syntax": English idioms and grammar are calqued literally (`सिवाय... सामने वाली building में`, `एकदम सही size`, `वो सच है`, `आपकी body हर pause जीती है`), while emotional landing lines (`41`, `43`, `44`, `50`, `57`, `59`) trail off as noun fragments without a verb instead of landing as complete thoughts. It also slips out of the `आप` perspective into `हम` (`बात करें`, `Bus पकड़ें`) and crams 5+ syllables per second into several quiet or reflective slots.
+
+2. Lines to Change
+0 | [low, tense] Day twelve... सामने तेज़ bus आ रही है, सड़क पे एक बच्चा है। और दोनों के बीच? बस ten seconds। | Paints the live scene using the full 8.2s room instead of a static "एक तरफ़ X, एक तरफ़ Y" setup.
+2 | [amused] Alarm बीच में ही freeze. और आपकी cat? Bed से कूदते-कूदते... हवा में अटक गई। | Fixes broken Hinglish ("बेड से आधी jump"), puts "bed" in Latin script, and lands with a complete verb.
+4 | [warm] ये ten seconds... अब आपके हाथ में हैं। दिन में बस एक बार। सब कुछ रुक जाता है — बस आप नहीं। | Adds the owner's pause on "ये ten seconds..." and replaces dub-style "सिवाय आपके" with spoken Hindi.
+5 | [matter-of-fact] Ten seconds ख़त्म, तो दुनिया फिर चालू। और किसी को पता भी नहीं चलता। | "Ten ख़त्म" without "seconds" sounds unnatural in Hindi; "दुनिया फिर चालू" is how people actually talk.
+6 | [teasing] और अगर use नहीं किए? Midnight पे... ग़ायब। | "जो seconds बच गए" implies partial daily use; "अगर use नहीं किए" is clearer and more conversational.
+7 | [playful, explaining] अब हाँ, थोड़ा cheat तो करेंगे। आपके लिए हवा चलेगी, आपको सब दिखेगा। और जिसे छुओगे, वो साथ चलेगा... हाथ छोड़ा, तो वहीं freeze. | Turns a dry rule-list into conversational storytelling and fixes the tense clash at the end.
+8 | [curious, leaning in] तो पहला pause... कहाँ use करोगे? | "किस पे?" sounds incomplete in Hindi; "कहाँ use करोगे?" sets up the next line naturally.
+10 | [casual] Phone एक meter गिरता है बस zero point four five seconds में। और आप? बस देखते रह जाते हो। | Cuts the extra added sentence that overcrowded the 6.5s slot and gives the fact sentence a verb.
+11 | [smirk] पर आज नहीं। | Adding "पर" bridges directly from line 10 instead of sounding like an isolated caption.
+12 | [relaxed] आप आराम से जाते हो, कोई जल्दी नहीं। भाई, normal speed पे भी ten seconds में आप दस से चौदह meter चल लेते हो। | Removes the repetitive "चल के जाते हो... चल लेते हो" and adds conversational warmth.
+14 | [sly] अब hallway में boss ने देख लिया। रुक के बात करोगे... या ग़ायब? | Fixes the POV slip from "आप" to "बात करें" (हमें) so the second-person address stays consistent.
+16 | [tempted] अब सोचो, आख़िरी samosa। Colleague का हाथ बस पहुँचने ही वाला है... जाने दोगे क्या? | Replaces the stiff calque "already पहुँच रहा है" with natural Indian phrasing.
+17 | [grinning] बिल्कुल नहीं। कोई संत थोड़ी हो आप... इंसान हो यार, और पास में ten seconds हैं। | Replaces the textbook relative clause ("आप एक इंसान हो, जिसके पास...") with spoken Hinglish rhythm.
+18 | [laughing] मम्मी की चप्पल हवा में, सीधा सिर की तरफ़? बस थोड़ा side हट गए। मम्मी आज तक हैरान हैं, निशाना चूका कैसे। | Replaces the clipped stage direction "एक step side में" with natural storytelling flow.
+19 | [leaning in] कभी घड़ी देखी, और लगा... second की सुई एक पल को अटक गई? | Trims syllable count to fit 4.8s and fixes the English calque "देखी है, और... लगी?".
+20 | [knowing] ये सच में होता है। Scientists इसे chronostasis कहते हैं। | "वो सच है" means "that statement is true"; "ये सच में होता है" actually means "that's real / it really happens."
+21 | [wonder] आपका दिमाग़ पूरी ज़िंदगी से time edit कर रहा है। बस अब... remote आपके हाथ में है। | Trims 4 syllables so the `[wonder]` delivery isn't rushed at 5 syllables/sec.
+23 | [tense] तभी एक bus... red light तोड़ती है। | Adding "तभी" turns a flat textbook sentence into a story beat.
+25 | [fast, tense] Forty-eight kilometre per hour की speed पे, car को भी रुकने में करीब twenty-three meter लगते हैं। और ये तो bus है। | In Hindi, speeds need "की speed पे", and "car को भी" sharpens the contrast with "ये तो bus है".
+26 | [urgent] क्या करोगे — चिल्लाओगे? भागोगे? | Uses the 2.6s room to build urgency instead of two bare words.
+33 | [release] खाली crossing को चीरते हुए bus निकल गई। Ball नहीं बची... पर बच्चा बच गया। | Fixes the literal translation "Bus चीखती हुई" ("screams") and the dangling fragment "crossing ख़ाली".
+34 | [quiet, bittersweet] बच्चे की माँ काँपते हुए भाग के आती है। Driver को thank you बोलती है। पर आपको? कोई thank you नहीं... किसी को पता ही नहीं है। | Fixes the clumsy double participle ("भागती हुई आती है, काँपती हुई") and lands the ending as a complete clause.
+35 | [warm] Ten seconds में एक जान बचा ली। लगता है ये बिल्कुल free था, है ना? | "Free लगता है" sounds like "you feel free" in Hinglish; this makes the "no cost" meaning clear.
+36 | [a beat, low] पर ये free नहीं है। | Connects naturally to line 35 and lands the turn.
+37 | [serious] हर pause में आपकी body की उम्र बढ़ रही है। रोज़ के वो ten seconds... जो कोई और नहीं जीता। | "body बूढ़ी होती रहती है" sounds clunky; "body की उम्र बढ़ रही है" is natural spoken Hindi.
+38 | [heavy] अब आपको पता है, ten seconds क्या कर सकते हैं। तो आप... देखना बंद ही नहीं कर पाते। | In Hindi, "नज़र हटती ही नहीं" means being mesmerized by beauty, not anxiously watching out for danger.
+39 | [light, tempted] एक सुबह आप late हो, bus का door बंद हो रहा है। Bus पकड़ोगे, या seconds बचाओगे? | Fixes the POV slip from "आप" to "पकड़ें / बचाएँ" so it stays in second person.
+40 | [sheepish] चलो... बस इस बार। | "बस... इस बार" alone feels clipped; "चलो... बस इस बार" is how people actually justify giving in.
+41 | [dread, slowing] और उसी शाम... सीढ़ियों पे मम्मी का पैर चूक जाता है। आप तुरंत चुटकी बजाते हो। पर... कुछ नहीं होता। | Uses the 10.2s room properly, replaces "step miss कर देती हैं", and lands on a complete thought ("कुछ नहीं होता").
+42 | [quiet] वो ठीक हैं, बस हल्की चोट है। पर आप... ठीक नहीं हो। | Cuts one sentence break and 2 syllables so the `[quiet]` 3.5s slot isn't rushed.
+43 | [low, sleepless] उस रात नींद नहीं आती। बस हर उस second का हिसाब लगाते हो, जो कभी waste किया। | Gives the second sentence a verb ("हिसाब लगाते हो") so the thought lands completely.
+44 | [resolved, sad] फिर ख़ुद पे... शायद ही कभी ख़र्च करते हो। | Turns the unfinished fragment ("शायद ही कभी।") into a complete landed thought within 3.2s.
+45 | [soft] कुछ दिन कुछ होता ही नहीं। तो midnight पे, आप वो seconds बस... यूँ ही ख़र्च कर देते हो। | Replaces the bookish pronoun calque "उन्हें" ("spend them") with "वो seconds".
+46 | [hushed, warm] Ten seconds... पूरा शहर साँस रोक लेता है, बस आपके लिए। | Cuts the repetitive "के लिए... के लिए" and drops 4 syllables so `[hushed, warm]` fits 4.0s.
+47 | [hushed, uneasy] पर तभी... सामने वाली building में एक पर्दा हिलता है। उस खिड़की में, जो freeze होनी चाहिए थी। | "सिवाय..." cannot grammatically start a sentence like English "Except..."; "पर तभी..." creates the right eerie turn.
+50 | [wise] लालच के लिए तो ten seconds बहुत कम हैं। पर एक accident रोकने के लिए? बस इतने ही काफ़ी हैं। | Time isn't called "सही size" in Hindi, and ending on "बस इतने ही काफ़ी हैं" lands the thought completely.
+52 | [tender] मम्मी बोलती हैं, सीढ़ियों के पास मत खड़े रहा करो। | Trims syllables to fit a `[tender]` 3.8s delivery and uses natural mom phrasing ("मत खड़े रहा करो").
+53 | [torn] Promise करोगे... या नज़र रखोगे? | "देखते रहोगे" sounds like staring at your mother; "नज़र रखोगे" means keeping watch.
+54 | [soft, firm] आप फिर भी... सबसे नीचे वाली सीढ़ी पे ही बैठे रहते हो। | Matches "सीढ़ियों" from line 52 instead of switching to "नीचे वाली step" and uses the 5.7s room.
+56 | [calm] Accident पहले ही दिख जाता है। ज़्यादातर दिन तो pause भी नहीं करना पड़ता। | Cuts 5 syllables so a `[calm]` line isn't racing at 5.1 syllables/sec.
+57 | [reflective] वो हर एक pause आपकी body ने जिया है। पचास साल में सब जोड़ो ना... तो क़रीब दो दिन बनते हैं। | Fixes "जीती है" (which AI voices read as "wins" from जीतना) and completes the final sentence.
+58 | [gentle] यानी साथ पले-बढ़े लोगों से, आप दो दिन बड़े हो। पता भी नहीं चलता। | Eliminates the clumsy "बड़े हुए... बड़े हो" repetition and trims 4 syllables to fit 5.2s `[gentle]`.
+59 | [heavy] असली क़ीमत है ये नज़र रखना। ज़िंदगी भर ten-ten seconds ख़र्च किए... उन अजनबियों पे, जो आपका नाम तक नहीं जानेंगे। | Fixes "ten seconds करके" (needs reduplication "ten-ten seconds") and adds the missing verb ("ख़र्च किए") so the thesis lands.
+62 | [whispers] और वो... आपको ही देख रहा है। | Trims 2 syllables so the whispered line with a pause fits cleanly inside 2.1s.
+64 | [warm, inviting] तो बताओ यार — आप अपने ten seconds कहाँ ख़र्च करोगे? नीचे comment में बताओ। जो best what-ifs होंगे, उन पे video बनेगी। | Sounds like a real Indian YouTuber signing off rather than a translated CTA.
+
+3. Lines Too Long for Their Room
+10 (30 syllables + 3 sentence stops in 6.5s because an extra sentence was added)
+19 (23 syllables + pause in 4.8s on a `[leaning in]` beat)
+21 (29 syllables in 5.9s — ~4.9 syl/s on a `[wonder]` line)
+42 (15 syllables across 3 separate sentences + ellipsis pause in 3.5s on a `[quiet]` line)
+46 (21 syllables + pause in 4.0s — ~5.25 syl/s on a `[hushed, warm]` line)
+52 (18 syllables in 3.8s — ~4.75 syl/s on a `[tender]` line)
+56 (28 syllables in 5.5s — ~5.1 syl/s on a `[calm]` line)
+58 (26 syllables in 5.2s — ~5.0 syl/s on a `[gentle]` line)
+62 (10 syllables + pause in 2.1s — ~4.8 syl/s on a `[whispers]` line)
