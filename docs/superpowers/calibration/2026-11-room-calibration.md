@@ -43,7 +43,10 @@ reading it... Is it engaging?" Room run: lint failed (six ASK gaps over 30 s), 3
 | Octopus callback repeats the open | no | yes: viewer suggestion | |
 
 Counts (8 panel notes): both 6, panel only 2, room only 1, owner only 0. Lint only: six ASK gaps (panel's own lint
-did not use the cadence rule). Room blockers rejected on record: none; debatable: story line 81 and line 124.
+did not use the cadence rule). Room blockers rejected on record: none. Debatable: story line 81 (it asks to state the common belief before
+breaking it, but the belief is already implied by the cold open and the panel's own fix only reorders the twist, so
+the added setup may cost pace) and story line 124 (it wants the opening question answered aloud before the callback
+image, which may undercut the unresolved ending).
 
 ## Say Suppose: pause time for 10 seconds (script.md at e546291)
 
@@ -78,10 +81,10 @@ Hand panel: `review-g2-round1.md`, 23 notes. Room run: lint ok (one "and then" w
 | Mug "0.45 s" needs 1 m drop | no | yes: fact suggestion | |
 
 Counts (23 panel notes): both 14, panel only 9, room only 2, owner only 0. Fact notes A1-A10: room caught 6 of 10.
-Lint only: one "and then" warning. Room blockers rejected on record: none. 11 of the 13 blockers match a panel
-note; the debatable two are the editor's line-120 blocker (the panel itself endorsed ending on the stranger as a
-cliffhanger, so "ends before answering" may be intended) and the fact blocker on the 238 wpm scope (a qualifier, not
-an error in the claim as used).
+Lint only: one "and then" warning. Room blockers rejected on record: none. Debatable blockers: the editor's line-120
+blocker (it matches panel B8, but it asks for the open question to be answered, while the panel's own fix keeps the
+stranger as the ending, so it is debatable on its merits) and the fact blocker on the 238 wpm scope (a qualifier,
+not an error in the claim as used).
 
 ## Power and Citizen: president loses Congress (script-h.md)
 
@@ -99,7 +102,7 @@ casual viewer timed out at 600 s and succeeded on one rerun (585 s), 3/3 seats o
 | 6 accuracy wording repairs (figures, dates, labels) | yes | no | |
 | 7 "this week" holds only if out by 9 Nov | yes | no | |
 | 8 five prime ministers named | yes | yes: professor blocker, no ledger row | |
-| 9-15 neutrality items (seven fixes, one row each in the counts) | yes x7 | no (no neutrality seat run) | |
+| 9-15 neutrality items (one row, counted as seven) | yes x7 | no (no neutrality seat run) | |
 | 16 Quinn explains instead of asking | yes | yes: editor suggestion, line 150 | |
 | 17 unanswered questions | yes | yes: editor blocker, line 176 | |
 | 18 Quinn gaps over 15 s | yes | yes: editor blocker, cadence | |
@@ -118,8 +121,8 @@ the ledger-format failure. Room blockers rejected on record: none; debatable: ed
 
 ## What one run each can show
 
-- On these three drafts the room's seat notes overlapped most of the hand panels' fact and ledger notes (Say Suppose
-  fact notes A1-A10: 6 of 10) and added a few ledger gaps the panels did not list (238 wpm scope; three Power and
+- On Say Suppose the room caught 6 of the 10 panel fact notes (A1-A10). On Power and Citizen it caught fix 8 and
+  missed the fact fixes 1, 2, 6 and 7. It also added a few ledger gaps the panels did not list (238 wpm scope; three Power and
   Citizen claims without a row).
 - Panel-only notes cluster in structure that needs the whole film or a seat the room lacked (buried payoff,
   thumbnail pay-off, twist order, neutrality, picture, voice). With three seats against five or six, this run cannot
