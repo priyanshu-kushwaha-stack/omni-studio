@@ -26,12 +26,37 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 THEMES = HERE.parents[1] / "brand" / "music"
+PICKS_TWIST = 47
 CUES = HERE / "assets" / "music" / "themed"
 OUT = HERE / "assets" / "music" / "score.wav"
-PICKS = {"you": 47, "tension": 11, "catch": 11, "longrun": 11, "twist": 47}
+DARK = "theme-dark"
+LIGHT = "theme-light"
+# Scene by scene (owner's G5 notes, 2026-11-08: the first mix was too loud, did not fit, and felt monotonous; a
+# quieter scene-by-scene pass was "still too much"). Music only where it carries feeling or marks a turn; the rest is
+# dry. Each row: source (a channel theme or a
+# local take), seconds into it, from line, to line (exclusive). Rows that touch crossfade; a gap is silence.
+SCENES = [
+    (LIGHT, 4.0, 1, 6),            # day one: the bedroom, the rule (the real theme)
+    (None, 0.0, 6, 22),            # the rule's fine print and the first days: dry, voice and sound effects
+    ("tension-29", 0.0, 22, 28),   # day twelve: the walk, the bus, the stakes
+    ("tension-11", 18.0, 28, 33),  # the pause, the run, the countdown
+    (None, 0.0, 33, 34),           # the bus screams through: silence
+    (DARK, 0.0, 34, 39),           # the mother, then the night: it is not free
+    (None, 0.0, 39, 41),           # just this once: dry
+    ("catch-11", 0.0, 41, 43),     # the stairs
+    (None, 0.0, 43, 45),           # awake, the montage: dry
+    (DARK, 30.0, 45, 49),          # midnight, the curtain
+    (None, 0.0, 49, 52),           # the six, small disasters: dry
+    ("longrun-11", 0.0, 52, 55),   # the mother on the stairs
+    (None, 0.0, 55, 60),           # forty years, two days older, the strangers: dry
+]
 FPS = 30
-XFADE = 1.5
+XFADE = 1.2
 LEVEL = -16.0  # LUFS of every piece before the film's duck
+
+
+def source(name: str) -> Path:
+    return THEMES / f"{name}.mp3" if name.startswith("theme-") else CUES / f"{name}.wav"
 
 
 def seconds(path: Path) -> float:
@@ -46,14 +71,20 @@ def main() -> None:
     light = THEMES / "theme-light.mp3"
     end_len = s(t["totalFrames"] - cue["endcard"])
     # (source, start in source, start in film, length, fade in, fade out)
-    pieces = [
-        (light, 0.0, s(cue["flash"]), s(c[1]["from"] - cue["flash"]) + XFADE, 0.3, XFADE),
-        (CUES / f"you-{PICKS['you']}.wav", 0.0, s(c[1]["from"]), s(c[22]["from"] - c[1]["from"]) + XFADE, XFADE, XFADE),
-        (CUES / f"tension-{PICKS['tension']}.wav", 0.0, s(c[22]["from"]), s(c[35]["from"] - c[22]["from"]) + XFADE, XFADE, XFADE),
-        (CUES / f"catch-{PICKS['catch']}.wav", 0.0, s(c[35]["from"]), s(c[49]["from"] - c[35]["from"]) + XFADE, XFADE, XFADE),
-        # Ends a second before line 60, so the line lands in near-silence.
-        (CUES / f"longrun-{PICKS['longrun']}.wav", 0.0, s(c[49]["from"]), s(c[60]["from"] - c[49]["from"]) - 1.0, XFADE, 2.5),
-        (CUES / f"twist-{PICKS['twist']}.wav", 0.0, s(cue["notice"]), s(cue["endcard"] - cue["notice"]) + 1.0, 2.0, 1.0),
+    pieces = [(light, 0.0, s(cue["flash"]), s(c[1]["from"] - cue["flash"]) + XFADE, 0.3, XFADE)]  # title card
+    for i, (name, at, a, b) in enumerate(SCENES):
+        if name is None:
+            continue
+        start, end = s(c[a]["from"]), s(c[b]["from"]) if b < len(c) else s(t["totalFrames"])
+        if b == 60:
+            end -= 1.0                                   # near-silence before "And then you notice something"
+        nxt = SCENES[i + 1][0] if i + 1 < len(SCENES) else None
+        prev = SCENES[i - 1][0] if i > 0 else LIGHT
+        fade_in = XFADE if prev else 2.0
+        fade_out = XFADE if nxt else 2.5
+        pieces.append((source(name), at, start, end - start + (XFADE if nxt else 0.0), fade_in, fade_out))
+    pieces += [
+        (CUES / f"twist-{PICKS_TWIST}.wav", 0.0, s(cue["notice"]), s(cue["endcard"] - cue["notice"]) + 1.0, 2.0, 1.0),
         (light, seconds(light) - end_len, s(cue["endcard"]), end_len, 1.0, 0.05),
     ]
     inputs, chains = [], []
