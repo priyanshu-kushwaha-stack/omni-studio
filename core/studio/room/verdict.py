@@ -71,6 +71,8 @@ def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, 
     if role not in ROLES:
         raise ValueError(f"unknown role {role!r}")
     data = extract_json(text)
+    if not any(k in data for k in ("scores", "blockers", "suggestions", "keep")):
+        raise BadVerdict("the verdict has none of scores, blockers, suggestions, keep")
     scores = data.get("scores") or {}
     suggestions = data.get("suggestions") or []
     keep = data.get("keep") or []
@@ -78,6 +80,8 @@ def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, 
         raise BadVerdict("scores must be an object")
     if not isinstance(suggestions, list) or not isinstance(keep, list):
         raise BadVerdict("suggestions and keep must be lists")
+    if "blockers" in data and not isinstance(data["blockers"], list):
+        raise BadVerdict("blockers must be a list")
     blockers: list[Blocker] = []
     for b in data.get("blockers") or []:
         if not isinstance(b, dict) or not isinstance(b.get("quote"), str) or not isinstance(b.get("why"), str):

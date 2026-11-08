@@ -31,10 +31,15 @@ def test_a_blocker_outside_the_seat_role_becomes_a_suggestion():
 
 
 @pytest.mark.parametrize("text", ["no json here", "[1, 2]", '{"blockers": [{"why": "no quote"}]}',
-                                  '{"scores": [1]}'])
+                                  '{"scores": [1]}', '{"blockers": 5}', '{}', '{"error": "refused"}'])
 def test_malformed_output_is_refused(text):
     with pytest.raises(v.BadVerdict):
         v.parse_verdict(text, **META)
+
+
+def test_round_trip_with_a_blocker():
+    out = v.parse_verdict(json.dumps(GOOD), **META)
+    assert v.Verdict.from_dict(out.to_dict()) == out
 
 
 def test_failed_verdict_and_round_trip():
