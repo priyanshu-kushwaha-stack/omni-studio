@@ -36,6 +36,9 @@ jumps and each is bigger than the last.
 - 750 to 900 words, spoken at about 115 words a minute. 15 to 20% of the runtime is wordless: `> HOLD:` lines
   where action and music carry the story. (Was 900 to 1,100 at about 140; changed by the reference study.)
 - Second person, present tense, short sentences. The narrator is dry, warm and exact, and never hypes.
+- **Written to be spoken, not read** (owner, 2026-11-08, for every language): fragments, half-sentences, thoughts
+  that trail off, a question answered at once, key words repeated. Not every sentence is complete, because that is not
+  how people talk. The pause-time script (approved before this rule) stays as it is.
 - About once a minute the narrator puts a choice to you and the figure answers at once by acting. No held pause,
   no quiz board, no countdown that waits for the viewer.
 - Other characters speak only in speech bubbles of four words or fewer.
