@@ -71,3 +71,57 @@ def test_build_and_write_the_report(tmp_path):
     assert json.loads(js.read_text())["cap"] == 29
     text = md.read_text()
     assert "Shipped: round 2" in text and "| 1 |" in text
+
+
+def test_a_failed_mandatory_viewer_seat_is_not_a_candidate(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _verdict(R.round_dir(tmp_path, "g2", 1), "viewer", "viewer", "xai", status="failed")
+    assert not R.is_candidate(R.load_rounds(tmp_path, "g2")[0])
+
+
+def test_a_round_with_no_story_verdict_is_not_a_candidate(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    (R.round_dir(tmp_path, "g2", 1) / "story.json").unlink()
+    assert not R.is_candidate(R.load_rounds(tmp_path, "g2")[0])
+    assert R.shipped(R.load_rounds(tmp_path, "g2")) is None
+
+
+def test_malformed_round_directories_are_skipped_and_listed(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64)
+    (R.gate_dir(video, "g2") / "round-1.bak").mkdir()
+    (R.gate_dir(video, "g2") / "round-2").mkdir()
+    (R.gate_dir(video, "g2") / "round-3").mkdir()
+    (R.gate_dir(video, "g2") / "round-3" / "meta.json").write_text("{not json")
+    assert [r["round"] for r in R.load_rounds(video, "g2")] == [1]
+    report = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                            ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    assert sorted(report["skipped_rounds"]) == ["round-1.bak", "round-2", "round-3"]
+    assert report["shipped"]["round"] == 1
+
+
+def test_no_skipped_rounds_is_an_empty_list(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64)
+    report = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                            ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    assert report["skipped_rounds"] == []
+
+
+def test_a_malformed_judge_counts_as_no_judge_result(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64)
+    _round(tmp_path, 3, "c" * 64)
+    R.round_dir(tmp_path, "g2", 2).joinpath("judge.json").write_text("{broken")
+    R.round_dir(tmp_path, "g2", 3).joinpath("judge.json").write_text(json.dumps({"model": "m"}))
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 1
+
+
+def test_the_report_notes_a_clean_candidate_that_was_not_judged(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64)
+    _round(video, 2, "b" * 64)
+    report = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                            ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    _, md = R.write_report(video, report)
+    assert "Round 2 was a clean candidate but was not judged; the earlier round ships." in md.read_text()
