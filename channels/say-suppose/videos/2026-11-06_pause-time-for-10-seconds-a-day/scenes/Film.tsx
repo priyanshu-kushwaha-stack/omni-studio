@@ -32,7 +32,8 @@ export function scoreVolume(frame: number, clips: { from: number; frames: number
   return IN_HOLDS + (UNDER_VOICE - IN_HOLDS) * duck;
 }
 
-export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string> };
+/** narration: false renders the music-and-effects stem a dub track is mixed on (dub/<lang>/). */
+export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string>; narration?: boolean };
 
 /** The picture at the current frame: the beat on, lit by its line's mood (frozen while paused), pause bars and the
  *  paper finish. No narration or score: the title card renders it again inside a <Freeze>. Sources are not shown on
@@ -87,7 +88,7 @@ export const Film: React.FC<FilmProps> = (props) => {
         <SubscribeTag />
       </Sequence>
       {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
-      <Audio src={staticFile("narration/narration.wav")} />
+      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} />}
       <Audio src={staticFile("music/score.wav")} volume={(f) => scoreVolume(f, clips)} />
     </AbsoluteFill>
   );
