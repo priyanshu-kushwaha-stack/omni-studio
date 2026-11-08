@@ -13,8 +13,8 @@ private until Google's API audit; the public flip is the owner's.
 - **Thumbnail A/B test** (Studio Test & Compare, set 2026-11-08, starts when the video is public; owner's call):
   `thumb-film-7-day12.jpg` (stakes, DAY 12), `thumb-a.jpg` (face close-up, no text), `thumb-fun-cat-day1.jpg` (fun,
   DAY 1). Text tags by `channels/say-suppose/brand/thumb_tag.py`.
-- **Going public:** the owner schedules it by hand: Mon 9 Nov 2026, 21:30 IST (11:00 New York, 16:00 UK), English
-  audience first. Then the pinned comment, and G7.
+- **Going public:** scheduled by the owner in Studio for Mon 9 Nov 2026, 18:30 IST (08:00 New York, 13:00 UK).
+  Studio shows it Scheduled, no notices. After it goes live: the pinned comment, then G7.
 - **Subtitles:** English and Hindi tracks from the scripts (`subtitles/en.srt`, `subtitles/hi.srt`), added through the
   API 2026-11-08 (`omni upload ... --captions-only`); ids in `upload_log.json`.
 - **End screen:** set in Studio 2026-11-08, 5:06:03 to the end: Subscribe (top right) and a Video element on "Most
