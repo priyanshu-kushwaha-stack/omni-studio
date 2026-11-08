@@ -147,6 +147,19 @@ repeats the title.
 - Every narration and music call is paid: tool, provider, model and cost are announced and approved first.
 - Mix: -14 LUFS integrated within 1 LU, true peak at most -1 dBTP (`channel.yaml` `loudness.story`).
 
+## Other languages (multi-language audio)
+
+Owner, 2026-11-08: every video gets dub tracks on the same YouTube video (Studio, Languages, Dub). Hindi first, then the
+largest audiences. The music, effects and picture stay the same; only the narration changes, fitted to the English
+timing.
+
+- **Hindi is Hinglish:** everyday spoken Hindi with the English words people actually use ("time pause", "freeze",
+  "ten seconds"), to reach the most viewers. Hindi words are written in Devanagari and English words in Latin script.
+- **Spoken storytelling, not written prose:** incomplete sentences, fragments, thoughts that trail off, a question
+  answered at once, key words repeated. Not every sentence is finished, because that is not how people talk.
+- **Voice:** a designed Hinglish narrator, a warm Indian man in his late twenties, chosen by the owner from previews
+  (`page/candidates/hindi-voice/`).
+
 ## Shorts
 
 A Short is one beat of a finished long video, re-staged for 9:16: the opening change or the 3:30 reversal,
