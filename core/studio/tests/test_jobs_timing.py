@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -10,9 +12,10 @@ import pytest
 from studio.jobs import timing as T
 
 
-@pytest.fixture(autouse=True)
-def _timings_in_tmp(tmp_path, monkeypatch):
-    monkeypatch.setenv("OMNI_JOBS_TIMINGS", str(tmp_path / "timings.jsonl"))
+def test_every_test_writes_timings_and_ledger_inside_tmp(tmp_path):
+    # conftest.py sets both paths for every test; nothing may fall back to ~/.local/state/omni-studio/.
+    assert Path(os.environ["OMNI_JOBS_TIMINGS"]).is_relative_to(tmp_path)
+    assert Path(os.environ["OMNI_ROOM_LEDGER"]).is_relative_to(tmp_path)
 
 
 def test_record_appends_a_line(tmp_path):

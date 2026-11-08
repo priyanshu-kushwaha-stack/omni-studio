@@ -7,6 +7,13 @@ def _approval_key_in_tmp(tmp_path, monkeypatch):
     monkeypatch.setenv("OMNI_STUDIO_APPROVAL_KEY", str(tmp_path / "approval-key" / "approval.key"))
 
 
+@pytest.fixture(autouse=True)
+def _timings_and_ledger_in_tmp(tmp_path, monkeypatch):
+    """Timing rows and review-room calls go to tmp, never to ~/.local/state/omni-studio/."""
+    monkeypatch.setenv("OMNI_JOBS_TIMINGS", str(tmp_path / "timings.jsonl"))
+    monkeypatch.setenv("OMNI_ROOM_LEDGER", str(tmp_path / "ledger.sqlite"))
+
+
 # --- synthetic media for the Phase 4 checks (no real channel media is touched) ---
 
 import json
