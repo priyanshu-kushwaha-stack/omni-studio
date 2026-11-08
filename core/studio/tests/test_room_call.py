@@ -134,7 +134,7 @@ def test_run_seat_writes_a_verdict_and_logs_the_call(tmp_path):
     row = db.get(record["call_id"])
     assert row.status == "ok" and row.output_sha256 == record["output_sha256"] and row.cli_version == "9.9.9"
     cmd = [c for c, _ in runner.calls if c[-1] != "--version"][0]
-    assert cmd[:2] == ["sandbox-exec", "-p"]
+    assert cmd[:2] == ["/usr/bin/sandbox-exec", "-p"]
     assert (tmp_path / "room" / "raw").is_dir()
     kw = [k for c, k in runner.calls if c[-1] != "--version"][0]
     assert kw["env"] == C.clean_env() and kw["timeout"] > 0
@@ -327,3 +327,9 @@ def test_a_draft_hash_that_differs_from_the_draft_is_refused(tmp_path):
         C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=tmp_path / "v.json",
                    draft_sha256="d" * 64, runner=fake_runner([]), registry=REG)
     assert db.count() == 0
+
+
+def test_invoke_runs_the_sandbox_by_absolute_path_not_via_path():
+    runner = fake_runner(["x"])
+    C.invoke(["claude", "-p"], runner=runner, timeout=5)
+    assert runner.calls[0][0][0] == "/usr/bin/sandbox-exec"

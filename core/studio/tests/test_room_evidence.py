@@ -414,3 +414,21 @@ def test_the_call_count_is_scoped_by_the_reports_channel(tmp_path):
         db.reserve(channel="other", video=video.name, gate="g2", round=1, seat="x", model="m", family="f",
                    prompt_sha256="p", daily_cap=500, script_cap=500)
     assert E.verify(video, report, script, db) == []
+
+
+def test_a_verdict_row_reserved_under_another_channel_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    import sqlite3
+    with sqlite3.connect(db.path) as con:
+        con.execute("UPDATE calls SET channel = 'other' WHERE seat = 'story'")
+    assert _has(E.verify(video, report, script, db), "verdict story", "channel")
+
+
+def test_a_judge_row_reserved_under_another_channel_fails(tmp_path):
+    video, script, _, db = _setup(tmp_path)
+    _judge(video, db)
+    import sqlite3
+    with sqlite3.connect(db.path) as con:
+        con.execute("UPDATE calls SET channel = 'other' WHERE seat = 'judge'")
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "judge call", "channel")

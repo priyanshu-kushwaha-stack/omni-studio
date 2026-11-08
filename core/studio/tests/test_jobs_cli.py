@@ -45,3 +45,12 @@ def test_a_command_that_is_not_executable_is_recorded_as_failed_126(tmp_path, mo
     plain.write_text("x")
     assert cli.main(["run", "--step", "noexec", "--", str(plain)]) == 126
     assert T.read_timings()[-1]["ok"] is False
+
+
+def test_run_records_the_size_of_file_arguments_under_the_repo(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_JOBS_TIMINGS", str(tmp_path / "t.jsonl"))
+    inside = T.ROOT / "core" / "studio" / "jobs" / "timing.py"
+    outside = tmp_path / "big.bin"
+    outside.write_bytes(b"x" * 500)
+    assert cli.main(["run", "--step", "s", "--", sys.executable, "-c", "pass", str(inside), str(outside)]) == 0
+    assert T.read_timings()[0]["inputs_bytes"] == inside.stat().st_size

@@ -68,8 +68,8 @@ def test_seat_refuses_before_lint(tmp_path, monkeypatch, capsys):
     channel = tmp_path / "pou"
     channel.mkdir()
     (channel / "room.yaml").write_text(ROOM)
-    video = tmp_path / "v"
-    video.mkdir()
+    video = channel / "videos" / "v"
+    video.mkdir(parents=True)
     assert cli.main(["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer",
                      "--config", str(channel / "room.yaml")]) == 2
     assert "run lint for round 1 first" in capsys.readouterr().err
@@ -140,6 +140,7 @@ def test_errors_exit_cleanly(tmp_path, monkeypatch, capsys):
     assert "Traceback" not in err and err.strip()
     assert _lint(video, tmp_path / "missing.md", cfg) == 2
     assert capsys.readouterr().err.strip()
+    (video / "room").mkdir()
     assert cli.main(["verify", str(video), "g2", "--artifact", str(script)]) == 1
     assert "g2.json" in capsys.readouterr().out
 
@@ -478,3 +479,45 @@ def test_a_failed_judge_exits_1_and_is_unjudged(tmp_path, monkeypatch, capsys):
     assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 1
     assert "unjudged" in capsys.readouterr().err
     assert json.loads((video / "room" / "g2" / "round-2" / "judge.json").read_text())["winner"] is None
+
+
+def test_a_video_folder_outside_the_channels_videos_is_refused_by_every_config_subcommand(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    stray = tmp_path / "stray"
+    stray.mkdir()
+    link = _channel_of(video) / "videos" / "linked"
+    link.symlink_to(stray)
+    for target in (stray, link):
+        for argv in (["lint", str(target), "g2", "--round", "1", "--draft", str(script)],
+                     ["seat", str(target), "g2", "--round", "1", "--seat", "cold viewer"],
+                     ["judge", str(target), "g2", "--round", "1"],
+                     ["report", str(target), "g2", "--stage", "s"]):
+            capsys.readouterr()
+            assert cli.main([*argv, "--config", cfg]) == 2
+            assert "videos" in capsys.readouterr().err
+
+
+def test_verify_wants_a_videos_child_with_a_room_folder(tmp_path, capsys):
+    stray = tmp_path / "stray"
+    (stray / "room").mkdir(parents=True)
+    assert cli.main(["verify", str(stray), "g2", "--artifact", str(tmp_path / "a.md")]) == 1
+    assert "videos" in capsys.readouterr().out
+    bare = tmp_path / "videos" / "v1"
+    bare.mkdir(parents=True)
+    assert cli.main(["verify", str(bare), "g2", "--artifact", str(tmp_path / "a.md")]) == 1
+    assert "room" in capsys.readouterr().out
+
+
+def test_the_room_folder_rule_ignores_case(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    for i, name in enumerate(("ROOM", "Room")):
+        other = _channel_of(video) / "videos" / f"other{i}" / name / "g2"
+        other.mkdir(parents=True)
+        (other / "v.json").write_text("{}")
+        capsys.readouterr()
+        assert cli.main(["seat", str(video), "g2", "--round", "1", "--config", cfg, "--seat", "cold viewer",
+                         "--input", f"x={other / 'v.json'}"]) == 2
+        assert "room" in capsys.readouterr().err.lower()

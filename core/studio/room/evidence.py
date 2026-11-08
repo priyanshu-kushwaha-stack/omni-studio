@@ -144,6 +144,7 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         if not judge.get("call_ids"):
             problems.append("judge call ids are missing: the judge result cites no ledger call")
     seen: set[str] = set()
+    report_channel = report.get("channel") if isinstance(report.get("channel"), str) else ""
     for v, raw in loaded:
         if raw is None:
             continue
@@ -160,6 +161,9 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
             if (row.seat, row.model, row.family, row.video, row.gate, row.round) != (
                     raw.get("seat"), raw.get("model"), raw.get("family"), video, gate, n):
                 problems.append(f"verdict {seat}: call {cid[:12]} {MISMATCH}")
+            if report_channel and row.channel != report_channel:
+                problems.append(f"verdict {seat}: call {cid[:12]} was reserved under channel {row.channel!r}, "
+                                f"not {report_channel!r}")
             if not row.verdict_sha256 or row.verdict_sha256 != verdict_digest(raw):
                 problems.append(f"verdict {seat}: file edited after the call")
         if raw.get("role") == "fact" and raw.get("status") == "ok" and raw.get("blockers"):
@@ -175,6 +179,9 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
             problems.append(f"judge call {str(cid)[:12]} {MISMATCH}")
         elif row.status != "ok":
             problems.append(f"judge call {str(cid)[:12]} did not finish ok (status {row.status})")
+        if row is not None and report_channel and row.channel != report_channel:
+            problems.append(f"judge call {str(cid)[:12]} was reserved under channel {row.channel!r}, "
+                            f"not {report_channel!r}")
     cap = report["cap"]
     channel = report.get("channel")
     for calls in (report["calls"], ledger.count(channel=channel if isinstance(channel, str) and channel else None,

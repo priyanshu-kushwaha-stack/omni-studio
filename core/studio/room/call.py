@@ -29,6 +29,7 @@ from studio.room.snapshot import sha256_text
 from studio.room.verdict import BadVerdict, Verdict, failed_verdict, parse_verdict, verdict_digest
 
 ROOT = Path(__file__).resolve().parents[3]
+SANDBOX_EXEC = "/usr/bin/sandbox-exec"
 ENV_KEEP = ("PATH", "HOME", "TMPDIR", "LANG", "USER", "LOGNAME", "SHELL")
 VERDICT_SPEC = """\
 Return only one JSON object and nothing else:
@@ -163,7 +164,7 @@ def invoke(cmd: list[str], *, runner=None, timeout: float = 600) -> tuple[int, s
         t0 = time.monotonic()
         try:
             profile = sandbox_profile(deny_paths(), allow=[own_chat_dir(Path(bundle))])
-            proc = runner(["sandbox-exec", "-p", profile, *cmd], cwd=bundle, env=clean_env(),
+            proc = runner([SANDBOX_EXEC, "-p", profile, *cmd], cwd=bundle, env=clean_env(),
                           capture_output=True, text=True, timeout=timeout)
         except subprocess.TimeoutExpired:
             return 124, "", time.monotonic() - t0

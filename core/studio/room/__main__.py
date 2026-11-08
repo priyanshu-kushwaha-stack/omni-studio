@@ -33,6 +33,16 @@ def _video(args) -> Path:
     return Path(args.video_dir).resolve()
 
 
+def _video_in(args, cfg) -> Optional[Path]:
+    """The video folder, resolved (symlinks followed), only when it is inside the channel's videos folder."""
+    video, root = _video(args), (Path(cfg.channel_dir) / "videos").resolve()
+    if video == root or not video.is_relative_to(root):
+        print(f"video folder {args.video_dir} is not inside {root}; room files live under channels/<slug>/videos/",
+              file=sys.stderr)
+        return None
+    return video
+
+
 def _problems(cfg) -> int:
     problems = validate(cfg)
     if problems:
@@ -74,7 +84,7 @@ def _confined(path: str, cfg, label: str) -> bool:
     if not real.is_relative_to(root):
         print(f"{label}: {path} is outside the channel folder {root}; only channel files are read", file=sys.stderr)
         return False
-    parts = real.relative_to(root).parts
+    parts = [part.casefold() for part in real.relative_to(root).parts]  # macOS volumes ignore case
     if len(parts) >= 3 and parts[0] == "videos" and parts[2] == "room":
         print(f"{label}: {path} is inside a videos/*/room folder (other verdicts) and is never read",
               file=sys.stderr)
@@ -105,7 +115,9 @@ def _read_inputs(items: Optional[list[str]], cfg, reserved: tuple[str, ...] = ("
 
 def cmd_lint(args) -> int:
     cfg = load_room(Path(args.config))
-    video = _video(args)
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
     if args.kind and args.kind != _default_kind(args.gate, None):
         print(f"--kind {args.kind} does not fit {args.gate}: {args.gate} reviews a "
               f"{_default_kind(args.gate, None)}", file=sys.stderr)
@@ -138,7 +150,9 @@ def cmd_seat(args) -> int:
     cfg = load_room(Path(args.config))
     if _problems(cfg):
         return 2
-    video = _video(args)
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
     meta = _meta(video, args.gate, args.round)
     if meta is None:
         print(f"run lint for round {args.round} first", file=sys.stderr)
@@ -185,7 +199,9 @@ def cmd_judge(args) -> int:
     cfg = load_room(Path(args.config))
     if _problems(cfg):
         return 2
-    video = _video(args)
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
     rounds = R.load_rounds(video, args.gate)
     current = next((r for r in rounds if r["round"] == args.round), None)
     if current is None:
@@ -224,7 +240,9 @@ def cmd_report(args) -> int:
     cfg = load_room(Path(args.config))
     if _problems(cfg):
         return 2
-    video = _video(args)
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
     channel = args.channel or Path(args.config).resolve().parent.name
     rep = R.build_report(video, gate=args.gate, stage=args.stage, channel=channel,
                          writer_family=family_of(cfg.writer), ledger=Ledger(), cap=derived_cap(cfg))
@@ -235,6 +253,9 @@ def cmd_report(args) -> int:
 
 def cmd_verify(args) -> int:
     video = _video(args)
+    if video.parent.name != "videos" or not (video / "room").is_dir():
+        print(f"{video} is not a videos/<id> folder with a room/ folder")
+        return 1
     try:
         rep = json.loads((video / "room" / f"{args.gate}.json").read_text(encoding="utf-8"))
         problems = verify(video, rep, Path(args.artifact), Ledger())

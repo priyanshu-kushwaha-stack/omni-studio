@@ -281,6 +281,12 @@ Before the room check is wired into `omni approve`, A2 must close these gaps fou
 13. Done (fix wave): `--input`, `--draft` and `--ledger-file` are an allowlist, not a blocklist: each must resolve
     inside the channel folder and outside `videos/*/room/` and secrets folders, so another project's or work files
     cannot reach a third-party model prompt.
+14. Evidence rejects a shipped ordinary round numbered above room.yaml `rounds` (only owner-notes rounds may exceed it).
+15. The room's lint also runs the claims check for uncited spoken numbers, or the gate relies on `omni qc`'s claims
+    check and says so explicitly.
+16. The CLIs are resolved to pinned absolute paths and their versions recorded, so a fake `claude` or `cursor-agent`
+    earlier on PATH cannot produce verdicts.
+17. A failed judge row also locks the round's judge until a new round starts.
 
 ## Commands
 

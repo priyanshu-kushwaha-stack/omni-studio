@@ -8,7 +8,7 @@ import sys
 import time
 from typing import Optional
 
-from studio.jobs.timing import read_timings, record, summarize
+from studio.jobs.timing import args_bytes, read_timings, record, summarize
 
 
 def cmd_run(args) -> int:
@@ -24,7 +24,7 @@ def cmd_run(args) -> int:
         print(f"could not run {command[0]}: {exc}", file=sys.stderr)
     try:
         record(args.step, seconds=time.monotonic() - t0, ok=code == 0, channel=args.channel or "",
-               video=args.video or "", extra={"via": "run"})
+               video=args.video or "", inputs_bytes=args_bytes({"args": command}), extra={"via": "run"})
     except Exception as exc:
         print(f"timing not recorded: {exc}", file=sys.stderr)
     return code
