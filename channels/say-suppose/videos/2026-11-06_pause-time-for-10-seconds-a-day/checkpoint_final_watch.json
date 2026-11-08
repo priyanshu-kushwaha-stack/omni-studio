@@ -3,16 +3,22 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "final_watch",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-08T12:32:06.408851+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-08T12:48:46.460345+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
     "for_owner": "G6: watch renders/edit-v6.mp4 at 1x, start to end, with cold viewers (people who have not seen it). Note where anyone looks away, gets confused or skips. qc final_watch passes.",
     "media": "renders/edit-v6.mp4",
-    "preview": "renders/edit-v6-preview.mp4"
+    "preview": "renders/edit-v6-preview.mp4",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-08T12:48:46.395431+00:00",
+      "via": "omni approve",
+      "proof": "e171b27f292267caf095891cb225d277dc763f1783ce32b173c8c39ca7460a11"
+    }
   }
 }
