@@ -1,0 +1,16 @@
+# Words, phrases and patterns that mark machine-written prose. Hits are warnings; more than `max_hits` in one draft
+# is a lint failure. Sources: Wikipedia "Signs of AI writing"
+# (https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), EQ-Bench slop-score
+# (https://github.com/sam-paech/slop-score), vale-deslop (https://github.com/dnunez24/vale-deslop).
+# Recorded in core/lock.yaml in A2.
+max_hits: 3
+words: [delve, delves, delving, tapestry, testament, intricate, showcasing, showcase, underscore, underscores,
+        pivotal, realm, embark, multifaceted, meticulous, meticulously, bustling, vibrant, seamless, seamlessly,
+        boasts, nestled, ever-evolving, game-changer, unleash]
+phrases: ["a testament to", "rich tapestry", "plays a crucial role", "in today's world", "have you ever wondered",
+          "at the end of the day", "it's important to note", "it is worth noting", "in conclusion", "to sum up",
+          "serves as a", "stands as a", "the power of", "more than just"]
+patterns:
+  - "\\bnot (?:just|only|merely) [^.?!]{1,60}, but\\b"
+  - "\\bit'?s not [^.?!]{1,40}[,;:] it'?s\\b"
+  - "\\bisn'?t (?:just )?about [^.?!]{1,40}[,;:] it'?s about\\b"
