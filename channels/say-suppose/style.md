@@ -168,8 +168,8 @@ timing.
   "ten seconds"), to reach the most viewers. Hindi words are written in Devanagari and English words in Latin script.
 - **Spoken storytelling, not written prose:** incomplete sentences, fragments, thoughts that trail off, a question
   answered at once, key words repeated. Not every sentence is finished, because that is not how people talk.
-- **Voice:** a designed Hinglish narrator, a warm Indian man in his late twenties, chosen by the owner from previews
-  (`page/candidates/hindi-voice/`).
+- **Voice:** Arthur, the channel's English narrator, reads the Hindi too (owner, 2026-11-08, after hearing 15 designed
+  Hinglish voices and a local clone). Build and mix steps: the pause-time video's `dub/README.md`.
 
 ## Shorts
 
