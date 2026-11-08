@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from studio.room.ledger import Ledger
+from studio.room import report as R
 from studio.room.report import read_meta
 from studio.room.snapshot import drafts_dir, load_draft, sha256_file
 from studio.room.verdict import LOCKED_ROLES, MANDATORY, verdict_digest
@@ -66,6 +67,8 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
     if not isinstance(meta, dict) or meta.get("draft_sha256") != rnd.get("draft_sha256") \
             or meta.get("lint") != rnd.get("lint"):
         problems.append(f"round {n}: the report does not match meta.json")
+    if isinstance(meta, dict) and "round" in meta and meta["round"] != n:
+        problems.append(f"round {n}: meta.json says round {meta['round']}")
     if not (rnd.get("lint") or {}).get("ok"):
         problems.append(f"round {n}: lint failed")
     writer = report.get("writer_family")
@@ -73,6 +76,11 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         problems.append("the report names no writer family")
     verdicts = rnd.get("verdicts") or []
     video, gate = video_dir.name, report.get("gate")
+    round_dir = R.round_dir(video_dir, str(gate), n)
+    on_disk = {str(p.relative_to(video_dir)) for p in round_dir.glob("*.json") if p.name not in R.NOT_VERDICTS}
+    reported = {str(v.get("file")) for v in verdicts}
+    if on_disk != reported:
+        problems.append(f"round {n}: verdict files and report entries differ: {', '.join(sorted(on_disk ^ reported))}")
     loaded: list[tuple[dict[str, Any], dict[str, Any] | None]] = []  # (report entry, verdict file or None)
     for v in verdicts:
         seat = v.get("seat")

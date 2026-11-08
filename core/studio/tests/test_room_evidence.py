@@ -270,3 +270,19 @@ def test_a_ledger_sqlite_error_is_a_problem_not_a_crash(tmp_path, monkeypatch):
     monkeypatch.setattr(db, "get", boom)
     problems = E.verify(video, report, script, db)
     assert problems and _has(problems, "malformed")
+
+
+def test_a_verdict_file_dropped_from_the_report_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    rnd = report["rounds"][0]
+    rnd["verdicts"] = [v for v in rnd["verdicts"] if v["seat"] != "fact"]
+    assert _has(E.verify(video, report, script, db), "round 1", "verdict files and report entries differ", "fact.json")
+
+
+def test_a_meta_round_field_that_disagrees_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    meta = R.round_dir(video, "g2", 1) / "meta.json"
+    data = json.loads(meta.read_text())
+    data["round"] = 2
+    meta.write_text(json.dumps(data))
+    assert _has(E.verify(video, report, script, db), "round 1", "meta.json says round 2")
