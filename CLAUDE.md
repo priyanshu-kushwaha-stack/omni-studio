@@ -65,6 +65,9 @@ Run the engine through the studio tools (`pou_tts`, `pou_stills`, `pou_puppet`, 
 `.venv-media` (NumPy 1.26, torch, mlx, mflux, chatterbox), built from `requirements-media.lock.txt` with
 `uv pip install --no-deps`; the core `.venv` keeps NumPy 2.x. Before every render run `overlay_check.py --fix`
 and, on the result, `audio_check.py`. The owner's craft rules and their checks are in `core/studio/rules/`.
+When you run a heavy engine or channel script by hand (TTS, stills, renders, music), wrap it so its run time is
+recorded: `.venv/bin/python -m studio.jobs run --step <script> --channel <slug> --video <id> -- <command>`.
+`python -m studio.jobs report` ranks steps by total time (portable-compute spec, B1).
 
 ## Gates
 

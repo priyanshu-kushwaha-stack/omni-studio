@@ -75,3 +75,20 @@ def test_read_timings_skips_a_torn_line(tmp_path):
     target.write_text('{"step": "a", "seconds": 1}\n{"step": "x", "sec\n{"step": "b", "seconds": 2}\n', encoding="utf-8")
     rows = T.read_timings(path=target)
     assert [r["step"] for r in rows] == ["a", "b"]
+
+
+def test_pou_engine_tools_record_a_timing(monkeypatch):
+    import subprocess
+
+    from tools.studio import studio_pou_tools as pou
+
+    def fake_run(cmd, **kw):
+        return subprocess.CompletedProcess(cmd, 0, stdout="ok", stderr="")
+
+    monkeypatch.setattr(pou.subprocess, "run", fake_run)
+    result = pou.StudioOverlayCheck().execute(
+        {"channel": "professor-of-us", "args": ["channels/professor-of-us/videos/2026-10-31_tails"]})
+    assert result.success
+    row = T.read_timings()[-1]
+    assert (row["step"], row["channel"], row["video"], row["via"]) == (
+        "overlay_check", "professor-of-us", "2026-10-31_tails", "tool")
