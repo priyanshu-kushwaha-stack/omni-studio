@@ -170,6 +170,20 @@ timing.
   answered at once, key words repeated. Not every sentence is finished, because that is not how people talk.
 - **Voice:** Arthur, the channel's English narrator, reads the Hindi too (owner, 2026-11-08, after hearing 15 designed
   Hinglish voices and a local clone). Build and mix steps: the pause-time video's `dub/README.md`.
+- **English comes first** (owner, 2026-11-08: the video "sounds much better in English"). Dubs widen the reach; they
+  never set the release time.
+- **Review the script twice** before any voice is paid for: two rounds of other models (GPT, Gemini, Grok through
+  `cursor-agent`), asked whether it sounds like a person telling the story over chai. Round one finds the translated
+  English; round two finds calques, wrong idioms ("नज़र हटती ही नहीं" means mesmerised, not keeping watch), gender
+  slips and "हम" for "आप". The owner then rewrites lines in their own words: take those as they are.
+- **Fit the English slot:** Arthur reads Hinglish about a third slower than English. Write to the slot, read it at
+  tempo 1.2 (English is 1.1), and let `dub_narration.py` borrow up to 0.6 s of gap or speed a line up to 1.15x. Hear
+  the opening 10 lines before paying for the rest.
+- **Numbers stay as people say them:** the countdown reuses the English takes; "zero point four five" becomes "आधे
+  second से भी कम" when that is how it is said.
+- **Subtitles for every track,** from the script, not speech recognition: Whisper's Hindi word times stop early.
+- **More languages** wait for watch-time data (Analytics, by audio track): about 24 credits and a review cycle each.
+  YouTube's free auto-dubbing needs an eligible channel.
 
 ## Shorts
 

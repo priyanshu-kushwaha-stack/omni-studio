@@ -43,7 +43,7 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 | `omni fix <slug> --format --stage --severity --example` | Record a note in `core/studio/issues/` |
 | `omni qc <slug> <video> <stage> [--media f]` | Run a stage's automated checks (claims, quiz boards, loudness, clicks, similarity, upload request); writes `videos/<id>/qc/<stage>.json` |
 | `omni similar <slug> <video>` | Near-duplicate check against every other channel and the channel's recent videos |
-| `omni upload <slug> <video>` | Dry run (the default) of a private YouTube upload through the pinned youtubeuploader. `--install` installs the pinned binary into `.tools/` |
+| `omni upload <slug> <video>` | Dry run (the default) of a private YouTube upload through the pinned youtubeuploader, with upload.yaml's thumbnail and subtitles. `--install` installs the pinned binary into `.tools/`; `--thumbnail-only` and `--captions-only` (with `--run --confirm`) set them on an uploaded video. Studio-only steps: `core/openmontage/skills/studio/studio-whatif-publish.md` |
 
 Before running OpenMontage for a channel, export the line `omni new-video` prints:
 `OPENMONTAGE_PROJECTS_DIR=<root>/channels/<slug>/videos`. Track spend with
