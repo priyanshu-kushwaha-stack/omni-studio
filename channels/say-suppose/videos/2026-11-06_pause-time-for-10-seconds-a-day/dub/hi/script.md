@@ -54,7 +54,7 @@ Format: `N | room | [emotion] Hinglish line` with the English line under it.
    (Vanish.)
 16 | 6.5 s | [tempted] आख़िरी समोसा। Colleague का हाथ बस पहुँचने वाला है... लेने दोगे?
    (The last samosa. A colleague's hand is already reaching. Do you let it go?)
-17 | 5.0 s | [grinning] बिल्कुल नहीं। संत थोड़ी हो... इंसान हो यार। और ten seconds भी हैं।
+17 | 5.0 s | [grinning] बिल्कुल नहीं। संत थोड़ी हो... इंसान हो, जिसके पास ten seconds pause की power है।
    (Of course not. You're not a saint. You're a person with ten seconds.)
 18 | 7.8 s | [laughing] मम्मी की चप्पल, सीधे सिर पे? थोड़ा side हो गए। मम्मी आज तक हैरान... निशाना चूका कैसे?
    (Your mother's chappal, mid-air, aimed at your head? You step aside. She never works out how she missed.)
