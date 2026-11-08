@@ -9,5 +9,6 @@ Higgsfield bills credits from the owner's plan ("max"; no dollar rate shown). Ch
 | 2026-11-07 | full narration, 69 new takes (the 2 test takes reused) | whatif_narration, Higgsfield, ElevenLabs Eleven v4, preset Arthur | 27.37 credits | 27.37 credits (balance 227.33 -> 199.96) | owner: "Good, do all 71" |
 | 2026-11-07 | voice test in the sample's route, 5 takes (lines 1, 13, 32, 45, 69; directions dropped; tempo 1.1) | whatif build, Higgsfield, text2speech_v2 (ElevenLabs variant), preset Arthur | 1.20 credits | 1.20 credits (0.30 + 0.45 + 0.15 + 0.15 + 0.15; balance 191.78 after) | owner: "Yes, test first" |
 | 2026-11-07 | channel music themes, light and dark, 60 s, two versions each (a one-time channel asset, reused by every video) | Higgsfield, ElevenLabs Music v2.5, instrumental | 34.88 credits | 34.88 credits (4 x 8.72) | owner: "Yes, both themes" |
+| 2026-11-08 | Hindi voice test for the multi-language dub, 2 takes (line 0 `[low, slow]`, "Somebody knows" `[whispers]`) | Higgsfield, ElevenLabs Eleven v4, preset Arthur | 0.69 credits | 0.69 credits (quote) | owner: "Yes, Hindi test" |
 
 Narration total: 28.06 credits for 71 takes, as quoted, plus the 1.20-credit voice test: 29.26 credits.
