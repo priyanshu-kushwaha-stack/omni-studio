@@ -32,5 +32,35 @@
   },
   "readback_problems": [
     "containsSyntheticMedia reads back None, asked False"
-  ]
+  ],
+  "thumbnail": {
+    "file": "renders/packaging/thumb-film-7.jpg",
+    "served": {
+      "default": {
+        "url": "https://i9.ytimg.com/vi/-si5nCzgQl8/default.jpg?sqp=CNCvwtcG&rs=AOn4CLA_oA8UNbUXMutHmEUYgmKiIiQ2jA",
+        "width": 120,
+        "height": 90
+      },
+      "medium": {
+        "url": "https://i9.ytimg.com/vi/-si5nCzgQl8/mqdefault.jpg?sqp=CNCvwtcG&rs=AOn4CLDqbIiCZdGbsOMKCnJtPzXeY_PtIg",
+        "width": 320,
+        "height": 180
+      },
+      "high": {
+        "url": "https://i9.ytimg.com/vi/-si5nCzgQl8/hqdefault.jpg?sqp=CNCvwtcG&rs=AOn4CLCnl06OYkPHj_S4vqSsZoK9C3lT-A",
+        "width": 480,
+        "height": 360
+      },
+      "standard": {
+        "url": "https://i9.ytimg.com/vi/-si5nCzgQl8/sddefault.jpg?sqp=CNCvwtcG&rs=AOn4CLAuIwqmFY0ZgS1tEfY4RdCZsM61Pw",
+        "width": 640,
+        "height": 480
+      },
+      "maxres": {
+        "url": "https://i9.ytimg.com/vi/-si5nCzgQl8/maxresdefault.jpg?sqp=CNCvwtcG&rs=AOn4CLC-htwcECHhw6CSLXXvoaEJRTVh_Q",
+        "width": 1280,
+        "height": 720
+      }
+    }
+  }
 }
