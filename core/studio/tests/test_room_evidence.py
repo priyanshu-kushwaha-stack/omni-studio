@@ -11,8 +11,12 @@ from studio.room.ledger import Ledger
 from studio.room.verdict import verdict_digest
 
 
+MODEL = {"xai": "grok-4.7-high", "openai": "gpt-5.6-sol-high", "google": "gemini-3.7-flash-high",
+         "anthropic": "claude-sonnet-5-5"}  # adapted: the evidence check now recomputes families from the registry
+
+
 def _record(cid, seat, role, fam, blockers, draft_sha256=""):
-    return {"draft_sha256": draft_sha256, "call_id": cid, "seat": seat, "role": role, "model": "m", "family": fam, "status": "ok", "scores": {},
+    return {"draft_sha256": draft_sha256, "call_id": cid, "seat": seat, "role": role, "model": MODEL[fam], "family": fam, "status": "ok", "scores": {},
             "blockers": blockers, "suggestions": [], "keep": [], "error": "", "output_sha256": "out-" + seat}
 
 
@@ -26,7 +30,7 @@ def _setup(tmp_path, fact_family="google", fact_blockers=(), seats=None):
     R.write_meta(video, "g2", 1, sha, {"ok": True, "problems": [], "warnings": []})
     seats = seats or (("viewer", "viewer", "xai"), ("story", "story", "openai"), ("fact", "fact", fact_family))
     for seat, role, fam in seats:
-        cid = db.reserve(channel="pou", video=video.name, gate="g2", round=1, seat=seat, model="m", family=fam,
+        cid = db.reserve(channel="pou", video=video.name, gate="g2", round=1, seat=seat, model=MODEL[fam], family=fam,
                          prompt_sha256="p", daily_cap=99, script_cap=99)
         blockers = list(fact_blockers) if role == "fact" else []
         record = _record(cid, seat, role, fam, blockers, sha)
@@ -130,12 +134,12 @@ def test_the_same_call_id_on_two_verdicts_fails(tmp_path):
 
 
 def _judge(video, db, family="openai", other_video=None, gate="g2"):
-    ids = [db.reserve(channel="pou", video=other_video or video.name, gate=gate, round=1, seat="judge", model="m",
+    ids = [db.reserve(channel="pou", video=other_video or video.name, gate=gate, round=1, seat="judge", model=MODEL[family],
                       family=family, prompt_sha256="p", daily_cap=99, script_cap=99) for _ in range(2)]
     for cid in ids:
         db.finish(cid, status="ok", output_sha256="j", duration_s=1)
     (R.round_dir(video, "g2", 1) / "judge.json").write_text(json.dumps(
-        {"model": "m", "family": family, "call_ids": ids, "picks": ["new", "new"], "winner": "new"}))
+        {"model": MODEL[family], "family": family, "call_ids": ids, "picks": ["new", "new"], "winner": "new"}))
 
 
 def test_a_judge_on_the_writer_family_fails(tmp_path):
@@ -315,3 +319,98 @@ def test_a_verdict_without_a_draft_binding_fails(tmp_path):
     _resign(db, data)
     report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
     assert _has(E.verify(video, report, script, db), "verdict story", "reviewed a different draft")
+
+
+def test_a_verdict_whose_family_is_not_its_models_family_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    f = _vfile(video, "story")
+    data = json.loads(f.read_text())
+    data["family"] = "google"  # story ran gpt-5.6-sol-high, an openai model
+    f.write_text(json.dumps(data))
+    row = db.get(data["call_id"])
+    import sqlite3
+    with sqlite3.connect(db.path) as con:  # forge the ledger row to match, as a determined editor would
+        con.execute("UPDATE calls SET family = 'google', verdict_sha256 = ? WHERE call_id = ?",
+                    (verdict_digest(data), row.call_id))
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "verdict story", "family", "gpt-5.6-sol-high")
+
+
+def test_a_judge_whose_family_is_not_its_models_family_fails(tmp_path):
+    video, script, _, db = _setup(tmp_path)
+    _judge(video, db)
+    f = R.round_dir(video, "g2", 1) / "judge.json"
+    data = json.loads(f.read_text())
+    data["family"] = "google"
+    f.write_text(json.dumps(data))
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "judge", "family")
+
+
+def test_an_unknown_model_is_a_problem_not_a_crash(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    f = _vfile(video, "story")
+    data = json.loads(f.read_text())
+    data["model"] = "not-a-model"
+    f.write_text(json.dumps(data))
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "not-a-model")
+
+
+def test_a_report_whose_shipped_is_not_what_the_round_files_ship_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    meta = R.read_meta(video, "g2", 1)
+    meta["lint"] = {"ok": False, "problems": ["x"], "warnings": []}  # on disk the round is no candidate
+    (R.round_dir(video, "g2", 1) / "meta.json").write_text(json.dumps(meta))
+    report["rounds"][0]["lint"] = meta["lint"]
+    assert _has(E.verify(video, report, script, db), "recomputed")
+
+
+def test_a_hand_edited_shipped_round_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    report["shipped"] = {"round": 1, "artifact_sha256": report["shipped"]["artifact_sha256"]}
+    assert not _has(E.verify(video, report, script, db), "recomputed")  # an honest report is left alone
+    report["rounds"][0]["owner_notes"] = True
+    assert E.verify(video, report, script, db) == []  # owner_notes in the report is not what is recomputed
+
+
+def test_a_judge_with_no_call_ids_fails(tmp_path):
+    video, script, _, db = _setup(tmp_path)
+    _judge(video, db)
+    f = R.round_dir(video, "g2", 1) / "judge.json"
+    data = json.loads(f.read_text())
+    data["call_ids"] = []
+    f.write_text(json.dumps(data))
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "judge", "call")
+
+
+def test_a_judge_call_that_did_not_finish_ok_fails(tmp_path):
+    video, script, _, db = _setup(tmp_path)
+    _judge(video, db)
+    import sqlite3
+    cid = json.loads((R.round_dir(video, "g2", 1) / "judge.json").read_text())["call_ids"][0]
+    with sqlite3.connect(db.path) as con:
+        con.execute("UPDATE calls SET status = 'failed' WHERE call_id = ?", (cid,))
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "judge call", "ok")
+
+
+def test_an_ok_verdict_with_the_lint_override_flag_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    f = _vfile(video, "story")
+    data = json.loads(f.read_text())
+    data["lint_overridden"] = True
+    f.write_text(json.dumps(data))
+    _resign(db, data)
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "verdict story", "lint")
+
+
+def test_the_call_count_is_scoped_by_the_reports_channel(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    assert report["channel"] == "pou"
+    for _ in range(40):  # another channel's calls on a video with the same folder name must not count
+        db.reserve(channel="other", video=video.name, gate="g2", round=1, seat="x", model="m", family="f",
+                   prompt_sha256="p", daily_cap=500, script_cap=500)
+    assert E.verify(video, report, script, db) == []

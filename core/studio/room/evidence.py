@@ -2,7 +2,8 @@
 
 It catches skipped rounds, missing roles, a failed or blocking fact seat, a seat on the writer's family, edits to the
 file after the room, edited verdict files and verdicts the ledger never saw. Each verdict file is bound to the ledger
-(its digest, seat, model, family, video, gate and round) and no malformed input raises: it becomes a problem. Like the
+(its digest, seat, model, family, video, gate and round), families are recomputed from the model registry, the shipped
+round is recomputed from the round files, and no malformed input raises: it becomes a problem. Like the
 approval key, it is not a boundary against an agent that forges both the ledger and the report on purpose.
 """
 
@@ -15,6 +16,7 @@ from typing import Any
 
 from studio.room.ledger import Ledger
 from studio.room import report as R
+from studio.room.models import UnknownModel, family_of
 from studio.room.report import read_meta
 from studio.room.snapshot import drafts_dir, load_draft, sha256_file
 from studio.room.verdict import LOCKED_ROLES, MANDATORY, verdict_digest
@@ -27,6 +29,18 @@ def _read_verdict(path: Path) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return None
+
+
+def _family_problem(what: str, record: dict[str, Any]) -> str:
+    """The family stored in a verdict or judge record must be the one the registry gives its model."""
+    model = record.get("model")
+    try:
+        real = family_of(str(model))
+    except UnknownModel:
+        return f"{what}: model {model!r} is not in the model registry"
+    if record.get("family") != real:
+        return f"{what}: stored family {record.get('family')!r} is not {real!r}, the family of {model}"
+    return ""
 
 
 def verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Ledger) -> list[str]:
@@ -54,6 +68,9 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         load_draft(video_dir, want)
     except (OSError, ValueError) as exc:
         problems.append(f"the shipped draft's snapshot is missing or edited ({type(exc).__name__}: {exc})")
+    recomputed = R.shipped(R.load_rounds(video_dir, str(report.get("gate"))))
+    if recomputed != ship:
+        problems.append(f"the report's shipped round does not match the round files (recomputed: {recomputed})")
     rnd = next((r for r in report.get("rounds", []) if r.get("round") == ship.get("round")), None)
     if rnd is None:
         return problems + [f"shipped round {ship.get('round')} is not in the report"]
@@ -98,6 +115,11 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
                 or v.get("blockers") != (len(blockers) if isinstance(blockers, list) else None):
             problems.append(f"verdict {seat}: the report does not match its verdict file")
         loaded.append((v, raw))
+    for _, raw in loaded:
+        if raw is not None:
+            problem = _family_problem(f"verdict {raw.get('seat')}", raw)
+            if problem:
+                problems.append(problem)
     ok = [raw for _, raw in loaded if raw is not None and raw.get("status") == "ok"]
     for raw in ok:
         if raw.get("draft_sha256") != want:
@@ -108,11 +130,19 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
     if len({r.get("family") for r in ok if r.get("role") in MANDATORY} - {writer}) < 2:
         problems.append(f"round {n}: mandatory seats need two or more families other than the writer's")
     for r in ok:
+        if r.get("lint_overridden"):
+            problems.append(f"verdict {r.get('seat')}: ran on a draft that failed lint (lint_overridden)")
         if r.get("role") in LOCKED_ROLES and r.get("family") == writer:
             problems.append(f"seat {r.get('seat')} ({r.get('role')}) is on the writer's family ({writer})")
     judge = rnd.get("judge")
     if judge and judge.get("family") == writer:
         problems.append(f"the judge is on the writer's family ({writer})")
+    if judge:
+        problem = _family_problem("judge", judge)
+        if problem:
+            problems.append(problem)
+        if not judge.get("call_ids"):
+            problems.append("judge call ids are missing: the judge result cites no ledger call")
     seen: set[str] = set()
     for v, raw in loaded:
         if raw is None:
@@ -143,8 +173,12 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         elif (row.seat, row.video, row.gate, row.round, row.family) != (
                 "judge", video, gate, n, (judge or {}).get("family")):
             problems.append(f"judge call {str(cid)[:12]} {MISMATCH}")
+        elif row.status != "ok":
+            problems.append(f"judge call {str(cid)[:12]} did not finish ok (status {row.status})")
     cap = report["cap"]
-    for calls in (report["calls"], ledger.count(video=video, gate=gate)):
+    channel = report.get("channel")
+    for calls in (report["calls"], ledger.count(channel=channel if isinstance(channel, str) and channel else None,
+                                                video=video, gate=gate)):
         if calls > cap:
             problems.append(f"{calls} calls, over the cap of {cap}")
             break
