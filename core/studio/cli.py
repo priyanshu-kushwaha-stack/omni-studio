@@ -276,7 +276,7 @@ def similar(slug: str, video: str, media: str | None) -> int:
 
 
 def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | None, first_auth: bool,
-           privacy: str | None, install: bool) -> int:
+           privacy: str | None, install: bool, thumbnail_only: bool = False) -> int:
     """Dry run by default. Never public, never scheduled (core/studio/publish/youtube.py)."""
     from studio.publish import youtube
 
@@ -289,8 +289,16 @@ def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | Non
             print("error: omni upload <channel> <video>", file=sys.stderr)
             return 2
         request = youtube.build_request(slug, video, privacy=privacy)
+        if thumbnail_only and not run:
+            print(f"DRY RUN: would set {request.thumbnail} as the thumbnail of the video in upload_log.json; "
+                  "pass --run --confirm to do it")
+            return 0
         if not run:
             print(youtube.dry_run(request))
+            return 0
+        if thumbnail_only:
+            log = youtube.set_thumbnail(request, confirm or "")
+            print(f"thumbnail set on {log['youtube_video_id']}: {json.dumps(log['thumbnail'])}")
             return 0
         log = youtube.run(request, confirm or "", first_auth=first_auth)
         print(f"uploaded {log['youtube_video_id']} private; read-back ok: {json.dumps(log['readback'])}")
@@ -360,6 +368,8 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_argument("--first-auth", action="store_true", help="with --run: no token yet; opens Google consent")
     sub.add_argument("--privacy", help="refused unless 'private'")
     sub.add_argument("--install", action="store_true", help="install the pinned youtubeuploader into .tools/")
+    sub.add_argument("--thumbnail-only", action="store_true",
+                     help="with --run: set upload.yaml's thumbnail on the video already uploaded (upload_log.json)")
 
     args = parser.parse_args(argv)
     try:
@@ -385,7 +395,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.run and args.dry_run:
                 parser.error("--run and --dry-run together")
             return upload(args.channel, args.video, run=args.run, confirm=args.confirm, first_auth=args.first_auth,
-                          privacy=args.privacy, install=args.install)
+                          privacy=args.privacy, install=args.install, thumbnail_only=args.thumbnail_only)
         return fix(args.channel, args.format_name, args.stage, args.severity, args.example, args.note)
     except ChannelError as exc:
         print(f"error: {exc}", file=sys.stderr)

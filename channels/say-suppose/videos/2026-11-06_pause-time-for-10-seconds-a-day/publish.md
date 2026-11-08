@@ -8,8 +8,8 @@ private until Google's API audit; the public flip is the owner's.
 - **File:** `renders/edit-v6.mp4` (5:14, -14.0 LUFS), passed G5 and G6.
 - **Title, description, tags:** `upload.yaml`. Title and thumbnail are G1 pair A. Sources from `claims.md` (c04, c05,
   c09, c14: every claim the narration speaks) are in the description, not on screen (owner, 2026-11-07).
-- **Thumbnail:** set by hand in Studio (the uploader does not set it). Two options in `renders/packaging/`:
-  `thumb-film-7.jpg` (the film's own frame at the counter's 7) and `thumb-a.jpg` (the G1 mock).
+- **Thumbnail:** `renders/packaging/thumb-film-7.jpg`, the film's own frame at the counter's 7 (owner's pick,
+  2026-11-08), set through the API: `omni upload ... --thumbnail-only --run --confirm <slug>/<video>`.
 - **Audience:** not made for kids.
 - **Altered or synthetic content:** no (owner confirmed, 2026-11-08). The disclosure covers realistic content; this is a
   stylised cartoon with a fictional narrator. The narration and music are AI-made, which the description says.

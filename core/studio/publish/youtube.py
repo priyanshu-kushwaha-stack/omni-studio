@@ -43,13 +43,15 @@ ROOT = Path(__file__).resolve().parents[3]
 LOCK = ROOT / "core" / "lock.yaml"
 
 UPLOAD_KEYS = {"file", "title", "description", "tags", "category_id", "language", "made_for_kids",
-               "contains_synthetic_media", "privacy"}
+               "contains_synthetic_media", "privacy", "thumbnail"}
 # Normalised (lowercase, no _ - or spaces) keys that mean scheduling or a status override, at any depth.
 SCHEDULE_KEYS = {"publishat", "publishtime", "publishdate", "schedule", "scheduled", "scheduledat",
                  "scheduledpublishtime", "scheduledstarttime", "releaseat", "premiere"}
 PRIVACY_KEYS = {"privacy", "privacystatus", "visibility", "status"}
 MAX_TITLE = 100
 MAX_DESCRIPTION = 5000
+MAX_THUMBNAIL = 2 * 1024 * 1024   # YouTube's limit for a custom thumbnail
+THUMBNAIL_TYPES = (".jpg", ".jpeg", ".png")
 
 
 class UploadRefused(Exception):
@@ -90,6 +92,7 @@ class UploadRequest:
     metadata: dict[str, Any]
     youtube_channel_id: Optional[str]
     token: Path
+    thumbnail: Optional[Path] = None
     notes: list[str] = field(default_factory=list)
 
 
@@ -164,6 +167,12 @@ def build_request(slug: str, video_id: str, privacy: Optional[str] = None,
         problems.append(f"{path.name}.file: required (the render, relative to the video folder)")
     elif not media.resolve().is_relative_to(folder.resolve()) or not media.is_file():
         problems.append(f"{path.name}.file: {data['file']!r} is not a file inside {folder.name}/")
+    thumbnail = folder / str(data["thumbnail"]) if data.get("thumbnail") else None
+    if thumbnail is not None:
+        if not thumbnail.resolve().is_relative_to(folder.resolve()) or not thumbnail.is_file():
+            problems.append(f"{path.name}.thumbnail: {data['thumbnail']!r} is not a file inside {folder.name}/")
+        elif thumbnail.suffix.lower() not in THUMBNAIL_TYPES or thumbnail.stat().st_size > MAX_THUMBNAIL:
+            problems.append(f"{path.name}.thumbnail: a JPG or PNG of at most 2 MB")
 
     kids = data["made_for_kids"] if "made_for_kids" in data else channel.config.made_for_kids
     if not isinstance(kids, bool):
@@ -198,7 +207,7 @@ def build_request(slug: str, video_id: str, privacy: Optional[str] = None,
         "containsSyntheticMedia": ai,
     }
     assert_private(meta)
-    return UploadRequest(slug, video_id, media, meta, channel.config.youtube_channel_id, token)
+    return UploadRequest(slug, video_id, media, meta, channel.config.youtube_channel_id, token, thumbnail)
 
 
 # --- the binary ---
@@ -259,7 +268,8 @@ def install(fetch: Callable[[str], bytes] | None = None) -> Path:
 def command(req: UploadRequest, meta_path: Path, out_path: Path) -> list[str]:
     return [str(binary_path()), "-filename", str(req.file), "-metaJSON", str(meta_path),
             "-metaJSONout", str(out_path), "-privacy", "private", "-secrets", str(client_secret_path()),
-            "-cache", str(req.token), "-sendFilename=false", "-quiet"]
+            "-cache", str(req.token), "-sendFilename=false", "-quiet",
+            *(["-thumbnail", str(req.thumbnail)] if req.thumbnail else [])]
 
 
 def printable(cmd: list[str]) -> str:
@@ -315,6 +325,7 @@ def dry_run(req: UploadRequest) -> str:
         f"AI        containsSyntheticMedia={json.dumps(req.metadata['containsSyntheticMedia'])}  "
         "-> status.containsSyntheticMedia (altered or synthetic content)",
         f"channel   {req.youtube_channel_id} (checked against the token's channel before and after upload)",
+        f"thumbnail {req.thumbnail.relative_to(ROOT) if req.thumbnail and req.thumbnail.is_relative_to(ROOT) else req.thumbnail or 'none: set it in Studio, or add thumbnail: to upload.yaml'}",
         "metaJSON  " + json.dumps(req.metadata, indent=2, ensure_ascii=False).replace("\n", "\n          "),
         "command   " + printable(cmd),
         "secrets   -secrets and -cache name files in ~/.config/omni-studio/youtube/; their contents are never "
@@ -356,9 +367,41 @@ def run(req: UploadRequest, confirm: str, first_auth: bool = False, api=None,
     checks = youtube_api.verify_readback(readback, req.metadata, req.youtube_channel_id)
     log = {"channel": req.channel, "video": req.video, "youtube_video_id": video_id,
            "requested": req.metadata, "readback": readback, "readback_problems": checks}
-    folder = req.file.parent if req.file.parent.name != "renders" else req.file.parent.parent
-    (folder / "upload_log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
+    (_folder(req) / "upload_log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
     if checks:
         raise UploadRefused(f"uploaded {video_id} but the read-back disagrees; fix it in YouTube Studio now:\n  "
                             + "\n  ".join(checks))
+    return log
+
+
+def _folder(req: UploadRequest) -> Path:
+    return req.file.parent if req.file.parent.name != "renders" else req.file.parent.parent
+
+
+def set_thumbnail(req: UploadRequest, confirm: str, api=None) -> dict[str, Any]:
+    """Set upload.yaml's thumbnail on the video `run` already uploaded (its id is in upload_log.json). Same guards as
+    an upload: the owner's --confirm, the channel's own token, and nothing else about the video changes."""
+    from studio.publish import youtube_api
+
+    if confirm != f"{req.channel}/{req.video}":
+        raise UploadRefused(f"--confirm must be exactly {req.channel}/{req.video}")
+    if req.thumbnail is None:
+        raise UploadRefused("upload.yaml has no thumbnail: add thumbnail: <image inside the video folder>")
+    log_path = _folder(req) / "upload_log.json"
+    log = json.loads(log_path.read_text(encoding="utf-8")) if log_path.is_file() else {}
+    video_id = log.get("youtube_video_id")
+    if not video_id:
+        raise UploadRefused(f"no uploaded video in {log_path.name}: upload first (omni upload --run)")
+    problems = [p for p in preflight(req) if "youtubeuploader" not in p]
+    if problems:
+        raise UploadRefused("preflight failed:\n  " + "\n  ".join(problems))
+    api = api or youtube_api.YouTubeAPI(client_secret_path(), req.token)
+    mine = api.mine_channel_id()
+    if mine != req.youtube_channel_id:
+        raise UploadRefused(f"the token belongs to channel {mine}, not {req.youtube_channel_id}; refused")
+    served = api.set_thumbnail(video_id, req.thumbnail)
+    if not served:
+        raise UploadRefused(f"thumbnails.set returned nothing for {video_id}; check the thumbnail in Studio")
+    log["thumbnail"] = {"file": str(req.thumbnail.relative_to(_folder(req))), "served": served}
+    log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
     return log
