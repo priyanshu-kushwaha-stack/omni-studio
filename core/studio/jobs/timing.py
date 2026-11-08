@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 DEFAULT = Path.home() / ".local" / "state" / "omni-studio" / "jobs" / "timings.jsonl"
+ROOT = Path(__file__).resolve().parents[3]
 VIDEO_RE = re.compile(r"videos/([^/\s]+)")
 
 
@@ -35,9 +36,9 @@ def machine() -> str:
 
 def record(step: str, *, seconds: float, ok: bool, channel: str = "", video: str = "", inputs_bytes: int = 0,
            extra: Optional[dict[str, Any]] = None, path: Optional[Path] = None) -> dict[str, Any]:
-    row = {"at": datetime.now(timezone.utc).isoformat(), "step": step, "channel": channel, "video": video,
-           "machine": machine(), "seconds": round(seconds, 3), "ok": ok, "inputs_bytes": inputs_bytes,
-           **(extra or {})}
+    row = {**(extra or {}),  # first, so extra can never overwrite a core key
+           "at": datetime.now(timezone.utc).isoformat(), "step": step, "channel": channel, "video": video,
+           "machine": machine(), "seconds": round(seconds, 3), "ok": ok, "inputs_bytes": inputs_bytes}
     target = Path(path) if path else timings_path()
     target.parent.mkdir(parents=True, exist_ok=True)
     with open(target, "a", encoding="utf-8") as f:
@@ -71,6 +72,19 @@ def video_from(inputs: dict[str, Any]) -> str:
     return ""
 
 
+def args_bytes(inputs: dict[str, Any]) -> int:
+    """Total size of the args that are existing files under the repo (relative args are repo-relative)."""
+    total, root = 0, ROOT.resolve()
+    for arg in inputs.get("args") or []:
+        try:
+            path = (ROOT / str(arg)).resolve()
+            if path.is_file() and path.is_relative_to(root):
+                total += path.stat().st_size
+        except (OSError, ValueError):
+            continue
+    return total
+
+
 def record_tool(execute):
     @functools.wraps(execute)
     def wrapper(self, inputs):
@@ -83,7 +97,7 @@ def record_tool(execute):
                 record(getattr(self, "name", type(self).__name__), seconds=time.monotonic() - t0,
                        ok=bool(result is not None and getattr(result, "success", False)),
                        channel=str(inputs.get("channel", "")), video=video_from(inputs),
-                       extra={"via": "tool"})
+                       inputs_bytes=args_bytes(inputs), extra={"via": "tool"})
             except Exception:
                 pass
 

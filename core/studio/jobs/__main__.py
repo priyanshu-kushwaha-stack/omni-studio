@@ -17,7 +17,11 @@ def cmd_run(args) -> int:
         print("give the command after --", file=sys.stderr)
         return 2
     t0 = time.monotonic()
-    code = subprocess.run(command).returncode
+    try:
+        code = subprocess.run(command).returncode
+    except OSError as exc:  # never started: the shell's own codes, 126 not executable and 127 not found
+        code = 126 if isinstance(exc, PermissionError) else 127
+        print(f"could not run {command[0]}: {exc}", file=sys.stderr)
     try:
         record(args.step, seconds=time.monotonic() - t0, ok=code == 0, channel=args.channel or "",
                video=args.video or "", extra={"via": "run"})

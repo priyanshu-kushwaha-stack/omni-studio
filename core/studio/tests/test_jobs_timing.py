@@ -95,3 +95,28 @@ def test_pou_engine_tools_record_a_timing(monkeypatch):
     row = T.read_timings()[-1]
     assert (row["step"], row["channel"], row["video"], row["via"]) == (
         "overlay_check", "professor-of-us", "2026-10-31_tails", "tool")
+
+
+def test_extra_cannot_overwrite_the_core_keys():
+    T.record("real", seconds=2, ok=True, channel="c", extra={"step": "forged", "ok": False, "seconds": 999,
+                                                            "via": "tool"})
+    row = T.read_timings()[0]
+    assert (row["step"], row["ok"], row["seconds"], row["via"]) == ("real", True, 2, "tool")
+
+
+def test_record_tool_sums_the_size_of_existing_file_args_under_the_repo(tmp_path):
+    inside = T.ROOT / "core" / "studio" / "jobs" / "timing.py"
+    class Tool:
+        name = "t"
+
+        @T.record_tool
+        def execute(self, inputs):
+            return SimpleNamespace(success=True)
+
+    outside = tmp_path / "big.bin"
+    outside.write_bytes(b"x" * 500)
+    Tool().execute({"args": ["--flag", str(inside), "core/studio/jobs/__init__.py", str(outside), "nope.txt"]})
+    expected = inside.stat().st_size + (T.ROOT / "core/studio/jobs/__init__.py").stat().st_size
+    assert T.read_timings()[0]["inputs_bytes"] == expected
+    Tool().execute({"channel": "c"})
+    assert T.read_timings()[1]["inputs_bytes"] == 0
