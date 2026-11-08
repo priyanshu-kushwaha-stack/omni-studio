@@ -14,3 +14,7 @@ Config.overrideWebpackConfig((config) => ({
     modules: [path.join(engine, "node_modules"), ...(config.resolve?.modules ?? ["node_modules"])],
   },
 }));
+
+// A frame may wait up to 2 min for its assets. The 30 s default failed edit v6 at frame 4319 while other sessions
+// loaded the Mac (load average 42, 2026-11-08).
+Config.setDelayRenderTimeoutInMilliseconds(120_000);
