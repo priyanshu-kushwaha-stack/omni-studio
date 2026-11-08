@@ -14,9 +14,10 @@ import { lastIndex, type Shot } from "./shared";
  *  the voice's level in the wordless holds (style.md). It dips DUCK_IN frames before a line and comes back over
  *  DUCK_OUT frames after it, so no duck is a step. */
 // Owner, 2026-11-08 (G5): music 26 dB under Arthur while he speaks. The narration measures -18.0 LUFS and the score's
-// pieces -15.8, so 0.039 puts the music at -44 LUFS under speech. In the holds it rises to 0.4, about 6 dB under him.
+// pieces -15.8, so 0.039 puts the music at -44 LUFS under speech. In the holds it rises to 0.3, about 8 dB under him
+// ("keep it light").
 const UNDER_VOICE = 0.039;
-const IN_HOLDS = 0.4;
+const IN_HOLDS = 0.3;
 const DUCK_IN = 8;
 const DUCK_OUT = 18;
 

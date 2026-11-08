@@ -32,23 +32,29 @@ OUT = HERE / "assets" / "music" / "score.wav"
 DARK = "theme-dark"
 LIGHT = "theme-light"
 # Scene by scene (owner's G5 notes, 2026-11-08: the first mix was too loud, did not fit, and felt monotonous; a
-# quieter scene-by-scene pass was "still too much"). Music only where it carries feeling or marks a turn; the rest is
-# dry. Each row: source (a channel theme or a
+# quieter scene-by-scene pass was "still too much"; then a sparse pass with long silences "looks off... keep sound in
+# the complete video... keep it light"). Music runs through, scene by scene and light; only two short silences: one
+# beat as the bus screams through, one before the twist. Each row: source (a channel theme or a
 # local take), seconds into it, from line, to line (exclusive). Rows that touch crossfade; a gap is silence.
 SCENES = [
     (LIGHT, 4.0, 1, 6),            # day one: the bedroom, the rule (the real theme)
-    (None, 0.0, 6, 22),            # the rule's fine print and the first days: dry, voice and sound effects
+    (DARK, 10.0, 6, 10),           # midnight, "so we cheat"
+    ("you-47", 0.0, 10, 14),       # the phone
+    ("you-29", 0.0, 14, 16),       # the boss
+    ("you-11", 0.0, 16, 18),       # the samosa
+    ("you-47", 30.0, 18, 19),      # the chappal
+    ("you-11", 50.0, 19, 22),      # chronostasis
     ("tension-29", 0.0, 22, 28),   # day twelve: the walk, the bus, the stakes
     ("tension-11", 18.0, 28, 33),  # the pause, the run, the countdown
-    (None, 0.0, 33, 34),           # the bus screams through: silence
-    (DARK, 0.0, 34, 39),           # the mother, then the night: it is not free
-    (None, 0.0, 39, 41),           # just this once: dry
+    (DARK, 0.0, 33, 39),           # after one beat of silence: the mother, then the night
+    ("you-29", 40.0, 39, 41),      # just this once
     ("catch-11", 0.0, 41, 43),     # the stairs
-    (None, 0.0, 43, 45),           # awake, the montage: dry
+    ("catch-29", 0.0, 43, 45),     # awake, the montage
     (DARK, 30.0, 45, 49),          # midnight, the curtain
-    (None, 0.0, 49, 52),           # the six, small disasters: dry
+    (LIGHT, 20.0, 49, 52),         # the six, small disasters
     ("longrun-11", 0.0, 52, 55),   # the mother on the stairs
-    (None, 0.0, 55, 60),           # forty years, two days older, the strangers: dry
+    ("longrun-29", 0.0, 55, 57),   # forty years
+    ("longrun-11", 15.0, 57, 60),  # two days older, the strangers
 ]
 FPS = 30
 XFADE = 1.2
@@ -76,10 +82,12 @@ def main() -> None:
         if name is None:
             continue
         start, end = s(c[a]["from"]), s(c[b]["from"]) if b < len(c) else s(t["totalFrames"])
+        if a == 33:
+            start += 1.2                                 # one beat of silence as the bus screams through
         if b == 60:
             end -= 1.0                                   # near-silence before "And then you notice something"
-        nxt = SCENES[i + 1][0] if i + 1 < len(SCENES) else None
-        prev = SCENES[i - 1][0] if i > 0 else LIGHT
+        nxt = SCENES[i + 1][0] if i + 1 < len(SCENES) and SCENES[i + 1][2] != 33 else None
+        prev = SCENES[i - 1][0] if i > 0 and a != 33 else (None if a == 33 else LIGHT)
         fade_in = XFADE if prev else 2.0
         fade_out = XFADE if nxt else 2.5
         pieces.append((source(name), at, start, end - start + (XFADE if nxt else 0.0), fade_in, fade_out))
