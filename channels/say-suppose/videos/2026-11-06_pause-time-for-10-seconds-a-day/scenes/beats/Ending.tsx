@@ -93,7 +93,7 @@ const Ending: React.FC<{ shot: Shot }> = ({ shot }) => {
     <>
       <Sequence from={n - 2} durationInFrames={50}><Audio src={staticFile("sfx/timestop.wav")} volume={0.45} /></Sequence>
       <Sequence from={cues.looking} durationInFrames={86}><Audio src={staticFile("sfx/sting.wav")} volume={0.3} /></Sequence>
-      <Sequence from={lineEnd(clips, 63)} durationInFrames={10}><Audio src={staticFile("sfx/pop.wav")} volume={0.3} /></Sequence>
+      <Sequence from={lineEnd(clips, 63)} durationInFrames={10}><Audio src={staticFile("sfx/pop.wav")} volume={0.1} /></Sequence>
     </>
   );
 
