@@ -12,6 +12,8 @@ private until Google's API audit; the public flip is the owner's.
   2026-11-08), set through the API: `omni upload ... --thumbnail-only --run --confirm <slug>/<video>`.
 - **Subtitles:** English and Hindi tracks from the scripts (`subtitles/en.srt`, `subtitles/hi.srt`), added through the
   API 2026-11-08 (`omni upload ... --captions-only`); ids in `upload_log.json`.
+- **End screen:** set in Studio 2026-11-08, 5:06:03 to the end: Subscribe (top right) and a Video element on "Most
+  recent upload" (bottom right), both in the right third the end card leaves empty. Shows once the video is public.
 - **Audience:** not made for kids.
 - **Studio check, 2026-11-08:** AI use (Studio's new name for altered content) reads No; not made for kids.
 - **Altered or synthetic content:** no (owner confirmed, 2026-11-08). The disclosure covers realistic content; this is a
