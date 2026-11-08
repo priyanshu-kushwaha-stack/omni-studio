@@ -255,6 +255,16 @@ Before the room check is wired into `omni approve`, A2 must close these gaps fou
    and count against the caps.
 9. The Claude CLI is verified under the sandbox profile (transcript writes to `~/.claude/projects` are denied; the
    user's CLAUDE.md and hooks may still load) before any channel adopts a Claude seat.
+10. `--owner-notes` is proven, not declared: an owner-notes round must cite a dated owner note in `taste.md` (or the
+    owner's own approval of the flag), and evidence checks it. Today an agent can pass the flag at a round's first
+    lint and ship it without the judge.
+11. Each verdict records the names and sha256 of the inputs its seat saw, and evidence requires each role's
+    mandatory inputs (viewer `audience.md`; story `style.md`, `cast.md`, `packaging.md`; fact `claims.md`), so a fact
+    seat run without the ledger cannot count as a review.
+12. The re-lint lock counts any ledger row for the round, not only `reserved` ones, so deleting a round's verdict
+    files cannot unlock it; `judge` is refused once `judge.json` exists.
+13. `--input` refusals also cover `~/Exploration` outside this repo and `~/Sprinklr`, so another project's or work
+    files cannot reach a third-party model prompt.
 
 ## Commands
 
