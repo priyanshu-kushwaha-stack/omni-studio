@@ -238,6 +238,47 @@ def test_sandbox_exec_really_denies_a_write(tmp_path):
     assert proc.returncode != 0 and not target.exists()
 
 
+def test_the_profile_allows_listed_paths_after_the_denies(tmp_path):
+    denied, own = tmp_path / "chats", tmp_path / "chats" / "own"
+    profile = C.sandbox_profile([denied], allow=[own])
+    assert profile.index(f'(deny file-read* file-write* (subpath "{denied.resolve()}"))') < profile.index(
+        f'(allow file-read* file-write* (subpath "{own.resolve()}"))')
+
+
+@pytest.mark.skipif(not shutil.which("sandbox-exec"), reason="macOS only")
+def test_sandbox_exec_allows_only_the_listed_subfolder(tmp_path):
+    chats = tmp_path / "chats"
+    (chats / "other").mkdir(parents=True)
+    (chats / "other" / "t.txt").write_text("OTHER")
+    own = chats / "own"
+    profile = C.sandbox_profile([chats], allow=[own])
+    # plain mkdir (no -p, which would stat the denied parent), as cursor-agent creates its chat folder
+    ok = subprocess.run(["sandbox-exec", "-p", profile, "sh", "-c", f"mkdir '{own}' && echo x > '{own}/w.txt'"],
+                        capture_output=True, text=True)
+    assert ok.returncode == 0 and (own / "w.txt").read_text() == "x\n"
+    peek = subprocess.run(["sandbox-exec", "-p", profile, "cat", str(chats / "other" / "t.txt")],
+                          capture_output=True, text=True)
+    assert peek.returncode != 0 and "OTHER" not in peek.stdout
+
+
+def test_cursor_gets_its_own_chat_folder_and_nothing_else(tmp_path):
+    import hashlib
+
+    bundle = tmp_path / "bundle"
+    bundle.mkdir()
+    own = C.own_chat_dir(bundle)
+    assert own.parent == (Path(pwd.getpwuid(os.getuid()).pw_dir) / ".cursor" / "chats").resolve()
+    assert own.name == hashlib.md5(str(bundle.resolve()).encode()).hexdigest()
+    seen = {}
+
+    def runner(cmd, **kw):
+        seen["profile"], seen["cwd"] = cmd[2], kw["cwd"]
+        return subprocess.CompletedProcess(cmd, 0, stdout="ok", stderr="")
+
+    C.invoke(["cursor-agent", "-p", "x"], runner=runner)
+    assert f'(allow file-read* file-write* (subpath "{C.own_chat_dir(Path(seen["cwd"]))}"))' in seen["profile"]
+
+
 def test_the_verdict_record_binds_the_draft_and_the_digest_covers_it(tmp_path):
     from studio.room.verdict import verdict_digest
     db = Ledger(tmp_path / "l.sqlite")

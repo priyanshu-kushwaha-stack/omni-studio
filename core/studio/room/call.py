@@ -11,6 +11,7 @@ writes a failed verdict. CapReached from ledger.reserve propagates; callers catc
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import pwd
@@ -95,14 +96,21 @@ def _sb_quote(path: Path) -> str:
     return str(Path(path).resolve()).replace("\\", "\\\\").replace('"', '\\"')
 
 
-def sandbox_profile(deny: list[Path]) -> str:
-    # sandbox-exec matches real paths: /var/folders/... is /private/var/folders/... on macOS.
-    def rule(p: Path) -> str:
+def sandbox_profile(deny: list[Path], allow: tuple[Path, ...] | list[Path] = ()) -> str:
+    # sandbox-exec matches real paths: /var/folders/... is /private/var/folders/... on macOS. Later rules win, so an
+    # allowed folder inside a denied one (the seat's own Cursor chat) stays usable.
+    def rule(action: str, p: Path) -> str:
         kind = "literal" if Path(p).is_file() else "subpath"  # a single file, or a folder (or a path not there yet)
-        return f'(deny file-read* file-write* ({kind} "{_sb_quote(p)}"))'
+        return f'({action} file-read* file-write* ({kind} "{_sb_quote(p)}"))'
 
-    rules = "\n".join(rule(p) for p in deny)
+    rules = "\n".join([rule("deny", p) for p in deny] + [rule("allow", p) for p in allow])
     return f"(version 1)\n(allow default)\n{rules}\n"
+
+
+def own_chat_dir(bundle: Path) -> Path:
+    """The folder cursor-agent writes this run's chat to: ~/.cursor/chats/<md5 of the workspace's real path>."""
+    real = str(Path(bundle).resolve())
+    return (_real_home() / ".cursor" / "chats").resolve() / hashlib.md5(real.encode()).hexdigest()
 
 
 def clean_env() -> dict[str, str]:
@@ -154,7 +162,8 @@ def invoke(cmd: list[str], *, runner=None, timeout: float = 600) -> tuple[int, s
     with tempfile.TemporaryDirectory(prefix="room-seat-") as bundle:
         t0 = time.monotonic()
         try:
-            proc = runner(["sandbox-exec", "-p", sandbox_profile(deny_paths()), *cmd], cwd=bundle, env=clean_env(),
+            profile = sandbox_profile(deny_paths(), allow=[own_chat_dir(Path(bundle))])
+            proc = runner(["sandbox-exec", "-p", profile, *cmd], cwd=bundle, env=clean_env(),
                           capture_output=True, text=True, timeout=timeout)
         except subprocess.TimeoutExpired:
             return 124, "", time.monotonic() - t0
