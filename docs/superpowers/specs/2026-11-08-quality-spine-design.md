@@ -71,7 +71,8 @@ same machinery can extend there later.
 
 ```
 round N:  lint draft N -> mandatory + channel seats review draft N (snapshot stored)
-          draft N is a candidate if lint-clean and no fact blocker
+          draft N is a candidate if lint passed, the viewer, story and fact seats each returned an ok verdict,
+             and the fact verdict has no blocker
           if two or more candidates exist, the judge compares draft N with the best candidate
              (both orders, labels hidden; a win must hold both ways; a tie keeps the best)
           stop if draft N has no blockers at all, or N == round cap
@@ -82,6 +83,10 @@ ship:     the best candidate, bound to the round that reviewed it
 
 An owner-notes round (`lint --owner-notes`, mandatory seats only, no judge) ships if it is a candidate, because owner
 notes outrank the room; otherwise the earlier best stays and the conflict goes back to the owner.
+
+A fact blocker is never demoted: a blocker from a fact seat stays a blocker whatever `domain` the model names, and for
+other seats a blocker with no domain, or with the seat's own role as its domain, stays one (the domain is compared
+after trimming and lower-casing).
 
 Non-fact blockers still open at the cap do not block the gate. They lead the room report so the owner decides.
 Seat scores are informational only; the stop rule uses blockers and the judge, nothing else.
@@ -155,19 +160,33 @@ room tools do.
 
 ## Room mechanics
 
-**Model call (tool).** `core/studio/room/call.py`: writes the seat's inputs (draft snapshot, brief, bible files) to a
-temp bundle and runs `claude -p` with tools off or `cursor-agent -p --mode ask --output-format json --model <id>`,
-under an OS-level read denial for `~/.config/omni-studio/` and the repo outside the bundle (A1 picks the mechanism,
-a `sandbox-exec` profile or the CLIs' own sandbox settings, and tests that a seat cannot read outside its bundle).
-Stripped environment, timeout. Output must parse as the verdict schema: one retry, then the seat is `failed`.
+**Model call (tool).** `core/studio/room/call.py`: puts the seat's inputs (numbered draft, brief, bible files) inline in
+the prompt and runs `claude -p` with tools off or `cursor-agent -p --mode ask --output-format json --model <id>` from an
+empty temp folder under `sandbox-exec`, with reads and writes denied for secrets, every project (this repo and its main
+checkout), session transcripts and the call ledger (a test shows a denied read really fails). No bundle is written.
+Stripped environment, timeout. Retry rule: a malformed answer or a non-zero exit is retried once; a timeout is not
+retried. After that the seat is `failed`. A brief must live under the channel folder or the shared seats folder, and
+`--input` files in the real home's secrets folders (`~/.config/omni-studio`, `~/.ssh`, `~/.aws`, `~/.gnupg`,
+`~/.config/gh`, `~/.netrc`, `~/.local/state/omni-studio`, `~/.claude/projects`) are refused: nothing secret is read
+into a prompt.
+
+**Round discipline.** Once a round has any verdict or judge file, or a `reserved` ledger row, `lint` refuses any
+re-lint of it (the same draft included; this also locks `--owner-notes`): start the next round. `lint --kind` must fit
+the gate (g1 packaging, g2 script). A seat whose verdict in the round is `ok` is not re-run; a failed one may be. Seats
+do not run on a round whose lint failed, except with `--allow-failed-lint` for calibration (the verdict records
+`lint_overridden: true`). Each verdict records `draft_sha256`, the draft it reviewed, and the room check requires it to
+equal the round's draft. `judge` takes the same `--input NAME=PATH` files as `seat`, after the brief.
 
 **Call ledger.** One SQLite file at `~/.local/state/omni-studio/room/ledger.sqlite` (not under `~/.config`, which
 holds secrets), shared by every worktree. A call reserves its slot in a transaction before running, so parallel
 sessions cannot overrun the daily cap. Each row: call id, time, channel, video, gate, round, seat, model, family, CLI
-version, prompt sha256, output sha256, duration, status.
+version, prompt sha256, output sha256, duration, status, and `verdict_sha256` (the digest of the verdict file the call
+produced, which binds the file to the row).
 
 **Verdict schema.** `{call_id, seat, role, model, family, status, scores: {...}, blockers: [{line, quote, why, fix,
-domain}], suggestions: [...], keep: [{line, quote}]}`. Blockers are valid only inside the seat's role.
+domain}], suggestions: [...], keep: [{line, quote}], output_sha256, draft_sha256}` (plus `lint_overridden` when set).
+Blockers are valid only inside the seat's role. `suggestions` and `keep` hold objects: a bare string becomes
+`{"quote": s}` and anything else is dropped.
 
 **Lint (tool).** `core/studio/room/lint.py` runs the shared checks, then the format parameters, then each linter
 `room.yaml` names. The core imports no channel engine. Hard failures go back to the writer before any seat runs.
@@ -183,7 +202,9 @@ and persistence only (`AGENT_GUIDE.md`), so Claude Code or Cursor can drive the 
 ```
 videos/<id>/
   room/drafts/<sha256>.md          every reviewed draft, content-addressed
+  room/g2/round-<N>/meta.json      draft sha256, lint result, `kind`, `owner_notes`
   room/g2/round-<N>/<seat>.json    raw verdicts, written only by call.py
+  room/g2/round-<N>/judge.json     the judge's result, when two candidates existed
   room/g2.json                     the report the check reads
   review-g2-round<N>.md            the round summary (Say Suppose's naming)
   room-g2.md                       what the owner reads: flagged, changed, still disputed
@@ -196,16 +217,44 @@ videos/<id>/
 {"gate": "g2", "stage": "dialogue_script", "writer_family": "anthropic",
  "rounds": [{"round": 1, "draft_sha256": "...", "lint": {"ok": true, "problems": []},
              "verdicts": [{"seat": "fact reviewer", "role": "fact", "family": "google", "status": "ok",
-                           "call_id": "...", "file": "room/g2/round-1/fact-reviewer.json", "output_sha256": "..."}],
-             "judge": {"call_ids": ["...", "..."], "family": "openai", "winner": "draft_sha256 or null"}}],
+                           "call_id": "...", "file": "room/g2/round-1/fact-reviewer.json", "output_sha256": "...",
+                           "blockers": 0}],
+             "judge": {"call_ids": ["...", "..."], "family": "openai", "winner": "new or best"},
+             "owner_notes": false, "candidate": true}],
+ "skipped_rounds": [],
  "shipped": {"round": 2, "artifact_sha256": "..."},
  "calls": 17, "cap": 26}
 ```
+
+`owner_notes` is true for a round linted with `--owner-notes`; `candidate` is the stop rule's test; `skipped_rounds`
+lists `round-*` folders that could not be read (a bad name or a missing or malformed `meta.json`). `room-<gate>.md`
+says "shipped by the owner-notes rule (no judge)" when the shipped round is an owner-notes round.
 
 **Pitch clip.** `room.yaml` `pitch_clip: after_g2` (default) or `pre_g2_local`. `pre_g2_local` needs the owner's
 decision, the G2 wording changed in CLAUDE.md, the pipeline and the skill for that channel, and a non-empty
 `voices.yaml` whose every voice is a free local engine. Otherwise the first thing made after G2 is a 30-45 s hook
 clip in the real voices.
+
+## A2 prerequisites
+
+Before the room check is wired into `omni approve`, A2 must close these gaps found by the whole-branch review of A1:
+
+1. Evidence recomputes `shipped` from the round files (`R.scan_rounds` and `R.shipped`) and requires it to equal the
+   report's, so an edited report cannot ship another round.
+2. `judge.json` is bound like a verdict: each call's output sha256 is in the file, a digest of the file is in the
+   ledger row, and empty `call_ids` are refused.
+3. Evidence re-runs `lint_draft` on the shipped snapshot instead of trusting `meta.lint`.
+4. Evidence flags any `ok` ledger row for the same channel, video, gate, round and seat that no verdict cites (a
+   discarded second opinion).
+5. `verify` takes the cap and the writer family from `room.yaml` (`derived_cap`, `cfg.writer`), checks the report's
+   gate, stage and channel, and scopes its ledger checks by channel.
+6. `adopted` is coerced to a date before it is compared with a video's id date.
+7. The approval binds the artifact sha256 and the shipped round, not the report file's sha256: the call count changes
+   after approval (later calls, owner-notes rounds), so the report file is not stable.
+8. Crashed `reserved` ledger rows get a sweep or a documented rule; until then they lock their round against re-lint
+   and count against the caps.
+9. The Claude CLI is verified under the sandbox profile (transcript writes to `~/.claude/projects` are denied; the
+   user's CLAUDE.md and hooks may still load) before any channel adopts a Claude seat.
 
 ## Commands
 
