@@ -4,17 +4,17 @@
   "pipeline_type": "studio-whatif",
   "stage": "final_edit",
   "status": "awaiting_human",
-  "timestamp": "2026-11-08T08:08:41.352011+00:00",
+  "timestamp": "2026-11-08T12:11:36.564525+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "Watch renders/edit-v5.mp4 (5:16) with sound. Applied the G5 notes: light music through the whole film, scene by scene, 26 dB under Arthur, two short silences; the film now plays the cleaned narration track; quieter flips and pops. qc final_edit passes.",
-    "media": "renders/edit-v5.mp4",
-    "preview": "renders/edit-v5-preview.mp4",
+    "for_owner": "Watch renders/edit-v6.mp4 (5:14) with sound. Since v5: the first words come at 0.6 s instead of 2.4 s (owner, 2026-11-08: no empty opening); nothing else changed. qc final_edit passes, including the new opening check (sound at 0.1 s, first word at 0.6 s).",
+    "media": "renders/edit-v6.mp4",
+    "preview": "renders/edit-v6-preview.mp4",
     "loudness_lufs": -14.0,
-    "true_peak_dbtp": -1.4
+    "true_peak_dbtp": -1.5
   }
 }
