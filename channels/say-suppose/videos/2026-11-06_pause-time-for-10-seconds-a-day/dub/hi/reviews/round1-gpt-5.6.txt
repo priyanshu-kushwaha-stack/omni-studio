@@ -1,0 +1,33 @@
+Hook और tension काम करते हैं, लेकिन draft अभी पूरी तरह real Indian storyteller जैसा नहीं लगता।
+सबसे बड़ी दिक्कत: कई lines English syntax का Hindi रूप लगती हैं—meaning सही है, बोलचाल का flow नहीं।
+Samosa, चप्पल और day twelve वाले हिस्सों में voice खुलती है; बाकी जगह छोटे सवाल, तुरंत जवाब और punchier pauses चाहिए।
+कुछ quiet lines AI voice के लिए अपने room से लंबी भी हैं।
+
+1 | [curious] पर day one... आप उठते हो, और पता चलता है—आप time pause कर सकते हो। | Source का “discover” लौटता है।
+2 | [amused] Alarm बजते-बजते freeze। Cat... आधी bed से बाहर, हवा में अटकी। | “आधी jump” स्वाभाविक नहीं।
+4 | [warm] ये ten seconds... अब आपके हाथ में हैं। दिन में बस एक बार। सब रुक जाता है—बस आप नहीं। | बेहतर spoken rhythm।
+5 | [matter-of-fact] Ten seconds पूरे होते ही दुनिया फिर चल पड़ती है। किसी को भनक तक नहीं। | “Ten ख़त्म” अटपटा है।
+7 | [playful, explaining] हाँ, थोड़ा cheat है। आपके लिए हवा चलती है, आप देख सकते हो। जिसे छुओ, वो साथ चले... छोड़ते ही वहीं freeze। | नियम conversational बनता है।
+10 | [casual] Phone गिरा। एक metre गिरने में लगते हैं बस zero point four five seconds। Normally? आप देखते रह जाते हो। | Fact साफ़ और line कम लिखित।
+12 | [relaxed] आप आराम से चलते हो—जल्दी क्या है? Normal speed पर ten seconds में दस से चौदह metre निकल जाते हैं। | Storyteller-style सवाल जुड़ता है।
+16 | [tempted] आख़िरी samosa। Colleague का हाथ उसकी तरफ़ बढ़ चुका है। लेने दोगे? | ज़्यादा स्वाभाविक phrasing।
+17 | [grinning] बिल्कुल नहीं। आप कोई संत थोड़ी हो... इंसान हो। और आपके पास ten seconds हैं। | Punch बेहतर land करता है।
+18 | [laughing] मम्मी की चप्पल हवा में—सीधा सिर की तरफ़। बस एक step side में... और मम्मी आज तक सोचती हैं, निशाना चूका कैसे। | कम clutter, वही joke।
+19 | [leaning in] कभी clock देखी है... और second hand एक पल के लिए अटकी लगी? | रोज़मर्रा की Hinglish।
+21 | [wonder] आपका दिमाग़ पूरी ज़िंदगी आपके लिए time edit करता रहा। अब remote... आपके हाथ में है। | कम किताबी flow।
+23 | [tense] एक bus red light तोड़ती हुई आ रही है। | दृश्य तुरंत बनता है।
+25 | [fast, tense] Forty-eight kilometres per hour पर एक car को रुकने में करीब twenty-three metres लगते हैं। और ये... bus है। | Grammar और unit सही होते हैं।
+35 | [warm] Ten seconds में जान बचा ली। लगा, कोई कीमत नहीं चुकाई... है ना? | “Free लगता है” से अधिक natural।
+43 | [low, sleepless] उस रात नींद नहीं आती। याद आते हैं वो सारे seconds... जो waste किए। | हिसाब वाली लिखित phrasing हटती है।
+46 | [hushed, warm] Ten seconds... शहर ने साँस रोक ली। बस आपके लिए। | धीमी delivery में fit होता है।
+51 | [warm] छोटे हादसे? आपकी वजह से होते ही नहीं। | छोटा और punchier।
+52 | [tender] मम्मी कहती हैं—सीढ़ियों के नीचे wait करना बंद करो। | Room में बैठता है।
+53 | [torn] Promise करोगे... या नज़र रखोगे? | वही choice, कम शब्द।
+56 | [calm] हादसा पहले ही दिख जाता है। ज़्यादातर दिन pause की ज़रूरत नहीं पड़ती। | Calm pace में fit होता है।
+57 | [reflective] हर pause में आपकी body जीती रहती है। पचास साल में total... करीब दो दिन। | Literal translation कम होती है।
+58 | [gentle] साथ बड़े हुए लोगों से आप दो दिन बड़े हो। पता तक नहीं चलता। | कम लिखित और छोटा।
+59 | [heavy] असली कीमत? हर वक्त देखते रहना। पूरी ज़िंदगी, ten seconds करके... उन अजनबियों के लिए, जो आपका नाम तक नहीं जानेंगे। | Emotional idea बेहतर खुलता है।
+62 | [whispers] और उसकी नज़र... आप पर है। | Whispered room में fit होता है।
+64 | [warm, inviting] तो आप अपने ten seconds किस पर खर्च करोगे? नीचे comment में बताइए। Best what-ifs पर हम videos बनाएँगे। | CTA natural और grammatically clear।
+
+Too long for room: 46, 51, 52, 53, 56, 58, 62.
