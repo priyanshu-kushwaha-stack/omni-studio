@@ -74,3 +74,77 @@ def test_lint_draft_puts_it_together(tmp_path):
 def test_the_real_slop_list_loads():
     slop = lint.load_slop()
     assert "delve" in slop["words"]
+
+
+def test_a_word_inside_a_hit_phrase_is_not_a_second_hit():
+    assert len(lint.slop_hits("PROF: It is a testament to grit.\n", lint.load_slop())) == 1
+
+
+def test_curly_quotes_are_read_like_straight_ones():
+    slop = lint.load_slop()
+    assert len(lint.slop_hits("PROF: It’s not fire, it’s light.\n", slop)) >= 1
+    assert len(lint.slop_hits("PROF: It’s important to note this.\n", slop)) >= 1
+
+
+def test_generic_explainer_words_are_not_slop():
+    slop = lint.load_slop()
+    for w in ("landscape", "navigate", "crucial", "unlock"):
+        assert w not in slop["words"]
+    assert "plays a crucial role" in slop["phrases"]
+
+
+def test_a_missing_ledger_is_a_problem(tmp_path):
+    (tmp_path / "script.md").write_text(SCRIPT)
+    empty = {"words": [], "phrases": [], "patterns": []}
+    report = lint.lint_draft(tmp_path / "script.md", kind="script", fmt={}, linters=[],
+                             ledger=tmp_path / "claims.md", slop=empty)
+    assert "claims.md is missing, so cited claims cannot be checked" in report.problems
+    assert lint.lint_draft(tmp_path / "script.md", kind="script", fmt={}, linters=[], ledger=None, slop=empty).ok
+
+
+def test_placeholder_quotes_count_as_no_quote():
+    ledger = LEDGER.replace("|  | sourced |\n", "| TBD | sourced |\n")
+    assert lint.ledger_quotes(SCRIPT, ledger) == ["c02: cited in the script but its ledger row has no verbatim quote"]
+
+
+def test_a_script_path_with_a_space_stays_one_argument(tmp_path):
+    seen = []
+
+    def runner(cmd, **kw):
+        seen.append(cmd)
+        return subprocess.CompletedProcess(cmd, 0, stdout="", stderr="")
+
+    script = tmp_path / "my dir" / "s.md"
+    lint.run_linters(["{python} x.py {script}"], script=script, video_dir=tmp_path, runner=runner)
+    assert seen[0][-1] == str(script)
+
+
+def test_a_linter_that_cannot_run_is_a_problem_not_a_crash(tmp_path):
+    def runner(cmd, **kw):
+        raise FileNotFoundError("nope")
+
+    problems = lint.run_linters(["{python} x.py {script}"], script=tmp_path / "s.md", video_dir=tmp_path, runner=runner)
+    assert len(problems) == 1 and "{python} x.py {script}" in problems[0]
+
+
+def test_a_timed_out_linter_is_a_problem(tmp_path):
+    def runner(cmd, **kw):
+        raise subprocess.TimeoutExpired(cmd, 300)
+
+    problems = lint.run_linters(["{python} x.py"], script=tmp_path / "s.md", video_dir=tmp_path, runner=runner)
+    assert len(problems) == 1 and "{python} x.py" in problems[0]
+
+
+def test_a_bad_template_is_a_problem(tmp_path):
+    problems = lint.run_linters(["{python} x.py {x}"], script=tmp_path / "s.md", video_dir=tmp_path,
+                                runner=lambda cmd, **kw: None)
+    assert len(problems) == 1 and "{x}" in problems[0]
+
+
+def test_a_module_linter_is_labelled_by_its_module(tmp_path):
+    def runner(cmd, **kw):
+        return subprocess.CompletedProcess(cmd, 1, stdout="bad\n", stderr="")
+
+    problems = lint.run_linters(["{python} -m foo.bar {script}"], script=tmp_path / "s.md", video_dir=tmp_path,
+                                runner=runner)
+    assert problems[0].startswith("foo.bar exited 1")

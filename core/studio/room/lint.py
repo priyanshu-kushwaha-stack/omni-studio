@@ -49,16 +49,24 @@ def _spoken(text: str) -> list[tuple[int, str]]:
     return lines if lines else [(n, l.strip()) for n, l in enumerate(text.splitlines(), 1) if l.strip()]
 
 
+_QUOTES = str.maketrans({"\u2019": "'", "\u2018": "'", "\u201c": '"', "\u201d": '"'})
+NO_QUOTE = {"", "-", "\u2014", "\u2013", "n/a", "na", "tbd", "todo", "none"}
+
+
 def slop_hits(text: str, slop: dict[str, Any]) -> list[str]:
     hits = []
     for n, line in _spoken(text):
-        low = line.lower()
-        for w in slop.get("words") or []:
-            if re.search(rf"\b{re.escape(w.lower())}\b", low):
-                hits.append(f"line {n}: slop word {w!r}")
+        low = line.translate(_QUOTES).lower()
+        spans = []
         for p in slop.get("phrases") or []:
-            if p.lower() in low:
+            start = low.find(p.lower())
+            if start >= 0:
+                spans.append((start, start + len(p)))
                 hits.append(f"line {n}: slop phrase {p!r}")
+        for w in slop.get("words") or []:
+            if any(not any(a <= m.start() and m.end() <= b for a, b in spans)
+                   for m in re.finditer(rf"\b{re.escape(w.lower())}\b", low)):
+                hits.append(f"line {n}: slop word {w!r}")
         for pat in slop.get("patterns") or []:
             if re.search(pat, low):
                 hits.append(f"line {n}: slop pattern {pat!r}")
@@ -114,7 +122,8 @@ def _quotes(ledger_text: str) -> Optional[dict[str, str]]:
             if not row.lstrip().startswith("|"):
                 break
             cells = _cells(row) + [""] * len(header)
-            quotes[cells[id_col]] = cells[quote_col].strip()
+            q = cells[quote_col].strip()
+            quotes[cells[id_col]] = "" if q.lower() in NO_QUOTE else q
         return quotes
     return None
 
@@ -128,15 +137,37 @@ def ledger_quotes(script_text: str, ledger_text: str) -> list[str]:
             for cid in sorted(cited) if cid in quotes and not quotes[cid]]
 
 
+def _label(cmd: list[str]) -> str:
+    for arg in cmd[1:]:
+        if not arg.startswith("-"):
+            return Path(arg).name
+    return " ".join(cmd[:2])
+
+
 def run_linters(commands: list[str], *, script: Path, video_dir: Path, runner=None) -> list[str]:
     runner = runner or subprocess.run
+    values = {k: shlex.quote(str(v)) for k, v in
+              {"python": sys.executable, "script": script, "video": video_dir, "root": ROOT}.items()}
     problems = []
     for template in commands:
-        cmd = shlex.split(template.format(python=sys.executable, script=script, video=video_dir, root=ROOT))
-        proc = runner(cmd, cwd=ROOT, capture_output=True, text=True, timeout=300)
+        try:
+            cmd = shlex.split(template.format(**values))
+            if not cmd:
+                raise ValueError("empty command")
+        except (KeyError, ValueError, IndexError) as e:
+            problems.append(f"linter {template!r} is not a valid command template: {e!r}")
+            continue
+        try:
+            proc = runner(cmd, cwd=ROOT, capture_output=True, text=True, timeout=300)
+        except subprocess.TimeoutExpired:
+            problems.append(f"linter {template!r} timed out")
+            continue
+        except OSError as e:
+            problems.append(f"linter {template!r} could not run: {e}")
+            continue
         if proc.returncode != 0:
             tail = " | ".join((proc.stdout + proc.stderr).strip().splitlines()[-5:])
-            problems.append(f"{Path(cmd[1] if len(cmd) > 1 else cmd[0]).name} exited {proc.returncode}: {tail}")
+            problems.append(f"{_label(cmd)} exited {proc.returncode}: {tail}")
     return problems
 
 
@@ -160,7 +191,9 @@ def lint_draft(path: Path, *, kind: str, fmt: dict[str, Any], linters: list[str]
             c = fmt["cadence"]
             problems += cadence(text, wpm=wpm, max_gap_s=float(c["max_gap_s"]), speakers=c.get("speakers"),
                                 marker=c.get("marker"))
-        if ledger and Path(ledger).is_file():
+        if ledger is not None and not Path(ledger).is_file():
+            problems.append("claims.md is missing, so cited claims cannot be checked")
+        elif ledger is not None:
             problems += ledger_quotes(text, Path(ledger).read_text(encoding="utf-8"))
         problems += run_linters(linters, script=Path(path), video_dir=Path(path).parent, runner=runner)
     return LintReport(not problems, problems, warnings)
