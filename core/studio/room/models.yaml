@@ -1,0 +1,9 @@
+# Model id -> family and the CLI that runs it. A seat whose model is missing here fails validation.
+# Ids are what the CLI accepts: `claude --model <id>` or `cursor-agent --model <id>` (cursor-agent --list-models).
+models:
+  claude-opus-5-5: {family: anthropic, cli: claude}
+  claude-sonnet-5-5: {family: anthropic, cli: claude}
+  gpt-5.6-sol-high: {family: openai, cli: cursor}
+  grok-4.7-high: {family: xai, cli: cursor}
+  gemini-3.7-flash-high: {family: google, cli: cursor}
+  composer-2.5: {family: cursor, cli: cursor}
