@@ -52,20 +52,24 @@ class Verdict:
 
 
 def extract_json(text: str) -> dict[str, Any]:
-    m = FENCE_RE.search(text)
-    if m:
-        candidate = m.group(1)
-    elif "{" in text and "}" in text:
-        candidate = text[text.find("{"): text.rfind("}") + 1]
-    else:
+    """The first fenced block that is a JSON object, else the last fenced block, else the outer braces."""
+    fences = FENCE_RE.findall(text)
+    candidates = [fences[0], fences[-1]] if fences else []
+    if "{" in text and "}" in text:
+        candidates.append(text[text.find("{"): text.rfind("}") + 1])
+    if not candidates:
         raise BadVerdict("no JSON object in the output")
-    try:
-        data = json.loads(candidate)
-    except json.JSONDecodeError as exc:
-        raise BadVerdict(f"not JSON: {exc}") from exc
-    if not isinstance(data, dict):
-        raise BadVerdict("a verdict must be a JSON object")
-    return data
+    error = "no JSON object in the output"
+    for candidate in candidates:
+        try:
+            data = json.loads(candidate)
+        except json.JSONDecodeError as exc:
+            error = f"not JSON: {exc}"
+            continue
+        if isinstance(data, dict):
+            return data
+        error = "a verdict must be a JSON object"
+    raise BadVerdict(error)
 
 
 def _items(raw: list[Any]) -> list[dict[str, Any]]:
@@ -97,6 +101,9 @@ def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, 
         blocker = Blocker(quote=b["quote"], why=b["why"], fix=str(b.get("fix") or ""), domain=domain, line=line)
         if role != "fact" and domain != role:  # a fact blocker is never demoted, whatever domain the model names
             suggestions.append({**asdict(blocker), "moved": f"blocker outside the {role} role"})
+        elif role != "fact" and not (blocker.quote.strip() and blocker.why.strip() and blocker.fix.strip()):
+            # invariant 4: a blocker quotes the draft and gives a concrete fix, or it is only a suggestion
+            suggestions.append({**asdict(blocker), "moved": "blocker without a quote, a why and a fix"})
         else:
             blockers.append(blocker)
     return Verdict(call_id, seat, role, model, family, "ok", scores, blockers, suggestions, keep)

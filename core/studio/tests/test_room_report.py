@@ -15,11 +15,11 @@ def _verdict(d, name, role, family, blockers=(), status="ok"):
     (d / f"{name}.json").write_text(json.dumps(data))
 
 
-def _round(video, n, sha, lint_ok=True, fact_blockers=(), judge=None, owner_notes=False):
+def _round(video, n, sha, lint_ok=True, fact_blockers=(), judge=None, owner_notes=False, story_blockers=()):
     R.write_meta(video, "g2", n, sha, {"ok": lint_ok, "problems": [], "warnings": []}, owner_notes=owner_notes)
     d = R.round_dir(video, "g2", n)
     _verdict(d, "viewer", "viewer", "xai")
-    _verdict(d, "story", "story", "openai")
+    _verdict(d, "story", "story", "openai", blockers=story_blockers)
     _verdict(d, "fact", "fact", "google", blockers=fact_blockers)
     if judge:
         (d / "judge.json").write_text(json.dumps({"model": "m", "family": "openai", "call_ids": ["j1", "j2"],
@@ -191,3 +191,88 @@ def test_the_md_names_the_candidate_rule_when_nothing_ships(tmp_path):
     text = md.read_text()
     assert "Shipped: none. No round is a candidate" in text and "no fact blocker" in text
     assert "Missing mandatory roles" not in text
+
+
+STORY = [{"quote": f"line {i}", "why": "flat", "fix": "cut", "domain": "story", "line": i} for i in range(3)]
+
+
+def test_a_failed_mandatory_verdict_is_not_masked_by_a_success_in_the_same_role(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    d = R.round_dir(tmp_path, "g2", 1)
+    _verdict(d, "second story", "story", "google", status="failed")
+    assert not R.is_candidate(R.load_rounds(tmp_path, "g2")[0])
+    _verdict(d, "second fact", "fact", "xai", status="failed")
+    _verdict(d, "second story", "story", "google")
+    assert not R.is_candidate(R.load_rounds(tmp_path, "g2")[0])
+
+
+def test_a_failed_non_mandatory_seat_does_not_block_a_round(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _verdict(R.round_dir(tmp_path, "g2", 1), "craft", "craft", "google", status="failed")
+    assert R.is_candidate(R.load_rounds(tmp_path, "g2")[0])
+
+
+def test_a_round_with_fewer_open_blockers_ships_even_when_the_judge_ties(tmp_path):
+    _round(tmp_path, 1, "a" * 64, story_blockers=STORY)
+    _round(tmp_path, 2, "b" * 64, judge="best")
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 2
+
+
+def test_a_round_with_more_open_blockers_does_not_ship_even_when_the_judge_says_new(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64, story_blockers=STORY, judge="new")
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 1
+
+
+def test_a_tie_on_blockers_goes_to_the_judge(tmp_path):
+    _round(tmp_path, 1, "a" * 64, story_blockers=STORY[:1])
+    _round(tmp_path, 2, "b" * 64, story_blockers=STORY[:1], judge="best")
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 1
+    _round(tmp_path, 3, "c" * 64, story_blockers=STORY[:1], judge="new")
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 3
+
+
+def test_a_null_judge_winner_is_no_judge_result(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64)
+    R.round_dir(tmp_path, "g2", 2).joinpath("judge.json").write_text(
+        json.dumps({"model": "m", "family": "f", "call_ids": ["x"], "picks": ["tie", "tie"], "winner": None}))
+    assert R.load_rounds(tmp_path, "g2")[1]["judge"] is None
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 1
+
+
+def test_a_verdict_file_missing_required_keys_is_listed_and_not_counted(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64)
+    d = R.round_dir(video, "g2", 1)
+    data = json.loads((d / "story.json").read_text())
+    del data["role"]
+    (d / "story.json").write_text(json.dumps(data))
+    (d / "stray.json").write_text(json.dumps({"seat": "x"}))
+    assert not R.is_candidate(R.load_rounds(video, "g2")[0])
+    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    assert rep["malformed_verdicts"] == ["room/g2/round-1/story.json", "room/g2/round-1/stray.json"]
+    assert [v["seat"] for v in rep["rounds"][0]["verdicts"]] == ["fact", "viewer"]
+    R.write_report(video, rep)
+
+
+def test_a_verdict_whose_blockers_is_not_a_list_is_malformed(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64)
+    d = R.round_dir(video, "g2", 1)
+    data = json.loads((d / "fact.json").read_text())
+    data["blockers"] = "none"
+    (d / "fact.json").write_text(json.dumps(data))
+    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
+                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    assert rep["malformed_verdicts"] == ["room/g2/round-1/fact.json"] and rep["shipped"] is None
+    R.write_report(video, rep)
+
+
+def test_the_report_carries_the_channel(tmp_path):
+    video = tmp_path / "v"
+    _round(video, 1, "a" * 64)
+    rep = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic",
+                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    assert rep["channel"] == "pou" and rep["malformed_verdicts"] == []

@@ -54,7 +54,8 @@ def test_a_failed_judge_call_is_a_tie(tmp_path):
 
     res = J.run_judge("N", "O", model="gpt-5.6-sol-high", brief="Pick.", ledger=Ledger(tmp_path / "l.sqlite"),
                       ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json", runner=runner, registry=REG)
-    assert res["picks"] == ["tie", "tie"] and res["winner"] == "best"
+    # adapted: a failed call is no longer a "best" win; the round is unjudged (winner null)
+    assert res["picks"] == ["tie", "tie"] and res["winner"] is None and res["statuses"] == ["failed", "failed"]
 
 
 def test_an_exception_from_the_judge_call_fails_closed(tmp_path):
@@ -66,7 +67,8 @@ def test_an_exception_from_the_judge_call_fails_closed(tmp_path):
     db = Ledger(tmp_path / "l.sqlite")
     res = J.run_judge("N", "O", model="gpt-5.6-sol-high", brief="Pick.", ledger=db,
                       ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json", runner=runner, registry=REG)
-    assert res["picks"] == ["tie", "tie"] and res["winner"] == "best"
+    # adapted: a failed call is no longer a "best" win; the round is unjudged (winner null)
+    assert res["picks"] == ["tie", "tie"] and res["winner"] is None and res["statuses"] == ["failed", "failed"]
     assert [db.get(cid).status for cid in res["call_ids"]] == ["failed", "failed"]
 
 
@@ -85,3 +87,32 @@ def test_the_judge_prompt_carries_the_inputs_after_the_brief(tmp_path):
     for p in prompts:
         assert "=== audience.md ===\nTeens who like maps" in p
         assert p.index("Pick by audience.md.") < p.index("=== audience.md ===") < p.index("=== Draft A ===")
+
+
+def _runner(statuses):
+    answers = iter(statuses)
+
+    def run(cmd, **kw):
+        if cmd[-1] == "--version":
+            return subprocess.CompletedProcess(cmd, 0, stdout="1\n", stderr="")
+        a = next(answers)
+        if a is None:
+            return subprocess.CompletedProcess(cmd, 1, stdout="", stderr="boom")
+        return subprocess.CompletedProcess(cmd, 0, stdout=json.dumps({"result": json.dumps({"winner": a})}), stderr="")
+
+    return run
+
+
+def test_judge_json_records_each_calls_status_and_one_failure_means_unjudged(tmp_path):
+    res = J.run_judge("N", "O", model="gpt-5.6-sol-high", brief="Pick.", ledger=Ledger(tmp_path / "l.sqlite"),
+                      ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json",
+                      runner=_runner(["A", None]), registry=REG)
+    assert res["statuses"] == ["ok", "failed"] and res["winner"] is None
+    assert json.loads((tmp_path / "j.json").read_text())["winner"] is None
+
+
+def test_two_good_calls_record_ok_statuses(tmp_path):
+    res = J.run_judge("N", "O", model="gpt-5.6-sol-high", brief="Pick.", ledger=Ledger(tmp_path / "l.sqlite"),
+                      ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json",
+                      runner=_runner(["A", "B"]), registry=REG)
+    assert res["statuses"] == ["ok", "ok"] and res["winner"] == "new"

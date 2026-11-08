@@ -6,9 +6,11 @@ videos/<id>/room/<gate>/round-<N>/judge.json  the judge's result, when two candi
 videos/<id>/room/<gate>.json                   the report the gate check reads
 videos/<id>/room-<gate>.md                     what the owner reads
 
-Stop-rule outcome: a round is a candidate when its lint passed, every mandatory role returned ok, and no fact blocker. The
-first candidate is the best; a later candidate replaces it only when its judge result is "new". A candidate round whose
-meta has owner_notes: true replaces it regardless of the judge (owner notes outrank the room).
+Stop-rule outcome: a round is a candidate when its lint passed, every mandatory role returned ok (no failed verdict
+from a mandatory role, even beside a success in the same role), and no fact blocker. Among candidates the one with
+fewer open blockers (all seats) is the best; on equal blockers the first stays unless a later one's judge result is
+"new". A failed judge is no result. A candidate round whose meta has owner_notes: true replaces the best regardless
+of the judge (owner notes outrank the room).
 """
 
 from __future__ import annotations
@@ -21,6 +23,7 @@ from studio.room.ledger import Ledger
 from studio.room.verdict import MANDATORY
 
 NOT_VERDICTS = ("meta.json", "judge.json")
+VERDICT_KEYS = ("call_id", "seat", "role", "model", "family", "status", "blockers")
 
 
 def gate_dir(video_dir: Path, gate: str) -> Path:
@@ -68,18 +71,21 @@ def scan_rounds(video_dir: Path, gate: str) -> tuple[list[dict[str, Any]], list[
         if meta is None or "draft_sha256" not in meta or not isinstance(meta.get("lint"), dict):
             skipped.append(d.name)
             continue
-        verdicts = []
+        verdicts, malformed = [], []
         for p in sorted(d.glob("*.json")):
             if p.name in NOT_VERDICTS:
                 continue
             v = _json(p)
-            if v is not None:
-                verdicts.append({**v, "file": str(p.relative_to(video_dir))})
+            rel = str(p.relative_to(video_dir))
+            if v is None or any(k not in v for k in VERDICT_KEYS) or not isinstance(v["blockers"], list):
+                malformed.append(rel)
+                continue
+            verdicts.append({**v, "file": rel})
         judge = _json(d / "judge.json")
-        if judge is not None and "winner" not in judge:
-            judge = None
+        if judge is not None and judge.get("winner") not in ("new", "best"):
+            judge = None  # no winner key, or null: the judge failed, so there is no result
         found.append((n, {"round": meta.get("round", n), "draft_sha256": meta["draft_sha256"],
-                          "lint": meta["lint"], "verdicts": verdicts, "judge": judge,
+                          "lint": meta["lint"], "verdicts": verdicts, "judge": judge, "malformed": malformed,
                           "owner_notes": meta.get("owner_notes") is True}))
     found.sort(key=lambda t: t[0])
     return [r for _, r in found], sorted(skipped)
@@ -97,14 +103,25 @@ def is_candidate(rnd: dict[str, Any]) -> bool:
     for role in MANDATORY:
         if not any(v.get("role") == role and v.get("status") == "ok" for v in verdicts):
             return False
+    if any(v.get("role") in MANDATORY and v.get("status") != "ok" for v in verdicts):
+        return False
     return all(v.get("status") == "ok" and not v.get("blockers") for v in verdicts if v.get("role") == "fact")
+
+
+def open_blockers(rnd: dict[str, Any]) -> int:
+    return sum(len(v["blockers"]) for v in rnd["verdicts"] if v.get("status") == "ok")
 
 
 def _best(rounds: list[dict[str, Any]]) -> Optional[dict[str, Any]]:
     best = None
     for rnd in rounds:
-        if is_candidate(rnd) and (best is None or rnd.get("owner_notes")
-                                  or (rnd["judge"] and rnd["judge"].get("winner") == "new")):
+        if not is_candidate(rnd):
+            continue
+        if best is None or rnd.get("owner_notes"):
+            best = rnd
+            continue
+        fewer, same = open_blockers(rnd) < open_blockers(best), open_blockers(rnd) == open_blockers(best)
+        if fewer or (same and rnd["judge"] and rnd["judge"].get("winner") == "new"):
             best = rnd
     return best
 
@@ -131,8 +148,8 @@ def build_report(video_dir: Path, *, gate: str, stage: str, channel: str, writer
                           "output_sha256": v.get("output_sha256", ""), "blockers": len(v["blockers"])}
                          for v in rnd["verdicts"]],
             "judge": rnd["judge"], "owner_notes": bool(rnd.get("owner_notes")), "candidate": is_candidate(rnd)})
-    return {"gate": gate, "stage": stage, "writer_family": writer_family, "rounds": summary,
-            "skipped_rounds": skipped,
+    return {"gate": gate, "stage": stage, "channel": channel, "writer_family": writer_family, "rounds": summary,
+            "skipped_rounds": skipped, "malformed_verdicts": sorted(m for r in rounds for m in r["malformed"]),
             "shipped": shipped(rounds), "calls": ledger.count(channel=channel, video=video_dir.name, gate=gate),
             "cap": cap}
 
@@ -164,8 +181,10 @@ def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
             for b in (x for x in v["blockers"] if isinstance(x, dict)):
                 lines.append(f"- {v['seat']} ({v['role']}) blocker, line {b.get('line')}: \"{b.get('quote')}\". "
                              f"{b.get('why')} Fix: {b.get('fix')}")
-            for k in (x if isinstance(x, dict) else {"quote": x} for x in v["keep"]):
+            for k in (x if isinstance(x, dict) else {"quote": x} for x in v.get("keep") or []):
                 lines.append(f"- {v['seat']} keep, line {k.get('line')}: \"{k.get('quote', '')}\"")
+    for m in report.get("malformed_verdicts") or []:
+        lines.append(f"- MALFORMED verdict file, not counted: {m}")
     lines += ["", "## Rounds", "", "| round | lint | seats ok | blockers | judge |", "|---|---|---|---|---|"]
     for rnd in report["rounds"]:
         ok = sum(1 for v in rnd["verdicts"] if v["status"] == "ok")

@@ -1,7 +1,7 @@
 """The room's judge: the new candidate against the best candidate so far, asked twice with the order swapped.
 
-The new draft wins only if it is picked as A in the first call and as B in the second. Anything else, a tie or a
-failed call included, keeps the best draft.
+The new draft wins only if it is picked as A in the first call and as B in the second. Anything else, a tie, keeps the best
+draft. If either call fails the round is unjudged: winner is null and judge.json says so.
 """
 
 from __future__ import annotations
@@ -40,7 +40,7 @@ def run_judge(new_text: str, best_text: str, *, model: str, brief: str, ledger: 
               inputs: Optional[dict[str, str]] = None) -> dict[str, Any]:
     family = family_of(model, registry)
     version = cli_version(cli_of(model, registry), runner)
-    picks, call_ids = [], []
+    picks, call_ids, statuses = [], [], []
     for a, b in ((new_text, best_text), (best_text, new_text)):
         prompt = judge_prompt(brief, a, b, inputs)
         call_id = ledger.reserve(channel=ctx.channel, video=ctx.video, gate=ctx.gate, round=ctx.round, seat="judge",
@@ -61,7 +61,10 @@ def run_judge(new_text: str, best_text: str, *, model: str, brief: str, ledger: 
                       cli_version=version)
         picks.append(pick)
         call_ids.append(call_id)
-    result = {"model": model, "family": family, "call_ids": call_ids, "picks": picks, "winner": pairwise(*picks)}
+        statuses.append(status)
+    winner = pairwise(*picks) if all(st == "ok" for st in statuses) else None  # a failed call: unjudged
+    result = {"model": model, "family": family, "call_ids": call_ids, "picks": picks, "statuses": statuses,
+              "winner": winner}
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result

@@ -75,3 +75,45 @@ def test_suggestions_and_keep_are_shape_checked():
     out = v.parse_verdict(json.dumps(data), **META)
     assert out.suggestions == [{"quote": "cut this"}, {"quote": "q"}]
     assert out.keep == [{"quote": "the fire"}, {"quote": "k"}]
+
+
+@pytest.mark.parametrize("field", ["quote", "why", "fix"])
+def test_a_non_fact_blocker_with_an_empty_part_is_a_suggestion(field):
+    b = {"quote": "q", "why": "w", "fix": "f", "domain": "story", "line": 3}
+    b[field] = "  "
+    out = v.parse_verdict(json.dumps({"blockers": [b]}), **{**META, "role": "story", "seat": "story editor"})
+    assert out.blockers == [] and len(out.suggestions) == 1
+    assert out.suggestions[0]["moved"] and out.suggestions[0]["line"] == 3
+
+
+def test_a_missing_fix_on_a_non_fact_blocker_is_demoted_too():
+    b = {"quote": "q", "why": "w", "domain": "story"}
+    out = v.parse_verdict(json.dumps({"blockers": [b]}), **{**META, "role": "story", "seat": "story editor"})
+    assert out.blockers == [] and len(out.suggestions) == 1
+
+
+def test_a_fact_blocker_with_empty_parts_stays_a_blocker():
+    b = {"quote": "", "why": "", "fix": "", "domain": "fact"}
+    out = v.parse_verdict(json.dumps({"blockers": [b]}), **META)
+    assert len(out.blockers) == 1 and out.suggestions == []
+
+
+def test_a_complete_non_fact_blocker_stays_a_blocker():
+    b = {"quote": "q", "why": "w", "fix": "f", "domain": "story"}
+    out = v.parse_verdict(json.dumps({"blockers": [b]}), **{**META, "role": "story", "seat": "story editor"})
+    assert len(out.blockers) == 1
+
+
+def test_a_first_fence_that_is_not_json_falls_back_to_the_last_fence():
+    text = "Example:\n```\n{not: json}\n```\nAnswer:\n```json\n" + json.dumps(GOOD) + "\n```"
+    assert v.parse_verdict(text, **META).status == "ok"
+
+
+def test_a_bad_fence_inside_a_good_object_falls_back_to_the_outer_braces():
+    text = 'Here: {"scores": {"x": 1}, "note": "see ```{oops}``` above"} thanks'
+    assert v.extract_json(text)["scores"] == {"x": 1}
+
+
+def test_text_with_no_parseable_object_is_still_refused():
+    with pytest.raises(v.BadVerdict):
+        v.extract_json("```\n{nope}\n```\nand {also nope}")
