@@ -106,9 +106,10 @@ class Ledger:
         return CallRow(**dict(row)) if row else None
 
     def count(self, *, channel: Optional[str] = None, video: Optional[str] = None,
-              gate: Optional[str] = None) -> int:
+              gate: Optional[str] = None, round: Optional[int] = None, status: Optional[str] = None) -> int:
         where, args = [], []
-        for col, val in (("channel", channel), ("video", video), ("gate", gate)):
+        for col, val in (("channel", channel), ("video", video), ("gate", gate), ("round", round),
+                         ("status", status)):
             if val is not None:
                 where.append(f"{col} = ?")
                 args.append(val)

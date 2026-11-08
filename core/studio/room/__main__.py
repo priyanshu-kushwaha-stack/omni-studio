@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Optional
 
 from studio.room import report as R
-from studio.room.call import CallContext, run_seat
+from studio.room.call import CallContext, is_secret_path, run_seat
 from studio.room.config import SEATS_DIR, RoomConfigError, derived_cap, load_room, seat_slug, validate
 from studio.room.evidence import verify
 from studio.room.judge import run_judge
@@ -53,23 +53,58 @@ def _meta(video: Path, gate: str, n: int) -> Optional[dict]:
         return None
 
 
+def _channel(args) -> str:
+    return args.channel or Path(args.config).resolve().parent.name
+
+
+def _reviewed(args, video: Path) -> bool:
+    """A round is reviewed once it has a verdict or judge file, or a call row that never finished."""
+    files = any(f.name != "meta.json" for f in R.round_dir(video, args.gate, args.round).glob("*.json"))
+    return files or Ledger().count(channel=_channel(args), video=video.name, gate=args.gate, round=args.round,
+                                   status="reserved") > 0
+
+
+def _read_inputs(items: Optional[list[str]], reserved: tuple[str, ...] = ("draft",)) -> Optional[dict[str, str]]:
+    """NAME=PATH inputs for a prompt. None after printing the reason (exit 2). Secrets never go into a prompt."""
+    inputs: dict[str, str] = {}
+    for item in items or []:
+        name, eq, path = item.partition("=")
+        if not eq or not name or not path:
+            print(f"--input wants NAME=PATH, not {item!r}", file=sys.stderr)
+            return None
+        if name in reserved:
+            print("draft comes from the round's snapshot" if name == "draft" else f"--input name {name!r} is reserved",
+                  file=sys.stderr)
+            return None
+        if is_secret_path(Path(path)):
+            print(f"--input {name}: {path} is in a secrets folder and is never read into a prompt", file=sys.stderr)
+            return None
+        if not Path(path).is_file():
+            print(f"--input {name}: no such file {path}", file=sys.stderr)
+            return None
+        inputs[name] = Path(path).read_text(encoding="utf-8")
+    return inputs
+
+
 def cmd_lint(args) -> int:
     cfg = load_room(Path(args.config))
     video = _video(args)
-    sha = save_draft(video, Path(args.draft))
-    existing = _meta(video, args.gate, args.round)
-    reviewed = any(f.name != "meta.json" for f in R.round_dir(video, args.gate, args.round).glob("*.json"))
-    if existing is not None and existing.get("draft_sha256") != sha and reviewed:
-        print(f"round {args.round} already reviewed draft {str(existing.get('draft_sha256'))[:12]}; "
-              f"start round {args.round + 1}", file=sys.stderr)
+    if args.kind and args.kind != _default_kind(args.gate, None):
+        print(f"--kind {args.kind} does not fit {args.gate}: {args.gate} reviews a "
+              f"{_default_kind(args.gate, None)}", file=sys.stderr)
         return 2
+    if _reviewed(args, video):
+        print(f"round {args.round} has been reviewed; start round {args.round + 1}", file=sys.stderr)
+        return 2
+    sha = save_draft(video, Path(args.draft))
     if args.ledger_file:
         ledger_file: Optional[Path] = Path(args.ledger_file)  # asked for explicitly: missing fails the lint
     else:
         default = Path(args.draft).parent / "claims.md"
         ledger_file = default if default.is_file() else None
-    rep = lint_draft(Path(args.draft), kind=_default_kind(args.gate, args.kind), fmt=cfg.format, linters=cfg.linters, ledger=ledger_file)
-    R.write_meta(video, args.gate, args.round, sha, rep.as_dict(), owner_notes=args.owner_notes)
+    kind = _default_kind(args.gate, args.kind)
+    rep = lint_draft(Path(args.draft), kind=kind, fmt=cfg.format, linters=cfg.linters, ledger=ledger_file)
+    R.write_meta(video, args.gate, args.round, sha, rep.as_dict(), owner_notes=args.owner_notes, kind=kind)
     print(json.dumps({"round": args.round, "draft_sha256": sha, **rep.as_dict()}, indent=2))
     return 0 if rep.ok else 1
 
@@ -87,23 +122,28 @@ def cmd_seat(args) -> int:
     if seat is None:
         print(f"no seat {args.seat!r} in {args.config}", file=sys.stderr)
         return 2
-    inputs = {"draft": load_draft(video, meta["draft_sha256"])}
-    for item in args.input or []:
-        name, eq, path = item.partition("=")
-        if not eq or not name or not path:
-            print(f"--input wants NAME=PATH, not {item!r}", file=sys.stderr)
-            return 2
-        if name == "draft":
-            print("draft comes from the round's snapshot", file=sys.stderr)
-            return 2
-        if not Path(path).is_file():
-            print(f"--input {name}: no such file {path}", file=sys.stderr)
-            return 2
-        inputs[name] = Path(path).read_text(encoding="utf-8")
+    lint_ok = bool((meta.get("lint") or {}).get("ok"))
+    if not lint_ok and not args.allow_failed_lint:
+        print(f"round {args.round}: lint failed; fix the draft and lint again (--allow-failed-lint is for "
+              "calibration only)", file=sys.stderr)
+        return 2
     out = R.round_dir(video, args.gate, args.round) / f"{_slug(seat.name)}.json"
     try:
+        prior = json.loads(out.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        prior = None
+    if isinstance(prior, dict) and prior.get("status") == "ok":
+        print(f"seat {seat.name!r} already has an ok verdict in round {args.round}; a re-run is allowed only "
+              "after a failed one", file=sys.stderr)
+        return 2
+    extra = _read_inputs(args.input)
+    if extra is None:
+        return 2
+    inputs = {"draft": load_draft(video, meta["draft_sha256"]), **extra}
+    try:
         v = run_seat(seat, inputs=inputs, ledger=Ledger(), ctx=_ctx(args, cfg, args.round), out=out,
-                     raw_dir=video / "room" / "raw")
+                     raw_dir=video / "room" / "raw", draft_sha256=meta["draft_sha256"],
+                     lint_overridden=not lint_ok)
     except CapReached as exc:
         print(str(exc), file=sys.stderr)
         return 1
@@ -121,6 +161,9 @@ def cmd_judge(args) -> int:
     if current is None:
         print(f"round {args.round} has no files", file=sys.stderr)
         return 2
+    inputs = _read_inputs(args.input, reserved=())
+    if inputs is None:
+        return 2
     best = R.best_before(rounds, args.round)
     if best is None or not R.is_candidate(current):
         print(json.dumps({"judged": False, "why": "fewer than two candidates"}))
@@ -129,7 +172,7 @@ def cmd_judge(args) -> int:
         res = run_judge(load_draft(video, current["draft_sha256"]), load_draft(video, best["draft_sha256"]),
                         model=cfg.judge, brief=(SEATS_DIR / "judge.md").read_text(encoding="utf-8"),
                         ledger=Ledger(), ctx=_ctx(args, cfg, args.round),
-                        out=R.round_dir(video, args.gate, args.round) / "judge.json")
+                        out=R.round_dir(video, args.gate, args.round) / "judge.json", inputs=inputs)
     except CapReached as exc:
         print(str(exc), file=sys.stderr)
         return 1
@@ -185,10 +228,12 @@ def main(argv: Optional[list[str]] = None) -> int:
     s.add_argument("--round", type=int, required=True)
     s.add_argument("--seat", required=True)
     s.add_argument("--input", action="append")
+    s.add_argument("--allow-failed-lint", action="store_true", help="calibration only")
     s.set_defaults(fn=cmd_seat)
     s = sub.add_parser("judge")
     common(s)
     s.add_argument("--round", type=int, required=True)
+    s.add_argument("--input", action="append")
     s.set_defaults(fn=cmd_judge)
     s = sub.add_parser("report")
     common(s)

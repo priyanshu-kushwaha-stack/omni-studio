@@ -68,3 +68,20 @@ def test_an_exception_from_the_judge_call_fails_closed(tmp_path):
                       ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json", runner=runner, registry=REG)
     assert res["picks"] == ["tie", "tie"] and res["winner"] == "best"
     assert [db.get(cid).status for cid in res["call_ids"]] == ["failed", "failed"]
+
+
+def test_the_judge_prompt_carries_the_inputs_after_the_brief(tmp_path):
+    prompts = []
+
+    def runner(cmd, **kw):
+        if cmd[-1] == "--version":
+            return subprocess.CompletedProcess(cmd, 0, stdout="1\n", stderr="")
+        prompts.append(cmd[-1])
+        return subprocess.CompletedProcess(cmd, 0, stdout=json.dumps({"result": json.dumps({"winner": "tie"})}), stderr="")
+
+    J.run_judge("NEW", "OLD", model="gpt-5.6-sol-high", brief="Pick by audience.md.", ledger=Ledger(tmp_path / "l.sqlite"),
+                ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json", runner=runner, registry=REG,
+                inputs={"audience.md": "Teens who like maps"})
+    for p in prompts:
+        assert "=== audience.md ===\nTeens who like maps" in p
+        assert p.index("Pick by audience.md.") < p.index("=== audience.md ===") < p.index("=== Draft A ===")

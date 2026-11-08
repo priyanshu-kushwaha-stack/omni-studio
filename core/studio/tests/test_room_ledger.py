@@ -95,3 +95,13 @@ def test_an_old_schema_file_is_migrated(tmp_path):
     db.finish(cid, status="ok", output_sha256="o", duration_s=1, verdict_sha256="d")
     assert db.get(cid).verdict_sha256 == "d"
     L.Ledger(path)  # opening again is harmless
+
+
+def test_count_filters_by_round_and_status(tmp_path):
+    db = L.Ledger(tmp_path / "l.sqlite")
+    a = db.reserve(daily_cap=10, script_cap=10, **KW)
+    db.reserve(daily_cap=10, script_cap=10, **{**KW, "round": 2})
+    db.finish(a, status="ok", output_sha256="o", duration_s=1)
+    assert db.count(round=1) == 1 and db.count(round=2) == 1
+    assert db.count(status="reserved") == 1 and db.count(round=1, status="reserved") == 0
+    assert db.count(channel="professor-of-us", video="2026-11-10_x", gate="g2", round=2, status="reserved") == 1

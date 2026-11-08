@@ -11,8 +11,8 @@ from studio.room.ledger import Ledger
 from studio.room.verdict import verdict_digest
 
 
-def _record(cid, seat, role, fam, blockers):
-    return {"call_id": cid, "seat": seat, "role": role, "model": "m", "family": fam, "status": "ok", "scores": {},
+def _record(cid, seat, role, fam, blockers, draft_sha256=""):
+    return {"draft_sha256": draft_sha256, "call_id": cid, "seat": seat, "role": role, "model": "m", "family": fam, "status": "ok", "scores": {},
             "blockers": blockers, "suggestions": [], "keep": [], "error": "", "output_sha256": "out-" + seat}
 
 
@@ -29,7 +29,7 @@ def _setup(tmp_path, fact_family="google", fact_blockers=(), seats=None):
         cid = db.reserve(channel="pou", video=video.name, gate="g2", round=1, seat=seat, model="m", family=fam,
                          prompt_sha256="p", daily_cap=99, script_cap=99)
         blockers = list(fact_blockers) if role == "fact" else []
-        record = _record(cid, seat, role, fam, blockers)
+        record = _record(cid, seat, role, fam, blockers, sha)
         db.finish(cid, status="ok", output_sha256="out-" + seat, duration_s=1, verdict_sha256=verdict_digest(record))
         (R.round_dir(video, "g2", 1) / f"{seat}.json").write_text(json.dumps(record))
     report = R.build_report(video, gate="g2", stage="dialogue_script", channel="pou", writer_family="anthropic",
@@ -286,3 +286,27 @@ def test_a_meta_round_field_that_disagrees_fails(tmp_path):
     data["round"] = 2
     meta.write_text(json.dumps(data))
     assert _has(E.verify(video, report, script, db), "round 1", "meta.json says round 2")
+
+
+def test_a_verdict_that_reviewed_a_different_draft_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    f = _vfile(video, "story")
+    data = json.loads(f.read_text())
+    data["draft_sha256"] = "0" * 64
+    f.write_text(json.dumps(data))
+    db.finish(data["call_id"], status="ok", output_sha256=data["output_sha256"], duration_s=1,
+              verdict_sha256=verdict_digest(data))  # even a re-signed ledger row cannot hide it
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "verdict story", "reviewed a different draft")
+
+
+def test_a_verdict_without_a_draft_binding_fails(tmp_path):
+    video, script, report, db = _setup(tmp_path)
+    f = _vfile(video, "story")
+    data = json.loads(f.read_text())
+    del data["draft_sha256"]
+    f.write_text(json.dumps(data))
+    db.finish(data["call_id"], status="ok", output_sha256=data["output_sha256"], duration_s=1,
+              verdict_sha256=verdict_digest(data))
+    report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
+    assert _has(E.verify(video, report, script, db), "verdict story", "reviewed a different draft")

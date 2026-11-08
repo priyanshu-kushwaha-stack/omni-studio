@@ -6,6 +6,8 @@ import json
 import subprocess
 from pathlib import Path
 
+import pytest
+
 from studio.room import __main__ as cli
 from studio.room import call
 
@@ -99,7 +101,8 @@ def test_relint_of_a_different_draft_does_not_repoint_the_round(tmp_path, monkey
     (video / "room" / "g2" / "round-1" / "story-editor.json").write_text("{}")  # a seat has reviewed round 1
     capsys.readouterr()
     assert _lint(video, script, cfg) == 2
-    assert f"round 1 already reviewed draft {sha[:12]}; start round 2" in capsys.readouterr().err
+    # adapted: the lock is now for any re-lint of a reviewed round, with one message (final fix 4)
+    assert "round 1 has been reviewed; start round 2" in capsys.readouterr().err
     assert json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["draft_sha256"] == sha
 
 
@@ -194,3 +197,143 @@ def test_lint_owner_notes_writes_the_flag(tmp_path, monkeypatch):
     assert json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["owner_notes"] is False
     assert _lint(video, script, cfg, 2, "g2", "--owner-notes") == 0
     assert json.loads((video / "room" / "g2" / "round-2" / "meta.json").read_text())["owner_notes"] is True
+
+
+def _run_seats(video, cfg, monkeypatch, rnd=1, seats=("cold viewer", "story editor", "fact reviewer")):
+    _fake(monkeypatch, [CLEAN] * len(seats))
+    for seat in seats:
+        assert cli.main(["seat", str(video), "g2", "--round", str(rnd), "--seat", seat, "--config", cfg]) == 0
+
+
+def test_any_relint_of_a_reviewed_round_is_refused_even_the_same_draft(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    _run_seats(video, cfg, monkeypatch, seats=("cold viewer",))
+    capsys.readouterr()
+    assert _lint(video, script, cfg) == 2
+    assert "round 1 has been reviewed; start round 2" in capsys.readouterr().err
+    assert _lint(video, script, cfg, 1, "g2", "--owner-notes") == 2  # owner-notes cannot be added after review
+    assert json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["owner_notes"] is False
+
+
+def test_a_reserved_ledger_row_also_locks_the_round(tmp_path, monkeypatch, capsys):
+    from studio.room.ledger import Ledger
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    Ledger().reserve(channel="professor-of-us", video=video.name, gate="g2", round=1, seat="x", model="m",
+                     family="f", prompt_sha256="p", daily_cap=99, script_cap=99)  # a crashed call, no file
+    capsys.readouterr()
+    assert _lint(video, script, cfg) == 2 and "has been reviewed" in capsys.readouterr().err
+    assert _lint(video, script, cfg, 2) == 0  # another round is untouched
+
+
+def test_a_judge_file_locks_the_round(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    (video / "room" / "g2" / "round-1" / "judge.json").write_text("{}")
+    assert _lint(video, script, cfg) == 2
+
+
+@pytest.mark.parametrize("gate,kind", [("g1", "script"), ("g2", "packaging")])
+def test_a_kind_that_does_not_fit_the_gate_is_refused(tmp_path, monkeypatch, capsys, gate, kind):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    capsys.readouterr()
+    assert _lint(video, script, cfg, 1, gate, "--kind", kind) == 2
+    assert "kind" in capsys.readouterr().err
+    assert not (video / "room" / gate / "round-1" / "meta.json").exists()
+
+
+def test_meta_records_the_kind(tmp_path, monkeypatch):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg, 1, "g2", "--kind", "script") == 0
+    assert json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["kind"] == "script"
+    assert _lint(video, script, cfg, 2) == 0
+    assert json.loads((video / "room" / "g2" / "round-2" / "meta.json").read_text())["kind"] == "script"
+
+
+def test_an_ok_seat_cannot_be_rerun_but_a_failed_one_can(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    base = ["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", cfg]
+    # a failed answer (two bad tries) leaves a failed verdict
+    monkeypatch.setattr(call.subprocess, "run", lambda cmd, **kw: subprocess.CompletedProcess(
+        cmd, 0, stdout="1\n" if cmd[-1] == "--version" else "junk", stderr=""))
+    assert cli.main(base) == 1
+    _fake(monkeypatch, [CLEAN])
+    assert cli.main(base) == 0  # re-run after failed: allowed
+    from studio.room.ledger import Ledger
+    n = Ledger().count()
+    capsys.readouterr()
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    assert cli.main(base) == 2
+    assert "already has an ok verdict" in capsys.readouterr().err
+    assert Ledger().count() == n
+
+
+def test_seats_on_a_failed_lint_need_the_calibration_flag(tmp_path, monkeypatch, capsys):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg, 1, "g2", "--ledger-file", str(tmp_path / "missing-claims.md")) == 1
+    base = ["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", cfg]
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    capsys.readouterr()
+    assert cli.main(base) == 2
+    assert "lint failed" in capsys.readouterr().err
+    _fake(monkeypatch, [CLEAN])
+    assert cli.main(base + ["--allow-failed-lint"]) == 0
+    record = json.loads((video / "room" / "g2" / "round-1" / "cold-viewer.json").read_text())
+    assert record["lint_overridden"] is True
+
+
+def test_the_seat_verdict_is_bound_to_the_rounds_draft(tmp_path, monkeypatch):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    _run_seats(video, cfg, monkeypatch, seats=("cold viewer",))
+    sha = json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["draft_sha256"]
+    record = json.loads((video / "room" / "g2" / "round-1" / "cold-viewer.json").read_text())
+    assert record["draft_sha256"] == sha and "lint_overridden" not in record
+
+
+@pytest.mark.parametrize("sub", ["seat", "judge"])
+def test_input_paths_into_secret_folders_are_refused(tmp_path, monkeypatch, capsys, sub):
+    import os
+    import pwd
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg) == 0
+    home = Path(pwd.getpwuid(os.getuid()).pw_dir)
+    boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
+    monkeypatch.setattr(call.subprocess, "run", boom)
+    extra = ["--seat", "cold viewer"] if sub == "seat" else []
+    link = tmp_path / "innocent.md"
+    link.symlink_to(home / ".ssh" / "id_rsa")
+    for path in (home / ".config" / "omni-studio" / "key", home / ".aws" / "credentials", link):
+        capsys.readouterr()
+        assert cli.main([sub, str(video), "g2", "--round", "1", "--config", cfg, *extra,
+                         "--input", f"x={path}"]) == 2
+        assert "secret" in capsys.readouterr().err
+    repo_file = Path(cli.__file__).resolve().parents[3] / "CLAUDE.md"
+    assert repo_file.is_file()
+
+
+def test_judge_takes_inputs_into_its_prompt(tmp_path, monkeypatch):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    for rnd in (1, 2):
+        if rnd == 2:
+            script.write_text("## [00:00] Hook\nPROF: Better.\nOOG: Ha.\n")
+        assert _lint(video, script, cfg, rnd) == 0
+        _run_seats(video, cfg, monkeypatch, rnd)
+    aud = tmp_path / "audience.md"
+    aud.write_text("Teens who like maps")
+    prompts = []
+
+    def run(cmd, **kw):
+        if cmd[0] == "git" or cmd[-1] == "--version":
+            return subprocess.CompletedProcess(cmd, 0, stdout="1\n", stderr="")
+        prompts.append(cmd[-1])
+        return subprocess.CompletedProcess(cmd, 0, stdout=json.dumps({"result": '{"winner": "A"}'}), stderr="")
+
+    monkeypatch.setattr(call.subprocess, "run", run)
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg, "--input", f"audience.md={aud}"]) == 0
+    assert len(prompts) == 2 and all("=== audience.md ===\nTeens who like maps" in p for p in prompts)
+    assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg, "--input", "nonsense"]) == 2

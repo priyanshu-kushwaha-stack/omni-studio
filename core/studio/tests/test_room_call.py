@@ -213,3 +213,37 @@ def test_sandbox_exec_really_denies_a_write(tmp_path):
     proc = subprocess.run(["sandbox-exec", "-p", C.sandbox_profile([secret]), "sh", "-c", f"echo x > {target}"],
                           capture_output=True, text=True)
     assert proc.returncode != 0 and not target.exists()
+
+
+def test_the_verdict_record_binds_the_draft_and_the_digest_covers_it(tmp_path):
+    from studio.room.verdict import verdict_digest
+    db = Ledger(tmp_path / "l.sqlite")
+    out = tmp_path / "v.json"
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out, draft_sha256="d" * 64,
+               runner=fake_runner([json.dumps({"result": json.dumps(VERDICT)})]), registry=REG)
+    record = json.loads(out.read_text())
+    assert record["draft_sha256"] == "d" * 64 and "lint_overridden" not in record
+    assert db.get(record["call_id"]).verdict_sha256 == verdict_digest(record)
+    record["draft_sha256"] = "e" * 64
+    assert db.get(record["call_id"]).verdict_sha256 != verdict_digest(record)
+
+
+def test_a_failed_seat_and_a_lint_override_are_recorded_too(tmp_path):
+    db = Ledger(tmp_path / "l.sqlite")
+    out = tmp_path / "v.json"
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out, draft_sha256="d" * 64,
+               lint_overridden=True, runner=fake_runner(["junk", "junk"]), registry=REG)
+    record = json.loads(out.read_text())
+    assert record["status"] == "failed" and record["draft_sha256"] == "d" * 64 and record["lint_overridden"] is True
+
+
+def test_secret_paths_are_recognised_by_their_real_home(tmp_path):
+    home = _real_home()
+    for rel in (".config/omni-studio/x", ".ssh/id_rsa", ".aws/credentials", ".gnupg/k", ".config/gh/hosts.yml",
+                ".netrc", ".local/state/omni-studio/room/ledger.sqlite", ".claude/projects/p/t.jsonl"):
+        assert C.is_secret_path(home / rel), rel
+    assert not C.is_secret_path(C.ROOT / "README.md")
+    assert not C.is_secret_path(tmp_path / "audience.md")
+    link = tmp_path / "link.md"
+    link.symlink_to(home / ".ssh" / "id_rsa")
+    assert C.is_secret_path(link)

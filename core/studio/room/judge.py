@@ -23,8 +23,9 @@ def pairwise(new_as_a: str, new_as_b: str) -> str:
     return "new" if new_as_a == "A" and new_as_b == "B" else "best"
 
 
-def judge_prompt(brief: str, a: str, b: str) -> str:
-    return f"{brief.strip()}\n\n{JUDGE_SPEC}\n\n=== Draft A ===\n{a}\n\n=== Draft B ===\n{b}"
+def judge_prompt(brief: str, a: str, b: str, inputs: Optional[dict[str, str]] = None) -> str:
+    refs = "".join(f"=== {name} ===\n{text}\n\n" for name, text in (inputs or {}).items())
+    return f"{brief.strip()}\n\n{refs}{JUDGE_SPEC}\n\n=== Draft A ===\n{a}\n\n=== Draft B ===\n{b}"
 
 
 def parse_judge(text: str) -> str:
@@ -35,12 +36,13 @@ def parse_judge(text: str) -> str:
 
 
 def run_judge(new_text: str, best_text: str, *, model: str, brief: str, ledger: Ledger, ctx: CallContext,
-              out: Path, runner=None, timeout: float = 600, registry: Optional[dict] = None) -> dict[str, Any]:
+              out: Path, runner=None, timeout: float = 600, registry: Optional[dict] = None,
+              inputs: Optional[dict[str, str]] = None) -> dict[str, Any]:
     family = family_of(model, registry)
     version = cli_version(cli_of(model, registry), runner)
     picks, call_ids = [], []
     for a, b in ((new_text, best_text), (best_text, new_text)):
-        prompt = judge_prompt(brief, a, b)
+        prompt = judge_prompt(brief, a, b, inputs)
         call_id = ledger.reserve(channel=ctx.channel, video=ctx.video, gate=ctx.gate, round=ctx.round, seat="judge",
                                  model=model, family=family, prompt_sha256=sha256_text(prompt),
                                  daily_cap=ctx.daily_cap, script_cap=ctx.script_cap)

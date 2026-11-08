@@ -54,8 +54,23 @@ DENY_HOME = (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".ne
              ".claude/projects", "Exploration", "Sprinklr")
 
 
+SECRET_HOME = (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".netrc", ".local/state/omni-studio",
+               ".claude/projects")
+
+
+def _real_home() -> Path:
+    return Path(pwd.getpwuid(os.getuid()).pw_dir)
+
+
+def is_secret_path(path: Path) -> bool:
+    """True when `path` (symlinks resolved) is under a secrets folder of the real home. Inputs are read into prompts."""
+    real = Path(path).expanduser().resolve()
+    home = _real_home()
+    return any(real.is_relative_to((home / rel).resolve()) for rel in SECRET_HOME)
+
+
 def deny_paths() -> list[Path]:
-    home = Path(pwd.getpwuid(os.getuid()).pw_dir)
+    home = _real_home()
     paths = [(home / rel).resolve() for rel in DENY_HOME] + [ROOT.resolve()]
     try:
         common = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--path-format=absolute", "--git-common-dir"],
@@ -134,7 +149,7 @@ def invoke(cmd: list[str], *, runner=None, timeout: float = 600) -> tuple[int, s
 
 def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: CallContext, out: Path,
              raw_dir: Optional[Path] = None, runner=None, timeout: float = 600,
-             registry: Optional[dict] = None) -> Verdict:
+             registry: Optional[dict] = None, draft_sha256: str = "", lint_overridden: bool = False) -> Verdict:
     family = family_of(seat.model, registry)
     prompt = seat_prompt(seat.brief.read_text(encoding="utf-8"), seat.role, inputs)
     cmd = build_command(seat.model, prompt, registry)
@@ -168,7 +183,9 @@ def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: C
             if verdict is None:
                 verdict = failed_verdict(call_id=call_id, seat=seat.name, role=seat.role, model=seat.model,
                                          family=family, error=error)
-            record = {**verdict.to_dict(), "output_sha256": sha256_text(text)}
+            record = {**verdict.to_dict(), "output_sha256": sha256_text(text), "draft_sha256": draft_sha256}
+            if lint_overridden:
+                record["lint_overridden"] = True
             digest = verdict_digest(record)
         ledger.finish(call_id, status=verdict.status if verdict else "failed", output_sha256=sha256_text(text),
                       duration_s=duration, cli_version=version, verdict_sha256=digest)

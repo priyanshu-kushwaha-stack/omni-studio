@@ -99,6 +99,9 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
             problems.append(f"verdict {seat}: the report does not match its verdict file")
         loaded.append((v, raw))
     ok = [raw for _, raw in loaded if raw is not None and raw.get("status") == "ok"]
+    for raw in ok:
+        if raw.get("draft_sha256") != want:
+            problems.append(f"verdict {raw.get('seat')}: reviewed a different draft")
     for role in MANDATORY:
         if not any(r.get("role") == role for r in ok):
             problems.append(f"round {n}: no ok {role} verdict")

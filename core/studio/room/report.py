@@ -32,12 +32,12 @@ def round_dir(video_dir: Path, gate: str, n: int) -> Path:
 
 
 def write_meta(video_dir: Path, gate: str, n: int, draft_sha256: str, lint: dict[str, Any],
-               owner_notes: bool = False) -> Path:
+               owner_notes: bool = False, kind: str = "") -> Path:
     d = round_dir(video_dir, gate, n)
     d.mkdir(parents=True, exist_ok=True)
     path = d / "meta.json"
-    path.write_text(json.dumps({"round": n, "draft_sha256": draft_sha256, "lint": lint, "owner_notes": bool(owner_notes)},
-                    indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps({"round": n, "draft_sha256": draft_sha256, "lint": lint, "owner_notes": bool(owner_notes),
+                                "kind": kind}, indent=2) + "\n", encoding="utf-8")
     return path
 
 
