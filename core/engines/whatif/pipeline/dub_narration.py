@@ -4,7 +4,8 @@
 
 <dub takes dir> holds the dub's props.json (written by build.ts from the dub script, one take per English line except
 the --keep lines). Lines in --keep reuse the English take (the countdown). Writes <video>/dub/<lang>/narration.wav
-(48 kHz mono, the video's length), words.json, and fit.txt, a line-by-line report. Media under dub/<lang>/ is git-ignored.
+(48 kHz mono, the video's length), words.json, placed.json (each line's start and end, for subtitles), and fit.txt,
+a line-by-line report. Media under dub/<lang>/ is git-ignored.
 
 Fitting, line by line: a take starts at its English line's start. It may start up to EARLY s sooner when the line
 before has finished, so a long line borrows from the gap before it, and it starts later when the line before still
@@ -48,7 +49,7 @@ def seconds(path: Path) -> float:
 
 def plan(en_starts: list[float], durations: list[float], total: float) -> list[tuple[float, float]]:
     """(start, speed-up) per line. en_starts and durations are per English line, in seconds."""
-    out, prev_end = [], 0.0
+    out, prev_end = [], -GAP   # the first line may start at 0
     for i, (s, d) in enumerate(zip(en_starts, durations)):
         nxt = en_starts[i + 1] if i + 1 < len(en_starts) else total
         start = max(s, prev_end + GAP)
@@ -81,7 +82,7 @@ def main(video: Path, dub: Path, lang: str, keep: set[int]) -> Path:
 
     out = video / "dub" / lang
     out.mkdir(parents=True, exist_ok=True)
-    inputs, chains, words_out, report = [], [], [], []
+    inputs, chains, words_out, report, placed_out = [], [], [], [], []
     for i, ((f, d, words), (start, speed)) in enumerate(zip(takes, placed)):
         inputs += ["-i", str(f)]
         tempo = f",atempo={speed}" if speed > 1 else ""
@@ -90,6 +91,7 @@ def main(video: Path, dub: Path, lang: str, keep: set[int]) -> Path:
                       f"afade=t=out:st={max(0.0, length - FADE_OUT):.3f}:d={FADE_OUT},adelay={round(start * 1000)}:all=1[a{i}]")
         words_out += [{"word": w["word"], "start": round(start + w["start"] / speed, 3),
                        "end": round(start + w["end"] / speed, 3)} for w in words]
+        placed_out.append({"line": i, "start": round(start, 3), "end": round(start + length, 3)})
         en_start = en_clips[i]["from"] / FPS
         report.append(f"{i:2d}  starts {start - en_start:+.2f} s from the English  {length:4.1f} s"
                       f"{f'  sped up {speed:.2f}x' if speed > 1 else ''}{'  (English take)' if i in keep else ''}")
@@ -99,6 +101,7 @@ def main(video: Path, dub: Path, lang: str, keep: set[int]) -> Path:
     subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-ac", "1",
                     "-ar", "48000", "-t", f"{total:.3f}", str(wav)], check=True)
     (out / "words.json").write_text(json.dumps(words_out, indent=1), encoding="utf-8")
+    (out / "placed.json").write_text(json.dumps(placed_out, indent=1), encoding="utf-8")
     (out / "fit.txt").write_text("\n".join(report) + "\n", encoding="utf-8")
     return wav
 

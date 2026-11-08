@@ -43,7 +43,7 @@ ROOT = Path(__file__).resolve().parents[3]
 LOCK = ROOT / "core" / "lock.yaml"
 
 UPLOAD_KEYS = {"file", "title", "description", "tags", "category_id", "language", "made_for_kids",
-               "contains_synthetic_media", "privacy", "thumbnail"}
+               "contains_synthetic_media", "privacy", "thumbnail", "captions"}
 # Normalised (lowercase, no _ - or spaces) keys that mean scheduling or a status override, at any depth.
 SCHEDULE_KEYS = {"publishat", "publishtime", "publishdate", "schedule", "scheduled", "scheduledat",
                  "scheduledpublishtime", "scheduledstarttime", "releaseat", "premiere"}
@@ -52,6 +52,7 @@ MAX_TITLE = 100
 MAX_DESCRIPTION = 5000
 MAX_THUMBNAIL = 2 * 1024 * 1024   # YouTube's limit for a custom thumbnail
 THUMBNAIL_TYPES = (".jpg", ".jpeg", ".png")
+CAPTION_TYPES = (".srt", ".vtt")
 
 
 class UploadRefused(Exception):
@@ -93,6 +94,7 @@ class UploadRequest:
     youtube_channel_id: Optional[str]
     token: Path
     thumbnail: Optional[Path] = None
+    captions: dict[str, Path] = field(default_factory=dict)
     notes: list[str] = field(default_factory=list)
 
 
@@ -173,6 +175,20 @@ def build_request(slug: str, video_id: str, privacy: Optional[str] = None,
             problems.append(f"{path.name}.thumbnail: {data['thumbnail']!r} is not a file inside {folder.name}/")
         elif thumbnail.suffix.lower() not in THUMBNAIL_TYPES or thumbnail.stat().st_size > MAX_THUMBNAIL:
             problems.append(f"{path.name}.thumbnail: a JPG or PNG of at most 2 MB")
+    captions = {}
+    if data.get("captions") is not None:
+        if not isinstance(data["captions"], dict):
+            problems.append(f"{path.name}.captions: a mapping of language code to subtitle file, e.g. en: subtitles/en.srt")
+        else:
+            for lang, rel in data["captions"].items():
+                track = folder / str(rel)
+                if not re.fullmatch(r"[a-z]{2,3}(-[A-Za-z]{2,4})?", str(lang)):
+                    problems.append(f"{path.name}.captions: {lang!r} is not a language code like en or hi")
+                elif not track.resolve().is_relative_to(folder.resolve()) or not track.is_file() \
+                        or track.suffix.lower() not in CAPTION_TYPES:
+                    problems.append(f"{path.name}.captions.{lang}: {rel!r} is not an .srt or .vtt file inside {folder.name}/")
+                else:
+                    captions[str(lang)] = track
 
     kids = data["made_for_kids"] if "made_for_kids" in data else channel.config.made_for_kids
     if not isinstance(kids, bool):
@@ -207,7 +223,7 @@ def build_request(slug: str, video_id: str, privacy: Optional[str] = None,
         "containsSyntheticMedia": ai,
     }
     assert_private(meta)
-    return UploadRequest(slug, video_id, media, meta, channel.config.youtube_channel_id, token, thumbnail)
+    return UploadRequest(slug, video_id, media, meta, channel.config.youtube_channel_id, token, thumbnail, captions)
 
 
 # --- the binary ---
@@ -371,6 +387,8 @@ def run(req: UploadRequest, confirm: str, first_auth: bool = False, api=None,
     if checks:
         raise UploadRefused(f"uploaded {video_id} but the read-back disagrees; fix it in YouTube Studio now:\n  "
                             + "\n  ".join(checks))
+    if req.captions:   # the uploader takes one caption file without a language, so tracks go through the API
+        return set_captions(req, confirm, api)
     return log
 
 
@@ -378,15 +396,13 @@ def _folder(req: UploadRequest) -> Path:
     return req.file.parent if req.file.parent.name != "renders" else req.file.parent.parent
 
 
-def set_thumbnail(req: UploadRequest, confirm: str, api=None) -> dict[str, Any]:
-    """Set upload.yaml's thumbnail on the video `run` already uploaded (its id is in upload_log.json). Same guards as
-    an upload: the owner's --confirm, the channel's own token, and nothing else about the video changes."""
+def _uploaded(req: UploadRequest, confirm: str, api=None):
+    """The guards for changing a video `run` already uploaded (its id is in upload_log.json): the owner's --confirm,
+    the client secret and the channel's own token. Returns (api, log, log path, video id)."""
     from studio.publish import youtube_api
 
     if confirm != f"{req.channel}/{req.video}":
         raise UploadRefused(f"--confirm must be exactly {req.channel}/{req.video}")
-    if req.thumbnail is None:
-        raise UploadRefused("upload.yaml has no thumbnail: add thumbnail: <image inside the video folder>")
     log_path = _folder(req) / "upload_log.json"
     log = json.loads(log_path.read_text(encoding="utf-8")) if log_path.is_file() else {}
     video_id = log.get("youtube_video_id")
@@ -399,9 +415,33 @@ def set_thumbnail(req: UploadRequest, confirm: str, api=None) -> dict[str, Any]:
     mine = api.mine_channel_id()
     if mine != req.youtube_channel_id:
         raise UploadRefused(f"the token belongs to channel {mine}, not {req.youtube_channel_id}; refused")
+    return api, log, log_path, video_id
+
+
+def set_thumbnail(req: UploadRequest, confirm: str, api=None) -> dict[str, Any]:
+    """Set upload.yaml's thumbnail on the uploaded video; nothing else about the video changes."""
+    if req.thumbnail is None:
+        raise UploadRefused("upload.yaml has no thumbnail: add thumbnail: <image inside the video folder>")
+    api, log, log_path, video_id = _uploaded(req, confirm, api)
     served = api.set_thumbnail(video_id, req.thumbnail)
     if not served:
         raise UploadRefused(f"thumbnails.set returned nothing for {video_id}; check the thumbnail in Studio")
     log["thumbnail"] = {"file": str(req.thumbnail.relative_to(_folder(req))), "served": served}
+    log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
+    return log
+
+
+def set_captions(req: UploadRequest, confirm: str, api=None) -> dict[str, Any]:
+    """Add upload.yaml's subtitle tracks to the uploaded video, one published track per language."""
+    if not req.captions:
+        raise UploadRefused("upload.yaml has no captions: add captions: {en: subtitles/en.srt}")
+    api, log, log_path, video_id = _uploaded(req, confirm, api)
+    added = []
+    for lang, track in req.captions.items():
+        caption = api.insert_caption(video_id, lang, "", track)
+        if not caption.get("id"):
+            raise UploadRefused(f"captions.insert returned no id for {lang}; check Subtitles in Studio")
+        added.append({"language": lang, "file": str(track.relative_to(_folder(req))), "id": caption["id"]})
+    log["captions"] = added
     log_path.write_text(json.dumps(log, indent=2), encoding="utf-8")
     return log

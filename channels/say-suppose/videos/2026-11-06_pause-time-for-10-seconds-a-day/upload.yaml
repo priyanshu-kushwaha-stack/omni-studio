@@ -1,6 +1,9 @@
 # Private upload request for `omni upload` (G7). Agents never upload; the owner runs --run and makes it public by hand.
 file: renders/edit-v6.mp4
 thumbnail: renders/packaging/thumb-film-7.jpg   # the owner's pick, 2026-11-08: the film's frame at the counter's 7
+captions:   # from the scripts (core/engines/whatif/pipeline/subtitles.py), not speech recognition
+  en: subtitles/en.srt
+  hi: subtitles/hi.srt
 title: What If You Could Pause Time for 10 Seconds a Day?
 description: |-
   You wake up and you can stop the world. Ten seconds, once a day. What would you spend them on?
