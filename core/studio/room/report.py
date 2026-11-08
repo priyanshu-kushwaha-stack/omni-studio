@@ -155,10 +155,10 @@ def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
         for v in rnd["verdicts"]:
             if v["status"] != "ok":
                 lines.append(f"- {v['seat']} ({v['role']}): FAILED, {v.get('error', '')}")
-            for b in v["blockers"]:
-                lines.append(f"- {v['seat']} ({v['role']}) blocker, line {b.get('line')}: \"{b['quote']}\". "
-                             f"{b['why']} Fix: {b['fix']}")
-            for k in v["keep"]:
+            for b in (x for x in v["blockers"] if isinstance(x, dict)):
+                lines.append(f"- {v['seat']} ({v['role']}) blocker, line {b.get('line')}: \"{b.get('quote')}\". "
+                             f"{b.get('why')} Fix: {b.get('fix')}")
+            for k in (x if isinstance(x, dict) else {"quote": x} for x in v["keep"]):
                 lines.append(f"- {v['seat']} keep, line {k.get('line')}: \"{k.get('quote', '')}\"")
     lines += ["", "## Rounds", "", "| round | lint | seats ok | blockers | judge |", "|---|---|---|---|---|"]
     for rnd in report["rounds"]:

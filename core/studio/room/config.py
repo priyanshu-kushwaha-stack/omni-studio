@@ -58,10 +58,14 @@ class RoomConfig:
     channel_dir: Optional[Path] = None
 
 
-def _brief(value: str, channel_dir: Path) -> Path:
-    if value.startswith("shared:"):
-        return SEATS_DIR / f"{value[len('shared:'):]}.md"
-    return channel_dir / value
+def _brief(value: str, channel_dir: Path, path: Path) -> Path:
+    """A seat's brief goes into a prompt, so it must live under the channel folder or the shared seats folder."""
+    brief = SEATS_DIR / f"{value[len('shared:'):]}.md" if value.startswith("shared:") else channel_dir / value
+    real = brief.resolve()
+    if not any(real.is_relative_to(root.resolve()) for root in (channel_dir, SEATS_DIR)):
+        raise RoomConfigError(f"{path}: brief {value!r} is outside the channel folder and the shared seats; "
+                              "a brief is read into a model prompt")
+    return brief
 
 
 def _int(data: dict, key: str, default: Optional[int], path: Path) -> int:
@@ -89,12 +93,16 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
     if missing:
         raise RoomConfigError(f"{path}: missing {missing}")
     try:
-        seats = [SeatConfig(str(s["name"]), str(s["role"]), str(s["model"]), _brief(str(s["brief"]), channel_dir))
+        seats = [SeatConfig(str(s["name"]), str(s["role"]), str(s["model"]),
+                           _brief(str(s["brief"]), channel_dir, path))
                  for s in data["seats"]]
     except (KeyError, TypeError) as exc:
         raise RoomConfigError(f"{path}: every seat needs name, role, model and brief ({exc})") from exc
     slugs: dict[str, str] = {}
     for seat in seats:
+        if seat_slug(seat.name) in ("", "meta", "judge"):
+            raise RoomConfigError(f"{path}: seat {seat.name!r} has the file name {seat_slug(seat.name)!r}, "
+                                  "which is empty or reserved (meta, judge)")
         other = slugs.setdefault(seat_slug(seat.name), seat.name)
         if other != seat.name:
             raise RoomConfigError(f"{path}: seats {other!r} and {seat.name!r} have the same file name "

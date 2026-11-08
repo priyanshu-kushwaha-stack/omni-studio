@@ -148,3 +148,37 @@ def test_pre_g2_local_needs_only_local_voices(tmp_path):
 def test_a_missing_key_is_a_config_error(tmp_path):
     with pytest.raises(C.RoomConfigError, match="seats"):
         _cfg(tmp_path, "writer: claude-opus-5-5\njudge: gpt-5.6-sol-high\nrounds: 3\n")
+
+
+@pytest.mark.parametrize("brief", ["../outside.md", "/etc/hosts", "shared:../../../../README"])
+def test_a_brief_outside_the_channel_and_seats_dir_is_refused(tmp_path, brief):
+    (tmp_path / "outside.md").write_text("x")
+    channel = tmp_path / "ch"
+    channel.mkdir()
+    text = BASE.replace('"shared:viewer"', brief)
+    (channel / "room.yaml").write_text(text)
+    with pytest.raises(C.RoomConfigError, match="brief"):
+        C.load_room(channel / "room.yaml")
+
+
+def test_a_brief_symlink_out_of_the_channel_is_refused(tmp_path):
+    channel = tmp_path / "ch"
+    channel.mkdir()
+    (tmp_path / "secret.md").write_text("x")
+    (channel / "link.md").symlink_to(tmp_path / "secret.md")
+    (channel / "room.yaml").write_text(BASE.replace('"shared:viewer"', "link.md"))
+    with pytest.raises(C.RoomConfigError, match="brief"):
+        C.load_room(channel / "room.yaml")
+
+
+def test_a_brief_inside_the_channel_dir_is_fine(tmp_path):
+    (tmp_path / "room").mkdir()
+    (tmp_path / "room" / "mine.md").write_text("x")
+    cfg = _cfg(tmp_path, BASE.replace('"shared:viewer"', "room/mine.md"))
+    assert cfg.seats[0].brief.name == "mine.md"
+
+
+@pytest.mark.parametrize("name", ["!!!", "Meta", "JUDGE", " "])
+def test_reserved_or_empty_seat_slugs_are_refused(tmp_path, name):
+    with pytest.raises(C.RoomConfigError, match="file name"):
+        _cfg(tmp_path, BASE.replace("name: cold viewer", f'name: "{name}"'))

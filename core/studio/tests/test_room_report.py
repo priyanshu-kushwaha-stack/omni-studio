@@ -149,3 +149,19 @@ def test_a_later_ordinary_round_after_owner_notes_still_needs_the_judge(tmp_path
     assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 2
     _round(tmp_path, 4, "d" * 64, judge="new")
     assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 4
+
+
+def test_write_report_tolerates_non_dict_items(tmp_path):
+    from studio.room import verdict as V
+    video = tmp_path / "v"
+    v = V.parse_verdict(json.dumps({"keep": ["a line", "another"]}), call_id="c", seat="s", role="story",
+                        model="m", family="f")
+    d = R.round_dir(video, "g2", 1)
+    R.write_meta(video, "g2", 1, "sha", {"ok": True})
+    (d / "s.json").write_text(json.dumps({**v.to_dict(), "output_sha256": "o"}))
+    # a hand-written verdict file with raw strings must not crash the md writer either
+    raw = {**v.to_dict(), "keep": ["bare", {"quote": "q"}], "blockers": [], "output_sha256": "o"}
+    (d / "s.json").write_text(json.dumps(raw))
+    rep = R.build_report(video, gate="g2", stage="x", channel="c", writer_family="w", ledger=Ledger(tmp_path / "l"), cap=9)
+    R.write_report(video, rep)
+    assert (video / "room-g2.md").is_file()

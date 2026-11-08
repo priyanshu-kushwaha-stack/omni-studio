@@ -24,10 +24,11 @@ def test_a_fenced_verdict_parses():
 
 
 def test_a_blocker_outside_the_seat_role_becomes_a_suggestion():
-    data = {**GOOD, "blockers": [{"quote": "x", "why": "pacing", "fix": "cut", "domain": "story"}]}
-    out = v.parse_verdict(json.dumps(data), **META)
+    # adapted: a fact seat's blockers are never demoted (final fix 1), so the demotion is pinned on a story seat
+    data = {**GOOD, "blockers": [{"quote": "x", "why": "pacing", "fix": "cut", "domain": "fact"}]}
+    out = v.parse_verdict(json.dumps(data), **{**META, "role": "story", "seat": "story editor"})
     assert out.blockers == []
-    assert out.suggestions[-1]["moved"] == "blocker outside the fact role"
+    assert out.suggestions[-1]["moved"] == "blocker outside the story role"
 
 
 @pytest.mark.parametrize("text", ["no json here", "[1, 2]", '{"blockers": [{"why": "no quote"}]}',
@@ -46,3 +47,31 @@ def test_failed_verdict_and_round_trip():
     out = v.failed_verdict(error="exit 1", **META)
     assert out.status == "failed" and out.blockers == []
     assert v.Verdict.from_dict(out.to_dict()) == out
+
+
+@pytest.mark.parametrize("domain", ["Fact", "fact-check", "accuracy", " FACT ", None, ""])
+def test_a_fact_blocker_is_never_demoted(domain):
+    b = {"quote": "x", "why": "wrong year", "fix": "fix"}
+    if domain is not None:
+        b["domain"] = domain
+    out = v.parse_verdict(json.dumps({"blockers": [b]}), **META)
+    assert len(out.blockers) == 1 and out.suggestions == []
+
+
+def test_a_story_blocker_on_a_viewer_seat_still_moves_to_suggestions():
+    data = {"blockers": [{"quote": "x", "why": "w", "fix": "f", "domain": "story"}]}
+    out = v.parse_verdict(json.dumps(data), **{**META, "role": "viewer", "seat": "cold viewer"})
+    assert out.blockers == [] and out.suggestions[-1]["moved"] == "blocker outside the viewer role"
+
+
+def test_a_blocker_without_a_domain_stays_a_blocker_on_any_seat():
+    data = {"blockers": [{"quote": "x", "why": "w", "fix": "f"}]}
+    out = v.parse_verdict(json.dumps(data), **{**META, "role": "story"})
+    assert len(out.blockers) == 1 and out.blockers[0].domain == "story"
+
+
+def test_suggestions_and_keep_are_shape_checked():
+    data = {"suggestions": ["cut this", {"quote": "q"}, 5, None, ["x"]], "keep": ["the fire", 3, {"quote": "k"}]}
+    out = v.parse_verdict(json.dumps(data), **META)
+    assert out.suggestions == [{"quote": "cut this"}, {"quote": "q"}]
+    assert out.keep == [{"quote": "the fire"}, {"quote": "k"}]

@@ -68,6 +68,11 @@ def extract_json(text: str) -> dict[str, Any]:
     return data
 
 
+def _items(raw: list[Any]) -> list[dict[str, Any]]:
+    """Suggestions and keep lines are dicts: a bare string becomes {"quote": s}, anything else is dropped."""
+    return [{"quote": i} if isinstance(i, str) else i for i in raw if isinstance(i, (str, dict))]
+
+
 def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, family: str) -> Verdict:
     if role not in ROLES:
         raise ValueError(f"unknown role {role!r}")
@@ -75,22 +80,22 @@ def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, 
     if not any(k in data for k in ("scores", "blockers", "suggestions", "keep")):
         raise BadVerdict("the verdict has none of scores, blockers, suggestions, keep")
     scores = data.get("scores") or {}
-    suggestions = data.get("suggestions") or []
-    keep = data.get("keep") or []
     if not isinstance(scores, dict):
         raise BadVerdict("scores must be an object")
-    if not isinstance(suggestions, list) or not isinstance(keep, list):
+    if not isinstance(data.get("suggestions") or [], list) or not isinstance(data.get("keep") or [], list):
         raise BadVerdict("suggestions and keep must be lists")
     if "blockers" in data and not isinstance(data["blockers"], list):
         raise BadVerdict("blockers must be a list")
+    suggestions = _items(data.get("suggestions") or [])
+    keep = _items(data.get("keep") or [])
     blockers: list[Blocker] = []
     for b in data.get("blockers") or []:
         if not isinstance(b, dict) or not isinstance(b.get("quote"), str) or not isinstance(b.get("why"), str):
             raise BadVerdict(f"a blocker needs a quote and a why: {b!r}")
         line = b.get("line") if isinstance(b.get("line"), int) else None
-        blocker = Blocker(quote=b["quote"], why=b["why"], fix=str(b.get("fix") or ""),
-                          domain=str(b.get("domain") or role), line=line)
-        if blocker.domain != role:
+        domain = str(b.get("domain") or "").strip().lower() or role
+        blocker = Blocker(quote=b["quote"], why=b["why"], fix=str(b.get("fix") or ""), domain=domain, line=line)
+        if role != "fact" and domain != role:  # a fact blocker is never demoted, whatever domain the model names
             suggestions.append({**asdict(blocker), "moved": f"blocker outside the {role} role"})
         else:
             blockers.append(blocker)
