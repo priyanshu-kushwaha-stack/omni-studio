@@ -37,6 +37,13 @@ def _setup(tmp_path, fact_family="google", fact_blockers=(), seats=None):
     return video, script, report, db
 
 
+def _resign(db, data):
+    """Forge a ledger row's digest directly: finish() no longer re-signs a finished row."""
+    import sqlite3
+    with sqlite3.connect(db.path) as con:
+        con.execute("UPDATE calls SET verdict_sha256 = ? WHERE call_id = ?", (verdict_digest(data), data["call_id"]))
+
+
 def _vfile(video, seat):
     return R.round_dir(video, "g2", 1) / f"{seat}.json"
 
@@ -294,8 +301,7 @@ def test_a_verdict_that_reviewed_a_different_draft_fails(tmp_path):
     data = json.loads(f.read_text())
     data["draft_sha256"] = "0" * 64
     f.write_text(json.dumps(data))
-    db.finish(data["call_id"], status="ok", output_sha256=data["output_sha256"], duration_s=1,
-              verdict_sha256=verdict_digest(data))  # even a re-signed ledger row cannot hide it
+    _resign(db, data)  # even a re-signed ledger row cannot hide it
     report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
     assert _has(E.verify(video, report, script, db), "verdict story", "reviewed a different draft")
 
@@ -306,7 +312,6 @@ def test_a_verdict_without_a_draft_binding_fails(tmp_path):
     data = json.loads(f.read_text())
     del data["draft_sha256"]
     f.write_text(json.dumps(data))
-    db.finish(data["call_id"], status="ok", output_sha256=data["output_sha256"], duration_s=1,
-              verdict_sha256=verdict_digest(data))
+    _resign(db, data)
     report = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic", ledger=db, cap=29)
     assert _has(E.verify(video, report, script, db), "verdict story", "reviewed a different draft")

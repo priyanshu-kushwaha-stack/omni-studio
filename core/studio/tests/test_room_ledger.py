@@ -105,3 +105,34 @@ def test_count_filters_by_round_and_status(tmp_path):
     assert db.count(round=1) == 1 and db.count(round=2) == 1
     assert db.count(status="reserved") == 1 and db.count(round=1, status="reserved") == 0
     assert db.count(channel="professor-of-us", video="2026-11-10_x", gate="g2", round=2, status="reserved") == 1
+
+
+def test_a_finished_row_cannot_be_finished_again(tmp_path):
+    db = L.Ledger(tmp_path / "l.sqlite")
+    cid = db.reserve(daily_cap=10, script_cap=10, **KW)
+    db.finish(cid, status="failed", output_sha256="o", duration_s=1)
+    with pytest.raises(ValueError, match="reserved"):
+        db.finish(cid, status="ok", output_sha256="x", duration_s=1, verdict_sha256="v")
+    assert db.get(cid).status == "failed" and db.get(cid).output_sha256 == "o"
+
+
+def test_count_filters_by_seat(tmp_path):
+    db = L.Ledger(tmp_path / "l.sqlite")
+    db.reserve(daily_cap=10, script_cap=10, **KW)
+    db.reserve(daily_cap=10, script_cap=10, **{**KW, "seat": "judge"})
+    assert db.count(seat="judge") == 1 and db.count(seat="fact reviewer") == 1 and db.count(seat="nope") == 0
+
+
+def test_the_studio_ceiling_caps_a_larger_channel_daily_cap(tmp_path, monkeypatch):
+    limits = tmp_path / "limits.yaml"
+    limits.write_text("daily_cap: 2\n")
+    monkeypatch.setattr(L, "LIMITS", limits)
+    db = L.Ledger(tmp_path / "l.sqlite")
+    db.reserve(daily_cap=500, script_cap=10, **KW)
+    db.reserve(daily_cap=500, script_cap=10, **KW)
+    with pytest.raises(L.CapReached, match="daily cap"):
+        db.reserve(daily_cap=500, script_cap=10, **KW)
+
+
+def test_the_shipped_studio_ceiling_is_80():
+    assert L.studio_daily_cap() == 80

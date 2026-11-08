@@ -182,3 +182,27 @@ def test_a_brief_inside_the_channel_dir_is_fine(tmp_path):
 def test_reserved_or_empty_seat_slugs_are_refused(tmp_path, name):
     with pytest.raises(C.RoomConfigError, match="file name"):
         _cfg(tmp_path, BASE.replace("name: cold viewer", f'name: "{name}"'))
+
+
+def test_a_channel_daily_cap_above_the_studio_ceiling_does_not_hide_a_small_ceiling(tmp_path, monkeypatch):
+    from studio.room import ledger
+    limits = tmp_path / "limits.yaml"
+    limits.write_text("daily_cap: 10\n")
+    monkeypatch.setattr(ledger, "LIMITS", limits)
+    assert any("daily cap" in p for p in C.validate(_cfg(tmp_path)))
+
+
+@pytest.mark.parametrize("old,new", [("format: {wpm: 155}", "format: [wpm]"), ("format: {wpm: 155}", "format: 7"),
+                                     ("linters: []", "linters: not-a-list"), ("linters: []", "linters: {a: b}"),
+                                     ("sources: []", "sources: some.md")])
+def test_wrong_shaped_format_linters_or_sources_are_config_errors(tmp_path, old, new):
+    with pytest.raises(C.RoomConfigError):
+        _cfg(tmp_path, BASE.replace(old, new))
+
+
+def test_a_voices_file_whose_voices_is_not_a_mapping_is_a_problem(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("pitch_clip: after_g2", "pitch_clip: pre_g2_local"))
+    (tmp_path / "voices.yaml").write_text("voices: [qwen3]\n")
+    assert any("voices" in p for p in C.validate(cfg))
+    (tmp_path / "voices.yaml").write_text("voices: qwen3\n")
+    assert any("voices" in p for p in C.validate(cfg))

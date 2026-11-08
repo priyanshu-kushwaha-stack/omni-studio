@@ -16,6 +16,7 @@ from typing import Any, Optional
 
 import yaml
 
+from studio.room import ledger
 from studio.room.models import UnknownModel, family_of, load_registry
 from studio.room.verdict import LOCKED_ROLES, MANDATORY, ROLES
 
@@ -107,9 +108,15 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
         if other != seat.name:
             raise RoomConfigError(f"{path}: seats {other!r} and {seat.name!r} have the same file name "
                                   f"{seat_slug(seat.name)!r}")
+    fmt = data.get("format")
+    if fmt is not None and not isinstance(fmt, dict):
+        raise RoomConfigError(f"{path}: format must be a mapping, not {type(fmt).__name__}")
+    for key in ("linters", "sources"):
+        if data.get(key) is not None and not isinstance(data[key], list):
+            raise RoomConfigError(f"{path}: {key} must be a list, not {type(data[key]).__name__}")
     return RoomConfig(writer=str(data["writer"]), judge=str(data["judge"]),
                       rounds=_int(data, "rounds", None, path), daily_cap=_int(data, "daily_cap", 80, path),
-                      seats=seats, format=data.get("format") or {},
+                      seats=seats, format=fmt or {},
                       linters=list(data.get("linters") or []), adopted=data.get("adopted"),
                       pitch_clip=str(data.get("pitch_clip", "after_g2")), sources=list(data.get("sources") or []),
                       path=path, channel_dir=channel_dir)
@@ -130,6 +137,8 @@ def _voices_problems(channel_dir: Path) -> list[str]:
     except (yaml.YAMLError, UnicodeDecodeError) as exc:
         return [f"pitch_clip pre_g2_local: voices.yaml is not valid YAML ({exc})"]
     voices = (loaded.get("voices") if isinstance(loaded, dict) else None) or {}
+    if not isinstance(voices, dict):
+        return ["pitch_clip pre_g2_local: voices in voices.yaml must be a mapping of name to engine"]
     if not voices:
         return ["pitch_clip pre_g2_local needs a non-empty voices.yaml"]
     return [f"pitch_clip pre_g2_local: voice {name!r} uses {v.get('tool')!r}, not a free local engine {LOCAL_TTS}"
@@ -179,6 +188,7 @@ def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
     elif cfg.pitch_clip == "pre_g2_local" and cfg.channel_dir:
         problems += _voices_problems(cfg.channel_dir)
     cap = derived_cap(cfg)
-    if cfg.daily_cap < cap:
-        problems.append(f"daily cap {cfg.daily_cap} is below one script's derived cap {cap}")
+    ceiling = ledger.studio_daily_cap()
+    if min(cfg.daily_cap, ceiling) < cap:
+        problems.append(f"daily cap {cfg.daily_cap} (studio ceiling {ceiling}) is below one script's derived cap {cap}")
     return problems

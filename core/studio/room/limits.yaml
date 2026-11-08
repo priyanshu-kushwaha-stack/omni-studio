@@ -1,0 +1,2 @@
+# Studio-wide ceilings for the room. A channel's room.yaml daily_cap can lower the day's calls, never raise them.
+daily_cap: 80
