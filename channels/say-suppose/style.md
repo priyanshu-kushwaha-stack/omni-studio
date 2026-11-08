@@ -39,6 +39,10 @@ jumps and each is bigger than the last.
 - **Written to be spoken, not read** (owner, 2026-11-08, for every language): fragments, half-sentences, thoughts
   that trail off, a question answered at once, key words repeated. Not every sentence is complete, because that is not
   how people talk. The pause-time script (approved before this rule) stays as it is.
+- **But the landing line finishes** (owner, 2026-11-08): fragments give colour; the line that lands an idea is a
+  complete thought. Example, Hinglish: "अब सोचो — आप रोज़ ten seconds, बस ten seconds के लिए time को pause कर सकते
+  हो। ये ten seconds… अब आपके हाथ में हैं।", not a fragment.
+- **Every line carries an emotion** (curious, hushed, surprised, amused, warm…), given to the voice as a direction.
 - About once a minute the narrator puts a choice to you and the figure answers at once by acting. No held pause,
   no quiz board, no countdown that waits for the viewer.
 - Other characters speak only in speech bubbles of four words or fewer.
