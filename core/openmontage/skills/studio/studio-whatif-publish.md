@@ -14,7 +14,7 @@ Learned on the first Say Suppose video (pause-time, 2026-11-08).
 
 | Step | How |
 |---|---|
-| Upload, title, description, tags, kids, AI answer | `omni upload --run` (youtubeuploader) |
+| Upload, title, description, tags, kids, AI answer | `omni upload --run` (youtubeuploader), after the owner's G7 approval signs the file and metadata |
 | Thumbnail | `thumbnail:` in upload.yaml; on an uploaded video `--thumbnail-only --run --confirm <slug>/<video>` (50 quota units) |
 | Subtitles | `captions:` in upload.yaml, added after a good read-back; or `--captions-only` (400 units a track) |
 | Dub audio track | Studio only: Languages, Add language, the language, Audio, Add. Audio-only, the video's length |
@@ -32,8 +32,8 @@ Build the files the steps need:
 ## Gotchas
 
 - **OAuth.** The Google Cloud project's YouTube client is a Web application with the redirect
-  `http://localhost:8080/oauth2callback`. In Testing mode only listed test users sign in: at the first `--first-auth`,
-  choose the owner's personal Google account, then the brand channel. Choosing the brand identity itself fails with
+  `http://localhost:8080/oauth2callback`. In Testing mode only listed test users sign in: at `omni youtube-auth <slug>`
+  (owner only, once per channel), choose the owner's personal Google account, then the brand channel. Choosing the brand identity itself fails with
   403 access_denied.
 - **Unverified API project.** Its uploads can be locked private until Google's YouTube API audit. Studio showed no
   notice on the pause-time video, and it could be scheduled.
