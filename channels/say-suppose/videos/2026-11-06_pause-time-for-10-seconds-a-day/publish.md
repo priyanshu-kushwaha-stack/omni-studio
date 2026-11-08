@@ -1,6 +1,9 @@
 # Publish: What If You Could Pause Time for 10 Seconds a Day?
 
-status: G7 prepared 2026-11-08, awaiting the owner. Nothing is uploaded.
+status: uploaded private 2026-11-08 at the owner's request: https://studio.youtube.com/video/-si5nCzgQl8/edit
+(channel UC_Ve59ry_JYiX8sUaSOV8sQ, private, not for kids; `upload_log.json`). G7 awaits the owner. The read-back
+returned no altered-content value (asked: no): check it in Studio. An unverified API project's uploads stay
+private until Google's API audit; the public flip is the owner's.
 
 - **File:** `renders/edit-v6.mp4` (5:14, -14.0 LUFS), passed G5 and G6.
 - **Title, description, tags:** `upload.yaml`. Title and thumbnail are G1 pair A. Sources from `claims.md` (c04, c05,
