@@ -11,10 +11,13 @@ private until Google's API audit; the public flip is the owner's.
 - **Thumbnail:** `renders/packaging/thumb-film-7.jpg`, the film's own frame at the counter's 7 (owner's pick,
   2026-11-08), set through the API: `omni upload ... --thumbnail-only --run --confirm <slug>/<video>`.
 - **Audience:** not made for kids.
+- **Studio check, 2026-11-08:** AI use (Studio's new name for altered content) reads No; not made for kids.
 - **Altered or synthetic content:** no (owner confirmed, 2026-11-08). The disclosure covers realistic content; this is a
   stylised cartoon with a fictional narrator. The narration and music are AI-made, which the description says.
-- **Pinned comment:** "What would you do with your ten seconds? The best answers become videos."
-- **Hindi audio track:** after the upload, in Studio: Languages, this video, Add language, Hindi, Dub, upload
+- **Pinned comment:** "What would you do with your ten seconds? The best answers become videos." Post and pin it right
+  after the video goes public: YouTube does not allow comments on private videos (checked 2026-11-08).
+- **Hindi audio track:** added 2026-11-08 in Studio (Languages, Hindi, Audio: `dub/hi/pause-time-hi-dub-192k.mp3`,
+  the same mix at 192 kbps; no auto-dubs were there). Steps for later videos, in Studio: Languages, this video, Add language, Hindi, Dub, upload
   `dub/hi/pause-time-hi-dub.mp3` (built per `dub/README.md`). Delete any auto-dub YouTube made first.
 - **Upload:** `omni upload say-suppose 2026-11-06_pause-time-for-10-seconds-a-day` is the dry run. The real upload is
   `--run --confirm say-suppose/2026-11-06_pause-time-for-10-seconds-a-day`, private, only when the owner asks. The
