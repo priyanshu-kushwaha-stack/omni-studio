@@ -4,37 +4,41 @@ Owner direction, 2026-11-08: the room "becomes the core spine of this video gene
 follow the same quality process with just different reviewers and different way of doing it but the same process
 of iterating over using different models family and fixing the issues on its own." The research, script-writer
 and reviewer skills get their own detailed specs later, each from dedicated research per niche. This spec fixes
-the process and the contracts those skills plug into. Research behind it, and its review by GPT-5.6 and Grok 4.7
-through Cursor: https://claude.ai/code/artifact/3b7a13c5-f209-4c77-a0be-096b2969c6e5 (v5).
+the process and the contracts those skills plug into.
 
-Two tracks. Track A is the spine. Track B makes the repo portable, with heavy jobs in the cloud and the Mac as
-fallback. They touch different files.
+Research and the design page: https://claude.ai/code/artifact/3b7a13c5-f209-4c77-a0be-096b2969c6e5. The design was
+reviewed by GPT-5.6 and Grok 4.7 through Cursor twice: once as a design, once as this spec. The second review is
+applied here (see "Review log" at the end). Cloud and portability moved to their own spec:
+`2026-11-08-portable-compute-design.md`.
 
 ## Goal
 
-Every video on every channel passes through the same loop before the owner sees it at G1 and G2: independent
-reviewers from at least two model families other than the writer's, deterministic lint first, the writer fixing
-the notes, a blind judge, a fixed stop rule, and a report. Channels differ only in who sits in the seats, what
-their format checks measure, and where their research comes from. `omni approve` refuses G1 or G2 when the loop
-did not run on the exact file being approved.
+Every new video on every channel passes through the same loop before the owner sees it at G1 and G2: independent
+reviewers in fixed roles from at least two model families other than the writer's, deterministic lint first, the
+writer fixing the notes, a blind judge when there are drafts to choose between, a fixed stop rule, and a report.
+Channels differ only in which seats they add, which model sits in each, what their format checks and linters
+measure, and where their research comes from. `omni approve` refuses G1 or G2 when the loop did not run on the
+exact file being approved, and later stages refuse to run on a file that changed after its gate.
 
-## Invariants (every channel, every video)
+## Invariants (every channel, every new video)
 
-1. **The writer never judges.** The judge and the fact seat are never the writer's model family.
-2. **Two other families at least.** Each round needs valid verdicts from seats on two or more model families
-   other than the writer's.
+1. **The writer never judges.** The judge, the fact seat and the story seat are never the writer's model family.
+2. **Mandatory roles.** Every review round has an ok verdict from a `viewer`, a `story` and a `fact` seat, from at
+   least two families other than the writer's. A failed or missing mandatory seat fails the round.
 3. **Blind and independent.** A seat sees the draft, its brief and the channel bible, never another seat's notes
    or which model wrote what.
-4. **Specific or dropped.** A note must quote the line and give a concrete fix. Notes without both are discarded.
+4. **Specific or dropped.** A note must quote the line and give a concrete fix. Notes without both are discarded,
+   except fact blockers, which are never dropped by the merge.
 5. **Lint before opinion.** Deterministic checks run before any model reads the draft.
 6. **The room fixes its own issues.** The writer applies the merged notes each round without asking the owner.
-7. **Fixed stop rule.** Stop when no seat has a blocker and the new draft does not beat the best draft, or at the
-   round cap. Ship the best draft, not the latest.
-8. **Facts beat everything.** An unresolved fact blocker stops the pitch. Precedence otherwise: newest dated owner
-   note, then the channel's rules, then the shared rules.
-9. **Gates unchanged.** The room ends at `awaiting_human`. It never approves, never reads the approval key, never
-   uploads. Seven gates stay seven.
-10. **Same process, recorded.** Every round leaves a summary in git and a machine report the gate check reads.
+7. **Fixed stop rule** (below). The shipped draft is the best *candidate*, never a draft with lint failures or a
+   fact blocker.
+8. **Precedence.** `CLAUDE.md` and the gates first, then fact blockers, then the newest dated owner note, then the
+   channel's rules, then the shared rules. A taste note never overrides a gate, a banned tool or the paid-call rule.
+9. **Gates unchanged.** The room never approves, never reads the approval key or anything under
+   `~/.config/omni-studio/`, never uploads. Seven gates stay seven.
+10. **Recorded.** Every round leaves its draft snapshot, verdicts and a summary in git, and a machine report the gate
+    check reads.
 
 ## The process
 
@@ -42,183 +46,232 @@ did not run on the exact file being approved.
 idea pick (owner, topics.yaml status: selected)
   -> packaging room  -> G1 pitch (owner)     [stop]
   -> research pack   -> script room -> G2 pitch (owner)  [stop]
-  -> G3..G7 as today
+  -> G3..G7 as today, each verifying the gated file is unchanged
 ```
 
 | Step | Input | Output | Who |
 |---|---|---|---|
 | Idea pick | `backlog/topics.yaml` (later: scout briefs) | `status: selected` | Owner |
-| Packaging room | topic, `audience.md`, `taste.md` | `packaging.md`: premise, the wrong belief it breaks, three title + thumbnail pairs, beat outline; `room-g1.md`, `room/g1.json` | Room |
-| G1 pitch | the above | owner approval | Owner |
-| Research pack | approved packaging | `research.md`, `claims.md` with verbatim quotes, scope and contested rows | Research skill |
-| Script room | research pack, packaging, bible | `script.md`, `review-g2-round<N>.md`, `room-g2.md`, `room/g2.json` | Room |
-| G2 pitch | script, room report, ledger, beat map, pitch clip where allowed | owner approval | Owner |
+| Packaging room | topic, `audience.md`, `taste.md` | `packaging.md`: premise, the wrong belief it breaks, three title + thumbnail pairs, beat outline | Room |
+| G1 pitch | packaging, `room-g1.md` | owner notes or approval | Owner |
+| Research pack | approved packaging | `research.md`, `claims.md` with verbatim quotes, scope, contested rows | Research skill |
+| Script room | research pack, packaging, bible | `script.md` and the round files | Room |
+| G2 pitch | script, `room-g2.md`, ledger, beat map | owner notes or approval | Owner |
 
-After the owner's notes at a gate, the writer applies them and a **confirmation round** (lint, the fact seat and
-the viewer seat, then the judge) re-stamps the report on the new file, so it still meets the two-family rule. Owner notes go into `taste.md` the same day.
+**Owner notes before approval.** At a gate the owner reads and may give notes. The writer applies them and the room
+runs one more review round on the edited file (all mandatory seats, lint first). That round's report is what
+`omni approve` checks. Notes go into `taste.md` the same day. A signed gate is never reopened by the room.
 
-Out of scope for this spec: the room at G4-G6 (rough cut, edit, colour). Say Suppose already runs G4 and colour
-reviews by hand; the same machinery can extend there later.
+**Shorts are videos too.** studio-short's `proposal` and `short_script` stages are covered like any other.
+
+Out of scope here: the room at G4-G6 (rough cut, edit, colour). Say Suppose already runs those reviews by hand; the
+same machinery can extend there later.
+
+## The stop rule
+
+```
+round N:  lint draft N -> mandatory + channel seats review draft N (snapshot stored)
+          draft N is a candidate if lint-clean and no fact blocker
+          if two or more candidates exist, the judge compares draft N with the best candidate
+             (both orders, labels hidden; a win must hold both ways; a tie keeps the best)
+          stop if draft N has no blockers at all, or N == round cap
+          otherwise the writer writes draft N+1 from the merged notes
+ship:     the best candidate, bound to the round that reviewed it
+          no candidate at the cap -> the room fails; the report says why; the gate check fails
+```
+
+Non-fact blockers still open at the cap do not block the gate. They lead the room report so the owner decides.
+Seat scores are informational only; the stop rule uses blockers and the judge, nothing else.
 
 ## Shared vs per channel
 
-| Shared, in the core | Per channel |
+| Shared, in `core/studio/room/` | Per channel |
 |---|---|
-| Sandboxed model call, verdict schema, call log | `room.yaml`: seats, model per seat, veto domains, caps, format checks, research sources, pitch clip mode |
-| Slop lint (word lists pinned in `core/lock.yaml`), "and then" joins, open vs closed loops | Format checks as parameters: interjection cadence, wordless share, word budget and wpm, speaker labels; plus the channel's own linters |
-| Judge, stop rule, round files, reports | `room/seats/*.md` channel seat briefs |
-| Shared seat briefs: first-time viewer, retention editor, fact reviewer | `audience.md` (one named viewer, their job, 3-5 comparable channels, what makes them leave) and `taste.md` (owner accept/reject notes, newest first) |
-| The `studio-room` skill (the process) | The pipeline's own stage names and gates |
+| Model call, verdict schema, call ledger, model-family registry | `room.yaml`: seats (role, brief, one model), caps, linter list, format parameters, research sources, `adopted` date, pitch clip mode |
+| Slop lint (word lists pinned in `core/lock.yaml`), "and then" joins, open vs closed loops, a ledger lint (every cited claim id has a non-empty verbatim quote) | Format parameters (interjection cadence, wordless share, word budget, wpm, speaker labels) and channel linters named in `room.yaml` (e.g. `script_lint.py` for Professor of Us) |
+| Judge, stop rule, round snapshots, reports, the `room` gate check | `room/seats/*.md` channel seat briefs |
+| Shared briefs for the three mandatory roles | `audience.md` (one named viewer, their job, 3-5 comparable channels, what makes them leave) and `taste.md` (owner notes, newest first) |
+| The `studio-room` skill (the process) | The pipeline's own stage names |
 
-Starting panels come from what each channel runs today:
+**Seat roles:** `viewer`, `story`, `fact` (mandatory); `neutrality`, `voice`, `craft` (optional). The role, not the
+seat's title, is what `omni check` and the gate check read. One model per seat.
 
-| Channel | Seats | Default models (writer: Claude Opus 5.5) |
-|---|---|---|
-| professor-of-us | story editor, cold viewer, fact reviewer | GPT-5.6, Grok 4.7, Gemini; judge GPT-5.6 |
-| say-suppose | first-time viewer, fact-checker, retention editor, voice director, animator | Grok, Gemini, GPT-5.6, Claude Sonnet, Claude Sonnet; judge GPT-5.6 |
-| power-and-citizen | casual viewer, retention editor, professor, dialogue editor, neutrality reader, picture editor | Grok, GPT-5.6, Gemini, Claude Sonnet, GPT-5.6 and Gemini both, Claude Sonnet; judge GPT-5.6 |
-| see-underneath | the three shared seats | set when the channel starts |
+Starting panels, from what each channel runs today (writer: Claude Opus 5.5):
 
-Craft seats that judge buildability or voice may sit on the writer's family; story, fact, neutrality and judge
-seats may not. Non-Claude models run through `cursor-agent`; Codex joins through `codex exec` once subscribed.
+| Channel | Seats (role: model) |
+|---|---|
+| professor-of-us | cold viewer (viewer: Grok 4.7), story editor (story: GPT-5.6), fact reviewer (fact: Gemini) |
+| say-suppose | first-time viewer (viewer: Grok), retention editor (story: GPT-5.6), fact-checker (fact: Gemini), voice director (voice: Claude Sonnet), animator (craft: Claude Sonnet) |
+| power-and-citizen | casual viewer (viewer: Grok), retention editor (story: GPT-5.6), professor (fact: Gemini), dialogue editor (craft: Claude Sonnet), neutrality A (neutrality: GPT-5.6), neutrality B (neutrality: Gemini), picture editor (craft: Claude Sonnet) |
+| see-underneath | the three mandatory seats, set when the channel starts |
+
+Judge: GPT-5.6 on every channel, a separate call. Craft and voice seats may sit on the writer's family; viewer,
+story, fact, neutrality and judge may not. Non-Claude models run through `cursor-agent`; Codex joins through
+`codex exec` once subscribed. `core/studio/room/models.yaml` maps every model id to its family; a seat whose model
+is not in the registry fails `omni check`.
+
+**Caps are derived, not guessed.** Per script: `rounds x (seats + 2 judge calls) + 1 retry per seat per round`, plus
+one owner-notes round. `omni check` computes it from `room.yaml` and refuses a cap below it. Defaults: 3 rounds;
+the derived per-script cap; 80 calls a day across all channels (owner may change). Per-call paid providers still
+need the owner's approval each time.
 
 ## How it is the spine (enforcement)
 
-1. **A `room` gate check.** `core/studio/checks.py` gains `room` in `KNOWN`. Every studio pipeline lists it in
-   `metadata.studio_checks` for its packaging stage (`proposal`) and its script stage (`dialogue_script` in
-   studio-dialogue and studio-documentary, `story_script` in studio-whatif, and the script stage of any future
-   pipeline). `omni approve` re-runs it before signing, like the claims check. It passes only when
-   `room/<gate>.json` exists and:
-   - its `artifact_sha256` matches the file being approved (`packaging.md` at G1, `script.md` at G2);
-   - the last round has valid verdicts from two or more non-writer families;
-   - the judge and fact seat families differ from the writer's;
-   - no fact blocker is unresolved;
-   - rounds and calls are within the channel's caps.
+1. **Pipelines declare their gated room stages.** Each studio pipeline gets `metadata.studio_room: {proposal: g1,
+   <script stage>: g2}` (`dialogue_script`, `story_script`, `short_script`, ...) and lists `room` in
+   `metadata.studio_checks` for those stages. `checks.run_check` gains the stage argument so the check knows its gate
+   and artifact (`packaging.md` at G1, `script.md` at G2).
+2. **The `room` check** passes only when `room/<gate>.json` (shape below) exists for a new video and:
+   - its `shipped.artifact_sha256` equals the file being approved, and `shipped.round` is a round in the report;
+   - that round has ok verdicts from every mandatory role on two or more non-writer families, and its judge (if any)
+     is not the writer's family;
+   - the raw fact verdict of that round has no blocker (the check reads the verdict file, not the merged list);
+   - every counted verdict's `call_id` exists in the call ledger with `ok` and the same output sha256;
+   - calls are within the derived cap.
    A check never passes a gate by itself.
-2. **`omni check` validates `room.yaml`**: required seats present (a viewer seat, a story or retention seat, a fact
-   seat), family rules above, caps set, briefs exist. A channel without a valid `room.yaml` fails `omni check`.
-3. **New channels start with it.** `channels/_template` gets `room.yaml`, `audience.md`, `taste.md` and
-   `room/seats/`; `omni new-channel` copies them.
-4. **A repo test** fails if any `studio-*.yaml` pipeline has a packaging or script stage without the `room` check,
-   so a new format cannot skip the spine.
-5. **CLAUDE.md** gets a short "Quality spine" section next to "Gates".
+3. **The approval binds the file.** `omni approve` adds the room evidence (artifact sha256, report sha256) to what
+   `studio_approval` signs, the way G6 binds media today. The next stage's checks verify `script.md` (or
+   `packaging.md`) still matches the G2 (or G1) proof, so a post-approval edit stops the pipeline. This edits
+   `lib/studio_approval.py` and `core/studio/channels.py` and is listed in `core/PATCHES.md`.
+4. **Grandfathering by date, not by flag.** The check applies to videos whose id date is on or after the channel's
+   `room.yaml` `adopted` date. Videos already in flight finish as they started. No per-video flag an agent could
+   delete.
+5. **`omni check` validates `room.yaml`**: mandatory roles present, family rules, registry, derived cap, briefs and
+   linters exist, `adopted` set. Every format in every `channel.yaml` must map to a pipeline that declares
+   `studio_room`; a channel or format without it fails `omni check`.
+6. **New channels start with it.** `channels/_template` gets `room.yaml`, `audience.md`, `taste.md`, `room/seats/`;
+   `omni new-channel` copies them.
+7. **A repo test** fails if any `studio-*.yaml` pipeline has a `proposal` stage or a stage producing `script.md`
+   without a `studio_room` entry and the `room` check.
+8. **CLAUDE.md** gets a short "Quality spine" section next to "Gates".
+
+**What this does and doesn't stop.** It catches skipped rounds, missing roles, a failed fact seat, edits after a gate
+and sloppy hand-written reports. Like the approval key (CLAUDE.md), it is not a boundary against an agent running as
+the owner that forges both the ledger and the report on purpose. Agents never write room files by hand; only the
+room tools do.
 
 ## Room mechanics
 
-**Model call (tool, Python).** `core/studio/room/call.py`: copies only the files a seat needs into a temp folder,
-runs `claude -p` with tools off or `cursor-agent -p --mode ask --output-format json --model <id>`, stripped
-environment, timeout, no access to `~/.config/omni-studio/`. Output must parse as the verdict schema: one retry,
-then the seat counts as failed for that round. Every call appends to one git-ignored log in the main checkout
-(`.room/calls.jsonl`: time, channel, video, seat, model, CLI version, prompt hash, duration, ok), shared by all
-worktrees so caps count across parallel sessions.
+**Model call (tool).** `core/studio/room/call.py`: writes the seat's inputs (draft snapshot, brief, bible files) to a
+temp bundle and runs `claude -p` with tools off or `cursor-agent -p --mode ask --output-format json --model <id>`,
+under an OS-level read denial for `~/.config/omni-studio/` and the repo outside the bundle (A1 picks the mechanism,
+a `sandbox-exec` profile or the CLIs' own sandbox settings, and tests that a seat cannot read outside its bundle).
+Stripped environment, timeout. Output must parse as the verdict schema: one retry, then the seat is `failed`.
 
-**Verdict schema.** `{seat, scores: {<rubric item>: 1-10}, blockers: [{line, quote, why, fix, domain}],
-suggestions: [...], keep: [{line, quote}]}`. Blockers are valid only inside the seat's veto domain.
+**Call ledger.** One SQLite file at `~/.local/state/omni-studio/room/ledger.sqlite` (not under `~/.config`, which
+holds secrets), shared by every worktree. A call reserves its slot in a transaction before running, so parallel
+sessions cannot overrun the daily cap. Each row: call id, time, channel, video, gate, round, seat, model, family, CLI
+version, prompt sha256, output sha256, duration, status.
 
-**Lint (tool).** `core/studio/room/lint.py`: shared slop checks plus the format checks parameterised by
-`room.yaml`, plus the channel's existing linters (`script_lint.py` for Professor of Us). Hard failures go back to
-the writer before any seat runs.
+**Verdict schema.** `{call_id, seat, role, model, family, status, scores: {...}, blockers: [{line, quote, why, fix,
+domain}], suggestions: [...], keep: [{line, quote}]}`. Blockers are valid only inside the seat's role.
 
-**Merge.** The agent running the skill merges notes into one edit list, drops notes that break invariant 4, and
-applies precedence (invariant 8). A keep line is protected unless a fact blocker rests on it.
+**Lint (tool).** `core/studio/room/lint.py` runs the shared checks, then the format parameters, then each linter
+`room.yaml` names. The core imports no channel engine. Hard failures go back to the writer before any seat runs.
 
-**Judge (tool + model).** New draft vs best draft, both orders, labels hidden. A win counts only if it holds both
-ways; a tie keeps the best draft.
+**Merge (skill).** The agent driving the skill merges notes into one edit list, drops notes that break invariant 4,
+applies precedence, and protects keep lines unless a fact blocker rests on them.
 
-**Orchestration (skill).** `core/openmontage/skills/studio/studio-room.md` drives rounds: lint, seats in parallel,
-merge, writer revises, judge, stop rule, report. Python only provides tools and persistence (`AGENT_GUIDE.md`), so
-Claude Code or Cursor can drive the same skill.
+**Orchestration (skill).** `core/openmontage/skills/studio/studio-room.md` drives the rounds. Python provides tools
+and persistence only (`AGENT_GUIDE.md`), so Claude Code or Cursor can drive the same skill.
 
-**Caps (defaults, owner may change).** 3 rounds and 20 subscription calls per script, 60 calls a day across all
-channels. Per-call paid providers still need the owner's approval each time.
+**Files per video** (all in git except raw output):
 
-**Files per video.** `review-g1-round<N>.md`, `review-g2-round<N>.md` (Say Suppose's naming), `room-g1.md` and
-`room-g2.md` (the report the owner reads: what was flagged, what changed, what the room still disagrees on),
-`room/g1.json` and `room/g2.json` (what the check reads). Raw model output under `room/raw/`, git-ignored.
+```
+videos/<id>/
+  room/drafts/<sha256>.md          every reviewed draft, content-addressed
+  room/g2/round-<N>/<seat>.json    raw verdicts, written only by call.py
+  room/g2.json                     the report the check reads
+  review-g2-round<N>.md            the round summary (Say Suppose's naming)
+  room-g2.md                       what the owner reads: flagged, changed, still disputed
+  room/raw/                        CLI stdout, git-ignored
+```
 
-**Pitch clip.** `room.yaml` `pitch_clip: after_g2 | pre_g2_local`. `pre_g2_local` is allowed only when every voice
-in `voices.yaml` is a free local engine (Power and Citizen today) and needs the G2 wording in CLAUDE.md, the
-pipeline and the skill changed for that channel. Default `after_g2`: the first thing made after G2 is a 30-45 s
-hook clip in the real voices.
+`room/<gate>.json`:
+
+```json
+{"gate": "g2", "stage": "dialogue_script", "writer_family": "anthropic",
+ "rounds": [{"round": 1, "draft_sha256": "...", "lint": {"ok": true, "problems": []},
+             "verdicts": [{"seat": "fact reviewer", "role": "fact", "family": "google", "status": "ok",
+                           "call_id": "...", "file": "room/g2/round-1/fact-reviewer.json", "output_sha256": "..."}],
+             "judge": {"call_ids": ["...", "..."], "family": "openai", "winner": "draft_sha256 or null"}}],
+ "shipped": {"round": 2, "artifact_sha256": "..."},
+ "calls": 17, "cap": 26}
+```
+
+**Pitch clip.** `room.yaml` `pitch_clip: after_g2` (default) or `pre_g2_local`. `pre_g2_local` needs the owner's
+decision, the G2 wording changed in CLAUDE.md, the pipeline and the skill for that channel, and a non-empty
+`voices.yaml` whose every voice is a free local engine. Otherwise the first thing made after G2 is a 30-45 s hook
+clip in the real voices.
+
+## Commands
+
+| Command | What it does |
+|---|---|
+| `omni room status <slug> <video>` | Rounds, seats, blockers, calls used vs cap |
+| `omni room call <slug> <video> <gate> <seat>` | One seat on the current draft (used by the skill) |
+| `omni room judge <slug> <video> <gate>` | Judge the newest candidate against the best |
+| `omni room report <slug> <video> <gate>` | Write `room/<gate>.json` and `room-<gate>.md` from the ledger and verdict files |
+| `omni qc <slug> <video> <stage>` | Runs `room` with the other checks, as today |
 
 ## The three skills to detail later
-
-Each gets its own spec, built from dedicated research per niche. This spec fixes only their contracts.
 
 | Skill | Reads | Writes | Must |
 |---|---|---|---|
 | `studio-research` | topic, `audience.md`, channel sources | scout briefs; `research.md`, `claims.md` | sources opened and saved, verbatim quotes, scope, contested rows; topics checked against every channel's backlog with `omni similar` |
 | `studio-writer` | packaging, research pack, `style.md`, `cast.md`, `taste.md`, merged notes | `packaging.md`, `script.md` revisions | never score its own work; cite every claim; follow the channel format |
-| Seat briefs (shared + per channel) | draft, brief, bible | verdict JSON | stay in the veto domain; quote and fix |
+| Seat briefs (shared + per channel) | draft, brief, bible | verdict JSON | stay in the role; quote and fix |
 
-## Parallel sessions and adoption
+## Parallel sessions, merge order, adoption
 
-- The channel branches are changing `checks.py`, `claims.py` and `cli.py`. Phase 1 adds new files only. The `room`
-  check, the `omni room` commands and the pipeline edits land after those branches merge into main.
-- A channel adopts the spine on its next script, never mid-video. Its current seats are copied into `room.yaml`.
-  Power and Citizen video 1 and both Say Suppose videos finish as they started.
-- Order: whichever channel starts its next script first after phase 1, then the others one at a time.
-
-## Track B: portable, cloud first, Mac fallback
-
-**Split.** The Mac keeps review, gates, `omni approve`, the approval key, YouTube tokens, `omni upload` and the
-room's model calls. Voice takes, stills, LoRA training, music, transcription and renders can run in the cloud.
-
-**Jobs.** `core/studio/jobs/`: every heavy step is a job with declared inputs and outputs, keyed by the sha256 of
-script version, model revision, inputs and settings, with a manifest in `videos/<id>/jobs/<key>.json` (status,
-backend, wall time, cost). A key with outputs never runs again. `backend: auto | local | modal | runpod`; `auto`
-checks the cloud (10 s), checks the budget, shows the estimate, and falls back to the Mac when the cloud is down,
-slow or over budget. Every output records its backend.
-
-**Parity.** CUDA paths for Qwen3-TTS and FLUX (diffusers) next to the MLX ones. Each channel LoRA must load on
-both. The owner approves a channel's cloud voice by ear once before it switches; one video's narration never mixes
-backends.
-
-**Artifacts.** Cloudflare R2, keyed by hash, manifest in git; media stays out of git. Cloud images built from the
-lock files, pinned in `core/lock.yaml`, with a CUDA media lock next to `requirements-media.lock.txt`.
-
-**Secrets.** Cloud jobs get only their inputs and a short-lived storage token. Keys live under
-`~/.config/omni-studio/`; agents never read them.
-
-**Budget.** $30 a month by default (Modal's monthly credit); past it, jobs run on the Mac unless the owner approves
-more. Modal first, RunPod as backup.
-
-**Measure first.** No step records its time today. B1 adds timing to every heavy step on all channels and reads a
-week of runs before anything moves.
-
-**Kubernetes: later.** A `k8s` backend can reuse the same images when load is steady; not built now.
+- `claude/affectionate-williams-2b5429` (Power and Citizen, studio-documentary) changes `checks.py`, `claims.py`,
+  `cli.py`, `channels.py` and `lib/studio_approval.py`. `claude/say-suppose-first-video-40c64e` (studio-whatif)
+  adds its own pipeline, engine and tests and does not touch those files.
+- A1 adds new files only and can start now. A2 (check, approval binding, `run_check` stage argument, pipeline
+  metadata, `omni room` commands) starts after documentary merges, then rebases after what-if merges, and tests
+  `proposal`, `dialogue_script`, `story_script` and `short_script`.
+- A channel adopts the spine at its next video, before G1: its current seats go into `room.yaml` and `adopted` is
+  set to that video's date.
 
 ## Phases
 
-| Track A | Done when |
+| Phase | Done when |
 |---|---|
-| A1 Core tools | call, verdict schema, lint, judge, call log exist with tests; calibrated on Power and Citizen's 8 panel reports, Say Suppose's 5 rounds and the dreams drafts, comparing what the cross-model room catches with the Claude-only panels and the owner's notes |
-| A2 Spine wiring | `room` check, `room.yaml` validation, template, repo test, CLAUDE.md section, `studio-room` skill; first channel adopted |
-| A3 Role skills | `studio-research`, `studio-writer`, seat briefs, each from its own niche research spec |
+| A1 Core tools | call (with the read-denial test), verdict schema, ledger, family registry, lint, judge, snapshots and report writer exist with tests; one historical script per channel (a Power and Citizen draft, a Say Suppose draft, the dreams draft) run through the room, its notes compared with the hand-run panel and the owner's notes |
+| A2 Spine wiring | `room` check, approval binding, predecessor verification, `room.yaml` validation, template, repo test, CLAUDE.md section, `studio-room` skill; first channel adopted |
+| A3 Role skills | `studio-research`, `studio-writer` and seat briefs, each from its own niche research spec |
 | A4 Learning | per-video hypotheses against analytics exports; lessons that hold on two channels proposed for `core/studio/rules/` with owner sign-off |
-
-| Track B | Done when |
-|---|---|
-| B1 Measure | a week of timed runs and a ranked list of where time goes, plus cheap local fixes |
-| B2 Job runner | one job (Chatterbox voice) runs on Modal or the Mac with the same key; the second run is a cache hit |
-| B3 CUDA paths | Qwen3 and FLUX on CUDA, LoRAs load on both, cloud voices approved by ear |
-| B4 Renders | the slowest of renders, music and transcription moved, per B1 |
 
 ## Decisions and defaults
 
 | Decision | Default until the owner says otherwise |
 |---|---|
-| Pitch clip | `after_g2` everywhere; `pre_g2_local` offered for channels with free local voices |
-| Usage caps | 3 rounds, 20 calls per script, 60 a day across channels |
+| Pitch clip | `after_g2` everywhere |
+| Caps | 3 rounds, the derived per-script cap, 80 calls a day across channels |
 | Idea pick | a backlog status, not a gate |
-| Cloud | Modal + RunPod backup, R2, $30 a month; owner creates the accounts and stores the keys |
-| First channel | whichever starts its next script first after A1 |
+| First channel | whichever starts its next video first after A2 |
 
 ## Risks
 
-- **Judges disagree in both orders and the loop stalls.** Tie keeps the best draft; the cap ends it.
-- **Reviewers converge into blandness.** Blind seats, narrow veto domains, keep lines, specific-or-dropped notes.
-- **Cursor usage pool.** Named frontier models share a smaller pool; the call log and caps show when it runs low.
-- **Unattended subscription use.** Room calls stay on the Mac; cloud sessions are optional.
-- **YouTube "derived metrics" policy.** Outlier scores are internal only and refreshed within 30 days.
-- **Merge order.** A2 waits for the channel branches; A1 and B1 do not.
+- **Reviewers converge into blandness.** Blind seats, narrow roles, keep lines, specific-or-dropped notes.
+- **Cursor usage pool.** Named frontier models share a smaller pool; the ledger shows when it runs low.
+- **Unattended subscription use.** Room calls run on the Mac only.
+- **Sandbox mechanism.** If no reliable read denial works for both CLIs, A1 stops and reports before building on it.
+- **Merge order.** A2 waits for documentary; A1 does not.
+
+## Review log (2026-11-08, GPT-5.6 Sol and Grok 4.7 via Cursor, on the first version of this spec)
+
+Applied: stage passed into `run_check` and declared in pipeline metadata; report shape defined; verdicts only from
+`call.py`, cross-checked against a ledger; mandatory roles must be ok, so a failed fact seat fails; the raw fact
+verdict is read, not the merged list; best draft limited to lint- and fact-clean candidates and bound to its round;
+approval signs the artifact and later stages verify it; caps derived from panel size; one model per seat (two
+neutrality seats); seat roles as an enum; linters listed per channel, no engine import in the core; ledger is a
+locked SQLite file outside the secrets folder; grandfathering by video date; adoption before G1; Shorts and every
+channel format covered; `CLAUDE.md` above taste notes; `pre_g2_local` needs non-empty local voices; merge claim
+corrected (what-if does not touch the shared files); Track B moved to its own spec; judge runs only when there are
+candidates to choose between; scores informational.
+
+Not applied: cutting the channel panels to the three mandatory seats (the owner asked for different reviewers per
+channel; craft seats stay optional and cheap); cutting the owner-notes round (owner notes come before approval, so
+the gate check needs a report on the edited file); skipping A1 calibration (one script per channel is cheap and
+shows whether cross-model review adds anything).
