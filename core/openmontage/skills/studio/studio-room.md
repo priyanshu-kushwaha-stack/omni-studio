@@ -21,9 +21,11 @@ reached (`CapReached`).
 1. **Lint.** `python -m studio.room lint $V $G --round N --draft $V/script.md --config $CFG`
    (G1: `--draft $V/packaging.md`; `--kind` defaults to packaging for g1 and script for g2). If it exits 1, fix every
    problem in the draft and run lint again for the same round before any seat runs. Once the round has any seat or
-   judge file, or any call reserved in the ledger, lint refuses every re-lint of it, the same draft and
-   `--owner-notes` included (exit 2, "round N has been reviewed; start round N+1"). `--kind` must fit the gate (g1
-   packaging, g2 script), or it exits 2.
+   judge file, or any call row in the ledger (any status), lint refuses every re-lint of it, the same draft and
+   `--owner-notes` included (exit 2, "round N has been reviewed; start round N+1"). An ordinary round number above
+   `rounds` in room.yaml exits 2; only `--owner-notes` rounds may go past it. `--draft` and `--ledger-file` must be
+   files inside `channels/<slug>/` and not under any `videos/*/room/` folder, or lint exits 2. `--kind` must fit the
+   gate (g1 packaging, g2 script), or it exits 2.
 2. **Seats.** For every seat in room.yaml, in parallel:
    `python -m studio.room seat $V $G --round N --seat "<name>" --config $CFG --input <file>=<path> ...`
    Inputs by gate (channel files are in `channels/<slug>/`, video files in `$V`):
@@ -32,17 +34,24 @@ reached (`CapReached`).
    - G2 seats: the same, plus `claims.md` and `packaging.md` (the approved packaging) from the video folder.
    By seat role: viewer needs `audience.md`; story needs `style.md`, `cast.md` and `packaging.md`; fact needs
    `claims.md`. Pass a file only if it exists. The command exits 2 on a missing file, so ask the owner for the missing
-   channel file (`audience.md`, `taste.md`) or leave an empty stub, or drop the input; never invent its contents. It
-   also exits 2 for a file under a secrets folder (`~/.config/omni-studio`, `~/.ssh`, `~/.aws` and the like; repo
-   files are fine). A seat is refused (exit 2) when its verdict in this round is already `ok`, and when the round's
-   lint failed; `--allow-failed-lint` overrides the second and is for calibration only, never for a real video (the
+   channel file (`audience.md`, `taste.md`) or leave an empty stub, or drop the input; never invent its contents.
+   Inputs come only from the channel folder `channels/<slug>/` (symlinks resolved): a file anywhere else, a file under
+   a secrets folder (`~/.config/omni-studio`, `~/.ssh`, `~/.aws` and the like), or any file under a `videos/*/room/`
+   folder (other verdicts) exits 2, and so does the name `draft`. A seat is refused (exit 2) when its verdict in this
+   round is already `ok` or the ledger holds an `ok` call for that seat in the round (deleting the verdict file does
+   not buy a second opinion), and when the round's lint failed; `--allow-failed-lint` overrides the second and is for calibration only, never for a real video (the
    verdict records `lint_overridden`). The draft comes from the round's
    snapshot; do not pass `--input draft=...` (refused). Never pass one seat's output to another.
    A seat that exits 1 with a failed verdict may be re-run in the same round (once is the budget). `CapReached` means stop.
 3. **Judge.** `python -m studio.room judge $V $G --round N --config $CFG --input <file>=<path> ...` with the same
-   channel files as the seats (the judge brief reads `audience.md` and the claims). It only runs when this round's
-   draft and an earlier one are both candidates. A candidate is a round whose lint passed, with an ok viewer, story and
-   fact verdict and no fact blocker.
+   channel files as the seats (the judge brief reads `audience.md` and the claims). Inputs follow the same
+   channel-folder rule, and the name `draft` is reserved. It only runs when this round's draft and an earlier one are
+   both candidates. A candidate is a round whose lint passed, with an ok viewer, story and fact verdict (no failed
+   verdict from any mandatory seat, even beside an ok one in the same role) and no fact blocker. The judge runs once
+   per round: a second `judge` for the same round exits 2, whether or not `judge.json` was deleted. If either of its
+   two calls fails, the round is unjudged (`winner` is null), `judge` exits 1 with the error and the earlier draft stays
+   best: run the judge again only in a new round, or stop. Among candidates the one with fewer open blockers wins; the
+   judge only breaks a tie on blockers.
 4. **Stop?** Stop when every seat returned ok with no blockers, or N equals `rounds`.
 5. **Merge and revise.** Read the verdict files in `$V/room/$G/round-N/`. Build one edit list: drop any note that
    does not quote a line and give a fix, except fact blockers, which always stay. Precedence: CLAUDE.md and the gates,

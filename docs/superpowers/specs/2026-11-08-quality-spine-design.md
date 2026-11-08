@@ -1,5 +1,7 @@
 # Quality spine: one review process for every video, many models
 
+Status 2026-11-08: A1 tools built (PR #8); not yet enforced — omni approve does not run the room until A2.
+
 Owner direction, 2026-11-08: the room "becomes the core spine of this video generation repo", and "all videos
 follow the same quality process with just different reviewers and different way of doing it but the same process
 of iterating over using different models family and fixing the issues on its own." The research, script-writer
@@ -72,17 +74,23 @@ same machinery can extend there later.
 ```
 round N:  lint draft N -> mandatory + channel seats review draft N (snapshot stored)
           draft N is a candidate if lint passed, the viewer, story and fact seats each returned an ok verdict,
+             no mandatory seat failed (a success from another seat in the same role does not mask a failed one),
              and the fact verdict has no blocker
-          if two or more candidates exist, the judge compares draft N with the best candidate
-             (both orders, labels hidden; a win must hold both ways; a tie keeps the best)
-          stop if draft N has no blockers at all, or N == round cap
+          best candidate = the one with the fewest open blockers (all seats); on equal blockers the judge
+             breaks the tie: the judge compares draft N with the best candidate (both orders, labels hidden;
+             a win must hold both ways; a tie keeps the best); a failed judge call leaves the round unjudged
+             (winner null, no result), so the earlier draft stays best
+          stop if draft N has no blockers at all, or N == round cap (an ordinary round above the cap is refused)
           otherwise the writer writes draft N+1 from the merged notes
 ship:     the best candidate, bound to the round that reviewed it
           no candidate at the cap -> the room fails; the report says why; the gate check fails
 ```
 
-An owner-notes round (`lint --owner-notes`, mandatory seats only, no judge) ships if it is a candidate, because owner
-notes outrank the room; otherwise the earlier best stays and the conflict goes back to the owner.
+Blocker count comes first and the judge only breaks ties: a later round with fewer open blockers ships even when the
+judge ties, and a later round with more never ships on a judge win. A failed judge is unjudged, never a win for either
+draft; `judge` exits 1, a round is judged once, and the judge may run again only in a new round. A failed mandatory seat
+fails the round. An owner-notes round (`lint --owner-notes`, mandatory seats only, no judge, allowed beyond the round
+cap) ships if it is a candidate, because owner notes outrank the room; otherwise the earlier best stays and the conflict goes back to the owner.
 
 A fact blocker is never demoted: a blocker from a fact seat stays a blocker whatever `domain` the model names, and for
 other seats a blocker with no domain, or with the seat's own role as its domain, stays one (the domain is compared
@@ -227,7 +235,9 @@ videos/<id>/
 ```
 
 `owner_notes` is true for a round linted with `--owner-notes`; `candidate` is the stop rule's test; `skipped_rounds`
-lists `round-*` folders that could not be read (a bad name or a missing or malformed `meta.json`). `room-<gate>.md`
+lists `round-*` folders that could not be read (a bad name or a missing or malformed `meta.json`); `malformed_verdicts`
+lists verdict files missing any of `call_id`, `seat`, `role`, `model`, `family`, `status` or `blockers`, which are not
+counted; `channel` scopes the ledger call count. `room-<gate>.md`
 says "shipped by the owner-notes rule (no judge)" when the shipped round is an owner-notes round.
 
 **Pitch clip.** `room.yaml` `pitch_clip: after_g2` (default) or `pre_g2_local`. `pre_g2_local` needs the owner's
@@ -239,10 +249,11 @@ clip in the real voices.
 
 Before the room check is wired into `omni approve`, A2 must close these gaps found by the whole-branch review of A1:
 
-1. Evidence recomputes `shipped` from the round files (`R.scan_rounds` and `R.shipped`) and requires it to equal the
-   report's, so an edited report cannot ship another round.
-2. `judge.json` is bound like a verdict: each call's output sha256 is in the file, a digest of the file is in the
-   ledger row, and empty `call_ids` are refused.
+1. Done (fix wave, PR #8): evidence recomputes `shipped` from the round files (`R.scan_rounds` and `R.shipped`) and
+   requires it to equal the report's, so an edited report cannot ship another round. It also recomputes every counted
+   verdict's and the judge's family from the model registry.
+2. Partly done: empty judge `call_ids` are refused and every judge ledger row must be `ok`. Still open: `judge.json`
+   bound like a verdict (each call's output sha256 in the file, a digest of the file in the ledger row).
 3. Evidence re-runs `lint_draft` on the shipped snapshot instead of trusting `meta.lint`.
 4. Evidence flags any `ok` ledger row for the same channel, video, gate, round and seat that no verdict cites (a
    discarded second opinion).
@@ -254,19 +265,22 @@ Before the room check is wired into `omni approve`, A2 must close these gaps fou
 8. Crashed `reserved` ledger rows get a sweep or a documented rule; until then they lock their round against re-lint
    and count against the caps.
 9. The Claude CLI runs under the sandbox profile and cannot read the repo (live test passed 2026-11-08, with
-   transcript writes to `~/.claude/projects` denied). Still to check before a channel adopts a Claude seat: that the
-   user's `~/.claude/CLAUDE.md`, memory and hooks do not load into a seat that is meant to be blind (pass
-   `--setting-sources` or an equivalent if they do).
+   transcript writes to `~/.claude/projects` denied). The fix wave passes `--setting-sources project` so user
+   settings, user memory and hooks do not load (the seat runs in an empty temp folder), and the profile also denies
+   other conversations and agent state (`~/.cursor/chats`, `~/.claude/history.jsonl` and the like). Still to check
+   live before a channel adopts a Claude seat: that nothing of the user's reaches the seat with that flag.
 10. `--owner-notes` is proven, not declared: an owner-notes round must cite a dated owner note in `taste.md` (or the
     owner's own approval of the flag), and evidence checks it. Today an agent can pass the flag at a round's first
     lint and ship it without the judge.
 11. Each verdict records the names and sha256 of the inputs its seat saw, and evidence requires each role's
     mandatory inputs (viewer `audience.md`; story `style.md`, `cast.md`, `packaging.md`; fact `claims.md`), so a fact
     seat run without the ledger cannot count as a review.
-12. The re-lint lock counts any ledger row for the round, not only `reserved` ones, so deleting a round's verdict
-    files cannot unlock it; `judge` is refused once `judge.json` exists.
-13. `--input` refusals also cover `~/Exploration` outside this repo and `~/Sprinklr`, so another project's or work
-    files cannot reach a third-party model prompt.
+12. Done (fix wave): the re-lint lock counts any ledger row for the round, not only `reserved` ones, so deleting a
+    round's verdict files cannot unlock it; `seat` is refused when an `ok` ledger row exists for the seat in the round
+    (the seat re-run lock); `judge` is refused once `judge.json` or an `ok` judge row exists.
+13. Done (fix wave): `--input`, `--draft` and `--ledger-file` are an allowlist, not a blocklist: each must resolve
+    inside the channel folder and outside `videos/*/room/` and secrets folders, so another project's or work files
+    cannot reach a third-party model prompt.
 
 ## Commands
 
@@ -303,7 +317,7 @@ Before the room check is wired into `omni approve`, A2 must close these gaps fou
 |---|---|
 | A1 Core tools | call (with the read-denial test), verdict schema, ledger, family registry, lint, judge, snapshots and report writer exist with tests; one historical script per channel (a Power and Citizen draft, a Say Suppose draft, the dreams draft) run through the room, its notes compared with the hand-run panel and the owner's notes |
 | A2 Spine wiring | `room` check, approval binding, predecessor verification, `room.yaml` validation in `omni check`, template, repo test, CLAUDE.md section, `omni room` commands, pipelines pointing at the `studio-room` skill (written in A1); first channel adopted |
-| A3 Role skills | `studio-research`, `studio-writer` and seat briefs, each from its own niche research spec |
+| A3 Role skills | `studio-research`, `studio-writer` and seat briefs, each from its own niche research spec. A3 also runs idea briefs through the room (an idea review with its own seats), and the A3 scout reads `sources` in `room.yaml` |
 | A4 Learning | per-video hypotheses against analytics exports; lessons that hold on two channels proposed for `core/studio/rules/` with owner sign-off |
 
 ## Decisions and defaults
