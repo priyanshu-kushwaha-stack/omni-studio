@@ -94,7 +94,16 @@ def read_timings(path: Optional[Path] = None, since: Optional[str] = None) -> li
     target = Path(path) if path else timings_path()
     if not target.is_file():
         return []
-    rows = [json.loads(line) for line in target.read_text(encoding="utf-8").splitlines() if line.strip()]
+    rows = []
+    for line in target.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except ValueError:  # a torn line from a writer killed mid-append; the file is shared
+            continue
+        if isinstance(row, dict):
+            rows.append(row)
     return [r for r in rows if not since or r.get("at", "") >= since]
 
 

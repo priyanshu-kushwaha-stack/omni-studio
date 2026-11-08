@@ -67,3 +67,11 @@ def test_read_timings_since():
 def test_the_default_path_is_outside_the_secrets_folder(monkeypatch):
     monkeypatch.delenv("OMNI_JOBS_TIMINGS")
     assert T.timings_path() == T.DEFAULT and ".config" not in T.DEFAULT.parts
+
+
+def test_read_timings_skips_a_torn_line(tmp_path):
+    # The file is shared by several worktrees; a writer killed mid-line leaves a fragment behind.
+    target = tmp_path / "timings.jsonl"
+    target.write_text('{"step": "a", "seconds": 1}\n{"step": "x", "sec\n{"step": "b", "seconds": 2}\n', encoding="utf-8")
+    rows = T.read_timings(path=target)
+    assert [r["step"] for r in rows] == ["a", "b"]
