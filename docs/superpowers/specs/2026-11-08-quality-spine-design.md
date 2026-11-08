@@ -253,8 +253,10 @@ Before the room check is wired into `omni approve`, A2 must close these gaps fou
    after approval (later calls, owner-notes rounds), so the report file is not stable.
 8. Crashed `reserved` ledger rows get a sweep or a documented rule; until then they lock their round against re-lint
    and count against the caps.
-9. The Claude CLI is verified under the sandbox profile (transcript writes to `~/.claude/projects` are denied; the
-   user's CLAUDE.md and hooks may still load) before any channel adopts a Claude seat.
+9. The Claude CLI runs under the sandbox profile and cannot read the repo (live test passed 2026-11-08, with
+   transcript writes to `~/.claude/projects` denied). Still to check before a channel adopts a Claude seat: that the
+   user's `~/.claude/CLAUDE.md`, memory and hooks do not load into a seat that is meant to be blind (pass
+   `--setting-sources` or an equivalent if they do).
 10. `--owner-notes` is proven, not declared: an owner-notes round must cite a dated owner note in `taste.md` (or the
     owner's own approval of the flag), and evidence checks it. Today an agent can pass the flag at a round's first
     lint and ship it without the judge.

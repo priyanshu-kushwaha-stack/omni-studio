@@ -22,7 +22,8 @@ test calls and one unsandboxed diagnostic `claude` call).
   owner's note is quoted in the panel file; which rows it covers is my inference.
 - **False blockers.** "No room blocker was rejected on record" means there is no evidence either way; debatable ones
   are listed per channel.
-- Claude-side live check: pending the owner's `claude auth login` (login expired; fails without the sandbox too).
+- Claude-side live check: passed on 2026-11-08 after the owner's `claude auth login` (`claude -p` runs under the
+  sandbox and did not read the canary). The calibration itself ran on cursor-agent seats only.
   cursor-agent passed the sandbox check.
 
 ## Professor of Us: dreams (script_v1.md, claims.md)
