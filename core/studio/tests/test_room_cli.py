@@ -186,3 +186,11 @@ def test_judge_runs_when_rounds_one_and_two_are_candidates(tmp_path, monkeypatch
     _fake(monkeypatch, [{"winner": "A"}, {"winner": "B"}])
     assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 0
     assert "winner" in json.loads((video / "room" / "g2" / "round-2" / "judge.json").read_text())
+
+
+def test_lint_owner_notes_writes_the_flag(tmp_path, monkeypatch):
+    video, script, cfg = _setup(tmp_path, monkeypatch)
+    assert _lint(video, script, cfg, 1) == 0
+    assert json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())["owner_notes"] is False
+    assert _lint(video, script, cfg, 2, "g2", "--owner-notes") == 0
+    assert json.loads((video / "room" / "g2" / "round-2" / "meta.json").read_text())["owner_notes"] is True

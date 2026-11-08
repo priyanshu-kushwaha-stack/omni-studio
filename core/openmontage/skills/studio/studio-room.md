@@ -13,7 +13,8 @@ Set up once per shell:
 In every command below, `python` means `$PY` (the interpreter above), run from the omni-studio root.
 
 Exit codes of every `python -m studio.room` command: 0 ok, 1 checks failed, 2 usage or config error (read stderr).
-`seat` and `judge` validate `room.yaml` first and exit 2 if it is invalid.
+`seat`, `judge` and `report` validate `room.yaml` first and exit 2 if it is invalid. `seat` also exits 1 for a failed seat (a failed verdict) or when the call cap is
+reached (`CapReached`).
 
 ## Each round N (start at 1; stop at `rounds` in room.yaml)
 
@@ -22,9 +23,15 @@ Exit codes of every `python -m studio.room` command: 0 ok, 1 checks failed, 2 us
    problem in the draft and run lint again for the same round before any seat runs. Once any seat or judge file
    exists in the round, lint refuses a changed draft (exit 2): start round N+1 instead.
 2. **Seats.** For every seat in room.yaml, in parallel:
-   `python -m studio.room seat $V $G --round N --seat "<name>" --config $CFG --input audience.md=channels/<slug>/audience.md --input style.md=channels/<slug>/style.md --input claims.md=$V/claims.md`
-   (add `cast.md`, `taste.md`, `packaging.md` where the seat needs them). The draft comes from the round's
+   `python -m studio.room seat $V $G --round N --seat "<name>" --config $CFG --input <file>=<path> ...`
+   Inputs by gate (channel files are in `channels/<slug>/`, video files in `$V`):
+   - G1 seats: `audience.md`, `style.md`, `taste.md` and `cast.md` (channel folder) and `packaging.md`.
+   - G2 seats: the same, plus `claims.md` and `packaging.md`.
+   By seat role: viewer needs `audience.md`; story needs `style.md`, `cast.md` and `packaging.md`; fact needs
+   `claims.md`. Pass a file only if it exists. The command exits 2 on a missing file, so create the missing channel
+   file (`audience.md`, `taste.md`) or drop the input; never guess its contents. The draft comes from the round's
    snapshot; do not pass `--input draft=...` (refused). Never pass one seat's output to another.
+   A seat that exits 1 with a failed verdict may be re-run once in the same round. `CapReached` means stop.
 3. **Judge.** `python -m studio.room judge $V $G --round N --config $CFG`. It only runs when this round's draft and an
    earlier one are both candidates (lint passed, fact seat clean).
 4. **Stop?** Stop when every seat returned ok with no blockers, or N equals `rounds`.
@@ -35,11 +42,17 @@ Exit codes of every `python -m studio.room` command: 0 ok, 1 checks failed, 2 us
    file. Never invent a source or number; a missing source goes back to research. Write
    `$V/review-$G-round<N>.md`: each note, its seat, applied or not and why. Then round N+1.
 
+## Stop without shipping
+
+If the call cap is reached, or no round is a candidate at the round cap, stop. Report to the owner with
+`$V/room-$G.md` (run `report` first) and do NOT write `awaiting_human`.
+
 ## Finish
 
 1. `python -m studio.room report $V $G --stage <stage> --config $CFG` writes `$V/room/$G.json` and `$V/room-$G.md`.
-   The shipped draft is the best candidate, which is not always the latest. If it is an earlier round, restore the
-   draft file from `$V/room/drafts/<sha>.md`.
+   The shipped draft is the best candidate, which is not always the latest. Read `shipped.round` and
+   `shipped.artifact_sha256` from `$V/room/$G.json`; if the draft differs from the working file, restore it from
+   `$V/room/drafts/<sha>.md` (ordinary rounds only; never after an owner-notes round).
 2. `python -m studio.room verify $V $G --artifact <the draft file>` must print `room evidence ok` and exit 0; it exits
    1 and lists problems otherwise. Fix the cause (never the room files) before presenting.
 3. Present to the owner: the draft, `room-$G.md` (flagged, changed, still disputed), the claims ledger.
@@ -47,8 +60,15 @@ Exit codes of every `python -m studio.room` command: 0 ok, 1 checks failed, 2 us
 
 ## Owner notes
 
-The owner's notes at the gate are applied to the draft, added to `channels/<slug>/taste.md` (dated, newest first),
-and one more round runs on the edited file (lint and every seat). Then report and verify again before re-presenting.
+Owner notes outrank the room. At a gate, the owner gives notes:
+
+1. The writer applies the notes to the draft and adds them to `channels/<slug>/taste.md` (dated, newest first).
+2. Run the NEXT round number with `python -m studio.room lint $V $G --round N --draft <draft> --config $CFG --owner-notes`.
+3. Run the mandatory seats only (viewer, story, fact), not the optional seats, to stay within the cap.
+4. Then `report` and `verify`. No judge: an owner-notes round that is a candidate ships.
+5. If that round is not a candidate (lint failure, failed mandatory seat, fact blocker), fix the draft and run another
+   owner-notes round. If the fix would contradict an owner note, stop and present the conflict to the owner.
+   Never restore an earlier draft over the owner's notes.
 
 ## Never
 

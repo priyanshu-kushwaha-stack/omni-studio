@@ -69,7 +69,7 @@ def cmd_lint(args) -> int:
         default = Path(args.draft).parent / "claims.md"
         ledger_file = default if default.is_file() else None
     rep = lint_draft(Path(args.draft), kind=_default_kind(args.gate, args.kind), fmt=cfg.format, linters=cfg.linters, ledger=ledger_file)
-    R.write_meta(video, args.gate, args.round, sha, rep.as_dict())
+    R.write_meta(video, args.gate, args.round, sha, rep.as_dict(), owner_notes=args.owner_notes)
     print(json.dumps({"round": args.round, "draft_sha256": sha, **rep.as_dict()}, indent=2))
     return 0 if rep.ok else 1
 
@@ -178,6 +178,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     s.add_argument("--draft", required=True)
     s.add_argument("--kind", choices=["script", "packaging"])
     s.add_argument("--ledger-file")
+    s.add_argument("--owner-notes", action="store_true")
     s.set_defaults(fn=cmd_lint)
     s = sub.add_parser("seat")
     common(s)

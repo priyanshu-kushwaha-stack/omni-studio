@@ -7,7 +7,8 @@ videos/<id>/room/<gate>.json                   the report the gate check reads
 videos/<id>/room-<gate>.md                     what the owner reads
 
 Stop-rule outcome: a round is a candidate when its lint passed, every mandatory role returned ok, and no fact blocker. The
-first candidate is the best; a later candidate replaces it only when its judge result is "new".
+first candidate is the best; a later candidate replaces it only when its judge result is "new". A candidate round whose
+meta has owner_notes: true replaces it regardless of the judge (owner notes outrank the room).
 """
 
 from __future__ import annotations
@@ -30,12 +31,13 @@ def round_dir(video_dir: Path, gate: str, n: int) -> Path:
     return gate_dir(video_dir, gate) / f"round-{n}"
 
 
-def write_meta(video_dir: Path, gate: str, n: int, draft_sha256: str, lint: dict[str, Any]) -> Path:
+def write_meta(video_dir: Path, gate: str, n: int, draft_sha256: str, lint: dict[str, Any],
+               owner_notes: bool = False) -> Path:
     d = round_dir(video_dir, gate, n)
     d.mkdir(parents=True, exist_ok=True)
     path = d / "meta.json"
-    path.write_text(json.dumps({"round": n, "draft_sha256": draft_sha256, "lint": lint}, indent=2) + "\n",
-                    encoding="utf-8")
+    path.write_text(json.dumps({"round": n, "draft_sha256": draft_sha256, "lint": lint, "owner_notes": bool(owner_notes)},
+                    indent=2) + "\n", encoding="utf-8")
     return path
 
 
@@ -77,7 +79,8 @@ def scan_rounds(video_dir: Path, gate: str) -> tuple[list[dict[str, Any]], list[
         if judge is not None and "winner" not in judge:
             judge = None
         found.append((n, {"round": meta.get("round", n), "draft_sha256": meta["draft_sha256"],
-                          "lint": meta["lint"], "verdicts": verdicts, "judge": judge}))
+                          "lint": meta["lint"], "verdicts": verdicts, "judge": judge,
+                          "owner_notes": meta.get("owner_notes") is True}))
     found.sort(key=lambda t: t[0])
     return [r for _, r in found], sorted(skipped)
 
@@ -100,7 +103,8 @@ def is_candidate(rnd: dict[str, Any]) -> bool:
 def _best(rounds: list[dict[str, Any]]) -> Optional[dict[str, Any]]:
     best = None
     for rnd in rounds:
-        if is_candidate(rnd) and (best is None or (rnd["judge"] and rnd["judge"].get("winner") == "new")):
+        if is_candidate(rnd) and (best is None or rnd.get("owner_notes")
+                                  or (rnd["judge"] and rnd["judge"].get("winner") == "new")):
             best = rnd
     return best
 
@@ -126,7 +130,7 @@ def build_report(video_dir: Path, *, gate: str, stage: str, channel: str, writer
                           "status": v["status"], "call_id": v["call_id"], "file": v["file"],
                           "output_sha256": v.get("output_sha256", ""), "blockers": len(v["blockers"])}
                          for v in rnd["verdicts"]],
-            "judge": rnd["judge"], "candidate": is_candidate(rnd)})
+            "judge": rnd["judge"], "owner_notes": bool(rnd.get("owner_notes")), "candidate": is_candidate(rnd)})
     return {"gate": gate, "stage": stage, "writer_family": writer_family, "rounds": summary,
             "skipped_rounds": skipped,
             "shipped": shipped(rounds), "calls": ledger.count(channel=channel, video=video_dir.name, gate=gate),
@@ -166,7 +170,8 @@ def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
     if ship:
         lines += [""] + [f"Round {r['round']} was a clean candidate but was not judged; the earlier round ships."
                          for r in report["rounds"]
-                         if r["round"] > ship["round"] and r.get("candidate") and not r["judge"]]
+                         if r["round"] > ship["round"] and r.get("candidate") and not r["judge"]
+                         and not r.get("owner_notes")]
     missing = [r for r in MANDATORY if ship and not any(
         v["role"] == r and v["status"] == "ok" for rnd in report["rounds"] if rnd["round"] == ship["round"]
         for v in rnd["verdicts"])]

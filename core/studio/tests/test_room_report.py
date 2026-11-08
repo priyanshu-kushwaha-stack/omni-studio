@@ -15,8 +15,8 @@ def _verdict(d, name, role, family, blockers=(), status="ok"):
     (d / f"{name}.json").write_text(json.dumps(data))
 
 
-def _round(video, n, sha, lint_ok=True, fact_blockers=(), judge=None):
-    R.write_meta(video, "g2", n, sha, {"ok": lint_ok, "problems": [], "warnings": []})
+def _round(video, n, sha, lint_ok=True, fact_blockers=(), judge=None, owner_notes=False):
+    R.write_meta(video, "g2", n, sha, {"ok": lint_ok, "problems": [], "warnings": []}, owner_notes=owner_notes)
     d = R.round_dir(video, "g2", n)
     _verdict(d, "viewer", "viewer", "xai")
     _verdict(d, "story", "story", "openai")
@@ -125,3 +125,27 @@ def test_the_report_notes_a_clean_candidate_that_was_not_judged(tmp_path):
                             ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
     _, md = R.write_report(video, report)
     assert "Round 2 was a clean candidate but was not judged; the earlier round ships." in md.read_text()
+
+
+def test_an_owner_notes_candidate_ships_without_a_judge(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64, owner_notes=True)
+    assert R.shipped(R.load_rounds(tmp_path, "g2")) == {"round": 2, "artifact_sha256": "b" * 64}
+    rep = R.build_report(tmp_path, gate="g2", stage="script", channel="c", writer_family="anthropic",
+                         ledger=Ledger(tmp_path / "l.jsonl"), cap=10)
+    assert [r["owner_notes"] for r in rep["rounds"]] == [False, True]
+
+
+def test_an_owner_notes_round_with_a_fact_blocker_does_not_ship(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64, owner_notes=True, fact_blockers=BLOCK)
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 1
+
+
+def test_a_later_ordinary_round_after_owner_notes_still_needs_the_judge(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64, owner_notes=True)
+    _round(tmp_path, 3, "c" * 64)
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 2
+    _round(tmp_path, 4, "d" * 64, judge="new")
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 4

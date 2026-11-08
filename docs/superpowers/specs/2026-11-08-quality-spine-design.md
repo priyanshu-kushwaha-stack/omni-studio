@@ -80,6 +80,9 @@ ship:     the best candidate, bound to the round that reviewed it
           no candidate at the cap -> the room fails; the report says why; the gate check fails
 ```
 
+An owner-notes round (`lint --owner-notes`, mandatory seats only, no judge) ships if it is a candidate, because owner
+notes outrank the room; otherwise the earlier best stays and the conflict goes back to the owner.
+
 Non-fact blockers still open at the cap do not block the gate. They lead the room report so the owner decides.
 Seat scores are informational only; the stop rule uses blockers and the judge, nothing else.
 
