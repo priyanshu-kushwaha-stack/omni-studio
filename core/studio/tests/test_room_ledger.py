@@ -66,3 +66,32 @@ def test_the_path_comes_from_the_environment(tmp_path, monkeypatch):
     monkeypatch.delenv("OMNI_ROOM_LEDGER")
     assert L.ledger_path() == L.DEFAULT
     assert ".config" not in L.DEFAULT.parts
+
+
+def test_finish_stores_the_verdict_digest(tmp_path):
+    db = L.Ledger(tmp_path / "l.sqlite")
+    cid = db.reserve(daily_cap=10, script_cap=10, **KW)
+    db.finish(cid, status="ok", output_sha256="o", duration_s=1, verdict_sha256="v" * 64)
+    assert db.get(cid).verdict_sha256 == "v" * 64
+    cid2 = db.reserve(daily_cap=10, script_cap=10, **KW)
+    db.finish(cid2, status="failed", output_sha256="o", duration_s=1)
+    assert db.get(cid2).verdict_sha256 == ""
+
+
+def test_an_old_schema_file_is_migrated(tmp_path):
+    import sqlite3
+    path = tmp_path / "old.sqlite"
+    con = sqlite3.connect(path)
+    con.execute("""CREATE TABLE calls (
+        call_id TEXT PRIMARY KEY, at TEXT NOT NULL, channel TEXT, video TEXT, gate TEXT, round INTEGER,
+        seat TEXT, model TEXT, family TEXT, cli_version TEXT, prompt_sha256 TEXT, output_sha256 TEXT,
+        duration_s REAL, status TEXT NOT NULL)""")
+    con.execute("INSERT INTO calls (call_id, at, status) VALUES ('old', '2026-01-01T00:00:00', 'ok')")
+    con.commit()
+    con.close()
+    db = L.Ledger(path)
+    assert db.get("old").verdict_sha256 is None
+    cid = db.reserve(daily_cap=10, script_cap=10, **KW)
+    db.finish(cid, status="ok", output_sha256="o", duration_s=1, verdict_sha256="d")
+    assert db.get(cid).verdict_sha256 == "d"
+    L.Ledger(path)  # opening again is harmless

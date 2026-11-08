@@ -19,7 +19,7 @@ DEFAULT = Path.home() / ".local" / "state" / "omni-studio" / "room" / "ledger.sq
 SCHEMA = """CREATE TABLE IF NOT EXISTS calls (
     call_id TEXT PRIMARY KEY, at TEXT NOT NULL, channel TEXT, video TEXT, gate TEXT, round INTEGER,
     seat TEXT, model TEXT, family TEXT, cli_version TEXT, prompt_sha256 TEXT, output_sha256 TEXT,
-    duration_s REAL, status TEXT NOT NULL)"""
+    duration_s REAL, status TEXT NOT NULL, verdict_sha256 TEXT)"""
 
 
 class CapReached(RuntimeError):
@@ -42,6 +42,7 @@ class CallRow:
     output_sha256: Optional[str]
     duration_s: Optional[float]
     status: str
+    verdict_sha256: Optional[str] = None
 
 
 def ledger_path() -> Path:
@@ -55,6 +56,11 @@ class Ledger:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with closing(self._connect()) as db:
             db.execute(SCHEMA)
+            if "verdict_sha256" not in [r["name"] for r in db.execute("PRAGMA table_info(calls)")]:
+                try:
+                    db.execute("ALTER TABLE calls ADD COLUMN verdict_sha256 TEXT")
+                except sqlite3.OperationalError:  # another process migrated first
+                    pass
 
     def _connect(self) -> sqlite3.Connection:
         db = sqlite3.connect(self.path, timeout=30, isolation_level=None)
@@ -86,10 +92,11 @@ class Ledger:
         return call_id
 
     def finish(self, call_id: str, *, status: str, output_sha256: str, duration_s: float,
-               cli_version: str = "") -> None:
+               cli_version: str = "", verdict_sha256: str = "") -> None:
         with closing(self._connect()) as db:
-            cur = db.execute("UPDATE calls SET status = ?, output_sha256 = ?, duration_s = ?, cli_version = ? "
-                             "WHERE call_id = ?", (status, output_sha256, duration_s, cli_version, call_id))
+            cur = db.execute("UPDATE calls SET status = ?, output_sha256 = ?, duration_s = ?, cli_version = ?, "
+                             "verdict_sha256 = ? WHERE call_id = ?",
+                             (status, output_sha256, duration_s, cli_version, verdict_sha256, call_id))
             if cur.rowcount != 1:
                 raise KeyError(call_id)
 

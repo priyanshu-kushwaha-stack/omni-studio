@@ -121,6 +121,26 @@ def test_run_seat_writes_a_verdict_and_logs_the_call(tmp_path):
     assert version_kw["env"] == C.clean_env()
 
 
+def test_the_final_ledger_row_carries_the_digest_of_the_verdict_file(tmp_path):
+    from studio.room.verdict import verdict_digest
+    db = Ledger(tmp_path / "l.sqlite")
+    out = tmp_path / "v.json"
+    runner = fake_runner(["not json", json.dumps({"result": json.dumps(VERDICT)})])
+    first_ids = []
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out, runner=runner, registry=REG)
+    record = json.loads(out.read_text())
+    assert db.get(record["call_id"]).verdict_sha256 == verdict_digest(record)
+    import sqlite3
+    rows = sqlite3.connect(db.path).execute("SELECT call_id, verdict_sha256 FROM calls").fetchall()
+    assert sorted(d for c, d in rows if c != record["call_id"]) == [""]
+    # a failed seat is bound too
+    out2 = tmp_path / "v2.json"
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out2,
+               runner=fake_runner(["junk", "junk"]), registry=REG)
+    rec2 = json.loads(out2.read_text())
+    assert rec2["status"] == "failed" and db.get(rec2["call_id"]).verdict_sha256 == verdict_digest(rec2)
+
+
 def test_a_bad_answer_is_retried_once_then_the_seat_fails(tmp_path):
     db = Ledger(tmp_path / "l.sqlite")
     out = tmp_path / "v.json"

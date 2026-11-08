@@ -25,7 +25,7 @@ from studio.room.config import SeatConfig
 from studio.room.ledger import Ledger
 from studio.room.models import cli_of, family_of
 from studio.room.snapshot import sha256_text
-from studio.room.verdict import BadVerdict, Verdict, failed_verdict, parse_verdict
+from studio.room.verdict import BadVerdict, Verdict, failed_verdict, parse_verdict, verdict_digest
 
 ROOT = Path(__file__).resolve().parents[3]
 ENV_KEEP = ("PATH", "HOME", "TMPDIR", "LANG", "USER", "LOGNAME", "SHELL")
@@ -141,7 +141,8 @@ def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: C
     version = cli_version(cli_of(seat.model, registry), runner)
     verdict: Optional[Verdict] = None
     error, text, call_id = "", "", ""
-    for _ in range(2):
+    record: dict = {}
+    for attempt in range(2):
         call_id = ledger.reserve(channel=ctx.channel, video=ctx.video, gate=ctx.gate, round=ctx.round,
                                  seat=seat.name, model=seat.model, family=family,
                                  prompt_sha256=sha256_text(prompt), daily_cap=ctx.daily_cap,
@@ -161,17 +162,21 @@ def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: C
         except Exception as exc:  # fail closed: never leave the reserved row open
             text, error = "", f"{type(exc).__name__}: {exc}"
             code = -1
-        ledger.finish(call_id, status="ok" if verdict else "failed", output_sha256=sha256_text(text),
-                      duration_s=duration, cli_version=version)
+        final = bool(verdict) or code == 124 or code == -1 or attempt == 1
+        digest = ""
+        if final:
+            if verdict is None:
+                verdict = failed_verdict(call_id=call_id, seat=seat.name, role=seat.role, model=seat.model,
+                                         family=family, error=error)
+            record = {**verdict.to_dict(), "output_sha256": sha256_text(text)}
+            digest = verdict_digest(record)
+        ledger.finish(call_id, status=verdict.status if verdict else "failed", output_sha256=sha256_text(text),
+                      duration_s=duration, cli_version=version, verdict_sha256=digest)
         if raw_dir:
             raw_dir.mkdir(parents=True, exist_ok=True)
             (raw_dir / f"{call_id}.txt").write_text(text, encoding="utf-8")
-        if verdict or code == 124 or code == -1:
+        if final:
             break
-    if verdict is None:
-        verdict = failed_verdict(call_id=call_id, seat=seat.name, role=seat.role, model=seat.model, family=family,
-                                 error=error)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps({**verdict.to_dict(), "output_sha256": sha256_text(text)}, indent=2) + "\n",
-                   encoding="utf-8")
+    out.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
     return verdict

@@ -1,8 +1,9 @@
 """Room evidence for a gate: what the A2 `room` check verifies before `omni approve` signs G1 or G2.
 
 It catches skipped rounds, missing roles, a failed or blocking fact seat, a seat on the writer's family, edits to the
-file after the room, edited verdict files and verdicts the ledger never saw. Like the approval key, it is not a
-boundary against an agent that forges both the ledger and the report on purpose.
+file after the room, edited verdict files and verdicts the ledger never saw. Each verdict file is bound to the ledger
+(its digest, seat, model, family, video, gate and round) and no malformed input raises: it becomes a problem. Like the
+approval key, it is not a boundary against an agent that forges both the ledger and the report on purpose.
 """
 
 from __future__ import annotations
@@ -12,57 +13,107 @@ from pathlib import Path
 from typing import Any
 
 from studio.room.ledger import Ledger
-from studio.room.snapshot import drafts_dir, sha256_file
-from studio.room.verdict import LOCKED_ROLES, MANDATORY
+from studio.room.snapshot import drafts_dir, load_draft, sha256_file
+from studio.room.verdict import LOCKED_ROLES, MANDATORY, verdict_digest
+
+MISMATCH = "belongs to a different seat, model, family, video, gate or round"
+
+
+def _read_verdict(path: Path) -> Any:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
 
 
 def verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Ledger) -> list[str]:
-    video_dir = Path(video_dir)
+    try:
+        return _verify(Path(video_dir), report, Path(artifact), ledger)
+    except (KeyError, TypeError, AttributeError, ValueError, OSError) as exc:  # fail closed on anything malformed
+        return [f"the room evidence is malformed ({type(exc).__name__}: {exc})"]
+
+
+def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Ledger) -> list[str]:
     ship = report.get("shipped")
     if not ship:
         return ["the room shipped no draft (no lint- and fact-clean round)"]
     problems: list[str] = []
-    if sha256_file(artifact) != ship["artifact_sha256"]:
-        problems.append(f"{Path(artifact).name} changed since the room reviewed it "
-                        f"(room: {ship['artifact_sha256'][:12]}, now: {sha256_file(artifact)[:12]})")
-    if not (drafts_dir(video_dir) / f"{ship['artifact_sha256']}.md").is_file():
-        problems.append("the shipped draft's snapshot is missing")
-    rnd = next((r for r in report["rounds"] if r["round"] == ship["round"]), None)
+    want = ship["artifact_sha256"]
+    try:
+        have = sha256_file(artifact)
+    except OSError:
+        problems.append(f"{artifact.name} is missing or unreadable")
+    else:
+        if have != want:
+            problems.append(f"{artifact.name} changed since the room reviewed it "
+                            f"(room: {want[:12]}, now: {have[:12]})")
+    try:
+        load_draft(video_dir, want)
+    except (OSError, ValueError) as exc:
+        problems.append(f"the shipped draft's snapshot is missing or edited ({type(exc).__name__}: {exc})")
+    rnd = next((r for r in report.get("rounds", []) if r.get("round") == ship.get("round")), None)
     if rnd is None:
-        return problems + [f"shipped round {ship['round']} is not in the report"]
-    if rnd["draft_sha256"] != ship["artifact_sha256"]:
-        problems.append(f"round {rnd['round']} reviewed a different draft than the one shipped")
-    if not rnd["lint"].get("ok"):
-        problems.append(f"round {rnd['round']}: lint failed")
-    writer = report["writer_family"]
-    ok = [v for v in rnd["verdicts"] if v["status"] == "ok"]
+        return problems + [f"shipped round {ship.get('round')} is not in the report"]
+    n = rnd["round"]
+    if rnd.get("draft_sha256") != want:
+        problems.append(f"round {n} reviewed a different draft than the one shipped")
+    if not (rnd.get("lint") or {}).get("ok"):
+        problems.append(f"round {n}: lint failed")
+    writer = report.get("writer_family")
+    if not writer:
+        problems.append("the report names no writer family")
+    verdicts = rnd.get("verdicts") or []
+    ok = [v for v in verdicts if v.get("status") == "ok"]
     for role in MANDATORY:
-        if not any(v["role"] == role for v in ok):
-            problems.append(f"round {rnd['round']}: no ok {role} verdict")
-    if len({v["family"] for v in ok if v["role"] in MANDATORY} - {writer}) < 2:
-        problems.append(f"round {rnd['round']}: mandatory seats need two or more families other than the writer's")
+        if not any(v.get("role") == role for v in ok):
+            problems.append(f"round {n}: no ok {role} verdict")
+    if len({v.get("family") for v in ok if v.get("role") in MANDATORY} - {writer}) < 2:
+        problems.append(f"round {n}: mandatory seats need two or more families other than the writer's")
     for v in ok:
-        if v["role"] in LOCKED_ROLES and v["family"] == writer:
-            problems.append(f"seat {v['seat']} ({v['role']}) is on the writer's family ({writer})")
+        if v.get("role") in LOCKED_ROLES and v.get("family") == writer:
+            problems.append(f"seat {v.get('seat')} ({v.get('role')}) is on the writer's family ({writer})")
     judge = rnd.get("judge")
-    if judge and judge["family"] == writer:
+    if judge and judge.get("family") == writer:
         problems.append(f"the judge is on the writer's family ({writer})")
-    for v in rnd["verdicts"]:
-        path = video_dir / v["file"]
-        raw = json.loads(path.read_text()) if path.is_file() else {}
-        if raw.get("call_id") != v["call_id"] or raw.get("output_sha256") != v["output_sha256"]:
-            problems.append(f"verdict {v['seat']}: file missing or edited after the report")
+    video, gate = video_dir.name, report.get("gate")
+    seen: set[str] = set()
+    for v in verdicts:
+        seat, cid = v.get("seat"), str(v.get("call_id"))
+        raw = _read_verdict(video_dir / str(v.get("file")))
+        if not isinstance(raw, dict):
+            problems.append(f"verdict {seat}: file missing, unreadable or not an object")
             continue
-        row = ledger.get(v["call_id"])
+        if raw.get("call_id") != v.get("call_id") or raw.get("output_sha256") != v.get("output_sha256"):
+            problems.append(f"verdict {seat}: file missing or edited after the report")
+            continue
+        if cid in seen:
+            problems.append(f"verdict {seat}: call {cid[:12]} is cited by more than one verdict")
+        seen.add(cid)
+        row = ledger.get(cid)
         if row is None:
-            problems.append(f"verdict {v['seat']}: call {v['call_id'][:12]} is not in the call ledger")
-        elif row.output_sha256 != raw["output_sha256"] or (v["status"] == "ok" and row.status != "ok"):
-            problems.append(f"verdict {v['seat']}: does not match the call ledger")
-        if v["role"] == "fact" and v["status"] == "ok" and raw.get("blockers"):
-            problems.append(f"open fact blocker: \"{raw['blockers'][0]['quote']}\"")
-    for cid in (judge or {}).get("call_ids", []):
-        if ledger.get(cid) is None:
-            problems.append(f"judge call {cid[:12]} is not in the call ledger")
-    if report["calls"] > report["cap"]:
-        problems.append(f"{report['calls']} calls, over the cap of {report['cap']}")
+            problems.append(f"verdict {seat}: call {cid[:12]} is not in the call ledger")
+        else:
+            if row.output_sha256 != raw.get("output_sha256") or (v.get("status") == "ok" and row.status != "ok"):
+                problems.append(f"verdict {seat}: does not match the call ledger")
+            if (row.seat, row.model, row.family, row.video, row.gate, row.round) != (
+                    raw.get("seat"), raw.get("model"), raw.get("family"), video, gate, n):
+                problems.append(f"verdict {seat}: call {cid[:12]} {MISMATCH}")
+            if not row.verdict_sha256 or row.verdict_sha256 != verdict_digest(raw):
+                problems.append(f"verdict {seat}: file edited after the call")
+        if v.get("role") == "fact" and v.get("status") == "ok" and raw.get("blockers"):
+            first = raw["blockers"][0]
+            quote = first.get("quote") if isinstance(first, dict) else None
+            problems.append(f"open fact blocker: \"{quote if isinstance(quote, str) else first!r}\"")
+    for cid in (judge or {}).get("call_ids") or []:
+        row = ledger.get(str(cid))
+        if row is None:
+            problems.append(f"judge call {str(cid)[:12]} is not in the call ledger")
+        elif (row.seat, row.video, row.gate, row.round, row.family) != (
+                "judge", video, gate, n, (judge or {}).get("family")):
+            problems.append(f"judge call {str(cid)[:12]} {MISMATCH}")
+    cap = report["cap"]
+    for calls in (report["calls"], ledger.count(video=video, gate=gate)):
+        if calls > cap:
+            problems.append(f"{calls} calls, over the cap of {cap}")
+            break
     return problems

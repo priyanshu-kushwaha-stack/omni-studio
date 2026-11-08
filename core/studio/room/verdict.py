@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from dataclasses import asdict, dataclass, field
@@ -98,3 +99,9 @@ def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, 
 
 def failed_verdict(*, call_id: str, seat: str, role: str, model: str, family: str, error: str) -> Verdict:
     return Verdict(call_id, seat, role, model, family, "failed", error=error)
+
+
+def verdict_digest(record: dict[str, Any]) -> str:
+    """sha256 of a verdict record without its own hashes: what the ledger stores to bind the file to the call."""
+    body = {k: v for k, v in record.items() if k not in ("output_sha256", "verdict_sha256")}
+    return hashlib.sha256(json.dumps(body, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
