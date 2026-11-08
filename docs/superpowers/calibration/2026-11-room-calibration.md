@@ -1,114 +1,130 @@
 # Review room calibration, 2026-11 (A1 Task 13)
 
 One round (g2) per channel on a historical script, run through `python -m studio.room` with cursor-agent seats:
-viewer grok-4.7-high, story gpt-5.6-sol-high, fact gemini-3.7-flash-high. No judge (one round). Seats ran in the
-sandbox with the claims ledger passed as an input. No neutrality, craft or voice seat. Writer family (anthropic) was
-not called. 10 model calls in the calibration ledger (one casual-viewer retry after a 600 s timeout), plus 3 in the
-live sandbox check.
+viewer grok-4.7-high, story gpt-5.6-sol-high, fact gemini-3.7-flash-high. No judge (one round). The claims ledger was
+passed to each seat. No neutrality, craft or voice seat. The writer family (anthropic) was not called. The
+calibration ledger has 10 calls (one casual-viewer timeout plus its retry); the live sandbox check used 3 more (two
+test calls and one unsandboxed diagnostic `claude` call).
 
-Live sandbox check: cursor-agent (gpt-5.6-sol-high) passed: exit 0, the canary file in the repo was not read.
-The claude half is **pending the owner's `claude auth login`**: the login has expired ("Failed to authenticate"),
-which also fails without the sandbox, so it says nothing about the sandbox paths.
+## Read this first
 
-Method notes: "room caught it" means a blocker or a suggestion in a seat file, or a lint problem, on the same
-issue as the panel note. Panel notes are paraphrased; no owner notes are recorded in the repo for the Say Suppose or
-Power and Citizen drafts, so "owner raised it" is only filled for dreams. A room blocker counts as false only if a
-panel or owner note rejected it; none was found rejected, so false blockers are 0 on every channel (some are
-debatable and listed).
+- **n=1.** One script and one run per channel; model output varies run to run. These are anecdotes, not rates.
+- **Unequal seats.** The hand panels had more seats than the room's three mandatory ones: Say Suppose five (viewer,
+  fact-checker, retention editor, voice director, animator), Power and Citizen five (viewer, editor, professor,
+  dialogue editor, neutrality or picture), dreams one doctor review. Many panel-only notes come from seats the room
+  did not run (voice and build notes on Say Suppose; neutrality, picture and dialogue notes on Power and Citizen).
+- **Unequal config.** Dreams used the real channel config including the ASK-cadence lint. Say Suppose and Power and
+  Citizen used a stripped config (`linters: []`, no cadence setting), so no cadence lint ran there.
+- **Counting basis (all channels).** One panel note = one row; every panel note is accounted for. "Partly" counts as
+  caught by both. A room note counts as "caught" if a seat blocker or suggestion on the same issue exists. Notes the
+  room raised that the panel did not are "room only" (seat notes only; lint findings are listed separately).
+- **Owner column.** No owner notes are recorded in the repo for Say Suppose or Power and Citizen. For dreams the
+  owner's note is quoted in the panel file; which rows it covers is my inference.
+- **False blockers.** "No room blocker was rejected on record" means there is no evidence either way; debatable ones
+  are listed per channel.
+- Claude-side live check: pending the owner's `claude auth login` (login expired; fails without the sandbox too).
+  cursor-agent passed the sandbox check.
 
 ## Professor of Us: dreams (script_v1.md, claims.md)
 
-Hand-run panel: `script_review_round1.md` in faceless-channel (verdict REWRITE). Owner's note on that draft: "not
-very understandable reading it... Is it engaging?" Room run: lint failed (six ASK-cadence gaps over 30 s, the
-cadence setting in the channel's room.yaml; the panel's own script lint passed), 3/3 seats ok, 5 blockers.
+Hand panel: `script_review_round1.md` in faceless-channel (verdict REWRITE). Owner's note: "not very understandable
+reading it... Is it engaging?" Room run: lint failed (six ASK gaps over 30 s), 3/3 seats ok, 5 blockers.
 
-| Note | Panel | Room | Owner |
+| Note | Panel | Room | Owner (inferred) |
 |---|---|---|---|
-| Dog-paws line is unbacked ("something is replaying") | yes | yes: fact and story blockers, line 60 | |
-| Lizard and animal parade is a list; cut | yes | yes: viewer blocker, line 48 | |
-| REM used before it is explained, jargon | yes | yes: viewer suggestion, unpack on first use | yes (not understandable) |
-| Spider sentence too long | yes | yes: viewer and story suggestions, line 18 | |
-| No single question the video answers | yes | partly: story blocker, opening question never closed | yes (engaging?) |
+| Dog-paws line is unbacked | yes | yes: fact and story blockers, line 60 | |
+| Lizard and animal parade is a list | yes | yes: viewer blocker, line 48 | |
+| REM used before explained, jargon | yes | yes: viewer suggestion | yes |
+| Spider sentence too long | yes | yes: viewer and story suggestions | |
+| No single question the video answers | yes | partly: story blocker, opening question never closed | yes |
 | Twist should state the belief, then break it | yes | yes: story blocker, line 81 | |
-| Maze nap and Tetris payoff buried, move up | yes | no (maze kept, Tetris reworded) | |
-| Take-home "sleep after you learn" is generic | yes | no (kept as a keep line) | |
-| ASK gaps over 30 s | no | yes: lint | |
-| Octopus callback repeats the open; delete | no | yes: viewer suggestion | |
+| Maze nap and Tetris payoff buried | yes | no | |
+| Take-home "sleep after you learn" generic | yes | no | |
+| Octopus callback repeats the open | no | yes: viewer suggestion | |
 
-Counts: caught by both 6, room only 2, panel only 2, owner only 0, false blockers 0 (the line-81 and line-124
-story blockers are the debatable ones).
+Counts (8 panel notes): both 6, panel only 2, room only 1, owner only 0. Lint only: six ASK gaps (panel's own lint
+did not use the cadence rule). Room blockers rejected on record: none; debatable: story line 81 and line 124.
 
-## Say Suppose: pause time for 10 seconds (script.md at e546291, claims.md)
+## Say Suppose: pause time for 10 seconds (script.md at e546291)
 
-Hand-run panel: `review-g2-round1.md` (five seats, 23 numbered notes, A1-A10 facts, B1-B13 story). Room run: lint
-ok (one "and then" warning), 3/3 seats ok, 13 blockers (fact-checker 6, retention editor 6, viewer 1).
+Hand panel: `review-g2-round1.md`, 23 notes. Room run: lint ok (one "and then" warning), 3/3 seats ok, 13 blockers.
 
 | Note | Panel | Room | Owner |
 |---|---|---|---|
 | A1 head ages faster than feet (33 cm) | yes | yes: fact blocker | |
-| A3 astronauts: drops "six months" | yes | yes: fact blocker | |
-| A4 GPS 10 km drift is contested | yes | yes: fact blocker | |
-| A5 2.5 s brake reaction misstated | yes | yes: fact blocker | |
-| A8 1.4 m/s is one age group | yes | yes: fact blocker | |
-| A10 atomic-clock line / B4 list of numbers up front | yes | yes: viewer and editor notes | |
-| B1 road statistics while the bus is moving | yes | yes: editor and viewer blockers | |
-| B2 relativity lecture ends in "never mind" | yes | yes: editor blocker, viewer cut | |
-| B6 countdown stops at three | yes | yes: editor blocker | |
-| B8 ending bleeds the chill | yes | yes: editor blocker, line 120 | |
-| B10 bank and exam beat | yes | yes: editor blocker | |
-| B11 midnight use makes no sense | yes | yes: editor suggestion | |
 | A2 "Nobody human" overstated | yes | no | |
+| A3 astronauts drop "six months" | yes | yes: fact blocker | |
+| A4 GPS 10 km drift contested | yes | yes: fact blocker | |
+| A5 2.5 s brake misstated | yes | yes: fact blocker | |
 | A6 "most dangerous thing in this kid's life" uncited | yes | no | |
 | A7 "exactly two cheats" | yes | no | |
+| A8 1.4 m/s is one age group | yes | yes: fact blocker | |
 | A9 3.5 days vs 3.4 | yes | no | |
+| A10 "They define a second" wrong subject | yes | yes: viewer and editor suggestions on the atomic-clock lines | |
+| B1 road statistics while the bus moves | yes | yes: editor and viewer blockers | |
+| B2 relativity lecture ends in "never mind" | yes | yes: editor blocker | |
 | B3 thumbnail not paid off until 3:00 | yes | no | |
-| B5 clock runs backwards (day twelve) | yes | partly: editor suggestion, hinge line | |
+| B4 first two minutes a list of numbers | yes | yes: editor blocker, viewer suggestion | |
+| B5 clock runs backwards (day twelve) | yes | partly: editor suggestion on the hinge | |
+| B6 countdown stops at three | yes | yes: editor blocker | |
 | B7 "why only one?" gives the twist away | yes | no | |
+| B8 ending bleeds the chill | yes | yes: editor blocker, line 120 | |
 | B9 generic comment call | yes | no | |
+| B10 bank and exam beat | yes | yes: editor blocker | |
+| B11 midnight use makes no sense | yes | yes: editor suggestion | |
 | B12 "dodge your boss" | yes | no | |
 | B13 viewer questions bunch up | yes | no (no cadence setting in this config) | |
 | 238 wpm is English non-fiction only | no | yes: fact blocker | |
-| Mug "falls in 0.45 s" needs 1 m | no | yes: fact suggestion | |
+| Mug "0.45 s" needs 1 m drop | no | yes: fact suggestion | |
 
-Counts: caught by both 12, room only 2, panel only 10, owner only 0 (no owner notes recorded), false blockers 0.
-The three-way viewer, editor and fact overlap on A1-A5 and B1-B2 is the strongest agreement of the run.
+Counts (23 panel notes): both 14, panel only 9, room only 2, owner only 0. Fact notes A1-A10: room caught 6 of 10.
+Lint only: one "and then" warning. Room blockers rejected on record: none. 11 of the 13 blockers match a panel
+note; the debatable two are the editor's line-120 blocker (the panel itself endorsed ending on the stranger as a
+cliffhanger, so "ends before answering" may be intended) and the fact blocker on the 238 wpm scope (a qualifier, not
+an error in the claim as used).
 
-## Power and Citizen: president loses Congress (script-h.md, claims.md)
+## Power and Citizen: president loses Congress (script-h.md)
 
-Hand-run panel: `panel-review-h.md` and `panel-review-script-h.md` (21 merged fixes, five seats including
-neutrality and picture). Room run: lint failed ("claims.md has no verbatim quote column"; the ledger format is not
-the lint's), casual viewer first call timed out at 600 s (exit 124, not retried by the tool) and succeeded when
-re-run once, 3/3 seats ok, 9 blockers (professor 5, editor 3, viewer 1).
+Hand panel: `panel-review-script-h.md` (21 numbered fixes) plus the casual viewer's verdict in its scores table
+(counted as note 22). Room run: lint failed ("claims.md has no verbatim quote column", a ledger-format issue), the
+casual viewer timed out at 600 s and succeeded on one rerun (585 s), 3/3 seats ok, 9 blockers.
 
-| Note | Panel | Room | Owner |
+| Note (panel fix no.) | Panel | Room | Owner |
 |---|---|---|---|
-| "Five prime ministers" figure has no ledger row (panel fix 8) | yes | yes: professor blocker, line 60 | |
-| Caretaker / war with Pakistan not in the sources (fix 21) | yes | yes: professor blocker, viewer suggestion | |
-| Quinn's line explains instead of asking (fix 16) | yes | yes: editor suggestion, line 150 | |
-| Unanswered question "Forty-nine to fifty" (fix 17) | yes | yes: editor blocker, line 176 | |
-| Quinn gaps over 15 s (fix 18) | yes | yes: editor blocker, cadence | |
-| Middle is a history lecture, momentum drops | yes | yes: viewer blocker, line 136 | |
-| 11 December reads as a Democrat shutdown (fix 1) | yes | no | |
-| Simple-majority items are Senate-only (fix 2) | yes | no | |
-| Dollar card, "NEVER REMOVED", Callaghan frame (fixes 3-5) | yes | no (cards and frames are not in the draft) | |
-| Neutrality: Obama-only override, OUT stamps, Kashmir, Gulf (fixes 9-15) | yes | no (no neutrality seat run) | |
-| Plain-word swaps, card and voice match (fixes 19, 20) | yes | no | |
-| "Thumping" quote, July 2007 all-night debate, January 2008 rebate have no ledger id | no | yes: professor blockers | |
-| Final answer is only negative, payoff weak | no | yes: editor blocker, line 183 | |
+| 1 11 December reads as a shutdown | yes | no | |
+| 2 simple-majority items are Senate-only | yes | no | |
+| 3 dollar card wording | yes | no (cards not in the draft) | |
+| 4 "NEVER REMOVED" stamp | yes | no (cards) | |
+| 5 Callaghan frame, Carter out | yes | no (picture) | |
+| 6 accuracy wording repairs (figures, dates, labels) | yes | no | |
+| 7 "this week" holds only if out by 9 Nov | yes | no | |
+| 8 five prime ministers named | yes | yes: professor blocker, no ledger row | |
+| 9-15 neutrality items (seven fixes, one row each in the counts) | yes x7 | no (no neutrality seat run) | |
+| 16 Quinn explains instead of asking | yes | yes: editor suggestion, line 150 | |
+| 17 unanswered questions | yes | yes: editor blocker, line 176 | |
+| 18 Quinn gaps over 15 s | yes | yes: editor blocker, cadence | |
+| 19 plain-word swaps | yes | no | |
+| 20 voice and cards say the same words | yes | no | |
+| 21 India section shorter (caretaker, Kargil) | yes | yes: professor blocker, viewer suggestion | |
+| 22 casual viewer: middle is a history lecture | yes | yes: viewer blocker, line 136 | |
+| "Thumping" quote has no ledger row | no | yes: professor blocker | |
+| July 2007 all-night debate has no ledger row | no | yes: professor blocker | |
+| January 2008 rebate has no ledger row | no | yes: professor blocker | |
+| Final answer only negative, weak payoff | no | yes: editor blocker, line 183 | |
 
-Counts: caught by both 6, room only 4, panel only 16 (counting each numbered fix, 14 of them in rows above, 7 of
-those neutrality and picture items outside this run's seats), owner only 0, false blockers 0.
+Counts (22 panel notes): both 6 (fixes 8, 16, 17, 18, 21 and note 22), panel only 16 (fixes 1-7, 9-15, 19, 20),
+room only 4, owner only 0. Seven of the 16 panel-only notes are neutrality fixes outside the room's seats. Lint only:
+the ledger-format failure. Room blockers rejected on record: none; debatable: editor line 183.
 
-## What this shows
+## What one run each can show
 
-- Fact catches are the room's strongest point: it matched 5 of 6 hand-panel fact notes on Say Suppose and caught
-  ledger gaps the hand panel did not (238 wpm scope, three Power and Citizen claims with no row).
-- It is weaker on story-level structure that needs the whole film in view (buried payoff, thumbnail pay-off,
-  twist given away) and on picture and neutrality (not in the draft, or no seat run).
-- Timing: seats took 69 to 331 s; Grok on the dreams viewer 331 s and on the Power and Citizen viewer 600 s
-  (timeout) then success on retry. The 600 s timeout is close for the viewer seat on a 17 KB draft.
-- Process notes: the ASK-cadence lint flagged six gaps on dreams that the hand panel's lint did not use; the ledger
-  lint refuses claims files without a "verbatim quote" column (Power and Citizen), which made lint fail while the
-  seats still ran.
-- The Claude-only hand panels and the room agree on most facts, so the room's added value here is mainly the
-  second-family fact check and the ledger-gap scan, not new story ideas.
+- On these three drafts the room's seat notes overlapped most of the hand panels' fact and ledger notes (Say Suppose
+  fact notes A1-A10: 6 of 10) and added a few ledger gaps the panels did not list (238 wpm scope; three Power and
+  Citizen claims without a row).
+- Panel-only notes cluster in structure that needs the whole film or a seat the room lacked (buried payoff,
+  thumbnail pay-off, twist order, neutrality, picture, voice). With three seats against five or six, this run cannot
+  say whether the room would miss them with equal seats.
+- Timing: seats took 69 to 331 s except the Power and Citizen casual viewer, which hit the 600 s timeout and then
+  took 585 s on the retry. The timeout is tight for the viewer seat on a 17 KB draft.
+- Process: the ledger lint refuses a claims file without a "verbatim quote" column; seats still ran after the lint
+  failures.
