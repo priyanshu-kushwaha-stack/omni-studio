@@ -1,15 +1,19 @@
 """One seat's model call, sandboxed.
 
 The seat's inputs (the numbered draft, its brief, the channel bible files) go inline in the prompt; the CLI runs in
-an empty temp folder under sandbox-exec with reads of ~/.config/omni-studio/ and the repo denied, a stripped
-environment, and a timeout. claude runs with every tool off; cursor-agent runs in ask mode (read-only), never with
---force. Every attempt is reserved in the ledger first. A malformed answer is retried once; then the seat fails.
+an empty temp folder under sandbox-exec with reads and writes denied for secrets, all projects (this repo and its
+main checkout), session transcripts and the call ledger, a stripped environment, and a timeout. claude runs with
+every tool off; cursor-agent runs in ask mode, never with --force. Every attempt is reserved in the ledger first.
+An attempt that exits 0 with a malformed answer, or exits non-zero, is retried once; a timeout (exit 124) is not
+retried. Any other failure, including an unexpected exception from invoke, finishes the reserved row as "failed" and
+writes a failed verdict. CapReached from ledger.reserve propagates; callers catch it.
 """
 
 from __future__ import annotations
 
 import json
 import os
+import pwd
 import subprocess
 import tempfile
 import time
@@ -46,21 +50,30 @@ class CallContext:
     script_cap: int
 
 
+DENY_HOME = (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".netrc", ".local/state/omni-studio",
+             ".claude/projects", "Exploration", "Sprinklr")
+
+
 def deny_paths() -> list[Path]:
-    paths = [Path.home() / ".config" / "omni-studio", ROOT]
+    home = Path(pwd.getpwuid(os.getuid()).pw_dir)
+    paths = [(home / rel).resolve() for rel in DENY_HOME] + [ROOT.resolve()]
     try:
         common = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--path-format=absolute", "--git-common-dir"],
                                 capture_output=True, text=True, timeout=10).stdout.strip()
         if common:
-            paths.append(Path(common).parent)  # the main checkout when ROOT is a worktree
+            paths.append(Path(common).parent.resolve())  # the main checkout when ROOT is a worktree
     except (OSError, subprocess.SubprocessError):
         pass
     return list(dict.fromkeys(paths))
 
 
+def _sb_quote(path: Path) -> str:
+    return str(Path(path).resolve()).replace("\\", "\\\\").replace('"', '\\"')
+
+
 def sandbox_profile(deny: list[Path]) -> str:
     # sandbox-exec matches real paths: /var/folders/... is /private/var/folders/... on macOS.
-    rules = "\n".join(f'(deny file-read* (subpath "{Path(p).resolve()}"))' for p in deny)
+    rules = "\n".join(f'(deny file-read* file-write* (subpath "{_sb_quote(p)}"))' for p in deny)
     return f"(version 1)\n(allow default)\n{rules}\n"
 
 
@@ -101,7 +114,8 @@ def cli_version(cli: str, runner=None) -> str:
     runner = runner or subprocess.run
     binary = "claude" if cli == "claude" else "cursor-agent"
     try:
-        return runner([binary, "--version"], capture_output=True, text=True, timeout=30).stdout.strip()
+        return runner([binary, "--version"], capture_output=True, text=True, timeout=30,
+                      env=clean_env()).stdout.strip()
     except (OSError, subprocess.SubprocessError):
         return ""
 
@@ -132,22 +146,27 @@ def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: C
                                  seat=seat.name, model=seat.model, family=family,
                                  prompt_sha256=sha256_text(prompt), daily_cap=ctx.daily_cap,
                                  script_cap=ctx.script_cap)
-        code, stdout, duration = invoke(cmd, runner=runner, timeout=timeout)
-        text = cli_text(stdout)
-        if code == 0:
-            try:
-                verdict = parse_verdict(text, call_id=call_id, seat=seat.name, role=seat.role, model=seat.model,
-                                        family=family)
-            except BadVerdict as exc:
-                error = str(exc)
-        else:
-            error = f"{cmd[0]} exited {code}"
+        code, duration = -1, 0.0
+        try:
+            code, stdout, duration = invoke(cmd, runner=runner, timeout=timeout)
+            text = cli_text(stdout)
+            if code == 0:
+                try:
+                    verdict = parse_verdict(text, call_id=call_id, seat=seat.name, role=seat.role,
+                                            model=seat.model, family=family)
+                except BadVerdict as exc:
+                    error = str(exc)
+            else:
+                error = f"{cmd[0]} exited {code}"
+        except Exception as exc:  # fail closed: never leave the reserved row open
+            text, error = "", f"{type(exc).__name__}: {exc}"
+            code = -1
         ledger.finish(call_id, status="ok" if verdict else "failed", output_sha256=sha256_text(text),
                       duration_s=duration, cli_version=version)
         if raw_dir:
             raw_dir.mkdir(parents=True, exist_ok=True)
             (raw_dir / f"{call_id}.txt").write_text(text, encoding="utf-8")
-        if verdict:
+        if verdict or code == 124 or code == -1:
             break
     if verdict is None:
         verdict = failed_verdict(call_id=call_id, seat=seat.name, role=seat.role, model=seat.model, family=family,

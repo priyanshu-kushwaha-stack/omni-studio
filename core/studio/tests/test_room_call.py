@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+import pwd
 import shutil
 import subprocess
 from pathlib import Path
@@ -26,6 +28,11 @@ def _seat(tmp_path):
 
 def _ctx():
     return C.CallContext("professor-of-us", "2026-11-10_x", "g2", 1, daily_cap=50, script_cap=50)
+
+
+def ROOT_NOT_PARENT(cwd):
+    root = C.ROOT.resolve()
+    return cwd != root and root not in cwd.parents and cwd not in root.parents
 
 
 def fake_runner(outputs):
@@ -59,10 +66,32 @@ def test_cli_text_reads_both_json_shapes():
     assert C.cli_text("plain") == "plain"
 
 
+def _real_home():
+    return Path(pwd.getpwuid(os.getuid()).pw_dir)
+
+
 def test_the_sandbox_denies_secrets_and_the_repo():
     profile = C.sandbox_profile(C.deny_paths())
-    assert '(deny file-read* (subpath "' + str((Path.home() / ".config" / "omni-studio").resolve()) + '"))' in profile
+    secret = (_real_home() / ".config" / "omni-studio").resolve()
+    assert f'(deny file-read* file-write* (subpath "{secret}"))' in profile
     assert str(C.ROOT) in profile
+
+
+def test_deny_paths_cover_secrets_projects_transcripts_and_the_ledger():
+    home = _real_home()
+    denied = set(C.deny_paths())
+    for rel in (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".netrc", ".local/state/omni-studio",
+                ".claude/projects", "Exploration", "Sprinklr"):
+        assert (home / rel).resolve() in denied, rel
+    assert C.ROOT.resolve() in denied
+
+
+def test_the_profile_escapes_quotes_and_backslashes(tmp_path):
+    weird = tmp_path / 'a"b\\c'
+    profile = C.sandbox_profile([weird])
+    resolved = str(weird.resolve())
+    assert resolved.replace("\\", "\\\\").replace('"', '\\"') in profile
+    assert f'(subpath "{resolved}")' not in profile
 
 
 def test_clean_env_drops_everything_but_the_basics(monkeypatch):
@@ -84,6 +113,12 @@ def test_run_seat_writes_a_verdict_and_logs_the_call(tmp_path):
     cmd = [c for c, _ in runner.calls if c[-1] != "--version"][0]
     assert cmd[:2] == ["sandbox-exec", "-p"]
     assert (tmp_path / "room" / "raw").is_dir()
+    kw = [k for c, k in runner.calls if c[-1] != "--version"][0]
+    assert kw["env"] == C.clean_env() and kw["timeout"] > 0
+    cwd = Path(kw["cwd"]).resolve()
+    assert ROOT_NOT_PARENT(cwd)
+    version_kw = [k for c, k in runner.calls if c[-1] == "--version"][0]
+    assert version_kw["env"] == C.clean_env()
 
 
 def test_a_bad_answer_is_retried_once_then_the_seat_fails(tmp_path):
@@ -97,11 +132,64 @@ def test_a_bad_answer_is_retried_once_then_the_seat_fails(tmp_path):
     assert bad.status == "failed" and json.loads(out.read_text())["status"] == "failed"
 
 
+def _raising_runner(exc):
+    def run(cmd, **kw):
+        if cmd[-1] == "--version":
+            return subprocess.CompletedProcess(cmd, 0, stdout="9.9.9\n", stderr="")
+        raise exc
+    return run
+
+
+def test_a_timeout_is_not_retried_and_fails_the_seat(tmp_path):
+    db = Ledger(tmp_path / "l.sqlite")
+    out = tmp_path / "v.json"
+    v = C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out,
+                   runner=_raising_runner(subprocess.TimeoutExpired("x", 1)), registry=REG)
+    assert v.status == "failed" and db.count() == 1
+    assert json.loads(out.read_text())["status"] == "failed"
+
+
+def test_an_unexpected_exception_finishes_the_row_as_failed(tmp_path):
+    db = Ledger(tmp_path / "l.sqlite")
+    out = tmp_path / "v.json"
+    v = C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=out,
+                   runner=_raising_runner(FileNotFoundError("sandbox-exec")), registry=REG)
+    assert v.status == "failed" and json.loads(out.read_text())["status"] == "failed"
+    assert db.get(v.call_id).status == "failed"
+    assert db.count() == 1
+
+
+def test_cap_reached_propagates(tmp_path):
+    from studio.room.ledger import CapReached
+    db = Ledger(tmp_path / "l.sqlite")
+    ctx = C.CallContext("professor-of-us", "v", "g2", 1, daily_cap=50, script_cap=0)
+    with pytest.raises(CapReached):
+        C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=ctx, out=tmp_path / "v.json",
+                   runner=fake_runner([]), registry=REG)
+
+
 @pytest.mark.skipif(not shutil.which("sandbox-exec"), reason="macOS only")
 def test_sandbox_exec_really_denies_a_read(tmp_path):
     secret = tmp_path / "denied"
     secret.mkdir()
     (secret / "canary.txt").write_text("CANARY")
-    proc = subprocess.run(["sandbox-exec", "-p", C.sandbox_profile([secret]), "cat", str(secret / "canary.txt")],
+    allowed = tmp_path / "sibling"
+    allowed.mkdir()
+    (allowed / "ok.txt").write_text("FINE")
+    profile = C.sandbox_profile([secret])
+    ok = subprocess.run(["sandbox-exec", "-p", profile, "cat", str(allowed / "ok.txt")],
+                        capture_output=True, text=True)
+    assert ok.returncode == 0 and "FINE" in ok.stdout
+    proc = subprocess.run(["sandbox-exec", "-p", profile, "cat", str(secret / "canary.txt")],
                           capture_output=True, text=True)
-    assert proc.returncode != 0 and "CANARY" not in proc.stdout
+    assert proc.returncode != 0 and "CANARY" not in proc.stdout and "Operation not permitted" in proc.stderr
+
+
+@pytest.mark.skipif(not shutil.which("sandbox-exec"), reason="macOS only")
+def test_sandbox_exec_really_denies_a_write(tmp_path):
+    secret = tmp_path / "denied"
+    secret.mkdir()
+    target = secret / "w.txt"
+    proc = subprocess.run(["sandbox-exec", "-p", C.sandbox_profile([secret]), "sh", "-c", f"echo x > {target}"],
+                          capture_output=True, text=True)
+    assert proc.returncode != 0 and not target.exists()
