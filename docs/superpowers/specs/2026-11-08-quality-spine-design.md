@@ -90,7 +90,7 @@ Blocker count comes first and the judge only breaks ties: a later round with few
 judge ties, and a later round with more never ships on a judge win. A failed judge is unjudged, never a win for either
 draft; `judge` exits 1, a round is judged once, and the judge may run again only in a new round. A failed mandatory seat
 fails the round. An owner-notes round (`lint --owner-notes`, mandatory seats only, no judge, allowed beyond the round
-cap) ships if it is a candidate, because owner notes outrank the room; otherwise the earlier best stays and the conflict goes back to the owner.
+cap) ships if it is a candidate, because owner notes outrank the room: going through the rounds in order, an owner-notes candidate always becomes the best, so an earlier round never beats it on blocker count, while a later ordinary round replaces it only with fewer open blockers (or the same number and a judge "new"); otherwise the earlier best stays and the conflict goes back to the owner.
 
 A fact blocker is never demoted: a blocker from a fact seat stays a blocker whatever `domain` the model names, and for
 other seats a blocker with no domain, or with the seat's own role as its domain, stays one (the domain is compared

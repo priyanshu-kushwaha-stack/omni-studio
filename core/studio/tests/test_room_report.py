@@ -276,3 +276,18 @@ def test_the_report_carries_the_channel(tmp_path):
     rep = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic",
                          ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
     assert rep["channel"] == "pou" and rep["malformed_verdicts"] == []
+
+
+def test_an_owner_notes_candidate_beats_an_earlier_round_with_fewer_blockers(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64, owner_notes=True, story_blockers=STORY[:2])
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 2
+
+
+def test_a_later_ordinary_round_with_fewer_blockers_beats_an_owner_notes_round(tmp_path):
+    _round(tmp_path, 1, "a" * 64)
+    _round(tmp_path, 2, "b" * 64, owner_notes=True, story_blockers=STORY[:2])
+    _round(tmp_path, 3, "c" * 64, story_blockers=STORY[:1])
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 3
+    _round(tmp_path, 4, "d" * 64, story_blockers=STORY[:1])  # same blockers, no judge: round 3 stays
+    assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 3
