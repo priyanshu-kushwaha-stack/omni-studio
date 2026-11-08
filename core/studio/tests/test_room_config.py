@@ -56,7 +56,69 @@ def test_a_story_seat_on_the_writer_family_fails(tmp_path):
 
 def test_a_judge_on_the_writer_family_fails(tmp_path):
     cfg = _cfg(tmp_path, BASE.replace("judge: gpt-5.6-sol-high", "judge: claude-sonnet-5-5"))
-    assert any("judge" in p for p in C.validate(cfg))
+    assert any("judge" in p and "is the writer's family" in p for p in C.validate(cfg))
+
+
+def _with_seat(line):
+    return BASE.replace("format:", line + "\nformat:", 1)
+
+
+def test_a_duplicate_seat_name_fails(tmp_path):
+    cfg = _cfg(tmp_path, _with_seat('  - {name: cold viewer, role: viewer, model: grok-4.7-high, brief: "shared:viewer"}'))
+    assert any("appears twice" in p for p in C.validate(cfg))
+
+
+def test_an_unknown_role_fails(tmp_path):
+    cfg = _cfg(tmp_path, _with_seat('  - {name: copy editor, role: editor, model: grok-4.7-high, brief: "shared:viewer"}'))
+    assert any("unknown role" in p for p in C.validate(cfg))
+
+
+def test_a_neutrality_seat_on_the_writer_family_fails(tmp_path):
+    cfg = _cfg(tmp_path, _with_seat('  - {name: neutrality A, role: neutrality, model: claude-sonnet-5-5, brief: "shared:fact"}'))
+    assert any("neutrality A" in p and "writer's family" in p for p in C.validate(cfg))
+
+
+def test_rounds_out_of_range_fails(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("rounds: 3", "rounds: 9"))
+    assert any("rounds must be 1 to 5" in p for p in C.validate(cfg))
+
+
+def test_an_invalid_pitch_clip_fails(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("pitch_clip: after_g2", "pitch_clip: always"))
+    assert any("pitch_clip must be one of" in p for p in C.validate(cfg))
+
+
+def test_pre_g2_local_with_an_empty_voices_file_fails(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("pitch_clip: after_g2", "pitch_clip: pre_g2_local"))
+    (tmp_path / "voices.yaml").write_text("voices:\n")
+    assert any("non-empty voices.yaml" in p for p in C.validate(cfg))
+
+
+def test_pre_g2_local_with_an_unparseable_voices_file_is_a_problem(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("pitch_clip: after_g2", "pitch_clip: pre_g2_local"))
+    (tmp_path / "voices.yaml").write_text("voices: [unclosed\n")
+    assert any("voices.yaml" in p and "not valid YAML" in p for p in C.validate(cfg))
+
+
+def test_invalid_yaml_is_a_config_error(tmp_path):
+    with pytest.raises(C.RoomConfigError, match="invalid YAML"):
+        _cfg(tmp_path, "writer: [unclosed\n")
+
+
+@pytest.mark.parametrize("text", ["- a\n- b\n", "42\n"])
+def test_a_top_level_that_is_not_a_mapping_is_a_config_error(tmp_path, text):
+    with pytest.raises(C.RoomConfigError, match="must be a mapping"):
+        _cfg(tmp_path, text)
+
+
+def test_non_integer_rounds_is_a_config_error(tmp_path):
+    with pytest.raises(C.RoomConfigError, match="rounds"):
+        _cfg(tmp_path, BASE.replace("rounds: 3", "rounds: three"))
+
+
+def test_non_integer_daily_cap_is_a_config_error(tmp_path):
+    with pytest.raises(C.RoomConfigError, match="daily_cap"):
+        _cfg(tmp_path, BASE.replace("daily_cap: 80", "daily_cap: lots"))
 
 
 def test_mandatory_seats_need_two_other_families(tmp_path):

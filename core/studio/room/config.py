@@ -58,10 +58,27 @@ def _brief(value: str, channel_dir: Path) -> Path:
     return channel_dir / value
 
 
+def _int(data: dict, key: str, default: Optional[int], path: Path) -> int:
+    raw = data.get(key, default)
+    if isinstance(raw, bool) or not isinstance(raw, (int, str)):
+        raise RoomConfigError(f"{path}: {key} must be an integer, not {raw!r}")
+    try:
+        return int(raw)
+    except ValueError as exc:
+        raise RoomConfigError(f"{path}: {key} must be an integer, not {raw!r}") from exc
+
+
 def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
     path = Path(path)
     channel_dir = Path(channel_dir) if channel_dir else path.parent
-    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except (yaml.YAMLError, UnicodeDecodeError) as exc:
+        raise RoomConfigError(f"{path}: invalid YAML ({exc})") from exc
+    if data is None:
+        data = {}
+    if not isinstance(data, dict):
+        raise RoomConfigError(f"{path}: top level must be a mapping, not {type(data).__name__}")
     missing = [k for k in REQUIRED if k not in data]
     if missing:
         raise RoomConfigError(f"{path}: missing {missing}")
@@ -70,8 +87,9 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
                  for s in data["seats"]]
     except (KeyError, TypeError) as exc:
         raise RoomConfigError(f"{path}: every seat needs name, role, model and brief ({exc})") from exc
-    return RoomConfig(writer=str(data["writer"]), judge=str(data["judge"]), rounds=int(data["rounds"]),
-                      daily_cap=int(data.get("daily_cap", 80)), seats=seats, format=data.get("format") or {},
+    return RoomConfig(writer=str(data["writer"]), judge=str(data["judge"]),
+                      rounds=_int(data, "rounds", None, path), daily_cap=_int(data, "daily_cap", 80, path),
+                      seats=seats, format=data.get("format") or {},
                       linters=list(data.get("linters") or []), adopted=data.get("adopted"),
                       pitch_clip=str(data.get("pitch_clip", "after_g2")), sources=list(data.get("sources") or []),
                       path=path, channel_dir=channel_dir)
@@ -87,7 +105,11 @@ def _voices_problems(channel_dir: Path) -> list[str]:
     voices_file = channel_dir / "voices.yaml"
     if not voices_file.is_file():
         return ["pitch_clip pre_g2_local needs a voices.yaml"]
-    voices = (yaml.safe_load(voices_file.read_text(encoding="utf-8")) or {}).get("voices") or {}
+    try:
+        loaded = yaml.safe_load(voices_file.read_text(encoding="utf-8")) or {}
+    except (yaml.YAMLError, UnicodeDecodeError) as exc:
+        return [f"pitch_clip pre_g2_local: voices.yaml is not valid YAML ({exc})"]
+    voices = (loaded.get("voices") if isinstance(loaded, dict) else None) or {}
     if not voices:
         return ["pitch_clip pre_g2_local needs a non-empty voices.yaml"]
     return [f"pitch_clip pre_g2_local: voice {name!r} uses {v.get('tool')!r}, not a free local engine {LOCAL_TTS}"
