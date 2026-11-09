@@ -13,9 +13,9 @@ Three things keep a push from paying 5-11 minutes for a script edit:
    `channels/<slug>/videos/<id>/` cannot break the code suites, so it gets `omni check` for each touched channel
    (about a second). Anything else gets the full suite: code, skills, channel config (`channel.yaml`, `room.yaml`,
    `rules/`), the `_template` channel, or a video folder a test reads (found by name in the test folders).
-3. Parallel and queued. The four suites run at the same time, and a full run takes the `tests` queue
-   (`studio.jobs.queue`), so two sessions take turns instead of slowing each other three-fold. The studio suite, the
-   long pole, runs on `STUDIO_WORKERS` pytest-xdist workers (`studio_workers`).
+3. Parallel and queued. The suites run at the same time (the upstream one as three processes, by folder), and a full
+   run takes the `tests` queue (`studio.jobs.queue`), so two sessions take turns instead of slowing each other
+   three-fold. The studio suite runs on `STUDIO_WORKERS` pytest-xdist workers (`studio_workers`).
 
 `OMNI_TESTGATE_FULL=1` forces the full suite. Run times go to `python -m studio.jobs report` as `tests-full` and
 `tests-fast`. The cache trusts the tree hash: untracked files and installed packages are not part of it.
@@ -41,6 +41,15 @@ CACHE_NAME = "omni-test-pass"
 BASE = "origin/main"
 QUEUE = "tests"
 STUDIO_WORKERS = 4
+# The upstream folders `make test` runs, and how they are split into parallel processes.
+OPENMONTAGE_TESTS = ("tests/backlot", "tests/contracts", "tests/lib", "tests/pipelines", "tests/qa", "tests/styles",
+                     "tests/test_network_guard.py")
+OPENMONTAGE_SPLIT = {
+    "openmontage": ("tests/contracts",),
+    "openmontage-qa": ("tests/qa",),  # tests 04-08 are scripts that do their work (real ffmpeg) at import
+    "openmontage-rest": ("tests/backlot", "tests/lib", "tests/pipelines", "tests/styles",
+                         "tests/test_network_guard.py"),
+}
 
 # Upstream tests that assert a tool the owner banned is still discovered (see the Makefile's old DESELECT note).
 DESELECT = "--deselect core/openmontage/tests/contracts/test_kling_official_avatar.py::" \
@@ -167,12 +176,16 @@ def studio_workers(have_xdist: Optional[bool] = None) -> str:
 
 def default_suites(root: Path) -> list[Suite]:
     om, py = root / "core/openmontage", root / ".venv/bin/python"
+    upstream = f"-q -p no:cacheprovider -p studio.pytest_upstream {DESELECT}"
     return [
-        Suite("openmontage", str(om),
-              f"{py} -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles "
-              f"tests/test_network_guard.py -q -p no:cacheprovider -p studio.pytest_upstream {DESELECT}"),
-        # Four xdist workers (pytest-xdist, pinned in uv.lock): 4 and 6 measured 65 s and 61 s, and the other three
-        # suites run beside it. loadgroup keeps each xdist_group (tests that read or change real channels) on one worker.
+        # The upstream suite is three processes, split by folder, each collecting only its own files (xdist would
+        # re-run tests/qa's import-time scripts, which rmtree and rewrite tests/qa/output, in every worker).
+        # Together they run exactly OPENMONTAGE_TESTS. Measured side by side: contracts 44 s, qa 58 s, rest 17 s,
+        # against 95 s as one process.
+        *(Suite(name, str(om), f"{py} -m pytest {' '.join(paths)} {upstream}")
+          for name, paths in OPENMONTAGE_SPLIT.items()),
+        # Four xdist workers (pytest-xdist, pinned in uv.lock): 4 and 6 measured 65 s and 61 s, and the other suites
+        # run beside it. loadgroup keeps each xdist_group (tests that read or change real channels) on one worker.
         Suite("studio", str(root), f"{py} -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib"
                                    + studio_workers()),
         Suite("pou", str(root), f"{py} -m pytest core/engines/pou/tests -q -p no:cacheprovider"),

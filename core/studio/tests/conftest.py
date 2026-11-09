@@ -117,19 +117,16 @@ def _media_cache(tmp_path_factory):
     return get
 
 
-@pytest.fixture()
-def media(tmp_path, _media_cache):
-    """Factory: media(kind) -> (path, words.json). kinds: good, loud, click, abrupt (Short ends with no tail).
-
-    Leaves the same files in `folder` as building them there would ({kind}.wav, {kind}.words.json and, for mp4,
-    {kind}.mp4), each copied with a fresh mtime so "newest render" ordering is what the test's calls make it."""
+def copying_media(cache, default_folder: Path):
+    """The media(kind, ...) factory over a session cache: same files as building them in `folder` would leave
+    ({kind}.wav, {kind}.words.json and, for mp4, {kind}.mp4), each copied with a fresh mtime so "newest render"
+    ordering is what the test's calls make it."""
+    import shutil
 
     def make(kind="good", container="wav", pattern="testsrc2", folder=None):
-        import shutil
-
-        folder = Path(folder or tmp_path)
+        folder = Path(folder or default_folder)
         folder.mkdir(parents=True, exist_ok=True)
-        src, src_words = _media_cache(kind, container, pattern)
+        src, src_words = cache(kind, container, pattern)
         wav = folder / f"{kind}.wav"
         shutil.copyfile(src.with_suffix(".wav"), wav)
         words_path = folder / f"{kind}.words.json"
@@ -144,8 +141,14 @@ def media(tmp_path, _media_cache):
 
 
 @pytest.fixture()
-def studio_root(tmp_path, monkeypatch):
-    """A throwaway omni-studio root (channels from the template) plus a throwaway ~/.config/omni-studio."""
+def media(tmp_path, _media_cache):
+    """Factory: media(kind) -> (path, words.json). kinds: good, loud, click, abrupt (Short ends with no tail)."""
+    return copying_media(_media_cache, tmp_path)
+
+
+def studio_root_at(base: Path, monkeypatch) -> "callable":
+    """A throwaway omni-studio root at base/root (channels from the template) and base/config/omni-studio as
+    ~/.config/omni-studio. Returns make_channel(slug, **overrides)."""
     import shutil
 
     import yaml
@@ -154,13 +157,11 @@ def studio_root(tmp_path, monkeypatch):
     from studio import channels
 
     real = Path(__file__).resolve().parents[3]
-    root = tmp_path / "root"
+    root = base / "root"
     shutil.copytree(real / "channels" / "_template", root / "channels" / "_template")
     styles = root / "core" / "openmontage" / "styles"
     styles.mkdir(parents=True)
-    monkeypatch.setattr(channels, "ROOT", root)
-    monkeypatch.setattr(playbook_loader, "STYLES_DIR", styles)
-    monkeypatch.setenv("OMNI_STUDIO_CONFIG_DIR", str(tmp_path / "config" / "omni-studio"))
+    point_at_root(base, monkeypatch)
 
     def make_channel(slug, **overrides):
         channel = channels.create_channel(slug)
@@ -181,3 +182,28 @@ def studio_root(tmp_path, monkeypatch):
         return channels.load_channel(slug)
 
     return make_channel
+
+
+def point_at_root(base: Path, monkeypatch) -> None:
+    """Point the studio and OpenMontage at the throwaway root made under `base` by studio_root_at."""
+    import styles.playbook_loader as playbook_loader
+    from studio import channels
+
+    monkeypatch.setattr(channels, "ROOT", base / "root")
+    monkeypatch.setattr(playbook_loader, "STYLES_DIR", base / "root" / "core" / "openmontage" / "styles")
+    monkeypatch.setenv("OMNI_STUDIO_CONFIG_DIR", str(base / "config" / "omni-studio"))
+
+
+@pytest.fixture()
+def studio_root(tmp_path, monkeypatch):
+    """A throwaway omni-studio root (channels from the template) plus a throwaway ~/.config/omni-studio."""
+    return studio_root_at(tmp_path, monkeypatch)
+
+
+@pytest.fixture(scope="session")
+def studio_helpers():
+    """The root and media helpers above, for module-scoped fixtures (test modules cannot import conftest under
+    --import-mode=importlib)."""
+    from types import SimpleNamespace
+
+    return SimpleNamespace(studio_root_at=studio_root_at, point_at_root=point_at_root, copying_media=copying_media)

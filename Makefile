@@ -13,9 +13,9 @@ export DISABLE_TELEMETRY := 1
 # with the denylist on. core/studio/tests asserts the opposite for every denylisted name.
 DESELECT := --deselect core/openmontage/tests/contracts/test_kling_official_avatar.py::test_registry_discovers_kling_lip_sync
 
-# `make test` runs the four suites in parallel under the machine-wide `tests` queue and, on a clean tree, records
-# the pass so the pre-push hook (`make prepush`, from .claude/standard.json) skips that tree. A push that changes only
-# video folders gets `omni check` instead of the suites. See core/studio/testgate.py.
+# `make test` runs the suites (upstream as three processes) in parallel under the machine-wide `tests` queue and, on
+# a clean tree, records the pass so the pre-push hook (`make prepush`, from .claude/standard.json) skips that tree.
+# A push that changes only video folders gets `omni check` instead of the suites. See core/studio/testgate.py.
 test:
 	cd $(ROOT) && $(PYTHON) -m studio.testgate full
 

@@ -223,7 +223,12 @@ def test_changed_files_against_the_merge_base(repo):
 
 def test_the_repo_suites_match_the_old_make_test():
     names = [s.name for s in G.default_suites(G.repo_root())]
-    assert names == ["openmontage", "studio", "pou", "whatif"]
+    assert names == ["openmontage", "openmontage-qa", "openmontage-rest", "studio", "pou", "whatif"]
+    # the upstream split runs every folder the old single run did, each exactly once, and the deselect everywhere
+    split = [p for paths in G.OPENMONTAGE_SPLIT.values() for p in paths]
+    assert sorted(split) == sorted(G.OPENMONTAGE_TESTS) and len(split) == len(set(split))
+    for s in G.default_suites(G.repo_root())[:3]:
+        assert "-p studio.pytest_upstream" in s.command and G.DESELECT in s.command
 
 
 def test_the_studio_suite_runs_on_xdist_workers_that_keep_groups_together():
