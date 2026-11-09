@@ -1,0 +1,185 @@
+<title>Say Suppose Batch 1 Packaging</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;800&family=Source+Sans+3:wght@400;600&family=Roboto:wght@400;500&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: a contact sheet. Sticky index of five films on the left; each film is a row of three candidates shown as
+   real YouTube feed cards (light and dark), with the brief and the pick beside them. Colours are the channel's own
+   paper-cut palette: ink, paper, mustard, teal, crimson. */
+:root {
+  --ink: #23252b;
+  --paper: #f3e9d7;
+  --mustard: #f2b632;
+  --teal: #1d9a8f;
+  --crimson: #d8344f;
+  --bg: #f7f3ea;
+  --surface: #fffdf8;
+  --text: #23252b;
+  --muted: #5d5a52;
+  --line: #e1d8c6;
+  --chip: #efe5d1;
+  --accent: #b07a10;
+  --display: "Rubik", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --yt: "Roboto", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #17181d; --surface: #202228; --text: #ece6da; --muted: #a8a294; --line: #33353d; --chip: #2b2d34; --accent: #f2b632;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #17181d; --surface: #202228; --text: #ece6da; --muted: #a8a294; --line: #33353d; --chip: #2b2d34; --accent: #f2b632;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font: 16px/1.5 var(--body); margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1480px; margin: 0 auto; padding-block: 28px 140px; display: grid; grid-template-columns: 220px 1fr; gap: 36px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: .2px; }
+h2 { font-weight: 800; font-size: 26px; line-height: 1.15; }
+h3 { font-weight: 500; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.intro { grid-column: 1 / -1; display: grid; gap: 10px; max-width: 78ch; }
+.intro p { margin: 0; color: var(--muted); }
+.stamp { display: inline-block; justify-self: start; background: var(--ink); color: var(--mustard); border: 3px solid var(--paper);
+  font: 800 13px/1 var(--display); letter-spacing: 1.5px; padding: 7px 10px 6px; border-radius: 7px; transform: rotate(-2deg); }
+nav { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); align-self: start; display: grid; gap: 4px; }
+nav a { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; padding: 8px; border-radius: 8px; color: var(--text);
+  text-decoration: none; font-size: 14px; line-height: 1.3; }
+nav a:hover, nav a:focus-visible { background: var(--chip); outline: none; }
+nav a span { font: 800 15px/1.3 var(--display); color: var(--accent); }
+main { display: grid; gap: 56px; min-width: 0; }
+.video { display: grid; gap: 18px; scroll-margin-top: 16px; }
+.vh { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+.badge { display: inline-block; font: 500 12px/1 var(--display); letter-spacing: .8px; text-transform: uppercase; padding: 5px 8px; border-radius: 5px; margin-bottom: 8px; }
+.badge-ready { background: var(--teal); color: #fff; }
+.badge-held { background: var(--chip); color: var(--text); box-shadow: inset 0 0 0 1px var(--line); }
+.vn { font: 800 44px/0.9 var(--display); color: var(--mustard); -webkit-text-stroke: 2px var(--ink); }
+.prem { margin: 6px 0 0; color: var(--muted); max-width: 72ch; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start; }
+.var { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
+.cands { display: grid; gap: 22px; min-width: 0; }
+.cand { display: grid; gap: 10px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.cand:last-child { border-bottom: 0; }
+.cand-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+.cid { font: 800 20px/1 var(--display); }
+.cval { font: 800 15px/1 var(--display); background: var(--ink); color: var(--mustard); padding: 5px 8px 4px; border-radius: 5px; }
+.meas { font: 12px/1.4 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.feeds { display: flex; flex-wrap: wrap; gap: 12px; }
+/* YouTube's own feed surfaces, fixed in both page themes on purpose: K10 asks for both. */
+.yt { margin: 0; width: 384px; max-width: 100%; padding: 12px; border-radius: 12px; display: grid; gap: 10px; }
+.yt-light { background: #ffffff; color: #0f0f0f; box-shadow: 0 0 0 1px #e5e5e5 inset; }
+.yt-dark { background: #0f0f0f; color: #f1f1f1; }
+.yt img { width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 12px; display: block; }
+.yt figcaption { display: grid; grid-template-columns: 36px 1fr; gap: 12px; font-family: var(--yt); }
+.yt b { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 500; font-size: 16px; line-height: 22px; }
+.yt small { display: block; font-size: 14px; line-height: 20px; opacity: .65; margin-top: 2px; }
+.av { width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 50% 42%, #f2b632 0 40%, #23252b 41%); }
+.small .side { width: 384px; max-width: 100%; display: grid; grid-template-columns: 168px 1fr; gap: 8px; padding: 8px; border-radius: 10px; font-family: var(--yt); }
+.side img { width: 168px; height: 94px; border-radius: 8px; display: block; }
+.side b { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 500; font-size: 14px; line-height: 20px; }
+.side small { display: block; font-size: 12px; opacity: .65; }
+.side-light { background: #ffffff; color: #0f0f0f; box-shadow: 0 0 0 1px #e5e5e5 inset; }
+.side-dark { background: #0f0f0f; color: #f1f1f1; }
+.info { display: grid; gap: 20px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.block { display: grid; gap: 4px; }
+.titles { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.titles li { display: grid; grid-template-columns: 22px 1fr auto; gap: 6px; font-size: 15px; line-height: 1.35; }
+.tl { font: 800 14px/1.35 var(--display); color: var(--accent); }
+.score { font: 12px/1.6 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.hint { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+.five { margin: 0; display: grid; grid-template-columns: 76px 1fr; gap: 6px 10px; font-size: 14px; line-height: 1.35; }
+.five dt { font: 500 12px/1.5 var(--display); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); }
+.five dd { margin: 0; }
+.verdict { margin: 0; font-weight: 600; }
+.room { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; line-height: 1.4; }
+.cold { margin: 0; font-size: 14px; line-height: 1.4; }
+.pick { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; gap: 10px; }
+.rec { margin: 0; font-size: 14px; }
+.row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.lab { font: 500 12px/1 var(--display); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); width: 100%; }
+.row label { display: inline-flex; gap: 5px; align-items: center; font: 800 15px/1 var(--display); cursor: pointer; }
+.pv { font: 400 12px/1 var(--mono); color: var(--muted); }
+input[type="radio"] { accent-color: var(--teal); width: 16px; height: 16px; margin: 0; }
+input:focus-visible, textarea:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.notes { font: 500 12px/1 var(--display); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); }
+textarea { width: 100%; font: 14px/1.4 var(--body); color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px; resize: vertical; }
+.tray { position: fixed; left: 0; right: 0; bottom: 0; background: var(--ink); color: var(--paper);
+  padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: center; box-shadow: 0 -8px 24px rgba(0,0,0,.25); }
+.tray code { font: 13px/1.4 var(--mono); color: var(--mustard); white-space: pre-wrap; max-width: 920px; }
+.tray button { font: 800 14px/1 var(--display); background: var(--mustard); color: var(--ink); border: 0; border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+.tray .msg { font-size: 13px; color: var(--paper); opacity: .8; }
+.foot { grid-column: 1 / -1; color: var(--muted); font-size: 14px; max-width: 90ch; }
+.foot p { margin: 0 0 8px; }
+@media (max-width: 1180px) { .grid { grid-template-columns: 1fr; } .info { position: static; } }
+@media (max-width: 860px) { .wrap { grid-template-columns: 1fr; } nav { position: static; grid-template-columns: 1fr 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <span class="stamp">G1 · BATCH 1 · 9 NOV 2026</span>
+    <h1>Say Suppose, batch 1: titles and thumbnails</h1>
+    <p>Five films from the idea room, in your tone-varied order. For each one, pick a title and a thumbnail, or write what to change. Every thumbnail is drawn in code from the film's own rig; the three candidates of a film differ in one thing only.</p>
+    <p>Films 1, 2 and 5 are ready for G1. Films 3 and 4 wait for the room's last round: the room's daily cap of 80 calls ran out, and round 3 runs after it resets at 05:30 IST on 10 November. Their drafts already carry every round-2 fix, so your notes on them count now.</p>
+    <p>Your picks gather in the bar at the bottom. Paste that text into the chat; only you pass a gate, with <code>omni approve</code>.</p>
+  </header>
+  <nav aria-label="Films">%%NAV%%</nav>
+  <main>
+%%SECTIONS%%
+  </main>
+  <footer class="foot">
+    <p>Measured on the full-size render with <code>brand/thumbs/check.py</code>: head height (K3, at least 25%), greyscale separation of your head from a 25 px ring (K4, at least 3:1) and colourfulness (K9, at least 40). Words, cap height, pointers and the badge zone pass on every candidate. The cold read is a fresh reviewer who saw only the 168 px images on both feed themes, with no titles.</p>
+    <p>Files: each film's folder under <code>channels/say-suppose/videos/</code> holds <code>packaging.md</code>, <code>thumb-checks.json</code>, <code>title-lint.json</code>, the room's verdicts and the renders in <code>renders/packaging/</code>.</p>
+  </footer>
+</div>
+<div class="tray" role="region" aria-label="Your picks">
+  <code id="summary">G1 batch 1:</code>
+  <button type="button" id="copy">Copy my picks</button>
+  <span class="msg" id="msg" aria-live="polite"></span>
+</div>
+<script>
+const FOLDERS = %%FOLDERS%%;
+const HELD = %%HELD%%;
+const KEY = "say-suppose-g1-batch1";
+function load() { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; } }
+function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+const state = load();
+document.querySelectorAll(".video").forEach((sec) => {
+  const n = sec.dataset.n, s = state[n] || {};
+  if (s.t) { const el = document.getElementById("t" + n + s.t); if (el) el.checked = true; }
+  if (s.k) { const el = document.getElementById("k" + n + s.k); if (el) el.checked = true; }
+  if (s.note) document.getElementById("n" + n).value = s.note;
+});
+function summary() {
+  const lines = ["G1 batch 1:"];
+  document.querySelectorAll(".video").forEach((sec) => {
+    const n = sec.dataset.n;
+    const t = sec.querySelector('input[name="t' + n + '"]:checked')?.value || "?";
+    const k = sec.querySelector('input[name="k' + n + '"]:checked')?.value || "?";
+    const note = document.getElementById("n" + n).value.trim();
+    state[n] = { t, k, note };
+    lines.push(n + ". " + (HELD.includes(n) ? "(notes, G1 after round 3) " : "") + FOLDERS[n].replace(/^2026-11-09_what-if-/, "") + ": title " + t + ", thumbnail " + k + (note ? " | " + note : ""));
+  });
+  save(state);
+  document.getElementById("summary").textContent = lines.join("\n");
+}
+document.addEventListener("input", summary);
+document.addEventListener("change", summary);
+summary();
+document.getElementById("copy").addEventListener("click", async () => {
+  const text = document.getElementById("summary").textContent;
+  const msg = document.getElementById("msg");
+  try { await navigator.clipboard.writeText(text); msg.textContent = "Copied. Paste it into the chat."; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("summary"));
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    msg.textContent = "Selected. Press Cmd+C, then paste it into the chat.";
+  }
+});
+</script>

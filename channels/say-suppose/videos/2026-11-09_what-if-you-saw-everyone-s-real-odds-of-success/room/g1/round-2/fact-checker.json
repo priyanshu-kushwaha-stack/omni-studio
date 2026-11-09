@@ -1,0 +1,32 @@
+{
+  "call_id": "34d39fff056b42cb8e0f5ea3a04ad964",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 45,
+      "quote": "entrance-exam applicants against seats for one named exam (one dataset, one claims row; fact-checker, round 1); the seats and applicants said as people on Riya's bus, not as a ratio; no named biases (the first-time viewer, round 1, would not know \"planning fallacy\" without pausing).",
+      "fix": "At G2, verify that the single chosen entrance-exam dataset precisely matches the locked 0.04% (1 in 2,500) chip figure from the packaging thumbnail, or adjust the script's base rate calculation to match the exact seat-to-applicant dataset cited in claims.md."
+    }
+  ],
+  "keep": [
+    {
+      "line": 10,
+      "quote": "The chips are invented. The odds behind them are the real-world part, to be sourced at G2: seats against applicants for one exam, and base rates."
+    },
+    {
+      "line": 41,
+      "quote": "No new power rule after halfway; no new person after 60%. Body and exam stress explained, never advised."
+    }
+  ],
+  "error": "",
+  "output_sha256": "9abfaec029ec79463163dbb02f8598ad546ee3a77923349f5e1c82841d1e7d9e",
+  "draft_sha256": "a2c452ba01a4b35deec2b0393446fc958fa703f236868c38fb01d596fb410577"
+}

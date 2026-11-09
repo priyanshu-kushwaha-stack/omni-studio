@@ -1,0 +1,73 @@
+{
+  "call_id": "35c9bb29604d4926b87a2f7beff6a9fd",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 8,
+    "leave fast, the last line (#12)": 4,
+    "written to be spoken": 7,
+    "emotion direction per line": 5,
+    "landing lines finish": 7
+  },
+  "blockers": [
+    {
+      "quote": "when someone tells you they forgot, it may be the kindest thing they did",
+      "why": "Check #12: this is a moral, a lesson spoken over the picture, not one real line inside the last image. It also names the value ('kindest') the viewer should feel. Spoken at 1.1x it reads as the teacher line the audience notes say makes Riya leave.",
+      "fix": "End on something seen and said inside the frame: 'She doesn't remember the shout. You do. The tea's still warm.' Then the pages settle, you drink, and the end card follows. No line after it.",
+      "domain": "voice",
+      "line": 39
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 39,
+      "quote": "Back to you",
+      "fix": "Give the last line a direction, for example 'warm, low, almost a smile', and take it in one take with no music swell under the words."
+    },
+    {
+      "line": 38,
+      "quote": "which one gets the last word tonight?",
+      "fix": "Direct it as hushed and curious, and let the figure answer at once by reaching for the tea, so there is no held pause. Keep it a complete thought."
+    },
+    {
+      "line": 38,
+      "quote": "At eighty, the shout from age nine is as loud as this morning",
+      "fix": "Break it for breath: 'Eighty years old. The shout from age nine? Loud as this morning.' Write 'eighty' and 'nine' as words for say.yaml."
+    },
+    {
+      "line": 34,
+      "quote": "Forgetting is losing.",
+      "fix": "Direct it as plain, sure, almost amused, so the later turn lands harder. Say it once, with no repeat."
+    },
+    {
+      "line": 37,
+      "quote": "Jill Price's own words about it",
+      "fix": "Add a say.yaml entry for the name: 'Jill Price', with 'autobiographical' spelled out as 'aw-toe-by-oh-GRAF-ih-kul' if the narration ever uses it. Prefer 'remember almost every day of their lives' in speech."
+    },
+    {
+      "line": 35,
+      "quote": "the question quotes no page; it asks you to apply one to something new, and you freeze",
+      "fix": "Spoken: 'The question? Quotes no page. It asks you to use one. On something new. And you freeze.' Fragments, with amused or dread as the direction."
+    }
+  ],
+  "keep": [
+    {
+      "line": 33,
+      "quote": "I'll forget it all after anyway"
+    },
+    {
+      "line": 34,
+      "quote": "Forgetting is losing."
+    },
+    {
+      "line": 38,
+      "quote": "which one gets the last word tonight?"
+    }
+  ],
+  "error": "",
+  "output_sha256": "61c565660985c5b4880aacf56d71a2463e014384f5b973d1bd1d703d044ad068",
+  "draft_sha256": "fd52b22563f94e2ac405529060e0e986b9a622dd67e9631d88acb3105390f726"
+}

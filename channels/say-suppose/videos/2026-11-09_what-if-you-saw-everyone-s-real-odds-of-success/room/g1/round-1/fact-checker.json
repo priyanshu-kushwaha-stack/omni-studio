@@ -1,0 +1,40 @@
+{
+  "call_id": "e4f898985ea54c3ba7c37d9d340b1a93",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_grounding": 9,
+    "claims_discipline": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 37,
+      "quote": "The fact lands on you: seats against applicants for one exam, one number at a time (to source at G2).",
+      "fix": "At G2, tie the 0.04% base rate to one specific named entrance exam dataset (e.g. UPSC CSE or JEE Advanced seats against total registered applicants) with an exact verified claims row, rather than leaving the denominator generic."
+    },
+    {
+      "line": 38,
+      "quote": "one sourced long shot that worked among them (to find at G2, or cut).",
+      "fix": "At G2, ensure the long-shot example cites a single specific, verifiable founder or researcher with documented prior odds, or cut the beat if no exact historical dataset supports it."
+    }
+  ],
+  "keep": [
+    {
+      "line": 10,
+      "quote": "The chips are invented. The odds behind them are the real-world part, to be sourced at G2: seats against",
+      "fix": "Keep explicit demarcation separating the invented what-if device from real-world statistical claims."
+    },
+    {
+      "line": 41,
+      "quote": "No new power rule after halfway; no new person after 60%. Body and exam stress explained, never advised.",
+      "fix": "Keep the explicit constraint that exam stress and physiological responses are explained without offering medical or lifestyle advice."
+    }
+  ],
+  "error": "",
+  "output_sha256": "4a80b8fbdc7e55c64c1b14d5e32aa228aa29b837388351ae88b7d58d5eaa228d",
+  "draft_sha256": "8cf8d901740b4bb6b9ea116603541da9f21ae5e6347228e8611cdd694cf65a12"
+}

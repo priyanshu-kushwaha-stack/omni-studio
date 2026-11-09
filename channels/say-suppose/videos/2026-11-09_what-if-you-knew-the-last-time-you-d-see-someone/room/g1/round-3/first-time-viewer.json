@@ -1,0 +1,51 @@
+{
+  "call_id": "289f7e801afb42d19f678eb79cbcc9ff",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "family": "xai",
+  "status": "ok",
+  "scores": {
+    "story #2": 9,
+    "story #3": 8,
+    "story #4": 8,
+    "viewer's week": 9,
+    "K5": 9,
+    "K6": 8,
+    "K7": 8,
+    "K12": 8,
+    "K13": 9,
+    "K15": 9,
+    "stay": 6
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 36,
+      "quote": "Therefore you decide the numbers only shrink, and start treating forty-two as a fixed allowance",
+      "fix": "I would leave here: it repeats the 0:30 shrug while I only watch numbers fall. Replace with: Counters fall only when people step off, so you decide the decline just spent the next visit early, and forty-two is a fixed allowance again."
+    },
+    {
+      "line": 34,
+      "quote": "What you can lose: forty-two mornings",
+      "fix": "What you can lose: forty-two visits home; the question: what would you do with them?"
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "She's still at the door. Of course she is."
+    },
+    {
+      "line": 38,
+      "quote": "it was never her clock, only your trains."
+    },
+    {
+      "line": 35,
+      "quote": "you stay for the ending of his story you usually dodge, and he forgets it and asks you to finish it"
+    }
+  ],
+  "error": "",
+  "output_sha256": "7aa744c3bb8a2ef314cfc6376349f315f97989ae447cceb06ac7de6c2981b003",
+  "draft_sha256": "0729b324460e5c46017959f192de2b13db11dcd2c464efcfa7d5a908cae6f6ea"
+}

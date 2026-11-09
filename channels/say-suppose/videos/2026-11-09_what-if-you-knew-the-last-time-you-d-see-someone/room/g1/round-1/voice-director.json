@@ -1,0 +1,73 @@
+{
+  "call_id": "e46597066fd343329bd2815a41762597",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 8,
+    "leave fast / last line (#12)": 5,
+    "written to be spoken": 7,
+    "emotion direction per line": 5,
+    "spoken forms for numbers": 7
+  },
+  "blockers": [
+    {
+      "quote": "Last line inside the image: the next time you leave home, turn round at the corner",
+      "why": "The planned last line is an instruction to the viewer, which makes it a lesson. Check #12 wants one real line inside the last image, not a moral. Arthur would also read it as a teacher's sign-off. It also names the action the picture already shows (the turn and the wave), which brushes against #11.",
+      "fix": "Replace it with a line that belongs to the scene, spoken low and warm, for example: \"She's still at the door. Of course she is.\" Then cut to the end card. Keep the corner, the turn and the wave in the picture only.",
+      "domain": "voice",
+      "line": 39
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 33,
+      "quote": "The title question is spoken",
+      "fix": "Give the spoken form and an emotion tag, e.g. [curious, hushed] \"What if you knew the last time you'd see someone?\" Say it as a contraction, not the title's full forms, and put it after the wave so it lands on the picture."
+    },
+    {
+      "line": 34,
+      "quote": "what would you do with them?",
+      "fix": "Keep it as a short question answered at once by the figure acting, e.g. \"Forty-two mornings. What would you do with them?\" followed by a beat of the figure looking up from the phone. Tag it [quiet, curious]."
+    },
+    {
+      "line": 38,
+      "quote": "you cannot make it endless, you can only make it larger",
+      "fix": "This is the landing line, so it is a complete thought, but it reads like an essay. Contract it and split it: \"You can't make it endless. You can make it bigger.\" Tag it [warm, plain]."
+    },
+    {
+      "line": 9,
+      "quote": "forty-two, the times you will see her again",
+      "fix": "Add a say.yaml entry so Arthur says \"forty-two\" in words. Write the spoken line with contractions: \"Forty-two. That's how many times you'll see her again.\" Tag it [hushed, dry]."
+    },
+    {
+      "line": 37,
+      "quote": "38 to 37 without you there",
+      "fix": "Digits in the outline are fine, but in the script write \"thirty-eight... thirty-seven.\" Give each number its own take, with a pause and then a flat, quiet read, so the number carries the feeling and the narrator doesn't name it."
+    },
+    {
+      "line": 35,
+      "quote": "the counter is a forecast, not a budget",
+      "fix": "Keep the idea but say it as a dry aside, not a definition: \"It's not a budget. It's a forecast.\" Tag it [amused, dry]. Short enough for one breath at 1.1x."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "It only counts down."
+    },
+    {
+      "line": 35,
+      "quote": "the counter is a forecast, not a budget"
+    },
+    {
+      "line": 41,
+      "quote": "the script shows the wave, it does not name the sadness"
+    }
+  ],
+  "error": "",
+  "output_sha256": "870f00a93aaa151843e239d8b2c6e7e3c176d6029f67fe143121309b6933fd04",
+  "draft_sha256": "530fe57971905efc5753afd6ded14c9fc5ddf2bf0480e3937c1c8dcfa9b64296"
+}

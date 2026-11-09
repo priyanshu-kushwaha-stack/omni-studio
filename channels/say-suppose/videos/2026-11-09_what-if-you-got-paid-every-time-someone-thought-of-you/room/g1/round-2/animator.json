@@ -1,0 +1,86 @@
+{
+  "call_id": "77f3863bb2a7470bbccca925fe2f6b82",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "buildable this week (pick card #8)": 7,
+    "stageability side-on": 8,
+    "rule device clarity": 8,
+    "cadence of change (2-4 s)": 7,
+    "continuity of props and gestures": 6,
+    "reuse clarity": 5
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "the phone in the same hand as the hand ages",
+      "fix": "The aging hand is the one rig item with no precedent in the kit, and it is the likeliest long pole for pick card #8. Stage it as three flat hand swaps (smooth, lined, spotted) on the same phone prop, cut on the scroll, with no tween or new rig. If that is not ready by midweek, drop it and let the three columns lengthen across a date stamp."
+    },
+    {
+      "line": 33,
+      "quote": "the lamp-lit bed, the phone filling the frame, mom's bar full, a heart at zero, coins spilling",
+      "fix": "Line 72 says coins spilling were cut from the thumbnail because the cold read did not see them as money. The first 7 s must show the thumbnail's picture, so cut 'coins spilling' here. Show one coin ticking into mom's bar instead, which also introduces the rule device. Keep you large at the left holding the phone, so the opening frame matches thumbnail a."
+    },
+    {
+      "line": 33,
+      "quote": "a new app pings with a coin",
+      "fix": "Say in the SCENE line that the coin lands with a tick in mom's bar beside her face chip, the same device as line 43. Plant the sound and picture here so the rule beat does not have to introduce them again."
+    },
+    {
+      "line": 36,
+      "quote": "Night: coins dropping one by one at 2 a.m., every one from mom, a skyline of her bar over everyone else's",
+      "fix": "Make this the wordless peak with a `> HOLD:` of 8 to 10 s. Change something every 2 to 4 s: the camera tilts up the skyline, a second tower of mom's coins rises, your eyes go from sceptical to soft. Keep the music bed under it with the tick as the only foreground sound."
+    },
+    {
+      "line": 38,
+      "quote": "Then you open Sent.",
+      "fix": "No `cues.yaml` is in my inputs, so I cannot check sound.md #1 or #3 yet. At G2, put the music intent change on the cue 'open Sent' and on the empty mom sliver, not on 'scroll back'. The turn is the reveal, so the cue must change at or after it. Give each beat one intent word, for example: wry (rule), busy (day), hush (2 a.m.), cold (cost), turn (Sent), warm (call)."
+    },
+    {
+      "line": 37,
+      "quote": "her seat at the chai stall is empty, and her row stopped on a day you can't name",
+      "fix": "Stage side-on: a wide of the stall bench with her cup upside down, then a close-up of her dark row with the face chip greyed. Show this with no tag. Hold the empty seat for no more than 3 s, and put your sceptical-to-worried face reaction within 2 s of the reveal."
+    },
+    {
+      "line": 43,
+      "quote": "no names are written on screen",
+      "fix": "Say how Sent is labelled, because the tab needs words. Use one stamped tag 'SENT' of one word. Keep the rest to face chips and bars, so the only on-screen text is that tag and the bubbles of four words or fewer."
+    },
+    {
+      "line": 39,
+      "quote": "somewhere a coin we never see drops for her",
+      "fix": "This is the last 15 s, so keep the right third quiet. Put the phone, your hand and Asha's bubble in the left two-thirds, with no coin or bar drifting into the right. Play the coin as sound only: one tick over the cut to black. This keeps it unseen, as written."
+    },
+    {
+      "line": 35,
+      "quote": "Asha, your friend from the chai stall, pays a little every day: she saves your chai and sends you the metro notes",
+      "fix": "Name the reuse in the outline: sets and props from the kit or pause-time that fit (metro carriage, bedroom, chai stall, phone prop, mother figure) against what is new (app panel, coin, face chips, bars, Asha's rig, loud shirt). Say which are new. That makes #8 checkable, because only the app panel and coin should be new builds."
+    },
+    {
+      "line": 35,
+      "quote": "You wear the loud shirt onto the metro and guess the whole carriage noticed: two coins.",
+      "fix": "Keep the shirt as one recurring prop with a fixed colour. Show it again on the 'fact lands' line (37) and in Asha's chai-stall scene, so continuity is checkable. State who stays in colour. No grey drain applies in this video, so the rule device alone carries the rule."
+    }
+  ],
+  "keep": [
+    {
+      "line": 9,
+      "quote": "your crush has paid nothing, and your mother pays every four minutes."
+    },
+    {
+      "line": 34,
+      "quote": "Coins are care. At least now you can count it"
+    },
+    {
+      "line": 39,
+      "quote": "Two rings. She picks up."
+    }
+  ],
+  "error": "",
+  "output_sha256": "027fca6f517f3e1c46348d0a3bc49269b8160b48a389e21e044718ac9f0d93a2",
+  "draft_sha256": "1fa20ef49e15269581b550676dd2605248ff0675b655bac4fd5cf718f1126e38"
+}

@@ -1,0 +1,36 @@
+{
+  "call_id": "a5fb9cd41ad24ac49af49d6521f6769c",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 45,
+      "quote": "**Research for G2** (not verified yet): entrance-exam applicants against seats for one named exam (one dataset, one claims row; fact-checker, round 1); the seats and applicants said as people on Riya's bus, not as a ratio; no named biases (the first-time viewer, round 1, would not know \"planning fallacy\" without pausing).",
+      "fix": "Ensure the single G2 claims row anchors the 0.04% (1 in 2,500) figure to one official dataset for the named entrance exam (total applicants vs total admitted seats in one cycle) so the thumbnail chip and script ratio match the verified source quote exactly."
+    }
+  ],
+  "keep": [
+    {
+      "line": 10,
+      "quote": "The chips are invented. The odds behind them are the real-world part, to be sourced at G2: seats against applicants for one exam, and base rates."
+    },
+    {
+      "line": 36,
+      "quote": "Then the one sourced comparison, seats against applicants for one exam (to source at G2): his sixty-one belonged to people chasing his goal, never yours."
+    },
+    {
+      "line": 41,
+      "quote": "Body and exam stress explained, never advised."
+    }
+  ],
+  "error": "",
+  "output_sha256": "979f1c60b08796695b2a49e303c5bad6d66a100de5856dbe726372f1ef67423e",
+  "draft_sha256": "e8b38bdaeb02de654bd5d3db47f4d751361288ebbc5528f9cacd9fad5884cadf"
+}

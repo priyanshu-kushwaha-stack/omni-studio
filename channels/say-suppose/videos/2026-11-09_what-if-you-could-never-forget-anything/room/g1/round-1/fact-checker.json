@@ -1,0 +1,37 @@
+{
+  "call_id": "402414125de44f408c3d515ca78a55a1",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 45,
+      "quote": "Parker, Cahill and McGaugh (2006) and LePort et al. (2012) on highly superior autobiographical memory; Jill Price's own words about her memory; a source on forgetting as useful (memory research, not self-help).",
+      "fix": "Parker, Cahill and McGaugh (2006) and LePort et al. (2012) on highly superior autobiographical memory; Jill Price's own words about her memory; a peer-reviewed source on active neurobiological forgetting (e.g. Richards & Frankland 2017 on the persistence and transience of memory, not self-help)."
+    },
+    {
+      "line": 38,
+      "quote": "what the research found when people with highly superior autobiographical memory took ordinary memory tests (to source at G2; spoken only as far as the papers go).",
+      "fix": "what the research found when people with highly superior autobiographical memory took standard laboratory memory tests\u2014performing comparably to controls on rote and abstract tasks (to source at G2; spoken only as far as the papers go)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 11,
+      "quote": "The power is invented. The real-world part, to be sourced at G2: the research on people with highly superior autobiographical memory, and what they say about living with it."
+    },
+    {
+      "line": 43,
+      "quote": "Mental health is explained, never advised."
+    }
+  ],
+  "error": "",
+  "output_sha256": "45a0975f3f2d5450ac599bdf03390a7b6a023e8c8033283c9f02903284860dbf",
+  "draft_sha256": "4e4590209726084972829b146bd70e0007174c7514413a1e818f2fca9dad7c2e"
+}

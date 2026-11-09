@@ -1,0 +1,52 @@
+{
+  "call_id": "d956c5067da84878b4d340bbf622130c",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "retention": 7
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 33,
+      "quote": "you wave back the way you always do, phone still up, not looking",
+      "fix": "Replace with: \"you lift one hand without turning, phone still up\" so the final turn and wave is unmistakably the opposite."
+    },
+    {
+      "line": 34,
+      "quote": "Everyone you know has a counter: a forecast of the times you will meet them again in person, recalculated whenever your plans change.",
+      "fix": "Clarify the full rule where questions arise: \"Only you see them: over every person, a forecast of how many times you'll meet in person again if your current plans and habits continue. Calls do not count. Change a plan, and it recalculates.\""
+    },
+    {
+      "line": 37,
+      "quote": "you skip the festival for a deadline. The empty tiffin sits on your desk while mom's counter flips to thirty-seven",
+      "fix": "Either drop the counter by one, or show five specific future visits disappearing from your calendar before it reaches thirty-seven; otherwise the cost feels arbitrary."
+    },
+    {
+      "line": 38,
+      "quote": "Third jump: a lifetime",
+      "fix": "Earn the stated scale with a moving years-long image: the same doorway through changing seasons, with the counter rising or falling as repeated choices change. Make its first climb unexpected, then let the job offer force the choice at 78%."
+    }
+  ],
+  "keep": [
+    {
+      "line": 36,
+      "quote": "counters fall across the window as people part at each station, yours reflected among them"
+    },
+    {
+      "line": 38,
+      "quote": "It only counts down."
+    },
+    {
+      "line": 39,
+      "quote": "She's still at the door. Of course she is."
+    }
+  ],
+  "error": "",
+  "output_sha256": "7247f81a1284f3daa0037aef42e23178d75827bb28fac291a0c69ece8f48a184",
+  "draft_sha256": "0729b324460e5c46017959f192de2b13db11dcd2c464efcfa7d5a908cae6f6ea"
+}

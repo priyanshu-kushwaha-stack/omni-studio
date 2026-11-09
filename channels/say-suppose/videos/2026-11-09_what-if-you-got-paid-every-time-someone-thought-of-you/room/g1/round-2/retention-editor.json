@@ -1,0 +1,75 @@
+{
+  "call_id": "8e5f74139bd5448ba49ccec2f665b0c3",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story must-pass": 6,
+    "retention shape": 7,
+    "runtime (6\u20138 min; stay reason: Asha\u2019s loss and the Sent-tab reversal)": 8
+  },
+  "blockers": [
+    {
+      "quote": "The internship boss pays every night at eleven, just before the late message.",
+      "why": "Story #6: this power use states the result without what you expected, so there is no expectation/result gap.",
+      "fix": "Replace with: \u201cYou expect the boss has forgotten you after work; at eleven, his coin lands one beat before another late message.\u201d",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "Asha, your friend from the chai stall, pays a little every day: she saves your chai and sends you the metro notes",
+      "why": "Story #9: placing Asha anywhere inside a beat ending at 35% does not guarantee she is named with two warm beats at least two minutes before her loss near 60%.",
+      "fix": "Lock this earlier: \u201cBy 20%: Asha saves your chai and sends the metro notes; only after both warm beats do the photo, boss and shirt tests. Her seat goes empty near 60%.\u201d",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "a day, a year, your whole life",
+      "why": "No new power rule after halfway: the early rule never says the newly installed app contains a lifetime of historical thoughts.",
+      "fix": "Replace with: \u201cBecause Asha\u2019s row has gone dark, match cuts carry the same checking pose through graduation, work and old age\u2014an imagined future, not app history. Before it hardens, you open the planted Sent tab.\u201d",
+      "domain": "story",
+      "line": 38
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 34,
+      "quote": "Every waking thought about you pays one coin, kind or cruel, and the app names who had it.",
+      "fix": "Clarify the self-thought loophole: \u201cEvery waking thought another person has about you pays one coin, kind or cruel, and the app names who had it.\u201d"
+    },
+    {
+      "line": 49,
+      "quote": "Do bad thoughts pay too (yes, the rule says so)? Does a dream count (waking thoughts only)? Can I see who exactly? Why is mom so high (cutaways: packing food, checking the metro time)?",
+      "fix": "The four listed questions are answered where they arise. Add the missing fifth: \u201cWhat is one coin worth?\u201d Answer it in the rule beat and let the first payout buy the chai, so \u201cpaid\u201d is more than a counter."
+    },
+    {
+      "line": 38,
+      "quote": "mom, the boss at eleven, Asha, a day, a year, your whole life, the phone in the same hand as the hand ages",
+      "fix": "Avoid a repeated-ledger sag: make each match cut reveal a growing cost\u2014graduation with one empty seat, work with unanswered messages, old age with only Mom\u2019s bar remaining\u2014then cut immediately to Sent."
+    },
+    {
+      "line": 39,
+      "quote": "Two rings. She picks up.",
+      "fix": "Keep this as the final spoken line; during the end card add only a silent stamped comment tag: \u201cWHO WOULD YOU CALL?\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "Coins are care. At least now you can count it"
+    },
+    {
+      "line": 36,
+      "quote": "Night: coins dropping one by one at 2 a.m., every one from mom, a skyline of her bar over everyone else's"
+    },
+    {
+      "line": 39,
+      "quote": "Two rings. She picks up."
+    }
+  ],
+  "error": "",
+  "output_sha256": "7c5fa6b6b729c3e7d8a41a978b3fa2466910ac9f6beac7f762e1df1fe5a2efdb",
+  "draft_sha256": "1fa20ef49e15269581b550676dd2605248ff0675b655bac4fd5cf718f1126e38"
+}

@@ -1,0 +1,109 @@
+{
+  "call_id": "88207ceaa736452e90db407b18ffcc02",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 7,
+    "causal escalation": 4,
+    "premise payoff": 6,
+    "retention through 8:00 \u2014 felt reason: whether you repair your cousin's zeroed dream and choose without certainty": 6
+  },
+  "blockers": [
+    {
+      "quote": "The teacher's chance of finishing the syllabus: three per cent. The loud boy: zero. The topper's real dream is music: nought point two. The chaiwala's caf\u00e9: sixty-one.",
+      "why": "Story #5 fails: this is an \"and then\" montage of readings, not a causal turn.",
+      "fix": "Replace with: \"You check the teacher expecting certainty; three per cent. Therefore you trust the topper\u2014but her chip names music, not the exam. So you test the chaiwala, expecting another fantasy; sixty-one. You abandon the exam for the safest-looking target.\"",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "each use has a gap: the topper is not who you thought",
+      "why": "Story #6 fails: only the topper supplies an expectation/result gap; the teacher, loud boy and chaiwala are merely listed.",
+      "fix": "Give every retained reading an explicit expectation and surprise, as in the teacher/topper/chaiwala sequence above; cut the loud boy unless his result also reverses a stated expectation.",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "The fact lands on you: seats against applicants for one exam, one number at a time",
+      "why": "Story #7 fails: the outline asserts that the fact lands but gives no action or consequence within two lines, and the ratio does not yet explain why the belief failed.",
+      "fix": "Replace with: \"You take the fat-number placement and stop studying; therefore your mock score and chip fall. At forty-eight per cent, one sourced comparison reveals that seats per applicant is a crowd base rate, not an individual verdict. Within the next line, you reopen your notes and the chip responds.\"",
+      "domain": "story",
+      "line": 37
+    },
+    {
+      "quote": "cousin named in the first minute, warm beats: he bowls to you in the lane",
+      "why": "Story #9 fails: no earlier beat actually names or shows the cousin, so the outline has not earned his loss two minutes in advance; his recovery is also disconnected from the climactic choice.",
+      "fix": "Add an explicit beat near 0:45 where he bowls to you, you adjust his grip and promise another game. At the 75\u201380% choice, make obeying the safe number mean leaving his bat hidden; you return it and let him choose before choosing your own exam.",
+      "domain": "story",
+      "line": 36
+    },
+    {
+      "quote": "The turn breaks \"A number can't lie to you\": it didn't lie",
+      "why": "Story #10 fails: \"it didn't lie\" confirms the planted line instead of contradicting it.",
+      "fix": "Change the early plant to \"The biggest number is the right choice.\" Break it here with: \"The biggest number can tell you what is likely. It cannot tell you what is worth choosing.\"",
+      "domain": "story",
+      "line": 38
+    },
+    {
+      "quote": "it described the crowd and you were never the crowd",
+      "why": "The no-new-power-rule-after-halfway check fails: this first redefines personal chips as crowd statistics after 65%.",
+      "fix": "State by 0:30 that chips begin with a crowd base rate and update from what each person currently does. Make the late turn about mistaking likelihood for value, not a newly revealed chip mechanism.",
+      "domain": "story",
+      "line": 38
+    },
+    {
+      "quote": "one sourced long shot that worked among them",
+      "why": "The no-new-person-after-60% check fails if this late example introduces a successful person after 65%.",
+      "fix": "Cut the new example and build the city image from already planted people\u2014the teacher, topper, chaiwala and cousin.",
+      "domain": "story",
+      "line": 38
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 37,
+      "quote": "Second jump: the year",
+      "fix": "Make the year visible through three escalating actions\u2014a missed mock test, accepting the safe placement and hiding the bat\u2014rather than spending this section explaining the rule."
+    },
+    {
+      "line": 36,
+      "quote": "his chip falls to zero the moment he nods",
+      "fix": "Make this the moving wordless peak: hold eight seconds while the counter drains, his hand leaves the bat and it rolls out of frame."
+    },
+    {
+      "line": 47,
+      "quote": "What counts as success, who decides?",
+      "fix": "Answer during the rule beat: the chip follows the goal that person would choose with nobody watching."
+    },
+    {
+      "line": 48,
+      "quote": "Does it know my effort? Does it change if I study harder?",
+      "fix": "Before 35%, show one experiment: you study expecting an instant rise; nothing changes until the next mock result, when the chip moves."
+    },
+    {
+      "line": 48,
+      "quote": "What does 0.04% even mean in people?",
+      "fix": "At the initial reveal, turn the hall into one lit chair among two thousand five hundred, then return immediately to your face."
+    }
+  ],
+  "keep": [
+    {
+      "line": 9,
+      "quote": "Then you see your own: nought point nought four per cent."
+    },
+    {
+      "line": 36,
+      "quote": "his chip falls to zero the moment he nods"
+    },
+    {
+      "line": 39,
+      "quote": "Your cousin's bat thwacks in the lane outside."
+    }
+  ],
+  "error": "",
+  "output_sha256": "a6fa62cb69971298825965b2f2b32435773985b6f2a877fdb2fecb5cbb58fc7f",
+  "draft_sha256": "8cf8d901740b4bb6b9ea116603541da9f21ae5e6347228e8611cdd694cf65a12"
+}

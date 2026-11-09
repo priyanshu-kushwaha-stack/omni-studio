@@ -1,0 +1,70 @@
+{
+  "call_id": "c26028f72acc482b8c4ff14ef4745c4c",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "buildable this week (card #8)": 8,
+    "stageable side-on, scene by scene": 8,
+    "on-screen text discipline": 6,
+    "rule device clarity": 6,
+    "reuse and continuity": 7
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 34,
+      "quote": "the app lists them",
+      "fix": "Only a tag, a split-flap counter or a bubble may be written on screen, so the 'who' list can't be a list of names. Draw each thinker as a small face chip (mom, boss, crush, chai-stall friend) with a coin bar beside it. Put the word 'SENT' on the second tab as a stamped tag. This is also the cheapest build: one app panel plus bar shapes."
+    },
+    {
+      "line": 34,
+      "quote": "One coin each time any person has one thought about you",
+      "fix": "Name the rule device in the outline, since style.md allows one per video. Suggestion: a coin that drops with a tick into a split-flap counter, plus a bar that grows beside the thinker. Keep you, mom and the chai friend in full colour, and let everyone else fade to flat paper tone. Then the device is heard and seen at every use."
+    },
+    {
+      "line": 36,
+      "quote": "coins dropping one by one at 2 a.m., every one from mom, a skyline of her bar over everyone else's",
+      "fix": "Stage it as a lamp-mood night, side-on: you in bed, the bar towers drifting as parallax layers, a coin every 2 to 4 s. If it's the wordless peak, give it 8 to 10 s with the camera drifting up the tower so something always moves. Don't hold the skyline still beyond 6 s."
+    },
+    {
+      "line": 38,
+      "quote": "your own column for mom is nearly empty",
+      "fix": "Keep the Sent tab the same panel as the first tab, flipped. Mirror the earlier mom bar as a tiny sliver, so it reads in one glance with no number. That also keeps this a pure reuse of the planted asset."
+    },
+    {
+      "line": 39,
+      "quote": "tonight, think who you would have paid",
+      "fix": "Put this on a single stamped tag in the left two-thirds, off faces, and keep the right third empty for end screens through the last 15 s. 'A coin we never see drops for him' can be staged as a sound-only tick over the phone face-down, with no new prop."
+    },
+    {
+      "line": 3,
+      "quote": "status: G1 awaiting the owner (batch 1, video 3 of 5)",
+      "fix": "Not blocking at G1. cues.yaml is not in my inputs, so I can't check the sound.md #1 intent. For G2, give it a one-word intent per beat and music in and out on named cues. Hold any intent change until the reveal itself or after it, such as the Sent tab opening around 78%, never before, to satisfy sound.md #3."
+    },
+    {
+      "line": 37,
+      "quote": "your friend from the chai stall, the one who always paid a little, has stopped, and you can't say when",
+      "fix": "Continuity: introduce the friend in the opening minutes as one fixed rig with a recognisable prop (a chai glass), and show a small coin bar beside them in the first-jump montage. At 60% the bar visibly shrinks to a sliver, so the loss shows without text. Reuse the chai-stall set, metro, bedroom, office and boss (tie) and kid stock figures from the kit where they exist. New builds are the app panel, the coin prop and the bar-skyline layers."
+    }
+  ],
+  "keep": [
+    {
+      "line": 9,
+      "quote": "your crush has paid nothing, and your mother pays every four minutes"
+    },
+    {
+      "line": 36,
+      "quote": "a skyline of her bar over everyone else's"
+    },
+    {
+      "line": 39,
+      "quote": "tonight, think who you would have paid"
+    }
+  ],
+  "error": "",
+  "output_sha256": "a3e21f9528d4c8408991fd308249adc8cb72b0e8c89de899d2fd4e944bcd34da",
+  "draft_sha256": "1e03d6b1272d27e2a70b2188620a7695f779c39521a4d1040351a5a0471c2dfc"
+}

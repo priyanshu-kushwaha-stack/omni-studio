@@ -1,0 +1,154 @@
+{
+  "gate": "g1",
+  "stage": "proposal",
+  "channel": "say-suppose",
+  "writer_family": "anthropic",
+  "rounds": [
+    {
+      "round": 1,
+      "draft_sha256": "b083ac468ec2e92a150bfcc72c83fb8e25931f9d1202bbfcb1a720eee4a1458c",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "animator",
+          "role": "craft",
+          "model": "claude-sonnet-5-5",
+          "family": "anthropic",
+          "status": "ok",
+          "call_id": "2f50e08f3076452295670867734c8339",
+          "file": "room/g1/round-1/animator.json",
+          "output_sha256": "8a1c2165b6151aa44a468354c9bbf4a01f1ab8fce5c80edcc65a72416efd8d49",
+          "blockers": 0
+        },
+        {
+          "seat": "fact-checker",
+          "role": "fact",
+          "model": "gemini-3.7-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "f3fa2e13cd0f4209b28afc2345b044aa",
+          "file": "room/g1/round-1/fact-checker.json",
+          "output_sha256": "41d07faa1d6cacd9d4e3dc30e41f5ef2c49e4c25263c7113ea4803bfe193f7b1",
+          "blockers": 0
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "grok-4.7-high",
+          "family": "xai",
+          "status": "ok",
+          "call_id": "7ce442ebc0524e7a83c0683de5a34da4",
+          "file": "room/g1/round-1/first-time-viewer.json",
+          "output_sha256": "9075e01d84258a9cfe85847ad273056a1a8ee986cd78467aa6661ea144adff0f",
+          "blockers": 3
+        },
+        {
+          "seat": "retention editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "cc9fb2326d9849b6b6352c99a076a130",
+          "file": "room/g1/round-1/retention-editor.json",
+          "output_sha256": "f623bf997d8e84bfc7965e7306977cdced9e201b5e53887cb0879e284165681b",
+          "blockers": 6
+        },
+        {
+          "seat": "voice director",
+          "role": "voice",
+          "model": "claude-sonnet-5-5",
+          "family": "anthropic",
+          "status": "ok",
+          "call_id": "a09433665b0d4cca9bee94a847e37f07",
+          "file": "room/g1/round-1/voice-director.json",
+          "output_sha256": "5e2a3855cd638e54754c5cf197152a72a10a3a94d5d4c06fb98382abddabad88",
+          "blockers": 1
+        }
+      ],
+      "judge": null,
+      "owner_notes": false,
+      "candidate": true
+    },
+    {
+      "round": 2,
+      "draft_sha256": "97c30262255bbfff1fbb9c1c910ef0fad74413abc5340330de31a9f4cc2c0e14",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "animator",
+          "role": "craft",
+          "model": "claude-sonnet-5-5",
+          "family": "anthropic",
+          "status": "ok",
+          "call_id": "3550e53e03064c309331f727aa13115e",
+          "file": "room/g1/round-2/animator.json",
+          "output_sha256": "1e3c900f6fe3d2312a2ff7de1b5d7414e5b37540821d3a52812ec60eee239389",
+          "blockers": 0
+        },
+        {
+          "seat": "fact-checker",
+          "role": "fact",
+          "model": "gemini-3.7-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "8d8da3155bbc445397638cee823d886d",
+          "file": "room/g1/round-2/fact-checker.json",
+          "output_sha256": "4eb2f5e7d7296bf5353520faa0a546fa9a302fcc0a13c1fb25533d9ee1e996c5",
+          "blockers": 0
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "grok-4.7-high",
+          "family": "xai",
+          "status": "ok",
+          "call_id": "5998cec413e94b0e8485a287f9adadc1",
+          "file": "room/g1/round-2/first-time-viewer.json",
+          "output_sha256": "bc7d098cb3ca9c1068b141386044dae86580b5ff830d6a228b5b931c03bd0205",
+          "blockers": 3
+        },
+        {
+          "seat": "retention editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "6e2fa5796bd1428086dcf81474398b12",
+          "file": "room/g1/round-2/retention-editor.json",
+          "output_sha256": "b21413e665d148657a0234cd62e76a120a3366222d4a454495a2586e25826192",
+          "blockers": 3
+        },
+        {
+          "seat": "voice director",
+          "role": "voice",
+          "model": "claude-sonnet-5-5",
+          "family": "anthropic",
+          "status": "ok",
+          "call_id": "3ddd977a319d4c098ac20cd988e60b4b",
+          "file": "room/g1/round-2/voice-director.json",
+          "output_sha256": "a7faadb0eaf1097df5771afd192dd829829d831bc091218c4279f2efbfde38a1",
+          "blockers": 0
+        }
+      ],
+      "judge": null,
+      "owner_notes": false,
+      "candidate": true
+    }
+  ],
+  "skipped_rounds": [],
+  "malformed_verdicts": [],
+  "shipped": {
+    "round": 2,
+    "artifact_sha256": "97c30262255bbfff1fbb9c1c910ef0fad74413abc5340330de31a9f4cc2c0e14"
+  },
+  "calls": 11,
+  "cap": 41
+}

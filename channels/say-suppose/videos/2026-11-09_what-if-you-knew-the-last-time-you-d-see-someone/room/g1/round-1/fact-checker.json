@@ -1,0 +1,43 @@
+{
+  "call_id": "732b5eaba064403b8c856abed2230d81",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact_grounding": 10,
+    "wrong_belief": 10,
+    "packaging_claims": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 37,
+      "quote": "The fact lands on you: the Tail End arithmetic on in-person time left with parents (to source at G2; spoken only as far as the source goes). You skip a festival visit for a deadline: 38 to 37 without you there. That is the cost, near 60%",
+      "fix": "At G2, ensure the spoken line frames the arithmetic as a calculation based on assumed visit frequency rather than an absolute biological countdown."
+    },
+    {
+      "line": 45,
+      "quote": "Tim Urban's \"The Tail End\" arithmetic on time with parents after moving out; how often people who move cities visit home (a survey, if one exists for India).",
+      "fix": "At G2, source both the underlying arithmetic model and regional visit frequency data to avoid overgeneralizing foreign demographic assumptions to an Indian intercity move."
+    }
+  ],
+  "keep": [
+    {
+      "line": 10,
+      "quote": "The counter is invented. The arithmetic under it is the real-world part, to be sourced at G2: how much in-person time with parents is left once you move out."
+    },
+    {
+      "line": 37,
+      "quote": "The fact lands on you: the Tail End arithmetic on in-person time left with parents (to source at G2; spoken only as far as the source goes)."
+    },
+    {
+      "line": 44,
+      "quote": "**Research for G2** (from the idea room; not verified yet, nothing here is a claim until `claims.md` cites it):"
+    }
+  ],
+  "error": "",
+  "output_sha256": "76ac9ddf04bf309957fc0c41f72a2ed048a38205e81dcb81d611d9b6c0b273a2",
+  "draft_sha256": "530fe57971905efc5753afd6ded14c9fc5ddf2bf0480e3937c1c8dcfa9b64296"
+}

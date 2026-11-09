@@ -1,0 +1,92 @@
+{
+  "call_id": "60f5e7dd2b4a4e868904a66dce5d4e12",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "family": "xai",
+  "status": "ok",
+  "scores": {
+    "story #2 confirm the click": 3,
+    "story #3 second hook": 8,
+    "story #4 habit": 8,
+    "the viewer's week": 4,
+    "K5 words": 9,
+    "K6 tag type": 9,
+    "K7 pairing": 8,
+    "K12 mobile title cut": 8,
+    "K13 payoff time": 4,
+    "K15 variant set": 9,
+    "stay": 4
+  },
+  "blockers": [
+    {
+      "quote": "Morning, packing for the move. Mom at the door; you wave without looking up from the phone.",
+      "why": "story #2 Confirm the click: the first 7s are a morning pack while I look at my phone. The thumbnail I clicked is dusk, the porch light, the open door, mom waving, and me mid-wave looking at the counter. I would leave here.",
+      "fix": "First 7s: dusk, porch light, open door, mom smiling and waving, you mid-wave looking at the counter as it flips to 42 over her head, phone still raised from the habit of never looking back, title question spoken over that picture.",
+      "domain": "viewer",
+      "line": 33
+    },
+    {
+      "quote": "Your crush: two.",
+      "why": "The viewer's week: a crush is not chai, the bus or metro, exams, the office, or family.",
+      "fix": "Your grandfather: eight. You only catch him on the visit home, and he is already on the same story.",
+      "domain": "viewer",
+      "line": 35
+    },
+    {
+      "quote": "a transfer abroad that sets it to nine",
+      "why": "The viewer's week: abroad is not chai, the bus or metro, exams, the office, or family.",
+      "fix": "the offer that keeps you away through every festival this year, and the counter drops to nine",
+      "domain": "viewer",
+      "line": 38
+    },
+    {
+      "quote": "\"MOM?\" + counter/chip \"3\"",
+      "why": "K13 Payoff time: a 3 over mom is the picture I would click, and the outline never shows a 3 by 0:30. The film opens on 42.",
+      "fix": "Retire the chip 3. Keep this candidate on the same door and the same 42, and change only the eyeline the opening already has: you still looking at the phone. Write that as the one variable.",
+      "domain": "viewer",
+      "line": 76
+    },
+    {
+      "quote": "\"MOM?\" + counter/chip \"1\"",
+      "why": "K13 Payoff time: a 1 over mom is never on screen by 0:30. The opening is 42 and the later choice goes to nine.",
+      "fix": "Retire the chip 1, or make the first image that exact picture: counter at 1, mom in the doorway, you looking at it, inside the first 30s, then back to today at 42.",
+      "domain": "viewer",
+      "line": 77
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 35,
+      "quote": "The metro stranger: four hundred (your commute). The annoying colleague: three thousand.",
+      "fix": "Keep the metro stranger at four hundred, then go straight to dodging the visit home. The colleague is a second poster of a huge number and nothing new happens to me."
+    },
+    {
+      "line": 37,
+      "quote": "the Tail End arithmetic on in-person time left with parents",
+      "fix": "Say how many times you will still be in the room with her, and only as far as the source goes. I would pause the video on Tail End."
+    },
+    {
+      "line": 38,
+      "quote": "The honest answer: you cannot make it endless, you can only make it larger",
+      "fix": "Delete this sentence. The climb already showed it. Land on the corner wave."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "It only counts down."
+    },
+    {
+      "line": 36,
+      "quote": "A whole metro carriage of counters, every one falling a little as the doors close; mom's falls by one as your train leaves after a weekend home"
+    },
+    {
+      "line": 39,
+      "quote": "the next time you leave home, turn round at the corner"
+    }
+  ],
+  "error": "",
+  "output_sha256": "19f4dfd1eaee95e77a50c5d844c48580fde881ce95c890197796ad2f04fb2ff2",
+  "draft_sha256": "530fe57971905efc5753afd6ded14c9fc5ddf2bf0480e3937c1c8dcfa9b64296"
+}

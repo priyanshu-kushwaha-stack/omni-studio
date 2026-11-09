@@ -1,0 +1,80 @@
+{
+  "call_id": "3ddd977a319d4c098ac20cd988e60b4b",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 9,
+    "leave fast, last line (#12)": 9,
+    "written to be spoken": 7,
+    "emotion direction per line": 6,
+    "spoken forms for numbers": 6
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 34,
+      "quote": "One year from me buys him ten. Good deal.",
+      "fix": "Direction: brisk, dry, a little too sure. Both sentences are complete, so the planted line is safe. Give it one clean take, because line 38 reverses it and the viewer has to hear it plainly the first time."
+    },
+    {
+      "line": 38,
+      "quote": "And every job is the same trade at a lower price.",
+      "fix": "This reads like an essay and a lesson. Spoken, make it a fragment pair, hushed: \"Every job is this trade. Just cheaper.\" Keep it mid-film and out of the closing lines (check #12)."
+    },
+    {
+      "line": 37,
+      "quote": "Misconception first: you believed time and money are separate currencies.",
+      "fix": "Spoken as written, this is a teacher's sentence. Turn it into a question answered at once, curious then rueful: \"Time and money. Two different pockets, right? Wrong. One pocket.\""
+    },
+    {
+      "line": 37,
+      "quote": "the sourced cost of his surgery, turned into internship hours (to source at G2)",
+      "fix": "Write the spoken form for say.yaml, e.g. \"about nine hundred hours\" or \"four hundred thousand rupees\" as \"four lakh\" (to match the sourced figure). Write all story numbers as words so only the sourced figure carries a claims.md citation. Say the sourced figure at one beat only, then cut straight to Papa's face (check #7, two-line landing)."
+    },
+    {
+      "line": 47,
+      "quote": "the idea room cites 55 million a year",
+      "fix": "If this is spoken, the form is \"fifty-five million\". Hold it until the count of people vs households is sourced, and place it before a warm beat, not right after the payoff (audience.md: numbers after a payoff read as an ad)."
+    },
+    {
+      "line": 86,
+      "quote": "\"$100,000?\" is the closest global version",
+      "fix": "Not spoken, but if the title or number is ever read aloud, use \"a hundred thousand dollars\" in say.yaml."
+    },
+    {
+      "line": 39,
+      "quote": "He's teasing you about the bus pass again. You let him.",
+      "fix": "Direction: warm, unhurried, a half-smile. Contractions are right. Small risk of narrating what the picture shows, so make the picture carry the bus-pass bubble (\"Still using that bus pass?\") and keep \"You let him.\" as the only narrated beat. This is not a blocker: it is one real line inside the image and a payoff of line 35."
+    },
+    {
+      "line": 33,
+      "quote": "You price his bill in internship hours, the way you price the bus.",
+      "fix": "Keep this as one hushed, flat line in the first seven seconds, with the title question just before it: \"What if you could sell one year? ...His bill is, what, nine hundred internship hours.\" Hushed, not hyped. The outline gives no emotion for the first lines, so add one in the script (hushed, tired)."
+    },
+    {
+      "line": 35,
+      "quote": "You expected to look distinguished; you got your uncle's eyebrow.",
+      "fix": "Amused. Keep the semicolon as a breath: \"You wanted distinguished. You got... one eyebrow hair. Your uncle's.\" Break the line in two, because it runs long for one breath at 1.1x."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "One year from me buys him ten. Good deal."
+    },
+    {
+      "line": 35,
+      "quote": "you got your uncle's eyebrow"
+    },
+    {
+      "line": 39,
+      "quote": "He's teasing you about the bus pass again. You let him."
+    }
+  ],
+  "error": "",
+  "output_sha256": "a7faadb0eaf1097df5771afd192dd829829d831bc091218c4279f2efbfde38a1",
+  "draft_sha256": "97c30262255bbfff1fbb9c1c910ef0fad74413abc5340330de31a9f4cc2c0e14"
+}

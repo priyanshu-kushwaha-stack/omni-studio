@@ -1,0 +1,82 @@
+{
+  "call_id": "5c8736348fa34854a61c67a14eaf6e0f",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "family": "xai",
+  "status": "ok",
+  "scores": {
+    "story #2": 3,
+    "story #3": 8,
+    "story #4": 8,
+    "viewer's week": 5,
+    "K5": 10,
+    "K6": 9,
+    "K7": 9,
+    "K12": 4,
+    "K13": 8,
+    "K15": 9
+  },
+  "blockers": [
+    {
+      "quote": "In bed, phone first, as always: who liked, who replied. A new app pings with a coin. The title question is spoken",
+      "why": "story #2 Confirm the click. The opening is the morning likes-check and one coin, and the beat is timed within 20 s. The thumbnail I clicked is the lamp-lit phone with mom's bar full, the heart empty, coins spilling, and ONLY MOM?, and that look is written into the 0:30 beat.",
+      "fix": "Within 7 s: lamp-lit bed, phone filling the frame, mom's bar full, a heart at zero, coins spilling. Voice: you check who liked you before you are even sitting up. The title question plays over that screen.",
+      "domain": "viewer",
+      "line": 33
+    },
+    {
+      "quote": "What If You Got Paid Every Time Someone Thought of You?",
+      "why": "K12 Mobile title cut. At about 40 characters the title reads \"What If You Got Paid Every Time Someone...\" and the thumbnail adds ONLY MOM?, coins and two bars. The thought that pays never appears, so on a phone this can be likes or texts.",
+      "fix": "A | What If Every Thought of You Paid? | phone cut keeps the whole title (34 characters); thumbnail a still adds ONLY MOM?, and the title and the tag share no content word",
+      "domain": "viewer",
+      "line": 54
+    },
+    {
+      "quote": "the spotlight-effect T-shirt study, guessed against actual noticing",
+      "why": "The viewer's week. The example on screen is a named study, outside chai, the metro, exams, the office and family. I would stop here: spotlight-effect means nothing to me without a pause, and the story stands still while it is explained.",
+      "fix": "You wear the loud shirt onto the metro and guess the whole carriage noticed. Two people did. Then you start a fight in the group chat, and that pays too. Your friend from the chai stall, the one who always paid a little, has stopped, and you can't say when.",
+      "domain": "viewer",
+      "line": 37
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 25,
+      "quote": "you start buying attention, good or bad, to make it pay",
+      "fix": "Show the double text to the crush, then one fight in the group chat, so the bad thought pays on screen. Buying attention is not a thing I do this week."
+    },
+    {
+      "line": 38,
+      "quote": "The running total of a life: who carried you, by the coin.",
+      "fix": "Stay on three columns I already know \u2014 mom, the boss at eleven, the chai friend \u2014 then open Sent. A lifetime of unnamed bars is a montage where nothing new happens to me."
+    },
+    {
+      "line": 47,
+      "quote": "Does it pay for people who are dead?",
+      "fix": "Answer it with the grandfather who tells the same story every visit: one coin in his name, and you still don't know if a memory counts. The question is raised and no beat returns to it."
+    },
+    {
+      "line": 75,
+      "quote": "whether you are still found first on both themes is the cold read (K1, K2), in the room notes below.",
+      "fix": "needs the rendered thumbnail"
+    }
+  ],
+  "keep": [
+    {
+      "line": 9,
+      "quote": "your crush has paid nothing, and your mother pays every four minutes."
+    },
+    {
+      "line": 36,
+      "quote": "Night: coins dropping one by one at 2 a.m., every one from mom, a skyline of her bar over everyone else's"
+    },
+    {
+      "line": 39,
+      "quote": "tonight, think who you would have paid"
+    }
+  ],
+  "error": "",
+  "output_sha256": "7c3661ab0d9b4ebd4c18ab9c1daf9464f545b5ee7dfe6f3b688c58d2ce7b0039",
+  "draft_sha256": "1e03d6b1272d27e2a70b2188620a7695f779c39521a4d1040351a5a0471c2dfc"
+}
