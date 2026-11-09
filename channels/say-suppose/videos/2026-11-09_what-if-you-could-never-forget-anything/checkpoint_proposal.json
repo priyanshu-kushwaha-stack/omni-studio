@@ -3,11 +3,11 @@
   "project_id": "2026-11-09_what-if-you-could-never-forget-anything",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-09T07:08:30.759752+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-09T13:42:25.069978+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -151,5 +151,14 @@
       ]
     }
   },
-  "style_playbook": "say-suppose"
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-09T13:42:25.043133+00:00",
+      "via": "omni approve",
+      "proof": "8a75212d72464c3ad658ae72c263c9d69b815d41f4e805941b5e6e20a6c3def9",
+      "note": "Owner, 2026-11-09, in chat: 'G1 batch 1: you-could-never-forget-anything: title A, thumbnail a'. Title A, thumbnail a (MAKE IT STOP)."
+    }
+  }
 }

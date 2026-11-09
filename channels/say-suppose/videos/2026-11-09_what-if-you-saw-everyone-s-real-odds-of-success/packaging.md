@@ -1,6 +1,6 @@
 # Packaging: everyone's real odds of success
 
-status: G1 awaiting the owner (batch 1, video 2 of 5)
+status: G1 passed by the owner, 2026-11-09 (batch 1 picks in chat): title A, thumbnail c ("QUIT?")
 topic: idea room 2026-11-09, M24, median 9 (8-9), proposed by Gemini 4 Argon (`backlog/idea-room-2026-11-09.md`)
 
 ## Premise

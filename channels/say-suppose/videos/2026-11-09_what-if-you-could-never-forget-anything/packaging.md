@@ -1,6 +1,6 @@
 # Packaging: never forget anything
 
-status: G1 awaiting the owner (batch 1, video 5 of 5)
+status: G1 passed by the owner, 2026-11-09 (batch 1 picks in chat): title A, thumbnail a ("MAKE IT STOP")
 topic: idea room 2026-11-09, M03, median 8 (8-8), proposed by Claude Fable 5.1, Gemini 4 Argon and Grok 4.7
 (`backlog/idea-room-2026-11-09.md`)
 

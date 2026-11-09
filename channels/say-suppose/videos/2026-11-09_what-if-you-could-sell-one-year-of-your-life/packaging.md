@@ -1,6 +1,6 @@
 # Packaging: sell one year of your life
 
-status: G1 awaiting the owner (batch 1, video 4 of 5)
+status: G1 passed by the owner, 2026-11-09 (batch 1 picks in chat): title A, thumbnail a ("WORTH IT?")
 topic: idea room 2026-11-09, M35, median 9 (8-9), proposed by Kimi K3 (`backlog/idea-room-2026-11-09.md`)
 
 ## Premise

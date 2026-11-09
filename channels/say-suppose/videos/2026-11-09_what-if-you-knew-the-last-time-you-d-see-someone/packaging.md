@@ -1,6 +1,6 @@
 # Packaging: the last time you'd see someone
 
-status: G1 awaiting the owner (batch 1, video 1 of 5)
+status: G1 passed by the owner, 2026-11-09 (batch 1 picks in chat): title A, thumbnail a ("MOM?")
 topic: idea room 2026-11-09, M34, median 9 (9-10), proposed by Kimi K3 (`backlog/idea-room-2026-11-09.md`)
 
 ## Premise

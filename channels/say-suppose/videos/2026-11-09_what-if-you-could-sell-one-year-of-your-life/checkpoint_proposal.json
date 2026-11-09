@@ -3,11 +3,11 @@
   "project_id": "2026-11-09_what-if-you-could-sell-one-year-of-your-life",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-09T07:56:03.798061+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-09T13:42:24.441076+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -151,5 +151,14 @@
       ]
     }
   },
-  "style_playbook": "say-suppose"
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-09T13:42:24.410154+00:00",
+      "via": "omni approve",
+      "proof": "75a4b33a8b5a0a115123452a9dd19385b8a97b049f637ae13de0682ce13c6bba",
+      "note": "Owner, 2026-11-09, in chat: 'G1 batch 1: you-could-sell-one-year-of-your-life: title A, thumbnail a'. Title A, thumbnail a (WORTH IT?)."
+    }
+  }
 }

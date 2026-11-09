@@ -1,6 +1,6 @@
 # Packaging: paid every time someone thinks of you
 
-status: G1 awaiting the owner (batch 1, video 3 of 5)
+status: G1 passed by the owner, 2026-11-09 (batch 1 picks in chat): title A, thumbnail b ("NOT HER?")
 topic: idea room 2026-11-09, M09, median 9 (8-9), proposed by Claude Fable 5.1 (`backlog/idea-room-2026-11-09.md`)
 
 ## Premise

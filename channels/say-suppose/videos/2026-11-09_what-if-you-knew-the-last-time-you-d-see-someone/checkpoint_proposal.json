@@ -3,11 +3,11 @@
   "project_id": "2026-11-09_what-if-you-knew-the-last-time-you-d-see-someone",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-09T07:08:30.535632+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-09T13:42:22.780990+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -151,5 +151,14 @@
       ]
     }
   },
-  "style_playbook": "say-suppose"
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-09T13:42:22.754840+00:00",
+      "via": "omni approve",
+      "proof": "e55beec666f47497fc1d5fb03e713dd3f7439fcab1801794663e2dd696c63210",
+      "note": "Owner, 2026-11-09, in chat: 'G1 batch 1: you-knew-the-last-time-you-d-see-someone: title A, thumbnail a'. Title A, thumbnail a (MOM?)."
+    }
+  }
 }
