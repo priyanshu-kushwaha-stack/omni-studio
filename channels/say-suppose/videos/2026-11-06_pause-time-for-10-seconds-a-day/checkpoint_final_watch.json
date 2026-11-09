@@ -4,21 +4,28 @@
   "pipeline_type": "studio-whatif",
   "stage": "final_watch",
   "status": "completed",
-  "timestamp": "2026-11-08T12:48:46.460345+00:00",
+  "timestamp": "2026-11-09T16:36:04.420534+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G6: watch renders/edit-v6.mp4 at 1x, start to end, with cold viewers (people who have not seen it). Note where anyone looks away, gets confused or skips. qc final_watch passes.",
+    "for_owner": "Re-approval for the media proof main's G7 rule needs (owner, 2026-11-09: 'Re-pass G6, then G7'). Same file as the G6 the owner passed on 2026-11-08: renders/edit-v6.mp4; qc final_watch passes again.",
     "media": "renders/edit-v6.mp4",
     "preview": "renders/edit-v6-preview.mp4",
     "approval": {
       "by": "priyanshu.kushwaha",
-      "at": "2026-11-08T12:48:46.395431+00:00",
+      "at": "2026-11-09T16:36:04.282261+00:00",
       "via": "omni approve",
-      "proof": "e171b27f292267caf095891cb225d277dc763f1783ce32b173c8c39ca7460a11"
+      "proof": "08667c02839330c8ee228fd8e456ddeed035bdb943d1d5caac60e199bbea9014",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-06_pause-time-for-10-seconds-a-day/renders/edit-v6.mp4",
+        "sha256": "a23e449e16c5319d03360374cd2a0f2bcf3cb10fbbfb6af09b157bb89390e78f",
+        "at": "2026-11-09T16:36:04.282261+00:00",
+        "proof": "7caf88a4acbbf9eff1d0bc18c2f514c4c7c7dd1b529d1cab6d95b0234106241f"
+      },
+      "note": "owner re-pass 2026-11-09: same edit-v6, media proof for the G7 rule"
     }
   }
 }

@@ -1,9 +1,6 @@
 # Publish: What If You Could Pause Time for 10 Seconds a Day?
 
-status: uploaded private 2026-11-08 at the owner's request: https://studio.youtube.com/video/-si5nCzgQl8/edit
-(channel UC_Ve59ry_JYiX8sUaSOV8sQ, private, not for kids; `upload_log.json`). G7 awaits the owner. The read-back
-returned no altered-content value (asked: no): check it in Studio. An unverified API project's uploads stay
-private until Google's API audit; the public flip is the owner's.
+status: live 2026-11-09 18:30 IST (https://youtu.be/-si5nCzgQl8). G7 passed by the owner 2026-11-09.
 
 - **File:** `renders/edit-v6.mp4` (5:14, -14.0 LUFS), passed G5 and G6.
 - **Title, description, tags:** `upload.yaml`. Title and thumbnail are G1 pair A. Sources from `claims.md` (c04, c05,
@@ -13,8 +10,10 @@ private until Google's API audit; the public flip is the owner's.
 - **Thumbnail A/B test** (Studio Test & Compare, set 2026-11-08, starts when the video is public; owner's call):
   `thumb-film-7-day12.jpg` (stakes, DAY 12), `thumb-a.jpg` (face close-up, no text), `thumb-fun-cat-day1.jpg` (fun,
   DAY 1). Text tags by `channels/say-suppose/brand/thumb_tag.py`.
-- **Going public:** scheduled by the owner in Studio for Mon 9 Nov 2026, 18:30 IST (08:00 New York, 13:00 UK).
-  Studio shows it Scheduled, no notices. After it goes live: the pinned comment, then G7.
+- **Live:** public since Mon 9 Nov 2026, 18:30 IST, as scheduled by the owner (https://youtu.be/-si5nCzgQl8). Checked
+  on the public page: Hindi audio track, English and Hindi subtitles, end screen, chapters; Studio shows Public, no
+  notices, thumbnail A/B test Running. Pinned comment posted as @SaySuppose. G7 passed by the owner (G6 re-passed
+  first on the same edit-v6, for the media proof main's G7 rule needs).
 - **Subtitles:** English and Hindi tracks from the scripts (`subtitles/en.srt`, `subtitles/hi.srt`), added through the
   API 2026-11-08 (`omni upload ... --captions-only`); ids in `upload_log.json`.
 - **End screen:** set in Studio 2026-11-08, 5:06:03 to the end: Subscribe (top right) and a Video element on "Most

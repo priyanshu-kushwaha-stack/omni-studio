@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
+  "pipeline_type": "studio-whatif",
+  "stage": "publish_prep",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-08T12:49:48.848068+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G7: read publish.md and upload.yaml (title, description with sources, chapters, tags, not for kids, synthetic-content answer 'no' to confirm), pick a thumbnail in renders/packaging/. qc publish_prep passes; the upload dry run prints a private request. Before a real upload: the OAuth client secret and the say-suppose token (first run with --first-auth), and omni upload --install.",
+    "media": "renders/edit-v6.mp4",
+    "dub_hi": "dub/hi/pause-time-hi-dub.mp3"
+  }
+}
