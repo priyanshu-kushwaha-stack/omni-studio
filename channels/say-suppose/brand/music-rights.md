@@ -20,6 +20,22 @@ nothing was signed in to.
 score plays `theme-light` directly (U1, yes) and its five cues were made by ACE-Step with the themes as
 `reference_audio` (`videos/2026-11-06_pause-time-for-10-seconds-a-day/make_music.py`, `build_score.py`): U2, unclear.
 
+**Owner's decisions**
+
+- **2026-11-09, the pause-time video: "leave it as it is".** Its cues stay as made; no re-score.
+- **2026-11-09, U2: open.** The owner's view: "It should be allowed ideally ... we already paid for the content".
+  A web re-check the same day found nothing new:
+  - The live Higgsfield terms are still the 23 Oct 2026 version snapshotted here.
+  - Higgsfield's help article (modified 2026-09-12) only restates §5.1(iii) and §5.2(iv).
+  - ElevenLabs' music docs suggest using your own output as a reference only inside Eleven Music.
+  - No page from either company speaks to reference or conditioning audio in another tool.
+  - What the plan pays for is commercial use of the output as audio (U1). The model-input clause is separate and
+    applies on every plan.
+  - ACE-Step 1.5's `reference_audio` is inference-time timbre and style conditioning: a timbre encoder turns about
+    30 s of the clip into a latent the model attends to, and no weights change. That supports the narrow reading
+    (not "train, fine-tune, distill"), but "otherwise transfer knowledge to any machine-learning model" is undefined,
+    so the verdict stays unclear until the owner decides or Higgsfield answers in writing.
+
 **What the owner must decide** (sound.md #11: cleared before the next public video uses them, or replaced):
 
 1. **U2, the ACE-Step reference.** Either (a) ask Higgsfield in writing (question 2 below) and keep the route until
