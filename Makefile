@@ -1,13 +1,16 @@
 ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 OPENMONTAGE := $(ROOT)/core/openmontage
 PYTHON := $(ROOT)/.venv/bin/python
+# Pinned in core/lock.yaml. A `uv sync` from an older branch drops it from the shared .venv; uvx then runs the same pin.
+RUFF := $(or $(wildcard $(ROOT)/.venv/bin/ruff),uvx ruff@0.17.2)
+LINT_PATHS := core/studio core/engines
 
 export PYTHONPATH := $(OPENMONTAGE):$(ROOT)/core
 export PYTHONDONTWRITEBYTECODE := 1
 export HYPERFRAMES_NO_TELEMETRY := 1
 export DISABLE_TELEMETRY := 1
 
-.PHONY: test prepush test-serial board new-channel upstream-pull links
+.PHONY: test prepush test-serial lint format precommit board new-channel upstream-pull links
 
 # Upstream tests that assert a tool the owner banned is still discovered. They cannot pass
 # with the denylist on. core/studio/tests asserts the opposite for every denylisted name.
@@ -21,6 +24,17 @@ test:
 
 prepush:
 	cd $(ROOT) && $(PYTHON) -m studio.testgate prepush
+
+# Code health for core/studio and core/engines (never core/openmontage): ruff lint, ruff format, and the size
+# budgets (studio.sizes). The global commit hook blocks only on .claude/standard.json's `typecheck` command, so that
+# command is `make precommit`: format first, then lint.
+lint:
+	cd $(ROOT) && $(RUFF) check $(LINT_PATHS) && $(RUFF) format --check $(LINT_PATHS) && $(PYTHON) -m studio.sizes check
+
+format:
+	cd $(ROOT) && $(RUFF) format $(LINT_PATHS)
+
+precommit: format lint
 
 # The old one-after-another run, for when a parallel failure needs a clean log.
 test-serial:
