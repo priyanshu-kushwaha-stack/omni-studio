@@ -224,3 +224,18 @@ def test_changed_files_against_the_merge_base(repo):
 def test_the_repo_suites_match_the_old_make_test():
     names = [s.name for s in G.default_suites(G.repo_root())]
     assert names == ["openmontage", "studio", "pou", "whatif"]
+
+
+def test_the_studio_suite_runs_on_xdist_workers_that_keep_groups_together():
+    from importlib.metadata import version
+
+    studio = next(s for s in G.default_suites(G.repo_root()) if s.name == "studio")
+    assert f"-n {G.STUDIO_WORKERS} --dist loadgroup" in studio.command  # without loadgroup, xdist_group is ignored
+    lock = (G.repo_root() / "uv.lock").read_text(encoding="utf-8")
+    assert f'name = "pytest-xdist"\nversion = "{version("pytest-xdist")}"' in lock
+
+
+def test_without_xdist_the_studio_suite_still_runs_in_one_process(capsys):
+    assert G.studio_workers(have_xdist=False) == ""
+    assert "pytest-xdist is not installed" in capsys.readouterr().err
+    assert G.studio_workers(have_xdist=True) == f" -n {G.STUDIO_WORKERS} --dist loadgroup"

@@ -16,6 +16,8 @@ from typing import Any, Optional
 import yaml
 import jsonschema
 
+from lib import studio_schema  # studio patch: the schema check runs once per schema, not per call
+
 STYLES_DIR = Path(__file__).resolve().parent
 # Generated playbooks are written to styles/custom/ by
 # lib/playbook_generator.save_playbook(); both lookups below search it as a
@@ -67,7 +69,7 @@ def load_playbook(name: str, styles_dir: Optional[Path] = None) -> dict[str, Any
 def validate_playbook(playbook: dict) -> None:
     """Validate a playbook dict against the schema."""
     schema = _load_playbook_schema()
-    jsonschema.validate(instance=playbook, schema=schema)
+    studio_schema.validate(playbook, schema)
 
 
 def list_playbooks(styles_dir: Optional[Path] = None) -> list[str]:
