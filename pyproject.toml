@@ -28,6 +28,7 @@ dev = [
     "pytest-asyncio>=0.23",
     "httpx>=0.24",
     "pytest-xdist==3.8.0",
+    "ruff==0.17.2",
 ]
 # The Professor of Us engine (core/engines/pou), pinned as faceless-channel's requirements-dev.txt.
 # Media models (torch, mlx, chatterbox, mflux) live in .venv-media: requirements-media.txt.
@@ -38,6 +39,20 @@ engine = [
 
 [tool.uv]
 default-groups = ["dev", "engine"]
+
+[tool.ruff]
+# Only the studio layer and the engines. core/openmontage is upstream: its edits go through core/PATCHES.md.
+# force-exclude keeps the exclusions when an editor or hook passes file paths directly.
+line-length = 120
+target-version = "py312"
+extend-exclude = ["core/openmontage", "channels", "**/node_modules"]
+force-exclude = true
+
+[tool.ruff.lint]
+select = ["F", "B", "C901"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
 
 [project.scripts]
 omni = "studio.cli:main"
