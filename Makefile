@@ -7,13 +7,23 @@ export PYTHONDONTWRITEBYTECODE := 1
 export HYPERFRAMES_NO_TELEMETRY := 1
 export DISABLE_TELEMETRY := 1
 
-.PHONY: test board new-channel upstream-pull links
+.PHONY: test prepush test-serial board new-channel upstream-pull links
 
 # Upstream tests that assert a tool the owner banned is still discovered. They cannot pass
 # with the denylist on. core/studio/tests asserts the opposite for every denylisted name.
 DESELECT := --deselect core/openmontage/tests/contracts/test_kling_official_avatar.py::test_registry_discovers_kling_lip_sync
 
+# `make test` runs the four suites in parallel under the machine-wide `tests` queue and, on a clean tree, records
+# the pass so the pre-push hook (`make prepush`, from .claude/standard.json) skips that tree. A push that changes only
+# video folders gets `omni check` instead of the suites. See core/studio/testgate.py.
 test:
+	cd $(ROOT) && $(PYTHON) -m studio.testgate full
+
+prepush:
+	cd $(ROOT) && $(PYTHON) -m studio.testgate prepush
+
+# The old one-after-another run, for when a parallel failure needs a clean log.
+test-serial:
 	cd $(OPENMONTAGE) && $(PYTHON) -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles tests/test_network_guard.py -q -p no:cacheprovider -p studio.pytest_upstream $(DESELECT)
 	cd $(ROOT) && $(PYTHON) -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib
 	cd $(ROOT) && $(PYTHON) -m pytest core/engines/pou/tests -q -p no:cacheprovider
