@@ -1,0 +1,167 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "written": [
+  {
+   "title": "What If You Knew Your Dream Had a 1 in 2,500 Chance?",
+   "chars": 52,
+   "score": 100,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Knew Your Dream Had a 1 in...\" - check the subject survives"
+   ]
+  },
+  {
+   "title": "What If You Knew the Odds on Your Dream?",
+   "chars": 40,
+   "score": 98,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Saw Everyone's Real Odds of Success?",
+   "chars": 48,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Saw Everyone's Real Odds of...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could See Everyone's Chance of Making It?",
+   "chars": 53,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could See Everyone's Chance...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Your Odds of Success Floated Above Your Head?",
+   "chars": 53,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Your Odds of Success Floated...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Every Dream Came With Its Real Odds?",
+   "chars": 44,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Every Dream Came With Its Real...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Knew Your Exact Chance of Success?",
+   "chars": 46,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Knew Your Exact Chance of...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Saw Who Was Going to Make It?",
+   "chars": 41,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Saw Who Was Going to Make...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Everyone's Odds Were Written Above Their Heads?",
+   "chars": 55,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Everyone's Odds Were Written...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could See Your Real Chances in Life?",
+   "chars": 48,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could See Your Real Chances...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could See Who Will Actually Make It?",
+   "chars": 48,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could See Who Will Actually...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  }
+ ],
+ "pairs": [
+  {
+   "title": "A",
+   "thumbnail": "a",
+   "thumb_words": "ME? 0.04%",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "a",
+   "thumb_words": "ME? 0.04%",
+   "score": 100,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "a",
+   "thumb_words": "ME? 0.04%",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "b",
+   "thumb_words": "STAY? 0.04%",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "b",
+   "thumb_words": "STAY? 0.04%",
+   "score": 100,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "b",
+   "thumb_words": "STAY? 0.04%",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "c",
+   "thumb_words": "QUIT? 0.04%",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "c",
+   "thumb_words": "QUIT? 0.04%",
+   "score": 100,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "c",
+   "thumb_words": "QUIT? 0.04%",
+   "score": 84,
+   "shared_words": []
+  }
+ ]
+}

@@ -1,0 +1,158 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "written": [
+  {
+   "title": "What If You Could Sell 1 Year of Your Life?",
+   "chars": 43,
+   "score": 100,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Sell 1 Year of Your...\" - check the subject survives"
+   ]
+  },
+  {
+   "title": "What If Your Life Had a Sell Button?",
+   "chars": 36,
+   "score": 98,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could Sell One Year of Your Life?",
+   "chars": 45,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Sell One Year of Your...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could Sell a Year of Your Life for a Million?",
+   "chars": 57,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Sell a Year of Your...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could Trade One Year of Life for Money?",
+   "chars": 51,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Trade One Year of...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If One Year of Your Life Had a Price?",
+   "chars": 42,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If One Year of Your Life Had a...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could Sell Your Time, Literally?",
+   "chars": 44,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Sell Your Time,...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could Pay Bills With Your Years?",
+   "chars": 44,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Pay Bills With Your...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Aged a Year Every Time You Got Paid?",
+   "chars": 48,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Aged a Year Every Time You...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could Sell One Year to Save Your Dad?",
+   "chars": 49,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Sell One Year to Save...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  }
+ ],
+ "pairs": [
+  {
+   "title": "A",
+   "thumbnail": "a",
+   "thumb_words": "WORTH IT?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "a",
+   "thumb_words": "WORTH IT?",
+   "score": 98,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "a",
+   "thumb_words": "WORTH IT?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "b",
+   "thumb_words": "$100,000?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "b",
+   "thumb_words": "$100,000?",
+   "score": 98,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "b",
+   "thumb_words": "$100,000?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "c",
+   "thumb_words": "DEAL?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "c",
+   "thumb_words": "DEAL?",
+   "score": 98,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "c",
+   "thumb_words": "DEAL?",
+   "score": 84,
+   "shared_words": []
+  }
+ ]
+}

@@ -1,0 +1,79 @@
+{
+  "call_id": "5998cec413e94b0e8485a287f9adadc1",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "family": "xai",
+  "status": "ok",
+  "scores": {
+    "click": 8,
+    "hook by 0:30": 8,
+    "habit": 8,
+    "my week": 5,
+    "phone title and tag": 8,
+    "stay": 5
+  },
+  "blockers": [
+    {
+      "quote": "You buy mom the fridge she wanted.",
+      "why": "The viewer's week. A fridge is not Riya's week (chai, the bus or metro, exams, the office, family). Her mother calls twice a day; that is the household this gag had to use.",
+      "fix": "You pay your mother's phone bill, the twice-a-day calls, and you don't tell her.",
+      "domain": "viewer",
+      "line": 35
+    },
+    {
+      "quote": "You expected to look distinguished; you got your uncle's eyebrow.",
+      "why": "The viewer's week. An uncle is not in the family she actually has. The elder face at every visit is her grandfather.",
+      "fix": "You expected to look distinguished; you got your grandfather's eyebrow.",
+      "domain": "viewer",
+      "line": 35
+    },
+    {
+      "quote": "You expect Mom's new kitchen to let her rest; she cooks more, for a child who now looks forty.",
+      "why": "The viewer's week. A new kitchen is not chai, the bus, exams, the office, or this family, and it repeats the exam gap I just watched.",
+      "fix": "Cut this sentence. Go from the exam line to: You expect his medicine to be the last tap; the pharmacy bill asks for another.",
+      "domain": "viewer",
+      "line": 37
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 37,
+      "quote": "Misconception first: you believed time and money are separate currencies.",
+      "why": "I would stop watching here.",
+      "fix": "I would lock the phone here. The taps already showed me the deal, then the story stands still to teach, and I never reach the bench or the nurse. Delete this sentence and \"The one fact: the sourced cost of his surgery, turned into internship hours (to source at G2);\" and keep only: the hours peel off your figure as Papa watches. The cost near 60%: he has seen the app, and refuses to let you pay for his medicine."
+    },
+    {
+      "line": 38,
+      "quote": "And every job is the same trade at a lower price.",
+      "fix": "Cut this sentence. It is a second lecture, about every job, while I am sitting on the bench. Go from \"you bought ten years he may have without you\" straight to his second operation, or his wish that you stop."
+    },
+    {
+      "line": 78,
+      "quote": "$100,000?",
+      "fix": "I would scroll past this one. A dollar figure is not my week, and it is not the offer on the phone. Replace the tag with TOO MUCH? so the three still differ only by the tag, and ship WORTH IT?."
+    },
+    {
+      "line": 81,
+      "quote": "whether you are still found first on both themes is the cold read (K1, K2), in the room notes below.",
+      "fix": "needs the rendered thumbnail. K1, K2, K3, K4, K8, K9, K10, K11 and K14 stay with the owner."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "One year from me buys him ten. Good deal."
+    },
+    {
+      "line": 38,
+      "quote": "you did not buy ten years with him; you bought ten years he may have without you."
+    },
+    {
+      "line": 39,
+      "quote": "He's teasing you about the bus pass again. You let him."
+    }
+  ],
+  "error": "",
+  "output_sha256": "bc7d098cb3ca9c1068b141386044dae86580b5ff830d6a228b5b931c03bd0205",
+  "draft_sha256": "97c30262255bbfff1fbb9c1c910ef0fad74413abc5340330de31a9f4cc2c0e14"
+}

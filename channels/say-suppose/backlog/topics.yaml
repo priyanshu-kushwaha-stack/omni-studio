@@ -15,31 +15,31 @@ topics:
 
   # Batch 1, picked by the owner 2026-11-09 ("My tone-varied order")
   - what_if: "What if you knew the last time you'd see someone?"
-    status: selected
+    status: picked            # G1 packaging 2026-11-09: videos/2026-11-09_what-if-you-knew-the-last-time-you-d-see-someone
     batch: 1
     order: 1
     room_id: M34              # median 9, range 9-10; proposed by Kimi K3
     source: idea-room
   - what_if: "What if you saw everyone's real odds of success?"
-    status: selected
+    status: picked            # G1 packaging 2026-11-09: videos/2026-11-09_what-if-you-saw-everyone-s-real-odds-of-success
     batch: 1
     order: 2
     room_id: M24              # median 9, range 8-9; Gemini 4 Argon
     source: idea-room
   - what_if: "What if you got paid every time someone thought of you?"
-    status: selected
+    status: picked            # G1 packaging 2026-11-09: videos/2026-11-09_what-if-you-got-paid-every-time-someone-thought-of-you
     batch: 1
     order: 3
     room_id: M09              # median 9, range 8-9; Claude Fable 5.1
     source: idea-room
   - what_if: "What if you could sell one year of your life?"
-    status: selected
+    status: picked            # G1 packaging 2026-11-09: videos/2026-11-09_what-if-you-could-sell-one-year-of-your-life
     batch: 1
     order: 4
     room_id: M35              # median 9, range 8-9; Kimi K3. The tag "1 YEAR = 1 CRORE" needs a global one at G1
     source: idea-room
   - what_if: "What if you could never forget anything?"
-    status: selected
+    status: picked            # G1 packaging 2026-11-09: videos/2026-11-09_what-if-you-could-never-forget-anything
     batch: 1
     order: 5
     room_id: M03              # median 8; Claude Fable 5.1, Gemini 4 Argon, Grok 4.7

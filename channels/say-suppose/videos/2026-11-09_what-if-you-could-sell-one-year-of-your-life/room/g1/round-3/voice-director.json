@@ -1,0 +1,70 @@
+{
+  "call_id": "910d0924313845c28595ea2aea727af4",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 8,
+    "leave fast, last line (#12)": 9,
+    "written to be spoken": 7,
+    "emotion per line": 6,
+    "spoken forms of numbers": 6
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "you did not buy ten years with him; you bought ten years he may have without you",
+      "fix": "If this is narrated, it explains what the bench picture already shows (the same age, the wristband) and reads like an essay. Say it as a short, hushed, complete line over the wordless peak: \"Ten years. For him. Not with him.\" Or leave it unsaid and let the wristband carry it."
+    },
+    {
+      "line": 34,
+      "quote": "One year from me buys him ten. Good deal.",
+      "fix": "Give it the direction 'dry, a little pleased with yourself', so it can turn bitter when it returns. Say \"Good deal\" with the same stress both times, and let the last line mirror its dryness."
+    },
+    {
+      "line": 33,
+      "quote": "You price his bill in internship hours, the way you price the bus.",
+      "fix": "Direction 'hushed, matter-of-fact'. Split it for the breath at 1.1x: \"His bill. In internship hours. The way you price the bus.\" Speak the title question in the first 3 seconds, as 'curious'."
+    },
+    {
+      "line": 47,
+      "quote": "the idea room cites 55 million a year",
+      "fix": "Add to say.yaml: 55 million -> \"fifty-five million\". Also \"lakh\" -> \"lakh\" (stress on 'lakh') and \"crore\" -> \"crore\". Any surgery cost in hours is spoken as \"about four hundred hours\" style words, with the digit cited to its claims.md row."
+    },
+    {
+      "line": 37,
+      "quote": "he has seen the app, and refuses to let you pay for his medicine",
+      "fix": "Papa speaks only in bubbles of four words or fewer: use \"Keep your years, beta.\" (four words). Have Arthur follow with one warm, quiet fragment such as \"He knew. Of course he knew.\" rather than a narrated explanation."
+    },
+    {
+      "line": 35,
+      "quote": "You expected to look distinguished; you got your grandfather's eyebrow.",
+      "fix": "This is the right gap but runs long for one breath. Speak it as \"You wanted distinguished. You got one grandfather eyebrow.\" Direction 'amused'."
+    },
+    {
+      "line": 37,
+      "quote": "you sit the exam older than the invigilator",
+      "fix": "Keep the joke, but speak it as a fragment with a beat after it: \"Older than the invigilator.\" Direction 'wry', with a short breath before the pharmacy bill turns it cold."
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "He's teasing you about the bus pass again. You let him."
+    },
+    {
+      "line": 34,
+      "quote": "One year from me buys him ten. Good deal."
+    },
+    {
+      "line": 35,
+      "quote": "you got your grandfather's eyebrow"
+    }
+  ],
+  "error": "",
+  "output_sha256": "b1d5cb17eb0b79a492f317a1bc2cbdbfb045f35a5ae9115b0ca9ee2a78a59b8d",
+  "draft_sha256": "f9b84fd8d5cd33af23f0eed80882307783a5611caea772e3810e91be88bec81a"
+}

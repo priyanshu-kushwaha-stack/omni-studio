@@ -1,0 +1,75 @@
+{
+  "call_id": "a682c119510242b6a7e8eb3d16699e6a",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "buildable this week (pick card #8)": 7,
+    "staging side-on / change every 2-4 s": 7,
+    "rule device continuity": 8,
+    "reuse named": 4,
+    "cue sheet readiness (cues.yaml not in inputs)": 5
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 35,
+      "quote": "Counters everywhere. The metro stranger reads four hundred",
+      "fix": "Build one parameterised split-flap counter prop (the kit's ident-B split-flap) and put it on at most three heads per shot. Crowd extras stay as blank flat heads, and only the heads the gag is about carry a counter. Name this in the outline so a crowd of counters does not become the long pole."
+    },
+    {
+      "line": 36,
+      "quote": "counters fall across the window as people part at each station, yours reflected among them",
+      "fix": "Stage it side-on as a carriage cutaway: seated paper figures in a row, each with a counter, and the station as a drifting background layer. At each stop one figure leaves and their counter flips down, then a flip over your own head. Drop the reflection in glass, which is hard to draw flat, and use a dim duplicate of your head in the window layer if it is needed."
+    },
+    {
+      "line": 37,
+      "quote": "The empty tiffin sits on your desk while mom's counter flips to thirty-seven beside her empty doorway.",
+      "fix": "These are two places and cannot be one side-on shot. Cut tiffin on desk (close-up insert), then to the empty door with the counter flipping alone, with a camera drift across the door. Do not hold either longer than 3 s. Reuse the porch set and the tiffin prop from the first jump."
+    },
+    {
+      "line": 38,
+      "quote": "the offer that keeps you away through every festival this year, which drops it to nine, or the job that lets you take the Friday train",
+      "fix": "Stage the choice with two flat props only, two envelopes, one stamped with a festival date tag and one with a train ticket. The counter flips to nine when your hand moves toward the first. Do not build a new office set for the offer."
+    },
+    {
+      "line": 39,
+      "quote": "We never see the new number. Last line, low and warm, inside the image",
+      "fix": "At the corner, put mom small at the left-third door, with the counter too small and blurred to read. You turn and wave at the left, and the right third stays empty for end screens in the last 15 s. Any text goes in a tag at the lower left, not the right third."
+    },
+    {
+      "line": 44,
+      "quote": "Your half-wave with the phone up is the trigger gesture, repeated at each leaving and mirrored at the corner",
+      "fix": "Add one line that no colour is drained, so the counter alone is the rule device and everyone keeps their palette. Also fix the phone prop: it is in your left hand in the opening, so keep it there at every leaving and in the mirrored wave."
+    },
+    {
+      "line": 33,
+      "quote": "until a counter flips into place over her head, 42, and you look up mid-wave",
+      "fix": "Add the face beat: your brows go to worried within 2 s of the flip, as the thumbnail shows. Cue the flip sound and the music turn at or after the flip, not before it, so the reveal leads the score (sound.md #3)."
+    },
+    {
+      "line": 85,
+      "quote": "Recommendation: **A, title A with thumbnail c (\"WAIT, MOM?\").**",
+      "fix": "cues.yaml is not in my inputs, so I cannot check it. Before G2, add a one-word intent per beat (for example door: warm; flip: cold; jump 1: playful; peak at the corner: hush). Name the cue where music comes in (before the first word) and where it fades out (after the last wave), and put the intent changes at the 42 flip, the thirty-seven flip and the climb, never before."
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "She's still at the door. Of course she is."
+    },
+    {
+      "line": 44,
+      "quote": "Your half-wave with the phone up is the trigger gesture, repeated at each leaving and mirrored at the corner"
+    },
+    {
+      "line": 33,
+      "quote": "you wave back the way you always do, phone still up, not looking, until a counter flips into place over her head"
+    }
+  ],
+  "error": "",
+  "output_sha256": "b39c0c83f2cffc18844c07adb7767e0c39fbdbf22109b6ace1164b34fd447e60",
+  "draft_sha256": "0729b324460e5c46017959f192de2b13db11dcd2c464efcfa7d5a908cae6f6ea"
+}

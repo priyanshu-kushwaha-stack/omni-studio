@@ -1,0 +1,72 @@
+{
+  "call_id": "205c06b43fbb47a7a54c2502409e4721",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 6,
+    "retention": 7,
+    "premise_visual": 9,
+    "ending": 8,
+    "runtime": 8
+  },
+  "blockers": [
+    {
+      "quote": "First, the lane at home: your younger cousin bowls to you, you fix his grip, promise another game; his chip says nought point two.",
+      "why": "Story #6: this use has no expectation gap.",
+      "fix": "Replace with: \u201cYour cousin talks about cricket every day, so you expect a huge number. His chip says nought point two. You fix his grip anyway and promise another game.\u201d",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "Misconception first: you take the fat-number placement and stop studying; therefore your mock score falls, and your chip with it, to forty-eight per cent.",
+      "why": "Story #7: the \u201cfat-number placement\u201d was never established, and the base-rate explanation was already given before you acted, so the fact cannot break the misconception.",
+      "fix": "End line 35 with: \u201cThe chaiwala reads sixty-one. His bubble says \u2018SECOND STALL.\u2019 You copy his goal, ask for a job and drop the exam.\u201d Then use: \u201cA month at the stall costs you the mock. The comparison reveals his sixty-one belonged to people pursuing his goal, never yours. You reopen your notes; your chip stirs.\u201d",
+      "domain": "story",
+      "line": 37
+    },
+    {
+      "quote": "You tell your cousin to quit and stop wasting the family's money. The wordless peak: his chip drains to zero the moment he nods, his hand leaves the bat, and it rolls out of frame",
+      "why": "Story #9: the cost attacks the cousin\u2019s cricket, but it is not tied explicitly to the opening habit of copying the topper. The emotional loss also lands at 45%, leaving the supposed 60% cost as only a repeated image.",
+      "fix": "Use the one-chair transformation in line 34 for story #8. Move this peak to about 60% and replace it with: \u201cAfter your copied safe choice fails, you do to him what you did to yourself: choose someone else\u2019s safe life for him. \u2018Quit.\u2019 He nods; his chip drains, his hand leaves the bat, and it rolls out of frame.\u201d",
+      "domain": "story",
+      "line": 36
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "The city lit up, built only from people we know: the teacher, the topper at her keyboard, the chaiwala's new board, your cousin's dark chip.",
+      "fix": "Make the montage turn: you scan for the highest chip to copy; the topper brightens at her keyboard and the chaiwala at his new board, but your cousin remains dark\u2014therefore you stop ranking people and reach for his bat."
+    },
+    {
+      "line": 50,
+      "quote": "Is my cousin's dream mine to judge?",
+      "fix": "Ask this when you make him quit and have you answer wrongly through the action; mirror the question at 78% when you return the bat. The current outline delays the answer until the third jump. Add the missing viewer question, \u201cWhy would somebody else\u2019s odds prescribe my life?\u201d, and answer it in the revised chaiwala-to-stall chain. The success, effort and 0.04% questions are already answered where they arise."
+    },
+    {
+      "line": 29,
+      "quote": "length estimated 7 to 8 minutes, the script decides",
+      "fix": "Keep the script within this estimate. If it crosses 8:00, the felt reason to stay is the unresolved promise of whether the cousin\u2019s chip can relight and whether you will choose the exam after restoring his choice."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "The biggest number is the right choice"
+    },
+    {
+      "line": 36,
+      "quote": "his hand leaves the bat, and it rolls out of frame"
+    },
+    {
+      "line": 39,
+      "quote": "Row three. You don't look up. Out in the lane: thwack."
+    }
+  ],
+  "error": "",
+  "output_sha256": "bc0099f4c883474bdb09f425161935d0ad89d221fc364c6986c7073e9468b011",
+  "draft_sha256": "a2c452ba01a4b35deec2b0393446fc958fa703f236868c38fb01d596fb410577"
+}

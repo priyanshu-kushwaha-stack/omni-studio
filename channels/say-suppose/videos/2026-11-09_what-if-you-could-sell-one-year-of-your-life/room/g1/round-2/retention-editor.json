@@ -1,0 +1,64 @@
+{
+  "call_id": "6e2fa5796bd1428086dcf81474398b12",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "retention \u2014 7\u20138 min; viewers stay to see whether Papa stops the next tap": 8
+  },
+  "blockers": [
+    {
+      "quote": "Therefore more taps.",
+      "why": "story #5: the previous beat exposes the cost, so more taps do not follow causally.",
+      "fix": "Replace with: \u201cBut one lost year looks small beside the exam notice and Papa\u2019s new prescription. You tap again.\u201d",
+      "domain": "story",
+      "line": 37
+    },
+    {
+      "quote": "Is there a buy button (the turn)?",
+      "why": "No new power rule after halfway: this schedules the buyback rule for the late turn.",
+      "fix": "State it in the early rule beat: \u201cThere is no buy button. A sold year never comes back.\u201d",
+      "domain": "story",
+      "line": 52
+    },
+    {
+      "quote": "a nurse asks which of you is the patient.",
+      "why": "No new person after 60%: the nurse first appears in the third jump.",
+      "fix": "Replace with: \u201cYou and Papa sit on the hospital bench, the same age; his patient wristband lies between your identical-looking hands, and yours reaches for it first.\u201d",
+      "domain": "story",
+      "line": 38
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 51,
+      "quote": "Does my body age or just my face (the first tap)?",
+      "fix": "Answer explicitly in the rule beat: \u201cYour whole body ages one year; the mirror only shows it first.\u201d"
+    },
+    {
+      "line": 38,
+      "quote": "The choice at about 78%: his second operation, or his wish that you stop",
+      "fix": "Show the immediate answer: you lock the phone without tapping and take his hand."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "One year from me buys him ten. Good deal."
+    },
+    {
+      "line": 38,
+      "quote": "you did not buy ten years with him; you bought ten years he may have without you."
+    },
+    {
+      "line": 39,
+      "quote": "He's teasing you about the bus pass again. You let him."
+    }
+  ],
+  "error": "",
+  "output_sha256": "b21413e665d148657a0234cd62e76a120a3366222d4a454495a2586e25826192",
+  "draft_sha256": "97c30262255bbfff1fbb9c1c910ef0fad74413abc5340330de31a9f4cc2c0e14"
+}

@@ -1,0 +1,192 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "written": [
+  {
+   "title": "What If Every Thought of You Was Worth 1 Coin?",
+   "chars": 46,
+   "score": 100,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Every Thought of You Was Worth...\" - check the subject survives"
+   ]
+  },
+  {
+   "title": "What If Thinking of You Paid You?",
+   "chars": 33,
+   "score": 98,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Every Thought of You Paid?",
+   "chars": 34,
+   "score": 98,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Thoughts of You Paid You?",
+   "chars": 33,
+   "score": 98,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Got Paid Every Time Someone Thought of You?",
+   "chars": 55,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Got Paid Every Time Someone...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Earned Money Every Time Someone Thought of You?",
+   "chars": 59,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Earned Money Every Time...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Got Paid for Being on Someone's Mind?",
+   "chars": 49,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Got Paid for Being on...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Earned a Coin Every Time Someone Thought of You?",
+   "chars": 60,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Earned a Coin Every Time...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Being Remembered Paid Your Bills?",
+   "chars": 41,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Being Remembered Paid Your...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could See Who Really Thinks of You?",
+   "chars": 47,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could See Who Really Thinks...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Someone Thinking of You Made You Rich?",
+   "chars": 46,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Someone Thinking of You Made...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Your Bank Balance Showed Who Misses You?",
+   "chars": 48,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Your Bank Balance Showed Who...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If People Paid You Just by Thinking of You?",
+   "chars": 48,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If People Paid You Just by...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Someone Thinking of You Paid You?",
+   "chars": 41,
+   "score": 84,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Someone Thinking of You Paid...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  }
+ ],
+ "pairs": [
+  {
+   "title": "A",
+   "thumbnail": "a",
+   "thumb_words": "ONLY MOM?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "a",
+   "thumb_words": "ONLY MOM?",
+   "score": 98,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "a",
+   "thumb_words": "ONLY MOM?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "b",
+   "thumb_words": "NOT HER?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "b",
+   "thumb_words": "NOT HER?",
+   "score": 98,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "b",
+   "thumb_words": "NOT HER?",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "c",
+   "thumb_words": "ZERO?!",
+   "score": 84,
+   "shared_words": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "c",
+   "thumb_words": "ZERO?!",
+   "score": 98,
+   "shared_words": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "c",
+   "thumb_words": "ZERO?!",
+   "score": 84,
+   "shared_words": []
+  }
+ ]
+}

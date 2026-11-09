@@ -1,0 +1,65 @@
+{
+  "call_id": "dfbfa4ecc029417bb7da1b4a21ebfd8d",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 9,
+    "leave fast, the last line (#12)": 9,
+    "written to be spoken": 7,
+    "emotion per line": 6,
+    "spoken forms of numbers": 7
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 33,
+      "quote": "You leave for your first job next month",
+      "fix": "Give it a direction (hushed, matter-of-fact) and make it a fragment said right after the title question: \"First job. Next month. Another city.\" It then plays as spoken, not as a recap."
+    },
+    {
+      "line": 37,
+      "quote": "turns your real visit rate into total days together",
+      "fix": "Give the source's number a spoken form for say.yaml, once G2 fixes it, e.g. \"about a hundred days\" rather than \"100\". Put the answer in the sentence right after the question: \"How many days is that? Fewer than a season.\" Keep the digits out of the spoken line (c-row cited)."
+    },
+    {
+      "line": 35,
+      "quote": "The metro stranger reads four hundred",
+      "fix": "Add say.yaml spoken forms for the counter values (\"four hundred\", \"three thousand\", \"eight\", \"forty-two\", \"thirty-seven\", \"nine\"). Read each flat and dry, with the surprise left to the picture."
+    },
+    {
+      "line": 38,
+      "quote": "the offer that keeps you away through every festival this year, which drops it to nine",
+      "fix": "The choice line should be a short question the figure answers at once: \"The offer, or the Friday train?\" Warm and low, no clause chain. As written, the sentence is too long for one breath at 1.1x."
+    },
+    {
+      "line": 39,
+      "quote": "She's still at the door. Of course she is.",
+      "fix": "Direct it hushed and warm, and take a short beat before \"Of course she is.\" Keep the final line to these two sentences and add nothing after them. Do not add a lesson or the number."
+    },
+    {
+      "line": 36,
+      "quote": "Therefore you decide the numbers only shrink, and start treating forty-two as a fixed allowance",
+      "fix": "Spoken, this reads as essay. Say it as a half-sentence in a dry, wry tone: \"Forty-two. Fine. An allowance. You spend it carefully.\" The line also sets up the later break of \"It only counts down.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "She's still at the door. Of course she is."
+    },
+    {
+      "line": 35,
+      "quote": "It only counts down"
+    },
+    {
+      "line": 41,
+      "quote": "Never say the feeling (check 11): the script shows the wave, it does not name the sadness."
+    }
+  ],
+  "error": "",
+  "output_sha256": "4100855e78b1e6a50664862bc6df730acbd9d313c41eeba5c6c0c34a402f8125",
+  "draft_sha256": "0729b324460e5c46017959f192de2b13db11dcd2c464efcfa7d5a908cae6f6ea"
+}

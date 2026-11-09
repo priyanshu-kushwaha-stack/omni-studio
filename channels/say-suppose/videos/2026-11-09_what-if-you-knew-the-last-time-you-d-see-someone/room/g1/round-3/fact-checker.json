@@ -1,0 +1,32 @@
+{
+  "call_id": "d044482022e444cd8c028e5d97663afa",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 47,
+      "quote": "Tim Urban's \"The Tail End\" arithmetic on time with parents after moving out; how often people who move cities visit",
+      "fix": "Tim Urban's \"The Tail End\" arithmetic on time with parents after moving out (sourced as an illustrative calculation based on explicit visit-frequency and lifespan assumptions); how often people who move cities visit"
+    }
+  ],
+  "keep": [
+    {
+      "line": 10,
+      "quote": "The counter is invented. The arithmetic under it is the real-world part, to be sourced at G2: how much in-person time"
+    },
+    {
+      "line": 48,
+      "quote": "Spoken as a calculation from an assumed visit rate, never as a countdown"
+    }
+  ],
+  "error": "",
+  "output_sha256": "e529acd27daba555e55a4d040dfd9d6ff3fc85f3901a08c1986a63bd9c23eaa8",
+  "draft_sha256": "0729b324460e5c46017959f192de2b13db11dcd2c464efcfa7d5a908cae6f6ea"
+}

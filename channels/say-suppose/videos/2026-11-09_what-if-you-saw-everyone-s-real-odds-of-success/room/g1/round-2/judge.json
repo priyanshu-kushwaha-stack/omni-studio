@@ -1,0 +1,17 @@
+{
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "call_ids": [
+    "3c6db2caf35e4dbdb71b28fe4105a7a6",
+    "3e496fbdaf8f4fdd89c839ca021670a5"
+  ],
+  "picks": [
+    "A",
+    "B"
+  ],
+  "statuses": [
+    "ok",
+    "ok"
+  ],
+  "winner": "new"
+}

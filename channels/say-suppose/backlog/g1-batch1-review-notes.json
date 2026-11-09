@@ -1,0 +1,57 @@
+{
+ "knew-the-last": {
+  "status": "ready",
+  "round": "3 of 3",
+  "verdict": "Clean: no seat holds a blocker (blockers 9, then 3, then 0).",
+  "room": [
+   "Kept by several seats: the last line, \"She's still at the door. Of course she is.\"",
+   "Retired in round 1: the counters 3 and 1, which the film never shows by 0:30 (K13).",
+   "For G2: the Tail End arithmetic is spoken as a calculation from an assumed visit rate, never as her countdown."
+  ],
+  "cold": "With the counter at 42 on all three: worried, mild unease; mom reads as a tiny pink figure holding a 42 sign, and nobody can tell what 42 counts without the title. 4 focal points (tag, face, 42, mom); the tag is seen first, the face right after. Would click c (WAIT, MOM?): the only one with a twist. ONLY 42? reads as a game score. (Round 1 tried counters 42, 3 and 1: 1 read at once as the last time, but the film never shows it by 0:30.)"
+ },
+ "real-odds": {
+  "status": "ready",
+  "round": "2 of 3 ships",
+  "verdict": "Round 2 ships with 4 open blockers. Round 3 cut them to 2 but its viewer seat timed out twice, so it cannot ship.",
+  "room": [
+   "Open (viewer, K12): title B \"...a 1 in 2,500 Chance?\" reads \"a 1 in 2\" on a phone. Round 3 replaced it with \"What If You Knew the Odds on Your Dream?\"",
+   "Open (story #6, #7, #9): the cousin's beat needs a gap; the misconception needs the chaiwala set-up; the cousin's loss belongs near 60%. All three are fixed in the round-3 draft (room/drafts/), whose story seat then asked for two more links (#5, #7).",
+   "If you pick title A, the K12 blocker does not apply."
+  ],
+  "cold": "With 0.04% on all three: shocked; the red chip is seen first, then the face, then the tag; 4 focal points (the thin tube lights at the top read as a glitch). Nobody can tell what 0.04% is the odds of without the title. Would click c (QUIT?), barely: 'your dream is hopeless, should you give up?' STAY? has no object; ME? reads like a quiz. (Round 1 tried 0.04%, 0% and 97%: 0.04% was the pick, 97% read as mixed signals.)"
+ },
+ "got-paid": {
+  "status": "ready",
+  "round": "2 of 3 ships",
+  "verdict": "Round 2 ships with 4 open blockers (9, then 4). Round 3 cut them to 2, but its viewer seat timed out twice, so it cannot ship.",
+  "room": [
+   "Open (viewer, K12): title B, your original idea-room title, reads \"...Every Time Someone\" on a phone; no tag can say \"thought\". Pick A and it does not apply.",
+   "Open (story): the boss gag needs a gap; Asha's two warm beats must land by 20%; the lifetime montage must be an imagined future. All three are fixed in the round-3 draft (room/drafts/), whose story seat then asked for one more link (#5, #6 on the double text).",
+   "Kept by several seats: \"Coins are care. At least now you can count it\" and the last line, \"Two rings. She picks up.\""
+  ],
+  "cold": "Sad, let down, holding a phone; reads as 'only your mom texts or thinks about you'. Face seen first on a and b; 4 focal points. The phone screen does not read as money. 'ONLY MOM?' next to video 1's 'MOM?' in one feed would look like the same video. Would click c (ZERO?!), then b (NOT HER?)."
+ },
+ "sell-one": {
+  "status": "ready",
+  "round": "3 of 3",
+  "verdict": "Round 3 ships with 2 open story blockers (10, then 6, then 2).",
+  "room": [
+   "Open (story #7): the rule already shows time and money trade, so the misconception must be \"only the app sells time\", broken when the surgery cost becomes internship hours.",
+   "Open (story #6): the taps that bring you to Papa's age need a gap each: you expect each charge to be the last, and each receipt shows the next.",
+   "Kept by several seats: \"One year from me buys him ten. Good deal.\" and \"He's teasing you about the bus pass again. You let him.\""
+  ],
+  "cold": "Worried; hourglass and red button read as trading time. 5 focal points (tag, face, hourglass, button, the blurred ward). Only $100,000? tells the whole trade in half a second; WORTH IT? and DEAL? are vague without the title. Would click b ($100,000?)."
+ },
+ "never-forget": {
+  "status": "ready",
+  "round": "3 of 3",
+  "verdict": "Round 3 ships with 2 open story blockers (blockers 6, then 2, then 2; the judge picked round 3).",
+  "room": [
+   "Open (story #9): the opening habit is cram-and-forget, but the cost is about forgiving mom; the habit needs to touch her (for example: you forget her birthday but never the shout).",
+   "Open (story #5): the jump from the argument to age eighty needs a \"therefore\".",
+   "Kept by every seat: \"She doesn't remember the shout. You do. The tea's still warm.\""
+  ],
+  "cold": "Panicked and overwhelmed; reads as anxiety or overthinking you can't switch off, not memory. 5 focal points (tag, face, red burst, two pages); the tag is seen first on a and c. MAKE IT STOP is the strongest emotion. Would click a (MAKE IT STOP)."
+ }
+}

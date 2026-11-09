@@ -1,0 +1,76 @@
+{
+  "call_id": "671a58c151e94a42962805c21a19c4aa",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 8,
+    "leave fast, last line (#12)": 9,
+    "written to be spoken": 6,
+    "landing lines finish": 6,
+    "emotion per line": 5,
+    "spoken forms of numbers": 7
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 39,
+      "quote": "Row three. You don't look up. Out in the lane: thwack.",
+      "fix": "Keep the ending. Since the picture already shows row three and your eyes on the page, consider cutting the narrated 'You don't look up' so the line is only: 'Row three. Out in the lane: thwack.' Deliver it hushed, with the thwack landing on its own take."
+    },
+    {
+      "line": 38,
+      "quote": "the biggest number tells you what is likely; it cannot tell you what is worth choosing",
+      "fix": "This reads like an essay line and a lesson. Speak it as a short, finished thought in the narrator's amused-then-warm register: 'A number tells you what's likely. It never tells you what's worth it.' Land it on your cousin's dark chip, not on a general rule."
+    },
+    {
+      "line": 34,
+      "quote": "The biggest number is the right choice",
+      "fix": "Direction: dry, confident, a little amused, so the turn at line 38 can break it. Say it flat, once, with no hedge, and keep the words identical to the planted line."
+    },
+    {
+      "line": 37,
+      "quote": "One sourced comparison, seats against applicants for one exam",
+      "fix": "Speak it as people on Riya's bus, not a ratio: 'For every one seat, a whole bus-load of us.' Give the exact figure in say.yaml once sourced at G2, with the digits cited to a claims row."
+    },
+    {
+      "line": 9,
+      "quote": "nought point nought four per cent",
+      "fix": "Add a say.yaml entry: '0.04%' -> 'nought point nought four per cent'. Where the line is about the people, pair it with 'one chair in two thousand five hundred' so the number is heard as a person. Direction: hushed, stunned but flat."
+    },
+    {
+      "line": 35,
+      "quote": "his chip says nought point two",
+      "fix": "Add say.yaml entries: '0.2%' -> 'nought point two per cent', '3%' -> 'three per cent', '61%' -> 'sixty-one per cent', '48%' -> 'forty-eight per cent'. Give each reading its own emotion: the teacher's three per cent is flat and disbelieving, the chaiwala's sixty-one is surprised and amused, the cousin's is warm and worried."
+    },
+    {
+      "line": 35,
+      "quote": "You check the teacher expecting certainty: three per cent. Therefore you trust the topper, but her chip is for music, not the exam. So you test the chaiwala, expecting another fantasy: sixty-one.",
+      "fix": "This is a long chain for one breath at 1.1x. Break it into fragments with a take per jump: 'The teacher. Three per cent. / The topper? Her chip's for music. / The chaiwala. Sixty-one.' Cut the 'expecting' narration and let the face reactions show the expectation."
+    },
+    {
+      "line": 36,
+      "quote": "You tell your cousin to quit and stop wasting the family's money.",
+      "fix": "Make it a short, hushed, hard line: 'Quit. It's wasted money.' The cousin's bubble is four words or fewer ('Okay, bhaiya.' or 'Okay.'). Keep the drain-to-zero wordless, with no narration over the 8 to 10 s hold."
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "Row three. You don't look up. Out in the lane: thwack."
+    },
+    {
+      "line": 34,
+      "quote": "the hall becomes one lit chair among two thousand five hundred"
+    },
+    {
+      "line": 9,
+      "quote": "Then you see your own: nought point nought four per cent."
+    }
+  ],
+  "error": "",
+  "output_sha256": "a0ce2c51006b254183b83507cc66282e24914445b63c22ff9403397cdcb5f909",
+  "draft_sha256": "a2c452ba01a4b35deec2b0393446fc958fa703f236868c38fb01d596fb410577"
+}

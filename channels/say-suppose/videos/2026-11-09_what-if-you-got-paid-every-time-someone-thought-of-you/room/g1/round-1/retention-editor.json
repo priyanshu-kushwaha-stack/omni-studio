@@ -1,0 +1,84 @@
+{
+  "call_id": "16d3ff6f77614ccaa014283b7893fb37",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 6,
+    "retention": 7,
+    "length \u2014 estimated 6\u20138 minutes; the Sent-tab reversal and relationship payoff are the felt reasons to stay": 8
+  },
+  "blockers": [
+    {
+      "quote": "you chase thoughts, start drama, and drama pays too",
+      "why": "story #6: You seek thoughts and receive thoughts, so this use has no expectation/result gap.",
+      "fix": "Change it to: \u201cYou start drama expecting proof that people care. Coins pour in from anger, but your friend\u2019s row goes dark.\u201d",
+      "domain": "story",
+      "line": 37
+    },
+    {
+      "quote": "your friend from the chai stall, the one who always paid a little, has stopped",
+      "why": "story #9: The person is unnamed and first appears at the loss, without warm beats at least two minutes earlier.",
+      "fix": "Name the friend in the first jump and add two warm actions\u2014for example, \u201cAsha saves your chai and sends the metro notes.\u201d At the cost beat, mirror them: her seat is empty and her ledger row stops.",
+      "domain": "story",
+      "line": 37
+    },
+    {
+      "quote": "The running total of a life: who carried you, by the coin.",
+      "why": "story #5: The lifetime jump merely follows the friend\u2019s loss; the outline supplies no but/therefore connection.",
+      "fix": "Replace with: \u201cBecause Asha\u2019s row has gone dark, you stop farming coins and scroll backward through the ledger\u2014one day, one year, your whole life.\u201d",
+      "domain": "story",
+      "line": 38
+    },
+    {
+      "quote": "The turn breaks the planted belief that the money says how much they care: you open Sent.",
+      "why": "story #10: No earlier spoken line explicitly equates coins with care, so the reversal contradicts nothing already said.",
+      "fix": "Plant the spoken line near the first totals: \u201cCoins are care. At least now you can count it.\u201d Mirror it after Sent opens: \u201cYou love Mom. Sent is nearly empty. Coins were never care.\u201d",
+      "domain": "story",
+      "line": 38
+    },
+    {
+      "quote": "drama pays too",
+      "why": "No new power rule after the halfway point: Bad thoughts counting is first revealed in a beat extending to 65%.",
+      "fix": "State in the rule beat: \u201cEvery waking thought pays\u2014kind or cruel\u2014and the app names who had it.\u201d Then the drama beat applies an established rule.",
+      "domain": "story",
+      "line": 37
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "The running total of a life: who carried you, by the coin.",
+      "fix": "Make the montage concrete: keep the phone in the same hand as the hand ages, while rows stretch from days to years and each scale change reveals a different person carrying you."
+    },
+    {
+      "line": 47,
+      "quote": "Does a dream count?",
+      "fix": "Answer this in the rule beat with \u201cEvery waking thought pays,\u201d before the question can distract from the story."
+    },
+    {
+      "line": 48,
+      "quote": "dead? Can I see who exactly? Why is mom so high?",
+      "fix": "The app already answers identity. Show why Mom is high through ordinary cutaways\u2014packing food, checking the metro time, noticing your unanswered call\u2014and remove the dead-person question unless the story will answer it."
+    }
+  ],
+  "keep": [
+    {
+      "line": 9,
+      "quote": "expecting to be rich: your crush has paid nothing, and your mother pays every four minutes."
+    },
+    {
+      "line": 36,
+      "quote": "Night: coins dropping one by one at 2 a.m., every one from mom, a skyline of her bar over everyone else's"
+    },
+    {
+      "line": 39,
+      "quote": "The phone face down. You call the friend; somewhere a coin we never see drops for him."
+    }
+  ],
+  "error": "",
+  "output_sha256": "d8f9b13c12dfa6a0fa19b23db9ad23cef30ac77f18345c58c5b8ea0a293eff40",
+  "draft_sha256": "1e03d6b1272d27e2a70b2188620a7695f779c39521a4d1040351a5a0471c2dfc"
+}

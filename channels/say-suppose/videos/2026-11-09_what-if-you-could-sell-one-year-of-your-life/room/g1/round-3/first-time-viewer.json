@@ -1,0 +1,51 @@
+{
+  "call_id": "49c46170477d4c3c86383882edd40a13",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "family": "xai",
+  "status": "ok",
+  "scores": {
+    "click": 8,
+    "second_hook": 8,
+    "habit": 7,
+    "viewers_week": 9,
+    "thumbnail_tags": 8,
+    "stay": 6
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 37,
+      "quote": "Misconception first: you believed time and money are separate currencies.",
+      "fix": "I stop here. Delete that sentence. The pharmacy bill asks for another year, one internship-hour number peels off you while Papa watches, and he takes the phone. I stay if it keeps happening to us."
+    },
+    {
+      "line": 33,
+      "quote": "You price his bill in internship hours, the way you price the bus.",
+      "fix": "Keep the night ward, Papa asleep, the hourglass and the red button in the first seven seconds. On that same phone, beside his bill, show the bus fare or one internship hour, the price I already check every day."
+    },
+    {
+      "line": 78,
+      "quote": "$100,000?",
+      "fix": "I scroll past this one. Replace the tag with HOW MANY? It looks like a dollar finance video, not my father's bill. Two words, a question, and it does not repeat the title."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "One year from me buys him ten. Good deal."
+    },
+    {
+      "line": 38,
+      "quote": "you did not buy ten years with him; you bought ten years he may have without you."
+    },
+    {
+      "line": 39,
+      "quote": "He's teasing you about the bus pass again. You let him."
+    }
+  ],
+  "error": "",
+  "output_sha256": "750c520f6416ce7e7923e5388f955ff49503ff7302d6f9dd434feab87c96059a",
+  "draft_sha256": "f9b84fd8d5cd33af23f0eed80882307783a5611caea772e3810e91be88bec81a"
+}

@@ -1,0 +1,63 @@
+{
+  "call_id": "7c2508d2fd554114b7e6213a0f068f06",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story must-pass": 6,
+    "retention shape": 7,
+    "length: 7\u20138 minutes; the cousin\u2019s lost cricket dream supplies the felt reason to stay through the ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "Then the hall. You check the teacher expecting certainty: three per cent.",
+      "why": "story #5: the cousin beat and hall beat join as \u201cand then,\u201d without a causal turn.",
+      "fix": "Replace with: \u201cBut his tiny number follows you into the hall, so you check the teacher for certainty. Three per cent.\u201d",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "Therefore you trust the topper, but her chip is for music, not the exam. So you test the chaiwala, expecting another fantasy: sixty-one, and his bubble says \"SECOND STALL\". You copy his goal, ask him for a job, and drop the exam",
+      "why": "story #7: the music and SECOND STALL labels reveal that odds belong to personal goals before you act on the belief that the chaiwala\u2019s odds are transferable.",
+      "fix": "Hide the goal labels until after the mistake: \u201cTherefore you trust the topper, but her number falls when she copies the teacher. So you test the chaiwala, expecting another fantasy: sixty-one. You expect your own chip to rise, ask him for a job, and drop the exam.\u201d At the midpoint, reveal \u201cSECOND STALL\u201d and explain that sixty-one measures his goal from his circumstances, not yours.",
+      "domain": "story",
+      "line": 35
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "The city lit up, built only from people we know: the teacher, the topper at her keyboard, the chaiwala's new board, your cousin's dark chip.",
+      "fix": "Prevent a static recap: open on a bus moving through thousands of changing chips, then land briefly on the three known people before stopping on the cousin\u2019s zero. Each cut should change an action or number."
+    },
+    {
+      "line": 38,
+      "quote": "keep the safe placement, which means his bat stays hidden",
+      "fix": "The placement is unplanted and its connection to the bat is unclear. Replace with the established choice: \u201cFollow the biggest number again and leave his bat hidden, or return it, reopen your own notes, and let both of you choose without certainty.\u201d"
+    },
+    {
+      "line": 49,
+      "quote": "What counts as success, who decides (the rule beat: the goal you'd choose with nobody watching)? Does it know my effort? Does it change if I study harder (the second jump: it moves with what you do)? Is my cousin's dream mine to judge? What does 0.04% even mean in people (one chair in two thousand five hundred)?",
+      "fix": "Add the central fifth question: \u201cCan I borrow someone else\u2019s odds?\u201d Answer it only after the stall choice fails. Mark effort as answered in the rule beat, and answer the cousin question immediately after \u201cQuit,\u201d rather than leaving it open until 78%."
+    }
+  ],
+  "keep": [
+    {
+      "line": 33,
+      "quote": "the night batch, row three, you copying the topper's notes as always, when chips flicker on over every head and yours glows crimson, 0.04%"
+    },
+    {
+      "line": 37,
+      "quote": "he nods, his chip drains to zero, his hand leaves the bat, and it rolls out of frame, then behind the cupboard"
+    },
+    {
+      "line": 39,
+      "quote": "Row three. You don't look up. Out in the lane: thwack."
+    }
+  ],
+  "error": "",
+  "output_sha256": "05e624e0c94460522cd9ab6281c10916dd97a61a0158c14d8e0a23de6017378e",
+  "draft_sha256": "e8b38bdaeb02de654bd5d3db47f4d751361288ebbc5528f9cacd9fad5884cadf"
+}

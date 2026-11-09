@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "concept_options": [
+    {
+      "id": "A",
+      "title": "What If Someone Thinking of You Paid You?",
+      "hook": "A coin drops every time someone thinks of you. Your crush has paid nothing.",
+      "narrative_structure": "story",
+      "visual_approach": "your lamp-lit room, the phone ledger: mom's bar full, the heart's empty. Three thumbnail candidates a, b, c differ in the tag (ONLY MOM?, NOT HER?, ZERO?!)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 450,
+      "why_this_works": "Owner's pick from the idea room"
+    },
+    {
+      "id": "B",
+      "title": "What If You Got Paid Every Time Someone Thought of You?",
+      "hook": "A coin drops every time someone thinks of you. Your crush has paid nothing.",
+      "narrative_structure": "story",
+      "visual_approach": "your lamp-lit room, the phone ledger: mom's bar full, the heart's empty. Three thumbnail candidates a, b, c differ in the tag (ONLY MOM?, NOT HER?, ZERO?!)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 450,
+      "why_this_works": "Alternative title; see packaging.md"
+    },
+    {
+      "id": "C",
+      "title": "What If You Could See Who Really Thinks of You?",
+      "hook": "A coin drops every time someone thinks of you. Your crush has paid nothing.",
+      "narrative_structure": "story",
+      "visual_approach": "your lamp-lit room, the phone ledger: mom's bar full, the heart's empty. Three thumbnail candidates a, b, c differ in the tag (ONLY MOM?, NOT HER?, ZERO?!)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 450,
+      "why_this_works": "Alternative title; see packaging.md"
+    }
+  ],
+  "selected_concept": {
+    "concept_id": "A",
+    "rationale": "Agent's recommendation; the owner picks at G1. A, title A with thumbnail a (\"ONLY MOM?\").."
+  },
+  "production_plan": {
+    "pipeline": "studio-whatif",
+    "playbook": "say-suppose",
+    "render_runtime": "external",
+    "decision_log_ref": "artifacts/decision_log.json",
+    "stages": [
+      {
+        "stage": "proposal",
+        "tools": [],
+        "approach": "Packaging: three titles, three one-variable thumbnails drawn from the rig, the beat outline; the G1 room"
+      },
+      {
+        "stage": "story_script",
+        "tools": [],
+        "approach": "research.md, claims.md and script.md under rules/story.md; the G2 room; omni qc story_script (claims) must pass"
+      },
+      {
+        "stage": "narration",
+        "tools": [],
+        "approach": "Arthur, one paid take per line, quoted and approved first"
+      },
+      {
+        "stage": "rough_cut",
+        "tools": [],
+        "approach": "Code-drawn scenes in core/engines/whatif timed to cue words; 720p preview ladder"
+      },
+      {
+        "stage": "final_edit",
+        "tools": [],
+        "approach": "Owner notes applied; loudness, clicks, opening and similarity checks"
+      },
+      {
+        "stage": "final_watch",
+        "tools": [],
+        "approach": "The owner watches at 1x with cold viewers"
+      },
+      {
+        "stage": "publish_prep",
+        "tools": [],
+        "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+      }
+    ]
+  },
+  "cost_estimate": {
+    "total_estimated_usd": 0,
+    "budget_cap_usd": 5,
+    "budget_verdict": "within_budget",
+    "line_items": [
+      {
+        "tool": "higgsfield text2speech_v2",
+        "operation": "narration (Arthur), one take per line",
+        "estimated_usd": 0,
+        "notes": "Not estimated. Paid, in Higgsfield credits; quoted and approved by the owner at G3. G1 made no paid call: the thumbnails are drawn in code"
+      }
+    ]
+  },
+  "approval": {
+    "status": "pending"
+  }
+}
