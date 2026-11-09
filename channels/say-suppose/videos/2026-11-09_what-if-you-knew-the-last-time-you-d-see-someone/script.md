@@ -35,21 +35,21 @@ Change your plans, and it does the maths again.
 > SCENE: You twist round in the seat. Mom, small now at the lit door, still waving. Her counter still reads 42.
 Two trips home a year. That's the plan. The counter did the rest.
 > SCENE: You turn back to the front and shrug. Phone up again.
-You shrug. It's a number. It only counts down.
+It's a number. It only counts down.
 And she'll be at that door. She always is.
 > HOLD: 2.5 s. The auto turns the corner; the porch light drops out of frame. Ident, 3 s, from `brand/README.md` (picked at G4).
 
 ## [01:05] The first jump: the city
 > MOOD: morning
-> SCENE: A big station in the new city. The platform is packed, and every head has a counter. Wide, side-on, the crowd drifting past.
-> HOLD: 2 s. You step off the train into it, bag in hand, turning slowly: counters bobbing over the crowd like price tags.
+> SCENE: A platform in the new city, side-on: five figures and a chai stall, every head with a counter; the rest of the crowd is a blank flat layer behind. (The same platform set is reused for the Sunday station.)
+> HOLD: 2 s. You step off the train, bag in hand, turning slowly: counters bobbing over the heads like price tags.
 Next morning. A new city. Counters everywhere.
 > SCENE: A chai-wallah on the platform hands you a glass. His counter reads 1.
 The chai-wallah on platform two. One.
 One last chai, from a man you'll never see again.
 > HOLD: 1.5 s. You sip. Your eyes go wide. You look at the glass, then at him.
 It's the best chai of your life. Station chai.
-That part's real. In one taste test, students told "this is your last chocolate" picked it as their favourite 64% of the time, whatever the flavour (c02).
+Maybe it's not just the chai. In one taste test, students told "this is your last chocolate" picked it as their favourite 64% of the time, whatever the flavour (c02).
 > SCENE: You turn to go back for a second glass. Stop. Look at the 1. Walk on, smiling.
 You almost go back for another glass. Then it wouldn't be the last.
 > SCENE: The metro, packed. A woman with a tote bag holds the pole beside you. Her counter reads 400.
@@ -82,23 +82,22 @@ You don't know it either.
 > MOOD: dusk
 > SCENE: Sunday evening, the station. Mom presses a steel tiffin into your hands. Her counter reads 41.
 > BUBBLE: Mom: "Next month?"
-A tiffin, still warm. "Next month?"
 You say, "Let's see. Work."
 > SCENE: Clack. 41 goes to 39. You stare at it as the train pulls in.
 > HOLD: 2 s. The train doors close between you. She waves. You wave, phone up.
 Thirty-nine. You didn't lose one. You lost two.
 "Let's see" was a plan. And it did the maths.
 
-## [03:00] The carriage
+## [02:55] The carriage
 > MOOD: night
 > SCENE: The night train, side-on, a cutaway of the carriage. Seated passengers in a row, each with a counter. Stations drift past as a background layer. The stranger, crimson head, long dark coat, sits at the far end; their counter faces away.
 > HOLD: 5 s. The train's rhythm. At each station one passenger steps off to someone waiting on the platform, and both their counters flip down by one as they part. In the dark window, a dim copy of your head, with its own counter.
-Every station, the same thing. Someone steps off. Two numbers fall.
+Everyone's spending theirs.
 > SCENE: You open the tiffin on your lap. Count on your fingers.
 Thirty-nine. Fine. An allowance. You'll spend it carefully.
 It only counts down. You've watched it.
 
-## [03:20] The second jump: the year
+## [03:10] The second jump: the year
 > MOOD: day
 > SCENE: The office. A colleague with a lanyard and a big smile waves from his desk. His counter reads 3000.
 > TAG: 3000
@@ -113,8 +112,8 @@ October. Diwali. And a deadline.
 Thirty-nine is plenty. Skip this one. Save it for later.
 > MOOD: night
 > SCENE: The office at night, almost empty. Through the window, a station footbridge, packed with people and bags. You type.
-In 2025, the railways ran more than 12,000 special trains for Diwali and Chhath (c03).
-The whole country, going home. You, at your desk.
+In 2025, the railways put on more than 12,000 special train runs for Diwali and Chhath (c03).
+You're not on one.
 > SCENE: Video call. Mom holds the phone up to show the diyas on the porch. You smile into the screen.
 Calls don't count.
 > SCENE: Insert: the steel tiffin, empty, on your desk.
@@ -124,28 +123,34 @@ Thirty-eight. You skipped it to save it. It's just gone.
 Mehta, meanwhile, is doing fine.
 > MOOD: lamp
 > SCENE: Your rented room. You sit on the floor, back to the bed, doing sums on the paper napkin from the tiffin.
-Thirty-eight visits. A weekend each. Seventy-six days.
+Thirty-eight visits. A weekend each.
 > SCENE: A paper diagram draws itself: a long strip of squares, one for every day you lived at home, filling the wall. Beside it, a tiny strip of seventy-six.
-You lived with her for twenty-two years.
+> TAG: 76 DAYS
 One writer, Tim Urban, did this sum on his own guesses. By the time he left school, he'd used up 93% of the days he'd ever spend with his parents, in person (c01).
-You left at twenty-two. Yours is closer to ninety-nine per cent.
+You left at twenty-two. On the counter's sum, yours is closer to ninety-nine per cent.
 > HOLD: 2.5 s. The ceiling fan turns. You look at the long strip, then the short one. The music thins to one instrument.
 You're not at the start of your time with her. You're at the tail end.
 
-## [04:45] The third jump: a lifetime
+## [04:40] The third jump: a lifetime
 > MOOD: dusk
 > SCENE: The office, Friday, six o'clock. Bags going on shoulders. You look at your phone: no festival, no plan.
 Friday. No festival. No plan. Train, or sleep?
 > SCENE: You're already on the train, forehead on the window.
 Train.
 > HOLD: 2 s. The same fields at dusk as the first Friday; this time you're watching them.
-> SCENE: The porch at dusk. You walk up the path, unannounced. The door opens: mom, dishcloth in hand, eyebrows up. Her counter reads 38. You stop on the step, bracing.
+> SCENE: The porch at dusk. You walk up the path, unannounced. The door opens: mom, dishcloth in hand, eyebrows up. Her counter reads 38.
 Thirty-eight. Here comes the drop.
-> HOLD: 9 s. The wordless peak. Slow motion. Clack: the counter flips, the wrong way. 39. A beat. 40. Your face: shock, then a laugh. Mom, who sees no counter, just pulls you in by the sleeve. The music drops to one held note, then the theme enters.
-It never counted her years. It counted your trains.
+> SCENE: Your foot touches the step. Clack: 37. Mom pulls you in by the sleeve, then holds the door, looking at you.
+> BUBBLE: Mom: "Next month?"
+You open your mouth to say "Let's see".
+> SCENE: You stop. Close on your face. You look at the counter, then at her.
+> BUBBLE: You: "Next Friday."
+> HOLD: 9 s. The wordless peak. Slow motion. Clack: the counter flips the wrong way. 38. 39. Then the flaps run, faster and faster, upward, a blur, and settle on 260. Your face: shock, then a laugh. Mom, who sees no counter, just shrugs and goes in for the chai. The music drops to one held note, then the theme enters.
+> TAG: 260
+It wasn't her clock. It was your timetable.
 It only counted down because you only ever planned less.
 > MOOD: lamp
-> SCENE: That night, the dinner table at home, the lamp. Mom ladling dal. Your phone lights up beside your plate: an email, OFFER, and a big ACCEPT button.
+> SCENE: Next Friday, the dinner table at home, the lamp. Mom ladling dal. Your phone lights up beside your plate: an email, OFFER, and a big ACCEPT button.
 Then the offer. A bigger job. A bigger city. On duty every festival.
 > SCENE: Your thumb hovers over ACCEPT.
 > HOLD: 2 s. Across the table, mom's counter clacks down, fast, flap after flap, and stops on 9. She keeps ladling, unaware.
@@ -156,20 +161,19 @@ The offer, or the Friday train?
 More dal.
 > HOLD: 1.5 s. Mom piles it on, laughing. The counter is out of frame.
 > MOOD: day
-> HOLD: 7 s. The same doorway through the seasons, a second or two each: the monsoon, you dripping under an umbrella; Holi, colour on both your faces; winter, a shawl; summer, mangoes on the step. Mom's hair greys a little. Each arrival, her counter flips up: 46, 58, 70.
-So you take the Friday train. And the next. And the next.
+> HOLD: 7 s. The same doorway through the seasons, a second or two each: the monsoon, you dripping under an umbrella; Holi, colour on both your faces; winter, a shawl; summer, mangoes on the step. Mom's hair greys a little. Each arrival, one flap down: 260, 259, 258, 257.
+So you take the Friday train. And it counts down again, one Friday at a time.
 > MOOD: lamp
-> SCENE: Grandpa in his chair. He starts the bicycle and the buffalo, hands up. Stops. Looks at you.
+> SCENE: The montage stops on winter, by Grandpa's chair. He starts the bicycle and the buffalo, hands up. Stops mid-story. Looks at you.
 > HOLD: 2 s. You take over, both hands up, the way he does it: pedalling, the buffalo, the ditch. He leans forward.
 Grandpa's story? You learned the ending. Well. You made one up.
 He prefers yours.
-Psychologists have seen this before. When people imagine their time is running short, young or old, they choose the people they know best (c04).
+Psychologists have seen this before. When people imagine their time is running short, young or old, they choose familiar people (c04).
 You didn't have to imagine it. You had a number.
 
-## [06:15] Back to you
+## [06:10] Back to you
 > MOOD: dusk
 > SCENE: Sunday dusk. The door. Mom waves. You walk to the gate with your bag, the auto waiting. Your phone is in your pocket.
-Sunday. The door. The wave.
 > HOLD: 4 s. At the corner you stop. Turn round. Wave properly, the whole arm. Mom, small in the doorway at the left third, waves back harder. Her counter is too small and too blurred to read; we never see the number. The right third stays empty.
 She's still at the door. Of course she is.
 > HOLD: 1 s. Black.
@@ -177,9 +181,9 @@ She's still at the door. Of course she is.
 Whose number would you want to see? Tell us below.
 
 ## Word count
-613 spoken words (cites removed): 5:15 at 115 words a minute played at 1.1x, with a short gap after each line; plus
-57 s of `> HOLD:` beats (15% of the runtime) and the action between lines: about 6:35 in all. Beat times above are
-from that estimate; the rough cut sets the real ones.
+595 spoken words (cites removed): 4:42 at 115 words a minute played at 1.1x, plus a short gap after
+each line, 57.2 s of `> HOLD:` beats (15% of the runtime) and the action between lines: about
+6:25 in all. Beat times above are from that estimate; the rough cut sets the real ones.
 
 ## Narration notes (for G3; not spoken)
 - Voice: Arthur on Eleven v4 (`voices.yaml`), one take per line, tempo 1.1. Every line's direction is below, in
@@ -190,28 +194,27 @@ from that estimate; the rough cut sets the real ones.
 - The change: "Every morning..." [warm, matter-of-fact]; "Forty-two." [quiet, a beat before]; the title question
   [curious, low]; "Tonight you leave..." [dry, clipped]; "Forty-two goodbyes..." [warm, slower].
 - The rule: "Nobody else can see it..." [light, confiding]; the three rule lines [plain, exact]; "Two trips home a
-  year..." [dry]; "You shrug..." [wry, offhand]; "And she'll be at that door. She always is." [easy, certain].
+  year..." [dry]; "It's a number..." [wry, offhand]; "And she'll be at that door. She always is." [easy, certain].
 - The city: "Next morning..." [amused]; the chai-wallah lines [amused, then softer on "never see again"]; "It's the
   best chai..." [surprised]; the chocolate line [curious, quick, an aside]; "You almost go back..." [amused];
   the metro [puzzled, then dry]; "She's your commute now." [deadpan]; the Friday choice [teasing]; "Home. Obviously." [dry].
 - The first weekend: "You thought it would drop..." [surprised, quieter]; "This visit is already counted." [low];
-  the chai line [warm, fond]; Grandpa [warm]; "He's forgotten the ending." [gently amused]; "You don't know it either." [dry, a beat before]; the platform [warm, casual];
+  the chai line [warm, fond]; Grandpa [warm]; "He's forgotten the ending." [gently amused]; "You don't know it either." [dry, a beat before]; "You say, 'Let's see. Work.'" [warm, casual];
   "Thirty-nine..." [flat, quiet]; "'Let's see' was a plan..." [dry, landing].
-- The carriage: "Every station..." [hushed]; "Thirty-nine. Fine. An allowance..." [wry, half to yourself]; "It only
+- The carriage: "Everyone's spending theirs." [hushed]; "Thirty-nine. Fine. An allowance..." [wry, half to yourself]; "It only
   counts down. You've watched it." [certain, a little too sure].
 - The year: Mehta [dry]; "So you hide." [conspiratorial, quick]; "Three thousand meetings..." [deadpan];
   "October. Diwali..." [brisk]; "Thirty-nine is plenty..." [breezy]; the trains fact [plain, warm];
-  "The whole country..." [quiet]; "Calls don't count." [flat, a beat before]; "Thirty-eight..." [low, slow]; "Mehta,
-  meanwhile, is doing fine." [deadpan, dry]; the sum [careful, slow]; "You lived with her
-  for twenty-two years." [quiet]; Tim Urban [plain]; "Yours is closer to ninety-nine." [quiet, exact]; "the tail
+  "You're not on one." [quiet, dry]; "Calls don't count." [flat, a beat before]; "Thirty-eight..." [low, slow]; "Mehta,
+  meanwhile, is doing fine." [deadpan, dry]; the sum [careful, slow]; Tim Urban [plain]; "You left at twenty-two..." [quiet, exact]; "the tail
   end" [hushed, landing].
 - A lifetime: the Friday choice [tired, then a decision]; "Train." [quick]; "Thirty-eight. Here comes the drop." [tense,
-  quiet]; "It never counted her years..." [hushed, slow, warm]; "It only counted down..."
+  quiet]; "You open your mouth..." [quick, half-swallowed]; "It wasn't her clock..." [hushed, slow, warm]; "It only counted down..."
   [warm, landing]; the offer [brisk, tempting]; "Nine." [cold, quiet]; "The offer, or the Friday train?" [low,
-  warm, short]; "More dal." [light, a smile in it]; "So you take the Friday train..." [lifting]; Grandpa's story
+  warm, short]; "More dal." [light, a smile in it]; "So you take the Friday train..." [easy, warm]; Grandpa's story
   [amused, warm]; "He prefers yours." [fond, deadpan]; the c04 line [curious, plain]; "You didn't have to imagine
   it..." [warm].
-- Back to you: "Sunday. The door. The wave." [quiet]; "She's still at the door. Of course she is." [hushed, warm,
+- Back to you: "She's still at the door. Of course she is." [hushed, warm,
   a short beat before "Of course she is."]; the comment line [warm, plain, after the black].
 
 ## Not said
