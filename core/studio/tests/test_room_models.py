@@ -27,3 +27,23 @@ def test_an_entry_without_family_or_with_a_bad_cli_is_refused(tmp_path):
     bad.write_text("models:\n  m1: {family: openai, cli: bash}\n")
     with pytest.raises(ValueError, match="m1"):
         models.load_registry(bad)
+
+
+def test_timeout_defaults_to_600_and_reads_timeout_s():
+    reg = {"a": {"family": "x", "cli": "claude"}, "b": {"family": "y", "cli": "cursor", "timeout_s": 900}}
+    assert models.timeout_of("a", reg) == models.DEFAULT_TIMEOUT_S == 600
+    assert models.timeout_of("b", reg) == 900
+
+
+def test_the_real_registry_gives_grok_more_time_than_the_default():
+    reg = models.load_registry()
+    assert models.timeout_of("grok-4.7-high", reg) > 600
+    assert models.timeout_of("claude-opus-5-5", reg) == 600
+
+
+@pytest.mark.parametrize("value", ["0", "-5", "abc", "true", "1801", "[900]"])
+def test_a_bad_timeout_is_refused(tmp_path, value):
+    bad = tmp_path / "models.yaml"
+    bad.write_text(f"models:\n  m1: {{family: openai, cli: cursor, timeout_s: {value}}}\n")
+    with pytest.raises(ValueError, match="m1.*timeout_s"):
+        models.load_registry(bad)
