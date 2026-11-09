@@ -1,0 +1,36 @@
+{
+  "call_id": "8e295d0106a24156a48b38d2d5bfca55",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 10,
+    "claim_attribution": 10,
+    "scope_accuracy": 10
+  },
+  "blockers": [],
+  "suggestions": [],
+  "keep": [
+    {
+      "line": 52,
+      "quote": "Maybe it's not just the chai. In one taste test, students told \"this is your last chocolate\" picked it as their favourite 64% of the time, whatever the flavour (c02)."
+    },
+    {
+      "line": 115,
+      "quote": "In 2025, the railways put on more than 12,000 special train runs for Diwali and Chhath (c03)."
+    },
+    {
+      "line": 129,
+      "quote": "One writer, Tim Urban, did this sum on his own guesses. By the time he left school, he'd used up 93% of the days he'd ever spend with his parents, in person (c01)."
+    },
+    {
+      "line": 171,
+      "quote": "Psychologists have seen this before. When people imagine their time is running short, young or old, they choose familiar people (c04)."
+    }
+  ],
+  "error": "",
+  "output_sha256": "cd99163b9a4bde2ae68a947f42a71d0423e2418b1d3a1caf12e562e2ebcf796b",
+  "draft_sha256": "f790a02a58db7565c68d8cf1befef060fd4acd3370d0e2e3c40239829530b6ac"
+}

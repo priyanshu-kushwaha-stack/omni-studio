@@ -1,0 +1,73 @@
+{
+  "call_id": "cb18b65415a845bab33d134fb9a7f349",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "buildable this week (pick card #8)": 7,
+    "cue sheet intent and named in/out cues (sound #1)": 7,
+    "music follows the story (sound #3)": 8,
+    "staging and visual change rate": 8,
+    "rule device and continuity": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 174,
+      "quote": "Sunday dusk. The door. Mom waves.",
+      "fix": "The cues.yaml 'Back to you' `music_in` is \"Sunday. The door.\", which is a picture, not a spoken line. Name it as a picture event: music_in on 'Mom waves at the door, the auto waiting'. Keep the out cue after the last wave, before the black."
+    },
+    {
+      "line": 114,
+      "quote": "Through the window, a station footbridge, packed with people and bags going home for Diwali.",
+      "fix": "This is a new set and a heavy one. To keep the build short, reuse the platform set as the window's far layer, flipped and dimmed to night, with bags added to the figures. Do not build a separate footbridge."
+    },
+    {
+      "line": 31,
+      "quote": "The auto pulls away. Through its back window, counters over three heads on the lane",
+      "fix": "The sets in this film are porch, lane, platform, metro, rented room, home interior, carriage cutaway, office, meeting room and dinner table. Build and reuse in this order: porch/door (used 8 times), platform, office (meeting room is the same set with the desk layer swapped), and one 'room' set for the rented room and the home interior with a lamp swap. If the carriage cutaway slips, stage it as the metro set with the pole layer replaced by a seat row."
+    },
+    {
+      "line": 146,
+      "quote": "Slow motion. Clack: the counter flips the wrong way. 38. 39.",
+      "fix": "In cues.yaml, third jump, `intent: tense` starts at 'Train.', two beats before the reveal. Keep the tense bed as dry anticipation of the expected drop, and put the intent switch to 'curious/awe' exactly at the upward flip, so the reveal gets the change and not the build."
+    },
+    {
+      "line": 175,
+      "quote": "Mom, small in the doorway at the left third, waves back harder.",
+      "fix": "Say where you stand at the corner (centre-left, two-thirds, back to the camera), so that you, mom and the blurred counter all sit in the left two-thirds and the right third stays quiet for end screens. This is a continuity note for the trigger gesture: the half-wave with phone up at the door becomes a full-arm wave with the phone pocketed."
+    },
+    {
+      "line": 160,
+      "quote": "You tap the red cross. Clack: 9 rises, but only to 38.",
+      "fix": "That is two flips and a book-and-repeat action in one scene, with no change over about 6 s of action. Split it in two shots: (1) tap the red cross, the flaps run up to 38, close on your blink, 2 s; (2) the train app, repeat icon, flaps run to 260, phone turned face down, 2.5 s."
+    },
+    {
+      "quote": "Your strip is thinner.",
+      "why": "sound.md #1: the cue sheet's second-jump `music_out` is keyed to \"yours is closer to ninety-nine per cent\", a line cut from the narration after G2 round 1 (see 'Not said'). That beat's music out is now on a cue that does not exist in the script, so it has no named cue.",
+      "fix": "In cues.yaml, second jump, change `music_out` to: after \"Your strip is thinner.\": thins to one piano line (the cost), under the fan hold. Keep the intent as is.",
+      "domain": "animator",
+      "line": 128,
+      "moved": "blocker outside the craft role"
+    }
+  ],
+  "keep": [
+    {
+      "line": 71,
+      "quote": "You thought it would drop when you left. It drops when you walk in."
+    },
+    {
+      "line": 149,
+      "quote": "It wasn't her clock. It was your timetable."
+    },
+    {
+      "line": 161,
+      "quote": "Saying no isn't a plan. A ticket is."
+    }
+  ],
+  "error": "",
+  "output_sha256": "01246cf230b9a88bb6c340ac9bf67a6131a0912a9c850e77dffca532e7e82bb2",
+  "draft_sha256": "c1cf28f799bd566af2d2fe401a2bce03b7eea984cd64423778c0581c0fe80214"
+}

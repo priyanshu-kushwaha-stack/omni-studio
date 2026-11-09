@@ -1,0 +1,69 @@
+{
+  "call_id": "3b3d4209f2c5425a8392fd66146acd36",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "retention_shape": 8,
+    "question_handling (calls, forty-two, and skipping are answered; fate versus current plans remains unclear)": 7,
+    "runtime (6:25; viewers stay for the fate-versus-timetable reveal and the offer-versus-Friday choice)": 9
+  },
+  "blockers": [
+    {
+      "quote": "> SCENE: You lock the phone and turn it face down. Clack, clack: the counter climbs back. You hold out your plate.",
+      "why": "story #6: You reject the offer expecting the counter to recover, and it does. This deliberate use has no expectation-result gap.",
+      "fix": "Replace with: \"> SCENE: You tap DECLINE. Clack: 9 rises only to 38. You blink, book next Friday's train, then set it to repeat. The counter runs back to 260. You turn the phone face down and hold out your plate.\"",
+      "domain": "story",
+      "line": 160
+    },
+    {
+      "quote": "You left at twenty-two. On the counter's sum, yours is closer to ninety-nine per cent.",
+      "why": "story #7: The misconception break stacks seventy-six, 93%, twenty-two and 99% in one sequence instead of landing one number clearly on you.",
+      "fix": "Replace lines 127-130 with an unlabelled childhood strip beside a tiny remaining strip, then: \"Tim Urban estimated he'd already used ninety-three per cent of his in-person time with his parents (c01). Your strip is thinner.\" Remove the 76 and 99% tags.",
+      "domain": "story",
+      "line": 130
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 32,
+      "quote": "Everyone you know has one. The times you'll meet in person again, if your plans stay as they are.",
+      "fix": "Replace with: \"Everyone you know has one: the meetings your current plans put you on course to have.\" This answers whether the counter predicts fate or projects plans when the question first arises."
+    },
+    {
+      "line": 52,
+      "quote": "Maybe it's not just the chai. In one taste test, students told \"this is your last chocolate\" picked it as their favourite 64% of the time, whatever the flavour (c02).",
+      "fix": "Cut this line; it pauses the first comic reversal to lecture before the story has gathered momentum."
+    },
+    {
+      "line": 115,
+      "quote": "In 2025, the railways put on more than 12,000 special train runs for Diwali and Chhath (c03).",
+      "fix": "Replace lines 115-116 with: \"The footbridge is packed. You're still at your desk.\" Keep the consequence on you without stopping for a statistic."
+    },
+    {
+      "line": 171,
+      "quote": "Psychologists have seen this before. When people imagine their time is running short, young or old, they choose familiar people (c04).",
+      "fix": "Cut lines 171-172 and go directly from \"He prefers yours\" to the final doorway; the explanation drains the Grandpa payoff and delays the exit."
+    }
+  ],
+  "keep": [
+    {
+      "line": 98,
+      "quote": "It only counts down. You've watched it."
+    },
+    {
+      "line": 150,
+      "quote": "It wasn't her clock. It was your timetable."
+    },
+    {
+      "line": 178,
+      "quote": "She's still at the door. Of course she is."
+    }
+  ],
+  "error": "",
+  "output_sha256": "b56dc340f6e4f5470b1c230140d70fdbcdd84a30a2ecd91def3615c1c58481aa",
+  "draft_sha256": "f790a02a58db7565c68d8cf1befef060fd4acd3370d0e2e3c40239829530b6ac"
+}

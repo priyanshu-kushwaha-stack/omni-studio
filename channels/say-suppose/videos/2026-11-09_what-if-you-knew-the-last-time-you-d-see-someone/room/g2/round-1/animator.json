@@ -1,0 +1,85 @@
+{
+  "call_id": "98d4410536cd4f559bbb6dd737a3aa69",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "buildable this week (pick card #8)": 7,
+    "cue sheet intent and in/out per beat (sound #1)": 8,
+    "music follows the story (sound #3)": 8,
+    "stageable side-on / change every 2-4 s": 8,
+    "continuity of props and trigger gesture": 8
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 153,
+      "quote": "an email, OFFER, and a big ACCEPT button",
+      "fix": "Written words OFFER and ACCEPT break the on-screen text rule. Draw an envelope icon and a green tick button with no lettering. If a word is needed, make it one stamped tag, 'OFFER'. Keep the thumb and the button clear of faces."
+    },
+    {
+      "line": 164,
+      "quote": "The same doorway through the seasons, a second or two each",
+      "fix": "This hold runs 7 s, over the 6 s limit, and it is not the one wordless peak (line 148). Trim it to 6 s at 1.5 s per season. Keep the flaps 260, 259, 258, 257 ticking on each arrival so something moves every 2 to 4 s."
+    },
+    {
+      "line": 64,
+      "quote": "The train crosses fields at dusk; your face at the window, phone dark in your lap.",
+      "fix": "The cue sheet ends 'The first jump' music at 'Home. Obviously.' and starts 'The first weekend' music at 'You thought it would drop', so this 2 s hold plays with no music. That would be a third unplanned silence, and the limit is two. In `cues.yaml`, move the first jump's `music_out` to the end of this hold, or carry the city cue under the hold and let the home cue come in on the porch clack."
+    },
+    {
+      "line": 167,
+      "quote": "The montage stops on winter, by Grandpa's chair.",
+      "fix": "Grandpa's counter reads 8 at line 74 and is never seen again, although you now visit weekly and mom's counter climbs to 260. Show his counter flipping upward (8 to a bigger number) as he starts the story. It keeps continuity and pays off the weekly visits."
+    },
+    {
+      "line": 172,
+      "quote": "You didn't have to imagine it. You had a number.",
+      "fix": "Lines 169 to 172 are a narration stretch with a fact line and no new picture after the hold. Add a SCENE: an insert on Grandpa's flipping counter, then a close on your face with a small smile, so the c04 line lands on a changing image."
+    },
+    {
+      "line": 150,
+      "quote": "It wasn't her clock. It was your timetable.",
+      "fix": "Add a SCENE after the 9 s peak: a slow push-in on 260 with a brief paper-ghost trail of the train timetable (train icons only, no text) sliding past. The reveal line then has a picture and the stage is not left on the peak frame."
+    },
+    {
+      "line": 0,
+      "quote": "intent: \"tense\"",
+      "fix": "In `cues.yaml` the third jump carries one intent, 'tense', from 'Train.' to 'You had a number.', but the story turns warm after the peak (dal, montage, Grandpa). Split it: 'tense' to the flip at 'Next Friday.', then a 'warm' cue entering at or after 'It only counted down because you only ever planned less'. That keeps the change at or after the reveal."
+    },
+    {
+      "line": 68,
+      "quote": "The porch at dusk. Mom at the door with a glass of chai, steam rising.",
+      "fix": "Reuse list. Build one porch/door set and swap moods (dusk, night, lamp, day) for lines 17, 68, 120, 141 and 176. Reuse the platform set for the home-city station (line 83, already planned). Reuse the office set for the meeting room and the night office, with the footbridge as a window layer. Reuse the rented-room set for the napkin and the self-drawing strip. New builds are then the auto and lane, the metro pole, the carriage cutaway and the dinner table. Keep each to flat layers."
+    },
+    {
+      "line": 31,
+      "quote": "a counter over every head on the lane: the neighbour watering plants, the paan stall, the kid on a cycle.",
+      "fix": "Limit this to three or four figures with counters and let the rest of the lane be a blank flat layer, as line 44 does. That keeps the build small and the counters readable."
+    },
+    {
+      "line": 60,
+      "quote": "You look at the train app, then the pillow.",
+      "fix": "Show the app as a train-icon screen with no text, so the only words on screen stay tags, counters and bubbles."
+    }
+  ],
+  "keep": [
+    {
+      "line": 69,
+      "quote": "You thought it would drop when you left. It drops when you walk in."
+    },
+    {
+      "line": 150,
+      "quote": "It wasn't her clock. It was your timetable."
+    },
+    {
+      "line": 178,
+      "quote": "She's still at the door. Of course she is."
+    }
+  ],
+  "error": "",
+  "output_sha256": "f927ffeb84e61ecfabb0cc998de035c7548bc586205084d9a66b13dff5d6873b",
+  "draft_sha256": "f790a02a58db7565c68d8cf1befef060fd4acd3370d0e2e3c40239829530b6ac"
+}

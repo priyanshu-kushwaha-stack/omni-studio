@@ -1,0 +1,78 @@
+{
+  "call_id": "80915d34f6c24cd09d4d20c27dc27964",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "pick card #8, buildable this week": 7,
+    "sound #1, slim cue sheet with intent": 9,
+    "sound #3, music follows the story": 6,
+    "staging and visual rhythm": 8,
+    "continuity and reuse": 8
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 54,
+      "quote": "64% picked it as their favourite. Any flavour (c02).",
+      "fix": "Lines 51-54 are about 20 words (roughly 10 s) over the same sipping shot, two fact lines in a row. Insert a SCENE before 'In one taste test': a row of five paper chocolates slides in and the last one glows. Show `> TAG: 64%` as a split-flap on 'picked it', so something changes every 2 to 4 s."
+    },
+    {
+      "line": 127,
+      "quote": "A writer, Tim Urban, did this sum. On his own guesses.",
+      "fix": "Lines 127-130 (about 13 s) sit on one self-drawing diagram. Split it into two SCENE beats: the long strip fills square by square on 'On his own guesses', then a close-up on the filled part with `> TAG: 93%` on 'Used up'. Cut to the thin strip on 'Your strip is thinner.'"
+    },
+    {
+      "line": 102,
+      "quote": "The night train, side-on, a cutaway of the carriage. Seated passengers in a row, each with a counter.",
+      "fix": "The carriage is the likeliest long pole in the set list, which is long: porch, lane, platform, metro, office, rented room, home interior, dinner table, carriage. Build it from the metro interior (same side-on seats and poles, re-lit to night). Use the platform layer, flipped and dimmed, for the stations drifting past. Only name it as a new set if it cannot be reused. Build the seasons montage (line 168) as prop and overlay swaps on the one porch set (rain, colour burst, shawl, mangoes)."
+    },
+    {
+      "line": 158,
+      "quote": "Across the table, mom's counter clacks down, fast, flap after flap, and stops on 9.",
+      "fix": "The warm bed runs through this and the cue sheet gives no change at the 9, which is the cold reveal. Add a `change_at` to the third-jump cue: 'at the 9 (after the flip) the bed drops to a cold single piano line, warm returns at or after \"More dal.\"'. It matches the 'cold, quiet' read of \"Nine.\""
+    },
+    {
+      "line": 124,
+      "quote": "doing sums on the paper napkin from the tiffin.",
+      "fix": "The napkin is not planted. In line 104 ('You open the tiffin on your lap'), add a folded paper napkin that comes out of the tiffin, and keep it on the desk insert at line 118."
+    },
+    {
+      "line": 46,
+      "quote": "Next morning. A new city.",
+      "fix": "The cue sheet starts music at this line, so the 2 s picture hold before it runs under ambience only after the rule's ident. Either put the playful cue in on the first bob of the counters, which is at the reveal, or note it as a short planned silence. There are only two allowed, and both are already used."
+    },
+    {
+      "line": 40,
+      "quote": "Ident, 3 s, from `brand/README.md` (picked at G4).",
+      "fix": "The 2.5 s hold plus 3 s ident gives 5.5 s with no spoken line. Keep something moving: let the porch light drop out of frame slowly and have the auto's tail-light drift across the lane layers, so there is a change every 2 to 4 s."
+    },
+    {
+      "quote": "As your foot touches the step: clack. Her counter goes from 42 to 41.",
+      "why": "sound.md #3: the first-jump cue leaves with \"music_out: after the train-fields hold that follows \\\"Home. Obviously.\\\" (crossfades into the weekend cue, no gap)\". That puts the weekend cue (warm) in at the start of the porch scene, before the clack that is the reveal (it drops when you walk in). The sheet also says the weekend cue comes in at \"You thought it would drop\", which is after the clack. The two entries contradict each other, and the first one changes the music before the reveal.",
+      "fix": "In cues.yaml, change the first-jump `music_out` to: \"the clack, 42 to 41 (playful bed runs through the porch arrival)\". Set the weekend `music_in` to \"You thought it would drop\", at or after the clack, and add `change_at: \"42 to 41 clack (after the flip)\"`. Drop the 'no gap' crossfade at the end of the train-fields hold.",
+      "domain": "animator",
+      "line": 78,
+      "moved": "blocker outside the craft role"
+    }
+  ],
+  "keep": [
+    {
+      "line": 79,
+      "quote": "You thought it would drop when you left. It drops when you walk in."
+    },
+    {
+      "line": 151,
+      "quote": "It wasn't her clock. It was your timetable."
+    },
+    {
+      "line": 164,
+      "quote": "Saying no isn't a plan. A ticket is."
+    }
+  ],
+  "error": "",
+  "output_sha256": "5a6d8bab4750a73f7a791155f387cbd0011b2f370738d608a427aefbb727f500",
+  "draft_sha256": "a28bcf102f589ac833c541134fc08fa7453bcf73a9580d1900c2e6d7e1d5fa69"
+}
