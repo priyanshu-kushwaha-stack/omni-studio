@@ -30,7 +30,8 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 
 | Command | What it does |
 |---|---|
-| `make test` | Upstream core suites, then `core/studio/tests`, then the engine's `core/engines/pou/tests` |
+| `make test` | All four suites (upstream, `core/studio/tests`, the Professor of Us and what-if engines) in parallel, one run at a time per machine (`tests` queue). A pass on a clean tree is cached by tree hash, shared by worktrees |
+| `make prepush` | What the pre-push hook runs: skips a tree that already passed, runs only `omni check` when a branch changes nothing but `channels/<slug>/videos/<id>/` folders the tests don't read, else `make test`. `python -m studio.testgate plan` says which; `OMNI_TESTGATE_FULL=1` forces the suites |
 | `make board CHANNEL=<slug>` | That channel's Backlot board, on a port from 4761. Port 4750 is the owner's other board |
 | `make new-channel SLUG=<slug>` | Same as `omni new-channel` |
 | `make links` / `omni link` | Re-create every channel's git-ignored playbook link. Run once after a fresh clone |
