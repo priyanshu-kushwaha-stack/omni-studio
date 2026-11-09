@@ -6,22 +6,28 @@ five, at the weekend slate session. The owner picks; G1 follows.
 
 ## Seats
 
-| Role | Model (2026-11-09) | Family |
+| Role | Model (owner, 2026-11-09 evening) | Family |
 |---|---|---|
-| Researcher | Claude Fable 5.1 | anthropic |
-| Researcher | GPT-5.6 Sol | openai |
-| Researcher | Gemini 4 Argon | google |
-| Researcher | Grok 4.7 | xai |
 | Researcher | Kimi K3 | moonshot |
-| Moderator | GLM 5.2 | zhipu (proposes nothing) |
+| Researcher | Gemini 4 Argon | google |
+| Researcher | GPT-5.6 Sol | openai |
+| Moderator | Claude Opus 5.5 | anthropic (proposes nothing; no anthropic model proposes) |
 
-All run through `cursor-agent -p --mode ask` from an empty folder, on the Cursor subscription. The session that runs
-the room only passes files, shuffles lists and computes medians by script; it gives no rating.
+Researchers run through `cursor-agent -p --mode ask` from an empty folder, on the Cursor subscription. The moderator
+runs as its own `claude -p --model claude-opus-5-5` call with tools off, given only the merge files: it is a separate
+call from the session, and the session that runs the room only passes files, shuffles lists and computes medians by
+script; it gives no rating.
+
+Why three, from the first run (`docs/research/2026-11-09-say-suppose-idea-room/r3/aggregate.json`): dropping any one
+of the five raters left the top five unchanged and moved at most one entry in the top ten (raters agreed at 0.84-0.93
+with the others' median). As sources, Kimi and Gemini supplied 9 of the 15 best single-proposer ideas and GPT two;
+Claude Fable and Grok one each. Claude Fable left so the moderator's family proposes nothing; Grok left as the
+slowest seat with the fewest top ideas. Each researcher brings 15 ideas instead of 10, so the pool stays near 45.
 
 ## Rounds
 
 1. **Ideas.** Each researcher alone, with the channel brief and the list of neighbours' titles not to copy, and no
-   other constraint, brings 10 what-ifs: title, tag, hook, wrong belief, mind-boggle, person, why now (with links).
+   other constraint, brings 15 what-ifs: title, tag, hook, wrong belief, mind-boggle, person, why now (with links).
 2. **Merge.** The moderator merges duplicates (same daydream and same twist become one entry, crediting every
    proposer), marks each entry against the pick card below without dropping it, and rates every entry.
 3. **Evidence.** Public demand evidence for each entry (recent same-format outliers, search signals), gathered from
