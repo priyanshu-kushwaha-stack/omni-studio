@@ -16,6 +16,23 @@ Exit codes of every `python -m studio.room` command: 0 ok, 1 checks failed, 2 us
 `seat`, `judge` and `report` validate `room.yaml` first and exit 2 if it is invalid. `seat` also exits 1 for a failed seat (a failed verdict) or when the call cap is
 reached (`CapReached`).
 
+## Before round 1 (owner, 2026-11-10: "I was waiting to provide my feedback for so long")
+
+1. **Check the set-up once, at the start, not when a step fails.** In a worktree: link the venv
+   (`ln -s ~/Exploration/projects/omni-studio/.venv .venv`; the pre-push hook runs `make test` with it), run
+   `python -m studio.cli link`, and run `pnpm install --frozen-lockfile` in `core/engines/whatif`.
+2. **Check today's call budget** before writing anything:
+   `sqlite3 ~/.local/state/omni-studio/room/ledger.sqlite "select count(*) from calls where substr(at,1,10)=date('now')"`
+   (UTC day). If what's left is less than one script's cap, ask the owner then, not hours later.
+3. **The owner sees the draft first.** Once the draft passes lint and `omni qc` (claims), show it to the owner right
+   away (a short owner page or the draft itself) and say the room is running. Do not hold the owner's read until the
+   room finishes; owner notes outrank the room, and an owner-notes round takes them in.
+4. **Don't wait on a timed-out seat.** A seat that exits 124 has used the whole timeout (600 s). Note it and go on
+   with the other seats' notes; spend its one re-run only when the round could otherwise ship. Start the slowest
+   seat (the viewer, on Grok) first.
+5. **Run `make test` once,** after the last edit and before the push, not after every step. A push must not be cut
+   short: run it in the background and check `git ls-remote origin <branch>` before opening the PR.
+
 ## Each round N (start at 1; stop at `rounds` in room.yaml)
 
 1. **Lint.** `python -m studio.room lint $V $G --round N --draft $V/script.md --config $CFG`
