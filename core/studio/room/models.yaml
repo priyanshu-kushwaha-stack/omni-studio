@@ -1,12 +1,13 @@
 # Model id -> family and the CLI that runs it. A seat whose model is missing here fails validation.
 # Ids are what the CLI accepts: `claude --model <id>` or `cursor-agent --model <id>` (cursor-agent --list-models).
 # timeout_s: seconds one seat or judge call may run before it is killed and recorded as failed (exit 124, not
-# retried). Default 600, at most 1800. grok-4.7-high's ok calls took 380-596 s on 2026-11-09 and every failure
-# stopped at exactly 600 s, so it gets twice its slowest ok call.
+# retried). Default 600, at most 1800. grok-4.7-high's ok G1 calls took 378-595 s on 2026-11-09 and every failure
+# stopped at exactly 600 s; its one G2 call run without that limit took 937 s. Twice its slowest ok call is over
+# the ceiling, so it gets the ceiling.
 models:
   claude-opus-5-5: {family: anthropic, cli: claude}
   claude-sonnet-5-5: {family: anthropic, cli: claude}
   gpt-5.6-sol-high: {family: openai, cli: cursor}
-  grok-4.7-high: {family: xai, cli: cursor, timeout_s: 1200}
+  grok-4.7-high: {family: xai, cli: cursor, timeout_s: 1800}
   gemini-3.7-flash-high: {family: google, cli: cursor}
   composer-2.5: {family: cursor, cli: cursor}
