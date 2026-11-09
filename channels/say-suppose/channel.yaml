@@ -7,7 +7,7 @@ risk_class: B                   # A | B | C. Original code-drawn art and a prese
 made_for_kids: false
 # Format name -> OpenMontage pipeline in core/openmontage/pipeline_defs/.
 formats:
-  story: studio-whatif            # 6 to 8 minutes, 16:9, seven owner gates. Shorts get their own pipeline later (style.md)
+  story: studio-whatif            # No length cap (style.md), 16:9, seven owner gates. Shorts get their own pipeline later (style.md)
 playbook: say-suppose              # Loads by name through styles/custom/say-suppose.yaml.
 voices: voices.yaml             # Relative to this folder.
 music:

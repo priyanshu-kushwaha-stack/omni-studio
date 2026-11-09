@@ -1,0 +1,1101 @@
+[
+ {
+  "id": "M34",
+  "title": "What If You Knew the Last Time You'd See Someone?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 9.0,
+  "mean": 9.2,
+  "min": 8.0,
+  "max": 10.0,
+  "scores": {
+   "claude-fable-5-1": 9.0,
+   "gpt-5.6-sol-high": 10.0,
+   "gemini-4-argon-high": 10.0,
+   "grok-4.7-high": 8.0,
+   "kimi-k3-high": 9.0,
+   "moderator": 9.0
+  },
+  "con": "A counter reading 42 over your mother at the door will stop a thumb and then spoil ordinary evenings.",
+  "pro": "The counter transforms ordinary family moments into suspense, grief and a memorable perspective on limited time."
+ },
+ {
+  "id": "M09",
+  "title": "What If You Got Paid Every Time Someone Thought of You?",
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "median": 9.0,
+  "mean": 8.8,
+  "min": 8.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 9.0,
+   "gpt-5.6-sol-high": 8.0,
+   "gemini-4-argon-high": 9.0,
+   "grok-4.7-high": 9.0,
+   "kimi-k3-high": 9.0,
+   "moderator": 8.0
+  },
+  "con": "Instantly checkable, funny, and lands on a melancholy truth about who really carries you.",
+  "pro": "Turns social vanity and the psychological spotlight effect into an unforgettable emotional reveal about a mother's constant quiet love."
+ },
+ {
+  "id": "M35",
+  "title": "What If You Could Sell One Year of Your Life?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 9.0,
+  "mean": 8.8,
+  "min": 8.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 8.0,
+   "gpt-5.6-sol-high": 9.0,
+   "gemini-4-argon-high": 9.0,
+   "grok-4.7-high": 9.0,
+   "kimi-k3-high": 9.0,
+   "moderator": 8.0
+  },
+  "con": "Hospital-bill stakes make the time-for-money trade painfully Indian and the keep-tapping escalation writes itself.",
+  "pro": "Medical debt forcing a child to sell years of life is the most painfully Indian premise here."
+ },
+ {
+  "id": "M26",
+  "title": "What If You Could Step Into Any Photo for 5 Minutes?",
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "median": 9.0,
+  "mean": 8.2,
+  "min": 7.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 9.0,
+   "gemini-4-argon-high": 9.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 9.0,
+   "moderator": 8.0
+  },
+  "con": "Five minutes in a rain-and-tea photograph, with someone standing just outside the frame, is a film this medium can shoot.",
+  "pro": "The five-minute rule, photographic boundaries and lost loved one create a cinematic story perfectly suited to layered paper sets."
+ },
+ {
+  "id": "M24",
+  "title": "What If You Saw Everyone's Real Odds of Success?",
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "median": 8.0,
+  "mean": 8.2,
+  "min": 7.0,
+  "max": 10.0,
+  "scores": {
+   "claude-fable-5-1": 8.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 10.0,
+   "grok-4.7-high": 9.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "Odds glowing over a coaching hall speaks directly to the exam-generation viewer's deepest fear.",
+  "pro": "A coaching-hall setting, glowing probability HUD, and self-fulfilling sibling twist hit the bullseye for exam-age Indian and global viewers alike."
+ },
+ {
+  "id": "M25",
+  "title": "What If You Could Fast-Forward the Boring Parts of Life?",
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "median": 8.0,
+  "mean": 8.0,
+  "min": 7.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 8.0,
+   "gpt-5.6-sol-high": 9.0,
+   "gemini-4-argon-high": 8.0,
+   "grok-4.7-high": 8.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "Skipping family dinners on autopilot is a quiet horror the commute-weary viewer will feel.",
+  "pro": "It begins with universal commute frustration and escalates into a chilling loss of continuity, memory and family presence."
+ },
+ {
+  "id": "M01",
+  "title": "What If You Could Hear Everything Said About You?",
+  "proposers": [
+   "Claude Fable 5.1",
+   "Kimi K3"
+  ],
+  "median": 8.0,
+  "mean": 7.8,
+  "min": 7.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 9.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 8.0,
+   "grok-4.7-high": 8.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "Gossip stats subvert paranoia nicely, though the escalation ceiling is modest.",
+  "pro": "It taps a universal social anxiety, and the 'mostly neutral' gossip data is a surprising, comforting flip."
+ },
+ {
+  "id": "M03",
+  "title": "What If You Could Never Forget Anything?",
+  "proposers": [
+   "Claude Fable 5.1",
+   "Gemini 4 Argon",
+   "Grok 4.7"
+  ],
+  "median": 8.0,
+  "mean": 7.6,
+  "min": 7.0,
+  "max": 8.0,
+  "scores": {
+   "claude-fable-5-1": 8.0,
+   "gpt-5.6-sol-high": 8.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 8.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "Directly subverts the board-exam fantasy of photographic memory with the real science of HSAM trapping people in un-fading emotional hurts.",
+  "pro": "The night before boards, perfect memory turns on the shouting from when you were nine and will not turn it off."
+ },
+ {
+  "id": "M38",
+  "title": "What If Everyone Could See Your Search History?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 7.5,
+  "mean": 7.75,
+  "min": 7.0,
+  "max": 9.0,
+  "scores": {
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 8.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 9.0,
+   "moderator": 8.0
+  },
+  "con": "Every search floating over you on the metro, including the 2am boards search your mother reads, is public shame this viewer already fears.",
+  "pro": "The 2 AM boards search floating above your head is the single most relatable exposure here."
+ },
+ {
+  "id": "M13",
+  "title": "What If Tomorrow Texted You Tonight?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 7.0,
+  "mean": 7.8,
+  "min": 7.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 9.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 9.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A gripping thriller with a damned-either-way dilemma and a clever base-rate insight.",
+  "pro": "The text about your mother's 8:10 bus is a whole thriller, and the false-alarm math keeps either choice dangerous."
+ },
+ {
+  "id": "M21",
+  "title": "What If You Could Save and Reload the Last 60 Seconds?",
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "median": 7.0,
+  "mean": 7.8,
+  "min": 6.0,
+  "max": 10.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 9.0,
+   "gemini-4-argon-high": 10.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "Snapping back the interview answer works until your father's heart attack sits two minutes before the save point.",
+  "pro": "A natural follow-up to the channel's first video that pairs effortless loop-animation reuse with an unforgettable third-act twist about your father."
+ },
+ {
+  "id": "M18",
+  "title": "What If You Could Erase Someone From Your Mind?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 7.0,
+  "mean": 7.6,
+  "min": 7.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 9.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 8.0,
+   "moderator": 8.0
+  },
+  "con": "A sharp neuroscience twist on Eternal Sunshine where deleting an ex unravels the associative memory network holding your late father's final voicemail.",
+  "pro": "A seductive power becomes a devastating family loss, with clear escalation and unusually strong emotional stakes."
+ },
+ {
+  "id": "M28",
+  "title": "What If Everyone Forgot You for a Day?",
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "median": 7.0,
+  "mean": 7.6,
+  "min": 7.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 8.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 9.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "A mother's polite chai greeting makes forgetting instantly heartbreaking, and the recognition science adds real depth.",
+  "pro": "Your mother offering you guest-chai is the whole film, and familiarity failing while the face still matches makes it worse."
+ },
+ {
+  "id": "M20",
+  "title": "What If You Woke Up as Your Parent?",
+  "proposers": [
+   "GPT-5.6 Sol",
+   "Grok 4.7"
+  ],
+  "median": 7.0,
+  "mean": 7.4,
+  "min": 7.0,
+  "max": 8.0,
+  "scores": {
+   "claude-fable-5-1": 8.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 8.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "Body-swap with your father on exam morning is peak relatability, though the premise is well-worn.",
+  "pro": "His aching knee, unread EMIs and a meeting in ten minutes, while he sits your final exam, is a swap this house already half lives."
+ },
+ {
+  "id": "M39",
+  "title": "What If You Could Switch Off Your Emotions for a Day?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 7.0,
+  "mean": 7.4,
+  "min": 7.0,
+  "max": 8.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 8.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 8.0,
+   "moderator": 8.0
+  },
+  "con": "Fear switching off the night before the exam, then nothing in your grandmother's hug, is this life plus a true decision-science turn.",
+  "pro": "Turns a relatable pre-exam wish into a devastating emotional and neurological trap backed by Damasio's decision-making research."
+ },
+ {
+  "id": "M05",
+  "title": "What If You Could Never Feel Pain?",
+  "proposers": [
+   "Claude Fable 5.1",
+   "Grok 4.7"
+  ],
+  "median": 7.0,
+  "mean": 7.2,
+  "min": 7.0,
+  "max": 8.0,
+  "scores": {
+   "claude-fable-5-1": 8.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A proven curiosity with a shocking real syndrome and a guilt-driven personal cost.",
+  "pro": "A superpower-turned-curse backed by shocking real SCN9A cases, and a genuine reframe of what pain is for."
+ },
+ {
+  "id": "M06",
+  "title": "What If You Were Paid in Hours of Your Life?",
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "median": 7.0,
+  "mean": 7.2,
+  "min": 6.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 9.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "The father's remaining balance is moving, but the title is abstract and the conceit echoes In Time.",
+  "pro": "It turns salary anxiety and a father's working life into one potent visual metaphor with exceptional Indian resonance."
+ },
+ {
+  "id": "M27",
+  "title": "What If Nobody Could Tell a Lie Within 10 Feet of You?",
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "median": 7.0,
+  "mean": 7.2,
+  "min": 7.0,
+  "max": 8.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 8.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A funny, escalating truth-aura with a strong partner scene, though the title is long and it echoes Liar Liar.",
+  "pro": "A 10-foot truth radius is a brilliant visual device for 2D animation that turns from office comedy into a claustrophobic trap in a small bedroom."
+ },
+ {
+  "id": "M02",
+  "title": "What If You Could Never Feel Fear Again?",
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "median": 7.0,
+  "mean": 7.0,
+  "min": 7.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "A fearless interview, a highway, and a hospital bed give the month a shape, with a sibling hurt while you feel nothing.",
+  "pro": "Reframes daily anxiety as protection with a barely-known, cinematic real case at its core."
+ },
+ {
+  "id": "M08",
+  "title": "What If You Felt Everyone's Pain?",
+  "proposers": [
+   "Claude Fable 5.1",
+   "Gemini 4 Argon"
+  ],
+  "median": 7.0,
+  "mean": 7.0,
+  "min": 7.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A packed commute makes radical empathy physically immediate, with the hospital abandonment providing a sharp moral reversal.",
+  "pro": "The packed-train opening and mirror-touch science are strong, and abandoning a hospitalised friend is a real cost."
+ },
+ {
+  "id": "M22",
+  "title": "What If ₹100 Appeared in Your Account Every Second?",
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "median": 7.0,
+  "mean": 7.0,
+  "min": 6.0,
+  "max": 8.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 8.0,
+   "moderator": 7.0
+  },
+  "con": "A hundred rupees a second ticking on the bus is irresistible until the freeze lands on your parents' home loan.",
+  "pro": "Free money triggering a bank freeze that swallows your parents' savings is dread every UPI user feels."
+ },
+ {
+  "id": "M37",
+  "title": "What If You Could Only Speak 100 Words a Day?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 7.0,
+  "mean": 7.0,
+  "min": 7.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "A counter that burns one word at a time, with a crying friend and nine left, is built for this kind of animation.",
+  "pro": "A scarcity constraint that turns every conversation into visible tension and matches the pause-time format."
+ },
+ {
+  "id": "M11",
+  "title": "What If Your AI Double Survived You?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 7.0,
+  "mean": 6.8,
+  "min": 5.0,
+  "max": 9.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 5.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 9.0,
+   "moderator": 8.0
+  },
+  "con": "The grieving mother hook is moving, but starting with 'you' already dead undermines the channel's second-person lived-experience engine.",
+  "pro": "The funeral phone call is an instant tap and deadbots are urgently, factually real right now."
+ },
+ {
+  "id": "M12",
+  "title": "What If Your Face Committed a Crime?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 7.0,
+  "mean": 6.8,
+  "min": 5.0,
+  "max": 8.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 5.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 8.0,
+   "moderator": 8.0
+  },
+  "con": "Reads more like a standard cyber-thriller plot than a personal what-if rule that subverts a human wish.",
+  "pro": "Deepfake CCTV plus the real $25M Hong Kong case makes 'your face did it' terrifyingly plausible."
+ },
+ {
+  "id": "M40",
+  "title": "What If You Had 60 Seconds With Your Past Self?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 7.0,
+  "mean": 6.8,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "One minute through a door to the you doing homework stages cleanly and runs on a familiar kind of regret.",
+  "pro": "An evergreen younger-self prompt dramatised by a hard 60-second constraint and a misfire ending."
+ },
+ {
+  "id": "M04",
+  "title": "What If You Only Needed 2 Hours of Sleep?",
+  "proposers": [
+   "Claude Fable 5.1",
+   "Gemini 4 Argon",
+   "Grok 4.7"
+  ],
+  "median": 7.0,
+  "mean": 6.6,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 6.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "Extra waking life is appealing and relatable, but loneliness must carry the middle once productivity consequences are established.",
+  "pro": "Directly rebutts hustle culture with a strange genetic fact and a lonely, earned cost."
+ },
+ {
+  "id": "M07",
+  "title": "What If You Lived a Second Life Every Night?",
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "median": 7.0,
+  "mean": 6.6,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "By month three you are grieving someone your waking partner has never met, which is a life splitting in two.",
+  "pro": "Two-way dream conversations are a great fact; identity-blur arc is solid but familiar."
+ },
+ {
+  "id": "M16",
+  "title": "What If Every Database Forgot You?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 7.0,
+  "mean": 6.6,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 6.0,
+   "moderator": 7.0
+  },
+  "con": "Aadhaar-era dread is real and the 850 million fact lands, but it is colder than the forgotten-by-mother version.",
+  "pro": "Viscerally captures modern urban India's reliance on digital IDs and UPI with strong family medical stakes, despite slightly dry title phrasing."
+ },
+ {
+  "id": "M29",
+  "title": "What If Every Lie Showed on Your Skin?",
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "median": 7.0,
+  "mean": 6.6,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "The lie about already eating, written along your forearm for the metro and then your father to read, draws itself.",
+  "pro": "Visible text is ideal for the animation style and turns tiny family lies into accumulating public and private consequences."
+ },
+ {
+  "id": "M33",
+  "title": "What If You Could Unsay One Sentence a Day?",
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "median": 7.0,
+  "mean": 6.6,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "Captures a tender dinner-table regret, but the mechanic of unsaying words while your mother's face retains the hurt is logically muddled.",
+  "pro": "This is intimate and visually elegant, but its quiet emotional scale demands exceptionally precise writing to retain viewers."
+ },
+ {
+  "id": "M32",
+  "title": "What If You Spoke Every Language Tonight?",
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "median": 7.0,
+  "mean": 6.4,
+  "min": 5.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 5.0,
+   "gpt-5.6-sol-high": 6.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 7.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "The parents' private language is a lovely Indian-household beat, but the title is flat and the premise is thin.",
+  "pro": "Code-switching Indian homes make the bus a wonder and the kitchen a betrayal; viewers stay for the translated sentence."
+ },
+ {
+  "id": "M17",
+  "title": "What If You Got Your Lifetime Salary Today?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 6.0,
+  "mean": 6.4,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 7.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 6.0,
+   "moderator": 7.0
+  },
+  "con": "Compelling payday hook, though savvy viewers will note that a lump sum invested in index funds or bonds outpaces inflation rather than sitting idle.",
+  "pro": "The balance-screen hook is excellent and inflation adds substance, though the story needs more than gradually dwindling money."
+ },
+ {
+  "id": "M15",
+  "title": "What If Your Dreams Went Live?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 6.0,
+  "mean": 6.2,
+  "min": 6.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 6.0,
+   "moderator": 7.0
+  },
+  "con": "A spicy viral-shame hook, but the science is thin and it overlaps the stronger search-history idea.",
+  "pro": "Merges livestream culture with the fear of being judged for thoughts you didn't choose; build is the stretch."
+ },
+ {
+  "id": "M30",
+  "title": "What If You Grew One Centimeter a Day?",
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "median": 6.0,
+  "mean": 6.2,
+  "min": 5.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 5.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "Good built-in escalation and square-cube science, but it leans body horror and constant re-rigging.",
+  "pro": "Square-cube law is a good boggle, but the daily-growth stakes escalate slowly."
+ },
+ {
+  "id": "M31",
+  "title": "What If You Met the You Who Stayed?",
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "median": 6.0,
+  "mean": 6.2,
+  "min": 5.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 5.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 8.0
+  },
+  "con": "A rich road-not-taken theme, but the title is cryptic and won't earn the tap.",
+  "pro": "The defining fork of this age, with both versions able to lose the parent, room or each other."
+ },
+ {
+  "id": "M41",
+  "title": "What If Your Dreams Were Someone Else's Real Life?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 6.0,
+  "mean": 6.2,
+  "min": 5.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 5.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A haunting daughter-who-vanishes idea, but it is distant from the viewer's life and needs a whole second world.",
+  "pro": "Its eerie opening and disappearing dream-family promise retention, though the factual insight is less novel than the fiction."
+ },
+ {
+  "id": "M42",
+  "title": "What If You Saw Your Future, But Couldn't Change It?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 6.0,
+  "mean": 6.2,
+  "min": 5.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 5.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A phone video of you crying with happiness in a year can nag, and the block-universe gloss stays a seminar.",
+  "pro": "The self-fulfilling future supplies a strong mystery engine, but block-universe exposition could overwhelm the human story."
+ },
+ {
+  "id": "M10",
+  "title": "What If You Could Switch Off Gravity for Yourself?",
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "median": 6.0,
+  "mean": 6.0,
+  "min": 4.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 4.0,
+   "gpt-5.6-sol-high": 6.0,
+   "gemini-4-argon-high": 7.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A fun metro float, but bone loss is a slow-motion payoff and it duplicates the other gravity idea.",
+  "pro": "The oldest fantasy turned into body-horror with a real lesson and clean animation potential."
+ },
+ {
+  "id": "M36",
+  "title": "What If Your Shadow Was Living Your Other Life?",
+  "proposers": [
+   "Kimi K3"
+  ],
+  "median": 6.0,
+  "mean": 6.0,
+  "min": 5.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 5.0,
+   "gpt-5.6-sol-high": 7.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 5.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "A shadow detaching at 3am is pure paper-cut, and quantum branching does not cash the life you followed it into.",
+  "pro": "The detached shadow is visually native to this channel and gives alternate-life regret a strong cinematic device."
+ },
+ {
+  "id": "M23",
+  "title": "What If You Could Speak Every Language on Earth Fluently?",
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "median": 6.0,
+  "mean": 5.6,
+  "min": 4.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 4.0,
+   "gpt-5.6-sol-high": 6.0,
+   "gemini-4-argon-high": 6.0,
+   "grok-4.7-high": 5.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "It turns into a generic powerful-people thriller, and the wish is not an everyday one.",
+  "pro": "The vanishing-dialect vendor is moving, but it duplicates M32 and skews less domestic."
+ },
+ {
+  "id": "M14",
+  "title": "What If You Could Sell Your Sleep?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 6.0,
+  "mean": 5.4,
+  "min": 4.0,
+  "max": 6.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 6.0,
+   "gemini-4-argon-high": 5.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 7.0
+  },
+  "con": "Sleep-selling is relatable but the arc (sell, crash) is linear and the science is familiar.",
+  "pro": "A marketplace frame makes the invisible sleep cost literal and exam-relatable."
+ },
+ {
+  "id": "M19",
+  "title": "What If Gravity Stopped Pulling You?",
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "median": 5.0,
+  "mean": 5.2,
+  "min": 4.0,
+  "max": 7.0,
+  "scores": {
+   "claude-fable-5-1": 5.0,
+   "gpt-5.6-sol-high": 4.0,
+   "gemini-4-argon-high": 4.0,
+   "grok-4.7-high": 6.0,
+   "kimi-k3-high": 7.0,
+   "moderator": 7.0
+  },
+  "con": "The orbital-physics reveal is strong, but the premise overlaps the other gravity idea and quickly leaves relatable human life behind.",
+  "pro": "The 30 km/s reveal is a genuine mind-boggle, though the emotional stakes arrive late."
+ },
+ {
+  "id": "M45",
+  "title": "What If You Stopped Aging at 25, and No One Else Did?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 5.0,
+  "mean": 5.0,
+  "min": 4.0,
+  "max": 6.0,
+  "scores": {
+   "claude-fable-5-1": 6.0,
+   "gpt-5.6-sol-high": 5.0,
+   "gemini-4-argon-high": 4.0,
+   "grok-4.7-high": 4.0,
+   "kimi-k3-high": 6.0,
+   "moderator": 8.0
+  },
+  "con": "A familiar immortality trope presented only as a sparse stub without a concrete six-minute dramatic engine.",
+  "pro": "A vanity wish with a brutal mother-keeps-ageing cost and a genuinely strange longevity boggle."
+ },
+ {
+  "id": "M43",
+  "title": "What If AI Took Your Job, and Everyone Else's?",
+  "proposers": [
+   "owner"
+  ],
+  "median": 4.0,
+  "mean": 4.0,
+  "min": 4.0,
+  "max": 4.0,
+  "scores": {
+   "claude-fable-5-1": 4.0,
+   "gpt-5.6-sol-high": 4.0,
+   "gemini-4-argon-high": 4.0,
+   "grok-4.7-high": 4.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 7.0
+  },
+  "con": "Feels like a generic macroeconomics news explainer on AI automation rather than an intimate, rule-driven Say Suppose story.",
+  "pro": "A live anxiety with a strong premise, but the boggle is thin until a deeper fact is sourced."
+ },
+ {
+  "id": "M46",
+  "title": "What If Your Dog Could Tell You What Hurts?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 4.0,
+  "mean": 4.0,
+  "min": 4.0,
+  "max": 4.0,
+  "scores": {
+   "claude-fable-5-1": 4.0,
+   "gpt-5.6-sol-high": 4.0,
+   "gemini-4-argon-high": 4.0,
+   "grok-4.7-high": 4.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 7.0
+  },
+  "con": "A disjointed stub that pivots abruptly from an aging pet to crow mask experiments without a cohesive narrative arc.",
+  "pro": "A tender pet daydream with a real animal-cognition boggle, but the stakes stay small."
+ },
+ {
+  "id": "M51",
+  "title": "What If You Were Invisible for a Day?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 4.0,
+  "mean": 3.8,
+  "min": 3.0,
+  "max": 5.0,
+  "scores": {
+   "claude-fable-5-1": 5.0,
+   "gpt-5.6-sol-high": 4.0,
+   "gemini-4-argon-high": 3.0,
+   "grok-4.7-high": 4.0,
+   "kimi-k3-high": 3.0,
+   "moderator": 7.0
+  },
+  "con": "A classic premise reduced to a one-line physics gotcha with almost no story engine.",
+  "pro": "A classic fantasy with a clever physics gotcha, but the emotional arc needs a stronger person."
+ },
+ {
+  "id": "M44",
+  "title": "What If You Got Paid Every Month for Nothing? (universal basic income)",
+  "proposers": [
+   "owner"
+  ],
+  "median": 4.0,
+  "mean": 3.6,
+  "min": 3.0,
+  "max": 4.0,
+  "scores": {
+   "claude-fable-5-1": 3.0,
+   "gpt-5.6-sol-high": 4.0,
+   "gemini-4-argon-high": 3.0,
+   "grok-4.7-high": 4.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 6.0
+  },
+  "con": "Reads like an economics explainer with a parenthetical title, and has no personal story engine.",
+  "pro": "A clean UBI daydream but the boggle and personal stakes need deepening to carry a full film."
+ },
+ {
+  "id": "M52",
+  "title": "What If All Money Vanished Overnight?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 4.0,
+  "mean": 3.4,
+  "min": 2.0,
+  "max": 4.0,
+  "scores": {
+   "claude-fable-5-1": 4.0,
+   "gpt-5.6-sol-high": 4.0,
+   "gemini-4-argon-high": 2.0,
+   "grok-4.7-high": 3.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 5.0
+  },
+  "con": "An incomplete stub with no human character at all and a trivial observation that most modern money is digital.",
+  "pro": "A strong abstract boggle but it lacks a personal engine to hold a 6+ minute felt story."
+ },
+ {
+  "id": "M47",
+  "title": "What If Your Clone Was Born Today?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 3.0,
+  "mean": 3.2,
+  "min": 2.0,
+  "max": 4.0,
+  "scores": {
+   "claude-fable-5-1": 4.0,
+   "gpt-5.6-sol-high": 3.0,
+   "gemini-4-argon-high": 3.0,
+   "grok-4.7-high": 2.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 7.0
+  },
+  "con": "A baby handed over as you spends the whole idea in that one correction.",
+  "pro": "A tidy misconception-buster but the emotional engine is modest until the clone's divergence is dramatised."
+ },
+ {
+  "id": "M48",
+  "title": "What If You Could Breathe Underwater, and He Couldn't?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 3.0,
+  "mean": 3.0,
+  "min": 2.0,
+  "max": 4.0,
+  "scores": {
+   "claude-fable-5-1": 2.0,
+   "gpt-5.6-sol-high": 3.0,
+   "gemini-4-argon-high": 2.0,
+   "grok-4.7-high": 4.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 7.0
+  },
+  "con": "A confusing pronoun in the title, elementary-school oxygen trivia, and a one-line story stub make this unworkable.",
+  "pro": "A strong sibling-danger hook, but the boggle is small and the world stays at the pool."
+ },
+ {
+  "id": "M49",
+  "title": "What If the Moon Vanished Tonight?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 3.0,
+  "mean": 3.0,
+  "min": 2.0,
+  "max": 4.0,
+  "scores": {
+   "claude-fable-5-1": 3.0,
+   "gpt-5.6-sol-high": 3.0,
+   "gemini-4-argon-high": 3.0,
+   "grok-4.7-high": 2.0,
+   "kimi-k3-high": 4.0,
+   "moderator": 6.0
+  },
+  "con": "Terrace chai under an empty moon stays a sky fact about smaller tides.",
+  "pro": "A neat physics correction but the personal stakes are thin without a stronger human thread."
+ },
+ {
+  "id": "M50",
+  "title": "What If You Won the Lottery Tomorrow?",
+  "proposers": [
+   "earlier research"
+  ],
+  "median": 3.0,
+  "mean": 3.0,
+  "min": 3.0,
+  "max": 3.0,
+  "scores": {
+   "claude-fable-5-1": 3.0,
+   "gpt-5.6-sol-high": 3.0,
+   "gemini-4-argon-high": 3.0,
+   "grok-4.7-high": 3.0,
+   "kimi-k3-high": 3.0,
+   "moderator": 6.0
+  },
+  "con": "A done-to-death premise with a mild finding and no real stakes or escalation.",
+  "pro": "Busts a real myth but the daydream is common and the felt stakes are low."
+ }
+]
