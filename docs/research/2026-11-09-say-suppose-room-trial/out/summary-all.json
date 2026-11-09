@@ -1,0 +1,706 @@
+{
+  "wall_s": 675,
+  "calls": [
+    {
+      "writer": "opus",
+      "model": "claude-opus-5-5",
+      "exit": 0,
+      "seconds": 208,
+      "attempts": 1,
+      "words": 1802
+    },
+    {
+      "writer": "fable",
+      "model": "claude-fable-5-1",
+      "exit": 0,
+      "seconds": 612,
+      "attempts": 1,
+      "words": 3637
+    },
+    {
+      "room": "current",
+      "seat": "first-time viewer",
+      "role": "viewer",
+      "model": "grok-4.7-high",
+      "exit": 0,
+      "seconds": 675,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "grok-4.7-high",
+        "family": "xai",
+        "status": "ok",
+        "scores": {
+          "story #2": 3,
+          "story #3": 7,
+          "story #4": 8,
+          "story #11": 4,
+          "the viewer's week": 5,
+          "K13": 9
+        },
+        "blockers": [
+          {
+            "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+            "why": "story #2: the first 7 seconds are this copying. The thumbnail is the shocked face and the crimson 0.04% chip, and that picture does not start until line 22, about 12 seconds in.",
+            "fix": "Copying her notes. Like every night. Also cut line 19 to \"Over every head.\" so the crimson chip and the 0.04% tag are on screen by about 5 seconds.",
+            "domain": "viewer",
+            "line": 17
+          },
+          {
+            "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+            "why": "story #11: this names what the shot already shows. I would leave here: the bat has just gone under the cupboard and nothing new happens to me.",
+            "fix": "That night, on the bus. They can't see what you see.",
+            "domain": "viewer",
+            "line": 119
+          },
+          {
+            "quote": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+            "why": "The viewer's week: the jogger and the boy asleep on a shop counter are not chai, the bus, exams, the office or family.",
+            "fix": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: the coaching centre's windows still lit, the chai stall's shutter half down, chips flickering over both.",
+            "domain": "viewer",
+            "line": 120
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 31,
+            "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+            "fix": "Move this to before the 2 second chair hold. At 0:30 I can already see one chair and I have heard the title, but the year and \"keep going?\" start just after 0:31."
+          },
+          {
+            "line": 38,
+            "quote": "> HOLD: 3 s. The ident: the title card (C) slides in on the channel's four-note signal while the camera drifts across the hall's glowing chips behind it.",
+            "fix": "Keep the four-note signal, but start the lane under it: the ball hits the wall while the card is up, so the three seconds are not only a logo."
+          },
+          {
+            "line": 127,
+            "quote": "> SCENE: A blink-long cut as the bus passes: the chai stall (the stall layers from before, plus a half-down shutter), the chaiwala dropping coins into a tin with a drawing of a second stall on it. His chip ticks up.",
+            "fix": "Line 82 already said the sixty-one is a second stall. Hang the new board and open the shutter, so this window shows the stall that happened, not the same reveal again."
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 114,
+            "quote": "He didn't even argue."
+          },
+          {
+            "line": 156,
+            "quote": "Out in the lane... thwack."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "current",
+      "seat": "retention editor",
+      "role": "story",
+      "model": "gpt-5.6-sol-high",
+      "exit": 0,
+      "seconds": 193,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "retention editor",
+        "role": "story",
+        "model": "gpt-5.6-sol-high",
+        "family": "openai",
+        "status": "ok",
+        "scores": {
+          "story": 8,
+          "retention": 8,
+          "must-pass compliance": 8,
+          "length (5\u20135.5 min; no post-8:00 reason required)": 10
+        },
+        "blockers": [
+          {
+            "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+            "why": "Story #5 and #6: the cost joins the city beat as \u201cand then,\u201d while the jogging/sleeping montage merely confirms the stated rule without an expectation gap or turn.",
+            "fix": "Replace with: \u201cAarav's zero follows you onto the last bus. Now the whole city looks different. Every head. Every number. All of them moving.\u201d Delete line 120 and cut directly to the teacher reveal.",
+            "domain": "story",
+            "line": 119
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 19,
+            "quote": "Then a little number lights up. Over every head.",
+            "fix": "Replace with: \u201cThen a little number lights up. Over every head. Nobody else looks up.\u201d This answers immediately whether anyone else can see the chips."
+          },
+          {
+            "line": 73,
+            "quote": "The stall. Stand where he stands, and his number's yours. Right?",
+            "fix": "Replace with: \u201cHis stall. His sixty-one. Stand where he stands, and his number's yours. Right?\u201d This makes your mistaken inference explicit before line 82 breaks it."
+          },
+          {
+            "line": 123,
+            "quote": "The teacher? He's sitting the exam himself. Again. His three was never about you.",
+            "fix": "Compress lines 123\u2013127 into a five-second montage: \u201cHis rank. Her music. His second stall. Their goals. Not yours.\u201d Reach the choice near 78\u201380% instead of letting the late explanations slow the third jump."
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 114,
+            "quote": "He didn't even argue."
+          },
+          {
+            "line": 136,
+            "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "both",
+      "seat": "fact-checker",
+      "role": "fact",
+      "model": "gemini-3.7-flash-high",
+      "exit": 0,
+      "seconds": 136,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "fact-checker",
+        "role": "fact",
+        "model": "gemini-3.7-flash-high",
+        "family": "google",
+        "status": "ok",
+        "scores": {
+          "factual_accuracy": 10
+        },
+        "blockers": [],
+        "suggestions": [],
+        "keep": [
+          {
+            "line": 87,
+            "quote": "Last year? About one in a thousand UPSC applicants got in (c01)."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "current",
+      "seat": "voice director",
+      "role": "voice",
+      "model": "claude-sonnet-5-5",
+      "exit": 0,
+      "seconds": 30,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "voice director",
+        "role": "voice",
+        "model": "claude-sonnet-5-5",
+        "family": "anthropic",
+        "status": "ok",
+        "scores": {
+          "Never say the feeling (#11)": 8,
+          "Leave fast, the last line (#12)": 9,
+          "Written to be spoken": 8,
+          "Landing lines finish": 8,
+          "Emotion carried per line": 7,
+          "Breath length at 1.1x": 8
+        },
+        "blockers": [
+          {
+            "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+            "why": "Fails #11. It narrates exactly what the scene on line 118 and the 2.5 s hold already show: a city passing with a chip over every head, each one changing. The picture does the work, and the line only repeats it.",
+            "fix": "Replace with a line the picture doesn't carry: \"Last bus home. You've stopped checking your own.\" Alternatively cut the line and let the hold carry the city.",
+            "domain": "voice",
+            "line": 119
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 33,
+            "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+            "fix": "It reads like an explainer. Split it into three short takes: \"Each chip is a chance. One person's. At the one thing they'd choose... with nobody watching.\" Then: \"It never says what that thing is.\" Direction: [curious, dry]."
+          },
+          {
+            "line": 87,
+            "quote": "Last year? About one in a thousand UPSC applicants got in (c01).",
+            "fix": "Add to say.yaml: UPSC -> \"U-P-S-C\". Read the cite as silent."
+          },
+          {
+            "line": 126,
+            "quote": "Her eight was music, all along. A year of notes... copied from someone who doesn't want the exam.",
+            "fix": "The second sentence is too long for one breath and works like an essay. Use: \"Her eight was music. All along. A year of her notes... and she never wanted the exam.\""
+          },
+          {
+            "line": 82,
+            "quote": "His sixty-one was never about tea. It's a second stall. His goal.",
+            "fix": "Add the emotion direction [flat, dawning], with a breath before \"His goal.\""
+          },
+          {
+            "line": 141,
+            "quote": "Zero point two. Same as before.",
+            "fix": "Add the direction [warm, quietly relieved], and keep \"But it's his. And it's moving.\" as the landing in the same take."
+          },
+          {
+            "line": 158,
+            "quote": "Would you want to see your number? Tell us below.",
+            "fix": "Add the direction [warm, light], a real beat after \"thwack\" before the line, and no tempo lift."
+          },
+          {
+            "line": 62,
+            "quote": "Eight per cent. The notes you copy all year... at eight.",
+            "fix": "Say.yaml: \"8%\" is spoken \"eight per cent\". Keep the line, with the direction [a small drop] already in the notes."
+          }
+        ],
+        "keep": [
+          {
+            "line": 22,
+            "quote": "And yours says... zero point zero four per cent."
+          },
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 110,
+            "quote": "Quit."
+          },
+          {
+            "line": 156,
+            "quote": "Out in the lane... thwack."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "current",
+      "seat": "animator",
+      "role": "craft",
+      "model": "claude-sonnet-5-5",
+      "exit": 0,
+      "seconds": 30,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "animator",
+        "role": "craft",
+        "model": "claude-sonnet-5-5",
+        "family": "anthropic",
+        "status": "ok",
+        "scores": {
+          "buildable this week (pick card #8)": 7,
+          "cue sheet intent (sound #1)": 9,
+          "music follows the story (sound #3)": 8,
+          "staging and cadence (2 to 4 s change, holds)": 8,
+          "on-screen text and safe area": 8,
+          "continuity and reuse": 7
+        },
+        "blockers": [],
+        "suggestions": [
+          {
+            "line": 132,
+            "quote": "In its glass door, your head and chip sprite flipped at about a quarter strength (cut it if it costs the week).",
+            "fix": "Decide now and cut it. Stage the kneel as a side-on silhouette against the dark gap with your chip lit beside you. That keeps the week's long pole (the city of chips on the bus, lines 118-130) free of a reflection effect."
+          },
+          {
+            "line": 118,
+            "quote": "Outside, the city passes, and over every head in it a chip: thousands, flickering, each one changing as its person moves.",
+            "fix": "Build it as two or three drifting layers of one instanced chip sprite from the rule-device kit, with only the jogger, the sleeping boy and the lit windows animated. Do not rig thousands of separate chips."
+          },
+          {
+            "line": 127,
+            "quote": "the chai stall (the stall layers from before, plus a half-down shutter)",
+            "fix": "Reuse the stall set from line 64 and add only the shutter and the tin with the second-stall drawing. Name the new props: shutter, coin tin, fee slip. Name the reused ones: hall, chair grid (lines 26 and 85), lane wall and wicket, taped bat, apron, kettle."
+          },
+          {
+            "line": 154,
+            "quote": "The crimson chip above you, out of focus.",
+            "fix": "At line 151 the chip sits at the edge of the frame, and the last 15 s keep the right third quiet. Put you and the chip in the left two-thirds, with the chip left of your head, so nothing blurred drifts into the end-screen third."
+          },
+          {
+            "line": 64,
+            "quote": "a figure in a long dark coat with a crimson head, and no chip over him at all.",
+            "fix": "Hold the stranger on screen for at least 1 s, and place him by the kettle rather than behind steam. The second-watch plant should read when the viewer rewinds. Make the missing chip the visible tell."
+          },
+          {
+            "line": 97,
+            "quote": "a small stamped paper tag that says SUBSCRIBE. No sound.",
+            "fix": "The cost beat starts right after the midpoint swell, so keep this tag small and low-left, with no cue change at the notice board. It must not read as the reveal of the chip stirring."
+          },
+          {
+            "line": 74,
+            "quote": "Montage, under a second each: you pour tea onto your own shoe; you count change wrong; you nap on a sack of tea leaves.",
+            "fix": "Give the montage three distinct poses and a one-frame camera nudge between them, so it reads in 2.5 s. This is the only stretch with three gags and no spoken line."
+          }
+        ],
+        "keep": [
+          {
+            "line": 37,
+            "quote": "The biggest number is the right choice."
+          },
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 156,
+            "quote": "Out in the lane... thwack."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "persona",
+      "seat": "first-time viewer",
+      "role": "viewer",
+      "model": "gemini-3.7-flash-high",
+      "exit": 0,
+      "seconds": 159,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "gemini-3.7-flash-high",
+        "family": "google",
+        "status": "ok",
+        "scores": {
+          "first_time_viewer": 9,
+          "pacing_and_hook": 9,
+          "relatability": 10
+        },
+        "blockers": [],
+        "suggestions": [
+          {
+            "line": 38,
+            "quote": "The ident: the title card (C) slides in on the channel's four-note signal while the camera drifts across the hall's glowing chips behind it.",
+            "fix": "Keep the title card hold strictly under 2 s so the energy from the opening hook doesn't feel like an exit point before we land in the lane with Aarav."
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 114,
+            "quote": "He didn't even argue."
+          },
+          {
+            "line": 136,
+            "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "persona",
+      "seat": "story editor",
+      "role": "story",
+      "model": "gpt-5.6-sol-high",
+      "exit": 0,
+      "seconds": 160,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "story editor",
+        "role": "story",
+        "model": "gpt-5.6-sol-high",
+        "family": "openai",
+        "status": "ok",
+        "scores": {
+          "five-line spine": 9,
+          "but/therefore causality": 7,
+          "expectation gaps": 7,
+          "misconception first": 8,
+          "earned stakes": 9,
+          "ending": 9,
+          "length": 10
+        },
+        "blockers": [
+          {
+            "quote": "Row three. Your own notes this time. And the chip... stirs.",
+            "why": "Check #6 Every use has a gap fails: you choose your own notes expecting improvement, and receive exactly that.",
+            "fix": "Replace with: \u201cRow three. Your own notes. You expect a jump. The chip barely twitches.\u201d",
+            "domain": "story",
+            "line": 96
+          },
+          {
+            "quote": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+            "why": "Check #5 But / therefore fails: this montage only repeats that chips move with actions; it creates no turn.",
+            "fix": "Cut this hold and move directly from the city reveal to the teacher\u2019s window, beginning a montage that turns your understanding of what the numbers represent.",
+            "domain": "story",
+            "line": 120
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 80,
+            "quote": "> SCENE: The chaiwala's chip turns over like a card. On its back, a stamped label.",
+            "fix": "Keep chips numeral-only. Reveal the second-stall goal through his coin tin or drawing, and likewise reveal the teacher\u2019s and topper\u2019s goals through their actions; remove the goal tags at lines 81, 122 and 125."
+          },
+          {
+            "line": 74,
+            "quote": "> HOLD: 2.5 s. Montage, under a second each: you pour tea onto your own shoe; you count change wrong; you nap on a sack of tea leaves. Above, in the coaching centre's lit window, the batch goes on without you.",
+            "fix": "Replace the familiar incompetence gags with one premise-specific reversal: you copy the chaiwala\u2019s high pour perfectly, but his chip stays at sixty-one while yours falls and the mock papers appear upstairs."
+          },
+          {
+            "line": 89,
+            "quote": "You've been wearing the crowd's number. Like a verdict.",
+            "fix": "Replace with: \u201cYour number started with the crowd. You wore it like a verdict.\u201d"
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 114,
+            "quote": "He didn't even argue."
+          },
+          {
+            "line": 136,
+            "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "persona",
+      "seat": "director",
+      "role": "craft",
+      "model": "claude-fable-5-1",
+      "exit": 0,
+      "seconds": 173,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "director",
+        "role": "craft",
+        "model": "claude-fable-5-1",
+        "family": "anthropic",
+        "status": "ok",
+        "scores": {
+          "confirm_the_click_7s": 4,
+          "second_hook_by_0_30": 5,
+          "premise_picture_before_midpoint": 4,
+          "turn_breaks_a_said_line": 9,
+          "bomb_under_the_table": 6,
+          "face_thing_face": 6,
+          "signposts_every_90s": 8,
+          "two_plus_two": 6,
+          "ending_surprising_but_traceable": 8,
+          "overall_craft": 6
+        },
+        "blockers": [
+          {
+            "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+            "why": "Check #2, confirm the click. The thumbnail is you, shocked, beside a crimson 0.04% chip. This line alone runs about 6 to 7 s at Arthur's tempo, so the first chip appears at about 7 s and your crimson chip (line 20) at about 11 s. The first 7 s show only a student copying notes.",
+            "fix": "Trim the line and let the picture run ahead of the voice. Line 17 becomes 'Row three. Copying the topper's notes. Like every night.' Start line 18's flutter at about 2 s, under 'topper's notes'. In that same wide, your chip is already the one crimson chip in the warm-white field, and your pen stops and your head tips up to it by 5 to 6 s. Line 19 becomes 'A number. Over every head.' The close-up (your face, the chip with its 0.04% tag, your face again with eyes wide) lands on 'And yours says...'.",
+            "domain": "craft",
+            "line": 17
+          },
+          {
+            "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+            "why": "Check #3, second hook by 0:30. On the draft's own clock the rule beat starts at 0:20. Lines 27 and 28 (about 8 s) and the 2 s hold at line 29 come first, so this line starts at about 0:30 and 'keep going?' lands at about 0:36. At 0:30 the viewer has a number and a chair grid, but not what you lose or the question.",
+            "fix": "Move lines 30 and 31 to directly after line 23, before the pull-up. Your eyes drop from the chip to the fee receipt, go to the wall clock, then back up to the chip, over 'A year of fees. A year of your life. On that number. So... keep going?'. That lands by about 0:27, or about 0:23 with the opening trim. Lines 26 to 29 then answer it: 'What's that, in people? One chair. Out of two thousand five hundred.', with the hold on the pulsing chair. Put the fee receipt in line 15's set so it is in frame from the first second.",
+            "domain": "craft",
+            "line": 31
+          },
+          {
+            "quote": "His chip drains from warm white to grey and flips to zero (3 s);",
+            "why": "Check #8, a picture only this premise can show. The outline's named picture (the drain, planned at about 45%) now sits in a HOLD at about 3:22 of a roughly 5:10 film. That is about 65%, past the midpoint at about 2:35. No SCENE line before the midpoint names one.",
+            "fix": "Leave the drain where it is; the cost belongs near 60%. Name a second premise picture before the midpoint by rewriting line 77: '> SCENE: The picture only this premise can show. Wide on the stall: you in the apron, pouring, directly under the chaiwala's steady 61%; beside it your own crimson chip, its cards fluttering down from 0.04 to 0.02 with each cup; in the lit window above, the batch's chips tick up without you. Close on your face: you look up at your own chip, worried.' At about 2:07 this is roughly 40%. It also shows that a chip falls when its owner stops, which arms the drain a minute ahead.",
+            "domain": "craft",
+            "line": 111
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 51,
+            "quote": "He hits one cleanly, a crisp thwack, and points the bat at you, grinning. The light goes.",
+            "fix": "Put the bomb under the table here. Add: 'On the clean hit his chip's cards flutter upward for an instant; you are already jogging after the ball, back to camera, and do not see it.' The viewer then knows his number moves with what he does two minutes before line 106 says 'His... you just read', and every second before 'Quit.' is suspense. It also sets up 'And it's moving' at line 142."
+          },
+          {
+            "line": 107,
+            "quote": "Close on the fee slip in Aarav's hands.",
+            "fix": "Give the scene a clock. Stamp the slip 'LAST DATE: TOMORROW' in the insert, so the answer cannot wait until morning and the lamp push has something ticking under it."
+          },
+          {
+            "line": 108,
+            "quote": "And the biggest number is the right choice. Isn't it?",
+            "fix": "Cut 'Isn't it?'. The planted line should be said a second time with full certainty. The viewer, who saw the chip flutter in the lane, supplies the doubt, and the 9 s hold breaks the line without the narrator flinching first."
+          },
+          {
+            "line": 113,
+            "quote": "Aarav walks to his room. Close on the dark gap under the cupboard.",
+            "fix": "The peak has no second face. Before the gap, add: 'Your hand still held out at the height his shoulder was. Close on your face: eyes on the grey 0%, afraid.' That gives face (crouched, kind), thing (the drain), face (afraid) within 2 s of the tag. 'He didn't even argue.' then plays over the gap."
+          },
+          {
+            "line": 80,
+            "quote": "The chaiwala's chip turns over like a card. On its back, a stamped label.",
+            "fix": "Cut it as face, thing, face. Your face looks up from the kettle, puzzled; the chip turns to SECOND STALL; your face again, kettle stopped mid-pour, brows dropping to sceptical then sheepish. Right now the midpoint reveal has no reaction shot."
+          },
+          {
+            "line": 82,
+            "quote": "It's a second stall. His goal.",
+            "fix": "Cut 'His goal.' The stamped tag and line 33's 'the one thing they'd choose' already give the viewer 2 + 2. The line becomes 'His sixty-one was never about tea. It's a second stall.' and 'Only their apron.' lands sooner."
+          },
+          {
+            "line": 91,
+            "quote": "Copying their notes was never going to copy their number.",
+            "fix": "Cut it. It is the third explaining line in a row over an empty hall, straight after the one sourced number (the lecture Riya leaves on). It also spends the topper reveal early; line 126 pays this off better. Let line 88's hold do the work, with your crimson chip sitting lower than the white rows, and go from 'But yours moved. Down.' straight to untying the apron."
+          },
+          {
+            "line": 118,
+            "quote": "The last bus home, your forehead against the window.",
+            "fix": "Stage the city reveals through your reflection in the bus glass, so each window is face, thing, face. Teacher's form: a half-smile. Topper's keyboard: the smile goes rueful and your eyes drop to the notebook in your lap. Aarav's dark window: the reflection goes still, stricken. Three named reactions make this a turn rather than a montage."
+          },
+          {
+            "line": 142,
+            "quote": "But it's his. And it's moving.",
+            "fix": "Cut 'But it's his.' It states the moral that line 139's hold (he takes the bat in both hands and runs) has just shown. Keep 'Zero point two. Same as before. And it's moving.'"
+          },
+          {
+            "line": 33,
+            "quote": "Here's how it works.",
+            "fix": "Cut these four words; they are the teacher's voice. Start on 'Each chip is one person's chance...' and keep 'It never tells you what that thing is.' said lightly, as a throwaway. It is the plant for MUSIC and HIS OWN RANK and should not be flagged."
+          },
+          {
+            "line": 155,
+            "quote": "Through the hall's open window, far off: a ball off a bat.",
+            "fix": "The lane is a bus ride from the hall (line 118), so the last sound has no source the viewer has seen. Plant the open window in line 15's set, at the end of row three with only traffic outside. The ending then pays off the copied notes (17 to 152), the promise and thwack (50-51 to 146 and 156), and a window that was silent in the opening."
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 111,
+            "quote": "The bat tips, rolls across the floor in slow motion and under the cupboard, out of sight (2 s). The lamp stays."
+          },
+          {
+            "line": 153,
+            "quote": "The topper's desk stays empty."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "room": "persona",
+      "seat": "voice actor",
+      "role": "voice",
+      "model": "claude-sonnet-5-5",
+      "exit": 0,
+      "seconds": 24,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "voice actor",
+        "role": "voice",
+        "model": "claude-sonnet-5-5",
+        "family": "anthropic",
+        "status": "ok",
+        "scores": {
+          "intention per line": 8,
+          "breath at 1.1x": 7,
+          "ear-causation (so/but/which means)": 7,
+          "landing lines": 8,
+          "never say the feeling (#11)": 8,
+          "leave fast, last line (#12)": 9,
+          "silence and holds": 8
+        },
+        "blockers": [
+          {
+            "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+            "why": "Check #11: the line only narrates what the picture shows in the next beat. The scene note has the city of chips passing the window, and the 2.5 s hold has the jogger brightening and the sleeping boy dimming. I have nothing to play except reading the picture back.",
+            "fix": "Cut the three descriptive fragments and say only: \"That night. The last bus.\" Then let the 2.5 s hold carry the city with no narration over it.",
+            "domain": "voice",
+            "line": 119
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 33,
+            "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+            "fix": "That is too long for one breath at 1.1x. Split it into three takes: \"Here's how it works.\" / \"Each chip is one person's chance at the one thing they'd choose... with nobody watching.\" / \"It never tells you what that thing is.\""
+          },
+          {
+            "line": 108,
+            "quote": "Zero point two. Against the family's money. And the biggest number is the right choice. Isn't it?",
+            "fix": "The \"And\" is a sum, not a cause. Play it as self-persuasion: \"Zero point two. Against the family's money. So... the biggest number is the right choice. Isn't it?\" This turns the planted line against you, and the \"Isn't it?\" is you daring yourself."
+          },
+          {
+            "line": 54,
+            "quote": "But Aarav's tiny number follows you into the hall. So you look for certainty. The teacher.",
+            "fix": "The three sentences run on one breath. Take \"But Aarav's tiny number follows you into the hall.\" as one line, a breath, then \"So you look for certainty.\" and a short \"The teacher.\" as its own take. The narration notes already ask for this."
+          },
+          {
+            "line": 19,
+            "quote": "Then a little number lights up. Over every head.",
+            "fix": "The picture shows this, but the line orients the viewer in the first seconds, so keep it. Give it one verb to play, to tease, and trim to \"Then a number lights up. Over every head.\""
+          },
+          {
+            "line": 90,
+            "quote": "But yours moved. Down.",
+            "fix": "The two lines before it (\"You've been wearing the crowd's number. Like a verdict.\") are in the same quiet register, so the thought can trail. Land it whole: \"But yours moved. It went down.\" Then the next line finishes it."
+          },
+          {
+            "line": 123,
+            "quote": "The teacher? He's sitting the exam himself. Again. His three was never about you.",
+            "fix": "Two reveals sit back to back, the teacher and the topper. Add a short `> HOLD: 1 s` of bus hum between them so the topper's \"Her eight was music\" is a new beat, not another item on a list."
+          },
+          {
+            "line": 134,
+            "quote": "Or give it back... and let him choose?",
+            "fix": "Say it as a flat, quiet dare, not a quiz. The figure answers at once, so cut the held breath in the narration notes after \"choose?\" and go straight into the hand reaching for the gap."
+          },
+          {
+            "line": 158,
+            "quote": "Would you want to see your number? Tell us below.",
+            "fix": "Say it in one warm, low take with a real beat after \"thwack\", so the last image keeps its moment. \"Tell us below\" can be dropped if the comment tag already says it; the question alone is lighter."
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 110,
+            "quote": "Quit."
+          },
+          {
+            "line": 156,
+            "quote": "Out in the lane... thwack."
+          }
+        ],
+        "error": ""
+      }
+    }
+  ]
+}

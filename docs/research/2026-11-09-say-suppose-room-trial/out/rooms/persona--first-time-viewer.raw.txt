@@ -1,0 +1,31 @@
+```json
+{
+  "scores": {
+    "first_time_viewer": 9,
+    "pacing_and_hook": 9,
+    "relatability": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "The ident: the title card (C) slides in on the channel's four-note signal while the camera drifts across the hall's glowing chips behind it.",
+      "fix": "Keep the title card hold strictly under 2 s so the energy from the opening hook doesn't feel like an exit point before we land in the lane with Aarav."
+    }
+  ],
+  "keep": [
+    {
+      "line": 83,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 114,
+      "quote": "He didn't even argue."
+    },
+    {
+      "line": 136,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    }
+  ]
+}
+```

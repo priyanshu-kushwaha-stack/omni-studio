@@ -1,0 +1,81 @@
+{
+  "room": "current",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "exit": 0,
+  "seconds": 675,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "grok-4.7-high",
+    "family": "xai",
+    "status": "ok",
+    "scores": {
+      "story #2": 3,
+      "story #3": 7,
+      "story #4": 8,
+      "story #11": 4,
+      "the viewer's week": 5,
+      "K13": 9
+    },
+    "blockers": [
+      {
+        "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+        "why": "story #2: the first 7 seconds are this copying. The thumbnail is the shocked face and the crimson 0.04% chip, and that picture does not start until line 22, about 12 seconds in.",
+        "fix": "Copying her notes. Like every night. Also cut line 19 to \"Over every head.\" so the crimson chip and the 0.04% tag are on screen by about 5 seconds.",
+        "domain": "viewer",
+        "line": 17
+      },
+      {
+        "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+        "why": "story #11: this names what the shot already shows. I would leave here: the bat has just gone under the cupboard and nothing new happens to me.",
+        "fix": "That night, on the bus. They can't see what you see.",
+        "domain": "viewer",
+        "line": 119
+      },
+      {
+        "quote": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+        "why": "The viewer's week: the jogger and the boy asleep on a shop counter are not chai, the bus, exams, the office or family.",
+        "fix": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: the coaching centre's windows still lit, the chai stall's shutter half down, chips flickering over both.",
+        "domain": "viewer",
+        "line": 120
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 31,
+        "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+        "fix": "Move this to before the 2 second chair hold. At 0:30 I can already see one chair and I have heard the title, but the year and \"keep going?\" start just after 0:31."
+      },
+      {
+        "line": 38,
+        "quote": "> HOLD: 3 s. The ident: the title card (C) slides in on the channel's four-note signal while the camera drifts across the hall's glowing chips behind it.",
+        "fix": "Keep the four-note signal, but start the lane under it: the ball hits the wall while the card is up, so the three seconds are not only a logo."
+      },
+      {
+        "line": 127,
+        "quote": "> SCENE: A blink-long cut as the bus passes: the chai stall (the stall layers from before, plus a half-down shutter), the chaiwala dropping coins into a tin with a drawing of a second stall on it. His chip ticks up.",
+        "fix": "Line 82 already said the sixty-one is a second stall. Hang the new board and open the shutter, so this window shows the stall that happened, not the same reveal again."
+      }
+    ],
+    "keep": [
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 114,
+        "quote": "He didn't even argue."
+      },
+      {
+        "line": 156,
+        "quote": "Out in the lane... thwack."
+      }
+    ],
+    "error": ""
+  }
+}

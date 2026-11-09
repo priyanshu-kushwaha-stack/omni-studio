@@ -1,0 +1,13 @@
+{
+  "scores": {
+    "factual_accuracy": 10
+  },
+  "blockers": [],
+  "suggestions": [],
+  "keep": [
+    {
+      "line": 87,
+      "quote": "Last year? About one in a thousand UPSC applicants got in (c01)."
+    }
+  ]
+}
