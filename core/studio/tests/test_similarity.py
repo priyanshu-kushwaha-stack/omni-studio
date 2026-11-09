@@ -12,8 +12,10 @@ from PIL import Image
 
 from studio import channels, cli, similarity
 
-WORDS = ("tails apes embryo week sixth body gene jumping mice spine price tripod coccyx muscle sitting bone "
-         "million years ago scientists found suspect twist loop cells cleared family tree branch").split()
+WORDS = (
+    "tails apes embryo week sixth body gene jumping mice spine price tripod coccyx muscle sitting bone "
+    "million years ago scientists found suspect twist loop cells cleared family tree branch"
+).split()
 
 
 def _script(seed: int, n=120) -> str:

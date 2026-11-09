@@ -36,9 +36,11 @@ from studio import channels
 from studio.publish import youtube
 
 # The scopes youtubeuploader asks for (run.go): upload, partner, and youtube (channels.list / videos.list).
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
-          "https://www.googleapis.com/auth/youtubepartner",
-          "https://www.googleapis.com/auth/youtube"]
+SCOPES = [
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtubepartner",
+    "https://www.googleapis.com/auth/youtube",
+]
 DEFAULT_REDIRECT = "http://localhost:8080/oauth2callback"
 AUTH_URI = "https://accounts.google.com/o/oauth2/auth"
 TOKEN_URI = "https://oauth2.googleapis.com/token"
@@ -56,8 +58,10 @@ def check_redirect(redirect: str) -> str:
     """Only an http loopback redirect URI with an explicit host is allowed."""
     parsed = urllib.parse.urlparse(redirect)
     if parsed.scheme != "http" or (parsed.hostname or "").lower() not in LOOPBACK_HOSTS:
-        raise AuthRefused(f"redirect URI {redirect!r} is not loopback (http://localhost, 127.0.0.1 or [::1]); "
-                          "refused before consent, nothing written")
+        raise AuthRefused(
+            f"redirect URI {redirect!r} is not loopback (http://localhost, 127.0.0.1 or [::1]); "
+            "refused before consent, nothing written"
+        )
     return redirect
 
 
@@ -114,10 +118,15 @@ def wait_for_code(redirect: str, state: str, timeout: float = 300) -> str:
     return result["code"]
 
 
-def authorize(slug: str, *, replace: bool = False,
-              open_url: Callable[[str], object] = webbrowser.open,
-              get_code: Callable[[str, str], str] = wait_for_code,
-              opener=urllib.request.urlopen, say: Callable[[str], None] = print) -> Path:
+def authorize(
+    slug: str,
+    *,
+    replace: bool = False,
+    open_url: Callable[[str], object] = webbrowser.open,
+    get_code: Callable[[str, str], str] = wait_for_code,
+    opener=urllib.request.urlopen,
+    say: Callable[[str], None] = print,
+) -> Path:
     channel = channels.load_channel(slug)
     expected = channel.config.youtube_channel_id
     if not expected:
@@ -129,35 +138,64 @@ def authorize(slug: str, *, replace: bool = False,
     redirect = check_redirect((client.get("redirect_uris") or [DEFAULT_REDIRECT])[0])
     state = pysecrets.token_urlsafe(24)
     verifier, challenge = pkce_pair()
-    url = (client.get("auth_uri") or AUTH_URI) + "?" + urllib.parse.urlencode({
-        "client_id": client["client_id"], "redirect_uri": redirect, "response_type": "code",
-        "scope": " ".join(SCOPES), "access_type": "offline", "prompt": "consent", "state": state,
-        "code_challenge": challenge, "code_challenge_method": "S256"})
-    say(f"Opening Google consent for {slug}. Pick the channel {expected} (the brand account, not a personal "
-        f"channel). If no browser opens, visit:\n{url}")
+    url = (
+        (client.get("auth_uri") or AUTH_URI)
+        + "?"
+        + urllib.parse.urlencode(
+            {
+                "client_id": client["client_id"],
+                "redirect_uri": redirect,
+                "response_type": "code",
+                "scope": " ".join(SCOPES),
+                "access_type": "offline",
+                "prompt": "consent",
+                "state": state,
+                "code_challenge": challenge,
+                "code_challenge_method": "S256",
+            }
+        )
+    )
+    say(
+        f"Opening Google consent for {slug}. Pick the channel {expected} (the brand account, not a personal "
+        f"channel). If no browser opens, visit:\n{url}"
+    )
     open_url(url)
     code = get_code(redirect, state)
 
-    body = urllib.parse.urlencode({"code": code, "client_id": client["client_id"],
-                                   "client_secret": client["client_secret"], "redirect_uri": redirect,
-                                   "grant_type": "authorization_code", "code_verifier": verifier}).encode()
+    body = urllib.parse.urlencode(
+        {
+            "code": code,
+            "client_id": client["client_id"],
+            "client_secret": client["client_secret"],
+            "redirect_uri": redirect,
+            "grant_type": "authorization_code",
+            "code_verifier": verifier,
+        }
+    ).encode()
     with opener(urllib.request.Request(client.get("token_uri") or TOKEN_URI, data=body), timeout=30) as resp:
         grant = json.loads(resp.read())
     if not grant.get("refresh_token"):
         raise AuthRefused("Google returned no refresh token; nothing written")
 
-    request = urllib.request.Request(f"{API}/channels?part=id&mine=true",
-                                     headers={"Authorization": f"Bearer {grant['access_token']}"})
+    request = urllib.request.Request(
+        f"{API}/channels?part=id&mine=true", headers={"Authorization": f"Bearer {grant['access_token']}"}
+    )
     with opener(request, timeout=30) as resp:
         items = json.loads(resp.read()).get("items", [])
     mine = items[0]["id"] if items else None
     if mine != expected:
-        raise AuthRefused(f"consent was given for channel {mine}, not {expected}; refused, no token written. "
-                          "Run again and pick the right channel.")
+        raise AuthRefused(
+            f"consent was given for channel {mine}, not {expected}; refused, no token written. "
+            "Run again and pick the right channel."
+        )
 
     expiry = datetime.now(timezone.utc) + timedelta(seconds=int(grant.get("expires_in", 0)))
-    token = {"access_token": grant["access_token"], "token_type": grant.get("token_type", "Bearer"),
-             "refresh_token": grant["refresh_token"], "expiry": expiry.isoformat()}
+    token = {
+        "access_token": grant["access_token"],
+        "token_type": grant.get("token_type", "Bearer"),
+        "refresh_token": grant["refresh_token"],
+        "expiry": expiry.isoformat(),
+    }
     token_file.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
     fd, tmp = tempfile.mkstemp(dir=token_file.parent, prefix=".token-")
     with os.fdopen(fd, "w", encoding="utf-8") as handle:

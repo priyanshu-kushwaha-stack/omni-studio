@@ -74,10 +74,27 @@ def test_tail_is_split_into_short_motion_scenes():
 
 def test_schema_fields_only(tmp_path: Path):
     plan = build_plan(SCRIPT, words(20))
-    allowed = {"id", "type", "description", "start_seconds", "end_seconds", "script_section_id", "framing",
-               "movement", "transition_in", "transition_out", "overlay_notes", "shot_language", "shot_intent",
-               "narrative_role", "information_role", "hero_moment", "character_actions", "texture_keywords",
-               "required_assets"}
+    allowed = {
+        "id",
+        "type",
+        "description",
+        "start_seconds",
+        "end_seconds",
+        "script_section_id",
+        "framing",
+        "movement",
+        "transition_in",
+        "transition_out",
+        "overlay_notes",
+        "shot_language",
+        "shot_intent",
+        "narrative_role",
+        "information_role",
+        "hero_moment",
+        "character_actions",
+        "texture_keywords",
+        "required_assets",
+    }
     for s in plan["scenes"]:
         assert set(s) <= allowed
     json.dumps(plan)
@@ -108,8 +125,8 @@ def test_align_tolerates_transcriber_token_splits():
     toks[11]["word"] = "eleven"  # one anchor word in the third beat matches
     spans = align(beats, toks)
     assert spans[0][0] == 0.0
-    assert spans[1][0] == 6.0           # "seven" (transcribed "7") at t=6
-    assert spans[2][0] == 11.0          # "eleven" at t=11, despite the extra token before it
+    assert spans[1][0] == 6.0  # "seven" (transcribed "7") at t=6
+    assert spans[2][0] == 11.0  # "eleven" at t=11, despite the extra token before it
 
 
 def test_parse_strips_grouped_claim_refs_from_word_counts():
@@ -128,9 +145,11 @@ def test_align_number_words_start_on_the_numeral_not_the_word_before():
     one spoken token. The beat must start on '205', not snap back to the previous beat's word."""
     from scene_plan_from_script import align
 
-    beats = parse_script("## [00:00] A\n> VISUAL: x\nThey resist less.\n"
-                         "> VISUAL: y\nLess.\n"
-                         "> VISUAL: z\nTwo hundred and five people. Beepers.\n")
+    beats = parse_script(
+        "## [00:00] A\n> VISUAL: x\nThey resist less.\n"
+        "> VISUAL: y\nLess.\n"
+        "> VISUAL: z\nTwo hundred and five people. Beepers.\n"
+    )
     spoken = ["They", "resist", "less.", "Less.", "205", "people.", "Beepers."]
     toks = [{"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5} for i, w in enumerate(spoken)]
     spans = align(beats, toks)
@@ -142,8 +161,9 @@ def test_ask_lines_are_spoken_and_start_their_beat():
     starts when the question is asked, not at the previous beat."""
     from scene_plan_from_script import align
 
-    beats = parse_script("## [00:00] A\n> VISUAL: x\nOne two.\n"
-                         "> VISUAL: y\n> ASK: Guess which animal?\nThe platypus.\n")
+    beats = parse_script(
+        "## [00:00] A\n> VISUAL: x\nOne two.\n> VISUAL: y\n> ASK: Guess which animal?\nThe platypus.\n"
+    )
     assert beats[1]["words"] == ["guess", "which", "animal", "the", "platypus"]
     spoken = ["One", "two.", "Guess", "which", "animal?", "The", "platypus."]
     toks = [{"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5} for i, w in enumerate(spoken)]
@@ -155,11 +175,13 @@ def test_wordless_beat_starts_after_the_previous_beats_last_word():
     previous beat's last word, instead of a 0.5 s blip at the previous beat's start."""
     from scene_plan_from_script import align
 
-    beats = parse_script("## [00:00] A\n> VISUAL: x\nCase closed?\n"
-                         "> VISUAL: rip\n"
-                         "> VISUAL: jars\nWake people.\n")
-    toks = [{"word": "Case", "start": 0.0, "end": 0.4}, {"word": "closed?", "start": 0.5, "end": 1.0},
-            {"word": "Wake", "start": 3.0, "end": 3.3}, {"word": "people.", "start": 3.4, "end": 3.8}]
+    beats = parse_script("## [00:00] A\n> VISUAL: x\nCase closed?\n> VISUAL: rip\n> VISUAL: jars\nWake people.\n")
+    toks = [
+        {"word": "Case", "start": 0.0, "end": 0.4},
+        {"word": "closed?", "start": 0.5, "end": 1.0},
+        {"word": "Wake", "start": 3.0, "end": 3.3},
+        {"word": "people.", "start": 3.4, "end": 3.8},
+    ]
     spans = align(beats, toks)
     assert spans[0] == (0.0, 1.2)
     assert spans[1] == (1.2, 3.0)
@@ -167,7 +189,7 @@ def test_wordless_beat_starts_after_the_previous_beats_last_word():
 
 
 def test_quiz_cue_adds_no_spoken_words():
-    text = ("## [00:00] A\n> VISUAL: board\n> ASK: What's the average?\n> QUIZ: 15 | *~35 | 55\nYOU: Fifty-five?\n")
+    text = "## [00:00] A\n> VISUAL: board\n> ASK: What's the average?\n> QUIZ: 15 | *~35 | 55\nYOU: Fifty-five?\n"
     beats = parse_script(text)
     words = [w for b in beats for w in b["words"]]
     assert "15" not in words and "55" not in words and "quiz" not in words

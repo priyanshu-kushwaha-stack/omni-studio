@@ -31,8 +31,10 @@ def test_reference_metadata_is_tracked_and_media_is_ignored():
     assert tracked.returncode == 1
 
 
-@pytest.mark.skipif(not (REAL_ROOT / reference.load(TAILS_REF)["path"]).is_file(),
-                    reason="the approved media is git-ignored and not on this machine")
+@pytest.mark.skipif(
+    not (REAL_ROOT / reference.load(TAILS_REF)["path"]).is_file(),
+    reason="the approved media is git-ignored and not on this machine",
+)
 def test_tails_reference_media_matches_its_hash():
     assert reference.verify(TAILS_REF)["sha256"] == reference.load(TAILS_REF)["sha256"]
 
@@ -41,8 +43,16 @@ def test_changed_or_missing_media_fails(tmp_path):
     media = tmp_path / "clip.mp4"
     media.write_bytes(b"approved bytes")
     meta = tmp_path / "clip.yaml"
-    base = {"format": "short", "channel": "c", "video": "v", "path": "clip.mp4", "bytes": media.stat().st_size,
-            "sha256": reference.sha256_file(media), "approved_by": "owner", "approved_on": "2026-11-06"}
+    base = {
+        "format": "short",
+        "channel": "c",
+        "video": "v",
+        "path": "clip.mp4",
+        "bytes": media.stat().st_size,
+        "sha256": reference.sha256_file(media),
+        "approved_by": "owner",
+        "approved_on": "2026-11-06",
+    }
     meta.write_text(yaml.safe_dump(base))
     assert reference.verify(meta, root=tmp_path)
     media.write_bytes(b"changed bytes!")

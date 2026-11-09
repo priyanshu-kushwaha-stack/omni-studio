@@ -6,6 +6,7 @@ for every scene that has required_assets (continuation scenes reuse the last sti
 file. Output: a small mp4 (default 640x360) with no music, no subtitles, no motion. Optional
 --until trims to the first N seconds (for a partial proof).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -34,8 +35,17 @@ def plan_segments(plan: dict, stills: Path, until: float | None) -> list[tuple[P
     return out
 
 
-def render(plan: dict, stills: Path, narration: Path, out: Path, *, width: int = 640, height: int = 360,
-           fps: int = 24, until: float | None = None) -> Path:
+def render(
+    plan: dict,
+    stills: Path,
+    narration: Path,
+    out: Path,
+    *,
+    width: int = 640,
+    height: int = 360,
+    fps: int = 24,
+    until: float | None = None,
+) -> Path:
     segs = plan_segments(plan, stills, until)
     if not segs:
         raise SystemExit("no scenes with stills")
@@ -45,10 +55,36 @@ def render(plan: dict, stills: Path, narration: Path, out: Path, *, width: int =
         f.write(f"file '{segs[-1][0].resolve()}'\n")  # concat demuxer needs the last file repeated
         listing = f.name
     total = sum(h for _, h in segs)
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", listing,
-           "-i", str(narration), "-t", f"{total:.3f}",
-           "-vf", f"scale={width}:{height}:force_original_aspect_ratio=decrease,pad={width}:{height}:(ow-iw)/2:(oh-ih)/2:color=#F6F1E7,fps={fps},format=yuv420p",
-           "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-c:a", "aac", "-b:a", "128k", "-shortest", str(out)]
+    cmd = [
+        "ffmpeg",
+        "-y",
+        "-loglevel",
+        "error",
+        "-f",
+        "concat",
+        "-safe",
+        "0",
+        "-i",
+        listing,
+        "-i",
+        str(narration),
+        "-t",
+        f"{total:.3f}",
+        "-vf",
+        f"scale={width}:{height}:force_original_aspect_ratio=decrease,pad={width}:{height}:(ow-iw)/2:(oh-ih)/2:color=#F6F1E7,fps={fps},format=yuv420p",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "veryfast",
+        "-crf",
+        "23",
+        "-c:a",
+        "aac",
+        "-b:a",
+        "128k",
+        "-shortest",
+        str(out),
+    ]
     subprocess.run(cmd, check=True)
     return out
 

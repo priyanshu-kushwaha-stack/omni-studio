@@ -37,13 +37,15 @@ status: draft
 फ़ॉर्मूला (c34)।
 """
 
-PLAN = {"scenes": [
-    {"id": "s001", "start_seconds": 0.0, "end_seconds": 3.0},
-    {"id": "s001c1", "start_seconds": 3.0, "end_seconds": 6.0},
-    {"id": "s002", "start_seconds": 6.0, "end_seconds": 8.0},
-    {"id": "s003", "start_seconds": 8.0, "end_seconds": 20.0},
-    {"id": "e01", "start_seconds": 20.0, "end_seconds": 30.0},
-]}
+PLAN = {
+    "scenes": [
+        {"id": "s001", "start_seconds": 0.0, "end_seconds": 3.0},
+        {"id": "s001c1", "start_seconds": 3.0, "end_seconds": 6.0},
+        {"id": "s002", "start_seconds": 6.0, "end_seconds": 8.0},
+        {"id": "s003", "start_seconds": 8.0, "end_seconds": 20.0},
+        {"id": "e01", "start_seconds": 20.0, "end_seconds": 30.0},
+    ]
+}
 
 
 def test_beats_collect_spoken_lines_per_visual_and_strip_marks():
@@ -74,8 +76,11 @@ def test_short_windows_merge_into_the_next_beat():
 
 
 def test_plan_fit_speeds_up_within_limit_and_flags_overruns():
-    us = [{"id": "u001", "start": 0.0, "end": 6.0}, {"id": "u002", "start": 6.0, "end": 8.0},
-          {"id": "u003", "start": 8.0, "end": 20.0}]
+    us = [
+        {"id": "u001", "start": 0.0, "end": 6.0},
+        {"id": "u002", "start": 6.0, "end": 8.0},
+        {"id": "u003", "start": 8.0, "end": 20.0},
+    ]
     rows = plan_fit(us, [4.0, 3.0, 5.0], gap=0.35, max_speed=1.12)
     assert rows[0]["status"] == "ok" and rows[0]["speed"] == 1.0
     assert rows[1]["status"] == "OVER" and rows[1]["speed"] == 1.12

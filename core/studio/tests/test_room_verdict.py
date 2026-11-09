@@ -9,10 +9,14 @@ import pytest
 from studio.room import verdict as v
 
 META = dict(call_id="c1", seat="fact reviewer", role="fact", model="gemini-3.7-flash-high", family="google")
-GOOD = {"scores": {"accuracy": 7},
-        "blockers": [{"line": 4, "quote": "eight hours", "why": "c04 is about Europe", "fix": "re-scope", "domain": "fact"}],
-        "suggestions": [{"line": 2, "quote": "and then", "fix": "But"}],
-        "keep": [{"line": 5, "quote": "the fire got low"}]}
+GOOD = {
+    "scores": {"accuracy": 7},
+    "blockers": [
+        {"line": 4, "quote": "eight hours", "why": "c04 is about Europe", "fix": "re-scope", "domain": "fact"}
+    ],
+    "suggestions": [{"line": 2, "quote": "and then", "fix": "But"}],
+    "keep": [{"line": 5, "quote": "the fire got low"}],
+}
 
 
 def test_a_fenced_verdict_parses():
@@ -31,8 +35,18 @@ def test_a_blocker_outside_the_seat_role_becomes_a_suggestion():
     assert out.suggestions[-1]["moved"] == "blocker outside the story role"
 
 
-@pytest.mark.parametrize("text", ["no json here", "[1, 2]", '{"blockers": [{"why": "no quote"}]}',
-                                  '{"scores": [1]}', '{"blockers": 5}', '{}', '{"error": "refused"}'])
+@pytest.mark.parametrize(
+    "text",
+    [
+        "no json here",
+        "[1, 2]",
+        '{"blockers": [{"why": "no quote"}]}',
+        '{"scores": [1]}',
+        '{"blockers": 5}',
+        "{}",
+        '{"error": "refused"}',
+    ],
+)
 def test_malformed_output_is_refused(text):
     with pytest.raises(v.BadVerdict):
         v.parse_verdict(text, **META)

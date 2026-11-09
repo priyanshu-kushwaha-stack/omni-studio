@@ -76,8 +76,31 @@ def to_target(x: np.ndarray, lufs: float, tmp: Path) -> np.ndarray:
 def mux(path: Path, audio: Path, pattern: str = "testsrc2", size: str = "270x480") -> Path:
     """A 9:16 mp4 from a lavfi picture source and the wav; audio is AAC like the engine's renders."""
     src = f"{pattern}=s={size}:r=10" if pattern != "color" else f"color=c=0xF6F1E7:s={size}:r=10"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", src, "-i", str(audio), "-shortest",
-                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", str(path)], check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-v",
+            "error",
+            "-y",
+            "-f",
+            "lavfi",
+            "-i",
+            src,
+            "-i",
+            str(audio),
+            "-shortest",
+            "-c:v",
+            "libx264",
+            "-pix_fmt",
+            "yuv420p",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "192k",
+            str(path),
+        ],
+        check=True,
+    )
     return path
 
 
@@ -92,7 +115,7 @@ def _build_media(kind: str, container: str, pattern: str, folder: Path) -> tuple
     x = to_target(x, -6.0 if kind == "loud" else -14.0, folder)
     if kind == "click":
         gap = int(0.15 * SR)  # in the lead-in silence, well clear of any word
-        x[gap:gap + 96] += 0.8 * np.hanning(96) * np.sign(np.sin(np.arange(96)))
+        x[gap : gap + 96] += 0.8 * np.hanning(96) * np.sign(np.sin(np.arange(96)))
     wav = write_wav(folder / f"{kind}.wav", x)
     words_path = folder / f"{kind}.words.json"
     words_path.write_text(json.dumps(words))
@@ -171,10 +194,10 @@ def studio_root_at(base: Path, monkeypatch) -> "callable":
             formats={"short": "studio-short", "dialogue": "studio-dialogue"},
             youtube_channel_id="UC" + (slug.replace("-", "") * 22)[:22],
             upload_token_path=f"~/.config/omni-studio/youtube/{slug}.token",
-            loudness={"short": {"integrated_lufs": -14, "tolerance_lu": 1, "true_peak_dbtp_max": -1,
-                                "lra_lu_max": 8},
-                      "dialogue": {"integrated_lufs": -14, "tolerance_lu": 1, "true_peak_dbtp_max": -1,
-                                   "lra_lu_max": 11}},
+            loudness={
+                "short": {"integrated_lufs": -14, "tolerance_lu": 1, "true_peak_dbtp_max": -1, "lra_lu_max": 8},
+                "dialogue": {"integrated_lufs": -14, "tolerance_lu": 1, "true_peak_dbtp_max": -1, "lra_lu_max": 11},
+            },
             upload={"contains_synthetic_media": False, "category_id": "27", "language": "en"},
         )
         data.update(overrides)

@@ -15,6 +15,7 @@ TTS request and fitted into the English beat's time window, so a dub never retim
 
 The result (narration-hi.wav) goes through compose.py --video-in for the music bed, ducking and SFX.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -55,7 +56,7 @@ def beats(text: str) -> list[Beat]:
         if line.startswith("## "):
             section = line[3:].strip()
         elif line.startswith("> VISUAL:"):
-            out.append(Beat(section, line[len("> VISUAL:"):].strip(), []))
+            out.append(Beat(section, line[len("> VISUAL:") :].strip(), []))
         elif line.startswith(">") or line.startswith("#") or not line.strip() or not out:
             continue
         else:
@@ -108,16 +109,22 @@ def units(dub: list[Beat], wins: list[tuple[float, float]], min_window: float) -
         carry_start = st if carry_start is None else carry_start
         if en - carry_start < min_window and i < len(dub):
             continue
-        out.append({"id": f"u{carry[0]:03d}", "beats": carry, "text": " ".join(carry_text), "start": carry_start, "end": en})
+        out.append(
+            {"id": f"u{carry[0]:03d}", "beats": carry, "text": " ".join(carry_text), "start": carry_start, "end": en}
+        )
         carry, carry_text, carry_start = [], [], None
     return out
 
 
 # ---------------------------------------------------------------- fit
 
+
 def decode(path: Path) -> np.ndarray:
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
-                         check=True, capture_output=True).stdout
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
+        check=True,
+        capture_output=True,
+    ).stdout
     return np.frombuffer(raw, dtype=np.float32)
 
 
@@ -139,9 +146,29 @@ def trim(x: np.ndarray, threshold_db: float = -45.0, keep: float = 0.08, frame: 
 def stretch(x: np.ndarray, speed: float) -> np.ndarray:
     if abs(speed - 1.0) < 1e-3:
         return x
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", "-",
-                          "-af", f"atempo={speed:.4f}", "-f", "f32le", "-"],
-                         input=x.astype(np.float32).tobytes(), check=True, capture_output=True).stdout
+    raw = subprocess.run(
+        [
+            "ffmpeg",
+            "-v",
+            "error",
+            "-f",
+            "f32le",
+            "-ac",
+            "1",
+            "-ar",
+            str(SR),
+            "-i",
+            "-",
+            "-af",
+            f"atempo={speed:.4f}",
+            "-f",
+            "f32le",
+            "-",
+        ],
+        input=x.astype(np.float32).tobytes(),
+        check=True,
+        capture_output=True,
+    ).stdout
     return np.frombuffer(raw, dtype=np.float32)
 
 
@@ -161,9 +188,18 @@ def plan_fit(units_: list[dict], durations: list[float], gap: float, max_speed: 
         fitted = d / clamped
         end = start + fitted
         over = max(0.0, end + gap - u["end"])
-        out.append({"id": u["id"], "window": [u["start"], u["end"]], "raw": round(d, 2), "speed": round(clamped, 3),
-                    "placed": [round(start, 2), round(end, 2)], "over": round(over, 2),
-                    "slack": round(u["end"] - end - gap, 2), "status": "OVER" if over > 0.05 else ("fast" if clamped > 1.0 else "ok")})
+        out.append(
+            {
+                "id": u["id"],
+                "window": [u["start"], u["end"]],
+                "raw": round(d, 2),
+                "speed": round(clamped, 3),
+                "placed": [round(start, 2), round(end, 2)],
+                "over": round(over, 2),
+                "slack": round(u["end"] - end - gap, 2),
+                "status": "OVER" if over > 0.05 else ("fast" if clamped > 1.0 else "ok"),
+            }
+        )
         cursor = end + (gap if over > 0.05 else 0.0)
     return out
 
@@ -175,22 +211,43 @@ def fit(units_: list[dict], clips: Path, out: Path, total: float, gap: float, ma
     for a, r in zip(audio, rows):
         y = stretch(a, r["speed"])
         i = int(r["placed"][0] * SR)
-        track[i:i + len(y)] += y[: max(0, len(track) - i)]
+        track[i : i + len(y)] += y[: max(0, len(track) - i)]
     track = track[: int(total * SR)]
     peak = float(np.max(np.abs(track))) or 1.0
     if peak > 0.89:
         track = track * (0.89 / peak)
     out.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", "-", "-c:a", "pcm_s16le", str(out)],
-                   input=track.tobytes(), check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-v",
+            "error",
+            "-f",
+            "f32le",
+            "-ac",
+            "1",
+            "-ar",
+            str(SR),
+            "-i",
+            "-",
+            "-c:a",
+            "pcm_s16le",
+            str(out),
+        ],
+        input=track.tobytes(),
+        check=True,
+    )
     return rows
 
 
 def report(rows: list[dict]) -> str:
     lines = ["| unit | window | raw s | speed | placed | slack s | status |", "|---|---|---|---|---|---|---|"]
     for r in rows:
-        lines.append(f"| {r['id']} | {r['window'][0]:.1f}-{r['window'][1]:.1f} | {r['raw']:.2f} | {r['speed']:.2f} | "
-                     f"{r['placed'][0]:.1f}-{r['placed'][1]:.1f} | {r['slack']:.2f} | {r['status']} |")
+        lines.append(
+            f"| {r['id']} | {r['window'][0]:.1f}-{r['window'][1]:.1f} | {r['raw']:.2f} | {r['speed']:.2f} | "
+            f"{r['placed'][0]:.1f}-{r['placed'][1]:.1f} | {r['slack']:.2f} | {r['status']} |"
+        )
     n_over = sum(r["status"] == "OVER" for r in rows)
     n_fast = sum(r["status"] == "fast" for r in rows)
     lines.append(f"\n{len(rows)} units, {n_fast} sped up, {n_over} OVER (shorten these lines and re-read them).")
@@ -223,7 +280,9 @@ def main() -> None:
         wins = windows(plan, len(src))
         us = units(dub, wins, a.min_window)
         a.out.parent.mkdir(parents=True, exist_ok=True)
-        a.out.write_text(json.dumps({"total": float(plan["scenes"][-1]["end_seconds"]), "units": us}, ensure_ascii=False, indent=1))
+        a.out.write_text(
+            json.dumps({"total": float(plan["scenes"][-1]["end_seconds"]), "units": us}, ensure_ascii=False, indent=1)
+        )
         print(f"{len(us)} units from {len(src)} beats, {sum(len(u['text']) for u in us)} chars -> {a.out}")
     else:
         man = json.loads(a.manifest.read_text())

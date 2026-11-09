@@ -9,9 +9,20 @@ from studio.room.ledger import Ledger
 
 
 def _verdict(d, name, role, family, blockers=(), status="ok"):
-    data = {"call_id": f"{name}-{d.name}", "seat": name, "role": role, "model": "m", "family": family,
-            "status": status, "scores": {}, "blockers": list(blockers), "suggestions": [], "keep": [],
-            "error": "", "output_sha256": "o"}
+    data = {
+        "call_id": f"{name}-{d.name}",
+        "seat": name,
+        "role": role,
+        "model": "m",
+        "family": family,
+        "status": status,
+        "scores": {},
+        "blockers": list(blockers),
+        "suggestions": [],
+        "keep": [],
+        "error": "",
+        "output_sha256": "o",
+    }
     (d / f"{name}.json").write_text(json.dumps(data))
 
 
@@ -22,8 +33,11 @@ def _round(video, n, sha, lint_ok=True, fact_blockers=(), judge=None, owner_note
     _verdict(d, "story", "story", "openai", blockers=story_blockers)
     _verdict(d, "fact", "fact", "google", blockers=fact_blockers)
     if judge:
-        (d / "judge.json").write_text(json.dumps({"model": "m", "family": "openai", "call_ids": ["j1", "j2"],
-                                                  "picks": ["A", "B"], "winner": judge}))
+        (d / "judge.json").write_text(
+            json.dumps(
+                {"model": "m", "family": "openai", "call_ids": ["j1", "j2"], "picks": ["A", "B"], "winner": judge}
+            )
+        )
 
 
 BLOCK = [{"quote": "eight hours", "why": "scope", "fix": "re-scope", "domain": "fact", "line": 2}]
@@ -63,8 +77,15 @@ def test_build_and_write_the_report(tmp_path):
     video = tmp_path / "2026-11-10_x"
     _round(video, 1, "a" * 64, fact_blockers=BLOCK)
     _round(video, 2, "b" * 64)
-    report = R.build_report(video, gate="g2", stage="dialogue_script", channel="professor-of-us",
-                            writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=29)
+    report = R.build_report(
+        video,
+        gate="g2",
+        stage="dialogue_script",
+        channel="professor-of-us",
+        writer_family="anthropic",
+        ledger=Ledger(tmp_path / "l.sqlite"),
+        cap=29,
+    )
     assert report["shipped"] == {"round": 2, "artifact_sha256": "b" * 64}
     assert report["rounds"][0]["verdicts"][0]["file"].startswith("room/g2/round-1/")
     js, md = R.write_report(video, report)
@@ -94,8 +115,9 @@ def test_malformed_round_directories_are_skipped_and_listed(tmp_path):
     (R.gate_dir(video, "g2") / "round-3").mkdir()
     (R.gate_dir(video, "g2") / "round-3" / "meta.json").write_text("{not json")
     assert [r["round"] for r in R.load_rounds(video, "g2")] == [1]
-    report = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                            ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    report = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     assert sorted(report["skipped_rounds"]) == ["round-1.bak", "round-2", "round-3"]
     assert report["shipped"]["round"] == 1
 
@@ -103,8 +125,9 @@ def test_malformed_round_directories_are_skipped_and_listed(tmp_path):
 def test_no_skipped_rounds_is_an_empty_list(tmp_path):
     video = tmp_path / "v"
     _round(video, 1, "a" * 64)
-    report = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                            ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    report = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     assert report["skipped_rounds"] == []
 
 
@@ -121,8 +144,9 @@ def test_the_report_notes_a_clean_candidate_that_was_not_judged(tmp_path):
     video = tmp_path / "v"
     _round(video, 1, "a" * 64)
     _round(video, 2, "b" * 64)
-    report = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                            ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    report = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     _, md = R.write_report(video, report)
     assert "Round 2 was a clean candidate but was not judged; the earlier round ships." in md.read_text()
 
@@ -131,8 +155,15 @@ def test_an_owner_notes_candidate_ships_without_a_judge(tmp_path):
     _round(tmp_path, 1, "a" * 64)
     _round(tmp_path, 2, "b" * 64, owner_notes=True)
     assert R.shipped(R.load_rounds(tmp_path, "g2")) == {"round": 2, "artifact_sha256": "b" * 64}
-    rep = R.build_report(tmp_path, gate="g2", stage="script", channel="c", writer_family="anthropic",
-                         ledger=Ledger(tmp_path / "l.jsonl"), cap=10)
+    rep = R.build_report(
+        tmp_path,
+        gate="g2",
+        stage="script",
+        channel="c",
+        writer_family="anthropic",
+        ledger=Ledger(tmp_path / "l.jsonl"),
+        cap=10,
+    )
     assert [r["owner_notes"] for r in rep["rounds"]] == [False, True]
 
 
@@ -153,16 +184,20 @@ def test_a_later_ordinary_round_after_owner_notes_still_needs_the_judge(tmp_path
 
 def test_write_report_tolerates_non_dict_items(tmp_path):
     from studio.room import verdict as V
+
     video = tmp_path / "v"
-    v = V.parse_verdict(json.dumps({"keep": ["a line", "another"]}), call_id="c", seat="s", role="story",
-                        model="m", family="f")
+    v = V.parse_verdict(
+        json.dumps({"keep": ["a line", "another"]}), call_id="c", seat="s", role="story", model="m", family="f"
+    )
     d = R.round_dir(video, "g2", 1)
     R.write_meta(video, "g2", 1, "sha", {"ok": True})
     (d / "s.json").write_text(json.dumps({**v.to_dict(), "output_sha256": "o"}))
     # a hand-written verdict file with raw strings must not crash the md writer either
     raw = {**v.to_dict(), "keep": ["bare", {"quote": "q"}], "blockers": [], "output_sha256": "o"}
     (d / "s.json").write_text(json.dumps(raw))
-    rep = R.build_report(video, gate="g2", stage="x", channel="c", writer_family="w", ledger=Ledger(tmp_path / "l"), cap=9)
+    rep = R.build_report(
+        video, gate="g2", stage="x", channel="c", writer_family="w", ledger=Ledger(tmp_path / "l"), cap=9
+    )
     R.write_report(video, rep)
     assert (video / "room-g2.md").is_file()
 
@@ -171,12 +206,14 @@ def test_the_md_says_when_an_owner_notes_round_shipped_without_a_judge(tmp_path)
     video = tmp_path / "v"
     _round(video, 1, "a" * 64)
     _round(video, 2, "b" * 64, owner_notes=True)
-    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    rep = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     _, md = R.write_report(video, rep)
     assert "Shipped: round 2 (" in md.read_text() and "shipped by the owner-notes rule (no judge)" in md.read_text()
-    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    rep = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     rep["rounds"][1]["owner_notes"] = False
     _, md = R.write_report(video, rep)
     assert "owner-notes rule" not in md.read_text()
@@ -185,8 +222,9 @@ def test_the_md_says_when_an_owner_notes_round_shipped_without_a_judge(tmp_path)
 def test_the_md_names_the_candidate_rule_when_nothing_ships(tmp_path):
     video = tmp_path / "v"
     _round(video, 1, "a" * 64, fact_blockers=BLOCK)
-    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    rep = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     _, md = R.write_report(video, rep)
     text = md.read_text()
     assert "Shipped: none. No round is a candidate" in text and "no fact blocker" in text
@@ -236,7 +274,8 @@ def test_a_null_judge_winner_is_no_judge_result(tmp_path):
     _round(tmp_path, 1, "a" * 64)
     _round(tmp_path, 2, "b" * 64)
     R.round_dir(tmp_path, "g2", 2).joinpath("judge.json").write_text(
-        json.dumps({"model": "m", "family": "f", "call_ids": ["x"], "picks": ["tie", "tie"], "winner": None}))
+        json.dumps({"model": "m", "family": "f", "call_ids": ["x"], "picks": ["tie", "tie"], "winner": None})
+    )
     assert R.load_rounds(tmp_path, "g2")[1]["judge"] is None
     assert R.shipped(R.load_rounds(tmp_path, "g2"))["round"] == 1
 
@@ -250,8 +289,9 @@ def test_a_verdict_file_missing_required_keys_is_listed_and_not_counted(tmp_path
     (d / "story.json").write_text(json.dumps(data))
     (d / "stray.json").write_text(json.dumps({"seat": "x"}))
     assert not R.is_candidate(R.load_rounds(video, "g2")[0])
-    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    rep = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     assert rep["malformed_verdicts"] == ["room/g2/round-1/story.json", "room/g2/round-1/stray.json"]
     assert [v["seat"] for v in rep["rounds"][0]["verdicts"]] == ["fact", "viewer"]
     R.write_report(video, rep)
@@ -264,8 +304,9 @@ def test_a_verdict_whose_blockers_is_not_a_list_is_malformed(tmp_path):
     data = json.loads((d / "fact.json").read_text())
     data["blockers"] = "none"
     (d / "fact.json").write_text(json.dumps(data))
-    rep = R.build_report(video, gate="g2", stage="s", channel="c", writer_family="anthropic",
-                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    rep = R.build_report(
+        video, gate="g2", stage="s", channel="c", writer_family="anthropic", ledger=Ledger(tmp_path / "l.sqlite"), cap=5
+    )
     assert rep["malformed_verdicts"] == ["room/g2/round-1/fact.json"] and rep["shipped"] is None
     R.write_report(video, rep)
 
@@ -273,8 +314,15 @@ def test_a_verdict_whose_blockers_is_not_a_list_is_malformed(tmp_path):
 def test_the_report_carries_the_channel(tmp_path):
     video = tmp_path / "v"
     _round(video, 1, "a" * 64)
-    rep = R.build_report(video, gate="g2", stage="s", channel="pou", writer_family="anthropic",
-                         ledger=Ledger(tmp_path / "l.sqlite"), cap=5)
+    rep = R.build_report(
+        video,
+        gate="g2",
+        stage="s",
+        channel="pou",
+        writer_family="anthropic",
+        ledger=Ledger(tmp_path / "l.sqlite"),
+        cap=5,
+    )
     assert rep["channel"] == "pou" and rep["malformed_verdicts"] == []
 
 

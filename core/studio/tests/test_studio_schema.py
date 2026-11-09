@@ -15,8 +15,11 @@ SCHEMA = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": ["name", "size"],
-    "properties": {"name": {"type": "string"}, "size": {"type": "integer", "minimum": 1},
-                   "tags": {"type": "array", "items": {"enum": ["a", "b"]}}},
+    "properties": {
+        "name": {"type": "string"},
+        "size": {"type": "integer", "minimum": 1},
+        "tags": {"type": "array", "items": {"enum": ["a", "b"]}},
+    },
     "additionalProperties": False,
 }
 
@@ -72,13 +75,17 @@ def test_changing_the_callers_dict_later_does_not_change_the_kept_validator():
 def test_every_artifact_schema_and_the_playbook_schema_check_like_jsonschema():
     for name in list_schemas():
         schema = load_schema(name)
-        expected = _error(lambda i, s: jsonschema.validate(instance=i, schema=s), {"__nope__": 1}, schema) \
-            if _raises(schema) else None
+        expected = (
+            _error(lambda i, s: jsonschema.validate(instance=i, schema=s), {"__nope__": 1}, schema)
+            if _raises(schema)
+            else None
+        )
         got = _error(studio_schema.validate, {"__nope__": 1}, schema) if expected else None
         assert got == expected, name
     playbook_schema = playbook_loader._load_playbook_schema()
-    assert _error(studio_schema.validate, {}, playbook_schema) == \
-        _error(lambda i, s: jsonschema.validate(instance=i, schema=s), {}, playbook_schema)
+    assert _error(studio_schema.validate, {}, playbook_schema) == _error(
+        lambda i, s: jsonschema.validate(instance=i, schema=s), {}, playbook_schema
+    )
 
 
 def _raises(schema) -> bool:

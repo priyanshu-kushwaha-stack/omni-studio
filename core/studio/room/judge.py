@@ -35,18 +35,38 @@ def parse_judge(text: str) -> str:
     return winner
 
 
-def run_judge(new_text: str, best_text: str, *, model: str, brief: str, ledger: Ledger, ctx: CallContext,
-              out: Path, runner=None, timeout: Optional[float] = None, registry: Optional[dict] = None,
-              inputs: Optional[dict[str, str]] = None) -> dict[str, Any]:
+def run_judge(
+    new_text: str,
+    best_text: str,
+    *,
+    model: str,
+    brief: str,
+    ledger: Ledger,
+    ctx: CallContext,
+    out: Path,
+    runner=None,
+    timeout: Optional[float] = None,
+    registry: Optional[dict] = None,
+    inputs: Optional[dict[str, str]] = None,
+) -> dict[str, Any]:
     family = family_of(model, registry)
     timeout = timeout_of(model, registry) if timeout is None else timeout
     version = cli_version(cli_of(model, registry), runner)
     picks, call_ids, statuses = [], [], []
     for a, b in ((new_text, best_text), (best_text, new_text)):
         prompt = judge_prompt(brief, a, b, inputs)
-        call_id = ledger.reserve(channel=ctx.channel, video=ctx.video, gate=ctx.gate, round=ctx.round, seat="judge",
-                                 model=model, family=family, prompt_sha256=sha256_text(prompt),
-                                 daily_cap=ctx.daily_cap, script_cap=ctx.script_cap)
+        call_id = ledger.reserve(
+            channel=ctx.channel,
+            video=ctx.video,
+            gate=ctx.gate,
+            round=ctx.round,
+            seat="judge",
+            model=model,
+            family=family,
+            prompt_sha256=sha256_text(prompt),
+            daily_cap=ctx.daily_cap,
+            script_cap=ctx.script_cap,
+        )
         pick, status, duration = "tie", "failed", 0.0
         try:
             code, stdout, duration = invoke(build_command(model, prompt, registry), runner=runner, timeout=timeout)
@@ -58,14 +78,19 @@ def run_judge(new_text: str, best_text: str, *, model: str, brief: str, ledger: 
                 pick, status = parse_judge(text), "ok"
             except BadVerdict:
                 pass
-        ledger.finish(call_id, status=status, output_sha256=sha256_text(text), duration_s=duration,
-                      cli_version=version)
+        ledger.finish(call_id, status=status, output_sha256=sha256_text(text), duration_s=duration, cli_version=version)
         picks.append(pick)
         call_ids.append(call_id)
         statuses.append(status)
     winner = pairwise(*picks) if all(st == "ok" for st in statuses) else None  # a failed call: unjudged
-    result = {"model": model, "family": family, "call_ids": call_ids, "picks": picks, "statuses": statuses,
-              "winner": winner}
+    result = {
+        "model": model,
+        "family": family,
+        "call_ids": call_ids,
+        "picks": picks,
+        "statuses": statuses,
+        "winner": winner,
+    }
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result

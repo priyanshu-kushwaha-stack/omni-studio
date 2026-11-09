@@ -18,10 +18,10 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 BANNER = (2560, 1440)
-SAFE = (1546, 423)              # What every device shows; a phone shows nothing else.
+SAFE = (1546, 423)  # What every device shows; a phone shows nothing else.
 PICTURE = 800
 WATERMARK = 150
-_SS = 4                         # Marks are drawn this many times larger, then averaged down.
+_SS = 4  # Marks are drawn this many times larger, then averaged down.
 
 # macOS system fonts. A face is found by its family and style name, not by its position in the file.
 FONT_FILES = (
@@ -45,22 +45,43 @@ class Brand:
     ground: str
     ink: str
     accent: str
-    soft: str                   # The quiet fourth colour: the banner's background pattern, or the line.
+    soft: str  # The quiet fourth colour: the banner's background pattern, or the line.
     name_font: tuple[str, str]
     line_font: tuple[str, str]
 
 
 BRANDS: dict[str, Brand] = {
     "say-suppose": Brand(
-        "Say Suppose", "Change one thing. See what follows.",
-        "#1F1B4D", "#FFC857", "#FF7A59", "#F4EDE0", ("Futura", "Bold"), ("Futura", "Medium")),
+        "Say Suppose",
+        "Change one thing. See what follows.",
+        "#1F1B4D",
+        "#FFC857",
+        "#FF7A59",
+        "#F4EDE0",
+        ("Futura", "Bold"),
+        ("Futura", "Medium"),
+    ),
     # Navy, parchment and brass: no colour a party owns.
     "power-and-citizen": Brand(
-        "Power & Citizen", "How the world is run, and where you fit in.",
-        "#14213D", "#F3EBDD", "#C8963E", "#1B2B4D", ("Georgia", "Bold"), ("Georgia", "Italic")),
+        "Power & Citizen",
+        "How the world is run, and where you fit in.",
+        "#14213D",
+        "#F3EBDD",
+        "#C8963E",
+        "#1B2B4D",
+        ("Georgia", "Bold"),
+        ("Georgia", "Italic"),
+    ),
     "see-underneath": Brand(
-        "See Underneath", "The science under ordinary things.",
-        "#0B2E2B", "#EAF6F2", "#F2B441", "#12403B", ("Avenir Next", "Bold"), ("Avenir Next", "Medium")),
+        "See Underneath",
+        "The science under ordinary things.",
+        "#0B2E2B",
+        "#EAF6F2",
+        "#F2B441",
+        "#12403B",
+        ("Avenir Next", "Bold"),
+        ("Avenir Next", "Medium"),
+    ),
 }
 
 
@@ -252,7 +273,7 @@ def banner(slug: str, out: Path, scene: Path | None = None) -> dict[str, Box]:
 
     width = (x1 - pad if slug in _MARKS else x0 + round(0.62 * SAFE[0])) - left
     name_font = _fit(draw, brand.name, brand.name_font, 168, width)
-    line_font = _fit(draw, brand.line, brand.line_font, 58, width - 4)     # The line is indented 4 px.
+    line_font = _fit(draw, brand.line, brand.line_font, 58, width - 4)  # The line is indented 4 px.
     name_h, line_h = _ink_size(draw, brand.name, name_font)[1], _ink_size(draw, brand.line, line_font)[1]
     top = y0 + (SAFE[1] - (name_h + gap + line_h)) // 2
     boxes["name"] = _text(draw, left, top, brand.name, name_font, brand.ink)
@@ -289,7 +310,8 @@ def watermark(picture_path: Path, out: Path) -> Path:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     build = parser.add_subparsers(dest="command", required=True).add_parser(
-        "build", help="write avatar.png, banner.png, watermark.png and crops/ for a channel")
+        "build", help="write avatar.png, banner.png, watermark.png and crops/ for a channel"
+    )
     build.add_argument("slug")
     build.add_argument("-o", "--out", type=Path, required=True)
     build.add_argument("--picture", type=Path, help="the illustration to use as the picture")

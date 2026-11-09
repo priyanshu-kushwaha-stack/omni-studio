@@ -6,6 +6,7 @@ the same argv with the same parsers before running a script, so a check on the p
 the puppet stage, the TTS engine) sees exactly what the script will use. Every parser refuses abbreviated
 options (`--eng` for `--engine`), and options that decide a check may be given only once.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -27,8 +28,9 @@ class Once(argparse.Action):
 
 
 def _parser(description: str | None) -> argparse.ArgumentParser:
-    return argparse.ArgumentParser(description=description, allow_abbrev=False,
-                                   formatter_class=argparse.RawDescriptionHelpFormatter)
+    return argparse.ArgumentParser(
+        description=description, allow_abbrev=False, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
 
 
 def compose_parser(description: str | None = None) -> argparse.ArgumentParser:
@@ -46,11 +48,27 @@ def compose_parser(description: str | None = None) -> argparse.ArgumentParser:
     p.add_argument("--quiz-music-gain-db", type=float, default=-20.0)
     p.add_argument("--no-clips", action="store_true", help="ignore assets/clips (stills only)")
     p.add_argument("--scratch", type=Path, default=None)
-    p.add_argument("--video-in", type=Path, default=None, help="dub mode: reuse this render's picture, mix the new narration under it")
-    p.add_argument("--mix-out", type=Path, default=None, help="dub mode: also write the mixed audio alone (m4a) for a YouTube audio track")
-    p.add_argument("--motion", nargs="?", const="__default__", default=None, action=Once,
-                   help="apply procedural motion from motion.json (optionally a path): flicker, sprite, trace "
-                        "(boil is banned by the owner and refused by the studio tool)")
+    p.add_argument(
+        "--video-in",
+        type=Path,
+        default=None,
+        help="dub mode: reuse this render's picture, mix the new narration under it",
+    )
+    p.add_argument(
+        "--mix-out",
+        type=Path,
+        default=None,
+        help="dub mode: also write the mixed audio alone (m4a) for a YouTube audio track",
+    )
+    p.add_argument(
+        "--motion",
+        nargs="?",
+        const="__default__",
+        default=None,
+        action=Once,
+        help="apply procedural motion from motion.json (optionally a path): flicker, sprite, trace "
+        "(boil is banned by the owner and refused by the studio tool)",
+    )
     p.add_argument("--burn-captions", action="store_true", help="Shorts: burn caption lines into the lower middle")
     return p
 
@@ -76,8 +94,9 @@ def puppet_render_parser(description: str | None = None) -> argparse.ArgumentPar
     r.add_argument("--ranges", default=None, help="override the stage's ranges: 133.68:142.61[,a:b]")
     c = sub.add_parser("check", help="action start frame vs word time", allow_abbrev=False)
     c.add_argument("stage", type=Path)
-    cl = sub.add_parser("clips", help="render each scene to <video>/assets/clips/<id>.mp4 (no overlays, no audio)",
-                        allow_abbrev=False)
+    cl = sub.add_parser(
+        "clips", help="render each scene to <video>/assets/clips/<id>.mp4 (no overlays, no audio)", allow_abbrev=False
+    )
     cl.add_argument("stage", type=Path)
     cl.add_argument("--only", nargs="*", default=None)
     cl.add_argument("--workers", type=int, default=6)
@@ -92,10 +111,21 @@ def tts_parser(description: str | None = None) -> argparse.ArgumentParser:
     p = _parser(description)
     p.add_argument("text", type=Path, help="plain text file (output of narration_text.py, one part)")
     p.add_argument("--engine", choices=TTS_ENGINES, required=True, action=Once)
-    p.add_argument("--voice-ref", type=Path, default=Path("/dev/null"), help="clean wav of the owner's voice (qwen3: 10-30 s; chatterbox uses the first 10 s; eleven ignores it)")
-    p.add_argument("--voice-text", type=Path, help="transcript of --voice-ref (qwen3 clones better with it; otherwise it transcribes the clip itself)")
+    p.add_argument(
+        "--voice-ref",
+        type=Path,
+        default=Path("/dev/null"),
+        help="clean wav of the owner's voice (qwen3: 10-30 s; chatterbox uses the first 10 s; eleven ignores it)",
+    )
+    p.add_argument(
+        "--voice-text",
+        type=Path,
+        help="transcript of --voice-ref (qwen3 clones better with it; otherwise it transcribes the clip itself)",
+    )
     p.add_argument("-o", "--out", type=Path, required=True)
-    p.add_argument("--max-words", type=int, default=None, help="chunk size; default per engine (qwen3 200, chatterbox 50)")
+    p.add_argument(
+        "--max-words", type=int, default=None, help="chunk size; default per engine (qwen3 200, chatterbox 50)"
+    )
     p.add_argument("--gap", type=float, default=0.35)
     p.add_argument("--check", action="store_true", help="transcribe the result and print the word error rate")
     return p

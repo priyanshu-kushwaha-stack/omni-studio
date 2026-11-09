@@ -39,8 +39,9 @@ def test_narration_with_approval_needs_a_credit_cap():
     tool = wt.WhatifNarration()
     with pytest.raises(PermissionError, match="max_credits"):
         tool.command({"channel": "say-suppose", "video": VIDEO, "owner_approved_paid_call": True})
-    (cmd,), _ = tool.command({"channel": "say-suppose", "video": VIDEO, "owner_approved_paid_call": True,
-                           "max_credits": 30})
+    (cmd,), _ = tool.command(
+        {"channel": "say-suppose", "video": VIDEO, "owner_approved_paid_call": True, "max_credits": 30}
+    )
     assert cmd[cmd.index("--max-credits") + 1] == "30"
 
 
@@ -58,12 +59,24 @@ def test_bad_video_ids_are_refused(video):
 def test_render_writes_only_inside_the_studio(tmp_path):
     tool = wt.WhatifRender()
     with pytest.raises(ValueError, match="inside"):
-        tool.command({"entry": "core/engines/whatif/examples/pause-sample/index.ts", "composition": "Video",
-                      "props": "core/engines/whatif/public/pause/props.json", "public_dir": "core/engines/whatif/public",
-                      "output": str(tmp_path / "x.mp4")})
-    cmds, _ = tool.command({"entry": "core/engines/whatif/examples/pause-sample/index.ts", "composition": "Video",
-                            "props": "core/engines/whatif/public/pause/props.json",
-                            "public_dir": "core/engines/whatif/public", "output": "core/engines/whatif/out/pause.mp4"})
+        tool.command(
+            {
+                "entry": "core/engines/whatif/examples/pause-sample/index.ts",
+                "composition": "Video",
+                "props": "core/engines/whatif/public/pause/props.json",
+                "public_dir": "core/engines/whatif/public",
+                "output": str(tmp_path / "x.mp4"),
+            }
+        )
+    cmds, _ = tool.command(
+        {
+            "entry": "core/engines/whatif/examples/pause-sample/index.ts",
+            "composition": "Video",
+            "props": "core/engines/whatif/public/pause/props.json",
+            "public_dir": "core/engines/whatif/public",
+            "output": "core/engines/whatif/out/pause.mp4",
+        }
+    )
     render, limit = cmds
     assert render[:3] == ["npx", "remotion", "render"]
     assert "alimiter=limit=0.84:level=false" in " ".join(limit)
@@ -71,6 +84,7 @@ def test_render_writes_only_inside_the_studio(tmp_path):
 
 class _Sleeper(wt._WhatifTool):
     """A command whose child outlives the shell that started it, as remotion's renderer outlives npx."""
+
     name = "whatif_test_sleeper"
 
     def __init__(self, pidfile: Path):

@@ -39,8 +39,11 @@ def problems(text: str) -> list[str]:
     out: list[str] = []
     missing = [n for n in FIVE if n not in {f[0] for f in found}]
     if missing:
-        out.append("five lines first (rules/story.md #1): missing "
-                   + ", ".join(f"> {n}:" for n in missing) + " before the first beat")
+        out.append(
+            "five lines first (rules/story.md #1): missing "
+            + ", ".join(f"> {n}:" for n in missing)
+            + " before the first beat"
+        )
     late = [n for n, _, b in found if not b]
     if late:
         out.append("five lines first: " + ", ".join(late) + " must come before the first beat, not inside the script")

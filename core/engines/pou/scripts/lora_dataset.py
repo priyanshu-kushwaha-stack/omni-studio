@@ -3,6 +3,7 @@
 Each image is copied (long side 1024) next to a caption file. Captions start with the style trigger
 `pous_ink`, add `pous_you` when the recurring satchel figure is in the frame, then the content line and the
 accent colour, so the LoRA learns the look without baking one colour in."""
+
 from __future__ import annotations
 import argparse
 import json

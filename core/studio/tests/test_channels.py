@@ -230,9 +230,7 @@ def test_playbook_symlink_works_in_the_real_tree_through_the_cli(monkeypatch):
 
 def test_make_new_channel_needs_a_slug_and_is_not_a_stub():
     env = {k: v for k, v in os.environ.items() if k not in {"MAKEFLAGS", "MFLAGS"}}
-    proc = subprocess.run(
-        ["make", "new-channel"], cwd=REAL_ROOT, capture_output=True, text=True, env=env, timeout=30
-    )
+    proc = subprocess.run(["make", "new-channel"], cwd=REAL_ROOT, capture_output=True, text=True, env=env, timeout=30)
     assert proc.returncode != 0
     assert "usage: make new-channel SLUG=<slug>" in proc.stderr
     assert "Phase 2" not in proc.stderr
@@ -262,10 +260,16 @@ def test_openmontage_follows_the_channels_projects_dir():
         "PYTHONPATH": str(REAL_ROOT / "core" / "openmontage"),
     }
     proc = subprocess.run(
-        [sys.executable, "-c",
-         "from lib.checkpoint import PROJECTS_DIR as a; from lib.events import PROJECTS_DIR as b;"
-         "from backlot.state import PROJECTS_DIR as c; print(a, b, c)"],
-        capture_output=True, text=True, env=env, timeout=60,
+        [
+            sys.executable,
+            "-c",
+            "from lib.checkpoint import PROJECTS_DIR as a; from lib.events import PROJECTS_DIR as b;"
+            "from backlot.state import PROJECTS_DIR as c; print(a, b, c)",
+        ],
+        capture_output=True,
+        text=True,
+        env=env,
+        timeout=60,
     )
     assert proc.returncode == 0, proc.stderr
     assert proc.stdout.split() == ["/tmp/some-channel/videos"] * 3
@@ -311,9 +315,7 @@ def test_new_video_refuses_a_duplicate(studio_root):
     ],
 )
 def test_video_text_is_tracked_and_assets_are_ignored(path, ignored):
-    proc = subprocess.run(
-        ["git", "check-ignore", "--no-index", "-q", path], cwd=REAL_ROOT, timeout=30
-    )
+    proc = subprocess.run(["git", "check-ignore", "--no-index", "-q", path], cwd=REAL_ROOT, timeout=30)
     assert (proc.returncode == 0) is ignored
 
 
@@ -364,9 +366,7 @@ def gated_video(studio_root):
 
 def write_stage(channel, video, stage, status, **kwargs):
     artifact = {"research": "research_brief", "script": "script"}[stage]
-    return write_checkpoint(
-        channel.videos_dir, video, stage, status, {artifact: sample_artifact(artifact)}, **kwargs
-    )
+    return write_checkpoint(channel.videos_dir, video, stage, status, {artifact: sample_artifact(artifact)}, **kwargs)
 
 
 def test_gated_stage_cannot_finish_until_omni_approve(gated_video):
@@ -526,8 +526,7 @@ SLUG_COMMANDS = {
     "approve": lambda slug: ["approve", slug, VIDEO, "research"],
     "board": lambda slug: ["board", slug, "--no-open"],
     "check": lambda slug: ["check", slug],
-    "fix": lambda slug: ["fix", slug, "--format", "smoke", "--stage", "script",
-                         "--severity", "low", "--example", "x"],
+    "fix": lambda slug: ["fix", slug, "--format", "smoke", "--stage", "script", "--severity", "low", "--example", "x"],
     "new-video": lambda slug: ["new-video", slug, "Another", "--format", "smoke"],
 }
 
@@ -561,14 +560,27 @@ def test_every_command_refuses_bad_slugs(victim, studio_root, command, kind, cap
 
 def test_fix_records_a_note_with_every_field(studio_root):
     smoke_channel("sample", 3)
-    args = ["fix", "sample", "--format", "smoke", "--stage", "script", "--severity", "high",
-            "--example", "line 4 repeats line 2"]
+    args = [
+        "fix",
+        "sample",
+        "--format",
+        "smoke",
+        "--stage",
+        "script",
+        "--severity",
+        "high",
+        "--example",
+        "line 4 repeats line 2",
+    ]
     assert cli.main(args) == 0
     assert cli.main(args + ["--note", "second"]) == 0
     first, second = sorted(channels.issues_dir().glob("*.yaml"))
     issue = yaml.safe_load(first.read_text(encoding="utf-8"))
     assert {k: issue[k] for k in ("channel", "format", "stage", "severity", "example")} == {
-        "channel": "sample", "format": "smoke", "stage": "script", "severity": "high",
+        "channel": "sample",
+        "format": "smoke",
+        "stage": "script",
+        "severity": "high",
         "example": "line 4 repeats line 2",
     }
     assert yaml.safe_load(second.read_text(encoding="utf-8"))["note"] == "second"
@@ -686,8 +698,7 @@ def test_same_named_assets_render_each_channels_own_image(tmp_path):
         assert result.success, result.error
         frame = tmp_path / name / "frame.png"
         subprocess.run(
-            ["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.5", "-i", str(output),
-             "-frames:v", "1", str(frame)],
+            ["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.5", "-i", str(output), "-frames:v", "1", str(frame)],
             check=True,
         )
         with Image.open(frame) as opened:

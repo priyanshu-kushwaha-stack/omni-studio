@@ -9,8 +9,16 @@ import pytest
 
 from studio.room import ledger as L
 
-KW = dict(channel="professor-of-us", video="2026-11-10_x", gate="g2", round=1, seat="fact reviewer",
-          model="gemini-3.7-flash-high", family="google", prompt_sha256="p" * 64)
+KW = dict(
+    channel="professor-of-us",
+    video="2026-11-10_x",
+    gate="g2",
+    round=1,
+    seat="fact reviewer",
+    model="gemini-3.7-flash-high",
+    family="google",
+    prompt_sha256="p" * 64,
+)
 
 
 def test_reserve_finish_get(tmp_path):
@@ -80,6 +88,7 @@ def test_finish_stores_the_verdict_digest(tmp_path):
 
 def test_an_old_schema_file_is_migrated(tmp_path):
     import sqlite3
+
     path = tmp_path / "old.sqlite"
     con = sqlite3.connect(path)
     con.execute("""CREATE TABLE calls (

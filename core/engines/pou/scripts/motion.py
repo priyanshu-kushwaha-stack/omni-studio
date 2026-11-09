@@ -2,6 +2,7 @@
 """Procedural motion for hand-drawn stills: line boil, accent flicker, sprite on a path, stroke-order trace.
 Everything works on two masks taken by threshold from the cream paper: ink (dark lines) and accent (the
 video's one colour). Driven per scene by motion.json: [{"scene": "s002", "effect": "flicker", ...}]."""
+
 from __future__ import annotations
 import json
 from pathlib import Path
@@ -27,7 +28,7 @@ def masks(frame: np.ndarray, paper: tuple[int, int, int]) -> tuple[np.ndarray, n
     for h0 in ACCENT_HUES.values():
         dh = np.minimum(np.abs(hue - h0), 1 - np.abs(hue - h0))
         acc |= dark & (dh < 25 / 360) & (sat > 0.3)
-    ink = dark & ~acc   # grey marker line; the colour belongs to the accent mask
+    ink = dark & ~acc  # grey marker line; the colour belongs to the accent mask
     return ink, acc
 
 
@@ -72,8 +73,14 @@ def flicker(frame: np.ndarray, accent: np.ndarray, t: float, seed: int = 0) -> n
     return out.astype(np.uint8)
 
 
-def sprite(frame: np.ndarray, box: tuple[int, int, int, int], path: list[tuple[float, float]], t: float,
-           duration: float, paper: tuple[int, int, int]) -> np.ndarray:
+def sprite(
+    frame: np.ndarray,
+    box: tuple[int, int, int, int],
+    path: list[tuple[float, float]],
+    t: float,
+    duration: float,
+    paper: tuple[int, int, int],
+) -> np.ndarray:
     """Cut the box out, fill its place with paper, paste it along the path (offsets in px) with a walk bob."""
     x0, y0, x1, y1 = box
     cut = frame[y0:y1, x0:x1].copy()
@@ -92,9 +99,9 @@ def sprite(frame: np.ndarray, box: tuple[int, int, int, int], path: list[tuple[f
     dx0, dy0 = max(0, px), max(0, py)
     cw, ch = min(w - sx0, W - dx0), min(h - sy0, H - dy0)
     if cw > 0 and ch > 0:
-        patch = cut[sy0:sy0 + ch, sx0:sx0 + cw]
+        patch = cut[sy0 : sy0 + ch, sx0 : sx0 + cw]
         keep = (np.array(paper, dtype=np.int16) - patch.astype(np.int16)).max(axis=2) > 30
-        region = out[dy0:dy0 + ch, dx0:dx0 + cw]
+        region = out[dy0 : dy0 + ch, dx0 : dx0 + cw]
         region[keep] = patch[keep]
     return out
 
@@ -105,12 +112,13 @@ def trace_order(ink: np.ndarray, seed: int = 0) -> np.ndarray:
     from collections import deque
     from scipy import ndimage
     from skimage.morphology import skeletonize
+
     order = np.ones(ink.shape, dtype=np.float32)
     skel = skeletonize(ink)
     if not skel.any():
         return order
     ys, xs = np.nonzero(skel)
-    start = int(np.argmin(xs * 4 + ys))   # begin at the left end, so a trace draws left to right like a pen
+    start = int(np.argmin(xs * 4 + ys))  # begin at the left end, so a trace draws left to right like a pen
     dist = np.full(ink.shape, -1, dtype=np.int32)
     q = deque([(int(ys[start]), int(xs[start]))])
     dist[ys[start], xs[start]] = 0
@@ -185,14 +193,15 @@ def apply(spec: dict, still: np.ndarray, t_rel: float, paper: tuple[int, int, in
     if hit and hit[0] == key:
         return hit[1]
     seed = int(spec.get("seed", 0))
-    if eff == "boil":   # opt-in only; the owner banned boil and the studio tool refuses it
+    if eff == "boil":  # opt-in only; the owner banned boil and the studio tool refuses it
         out = boil(still, ink, t_rel, amp=float(spec.get("amp", 1.5)), seed=seed)
     elif eff == "flicker":
         out = flicker(still, acc, t_rel, seed=seed)
-        if spec.get("boil", False):   # opt-in only: the owner banned boil
+        if spec.get("boil", False):  # opt-in only: the owner banned boil
             out = boil(out, ink, t_rel, amp=float(spec.get("amp", 1.0)), seed=seed + 1)
     else:
-        out = sprite(still, tuple(spec["box"]), [tuple(p) for p in spec["path"]], t_rel,
-                     float(spec.get("duration", 3.0)), paper)
+        out = sprite(
+            still, tuple(spec["box"]), [tuple(p) for p in spec["path"]], t_rel, float(spec.get("duration", 3.0)), paper
+        )
     cache["frame"] = (key, out)
     return out

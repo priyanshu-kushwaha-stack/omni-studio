@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the channel-page assets: banner (+ TV/desktop/phone crops), avatar contact sheet, watermark.
 Lettering is Patrick Hand drawn locally (never text inside an AI image). Colours from compose.py."""
+
 from __future__ import annotations
 import argparse
 import random
@@ -31,6 +32,7 @@ def _key_paper(img: Image.Image, tol: int = 34) -> Image.Image:
     """Make the drawing's own paper transparent so it sits on the banner paper without a box.
     The paper colour is sampled at the four corners; pixels within `tol` of it fade to transparent."""
     import numpy as np
+
     a = np.asarray(img.convert("RGBA")).astype(np.int16)
     corners = np.array([a[0, 0, :3], a[0, -1, :3], a[-1, 0, :3], a[-1, -1, :3]]).mean(axis=0)
     dist = np.abs(a[:, :, :3] - corners).max(axis=2)
@@ -39,8 +41,16 @@ def _key_paper(img: Image.Image, tol: int = 34) -> Image.Image:
     return Image.fromarray(a.astype(np.uint8), "RGBA")
 
 
-def banner(mascot: Path, title: str, tagline: str, cadence: str, strip: list[Path], out: Path, seed: int = 7,
-           title_size: int = 170) -> Path:
+def banner(
+    mascot: Path,
+    title: str,
+    tagline: str,
+    cadence: str,
+    strip: list[Path],
+    out: Path,
+    seed: int = 7,
+    title_size: int = 170,
+) -> Path:
     rng = random.Random(seed)
     img = Image.new("RGB", BANNER, PAPER)
     x0, y0, x1, y1 = _safe_box()

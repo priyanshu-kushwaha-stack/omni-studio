@@ -5,6 +5,7 @@ Shorts change picture every 2-4 s, so the beat-split plan from scene_plan_from_s
 here each still names the phrase it lands on. Input `<short>/shots.json`: [{"id", "anchor", "class"}] in
 order; output `<short>/scene_plan.json` in the same shape compose.py reads.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -28,8 +29,10 @@ def build(shots: list[dict], words: list[dict], tail: float = 2.4) -> dict:
     end = words[-1]["end"] + tail
     for a, b in zip(scenes, scenes[1:] + [None]):
         a["end_seconds"] = b["start_seconds"] if b else round(end, 3)
-    return {"scenes": scenes, "metadata": {"change_classes": {s["id"]: s.get("class", "illustration") for s in shots},
-                                           "format": "short"}}
+    return {
+        "scenes": scenes,
+        "metadata": {"change_classes": {s["id"]: s.get("class", "illustration") for s in shots}, "format": "short"},
+    }
 
 
 def main() -> None:

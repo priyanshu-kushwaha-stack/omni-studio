@@ -51,25 +51,60 @@ def mix(video: Path, mute: list[tuple[int, float, float]] = ()) -> tuple[Path, P
     for i, clip in enumerate(timeline["clips"]):
         path = takes.parent / clip["file"]
         start = clip["from"] / FPS
-        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
-                                    str(path)], capture_output=True, text=True, check=True).stdout)
+        dur = float(
+            subprocess.run(
+                ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+                capture_output=True,
+                text=True,
+                check=True,
+            ).stdout
+        )
         take_words = json.loads(Path(f"{path}.words.json").read_text(encoding="utf-8"))
         end = min(dur, (take_words[-1]["end"] if take_words else dur) + TAIL)
         inputs += ["-i", str(path)]
         ms = round(start * 1000)
-        chains.append(f"[{i}]aresample=48000,atrim=0:{end:.3f},afade=t=in:d=0.01,"
-                      f"afade=t=out:st={max(0.0, end - FADE_OUT):.3f}:d={FADE_OUT},adelay={ms}:all=1[a{i}]")
+        chains.append(
+            f"[{i}]aresample=48000,atrim=0:{end:.3f},afade=t=in:d=0.01,"
+            f"afade=t=out:st={max(0.0, end - FADE_OUT):.3f}:d={FADE_OUT},adelay={ms}:all=1[a{i}]"
+        )
         for w in take_words:
             words.append({"word": w["word"], "start": round(start + w["start"], 3), "end": round(start + w["end"], 3)})
 
     total = timeline["totalFrames"] / FPS
-    graph = ";".join(chains) + ";" + "".join(f"[a{i}]" for i in range(len(chains))) + \
-        f"amix=inputs={len(chains)}:normalize=0:dropout_transition=0,apad=whole_dur={total:.3f}" + \
-        "".join(f",volume=0:enable='between(t,{timeline['clips'][i]['from'] / FPS + o - MUTE_PAD:.3f},"
-                f"{timeline['clips'][i]['from'] / FPS + o + d + MUTE_PAD:.3f})'" for i, o, d in mute) + "[out]"
+    graph = (
+        ";".join(chains)
+        + ";"
+        + "".join(f"[a{i}]" for i in range(len(chains)))
+        + f"amix=inputs={len(chains)}:normalize=0:dropout_transition=0,apad=whole_dur={total:.3f}"
+        + "".join(
+            f",volume=0:enable='between(t,{timeline['clips'][i]['from'] / FPS + o - MUTE_PAD:.3f},"
+            f"{timeline['clips'][i]['from'] / FPS + o + d + MUTE_PAD:.3f})'"
+            for i, o, d in mute
+        )
+        + "[out]"
+    )
     wav = out / "narration.wav"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-ac", "1",
-                    "-ar", "48000", "-t", f"{total:.3f}", str(wav)], check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-v",
+            "error",
+            "-y",
+            *inputs,
+            "-filter_complex",
+            graph,
+            "-map",
+            "[out]",
+            "-ac",
+            "1",
+            "-ar",
+            "48000",
+            "-t",
+            f"{total:.3f}",
+            str(wav),
+        ],
+        check=True,
+    )
     # The film plays this cleaned track, not the raw takes, so its trims, fades and mutes reach the render
     # (G5, 2026-11-08: raw end-of-take pops reappeared in the edit's click check).
     shutil.copyfile(wav, takes / "narration.wav")
@@ -80,9 +115,19 @@ def mix(video: Path, mute: list[tuple[int, float, float]] = ()) -> tuple[Path, P
 
 if __name__ == "__main__":
     folder = Path(sys.argv[1])
-    saved = folder / "mutes.txt"   # tracked in the video folder, so a re-stitch reproduces the approved track
-    spec = sys.argv[sys.argv.index("--mute") + 1] if "--mute" in sys.argv else (saved.read_text().strip() if saved.is_file() else "")
-    mutes = [(int(item.split("@")[0]), float(item.split("@")[1].split(":")[0]), float(item.split(":")[1]))
-             for item in spec.split(",")] if spec else []
+    saved = folder / "mutes.txt"  # tracked in the video folder, so a re-stitch reproduces the approved track
+    spec = (
+        sys.argv[sys.argv.index("--mute") + 1]
+        if "--mute" in sys.argv
+        else (saved.read_text().strip() if saved.is_file() else "")
+    )
+    mutes = (
+        [
+            (int(item.split("@")[0]), float(item.split("@")[1].split(":")[0]), float(item.split(":")[1]))
+            for item in spec.split(",")
+        ]
+        if spec
+        else []
+    )
     wav, words = mix(Path(sys.argv[1]), mutes)
     print(f"{wav}\n{words}")

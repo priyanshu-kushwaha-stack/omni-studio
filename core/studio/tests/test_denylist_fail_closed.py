@@ -116,7 +116,11 @@ def _import_registry_with_denylist(tmp_path: Path, content: str | None) -> subpr
     env = {**os.environ, "PYTHONPATH": str(tmp_path / "openmontage"), "PYTHONDONTWRITEBYTECODE": "1"}
     return subprocess.run(
         [sys.executable, "-c", "import tools.tool_registry; print('LOADED')"],
-        capture_output=True, text=True, env=env, cwd=tmp_path, timeout=60,
+        capture_output=True,
+        text=True,
+        env=env,
+        cwd=tmp_path,
+        timeout=60,
     )
 
 

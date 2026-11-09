@@ -34,11 +34,28 @@ def machine() -> str:
     return f"{platform.node()} {platform.machine()}"
 
 
-def record(step: str, *, seconds: float, ok: bool, channel: str = "", video: str = "", inputs_bytes: int = 0,
-           extra: Optional[dict[str, Any]] = None, path: Optional[Path] = None) -> dict[str, Any]:
-    row = {**(extra or {}),  # first, so extra can never overwrite a core key
-           "at": datetime.now(timezone.utc).isoformat(), "step": step, "channel": channel, "video": video,
-           "machine": machine(), "seconds": round(seconds, 3), "ok": ok, "inputs_bytes": inputs_bytes}
+def record(
+    step: str,
+    *,
+    seconds: float,
+    ok: bool,
+    channel: str = "",
+    video: str = "",
+    inputs_bytes: int = 0,
+    extra: Optional[dict[str, Any]] = None,
+    path: Optional[Path] = None,
+) -> dict[str, Any]:
+    row = {
+        **(extra or {}),  # first, so extra can never overwrite a core key
+        "at": datetime.now(timezone.utc).isoformat(),
+        "step": step,
+        "channel": channel,
+        "video": video,
+        "machine": machine(),
+        "seconds": round(seconds, 3),
+        "ok": ok,
+        "inputs_bytes": inputs_bytes,
+    }
     target = Path(path) if path else timings_path()
     target.parent.mkdir(parents=True, exist_ok=True)
     with open(target, "a", encoding="utf-8") as f:
@@ -94,10 +111,15 @@ def record_tool(execute):
             return result
         finally:
             try:
-                record(getattr(self, "name", type(self).__name__), seconds=time.monotonic() - t0,
-                       ok=bool(result is not None and getattr(result, "success", False)),
-                       channel=str(inputs.get("channel", "")), video=video_from(inputs),
-                       inputs_bytes=args_bytes(inputs), extra={"via": "tool"})
+                record(
+                    getattr(self, "name", type(self).__name__),
+                    seconds=time.monotonic() - t0,
+                    ok=bool(result is not None and getattr(result, "success", False)),
+                    channel=str(inputs.get("channel", "")),
+                    video=video_from(inputs),
+                    inputs_bytes=args_bytes(inputs),
+                    extra={"via": "tool"},
+                )
             except Exception:
                 pass
 
@@ -128,7 +150,14 @@ def summarize(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     out = []
     for step, runs in by_step.items():
         secs = [float(r["seconds"]) for r in runs]
-        out.append({"step": step, "runs": len(runs), "failures": sum(1 for r in runs if not r.get("ok")),
-                    "total_s": round(sum(secs), 3), "median_s": round(statistics.median(secs), 3),
-                    "max_s": round(max(secs), 3)})
+        out.append(
+            {
+                "step": step,
+                "runs": len(runs),
+                "failures": sum(1 for r in runs if not r.get("ok")),
+                "total_s": round(sum(secs), 3),
+                "median_s": round(statistics.median(secs), 3),
+                "max_s": round(max(secs), 3),
+            }
+        )
     return sorted(out, key=lambda r: r["total_s"], reverse=True)

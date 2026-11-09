@@ -33,7 +33,7 @@ KNOWN = ("claims", "no_quiz_boards", "loudness", "clicks", "opening", "similarit
 MEDIA_CHECKS = {"loudness", "clicks", "opening", "similarity"}
 PUBLISH_STAGE = "publish_prep"
 WATCH_STAGE = "final_watch"
-LEGACY_UPLOAD_STAGE = "upload"   # media proof stage name for `omni approve-upload` (videos with no pipeline)
+LEGACY_UPLOAD_STAGE = "upload"  # media proof stage name for `omni approve-upload` (videos with no pipeline)
 UPLOAD_APPROVAL = "upload_approval.json"
 
 
@@ -56,8 +56,9 @@ def stage_checks(pipeline: str, stage: str) -> list[str]:
     return list(names)
 
 
-def project_identity(channel: channels.Channel, video_id: str, format_name: Optional[str] = None,
-                     pipeline_hint: Optional[str] = None) -> tuple[str, str]:
+def project_identity(
+    channel: channels.Channel, video_id: str, format_name: Optional[str] = None, pipeline_hint: Optional[str] = None
+) -> tuple[str, str]:
     """(format, pipeline) from the project marker omni new-video writes, or from --format for older videos."""
     marker = channels.video_dir(channel, video_id) / "project.json"
     data = json.loads(marker.read_text(encoding="utf-8")) if marker.is_file() else {}
@@ -87,8 +88,15 @@ def _rel(path: Path) -> str:
     return str(path.relative_to(ROOT)) if path.resolve().is_relative_to(ROOT) else str(path)
 
 
-def run_check(name: str, channel: channels.Channel, video_id: str, fmt: str, pipeline: str,
-              media: Optional[Path], words: Optional[Path]) -> dict[str, Any]:
+def run_check(
+    name: str,
+    channel: channels.Channel,
+    video_id: str,
+    fmt: str,
+    pipeline: str,
+    media: Optional[Path],
+    words: Optional[Path],
+) -> dict[str, Any]:
     folder = channels.video_dir(channel, video_id)
     if name in MEDIA_CHECKS and name != "similarity" and (media is None or not media.is_file()):
         return {"check": name, "ok": False, "problems": [f"{name} needs a render or audio file: pass --media"]}
@@ -108,8 +116,7 @@ def run_check(name: str, channel: channels.Channel, video_id: str, fmt: str, pip
 
         target = channel.config.loudness.get(fmt)
         if target is None:
-            return {"check": name, "ok": False,
-                    "problems": [f"channel.yaml has no loudness target for format {fmt!r}"]}
+            return {"check": name, "ok": False, "problems": [f"channel.yaml has no loudness target for format {fmt!r}"]}
         try:
             return loudness.check(media, target.model_dump())
         except loudness.LoudnessError as exc:
@@ -181,15 +188,20 @@ def _approved_media_record(channel: channels.Channel, video_id: str, stage: str)
         raise ChannelError(f"{stage} is not approved")
     metadata = checkpoint.get("metadata") or {}
     try:
-        studio_approval.verify(video_id, stage, checkpoint.get("pipeline_type"), checkpoint.get("artifacts") or {},
-                               metadata)
+        studio_approval.verify(
+            video_id, stage, checkpoint.get("pipeline_type"), checkpoint.get("artifacts") or {}, metadata
+        )
     except studio_approval.ApprovalRefused as exc:
-        raise ChannelError(f"the {stage} approval is invalid (forged, or its artifacts or media proof were edited "
-                           f"or removed after approval): {exc}") from exc
+        raise ChannelError(
+            f"the {stage} approval is invalid (forged, or its artifacts or media proof were edited "
+            f"or removed after approval): {exc}"
+        ) from exc
     record = (metadata.get("approval") or {}).get("media")
     if record is None:
-        raise ChannelError(f"the {stage} approval has no media proof (missing): it was not approved on a checked "
-                           f"file; run omni qc on the render, then the owner re-approves {stage}")
+        raise ChannelError(
+            f"the {stage} approval has no media proof (missing): it was not approved on a checked "
+            f"file; run omni qc on the render, then the owner re-approves {stage}"
+        )
     try:
         return studio_approval.verify_media(video_id, stage, record)
     except studio_approval.ApprovalRefused as exc:
@@ -205,8 +217,10 @@ def _deliverable_check(channel: channels.Channel, video_id: str, media: Optional
     if target is None:
         problems.append("upload.yaml names no file, so the checks cannot be bound to the upload")
     elif media is None or media.resolve() != target:
-        problems.append(f"qc ran on {_rel(media) if media else 'no file'}, but upload.yaml uploads "
-                        f"{_rel(target)}: run omni qc on the file that will be uploaded")
+        problems.append(
+            f"qc ran on {_rel(media) if media else 'no file'}, but upload.yaml uploads "
+            f"{_rel(target)}: run omni qc on the file that will be uploaded"
+        )
     elif target.is_file() and (pipeline_state(folder) or not legacy_upload(folder)):
         try:
             watched = _approved_media_record(channel, video_id, WATCH_STAGE)
@@ -214,13 +228,22 @@ def _deliverable_check(channel: channels.Channel, video_id: str, media: Optional
             problems.append(f"G6: {exc}")
         else:
             if watched["sha256"] != _sha256(target):
-                problems.append(f"{_rel(target)} is not the render the owner approved at final_watch "
-                                f"({watched['media']}, sha256 {watched['sha256'][:12]}...)")
+                problems.append(
+                    f"{_rel(target)} is not the render the owner approved at final_watch "
+                    f"({watched['media']}, sha256 {watched['sha256'][:12]}...)"
+                )
     return {"check": "deliverable", "ok": not problems, "problems": problems}
 
 
-def run_stage(slug: str, video_id: str, stage: str, media: Optional[Path] = None, words: Optional[Path] = None,
-              format_name: Optional[str] = None, write: bool = True) -> dict[str, Any]:
+def run_stage(
+    slug: str,
+    video_id: str,
+    stage: str,
+    media: Optional[Path] = None,
+    words: Optional[Path] = None,
+    format_name: Optional[str] = None,
+    write: bool = True,
+) -> dict[str, Any]:
     channel = channels.load_channel(slug)
     folder = channels.video_dir(channel, video_id)
     if not folder.is_dir():
@@ -238,11 +261,17 @@ def run_stage(slug: str, video_id: str, stage: str, media: Optional[Path] = None
     if stage == PUBLISH_STAGE and names:
         results.append(_deliverable_check(channel, video_id, media))
     report = {
-        "channel": slug, "video": video_id, "stage": stage, "format": fmt, "pipeline": pipeline,
+        "channel": slug,
+        "video": video_id,
+        "stage": stage,
+        "format": fmt,
+        "pipeline": pipeline,
         "at": datetime.now(timezone.utc).isoformat(),
-        "inputs": {"media": _rel(media) if media else None,
-                   "media_sha256": _sha256(media) if media and media.is_file() else None,
-                   "words": _rel(Path(words).resolve()) if words else None},
+        "inputs": {
+            "media": _rel(media) if media else None,
+            "media_sha256": _sha256(media) if media and media.is_file() else None,
+            "words": _rel(Path(words).resolve()) if words else None,
+        },
         "checks": results,
         "ok": all(r["ok"] for r in results),
     }
@@ -253,15 +282,16 @@ def run_stage(slug: str, video_id: str, stage: str, media: Optional[Path] = None
     return report
 
 
-def require_passing(channel: channels.Channel, video_id: str, stage: str,
-                    pipeline: str) -> Optional[dict[str, Any]]:
+def require_passing(channel: channels.Channel, video_id: str, stage: str, pipeline: str) -> Optional[dict[str, Any]]:
     """Refuse a gate while its checks fail. Re-runs them on the inputs the stage's qc report names."""
     if not stage_checks(pipeline, stage):
         return None
     path = channels.video_dir(channel, video_id) / "qc" / f"{stage}.json"
     if not path.is_file():
-        raise ChannelError(f"stage {stage!r} has automated checks; run `omni qc {channel.slug} {video_id} "
-                           f"{stage}` first (no {path.relative_to(channel.dir)})")
+        raise ChannelError(
+            f"stage {stage!r} has automated checks; run `omni qc {channel.slug} {video_id} "
+            f"{stage}` first (no {path.relative_to(channel.dir)})"
+        )
     previous = json.loads(path.read_text(encoding="utf-8"))
     inputs = previous.get("inputs", {})
     media = ROOT / inputs["media"] if inputs.get("media") else None
@@ -270,8 +300,10 @@ def require_passing(channel: channels.Channel, video_id: str, stage: str,
         if media is None or not inputs.get("media_sha256"):
             raise ChannelError(f"the {stage!r} qc report names no checked file and sha256; run omni qc with --media")
         if not media.is_file() or _sha256(media) != inputs["media_sha256"]:
-            raise ChannelError(f"{inputs['media']} changed (or is gone) since omni qc checked it "
-                               f"(sha256 {inputs['media_sha256'][:12]}...); run omni qc again")
+            raise ChannelError(
+                f"{inputs['media']} changed (or is gone) since omni qc checked it "
+                f"(sha256 {inputs['media_sha256'][:12]}...); run omni qc again"
+            )
     report = run_stage(channel.slug, video_id, stage, media, words, format_name=previous.get("format"))
     if not report["ok"]:
         failed = [f"{r['check']}: {p}" for r in report["checks"] if not r["ok"] for p in r["problems"]]
@@ -290,8 +322,9 @@ def upload_metadata_sha256(channel: channels.Channel, video_id: str) -> str:
         raise ChannelError(str(exc)) from exc
 
 
-def media_proof(channel: channels.Channel, video_id: str, stage: str, report: Optional[dict[str, Any]],
-                at: str) -> Optional[dict[str, str]]:
+def media_proof(
+    channel: channels.Channel, video_id: str, stage: str, report: Optional[dict[str, Any]], at: str
+) -> Optional[dict[str, str]]:
     """Signed {media, sha256, at, [metadata_sha256], proof} for an approval whose checks ran on a file. Publish
     approvals (publish_prep, approve-upload) also sign the upload metadata digest."""
     inputs = (report or {}).get("inputs") or {}
@@ -318,18 +351,25 @@ def approve_upload(slug: str, video_id: str, format_name: str, note: Optional[st
     folder = channels.video_dir(channel, video_id)
     state = pipeline_state(folder)
     if state:
-        raise ChannelError(f"{slug}/{video_id} has pipeline state ({', '.join(state[:5])}): approve publish_prep "
-                           f"with omni approve")
+        raise ChannelError(
+            f"{slug}/{video_id} has pipeline state ({', '.join(state[:5])}): approve publish_prep with omni approve"
+        )
     if not legacy_upload(folder):
-        raise ChannelError(f"{slug}/{video_id}: approve-upload is only for an imported video marked "
-                           f"`legacy_upload: true` in its upload.yaml")
+        raise ChannelError(
+            f"{slug}/{video_id}: approve-upload is only for an imported video marked "
+            f"`legacy_upload: true` in its upload.yaml"
+        )
     report = run_stage(slug, video_id, PUBLISH_STAGE, format_name=format_name)
     if not report["ok"]:
         failed = [f"{r['check']}: {p}" for r in report["checks"] if not r["ok"] for p in r["problems"]]
         raise ChannelError("upload cannot be approved while its checks fail:\n  " + "\n  ".join(failed))
     at = datetime.now(timezone.utc).isoformat()
-    record = {"by": getpass.getuser(), "at": at, "via": "omni approve-upload",
-              "media": media_proof(channel, video_id, LEGACY_UPLOAD_STAGE, report, at)}
+    record = {
+        "by": getpass.getuser(),
+        "at": at,
+        "via": "omni approve-upload",
+        "media": media_proof(channel, video_id, LEGACY_UPLOAD_STAGE, report, at),
+    }
     if note:
         record["note"] = note
     out = folder / UPLOAD_APPROVAL
@@ -348,13 +388,17 @@ def approved_upload_media(channel: channels.Channel, video_id: str) -> dict[str,
         try:
             return _approved_media_record(channel, video_id, PUBLISH_STAGE)
         except ChannelError as exc:
-            raise ChannelError(f"publish_prep (G7) of {channel.slug}/{video_id} is not approved with a checked file "
-                               f"({exc}); omni qc ... publish_prep, then the owner runs omni approve ... "
-                               "publish_prep") from exc
+            raise ChannelError(
+                f"publish_prep (G7) of {channel.slug}/{video_id} is not approved with a checked file "
+                f"({exc}); omni qc ... publish_prep, then the owner runs omni approve ... "
+                "publish_prep"
+            ) from exc
     legacy = folder / UPLOAD_APPROVAL
     if not legacy.is_file():
-        raise ChannelError(f"{channel.slug}/{video_id} is legacy_upload and has no {UPLOAD_APPROVAL}: the owner runs "
-                           f"omni approve-upload {channel.slug} {video_id} --format <format> first")
+        raise ChannelError(
+            f"{channel.slug}/{video_id} is legacy_upload and has no {UPLOAD_APPROVAL}: the owner runs "
+            f"omni approve-upload {channel.slug} {video_id} --format <format> first"
+        )
     data = json.loads(legacy.read_text(encoding="utf-8"))
     try:
         return studio_approval.verify_media(video_id, LEGACY_UPLOAD_STAGE, data.get("media"))
@@ -363,8 +407,9 @@ def approved_upload_media(channel: channels.Channel, video_id: str) -> dict[str,
 
 
 def format_report(report: dict[str, Any]) -> str:
-    lines = [f"qc {report['channel']}/{report['video']} {report['stage']} ({report['pipeline']}, "
-             f"format {report['format']})"]
+    lines = [
+        f"qc {report['channel']}/{report['video']} {report['stage']} ({report['pipeline']}, format {report['format']})"
+    ]
     if report["inputs"]["media"]:
         lines.append(f"  media {report['inputs']['media']}")
     if not report["checks"]:
@@ -373,8 +418,7 @@ def format_report(report: dict[str, Any]) -> str:
         extra = ""
         if r["check"] == "loudness" and "measured" in r:
             m = r["measured"]
-            extra = (f" ({m['integrated_lufs']:.1f} LUFS, {m['true_peak_dbtp']:.2f} dBTP, "
-                     f"LRA {m['lra_lu']:.1f} LU)")
+            extra = f" ({m['integrated_lufs']:.1f} LUFS, {m['true_peak_dbtp']:.2f} dBTP, LRA {m['lra_lu']:.1f} LU)"
         lines.append(f"  [{'PASS' if r['ok'] else 'FAIL'}] {r['check']}{extra}")
         lines += [f"         - {p}" for p in r["problems"]]
     lines.append(f"  {'ok' if report['ok'] else 'FAILED'}")

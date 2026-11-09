@@ -20,12 +20,14 @@ def test_channel_dir_defaults_to_professor_of_us(monkeypatch):
 
 
 def test_paths_come_from_the_channel_engine_yaml(tmp_path, monkeypatch):
-    (tmp_path / "engine.yaml").write_text("font: f/hand.ttf\nmedia_python: /opt/py\nsecrets_env: ~/.config/omni-studio/x.env\n")
+    (tmp_path / "engine.yaml").write_text(
+        "font: f/hand.ttf\nmedia_python: /opt/py\nsecrets_env: ~/.config/omni-studio/x.env\n"
+    )
     monkeypatch.setenv("POU_CHANNEL_DIR", str(tmp_path))
     assert pou_paths.path("font") == (tmp_path / "f" / "hand.ttf").resolve()
     assert pou_paths.path("media_python") == Path("/opt/py")
     assert pou_paths.path("secrets_env") == Path.home() / ".config" / "omni-studio" / "x.env"
-    assert pou_paths.path("rigs") == (tmp_path / "rigs").resolve()   # default
+    assert pou_paths.path("rigs") == (tmp_path / "rigs").resolve()  # default
 
 
 def test_unknown_engine_keys_are_refused(tmp_path, monkeypatch):

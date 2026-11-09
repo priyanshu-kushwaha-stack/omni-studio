@@ -7,6 +7,7 @@ Item 27 fails on any `> QUIZ:` board (owner rule 2026-11-06: questions are answe
 Visual density at 3-6 s is NOT checked here; `> VISUAL:` cues are beats (one per
 ~10 s). The 3-6 s rule is enforced on scene_plan.json by scripts/scene_plan_check.py.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -88,7 +89,11 @@ def lint_script(text: str, target_minutes: int, wpm: int = 155) -> list[Finding]
     findings.append(Finding(5, hit is None, f"greeting found: {hit!r}" if hit else "no greeting"))
     head80 = " ".join(first_words[:80])
     has_digit = bool(re.search(r"\d", head80))
-    findings.append(Finding(7, has_digit, "digit in first ~30 s" if has_digit else "no number in first ~30 s (advisory)", "advisory"))
+    findings.append(
+        Finding(
+            7, has_digit, "digit in first ~30 s" if has_digit else "no number in first ~30 s (advisory)", "advisory"
+        )
+    )
 
     # estimated time of each RE-ENGAGE cue = words before it / wpm
     elapsed = 0
@@ -101,11 +106,17 @@ def lint_script(text: str, target_minutes: int, wpm: int = 155) -> list[Finding]
     wanted = re_engage_windows(total_seconds)
     missing = [w for w in wanted if not any(abs(t - w) <= RE_ENGAGE_TOLERANCE for t in re_times)]
     ok10 = bool(wanted) and not missing
-    findings.append(Finding(10, ok10, f"re-engagements at {[round(t) for t in re_times]} s; wanted near {wanted} s; missing {missing}"))
+    findings.append(
+        Finding(
+            10, ok10, f"re-engagements at {[round(t) for t in re_times]} s; wanted near {wanted} s; missing {missing}"
+        )
+    )
 
     body_text = " ".join(" ".join(n) for _, n, _ in secs[:-1]).lower() if len(secs) > 1 else ""
     hit = next((e for e in ENDING_LANGUAGE if e in body_text), None)
-    findings.append(Finding(21, hit is None, f"ending language before last section: {hit!r}" if hit else "no early ending language"))
+    findings.append(
+        Finding(21, hit is None, f"ending language before last section: {hit!r}" if hit else "no early ending language")
+    )
 
     n_src = _sources(text)
     findings.append(Finding(22, n_src >= 5, f"{n_src} source URLs (want >=5)"))
@@ -119,14 +130,33 @@ def lint_script(text: str, target_minutes: int, wpm: int = 155) -> list[Finding]
             weak_vis.append(f"{title}: {n_vis} beats for {round(seconds)} s")
         if n_words and not re.search(r"\*\w[^*]*\*", " ".join(narr)):
             weak_emp.append(title)
-    findings.append(Finding(26, not weak_vis, "; ".join(weak_vis) or "visual beats ok (1 per 10 s; 3-6 s density is checked on scene_plan.json)"))
-    findings.append(Finding(20, not weak_emp, f"no emphasis in: {weak_emp} (advisory)" if weak_emp else "emphasis marked in every section", "advisory"))
+    findings.append(
+        Finding(
+            26,
+            not weak_vis,
+            "; ".join(weak_vis) or "visual beats ok (1 per 10 s; 3-6 s density is checked on scene_plan.json)",
+        )
+    )
+    findings.append(
+        Finding(
+            20,
+            not weak_emp,
+            f"no emphasis in: {weak_emp} (advisory)" if weak_emp else "emphasis marked in every section",
+            "advisory",
+        )
+    )
     # Item 27: no quiz boards. Owner rule 2026-11-06 (core/studio/rules/viewer-questions.md): a question is
     # answered at once inside the dialogue, with no pause and no three-option board. compose.py still renders
     # `> QUIZ:` for already-approved videos; new scripts fail here.
     boards = [i + 1 for i, l in enumerate(text.splitlines()) if QUIZ_RE.match(l)]
-    detail = (f"quiz board at line(s) {boards}: ask inside the dialogue and have a character answer at once, "
-              "no pause, no quiz boards (owner 2026-11-06)") if boards else "no quiz boards"
+    detail = (
+        (
+            f"quiz board at line(s) {boards}: ask inside the dialogue and have a character answer at once, "
+            "no pause, no quiz boards (owner 2026-11-06)"
+        )
+        if boards
+        else "no quiz boards"
+    )
     findings.append(Finding(27, not boards, detail))
     return sorted(findings)
 

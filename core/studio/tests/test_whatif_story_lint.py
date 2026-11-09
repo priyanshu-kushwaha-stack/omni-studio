@@ -56,8 +56,12 @@ def test_the_five_lines_must_be_in_order():
 
 
 def test_an_empty_five_line_fails():
-    assert any("DESIRE" in p and "empty" in p for p in lint.problems(script(five=FIVE.replace(
-        "You want one more ordinary evening with your grandfather.", ""))))
+    assert any(
+        "DESIRE" in p and "empty" in p
+        for p in lint.problems(
+            script(five=FIVE.replace("You want one more ordinary evening with your grandfather.", ""))
+        )
+    )
 
 
 def test_a_five_line_given_twice_fails():
@@ -68,6 +72,7 @@ def test_a_five_line_given_twice_fails():
 def test_the_five_lines_are_not_spoken_by_the_engine_or_the_claims_check():
     """They are `>` direction lines: the claims check and story.py never read them aloud."""
     from studio.claims import spoken_lines
+
     assert [t for _, t in spoken_lines(script())] == ["On a Tuesday, a number appears over your friend's head."]
 
 

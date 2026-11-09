@@ -9,6 +9,7 @@ is filled for scripts/scene_plan_check.py.
 
 Word timestamps: a JSON list of {"word": str, "start": float, "end": float} (faster-whisper).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -22,7 +23,19 @@ SECTION_RE = re.compile(r"^## \[(\d{2}):(\d{2})\] (.+)$")
 CLAIM_RE = re.compile(r"\s*\(c\d+(?:,\s*c\d+)*\)")
 WORD_RE = re.compile(r"[a-z0-9']+")
 
-CARD_WORDS = ("card", "counter", "label", "bar ", "bars", "chart", "stat", "ticks", "tick at", "split card", "comparison")
+CARD_WORDS = (
+    "card",
+    "counter",
+    "label",
+    "bar ",
+    "bars",
+    "chart",
+    "stat",
+    "ticks",
+    "tick at",
+    "split card",
+    "comparison",
+)
 CHAR_WORDS = ('"you" figure', "figure", "figures", "camp", "ring of")
 DIAGRAM_WORDS = ("map", "timeline", "cross-section", "globe", "curve")
 
@@ -57,11 +70,11 @@ def parse_script(text: str) -> list[dict]:
         if section is None:
             continue
         if line.startswith("> VISUAL:"):
-            beats.append({"section": section, "beat": line[len("> VISUAL:"):].strip(), "words": []})
+            beats.append({"section": section, "beat": line[len("> VISUAL:") :].strip(), "words": []})
         elif line.startswith("> ASK:"):  # a question to the viewer: read aloud, so it is narration
             if not beats:
                 beats.append({"section": section, "beat": "(no beat)", "words": []})
-            beats[-1]["words"].extend(normalise(CLAIM_RE.sub("", line[len("> ASK:"):]).replace("*", "")))
+            beats[-1]["words"].extend(normalise(CLAIM_RE.sub("", line[len("> ASK:") :]).replace("*", "")))
         elif line.startswith("> ") or line.startswith("#") or not line.strip():
             continue
         elif line.startswith(("template:", "target_minutes:", "status:", "hook:")):
@@ -145,9 +158,16 @@ def align(beats: list[dict], words: list[dict]) -> list[tuple[float, float]]:
     return contiguous
 
 
-def build_plan(script_text: str, words: list[dict], *, playbook: str = "stickman-explainer",
-               hook_seconds: float = 60.0, hook_hold: float = 4.0, body_hold: float = 6.0,
-               tail_seconds: float = 12.0) -> dict:
+def build_plan(
+    script_text: str,
+    words: list[dict],
+    *,
+    playbook: str = "stickman-explainer",
+    hook_seconds: float = 60.0,
+    hook_hold: float = 4.0,
+    body_hold: float = 6.0,
+    tail_seconds: float = 12.0,
+) -> dict:
     beats = parse_script(script_text)
     spans = align(beats, words)
     scenes: list[dict] = []
@@ -165,17 +185,23 @@ def build_plan(script_text: str, words: list[dict], *, playbook: str = "stickman
             t = start + k * seg
             seg_end = end if k == n_segs - 1 else start + (k + 1) * seg
             sid = f"s{n:03d}" if k == 0 else f"s{n:03d}c{k}"
-            scenes.append({
-                "id": sid,
-                "type": stype if first else "animation",
-                "description": b["beat"] if first else f"continue: {b['beat'][:80]} (push-in / draw-on continuation)",
-                "start_seconds": round(t, 2),
-                "end_seconds": round(seg_end, 2),
-                "script_section_id": b["section"],
-                "movement": movement if first else "push-in",
-                "overlay_notes": "labels as handwriting overlays; no text inside the image",
-                "required_assets": [{"type": "image", "description": b["beat"], "source": "provided"}] if first else [],
-            })
+            scenes.append(
+                {
+                    "id": sid,
+                    "type": stype if first else "animation",
+                    "description": b["beat"]
+                    if first
+                    else f"continue: {b['beat'][:80]} (push-in / draw-on continuation)",
+                    "start_seconds": round(t, 2),
+                    "end_seconds": round(seg_end, 2),
+                    "script_section_id": b["section"],
+                    "movement": movement if first else "push-in",
+                    "overlay_notes": "labels as handwriting overlays; no text inside the image",
+                    "required_assets": [{"type": "image", "description": b["beat"], "source": "provided"}]
+                    if first
+                    else [],
+                }
+            )
             classes[sid] = cls if first else "motion"
             first = False
             t = seg_end
@@ -187,26 +213,41 @@ def build_plan(script_text: str, words: list[dict], *, playbook: str = "stickman
         tail += 1
         seg = min(body_hold, remaining)
         sid = f"e{tail:02d}"
-        scenes.append({
-            "id": sid, "type": "animation",
-            "description": "end-screen hold: slow push-in on the final drawing, right third of the frame kept quiet",
-            "start_seconds": round(t, 2), "end_seconds": round(t + seg, 2),
-            "script_section_id": scenes[-1]["script_section_id"] if scenes else "",
-            "movement": "push-in",
-            "overlay_notes": "final hold: keep the right third of the frame quiet for end screens",
-            "required_assets": [],
-        })
+        scenes.append(
+            {
+                "id": sid,
+                "type": "animation",
+                "description": "end-screen hold: slow push-in on the final drawing, right third of the frame kept quiet",
+                "start_seconds": round(t, 2),
+                "end_seconds": round(t + seg, 2),
+                "script_section_id": scenes[-1]["script_section_id"] if scenes else "",
+                "movement": "push-in",
+                "overlay_notes": "final hold: keep the right third of the frame quiet for end screens",
+                "required_assets": [],
+            }
+        )
         classes[sid] = "motion"
         t += seg
         remaining -= seg
     exceptions = []
     if tail_seconds > 0 and scenes:
         # the end-screen tail is quiet by design; exempt the minute it falls in from the density rule
-        exceptions.append({"minute": int(math.ceil(scenes[-1]["end_seconds"] / 60)),
-                           "reason": f"end-screen tail ({tail_seconds:.0f} s kept quiet for end screens)"})
-    return {"version": "1.0", "style_playbook": playbook, "scenes": scenes,
-            "metadata": {"change_classes": classes, "minute_exceptions": exceptions,
-                         "source": "scripts/scene_plan_from_script.py"}}
+        exceptions.append(
+            {
+                "minute": int(math.ceil(scenes[-1]["end_seconds"] / 60)),
+                "reason": f"end-screen tail ({tail_seconds:.0f} s kept quiet for end screens)",
+            }
+        )
+    return {
+        "version": "1.0",
+        "style_playbook": playbook,
+        "scenes": scenes,
+        "metadata": {
+            "change_classes": classes,
+            "minute_exceptions": exceptions,
+            "source": "scripts/scene_plan_from_script.py",
+        },
+    }
 
 
 def main() -> None:
@@ -214,7 +255,12 @@ def main() -> None:
     p.add_argument("script", type=Path)
     p.add_argument("words", type=Path, help="JSON list of {word,start,end}")
     p.add_argument("-o", "--out", type=Path, required=True)
-    p.add_argument("--tail-seconds", type=float, default=12.0, help="end-screen hold after the last word (12 for a video, ~3 for a trailer)")
+    p.add_argument(
+        "--tail-seconds",
+        type=float,
+        default=12.0,
+        help="end-screen hold after the last word (12 for a video, ~3 for a trailer)",
+    )
     a = p.parse_args()
     plan = build_plan(a.script.read_text(), json.loads(a.words.read_text()), tail_seconds=a.tail_seconds)
     a.out.write_text(json.dumps(plan, indent=2) + "\n")

@@ -61,11 +61,13 @@ class RoomConfig:
 
 def _brief(value: str, channel_dir: Path, path: Path) -> Path:
     """A seat's brief goes into a prompt, so it must live under the channel folder or the shared seats folder."""
-    brief = SEATS_DIR / f"{value[len('shared:'):]}.md" if value.startswith("shared:") else channel_dir / value
+    brief = SEATS_DIR / f"{value[len('shared:') :]}.md" if value.startswith("shared:") else channel_dir / value
     real = brief.resolve()
     if not any(real.is_relative_to(root.resolve()) for root in (channel_dir, SEATS_DIR)):
-        raise RoomConfigError(f"{path}: brief {value!r} is outside the channel folder and the shared seats; "
-                              "a brief is read into a model prompt")
+        raise RoomConfigError(
+            f"{path}: brief {value!r} is outside the channel folder and the shared seats; "
+            "a brief is read into a model prompt"
+        )
     return brief
 
 
@@ -94,32 +96,44 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
     if missing:
         raise RoomConfigError(f"{path}: missing {missing}")
     try:
-        seats = [SeatConfig(str(s["name"]), str(s["role"]), str(s["model"]),
-                           _brief(str(s["brief"]), channel_dir, path))
-                 for s in data["seats"]]
+        seats = [
+            SeatConfig(str(s["name"]), str(s["role"]), str(s["model"]), _brief(str(s["brief"]), channel_dir, path))
+            for s in data["seats"]
+        ]
     except (KeyError, TypeError) as exc:
         raise RoomConfigError(f"{path}: every seat needs name, role, model and brief ({exc})") from exc
     slugs: dict[str, str] = {}
     for seat in seats:
         if seat_slug(seat.name) in ("", "meta", "judge"):
-            raise RoomConfigError(f"{path}: seat {seat.name!r} has the file name {seat_slug(seat.name)!r}, "
-                                  "which is empty or reserved (meta, judge)")
+            raise RoomConfigError(
+                f"{path}: seat {seat.name!r} has the file name {seat_slug(seat.name)!r}, "
+                "which is empty or reserved (meta, judge)"
+            )
         other = slugs.setdefault(seat_slug(seat.name), seat.name)
         if other != seat.name:
-            raise RoomConfigError(f"{path}: seats {other!r} and {seat.name!r} have the same file name "
-                                  f"{seat_slug(seat.name)!r}")
+            raise RoomConfigError(
+                f"{path}: seats {other!r} and {seat.name!r} have the same file name {seat_slug(seat.name)!r}"
+            )
     fmt = data.get("format")
     if fmt is not None and not isinstance(fmt, dict):
         raise RoomConfigError(f"{path}: format must be a mapping, not {type(fmt).__name__}")
     for key in ("linters", "sources"):
         if data.get(key) is not None and not isinstance(data[key], list):
             raise RoomConfigError(f"{path}: {key} must be a list, not {type(data[key]).__name__}")
-    return RoomConfig(writer=str(data["writer"]), judge=str(data["judge"]),
-                      rounds=_int(data, "rounds", None, path), daily_cap=_int(data, "daily_cap", 80, path),
-                      seats=seats, format=fmt or {},
-                      linters=list(data.get("linters") or []), adopted=data.get("adopted"),
-                      pitch_clip=str(data.get("pitch_clip", "after_g2")), sources=list(data.get("sources") or []),
-                      path=path, channel_dir=channel_dir)
+    return RoomConfig(
+        writer=str(data["writer"]),
+        judge=str(data["judge"]),
+        rounds=_int(data, "rounds", None, path),
+        daily_cap=_int(data, "daily_cap", 80, path),
+        seats=seats,
+        format=fmt or {},
+        linters=list(data.get("linters") or []),
+        adopted=data.get("adopted"),
+        pitch_clip=str(data.get("pitch_clip", "after_g2")),
+        sources=list(data.get("sources") or []),
+        path=path,
+        channel_dir=channel_dir,
+    )
 
 
 def derived_cap(cfg: RoomConfig) -> int:
@@ -141,8 +155,11 @@ def _voices_problems(channel_dir: Path) -> list[str]:
         return ["pitch_clip pre_g2_local: voices in voices.yaml must be a mapping of name to engine"]
     if not voices:
         return ["pitch_clip pre_g2_local needs a non-empty voices.yaml"]
-    return [f"pitch_clip pre_g2_local: voice {name!r} uses {v.get('tool')!r}, not a free local engine {LOCAL_TTS}"
-            for name, v in voices.items() if not isinstance(v, dict) or v.get("tool") not in LOCAL_TTS]
+    return [
+        f"pitch_clip pre_g2_local: voice {name!r} uses {v.get('tool')!r}, not a free local engine {LOCAL_TTS}"
+        for name, v in voices.items()
+        if not isinstance(v, dict) or v.get("tool") not in LOCAL_TTS
+    ]
 
 
 def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:

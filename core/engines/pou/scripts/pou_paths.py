@@ -6,6 +6,7 @@ The channel folder is $POU_CHANNEL_DIR, or channels/professor-of-us/ in this rep
 ROOT the puppet scripts join them to. engine.yaml names the font, LoRA, media interpreters and secrets file;
 relative entries are relative to the channel folder, and "~" is expanded.
 """
+
 from __future__ import annotations
 
 import os

@@ -19,9 +19,7 @@ from tools.video.video_compose import VideoCompose
 ROOT = Path(__file__).resolve().parents[3]
 OPENMONTAGE = ROOT / "core" / "openmontage"
 LOCK = yaml.safe_load((ROOT / "core" / "lock.yaml").read_text(encoding="utf-8"))
-DENYLIST = yaml.safe_load(
-    (ROOT / "core" / "studio" / "config" / "disabled_tools.yaml").read_text(encoding="utf-8")
-)
+DENYLIST = yaml.safe_load((ROOT / "core" / "studio" / "config" / "disabled_tools.yaml").read_text(encoding="utf-8"))
 
 # `omni status` here reads every real channel; test_channels' real-tree test adds and removes one. Under xdist
 # (--dist loadgroup) one group runs on one worker, one test at a time.
@@ -61,7 +59,11 @@ def test_hyperframes_telemetry_is_off_for_child_processes():
 
 def test_denylist_names_the_owner_tools():
     assert {
-        "lip_sync", "h3_max_video", "kling_lip_sync", "minimax_video", "minimax_fal_video",
+        "lip_sync",
+        "h3_max_video",
+        "kling_lip_sync",
+        "minimax_video",
+        "minimax_fal_video",
     } <= set(DENYLIST["disabled"])
 
 
@@ -88,9 +90,7 @@ def test_disabled_tools_are_absent_from_capability_routing():
     names = {t.name for t in registry.get_by_capability("video_generation")}
     assert not names & {"h3_max_video", "minimax_video", "minimax_fal_video"}
     assert "kling_lip_sync" not in {t.name for t in registry.get_by_capability("avatar")}
-    listed = {
-        entry["name"] for entries in registry.capability_catalog().values() for entry in entries
-    }
+    listed = {entry["name"] for entries in registry.capability_catalog().values() for entry in entries}
     assert listed
     assert not listed & set(DENYLIST["disabled"])
 
@@ -146,10 +146,26 @@ def test_external_runtime_accepts_a_finished_render_without_rendering(tmp_path):
     out = tmp_path / "final.mp4"
     subprocess.run(
         [
-            "ffmpeg", "-y", "-loglevel", "error",
-            "-f", "lavfi", "-i", "testsrc=size=1280x720:rate=30:duration=1",
-            "-f", "lavfi", "-i", "sine=frequency=440:duration=1",
-            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", str(out),
+            "ffmpeg",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "lavfi",
+            "-i",
+            "testsrc=size=1280x720:rate=30:duration=1",
+            "-f",
+            "lavfi",
+            "-i",
+            "sine=frequency=440:duration=1",
+            "-c:v",
+            "libx264",
+            "-pix_fmt",
+            "yuv420p",
+            "-c:a",
+            "aac",
+            "-shortest",
+            str(out),
         ],
         check=True,
     )
@@ -197,8 +213,11 @@ def _shell_env(**extra: str) -> dict[str, str]:
 def test_omni_status_runs_from_outside_the_repo():
     proc = subprocess.run(
         [sys.executable, "-m", "studio.cli", "status"],
-        capture_output=True, text=True, env=_shell_env(PYTHONPATH=str(ROOT / "core")),
-        cwd="/", timeout=180,
+        capture_output=True,
+        text=True,
+        env=_shell_env(PYTHONPATH=str(ROOT / "core")),
+        cwd="/",
+        timeout=180,
     )
     _assert_clean_status(proc)
 
@@ -206,19 +225,32 @@ def test_omni_status_runs_from_outside_the_repo():
 def test_omni_status_console_script_runs_without_pythonpath():
     proc = subprocess.run(
         [str(Path(sys.executable).parent / "omni"), "status"],
-        capture_output=True, text=True, env=_shell_env(), cwd="/", timeout=180,
+        capture_output=True,
+        text=True,
+        env=_shell_env(),
+        cwd="/",
+        timeout=180,
     )
     _assert_clean_status(proc)
 
 
 @pytest.mark.parametrize("shell_value", [None, "0"], ids=["unset", "shell_says_0"])
 def test_omni_status_reports_what_a_child_receives_outside_make(shell_value):
-    extra = {} if shell_value is None else {
-        "HYPERFRAMES_NO_TELEMETRY": shell_value, "DISABLE_TELEMETRY": shell_value,
-    }
+    extra = (
+        {}
+        if shell_value is None
+        else {
+            "HYPERFRAMES_NO_TELEMETRY": shell_value,
+            "DISABLE_TELEMETRY": shell_value,
+        }
+    )
     proc = subprocess.run(
         [str(Path(sys.executable).parent / "omni"), "status"],
-        capture_output=True, text=True, env=_shell_env(**extra), cwd="/", timeout=180,
+        capture_output=True,
+        text=True,
+        env=_shell_env(**extra),
+        cwd="/",
+        timeout=180,
     )
     assert proc.returncode == 0, proc.stderr
     assert "HYPERFRAMES_NO_TELEMETRY=1 DISABLE_TELEMETRY=1" in proc.stdout

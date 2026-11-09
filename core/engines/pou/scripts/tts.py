@@ -7,6 +7,7 @@ one 16-bit narration wav that the rest of the pipeline reads as before.
 Engines: qwen3 (mlx-audio, Qwen3-TTS 1.7B Base), chatterbox (chatterbox-tts), eleven (ElevenLabs API, direct:
 ELEVENLABS_API_KEY and ELEVEN_VOICE_ID from the secrets_env file in engine.yaml (under ~/.config/omni-studio/), Turbo v2.5 at 0.5 credit per character; the owner's clone
 is made once in the ElevenLabs app from the same 2:24 read and its id pasted into that file)."""
+
 from __future__ import annotations
 import json
 import os
@@ -24,7 +25,9 @@ import cli_args  # noqa: E402
 MEDIA_PY = pou_paths.path("media_python")
 WHISPER_PY = pou_paths.path("whisper_python")
 
-Backend = Callable[[list[tuple[str, Path]], Path, str | None], list[Path]]   # (jobs of (text, out), voice_ref, voice_text) -> outs
+Backend = Callable[
+    [list[tuple[str, Path]], Path, str | None], list[Path]
+]  # (jobs of (text, out), voice_ref, voice_text) -> outs
 ENGINE_MAX_WORDS = {"qwen3": 200, "chatterbox": 50, "eleven": 400}
 ELEVEN_MODEL = "eleven_turbo_v2_5"
 ELEVEN_CREDITS_PER_CHAR = 0.5
@@ -63,7 +66,9 @@ def join(parts: list[Path], out: Path, gap: float) -> Path:
     frames, sr, ch, sw = _wav_frames(parts[0])
     silence = b"\x00" * int(sr * gap) * ch * sw
     with wave.open(str(out), "wb") as w:
-        w.setnchannels(ch); w.setsampwidth(sw); w.setframerate(sr)
+        w.setnchannels(ch)
+        w.setsampwidth(sw)
+        w.setframerate(sr)
         for i, p in enumerate(parts):
             f, sr2, ch2, sw2 = _wav_frames(p)
             if (sr2, ch2, sw2) != (sr, ch, sw):
@@ -74,8 +79,16 @@ def join(parts: list[Path], out: Path, gap: float) -> Path:
     return out
 
 
-def read(text: str, engine: str, out: Path, voice_ref: Path, backend: Backend | None = None,
-         max_words: int | None = None, gap: float = 0.35, voice_text: str | None = None) -> Path:
+def read(
+    text: str,
+    engine: str,
+    out: Path,
+    voice_ref: Path,
+    backend: Backend | None = None,
+    max_words: int | None = None,
+    gap: float = 0.35,
+    voice_text: str | None = None,
+) -> Path:
     backend = backend or BACKENDS[engine]
     max_words = max_words or ENGINE_MAX_WORDS.get(engine, 200)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -101,8 +114,10 @@ def wer(ref: str, hyp: str) -> float:
 
 
 def transcribe(wav: Path, whisper_python: Path = WHISPER_PY) -> str:
-    code = ("import sys,json\nfrom faster_whisper import WhisperModel\nm=WhisperModel('small')\n"
-            "segs,_=m.transcribe(sys.argv[1])\nprint(json.dumps(' '.join(s.text for s in segs)))")
+    code = (
+        "import sys,json\nfrom faster_whisper import WhisperModel\nm=WhisperModel('small')\n"
+        "segs,_=m.transcribe(sys.argv[1])\nprint(json.dumps(' '.join(s.text for s in segs)))"
+    )
     r = subprocess.run([str(whisper_python), "-c", code, str(wav)], capture_output=True, text=True, check=True)
     return json.loads(r.stdout.strip().splitlines()[-1])
 
@@ -112,6 +127,7 @@ def check(wav: Path, text: str, whisper_python: Path = WHISPER_PY) -> float:
 
 
 # ---------------------------------------------------------------- real engines (run in .venv-media)
+
 
 def _run_media(code: str, jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | None) -> list[Path]:
     """Run `code` once in .venv-media with the job list, the voice clip and its transcript on stdin (one model load)."""
@@ -167,31 +183,42 @@ def _load_env_local() -> None:
                 os.environ.setdefault(k.strip(), v.strip())
 
 
-def _eleven(jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | None,
-            post: Callable[..., bytes] | None = None) -> list[Path]:
+def _eleven(
+    jobs: list[tuple[str, Path]], voice_ref: Path, voice_text: str | None, post: Callable[..., bytes] | None = None
+) -> list[Path]:
     """ElevenLabs text-to-speech, one request per chunk, PCM 24 kHz straight into 16-bit wavs.
     voice_ref is ignored (the clone lives in the ElevenLabs account as ELEVEN_VOICE_ID)."""
     _load_env_local()
     key, voice = os.environ.get("ELEVENLABS_API_KEY", ""), os.environ.get("ELEVEN_VOICE_ID", "")
     if post is None and not (key and voice):
-        raise SystemExit("eleven needs ELEVENLABS_API_KEY and ELEVEN_VOICE_ID in the secrets_env file named in engine.yaml")
+        raise SystemExit(
+            "eleven needs ELEVENLABS_API_KEY and ELEVEN_VOICE_ID in the secrets_env file named in engine.yaml"
+        )
     if post is None:
         import requests
 
         def post(text: str) -> bytes:
-            r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}",
-                              params={"output_format": "pcm_24000"},
-                              headers={"xi-api-key": key, "Content-Type": "application/json"},
-                              json={"text": text, "model_id": ELEVEN_MODEL,
-                                    "voice_settings": {"stability": 0.45, "similarity_boost": 0.8, "style": 0.2}},
-                              timeout=300)
+            r = requests.post(
+                f"https://api.elevenlabs.io/v1/text-to-speech/{voice}",
+                params={"output_format": "pcm_24000"},
+                headers={"xi-api-key": key, "Content-Type": "application/json"},
+                json={
+                    "text": text,
+                    "model_id": ELEVEN_MODEL,
+                    "voice_settings": {"stability": 0.45, "similarity_boost": 0.8, "style": 0.2},
+                },
+                timeout=300,
+            )
             r.raise_for_status()
             return r.content
+
     outs = []
     for text, out in jobs:
         pcm = post(text)
         with wave.open(str(out), "wb") as w:
-            w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000)
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(24000)
             w.writeframes(pcm)
         outs.append(out)
     return outs

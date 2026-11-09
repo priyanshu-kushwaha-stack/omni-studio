@@ -56,7 +56,7 @@ def extract_json(text: str) -> dict[str, Any]:
     fences = FENCE_RE.findall(text)
     candidates = [fences[0], fences[-1]] if fences else []
     if "{" in text and "}" in text:
-        candidates.append(text[text.find("{"): text.rfind("}") + 1])
+        candidates.append(text[text.find("{") : text.rfind("}") + 1])
     if not candidates:
         raise BadVerdict("no JSON object in the output")
     error = "no JSON object in the output"

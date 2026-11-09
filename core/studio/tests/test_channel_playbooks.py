@@ -40,10 +40,11 @@ def _composite(foreground: str, backdrop: str) -> str:
     def rgba(c: str):
         c = c.strip()
         if c.startswith("rgba"):
-            r, g, b, a = (float(v) for v in c[c.index("(") + 1:c.index(")")].split(","))
+            r, g, b, a = (float(v) for v in c[c.index("(") + 1 : c.index(")")].split(","))
             return r, g, b, a
         c = c.lstrip("#")
         return int(c[0:2], 16), int(c[2:4], 16), int(c[4:6], 16), 1.0
+
     fr, fg, fb, a = rgba(foreground)
     br, bg, bb, _ = rgba(backdrop)
     return "#" + "".join(f"{round(a * f + (1 - a) * b):02X}" for f, b in ((fr, br), (fg, bg), (fb, bb)))
