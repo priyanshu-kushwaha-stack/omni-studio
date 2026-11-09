@@ -1,0 +1,75 @@
+{
+  "call_id": "4a887b9600ea42dcb9035409cbe1b290",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 8,
+    "leave fast, last line (#12)": 9,
+    "written to be spoken": 7,
+    "landing lines finish": 9,
+    "emotion directions": 9,
+    "breath length at 1.1x": 6,
+    "spoken forms": 9
+  },
+  "blockers": [
+    {
+      "quote": "He's forgotten the ending.",
+      "why": "Check #11: the line narrates what the picture already shows. The HOLD has Grandpa stop, frown and look at you, and the bubble reads 'How does it end?'. The narrator then states the same beat a second time.",
+      "fix": "Cut the line. Let the bubble land, then go straight to 'You don't know it either.' [dry, a beat before], which carries the new information.",
+      "domain": "voice",
+      "line": 80
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 19,
+      "quote": "Every morning, she waves from this door. And every morning, you wave back without looking.",
+      "fix": "The picture shows the wave and the phone. Trim the narration to 'Every morning, she waves. Every morning, you wave back. Not looking.' Three short beats, with 'Not looking' as its own half-line."
+    },
+    {
+      "line": 52,
+      "quote": "In one taste test, students told \"this is your last chocolate\" picked it as their favourite 64% of the time, whatever the flavour",
+      "fix": "This is too long for one breath at 1.1x, and it reads like an essay. Split it: 'Maybe it's not just the chai. Students were told, \"this is your last chocolate.\" Sixty-four per cent picked it as their favourite. Whatever the flavour.' Say.yaml: '64%' \u2192 'sixty-four per cent'."
+    },
+    {
+      "line": 129,
+      "quote": "One writer, Tim Urban, did this sum on his own guesses. By the time he left school, he'd used up 93% of the days he'd ever spend with his parents, in person",
+      "fix": "The second sentence is a written-style sentence of over twenty words. Break it: 'A writer, Tim Urban, did this sum. On his own guesses. By the time he left school, he'd used up ninety-three per cent of his in-person days with his parents.'"
+    },
+    {
+      "line": 165,
+      "quote": "So you take the Friday train. And it counts down again, one Friday at a time.",
+      "fix": "The second sentence narrates the flaps ticking in the montage and runs against the 'climbs' turn. Say 'So you take the Friday train. And the next. And the next.' and let the picture show the count."
+    },
+    {
+      "line": 171,
+      "quote": "Psychologists have seen this before. When people imagine their time is running short, young or old, they choose familiar people",
+      "fix": "Make it spoken: 'Psychologists have seen this. Imagine your time is running short, young or old? You pick familiar people.' This puts the question first and answers it at once, which also gives the 'imagine it' callback line a better setup."
+    },
+    {
+      "line": 161,
+      "quote": "More dal.",
+      "fix": "The one-word lines 'Train.', 'Nine.', 'More dal.' and 'Forty-two.' each need their own take with a pause before. Mark them in the narration notes as separate takes, not joined to the neighbouring line."
+    }
+  ],
+  "keep": [
+    {
+      "line": 69,
+      "quote": "You thought it would drop when you left. It drops when you walk in."
+    },
+    {
+      "line": 150,
+      "quote": "It wasn't her clock. It was your timetable."
+    },
+    {
+      "line": 178,
+      "quote": "She's still at the door. Of course she is."
+    }
+  ],
+  "error": "",
+  "output_sha256": "5038636f091fc1e91c779007905cae8217c120f11ed9d32a0b1438e2c4bee944",
+  "draft_sha256": "f790a02a58db7565c68d8cf1befef060fd4acd3370d0e2e3c40239829530b6ac"
+}
