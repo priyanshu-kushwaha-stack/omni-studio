@@ -150,6 +150,18 @@ def test_full_on_a_dirty_tree_passes_but_records_nothing(repo, tmp_path):
     assert not G.has_passed(repo, G.head_tree(repo))
 
 
+def test_a_full_run_over_budget_warns(repo, tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(G, "FULL_BUDGET", 0)
+    assert G.run_full(repo, suites=_suites(tmp_path, 0), queue=None) == 0
+    assert "over the 0 s budget" in capsys.readouterr().err
+
+
+def test_a_full_run_within_budget_is_quiet(repo, tmp_path, capsys):
+    assert G.run_full(repo, suites=_suites(tmp_path, 0), queue=None) == 0
+    assert "budget" not in capsys.readouterr().err
+
+
+@pytest.mark.slow  # runs three 1 s suites to prove they overlap
 def test_full_runs_suites_at_the_same_time(repo, tmp_path):
     import time
 

@@ -1,5 +1,8 @@
-"""Size budgets (studio.sizes): new growth fails, recorded offenders may only shrink."""
+"""Code-health gates: size budgets (studio.sizes), where new growth fails and records may only shrink, and the
+ruff pin."""
 
+import re
+import tomllib
 from pathlib import Path
 
 import yaml
@@ -86,3 +89,12 @@ def test_repo_meets_its_baseline():
     root = Path(__file__).resolve().parents[3]
     errors, stale = sizes.review(sizes.measure(root), sizes.load(root / sizes.BASELINE), None)
     assert not errors and not stale, errors + stale
+
+
+def test_ruff_is_pinned_to_one_version():
+    root = Path(__file__).resolve().parents[3]
+    lock = yaml.safe_load((root / "core/lock.yaml").read_text())["ruff"]["version"]
+    dev = tomllib.loads((root / "pyproject.toml").read_text())["dependency-groups"]["dev"]
+    uv_lock = re.search(r'name = "ruff"\nversion = "([^"]+)"', (root / "uv.lock").read_text()).group(1)
+    make = re.search(r"uvx ruff@(\S+?)\)", (root / "Makefile").read_text()).group(1)
+    assert f"ruff=={lock}" in dev and uv_lock == lock and make == lock

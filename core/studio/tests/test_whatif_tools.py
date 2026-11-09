@@ -95,6 +95,7 @@ class _Sleeper(wt._WhatifTool):
         return [["sh", "-c", f"sleep 60 & echo $! > {self.pidfile}; wait"]], dict(os.environ)
 
 
+@pytest.mark.slow  # waits out a 2 s timeout by design
 def test_a_timeout_kills_the_whole_command_and_is_reported(tmp_path):
     pidfile = tmp_path / "pid"
     result = _Sleeper(pidfile).execute({"timeout_seconds": 2})

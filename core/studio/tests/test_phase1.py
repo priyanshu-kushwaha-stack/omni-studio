@@ -85,6 +85,7 @@ def test_disabled_tools_cannot_be_registered_directly():
     assert fresh.get("lip_sync") is None
 
 
+@pytest.mark.slow  # imports and routes every upstream tool
 def test_disabled_tools_are_absent_from_capability_routing():
     registry.ensure_discovered()
     names = {t.name for t in registry.get_by_capability("video_generation")}
@@ -210,6 +211,7 @@ def _shell_env(**extra: str) -> dict[str, str]:
     return {**{k: v for k, v in os.environ.items() if k not in drop}, **extra}
 
 
+@pytest.mark.slow  # starts the CLI in a fresh interpreter
 def test_omni_status_runs_from_outside_the_repo():
     proc = subprocess.run(
         [sys.executable, "-m", "studio.cli", "status"],

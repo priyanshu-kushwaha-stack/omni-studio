@@ -1,5 +1,7 @@
 import pytest
 
+from studio.pytest_speed import pytest_configure, pytest_runtest_makereport  # noqa: F401 (hooks)
+
 
 @pytest.fixture(autouse=True)
 def _approval_key_in_tmp(tmp_path, monkeypatch):

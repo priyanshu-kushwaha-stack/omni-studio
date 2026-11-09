@@ -213,6 +213,7 @@ def walked_to_g6(_g6_snapshot, monkeypatch, studio_helpers):
 g6_group = pytest.mark.xdist_group("g6_walk")
 
 
+@pytest.mark.slow  # walks a Short through every stage, running the ffmpeg checks on real media
 def test_studio_short_end_to_end_up_to_g6(studio_root, media, capsys):
     log = []
     channel, _, _ = _walk_to_g6(studio_root, media, log)
@@ -247,6 +248,7 @@ def _upload_yaml(folder, render, **extra):
 
 
 @g6_group
+@pytest.mark.slow  # re-runs the publish checks (ffmpeg) on two media files
 def test_publish_binds_qc_approval_and_upload_to_one_file(walked_to_g6, media, capsys):
     log = []
     channel, folder, good = walked_to_g6
@@ -330,6 +332,7 @@ def _legacy_video(channel, media, **extra):
     return folder, render
 
 
+@pytest.mark.slow  # runs the publish_prep checks (ffmpeg) on a real media file
 def test_approve_upload_for_a_video_with_no_pipeline(studio_root, media):
     channel = studio_root("dummy")
     folder, render = _legacy_video(channel, media, legacy_upload=True)

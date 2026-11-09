@@ -41,6 +41,8 @@ CACHE_NAME = "omni-test-pass"
 BASE = "origin/main"
 QUEUE = "tests"
 STUDIO_WORKERS = 4
+# A full run (from taking the queue to the last suite) should stay near 2 min; past this it warns.
+FULL_BUDGET = 120
 # The upstream folders `make test` runs, and how they are split into parallel processes.
 OPENMONTAGE_TESTS = (
     "tests/backlot",
@@ -249,6 +251,17 @@ def _say(msg: str) -> None:
     print(f"{msg}; waiting", file=sys.stderr, flush=True)
 
 
+def _full_run_time(seconds: float, ok: bool) -> None:
+    """Record a full run's time as `tests-full`, and warn when it is over FULL_BUDGET."""
+    _record("tests-full", seconds, ok)
+    if seconds > FULL_BUDGET:
+        print(
+            f"tests: this full run took {seconds:.0f} s, over the {FULL_BUDGET} s budget. Each suite's time is above; "
+            "`python -m studio.jobs report` has the history.",
+            file=sys.stderr,
+        )
+
+
 def run_full(root: Path, *, suites: Optional[list[Suite]] = None, queue: Optional[str] = QUEUE) -> int:
     """Run every suite at once; record a pass for HEAD's tree when all pass and no tracked file changed."""
     suites = suites if suites is not None else default_suites(root)
@@ -299,7 +312,7 @@ def run_full(root: Path, *, suites: Optional[list[Suite]] = None, queue: Optiona
         if lock:
             lock.__exit__(None, None, None)
     ok = all(c == 0 for c in codes)
-    _record("tests-full", time.monotonic() - t0, ok)
+    _full_run_time(time.monotonic() - t0, ok)
     if not ok:
         return next(c for c in codes if c)
     if clean and tracked_clean(root) and head_tree(root) == tree:

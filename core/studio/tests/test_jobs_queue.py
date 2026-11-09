@@ -178,6 +178,7 @@ def test_run_with_a_bad_queue_name_is_a_usage_error(qdir):
     assert cli.main(["run", "--queue", "../x", "--step", "r", "--", sys.executable, "-c", "pass"]) == 2
 
 
+@pytest.mark.slow  # its child sleeps 1.5 s by design
 def test_the_render_keeps_the_queue_if_its_wrapper_is_killed(qdir, tmp_path):
     """A killed session must not let a second render start while the first one's process still runs."""
     child = "import time; time.sleep(1.5)"

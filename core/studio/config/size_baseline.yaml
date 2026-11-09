@@ -7,12 +7,12 @@ modules:
   core/engines/pou/tests/test_compose.py: 727
   core/studio/channels.py: 523
   core/studio/publish/youtube.py: 572
-  core/studio/tests/test_channels.py: 714
+  core/studio/tests/test_channels.py: 715
   core/studio/tests/test_publish.py: 763
   core/studio/tests/test_room_call.py: 506
   core/studio/tests/test_room_cli.py: 609
   core/studio/tests/test_room_evidence.py: 511
-  core/studio/tests/test_studio_short.py: 520
+  core/studio/tests/test_studio_short.py: 523
 functions:
   core/engines/pou/scripts/compose.py::quiz_parts: 62
   core/engines/pou/scripts/compose.py::render: 123

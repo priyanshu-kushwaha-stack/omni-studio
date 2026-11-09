@@ -61,6 +61,7 @@ def test_planted_near_duplicate_across_two_channels_fails(two_channels, media, c
     assert "[FAIL] near-duplicate of alpha/" in capsys.readouterr().out
 
 
+@pytest.mark.slow  # fingerprints two media files with ffmpeg
 def test_distinct_video_on_another_channel_passes(two_channels, media):
     alpha, beta, _ = two_channels
     other = _video(beta, "Why Do We Dream at All?", _script(99), 42, "mandelbrot", media)

@@ -640,6 +640,7 @@ def _api_projects(port: int) -> list[str]:
         return [p["project_id"] for p in json.load(resp)]
 
 
+@pytest.mark.slow  # starts two real board servers
 def test_each_channel_gets_its_own_board_and_none_on_the_owners_port(studio_root, capsys):
     assert 4750 not in cli.BOARD_PORTS and 4760 not in cli.BOARD_PORTS
     first, second = smoke_channel("first", 1), smoke_channel("second", 2)

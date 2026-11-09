@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -48,20 +49,25 @@ def _functions(tree: ast.AST) -> dict[str, int]:
     return found
 
 
+def _python_files(root: Path):
+    """The .py files under ROOTS, pruning SKIP_PARTS while walking (whatif's node_modules is most of the tree)."""
+    for top in ROOTS:
+        for folder, dirs, files in os.walk(root / top):
+            dirs[:] = sorted(d for d in dirs if d not in SKIP_PARTS)
+            yield from (Path(folder) / f for f in sorted(files) if f.endswith(".py"))
+
+
 def measure(root: Path) -> dict[str, int]:
     """Every module and function over budget under ROOTS, keyed `path` or `path::name`, with its line count."""
     out: dict[str, int] = {}
-    for top in ROOTS:
-        for f in sorted((root / top).rglob("*.py")):
-            rel = f.relative_to(root).as_posix()
-            if SKIP_PARTS & set(f.relative_to(root).parts):
-                continue
-            text = f.read_text(encoding="utf-8")
-            if len(text.splitlines()) > MODULE_LIMIT:
-                out[rel] = len(text.splitlines())
-            for name, n in _functions(ast.parse(text, filename=rel)).items():
-                if n > FUNCTION_LIMIT:
-                    out[f"{rel}::{name}"] = n
+    for f in _python_files(root):
+        rel = f.relative_to(root).as_posix()
+        text = f.read_text(encoding="utf-8")
+        if len(text.splitlines()) > MODULE_LIMIT:
+            out[rel] = len(text.splitlines())
+        for name, n in _functions(ast.parse(text, filename=rel)).items():
+            if n > FUNCTION_LIMIT:
+                out[f"{rel}::{name}"] = n
     return out
 
 
