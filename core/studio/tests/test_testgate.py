@@ -82,7 +82,11 @@ def test_the_real_repo_marks_the_videos_its_tests_read():
 
 
 def _git(cwd: Path, *args: str) -> str:
-    return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True, text=True).stdout.strip()
+    # git_env: under a pre-push hook in a worktree git exports GIT_DIR, and an inherited GIT_DIR sends `init` and
+    # `config` here to the real repo (it set core.bare and user.email there on 2026-11-10).
+    return subprocess.run(
+        ["git", *args], cwd=cwd, check=True, capture_output=True, text=True, env=G.git_env()
+    ).stdout.strip()
 
 
 @pytest.fixture()
@@ -96,6 +100,46 @@ def repo(tmp_path):
     _git(root, "add", ".")
     _git(root, "commit", "-q", "-m", "one")
     return root
+
+
+def _outer_repo(tmp_path: Path, monkeypatch) -> Path:
+    """A repo standing in for the real one, exported as GIT_DIR the way git does for a pre-push hook in a worktree."""
+    outer = tmp_path / "outer"
+    outer.mkdir()
+    _git(outer, "init", "-q")
+    monkeypatch.setenv("GIT_DIR", str(outer / ".git"))
+    monkeypatch.setenv("GIT_WORK_TREE", str(outer))
+    monkeypatch.setenv("GIT_INDEX_FILE", str(outer / ".git" / "index"))
+    return outer
+
+
+def test_the_test_helper_never_writes_to_an_inherited_git_dir(tmp_path, monkeypatch):
+    outer = _outer_repo(tmp_path, monkeypatch)
+    before = (outer / ".git" / "config").read_text()
+    inner = tmp_path / "inner"
+    inner.mkdir()
+    _git(inner, "init", "-q", "-b", "main")
+    _git(inner, "config", "user.email", "t@example.com")
+    assert (outer / ".git" / "config").read_text() == before
+    assert "t@example.com" in (inner / ".git" / "config").read_text()
+
+
+def test_git_calls_use_the_given_repo_not_an_inherited_git_dir(repo, tmp_path, monkeypatch):
+    tree = G.head_tree(repo)
+    outer = _outer_repo(tmp_path, monkeypatch)
+    assert G.head_tree(repo) == tree
+    assert G.repo_root(repo) == repo.resolve()
+    G.mark_passed(repo, tree)
+    assert (repo / ".git" / G.CACHE_NAME / tree).is_file()
+    assert not (outer / ".git" / G.CACHE_NAME).exists()
+
+
+def test_suites_run_without_the_hooks_git_dir(tmp_path, monkeypatch):
+    _outer_repo(tmp_path, monkeypatch)
+    monkeypatch.setenv("GIT_CONFIG_PARAMETERS", "'credential.helper'=''")
+    env = G._env(tmp_path)
+    assert not {"GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE", "GIT_CONFIG_PARAMETERS"} & env.keys()
+    assert env["PYTHONPATH"].startswith(str(tmp_path))
 
 
 def test_a_recorded_pass_is_found_for_the_same_tree_only(repo):

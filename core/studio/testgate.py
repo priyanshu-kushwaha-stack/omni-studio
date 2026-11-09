@@ -85,6 +85,39 @@ class Suite:
     command: str
 
 
+# `git rev-parse --local-env-vars`: the variables that tie a git command to one repo. git exports GIT_DIR to a
+# pre-push hook run in a worktree, so the gate and every suite it starts would inherit it, and git in any other
+# folder (a test's `git init` in tmp_path) would then act on the real repo. On 2026-11-10 that set core.bare and
+# user.email in the shared .git/config. Every git call and suite here runs without them, from its own cwd.
+GIT_LOCAL_VARS = (
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+    "GIT_CONFIG",
+    "GIT_CONFIG_PARAMETERS",
+    "GIT_CONFIG_COUNT",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_IMPLICIT_WORK_TREE",
+    "GIT_GRAFT_FILE",
+    "GIT_INDEX_FILE",
+    "GIT_NO_REPLACE_OBJECTS",
+    "GIT_REPLACE_REF_BASE",
+    "GIT_PREFIX",
+    "GIT_SHALLOW_FILE",
+    "GIT_COMMON_DIR",
+)
+
+
+def git_env(base: Optional[dict] = None) -> dict:
+    """`base` (default os.environ) without the repo-locating git variables, so git finds the repo from its cwd."""
+    env = dict(os.environ if base is None else base)
+    for name in GIT_LOCAL_VARS:
+        env.pop(name, None)
+    for name in [k for k in env if k.startswith(("GIT_CONFIG_KEY_", "GIT_CONFIG_VALUE_"))]:
+        env.pop(name)
+    return env
+
+
 def repo_root(start: Optional[Path] = None) -> Path:
     out = subprocess.run(
         ["git", "rev-parse", "--show-toplevel"],
@@ -92,12 +125,13 @@ def repo_root(start: Optional[Path] = None) -> Path:
         capture_output=True,
         text=True,
         check=True,
+        env=git_env(),
     )
     return Path(out.stdout.strip())
 
 
 def _git(root: Path, *args: str) -> subprocess.CompletedProcess:
-    return subprocess.run(["git", *args], cwd=root, capture_output=True, text=True)
+    return subprocess.run(["git", *args], cwd=root, capture_output=True, text=True, env=git_env())
 
 
 # --- scope -------------------------------------------------------------------------------------------------------
@@ -235,7 +269,7 @@ def default_suites(root: Path) -> list[Suite]:
 
 
 def _env(root: Path) -> dict:
-    env = dict(os.environ)
+    env = git_env()
     env["PYTHONPATH"] = f"{root / 'core/openmontage'}:{root / 'core'}"
     env.setdefault("PYTHONDONTWRITEBYTECODE", "1")
     env.setdefault("HYPERFRAMES_NO_TELEMETRY", "1")
