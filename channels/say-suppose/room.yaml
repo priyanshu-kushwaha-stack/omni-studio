@@ -1,0 +1,28 @@
+# The quality room for Say Suppose (docs/superpowers/specs/2026-11-08-quality-spine-design.md), adopted at video 2
+# (docs/superpowers/specs/2026-11-09-say-suppose-next-phase-design.md, section 2b). Seats fail a draft only on the
+# must-pass checks in rules/ (story.md, sound.md, thumbnails.md, ideas.md); everything else is a suggestion.
+#
+# adopted: batch 1's video date. The room check (A2) applies to videos whose id date is on or after it, so the
+# pause-time video and the held UBI folder (both 2026-11-06) finish as they started.
+writer: claude-opus-5-5
+judge: gpt-5.6-sol-high
+rounds: 3
+daily_cap: 80
+adopted: 2026-11-09
+pitch_clip: after_g2
+seats:
+  - {name: first-time viewer, role: viewer, model: grok-4.7-high, brief: room/seats/first-time-viewer.md}
+  - {name: retention editor, role: story, model: gpt-5.6-sol-high, brief: room/seats/retention-editor.md}
+  - {name: fact-checker, role: fact, model: gemini-3.7-flash-high, brief: room/seats/fact-checker.md}
+  - {name: voice director, role: voice, model: claude-sonnet-5-5, brief: room/seats/voice-director.md}
+  - {name: animator, role: craft, model: claude-sonnet-5-5, brief: room/seats/animator.md}
+format:
+  wpm: 115          # style.md: spoken at about 115 words a minute (Arthur, before the 1.1x tempo)
+  # No word_budget: no length cap (owner, 2026-11-08). Past about 8 minutes the retention editor names the felt
+  # reason a viewer stays (rules/story.md, "Length"). No cadence: the choice put to you about once a minute is an
+  # ordinary narrator line with no marker, so the story seats judge it.
+linters:
+  # rules/story.md #1, five lines first: > SITUATION/DESIRE/CONFLICT/CHANGE/RESULT before the first beat (cast.md).
+  - "{python} core/engines/whatif/pipeline/story_lint.py {script}"
+# Uncited spoken digits are caught by `omni qc <slug> <video> story_script` (claims), not by the room's lint.
+sources: [idea_room, youtube_outliers]

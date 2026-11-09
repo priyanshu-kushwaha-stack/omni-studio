@@ -1,0 +1,427 @@
+Source URL: https://higgsfield.ai/creator-hub/help-center/account/who-owns-my-generations-and-can-i-use-them-commercially
+Final URL after redirects: https://higgsfield.ai/creator-hub/help-center/account/who-owns-my-generations-and-can-i-use-them-commercially (HTTP 200)
+Fetched at (UTC): 2026-11-09T05:50:11Z
+Method: curl (HTML converted to text with stdlib html.parser; site navigation and footer trimmed)
+Page's own last-updated / effective date: Aug 2, 2026 (date shown on the article page)
+sha256 of raw download: de3320955f504c8d089318f8c2f4eb1eb381134912a6e6be42f1791af1be7361
+========================================================================
+
+BackHelp center/Account/Who owns my generations, and can I use them commercially?
+
+Aug 2, 2026
+
+Who owns my generations, and can I use them commercially?
+
+Higgsfield
+
+4 min
+
+Copy page
+
+You own your outputs. Per Section 4.4 of Higgsfield's Terms of Use, Higgsfield does not claim ownership of your inputs or outputs, and does not restrict the commercial use of outputs: you can use generated content in ads, social media, brand campaigns, products, and client work. Higgsfield holds a limited license to run the service and to train its models: it ends when you delete your content or your account, and deleted content isn't used for training going forward.
+
+Who owns content I generate on Higgsfield?
+
+Per Section 4.4 of Higgsfield's Terms of Use: Higgsfield does not claim ownership of your inputs (prompts, reference images, audio) or your outputs (generated images, videos, audio), and does not restrict the use of outputs for commercial purposes. This applies to all users of the Service. Separately, Section 4.2 states that Higgsfield does not claim ownership of Your Content broadly.
+
+Can I use generated content commercially?
+
+Yes. The Terms of Use do not restrict commercial use of outputs. Commercial use includes advertising and paid campaigns, social media content for brands, client work and deliverables, products that incorporate AI-generated visuals, YouTube monetization, and brand marketing materials.
+
+There is no separate commercial license to purchase: commercial use rights follow from the Terms of Use for all users.
+
+One practical consideration: if your plan includes watermarks on generated output, those watermarks are embedded at generation, and publishing watermarked content in commercial contexts may not be appropriate depending on your use case. Paid plans include watermark-free downloads. See Why is there a watermark, and how do I remove it?
+
+What license does Higgsfield have to my content?
+
+Per Section 4.3 of the Terms of Use, you grant Higgsfield a non-exclusive, worldwide, royalty-free license to host and process your content, limited to operating, providing, and maintaining the Service. It lasts only while your content is on Higgsfield and ends when you delete the content or your account, with narrow exceptions: routine backups, content you shared publicly, and retention required by law.
+
+Per Section 4.4, Higgsfield may also use content to train and improve its AI models. You can stop this going forward by deleting the content or your account, and on Enterprise agreements customer content isn't used for training at all. Marketing is separate: Higgsfield features only content you've made public, or uses your content with consent.
+
+These licenses don't transfer ownership of outputs to Higgsfield and don't restrict your commercial use.
+
+Are there restrictions on what I can generate or publish?
+
+Section 5 of the Terms of Use sets out restrictions on user conduct and content. Relevant to commercial use:
+
+You may not use the Service or outputs to train, fine-tune, or improve any AI or machine-learning model, whether or not it competes with Higgsfield (Sections 5.1(iii) and 5.2(iv)). The exception: models you train with your own inputs, not with outputs of Higgsfield's models, or with Higgsfield's written permission.
+
+You may not conduct commercial activities through the Service itself, such as contests, sweepstakes, or barter, without Higgsfield's prior written consent (Section 5.1(ii)(e)): this applies to activities run through the platform, not to publishing generated content externally. You are responsible for ensuring your content does not infringe third-party rights, including copyright, trademark, and likeness rights (Section 5.1(ii)(b)), and you may not upload or use an image of another person without that person's permission (Section 5.3).
+
+Legal indemnification, protection against third-party IP claims, is available on the Enterprise plan only. See What team and business plans does Higgsfield offer?
+
+Can I sell AI-generated content?
+
+The Terms of Use do not prohibit selling generated outputs. The restrictions in Section 5.2 apply to commercially exploiting the Service itself, not to downstream use of content you generate through it.
+
+Got any questions left?
+
+Does Higgsfield own my generations?
+
+No. Per Section 4.4 of the Terms of Use, Higgsfield does not claim ownership of your outputs.
+
+Is commercial use of outputs restricted to paid plans?
+
+No. The Terms of Use do not tie commercial use rights to a specific plan. The restriction on commercial use in Section 5.2(i) applies to exploiting the Service itself, not to using your generated outputs externally.
+
+Do I need to credit Higgsfield when I publish?
+
+No. The Terms of Use do not require attribution for outputs.
+
+Are my generated outputs unique to me?
+
+Not necessarily. Per Section 4.4 of the Terms of Use, other users may generate the same or similar outputs, and Higgsfield may produce comparable content for others. You own your outputs and can use them commercially, but they aren't guaranteed to be exclusive.
+
+Does Higgsfield use my generations to train its models?
+
+Yes, per Section 4.4, unless you're on an Enterprise agreement, where customer content isn't used for training. Ownership isn't affected: your outputs stay yours.
+
+Can I opt out of my content being used for model training?
+
+Delete the content, or your account, and it won't be used for training going forward. Content already in trained models can't be removed from them. See How do I submit a GDPR, CCPA, or privacy request?
+
+Can I use outputs to train an AI model?
+
+No. Sections 5.1(iii) and 5.2(iv) prohibit using outputs to train, fine-tune, or distill any AI model, competing or not. The only exceptions are models you train on your own inputs, or uses Higgsfield has approved in writing.
+
+What if my client needs proof of commercial rights?
+
+Point them to Section 4.4 of the Terms of Use. For Enterprise agreements with formal IP indemnification, contact the sales team through the pricing page.
+
+Do I keep my rights after cancelling my subscription?
+
+Yes. Rights in outputs you've generated and exported survive cancellation and account deletion, and you can transfer or sublicense them to clients (Section 4.4).
+
+What happens if I enter a Higgsfield contest or showcase?
+
+Submitting work to a contest, campaign, or showcase makes it public, so Higgsfield can feature it, and separate contest terms may apply (Section 4.7).
+
+Share Feedback
+
+Was this article helpful?
+
+YesNo
+
+Related articles
+
+- Why is there a watermark, and how do I remove it?On any paid plan, your generations come without the visible Higgsfield watermark. Learn why a watermark appears and how to get watermark-free output.
+
+- How do I submit a DMCA notice or legal inquiry?Submit a DMCA notice, report IP infringement, or flag non-consensual content.
+
+- What team and business plans does Higgsfield offer?Compare Team, Scale, and Enterprise plans, seats, credits, SSO, and compliance.
+
+by Higgsfield
+
+How do I submit a GDPR, CCPA, or privacy request?
+
+Contents
+
+- Who owns content I generate on Higgsfield?
+
+- Can I use generated content commercially?
+
+- What license does Higgsfield have to my content?
+
+- Are there restrictions on what I can generate or publish?
+
+- Can I sell AI-generated content?
+
+AI-native creative suite
+
+Create
+
+- AI Video
+
+- AI Video Effects
+
+- AI Image to Video
+
+- AI Text to Video
+
+- AI Video Editor
+
+- Genjutsu for Reels
+
+- Faceless Studio
+
+- AI Explainer
+
+- AI Image
+
+- Edit Image
+
+- Inpaint
+
+- Upscale
+
+- AI Video Upscaler
+
+- Mixed Media
+
+- AI Face Swap
+
+- AI Influencer
+
+- Apps
+
+Video Models
+
+- Seedance 2.5
+
+- Seedance 2.0
+
+- Kling 3.0
+
+- Kling 4.0
+
+- Veo 3.1 Introduction
+
+- WAN 2.6
+
+- Grok Imagine 1.5
+
+- Gemini Omni Flash
+
+- MiniMax H3
+
+Image Models
+
+- Nano Banana
+
+- Flux 2
+
+- Seedream 5
+
+- GPT Image 2.6
+
+- GPT Image 2
+
+- Ideogram 4.5
+
+Studios
+
+- Cinema Studio
+
+- Marketing Studio
+
+- Lipsync Studio
+
+- Higgsfield Popcorn
+
+- Higgsfield Canvas
+
+- Higgsfield Mangaka
+
+Soul
+
+- Soul 2.0
+
+- Soul ID Character
+
+- Soul Cinema
+
+Platform
+
+- Supercomputer
+
+- AI Motion Designer
+
+- MCP/CLI
+
+- API
+
+- Collab
+
+- Games
+
+- Reference Extension
+
+Resources
+
+- Blog
+
+- Help Center
+
+- Academy
+
+- Prompt Guide
+
+Company
+
+- About
+
+- Trust
+
+- Report a vulnerability
+
+- Enterprise
+
+- Team
+
+- Pricing
+
+- Careers
+
+- Contact
+
+Community
+
+- Community
+
+- Contests
+
+- Creative Partners
+
+- X / Twitter
+
+- Youtube
+
+- LinkedIn
+
+- Tiktok
+
+- Discord
+
+Create
+
+- AI Video
+
+- AI Video Effects
+
+- AI Image to Video
+
+- AI Text to Video
+
+- AI Video Editor
+
+- Genjutsu for Reels
+
+- Faceless Studio
+
+- AI Explainer
+
+- AI Image
+
+- Edit Image
+
+- Inpaint
+
+- Upscale
+
+- AI Video Upscaler
+
+- Mixed Media
+
+- AI Face Swap
+
+- AI Influencer
+
+- Apps
+
+Video Models
+
+- Seedance 2.5
+
+- Seedance 2.0
+
+- Kling 3.0
+
+- Kling 4.0
+
+- Veo 3.1 Introduction
+
+- WAN 2.6
+
+- Grok Imagine 1.5
+
+- Gemini Omni Flash
+
+- MiniMax H3
+
+Image Models
+
+- Nano Banana
+
+- Flux 2
+
+- Seedream 5
+
+- GPT Image 2.6
+
+- GPT Image 2
+
+- Ideogram 4.5
+
+Studios
+
+- Cinema Studio
+
+- Marketing Studio
+
+- Lipsync Studio
+
+- Higgsfield Popcorn
+
+- Higgsfield Canvas
+
+- Higgsfield Mangaka
+
+Soul
+
+- Soul 2.0
+
+- Soul ID Character
+
+- Soul Cinema
+
+Platform
+
+- Supercomputer
+
+- AI Motion Designer
+
+- MCP/CLI
+
+- API
+
+- Collab
+
+- Games
+
+- Reference Extension
+
+Resources
+
+- Blog
+
+- Help Center
+
+- Academy
+
+- Prompt Guide
+
+Company
+
+- About
+
+- Trust
+
+- Report a vulnerability
+
+- Enterprise
+
+- Team
+
+- Pricing
+
+- Careers
+
+- Contact
+
+Community
+
+- Community
+
+- Contests
+
+- Creative Partners

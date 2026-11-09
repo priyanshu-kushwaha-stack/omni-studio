@@ -1,0 +1,32 @@
+Source URL: https://elevenlabs.io/service-specific-terms
+Final URL after redirects: https://elevenlabs.io/service-specific-terms (HTTP 200)
+Fetched at (UTC): 2026-11-09T05:49:22Z
+Method: curl (HTML converted to text with stdlib html.parser; site navigation and footer trimmed)
+Page's own last-updated / effective date: Last Updated: 09 October 2026
+sha256 of raw download: fdf2daa4811c6c5f54b572ee4acf456a8cbc616cb48507a49bd60af9e77b98cf
+Note: Index page only; links to the Music Terms (separate snapshot). No separate Music v2.5 model-specific terms were found.
+========================================================================
+
+Service-Specific Terms
+
+Last Updated: 09 October 2026
+
+PLEASE READ THESE SERVICE-SPECIFIC TERMS CAREFULLY.
+
+These ElevenLabs Service-Specific Terms (“Service-Specific Terms”) are intended to highlight some of the important things about using our different Services. The Service-Specific Terms supplement your existing agreement with ElevenLabs or, if no separate agreement exists, the ElevenLabs Terms of Service.
+
+If you are using any of the Services described below, the terms corresponding to those Services(s) also apply to your access and use. We update this page from time to time by posting a revised copy at https://elevenlabs.io/service-specific-terms, so please check back here for the most up-to-date information.
+
+Please see below for the current Service-Specific Terms:
+
+- ElevenAgents Terms
+
+- ElevenCreative Terms
+
+- ElevenAPI Terms
+
+- Music Terms
+
+- ElevenLabs Speech to Text Terms
+
+- Productions Terms

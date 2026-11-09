@@ -14,6 +14,9 @@ Whether the stranger appears in every video is an open item for the owner (spec,
 ## Script format
 
 - A bare line is spoken by the narrator. There are no speaker prefixes: nobody else has a voice.
+- **The five lines** (`rules/story.md` #1) come before the first beat, one line each, in this order:
+  `> SITUATION:`, `> DESIRE:`, `> CONFLICT:`, `> CHANGE:`, `> RESULT:`. Not spoken; the room's lint checks them
+  (`core/engines/whatif/pipeline/story_lint.py`).
 - `## [mm:ss] Beat name` starts a beat. Any other `## ` heading ends the spoken script (word count, not said,
   sources).
 - `> SCENE:` a set and what happens in it. Not spoken.

@@ -68,6 +68,10 @@ and, on the result, `audio_check.py`. The owner's craft rules and their checks a
 When you run a heavy engine or channel script by hand (TTS, stills, renders, music), wrap it so its run time is
 recorded: `.venv/bin/python -m studio.jobs run --step <script> --channel <slug> --video <id> -- <command>`.
 `python -m studio.jobs report` ranks steps by total time (portable-compute spec, B1).
+**One render at a time on the Mac:** every full or preview render (Remotion, ffmpeg film assembly) adds
+`--queue render` to that `run`, so a second session waits instead of rendering under load (renders failed under load
+on the first Say Suppose video). `--no-wait` exits 75 when the queue is held; `python -m studio.jobs queue render`
+says who holds it.
 
 ## Gates
 
