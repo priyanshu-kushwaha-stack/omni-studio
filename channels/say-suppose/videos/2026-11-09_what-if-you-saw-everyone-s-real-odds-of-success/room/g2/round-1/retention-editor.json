@@ -1,0 +1,58 @@
+{
+  "call_id": "bb647e4d93d4482ab9ae5a0ca5b10633",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "retention": 8,
+    "length (about 6:00; no stay-past-8:00 reason needed)": 10
+  },
+  "blockers": [
+    {
+      "quote": "Your own chip started from a crowd too. Last year, over 9 lakh people applied for UPSC's civil services exam. And 958 got in (c01). About one in a thousand.",
+      "why": "Story #7 fails: three numbers arrive together, followed by another statistic before the first fact lands on you.",
+      "fix": "Replace lines 86\u201391 with: \u201cLast year, about one in a thousand UPSC applicants got in (c01). You wore that crowd's starting number like a verdict. But yours already moved down when you copied.\u201d Cut c02 here.",
+      "domain": "story",
+      "line": 86
+    },
+    {
+      "quote": "And yours? Here's the number nobody puts on a coaching poster. Of the people who reached last year's interview room... about one in three got in (c03).",
+      "why": "Story #7 fails: this late fact causes no action or realization within two lines and interrupts the emotional payoff with another statistic.",
+      "fix": "Cut lines 141\u2013143 and move directly from \u201cBut it's his. And it's moving.\u201d to the final row-three scene.",
+      "domain": "story",
+      "line": 142
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "> HOLD: 3 s. The ident: the title card (C) on the channel's four-note signal, the hall's chips glowing behind it.",
+      "fix": "Specify a card entrance or slow camera drift so the three-second ident never becomes a still frame."
+    },
+    {
+      "line": 129,
+      "quote": "> HOLD: 2 s. The bus stops. The grey chip in the dark window. One note.",
+      "fix": "Keep the hold, but add a slow push toward the chip or a reflection sliding across the window."
+    }
+  ],
+  "keep": [
+    {
+      "line": 83,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 134,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    },
+    {
+      "line": 151,
+      "quote": "You know your number now. And you don't look up."
+    }
+  ],
+  "error": "",
+  "output_sha256": "c7e464eaa0b339eb3459cdad98500b4408276339ba58e8291ce14821e4445163",
+  "draft_sha256": "f9b4ac7913751c122a0fcdf56e2ba208d0be8ac8392f84df7e0ac8e9fb77e0e2"
+}

@@ -20,7 +20,8 @@ batch for, Pune is a coaching city for it, and UPSC publishes every cycle's funn
 | Qualified for the Personality Test (interview) | 2,736 | 0.29% |
 | Recommended for appointment | 958 | 0.102% (1 in 979) |
 
-Three figures carry the film, one at a time:
+v1 used three figures, one at a time; after G2 room round 1 only the first is spoken (story #7), and c02 and c03
+stay in the ledger as dropped:
 
 1. **The crowd's number** (c01): about one in a thousand applicants got in. This is the base rate every chip in
    the hall starts from.

@@ -1,0 +1,23 @@
+{
+  "call_id": "a094f63dcf224b8bad7c6db1fc7d523e",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 10,
+    "claim_discipline": 10
+  },
+  "blockers": [],
+  "suggestions": [],
+  "keep": [
+    {
+      "line": 87,
+      "quote": "Last year? About one in a thousand UPSC applicants got in (c01)."
+    }
+  ],
+  "error": "",
+  "output_sha256": "37660fec4b0bb18cd4e2da0da41c89fa5543df569bc454f2a2c0afbc04df253e",
+  "draft_sha256": "00506b12724be7225f18fd7f9f6754d132560285216b9071267e89247fb3796f"
+}

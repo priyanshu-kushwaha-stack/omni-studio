@@ -1,0 +1,74 @@
+{
+  "call_id": "173288c2ab6e4a0aa2e4ce20259968fb",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "never say the feeling (#11)": 7,
+    "leave fast, last line (#12)": 9,
+    "written to be spoken": 8,
+    "emotion per line": 7,
+    "breath length at 1.1x": 8,
+    "spoken forms for say.yaml": 8
+  },
+  "blockers": [
+    {
+      "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+      "why": "Check #11: the line narrates what the picture already shows. The scene is the bus passing a city with a chip over every head, all flickering, and the HOLD that follows shows the same thing, so the line is a caption for the image.",
+      "fix": "Say something the picture can't: \"The last bus home. And you can't stop reading them. Like timetables.\" Keep the 2.5 s HOLD wordless.",
+      "domain": "voice",
+      "line": 119
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 33,
+      "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+      "fix": "It reads like an essay. Break it into takes: \"Here's how it works. Each chip... one person's chance. At the one thing they'd choose. With nobody watching.\" Then, as a separate take, \"It never says what that thing is.\""
+    },
+    {
+      "line": 87,
+      "quote": "Last year? About one in a thousand UPSC applicants got in (c01).",
+      "fix": "Add to say.yaml: UPSC -> \"U-P-S-C\". Keep \"one in a thousand\" in words, as the notes already say."
+    },
+    {
+      "line": 119,
+      "quote": "That night, on the bus, the whole city is lit up.",
+      "fix": "No delivery direction is given for this line. Add [hushed, a little awed, tired] so it follows the low note of \"He didn't even argue.\""
+    },
+    {
+      "line": 158,
+      "quote": "Would you want to see your number? Tell us below.",
+      "fix": "No direction is given. Add [warm, plain, a small smile], and make \"Tell us below.\" a short second take so it doesn't run on from the question."
+    },
+    {
+      "line": 54,
+      "quote": "But Aarav's tiny number follows you into the hall. So you look for certainty. The teacher.",
+      "fix": "The narration notes quote this as \"But his tiny number...\", so the two don't match. Pick one wording for the G3 take. Mark \"The teacher.\" as its own short take, as the notes intend."
+    },
+    {
+      "line": 102,
+      "quote": "A fee slip for a cricket academy.",
+      "fix": "The picture already shows the slip, so this leans toward narrating the shot. Trim to \"At home, Aarav's waiting. With a question. For you. The one who can see the numbers.\" The slip then carries itself on screen."
+    }
+  ],
+  "keep": [
+    {
+      "line": 83,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 91,
+      "quote": "Copying their notes was never going to copy their number."
+    },
+    {
+      "line": 156,
+      "quote": "Out in the lane... thwack."
+    }
+  ],
+  "error": "",
+  "output_sha256": "bddce7d242afd8913d80e41df46b27f1bc81f176f0fd6dfb8ed6eddea19cabca",
+  "draft_sha256": "00506b12724be7225f18fd7f9f6754d132560285216b9071267e89247fb3796f"
+}

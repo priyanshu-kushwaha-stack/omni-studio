@@ -1,0 +1,82 @@
+{
+  "call_id": "f0ffbf7241884e768800e975fe39f6c1",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "ideas pick card #8, buildable this week": 6,
+    "sound #1, slim cue sheet with intent per beat": 9,
+    "sound #3, music follows the story": 7,
+    "staging and scene coverage": 8,
+    "hold and change rhythm (2 to 4 s, one peak up to 10 s)": 9,
+    "on-screen text and safe area": 8,
+    "continuity and reuse": 7
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 29,
+      "quote": "the one crimson chair pulses once",
+      "fix": "cues.yaml brings cue_chips in 'at the pull-up', which is before the reveal in line 28. Move the entry to this pulse, after 'One chair. Out of two thousand five hundred.', so the music arrives at the reveal and not ahead of it."
+    },
+    {
+      "line": 79,
+      "quote": "And your chip doesn't climb to sixty-one. It drops.",
+      "fix": "cues.yaml thins cue_stall 'on the calendar flip' (line 78), a beat before the drop is seen or said. Keep cue_stall full through the flip and thin it when the chip cards start to fall, then out on 'It drops.'"
+    },
+    {
+      "line": 109,
+      "quote": "Quit.",
+      "fix": "cues.yaml brings the theme-dark motif in on 'Am I good?' (line 103), which sours the cruelty of 'Quit.', since the take is meant to sound kind. Keep the warm lamp felt piano through 'Quit.' and the nod, and bring the dark motif in only on the drain, with the held note."
+    },
+    {
+      "line": 21,
+      "quote": "0.04%",
+      "fix": "This tag follows a close on your face (line 20), and the tags at lines 47, 62 and 67 sit on face close-ups too. Stamp each tag on or beside the chip, in the lower or upper corner, never over the eyes or brows."
+    },
+    {
+      "line": 20,
+      "quote": "beside your head, a crimson chip",
+      "fix": "Every other chip floats 'over' a head (lines 19, 46, 117). Give every chip one anchor, up and to the right of the head, so the opening shot, the thumbnail and the lane shot match. Your chip is then never beside you in one shot and above you in another."
+    },
+    {
+      "line": 71,
+      "quote": "You pull off your scarf and tie on an apron.",
+      "fix": "The teal scarf is your brand colour and it vanishes here. Hang it on a hook by the stall, show it on at line 92 ('You untie the apron...'), and keep the scarf visible in the over-the-shoulder shots from then on."
+    },
+    {
+      "line": 131,
+      "quote": "In its glass door, your reflection and your crimson chip.",
+      "fix": "Stage the reflection as a pale mirrored duplicate of head and chip on the door layer at about 40% alpha. If that costs build time, drop it and keep the chip beside you in the frame."
+    },
+    {
+      "line": 119,
+      "quote": "a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming; an old man at a chessboard",
+      "fix": "The city sequence adds many new figures and actions in one minute: three street vignettes, three lit windows (teacher's kitchen, topper's keyboard, chai stall) and the dark window. This is the build risk for the week. Draw the chip as one instanced flutter sprite, reuse the hall desk-sitter rig for the sleeper, and cut the chess man to a single frame or drop him. Keep the jogger."
+    },
+    {
+      "line": 141,
+      "quote": "a small waiting room outside an interview door: a handful of chairs, every one filled",
+      "fix": "Reuse the paper chairs from the grid in line 26, re-lit and filled, plus one door shape, so there is no new set. Likewise reuse the hall's desk rows for the exam centre (line 85). Name the new sets in the cue or prop list: lane with chalk wicket, chai stall with kettle pour, home with glass-door cupboard, bus window run."
+    }
+  ],
+  "keep": [
+    {
+      "line": 83,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 110,
+      "quote": "The wordless peak. He nods (2 s). His chip drains from warm white to grey and flips to zero (3 s)"
+    },
+    {
+      "line": 134,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    }
+  ],
+  "error": "",
+  "output_sha256": "6baa4abb5fee5e70e2dc055ca995f0479f1b09eecf8a75a603ddfb1adcf3ca0b",
+  "draft_sha256": "f9b4ac7913751c122a0fcdf56e2ba208d0be8ac8392f84df7e0ac8e9fb77e0e2"
+}
