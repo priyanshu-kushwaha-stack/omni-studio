@@ -16,7 +16,7 @@ name: studio-whatif
 version: "1.0"
 description: >
   Say Suppose: one what-if per video, told in second person by one narrator. The story is invented; every
-  claim about the real world is cited in claims.md. Code-drawn paper-cut scenes, 6 to 8 minutes, 16:9.
+  claim about the real world is cited in claims.md. Code-drawn paper-cut scenes, 16:9, no length cap (the story decides).
   Seven owner gates, G1-G7.
 category: custom
 stability: beta
@@ -84,7 +84,7 @@ stages:
       - Every real-world number, date, name or finding cites a claims.md row; story numbers are in words
       - What the viewer does in the story is never stated as fact; uncertainty is spoken
     success_criteria:
-      - script.md is 750 to 900 words, 15 to 20% wordless, and follows the beats in channels/<slug>/style.md
+      - script.md is 15 to 20% wordless, follows the beats in channels/<slug>/style.md and passes the channel's must-pass story checks (channels/<slug>/rules/story.md)
       - claims ledger complete, a source for every factual claim (omni qc ... story_script)
 
   - name: narration

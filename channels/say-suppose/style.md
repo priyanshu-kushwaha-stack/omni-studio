@@ -3,28 +3,57 @@
 How this channel looks and sounds, beyond what `playbook.yaml` can hold. Design and the owner's decisions:
 `docs/superpowers/specs/2026-11-06-say-suppose-format-design.md` (2026-11-06). Quality rules from the reference study,
 all adopted by the owner on 2026-11-06 ("Adopt all"): `docs/research/2026-11-06-say-suppose-reference-study.md`.
+The next phase (2026-11-09: no length cap, story and sound must-pass checks, thumbnails, the idea room, cadence):
+`docs/superpowers/specs/2026-11-09-say-suppose-next-phase-design.md`, with the checks in `rules/`.
 
 ## The format: a what-if you live through
 
 One what-if per video. The narrator speaks to "you", and "you" are the figure on screen. The story is invented;
-everything it says about how the world works is real and sourced. English, 16:9, 6 to 8 minutes (target 7:00).
+everything it says about how the world works is real and sourced. English, 16:9.
 
-| Time | Beat | Rule |
+**No length cap** (owner, 2026-11-08). The story decides the length. Every beat passes the **cut test**: remove it, and
+something felt or learned is lost. A script past about 8 minutes needs the story seat to name the felt reason a viewer
+stays (`rules/story.md`). The 6 to 8 minute target (7:00) and its clock times are gone; beats are shares of the runtime.
+
+| Share | Beat | Rule |
 |---|---|---|
-| 0:00-0:20 | The change | Open inside an ordinary moment; the one change happens to you. The title question is spoken. No intro, no channel name |
-| 0:20-0:50 | The rule | State the change exactly, once, and what you stand to gain or lose |
-| 0:50-2:30 | The first hours | Small, personal, funny. You use it for dumb things. Each gag rests on a sourced fact |
-| 2:30-4:30 | The first year | It spreads: your street, your job, your city. Around 3:30 one thing you assumed turns out wrong |
-| 4:30-6:15 | The long run | The scale the title deserves: a lifetime, a century, the planet. The honest answer lands here |
-| 6:15-7:00 | Back to you | One image, one line on what this says about the real world, an invitation to leave a what-if in the comments, stop |
+| within 20 s | The change | Open inside an ordinary moment that shows one habit of yours; the one change happens to you and hits that habit. The title question is spoken. No intro, no channel name |
+| within 30 s | The rule | State the change exactly, once, and what you stand to gain or lose (the second hook) |
+| to about 35% | The first jump | Small, personal, funny. You use it for dumb things; each use has a gap between what you expect and what you get |
+| to about 65% | The second jump | Bigger consequences, for you and your person. Around the midpoint one thing you assumed turns out wrong; the cost lands near 60% |
+| to about 90% | The third jump | The scale the title deserves, felt through you: a lifetime, a century, the planet as one image. The choice comes at 75 to 80%; the honest answer lands here |
+| the last tenth | Back to you | You end as the opposite of the opening. One line on a real thing the viewer will see differently tomorrow, inside the last image; the comment invitation; stop |
 
-The clock labels change with the topic (hours, year, century; or day, decade, forever). There are always three
-jumps and each is bigger than the last.
+The jump labels change with the topic (hours, year, century; or day, decade, forever). There are always three
+jumps of consequence and each is bigger than the last.
+
+### Picking a what-if (owner, 2026-11-08; revised 2026-11-09)
+
+Topics come from the idea room (`rules/ideas.md`): five researcher models, a neutral moderator, ratings by all, one
+agreed scored list; the owner picks. A topic must pass the nine-point pick card in that file: a daydream the viewer
+already had; you can live it from an ordinary moment; a wrong belief it breaks; one belief-breaking fact and one late
+mind-boggle; three jumps of consequence; earned stakes; buildable this week; not a neighbour's twist or title from the
+last 90 days.
+
+**The viewer** is one named person: a young Indian, comfortable in English, on a phone in the evening, whose week is
+chai, the bus or metro, exams, the office and family. Every example and gag comes from that week; titles and
+thumbnails stay readable worldwide (no `₹` or local slang in the English packaging).
+
+### Writing it (owner, 2026-11-08 and 2026-11-09)
+
+- **The twelve must-pass checks** in `rules/story.md`: five lines first (Situation, Desire, Conflict, Change,
+  Result); confirm the click in 7 s; a second hook by 0:30; a habit, then the change; "but" or "therefore" between
+  beats, never "and then"; every use has a gap; misconception first; a picture only this premise can show, before the
+  midpoint; earned stakes; the turn breaks a line already said; never say the feeling; leave fast.
+- **Felt, not taught.** Every fact lands on you or your person within two lines. Never two fact lines in a row while
+  the story stands still.
+- **Answer the viewer's "but what about".** Before writing, list the five questions a curious viewer would ask, in
+  order; the script answers each where it arises. Comments add to the list.
 
 ### Story craft (reference study, adopted 2026-11-06)
 
-- **A person to lose.** The viewer cares about a person, not the power. The cost lands near 60% of the runtime; at
-  75 to 80% comes a choice between the power and that person.
+- **A person to lose, when the premise earns one** (2026-11-09). The viewer cares about a person, not the power. The
+  cost lands near 60% of the runtime; at 75 to 80% comes a choice between the power and that person.
 - **Plant and pay off.** One line in the first minute comes back, in the same or mirrored words, in the last minute.
 - **Wordless peaks.** The biggest beat gets 8 to 10 seconds with no narration: the music swells or drops, the colour
   drains, motion slows. Peaks are cut at half the usual rate.
@@ -33,8 +62,8 @@ jumps and each is bigger than the last.
 
 ## Script rules
 
-- 750 to 900 words, spoken at about 115 words a minute. 15 to 20% of the runtime is wordless: `> HOLD:` lines
-  where action and music carry the story. (Was 900 to 1,100 at about 140; changed by the reference study.)
+- No word count (2026-11-08; was 750 to 900). Spoken at about 115 words a minute; 15 to 20% of the runtime is
+  wordless: `> HOLD:` lines where action and music carry the story.
 - Second person, present tense, short sentences. The narrator is dry, warm and exact, and never hypes.
 - **Written to be spoken, not read** (owner, 2026-11-08, for every language): fragments, half-sentences, thoughts
   that trail off, a question answered at once, key words repeated. Not every sentence is complete, because that is not
@@ -85,7 +114,9 @@ three painted looks, then that sample re-coloured and on a painted backdrop, and
   screens.
 - Each video has one **rule device**: a single visual that shows the changed rule whenever it applies. In the
   sample it is the grey wave that drains the world while you stay in colour.
-- Something changes every 2 to 4 seconds: a camera move, a pose, a prop or a cut. No hold is longer than 6 seconds.
+- Something changes every 2 to 4 seconds: a camera move, a pose, a prop or a cut. No hold is longer than 6 seconds,
+  except the one wordless peak, which may run up to 10 seconds while something still moves every 2 to 4 seconds (a
+  camera drift, slow motion) (owner, 2026-11-09).
 - Motion is timed to spoken words through named cues, never to hard-coded times, so a new voice take re-times
   the scene.
 
@@ -131,9 +162,12 @@ cold open; ConChaser's neon counters over heads and dark pill captions; Primal S
 
 ## Thumbnails
 
-You, large, mid-reaction, with one prop that carries the what-if. At most three words, on a stamped tag in
-Rubik 800. A flat set colour behind, chosen to hold contrast with mustard at feed size. The thumbnail never
-repeats the title.
+Revised 2026-11-09 (owner, from HimanshuG's thumbnail study and the Veritasium and Dr. Plants grids). You, large
+(head at least a quarter of the frame height), left of centre, mid-reaction at the instant before the outcome. One
+prop or stake, at most one crimson pointer to it. A dark or flat set behind, so you stand at 3:1 in greyscale. At most
+three words on a stamped tag in Rubik 800: your reaction or a question, never a bare label. The thumbnail never repeats
+the title, except the time markers of a DAY 1 / DAY N split for change-over-time stories. Three variants, each
+differing in one thing, checked at G1 with `rules/thumbnails.md` (K1-K15).
 
 ## Not Professor of Us
 
@@ -152,9 +186,15 @@ repeats the title.
   Silences capped at 0.3 s. Takes play at 1.1x, countdowns at real speed (owner, 2026-11-07, after the G4 voice A/B;
   `timing.yaml` `tempo` and `tempo_lines`).
 - **A score per video,** with cues that change at the beats: a theme for "you", a cold cue for the catch, silence
-  before the twist. Music rises to near voice level in `> HOLD:` beats and ducks under the voice elsewhere. Source:
+  before the twist. Music rises in `> HOLD:` beats (today about 8 dB under the voice level; changed only by an A/B the
+owner hears) and ducks under the voice elsewhere. Source:
   ElevenLabs Music v2.5 through Higgsfield, or tracks from the Pixabay music library; never a track with unclear rights.
-- Sound effects are synthesised with ffmpeg.
+- Sound effects are synthesised with ffmpeg; paper, card, pencil, tick and breath are recorded once and reused.
+- **The eleven sound checks** in `rules/sound.md` (2026-11-09): a slim cue sheet (`cues.yaml`, intent at G2, spotting
+  at G4); one channel signal, thinner at the cost; music changes at or after a reveal; the level under the voice is
+  changed only by an A/B the owner judges by ear; at most two planned silences; the muted-music test with an ambience
+  bed per set; the next scene's sound under the cut; the rule device is heard; a sound budget, no braams; a phone pass;
+  rights recorded for every source (the Higgsfield themes cleared before the next public video uses them).
 - Every narration and music call is paid: tool, provider, model and cost are announced and approved first.
 - Mix: -14 LUFS integrated within 1 LU, true peak at most -1 dBTP (`channel.yaml` `loudness.story`).
 
@@ -187,21 +227,27 @@ timing.
 
 ## Shorts
 
-A Short is one beat of a finished long video, re-staged for 9:16: the opening change or the 3:30 reversal,
+A Short is one beat of a finished long video, re-staged for 9:16: the opening change or the midpoint reversal,
 30 to 50 seconds, ending on a line that points to the long video. It gets its own seven gates. Its pipeline
 (`studio-whatif-short`) is written when the first long video passes its rough cut; until then `channel.yaml`
 lists only `story`.
 
 ## Cadence
 
-`cadence: daily` is the owner's target (2026-11-06). Three things stand between the first video and that pace:
+`cadence: daily` is the owner's target (2026-11-06); every other day is the fallback. How it is reached (owner,
+2026-11-09; details in the next-phase spec):
 
-1. **A scene kit.** Every set, prop and action is code. The 34-second sample has 4 scenes; a 7-minute video has
-   about 50. The first videos build the kit and later videos reuse it.
-2. **Gate load.** Seven owner approvals per video; a daily video with a daily Short is fourteen a day. Gates are
-   never skipped; they can be taken several videos at a sitting.
-3. **Narration cost.** Unknown until the first quote at G3. The sample's 13 lines were quoted 1.95 Higgsfield
-   credits and billed 3.60.
+1. **A staggered conveyor.** Videos in flight one stage apart, one session and one worktree each, writing only their
+   video folder. Two in flight until two videos have closed on the preview ladder, then three. Reusable sets, props
+   and actions reach the kit only through a separate kit session.
+2. **Seven gates, three sittings.** Gates are never skipped. Each video's gates are taken in three sittings:
+   G1 and G2; G3 and G4; G5, G6 and G7. A day's sittings mix different videos.
+3. **Cheap previews.** Still sheets, 720p beat renders and audio-only mixes for notes; one 1080p render for G6 and
+   the upload. One render at a time on the Mac.
+4. **Release ramp and the quality slip.** Every other day until three finished videos sit private and scheduled,
+   then daily; back to every other day if the buffer falls to one. An empty slot beats a weak video: a failed gate
+   slips that video, never the bar.
+5. **A scene kit.** Every set, prop and action is code; the first videos build the kit and later videos reuse it.
 
 ## Engine
 

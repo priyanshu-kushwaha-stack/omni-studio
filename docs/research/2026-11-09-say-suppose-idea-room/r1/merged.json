@@ -1,0 +1,1796 @@
+[
+ {
+  "id": "M01",
+  "title": "What If You Could Hear Everything Said About You?",
+  "tag": "They're Talking",
+  "hook": "You leave the chai stall at 7:42 pm, and before you reach the bus stop your friends' voices start in your head, still talking about you. You can hear every word, forever, and you cannot switch it off.",
+  "wrong_belief": "People are secretly tearing you apart the moment you leave, so hearing it would confirm your worst fears and catch the traitors.",
+  "mind_boggle": "In a 2019 study of 467 people, gossip averaged 52 minutes a day but ~75% was neutral and only ~15% negative; Dunbar's work suggests ~2/3 of all conversation is social talk.",
+  "person": "Your best friend, who says one honest, slightly unflattering thing in a conversation you were never meant to hear, and whom you freeze out even though the rest was love.",
+  "source_ids": [
+   "CLA01",
+   "KIM07"
+  ],
+  "proposers": [
+   "Claude Fable 5.1",
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; verify exact gossip split before publishing.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 8,
+  "buildable": 8,
+  "overall": 8,
+  "reason": "A universal social-anxiety daydream with a kind, sourceable twist that holds a 6+ minute emotional arc."
+ },
+ {
+  "id": "M02",
+  "title": "What If You Could Never Feel Fear Again?",
+  "tag": "Zero Fear",
+  "hook": "Tomorrow at 9 am you walk into the interview room and your heart does not move. You text your crush, cross a highway, argue with your boss, and nothing flinches. Within a month you are in hospital, and you don't know why.",
+  "wrong_belief": "Fearlessness is courage, so without fear you would finally become confident, successful and free.",
+  "mind_boggle": "Patient S.M., her amygdala destroyed by disease, was held at knifepoint and felt nothing, yet breathing CO2 gave her a full panic attack, proving a second fear pathway.",
+  "person": "Your younger sibling, whom you take on your 'fearless' plans and who gets hurt while you feel nothing.",
+  "source_ids": [
+   "CLA02"
+  ],
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; S.M. story well documented.",
+  "click": 8,
+  "story": 9,
+  "felt": 8,
+  "perspective": 9,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Reframes daily anxiety as protection with a barely-known, cinematic real case at its core."
+ },
+ {
+  "id": "M03",
+  "title": "What If You Could Never Forget Anything?",
+  "tag": "Never Forget",
+  "hook": "It is the night before your board exam and you remember every page you have ever read. You also remember, in perfect detail, every word your mother shouted at you when you were nine, and it is playing right now.",
+  "wrong_belief": "Perfect memory is the ultimate exam superpower and would make you the smartest person in the room.",
+  "mind_boggle": "People with highly superior autobiographical memory recall any day of their life yet score average on word lists; Jill Price called it a burden she cannot switch off.",
+  "person": "Your mother, because the one argument you both should have let fade never fades, and you treat her as the person from that day.",
+  "source_ids": [
+   "CLA03",
+   "GEM02",
+   "GRO02"
+  ],
+  "proposers": [
+   "Claude Fable 5.1",
+   "Gemini 4 Argon",
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; pull exact lab scores before screen.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 8,
+  "buildable": 8,
+  "overall": 8,
+  "reason": "The exam fantasy every student harbours, overturned into a story about forgetting as forgiveness."
+ },
+ {
+  "id": "M04",
+  "title": "What If You Only Needed 2 Hours of Sleep?",
+  "tag": "22 Hours Awake",
+  "hook": "Your alarm rings at 3 am and you are not tired. You will never be tired again. You have 22 hours a day and everyone you love has 16, and for the first week it feels like a second life.",
+  "wrong_belief": "More waking hours means more study, more money, more life, and sleep is just wasted time.",
+  "mind_boggle": "DEC2 gene carriers thrive on ~6 hours; people kept on 6 hours for two weeks performed like those who'd skipped two whole nights yet rated themselves only slightly sleepy.",
+  "person": "Your partner or closest friend, asleep for six of your extra hours, so your lives stop overlapping and you become a stranger in the dark.",
+  "source_ids": [
+   "CLA04",
+   "GEM01",
+   "GRO03"
+  ],
+  "proposers": [
+   "Claude Fable 5.1",
+   "Gemini 4 Argon",
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; glymphatic flush is a strong late boggle.",
+  "click": 8,
+  "story": 8,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 8,
+  "overall": 8,
+  "reason": "Directly rebutts hustle culture with a strange genetic fact and a lonely, earned cost."
+ },
+ {
+  "id": "M05",
+  "title": "What If You Could Never Feel Pain?",
+  "tag": "No Pain",
+  "hook": "You pull the chai pan off the stove with your bare hand and feel nothing. No dentist, no period cramps, no gym burn, ever again. Six months later a doctor asks how long your appendix has been like this, and you have no answer.",
+  "wrong_belief": "A life without pain would be a life without suffering, basically a superpower.",
+  "mind_boggle": "Children with a broken SCN9A gene bite off tongues and walk on broken bones; one boy who pushed knives through his arms died before fourteen after jumping off a roof.",
+  "person": "Your younger sibling, who copies your fearlessness without the immunity, and the parent who must become your pain for you.",
+  "source_ids": [
+   "CLA05",
+   "GRO06"
+  ],
+  "proposers": [
+   "Claude Fable 5.1",
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; avoid on-screen death-rate numbers without current source.",
+  "click": 8,
+  "story": 8,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A proven curiosity with a shocking real syndrome and a guilt-driven personal cost."
+ },
+ {
+  "id": "M06",
+  "title": "What If You Were Paid in Hours of Your Life?",
+  "tag": "Time Is Money",
+  "hook": "Your first salary lands and the number is not in rupees. It says 2,040 hours added to your life. Then you look at what your father has been paid for thirty years, and the exchange rate makes you sick.",
+  "wrong_belief": "If time were money, hard work would buy you a longer life and the rich would simply have more hours.",
+  "mind_boggle": "ILO data puts India among the longest working weeks on Earth (~47 hours), with about half of workers doing 49+ hours, among the highest shares worldwide.",
+  "person": "Your father, who has been selling his hours at a price nobody told him, and whose remaining balance you can now see.",
+  "source_ids": [
+   "CLA06"
+  ],
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; verify latest ILOSTAT figures.",
+  "click": 7,
+  "story": 7,
+  "felt": 8,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "Turns the working-hours debate into a visible, personal countdown with real data."
+ },
+ {
+  "id": "M07",
+  "title": "What If You Lived a Second Life Every Night?",
+  "tag": "Two Lives",
+  "hook": "Every night when you close your eyes you wake in another life, another city, another family, and you remember all of it in the morning. By month three you are not sure which life you are returning to.",
+  "wrong_belief": "A dream life would be free: all the adventure and none of the cost, since you are asleep anyway.",
+  "mind_boggle": "In 2021 scientists held two-way conversations with sleeping dreamers, who answered maths questions correctly with eye movements from inside the dream.",
+  "person": "Your real partner, who notices you have started grieving someone they have never met.",
+  "source_ids": [
+   "CLA07"
+  ],
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; two-life build is the main effort.",
+  "click": 7,
+  "story": 8,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 6,
+  "overall": 7,
+  "reason": "A haunting lucid-dreaming fantasy with a jaw-dropping real anchor, though two parallel worlds raise build cost."
+ },
+ {
+  "id": "M08",
+  "title": "What If You Felt Everyone's Pain?",
+  "tag": "Every Pain, Yours",
+  "hook": "It is 8:15 am on a packed train and a stranger's shoulder aches, so yours does. A child three seats away has a toothache, so you do. Forty minutes to go, nine hundred bodies around you.",
+  "wrong_belief": "Total empathy would make you kinder, a better friend, almost a saint.",
+  "mind_boggle": "Mirror-touch synaesthesia may affect ~1 in 60; Harvard neurologist Joel Salinas feels touch and pain he sees on others, even a patient's final moments.",
+  "person": "Your closest friend in a hospital bed, whom you stop visiting because their pain becomes yours, which they feel as abandonment.",
+  "source_ids": [
+   "CLA08",
+   "GEM10"
+  ],
+  "proposers": [
+   "Claude Fable 5.1",
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; verify exact prevalence figure.",
+  "click": 7,
+  "story": 7,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 6,
+  "overall": 7,
+  "reason": "Empathy overload in crowded cities is relatable, but crowd-pain scenes are the harder build."
+ },
+ {
+  "id": "M09",
+  "title": "What If You Got Paid Every Time Someone Thought of You?",
+  "tag": "Thinking of You",
+  "hook": "A rupee drops into your account every time anyone, anywhere, thinks of you. You check the app expecting to be rich. Your crush has paid nothing. Your mother is paying every four minutes.",
+  "wrong_belief": "You are constantly on other people's minds, especially the ones you are trying to impress.",
+  "mind_boggle": "Students wearing an embarrassing T-shirt guessed about half the room noticed; only about a quarter did. We overestimate how much others watch us by roughly double.",
+  "person": "Your mother, whose payments you only truly notice in the running total, and the friend whose payments quietly stop one day.",
+  "source_ids": [
+   "CLA09"
+  ],
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; spotlight-effect study is solid.",
+  "click": 9,
+  "story": 7,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Instantly checkable, funny, and lands on a melancholy truth about who really carries you."
+ },
+ {
+  "id": "M10",
+  "title": "What If You Could Switch Off Gravity for Yourself?",
+  "tag": "Zero Gravity You",
+  "hook": "You press a button in a packed metro and float to the ceiling while everyone stares. You fly home over the traffic. A year later you cannot stand up without fainting, and your bones are those of an eighty-year-old.",
+  "wrong_belief": "Weightlessness is pure freedom, the closest thing to a real superpower.",
+  "mind_boggle": "Astronauts lose ~1% of bone mass a month in weightlessness, about ten times an osteoporosis rate; hearts shrink, faces puff, many faint on return.",
+  "person": "Your grandmother, whose slow walk and brittle bones you once teased, and who ends up teaching you how to stand again.",
+  "source_ids": [
+   "CLA10"
+  ],
+  "proposers": [
+   "Claude Fable 5.1"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; strong paper-cut visuals.",
+  "click": 8,
+  "story": 7,
+  "felt": 7,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "The oldest fantasy turned into body-horror with a real lesson and clean animation potential."
+ },
+ {
+  "id": "M11",
+  "title": "What If Your AI Double Survived You?",
+  "tag": "YOUR VOICE CALLS",
+  "hook": "At your funeral, your phone rings in your mother's hand. Your voice says, 'Ma, don't cry, I'm still here.'",
+  "wrong_belief": "A digital copy would preserve you and comfort everyone you leave behind.",
+  "mind_boggle": "Deadbots already imitate the dead from messages and recordings, yet may keep shifting with their owner's algorithms and commercial incentives.",
+  "person": "Your mother, who must decide whether speaking to the imitation is helping her grieve or preventing it.",
+  "source_ids": [
+   "GPT01"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; Cambridge deadbot research available.",
+  "click": 8,
+  "story": 8,
+  "felt": 8,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "AI immortality meets universal grief; the funeral-call hook is a strong, fresh thumbnail."
+ },
+ {
+  "id": "M12",
+  "title": "What If Your Face Committed a Crime?",
+  "tag": "YOU DID IT",
+  "hook": "Police arrive before breakfast with perfect CCTV of you committing a robbery. You were asleep, but your only alibi is another camera.",
+  "wrong_belief": "Video evidence is objective, and a convincing deepfake should still be easy to spot.",
+  "mind_boggle": "In 2024 a Hong Kong employee transferred about US$25.6 million after a video meeting in which every apparent colleague was reportedly a deepfake.",
+  "person": "Your closest friend, whose testimony could save you but destroy their own credibility.",
+  "source_ids": [
+   "GPT02"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; real Hong Kong case is solid.",
+  "click": 9,
+  "story": 8,
+  "felt": 7,
+  "perspective": 8,
+  "buildable": 6,
+  "overall": 8,
+  "reason": "Crime plus AI anxiety plus loss of your own face; the real theft makes the escalation credible."
+ },
+ {
+  "id": "M13",
+  "title": "What If Tomorrow Texted You Tonight?",
+  "tag": "TEXT FROM TOMORROW",
+  "hook": "At 11:59 p.m. a message says the power will fail at midnight, and it does. The next message says, 'Don't let Ma board the 8:10 bus.'",
+  "wrong_belief": "Even imperfect knowledge of tomorrow would let you prevent every disaster.",
+  "mind_boggle": "A 99%-accurate warning system for a one-in-a-million event can throw roughly 10,000 false alarms per true one; accuracy without base rates misleads.",
+  "person": "Your mother, whom you might endanger either by ignoring the warning or by obeying it.",
+  "source_ids": [
+   "GPT03"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; base-rate fallacy is well sourced.",
+  "click": 8,
+  "story": 8,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "Proof-escalation structure is a retention engine, but the boggle is more cognitive than felt."
+ },
+ {
+  "id": "M14",
+  "title": "What If You Could Sell Your Sleep?",
+  "tag": "SLEEP FOR SALE",
+  "hook": "An app offers you ₹10,000 for tonight's eight hours of sleep. You tap SELL, then remember tomorrow is your most important exam.",
+  "wrong_belief": "Sleep is unproductive time that ambitious people should be able to trade away.",
+  "mind_boggle": "After roughly 17-19 hours awake, performance can resemble or worse a 0.05% blood-alcohol level.",
+  "person": "A pedestrian, or someone riding beside you, when your exhausted brain microsleeps on the commute.",
+  "source_ids": [
+   "GPT04"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; overlaps sleep theme with M04 but twist differs.",
+  "click": 8,
+  "story": 7,
+  "felt": 8,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A marketplace frame makes the invisible sleep cost literal and exam-relatable."
+ },
+ {
+  "id": "M15",
+  "title": "What If Your Dreams Went Live?",
+  "tag": "8M SAW THIS",
+  "hook": "You wake to eight million views of a dream in which you push your best friend under a train. They have already seen it.",
+  "wrong_belief": "Dreams are private confessions that reveal what you secretly want.",
+  "mind_boggle": "Researchers have used fMRI to predict broad categories of sleep imagery, but cannot currently reconstruct a cinematic recording of a dream.",
+  "person": "Your best friend, who must decide whether the nightmare means anything about the real you.",
+  "source_ids": [
+   "GPT05"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; fMRI decoding is real but limited.",
+  "click": 8,
+  "story": 7,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 6,
+  "overall": 7,
+  "reason": "Merges livestream culture with the fear of being judged for thoughts you didn't choose; build is the stretch."
+ },
+ {
+  "id": "M16",
+  "title": "What If Every Database Forgot You?",
+  "tag": "IDENTITY NOT FOUND",
+  "hook": "The metro rejects you, your bank has no customer by your name, and your office says you never worked there. Your mother remembers you, but no machine does.",
+  "wrong_belief": "Being erased from official systems would make you free and impossible to track.",
+  "mind_boggle": "The World Bank estimates about 850 million people lack official identification, blocking banking, jobs, healthcare and government support.",
+  "person": "Your father, whose medicine or insurance depends on an account the system says you never owned.",
+  "source_ids": [
+   "GPT06"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; World Bank ID4D data is solid.",
+  "click": 7,
+  "story": 7,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 6,
+  "overall": 7,
+  "reason": "Makes an abstract digital-identity fear painfully personal, though the boggle is more informational than mind-bending."
+ },
+ {
+  "id": "M17",
+  "title": "What If You Got Your Lifetime Salary Today?",
+  "tag": "LIFETIME PAYDAY",
+  "hook": "Your balance suddenly reads ₹2.4 crore. Beneath it is one sentence: 'Next payday: never.'",
+  "wrong_belief": "Receiving decades of income now would automatically make you rich for life.",
+  "mind_boggle": "At 6% inflation, money loses about half its purchasing power in roughly 12 years even if you spend none of it.",
+  "person": "A younger sibling whose future education you promise to fund before realizing how long the money must last.",
+  "source_ids": [
+   "GPT07"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; inflation math is standard.",
+  "click": 8,
+  "story": 7,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "Instant wealth fantasy overturned by inflation and family pressure; solid if slightly familiar."
+ },
+ {
+  "id": "M18",
+  "title": "What If You Could Erase Someone From Your Mind?",
+  "tag": "ERASE THEM?",
+  "hook": "You delete your ex and finally feel nothing. Then half your twenties disappear, including the last voicemail your father ever sent.",
+  "wrong_belief": "A painful person occupies one isolated memory that could be removed without changing anything else.",
+  "mind_boggle": "Memories are reconstructed through overlapping networks; experiments can weaken a reactivated fear response, but science cannot cleanly delete one person like a file.",
+  "person": "Your father, whose final memory became entangled with the relationship you erased.",
+  "source_ids": [
+   "GPT08"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; reconsolidation work is real.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Breakup fantasy with a devastating collateral loss and a powerful final choice."
+ },
+ {
+  "id": "M19",
+  "title": "What If Gravity Stopped Pulling You?",
+  "tag": "GRAVITY OFF",
+  "hook": "You step off the evening bus, but your feet never settle back onto the road. Earth keeps curving through space while your body tries to continue straight.",
+  "wrong_belief": "You would simply float a few metres above the ground like a balloon.",
+  "mind_boggle": "Earth already carries you around the Sun at nearly 30 km/s; gravity does not create that speed, it continually bends your otherwise straight path into an orbit.",
+  "person": "Your sister, who grabs your wrist and becomes the only force keeping you attached to Earth.",
+  "source_ids": [
+   "GPT09"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; distinct from M10 (orbital vs body-cost).",
+  "click": 7,
+  "story": 7,
+  "felt": 6,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "Clean paper-cut spectacle with a rigorous physics spine, but the emotional stakes are thinner than M10."
+ },
+ {
+  "id": "M20",
+  "title": "What If You Woke Up as Your Parent?",
+  "tag": "WAKE UP, DAD",
+  "hook": "You wake with your father's aching knee, unread EMI alerts and a meeting in ten minutes. He wakes in your body on the morning of your final exam.",
+  "wrong_belief": "You already understand your parent's life, and an older body is merely a slower version of yours.",
+  "mind_boggle": "Adults can lose roughly 3-8% of muscle mass per decade after 30, and the lens hardens so close focus fails for almost everyone in their forties.",
+  "person": "Your parent, whose hidden symptoms and financial burdens you discover only when they become physically yours.",
+  "source_ids": [
+   "GPT10",
+   "GRO10"
+  ],
+  "proposers": [
+   "GPT-5.6 Sol",
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; aging physiology well grounded.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 8,
+  "buildable": 8,
+  "overall": 8,
+  "reason": "Exam-versus-office collision is instantly relatable and becomes a sincere intergenerational story."
+ },
+ {
+  "id": "M21",
+  "title": "What If You Could Save and Reload the Last 60 Seconds?",
+  "tag": "LOAD LAST SAVE?",
+  "hook": "You say the exact wrong thing in a job interview, watch the recruiter's face freeze, and snap your fingers, suddenly back sixty seconds earlier, knowing exactly what not to say.",
+  "wrong_belief": "A 60-second quicksave makes you invincible in social life, gambling and danger.",
+  "mind_boggle": "Speech averages 150 words per minute and micro-expressions fire in 40-200 ms; replaying one minute 50 times lets you map a person's autonomic system better than a polygraph.",
+  "person": "Your father, whose sudden cardiac event you try to prevent forty times before realizing the fatal trigger happened two minutes before you hit save.",
+  "source_ids": [
+   "GEM03"
+  ],
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "9 borderline vs Ifverse time loop; 60-sec quicksave is a distinct mechanic, marked pass.",
+  "click": 8,
+  "story": 8,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "Taps gaming culture and social anxiety before tightening into a high-stakes constraint thriller."
+ },
+ {
+  "id": "M22",
+  "title": "What If ₹100 Appeared in Your Account Every Second?",
+  "tag": "₹86 LAKH / DAY",
+  "hook": "You check your banking app on the bus and the balance ticks up by a hundred rupees, then another, every single second. By Friday your bank's fraud algorithm will freeze your entire life.",
+  "wrong_belief": "Magical passive income lets you immediately buy apartments, clear loans and quit your job.",
+  "mind_boggle": "1 inflow per second is 86,400 ledger entries a day, tripping automated velocity/structuring thresholds in minutes; under FATF-style rules the burden of proof falls on you.",
+  "person": "Your parents, whose joint account and life savings get frozen alongside yours when you transfer money to pay off their home loan.",
+  "source_ids": [
+   "GEM04"
+  ],
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; title uses ₹ which violates English-title rule, swap to '100 Rupees'.",
+  "click": 7,
+  "story": 7,
+  "felt": 6,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A money fantasy turned realistic cat-and-mouse thriller; rename the title to drop the rupee sign."
+ },
+ {
+  "id": "M23",
+  "title": "What If You Could Speak Every Language on Earth Fluently?",
+  "tag": "ALL 7,100 TONGUES",
+  "hook": "Two strangers beside you on the metro start whispering in a language you have never heard, and suddenly their words click into crystal-clear meaning in your head.",
+  "wrong_belief": "Speaking every language just means effortless travel and translation jobs.",
+  "mind_boggle": "Roughly 7,164 living languages exist; the Foreign Language Effect makes people more utilitarian in a second tongue, while childhood tongues activate limbic emotional memory.",
+  "person": "An elderly street vendor who trusts you like family because you speak their vanishing dialect, whom you expose when powerful people notice your impossible skill.",
+  "source_ids": [
+   "GEM05"
+  ],
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; distinct from M32 (trust/secrets vs parents' privacy).",
+  "click": 7,
+  "story": 7,
+  "felt": 7,
+  "perspective": 8,
+  "buildable": 6,
+  "overall": 7,
+  "reason": "A globetrotting human story with real linguistics, but the world-building is the heavier build."
+ },
+ {
+  "id": "M24",
+  "title": "What If You Saw Everyone's Real Odds of Success?",
+  "tag": "CHANCE: 0.04%",
+  "hook": "You sit in a coaching hall of four hundred students and glowing numbers flicker above every head, 0.1%, 0.0%, 2.4%, the exact probability each dream will work out. Then you walk past a mirror.",
+  "wrong_belief": "Knowing exact probabilities lets you make perfect life choices by only taking high-percentage bets.",
+  "mind_boggle": "Transformative careers, startups and discoveries sit in the fat tail, often under 1% prior; base-rate neglect is what keeps humans attempting high-value paths.",
+  "person": "Your younger brother, whose 0.2% dream you crush by convincing him to quit, and his number drops to 0.00% the moment he believes you.",
+  "source_ids": [
+   "GEM06"
+  ],
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; coaching-hall scene is very on-viewer.",
+  "click": 8,
+  "story": 8,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Brutal-exam-odds anxiety made visible, with a self-fulfilling gut-punch ending."
+ },
+ {
+  "id": "M25",
+  "title": "What If You Could Fast-Forward the Boring Parts of Life?",
+  "tag": "SKIP 2 HOURS?",
+  "hook": "Stuck on a packed Monday bus with ninety minutes of traffic ahead, you tap your wrist and blink, instantly stepping off at your stop, rested. Then you skip whole workdays, until you realize who was driving your body while you were gone.",
+  "wrong_belief": "Cutting out dead time gives you a pure highlight-reel life.",
+  "mind_boggle": "The Default Mode Network fires at near problem-solving cost during boring periods to weave episodic memory into a continuous self; skipping transitions makes years vanish in what feels like days.",
+  "person": "Your mother, who realizes every family dinner for two years was a hollow autopilot waiting to skip to the next highlight.",
+  "source_ids": [
+   "GEM07"
+  ],
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; DMN claim is well supported.",
+  "click": 8,
+  "story": 8,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Speaks to a 2x-speed generation with a haunting existential cost and a devastating mother reveal."
+ },
+ {
+  "id": "M26",
+  "title": "What If You Could Step Into Any Photo for 5 Minutes?",
+  "tag": "5 MINS INSIDE",
+  "hook": "You hold an old faded photograph of your living room from fifteen years ago, press your thumb against the paper, and the smell of rain and boiling tea rushes into your lungs. You have exactly five minutes inside the frame.",
+  "wrong_belief": "Stepping into photographs is a way to solve mysteries, grab lost valuables or change history.",
+  "mind_boggle": "A 50mm lens captures under 47 degrees, less than 13% of the room; studies show looking at photos actively overwrites real memories with the staged 1/250th-second version.",
+  "person": "Someone you lost, standing just outside the edge of a happy family photo, whom you get five minutes to talk to before realizing why they were smiling.",
+  "source_ids": [
+   "GEM08"
+  ],
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; tight 5-min boundary is great for story.",
+  "click": 8,
+  "story": 9,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "A nostalgia engine with a strict, emotional mechanic and a devastating payoff."
+ },
+ {
+  "id": "M27",
+  "title": "What If Nobody Could Tell a Lie Within 10 Feet of You?",
+  "tag": "ZERO LIES ALLOWED",
+  "hook": "Your boss walks past your desk to say your promotion is on track, crosses an invisible line three steps away, and hears himself blurt out that he already gave your spot to his nephew.",
+  "wrong_belief": "A truth aura would surround you with honesty and protect you from manipulation.",
+  "mind_boggle": "Feldman's UMass studies found ~60% of people lie at least once in a 10-minute chat, mostly cooperative 'social lubricant' lies without which group coordination collapses.",
+  "person": "Your partner, who asks a fragile question in a small room where you cannot step back past ten feet to spare them the brutal truth.",
+  "source_ids": [
+   "GEM09"
+  ],
+  "proposers": [
+   "Gemini 4 Argon"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; distinct from M29 (others' lies vs your own).",
+  "click": 8,
+  "story": 8,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "Darkly funny office-and-wedding detonation with a real prosocial-lies backbone."
+ },
+ {
+  "id": "M28",
+  "title": "What If Everyone Forgot You for a Day?",
+  "tag": "Forgotten",
+  "hook": "You come home and your mother smiles the polite smile she uses for guests. She slides a cup of chai toward you and asks, kindly, who you are.",
+  "wrong_belief": "If everyone forgot you for a day, you would finally see how much they need you, or enjoy a day with no one to answer to.",
+  "mind_boggle": "In Capgras delusion a person can agree a face looks exactly like their mother's and still be certain she is a stranger; recognition and the feeling of familiarity are different systems.",
+  "person": "Your mother, who offers you chai as a guest and whom you could terrify by trying to force your name back into her.",
+  "source_ids": [
+   "GRO01"
+  ],
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; explicitly the inverse of Awaken's last-person-on-Earth.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 8,
+  "overall": 8,
+  "reason": "The evening fear of a phone-age viewer, held open by the single question of whether she remembers."
+ },
+ {
+  "id": "M29",
+  "title": "What If Every Lie Showed on Your Skin?",
+  "tag": "Visible Lies",
+  "hook": "You told your father you had already eaten. On the metro that sentence is written along your forearm, and the stranger beside you is reading it.",
+  "wrong_belief": "If every lie were visible, you would simply stop lying and your relationships would get cleaner.",
+  "mind_boggle": "DePaulo's diary studies found ordinary people lie once or twice a day, much of it small social grease they barely count as lying.",
+  "person": "Your father, who sees the lie you told him written on you in front of the family, and whose trust you can also lose by blurting the truth under it.",
+  "source_ids": [
+   "GRO04"
+  ],
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; thumbnail reads with sound off.",
+  "click": 8,
+  "story": 7,
+  "felt": 8,
+  "perspective": 7,
+  "buildable": 8,
+  "overall": 7,
+  "reason": "A sound-off thumbnail and metro audience, but the engine is more vignette than escalating arc."
+ },
+ {
+  "id": "M30",
+  "title": "What If You Grew One Centimeter a Day?",
+  "tag": "One CM Daily",
+  "hook": "Yesterday your eyes met your mother's. Tonight you are looking down at the parting in her hair, and the doorway is lower than it was this morning.",
+  "wrong_belief": "Growing a little taller every day would slowly make life better: more presence, more respect, a better view.",
+  "mind_boggle": "Double height and weight multiplies by ~8 while bone cross-section multiplies by ~4; Robert Wadlow, 272 cm, died at 22 after an ankle infection.",
+  "person": "Your mother, who loses the height she knows you at, then the doorway, then the ability to reach you on a crowded metro.",
+  "source_ids": [
+   "GRO05"
+  ],
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; square-cube law is solid.",
+  "click": 8,
+  "story": 7,
+  "felt": 7,
+  "perspective": 8,
+  "buildable": 8,
+  "overall": 7,
+  "reason": "A built-in clock and clean paper-cut escalation, but the emotional pull is narrower."
+ },
+ {
+  "id": "M31",
+  "title": "What If You Met the You Who Stayed?",
+  "tag": "Who Stayed",
+  "hook": "You knock on the life you didn't choose. The person who opens the door is you, and they do not step aside.",
+  "wrong_belief": "The version of you who stayed home, took the other job, or married the other person is living the happier road.",
+  "mind_boggle": "Quoidbach, Gilbert & Wilson 2013 found people believe they changed a lot in the past ten years and will change little in the next ten, the end-of-history illusion.",
+  "person": "The you who stayed, whose ordinary life you might wreck by arriving, and the parent looked after in only one of the two homes.",
+  "source_ids": [
+   "GRO07"
+  ],
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; distinct from M36 (end-of-history vs many-worlds).",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "The defining fork of this age, with both versions able to lose the parent, room or each other."
+ },
+ {
+  "id": "M32",
+  "title": "What If You Spoke Every Language Tonight?",
+  "tag": "Every Language",
+  "hook": "On the bus the noise turns into jokes, arguments and love songs. At the kitchen door you understand the sentence your parents only speak when they think you can't.",
+  "wrong_belief": "Speaking every language would finally let you belong everywhere, including in your own kitchen.",
+  "mind_boggle": "Babies hear every language's sound differences, and by about their first birthday lose the ones their home doesn't use; Patricia Kuhl's work on that closing window is solid.",
+  "person": "Your parents, whose one private language in a crowded house you would invade, and who can lose the only secrecy they have left.",
+  "source_ids": [
+   "GRO08"
+  ],
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; the kitchen betrayal is the real hook.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Code-switching Indian homes make the bus a wonder and the kitchen a betrayal; viewers stay for the translated sentence."
+ },
+ {
+  "id": "M33",
+  "title": "What If You Could Unsay One Sentence a Day?",
+  "tag": "Unsay It",
+  "hook": "Dinner is still warm when you pull the sentence back. The words leave the air. Your mother's face has already answered.",
+  "wrong_belief": "Taking back the worst sentence of the day would put the person you hurt back the way they were.",
+  "mind_boggle": "Baumeister and colleagues found bad events, feedback and impressions generally land harder and last longer than good ones of similar size, a sturdy cross-study pattern.",
+  "person": "Your mother, whose face answers before the undo, and who can spend the night loving you from a step farther away.",
+  "source_ids": [
+   "GRO09"
+  ],
+  "proposers": [
+   "Grok 4.7"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; small power on purpose.",
+  "click": 7,
+  "story": 7,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 8,
+  "overall": 7,
+  "reason": "Everyone has a sentence from this week they'd retract; the flinch that remains is the whole film."
+ },
+ {
+  "id": "M34",
+  "title": "What If You Knew the Last Time You'd See Someone?",
+  "tag": "THE LAST TIME",
+  "hook": "You just waved bye to your mom at the door like always, but today a small counter appeared above her head, and it says: 42 meetings left.",
+  "wrong_belief": "You believe there will always be more time with the people you love, that 'later' is unlimited.",
+  "mind_boggle": "Tim Urban's Tail End: by the time you finish school, you've already used ~90% of all in-person time you'll ever spend with your parents.",
+  "person": "Your mother, and the ordinary evening you didn't know was one of the last ones.",
+  "source_ids": [
+   "KIM01"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "9 borderline vs ConChaser 'days left'; this is meetings-left not days-left, marked pass.",
+  "click": 9,
+  "story": 8,
+  "felt": 10,
+  "perspective": 8,
+  "buildable": 8,
+  "overall": 9,
+  "reason": "The most reliably viral emotional genre for this viewer, with a clean counter mechanic and a devastating tail-end boggle."
+ },
+ {
+  "id": "M35",
+  "title": "What If You Could Sell One Year of Your Life?",
+  "tag": "1 YEAR = 1 CRORE",
+  "hook": "The hospital bill for your father's surgery is ₹18 lakh. The app on your phone offers a deal: tap once, age one year instantly, get ₹1 crore.",
+  "wrong_belief": "You believe time and money are separate currencies, that you can always earn the money back.",
+  "mind_boggle": "Medical costs push an estimated 55 million Indians into poverty every year (Public Health Foundation of India); one illness already costs years of life in labour.",
+  "person": "Your father, whose treatment depends on the year you're about to sell, and later the family who watches you keep tapping.",
+  "source_ids": [
+   "KIM02"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; drop ₹ from English title/thumbnail.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Medical debt made literal; a high-stakes moral choice that drives comment debate and retention."
+ },
+ {
+  "id": "M36",
+  "title": "What If Your Shadow Was Living Your Other Life?",
+  "tag": "THE OTHER YOU",
+  "hook": "Every night at 3 AM your shadow detaches and walks away, and one night you follow it, into the life you would have lived if you'd made one different choice.",
+  "wrong_belief": "You believe the choices you didn't make simply vanished, that there's only one version of you.",
+  "mind_boggle": "The many-worlds interpretation, taken seriously by a large share of physicists, implies other yous split off with quantum events, outnumbering atoms in a universe.",
+  "person": "The version of you who stayed in your hometown, and the parent your shadow-self still lives next to.",
+  "source_ids": [
+   "KIM03"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; many-worlds is interpretation, flag on screen.",
+  "click": 8,
+  "story": 7,
+  "felt": 8,
+  "perspective": 8,
+  "buildable": 6,
+  "overall": 7,
+  "reason": "A cinematic shadow device for the road-not-taken anxiety, but the parallel-world build is the heavier lift."
+ },
+ {
+  "id": "M37",
+  "title": "What If You Could Only Speak 100 Words a Day?",
+  "tag": "100 WORDS LEFT",
+  "hook": "You wake up and a counter sits at the corner of your vision: 100. Every word you say burns one, and your best friend is already calling you, crying.",
+  "wrong_belief": "You believe words are cheap, that what matters is what you do, not what you say.",
+  "mind_boggle": "The average person speaks around 16,000 words a day (Mehl et al., University of Arizona); 100 is less than you say before breakfast.",
+  "person": "Your best friend, who needs to hear the right sentence today, while your counter is down to 9.",
+  "source_ids": [
+   "KIM04"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; constraint fits the channel's proven format.",
+  "click": 8,
+  "story": 8,
+  "felt": 8,
+  "perspective": 7,
+  "buildable": 8,
+  "overall": 8,
+  "reason": "A scarcity constraint that turns every conversation into visible tension and matches the pause-time format."
+ },
+ {
+  "id": "M38",
+  "title": "What If Everyone Could See Your Search History?",
+  "tag": "SEARCHES EXPOSED",
+  "hook": "A new law passes at midnight: for one day, every search you ever made floats above your head, and you're on the metro, surrounded by people you know.",
+  "wrong_belief": "You believe your searches are private thoughts, that no one would care about them anyway.",
+  "mind_boggle": "Google processes 8+ billion searches a day and ~15% are queries no human has ever typed before; your history is a unique fingerprint of your fears.",
+  "person": "Your mother, who reads the search you made at 2 AM during boards: 'what to do if I'm a failure.'",
+  "source_ids": [
+   "KIM05"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; embarrassment-plus-tenderness drives comments.",
+  "click": 8,
+  "story": 7,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Peak digital-privacy anxiety with a 2 AM search that turns embarrassment into tenderness."
+ },
+ {
+  "id": "M39",
+  "title": "What If You Could Switch Off Your Emotions for a Day?",
+  "tag": "FEELINGS: OFF",
+  "hook": "The night before the biggest exam of your life, you find the switch, fear gone. It works perfectly. Then your grandmother hugs you and you feel nothing at all.",
+  "wrong_belief": "You believe emotions are the enemy of clear thinking, that you'd make better decisions without them.",
+  "mind_boggle": "Damasio's patients who lost the ability to feel emotion after specific brain damage became unable to make even trivial decisions; no feelings, no decisions.",
+  "person": "Your grandmother, whose goodbye you can't feel, and your future self, making one 'logical' choice that ends something you loved.",
+  "source_ids": [
+   "KIM06"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; distinct from M02 (all emotions vs fear only).",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "Exam-stress wish overturned by Damasio's real finding that without feeling there are no decisions."
+ },
+ {
+  "id": "M40",
+  "title": "What If You Had 60 Seconds With Your Past Self?",
+  "tag": "60 SECONDS BACK",
+  "hook": "A door appears in your room. Through it: you, ten years younger, doing homework. You may say anything, for exactly sixty seconds.",
+  "wrong_belief": "You believe one warning or one stock tip would fix your whole life.",
+  "mind_boggle": "Cornell research (Gilovich & Medvec) found people over a lifetime regret things they didn't do far more than things they did, climbing to ~3:1.",
+  "person": "Your younger self, who hears your 60 seconds, misunderstands them, and changes in a way you didn't expect.",
+  "source_ids": [
+   "KIM08"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; never-go-back frame keeps it emotional.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 8,
+  "reason": "An evergreen younger-self prompt dramatised by a hard 60-second constraint and a misfire ending."
+ },
+ {
+  "id": "M41",
+  "title": "What If Your Dreams Were Someone Else's Real Life?",
+  "tag": "DREAMS ARE REAL",
+  "hook": "Every night you live a full day as a fisherman on a coast you've never seen. Last night, in the dream, a girl handed you a photo of you, awake, right now.",
+  "wrong_belief": "You believe dreams are just your brain recycling memories, meaningless noise.",
+  "mind_boggle": "You'll spend ~26 years asleep and ~6 dreaming; in REM your visual and emotional brain fires as intensely as when awake, so to your brain the dream is real experience.",
+  "person": "The dream-self's daughter, who you love as much as anyone in your waking life, and who ceases to exist every morning at 7 AM.",
+  "source_ids": [
+   "KIM09"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; distinct from M07 (someone else's real life vs your own second life).",
+  "click": 7,
+  "story": 8,
+  "felt": 9,
+  "perspective": 8,
+  "buildable": 6,
+  "overall": 7,
+  "reason": "A stunning two-lives visual device, but the parallel-world build is the main cost."
+ },
+ {
+  "id": "M42",
+  "title": "What If You Saw Your Future, But Couldn't Change It?",
+  "tag": "FIXED FUTURE",
+  "hook": "A video appears on your phone dated exactly one year from today: you, sitting in a room you don't recognize, crying with happiness. Every attempt to avoid it only leads you closer.",
+  "wrong_belief": "You believe knowing the future would give you control over it.",
+  "mind_boggle": "Einstein's relativity implies the block universe; the Rietdijk-Putnam argument holds that past and future may all already exist at once, an interpretation not settled fact.",
+  "person": "Your father, whose fate you glimpse in the video's background, and every choice to save him becomes a step in the video you saw.",
+  "source_ids": [
+   "KIM10"
+  ],
+  "proposers": [
+   "Kimi K3"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; flag block universe as interpretation.",
+  "click": 8,
+  "story": 8,
+  "felt": 7,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A self-fulfilling-prophecy engine with a big physics boggle, but the father fate is the only felt stake."
+ },
+ {
+  "id": "M43",
+  "title": "What If AI Took Your Job, and Everyone Else's?",
+  "tag": "DONE BY 9AM",
+  "hook": "It's Monday evening, you're back from the office, and your laptop pings: the whole week's work is done. The chai's gone cold. There's nothing left to do.",
+  "wrong_belief": "Mass job loss means nobody earns, so the economy just stops; the real question is who buys anything.",
+  "mind_boggle": "IMF: about 40% of jobs worldwide are exposed to AI, about 60% in rich economies (Georgieva, Oct 2026).",
+  "person": "Your mentor at work, whose skill was the job, and who trained you on the thing the laptop just finished.",
+  "source_ids": [
+   "PRI01"
+  ],
+  "proposers": [
+   "owner"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "fail",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "4 fails: needs a sharper late mind-boggle beyond the IMF stat.",
+  "click": 7,
+  "story": 7,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A live anxiety with a strong premise, but the boggle is thin until a deeper fact is sourced.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M44",
+  "title": "What If You Got Paid Every Month for Nothing?",
+  "tag": "YOU'D QUIT?",
+  "hook": "Payday, but this time the message isn't your salary. The same amount has landed in every adult's account this morning, yours, your boss's, the chai-wallah's, no conditions.",
+  "wrong_belief": "Free money makes people stop working.",
+  "mind_boggle": "122 US guaranteed-income pilots averaged $616 a month; the randomised ones showed only a 0.8-point average employment effect.",
+  "person": "A friend who finally quits to chase the dream she shelved at 22, and who you stop understanding.",
+  "source_ids": [
+   "PRI02"
+  ],
+  "proposers": [
+   "owner"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "fail",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "4 fails: Alaska fact is real but small; add a stronger late boggle (e.g. employment effects).",
+  "click": 6,
+  "story": 6,
+  "felt": 6,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 6,
+  "reason": "A clean UBI daydream but the boggle and personal stakes need deepening to carry a full film.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M45",
+  "title": "What If You Stopped Aging at 25, and No One Else Did?",
+  "tag": "STILL 25",
+  "hook": "You blow out the candles on your 26th birthday, the family claps, and your cousin frowns. You look the same as 25. And 24. The mirror agrees.",
+  "wrong_belief": "Without ageing you'd live forever.",
+  "mind_boggle": "With ageing gone and today's accident and violence rates, average life comes out around 1,000 to 2,000 years, not forever (de Magalhães, Sci Am).",
+  "person": "Your mother, who keeps ageing, and whose wrinkles you'll watch while yours never come.",
+  "source_ids": [
+   "PRI03"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; mortality math is well established.",
+  "click": 8,
+  "story": 8,
+  "felt": 9,
+  "perspective": 8,
+  "buildable": 8,
+  "overall": 8,
+  "reason": "A vanity wish with a brutal mother-keeps-ageing cost and a genuinely strange longevity boggle.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M46",
+  "title": "What If You Could Talk to Animals?",
+  "tag": "HE SAID WHAT",
+  "hook": "You wake at 6, your dog whines at the door, and this time you understand him. Not words, but it's clear. Then the crows outside answer, and you understand them too.",
+  "wrong_belief": "Animals would talk like us, in sentences.",
+  "mind_boggle": "Crows remembered a 'dangerous' mask for at least 2.7 years and taught their young to scold it (UW work); sperm whales have a 21-type coda 'phonetic alphabet' (Nature Comms 2024).",
+  "person": "Your old dog, who can now tell you it hurts, and does, every evening, until you can't bear it.",
+  "source_ids": [
+   "PRI04"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; crow-memory study is solid.",
+  "click": 7,
+  "story": 7,
+  "felt": 8,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A tender pet daydream with a real animal-cognition boggle, but the stakes stay small.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M47",
+  "title": "What If You Met Your Clone?",
+  "tag": "MY CLONE?",
+  "hook": "A nurse hands you a baby in a quiet room. 'He's you,' she says. Same face, same eyes, your exact DNA, born forty minutes ago, crying in your arms.",
+  "wrong_belief": "A clone would be a copy of you, memories and all.",
+  "mind_boggle": "A clone is born a baby; identical twins are natural clones.",
+  "person": "The clone, who grows up with your face and isn't you, and whom you can't stop comparing yourself to.",
+  "source_ids": [
+   "PRI05"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; clean and cheap to build.",
+  "click": 7,
+  "story": 7,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 8,
+  "overall": 7,
+  "reason": "A tidy misconception-buster but the emotional engine is modest until the clone's divergence is dramatised.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M48",
+  "title": "What If You Could Breathe Underwater, and He Couldn't?",
+  "tag": "DON'T COME UP",
+  "hook": "You sink to the bottom of the society pool and stay. Your friends wave you up, laughing, then shouting. You wave back, calm, breathing easy, not coming up.",
+  "wrong_belief": "Gills would let a person breathe water like air.",
+  "mind_boggle": "Water holds far less oxygen than air (to verify); liquid breathing was tried with perfluorocarbon (to verify).",
+  "person": "Your little brother, who jumps in after you, holds his breath, and waits at the surface you won't come to.",
+  "source_ids": [
+   "PRI06"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; oxygen-density fact is solid.",
+  "click": 7,
+  "story": 7,
+  "felt": 7,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A strong sibling-danger hook, but the boggle is small and the world stays at the pool.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M49",
+  "title": "What If the Moon Vanished Tonight?",
+  "tag": "WHERE'D IT GO",
+  "hook": "Terrace, chai, the evening you always look up at the Moon. Tonight it's just not there. You check your phone, your uncle checks his. Everyone checks.",
+  "wrong_belief": "Earth would be wrecked at once.",
+  "mind_boggle": "Tides shrink rather than stop, because the Sun still raises them (to verify); the long-term wobble of the axis (to verify).",
+  "person": "Your fisherman uncle, whose tides change, and whose catch the moon used to time.",
+  "source_ids": [
+   "PRI07"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; tide physics is correct.",
+  "click": 7,
+  "story": 6,
+  "felt": 6,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 6,
+  "reason": "A neat physics correction but the personal stakes are thin without a stronger human thread.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M50",
+  "title": "What If You Won the Lottery Tomorrow?",
+  "tag": "ALL SIX",
+  "hook": "You check the corner-shop ticket at the bus stop, the numbers match, all six. You sit on the bench, the metro pulls in, and you don't move.",
+  "wrong_belief": "Winners blow it all and end up miserable.",
+  "mind_boggle": "Swedish lottery data: winners don't squander their wealth, and their earnings fall only modestly, for at least ten years (AER 2017).",
+  "person": "The friend who asks for a loan with a story you can't disprove, and whom you stop trusting.",
+  "source_ids": [
+   "PRI08"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; Swedish study is solid.",
+  "click": 7,
+  "story": 6,
+  "felt": 6,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 6,
+  "reason": "Busts a real myth but the daydream is common and the felt stakes are low.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M51",
+  "title": "What If You Were Invisible for a Day?",
+  "tag": "CAN'T SEE ME",
+  "hook": "You're brushing your teeth before bed, look up, and you're gone. You trip over the dog, who yelps at nothing. Your mom calls your name from the kitchen.",
+  "wrong_belief": "You'd see everything unseen.",
+  "mind_boggle": "A truly invisible eye can't see, because the retina has to absorb light (to verify).",
+  "person": "A parent who can't find you, calling your name through the house while you stand two feet away.",
+  "source_ids": [
+   "PRI09"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "pass",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "All pass; retina-physics boggle is a great late twist.",
+  "click": 7,
+  "story": 7,
+  "felt": 6,
+  "perspective": 8,
+  "buildable": 7,
+  "overall": 7,
+  "reason": "A classic fantasy with a clever physics gotcha, but the emotional arc needs a stronger person.",
+  "rewritten_r3": true
+ },
+ {
+  "id": "M52",
+  "title": "What If All Money Vanished Overnight?",
+  "tag": "ZERO EVERYWHERE",
+  "hook": "Morning, your UPI shows zero, your wallet's empty, the ATM is blank. But the chai stall across the road is still open, and the uncle is still pouring.",
+  "wrong_belief": "We'd go back to barter.",
+  "mind_boggle": "Ireland's 1970 bank strike (to verify); UPI cleared 25.47 bn payments in October 2026 (NPCI via Inc42).",
+  "person": "The chai-wallah who extends you credit, and whose ledger becomes the first new money in the city.",
+  "source_ids": [
+   "PRI10"
+  ],
+  "proposers": [
+   "earlier research"
+  ],
+  "card": {
+   "1": "pass",
+   "2": "pass",
+   "3": "pass",
+   "4": "pass",
+   "5": "pass",
+   "6": "fail",
+   "7": "pass",
+   "8": "pass",
+   "9": "pass"
+  },
+  "card_notes": "6 fails: no defined person to carry the consequence.",
+  "click": 6,
+  "story": 5,
+  "felt": 5,
+  "perspective": 7,
+  "buildable": 7,
+  "overall": 5,
+  "reason": "A strong abstract boggle but it lacks a personal engine to hold a 6+ minute felt story.",
+  "rewritten_r3": true
+ }
+]

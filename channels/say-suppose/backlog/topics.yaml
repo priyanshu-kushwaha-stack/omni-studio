@@ -1,23 +1,95 @@
-# What-ifs for Say Suppose. `picked` ones have a video folder; `proposed` ones were shown to the owner.
+# What-ifs for Say Suppose. `picked` ones have a video folder; `selected` ones are in a batch the owner picked from the
+# idea room (channels/say-suppose/rules/ideas.md) and go to G1 next, in `order`; `held` ones stay in the backlog;
+# `proposed` ones were shown to the owner and not picked. Idea room ids (M01-M52) and scores:
+# backlog/idea-room-2026-11-09.md.
 topics:
   - what_if: "What if you could pause time for only 10 seconds in a day?"
-    status: picked            # owner, 2026-11-06, in the owner's words
+    status: picked            # owner, 2026-11-06, in the owner's words; public 2026-11-09
     source: owner
   - what_if: "What would happen if everyone is given Universal Basic Income?"
-    status: picked            # owner, 2026-11-06, in the owner's words
+    status: held              # G1 passed 2026-11-06; idea room 2026-11-09 median 5 (#39). Folder kept: research and claims reusable
     source: owner
+  - what_if: "What if AI took your job, and everyone else's?"
+    status: held              # owner's idea, 2026-11-09; idea room median 5 (#38)
+    source: owner
+
+  # Batch 1, picked by the owner 2026-11-09 ("My tone-varied order")
+  - what_if: "What if you knew the last time you'd see someone?"
+    status: selected
+    batch: 1
+    order: 1
+    room_id: M34              # median 9, range 9-10; proposed by Kimi K3
+    source: idea-room
+  - what_if: "What if you saw everyone's real odds of success?"
+    status: selected
+    batch: 1
+    order: 2
+    room_id: M24              # median 9, range 8-9; Gemini 4 Argon
+    source: idea-room
+  - what_if: "What if you got paid every time someone thought of you?"
+    status: selected
+    batch: 1
+    order: 3
+    room_id: M09              # median 9, range 8-9; Claude Fable 5.1
+    source: idea-room
+  - what_if: "What if you could sell one year of your life?"
+    status: selected
+    batch: 1
+    order: 4
+    room_id: M35              # median 9, range 8-9; Kimi K3. The tag "1 YEAR = 1 CRORE" needs a global one at G1
+    source: idea-room
+  - what_if: "What if you could never forget anything?"
+    status: selected
+    batch: 1
+    order: 5
+    room_id: M03              # median 8; Claude Fable 5.1, Gemini 4 Argon, Grok 4.7
+    source: idea-room
+
+  # Batch 2, provisional: reconfirmed after 72 h of the first video's retention and the next idea room
+  - what_if: "What if you could fast-forward the boring parts of life?"
+    status: selected
+    batch: 2
+    order: 6
+    room_id: M25
+    source: idea-room
+  - what_if: "What if you could hear everything said about you?"
+    status: selected
+    batch: 2
+    order: 7
+    room_id: M01
+    source: idea-room
+  - what_if: "What if you could step into any photo for five minutes?"
+    status: selected
+    batch: 2
+    order: 8
+    room_id: M26
+    source: idea-room
+  - what_if: "What if everyone forgot you for a day?"
+    status: selected
+    batch: 2
+    order: 9
+    room_id: M28
+    source: idea-room
+  - what_if: "What if everyone could see your search history?"
+    status: selected
+    batch: 2
+    order: 10
+    room_id: M38
+    source: idea-room
+
+  # Shown 2026-11-06, not picked; all re-scored in the idea room 2026-11-09
   - what_if: "What if you never had to sleep again?"
-    status: proposed          # shown 2026-11-06, not picked
+    status: proposed          # idea room M04 (2 hours of sleep), median 6
     source: agent
   - what_if: "What if you stopped aging at 25?"
-    status: proposed
+    status: proposed          # M45, median 7
     source: agent
   - what_if: "What if all money vanished overnight?"
-    status: proposed
+    status: proposed          # M52, median 6
     source: agent
   - what_if: "What if the Moon vanished tonight?"
-    status: proposed          # also the first example in page/about.md
+    status: proposed          # M49, median 4
     source: agent
   - what_if: "What if you could never lie again?"
-    status: proposed
+    status: proposed          # nearest: M27 (no lies within 10 feet), median 7
     source: agent

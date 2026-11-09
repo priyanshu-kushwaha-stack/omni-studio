@@ -1,0 +1,1425 @@
+[
+ {
+  "id": "M01",
+  "query": "what if you could hear everything people say about you",
+  "comparables": [
+   {
+    "title": "What If You Could Hear What Everyone Says Behind Your Back?",
+    "channel": "IFNation",
+    "views": "198K",
+    "age": "5d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Everyone Could Hear Your Thoughts?",
+    "channel": "IFNation",
+    "views": "549K",
+    "age": "3d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Your Crush Could Hear Your Thoughts?",
+    "channel": "Suddenly You",
+    "views": "77K",
+    "age": "5d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Very active cluster this week: many near-identical uploads under 400 views (Superpower Lab 121, What If Lab 0, And If This 12, Imagine That 327). Adjacent: Puck Pukish coma/crush 131K 2d; Stupid Dupid 'hear every girl's thoughts' 100K 2d; FilterCopy 'If Teachers Could Hear Your Thoughts' 28M 5y (sketch, not what-if story)."
+ },
+ {
+  "id": "M02",
+  "query": "what if you could never feel fear",
+  "comparables": [
+   {
+    "title": "What If You Could Never Feel Fear... Ever Again?",
+    "channel": "SimplePsyche",
+    "views": "970",
+    "age": "7d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Never Feel Fear?",
+    "channel": "Mr. Maybe",
+    "views": "193",
+    "age": "2d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Never Feel Fear Again?",
+    "channel": "Suppose You",
+    "views": "9",
+    "age": "2d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "No long-form result above 1K views; many Shorts under 1.5K. Shorts 'What If You Couldn't Feel Fear?' 5.1K."
+ },
+ {
+  "id": "M03",
+  "query": "what if you could never forget anything",
+  "comparables": [
+   {
+    "title": "What If You Never Forgot Anything?",
+    "channel": "Every Eli Life",
+    "views": "37K",
+    "age": "4w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Never Forget Anything",
+    "channel": "Ministry of What If",
+    "views": "115",
+    "age": "11d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Never Forget Anything?",
+    "channel": "Brain Asks",
+    "views": "61",
+    "age": "8d ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": true,
+  "note": "Heavily flooded: 15+ same-title long-form uploads in the last 2 weeks, nearly all under 120 views. Off-topic hit: Mr. Beano 'How to REMEMBER Absolutely Everything' 723K 1y (self-help)."
+ },
+ {
+  "id": "M04",
+  "query": "what if you only needed 2 hours of sleep",
+  "comparables": [
+   {
+    "title": "What If You Sleep 2 Hours Less Every Night?",
+    "channel": "AsapSCIENCE",
+    "views": "1M",
+    "age": "6y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "How to Only Sleep 2 Hours Per Day",
+    "channel": "The Infographics Show",
+    "views": "631K",
+    "age": "6y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What Would Happen If Humans Only Needed Two Hours of Sleep?",
+    "channel": "What Would",
+    "views": "2.3K",
+    "age": "2mo ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "Results dominated by sleep-health explainers and podcasts (Dr Julie 2.7M 1y, Sadhguru 1.4M 1y, Sean Andrew 90-min sleep experiment 7.8M 4y), not what-if stories. Story-style what-if uploads are low-view (What If Your Body 1.3K 2w, Stickman Explained 10)."
+ },
+ {
+  "id": "M05",
+  "query": "what if you could never feel pain",
+  "comparables": [
+   {
+    "title": "What if You Stopped Feeling Pain?",
+    "channel": "Jeremy Bearimy",
+    "views": "387K",
+    "age": "4w ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Couldn't Feel Pain?",
+    "channel": "Joe Scott",
+    "views": "377K",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Never Feel Pain?",
+    "channel": "Tiny Chaos",
+    "views": "49K",
+    "age": "4w ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Many near-identical low-view uploads (One Different Thing 66, Someone Already Can 5, What If You Lab 3) and ~15 Shorts at ~1K views. Older adjacent: Nas Daily 'The Guy Who Can't Feel Pain?!' 16M 4y. Jeremy Bearimy is an explainer with second-person framing in the description."
+ },
+ {
+  "id": "M06",
+  "query": "what if time was money paid in hours of life",
+  "comparables": [
+   {
+    "title": "A World Where Humans Can Live Forever So They Use Time As Money When You Run Out Of Time You Díe",
+    "channel": "Story Recapped",
+    "views": "8.4M",
+    "age": "5y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "People Become Immortal But Each Person Can Live Only 26 Years Unless They Earn More TIME",
+    "channel": "Movie Recaps",
+    "views": "3.7M",
+    "age": "3y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Money Was Replaced by Time?",
+    "channel": "JannX",
+    "views": "41",
+    "age": "4d ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": true,
+  "note": "Big numbers are recaps of the film In Time (2011), not original what-ifs. Original what-if uploads all under 200 views (Ifnix 3, Tim Blueprint 24, What If Dial 26, WHAT IF LAB 7). Short 'What If Money Literally Determined How Long You Lived?' 27K."
+ },
+ {
+  "id": "M07",
+  "query": "what if you lived a second life every night in your dreams",
+  "comparables": [
+   {
+    "title": "Dreams Are Real",
+    "channel": "Metaphysical",
+    "views": "2.9M",
+    "age": "2y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "Signs That A Parallel Version Of You Is Trying To Send You A Message",
+    "channel": "Spiritual Dive",
+    "views": "2.8M",
+    "age": "2y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "Live a Second Life Sleeping",
+    "channel": "DrewAndrew",
+    "views": "4",
+    "age": "2w ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "No long-form what-if story on this exact premise found; big results are spiritual/dream-science videos (also Jay Shetty dream podcast 3.2M 2y). Only Shorts touch the premise (e.g. 'What If Every Time You Slept, You Woke Up In A Different Body?' 1.9K)."
+ },
+ {
+  "id": "M08",
+  "query": "what if you could feel everyone's pain",
+  "comparables": [
+   {
+    "title": "What If Nobody Could Feel Pain?",
+    "channel": "FunNotSoFun",
+    "views": "248K",
+    "age": "3w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Feel Everyone's Pain?",
+    "channel": "PurpleHat Films",
+    "views": "882",
+    "age": "2w ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Everyone Stopped Feeling Pain… Except You?",
+    "channel": "Pico & Tumble",
+    "views": "542",
+    "age": "3w ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Exact premise heavily flooded: 12+ same-title long-form uploads in the last 2 weeks, all under 250 views (What If Lab 3, WHAT IFVERSE 0, StickRipple 3, Theo Retical 7). The 248K hit is an inverted adjacent premise. Adjacent same-genre: Price of If 'What IF You Could See Everyone's Soulmate?' 230K 8d."
+ },
+ {
+  "id": "M09",
+  "query": "what if you got paid every time someone thought of you",
+  "comparables": [
+   {
+    "title": "What If Every Thought About You Paid $1?",
+    "channel": "Every IF",
+    "views": "158",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Got Paid $1 Every Time Someone Thought About You? 💸",
+    "channel": "Unlocked Bonus",
+    "views": "86",
+    "age": "2d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Got Paid $1 Every Time Someone Thought About You?",
+    "channel": "PlotIf",
+    "views": "62",
+    "age": "6d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Extremely flooded: 12+ near-identical '$1 every time someone thought about you' long-form uploads in the last 2 weeks, all under 160 views, mostly second-person stories. Best signal is a Short at 29K. No long-form above 1K."
+ },
+ {
+  "id": "M10",
+  "query": "what if you could turn off gravity for yourself",
+  "comparables": [
+   {
+    "title": "What IF You Could Control Gravity?",
+    "channel": "IFOLOGY",
+    "views": "248K",
+    "age": "3w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If We Lost Gravity for 5 Seconds?",
+    "channel": "What If",
+    "views": "2.3M",
+    "age": "6y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Turn Off Your Own Gravity?",
+    "channel": "What If Studio",
+    "views": "319",
+    "age": "5d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Personal-gravity premise has low-view uploads (What If Studio 319, The Power Manual 3, Superpossible 168); planet-wide 'gravity off for 5 seconds' is a saturated older evergreen (BRIGHT SIDE 456K 6y) with many ~1K Shorts."
+ },
+ {
+  "id": "M11",
+  "query": "what if your AI clone lived on after you died",
+  "comparables": [
+   {
+    "title": "Your Life if You Had an AI Clone",
+    "channel": "What If Logic",
+    "views": "12K",
+    "age": "4mo ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What Happens to Your AI Agent After You Die?",
+    "channel": "Agentic Experience",
+    "views": "2.8K",
+    "age": "7mo ago",
+    "second_person_story": false
+   },
+   {
+    "title": "POV: Your AI Clone Starts Living Your Life",
+    "channel": "Tomorronaut",
+    "views": "8",
+    "age": "8d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "No long-form what-if story on the after-death AI double found. Mostly Shorts and news clips (Suzanne Somers AI clone Short 2.1K). Thin evidence either way."
+ },
+ {
+  "id": "M12",
+  "query": "what if someone used your face to commit a crime (also: what if you were framed by a deepfake)",
+  "comparables": [
+   {
+    "title": "AI Deepfake Abuse: What If You Didn't Save Proof?",
+    "channel": "Injury Lawyer Team",
+    "views": "25",
+    "age": "3w ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "Both queries returned almost only Shorts; no long-form what-if story found. Best signal is a Short 'What If the CIA Framed You With AI Deepfakes?' 44K. Other Shorts 'What If Someone Stole Your Face?' 1.2K, true-crime podcast clip 1.6K."
+ },
+ {
+  "id": "M13",
+  "query": "what if you got a text from the future",
+  "comparables": [
+   {
+    "title": "What If You Got a Text From Tomorrow?",
+    "channel": "Twivio",
+    "views": "2K",
+    "age": "9d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "You Got a Text From Yourself, 10 Years in the Future",
+    "channel": "Chronofantasyy",
+    "views": "190",
+    "age": "8d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Your FUTURE Self Could Text You?",
+    "channel": "Jim Preston",
+    "views": "34",
+    "age": "5d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Many near-identical uploads in the last 2 weeks (Bojackson 13, STICKORA 22, Another Day 4, WhaatIF 5, watearball 26) plus ~15 Shorts around 1-2K. No long-form above 2K."
+ },
+ {
+  "id": "M14",
+  "query": "what if you could sell your sleep",
+  "comparables": [
+   {
+    "title": "What If You Could Sell Your Sleep?",
+    "channel": "What If, Pip?",
+    "views": "70",
+    "age": "6d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Sold Your Sleep?",
+    "channel": "Bolt Animated",
+    "views": "10",
+    "age": "2d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Only 2 long-form what-if videos, both under 100 views; many Shorts at ~1K-1.4K, best Short 'Sell Your Sleep' 6.1K. Rest of page is sales/sleep-science (TED-Ed 'What would happen if you didn't sleep?' 15M 10y)."
+ },
+ {
+  "id": "M15",
+  "query": "what if your dreams were broadcast live",
+  "comparables": [
+   {
+    "title": "What If Everyone's Dreams Were Livestreamed?",
+    "channel": "MoshiLab",
+    "views": "312",
+    "age": "7d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Your Dreams Played on the Family TV?",
+    "channel": "WHAT IF YOU...",
+    "views": "42",
+    "age": "2d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Your Dreams Were Livestreamed to the Whole World?",
+    "channel": "WASPER What IF",
+    "views": "17",
+    "age": "7d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "6+ near-identical long-form uploads in the last week, all under 320 views (The If Lab 9, IfNexusX 15, What If Stories Official 1). Best signal is a Short 'What If Your Dreams Were Broadcast Live to the World?' 19K."
+ },
+ {
+  "id": "M16",
+  "query": "what if you were erased from every database (also: what if your identity was deleted)",
+  "comparables": [
+   {
+    "title": "What If Every Database on Earth Was Deleted for 24 Hours?",
+    "channel": "Java Region",
+    "views": "21",
+    "age": "4d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "No long-form what-if story on the personal 'machines forgot you' premise found. Results drift to database-deletion tech news and identity-shift self-help (Jay Shetty/Joe Dispenza 8.6M 6y, off-topic). Short 'What If the Government Declared You Never Existed? Part 1' 1.3K."
+ },
+ {
+  "id": "M17",
+  "query": "what if you got your lifetime salary all at once",
+  "comparables": [],
+  "flooded": false,
+  "note": "not found: no long-form what-if video on this premise; results are unrelated finance/astrology/dating videos. Only salary-themed Shorts around 1K-2K views."
+ },
+ {
+  "id": "M18",
+  "query": "what if you could erase someone from your memory",
+  "comparables": [
+   {
+    "title": "What if You Could ERASE Anyone's Memory?",
+    "channel": "ifictional and Ifinite",
+    "views": "3.4K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "Can You Erase Bad Memories?",
+    "channel": "AsapSCIENCE",
+    "views": "3.5M",
+    "age": "12y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Erase Any Memory?",
+    "channel": "Ifnity",
+    "views": "228",
+    "age": "2w ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": true,
+  "note": "Many near-identical uploads in the last 2 weeks under 60 views (Whetherly 0, BlackVariant 'Delete Your Ex' 4, If Possible 3, Motive Behind 0, Mr.MysteryEn 0). Shorts ~1-1.7K. Self-help adjacent: Dr. Aria 'stop obsessing over someone' 462K 3y."
+ },
+ {
+  "id": "M19",
+  "query": "what if gravity stopped working on you",
+  "comparables": [
+   {
+    "title": "What If Gravity Stopped Working on You?",
+    "channel": "The Stick Lab",
+    "views": "67",
+    "age": "4d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Gravity Stopped Working On You?",
+    "channel": "Sounds Fake Though",
+    "views": "34",
+    "age": "6d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If We Lost Gravity for 5 Seconds?",
+    "channel": "What If",
+    "views": "2.3M",
+    "age": "6y ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": true,
+  "note": "Personal-gravity version has several same-title uploads this week, all under 70 views (YouShift 15). Planet-wide gravity-off is an old saturated evergreen (Peekaboo Kidz 3.2M 5y, BRIGHT SIDE 471K 6y, Seeker 255K 11y). Overlaps M10."
+ },
+ {
+  "id": "M20",
+  "query": "what if you woke up as your parent",
+  "comparables": [
+   {
+    "title": "What If You Woke Up as a Kid Again With All Your Memories?",
+    "channel": "What If Youverse",
+    "views": "25K",
+    "age": "11d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "If Your Parents Ever Lock Your Bedroom Door From The Outside... DON'T TRY TO GET OUT",
+    "channel": "PictoMinute",
+    "views": "46K",
+    "age": "5d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "No long-form parent body-swap what-if found; only Shorts (I Woke Up As My Mom 636, What if you woke up in your dad's body 1.2K). Both comparables are adjacent premises, not the swap itself. Psych2Go parents video 5.7M 6y is off-format."
+ },
+ {
+  "id": "M21",
+  "query": "what if you could rewind the last 60 seconds",
+  "comparables": [
+   {
+    "title": "What If You Could Rewind Time by 10 Seconds?",
+    "channel": "Stick Saga",
+    "views": "100K",
+    "age": "4d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What IF You Could Rewind 10 Seconds ?",
+    "channel": "Price of If",
+    "views": "11K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Rewind 1 Minute?",
+    "channel": "IFVERSION",
+    "views": "678",
+    "age": "2w ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": true,
+  "note": "Extremely flooded: ~20 near-identical rewind-60s/10s long-form uploads in the last 2 weeks, most under 100 views (Ifnot 96, Iftopia 79, BigIF 78, WhatIfTrix 1, SIGNAL LOST 1). Shorts up to 14K ('Rewind 10 Seconds') and 9.7K ('reverse time but only 60 seconds per day')."
+ },
+ {
+  "id": "M22",
+  "query": "what if you got $100 every second",
+  "comparables": [
+   {
+    "title": "What If You Earned $1 Every Second ?",
+    "channel": "Milo Whatsit",
+    "views": "217K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Got $1 Every Second — But Aged 1 Day Every Second?",
+    "channel": "TenFold",
+    "views": "2K",
+    "age": "4d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Got $1 Every Second?",
+    "channel": "WASPER What IF",
+    "views": "173",
+    "age": "2w ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Flooded '$1/$100 every second' cluster: 8+ same-premise long-form uploads in the last 2 weeks under 200 views (Dood 2, Ask Bucks 5, Mister Suppose 2, Branchline 28, Elsewise 49, Pocket Parallel 37). Shorts ~1-1.8K."
+ },
+ {
+  "id": "M23",
+  "query": "what if you could speak every language",
+  "comparables": [
+   {
+    "title": "What If You Spoke Every Language?",
+    "channel": "What If Hero",
+    "views": "6K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Speak Every Language?",
+    "channel": "Second You",
+    "views": "224",
+    "age": "5d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Speak Every Language?",
+    "channel": "What If Jar",
+    "views": "213",
+    "age": "12d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Flooded: 10+ same-title long-form uploads in the last 2 weeks, nearly all under 250 views (Human Overclock 156, Stickova 4, iF PoV 2, IfUntold 3, Elsewise 20). Shorts up to 1.9K. Same search used for M32."
+ },
+ {
+  "id": "M24",
+  "query": "what if you could see everyone's chance of success",
+  "comparables": [
+   {
+    "title": "What If You Could See Everyone's Future Wealth?",
+    "channel": "ConChaser",
+    "views": "1.6M",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could See Everyone's Future Wealth?",
+    "channel": "Tovrion",
+    "views": "5.1K",
+    "age": "12d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could See the Odds of Everything?",
+    "channel": "Thinkverse",
+    "views": "2.5K",
+    "age": "13d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Strong 'number above everyone's head' trend: ConChaser future-wealth 1.6M 2w spawned 8+ copies in 2 weeks (Ifyours 907, Animatadorian 534, IfMoon 239, If Only Science 126, ideology 69, What If LAB 40). Same-genre this week: What If Hero 'how many kids you'll have' 37K 8h, Ifable 'real mental age' 7.7K 8h. Exact 'odds of success' wording: luck-percentage uploads under 60 views."
+ },
+ {
+  "id": "M25",
+  "query": "what if you could skip the boring parts of your life",
+  "comparables": [
+   {
+    "title": "What If You Could Fast-Forward Your Life?",
+    "channel": "What if U click",
+    "views": "7.8K",
+    "age": "4d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Skip the Boring Parts of Your Life?",
+    "channel": "Infinite Ifs",
+    "views": "2.1K",
+    "age": "6d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Skip Anything Boring?",
+    "channel": "Iframe",
+    "views": "313",
+    "age": "7d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Very flooded (Click-style remote premise): 12+ same-premise uploads in the last 2 weeks, most under 30 views (The Daily Frame 9, Strange Concepts 9, If You Could 7, Jerry Cloud 21 'autopilot you'). The autopilot-body twist is already used by Iframe and Jerry Cloud. Shorts ~1-2.4K."
+ },
+ {
+  "id": "M26",
+  "query": "what if you could step inside any photo",
+  "comparables": [
+   {
+    "title": "What If You Could Step Into Any Photo?",
+    "channel": "Infiniti Ifs",
+    "views": "383",
+    "age": "6d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Walk Into Any Picture?",
+    "channel": "Every IF",
+    "views": "66",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What if you could step into any photo — for 60 seconds?",
+    "channel": "WHIF",
+    "views": "9",
+    "age": "11d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Several same-premise long-form uploads in the last 2 weeks, all under 400 views (If Only Stories 3). Notable Short: 'In This World, You Can Walk Into Any Photo Once' 186K; also 'step inside an ancient Egyptian painting' 90K Short."
+ },
+ {
+  "id": "M27",
+  "query": "what if nobody could lie around you",
+  "comparables": [
+   {
+    "title": "What If Nobody Could Lie… Except You?",
+    "channel": "Stick Saga",
+    "views": "450K",
+    "age": "12d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Nobody Could Lie Except You?",
+    "channel": "What If Hero",
+    "views": "119K",
+    "age": "4d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Nobody Could Lie?",
+    "channel": "The If Lab",
+    "views": "1.7K",
+    "age": "4d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Hot cluster: two strong hits in 2 weeks (Stick Saga 450K, What If Hero 119K) followed by 12+ copies mostly under 500 views (Archive 15, Ifnice 97, Elseverse 493, Humanexe 411, ONE RULE DIFFERENT 865). No exact '10-foot truth zone around you' video found; Shorts up to 17K."
+ },
+ {
+  "id": "M28",
+  "query": "what if everyone forgot you existed",
+  "comparables": [
+   {
+    "title": "What If Everyone Forgot You Existed",
+    "channel": "KaiVerse and Kai Elsewhere",
+    "views": "32K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Everyone Forgot You Existed Every 24 Hours?",
+    "channel": "Iftropica",
+    "views": "720",
+    "age": "13d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Everyone on Earth Forgot You Existed",
+    "channel": "Ifhour",
+    "views": "638",
+    "age": "4d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Very flooded: 15+ same-title second-person uploads in the last 2 weeks, most under 400 views; the 'mom doesn't recognize you in the kitchen' opening is already used by Ifhour, Hypothetical Multiverse, If You Could, Wish Logic, WhatIF. Adjacent: Ifverse 'What If Everyone Disappeared Except You?' 9.2K 1d."
+ },
+ {
+  "id": "M29",
+  "query": "what if your lies appeared on your skin",
+  "comparables": [
+   {
+    "title": "What If Every Lie You Told Appeared on Your Skin?",
+    "channel": "Nico Wonders",
+    "views": "277",
+    "age": "11d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Every Lie You Ever Told Was Written on Your Skin?",
+    "channel": "The What-If Samurai",
+    "views": "53",
+    "age": "6d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Only 2 long-form what-ifs (both under 300 views) but ~15 Shorts on the exact premise, best 2K ('Every Lie Became a Tattoo'). Adjacent second-person 'rules' horror from Lullorin: 'If Your Sibling Ever Asks What Your Name Is... LIE' 743K 5d, 'Face ID' 147K 4d."
+ },
+ {
+  "id": "M30",
+  "query": "what if you grew one centimeter every day",
+  "comparables": [
+   {
+    "title": "What If You Grew 1cm Every Second?",
+    "channel": "What If",
+    "views": "1.5M",
+    "age": "7mo ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Shrunk 1cm Every Second?",
+    "channel": "What If",
+    "views": "1.1M",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Grew 1cm Every Second and Couldn't Stop?",
+    "channel": "Iffinity Tales",
+    "views": "10K",
+    "age": "1d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Proven premise family: xkcd's What If? 'What if Earth grew 1cm every second?' 6.2M 2y; Shorts 'What If You Grew 1cm Every Second?' 5.9M and 3.3M; 'What If You Grew 1cm Every Day?' Short 47K. Per-day version long-form is low (The Catch 664 2w, IFZONE 199, Blaze-Xplains 123, WhatIfWithKai 8)."
+ },
+ {
+  "id": "M31",
+  "query": "what if you met the version of you who made a different choice (also: what if you met your parallel universe self)",
+  "comparables": [
+   {
+    "title": "What If You Met Yourself From Another Universe",
+    "channel": "The Ninth Sun",
+    "views": "5.1K",
+    "age": "1mo ago",
+    "second_person_story": true
+   },
+   {
+    "title": "Many Worlds Theory: You're in a Parallel Universe | Can You Visit Your Other Lives?",
+    "channel": "The Why Files",
+    "views": "5.9M",
+    "age": "3y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Met Another Version of Yourself?",
+    "channel": "Imagine This",
+    "views": "25",
+    "age": "3w ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "Few long-form what-if stories, all low. Big numbers are multiverse explainers/spiritual (Spiritual Dive 2.8M 2y, AstroKobi 1.3M 1y, Antriksh TV Hindi 'cosmic twin' 368K 4y). Short 'What Happens If You Meet Yourself From A Parallel Universe?' 14K."
+ },
+ {
+  "id": "M32",
+  "query": "what if you could speak every language (same search as M23)",
+  "comparables": [
+   {
+    "title": "What If You Spoke Every Language?",
+    "channel": "What If Hero",
+    "views": "6K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Speak Every Language?",
+    "channel": "Second You",
+    "views": "224",
+    "age": "5d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Woke Up Understanding Every Language in the World?",
+    "channel": "iF PoV",
+    "views": "2",
+    "age": "4d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Duplicate premise of M23. Several existing uploads already use the 'parents' secret language' beat (What If Jar: 'Your parents' secret French'; Second You: 'Grandma's hidden language'; iF PoV: 'Gran's secret'). Flooded, mostly under 250 views."
+ },
+ {
+  "id": "M33",
+  "query": "what if you could unsay something (also: what if you could take back anything you said)",
+  "comparables": [
+   {
+    "title": "What If You Could Take Back One Thing You Said Every Day?",
+    "channel": "Kelvin Animation",
+    "views": "9",
+    "age": "5d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Unsay Anything?",
+    "channel": "Catch Included",
+    "views": "2",
+    "age": "3d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Never Take Back Your Words?",
+    "channel": "What If Things Got Weird",
+    "views": "10",
+    "age": "9d ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "Few uploads, all under 10 views. Shorts up to 1.4K ('What if you could undo anything you said?'). Close to the rewind cluster (M21). Same-genre adjacent this week: Miko 'What If You Could See Who Loves You The Most?' 27K 2d."
+ },
+ {
+  "id": "M34",
+  "query": "what if you knew how many times you will see someone again",
+  "comparables": [
+   {
+    "title": "What If You Could See How Many Times You'll See Someone Again?",
+    "channel": "OTHERWISE",
+    "views": "181K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could See How Many Times You'll See Someone Again?",
+    "channel": "Whatif OS and Chill Financial Historian",
+    "views": "450",
+    "age": "13d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Knew How Many Times You'd See Someone Again?",
+    "channel": "FactFablet",
+    "views": "226",
+    "age": "3w ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": true,
+  "note": "Exact premise already done: OTHERWISE 181K 2w (number above head = meetings left), then 10+ copies under 500 views (Times Left 84 + Part 2 29, MindWisp 31, Sticks What Ifs 4, I Read The Ending 13/22, Remember This For Me 136). Short 11K."
+ },
+ {
+  "id": "M35",
+  "query": "what if you could sell years of your life",
+  "comparables": [
+   {
+    "title": "What If You Could Sell Years of Your Life for Money?",
+    "channel": "What if | Science Questions",
+    "views": "319",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Had Infinite Years Worth $1M Each?",
+    "channel": "IQ RUSH",
+    "views": "252",
+    "age": "11d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Sell 10 Years of Your Life?",
+    "channel": "Brain on a Stick",
+    "views": "87",
+    "age": "5d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Extremely flooded: 15+ same-premise long-form uploads in the last 2 weeks, all under 320 views; the 'sell to save a parent' angle is already used (What If Kai 'Your dad has 3 years left', If Net 'Dad's twenty years', IFworks 'A Father Sold 5 Years'). Shorts do better: 22K, 21K, 14K. Adjacent same-genre: Lookif 'What If You Could See Who Would Die for You?' 111K 2d."
+ },
+ {
+  "id": "M36",
+  "query": "what if your shadow had its own life",
+  "comparables": [
+   {
+    "title": "What If Your Shadow Had a Mind of Its Own?",
+    "channel": "Ozarko",
+    "views": "101",
+    "age": "12d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Your Shadow Started Making Its Own Decisions?",
+    "channel": "World of What If not",
+    "views": "80",
+    "age": "9d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Your Shadow Started Living Its Own Life?",
+    "channel": "The Directive Cut",
+    "views": "31",
+    "age": "2d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "10+ same-premise long-form uploads in the last 2 weeks, all under 110 views (Small Ifs 0, You But... 6, HumancodeAnimated 4, IfRageBait 14). Shorts do better: 22K and 11K. No 'shadow lives your other-choice life' video found specifically. Off-format: Carl Jung shadow-self 1.1M 1y."
+ },
+ {
+  "id": "M37",
+  "query": "what if you could only speak 100 words a day",
+  "comparables": [
+   {
+    "title": "What if you could only speak 500 words a day?",
+    "channel": "burialgoods",
+    "views": "143K",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Only Speak 100 Words a Day",
+    "channel": "Second Self film",
+    "views": "445",
+    "age": "5d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Every Word You Said Was Rationed?",
+    "channel": "Ministry of If",
+    "views": "335",
+    "age": "7d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "burialgoods 143K is a 2.5-min narrated comic, not a long-form what-if. 10+ same-title uploads in the last 2 weeks under 50 views (VOIDPERK 2, Every What If 5, Storiesfu 1, Legut 10, The Rule of If 19). Shorts ~1.1-2.1K."
+ },
+ {
+  "id": "M38",
+  "query": "what if everyone could see your search history",
+  "comparables": [
+   {
+    "title": "What If You Could See Everyone's Search History?",
+    "channel": "The Hypothetical Room",
+    "views": "27K",
+    "age": "2d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Everyone Could See Your Search History?",
+    "channel": "WHAT NOW?",
+    "views": "3.8K",
+    "age": "10d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Everyone Could See Your Search History?",
+    "channel": "Ifsphere",
+    "views": "2.3K",
+    "age": "11d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Very flooded: 15+ same-title uploads in the last 2 weeks, most under 150 views (Mira 1, Channel Static 1, What If Town 20, NOVAMIND 20, Wait what Channel 15). Short 'What If Everyone Could See Your Last Search?' 29K."
+ },
+ {
+  "id": "M39",
+  "query": "what if you could turn off your emotions",
+  "comparables": [
+   {
+    "title": "What If You Could DELETE Your Feelings? | The Fairly OddParents",
+    "channel": "Jeitan",
+    "views": "1.8M",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Control Every Emotion?!",
+    "channel": "The Timeline Fork",
+    "views": "102",
+    "age": "7d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "Results dominated by emotional-control self-help with large views (Jamie Social 6.6M 1y, Psych2Go 4M 6y, TED-Ed 3.9M 3y) - strong search demand for 'turn off emotions' but as self-help, not what-if stories. Jeitan 1.8M is a cartoon-analysis video. Shorts: 'You Have The Ability To Turn Off Your Emotions' 65K, 'Turning off My Emotions...' 1.8M (music/edit)."
+ },
+ {
+  "id": "M40",
+  "query": "what if you could talk to your younger self for 60 seconds",
+  "comparables": [
+   {
+    "title": "If I Could Talk To My Younger Self! | Muniba Mazari",
+    "channel": "Muniba Mazari",
+    "views": "14K",
+    "age": "8d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If You Could Call Your Younger Self? (Ev9ery Version of You)",
+    "channel": "Every Version of You",
+    "views": "20",
+    "age": "10d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Talk to Your Future Self for 60 Seconds?",
+    "channel": "Dark Doodle",
+    "views": "10",
+    "age": "1d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "Few long-form what-ifs, all under 25 views; demand shows up as reflective Shorts ('Advice I would give to my younger self' 7K, 'Talking to My Younger Self Part 2' 2.9K) and a motivational talk (Muniba Mazari 14K)."
+ },
+ {
+  "id": "M41",
+  "query": "what if your dreams were someone else's real life",
+  "comparables": [
+   {
+    "title": "What If Every Dream Felt Like Real Life?",
+    "channel": "You, But Extreme",
+    "views": "92",
+    "age": "10d ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Your Dreams Were Someone Else's Reality?",
+    "channel": "Universal Things",
+    "views": "14",
+    "age": "1y ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "No long-form what-if story on this premise above 100 views. Large results are spiritual/dream-science (Metaphysical 'Dreams Are Real' 2.9M 2y, Spiritual Dive 2.8M 2y, Arcane Vault 760K 1y, Jay Shetty 3.2M 2y). Shorts ~1K. Overlaps M07."
+ },
+ {
+  "id": "M42",
+  "query": "what if you saw your future but couldn't change it",
+  "comparables": [
+   {
+    "title": "Would You See Your FUTURE If You COULDN'T Change It? (Will You Press The Button? Challenge)",
+    "channel": "The Dootlez",
+    "views": "95K",
+    "age": "7y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What IF You Could See 10 Seconds Into the Future ?",
+    "channel": "Price of If",
+    "views": "53K",
+    "age": "3w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Saw the Future—But Couldn't Change It?",
+    "channel": "What If Horizons",
+    "views": "9",
+    "age": "1y ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "Exact 'fixed future' premise has only low uploads (WHAT IF 5, Humanity Unlocked 12, WHATiF 24). Adjacent: Price of If '10 seconds into the future' 53K 3w; Short 'see the future but only in your phone notifications' 14K. Motivational 'future self' video Solace Fox 88K 1y."
+ },
+ {
+  "id": "M43",
+  "query": "what if AI took everyone's job",
+  "comparables": [
+   {
+    "title": "If AI Takes All The Jobs, This Is What Society Looks Like",
+    "channel": "Moon",
+    "views": "1M",
+    "age": "2y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "AI Layoffs Are Finally Showing the Truth",
+    "channel": "The Infographics Show",
+    "views": "960K",
+    "age": "1mo ago",
+    "second_person_story": false
+   },
+   {
+    "title": "Economist explains what happens after AI takes all jobs",
+    "channel": "Future of Life Institute",
+    "views": "653K",
+    "age": "8mo ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "High-demand topic dominated by explainers/podcasts: How Money Works 3.2M 2y, Maxinomics 1.2M 4mo, Theo Von clip 768K 1y, Diary Of A CEO (Yampolskiy) 24M 1y, Economy Media 188K 10mo, Infographics 'After AI Takes EVERY Job' 98K 9mo. Second-person story format barely present (Outer Index 25 views 12d)."
+ },
+ {
+  "id": "M44",
+  "query": "what if everyone got paid every month for free universal basic income",
+  "comparables": [
+   {
+    "title": "What Happens If Everyone Gets $1,000/mo? (UBI)",
+    "channel": "There's An AI For That",
+    "views": "110K",
+    "age": "4mo ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What Would Happen If Everyone Got $1,000 a Month? (UBI Theory Explained)",
+    "channel": "Andrei Jikh",
+    "views": "498K",
+    "age": "2y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If Everyone Had a Free Basic Income?",
+    "channel": "What If",
+    "views": "332K",
+    "age": "7y ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "Evergreen explainer topic: Kurzgesagt 10M 8y, Dhruv Rathee (Hindi) 1.4M 6y, Economics Explained 1M 4y, TEDx Bregman 704K 12y. Second-person story versions are tiny (Ifonomics 2 views 1h, Mr Moneyla 48 1mo)."
+ },
+ {
+  "id": "M45",
+  "query": "what if you stopped aging and no one else did",
+  "comparables": [
+   {
+    "title": "What If You Stopped Aging at 18?",
+    "channel": "What if U click",
+    "views": "95K",
+    "age": "8d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Stopped Aging?",
+    "channel": "What If Max",
+    "views": "1.6K",
+    "age": "9d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If Everyone Stopped Aging?",
+    "channel": "Unfold",
+    "views": "1.1K",
+    "age": "1d ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": true,
+  "note": "Very flooded: 15+ 'stopped aging at 25/18/20' uploads in the last 2 weeks, most under 130 views (What if Thing 19, Vince Verse 21, The Whatology 6, If O'Clock 18). 'Everyone you love keeps aging' angle already used by Vince Verse and What If Max. Short by The Whatology 22K 9d."
+ },
+ {
+  "id": "M46",
+  "query": "what if you could understand your dog (also: what if you could talk to animals)",
+  "comparables": [
+   {
+    "title": "What If You Could Talk to Animals?",
+    "channel": "Ifsphere",
+    "views": "73K",
+    "age": "3w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Talk To Any Animal?",
+    "channel": "Questionverse",
+    "views": "64K",
+    "age": "2d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Talk to Animals?",
+    "channel": "Maybeverse",
+    "views": "44K",
+    "age": "3w ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Active cluster with several mid-size hits in 3 weeks: also Rudy Finch 21K 5d, ifictional 11K 2w, The If Lab 4.6K 8d, If Catch 3.8K 12d; plus low copies (WhatIf 113, Mr Bright 183, OddIFactory 347). Science angle: There's An AI For That 'We Can Finally Talk To Animals' 985K 3w; WatchData timeline 1.5M 5y. Dog-specific 'understand your dog' query returns pet-care explainers (BRIGHT SIDE 9.6M 9y); no dog-pain-specific story found."
+ },
+ {
+  "id": "M47",
+  "query": "what if you had a clone",
+  "comparables": [
+   {
+    "title": "What IF You Could Clone Yourself?",
+    "channel": "IFOLOGY",
+    "views": "98K",
+    "age": "12d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What IF You Could Clone Yourself ?",
+    "channel": "The Spiral Card",
+    "views": "33K",
+    "age": "3w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Clone Yourself?",
+    "channel": "Jeremy Bearimy",
+    "views": "27K",
+    "age": "12d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "Clone-yourself (adult copy) is active with mid-size hits; older: Life Noggin 2.4M 8y, WatchData timeline 97K 4y. The specific 'your clone is born as a baby today' angle was not found. Short 'What If You Cloned Yourself For Work?' 23K; 'IF I had a Clone' Short 3.4M."
+ },
+ {
+  "id": "M48",
+  "query": "what if you could breathe underwater",
+  "comparables": [
+   {
+    "title": "What If You Could Breathe Underwater?",
+    "channel": "Ifsphere",
+    "views": "325K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What IF You Could Breathe Underwater?",
+    "channel": "Ifinite",
+    "views": "30K",
+    "age": "2w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Could Breathe Underwater?",
+    "channel": "Simply Curious",
+    "views": "29K",
+    "age": "7d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": false,
+  "note": "Proven demand: three second-person stories above 29K in 2 weeks; older explainers Peekaboo Kidz 2.3M 2y, What If 1.5M 7y, If Humans 140K 1y, WatchData 78K 1y. Shorts 2.2M and 213K. Haven Tales 1.5K 12d. Some low uploads (what if you 176) but not dominated by them."
+ },
+ {
+  "id": "M49",
+  "query": "what if the moon disappeared",
+  "comparables": [
+   {
+    "title": "What If The Moon Disappeared?",
+    "channel": "Life Noggin",
+    "views": "22K",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What if the moon went away?",
+    "channel": "SolarBalls",
+    "views": "10M",
+    "age": "4y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If The MOON Disappeared? | Space Video | Dr Binocs Show",
+    "channel": "Peekaboo Kidz",
+    "views": "3.9M",
+    "age": "5y ago",
+    "second_person_story": false
+   }
+  ],
+  "flooded": false,
+  "note": "Classic evergreen dominated by older big explainers (BRIGHT SIDE 1.8M 8y, Insider Tech 1.7M 8y, What If 1.2M 8y, AumSum 1.1M 7y). No recent long-form what-if in results; no second-person story found. Shorts flood with ~1K views; one Short 133K."
+ },
+ {
+  "id": "M50",
+  "query": "what if you won the lottery tomorrow",
+  "comparables": [
+   {
+    "title": "What Happens When You Win The Lottery?",
+    "channel": "jack pockets",
+    "views": "6.9M",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "The Truth About Winning The Lottery..",
+    "channel": "Mike Off Record",
+    "views": "344K",
+    "age": "1mo ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What Happens If You Win an $800 Million Lottery... and Keep It Secret?",
+    "channel": "Another Story",
+    "views": "109K",
+    "age": "2mo ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "High evergreen demand but via explainers/finance (also Millionaire Post 140K 6mo, WIRED 1.9M 3y). Second-person what-if stories are flooded and tiny: 10+ in the last 2 weeks under 25 views (The What If Files 3, Tiny Theories 2, WookieWookie 7, ThinkStick 20, What If You Got Rich 14, Curiograph 8)."
+ },
+ {
+  "id": "M51",
+  "query": "what if you were invisible for a day",
+  "comparables": [
+   {
+    "title": "What If You Could Turn Invisible at Will?",
+    "channel": "IFinity",
+    "views": "681K",
+    "age": "3w ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Were Invisible?",
+    "channel": "The Hypothetical Room",
+    "views": "163K",
+    "age": "5d ago",
+    "second_person_story": true
+   },
+   {
+    "title": "What If You Were Invisible for 24 Hours?",
+    "channel": "If It Were Real",
+    "views": "979",
+    "age": "11d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Strong recent demand (IFinity 681K 3w, Hypothetical Room 163K 5d) plus evergreen WatchData timeline 1.9M 5y; also many low copies in the last 2 weeks (What If Lab 1, Humanity Unlocked 62, IFFunLife 111, YOUSPERIMENT 11). Adjacent: Ifverse time-loop 176K 2w."
+ },
+ {
+  "id": "M52",
+  "query": "what if all money disappeared overnight",
+  "comparables": [
+   {
+    "title": "What If Money Didn't Exist and All $100 Trillion VANISHED Overnight?",
+    "channel": "What If",
+    "views": "585K",
+    "age": "7y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What would happen if all money disappeared overnight?",
+    "channel": "Money Doodles",
+    "views": "596",
+    "age": "1y ago",
+    "second_person_story": false
+   },
+   {
+    "title": "What If All Money Disappeared Overnight?",
+    "channel": "Ari & Bo",
+    "views": "247",
+    "age": "11d ago",
+    "second_person_story": true
+   }
+  ],
+  "flooded": true,
+  "note": "Flooded: 9+ same-title uploads in the last 3 weeks, all under 250 views (Ifinity 13, Flint Fire 36, Hypothetica 10, IF LAB 4, One Change 8, ZingDino 10, Hypotown 51). Shorts up to 4.5K. Only big result is a 7-year-old What If explainer."
+ }
+]

@@ -1,0 +1,92 @@
+[
+ {
+  "id": "M43",
+  "title": "What If AI Took Your Job, and Everyone Else's?",
+  "tag": "DONE BY 9AM",
+  "hook": "It's Monday evening, you're back from the office, and your laptop pings: the whole week's work is done. The chai's gone cold. There's nothing left to do.",
+  "wrong_belief": "Mass job loss means nobody earns, so the economy just stops; the real question is who buys anything.",
+  "mind_boggle": "IMF: about 40% of jobs worldwide are exposed to AI, about 60% in rich economies (Georgieva, Oct 2026).",
+  "person": "Your mentor at work, whose skill was the job, and who trained you on the thing the laptop just finished."
+ },
+ {
+  "id": "M44",
+  "title": "What If You Got Paid Every Month for Nothing?",
+  "tag": "YOU'D QUIT?",
+  "hook": "Payday, but this time the message isn't your salary. The same amount has landed in every adult's account this morning, yours, your boss's, the chai-wallah's, no conditions.",
+  "wrong_belief": "Free money makes people stop working.",
+  "mind_boggle": "122 US guaranteed-income pilots averaged $616 a month; the randomised ones showed only a 0.8-point average employment effect.",
+  "person": "A friend who finally quits to chase the dream she shelved at 22, and who you stop understanding."
+ },
+ {
+  "id": "M45",
+  "title": "What If You Stopped Aging at 25, and No One Else Did?",
+  "tag": "STILL 25",
+  "hook": "You blow out the candles on your 26th birthday, the family claps, and your cousin frowns. You look the same as 25. And 24. The mirror agrees.",
+  "wrong_belief": "Without ageing you'd live forever.",
+  "mind_boggle": "With ageing gone and today's accident and violence rates, average life comes out around 1,000 to 2,000 years, not forever (de Magalhães, Sci Am).",
+  "person": "Your mother, who keeps ageing, and whose wrinkles you'll watch while yours never come."
+ },
+ {
+  "id": "M46",
+  "title": "What If You Could Talk to Animals?",
+  "tag": "HE SAID WHAT",
+  "hook": "You wake at 6, your dog whines at the door, and this time you understand him. Not words, but it's clear. Then the crows outside answer, and you understand them too.",
+  "wrong_belief": "Animals would talk like us, in sentences.",
+  "mind_boggle": "Crows remembered a 'dangerous' mask for at least 2.7 years and taught their young to scold it (UW work); sperm whales have a 21-type coda 'phonetic alphabet' (Nature Comms 2024).",
+  "person": "Your old dog, who can now tell you it hurts, and does, every evening, until you can't bear it."
+ },
+ {
+  "id": "M47",
+  "title": "What If You Met Your Clone?",
+  "tag": "MY CLONE?",
+  "hook": "A nurse hands you a baby in a quiet room. 'He's you,' she says. Same face, same eyes, your exact DNA, born forty minutes ago, crying in your arms.",
+  "wrong_belief": "A clone would be a copy of you, memories and all.",
+  "mind_boggle": "A clone is born a baby; identical twins are natural clones.",
+  "person": "The clone, who grows up with your face and isn't you, and whom you can't stop comparing yourself to."
+ },
+ {
+  "id": "M48",
+  "title": "What If You Could Breathe Underwater, and He Couldn't?",
+  "tag": "DON'T COME UP",
+  "hook": "You sink to the bottom of the society pool and stay. Your friends wave you up, laughing, then shouting. You wave back, calm, breathing easy, not coming up.",
+  "wrong_belief": "Gills would let a person breathe water like air.",
+  "mind_boggle": "Water holds far less oxygen than air (to verify); liquid breathing was tried with perfluorocarbon (to verify).",
+  "person": "Your little brother, who jumps in after you, holds his breath, and waits at the surface you won't come to."
+ },
+ {
+  "id": "M49",
+  "title": "What If the Moon Vanished Tonight?",
+  "tag": "WHERE'D IT GO",
+  "hook": "Terrace, chai, the evening you always look up at the Moon. Tonight it's just not there. You check your phone, your uncle checks his. Everyone checks.",
+  "wrong_belief": "Earth would be wrecked at once.",
+  "mind_boggle": "Tides shrink rather than stop, because the Sun still raises them (to verify); the long-term wobble of the axis (to verify).",
+  "person": "Your fisherman uncle, whose tides change, and whose catch the moon used to time."
+ },
+ {
+  "id": "M50",
+  "title": "What If You Won the Lottery Tomorrow?",
+  "tag": "ALL SIX",
+  "hook": "You check the corner-shop ticket at the bus stop, the numbers match, all six. You sit on the bench, the metro pulls in, and you don't move.",
+  "wrong_belief": "Winners blow it all and end up miserable.",
+  "mind_boggle": "Swedish lottery data: winners don't squander their wealth, and their earnings fall only modestly, for at least ten years (AER 2017).",
+  "person": "The friend who asks for a loan with a story you can't disprove, and whom you stop trusting."
+ },
+ {
+  "id": "M51",
+  "title": "What If You Were Invisible for a Day?",
+  "tag": "CAN'T SEE ME",
+  "hook": "You're brushing your teeth before bed, look up, and you're gone. You trip over the dog, who yelps at nothing. Your mom calls your name from the kitchen.",
+  "wrong_belief": "You'd see everything unseen.",
+  "mind_boggle": "A truly invisible eye can't see, because the retina has to absorb light (to verify).",
+  "person": "A parent who can't find you, calling your name through the house while you stand two feet away."
+ },
+ {
+  "id": "M52",
+  "title": "What If All Money Vanished Overnight?",
+  "tag": "ZERO EVERYWHERE",
+  "hook": "Morning, your UPI shows zero, your wallet's empty, the ATM is blank. But the chai stall across the road is still open, and the uncle is still pouring.",
+  "wrong_belief": "We'd go back to barter.",
+  "mind_boggle": "Ireland's 1970 bank strike (to verify); UPI cleared 25.47 bn payments in October 2026 (NPCI via Inc42).",
+  "person": "The chai-wallah who extends you credit, and whose ledger becomes the first new money in the city."
+ }
+]
