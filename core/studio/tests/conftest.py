@@ -81,23 +81,63 @@ def mux(path: Path, audio: Path, pattern: str = "testsrc2", size: str = "270x480
     return path
 
 
+# 16 tone-words (about 11 s with the 2.6 s tail): long enough for the 3 s windows of the loudness range and for
+# several 2 s similarity frames; the full 40-word track only made every ffmpeg check take twice as long.
+MEDIA_WORDS = 16
+
+
+def _build_media(kind: str, container: str, pattern: str, folder: Path) -> tuple[Path, Path]:
+    folder.mkdir(parents=True, exist_ok=True)
+    x, words = speech_like(n_words=MEDIA_WORDS, tail=0.3 if kind == "abrupt" else 2.6)
+    x = to_target(x, -6.0 if kind == "loud" else -14.0, folder)
+    if kind == "click":
+        gap = int(0.15 * SR)  # in the lead-in silence, well clear of any word
+        x[gap:gap + 96] += 0.8 * np.hanning(96) * np.sign(np.sin(np.arange(96)))
+    wav = write_wav(folder / f"{kind}.wav", x)
+    words_path = folder / f"{kind}.words.json"
+    words_path.write_text(json.dumps(words))
+    if container == "mp4":
+        return mux(folder / f"{kind}.mp4", wav, pattern), words_path
+    return wav, words_path
+
+
+@pytest.fixture(scope="session")
+def _media_cache(tmp_path_factory):
+    """Each (kind, container, pattern) is built once per session; the inputs are fixed (seed=1), so every build of
+    one key is the same file. Tests get copies, never the cached files."""
+    built: dict[tuple[str, str, str], tuple[Path, Path]] = {}
+    root = tmp_path_factory.mktemp("media-cache")
+
+    def get(kind: str, container: str, pattern: str) -> tuple[Path, Path]:
+        key = (kind, container, pattern)
+        if key not in built:
+            built[key] = _build_media(kind, container, pattern, root / "-".join(key))
+        return built[key]
+
+    return get
+
+
 @pytest.fixture()
-def media(tmp_path):
-    """Factory: media(kind) -> (path, words.json). kinds: good, loud, click, abrupt (Short ends with no tail)."""
+def media(tmp_path, _media_cache):
+    """Factory: media(kind) -> (path, words.json). kinds: good, loud, click, abrupt (Short ends with no tail).
+
+    Leaves the same files in `folder` as building them there would ({kind}.wav, {kind}.words.json and, for mp4,
+    {kind}.mp4), each copied with a fresh mtime so "newest render" ordering is what the test's calls make it."""
 
     def make(kind="good", container="wav", pattern="testsrc2", folder=None):
+        import shutil
+
         folder = Path(folder or tmp_path)
         folder.mkdir(parents=True, exist_ok=True)
-        x, words = speech_like(tail=0.3 if kind == "abrupt" else 2.6)
-        x = to_target(x, -6.0 if kind == "loud" else -14.0, folder)
-        if kind == "click":
-            gap = int(0.15 * SR)  # in the lead-in silence, well clear of any word
-            x[gap:gap + 96] += 0.8 * np.hanning(96) * np.sign(np.sin(np.arange(96)))
-        wav = write_wav(folder / f"{kind}.wav", x)
+        src, src_words = _media_cache(kind, container, pattern)
+        wav = folder / f"{kind}.wav"
+        shutil.copyfile(src.with_suffix(".wav"), wav)
         words_path = folder / f"{kind}.words.json"
-        words_path.write_text(json.dumps(words))
+        shutil.copyfile(src_words, words_path)
         if container == "mp4":
-            return mux(folder / f"{kind}.mp4", wav, pattern), words_path
+            out = folder / f"{kind}.mp4"
+            shutil.copyfile(src, out)
+            return out, words_path
         return wav, words_path
 
     return make

@@ -1,6 +1,6 @@
 # Patches to upstream OpenMontage
 
-Edits to upstream files: 9 of a budget of about 10.
+Edits to upstream files: 10 of a budget of about 10.
 
 Every edit inside `core/openmontage/` that is not a new `studio`-named file. Re-check this
 list after each `make upstream-pull`. Base: upstream `d21f5d4`.
@@ -15,7 +15,8 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | `schemas/artifacts/final_review.schema.json` | Adds `external` to the `render_runtime_used` enum | `external` runtime |
 | `tests/tools/test_hyperframes_compose.py` | `test_proposal_packet_schema_accepts_render_runtime` and `test_edit_decisions_schema_accepts_render_runtime` expect `external` | Those assertions pin the enums changed above |
 | `Makefile` | Adds `HYPERFRAMES_SPEC`, read from `core/lock.yaml`. `setup` and `hyperframes-warm` fetch that version, and their messages say so | Pin HyperFrames in cache warmers |
-| `lib/checkpoint.py` | `write_checkpoint`: on a gated stage, `human_approved=True` for a studio channel project must carry a valid `lib/studio_approval.py` proof, or it raises `GATE VIOLATION`. `_enforce_stage_prerequisites`: a gated (by manifest or by its own `human_approval_required`) predecessor of a channel project counts as unapproved unless its proof verifies. Projects outside a channel are unchanged | Gate bypass: only `omni approve` can mark a gated stage approved. A direct `write_checkpoint(human_approved=True)`, a hand-edited checkpoint, or artifacts changed after approval are refused. Tests: `core/studio/tests/test_gate_bypass.py` |
+| `lib/checkpoint.py` | `write_checkpoint`: on a gated stage, `human_approved=True` for a studio channel project must carry a valid `lib/studio_approval.py` proof, or it raises `GATE VIOLATION`. `_enforce_stage_prerequisites`: a gated (by manifest or by its own `human_approval_required`) predecessor of a channel project counts as unapproved unless its proof verifies. Projects outside a channel are unchanged | Gate bypass: only `omni approve` can mark a gated stage approved. A direct `write_checkpoint(human_approved=True)`, a hand-edited checkpoint, or artifacts changed after approval are refused. Tests: `core/studio/tests/test_gate_bypass.py`. Also, `validate_checkpoint` and `_validate_artifacts_for_stage` validate through `lib/studio_schema.py` (artifacts with `load_schema(name)`, the schema `validate_artifact` loads), so a schema is checked against its metaschema once, not on every call |
+| `styles/playbook_loader.py` | `validate_playbook` calls `lib/studio_schema.validate` instead of `jsonschema.validate` | Speed: `jsonschema.validate` re-checked the playbook schema (about 50 ms) on every call, and a gate run loads playbooks hundreds of times. Same errors (`best_match`). Cut `core/studio/tests` from 268 s to 124 s with the test-media cache. Tests: `core/studio/tests/test_studio_schema.py` |
 
 ## New files with `studio` names
 
@@ -23,6 +24,7 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 |---|---|
 | `STUDIO_PATHS.md` | Says OpenMontage's docs are relative to this folder |
 | `lib/studio_approval.py` | HMAC proof for `omni approve` (and `sign_media`/`verify_media`, binding an approval to a file's sha256 and, for publish approvals, the upload metadata digest; the stage proof also covers `approval.media`), keyed from `~/.config/omni-studio/approval.key` (made on first approval, mode 600); `verify` is what `lib/checkpoint.py` calls |
+| `lib/studio_schema.py` | `validate(instance, schema)`: `jsonschema.validate` with the checked validator kept per schema (keyed by the schema's JSON in its own key order); same `best_match` error, an invalid schema raises `SchemaError` every time and is never kept. Used by `lib/checkpoint.py` and `styles/playbook_loader.py` |
 | `tools/studio/__init__.py`, `tools/studio/studio_pou_tools.py` | `pou_tts`, `pou_stills`, `pou_puppet`, `pou_compose`, `overlay_check`: the Professor of Us engine (`core/engines/pou`) by subprocess, auto-discovered; each tool run is timed through `studio.jobs.timing.record_tool` (a decorator that is a no-op when `studio` is not importable) |
 | `pipeline_defs/studio-dialogue.yaml` | Seven owner gates G1-G7 for dialogue explainers; `metadata.studio_checks` per stage |
 | `skills/studio/studio-dialogue-*.md` | One stage skill per gate |

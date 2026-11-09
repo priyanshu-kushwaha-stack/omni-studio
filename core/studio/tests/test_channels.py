@@ -208,6 +208,7 @@ def test_dangling_playbook_link_fails_channel_validation(studio_root):
         channels.load_channel("sample")
 
 
+@pytest.mark.xdist_group("real_channels")  # adds a real channel for a moment; see test_phase1's pytestmark
 def test_playbook_symlink_works_in_the_real_tree_through_the_cli(monkeypatch):
     """No fixture: the real repo layout, the default styles dir and the real CLI."""
     slug = "throwaway-link-test"

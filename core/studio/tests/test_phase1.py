@@ -23,6 +23,10 @@ DENYLIST = yaml.safe_load(
     (ROOT / "core" / "studio" / "config" / "disabled_tools.yaml").read_text(encoding="utf-8")
 )
 
+# `omni status` here reads every real channel; test_channels' real-tree test adds and removes one. Under xdist
+# (--dist loadgroup) one group runs on one worker, one test at a time.
+pytestmark = pytest.mark.xdist_group("real_channels")
+
 
 def test_lock_pins_hyperframes_0_9_16():
     assert LOCK["hyperframes"]["version"] == "0.9.16"

@@ -14,7 +14,8 @@ Three things keep a push from paying 5-11 minutes for a script edit:
    (about a second). Anything else gets the full suite: code, skills, channel config (`channel.yaml`, `room.yaml`,
    `rules/`), the `_template` channel, or a video folder a test reads (found by name in the test folders).
 3. Parallel and queued. The four suites run at the same time, and a full run takes the `tests` queue
-   (`studio.jobs.queue`), so two sessions take turns instead of slowing each other three-fold.
+   (`studio.jobs.queue`), so two sessions take turns instead of slowing each other three-fold. The studio suite, the
+   long pole, runs on `STUDIO_WORKERS` pytest-xdist workers (`studio_workers`).
 
 `OMNI_TESTGATE_FULL=1` forces the full suite. Run times go to `python -m studio.jobs report` as `tests-full` and
 `tests-fast`. The cache trusts the tree hash: untracked files and installed packages are not part of it.
@@ -39,6 +40,7 @@ TEST_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".json", ".yaml", ".yml"}
 CACHE_NAME = "omni-test-pass"
 BASE = "origin/main"
 QUEUE = "tests"
+STUDIO_WORKERS = 4
 
 # Upstream tests that assert a tool the owner banned is still discovered (see the Makefile's old DESELECT note).
 DESELECT = "--deselect core/openmontage/tests/contracts/test_kling_official_avatar.py::" \
@@ -148,13 +150,31 @@ def tracked_clean(root: Path) -> bool:
 
 # --- running -----------------------------------------------------------------------------------------------------
 
+def studio_workers(have_xdist: Optional[bool] = None) -> str:
+    """The xdist flags for the studio suite, or "" (one process) when pytest-xdist is missing from the venv.
+
+    The venv is shared by every worktree, and a `uv sync` from a branch whose lock predates pytest-xdist removes it;
+    the suite then still runs, only slower, and says how to get the workers back."""
+    if have_xdist is None:
+        import importlib.util
+        have_xdist = importlib.util.find_spec("xdist") is not None
+    if have_xdist:
+        return f" -n {STUDIO_WORKERS} --dist loadgroup"
+    print("tests: pytest-xdist is not installed, so core/studio/tests runs in one process; `uv sync` restores it",
+          file=sys.stderr)
+    return ""
+
+
 def default_suites(root: Path) -> list[Suite]:
     om, py = root / "core/openmontage", root / ".venv/bin/python"
     return [
         Suite("openmontage", str(om),
               f"{py} -m pytest tests/backlot tests/contracts tests/lib tests/pipelines tests/qa tests/styles "
               f"tests/test_network_guard.py -q -p no:cacheprovider -p studio.pytest_upstream {DESELECT}"),
-        Suite("studio", str(root), f"{py} -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib"),
+        # Four xdist workers (pytest-xdist, pinned in uv.lock): 4 and 6 measured 65 s and 61 s, and the other three
+        # suites run beside it. loadgroup keeps each xdist_group (tests that read or change real channels) on one worker.
+        Suite("studio", str(root), f"{py} -m pytest core/studio/tests -q -p no:cacheprovider --import-mode=importlib"
+                                   + studio_workers()),
         Suite("pou", str(root), f"{py} -m pytest core/engines/pou/tests -q -p no:cacheprovider"),
         Suite("whatif", str(root / "core/engines/whatif"),
               "test -d node_modules || { echo \"core/engines/whatif: run 'pnpm install --frozen-lockfile' "
