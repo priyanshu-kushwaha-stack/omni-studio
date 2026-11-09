@@ -204,15 +204,21 @@ def run_full(root: Path, *, suites: Optional[list[Suite]] = None, queue: Optiona
                 procs.append((s, log, time.monotonic(),
                               subprocess.Popen(cmd, cwd=s.cwd, shell=True, stdout=log, stderr=subprocess.STDOUT,
                                                env=_env(root))))
+            ended: dict[int, float] = {}
+            while len(ended) < len(procs):  # note each suite's own finish time, not when we got round to it
+                for i, (_, _, _, p) in enumerate(procs):
+                    if i not in ended and p.poll() is not None:
+                        ended[i] = time.monotonic()
+                time.sleep(0.2)
             codes = []
-            for s, log, started, p in procs:
-                code = p.wait()
+            for i, (s, log, started, p) in enumerate(procs):
+                code = p.returncode
                 codes.append(code)
                 log.seek(0)
                 tail = log.read().rstrip().splitlines()
                 log.close()
                 status = "passed" if code == 0 else f"FAILED (exit {code})"
-                print(f"--- {s.name}: {status} in {time.monotonic() - started:.0f} s")
+                print(f"--- {s.name}: {status} in {ended[i] - started:.0f} s")
                 lines = tail if code else tail[-3:]
                 print("\n".join(lines))
     finally:
