@@ -1,0 +1,43 @@
+{
+  "call_id": "bc57d4c5ac2143d3943b94ce4bd59543",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10,
+    "misconception": 10,
+    "packaging_claims": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 46,
+      "quote": "the Public Health Foundation of India's estimate of families pushed into poverty by health costs (the idea room cites 55 million a year: to be checked against the source, and whether it counts people or households; fact-checker, round 1)",
+      "fix": "At G2, verify whether the PHFI source counts 55 million individuals versus households pushed into poverty annually, and record the exact definition and scope in claims.md."
+    },
+    {
+      "line": 37,
+      "quote": "The one fact: the sourced cost of his surgery, turned into internship hours (to source at G2); the hours peel off your figure as Papa watches.",
+      "fix": "At G2, ensure the surgery cost range and hourly wage/internship stipend conversion each map to distinct claims.md rows with sourced ranges rather than unhedged point estimates."
+    }
+  ],
+  "keep": [
+    {
+      "line": 10,
+      "quote": "The app is invented. The real-world part, to be sourced at G2: what health costs do to Indian households, and how many hours a year a job buys."
+    },
+    {
+      "line": 37,
+      "quote": "Misconception first: you believed time and money are separate currencies."
+    },
+    {
+      "line": 41,
+      "quote": "Health is explained, never advised; the film is not financial advice."
+    }
+  ],
+  "error": "",
+  "output_sha256": "8e72106e3ba4eddb4b813bff59a50433e957b6678c71a456ccf8721da65f0e46",
+  "draft_sha256": "f9b84fd8d5cd33af23f0eed80882307783a5611caea772e3810e91be88bec81a"
+}

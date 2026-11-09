@@ -32,10 +32,10 @@ batch.
 |---|---|---|---|
 | within 20 s | The change | First seven seconds, the thumbnail's picture: the lamp-lit bed, the phone filling the frame, mom's bar full, a heart at zero, coins spilling. You check who liked you before you are even lying down, as always; a new app pings with a coin. The title question is spoken over that screen | 2 (the phone, the ledger), 4 (the habit: checking who noticed you) |
 | within 30 s | The rule | Every waking thought about you pays one coin, kind or cruel, and the app names who had it. There is a second tab, Sent; you don't open it (planted). First look: mom's bar full, the crush's empty. You decide: "Coins are care. At least now you can count it" (the planted line). What you can lose: the story you tell about who cares; the question: who is really thinking of you? | 3, K13 (the ledger by 0:30) |
-| to 35% | First jump: the day | By 20%, Asha, your friend from the chai stall, has paid a little every day: she saves your chai and sends you the metro notes. Only then the tests. Your best photo: three hundred likes, four coins. You expect the internship boss has forgotten you after work; at eleven his coin lands one beat before another late message. You wear the loud shirt onto the metro and guess the whole carriage noticed: two coins | 5, 6 (every use has a gap), 7 (misconception first: you believe everyone watches you), 9 (Asha named with two warm beats) |
+| to 35% | First jump: the day | Your best photo: three hundred likes, four coins. The internship boss pays every night at eleven, just before the late message. You wear the loud shirt onto the metro and guess the whole carriage noticed: two coins. Asha, your friend from the chai stall, pays a little every day: she saves your chai and sends you the metro notes | 5, 6 (every use has a gap), 7 (misconception first: you believe everyone watches you), 9 (Asha named with two warm beats) |
 | ~45% | The picture only this premise can show | Night: coins dropping one by one at 2 a.m., every one from mom, a skyline of her bar over everyone else's | 8 (before the midpoint) |
 | to 65% | Second jump: the month | The fact lands on you, in one spoken line over the metro shirt: people guess far more of a room noticed them than did (the spotlight-effect study, to source at G2; one number). Therefore you go looking for attention: you double-text the crush, then start a fight in the group chat expecting proof that people care, and coins pour in from anger. But Asha's row goes dark. The cost near 60%: her seat at the chai stall is empty, and her row stopped on a day you can't name | 6 (you expect care, you get anger), 7, 9 |
-| to 90% | Third jump: a lifetime | Because Asha's row has gone dark, match cuts carry the same phone-checking pose through graduation, work and old age: an imagined future, not app history. Before it hardens, you open the Sent tab planted at 0:30. Then you open Sent. You love Mom; Sent is nearly empty. Asha's row stopped the week yours did. Coins were never care: the turn breaks the line you said at 0:30. The choice at about 78%: keep farming coins, or spend the evening on someone else | 5 (because, then), 10 (breaks "Coins are care"; the tab was planted at 0:30), the choice at 75-80% |
+| to 90% | Third jump: a lifetime | Because Asha's row has gone dark, you stop farming coins and scroll back through the three columns you know, mom, the boss at eleven, Asha, a day, a year, your whole life, the phone in the same hand as the hand ages. Then you open Sent. You love Mom; Sent is nearly empty. Asha's row stopped the week yours did. Coins were never care: the turn breaks the line you said at 0:30. The choice at about 78%: keep farming coins, or spend the evening on someone else | 5 (because, then), 10 (breaks "Coins are care"; the tab was planted at 0:30), the choice at 75-80% |
 | last tenth | Back to you | The phone face down. You call Asha; somewhere a coin we never see drops for her. Last line, dry and warm, inside the image: "Two rings. She picks up." | 12 (the opposite of the opening: waiting to be thought of, then thinking of someone) |
 
 No new power rule after halfway (Sent is planted in the rule beat); no new person after 60%.
@@ -54,12 +54,11 @@ thoughts only)? Can I see who exactly? Why is mom so high (cutaways: packing foo
 | | Title | Score | Phone cut |
 |---|---|---|---|
 | A | What If Someone Thinking of You Paid You? | 84 | "What If Someone Thinking of You Paid..." keeps the premise |
-| B | What If Thoughts of You Paid You? | 98 | none, 33 characters |
+| B | What If You Got Paid Every Time Someone Thought of You? | 84 | "What If You Got Paid Every Time Someone..." loses "thought of you" |
 | C | What If You Could See Who Really Thinks of You? | 84 | "What If You Could See Who Really Thinks..." |
 
-The owner's pick from the idea room, "What If You Got Paid Every Time Someone Thought of You?", was dropped: the
-first-time viewer seat failed it on K12 twice (rounds 1 and 2), because a phone cuts it before "thought" and no tag
-can say it. A keeps the premise inside the phone cut; B is the shortest.
+B is the owner's pick from the idea room, moved to second: the first-time viewer seat failed it on K12 (round 1), because
+a phone cuts it before the thought, and the thumbnail cannot say "thought". A keeps the premise inside the phone cut.
 "What If Every Thought of You Paid?" (34 characters) was set aside: it is a neighbour's title from the last two weeks
 with "$1" removed (pick card item 9). The idea room's tag "Thinking of You" repeats the title, so it is not used.
 Others: `title-lint.json`.

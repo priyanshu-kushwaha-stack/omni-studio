@@ -1,0 +1,155 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-09_what-if-you-could-sell-one-year-of-your-life",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-09T07:56:03.798061+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If You Could Sell One Year of Your Life?",
+          "hook": "The surgery bill is more than your family earns in years. One tap pays it.",
+          "narrative_structure": "story",
+          "visual_approach": "a hospital ward at night, your phone with an hourglass and a crimson button, finger hovering. Three thumbnail candidates a, b, c differ in the tag (WORTH IT?, $100,000?, DEAL?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 450,
+          "why_this_works": "Owner's pick from the idea room"
+        },
+        {
+          "id": "B",
+          "title": "What If Your Life Had a Sell Button?",
+          "hook": "The surgery bill is more than your family earns in years. One tap pays it.",
+          "narrative_structure": "story",
+          "visual_approach": "a hospital ward at night, your phone with an hourglass and a crimson button, finger hovering. Three thumbnail candidates a, b, c differ in the tag (WORTH IT?, $100,000?, DEAL?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 450,
+          "why_this_works": "Alternative title; see packaging.md"
+        },
+        {
+          "id": "C",
+          "title": "What If You Could Sell One Year to Save Your Dad?",
+          "hook": "The surgery bill is more than your family earns in years. One tap pays it.",
+          "narrative_structure": "story",
+          "visual_approach": "a hospital ward at night, your phone with an hourglass and a crimson button, finger hovering. Three thumbnail candidates a, b, c differ in the tag (WORTH IT?, $100,000?, DEAL?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 450,
+          "why_this_works": "Alternative title; see packaging.md"
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "Agent's recommendation; the owner picks at G1. A, title A with thumbnail a (\"WORTH IT?\").."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/quirky-ptolemy-b8b921/channels/say-suppose/videos/2026-11-09_what-if-you-could-sell-one-year-of-your-life/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging: three titles, three one-variable thumbnails drawn from the rig, the beat outline; the G1 room"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "research.md, claims.md and script.md under rules/story.md; the G2 room; omni qc story_script (claims) must pass"
+          },
+          {
+            "stage": "narration",
+            "tools": [],
+            "approach": "Arthur, one paid take per line, quoted and approved first"
+          },
+          {
+            "stage": "rough_cut",
+            "tools": [],
+            "approach": "Code-drawn scenes in core/engines/whatif timed to cue words; 720p preview ladder"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Owner notes applied; loudness, clicks, opening and similarity checks"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "higgsfield text2speech_v2",
+            "operation": "narration (Arthur), one take per line",
+            "estimated_usd": 0,
+            "notes": "Not estimated. Paid, in Higgsfield credits; quoted and approved by the owner at G3. G1 made no paid call: the thumbnails are drawn in code"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    },
+    "decision_log": {
+      "version": "1.0",
+      "project_id": "2026-11-09_what-if-you-could-sell-one-year-of-your-life",
+      "decisions": [
+        {
+          "decision_id": "d-001",
+          "stage": "proposal",
+          "category": "render_runtime_selection",
+          "subject": "Composition runtime",
+          "options_considered": [
+            {
+              "option_id": "external",
+              "label": "The channel's paper-cut engine (core/engines/whatif)",
+              "score": 0.9,
+              "reason": "The look the owner approved on 2026-11-06; figures timed to cue words; the first video was made with it"
+            },
+            {
+              "option_id": "remotion",
+              "label": "Remotion through video_compose",
+              "score": 0.4,
+              "reason": "Same library, but its stock scene types cannot draw the rig",
+              "rejected_because": "Would mean rebuilding the rig inside remotion-composer"
+            },
+            {
+              "option_id": "hyperframes",
+              "label": "HyperFrames through video_compose",
+              "score": 0.3,
+              "reason": "HTML and GSAP scenes; no rig, no cue timeline",
+              "rejected_because": "Would mean rewriting the approved look"
+            }
+          ],
+          "selected": "external",
+          "reason": "Proposed to the owner at G1 with the alternatives in one line each (packaging.md, Runtime)",
+          "confidence": 0.9
+        }
+      ]
+    }
+  },
+  "style_playbook": "say-suppose"
+}

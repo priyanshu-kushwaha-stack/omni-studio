@@ -1,7 +1,7 @@
 # Room report, G1 (proposal)
 
 Shipped: round 2 (1fa20ef49e15)
-Calls: 11 of 41
+Calls: 17 of 41
 
 ## Open notes in round 2
 
@@ -30,4 +30,5 @@ Calls: 11 of 41
 |---|---|---|---|---|
 | 1 | ok | 5/5 | 9 | - |
 | 2 | ok | 5/5 | 4 | - |
+| 3 | ok | 4/5 | 2 | - |
 

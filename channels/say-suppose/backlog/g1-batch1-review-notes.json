@@ -22,24 +22,24 @@
   "cold": "With 0.04% on all three: shocked; the red chip is seen first, then the face, then the tag; 4 focal points (the thin tube lights at the top read as a glitch). Nobody can tell what 0.04% is the odds of without the title. Would click c (QUIT?), barely: 'your dream is hopeless, should you give up?' STAY? has no object; ME? reads like a quiz. (Round 1 tried 0.04%, 0% and 97%: 0.04% was the pick, 97% read as mixed signals.)"
  },
  "got-paid": {
-  "status": "held",
-  "round": "2 of 3, round 3 after the cap",
-  "verdict": "Not at G1 yet: the room's daily call cap (80) ran out before round 3. Round 3 runs after 05:30 IST on 10 Nov; the draft shown already applies every round-2 blocker.",
+  "status": "ready",
+  "round": "2 of 3 ships",
+  "verdict": "Round 2 ships with 4 open blockers (9, then 4). Round 3 cut them to 2, but its viewer seat timed out twice, so it cannot ship.",
   "room": [
-   "Round 2 open: the owner's original title fails K12 twice (a phone cuts it before \"thought\"); it is dropped for \"What If Someone Thinking of You Paid You?\" and \"What If Thoughts of You Paid You?\".",
-   "Round 2 open (story): the boss gag needs a gap, Asha's warm beats by 20%, the lifetime montage as an imagined future. Applied in the draft shown.",
-   "Blockers 9, then 4."
+   "Open (viewer, K12): title B, your original idea-room title, reads \"...Every Time Someone\" on a phone; no tag can say \"thought\". Pick A and it does not apply.",
+   "Open (story): the boss gag needs a gap; Asha's two warm beats must land by 20%; the lifetime montage must be an imagined future. All three are fixed in the round-3 draft (room/drafts/), whose story seat then asked for one more link (#5, #6 on the double text).",
+   "Kept by several seats: \"Coins are care. At least now you can count it\" and the last line, \"Two rings. She picks up.\""
   ],
   "cold": "Sad, let down, holding a phone; reads as 'only your mom texts or thinks about you'. Face seen first on a and b; 4 focal points. The phone screen does not read as money. 'ONLY MOM?' next to video 1's 'MOM?' in one feed would look like the same video. Would click c (ZERO?!), then b (NOT HER?)."
  },
  "sell-one": {
-  "status": "held",
-  "round": "2 of 3, round 3 after the cap",
-  "verdict": "Not at G1 yet: the room's daily call cap ran out before round 3. Round 3 runs after 05:30 IST on 10 Nov; the draft shown already applies every round-2 blocker.",
+  "status": "ready",
+  "round": "3 of 3",
+  "verdict": "Round 3 ships with 2 open story blockers (10, then 6, then 2).",
   "room": [
-   "Round 2 open (viewer): the fridge, the uncle and the new kitchen were outside Riya's week; now the phone bill, the grandfather, and the kitchen cut.",
-   "Round 2 open (story): \"But\" before more taps; \"There is no buy button\" in the rule; the wristband replaces the late nurse. Applied in the draft shown.",
-   "Blockers 10, then 6."
+   "Open (story #7): the rule already shows time and money trade, so the misconception must be \"only the app sells time\", broken when the surgery cost becomes internship hours.",
+   "Open (story #6): the taps that bring you to Papa's age need a gap each: you expect each charge to be the last, and each receipt shows the next.",
+   "Kept by several seats: \"One year from me buys him ten. Good deal.\" and \"He's teasing you about the bus pass again. You let him.\""
   ],
   "cold": "Worried; hourglass and red button read as trading time. 5 focal points (tag, face, hourglass, button, the blurred ward). Only $100,000? tells the whole trade in half a second; WORTH IT? and DEAL? are vague without the title. Would click b ($100,000?)."
  },
