@@ -15,19 +15,20 @@ from __future__ import annotations
 import argparse
 import ast
 import os
-import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
 
 import yaml
 
+from studio.testgate import BASE, _git, merge_base
+
 MODULE_LIMIT = 500
 FUNCTION_LIMIT = 60
+ROOT = Path(__file__).resolve().parents[2]
 ROOTS = ("core/studio", "core/engines")
 SKIP_PARTS = {"node_modules", "__pycache__", ".venv"}
 BASELINE = "core/studio/config/size_baseline.yaml"
-MAIN = "origin/main"
 FIX = "python -m studio.sizes baseline"
 
 
@@ -63,8 +64,9 @@ def measure(root: Path) -> dict[str, int]:
     for f in _python_files(root):
         rel = f.relative_to(root).as_posix()
         text = f.read_text(encoding="utf-8")
-        if len(text.splitlines()) > MODULE_LIMIT:
-            out[rel] = len(text.splitlines())
+        lines = len(text.splitlines())
+        if lines > MODULE_LIMIT:
+            out[rel] = lines
         for name, n in _functions(ast.parse(text, filename=rel)).items():
             if n > FUNCTION_LIMIT:
                 out[f"{rel}::{name}"] = n
@@ -90,11 +92,12 @@ def review(
             stale.append(f"{key}: {n} -> within budget")
         elif current[key] < n:
             stale.append(f"{key}: {n} -> {current[key]}")
-    for key, n in baseline.items() if main is not None else ():
-        if key not in main:
-            errors.append(f"{BASELINE}: {key} is not in {MAIN}'s baseline; records may not be added")
-        elif n > main[key]:
-            errors.append(f"{BASELINE}: {key} raised from {main[key]} to {n}; records may only shrink")
+    if main is not None:
+        for key, n in baseline.items():
+            if key not in main:
+                errors.append(f"{BASELINE}: {key} is not in {BASE}'s baseline; records may not be added")
+            elif n > main[key]:
+                errors.append(f"{BASELINE}: {key} raised from {main[key]} to {n}; records may only shrink")
     return errors, stale
 
 
@@ -126,27 +129,17 @@ def save(path: Path, records: dict[str, int]) -> None:
 
 
 def main_baseline(root: Path) -> Optional[dict[str, int]]:
-    """BASELINE as of the merge base with origin/main, or None when there is no such commit or file."""
-    mb = subprocess.run(["git", "merge-base", MAIN, "HEAD"], cwd=root, capture_output=True, text=True)
-    if mb.returncode != 0:
+    """BASELINE as of the merge base with BASE (testgate's origin/main), or None when there is no such commit or file."""
+    mb = merge_base(root)
+    if mb is None:
         return None
-    show = subprocess.run(["git", "show", f"{mb.stdout.strip()}:{BASELINE}"], cwd=root, capture_output=True, text=True)
+    show = _git(root, "show", f"{mb}:{BASELINE}")
     return _flatten(yaml.safe_load(show.stdout)) if show.returncode == 0 else None
 
 
-def main(argv: Optional[list[str]] = None, *, root: Optional[Path] = None, main_baseline=main_baseline) -> int:
-    p = argparse.ArgumentParser(prog="python -m studio.sizes")
-    p.add_argument("mode", choices=["check", "baseline"])
-    args = p.parse_args(argv)
-    root = root or Path(__file__).resolve().parents[2]
-    path = root / BASELINE
-    current, recorded = measure(root), load(path)
-    if args.mode == "baseline":
-        save(path, tighten(current, recorded))
-        print(f"sizes: {path.relative_to(root)} lowered to today's sizes")
-        return 0
-    main_records = main_baseline(root) if callable(main_baseline) else main_baseline
-    errors, stale = review(current, recorded, main_records)
+def check(root: Path, main_records: Optional[dict[str, int]]) -> int:
+    recorded = load(root / BASELINE)
+    errors, stale = review(measure(root), recorded, main_records)
     for line in errors:
         print(f"sizes: {line}")
     if stale:
@@ -155,6 +148,21 @@ def main(argv: Optional[list[str]] = None, *, root: Optional[Path] = None, main_
     if not errors and not stale:
         print(f"sizes: ok ({len(recorded)} recorded offenders)")
     return 1 if errors or stale else 0
+
+
+def lower(root: Path) -> int:
+    path = root / BASELINE
+    save(path, tighten(measure(root), load(path)))
+    print(f"sizes: {BASELINE} lowered to today's sizes")
+    return 0
+
+
+def main(argv: Optional[list[str]] = None) -> int:
+    p = argparse.ArgumentParser(prog="python -m studio.sizes")
+    p.add_argument("mode", choices=["check", "baseline"])
+    if p.parse_args(argv).mode == "baseline":
+        return lower(ROOT)
+    return check(ROOT, main_baseline(ROOT))
 
 
 if __name__ == "__main__":

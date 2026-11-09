@@ -72,27 +72,26 @@ def test_baseline_file_round_trip(tmp_path):
     assert sizes.load(path) == data
 
 
-def test_check_cli_on_a_tree(tmp_path, capsys):
+def test_check_and_lower_on_a_tree(tmp_path, capsys):
     write(tmp_path, "core/studio/big.py", "\n" * 600)
     base = tmp_path / sizes.BASELINE
-    assert sizes.main(["check"], root=tmp_path, main_baseline=None) == 1
+    assert sizes.check(tmp_path, None) == 1
     sizes.save(base, {"core/studio/big.py": 600})
-    assert sizes.main(["check"], root=tmp_path, main_baseline=None) == 0
+    assert sizes.check(tmp_path, None) == 0
     write(tmp_path, "core/studio/big.py", "\n" * 550)
-    assert sizes.main(["check"], root=tmp_path, main_baseline=None) == 1
+    assert sizes.check(tmp_path, None) == 1
     assert "python -m studio.sizes baseline" in capsys.readouterr().out
-    assert sizes.main(["baseline"], root=tmp_path, main_baseline=None) == 0
+    assert sizes.lower(tmp_path) == 0
     assert sizes.load(base) == {"core/studio/big.py": 550}
 
 
 def test_repo_meets_its_baseline():
-    root = Path(__file__).resolve().parents[3]
-    errors, stale = sizes.review(sizes.measure(root), sizes.load(root / sizes.BASELINE), None)
+    errors, stale = sizes.review(sizes.measure(sizes.ROOT), sizes.load(sizes.ROOT / sizes.BASELINE), None)
     assert not errors and not stale, errors + stale
 
 
 def test_ruff_is_pinned_to_one_version():
-    root = Path(__file__).resolve().parents[3]
+    root = sizes.ROOT
     lock = yaml.safe_load((root / "core/lock.yaml").read_text())["ruff"]["version"]
     dev = tomllib.loads((root / "pyproject.toml").read_text())["dependency-groups"]["dev"]
     uv_lock = re.search(r'name = "ruff"\nversion = "([^"]+)"', (root / "uv.lock").read_text()).group(1)

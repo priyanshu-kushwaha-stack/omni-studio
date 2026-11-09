@@ -19,17 +19,21 @@ def time_limit() -> float:
         return DEFAULT_LIMIT
 
 
+LIMIT = pytest.StashKey[float]()
+
+
 def pytest_configure(config):
     config.addinivalue_line("markers", f"slow: may run longer than the {DEFAULT_LIMIT:g} s test time limit")
+    config.stash[LIMIT] = time_limit()
 
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     report = (yield).get_result()
-    limit = time_limit()
-    if report.when != "call" or not report.passed or limit <= 0 or report.duration <= limit:
+    if report.when != "call" or not report.passed:
         return
-    if item.get_closest_marker("slow") is None:
+    limit = item.config.stash.get(LIMIT, DEFAULT_LIMIT)
+    if 0 < limit < report.duration and item.get_closest_marker("slow") is None:
         report.outcome = "failed"
         report.longrepr = (
             f"{item.nodeid} took {report.duration:.1f} s, over the {limit:g} s limit. "

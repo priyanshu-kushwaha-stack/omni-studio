@@ -17,35 +17,23 @@ def test_fast():
     pass
 
 def test_slow_unmarked():
-    time.sleep(0.25)
+    time.sleep(0.15)
 
 @pytest.mark.slow
 def test_slow_marked():
-    time.sleep(0.25)
+    time.sleep(0.15)
 """
 
 
 def run(tmp_path, limit):
     (tmp_path / "test_sample.py").write_text(SAMPLE)
-    env = {**os.environ, "OMNI_TEST_TIME_LIMIT": limit, "PYTHONPATH": str(CORE)}
-    cmd = [
-        sys.executable,
-        "-m",
-        "pytest",
-        "-q",
-        "-p",
-        "no:cacheprovider",
-        "-p",
-        "no:asyncio",
-        "-p",
-        "studio.pytest_speed",
-        "-rf",
-    ]
+    env = {**os.environ, "OMNI_TEST_TIME_LIMIT": limit, "PYTHONPATH": str(CORE), "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"}
+    cmd = [sys.executable, *"-m pytest -q -p no:cacheprovider -p studio.pytest_speed -rf".split()]
     return subprocess.run(cmd + [str(tmp_path)], cwd=tmp_path, env=env, capture_output=True, text=True).stdout
 
 
 def test_over_the_limit_fails_unless_marked_slow(tmp_path):
-    out = run(tmp_path, "0.1")
+    out = run(tmp_path, "0.05")
     assert "1 failed, 2 passed" in out
     assert "test_slow_unmarked took" in out and "@pytest.mark.slow" in out
 

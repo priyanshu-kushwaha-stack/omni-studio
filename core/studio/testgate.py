@@ -142,11 +142,16 @@ def referenced_videos(root: Path) -> set[str]:
     return found
 
 
-def changed_files(root: Path, base: str) -> Optional[list[str]]:
+def merge_base(root: Path, base: str = BASE) -> Optional[str]:
     mb = _git(root, "merge-base", base, "HEAD")
-    if mb.returncode != 0:
+    return mb.stdout.strip() if mb.returncode == 0 else None
+
+
+def changed_files(root: Path, base: str) -> Optional[list[str]]:
+    mb = merge_base(root, base)
+    if mb is None:
         return None
-    diff = _git(root, "diff", "--name-only", "--no-renames", mb.stdout.strip(), "HEAD")
+    diff = _git(root, "diff", "--name-only", "--no-renames", mb, "HEAD")
     if diff.returncode != 0:
         return None
     return [line for line in diff.stdout.splitlines() if line]

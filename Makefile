@@ -28,13 +28,17 @@ prepush:
 # Code health for core/studio and core/engines (never core/openmontage): ruff lint, ruff format, and the size
 # budgets (studio.sizes). The global commit hook blocks only on .claude/standard.json's `typecheck` command, so that
 # command is `make precommit`: format first, then lint.
+LINT_CHECKS := $(RUFF) check $(LINT_PATHS) && $(PYTHON) -m studio.sizes check
+
 lint:
-	cd $(ROOT) && $(RUFF) check $(LINT_PATHS) && $(RUFF) format --check $(LINT_PATHS) && $(PYTHON) -m studio.sizes check
+	cd $(ROOT) && $(RUFF) format --check $(LINT_PATHS) && $(LINT_CHECKS)
 
 format:
 	cd $(ROOT) && $(RUFF) format $(LINT_PATHS)
 
-precommit: format lint
+# Format first so the size budgets measure formatted code; the format check is then redundant.
+precommit: format
+	cd $(ROOT) && $(LINT_CHECKS)
 
 # The old one-after-another run, for when a parallel failure needs a clean log.
 test-serial:
