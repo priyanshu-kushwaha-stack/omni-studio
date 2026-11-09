@@ -1,6 +1,6 @@
 # Publish: What If You Could Pause Time for 10 Seconds a Day?
 
-status: live 2026-11-09 18:30 IST (https://youtu.be/-si5nCzgQl8). G7 awaits the owner.
+status: live 2026-11-09 18:30 IST (https://youtu.be/-si5nCzgQl8). G7 passed by the owner 2026-11-09.
 
 - **File:** `renders/edit-v6.mp4` (5:14, -14.0 LUFS), passed G5 and G6.
 - **Title, description, tags:** `upload.yaml`. Title and thumbnail are G1 pair A. Sources from `claims.md` (c04, c05,
@@ -12,7 +12,8 @@ status: live 2026-11-09 18:30 IST (https://youtu.be/-si5nCzgQl8). G7 awaits the 
   DAY 1). Text tags by `channels/say-suppose/brand/thumb_tag.py`.
 - **Live:** public since Mon 9 Nov 2026, 18:30 IST, as scheduled by the owner (https://youtu.be/-si5nCzgQl8). Checked
   on the public page: Hindi audio track, English and Hindi subtitles, end screen, chapters; Studio shows Public, no
-  notices, thumbnail A/B test Running. Pinned comment posted as @SaySuppose. G7 awaits the owner.
+  notices, thumbnail A/B test Running. Pinned comment posted as @SaySuppose. G7 passed by the owner (G6 re-passed
+  first on the same edit-v6, for the media proof main's G7 rule needs).
 - **Subtitles:** English and Hindi tracks from the scripts (`subtitles/en.srt`, `subtitles/hi.srt`), added through the
   API 2026-11-08 (`omni upload ... --captions-only`); ids in `upload_log.json`.
 - **End screen:** set in Studio 2026-11-08, 5:06:03 to the end: Subscribe (top right) and a Video element on "Most
