@@ -1,0 +1,55 @@
+{
+  "call_id": "86e94b3a36464afcac58aa25024677aa",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "retention": 8
+  },
+  "blockers": [
+    {
+      "quote": "In the dark window, a dim copy of your head, with its own counter.",
+      "why": "No new power rule after the halfway point: this introduces a counter over yourself, which the established rule cannot explain.",
+      "fix": "Replace with: \"In the dark window, your reflection watches the other counters flip.\"",
+      "domain": "story",
+      "line": 103
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 12,
+      "quote": "> CHANGE: An unplanned Friday train home makes the counter climb: it counts your trains, not her years.",
+      "fix": "Match the actual turn: \"> CHANGE: When you promise another Friday home, the counter climbs: it counts your future visits, not her years.\""
+    },
+    {
+      "line": 53,
+      "quote": "In one taste test, students were told, \"This is your last chocolate.\"",
+      "fix": "Compress lines 53\u201354 into one line so the chai scene does not pause for a lecture: \"Students told one chocolate was their last picked it as their favourite 64% of the time, whatever the flavour (c02).\""
+    },
+    {
+      "line": 147,
+      "quote": "> BUBBLE: You: \"Next Friday.\"",
+      "fix": "Make the plan large enough to earn 260: replace it with \"> BUBBLE: You: \"First Friday. Every month.\"\" and show a monthly repeat on the timetable and train app."
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "And she'll be at that door. She always is."
+    },
+    {
+      "line": 132,
+      "quote": "You're not at the start of your time with her. You're at the tail end."
+    },
+    {
+      "line": 179,
+      "quote": "Of course she is."
+    }
+  ],
+  "error": "",
+  "output_sha256": "537866de58f7c220fca0eaa5d381137d09f7d9729480d4d00f6cad87899356b3",
+  "draft_sha256": "a28bcf102f589ac833c541134fc08fa7453bcf73a9580d1900c2e6d7e1d5fa69"
+}

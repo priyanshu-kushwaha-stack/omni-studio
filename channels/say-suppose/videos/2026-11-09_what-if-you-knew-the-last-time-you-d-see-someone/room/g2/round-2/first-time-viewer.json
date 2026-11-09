@@ -1,0 +1,15 @@
+{
+  "call_id": "f77b586a0828428b8eabec6dc647561d",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "family": "xai",
+  "status": "failed",
+  "scores": {},
+  "blockers": [],
+  "suggestions": [],
+  "keep": [],
+  "error": "cursor-agent exited 124",
+  "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "draft_sha256": "c1cf28f799bd566af2d2fe401a2bce03b7eea984cd64423778c0581c0fe80214"
+}

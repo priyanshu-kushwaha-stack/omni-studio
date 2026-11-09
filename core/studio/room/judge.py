@@ -12,7 +12,7 @@ from typing import Any, Optional
 
 from studio.room.call import CallContext, build_command, cli_text, cli_version, invoke
 from studio.room.ledger import Ledger
-from studio.room.models import cli_of, family_of
+from studio.room.models import cli_of, family_of, timeout_of
 from studio.room.snapshot import sha256_text
 from studio.room.verdict import BadVerdict, extract_json
 
@@ -36,9 +36,10 @@ def parse_judge(text: str) -> str:
 
 
 def run_judge(new_text: str, best_text: str, *, model: str, brief: str, ledger: Ledger, ctx: CallContext,
-              out: Path, runner=None, timeout: float = 600, registry: Optional[dict] = None,
+              out: Path, runner=None, timeout: Optional[float] = None, registry: Optional[dict] = None,
               inputs: Optional[dict[str, str]] = None) -> dict[str, Any]:
     family = family_of(model, registry)
+    timeout = timeout_of(model, registry) if timeout is None else timeout
     version = cli_version(cli_of(model, registry), runner)
     picks, call_ids, statuses = [], [], []
     for a, b in ((new_text, best_text), (best_text, new_text)):

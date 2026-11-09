@@ -1,0 +1,11 @@
+{
+  "round": 1,
+  "draft_sha256": "f790a02a58db7565c68d8cf1befef060fd4acd3370d0e2e3c40239829530b6ac",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": false,
+  "kind": "script"
+}

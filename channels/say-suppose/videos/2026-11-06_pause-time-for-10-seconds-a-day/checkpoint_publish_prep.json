@@ -3,16 +3,29 @@
   "project_id": "2026-11-06_pause-time-for-10-seconds-a-day",
   "pipeline_type": "studio-whatif",
   "stage": "publish_prep",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-08T12:49:48.848068+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-09T16:36:28.382808+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
     "for_owner": "G7: read publish.md and upload.yaml (title, description with sources, chapters, tags, not for kids, synthetic-content answer 'no' to confirm), pick a thumbnail in renders/packaging/. qc publish_prep passes; the upload dry run prints a private request. Before a real upload: the OAuth client secret and the say-suppose token (first run with --first-auth), and omni upload --install.",
     "media": "renders/edit-v6.mp4",
-    "dub_hi": "dub/hi/pause-time-hi-dub.mp3"
+    "dub_hi": "dub/hi/pause-time-hi-dub.mp3",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-09T16:36:28.075919+00:00",
+      "via": "omni approve",
+      "proof": "c8657df092dcfd87e9cc367e3e6452db8c7360c457a658b27ae190b381938c21",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-06_pause-time-for-10-seconds-a-day/renders/edit-v6.mp4",
+        "sha256": "a23e449e16c5319d03360374cd2a0f2bcf3cb10fbbfb6af09b157bb89390e78f",
+        "at": "2026-11-09T16:36:28.075919+00:00",
+        "metadata_sha256": "085b672bb51a85aebe5478d60ad42b6527493540adf09c3671bb2eb29d772759",
+        "proof": "1c9dfbf3d9ee226b37ccec21aa35192996a9db8d69b0012a4a6103655e561bb3"
+      }
+    }
   }
 }
