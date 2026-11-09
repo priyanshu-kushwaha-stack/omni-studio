@@ -1,0 +1,16 @@
+Source URL: https://elevenlabs.io/docs/help-center/legal/audio-detector/will-watermarks-cause-my-content-to-be-flagged-downranked-or-demonetized-on-you-tube-or-other-platforms.md
+Final URL after redirects: https://elevenlabs.io/docs/help-center/legal/audio-detector/will-watermarks-cause-my-content-to-be-flagged-downranked-or-demonetized-on-you-tube-or-other-platforms.md (HTTP 200)
+Fetched at (UTC): 2026-11-09T05:51:20Z
+Method: curl (page served as Markdown by the ElevenLabs docs site; saved as-is)
+Page's own last-updated / effective date: not shown
+sha256 of raw download: b9f5a5f7060c5d74053436b5bd7f2405d28d7f063cae3037835d3e250cb3fd87
+Note: The old help.elevenlabs.io help centre returns 403 to curl and, in a browser, says it has moved to https://elevenlabs.io/docs/help-center/.
+========================================================================
+
+> This is a page from the ElevenLabs documentation. For a complete page index, fetch https://elevenlabs.io/docs/llms.txt. For the full documentation in a single file, fetch https://elevenlabs.io/docs/llms-full.txt.
+
+# Will watermarks cause my content to be flagged, downranked, or demonetized on YouTube or other platforms?
+
+No other platforms can currently detect ElevenLabs watermarks. Our watermarking is focused on public AI transparency — giving people the ability to verify whether audio is AI-generated — and is not connected to other platforms’ monetization or content policies.
+
+For more information, see [What is watermarking, and why is ElevenLabs using it?](/docs/help-center/legal/audio-detector/what-is-watermarking-and-why-is-eleven-labs-using-it)

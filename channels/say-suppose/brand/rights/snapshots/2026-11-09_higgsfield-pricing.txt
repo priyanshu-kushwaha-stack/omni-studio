@@ -1,0 +1,33 @@
+Source URL: https://higgsfield.ai/pricing
+Final URL after redirects: https://higgsfield.ai/pricing
+Fetched at (UTC): 2026-11-09T05:53:43Z
+Method: browser (built-in browser, document.body.innerText; curl returned only ~86 words because the page is rendered by JavaScript). EXCERPT: the plan cards and the "Access & Features" rows; the per-model credit tables are omitted.
+Page's own last-updated / effective date: not shown
+sha256 of raw download: n/a for the browser capture. The curl download of the same URL (JS shell, no plan text) had sha256 79664fa1157c4592cd5147f6a02244677743f43579af37843e2b6195aa01b17f
+Note: a cookie banner was shown and was not interacted with. The page lists no audio or music models and says nothing about third-party model terms.
+========================================================================
+
+All plans — For individual creators & Enterprises — Individual / Business plans — Monthly / Annual (Save up to 30%)
+
+Basic — For first-time AI creators — $9 /mo billed yearly — 120 credits / month
+Pro — For everyday AI creation — $29 $23 /mo billed yearly — 600 credits / month — "All models & features"
+Max — For ambitious AI projects — $79 $59 /mo billed yearly — 1,800 credits / month — "All models & features"
+
+"Unlimited models and Free Generations on plans are accessible only via higgsfield.ai and are not accessible on MCP/CLI, Canvas or Supercomputer."
+
+Compare features: Basic $9/month, Pro $23/month, Max (BEST VALUE) $59/month, billed annually.
+
+Access & Features (rows): Commercial use; Fast-track generation; Access to characters; Start & End Frame control; Higgsfield ads; Higgsfield speak; UGC builder; Priority access to new models; Priority access to new features
+Values as rendered (row by row, Basic / Pro / Max):
+Commercial use: Included / Included / Included
+Fast-track generation: Included / Included / Included
+Access to characters: Included / Included / Included
+Start & End Frame control: Not included / Included / Included
+Higgsfield ads: Included / Included / Included
+Higgsfield speak: Not included / Included / Included
+UGC builder: Not included / Included / Included
+Priority access to new models: Not included / Included / Included
+Priority access to new features: Not included / Included / Included
+(The innerText lists the 27 values in sequence; the row-by-row grouping above is the capturer's reading of a flattened table, three values per row.)
+
+Frequently Asked Questions (titles only): How do credits work? / Is my subscription automatically renewed? / How many images or videos can I generate? / How can I purchase extra credits? / How does Unlimited work? / How does 365 Unlimited promo work? / Can I change my subscription after purchase? / How much does it cost to use Higgsfield Supercomputer?

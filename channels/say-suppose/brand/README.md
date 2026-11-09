@@ -52,5 +52,8 @@ sound like one channel.
 - **The owner's picks (2026-11-07).** Light: the first version (`e7d9677a`). Dark: the first version (`df65322c`).
   Kept as `brand/music/theme-light.mp3` and `theme-dark.mp3`; that folder is git-ignored apart from its `.gitignore`.
   Re-fetch them by job id on a fresh checkout.
+- **Rights (2026-11-09).** `music-rights.md`, with the terms snapshotted in `rights/snapshots/`: as finished audio in
+  monetised videos, Shorts and dubs, yes; as ACE-Step `reference_audio`, unclear (an owner decision before the next
+  public video, `rules/sound.md` #11).
 - **CLI gotcha.** `batch_size 2` makes two jobs, but the CLI's `create` prints only the first id. Find the second
   with `higgsfield generate list`.

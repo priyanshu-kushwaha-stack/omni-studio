@@ -1,0 +1,783 @@
+Source URL: https://higgsfield.ai/terms
+Final URL after redirects: https://higgsfield.ai/terms-of-use-agreement (HTTP 200)
+Fetched at (UTC): 2026-11-09T05:47:07Z
+Method: curl (HTML converted to text with stdlib html.parser; site navigation and footer trimmed)
+Page's own last-updated / effective date: Last updated: October 23, 2026
+sha256 of raw download: a1e751e70fce1d67ade701bfeba8d3b616b47052d93df97879e0594b5338c3a7
+Note: https://higgsfield.ai/terms redirects to /terms-of-use-agreement; /terms-of-use and /terms-of-service return 404.
+========================================================================
+
+Terms of Use Agreement
+1. Use of the Service
+
+1.1 Scope1.2 Licenses1.3 Supplemental Terms1.4 Updates1.5 Integration and Usage Limitations1.6 Supercomputer Agent1.7 Changes to Models and Features
+
+2. Registration
+
+2.1 Eligibility2.2 Registering Your Account2.3 Registration Data2.4 Your Account2.5 Organizations and Workspaces
+
+3. Responsibility for Content
+
+3.1 Types of Content3.2 Storage3.3 Connected Accounts3.4 Content Retention and Inactive Accounts
+
+4. Ownership
+
+4.1 The Service4.2 Your Content4.3 License to Your Content4.4 User Inputs and Outputs4.5 Username4.6 Feedback4.7 Contests, Campaigns, and Promotions
+
+5. User Conduct and Certain Restrictions
+
+5.1 Restrictions5.2 Other Restrictions5.3 Biometric Information5.4 Personal Information in Inputs5.5 AI Disclosure
+
+6. Monitoring and Reporting
+
+6.1 Monitoring6.2 Moderation6.3 Disclosure6.4 Provenance and Watermarking6.5 Non-Consensual Intimate Imagery6.6 Compliance with Removal Requests
+
+7. Interactions with Other Users
+
+7.1 User Responsibility7.2 Content Provided by Other Users
+
+8. Third-Party Services
+
+9. Purchase Terms and Refunds
+
+9.1 Third-Party Service Provider9.2 Payment9.3 Refunds9.4 Credits9.5 Promotional Credits9.6 Add-On and Package Credits9.7 Taxes
+
+10. Subscriptions
+
+10.1 Subscriptions10.2 Automatic Renewal10.3 Cancelling Subscriptions10.4 Effect of Cancellation10.5 Upgrades and Downgrades10.6 Unlimited Use Plans10.7 Free Trials and Promotional Offers
+
+11. Developer Terms
+
+11.1 Applicability11.2 Definitions11.3 API Key Security11.4 Compromise Notification11.5 End User Responsibility11.6 Developer Data Handling11.7 Output Responsibility11.8 Attribution and Branding11.9 Monitoring and Compliance11.10 Updates and Compatibility11.11 Beta Developer Features11.12 Agent and Automated Access11.13 Third-Party MCP Clients and Platforms11.14 Vulnerability Disclosure
+
+12. Indemnification
+
+13. Disclaimer of Warranties
+
+13.1 Service Offered As-Is13.2 Outputs13.3 Meeting Requirements13.4 Downloads13.5 Beta Features13.6 No Liability for Conduct of Third Parties13.7 Third-Party Infrastructure13.8 Developer Access and Supercomputer Agent
+
+14. Limitation of Liability
+
+14.1 Disclaimer of Certain Damages14.2 Cap on Liability14.3 User Content14.4 Exclusion of Damages14.5 Basis of the Bargain
+
+15. Procedure for Making Claims of Intellectual Property Rights Infringement
+
+16. Term and Termination
+
+16.1 Term16.2 Termination by Company16.3 Termination by You16.4 Effect of Termination16.5 Account Deletion and Data Retention16.6 No Subsequent Registration
+
+17. Users Outside the U.S.
+
+17.1 International Access17.2 Right of Withdrawal (EU/EEA and UK Consumers)
+
+18. Arbitration Agreement
+
+18.1 Applicability18.2 Informal Dispute Resolution18.3 Waiver of Jury Trial18.4 Waiver of Class and Other Non-Individualized Relief18.5 Rules and Forum18.6 Arbitrator18.7 Authority of Arbitrator18.8 Attorneys’ Fees and Costs18.9 Batch Arbitration18.10 30-Day Right to Opt Out18.11 Invalidity; Expiration18.12 Modification
+
+19. General Provisions
+
+19.1 Electronic Communications19.2 Assignment19.3 Force Majeure19.4 Questions, Complaints, Claims19.5 Consumer Complaints19.6 Agreement Updates19.7 Exclusive Venue19.8 Governing Law19.9 Notice19.10 Waiver19.11 Severability19.12 Export Control19.13 Headings19.14 Entire Agreement
+
+Terms of Use Agreement
+
+Last updated: October 23, 2026
+
+Welcome! This Terms of Use Agreement (“Terms of Use”, and together with any applicable Supplemental Terms as defined in Section 1.3, the “Agreement”) describes the terms and conditions of your relationship with Higgsfield Inc. and our affiliated entities (“Company,” “Higgsfield,” “we,” “us,” or “our”). This Agreement applies to your use of (i) the website located at https://higgsfield.ai/ and any of Company’s other websites that link to these Terms of Use (collectively, the “Website”) and (ii) the services, content, and other resources available on or enabled via our Website, including any application programming interfaces (“API”), model context protocol integrations (“MCP”), command-line interface tools (“CLI”), an AI agent service (“Supercomputer Agent”), or similar integrations that we offer (collectively, with our Website, the “Service”).
+
+READ THIS AGREEMENT CAREFULLY. IT GOVERNS YOUR ACCESS AND USE OF THE SERVICE AND APPLIES TO ALL VISITORS AND USERS. BY ACCESSING OR USING THE SERVICE IN ANY WAY, YOU REPRESENT THAT: (1) YOU HAVE READ, UNDERSTAND, AND AGREE TO BE BOUND BY THIS AGREEMENT, (2) YOU ARE AT LEAST 18 YEARS OLD (OR THE AGE OF MAJORITY IN YOUR JURISDICTION, IF HIGHER) AND OF LEGAL AGE TO FORM A BINDING CONTRACT WITH COMPANY, AND (3) YOU ARE NOT BARRED FROM USING THE SERVICE UNDER THE LAWS OF YOUR PLACE OF RESIDENCE OR ANY OTHER APPLICABLE JURISDICTION. IF YOU DO NOT AGREE TO BE BOUND BY THE TERMS OF USE, YOU MAY NOT ACCESS OR USE THE SERVICE.
+
+SUBSCRIPTIONS NOTICE. IF YOU SUBSCRIBE TO THE SERVICE, YOUR SUBSCRIPTION WILL BE AUTOMATICALLY RENEWED FOR ADDITIONAL PERIODS OF THE SAME DURATION AS THE INITIAL TERM AT COMPANY’S THEN-CURRENT FEE FOR THE EQUIVALENT SERVICE UNLESS YOU OPT OUT OF THE AUTOMATIC RENEWAL IN ACCORDANCE WITH SECTION 10.3 (CANCELLING SUBSCRIPTIONS) BELOW. READ SECTION 10 BELOW CAREFULLY FOR ALL DETAILS.
+
+ARBITRATION, CLASS ACTION/JURY TRIAL WAIVER AGREEMENT. SECTION 18 GOVERNS HOW TO RESOLVE DISPUTES BETWEEN YOU AND COMPANY. IT INCLUDES AN AGREEMENT THAT GENERALLY REQUIRES ALL DISPUTES TO BE RESOLVED BY BINDING AND FINAL ARBITRATION. SECTION 18 ALSO CONTAINS A CLASS ACTION AND JURY TRIAL WAIVER. UNLESS YOU OPT OUT OF THE ARBITRATION AGREEMENT WITHIN THIRTY (30) DAYS IN ACCORDANCE WITH SECTION 18.10 BELOW: (1) YOU WILL ONLY BE PERMITTED TO PURSUE DISPUTES OR CLAIMS AND SEEK RELIEF AGAINST US ON AN INDIVIDUAL BASIS, NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY CLASS OR REPRESENTATIVE ACTION OR PROCEEDING, AND YOU WAIVE YOUR RIGHT TO PARTICIPATE IN A CLASS ACTION LAWSUIT OR CLASS-WIDE ARBITRATION; AND (2) YOU ARE WAIVING YOUR RIGHT TO PURSUE DISPUTES OR CLAIMS AND SEEK RELIEF IN A COURT OF LAW AND TO HAVE A JURY TRIAL. READ SECTION 18 CAREFULLY FOR ALL DETAILS.
+
+THE AGREEMENT IS SUBJECT TO CHANGE BY COMPANY IN ITS SOLE DISCRETION AT ANY TIME AS SET FORTH IN SECTION 19.6 (AGREEMENT UPDATES).
+
+1. USE OF THE SERVICE.
+
+1.1. Scope. The Service and content available on the Service are protected by intellectual property laws. Your right to access and use the Service, in whole or in part, is governed by this Agreement. If you are accessing or using the Service on behalf of an entity, you represent that you have the authority to enter into this Agreement on behalf of the entity identified in the account registration process. Accordingly, all references to “you” or “your” in this Agreement will also be deemed to include such entity. You also acknowledge, agree, and consent to the terms of our Privacy Policy and Cookie Notice that are incorporated herein by reference.
+
+1.2. Licenses. Subject to your compliance with this Agreement, Company grants you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to: (i) access and use the Service; and (ii) access and use any APIs, MCP integrations, CLI tools, Supercomputer Agent, and other integrations Company makes available to you (if any), solely for your own personal or internal business purposes or, where applicable, to build and operate applications for your end users in accordance with Section 11.
+
+1.3. Supplemental Terms. Your use of, and participation in, certain features and functionality of the Service may be subject to additional terms (“Supplemental Terms”). Such Supplemental Terms will either be described in the applicable supplemental Service or will be presented to you for your acceptance when you sign up to use the supplemental Service. If these Terms of Use are inconsistent with the Supplemental Terms, then the Supplemental Terms control with respect to such supplemental Service. Enterprise, business, or organizational use of the Service may be governed by a separate written agreement between you and Company (an "Enterprise Agreement"). If an Enterprise Agreement applies, it controls over these Terms of Use to the extent of any conflict with respect to that use.
+
+1.4. Updates. The Service is evolving and improving. As a result, Company may require you to install updates to any software that you have installed on the devices through which you access or use the Service (“Device”). You acknowledge and agree that Company may update the Service with or without notifying you. You may need to update third-party software from time to time in order to continue to use the Service. Any future release, update or other addition to the Service will be subject to this Agreement.
+
+1.5. Integration and Usage Limitations. Company may impose limits on your use of the API, MCP, CLI, Supercomputer Agent, or any other programmatic access to the Service ("Usage Limits"), including limits on: (i) the number of API calls or requests; (ii) request frequency and concurrency; (iii) maximum file or payload size; (iv) bandwidth and throughput; (v) compute resources, GPU hours, or processing capacity; and (vi) any other parameter Company deems appropriate in its sole discretion. Usage Limits applicable to your Account are communicated through your Account settings, the Service interface, API response headers, or the applicable documentation. Usage Limits may vary by subscription tier and may be updated from time to time. Company may impose or modify Usage Limits without notice. Company may use technical measures to enforce Usage Limits, including rate limiting, throttling, queuing, or temporary suspension of access. Requests that exceed Usage Limits may be rejected or delayed. You shall not attempt to circumvent, bypass, or evade any Usage Limits, including by creating multiple Accounts, distributing requests across Accounts, or using any other technique for the purpose of avoiding the applicable limits. Company may, in its sole discretion, agree to increase Usage Limits for your Account, which may be subject to additional fees or terms.
+
+1.6. Supercomputer Agent. This Section 1.6 applies if you access or use Company’s “Supercomputer Agent,” a subscription-based chat interface service for interacting with AI agents (referred to as “Supercomputer” in the Service interface). Subscription tiers (Starter, Plus, and Ultra), features, Credit (as defined in Section 9.4) allocations, and storage caps for the Supercomputer Agent are described in the applicable documentation or your Account settings.
+
+(a) Description. Supercomputer Agent provides access to an AI agent with features that may include skills, persistent memory, scheduled automations, and parallel chat sessions, as described in the applicable documentation or your Account settings.
+
+(b) Usage Requirements. You shall use Supercomputer Agent only for lawful purposes and in compliance with this Agreement. You shall not use Supercomputer Agent to: (i) provide standalone access to the underlying Service to third parties without independent value added; for the avoidance of doubt, creating and publishing applications, skills, or other content through Company's creator marketplace or similar features for use by other users is permitted; (ii) conduct network attacks, distribute malware, or engage in any activity that threatens the security or integrity of Company's infrastructure; (iii) exceed any allocated resource quotas, storage limits, or Credit budgets communicated through your Account settings or the applicable documentation; or (iv) mine cryptocurrency without Company's prior written approval.
+
+(c) Service Availability. Supercomputer Agent features and capacity are subject to availability and your subscription tier. Company does not guarantee uninterrupted access to any particular feature or capacity level. Company may schedule maintenance windows with reasonable advance notice.
+
+(d) Supercomputer Agent Billing. Fees for Supercomputer Agent are charged on a subscription basis at the rate applicable to your subscription tier (e.g., Starter, Plus, Ultra), as specified in your Account settings or the applicable documentation. Each subscription tier includes an allocation of Credits per billing period; Credit consumption is metered by Company's systems, which constitute the authoritative record of usage. Credits may be applied to any features or capabilities of the Supercomputer Agent that Company designates as Credit-eligible (including, without limitation, agent tasks, persistent memory and self-learning, and storage), as well as to additional features or capabilities Company may introduce. Company may change which features or capabilities consume Credits, and the applicable Credit rates, on a prospective basis. If your Credit usage exceeds the allocation included in your subscription tier or any purchased Add-On Credits, Company may charge overage fees at the rates specified in your Account settings or the applicable documentation. Company will use commercially reasonable efforts to notify you before overage charges are incurred, but you remain liable for all usage. If your Account becomes Past Due under Section 10.2, Company may suspend access to Supercomputer Agent, including any in-progress agent tasks, automations, and scheduled activities. Company is not liable for any loss of data or interrupted agent tasks resulting from suspension due to non-payment.
+
+(e) Supercomputer Agent Performance and Liability. Company will use commercially reasonable efforts to make Supercomputer Agent available and performing in accordance with the applicable documentation. You acknowledge that actual performance may vary based on agent task complexity, network conditions, shared infrastructure utilization, and other factors. Company is not liable for any loss of data, failed agent tasks, or interrupted agent tasks resulting from: (i) scheduled or emergency maintenance; (ii) hardware failures, network interruptions, or infrastructure events; (iii) your exceeding any applicable Usage Limits, Credit budgets, or storage caps; or (iv) errors or ambiguities in your instructions or Inputs to the agent; or (v) actions the Supercomputer Agent takes in reliance on your instructions, including navigation to, interactions with, or transactions on any third-party website, service, or destination. You are responsible for the actions the Supercomputer Agent takes on your behalf, and Company is not liable for the conduct of, or any consequences arising from, Third-Party Services (Section 8) the agent accesses. You are solely responsible for reviewing agent task results and maintaining copies of any data you submit to or generate through Supercomputer Agent.
+
+(f) Data Isolation. Supercomputer Agent may operate on shared infrastructure. Company implements commercially reasonable technical measures to isolate your data and agent sessions from those of other users. Company does not guarantee that data isolation measures will prevent all unauthorized access in the event of an infrastructure compromise. You are responsible for encrypting sensitive data at rest and in transit when transmitting data to or from Supercomputer Agent.
+
+1.7. Changes to Models and Features. The specific AI models, model versions, and features available through the Service may change over time. Company may add, modify, substitute, deprecate, retire, or remove any model, model version, or feature at any time, provided that the Service continues to provide substantially similar overall functionality. You should not rely on the continued availability of any particular model, model version, or feature, and a change to or substitution of an underlying model does not, by itself, constitute a failure to provide the Service. Notwithstanding the disclaimers in Section 13, if Company materially and adversely degrades the overall functionality of a paid plan, or discontinues a paid feature in its entirety, Company will use commercially reasonable efforts to provide advance notice, and you may cancel the affected Subscription and receive a pro-rata refund of prepaid, unused amounts.
+
+2. REGISTRATION.
+
+2.1. Eligibility. You must be at least 18 years old, or the age of legal majority in your jurisdiction if higher, to create an Account or use the Service. By accessing or using the Service, you represent that you meet this requirement. If you do not, you may not access or use the Service.
+
+2.2. Registering Your Account. In order to access certain features of the Service, you may be required to register an account on the Service (“Account”).
+
+2.3. Registration Data. In registering an Account, you shall (i) provide true, accurate, current, and complete information about yourself as prompted during the registration process (“Registration Data”), and (ii) maintain and promptly update the Registration Data to keep it true, accurate, current, and complete.
+
+2.4. Your Account. Notwithstanding anything to the contrary herein, you acknowledge and agree that you have no ownership or other property interest in your Account, and you further acknowledge and agree that all rights in and to your Account are owned by and inure to the benefit of Company. Furthermore, you are responsible for all activities that occur under your Account. You shall monitor your Account to restrict use by individuals under the age of 18 (or the age of majority in your jurisdiction, if higher), and you will accept full responsibility for any unauthorized use of the Service by such individuals. You may not share your Account or login credentials with anyone, and you agree to notify Company immediately of any unauthorized use of your password or any other breach of security. API Key security and compromise notification are governed by Section 11. If you provide any information that is untrue, inaccurate, incomplete, or not current, or Company has reasonable grounds to suspect that any information you provide is untrue, inaccurate, incomplete, or not current, Company has the right to suspend or terminate your Account and refuse any and all current or future use of the Service (or any portion thereof). You agree not to create an Account on behalf of any individual other than yourself, except that you may create an Account on behalf of an entity that you are authorized to represent, as described in Section 1.1. Company reserves the right to remove or reclaim any usernames at any time and for any reason, including but not limited to, claims by a third party that a username violates the third party’s rights. You agree not to create an Account or use the Service if you have been previously removed by Company, or if you have been previously banned from the Service.
+
+2.5. Organizations and Workspaces. The Service may allow multiple users to access a shared organization, team, or workspace (“Workspace”). The Workspace owner or administrator is responsible for the Workspace, including payment of all Fees for the Workspace and its members. Workspace administrators may access, monitor, manage, share, remove, and reassign the Content, activity, and Account settings of members within the Workspace, and members should have no expectation of privacy in a Workspace as against its administrators. Rights to access a Workspace, and to the Content and Credits within it, are not transferable between members. When a member’s access or the Workspace is terminated, Content and data are handled as described in Section 16.5.
+
+3. RESPONSIBILITY FOR CONTENT.
+
+3.1. Types of Content. You acknowledge that any information, data, text, images, video, software, music, sound, graphics, tags and other materials accessible through the Service (collectively, “Content”) is the sole responsibility of the party from whom such Content originated. This means that you, and not Company, are entirely responsible for all Content that you input, upload, post, transmit or otherwise make available (“Make Available”) through the Service (“Your Content”). Similarly, other users of the Service, and not Company, are responsible for all Content that they Make Available through the Service (“User Content”).
+
+3.2. Storage. Except as expressly provided in Section 16.5 (Account Deletion and Data Retention), Company has no obligation to store any of Your Content. Company has no responsibility or liability for the deletion or accuracy of any Content, including Your Content; the failure to store, transmit, or receive transmission of Content; or the security, privacy, storage, or transmission of other communications originating with or involving use of the Service. Certain features and functionality of the Service may enable you to specify the level at which the Service restricts access to Your Content. In such cases, you are solely responsible for applying the appropriate level of access to Your Content. If you do not choose a level of access, the Service may default to its most permissive setting. You agree that Company retains the right to create reasonable limits on the use and storage of Content, including Your Content, such as limits on file size, storage space, processing capacity, and storage duration, and measures affecting latency (such as the use of cold storage), in each case as determined by Company in its sole discretion.
+
+3.3. Connected Accounts. In order to access certain features and functions of the Service, you may need to link certain third‑party services to your Account (each, a “Connected Account”). You are solely responsible for the proper setup and integration of your Connected Accounts, and Company will not be responsible for any failure in setting up or integrating any Connected Account. By integrating any Connected Account, (i) you represent and warrant that you are entitled to disclose any access credentials provided by you to Company and/or to grant Company access to your Connected Account, (ii) you represent and warrant that you are in good standing with respect to such Connected Account, and (iii) Company may receive access to any Content made available in connection with such Connected Account, so that it may be used in accordance with this Agreement. You further acknowledge and agree that access and performance of each Connected Account are solely determined by the Connected Account’s provider. Company will have no liability for any unavailability of any Connected Account or any third‑party provider’s decision to discontinue, suspend, or terminate any Connected Account.
+
+3.4. Content Retention and Inactive Accounts. Company may establish retention periods for Your Content (including past Outputs), which may vary by subscription tier. After the applicable retention period, Your Content may be removed from active access and migrated to cold storage (which may result in increased retrieval times or reduced availability). If your Account has no login activity, no generation activity, and no active Subscription (as defined in Section 10.1) for a continuous period of 30 days, Company may classify your Account as inactive. Company may migrate Your Content from active access to cold storage associated with inactive Accounts after providing reasonable advance notice to the email address associated with the Account. Reactivating an inactive Account will migrate Your Content from cold storage to active storage.
+
+4. OWNERSHIP.
+
+4.1. The Service. Except with respect to Your Content, you agree that Company and its suppliers or licensors own all right, title, and interest in the Service. You may not remove, alter, or obscure any copyright, watermark, trademark, service mark or other proprietary notices incorporated in or accompanying the Service.
+
+4.2. Your Content. Company does not claim ownership of Your Content. However, when you Make Available any Content on or to the Service, you represent that: (a) you have all necessary rights to Your Content to grant the licenses set forth in Sections 4.3 and 4.4 below; (b) to the extent Your Content contains the name, likeness, voice, or other identifiable attributes of any individual (including yourself), you have obtained all necessary rights, releases, and consents from such individual to use such name, likeness, voice, or other identifiable attributes in connection with the Service, including for the generation of Outputs; (c) Your Content does not infringe or violate the copyright, trademark, publicity rights, privacy rights, or other intellectual property or proprietary rights of any third party; and (d) you have the right to grant the licenses herein without the payment of any additional compensation to any third party.
+
+4.3. License to Your Content. You grant Company a non‑exclusive, worldwide, fully‑paid, royalty‑free, sublicensable to Company's service providers as reasonably necessary, right and license to use, copy, reproduce, modify, adapt, prepare derivative works from, translate, distribute, publicly perform, and publicly display Your Content (in whole or in part) for the purpose of operating, providing, and maintaining the Service, and as further described in Section 4.4. This license is limited to those purposes and continues only while Your Content is stored on or made available through the Service. It ends when you delete Your Content or delete your Account, except for (i) copies kept in routine backups for a limited period, (ii) Content you have shared publicly or that other users have used as permitted before deletion, and (iii) retention required by law or under Section 16.5. Company may assign this license only in connection with a merger, acquisition, or sale of assets. To the extent permitted by applicable law, and solely to the extent necessary for the uses you authorize under this Section 4.3 and Section 4.4, you waive, and agree not to assert, any moral rights you may have in Your Content. Please remember that other users may be able to search for, see, use, modify and/or reproduce any of Your Content that you submit to any area of the Service that is accessible by other users.
+
+4.4. User Inputs and Outputs. Company utilizes software and technology, including artificial intelligence, to process user inputs to the Service, such as descriptive and instructive text prompts, reference images and videos, and other content (the “Input,” which is part of Your Content hereunder), and generate and return outputs based on such Inputs (the “Output”). Company does not claim ownership of any of your Inputs or Outputs, nor does it restrict your commercial use of Outputs. Your rights in Outputs you have generated and exported survive cancellation of your subscription or deletion or termination of your Account, and you may transfer or sublicense your rights in Outputs to your clients or other third parties. You acknowledge and agree that Your Content, Inputs, and Outputs may be used by Company to train, develop, enhance, evolve, and improve its (and its affiliates’) AI models, algorithms, and related technology, products and services. Different terms apply to enterprise and business customers who use the Service under an Enterprise Agreement (see Section 1.3); under those agreements, Company does not use the customer's content to train or improve its AI models, and that content is handled as confidential. Such uses may include labeling, classification, content moderation, and model training. You can stop this going forward by deleting Your Content or your Account, as described in Section 16.5. Company may use Your Content, Inputs, or Outputs in Company's own marketing or promotional materials, but only (a) where you have made that content publicly available on the Service (for example, by posting it to the public community page or entering a contest or showcase), or (b) with your consent; Company will not use your private content, or private content you create for or on behalf of a client, in its marketing without your consent. These licenses are subject to the Biometric Information section of our Privacy Policy: any biometric information we derive from Your Content is used only to provide the feature you requested and is handled as described there. You hereby grant to Company the same rights and license set forth in Section 4.3 with respect to any Inputs and Outputs Made Available by you or otherwise generated in connection with your use of the Service, for the purposes described in this Section 4.4. You acknowledge that, due to the nature of artificial intelligence, Outputs generated by the Service may not be unique across users. Other users may receive an Output that is similar or possibly identical to yours. Company does not guarantee the uniqueness, originality, or exclusivity of any Output.
+
+4.5. Username. By submitting Your Content to any non-private area on the Service, you hereby permit Company to identify you by your username (which may be a pseudonym) as the contributor of Your Content.
+
+4.6. Feedback. You agree that submission of any ideas, suggestions, documents, and/or proposals to Company (“Feedback”) is at your own risk and that Company has no obligations with respect to such Feedback. You agree that Company may use your Feedback without any restriction, attribution, or compensation to you.
+
+4.7. Contests, Campaigns, and Promotions. If you enter a contest, sweepstakes, campaign, or similar promotion, or submit Content or Outputs to a Company marketing or promotional program, your participation may be governed by separate or supplemental terms as described in Section 1.3.
+
+5. USER CONDUCT AND CERTAIN RESTRICTIONS.
+
+5.1. Restrictions. As a condition of use, you shall not (and shall not permit any third party to):
+
+(i) use the Service for any purpose that is prohibited by this Agreement or by applicable law;
+
+(ii) take any action, or Make Available any Content, or knowingly create any Output, on or through the Service that:
+
+(a) is unlawful, threatening, abusive, harassing, defamatory, libelous, deceptive, fraudulent, invasive of another’s privacy, tortious, obscene, hateful, offensive, or profane, or that promotes, encourages, glorifies, or provides instructions for suicide, self-harm, or disordered eating;
+
+(b) infringes the rights of any person or entity, including their intellectual property or privacy rights, or depicts them without permission or legal justification;
+
+(c) harms minors in any way, including without limitation any portrayal or depiction of minors (whether real or synthetic) in an inappropriate, lewd, or otherwise objectionable manner;
+
+(d) violates any applicable local, state, national or international law or regulation, or any order of a court;
+
+(e) involves commercial activities and/or sales directed at other users on the Service, such as contests, sweepstakes, or barter, without Company’s prior written consent (for clarity, this clause does not limit your commercial use of Outputs as described in Section 4.4);
+
+(f) advocates, encourages, or assists any third party in doing any of the foregoing activities in this Section; or
+
+(iii) use or access the Service or any Outputs to develop, modify, fine‑tune, distill, or improve any products or services that compete with the Service, including any artificial intelligence or machine‑learning algorithms or models of any kind, except as expressly permitted under Section 5.2(iv).
+
+In appropriate instances, Company may report violations and associated Account information to law enforcement authorities and related institutions. To report content published on the Service that violates these restrictions, please contact support@higgsfield.ai with a description of the content and its location on the Service.
+
+5.2. Other Restrictions. You further agree not (and shall not permit any third party) to:
+
+(i) license, resell, rent, transfer, assign, reproduce, distribute, host, or otherwise commercially exploit the Service;
+
+(ii) frame or utilize framing techniques to enclose the Service or any element of the Service;
+
+(iii) misuse Company’s trademarks, such as in metatags or other “hidden text”;
+
+(iv) use the Service, any Outputs, or any data derived therefrom to train, fine-tune, distill, or otherwise transfer knowledge to any machine-learning model, neural network, or artificial intelligence system, whether or not such system competes with the Service, except: (a) models that you create, train, or fine-tune using the Service with your own Inputs (not Outputs of Company's AI models); or (b) as expressly authorized in writing by Company;
+
+(v) modify, translate, adapt, merge, make derivative works of, disassemble, decompile, distill, reverse compile, or reverse engineer any part of the Service except to the extent the foregoing restrictions are expressly prohibited by applicable law;
+
+(vi) use any software, devices, or other processes (such as spiders, robots, crawlers, avatars, data‑mining tools, and the like) to “scrape” or download data from any web pages contained in the Service. Notwithstanding the foregoing, Company grants the operators of public search engines revocable permission to use spiders to copy materials from the Service for the sole purpose of and solely to the extent necessary for creating publicly available searchable indices of the materials, but not caches or archives of such materials;
+
+(vii) remove or destroy any copyright notices or other proprietary markings contained on or in the Service;
+
+(viii) impersonate any person or entity, including any employee or representative of Company;
+
+(ix) attempt to interfere with the proper functioning of the Service or use the Service in any way not expressly permitted by this Agreement, such as attempting to violate any security features of the Service, introducing viruses, worms, or similar harmful code into the Service, or attempting to interfere with use of the Service by any other user, host or network, including by means of overloading, spamming, or crashing the Service;
+
+(x) use Developer Access to process Protected Health Information (as defined under the U.S. Health Insurance Portability and Accountability Act), payment card data subject to PCI-DSS, or similarly regulated data categories unless Company has provided a specific written addendum authorizing such processing; or
+
+(xi) represent that any Output is human-generated when it is not;
+
+(xii) use the Service to infer, predict, or classify (including through biometric categorization) the sensitive or protected-class attributes of any identifiable individual (such as race, ethnicity, national origin, religion, sexual orientation, health or disability status, or age), except attributes an individual has voluntarily provided for a feature that relies on them;
+
+(xiii) circumvent, disable, defeat, or attempt to bypass any content filter, safety system, content-moderation measure, or other technical or policy limitation Company applies to the Service or its models, including through prompt injection, “jailbreaking,” or similar techniques.
+
+5.3. Biometric Information. Without limiting Section 5.1, you may not use the Service to uniquely identify, verify, or authenticate any individual, and you may not submit biometric identifiers or biometric templates (such as fingerprints, retinal or iris scans, hand-geometry scans, or precomputed faceprints or voiceprints) as Your Content. This restriction does not prevent you from submitting photographs, images, videos, or audio containing a face or voice for use with features that rely on them, as described below. If you submit photographs, images, or videos containing an individual's face, or audio or other recordings containing an individual's voice, as an Input (for example, a feature that relies on a face or voice), you represent and warrant that: (a) you have obtained all consents, releases, and permissions required under applicable law from each individual whose face or voice is included; (b) you have provided any disclosures required by applicable law in connection with the processing of such media through the Service; and (c) you are authorized to grant the licenses set forth in Sections 4.3 and 4.4 with respect to such media. Company does not use such media, or data derived from it, to identify, verify, or authenticate individuals, and processes such media to generate the requested Output and as otherwise described in its Privacy Policy.
+
+5.4. Personal Information in Inputs. Do not submit sensitive personal information, about yourself or anyone else, in text prompts or other Inputs, including full names, contact details, government-issued identifiers, financial account numbers, health information, precise geolocation, and account credentials. This Section does not apply to media submitted for use with specific Service features, which is addressed in Section 5.3.
+
+5.5. AI Disclosure. Where required by applicable law, you will disclose that Output is artificially generated or manipulated, and you will not remove, alter, or obscure any provenance signals or markings Company applies under Section 6.4.
+
+6. MONITORING AND REPORTING.
+
+6.1. Monitoring. Company may, but is not obligated to, monitor and filter the Service and/or Content, including Your Content and Outputs, and User Content, at any time. You hereby provide your consent to such monitoring. Company may review usage patterns for compliance with this Agreement and may limit, suspend, or terminate access as provided in Section 6.2 and Section 16.
+
+6.2. Moderation. Without limiting the foregoing, Company reserves the right to:
+
+(a) remove or refuse to process or post any of Your Content or Output that we reasonably determine to be objectionable, unlawful, or otherwise inconsistent with this Agreement;
+
+(b) take any action with respect to any of Your Content or Output that we deem necessary or appropriate, as we reasonably determine, including if we believe that such Content or Output violates this Agreement, infringes any right of any person or entity, threatens harm to users of the Service or the public, or could create liability for Company;
+
+(c) disclose your identity or other information about you to any third party who claims that you violated their rights;
+
+(d) take appropriate legal action, including without limitation referral to and cooperation with law enforcement and/or other applicable legal authorities, for any potentially illegal or unauthorized use of the Service or if Company otherwise believes that illegal activity has occurred; and/or
+
+(e) terminate or suspend your access to all or part of the Service for any violation of this Agreement, in accordance with Section 16 (Term and Termination). If Company determines that you may have violated any provision of this Agreement, Company may, acting reasonably, immediately change, alter, or remove Your Content or Output, in whole or in part, without prior notice to you.
+
+6.3. Disclosure. Company may disclose any information or materials on or in the Service, including Your Content (and any Output) in Company's possession in connection with your use of the Service, where Company believes in good faith that disclosure is reasonably necessary to (i) comply with applicable laws, legal process, or governmental requests; (ii) enforce this Agreement; (iii) respond to any claims that Your Content (or any Output) violates the rights of third parties; (iv) respond to your requests for customer service; or (v) protect the rights, property, or safety of Company, its users or the public, as Company believes to be necessary or appropriate.
+
+6.4. Provenance and Watermarking. Company may embed machine-readable watermarks, secure metadata, or content-provenance signals (such as those based on the C2PA / Content Credentials standard) into Outputs so that Outputs can be identified as AI-generated. Company may make such markings imperceptible and enable third parties to detect them. Company does not warrant that any marking will be applied to, or persist in, every Output.
+
+6.5. Non-Consensual Intimate Imagery. Company prohibits non-consensual intimate imagery (“NCII”). If you are depicted in, or are the authorized representative of a person depicted in, an intimate image made available through the Service without consent, you may request its removal by completing this form. Company will remove validly reported NCII, including any identical copies hosted on the Service, within forty-eight (48) hours of receiving a valid removal request.
+
+6.6. Compliance with Removal Requests. If Company notifies you in good faith that any of Your Content or Output violates this Agreement or a third party’s rights, or must be removed or disabled, you will promptly (a) stop using and distributing it, (b) delete it from the accounts and systems within your control, and (c) refrain from re-generating substantially the same Output. This obligation is in addition to, and does not limit, Company’s rights under Section 6.2.
+
+7. INTERACTIONS WITH OTHER USERS.
+
+7.1. User Responsibility. You are solely responsible for your interactions with other users of the Service and any other parties with whom you interact through the Service; provided, however, that Company reserves the right (but has no obligation) to intercede in any disputes between you and any other users. You agree that Company will not be responsible for any liability incurred as the result of your interactions with other users.
+
+7.2. Content Provided by Other Users. The Service may contain User Content provided by other users. Company is not responsible for and does not control User Content. Company does not approve or endorse, or make any representations or warranties with respect to, User Content. You use all User Content and interact with other users at your own risk.
+
+8. THIRD‑PARTY SERVICES.
+
+The Service may contain links to third‑party websites (“Third‑Party Websites”), applications (“Third‑Party Applications”), and advertisements for third parties (“Third‑Party Ads”) (collectively, the “Third‑Party Services”). When you click on a link to a Third‑Party Service, we will not warn you that you have left the Service. You become subject to the terms and conditions (including privacy policies) of that other website or destination. Such Third‑Party Services are not under the control of Company, and Company is not responsible for any Third‑Party Services. Company provides these Third‑Party Services only as a convenience and does not review, approve, monitor, endorse, warrant, or make any representations with respect to Third‑Party Services, or any product or service provided in connection therewith. You use all links in Third‑Party Services at your own risk. When you leave our Service, this Agreement and our policies no longer govern. You should review applicable terms and policies, including privacy and data‑gathering practices, of any Third‑Party Services, and make whatever investigation you feel is necessary before proceeding with any transaction with any third party.
+
+Certain features and models available through the Service are provided by third-party model providers. When you use a feature or model powered by a third party, you agree to comply with that provider’s applicable acceptable-use or prohibited-use policies (as updated from time to time), in addition to this Agreement; where those policies are more restrictive, the more restrictive terms govern your use of that feature or model.
+
+9. PURCHASE TERMS AND REFUNDS.
+
+9.1. Third‑Party Service Provider. Company uses Stripe, Inc. and its affiliates as its third‑party service provider for payment services (e.g., card acceptance, merchant settlement, and related services) (the “Third‑Party Service Provider”). If you make a purchase on the Service, you will be required to provide your payment details and any additional information required to complete your order directly to our Third‑Party Service Provider. You agree to be bound by Stripe’s Privacy Policy and its Terms of Service, and hereby consent and authorize Company and Stripe to share any information and payment instructions you provide with one or more Third‑Party Service Provider(s) to the minimum extent required to complete your transactions. Please note that online payment transactions may be subject to validation checks by our Third‑Party Service Provider and your card issuer, and we are not responsible if your card issuer declines to authorize payment for any reason. For your protection, our Third‑Party Service Provider uses various fraud‑prevention protocols and industry‑standard verification systems to reduce fraud and you authorize it to verify and authenticate your payment information. Your card issuer may charge you an online handling fee or processing fee; we are not responsible for this. In some jurisdictions, our Third‑Party Service Provider may use third parties under strict confidentiality and data‑protection requirements for the purposes of payment‑processing services.
+
+9.2. Payment. You shall pay all fees and charges incurred in connection with your Account (“Fees”) in accordance with the fees, charges and billing terms in effect at the time a Fee is due and payable. By providing Company and/or our Third‑Party Service Provider with your payment information, you agree that Company and/or our Third‑Party Service Provider is authorized to immediately invoice your Account for all Fees due and payable to Company hereunder and that no additional notice or consent is required. You shall immediately notify Company of any change in your payment information to maintain its completeness and accuracy. Company reserves the right at any time to change its prices and billing methods in its sole discretion. You agree to have sufficient funds or credit available upon placement of any order to ensure that the purchase price is collectible by us. Your failure to provide accurate payment information to Company and/or our Third‑Party Service Provider or our inability to collect payment constitutes your material breach of this Agreement. Except as set forth in this Agreement or as required by law, all Fees for the Service are non‑refundable. Company may suspend or terminate your access to the Service immediately upon non-payment, subject, in the case of Subscriptions, to the cure period in Section 10.2. Your obligation to pay fees will survive any suspension or termination.
+
+9.3. Refunds. You may request a refund within seven (7) days of your initial purchase, or as permitted by the law in your jurisdiction, provided no Credits (defined below) have been used. If you are a consumer in the EEA or UK, see Section 17.2, which governs your statutory right of withdrawal. Except as otherwise set forth in this Section 9.3, refunds apply only to initial purchases, not renewals, and are subject to a service fee not exceeding six percent (6%) of the initial fee where permitted by law. Otherwise, all amounts paid are non‑refundable. For mid-term Subscription upgrades, a refund may be issued at Company’s discretion if no Credits from the upgraded plan have been used, provided the refund request is made within seven (7) days of the upgrade date. Such refunds are treated as a return of the incremental upgrade fee only and are not available for the base Subscription fee. For one-time or supplementary purchases measured by Credit usage (including credit packs, top-ups, and similar add-on purchases), a refund may be requested only if no Credits from that purchase have been used, provided the refund request is made within seven (7) days of the purchase date; such refunds are subject to the service fee described above where permitted by law. Add-on purchases and upgrades that are not measured by Credit usage (such as feature unlocks, capacity expansions, or similar access-based enhancements) are non-refundable from the moment access is granted, as the benefit is made available immediately upon purchase.
+
+9.4. Credits. You may purchase or receive credits (“Credits”) to use the Service. Purchased Credits constitute prepaid amounts for the Service and may only be used within the specified timeframe. Unused Credits expire upon Account cancellation or discontinuation of the Service, except as provided in Section 16.4 for termination without cause by Company. Credits are also forfeited upon termination for cause under Section 16.2, except that purchased Add-On Credits are forfeited only to the extent permitted by applicable law. Credits have no cash value, are non‑transferable, non‑reloadable, and non‑redeemable for cash except as required by law. Company may change Credit terms at any time, and the pricing of Service obtainable with Credits is subject to change any time at Company’s sole discretion. Subscription Credits are allocated per billing period and do not roll over to subsequent billing periods; unused Subscription Credits at the end of a billing period expire.
+
+9.5. Promotional Credits. Company may, at its discretion, offer loyalty, award, or promotional credits (“Promotional Credits”). Promotional Credits may expire as specified on issuance, have no cash value, and are non‑transferable, non‑reloadable, and non‑redeemable for cash except as required by law. No inactivity or other fees apply to Promotional Credits.
+
+9.6. Add-On and Package Credits. Credits purchased as one-time add-ons or packages ("Add-On Credits") are valid for ninety (90) days from the date of purchase. Add-On Credits are non-recurring and do not automatically replenish upon expiration. Unused Add-On Credits expire at the end of the 90-day window. Unless otherwise stated at the time of purchase, Add-On Credits are consumed after Subscription Credits. Refunds for Add-On Credits are governed by Section 9.3.
+
+9.7. Taxes. The Fees do not include any Sales Tax (defined below) that may be due in connection with the Service. If Company is obligated to collect Sales Tax, it will be collected in addition to the Fees. If any portion of the Service or payments are subject to Sales Tax in any jurisdiction and you have not remitted such tax, you are responsible for the payment of that Sales Tax and any related penalties or interest, and you shall indemnify Company for any liability or expense it incurs. Upon request, you will provide Company with evidence of having paid all applicable taxes. For purposes of this section, “Sales Tax” means any sales or use tax, and any other tax measured by sales proceeds that is the functional equivalent of a sales tax where the applicable jurisdiction does not otherwise impose a sales or use tax.
+
+10. SUBSCRIPTIONS
+
+10.1. Subscriptions. If you purchase access to certain features and functionality of the Service on a time‑limited basis (a “Subscription”), the Fee for such Subscription plus any applicable Sales Tax and fees (“Service Subscription Fee”) will be billed at the start of the Subscription and at regular intervals in accordance with your elections at the time of purchase. Company reserves the right to change the timing of our billing. Company also reserves the right to change the Subscription pricing in accordance with Section 19.6 (Agreement Updates). Company will provide at least thirty (30) days' advance notice of any price increase by email to the address associated with your Account, and any price increase will take effect only from the start of your next Renewal Term; the price for your current term will not change. Where required by law, and for annual Subscriptions, Company will also send a renewal reminder before the Subscription renews. If you do not agree with a price change, you may cancel your Subscription before the next Renewal Term as set forth below.
+
+10.2. Automatic Renewal. If you elect to purchase a Subscription, your Subscription will continue and automatically renew (each renewal period, a "Renewal Term") at Company’s then‑current price for such Subscription until terminated in accordance with this Agreement. The renewal frequency (e.g., monthly, annually) will be designated at the time you sign up and may be modified by you via your Account settings. By subscribing, you authorize Company to charge the payment method designated in your Account now and again at the beginning of each subsequent Subscription period. Upon renewal, if Company does not receive payment, (i) you shall pay all amounts due on your Account upon demand and/or (ii) Company may suspend your Subscription and continue to attempt to charge your designated payment method until payment is received, and may terminate your Subscription subject to the cure window described below. An Account becomes “Past Due” when a scheduled payment fails. During the Past Due period, access to the Service may be suspended or limited. Company will provide a cure window of typically fourteen (14) days from the date of the failed payment, during which you may update your payment method to restore the Account to good standing. If payment is not successfully received within the cure window, Company may terminate your Subscription. Successful payment of all amounts due restores the Account to good standing; the scheduled renewal date is not modified by a late payment.
+
+10.3. Cancelling Subscriptions. If you purchased your Subscription directly from Company, you may cancel by logging into and visiting the “Payment Setting” page of your Account, or by contacting support@higgsfield.ai. Subscription modification/cancellation requests made via email must be sent from the subscriber’s email address on the Account. Company will not accept modification/cancellation requests from third parties.
+
+10.4. Effect of Cancellation. If you cancel, you may continue to use your Subscription until the end of the then‑current term; it will not renew thereafter. No prorated refunds of any portion of the Service Subscription Fee will be provided for the current term, except as required by applicable law. Cancellation of a Subscription (whether by you or automatically following repeated unsuccessful payment attempts under Section 10.2) does not delete your Account or Your Content; Account deletion and data retention are governed by Section 16.5.
+
+10.5. Upgrades and Downgrades. Upgrading your Subscription mid‑term takes effect immediately; any incremental fees will be charged accordingly. Future Renewal Terms will reflect such upgrades. Downgrades take effect on the first day of the next Renewal Term and may cause loss of content, features, or capacity, for which Company is not liable.
+
+10.6. Unlimited Use Plans. To ensure a stable and fair experience for all users, model usage under subscription tiers marketed as “Unlimited” is subject to Company's fair-use limits and the dynamic speed and concurrency limitations described below. Company may restrict, suspend, throttle, or place on a slower processing queue usage that is automated or materially exceeds typical individual use, in order to protect Service quality for other users. Unlimited models operate on a dedicated processing queue, separate from the priority queue used for credit-based generations. During periods of high demand, generation speeds may vary and additional concurrency limits may apply. Processing speed and parallel generation capacity are not guaranteed and may dynamically adjust based on overall platform usage.
+
+10.7. Free Trials and Promotional Offers. Company may offer free trials or promotional pricing for Subscriptions. Unless stated otherwise, at the end of the trial or promotional period your Subscription will automatically convert to a paid Subscription and renew at Company’s then-current standard price for that plan, and Company will charge your payment method on that basis until you cancel. You may cancel before the trial or promotional period ends to avoid being charged, as described in Section 10.3. Any additional trial or promotional terms disclosed at sign-up also apply.
+
+11. DEVELOPER TERMS.
+
+11.1. Applicability. This Section 11 applies to you if you access or use the Service through the API, MCP, CLI, or any other programmatic means ("Developer Access"). The remainder of this Agreement continues to apply in full; this section provides additional terms specific to Developer Access.
+
+11.2. Definitions. The following definitions apply to this Section 11:
+
+(a) "API Key" means any authentication credential, token, secret, or similar identifier issued by Company to authenticate your Developer Access.
+
+(b) "Developer Application" means any software application, integration, workflow, script, or automated process that you build, operate, or maintain using Developer Access.
+
+(c) "End User" means any individual or entity that accesses or uses your Developer Application in a manner that interacts with, relies on, or transmits data to or from the Service.
+
+11.3. API Key Security. API Keys are confidential credentials issued for your use only. You shall not share, sell, transfer, publish, embed in client-side or publicly accessible code, or otherwise expose API Keys to unauthorized parties. You shall store API Keys using industry-standard encryption and access controls. You are responsible for all activity that occurs using your API Keys, whether or not authorized by you.
+
+11.4. Compromise Notification. You shall notify Company promptly (and in any event within 24 hours) if you become aware of or reasonably suspect any unauthorized access to, disclosure of, or use of your API Keys. You shall cooperate fully with Company in investigating and remediating any such incident. Company may require you to rotate API Keys periodically and may revoke any API Key at any time if Company reasonably believes it has been compromised or misused, or if revocation is necessary to protect the security of the Service.
+
+11.5. End User Responsibility. You are solely responsible for the acts, omissions, and activities of your End Users. You shall ensure that your End Users comply with all terms of this Agreement applicable to use of the Service and shall implement reasonable controls to enforce such compliance. You shall not sublicense, resell, redistribute, or make Developer Access available on a standalone basis to any third party, or act as a pass-through or service bureau for the Service with no independent value added.
+
+11.6. Developer Data Handling. You shall comply with all applicable data protection and privacy laws in connection with your use of Developer Access. You are responsible for providing legally adequate privacy notices to your End Users and obtaining all necessary consents for the processing of personal data through the Service. You shall implement and maintain appropriate technical and organizational measures to protect any data processed through or in connection with Developer Access from unauthorized access, loss, alteration, or disclosure.
+
+11.7. Output Responsibility. You are solely responsible for evaluating the accuracy and appropriateness of any Output (as defined in Section 4.4) for your use case and for your End Users. Company does not warrant the accuracy, completeness, originality, or fitness of any Output. You shall not represent to End Users or third parties that Outputs are human-generated. You are responsible for providing any disclosures regarding AI-generated content required by applicable law.
+
+11.8. Attribution and Branding. Where required by Company's documentation or brand guidelines, you shall include appropriate attribution in your Developer Application. You shall not use Company's name, logos, or trademarks in a manner that implies endorsement, sponsorship, or affiliation without Company's prior written consent.
+
+11.9. Monitoring and Compliance. Company may monitor Developer Access for compliance with this Agreement, security, and quality purposes. You shall cooperate with reasonable requests by Company for information or materials to verify your compliance. Company may suspend or restrict your Developer Access immediately and without prior notice if it reasonably believes that: (i) your use poses a security risk to the Service or to other users; (ii) your use may adversely impact the performance or availability of the Service; (iii) your API Keys have been compromised; (iv) you are in breach of this Agreement; or (v) suspension is required by applicable law or a governmental order.
+
+11.10. Updates and Compatibility. Company may modify, update, or discontinue any aspect of Developer Access at any time. You are responsible for ensuring that your Developer Applications remain compatible with the current version of the Service. Company is not obligated to provide support to your End Users.
+
+11.11. Beta Developer Features. Any Developer Access features designated as "beta," "preview," "experimental," or similar are provided without warranty and may be modified or discontinued without notice. Section 13.5 applies with full force to such features.
+
+11.12. Agent and Automated Access. If you use Developer Access to connect the Service to any third-party artificial intelligence agent, automation platform, or orchestration tool (including via MCP), you are solely responsible for: (i) all actions taken by such agent or tool using your credentials, including any Inputs submitted and Outputs generated; (ii) ensuring that such agent or tool operates within the restrictions of this Agreement, including Section 5; and (iii) any harm, liability, or costs arising from the agent's or tool's use of the Service. Company treats all activity conducted through your Developer Access as your activity, regardless of whether it was initiated by you directly or by an automated agent acting on your behalf.
+
+11.13. Third-Party MCP Clients and Platforms. You may access the Service’s MCP integration through third-party AI assistants, applications, agents, platforms, hosts, and tools that Company does not own or control (such as third-party language-model or agent platforms) (“Third-Party MCP Clients”), which may also be Third-Party Services under Section 8. Each Third-Party MCP Client is governed by its own terms of service and developer terms, and is subject to its own privacy policy; you represent and warrant that you have accepted, and will comply with, those terms. Company does not control, endorse, verify, or secure any Third-Party MCP Client and is not responsible or liable for it, including its terms, availability, security, or handling of your data. You are solely responsible for your selection and use of any Third-Party MCP Client, for the data you transmit to or receive from it, for ensuring such use complies with this Agreement, and for all activity conducted through your MCP connections.
+
+11.14. Vulnerability Disclosure. You will not exploit, or publicly disclose, any security vulnerability, flaw, or exploit you discover in the Service, the API, the models, or related systems except as authorized under the Company’s Responsible Disclosure Policy (https://higgsfield.ai/security-policy.pdf). For clarity, unless Company expressly authorizes an earlier disclosure in writing under that policy, no public disclosure is permitted unless and until the vulnerability is fully remediated. Company will use commercially reasonable efforts to remediate reported vulnerabilities within ninety (90) days of acknowledgment. This supplements the API Key compromise notice in Section 11.4.
+
+12. INDEMNIFICATION.
+
+You will indemnify and hold Company, its parents, subsidiaries, affiliates, officers, employees, agents, and partners (each, a “Company Party” and collectively, the “Company Parties”) harmless from any losses, costs, liabilities and expenses (including reasonable attorneys’ fees) relating to or arising out of any and all of the following: (i) Your Content, or your use of Outputs, in each case to the extent arising from content you provided without the necessary rights or from your use of the Service in violation of this Agreement or applicable law; (ii) your misuse of the Service; (iii) your violation of this Agreement; (iv) your violation of any rights of another party; (v) your violation of any export control, sanctions, or data protection law; (vi) any dispute between you and a third party relating to your use of the Service; or (vii) your violation of any applicable laws, rules, or regulations. Company reserves the right, at its own cost, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, in which case you agree to fully cooperate with Company in asserting any available defenses. This provision does not require you to indemnify any of the Company Parties for any unconscionable commercial practice by such party or for such party’s fraud in connection with the Service. You agree that the provisions in this section will survive any termination of your Account, this Agreement, or your access to the Service.
+
+13. DISCLAIMER OF WARRANTIES.
+
+13.1. Service Offered As-Is. You expressly understand and agree that to the extent permitted by applicable law, your use of the Service is at your sole risk, and the Service (including any Output therefrom) is provided on an “as is” and “as available” basis, with all faults. Company Parties expressly disclaim all warranties, representations and conditions of any kind, whether express or implied, including, but not limited to, the implied warranties or conditions of merchantability, fitness for a particular purpose and non‑infringement arising from use of the Service (including any Output therefrom).
+
+13.2. Outputs. Company further makes no representation or warranty as to the originality, uniqueness, legality, accuracy, or fitness of any Output. You acknowledge and agree that (i) Outputs may contain errors, omissions, offensive material, or third-party content; (ii) you are solely responsible for your use, distribution, or reliance on Outputs, including for compliance with applicable laws and third-party rights; and (iii) Company expressly disclaims any and all liability arising from or relating to Outputs. Outputs are generated based on Inputs that you provide, and Company does not control, verify, or perform clearance searches or rights verification on your Inputs or the resulting Outputs. You are solely responsible for conducting any necessary rights clearances before using, distributing, or publishing any Output. Outputs do not constitute professional advice, including medical, legal, or financial advice, and should not be relied upon as a substitute for consultation with a qualified professional.
+
+13.3. Meeting Requirements. Company Parties make no warranty, representation or condition that: (1) the Service (including any Output therefrom) will meet your requirements (such as the quality, effectiveness, reputation and other characteristics of the Service); (2) your use of the Service (including any Output therefrom) will be uninterrupted, timely, secure or error‑free; or (3) the advice, results, or information, whether oral or written, obtained from use of the Service (including any Output therefrom) will be accurate or reliable.
+
+13.4. Downloads. Any content downloaded from or otherwise accessed through the Service (including any Output therefrom) is accessed at your own risk, and you are solely responsible for any damage to your property, including, but not limited to, your computer system and/or any device you use to access the Service, or any other loss that results from accessing such content.
+
+13.5. Beta Features. From time to time, Company may offer new “beta” features or tools with which its users may experiment. Such features or tools are offered solely for experimental purposes and without any warranty of any kind, and may be modified or discontinued at Company’s sole discretion. The provisions of this Section 13 apply with full force to such features or tools.
+
+13.6. No Liability for Conduct of Third Parties. You are solely responsible for all of your communications and interactions with third parties on the Service. You acknowledge and agree that Company Parties are not liable, and you agree not to seek to hold Company Parties liable, for the conduct of third parties, including operators of external sites, and that the risk of injury from such third parties rests entirely with you. You understand that Company does not make any attempt to verify the statements of users. Company makes no warranty that the goods or services provided by third parties will meet your requirements or be available on an uninterrupted, secure, or error‑free basis.
+
+13.7 Third-Party Infrastructure. The Service relies on third-party computational infrastructure, including GPU providers, cloud service vendors, and model providers ("Third-Party Infrastructure"). Output quality, generation speed, latency, throughput, queue times, and Service availability may be affected by the performance or availability of Third-Party Infrastructure. Company does not guarantee any particular generation speed, processing time, or Output quality, and any estimated times are indicative only. Company makes no warranty regarding Third-Party Infrastructure and is not liable for any delay, interruption, degraded performance, or reduced Output quality attributable to it.
+
+13.8. Developer Access and Supercomputer Agent. Company makes no warranty regarding the uptime, availability, throughput, latency, or performance of any Developer Access or Supercomputer Agent. Unless otherwise agreed in a separate service-level agreement, Developer Access and Supercomputer Agent are provided on an "as is" and "as available" basis. Company does not guarantee that Developer Access will be uninterrupted, error-free, or compatible with your Developer Applications or third-party systems. Without limiting Section 11.10, Company may change the API, MCP interfaces, schemas, endpoints, or supported models at any time, and such changes may render your Developer Applications, integrations, or any Third-Party MCP Client (Section 11.13) incompatible with the Service. You are responsible for maintaining compatibility, and Company is not liable for any incompatibility, disruption, or loss resulting from such changes.
+
+14. LIMITATION OF LIABILITY.
+
+14.1. Disclaimer of Certain Damages. You understand and agree that, to the fullest extent provided by law, in no event shall Company Parties be liable for any loss of profits, revenue or data, or any indirect, incidental, special or consequential damages, or damages or costs due to loss of production or use, business interruption, or procurement of substitute goods or services, whether or not any Company Party has been advised of the possibility of such damages, arising out of or in connection with this Agreement, the Service, or any communications, interactions or meetings with other users of the Service or third parties, on any theory of liability, including those resulting from: (i) the use or inability to use the Service; (ii) any goods, data, information or service purchased or obtained, or messages received for transactions entered into through the Service; (iii) unauthorized access to or alteration of your transmissions or data; (iv) statements or conduct of any third party on the Service; or (v) any other matter related to the Service, whether based on warranty, copyright, contract, tort (including negligence), product liability or any other legal theory. The foregoing does not apply to liability of a Company Party for death or personal injury caused by a Company Party’s negligence, or for any injury caused by a Company Party’s fraud.
+
+14.2. Cap on Liability. To the fullest extent permitted by law, Company Parties will not be liable to you for more than the greater of (i) the total amount paid to Company by you during the six‑month period before the act, omission, or occurrence giving rise to such liability; (ii) $100; or (iii) if applicable, the statutory remedy or penalty imposed by the statute under which such claim arises. This cap does not apply to liability for death or personal injury caused by a Company Party’s negligence, or any injury caused by a Company Party’s fraud.
+
+14.3. User Content. Company assumes no responsibility for the timeliness, deletion, mis‑delivery or failure to store any content (including, but not limited to, Your Content and User Content), user communications, or personalization settings.
+
+14.4. Exclusion of Damages. Certain jurisdictions do not allow the exclusion or limitation of certain damages. If these laws apply to you, some or all of the above exclusions or limitations may not apply to you, and you might have additional rights.
+
+14.5. Basis of the Bargain. The limitations of damages set forth above are fundamental elements of the basis of the bargain between Company and you.
+
+15. PROCEDURE FOR MAKING CLAIMS OF INTELLECTUAL PROPERTY RIGHTS INFRINGEMENT.
+
+It is Company’s policy to terminate access of any user who repeatedly infringes copyright, trademark, or other intellectual property rights upon prompt notification to Company by the respective intellectual property owner or their legal agent. If you believe that your work has been infringed by User Content hosted by the Service, please provide our designated agent with the following information in writing:
+
+(i) an electronic or physical signature of the person authorized to act on behalf of the owner of the copyright, trademark, or other intellectual property right;
+
+(ii) a description of the copyrighted work, trademark, or other intellectual property right that you claim has been infringed;
+
+(iii) a description of the location on the Service of the material that you claim is infringing, such as a hyperlink;
+
+(iv) your address, telephone number, and email address;
+
+(v) a statement by you that you have a good‑faith belief that the disputed use is not authorized by the copyright, trademark, or other intellectual‑property‑right owner, its agent, or the law;
+
+(vi) a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright, trademark, or other intellectual‑property‑right owner or authorized to act on the owner’s behalf.
+
+Designated agent for notice of claims of infringement: Higgsfield Copyright Agent, 535 Mission St, 14th Floor, San Francisco, CA 94105, United States. Email: support@higgsfield.ai
+
+Note that submission of documentation to us purporting to demonstrate your right to use certain content (including likeness rights or other intellectual property licenses) does not guarantee that such content will be approved, permitted to remain on the platform, or exempt from moderation. Company, and in some cases its Third-Party Infrastructure providers, reserve the right to moderate, remove, or decline to process any content regardless of any claimed license or rights documentation submitted by you.
+
+If you believe that material you posted was removed or disabled as a result of mistake or misidentification, you may submit a written counter-notification to our designated agent identified above, including: (i) your physical or electronic signature; (ii) identification of the material that has been removed or disabled and the location at which the material appeared before it was removed or disabled; (iii) a statement under penalty of perjury that you have a good-faith belief that the material was removed or disabled as a result of mistake or misidentification; (iv) your name, address, telephone number, and email address; and (v) a statement that you consent to the jurisdiction of the federal courts located in the Northern District of California and that you will accept service of process from the person who provided the original notification or an agent of such person. Company may restore the removed or disabled material in accordance with applicable law. Under 17 U.S.C. Section 512(f), any person who knowingly materially misrepresents that material was removed or disabled by mistake or misidentification may be subject to liability.
+
+16. TERM AND TERMINATION.
+
+16.1. Term. The term of this Agreement commences on the date when you accept this Agreement (as described in the preamble above) and continues in full force and effect while you use the Service, unless terminated earlier in accordance with this Agreement.
+
+16.2. Termination by Company. If you have materially breached this Agreement, or if Company is required to do so by law (e.g., where the provision of the Service is, or becomes, unlawful), Company has the right to immediately and without notice suspend or terminate any Service provided to you. Without limiting the foregoing, a breach of Section 11 (Developer Terms), Section 1.6 (Supercomputer Agent), or a serious or repeated violation of Section 5 (User Conduct and Certain Restrictions) — including creating or distributing unlawful content, non-consensual intimate imagery, or content that exploits or endangers minors, circumventing Usage Limits, misusing API Keys, or redistributing Developer Access without authorization — constitutes a material breach of this Agreement. For other, non-material violations, Company will, where practicable and appropriate, provide notice and a reasonable opportunity to cure before terminating for cause. Company also reserves the right to terminate this Agreement or your access to the Service at any time without cause upon notice to you. You agree that all terminations for cause are made in Company's reasonable discretion and that Company shall not be liable to you or any third party for any termination of your Account.
+
+16.3. Termination by You. If you want to terminate this Agreement, you may do so by (i) notifying Company at any time and (ii) deleting your Account for the Service. Your notice should be sent, in writing, to Company’s address: Higgsfield Inc., Attn: Legal Dept., 535 Mission St, 14th Floor, San Francisco, CA 94105, United States. Email: support@higgsfield.ai. Any termination of a Subscription is governed by Section 10 (Subscriptions) above.
+
+16.4. Effect of Termination. Upon termination of the Service or the applicable feature or functionality thereof, your right to use the Service or the applicable feature or functionality thereof will automatically terminate. Deletion of Your Content and any associated Outputs following Account deletion is governed by Section 16.5. If we terminate your Account for cause, we may also bar your further use of or access to the Service. Company will not have any liability whatsoever to you for any suspension or termination, including for deletion of Your Content. All provisions of this Agreement which by their nature should survive will survive termination, including without limitation ownership provisions, licenses granted to Company, warranty disclaimers, and limitations of liability. If Company terminates your Account or the Service without cause, Company will refund the pro-rata portion of any prepaid Subscription fees for the unused remainder of your then-current term and any unused prepaid Credits (other than Promotional Credits). If Company terminates your Account for violation of this Agreement (including, without limitation, violations of Section 5 of this Agreement), all Fees paid are non-refundable and all unused Subscription Credits and Promotional Credits are immediately forfeited, and unused Add-On Credits that you purchased will be forfeited only to the extent permitted by applicable law (where such forfeiture is not permitted, Company will refund their unused portion). This provision applies in addition to, and does not limit, any other rights or remedies available to Company under this Agreement or at law.
+
+16.5. Account Deletion and Data Retention. If you delete your Account (whether through your Account settings or by contacting Company), the following process shall apply:
+
+(a) Retention Period. For thirty (30) days following Account deletion (the "Retention Period"), Company shall retain Your Content and any Outputs associated with your Account ("Generated Assets").
+
+(b) Account Restoration. If you contact Company to restore your Account within the Retention Period, Company shall use commercially reasonable efforts to restore your Account and your Generated Assets to their state at the time of deletion.
+
+(c) Permanent Deletion. Upon expiration of the Retention Period, the Generated Assets shall be permanently deleted from Company's active systems and shall not be recoverable. Permanent deletion under this Section 16.5(c) shall not affect: (i) any data Company is required to retain under applicable law; (ii) any anonymized or aggregated data that can no longer reasonably be used to identify you; or (iii) content already used to develop or improve Company's AI models before deletion, which cannot feasibly be disassociated from models already trained; going forward, Company will not use deleted content to train its AI models.
+
+16.6. No Subsequent Registration. If this Agreement is terminated for cause by Company, or if your Account or ability to access the Service is discontinued by Company due to your violation of any portion of this Agreement or for conduct otherwise deemed inappropriate, you agree that you shall not attempt to re‑register with or access the Service through use of a different member name or otherwise.
+
+17. USERS OUTSIDE THE U.S.
+
+17.1. International Access. The Service may be accessed from countries around the world and may contain references to services and Content that are not available in your country. These references do not imply that Company intends to announce such service or Content in your country. Company makes no representations that the Service is appropriate or available for use in other locations. Those who access or use the Service from other countries do so at their own volition and are responsible for compliance with local law.
+
+17.2. Right of Withdrawal (EU/EEA and UK Consumers). If you are a consumer resident in the European Economic Area or the United Kingdom, you have the right to withdraw from your purchase of a Subscription or other paid digital products or services, without giving any reason, within fourteen (14) days of the day the contract is concluded (the date of purchase). To exercise this right, you must inform us of your decision before the withdrawal period expires by a clear statement sent to support@higgsfield.ai. If you withdraw within this period, we will reimburse the payments we received from you without undue delay, and no later than fourteen (14) days after the day we are informed of your decision, using the same means of payment you used for the purchase. However, when you purchase and request access to the Service, you expressly request that performance begin during the withdrawal period and acknowledge that: (a) for digital content not supplied on a tangible medium (such as Credits or generated Outputs), you lose your right of withdrawal once we begin supplying that content; and (b) for services, if you withdraw after performance has begun at your request, you must pay for the portion of the services provided (including any Credits used) up to the time you inform us of your withdrawal. Where this Section grants you greater rights than Section 9.3 (Refunds), this Section controls, and nothing in this Agreement limits any mandatory consumer rights you may have under the laws of your country of residence.
+
+18. ARBITRATION AGREEMENT. Please read this section (the “Arbitration Agreement”) carefully. It is part of your contract with Company and affects your rights. It contains procedures for mandatory binding arbitration and a class‑action waiver.
+
+18.1. Applicability. Subject to the terms of this Arbitration Agreement, you and Company agree that any dispute, claim, or disagreement arising out of or relating in any way to your access to or use of the Service, any Output, any communications you receive, any products sold or distributed through the Service, or this Agreement (including prior versions) (each, a "Dispute"), will be resolved by binding arbitration rather than in court, except that (i) you and Company may assert claims in small‑claims court if such claims qualify and remain in that court; and (ii) you or Company may seek equitable relief in court for infringement or other misuse of intellectual‑property rights. For purposes of this Arbitration Agreement, “Dispute” also includes disputes that arose before the effective date of this Agreement and disputes that may arise after its termination.
+
+18.2. Informal Dispute Resolution. There might be instances when a Dispute arises between you and Company. If that occurs, Company is committed to working with you to reach a reasonable resolution. You and Company agree that good‑faith informal efforts to resolve Disputes can result in a prompt, low‑cost and mutually beneficial outcome (“Informal Dispute Resolution”). You and Company therefore agree that before either party commences arbitration against the other (or initiates an action in small‑claims court if a party so elects), we will personally meet and confer telephonically or via videoconference, in a good‑faith effort to resolve informally any Dispute covered by this Arbitration Agreement (“Informal Dispute Resolution Conference”). If you are represented by counsel, your counsel may participate in the conference, but you will also participate in the conference.
+
+The party initiating a Dispute must give notice to the other party in writing of its intent to initiate an Informal Dispute Resolution Conference (“Notice”). The Informal Dispute Resolution Conference shall occur within forty‑five (45) days after the other party receives such Notice, unless an extension is mutually agreed upon by the parties. Notice to Company that you intend to initiate an Informal Dispute Resolution Conference should be sent by email to support@higgsfield.ai or regular mail to our offices located at Higgsfield Inc., Attn: Legal, 535 Mission St, 14th floor, San Francisco, CA, 94105, United States. The Notice must include: (1) your name, telephone number, mailing address, e‑mail address associated with your Account (if you have one); (2) the name, telephone number, mailing address and e‑mail address of your counsel, if any; and (3) a description of your Dispute.
+
+The Informal Dispute Resolution Conference shall be individualized such that a separate conference must be held each time either party initiates a Dispute, even if the same law firm or group of law firms represents multiple users in similar cases, unless all parties agree; multiple individuals initiating a Dispute cannot participate in the same Informal Dispute Resolution Conference unless all parties agree. In the time between a party receiving the Notice and the Informal Dispute Resolution Conference, nothing in this Arbitration Agreement shall prohibit the parties from engaging in informal communications to resolve the initiating party’s Dispute. Engaging in the Informal Dispute Resolution Conference is a condition precedent and requirement that must be fulfilled before commencing arbitration. The statute of limitations and any filing‑fee deadlines shall be tolled while the parties engage in the Informal Dispute Resolution Conference process required by this section.
+
+18.3. Waiver of Jury Trial. You and Company hereby waive any constitutional and statutory rights to sue in court and have a trial before a judge or jury. All Disputes will instead be resolved by arbitration under this Arbitration Agreement, except as specified in Section 18.1.
+
+18.4. Waiver of Class and Other Non‑Individualized Relief. Except as specified in Section 18.9 (Batch Arbitration), you and Company may bring claims against the other only on an individual basis and not on a class, representative or collective basis. If a court of competent jurisdiction decides that any part of this section is unenforceable as to a particular claim or request for relief, that claim or request (and only that claim or request) shall be severed and litigated in the state or federal courts located in the City and County of San Francisco, California; all other Disputes shall be arbitrated or heard in small‑claims court.
+
+18.5. Rules and Forum. This Agreement evidences a transaction involving interstate commerce, and the Federal Arbitration Act (9 U.S.C. § 1 et seq.) governs its interpretation and enforcement. If the Informal Dispute Resolution process does not resolve the Dispute within sixty (60) days, either party may commence binding arbitration administered by the American Arbitration Association (“AAA”) under its Consumer Arbitration Rules or Commercial Arbitration Rules, as appropriate (the “AAA Rules”) then in effect. A demand for arbitration filed with the AAA is referred to in this Arbitration Agreement as a "Request." A copy of the rules is available at https://www.adr.org/rules-forms-and-fees/. Unless otherwise agreed, arbitration will occur in the county where you reside, subject to the AAA Rules and any Batch Arbitration provisions in Section 18.9. All materials exchanged during arbitration shall remain confidential.
+
+18.6. Arbitrator. The arbitrator will be a retired judge or a licensed attorney in California, selected by the parties from the AAA’s roster of consumer‑dispute arbitrators. If the parties cannot agree within thirty‑five (35) days, the AAA will appoint the arbitrator (or, if Batch Arbitration is triggered, the AAA will appoint one arbitrator for each batch).
+
+18.7. Authority of Arbitrator. The arbitrator has exclusive authority to resolve any Dispute, including issues of arbitrability and scope, except that (1) all disputes related to Section 18.4 (Waiver of Class and Other Non‑Individualized Relief), (2) disputes about payment of arbitration fees, (3) disputes about satisfaction of any condition precedent to arbitration, and (4) disputes about which version of the Arbitration Agreement applies, shall be decided by a court of competent jurisdiction. The arbitration will not be consolidated with other matters except as expressly allowed under Section 18.9 (Batch Arbitration). The arbitrator shall issue a written award stating the essential findings and conclusions and may grant dispositive motions. Judgment on the award may be entered in any court having jurisdiction. The arbitrator may only award damages in accordance with Section 14.1 (Disclaimer of Certain Damages), above.
+
+18.8. Attorneys’ Fees and Costs. The parties shall bear their own attorneys’ fees and costs in arbitration unless the arbitrator finds that either the substance of the Dispute or the relief sought in the Request was frivolous or brought for an improper purpose (as measured by Federal Rule of Civil Procedure 11(b)). If either party must seek a court order to compel arbitration, the party that obtains such order may collect its reasonable costs, disbursements and attorneys’ fees from the other party. The prevailing party in any court action relating to satisfaction of any condition precedent to arbitration, including the Informal Dispute Resolution process, may recover its reasonable costs, disbursements, and attorneys’ fees.
+
+18.9. Batch Arbitration. To increase efficiency, if one‑hundred (100) or more individual Requests of a substantially similar nature are filed against Company by or with the assistance of the same law firm or organization within a thirty‑day period, the AAA shall:
+
+(i) administer the Requests in batches of up to 100 Requests (plus a final batch of any remainder);
+
+(ii) appoint one arbitrator for each batch; and
+
+(iii) resolve each batch as a single consolidated arbitration with one set of filing and administrative fees per side, one procedural calendar, one hearing (if any), and one final award (“Batch Arbitration”).
+
+Requests are “substantially similar” if they arise out of or relate to the same event or factual scenario, raise the same or similar legal issues, and seek the same or similar relief. If the parties disagree on the applicability of this Batch Arbitration process, the AAA will appoint a sole standing arbitrator (“Administrative Arbitrator”) to decide. The Administrative Arbitrator’s fees will be paid by Company. This provision does not authorize class, collective, mass, or joint arbitration except as expressly set forth above.
+
+18.10. 30‑Day Right to Opt Out. You may opt out of this Arbitration Agreement by sending written notice of your decision to opt out to: Higgsfield Inc., Attn: Legal, 535 Mission St, 14th floor, San Francisco, CA, 94105, United States, or by email to support@higgsfield.ai, within thirty (30) days of becoming subject to it. Your notice must include (1) your name and address, (2) the email address associated with your Account, (3) the username associated with the Account, and (4) a clear statement that you wish to opt out of this Arbitration Agreement. Opting out will not affect any other part of this Agreement.
+
+18.11. Invalidity; Expiration. Except as provided in Section 18.4, if any part of this Arbitration Agreement is found invalid or unenforceable, that part shall be severed and the remainder shall remain in full force and effect. Any Dispute must be initiated via arbitration within the applicable statute of limitations, or it is forever barred, and all statutes of limitation apply in arbitration as they would in court.
+
+18.12. Modification. If Company makes a future material change to this Arbitration Agreement, we will notify you. Unless you reject the change within thirty (30) days by writing to Company at Higgsfield Inc., Attn: Legal, 535 Mission St, 14th floor, San Francisco, CA, 94105, United States, your continued use of the Service constitutes acceptance of the change. Rejecting a change leaves the prior version (or your prior valid opt‑out) in effect.
+
+19. GENERAL PROVISIONS.
+
+19.1. Electronic Communications. Communications between you and Company may occur electronically (e.g., via the Service, email, or posted notices). For contractual purposes, you (i) consent to receive communications in electronic form and (ii) agree that all terms, conditions, notices and other communications that Company provides electronically satisfy any legal requirement that such communications would satisfy if in writing, subject to your statutory rights (including those under E‑Sign, 15 U.S.C. §7001 et seq.).
+
+19.2. Assignment. You may not assign, subcontract, delegate or transfer this Agreement or your rights or obligations without Company’s prior written consent. Company may freely assign or transfer this Agreement without your consent. Any attempted transfer in violation of this section is null and void.
+
+19.3. Force Majeure. Company is not liable for any delay in or failure to perform its obligations under this Agreement caused by events beyond its reasonable control, including without limitation acts of God, war, terrorism, riots, pandemics, cyber attacks, internet or network outages, strikes, the failure or unavailability of connected AI models, partners, or APIs, and shortages of transportation, fuel, energy, labor, or materials. Degraded performance, latency, and reduced Output quality attributable to Third-Party Infrastructure are addressed in Section 13.7.
+
+19.4. Questions, Complaints, Claims. If you have any questions or complaints regarding the Service, please contact us at: support@higgsfield.ai. We will try to address your concerns and invite further feedback if your concerns are not fully resolved.
+
+19.5. Consumer Complaints. In accordance with California Civil Code §1789.3, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs at 1625 North Market Blvd., Suite N‑112, Sacramento, CA 95834, or by calling (800) 952‑5210.
+
+19.6. Agreement Updates. Company may update these Terms of Use at any time by posting the revised version on the Website and updating the “Last Updated” date. Except as required by applicable law or expressly provided in this Agreement, changes take effect when posted, without separate notice. Your continued use of the Service after the effective date of the updated Terms constitutes acceptance of the changes. If you do not agree to the updated Terms, you must stop using the Service. Company may require you to affirmatively accept the updated Terms before further use of the Service. If you do not accept the updated Terms by their effective date (or such later date as Company may allow), Company may suspend your access to the Service unless and until you accept them. Any such suspension does not extend your Subscription term. Changes will not apply to disputes arising before they take effect. For changes to the Arbitration Agreement (Section 18), the modification process set forth in Section 18.12 controls.
+
+19.7. Exclusive Venue. Where litigation in court is permitted, all claims and disputes will be litigated exclusively in the state or federal courts located in the City and County of San Francisco, California.
+
+19.8. Governing Law. This Agreement is governed by California law, consistent with the Federal Arbitration Act, without regard to conflict‑of‑law principles. The U.N. Convention on Contracts for the International Sale of Goods does not apply.
+
+19.9. Notice. You are responsible for providing Company with a valid, current email address. If the email you provide is invalid, Company’s dispatch will still constitute effective notice. You may give notice to Company at the following address: 535 Mission St, 14th floor, San Francisco, CA, 94105, United States. Notice is deemed given when received by Company via nationally recognized overnight delivery or first‑class mail.
+
+19.10. Waiver. A waiver or failure to enforce any provision on one occasion is not a waiver of any other provision or of that provision on any other occasion.
+
+19.11. Severability. If any portion of this Agreement is held invalid or unenforceable, it shall be construed to reflect the parties’ original intent, and the remaining portions shall remain in full force and effect.
+
+19.12. Export Control. You may not use or export the Service except as authorized by U.S. and other applicable laws. You represent that you are not located in any U.S.‑embargoed country and are not on any U.S. government list of prohibited parties. You agree to comply with all applicable export‑control laws.
+
+19.13. Headings. The section titles and headings in this Agreement are for convenience only and have no legal or contractual effect.
+
+19.14. Entire Agreement. This Agreement constitutes the final, complete, and exclusive agreement between the parties regarding its subject matter and supersedes all prior discussions or agreements.
+
+AI-native creative suite
+
+Create
+
+- AI Video
+
+- AI Video Effects
+
+- AI Image to Video
+
+- AI Text to Video
+
+- AI Video Editor
+
+- Genjutsu for Reels
+
+- Faceless Studio
+
+- AI Explainer
+
+- AI Image
+
+- Edit Image
+
+- Inpaint
+
+- Upscale
+
+- AI Video Upscaler
+
+- Mixed Media
+
+- AI Face Swap
+
+- AI Influencer
+
+- Apps
+
+Video Models
+
+- Seedance 2.5
+
+- Seedance 2.0
+
+- Kling 3.0
+
+- Kling 4.0
+
+- Veo 3.1 Introduction
+
+- WAN 2.6
+
+- Grok Imagine 1.5
+
+- Gemini Omni Flash
+
+- MiniMax H3
+
+Image Models
+
+- Nano Banana
+
+- Flux 2
+
+- Seedream 5
+
+- GPT Image 2.6
+
+- GPT Image 2
+
+- Ideogram 4.5
+
+Studios
+
+- Cinema Studio
+
+- Marketing Studio
+
+- Lipsync Studio
+
+- Higgsfield Popcorn
+
+- Higgsfield Canvas
+
+- Higgsfield Mangaka
+
+Soul
+
+- Soul 2.0
+
+- Soul ID Character
+
+- Soul Cinema
+
+Platform
+
+- Supercomputer
+
+- AI Motion Designer
+
+- MCP/CLI
+
+- API
+
+- Collab
+
+- Games
+
+- Reference Extension
+
+Resources
+
+- Blog
+
+- Help Center
+
+- Academy
+
+- Prompt Guide
+
+Company
+
+- About
+
+- Trust
+
+- Report a vulnerability
+
+- Enterprise
+
+- Team
+
+- Pricing
+
+- Careers
+
+- Contact
+
+Community
+
+- Community
+
+- Contests
+
+- Creative Partners
+
+- X / Twitter
+
+- Youtube
+
+- LinkedIn
+
+- Tiktok
+
+- Discord
+
+Create
+
+- AI Video
+
+- AI Video Effects
+
+- AI Image to Video
+
+- AI Text to Video
+
+- AI Video Editor
+
+- Genjutsu for Reels
+
+- Faceless Studio
+
+- AI Explainer
+
+- AI Image
+
+- Edit Image
+
+- Inpaint
+
+- Upscale
+
+- AI Video Upscaler
+
+- Mixed Media
+
+- AI Face Swap
+
+- AI Influencer
+
+- Apps
+
+Video Models
+
+- Seedance 2.5
+
+- Seedance 2.0
+
+- Kling 3.0
+
+- Kling 4.0
+
+- Veo 3.1 Introduction
+
+- WAN 2.6
+
+- Grok Imagine 1.5
+
+- Gemini Omni Flash
+
+- MiniMax H3
+
+Image Models
+
+- Nano Banana
+
+- Flux 2
+
+- Seedream 5
+
+- GPT Image 2.6
+
+- GPT Image 2
+
+- Ideogram 4.5
+
+Studios
+
+- Cinema Studio
+
+- Marketing Studio
+
+- Lipsync Studio
+
+- Higgsfield Popcorn
+
+- Higgsfield Canvas
+
+- Higgsfield Mangaka
+
+Soul
+
+- Soul 2.0
+
+- Soul ID Character
+
+- Soul Cinema
+
+Platform
+
+- Supercomputer
+
+- AI Motion Designer
+
+- MCP/CLI
+
+- API
+
+- Collab
+
+- Games
+
+- Reference Extension
+
+Resources
+
+- Blog
+
+- Help Center
+
+- Academy
+
+- Prompt Guide
+
+Company
+
+- About
+
+- Trust
+
+- Report a vulnerability
+
+- Enterprise
+
+- Team
+
+- Pricing
+
+- Careers
+
+- Contact
+
+Community
+
+- Community
+
+- Contests
+
+- Creative Partners
+
+535 Mission St, 14th floor, San Francisco, CA, 94105
+
+- X / Twitter
+
+- Youtube
+
+- LinkedIn
+
+- Tiktok
+
+- Discord
