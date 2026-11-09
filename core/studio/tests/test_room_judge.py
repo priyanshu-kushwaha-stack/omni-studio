@@ -116,3 +116,19 @@ def test_two_good_calls_record_ok_statuses(tmp_path):
                       ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json",
                       runner=_runner(["A", "B"]), registry=REG)
     assert res["statuses"] == ["ok", "ok"] and res["winner"] == "new"
+
+
+@pytest.mark.parametrize("entry, expected", [({}, 600), ({"timeout_s": 1200}, 1200)])
+def test_the_judge_uses_the_model_timeout_from_the_registry(tmp_path, entry, expected):
+    timeouts = []
+
+    def runner(cmd, **kw):
+        if cmd[-1] == "--version":
+            return subprocess.CompletedProcess(cmd, 0, stdout="1\n", stderr="")
+        timeouts.append(kw["timeout"])
+        return subprocess.CompletedProcess(cmd, 0, stdout=json.dumps({"result": '{"winner": "tie"}'}), stderr="")
+
+    reg = {"gpt-5.6-sol-high": {"family": "openai", "cli": "cursor", **entry}}
+    J.run_judge("N", "O", model="gpt-5.6-sol-high", brief="Pick.", ledger=Ledger(tmp_path / "l.sqlite"),
+                ctx=CallContext("pou", "v", "g2", 2, 50, 50), out=tmp_path / "j.json", runner=runner, registry=reg)
+    assert timeouts == [expected, expected]

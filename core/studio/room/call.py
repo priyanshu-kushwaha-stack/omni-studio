@@ -3,7 +3,8 @@
 The seat's inputs (the numbered draft, its brief, the channel bible files) go inline in the prompt; the CLI runs in
 an empty temp folder under sandbox-exec with reads and writes denied for secrets, all projects (this repo and its
 main checkout), session transcripts and the call ledger, a stripped environment, and a timeout. claude runs with
-every tool off; cursor-agent runs in ask mode, never with --force. Every attempt is reserved in the ledger first.
+every tool off; cursor-agent runs in ask mode, never with --force. The timeout is the model's timeout_s in
+models.yaml (default 600 s) unless the caller passes one. Every attempt is reserved in the ledger first.
 An attempt that exits 0 with a malformed answer, or exits non-zero, is retried once; a timeout (exit 124) is not
 retried. Any other failure, including an unexpected exception from invoke, finishes the reserved row as "failed" and
 writes a failed verdict. CapReached from ledger.reserve propagates; callers catch it.
@@ -24,7 +25,7 @@ from typing import Optional
 
 from studio.room.config import SeatConfig
 from studio.room.ledger import Ledger
-from studio.room.models import cli_of, family_of
+from studio.room.models import cli_of, family_of, timeout_of
 from studio.room.snapshot import sha256_text
 from studio.room.verdict import BadVerdict, Verdict, failed_verdict, parse_verdict, verdict_digest
 
@@ -172,9 +173,10 @@ def invoke(cmd: list[str], *, runner=None, timeout: float = 600) -> tuple[int, s
 
 
 def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: CallContext, out: Path,
-             raw_dir: Optional[Path] = None, runner=None, timeout: float = 600,
+             raw_dir: Optional[Path] = None, runner=None, timeout: Optional[float] = None,
              registry: Optional[dict] = None, draft_sha256: str = "", lint_overridden: bool = False) -> Verdict:
     family = family_of(seat.model, registry)
+    timeout = timeout_of(seat.model, registry) if timeout is None else timeout
     own_sha = sha256_text(inputs["draft"])
     if draft_sha256 and draft_sha256 != own_sha:
         raise ValueError("draft_sha256 does not match the draft in inputs")

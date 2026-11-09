@@ -333,3 +333,22 @@ def test_invoke_runs_the_sandbox_by_absolute_path_not_via_path():
     runner = fake_runner(["x"])
     C.invoke(["claude", "-p"], runner=runner, timeout=5)
     assert runner.calls[0][0][0] == "/usr/bin/sandbox-exec"
+
+
+def test_run_seat_uses_the_model_timeout_from_the_registry(tmp_path):
+    reg = {**REG, "gpt-5.6-sol-high": {"family": "openai", "cli": "cursor", "timeout_s": 900}}
+    runner = fake_runner([json.dumps({"result": json.dumps(VERDICT)})])
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=Ledger(tmp_path / "l.sqlite"), ctx=_ctx(),
+               out=tmp_path / "v.json", runner=runner, registry=reg)
+    seat_calls = [kw for cmd, kw in runner.calls if cmd[-1] != "--version"]
+    assert [kw["timeout"] for kw in seat_calls] == [900]
+
+
+def test_run_seat_defaults_to_600_s_and_an_explicit_timeout_wins(tmp_path):
+    runner = fake_runner([json.dumps({"result": json.dumps(VERDICT)})] * 2)
+    db = Ledger(tmp_path / "l.sqlite")
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=tmp_path / "a.json",
+               runner=runner, registry=REG)
+    C.run_seat(_seat(tmp_path), inputs={"draft": "Hi"}, ledger=db, ctx=_ctx(), out=tmp_path / "b.json",
+               runner=runner, registry=REG, timeout=42)
+    assert [kw["timeout"] for cmd, kw in runner.calls if cmd[-1] != "--version"] == [600, 42]

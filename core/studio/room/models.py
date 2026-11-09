@@ -1,4 +1,4 @@
-"""Model registry: which family each model id belongs to, and which CLI runs it (models.yaml)."""
+"""Model registry: which family each model id belongs to, which CLI runs it, and its call timeout (models.yaml)."""
 
 from __future__ import annotations
 
@@ -9,6 +9,8 @@ import yaml
 
 REGISTRY = Path(__file__).resolve().parent / "models.yaml"
 CLIS = ("claude", "cursor")
+DEFAULT_TIMEOUT_S = 600
+MAX_TIMEOUT_S = 1800
 
 
 class UnknownModel(ValueError):
@@ -21,6 +23,10 @@ def load_registry(path: Path = REGISTRY) -> dict[str, dict[str, str]]:
     for model, entry in models.items():
         if not isinstance(entry, dict) or not entry.get("family") or entry.get("cli") not in CLIS:
             raise ValueError(f"{path}: {model} needs a family and a cli in {CLIS}")
+        timeout = entry.get("timeout_s", DEFAULT_TIMEOUT_S)
+        if isinstance(timeout, bool) or not isinstance(timeout, int) or not 0 < timeout <= MAX_TIMEOUT_S:
+            raise ValueError(f"{path}: {model} timeout_s must be whole seconds from 1 to {MAX_TIMEOUT_S}, "
+                             f"not {timeout!r}")
     return models
 
 
@@ -37,3 +43,8 @@ def family_of(model: str, registry: Optional[dict] = None) -> str:
 
 def cli_of(model: str, registry: Optional[dict] = None) -> str:
     return _entry(model, registry)["cli"]
+
+
+def timeout_of(model: str, registry: Optional[dict] = None) -> int:
+    """Seconds one call to `model` may run before it is killed and recorded as a timeout (exit 124)."""
+    return int(_entry(model, registry).get("timeout_s", DEFAULT_TIMEOUT_S))
