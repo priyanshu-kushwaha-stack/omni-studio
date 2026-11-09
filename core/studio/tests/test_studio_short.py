@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import shutil
 from datetime import date
 from pathlib import Path
 
@@ -154,6 +155,56 @@ def _walk_to_g6(studio_root, media, log):
     return channel, folder, good
 
 
+_SNAPSHOT_PARTS = ("root", "config", "approval-key")
+
+
+def _point_snapshot_env(base, mp):
+    """Everything the walk writes stays under `base`: never the owner's key, config, timings or ledger."""
+    mp.setenv("OMNI_STUDIO_APPROVAL_KEY", str(base / "approval-key" / "approval.key"))
+    mp.setenv("OMNI_JOBS_TIMINGS", str(base / "timings.jsonl"))
+    mp.setenv("OMNI_ROOM_LEDGER", str(base / "ledger.sqlite"))
+
+
+@pytest.fixture(scope="module")
+def _g6_snapshot(tmp_path_factory, _media_cache, studio_helpers):
+    """One walk to G6 per worker, saved. The walk's own refusals are asserted by
+    test_studio_short_end_to_end_up_to_g6, which walks for itself; tests that only need the state after the walk
+    get a fresh copy of it (`walked_to_g6`)."""
+    base = tmp_path_factory.mktemp("g6-walk")
+    mp = pytest.MonkeyPatch()
+    try:
+        _point_snapshot_env(base, mp)
+        make = studio_helpers.studio_root_at(base, mp)
+        _, folder, good = _walk_to_g6(make, studio_helpers.copying_media(_media_cache, base), [])
+    finally:
+        mp.undo()
+    (base / "snapshot").mkdir()
+    for part in _SNAPSHOT_PARTS:
+        if (base / part).exists():  # the walk makes no config folder; a part it never made is absent again
+            shutil.copytree(base / part, base / "snapshot" / part, symlinks=True)
+    return base, folder.relative_to(base / "root"), good.relative_to(base / "root")
+
+
+@pytest.fixture()
+def walked_to_g6(_g6_snapshot, monkeypatch, studio_helpers):
+    """(channel, folder, good) exactly as _walk_to_g6 leaves them, restored into the same folder the walk ran in.
+
+    Same folder because approvals sign a media file's absolute path when it is outside the repo; the key is the
+    walk's own (the autouse per-test key would not verify its proofs)."""
+    base, folder, good = _g6_snapshot
+    for part in _SNAPSHOT_PARTS:
+        shutil.rmtree(base / part, ignore_errors=True)
+        if (base / "snapshot" / part).exists():
+            shutil.copytree(base / "snapshot" / part, base / part, symlinks=True)
+    _point_snapshot_env(base, monkeypatch)
+    studio_helpers.point_at_root(base, monkeypatch)
+    return channels.load_channel("dummy"), base / "root" / folder, base / "root" / good
+
+
+# One snapshot per run: these share a worker under xdist (--dist loadgroup) instead of each walking to G6.
+g6_group = pytest.mark.xdist_group("g6_walk")
+
+
 def test_studio_short_end_to_end_up_to_g6(studio_root, media, capsys):
     log = []
     channel, _, _ = _walk_to_g6(studio_root, media, log)
@@ -167,7 +218,6 @@ def test_studio_short_end_to_end_up_to_g6(studio_root, media, capsys):
 # --- G7: the checks, the approval and the upload are bound to one file ---
 
 import json  # noqa: E402
-import shutil  # noqa: E402
 
 import yaml  # noqa: E402
 
@@ -180,9 +230,10 @@ def _upload_yaml(folder, render, **extra):
         "tags": ["science"], **extra}))
 
 
-def test_publish_binds_qc_approval_and_upload_to_one_file(studio_root, media, capsys):
+@g6_group
+def test_publish_binds_qc_approval_and_upload_to_one_file(walked_to_g6, media, capsys):
     log = []
-    channel, folder, good = _walk_to_g6(studio_root, media, log)
+    channel, folder, good = walked_to_g6
     channels.approve_stage(channel, VIDEO, "final_watch", "dummy owner, test only")
     other, _ = media("good", container="mp4", pattern="mandelbrot", folder=folder / "renders" / "other")
     _awaiting(channel, "publish_prep")
@@ -306,10 +357,10 @@ def test_planted_no_legacy_marker_refuses_approve_upload(studio_root, media):
     assert not (folder / checks.UPLOAD_APPROVAL).exists()
 
 
-def test_planted_deleted_project_json_does_not_open_approve_upload(studio_root, media):
+@g6_group
+def test_planted_deleted_project_json_does_not_open_approve_upload(walked_to_g6):
     """Deleting project.json while checkpoints exist must not let approve-upload skip G1-G7, marker or not."""
-    log = []
-    channel, folder, good = _walk_to_g6(studio_root, media, log)
+    channel, folder, good = walked_to_g6
     (folder / "project.json").unlink()
     _upload_yaml(folder, good, legacy_upload=True)
     with pytest.raises(ChannelError, match=r"has pipeline state \(checkpoint_"):
@@ -324,9 +375,8 @@ def test_planted_deleted_project_json_does_not_open_approve_upload(studio_root, 
         checks.approve_upload("dummy", VIDEO, "short")
 
 
-def _approve_g6_then_qc(studio_root, media):
-    log = []
-    channel, folder, good = _walk_to_g6(studio_root, media, log)
+def _approve_g6_then_qc(walked):
+    channel, folder, good = walked
     channels.approve_stage(channel, VIDEO, "final_watch", "dummy owner, test only")
     _upload_yaml(folder, good)
     return channel, folder, good
@@ -336,8 +386,9 @@ def _deliverable(channel, folder, good):
     return checks._deliverable_check(channel, VIDEO, good.resolve())
 
 
-def test_planted_g6_media_proof_stripped_fails_the_deliverable_check(studio_root, media):
-    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+@g6_group
+def test_planted_g6_media_proof_stripped_fails_the_deliverable_check(walked_to_g6):
+    channel, folder, good = _approve_g6_then_qc(walked_to_g6)
     assert _deliverable(channel, folder, good)["ok"]
     path = folder / "checkpoint_final_watch.json"
     data = json.loads(path.read_text())
@@ -352,8 +403,9 @@ def test_planted_g6_media_proof_stripped_fails_the_deliverable_check(studio_root
     assert cli.main(["qc", "dummy", VIDEO, "publish_prep"]) == 1
 
 
-def test_planted_g6_media_proof_edited_fails_the_deliverable_check(studio_root, media):
-    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+@g6_group
+def test_planted_g6_media_proof_edited_fails_the_deliverable_check(walked_to_g6):
+    channel, folder, good = _approve_g6_then_qc(walked_to_g6)
     path = folder / "checkpoint_final_watch.json"
     data = json.loads(path.read_text())
     data["metadata"]["approval"]["media"]["sha256"] = checks._sha256(good).replace(
@@ -379,25 +431,27 @@ def _resign_final_watch(folder, media_record):
     return approval
 
 
-def test_planted_g6_without_media_proof_fails_as_missing(studio_root, media):
+@g6_group
+def test_planted_g6_without_media_proof_fails_as_missing(walked_to_g6):
     """An approval with a valid stage proof but no media record (e.g. approved before media binding) fails."""
-    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+    channel, folder, good = _approve_g6_then_qc(walked_to_g6)
     _resign_final_watch(folder, None)
     result = _deliverable(channel, folder, good)
     assert not result["ok"] and "no media proof (missing)" in result["problems"][0]
 
 
-def test_planted_g6_forged_media_proof_fails_as_forged(studio_root, media):
-    channel, folder, good = _approve_g6_then_qc(studio_root, media)
+@g6_group
+def test_planted_g6_forged_media_proof_fails_as_forged(walked_to_g6):
+    channel, folder, good = _approve_g6_then_qc(walked_to_g6)
     record = json.loads((folder / "checkpoint_final_watch.json").read_text())["metadata"]["approval"]["media"]
     _resign_final_watch(folder, {**record, "proof": "0" * 64})
     result = _deliverable(channel, folder, good)
     assert not result["ok"] and "media proof is forged or edited" in result["problems"][0]
 
 
-def test_planted_g6_not_approved_fails_the_deliverable_check(studio_root, media):
-    log = []
-    channel, folder, good = _walk_to_g6(studio_root, media, log)
+@g6_group
+def test_planted_g6_not_approved_fails_the_deliverable_check(walked_to_g6):
+    channel, folder, good = walked_to_g6
     _upload_yaml(folder, good)
     result = _deliverable(channel, folder, good)
     assert not result["ok"] and "G6: final_watch is not approved" in result["problems"][0]
