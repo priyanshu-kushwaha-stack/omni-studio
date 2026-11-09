@@ -23,8 +23,11 @@ score plays `theme-light` directly (U1, yes) and its five cues were made by ACE-
 **Owner's decisions**
 
 - **2026-11-09, the pause-time video: "leave it as it is".** Its cues stay as made; no re-score.
-- **2026-11-09, U2: open.** The owner's view: "It should be allowed ideally ... we already paid for the content".
-  A web re-check the same day found nothing new:
+- **2026-11-09, U2: "Yes, keep it".** From video 2 on, ACE-Step keeps using the themes as `reference_audio`, at the
+  owner's risk, without asking Higgsfield first. That is option (a) below without question 2 sent; sound.md #11 is
+  treated as cleared by this decision. The owner's view: "It should be allowed ideally ... we already paid for the
+  content". If Higgsfield ever says otherwise, or the terms change, switch to option (b). A web re-check the same
+  day found nothing new:
   - The live Higgsfield terms are still the 23 Oct 2026 version snapshotted here.
   - Higgsfield's help article (modified 2026-09-12) only restates §5.1(iii) and §5.2(iv).
   - ElevenLabs' music docs suggest using your own output as a reference only inside Eleven Music.
