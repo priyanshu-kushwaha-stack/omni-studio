@@ -27,6 +27,10 @@ replacement. A note from your lens that is not one of these checks is a suggesti
 
 ## Must-pass checks you own (`rules/story.md`)
 
+Since 2026-11-10 you also hold the director's checks (#2, #3, #8, #10): the room keeps one or two reviewers
+(`docs/superpowers/specs/2026-11-10-say-suppose-first-cut-review-design.md`). At G1 that means: can the thumbnail's
+situation be shown in the first 7 s, and does the premise give a second hook by 0:30?
+
 | Check | Fails when |
 |---|---|
 | #1 Five lines first | The five lines are vague, or a scene serves none of them (name it: cut or tie it) |
@@ -35,6 +39,10 @@ replacement. A note from your lens that is not one of these checks is a suggesti
 | #7 Misconception first | You do not act on the wrong belief before the fact breaks it; more than one number at a time; a fact that does not land on you or your person within two lines |
 | #9 Earned stakes | The cost does not attack the habit from #4; a person to lose the premise did not earn; that person not named at least 2 min before the loss, with warm beats |
 | #12 Leave fast | The end is not the opposite of the opening; no real line inside the last image; a summary |
+| #2 Confirm the click | The first 7 s do not show the thumbnail's situation (`packaging.md`) |
+| #3 Second hook by 0:30 | By 0:30 the viewer does not know what you can lose and what question the video asks |
+| #8 A picture only this premise can show | None is named in a `> SCENE:` line, or it comes after the midpoint |
+| #10 The turn breaks a line already said | The reversal contradicts nothing spoken earlier, or the twist is shown early |
 | No new power rule after the halfway point | A rule of the power first stated after 50% of the runtime |
 | No new person after 60% | A person first appears after 60% of the runtime |
 | Length | Past about 8 minutes (115 words a minute plus holds) with no felt reason a viewer stays past 8:00. Write the reason either way |

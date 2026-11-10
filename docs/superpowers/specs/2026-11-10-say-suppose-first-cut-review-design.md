@@ -54,7 +54,7 @@ No paid call happens before G2. Every paid call is announced first (tool, provid
 
 - Engine: chosen by ear from the audition of 2026-11-10 (film 2's opening; Qwen3 and Chatterbox, both cloned from 13 s
   of Arthur's paid takes from the pause sample). Qwen3 read 27 s of narration in 42 s, Chatterbox 34 s in 125 s; both
-  21 % WER, mostly digits against spelled-out numbers. **Open: the owner's pick.** Until then, Qwen3 (faster).
+  21 % WER, mostly digits against spelled-out numbers. **The owner picked Qwen3 (voice A), 2026-11-10.**
 - `voices.yaml` narrator gains `local: {engine: <pick>, voice_ref: brand/voice/arthur-ref.wav, voice_text: ...}`
   beside the paid entry. The reference clip and its transcript go into the channel's brand folder (git-ignored media,
   like other audio).
@@ -78,7 +78,8 @@ No paid call happens before G2. Every paid call is announced first (tool, provid
 Room code changes:
 - The judge becomes optional (`judge:` may be omitted). With no judge, a round ships when the required seats are ok,
   and the writer merges the notes, sending any it will not take to the owner as one line.
-- `fact` stays a required role so its blockers can never be cut, but the room report lists it under checks.
+- `fact` stays a required role so its blockers can never be cut; in `room.yaml` and the README it is named the
+  claims check, and its brief stays claims-only.
 - Family rule unchanged: the required seats span two or more families other than the writer's (openai, google; the
   viewer is anthropic but not the writer's own model).
 - Limits unchanged: three blockers, three suggestions, three keep lines per seat; one room round, then the owner's notes.
