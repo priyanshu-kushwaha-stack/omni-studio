@@ -8,6 +8,17 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-10
+
+- **The narration must sound like a cinematic story, not a documentary.** After hearing K. V. Hagen, nine library
+  narrators and six designed voices on the last-time film: "Everything feels like documentary but not a cinematic
+  story when I hear them." The voice is not the problem ("Blend B is fine as voice"); the read is. Directions move
+  from plain narrator tones toward performance: intimate and close, wider dynamics, real pauses, breath, and a
+  feeling in every line. (last-time film, G3 casting)
+- **Narrator for the last-time film: Blend B,** a voice designed between the owner's voice and K. V. Hagen's, saved
+  as "Say Suppose Narrator B" on the owner's ElevenLabs account. Arthur stays the channel's voice unless the owner
+  says otherwise. (last-time film, G3 casting)
+
 ## 2026-11-09
 
 - **Rules adopted: "Adopt all".** The must-pass lists in `rules/` (story 12, sound 11, thumbnails K1-K15, the idea
