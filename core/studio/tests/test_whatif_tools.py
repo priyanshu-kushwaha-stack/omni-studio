@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import time
 from pathlib import Path
@@ -15,7 +16,7 @@ from tools.studio import studio_whatif_tools as wt
 from tools.tool_registry import registry
 
 VIDEO = "2026-11-06_pause-time-for-10-seconds-a-day"
-NAMES = {"whatif_story", "whatif_narration", "whatif_render", "whatif_stills"}
+NAMES = {"whatif_story", "whatif_narration", "whatif_render", "whatif_stills", "whatif_mux"}
 
 
 def test_the_tools_are_discovered():
@@ -183,3 +184,68 @@ def test_a_final_render_is_the_whole_film():
 def test_g6_has_the_render_tool():
     stages = {s["name"]: s for s in load_pipeline_readonly("studio-whatif")["stages"]}
     assert "whatif_render" in stages["final_watch"]["tools_available"]
+
+
+def test_picture_and_audio_passes():
+    tool = wt.WhatifRender()
+    (picture,), _ = tool.command(_render(mode="picture"))
+    assert "--muted" in picture and picture[5].endswith("pause.mp4")
+    assert tool.timing_step(_render(mode="picture")) == "whatif_render.picture-720p"
+    (audio,), _ = tool.command(_render(mode="audio", output="core/engines/whatif/out/pause.wav"))
+    assert "--codec=wav" in audio and not any(a.startswith("--scale") for a in audio)
+    assert tool.timing_step(_render(mode="audio")) == "whatif_render.audio"
+    with pytest.raises(ValueError, match=".wav"):
+        tool.command(_render(mode="audio"))
+    with pytest.raises(ValueError, match="one full"):
+        tool.command(_render(mode="picture", quality="final"))
+    with pytest.raises(ValueError, match="mode"):
+        tool.command(_render(mode="stems"))
+
+
+def _passes(tmp_path, monkeypatch, *, props_b="p1", scenes_b="s1", mode_a="picture"):
+    pic, aud = tmp_path / "pic.mp4", tmp_path / "aud.wav"
+    pic.write_bytes(b"v")
+    aud.write_bytes(b"a")
+    for media, mode, props, scenes in ((pic, mode_a, "p1", "s1"), (aud, "audio", props_b, scenes_b)):
+        wt.C.sidecar_path(media).write_text(
+            json.dumps(
+                {
+                    "schema": 1,
+                    "mode": mode,
+                    "quality": "preview",
+                    "props_sha256": props,
+                    "scenes_sha256": scenes,
+                    "frames": "all",
+                    "files": {"scenes/beats/B.tsx": scenes},
+                }
+            )
+        )
+    monkeypatch.setattr(wt, "inside", lambda p: Path(p))
+    return {"picture": str(pic), "audio": str(aud), "output": str(tmp_path / "out.mp4")}
+
+
+def test_mux_joins_a_matching_picture_and_audio(tmp_path, monkeypatch):
+    (cmd,), _ = wt.WhatifMux().command(_passes(tmp_path, monkeypatch))
+    assert cmd[0] == "ffmpeg" and "copy" in cmd and wt.LIMITER in cmd
+
+
+def test_mux_refuses_when_the_timing_moved(tmp_path, monkeypatch):
+    with pytest.raises(ValueError, match="timing"):
+        wt.WhatifMux().command(_passes(tmp_path, monkeypatch, props_b="p2"))
+
+
+def test_mux_refuses_two_audio_passes_or_files_with_no_sidecar(tmp_path, monkeypatch):
+    with pytest.raises(ValueError, match="picture pass"):
+        wt.WhatifMux().command(_passes(tmp_path, monkeypatch, mode_a="audio"))
+    inputs = _passes(tmp_path, monkeypatch)
+    wt.C.sidecar_path(Path(inputs["audio"])).unlink()
+    with pytest.raises(ValueError, match="render.json"):
+        wt.WhatifMux().command(inputs)
+
+
+def test_mux_needs_a_sound_only_declaration_when_scene_code_changed(tmp_path, monkeypatch):
+    inputs = _passes(tmp_path, monkeypatch, scenes_b="s2")
+    with pytest.raises(ValueError, match="sound_only_change"):
+        wt.WhatifMux().command(inputs)
+    (cmd,), _ = wt.WhatifMux().command({**inputs, "sound_only_change": True})
+    assert cmd[0] == "ffmpeg"

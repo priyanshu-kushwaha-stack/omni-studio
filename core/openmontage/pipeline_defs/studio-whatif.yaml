@@ -107,6 +107,7 @@ stages:
     tools_available:
       - whatif_render
       - whatif_stills
+      - whatif_mux
     checkpoint_required: true
     human_approval_default: true
     review_focus:
@@ -121,6 +122,7 @@ stages:
     tools_available:
       - whatif_render
       - whatif_stills
+      - whatif_mux
     checkpoint_required: true
     human_approval_default: true
     review_focus:
