@@ -21,6 +21,22 @@ Exit codes of every `python -m studio.room` command: 0 ok, 1 checks failed, 2 us
 `seat`, `judge` and `report` validate `room.yaml` first and exit 2 if it is invalid. `seat` also exits 1 for a failed seat (a failed verdict) or when the call cap is
 reached (`CapReached`).
 
+## Before round 1 (owner, 2026-11-10: "I was waiting to provide my feedback for so long")
+
+1. **Check the set-up once, at the start, not when a step fails.** In a worktree: link the venv
+   (`ln -s ~/Exploration/projects/omni-studio/.venv .venv`; the pre-push hook runs `make test` with it), run
+   `python -m studio.cli link`, and run `pnpm install --frozen-lockfile` in `core/engines/whatif`.
+2. **Check today's call budget** before writing anything:
+   `sqlite3 ~/.local/state/omni-studio/room/ledger.sqlite "select count(*) from calls where substr(at,1,10)=date('now')"`
+   (UTC day). If what's left is less than one script's cap, ask the owner then, not hours later.
+3. **The owner sees the draft first.** See the next section: show the draft once it passes lint (and `omni qc`
+   at G2), record it with `present`, and run the room beside the owner's read.
+4. **Don't wait on a timed-out seat.** A seat that exits 124 has used its whole timeout (`timeout_s` in
+   `models.yaml`). Note it and go on with the other seats' notes; spend its one re-run only when the round could
+   otherwise ship. The viewer is not required for a round to ship (`viewer_required: false`).
+5. **Run `make test` once,** after the last edit and before the push, not after every step. A push must not be cut
+   short: run it in the background and check `git ls-remote origin <branch>` before opening the PR.
+
 ## Order: the owner reads first (pipeline v2)
 
 Spec: `docs/superpowers/specs/2026-11-10-say-suppose-pipeline-v2-design.md`, section 4. One author, few voices, one
