@@ -3,10 +3,8 @@
   "voice": {
     "model": "chatterbox",
     "voiceType": "element",
-    "voiceId": "say-suppose-narrator-b",
-    "exaggeration": 0.85,
-    "cfgWeight": 0.5,
-    "seed": 7
+    "voiceId": "say-suppose-v3-cast",
+    "plan": "narration-takes.yaml"
   },
   "leadInSec": 0.6000000000000001,
   "tailSec": 2.4,
@@ -23,14 +21,16 @@
       "say": "[almost a whisper] Forty-two.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.94
     },
     {
       "text": "So what if you knew the last time you'd see someone?",
       "say": "[curious, low] So what if you knew the last time you'd see someone?",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "Mom: Call the minute you reach!",
@@ -51,14 +51,16 @@
       "say": "[warm, slower] That's forty-two goodbyes left at that door. What would you do with them?",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "Nobody else can see it. Just you.",
       "say": "[light, confiding] Nobody else can see it. Just you.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Everyone you know has one: the times you'll actually be in the same room again, if your plans stay exactly as they are.",
@@ -107,35 +109,40 @@
       "say": "[amused] Next morning, in the new city, the chai-wallah on platform two reads one.",
       "gapAfterSec": 0.35,
       "mood": "morning",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "One last chai, from a man you'll never see again.",
       "say": "[softer] One last chai, from a man you'll never see again.",
       "gapAfterSec": 1.5,
       "mood": "morning",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "And somehow it's the best chai of your life. Station chai.",
       "say": "[surprised] And somehow it's the best chai of your life. Station chai.",
       "gapAfterSec": 0.35,
       "mood": "morning",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Maybe it isn't the chai.",
       "say": "[curious, low] Maybe it isn't the chai.",
       "gapAfterSec": 0.35,
       "mood": "morning",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "In one taste test, students were told, \"This is your last chocolate.\"",
       "say": "[quick, an aside] In one taste test, students were told, \"This is your last chocolate.\"",
       "gapAfterSec": 0.35,
       "mood": "morning",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "64% picked it as their favourite, whatever the flavour.",
@@ -144,21 +151,24 @@
       "mood": "morning",
       "claims": [
         "c02"
-      ]
+      ],
+      "tempo": 1.04
     },
     {
       "text": "You almost go back for a second glass, but then it wouldn't be the last.",
       "say": "[amused] You almost go back for a second glass, but then it wouldn't be the last.",
       "gapAfterSec": 0.35,
       "mood": "morning",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "On the metro, a total stranger reads four hundred: four hundred mornings with someone you'll never speak to.",
       "say": "[puzzled, then dry] On the metro, a total stranger reads four hundred: four hundred mornings with someone you'll never speak to.",
       "gapAfterSec": 2.0,
       "mood": "morning",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "She's your commute now.",
@@ -179,14 +189,16 @@
       "say": "[conspiratorial, quick] So you hide.",
       "gapAfterSec": 2.0,
       "mood": "day",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Mehta: Saved you a seat!",
       "say": "[cheerful, too loud] Saved you a seat!",
       "gapAfterSec": 0.35,
       "mood": "day",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Three thousand meetings, and most of them are actual meetings.",
@@ -200,7 +212,8 @@
       "say": "[teasing] Then comes your first Friday. Go home, or sleep till noon?",
       "gapAfterSec": 0.35,
       "mood": "day",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Home. Obviously.",
@@ -214,14 +227,16 @@
       "say": "[surprised, quieter] You thought it would drop when you left. It drops when you walk in.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "This visit was already counted.",
       "say": "[low] This visit was already counted.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "She's had the chai ready since your train left the city.",
@@ -242,7 +257,8 @@
       "say": "[old man, delighted, telling a tale] So there I was, on my bicycle, and the buffalo...",
       "gapAfterSec": 0.35,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.92
     },
     {
       "text": "You've never once stayed for the end of this story.",
@@ -256,7 +272,8 @@
       "say": "[puzzled, gentle] How does it end?",
       "gapAfterSec": 0.35,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.92
     },
     {
       "text": "You don't know it either.",
@@ -284,7 +301,8 @@
       "say": "[flat, quiet] Thirty-nine. You didn't lose one visit, you lost two.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "Because \"let's see\" was a plan too, and it did the maths.",
@@ -312,14 +330,16 @@
       "say": "[brisk] Then October comes, with Diwaali and a deadline in the same week.",
       "gapAfterSec": 0.35,
       "mood": "day",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Thirty-nine is plenty. Skip this one, and save it for later.",
       "say": "[breezy] Thirty-nine is plenty. Skip this one, and save it for later.",
       "gapAfterSec": 0.35,
       "mood": "day",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Mom: Look, I lit all of them!",
@@ -333,14 +353,16 @@
       "say": "[flat] Calls don't count.",
       "gapAfterSec": 4.0,
       "mood": "night",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "Thirty-eight. You skipped it to save it, and it's just gone.",
       "say": "[low, slow] Thirty-eight. You skipped it to save it, and it's just gone.",
       "gapAfterSec": 0.35,
       "mood": "night",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "Mehta, meanwhile, is doing fine.",
@@ -354,7 +376,8 @@
       "say": "[careful, slow] Thirty-eight visits, a weekend each.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "A writer, Tim Urban, once did this sum on his own guesses.",
@@ -384,35 +407,40 @@
       "say": "[quiet, exact] Your strip is thinner.",
       "gapAfterSec": 2.5,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "You're not at the start of your time with her. You're at the tail end.",
       "say": "[hushed] You're not at the start of your time with her. You're at the tail end.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.94
     },
     {
       "text": "Then a Friday comes with no festival and no plan. Train, or sleep?",
       "say": "[tired] Then a Friday comes with no festival and no plan. Train, or sleep?",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Train.",
       "say": "[quick, decided] Train.",
       "gapAfterSec": 2.0,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Thirty-eight. Here comes the drop.",
       "say": "[tense, quiet] Thirty-eight. Here comes the drop.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "Mom: Next month, then?",
@@ -426,14 +454,16 @@
       "say": "[quick, half-swallowed] You open your mouth to say \"let's see\".",
       "gapAfterSec": 9.0,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "It wasn't her clock. It was your timetable.",
       "say": "[hushed, slow, warm] It wasn't her clock. It was your timetable.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.94
     },
     {
       "text": "It only counted down because you only ever planned less.",
@@ -447,21 +477,24 @@
       "say": "[brisk, tempting] But then the offer comes: a bigger job, in a bigger city, on duty every festival.",
       "gapAfterSec": 2.0,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Nine.",
       "say": "[cold, quiet] Nine.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "The offer, or the Friday train?",
       "say": "[low, warm] The offer, or the Friday train?",
       "gapAfterSec": 0.35,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.97
     },
     {
       "text": "Saying no isn't a plan. A ticket is.",
@@ -482,21 +515,24 @@
       "say": "[amused, warm] Grandpa's story? You learned the ending. Well. You made one up.",
       "gapAfterSec": 2.0,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 1.04
     },
     {
       "text": "Grandpa: Hah! Yours is better.",
       "say": "[old man, laughing, delighted] Hah! Yours is better.",
       "gapAfterSec": 4.0,
       "mood": "lamp",
-      "claims": []
+      "claims": [],
+      "tempo": 0.92
     },
     {
       "text": "Of course she is.",
       "say": "[hushed, warm] Of course she is.",
       "gapAfterSec": 1.0,
       "mood": "dusk",
-      "claims": []
+      "claims": [],
+      "tempo": 0.94
     },
     {
       "text": "Whose number would you want to see? Tell us below.",

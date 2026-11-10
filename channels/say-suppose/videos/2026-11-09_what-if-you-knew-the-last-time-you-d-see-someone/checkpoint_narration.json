@@ -3,15 +3,19 @@
   "project_id": "2026-11-09_what-if-you-knew-the-last-time-you-d-see-someone",
   "pipeline_type": "studio-whatif",
   "stage": "narration",
-  "status": "in_progress",
-  "timestamp": "2026-11-10T10:21:00.083121+00:00",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-10T11:01:08.442269+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "Superseded: the v2 narration (4:37, free Chatterbox) was heard by the owner as monotonous; it is re-rendered after G2 v3 with per-line delivery and character voices.",
-    "credits": 0
+    "for_owner": "G3: listen to narration/narration.wav at 1x (5:03). Script v3 (G2 passed, sha f891a3ae). Free on the Mac (Chatterbox): narrator in Blend B with per-line delivery (emotion, level -6 to 0 dB, pace 0.94-1.04 from each direction); Mom (built-in voice), Grandpa and Mehta (owner's 8 Nov designs). 6 lines retaken by seed, 18 clicks muted; qc claims and clicks pass. Never approved by an agent.",
+    "media": "narration/narration.wav",
+    "credits": 0,
+    "takes": "narration-takes.yaml",
+    "mutes": "mutes.txt",
+    "script_sha256": "f891a3aea992d3d08d0ade0ac78a4a81a68418178ab34932801cc88cde8d3cf8"
   }
 }
