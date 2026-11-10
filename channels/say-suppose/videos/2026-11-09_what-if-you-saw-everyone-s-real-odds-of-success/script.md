@@ -12,14 +12,11 @@ claims: claims.md
 
 ## [00:00] The change
 > MOOD: night
-> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose.
+> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose from the first frame: up and to the right of your head, where every chip sits, your crimson chip is already lit. Tags are stamped beside a chip, never over a face.
 > HOLD: 0.2 s. A pen scratch and the tube-light hum on the first frame; the first word comes at once.
-Row three. The night batch. You, copying the topper's notes. Like every night.
-> SCENE: A soft flutter, like split-flap cards. Small glowing chips flicker on over the heads, row by row, warm white and unlabelled. Numerals show only on the key chips, never on the crowd.
-Then a little number lights up. Over every head.
-> SCENE: Over your shoulder: up and to the right of your head, where every chip sits, a crimson chip. Close on your face, the thumbnail's pose: eyes wide, brows up, pen stopped mid-word. Tags are stamped beside a chip, never over a face.
+Every night, the topper's notes. Then yours: zero point zero four per cent.
+> SCENE: On "Then yours", close on your face, the thumbnail's pose: eyes wide, brows up, pen stopped mid-word. Behind you, with a soft flutter like split-flap cards, small chips flicker on over the other heads, row by row, warm white and unlabelled. Numerals show only on the key chips, never on the crowd.
 > TAG: 0.04%
-And yours says... zero point zero four per cent.
 What if you saw everyone's real odds of success?
 
 ## [00:20] The rule
@@ -167,8 +164,8 @@ The beat clock times are that estimate. Under 8 minutes, so no stay-past-8:00 re
   of the take text. The take text spells numbers out; the script keeps the cited digits for the claims check.
 - Spelled out: "UPSC" → "U-P-S-C"; "one in a thousand" stays in words. Every chip is said with "zero", the
   way Riya says it (voice director, G1 round 3): "zero point zero four per cent", "zero point two per cent".
-- Directions: the opening line [low, close, a little tired]; "And yours says... zero point zero four per cent."
-  [hushed, flat, stunned]; "Zero point zero four. What's that, in people?" [curious] then "One chair." [hushed];
+- Directions: the opening line in two breaths: "Every night, the topper's notes." [low, close, a little tired], then
+  "Then yours: zero point zero four per cent." [hushed, flat, stunned] (owner, G2, 2026-11-10); "Zero point zero four. What's that, in people?" [curious] then "One chair." [hushed];
   "Copy that." [dry]; "The biggest number is the right choice." [pleased with itself, certain: the planted line];
   "Zero point two per cent." [surprised, soft]; "Three per cent." [dry, flat]; "Eight per cent." [a small drop];
   "Sixty-one per cent." [a half-laugh, disbelieving], and the gap between the teacher's flat three and this must be

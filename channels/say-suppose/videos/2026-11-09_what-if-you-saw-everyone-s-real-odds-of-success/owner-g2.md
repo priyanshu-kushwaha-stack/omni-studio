@@ -1,15 +1,15 @@
 # G2 for the owner: everyone's real odds of success
 
-**Status: G2 is at `awaiting_human`.** The room shipped round 5 under the owner-notes rule. That round has your note
-("Take the room's fix": the bus line) plus the fact-checker's wording fix on c01. All three mandatory seats were ok
-and `verify` reports the room evidence ok. Nothing was generated and no paid call was made. I have not approved
-anything: only you pass G2 (`omni approve say-suppose <video> story_script`).
+**Status: G2 is at `awaiting_human`.** The room shipped round 6 under the owner-notes rule, with your two notes: the
+bus line and Grok's opening. All three mandatory seats were ok, facts 10/10, and `verify` reports the room evidence ok.
+Nothing was generated and no paid call was made. Nothing is approved: only you pass G2
+(`omni approve say-suppose <video> story_script`).
 
-**What I need from you:** read the script below and decide the one open blocker (the opening). Approve, or send notes.
+**What I need from you:** two small story #11 calls (below). Approve as it is, or tell me which fixes to take.
 
 ## The film in one breath
 
-Row three of a UPSC night batch, copying the topper's notes, when a chip lights over every head: yours reads zero
+Every night in row three of a UPSC night batch, you copy the topper's notes, and a chip over your head reads zero
 point zero four per cent. You decide "the biggest number is the right choice", copy the chaiwala's sixty-one, drop the
 exam, and sink; his sixty-one was his second stall. Your one real fact: about one in a thousand UPSC civil services
 applicants got in last year (c01), and yours had moved down because you copied. Then you tell your cousin Aarav to quit
@@ -17,64 +17,53 @@ cricket and his chip drains to zero. On the last bus home you can't stop reading
 tells you what's likely, not what's worth choosing. You give him the bat back, keep your promise of one more over, and
 return to row three with your own notes. Out in the lane... thwack.
 
-About 5 to 5.5 minutes (about 530 spoken words, 37 s of holds).
+About 5 to 5.5 minutes (about 550 words on the page, bubbles included; 37 s of holds).
 
-## What changed since you last read it
+## Your notes so far (2026-11-10, in `taste.md`)
 
-- **Your note, l119:** "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving."
-  is now "The last bus home. And you can't stop reading them. Like timetables." [hushed, a little awed, tired], with
-  the 2.5 s hold after it wordless. Recorded in `taste.md` (2026-11-10).
-- **Fact fix, l87 (round 4 fact blocker):** "UPSC applicants" is now "UPSC **civil services** applicants". The figure
-  covers only that exam, and UPSC runs others. Same words in `claims.md` c01.
+- **The bus line, l119:** now "The last bus home. And you can't stop reading them. Like timetables."
+- **The opening ("groks version"):** "Every night, the topper's notes. Then yours: zero point zero four per cent." The
+  thumbnail pose and the crimson chip are on screen from the first frame. The viewer's story #2 score went from 4 to 8.
+- Also applied: the round-4 fact blocker. c01 says "UPSC **civil services** applicants".
+
+## Open blockers (round 6): your call
+
+Both are the viewer's (story #11, a line that names what the frame shows):
+
+1. **l87:** "You've been wearing the crowd's number. Like a verdict. / But yours moved. Down." The hold already shows
+   your chip sitting low. Their fix: "But a verdict doesn't move. Yours did." *My read: take it. It turns the line
+   from a caption into the point.*
+2. **l149, the last beat:** "Row three. The night batch. Your own notes." This line used to echo the old opening
+   ("Row three. The night batch."). Your new opening removed that echo. Their fix: "Every night. And you know the
+   number." *My read: take it. It bookends the new opening ("Every night...") and lands the RESULT line (you know
+   your odds and work anyway).*
+
+Suggestions, open (`review-g2-round6.md`): play the rule on the teacher's chip; land c01 on an action; cut the
+strangers on the bus; make the stall montage about copying the chaiwala.
 
 ## The room's scores (0 to 10)
 
-Rounds 1 to 3 ran the five v1 seats; the viewer timed out in all of them (`review-g2-round1.md` to `-round3.md`).
-Rounds 4 and 5 are owner-notes rounds, with mandatory seats only.
+Rounds 1 to 3 ran the five v1 seats; the viewer timed out in all of them. Rounds 4 to 6 are owner-notes rounds.
 
-| Seat (model) | Round 4 | Round 5 (shipped) |
-|---|---|---|
-| first-time viewer (Grok 4.7) | #2 3, #3 7, #4 8, #11 5, week 9, K13 8, would stay 6; **2 blockers** | #2 4, #3 8, #4 9, #11 8, week 9, K13 9, would stay 7; **1 blocker** |
-| story editor (GPT-5.6 Sol, Room v2) | story 9 | story 9, five lines 9, but/therefore 8, gaps 9, misconception 9, stakes 10, leave fast 9, late rules 10, length 10 |
-| retention editor (GPT-5.6 Sol, v1) | story 9, retention 8, length 10 | - (left the room in v2) |
-| fact-checker (Gemini 3.8 Flash) | fact 8; **1 blocker** (applied) | facts 10 |
+| Seat (model) | Round 4 | Round 5 | Round 6 (shipped) |
+|---|---|---|---|
+| first-time viewer (Grok 4.7) | #2 3, #11 5, stay 6; 2 blockers | #2 4, #11 8, stay 7; 1 blocker | #2 8, #3 8, #4 9, #11 4, week 8, K13 9, stay 7; **2 blockers** |
+| story editor (GPT-5.6 Sol) | story 9 | story 9, stakes 10, length 10 | five lines 9, beats 9, misconception 9, stakes and ending 10, length 10 |
+| fact-checker (Gemini 3.8 Flash) | fact 8; 1 blocker (applied) | facts 10 | facts 10 |
 
-Blockers per round: 3, 2, 1, 3, 1. Calls: 27 of the script's 35.
-
-Two tooling changes today. Grok now finishes inside its per-model timeout (PR #15): 540 s in round 4. Cursor dropped
-Gemini 3.7 Flash, so the fact seat moved to Gemini 3.8 Flash (studio PR #26, separate from this film).
-
-## Open blocker (round 5): your call
-
-- **First-time viewer, story #2 (confirm the click), line 17:** "Row three. The night batch. You, copying the topper's
-  notes. Like every night." takes the first 7 seconds. The thumbnail's shocked face and crimson 0.04% chip arrive
-  about 11 s in. Their fix: open with "Every night, the topper's notes. Then yours: zero point zero four per cent.",
-  with the thumbnail pose and the chip on screen from the first frame. That drops "Then a little number lights up.
-  Over every head." and "And yours says... zero point zero four per cent." as separate lines.
-  - My read: the problem is real (the viewer raised it in both rounds it ran), but the fix costs the chips lighting
-    up row by row, the film's first wonder beat. A middle way: keep the opening, but make the thumbnail pose and the
-    crimson chip arrive at about 3 s by cutting "Like every night." and the 0.2 s hold. Either way this rewrites the
-    opening the G1 room accepted, so it is yours to choose.
-
-Earlier, the viewer also flagged "He didn't even argue." (round 4, story #11). In round 5 the viewer and the story
-editor both keep it, so I left it.
-
-Open suggestions, mostly for G3 staging and narration: `review-g2-round4.md`, `review-g2-round5.md`. Two story choices
-from earlier rounds are still open:
-- Add "So... do you quit?" after the title line, so the QUIT? thumbnail pays off at once (retention editor, round 3).
-- Drop the stamped goal labels (SECOND STALL, HIS OWN RANK, MUSIC) and let the tin, the exam form and the keyboard
-  carry the reveals (retention editor). I would keep the labels: they are how a phone viewer reads the reveal.
+Blockers per round: 3, 2, 1, 3, 1, 2. Calls: 30 of the script's 35. Grok's story #11 score dropped in round 6
+because it read new lines, not because the script got worse. Each round, one fresh first-time reader finds one or two
+more lines to tighten.
 
 ## Facts
 
 One spoken fact, `claims.md` c01: UPSC CSE 2025, 958 recommended of 9,37,876 applicants (PIB, 6 March 2026), "about one
-in a thousand UPSC civil services applicants". c02 (nearly four in ten never sat the paper) and c03 (about one in three
-from the interview room got in) were cut in round 1 for pace (story #7) and stay in the ledger as dropped. Every chip
-value is invented and said in words. `omni qc say-suppose <video> story_script` passes.
+in a thousand UPSC civil services applicants". c02 and c03 were cut in round 1 for pace and stay in the ledger as
+dropped. Every chip value is invented and said in words. `omni qc say-suppose <video> story_script` passes.
 
 ---
 
-## The script, in full (round 5 draft, `script.md`)
+## The script, in full (round 6 draft, `script.md`)
 
 ## Script: What If You Saw Everyone's Real Odds of Success?
 
@@ -90,14 +79,11 @@ claims: claims.md
 
 ### [00:00] The change
 > MOOD: night
-> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose.
+> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose from the first frame: up and to the right of your head, where every chip sits, your crimson chip is already lit. Tags are stamped beside a chip, never over a face.
 > HOLD: 0.2 s. A pen scratch and the tube-light hum on the first frame; the first word comes at once.
-Row three. The night batch. You, copying the topper's notes. Like every night.
-> SCENE: A soft flutter, like split-flap cards. Small glowing chips flicker on over the heads, row by row, warm white and unlabelled. Numerals show only on the key chips, never on the crowd.
-Then a little number lights up. Over every head.
-> SCENE: Over your shoulder: up and to the right of your head, where every chip sits, a crimson chip. Close on your face, the thumbnail's pose: eyes wide, brows up, pen stopped mid-word. Tags are stamped beside a chip, never over a face.
+Every night, the topper's notes. Then yours: zero point zero four per cent.
+> SCENE: On "Then yours", close on your face, the thumbnail's pose: eyes wide, brows up, pen stopped mid-word. Behind you, with a soft flutter like split-flap cards, small chips flicker on over the other heads, row by row, warm white and unlabelled. Numerals show only on the key chips, never on the crowd.
 > TAG: 0.04%
-And yours says... zero point zero four per cent.
 What if you saw everyone's real odds of success?
 
 ### [00:20] The rule
@@ -245,8 +231,8 @@ The beat clock times are that estimate. Under 8 minutes, so no stay-past-8:00 re
   of the take text. The take text spells numbers out; the script keeps the cited digits for the claims check.
 - Spelled out: "UPSC" → "U-P-S-C"; "one in a thousand" stays in words. Every chip is said with "zero", the
   way Riya says it (voice director, G1 round 3): "zero point zero four per cent", "zero point two per cent".
-- Directions: the opening line [low, close, a little tired]; "And yours says... zero point zero four per cent."
-  [hushed, flat, stunned]; "Zero point zero four. What's that, in people?" [curious] then "One chair." [hushed];
+- Directions: the opening line in two breaths: "Every night, the topper's notes." [low, close, a little tired], then
+  "Then yours: zero point zero four per cent." [hushed, flat, stunned] (owner, G2, 2026-11-10); "Zero point zero four. What's that, in people?" [curious] then "One chair." [hushed];
   "Copy that." [dry]; "The biggest number is the right choice." [pleased with itself, certain: the planted line];
   "Zero point two per cent." [surprised, soft]; "Three per cent." [dry, flat]; "Eight per cent." [a small drop];
   "Sixty-one per cent." [a half-laugh, disbelieving], and the gap between the teacher's flat three and this must be

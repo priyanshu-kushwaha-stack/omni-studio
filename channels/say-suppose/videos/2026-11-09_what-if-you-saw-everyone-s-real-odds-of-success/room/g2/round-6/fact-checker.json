@@ -1,0 +1,22 @@
+{
+  "call_id": "acd242f85bb14871a84b6743ac8545c8",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [],
+  "keep": [
+    {
+      "line": 84,
+      "quote": "Last year? About one in a thousand UPSC civil services applicants got in (c01)."
+    }
+  ],
+  "error": "",
+  "output_sha256": "42f9231fa9dd6b4fe89ac2c1e29fb170180fd4647462ae9e9484e96cf20775d8",
+  "draft_sha256": "bcf0dac6eb232e2695b4ea763d0bc759d32952e6bc654406bf8b76d19d2a3d6e"
+}
