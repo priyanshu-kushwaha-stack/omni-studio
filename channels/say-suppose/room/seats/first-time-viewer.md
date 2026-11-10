@@ -34,4 +34,7 @@ K1-K4, K8-K11 and K14 need the rendered images: say "needs the rendered thumbnai
   word you would not understand without pausing.
 - Up to three lines worth keeping (`keep`), such as a line you would send a friend.
 
+**Pipeline v2 (owner, 2026-11-10).** At most three blockers, worst first. The round does not wait for you: if your
+verdict arrives after the other seats, your notes join the owner's round as suggestions.
+
 Owner notes in `taste.md` outrank `style.md`; a newer dated note outranks an older one.

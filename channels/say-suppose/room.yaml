@@ -10,10 +10,20 @@
 # story editor's brief; a director (craft, Opus 5.5, so the writer does not review its own draft) joins; the voice
 # director and the animator leave (0 agreed blockers; they return at G3 and G4 when those rooms exist). The viewer stays
 # on Grok until a faster viewer earns its place: in the trial Grok was right on 2 of 3 and Gemini raised nothing.
+#
+# Pipeline v2 (owner, 2026-11-10, "Looks fine"; docs/superpowers/specs/2026-11-10-say-suppose-pipeline-v2-design.md,
+# section 4): one room round before the owner reads and the owner's notes as the only second pass (rounds: 1; owner-notes
+# rounds may go past it); the owner reads round 1's draft first and the room runs beside the read (owner_first); at most
+# three blockers, three suggestions and three keep lines per seat, worst first (fact blockers are never cut); the viewer
+# is off the critical path (viewer_required: false: a round ships on story and fact, and a late viewer's notes join the
+# owner-notes round as suggestions). The viewer's model stays Grok until the viewer trial (PR #27) reports.
 writer: claude-fable-5-1
 judge: gpt-5.6-sol-high
-rounds: 3
+rounds: 1
 daily_cap: 80
+owner_first: true
+viewer_required: false
+limits: {blockers: 3, suggestions: 3, keep: 3}
 adopted: 2026-11-09
 pitch_clip: after_g2
 seats:
@@ -27,7 +37,8 @@ format:
   # reason a viewer stays (rules/story.md, "Length"). No cadence: the choice put to you about once a minute is an
   # ordinary narrator line with no marker, so the story seats judge it.
 linters:
-  # rules/story.md #1, five lines first: > SITUATION/DESIRE/CONFLICT/CHANGE/RESULT before the first beat (cast.md).
-  - "{python} core/engines/whatif/pipeline/story_lint.py {script}"
+  # rules/story.md #1, five lines first: > SITUATION/DESIRE/CONFLICT/CHANGE/RESULT before the first beat (cast.md);
+  # the under-question (> UNDER:, required from videos dated 2026-11-10) and at most three > DARLING: lines.
+  - "{python} core/engines/whatif/pipeline/story_lint.py {script} --under-from 2026-11-10"
 # Uncited spoken digits are caught by `omni qc <slug> <video> story_script` (claims), not by the room's lint.
 sources: [idea_room, youtube_outliers]
