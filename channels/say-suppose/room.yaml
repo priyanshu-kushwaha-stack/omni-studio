@@ -16,7 +16,14 @@
 # rounds may go past it); the owner reads round 1's draft first and the room runs beside the read (owner_first); at most
 # three blockers, three suggestions and three keep lines per seat, worst first (fact blockers are never cut); the viewer
 # is off the critical path (viewer_required: false: a round ships on story and fact, and a late viewer's notes join the
-# owner-notes round as suggestions). The viewer's model stays Grok until the viewer trial (PR #27) reports.
+# owner-notes round as suggestions).
+#
+# Viewer trial (owner, 2026-11-10; docs/research/2026-11-10-say-suppose-viewer-trial/RESULTS.md): the viewer is Claude
+# Opus 5.5 and Grok leaves the room. Of the 10 problems the owner agreed with, Opus found 5 (one more card unmarked) at
+# a median of 1 min; grok-4.7-high-fast found 6 at 7.5 min and grok-4.7-high 5 at 9.9 min. 5 of Opus's 6 cards were
+# agreed, against 2 of 8 for grok-4.7-high-fast. Fable, the writer, missed on its own script what Opus found, so the
+# viewer may share the writer's family but never be the writer's own model (studio.room.verdict.SELF_LOCKED).
+# Round 2 was blind between Opus and Fable only; the owner's per-seat scores (PR #28) judge the seat on real films.
 writer: claude-fable-5-1
 judge: gpt-5.6-sol-high
 rounds: 1
@@ -27,7 +34,7 @@ limits: {blockers: 3, suggestions: 3, keep: 3}
 adopted: 2026-11-09
 pitch_clip: after_g2
 seats:
-  - {name: first-time viewer, role: viewer, model: grok-4.7-high, brief: room/seats/first-time-viewer.md}
+  - {name: first-time viewer, role: viewer, model: claude-opus-5-5, brief: room/seats/first-time-viewer.md}
   - {name: story editor, role: story, model: gpt-5.6-sol-high, brief: room/seats/story-editor.md}
   - {name: fact-checker, role: fact, model: gemini-3.7-flash-high, brief: room/seats/fact-checker.md}
   - {name: director, role: craft, model: claude-opus-5-5, brief: room/seats/director.md}

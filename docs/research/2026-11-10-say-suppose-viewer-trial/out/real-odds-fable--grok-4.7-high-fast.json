@@ -1,0 +1,82 @@
+{
+  "script": "real-odds-fable",
+  "model": "grok-4.7-high-fast",
+  "exit": 0,
+  "seconds": 511,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "grok-4.7-high-fast",
+    "family": "xai",
+    "status": "ok",
+    "scores": {
+      "story": 7,
+      "packaging": 8
+    },
+    "blockers": [
+      {
+        "quote": "Another year, for that chair. Keep going?",
+        "why": "story #3 Second hook by 0:30. At about 115 words a minute this starts near 0:36. At 0:30 the line in my ear is still the crowd's number moving with what I do, so the year I could lose has not been said.",
+        "fix": "Move this and the chair line to right after line 25, over the floor of chairs: In people? One chair, out of two thousand five hundred. Another year, for that chair. Keep going? Leave the later slot as: It starts at the crowd's number. Then it moves with what you do.",
+        "domain": "viewer",
+        "line": 39
+      },
+      {
+        "quote": "Below, a chip over the milkman and one over the aunty with the broom.",
+        "why": "The viewer's week. The milkman and the aunty sit outside chai, the bus or metro, exams, the office, and family.",
+        "fix": "Below, a chip over the bus and one over your mother on her morning call.",
+        "domain": "viewer",
+        "line": 46
+      },
+      {
+        "quote": "A chip in every window.",
+        "why": "story #11 Never say the feeling. The six-second hold already showed a chip in every window, and the line says that picture back to me.",
+        "fix": "Cut the line. Come out of the hold on: You do what you always do. You look for the biggest one.",
+        "domain": "viewer",
+        "line": 235
+      },
+      {
+        "quote": "The topper, eight, at her keyboard, headphones on.",
+        "why": "story #11 Never say the feeling. This is where I stop watching. The window already shows her at the keyboard with headphones, and eight is the hall's old number. The chaiwala line and the teacher line caption the same way, so I leave before the dark window.",
+        "fix": "Cut this line, line 241, and line 249. Play those three windows under: But none of them went shopping for a number. They picked what they wanted. The number came after.",
+        "domain": "viewer",
+        "line": 245
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 33,
+        "quote": "It starts at the crowd's number. Then it moves with what you do.",
+        "fix": "Drop 'The rule.' and save this sentence for the placement tick, when the chair flips to a lanyard. In the opening, stop after: A chip is your real chance at what you'd choose with nobody watching."
+      },
+      {
+        "line": 185,
+        "quote": "Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.",
+        "fix": "Cut this line. Go from 'It was watching you, and you were copying.' straight to the hand on the drawer."
+      },
+      {
+        "line": 290,
+        "quote": "So here's the honest part. It's still tiny. So is yours. The chips never lied.",
+        "fix": "It's still tiny. So is yours. The chips never lied."
+      }
+    ],
+    "keep": [
+      {
+        "line": 57,
+        "quote": "In this lane you're the best batter alive. The lane is one scooter wide."
+      },
+      {
+        "line": 113,
+        "quote": "Sixty-one. The biggest number of the night is holding a kettle."
+      },
+      {
+        "line": 316,
+        "quote": "Row three. You don't look up. Out in the lane: thwack."
+      }
+    ],
+    "error": ""
+  }
+}

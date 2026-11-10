@@ -54,6 +54,17 @@ def test_a_story_seat_on_the_writer_family_fails(tmp_path):
     assert any("story editor" in p and "writer's family" in p for p in C.validate(cfg))
 
 
+def test_a_viewer_on_the_writer_family_but_another_model_passes(tmp_path):
+    # Viewer trial round 2 (2026-11-10): the blind spot was the writer reviewing its own script, not its family.
+    cfg = _cfg(tmp_path, BASE.replace("role: viewer, model: grok-4.7-high", "role: viewer, model: claude-sonnet-5-5"))
+    assert C.validate(cfg) == []
+
+
+def test_a_viewer_on_the_writer_model_fails(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("role: viewer, model: grok-4.7-high", "role: viewer, model: claude-opus-5-5"))
+    assert any("cold viewer" in p and "writer's own model" in p for p in C.validate(cfg))
+
+
 def test_a_judge_on_the_writer_family_fails(tmp_path):
     cfg = _cfg(tmp_path, BASE.replace("judge: gpt-5.6-sol-high", "judge: claude-sonnet-5-5"))
     assert any("judge" in p and "is the writer's family" in p for p in C.validate(cfg))

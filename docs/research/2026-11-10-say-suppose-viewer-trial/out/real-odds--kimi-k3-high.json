@@ -1,0 +1,66 @@
+{
+  "script": "real-odds",
+  "model": "kimi-k3-high",
+  "exit": 0,
+  "seconds": 76,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "kimi-k3-high",
+    "family": "moonshot",
+    "status": "ok",
+    "scores": {
+      "Confirm the click, story #2 (first 7 s)": 4,
+      "Second hook by 0:30, story #3": 7,
+      "A habit, then the change, story #4": 9,
+      "Never say the feeling, story #11": 9,
+      "My week on screen (chai, exam, bus, cousin)": 10,
+      "Thumbnail payoff by 0:30, K13": 9,
+      "Would I still be watching at the end": 8
+    },
+    "blockers": [
+      {
+        "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+        "why": "story #2: I clicked on the thumbnail's picture - me, shocked, a crimson 0.04% chip beside my head - but the first 7 seconds are only the hall and the copying. This line alone runs about 6 s at Arthur's tempo, so the chips only start flickering around 0:07 and the crimson chip and shocked face (lines 20-22) land around 0:11-0:15. The G1 outline promised the thumbnail's picture inside the first seven seconds; the draft as timed does not deliver it.",
+        "fix": "Overlap the reveal with the line instead of after it: trim line 17 to 'Row three. The night batch. You, copying the topper's notes.' and change line 18's SCENE to start the flutter under the words - 'As you speak, a soft flutter, like split-flap cards: small glowing chips flicker on over the heads, row by row, yours lighting crimson over your shoulder as the line ends.' Chips on screen by 0:03, the crimson chip by 0:06, 'Like every night.' can ride on line 19's beat if it still fits.",
+        "domain": "viewer",
+        "line": 17
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 31,
+        "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+        "fix": "By my ear this finishes around 0:35-0:37, so the full second hook (what I can lose plus the question) lands late. Shave the 2 s hold at line 29 to 1 s and merge lines 27-28 into one breath ('Zero point zero four - one chair out of two thousand five hundred.') so 'keep going?' lands by about 0:28."
+      },
+      {
+        "line": 33,
+        "quote": "Here's how it works.",
+        "fix": "This is where my thumb hovers - it sounds like a teacher starting a lesson. Cut those four words and go straight to 'Each chip is one person's chance at the one thing they'd choose... with nobody watching.' The chair grid already taught me half the rule."
+      },
+      {
+        "line": 89,
+        "quote": "You've been wearing the crowd's number. Like a verdict.",
+        "fix": "Lines 86-91 explain the same idea four times while nothing moves except a camera drift in an empty hall - the closest the draft comes to a lecture. Cut this line and keep 'But yours moved. Down.' so the idea lands once, on me, and the apron beat (line 92) arrives sooner."
+      }
+    ],
+    "keep": [
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 114,
+        "quote": "He didn't even argue."
+      },
+      {
+        "line": 156,
+        "quote": "Out in the lane... thwack."
+      }
+    ],
+    "error": ""
+  }
+}
