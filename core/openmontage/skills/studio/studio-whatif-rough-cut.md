@@ -10,6 +10,9 @@ shot; it is decided from renders, never described. Never restage the picked shot
 1. Build each `> SCENE:` from the kit, lit by its `> MOOD:` (`moodLook`), with pause bars, named expressions, shot
    helpers, and the channel's rule for sources (Say Suppose: in the description, not on screen). Use the kit: sets as layers at different depths, rigged figures, props. Reuse a
    set before drawing a new one. No AI images and no AI video clips: everything on screen is drawn in code.
+   `scenes/Root.tsx` registers two compositions with the same props: `RoughCut` (the film) and `RoughCutSound`, the
+   film inside `<SoundOnly.Provider value={true}>` (`@whatif/kit/sound`), which the audio pass renders. Put every
+   `<Audio>` outside `<Stage>` and `<Figure>` (as the pause-time film's beats do), or the sound composition drops it.
 2. Motion reads named cues anchored to spoken words, never hard-coded times, so a new voice take re-times the
    scene. Something changes every 2 to 4 seconds; no hold is longer than 6 seconds.
 3. Life comes from poses, eyes, props and the camera. No lip-sync and no line boil.

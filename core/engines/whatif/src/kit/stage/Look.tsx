@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { AbsoluteFill } from "remotion";
+import { useSoundOnly } from "../sound";
 
 /** Screen-space light: a soft glow on a light source, in output pixels. */
 export interface Glow { x: number; y: number; r: number; color: string; strength?: number }
@@ -43,7 +44,9 @@ export function layerBlur(look: Look, depth: number): number {
 /** Light in two passes. "world" goes under the actors: most of the grade, and the haze. "over" goes on top of
  *  everything: the actors' share of the grade (so the world ends near the full grade), the vignette and the glows. */
 export const Light: React.FC<{ pass?: "world" | "over" }> = ({ pass = "over" }) => {
+  const soundOnly = useSoundOnly();
   const look = useLook();
+  if (soundOnly) return null;
   const full = look.grade?.opacity ?? 1;
   const actors = actorGrade(look);
   const grade = pass === "world" ? Math.max(0, full - actors) : actors;
