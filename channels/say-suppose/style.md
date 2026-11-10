@@ -41,10 +41,11 @@ thumbnails stay readable worldwide (no `₹` or local slang in the English packa
 
 ### Writing it (owner, 2026-11-08 and 2026-11-09)
 
-- **The twelve must-pass checks** in `rules/story.md`: five lines first (Situation, Desire, Conflict, Change,
-  Result); confirm the click in 7 s; a second hook by 0:30; a habit, then the change; "but" or "therefore" between
-  beats, never "and then"; every use has a gap; misconception first; a picture only this premise can show, before the
-  midpoint; earned stakes; the turn breaks a line already said; never say the feeling; leave fast.
+- **The fourteen must-pass checks** in `rules/story.md`: five lines first (Situation, Desire, Conflict, Change,
+  Result); confirm the click in 7 s; the hook in 10 s and a second hook by 0:30; a habit, then the change; "but" or
+  "therefore" between beats, never "and then"; every use has a gap; misconception first; a picture only this premise
+  can show, before the midpoint; earned stakes; the turn breaks a line already said; never say the feeling; leave fast;
+  every fact moves the story; a restart every ~3 minutes.
 - **Felt, not taught.** Every fact lands on you or your person within two lines. Never two fact lines in a row while
   the story stands still.
 - **Answer the viewer's "but what about".** Before writing, list the five questions a curious viewer would ask, in

@@ -14,7 +14,7 @@ quote; if the place you would leave is also a failed check, it is a blocker unde
 | Check | At | Fails when |
 |---|---|---|
 | story #2 Confirm the click | G1, G2 | The first 7 s do not show the thumbnail's situation |
-| story #3 Second hook by 0:30 | G1, G2 | By 0:30 you cannot say what you can lose and what question the video asks |
+| story #3 Second hook by 0:30 | G1, G2 | The first 10 s don't give you the premise, the stakes and a tension; the title's promise isn't met by about 0:15; or by 0:30 you cannot say what you can lose and what question the video asks |
 | story #4 A habit, then the change | G1, G2 | No line or picture shows how you normally run your day, or the change misses that habit |
 | story #11 Never say the feeling | G2 | A line names what you should feel, or says what the shot already shows |
 | The viewer's week | G1, G2 | An example or gag is not from Riya's week (chai, bus or metro, exams, office, family), or the English title or thumbnail has `₹` or local slang |

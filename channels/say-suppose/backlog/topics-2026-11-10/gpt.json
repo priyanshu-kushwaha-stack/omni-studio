@@ -1,0 +1,916 @@
+{
+  "topics": [
+    {
+      "id": "o-remember-tomorrow",
+      "title": "You Remember Tomorrow, Not Yesterday",
+      "premise": "Every midnight, you receive tomorrow's most memorable ten minutes but lose every lived memory of today.",
+      "thumbnail": {
+        "image": "You clutch tomorrow's glowing calendar while today's family photo fades behind you",
+        "tag": "TOMORROW ONLY"
+      },
+      "rule": "At midnight you preview the ten minutes tomorrow-you will remember most strongly; choices can change the preview, but the exchange permanently erases today's episodic memories while leaving notes and learned skills intact.",
+      "hook": "Tomorrow you get the internship—but at midnight, you forget the mother who helped you prepare for it.",
+      "beats": [
+        "Midnight: tomorrow's offer appears as today's birthday dinner vanishes from your mind.",
+        "Chats, photos and chai receipts prove a whole day happened without restoring the feeling of living it.",
+        "You preview an exam answer, then discover remembering an answer is not the same as understanding it.",
+        "Changing your internship pitch changes the preview, proving the future is mutable.",
+        "Your mother notices you remember tomorrow's recruiter better than last night's promise to her.",
+        "Employers and influencers compete to become the event tomorrow-you cannot stop rehearsing.",
+        "Discarded previews begin feeling as real as events you actually lived.",
+        "A preview shows your mother leaving with a suitcase, but not what made her go.",
+        "You spend the day preventing that scene until your obsession creates the argument behind it.",
+        "You choose an ordinary evening of chai with her, knowing tomorrow you will remember its value but not living it."
+      ],
+      "feeling_map": [
+        "wonder",
+        "greed",
+        "disconnection",
+        "panic",
+        "bittersweet agency"
+      ],
+      "restarts": [
+        "Knowing the exam answer proves useless without the reasoning behind it.",
+        "Your advantage begins erasing trust with your mother.",
+        "Repeatedly changed previews contaminate your sense of what really happened.",
+        "The threatening preview turns out to be strengthened by your attempts to prevent it."
+      ],
+      "content_mine": [
+        {
+          "fact": "Severe episodic amnesia can coexist with improved performance on learned tasks, as demonstrated by patient H.M.",
+          "source": "https://doi.org/10.1038/nrn726",
+          "beat": "The exam preview gives you an answer without the remembered learning behind it."
+        },
+        {
+          "fact": "Sleep actively supports memory consolidation.",
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3768102/",
+          "beat": "Midnight becomes the plausible boundary where today's experiences are exchanged."
+        },
+        {
+          "fact": "Forgetting is steepest soon after learning, as modern replications of Ebbinghaus's curve show.",
+          "source": "https://doi.org/10.1371/journal.pone.0120644",
+          "beat": "Receipts and messages preserve facts while the lived day rapidly becomes inaccessible."
+        },
+        {
+          "fact": "Remembering personal events and imagining future events recruit substantially overlapping brain systems.",
+          "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2047313/",
+          "beat": "Discarded previews begin competing with real memories."
+        },
+        {
+          "fact": "People with hippocampal amnesia also struggle to construct coherent imagined experiences.",
+          "source": "https://doi.org/10.1073/pnas.0610561104",
+          "beat": "Losing yesterday starts weakening your ability to interpret tomorrow."
+        },
+        {
+          "fact": "Making future rewards vivid can reduce delay discounting.",
+          "source": "https://doi.org/10.1016/j.neuron.2010.03.026",
+          "beat": "The vivid internship preview changes what you sacrifice today."
+        },
+        {
+          "fact": "Psychological distance makes distant events feel more abstract than near ones.",
+          "source": "https://doi.org/10.1037/a0018963",
+          "beat": "Tomorrow's concrete preview overwhelms today's ordinary family moments."
+        },
+        {
+          "fact": "Autobiographical memory and personal goals form an interacting self-memory system.",
+          "source": "https://doi.org/10.1037/0033-295X.107.2.261",
+          "beat": "Repeated exchanges begin changing who you believe yourself to be."
+        },
+        {
+          "fact": "Emotional arousal can strengthen memory consolidation through amygdala-linked systems.",
+          "source": "https://doi.org/10.1146/annurev.neuro.27.070203.144157",
+          "beat": "Fear makes the suitcase preview dominate every decision."
+        },
+        {
+          "fact": "Confidence in flashbulb memories can remain high while consistency declines.",
+          "source": "https://doi.org/10.1111/1467-9280.02453",
+          "beat": "You confidently confuse discarded futures with lived scenes."
+        },
+        {
+          "fact": "Source monitoring is an inference, so imagined and experienced material can be misattributed.",
+          "source": "https://doi.org/10.1037/0033-295X.100.1.3",
+          "beat": "You can no longer identify which version of the argument actually happened."
+        },
+        {
+          "fact": "Retrieving a memory can make it temporarily modifiable before reconsolidation.",
+          "source": "https://doi.org/10.1038/35021052",
+          "beat": "Rehearsing the feared preview changes the future it supposedly predicts."
+        }
+      ],
+      "twist": "The power selects what tomorrow-you rehearses most, not what is objectively important; fearing the suitcase scene is what creates it.",
+      "ending": "You stop treating ordinary time as disposable, because a day can shape you even when you cannot keep it.",
+      "closest_video": {
+        "title": "Arrival — Official Trailer",
+        "url": "https://www.youtube.com/watch?v=tFMo3UJ4B4g",
+        "difference": "Arrival explores largely fixed future memories; this uses a daily memory price, mutable previews and an attention feedback loop."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, compress the institutional competition and discarded-future montage while preserving the exam failure, mother conflict and self-fulfilling suitcase reveal."
+      },
+      "views_case": "Vsauce's 2024 time-perception hit Did People Used to Look Older? (https://www.youtube.com/watch?v=vjqt8T3tJIE) and Kurzgesagt's direct-address You Don't Have Free Will (https://www.youtube.com/watch?v=UebSfjmQNvs) show strong demand for personal time and agency mysteries. The fading-photo thumbnail communicates both power and price instantly.",
+      "under_question": "If you can remember consequences but not the people who caused them, are your choices still yours?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-swap-memories",
+      "title": "You Can Swap Memories With Anyone",
+      "premise": "Touch someone, name a date, and you exchange your strongest memory from that day.",
+      "thumbnail": {
+        "image": "Your shocked face is split with your friend's childhood face while one photograph tears between you",
+        "tag": "NOT YOURS"
+      },
+      "rule": "Touch someone for three seconds while naming a date and you exchange the strongest autobiographical memory each formed that day; sensations and emotions transfer but skills do not, and recalling either memory changes it enough that swapping back cannot restore the original.",
+      "hook": "You touch your best friend and remember her childhood from inside her body—while she wakes inside yours.",
+      "beats": [
+        "A spilled chai makes you exchange memories of yesterday with your friend.",
+        "You try a topper's exam memory and inherit fluorescent lights and panic, not equations.",
+        "Your manager's memory lets you experience your own presentation from his disappointed perspective.",
+        "Swapping a family argument creates empathy but confusion over who remembers apologising.",
+        "A market forms for first dates, interviews and celebrity encounters.",
+        "Courts briefly embrace transferred memories until witnesses exchange incompatible versions.",
+        "Borrowed childhoods begin shifting preferences and loyalties despite transferring no expertise.",
+        "Your mother asks you to take the family memory she can no longer bear carrying.",
+        "You try returning it, but both versions now contain different rooms, words and faces.",
+        "You create one new memory together and deliberately leave it unshared."
+      ],
+      "feeling_map": [
+        "intimate wonder",
+        "comic disappointment",
+        "empathy",
+        "distrust",
+        "tender uncertainty"
+      ],
+      "restarts": [
+        "The topper's memory transfers stress but no usable knowledge.",
+        "Seeing yourself through your manager turns a fun experiment painfully personal.",
+        "A private ability becomes a market and an evidence crisis.",
+        "Returning your mother's memory reveals that no original copy remains."
+      ],
+      "content_mine": [
+        {
+          "fact": "Memory is reconstructive rather than a literal recording.",
+          "source": "https://doi.org/10.1037/0003-066X.54.3.182",
+          "beat": "The first exchange contains altered details rather than a perfect replay."
+        },
+        {
+          "fact": "Post-event wording can change eyewitness recollections, including estimated collision speed.",
+          "source": "https://doi.org/10.1016/S0022-5371(74)80011-3",
+          "beat": "Two holders describe different versions of the same family argument."
+        },
+        {
+          "fact": "Procedural learning can remain intact despite severe episodic-memory loss.",
+          "source": "https://doi.org/10.1038/nrn726",
+          "beat": "The topper's memory does not transfer the skill needed to solve the exam."
+        },
+        {
+          "fact": "Imagining an event can increase confidence that it actually occurred.",
+          "source": "https://doi.org/10.3758/BF03210744",
+          "beat": "Your manager's perspective begins feeling like your own experience."
+        },
+        {
+          "fact": "People can absorb incorrect details supplied by a co-witness.",
+          "source": "https://doi.org/10.1002/acp.885",
+          "beat": "Family members contaminate one another's swapped recollections."
+        },
+        {
+          "fact": "Experiments demonstrate social contagion of memory.",
+          "source": "https://doi.org/10.3758/BF03196174",
+          "beat": "The memory marketplace produces shared but inaccurate experiences."
+        },
+        {
+          "fact": "Autobiographical memories are organized around current goals and identity.",
+          "source": "https://doi.org/10.1037/0033-295X.107.2.261",
+          "beat": "Borrowed childhood memories begin changing loyalties and preferences."
+        },
+        {
+          "fact": "Source monitoring relies on inferred sensory and contextual qualities, not an infallible ownership label.",
+          "source": "https://doi.org/10.1037/0033-295X.100.1.3",
+          "beat": "You cannot prove whether a defining memory began inside you."
+        },
+        {
+          "fact": "Eyewitness confidence becomes less diagnostic after feedback and contamination.",
+          "source": "https://doi.org/10.1177/1529100616686966",
+          "beat": "Courts discover that vivid transferred testimony is not reliable evidence."
+        },
+        {
+          "fact": "Researchers have induced a false contextual fear memory in mice by activating memory representations.",
+          "source": "https://doi.org/10.1126/science.1239073",
+          "beat": "A borrowed emotional memory changes how you react to an innocent place."
+        },
+        {
+          "fact": "Retrieved memories can become labile and require reconsolidation.",
+          "source": "https://doi.org/10.1038/35021052",
+          "beat": "Every attempt to compare or return the family memory changes it again."
+        },
+        {
+          "fact": "Emotionally vivid memories can feel accurate while still changing substantially.",
+          "source": "https://doi.org/10.1111/1467-9280.02453",
+          "beat": "Your mother's most painful memory produces two equally convincing versions."
+        }
+      ],
+      "twist": "The power transfers a reconstruction process, not a file; after two brains recall it, the original memory no longer exists anywhere.",
+      "ending": "You realize that sharing a life never required remembering it identically.",
+      "closest_video": {
+        "title": "How Reliable Is Your Memory? — TED-Ed",
+        "url": "https://www.youtube.com/watch?v=PB2OegI6wvI",
+        "difference": "The explainer covers individual distortion; this turns reconstruction into a social power, market and family choice."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, combine the market and courtroom beats, then keep the failed exam transfer, manager perspective and mother's irreversible memory."
+      },
+      "views_case": "TED-Ed's memory videos remain multi-million-view evergreen material, while Kurzgesagt's recent agency video (https://www.youtube.com/watch?v=UebSfjmQNvs) shows current appetite for identity questions. The split-face thumbnail gives the premise a single readable mystery.",
+      "under_question": "If a borrowed memory changes who you become, who owns the person it creates?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-salary-prices",
+      "title": "Every Price Knows Your Salary",
+      "premise": "Everything costs more or less according to your verified income, so earning more can make you poorer overnight.",
+      "thumbnail": {
+        "image": "Two identical chai cups show tiny and enormous bills while your new salary offer glows between them",
+        "tag": "SAME CHAI"
+      },
+      "rule": "Every legal purchase uses the consumer's biometric identity and costs the posted base price multiplied by the square root of their income divided by median income, capped from 0.25x to 8x; gifts use the recipient's rate, and the catch is that low-income identities and untaxed benefits become valuable loopholes.",
+      "hook": "Your internship offer arrives—and before your first salary, the cashier takes back your chai and quadruples its price.",
+      "beats": [
+        "At one stall, you and a suited commuter receive wildly different bills for identical chai.",
+        "The income formula makes transport, lunch and exam forms briefly feel cheap.",
+        "Accepting an internship reprices the items already sitting in your cart.",
+        "Your unpaid mother becomes the family's cheapest legal buyer.",
+        "Strangers start paying her to scan groceries, rent and electronics for them.",
+        "Employers replace salary with housing, meals, shares and private transport.",
+        "The system begins estimating hidden wealth from location, browsing and social circles.",
+        "Rich buyers receive premium supply while discounted buyers inherit queues and smaller packs.",
+        "Unpaid care is officially counted as income, finally recognizing your mother's work.",
+        "Recognition raises her prices, and the family resents the income she deserved all along."
+      ],
+      "feeling_map": [
+        "shock",
+        "mischievous advantage",
+        "embarrassment",
+        "paranoia",
+        "family guilt"
+      ],
+      "restarts": [
+        "Your internship acceptance changes the price while you are paying.",
+        "Your mother's discounted identity becomes a commodity.",
+        "Employers invent compensation the formula cannot see.",
+        "Recognizing unpaid care removes the discount holding your household together."
+      ],
+      "content_mine": [
+        {
+          "fact": "A 2025 FTC study found intermediaries using location, browsing and purchase histories to support individualized prices or promotions.",
+          "source": "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-wide-range-personal-data-used-set-individualized-consumer",
+          "beat": "The system begins inferring hidden wealth from your digital behaviour."
+        },
+        {
+          "fact": "Data brokers aggregate extensive consumer information into opaque categories.",
+          "source": "https://www.ftc.gov/reports/data-brokers-call-transparency-accountability-report-federal-trade-commission-may-2014",
+          "beat": "Your official salary stops being the only number controlling your price."
+        },
+        {
+          "fact": "OECD analysis describes data-driven personalized pricing as technically feasible while raising fairness concerns.",
+          "source": "https://doi.org/10.1787/9789264300541-en",
+          "beat": "Two customers receive different chai bills without traditional bargaining."
+        },
+        {
+          "fact": "EU consumer law requires disclosure when an automated decision personalizes a price.",
+          "source": "https://eur-lex.europa.eu/eli/dir/2019/2161/oj",
+          "beat": "Your receipt reveals the personal multiplier behind every purchase."
+        },
+        {
+          "fact": "GDPR Article 22 regulates significant decisions based solely on automated processing.",
+          "source": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "beat": "You attempt to challenge the algorithm that classified your household."
+        },
+        {
+          "fact": "UPI processes transactions at a scale capable of applying rules purchase by purchase.",
+          "source": "https://www.npci.org.in/what-we-do/upi/product-statistics",
+          "beat": "The new formula reaches chai stalls and metro gates immediately."
+        },
+        {
+          "fact": "Global Findex reported worldwide account ownership reached 76 percent in 2021.",
+          "source": "https://www.worldbank.org/en/publication/globalfindex/Report",
+          "beat": "Digital enforcement becomes widespread but still excludes people outside formal finance."
+        },
+        {
+          "fact": "The World Inequality Report estimates the top 10 percent receive 52 percent of global income and own 76 percent of wealth.",
+          "source": "https://wir2022.wid.world/",
+          "beat": "Income-based pricing collides with much larger differences in accumulated wealth."
+        },
+        {
+          "fact": "The ILO estimates 16.4 billion hours of unpaid care work are performed each day.",
+          "source": "https://www.ilo.org/publications/major-publications/care-work-and-care-jobs-future-decent-work",
+          "beat": "Your mother's invisible work is finally assigned an income."
+        },
+        {
+          "fact": "NIST found demographic differentials across many face-recognition algorithms.",
+          "source": "https://www.nist.gov/news-events/news/2019/12/nist-study-evaluates-effects-race-age-sex-face-recognition-software",
+          "beat": "Biometric checkout fails unevenly and sends some customers into appeal queues."
+        },
+        {
+          "fact": "OECD tax-benefit models document how effective marginal rates can alter incentives around reported work income.",
+          "source": "https://www.oecd.org/els/soc/benefits-and-wages/",
+          "beat": "Employers and workers shift compensation away from visible salary."
+        },
+        {
+          "fact": "The ILO's 2024-25 report documents persistent wage inequality within and between economies.",
+          "source": "https://www.ilo.org/publications/flagship-reports/global-wage-report-2024-25-wage-inequality-declining-globally",
+          "beat": "One pricing formula cannot make unequal wages or bargaining power disappear."
+        }
+      ],
+      "twist": "Society finally recognizes your mother's unpaid work as income, and that overdue recognition immediately takes away the discount making her economically valuable.",
+      "ending": "You and your mother receive equal chai bills for the first time, and equality feels strangely like a punishment.",
+      "closest_video": {
+        "title": "What Gives a Dollar Bill Its Value? — TED-Ed",
+        "url": "https://www.youtube.com/watch?v=XNu5ppFZbHo",
+        "difference": "The existing video explains money's value; this follows one explicit personalized-pricing law into labour, privacy and family consequences."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, shorten the global supply montage and merge employer loopholes with algorithmic surveillance; retain the live price jump and mother's recognition twist."
+      },
+      "views_case": "Veritasium's multi-million-view Is Success Luck or Hard Work? (https://www.youtube.com/watch?v=3LopI4YeC4I) and TED-Ed's money explainer show that inequality works when embodied in one person. Surveillance pricing also became a live 2025 news topic, giving the same-chai image immediate relevance.",
+      "under_question": "Is a price fair when everyone pays the same amount, or when everyone feels the same pain?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-one-global-price",
+      "title": "Everything Costs the Same Everywhere",
+      "premise": "Every identical product must have one worldwide price, making local chai expensive and imported electronics suddenly cheap.",
+      "thumbnail": {
+        "image": "Identical chai cups in Pune and New York are joined by an equals sign while you stare at the bill",
+        "tag": "ONE PRICE"
+      },
+      "rule": "Functionally identical goods and services receive one worldwide all-in price based on the previous month's global median; sellers cannot block resale, wages remain local, and any measurable difference in size, recipe, warranty or function creates a separate product.",
+      "hook": "Your morning chai suddenly costs New York money—and by lunch, every affordable phone in your city is gone.",
+      "beats": [
+        "Pune and Manhattan receipts snap to the same converted total.",
+        "Your basket flips: local services soar while some imported products become bargains.",
+        "Overseas resellers empty the affordable electronics shop before you arrive.",
+        "Prices globalize overnight, but your internship salary does not.",
+        "Travellers and warehouses reorganize around arbitrage.",
+        "Low-price regions lose stock while unofficial priority fees appear.",
+        "Governments alter plugs, labels and standards because tariffs no longer work.",
+        "Biscuits acquire local weights, flavours and subscription bundles.",
+        "Companies assign different functions to individual serial numbers.",
+        "Two visually identical chais become legally distinct products with unequal prices again."
+      ],
+      "feeling_map": [
+        "wish fulfilment",
+        "confusion",
+        "unfairness",
+        "scarcity anxiety",
+        "absurd recognition"
+      ],
+      "restarts": [
+        "Your affordable phone disappears into an overseas reseller's suitcase.",
+        "The unchanged local wage turns equal pricing into unequal access.",
+        "Governments replace border taxes with product differences.",
+        "Companies escape by ensuring that nothing remains truly identical."
+      ],
+      "content_mine": [
+        {
+          "fact": "The World Bank's International Comparison Program exists because exchange rates do not equalize local purchasing power.",
+          "source": "https://www.worldbank.org/en/programs/icp",
+          "beat": "The opening compares identical-looking purchases across countries."
+        },
+        {
+          "fact": "Purchasing-power-parity conversion factors differ from market exchange rates.",
+          "source": "https://data.worldbank.org/indicator/PA.NUS.PPP",
+          "beat": "The worldwide receipt exposes the gap between currency conversion and affordability."
+        },
+        {
+          "fact": "The IMF uses equivalent baskets to explain why exchange rates and purchasing power produce different comparisons.",
+          "source": "https://www.imf.org/external/pubs/ft/fandd/basics/ppp.htm",
+          "beat": "Your basket becomes cheaper and more expensive in unexpected directions."
+        },
+        {
+          "fact": "OECD price-level indices measure substantial differences in national price levels after currency conversion.",
+          "source": "https://www.oecd.org/en/data/indicators/price-level-indices.html",
+          "beat": "The rule erases price differences while leaving income differences intact."
+        },
+        {
+          "fact": "Eurostat reports large consumer-price-level differences even inside the EU single market.",
+          "source": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20240620-1",
+          "beat": "Equal trade rules are shown not to create equal retail prices naturally."
+        },
+        {
+          "fact": "The Big Mac Index uses a standardized product to reveal international price and currency differences.",
+          "source": "https://www.economist.com/big-mac-index",
+          "beat": "The two-chai comparison becomes a familiar visual measure of unequal purchasing power."
+        },
+        {
+          "fact": "EU geo-blocking rules restrict discriminatory access but do not require one harmonized price.",
+          "source": "https://digital-strategy.ec.europa.eu/en/policies/geoblocking",
+          "beat": "The story distinguishes open access from mandatory equal pricing."
+        },
+        {
+          "fact": "Comparative advantage depends on relative production costs.",
+          "source": "https://www.wto.org/english/res_e/reser_e/cadv_e.htm",
+          "beat": "Factories and warehouses relocate after the price rule changes margins."
+        },
+        {
+          "fact": "WTO tariff profiles document wide differences in duties by country and product.",
+          "source": "https://www.wto.org/english/res_e/statis_e/tariff_profiles_list_e.htm",
+          "beat": "Governments search for standards-based substitutes after tariffs stop affecting price."
+        },
+        {
+          "fact": "Trade facilitation can materially reduce cross-border trading costs.",
+          "source": "https://www.wto.org/english/tratop_e/tradfa_e/tradfa_e.htm",
+          "beat": "Resellers exploit faster borders and drain low-priced stock."
+        },
+        {
+          "fact": "Freight rates, route distances and port disruptions alter delivered prices.",
+          "source": "https://unctad.org/publication/review-maritime-transport-2024",
+          "beat": "A single retail price forces sellers to abandon expensive destinations or redesign products."
+        },
+        {
+          "fact": "The World Bank Logistics Performance Index records large differences in customs, infrastructure and shipment reliability.",
+          "source": "https://lpi.worldbank.org/",
+          "beat": "The supposedly simple global price produces unequal queues and delivery times."
+        }
+      ],
+      "twist": "The law succeeds so literally that companies evolve every product into a unique legal species, eliminating the category of same thing.",
+      "ending": "You drink two indistinguishable chais with different specification codes and realize inequality can survive any rule by changing its paperwork.",
+      "closest_video": {
+        "title": "What Gives a Dollar Bill Its Value? — TED-Ed",
+        "url": "https://www.youtube.com/watch?v=XNu5ppFZbHo",
+        "difference": "This is not about why currency works; it imposes one global price and follows the product-speciation escape hatch."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, collapse logistics and government countermoves into one escalating montage while keeping the phone shortage, wage mismatch and unique-serial-number twist."
+      },
+      "views_case": "TED-Ed's money video and Kurzgesagt's global-rule videos such as What If We Nuke the Moon? (https://www.youtube.com/watch?v=qEfPBt9dU60) demonstrate demand for one clean rule with planetary consequences. The equal-sign thumbnail is readable before the title.",
+      "under_question": "Does equality mean the same price everywhere, or the same ability to afford it?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-secret-weight",
+      "title": "Every Secret Weighs One Kilo",
+      "premise": "Every truth you hide from someone who needs it adds one kilogram to your body.",
+      "thumbnail": {
+        "image": "You bend beneath a huge lock-shaped weight while your empty hands prove there is no bag",
+        "tag": "SECRET WEIGHT"
+      },
+      "rule": "A true fact adds one kilogram for every nearby unaware person whose next consequential decision would probably change if told; the weight disappears when they understand it or when their decision can no longer be changed, making delay the darkest way to become lighter.",
+      "hook": "You enter the metro seven kilos heavier, carrying nothing—except seven truths you are afraid to tell.",
+      "beats": [
+        "You buckle inside a crowded metro as seven hidden truths appear on a counter.",
+        "Admitting your internship rejection removes weight but destroys your family's financial plan.",
+        "A friend reveals that your supervisor plans to blame her, transferring another kilo to you.",
+        "People begin refusing gossip and confidences because knowledge has physical cost.",
+        "A supervisor carrying dozens of concealed layoffs collapses during a staff meeting.",
+        "Doctors, reporters and vulnerable people prove that necessary secrets can also become crushing.",
+        "Exposing the supervisor would save your friend but destroy the recommendation your family needs.",
+        "Companies hire isolated secret-keepers while politicians avoid crowds.",
+        "You delay until your friend accepts formal blame and loses her career opportunity.",
+        "Your kilo vanishes without confession because the truth can no longer change her decision."
+      ],
+      "feeling_map": [
+        "bodily panic",
+        "guilty relief",
+        "moral confusion",
+        "complicity",
+        "irreversible guilt"
+      ],
+      "restarts": [
+        "A friend's confession can transfer weight to you.",
+        "Good people carrying necessary confidences break the simple secret-equals-bad assumption.",
+        "Institutions convert secrecy into distance, isolation and privilege.",
+        "You become lighter before telling the truth, revealing the rule's cruelest condition."
+      ],
+      "content_mine": [
+        {
+          "fact": "Participants in secrecy research reported roughly 13 current secrets, about five never disclosed.",
+          "source": "https://doi.org/10.1037/pspa0000085",
+          "beat": "The opening counter reveals that an ordinary person already carries many secrets."
+        },
+        {
+          "fact": "Preoccupation with secrets predicted poorer well-being more strongly than moments of active concealment.",
+          "source": "https://doi.org/10.1037/pspa0000085",
+          "beat": "The invisible burden follows you even when nobody is asking questions."
+        },
+        {
+          "fact": "Confiding can improve coping through support and changed perspective.",
+          "source": "https://doi.org/10.1037/emo0000529",
+          "beat": "Admitting the internship rejection brings relief despite real consequences."
+        },
+        {
+          "fact": "Self-disclosure activates neural reward systems.",
+          "source": "https://doi.org/10.1073/pnas.1202129109",
+          "beat": "Each disappearing kilogram makes disclosure physically and emotionally tempting."
+        },
+        {
+          "fact": "Appropriate reciprocal self-disclosure is associated with liking.",
+          "source": "https://doi.org/10.1037/0033-2909.116.3.457",
+          "beat": "Refusing every confidence begins damaging friendships."
+        },
+        {
+          "fact": "Reputational gossip can deter selfishness and protect groups.",
+          "source": "https://doi.org/10.1037/a0026650",
+          "beat": "The story complicates the idea that all gossip is harmful."
+        },
+        {
+          "fact": "Gossip-mediated reputation can support cooperation without direct observation.",
+          "source": "https://doi.org/10.1073/pnas.0704598104",
+          "beat": "Informal truth networks emerge after official communication becomes dangerous."
+        },
+        {
+          "fact": "HIPAA limits disclosure of protected health information and requires safeguards.",
+          "source": "https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html",
+          "beat": "A doctor demonstrates why some confidentiality must survive."
+        },
+        {
+          "fact": "Insider trading rules concern material nonpublic information held through duties of trust.",
+          "source": "https://www.investor.gov/introduction-investing/investing-basics/glossary/insider-trading",
+          "beat": "Corporate employees become physically burdened by decision-changing information."
+        },
+        {
+          "fact": "Article 12 of the Universal Declaration of Human Rights protects privacy.",
+          "source": "https://www.un.org/en/about-us/universal-declaration-of-human-rights",
+          "beat": "The new physical law creates a conflict between truth and a recognized human right."
+        },
+        {
+          "fact": "Encryption and anonymity can enable privacy and free expression.",
+          "source": "https://www.ohchr.org/en/documents/thematic-reports/ahrc2942-report-use-encryption-and-anonymity-digital-communications",
+          "beat": "Institutions move secret-keepers into remote, anonymous roles."
+        },
+        {
+          "fact": "Whistleblower protections exist because reporting wrongdoing can expose reporters to retaliation.",
+          "source": "https://www.oecd.org/en/topics/sub-issues/whistleblower-protection.html",
+          "beat": "Saving your friend threatens your recommendation and family plans."
+        }
+      ],
+      "twist": "The weight measures whether truth can still change a choice, not guilt; becoming light proves you waited until helping was impossible.",
+      "ending": "You walk home weightless and understand that relief can arrive much too late to mean innocence.",
+      "closest_video": {
+        "title": "Why Privacy Matters — Glenn Greenwald",
+        "url": "https://www.youtube.com/watch?v=pcSlowAhvUk",
+        "difference": "The talk argues for privacy; this creates a decision-sensitive physical law and hangs it on one preventable betrayal."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, compress the institutional adaptations but preserve the doctor counterexample, friend's career stakes and weightless-without-confession reveal."
+      },
+      "views_case": "Privacy, confession and moral-choice videos remain strong evergreen categories, while direct-address agency videos such as Kurzgesagt's You Don't Have Free Will (https://www.youtube.com/watch?v=UebSfjmQNvs) pull current mass audiences. A person visibly crushed by an invisible secret is the entire click in one image.",
+      "under_question": "Is telling the truth still moral when you do it only to make yourself feel lighter?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-infectious-memory",
+      "title": "One Memory Infects Everyone",
+      "premise": "Every midnight, one person's strongest minute enters every sleeping human as if they lived it.",
+      "thumbnail": {
+        "image": "You clutch your head while billions of eyes behind you show the same impossible scene",
+        "tag": "SAME MEMORY"
+      },
+      "rule": "At midnight, the day's most emotionally intense sixty-second autobiographical memory enters every sleeping person without names or source labels; awake people miss it, and recalled copies can mutate, become more intense and win a later broadcast.",
+      "hook": "You wake choking on seawater in a dry bedroom—and every sleeping person on Earth remembers drowning too.",
+      "beats": [
+        "The sleeping world wakes with the same minute of drowning while you remain physically dry.",
+        "People agree on the core event but already dispute colours and final words.",
+        "Cardamom and a metro announcement point the anonymous memory toward your city.",
+        "Students chase a topper's exam memory while police seek involuntary confessions.",
+        "One civilian's terrifying experience produces worldwide empathy, panic and avoidance.",
+        "Governments, brands and extremists compete to manufacture the strongest minute.",
+        "Your family's private farewell wins and becomes reaction videos, jokes and slogans.",
+        "Your mother stops speaking to you because the memory no longer feels like the family's.",
+        "Millions repeat slightly different versions of one comforting final sentence.",
+        "An old recording proves the sentence that shaped your life was created by the global replay."
+      ],
+      "feeling_map": [
+        "sensory terror",
+        "illicit intimacy",
+        "mass empathy",
+        "violated grief",
+        "identity vertigo"
+      ],
+      "restarts": [
+        "A local sensory clue makes you a global suspect.",
+        "Institutions begin engineering emotional peaks for midnight.",
+        "Your family's warmest private memory becomes public material.",
+        "Mutated copies become eligible to defeat the original."
+      ],
+      "content_mine": [
+        {
+          "fact": "Flashbulb-memory confidence can stay high while consistency declines over time.",
+          "source": "https://doi.org/10.1111/1467-9280.01473",
+          "beat": "Humanity confidently disagrees about details of the first shared minute."
+        },
+        {
+          "fact": "Post-event misinformation can alter later recollection.",
+          "source": "https://doi.org/10.1101/lm.94705",
+          "beat": "Online discussion changes colours and words inside the broadcast memory."
+        },
+        {
+          "fact": "People can incorporate details suggested by another witness into their own reports.",
+          "source": "https://doi.org/10.3758/BF03196174",
+          "beat": "Millions absorb the most repeated version of the farewell."
+        },
+        {
+          "fact": "Co-witness discussion can produce memory conformity.",
+          "source": "https://doi.org/10.1002/acp.885",
+          "beat": "A dominant global account overwhelms quieter variants."
+        },
+        {
+          "fact": "Source monitoring determines whether information is attributed to perception, imagination or another person.",
+          "source": "https://doi.org/10.1037/0033-2909.114.1.3",
+          "beat": "Recipients cannot tell whether a scene belongs to them or the broadcast."
+        },
+        {
+          "fact": "Reactivated memories can become labile and require reconsolidation.",
+          "source": "https://doi.org/10.1038/35021052",
+          "beat": "Every global recollection creates a slightly altered candidate for rebroadcast."
+        },
+        {
+          "fact": "Sleep has a major role in memory consolidation.",
+          "source": "https://doi.org/10.1152/physrev.00032.2012",
+          "beat": "Only sleeping people receive and stabilize the midnight memory."
+        },
+        {
+          "fact": "Emotion can prioritize central information over peripheral context during memory formation.",
+          "source": "https://doi.org/10.1146/annurev.psych.55.090902.141530",
+          "beat": "The broadcast preserves terror and a hand slipping away while blurring location."
+        },
+        {
+          "fact": "Autobiographical memory and identity form an interacting self-memory system.",
+          "source": "https://doi.org/10.1037/0033-295X.107.2.261",
+          "beat": "The borrowed farewell begins shaping your identity."
+        },
+        {
+          "fact": "Odour-cued autobiographical memories tend to be unusually vivid and emotional.",
+          "source": "https://doi.org/10.1037/0278-7393.32.2.240",
+          "beat": "Cardamom becomes the clue connecting the anonymous memory to Pune."
+        },
+        {
+          "fact": "Repeated media exposure after the Boston Marathon bombing correlated with greater acute stress than direct exposure in the studied sample.",
+          "source": "https://doi.org/10.1073/pnas.1316265111",
+          "beat": "A shared traumatic minute produces panic as well as empathy."
+        },
+        {
+          "fact": "Doctored childhood photographs have induced reports of events that did not occur.",
+          "source": "https://doi.org/10.3758/BF03196318",
+          "beat": "The final recording reveals that a defining remembered sentence never happened."
+        }
+      ],
+      "twist": "The dangerous memory is not the original but the billions of reconstructions it creates; humanity eventually remembers an emotionally superior event that never occurred.",
+      "ending": "You hear the authentic recording and realize that a false sentence can shape a real life.",
+      "closest_video": {
+        "title": "How Reliable Is Your Memory? — TED-Ed",
+        "url": "https://www.youtube.com/watch?v=PB2OegI6wvI",
+        "difference": "The existing video explains individual false memory; this turns reconstruction into a global attention contest and family violation."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, combine the exam, policing and geopolitical uses into one montage; retain the drowning hook, family farewell and recording reveal."
+      },
+      "views_case": "TED-Ed's false-memory work is evergreen, and recent identity-and-agency videos such as Kurzgesagt's You Don't Have Free Will (https://www.youtube.com/watch?v=UebSfjmQNvs) attract mass audiences. The shared-eye thumbnail promises global scale while the family recording supplies character stakes.",
+      "under_question": "If a false memory shapes your love and courage more than the truth, which version is really yours?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-frictionless-touch",
+      "title": "Every Touch Deletes Friction",
+      "premise": "For one day, every surface connecting your body to the world becomes perfectly frictionless.",
+      "thumbnail": {
+        "image": "You slide past your abandoned shoes as a cup of chai flies from your hand",
+        "tag": "NO GRIP"
+      },
+      "rule": "For twenty-four hours, every solid contact transmitting force between your body, clothing or held tools and the outside world has zero friction; gravity, normal force, air drag, fluids, adhesion and magnetism remain, so enclosing shapes and hooks work but gloves and shoes do not.",
+      "hook": "Your floor forgets friction. One step—and your entire life loses its grip.",
+      "beats": [
+        "You step from bed, slide away and cannot hold the smooth table edge.",
+        "The floor still supports you and walls still hurt; only controlled sideways force is gone.",
+        "A round knob, toothbrush, phone and chai cup turn ordinary morning habits into puzzles.",
+        "Shoes cannot propel you, so you move by hooking elbows around furniture.",
+        "The metro accelerates while your hands slide uselessly down the pole.",
+        "You cannot separate exam pages or make a pencil scrape properly across paper.",
+        "Carabiners, enclosed handles, wedges and magnets replace friction with geometry.",
+        "A guided keyboard rig makes you believe engineering has defeated the rule.",
+        "Your grandmother's smooth chai glass slips from your pinch and shatters.",
+        "Friction returns while you are sliding, and your fingertips grip an ordinary table again."
+      ],
+      "feeling_map": [
+        "comic disbelief",
+        "vulnerability",
+        "frustration",
+        "ingenuity",
+        "grief and appreciation"
+      ],
+      "restarts": [
+        "The bathroom proves the rule affects far more than walking.",
+        "Metro acceleration turns inconvenience into public danger.",
+        "Engineering appears capable of replacing friction.",
+        "A sentimental object reveals what engineered workarounds cannot protect."
+      ],
+      "content_mine": [
+        {
+          "fact": "Friction acts parallel to contact surfaces and opposes relative motion or its tendency.",
+          "source": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction",
+          "beat": "The opening distinguishes lost friction from lost gravity."
+        },
+        {
+          "fact": "Static friction adjusts up to a limiting value rather than always having one fixed magnitude.",
+          "source": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction",
+          "beat": "Your foot loses the adaptable force normally preventing a slip."
+        },
+        {
+          "fact": "The introductory kinetic-friction model uses force equal to coefficient times normal force.",
+          "source": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction",
+          "beat": "A clean zero coefficient explains the rule visually."
+        },
+        {
+          "fact": "Normal force acts perpendicular to a surface and remains without friction.",
+          "source": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction",
+          "beat": "Corners and enclosing handles can still support you."
+        },
+        {
+          "fact": "Ground friction supplies the external horizontal force used to accelerate while walking.",
+          "source": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction",
+          "beat": "Shoes remain under you but cannot propel you forward."
+        },
+        {
+          "fact": "A round knob requires tangential force and torque around its axis.",
+          "source": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
+          "beat": "The bathroom door becomes impossible to open normally."
+        },
+        {
+          "fact": "Capacitive touchscreens sense changes in an electrical field rather than friction.",
+          "source": "https://www.energy.gov/articles/how-does-touch-screen-work",
+          "beat": "Your slipping finger still activates every accidental phone command."
+        },
+        {
+          "fact": "Train acceleration and braking depend on wheel-rail adhesion.",
+          "source": "https://www.networkrail.co.uk/running-the-railway/looking-after-the-railway/delays-explained/adhesion/",
+          "beat": "The metro moves normally while your personal contact with it loses grip."
+        },
+        {
+          "fact": "Dynamic shoelace failure combines impact deformation with forces overcoming knot friction.",
+          "source": "https://royalsocietypublishing.org/doi/10.1098/rspa.2016.0770",
+          "beat": "Even tightly tied shoes begin coming apart under repeated movement."
+        },
+        {
+          "fact": "Fluid drag remains and commonly scales with density, area, drag coefficient and velocity squared.",
+          "source": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/drag-equation/",
+          "beat": "You keep sliding but do not accelerate forever."
+        },
+        {
+          "fact": "Magnetic force does not require surfaces to rub together.",
+          "source": "https://www.britannica.com/science/magnetism",
+          "beat": "Magnetic clips become one of the successful workarounds."
+        },
+        {
+          "fact": "Friction converts mechanical energy into thermal energy and contributes to wear.",
+          "source": "https://www.britannica.com/science/friction",
+          "beat": "The ending reverses friction's reputation from wasted energy to physical control."
+        }
+      ],
+      "twist": "The force you treated as wasted energy was also the force translating every tiny intention in your fingers into control.",
+      "ending": "You grip a table and understand that the force slowing you down is also what lets you choose where to stop.",
+      "closest_video": {
+        "title": "Introduction to Friction — Khan Academy",
+        "url": "https://www.youtube.com/watch?v=fo_pmp5rtzo",
+        "difference": "The existing video teaches friction; this isolates one person, preserves other forces and turns the lesson into an emotional loss."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, shorten the bathroom and engineering montages while retaining the metro, paper exam, heirloom glass and friction-return payoff."
+      },
+      "views_case": "Friction-disappears explainers are an evergreen what-if category, while Kurzgesagt's recent global-rule video What If We Nuke the Moon? (https://www.youtube.com/watch?v=qEfPBt9dU60) shows that one altered physical rule still pulls mass views. The sliding figure and airborne chai need no explanatory text.",
+      "under_question": "If friction is what obstructs you, why does losing it feel exactly like losing control?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-twenty-five-hour-body",
+      "title": "You Wake One Hour Later Every Day",
+      "premise": "Your body runs on an exact twenty-five-hour day while the rest of the world keeps twenty-four-hour time.",
+      "thumbnail": {
+        "image": "Your alarm shows morning while a glowing body clock over your face shows midnight",
+        "tag": "ONE HOUR LATE"
+      },
+      "rule": "All your biological clocks lock to exactly twenty-five hours and cannot reset to light, meals, exercise or social schedules; your preferred sleep window shifts one civil hour later daily, returns to the same clock time after twenty-four days, but returns to the same weekday pattern only after 168 days.",
+      "hook": "Tonight you sleep at midnight. Tomorrow, one. Soon, breakfast happens while your family eats dinner.",
+      "beats": [
+        "On day seven, a morning alarm rings while your body insists it is midnight.",
+        "Two clocks demonstrate how you lose one hour against society every day.",
+        "The first three days feel manageable because the drift is still small.",
+        "A morning exam lands in your biological night, and familiar questions stop making sense.",
+        "Normal timing cues fail because the new clock cannot entrain.",
+        "By day twelve, you are energetic while your family sleeps and exhausted while Pune is active.",
+        "Overnight internship work feels effortless until meetings and feedback remain daytime-only.",
+        "A cousin's engagement falls in your biological night, leaving you absent from the family photograph.",
+        "Day twenty-four finally matches local clock time, suggesting the problem has reset.",
+        "The weekday has shifted: your body and a seven-day schedule align only every 168 days."
+      ],
+      "feeling_map": [
+        "recognition",
+        "determination",
+        "alienation",
+        "nocturnal freedom",
+        "mathematical dread"
+      ],
+      "restarts": [
+        "The first important exam arrives during biological midnight.",
+        "Every normal reset cue is shown to be disabled.",
+        "Nighttime productivity creates a seductive temporary upside.",
+        "The apparent day-twenty-four reset fails against the weekly calendar."
+      ],
+      "content_mine": [
+        {
+          "fact": "Circadian rhythms are roughly twenty-four-hour cycles affecting sleep, hormones and body temperature.",
+          "source": "https://nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms.aspx",
+          "beat": "The opening establishes that the change affects more than sleepiness."
+        },
+        {
+          "fact": "The suprachiasmatic nucleus acts as the brain's master circadian clock.",
+          "source": "https://nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms.aspx",
+          "beat": "The locked master clock drives the exact daily drift."
+        },
+        {
+          "fact": "Light and darkness are major environmental timing cues.",
+          "source": "https://nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms.aspx",
+          "beat": "Morning light normally helps reset timing but cannot alter this rule."
+        },
+        {
+          "fact": "Controlled studies estimated the average intrinsic human circadian period at about 24.18 hours.",
+          "source": "https://www.science.org/doi/10.1126/science.284.5423.2177",
+          "beat": "The fictional twenty-five-hour clock exaggerates a real tendency to drift."
+        },
+        {
+          "fact": "Molecular clocks use feedback loops involving clock-gene products.",
+          "source": "https://www.nobelprize.org/prizes/medicine/2017/press-release/",
+          "beat": "The body's many clocks are visualized locking into one longer loop."
+        },
+        {
+          "fact": "Melatonin timing is controlled by circadian signals and normally rises during biological evening.",
+          "source": "https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep",
+          "beat": "The morning exam occurs during your body's night chemistry."
+        },
+        {
+          "fact": "Sleep timing reflects both circadian phase and accumulating sleep pressure.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/4017278/",
+          "beat": "An alarm can force you awake without making your body consider it morning."
+        },
+        {
+          "fact": "Evening use of light-emitting readers delayed circadian timing in a controlled study.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1418490112",
+          "beat": "The story shows a normal timing influence that the fictional rule blocks."
+        },
+        {
+          "fact": "Evening caffeine delayed melatonin timing by about forty minutes under study conditions.",
+          "source": "https://www.science.org/doi/10.1126/scitranslmed.aac5125",
+          "beat": "Another real timing effect fails to reset the exact twenty-five-hour clock."
+        },
+        {
+          "fact": "Delaying meals can shift peripheral glucose rhythms without equivalently shifting melatonin timing.",
+          "source": "https://www.cell.com/current-biology/fulltext/S0960-9822(17)30348-7",
+          "beat": "The rule's synchronized clocks contrast with real clocks that can shift differently."
+        },
+        {
+          "fact": "Forced-desynchrony experiments separate circadian effects from time awake by scheduling sleep outside twenty-four hours.",
+          "source": "https://doi.org/10.1016/0304-3940(94)90209-7",
+          "beat": "The exam failure is tied to biological phase rather than merely hours awake."
+        },
+        {
+          "fact": "Non-24-hour sleep-wake rhythms can occur when the light-resetting pathway is absent, especially in totally blind people.",
+          "source": "https://jcsm.aasm.org/doi/10.5664/jcsm.5100",
+          "beat": "The long-term free-running pattern is grounded in a real circadian condition."
+        }
+      ],
+      "twist": "Clock time realigns after twenty-four days, but the weekday advances by three; the twenty-four-day body cycle and seven-day social week repeat together only every 168 days.",
+      "ending": "When every clock agrees except yours, people call you late even when your body is perfectly on time.",
+      "closest_video": {
+        "title": "How Does Your Body Know What Time It Is? — TED-Ed",
+        "url": "https://www.youtube.com/watch?v=Y8ZXOfWUbms",
+        "difference": "The explainer covers normal circadian biology; this imposes an unresettable twenty-five-hour clock and ends on the 168-day calendar trap."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 6-8 minutes, compress the early drift and failed-cue examples while preserving the exam, nocturnal upside, missed family photograph and 168-day reveal."
+      },
+      "views_case": "Sleep and body-clock explainers remain high-view evergreen material, and Vsauce's 2024 temporal-perception hit (https://www.youtube.com/watch?v=vjqt8T3tJIE) confirms current interest in ordinary time behaving strangely. The two disagreeing clocks create a clean phone-size thumbnail.",
+      "under_question": "If your body keeps perfect time but society uses another clock, which one gets treated as broken?",
+      "proposers": [
+        "gpt"
+      ]
+    }
+  ]
+}

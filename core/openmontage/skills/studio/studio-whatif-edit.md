@@ -41,6 +41,13 @@ pass. Pass `sound_only_change: true` only when every file the mux lists in `scen
 and name those files in the hand-over. A note that moves timing (a gap, a tempo, a new take) changes props.json; the
 mux refuses it, so render the picture again. Apply every owner note, or say in one line why not.
 
+**The first 30 seconds.** Something changes about every 3 s, the frames are bright, and the opening frame works as an
+autoplay preview: it looks like the thumbnail, because autoplay viewers never see the thumbnail (story #2).
+
+**Sound first.** Before the lock, render the sound pass with the narration muted and watch it with the picture: the cut
+must still hold on music, Foley and the sound beds alone (Dr Plants: "watchable with just sound"). Note what fails and
+fix it before G3.
+
 ## The voice A/B (paid only on the owner's yes)
 
 7. When the picture is near-final, take the opening ten lines and the dilemma line in the paid narrator: rebuild the

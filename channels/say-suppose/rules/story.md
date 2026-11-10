@@ -1,6 +1,7 @@
 # Story: must-pass checks
 
-Owner, 2026-11-09 ("Adopt all"). Twelve checks a story seat runs on the G1 beat outline and the G2 script; a fail
+Owner, 2026-11-09 ("Adopt all"); #13 and #14 and the tighter #3 added 2026-11-10 from the owner's three reference
+videos (`docs/superpowers/specs/2026-11-10-say-suppose-topics-skill-design.md`, section 5). Fourteen checks a story seat runs on the G1 beat outline and the G2 script; a fail
 needs a quoted line and a fix. Sources and the full shelf: `docs/research/2026-11-09-say-suppose-story-craft.md`,
 `docs/research/2026-11-09-say-suppose-owner-references.md`.
 
@@ -12,7 +13,7 @@ readable worldwide (no `₹` or local slang in the English title and thumbnail).
 |---|---|---|---|
 | 1 | **Five lines first** | The script opens with Situation, Desire, Conflict, Change, Result in one line each; every scene serves one of them or is cut | Tim Runia |
 | 2 | **Confirm the click** | The first 7 s show the thumbnail's situation | Galloway, MrBeast memo |
-| 3 | **Second hook by 0:30** | By 0:30 the viewer knows what you can lose and what question the video asks | Matthew Dicks, Galloway |
+| 3 | **Second hook by 0:30** | The first 10 s land premise, stakes and tension in one breath; the title's promise is met by about 0:15; by 0:30 the viewer knows what you can lose and what question the video asks | Matthew Dicks, Galloway, MrBeast |
 | 4 | **A habit, then the change** | One line or picture shows how you normally run your day; the change hits exactly that | Will Storr, Lisa Cron |
 | 5 | **But / therefore** | Between beats, never "and then"; a montage counts as a beat and must turn | Parker and Stone |
 | 6 | **Every use has a gap** | Each use of the power: you expect X, you get Y | McKee |
@@ -22,6 +23,8 @@ readable worldwide (no `₹` or local slang in the English title and thumbnail).
 | 10 | **The turn breaks a line already said** | The reversal contradicts a sentence the script spoke earlier; the twist is planted, never shown early | Sanderson, Hitchcock |
 | 11 | **Never say the feeling** | No line names what the viewer should feel or what the shot already shows | Andrew Stanton (2 + 2) |
 | 12 | **Leave fast** | You end as the opposite of the opening; one real line inside the last image; end card; no summary | MrBeast memo, Goldman |
+| 13 | **Every fact moves the story** | Each real-world fact pushes a beat or a feeling on the feeling map; a fact that does neither is cut | Dr Plants |
+| 14 | **A restart every ~3 minutes** | A new complication from the rule about every 3 minutes; the front half is the densest; one big payoff is kept for the end | MrBeast, Aprilynne Alter |
 
 Two cheap extra fails, from the first video's notes: no new power rule after the halfway point, and no new person
 after 60%.

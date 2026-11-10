@@ -40,9 +40,11 @@ situation be shown in the first 7 s, and does the premise give a second hook by 
 | #9 Earned stakes | The cost does not attack the habit from #4; a person to lose the premise did not earn; that person not named at least 2 min before the loss, with warm beats |
 | #12 Leave fast | The end is not the opposite of the opening; no real line inside the last image; a summary |
 | #2 Confirm the click | The first 7 s do not show the thumbnail's situation (`packaging.md`) |
-| #3 Second hook by 0:30 | By 0:30 the viewer does not know what you can lose and what question the video asks |
+| #3 Second hook by 0:30 | The first 10 s miss premise, stakes or tension; the title's promise is not met by about 0:15; or by 0:30 the viewer does not know what you can lose and what question the video asks |
 | #8 A picture only this premise can show | None is named in a `> SCENE:` line, or it comes after the midpoint |
 | #10 The turn breaks a line already said | The reversal contradicts nothing spoken earlier, or the twist is shown early |
+| #13 Every fact moves the story | A real-world fact pushes no beat and no feeling (name it: cut it or tie it) |
+| #14 A restart every ~3 minutes | More than about 3 minutes with no new complication; the back half denser than the front; no payoff kept for the end |
 | No new power rule after the halfway point | A rule of the power first stated after 50% of the runtime |
 | No new person after 60% | A person first appears after 60% of the runtime |
 | Length | Past about 8 minutes (115 words a minute plus holds) with no felt reason a viewer stays past 8:00. Write the reason either way |
