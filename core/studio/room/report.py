@@ -3,6 +3,7 @@
 videos/<id>/room/<gate>/round-<N>/meta.json   draft sha256 and lint result
 videos/<id>/room/<gate>/round-<N>/<seat>.json verdicts (written by call.py only)
 videos/<id>/room/<gate>/round-<N>/judge.json  the judge's result, when two candidates existed
+videos/<id>/room/<gate>/presented.json         when round 1's draft went to the owner (owner_first)
 videos/<id>/room/<gate>.json                   the report the gate check reads
 videos/<id>/room-<gate>.md                     what the owner reads
 
@@ -17,6 +18,7 @@ of the judge (owner notes outrank the room).
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -49,13 +51,32 @@ def write_meta(
     path = d / "meta.json"
     path.write_text(
         json.dumps(
-            {"round": n, "draft_sha256": draft_sha256, "lint": lint, "owner_notes": bool(owner_notes), "kind": kind},
+            {
+                "round": n,
+                "draft_sha256": draft_sha256,
+                "lint": lint,
+                "owner_notes": bool(owner_notes),
+                "kind": kind,
+                "linted_at": now_iso(),
+            },
             indent=2,
         )
         + "\n",
         encoding="utf-8",
     )
     return path
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def presented_path(video_dir: Path, gate: str) -> Path:
+    return gate_dir(video_dir, gate) / "presented.json"
+
+
+def read_presented(video_dir: Path, gate: str) -> Optional[dict[str, Any]]:
+    return _json(presented_path(video_dir, gate))
 
 
 def read_meta(video_dir: Path, gate: str, n: int) -> dict[str, Any]:

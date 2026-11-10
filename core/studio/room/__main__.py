@@ -169,6 +169,39 @@ def cmd_lint(args) -> int:
     return 0 if rep.ok else 1
 
 
+def _round_ready(args, cfg, video: Path) -> Optional[dict]:
+    """The round's meta when a seat may run: linted, and under owner_first round 1's draft already shown to the owner."""
+    meta = _meta(video, args.gate, args.round)
+    if meta is None:
+        print(f"run lint for round {args.round} first", file=sys.stderr)
+        return None
+    presented = R.read_presented(video, args.gate) or {}
+    if cfg.owner_first and args.round == 1 and presented.get("draft_sha256") != meta["draft_sha256"]:
+        print(
+            "owner first: show round 1's draft to the owner, then run `python -m studio.room present "
+            f"{args.video_dir} {args.gate} --config {args.config}` before any seat",
+            file=sys.stderr,
+        )
+        return None
+    return meta
+
+
+def cmd_present(args) -> int:
+    """Record that round 1's linted draft went to the owner; under owner_first the round-1 seats wait for this."""
+    cfg = load_room(Path(args.config))
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
+    meta = _meta(video, args.gate, 1)
+    if meta is None or not (meta.get("lint") or {}).get("ok"):
+        print("lint round 1 clean first: the owner reads a draft that passed lint (and omni qc at G2)", file=sys.stderr)
+        return 2
+    record = {"draft_sha256": meta["draft_sha256"], "at": R.now_iso()}
+    R.presented_path(video, args.gate).write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"presented": record["draft_sha256"], "at": record["at"]}))
+    return 0
+
+
 def cmd_seat(args) -> int:
     cfg = load_room(Path(args.config))
     if _problems(cfg):
@@ -176,9 +209,8 @@ def cmd_seat(args) -> int:
     video = _video_in(args, cfg)
     if video is None:
         return 2
-    meta = _meta(video, args.gate, args.round)
+    meta = _round_ready(args, cfg, video)
     if meta is None:
-        print(f"run lint for round {args.round} first", file=sys.stderr)
         return 2
     seat = next((s for s in cfg.seats if s.name == args.seat), None)
     if seat is None:
@@ -346,6 +378,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     s.add_argument("--ledger-file")
     s.add_argument("--owner-notes", action="store_true")
     s.set_defaults(fn=cmd_lint)
+    s = sub.add_parser("present")
+    common(s)
+    s.set_defaults(fn=cmd_present)
     s = sub.add_parser("seat")
     common(s)
     s.add_argument("--round", type=int, required=True)
