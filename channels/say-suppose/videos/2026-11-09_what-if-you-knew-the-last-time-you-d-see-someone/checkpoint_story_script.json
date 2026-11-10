@@ -4,24 +4,26 @@
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
   "status": "completed",
-  "timestamp": "2026-11-10T05:38:16.000841+00:00",
+  "timestamp": "2026-11-10T10:29:53.833412+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G2: read g2-owner.md (the script in full, the room scores, three open blockers with proposed fixes). Room shipped round 3 (judge), evidence verified. Never approved by an agent.",
+    "for_owner": "G2 reopened by the owner's note on the narration (2026-11-10: 'very monotonous'; all three fixes, 'you decide'). Read script v3 in full (sha f891a3ae): rhythm pass, Mom/Grandpa/Mehta speak, protected lines unchanged; 'What changed in v3' lists every change. G2 v2 was approved at sha a28bcf10. story_lint and claims pass. Never approved by an agent.",
     "script": "script.md",
+    "script_sha256": "f891a3aea992d3d08d0ade0ac78a4a81a68418178ab34932801cc88cde8d3cf8",
+    "previous_approved_sha256": "a28bcf102f589ac833c541134fc08fa7453bcf73a9580d1900c2e6d7e1d5fa69",
     "claims": "claims.md",
     "cues": "cues.yaml",
-    "room": "room-g2.md",
+    "say": "say.yaml",
     "approval": {
       "by": "priyanshu.kushwaha",
-      "at": "2026-11-10T05:38:15.959543+00:00",
+      "at": "2026-11-10T10:29:53.798035+00:00",
       "via": "omni approve",
-      "proof": "1e754c4779827612a125365b553db6570952bebdd5cd4d29b4b390b12e6ccf0f",
-      "note": "Owner approved G2 as written (round 3 draft, script sha a28bcf10), 2026-11-10: 'approve', then chose 'As written'. Open room blockers left as written: two chocolate lines, carriage counter over the reflection, last line 'Of course she is.'"
+      "proof": "f728a4d8d0e27712cb3aeb3d7d07f8e8bc1282345fca686e5dfe0df063a4f2b0",
+      "note": "Owner approved G2 on script v3 (sha f891a3ae), 2026-11-10: 'Approve v3'. v3 = rhythm pass and Mom/Grandpa/Mehta voices after the owner heard the v2 narration as 'very monotonous'."
     }
   }
 }

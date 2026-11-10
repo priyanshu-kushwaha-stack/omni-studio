@@ -7,13 +7,16 @@ Approved with the format on 2026-11-06 (`docs/superpowers/specs/2026-11-06-say-s
 | **You** | The viewer. Everything happens to you | Mustard head `#F2B632` with a tuft, teal scarf `#1D9A8F`, ink body | None. You react; at most a bubble |
 | **The narrator** | Speaks to you in second person. Dry, warm, exact. Never seen | none | Arthur (`voices.yaml`) |
 | **The stranger** | Hidden once in every video, for a second watch. Affects the plot only when a script says so | Crimson head `#D8344F`, long dark coat | None |
-| **Everyone else** | The world you move through. Stock roles: the boss (tie), the kid (cap) | Pastel heads, ink bodies | Bubbles only |
+| **Everyone else** | The world you move through. Stock roles: the boss (tie), the kid (cap) | Pastel heads, ink bodies | Bubbles, or a few short spoken lines in their own voice (below) |
 
 Whether the stranger appears in every video is an open item for the owner (spec, "Open items").
 
 ## Script format
 
-- A bare line is spoken by the narrator. There are no speaker prefixes: nobody else has a voice.
+- A bare line is spoken by the narrator. A line that starts with a character's name and a colon (`Mom: Next month?`)
+  is spoken by that character in their own voice; the name is not spoken. Characters speak little: short lines, in
+  scenes, never explaining the rule. You stay silent (at most a bubble). (Owner, 2026-11-10, after the first full
+  narration sounded "very monotonous": real voices, not one narrator for everything.)
 - **The five lines** (`rules/story.md` #1) come before the first beat, one line each, in this order:
   `> SITUATION:`, `> DESIRE:`, `> CONFLICT:`, `> CHANGE:`, `> RESULT:`. Not spoken; the room's lint checks them
   (`core/engines/whatif/pipeline/story_lint.py`).
