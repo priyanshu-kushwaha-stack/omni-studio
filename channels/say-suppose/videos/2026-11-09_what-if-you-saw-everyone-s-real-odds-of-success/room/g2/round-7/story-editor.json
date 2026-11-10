@@ -1,0 +1,48 @@
+{
+  "call_id": "dd9f11b115a44095839857b3d72010e1",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 9,
+    "length (5\u20135.5 minutes; no stay-past-8 reason needed)": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 77,
+      "quote": "> SCENE: The chaiwala's chip turns over like a card. On its back, a stamped label.",
+      "fix": "Keep every chip numeric, as promised at line 30. Reveal the second stall only through the coin tin and its drawing; likewise remove the later HIS OWN RANK and MUSIC chip labels and let the exam form and keyboard reveal those goals."
+    },
+    {
+      "line": 11,
+      "quote": "> RESULT: You know your odds and work from your own notes anyway; Aarav is back in the lane with his bat",
+      "fix": "Insert after this line: \"> UNDER: If the odds say no, is it still your choice?\""
+    },
+    {
+      "line": 130,
+      "quote": "So. Leave the bat where it is, and keep following the biggest number?",
+      "fix": "Owner suggestion for the protected dilemma: replace lines 130\u2013131 with \"So. Keep the bat hidden, and spare the family's money? Or give it back... and let him choose?\" so both options have a defensible cost."
+    }
+  ],
+  "keep": [
+    {
+      "line": 87,
+      "quote": "But a verdict doesn't move. Yours did."
+    },
+    {
+      "line": 133,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    },
+    {
+      "line": 149,
+      "quote": "Every night. And you know the number."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2fa88edad60854b33b166964bd315e0a37c851cfd19bd961f5ac7f71f6d68ee8",
+  "draft_sha256": "f98baf71d9274beb1662a898c47c062b78a9619cace123c44bd1162cdaca008d"
+}

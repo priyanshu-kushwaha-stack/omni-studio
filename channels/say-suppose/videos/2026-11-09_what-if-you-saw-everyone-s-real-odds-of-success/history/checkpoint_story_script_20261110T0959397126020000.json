@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-09_what-if-you-saw-everyone-s-real-odds-of-success",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-10T09:59:39.712602+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G2: read owner-g2.md (the script in full, the room's scores, two open story #11 viewer blockers with proposed fixes). The room shipped round 6 under the owner-notes rule (the bus line and Grok's opening); evidence verified. Never approved by an agent.",
+    "script": "script.md",
+    "claims": "claims.md",
+    "cues": "cues.yaml",
+    "room": "room-g2.md"
+  }
+}

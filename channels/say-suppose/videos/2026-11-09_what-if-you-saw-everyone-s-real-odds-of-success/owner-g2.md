@@ -1,69 +1,73 @@
 # G2 for the owner: everyone's real odds of success
 
-**Status: G2 is at `awaiting_human`.** The room shipped round 6 under the owner-notes rule, with your two notes: the
-bus line and Grok's opening. All three mandatory seats were ok, facts 10/10, and `verify` reports the room evidence ok.
-Nothing was generated and no paid call was made. Nothing is approved: only you pass G2
-(`omni approve say-suppose <video> story_script`).
+**Status: G2 is at `awaiting_human`.** The room shipped round 7 under the owner-notes rule. That round has all your
+notes from today: the bus line, Grok's opening, and both round-6 fixes. The viewer, story editor and fact-checker were
+all ok, and `verify` reports the room evidence ok. Nothing was generated and no paid call was made. Nothing is
+approved: only you pass G2 (`omni approve say-suppose <video> story_script`).
 
-**What I need from you:** two small story #11 calls (below). Approve as it is, or tell me which fixes to take.
+**What I need from you:** approve as it is, or pick from the two new story #11 notes below. Taking either one means
+one more 3-call round past the cap.
 
 ## The film in one breath
 
 Every night in row three of a UPSC night batch, you copy the topper's notes, and a chip over your head reads zero
 point zero four per cent. You decide "the biggest number is the right choice", copy the chaiwala's sixty-one, drop the
 exam, and sink; his sixty-one was his second stall. Your one real fact: about one in a thousand UPSC civil services
-applicants got in last year (c01), and yours had moved down because you copied. Then you tell your cousin Aarav to quit
-cricket and his chip drains to zero. On the last bus home you can't stop reading the city's chips: the biggest number
-tells you what's likely, not what's worth choosing. You give him the bat back, keep your promise of one more over, and
-return to row three with your own notes. Out in the lane... thwack.
+applicants got in last year (c01). A verdict doesn't move, but yours did, down, because you copied. Then you tell your
+cousin Aarav to quit cricket and his chip drains to zero. On the last bus home you can't stop reading the city's chips:
+the biggest number tells you what's likely, not what's worth choosing. You give him the bat back and keep your promise
+of one more over. Every night. And you know the number.
 
-About 5 to 5.5 minutes (about 550 words on the page, bubbles included; 37 s of holds).
+About 5 to 5.5 minutes.
 
-## Your notes so far (2026-11-10, in `taste.md`)
+## Your notes today (2026-11-10, in `taste.md`)
 
-- **The bus line, l119:** now "The last bus home. And you can't stop reading them. Like timetables."
-- **The opening ("groks version"):** "Every night, the topper's notes. Then yours: zero point zero four per cent." The
-  thumbnail pose and the crimson chip are on screen from the first frame. The viewer's story #2 score went from 4 to 8.
+- **Bus line:** "The last bus home. And you can't stop reading them. Like timetables."
+- **Opening ("groks version"):** "Every night, the topper's notes. Then yours: zero point zero four per cent."
+- **"Take both fixes":** "But a verdict doesn't move. Yours did." The last line is now "Every night. And you know the
+  number."
 - Also applied: the round-4 fact blocker. c01 says "UPSC **civil services** applicants".
+- **The call cap ("Yes, lift it once"):** pipeline v2 cut this film's cap to 20, and it had used 30. The cap was
+  raised to 40 for round 7 only, then restored; the change is not committed. `room/g2.json` records 33 of 40.
 
-## Open blockers (round 6): your call
+## Open blockers (round 7): your call
 
-Both are the viewer's (story #11, a line that names what the frame shows):
+From the new first-time viewer (Claude Opus 5.5 since pipeline v2), both story #11:
 
-1. **l87:** "You've been wearing the crowd's number. Like a verdict. / But yours moved. Down." The hold already shows
-   your chip sitting low. Their fix: "But a verdict doesn't move. Yours did." *My read: take it. It turns the line
-   from a caption into the point.*
-2. **l149, the last beat:** "Row three. The night batch. Your own notes." This line used to echo the old opening
-   ("Row three. The night batch."). Your new opening removed that echo. Their fix: "Every night. And you know the
-   number." *My read: take it. It bookends the new opening ("Every night...") and lands the RESULT line (you know
-   your odds and work anyway).*
+1. **l99:** "At home, Aarav's waiting. A fee slip for a cricket academy. And one question. For you. The one who can see
+   the numbers." The first two sentences caption the shot of Aarav at your door with the slip. Their fix: "One
+   question. For the one who can see the numbers.", with the academy moved to l105 ("Zero point two. Against a cricket
+   academy's fees. The family's money..."). *My read: take it. It is the same fault you fixed on the bus line.*
+2. **l153:** "Out in the lane... thwack." The hold just played the ball off the bat, and the line names it again.
+   Their fix: cut the line and let the effect carry it, a crisp thwack and a far-off laugh. *My read: optional. It has
+   been a protected keep since round 2 (voice director). Cutting it makes "Every night. And you know the number." the
+   last spoken line of the story.*
 
-Suggestions, open (`review-g2-round6.md`): play the rule on the teacher's chip; land c01 on an action; cut the
-strangers on the bus; make the stall montage about copying the chaiwala.
+Suggestions, open (`review-g2-round7.md`): cut "Here's how it works."; cut "You give it back."; make both sides of the
+dilemma cost something; add the under-question line.
 
 ## The room's scores (0 to 10)
 
-Rounds 1 to 3 ran the five v1 seats; the viewer timed out in all of them. Rounds 4 to 6 are owner-notes rounds.
+Rounds 1 to 3 ran the five v1 seats; the viewer (Grok) timed out in all of them. Rounds 4 to 7 are owner-notes rounds.
 
-| Seat (model) | Round 4 | Round 5 | Round 6 (shipped) |
+| Seat (model) | Round 5 | Round 6 | Round 7 (shipped) |
 |---|---|---|---|
-| first-time viewer (Grok 4.7) | #2 3, #11 5, stay 6; 2 blockers | #2 4, #11 8, stay 7; 1 blocker | #2 8, #3 8, #4 9, #11 4, week 8, K13 9, stay 7; **2 blockers** |
-| story editor (GPT-5.6 Sol) | story 9 | story 9, stakes 10, length 10 | five lines 9, beats 9, misconception 9, stakes and ending 10, length 10 |
-| fact-checker (Gemini 3.8 Flash) | fact 8; 1 blocker (applied) | facts 10 | facts 10 |
+| first-time viewer | Grok: #2 4, #11 8, stay 7; 1 blocker | Grok: #2 8, #11 4, stay 7; 2 blockers | **Opus 5.5:** #2 9, #3 8, #4 8, #11 6, week 9, K13 9, finish 7; **2 blockers** |
+| story editor (GPT-5.6 Sol) | story 9 | story 9, stakes and ending 10 | story 9, length 10 |
+| fact-checker (Gemini 3.8 Flash) | facts 10 | facts 10 | fact 9, no blockers |
 
-Blockers per round: 3, 2, 1, 3, 1, 2. Calls: 30 of the script's 35. Grok's story #11 score dropped in round 6
-because it read new lines, not because the script got worse. Each round, one fresh first-time reader finds one or two
-more lines to tighten.
+Blockers per round: 3, 2, 1, 3, 1, 2, 2. Every blocker raised has been closed or put to you. Each fresh first-time
+reader finds one or two more lines to tighten, so the count stays flat while the script improves.
 
 ## Facts
 
 One spoken fact, `claims.md` c01: UPSC CSE 2025, 958 recommended of 9,37,876 applicants (PIB, 6 March 2026), "about one
-in a thousand UPSC civil services applicants". c02 and c03 were cut in round 1 for pace and stay in the ledger as
-dropped. Every chip value is invented and said in words. `omni qc say-suppose <video> story_script` passes.
+in a thousand UPSC civil services applicants". Every chip value is invented and said in words. `omni qc say-suppose
+<video> story_script` passes.
 
 ---
 
-## The script, in full (round 6 draft, `script.md`)
+## The script, in full (round 7 draft, `script.md`)
 
 ## Script: What If You Saw Everyone's Real Odds of Success?
 
@@ -151,7 +155,7 @@ Your chip started from a crowd too.
 Last year? About one in a thousand UPSC civil services applicants got in (c01).
 > HOLD: 2 s. The camera drifts along the endless rows and settles back on you: the one crimson chip among them, sitting lower than the rest.
 You've been wearing the crowd's number. Like a verdict.
-But yours moved. Down.
+But a verdict doesn't move. Yours did.
 Copying their notes was never going to copy their number.
 > SCENE: Back in the empty hall. You untie the apron, take your scarf from your bag, and look at the door, then at your notes.
 So. Back to the kettle, or back to row three?
@@ -213,7 +217,7 @@ You promised.
 ### [04:48] Back to you
 > MOOD: night
 > SCENE: The coaching hall, the night batch. Row three. The topper's desk is empty. You, writing in your own notebook. The crimson chip above you, out of focus.
-Row three. The night batch. Your own notes.
+Every night. And you know the number.
 > HOLD: 3 s. You turn a page; your own handwriting fills it. Behind you the batch writes on, the chips over the crowd flickering, unlabelled. The topper's desk stays empty.
 > SCENE: Close on your face, down at the page. You don't look up; the chip stays out of focus at the edge of the frame. The right third of the frame goes quiet.
 > HOLD: 1.5 s. Through the hall's open window, far off: a ball off a bat.
@@ -247,7 +251,7 @@ The beat clock times are that estimate. Under 8 minutes, so no stay-past-8:00 re
   going?"], a breath-length gap after "So..."; "Your chip started from a crowd too." / "Last year? About one in a
   thousand..." two beats [plain, quiet]; "You've been wearing the crowd's number..." three takes [quiet, dawning];
   "The teacher? He's sitting the exam himself..." [amused, soft]; "Her eight was music..." [wry, a little rueful];
-  "Row three. The night batch. Your own notes." [steady, warm, a little lighter than the opening, its opposite]; "The biggest number? It tells you what's likely. It can't tell you
+  "Every night. And you know the number." [steady, warm, a little lighter than the opening, its opposite: the same "Every night", now yours] (owner, G2, 2026-11-10); "The biggest number? It tells you what's likely. It can't tell you
   what's worth choosing." [quiet, almost amused, after the grey chip]; "You give it back." [simple]; the last
   lines [warm, low], with a real beat before "thwack" so the effect carries it; "thwack" its own take, or the effect
   alone.

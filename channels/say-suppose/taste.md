@@ -10,6 +10,9 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-10
 
+- **G2, odds of success: "Take both fixes"** (first-time viewer, story #11, round 6). "But yours moved. Down."
+  becomes "But a verdict doesn't move. Yours did." The last line becomes "Every night. And you know the number.", which
+  echoes the new opening. A line over a shot says what the shot can't: the point, not the picture.
 - **G2, odds of success: "groks version" for the opening.** The first line lands the thumbnail's number inside
   7 s: "Every night, the topper's notes. Then yours: zero point zero four per cent." The pose and the crimson chip are
   on screen from the first frame; the crowd's chips light behind it. A cold open confirms the click before it

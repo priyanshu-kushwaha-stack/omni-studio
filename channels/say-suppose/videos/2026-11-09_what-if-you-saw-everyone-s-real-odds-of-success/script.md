@@ -84,7 +84,7 @@ Your chip started from a crowd too.
 Last year? About one in a thousand UPSC civil services applicants got in (c01).
 > HOLD: 2 s. The camera drifts along the endless rows and settles back on you: the one crimson chip among them, sitting lower than the rest.
 You've been wearing the crowd's number. Like a verdict.
-But yours moved. Down.
+But a verdict doesn't move. Yours did.
 Copying their notes was never going to copy their number.
 > SCENE: Back in the empty hall. You untie the apron, take your scarf from your bag, and look at the door, then at your notes.
 So. Back to the kettle, or back to row three?
@@ -146,7 +146,7 @@ You promised.
 ## [04:48] Back to you
 > MOOD: night
 > SCENE: The coaching hall, the night batch. Row three. The topper's desk is empty. You, writing in your own notebook. The crimson chip above you, out of focus.
-Row three. The night batch. Your own notes.
+Every night. And you know the number.
 > HOLD: 3 s. You turn a page; your own handwriting fills it. Behind you the batch writes on, the chips over the crowd flickering, unlabelled. The topper's desk stays empty.
 > SCENE: Close on your face, down at the page. You don't look up; the chip stays out of focus at the edge of the frame. The right third of the frame goes quiet.
 > HOLD: 1.5 s. Through the hall's open window, far off: a ball off a bat.
@@ -180,7 +180,7 @@ The beat clock times are that estimate. Under 8 minutes, so no stay-past-8:00 re
   going?"], a breath-length gap after "So..."; "Your chip started from a crowd too." / "Last year? About one in a
   thousand..." two beats [plain, quiet]; "You've been wearing the crowd's number..." three takes [quiet, dawning];
   "The teacher? He's sitting the exam himself..." [amused, soft]; "Her eight was music..." [wry, a little rueful];
-  "Row three. The night batch. Your own notes." [steady, warm, a little lighter than the opening, its opposite]; "The biggest number? It tells you what's likely. It can't tell you
+  "Every night. And you know the number." [steady, warm, a little lighter than the opening, its opposite: the same "Every night", now yours] (owner, G2, 2026-11-10); "The biggest number? It tells you what's likely. It can't tell you
   what's worth choosing." [quiet, almost amused, after the grey chip]; "You give it back." [simple]; the last
   lines [warm, low], with a real beat before "thwack" so the effect carries it; "thwack" its own take, or the effect
   alone.
