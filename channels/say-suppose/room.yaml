@@ -16,7 +16,11 @@
 # rounds may go past it); the owner reads round 1's draft first and the room runs beside the read (owner_first); at most
 # three blockers, three suggestions and three keep lines per seat, worst first (fact blockers are never cut); the viewer
 # is off the critical path (viewer_required: false: a round ships on story and fact, and a late viewer's notes join the
-# owner-notes round as suggestions). The viewer's model stays Grok until the viewer trial (PR #27) reports.
+# owner-notes round as suggestions).
+#
+# Viewer trial (owner's blind marks, 2026-11-10; docs/research/2026-11-10-say-suppose-viewer-trial/RESULTS.md): the
+# viewer moves to grok-4.7-high-fast. Of the 5 problems the owner agreed with, it found 4, grok-4.7-high 3,
+# gpt-5.6-luna-high 2 and kimi-k3-high 1. It is also about a quarter faster than grok-4.7-high (median 7.5 min against 9.9).
 writer: claude-fable-5-1
 judge: gpt-5.6-sol-high
 rounds: 1
@@ -27,7 +31,7 @@ limits: {blockers: 3, suggestions: 3, keep: 3}
 adopted: 2026-11-09
 pitch_clip: after_g2
 seats:
-  - {name: first-time viewer, role: viewer, model: grok-4.7-high, brief: room/seats/first-time-viewer.md}
+  - {name: first-time viewer, role: viewer, model: grok-4.7-high-fast, brief: room/seats/first-time-viewer.md}
   - {name: story editor, role: story, model: gpt-5.6-sol-high, brief: room/seats/story-editor.md}
   - {name: fact-checker, role: fact, model: gemini-3.7-flash-high, brief: room/seats/fact-checker.md}
   - {name: director, role: craft, model: claude-opus-5-5, brief: room/seats/director.md}

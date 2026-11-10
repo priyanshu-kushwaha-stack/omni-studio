@@ -5,7 +5,7 @@ video 2 (`adopted: 2026-11-09`); the pause-time video and the UBI folder were re
 
 | Seat (role) | Model | Brief | Fails a draft on |
 |---|---|---|---|
-| first-time viewer (viewer) | Grok 4.7 | `seats/first-time-viewer.md` | story #2, #3, #4, #11, the viewer's week; at G1 thumbnails K5-K7, K12, K13, K15 |
+| first-time viewer (viewer) | Grok 4.7 High Fast | `seats/first-time-viewer.md` | story #2, #3, #4, #11, the viewer's week; at G1 thumbnails K5-K7, K12, K13, K15 |
 | story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1, #5, #6, #7, #9, #12, the two late-rule fails, the 8-minute reason |
 | fact-checker (fact) | Gemini 3.7 Flash | `seats/fact-checker.md` | every unsupported or overstated line (fact blockers are never dropped) |
 | director (craft) | Claude Opus 5.5 | `seats/director.md` | story #2, #3, #8, #10 |
@@ -21,8 +21,9 @@ the director joined (it found the two agreed blockers no other seat raised; it r
 its own draft); the voice director and the animator left (0 agreed blockers on scripts). Their briefs stay in
 `seats/` for the narration room (G3) and the frame-pack room (G4), which do not exist yet. The fact-checker still runs at
 G1, where there are no claims yet, because the fact role is mandatory at every gate; it runs beside the other seats, so
-it costs calls, not round time. The viewer stays on Grok until a faster model is right as often (trial: Grok 2 of 3,
-Gemini 0 raised).
+it costs calls, not round time. The viewer runs on grok-4.7-high-fast. In the viewer trial
+(`docs/research/2026-11-10-say-suppose-viewer-trial/RESULTS.md`) it found 4 of the 5 problems the owner agreed with,
+against 3 for grok-4.7-high and 1-2 for the faster models, and it ran about a quarter faster than grok-4.7-high.
 
 **Pipeline v2 (owner, 2026-11-10).** One room round (`rounds: 1`); the owner reads round 1's draft first
 (`owner_first`, `python -m studio.room present`) while the room runs; at most three blockers, three suggestions and
