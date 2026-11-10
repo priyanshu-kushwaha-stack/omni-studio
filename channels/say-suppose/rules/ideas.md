@@ -1,5 +1,17 @@
 # The idea room: how what-ifs are chosen
 
+**Now (owner, 2026-11-10): run `/say-suppose-topics`** (`.claude/skills/say-suppose-topics/SKILL.md`), any time, with
+an optional theme. Three agents pitch 8 topics each as full briefs (`rules/topic-brief.md`): Claude Fable 5.1 (the wild
+premise, no web), Gemini 4 Argon (the content mine) and GPT-5.6 Sol (the viewer's thrill). Claude Opus 5.5 scores them
+blind, content first: excitement and content depth x3, views x2, story engine and buildability x1, out of 100, minus 10
+for copying a trending twist (`python -m studio.topics` computes the total). The owner picks three on the page; each
+goes to G1. Spec: `docs/superpowers/specs/2026-11-10-say-suppose-topics-skill-design.md`.
+
+The six-round room below ran the 2026-11-09 slate. It stays as history: the skill replaces its rounds, and its pick
+card and demand-evidence notes live on in the brief's fields and the scorecard.
+
+---
+
 Owner, 2026-11-09: topics come from independent research by several creative models, a neutral moderator, ratings by
 every model, and agreement on one scored list; "final decision should definitely be mine." Run before every batch of
 five, at the weekend slate session. The owner picks; G1 follows.

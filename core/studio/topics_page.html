@@ -1,0 +1,186 @@
+<title>Say Suppose Topics</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a ranked slate on the channel's paper. Mustard = your pick, teal = scores, crimson = flags. */
+:root {
+  --page: #F7F0E3; --surface: #FDF9F1; --paper: #F3E9D7; --ink: #23252B; --ink-soft: #5B5D63; --rule: #DCCFB8;
+  --mustard: #F2B632; --mustard-ink: #8A6206; --mustard-wash: #FBE7B5;
+  --teal: #1D9A8F; --teal-ink: #11695F; --teal-wash: #D6EEEA; --crimson-ink: #A8213A; --crimson-wash: #F8D9DE;
+  --font-display: "Rubik", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark; --page: #1B1C21; --surface: #24262C; --paper: #2B2D33; --ink: #F3E9D7; --ink-soft: #B9B1A3;
+    --rule: #3C3E45; --mustard-ink: #F5C658; --mustard-wash: #4A3A14; --teal: #2BB3A6; --teal-ink: #5FD0C4;
+    --teal-wash: #173A37; --crimson-ink: #F08497; --crimson-wash: #4A1F27;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark; --page: #1B1C21; --surface: #24262C; --paper: #2B2D33; --ink: #F3E9D7; --ink-soft: #B9B1A3;
+  --rule: #3C3E45; --mustard-ink: #F5C658; --mustard-wash: #4A3A14; --teal: #2BB3A6; --teal-ink: #5FD0C4;
+  --teal-wash: #173A37; --crimson-ink: #F08497; --crimson-wash: #4A1F27;
+}
+* { box-sizing: border-box; }
+body { background: var(--page); color: var(--ink); font-family: var(--font-body); font-size: 15.5px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+.wrap { max-width: 980px; margin: 0 auto; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.02em; }
+header { padding-top: 48px; display: grid; gap: 12px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.lede { font-size: 1.1rem; max-width: 68ch; margin: 0; }
+.status { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-soft); }
+.status.warn { color: var(--crimson-ink); }
+.picked { display: flex; flex-wrap: wrap; gap: 8px; }
+.picked span { background: var(--mustard-wash); border: 1px solid var(--mustard-ink); border-radius: 999px; padding: 2px 12px; font-weight: 600; }
+.list { display: grid; gap: 14px; }
+.topic { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; }
+.topic.on { border: 2px solid var(--mustard-ink); background: var(--mustard-wash); }
+.head { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: start; }
+.rank { font-family: var(--font-display); font-weight: 800; font-size: 1.7rem; color: var(--ink-soft); line-height: 1; }
+.total { font-family: var(--font-display); font-weight: 800; font-size: 2rem; color: var(--teal-ink); line-height: 1; text-align: right; font-variant-numeric: tabular-nums; }
+.total small { font-size: 0.8rem; color: var(--ink-soft); font-weight: 500; }
+.premise { margin: 4px 0 0; color: var(--ink-soft); }
+.bars { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.bar { display: grid; gap: 3px; font-size: 0.78rem; font-family: var(--font-mono); color: var(--ink-soft); }
+.bar i { display: block; height: 7px; border-radius: 2px; background: var(--paper); position: relative; overflow: hidden; }
+.bar i b { position: absolute; inset: 0 auto 0 0; background: var(--teal); }
+.row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; }
+.chip { font-family: var(--font-mono); font-size: 0.75rem; padding: 1px 9px; border-radius: 999px; border: 1px solid currentColor; }
+.chip.flag { color: var(--crimson-ink); }
+button.pick { font: 600 0.95rem var(--font-body); padding: 7px 16px; border-radius: 8px; border: 1.5px solid var(--mustard-ink);
+  background: transparent; color: var(--mustard-ink); cursor: pointer; }
+button.pick[aria-pressed="true"] { background: var(--mustard); color: #23252B; }
+button.pick:disabled { opacity: 0.45; cursor: not-allowed; }
+button:focus-visible, summary:focus-visible { outline: 3px solid var(--mustard); outline-offset: 2px; }
+details summary { cursor: pointer; color: var(--teal-ink); font-weight: 600; }
+.brief { display: grid; grid-template-columns: 150px 1fr; gap: 6px 16px; margin-top: 10px; font-size: 0.93rem; }
+.brief dt { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); padding-top: 2px; }
+.brief dd { margin: 0; }
+.brief ul, .brief ol { margin: 0; padding-left: 1.1em; }
+a { color: var(--teal-ink); }
+@media (max-width: 640px) {
+  h1 { font-size: 2rem; } .bars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brief { grid-template-columns: 1fr; } .head { grid-template-columns: 32px 1fr auto; }
+}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Say Suppose · topic slate · {{DATE}}</div>
+  <h1>Pick three topics</h1>
+  <p class="lede">Fable, Gemini and GPT-5.6 Sol pitched; Claude Opus scored every brief blind, content first: excitement
+  and content depth count three times, views twice, story engine and buildability once. Total out of 100. Pick the
+  three you want; they go to G1 next.</p>
+  <div class="status" id="status" role="status">Loading your picks…</div>
+  <div class="picked" id="picked"></div>
+</header>
+<div class="list" id="list"></div>
+</div>
+
+<script id="topics-data" type="application/json">{{DATA}}</script>
+<script>
+(() => {
+  const DATA = JSON.parse(document.getElementById("topics-data").textContent);
+  const MAX = 3;
+  let picks = [], ref = null, canWrite = false, writing = Promise.resolve();
+  const $ = (id) => document.getElementById(id);
+  const setStatus = (t, warn) => { $("status").textContent = t; $("status").classList.toggle("warn", !!warn); };
+  function el(tag, attrs = {}, ...kids) {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else n.setAttribute(k, v);
+    }
+    for (const k of kids) if (k !== null && k !== undefined) n.append(k);
+    return n;
+  }
+  const safeUrl = (u) => /^https?:\/\//i.test(String(u || "")) ? String(u) : null;
+  const link = (u, label) => { const s = safeUrl(u); return s ? el("a", { href: s, target: "_blank", rel: "noopener", text: label || s }) : document.createTextNode(label || ""); };
+  const list = (items, ordered) => { const l = el(ordered ? "ol" : "ul"); for (const i of items || []) l.append(el("li", { text: String(i) })); return l; };
+
+  function brief(t) {
+    const dl = el("dl", { class: "brief" });
+    const add = (k, v) => { if (v === null || v === undefined || v === "") return; dl.append(el("dt", { text: k }), el("dd", {}, v)); };
+    add("thumbnail", `${t.thumbnail?.image || ""}${t.thumbnail?.tag ? ` · “${t.thumbnail.tag}”` : ""}`);
+    add("rule", t.rule); add("hook", t.hook);
+    add("beats", list(t.beats, true));
+    add("feeling map", (t.feeling_map || []).join(" → "));
+    add("restarts", list(t.restarts));
+    const mine = el("ul");
+    for (const f of t.content_mine || []) mine.append(el("li", {}, `${f.fact} `, link(f.source, "source"), ` · ${f.beat || ""}`));
+    add(`content (${(t.content_mine || []).length})`, mine);
+    add("twist", t.twist); add("ending", t.ending);
+    if (t.closest_video) add("closest video", el("span", {}, link(t.closest_video.url, t.closest_video.title), ` — ${t.closest_video.difference || ""}`));
+    add("runtime", `${t.runtime?.strong_minutes ?? "?"} strong minutes; cut: ${t.runtime?.cut_to || ""}`);
+    add("views case", t.views_case); add("under-question", t.under_question); add("best moment", t.best_moment);
+    const why = el("ul");
+    for (const k of Object.keys(DATA.weights)) why.append(el("li", { text: `${k} ${t.scores[k].score}: ${t.scores[k].reason || ""}` }));
+    add("why these scores", why);
+    return dl;
+  }
+
+  function render() {
+    const box = $("list"); box.replaceChildren();
+    DATA.topics.forEach((t, i) => {
+      const on = picks.includes(t.id);
+      const card = el("article", { class: "topic" + (on ? " on" : "") });
+      card.append(el("div", { class: "head" },
+        el("div", { class: "rank", text: String(i + 1) }),
+        el("div", {}, el("h3", { text: t.title }), el("p", { class: "premise", text: t.premise })),
+        el("div", { class: "total" }, String(t.total), el("small", { text: " /100" }))));
+      const bars = el("div", { class: "bars" });
+      for (const [k, w] of Object.entries(DATA.weights)) {
+        const s = t.scores[k].score;
+        const fill = el("b"); fill.style.width = `${s * 10}%`;
+        bars.append(el("div", { class: "bar" }, `${k} ${s} ×${w}`, el("i", {}, fill)));
+      }
+      card.append(bars);
+      const btn = el("button", { class: "pick", type: "button", "aria-pressed": String(on), text: on ? "Picked" : "Pick" });
+      btn.disabled = !canWrite || (!on && picks.length >= MAX);
+      btn.addEventListener("click", () => toggle(t.id));
+      card.append(el("div", { class: "row" },
+        el("span", { class: "eyebrow", text: `by ${(t.proposers || []).join(", ") || "?"}` }),
+        t.copies_trending ? el("span", { class: "chip flag", text: "copies a trending twist −10" }) : null, btn));
+      const d = el("details", {}, el("summary", { text: "The brief" }), brief(t));
+      card.append(d);
+      box.append(card);
+    });
+    const p = $("picked"); p.replaceChildren();
+    for (const id of picks) { const t = DATA.topics.find((x) => x.id === id); if (t) p.append(el("span", { text: t.title })); }
+  }
+
+  function toggle(id) {
+    picks = picks.includes(id) ? picks.filter((x) => x !== id) : [...picks, id].slice(0, MAX);
+    render();
+    if (!ref || !canWrite) return;
+    const body = { picks: [...picks], date: DATA.date, updatedAt: new Date().toISOString() };
+    writing = writing.then(() => ref.set(body)).then(() => setStatus(`Saved: ${picks.length} of ${MAX} picked.`),
+      (e) => setStatus("Couldn't save just now (" + ((e && e.code) || "error") + "). Your last pick may not be kept.", true));
+  }
+
+  render();
+  (async () => {
+    const api = window.claude;
+    if (!api || !api.use) { setStatus("Picks can't be saved in this view. Open the page on claude.ai to pick.", true); return; }
+    const [db, user] = await Promise.all([api.use("db"), api.use("user")]);
+    if (!db) { setStatus("Picks can't be saved in this view (sign in on claude.ai).", true); return; }
+    canWrite = user ? user.canEdit() !== false : true;
+    ref = db.doc("picks/owner");
+    let loaded = false;
+    const timer = setTimeout(() => { if (!loaded) setStatus("Your saved picks can't be reached yet.", true); }, 10000);
+    ref.onSnapshot((snap) => {
+      if (!snap.metadata.fromCache) { loaded = true; clearTimeout(timer); }
+      const d = snap.exists ? snap.data() : null;
+      if (d && Array.isArray(d.picks)) picks = d.picks.filter((id) => DATA.topics.some((t) => t.id === id)).slice(0, MAX);
+      if (loaded) setStatus(picks.length ? `${picks.length} of ${MAX} picked.` : (canWrite ? "Nothing picked yet." : "Only the owner can pick."));
+      render();
+    }, (e) => { clearTimeout(timer); setStatus("Saved picks unavailable (" + e.code + ").", true); });
+    render();
+  })();
+})();
+</script>
