@@ -6,8 +6,9 @@ videos/<id>/room/<gate>/round-<N>/judge.json  the judge's result, when two candi
 videos/<id>/room/<gate>.json                   the report the gate check reads
 videos/<id>/room-<gate>.md                     what the owner reads
 
-Stop-rule outcome: a round is a candidate when its lint passed, every mandatory role returned ok (no failed verdict
-from a mandatory role, even beside a success in the same role), and no fact blocker. Among candidates the one with
+Stop-rule outcome: a round is a candidate when its lint passed, every required role returned ok (no failed verdict
+from a required role, even beside a success in the same role), and no fact blocker. The required roles are MANDATORY,
+or story and fact when the channel sets `viewer_required: false` (config.required_roles). Among candidates the one with
 fewer open blockers (all seats) is the best; on equal blockers the first stays unless a later one's judge result is
 "new". A failed judge is no result. A candidate round whose meta has owner_notes: true replaces the best regardless
 of the judge (owner notes outrank the room).
@@ -119,15 +120,15 @@ def load_rounds(video_dir: Path, gate: str) -> list[dict[str, Any]]:
     return scan_rounds(video_dir, gate)[0]
 
 
-def is_candidate(rnd: dict[str, Any]) -> bool:
-    """Lint ok, an ok verdict from every mandatory role, and no failed fact verdict or fact blocker."""
+def is_candidate(rnd: dict[str, Any], required: tuple[str, ...] = MANDATORY) -> bool:
+    """Lint ok, an ok verdict from every required role, and no failed fact verdict or fact blocker."""
     if not rnd["lint"].get("ok"):
         return False
     verdicts = rnd["verdicts"]
-    for role in MANDATORY:
+    for role in required:
         if not any(v.get("role") == role and v.get("status") == "ok" for v in verdicts):
             return False
-    if any(v.get("role") in MANDATORY and v.get("status") != "ok" for v in verdicts):
+    if any(v.get("role") in required and v.get("status") != "ok" for v in verdicts):
         return False
     return all(v.get("status") == "ok" and not v.get("blockers") for v in verdicts if v.get("role") == "fact")
 
@@ -136,10 +137,10 @@ def open_blockers(rnd: dict[str, Any]) -> int:
     return sum(len(v["blockers"]) for v in rnd["verdicts"] if v.get("status") == "ok")
 
 
-def _best(rounds: list[dict[str, Any]]) -> Optional[dict[str, Any]]:
+def _best(rounds: list[dict[str, Any]], required: tuple[str, ...] = MANDATORY) -> Optional[dict[str, Any]]:
     best = None
     for rnd in rounds:
-        if not is_candidate(rnd):
+        if not is_candidate(rnd, required):
             continue
         if best is None or rnd.get("owner_notes"):
             best = rnd
@@ -150,17 +151,27 @@ def _best(rounds: list[dict[str, Any]]) -> Optional[dict[str, Any]]:
     return best
 
 
-def best_before(rounds: list[dict[str, Any]], n: int) -> Optional[dict[str, Any]]:
-    return _best([r for r in rounds if r["round"] < n])
+def best_before(
+    rounds: list[dict[str, Any]], n: int, required: tuple[str, ...] = MANDATORY
+) -> Optional[dict[str, Any]]:
+    return _best([r for r in rounds if r["round"] < n], required)
 
 
-def shipped(rounds: list[dict[str, Any]]) -> Optional[dict[str, Any]]:
-    best = _best(rounds)
+def shipped(rounds: list[dict[str, Any]], required: tuple[str, ...] = MANDATORY) -> Optional[dict[str, Any]]:
+    best = _best(rounds, required)
     return {"round": best["round"], "artifact_sha256": best["draft_sha256"]} if best else None
 
 
 def build_report(
-    video_dir: Path, *, gate: str, stage: str, channel: str, writer_family: str, ledger: Ledger, cap: int
+    video_dir: Path,
+    *,
+    gate: str,
+    stage: str,
+    channel: str,
+    writer_family: str,
+    ledger: Ledger,
+    cap: int,
+    required: tuple[str, ...] = MANDATORY,
 ) -> dict[str, Any]:
     video_dir = Path(video_dir)
     rounds, skipped = scan_rounds(video_dir, gate)
@@ -187,7 +198,7 @@ def build_report(
                 ],
                 "judge": rnd["judge"],
                 "owner_notes": bool(rnd.get("owner_notes")),
-                "candidate": is_candidate(rnd),
+                "candidate": is_candidate(rnd, required),
             }
         )
     return {
@@ -195,10 +206,11 @@ def build_report(
         "stage": stage,
         "channel": channel,
         "writer_family": writer_family,
+        "required_roles": list(required),
         "rounds": summary,
         "skipped_rounds": skipped,
         "malformed_verdicts": sorted(m for r in rounds for m in r["malformed"]),
-        "shipped": shipped(rounds),
+        "shipped": shipped(rounds, required),
         "calls": ledger.count(channel=channel, video=video_dir.name, gate=gate),
         "cap": cap,
     }
@@ -223,8 +235,8 @@ def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
         lines.append(f"Shipped: round {ship['round']} ({ship['artifact_sha256'][:12]}){by_notes}")
     else:
         lines.append(
-            "Shipped: none. No round is a candidate (lint ok, an ok viewer, story and fact verdict, "
-            "no fact blocker), so the gate check will fail."
+            "Shipped: none. No round is a candidate (lint ok, an ok verdict from "
+            f"{', '.join(report.get('required_roles') or MANDATORY)}, no fact blocker), so the gate check will fail."
         )
     lines += [f"Calls: {report['calls']} of {report['cap']}", "", f"## Open notes in round {focus}", ""]
     for rnd in load_rounds(video_dir, gate):

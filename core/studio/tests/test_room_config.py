@@ -41,7 +41,7 @@ def test_the_professor_of_us_room_is_valid():
 
 def test_derived_cap(tmp_path):
     cfg = _cfg(tmp_path)
-    assert C.derived_cap(cfg) == 3 * (3 + 2) + 3 * 3 + 3 + 2  # 29
+    assert C.derived_cap(cfg) == 3 * (3 + 2) + 3 * 3 + 3 + 2 + 3 * 3  # 38: three owner-notes rounds of 3 seats
 
 
 def test_a_missing_mandatory_role_fails(tmp_path):

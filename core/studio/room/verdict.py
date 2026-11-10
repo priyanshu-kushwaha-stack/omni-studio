@@ -10,6 +10,7 @@ from typing import Any, Optional
 
 ROLES = ("viewer", "story", "fact", "neutrality", "voice", "craft")
 MANDATORY = ("viewer", "story", "fact")
+ALWAYS_REQUIRED = ("story", "fact")  # a channel may make only the viewer optional (room.yaml viewer_required: false)
 LOCKED_ROLES = ("viewer", "story", "fact", "neutrality")  # never the writer's family
 FENCE_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.S)
 

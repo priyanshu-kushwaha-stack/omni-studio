@@ -35,6 +35,6 @@ functions:
   core/studio/publish/youtube_auth.py::authorize: 86
   core/studio/room/__main__.py::cmd_seat: 67
   core/studio/room/call.py::run_seat: 80
-  core/studio/room/evidence.py::_verify: 159
+  core/studio/room/evidence.py::_verify: 151
   core/studio/tests/test_studio_short.py::_walk_to_g6: 64
   core/studio/tests/test_studio_short.py::test_publish_binds_qc_approval_and_upload_to_one_file: 70

@@ -13,7 +13,15 @@ from typing import Optional
 
 from studio.room import report as R
 from studio.room.call import CallContext, is_secret_path, run_seat
-from studio.room.config import SEATS_DIR, RoomConfigError, derived_cap, load_room, seat_slug, validate
+from studio.room.config import (
+    SEATS_DIR,
+    RoomConfigError,
+    derived_cap,
+    load_room,
+    required_roles,
+    seat_slug,
+    validate,
+)
 from studio.room.evidence import verify
 from studio.room.judge import run_judge
 from studio.room.ledger import CapReached, Ledger
@@ -245,8 +253,8 @@ def cmd_judge(args) -> int:
     inputs = _read_inputs(args.input, cfg, reserved=("draft",))
     if inputs is None:
         return 2
-    best = R.best_before(rounds, args.round)
-    if best is None or not R.is_candidate(current):
+    best = R.best_before(rounds, args.round, required_roles(cfg))
+    if best is None or not R.is_candidate(current, required_roles(cfg)):
         print(json.dumps({"judged": False, "why": "fewer than two candidates"}))
         return 0
     if (R.round_dir(video, args.gate, args.round) / "judge.json").exists() or Ledger().count(
@@ -298,6 +306,7 @@ def cmd_report(args) -> int:
         writer_family=family_of(cfg.writer),
         ledger=Ledger(),
         cap=derived_cap(cfg),
+        required=required_roles(cfg),
     )
     js, md = R.write_report(video, rep)
     print(f"{js}\n{md}")
