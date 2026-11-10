@@ -560,13 +560,13 @@ class _Resp(io.BytesIO):
         return False
 
 
-def _auth_opener(channel_id, refresh="r1"):
+def _auth_opener(channel_id, refresh="fake.refresh"):  # "." is not base64url: never in the URL's random state
     calls = []
 
     def opener(request, timeout):
         calls.append(request.full_url)
         if "oauth2" in request.full_url:
-            grant = {"access_token": "a1", "expires_in": 3599, "token_type": "Bearer"}
+            grant = {"access_token": "fake.access", "expires_in": 3599, "token_type": "Bearer"}
             if refresh:
                 grant["refresh_token"] = refresh
             return _Resp(json.dumps(grant).encode())
@@ -605,7 +605,7 @@ def test_youtube_auth_saves_the_token_only_for_the_right_channel(studio_root):
     assert set(token) == {"access_token", "token_type", "refresh_token", "expiry"}
     assert oct(path.stat().st_mode & 0o777) == "0o600" and path == youtube.token_path(channel)
     assert "access_type=offline" in urls[0] and "youtube.upload" in urls[0] and "state=" in urls[0]
-    assert len(calls) == 2 and not any("a1" in line or "r1" in line for line in said)
+    assert len(calls) == 2 and not any("fake." in line for line in said)  # "a1" hit the URL's state 4%
 
 
 def test_youtube_auth_for_the_wrong_channel_writes_nothing(studio_root):

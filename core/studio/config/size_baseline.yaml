@@ -4,7 +4,7 @@ modules:
   core/engines/pou/scripts/compose.py: 1160
   core/engines/pou/scripts/puppet.py: 662
   core/engines/pou/scripts/puppet_render.py: 617
-  core/engines/pou/tests/test_compose.py: 727
+  core/engines/pou/tests/test_compose.py: 702
   core/studio/channels.py: 523
   core/studio/publish/youtube.py: 572
   core/studio/tests/test_channels.py: 715
