@@ -4,7 +4,7 @@
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
   "status": "awaiting_human",
-  "timestamp": "2026-11-10T19:32:27.304328+00:00",
+  "timestamp": "2026-11-10T19:39:55.431288+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
@@ -51,7 +51,7 @@
       ],
       "selected_concept": {
         "concept_id": "A",
-        "rationale": "Writer's recommendation; the owner picks at G1. Title A with thumbnail b (\"EVEN HER?\")."
+        "rationale": "Owner's pick at G1 (2026-11-11): title A, \"What If Nobody Could Say No to You?\", with thumbnail b (\"EVEN HER?\")."
       },
       "production_plan": {
         "pipeline": "studio-whatif",
@@ -114,7 +114,7 @@
   "metadata": {
     "packaging": "packaging.md (room round 3, sha ffa970d4)",
     "room": "room-g1.md, review-g1-round1..3.md",
-    "recommendation": "title A with thumbnail b (EVEN HER?)",
-    "owner_picks": "one title-thumbnail pair; the five lines and > UNDER: with it"
+    "owner_pick": "title A with thumbnail b (EVEN HER?), 2026-11-11",
+    "awaiting": "omni approve by the owner"
   }
 }

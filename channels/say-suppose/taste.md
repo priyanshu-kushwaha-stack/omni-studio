@@ -10,6 +10,8 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-11
 
+- **G1, nobody says no: "A with b (EVEN HER?)".** Title "What If Nobody Could Say No to You?" with the tag
+  "EVEN HER?", the mother marked by her shawl and the one crimson arrow. (nobody-says-no film, G1 pick)
 - **G1, nobody says no: "Apply all fixes"** (round 1, all eight blockers and the suggestions in `review-g1-round1.md`).
   The film opens on the premise, the title question and the stake inside 10 s; a fact line says only what the study
   found ("far more willing than you believed", "everyday requests"), never "most"; a persuasion finding that moves no

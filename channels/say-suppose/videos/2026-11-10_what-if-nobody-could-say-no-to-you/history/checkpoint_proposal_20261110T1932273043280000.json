@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-10_what-if-nobody-could-say-no-to-you",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-10T19:32:27.304328+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If Nobody Could Say No to You?",
+          "hook": "You ask the ticket checker to let you off the fine, as a joke. He tears it up and thanks you.",
+          "narrative_structure": "story",
+          "visual_approach": "night metro gate: you large at the left, hand out palm up; the boss, the ticket checker and your mother (bun and shawl) in a row at the right with the same fixed smile; one crimson arrow at your mother's smile. Three thumbnail candidates a, b, c differ in the tag (MEANT IT?, EVEN HER?, ALL OF THEM?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 780,
+          "why_this_works": "The topic title from the 2026-11-10 slate (f-nobody-says-no, 78/100); the writer's pick"
+        },
+        {
+          "id": "B",
+          "title": "What If Asking Was the Same as Ordering?",
+          "hook": "You ask the ticket checker to let you off the fine, as a joke. He tears it up and thanks you.",
+          "narrative_structure": "story",
+          "visual_approach": "night metro gate: you large at the left, hand out palm up; the boss, the ticket checker and your mother (bun and shawl) in a row at the right with the same fixed smile; one crimson arrow at your mother's smile. Three thumbnail candidates a, b, c differ in the tag (MEANT IT?, EVEN HER?, ALL OF THEM?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 780,
+          "why_this_works": "Alternative title: sells the rule; replaced title 2 in round 1 (K12); see packaging.md"
+        },
+        {
+          "id": "C",
+          "title": "What If You Never Heard an Honest Answer Again?",
+          "hook": "You ask the ticket checker to let you off the fine, as a joke. He tears it up and thanks you.",
+          "narrative_structure": "story",
+          "visual_approach": "night metro gate: you large at the left, hand out palm up; the boss, the ticket checker and your mother (bun and shawl) in a row at the right with the same fixed smile; one crimson arrow at your mother's smile. Three thumbnail candidates a, b, c differ in the tag (MEANT IT?, EVEN HER?, ALL OF THEM?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 780,
+          "why_this_works": "Alternative title: leads with the cost; see packaging.md"
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "Writer's recommendation; the owner picks at G1. Title A with thumbnail b (\"EVEN HER?\")."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "artifacts/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging: three titles, three one-variable thumbnails drawn from the rig, the beat outline; the G1 room (viewer, story editor, claims check)"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "research.md, claims.md and script.md under rules/story.md; the free local Qwen-Arthur narration and a 720p first cut before G2; the G2 room; omni qc story_script must pass"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Picture lock: cut, key shot, text, music and mix; the paid Arthur take only after the owner's A/B by ear"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "whatif_narration (local Qwen-Arthur clone)",
+            "operation": "G2 first-cut narration",
+            "estimated_usd": 0,
+            "notes": "Free, runs on the Mac"
+          },
+          {
+            "tool": "higgsfield text2speech_v2",
+            "operation": "narration (Arthur), one take per line",
+            "estimated_usd": 0,
+            "notes": "Not estimated. Paid, only after G2 and the owner's A/B at G3; quoted and approved first. G1 made no paid call: the thumbnails are drawn in code"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    }
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "packaging": "packaging.md (room round 3, sha ffa970d4)",
+    "room": "room-g1.md, review-g1-round1..3.md",
+    "recommendation": "title A with thumbnail b (EVEN HER?)",
+    "owner_picks": "one title-thumbnail pair; the five lines and > UNDER: with it"
+  }
+}
