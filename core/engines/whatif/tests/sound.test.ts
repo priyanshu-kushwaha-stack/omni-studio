@@ -3,7 +3,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { Figure } from "../src/kit/rig/Figure";
 import { SoundOnly } from "../src/kit/sound";
-import { Light } from "../src/kit/stage/Look";
 import { PauseBars } from "../src/kit/stage/PauseBars";
 import { Finish, Stage } from "../src/kit/stage/Stage";
 
@@ -16,7 +15,6 @@ describe("the sound composition", () => {
     createElement(Finish),
     createElement(Figure, { x: 0, y: 0, head: "#fc0" }),
     createElement(PauseBars, { frame: 5, pauses: [{ from: 0, to: 30 }] }),
-    createElement(Light, { pass: "over" }),
   ];
 
   it("draws nothing", () => {

@@ -13,7 +13,6 @@ from pathlib import Path
 from typing import Any, Optional
 
 SCHEMA = 1
-AUDIO_SUFFIXES = {".wav", ".mp3", ".m4a", ".aac", ".flac", ".ogg"}
 SKIP = {"node_modules", "__pycache__", ".DS_Store"}
 
 
@@ -25,11 +24,7 @@ def file_sha(path: Path) -> str:
     return h.hexdigest()
 
 
-def _is_audio(path: Path) -> bool:
-    return path.suffix.lower() in AUDIO_SUFFIXES or path.name.endswith(".words.json")
-
-
-def manifest(roots: dict[str, Path], *, skip_audio: bool = False) -> dict[str, str]:
+def manifest(roots: dict[str, Path]) -> dict[str, str]:
     """`label/relative path` -> sha256 for every file under each root; a root that is a file is keyed by its label."""
     out: dict[str, str] = {}
     for label, root in roots.items():
@@ -37,19 +32,18 @@ def manifest(roots: dict[str, Path], *, skip_audio: bool = False) -> dict[str, s
             out[label] = file_sha(root)
             continue
         for p in sorted(root.rglob("*")) if root.is_dir() else []:
-            if p.is_file() and not SKIP & set(p.parts) and not (skip_audio and _is_audio(p)):
+            if p.is_file() and not SKIP & set(p.parts):
                 out[f"{label}/{p.relative_to(root).as_posix()}"] = file_sha(p)
     return out
 
 
-def digest(m: dict[str, Any]) -> str:
-    return hashlib.sha256(json.dumps(m, sort_keys=True).encode("utf-8")).hexdigest()
-
-
 def code_roots(entry: Path, engine: Path) -> dict[str, Path]:
     """What a render is made from besides props and assets: the scenes folder, the kit, the engine's config and lock,
-    and the channel's brand kit when the entry is a channel video (video 1's Film imports ../../../brand)."""
+    and the channel's brand kit when the entry is a channel video (video 1's Film imports ../../../brand). The entry
+    must sit in a video's scenes/ or an engine example, so the hash never sweeps a video's assets/ or renders/."""
     scenes = entry.parent
+    if scenes.name != "scenes" and scenes.parent != engine / "examples":
+        raise ValueError(f"{entry}: a what-if entry lives in a video's scenes/ folder or in the engine's examples/")
     roots = {
         "scenes": scenes,
         "kit": engine / "src" / "kit",
@@ -66,18 +60,13 @@ def sidecar_path(media: Path) -> Path:
     return media.with_name(media.name + ".render.json")
 
 
-def write_sidecar(
-    media: Path, *, mode: str, quality: str, props: Path, entry: Path, engine: Path, frames: str
-) -> dict[str, Any]:
-    files = manifest(code_roots(entry, engine))
+def write_sidecar(media: Path, *, mode: str, props: Path, entry: Path, engine: Path, frames: str) -> dict[str, Any]:
     data = {
         "schema": SCHEMA,
         "mode": mode,
-        "quality": quality,
         "props_sha256": file_sha(props),
-        "scenes_sha256": digest(files),
         "frames": frames,
-        "files": files,
+        "files": manifest(code_roots(entry, engine)),
     }
     sidecar_path(media).write_text(json.dumps(data, indent=1, sort_keys=True), encoding="utf-8")
     return data

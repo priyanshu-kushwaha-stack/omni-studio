@@ -125,7 +125,7 @@ class _Quick(wt._WhatifTool):
 
 def test_a_queued_tool_refuses_when_the_render_queue_stays_held(tmp_path, monkeypatch):
     monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
-    monkeypatch.delenv("OMNI_JOBS_QUEUE_HELD", raising=False)
+    monkeypatch.delenv(Q.HELD_ENV, raising=False)
     with Q.hold("render", step="other session"):
         result = _Quick().execute({"queue_wait_seconds": 0})
     assert not result.success and "render queue" in result.error and "other session" in result.error
@@ -134,14 +134,14 @@ def test_a_queued_tool_refuses_when_the_render_queue_stays_held(tmp_path, monkey
 
 def test_a_tool_run_inside_studio_jobs_run_does_not_take_the_queue_twice(tmp_path, monkeypatch):
     monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
-    monkeypatch.setenv("OMNI_JOBS_QUEUE_HELD", "render")
+    monkeypatch.setenv(Q.HELD_ENV, "render")
     with Q.hold("render", step="studio.jobs run"):
         assert _Quick().execute({"queue_wait_seconds": 0}).success
 
 
 def test_whatif_tools_record_a_timing(tmp_path, monkeypatch):
     monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
-    monkeypatch.delenv("OMNI_JOBS_QUEUE_HELD", raising=False)
+    monkeypatch.delenv(Q.HELD_ENV, raising=False)
     _Quick().execute({"channel": "say-suppose", "video": VIDEO})
     row = T.read_timings()[-1]
     assert (row["step"], row["video"]) == ("whatif_test_quick", VIDEO)
@@ -207,19 +207,14 @@ def _passes(tmp_path, monkeypatch, *, props_b="p1", scenes_b="s1", mode_a="pictu
     pic.write_bytes(b"v")
     aud.write_bytes(b"a")
     for media, mode, props, scenes in ((pic, mode_a, "p1", "s1"), (aud, "audio", props_b, scenes_b)):
-        wt.C.sidecar_path(media).write_text(
-            json.dumps(
-                {
-                    "schema": 1,
-                    "mode": mode,
-                    "quality": "preview",
-                    "props_sha256": props,
-                    "scenes_sha256": scenes,
-                    "frames": "all",
-                    "files": {"scenes/beats/B.tsx": scenes},
-                }
-            )
-        )
+        sidecar = {
+            "schema": 1,
+            "mode": mode,
+            "props_sha256": props,
+            "frames": "all",
+            "files": {"scenes/beats/B.tsx": scenes},
+        }
+        wt.C.sidecar_path(media).write_text(json.dumps(sidecar))
     monkeypatch.setattr(wt, "inside", lambda p: Path(p))
     return {"picture": str(pic), "audio": str(aud), "output": str(tmp_path / "out.mp4")}
 
@@ -227,6 +222,8 @@ def _passes(tmp_path, monkeypatch, *, props_b="p1", scenes_b="s1", mode_a="pictu
 def test_mux_joins_a_matching_picture_and_audio(tmp_path, monkeypatch):
     (cmd,), _ = wt.WhatifMux().command(_passes(tmp_path, monkeypatch))
     assert cmd[0] == "ffmpeg" and "copy" in cmd and wt.LIMITER in cmd
+    (_render_cmd, limit), _ = wt.WhatifRender().command(_render())
+    assert cmd[-len(wt.LIMITED_AAC) - 2 : -2] == wt.LIMITED_AAC == limit[-len(wt.LIMITED_AAC) - 1 : -1]
 
 
 def test_mux_refuses_when_the_timing_moved(tmp_path, monkeypatch):
@@ -249,3 +246,4 @@ def test_mux_needs_a_sound_only_declaration_when_scene_code_changed(tmp_path, mo
         wt.WhatifMux().command(inputs)
     (cmd,), _ = wt.WhatifMux().command({**inputs, "sound_only_change": True})
     assert cmd[0] == "ffmpeg"
+    assert wt.WhatifMux._changed(Path(inputs["picture"]), Path(inputs["audio"]), True) == ["scenes/beats/B.tsx"]

@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import os
 import subprocess
 import sys
 import time
@@ -18,15 +17,8 @@ def _say(msg: str) -> None:
     print(f"{msg}; waiting", file=sys.stderr, flush=True)
 
 
-# Set for a command run under --queue, so a tool inside it (whatif_render) does not wait on the queue it is in.
-HELD_ENV = "OMNI_JOBS_QUEUE_HELD"
-
-
 def _run(command: list[str], pass_fds: tuple[int, ...] = (), held: str = "") -> int:
-    env = None
-    if held:
-        mine = [q for q in os.environ.get(HELD_ENV, "").split(",") if q]
-        env = {**os.environ, HELD_ENV: ",".join([*mine, held])}
+    env = Q.env_holding(held) if held else None
     try:
         return subprocess.run(command, pass_fds=pass_fds, env=env).returncode
     except OSError as exc:  # never started: the shell's own codes, 126 not executable and 127 not found
@@ -63,7 +55,7 @@ def cmd_run(args) -> int:
     t0 = time.monotonic()
     try:
         # The command shares the lock's descriptor, so the queue stays held while it runs even if this wrapper dies.
-        code = _run(command, (lock.fd,) if lock else (), args.queue or "")
+        code = _run(command, (lock.fd,) if lock and lock.fd is not None else (), args.queue or "")
     finally:
         if lock:
             lock.__exit__(None, None, None)

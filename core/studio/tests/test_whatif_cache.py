@@ -1,7 +1,8 @@
-"""Digests and sidecars behind the what-if previews (G4/G5 speed-ups plan, Task 4)."""
+"""Manifests and sidecars behind the what-if previews (G4/G5 speed-ups plan, Task 4)."""
 
 from __future__ import annotations
 
+import functools
 import json
 from pathlib import Path
 
@@ -57,37 +58,29 @@ def test_an_engine_example_has_no_brand_root(tmp_path):
 def test_a_sidecar_round_trips_and_names_the_files_that_changed(video, tmp_path):
     media = tmp_path / "pic.mp4"
     media.write_bytes(b"x")
-    entry = video["scenes"] / "index.ts"
-    first = C.write_sidecar(
-        media,
-        mode="picture",
-        quality="preview",
-        props=video["props"],
-        entry=entry,
-        engine=video["engine"],
-        frames="all",
+    write = functools.partial(
+        C.write_sidecar, props=video["props"], entry=video["scenes"] / "index.ts", engine=video["engine"], frames="all"
     )
+    first = write(media, mode="picture")
     assert C.read_sidecar(media) == first
     _write(video["scenes"] / "beats" / "B.tsx", "// louder pop\n")
-    second = C.write_sidecar(
-        tmp_path / "a.wav",
-        mode="audio",
-        quality="preview",
-        props=video["props"],
-        entry=entry,
-        engine=video["engine"],
-        frames="all",
-    )
+    second = write(tmp_path / "a.wav", mode="audio")
     assert first["props_sha256"] == second["props_sha256"]
-    assert first["scenes_sha256"] != second["scenes_sha256"]
     assert C.changed_files(first, second) == ["scenes/beats/B.tsx"]
 
 
-def test_a_kit_or_brand_change_shows_in_the_digest(video, tmp_path):
+def test_an_entry_outside_scenes_is_refused(video):
+    with pytest.raises(ValueError, match="scenes"):
+        C.code_roots(video["folder"] / "index.ts", video["engine"])
+
+
+def test_a_kit_or_brand_change_shows_in_the_manifest(video):
     entry = video["scenes"] / "index.ts"
-    before = C.digest(C.manifest(C.code_roots(entry, video["engine"])))
+    before = C.manifest(C.code_roots(entry, video["engine"]))
     _write(video["brand"] / "IdentC.tsx", "// new card\n")
-    assert C.digest(C.manifest(C.code_roots(entry, video["engine"]))) != before
+    _write(video["engine"] / "src" / "kit" / "theme.ts", "export const FPS = 25;\n")
+    after = C.manifest(C.code_roots(entry, video["engine"]))
+    assert C.changed_files({"files": before}, {"files": after}) == ["brand/IdentC.tsx", "kit/theme.ts"]
 
 
 def test_a_missing_or_foreign_sidecar_reads_as_none(tmp_path):
@@ -95,9 +88,3 @@ def test_a_missing_or_foreign_sidecar_reads_as_none(tmp_path):
     assert C.read_sidecar(media) is None
     C.sidecar_path(media).write_text(json.dumps({"schema": 99}))
     assert C.read_sidecar(media) is None
-
-
-def test_audio_files_are_left_out_of_an_asset_manifest_on_request(video):
-    names = set(C.manifest({"assets": video["public"]}, skip_audio=True))
-    assert "assets/images/sky.png" in names and "assets/sfx/pop.wav" not in names
-    assert "assets/sfx/pop.wav" in C.manifest({"assets": video["public"]})

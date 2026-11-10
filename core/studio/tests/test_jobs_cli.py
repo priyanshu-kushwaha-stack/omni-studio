@@ -5,6 +5,7 @@ from __future__ import annotations
 import sys
 
 from studio.jobs import __main__ as cli
+from studio.jobs import queue as Q
 from studio.jobs import timing as T
 
 
@@ -72,7 +73,7 @@ def test_report_filters_by_video_channel_and_step_prefix(tmp_path, monkeypatch, 
 def test_run_with_a_queue_tells_the_command_it_holds_it(tmp_path, monkeypatch):
     monkeypatch.setenv("OMNI_JOBS_TIMINGS", str(tmp_path / "t.jsonl"))
     monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
-    monkeypatch.delenv("OMNI_JOBS_QUEUE_HELD", raising=False)
-    probe = "import os, sys; sys.exit(0 if 'render' in os.environ.get('OMNI_JOBS_QUEUE_HELD', '').split(',') else 4)"
+    monkeypatch.delenv(Q.HELD_ENV, raising=False)
+    probe = "import sys; from studio.jobs import queue as Q; sys.exit(0 if Q.held_by_parent('render') else 4)"
     assert cli.main(["run", "--step", "x", "--queue", "render", "--", sys.executable, "-c", probe]) == 0
     assert cli.main(["run", "--step", "x", "--", sys.executable, "-c", probe]) == 4
