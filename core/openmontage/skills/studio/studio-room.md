@@ -4,6 +4,11 @@ omni-studio skill. Every new video on every channel goes through this loop befor
 the script (G2). Spec: `docs/superpowers/specs/2026-11-08-quality-spine-design.md`. Channel settings:
 `channels/<slug>/room.yaml`. Paths below are from the omni-studio root.
 
+**The writer.** `writer` in `room.yaml` writes the draft (Say Suppose: Claude Fable 5.1). Run the video's G1/G2
+session on that model. A session on another model drafts through it, with tools off and the script skill's rules and
+inputs in the prompt: `claude -p --tools "" --model <writer> "<rules and inputs>"`; the session still does the
+research, the claims ledger, the lint and every revision round. Say in `review-g2-round1.md` which model wrote the draft.
+
 Set up once per shell:
 
     export PYTHONPATH="$PWD/core/openmontage:$PWD/core" PYTHONDONTWRITEBYTECODE=1
