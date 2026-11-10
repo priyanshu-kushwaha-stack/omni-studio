@@ -217,6 +217,55 @@ def test_full_runs_suites_at_the_same_time(repo, tmp_path):
     assert time.monotonic() - t0 < 2.5
 
 
+def test_suites_run_at_low_priority(repo, tmp_path):
+    import os
+
+    suites = [G.Suite("s", str(tmp_path), "ps -o nice= -p $$ > nice.txt")]
+    assert G.run_full(repo, suites=suites, queue=None) == 0
+    # Relative to this process, which `make test` itself already runs at SUITE_NICE; niceness tops out at 19.
+    assert G.SUITE_NICE > 0
+    assert int((tmp_path / "nice.txt").read_text()) == min(os.nice(0) + G.SUITE_NICE, 19)
+
+
+def test_a_stopped_full_run_leaves_no_suite_process_behind(repo, tmp_path):
+    import os
+    import signal
+    import sys
+    import time
+
+    pid_file = tmp_path / "pid"
+    driver = (
+        "from pathlib import Path; from studio import testgate as G\n"
+        f"G.run_full(Path({str(repo)!r}), queue=None, suites=[G.Suite('s', {str(tmp_path)!r}, "
+        "'sleep 30 & echo $! > pid; wait')])"
+    )
+    env = {**os.environ, "PYTHONPATH": str(Path(G.__file__).resolve().parents[1])}
+    proc = subprocess.Popen([sys.executable, "-c", driver], env=env)
+    pid = 0
+    try:
+        for _ in range(100):
+            if pid_file.exists() and pid_file.read_text().strip():
+                pid = int(pid_file.read_text())
+                break
+            time.sleep(0.05)
+        assert pid, "the suite never started"
+        proc.terminate()  # what stopping a background task sends
+        proc.wait(10)
+        for _ in range(60):
+            try:
+                os.kill(pid, 0)
+            except ProcessLookupError:
+                break
+            time.sleep(0.05)
+        else:
+            pytest.fail("the suite's sleep outlived the stopped run")
+    finally:
+        proc.kill()
+        if pid:
+            with __import__("contextlib").suppress(ProcessLookupError):
+                os.kill(pid, signal.SIGKILL)
+
+
 # --- prepush: cache hit, fast path, full path ---------------------------------------------------------------------
 
 
