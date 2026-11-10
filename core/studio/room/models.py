@@ -25,8 +25,9 @@ def load_registry(path: Path = REGISTRY) -> dict[str, dict[str, str]]:
             raise ValueError(f"{path}: {model} needs a family and a cli in {CLIS}")
         timeout = entry.get("timeout_s", DEFAULT_TIMEOUT_S)
         if isinstance(timeout, bool) or not isinstance(timeout, int) or not 0 < timeout <= MAX_TIMEOUT_S:
-            raise ValueError(f"{path}: {model} timeout_s must be whole seconds from 1 to {MAX_TIMEOUT_S}, "
-                             f"not {timeout!r}")
+            raise ValueError(
+                f"{path}: {model} timeout_s must be whole seconds from 1 to {MAX_TIMEOUT_S}, not {timeout!r}"
+            )
     return models
 
 

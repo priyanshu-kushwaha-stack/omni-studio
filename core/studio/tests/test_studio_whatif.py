@@ -37,7 +37,13 @@ def test_studio_whatif_checks_per_gate():
     for stage in ("final_edit", "final_watch"):
         assert checks.stage_checks("studio-whatif", stage) == ["loudness", "clicks", "opening", "similarity"]
     assert checks.stage_checks("studio-whatif", "publish_prep") == [
-        "claims", "loudness", "clicks", "opening", "similarity", "upload_request"]
+        "claims",
+        "loudness",
+        "clicks",
+        "opening",
+        "similarity",
+        "upload_request",
+    ]
 
 
 def test_studio_whatif_is_code_drawn_with_no_lip_sync_or_boil():
@@ -88,8 +94,16 @@ CLAIMS = """# Claims ledger
 
 
 def _awaiting(channel, video, stage, artifacts=None):
-    write_checkpoint(channel.videos_dir, video, stage, "awaiting_human", artifacts or {},
-                     pipeline_type="studio-whatif", checkpoint_policy="manual_all", human_approval_required=True)
+    write_checkpoint(
+        channel.videos_dir,
+        video,
+        stage,
+        "awaiting_human",
+        artifacts or {},
+        pipeline_type="studio-whatif",
+        checkpoint_policy="manual_all",
+        human_approval_required=True,
+    )
 
 
 def test_story_script_gate_wants_cited_digits_and_lets_story_numbers_in_words_pass(studio_root):

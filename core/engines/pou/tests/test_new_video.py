@@ -11,9 +11,21 @@ from new_video import create_video_dir  # noqa: E402
 def test_creates_expected_layout(tmp_path):
     d = create_video_dir(tmp_path, "ancient-sleep", dt.date(2026, 11, 3))
     assert d == tmp_path / "2026-11-03_ancient-sleep"
-    for rel in ["packaging.md", "research.md", "claims.md", "script.md", "qc.md", "costs.md",
-                "assets/provenance.csv", "thumbs/context", "hooks", "narration", "renders",
-                "captions", "metrics"]:
+    for rel in [
+        "packaging.md",
+        "research.md",
+        "claims.md",
+        "script.md",
+        "qc.md",
+        "costs.md",
+        "assets/provenance.csv",
+        "thumbs/context",
+        "hooks",
+        "narration",
+        "renders",
+        "captions",
+        "metrics",
+    ]:
         assert (d / rel).exists(), rel
     header = (d / "assets/provenance.csv").read_text().splitlines()[0]
     assert header == "file,kind,source,model,license,credits,usd,note"

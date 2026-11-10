@@ -34,8 +34,15 @@ def cmd_run(args) -> int:
     lock = None
     if args.queue:
         try:
-            lock = Q.hold(args.queue, step=args.step, channel=args.channel or "", video=args.video or "",
-                          wait=not args.no_wait, timeout=args.wait_timeout, on_wait=_say)
+            lock = Q.hold(
+                args.queue,
+                step=args.step,
+                channel=args.channel or "",
+                video=args.video or "",
+                wait=not args.no_wait,
+                timeout=args.wait_timeout,
+                on_wait=_say,
+            )
             lock.__enter__()
         except ValueError as exc:
             print(exc, file=sys.stderr)
@@ -52,8 +59,15 @@ def cmd_run(args) -> int:
         if lock:
             lock.__exit__(None, None, None)
     try:
-        record(args.step, seconds=time.monotonic() - t0, ok=code == 0, channel=args.channel or "",
-               video=args.video or "", inputs_bytes=args_bytes({"args": command}), extra=extra)
+        record(
+            args.step,
+            seconds=time.monotonic() - t0,
+            ok=code == 0,
+            channel=args.channel or "",
+            video=args.video or "",
+            inputs_bytes=args_bytes({"args": command}),
+            extra=extra,
+        )
     except Exception as exc:
         print(f"timing not recorded: {exc}", file=sys.stderr)
     return code
@@ -64,8 +78,10 @@ def cmd_report(args) -> int:
     print(f"{'step':<28} {'runs':>5} {'fail':>5} {'total s':>10} {'median s':>10} {'max s':>10}")
     print("-" * 72)
     for r in rows:
-        print(f"{r['step']:<28} {r['runs']:>5} {r['failures']:>5} {r['total_s']:>10.1f} {r['median_s']:>10.1f} "
-              f"{r['max_s']:>10.1f}")
+        print(
+            f"{r['step']:<28} {r['runs']:>5} {r['failures']:>5} {r['total_s']:>10.1f} {r['median_s']:>10.1f} "
+            f"{r['max_s']:>10.1f}"
+        )
     return 0
 
 

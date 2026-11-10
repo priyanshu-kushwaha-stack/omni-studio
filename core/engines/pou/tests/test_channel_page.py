@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 from PIL import Image
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import channel_page as cp  # noqa: E402
 
@@ -12,7 +13,9 @@ def _png(path: Path, size=(400, 400), color=(246, 241, 231)):
 
 def test_banner_size_and_text_inside_safe_area(tmp_path):
     mascot = _png(tmp_path / "m.png", (300, 300), (43, 43, 43))
-    out = cp.banner(mascot, "Professor of Us", "How humans actually work", "New video every week", [], tmp_path / "b.png")
+    out = cp.banner(
+        mascot, "Professor of Us", "How humans actually work", "New video every week", [], tmp_path / "b.png"
+    )
     img = Image.open(out)
     assert img.size == cp.BANNER
     for xy in [(10, 10), (2550, 10), (10, 1430), (2550, 1430)]:

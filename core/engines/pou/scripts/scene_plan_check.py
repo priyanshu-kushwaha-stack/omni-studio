@@ -12,6 +12,7 @@ Rules (spec section 2.3):
   coverage    no gap longer than 0.5 s between consecutive scenes
 Exit 1 if any rule fails. Prints a summary (changes per minute, median and longest hold).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -63,12 +64,22 @@ def check_scene_plan(plan: dict) -> list[Finding]:
     findings: list[Finding] = []
 
     unclassified = [s["id"] for s in scenes if classes.get(s["id"]) not in CHANGE_CLASSES]
-    findings.append(Finding("classified", not unclassified,
-                            f"unclassified scenes: {unclassified}" if unclassified else f"all {len(scenes)} scenes classified"))
+    findings.append(
+        Finding(
+            "classified",
+            not unclassified,
+            f"unclassified scenes: {unclassified}" if unclassified else f"all {len(scenes)} scenes classified",
+        )
+    )
 
-    weak = [f"minute {i + 1}: {n} changes" for i, n in enumerate(changes_per_minute(scenes))
-            if n < MIN_CHANGES_PER_MINUTE and (i + 1) not in exceptions]
-    findings.append(Finding("density", not weak, "; ".join(weak) or f">= {MIN_CHANGES_PER_MINUTE} changes in every minute"))
+    weak = [
+        f"minute {i + 1}: {n} changes"
+        for i, n in enumerate(changes_per_minute(scenes))
+        if n < MIN_CHANGES_PER_MINUTE and (i + 1) not in exceptions
+    ]
+    findings.append(
+        Finding("density", not weak, "; ".join(weak) or f">= {MIN_CHANGES_PER_MINUTE} changes in every minute")
+    )
 
     long_holds = []
     for s in scenes:
@@ -78,8 +89,11 @@ def check_scene_plan(plan: dict) -> list[Finding]:
             long_holds.append(f"{s['id']}: {hold:.1f} s > {limit:.0f} s")
     findings.append(Finding("holds", not long_holds, "; ".join(long_holds) or "all holds within limits"))
 
-    gaps = [f"{a['id']}->{b['id']}: {b['start_seconds'] - a['end_seconds']:.1f} s"
-            for a, b in zip(scenes, scenes[1:]) if b["start_seconds"] - a["end_seconds"] > MAX_GAP]
+    gaps = [
+        f"{a['id']}->{b['id']}: {b['start_seconds'] - a['end_seconds']:.1f} s"
+        for a, b in zip(scenes, scenes[1:])
+        if b["start_seconds"] - a["end_seconds"] > MAX_GAP
+    ]
     findings.append(Finding("coverage", not gaps, "; ".join(gaps) or "no gaps"))
     return findings
 
@@ -90,9 +104,11 @@ def summary(plan: dict) -> str:
         return "no scenes"
     holds = [s["end_seconds"] - s["start_seconds"] for s in scenes]
     cpm = changes_per_minute(scenes)
-    return (f"{len(scenes)} scenes over {max(s['end_seconds'] for s in scenes):.0f} s; "
-            f"median hold {statistics.median(holds):.1f} s; longest {max(holds):.1f} s; "
-            f"changes per minute {cpm} (min {min(cpm) if cpm else 0})")
+    return (
+        f"{len(scenes)} scenes over {max(s['end_seconds'] for s in scenes):.0f} s; "
+        f"median hold {statistics.median(holds):.1f} s; longest {max(holds):.1f} s; "
+        f"changes per minute {cpm} (min {min(cpm) if cpm else 0})"
+    )
 
 
 def main() -> None:

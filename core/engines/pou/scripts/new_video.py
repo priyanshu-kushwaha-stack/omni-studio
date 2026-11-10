@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Scaffold a per-video folder: videos/<YYYY-MM-DD_slug>/ with one file per gate."""
+
 from __future__ import annotations
 
 import argparse
@@ -186,9 +187,7 @@ def create_video_dir(root: Path, slug: str, date: dt.date) -> Path:
     (d / "script.md").write_text(SCRIPT)
     (d / "qc.md").write_text(QC)
     (d / "costs.md").write_text(COSTS)
-    (d / "assets" / "provenance.csv").write_text(
-        "file,kind,source,model,license,credits,usd,note\n"
-    )
+    (d / "assets" / "provenance.csv").write_text("file,kind,source,model,license,credits,usd,note\n")
     return d
 
 

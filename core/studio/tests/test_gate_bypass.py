@@ -76,8 +76,12 @@ def test_hand_edit_that_also_clears_the_required_flag_is_still_refused(video):
     _write(video, "research", "awaiting_human")
     path = video.videos_dir / VIDEO / "checkpoint_research.json"
     forged = json.loads(path.read_text("utf-8"))
-    forged.update(status="completed", human_approved=True, human_approval_required=False,
-                  metadata={"approval": {"via": "omni approve", "at": "x", "proof": "f" * 64}})
+    forged.update(
+        status="completed",
+        human_approved=True,
+        human_approval_required=False,
+        metadata={"approval": {"via": "omni approve", "at": "x", "proof": "f" * 64}},
+    )
     path.write_text(json.dumps(forged), encoding="utf-8")
     with pytest.raises(CheckpointValidationError, match="completed without required approval"):
         _write(video, "script", "awaiting_human")
@@ -86,7 +90,7 @@ def test_hand_edit_that_also_clears_the_required_flag_is_still_refused(video):
 def test_artifacts_changed_after_approval_lose_the_approval(video):
     _write(video, "research", "awaiting_human")
     assert cli.main(["approve", "sample", VIDEO, "research"]) == 0
-    _write(video, "script", "awaiting_human")   # approved predecessor: allowed
+    _write(video, "script", "awaiting_human")  # approved predecessor: allowed
     path = video.videos_dir / VIDEO / "checkpoint_research.json"
     approved = json.loads(path.read_text("utf-8"))
     approved["artifacts"]["research_brief"]["topic"] = "Edited after approval"
@@ -135,8 +139,13 @@ def test_a_world_readable_key_is_refused(video):
     key.chmod(0o644)
     assert cli.main(["approve", "sample", VIDEO, "research"]) == 2
     with pytest.raises(studio_approval.ApprovalRefused, match="mode 644"):
-        studio_approval.verify(VIDEO, "research", "framework-smoke", {}, {"approval": {
-            "via": "omni approve", "at": "x", "proof": "0" * 64}})
+        studio_approval.verify(
+            VIDEO,
+            "research",
+            "framework-smoke",
+            {},
+            {"approval": {"via": "omni approve", "at": "x", "proof": "0" * 64}},
+        )
     key.chmod(0o600)
     assert cli.main(["approve", "sample", VIDEO, "research"]) == 0
 

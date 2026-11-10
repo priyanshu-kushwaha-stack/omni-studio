@@ -17,6 +17,7 @@ anim.json:
 Writes <short>/rigs/<slug>.json (puppet_render build input) and <short>/stage.json (puppet_render clips input).
 Every scene blinks about every 2.6 s and never boils (owner: no line wobble).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -35,7 +36,7 @@ import puppet  # noqa: E402
 import motion  # noqa: E402
 import pou_paths  # noqa: E402
 
-ROOT = pou_paths.channel_dir()   # the channel folder; video paths in rigs and stages are relative to it
+ROOT = pou_paths.channel_dir()  # the channel folder; video paths in rigs and stages are relative to it
 BLINK_EVERY = 2.6
 
 
@@ -53,13 +54,13 @@ def find_pupil(still: np.ndarray, x: float, y: float, r: float) -> tuple[float, 
     for i in range(1, n + 1):
         ys, xs = np.nonzero(lab == i)
         bw, bh = np.ptp(xs) + 1, np.ptp(ys) + 1
-        if max(bw, bh) > 1.3 * r or min(bw, bh) < 4:   # lens rings, brows, outlines; specks
+        if max(bw, bh) > 1.3 * r or min(bw, bh) < 4:  # lens rings, brows, outlines; specks
             continue
         m = np.zeros((bh, bw), bool)
         m[ys - ys.min(), xs - xs.min()] = True
         m = ndimage.binary_fill_holes(m)
         area = int(m.sum())
-        if area < max(25, 0.03 * math.pi * r * r) or area / (bw * bh) < 0.55:   # pupils are filled ovals
+        if area < max(25, 0.03 * math.pi * r * r) or area / (bw * bh) < 0.55:  # pupils are filled ovals
             continue
         cx, cy = float(xs.min() + (bw - 1) / 2 + x0), float(ys.min() + (bh - 1) / 2 + y0)
         d = math.hypot(cx - x, cy - y)
@@ -76,26 +77,47 @@ def character_pose(still_path: str, spec: dict, prefix: str, part: str = "head")
     for i, (x, y, r) in enumerate(spec["eyes"]):
         cx, cy, prx, pry = find_pupil(still, x, y, r)
         lens_r = max(prx, pry) + r * 0.45
-        feats.append({"name": f"{prefix}Eye{i}", "kind": "eye", "dot": bool(spec.get("dot")),
-                      "lens": [round(cx), round(cy), round(lens_r), round(lens_r)],
-                      "pupil": [round(cx), round(cy), round(prx + 0.5), round(pry + 0.5)]})
+        feats.append(
+            {
+                "name": f"{prefix}Eye{i}",
+                "kind": "eye",
+                "dot": bool(spec.get("dot")),
+                "lens": [round(cx), round(cy), round(lens_r), round(lens_r)],
+                "pupil": [round(cx), round(cy), round(prx + 0.5), round(pry + 0.5)],
+            }
+        )
         erase.append([round(cx), round(cy), round(prx + 3), round(pry + 3)])
     mouth_region = []
-    if spec.get("mouth"):   # [x, y, w]: a generated mouth replaces the drawn one (dialogue scenes)
+    if spec.get("mouth"):  # [x, y, w]: a generated mouth replaces the drawn one (dialogue scenes)
         mx, my, mw = spec["mouth"]
-        feats.append({"name": f"{prefix}Mouth", "kind": "mouth", "at": [mx, my], "default": "closed", "fill": True,
-                      "shapes": puppet.mouth_shapes(mw)})
+        feats.append(
+            {
+                "name": f"{prefix}Mouth",
+                "kind": "mouth",
+                "at": [mx, my],
+                "default": "closed",
+                "fill": True,
+                "shapes": puppet.mouth_shapes(mw),
+            }
+        )
         erase.append([round(mx), round(my), round(mw * 0.72), round(mw * 0.5)])
         mouth_region = [[mx, my, mw * 0.8, mw * 0.6]]
     if spec.get("head"):
         cx, cy, rx, ry, neck = spec["head"]
-        region = {"ellipses": [[cx, cy, rx, ry]], "minus": {"rects": [[cx - rx - 20, neck, cx + rx + 20, cy + ry + 40]]}}
+        region = {
+            "ellipses": [[cx, cy, rx, ry]],
+            "minus": {"rects": [[cx - rx - 20, neck, cx + rx + 20, cy + ry + 40]]},
+        }
         pivot = [cx, neck]
-    else:   # eyes only: a part made of the eye areas, nothing else moves
+    else:  # eyes only: a part made of the eye areas, nothing else moves
         region = {"ellipses": [[e[0], e[1], e[2] + 4, e[2] + 4] for e in spec["eyes"]] + mouth_region}
         pivot = [spec["eyes"][0][0], spec["eyes"][0][1]]
-    return {"source": still_path, "parts": {part: {"region": region, "pivot": pivot, "z": 2, "grow": 3,
-                                                       "erase": {"ellipses": erase}, "features": feats}}}
+    return {
+        "source": still_path,
+        "parts": {
+            part: {"region": region, "pivot": pivot, "z": 2, "grow": 3, "erase": {"ellipses": erase}, "features": feats}
+        },
+    }
 
 
 def cued_in(words: list[dict], word: str, start: float, end: float) -> bool:
@@ -130,7 +152,9 @@ def cast_of(spec, src: str) -> list[dict]:
     return [{"spec": spec, "prefix": src, "part": "head"}]
 
 
-def dialogue_actions(cast: list[dict], slug: str, lines: list[dict], start: float, end: float, line_dir: Path) -> list[dict]:
+def dialogue_actions(
+    cast: list[dict], slug: str, lines: list[dict], start: float, end: float, line_dir: Path
+) -> list[dict]:
     """For each spoken line inside [start, end): the speaker's mouth talks from that line's own audio, and everyone
     else on screen turns their eyes toward the speaker (a speaker looks toward the nearest other character)."""
     acts: list[dict] = []
@@ -141,7 +165,9 @@ def dialogue_actions(cast: list[dict], slug: str, lines: list[dict], start: floa
         who = [c for c in cast if c["spec"].get("speaker") == ln["speaker"]]
         for c in who:
             if c["spec"].get("mouth"):
-                acts.append({"talk": f"{slug}.{c['prefix']}Mouth", "audio": str(line_dir / ln["file"]), "at": ln["start"]})
+                acts.append(
+                    {"talk": f"{slug}.{c['prefix']}Mouth", "audio": str(line_dir / ln["file"]), "at": ln["start"]}
+                )
         sx = xs[who[0]["prefix"]] if who else None
         for c in cast:
             me = xs[c["prefix"]]
@@ -154,8 +180,14 @@ def dialogue_actions(cast: list[dict], slug: str, lines: list[dict], start: floa
                 target = sx
             px = 4 if target > me else -4
             for i in range(len(c["spec"]["eyes"])):
-                acts.append({"pose": f"{slug}.{c['prefix']}Eye{i}", "at": ln["start"], "to": {"px": px, "py": 0},
-                             "ease": "spring:320:22"})
+                acts.append(
+                    {
+                        "pose": f"{slug}.{c['prefix']}Eye{i}",
+                        "at": ln["start"],
+                        "to": {"px": px, "py": 0},
+                        "ease": "spring:320:22",
+                    }
+                )
     return acts
 
 
@@ -178,7 +210,10 @@ def build(short: Path) -> tuple[dict, dict]:
         if isinstance(chars.get(src), list):
             ch = chars[src]
         else:
-            ch = {**chars.get(src, {}), **(chars.get(sid, {}) if sid != src else {})} or None   # a copy may re-time the acting
+            ch = {
+                **chars.get(src, {}),
+                **(chars.get(sid, {}) if sid != src else {}),
+            } or None  # a copy may re-time the acting
         props = anim.get("props", {}).get(src, [])
         if not ch and not props:
             continue
@@ -196,58 +231,121 @@ def build(short: Path) -> tuple[dict, dict]:
                 spec = c["spec"]
                 head = f"{slug}.{c['part']}"
                 eyes = [f"{slug}.{c['prefix']}Eye{i}" for i in range(len(spec["eyes"]))]
-                t = start + 0.7 + 0.9 * k   # two characters never blink on the same frame
+                t = start + 0.7 + 0.9 * k  # two characters never blink on the same frame
                 while t < end - 0.3:
                     actions.append({"blink": eyes, "at": round(t, 3)})
                     t += BLINK_EVERY
                 for lk in [x for x in spec.get("look", []) if cued_in(words, x["word"], start, end)]:
                     for e in eyes:
-                        actions.append({"pose": e, "at": {"word": lk["word"], "after": start - 0.05},
-                                        "to": {"px": lk.get("px", 0), "py": lk.get("py", 0)}, "ease": "spring:320:22"})
+                        actions.append(
+                            {
+                                "pose": e,
+                                "at": {"word": lk["word"], "after": start - 0.05},
+                                "to": {"px": lk.get("px", 0), "py": lk.get("py", 0)},
+                                "ease": "spring:320:22",
+                            }
+                        )
                 for tl in [x for x in spec.get("tilt", []) if cued_in(words, x["word"], start, end)]:
-                    actions.append({"pose": head, "at": {"word": tl["word"], "after": start - 0.05},
-                                    "to": {"rot": tl["rot"]}, "ease": "spring:260:18"})
+                    actions.append(
+                        {
+                            "pose": head,
+                            "at": {"word": tl["word"], "after": start - 0.05},
+                            "to": {"rot": tl["rot"]},
+                            "ease": "spring:260:18",
+                        }
+                    )
                 if spec.get("head"):
                     idle[head] = {"amp": 1.2, "period": 3.0, "phase": 0.37 * k}
             actions.extend(dialogue_actions(cast, slug, lines, start, end, short / "narration"))
         for pr in props:
             pose = f"{src}_{pr['name']}"
             if pose not in rig["poses"]:
-                rig["poses"][pose] = {"source": str(stills / f"{src}.png"), "parts": {pr["name"]: {
-                    "region": pr["region"], "pivot": pr["pivot"], "z": 1, "grow": int(pr.get("grow", 3)),
-                    **({"ink_only": True} if pr.get("ink_only") else {})}}}
+                rig["poses"][pose] = {
+                    "source": str(stills / f"{src}.png"),
+                    "parts": {
+                        pr["name"]: {
+                            "region": pr["region"],
+                            "pivot": pr["pivot"],
+                            "z": 1,
+                            "grow": int(pr.get("grow", 3)),
+                            **({"ink_only": True} if pr.get("ink_only") else {}),
+                        }
+                    },
+                }
             place.append(f"{slug}/{pose}")
             tgt = f"{slug}.{pr['name']}"
             if pr.get("enter"):
                 en = pr["enter"]
                 dx, dy = en["from"]
                 init[tgt] = {"x": dx, "y": dy, **({"rot": en["rot"]} if "rot" in en else {})}
-                actions.append({"pose": tgt, "at": {"word": en["word"], "after": start - 0.05} if "word" in en else
-                                {"scene": en.get("scene", 0.0)}, "to": {"x": 0, "y": 0, "rot": 0},
-                                "dur": en.get("dur", 0.35), "ease": en.get("ease", "spring:200:14")})
+                actions.append(
+                    {
+                        "pose": tgt,
+                        "at": {"word": en["word"], "after": start - 0.05}
+                        if "word" in en
+                        else {"scene": en.get("scene", 0.0)},
+                        "to": {"x": 0, "y": 0, "rot": 0},
+                        "dur": en.get("dur", 0.35),
+                        "ease": en.get("ease", "spring:200:14"),
+                    }
+                )
             if pr.get("exit"):
                 ex = pr["exit"]
-                actions.append({"pose": tgt, "at": {"word": ex["word"], "after": start - 0.05}, "to": ex["to"],
-                                "dur": ex.get("dur", 0.5), "ease": ex.get("ease", "in")})
+                actions.append(
+                    {
+                        "pose": tgt,
+                        "at": {"word": ex["word"], "after": start - 0.05},
+                        "to": ex["to"],
+                        "dur": ex.get("dur", 0.5),
+                        "ease": ex.get("ease", "in"),
+                    }
+                )
             if pr.get("swing"):
                 sw = pr["swing"]
                 k, t = 0, start
                 while t < end:
-                    actions.append({"pose": tgt, "at": round(t, 3), "to": {"rot": sw["amp"] * (1 if k % 2 == 0 else -1)},
-                                    "dur": sw["period"] / 2, "ease": "inout"})
+                    actions.append(
+                        {
+                            "pose": tgt,
+                            "at": round(t, 3),
+                            "to": {"rot": sw["amp"] * (1 if k % 2 == 0 else -1)},
+                            "dur": sw["period"] / 2,
+                            "ease": "inout",
+                        }
+                    )
                     t += sw["period"] / 2
                     k += 1
             if pr.get("bob"):
                 idle[tgt] = {"amp": pr["bob"]["amp"], "period": pr["bob"]["period"]}
         # a placed pose's parts all share the rig prefix; names must be unique per scene
-        scenes.append({"id": sid, "still": str(stills / f"{src}.png"), "start": start, "end": end, "place": place,
-                       "reveal": 0.0 if sid in copies or ch else 0.45, "seed": len(scenes) + 1, "boil": False,
-                       "feature_weight": float(anim.get("feature_weight", 10.0)), "idle": idle, "init": init,
-                       "actions": actions})
-    stage = {"about": f"Short puppet stage, generated by scripts/short_rigs.py from {rel}/anim.json",
-             "video_dir": str(rel), "words": str(rel / "narration" / "words.json"), "rigs": str(rel / "rigs"),
-             "plates": str(rel / "assets" / "plates"), "fps": 30, "overlays": False, "protect": [],
-             "ranges": [[s["start"], s["end"]] for s in scenes], "scenes": scenes}
+        scenes.append(
+            {
+                "id": sid,
+                "still": str(stills / f"{src}.png"),
+                "start": start,
+                "end": end,
+                "place": place,
+                "reveal": 0.0 if sid in copies or ch else 0.45,
+                "seed": len(scenes) + 1,
+                "boil": False,
+                "feature_weight": float(anim.get("feature_weight", 10.0)),
+                "idle": idle,
+                "init": init,
+                "actions": actions,
+            }
+        )
+    stage = {
+        "about": f"Short puppet stage, generated by scripts/short_rigs.py from {rel}/anim.json",
+        "video_dir": str(rel),
+        "words": str(rel / "narration" / "words.json"),
+        "rigs": str(rel / "rigs"),
+        "plates": str(rel / "assets" / "plates"),
+        "fps": 30,
+        "overlays": False,
+        "protect": [],
+        "ranges": [[s["start"], s["end"]] for s in scenes],
+        "scenes": scenes,
+    }
     return rig, stage
 
 

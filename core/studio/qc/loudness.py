@@ -22,13 +22,15 @@ class LoudnessError(Exception):
 def measure(media: Path) -> dict[str, float]:
     """{integrated_lufs, true_peak_dbtp, lra_lu} from the summary of ffmpeg's ebur128 meter (peak=true)."""
     proc = subprocess.run(
-        ["ffmpeg", "-hide_banner", "-nostats", "-i", str(media), "-vn", "-af", "ebur128=peak=true",
-         "-f", "null", "-"],
-        capture_output=True, text=True,
+        ["ffmpeg", "-hide_banner", "-nostats", "-i", str(media), "-vn", "-af", "ebur128=peak=true", "-f", "null", "-"],
+        capture_output=True,
+        text=True,
     )
     summary = proc.stderr.rsplit("Summary:", 1)[-1] if "Summary:" in proc.stderr else ""
-    found = {key: re.search(rf"{label}:\s+(-?inf|-?[\d.]+)", summary)
-             for key, label in (("integrated_lufs", "I"), ("lra_lu", "LRA"), ("true_peak_dbtp", "Peak"))}
+    found = {
+        key: re.search(rf"{label}:\s+(-?inf|-?[\d.]+)", summary)
+        for key, label in (("integrated_lufs", "I"), ("lra_lu", "LRA"), ("true_peak_dbtp", "Peak"))
+    }
     if proc.returncode != 0 or not all(found.values()):
         tail = proc.stderr.strip().splitlines()[-1:] or ["no output"]
         raise LoudnessError(f"ffmpeg could not measure {media}: {tail[0]}")
@@ -45,11 +47,15 @@ def evaluate(measured: dict[str, float], target: dict[str, Any]) -> list[str]:
     if not math.isfinite(i):
         problems.append("integrated loudness is -inf: the audio is silent")
     elif i > hi:
-        problems.append(f"too loud: integrated {i:.1f} LUFS is above {hi:.1f} "
-                        f"(target {target['integrated_lufs']} ±{target['tolerance_lu']} LU); turn the mix down")
+        problems.append(
+            f"too loud: integrated {i:.1f} LUFS is above {hi:.1f} "
+            f"(target {target['integrated_lufs']} ±{target['tolerance_lu']} LU); turn the mix down"
+        )
     elif i < lo:
-        problems.append(f"too quiet: integrated {i:.1f} LUFS is below {lo:.1f} "
-                        f"(target {target['integrated_lufs']} ±{target['tolerance_lu']} LU); turn the mix up")
+        problems.append(
+            f"too quiet: integrated {i:.1f} LUFS is below {lo:.1f} "
+            f"(target {target['integrated_lufs']} ±{target['tolerance_lu']} LU); turn the mix up"
+        )
     if tp > target["true_peak_dbtp_max"]:
         problems.append(f"true peak {tp:.2f} dBTP is above the {target['true_peak_dbtp_max']} dBTP ceiling; limit it")
     if lra > target["lra_lu_max"]:
@@ -60,5 +66,4 @@ def evaluate(measured: dict[str, float], target: dict[str, Any]) -> list[str]:
 def check(media: Path, target: dict[str, Any]) -> dict[str, Any]:
     measured = measure(media)
     problems = evaluate(measured, target)
-    return {"check": "loudness", "ok": not problems, "measured": measured, "target": dict(target),
-            "problems": problems}
+    return {"check": "loudness", "ok": not problems, "measured": measured, "target": dict(target), "problems": problems}

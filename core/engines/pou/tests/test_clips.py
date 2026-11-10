@@ -3,12 +3,14 @@ import json
 import sys
 from pathlib import Path
 from PIL import Image
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import clips  # noqa: E402
 
 
 class FakeClient:
     """Answers like fal's queue API: submit -> request_id, status -> COMPLETED, result -> video url, download."""
+
     def __init__(self):
         self.calls = []
 
@@ -29,12 +31,20 @@ class FakeClient:
 
 
 def test_run_requests_each_scene_and_logs_dollars(tmp_path):
-    vd = tmp_path / "v"; (vd / "assets" / "stills").mkdir(parents=True)
+    vd = tmp_path / "v"
+    (vd / "assets" / "stills").mkdir(parents=True)
     for s in ("s002", "s018"):
         Image.new("RGB", (64, 36), (246, 241, 231)).save(vd / "assets" / "stills" / f"{s}.png")
-    (vd / "scene_plan.json").write_text(json.dumps({"scenes": [
-        {"id": "s002", "description": "a ring of figures around one fire"},
-        {"id": "s018", "description": "a wrist monitor trace drawing across the frame"}]}))
+    (vd / "scene_plan.json").write_text(
+        json.dumps(
+            {
+                "scenes": [
+                    {"id": "s002", "description": "a ring of figures around one fire"},
+                    {"id": "s018", "description": "a wrist monitor trace drawing across the frame"},
+                ]
+            }
+        )
+    )
     (vd / "assets" / "provenance.csv").write_text("file,kind,source,model,license,credits,usd,note\n")
     fake = FakeClient()
     out = clips.run(vd, ["s002", "s018"], provider="fal:wan/v2.2-5b/image-to-video", client=fake, api_key="k")

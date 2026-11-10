@@ -61,3 +61,9 @@ yt_dlp:
   version: 2026.10.21
   install_dir: .tools/yt-dlp
 
+ruff:
+  # Lint and format for core/studio and core/engines (config in pyproject.toml [tool.ruff]); never core/openmontage.
+  # Installed by uv into .venv (dev group, uv.lock). The Makefile falls back to `uvx ruff@<version>` when the shared
+  # .venv lacks it. Keep pyproject.toml, uv.lock, the Makefile's RUFF and this entry on one version.
+  pip: ruff
+  version: 0.17.2

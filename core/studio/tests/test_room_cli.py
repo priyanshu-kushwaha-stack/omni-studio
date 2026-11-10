@@ -70,8 +70,12 @@ def test_seat_refuses_before_lint(tmp_path, monkeypatch, capsys):
     (channel / "room.yaml").write_text(ROOM)
     video = channel / "videos" / "v"
     video.mkdir(parents=True)
-    assert cli.main(["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer",
-                     "--config", str(channel / "room.yaml")]) == 2
+    assert (
+        cli.main(
+            ["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", str(channel / "room.yaml")]
+        )
+        == 2
+    )
     assert "run lint for round 1 first" in capsys.readouterr().err
 
 
@@ -113,6 +117,7 @@ def test_relint_with_a_fixed_draft_is_allowed_until_a_seat_has_reviewed(tmp_path
     assert _lint(video, script, cfg) == 0
     meta = json.loads((video / "room" / "g2" / "round-1" / "meta.json").read_text())
     from studio.room.snapshot import save_draft
+
     assert meta["draft_sha256"] == save_draft(video, script)
 
 
@@ -146,7 +151,9 @@ def test_errors_exit_cleanly(tmp_path, monkeypatch, capsys):
 
 
 def test_seat_and_judge_validate_first(tmp_path, monkeypatch, capsys):
-    room = ROOM.replace("story editor, role: story, model: gpt-5.6-sol-high", "story editor, role: story, model: claude-opus-5-5")
+    room = ROOM.replace(
+        "story editor, role: story, model: gpt-5.6-sol-high", "story editor, role: story, model: claude-opus-5-5"
+    )
     video, script, cfg = _setup(tmp_path, monkeypatch, room)
     assert _lint(video, script, cfg) == 0
 
@@ -160,6 +167,7 @@ def test_seat_and_judge_validate_first(tmp_path, monkeypatch, capsys):
     assert cli.main(["judge", str(video), "g2", "--round", "1", "--config", cfg]) == 2
     assert "writer's family" in capsys.readouterr().err
     from studio.room.ledger import Ledger
+
     assert Ledger().count() == 0
     assert not list((video / "room" / "g2" / "round-1").glob("story-editor.json"))
 
@@ -219,10 +227,21 @@ def test_any_relint_of_a_reviewed_round_is_refused_even_the_same_draft(tmp_path,
 
 def test_a_reserved_ledger_row_also_locks_the_round(tmp_path, monkeypatch, capsys):
     from studio.room.ledger import Ledger
+
     video, script, cfg = _setup(tmp_path, monkeypatch)
     assert _lint(video, script, cfg) == 0
-    Ledger().reserve(channel="professor-of-us", video=video.name, gate="g2", round=1, seat="x", model="m",
-                     family="f", prompt_sha256="p", daily_cap=99, script_cap=99)  # a crashed call, no file
+    Ledger().reserve(
+        channel="professor-of-us",
+        video=video.name,
+        gate="g2",
+        round=1,
+        seat="x",
+        model="m",
+        family="f",
+        prompt_sha256="p",
+        daily_cap=99,
+        script_cap=99,
+    )  # a crashed call, no file
     capsys.readouterr()
     assert _lint(video, script, cfg) == 2 and "has been reviewed" in capsys.readouterr().err
     assert _lint(video, script, cfg, 2) == 0  # another round is untouched
@@ -257,12 +276,18 @@ def test_an_ok_seat_cannot_be_rerun_but_a_failed_one_can(tmp_path, monkeypatch, 
     assert _lint(video, script, cfg) == 0
     base = ["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", cfg]
     # a failed answer (two bad tries) leaves a failed verdict
-    monkeypatch.setattr(call.subprocess, "run", lambda cmd, **kw: subprocess.CompletedProcess(
-        cmd, 0, stdout="1\n" if cmd[-1] == "--version" else "junk", stderr=""))
+    monkeypatch.setattr(
+        call.subprocess,
+        "run",
+        lambda cmd, **kw: subprocess.CompletedProcess(
+            cmd, 0, stdout="1\n" if cmd[-1] == "--version" else "junk", stderr=""
+        ),
+    )
     assert cli.main(base) == 1
     _fake(monkeypatch, [CLEAN])
     assert cli.main(base) == 0  # re-run after failed: allowed
     from studio.room.ledger import Ledger
+
     n = Ledger().count()
     capsys.readouterr()
     boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
@@ -274,7 +299,9 @@ def test_an_ok_seat_cannot_be_rerun_but_a_failed_one_can(tmp_path, monkeypatch, 
 
 def test_seats_on_a_failed_lint_need_the_calibration_flag(tmp_path, monkeypatch, capsys):
     video, script, cfg = _setup(tmp_path, monkeypatch)
-    assert _lint(video, script, cfg, 1, "g2", "--ledger-file", str(video / "missing-claims.md")) == 1  # adapted: inside the channel
+    assert (
+        _lint(video, script, cfg, 1, "g2", "--ledger-file", str(video / "missing-claims.md")) == 1
+    )  # adapted: inside the channel
     base = ["seat", str(video), "g2", "--round", "1", "--seat", "cold viewer", "--config", cfg]
     boom = lambda *a, **k: (_ for _ in ()).throw(AssertionError("model call made"))
     monkeypatch.setattr(call.subprocess, "run", boom)
@@ -300,6 +327,7 @@ def test_the_seat_verdict_is_bound_to_the_rounds_draft(tmp_path, monkeypatch):
 def test_input_paths_into_secret_folders_are_refused(tmp_path, monkeypatch, capsys, sub):
     import os
     import pwd
+
     video, script, cfg = _setup(tmp_path, monkeypatch)
     assert _lint(video, script, cfg) == 0
     home = Path(pwd.getpwuid(os.getuid()).pw_dir)
@@ -310,8 +338,7 @@ def test_input_paths_into_secret_folders_are_refused(tmp_path, monkeypatch, caps
     link.symlink_to(home / ".ssh" / "id_rsa")
     for path in (home / ".config" / "omni-studio" / "key", home / ".aws" / "credentials", link):
         capsys.readouterr()
-        assert cli.main([sub, str(video), "g2", "--round", "1", "--config", cfg, *extra,
-                         "--input", f"x={path}"]) == 2
+        assert cli.main([sub, str(video), "g2", "--round", "1", "--config", cfg, *extra, "--input", f"x={path}"]) == 2
         assert "secret" in capsys.readouterr().err
     repo_file = Path(cli.__file__).resolve().parents[3] / "CLAUDE.md"
     assert repo_file.is_file()
@@ -355,13 +382,18 @@ def test_inputs_must_live_inside_the_channel_folder(tmp_path, monkeypatch, capsy
     monkeypatch.setattr(call.subprocess, "run", boom)
     for sub, extra in (("seat", ["--seat", "cold viewer"]), ("judge", [])):
         capsys.readouterr()
-        assert cli.main([sub, str(video), "g2", "--round", "1", "--config", cfg, *extra,
-                         "--input", f"x={outside}"]) == 2
+        assert (
+            cli.main([sub, str(video), "g2", "--round", "1", "--config", cfg, *extra, "--input", f"x={outside}"]) == 2
+        )
         assert "channel folder" in capsys.readouterr().err
     link = _channel_of(video) / "sneaky.md"
     link.symlink_to(outside)
-    assert cli.main(["seat", str(video), "g2", "--round", "1", "--config", cfg, "--seat", "cold viewer",
-                     "--input", f"x={link}"]) == 2
+    assert (
+        cli.main(
+            ["seat", str(video), "g2", "--round", "1", "--config", cfg, "--seat", "cold viewer", "--input", f"x={link}"]
+        )
+        == 2
+    )
     assert "channel folder" in capsys.readouterr().err
 
 
@@ -376,8 +408,24 @@ def test_inputs_may_not_be_other_verdicts_under_a_videos_room_folder(tmp_path, m
     monkeypatch.setattr(call.subprocess, "run", boom)
     for path in (other / "story-editor.json", mine):
         capsys.readouterr()
-        assert cli.main(["seat", str(video), "g2", "--round", "1", "--config", cfg, "--seat", "cold viewer",
-                         "--input", f"x={path}"]) == 2
+        assert (
+            cli.main(
+                [
+                    "seat",
+                    str(video),
+                    "g2",
+                    "--round",
+                    "1",
+                    "--config",
+                    cfg,
+                    "--seat",
+                    "cold viewer",
+                    "--input",
+                    f"x={path}",
+                ]
+            )
+            == 2
+        )
         assert "room" in capsys.readouterr().err
 
 
@@ -421,11 +469,22 @@ def test_an_ordinary_round_above_the_limit_is_refused_but_owner_notes_may_exceed
 
 def test_a_ledger_row_of_any_status_locks_the_round(tmp_path, monkeypatch, capsys):
     from studio.room.ledger import Ledger
+
     video, script, cfg = _setup(tmp_path, monkeypatch)
     assert _lint(video, script, cfg) == 0
     db = Ledger()
-    cid = db.reserve(channel="professor-of-us", video=video.name, gate="g2", round=1, seat="x", model="m",
-                     family="f", prompt_sha256="p", daily_cap=99, script_cap=99)
+    cid = db.reserve(
+        channel="professor-of-us",
+        video=video.name,
+        gate="g2",
+        round=1,
+        seat="x",
+        model="m",
+        family="f",
+        prompt_sha256="p",
+        daily_cap=99,
+        script_cap=99,
+    )
     db.finish(cid, status="failed", output_sha256="", duration_s=0)
     capsys.readouterr()
     assert _lint(video, script, cfg) == 2 and "has been reviewed" in capsys.readouterr().err
@@ -433,6 +492,7 @@ def test_a_ledger_row_of_any_status_locks_the_round(tmp_path, monkeypatch, capsy
 
 def test_deleting_a_verdict_file_cannot_buy_a_second_opinion(tmp_path, monkeypatch, capsys):
     from studio.room.ledger import Ledger
+
     video, script, cfg = _setup(tmp_path, monkeypatch)
     assert _lint(video, script, cfg) == 0
     _run_seats(video, cfg, monkeypatch, seats=("cold viewer",))
@@ -455,6 +515,7 @@ def _two_candidate_rounds(video, script, cfg, monkeypatch):
 
 def test_judge_refuses_a_second_run_in_the_round(tmp_path, monkeypatch, capsys):
     from studio.room.ledger import Ledger
+
     video, script, cfg = _setup(tmp_path, monkeypatch)
     _two_candidate_rounds(video, script, cfg, monkeypatch)
     _fake(monkeypatch, [{"winner": "A"}, {"winner": "B"}])
@@ -473,25 +534,34 @@ def test_judge_refuses_a_second_run_in_the_round(tmp_path, monkeypatch, capsys):
 def test_a_failed_judge_exits_1_and_is_unjudged(tmp_path, monkeypatch, capsys):
     video, script, cfg = _setup(tmp_path, monkeypatch)
     _two_candidate_rounds(video, script, cfg, monkeypatch)
-    monkeypatch.setattr(call.subprocess, "run", lambda cmd, **kw: subprocess.CompletedProcess(
-        cmd, 0, stdout="1\n" if cmd[-1] == "--version" else "junk", stderr=""))
+    monkeypatch.setattr(
+        call.subprocess,
+        "run",
+        lambda cmd, **kw: subprocess.CompletedProcess(
+            cmd, 0, stdout="1\n" if cmd[-1] == "--version" else "junk", stderr=""
+        ),
+    )
     capsys.readouterr()
     assert cli.main(["judge", str(video), "g2", "--round", "2", "--config", cfg]) == 1
     assert "unjudged" in capsys.readouterr().err
     assert json.loads((video / "room" / "g2" / "round-2" / "judge.json").read_text())["winner"] is None
 
 
-def test_a_video_folder_outside_the_channels_videos_is_refused_by_every_config_subcommand(tmp_path, monkeypatch, capsys):
+def test_a_video_folder_outside_the_channels_videos_is_refused_by_every_config_subcommand(
+    tmp_path, monkeypatch, capsys
+):
     video, script, cfg = _setup(tmp_path, monkeypatch)
     stray = tmp_path / "stray"
     stray.mkdir()
     link = _channel_of(video) / "videos" / "linked"
     link.symlink_to(stray)
     for target in (stray, link):
-        for argv in (["lint", str(target), "g2", "--round", "1", "--draft", str(script)],
-                     ["seat", str(target), "g2", "--round", "1", "--seat", "cold viewer"],
-                     ["judge", str(target), "g2", "--round", "1"],
-                     ["report", str(target), "g2", "--stage", "s"]):
+        for argv in (
+            ["lint", str(target), "g2", "--round", "1", "--draft", str(script)],
+            ["seat", str(target), "g2", "--round", "1", "--seat", "cold viewer"],
+            ["judge", str(target), "g2", "--round", "1"],
+            ["report", str(target), "g2", "--stage", "s"],
+        ):
             capsys.readouterr()
             assert cli.main([*argv, "--config", cfg]) == 2
             assert "videos" in capsys.readouterr().err
@@ -518,6 +588,22 @@ def test_the_room_folder_rule_ignores_case(tmp_path, monkeypatch, capsys):
         other.mkdir(parents=True)
         (other / "v.json").write_text("{}")
         capsys.readouterr()
-        assert cli.main(["seat", str(video), "g2", "--round", "1", "--config", cfg, "--seat", "cold viewer",
-                         "--input", f"x={other / 'v.json'}"]) == 2
+        assert (
+            cli.main(
+                [
+                    "seat",
+                    str(video),
+                    "g2",
+                    "--round",
+                    "1",
+                    "--config",
+                    cfg,
+                    "--seat",
+                    "cold viewer",
+                    "--input",
+                    f"x={other / 'v.json'}",
+                ]
+            )
+            == 2
+        )
         assert "room" in capsys.readouterr().err.lower()

@@ -32,8 +32,16 @@ THUMB_NAMES = ("thumbnail.png", "thumbnail.jpg", "thumbnail.jpeg", "thumbnail.we
 
 def load_config(path: Path = CONFIG) -> dict[str, Any]:
     data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
-    need = {"same_channel_recent", "frame_every_s", "max_frames", "title_ratio", "script_jaccard",
-            "thumbnail_hamming", "frame_hamming", "frame_match_share"}
+    need = {
+        "same_channel_recent",
+        "frame_every_s",
+        "max_frames",
+        "title_ratio",
+        "script_jaccard",
+        "thumbnail_hamming",
+        "frame_hamming",
+        "frame_match_share",
+    }
     missing = need - set(data or {})
     if missing:
         raise ValueError(f"{path}: missing {sorted(missing)}")
@@ -78,7 +86,7 @@ def title_of(video_dir: Path) -> Optional[str]:
 
 def shingles(script_text: str, n: int = 5) -> set[tuple[str, ...]]:
     words = _norm_words(" ".join(CITE_RE.sub("", t) for _, t in spoken_lines(script_text)))
-    return {tuple(words[i:i + n]) for i in range(max(0, len(words) - n + 1))}
+    return {tuple(words[i : i + n]) for i in range(max(0, len(words) - n + 1))}
 
 
 def _dhash_gray(pixels: bytes) -> int:
@@ -103,14 +111,26 @@ class UnreadableMedia(Exception):
 
 def frame_hashes(media: Path, every_s: float, max_frames: int) -> list[int]:
     proc = subprocess.run(
-        ["ffmpeg", "-v", "error", "-i", str(media), "-vf", f"fps=1/{every_s},scale=9:8,format=gray",
-         "-frames:v", str(max_frames), "-f", "rawvideo", "-"],
+        [
+            "ffmpeg",
+            "-v",
+            "error",
+            "-i",
+            str(media),
+            "-vf",
+            f"fps=1/{every_s},scale=9:8,format=gray",
+            "-frames:v",
+            str(max_frames),
+            "-f",
+            "rawvideo",
+            "-",
+        ],
         capture_output=True,
     )
     if proc.returncode != 0:
         raise UnreadableMedia(f"{media}: {proc.stderr.decode(errors='replace').strip().splitlines()[-1:]}")
     raw = proc.stdout
-    return [_dhash_gray(raw[i:i + 72]) for i in range(0, len(raw) - 71, 72)]
+    return [_dhash_gray(raw[i : i + 72]) for i in range(0, len(raw) - 71, 72)]
 
 
 def render_of(video_dir: Path) -> Optional[Path]:
@@ -168,8 +188,10 @@ def compare(a: Features, b: Features, cfg: dict[str, Any]) -> list[str]:
         matched = sum(1 for h in a.frames if min(_hamming(h, o) for o in b.frames) <= cfg["frame_hamming"])
         share = matched / len(a.frames)
         if share >= cfg["frame_match_share"]:
-            hits.append(f"frames {matched}/{len(a.frames)} ({share:.0%}) have a near match "
-                        f"(dHash <= {cfg['frame_hamming']}); want < {cfg['frame_match_share']:.0%}")
+            hits.append(
+                f"frames {matched}/{len(a.frames)} ({share:.0%}) have a near match "
+                f"(dHash <= {cfg['frame_hamming']}); want < {cfg['frame_match_share']:.0%}"
+            )
     return hits
 
 
@@ -180,25 +202,33 @@ def corpus(channel_slug: str, video_id: str, cfg: dict[str, Any]) -> list[tuple[
         folder = channels.channels_dir() / slug / "videos"
         if not folder.is_dir():
             continue
-        videos = sorted((p for p in folder.iterdir() if p.is_dir() and channels.VIDEO_ID_RE.fullmatch(p.name)),
-                        key=lambda p: p.name)
+        videos = sorted(
+            (p for p in folder.iterdir() if p.is_dir() and channels.VIDEO_ID_RE.fullmatch(p.name)), key=lambda p: p.name
+        )
         if slug == channel_slug:
             others = [p for p in videos if p.name != video_id]
             keep = max(0, int(cfg["same_channel_recent"]))
-            videos = others[len(others) - keep:] if keep else []
+            videos = others[len(others) - keep :] if keep else []
         out += [(slug, p) for p in videos]
     return out
 
 
-def check(channel_slug: str, video_id: str, media: Optional[Path] = None,
-          cfg: Optional[dict[str, Any]] = None) -> dict[str, Any]:
+def check(
+    channel_slug: str, video_id: str, media: Optional[Path] = None, cfg: Optional[dict[str, Any]] = None
+) -> dict[str, Any]:
     cfg = cfg or load_config()
     channel = channels.load_channel(channel_slug)
     try:
         mine = features(channel_slug, channels.video_dir(channel, video_id), cfg, media)
     except UnreadableMedia as exc:
-        return {"check": "similarity", "ok": False, "compared": 0, "skipped": [],
-                "problems": [f"cannot read this video's render frames: {exc}"], "features": {}}
+        return {
+            "check": "similarity",
+            "ok": False,
+            "compared": 0,
+            "skipped": [],
+            "problems": [f"cannot read this video's render frames: {exc}"],
+            "features": {},
+        }
     problems, skipped, compared = [], [], 0
     for slug, other_dir in corpus(channel_slug, video_id, cfg):
         compared += 1
@@ -207,15 +237,30 @@ def check(channel_slug: str, video_id: str, media: Optional[Path] = None,
         except UnreadableMedia:
             # An unreadable render elsewhere must not hide every other comparison: compare its text and
             # thumbnail, and report that its frames were skipped.
-            other = Features(slug, other_dir.name, title_of(other_dir),
-                             shingles((other_dir / "script.md").read_text(encoding="utf-8"))
-                             if (other_dir / "script.md").is_file() else set(),
-                             _thumb_hash(other_dir), [])
+            other = Features(
+                slug,
+                other_dir.name,
+                title_of(other_dir),
+                shingles((other_dir / "script.md").read_text(encoding="utf-8"))
+                if (other_dir / "script.md").is_file()
+                else set(),
+                _thumb_hash(other_dir),
+                [],
+            )
             skipped.append(f"{slug}/{other_dir.name}: render frames unreadable, compared title/script/thumbnail")
         for hit in compare(mine, other, cfg):
             scope = "same channel" if slug == channel_slug else "other channel"
             problems.append(f"near-duplicate of {slug}/{other_dir.name} ({scope}): {hit}")
-    return {"check": "similarity", "ok": not problems, "compared": compared, "skipped": skipped,
-            "problems": problems,
-            "features": {"title": mine.title, "shingles": len(mine.shingles),
-                         "thumbnail": mine.thumbnail is not None, "frames": len(mine.frames)}}
+    return {
+        "check": "similarity",
+        "ok": not problems,
+        "compared": compared,
+        "skipped": skipped,
+        "problems": problems,
+        "features": {
+            "title": mine.title,
+            "shingles": len(mine.shingles),
+            "thumbnail": mine.thumbnail is not None,
+            "frames": len(mine.frames),
+        },
+    }

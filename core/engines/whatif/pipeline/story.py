@@ -45,7 +45,10 @@ def _ledger(text: str) -> dict[str, tuple[str, str]]:
             continue
         if set("".join(cells)) <= set("-: "):
             continue
-        col = {name: next((i for i, h in enumerate(header) if h.startswith(name)), None) for name in ("id", "source", "status")}
+        col = {
+            name: next((i for i, h in enumerate(header) if h.startswith(name)), None)
+            for name in ("id", "source", "status")
+        }
         if None in col.values():
             continue
         url = re.search(r"https?://\S+", cells[col["source"]])
@@ -135,7 +138,9 @@ def build(video: Path) -> dict:
         for name, (index, word) in (timing.get("cues") or {}).items():
             spoken = [re.sub(r"[^a-z0-9']", "", w.lower()) for w in lines[int(index)]["text"].split()]
             if re.sub(r"[^a-z0-9']", "", str(word).lower()) not in spoken:
-                raise ValueError(f"timing.yaml cue {name}: {word!r} is not a word of line {index}: {lines[int(index)]['text']}")
+                raise ValueError(
+                    f"timing.yaml cue {name}: {word!r} is not a word of line {index}: {lines[int(index)]['text']}"
+                )
             cues[name] = {"line": int(index), "word": str(word)}
     cited = [c for l in lines for c in l["claims"]]
     story = {

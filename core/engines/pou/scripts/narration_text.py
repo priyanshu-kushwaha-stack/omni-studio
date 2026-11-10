@@ -5,6 +5,7 @@ Drops `> VISUAL:` beats, headings, front matter and everything from `## Chapters
 *emphasis* marks and (cNN) claim references. Parts are groups of consecutive sections, given as
 1-based section indexes, e.g. --parts 1-3,4-5,6-8. Prints JSON: [{"sections": [...], "text": ...}].
 """
+
 from __future__ import annotations
 
 import argparse

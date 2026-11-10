@@ -13,27 +13,33 @@ from studio import testgate as G
 
 # --- classify: which changes can skip the code suites --------------------------------------------------------------
 
+
 def test_video_folder_only_changes_take_the_fast_path():
     plan = G.classify(
-        ["channels/say-suppose/videos/2026-11-09_odds/script.md",
-         "channels/say-suppose/videos/2026-11-09_odds/room/g2.json",
-         "channels/see-underneath/videos/2026-11-10_x/claims.md"],
+        [
+            "channels/say-suppose/videos/2026-11-09_odds/script.md",
+            "channels/say-suppose/videos/2026-11-09_odds/room/g2.json",
+            "channels/see-underneath/videos/2026-11-10_x/claims.md",
+        ],
         referenced=set(),
     )
     assert plan.kind == "fast"
     assert plan.channels == {"say-suppose", "see-underneath"}
 
 
-@pytest.mark.parametrize("path", [
-    "core/studio/room/call.py",
-    "core/openmontage/skills/studio/studio-room.md",   # skills are tested (test_room_skill)
-    "channels/say-suppose/channel.yaml",               # channel config is read by tests and tools
-    "channels/say-suppose/room.yaml",
-    "channels/say-suppose/rules/story.md",
-    "channels/_template/videos/x/script.md",           # the template is copied by tests
-    "Makefile",
-    ".claude/standard.json",
-])
+@pytest.mark.parametrize(
+    "path",
+    [
+        "core/studio/room/call.py",
+        "core/openmontage/skills/studio/studio-room.md",  # skills are tested (test_room_skill)
+        "channels/say-suppose/channel.yaml",  # channel config is read by tests and tools
+        "channels/say-suppose/room.yaml",
+        "channels/say-suppose/rules/story.md",
+        "channels/_template/videos/x/script.md",  # the template is copied by tests
+        "Makefile",
+        ".claude/standard.json",
+    ],
+)
 def test_anything_outside_a_video_folder_needs_the_full_suite(path):
     plan = G.classify(["channels/say-suppose/videos/2026-11-09_odds/script.md", path], referenced=set())
     assert plan.kind == "full"
@@ -73,6 +79,7 @@ def test_the_real_repo_marks_the_videos_its_tests_read():
 
 
 # --- the pass cache ------------------------------------------------------------------------------------------------
+
 
 def _git(cwd: Path, *args: str) -> str:
     return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True, text=True).stdout.strip()
@@ -118,6 +125,7 @@ def test_tracked_clean_ignores_untracked_files(repo):
 
 # --- full: parallel suites, cache only on a clean pass ------------------------------------------------------------
 
+
 def _suites(tmp_path, *codes):
     return [G.Suite(f"s{i}", str(tmp_path), f"echo out-{i}; exit {c}") for i, c in enumerate(codes)]
 
@@ -142,8 +150,21 @@ def test_full_on_a_dirty_tree_passes_but_records_nothing(repo, tmp_path):
     assert not G.has_passed(repo, G.head_tree(repo))
 
 
+def test_a_full_run_over_budget_warns(repo, tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(G, "FULL_BUDGET", 0)
+    assert G.run_full(repo, suites=_suites(tmp_path, 0), queue=None) == 0
+    assert "over the 0 s budget" in capsys.readouterr().err
+
+
+def test_a_full_run_within_budget_is_quiet(repo, tmp_path, capsys):
+    assert G.run_full(repo, suites=_suites(tmp_path, 0), queue=None) == 0
+    assert "budget" not in capsys.readouterr().err
+
+
+@pytest.mark.slow  # runs three 1 s suites to prove they overlap
 def test_full_runs_suites_at_the_same_time(repo, tmp_path):
     import time
+
     suites = [G.Suite(f"s{i}", str(tmp_path), "sleep 1") for i in range(3)]
     t0 = time.monotonic()
     assert G.run_full(repo, suites=suites, queue=None) == 0
@@ -151,6 +172,7 @@ def test_full_runs_suites_at_the_same_time(repo, tmp_path):
 
 
 # --- prepush: cache hit, fast path, full path ---------------------------------------------------------------------
+
 
 class Calls:
     def __init__(self, full_code=0, fast_code=0):

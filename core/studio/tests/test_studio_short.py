@@ -81,8 +81,16 @@ CLAIMS = """# Claims ledger
 
 
 def _awaiting(channel, stage, artifacts=None):
-    write_checkpoint(channel.videos_dir, VIDEO, stage, "awaiting_human", artifacts or {},
-                     pipeline_type="studio-short", checkpoint_policy="manual_all", human_approval_required=True)
+    write_checkpoint(
+        channel.videos_dir,
+        VIDEO,
+        stage,
+        "awaiting_human",
+        artifacts or {},
+        pipeline_type="studio-short",
+        checkpoint_policy="manual_all",
+        human_approval_required=True,
+    )
 
 
 def _status(channel, stage):
@@ -205,6 +213,7 @@ def walked_to_g6(_g6_snapshot, monkeypatch, studio_helpers):
 g6_group = pytest.mark.xdist_group("g6_walk")
 
 
+@pytest.mark.slow  # walks a Short through every stage, running the ffmpeg checks on real media
 def test_studio_short_end_to_end_up_to_g6(studio_root, media, capsys):
     log = []
     channel, _, _ = _walk_to_g6(studio_root, media, log)
@@ -225,12 +234,21 @@ from studio.publish import youtube  # noqa: E402
 
 
 def _upload_yaml(folder, render, **extra):
-    (folder / "upload.yaml").write_text(yaml.safe_dump({
-        "file": str(render.relative_to(folder)), "title": "Why We Yawn", "description": "https://example.org/yawn",
-        "tags": ["science"], **extra}))
+    (folder / "upload.yaml").write_text(
+        yaml.safe_dump(
+            {
+                "file": str(render.relative_to(folder)),
+                "title": "Why We Yawn",
+                "description": "https://example.org/yawn",
+                "tags": ["science"],
+                **extra,
+            }
+        )
+    )
 
 
 @g6_group
+@pytest.mark.slow  # re-runs the publish checks (ffmpeg) on two media files
 def test_publish_binds_qc_approval_and_upload_to_one_file(walked_to_g6, media, capsys):
     log = []
     channel, folder, good = walked_to_g6
@@ -314,6 +332,7 @@ def _legacy_video(channel, media, **extra):
     return folder, render
 
 
+@pytest.mark.slow  # runs the publish_prep checks (ffmpeg) on a real media file
 def test_approve_upload_for_a_video_with_no_pipeline(studio_root, media):
     channel = studio_root("dummy")
     folder, render = _legacy_video(channel, media, legacy_upload=True)
@@ -398,6 +417,7 @@ def test_planted_g6_media_proof_stripped_fails_the_deliverable_check(walked_to_g
     assert not result["ok"] and "final_watch approval is invalid" in result["problems"][0]
     # the stage proof itself no longer verifies, so OpenMontage also treats G6 as unapproved
     from lib import studio_approval
+
     with pytest.raises(studio_approval.ApprovalRefused, match="approval.media"):
         studio_approval.verify(VIDEO, "final_watch", data["pipeline_type"], data["artifacts"], data["metadata"])
     assert cli.main(["qc", "dummy", VIDEO, "publish_prep"]) == 1
@@ -409,7 +429,8 @@ def test_planted_g6_media_proof_edited_fails_the_deliverable_check(walked_to_g6)
     path = folder / "checkpoint_final_watch.json"
     data = json.loads(path.read_text())
     data["metadata"]["approval"]["media"]["sha256"] = checks._sha256(good).replace(
-        checks._sha256(good)[0], "f" if checks._sha256(good)[0] != "f" else "e", 1)
+        checks._sha256(good)[0], "f" if checks._sha256(good)[0] != "f" else "e", 1
+    )
     path.write_text(json.dumps(data))
     result = _deliverable(channel, folder, good)
     assert not result["ok"] and "final_watch approval is invalid" in result["problems"][0]
@@ -418,6 +439,7 @@ def test_planted_g6_media_proof_edited_fails_the_deliverable_check(walked_to_g6)
 def _resign_final_watch(folder, media_record):
     """Re-sign the stage proof (the test holds the key) around a chosen media record."""
     from lib import studio_approval
+
     path = folder / "checkpoint_final_watch.json"
     data = json.loads(path.read_text())
     approval = data["metadata"]["approval"]
@@ -425,8 +447,9 @@ def _resign_final_watch(folder, media_record):
         approval.pop("media", None)
     else:
         approval["media"] = media_record
-    approval["proof"] = studio_approval.sign(VIDEO, "final_watch", data["pipeline_type"], data["artifacts"],
-                                             approval["at"], media_record)
+    approval["proof"] = studio_approval.sign(
+        VIDEO, "final_watch", data["pipeline_type"], data["artifacts"], approval["at"], media_record
+    )
     path.write_text(json.dumps(data))
     return approval
 
@@ -464,8 +487,14 @@ def test_planted_metadata_changed_after_approval_is_refused(studio_root, media):
     checks.approve_upload("dummy", folder.name, "short", "owner, test only")
     req = youtube.build_request("dummy", folder.name)
     assert req.metadata["title"] == "[TEST] Why We Yawn" and youtube.approved_media_problems(req) == []
-    for change in ({"title": "Why We Yawn"}, {"tags": ["science", "extra"]}, {"description": "new"},
-                   {"contains_synthetic_media": True}, {"language": "hi"}, {"category_id": "22"}):
+    for change in (
+        {"title": "Why We Yawn"},
+        {"tags": ["science", "extra"]},
+        {"description": "new"},
+        {"contains_synthetic_media": True},
+        {"language": "hi"},
+        {"category_id": "22"},
+    ):
         data = {"title": "[TEST] Why We Yawn", **change}
         _upload_yaml(folder, render, legacy_upload=True, **data)
         problems = youtube.approved_media_problems(youtube.build_request("dummy", folder.name))
@@ -476,6 +505,7 @@ def test_planted_metadata_changed_after_approval_is_refused(studio_root, media):
 
 def test_planted_approval_without_metadata_digest_is_refused(studio_root, media):
     from lib import studio_approval
+
     channel = studio_root("dummy")
     folder, render = _legacy_video(channel, media, legacy_upload=True)
     path = checks.approve_upload("dummy", folder.name, "short", "owner, test only")

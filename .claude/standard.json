@@ -1,5 +1,8 @@
 {
   "commands": {
+    "typecheck": "make precommit",
+    "lint": "make lint",
+    "format": "make format",
     "test": "make prepush"
   }
 }

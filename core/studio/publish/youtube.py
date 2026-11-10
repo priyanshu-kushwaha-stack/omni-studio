@@ -47,15 +47,37 @@ from studio import channels
 ROOT = Path(__file__).resolve().parents[3]
 LOCK = ROOT / "core" / "lock.yaml"
 
-UPLOAD_KEYS = {"file", "title", "description", "tags", "category_id", "language", "made_for_kids",
-               "contains_synthetic_media", "privacy", "legacy_upload", "thumbnail", "captions"}
+UPLOAD_KEYS = {
+    "file",
+    "title",
+    "description",
+    "tags",
+    "category_id",
+    "language",
+    "made_for_kids",
+    "contains_synthetic_media",
+    "privacy",
+    "legacy_upload",
+    "thumbnail",
+    "captions",
+}
 # Normalised (lowercase, no _ - or spaces) keys that mean scheduling or a status override, at any depth.
-SCHEDULE_KEYS = {"publishat", "publishtime", "publishdate", "schedule", "scheduled", "scheduledat",
-                 "scheduledpublishtime", "scheduledstarttime", "releaseat", "premiere"}
+SCHEDULE_KEYS = {
+    "publishat",
+    "publishtime",
+    "publishdate",
+    "schedule",
+    "scheduled",
+    "scheduledat",
+    "scheduledpublishtime",
+    "scheduledstarttime",
+    "releaseat",
+    "premiere",
+}
 PRIVACY_KEYS = {"privacy", "privacystatus", "visibility", "status"}
 MAX_TITLE = 100
 MAX_DESCRIPTION = 5000
-MAX_THUMBNAIL = 2 * 1024 * 1024   # YouTube's limit for a custom thumbnail
+MAX_THUMBNAIL = 2 * 1024 * 1024  # YouTube's limit for a custom thumbnail
 THUMBNAIL_TYPES = (".jpg", ".jpeg", ".png")
 CAPTION_TYPES = (".srt", ".vtt")
 
@@ -84,7 +106,7 @@ def token_path(channel: channels.Channel) -> Path:
 def _home(path: Path | str) -> str:
     text = str(path)
     home = str(Path.home())
-    return "~" + text[len(home):] if text.startswith(home + os.sep) else text
+    return "~" + text[len(home) :] if text.startswith(home + os.sep) else text
 
 
 # --- the request ---
@@ -163,8 +185,10 @@ def build_request(slug: str, video_id: str, upload_yaml: Optional[Path] = None) 
     if len(description.encode("utf-8")) > MAX_DESCRIPTION or re.search(r"[<>]", description):
         problems.append(f"{path.name}.description: at most {MAX_DESCRIPTION} bytes and no < or >")
     if "legacy_upload" in data and not isinstance(data["legacy_upload"], bool):
-        problems.append(f"{path.name}.legacy_upload: true or false (true only for an imported video with no "
-                        "pipeline, approved with omni approve-upload)")
+        problems.append(
+            f"{path.name}.legacy_upload: true or false (true only for an imported video with no "
+            "pipeline, approved with omni approve-upload)"
+        )
     tags = data.get("tags") or []
     if not (isinstance(tags, list) and all(isinstance(t, str) and t.strip() for t in tags)):
         problems.append(f"{path.name}.tags: a list of words")
@@ -183,32 +207,44 @@ def build_request(slug: str, video_id: str, upload_yaml: Optional[Path] = None) 
     captions = {}
     if data.get("captions") is not None:
         if not isinstance(data["captions"], dict):
-            problems.append(f"{path.name}.captions: a mapping of language code to subtitle file, e.g. en: subtitles/en.srt")
+            problems.append(
+                f"{path.name}.captions: a mapping of language code to subtitle file, e.g. en: subtitles/en.srt"
+            )
         else:
             for lang, rel in data["captions"].items():
                 track = folder / str(rel)
                 if not re.fullmatch(r"[a-z]{2,3}(-[A-Za-z]{2,4})?", str(lang)):
                     problems.append(f"{path.name}.captions: {lang!r} is not a language code like en or hi")
-                elif not track.resolve().is_relative_to(folder.resolve()) or not track.is_file() \
-                        or track.suffix.lower() not in CAPTION_TYPES:
-                    problems.append(f"{path.name}.captions.{lang}: {rel!r} is not an .srt or .vtt file inside {folder.name}/")
+                elif (
+                    not track.resolve().is_relative_to(folder.resolve())
+                    or not track.is_file()
+                    or track.suffix.lower() not in CAPTION_TYPES
+                ):
+                    problems.append(
+                        f"{path.name}.captions.{lang}: {rel!r} is not an .srt or .vtt file inside {folder.name}/"
+                    )
                 else:
                     captions[str(lang)] = track
 
     kids = data["made_for_kids"] if "made_for_kids" in data else channel.config.made_for_kids
     if not isinstance(kids, bool):
-        problems.append("made_for_kids is missing: answer true or false in upload.yaml or channel.yaml "
-                        "(YouTube status.selfDeclaredMadeForKids); the upload is refused without it")
+        problems.append(
+            "made_for_kids is missing: answer true or false in upload.yaml or channel.yaml "
+            "(YouTube status.selfDeclaredMadeForKids); the upload is refused without it"
+        )
     elif kids != channel.config.made_for_kids:
-        problems.append(f"made_for_kids {kids} disagrees with channel.yaml made_for_kids "
-                        f"{channel.config.made_for_kids}; change channel.yaml if the audience changed")
+        problems.append(
+            f"made_for_kids {kids} disagrees with channel.yaml made_for_kids "
+            f"{channel.config.made_for_kids}; change channel.yaml if the audience changed"
+        )
     defaults = channel.config.upload
-    ai = (data["contains_synthetic_media"] if "contains_synthetic_media" in data
-          else defaults.contains_synthetic_media)
+    ai = data["contains_synthetic_media"] if "contains_synthetic_media" in data else defaults.contains_synthetic_media
     if not isinstance(ai, bool):
-        problems.append("contains_synthetic_media is missing: answer the altered or synthetic content disclosure "
-                        "with true or false in upload.yaml or channel.yaml upload.contains_synthetic_media "
-                        "(YouTube status.containsSyntheticMedia); the upload is refused without it")
+        problems.append(
+            "contains_synthetic_media is missing: answer the altered or synthetic content disclosure "
+            "with true or false in upload.yaml or channel.yaml upload.contains_synthetic_media "
+            "(YouTube status.containsSyntheticMedia); the upload is refused without it"
+        )
     try:
         token = token_path(channel)
     except UploadRefused as exc:
@@ -287,17 +323,32 @@ def install(fetch: Callable[[str], bytes] | None = None) -> Path:
 
 
 def command(req: UploadRequest, meta_path: Path, out_path: Path, file: Optional[Path] = None) -> list[str]:
-    return [str(binary_path()), "-filename", str(file or req.file), "-metaJSON", str(meta_path),
-            "-metaJSONout", str(out_path), "-privacy", "private", "-secrets", str(client_secret_path()),
-            "-cache", str(req.token), "-sendFilename=false", "-quiet",
-            *(["-thumbnail", str(req.thumbnail)] if req.thumbnail else [])]
+    return [
+        str(binary_path()),
+        "-filename",
+        str(file or req.file),
+        "-metaJSON",
+        str(meta_path),
+        "-metaJSONout",
+        str(out_path),
+        "-privacy",
+        "private",
+        "-secrets",
+        str(client_secret_path()),
+        "-cache",
+        str(req.token),
+        "-sendFilename=false",
+        "-quiet",
+        *(["-thumbnail", str(req.thumbnail)] if req.thumbnail else []),
+    ]
 
 
 def printable(cmd: list[str]) -> str:
     """The command, one flag per line, home folded to ~. It names the secret files; it never reads them."""
+
     def word(part: str) -> str:
         home = str(Path.home())
-        return f'"$HOME{part[len(home):]}"' if part.startswith(home + os.sep) else shlex.quote(part)
+        return f'"$HOME{part[len(home) :]}"' if part.startswith(home + os.sep) else shlex.quote(part)
 
     lines, i = [word(cmd[0])], 1
     while i < len(cmd):
@@ -334,18 +385,23 @@ def approved_media_problems(req: UploadRequest) -> list[str]:
         return [str(exc)]
     problems = []
     if not approved.get("metadata_sha256"):
-        problems.append("the approval signs no upload metadata digest (made before metadata was signed): "
-                        "the owner approves again")
+        problems.append(
+            "the approval signs no upload metadata digest (made before metadata was signed): the owner approves again"
+        )
     elif approved["metadata_sha256"] != metadata_digest(req.metadata):
-        problems.append("the upload metadata (title, description, tags, category, language, kids or AI answer) "
-                        "changed after approval: the owner approves again")
+        problems.append(
+            "the upload metadata (title, description, tags, category, language, kids or AI answer) "
+            "changed after approval: the owner approves again"
+        )
     rel = checks._rel(req.file.resolve())
     if approved["media"] != rel:
         problems.append(f"upload.yaml uploads {rel}, but the approval covers {approved['media']}")
     actual = checks._sha256(req.file) if req.file.is_file() else None
     if actual != approved["sha256"]:
-        problems.append(f"{rel} sha256 {str(actual)[:12]}... is not the approved {approved['sha256'][:12]}...: "
-                        "the file changed after approval")
+        problems.append(
+            f"{rel} sha256 {str(actual)[:12]}... is not the approved {approved['sha256'][:12]}...: "
+            "the file changed after approval"
+        )
     return problems
 
 
@@ -356,8 +412,10 @@ def preflight(req: UploadRequest) -> list[str]:
     if not req.token.is_file():
         # Never let youtubeuploader run without our token: it would start its own consent (no channel check)
         # or fall back to a token in os.UserConfigDir()/youtubeuploader/.
-        problems.append(f"no token at {_home(req.token)}: the owner runs `omni youtube-auth {req.channel}` first "
-                        "(consent, then the token's channel is checked before the token is saved)")
+        problems.append(
+            f"no token at {_home(req.token)}: the owner runs `omni youtube-auth {req.channel}` first "
+            "(consent, then the token's channel is checked before the token is saved)"
+        )
     if not req.youtube_channel_id:
         problems.append(f"channel {req.channel!r} has no youtube_channel_id to check the upload against")
     return problems + approved_media_problems(req)
@@ -393,16 +451,18 @@ def dry_run(req: UploadRequest) -> str:
         "read or printed here",
     ]
     problems = preflight(req)
-    lines.append("preflight " + ("ok" if not problems else "a real run would stop here:\n  - "
-                                 + "\n  - ".join(problems)))
+    lines.append(
+        "preflight " + ("ok" if not problems else "a real run would stop here:\n  - " + "\n  - ".join(problems))
+    )
     return "\n".join(lines)
 
 
 # --- the real run (never by an agent without the owner asking) ---
 
 
-def run(req: UploadRequest, confirm: str, api=None,
-        runner: Callable[..., subprocess.CompletedProcess] = subprocess.run) -> dict[str, Any]:
+def run(
+    req: UploadRequest, confirm: str, api=None, runner: Callable[..., subprocess.CompletedProcess] = subprocess.run
+) -> dict[str, Any]:
     from studio.publish import youtube_api
 
     if confirm != f"{req.channel}/{req.video}":
@@ -428,8 +488,10 @@ def run(req: UploadRequest, confirm: str, api=None,
         private.chmod(0o400)
         copied = _file_sha(private)
         if copied != _approved(req)["sha256"]:
-            raise UploadRefused(f"refused before the uploader ran: the private copy of {req.file.name} hashes "
-                                f"{copied[:12]}..., not the approved sha256 (the file changed during the copy)")
+            raise UploadRefused(
+                f"refused before the uploader ran: the private copy of {req.file.name} hashes "
+                f"{copied[:12]}..., not the approved sha256 (the file changed during the copy)"
+            )
         proc = runner(command(req, meta_path, out_path, private), capture_output=True, text=True)
         if proc.returncode != 0 or not out_path.is_file():
             raise UploadRefused(f"youtubeuploader failed (exit {proc.returncode}): {proc.stderr.strip()[-400:]}")
@@ -437,13 +499,20 @@ def run(req: UploadRequest, confirm: str, api=None,
     video_id = uploaded.get("id")
     readback = api.video_status(video_id)
     checks = youtube_api.verify_readback(readback, req.metadata, req.youtube_channel_id)
-    log = {"channel": req.channel, "video": req.video, "youtube_video_id": video_id,
-           "requested": req.metadata, "readback": readback, "readback_problems": checks}
+    log = {
+        "channel": req.channel,
+        "video": req.video,
+        "youtube_video_id": video_id,
+        "requested": req.metadata,
+        "readback": readback,
+        "readback_problems": checks,
+    }
     (_folder(req) / "upload_log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
     if checks:
-        raise UploadRefused(f"uploaded {video_id} but the read-back disagrees; fix it in YouTube Studio now:\n  "
-                            + "\n  ".join(checks))
-    if req.captions:   # the uploader takes one caption file without a language, so tracks go through the API
+        raise UploadRefused(
+            f"uploaded {video_id} but the read-back disagrees; fix it in YouTube Studio now:\n  " + "\n  ".join(checks)
+        )
+    if req.captions:  # the uploader takes one caption file without a language, so tracks go through the API
         return set_captions(req, confirm, api)
     return log
 

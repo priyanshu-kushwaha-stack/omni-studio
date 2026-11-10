@@ -60,21 +60,32 @@ def _video(tmp_path: Path, say: str | None = None) -> Path:
 
 def test_spoken_lines_holds_moods_and_claims(tmp_path):
     out = story.build(_video(tmp_path))
-    assert [l["text"] for l in out["lines"]] == ["On day twelve, a bus.", "A car needs about 23 metres to stop.", "Nobody knows."]
+    assert [l["text"] for l in out["lines"]] == [
+        "On day twelve, a bus.",
+        "A car needs about 23 metres to stop.",
+        "Nobody knows.",
+    ]
     assert [l["mood"] for l in out["lines"]] == ["frozen", "dusk", "dusk"]
     assert [l["claims"] for l in out["lines"]] == [[], ["c14"], []]
     assert out["leadInSec"] == pytest.approx(story.LEAD_IN + 2)
     assert out["lines"][1]["gapAfterSec"] == pytest.approx(4)
     assert out["lines"][0]["gapAfterSec"] == pytest.approx(story.GAP)
     assert out["sources"] == {"c14": "https://example.gov.uk/stopping.pdf"}
-    assert out["voice"] == {"model": "elevenlabs_v4", "voiceType": "preset", "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346"}
+    assert out["voice"] == {
+        "model": "elevenlabs_v4",
+        "voiceType": "preset",
+        "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346",
+    }
 
 
 def test_say_overrides_spell_numbers_and_direct_delivery(tmp_path):
     say = 'A car needs about 23 metres to stop.: "A car needs about twenty-three metres to stop."\nNobody knows.: "[whispers] Nobody knows."\n'
     out = story.build(_video(tmp_path, say))
     assert [l["say"] for l in out["lines"]] == [
-        "On day twelve, a bus.", "A car needs about twenty-three metres to stop.", "[whispers] Nobody knows."]
+        "On day twelve, a bus.",
+        "A car needs about twenty-three metres to stop.",
+        "[whispers] Nobody knows.",
+    ]
 
 
 def test_say_override_for_a_line_that_is_not_in_the_script_is_refused(tmp_path):
@@ -134,7 +145,9 @@ def test_no_tempo_leaves_the_story_at_normal_speed(tmp_path):
     assert all("tempo" not in l for l in out["lines"])
 
 
-mix_spec = importlib.util.spec_from_file_location("whatif_mix", REAL_ROOT / "core/engines/whatif/pipeline/mix_narration.py")
+mix_spec = importlib.util.spec_from_file_location(
+    "whatif_mix", REAL_ROOT / "core/engines/whatif/pipeline/mix_narration.py"
+)
 mix = importlib.util.module_from_spec(mix_spec)
 mix_spec.loader.exec_module(mix)
 
@@ -142,4 +155,6 @@ mix_spec.loader.exec_module(mix)
 def test_mutes_measured_at_normal_speed_follow_a_faster_take():
     lines = [{"text": "a"}, {"text": "b", "tempo": 1.25}]
     assert mix.at_tempo([(0, 1.0, 0.1), (1, 2.5, 0.05)], lines, 1.1) == [
-        (0, pytest.approx(1.0 / 1.1), pytest.approx(0.1 / 1.1)), (1, pytest.approx(2.0), pytest.approx(0.04))]
+        (0, pytest.approx(1.0 / 1.1), pytest.approx(0.1 / 1.1)),
+        (1, pytest.approx(2.0), pytest.approx(0.04)),
+    ]

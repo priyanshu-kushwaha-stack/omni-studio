@@ -5,18 +5,30 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from script_lint import hard_failures, lint_script, narration_words, re_engage_windows  # noqa: E402
 
 
-def make_script(words_per_section=None, greeting=False, ending_lang=False, sources=6,
-                re_engage=("Two", "Three", "Four", "Five"), first_digit=True, visuals=True, emphasis=True):
+def make_script(
+    words_per_section=None,
+    greeting=False,
+    ending_lang=False,
+    sources=6,
+    re_engage=("Two", "Three", "Four", "Five"),
+    first_digit=True,
+    visuals=True,
+    emphasis=True,
+):
     # 14-minute target => 2100 words = 813 s at 155 wpm. Section starts in words:
     # Hook 0, One 120, Two 465, Three 930, Four 1395, Five 1860, Ending 2010.
     # At 155 wpm "Two" starts at 180 s, "Three" at 360 s, "Four" at 540 s, "Five" at 720 s,
     # which is where the RE-ENGAGE cues must land (every ~3 min through the back half).
     words_per_section = words_per_section or [120, 345, 465, 465, 465, 150, 90]
-    filler = "the river turns and *every* step costs something new " if emphasis else "the river turns and every step costs something new "
+    filler = (
+        "the river turns and *every* step costs something new "
+        if emphasis
+        else "the river turns and every step costs something new "
+    )
     out = ["# Script", "template: mystery", "target_minutes: 14", "status: draft", ""]
     titles = ["Hook", "One", "Two", "Three", "Four", "Five", "Ending"]
     for i, (t, n) in enumerate(zip(titles, words_per_section)):
-        out.append(f"## [{i*2:02d}:00] {t}")
+        out.append(f"## [{i * 2:02d}:00] {t}")
         if visuals:
             # one beat per 10 s of estimated narration, plus one
             out += [f"> VISUAL: beat {k}" for k in range(int(n / 155 * 60 // 10) + 1)]
@@ -29,7 +41,8 @@ def make_script(words_per_section=None, greeting=False, ending_lang=False, sourc
             if first_digit:
                 body[5] = "40,000"
         if ending_lang and i == 2:
-            body[10] = "in"; body[11] = "conclusion,"
+            body[10] = "in"
+            body[11] = "conclusion,"
         out.append(" ".join(body))
         out.append("")
     out += ["## Chapters", "00:00 Hook", "", "## Sources"]
@@ -120,6 +133,7 @@ def test_advisory_findings_never_block():
 def test_speaker_labels_are_not_counted_as_words():
     """Dialogue lines ('OOG: I am old.') are spoken without the label (channel/cast.md format)."""
     from script_lint import narration_words
+
     text = "## [00:00] A\n> VISUAL: x\nOOG: I am old.\nYOU: No way.\nPROF: Yes.\nPlain narration here.\n"
     assert narration_words(text) == 3 + 2 + 1 + 3
 
@@ -137,8 +151,12 @@ def test_quiz_board_fails_even_when_well_formed():
 
 
 def test_every_quiz_board_shape_fails():
-    for lines in (["> QUIZ: 15 | *35 | 55"], ["> ASK: Guess?", "> QUIZ: 15 | 35 | 55"],
-                  ["> ASK: Guess?", "> QUIZ: *15 | *35"], ["> ASK: Guess?", "> QUIZ: *15 | 2 | 3 | 4"]):
+    for lines in (
+        ["> QUIZ: 15 | *35 | 55"],
+        ["> ASK: Guess?", "> QUIZ: 15 | 35 | 55"],
+        ["> ASK: Guess?", "> QUIZ: *15 | *35"],
+        ["> ASK: Guess?", "> QUIZ: *15 | 2 | 3 | 4"],
+    ):
         f = by_item(lint_script(_quiz_script(lines), 14))
         assert not f[27].ok
         assert f[27] in hard_failures(lint_script(_quiz_script(lines), 14))

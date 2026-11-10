@@ -93,8 +93,10 @@ def test_a_queue_name_cannot_leave_the_queue_folder(qdir, name):
 
 
 def test_a_killed_holder_frees_the_queue(qdir, tmp_path):
-    code = ("from studio.jobs import queue as Q; import time\n"
-            "with Q.hold('render', step='victim'):\n    print('held', flush=True); time.sleep(30)\n")
+    code = (
+        "from studio.jobs import queue as Q; import time\n"
+        "with Q.hold('render', step='victim'):\n    print('held', flush=True); time.sleep(30)\n"
+    )
     proc = subprocess.Popen([sys.executable, "-c", code], env=_env(tmp_path), stdout=subprocess.PIPE, text=True)
     try:
         assert proc.stdout.readline().strip() == "held"
@@ -107,8 +109,26 @@ def test_a_killed_holder_frees_the_queue(qdir, tmp_path):
 
 
 def test_run_with_a_queue_runs_the_command_and_records_the_wait(qdir):
-    assert cli.main(["run", "--queue", "render", "--step", "whatif-render", "--channel", "say-suppose",
-                     "--video", "v2", "--", sys.executable, "-c", "pass"]) == 0
+    assert (
+        cli.main(
+            [
+                "run",
+                "--queue",
+                "render",
+                "--step",
+                "whatif-render",
+                "--channel",
+                "say-suppose",
+                "--video",
+                "v2",
+                "--",
+                sys.executable,
+                "-c",
+                "pass",
+            ]
+        )
+        == 0
+    )
     row = T.read_timings()[-1]
     assert (row["step"], row["ok"], row["queue"]) == ("whatif-render", True, "render")
     assert row["waited_s"] >= 0
@@ -125,8 +145,20 @@ def test_the_command_sees_itself_as_the_holder(qdir, tmp_path):
 def test_run_no_wait_on_a_busy_queue_exits_75_without_running(qdir, tmp_path, capsys):
     marker = tmp_path / "ran"
     with Q.hold("render", step="other", channel="say-suppose", video="v1"):
-        code = cli.main(["run", "--queue", "render", "--no-wait", "--step", "r", "--",
-                         sys.executable, "-c", f"open({str(marker)!r}, 'w')"])
+        code = cli.main(
+            [
+                "run",
+                "--queue",
+                "render",
+                "--no-wait",
+                "--step",
+                "r",
+                "--",
+                sys.executable,
+                "-c",
+                f"open({str(marker)!r}, 'w')",
+            ]
+        )
     assert code == 75 and not marker.exists()
     assert "v1" in capsys.readouterr().err
     assert T.read_timings() == []
@@ -134,19 +166,39 @@ def test_run_no_wait_on_a_busy_queue_exits_75_without_running(qdir, tmp_path, ca
 
 def test_run_wait_timeout_on_a_busy_queue_exits_75(qdir, tmp_path):
     with Q.hold("render"):
-        assert cli.main(["run", "--queue", "render", "--wait-timeout", "0.2", "--step", "r", "--",
-                         sys.executable, "-c", "pass"]) == 75
+        assert (
+            cli.main(
+                ["run", "--queue", "render", "--wait-timeout", "0.2", "--step", "r", "--", sys.executable, "-c", "pass"]
+            )
+            == 75
+        )
 
 
 def test_run_with_a_bad_queue_name_is_a_usage_error(qdir):
     assert cli.main(["run", "--queue", "../x", "--step", "r", "--", sys.executable, "-c", "pass"]) == 2
 
 
+@pytest.mark.slow  # its child sleeps 1.5 s by design
 def test_the_render_keeps_the_queue_if_its_wrapper_is_killed(qdir, tmp_path):
     """A killed session must not let a second render start while the first one's process still runs."""
     child = "import time; time.sleep(1.5)"
-    wrapper = subprocess.Popen([sys.executable, "-m", "studio.jobs", "run", "--queue", "render", "--step", "r",
-                                "--", sys.executable, "-c", child], env=_env(tmp_path))
+    wrapper = subprocess.Popen(
+        [
+            sys.executable,
+            "-m",
+            "studio.jobs",
+            "run",
+            "--queue",
+            "render",
+            "--step",
+            "r",
+            "--",
+            sys.executable,
+            "-c",
+            child,
+        ],
+        env=_env(tmp_path),
+    )
     try:
         assert _wait_until(lambda: Q.holder("render") is not None)
         wrapper.send_signal(signal.SIGKILL)

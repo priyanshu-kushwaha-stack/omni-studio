@@ -34,7 +34,9 @@ NUMBER_WORDS = re.compile(
     r"\b(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|"
     r"seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|hundreds|"
     r"thousand|thousands|million|millions|billion|billions|trillion|dozen|dozens|half|third|quarter|"
-    r"percent|per cent)\b", re.IGNORECASE)
+    r"percent|per cent)\b",
+    re.IGNORECASE,
+)
 
 
 @dataclass
@@ -80,8 +82,12 @@ def parse_ledger(text: str) -> tuple[list[Row], list[str]]:
             i += 1
             continue
         header = [c.lower() for c in _cells(line)]
-        cols = {"id": _column(header, "id"), "claim": _column(header, "claim"),
-                "source": _column(header, "source"), "status": _column(header, "status")}
+        cols = {
+            "id": _column(header, "id"),
+            "claim": _column(header, "claim"),
+            "source": _column(header, "source"),
+            "status": _column(header, "status"),
+        }
         i += 1
         if None in cols.values():
             while i < len(lines) and lines[i].lstrip().startswith("|"):
@@ -92,8 +98,11 @@ def parse_ledger(text: str) -> tuple[list[Row], list[str]]:
         while i < len(lines) and lines[i].lstrip().startswith("|"):
             cells = _cells(lines[i])
             cells += [""] * (len(header) - len(cells))
-            rows.append(Row(i + 1, cells[cols["id"]], cells[cols["claim"]], cells[cols["source"]],
-                            cells[cols["status"]].lower()))
+            rows.append(
+                Row(
+                    i + 1, cells[cols["id"]], cells[cols["claim"]], cells[cols["source"]], cells[cols["status"]].lower()
+                )
+            )
             i += 1
     return rows, problems
 
@@ -105,8 +114,9 @@ def spoken_lines(script: str) -> list[tuple[int, str]]:
         stripped = line.strip()
         if stripped.startswith("## ") and not re.match(r"^## \[\d{2}:\d{2}\]", stripped):
             break  # Word count, Not said, Chapters, Sources: not spoken
-        if not stripped or stripped.startswith(("#", ">", "|", "-", "format:", "status:", "claims:", "loop:",
-                                                "template:", "target_minutes:")):
+        if not stripped or stripped.startswith(
+            ("#", ">", "|", "-", "format:", "status:", "claims:", "loop:", "template:", "target_minutes:")
+        ):
             continue
         out.append((n, SPEAKER_RE.sub("", stripped)))
     return out
@@ -135,8 +145,10 @@ def check(video_dir: Path, number_words: bool = True) -> LedgerReport:
         if not URL_RE.search(row.source):
             problems.append(f"{where}: claim has no source (want an http(s) URL in the source column)")
         if row.status not in SOURCED_STATUSES:
-            problems.append(f"{where}: status {row.status or '(blank)'!r} is not one of "
-                            f"{sorted(SOURCED_STATUSES)} (or 'dropped' when it is not said)")
+            problems.append(
+                f"{where}: status {row.status or '(blank)'!r} is not one of "
+                f"{sorted(SOURCED_STATUSES)} (or 'dropped' when it is not said)"
+            )
 
     script = video_dir / "script.md"
     if script.is_file():

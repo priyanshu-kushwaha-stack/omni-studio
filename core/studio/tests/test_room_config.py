@@ -64,17 +64,24 @@ def _with_seat(line):
 
 
 def test_a_duplicate_seat_name_fails(tmp_path):
-    cfg = _cfg(tmp_path, _with_seat('  - {name: cold viewer, role: viewer, model: grok-4.7-high, brief: "shared:viewer"}'))
+    cfg = _cfg(
+        tmp_path, _with_seat('  - {name: cold viewer, role: viewer, model: grok-4.7-high, brief: "shared:viewer"}')
+    )
     assert any("appears twice" in p for p in C.validate(cfg))
 
 
 def test_an_unknown_role_fails(tmp_path):
-    cfg = _cfg(tmp_path, _with_seat('  - {name: copy editor, role: editor, model: grok-4.7-high, brief: "shared:viewer"}'))
+    cfg = _cfg(
+        tmp_path, _with_seat('  - {name: copy editor, role: editor, model: grok-4.7-high, brief: "shared:viewer"}')
+    )
     assert any("unknown role" in p for p in C.validate(cfg))
 
 
 def test_a_neutrality_seat_on_the_writer_family_fails(tmp_path):
-    cfg = _cfg(tmp_path, _with_seat('  - {name: neutrality A, role: neutrality, model: claude-sonnet-5-5, brief: "shared:fact"}'))
+    cfg = _cfg(
+        tmp_path,
+        _with_seat('  - {name: neutrality A, role: neutrality, model: claude-sonnet-5-5, brief: "shared:fact"}'),
+    )
     assert any("neutrality A" in p and "writer's family" in p for p in C.validate(cfg))
 
 
@@ -186,15 +193,23 @@ def test_reserved_or_empty_seat_slugs_are_refused(tmp_path, name):
 
 def test_a_channel_daily_cap_above_the_studio_ceiling_does_not_hide_a_small_ceiling(tmp_path, monkeypatch):
     from studio.room import ledger
+
     limits = tmp_path / "limits.yaml"
     limits.write_text("daily_cap: 10\n")
     monkeypatch.setattr(ledger, "LIMITS", limits)
     assert any("daily cap" in p for p in C.validate(_cfg(tmp_path)))
 
 
-@pytest.mark.parametrize("old,new", [("format: {wpm: 155}", "format: [wpm]"), ("format: {wpm: 155}", "format: 7"),
-                                     ("linters: []", "linters: not-a-list"), ("linters: []", "linters: {a: b}"),
-                                     ("sources: []", "sources: some.md")])
+@pytest.mark.parametrize(
+    "old,new",
+    [
+        ("format: {wpm: 155}", "format: [wpm]"),
+        ("format: {wpm: 155}", "format: 7"),
+        ("linters: []", "linters: not-a-list"),
+        ("linters: []", "linters: {a: b}"),
+        ("sources: []", "sources: some.md"),
+    ],
+)
 def test_wrong_shaped_format_linters_or_sources_are_config_errors(tmp_path, old, new):
     with pytest.raises(C.RoomConfigError):
         _cfg(tmp_path, BASE.replace(old, new))

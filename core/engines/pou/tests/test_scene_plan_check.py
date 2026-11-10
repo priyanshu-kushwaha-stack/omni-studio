@@ -5,17 +5,25 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from scene_plan_check import changes_per_minute, check_scene_plan  # noqa: E402
 
 
-def make_plan(seconds=120, hook_hold=3, body_hold=5, body_type="generated", body_movement="static",
-              classify=True, exceptions=None):
+def make_plan(
+    seconds=120, hook_hold=3, body_hold=5, body_type="generated", body_movement="static", classify=True, exceptions=None
+):
     """Hook (first 60 s) in hook_hold steps, then body in body_hold steps. Classes cycle."""
     scenes, t, i = [], 0.0, 0
     cycle = ["illustration", "motion", "card", "character", "hero"]
     while t < seconds:
         hold = hook_hold if t < 60 else body_hold
         end = min(t + hold, seconds)
-        scenes.append({"id": f"s{i:03d}", "type": "generated" if t < 60 else body_type,
-                       "description": "x", "start_seconds": t, "end_seconds": end,
-                       "movement": "static" if t < 60 else body_movement})
+        scenes.append(
+            {
+                "id": f"s{i:03d}",
+                "type": "generated" if t < 60 else body_type,
+                "description": "x",
+                "start_seconds": t,
+                "end_seconds": end,
+                "movement": "static" if t < 60 else body_movement,
+            }
+        )
         t, i = end, i + 1
     meta = {"change_classes": {s["id"]: cycle[k % 5] for k, s in enumerate(scenes)} if classify else {}}
     if exceptions:
@@ -45,8 +53,12 @@ def test_sparse_minute_fails_density_only():
 
 
 def test_minute_exception_with_reason_allows_sparse_minute():
-    plan = make_plan(body_hold=10, body_type="diagram", body_movement="draw-on",
-                     exceptions=[{"minute": 2, "reason": "map route evolving for the whole minute"}])
+    plan = make_plan(
+        body_hold=10,
+        body_type="diagram",
+        body_movement="draw-on",
+        exceptions=[{"minute": 2, "reason": "map route evolving for the whole minute"}],
+    )
     assert by_rule(check_scene_plan(plan))["density"].ok
 
 

@@ -19,8 +19,12 @@ from studio.publish import youtube, youtube_api
 REAL_ROOT = Path(__file__).resolve().parents[3]
 TAILS = REAL_ROOT / "channels" / "professor-of-us" / "videos" / "2026-10-31_tails"
 VIDEO = "2026-11-06_test-short"
-BASE = {"file": "renders/final.mp4", "title": "A Test Short", "description": "Sources: https://example.org",
-        "tags": ["science"]}
+BASE = {
+    "file": "renders/final.mp4",
+    "title": "A Test Short",
+    "description": "Sources: https://example.org",
+    "tags": ["science"],
+}
 
 
 @pytest.fixture()
@@ -89,18 +93,21 @@ def test_there_is_no_privacy_flag_at_all(video, privacy, capsys):
     assert exc.value.code == 2 and "unrecognized arguments: --privacy" in capsys.readouterr().err
 
 
-@pytest.mark.parametrize("fields,needle", [
-    ({"privacy": "public"}, "upload.yaml.privacy: privacy must be 'private'; 'public' is refused"),
-    ({"privacy": "unlisted"}, "upload.yaml.privacy: privacy must be 'private'; 'unlisted' is refused"),
-    ({"privacyStatus": "public"}, "privacy must be 'private'"),
-    ({"visibility": "public"}, "privacy must be 'private'"),
-    ({"status": {"privacyStatus": "public"}}, "privacy must be 'private'"),
-    ({"publishAt": "2026-12-01T10:00:00Z"}, "upload.yaml.publishAt: scheduled publishing is refused"),
-    ({"publish_at": "2026-12-01"}, "scheduled publishing is refused"),
-    ({"schedule": {"at": "tomorrow"}}, "scheduled publishing is refused"),
-    ({"tags": [{"publishAt": "x"}]}, "scheduled publishing is refused"),
-    ({"thumbnail_override": "x"}, "unknown field"),
-])
+@pytest.mark.parametrize(
+    "fields,needle",
+    [
+        ({"privacy": "public"}, "upload.yaml.privacy: privacy must be 'private'; 'public' is refused"),
+        ({"privacy": "unlisted"}, "upload.yaml.privacy: privacy must be 'private'; 'unlisted' is refused"),
+        ({"privacyStatus": "public"}, "privacy must be 'private'"),
+        ({"visibility": "public"}, "privacy must be 'private'"),
+        ({"status": {"privacyStatus": "public"}}, "privacy must be 'private'"),
+        ({"publishAt": "2026-12-01T10:00:00Z"}, "upload.yaml.publishAt: scheduled publishing is refused"),
+        ({"publish_at": "2026-12-01"}, "scheduled publishing is refused"),
+        ({"schedule": {"at": "tomorrow"}}, "scheduled publishing is refused"),
+        ({"tags": [{"publishAt": "x"}]}, "scheduled publishing is refused"),
+        ({"thumbnail_override": "x"}, "unknown field"),
+    ],
+)
 def test_non_private_or_scheduled_metadata_is_refused(video, fields, needle):
     _upload(video[1], **fields)
     assert needle in _refused("alpha", VIDEO)
@@ -114,8 +121,12 @@ def test_private_privacy_field_is_allowed(video):
 def test_tampered_metajson_is_caught_before_exec():
     meta = {"privacyStatus": "private", "madeForKids": False, "containsSyntheticMedia": False}
     youtube.assert_private(meta)
-    for bad in ({**meta, "privacyStatus": "public"}, {**meta, "publishAt": "2026-12-01T00:00:00Z"},
-                {**meta, "madeForKids": None}, {k: v for k, v in meta.items() if k != "containsSyntheticMedia"}):
+    for bad in (
+        {**meta, "privacyStatus": "public"},
+        {**meta, "publishAt": "2026-12-01T00:00:00Z"},
+        {**meta, "madeForKids": None},
+        {k: v for k, v in meta.items() if k != "containsSyntheticMedia"},
+    ):
         with pytest.raises(youtube.UploadRefused, match="refused before the uploader ran"):
             youtube.assert_private(bad)
 
@@ -195,9 +206,18 @@ def test_install_checks_both_hashes(monkeypatch, tmp_path):
     blob = buf.getvalue()
     with pytest.raises(youtube.UploadRefused, match="does not match the lock"):
         youtube.install(fetch=lambda url: blob)
-    pin = {"repo": "r", "tag": "t", "install_dir": "bin", "platforms": {"Darwin_arm64": {
-        "asset": "a.tgz", "tarball_sha256": hashlib.sha256(blob).hexdigest(),
-        "binary_sha256": hashlib.sha256(binary).hexdigest()}}}
+    pin = {
+        "repo": "r",
+        "tag": "t",
+        "install_dir": "bin",
+        "platforms": {
+            "Darwin_arm64": {
+                "asset": "a.tgz",
+                "tarball_sha256": hashlib.sha256(blob).hexdigest(),
+                "binary_sha256": hashlib.sha256(binary).hexdigest(),
+            }
+        },
+    }
     monkeypatch.setattr(youtube, "lock", lambda: pin)
     assert youtube.install(fetch=lambda url: blob).read_bytes() == binary
     assert youtube.verify_binary() == []
@@ -238,11 +258,16 @@ def _runner(seen):
         seen.append(json.loads(Path(cmd[cmd.index("-metaJSON") + 1]).read_text()))
         Path(cmd[cmd.index("-metaJSONout") + 1]).write_text(json.dumps({"id": "vid123"}))
         return subprocess.CompletedProcess(cmd, 0, "Upload successful! Video ID: vid123", "")
+
     return run
 
 
-GOOD_STATUS = {"privacyStatus": "private", "publishAt": None, "selfDeclaredMadeForKids": False,
-               "containsSyntheticMedia": False}
+GOOD_STATUS = {
+    "privacyStatus": "private",
+    "publishAt": None,
+    "selfDeclaredMadeForKids": False,
+    "containsSyntheticMedia": False,
+}
 
 
 def test_run_uploads_private_and_verifies_the_readback(video, monkeypatch):
@@ -284,13 +309,16 @@ def test_run_refuses_a_pipeline_video_whose_g7_is_not_approved(video, monkeypatc
         youtube.run(req, "alpha/" + VIDEO, api=FakeAPI(req.youtube_channel_id, {}), runner=_runner([]))
 
 
-@pytest.mark.parametrize("change,needle", [
-    ({"privacyStatus": "public"}, "not private"),
-    ({"publishAt": "2026-12-01T00:00:00Z"}, "remove the schedule"),
-    ({"containsSyntheticMedia": None}, "containsSyntheticMedia reads back"),
-    ({"selfDeclaredMadeForKids": True}, "made for kids reads back"),
-    ({"channelId": "UCwrong"}, "landed on channel"),
-])
+@pytest.mark.parametrize(
+    "change,needle",
+    [
+        ({"privacyStatus": "public"}, "not private"),
+        ({"publishAt": "2026-12-01T00:00:00Z"}, "remove the schedule"),
+        ({"containsSyntheticMedia": None}, "containsSyntheticMedia reads back"),
+        ({"selfDeclaredMadeForKids": True}, "made for kids reads back"),
+        ({"channelId": "UCwrong"}, "landed on channel"),
+    ],
+)
 def test_readback_mismatch_is_loud(video, monkeypatch, change, needle):
     req = _ready(video, monkeypatch)
     status = {**GOOD_STATUS, "channelId": req.youtube_channel_id, **change}
@@ -317,9 +345,22 @@ def test_api_refreshes_in_memory_and_reads_status(tmp_path):
         if "oauth2" in request.full_url:
             return Resp(json.dumps({"access_token": "fresh"}).encode())
         assert request.headers["Authorization"] == "Bearer fresh"
-        return Resp(json.dumps({"items": [{"status": {"privacyStatus": "private", "containsSyntheticMedia": False,
-                                                       "selfDeclaredMadeForKids": False},
-                                           "snippet": {"channelId": "UCx"}}]}).encode())
+        return Resp(
+            json.dumps(
+                {
+                    "items": [
+                        {
+                            "status": {
+                                "privacyStatus": "private",
+                                "containsSyntheticMedia": False,
+                                "selfDeclaredMadeForKids": False,
+                            },
+                            "snippet": {"channelId": "UCx"},
+                        }
+                    ]
+                }
+            ).encode()
+        )
 
     api = youtube_api.YouTubeAPI(secret, token, opener=opener)
     status = api.video_status("v1")
@@ -346,11 +387,14 @@ def test_thumbnail_goes_to_the_uploader_and_the_dry_run(video):
     assert "thumb.jpg" in youtube.dry_run(req)
 
 
-@pytest.mark.parametrize("make,needle", [
-    (lambda f: "../outside.jpg", "is not a file inside"),
-    (lambda f: _thumb(f, "thumb.gif"), "a JPG or PNG"),
-    (lambda f: _thumb(f, "big.jpg", size=youtube.MAX_THUMBNAIL), "at most 2 MB"),
-])
+@pytest.mark.parametrize(
+    "make,needle",
+    [
+        (lambda f: "../outside.jpg", "is not a file inside"),
+        (lambda f: _thumb(f, "thumb.gif"), "a JPG or PNG"),
+        (lambda f: _thumb(f, "big.jpg", size=youtube.MAX_THUMBNAIL), "at most 2 MB"),
+    ],
+)
 def test_bad_thumbnail_is_refused(video, make, needle):
     channel, folder = video
     _upload(folder, thumbnail=make(folder))
@@ -536,8 +580,17 @@ def _client(studio_root):
     channel = studio_root("alpha")
     path = youtube.client_secret_path()
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({"web": {"client_id": "cid", "client_secret": "csec",
-                                        "redirect_uris": ["http://localhost:8080/oauth2callback"]}}))
+    path.write_text(
+        json.dumps(
+            {
+                "web": {
+                    "client_id": "cid",
+                    "client_secret": "csec",
+                    "redirect_uris": ["http://localhost:8080/oauth2callback"],
+                }
+            }
+        )
+    )
     return channel
 
 
@@ -545,8 +598,9 @@ def test_youtube_auth_saves_the_token_only_for_the_right_channel(studio_root):
     channel = _client(studio_root)
     opener, calls = _auth_opener(channel.config.youtube_channel_id)
     urls, said = [], []
-    path = youtube_auth.authorize("alpha", open_url=urls.append, get_code=lambda r, s: "code1",
-                                  opener=opener, say=said.append)
+    path = youtube_auth.authorize(
+        "alpha", open_url=urls.append, get_code=lambda r, s: "code1", opener=opener, say=said.append
+    )
     token = json.loads(path.read_text())
     assert set(token) == {"access_token", "token_type", "refresh_token", "expiry"}
     assert oct(path.stat().st_mode & 0o777) == "0o600" and path == youtube.token_path(channel)
@@ -558,8 +612,9 @@ def test_youtube_auth_for_the_wrong_channel_writes_nothing(studio_root):
     channel = _client(studio_root)
     opener, _ = _auth_opener("UCsomeoneelse0000000000")
     with pytest.raises(youtube_auth.AuthRefused, match="consent was given for channel UCsomeoneelse"):
-        youtube_auth.authorize("alpha", open_url=lambda u: None, get_code=lambda r, s: "c", opener=opener,
-                               say=lambda m: None)
+        youtube_auth.authorize(
+            "alpha", open_url=lambda u: None, get_code=lambda r, s: "c", opener=opener, say=lambda m: None
+        )
     assert not youtube.token_path(channel).exists()
     assert not list(youtube.token_path(channel).parent.glob(".token-*"))
 
@@ -632,8 +687,9 @@ def test_youtube_auth_uses_pkce_s256(studio_root):
         return opener(request, timeout)
 
     urls = []
-    youtube_auth.authorize("alpha", open_url=urls.append, get_code=lambda r, s: "code1", opener=recording,
-                           say=lambda m: None)
+    youtube_auth.authorize(
+        "alpha", open_url=urls.append, get_code=lambda r, s: "code1", opener=recording, say=lambda m: None
+    )
     query = urllib.parse.parse_qs(urllib.parse.urlparse(urls[0]).query)
     assert query["code_challenge_method"] == ["S256"]
     verifier = bodies[0]["code_verifier"][0]
@@ -642,17 +698,29 @@ def test_youtube_auth_uses_pkce_s256(studio_root):
     assert query["code_challenge"] == [expected]
 
 
-@pytest.mark.parametrize("redirect", ["https://evil.example/cb", "http://example.com:8080/oauth2callback",
-                                      "http://localhost.evil.example/cb", "http://10.0.0.5:8080/cb",
-                                      "urn:ietf:wg:oauth:2.0:oob"])
+@pytest.mark.parametrize(
+    "redirect",
+    [
+        "https://evil.example/cb",
+        "http://example.com:8080/oauth2callback",
+        "http://localhost.evil.example/cb",
+        "http://10.0.0.5:8080/cb",
+        "urn:ietf:wg:oauth:2.0:oob",
+    ],
+)
 def test_planted_non_loopback_redirect_is_refused_before_consent(studio_root, redirect):
     channel = _client(studio_root)
     path = youtube.client_secret_path()
     path.write_text(json.dumps({"web": {"client_id": "cid", "client_secret": "csec", "redirect_uris": [redirect]}}))
     opened = []
     with pytest.raises(youtube_auth.AuthRefused, match="not loopback"):
-        youtube_auth.authorize("alpha", open_url=opened.append, get_code=lambda r, s: "c",
-                               opener=lambda *a, **k: pytest.fail("no network"), say=lambda m: None)
+        youtube_auth.authorize(
+            "alpha",
+            open_url=opened.append,
+            get_code=lambda r, s: "c",
+            opener=lambda *a, **k: pytest.fail("no network"),
+            say=lambda m: None,
+        )
     assert opened == [] and not youtube.token_path(channel).exists()
 
 
@@ -689,6 +757,7 @@ def test_planted_swap_during_copy_is_refused_before_exec(video, monkeypatch):
     monkeypatch.setattr(youtube.shutil, "copyfile", swapping_copy)
     calls = []
     with pytest.raises(youtube.UploadRefused, match="private copy .* not the approved sha256"):
-        youtube.run(req, "alpha/" + VIDEO, api=FakeAPI(req.youtube_channel_id, {}),
-                    runner=lambda *a, **k: calls.append(a))
+        youtube.run(
+            req, "alpha/" + VIDEO, api=FakeAPI(req.youtube_channel_id, {}), runner=lambda *a, **k: calls.append(a)
+        )
     assert calls == []

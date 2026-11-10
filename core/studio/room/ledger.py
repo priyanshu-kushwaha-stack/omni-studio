@@ -74,8 +74,21 @@ class Ledger:
         db.row_factory = sqlite3.Row
         return db
 
-    def reserve(self, *, channel: str, video: str, gate: str, round: int, seat: str, model: str, family: str,
-                prompt_sha256: str, daily_cap: int, script_cap: int, now: Optional[datetime] = None) -> str:
+    def reserve(
+        self,
+        *,
+        channel: str,
+        video: str,
+        gate: str,
+        round: int,
+        seat: str,
+        model: str,
+        family: str,
+        prompt_sha256: str,
+        daily_cap: int,
+        script_cap: int,
+        now: Optional[datetime] = None,
+    ) -> str:
         at = (now or datetime.now(timezone.utc)).isoformat()
         call_id = uuid.uuid4().hex
         daily_cap = min(daily_cap, studio_daily_cap())
@@ -85,13 +98,16 @@ class Ledger:
                 today = db.execute("SELECT COUNT(*) FROM calls WHERE substr(at, 1, 10) = ?", (at[:10],)).fetchone()[0]
                 if today >= daily_cap:
                     raise CapReached(f"daily cap reached: {today} of {daily_cap} calls on {at[:10]}")
-                used = db.execute("SELECT COUNT(*) FROM calls WHERE channel = ? AND video = ? AND gate = ?",
-                                  (channel, video, gate)).fetchone()[0]
+                used = db.execute(
+                    "SELECT COUNT(*) FROM calls WHERE channel = ? AND video = ? AND gate = ?", (channel, video, gate)
+                ).fetchone()[0]
                 if used >= script_cap:
                     raise CapReached(f"{channel}/{video} {gate}: {used} of {script_cap} calls used")
-                db.execute("INSERT INTO calls (call_id, at, channel, video, gate, round, seat, model, family, "
-                           "prompt_sha256, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'reserved')",
-                           (call_id, at, channel, video, gate, round, seat, model, family, prompt_sha256))
+                db.execute(
+                    "INSERT INTO calls (call_id, at, channel, video, gate, round, seat, model, family, "
+                    "prompt_sha256, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'reserved')",
+                    (call_id, at, channel, video, gate, round, seat, model, family, prompt_sha256),
+                )
                 db.execute("COMMIT")
             except BaseException:
                 if db.in_transaction:
@@ -99,16 +115,28 @@ class Ledger:
                 raise
         return call_id
 
-    def finish(self, call_id: str, *, status: str, output_sha256: str, duration_s: float,
-               cli_version: str = "", verdict_sha256: str = "") -> None:
+    def finish(
+        self,
+        call_id: str,
+        *,
+        status: str,
+        output_sha256: str,
+        duration_s: float,
+        cli_version: str = "",
+        verdict_sha256: str = "",
+    ) -> None:
         with closing(self._connect()) as db:
-            cur = db.execute("UPDATE calls SET status = ?, output_sha256 = ?, duration_s = ?, cli_version = ?, "
-                             "verdict_sha256 = ? WHERE call_id = ? AND status = 'reserved'",
-                             (status, output_sha256, duration_s, cli_version, verdict_sha256, call_id))
+            cur = db.execute(
+                "UPDATE calls SET status = ?, output_sha256 = ?, duration_s = ?, cli_version = ?, "
+                "verdict_sha256 = ? WHERE call_id = ? AND status = 'reserved'",
+                (status, output_sha256, duration_s, cli_version, verdict_sha256, call_id),
+            )
             if cur.rowcount != 1:
                 if db.execute("SELECT 1 FROM calls WHERE call_id = ?", (call_id,)).fetchone():
-                    raise ValueError(f"call {call_id[:12]} is already finished; a row is only finished once "
-                                     "(status must be reserved)")
+                    raise ValueError(
+                        f"call {call_id[:12]} is already finished; a row is only finished once "
+                        "(status must be reserved)"
+                    )
                 raise KeyError(call_id)
 
     def get(self, call_id: str) -> Optional[CallRow]:
@@ -116,12 +144,25 @@ class Ledger:
             row = db.execute("SELECT * FROM calls WHERE call_id = ?", (call_id,)).fetchone()
         return CallRow(**dict(row)) if row else None
 
-    def count(self, *, channel: Optional[str] = None, video: Optional[str] = None,
-              gate: Optional[str] = None, round: Optional[int] = None, status: Optional[str] = None,
-              seat: Optional[str] = None) -> int:
+    def count(
+        self,
+        *,
+        channel: Optional[str] = None,
+        video: Optional[str] = None,
+        gate: Optional[str] = None,
+        round: Optional[int] = None,
+        status: Optional[str] = None,
+        seat: Optional[str] = None,
+    ) -> int:
         where, args = [], []
-        for col, val in (("channel", channel), ("video", video), ("gate", gate), ("round", round),
-                         ("status", status), ("seat", seat)):
+        for col, val in (
+            ("channel", channel),
+            ("video", video),
+            ("gate", gate),
+            ("round", round),
+            ("status", status),
+            ("seat", seat),
+        ):
             if val is not None:
                 where.append(f"{col} = ?")
                 args.append(val)
