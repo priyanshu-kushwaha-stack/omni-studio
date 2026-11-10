@@ -605,7 +605,7 @@ def test_youtube_auth_saves_the_token_only_for_the_right_channel(studio_root):
     assert set(token) == {"access_token", "token_type", "refresh_token", "expiry"}
     assert oct(path.stat().st_mode & 0o777) == "0o600" and path == youtube.token_path(channel)
     assert "access_type=offline" in urls[0] and "youtube.upload" in urls[0] and "state=" in urls[0]
-    assert len(calls) == 2 and not any("fake." in line for line in said)  # "a1" hit the URL's state 4%
+    assert len(calls) == 2 and not any("fake." in line for line in said)
 
 
 def test_youtube_auth_for_the_wrong_channel_writes_nothing(studio_root):

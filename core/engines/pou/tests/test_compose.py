@@ -1,5 +1,6 @@
 import pytest
 import json
+import wave
 from pathlib import Path
 
 import numpy as np
@@ -9,6 +10,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import compose  # noqa: E402
+import sfx_placeholders  # noqa: E402
 
 WORDS = [
     {"word": "Twenty", "start": 0.0, "end": 0.3},
@@ -528,28 +530,17 @@ def test_volume_expr_matches_duck_gain():
         assert _eval_expr(e, t) == pytest.approx(compose.duck_gain(ADJ, t), abs=1e-3)
 
 
-def _wav(path: Path, x: np.ndarray) -> Path:
-    import wave
-
-    with wave.open(str(path), "wb") as w:
-        w.setnchannels(1), w.setsampwidth(2), w.setframerate(48000)
-        w.writeframes((np.clip(x, -1, 1) * 32767).astype("<i2").tobytes())
-    return path
-
-
 def _mix_inputs(tmp_path: Path, seconds: float) -> tuple[Path, Path]:
-    """Silent narration and a 330 Hz tone bed at lavfi sine's 1/8 amplitude, written without spawning ffmpeg.
-
-    The mix_audio tests run under the 2 s per-test limit (studio.pytest_speed) while `make test` loads the Mac; each
-    ffmpeg spawn they skip is headroom against that limit."""
+    """Silent narration and a 330 Hz tone bed at lavfi sine's 1/8 amplitude, written without spawning ffmpeg."""
     t = np.arange(int(seconds * 48000)) / 48000
-    return _wav(tmp_path / "nar.wav", np.zeros_like(t)), _wav(tmp_path / "mus.wav", np.sin(2 * np.pi * 330 * t) / 8)
+    nar, mus = tmp_path / "nar.wav", tmp_path / "mus.wav"
+    sfx_placeholders._write(nar, np.zeros_like(t))
+    sfx_placeholders._write(mus, np.sin(2 * np.pi * 330 * t) / 8)
+    return nar, mus
 
 
 def _read_mix(path: Path) -> tuple[np.ndarray, int]:
     """mix_audio's output as mono floats and its rate (loudnorm writes 192 kHz), read without an ffmpeg decode."""
-    import wave
-
     with wave.open(str(path)) as w:
         assert w.getsampwidth() == 2
         x = np.frombuffer(w.readframes(w.getnframes()), "<i2").reshape(-1, w.getnchannels())
