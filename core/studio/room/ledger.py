@@ -144,6 +144,15 @@ class Ledger:
             row = db.execute("SELECT * FROM calls WHERE call_id = ?", (call_id,)).fetchone()
         return CallRow(**dict(row)) if row else None
 
+    def rows(
+        self, *, channel: Optional[str] = None, video: Optional[str] = None, gate: Optional[str] = None
+    ) -> list[CallRow]:
+        """Every call for the channel, video and gate given, oldest first."""
+        where = [(c, v) for c, v in (("channel", channel), ("video", video), ("gate", gate)) if v is not None]
+        sql = "SELECT * FROM calls" + (" WHERE " + " AND ".join(f"{c} = ?" for c, _ in where) if where else "")
+        with closing(self._connect()) as db:
+            return [CallRow(**dict(r)) for r in db.execute(sql + " ORDER BY at", [v for _, v in where])]
+
     def count(
         self,
         *,

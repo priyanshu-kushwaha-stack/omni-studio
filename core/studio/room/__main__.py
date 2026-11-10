@@ -1,6 +1,6 @@
 """python -m studio.room: the room's tools for the studio-room skill. A2 puts `omni room` on top of this.
 
-Every subcommand takes a video folder and a gate (g1 or g2). Exit codes: 0 ok, 1 checks failed, 2 usage error.
+Every subcommand but `times` (a video folder) and `scorecard` (the channel) takes a video folder and a gate (g1 or g2). Exit codes: 0 ok, 1 checks failed, 2 usage error.
 """
 
 from __future__ import annotations
@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Optional
 
 from studio.room import report as R
+from studio.room import times as T
 from studio.room.call import CallContext, is_secret_path, run_seat
 from studio.room.config import (
     SEATS_DIR,
@@ -359,6 +360,21 @@ def cmd_verify(args) -> int:
     return 1 if problems else 0
 
 
+def cmd_times(args) -> int:
+    cfg = load_room(Path(args.config))
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
+    print(T.render_times(T.gate_times(video, Ledger(), _channel(args))), end="")
+    return 0
+
+
+def cmd_scorecard(args) -> int:
+    cfg = load_room(Path(args.config))
+    print(T.render_scorecard(T.scorecard(Path(cfg.channel_dir))), end="")
+    return 0
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     p = argparse.ArgumentParser(prog="python -m studio.room")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -397,6 +413,14 @@ def main(argv: Optional[list[str]] = None) -> int:
     common(s)
     s.add_argument("--stage", required=True)
     s.set_defaults(fn=cmd_report)
+    s = sub.add_parser("times")
+    s.add_argument("video_dir")
+    s.add_argument("--channel")
+    s.add_argument("--config", required=True)
+    s.set_defaults(fn=cmd_times)
+    s = sub.add_parser("scorecard")
+    s.add_argument("--config", required=True)
+    s.set_defaults(fn=cmd_scorecard)
     s = sub.add_parser("verify")
     common(s, config=False)
     s.add_argument("--artifact", required=True)
