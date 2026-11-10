@@ -34,8 +34,22 @@ FADE_OUT = 0.06
 
 def voice_end(path: Path) -> float:
     """Seconds to where the take's sound stops: the start of a trailing silence, or the file's end."""
-    log = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(path), "-af",
-                          "silencedetect=n=-40dB:d=0.12", "-f", "null", "-"], capture_output=True, text=True).stderr
+    log = subprocess.run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-nostats",
+            "-i",
+            str(path),
+            "-af",
+            "silencedetect=n=-40dB:d=0.12",
+            "-f",
+            "null",
+            "-",
+        ],
+        capture_output=True,
+        text=True,
+    ).stderr
     total = seconds(path)
     starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", log)]
     ends = re.findall(r"silence_end: ([\d.]+)", log)
@@ -43,13 +57,19 @@ def voice_end(path: Path) -> float:
 
 
 def seconds(path: Path) -> float:
-    return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
-                                 str(path)], capture_output=True, text=True, check=True).stdout)
+    return float(
+        subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout
+    )
 
 
 def plan(en_starts: list[float], durations: list[float], total: float) -> list[tuple[float, float]]:
     """(start, speed-up) per line. en_starts and durations are per English line, in seconds."""
-    out, prev_end = [], -GAP   # the first line may start at 0
+    out, prev_end = [], -GAP  # the first line may start at 0
     for i, (s, d) in enumerate(zip(en_starts, durations)):
         nxt = en_starts[i + 1] if i + 1 < len(en_starts) else total
         start = max(s, prev_end + GAP)
@@ -87,19 +107,52 @@ def main(video: Path, dub: Path, lang: str, keep: set[int]) -> Path:
         inputs += ["-i", str(f)]
         tempo = f",atempo={speed}" if speed > 1 else ""
         length = d / speed
-        chains.append(f"[{i}]aresample=48000,atrim=0:{d:.3f}{tempo},afade=t=in:d=0.01,"
-                      f"afade=t=out:st={max(0.0, length - FADE_OUT):.3f}:d={FADE_OUT},adelay={round(start * 1000)}:all=1[a{i}]")
-        words_out += [{"word": w["word"], "start": round(start + w["start"] / speed, 3),
-                       "end": round(start + w["end"] / speed, 3)} for w in words]
+        chains.append(
+            f"[{i}]aresample=48000,atrim=0:{d:.3f}{tempo},afade=t=in:d=0.01,"
+            f"afade=t=out:st={max(0.0, length - FADE_OUT):.3f}:d={FADE_OUT},adelay={round(start * 1000)}:all=1[a{i}]"
+        )
+        words_out += [
+            {
+                "word": w["word"],
+                "start": round(start + w["start"] / speed, 3),
+                "end": round(start + w["end"] / speed, 3),
+            }
+            for w in words
+        ]
         placed_out.append({"line": i, "start": round(start, 3), "end": round(start + length, 3)})
         en_start = en_clips[i]["from"] / FPS
-        report.append(f"{i:2d}  starts {start - en_start:+.2f} s from the English  {length:4.1f} s"
-                      f"{f'  sped up {speed:.2f}x' if speed > 1 else ''}{'  (English take)' if i in keep else ''}")
-    graph = ";".join(chains) + ";" + "".join(f"[a{i}]" for i in range(len(chains))) + \
-        f"amix=inputs={len(chains)}:normalize=0:dropout_transition=0,apad=whole_dur={total:.3f}[out]"
+        report.append(
+            f"{i:2d}  starts {start - en_start:+.2f} s from the English  {length:4.1f} s"
+            f"{f'  sped up {speed:.2f}x' if speed > 1 else ''}{'  (English take)' if i in keep else ''}"
+        )
+    graph = (
+        ";".join(chains)
+        + ";"
+        + "".join(f"[a{i}]" for i in range(len(chains)))
+        + f"amix=inputs={len(chains)}:normalize=0:dropout_transition=0,apad=whole_dur={total:.3f}[out]"
+    )
     wav = out / "narration.wav"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-ac", "1",
-                    "-ar", "48000", "-t", f"{total:.3f}", str(wav)], check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-v",
+            "error",
+            "-y",
+            *inputs,
+            "-filter_complex",
+            graph,
+            "-map",
+            "[out]",
+            "-ac",
+            "1",
+            "-ar",
+            "48000",
+            "-t",
+            f"{total:.3f}",
+            str(wav),
+        ],
+        check=True,
+    )
     (out / "words.json").write_text(json.dumps(words_out, indent=1), encoding="utf-8")
     (out / "placed.json").write_text(json.dumps(placed_out, indent=1), encoding="utf-8")
     (out / "fit.txt").write_text("\n".join(report) + "\n", encoding="utf-8")

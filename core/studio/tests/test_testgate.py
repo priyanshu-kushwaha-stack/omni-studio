@@ -13,27 +13,33 @@ from studio import testgate as G
 
 # --- classify: which changes can skip the code suites --------------------------------------------------------------
 
+
 def test_video_folder_only_changes_take_the_fast_path():
     plan = G.classify(
-        ["channels/say-suppose/videos/2026-11-09_odds/script.md",
-         "channels/say-suppose/videos/2026-11-09_odds/room/g2.json",
-         "channels/see-underneath/videos/2026-11-10_x/claims.md"],
+        [
+            "channels/say-suppose/videos/2026-11-09_odds/script.md",
+            "channels/say-suppose/videos/2026-11-09_odds/room/g2.json",
+            "channels/see-underneath/videos/2026-11-10_x/claims.md",
+        ],
         referenced=set(),
     )
     assert plan.kind == "fast"
     assert plan.channels == {"say-suppose", "see-underneath"}
 
 
-@pytest.mark.parametrize("path", [
-    "core/studio/room/call.py",
-    "core/openmontage/skills/studio/studio-room.md",   # skills are tested (test_room_skill)
-    "channels/say-suppose/channel.yaml",               # channel config is read by tests and tools
-    "channels/say-suppose/room.yaml",
-    "channels/say-suppose/rules/story.md",
-    "channels/_template/videos/x/script.md",           # the template is copied by tests
-    "Makefile",
-    ".claude/standard.json",
-])
+@pytest.mark.parametrize(
+    "path",
+    [
+        "core/studio/room/call.py",
+        "core/openmontage/skills/studio/studio-room.md",  # skills are tested (test_room_skill)
+        "channels/say-suppose/channel.yaml",  # channel config is read by tests and tools
+        "channels/say-suppose/room.yaml",
+        "channels/say-suppose/rules/story.md",
+        "channels/_template/videos/x/script.md",  # the template is copied by tests
+        "Makefile",
+        ".claude/standard.json",
+    ],
+)
 def test_anything_outside_a_video_folder_needs_the_full_suite(path):
     plan = G.classify(["channels/say-suppose/videos/2026-11-09_odds/script.md", path], referenced=set())
     assert plan.kind == "full"
@@ -74,8 +80,13 @@ def test_the_real_repo_marks_the_videos_its_tests_read():
 
 # --- the pass cache ------------------------------------------------------------------------------------------------
 
+
 def _git(cwd: Path, *args: str) -> str:
-    return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True, text=True).stdout.strip()
+    # git_env: under a pre-push hook in a worktree git exports GIT_DIR, and an inherited GIT_DIR sends `init` and
+    # `config` here to the real repo (it set core.bare and user.email there on 2026-11-10).
+    return subprocess.run(
+        ["git", *args], cwd=cwd, check=True, capture_output=True, text=True, env=G.git_env()
+    ).stdout.strip()
 
 
 @pytest.fixture()
@@ -89,6 +100,46 @@ def repo(tmp_path):
     _git(root, "add", ".")
     _git(root, "commit", "-q", "-m", "one")
     return root
+
+
+def _outer_repo(tmp_path: Path, monkeypatch) -> Path:
+    """A repo standing in for the real one, exported as GIT_DIR the way git does for a pre-push hook in a worktree."""
+    outer = tmp_path / "outer"
+    outer.mkdir()
+    _git(outer, "init", "-q")
+    monkeypatch.setenv("GIT_DIR", str(outer / ".git"))
+    monkeypatch.setenv("GIT_WORK_TREE", str(outer))
+    monkeypatch.setenv("GIT_INDEX_FILE", str(outer / ".git" / "index"))
+    return outer
+
+
+def test_the_test_helper_never_writes_to_an_inherited_git_dir(tmp_path, monkeypatch):
+    outer = _outer_repo(tmp_path, monkeypatch)
+    before = (outer / ".git" / "config").read_text()
+    inner = tmp_path / "inner"
+    inner.mkdir()
+    _git(inner, "init", "-q", "-b", "main")
+    _git(inner, "config", "user.email", "t@example.com")
+    assert (outer / ".git" / "config").read_text() == before
+    assert "t@example.com" in (inner / ".git" / "config").read_text()
+
+
+def test_git_calls_use_the_given_repo_not_an_inherited_git_dir(repo, tmp_path, monkeypatch):
+    tree = G.head_tree(repo)
+    outer = _outer_repo(tmp_path, monkeypatch)
+    assert G.head_tree(repo) == tree
+    assert G.repo_root(repo) == repo.resolve()
+    G.mark_passed(repo, tree)
+    assert (repo / ".git" / G.CACHE_NAME / tree).is_file()
+    assert not (outer / ".git" / G.CACHE_NAME).exists()
+
+
+def test_suites_run_without_the_hooks_git_dir(tmp_path, monkeypatch):
+    _outer_repo(tmp_path, monkeypatch)
+    monkeypatch.setenv("GIT_CONFIG_PARAMETERS", "'credential.helper'=''")
+    env = G._env(tmp_path)
+    assert not {"GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE", "GIT_CONFIG_PARAMETERS"} & env.keys()
+    assert env["PYTHONPATH"].startswith(str(tmp_path))
 
 
 def test_a_recorded_pass_is_found_for_the_same_tree_only(repo):
@@ -118,6 +169,7 @@ def test_tracked_clean_ignores_untracked_files(repo):
 
 # --- full: parallel suites, cache only on a clean pass ------------------------------------------------------------
 
+
 def _suites(tmp_path, *codes):
     return [G.Suite(f"s{i}", str(tmp_path), f"echo out-{i}; exit {c}") for i, c in enumerate(codes)]
 
@@ -142,8 +194,21 @@ def test_full_on_a_dirty_tree_passes_but_records_nothing(repo, tmp_path):
     assert not G.has_passed(repo, G.head_tree(repo))
 
 
+def test_a_full_run_over_budget_warns(repo, tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(G, "FULL_BUDGET", 0)
+    assert G.run_full(repo, suites=_suites(tmp_path, 0), queue=None) == 0
+    assert "over the 0 s budget" in capsys.readouterr().err
+
+
+def test_a_full_run_within_budget_is_quiet(repo, tmp_path, capsys):
+    assert G.run_full(repo, suites=_suites(tmp_path, 0), queue=None) == 0
+    assert "budget" not in capsys.readouterr().err
+
+
+@pytest.mark.slow  # runs three 1 s suites to prove they overlap
 def test_full_runs_suites_at_the_same_time(repo, tmp_path):
     import time
+
     suites = [G.Suite(f"s{i}", str(tmp_path), "sleep 1") for i in range(3)]
     t0 = time.monotonic()
     assert G.run_full(repo, suites=suites, queue=None) == 0
@@ -151,6 +216,7 @@ def test_full_runs_suites_at_the_same_time(repo, tmp_path):
 
 
 # --- prepush: cache hit, fast path, full path ---------------------------------------------------------------------
+
 
 class Calls:
     def __init__(self, full_code=0, fast_code=0):
@@ -223,4 +289,24 @@ def test_changed_files_against_the_merge_base(repo):
 
 def test_the_repo_suites_match_the_old_make_test():
     names = [s.name for s in G.default_suites(G.repo_root())]
-    assert names == ["openmontage", "studio", "pou", "whatif"]
+    assert names == ["openmontage", "openmontage-qa", "openmontage-rest", "studio", "pou", "whatif"]
+    # the upstream split runs every folder the old single run did, each exactly once, and the deselect everywhere
+    split = [p for paths in G.OPENMONTAGE_SPLIT.values() for p in paths]
+    assert sorted(split) == sorted(G.OPENMONTAGE_TESTS) and len(split) == len(set(split))
+    for s in G.default_suites(G.repo_root())[:3]:
+        assert "-p studio.pytest_upstream" in s.command and G.DESELECT in s.command
+
+
+def test_the_studio_suite_runs_on_xdist_workers_that_keep_groups_together():
+    from importlib.metadata import version
+
+    studio = next(s for s in G.default_suites(G.repo_root()) if s.name == "studio")
+    assert f"-n {G.STUDIO_WORKERS} --dist loadgroup" in studio.command  # without loadgroup, xdist_group is ignored
+    lock = (G.repo_root() / "uv.lock").read_text(encoding="utf-8")
+    assert f'name = "pytest-xdist"\nversion = "{version("pytest-xdist")}"' in lock
+
+
+def test_without_xdist_the_studio_suite_still_runs_in_one_process(capsys):
+    assert G.studio_workers(have_xdist=False) == ""
+    assert "pytest-xdist is not installed" in capsys.readouterr().err
+    assert G.studio_workers(have_xdist=True) == f" -n {G.STUDIO_WORKERS} --dist loadgroup"

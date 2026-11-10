@@ -52,24 +52,31 @@ def test_ledger_quotes_flags_a_cited_row_with_no_quote():
     problems = lint.ledger_quotes(SCRIPT, LEDGER)
     assert problems == ["c02: cited in the script but its ledger row has no verbatim quote"]
     assert lint.ledger_quotes(SCRIPT, "| id | claim | source | status |\n|--|--|--|--|\n") == [
-        "claims.md has no verbatim quote column"]
+        "claims.md has no verbatim quote column"
+    ]
 
 
 def test_a_failing_channel_linter_is_a_problem(tmp_path):
     def runner(cmd, **kw):
         return subprocess.CompletedProcess(cmd, 1, stdout="[FAIL] item 5: greeting\n", stderr="")
 
-    problems = lint.run_linters([f"{{python}} {OK_LINTER} {{script}}"], script=tmp_path / "s.md", video_dir=tmp_path,
-                                runner=runner)
+    problems = lint.run_linters(
+        [f"{{python}} {OK_LINTER} {{script}}"], script=tmp_path / "s.md", video_dir=tmp_path, runner=runner
+    )
     assert len(problems) == 1 and "greeting" in problems[0]
 
 
 def test_lint_draft_puts_it_together(tmp_path):
     (tmp_path / "script.md").write_text(SCRIPT)
     (tmp_path / "claims.md").write_text(LEDGER)
-    report = lint.lint_draft(tmp_path / "script.md", kind="script",
-                             fmt={"wpm": 155, "word_budget": [10, 20], "cadence": {"marker": "> ASK:", "max_gap_s": 30}},
-                             linters=[], ledger=tmp_path / "claims.md", slop={"words": [], "phrases": [], "patterns": []})
+    report = lint.lint_draft(
+        tmp_path / "script.md",
+        kind="script",
+        fmt={"wpm": 155, "word_budget": [10, 20], "cadence": {"marker": "> ASK:", "max_gap_s": 30}},
+        linters=[],
+        ledger=tmp_path / "claims.md",
+        slop={"words": [], "phrases": [], "patterns": []},
+    )
     assert not report.ok
     assert any("word budget" in p for p in report.problems)
     assert any("c02" in p for p in report.problems)
@@ -101,8 +108,9 @@ def test_generic_explainer_words_are_not_slop():
 def test_a_missing_ledger_is_a_problem(tmp_path):
     (tmp_path / "script.md").write_text(SCRIPT)
     empty = {"words": [], "phrases": [], "patterns": []}
-    report = lint.lint_draft(tmp_path / "script.md", kind="script", fmt={}, linters=[],
-                             ledger=tmp_path / "claims.md", slop=empty)
+    report = lint.lint_draft(
+        tmp_path / "script.md", kind="script", fmt={}, linters=[], ledger=tmp_path / "claims.md", slop=empty
+    )
     assert "claims.md is missing, so cited claims cannot be checked" in report.problems
     assert lint.lint_draft(tmp_path / "script.md", kind="script", fmt={}, linters=[], ledger=None, slop=empty).ok
 
@@ -143,8 +151,9 @@ def test_a_timed_out_linter_is_a_problem(tmp_path):
 
 
 def test_a_bad_template_is_a_problem(tmp_path):
-    problems = lint.run_linters([f"{{python}} {OK_LINTER} {{x}}"], script=tmp_path / "s.md", video_dir=tmp_path,
-                                runner=lambda cmd, **kw: None)
+    problems = lint.run_linters(
+        [f"{{python}} {OK_LINTER} {{x}}"], script=tmp_path / "s.md", video_dir=tmp_path, runner=lambda cmd, **kw: None
+    )
     assert len(problems) == 1 and "{x}" in problems[0]
 
 
@@ -152,8 +161,9 @@ def test_a_linter_is_labelled_by_its_file(tmp_path):
     def runner(cmd, **kw):
         return subprocess.CompletedProcess(cmd, 1, stdout="bad\n", stderr="")
 
-    problems = lint.run_linters([f"{{python}} {OK_LINTER} {{script}}"], script=tmp_path / "s.md", video_dir=tmp_path,
-                                runner=runner)
+    problems = lint.run_linters(
+        [f"{{python}} {OK_LINTER} {{script}}"], script=tmp_path / "s.md", video_dir=tmp_path, runner=runner
+    )
     assert problems[0].startswith("lint.py exited 1")
 
 
@@ -161,10 +171,22 @@ def _never(cmd, **kw):
     raise AssertionError("a refused linter must not run")
 
 
-@pytest.mark.parametrize("template", [
-    "rm -rf /tmp/x", "{script}", "/bin/sh -c id", "{python} -m foo.bar {script}", "{python} -c 'print(1)'",
-    "{python} x.py {script}", "{python} /etc/passwd", "{python} ../../outside.py {script}",
-    "{python} {root}/channels/other/evil.py", "{python}", "{python}  "])
+@pytest.mark.parametrize(
+    "template",
+    [
+        "rm -rf /tmp/x",
+        "{script}",
+        "/bin/sh -c id",
+        "{python} -m foo.bar {script}",
+        "{python} -c 'print(1)'",
+        "{python} x.py {script}",
+        "{python} /etc/passwd",
+        "{python} ../../outside.py {script}",
+        "{python} {root}/channels/other/evil.py",
+        "{python}",
+        "{python}  ",
+    ],
+)
 def test_a_linter_that_is_not_python_on_a_file_under_core_or_the_channel_is_refused(tmp_path, template):
     problems = lint.run_linters([template], script=tmp_path / "s.md", video_dir=tmp_path, runner=_never)
     assert len(problems) == 1 and template in problems[0]
@@ -175,12 +197,17 @@ def test_a_linter_file_in_the_channel_folder_is_allowed(tmp_path):
     chan.mkdir()
     (chan / "check.py").write_text("")
     seen = []
-    problems = lint.run_linters([f"{{python}} {chan / 'check.py'} {{script}}"], script=tmp_path / "s.md",
-                                video_dir=tmp_path, channel_dir=chan,
-                                runner=lambda cmd, **kw: seen.append(cmd) or subprocess.CompletedProcess(cmd, 0, "", ""))
+    problems = lint.run_linters(
+        [f"{{python}} {chan / 'check.py'} {{script}}"],
+        script=tmp_path / "s.md",
+        video_dir=tmp_path,
+        channel_dir=chan,
+        runner=lambda cmd, **kw: seen.append(cmd) or subprocess.CompletedProcess(cmd, 0, "", ""),
+    )
     assert problems == [] and len(seen) == 1
-    assert lint.run_linters([f"{{python}} {chan / 'check.py'}"], script=tmp_path / "s.md", video_dir=tmp_path,
-                            runner=_never)  # the same file is refused without the channel folder
+    assert lint.run_linters(
+        [f"{{python}} {chan / 'check.py'}"], script=tmp_path / "s.md", video_dir=tmp_path, runner=_never
+    )  # the same file is refused without the channel folder
 
 
 def test_a_symlink_out_of_core_is_refused(tmp_path):
@@ -189,16 +216,24 @@ def test_a_symlink_out_of_core_is_refused(tmp_path):
     link = tmp_path / "chan" / "ok.py"
     link.parent.mkdir()
     link.symlink_to(outside)
-    problems = lint.run_linters([f"{{python}} {link}"], script=tmp_path / "s.md", video_dir=tmp_path,
-                                channel_dir=link.parent, runner=_never)
+    problems = lint.run_linters(
+        [f"{{python}} {link}"], script=tmp_path / "s.md", video_dir=tmp_path, channel_dir=link.parent, runner=_never
+    )
     assert len(problems) == 1
 
 
 def test_the_professor_of_us_linter_is_allowed():
     tpl = "{python} core/engines/pou/scripts/script_lint.py {script} --target-minutes 5"
     seen = []
-    assert lint.run_linters([tpl], script=lint.ROOT / "s.md", video_dir=lint.ROOT,
-                            runner=lambda cmd, **kw: seen.append(cmd) or subprocess.CompletedProcess(cmd, 0, "", "")) == []
+    assert (
+        lint.run_linters(
+            [tpl],
+            script=lint.ROOT / "s.md",
+            video_dir=lint.ROOT,
+            runner=lambda cmd, **kw: seen.append(cmd) or subprocess.CompletedProcess(cmd, 0, "", ""),
+        )
+        == []
+    )
     assert len(seen) == 1
 
 
@@ -208,13 +243,17 @@ def test_a_cited_id_with_no_row_is_a_problem():
 
 
 def test_a_dropped_row_that_is_cited_is_a_problem():
-    ledger = LEDGER.replace("| sourced |\n| c02", "| sourced |\n| c02").replace("|  | sourced |", '| "two sleeps" | dropped |')
+    ledger = LEDGER.replace("| sourced |\n| c02", "| sourced |\n| c02").replace(
+        "|  | sourced |", '| "two sleeps" | dropped |'
+    )
     assert "c02: cited in the script but its ledger row is marked dropped" in lint.ledger_quotes(SCRIPT, ledger)
 
 
 def test_quotes_are_read_from_every_table():
-    ledger = LEDGER + "\n## Second batch\n\n| id | claim | source URL | verbatim quote | status |\n|---|---|---|---|---|\n" \
-                      "| c07 | x | https://c.example |  | sourced |\n"
+    ledger = (
+        LEDGER + "\n## Second batch\n\n| id | claim | source URL | verbatim quote | status |\n|---|---|---|---|---|\n"
+        "| c07 | x | https://c.example |  | sourced |\n"
+    )
     script = SCRIPT + "PROF: Later (c07).\n"
     problems = lint.ledger_quotes(script, ledger)
     assert "c07: cited in the script but its ledger row has no verbatim quote" in problems

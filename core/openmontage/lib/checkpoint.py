@@ -14,7 +14,8 @@ from typing import Any, Optional
 
 import jsonschema
 
-from schemas.artifacts import ARTIFACT_NAMES, validate_artifact
+from schemas.artifacts import ARTIFACT_NAMES, load_schema
+from lib import studio_schema  # studio patch: the schema check runs once per schema, not per call
 
 # All known stages across all pipelines (used only for artifact name lookup).
 ALL_KNOWN_STAGES = frozenset([
@@ -150,7 +151,7 @@ def _validate_artifacts_for_stage(
                 f"Artifact {artifact_name!r} must be a JSON object matching its schema"
             )
         try:
-            validate_artifact(artifact_name, artifact_data)
+            studio_schema.validate(artifact_data, load_schema(artifact_name))  # = validate_artifact
         except Exception as exc:
             raise CheckpointValidationError(
                 f"Artifact {artifact_name!r} failed schema validation: {exc}"
@@ -186,7 +187,7 @@ def validate_checkpoint(checkpoint: dict[str, Any]) -> None:
     _validate_artifacts_for_stage(stage, status, artifacts)
 
     try:
-        jsonschema.validate(instance=checkpoint, schema=_load_checkpoint_schema())
+        studio_schema.validate(checkpoint, _load_checkpoint_schema())
     except jsonschema.ValidationError as exc:
         raise CheckpointValidationError(f"Checkpoint failed schema validation: {exc.message}") from exc
 

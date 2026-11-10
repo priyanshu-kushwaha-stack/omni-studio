@@ -53,20 +53,48 @@ class CallContext:
     script_cap: int
 
 
-DENY_HOME = (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".netrc", ".local/state/omni-studio",
-             ".claude/projects", "Exploration", "Sprinklr")
+DENY_HOME = (
+    ".config/omni-studio",
+    ".ssh",
+    ".aws",
+    ".gnupg",
+    ".config/gh",
+    ".netrc",
+    ".local/state/omni-studio",
+    ".claude/projects",
+    "Exploration",
+    "Sprinklr",
+)
 
 
 # Other conversations and agent state of the two CLIs. Auth files (~/.cursor/cli-config.json,
 # ~/.claude/settings.json) and the installs stay readable so the CLIs can sign in.
-AGENT_STATE_DIRS = (".cursor/chats", ".cursor/agents", ".cursor/ai-tracking", ".claude/file-history",
-                    ".claude/sessions", ".claude/session-env", ".claude/plans", ".claude/paste-cache",
-                    ".claude/shell-snapshots", ".claude/jobs", ".claude/backups")
+AGENT_STATE_DIRS = (
+    ".cursor/chats",
+    ".cursor/agents",
+    ".cursor/ai-tracking",
+    ".claude/file-history",
+    ".claude/sessions",
+    ".claude/session-env",
+    ".claude/plans",
+    ".claude/paste-cache",
+    ".claude/shell-snapshots",
+    ".claude/jobs",
+    ".claude/backups",
+)
 AGENT_STATE_FILES = (".claude/history.jsonl",)
 
 
-SECRET_HOME = (".config/omni-studio", ".ssh", ".aws", ".gnupg", ".config/gh", ".netrc", ".local/state/omni-studio",
-               ".claude/projects")
+SECRET_HOME = (
+    ".config/omni-studio",
+    ".ssh",
+    ".aws",
+    ".gnupg",
+    ".config/gh",
+    ".netrc",
+    ".local/state/omni-studio",
+    ".claude/projects",
+)
 
 
 def _real_home() -> Path:
@@ -85,8 +113,12 @@ def deny_paths() -> list[Path]:
     paths = [(home / rel).resolve() for rel in (*DENY_HOME, *AGENT_STATE_DIRS, *AGENT_STATE_FILES)]
     paths.append(ROOT.resolve())
     try:
-        common = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--path-format=absolute", "--git-common-dir"],
-                                capture_output=True, text=True, timeout=10).stdout.strip()
+        common = subprocess.run(
+            ["git", "-C", str(ROOT), "rev-parse", "--path-format=absolute", "--git-common-dir"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        ).stdout.strip()
         if common:
             paths.append(Path(common).parent.resolve())  # the main checkout when ROOT is a worktree
     except (OSError, subprocess.SubprocessError):
@@ -124,8 +156,12 @@ def _numbered(text: str) -> str:
 
 
 def seat_prompt(brief: str, role: str, inputs: dict[str, str]) -> str:
-    parts = [f"You are the {role} seat in a review room for a YouTube video. You work alone and never see the "
-             "other reviewers' notes or who wrote the draft.", brief.strip(), VERDICT_SPEC]
+    parts = [
+        f"You are the {role} seat in a review room for a YouTube video. You work alone and never see the "
+        "other reviewers' notes or who wrote the draft.",
+        brief.strip(),
+        VERDICT_SPEC,
+    ]
     for name, text in inputs.items():
         parts.append(f"=== {name} ===\n{_numbered(text) if name == 'draft' else text}")
     return "\n\n".join(parts)
@@ -133,9 +169,20 @@ def seat_prompt(brief: str, role: str, inputs: dict[str, str]) -> str:
 
 def build_command(model: str, prompt: str, registry: Optional[dict] = None) -> list[str]:
     if cli_of(model, registry) == "claude":
-        return ["claude", "-p", "--tools", "", "--strict-mcp-config", "--setting-sources",
-                "project", "--output-format", "json", "--model", model,
-                prompt]
+        return [
+            "claude",
+            "-p",
+            "--tools",
+            "",
+            "--strict-mcp-config",
+            "--setting-sources",
+            "project",
+            "--output-format",
+            "json",
+            "--model",
+            model,
+            prompt,
+        ]
     return ["cursor-agent", "-p", "--mode", "ask", "--trust", "--output-format", "json", "--model", model, prompt]
 
 
@@ -153,8 +200,7 @@ def cli_version(cli: str, runner=None) -> str:
     runner = runner or subprocess.run
     binary = "claude" if cli == "claude" else "cursor-agent"
     try:
-        return runner([binary, "--version"], capture_output=True, text=True, timeout=30,
-                      env=clean_env()).stdout.strip()
+        return runner([binary, "--version"], capture_output=True, text=True, timeout=30, env=clean_env()).stdout.strip()
     except (OSError, subprocess.SubprocessError):
         return ""
 
@@ -165,16 +211,33 @@ def invoke(cmd: list[str], *, runner=None, timeout: float = 600) -> tuple[int, s
         t0 = time.monotonic()
         try:
             profile = sandbox_profile(deny_paths(), allow=[own_chat_dir(Path(bundle))])
-            proc = runner([SANDBOX_EXEC, "-p", profile, *cmd], cwd=bundle, env=clean_env(),
-                          capture_output=True, text=True, timeout=timeout)
+            proc = runner(
+                [SANDBOX_EXEC, "-p", profile, *cmd],
+                cwd=bundle,
+                env=clean_env(),
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+            )
         except subprocess.TimeoutExpired:
             return 124, "", time.monotonic() - t0
         return proc.returncode, proc.stdout, time.monotonic() - t0
 
 
-def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: CallContext, out: Path,
-             raw_dir: Optional[Path] = None, runner=None, timeout: Optional[float] = None,
-             registry: Optional[dict] = None, draft_sha256: str = "", lint_overridden: bool = False) -> Verdict:
+def run_seat(
+    seat: SeatConfig,
+    *,
+    inputs: dict[str, str],
+    ledger: Ledger,
+    ctx: CallContext,
+    out: Path,
+    raw_dir: Optional[Path] = None,
+    runner=None,
+    timeout: Optional[float] = None,
+    registry: Optional[dict] = None,
+    draft_sha256: str = "",
+    lint_overridden: bool = False,
+) -> Verdict:
     family = family_of(seat.model, registry)
     timeout = timeout_of(seat.model, registry) if timeout is None else timeout
     own_sha = sha256_text(inputs["draft"])
@@ -188,18 +251,27 @@ def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: C
     error, text, call_id = "", "", ""
     record: dict = {}
     for attempt in range(2):
-        call_id = ledger.reserve(channel=ctx.channel, video=ctx.video, gate=ctx.gate, round=ctx.round,
-                                 seat=seat.name, model=seat.model, family=family,
-                                 prompt_sha256=sha256_text(prompt), daily_cap=ctx.daily_cap,
-                                 script_cap=ctx.script_cap)
+        call_id = ledger.reserve(
+            channel=ctx.channel,
+            video=ctx.video,
+            gate=ctx.gate,
+            round=ctx.round,
+            seat=seat.name,
+            model=seat.model,
+            family=family,
+            prompt_sha256=sha256_text(prompt),
+            daily_cap=ctx.daily_cap,
+            script_cap=ctx.script_cap,
+        )
         code, duration = -1, 0.0
         try:
             code, stdout, duration = invoke(cmd, runner=runner, timeout=timeout)
             text = cli_text(stdout)
             if code == 0:
                 try:
-                    verdict = parse_verdict(text, call_id=call_id, seat=seat.name, role=seat.role,
-                                            model=seat.model, family=family)
+                    verdict = parse_verdict(
+                        text, call_id=call_id, seat=seat.name, role=seat.role, model=seat.model, family=family
+                    )
                 except BadVerdict as exc:
                     error = str(exc)
             else:
@@ -211,14 +283,21 @@ def run_seat(seat: SeatConfig, *, inputs: dict[str, str], ledger: Ledger, ctx: C
         digest = ""
         if final:
             if verdict is None:
-                verdict = failed_verdict(call_id=call_id, seat=seat.name, role=seat.role, model=seat.model,
-                                         family=family, error=error)
+                verdict = failed_verdict(
+                    call_id=call_id, seat=seat.name, role=seat.role, model=seat.model, family=family, error=error
+                )
             record = {**verdict.to_dict(), "output_sha256": sha256_text(text), "draft_sha256": draft_sha256}
             if lint_overridden:
                 record["lint_overridden"] = True
             digest = verdict_digest(record)
-        ledger.finish(call_id, status=verdict.status if verdict else "failed", output_sha256=sha256_text(text),
-                      duration_s=duration, cli_version=version, verdict_sha256=digest)
+        ledger.finish(
+            call_id,
+            status=verdict.status if verdict else "failed",
+            output_sha256=sha256_text(text),
+            duration_s=duration,
+            cli_version=version,
+            verdict_sha256=digest,
+        )
         if raw_dir:
             raw_dir.mkdir(parents=True, exist_ok=True)
             (raw_dir / f"{call_id}.txt").write_text(text, encoding="utf-8")

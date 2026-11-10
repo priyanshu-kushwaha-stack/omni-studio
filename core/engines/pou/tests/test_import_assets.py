@@ -21,8 +21,18 @@ def setup(tmp_path):
 
 def test_copies_into_kind_folder_and_logs(tmp_path):
     video, om, src = setup(tmp_path)
-    dest = import_asset(src, video, om, kind="video", source="higgsfield", model="kling3_0",
-                        license="generated", credits=10, usd=0.55, note="hero 1")
+    dest = import_asset(
+        src,
+        video,
+        om,
+        kind="video",
+        source="higgsfield",
+        model="kling3_0",
+        license="generated",
+        credits=10,
+        usd=0.55,
+        note="hero 1",
+    )
     assert dest == om / "assets" / "video" / "clip.mp4"
     assert dest.read_bytes() == b"\x00\x01"
     rows = (video / "assets" / "provenance.csv").read_text().splitlines()

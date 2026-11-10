@@ -46,7 +46,15 @@ def _family_problem(what: str, record: dict[str, Any]) -> str:
 def verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Ledger) -> list[str]:
     try:
         return _verify(Path(video_dir), report, Path(artifact), ledger)
-    except (KeyError, TypeError, AttributeError, ValueError, OSError, sqlite3.Error, RecursionError) as exc:  # fail closed on anything malformed
+    except (
+        KeyError,
+        TypeError,
+        AttributeError,
+        ValueError,
+        OSError,
+        sqlite3.Error,
+        RecursionError,
+    ) as exc:  # fail closed on anything malformed
         return [f"the room evidence is malformed ({type(exc).__name__}: {exc})"]
 
 
@@ -62,8 +70,7 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         problems.append(f"{artifact.name} is missing or unreadable")
     else:
         if have != want:
-            problems.append(f"{artifact.name} changed since the room reviewed it "
-                            f"(room: {want[:12]}, now: {have[:12]})")
+            problems.append(f"{artifact.name} changed since the room reviewed it (room: {want[:12]}, now: {have[:12]})")
     try:
         load_draft(video_dir, want)
     except (OSError, ValueError) as exc:
@@ -81,8 +88,11 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         meta = read_meta(video_dir, str(report.get("gate")), n)
     except (OSError, ValueError):
         meta = None
-    if not isinstance(meta, dict) or meta.get("draft_sha256") != rnd.get("draft_sha256") \
-            or meta.get("lint") != rnd.get("lint"):
+    if (
+        not isinstance(meta, dict)
+        or meta.get("draft_sha256") != rnd.get("draft_sha256")
+        or meta.get("lint") != rnd.get("lint")
+    ):
         problems.append(f"round {n}: the report does not match meta.json")
     if isinstance(meta, dict) and "round" in meta and meta["round"] != n:
         problems.append(f"round {n}: meta.json says round {meta['round']}")
@@ -111,8 +121,9 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
             loaded.append((v, None))
             continue
         blockers = raw.get("blockers")
-        if any(v.get(k) != raw.get(k) for k in ("seat", "role", "model", "family", "status")) \
-                or v.get("blockers") != (len(blockers) if isinstance(blockers, list) else None):
+        if any(v.get(k) != raw.get(k) for k in ("seat", "role", "model", "family", "status")) or v.get("blockers") != (
+            len(blockers) if isinstance(blockers, list) else None
+        ):
             problems.append(f"verdict {seat}: the report does not match its verdict file")
         loaded.append((v, raw))
     for _, raw in loaded:
@@ -159,33 +170,49 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
             if row.output_sha256 != raw.get("output_sha256") or (raw.get("status") == "ok" and row.status != "ok"):
                 problems.append(f"verdict {seat}: does not match the call ledger")
             if (row.seat, row.model, row.family, row.video, row.gate, row.round) != (
-                    raw.get("seat"), raw.get("model"), raw.get("family"), video, gate, n):
+                raw.get("seat"),
+                raw.get("model"),
+                raw.get("family"),
+                video,
+                gate,
+                n,
+            ):
                 problems.append(f"verdict {seat}: call {cid[:12]} {MISMATCH}")
             if report_channel and row.channel != report_channel:
-                problems.append(f"verdict {seat}: call {cid[:12]} was reserved under channel {row.channel!r}, "
-                                f"not {report_channel!r}")
+                problems.append(
+                    f"verdict {seat}: call {cid[:12]} was reserved under channel {row.channel!r}, "
+                    f"not {report_channel!r}"
+                )
             if not row.verdict_sha256 or row.verdict_sha256 != verdict_digest(raw):
                 problems.append(f"verdict {seat}: file edited after the call")
         if raw.get("role") == "fact" and raw.get("status") == "ok" and raw.get("blockers"):
             first = raw["blockers"][0]
             quote = first.get("quote") if isinstance(first, dict) else None
-            problems.append(f"open fact blocker: \"{quote if isinstance(quote, str) else first!r}\"")
+            problems.append(f'open fact blocker: "{quote if isinstance(quote, str) else first!r}"')
     for cid in (judge or {}).get("call_ids") or []:
         row = ledger.get(str(cid))
         if row is None:
             problems.append(f"judge call {str(cid)[:12]} is not in the call ledger")
         elif (row.seat, row.video, row.gate, row.round, row.family) != (
-                "judge", video, gate, n, (judge or {}).get("family")):
+            "judge",
+            video,
+            gate,
+            n,
+            (judge or {}).get("family"),
+        ):
             problems.append(f"judge call {str(cid)[:12]} {MISMATCH}")
         elif row.status != "ok":
             problems.append(f"judge call {str(cid)[:12]} did not finish ok (status {row.status})")
         if row is not None and report_channel and row.channel != report_channel:
-            problems.append(f"judge call {str(cid)[:12]} was reserved under channel {row.channel!r}, "
-                            f"not {report_channel!r}")
+            problems.append(
+                f"judge call {str(cid)[:12]} was reserved under channel {row.channel!r}, not {report_channel!r}"
+            )
     cap = report["cap"]
     channel = report.get("channel")
-    for calls in (report["calls"], ledger.count(channel=channel if isinstance(channel, str) and channel else None,
-                                                video=video, gate=gate)):
+    for calls in (
+        report["calls"],
+        ledger.count(channel=channel if isinstance(channel, str) and channel else None, video=video, gate=gate),
+    ):
         if calls > cap:
             problems.append(f"{calls} calls, over the cap of {cap}")
             break

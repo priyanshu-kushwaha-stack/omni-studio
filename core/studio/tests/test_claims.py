@@ -24,7 +24,7 @@ def _video(tmp_path, rows, script=SCRIPT):
     return folder
 
 
-GOOD = "| c01 | A sixth of the body. | https://pmc.ncbi.nlm.nih.gov/articles/PMC6417348/ | \"one-sixth\" | sourced | |"
+GOOD = '| c01 | A sixth of the body. | https://pmc.ncbi.nlm.nih.gov/articles/PMC6417348/ | "one-sixth" | sourced | |'
 
 
 def test_the_real_tails_ledger_passes():
@@ -89,9 +89,16 @@ def test_tails_ledger_with_one_source_removed_fails(tmp_path):
     assert not report.ok and any("c04: claim has no source" in p for p in report.problems)
 
 
-@pytest.mark.parametrize("line", ["YOU: Back in twenty twenty-four they found it.", "OOG: Three million years!",
-                                  "PROF: About half of them.", "GRANDMA: Nineteen percent, dear.",
-                                  "PROF: Dozens of cases."])
+@pytest.mark.parametrize(
+    "line",
+    [
+        "YOU: Back in twenty twenty-four they found it.",
+        "OOG: Three million years!",
+        "PROF: About half of them.",
+        "GRANDMA: Nineteen percent, dear.",
+        "PROF: Dozens of cases.",
+    ],
+)
 def test_spoken_number_words_with_no_claim_id_fail(tmp_path, line):
     report = claims.check(_video(tmp_path, [GOOD], SCRIPT + line + "\n"))
     assert any("spoken number with no claim id" in p for p in report.problems), line

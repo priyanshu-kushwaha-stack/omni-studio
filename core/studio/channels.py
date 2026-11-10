@@ -214,9 +214,7 @@ def _check_cross_fields(slug: str, channel_dir: Path, config: ChannelConfig) -> 
 def _channel_dir(slug: str) -> Path:
     """channels/<slug>, refused unless the slug is plain and the folder stays in channels/."""
     if not isinstance(slug, str) or not SLUG_RE.fullmatch(slug):
-        raise ChannelError(
-            f"Bad channel slug {slug!r}: use lowercase words and hyphens, no numbers"
-        )
+        raise ChannelError(f"Bad channel slug {slug!r}: use lowercase words and hyphens, no numbers")
     channel_dir = channels_dir() / slug
     if not channel_dir.resolve().is_relative_to(channels_dir().resolve()):
         raise ChannelError(f"Channel {slug!r} resolves outside {channels_dir()}")
@@ -229,9 +227,7 @@ def video_dir(channel: Channel, video_id: str) -> Path:
     Paths are resolved, so neither ``..`` nor a symlink can reach another channel.
     """
     if not isinstance(video_id, str) or not VIDEO_ID_RE.fullmatch(video_id):
-        raise ChannelError(
-            f"Bad video id {video_id!r}: expected <YYYY-MM-DD>_<slug>, as omni new-video makes"
-        )
+        raise ChannelError(f"Bad video id {video_id!r}: expected <YYYY-MM-DD>_<slug>, as omni new-video makes")
     videos = channel.videos_dir.resolve()
     if not videos.is_relative_to(channel.dir.resolve()):
         raise ChannelError(f"{channel.videos_dir} resolves outside channel {channel.slug!r}")
@@ -269,9 +265,7 @@ def create_channel(slug: str) -> Channel:
     from styles.playbook_loader import list_playbooks
 
     if not SLUG_RE.fullmatch(slug):
-        raise ChannelError(
-            f"Bad channel slug {slug!r}: use lowercase words and hyphens, no numbers"
-        )
+        raise ChannelError(f"Bad channel slug {slug!r}: use lowercase words and hyphens, no numbers")
     target = channels_dir() / slug
     if target.exists():
         raise ChannelError(f"Channel {slug!r} already exists at {target}")
@@ -287,9 +281,7 @@ def create_channel(slug: str) -> Channel:
     try:
         for path in target.rglob("*"):
             if path.suffix in {".yaml", ".md"}:
-                path.write_text(
-                    path.read_text(encoding="utf-8").replace("__SLUG__", slug), encoding="utf-8"
-                )
+                path.write_text(path.read_text(encoding="utf-8").replace("__SLUG__", slug), encoding="utf-8")
         link.parent.mkdir(parents=True, exist_ok=True)
         link.symlink_to(playbook_link_target(slug))
         return load_channel(slug)
@@ -368,8 +360,7 @@ def new_video(channel: Channel, title: str, format_name: str, on: Optional[date]
     pipeline = channel.config.formats.get(format_name)
     if pipeline is None:
         raise ChannelError(
-            f"Channel {channel.slug!r} has no format {format_name!r}. "
-            f"Its formats: {sorted(channel.config.formats)}"
+            f"Channel {channel.slug!r} has no format {format_name!r}. Its formats: {sorted(channel.config.formats)}"
         )
     video_id = f"{(on or date.today()).isoformat()}_{_slugify(title)}"
     if video_dir(channel, video_id).exists():
@@ -424,8 +415,7 @@ def approve_stage(channel: Channel, video_id: str, stage: str, note: Optional[st
         # omni upload re-hashes against it. The stage proof below covers this record too.
         media = checks.media_proof(channel, video_id, stage, report, at)
         # The only proof lib/checkpoint.py accepts for a gated stage of a channel project.
-        proof = studio_approval.sign(video_id, stage, checkpoint["pipeline_type"], checkpoint["artifacts"], at,
-                                     media)
+        proof = studio_approval.sign(video_id, stage, checkpoint["pipeline_type"], checkpoint["artifacts"], at, media)
     except studio_approval.ApprovalRefused as exc:
         raise ChannelError(str(exc)) from exc
     approval: dict[str, Any] = {
@@ -473,8 +463,7 @@ def record_issue(
     pipeline = channel.config.formats.get(format_name)
     if pipeline is None:
         raise ChannelError(
-            f"Channel {channel.slug!r} has no format {format_name!r}. "
-            f"Its formats: {sorted(channel.config.formats)}"
+            f"Channel {channel.slug!r} has no format {format_name!r}. Its formats: {sorted(channel.config.formats)}"
         )
     stages = get_stage_order(load_pipeline_readonly(pipeline))
     if stage not in stages:

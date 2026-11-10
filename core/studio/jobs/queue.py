@@ -93,8 +93,10 @@ def describe(name: str, info: Optional[dict[str, Any]]) -> str:
             alive = " (that process has exited; its command still holds the lock: `lsof` the lock file)"
         except PermissionError:
             pass
-    return (f"{name} queue is held by pid {pid} (step {info.get('step') or '?'}"
-            f"{', ' + what if what else ''}) since {info.get('since') or '?'}{alive}")
+    return (
+        f"{name} queue is held by pid {pid} (step {info.get('step') or '?'}"
+        f"{', ' + what if what else ''}) since {info.get('since') or '?'}{alive}"
+    )
 
 
 class hold:
@@ -104,12 +106,21 @@ class hold:
     `waited_s` how long it waited.
     """
 
-    def __init__(self, name: str, *, step: str = "", channel: str = "", video: str = "", wait: bool = True,
-                 timeout: Optional[float] = None, poll: float = 2.0, on_wait=None):
+    def __init__(
+        self,
+        name: str,
+        *,
+        step: str = "",
+        channel: str = "",
+        video: str = "",
+        wait: bool = True,
+        timeout: Optional[float] = None,
+        poll: float = 2.0,
+        on_wait=None,
+    ):
         self.path = lock_path(name)
         self.name, self.wait, self.timeout, self.poll, self.on_wait = name, wait, timeout, poll, on_wait
-        self.info = {"pid": os.getpid(), "step": step, "channel": channel, "video": video,
-                     "machine": platform.node()}
+        self.info = {"pid": os.getpid(), "step": step, "channel": channel, "video": video, "machine": platform.node()}
         self.fd: Optional[int] = None
         self.waited_s = 0.0
 

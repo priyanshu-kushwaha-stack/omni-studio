@@ -27,7 +27,7 @@ def _ramp(x: np.ndarray, s: float = 0.02) -> np.ndarray:
 
 def test_isolated_pop_in_silence_is_a_burst():
     x = np.zeros(SR, dtype=np.float32)
-    x[int(0.5 * SR):int(0.52 * SR)] = _tone(0.02, db=-12, hz=2000)
+    x[int(0.5 * SR) : int(0.52 * SR)] = _tone(0.02, db=-12, hz=2000)
     found = audio_check.bursts(x)
     assert len(found) == 1 and abs(found[0]["t"] - 0.5) < 0.01
 
@@ -46,10 +46,13 @@ def test_hard_cut_mid_wave_is_a_step():
 
 def test_burst_inside_a_word_only_warns(tmp_path):
     x = np.zeros(SR, dtype=np.float32)
-    x[int(0.5 * SR):int(0.52 * SR)] = _tone(0.02, db=-12, hz=2000)
+    x[int(0.5 * SR) : int(0.52 * SR)] = _tone(0.02, db=-12, hz=2000)
     wav = tmp_path / "a.wav"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-", str(wav)],
-                   input=x.tobytes(), check=True)
+    subprocess.run(
+        ["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-", str(wav)],
+        input=x.tobytes(),
+        check=True,
+    )
     gap = tmp_path / "gap.json"
     gap.write_text(json.dumps([{"word": "a", "start": 0.1, "end": 0.2}]))
     word = tmp_path / "word.json"

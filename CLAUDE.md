@@ -30,8 +30,9 @@ Do not move upstream folders. `video_compose` looks for `remotion-composer/` nex
 
 | Command | What it does |
 |---|---|
-| `make test` | All four suites (upstream, `core/studio/tests`, the Professor of Us and what-if engines) in parallel, one run at a time per machine (`tests` queue). A pass on a clean tree is cached by tree hash, shared by worktrees |
+| `make test` | All four suites (upstream as three processes by folder, `core/studio/tests` on four xdist workers, the Professor of Us and what-if engines) in parallel, one run at a time per machine (`tests` queue). A pass on a clean tree is cached by tree hash, shared by worktrees |
 | `make prepush` | What the pre-push hook runs: skips a tree that already passed, runs only `omni check` when a branch changes nothing but `channels/<slug>/videos/<id>/` folders the tests don't read, else `make test`. `python -m studio.testgate plan` says which; `OMNI_TESTGATE_FULL=1` forces the suites |
+| `make lint` / `make format` | Ruff (lint, format check) and the size budgets (`studio.sizes`) on `core/studio` and `core/engines`. Every commit runs `make precommit` (format, then lint) and is blocked on a failure |
 | `make board CHANNEL=<slug>` | That channel's Backlot board, on a port from 4761. Port 4750 is the owner's other board |
 | `make new-channel SLUG=<slug>` | Same as `omni new-channel` |
 | `make links` / `omni link` | Re-create every channel's git-ignored playbook link. Run once after a fresh clone |
@@ -155,6 +156,13 @@ Video craft rules, from the owner's notes on Professor of Us:
 - On-screen text stays UI-safe, off the drawing, off faces, and never overlaps.
 - Shorts: one quiet pencil sound per 5 s, no page turns, a 2.4 s fade-out tail, and code
   puppets rather than AI clips or wobble.
+
+## Code health
+
+Commits are gated on ruff (pyflakes, bugbear, complexity 12) and size budgets: a module over 500 lines or a function
+over 60 fails unless it is recorded in `core/studio/config/size_baseline.yaml`, whose records may only shrink. A test
+over 2 s fails unless marked `@pytest.mark.slow` (`core/studio/pytest_speed.py`). Run `/simplify` before opening a code
+PR. Film sessions do not change studio or engine code: they record the need with `omni fix` and carry on.
 
 ## Changing upstream files
 

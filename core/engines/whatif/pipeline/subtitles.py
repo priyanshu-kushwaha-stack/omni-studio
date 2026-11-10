@@ -52,7 +52,7 @@ def chunks(sentence: str) -> list[str]:
                 cur = f"{cur} {p}".strip()
         return out + [cur]
     lines = textwrap.wrap(sentence, MAX_CHARS)
-    return [" ".join(lines[i:i + MAX_LINES]) for i in range(0, len(lines), MAX_LINES)]
+    return [" ".join(lines[i : i + MAX_LINES]) for i in range(0, len(lines), MAX_LINES)]
 
 
 def cues_for_line(text: str, start: float, end: float, word_times: list[tuple[float, float]] | None = None):
@@ -109,7 +109,7 @@ def dub(video: Path, lang: str, script: Path) -> str:
         if not m or int(m.group(1)) not in placed:
             continue
         n, text = int(m.group(1)), m.group(2).replace("...", "…")
-        if not re.search(r"[ऀ-ॿ]", text):      # a line the dub keeps in English (the countdown)
+        if not re.search(r"[ऀ-ॿ]", text):  # a line the dub keeps in English (the countdown)
             text = props["lines"][n]["text"]
         cues += cues_for_line(text, placed[n]["start"], placed[n]["end"])
     return to_srt(cues)

@@ -4,6 +4,7 @@
 These stand in until licensed library effects land in the OpenMontage music_library/sfx folder;
 they are deliberately quiet and short so a swap never changes the mix.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -47,7 +48,7 @@ def page(seconds: float = 0.5, seed: int = 2) -> np.ndarray:
     n = int(seconds * SR)
     t = np.arange(n) / SR
     y = _bandpass_noise(n, 300, 5000, rng)
-    env = np.exp(-((t - 0.18) ** 2) / (2 * 0.07 ** 2)) + 0.4 * np.exp(-((t - 0.34) ** 2) / (2 * 0.04 ** 2))
+    env = np.exp(-((t - 0.18) ** 2) / (2 * 0.07**2)) + 0.4 * np.exp(-((t - 0.34) ** 2) / (2 * 0.04**2))
     return 0.4 * y * env
 
 

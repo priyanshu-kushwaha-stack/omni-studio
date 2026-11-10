@@ -33,10 +33,14 @@ class YouTubeAPI:
         secret = json.loads(self._client_secret.read_text(encoding="utf-8"))
         client = secret.get("installed") or secret.get("web") or {}
         token = json.loads(self._token.read_text(encoding="utf-8"))
-        body = urllib.parse.urlencode({
-            "client_id": client["client_id"], "client_secret": client["client_secret"],
-            "refresh_token": token["refresh_token"], "grant_type": "refresh_token",
-        }).encode()
+        body = urllib.parse.urlencode(
+            {
+                "client_id": client["client_id"],
+                "client_secret": client["client_secret"],
+                "refresh_token": token["refresh_token"],
+                "grant_type": "refresh_token",
+            }
+        ).encode()
         with self._open(urllib.request.Request(client.get("token_uri", TOKEN_URI), data=body), timeout=30) as resp:
             self._access = json.loads(resp.read())["access_token"]
         return self._access
@@ -56,18 +60,27 @@ class YouTubeAPI:
         if not items:
             return {"found": False, "id": video_id}
         status, snippet = items[0].get("status", {}), items[0].get("snippet", {})
-        return {"found": True, "id": video_id, "channelId": snippet.get("channelId"),
-                "privacyStatus": status.get("privacyStatus"), "publishAt": status.get("publishAt"),
-                "selfDeclaredMadeForKids": status.get("selfDeclaredMadeForKids"),
-                "madeForKids": status.get("madeForKids"),
-                "containsSyntheticMedia": status.get("containsSyntheticMedia")}
+        return {
+            "found": True,
+            "id": video_id,
+            "channelId": snippet.get("channelId"),
+            "privacyStatus": status.get("privacyStatus"),
+            "publishAt": status.get("publishAt"),
+            "selfDeclaredMadeForKids": status.get("selfDeclaredMadeForKids"),
+            "madeForKids": status.get("madeForKids"),
+            "containsSyntheticMedia": status.get("containsSyntheticMedia"),
+        }
 
     def set_thumbnail(self, video_id: str, image: Path) -> dict[str, Any]:
         """Upload a JPG or PNG as the video's custom thumbnail; returns the sizes YouTube now serves."""
         mime = "image/png" if Path(image).suffix.lower() == ".png" else "image/jpeg"
         url = f"{UPLOAD_API}/thumbnails/set?{urllib.parse.urlencode({'videoId': video_id, 'uploadType': 'media'})}"
-        request = urllib.request.Request(url, data=Path(image).read_bytes(), method="POST", headers={
-            "Authorization": f"Bearer {self._access_token()}", "Content-Type": mime})
+        request = urllib.request.Request(
+            url,
+            data=Path(image).read_bytes(),
+            method="POST",
+            headers={"Authorization": f"Bearer {self._access_token()}", "Content-Type": mime},
+        )
         with self._open(request, timeout=120) as resp:
             items = json.loads(resp.read()).get("items", [])
         return items[0] if items else {}
@@ -76,13 +89,24 @@ class YouTubeAPI:
         """Upload an SRT or VTT file as a published subtitle track in `language`; returns the caption resource."""
         boundary = "omni-studio-caption"
         meta = json.dumps({"snippet": {"videoId": video_id, "language": language, "name": name, "isDraft": False}})
-        body = (f"--{boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{meta}\r\n"
-                f"--{boundary}\r\nContent-Type: application/octet-stream\r\n\r\n").encode() + \
-            Path(track).read_bytes() + f"\r\n--{boundary}--\r\n".encode()
+        body = (
+            (
+                f"--{boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{meta}\r\n"
+                f"--{boundary}\r\nContent-Type: application/octet-stream\r\n\r\n"
+            ).encode()
+            + Path(track).read_bytes()
+            + f"\r\n--{boundary}--\r\n".encode()
+        )
         url = f"{UPLOAD_API}/captions?{urllib.parse.urlencode({'part': 'snippet', 'uploadType': 'multipart'})}"
-        request = urllib.request.Request(url, data=body, method="POST", headers={
-            "Authorization": f"Bearer {self._access_token()}",
-            "Content-Type": f"multipart/related; boundary={boundary}"})
+        request = urllib.request.Request(
+            url,
+            data=body,
+            method="POST",
+            headers={
+                "Authorization": f"Bearer {self._access_token()}",
+                "Content-Type": f"multipart/related; boundary={boundary}",
+            },
+        )
         with self._open(request, timeout=120) as resp:
             return json.loads(resp.read())
 
@@ -102,6 +126,8 @@ def verify_readback(readback: dict[str, Any], requested: dict[str, Any], channel
     if kids is not requested["madeForKids"]:
         problems.append(f"made for kids reads back {kids!r}, asked {requested['madeForKids']}")
     if readback.get("containsSyntheticMedia") is not requested["containsSyntheticMedia"]:
-        problems.append(f"containsSyntheticMedia reads back {readback.get('containsSyntheticMedia')!r}, "
-                        f"asked {requested['containsSyntheticMedia']}")
+        problems.append(
+            f"containsSyntheticMedia reads back {readback.get('containsSyntheticMedia')!r}, "
+            f"asked {requested['containsSyntheticMedia']}"
+        )
     return problems

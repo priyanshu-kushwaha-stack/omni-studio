@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import motion  # noqa: E402
 
@@ -13,8 +14,8 @@ OCHRE = (0xD9, 0xA4, 0x41)
 def _still():
     im = Image.new("RGB", (160, 90), PAPER)
     d = ImageDraw.Draw(im)
-    d.line((10, 80, 150, 10), fill=INK, width=3)          # an ink stroke
-    d.ellipse((60, 30, 90, 60), fill=OCHRE)               # an accent blob (fire)
+    d.line((10, 80, 150, 10), fill=INK, width=3)  # an ink stroke
+    d.ellipse((60, 30, 90, 60), fill=OCHRE)  # an accent blob (fire)
     return np.asarray(im)
 
 
@@ -30,14 +31,14 @@ def test_boil_moves_ink_but_keeps_paper_and_changes_on_threes():
     f = _still()
     ink, _ = motion.masks(f, PAPER)
     a = motion.boil(f, ink, t=0.00)
-    b = motion.boil(f, ink, t=0.05)   # same step
-    c = motion.boil(f, ink, t=0.12)   # next step
+    b = motion.boil(f, ink, t=0.05)  # same step
+    c = motion.boil(f, ink, t=0.12)  # next step
     assert np.array_equal(a, b)
     assert not np.array_equal(a, c)
     assert tuple(a[5, 5]) == PAPER
     changed = (a != f).any(axis=2)
-    assert 0 < changed.sum() < ink.sum() * 4          # displacement stays local to the stroke
-    assert tuple(a[45, 75]) == OCHRE                    # accent untouched
+    assert 0 < changed.sum() < ink.sum() * 4  # displacement stays local to the stroke
+    assert tuple(a[45, 75]) == OCHRE  # accent untouched
 
 
 def test_flicker_changes_only_accent_pixels():
@@ -47,15 +48,15 @@ def test_flicker_changes_only_accent_pixels():
     changed = (g != f).any(axis=2)
     assert changed[acc].mean() > 0.5
     far = ~acc & ~ink
-    far[25:65, 55:95] = False                           # allow the 1 px breathing ring around the blob
+    far[25:65, 55:95] = False  # allow the 1 px breathing ring around the blob
     assert not changed[far].any()
 
 
 def test_sprite_moves_the_cutout_and_leaves_paper_behind():
     f = _still()
     g = motion.sprite(f, box=(5, 70, 25, 85), path=[(0, 0), (100, -50)], t=1.0, duration=1.0, paper=PAPER)
-    assert tuple(g[80, 10]) == PAPER                        # origin is paper now
-    assert (g[20:40, 100:130] != np.array(PAPER)).any()     # ink landed near the end of the path
+    assert tuple(g[80, 10]) == PAPER  # origin is paper now
+    assert (g[20:40, 100:130] != np.array(PAPER)).any()  # ink landed near the end of the path
 
 
 def test_trace_order_runs_along_the_stroke():

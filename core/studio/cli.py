@@ -74,8 +74,10 @@ def status() -> int:
     leaked = sorted(set(denylist) & tools)
     secrets_dir = Path.home() / ".config" / "omni-studio"
 
-    print(f"repo         {_command_output('git', '-C', str(ROOT), 'rev-parse', '--short', 'HEAD')} "
-          f"on {_command_output('git', '-C', str(ROOT), 'branch', '--show-current')}")
+    print(
+        f"repo         {_command_output('git', '-C', str(ROOT), 'rev-parse', '--short', 'HEAD')} "
+        f"on {_command_output('git', '-C', str(ROOT), 'branch', '--show-current')}"
+    )
     print(f"upstream     {lock['upstream']['commit'][:7]} ({lock['upstream']['repo']})")
     print(f"python       {sys.version.split()[0]}")
     print(f"node         {_command_output('node', '--version') or 'missing'}")
@@ -102,9 +104,11 @@ def _print_channels() -> int:
             continue
         config = channel.config
         videos = channels.video_summaries(channel)
-        print(f"  {slug}  {config.status}  risk {config.risk_class}  "
-              f"${config.budget_usd_per_video}/video  {len(videos)} video(s)  "
-              f"board {_running_board_url(channel) or 'stopped'}")
+        print(
+            f"  {slug}  {config.status}  risk {config.risk_class}  "
+            f"${config.budget_usd_per_video}/video  {len(videos)} video(s)  "
+            f"board {_running_board_url(channel) or 'stopped'}"
+        )
         for video in videos:
             if "error" in video:
                 failed = 1
@@ -113,8 +117,7 @@ def _print_channels() -> int:
             gates = ", ".join(video["awaiting"]) or "none"
             budget = video["budget_usd"]
             of_budget = f"of ${budget:.2f}" if budget is not None else "with no cost log"
-            print(f"    {video['id']}  spent ${video['spent_usd']:.2f} {of_budget}  "
-                  f"awaiting approval: {gates}")
+            print(f"    {video['id']}  spent ${video['spent_usd']:.2f} {of_budget}  awaiting approval: {gates}")
     return failed
 
 
@@ -200,8 +203,7 @@ def board(slug: str, *, stop: bool, open_browser: bool) -> int:
 def new_channel(slug: str) -> int:
     channel = channels.create_channel(slug)
     print(f"created {channel.dir}")
-    print(f"playbook {channels.custom_styles_dir() / (slug + '.yaml')} -> "
-          f"../../../../channels/{slug}/playbook.yaml")
+    print(f"playbook {channels.custom_styles_dir() / (slug + '.yaml')} -> ../../../../channels/{slug}/playbook.yaml")
     print(f"next: edit {channel.dir / 'channel.yaml'}, then run omni check {slug}")
     return 0
 
@@ -210,8 +212,7 @@ def new_video(slug: str, title: str, format_name: str) -> int:
     channel = channels.load_channel(slug)
     project = channels.new_video(channel, title, format_name)
     print(f"created {project}")
-    print(f"pipeline {channel.config.formats[format_name]}, "
-          f"budget ${channel.config.budget_usd_per_video} (cap)")
+    print(f"pipeline {channel.config.formats[format_name]}, budget ${channel.config.budget_usd_per_video} (cap)")
     for name, value in channel.env.items():
         print(f"export {name}={value}")
     return 0
@@ -226,8 +227,9 @@ def approve(slug: str, video: str, stage: str, note: str | None) -> int:
 def link() -> int:
     """Re-create every channel's git-ignored playbook link (needed after a fresh clone)."""
     for slug, what in channels.link_playbooks():
-        print(f"{slug}: {what} {channels.custom_styles_dir() / (slug + '.yaml')} -> "
-              f"{channels.playbook_link_target(slug)}")
+        print(
+            f"{slug}: {what} {channels.custom_styles_dir() / (slug + '.yaml')} -> {channels.playbook_link_target(slug)}"
+        )
     return 0
 
 
@@ -256,8 +258,9 @@ def fix(slug: str, format_name: str, stage: str, severity: str, example: str, no
 def qc(slug: str, video: str, stage: str, media: str | None, words: str | None, format_name: str | None) -> int:
     from studio import checks
 
-    report = checks.run_stage(slug, video, stage, Path(media) if media else None, Path(words) if words else None,
-                              format_name)
+    report = checks.run_stage(
+        slug, video, stage, Path(media) if media else None, Path(words) if words else None, format_name
+    )
     print(checks.format_report(report))
     return 0 if report["ok"] else 1
 
@@ -275,27 +278,41 @@ def similar(slug: str, video: str, media: str | None) -> int:
     return 0 if report["ok"] else 1
 
 
-def upload(slug: str | None, video: str | None, *, run: bool, confirm: str | None, install: bool,
-           thumbnail_only: bool = False, captions_only: bool = False) -> int:
+def upload(
+    slug: str | None,
+    video: str | None,
+    *,
+    run: bool,
+    confirm: str | None,
+    install: bool,
+    thumbnail_only: bool = False,
+    captions_only: bool = False,
+) -> int:
     """Dry run by default. Always private, never scheduled (core/studio/publish/youtube.py)."""
     from studio.publish import youtube
 
     try:
         if install:
-            print(f"installed {youtube.install().relative_to(ROOT)} "
-                  f"(youtubeuploader {youtube.lock()['version']}, sha256 matches core/lock.yaml)")
+            print(
+                f"installed {youtube.install().relative_to(ROOT)} "
+                f"(youtubeuploader {youtube.lock()['version']}, sha256 matches core/lock.yaml)"
+            )
             return 0
         if not slug or not video:
             print("error: omni upload <channel> <video>", file=sys.stderr)
             return 2
         request = youtube.build_request(slug, video)
         if captions_only and not run:
-            print(f"DRY RUN: would add subtitles {sorted(request.captions)} to the video in upload_log.json; "
-                  "pass --run --confirm to do it")
+            print(
+                f"DRY RUN: would add subtitles {sorted(request.captions)} to the video in upload_log.json; "
+                "pass --run --confirm to do it"
+            )
             return 0
         if thumbnail_only and not run:
-            print(f"DRY RUN: would set {request.thumbnail} as the thumbnail of the video in upload_log.json; "
-                  "pass --run --confirm to do it")
+            print(
+                f"DRY RUN: would set {request.thumbnail} as the thumbnail of the video in upload_log.json; "
+                "pass --run --confirm to do it"
+            )
             return 0
         if not run:
             print(youtube.dry_run(request))
@@ -384,27 +401,40 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_argument("video")
     sub.add_argument("--media")
 
-    sub = commands.add_parser("upload", help="private YouTube upload through the pinned youtubeuploader; "
-                                             "dry run unless --run")
+    sub = commands.add_parser(
+        "upload", help="private YouTube upload through the pinned youtubeuploader; dry run unless --run"
+    )
     sub.add_argument("channel", nargs="?")
     sub.add_argument("video", nargs="?")
     sub.add_argument("--dry-run", action="store_true", help="the default: print the command and metadata")
     sub.add_argument("--run", action="store_true", help="really upload (owner only), private")
     sub.add_argument("--confirm", help="with --run: <channel>/<video>, typed out")
     sub.add_argument("--install", action="store_true", help="install the pinned youtubeuploader into .tools/")
-    sub.add_argument("--thumbnail-only", action="store_true",
-                     help="with --run: set upload.yaml's thumbnail on the video already uploaded (upload_log.json)")
-    sub.add_argument("--captions-only", action="store_true",
-                     help="with --run: add upload.yaml's subtitle tracks to the video already uploaded")
+    sub.add_argument(
+        "--thumbnail-only",
+        action="store_true",
+        help="with --run: set upload.yaml's thumbnail on the video already uploaded (upload_log.json)",
+    )
+    sub.add_argument(
+        "--captions-only",
+        action="store_true",
+        help="with --run: add upload.yaml's subtitle tracks to the video already uploaded",
+    )
 
-    sub = commands.add_parser("youtube-auth", help="owner only: Google consent for a channel; the token is saved "
-                                                   "only if it belongs to channel.yaml youtube_channel_id")
+    sub = commands.add_parser(
+        "youtube-auth",
+        help="owner only: Google consent for a channel; the token is saved "
+        "only if it belongs to channel.yaml youtube_channel_id",
+    )
     sub.add_argument("channel")
     sub.add_argument("--replace", action="store_true", help="redo consent over an existing token")
 
-    sub = commands.add_parser("approve-upload", help="owner only: approve the upload of an imported video "
-                                                     "marked legacy_upload: true with no pipeline state; signs the "
-                                                     "checked file's sha256 and the upload metadata digest")
+    sub = commands.add_parser(
+        "approve-upload",
+        help="owner only: approve the upload of an imported video "
+        "marked legacy_upload: true with no pipeline state; signs the "
+        "checked file's sha256 and the upload metadata digest",
+    )
     sub.add_argument("channel")
     sub.add_argument("video")
     sub.add_argument("--format", required=True, dest="format_name")
@@ -433,8 +463,15 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "upload":
             if args.run and args.dry_run:
                 parser.error("--run and --dry-run together")
-            return upload(args.channel, args.video, run=args.run, confirm=args.confirm, install=args.install,
-                          thumbnail_only=args.thumbnail_only, captions_only=args.captions_only)
+            return upload(
+                args.channel,
+                args.video,
+                run=args.run,
+                confirm=args.confirm,
+                install=args.install,
+                thumbnail_only=args.thumbnail_only,
+                captions_only=args.captions_only,
+            )
         if args.command == "youtube-auth":
             return youtube_auth(args.channel, args.replace)
         if args.command == "approve-upload":

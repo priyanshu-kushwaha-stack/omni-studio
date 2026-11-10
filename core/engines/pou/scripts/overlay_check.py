@@ -14,6 +14,7 @@ accent pixel, dilated a little. The box is judged against:
 --sheet saves a contact sheet of every non-ok item with its box drawn, for a human look.
 Exit 1 when anything fails.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -35,11 +36,11 @@ INK_FAIL, INK_WARN = 0.04, 0.015
 MARGIN = 0.03
 END_SCREEN_SECONDS = 15.0
 
-Box = tuple[float, float, float, float]   # x0, y0, x1, y1 in pixels
+Box = tuple[float, float, float, float]  # x0, y0, x1, y1 in pixels
 
 
 def forbidden_zones(W: int, H: int, t: float, total: float) -> list[Box]:
-    if H > W:   # YouTube Shorts player chrome
+    if H > W:  # YouTube Shorts player chrome
         return [(0, 0, W, 0.06 * H), (0, 0.80 * H, W, H), (0.86 * W, 0.40 * H, W, H)]
     if total - t <= END_SCREEN_SECONDS:
         return [(0.66 * W, 0, W, H)]
@@ -68,8 +69,15 @@ def ink_fraction(box: Box, mask: np.ndarray) -> float:
     return float(mask[y0:y1, x0:x1].mean())
 
 
-def judge(box: Box, mask: np.ndarray, zones: list[Box], others: list[Box], size: tuple[int, int],
-          caption: bool = False, faces: list[Box] | None = None) -> dict:
+def judge(
+    box: Box,
+    mask: np.ndarray,
+    zones: list[Box],
+    others: list[Box],
+    size: tuple[int, int],
+    caption: bool = False,
+    faces: list[Box] | None = None,
+) -> dict:
     W, H = size
     why, verdict = [], "ok"
     if faces and overlap(box, faces) > 0:
@@ -97,8 +105,15 @@ def judge(box: Box, mask: np.ndarray, zones: list[Box], others: list[Box], size:
     return {"verdict": verdict, "why": "; ".join(why), "ink": round(ink, 3)}
 
 
-def find_spot(wh: tuple[int, int], mask: np.ndarray, zones: list[Box], others: list[Box], size: tuple[int, int],
-              prefer: tuple[float, float], step: float = 0.02) -> tuple[float, float] | None:
+def find_spot(
+    wh: tuple[int, int],
+    mask: np.ndarray,
+    zones: list[Box],
+    others: list[Box],
+    size: tuple[int, int],
+    prefer: tuple[float, float],
+    step: float = 0.02,
+) -> tuple[float, float] | None:
     """Centre (fractions) of the clear spot nearest `prefer` for a box of wh pixels, or None."""
     W, H = size
     bw, bh = wh
@@ -162,24 +177,41 @@ def analyse(video_dir: Path, words_path: Path, W: int, H: int, captions: bool) -
     everything = ovs + caps
     for ov in everything:
         if ov.spec.get("kind") in ("circle", "cross"):
-            continue   # marks sit on their card on purpose
+            continue  # marks sit on their card on purpose
         is_cap = ov.spec.get("kind") == "caption"
         t0 = ov.start + (compose.REVEAL_SECONDS if not is_cap else 0.0)
         times = sorted({min(max(t0, ov.start), ov.end - 0.05), (ov.start + ov.end) / 2, ov.end - 0.05})
         box = _box(ov)
-        others = [_box(o) for o in everything if o is not ov and o.start < ov.end and ov.start < o.end and not same_quiz(o.spec, ov.spec)]
+        others = [
+            _box(o)
+            for o in everything
+            if o is not ov and o.start < ov.end and ov.start < o.end and not same_quiz(o.spec, ov.spec)
+        ]
         worst = None
         for t in times:
             gi = by_scene.get(ov.spec.get("scene"), None) if not is_cap else None
             gi = group_at(t) if gi is None or not (groups[gi].start <= t < groups[gi].end + 1e-6) else gi
-            j = judge(box, mask_at(gi, t), forbidden_zones(W, H, t, total), others, (W, H), caption=is_cap,
-                      faces=faces.get(groups[gi].scene_id))
+            j = judge(
+                box,
+                mask_at(gi, t),
+                forbidden_zones(W, H, t, total),
+                others,
+                (W, H),
+                caption=is_cap,
+                faces=faces.get(groups[gi].scene_id),
+            )
             rank = {"ok": 0, "warn": 1, "fail": 2}[j["verdict"]]
             if worst is None or rank > {"ok": 0, "warn": 1, "fail": 2}[worst["verdict"]]:
                 worst = dict(j, t=round(t, 2), gi=gi)
         results.append({"ov": ov, "caption": is_cap, "box": box, **worst})
-    return results, {"groups": groups, "mask_at": mask_at, "total": total, "specs": specs, "layout": layout,
-                     "faces": faces}
+    return results, {
+        "groups": groups,
+        "mask_at": mask_at,
+        "total": total,
+        "specs": specs,
+        "layout": layout,
+        "faces": faces,
+    }
 
 
 def face_boxes(video_dir: Path, W: int, H: int) -> dict[str, list[Box]]:
@@ -195,20 +227,22 @@ def face_boxes(video_dir: Path, W: int, H: int) -> dict[str, list[Box]]:
         src = anim.get("copies", {}).get(sid, sid)
         spec = chars.get(src, {})
         boxes = []
-        for c in spec if isinstance(spec, list) else [spec]:   # a list is a dialogue shot: one face per character
+        for c in spec if isinstance(spec, list) else [spec]:  # a list is a dialogue shot: one face per character
             eyes = c.get("eyes")
             if not eyes:
                 continue
             pts = [(e[0], e[1]) for e in eyes] + ([tuple(c["mouth"][:2])] if c.get("mouth") else [])
             xs, ys, r = [p[0] for p in pts], [p[1] for p in pts], max(e[2] for e in eyes)
             pad = 0.04 * W
-            boxes.append((min(xs) - 2.2 * r - pad, min(ys) - 2.6 * r - pad, max(xs) + 2.2 * r + pad, max(ys) + 2.6 * r + pad))
+            boxes.append(
+                (min(xs) - 2.2 * r - pad, min(ys) - 2.6 * r - pad, max(xs) + 2.2 * r + pad, max(ys) + 2.6 * r + pad)
+            )
         if boxes:
             out[sid] = boxes
     return out
 
 
-CAPTION_YS = [round(0.56 + 0.02 * k, 2) for k in range(9)]   # 0.56 .. 0.72: slack above the Shorts title strip
+CAPTION_YS = [round(0.56 + 0.02 * k, 2) for k in range(9)]  # 0.56 .. 0.72: slack above the Shorts title strip
 
 
 def fix_captions(results: list[dict], ctx: dict, W: int, H: int) -> dict:
@@ -226,14 +260,21 @@ def fix_captions(results: list[dict], ctx: dict, W: int, H: int) -> dict:
             cost = abs(y - 0.70) * 0.05
             for r in mine:
                 ov = r["ov"]
-                w = min(ov.image.width, 0.76 * W)   # 16-char lines; width capped to what fits left of the buttons
+                w = min(ov.image.width, 0.76 * W)  # 16-char lines; width capped to what fits left of the buttons
                 h = ov.image.height
                 cx, cy = layout["x"] * W, y * H
                 box = (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
                 t = (ov.start + ov.end) / 2
                 others = [l["box"] for l in labels if l["ov"].start < ov.end and ov.start < l["ov"].end]
-                j = judge(box, ctx["mask_at"](gi, min(max(t, g.start), g.end - 0.01)), forbidden_zones(W, H, t, ctx["total"]),
-                          others, (W, H), caption=True, faces=ctx["faces"].get(g.scene_id))
+                j = judge(
+                    box,
+                    ctx["mask_at"](gi, min(max(t, g.start), g.end - 0.01)),
+                    forbidden_zones(W, H, t, ctx["total"]),
+                    others,
+                    (W, H),
+                    caption=True,
+                    faces=ctx["faces"].get(g.scene_id),
+                )
                 cost += 1e6 if j["verdict"] == "fail" else j["ink"]
             if cost < best_cost:
                 best, best_cost = y, cost
@@ -250,9 +291,9 @@ def fix(results: list[dict], ctx: dict, W: int, H: int) -> int:
             continue
         ov = r["ov"]
         if ov.spec.get("quiz"):
-            continue   # quiz parts move together: change the quiz's "board" in overlays.json instead
+            continue  # quiz parts move together: change the quiz's "board" in overlays.json instead
         others = [p["box"] for p in placed if p["ov"].start < ov.end and ov.start < p["ov"].end]
-        others += ctx["faces"].get(ctx["groups"][r["gi"]].scene_id, [])   # faces are no-go boxes too
+        others += ctx["faces"].get(ctx["groups"][r["gi"]].scene_id, [])  # faces are no-go boxes too
         mask = ctx["mask_at"](r["gi"], r["t"])
         for t in (ov.start + compose.REVEAL_SECONDS, ov.end - 0.05):
             if ctx["groups"][r["gi"]].start <= t < ctx["groups"][r["gi"]].end:
@@ -262,12 +303,17 @@ def fix(results: list[dict], ctx: dict, W: int, H: int) -> int:
         spec = specs_by_id.get(ov.spec.get("id"))
         if spec is None:
             continue
-        base = ov.spec.get("size", {"label": 68, "number": 150, "card": 60, "chapter": 48, "strike": 96}.get(ov.spec.get("kind", "label"), 68))
+        base = ov.spec.get(
+            "size",
+            {"label": 68, "number": 150, "card": 60, "chapter": 48, "strike": 96}.get(ov.spec.get("kind", "label"), 68),
+        )
         pos = None
-        for k in (1.0, 0.85, 0.7, 0.55):   # big cards that fit nowhere get smaller before they cover the drawing
+        for k in (1.0, 0.85, 0.7, 0.55):  # big cards that fit nowhere get smaller before they cover the drawing
             trial = dict(ov.spec, size=int(base * k))
             im = compose.render_overlay(trial, W, H, compose.random.Random(1))
-            pos = find_spot((im.width + pad, im.height + pad), mask, zones, others, (W, H), tuple(ov.spec.get("pos", [0.5, 0.12])))
+            pos = find_spot(
+                (im.width + pad, im.height + pad), mask, zones, others, (W, H), tuple(ov.spec.get("pos", [0.5, 0.12]))
+            )
             if pos:
                 if k < 1.0:
                     spec["size"] = int(base * k)
@@ -278,7 +324,12 @@ def fix(results: list[dict], ctx: dict, W: int, H: int) -> int:
             continue
         spec["pos"] = list(pos)
         cx, cy = pos[0] * W, pos[1] * H
-        r["box"] = (cx - ov.image.width / 2, cy - ov.image.height / 2, cx + ov.image.width / 2, cy + ov.image.height / 2)
+        r["box"] = (
+            cx - ov.image.width / 2,
+            cy - ov.image.height / 2,
+            cx + ov.image.width / 2,
+            cy + ov.image.height / 2,
+        )
         placed.append(r)
         moved += 1
     return moved
@@ -300,8 +351,9 @@ def sheet(results: list[dict], ctx: dict, W: int, H: int, out: Path) -> None:
         d.rectangle(r["box"], outline=(220, 0, 0) if r["verdict"] == "fail" else (230, 150, 0), width=6)
         x, y = (i % cols) * tw, (i // cols) * (th + 30)
         img.paste(fr.resize((tw, th)), (x, y + 30))
-        ImageDraw.Draw(img).text((x + 3, y + 2), f"{r['verdict']} {r['ov'].spec.get('text', '')[:28]!r}\n{r['why'][:44]}",
-                                 fill="black")
+        ImageDraw.Draw(img).text(
+            (x + 3, y + 2), f"{r['verdict']} {r['ov'].spec.get('text', '')[:28]!r}\n{r['why'][:44]}", fill="black"
+        )
     img.save(out)
 
 
@@ -315,7 +367,11 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("video_dir", type=Path)
     p.add_argument("--words", type=Path, default=None, help="default: <video_dir>/narration/words.json")
-    p.add_argument("--size", default=None, help="WxH; default 1080x1920 for a Short (under shorts/ or with anim.json), else 1920x1080")
+    p.add_argument(
+        "--size",
+        default=None,
+        help="WxH; default 1080x1920 for a Short (under shorts/ or with anim.json), else 1920x1080",
+    )
     p.add_argument("--captions", action="store_true", help="include burnt-in captions (only if the render burns them)")
     p.add_argument("--fix", action="store_true", help="move failing labels to the nearest clear spot")
     p.add_argument("--sheet", type=Path, default=None, help="contact sheet of warn/fail items")
@@ -324,7 +380,7 @@ def main() -> None:
     size = a.size or ("1080x1920" if is_short(vd) else "1920x1080")
     W, H = (int(v) for v in size.split("x"))
     words = a.words or vd / "narration" / "words.json"
-    captions = a.captions   # owner 2026-10-31: no subtitles on the Shorts, so captions are opt-in
+    captions = a.captions  # owner 2026-10-31: no subtitles on the Shorts, so captions are opt-in
     results, ctx = analyse(vd, words, W, H, captions)
     if a.fix:
         if captions and any(r["caption"] and r["verdict"] != "ok" for r in results):
@@ -341,7 +397,9 @@ def main() -> None:
         counts[r["verdict"]] += 1
         if r["verdict"] != "ok":
             kind = "caption" if r["caption"] else r["ov"].spec.get("id", "")
-            print(f"[{r['verdict'].upper():4s}] {r['t']:6.2f}s {kind:8s} {r['ov'].spec.get('text', '')[:30]!r}: {r['why']}")
+            print(
+                f"[{r['verdict'].upper():4s}] {r['t']:6.2f}s {kind:8s} {r['ov'].spec.get('text', '')[:30]!r}: {r['why']}"
+            )
     print(f"{counts['ok']} ok, {counts['warn']} warn, {counts['fail']} fail ({len(results)} text items)")
     if a.sheet:
         sheet(results, ctx, W, H, a.sheet)

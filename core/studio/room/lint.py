@@ -64,8 +64,10 @@ def slop_hits(text: str, slop: dict[str, Any]) -> list[str]:
                 spans.append((start, start + len(p)))
                 hits.append(f"line {n}: slop phrase {p!r}")
         for w in slop.get("words") or []:
-            if any(not any(a <= m.start() and m.end() <= b for a, b in spans)
-                   for m in re.finditer(rf"\b{re.escape(w.lower())}\b", low)):
+            if any(
+                not any(a <= m.start() and m.end() <= b for a, b in spans)
+                for m in re.finditer(rf"\b{re.escape(w.lower())}\b", low)
+            ):
                 hits.append(f"line {n}: slop word {w!r}")
         for pat in slop.get("patterns") or []:
             if re.search(pat, low):
@@ -74,8 +76,11 @@ def slop_hits(text: str, slop: dict[str, Any]) -> list[str]:
 
 
 def and_then(text: str) -> list[str]:
-    return [f"line {n}: 'and then' joins two beats; use but or therefore" for n, line in _spoken(text)
-            if AND_THEN.search(line)]
+    return [
+        f"line {n}: 'and then' joins two beats; use but or therefore"
+        for n, line in _spoken(text)
+        if AND_THEN.search(line)
+    ]
 
 
 def word_count(text: str) -> int:
@@ -86,8 +91,9 @@ def _mmss(seconds: float) -> str:
     return f"{int(seconds) // 60}:{int(seconds) % 60:02d}"
 
 
-def cadence(text: str, *, wpm: float, max_gap_s: float, speakers: Optional[list[str]] = None,
-            marker: Optional[str] = None) -> list[str]:
+def cadence(
+    text: str, *, wpm: float, max_gap_s: float, speakers: Optional[list[str]] = None, marker: Optional[str] = None
+) -> list[str]:
     spoken = dict(spoken_lines(text))
     t, hits = 0.0, []
     for n, raw in enumerate(text.splitlines(), 1):
@@ -103,7 +109,9 @@ def cadence(text: str, *, wpm: float, max_gap_s: float, speakers: Optional[list[
     problems, last = [], 0.0
     for at in hits + [t]:
         if at - last > max_gap_s:
-            problems.append(f"{_mmss(last)}-{_mmss(at)}: {at - last:.0f} s with no {label} (want at most {max_gap_s:g} s)")
+            problems.append(
+                f"{_mmss(last)}-{_mmss(at)}: {at - last:.0f} s with no {label} (want at most {max_gap_s:g} s)"
+            )
         last = at
     return problems
 
@@ -122,11 +130,17 @@ def _quotes(ledger_text: str) -> Optional[dict[str, tuple[str, str]]]:
         status_col = _column(header, "status")
         i += 1
         while i < len(lines) and lines[i].lstrip().startswith("|"):
-            if id_col is not None and quote_col is not None and not set(lines[i].replace("|", "").strip()) <= set("-: "):
+            if (
+                id_col is not None
+                and quote_col is not None
+                and not set(lines[i].replace("|", "").strip()) <= set("-: ")
+            ):
                 cells = _cells(lines[i]) + [""] * len(header)
                 q = cells[quote_col].strip()
-                rows[cells[id_col]] = ("" if q.lower() in NO_QUOTE else q,
-                                       cells[status_col].lower() if status_col is not None else "")
+                rows[cells[id_col]] = (
+                    "" if q.lower() in NO_QUOTE else q,
+                    cells[status_col].lower() if status_col is not None else "",
+                )
             i += 1
         found = found or (id_col is not None and quote_col is not None)
     return rows if found else None
@@ -166,11 +180,14 @@ def _linter_file_problem(template: str, cmd: list[str], channel_dir: Optional[Pa
     return None
 
 
-def run_linters(commands: list[str], *, script: Path, video_dir: Path, runner=None,
-                channel_dir: Optional[Path] = None) -> list[str]:
+def run_linters(
+    commands: list[str], *, script: Path, video_dir: Path, runner=None, channel_dir: Optional[Path] = None
+) -> list[str]:
     runner = runner or subprocess.run
-    values = {k: shlex.quote(str(v)) for k, v in
-              {"python": sys.executable, "script": script, "video": video_dir, "root": ROOT}.items()}
+    values = {
+        k: shlex.quote(str(v))
+        for k, v in {"python": sys.executable, "script": script, "video": video_dir, "root": ROOT}.items()
+    }
     problems = []
     for template in commands:
         try:
@@ -198,9 +215,17 @@ def run_linters(commands: list[str], *, script: Path, video_dir: Path, runner=No
     return problems
 
 
-def lint_draft(path: Path, *, kind: str, fmt: dict[str, Any], linters: list[str], ledger: Optional[Path] = None,
-               slop: Optional[dict[str, Any]] = None, runner=None,
-               channel_dir: Optional[Path] = None) -> LintReport:
+def lint_draft(
+    path: Path,
+    *,
+    kind: str,
+    fmt: dict[str, Any],
+    linters: list[str],
+    ledger: Optional[Path] = None,
+    slop: Optional[dict[str, Any]] = None,
+    runner=None,
+    channel_dir: Optional[Path] = None,
+) -> LintReport:
     text = Path(path).read_text(encoding="utf-8")
     slop = load_slop() if slop is None else slop
     problems: list[str] = []
@@ -217,12 +242,14 @@ def lint_draft(path: Path, *, kind: str, fmt: dict[str, Any], linters: list[str]
                 problems.append(f"word budget: {n} spoken words, want {lo}-{hi}")
         if "cadence" in fmt:
             c = fmt["cadence"]
-            problems += cadence(text, wpm=wpm, max_gap_s=float(c["max_gap_s"]), speakers=c.get("speakers"),
-                                marker=c.get("marker"))
+            problems += cadence(
+                text, wpm=wpm, max_gap_s=float(c["max_gap_s"]), speakers=c.get("speakers"), marker=c.get("marker")
+            )
         if ledger is not None and not Path(ledger).is_file():
             problems.append("claims.md is missing, so cited claims cannot be checked")
         elif ledger is not None:
             problems += ledger_quotes(text, Path(ledger).read_text(encoding="utf-8"))
-        problems += run_linters(linters, script=Path(path), video_dir=Path(path).parent, runner=runner,
-                                channel_dir=channel_dir)
+        problems += run_linters(
+            linters, script=Path(path), video_dir=Path(path).parent, runner=runner, channel_dir=channel_dir
+        )
     return LintReport(not problems, problems, warnings)

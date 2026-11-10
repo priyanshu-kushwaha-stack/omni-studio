@@ -6,14 +6,22 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 import sys
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import compose  # noqa: E402
 
-WORDS = [{"word": "Twenty", "start": 0.0, "end": 0.3}, {"word": "nights,", "start": 0.3, "end": 0.6},
-         {"word": "22", "start": 1.0, "end": 1.3}, {"word": "people.", "start": 1.3, "end": 1.7},
-         {"word": "The", "start": 2.0, "end": 2.1}, {"word": "total", "start": 2.1, "end": 2.4},
-         {"word": "came", "start": 2.4, "end": 2.6}, {"word": "to", "start": 2.6, "end": 2.7},
-         {"word": "18", "start": 2.8, "end": 3.0}, {"word": "minutes.", "start": 3.0, "end": 3.5}]
+WORDS = [
+    {"word": "Twenty", "start": 0.0, "end": 0.3},
+    {"word": "nights,", "start": 0.3, "end": 0.6},
+    {"word": "22", "start": 1.0, "end": 1.3},
+    {"word": "people.", "start": 1.3, "end": 1.7},
+    {"word": "The", "start": 2.0, "end": 2.1},
+    {"word": "total", "start": 2.1, "end": 2.4},
+    {"word": "came", "start": 2.4, "end": 2.6},
+    {"word": "to", "start": 2.6, "end": 2.7},
+    {"word": "18", "start": 2.8, "end": 3.0},
+    {"word": "minutes.", "start": 3.0, "end": 3.5},
+]
 
 
 def test_find_phrase_ignores_case_and_punctuation():
@@ -28,10 +36,14 @@ def _plan(tmp_path: Path):
     stills.mkdir()
     for sid in ("s001", "s003"):
         Image.new("RGB", (64, 36), compose.PAPER).save(stills / f"{sid}.png")
-    plan = {"metadata": {"change_classes": {"s001": "illustration", "s002": "motion", "s003": "card"}},
-            "scenes": [{"id": "s001", "start_seconds": 0.0, "end_seconds": 2.0, "script_section_id": "a"},
-                       {"id": "s002", "start_seconds": 2.0, "end_seconds": 4.0, "script_section_id": "a"},
-                       {"id": "s003", "start_seconds": 4.0, "end_seconds": 6.0, "script_section_id": "b"}]}
+    plan = {
+        "metadata": {"change_classes": {"s001": "illustration", "s002": "motion", "s003": "card"}},
+        "scenes": [
+            {"id": "s001", "start_seconds": 0.0, "end_seconds": 2.0, "script_section_id": "a"},
+            {"id": "s002", "start_seconds": 2.0, "end_seconds": 4.0, "script_section_id": "a"},
+            {"id": "s003", "start_seconds": 4.0, "end_seconds": 6.0, "script_section_id": "b"},
+        ],
+    }
     return plan, stills
 
 
@@ -52,9 +64,11 @@ def test_build_groups_until_trims(tmp_path):
 def test_resolve_overlays_times_to_anchor_and_scene_end(tmp_path):
     plan, stills = _plan(tmp_path)
     groups = compose.build_groups(plan, stills, None)
-    specs = [{"id": "a", "scene": "s001", "anchor": "22 people", "text": "22", "lead": 0.2},
-             {"id": "b", "scene": "s003", "text": "x", "hold": 1.0},
-             {"id": "c", "scene": "s999", "text": "orphan"}]
+    specs = [
+        {"id": "a", "scene": "s001", "anchor": "22 people", "text": "22", "lead": 0.2},
+        {"id": "b", "scene": "s003", "text": "x", "hold": 1.0},
+        {"id": "c", "scene": "s999", "text": "orphan"},
+    ]
     ovs = compose.resolve_overlays(specs, WORDS, groups, None)
     assert [(o.spec["id"], round(o.start, 2), o.end) for o in ovs] == [("a", 0.8, 4.0), ("b", 4.0, 5.0)]
 
@@ -94,29 +108,71 @@ def test_sfx_plan_pencil_on_drawings_page_on_section_turn(tmp_path):
 def test_mix_audio_pads_to_total_when_narration_is_shorter(tmp_path):
     """The end-screen tail runs past the narration; the mix must not stop with the voice."""
     import subprocess
+
     nar = tmp_path / "nar.wav"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=frequency=440:duration=1",
-                    "-ar", "48000", str(nar)], check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "lavfi",
+            "-i",
+            "sine=frequency=440:duration=1",
+            "-ar",
+            "48000",
+            str(nar),
+        ],
+        check=True,
+    )
     out = tmp_path / "mix.wav"
     compose.mix_audio(nar, [], [], 3.0, out, -24.0)
-    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(out)],
-                               capture_output=True, text=True, check=True).stdout.strip())
+    dur = float(
+        subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(out)],
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout.strip()
+    )
     assert abs(dur - 3.0) < 0.1
 
 
 def test_find_phrase_matches_digits_and_split_numbers():
-    words = [{"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5} for i, w in
-             enumerate(["did", "not", "sleep", "8", "hours.", "more", "than", "2", ",000", "in", "6", ".5", "hours,", "10", "-30%."])]
-    assert compose.find_phrase(words, "eight hours")[0] == 3.0       # spelled anchor, digit token
-    assert compose.find_phrase(words, "than 2000")[0] == 6.0         # one anchor number, two tokens
+    words = [
+        {"word": w, "start": i * 1.0, "end": i * 1.0 + 0.5}
+        for i, w in enumerate(
+            [
+                "did",
+                "not",
+                "sleep",
+                "8",
+                "hours.",
+                "more",
+                "than",
+                "2",
+                ",000",
+                "in",
+                "6",
+                ".5",
+                "hours,",
+                "10",
+                "-30%.",
+            ]
+        )
+    ]
+    assert compose.find_phrase(words, "eight hours")[0] == 3.0  # spelled anchor, digit token
+    assert compose.find_phrase(words, "than 2000")[0] == 6.0  # one anchor number, two tokens
     assert compose.find_phrase(words, "than 2,000")[0] == 6.0
-    assert compose.find_phrase(words, "6 .5")[0] == 10.0             # whisper-style anchor still works
+    assert compose.find_phrase(words, "6 .5")[0] == 10.0  # whisper-style anchor still works
     assert compose.find_phrase(words, "6.5 hours")[0] == 10.0
-    assert compose.find_phrase(words, "ten to thirty") is None       # words that are not spoken stay unmatched
+    assert compose.find_phrase(words, "ten to thirty") is None  # words that are not spoken stay unmatched
 
 
 def _inked_group(tmp_path: Path):
     from PIL import ImageDraw
+
     im = Image.new("RGB", (64, 36), compose.PAPER)
     ImageDraw.Draw(im).line((4, 30, 60, 6), fill=compose.INK, width=2)
     p = tmp_path / "s001.png"
@@ -128,10 +184,10 @@ def test_source_applies_motion_after_the_reveal(tmp_path):
     g = _inked_group(tmp_path)
     plain = compose.Source(g, 64, 36, tmp_path / "scr", 0)
     moving = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil", "amp": 2.0})
-    assert np.array_equal(plain.base(0.1), moving.base(0.1))          # reveal untouched
+    assert np.array_equal(plain.base(0.1), moving.base(0.1))  # reveal untouched
     a, b = moving.base(5.0), moving.base(5.2)
-    assert not np.array_equal(a, b)                                      # ink boils after the reveal
-    assert np.array_equal(moving.base(5.0), moving.base(5.02))          # same 0.1 s step, cached
+    assert not np.array_equal(a, b)  # ink boils after the reveal
+    assert np.array_equal(moving.base(5.0), moving.base(5.02))  # same 0.1 s step, cached
 
 
 def test_source_trace_uses_stroke_order_and_longer_reveal(tmp_path):
@@ -157,6 +213,7 @@ def test_source_reveal_zero_shows_the_drawing_at_once(tmp_path):
 
 def test_load_specs_accepts_list_and_dict(tmp_path):
     import motion
+
     (tmp_path / "a.json").write_text(json.dumps([{"scene": "s001", "effect": "boil"}]))
     (tmp_path / "b.json").write_text(json.dumps({"s002": {"effect": "flicker"}}))
     assert motion.load_specs(tmp_path / "a.json")["s001"]["effect"] == "boil"
@@ -165,17 +222,18 @@ def test_load_specs_accepts_list_and_dict(tmp_path):
 
 # ---------------------------------------------------------------- 9:16 Shorts mode
 
+
 def test_source_crops_a_wide_still_to_a_vertical_frame_without_squashing(tmp_path):
     im = Image.new("RGB", (160, 90), compose.PAPER)
-    ImageDraw.Draw(im).rectangle((70, 35, 89, 54), fill=compose.INK)      # 20x20 square, centred
+    ImageDraw.Draw(im).rectangle((70, 35, 89, 54), fill=compose.INK)  # 20x20 square, centred
     p = tmp_path / "s001.png"
     im.save(p)
     src = compose.Source(compose.Group("s001", 0.0, 4.0, "illustration", still=p), 90, 160, tmp_path / "scr", 0)
     assert src.still_np.shape[:2] == (src.ph, src.pw)
     ys, xs = np.where((src.still_np < 100).all(axis=2))
     h, w = np.ptp(ys) + 1, np.ptp(xs) + 1
-    assert abs(h - w) <= 2                                                # still a square, not a tall rectangle
-    assert abs((xs.min() + xs.max()) / 2 - src.pw / 2) <= 2               # crop is centred
+    assert abs(h - w) <= 2  # still a square, not a tall rectangle
+    assert abs((xs.min() + xs.max()) / 2 - src.pw / 2) <= 2  # crop is centred
 
 
 def test_overlay_text_is_larger_on_a_vertical_frame():
@@ -202,12 +260,32 @@ def test_captions_appear_at_once_without_write_on():
 
 def _clip_group(tmp_path: Path, seconds: float = 2.0):
     import subprocess
+
     g = _inked_group(tmp_path)
     clip = tmp_path / "s001.mp4"
     # frame n shows n on a counter, so the frame index read back is unambiguous
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"color=c=white:s=64x36:r=30:d={seconds}",
-                    "-vf", "geq=r='mod(N*4\\,256)':g='mod(N*4\\,256)':b='mod(N*4\\,256)'", "-pix_fmt", "yuv444p",
-                    "-c:v", "libx264", "-qp", "0", str(clip)], check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "lavfi",
+            "-i",
+            f"color=c=white:s=64x36:r=30:d={seconds}",
+            "-vf",
+            "geq=r='mod(N*4\\,256)':g='mod(N*4\\,256)':b='mod(N*4\\,256)'",
+            "-pix_fmt",
+            "yuv444p",
+            "-c:v",
+            "libx264",
+            "-qp",
+            "0",
+            str(clip),
+        ],
+        check=True,
+    )
     g.clip = clip
     return g
 
@@ -217,20 +295,21 @@ def test_clip_rate_defaults_to_clip_rate_and_motion_json_overrides_it(tmp_path):
     plain = compose.Source(g, 64, 36, tmp_path / "scr", 0)
     boiled = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil"})
     real = compose.Source(g, 64, 36, tmp_path / "scr", 0, motion_spec={"effect": "boil", "clip_rate": 1.0})
-    assert plain.clip_rate == boiled.clip_rate == compose.CLIP_RATE == 0.75   # videos 1 and 2 unchanged
+    assert plain.clip_rate == boiled.clip_rate == compose.CLIP_RATE == 0.75  # videos 1 and 2 unchanged
     assert real.clip_rate == 1.0
     lum = lambda a: float(a.mean())
-    t = 1.0   # 30 frames in: frame 22 at 0.75x, frame 30 at 1.0x
+    t = 1.0  # 30 frames in: frame 22 at 0.75x, frame 30 at 1.0x
     assert abs(lum(plain.base(t)) - 22 * 4) < 3
     assert abs(lum(real.base(t)) - 30 * 4) < 3
 
 
 def test_clip_cache_follows_the_clip_file(tmp_path):
     import os
+
     g = _clip_group(tmp_path, 1.0)
     compose.Source(g, 64, 36, tmp_path / "scr", 0)
     first = sorted((tmp_path / "scr").glob("clip_s001*"))
-    os.utime(g.clip, (1, 1))   # the clip was re-rendered: its frames must be extracted again
+    os.utime(g.clip, (1, 1))  # the clip was re-rendered: its frames must be extracted again
     compose.Source(g, 64, 36, tmp_path / "scr", 0)
     assert len(sorted((tmp_path / "scr").glob("clip_s001*"))) == len(first) + 1
 
@@ -246,7 +325,9 @@ def _sfx_dir(tmp_path):
 def test_short_sfx_are_sparse_and_quiet(tmp_path):
     # Shorts cut every 2-3 s; a pencil at every drawing and a page at every section was "a lot of noise"
     d = _sfx_dir(tmp_path)
-    groups = [compose.Group(f"s{i:03d}", i * 2.5, i * 2.5 + 2.5, "illustration", section=f"sec{i // 2}") for i in range(12)]
+    groups = [
+        compose.Group(f"s{i:03d}", i * 2.5, i * 2.5 + 2.5, "illustration", section=f"sec{i // 2}") for i in range(12)
+    ]
     long_form = compose.plan_sfx(groups, [], d, None)
     short = compose.plan_sfx(groups, [], d, None, short=True)
     assert len(short) <= 6 < len(long_form)
@@ -270,21 +351,35 @@ def test_caption_has_a_soft_paper_backing():
     # captions cross busy drawings in Shorts (owner: text placement); a translucent paper pill keeps them legible
     im = compose.render_overlay({"kind": "caption", "text": "Argentavis,"}, 1080, 1920, compose.random.Random(1))
     a = np.asarray(im)[..., 3]
-    corner_band = a[a.shape[0] // 2, 8]            # left edge, mid-height: backing, not text
+    corner_band = a[a.shape[0] // 2, 8]  # left edge, mid-height: backing, not text
     assert 150 <= corner_band < 255
 
 
 def test_captions_rejoin_split_words():
-    words = [{"word": "about", "start": 0.0, "end": 0.2}, {"word": "twenty", "start": 0.2, "end": 0.4},
-             {"word": "-five", "start": 0.4, "end": 0.6}, {"word": "called", "start": 1.0, "end": 1.2},
-             {"word": "T", "start": 1.2, "end": 1.3}, {"word": "B", "start": 1.3, "end": 1.4},
-             {"word": "X", "start": 1.4, "end": 1.5}, {"word": "T.", "start": 1.5, "end": 1.6}]
+    words = [
+        {"word": "about", "start": 0.0, "end": 0.2},
+        {"word": "twenty", "start": 0.2, "end": 0.4},
+        {"word": "-five", "start": 0.4, "end": 0.6},
+        {"word": "called", "start": 1.0, "end": 1.2},
+        {"word": "T", "start": 1.2, "end": 1.3},
+        {"word": "B", "start": 1.3, "end": 1.4},
+        {"word": "X", "start": 1.4, "end": 1.5},
+        {"word": "T.", "start": 1.5, "end": 1.6},
+    ]
     text = " ".join(o.spec["text"] for o in compose.caption_overlays(words, None))
     assert "twenty-five" in text and "TBXT." in text
 
 
-QUIZ = {"id": "q2", "kind": "quiz", "scene": "s001", "board": [0.5, 0.1, 0.9, 0.6],
-        "cards": ["15", "~35", "55"], "answer": 1, "fade": [2], "note": "+ diet"}
+QUIZ = {
+    "id": "q2",
+    "kind": "quiz",
+    "scene": "s001",
+    "board": [0.5, 0.1, 0.9, 0.6],
+    "cards": ["15", "~35", "55"],
+    "answer": 1,
+    "fade": [2],
+    "note": "+ diet",
+}
 
 
 def test_quiz_parts_pop_cards_then_ring_then_reveal():
@@ -292,7 +387,7 @@ def test_quiz_parts_pop_cards_then_ring_then_reveal():
     kinds = [p[0]["kind"] for p in parts]
     assert kinds.count("card") == 3 and kinds.count("ring") == 1 and kinds.count("number") == 3
     cards = [p for p in parts if p[0]["kind"] == "card"]
-    assert [round(c[1], 2) for c in cards] == [10.1, 10.4, 10.7]          # pop one after another
+    assert [round(c[1], 2) for c in cards] == [10.1, 10.4, 10.7]  # pop one after another
     ring = next(p for p in parts if p[0]["kind"] == "ring")
     d0 = 10.1 + 2 * compose.QUIZ_POP_GAP + 0.15
     assert ring[1] == pytest.approx(d0) and ring[2] == pytest.approx(d0 + compose.QUIZ_RING_SECONDS)
@@ -301,7 +396,7 @@ def test_quiz_parts_pop_cards_then_ring_then_reveal():
     circle = next(p for p in parts if p[0]["kind"] == "circle")
     assert circle[1] == 14.5 and circle[0]["sfx"] == "sting"
     crosses = [p for p in parts if p[0]["kind"] == "cross"]
-    assert len(crosses) == 1                       # card 0 struck; card 2 fades instead
+    assert len(crosses) == 1  # card 0 struck; card 2 fades instead
     assert cards[2][2] < 15.5 and cards[1][2] == 20.0 and cards[0][2] == 20.0
     note = next(p for p in parts if p[0]["kind"] == "label")
     assert note[0]["text"] == "+ diet" and note[1] >= 14.5
@@ -323,19 +418,21 @@ def test_quiz_ring_can_sit_off_the_board_and_the_note_clears_the_cards():
     assert ring[0]["pos"] == [0.19, 0.28] and all(d[0]["pos"] == [0.19, 0.28] for d in digits)
     card_y = next(p for p in parts if p[0]["kind"] == "card")[0]["pos"][1]
     note_y = next(p for p in parts if p[0]["kind"] == "label")[0]["pos"][1]
-    assert note_y - card_y >= 0.35 * (QUIZ["board"][3] - QUIZ["board"][1])   # well below the card row
+    assert note_y - card_y >= 0.35 * (QUIZ["board"][3] - QUIZ["board"][1])  # well below the card row
 
 
 def test_resolve_overlays_expands_a_quiz_from_its_anchors():
-    words = [{"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in
-             enumerate("what's the average fifty five um um um um roughly thirty five".split())]
+    words = [
+        {"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4}
+        for i, w in enumerate("what's the average fifty five um um um um roughly thirty five".split())
+    ]
     g = compose.Group("s001", 0.0, 10.0, "illustration")
     spec = dict(QUIZ, ask_anchor="what's the average", reveal_anchor="roughly thirty five")
     ovs = compose.resolve_overlays([spec], words, [g], None)
     circle = next(o for o in ovs if o.spec["kind"] == "circle")
-    assert abs(circle.start - 4.5) < 0.2                   # "roughly" starts at 4.5 s
+    assert abs(circle.start - 4.5) < 0.2  # "roughly" starts at 4.5 s
     first_card = min(o.start for o in ovs if o.spec["kind"] == "card")
-    assert abs(first_card - (1.4 + 0.1)) < 1e-6           # "average" ends at 1.4 s
+    assert abs(first_card - (1.4 + 0.1)) < 1e-6  # "average" ends at 1.4 s
 
 
 def test_ring_and_circle_draw_on_around_the_clock():
@@ -343,14 +440,14 @@ def test_ring_and_circle_draw_on_around_the_clock():
     for kind in ("ring", "circle"):
         img = compose.render_overlay({"kind": kind, "w": 200, "h": 200, "text": "35"}, 1920, 1080, rng)
         a = np.asarray(img)[..., 3]
-        assert a.sum() > 0 and a[a.shape[0] // 2, a.shape[1] // 2] == 0      # hollow
+        assert a.sum() > 0 and a[a.shape[0] // 2, a.shape[1] // 2] == 0  # hollow
     frame = np.full((300, 300, 3), 250, np.uint8)
     ov = compose.Overlay({"kind": "ring", "w": 200, "h": 200}, 0, 3)
     ov.image = compose.render_overlay(ov.spec, 1920, 1080, rng)
     compose.composite(frame, ov, 1.0, 0.25)
     drawn = frame < 200
     h = ov.image.height
-    assert drawn[: h // 2].any() and not drawn[h // 2 + 10:h].any()          # first quarter only: top-right arc
+    assert drawn[: h // 2].any() and not drawn[h // 2 + 10 : h].any()  # first quarter only: top-right arc
 
 
 def _sfx_files(tmp_path, names=("pencil", "page", "sting", "pop", "tick", "whoosh")):
@@ -370,15 +467,22 @@ def test_long_form_pencils_at_most_one_per_4s(tmp_path):
 
 def test_quiz_parts_carry_their_sfx_and_quiz_plates_whoosh_sparingly(tmp_path):
     d = _sfx_files(tmp_path)
-    groups = [compose.Group("a", 0, 5, "quiz"), compose.Group("b", 5, 6, "character"), compose.Group("c", 6, 12, "quiz"),
-              compose.Group("d", 14, 20, "quiz")]
-    ovs = [compose.Overlay({"kind": "card", "sfx": "pop"}, 1.0, 4.0), compose.Overlay({"kind": "number", "sfx": "tick"}, 1.1, 2.0),
-           compose.Overlay({"kind": "circle", "sfx": "sting"}, 3.5, 5.0)]
+    groups = [
+        compose.Group("a", 0, 5, "quiz"),
+        compose.Group("b", 5, 6, "character"),
+        compose.Group("c", 6, 12, "quiz"),
+        compose.Group("d", 14, 20, "quiz"),
+    ]
+    ovs = [
+        compose.Overlay({"kind": "card", "sfx": "pop"}, 1.0, 4.0),
+        compose.Overlay({"kind": "number", "sfx": "tick"}, 1.1, 2.0),
+        compose.Overlay({"kind": "circle", "sfx": "sting"}, 3.5, 5.0),
+    ]
     sfx = compose.plan_sfx(groups, ovs, d, None)
     names = [(s.path.name, s.at) for s in sfx]
     assert ("pop.wav", 1.0) in names and ("tick.wav", 1.1) in names and ("sting.wav", 3.5) in names
     whooshes = [at for n, at in names if n == "whoosh.wav"]
-    assert whooshes == [0, 14]            # the plate at 6 s is within 8 s of the one at 0 s
+    assert whooshes == [0, 14]  # the plate at 6 s is within 8 s of the one at 0 s
     assert next(s for s in sfx if s.path.name == "pop.wav").gain_db == compose.SFX_GAIN["pop"]
 
 
@@ -394,6 +498,7 @@ ADJ = [(10.0, 14.2, -10.0), (14.2, 14.5, -60.0), (20.0, 25.0, -10.0)]
 def _eval_expr(expr, t):
     """Tiny evaluator for the nested if(lt(t,x),a,b) / numeric expressions volume_expr emits."""
     import re
+
     py = re.sub(r"\blt\(", "_lt(", expr)
     py = re.sub(r"\bif\(", "_if(", py)
     return eval(py, {"_lt": lambda a, b: a < b, "_if": lambda c, a, b: a if c else b, "t": t})
@@ -405,7 +510,7 @@ def test_duck_gain_is_continuous_and_matches_windows():
     assert g(5.0) == 1.0 and g(17.0) == 1.0 and g(30.0) == 1.0
     assert g(12.0) == pytest.approx(10 ** (-10 / 20)) and g(22.0) == pytest.approx(10 ** (-10 / 20))
     assert g(14.35) == pytest.approx(10 ** (-60 / 20))
-    max_step = (1.0 / r) * 0.001 * 1.01          # steepest ramp: full unity swing over DUCK_RAMP, per 1 ms
+    max_step = (1.0 / r) * 0.001 * 1.01  # steepest ramp: full unity swing over DUCK_RAMP, per 1 ms
     prev = g(0.0)
     for k in range(1, 30001):
         cur = g(k * 0.001)
@@ -425,24 +530,49 @@ def test_volume_expr_matches_duck_gain():
 
 def test_mix_audio_duck_edges_do_not_click(tmp_path):
     import subprocess
+
     nar = tmp_path / "nar.wav"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "6", str(nar)], check=True)
+    subprocess.run(
+        ["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "6", str(nar)],
+        check=True,
+    )
     mus = tmp_path / "mus.wav"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=frequency=330:duration=6", "-ar", "48000", str(mus)], check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "lavfi",
+            "-i",
+            "sine=frequency=330:duration=6",
+            "-ar",
+            "48000",
+            str(mus),
+        ],
+        check=True,
+    )
     out = tmp_path / "mix.wav"
     compose.mix_audio(nar, [mus], [], 6.0, out, -12.0, duck=[(2.0, 3.5, -10.0), (3.5, 4.0, -60.0)])
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "48000", "-"],
-                         capture_output=True, check=True).stdout
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "48000", "-"],
+        capture_output=True,
+        check=True,
+    ).stdout
     x = np.frombuffer(raw, np.float32)
     d = np.abs(np.diff(x))
-    ref = float(np.median(d[int(1.6 * 48000):int(1.9 * 48000)]))   # steady, un-ducked, past the fade-in
+    ref = float(np.median(d[int(1.6 * 48000) : int(1.9 * 48000)]))  # steady, un-ducked, past the fade-in
     for edge in (2.0, 3.5, 4.0):
-        seg = d[int((edge - 0.1) * 48000):int((edge + 0.1) * 48000)]
+        seg = d[int((edge - 0.1) * 48000) : int((edge + 0.1) * 48000)]
         assert seg.max() < 3 * ref, f"click at {edge}s: {seg.max():.5f} vs median {ref:.5f}"
 
 
 def test_quiz_audio_ducks_under_the_countdown_and_silences_before_the_reveal():
-    ovs = [compose.Overlay({"kind": "ring", "quiz": "q"}, 10.0, 13.0), compose.Overlay({"kind": "circle", "quiz": "q"}, 14.5, 20)]
+    ovs = [
+        compose.Overlay({"kind": "ring", "quiz": "q"}, 10.0, 13.0),
+        compose.Overlay({"kind": "circle", "quiz": "q"}, 14.5, 20),
+    ]
     duck, cues = compose.quiz_audio(ovs)
     assert (10.0, 14.2, -10.0) in duck and (14.2, 14.5, -60.0) in duck
     assert cues == [(10.0, 14.2)]
@@ -450,16 +580,38 @@ def test_quiz_audio_ducks_under_the_countdown_and_silences_before_the_reveal():
 
 def test_mix_audio_with_a_duck_window_is_quieter_inside_it(tmp_path):
     import subprocess
+
     nar = tmp_path / "nar.wav"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "4", str(nar)], check=True)
+    subprocess.run(
+        ["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "4", str(nar)],
+        check=True,
+    )
     mus = tmp_path / "mus.wav"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=frequency=330:duration=4", "-ar", "48000", str(mus)], check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "lavfi",
+            "-i",
+            "sine=frequency=330:duration=4",
+            "-ar",
+            "48000",
+            str(mus),
+        ],
+        check=True,
+    )
     out = tmp_path / "mix.wav"
     compose.mix_audio(nar, [mus], [], 4.0, out, -12.0, duck=[(2.0, 3.0, -40.0)])
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "8000", "-"],
-                         capture_output=True, check=True).stdout
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "8000", "-"],
+        capture_output=True,
+        check=True,
+    ).stdout
     x = np.frombuffer(raw, np.float32)
-    rms = lambda a, b: float(np.sqrt(np.mean(x[int(a * 8000):int(b * 8000)] ** 2)))
+    rms = lambda a, b: float(np.sqrt(np.mean(x[int(a * 8000) : int(b * 8000)] ** 2)))
     assert rms(2.2, 2.8) < 0.1 * rms(1.6, 1.9)
 
 
@@ -481,9 +633,11 @@ def test_punch_never_exceeds_prescale_even_on_top_of_drift_and_pushes(tmp_path):
 
 def test_attach_punches_from_reveal_circles_and_punch_items():
     g = compose.Group("a", 0, 10, "illustration")
-    ovs = [compose.Overlay({"kind": "circle", "quiz": "q"}, 4.0, 9.0),
-           compose.Overlay({"kind": "punch", "focus": [0.3, 0.4]}, 7.0, 7.1),
-           compose.Overlay({"kind": "card"}, 1.0, 9.0)]
+    ovs = [
+        compose.Overlay({"kind": "circle", "quiz": "q"}, 4.0, 9.0),
+        compose.Overlay({"kind": "punch", "focus": [0.3, 0.4]}, 7.0, 7.1),
+        compose.Overlay({"kind": "card"}, 1.0, 9.0),
+    ]
     kept = compose.attach_punches([g], ovs)
     assert [o.spec["kind"] for o in kept] == ["circle", "card"]
     assert g.punches == [(4.0, None), (7.0, [0.3, 0.4])]
@@ -491,20 +645,26 @@ def test_attach_punches_from_reveal_circles_and_punch_items():
 
 # ---- final-fix review findings
 
+
 def test_short_or_broken_quiz_warns_and_is_skipped(capsys):
-    words = [{"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in
-             enumerate("what's the average fifty five roughly thirty five".split())]
+    words = [
+        {"word": w, "start": i * 0.5, "end": i * 0.5 + 0.4}
+        for i, w in enumerate("what's the average fifty five roughly thirty five".split())
+    ]
     g = compose.Group("s001", 0.0, 10.0, "illustration")
-    missing = dict(QUIZ, ask_anchor="what's the average")                       # no reveal_anchor key
+    missing = dict(QUIZ, ask_anchor="what's the average")  # no reveal_anchor key
     assert compose.resolve_overlays([missing], words, [g], None) == []
     assert "quiz q2" in capsys.readouterr().err
-    short = dict(QUIZ, ask_anchor="what's the average", reveal_anchor="fifty five")   # reveal 0.9 s after ask end
+    short = dict(QUIZ, ask_anchor="what's the average", reveal_anchor="fifty five")  # reveal 0.9 s after ask end
     assert compose.resolve_overlays([short], words, [g], None) == []
     assert "warn" in capsys.readouterr().err
 
 
 def test_quiz_audio_skips_a_quiz_with_no_room_for_the_countdown():
-    ovs = [compose.Overlay({"kind": "ring", "quiz": "q"}, 10.0, 10.1), compose.Overlay({"kind": "circle", "quiz": "q"}, 10.2, 20)]
+    ovs = [
+        compose.Overlay({"kind": "ring", "quiz": "q"}, 10.0, 10.1),
+        compose.Overlay({"kind": "circle", "quiz": "q"}, 10.2, 20),
+    ]
     assert compose.quiz_audio(ovs) == ([], [])
 
 
@@ -517,9 +677,9 @@ def test_punch_settles_back_even_after_many_boundaries(tmp_path):
     g2 = compose.Group("a", 0.0, 10.0, "illustration", boundaries=g.boundaries, still=still)
     g2.punches = [(3.1, None)]
     src = compose.Source(g2, 192, 108, tmp_path, 0)
-    assert src.zoom(3.25)[0] > src.zoom(3.09)[0] + 0.005          # peak above the pre-punch zoom
+    assert src.zoom(3.25)[0] > src.zoom(3.09)[0] + 0.005  # peak above the pre-punch zoom
     decay = [src.zoom(t)[0] for t in (3.25, 3.4, 3.6, 3.8)]
-    assert all(a > b for a, b in zip(decay, decay[1:]))             # no plateau at the clamp
+    assert all(a > b for a, b in zip(decay, decay[1:]))  # no plateau at the clamp
     assert src.zoom(4.3)[0] == pytest.approx(nopunch.zoom(4.3)[0])  # 1.2 s on: settled
 
 
@@ -536,7 +696,7 @@ def test_countdown_digits_start_after_the_last_card_pop():
     last_pop = 10.1 + 2 * compose.QUIZ_POP_GAP
     ring = next(p for p in parts if p[0]["kind"] == "ring")
     assert digits[0][1] == pytest.approx(last_pop + 0.15) and digits[-1][2] == pytest.approx(ring[2])
-    assert ring[1] == pytest.approx(digits[0][1])   # G5 note: ring and 3-2-1 start together
+    assert ring[1] == pytest.approx(digits[0][1])  # G5 note: ring and 3-2-1 start together
 
 
 def test_countdown_ring_shortens_when_the_reveal_comes_early():
@@ -553,7 +713,10 @@ def test_reveal_circle_focuses_its_own_card():
 
 def test_overlay_sfx_outside_the_allowlist_is_ignored(tmp_path):
     d = _sfx_files(tmp_path)
-    ovs = [compose.Overlay({"kind": "label", "sfx": "pencil"}, 3.0, 5.0), compose.Overlay({"kind": "label", "sfx": "pop"}, 4.0, 5.0)]
+    ovs = [
+        compose.Overlay({"kind": "label", "sfx": "pencil"}, 3.0, 5.0),
+        compose.Overlay({"kind": "label", "sfx": "pop"}, 4.0, 5.0),
+    ]
     out = compose.plan_sfx([], ovs, d, None)
     assert [s.path.stem for s in out] == ["pop"]
 

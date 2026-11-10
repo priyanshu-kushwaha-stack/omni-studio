@@ -14,7 +14,7 @@ ALL = CODE_DRAWN + ("say-suppose",)
 
 
 def _rgb(hex_colour: str) -> tuple[int, int, int]:
-    return tuple(int(hex_colour[i:i + 2], 16) for i in (1, 3, 5))
+    return tuple(int(hex_colour[i : i + 2], 16) for i in (1, 3, 5))
 
 
 def _scene(tmp_path):
@@ -116,8 +116,11 @@ def test_banner_name_and_line_do_not_overlap(slug, tmp_path):
 
 @pytest.mark.parametrize("slug", ALL)
 def test_a_long_name_shrinks_instead_of_leaving_the_safe_area(slug, tmp_path, monkeypatch):
-    long = dataclasses.replace(page.BRANDS[slug], name="A Much Longer Channel Name Than Any Real One",
-                               line="A banner line that also runs on for far longer than the real one does today")
+    long = dataclasses.replace(
+        page.BRANDS[slug],
+        name="A Much Longer Channel Name Than Any Real One",
+        line="A banner line that also runs on for far longer than the real one does today",
+    )
     monkeypatch.setitem(page.BRANDS, slug, long)
     _, boxes = _banner(slug, tmp_path)
     for what, box in boxes.items():
@@ -142,7 +145,10 @@ def test_crops_are_the_three_views_youtube_shows(tmp_path):
     out, _ = _banner("see-underneath", tmp_path)
     paths = page.crops(out, tmp_path / "crops")
     assert {k: Image.open(p).size for k, p in paths.items()} == {
-        "tv": (2560, 1440), "desktop": (2560, 423), "phone": (1546, 423)}
+        "tv": (2560, 1440),
+        "desktop": (2560, 423),
+        "phone": (1546, 423),
+    }
 
 
 def test_picture_from_an_illustration_is_cropped_square_and_sized(tmp_path):
@@ -172,5 +178,4 @@ def test_a_missing_font_fails_loudly():
 def test_command_line_builds_a_page_folder(tmp_path):
     assert page.main(["build", "see-underneath", "-o", str(tmp_path / "page")]) == 0
     made = {p.relative_to(tmp_path / "page").as_posix() for p in (tmp_path / "page").rglob("*.png")}
-    assert made == {"avatar.png", "banner.png", "watermark.png",
-                    "crops/tv.png", "crops/desktop.png", "crops/phone.png"}
+    assert made == {"avatar.png", "banner.png", "watermark.png", "crops/tv.png", "crops/desktop.png", "crops/phone.png"}

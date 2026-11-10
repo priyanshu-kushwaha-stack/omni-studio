@@ -1,0 +1,40 @@
+# Size budget records (studio.sizes): modules over 500 lines and functions over 60
+# on 2026-11-10. A record may only shrink. Lower them with `python -m studio.sizes baseline`.
+modules:
+  core/engines/pou/scripts/compose.py: 1160
+  core/engines/pou/scripts/puppet.py: 662
+  core/engines/pou/scripts/puppet_render.py: 617
+  core/engines/pou/tests/test_compose.py: 727
+  core/studio/channels.py: 523
+  core/studio/publish/youtube.py: 572
+  core/studio/tests/test_channels.py: 715
+  core/studio/tests/test_publish.py: 763
+  core/studio/tests/test_room_call.py: 506
+  core/studio/tests/test_room_cli.py: 609
+  core/studio/tests/test_room_evidence.py: 511
+  core/studio/tests/test_studio_short.py: 523
+functions:
+  core/engines/pou/scripts/compose.py::quiz_parts: 62
+  core/engines/pou/scripts/compose.py::render: 123
+  core/engines/pou/scripts/overlay_check.py::analyse: 67
+  core/engines/pou/scripts/puppet.py::draw_features: 77
+  core/engines/pou/scripts/puppet_render.py::Scene.__init__: 126
+  core/engines/pou/scripts/puppet_render.py::build_pose: 70
+  core/engines/pou/scripts/puppet_render.py::cmd_check: 81
+  core/engines/pou/scripts/puppet_render.py::cmd_render: 133
+  core/engines/pou/scripts/scene_plan_from_script.py::align: 70
+  core/engines/pou/scripts/scene_plan_from_script.py::build_plan: 90
+  core/engines/pou/scripts/script_lint.py::lint_script: 84
+  core/engines/pou/scripts/short_rigs.py::build: 156
+  core/engines/whatif/pipeline/dub_narration.py::main: 74
+  core/engines/whatif/pipeline/mix_narration.py::mix: 73
+  core/engines/whatif/pipeline/story.py::build: 89
+  core/studio/channels.py::approve_stage: 64
+  core/studio/cli.py::main: 129
+  core/studio/publish/youtube.py::build_request: 105
+  core/studio/publish/youtube_auth.py::authorize: 86
+  core/studio/room/__main__.py::cmd_seat: 67
+  core/studio/room/call.py::run_seat: 82
+  core/studio/room/evidence.py::_verify: 159
+  core/studio/tests/test_studio_short.py::_walk_to_g6: 64
+  core/studio/tests/test_studio_short.py::test_publish_binds_qc_approval_and_upload_to_one_file: 70

@@ -27,6 +27,8 @@ dev = [
     "pytest>=8.0",
     "pytest-asyncio>=0.23",
     "httpx>=0.24",
+    "pytest-xdist==3.8.0",
+    "ruff==0.17.2",
 ]
 # The Professor of Us engine (core/engines/pou), pinned as faceless-channel's requirements-dev.txt.
 # Media models (torch, mlx, chatterbox, mflux) live in .venv-media: requirements-media.txt.
@@ -37,6 +39,53 @@ engine = [
 
 [tool.uv]
 default-groups = ["dev", "engine"]
+
+[tool.ruff]
+# Only the studio layer and the engines. core/openmontage is upstream: its edits go through core/PATCHES.md.
+# force-exclude keeps the exclusions when an editor or hook passes file paths directly.
+line-length = 120
+target-version = "py312"
+extend-exclude = ["core/openmontage", "channels", "**/node_modules"]
+force-exclude = true
+
+[tool.ruff.lint]
+select = ["F", "B", "C901"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.lint.per-file-ignores]
+# Offenders on 2026-11-10, ignored rather than rewritten. Remove a line when its file is fixed; never add one for
+# new code. The B023 hits (puppet_render.py, test_publish.py) are false positives: each closure runs in the same
+# loop iteration that defines it.
+"core/engines/pou/scripts/compose.py" = ["B905", "F401"]
+"core/engines/pou/scripts/dub.py" = ["B905"]
+"core/engines/pou/scripts/puppet.py" = ["B905", "C901"]
+"core/engines/pou/scripts/puppet_render.py" = ["B023", "C901"]
+"core/engines/pou/scripts/scene_plan_check.py" = ["B905"]
+"core/engines/pou/scripts/scene_plan_from_script.py" = ["B007", "B905", "C901"]
+"core/engines/pou/scripts/short_plan.py" = ["B905"]
+"core/engines/pou/scripts/short_rigs.py" = ["C901", "F401"]
+"core/engines/pou/tests/test_compose.py" = ["B905", "F841"]
+"core/engines/pou/tests/test_scene_plan_from_script.py" = ["B905"]
+"core/engines/pou/tests/test_script_lint.py" = ["B905"]
+"core/engines/whatif/pipeline/dub_narration.py" = ["B905"]
+"core/engines/whatif/pipeline/story.py" = ["C901"]
+"core/engines/whatif/pipeline/subtitles.py" = ["B905"]
+"core/studio/channels.py" = ["C901"]
+"core/studio/checks.py" = ["C901"]
+"core/studio/claims.py" = ["C901"]
+"core/studio/cli.py" = ["C901"]
+"core/studio/publish/youtube.py" = ["C901"]
+"core/studio/publish/youtube_auth.py" = ["F401"]
+"core/studio/room/config.py" = ["C901"]
+"core/studio/room/evidence.py" = ["C901", "F401"]
+"core/studio/tests/conftest.py" = ["F401"]
+"core/studio/tests/test_channels.py" = ["B905"]
+"core/studio/tests/test_publish.py" = ["B023"]
+"core/studio/tests/test_room_call.py" = ["F841"]
+"core/studio/tests/test_room_lint.py" = ["F401"]
+"core/studio/tests/test_whatif_story_lint.py" = ["F401"]
 
 [project.scripts]
 omni = "studio.cli:main"

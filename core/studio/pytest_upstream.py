@@ -17,8 +17,7 @@ def channel_link_names(styles_dir: Path) -> set[str]:
     if not custom.is_dir():
         return set()
     channels = (styles_dir.resolve().parents[2] / "channels").resolve()
-    return {p.stem for p in custom.glob("*.yaml")
-            if p.is_symlink() and p.resolve().is_relative_to(channels)}
+    return {p.stem for p in custom.glob("*.yaml") if p.is_symlink() and p.resolve().is_relative_to(channels)}
 
 
 def pytest_configure(config):
