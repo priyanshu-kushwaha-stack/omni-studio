@@ -7,7 +7,7 @@ video 2 (`adopted: 2026-11-09`); the pause-time video and the UBI folder were re
 |---|---|---|---|
 | first-time viewer (viewer) | Claude Opus 5.5 | `seats/first-time-viewer.md` | story #2, #3, #4, #11, the viewer's week; at G1 thumbnails K5-K7, K12, K13, K15 |
 | story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1, #5, #6, #7, #9, #12, the two late-rule fails, the 8-minute reason |
-| fact-checker (fact) | Gemini 3.7 Flash | `seats/fact-checker.md` | every unsupported or overstated line (fact blockers are never dropped) |
+| fact-checker (fact) | Gemini 3.8 Flash | `seats/fact-checker.md` | every unsupported or overstated line (fact blockers are never dropped) |
 | director (craft) | Claude Opus 5.5 | `seats/director.md` | story #2, #3, #8, #10 |
 | judge | GPT-5.6 Sol | shared | breaks ties between candidates only |
 
