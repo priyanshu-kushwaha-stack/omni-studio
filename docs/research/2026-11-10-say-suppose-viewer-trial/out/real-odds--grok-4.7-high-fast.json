@@ -1,0 +1,89 @@
+{
+  "script": "real-odds",
+  "model": "grok-4.7-high-fast",
+  "exit": 0,
+  "seconds": 360,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "grok-4.7-high-fast",
+    "family": "xai",
+    "status": "ok",
+    "scores": {
+      "story #2 confirm the click": 3,
+      "story #3 second hook by 0:30": 7,
+      "story #4 a habit then the change": 8,
+      "story #11 never say the feeling": 5,
+      "the viewer's week": 6,
+      "K13 payoff by 0:30": 8
+    },
+    "blockers": [
+      {
+        "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+        "why": "story #2 Confirm the click: at about 115 words a minute this line is 6.8s, and the 0.2s hold in front of it fills the first 7s. I clicked a shocked face beside a crimson 0.04% chip. That picture is the pose at line 20 and the tag at line 22, about 12s in. I would leave here.",
+        "fix": "Open on the thumbnail: night hall, eyes wide, crimson chip already at 0.04%, pen stopped on the topper's notes. Replace the line with: Row three. Like every night. Then this.",
+        "domain": "viewer",
+        "line": 17
+      },
+      {
+        "quote": "He didn't even argue.",
+        "why": "story #11 Never say the feeling: the 9s peak already showed the nod, the chip draining to grey, and the bat rolling under the cupboard. This line says what the shot just showed.",
+        "fix": "Cut the line. Come out of the peak on the dark gap under the cupboard and go to the bus.",
+        "domain": "viewer",
+        "line": 114
+      },
+      {
+        "quote": "The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+        "why": "The viewer's week: the jogger and the boy on the shop counter are examples, and they are not chai, the bus, exams, the office, or family.",
+        "fix": "Cut the jogger and the boy. From the bus window go straight to the teacher at his form, the topper at her keyboard, the chai stall, and Aarav's dark chip.",
+        "domain": "viewer",
+        "line": 120
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 33,
+        "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+        "fix": "A lecture: this line, then line 34, while I only nod, and it sounds like a teacher. Cut the opener and say it off his fluttering chip: The one thing he'd choose with nobody watching. It never says what. It starts where the crowd starts, then it moves when he turns the page."
+      },
+      {
+        "line": 31,
+        "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+        "fix": "I can name the chair and the title question by 0:30, but this stake starts after the 2s hold, about 0:31, and finishes near 0:39. Say it on the grid before the hold: A year of your life. On that one chair. So... keep going?"
+      },
+      {
+        "line": 38,
+        "quote": "The ident: the title card (C) slides in on the channel's four-note signal while the camera drifts across the hall's glowing chips behind it.",
+        "fix": "Three seconds where nothing new happens to me. Keep the four-note sting under a second and cut to Aarav in the lane on the last note."
+      },
+      {
+        "line": 119,
+        "quote": "The last bus home. And you can't stop reading them. Like timetables.",
+        "fix": "The window already shows me staring. Say: The last bus home. A chip in every window. Like timetables."
+      },
+      {
+        "line": 106,
+        "quote": "Your own number moves. You've seen it. His... you just read.",
+        "fix": "His chip is just sitting at 0.2%, so I cannot see what moved. Say: His is still zero point two. You can watch yours move. His, you only read."
+      }
+    ],
+    "keep": [
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 91,
+        "quote": "Copying their notes was never going to copy their number."
+      },
+      {
+        "line": 136,
+        "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+      }
+    ],
+    "error": ""
+  }
+}

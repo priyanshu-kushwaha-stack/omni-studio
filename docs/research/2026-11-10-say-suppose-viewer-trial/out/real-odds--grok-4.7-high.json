@@ -1,0 +1,79 @@
+{
+  "script": "real-odds",
+  "model": "grok-4.7-high",
+  "exit": 0,
+  "seconds": 595,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "grok-4.7-high",
+    "family": "xai",
+    "status": "ok",
+    "scores": {
+      "story #2": 3,
+      "story #3": 4,
+      "story #4": 8,
+      "story #11": 8,
+      "viewer's week": 4,
+      "K13": 8
+    },
+    "blockers": [
+      {
+        "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+        "why": "story #2: at 115 words a minute this line runs almost the whole first 7 seconds, so I am still watching you copy notes. The thumbnail I clicked is the shocked face beside the crimson 0.04% chip, and that picture (line 20) starts only after this line plus line 19, near 12 seconds.",
+        "fix": "Row three. Copying. Like every night. Replace line 19 with: Over every head.",
+        "domain": "viewer",
+        "line": 17
+      },
+      {
+        "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+        "why": "story #3: this line starts at about 0:31 and 'a year of your life' lands nearer 0:36, after 56 earlier words, the 0.2s opening hold and the 2s hold on line 29. By 0:30 I can say the title question and 'one chair out of two thousand five hundred.' The year I can lose is still ahead.",
+        "fix": "Keep this line after the chair. Replace line 29 with: > HOLD: 0.5 s. The one crimson chair pulses once. Use the shorter opening in the story #2 fix so this line starts near 0:23.",
+        "domain": "viewer",
+        "line": 31
+      },
+      {
+        "quote": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+        "why": "The viewer's week: this is the line where I stop. The jogger and the boy on the counter are outside my week (chai, the bus, exams, the office, family). The bus rolls and nothing happens to me.",
+        "fix": "> HOLD: 2.5 s. The bus rolls past the coaching centre, the chai stall and your lane: chips only over the teacher, the topper, the chaiwala and Aarav.",
+        "domain": "viewer",
+        "line": 120
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 33,
+        "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+        "fix": "Each chip is the thing they'd choose with nobody watching, and it moves when they do."
+      },
+      {
+        "line": 89,
+        "quote": "You've been wearing the crowd's number. Like a verdict.",
+        "fix": "Replace lines 89 to 91 with one line: Copying their notes never copied their number. Yours moved down."
+      },
+      {
+        "line": 106,
+        "quote": "Your own number moves. You've seen it. His... you just read.",
+        "fix": "Yours changes when you work. His, you only read."
+      }
+    ],
+    "keep": [
+      {
+        "line": 28,
+        "quote": "One chair. Out of two thousand five hundred."
+      },
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 136,
+        "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+      }
+    ],
+    "error": ""
+  }
+}

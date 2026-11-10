@@ -1,0 +1,96 @@
+{
+  "script": "real-odds-fable",
+  "model": "grok-4.7-high",
+  "exit": 0,
+  "seconds": 939,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "grok-4.7-high",
+    "family": "xai",
+    "status": "ok",
+    "scores": {
+      "story #2 confirm the click": 7,
+      "story #3 second hook": 3,
+      "story #4 habit": 8,
+      "story #11 never say the feeling": 4,
+      "the viewer's week": 9,
+      "K13 payoff time": 9,
+      "stay": 6
+    },
+    "blockers": [
+      {
+        "quote": "Another year, for that chair. Keep going?",
+        "why": "story #3. At about 115 words a minute this second hook ends near 0:40. At 0:30 I am still hearing line 33, so I know the chip rule and cannot yet say that I can lose the year, or that the question is whether I keep going.",
+        "fix": "Move this line to immediately after line 31, before \"It starts at the crowd's number. Then it moves with what you do.\" Same words in that slot: Another year, for that chair. Keep going? Spoken there, it ends near 0:28.",
+        "domain": "viewer",
+        "line": 39
+      },
+      {
+        "quote": "A chip in every window.",
+        "why": "story #11. The six-second crane just showed a chip in every window. The line says the shot and adds nothing.",
+        "fix": "You hunt the brightest. Same as the hall.",
+        "domain": "viewer",
+        "line": 235
+      },
+      {
+        "quote": "The chaiwala, sixty-one, painting a new board at midnight.",
+        "why": "story #11. I can see him painting the board, and I already know sixty-one. Nothing new happens to me.",
+        "fix": "Sixty-one. He didn't shop for it either.",
+        "domain": "viewer",
+        "line": 241
+      },
+      {
+        "quote": "The topper, eight, at her keyboard, headphones on.",
+        "why": "story #11. This is where I stop watching. Headphones and the keyboard are the whole shot, and it is the second window in a row that does nothing new to me.",
+        "fix": "Eight. Still not your exam.",
+        "domain": "viewer",
+        "line": 245
+      },
+      {
+        "quote": "The teacher, three, marking your mock, then opening his own notes.",
+        "why": "story #11. The red pen and his own notes are already the shot. The line narrates them.",
+        "fix": "Three. He didn't shop for it. He sat his own.",
+        "domain": "viewer",
+        "line": 249
+      },
+      {
+        "quote": "And right below you, one window with no light in it.",
+        "why": "story #11. The tilt already found the one dark window, and the next four seconds hold on that same picture. The line describes it.",
+        "fix": "Aarav's is the dark one.",
+        "domain": "viewer",
+        "line": 257
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 185,
+        "quote": "Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.",
+        "fix": "Cut this line. I am still on the bus and the story is standing still: line 183 already said the ninety-one was the crowd watching me copy. Go straight to the drawer."
+      },
+      {
+        "line": 290,
+        "quote": "So here's the honest part. It's still tiny. So is yours. The chips never lied.",
+        "fix": "It's still tiny. So is yours. The chips never lied."
+      }
+    ],
+    "keep": [
+      {
+        "line": 90,
+        "quote": "Four hundred of you are asking directions from a man who's still looking for the place."
+      },
+      {
+        "line": 261,
+        "quote": "The biggest number tells you what is likely. It cannot tell you what is worth choosing."
+      },
+      {
+        "line": 288,
+        "quote": "He can't see it. He never could. He was fine until you read it to him."
+      }
+    ],
+    "error": ""
+  }
+}
