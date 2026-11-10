@@ -11,5 +11,7 @@ a face or out of the safe area. The owner watches at 1x with cold viewers. Tests
 watching is. `status: awaiting_human`, then stop.
 
 After the watch, add one line per cold viewer to `channels/<slug>/taste.md`, dated: where they looked away, laughed,
-asked a question or reached for the phone. No model reviews this stage. While the final-watch render runs, prepare G5
+asked a question or reached for the phone. Where several pause at the same moment, that moment is an edit note: a small
+fix (a colour, a background, a cut) can stop a mass drop-off. Then record the **one named thing this film improved** on
+the last one, also in `taste.md`, so each film beats the one before. No model reviews this stage. While the final-watch render runs, prepare G5
 (`studio-whatif-publish`) so the owner can take G4 and G5 in one sitting.

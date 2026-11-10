@@ -54,6 +54,9 @@ The first review gets the script, a free local narration and a 720p first cut. N
     loop's work: revise, re-run lint and qc, re-voice (only changed lines), and re-render the scenes whose words
     changed (picture notes are kept for picture lock unless they are quick). Show the updated cut each pass. One room
     round per gate; owner notes outrank the room and an owner-notes round takes them in (`studio-room`).
+    **Listen, don't just read.** Play the local narration end to end each pass; a line that tires on the second listen
+    is cut (Dr Plants). Offer the owner the stranger test: the opening played to one person who doesn't care about the
+    topic, alone and unannounced, with where they looked away noted in `taste.md`.
 12. `.venv/bin/omni qc <slug> <video> story_script` (claims, clicks) must pass on the current narration.
 13. When the owner says the script and narration are right: `status: awaiting_human`, then stop. G2 locks the script
     and the local narration together.
