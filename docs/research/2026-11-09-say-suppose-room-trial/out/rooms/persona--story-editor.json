@@ -1,0 +1,75 @@
+{
+  "room": "persona",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "exit": 0,
+  "seconds": 160,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "story editor",
+    "role": "story",
+    "model": "gpt-5.6-sol-high",
+    "family": "openai",
+    "status": "ok",
+    "scores": {
+      "five-line spine": 9,
+      "but/therefore causality": 7,
+      "expectation gaps": 7,
+      "misconception first": 8,
+      "earned stakes": 9,
+      "ending": 9,
+      "length": 10
+    },
+    "blockers": [
+      {
+        "quote": "Row three. Your own notes this time. And the chip... stirs.",
+        "why": "Check #6 Every use has a gap fails: you choose your own notes expecting improvement, and receive exactly that.",
+        "fix": "Replace with: \u201cRow three. Your own notes. You expect a jump. The chip barely twitches.\u201d",
+        "domain": "story",
+        "line": 96
+      },
+      {
+        "quote": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+        "why": "Check #5 But / therefore fails: this montage only repeats that chips move with actions; it creates no turn.",
+        "fix": "Cut this hold and move directly from the city reveal to the teacher\u2019s window, beginning a montage that turns your understanding of what the numbers represent.",
+        "domain": "story",
+        "line": 120
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 80,
+        "quote": "> SCENE: The chaiwala's chip turns over like a card. On its back, a stamped label.",
+        "fix": "Keep chips numeral-only. Reveal the second-stall goal through his coin tin or drawing, and likewise reveal the teacher\u2019s and topper\u2019s goals through their actions; remove the goal tags at lines 81, 122 and 125."
+      },
+      {
+        "line": 74,
+        "quote": "> HOLD: 2.5 s. Montage, under a second each: you pour tea onto your own shoe; you count change wrong; you nap on a sack of tea leaves. Above, in the coaching centre's lit window, the batch goes on without you.",
+        "fix": "Replace the familiar incompetence gags with one premise-specific reversal: you copy the chaiwala\u2019s high pour perfectly, but his chip stays at sixty-one while yours falls and the mock papers appear upstairs."
+      },
+      {
+        "line": 89,
+        "quote": "You've been wearing the crowd's number. Like a verdict.",
+        "fix": "Replace with: \u201cYour number started with the crowd. You wore it like a verdict.\u201d"
+      }
+    ],
+    "keep": [
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 114,
+        "quote": "He didn't even argue."
+      },
+      {
+        "line": 136,
+        "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+      }
+    ],
+    "error": ""
+  }
+}

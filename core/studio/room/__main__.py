@@ -1,6 +1,6 @@
 """python -m studio.room: the room's tools for the studio-room skill. A2 puts `omni room` on top of this.
 
-Every subcommand takes a video folder and a gate (g1 or g2). Exit codes: 0 ok, 1 checks failed, 2 usage error.
+Every subcommand but `times` (a video folder) and `scorecard` (the channel) takes a video folder and a gate (g1 or g2). Exit codes: 0 ok, 1 checks failed, 2 usage error.
 """
 
 from __future__ import annotations
@@ -12,8 +12,17 @@ from pathlib import Path
 from typing import Optional
 
 from studio.room import report as R
+from studio.room import times as T
 from studio.room.call import CallContext, is_secret_path, run_seat
-from studio.room.config import SEATS_DIR, RoomConfigError, derived_cap, load_room, seat_slug, validate
+from studio.room.config import (
+    SEATS_DIR,
+    RoomConfigError,
+    derived_cap,
+    load_room,
+    required_roles,
+    seat_slug,
+    validate,
+)
 from studio.room.evidence import verify
 from studio.room.judge import run_judge
 from studio.room.ledger import CapReached, Ledger
@@ -161,6 +170,39 @@ def cmd_lint(args) -> int:
     return 0 if rep.ok else 1
 
 
+def _round_ready(args, cfg, video: Path) -> Optional[dict]:
+    """The round's meta when a seat may run: linted, and under owner_first round 1's draft already shown to the owner."""
+    meta = _meta(video, args.gate, args.round)
+    if meta is None:
+        print(f"run lint for round {args.round} first", file=sys.stderr)
+        return None
+    presented = R.read_presented(video, args.gate) or {}
+    if cfg.owner_first and args.round == 1 and presented.get("draft_sha256") != meta["draft_sha256"]:
+        print(
+            "owner first: show round 1's draft to the owner, then run `python -m studio.room present "
+            f"{args.video_dir} {args.gate} --config {args.config}` before any seat",
+            file=sys.stderr,
+        )
+        return None
+    return meta
+
+
+def cmd_present(args) -> int:
+    """Record that round 1's linted draft went to the owner; under owner_first the round-1 seats wait for this."""
+    cfg = load_room(Path(args.config))
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
+    meta = _meta(video, args.gate, 1)
+    if meta is None or not (meta.get("lint") or {}).get("ok"):
+        print("lint round 1 clean first: the owner reads a draft that passed lint (and omni qc at G2)", file=sys.stderr)
+        return 2
+    record = {"draft_sha256": meta["draft_sha256"], "at": R.now_iso()}
+    R.presented_path(video, args.gate).write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"presented": record["draft_sha256"], "at": record["at"]}))
+    return 0
+
+
 def cmd_seat(args) -> int:
     cfg = load_room(Path(args.config))
     if _problems(cfg):
@@ -168,9 +210,8 @@ def cmd_seat(args) -> int:
     video = _video_in(args, cfg)
     if video is None:
         return 2
-    meta = _meta(video, args.gate, args.round)
+    meta = _round_ready(args, cfg, video)
     if meta is None:
-        print(f"run lint for round {args.round} first", file=sys.stderr)
         return 2
     seat = next((s for s in cfg.seats if s.name == args.seat), None)
     if seat is None:
@@ -245,8 +286,9 @@ def cmd_judge(args) -> int:
     inputs = _read_inputs(args.input, cfg, reserved=("draft",))
     if inputs is None:
         return 2
-    best = R.best_before(rounds, args.round)
-    if best is None or not R.is_candidate(current):
+    required = required_roles(cfg)
+    best = R.best_before(rounds, args.round, required)
+    if best is None or not R.is_candidate(current, required):
         print(json.dumps({"judged": False, "why": "fewer than two candidates"}))
         return 0
     if (R.round_dir(video, args.gate, args.round) / "judge.json").exists() or Ledger().count(
@@ -296,8 +338,10 @@ def cmd_report(args) -> int:
         stage=args.stage,
         channel=channel,
         writer_family=family_of(cfg.writer),
+        writer=cfg.writer,
         ledger=Ledger(),
         cap=derived_cap(cfg),
+        required=required_roles(cfg),
     )
     js, md = R.write_report(video, rep)
     print(f"{js}\n{md}")
@@ -316,6 +360,21 @@ def cmd_verify(args) -> int:
         problems = [f"room/{args.gate}.json cannot be read: {exc}"]
     print("\n".join(problems) if problems else "room evidence ok")
     return 1 if problems else 0
+
+
+def cmd_times(args) -> int:
+    cfg = load_room(Path(args.config))
+    video = _video_in(args, cfg)
+    if video is None:
+        return 2
+    print(T.render_times(T.gate_times(video, Ledger(), _channel(args))), end="")
+    return 0
+
+
+def cmd_scorecard(args) -> int:
+    cfg = load_room(Path(args.config))
+    print(T.render_scorecard(T.scorecard(Path(cfg.channel_dir))), end="")
+    return 0
 
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -337,6 +396,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     s.add_argument("--ledger-file")
     s.add_argument("--owner-notes", action="store_true")
     s.set_defaults(fn=cmd_lint)
+    s = sub.add_parser("present")
+    common(s)
+    s.set_defaults(fn=cmd_present)
     s = sub.add_parser("seat")
     common(s)
     s.add_argument("--round", type=int, required=True)
@@ -353,6 +415,14 @@ def main(argv: Optional[list[str]] = None) -> int:
     common(s)
     s.add_argument("--stage", required=True)
     s.set_defaults(fn=cmd_report)
+    s = sub.add_parser("times")
+    s.add_argument("video_dir")
+    s.add_argument("--channel")
+    s.add_argument("--config", required=True)
+    s.set_defaults(fn=cmd_times)
+    s = sub.add_parser("scorecard")
+    s.add_argument("--config", required=True)
+    s.set_defaults(fn=cmd_scorecard)
     s = sub.add_parser("verify")
     common(s, config=False)
     s.add_argument("--artifact", required=True)

@@ -1,5 +1,6 @@
 import pytest
 import json
+import wave
 from pathlib import Path
 
 import numpy as np
@@ -9,6 +10,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import compose  # noqa: E402
+import sfx_placeholders  # noqa: E402
 
 WORDS = [
     {"word": "Twenty", "start": 0.0, "end": 0.3},
@@ -528,40 +530,32 @@ def test_volume_expr_matches_duck_gain():
         assert _eval_expr(e, t) == pytest.approx(compose.duck_gain(ADJ, t), abs=1e-3)
 
 
-def test_mix_audio_duck_edges_do_not_click(tmp_path):
-    import subprocess
+def _mix_inputs(tmp_path: Path, seconds: float) -> tuple[Path, Path]:
+    """Silent narration and a 330 Hz tone bed at lavfi sine's 1/8 amplitude, written without spawning ffmpeg."""
+    t = np.arange(int(seconds * 48000)) / 48000
+    nar, mus = tmp_path / "nar.wav", tmp_path / "mus.wav"
+    sfx_placeholders._write(nar, np.zeros_like(t))
+    sfx_placeholders._write(mus, np.sin(2 * np.pi * 330 * t) / 8)
+    return nar, mus
 
-    nar = tmp_path / "nar.wav"
-    subprocess.run(
-        ["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "6", str(nar)],
-        check=True,
-    )
-    mus = tmp_path / "mus.wav"
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-y",
-            "-loglevel",
-            "error",
-            "-f",
-            "lavfi",
-            "-i",
-            "sine=frequency=330:duration=6",
-            "-ar",
-            "48000",
-            str(mus),
-        ],
-        check=True,
-    )
+
+def _read_mix(path: Path) -> tuple[np.ndarray, int]:
+    """mix_audio's output as mono floats and its rate (loudnorm writes 192 kHz), read without an ffmpeg decode."""
+    with wave.open(str(path)) as w:
+        assert w.getsampwidth() == 2
+        x = np.frombuffer(w.readframes(w.getnframes()), "<i2").reshape(-1, w.getnchannels())
+        return x.mean(axis=1) / 32768, w.getframerate()
+
+
+def test_mix_audio_duck_edges_do_not_click(tmp_path):
+    nar, mus = _mix_inputs(tmp_path, 6)
     out = tmp_path / "mix.wav"
     compose.mix_audio(nar, [mus], [], 6.0, out, -12.0, duck=[(2.0, 3.5, -10.0), (3.5, 4.0, -60.0)])
-    raw = subprocess.run(
-        ["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "48000", "-"],
-        capture_output=True,
-        check=True,
-    ).stdout
-    x = np.frombuffer(raw, np.float32)
-    d = np.abs(np.diff(x))
+    x, rate = _read_mix(out)
+    assert rate % 48000 == 0
+    # Every (rate/48000)th sample is the mix seen at 48 kHz. Plain decimation, no resampler low-pass, so a click keeps
+    # its full step: this is at least as strict as decoding through ffmpeg's resampler.
+    d = np.abs(np.diff(x[:: rate // 48000]))
     ref = float(np.median(d[int(1.6 * 48000) : int(1.9 * 48000)]))  # steady, un-ducked, past the fade-in
     for edge in (2.0, 3.5, 4.0):
         seg = d[int((edge - 0.1) * 48000) : int((edge + 0.1) * 48000)]
@@ -579,39 +573,11 @@ def test_quiz_audio_ducks_under_the_countdown_and_silences_before_the_reveal():
 
 
 def test_mix_audio_with_a_duck_window_is_quieter_inside_it(tmp_path):
-    import subprocess
-
-    nar = tmp_path / "nar.wav"
-    subprocess.run(
-        ["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "4", str(nar)],
-        check=True,
-    )
-    mus = tmp_path / "mus.wav"
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-y",
-            "-loglevel",
-            "error",
-            "-f",
-            "lavfi",
-            "-i",
-            "sine=frequency=330:duration=4",
-            "-ar",
-            "48000",
-            str(mus),
-        ],
-        check=True,
-    )
+    nar, mus = _mix_inputs(tmp_path, 4)
     out = tmp_path / "mix.wav"
     compose.mix_audio(nar, [mus], [], 4.0, out, -12.0, duck=[(2.0, 3.0, -40.0)])
-    raw = subprocess.run(
-        ["ffmpeg", "-v", "error", "-i", str(out), "-f", "f32le", "-ac", "1", "-ar", "8000", "-"],
-        capture_output=True,
-        check=True,
-    ).stdout
-    x = np.frombuffer(raw, np.float32)
-    rms = lambda a, b: float(np.sqrt(np.mean(x[int(a * 8000) : int(b * 8000)] ** 2)))
+    x, rate = _read_mix(out)
+    rms = lambda a, b: float(np.sqrt(np.mean(x[int(a * rate) : int(b * rate)] ** 2)))
     assert rms(2.2, 2.8) < 0.1 * rms(1.6, 1.9)
 
 

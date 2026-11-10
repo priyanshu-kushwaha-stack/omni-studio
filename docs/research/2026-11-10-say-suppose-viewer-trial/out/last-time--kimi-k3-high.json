@@ -1,0 +1,62 @@
+{
+  "script": "last-time",
+  "model": "kimi-k3-high",
+  "exit": 0,
+  "seconds": 60,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "kimi-k3-high",
+    "family": "moonshot",
+    "status": "ok",
+    "scores": {
+      "G1 packaging as the viewer who taps (title A + 'MOM?' thumb)": 8,
+      "Confirm the click, first 7 s": 9,
+      "Second hook by 0:30": 9,
+      "A habit, then the change": 10,
+      "Never say the feeling": 9,
+      "My week on screen (chai, metro, office, mom, grandpa)": 10,
+      "Would I watch to the end on my phone": 8,
+      "K1-K4, K8-K11, K14": "needs the rendered thumbnail"
+    },
+    "blockers": [],
+    "suggestions": [
+      {
+        "line": 53,
+        "quote": "In one taste test, students were told, \"This is your last chocolate.\"",
+        "fix": "This is the exact line where I would leave: the chai payoff lands ('It's the best chai of your life') and then the video turns into a classroom for three lines \u2014 students, a test, 64%, 'Any flavour' \u2014 while the story stands still. On the metro my thumb moves here. Keep 'Maybe it's not just the chai.', go straight to 'You almost go back for another glass. Then it wouldn't be the last.', then let the fact tail the action in one dry line: 'They ran this test with chocolates. The last one wins (c02).'"
+      },
+      {
+        "line": 36,
+        "quote": "Two trips home a year. Keep that life, and the door gets forty-two more.",
+        "fix": "I had to replay this one in my head: 'the door gets forty-two more' \u2014 forty-two more what, and why does the door get them? At phone speed it stumbles. Replace with: 'Two trips home a year. Keep that life, and forty-two is all she gets.'"
+      },
+      {
+        "line": 103,
+        "quote": "> HOLD: 5 s. The train's rhythm. At each station one passenger steps off to someone waiting on the platform, and both their counters flip down by one as they meet.",
+        "fix": "A 5 s stretch where nothing happens to me \u2014 people I don't know flipping counters I don't care about yet. Start the hold on the dim copy of YOUR head with its own counter in the dark window (the 'wait, I have one too?' jolt), trim to 3 s, and let the station flips play under 'Thirty-nine. Fine. An allowance.'"
+      }
+    ],
+    "keep": [
+      {
+        "line": 56,
+        "quote": "You almost go back for another glass. Then it wouldn't be the last.",
+        "fix": "The line I would screenshot and send a friend."
+      },
+      {
+        "line": 98,
+        "quote": "\"Let's see\" was a plan. And it did the maths.",
+        "fix": "The dry landing that made me put my phone down for a second."
+      },
+      {
+        "line": 164,
+        "quote": "Saying no isn't a plan. A ticket is.",
+        "fix": "The whole film in eight words; must survive every revision."
+      }
+    ],
+    "error": ""
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "script": "real-odds",
+  "model": "claude-fable-5-1",
+  "exit": 0,
+  "seconds": 94,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "claude-fable-5-1",
+    "family": "anthropic",
+    "status": "ok",
+    "scores": {
+      "hook (first 30 s)": 7,
+      "stays on my phone": 8,
+      "clear without pausing": 8,
+      "from Riya's week": 9,
+      "felt, not told": 7
+    },
+    "blockers": [
+      {
+        "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+        "why": "story #2: the thumbnail is me shocked at a crimson 0.04% chip in the hall. This line alone runs about 7 s (13 words), then line 19 lights the crowd's chips and the crimson one only lands at line 22, around 11-12 s. For the first 7 s I see a hall and someone copying notes, not the chip I clicked on.",
+        "fix": "Start the crowd's chips flickering (line 18) under 'topper's notes' and land the crimson chip and the eyes-wide pose (line 20) on 'Like every night', so the thumbnail frame is on screen by about 6 s; line 19 then names what is already lit.",
+        "domain": "viewer",
+        "line": 17
+      },
+      {
+        "quote": "You give it back.",
+        "why": "story #11: the shot already shows it. Line 135 has my hand go into the gap, line 137 has me pull out the bat and knock on his door, and the figure is supposed to answer the choice by acting. The narration repeats the picture.",
+        "fix": "Cut the line. Let line 137's knock be the sound under the cut and go straight into the 4 s hold on line 139.",
+        "domain": "viewer",
+        "line": 138
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 29,
+        "quote": "> HOLD: 2 s. The grid hangs; the one crimson chair pulses once; the camera starts back down.",
+        "fix": "Shorten to 1 s. By my count 'So... keep going?' on line 31 lands at about 0:34-0:36; this hold is what pushes the second hook past 0:30."
+      },
+      {
+        "line": 91,
+        "quote": "Copying their notes was never going to copy their number.",
+        "fix": "Cut it. Lines 86-91 are where I would drift: five explanation lines in an empty hall, and this one restates 89-90. Go from 'But yours moved. Down.' straight to 'So. Back to the kettle, or back to row three?'"
+      },
+      {
+        "line": 33,
+        "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+        "fix": "Drop 'Here's how it works.' It sounds like a teacher opening a lesson; the rule plays fine from 'Each chip is one person's chance...'"
+      },
+      {
+        "line": 96,
+        "quote": "Row three. Your own notes this time. And the chip... stirs.",
+        "fix": "The tag flipping 0.02% to 0.03% and the fluttering cards already show the stir. Try 'Row three. Your own notes this time.' and let the tag change carry the rest; if the sound test needs the word, keep it but drop the hushed breath so it does not double the picture."
+      },
+      {
+        "line": 142,
+        "quote": "But it's his. And it's moving.",
+        "fix": "The hold on line 139 shows the chip flicker grey to warm white; cut 'And it's moving.' and end on 'But it's his.'"
+      }
+    ],
+    "keep": [
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 136,
+        "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+      },
+      {
+        "line": 114,
+        "quote": "He didn't even argue."
+      }
+    ],
+    "error": "",
+    "trimmed": {}
+  }
+}

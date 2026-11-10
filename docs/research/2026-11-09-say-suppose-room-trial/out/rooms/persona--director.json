@@ -1,0 +1,125 @@
+{
+  "room": "persona",
+  "seat": "director",
+  "role": "craft",
+  "model": "claude-fable-5-1",
+  "exit": 0,
+  "seconds": 173,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "director",
+    "role": "craft",
+    "model": "claude-fable-5-1",
+    "family": "anthropic",
+    "status": "ok",
+    "scores": {
+      "confirm_the_click_7s": 4,
+      "second_hook_by_0_30": 5,
+      "premise_picture_before_midpoint": 4,
+      "turn_breaks_a_said_line": 9,
+      "bomb_under_the_table": 6,
+      "face_thing_face": 6,
+      "signposts_every_90s": 8,
+      "two_plus_two": 6,
+      "ending_surprising_but_traceable": 8,
+      "overall_craft": 6
+    },
+    "blockers": [
+      {
+        "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+        "why": "Check #2, confirm the click. The thumbnail is you, shocked, beside a crimson 0.04% chip. This line alone runs about 6 to 7 s at Arthur's tempo, so the first chip appears at about 7 s and your crimson chip (line 20) at about 11 s. The first 7 s show only a student copying notes.",
+        "fix": "Trim the line and let the picture run ahead of the voice. Line 17 becomes 'Row three. Copying the topper's notes. Like every night.' Start line 18's flutter at about 2 s, under 'topper's notes'. In that same wide, your chip is already the one crimson chip in the warm-white field, and your pen stops and your head tips up to it by 5 to 6 s. Line 19 becomes 'A number. Over every head.' The close-up (your face, the chip with its 0.04% tag, your face again with eyes wide) lands on 'And yours says...'.",
+        "domain": "craft",
+        "line": 17
+      },
+      {
+        "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+        "why": "Check #3, second hook by 0:30. On the draft's own clock the rule beat starts at 0:20. Lines 27 and 28 (about 8 s) and the 2 s hold at line 29 come first, so this line starts at about 0:30 and 'keep going?' lands at about 0:36. At 0:30 the viewer has a number and a chair grid, but not what you lose or the question.",
+        "fix": "Move lines 30 and 31 to directly after line 23, before the pull-up. Your eyes drop from the chip to the fee receipt, go to the wall clock, then back up to the chip, over 'A year of fees. A year of your life. On that number. So... keep going?'. That lands by about 0:27, or about 0:23 with the opening trim. Lines 26 to 29 then answer it: 'What's that, in people? One chair. Out of two thousand five hundred.', with the hold on the pulsing chair. Put the fee receipt in line 15's set so it is in frame from the first second.",
+        "domain": "craft",
+        "line": 31
+      },
+      {
+        "quote": "His chip drains from warm white to grey and flips to zero (3 s);",
+        "why": "Check #8, a picture only this premise can show. The outline's named picture (the drain, planned at about 45%) now sits in a HOLD at about 3:22 of a roughly 5:10 film. That is about 65%, past the midpoint at about 2:35. No SCENE line before the midpoint names one.",
+        "fix": "Leave the drain where it is; the cost belongs near 60%. Name a second premise picture before the midpoint by rewriting line 77: '> SCENE: The picture only this premise can show. Wide on the stall: you in the apron, pouring, directly under the chaiwala's steady 61%; beside it your own crimson chip, its cards fluttering down from 0.04 to 0.02 with each cup; in the lit window above, the batch's chips tick up without you. Close on your face: you look up at your own chip, worried.' At about 2:07 this is roughly 40%. It also shows that a chip falls when its owner stops, which arms the drain a minute ahead.",
+        "domain": "craft",
+        "line": 111
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 51,
+        "quote": "He hits one cleanly, a crisp thwack, and points the bat at you, grinning. The light goes.",
+        "fix": "Put the bomb under the table here. Add: 'On the clean hit his chip's cards flutter upward for an instant; you are already jogging after the ball, back to camera, and do not see it.' The viewer then knows his number moves with what he does two minutes before line 106 says 'His... you just read', and every second before 'Quit.' is suspense. It also sets up 'And it's moving' at line 142."
+      },
+      {
+        "line": 107,
+        "quote": "Close on the fee slip in Aarav's hands.",
+        "fix": "Give the scene a clock. Stamp the slip 'LAST DATE: TOMORROW' in the insert, so the answer cannot wait until morning and the lamp push has something ticking under it."
+      },
+      {
+        "line": 108,
+        "quote": "And the biggest number is the right choice. Isn't it?",
+        "fix": "Cut 'Isn't it?'. The planted line should be said a second time with full certainty. The viewer, who saw the chip flutter in the lane, supplies the doubt, and the 9 s hold breaks the line without the narrator flinching first."
+      },
+      {
+        "line": 113,
+        "quote": "Aarav walks to his room. Close on the dark gap under the cupboard.",
+        "fix": "The peak has no second face. Before the gap, add: 'Your hand still held out at the height his shoulder was. Close on your face: eyes on the grey 0%, afraid.' That gives face (crouched, kind), thing (the drain), face (afraid) within 2 s of the tag. 'He didn't even argue.' then plays over the gap."
+      },
+      {
+        "line": 80,
+        "quote": "The chaiwala's chip turns over like a card. On its back, a stamped label.",
+        "fix": "Cut it as face, thing, face. Your face looks up from the kettle, puzzled; the chip turns to SECOND STALL; your face again, kettle stopped mid-pour, brows dropping to sceptical then sheepish. Right now the midpoint reveal has no reaction shot."
+      },
+      {
+        "line": 82,
+        "quote": "It's a second stall. His goal.",
+        "fix": "Cut 'His goal.' The stamped tag and line 33's 'the one thing they'd choose' already give the viewer 2 + 2. The line becomes 'His sixty-one was never about tea. It's a second stall.' and 'Only their apron.' lands sooner."
+      },
+      {
+        "line": 91,
+        "quote": "Copying their notes was never going to copy their number.",
+        "fix": "Cut it. It is the third explaining line in a row over an empty hall, straight after the one sourced number (the lecture Riya leaves on). It also spends the topper reveal early; line 126 pays this off better. Let line 88's hold do the work, with your crimson chip sitting lower than the white rows, and go from 'But yours moved. Down.' straight to untying the apron."
+      },
+      {
+        "line": 118,
+        "quote": "The last bus home, your forehead against the window.",
+        "fix": "Stage the city reveals through your reflection in the bus glass, so each window is face, thing, face. Teacher's form: a half-smile. Topper's keyboard: the smile goes rueful and your eyes drop to the notebook in your lap. Aarav's dark window: the reflection goes still, stricken. Three named reactions make this a turn rather than a montage."
+      },
+      {
+        "line": 142,
+        "quote": "But it's his. And it's moving.",
+        "fix": "Cut 'But it's his.' It states the moral that line 139's hold (he takes the bat in both hands and runs) has just shown. Keep 'Zero point two. Same as before. And it's moving.'"
+      },
+      {
+        "line": 33,
+        "quote": "Here's how it works.",
+        "fix": "Cut these four words; they are the teacher's voice. Start on 'Each chip is one person's chance...' and keep 'It never tells you what that thing is.' said lightly, as a throwaway. It is the plant for MUSIC and HIS OWN RANK and should not be flagged."
+      },
+      {
+        "line": 155,
+        "quote": "Through the hall's open window, far off: a ball off a bat.",
+        "fix": "The lane is a bus ride from the hall (line 118), so the last sound has no source the viewer has seen. Plant the open window in line 15's set, at the end of row three with only traffic outside. The ending then pays off the copied notes (17 to 152), the promise and thwack (50-51 to 146 and 156), and a window that was silent in the opening."
+      }
+    ],
+    "keep": [
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 111,
+        "quote": "The bat tips, rolls across the floor in slow motion and under the cupboard, out of sight (2 s). The lamp stays."
+      },
+      {
+        "line": 153,
+        "quote": "The topper's desk stays empty."
+      }
+    ],
+    "error": ""
+  }
+}

@@ -89,3 +89,51 @@ def test_the_cli_exits_1_with_the_problems_and_0_when_clean(tmp_path):
 def test_the_cli_refuses_a_missing_file(tmp_path):
     proc = subprocess.run([sys.executable, str(LINTER), str(tmp_path / "nope.md")], capture_output=True, text=True)
     assert proc.returncode == 2
+
+
+# The meaning layer (pipeline v2, section 1): one > UNDER: question, never spoken; up to three > DARLING: lines.
+
+UNDER_FIVE = "".join(f"> {n}: x.\n" for n in lint.FIVE)
+UNDER_BODY = "## [00:00] Hook\nMumma calls. You let it ring.\nThe chai goes cold.\n"
+
+
+def test_under_is_optional_unless_required():
+    assert lint.problems(UNDER_FIVE + UNDER_BODY) == []
+    assert any("UNDER" in p for p in lint.problems(UNDER_FIVE + UNDER_BODY, require_under=True))
+
+
+def test_a_good_under_line_passes():
+    assert (
+        lint.problems(UNDER_FIVE + "> UNDER: Would you still forgive if you couldn't forget?\n" + UNDER_BODY, True)
+        == []
+    )
+
+
+def test_under_must_be_a_question_given_once_before_the_first_beat():
+    assert any(
+        "question" in p for p in lint.problems(UNDER_FIVE + "> UNDER: Forgiveness matters.\n" + UNDER_BODY, True)
+    )
+    assert any("once" in p for p in lint.problems(UNDER_FIVE + "> UNDER: A?\n> UNDER: B?\n" + UNDER_BODY, True))
+    assert any("before the first beat" in p for p in lint.problems(UNDER_FIVE + UNDER_BODY + "> UNDER: A?\n", True))
+
+
+def test_darlings_are_spoken_lines_and_at_most_three():
+    assert lint.problems(UNDER_FIVE + '> DARLING: "Mumma calls. You let it ring."\n' + UNDER_BODY) == []
+    assert any(
+        "DARLING" in p or "darling" in p for p in lint.problems(UNDER_FIVE + "> DARLING: Not here.\n" + UNDER_BODY)
+    )
+    four = UNDER_FIVE + "> DARLING: The chai goes cold.\n" * 4 + UNDER_BODY
+    assert any("at most three" in p for p in lint.problems(four))
+
+
+def test_under_from_requires_it_only_for_new_videos(tmp_path):
+    for name, code in (("2026-11-09_old", 0), ("2026-11-10_new", 1), ("no-date", 0)):
+        video = tmp_path / name
+        video.mkdir()
+        (video / "script.md").write_text(UNDER_FIVE + UNDER_BODY)
+        assert lint.main([str(video / "script.md"), "--under-from", "2026-11-10"]) == code, name
+
+
+def test_a_bad_under_from_date_is_a_usage_error(tmp_path):
+    (tmp_path / "script.md").write_text(UNDER_FIVE + UNDER_BODY)
+    assert lint.main([str(tmp_path / "script.md"), "--under-from", "soon"]) == 2

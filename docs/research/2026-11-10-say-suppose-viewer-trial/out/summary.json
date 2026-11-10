@@ -1,0 +1,857 @@
+{
+  "wall_s": 939,
+  "calls": [
+    {
+      "script": "last-time",
+      "model": "grok-4.7-high",
+      "exit": 0,
+      "seconds": 516,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "grok-4.7-high",
+        "family": "xai",
+        "status": "ok",
+        "scores": {
+          "story #2 confirm the click": 8,
+          "story #3 second hook by 0:30": 9,
+          "story #4 a habit, then the change": 7,
+          "story #11 never say the feeling": 8,
+          "the viewer's week": 9,
+          "K13 payoff time": 9
+        },
+        "blockers": [],
+        "suggestions": [
+          {
+            "line": 54,
+            "quote": "64% picked it as their favourite. Any flavour (c02).",
+            "fix": "Cut line 53 and this line. I stop here: the best chai just landed, then a percentage turns it into a lesson. Keep line 51 and go straight to: You almost go back for another glass. Then it wouldn't be the last."
+          },
+          {
+            "line": 128,
+            "quote": "By the time he left school? 93% (c01).",
+            "fix": "Replace lines 127, 128 and 129 with: Most of his days with his parents were already gone. Leave the next line, Your strip is thinner."
+          },
+          {
+            "line": 19,
+            "quote": "Every morning, she waves. You wave back. Not looking.",
+            "fix": "Replace with: Every time you leave, she waves. You wave back. Not looking."
+          }
+        ],
+        "keep": [
+          {
+            "line": 51,
+            "quote": "It's the best chai of your life. Station chai."
+          },
+          {
+            "line": 97,
+            "quote": "Thirty-nine. You didn't lose one. You lost two."
+          },
+          {
+            "line": 151,
+            "quote": "It wasn't her clock. It was your timetable."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "last-time",
+      "model": "grok-4.7-high-fast",
+      "exit": 0,
+      "seconds": 451,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "grok-4.7-high-fast",
+        "family": "xai",
+        "status": "ok",
+        "scores": {
+          "story #2 Confirm the click": 8,
+          "story #3 Second hook by 0:30": 9,
+          "story #4 A habit, then the change": 8,
+          "story #11 Never say the feeling": 7,
+          "The viewer's week": 4,
+          "K13 Payoff time": 9
+        },
+        "blockers": [
+          {
+            "quote": "The auto pulls away. Through its back window, counters over three heads on the lane: the neighbour watering plants, the paan-stall owner, the kid on a cycle; the rest of the lane is a blank flat layer.",
+            "why": "The viewer's week: the first people the counter lands on, besides mom, are a neighbour, a paan stall and a kid. None of that is chai, the bus or metro, exams, the office, or family.",
+            "fix": "> SCENE: The bus pulls away. Through its window, counters over the chai-stall owner and your cousin at the stop; the rest of the lane is a blank flat layer. In line 17, replace \"An auto-rickshaw idles at the gate.\" with \"The bus waits at the stop.\"",
+            "domain": "viewer",
+            "line": 31
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 128,
+            "quote": "By the time he left school? 93% (c01).",
+            "fix": "I would leave here. The skip just landed, then a school statistic starts while you sit still. Replace lines 127-130 with: \"Your strip is thinner.\""
+          },
+          {
+            "line": 53,
+            "quote": "In one taste test, students were told, \"This is your last chocolate.\"",
+            "fix": "Cut this line and line 54. Go from \"Maybe it's not just the chai.\" to \"You almost go back for another glass. Then it wouldn't be the last.\""
+          },
+          {
+            "line": 168,
+            "quote": "The same doorway through the seasons, a second and a half each: the monsoon, you dripping under an umbrella; Holi, colour on both your faces; winter, a shawl; summer, mangoes on the step.",
+            "fix": "Cut the four matching hellos. Hold 2 s on the winter doorway, counter at 257, and cut to Grandpa's chair."
+          },
+          {
+            "line": 142,
+            "quote": "Thirty-eight. Here comes the drop.",
+            "fix": "Replace with: \"Thirty-eight. You came home anyway.\""
+          }
+        ],
+        "keep": [
+          {
+            "line": 132,
+            "quote": "You're not at the start of your time with her. You're at the tail end."
+          },
+          {
+            "line": 151,
+            "quote": "It wasn't her clock. It was your timetable."
+          },
+          {
+            "line": 164,
+            "quote": "Saying no isn't a plan. A ticket is."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "last-time",
+      "model": "gpt-5.6-luna-high",
+      "exit": 0,
+      "seconds": 89,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "gpt-5.6-luna-high",
+        "family": "openai",
+        "status": "ok",
+        "scores": {
+          "first-time viewer experience": 8,
+          "click-to-story clarity": 9,
+          "story momentum": 7
+        },
+        "blockers": [],
+        "suggestions": [
+          {
+            "line": 53,
+            "quote": "In one taste test, students were told, \"This is your last chocolate.\"",
+            "fix": "This is the likeliest stop point: compress lines 53\u201354 into one line \u2014 \"Calling a chocolate last made students pick it 64% of the time (c02).\" \u2014 then cut straight to the second-glass choice."
+          },
+          {
+            "line": 26,
+            "quote": "Tonight you leave. First job. Another city.",
+            "fix": "Clarify the timing against the premise: \"Tonight you leave to start the job next month.\""
+          },
+          {
+            "line": 31,
+            "quote": "the paan-stall owner",
+            "fix": "Replace it with \"the chai-stall owner\" to keep the world anchored in Riya's stated week."
+          },
+          {
+            "line": 127,
+            "quote": "A writer, Tim Urban, did this sum. On his own guesses.",
+            "fix": "Keep the moving strip on screen, but compress the explanation: \"Tim Urban made this estimate from his own guesses.\""
+          }
+        ],
+        "keep": [
+          {
+            "line": 19,
+            "quote": "Every morning, she waves. You wave back. Not looking."
+          },
+          {
+            "line": 147,
+            "quote": "Next Friday."
+          },
+          {
+            "line": 164,
+            "quote": "Saying no isn't a plan. A ticket is."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "last-time",
+      "model": "kimi-k3-high",
+      "exit": 0,
+      "seconds": 60,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "kimi-k3-high",
+        "family": "moonshot",
+        "status": "ok",
+        "scores": {
+          "G1 packaging as the viewer who taps (title A + 'MOM?' thumb)": 8,
+          "Confirm the click, first 7 s": 9,
+          "Second hook by 0:30": 9,
+          "A habit, then the change": 10,
+          "Never say the feeling": 9,
+          "My week on screen (chai, metro, office, mom, grandpa)": 10,
+          "Would I watch to the end on my phone": 8,
+          "K1-K4, K8-K11, K14": "needs the rendered thumbnail"
+        },
+        "blockers": [],
+        "suggestions": [
+          {
+            "line": 53,
+            "quote": "In one taste test, students were told, \"This is your last chocolate.\"",
+            "fix": "This is the exact line where I would leave: the chai payoff lands ('It's the best chai of your life') and then the video turns into a classroom for three lines \u2014 students, a test, 64%, 'Any flavour' \u2014 while the story stands still. On the metro my thumb moves here. Keep 'Maybe it's not just the chai.', go straight to 'You almost go back for another glass. Then it wouldn't be the last.', then let the fact tail the action in one dry line: 'They ran this test with chocolates. The last one wins (c02).'"
+          },
+          {
+            "line": 36,
+            "quote": "Two trips home a year. Keep that life, and the door gets forty-two more.",
+            "fix": "I had to replay this one in my head: 'the door gets forty-two more' \u2014 forty-two more what, and why does the door get them? At phone speed it stumbles. Replace with: 'Two trips home a year. Keep that life, and forty-two is all she gets.'"
+          },
+          {
+            "line": 103,
+            "quote": "> HOLD: 5 s. The train's rhythm. At each station one passenger steps off to someone waiting on the platform, and both their counters flip down by one as they meet.",
+            "fix": "A 5 s stretch where nothing happens to me \u2014 people I don't know flipping counters I don't care about yet. Start the hold on the dim copy of YOUR head with its own counter in the dark window (the 'wait, I have one too?' jolt), trim to 3 s, and let the station flips play under 'Thirty-nine. Fine. An allowance.'"
+          }
+        ],
+        "keep": [
+          {
+            "line": 56,
+            "quote": "You almost go back for another glass. Then it wouldn't be the last.",
+            "fix": "The line I would screenshot and send a friend."
+          },
+          {
+            "line": 98,
+            "quote": "\"Let's see\" was a plan. And it did the maths.",
+            "fix": "The dry landing that made me put my phone down for a second."
+          },
+          {
+            "line": 164,
+            "quote": "Saying no isn't a plan. A ticket is.",
+            "fix": "The whole film in eight words; must survive every revision."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds",
+      "model": "grok-4.7-high",
+      "exit": 0,
+      "seconds": 595,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "grok-4.7-high",
+        "family": "xai",
+        "status": "ok",
+        "scores": {
+          "story #2": 3,
+          "story #3": 4,
+          "story #4": 8,
+          "story #11": 8,
+          "viewer's week": 4,
+          "K13": 8
+        },
+        "blockers": [
+          {
+            "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+            "why": "story #2: at 115 words a minute this line runs almost the whole first 7 seconds, so I am still watching you copy notes. The thumbnail I clicked is the shocked face beside the crimson 0.04% chip, and that picture (line 20) starts only after this line plus line 19, near 12 seconds.",
+            "fix": "Row three. Copying. Like every night. Replace line 19 with: Over every head.",
+            "domain": "viewer",
+            "line": 17
+          },
+          {
+            "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+            "why": "story #3: this line starts at about 0:31 and 'a year of your life' lands nearer 0:36, after 56 earlier words, the 0.2s opening hold and the 2s hold on line 29. By 0:30 I can say the title question and 'one chair out of two thousand five hundred.' The year I can lose is still ahead.",
+            "fix": "Keep this line after the chair. Replace line 29 with: > HOLD: 0.5 s. The one crimson chair pulses once. Use the shorter opening in the story #2 fix so this line starts near 0:23.",
+            "domain": "viewer",
+            "line": 31
+          },
+          {
+            "quote": "> HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+            "why": "The viewer's week: this is the line where I stop. The jogger and the boy on the counter are outside my week (chai, the bus, exams, the office, family). The bus rolls and nothing happens to me.",
+            "fix": "> HOLD: 2.5 s. The bus rolls past the coaching centre, the chai stall and your lane: chips only over the teacher, the topper, the chaiwala and Aarav.",
+            "domain": "viewer",
+            "line": 120
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 33,
+            "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+            "fix": "Each chip is the thing they'd choose with nobody watching, and it moves when they do."
+          },
+          {
+            "line": 89,
+            "quote": "You've been wearing the crowd's number. Like a verdict.",
+            "fix": "Replace lines 89 to 91 with one line: Copying their notes never copied their number. Yours moved down."
+          },
+          {
+            "line": 106,
+            "quote": "Your own number moves. You've seen it. His... you just read.",
+            "fix": "Yours changes when you work. His, you only read."
+          }
+        ],
+        "keep": [
+          {
+            "line": 28,
+            "quote": "One chair. Out of two thousand five hundred."
+          },
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 136,
+            "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds",
+      "model": "grok-4.7-high-fast",
+      "exit": 0,
+      "seconds": 360,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "grok-4.7-high-fast",
+        "family": "xai",
+        "status": "ok",
+        "scores": {
+          "story #2 confirm the click": 3,
+          "story #3 second hook by 0:30": 7,
+          "story #4 a habit then the change": 8,
+          "story #11 never say the feeling": 5,
+          "the viewer's week": 6,
+          "K13 payoff by 0:30": 8
+        },
+        "blockers": [
+          {
+            "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+            "why": "story #2 Confirm the click: at about 115 words a minute this line is 6.8s, and the 0.2s hold in front of it fills the first 7s. I clicked a shocked face beside a crimson 0.04% chip. That picture is the pose at line 20 and the tag at line 22, about 12s in. I would leave here.",
+            "fix": "Open on the thumbnail: night hall, eyes wide, crimson chip already at 0.04%, pen stopped on the topper's notes. Replace the line with: Row three. Like every night. Then this.",
+            "domain": "viewer",
+            "line": 17
+          },
+          {
+            "quote": "He didn't even argue.",
+            "why": "story #11 Never say the feeling: the 9s peak already showed the nod, the chip draining to grey, and the bat rolling under the cupboard. This line says what the shot just showed.",
+            "fix": "Cut the line. Come out of the peak on the dark gap under the cupboard and go to the bus.",
+            "domain": "viewer",
+            "line": 114
+          },
+          {
+            "quote": "The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+            "why": "The viewer's week: the jogger and the boy on the shop counter are examples, and they are not chai, the bus, exams, the office, or family.",
+            "fix": "Cut the jogger and the boy. From the bus window go straight to the teacher at his form, the topper at her keyboard, the chai stall, and Aarav's dark chip.",
+            "domain": "viewer",
+            "line": 120
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 33,
+            "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+            "fix": "A lecture: this line, then line 34, while I only nod, and it sounds like a teacher. Cut the opener and say it off his fluttering chip: The one thing he'd choose with nobody watching. It never says what. It starts where the crowd starts, then it moves when he turns the page."
+          },
+          {
+            "line": 31,
+            "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+            "fix": "I can name the chair and the title question by 0:30, but this stake starts after the 2s hold, about 0:31, and finishes near 0:39. Say it on the grid before the hold: A year of your life. On that one chair. So... keep going?"
+          },
+          {
+            "line": 38,
+            "quote": "The ident: the title card (C) slides in on the channel's four-note signal while the camera drifts across the hall's glowing chips behind it.",
+            "fix": "Three seconds where nothing new happens to me. Keep the four-note sting under a second and cut to Aarav in the lane on the last note."
+          },
+          {
+            "line": 119,
+            "quote": "The last bus home. And you can't stop reading them. Like timetables.",
+            "fix": "The window already shows me staring. Say: The last bus home. A chip in every window. Like timetables."
+          },
+          {
+            "line": 106,
+            "quote": "Your own number moves. You've seen it. His... you just read.",
+            "fix": "His chip is just sitting at 0.2%, so I cannot see what moved. Say: His is still zero point two. You can watch yours move. His, you only read."
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 91,
+            "quote": "Copying their notes was never going to copy their number."
+          },
+          {
+            "line": 136,
+            "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds",
+      "model": "gpt-5.6-luna-high",
+      "exit": 0,
+      "seconds": 67,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "gpt-5.6-luna-high",
+        "family": "openai",
+        "status": "ok",
+        "scores": {
+          "first-time-viewer clarity": 8,
+          "click-to-story match": 6,
+          "watch-through": 7
+        },
+        "blockers": [
+          {
+            "quote": "> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose.",
+            "why": "story #2: the first seven seconds show copying, not the thumbnail's glowing chip and shocked reaction.",
+            "fix": "> SCENE: A coaching hall at night under tube lights. Your crimson chip is already glowing beside your head at 0.04%; you freeze mid-copy, eyes wide, while the topper's notes remain beneath your pen.",
+            "domain": "viewer",
+            "line": 15
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 87,
+            "quote": "Last year? About one in a thousand UPSC applicants got in (c01).",
+            "fix": "This is where I would stop watching: the story pauses for a statistic after the stall reversal. Put the fact directly over an action\u2014your chip dropping as you reopen your notebook\u2014and cut lines 89\u201391's explanation."
+          },
+          {
+            "line": 31,
+            "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+            "fix": "Change \u201cOn one chair\u201d to \u201cFor one chair\u201d so the sacrifice and question are immediately clear."
+          }
+        ],
+        "keep": [
+          {
+            "line": 28,
+            "quote": "One chair. Out of two thousand five hundred."
+          },
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 136,
+            "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds",
+      "model": "kimi-k3-high",
+      "exit": 0,
+      "seconds": 76,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "kimi-k3-high",
+        "family": "moonshot",
+        "status": "ok",
+        "scores": {
+          "Confirm the click, story #2 (first 7 s)": 4,
+          "Second hook by 0:30, story #3": 7,
+          "A habit, then the change, story #4": 9,
+          "Never say the feeling, story #11": 9,
+          "My week on screen (chai, exam, bus, cousin)": 10,
+          "Thumbnail payoff by 0:30, K13": 9,
+          "Would I still be watching at the end": 8
+        },
+        "blockers": [
+          {
+            "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.",
+            "why": "story #2: I clicked on the thumbnail's picture - me, shocked, a crimson 0.04% chip beside my head - but the first 7 seconds are only the hall and the copying. This line alone runs about 6 s at Arthur's tempo, so the chips only start flickering around 0:07 and the crimson chip and shocked face (lines 20-22) land around 0:11-0:15. The G1 outline promised the thumbnail's picture inside the first seven seconds; the draft as timed does not deliver it.",
+            "fix": "Overlap the reveal with the line instead of after it: trim line 17 to 'Row three. The night batch. You, copying the topper's notes.' and change line 18's SCENE to start the flutter under the words - 'As you speak, a soft flutter, like split-flap cards: small glowing chips flicker on over the heads, row by row, yours lighting crimson over your shoulder as the line ends.' Chips on screen by 0:03, the crimson chip by 0:06, 'Like every night.' can ride on line 19's beat if it still fits.",
+            "domain": "viewer",
+            "line": 17
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 31,
+            "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+            "fix": "By my ear this finishes around 0:35-0:37, so the full second hook (what I can lose plus the question) lands late. Shave the 2 s hold at line 29 to 1 s and merge lines 27-28 into one breath ('Zero point zero four - one chair out of two thousand five hundred.') so 'keep going?' lands by about 0:28."
+          },
+          {
+            "line": 33,
+            "quote": "Here's how it works.",
+            "fix": "This is where my thumb hovers - it sounds like a teacher starting a lesson. Cut those four words and go straight to 'Each chip is one person's chance at the one thing they'd choose... with nobody watching.' The chair grid already taught me half the rule."
+          },
+          {
+            "line": 89,
+            "quote": "You've been wearing the crowd's number. Like a verdict.",
+            "fix": "Lines 86-91 explain the same idea four times while nothing moves except a camera drift in an empty hall - the closest the draft comes to a lecture. Cut this line and keep 'But yours moved. Down.' so the idea lands once, on me, and the apron beat (line 92) arrives sooner."
+          }
+        ],
+        "keep": [
+          {
+            "line": 83,
+            "quote": "You can't borrow someone's odds. Only their apron."
+          },
+          {
+            "line": 114,
+            "quote": "He didn't even argue."
+          },
+          {
+            "line": 156,
+            "quote": "Out in the lane... thwack."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds-fable",
+      "model": "grok-4.7-high",
+      "exit": 0,
+      "seconds": 939,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "grok-4.7-high",
+        "family": "xai",
+        "status": "ok",
+        "scores": {
+          "story #2 confirm the click": 7,
+          "story #3 second hook": 3,
+          "story #4 habit": 8,
+          "story #11 never say the feeling": 4,
+          "the viewer's week": 9,
+          "K13 payoff time": 9,
+          "stay": 6
+        },
+        "blockers": [
+          {
+            "quote": "Another year, for that chair. Keep going?",
+            "why": "story #3. At about 115 words a minute this second hook ends near 0:40. At 0:30 I am still hearing line 33, so I know the chip rule and cannot yet say that I can lose the year, or that the question is whether I keep going.",
+            "fix": "Move this line to immediately after line 31, before \"It starts at the crowd's number. Then it moves with what you do.\" Same words in that slot: Another year, for that chair. Keep going? Spoken there, it ends near 0:28.",
+            "domain": "viewer",
+            "line": 39
+          },
+          {
+            "quote": "A chip in every window.",
+            "why": "story #11. The six-second crane just showed a chip in every window. The line says the shot and adds nothing.",
+            "fix": "You hunt the brightest. Same as the hall.",
+            "domain": "viewer",
+            "line": 235
+          },
+          {
+            "quote": "The chaiwala, sixty-one, painting a new board at midnight.",
+            "why": "story #11. I can see him painting the board, and I already know sixty-one. Nothing new happens to me.",
+            "fix": "Sixty-one. He didn't shop for it either.",
+            "domain": "viewer",
+            "line": 241
+          },
+          {
+            "quote": "The topper, eight, at her keyboard, headphones on.",
+            "why": "story #11. This is where I stop watching. Headphones and the keyboard are the whole shot, and it is the second window in a row that does nothing new to me.",
+            "fix": "Eight. Still not your exam.",
+            "domain": "viewer",
+            "line": 245
+          },
+          {
+            "quote": "The teacher, three, marking your mock, then opening his own notes.",
+            "why": "story #11. The red pen and his own notes are already the shot. The line narrates them.",
+            "fix": "Three. He didn't shop for it. He sat his own.",
+            "domain": "viewer",
+            "line": 249
+          },
+          {
+            "quote": "And right below you, one window with no light in it.",
+            "why": "story #11. The tilt already found the one dark window, and the next four seconds hold on that same picture. The line describes it.",
+            "fix": "Aarav's is the dark one.",
+            "domain": "viewer",
+            "line": 257
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 185,
+            "quote": "Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.",
+            "fix": "Cut this line. I am still on the bus and the story is standing still: line 183 already said the ninety-one was the crowd watching me copy. Go straight to the drawer."
+          },
+          {
+            "line": 290,
+            "quote": "So here's the honest part. It's still tiny. So is yours. The chips never lied.",
+            "fix": "It's still tiny. So is yours. The chips never lied."
+          }
+        ],
+        "keep": [
+          {
+            "line": 90,
+            "quote": "Four hundred of you are asking directions from a man who's still looking for the place."
+          },
+          {
+            "line": 261,
+            "quote": "The biggest number tells you what is likely. It cannot tell you what is worth choosing."
+          },
+          {
+            "line": 288,
+            "quote": "He can't see it. He never could. He was fine until you read it to him."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds-fable",
+      "model": "grok-4.7-high-fast",
+      "exit": 0,
+      "seconds": 511,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "grok-4.7-high-fast",
+        "family": "xai",
+        "status": "ok",
+        "scores": {
+          "story": 7,
+          "packaging": 8
+        },
+        "blockers": [
+          {
+            "quote": "Another year, for that chair. Keep going?",
+            "why": "story #3 Second hook by 0:30. At about 115 words a minute this starts near 0:36. At 0:30 the line in my ear is still the crowd's number moving with what I do, so the year I could lose has not been said.",
+            "fix": "Move this and the chair line to right after line 25, over the floor of chairs: In people? One chair, out of two thousand five hundred. Another year, for that chair. Keep going? Leave the later slot as: It starts at the crowd's number. Then it moves with what you do.",
+            "domain": "viewer",
+            "line": 39
+          },
+          {
+            "quote": "Below, a chip over the milkman and one over the aunty with the broom.",
+            "why": "The viewer's week. The milkman and the aunty sit outside chai, the bus or metro, exams, the office, and family.",
+            "fix": "Below, a chip over the bus and one over your mother on her morning call.",
+            "domain": "viewer",
+            "line": 46
+          },
+          {
+            "quote": "A chip in every window.",
+            "why": "story #11 Never say the feeling. The six-second hold already showed a chip in every window, and the line says that picture back to me.",
+            "fix": "Cut the line. Come out of the hold on: You do what you always do. You look for the biggest one.",
+            "domain": "viewer",
+            "line": 235
+          },
+          {
+            "quote": "The topper, eight, at her keyboard, headphones on.",
+            "why": "story #11 Never say the feeling. This is where I stop watching. The window already shows her at the keyboard with headphones, and eight is the hall's old number. The chaiwala line and the teacher line caption the same way, so I leave before the dark window.",
+            "fix": "Cut this line, line 241, and line 249. Play those three windows under: But none of them went shopping for a number. They picked what they wanted. The number came after.",
+            "domain": "viewer",
+            "line": 245
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 33,
+            "quote": "It starts at the crowd's number. Then it moves with what you do.",
+            "fix": "Drop 'The rule.' and save this sentence for the placement tick, when the chair flips to a lanyard. In the opening, stop after: A chip is your real chance at what you'd choose with nobody watching."
+          },
+          {
+            "line": 185,
+            "quote": "Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.",
+            "fix": "Cut this line. Go from 'It was watching you, and you were copying.' straight to the hand on the drawer."
+          },
+          {
+            "line": 290,
+            "quote": "So here's the honest part. It's still tiny. So is yours. The chips never lied.",
+            "fix": "It's still tiny. So is yours. The chips never lied."
+          }
+        ],
+        "keep": [
+          {
+            "line": 57,
+            "quote": "In this lane you're the best batter alive. The lane is one scooter wide."
+          },
+          {
+            "line": 113,
+            "quote": "Sixty-one. The biggest number of the night is holding a kettle."
+          },
+          {
+            "line": 316,
+            "quote": "Row three. You don't look up. Out in the lane: thwack."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds-fable",
+      "model": "gpt-5.6-luna-high",
+      "exit": 0,
+      "seconds": 91,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "gpt-5.6-luna-high",
+        "family": "openai",
+        "status": "ok",
+        "scores": {
+          "first-time viewer retention": 7,
+          "story clarity": 8,
+          "emotional payoff": 8
+        },
+        "blockers": [
+          {
+            "quote": "Another year, for that chair. Keep going?",
+            "why": "Fails story #3: the second hook finishes around 00:32, after the 0:30 deadline.",
+            "fix": "Move this immediately after line 23 and replace it with: \"You can lose another year. Do you keep going?\"",
+            "domain": "viewer",
+            "line": 39
+          },
+          {
+            "quote": "Your balcony, first chai of the day. You have not slept. Below, a chip over the milkman and one over the aunty with the broom. You nod once, decided.",
+            "why": "Fails the viewer's week: the milkman and aunty are not part of Riya's specified week, so this example feels generic.",
+            "fix": "Replace with: \"> SCENE: Your balcony, first chai of the day. You have not slept. Your mother's second call of the day lights up your phone; you nod once, decided.\"",
+            "domain": "viewer",
+            "line": 46
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 126,
+            "quote": "That night you sleep like ninety-one per cent.",
+            "fix": "This is where I would most likely leave: the placement beat has paid off, but the next conflict is delayed. Replace it with an immediate complication, such as Aarav's unanswered \"One more game?\" message."
+          },
+          {
+            "line": 245,
+            "quote": "The topper, eight, at her keyboard, headphones on.",
+            "fix": "The three city examples become a lecture-like montage. Keep one moving example, then cut directly to line 253 so the reversal arrives sooner."
+          },
+          {
+            "line": 272,
+            "quote": "But it's one rule. You can't keep it for yourself and hand him back the bat.",
+            "fix": "Move the choice and bat action earlier so the question lands around 75\u201380% instead of roughly 83%."
+          }
+        ],
+        "keep": [
+          {
+            "line": 14,
+            "quote": "Row three. You're copying the topper's notes. Again."
+          },
+          {
+            "line": 90,
+            "quote": "Four hundred of you are asking directions from a man who's still looking for the place."
+          },
+          {
+            "line": 263,
+            "quote": "Zero point two was Aarav's to spend. You spent it for him."
+          }
+        ],
+        "error": ""
+      }
+    },
+    {
+      "script": "real-odds-fable",
+      "model": "kimi-k3-high",
+      "exit": 0,
+      "seconds": 85,
+      "attempts": 1,
+      "status": "ok",
+      "verdict": {
+        "call_id": "trial",
+        "seat": "first-time viewer",
+        "role": "viewer",
+        "model": "kimi-k3-high",
+        "family": "moonshot",
+        "status": "ok",
+        "scores": {
+          "G1 packaging": 9,
+          "G2 script": 8
+        },
+        "blockers": [
+          {
+            "quote": "Another year, for that chair. Keep going?",
+            "why": "story #3 (second hook by 0:30). The script's own timing note (line 340) says this hook starts about 00:29 and ends near 00:32, so at 0:30 the loss is only half spoken and the question 'Keep going?' has not landed yet. Watching at normal speed, at the 0:30 mark I cannot yet say both what I can lose and what the video asks \u2014 and 0:30 on a phone is exactly where my thumb decides.",
+            "fix": "Tighten the rule beat by about 3 seconds so the question ends by ~00:29: line 33 becomes 'It starts at the crowd's number. It moves with what you do.' and line 37 becomes 'One chair, out of two thousand five hundred.' (the chairs on screen already answer 'in people?').",
+            "domain": "viewer",
+            "line": 39
+          }
+        ],
+        "suggestions": [
+          {
+            "line": 183,
+            "quote": "Yours said one in two thousand five hundred. Worse than the crowd. It was watching you, and you were copying.",
+            "fix": "This is where I would stop watching (~03:55): right after the bat peak, the bus stretch runs four explaining lines in a row (177-185) while the story stands still. Cut this line \u2014 the two floors drawn side by side on the glass (line 181) already show 'worse than the crowd' \u2014 and go straight from the UPSC fact to 'Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.'"
+          },
+          {
+            "line": 288,
+            "quote": "He can't see it. He never could. He was fine until you read it to him.",
+            "fix": "At ~06:45 this made me pause and ask 'wait, who can see which chip?' \u2014 a new rule question at 86%, pulling me out of the goodbye. Cut 'He can't see it. He never could.' and keep 'He was fine until you read it to him.'"
+          },
+          {
+            "line": 290,
+            "quote": "So here's the honest part. It's still tiny. So is yours. The chips never lied.",
+            "fix": "'So here's the honest part' sounds like a teacher announcing the moral. Drop it and let the line start 'It's still tiny. So is yours. The chips never lied.'"
+          },
+          {
+            "line": null,
+            "quote": "Measured by `brand/thumbs/check.py` (K3, K4, K5, K8, K9, K10, K11)",
+            "fix": "K1-K4, K8-K11 and K14: needs the rendered thumbnail; left to the owner."
+          }
+        ],
+        "keep": [
+          {
+            "line": 90,
+            "quote": "Four hundred of you are asking directions from a man who's still looking for the place."
+          },
+          {
+            "line": 261,
+            "quote": "The biggest number tells you what is likely. It cannot tell you what is worth choosing."
+          },
+          {
+            "line": 316,
+            "quote": "Row three. You don't look up. Out in the lane: thwack."
+          }
+        ],
+        "error": ""
+      }
+    }
+  ]
+}

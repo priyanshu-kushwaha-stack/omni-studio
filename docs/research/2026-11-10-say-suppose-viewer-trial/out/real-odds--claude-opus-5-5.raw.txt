@@ -1,0 +1,20 @@
+```json
+{"scores": {"hook_first_7s": 6, "second_hook_by_0_30": 6, "habit_then_change": 9, "never_say_the_feeling": 7, "viewers_week": 10, "thumbnail_payoff_K13": 9, "would_finish_on_phone": 8},
+ "blockers": [
+  {"line": 17, "quote": "Row three. The night batch. You, copying the topper's notes. Like every night.", "why": "story #2: the thumbnail (c, \"QUIT?\") shows you shocked, with a crimson 0.04% chip by your head. Line 17 is 13 words, about 6.2 s at Arthur's 1.1x, plus the 0.2 s hold. The chips only start flickering on line 19, at about 6.5 s, and your crimson 0.04% chip and shocked face arrive with line 22, at about 11 s. For the first 7 s I see a person copying notes in a hall, not the picture I clicked. Line 15 calls this 'the thumbnail's set and pose', but the pose it describes (bent over, copying) is not the thumbnail's pose (eyes wide, looking at the chip).", "fix": "Line 17 becomes: \"Row three. Night batch. Copying the topper. Like every night.\" Line 19 becomes: \"Then, over every head... a number.\" Move the line 20 SCENE (your crimson chip over the shoulder, then close on your shocked face) so it starts under line 19, so your crimson chip is on screen by about 6 s. Line 22 stays as the spoken reveal of the value.", "domain": "viewer"},
+  {"line": 27, "quote": "Zero point zero four. What's that, in people?", "why": "story #3: the stake and the question land on line 31 (\"A year of fees. A year of your life. On one chair. So... keep going?\"). From line 17 to the end of line 31 is 65 spoken words, about 31 s at 1.1x, plus the 0.2 s and 2 s holds and the camera move up through the ceiling and back down. 'Keep going?' lands at about 0:34 to 0:36, so at 0:30 I don't yet know I could lose a year of fees.", "fix": "Line 27 becomes: \"In people?\" Cut the line 29 HOLD from 2 s to 1 s. Together with the line 17 and 19 trims above, line 31 ends at about 0:27.", "domain": "viewer"}
+ ],
+ "suggestions": [
+  {"line": 33, "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.", "fix": "Drop \"Here's how it works.\" It is a teacher's line, and lines 33 and 34 are two rule facts in a row while you sit still. Start with \"Each chip: one person's chance at the one thing they'd choose... with nobody watching.\" and keep the figure moving: you glance from chip to chip as each clause lands."},
+  {"line": 86, "quote": "Your chip started from a crowd too.", "fix": "This is where I would leave. Lines 86 to 91 are five explanation lines in an empty hall after \"Only their apron\" already landed the point, and line 91 says it a third time. Cut line 91 (\"Copying their notes was never going to copy their number.\"), merge lines 89 and 90 into \"You wore the crowd's number like a verdict. But yours sank below it.\" and go straight to line 93's choice."},
+  {"line": 106, "quote": "Your own number moves. You've seen it. His... you just read.", "fix": "I had to stop and think about what this means. Make it: \"Yours moved when you moved. His, you've only read.\""},
+  {"line": 50, "quote": "You fix his grip anyway.", "fix": "story #11 risk: line 48's shot has just shown you turning his hands on the handle. Cut \"You fix his grip anyway.\" and keep \"One more over. Another tomorrow. You promise.\""},
+  {"line": 138, "quote": "You give it back.", "fix": "story #11 risk: the shot on line 137 already shows you pulling out the bat and knocking. Cut the line and let line 139's hold carry it, or replace it with something the picture can't say: \"Your turn to choose. Then his.\""},
+  {"line": 36, "quote": "Find the biggest number. Copy that.", "fix": "\"Copy that\" reads as radio-speak (\"roger\") before it reads as copying. Make it: \"Find the biggest number. Copy it.\""}
+ ],
+ "keep": [
+  {"line": 83, "quote": "You can't borrow someone's odds. Only their apron."},
+  {"line": 114, "quote": "He didn't even argue."},
+  {"line": 142, "quote": "But it's his. And it's moving."}
+ ]}
+```

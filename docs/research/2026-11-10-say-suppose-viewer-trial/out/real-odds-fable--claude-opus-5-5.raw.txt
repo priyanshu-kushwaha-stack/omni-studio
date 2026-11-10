@@ -1,0 +1,19 @@
+{"scores": {"story #2 confirm the click": 9, "story #3 second hook by 0:30": 6, "story #4 habit then change": 8, "story #11 never say the feeling": 6, "viewer's week": 9, "K13 payoff time": 9, "would I finish it": 7},
+ "blockers": [
+  {"line": 39, "quote": "Another year, for that chair. Keep going?", "why": "story #3: the only line that tells me what I can lose starts at about 0:29 and ends near 0:32 by the draft's own clock (line 340). That clock counts only words. It gives no time to the wordless picture changes at lines 16, 29 and 35 (chips lighting row by row, the push along the row, the hall falling away into chairs). On a real take I learn the stake after 0:30.", "fix": "Plant the year at line 23 so the stake lands at about 0:07: \"Everyone has a number. Yours, after a whole year in this hall: zero point zero four per cent.\" Keep line 39 as the echo. To pay for the six added words, cut \"The rule.\" from line 31 and make line 33 \"It starts at the crowd's number, then moves with what you do.\"", "domain": "viewer"},
+  {"line": 284, "quote": "His chip comes back on. Zero point two. Exactly where it was.", "why": "story #11: the 4 s hold at line 280 shows the flaps turning and the bat lighting, and the tag shows 0.2%. The first two sentences repeat what I just watched.", "fix": "Exactly where it was.", "domain": "viewer"},
+  {"line": 155, "quote": "He goes in. He doesn't ask about the game.", "why": "story #11: the shot at line 153 already shows him walking in. \"He goes in.\" narrates the picture and flattens the moment right after the peak.", "fix": "He doesn't ask about the game.", "domain": "viewer"}
+ ],
+ "suggestions": [
+  {"line": 185, "quote": "Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.", "fix": "This is where I'd stop watching. Lines 177 to 185 are four explaining lines in a row while I sit still on a bus: the rule, the UPSC fact, the 1-in-2,500 comparison, then a jump to the placement's ninety-one. The jump makes me pause to work out which number is meant. Cut line 183's middle sentence and make 185 act on me: \"Ninety-one was the crowd's guess. Then you stopped working, and it noticed.\" Go straight to the drawer."},
+  {"line": 162, "quote": "Still. Ninety-one. You stop studying.", "fix": "After the cut from Aarav, \"Still.\" first reads as \"not moving\". Use \"Ninety-one, though. You stop studying.\""},
+  {"line": 208, "quote": "He's at the table with a guidebook thicker than his arm. The safe one. You chose it.", "fix": "The shot already shows the table and the book. Use \"The safe one. You chose it.\" or keep only the \"thicker than his arm\" gag."},
+  {"line": 245, "quote": "The topper, eight, at her keyboard, headphones on.", "fix": "Lines 241 to 249 recap three people and their numbers in a row, and nothing new happens to me. Merge them into one line over the three-window frame: \"The chaiwala painting a board. The topper at her keys. The teacher with his own notes.\" The number tags carry the figures."},
+  {"line": 14, "quote": "Row three. You're copying the topper's notes. Again.", "fix": "Make the change touch the habit on screen. In the line 20 scene, add one flap of your chip clicking down at the moment your pen copies a line. Then the 3:45 reveal (\"you were copying\") pays off something I saw."},
+  {"line": 53, "quote": "That evening, the lane. Your cousin Aarav bowls. You swing. Thwack.", "fix": "\"Bowls. You swing.\" is the shot itself. Use \"That evening, the lane. Your cousin Aarav. Thwack.\""}
+ ],
+ "keep": [
+  {"line": 90, "quote": "Four hundred of you are asking directions from a man who's still looking for the place."},
+  {"line": 113, "quote": "Sixty-one. The biggest number of the night is holding a kettle."},
+  {"line": 263, "quote": "Zero point two was Aarav's to spend. You spent it for him."}
+ ]}

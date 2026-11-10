@@ -1,0 +1,65 @@
+{
+  "room": "current",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "exit": 0,
+  "seconds": 193,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "retention editor",
+    "role": "story",
+    "model": "gpt-5.6-sol-high",
+    "family": "openai",
+    "status": "ok",
+    "scores": {
+      "story": 8,
+      "retention": 8,
+      "must-pass compliance": 8,
+      "length (5\u20135.5 min; no post-8:00 reason required)": 10
+    },
+    "blockers": [
+      {
+        "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+        "why": "Story #5 and #6: the cost joins the city beat as \u201cand then,\u201d while the jogging/sleeping montage merely confirms the stated rule without an expectation gap or turn.",
+        "fix": "Replace with: \u201cAarav's zero follows you onto the last bus. Now the whole city looks different. Every head. Every number. All of them moving.\u201d Delete line 120 and cut directly to the teacher reveal.",
+        "domain": "story",
+        "line": 119
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 19,
+        "quote": "Then a little number lights up. Over every head.",
+        "fix": "Replace with: \u201cThen a little number lights up. Over every head. Nobody else looks up.\u201d This answers immediately whether anyone else can see the chips."
+      },
+      {
+        "line": 73,
+        "quote": "The stall. Stand where he stands, and his number's yours. Right?",
+        "fix": "Replace with: \u201cHis stall. His sixty-one. Stand where he stands, and his number's yours. Right?\u201d This makes your mistaken inference explicit before line 82 breaks it."
+      },
+      {
+        "line": 123,
+        "quote": "The teacher? He's sitting the exam himself. Again. His three was never about you.",
+        "fix": "Compress lines 123\u2013127 into a five-second montage: \u201cHis rank. Her music. His second stall. Their goals. Not yours.\u201d Reach the choice near 78\u201380% instead of letting the late explanations slow the third jump."
+      }
+    ],
+    "keep": [
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 114,
+        "quote": "He didn't even argue."
+      },
+      {
+        "line": 136,
+        "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+      }
+    ],
+    "error": ""
+  }
+}

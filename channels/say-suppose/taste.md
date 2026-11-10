@@ -14,6 +14,12 @@ rule. Where two notes disagree, the newer one wins.
   bus, the whole city is lit up...") becomes the voice director's line: "The last bus home. And you can't stop
   reading them. Like timetables." [hushed, a little awed, tired], the hold after it wordless. A line over a
   wide shot says what the person feels, not what the frame shows. (`review-g2-round3.md`, voice blocker #11)
+- **Pipeline v2 adopted: "Looks fine."** The creative director's plan
+  (`docs/superpowers/specs/2026-11-10-say-suppose-pipeline-v2-design.md`): the under-question (`> UNDER:`) at G1; one
+  room round, the owner reads first, three blockers per seat, the protected spine and the author's cut; the viewer
+  seat off the critical path; the dreamer in the idea room; the G3 audition and the G4 look test; spend quotes a
+  sitting early. The loophole beat, the dilemma test and the residue stay suggestions for two films. Opus stays
+  director, measured on films 2 and 3. (`rules/story.md`, `room.yaml`)
 
 ## 2026-11-09
 

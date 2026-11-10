@@ -14,8 +14,16 @@
 4. **Digits mean facts.** Every spoken number, date, name or finding about the real world cites its row inline,
    e.g. `(c03)`. Story numbers are written as words ("day twelve"). What the viewer does in the story is never
    stated as fact. Where the science is uncertain the narrator says so and the row is `contested`.
-5. `.venv/bin/omni qc <slug> <video> story_script` must pass (claims).
-6. `status: awaiting_human`, then stop. The owner reads the whole script before any asset is generated.
+5. **The meaning layer.** Keep the `> UNDER:` line approved at G1 after the five lines; never answer it aloud. Name
+   up to three `> DARLING:` lines, each a spoken line you defend against review. Aim for the shelf hooks in
+   `rules/story.md` (the loophole beat every 60-90 s, the dilemma a cold reader can argue either way, the residue in
+   the viewer's week); they are craft aims, not checks yet.
+6. The room's writer (Claude Fable 5.1) keeps the pen; the session does the research, the claims and every revision.
+7. `.venv/bin/omni qc <slug> <video> story_script` must pass (claims).
+8. **The owner reads first.** As soon as lint and qc pass, show the owner the draft and run `python -m studio.room
+   present` (`studio-room`); the room runs beside the read. In the same sitting, quote the narration (tool, provider,
+   model, cost) and ask the owner's yes, so G3's paid takes can start the moment G2 passes.
+9. `status: awaiting_human`, then stop. The owner reads the whole script before any asset is generated.
 
 ## Never
 - Generate assets, call a paid provider, or approve a gate yourself.

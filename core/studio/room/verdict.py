@@ -10,7 +10,11 @@ from typing import Any, Optional
 
 ROLES = ("viewer", "story", "fact", "neutrality", "voice", "craft")
 MANDATORY = ("viewer", "story", "fact")
-LOCKED_ROLES = ("viewer", "story", "fact", "neutrality")  # never the writer's family
+ALWAYS_REQUIRED = ("story", "fact")  # a channel may make only the viewer optional (room.yaml viewer_required: false)
+LOCKED_ROLES = ("story", "fact", "neutrality")  # never the writer's family
+# Never the writer's own model, but it may share the family: in the viewer trial (2026-11-10) Fable missed on its own
+# script what Opus, its family, found (docs/research/2026-11-10-say-suppose-viewer-trial/RESULTS.md, round 2).
+SELF_LOCKED = ("viewer",)
 FENCE_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.S)
 
 
@@ -40,6 +44,7 @@ class Verdict:
     suggestions: list[dict[str, Any]] = field(default_factory=list)
     keep: list[dict[str, Any]] = field(default_factory=list)
     error: str = ""
+    trimmed: dict[str, int] = field(default_factory=dict)  # how many items a seat's caps cut, by kind
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -77,7 +82,24 @@ def _items(raw: list[Any]) -> list[dict[str, Any]]:
     return [{"quote": i} if isinstance(i, str) else i for i in raw if isinstance(i, (str, dict))]
 
 
-def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, family: str) -> Verdict:
+def _cap(items: list, limit: Optional[int], name: str, trimmed: dict[str, int]) -> list:
+    """The first `limit` items (a seat lists its worst first); how many were cut goes into `trimmed`."""
+    if limit is None or len(items) <= limit:
+        return items
+    trimmed[name] = len(items) - limit
+    return items[:limit]
+
+
+def parse_verdict(
+    text: str,
+    *,
+    call_id: str,
+    seat: str,
+    role: str,
+    model: str,
+    family: str,
+    limits: Optional[dict[str, int]] = None,
+) -> Verdict:
     if role not in ROLES:
         raise ValueError(f"unknown role {role!r}")
     data = extract_json(text)
@@ -106,7 +128,12 @@ def parse_verdict(text: str, *, call_id: str, seat: str, role: str, model: str, 
             suggestions.append({**asdict(blocker), "moved": "blocker without a quote, a why and a fix"})
         else:
             blockers.append(blocker)
-    return Verdict(call_id, seat, role, model, family, "ok", scores, blockers, suggestions, keep)
+    limits, trimmed = limits or {}, {}
+    if role != "fact":  # a fact blocker is never cut
+        blockers = _cap(blockers, limits.get("blockers"), "blockers", trimmed)
+    suggestions = _cap(suggestions, limits.get("suggestions"), "suggestions", trimmed)
+    keep = _cap(keep, limits.get("keep"), "keep", trimmed)
+    return Verdict(call_id, seat, role, model, family, "ok", scores, blockers, suggestions, keep, trimmed=trimmed)
 
 
 def failed_verdict(*, call_id: str, seat: str, role: str, model: str, family: str, error: str) -> Verdict:

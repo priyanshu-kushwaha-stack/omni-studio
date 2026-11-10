@@ -1,0 +1,88 @@
+{
+  "script": "last-time",
+  "model": "claude-opus-5-5",
+  "exit": 0,
+  "seconds": 60,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "claude-opus-5-5",
+    "family": "anthropic",
+    "status": "ok",
+    "scores": {
+      "confirm the click (story #2)": 8,
+      "second hook by 0:30 (story #3)": 8,
+      "habit then change (story #4)": 9,
+      "never say the feeling (story #11)": 7,
+      "the viewer's week": 9,
+      "payoff time (K13)": 9,
+      "would I finish it": 8,
+      "ending payoff": 9
+    },
+    "blockers": [
+      {
+        "quote": "Thirty-nine. You didn't lose one. You lost two.",
+        "why": "story #11: line 95 already shows the flip 41 to 39 and you staring at it, and the narration then says the same thing again in words. It is the one place where I am being told what I just watched.",
+        "fix": "Keep line 97 as \"Thirty-nine.\" on its own (flat, a beat after the doors close), and go straight to line 98: \"'Let's see' was a plan. And it did the maths.\"",
+        "domain": "viewer",
+        "line": 97
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 19,
+        "quote": "Every morning, she waves. You wave back. Not looking.",
+        "fix": "The scene is dusk and you leave tonight (line 26), so \"every morning\" over an evening picture makes me pause to work it out. Use: \"Every time you leave, she waves. You wave back. Not looking.\""
+      },
+      {
+        "line": 20,
+        "quote": "Clack-clack-clack: a split-flap counter drops into place over mom's head and settles on 42. You look up mid-wave.",
+        "fix": "Cue the counter's first clack to the word \"back\" in line 19, not to the end of the line. That puts your worried look, which is the thumbnail's picture, at about 4 s instead of 6 to 7 s, safely inside the click window."
+      },
+      {
+        "line": 103,
+        "quote": "> HOLD: 5 s. The train's rhythm. At each station one passenger steps off to someone waiting on the platform, and both their counters flip down by one as they meet.",
+        "fix": "This is where I would most likely put the phone down. Five seconds of a still row of seats, followed by two lines (105 and 106) that repeat \"It only counts down\" from 0:35, means nothing new happens to me. Cut the hold to 3 s and let the stranger turn their counter toward you for one frame (a rewind plant), or cut lines 105 and 106 to the single line \"An allowance. Spend it carefully.\""
+      },
+      {
+        "line": 164,
+        "quote": "Saying no isn't a plan. A ticket is.",
+        "fix": "At line 147, just saying \"Next Friday\" already sent the counter to 260, so here I wonder why words counted then and not now. Either make line 147 a booked ticket (you tap the train app on the porch as you say it, and the counter climbs on the tap), or change line 164 to: \"Saying no keeps her at thirty-eight. Saying when is what counts.\""
+      },
+      {
+        "line": 179,
+        "quote": "Of course she is.",
+        "fix": "On its own I can't tell what she \"is\". Line 39's \"She always is\" is three minutes and many scenes back, and at low volume on a phone I won't connect them. Restore the packaging line: \"She's still at the door. Of course she is.\""
+      },
+      {
+        "line": 36,
+        "quote": "Two trips home a year. Keep that life, and the door gets forty-two more.",
+        "fix": "I stall on this one trying to do the sum. Make it read as the counter's sum, not mine: \"Two trips home a year. That's your plan. That's how it got forty-two.\""
+      },
+      {
+        "line": 53,
+        "quote": "In one taste test, students were told, \"This is your last chocolate.\"",
+        "fix": "It only just avoids feeling like a lecture. Tie it to me before the fact: \"Exam week logic: in one taste test, students were told, 'This is your last chocolate.'\""
+      }
+    ],
+    "keep": [
+      {
+        "line": 151,
+        "quote": "It wasn't her clock. It was your timetable."
+      },
+      {
+        "line": 56,
+        "quote": "You almost go back for another glass. Then it wouldn't be the last."
+      },
+      {
+        "line": 173,
+        "quote": "He prefers yours."
+      }
+    ],
+    "error": "",
+    "trimmed": {}
+  }
+}
