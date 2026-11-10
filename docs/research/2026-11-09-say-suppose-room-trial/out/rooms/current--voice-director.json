@@ -1,0 +1,91 @@
+{
+  "room": "current",
+  "seat": "voice director",
+  "role": "voice",
+  "model": "claude-sonnet-5-5",
+  "exit": 0,
+  "seconds": 30,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "voice director",
+    "role": "voice",
+    "model": "claude-sonnet-5-5",
+    "family": "anthropic",
+    "status": "ok",
+    "scores": {
+      "Never say the feeling (#11)": 8,
+      "Leave fast, the last line (#12)": 9,
+      "Written to be spoken": 8,
+      "Landing lines finish": 8,
+      "Emotion carried per line": 7,
+      "Breath length at 1.1x": 8
+    },
+    "blockers": [
+      {
+        "quote": "That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.",
+        "why": "Fails #11. It narrates exactly what the scene on line 118 and the 2.5 s hold already show: a city passing with a chip over every head, each one changing. The picture does the work, and the line only repeats it.",
+        "fix": "Replace with a line the picture doesn't carry: \"Last bus home. You've stopped checking your own.\" Alternatively cut the line and let the hold carry the city.",
+        "domain": "voice",
+        "line": 119
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 33,
+        "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+        "fix": "It reads like an explainer. Split it into three short takes: \"Each chip is a chance. One person's. At the one thing they'd choose... with nobody watching.\" Then: \"It never says what that thing is.\" Direction: [curious, dry]."
+      },
+      {
+        "line": 87,
+        "quote": "Last year? About one in a thousand UPSC applicants got in (c01).",
+        "fix": "Add to say.yaml: UPSC -> \"U-P-S-C\". Read the cite as silent."
+      },
+      {
+        "line": 126,
+        "quote": "Her eight was music, all along. A year of notes... copied from someone who doesn't want the exam.",
+        "fix": "The second sentence is too long for one breath and works like an essay. Use: \"Her eight was music. All along. A year of her notes... and she never wanted the exam.\""
+      },
+      {
+        "line": 82,
+        "quote": "His sixty-one was never about tea. It's a second stall. His goal.",
+        "fix": "Add the emotion direction [flat, dawning], with a breath before \"His goal.\""
+      },
+      {
+        "line": 141,
+        "quote": "Zero point two. Same as before.",
+        "fix": "Add the direction [warm, quietly relieved], and keep \"But it's his. And it's moving.\" as the landing in the same take."
+      },
+      {
+        "line": 158,
+        "quote": "Would you want to see your number? Tell us below.",
+        "fix": "Add the direction [warm, light], a real beat after \"thwack\" before the line, and no tempo lift."
+      },
+      {
+        "line": 62,
+        "quote": "Eight per cent. The notes you copy all year... at eight.",
+        "fix": "Say.yaml: \"8%\" is spoken \"eight per cent\". Keep the line, with the direction [a small drop] already in the notes."
+      }
+    ],
+    "keep": [
+      {
+        "line": 22,
+        "quote": "And yours says... zero point zero four per cent."
+      },
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 110,
+        "quote": "Quit."
+      },
+      {
+        "line": 156,
+        "quote": "Out in the lane... thwack."
+      }
+    ],
+    "error": ""
+  }
+}
