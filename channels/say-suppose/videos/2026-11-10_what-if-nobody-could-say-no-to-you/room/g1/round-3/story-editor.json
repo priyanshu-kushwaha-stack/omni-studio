@@ -1,0 +1,58 @@
+{
+  "call_id": "f3bdf176f5ad4498892fe5e9d55e99a5",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 9,
+    "causal progression": 7,
+    "stakes and payoff": 9,
+    "must-pass readiness": 8
+  },
+  "blockers": [
+    {
+      "quote": "Restart near minute nine, the room of yes: you are surrounded by agreement and alone in it; nobody corrects you; the Challenger launch, analysed later through groupthink, is drawn as one paper diagram that draws itself, and your project goes ahead in the same breath.",
+      "why": "Check #14 fails: the back half is denser than the front. This section compresses the stage failure, Milgram, the room of yes, Challenger, the project's launch, the friend's departure, the dilemma, the wordless peak and the honest answer into roughly the final quarter.",
+      "fix": "Move the unanimous project commitment and group-scale image to the 40\u201350% office sequence, cut Challenger, and leave the 65\u201390% section as: stage failure therefore friend objects, friend leaves, paper dilemma, wordless answer.",
+      "domain": "story",
+      "line": 51
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 51,
+      "quote": "Therefore the one person you have not asked, your friend, says it is wrong, and that is why he comes to return the last of the money and leave.",
+      "fix": "Replace with: \"Therefore your friend\u2014the one person still willing to tell you no without being asked\u2014says the project is wrong, returns the last of the money, and leaves.\" He was already asked for the loan."
+    },
+    {
+      "line": 51,
+      "quote": "one sentence, \"stay?\", would keep him in the room, and he is the only no left that could stop the project; but his staying would be your yes, not his.",
+      "fix": "Before \"stay?\", establish the concrete action his voluntary dissent could take to stop the project, such as withdrawing the approval at the next meeting."
+    },
+    {
+      "line": 47,
+      "quote": "The planted line, the narrator's and yours: \"You don't ask. They might say no.\" The loss line: \"By Friday you'll ask your mother one question. And you'll never know her real answer.\" The limits (not in writing, not on yourself, no feelings) are not spoken here; they arrive as first-jump gags. The 3 s ident follows",
+      "fix": "Move the protected planted line over the phone deletion in the opening; reserve 0:20\u20130:30 for the short rule and loss line, then run the ident."
+    }
+  ],
+  "keep": [
+    {
+      "line": 46,
+      "quote": "What if nobody could say no to you? Even your mother. You'd never know what she really thought."
+    },
+    {
+      "line": 50,
+      "quote": "you have not won a single argument this week, you have ended them."
+    },
+    {
+      "line": 52,
+      "quote": "Three dots. For once, you don't know what's coming."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "33f2bef7ad9934c887fdb71faeceaeaa0fe1c7f8eb49f1131d6e70a0906789ab",
+  "draft_sha256": "ffa970d40fd5270c06162497eb06168eded615e9b3e72f03224ae2001abda591"
+}

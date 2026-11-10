@@ -1,0 +1,64 @@
+{
+  "call_id": "d2d6370fad964adc8c8a1fff665acfde",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 7
+  },
+  "blockers": [
+    {
+      "quote": "The honest answer lands here, 80 to 90%, and closer than strangers: your friend and your mother were saying yes freely, far more often than you believed, long before the power; what it destroyed was on your side, the ability to be told the truth",
+      "why": "Claim id: needs a source (Bohns and Flynn). Scope overstatement: Bohns and Flynn (2008) tested compliance from strangers to direct everyday requests, and lines 48 and 86 strictly scope the finding to strangers. Extrapolating 'far more often than you believed' to 'your friend and your mother' asserts as empirical fact that people underestimate compliance by close friends and mothers by half, which the research does not support and has no source.",
+      "fix": "Keep the empirical finding strictly scoped to strangers and frame the realization about family and friends without attributing the study's quantitative finding to them: 'The honest answer lands here, 80 to 90%, and closer than strangers: your friend and your mother were saying yes freely out of love, long before the power; what it destroyed was on your side, the ability to be told the truth'",
+      "domain": "fact",
+      "line": 51
+    },
+    {
+      "quote": "One spoken fact (Bohns and Flynn, to verify) lands on you within two lines: people were far more willing to say yes than you believed. You had simply never asked.",
+      "why": "Claim id: needs a source (Bohns and Flynn). Scope overstatement: Bohns and Flynn measured compliance specifically for direct, everyday requests (such as filling out a short questionnaire or borrowing a phone). Round 1 explicitly mandated scoping this to 'everyday requests' (taste.md, 2026-11-11; line 86). Stating 'people were far more willing to say yes than you believed' without 'to everyday requests' implies people comply with requests of any magnitude.",
+      "fix": "One spoken fact (Bohns and Flynn, to verify) lands on you within two lines: people were far more willing to say yes to everyday requests than you believed. You had simply never asked.",
+      "domain": "fact",
+      "line": 48
+    },
+    {
+      "quote": "you ask a clerk to let you cut the queue \"because I need to make copies\", a reason that is no reason, and he nods (Langer's study, shown, not cited).",
+      "why": "Claim id: needs a source (Langer). Scope overstatement: Langer et al. (1978) found placebic reasons increased compliance (to 93%) only for small requests (5 pages); for 20 pages, compliance dropped to 24%, no better than asking with no reason. Line 85 explicitly mandates 'scope stays \"a small request\"'. Omitting the small request constraint overstates the finding to cutting queues in general.",
+      "fix": "you ask a clerk to let you cut the queue for five copies \"because I need to make copies\", a reason that is no reason, and he nods (Langer's study, shown, not cited).",
+      "domain": "fact",
+      "line": 48
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 51,
+      "quote": "One drawn fact, Milgram's 65 percent, as a row of pastel heads and a dial, with the calm voice \"please continue\" you now recognise as your own; it lands on your face within two lines.",
+      "fix": "Specify in the visual description that the drawn dial reaches 450 volts, ensuring the 65 percent figure is grounded in continuing to the lethal maximum rather than reading as general compliance: 'One drawn fact, Milgram's 65 percent, as a row of pastel heads and a dial reaching 450 volts, with the calm voice \"please continue\" you now recognise as your own; it lands on your face within two lines.'"
+    },
+    {
+      "line": 51,
+      "quote": "Restart near minute eleven, the room of yes: you are surrounded by agreement and alone in it; nobody corrects you; the Challenger launch, analysed later through groupthink, is drawn as one paper diagram that draws itself, and your project goes ahead in the same breath.",
+      "fix": "At G2, ensure the claims.md row for Challenger notes contested status regarding whether groupthink or structural normalization of deviance (Vaughan, 1996) explains the launch decision, keeping the spoken line as 'analysed later through groupthink'."
+    }
+  ],
+  "keep": [
+    {
+      "line": 47,
+      "quote": "The planted line, the narrator's and yours: \"You don't ask. They might say no.\""
+    },
+    {
+      "line": 50,
+      "quote": "One fact (Festinger and Carlsmith) lands on his face within two lines: with no good reason for what we did, we invent one."
+    },
+    {
+      "line": 73,
+      "quote": "Care: consent and manipulation. The film shows what a yes without a choice costs; it never teaches how to get one. No line is advice."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "fcc07022ecff05c20eca15795245ee5c1f8d141bae3039deda06119785145299",
+  "draft_sha256": "b212e603db616a4510b09cfb5154f7f752ed87fdf4f0cbbe41cb5376448d337d"
+}

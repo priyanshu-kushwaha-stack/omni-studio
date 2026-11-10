@@ -8,6 +8,14 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-11
+
+- **G1, nobody says no: "Apply all fixes"** (round 1, all eight blockers and the suggestions in `review-g1-round1.md`).
+  The film opens on the premise, the title question and the stake inside 10 s; a fact line says only what the study
+  found ("far more willing than you believed", "everyday requests"), never "most"; a persuasion finding that moves no
+  beat is cut; the person you can lose earns warm beats before the choice; and the dilemma gets two right answers
+  (using the power to make your friend stay would also stop the project). (nobody-says-no film, G1)
+
 ## 2026-11-10
 
 - **G2, odds of success: "Take both fixes"** (first-time viewer, story #11, round 6). "But yours moved. Down."

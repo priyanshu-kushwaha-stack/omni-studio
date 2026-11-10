@@ -1,0 +1,48 @@
+{
+  "call_id": "9539aad2b5dd45e78e9c50659306b7d5",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 9,
+    "claim_support": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 48,
+      "quote": "One spoken fact (Bohns and Flynn, to verify) lands on you within two lines: people were far more willing to say yes to everyday requests than you believed. You had simply never asked.",
+      "fix": "Specify 'strangers' in the spoken line to align strictly with the empirical scope of Bohns and Flynn (2008) and reinforce line 48's note that this first lesson is so far only about strangers: 'One spoken fact (Bohns and Flynn, to verify) lands on you within two lines: strangers were far more willing to say yes to everyday requests than you believed. You had simply never asked.'"
+    },
+    {
+      "line": 51,
+      "quote": "Restart near minute nine, the room of yes: you are surrounded by agreement and alone in it; nobody corrects you; the Challenger launch, analysed later through groupthink, is drawn as one paper diagram that draws itself, and your project goes ahead in the same breath.",
+      "fix": "At G2, when adding the claims.md row for Challenger, mark the status as contested and cite the alternative structural explanation (Vaughan, 1996, normalization of deviance), retaining the outline's careful phrasing 'analysed later through groupthink'."
+    },
+    {
+      "line": 74,
+      "quote": "The one persuasion finding left (Langer) is a scene that happens to you, never a trick to try, and it lands as \"people are kinder than you think\", not \"say because\"; foot-in-the-door is cut.",
+      "fix": "Clarify the research framing in the notes: Langer et al. (1978) demonstrated mindless automatic compliance with placebic reasons for small requests, whereas 'people are kinder than you think' stems from Bohns and Flynn's counterparty compliance research: 'The one persuasion finding left (Langer) is a scene that happens to you, never a trick to try, and it lands as mindless compliance for small requests, not \"say because\"; foot-in-the-door is cut.'"
+    }
+  ],
+  "keep": [
+    {
+      "line": 48,
+      "quote": "you ask a clerk to let you cut the queue for five copies \"because I need to make copies\", a reason that is no reason, and he nods (Langer's study, shown, not cited)."
+    },
+    {
+      "line": 50,
+      "quote": "One fact (Festinger and Carlsmith) lands on his face within two lines: with no good reason for what we did, we invent one."
+    },
+    {
+      "line": 51,
+      "quote": "The honest answer lands here, 80 to 90%, and closer than strangers: your friend and your mother were saying yes freely, out of love, long before the power; what it destroyed was on your side, the ability to be told the truth"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "fd8a5917381323572757ed278d6bf02ec974f232c90ae9865e20ee236318c558",
+  "draft_sha256": "ffa970d40fd5270c06162497eb06168eded615e9b3e72f03224ae2001abda591"
+}

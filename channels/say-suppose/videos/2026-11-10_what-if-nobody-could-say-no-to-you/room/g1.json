@@ -55,16 +55,102 @@
       "judge": null,
       "owner_notes": false,
       "candidate": false
+    },
+    {
+      "round": 2,
+      "draft_sha256": "b212e603db616a4510b09cfb5154f7f752ed87fdf4f0cbbe41cb5376448d337d",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "d2d6370fad964adc8c8a1fff665acfde",
+          "file": "room/g1/round-2/claims-check.json",
+          "output_sha256": "fcc07022ecff05c20eca15795245ee5c1f8d141bae3039deda06119785145299",
+          "blockers": 3
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "f5cb5855acf84f7da0b3d9d9d28af310",
+          "file": "room/g1/round-2/story-editor.json",
+          "output_sha256": "0bfb4d0c8da20cfa33660f882b30f66e9a3380ec5e6d1aca66ee50ce7dbeb8be",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 3,
+      "draft_sha256": "ffa970d40fd5270c06162497eb06168eded615e9b3e72f03224ae2001abda591",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "9539aad2b5dd45e78e9c50659306b7d5",
+          "file": "room/g1/round-3/claims-check.json",
+          "output_sha256": "fd8a5917381323572757ed278d6bf02ec974f232c90ae9865e20ee236318c558",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "f3bdf176f5ad4498892fe5e9d55e99a5",
+          "file": "room/g1/round-3/story-editor.json",
+          "output_sha256": "33f2bef7ad9934c887fdb71faeceaeaa0fe1c7f8eb49f1131d6e70a0906789ab",
+          "blockers": 1
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
-  "shipped": null,
-  "calls": 3,
+  "shipped": {
+    "round": 3,
+    "artifact_sha256": "ffa970d40fd5270c06162497eb06168eded615e9b3e72f03224ae2001abda591"
+  },
+  "calls": 8,
   "cap": 18,
-  "author_cut": null,
+  "author_cut": {
+    "round": 1,
+    "draft_sha256": "c70b58a13040830003f61e41cc6a80ba7426da1e4f72f551ffd456d40e879371",
+    "cost": {
+      "lines_changed": 55,
+      "header_changed": [],
+      "keep_lost": [
+        "one. No line is advice. The persuasion findings (Langer, foot-in-the-door) are told as things that happen to you and the",
+        "Care: consent and manipulation. The film shows what a yes without a choice costs; it never teaches how to get one. No line is advice."
+      ]
+    }
+  },
   "presented": {
     "draft_sha256": "c70b58a13040830003f61e41cc6a80ba7426da1e4f72f551ffd456d40e879371",
-    "at": "2026-11-10T16:26:16+00:00"
+    "at": "2026-11-10T19:26:01+00:00"
   }
 }

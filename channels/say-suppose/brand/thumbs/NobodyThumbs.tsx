@@ -44,6 +44,10 @@ const Row: React.FC = () => {
       <g>
         <circle cx={mx + 30 * s} cy={ROW.y - 40 * s} r={19 * s} fill="#3a2a2a" />
         <Figure x={rowFeet(mx).x} y={rowFeet(mx).y} scale={s} facing={-1} head="#e6a0a0" coat="#7a5a8c" pose={body} {...pose} />
+        {/* her shawl, so "her" reads at feed size: an orange drape over both shoulders, a paper hem */}
+        <path d={`M${mx - 30 * s} ${ROW.y + 44 * s} Q${mx} ${ROW.y + 58 * s} ${mx + 30 * s} ${ROW.y + 44 * s}
+          L${mx + 52 * s} ${ROW.y + 118 * s} Q${mx} ${ROW.y + 92 * s} ${mx - 52 * s} ${ROW.y + 118 * s} Z`}
+          fill="#e0793f" stroke={PAPER} strokeWidth={9} strokeLinejoin="round" />
       </g>
     </>
   );

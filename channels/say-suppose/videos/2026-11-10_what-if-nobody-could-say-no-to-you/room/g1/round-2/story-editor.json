@@ -1,0 +1,75 @@
+{
+  "call_id": "f5cb5855acf84f7da0b3d9d9d28af310",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 9,
+    "opening and second hook": 9,
+    "causal beat chain": 6,
+    "misconception and reversal": 5,
+    "earned stakes": 8,
+    "ending": 9,
+    "runtime justification": 7
+  },
+  "blockers": [
+    {
+      "quote": "You'd never know what she really thought.",
+      "why": "Check #10 fails: the opening states the midpoint revelation outright, so \u201ca no was the only proof a yes meant something\u201d does not reverse anything new.",
+      "fix": "Replace with: \u201cWhat if nobody could say no to you? Even your mother. By Friday, one question will make that power a trap.\u201d Preserve the concrete loss at 0:30 without explaining why the yes becomes worthless.",
+      "domain": "story",
+      "line": 46
+    },
+    {
+      "quote": "Restart near minute eleven, the room of yes: you are surrounded by agreement and alone in it; nobody corrects you; the Challenger launch, analysed later through groupthink, is drawn as one paper diagram that draws itself, and your project goes ahead in the same breath. Only your friend, the one person you have not asked, says it is wrong, and that is why he comes to return the last of the money and leave. The choice at 75 to 80%, with two right answers:",
+      "why": "Check #5 fails: the choice at 75\u201380% is narrated after the minute-eleven restart, although it occurs around 9:45\u201310:25. The meeting approval also repeats the unanimous meeting from the previous beat instead of following from it.",
+      "fix": "Move the complete friend choice before the minute-eleven restart. Begin this beat as the consequence of the earlier vote: \u201cBecause that unanimous yes already committed the project, your worst version goes on stage.\u201d",
+      "domain": "story",
+      "line": 51
+    },
+    {
+      "quote": "Because you are now asking for everything, you walk the office floor and we see it top-down: a wake of YES tags flipping up behind you like dominoes, every head turning with the same smile, and from above you cannot tell which of them liked you yesterday.",
+      "why": "Check #8 fails literally: the premise-specific picture is described, but none is named in a `> SCENE:` line.",
+      "fix": "Replace with: \u201c> SCENE: Office floor, top-down. A wake of YES tags flips behind you like dominoes; identical smiles turn toward you until you cannot tell who liked you yesterday.\u201d",
+      "domain": "story",
+      "line": 49
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 8,
+      "quote": "Anything you ask for, face to face, out loud, gets a yes, and the person does it gladly.",
+      "fix": "Replace \u201cdoes it gladly\u201d with \u201cdoes it wearing the same glad smile\u201d; otherwise the rule changes feelings despite the later claim that it cannot."
+    },
+    {
+      "line": 113,
+      "quote": "Left open for the comments: what if someone else asks on your behalf?",
+      "fix": "Close this before halfway: show you typing the question for your friend to ask, then deleting it because using him to test your mother would sacrifice the relationship you are trying to trust."
+    },
+    {
+      "line": 48,
+      "quote": "The chai stall: extra chutney, and he gives you the whole bowl.",
+      "fix": "Beat the obvious escalation: you ask for extra chutney, and he fills the saucer until there is nowhere to put the chai cup."
+    }
+  ],
+  "keep": [
+    {
+      "line": 29,
+      "quote": "You find the no was the only thing that ever made a yes mean something, and the power took it from you, not from them."
+    },
+    {
+      "line": 39,
+      "quote": "The viewer is not waiting for a bigger power; they are waiting for a smaller room."
+    },
+    {
+      "line": 52,
+      "quote": "Three dots. For once, you don't know what's coming."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "0bfb4d0c8da20cfa33660f882b30f66e9a3380ec5e6d1aca66ee50ce7dbeb8be",
+  "draft_sha256": "b212e603db616a4510b09cfb5154f7f752ed87fdf4f0cbbe41cb5376448d337d"
+}

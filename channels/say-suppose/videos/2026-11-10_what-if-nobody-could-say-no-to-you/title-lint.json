@@ -88,14 +88,14 @@
  ],
  "kept": {
   "A": "What If Nobody Could Say No to You?",
-  "B": "What If Every Question You Asked Was a Command?",
+  "B": "What If Asking Was the Same as Ordering?",
   "C": "What If You Never Heard an Honest Answer Again?"
  },
  "pairs": [
   {
    "title": "A",
    "thumbnail": "a",
-   "thumb_words": "THEY MEANT IT?",
+   "thumb_words": "MEANT IT?",
    "score": 98,
    "pair_issues": []
   },
@@ -116,28 +116,28 @@
   {
    "title": "B",
    "thumbnail": "a",
-   "thumb_words": "THEY MEANT IT?",
-   "score": 84,
+   "thumb_words": "MEANT IT?",
+   "score": 98,
    "pair_issues": []
   },
   {
    "title": "B",
    "thumbnail": "b",
    "thumb_words": "EVEN HER?",
-   "score": 84,
+   "score": 98,
    "pair_issues": []
   },
   {
    "title": "B",
    "thumbnail": "c",
    "thumb_words": "ALL OF THEM?",
-   "score": 84,
+   "score": 98,
    "pair_issues": []
   },
   {
    "title": "C",
    "thumbnail": "a",
-   "thumb_words": "THEY MEANT IT?",
+   "thumb_words": "MEANT IT?",
    "score": 84,
    "pair_issues": []
   },
@@ -155,5 +155,6 @@
    "score": 84,
    "pair_issues": []
   }
- ]
+ ],
+ "round2": "B replaced by title 9 (first-time viewer, K12); thumbnail a's tag is MEANT IT?"
 }
