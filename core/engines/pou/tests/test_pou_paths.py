@@ -50,3 +50,12 @@ def test_real_channel_resolves_font_and_rigs(monkeypatch):
     monkeypatch.delenv("POU_CHANNEL_DIR", raising=False)
     assert pou_paths.path("font").is_file()
     assert pou_paths.path("rigs").is_dir()
+
+
+def test_a_symlinked_interpreter_keeps_its_venv_path(tmp_path, monkeypatch):
+    # .venv-media/bin/python is a symlink to the base interpreter; following it drops the venv's packages.
+    (tmp_path / "venv" / "bin").mkdir(parents=True)
+    (tmp_path / "venv" / "bin" / "python").symlink_to(sys.executable)
+    (tmp_path / "engine.yaml").write_text("media_python: venv/bin/python\n")
+    monkeypatch.setenv("POU_CHANNEL_DIR", str(tmp_path))
+    assert pou_paths.path("media_python") == pou_paths.channel_dir() / "venv" / "bin" / "python"
