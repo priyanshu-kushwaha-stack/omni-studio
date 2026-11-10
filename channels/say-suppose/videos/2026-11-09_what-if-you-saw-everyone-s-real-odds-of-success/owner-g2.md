@@ -1,6 +1,6 @@
 # G2 for the owner: everyone's real odds of success
 
-**Status: G2 is at `awaiting_human`.** The room shipped round 7 under the owner-notes rule. That round has all your
+**Status: G2 PASSED (owner, 2026-11-10, "Approve as is"), signed with `omni approve`.** Before that it was at `awaiting_human`. The room shipped round 7 under the owner-notes rule. That round has all your
 notes from today: the bus line, Grok's opening, and both round-6 fixes. The viewer, story editor and fact-checker were
 all ok, and `verify` reports the room evidence ok. Nothing was generated and no paid call was made. Nothing is
 approved: only you pass G2 (`omni approve say-suppose <video> story_script`).
