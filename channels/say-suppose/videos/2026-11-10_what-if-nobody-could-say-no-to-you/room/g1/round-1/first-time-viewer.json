@@ -1,0 +1,65 @@
+{
+  "call_id": "416ae9dc7afd45d68db0e87c2d97dfd4",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "claude-opus-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "hook_first_30s": 6,
+    "story_pull": 8,
+    "packaging_title_thumb": 7,
+    "viewer_week_fit": 9
+  },
+  "blockers": [
+    {
+      "quote": "First word within one second: \"By Friday you'll ask your mother one question. And you'll never know what she really thought.\" The title question is spoken over the third smile.",
+      "why": "story #3: at 115 wpm the opening line is 17 words, about 9 s, and the title question (8 words) only starts after it, at about 9 to 13 s. Inside the first 10 s I hear the stakes and the tension, but the premise is spoken only after 10 s. Before that, the only sign of it is three nodding heads I can't yet read.",
+      "fix": "Open with the premise and fold the stake into it (18 words, about 9.4 s): \"What if nobody could say no to you? Even your mother. You'd never know what she really thought.\" Move \"By Friday you'll ask her one question\" to the rule beat as the loss line, which line 47 already sets up (\"by Friday, your mother's real answer\").",
+      "domain": "viewer",
+      "line": 46
+    },
+    {
+      "quote": "\"What If Every Question You Asked Was a...\" loses \"command\"; the thumbnail's three smiles say the rest",
+      "why": "K12: on a phone I see \"What If Every Question You Asked Was a...\" next to three identical smiles and \"ALL OF THEM?\". That could be a lie, a test or a prank. Neither the cut title nor the thumbnail says that nobody can refuse you, so the pair no longer says what the video is.",
+      "fix": "Replace B with title 9, \"What If Asking Was the Same as Ordering?\" (40 characters, fits whole). It tests the same variable, mechanism against wish. It shares no content word with \"ALL OF THEM?\", so K7 holds, and the K12 note becomes \"Whole title fits\".",
+      "domain": "viewer",
+      "line": 135
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 47,
+      "quote": "Stated once, on the torn slip: ask a person directly, out loud, looking at them, and they say yes and do it, gladly, as far as they can. Not in writing, not on yourself, and it cannot make anyone feel anything. You cannot turn it off.",
+      "fix": "As outlined, this beat runs about 75 spoken words (rule, plant, gain, loss), roughly 40 s, plus the 3 s ident. It also starts after a cold open and habit insert that already reach about 0:20, not the \"0:10\" given for the call at line 68. So it cannot sit inside 30 s. Speak only \"Ask anyone, face to face, out loud. They say yes. Gladly. And it won't switch off.\" Then show \"not in writing\", \"not on yourself\" and \"no feelings\" as first-jump gags: the boss text that does nothing, the mirror, the same smile."
+    },
+    {
+      "line": 48,
+      "quote": "the first two facts land on you within two lines (Langer, Bohns and Flynn, both to verify): most of these people would have said yes anyway.",
+      "fix": "This is where I'd most likely leave: two studies back to back at the minute-three restart is the lecture shape audience.md warns about. Speak one fact (Bohns and Flynn, \"they'd have said yes anyway, you just never asked\"). Let Langer be the clerk scene itself: you give a nonsense reason, he nods. Show it, don't cite it."
+    },
+    {
+      "line": 176,
+      "quote": "Recommendation, before the cold read: **title A with thumbnail b (\"EVEN HER?\")**.",
+      "fix": "Line 149 says the mother is drawn with \"no shawl ... beyond a plum coat, the bun marks her\". At feed size, \"her\" could be any of three pastel heads, and nothing on my phone says one of them is my mother. Either draw the shawl the cold open promises (line 46, \"bun and shawl\"), so the cold read can test b fairly, or lead with a (\"MEANT IT?\"), which needs no one identified."
+    }
+  ],
+  "keep": [
+    {
+      "line": 52,
+      "quote": "Three dots. For once, you don't know what's coming."
+    },
+    {
+      "line": 47,
+      "quote": "You don't ask. They might say no."
+    },
+    {
+      "line": 50,
+      "quote": "\"You're happy, aren't you?\""
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "28410b0271a1b7b37d01be24b2e6f74ada709ccc1318d8b7a89ffffbefa64170",
+  "draft_sha256": "c70b58a13040830003f61e41cc6a80ba7426da1e4f72f551ffd456d40e879371"
+}

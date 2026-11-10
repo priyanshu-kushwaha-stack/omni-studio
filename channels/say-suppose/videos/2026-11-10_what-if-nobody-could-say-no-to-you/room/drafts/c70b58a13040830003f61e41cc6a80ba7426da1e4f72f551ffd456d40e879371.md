@@ -1,0 +1,187 @@
+# Packaging: nobody could say no to you
+
+status: draft for G1 (not approved)
+topic: /say-suppose-topics slate 2026-11-10, id f-nobody-says-no, ranked 4th at 78/100, proposed by Fable (`backlog/`)
+
+## Premise
+
+Anything you ask for, face to face, out loud, gets a yes, and the person does it gladly.
+From that morning on you can never again find out what anyone really wanted, including your mother.
+
+The power, the stamped YES tag and every person in the story are invented. The real part, sourced at G2: how often
+people say yes when simply asked (far more often than the asker expects); what a yes with no reason behind it does to
+the person who gave it; what rooms with no "no" in them decide; and what ordinary people do when a calm voice tells
+them to continue.
+
+## The viewer
+
+Riya (`audience.md`), 22, Pune: a part-time internship with a boss who messages late, the metro home, exam season, a
+mother who calls twice a day. Riya's habit is the film's habit: the message to the boss typed and deleted, the extra
+chutney never asked for, the window seat given up without a word. The daydream "if only they couldn't say no" is one
+Riya has had on the metro this week. Every gag comes from that week (the fine at the gate, the auto that goes by the
+meter, the auntie's bag on the seat). The English packaging stays readable worldwide: no `₹`, no local slang.
+
+## Five lines (rules/story.md, check 1)
+
+> SITUATION: You never ask for anything; you type the message to your boss four times and delete it, and when your mother calls you say "fine" and ask her nothing.
+> DESIRE: To hear yes, once, without having to earn it or risk a no.
+> CONFLICT: From the morning the ticket checker tears up your fine, everyone you ask says yes with the same smile, so you can no longer tell a yes from a person.
+> CHANGE: You find the no was the only thing that ever made a yes mean something, and the power took it from you, not from them.
+> RESULT: You put the one question that matters on paper, where it has no power, and you send the message to your boss the ordinary way, and wait.
+> UNDER: If I could get anything just by asking, would anyone's yes still mean anything?
+
+## Beat outline
+
+Estimated length twelve to fourteen minutes; the script decides. Past eight minutes the felt reason a viewer stays:
+the first seven seconds promise that by Friday you will ask your mother one question and never know her answer, so
+every yes after that is a step toward a face the viewer already knows, and each jump turns the power on someone
+closer to you (a checker, a boss, a friend, your mother, then everyone). The viewer is not waiting for a bigger
+power; they are waiting for a smaller room.
+
+Shares below assume thirteen minutes: 35% is about 4:30, the midpoint 6:30, the cost about 7:50, the choice between
+9:45 and 10:25, the last tenth from 11:40.
+
+| Share | Beat | What happens | Checks |
+|---|---|---|---|
+| within 20 s | The change | Cold open, 0:00 to 0:07, the thumbnail's picture: `night`, a metro gate; your open hand held out, brows up; three heads nod at you in a row with the same fixed smile, the boss (tie), the checker (cap), your mother (bun and shawl); a paper snap as a YES tag flips up over each. First word within one second: "By Friday you'll ask your mother one question. And you'll never know what she really thought." The title question is spoken over the third smile. Cut to that morning's habit: top-down insert on your phone, the message to your boss typed four times and deleted four times; she calls, you say "Fine, Ma," and ask her nothing; the fine slip in your hand at the gate. You say, as a joke, "let me off?" The checker tears it up and thanks you. The tag flips | 2 (confirm the click), 4 (the habit: you don't ask), K13 |
+| within 30 s | The rule | Stated once, on the torn slip: ask a person directly, out loud, looking at them, and they say yes and do it, gladly, as far as they can. Not in writing, not on yourself, and it cannot make anyone feel anything. You cannot turn it off. The planted line, the narrator's and yours: "You don't ask. They might say no." What you gain, the second hook: every no in your life, gone. What you can lose is the question under the opening: by Friday, your mother's real answer. The 3 s ident follows | 3 (second hook by 0:30), 10 (the plant) |
+| to 35% | First jump: a week of small yeses | Small, personal, funny. The chai stall: extra chutney, and he gives you the whole bowl. The bus: the auntie moves her bag before you finish the sentence. The auto goes by the meter and the driver thanks you for the fare. The boss gives you Friday off, then the project you wanted, and the gap: you expected to feel ten feet tall, you feel like you cheated at a game no one else knew was on. Your oldest friend is beside you for the window-seat gag, so he is in the story early. Warm beats for your mother: Sunday lunch, she packs food for the week, asks you to come again, tells the same story; you nearly ask her something and stop, out of habit. The stranger passes behind her gate for one second. Restart near minute three, the first turn: you test the power on a neighbour you haven't met, then on a clerk, and the first two facts land on you within two lines (Langer, Bohns and Flynn, both to verify): most of these people would have said yes anyway. You had simply never asked. The power's first lesson is about you | 5, 6 (every use has a gap), 7 (misconception first: you thought the world was made of no), 9 (mother named at 0:00, two warm beats before 4:30), 13, 14 (restart ~3:00) |
+| ~40% | The picture only this premise can show | Because you are now asking for everything, you walk the office floor and we see it top-down: a wake of YES tags flipping up behind you like dominoes, every head turning with the same smile, and from above you cannot tell which of them liked you yesterday. Therefore you stop looking at faces at all | 5, 8 (before the midpoint) |
+| to 65% | Second jump: the yeses start to cost | Restart near minute six, the first crack: your friend lends you money he needed, cheerfully, because you asked across a table. Later, at his family's dinner, he cannot explain why; he remembers agreeing. One fact (Festinger and Carlsmith) lands on his face within two lines: with no good reason for what we did, we invent one. The midpoint breaks the rule's line: you wanted every no gone, but a no was the only proof a yes meant something; you have not won a single argument this week, you have ended them. Then every question becomes a command: "can you pass the salt", "will you stay a bit", "do you agree"; the tags flip faster; you start talking in statements and silences, and the Midas line (one sentence, the food turning to gold). The cost near 60%, about 7:50: at the door with the packed food, without thinking, "You're happy, aren't you?" The tag flips up slowly. Yes. She smiles the smile. The one loophole the viewer has been saving ("ask her to tell you the truth") is tried and closed here: she says yes to that too, and tells you something, and you have no way to know which it was | 7 (one number at a time), 9 (the cost attacks the habit: the one question you never asked, now unaskable), 10 (the turn breaks "every no in your life, gone"), 14 (restarts ~6:00 and ~7:50) |
+| to 90% | Third jump: everyone | Scale, felt through you: a meeting where your idea goes through without a single hand up; a stage; a crowd. One drawn fact, Milgram's 65 percent, as a row of pastel heads and a dial, with the calm voice "please continue" you now recognise as your own, and it lands on your face within two lines. Restart near minute eleven, the room of yes: you are surrounded by agreement and alone in it; nobody corrects you; the Challenger launch (Janis) is drawn as a single paper diagram that draws itself, and your worst idea goes ahead in the same breath. The choice at 75 to 80%: your friend comes to return the last of the money and say he's done with you; one sentence, "stay?", would keep him in the room. The power, or the person. You write "Do you want to stay?" on paper, where it has no power, and hold it out. The wordless peak, 8 to 10 s: he reads it; the world drains to grey, you and the paper keep colour, slow motion, the music drops to one note; something still moves every 2 to 4 s (the paper trembling, a slow push in). His answer is not shown. The honest answer lands here, 80 to 90%: the power barely changed anyone; they were always far more willing to say yes than you believed; what it destroyed was on your side, the ability to be told the truth | 11 (never say the feeling: the grey and the paper carry it), 13, 14 (restart ~11:00), the choice at 75-80% |
+| last tenth | Back to you | The metro home. You open the message to your boss, the ordinary way, and send it on the first try. The mirrored line: "You ask. They might say no." Phone face up. Last line, inside the last image: "Three dots. For once, you don't know what's coming." End card, left two-thirds; the comment question: "Who would you never risk asking?" Stop | 12 (leave fast; the opposite of the opening: you asked, and you are waiting for a no) |
+
+**Rule device:** a small stamped paper tag reading YES, cream `#F3E9D7` on ink lettering, that flips up over the head
+of anyone you ask, with one paper snap. It is the only on-screen sign of the power. It speeds up through the second
+jump, flips slowly once over your mother, and never appears over the paper note. Only you, the stranger and the tags
+keep full colour when the peak drains the world.
+
+No new power rule after the halfway point: everything the viewer needs (face to face, out loud, not in writing, not on
+yourself, no feelings, cannot be turned off, they remember agreeing but not why) is said by 0:30 or shown in the first
+jump. No new person after 60%: the checker, the chai seller, the auntie, the auto driver, the boss, your oldest friend
+and your mother are all on screen before 4:30; the meeting and the crowd are faces, not characters.
+
+**The stranger's hidden moment:** crimson head, long dark coat, one second, at your mother's gate in the first jump,
+walking past behind her as she hands you the food. He is the only figure in the film who never turns toward you. He
+affects nothing; he is there for the second watch.
+
+**The mother:** she is on screen at 0:00 (the third smile), at 0:10 (the call, "Fine, Ma"), and gets two warm beats
+by about 4:00 (Sunday lunch, the packed food, the story she always tells, the question you nearly ask and don't),
+at least three and a half minutes before the cost near 7:50. She speaks only in bubbles of four words or fewer
+("Come Sunday?", "Eat properly") or one short line in her own voice (`cast.md`). She never learns about the power.
+
+**Care: consent and manipulation.** The film shows what a yes without a choice costs; it never teaches how to get
+one. No line is advice. The persuasion findings (Langer, foot-in-the-door) are told as things that happen to you and the
+boss, never as tricks to try, and Langer's lands as "people are kinder than you think", not "say because". Every
+person who says yes keeps a face and a life after the yes (the friend's dinner, the mother's smile); nobody is a prop
+for a gag twice. The power is never used for touch, money taken from a stranger, or anything a viewer could copy as
+coercion: the worst use is a friend's loan, and the film makes it the first crack, not a win.
+
+**Research for G2** (from the slate's content mine; nothing here is a claim until `claims.md` cites it; sources
+fetched and read at G2, never recalled). Each fact and the beat or feeling it moves:
+
+| Fact | Moves | Status |
+|---|---|---|
+| Langer's photocopier study: asking to cut the queue with any reason at all raised agreement from about 60 percent to over 90 percent | The restart near minute three: most would have said yes anyway (glee to unease) | **verify** |
+| Bohns and Flynn: people underestimate by roughly half how likely strangers are to agree to a direct request | The same turn: you had simply never asked; the power's first lesson is about you | **verify** |
+| Foot-in-the-door (Freedman and Fraser, 1966): a small yes makes a larger one more likely | Why the boss's Friday off becomes the project without a second thought (power) | keep, one line, drawn not spoken if the beat is already full |
+| Cognitive dissonance (Festinger and Carlsmith, 1959): with no good reason for what we did, we invent one | The friend at his family's dinner, inventing a reason for the loan (guilt) | keep |
+| Reactance (Brehm, 1966): a freedom taken away is wanted more | Only if the script needs what comes after the yes wears off; otherwise cut | hold |
+| Self-determination theory: autonomy as a basic need | The midpoint: a no was the proof; spoken as one line, no theory named on screen | keep |
+| Overjustification effect (Lepper, 1973): an outside cause crowds out the inner one | Every yes now has an outside cause; one picture, the tags flipping before you finish the sentence | keep as a picture |
+| Milgram, 1961: 65 percent continued to 450 volts when calmly told to | The third jump, drawn as a row of heads and a dial; the calm voice is yours (unease) | keep |
+| Hofling, 1966: 21 of 22 nurses obeyed an unknown doctor's telephoned order | Same beat; a second fact line in a row would stop the story, so it is cut unless Milgram is dropped | cut |
+| Asch: about three quarters went along with a wrong group answer at least once | The room of yes, as a drawn diagram of lines, no spoken number | drawn only |
+| Groupthink (Janis), the 1986 Challenger launch over engineers' objections | The room of yes: your worst idea goes ahead (loneliness) | keep; Janis did not study Challenger himself (later analysts applied his model), so the line says only what the source says, and is `contested` if the source hedges |
+| Undue influence in contract law: a yes without free choice is no agreement | The brief's cut list: dropped; the friend's dinner says it without a lawyer | cut |
+| King Midas, food turning to gold | One line in the second jump: you cannot turn it off | keep, one line |
+
+Also cut from the brief, per its own cut list: the professor and the exam, and the boss's parking space. The checker,
+the "would have said yes anyway" turn, the friend's loan, the mother's answer and the paper note are the spine.
+
+**The viewer's "but what about"** (answered where each arises):
+
+1. Does it work by text or on a call? Answered at the rule, 0:30: face to face, out loud, looking at them; which is
+   why the message to your boss is the one thing the power never touches, and why it ends the film.
+2. Can you make someone love you, or feel anything? At the rule and again in the first jump: no; it gets you a yes
+   and an action, never a feeling, which is why every smile is the same smile.
+3. Wouldn't they have said yes anyway? The restart near minute three: mostly, yes, and that is the first turn.
+4. Can't you just stop asking? The second jump: every question is a command, so you try statements and silences, and
+   find how much of talking to someone is asking them things.
+5. Can't you ask them to tell you the truth? The cost near 60%: you do, your mother says yes and tells you something,
+   and you cannot tell the yes from the truth. Left open for the comments: what if someone else asks on your behalf?
+
+## Titles
+
+All under 50 characters (K16). The extreme claim is "nobody" and "never", and the film delivers it: not one refusal,
+face to face, in the whole film; the only no-shaped thing in it is a piece of paper.
+
+| # | Title | Characters | title.py |
+|---|---|---|---|
+| 1 | What If Nobody Could Say No to You? | 35 | 94 |
+| 2 | What If Every Question You Asked Was a Command? | 47 | 80 |
+| 3 | What If You Never Heard an Honest Answer Again? | 47 | 80 |
+| 4 | What If Everyone Had to Say Yes to You? | 39 | 94 |
+| 5 | What If You Could Never Be Refused Again? | 41 | 80 |
+| 6 | What If No One Could Ever Tell You No? | 38 | 94 |
+| 7 | What If Your Mother Could Never Say No to You? | 46 | 80 |
+| 8 | What If You Won Every Argument for Life? | 40 | 94 |
+| 9 | What If Asking Was the Same as Ordering? | 40 | 94 |
+| 10 | What If Every Yes You Heard Was Forced? | 39 | 94 |
+
+| | Title | Why | Phone cut (about 40 characters) |
+|---|---|---|---|
+| A | What If Nobody Could Say No to You? | The topic title, the daydream in the viewer's own words; "nobody" is the claim and the film keeps it. Shortest of the three, so it never truncates | Whole title fits |
+| B | What If Every Question You Asked Was a Command? | Sells the rule and the second jump; tests whether the mechanism pulls harder than the wish | "What If Every Question You Asked Was a..." loses "command"; the thumbnail's three smiles say the rest |
+| C | What If You Never Heard an Honest Answer Again? | Leads with the cost; tests the relationships audience against the dark-psychology one. It does not name the mother, so the thumbnail adds her | "What If You Never Heard an Honest Answer..." keeps the meaning |
+
+Not kept: 7 gives the mother's beat to the title and leaves the thumbnail nothing to add; 4 and 10 put "yes" in the
+title, the one word the rule device wears, which would fail K7 the day the YES tag appears on a thumbnail; 5, 6, 8
+and 9 are weaker versions of A or B. Scores from `title.py` (every title loses points only for having no digit; B and C also for the phone cut). Every pairing of A, B and C with a, b and c shares no word (A 98, B and C 84): `title-lint.json`.
+
+## Thumbnails
+
+Drawn in code with the engine's rig (`channels/say-suppose/brand/thumbs/`), no AI images. Renders go to
+`renders/packaging/` (git-ignored): `thumb-a.png`, `-b`, `-c`, each with `-feed.png` (168x94), `-white.png` and
+`-dark.png`; the measured numbers (K3, K4, K5, K8, K9, K10, K11) to `thumb-checks.json` by `brand/thumbs/check.py`
+before the room reads this. Measured by `check.py` (K3, K4, K5, K8, K9, K10, K11); K7 by `title.py` against all three titles; K1, K2 (the flash read) are the room's and the owner's read; K6, K12-K16 are judged below.
+
+**As drawn** (`brand/thumbs/nobody.ts`, `NobodyThumbs.tsx`; renders in `renders/packaging/`): no shawl is drawn on the mother beyond a plum coat, the bun marks her; the three faces share raised brows, open eyes and the rig's smile, the same tilt and size; the arrow comes in from the right edge, under the tag, to her mouth.
+
+**The shared set.** `night`, a metro gate concourse: a flat ink `#23252B` wall with the faint shape of a turnstile
+far back, mean luminance under 0.20, so the frame is dark and you stand at 3:1 in greyscale. You, large, left of
+centre: mustard head about 30% of the frame height (K3), teal scarf lifting as if you have just stepped back,
+three-quarter toward the right, brows up and apart, eyes wide, mouth in the small "o" shape; your right arm out, open
+hand palm up toward the three heads, the instant before the outcome. At the right, a tight row of three pastel heads,
+slightly overlapping, all tilted at the same angle, all wearing the same wide closed-lip smile stamped identically: the
+boss (tie, lilac head), the checker (cap, pale blue head), your mother (bun and shawl, pale pink head). No YES tags on
+the thumbnail, so the word budget goes to the tag. One crimson `#D8344F` arrow, from the upper right, at the mother's
+smile (K8). The stamped cream tag in Rubik 800, cap height at least 12% of the frame, upper middle, off every face,
+nothing in the bottom-right 15% x 12% (K11). The three focal points, in order: you, the row of smiles, the tag (K2).
+
+**One variable (K15): the tag text.** The set, the pose, the arrow and the three faces are identical on all three.
+The brief's "DID THEY MEAN IT?" is four words, over the limit (K5). The writer's three-word "THEY MEANT IT?" was too wide for the frame at the K5 cap height (it ran into your head), so a is "MEANT IT?".
+
+| | Tag | Type (K6) | Pairs with | K3 head | K4 grey sep. | K5 words, cap, contrast | K7 shared | K8 | K9 colour, mean lum. | K10 edge on white / dark | K11 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| a | MEANT IT? | your question, the instant before the outcome | A | 44.3% pass | 4.1:1 pass | 2, 12.3%, 8.4:1 pass | none | 1 pass | 62.7, 0.068 pass | 19.93 / 1.04 | pass |
+| b | EVEN HER? | your question; the arrow at the mother makes "her" land | A (and C) | 44.3% pass | 4.1:1 pass | 2, 12.3%, 8.4:1 pass | none | 1 pass | 64.0, 0.071 pass | 19.93 / 1.04 | pass |
+| c | ALL OF THEM? | your question at the row of three | B | 44.3% pass | 4.09:1 pass | 3, 12.3%, 8.4:1 pass | none | 1 pass | 65.5, 0.076 pass | 19.93 / 1.04 | pass |
+
+K13: the three nodding smiles and your open hand are the frame the film opens on, 0:00 to 0:07, so the thumbnail's
+moment is on screen before 0:30. K14: the same grammar as the last-time thumbnail (you large left, the other people
+right, one tag), no break chosen. K12: title A fits a phone whole; with B or C truncated, the three identical smiles
+plus "What If Every Question You Asked Was a..." or "...Never Heard an Honest Answer..." still say what the video is.
+
+Recommendation, before the cold read: **title A with thumbnail b ("EVEN HER?")**. A keeps the daydream wide and the
+thumbnail narrows it to one face, so each adds something (K7). "THEY MEANT IT?" is the safer pair if the cold read
+cannot tell who "her" is in 0.5 s; "ALL OF THEM?" risks reading as a game-show line. The owner picks from the renders.
+
+## Runtime
+
+Rendered by the channel's paper-cut engine (`render_runtime: external`), logged in `artifacts/decision_log.json`.
+Alternatives: Remotion or HyperFrames through `video_compose` (no rig, no cue timeline, so the YES tag could not be
+timed to the asked word). The engine is the default because it is the look the owner approved and it times figures to
+cue words.
+
+<!-- ROOM -->

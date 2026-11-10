@@ -1,0 +1,75 @@
+{
+  "call_id": "399c50af74f5423bbe11502dd0b227da",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five_lines": 9,
+    "causality": 7,
+    "earned_stakes": 5,
+    "premise_gaps": 6,
+    "opening_and_hooks": 9,
+    "ending": 9,
+    "overall_story": 7
+  },
+  "blockers": [
+    {
+      "quote": "Your oldest friend is beside you for the window-seat gag, so he is in the story early.",
+      "why": "Check #9 Earned stakes fails. Mere presence and one gag do not earn the friend as the person you may lose at the choice.",
+      "fix": "Replace with: \"Your oldest friend saves your window seat, splits the last chai with you, and notices the boss message you keep deleting. You ask nothing; he helps anyway.\"",
+      "domain": "story",
+      "line": 48
+    },
+    {
+      "quote": "Then every question becomes a command: \"can you pass the salt\", \"will you stay a bit\", \"do you agree\"; the tags flip faster",
+      "why": "Check #6 Every use has a gap fails. These requests produce exactly the compliance you now expect.",
+      "fix": "Replace with: \"Every question overshoots: \u2018can you pass the salt?\u2019 and every hand reaches; \u2018will you stay a bit?\u2019 and your friend sits while watching the door; \u2018do you agree?\u2019 and the meeting becomes unanimously useless.\"",
+      "domain": "story",
+      "line": 50
+    },
+    {
+      "quote": "Foot-in-the-door (Freedman and Fraser, 1966): a small yes makes a larger one more likely",
+      "why": "Check #13 Every fact moves the story fails. The power already guarantees both requests, so this fact neither causes nor changes the boss beat.",
+      "fix": "Cut this fact and let the boss sequence turn on the emotional gap: you receive the project you wanted but cannot know whether you earned it.",
+      "domain": "story",
+      "line": 87
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 51,
+      "quote": "a meeting where your idea goes through without a single hand up; a stage; a crowd.",
+      "fix": "Make this one causal sequence: the meeting approves your idea, therefore it reaches the stage, but the crowd's automatic agreement lets your worst version proceed and drives your friend to leave."
+    },
+    {
+      "line": 51,
+      "quote": "one sentence, \"stay?\", would keep him in the room. The power, or the person.",
+      "fix": "Give using the power a defensible benefit: make the friend the only person who can stop the harmful approved project, so letting him leave respects him while asking him to stay protects the team."
+    },
+    {
+      "line": 51,
+      "quote": "the power barely changed anyone; they were always far more willing to say yes than you believed",
+      "fix": "Reserve this broader discovery for the late turn. At minute three establish only that strangers were kinder than expected; here reveal through the friend and mother that the people closest to you had also been choosing yes freely."
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "The viewer is not waiting for a bigger power; they are waiting for a smaller room."
+    },
+    {
+      "line": 50,
+      "quote": "you have not won a single argument this week, you have ended them."
+    },
+    {
+      "line": 52,
+      "quote": "Three dots. For once, you don't know what's coming."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "3a3f6141efd069377804d152848f99cf460d3849da370179c35e9b40beaa5466",
+  "draft_sha256": "c70b58a13040830003f61e41cc6a80ba7426da1e4f72f551ffd456d40e879371"
+}

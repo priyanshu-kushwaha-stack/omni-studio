@@ -1,0 +1,159 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "written": [
+  {
+   "title": "What If Nobody Could Say No to You?",
+   "chars": 35,
+   "score": 94,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Every Question You Asked Was a Command?",
+   "chars": 47,
+   "score": 80,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Every Question You Asked Was a...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Never Heard an Honest Answer Again?",
+   "chars": 47,
+   "score": 80,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Never Heard an Honest...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Everyone Had to Say Yes to You?",
+   "chars": 39,
+   "score": 94,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Could Never Be Refused Again?",
+   "chars": 41,
+   "score": 80,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If You Could Never Be Refused...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If No One Could Ever Tell You No?",
+   "chars": 38,
+   "score": 94,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Your Mother Could Never Say No to You?",
+   "chars": 46,
+   "score": 80,
+   "issues": [
+    "mobile: a mobile feed shows about \"What If Your Mother Could Never Say No...\" - check the subject survives",
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If You Won Every Argument for Life?",
+   "chars": 40,
+   "score": 94,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Asking Was the Same as Ordering?",
+   "chars": 40,
+   "score": 94,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  },
+  {
+   "title": "What If Every Yes You Heard Was Forced?",
+   "chars": 39,
+   "score": 94,
+   "issues": [
+    "no-number: no number, date or name - the most reliable single fix"
+   ]
+  }
+ ],
+ "kept": {
+  "A": "What If Nobody Could Say No to You?",
+  "B": "What If Every Question You Asked Was a Command?",
+  "C": "What If You Never Heard an Honest Answer Again?"
+ },
+ "pairs": [
+  {
+   "title": "A",
+   "thumbnail": "a",
+   "thumb_words": "THEY MEANT IT?",
+   "score": 98,
+   "pair_issues": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "b",
+   "thumb_words": "EVEN HER?",
+   "score": 98,
+   "pair_issues": []
+  },
+  {
+   "title": "A",
+   "thumbnail": "c",
+   "thumb_words": "ALL OF THEM?",
+   "score": 98,
+   "pair_issues": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "a",
+   "thumb_words": "THEY MEANT IT?",
+   "score": 84,
+   "pair_issues": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "b",
+   "thumb_words": "EVEN HER?",
+   "score": 84,
+   "pair_issues": []
+  },
+  {
+   "title": "B",
+   "thumbnail": "c",
+   "thumb_words": "ALL OF THEM?",
+   "score": 84,
+   "pair_issues": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "a",
+   "thumb_words": "THEY MEANT IT?",
+   "score": 84,
+   "pair_issues": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "b",
+   "thumb_words": "EVEN HER?",
+   "score": 84,
+   "pair_issues": []
+  },
+  {
+   "title": "C",
+   "thumbnail": "c",
+   "thumb_words": "ALL OF THEM?",
+   "score": 84,
+   "pair_issues": []
+  }
+ ]
+}

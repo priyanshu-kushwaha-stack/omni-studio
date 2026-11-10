@@ -1,0 +1,69 @@
+{
+  "call_id": "97432a7b31584d088734289b8c8475ac",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 7
+  },
+  "blockers": [
+    {
+      "quote": "most of these people would have said yes anyway. You had simply never asked.",
+      "why": "Claim id: needs a source. Overstated finding and scope: Bohns and Flynn (2008) showed that people underestimate compliance by roughly half (e.g. predicting ~25% when reality is ~50%), not that a majority ('most') of people say yes to any request. Furthermore, Langer et al. (1978) only found 60% agreement for a small 5-page request, dropping to 24% for 20 pages. Strangers and employers would not have 'mostly' agreed to significant requests like granting Friday off and unearned projects, auto meter compliance, or tearing up fines.",
+      "fix": "people were far more willing to say yes than you believed. You had simply never asked.",
+      "domain": "fact",
+      "line": 48
+    },
+    {
+      "quote": "the Challenger launch (Janis) is drawn as a single paper diagram that draws itself, and your worst idea goes ahead in the same breath.",
+      "why": "Claim id: needs a source. Fact attribution error: Irving Janis formulated groupthink in 1972 (revised 1982) and did not study the 1986 Challenger disaster himself. Later researchers (such as Esser & Lindoerfer 1989; Moorhead et al. 1991) applied Janis's model to Challenger. As line 95 already notes, Janis did not study Challenger, so attributing the Challenger case directly to Janis on screen or in narration is inaccurate.",
+      "fix": "the Challenger launch, analyzed through groupthink, is drawn as a single paper diagram that draws itself, and your worst idea goes ahead in the same breath.",
+      "domain": "fact",
+      "line": 51
+    },
+    {
+      "quote": "the power barely changed anyone; they were always far more willing to say yes than you believed; what it destroyed was on your side, the ability to be told the truth",
+      "why": "Claim id: needs a source. Overstated finding: While Bohns and Flynn demonstrate that people underestimate compliance for everyday help requests, empirical research does not support that forcing 100% obedience across detrimental or coercive requests (giving away needed money, rubber-stamping catastrophic decisions) 'barely changed anyone'. Stating that the power barely changed anyone conflates modest everyday willingness to help with total surrender of autonomy.",
+      "fix": "people were always far more willing to say yes to everyday requests than you believed; what it destroyed was on your side, the ability to be told the truth",
+      "domain": "fact",
+      "line": 51
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 85,
+      "quote": "Langer's photocopier study: asking to cut the queue with any reason at all raised agreement from about 60 percent to over 90 percent",
+      "fix": "Langer's photocopier study: for a small request (five pages), asking to cut the queue with any reason at all raised agreement from about 60 percent to over 90 percent (for a 20-page request, placebic reasons failed at 24%)"
+    },
+    {
+      "line": 95,
+      "quote": "keep; Janis did not study Challenger himself (later analysts applied his model), so the line says only what the source says, and is `contested` if the source hedges",
+      "fix": "keep; cite the specific post-1986 analysts (such as Esser & Lindoerfer 1989, or Moorhead et al. 1991) who applied Janis's groupthink model to the Challenger launch, and mark the row as contested if sources hedge"
+    },
+    {
+      "line": 92,
+      "quote": "Milgram, 1961: 65 percent continued to 450 volts when calmly told to",
+      "fix": "Milgram (1963, study run 1961-1962): 65 percent continued to 450 volts when calmly told to"
+    }
+  ],
+  "keep": [
+    {
+      "line": 11,
+      "quote": "The power, the stamped YES tag and every person in the story are invented. The real part, sourced at G2: how often"
+    },
+    {
+      "line": 74,
+      "quote": "one. No line is advice. The persuasion findings (Langer, foot-in-the-door) are told as things that happen to you and the"
+    },
+    {
+      "line": 86,
+      "quote": "Bohns and Flynn: people underestimate by roughly half how likely strangers are to agree to a direct request"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "77ef32ca1199b8fb5133f6e5c7cb13ffeb211a75b7f8fafdac226a72b31630ee",
+  "draft_sha256": "c70b58a13040830003f61e41cc6a80ba7426da1e4f72f551ffd456d40e879371"
+}

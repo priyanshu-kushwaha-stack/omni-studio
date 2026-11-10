@@ -1,0 +1,11 @@
+channel: say-suppose
+format: story
+stage: proposal
+severity: low
+example: 2026-11-10_what-if-nobody-could-say-no-to-you
+recorded_at: '2026-11-10T16:27:29.005066+00:00'
+note: 'brand/thumbs: (1) check.py reads element-{i:02d}.png but Remotion names a sequence
+  of under 10 frames element-0.png, so a 3-frame batch needs a rename first; (2) a
+  fresh worktree''s pnpm install has no Chrome headless shell and Remotion downloads
+  93 MB (failed once on port 443); the README could say to pass --browser-executable
+  pointing at an existing shell'
