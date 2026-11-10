@@ -24,6 +24,7 @@ SEATS_DIR = Path(__file__).resolve().parent / "seats"
 PITCH_CLIPS = ("after_g2", "pre_g2_local")
 LOCAL_TTS = ("qwen3", "chatterbox", "kokoro")
 REQUIRED = ("writer", "judge", "rounds", "seats")
+LIMIT_KEYS = ("blockers", "suggestions", "keep")
 
 
 class RoomConfigError(ValueError):
@@ -41,6 +42,7 @@ class SeatConfig:
     role: str
     model: str
     brief: Path
+    limits: dict[str, int] = field(default_factory=dict)
 
 
 @dataclass
@@ -55,6 +57,7 @@ class RoomConfig:
     adopted: Optional[date] = None
     pitch_clip: str = "after_g2"
     sources: list[str] = field(default_factory=list)
+    limits: dict[str, int] = field(default_factory=dict)
     path: Optional[Path] = None
     channel_dir: Optional[Path] = None
 
@@ -81,6 +84,18 @@ def _int(data: dict, key: str, default: Optional[int], path: Path) -> int:
         raise RoomConfigError(f"{path}: {key} must be an integer, not {raw!r}") from exc
 
 
+def _limits(raw: Any, path: Path) -> dict[str, int]:
+    """Per-seat caps (pipeline v2): at most N blockers, suggestions and keep lines a seat may return."""
+    if raw is None:
+        return {}
+    if not isinstance(raw, dict) or not set(raw) <= set(LIMIT_KEYS):
+        raise RoomConfigError(f"{path}: limits must be a mapping with keys from {LIMIT_KEYS}, not {raw!r}")
+    for key, value in raw.items():
+        if isinstance(value, bool) or not isinstance(value, int) or value < 1:
+            raise RoomConfigError(f"{path}: limits.{key} must be a whole number of 1 or more, not {value!r}")
+    return dict(raw)
+
+
 def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
     path = Path(path)
     channel_dir = Path(channel_dir) if channel_dir else path.parent
@@ -95,9 +110,12 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
     missing = [k for k in REQUIRED if k not in data]
     if missing:
         raise RoomConfigError(f"{path}: missing {missing}")
+    limits = _limits(data.get("limits"), path)
     try:
         seats = [
-            SeatConfig(str(s["name"]), str(s["role"]), str(s["model"]), _brief(str(s["brief"]), channel_dir, path))
+            SeatConfig(
+                str(s["name"]), str(s["role"]), str(s["model"]), _brief(str(s["brief"]), channel_dir, path), limits
+            )
             for s in data["seats"]
         ]
     except (KeyError, TypeError) as exc:
@@ -131,6 +149,7 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
         adopted=data.get("adopted"),
         pitch_clip=str(data.get("pitch_clip", "after_g2")),
         sources=list(data.get("sources") or []),
+        limits=limits,
         path=path,
         channel_dir=channel_dir,
     )
