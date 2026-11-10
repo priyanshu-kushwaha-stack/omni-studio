@@ -4,7 +4,13 @@
 #
 # adopted: batch 1's video date. The room check (A2) applies to videos whose id date is on or after it, so the
 # pause-time video and the held UBI folder (both 2026-11-06) finish as they started.
-writer: claude-opus-5-5
+#
+# Room v2 (owner, 2026-11-10), from the film 2 trial (docs/research/2026-11-09-say-suppose-room-trial/RESULTS.md):
+# Claude Fable 5.1 writes (the owner's blind pick over Opus 5.5); four seats instead of five. The story seat takes the
+# story editor's brief; a director (craft, Opus 5.5, so the writer does not review its own draft) joins; the voice
+# director and the animator leave (0 agreed blockers; they return at G3 and G4 when those rooms exist). The viewer stays
+# on Grok until a faster viewer earns its place: in the trial Grok was right on 2 of 3 and Gemini raised nothing.
+writer: claude-fable-5-1
 judge: gpt-5.6-sol-high
 rounds: 3
 daily_cap: 80
@@ -12,13 +18,12 @@ adopted: 2026-11-09
 pitch_clip: after_g2
 seats:
   - {name: first-time viewer, role: viewer, model: grok-4.7-high, brief: room/seats/first-time-viewer.md}
-  - {name: retention editor, role: story, model: gpt-5.6-sol-high, brief: room/seats/retention-editor.md}
+  - {name: story editor, role: story, model: gpt-5.6-sol-high, brief: room/seats/story-editor.md}
   - {name: fact-checker, role: fact, model: gemini-3.7-flash-high, brief: room/seats/fact-checker.md}
-  - {name: voice director, role: voice, model: claude-sonnet-5-5, brief: room/seats/voice-director.md}
-  - {name: animator, role: craft, model: claude-sonnet-5-5, brief: room/seats/animator.md}
+  - {name: director, role: craft, model: claude-opus-5-5, brief: room/seats/director.md}
 format:
   wpm: 115          # style.md: spoken at about 115 words a minute (Arthur, before the 1.1x tempo)
-  # No word_budget: no length cap (owner, 2026-11-08). Past about 8 minutes the retention editor names the felt
+  # No word_budget: no length cap (owner, 2026-11-08). Past about 8 minutes the story editor names the felt
   # reason a viewer stays (rules/story.md, "Length"). No cadence: the choice put to you about once a minute is an
   # ordinary narrator line with no marker, so the story seats judge it.
 linters:
