@@ -1,9 +1,12 @@
 {
   "id": "2026-11-09_what-if-you-knew-the-last-time-you-d-see-someone",
   "voice": {
-    "model": "elevenlabs_v4",
-    "voiceType": "preset",
-    "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346"
+    "model": "chatterbox",
+    "voiceType": "element",
+    "voiceId": "say-suppose-narrator-b",
+    "exaggeration": 0.85,
+    "cfgWeight": 0.5,
+    "seed": 7
   },
   "leadInSec": 0.6000000000000001,
   "tailSec": 2.4,
@@ -427,7 +430,7 @@
     },
     {
       "text": "More dal.",
-      "say": "[light, smiling] More dahl.",
+      "say": "[light, smiling] More daal.",
       "gapAfterSec": 9.5,
       "mood": "lamp",
       "claims": []
@@ -466,5 +469,5 @@
     "c01": "https://waitbutwhy.com/2015/12/the-tail-end.html"
   },
   "cues": {},
-  "tempo": 1.1
+  "tempo": 1.0
 }

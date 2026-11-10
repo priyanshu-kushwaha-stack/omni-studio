@@ -1,0 +1,13 @@
+# Free narration takes (G3), owner's choice 2026-11-10: Chatterbox, "Between, steady".
+# Settings are story.json's voice (exaggeration 0.85, cfg_weight 0.5, seed 7, reference: the preview of
+# "Say Suppose Narrator B", kept git-ignored at assets/voice-ref/). Square-bracket directions are not spoken.
+# Lines retaken with another seed after faster-whisper heard them wrong:
+seeds:
+  20: 101   # "go bat" -> "go back"
+  30: 101   # "her train" -> "your train"
+  37: 101   # "30. 9." -> "Thirty-nine"
+  43: 42    # "Mater" -> "Maita" (Mehta)
+  44: 101   # "30 egg" -> "Thirty-eight"
+  45: 101   # "Tim Ervin" -> "Tim Urban"
+  60: 7     # spoken as "More daal." (say.yaml changed from "dahl", read as "doll" on every seed)
+  63: 11    # "Of course she is!" -> hushed "Of course she is."

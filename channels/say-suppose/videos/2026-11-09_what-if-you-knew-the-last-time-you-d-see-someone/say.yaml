@@ -1,6 +1,6 @@
 # What the voice speaks for each script line: the direction in square brackets for Eleven v4, numbers spelled out,
 # and the spoken forms from the script's "Narration notes" (G2 passed 2026-11-10, script sha a28bcf10): Mehta ->
-# "Mayta", Diwali -> "Diwaali", dal -> "dahl". The script keeps its digits for the claims check. Keys are the
+# "Mayta", Diwali -> "Diwaali", dal -> "daal" (2026-11-10: Chatterbox read "dahl" as "doll"). The script keeps its digits for the claims check. Keys are the
 # spoken lines of script.md with the citation removed, and must match exactly.
 "Every morning, she waves. You wave back. Not looking.": "[warm, matter-of-fact] Every morning, she waves. You wave back. [pause] Not looking."
 "Forty-two.": "[quiet] Forty-two."
@@ -61,7 +61,7 @@
 "Nine.": "[cold, quiet] Nine."
 "The offer, or the Friday train?": "[low, warm] The offer, or the Friday train?"
 "Saying no isn't a plan. A ticket is.": "[dry] Saying no isn't a plan. A ticket is."
-"More dal.": "[light, smiling] More dahl."
+"More dal.": "[light, smiling] More daal."
 "Grandpa's story? You learned the ending. Well. You made one up.": "[amused, warm] Grandpa's story? You learned the ending. Well. You made one up."
 "He prefers yours.": "[fond, deadpan] He prefers yours."
 "Of course she is.": "[hushed, warm] Of course she is."

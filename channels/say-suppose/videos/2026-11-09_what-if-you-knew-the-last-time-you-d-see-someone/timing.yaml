@@ -1,4 +1,5 @@
 # Timing for the what-if engine. Not spoken; it never changes the script's words.
-# tempo: the channel's pace since the owner's voice A/B on the first film (2026-11-07, "C: v4 at 1.1x"); the script's
+# tempo 1.0 (2026-11-10): the owner chose the free Chatterbox read at its own pace, as auditioned.
+# Earlier: the channel's pace since the owner's voice A/B on the first film (2026-11-07, "C: v4 at 1.1x"); the script's
 # narration notes ask for it. extra seconds and cues come with the rough cut (G4).
-tempo: 1.1
+tempo: 1.0
