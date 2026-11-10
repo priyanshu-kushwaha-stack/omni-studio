@@ -38,3 +38,18 @@ film's narration was 29.26 credits.
 Fade line edges and mute end-of-take pops, run `omni qc say-suppose <video> narration` (claims, clicks), write
 `narration/narration.wav` for the owner to listen to at 1x, and set the narration checkpoint to `awaiting_human`.
 Only the owner passes G3.
+
+## Owner's choice, 2026-11-10
+
+After the casting page (Hagen, nine library voices, six designed voices, five free local versions), the owner
+chose **"2 · Intense"**: free, rendered on the Mac.
+
+- Engine: Chatterbox (`chatterbox-tts` 0.1.7 in `.venv-media`), `exaggeration=1.0`, `cfg_weight=0.3`, seed 7.
+- Voice: cloned from the preview of "Say Suppose Narrator B", the voice designed between the owner's voice and
+  K. V. Hagen's on the owner's ElevenLabs account. No library voice is cloned.
+- Text: `say.yaml` with the square-bracket directions removed (Chatterbox would speak them) and `[pause]` as "...".
+- Cost: none. The Higgsfield quotes above are no longer needed.
+- Audition (opening ten lines and line 58): all 11 heard correctly by faster-whisper. To listen for: "Just you!"
+  comes out as an exclamation; the dilemma line lands flat rather than as a question.
+- The engine's narration build only buys Higgsfield takes, so the local route is recorded with `omni fix`; the full
+  64 lines are rendered from `story.json` until the engine supports it.
