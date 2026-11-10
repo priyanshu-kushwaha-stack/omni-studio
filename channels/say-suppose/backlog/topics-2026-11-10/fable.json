@@ -1,0 +1,1010 @@
+{
+  "topics": [
+    {
+      "id": "f-borrow-time",
+      "title": "What If You Could Borrow Time From Tomorrow?",
+      "premise": "You can pull spare hours out of your own future into today, and your future pays them back with interest.",
+      "thumbnail": {
+        "image": "You, wide-eyed at an exam desk, pulling a glowing hour out of a wall calendar whose later pages are already torn and crumbling; one crimson arrow on the torn pages",
+        "tag": "WHO PAYS?"
+      },
+      "rule": "Say 'one more hour' and the clock gives you one: the world waits while you use it. The hour is taken from a future day of yours, plus ten extra minutes of interest per hour, compounding on what you already owe. You do not pick the day. When a day pays, you blink and it is later: the world ran on, you were simply not there. You can never repay early.",
+      "hook": "The exam ends in four minutes and you have three questions left; you whisper 'one more hour', the invigilator freezes mid-yawn, and somewhere in your future a day gets shorter.",
+      "beats": [
+        "The change: the night before the exam you fall asleep on your notes; you wish for one more hour and get it. Your habit is shown first: you always say 'I'll do it tomorrow'.",
+        "The rule, stated once: an hour now, an hour and ten minutes gone from some later day. You shrug. Later-you can afford it.",
+        "First jump, small and funny: you borrow for sleep, for the last metro, for a second chai, for finishing a series. Every borrowed hour gets filled with nothing much (the gap: more time, same amount done).",
+        "The first repayment: you blink at your cousin's birthday and the cake is already cut, candles out, everyone looking at you. Forty minutes gone. You laugh it off.",
+        "Second jump: you become the intern who delivers overnight. The boss messages later and later because you always say yes. You borrow to keep up with the reputation that borrowing built.",
+        "The wrong belief breaks: you assumed the debt comes off the end of your life, the dull old years. It does not. The days that pay are chosen by nothing you control, and they are the full ones.",
+        "The cost near 60 percent: your grandfather finally tells the end of the story he tells at every visit, the part he always skips. You blink. He is asleep in his chair. That evening paid.",
+        "You count the ledger on paper: hours owed, interest on interest. The curve bends upward. A split-flap counter shows what a small daily habit becomes over years.",
+        "Third jump, the scale: a whole city of borrowers. Offices lit all night, everyone ahead, festival streets half empty because half the people are blinking through them. A civilisation living on its own tomorrow.",
+        "The choice at 75 to 80 percent: the biggest deadline of your life, and your mother's call ringing. Borrow one last time, or hand in what you have. You put the pen down.",
+        "The wordless peak: a day you owe arrives and passes without you; you watch the light cross the room in three seconds.",
+        "Back to you: you stop saying 'tomorrow'. The opening line returns mirrored: tomorrow was never spare. It was already yours, and already spoken for."
+      ],
+      "feeling_map": [
+        "relief",
+        "greed",
+        "unease",
+        "loss",
+        "dread",
+        "resolve"
+      ],
+      "restarts": [
+        "Around minute 3: the first repayment blink at the birthday; the debt is real and it lands in public.",
+        "Around minute 6: the debt does not come off the end of your life; it picks full days, at random.",
+        "Around minute 9: you do the sums and see the interest compounding; you can never repay early.",
+        "Around minute 12: it is not only you; the whole city is borrowing, and the days are thinning for everyone."
+      ],
+      "content_mine": [
+        {
+          "fact": "A day is 86,400 seconds, and everybody alive gets exactly the same number.",
+          "source": "verify",
+          "beat": "The rule, stated once"
+        },
+        {
+          "fact": "The rule of 72: divide 72 by the interest rate to get the years a debt takes to double; at 10 percent it doubles in about 7.2 years.",
+          "source": "https://en.wikipedia.org/wiki/Rule_of_72",
+          "beat": "You count the ledger on paper"
+        },
+        {
+          "fact": "Hyperbolic discounting: people reliably prefer a smaller reward now over a larger one later, and the preference flips when both are far away.",
+          "source": "https://en.wikipedia.org/wiki/Hyperbolic_discounting",
+          "beat": "The rule, stated once: later-you can afford it"
+        },
+        {
+          "fact": "The Stanford marshmallow experiments (Mischel, around 1970) tied waiting for a second treat to later outcomes; a larger 2018 replication found the link much weaker once family background was counted.",
+          "source": "https://en.wikipedia.org/wiki/Stanford_marshmallow_experiment",
+          "beat": "First jump: you borrow for dumb things"
+        },
+        {
+          "fact": "The planning fallacy (Kahneman and Tversky, 1979): people underestimate how long their own tasks take even when they know past tasks ran over. In one study students predicted about 34 days for a thesis and took about 55.",
+          "source": "https://en.wikipedia.org/wiki/Planning_fallacy",
+          "beat": "First jump: the gap, more time and the same amount done"
+        },
+        {
+          "fact": "Parkinson's law (The Economist, 1955): work expands to fill the time available for its completion.",
+          "source": "https://en.wikipedia.org/wiki/Parkinson%27s_law",
+          "beat": "Second jump: the intern who delivers overnight"
+        },
+        {
+          "fact": "After roughly 17 to 19 hours awake, performance on some tasks matches a blood alcohol level of about 0.05 percent (Williamson and Feyer, 2000).",
+          "source": "verify",
+          "beat": "First jump: you borrow for sleep, and why you wanted to"
+        },
+        {
+          "fact": "Brain-imaging work by Hal Hershfield and colleagues found that thinking about your future self looks, in the brain, more like thinking about a stranger than about yourself.",
+          "source": "verify",
+          "beat": "The wrong belief breaks: who you thought would pay"
+        },
+        {
+          "fact": "Scarcity research (Mullainathan and Shafir): sugarcane farmers in India scored markedly lower on reasoning tests before harvest, when short of money, than after it; being short of a resource taxes thinking.",
+          "source": "verify",
+          "beat": "Second jump: you borrow to keep up with what borrowing built"
+        },
+        {
+          "fact": "Short-term payday loans in the United States can carry annual rates near 400 percent, and many borrowers take a new loan to repay the last.",
+          "source": "verify",
+          "beat": "You count the ledger: interest on interest"
+        },
+        {
+          "fact": "Earth Overshoot Day: by late July or early August humanity has used what the planet regenerates in a year; the rest of the year runs on the future's account.",
+          "source": "https://en.wikipedia.org/wiki/Earth_Overshoot_Day",
+          "beat": "Third jump: a civilisation living on its own tomorrow"
+        },
+        {
+          "fact": "Total global debt is above 300 trillion US dollars, roughly three times the world's yearly output (Institute of International Finance).",
+          "source": "verify",
+          "beat": "Third jump: a whole city of borrowers"
+        },
+        {
+          "fact": "Global life expectancy is about 73 years, which is roughly 27,000 days.",
+          "source": "verify",
+          "beat": "The wordless peak: a day you owe passes without you"
+        },
+        {
+          "fact": "The length of the day is not fixed: tides slow Earth's spin by roughly 2 milliseconds per century, which is why leap seconds have been added since 1972.",
+          "source": "https://en.wikipedia.org/wiki/Leap_second",
+          "beat": "Back to you: even the planet's day is on loan"
+        }
+      ],
+      "twist": "The debt was never taken from the end of your life. Every 'I'll do it tomorrow' you ever said was already this loan; the power only made the repayments visible.",
+      "ending": "You will never hear the word 'tomorrow' as free time again: it is a day somebody, you, already has plans for.",
+      "closest_video": {
+        "title": "Ifverse: 'One Second Felt Like Ten' and the 2011 film In Time (time as currency)",
+        "url": "verify",
+        "difference": "Those slow time down or trade it between people. Here the only lender is your own future, the repayment is a blink you live through, and the belief it breaks is that later-you has spare days."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the city-of-borrowers montage to one image, merge the two office scenes, keep the birthday blink, the grandfather's story, the ledger and the final choice."
+      },
+      "views_case": "Time-as-a-resource what-ifs sit beside the channel's own pause-time video and Ifverse's time-perception titles, which are the neighbour's strongest; debt and compound-interest explainers also pull steadily. This joins the two with one image a stranger gets at once. Links to be confirmed by the scorer: verify.",
+      "under_question": "If I keep pushing things to tomorrow, what am I actually spending?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-sixty-seconds-ahead",
+      "title": "What If You Saw 60 Seconds Into the Future?",
+      "premise": "You see everything exactly one minute before it happens, and it turns out one minute is both far too much and nowhere near enough.",
+      "thumbnail": {
+        "image": "You at a road crossing, hand half-raised, a faint mustard ghost of yourself one step ahead already turning to look back in horror; one crimson arrow at what the ghost sees off-frame",
+        "tag": "DON'T LOOK"
+      },
+      "rule": "A faint ghost of the world one minute from now lies over everything you look at: the ghost bus arrives, the ghost chai spills. It shows what happens if you do nothing with the knowledge. The moment you act on it, the ghost redraws. The catch: you cannot switch it off, so you never again see anything for the first time, and you are never quite looking at now.",
+      "hook": "You watch your chai glass slip off the counter and smash; then you look down and it is still in your hand. You have one minute. You have always had one minute. You just never knew it.",
+      "beats": [
+        "The change: your habit is checking your phone for what is coming, the bus app, the result page, the typing dots. Then the ghost glass falls a minute early.",
+        "The rule, shown once with the rule device: a pale ghost layer running one minute ahead of the coloured world.",
+        "First jump, small and funny: you catch the glass, call the cricket ball before it is bowled, answer the teacher before the question, step onto the metro car that will have the empty seat. Each use has a gap: the ghost changes the moment you move.",
+        "A fact that reframes it: you were never living in the present anyway. Your brain runs a little behind the world and guesses forward to cover the gap. You have only been given a bigger guess.",
+        "Second jump: money and people. You try the obvious thing with a coin toss and a card table; it works until others notice. You start answering your mother before she finishes her sentence, and she stops finishing them.",
+        "The wrong belief breaks at the midpoint: you assumed seeing the future means knowing it. But a future you can see is a future you can change, so the ghost is only ever a rumour about a world where you stood still.",
+        "The cost near 60 percent: your grandfather's punchline, the same story at every visit. You have now heard it twice each time, and you laugh one second early. He notices. Surprise was the thing you were giving him.",
+        "Third jump: the crossing. In the ghost, a scooter and a child. You have sixty seconds and every move you make redraws it, sometimes worse. Seeing is not the same as steering.",
+        "The wordless peak: the ghost redraws and redraws as you run; the two layers snap together into one.",
+        "The scale: why one minute is worth fortunes. People have paid hundreds of millions to shave thousandths of a second off the future; a warning of a few seconds stops trains before an earthquake. And why more than a minute would be worth nothing: the world forgets its own forecast.",
+        "The choice at 75 to 80 percent: keep watching the ghost, or close your eyes on the one minute that matters and let someone tell you something you did not already see.",
+        "Back to you: the phone stays in your pocket at the bus stop. The bus comes when it comes. The mirrored line: you have one minute. You always had."
+      ],
+      "feeling_map": [
+        "delight",
+        "greed",
+        "unease",
+        "loneliness",
+        "fear",
+        "calm"
+      ],
+      "restarts": [
+        "Around minute 3: the ghost is not fixed; acting on it redraws it, so every prediction is about a world where you did nothing.",
+        "Around minute 6: other people notice you are never surprised, and they begin to change around you.",
+        "Around minute 9: the crossing; the first future you cannot simply step around.",
+        "Around minute 12: the scale flips; one minute is priceless and ten would be useless, and you learn which side of that line you live on."
+      ],
+      "content_mine": [
+        {
+          "fact": "The flash-lag illusion: a moving object looks ahead of a flash that is actually level with it, evidence that the visual system extrapolates motion to cover its own processing delay.",
+          "source": "https://en.wikipedia.org/wiki/Flash_lag_illusion",
+          "beat": "A fact that reframes it: you were never living in the present"
+        },
+        {
+          "fact": "Visual information takes on the order of a tenth of a second to become conscious perception, so what you see is always slightly old.",
+          "source": "verify",
+          "beat": "A fact that reframes it"
+        },
+        {
+          "fact": "Predictive coding: a leading account of the brain says it constantly predicts its incoming signals and mostly processes the errors.",
+          "source": "https://en.wikipedia.org/wiki/Predictive_coding",
+          "beat": "The rule: a bigger guess"
+        },
+        {
+          "fact": "Libet's 1983 experiments: brain activity preparing a movement began around half a second before the act, and about 300 milliseconds before people reported deciding; the interpretation is still disputed.",
+          "source": "https://en.wikipedia.org/wiki/Benjamin_Libet",
+          "beat": "The wrong belief breaks: who is ahead of whom"
+        },
+        {
+          "fact": "A cricket ball bowled at 150 km/h covers the pitch in under half a second, less than the time needed to see it and swing; batters read the bowler's body before release.",
+          "source": "verify",
+          "beat": "First jump: you call the ball before it is bowled"
+        },
+        {
+          "fact": "Spread Networks spent about 300 million US dollars on a straighter fibre cable from Chicago to New York to cut the round trip by about 3 milliseconds for traders.",
+          "source": "https://en.wikipedia.org/wiki/Spread_Networks",
+          "beat": "The scale: why one minute is worth fortunes"
+        },
+        {
+          "fact": "Japan's earthquake early warning sends alerts seconds to tens of seconds before strong shaking, enough to brake bullet trains automatically.",
+          "source": "https://en.wikipedia.org/wiki/Earthquake_Early_Warning_(Japan)",
+          "beat": "The scale: a few seconds of future"
+        },
+        {
+          "fact": "In the 1970s a group of physics students, the Eudaemons, hid computers in their shoes to predict where a roulette ball would land and reported a large edge over the house.",
+          "source": "https://en.wikipedia.org/wiki/Eudaemons",
+          "beat": "Second jump: the card table, until others notice"
+        },
+        {
+          "fact": "Edward Lorenz, 1961: rounding one input from 0.506127 to 0.506 gave a completely different weather forecast; the origin of the butterfly effect.",
+          "source": "https://en.wikipedia.org/wiki/Butterfly_effect",
+          "beat": "The scale: why more than a minute would be worth nothing"
+        },
+        {
+          "fact": "A self-defeating prophecy is a prediction that prevents what it predicts, because people act on it.",
+          "source": "https://en.wikipedia.org/wiki/Self-defeating_prophecy",
+          "beat": "The wrong belief breaks: the ghost is a rumour"
+        },
+        {
+          "fact": "Newcomb's paradox: a thought experiment about a near-perfect predictor that has split philosophers for decades on whether your choice can matter once it is foreseen.",
+          "source": "https://en.wikipedia.org/wiki/Newcomb%27s_paradox",
+          "beat": "Third jump: seeing is not steering"
+        },
+        {
+          "fact": "A typical driver needs about 1.5 seconds to notice a hazard and begin braking; at 60 km/h a vehicle covers about 17 metres every second.",
+          "source": "verify",
+          "beat": "Third jump: the crossing"
+        },
+        {
+          "fact": "Dopamine neurons respond to the difference between expected and actual reward: a fully predicted reward produces little or no burst (Wolfram Schultz's reward prediction error work).",
+          "source": "verify",
+          "beat": "The cost: surprise was the thing you were giving him"
+        },
+        {
+          "fact": "Sunlight takes about 8 minutes 20 seconds to reach Earth; the Sun you see is always the Sun of eight minutes ago.",
+          "source": "verify",
+          "beat": "Back to you: nobody has ever seen now"
+        }
+      ],
+      "twist": "Everyone already sees the future, by a tenth of a second: your brain predicts the present because the real one arrives late. You were not given a new sense; yours was turned up until it drowned out the thing it was for.",
+      "ending": "You will never look at a typing-dots bubble the same way: not knowing what comes next is not the gap in your life, it is the part that is live.",
+      "closest_video": {
+        "title": "Ifverse: 'Reaction Time 10x' and the film Next (two minutes of foresight)",
+        "url": "verify",
+        "difference": "Reaction-speed videos make you faster in the present. This gives a fixed one-minute preview that redraws when used, and its belief-break is that the brain already lives slightly in the future."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut the card table and the Libet beat, keep the chai glass, the cricket ball, the grandfather's punchline, the crossing and one scale image (the cable)."
+      },
+      "views_case": "See-the-future and time-perception what-ifs are steady performers for Ifverse-style channels and for the channel's own pause-time video; the ghost-one-step-ahead thumbnail reads without words. Links to be confirmed by the scorer: verify.",
+      "under_question": "Would I actually be happier if I always knew what was about to happen?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-teleport-been-there",
+      "title": "What If You Could Teleport Anywhere You've Been?",
+      "premise": "You can blink to any spot you have ever stood on, but the spot you leave from is burned forever.",
+      "thumbnail": {
+        "image": "You mid-blink, half your body in a packed metro coach and half on an empty mountain road, face caught between relief and panic; a crimson arrow at a small door-shaped scorch mark behind you",
+        "tag": "NO WAY BACK"
+      },
+      "rule": "Picture a place you have physically stood, and you are there. No luggage beyond what you hold. Two catches. One: you arrive carrying the motion you left with, and the ground in two cities does not move at the same speed. Two: the exact spot you jump from is burned; you can walk back to it, but you can never jump to it again.",
+      "hook": "The metro doors close on your bag strap, you are forty minutes from an exam, and you think of the exam hall so hard that you are standing in it; behind you, on a platform you will never be able to jump to again, your bag is still caught in the door.",
+      "beats": [
+        "The change: your habit is the commute, an hour each way, the same seat if you are lucky. Then the blink.",
+        "The rule, stated once, with the scorch-mark rule device: where you have stood, you can go; where you leave from, you lose.",
+        "First jump, small and funny: you arrive sliding. The ground in the new place is moving at a different speed, so you stumble sideways into a chai stall. You learn to jump short distances and to arrive running.",
+        "You use it for dumb things: last bench to canteen, bed to bathroom, skipping the queue you already stood in. Your map of jumpable places is exactly your life so far, and it is smaller than you thought.",
+        "Second jump: you go far. A hill station from a school trip; you arrive breathless in thin air, ears aching, in the wrong clothes. Then a beach at the wrong hour, wide awake at its midnight. Distance was doing things for your body that you never noticed.",
+        "The wrong belief breaks at the midpoint: you thought travel was the wasted part. But every place you can jump to exists only because you once went the slow way. Teleporting spends a map that only walking draws.",
+        "The cost near 60 percent: an emergency call, and you jump home from your grandfather's verandah in his village, the far place, the long train. That spot is burned. To sit there again you must take the whole journey, and he is old.",
+        "Third jump, the scale: if everyone could do this. Cities empty out by evening, a flat near the office is worth nothing, borders are lines on paper, every nice place fills up the moment it is quiet. Roads that were widened to fix traffic already taught us this.",
+        "The burn marks spread: you notice your city is covered in small scorches. You have been burning the middle of your own life, doorstep by doorstep.",
+        "The choice at 75 to 80 percent: one unburned spot left near the verandah. Jump now and keep it for one last instant visit, or get on the eighteen-hour train. You buy the ticket.",
+        "The wordless peak: the train window, the whole in-between you have been skipping, crossing the frame for ten seconds.",
+        "Back to you: the same metro seat as the opening, and this time you look out of the window. The mirrored line: where you have stood, you can go. So go and stand somewhere."
+      ],
+      "feeling_map": [
+        "glee",
+        "wonder",
+        "discomfort",
+        "regret",
+        "awe",
+        "tenderness"
+      ],
+      "restarts": [
+        "Around minute 3: you arrive moving; the planet's spin makes long jumps dangerous and short jumps clumsy.",
+        "Around minute 6: far jumps hit your body: thin air, pressure, a clock that does not match the sky.",
+        "Around minute 9: the burned verandah; the catch stops being a quirk and takes a place from you.",
+        "Around minute 12: everyone gets it, and the things distance was quietly holding up fall over."
+      ],
+      "content_mine": [
+        {
+          "fact": "Earth's surface moves at about 1,670 km/h at the equator because of its spin, and slower toward the poles in proportion to the cosine of latitude.",
+          "source": "https://en.wikipedia.org/wiki/Earth%27s_rotation",
+          "beat": "First jump: you arrive sliding"
+        },
+        {
+          "fact": "By that rule the ground at Pune's latitude (about 18.5 degrees north) moves roughly 100 km/h faster eastward than the ground at Delhi's (about 28.6 degrees north).",
+          "source": "verify",
+          "beat": "First jump: you stumble sideways into a chai stall"
+        },
+        {
+          "fact": "Earth also travels around the Sun at about 30 kilometres every second; 'standing still' is only ever relative to the ground under you.",
+          "source": "https://en.wikipedia.org/wiki/Earth%27s_orbit",
+          "beat": "The rule: where exactly is a place?"
+        },
+        {
+          "fact": "Marchetti's constant: across cities and centuries people have spent about an hour a day travelling; faster transport made cities wider, not commutes shorter.",
+          "source": "https://en.wikipedia.org/wiki/Marchetti%27s_constant",
+          "beat": "The change: your habit is the commute"
+        },
+        {
+          "fact": "The Mumbai Suburban Railway carries on the order of seven million passengers a day, among the densest commuter loads in the world.",
+          "source": "https://en.wikipedia.org/wiki/Mumbai_Suburban_Railway",
+          "beat": "Third jump: cities empty out by evening"
+        },
+        {
+          "fact": "At about 3,500 metres, the height of Leh, air pressure is roughly two-thirds of sea level, which is why arriving visitors are told to rest and acclimatise; a body normally adjusts over days.",
+          "source": "verify",
+          "beat": "Second jump: breathless in thin air"
+        },
+        {
+          "fact": "The body clock re-sets by only about one hour per day after crossing time zones, the reason jet lag lasts days.",
+          "source": "https://en.wikipedia.org/wiki/Jet_lag",
+          "beat": "Second jump: wide awake at its midnight"
+        },
+        {
+          "fact": "Place cells: neurons in the hippocampus fire at specific locations, building an internal map (O'Keefe, 1971; Nobel Prize 2014).",
+          "source": "https://en.wikipedia.org/wiki/Place_cell",
+          "beat": "The wrong belief breaks: a map only walking draws"
+        },
+        {
+          "fact": "London taxi drivers who learned the city's streets had a larger rear hippocampus than other people, and it grew with years of driving (Eleanor Maguire, 2000).",
+          "source": "https://en.wikipedia.org/wiki/Eleanor_Maguire",
+          "beat": "The wrong belief breaks: the slow way builds the map"
+        },
+        {
+          "fact": "Induced demand: adding road capacity tends to fill with new traffic, because cheaper travel creates more travel.",
+          "source": "https://en.wikipedia.org/wiki/Induced_demand",
+          "beat": "Third jump: every nice place fills up"
+        },
+        {
+          "fact": "Real quantum teleportation moves the state of a particle, not matter, and cannot beat light; in 2017 a Chinese satellite experiment did it over more than 1,200 kilometres.",
+          "source": "https://en.wikipedia.org/wiki/Quantum_teleportation",
+          "beat": "The rule: what the real thing can and cannot do"
+        },
+        {
+          "fact": "A human body holds on the order of 7 followed by 27 zeros atoms.",
+          "source": "verify",
+          "beat": "The rule: what a blink would have to move"
+        },
+        {
+          "fact": "Parfit's teletransporter (1984): if a machine rebuilds you elsewhere atom for atom, philosophers still disagree on whether the person who arrives is you.",
+          "source": "https://en.wikipedia.org/wiki/Teletransportation_paradox",
+          "beat": "The burn marks spread: what gets left behind"
+        },
+        {
+          "fact": "Commercial aviation produces roughly 2 to 3 percent of the world's carbon dioxide emissions.",
+          "source": "verify",
+          "beat": "Third jump: what vanishes with distance, good and bad"
+        }
+      ],
+      "twist": "The burn was never a punishment. Your list of places you can jump to is a record of every slow journey you ever made, and teleporting only spends it; the day you stop travelling the long way, the power starts running out.",
+      "ending": "You will never see a commute as dead time again: it is the only part of the day that adds places to your map.",
+      "closest_video": {
+        "title": "Generic 'What if you could teleport?' explainers (What If, RealLifeLore-style) and the film Jumper",
+        "url": "verify",
+        "difference": "Those ask what teleportation does to physics or crime. This one has two personal catches, kept momentum and burned departure points, and breaks the belief that the journey is the wasted part."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the quantum-teleportation and atom-count asides and the beach jump; keep the sliding arrival, the hill station, the verandah, one image of the emptied city, and the train."
+      },
+      "views_case": "Teleportation is a top-tier everyday daydream and commute pain is the viewer's daily life; superpower-with-a-catch titles perform for Ifverse and Awaken-style channels. The half-metro, half-mountain thumbnail is readable at a glance. Links to be confirmed by the scorer: verify.",
+      "under_question": "If I could skip every journey, what would I lose without noticing?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-skill-in-a-second",
+      "title": "What If You Could Learn Any Skill in 1 Second?",
+      "premise": "Touch anyone while they do something well and you can do it as well as they can, at the price of one of your own memories.",
+      "thumbnail": {
+        "image": "You at a piano, hands flying, face delighted, while a photo frame on the piano top beside you has gone blank white; one crimson arrow at the blank frame",
+        "tag": "WHAT DID I FORGET?"
+      },
+      "rule": "Touch a person in the act and you gain that skill at their level, at once and for good. Each skill overwrites exactly one of your memories. You do not choose which, you are not told which, and you cannot miss what you no longer know you had. Other people can.",
+      "hook": "You brush past the topper as she solves the last problem on the board, and suddenly you can solve it too; at home that evening your mother laughs about the day you got lost at the fair, and you have no idea what she is talking about.",
+      "beats": [
+        "The change: your habit is watching other people be good at things: the topper, the street-food man flipping dosas, the cousin who plays guitar. One touch and it is yours.",
+        "The rule: first only the gain. A split-flap counter of skills ticks up; beside it a second counter stays blank.",
+        "First jump, small and funny: dosa flip, bike repair, the auto driver's impossible U-turn, a magician's shuffle. But your body lags: you know the guitar chord and your soft fingertips bleed. Knowing is not the whole skill.",
+        "You take the big ones: the topper's maths, a coder's speed at the internship, a stranger's fluent French on the metro. The boss notices. The exam is easy and oddly flat.",
+        "The catch surfaces: the fair story. You count back. Skills gained, memories gone, and no way to list the second column.",
+        "The wrong belief breaks at the midpoint: you thought practice was the price of a skill. It was also the making of the memories: the years of being bad at something, with the people who were there. You have the skills of people whose lives you did not live.",
+        "Second jump: you are the best in every room and a beginner at nothing. Nothing is hard, so nothing holds your attention. Friends stop teaching you things, which was half of what you did together.",
+        "The cost near 60 percent: your grandfather starts the story he tells at every visit and looks at you to finish his line, the way you always do. You do not know the line. He sees it in your face.",
+        "Third jump, the scale: if everyone had the touch. Every skill spreads in a day and is worth nothing by evening; the exam that sorts a million students sorts no one; masters hide their hands. And a population quietly thinning its own past.",
+        "The choice at 75 to 80 percent: a surgeon, a pilot, a chess champion within reach at one event, and a blank column that might next take your mother's voice. You put your hands in your pockets.",
+        "The wordless peak: you sit with your cousin's guitar and learn one chord the slow way, badly, for ten seconds.",
+        "Back to you: you watch the dosa man again, hands at your sides. The mirrored line: it took him twenty years. He remembers all of them."
+      ],
+      "feeling_map": [
+        "envy",
+        "glee",
+        "pride",
+        "unease",
+        "grief",
+        "humility"
+      ],
+      "restarts": [
+        "Around minute 3: your body does not come with the skill; knowledge without the hands, lungs and callouses.",
+        "Around minute 6: the fair story; memories are going and you cannot see which.",
+        "Around minute 9: your grandfather's line; the first lost memory that someone else was holding with you.",
+        "Around minute 12: everyone has the touch, and skill stops meaning anything."
+      ],
+      "content_mine": [
+        {
+          "fact": "The '10,000 hours' idea comes from Anders Ericsson's 1993 study of violinists, popularised by Malcolm Gladwell; a 2014 meta-analysis found deliberate practice explained only about a quarter of skill differences in games and a fifth in music.",
+          "source": "https://en.wikipedia.org/wiki/Outliers_(book)",
+          "beat": "The wrong belief breaks: practice as the price"
+        },
+        {
+          "fact": "London taxi drivers spend three to four years learning some 25,000 streets, and brain scans showed the rear hippocampus enlarged with experience (Maguire, 2000).",
+          "source": "https://en.wikipedia.org/wiki/Eleanor_Maguire",
+          "beat": "First jump: the auto driver's impossible U-turn"
+        },
+        {
+          "fact": "Adults who learned to juggle for three months showed increased grey matter in motion-related visual areas, which shrank back when they stopped (Draganski, 2004).",
+          "source": "verify",
+          "beat": "First jump: knowing is not the whole skill"
+        },
+        {
+          "fact": "Patient H.M. could form no new conscious memories, yet improved day by day at mirror drawing with no recollection of ever practising: skills and memories of events are stored by different systems.",
+          "source": "https://en.wikipedia.org/wiki/Henry_Molaison",
+          "beat": "The catch surfaces: a skill with no memory of earning it"
+        },
+        {
+          "fact": "The Dunning-Kruger effect (1999): people with little skill in an area tend to overestimate it, partly because judging a skill needs the skill.",
+          "source": "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect",
+          "beat": "The change: watching people be good at things"
+        },
+        {
+          "fact": "Ebbinghaus's forgetting curve (1885): without review, most newly learned material fades within days, steeply at first.",
+          "source": "https://en.wikipedia.org/wiki/Forgetting_curve",
+          "beat": "The catch surfaces: you cannot miss what you do not know you had"
+        },
+        {
+          "fact": "The human brain has about 86 billion neurons.",
+          "source": "https://en.wikipedia.org/wiki/Human_brain",
+          "beat": "The rule: one in, one out"
+        },
+        {
+          "fact": "Chess masters recall real game positions far better than novices but are barely better with random piece placements (Chase and Simon, 1973): expertise is stored experience, not raw memory power.",
+          "source": "verify",
+          "beat": "The wrong belief breaks: skills are made of lived hours"
+        },
+        {
+          "fact": "String players have a larger brain area devoted to the fingers of the left hand, more so the younger they began (Elbert, 1995).",
+          "source": "verify",
+          "beat": "First jump: your soft fingertips bleed"
+        },
+        {
+          "fact": "The IKEA effect: people value things they built themselves well above identical ready-made ones.",
+          "source": "https://en.wikipedia.org/wiki/IKEA_effect",
+          "beat": "You take the big ones: the exam is easy and oddly flat"
+        },
+        {
+          "fact": "Flow, described by Mihaly Csikszentmihalyi: absorption happens when challenge and skill are closely matched; too much skill for the task produces boredom.",
+          "source": "https://en.wikipedia.org/wiki/Flow_(psychology)",
+          "beat": "Second jump: a beginner at nothing"
+        },
+        {
+          "fact": "Savant syndrome: in rare cases extraordinary abilities in music, art or calculation appear suddenly after brain injury, often alongside losses elsewhere.",
+          "source": "https://en.wikipedia.org/wiki/Savant_syndrome",
+          "beat": "The rule: the real world's nearest case, and its price"
+        },
+        {
+          "fact": "More than a million students sit India's JEE Main each year for a far smaller number of top engineering seats.",
+          "source": "verify",
+          "beat": "Third jump: the exam that sorts no one"
+        },
+        {
+          "fact": "Repeated practice thickens the myelin insulation around the nerve fibres used, speeding their signals; the fastest fibres conduct at around 100 metres per second.",
+          "source": "verify",
+          "beat": "The wordless peak: learning one chord the slow way"
+        }
+      ],
+      "twist": "The memory taken is never random. It is always one from the years you spent being bad at something with someone: the power takes the same kind of thing it gives you a shortcut around.",
+      "ending": "You will never watch someone who is very good at something and see only the skill: you will see the twenty years they still have and you would have skipped.",
+      "closest_video": {
+        "title": "'What if you could learn anything instantly?' (Matrix-style skill download explainers)",
+        "url": "verify",
+        "difference": "Those ask whether brain uploads are possible. This is a touch with a hidden price, lived through family memory, and its belief-break is that practice is where the memories come from."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the French on the metro, the magician and the savant aside; keep the topper, the bleeding fingertips, the fair story, the grandfather's line and the slow chord."
+      },
+      "views_case": "Instant-skill and 'limitless' daydreams sit close to the owner's 10x-faster favourite and exam season is the viewer's week; the blank photo frame gives the thumbnail a mystery. Links to be confirmed by the scorer: verify.",
+      "under_question": "If I could skip the struggle of learning, would I still be me?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-nobody-says-no",
+      "title": "What If Nobody Could Say No to You?",
+      "premise": "Anything you ask for, face to face, the answer is yes, and from that day you can never find out what anyone really wanted.",
+      "thumbnail": {
+        "image": "You holding out an open hand, uneasy, while a boss, a ticket checker and an auntie all nod at you with identical fixed smiles; one crimson arrow at the smile",
+        "tag": "DID THEY MEAN IT?"
+      },
+      "rule": "Ask a person directly, out loud, looking at them, and they say yes and do it, gladly, as far as they are able. It does not work in writing or on yourself, and it cannot make anyone feel anything. The catch: you cannot turn it off, and when the task is done they remember agreeing but not why.",
+      "hook": "You ask the ticket checker to let you off the fine, as a joke, and he tears up the slip and thanks you; by the end of the week you will have asked your mother one question, and you will never know her real answer.",
+      "beats": [
+        "The change: your habit is not asking. You rehearse the message to your boss four times and do not send it. Then the ticket checker says yes.",
+        "The rule, stated once; the rule device is a small stamped paper tag reading YES that flips up over anyone you ask.",
+        "First jump, small and funny: extra chutney, the window seat, deadline extensions, an auto that goes by the meter. A surprise in the gap: most of these people would have said yes anyway. You had simply never asked.",
+        "You push it: the boss gives you Friday off, then the project, then her parking space. The professor moves the exam. Each yes arrives with the same smile.",
+        "The first crack: a friend lends you money he needed, cheerfully. Later he cannot explain to his family why. The yes was real; the choice was not.",
+        "The wrong belief breaks at the midpoint: you thought the problem in your life was hearing no. But a no was the only proof that a yes meant something. You have not won every argument; you have ended them.",
+        "Second jump: you stop being able to speak normally. 'Can you pass the salt', 'will you stay a bit', 'do you agree': every question is a command. You start talking in statements and silences.",
+        "The cost near 60 percent: you ask your mother, without thinking, 'You're happy, aren't you?' The tag flips up. Yes. She smiles the smile. You will never be able to ask that question again and learn anything.",
+        "Third jump, the scale: a person no one can refuse, in a meeting, on a stage, in front of a crowd. History has run this experiment with ordinary authority and ordinary people, and the results are already uncomfortable.",
+        "The room of yes: you are surrounded by agreement and completely alone in it. Nobody corrects you. Your worst idea goes ahead.",
+        "The choice at 75 to 80 percent: someone you care about is about to walk away from you. One sentence would stop them. You write the question on paper instead, where it has no power, and hold it out.",
+        "The wordless peak: they read it. Ten seconds. Then, back to you: the answer is not shown as yes or no. The mirrored line: you send the message to your boss, the ordinary way, and wait."
+      ],
+      "feeling_map": [
+        "glee",
+        "power",
+        "unease",
+        "guilt",
+        "loneliness",
+        "respect"
+      ],
+      "restarts": [
+        "Around minute 3: most of them would have said yes anyway; the power's first lesson is about you, not them.",
+        "Around minute 6: the friend's loan; a yes without a choice costs somebody else.",
+        "Around minute 9: your mother's answer; the power has now reached the one question you needed answered honestly.",
+        "Around minute 12: the room of yes; nobody can warn you any more."
+      ],
+      "content_mine": [
+        {
+          "fact": "Milgram's 1961 obedience study: 65 percent of participants followed instructions to the maximum 450-volt level when an experimenter calmly told them to continue.",
+          "source": "https://en.wikipedia.org/wiki/Milgram_experiment",
+          "beat": "Third jump: history has run this experiment"
+        },
+        {
+          "fact": "In Asch's conformity experiments about three quarters of participants went along with an obviously wrong group answer at least once.",
+          "source": "https://en.wikipedia.org/wiki/Asch_conformity_experiments",
+          "beat": "The room of yes"
+        },
+        {
+          "fact": "Hofling's 1966 hospital study: 21 of 22 nurses began to give an excessive dose on the telephoned order of an unknown doctor.",
+          "source": "https://en.wikipedia.org/wiki/Hofling_hospital_experiment",
+          "beat": "Third jump: ordinary authority, ordinary people"
+        },
+        {
+          "fact": "Ellen Langer's 1978 photocopier study: asking to cut the queue with any reason at all, even 'because I have to make copies', raised agreement from about 60 percent to over 90 percent for a small request.",
+          "source": "verify",
+          "beat": "First jump: most would have said yes anyway"
+        },
+        {
+          "fact": "Research by Vanessa Bohns and Francis Flynn found people underestimate by roughly half how likely strangers are to agree to a direct request.",
+          "source": "verify",
+          "beat": "First jump: you had simply never asked"
+        },
+        {
+          "fact": "The foot-in-the-door effect (Freedman and Fraser, 1966): agreeing to a small request makes people far more likely to agree to a larger one later.",
+          "source": "https://en.wikipedia.org/wiki/Foot-in-the-door_technique",
+          "beat": "You push it: Friday off, then the project, then the parking space"
+        },
+        {
+          "fact": "Cognitive dissonance (Festinger and Carlsmith, 1959): people paid 1 dollar to call a dull task interesting later rated it more enjoyable than people paid 20; with no good reason for what we did, we invent one.",
+          "source": "https://en.wikipedia.org/wiki/Cognitive_dissonance",
+          "beat": "The first crack: he cannot explain why"
+        },
+        {
+          "fact": "Reactance (Brehm, 1966): when people feel a freedom is being taken away they push back and want the forbidden option more.",
+          "source": "https://en.wikipedia.org/wiki/Reactance_(psychology)",
+          "beat": "The first crack: what comes after the yes wears off"
+        },
+        {
+          "fact": "Self-determination theory lists autonomy, acting from one's own choice, as a basic psychological need alongside competence and connection.",
+          "source": "https://en.wikipedia.org/wiki/Self-determination_theory",
+          "beat": "The wrong belief breaks: a no was the proof"
+        },
+        {
+          "fact": "The overjustification effect (Lepper, 1973): children rewarded for drawing later drew less on their own; an outside cause crowds out the inner one.",
+          "source": "https://en.wikipedia.org/wiki/Overjustification_effect",
+          "beat": "Second jump: every yes now has an outside cause"
+        },
+        {
+          "fact": "Groupthink (Irving Janis): close groups that suppress dissent make worse decisions; the 1986 Challenger launch went ahead over engineers' objections.",
+          "source": "https://en.wikipedia.org/wiki/Groupthink",
+          "beat": "The room of yes: your worst idea goes ahead"
+        },
+        {
+          "fact": "In contract law, agreement obtained through undue influence can be set aside: the law already treats a yes without free choice as no agreement.",
+          "source": "https://en.wikipedia.org/wiki/Undue_influence",
+          "beat": "The first crack: the yes was real, the choice was not"
+        },
+        {
+          "fact": "King Midas, in the Greek story, was granted that everything he touched turned to gold, including his food.",
+          "source": "https://en.wikipedia.org/wiki/Midas",
+          "beat": "Second jump: you cannot turn it off"
+        }
+      ],
+      "twist": "The power barely changed other people: they were always far more willing to say yes than you believed. What it destroyed was on your side: the ability to be told the truth.",
+      "ending": "You will never hear a 'no' the same way: it is the sound of somebody who was free to say yes.",
+      "closest_video": {
+        "title": "'What if you could control minds?' explainers and the film Ella Enchanted reversed",
+        "url": "verify",
+        "difference": "Mind-control videos are about power over crowds. This rule is narrow, spoken requests only, and the story is about losing honest answers from the people you love."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the professor, the parking space and the law aside; keep the ticket checker, the 'they would have said yes anyway' turn, the friend's loan, the mother's answer and the paper note."
+      },
+      "views_case": "Persuasion and dark-psychology titles pull large audiences, and the shy viewer who never asks is the channel's exact viewer; three identical smiles is a thumbnail that needs no words. Links to be confirmed by the scorer: verify.",
+      "under_question": "If I could get anything just by asking, would anyone's yes still mean anything?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-never-feel-pain",
+      "title": "What If You Never Felt Pain Again?",
+      "premise": "Every ache, burn and sting switches off for good, and you find out pain was the only thing in your body that ever told you the truth on time.",
+      "thumbnail": {
+        "image": "You smiling, relaxed, sipping chai, with your other hand resting flat on a glowing-hot stove ring; one crimson arrow at the hand",
+        "tag": "I FEEL FINE"
+      },
+      "rule": "From this morning nothing hurts: no headache, no stubbed toe, no burn. Touch, warmth and pressure still work. The catch: the damage still happens, only the message is gone, and the message was shared with more than your skin. The story explains how pain works; it advises nothing.",
+      "hook": "You stub your toe on the bed, hard, and feel nothing at all; you grin, pour the chai, and do not notice the kettle has been resting against your wrist the whole time.",
+      "beats": [
+        "The change: your habit is flinching. The cold bucket bath, the injection, the dentist: you are the one who looks away. Then the toe, and nothing.",
+        "The rule, stated once; the rule device is a small crimson alarm bell above your head that rings silently, seen by us and not by you.",
+        "First jump, small and funny: you eat the spiciest chilli on a dare, hold the hot glass, sleep through a dead arm, win every arm-wrestle because you do not know when to stop. The silent bell rings in every scene.",
+        "The first surprise: your hand used to leave the hot pan before you felt anything. That reflex lives in the spine, and without the feeling behind it you have stopped learning what to avoid.",
+        "Second jump: the small damage adds up. A blister you walked on all day. A bitten tongue found in the mirror. You begin a nightly inspection of your own body like a mechanic with a torch. Pain did this job for free, every second.",
+        "The wrong belief breaks at the midpoint: you thought pain was the injury. It is the alarm. The injury is silent, and always was.",
+        "You learn the things you did without knowing: shifting in your seat, turning in your sleep, blinking. A thousand tiny discomforts were steering you all day.",
+        "The cost near 60 percent: your mother burns her hand on the cooker and cries out, and you look up a moment late. The wince you used to feel for other people is quieter too. She sees you not flinch.",
+        "Third jump, the scale: the real people born this way, and what doctors learned from them and from a disease that takes feeling from hands and feet: the harm comes from not feeling, not from the illness itself. A body of seven billion alarms is why our species is still here.",
+        "The choice at 75 to 80 percent: you could have it back. All of it: the dentist, the stubbed toes, the heartbreak version too. You stand at the stove with your hand above the ring.",
+        "The wordless peak: the first sting returns; you gasp, then laugh, colour flooding back for ten seconds.",
+        "Back to you: you flinch at the cold bucket bath, same as the opening. The mirrored line: it hurts. Good. Somebody is on duty."
+      ],
+      "feeling_map": [
+        "relief",
+        "glee",
+        "unease",
+        "fear",
+        "guilt",
+        "gratitude"
+      ],
+      "restarts": [
+        "Around minute 3: the reflex survives but the lesson does not; you stop learning what is dangerous.",
+        "Around minute 6: the nightly inspection; the power has become a second job.",
+        "Around minute 9: your mother's burn; your feeling for other people's pain has dimmed with your own.",
+        "Around minute 12: the real cases; this is not a fantasy, and the people who live it would trade."
+      ],
+      "content_mine": [
+        {
+          "fact": "Congenital insensitivity to pain is a real, very rare condition; a 2006 study of families in northern Pakistan traced one form to the SCN9A gene, which builds a sodium channel in pain-sensing nerves.",
+          "source": "https://en.wikipedia.org/wiki/Congenital_insensitivity_to_pain",
+          "beat": "Third jump: the real people born this way"
+        },
+        {
+          "fact": "Children with the condition often injure their tongues, lips and eyes and can carry unnoticed fractures, because nothing tells them to stop.",
+          "source": "https://en.wikipedia.org/wiki/Congenital_insensitivity_to_pain",
+          "beat": "Second jump: a bitten tongue found in the mirror"
+        },
+        {
+          "fact": "Jo Cameron, a Scottish woman described by researchers in 2019, feels almost no pain and little anxiety because of mutations affecting the FAAH gene; she often noticed burns by the smell.",
+          "source": "https://en.wikipedia.org/wiki/Jo_Cameron",
+          "beat": "The hook and first jump: the kettle against your wrist"
+        },
+        {
+          "fact": "Surgeon Paul Brand, working in India, showed that the lost fingers and toes of leprosy come mostly from injuries and infections that go unfelt, not from the disease consuming flesh; he called pain 'the gift nobody wants'.",
+          "source": "https://en.wikipedia.org/wiki/Paul_Brand",
+          "beat": "Third jump: the harm comes from not feeling"
+        },
+        {
+          "fact": "The withdrawal reflex runs through the spinal cord: the hand starts pulling away from heat before the signal reaches the brain and is felt as pain.",
+          "source": "https://en.wikipedia.org/wiki/Withdrawal_reflex",
+          "beat": "The first surprise: the reflex lives in the spine"
+        },
+        {
+          "fact": "Pain travels on two kinds of fibre: fast A-delta fibres give the sharp first pain and slow C fibres, at around a metre per second, the dull ache that follows.",
+          "source": "https://en.wikipedia.org/wiki/Nociceptor",
+          "beat": "The rule: what exactly has been switched off"
+        },
+        {
+          "fact": "Capsaicin, the molecule in chillies, triggers TRPV1, the same receptor that senses painful heat; its discovery shared the 2021 Nobel Prize in Medicine.",
+          "source": "https://en.wikipedia.org/wiki/TRPV1",
+          "beat": "First jump: the spiciest chilli on a dare"
+        },
+        {
+          "fact": "In brain-imaging studies of social exclusion (Eisenberger, 2003), being left out of a ball game activated regions also involved in the distress of physical pain; how far the overlap goes is debated.",
+          "source": "verify",
+          "beat": "The cost: the feeling was shared with more than your skin"
+        },
+        {
+          "fact": "Studies have reported that a common painkiller slightly reduced both hurt feelings and people's ratings of others' pain (DeWall, 2010; Mischkowski, 2016); the effects are small and contested.",
+          "source": "verify",
+          "beat": "The cost: you look up a moment late"
+        },
+        {
+          "fact": "The brain itself has no pain receptors, which is why some brain operations are done with the patient awake.",
+          "source": "verify",
+          "beat": "The wrong belief breaks: pain is the alarm, not the injury"
+        },
+        {
+          "fact": "Most people who lose a limb report feeling sensations, often pain, in the missing part: pain is produced by the nervous system, not by the tissue.",
+          "source": "https://en.wikipedia.org/wiki/Phantom_limb",
+          "beat": "The wrong belief breaks"
+        },
+        {
+          "fact": "People who cannot feel pressure discomfort, for example after spinal injury, are prone to pressure sores, because a healthy body shifts position constantly without noticing.",
+          "source": "verify",
+          "beat": "You learn the things you did without knowing"
+        },
+        {
+          "fact": "People blink around 15 to 20 times a minute, and the cornea is among the most densely nerve-supplied tissues in the body; loss of corneal sensation leads to damage.",
+          "source": "verify",
+          "beat": "You learn the things you did without knowing: blinking"
+        }
+      ],
+      "twist": "The dimmed wince was the real loss. The same alarm that makes you pull your hand from the stove is part of what makes you look up when someone else cries out; you cannot mute one channel only.",
+      "ending": "You will never curse a stubbed toe the same way: that is the fastest honest message your body can send you.",
+      "closest_video": {
+        "title": "'What if you couldn't feel pain?' explainers (What If, Infographics Show-style)",
+        "url": "verify",
+        "difference": "Those list the dangers. This lives it in second person, builds to the nightly self-inspection and the mother's burn, and its late turn is that feeling for others dims too."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the fibre types, phantom limb and the painkiller studies; keep the kettle, the chilli, the nightly inspection, the mother's burn, Paul Brand and the first sting."
+      },
+      "views_case": "Body what-ifs are the most reliable family in the genre and the hand-on-the-stove image is instantly readable; the channel's rule that body topics explain and never advise keeps it ad-safe. Links to be confirmed by the scorer: verify.",
+      "under_question": "Would life be better if nothing ever hurt?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-two-of-you",
+      "title": "What If There Were Two of You?",
+      "premise": "Every morning you can split into two of you and at midnight merge back with both days in your head, as long as both of you still agree to.",
+      "thumbnail": {
+        "image": "Two identical yous, same scarf, glaring at each other across one study desk, each gripping the same exam admit card; one crimson arrow at the card",
+        "tag": "WHICH ONE?"
+      },
+      "rule": "At sunrise you may step apart into two complete yous: same body, same memories up to that second, same claim to your life. At midnight, if both touch palms willingly, you merge and remember both days. The catch: nobody is the copy, each hour apart makes you a little less the same person, and a merge needs two yeses.",
+      "hook": "You have an exam at nine and a family wedding at nine, so you step sideways out of yourself, and the two of you look at each other across the bedroom and say, at the same time, 'You take the exam.'",
+      "beats": [
+        "The change: your habit is saying yes to two things and doing both badly: the group call during dinner, notes open under the table at the function. Then the split.",
+        "The rule, stated once; the rule device is the scarf: at the split one of you keeps teal and the other's turns mustard-striped, and the colours drift apart the longer you stay split.",
+        "First jump, small and funny: who takes the exam? Both of you have the same excuses. Coin toss. One sits in the hall, one eats wedding biryani; at midnight you merge and remember both, the biryani and the exam, and it feels like cheating at being alive.",
+        "You get greedy: one of you works the internship, one sleeps in. One listens to the grandfather's story, one finishes the assignment. The surprise in the gap: two of you do not get twice as much done, because you spend half the day arguing over who gets the good half.",
+        "The first crack: the one who always gets the dull day notices. You have made yourself your own junior.",
+        "The wrong belief breaks at the midpoint: you thought there was an original and a spare. There is not. Each of you remembers being you all your life, and each is right.",
+        "Second jump: a day you do not merge, out of spite. Then two. The scarves drift. One of you has had a conversation with your mother that the other has not. You now disagree about a memory.",
+        "The cost near 60 percent: one of you promises something to a friend that the other would never promise, and the friend holds the wrong you to it. Which of you does the friend actually know?",
+        "Third jump, the scale: one name, one ID, one bank account, one vote, one seat in the exam hall, two people. Then four, if each of you splits. Every system built on 'one person' quietly assumes something nobody ever checked.",
+        "The choice at 75 to 80 percent: midnight on the last day the merge still works. One of you has had the better week and does not want to be averaged. Palms up. Whose life is it to give back?",
+        "The wordless peak: two hands, ten seconds, the scarves' colours running into each other.",
+        "Back to you: one you, at dinner, phone face down, doing one thing. The mirrored line: 'You take the exam.' There is nobody else to say it to."
+      ],
+      "feeling_map": [
+        "glee",
+        "greed",
+        "irritation",
+        "unease",
+        "dread",
+        "wholeness"
+      ],
+      "restarts": [
+        "Around minute 3: two of you are not twice as productive; you negotiate with the one person who knows all your tricks.",
+        "Around minute 6: there is no original; the one doing the dull days has the same claim as you.",
+        "Around minute 9: a skipped merge; you start to become two people with two versions of the week.",
+        "Around minute 12: the world only has one slot for you, and now there is a queue."
+      ],
+      "content_mine": [
+        {
+          "fact": "Split-brain patients, whose two hemispheres were surgically disconnected, can show two streams of response in one head; the speaking half confidently invents reasons for what the other half did (Sperry and Gazzaniga).",
+          "source": "https://en.wikipedia.org/wiki/Split-brain",
+          "beat": "The wrong belief breaks: each of you is sure it is the real one"
+        },
+        {
+          "fact": "Parfit's teletransporter and its 'branch line' version (1984): if a perfect copy of you is made and the first you is not destroyed, there is no fact that picks one of them as the real you.",
+          "source": "https://en.wikipedia.org/wiki/Teletransportation_paradox",
+          "beat": "The wrong belief breaks: no original, no spare"
+        },
+        {
+          "fact": "Identical twins start with the same DNA but their chemical gene-switch patterns drift apart with age and different lives (Fraga, 2005).",
+          "source": "verify",
+          "beat": "Second jump: the scarves drift"
+        },
+        {
+          "fact": "Identical twins do not have identical fingerprints: the ridges are shaped by conditions in the womb, not genes alone.",
+          "source": "verify",
+          "beat": "Third jump: one ID, two people"
+        },
+        {
+          "fact": "Task-switching research suggests moving between tasks can cost a large share of productive time, with estimates up to 40 percent; people who multitask most are often worst at it.",
+          "source": "verify",
+          "beat": "The change: saying yes to two things and doing both badly"
+        },
+        {
+          "fact": "Brooks's law (1975): adding people to a late software project makes it later, because coordination grows faster than hands.",
+          "source": "https://en.wikipedia.org/wiki/Brooks%27s_law",
+          "beat": "You get greedy: two of you do not get twice as much done"
+        },
+        {
+          "fact": "The Ringelmann effect: in a rope-pulling team each person pulls less hard than alone, and less again as the team grows.",
+          "source": "https://en.wikipedia.org/wiki/Ringelmann_effect",
+          "beat": "The first crack: the one who gets the dull day"
+        },
+        {
+          "fact": "During sleep the hippocampus replays the day's activity, part of how experiences are sorted into long-term memory.",
+          "source": "https://en.wikipedia.org/wiki/Memory_consolidation",
+          "beat": "First jump: the midnight merge and remembering both days"
+        },
+        {
+          "fact": "Flatworms cut in two regrow into two complete animals, and in a 2013 experiment trained worms seemed to keep a learned behaviour after regrowing a head (Shomrat and Levin).",
+          "source": "verify",
+          "beat": "The rule: nature's nearest thing to a split"
+        },
+        {
+          "fact": "The Ship of Theseus: if every plank of a ship is replaced, and the old planks are rebuilt into a second ship, which is the original? Argued since ancient Greece.",
+          "source": "https://en.wikipedia.org/wiki/Ship_of_Theseus",
+          "beat": "The choice: whose life is it to give back"
+        },
+        {
+          "fact": "Your red blood cells last about 120 days and the lining of your gut only days: most of the material you are made of is steadily replaced.",
+          "source": "verify",
+          "beat": "The twist: you were never one fixed thing"
+        },
+        {
+          "fact": "Illusory superiority: most people rate themselves above average on likeable traits, which cannot all be true.",
+          "source": "https://en.wikipedia.org/wiki/Illusory_superiority",
+          "beat": "First jump: both of you have the same excuses"
+        },
+        {
+          "fact": "India's Aadhaar system has issued over a billion unique 12-digit identities tied to fingerprints and iris scans, built on the assumption that one body is one person.",
+          "source": "https://en.wikipedia.org/wiki/Aadhaar",
+          "beat": "Third jump: every system built on 'one person'"
+        },
+        {
+          "fact": "The many-worlds interpretation of quantum mechanics (Everett, 1957) takes seriously the idea that observers branch into copies that each feel like the only one; it is one interpretation, not settled fact.",
+          "source": "https://en.wikipedia.org/wiki/Many-worlds_interpretation",
+          "beat": "Third jump: then four, if each of you splits"
+        }
+      ],
+      "twist": "You have been splitting your whole life without the power: the you at the wedding and the you at the exam were already different people who share one diary. The merge is the only new part, and it is the part you nearly gave up.",
+      "ending": "You will never say 'I wish there were two of me' the same way: the wish is not for more hands, it is for not having to choose, and the choosing is the you.",
+      "closest_video": {
+        "title": "Kurzgesagt-style identity explainers ('What Are You?') and clone what-ifs",
+        "url": "verify",
+        "difference": "Clone videos treat the copy as someone else. Here neither is the copy, the merge needs both to agree, and the story is a week of household negotiations with yourself."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the flatworm, many-worlds and the four-way split; keep the exam-or-wedding toss, the dull-day resentment, the skipped merge, the friend's promise and the palms."
+      },
+      "views_case": "Clone and identity what-ifs are evergreen and the two-yous-one-admit-card image is a classic curiosity thumbnail; the viewer's double-booked week makes it personal. Links to be confirmed by the scorer: verify.",
+      "under_question": "If there were two of me, which one would get my life?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-invisible-but-blind",
+      "title": "What If You Could Turn Invisible at Will?",
+      "premise": "Hold your breath and you vanish, clothes and all, and the instant you do, you cannot see a thing.",
+      "thumbnail": {
+        "image": "A teal scarf and a pair of wide frightened eyes fading out in a dark, crowded room where every other face is turned exactly toward you; one crimson arrow at the fading eyes",
+        "tag": "CAN'T SEE"
+      },
+      "rule": "While you hold your breath, you and whatever you are wearing let all light pass straight through. The catch is physics, not a curse: eyes work by stopping light, so an invisible eye sees nothing. You are unseen and blind for exactly as long as your lungs last, and you still make sound, warmth, smell, footprints and a shadowless gap in the rain.",
+      "hook": "Your boss is walking toward your desk, you take a breath and hold it, your hands fade off the keyboard, and the whole office goes black.",
+      "beats": [
+        "The change: your habit is wishing nobody would look at you: back bench, camera off, the long way round the relatives. Then you hold your breath in the lift mirror and you are not in it.",
+        "The rule and its catch together, in the first thirty seconds: gone from sight, and sight gone from you. The rule device: the picture drains to black with only sounds drawn as paper ripples.",
+        "First jump, small and funny: you plan the classic mischief and manage none of it. You walk into a glass door. You cannot find the answer sheet you came to peek at. Forty seconds, a gasp, and you reappear red-faced in the staff room.",
+        "You train: counting steps, mapping rooms by sound, stretching your breath. You get good at the dark. The surprise in the gap: people bump into you, sit on you, close doors on you. Being seen was protecting you all day.",
+        "Second jump: what gives you away. A dog growls at the empty corner. Rain outlines you. The automatic door opens for nobody. You were never hidden, only unlit.",
+        "The wrong belief breaks at the midpoint: you thought everyone was watching you. You test it visibly instead: the stained shirt, the wrong answer said out loud. Almost nobody notices. You have been mostly invisible your whole life.",
+        "You try the oldest test, the one from a two-thousand-year-old story: what do you do when nobody can see you? In the dark, you find you mostly stand still and listen.",
+        "The cost near 60 percent: you vanish in the next room to hear what the family really says about you. You cannot see their faces. You hear your mother say something kind and cannot see whether she is smiling or tired. The half you came for is the half you cannot have.",
+        "Third jump, the scale: a world with a billion cameras and a person none of them can see, who cannot see them either. Why nature has almost no fully transparent animals with good eyes, and what engineers' real cloaks can and cannot hide.",
+        "The choice at 75 to 80 percent: the presentation, the whole room looking at you, lungs full, one held breath from gone. You breathe out.",
+        "The wordless peak: the room in full colour, every face turned to you, ten seconds, and you keep your eyes open.",
+        "Back to you: front bench, camera on. The mirrored line: nobody was looking. So you may as well be seen."
+      ],
+      "feeling_map": [
+        "mischief",
+        "frustration",
+        "vulnerability",
+        "surprise",
+        "longing",
+        "courage"
+      ],
+      "restarts": [
+        "Around minute 3: the mischief fails; blind and on a breath-timer, you are the one at risk.",
+        "Around minute 6: sound, smell, rain and sensors still find you; invisible is not undetectable.",
+        "Around minute 9: the family in the next room; you can hear the words and not the faces.",
+        "Around minute 12: the scale turns outward: cameras, cloaks, transparent animals, and why eyes are always the part that shows."
+      ],
+      "content_mine": [
+        {
+          "fact": "Seeing requires the retina to absorb light and the lens to bend it; a fully transparent eye would do neither, a flaw readers have pointed out in H. G. Wells's 1897 novel The Invisible Man.",
+          "source": "https://en.wikipedia.org/wiki/The_Invisible_Man",
+          "beat": "The rule and its catch"
+        },
+        {
+          "fact": "To vanish in air a body would need to bend light exactly as air does; water bends it about a third more, which is why even a clear jellyfish shows up out of the sea.",
+          "source": "verify",
+          "beat": "The rule: what invisible would actually take"
+        },
+        {
+          "fact": "Most people can hold their breath for somewhere between half a minute and a minute and a half without training.",
+          "source": "https://en.wikipedia.org/wiki/Static_apnea",
+          "beat": "First jump: forty seconds, a gasp"
+        },
+        {
+          "fact": "Some blind people navigate by echolocation, clicking the tongue and reading the echoes; Daniel Kish rides a bicycle this way.",
+          "source": "https://en.wikipedia.org/wiki/Human_echolocation",
+          "beat": "You train: mapping rooms by sound"
+        },
+        {
+          "fact": "A dog's nose has up to about 300 million scent receptors, against roughly 5 or 6 million in a human's.",
+          "source": "verify",
+          "beat": "Second jump: a dog growls at the empty corner"
+        },
+        {
+          "fact": "A resting human body gives off about 100 watts of heat as infrared, which thermal cameras and many motion sensors detect.",
+          "source": "verify",
+          "beat": "Second jump: the automatic door opens for nobody"
+        },
+        {
+          "fact": "The spotlight effect (Gilovich, 2000): students made to wear an embarrassing T-shirt guessed about half the room noticed; about a quarter did.",
+          "source": "https://en.wikipedia.org/wiki/Spotlight_effect",
+          "beat": "The wrong belief breaks: almost nobody notices"
+        },
+        {
+          "fact": "Inattentional blindness: in the 1999 'gorilla' study about half the viewers counting basketball passes failed to see a person in a gorilla suit walk through the scene.",
+          "source": "https://en.wikipedia.org/wiki/Inattentional_blindness",
+          "beat": "The wrong belief breaks: you have been mostly invisible your whole life"
+        },
+        {
+          "fact": "The Ring of Gyges, in Plato's Republic: a shepherd finds a ring of invisibility, and the question is whether anyone would stay just if they could never be seen.",
+          "source": "https://en.wikipedia.org/wiki/Ring_of_Gyges",
+          "beat": "The oldest test"
+        },
+        {
+          "fact": "A 1976 Halloween study by Ed Diener found children who were anonymous and in groups took extra sweets far more often than children who had been asked their names.",
+          "source": "verify",
+          "beat": "The oldest test: what people do unseen"
+        },
+        {
+          "fact": "In a 2006 study, a picture of eyes above an honesty box led people to pay nearly three times as much for their drinks as a picture of flowers did (Bateson).",
+          "source": "verify",
+          "beat": "The oldest test: being watched changes us"
+        },
+        {
+          "fact": "In 2006 engineers at Duke built a metamaterial cloak that steered microwaves around a small cylinder; it worked for one wavelength, in two dimensions, and nothing like it hides a person in visible light.",
+          "source": "https://en.wikipedia.org/wiki/Metamaterial_cloaking",
+          "beat": "Third jump: what real cloaks can and cannot hide"
+        },
+        {
+          "fact": "Glass frogs become far more transparent while asleep by packing most of their red blood cells into the liver (reported in Science, 2022); their eyes and a few organs still show.",
+          "source": "https://en.wikipedia.org/wiki/Glass_frog",
+          "beat": "Third jump: nature's transparent animals keep visible eyes"
+        },
+        {
+          "fact": "By common industry estimates there are around a billion surveillance cameras in the world.",
+          "source": "verify",
+          "beat": "Third jump: a billion cameras"
+        }
+      ],
+      "twist": "You wanted to disappear because you believed everyone was looking. They never were. The only moment in the story when the whole room truly looks at you is the one where you choose to stay visible.",
+      "ending": "You will never walk into a room the same way: the eyes you were hiding from were mostly your own.",
+      "closest_video": {
+        "title": "'What if you were invisible?' explainers (What If, Vsauce-style 'you would be blind')",
+        "url": "verify",
+        "difference": "The blindness fact is known and is stated in the first thirty seconds, not saved as the twist. The new rule is the breath-timer, and the late turn is the spotlight effect: you were already unseen."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the cloak, the glass frog and the refraction aside; keep the office blackout, the failed mischief, the dog and the rain, the stained-shirt test, the family in the next room and the breath out."
+      },
+      "views_case": "Invisibility is among the most-searched superpower daydreams, and a shy viewer's wish not to be looked at makes it personal; the fading eyes in a room of turned faces promise a story, not a list. Links to be confirmed by the scorer: verify.",
+      "under_question": "If I could disappear whenever I wanted, would I finally feel safe?",
+      "proposers": [
+        "fable"
+      ]
+    }
+  ]
+}

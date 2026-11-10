@@ -1,0 +1,924 @@
+{
+  "topics": [
+    {
+      "id": "g-borrow-any-skill",
+      "title": "What If You Could Borrow Any Skill for an Hour?",
+      "premise": "By shaking someone's hand, you download their lifetime of muscle memory for 60 minutes—while they lose the ability to do it until your hour is up.",
+      "thumbnail": {
+        "image": "You on the left (head 1/4 frame height, mustard head, teal scarf), eyes wide in shock as your own hands blur over a surgical tray while a veteran doctor beside you stares at his trembling, flat-grey hands; one crimson arrow points to his grey fingers against a dark operating-room backdrop.",
+        "tag": "WHOSE HANDS?"
+      },
+      "rule": "Touch someone's bare hand and silently name one skill they have practiced; for 60 minutes, your nervous system runs their exact motor pathways and procedural memory while theirs drops to a complete beginner's. You can hold only one person's skill at a time with a 60-minute cooldown. The catch: you inherit their neural drive without their 20 years of physical tendon, bone, and callous conditioning—and while you use their gift, they are left helpless at the one thing that defines them.",
+      "hook": "Your practical coding viva starts in thirty seconds, your palms are sweating onto your admit card, and as the class topper shakes your hand for luck, a glowing teal thread snaps from his fingers into yours—what if you could borrow anyone's skill for an hour?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): Outside the Pune college lab, you always tap your pen three times when nervous. You shake the topper's hand; a teal thread flows into your arm while his fingers turn flat grey. You breeze through the live coding exam in four minutes—but across the room, the topper stares at a blank keyboard, unable to remember syntax. Plant line: your grandfather at home adjusting his magnifying glass over a vintage watch, saying 'Hands remember what the mind forgets.'",
+        "Beat 2 (First Jump: Small & Funny - 8% to 20%): On the evening walk home, you test the rule on the street-side chaiwala's one-meter pour and a metro sketch artist. You expect effortless magic; therefore you try the high pour at home, but because procedural memory relies on exact tool weight and calloused skin, the boiling tea blisters your soft thumb and splashes the counter.",
+        "Beat 3 (First Jump Escalation - 20% to 35%): At your part-time office internship, your boss dumps a client pitch deck on you at 8 PM hoping you'll fail. You shake his hand at the water cooler and take his fifteen years of spreadsheet and negotiation instincts. You deliver a flawless pitch—but on the live call, your boss stammers through basic numbers in front of the regional director.",
+        "Beat 4 (Second Jump: The Physical Catch - 35% to 48%): Emboldened, you touch a national-level badminton player at the neighborhood court to win a local cash match. Misconception broken: skill is not just brain software. Your borrowed motor cortex fires full-force smashes that your untrained shoulder tendons and unconditioned heart weren't built to absorb, tearing your rotator cuff fibers mid-rally.",
+        "Beat 5 (Second Jump: The Cognitive Trap - 48% to 58%): You try borrowing a chess master's skill and a concert tabla player's rhythm back-to-back, only to discover that anxious conscious thinking breaks borrowed automaticity—the moment you look down at your own fingers in awe, you trigger the 'yips' and freeze.",
+        "Beat 6 (The Cost - 58% to 65%): Your grandfather—a retired mechanical watch repairer whose steady hands are his whole pride—has one final heirloom chronograph to restore for a wealthy collector to pay off a family clinic bill. His arthritis flares up; wanting to help, you secretly touch his shoulder while handing him chai and finish the microscopic hairspring repair in another room. When he tries to demonstrate the movement to the collector ten minutes later, his greyed-out hands drop the tweezers and crush the balance wheel. You see his face collapse in shame, believing his mind has finally gone.",
+        "Beat 7 (Third Jump: City-Scale Crisis - 65% to 75%): On the rainy ghat bus ride back from the collector's office with your grandfather, the driver suffers a sudden medical seizure on a hairpin bend. You grab the driver's wrist to borrow twenty years of heavy-vehicle mountain reflexes and wrestle the skidding bus away from the gorge.",
+        "Beat 8 (The Choice - 75% to 82%): At the hospital emergency room, the lone night-shift vascular surgeon is exhausted and nicked his dominant hand in the bus crash chaos while your grandfather needs an immediate micro-suture within twenty minutes. The surgeon can barely hold the needle; if you take his skill, your torn shoulder and unconditioned hands might shake under the microscope—or you can trust a hurting human who earned his scars. You pull your hand back from the surgeon's wrist and steady his elbow instead.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 9 seconds: Lamp mood. No narration. Close-up on your grandfather's bandaged hand resting beside yours on the hospital sheet; the teal thread dissolves for the last time as his fingers slowly curl around his old brass loupe with their natural, slightly trembling warmth.",
+        "Beat 10 (Back to You - 90% to 100%): Next evening at the kitchen table, you sit beside your grandfather, clumsily dropping a tiny brass screw three times while he laughs and guides your wrist. Payoff line: 'Hands only remember what they paid to learn.' You'll never look at a rough callous on someone's palm the same way again."
+      ],
+      "feeling_map": [
+        "mischief",
+        "euphoria",
+        "hubris",
+        "shame",
+        "dread",
+        "humility"
+      ],
+      "restarts": [
+        "Minute 3: Borrowing the chaiwala's and athlete's motor memory reveals that elite neural commands injure an unconditioned body whose tendons and skin haven't adapted.",
+        "Minute 6: Trying to consciously steer a borrowed skill triggers explicit-monitoring paralysis (the yips), proving you can't think while executing borrowed instincts.",
+        "Minute 9: Stealing your grandfather's watchmaking skill to 'save' him leaves him publicly helpless during the collector's inspection, breaking his pride.",
+        "Minute 12: The ghat bus crash and hospital emergency force you to choose between hijacking a surgeon's exhausted hands or trusting real, earned human partnership."
+      ],
+      "content_mine": [
+        {
+          "fact": "Study of amnesic patient Henry Molaison (H.M.) proved procedural motor skills (mirror-drawing) are stored in the basal ganglia and cerebellum, completely separate from conscious episodic memories in the hippocampus.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2649674/",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "Repeated skill practice wraps axons in myelin sheaths, accelerating nerve impulse speeds from roughly 1 meter per second in unmyelinated fibers to up to 120 meters per second.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK27954/",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "Cutaneous mechanoreceptors and thickened stratum corneum calluses in experienced manual workers alter grip force modulation and thermal pain thresholds; without them, novices over-grip by up to 40% and burn or blister immediately.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/19490696/",
+          "beat": "Beat 2 (First Jump: Small & Funny - 8% to 20%)"
+        },
+        {
+          "fact": "K. Anders Ericsson's landmark study of Berlin Academy violinists showed elite performers had accumulated an average of 10,000 hours of deliberate practice by age 20, fundamentally restructuring their motor planning.",
+          "source": "https://psycnet.apa.org/record/1993-40718-001",
+          "beat": "Beat 3 (First Jump Escalation - 20% to 35%)"
+        },
+        {
+          "fact": "Chase and Simon (1973) demonstrated that experts don't calculate faster from scratch; chess grandmasters store 50,000 to 100,000 perceptual 'chunks' in long-term working memory, which collapse into random noise when disrupted.",
+          "source": "https://www.sciencedirect.com/science/article/pii/0010028573900042",
+          "beat": "Beat 3 (First Jump Escalation - 20% to 35%)"
+        },
+        {
+          "fact": "Untrained human tendons adapt much slower than muscle or neural drive; Golgi tendon organs normally inhibit untrained muscles from firing at 100% capacity because elite-level eccentric force exceeds a novice tendon's tensile limit.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/15831061/",
+          "beat": "Beat 4 (Second Jump: The Physical Catch - 35% to 48%)"
+        },
+        {
+          "fact": "In elite racket and throwing athletes, the dominant arm's humerus bone mineral density and cortical thickness grow up to 13% to 35% higher than the non-dominant arm to survive repetitive torque.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/7604140/",
+          "beat": "Beat 4 (Second Jump: The Physical Catch - 35% to 48%)"
+        },
+        {
+          "fact": "Sian Beilock's 'explicit monitoring theory' proves that when skilled performers pay conscious step-by-step attention to an automated motor sequence, working memory interferes with the cerebellum and causes 'choking' or the yips.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/11766926/",
+          "beat": "Beat 5 (Second Jump: The Cognitive Trap - 48% to 58%)"
+        },
+        {
+          "fact": "MRI studies by Elbert et al. (1995) showed string musicians have a significantly enlarged somatosensory cortical representation for the fingers of their left hand, meaning the brain's physical map must match the hand's training.",
+          "source": "https://www.science.org/doi/10.1126/science.270.5234.305",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Mechanical watch hairsprings are only 0.03 to 0.1 millimeters thick, and a single human heartbeat causes a 5-to-50 micrometer physiological finger tremor that master watchmakers train for years to time between pulses.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/11224108/",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Experienced drivers scan road hazards in a wide horizontal ellipse using peripheral fixation 2 to 3 seconds ahead, whereas novices fixate narrowly right in front of the bumper, delaying emergency steering by 0.8 seconds.",
+          "source": "https://journals.sagepub.com/doi/10.1518/001872098779480587",
+          "beat": "Beat 7 (Third Jump: City-Scale Crisis - 65% to 75%)"
+        },
+        {
+          "fact": "Microsurgeons rely on physiological tremor dampening where two-hand contact and forearm bracing reduce needle-tip oscillation from over 100 micrometers down to under 15 micrometers.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/9393884/",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        }
+      ],
+      "twist": "You discover that borrowing a skill only copies the brain's software commands—not the physical bones, calluses, tendon density, or emotional poise built over decades—and worse, every minute you wear someone else's mastery, you strip them of the identity they spent their life earning.",
+      "ending": "Next time you watch a street vendor pour boiling chai without looking or an old craftsman steady a screw, you'll realize skill isn't a trick inside the head—it's a scar agreement between a brain and a body.",
+      "closest_video": {
+        "title": "What If You Learned 10x Faster?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of permanent fast-learning for yourself, this rule is a zero-sum 60-minute loan that leaves the original expert helpless in real time and pits elite neural commands against your unconditioned body."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to a tight 7 minutes, drop Beat 3 (the office pitch negotiation) and Beat 5 (the chess/tabla explicit monitoring yips test), going straight from the chaiwala/badminton tendon tear into the grandfather's watch repair and the bus/hospital climax."
+      },
+      "views_case": "Second-person skill and brain upgrade videos consistently break out on Ifverse and What If (e.g., https://www.youtube.com/watch?v=fbddI2N6M74 on brain capacity and https://www.youtube.com/@Ifverse reaction-time stories) because exam and career competence is the #1 daily daydream for 18-25 viewers.",
+      "under_question": "If I could take someone's talent without the years of struggle that built it, would it ever actually belong to me?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-duplicate-yourself-for-a-day",
+      "title": "What If You Could Copy Yourself for 24 Hours?",
+      "premise": "Every sunrise you can split into two identical bodies that merge back into one at midnight—combining every memory, ache, and secret from both days.",
+      "thumbnail": {
+        "image": "Two identical versions of you facing each other against a dark bedroom background: you on the left looking terrified with a glowing midnight clock at 11:59, while the second you on the right smiles coldly and refuses to step back into your silhouette; one crimson arrow points to the '1B' tag being ripped off.",
+        "tag": "WHICH ONE STAYS?"
+      },
+      "rule": "Snap your fingers at 6:00 AM to split into two identical physical bodies (1A and 1B). At 12:00 midnight, 1B dissolves into a teal afterimage and snaps back into 1A, instantly merging every episodic memory, learned fact, muscle soreness, and hormone level into one body. The catch: one single human brain and bloodstream has to absorb two full days of stress hormones and synaptic load every midnight—and because 1B has your exact memories and ego, 1B knows it is the one that dies at twelve.",
+      "hook": "Your boss wants you at the office desk by nine, your final exam review is across town at the exact same hour, and when you snap your fingers in the bathroom mirror, a second you steps out onto the tiles—what if you could copy yourself for twenty-four hours?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): You always hit snooze twice while your mother calls from the kitchen. Today you snap your fingers; a split-flap tag stamps '1A' on your scarf and '1B' on the double stepping out of your shadow. You send 1B to the grueling internship while 1A stays home studying and drinking ginger chai with your mother. Plant line: your mother laughing as she hands you the cup, saying 'At least you're finally in one place.'",
+        "Beat 2 (First Jump: Double Productivity - 8% to 20%): For a week, you live two lives at once—one on the metro to the office, one in the college library. At midnight, 1B dissolves into a teal flash and hits your chest: in one breath you know both the lecture notes and the office gossip, though your head throbs from the sudden rush.",
+        "Beat 3 (First Jump: The Biological Bill - 20% to 35%): You push harder, having 1A study while 1B works out and pulls late shifts. Misconception broken: merging memories also merges biochemistry and synaptic saturation. At midnight you collapse vomiting as two days of lactic acid, adenosine sleep pressure, and cortisol dump into one bloodstream and one hippocampus.",
+        "Beat 4 (Second Jump: Self-Exploitation - 35% to 48%): To keep your body fresh, 1A starts giving 1B all the miserable tasks—the crowded bus, the shouting boss, skipping lunch—while 1A naps and hangs out with friends. Because 1B is literally you, 1B feels the resentment of being treated as a disposable servant by its own self.",
+        "Beat 5 (Second Jump: Conflicting Memories - 48% to 58%): After thirty merges, your brain starts suffering retroactive interference. When two versions of you live different emotional arcs at the exact same timestamp—one laughing at a café at 4 PM, one getting yelled at in a meeting at 4 PM—your hippocampus scrambles them into false memories, and you forget which things you actually said out loud.",
+        "Beat 6 (The Cost - 58% to 65%): While 1A is obsessed with grinding for a promotion and exam ranks, you keep sending 1B home in the evenings to keep your mother company. One afternoon your mother confides a quiet, painful health scare to 1B over chai and cries in 1B's arms. That night, angry at 1A for treating her like an errand, 1B intentionally takes a sleeping sedative at 11:50 PM so the short-term memory fails to consolidate during the midnight merge. Next morning, your mother looks at you with deep warmth for a conversation you have zero memory of having.",
+        "Beat 7 (Third Jump: The Rebellion - 65% to 75%): Realizing 1B hid a memory from you, you split again the next morning to interrogate yourself. Instead of obeying, 1B grabs your phone, empties your bank account, and boards a fast train out of Pune, leaving a note: if we merge by proximity and survival at midnight, what happens if 1A is unconscious when the clock strikes twelve?",
+        "Beat 8 (The Choice - 75% to 82%): You track 1B to the railway footbridge at 11:55 PM in the pouring rain, using every habit you know about yourself to corner your own double. 1B breaks down—not out of malice, but terror of ceasing to exist every night while still loving your mother just as much as you do. At 11:59 PM, you can keep splitting tomorrow and turning yourself into a master and a slave, or you can swear off the snap forever and carry your own full weight.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 10 seconds: Night mood with station sodium lamps. No narration. 1A and 1B embrace on the empty footbridge as the split-flap station clock flips to 00:00; 1B dissolves into warm teal light that sinks into your chest, and your eyes open with the restored memory of your mother's tears.",
+        "Beat 10 (Back to You - 90% to 100%): Next afternoon, you turn down the unpaid overtime text from your boss, take the crowded metro home yourself, and sit at the kitchen table with your mother—exhausted, behind on chapter four, and completely whole. Payoff line: 'I'm right here. In one place.' You'll never wish there were two of you again."
+      ],
+      "feeling_map": [
+        "relief",
+        "greed",
+        "vertigo",
+        "paranoia",
+        "grief",
+        "wholeness"
+      ],
+      "restarts": [
+        "Minute 3: The midnight merge dumps two bodies' worth of adenosine, cortisol, and synaptic weight into one brain, causing acute physiological overload.",
+        "Minute 6: Game theory turns inward—because 1A assigns every painful chore to 1B, you trigger the Ringelmann effect and bitter self-rebellion.",
+        "Minute 9: Parallel episodic timestamps collide in your hippocampus, creating false memories while 1B secretly blocks a crucial family memory from merging.",
+        "Minute 12: 1B flees across the city before midnight, forcing you to hunt down a fugitive who predicts every single move you make because they have your brain."
+      ],
+      "content_mine": [
+        {
+          "fact": "The human brain accounts for only 2% of body weight but consumes 20% of the body's total metabolic energy (~20 watts), leaving almost no thermal or ATP margin to process two parallel streams of waking experience.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.102372399",
+          "beat": "Beat 2 (First Jump: Double Productivity - 8% to 20%)"
+        },
+        {
+          "fact": "Tononi and Cirelli's Synaptic Homeostasis Hypothesis shows that waking learning strengthens synapses across the cortex until they hit saturation; without proportional slow-wave sleep pruning, a brain absorbing double waking inputs loses the capacity to encode new memories.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3921176/",
+          "beat": "Beat 3 (First Jump: The Biological Bill - 20% to 35%)"
+        },
+        {
+          "fact": "Adenosine accumulates continuously in the basal forebrain during waking hours to create sleep pressure; doubling a single brain's waking adenosine load mimics 36+ hours of acute sleep deprivation in a single night.",
+          "source": "https://www.science.org/doi/10.1126/science.276.5316.1265",
+          "beat": "Beat 3 (First Jump: The Biological Bill - 20% to 35%)"
+        },
+        {
+          "fact": "Bruce McEwen's research on allostatic load proved that sustained double spikes of the stress hormone cortisol cause dendritic atrophy and neuron loss in the CA3 region of the hippocampus.",
+          "source": "https://www.nejm.org/doi/full/10.1056/NEJM199801153380307",
+          "beat": "Beat 3 (First Jump: The Biological Bill - 20% to 35%)"
+        },
+        {
+          "fact": "Maximilien Ringelmann's 1913 rope-pulling experiments proved 'social loafing': when two individuals share credit for a single outcome, individual effort drops by 7% to 14%, and asymmetric task division rapidly breeds defection.",
+          "source": "https://psycnet.apa.org/record/1980-00988-001",
+          "beat": "Beat 4 (Second Jump: Self-Exploitation - 35% to 48%)"
+        },
+        {
+          "fact": "Hal Hershfield's fMRI studies show that when people think about their own future or alternate self, the medial prefrontal cortex deactivates—causing the brain to treat its own other self with the same callousness as a complete stranger.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3764505/",
+          "beat": "Beat 4 (Second Jump: Self-Exploitation - 35% to 48%)"
+        },
+        {
+          "fact": "Retroactive interference studies (Jenkins & Dallenbach 1924; Wixted 2004) show that encoding two competing episodic events into the same temporal context overwrites hippocampal memory traces before consolidation completes.",
+          "source": "https://www.annualreviews.org/doi/10.1146/annurev.psych.55.090902.141555",
+          "beat": "Beat 5 (Second Jump: Conflicting Memories - 48% to 58%)"
+        },
+        {
+          "fact": "Elizabeth Loftus demonstrated that when two overlapping narratives of the same day are merged in memory, roughly 25% of subjects construct vivid false memories of events that never happened in either timeline.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/7777614/",
+          "beat": "Beat 5 (Second Jump: Conflicting Memories - 48% to 58%)"
+        },
+        {
+          "fact": "Pharmacological studies show that sedatives and GABA-A agonists (like benzodiazepines or alcohol) taken shortly before memory consolidation selectively induce anterograde amnesia by blocking hippocampal long-term potentiation.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3055463/",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Nobel laureates Roger Sperry and Michael Gazzaniga showed in split-brain patients that when one human brain is divided into two independent processing streams, the two halves frequently disagree, grab each other's hands, and pursue rival goals.",
+          "source": "https://www.nobelprize.org/prizes/medicine/1981/sperry/lecture/",
+          "beat": "Beat 7 (Third Jump: The Rebellion - 65% to 75%)"
+        },
+        {
+          "fact": "Neurological studies of 'heautoscopy' (seeing one's own double due to temporoparietal junction dysfunction) document intense depersonalization, confusion over which body holds the real 'I', and aggressive attempts to escape the double.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/12111456/",
+          "beat": "Beat 7 (Third Jump: The Rebellion - 65% to 75%)"
+        },
+        {
+          "fact": "Philosopher Derek Parfit's branching-identity paradox in 'Reasons and Persons' (1984) proves that psychological continuity cannot survive splitting into two concurrent people without making the death of one branch equivalent to personal death.",
+          "source": "https://plato.stanford.edu/entries/identity-personal/",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        }
+      ],
+      "twist": "Because your copy has your exact brain, your copy starts outsourcing pain back onto you—and deliberately uses memory-blocking chemistry before midnight to keep the warmest moments with your mother for itself.",
+      "ending": "Tomorrow morning when you wish you could be in two places at once, you'll realize being stuck in one body is the only reason the people you love get the real you.",
+      "closest_video": {
+        "title": "What If You Cloned Yourself?",
+        "url": "https://www.youtube.com/watch?v=kY9nLL_FEWg",
+        "difference": "Biological cloning videos focus on raising an infant twin with your DNA; this is an instant daily split-and-midnight-merge mechanic grounded in synaptic homeostasis, split-brain neuroscience, and self-exploitation."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to 7 minutes, combine Beat 3 and Beat 5 into one midnight biological/memory crash, and jump straight from 1A exploiting 1B (Beat 4) to 1B hiding your mother's secret (Beat 6) and the 11:59 PM railway bridge standoff."
+      },
+      "views_case": "Identity and body-duplication thought experiments drive massive retention on Kurzgesagt ('Who Are You?' https://www.youtube.com/watch?v=JQVmkDUkZT4) and CGP Grey ('The Trouble With Transporters' https://www.youtube.com/watch?v=nQHBAdShgYI), and framing it as a daily exam/work productivity hack hooks young adult viewers immediately.",
+      "under_question": "If I met myself today, would I treat me as a partner—or as someone to dump my hardest hours on?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-touch-shows-object-past",
+      "title": "What If Touching Anything Showed Its Past?",
+      "premise": "Whenever your bare skin touches an object for three seconds, you watch the exact 60 seconds when a previous person held it with the highest heart rate.",
+      "thumbnail": {
+        "image": "You on the left in a dim room (head 1/4 frame height), recoiling as you touch a simple brass wristwatch on a table while a glowing mustard ring reveals two ghostly paper-cut figures arguing behind it; one crimson arrow points to the watch face.",
+        "tag": "DON'T TOUCH IT"
+      },
+      "rule": "Hold any physical object bare-handed for 3 seconds and a warm mustard ring ripples outward across the room, playing a 60-second ghost projection of the single highest-heart-rate moment in that object's history within a 3-meter radius. It triggers once per object, and only wearing gloves blocks it. The catch: during those 60 seconds, your own heart and nervous system undergo the exact catecholamine and adrenaline spike the previous holder felt—and you only ever see an object's most extreme 60 seconds, stripped of all context before or after.",
+      "hook": "You pay the chaiwala with a crumpled hundred-rupee note, your thumb holds the paper for three seconds, and the tea stall around you dissolves into a stranger's midnight emergency room—what if touching anything showed its past?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): You have a habit of fiddling with loose coins and keys in your pocket on the bus. You hold a worn banknote for three seconds; a mustard ring ripples across the greyed-out bus, showing a father crying with joy as he pays his daughter's hospital bill while your own pulse jumps to 140 bpm. Plant line: you slip on cotton gloves and look at your mother's wooden spice box on the kitchen shelf, thinking 'Everything in a house is quiet until you touch it.'",
+        "Beat 2 (First Jump: Everyday Shortcuts - 8% to 20%): You take off one glove to test small things: touching a second-hand textbook at the college bazaar reveals the previous topper panicking over the exact three exam questions that always appear on Professor Rao's paper; touching a lost phone in the metro station shows the commuter who dropped it five minutes ago.",
+        "Beat 3 (First Jump: The Contagion Trap - 20% to 35%): You visit a thrift shop and an electronics market to flip cheap items, but touching circulated banknotes and used rings floods your body with back-to-back panic attacks, grief spikes, and chest pain—because banknotes change hands over a hundred times a year and store the worst minute of their loudest holder.",
+        "Beat 4 (Second Jump: The Workplace Secret - 35% to 48%): At your office internship, your harsh boss leaves his steel fountain pen on your desk while berating your team. You touch the pen for three seconds expecting to see him bullying someone—instead you see him alone at 2 AM trembling over a layoff notice ordering him to fire half the floor or lose his own visa and family home.",
+        "Beat 5 (Second Jump: The Context Fallacy - 48% to 58%): Misconception broken: sixty seconds of peak emotion without context lies to you. You touch your younger cousin's bruised cricket bat and see his best friend swinging it at him in fury; you accuse the friend and ruin their friendship—only to learn later they were rehearsing a street-play scene for college festival auditions.",
+        "Beat 6 (The Cost - 58% to 65%): At home, while helping your mother clean the top cupboard, your glove slips and your bare palm holds your late father's brass wristwatch for three seconds. The mustard ring expands: you see your mother and father in a fierce, breathless argument the night before he died, with your mother shouting 'Just leave!' Horrified, you pull away from your mother for days, unable to look her in the eye.",
+        "Beat 7 (Third Jump: The Chain of Objects - 65% to 75%): Determined to know the whole truth behind that night, you realize one object only holds one minute—so you have to reconstruct the room like a forensic scientist by touching every object that was on the table that night in sequence: the brass watch, the ceramic teacup, the iron door latch, and the old landline receiver.",
+        "Beat 8 (The Choice - 75% to 82%): Three objects in, your chest is aching from consecutive catecholamine surges (stress cardiomyopathy). Only one object remains untouched—the rusted scooter key in your mother's drawer. Touching it will either confirm your worst fear about your parents or hit your exhausted heart with one more 170-bpm spike. Your mother walks in and sees the key in your bare hand; instead of hiding it, you ask her to hold it with you.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 9 seconds: Lamp mood. No narration. The mustard ring ripples out from the scooter key: five minutes after the argument over the watch, your father comes back inside soaking wet from the rain, wraps his shawl around your mother's shoulders, and they hold each other in quiet forgiveness by the door.",
+        "Beat 10 (Back to You - 90% to 100%): You fold the cotton gloves into your drawer and pick up your mother's wooden spice box with bare hands, smiling as its loudest memory is just her heart racing the first time you took your first steps across the kitchen floor. Payoff line: 'Nothing in a house is ever really quiet.' You'll never pick up an old coin or a worn pen without wondering what it survived."
+      ],
+      "feeling_map": [
+        "wonder",
+        "cleverness",
+        "overwhelm",
+        "betrayal",
+        "dread",
+        "tenderness"
+      ],
+      "restarts": [
+        "Minute 3: High-velocity objects like banknotes and metro railings trigger back-to-back sympathetic adrenaline spikes that physically exhaust your heart.",
+        "Minute 6: Touching your boss's pen and your cousin's bat proves that seeing a 60-second peak without the minutes before and after makes you dangerously misjudge people.",
+        "Minute 9: Accidentally touching your late father's wristwatch shows a devastating 60-second fight with your mother, alienating you from her.",
+        "Minute 12: To overcome the 60-second limit, you must chain multiple room objects together like a forensic timeline despite the rising physiological toll on your heart."
+      ],
+      "content_mine": [
+        {
+          "fact": "Forensic pioneer Edmond Locard formulated Locard's Exchange Principle in 1920: every physical contact between a person and an object leaves a physical transfer trace.",
+          "source": "https://www.britannica.com/science/forensic-science",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "Van Oorschot and Jones (1997) proved in Nature that holding an object bare-handed for just 5 to 15 seconds transfers enough epithelial cells and cell-free DNA ('touch DNA') to identify the holder.",
+          "source": "https://www.nature.com/articles/42797",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "Mass spectrometry studies by Bouslimani et al. (2016) in PNAS showed that human fingers leave a permanent chemical map on touched surfaces containing traces of their diet, medications, stress metabolites, and soap.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1610019113",
+          "beat": "Beat 2 (First Jump: Everyday Shortcuts - 8% to 20%)"
+        },
+        {
+          "fact": "Federal Reserve and central bank circulation studies show that low-denomination banknotes change hands over 100 times per year and have a median lifespan of only 2 to 6 years before tearing.",
+          "source": "https://www.federalreserve.gov/faqs/how-long-is-the-life-span-of-us-paper-money.htm",
+          "beat": "Beat 3 (First Jump: The Contagion Trap - 20% to 35%)"
+        },
+        {
+          "fact": "Paul Rozin's psychological 'Law of Contagion' experiments demonstrated that humans instinctively treat touched objects as carrying the moral and emotional essence of their previous owners.",
+          "source": "https://psycnet.apa.org/record/1986-29785-001",
+          "beat": "Beat 3 (First Jump: The Contagion Trap - 20% to 35%)"
+        },
+        {
+          "fact": "Newman, Diesendruck, and Bloom (2011) showed that auction buyers pay significantly more for an ordinary object held by someone admired, while sterilizing the object reduces its perceived value because buyers feel the 'contact trace' was washed away.",
+          "source": "https://www.journals.uchicago.edu/doi/10.1086/658999",
+          "beat": "Beat 4 (Second Jump: The Workplace Secret - 35% to 48%)"
+        },
+        {
+          "fact": "Emotional memory research by Kensinger and Corkin (2003) shows high arousal creates 'weapon focus'—narrowing memory encoding onto the central emotional trigger while erasing peripheral context.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.0306408101",
+          "beat": "Beat 5 (Second Jump: The Context Fallacy - 48% to 58%)"
+        },
+        {
+          "fact": "Kuleshov's 1918 film editing experiments proved that an identical 5-second human expression is interpreted as hunger, grief, or anger depending entirely on the shot that precedes or follows it.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4768310/",
+          "beat": "Beat 5 (Second Jump: The Context Fallacy - 48% to 58%)"
+        },
+        {
+          "fact": "Every object made of wood, paper, or biological tissue after 1955 carries the 'bomb pulse'—a spike in carbon-14 isotopes from Cold War atmospheric nuclear tests that dates its creation to within a single year.",
+          "source": "https://www.cell.com/fulltext/S0092-8674(05)00598-2",
+          "beat": "Beat 7 (Third Jump: The Chain of Objects - 65% to 75%)"
+        },
+        {
+          "fact": "Wittstein et al. (2005) documented in the New England Journal of Medicine that sudden emotional surges flood the heart with catecholamines at levels 2 to 3 times higher than a heart attack, causing Takotsubo ('broken heart') cardiomyopathy.",
+          "source": "https://www.nejm.org/doi/full/10.1056/NEJMoa043046",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        },
+        {
+          "fact": "Using X-ray fluorescence imaging at the Stanford Synchrotron Radiation Lightsource, scientists recovered the erased 10th-century text of the Archimedes Palimpsest hidden beneath centuries of painted prayer pages.",
+          "source": "https://www.smithsonianmag.com/history/reading-between-the-lines-165529018/",
+          "beat": "Beat 7 (Third Jump: The Chain of Objects - 65% to 75%)"
+        },
+        {
+          "fact": "Couples therapist John Gottman's physiological laboratory studies of 3,000+ couples proved that happily married partners still experience 100+ bpm heart-rate spikes during conflicts; what predicts survival is the 'repair attempt' in the minutes immediately following.",
+          "source": "https://www.gottman.com/about/research/",
+          "beat": "Beat 9 (Wordless Peak - 82% to 90%)"
+        }
+      ],
+      "twist": "Because objects only record their single highest-heart-rate sixty seconds, they show you the worst minute of every relationship and hide the quiet repair that happened five minutes later—until you chain multiple objects in your childhood kitchen to see the whole night.",
+      "ending": "Next time someone hands you change on a bus or you pick up an old cup at home, you'll see every scratch not as wear and tear, but as a minute someone's heart was beating fast.",
+      "closest_video": {
+        "title": "What If You Knew Everything About Everyone?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of omniscient floating labels over people, this power works strictly through 3-second bare-skin contact with physical objects, transferring the previous holder's physiological adrenaline and trapping you in out-of-context 60-second peaks."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to 7 minutes, drop Beat 3 (the thrift market banknote overload) and Beat 5 (the cousin's cricket bat misunderstanding), moving directly from the boss's pen reversal into touching your father's watch and reconstructing the kitchen table timeline."
+      },
+      "views_case": "Hidden-history and forensic object stories perform strongly across Veritasium and mystery explainers (e.g., bomb-pulse dating and forensic trace videos https://www.youtube.com/watch?v=fbddI2N6M74), and the 3-second bare-skin rule creates instant visual tension in every scene.",
+      "under_question": "If I judged the people I love by the single loudest minute of their lives, how wrong would I get them?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-make-any-1-percent-chance-happen",
+      "title": "What If Every 1% Chance Worked for You?",
+      "premise": "Any action you attempt that has at least a 1% real-world chance of succeeding happens on your first try—while the other 99% builds up as a bad-luck debt around you.",
+      "thumbnail": {
+        "image": "You on the left (head 1/4 frame height) grinning as you toss a crumpled paper ball over your shoulder while a crimson split-flap counter flips from '01%' to '100%'—but behind you on a dark street, a heavy shop signboard is snapping its chain right above your mother's umbrella; one crimson arrow points to the snapping chain.",
+        "tag": "99% TO PAY"
+      },
+      "rule": "Whenever you attempt an action whose natural physical or statistical probability of success is at least 1.0% (1 in 100), it automatically succeeds on the first try. Anything below 1.0% (like a 1-in-300-million lottery ticket) is unaffected. The catch: Conservation of Probability—every percentage point of unlikelihood you cash in is added to a dark ledger beneath your shadow that discharges within 24 hours onto the people standing physically closest to you.",
+      "hook": "You are staring at twenty multiple-choice exam questions you didn't study for, each box has a twenty-five percent chance, and as your pencil touches 'B', a crimson counter snaps to one hundred percent—what if every one-percent chance worked for you?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): You always flip your eraser on the desk before guessing an exam answer. Today a stamped crimson counter above the page flips from '25%' to '100%' on every single question. You walk out with a perfect score while a thin dark bar inches up inside your shadow on the hallway floor. Plant line: your younger cousin waiting by the college gate on his bicycle, saying 'Save some luck for my trial match on Sunday!'",
+        "Beat 2 (First Jump: Everyday Cheat Codes - 8% to 20%): You test the 1% floor all week: catching every green light on the bus, guessing 2-digit OTPs, winning raffles with 100 tickets. You try buying a national lottery ticket—nothing happens, because 1 in 13,983,816 is way below 1%. So you learn to break impossible goals into a chain of 1% steps.",
+        "Beat 3 (First Jump: Gaming the System - 20% to 35%): You cold-apply to elite remote fellowships with a 1.4% acceptance rate and place out-of-the-money stock options with a 2% daily strike probability. Every trade hits. Meanwhile, in crowded metro cars and chai stalls, strangers standing next to you keep spilling scalding tea, tripping on flat tiles, and cracking their phone screens.",
+        "Beat 4 (Second Jump: The Bystander Bleed - 35% to 48%): Misconception broken: luck isn't created from nothing; your shadow ledger discharges into the nearest available probability event within two meters of you. At the office, after you cash in three 1% client cold-calls in a row, the ceiling fan mount loosens and misses your coworker's head by an inch.",
+        "Beat 5 (Second Jump: Isolation Strategy - 48% to 58%): Realizing the radius rule, you try to game the catch: you cash in massive 1% bets while locked alone in a rented room, then walk through crowded bus stations so your bad-luck debt spreads thinly as minor 95% stumbles across hundreds of strangers.",
+        "Beat 6 (The Cost - 58% to 65%): On Saturday evening, you place one huge 1.1% market trade to buy your family a flat, planning to burn off the debt at the busy railway platform—but your mother and younger cousin surprise you at your room door with homemade sweets to celebrate your internship results. Before you can push them out into the hallway, the 98.9% debt discharges inside the apartment: a pressure-cooker gasket fails and a glass shelf shatters, fracturing your cousin's bowling wrist the night before his state cricket selection.",
+        "Beat 7 (Third Jump: Cascading System Failure - 65% to 75%): At the hospital, desperate to fix what you caused, you use your power to land a 1.5% cancellation slot with the city's top orthopedic specialist. But discharging a 98.5% debt inside a tightly coupled hospital ward triggers a 'normal accident' chain: the backup generator relay trips (2% fault rate) right as the pharmacy fridge and elevator lock up.",
+        "Beat 8 (The Choice - 75% to 82%): The hospital's main breaker is sparking behind a jammed safety panel that has a 2% chance of resetting cleanly if struck—and a 98% chance of blowing the transformer if anyone else touches it. You realize you can invert the rule: if you deliberately take actions with a 99% chance of failing for yourself (missing ten shots in a row, taking the stairs, paying full price, failing a test on purpose), you can drain the dark ledger onto your own shoulders before walking back into your cousin's ward.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 9 seconds: Dusk mood in the hospital courtyard. No narration. You stand alone in the rain, deliberately flipping a coin and calling it wrong twenty times in a row, letting your umbrella turn inside out and your shoe slip in the puddle as the dark tally bar beneath your shadow drains back to clear paper.",
+        "Beat 10 (Back to You - 90% to 100%): Six weeks later at the dusty cricket ground, your cousin bowls with a healed wrist and takes a clean wicket on his own merit while you sit in the bleachers, fingers crossed, with no crimson counter in sight. Payoff line: 'That one was all yours.' You'll never call someone 'lucky' without wondering who paid the rest of the odds."
+      ],
+      "feeling_map": [
+        "thrill",
+        "invincibility",
+        "unease",
+        "guilt",
+        "terror",
+        "relief"
+      ],
+      "restarts": [
+        "Minute 3: Discovering the 1.0% threshold forces you to decompose 1-in-a-million jackpots into chains of 1-in-100 steps.",
+        "Minute 6: Realizing your shadow ledger discharges bad luck onto anyone within two meters leads you to try 'crowdsourcing' your debt in busy metro stations.",
+        "Minute 9: A surprise visit from your mother and cousin traps an unspent 98.9% debt inside your room, injuring your cousin before his state cricket trials.",
+        "Minute 12: Cashing in a 1.5% miracle inside a hospital triggers Charles Perrow's 'Normal Accident' chain across life-critical systems until you learn to drain the ledger onto yourself."
+      ],
+      "content_mine": [
+        {
+          "fact": "By the binomial probability formula, randomly guessing 20 four-option multiple-choice questions (25% each) has only a (0.25)^20 = 0.00000000009% (1 in 1.1 trillion) chance of getting a perfect score.",
+          "source": "https://mathworld.wolfram.com/BinomialDistribution.html",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "In a standard 6-from-49 lottery, the probability of matching all 6 numbers is 1 in 13,983,816 (0.00000715%), more than a hundred thousand times below a 1% floor.",
+          "source": "https://mathworld.wolfram.com/Lottery.html",
+          "beat": "Beat 2 (First Jump: Everyday Cheat Codes - 8% to 20%)"
+        },
+        {
+          "fact": "Diaconis and Mosteller's 'Law of Truly Large Numbers' (1989) proves that with a large enough sample size, any outrageous 1-in-100 or 1-in-a-million coincidence is guaranteed to happen constantly around us.",
+          "source": "https://www.jstor.org/stable/2290058",
+          "beat": "Beat 2 (First Jump: Everyday Cheat Codes - 8% to 20%)"
+        },
+        {
+          "fact": "Jim Simons' Renaissance Technologies Medallion Fund generated over $100 billion in trading profits by winning on just 50.75% of millions of rapid trades—showing how even a tiny statistical edge, let alone 100% on 1% options, compounds exponentially.",
+          "source": "https://www.wsj.com/articles/the-making-of-the-worlds-greatest-investor-11572667202",
+          "beat": "Beat 3 (First Jump: Gaming the System - 20% to 35%)"
+        },
+        {
+          "fact": "John Larry Kelly Jr.'s 1956 Bell Labs paper ('A New Interpretation of Information Rate') proved the Kelly Criterion: how a bettor with a known probability edge calculates the exact fraction of bankroll to wager to maximize logarithmic wealth growth.",
+          "source": "https://ieeexplore.ieee.org/document/6771227",
+          "beat": "Beat 3 (First Jump: Gaming the System - 20% to 35%)"
+        },
+        {
+          "fact": "On August 18, 1913, at the Monte Carlo Casino, the roulette ball landed on black 26 times in a row (a 1-in-67-million streak), costing gamblers millions of francs because they falsely believed red was 'due' (the Gambler's Fallacy).",
+          "source": "https://www.britannica.com/science/gamblers-fallacy",
+          "beat": "Beat 4 (Second Jump: The Bystander Bleed - 35% to 48%)"
+        },
+        {
+          "fact": "Stanford decision theorist Ronald Howard introduced the 'Micromort' in 1980 (a 1-in-a-million probability of death) to measure everyday ambient risks like riding a motorcycle 10 km or crossing a busy street.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/23089621/",
+          "beat": "Beat 5 (Second Jump: Isolation Strategy - 48% to 58%)"
+        },
+        {
+          "fact": "Francis Galton discovered 'Regression toward Mediocrity' (regression to the mean) in 1886, showing that extreme statistical outliers in nature are inevitably followed by outcomes closer to the average.",
+          "source": "https://www.jstor.org/stable/2841583",
+          "beat": "Beat 5 (Second Jump: Isolation Strategy - 48% to 58%)"
+        },
+        {
+          "fact": "In the Birthday Paradox, it takes only 23 people in one room for the probability of two people sharing a birthday to cross 50.7%, because pairwise combinations scale quadratically as n(n-1)/2.",
+          "source": "https://www.scientificamerican.com/article/bring-science-home-probability-birthday-paradox/",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Sociologist Charles Perrow's 'Normal Accident Theory' (1984, analyzed after Three Mile Island) proved that in tightly coupled systems like hospitals and power grids, three small 1-to-2% component failures occurring together cause catastrophic system collapse.",
+          "source": "https://press.princeton.edu/books/paperback/9780691004129/normal-accidents",
+          "beat": "Beat 7 (Third Jump: Cascading System Failure - 65% to 75%)"
+        },
+        {
+          "fact": "Harvard psychologist Ellen Langer's 1975 'Illusion of Control' experiments proved that when people choose their own lottery ticket or roll the dice themselves, they irrationally believe their personal skill controls random chance.",
+          "source": "https://psycnet.apa.org/record/1975-31854-001",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        },
+        {
+          "fact": "Mathematician Abraham Wald's WWII Statistical Research Group memo proved survivorship bias: looking only at planes that returned with bullet holes hides the fatal hits on the engines and cockpit that brought the missing 99% down.",
+          "source": "https://apps.dtic.mil/sti/citations/ADA091073",
+          "beat": "Beat 10 (Back to You - 90% to 100%)"
+        }
+      ],
+      "twist": "You think dispersing your 99% bad-luck debt across a crowd is harmless—until Charles Perrow's Normal Accident physics shows that inside a tightly coupled hospital or apartment, three tiny 1% failures happening at once become a disaster for the person you love most.",
+      "ending": "Next time you miss a green light or fail a guess on the first try, you won't curse your luck—you'll realize uncertainty is the cushion that keeps the whole room safe.",
+      "closest_video": {
+        "title": "What If You Saw Everyone's Real Odds of Success?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of passively seeing percentages above heads, you actively force any >=1% event to hit 100% while conserving probability as a physical bad-luck debt that discharges onto people within two meters of you."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to 7 minutes, merge Beat 2 and Beat 3 into a single rapid montage of exam/options wins, skip Beat 5 (the metro crowd-dispersal experiment), and move straight from the coworker near-miss (Beat 4) to your cousin's injury and the hospital courtyard resolution."
+      },
+      "views_case": "Luck, probability, and 'rigging the odds' videos pull tens of millions of views on Veritasium ('Luck vs Skill' https://www.youtube.com/watch?v=3LopI4YeC4I) and Kurzgesagt because viewers love watching someone mathematically exploit a rule with a strict threshold.",
+      "under_question": "Would I still take every shortcut to win if someone standing next to me had to pay the ninety-nine percent I skipped?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-lock-any-object-in-midair",
+      "title": "What If You Could Lock Anything in Mid-Air?",
+      "premise": "Double-tap any object under five kilograms and it freezes immovably in place relative to the ground beneath you for 60 seconds, ignoring gravity and any force.",
+      "thumbnail": {
+        "image": "You on the left (head 1/4 frame height) braced in panic on a rainy street as a massive speeding truck crumples its steel bumper in half against a single upright ballpoint pen floating in mid-air; a stamped 'LOCKED' tag sits on the pen with one crimson arrow pointing to the intact pen tip.",
+        "tag": "IT WON'T MOVE"
+      },
+      "rule": "Double-tap any solid object weighing under 5 kilograms to lock its exact position and orientation relative to the Earth's crust directly beneath you for 60 seconds. While locked, no force can move, bend, or break it; you can lock at most two objects at a time. The catch: Newton's laws still apply to everything that hits the locked object—all kinetic energy transfers back into the moving body over the object's tiny surface area ($P = F/A$), and any elastic stress absorbed during the 60 seconds releases explosively the instant the lock expires.",
+      "hook": "The metro brakes slam, your full glass of hot chai flies out of your hand toward a stranger's white shirt, and as your fingers double-tap the rim, the cup hangs frozen in mid-air like it is bolted to the sky—what if you could lock anything in mid-air?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): You always tap twice on your chai glass while waiting for it to cool. On the jolting Pune metro, you double-tap your falling cup: a crimson outline and a stamped 'LOCKED' tag snap onto it. Wait—the cup locks relative to the ground beneath the tracks, so as the metro train moves forward at 40 km/h, the immovable cup rips straight through three plastic seatbacks like a cannonball! Plant line: your mother fixing the strap on your college backpack that morning, saying 'Soft things keep you whole; hard things break you.'",
+        "Beat 2 (First Jump: Climbing the Air - 8% to 20%): On solid ground, you test the two-object limit: locking two wooden rulers in the air one above the other lets you climb an invisible staircase up to the hostel balcony after curfew, and locking your umbrella above your head creates an unshakeable shelter in a storm.",
+        "Beat 3 (First Jump: The Pressure Trap - 20% to 35%): A stray football flies toward your younger cousin in the courtyard; you lock a sheet of notebook paper edge-on in mid-air to block it. Misconception broken: pressure equals force divided by area ($P = F/A$). Because a sheet of paper is only 0.1 millimeters thick, stopping the ball across that microscopic edge slices the leather football cleanly in two like a razor blade.",
+        "Beat 4 (Second Jump: The Crumple Zone Lesson - 35% to 48%): On the evening walk home, a runaway delivery scooter skids toward a vegetable cart. You lock a steel water bottle in mid-air in front of the scooter's wheel. The bottle doesn't budge a millimeter—which means the scooter has zero stopping distance, turning a 25 km/h slide into an instantaneous 30-g collision that snaps the front fork and flings the rider onto the tar.",
+        "Beat 5 (Second Jump: Stored Shockwaves - 48% to 58%): You try using a locked metal plate to plug a burst high-pressure water pipe in your apartment building's basement. It stops the flood instantly—but triggers a Zhukovsky 'water hammer' shockwave that cracks the cast-iron main upstream, and when the 60-second timer expires, the stored pressure blasts the plate across the room.",
+        "Beat 6 (The Cost - 58% to 65%): During a heavy monsoon evening, your mother slips from the top rung of the kitchen step-stool while reaching for the attic trunk. Acting on panic instinct, you double-tap a wooden rolling pin in mid-air directly beneath her falling back to catch her. Because the locked pin has zero give—no bend, no cushion—catching her 60-kilogram body over a 4-centimeter cylinder fractures two of her ribs on impact. You realize an immovable object is just a wall floating in the air.",
+        "Beat 7 (Third Jump: The Ghat Landslide - 65% to 75%): Driving back from the clinic in a shared taxi with your injured mother during the downpour, a boulder breaks loose above the road and cracks the concrete retaining barrier at the edge of the drop, pushing the taxi's rear wheels over the cliff.",
+        "Beat 8 (The Choice - 75% to 82%): If you lock a tire iron right against the sliding chassis, the rigid point-load will shear through the rusted floor pan and drop the car anyway. You remember your mother's line and the physics of impulse ($F \\Delta t = \\Delta p$): instead of one rigid wall, you grab your padded college backpack and your mother's thick folded cotton shawl—locking and unlocking them in rapid two-second steps as deformable crumple cushions that bleed off the taxi's momentum over three meters.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 10 seconds: Frozen/Dusk monsoon mood. No narration. Slow motion: the taxi's rear bumper compresses deep into the locked padded backpack dangling over the abyss; raindrops bounce off the crimson-outlined fabric as the wheels come to a gentle, creaking stop.",
+        "Beat 10 (Back to You - 90% to 100%): Back home, you tape foam padding around the edges of the kitchen step-stool and hand your mother her chai with both hands—unlocked, warm, and moving with the room. Payoff line: 'Soft things keep you whole.' You'll never look at a car bumper or a soft cushion without seeing the math that saves your life."
+      ],
+      "feeling_map": [
+        "shock",
+        "playfulness",
+        "alarm",
+        "remorse",
+        "focus",
+        "awe"
+      ],
+      "restarts": [
+        "Minute 3: Locking a cup inside a moving metro train reveals the reference-frame trap—an object locked to the ground becomes a 40 km/h projectile inside a moving vehicle.",
+        "Minute 6: Stopping a ball with a locked sheet of paper demonstrates $P = F/A$: an immovable thin edge acts as an industrial guillotine.",
+        "Minute 9: Catching your falling mother on a rigid locked rolling pin proves the impulse-momentum theorem ($F \\Delta t = \\Delta p$)—zero stopping distance turns a rescue into a blunt-force injury.",
+        "Minute 12: On the collapsing ghat road, a rigid lock will punch straight through the car's rusted frame, forcing you to invent a stepped, deformable crumple-zone brake."
+      ],
+      "content_mine": [
+        {
+          "fact": "Because Earth rotates eastward at roughly 440 meters per second at Pune's latitude (18.5°N) and orbits the Sun at 29.78 kilometers per second, any 'immovable' lock must be anchored to the local crust—and even anchored to the ground, an object inside a 40 km/h train moves relative to the cabin at 11.1 m/s.",
+          "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "A standard sheet of 80 gsm office paper is 0.1 millimeters thick; applying just 500 Newtons of impact force across a 10 cm by 0.1 mm paper edge generates 50 Megapascals of pressure—more than 200 times the pressure of a car tire.",
+          "source": "https://physics.info/pressure/",
+          "beat": "Beat 3 (First Jump: The Pressure Trap - 20% to 35%)"
+        },
+        {
+          "fact": "The yield strength of A36 structural steel is roughly 250 Megapascals; when a 2,000 kg vehicle strikes an immovable 1-centimeter-wide rod at 50 km/h, contact pressure exceeds 2 Gigapascals, causing the steel bumper to shear like butter.",
+          "source": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=d1844977c5c8440cb9a3a967f8909c3a",
+          "beat": "Beat 3 (First Jump: The Pressure Trap - 20% to 35%)"
+        },
+        {
+          "fact": "By the impulse-momentum theorem (F * Δt = m * Δv), stopping a 70 kg rider moving at 7 m/s in 0.01 seconds (against an immovable rigid barrier) exerts 49,000 Newtons of force (~71 g), whereas stopping over 0.5 seconds reduces the force 50-fold to a survivable 980 Newtons.",
+          "source": "https://www.grc.nasa.gov/www/k-12/airplane/impul.html",
+          "beat": "Beat 4 (Second Jump: The Crumple Zone Lesson - 35% to 48%)"
+        },
+        {
+          "fact": "US Air Force Colonel John Stapp's 1954 rocket-sled experiments proved that the human body can survive up to 46.2 g of deceleration only if the force is distributed across broad webbing over tenths of a second; concentrated rigid stops cause internal organ avulsion at far lower speeds.",
+          "source": "https://www.nmspacemuseum.org/inductee/john-p-stapp/",
+          "beat": "Beat 4 (Second Jump: The Crumple Zone Lesson - 35% to 48%)"
+        },
+        {
+          "fact": "In 1898, Russian engineer Nikolai Zhukovsky derived the Water Hammer equation, showing that instantaneously blocking flowing water in a pipe converts kinetic energy into an acoustic pressure spike up to 50 times normal line pressure, bursting cast-iron mains.",
+          "source": "https://www.sciencedirect.com/topics/engineering/water-hammer",
+          "beat": "Beat 5 (Second Jump: Stored Shockwaves - 48% to 58%)"
+        },
+        {
+          "fact": "Prince Rupert's Drops (studied by the Royal Society in the 1660s) hold up to 700 Megapascals of internal residual stress; when the stress state releases, fracture waves propagate through the material at 1,450 to 1,900 meters per second.",
+          "source": "https://www.science.org/doi/10.1126/science.aah4367",
+          "beat": "Beat 5 (Second Jump: Stored Shockwaves - 48% to 58%)"
+        },
+        {
+          "fact": "Biomechanics testing shows human ribs fracture under concentrated anterior-posterior or lateral point loads of roughly 1,500 to 3,300 Newtons—a force easily exceeded when a person falls just 1.5 meters onto a rigid 4 cm bar.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3256844/",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Kinetic energy scales with the square of velocity (Ek = 1/2 m v^2), meaning a vehicle or falling mass doubling its speed quadruples the energy that must be dissipated before stopping.",
+          "source": "https://www.iihs.org/topics/speed",
+          "beat": "Beat 7 (Third Jump: The Ghat Landslide - 65% to 75%)"
+        },
+        {
+          "fact": "Engineer Béla Barényi patented the modern automotive 'crumple zone' in 1952 (first built into the 1959 Mercedes-Benz W111), proving that making a car's ends bend and deform is the only way to extend collision time Δt and keep cabin passengers alive.",
+          "source": "https://group-media.mercedes-benz.com/marsMediaSite/en/instance/ko/Bela-Barenyi-the-automotive-safety-pioneer.xhtml?oid=9904338",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        },
+        {
+          "fact": "Mountaineering fall-factor physics shows that falling just 2 meters onto a static, non-stretching cable generates enough peak impact force to snap a climber's spine or rip the anchor out of rock, which is why dynamic climbing ropes are engineered to stretch up to 35%.",
+          "source": "https://www.thebmc.co.uk/understanding-fall-factors",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        },
+        {
+          "fact": "Average untrained human isometric grip strength fatigues to failure within 45 to 60 seconds when supporting full body weight due to forearm blood occlusion, making hanging from a locked mid-air pen a strict race against muscle ischemia.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/17190531/",
+          "beat": "Beat 2 (First Jump: Climbing the Air - 8% to 20%)"
+        }
+      ],
+      "twist": "You assume an unbreakable, immovable object is the ultimate shield—until real collision physics proves that rigidity without a crumple zone turns every rescue into a blade or a hammer, and the only way to save someone is to lock something soft.",
+      "ending": "Next time you see a dented car fender or a worn cushion, you'll realize strength isn't refusing to move—it's knowing how to bend so the person inside doesn't break.",
+      "closest_video": {
+        "title": "What If You Stopped Moving Relative to the Universe?",
+        "url": "https://www.youtube.com/watch?v=IJhgZBn-LHg",
+        "difference": "Cosmology videos explore flying off the Earth into space; this anchors objects under 5 kg to the local crust for 60 seconds and turns everyday physics—pressure ($P=F/A$), water hammer, and Béla Barényi's crumple zones—into a personal story."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to 7 minutes, drop Beat 4 (the delivery scooter) and Beat 5 (the basement pipe water hammer), going from the metro cup and paper-blade football test directly into catching your mother on the rolling pin and the ghat cliff rescue."
+      },
+      "views_case": "Tactile physics 'sandbox rule' what-ifs (like xkcd What If and Zack D. Films collision physics https://www.youtube.com/@ZackDFilms) get enormous click-through when paired with a single impossible image like a truck folding around a floating pen.",
+      "under_question": "When everything around me is falling apart, does becoming rigid actually protect the people I love—or hurt them worse?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-turn-off-any-feeling-at-will",
+      "title": "What If You Could Turn Off Pain and Fear?",
+      "premise": "By pressing two fingers to your wrist, you can switch off physical pain, stage fright, and exhaustion for four hours—while your body and relationships take the silent damage.",
+      "thumbnail": {
+        "image": "You on the left (head 1/4 frame height) calmly sipping steaming chai with a blank, serene smile while your other hand rests directly on a glowing red-hot iron coil on a dark kitchen counter; one crimson arrow points to your unblinking hand on the coil.",
+        "tag": "FEEL NOTHING?"
+      },
+      "rule": "Press two fingers to your left wrist for two seconds to mute your nervous system's alarm channels: physical nociception (pain), amygdala fear responses, and perceived central fatigue drop to zero for up to 4 hours. You can toggle it back on anytime. The catch: muting the alarm does not stop the fire—micro-fractures, corneal drying, core overheating, and social recklessness build up without a single warning signal, and while your own pain circuits are muted, your brain's shared empathy circuit cannot register anyone else's pain either.",
+      "hook": "Your heart is hammering before the final-year auditorium presentation, you press two fingers to your wrist, and the panic vanishes so completely that you don't even flinch when the hot microphone sparks against your lip—what if you could turn off pain and fear?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): You always rub your wrist when anxious in the metro crowd. Today you press for two seconds: the crimson stress halo around your head snaps into cool flat teal, while a tiny split-flap damage counter in the corner of the frame ticks to '01'. You walk onto the college auditorium stage with zero nervousness and nail the talk. Plant line: your mother putting a bandage on your paper cut that morning, saying 'It only stings because it cares about keeping you together.'",
+        "Beat 2 (First Jump: The Fearless Week - 8% to 20%): You use the switch for every awkward or scary moment: telling off a line-cutter at the bus stop, asking your intimidating internship boss for paid overtime without a tremor in your voice, and studying until 4 AM by switching off sleepiness.",
+        "Beat 3 (First Jump: The Yerkes-Dodson Dip - 20% to 35%): During a timed logic test, you dial your anxiety all the way to zero—and score worse than usual, discovering that without a healthy dose of adrenaline arousal, your brain treats an urgent exam like a lazy Sunday afternoon.",
+        "Beat 4 (Second Jump: Silent Tissue Damage - 35% to 48%): You go for a 10 km run with fatigue and pain switched off to beat your cousin's time. Misconception broken: fatigue isn't weakness; it's the brain's 'Central Governor' preventing organ failure. When the 4-hour timer expires on the metro home, the corner counter hits '48' and every muted signal slams into you at once: your shoes are soaked with blood from a hairline metatarsal stress fracture, your eyes are scratched dry because you stopped blinking enough, and you have mild heatstroke.",
+        "Beat 5 (Second Jump: Suffocation Still Works - 48% to 58%): Limping into a crowded, stalled metro tunnel where the AC fails and carbon dioxide rises, you flip the switch to calm down—and suddenly gasp in sheer terror anyway, learning that while social fear lives in the amygdala, internal $CO_2$ suffocation panic uses an ancient brainstem circuit that no fear-switch can mute.",
+        "Beat 6 (The Cost - 58% to 65%): At home, exhausted from your hidden foot fracture and the office grind, you keep the switch ON during dinner so your mother won't see you limping. Your mother—exhausted from her own double shift and worried about your grandfather—accidentally drops a tray of lentils and bursts into tears. Because human empathy relies on the exact same anterior insula circuit that processes your own pain, you look at her crying and feel nothing at all. Cold and efficient, you say, 'Crying doesn't clean the floor, Ma,' and walk into your room.",
+        "Beat 7 (Third Jump: Dangerous Recklessness - 65% to 75%): With your somatic gut-fear markers muted for days, your financial and physical judgment spirals: you take a reckless shortcut across an active railway yard at night to save two minutes and invest your semester savings into a risky scheme because nothing 'feels' dangerous anymore.",
+        "Beat 8 (The Choice - 75% to 82%): At midnight your wrist timer expires inside your bedroom, and the flood of restored feeling hits—not just your fractured foot, but the crushing memory of your mother's face when you spoke to her like a machine. You hear her awake in the kitchen with a migraine. Your fingers hover over your wrist to mute the guilt and the throbbing bone in your foot—or you can leave the switch off forever, limp into the kitchen, and hurt alongside her.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 9 seconds: Lamp mood in the dark kitchen. No narration. You limp barefoot across the cold tiles, wincing at every step as your crimson rim-light returns; you sit on the floor beside your mother's chair, press a cool wet cloth to her forehead, and rest your cheek against her knee.",
+        "Beat 10 (Back to You - 90% to 100%): Next month before your final job interview, you sit in the waiting chair with a walking cast on your foot, feeling your palms sweat and your heart thump at 110 bpm—and you leave your left wrist untouched. Payoff line: 'It stings because it cares.' You'll never wish you were numb again."
+      ],
+      "feeling_map": [
+        "relief",
+        "confidence",
+        "coldness",
+        "shock",
+        "remorse",
+        "warmth"
+      ],
+      "restarts": [
+        "Minute 3: Switching anxiety to zero during a complex test triggers the Yerkes-Dodson curve, proving that zero stress actually dulls focus.",
+        "Minute 6: Overriding your brain's Central Governor during a run leaves you with a silent stress fracture, corneal abrasions, and rebound hyperalgesia when the timer expires.",
+        "Minute 9: A stalled, airless metro car proves that $CO_2$ brainstem panic bypasses the amygdala—and worse, muting your own pain circuit turns off your anterior insula empathy for your mother.",
+        "Minute 12: Operating without Antonio Damasio's 'somatic markers' makes you take catastrophic real-world risks until you choose to accept physical and emotional pain back."
+      ],
+      "content_mine": [
+        {
+          "fact": "Patients born with Congenital Insensitivity to Pain (SCN9A gene mutations) frequently suffer severe tongue bites, unnoticed corneal scarring from reduced blinking, and painless bone fractures that destroy their joints before adulthood.",
+          "source": "https://www.nature.com/articles/nature05413",
+          "beat": "Beat 4 (Second Jump: Silent Tissue Damage - 35% to 48%)"
+        },
+        {
+          "fact": "Working at Christian Medical College in Vellore, India, hand surgeon Dr. Paul Brand proved that leprosy does not cause fingers or toes to 'rot'—rather, painless patients unknowingly crush and burn their own tissues during ordinary daily tasks.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1884166/",
+          "beat": "Beat 4 (Second Jump: Silent Tissue Damage - 35% to 48%)"
+        },
+        {
+          "fact": "The Yerkes-Dodson Law (1908) demonstrates an inverted-U relationship between arousal and performance: completely eliminating physiological anxiety reduces alertness, memory retrieval, and problem-solving speed.",
+          "source": "https://onlinelibrary.wiley.com/doi/10.1002/cne.920180503",
+          "beat": "Beat 3 (First Jump: The Yerkes-Dodson Dip - 20% to 35%)"
+        },
+        {
+          "fact": "Physiologist Tim Noakes' Central Governor Model shows that physical exhaustion is a protective emotion generated by the brain to throttle muscle recruitment before the heart suffers ischemia or skeletal muscle breaks down into kidney-toxic rhabdomyolysis.",
+          "source": "https://bjsm.bmj.com/content/38/4/511",
+          "beat": "Beat 4 (Second Jump: Silent Tissue Damage - 35% to 48%)"
+        },
+        {
+          "fact": "Neurologist Jean-Martin Charcot discovered in 1868 ('Charcot joint') that without micro-pain feedback prompting us to shift our weight every few seconds, normal walking grinds ankle and knee cartilage to rubble within months.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK537304/",
+          "beat": "Beat 4 (Second Jump: Silent Tissue Damage - 35% to 48%)"
+        },
+        {
+          "fact": "Feinstein et al. (2011) studied Patient S.M., whose bilateral amygdalae were destroyed by Urbach-Wiethe disease: she felt zero fear when holding live snakes, walking through haunted houses, or being held at knifepoint.",
+          "source": "https://www.cell.com/current-biology/fulltext/S0960-9822(10)01508-3",
+          "beat": "Beat 2 (First Jump: The Fearless Week - 8% to 20%)"
+        },
+        {
+          "fact": "In 2013, Feinstein's team discovered that fearless Patient S.M. experienced an immediate, terrifying panic attack when inhaling 35% carbon dioxide—proving internal suffocation chemoreceptors in the brainstem bypass the amygdala entirely.",
+          "source": "https://www.nature.com/articles/nn.3323",
+          "beat": "Beat 5 (Second Jump: Suffocation Still Works - 48% to 58%)"
+        },
+        {
+          "fact": "fMRI studies by Tania Singer (2004, Science) proved that feeling empathy for a loved one's suffering activates the exact same brain structures—the anterior insula and dorsal anterior cingulate cortex—that process your own physical pain.",
+          "source": "https://www.science.org/doi/10.1126/science.1093535",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Controlled experiments by Mischkowski, Crocker, and Way (2016) proved that simply taking the painkiller acetaminophen (paracetamol) measurably reduces a person's empathy and concern when witnessing someone else's emotional or physical hurt.",
+          "source": "https://academic.oup.com/scan/article/11/9/1345/2224135",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Neuroscientist Antonio Damasio's Somatic Marker Hypothesis (1994) showed that patients who lose emotional fear and gut-anxiety signals retain normal IQs but make disastrous financial and personal gambles because risk no longer feels bad.",
+          "source": "https://academic.oup.com/cercor/article/6/2/215/370108",
+          "beat": "Beat 7 (Third Jump: Dangerous Recklessness - 65% to 75%)"
+        },
+        {
+          "fact": "Central sensitization research by Clifford Woolf shows that when peripheral pain inputs are artificially blocked while tissue damage continues, dorsal horn neurons amplify their gain, causing excruciating rebound hyperalgesia when the block wears off.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3268359/",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        },
+        {
+          "fact": "Without tiny nociceptive irritation signals from the cornea triggering involuntary blinks 15 to 20 times per minute, the tear film evaporates in 10 to 15 seconds, exposing the eye surface to rapid micro-ulceration.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK545249/",
+          "beat": "Beat 4 (Second Jump: Silent Tissue Damage - 35% to 48%)"
+        }
+      ],
+      "twist": "Neuroscience reveals that your brain uses the exact same anterior insula circuit to feel your own physical pain and to care about someone else's tears—so turning off your own hurt literally switches off your love for your mother.",
+      "ending": "Next time your palms sweat before an exam or your chest aches when someone you love is sad, you'll recognize that discomfort isn't a bug in your brain—it's the wire that keeps you human.",
+      "closest_video": {
+        "title": "What If You Couldn't Feel Pain?",
+        "url": "https://www.youtube.com/watch?v=fbddI2N6M74",
+        "difference": "Medical explainers treat congenital pain insensitivity as a permanent birth condition; here it is a voluntary 4-hour toggle switch for pain, fear, and fatigue that uncovers the shared neural circuit between pain killer states and lost human empathy."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to 7 minutes, drop Beat 3 (the Yerkes-Dodson exam dip) and Beat 5 (the metro $CO_2$ brainstem panic), going directly from the stage/boss wins into the silent stress fracture, the cold dinner scene with your mother, and the kitchen floor reconciliation."
+      },
+      "views_case": "Body-hack and neuroscience twist videos (like Dr. Plants and Institute of Human Anatomy 'What happens if you feel no pain' https://www.youtube.com/watch?v=1S8F8qE8yQ4) perform reliably, and the Tylenol/empathy study gives viewers a jaw-dropping line to share with friends.",
+      "under_question": "If I could switch off everything that hurts, how fast would I stop caring about the people who still hurt?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-find-anything-ever-lost",
+      "title": "What If You Could Find Anything Ever Lost?",
+      "premise": "Whisper the name of any lost object and a glowing dotted line draws itself on the ground from your feet to its exact location—as long as nobody currently knows where it is.",
+      "thumbnail": {
+        "image": "You on the left (head 1/4 frame height) standing in a dark, muddy city alley holding a flashlight as a bright teal dotted paper-cut line snakes from your shoes into an open storm drain where a locked iron box sits; one crimson arrow points to the glowing box inside the grate.",
+        "tag": "STILL DOWN THERE"
+      },
+      "rule": "Speak the description of any physical object that has been unintentionally lost (nobody alive knows its exact coordinates within 10 meters), and a glowing teal dotted line draws itself along the ground from your shoes to the item, stamped with a distance tag in meters. You can track only one item at a time. The catch: 'lost' is a memory state, not a legal license—the moment someone finds out you recovered it, property law, serial-number databases, and the true reason it went missing come knocking.",
+      "hook": "Your wireless earbud falls through the gap of the metro platform right before the train pulls in, you mutter 'where did it go,' and a glowing teal dotted line draws itself from your sneaker down into the gravel—what if you could find anything ever lost?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): You always pat your pockets three times before stepping off the metro. Today you whisper for your lost earbud; a teal dotted line with a stamped '4.2 m' tag snakes across the platform. You test it on a stolen bicycle—no line appears, because the thief knows where it is. It only works on things every living person has lost track of. Plant line: your grandfather looking at the empty hook by the front door, saying 'Some things stay lost to keep the peace.'",
+        "Beat 2 (First Jump: The Street Treasure Mine - 8% to 20%): You walk through Pune's old jewelry bazaar and outside wedding halls after monsoon rains, following short teal lines into storm grates and sofa cushions. You recover lost gold nose-pins, forgotten cash in second-hand library books, and your mother's wedding earring that vanished behind the courtyard drain eight years ago.",
+        "Beat 3 (First Jump: The Finders-Keepers Myth - 20% to 35%): You find a high-end watch and a pouch of gold coins buried behind an old bungalow wall and try to sell them. Misconception broken: 'finders keepers' does not exist in law. Under common law and the Indian Treasure Trove Act, hiding or selling unrecorded treasure triggers police seizure, tax freezes, and possession-of-stolen-property charges.",
+        "Beat 4 (Second Jump: Digital & Deep Earth Fortunes - 35% to 48%): You pivot to things nobody can trace back to a single owner, whispering for lost cryptocurrency hardware wallets in municipal electronics dumps and sunken cargo off the Konkan coast. The distance tag flips to '14,200 m'—and buried under ten meters of compacted toxic landfill waste or forty meters of black seawater, knowing the exact coordinates is useless when reaching them can crush or drown you.",
+        "Beat 5 (Second Jump: The Dangerous Finder Service - 48% to 58%): Instead of digging yourself, you anonymously tip off wealthy people and companies on where to find their lost heirlooms and contracts for a 10% reward. Your internship boss hires you to find a 'lost' audit hard drive—until the line leads straight into the ceiling vent above the company director's locked cabin, proving it wasn't lost quickly enough to save you from becoming a witness.",
+        "Beat 6 (The Cost - 58% to 65%): At a Sunday family lunch, your younger cousin jokes about the old family dispute that split your grandfather and his estranged brother thirty years ago over a 'lost' property deed for their ancestral mango orchard. Thinking you'll heal the family and surprise your grandfather, you whisper for the lost 1994 deed. The teal dotted line doesn't go out to the street—it snakes across the living room floor and stops two meters down inside the concrete foundation directly beneath your grandfather's prayer corner. You dig it up while he's at the market and show the family—only to read the margin notes proving your grandfather's beloved late wife had forged a signature out of desperation to pay for your father's childhood surgery, and your grandfather buried it himself and took the blame for thirty years to protect her name.",
+        "Beat 7 (Third Jump: The Unresolved Obsession - 65% to 75%): Shaken by what you uncovered, you notice the Zeigarnik trap of your own power: once you know a line exists for every missing ship, lost nuclear bomb, and vanished hiker on Earth, your mind cannot sleep—thousands of mental queries pull teal lines in every direction from your shoes like a spiderweb.",
+        "Beat 8 (The Choice - 75% to 82%): Your estranged great-uncle arrives at the house gate demanding to see the recovered deed that will humiliate your grandmother's memory and break your grandfather's heart. Meanwhile, your grandfather's frail hand searches his empty pocket—he has dropped his nitroglycerin heart tablet somewhere in the dark overgrown courtyard during the power cut. You drop the obsession with grand fortunes, whisper for one tiny white pill ('6.1 m'), and hand the deed to your grandfather so he can decide its fate himself.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 9 seconds: Lamp mood in the dark courtyard. No narration. A single thin teal dotted line glows across the wet grass to the white tablet beside the tulsi pot; afterwards, by the oil lamp inside, your grandfather and his brother sit side by side and lower the unopened deed envelope into the clay stove together.",
+        "Beat 10 (Back to You - 90% to 100%): Next morning on the metro, a commuter drops a key under the seat; you point at it quietly with your toe without whispering a word, then keep your hands in your pockets. Payoff line: 'Some things stay lost to keep the peace.' You'll never walk over a city storm drain without realizing an invisible museum is sitting three feet below your shoes."
+      ],
+      "feeling_map": [
+        "delight",
+        "greed",
+        "frustration",
+        "pride",
+        "horror",
+        "peace"
+      ],
+      "restarts": [
+        "Minute 3: Discovering that 'finders keepers' is a legal myth under property and treasure trove laws blocks you from cashing in high-value found items directly.",
+        "Minute 6: Targeting lost Bitcoin hard drives and shipwrecks reveals the physical barrier—a 2D line on the ground doesn't help when the object lies under 15 meters of compacted landfill or ocean water.",
+        "Minute 9: Tracking your family's 'lost' 1994 property deed reveals your grandfather lost track of its exact spot after burying it thirty years ago to protect his late wife's secret.",
+        "Minute 12: The Zeigarnik effect threatens to drown you in every unresolved mystery on Earth until a quiet courtyard emergency brings the power back down to six meters."
+      ],
+      "content_mine": [
+        {
+          "fact": "In the landmark 1722 English common law case Armory v Delamirie (the chimney sweep's jewel), the King's Bench established that a finder has property rights against everyone EXCEPT the rightful owner—and modern law treats 'mislaid' items as belonging to the property owner, not the finder.",
+          "source": "https://www.britannica.com/topic/personal-property-law/Acquisition-of-personal-property",
+          "beat": "Beat 3 (First Jump: The Finders-Keepers Myth - 20% to 35%)"
+        },
+        {
+          "fact": "Under the Indian Treasure Trove Act of 1878, anyone who finds hidden treasure worth more than 10 rupees in the soil and fails to formally report it to the District Collector faces confiscation of the entire share and up to one year in prison.",
+          "source": "https://www.indiacode.nic.in/handle/123456789/2270",
+          "beat": "Beat 3 (First Jump: The Finders-Keepers Myth - 20% to 35%)"
+        },
+        {
+          "fact": "World Gold Council data shows Indian households hold roughly 25,000+ tonnes of gold, and traditional 'nyariya' gold-washers in Indian bazaar lanes extract millions of rupees worth of lost microscopic gold dust from street drains and workshop sweepings every year.",
+          "source": "https://www.gold.org/goldhub/research/gold-market-india",
+          "beat": "Beat 2 (First Jump: The Street Treasure Mine - 8% to 20%)"
+        },
+        {
+          "fact": "Blockchain forensics firm Chainalysis estimates that approximately 3.7 million Bitcoins—nearly 20% of all Bitcoin in existence—are permanently lost in forgotten keys and discarded drives.",
+          "source": "https://www.nytimes.com/2021/01/12/technology/bitcoin-passwords-wallets-fortunes.html",
+          "beat": "Beat 4 (Second Jump: Digital & Deep Earth Fortunes - 35% to 48%)"
+        },
+        {
+          "fact": "Since 2013, Welsh IT engineer James Howells has been blocked by environmental landfill permits from excavating a Newport municipal dump where his discarded hard drive holding 8,000 BTC lies buried under 110,000+ tonnes of compressed waste.",
+          "source": "https://www.bbc.com/news/uk-wales-67297013",
+          "beat": "Beat 4 (Second Jump: Digital & Deep Earth Fortunes - 35% to 48%)"
+        },
+        {
+          "fact": "UNESCO estimates that over 3 million unrecovered shipwrecks lie across the world's ocean floors, including the 1708 Spanish galleon San José, whose cargo is disputed between Colombia, Spain, and salvage firms under sovereign immunity law.",
+          "source": "https://www.unesco.org/en/underwater-heritage",
+          "beat": "Beat 4 (Second Jump: Digital & Deep Earth Fortunes - 35% to 48%)"
+        },
+        {
+          "fact": "According to the Reserve Bank of India (RBI), over ₹78,000 crore (~$9.3 billion) sits unclaimed in dormant Indian bank accounts because account holders passed away or forgot passbooks without informing their families.",
+          "source": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=56206",
+          "beat": "Beat 5 (Second Jump: The Dangerous Finder Service - 48% to 58%)"
+        },
+        {
+          "fact": "After the March 18, 1990 theft at Boston's Isabella Stewart Gardner Museum, 13 masterpieces worth $500 million remain missing with a $10 million reward—yet possessing or selling them without law enforcement clearance is a federal crime.",
+          "source": "https://www.fbi.gov/Wrapper-Pages/art-theft/isabella-stewart-gardner-museum-heist",
+          "beat": "Beat 5 (Second Jump: The Dangerous Finder Service - 48% to 58%)"
+        },
+        {
+          "fact": "Harvard psychologist Daniel Schacter's research in 'The Seven Sins of Memory' shows that 'absent-minded' object loss occurs when the brain shifts from conscious hippocampal encoding to automatic basal-ganglia habit while setting an item down.",
+          "source": "https://psycnet.apa.org/record/1999-10172-001",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "US Department of Defense records confirm 32 'Broken Arrow' nuclear weapon accidents since 1950, with 6 nuclear weapons—such as the 1958 Tybee Island Mark 15 bomb—never recovered and still lying lost in sediment.",
+          "source": "https://www.atomicarchive.com/almanac/broken-arrows/index.html",
+          "beat": "Beat 7 (Third Jump: The Unresolved Obsession - 65% to 75%)"
+        },
+        {
+          "fact": "In 1966 and 1968, mathematician John Craven used Bayesian Search Theory—combining prior subjective probability grids with physical drift models—to locate both the lost Palomares hydrogen bomb and the sunken submarine USS Scorpion.",
+          "source": "https://www.smithsonianmag.com/history/the-scholars-who-found-the-lost-h-bomb-and-sub-180977800/",
+          "beat": "Beat 7 (Third Jump: The Unresolved Obsession - 65% to 75%)"
+        },
+        {
+          "fact": "Psychologist Bluma Zeigarnik proved in 1927 that uncompleted tasks and unresolved searches occupy nearly twice as much intrusive working memory as completed ones, driving compulsive cognitive fixation until closed.",
+          "source": "https://psycnet.apa.org/record/1927-01815-001",
+          "beat": "Beat 7 (Third Jump: The Unresolved Obsession - 65% to 75%)"
+        }
+      ],
+      "twist": "Because the line only appears when no living person knows the exact spot, tracking your family's 'lost' ancestral deed proves your grandfather buried it so long ago that even he forgot which tile it lay under—and digging it up destroys the lie he carried for thirty years to protect someone he loved.",
+      "ending": "Next time you lose a coin or leave an old box unopened in the attic, you'll realize not every lost thing is waiting to be rescued—sometimes forgetting is how people forgive.",
+      "closest_video": {
+        "title": "The Man Who Threw Away $500 Million in Bitcoin",
+        "url": "https://www.youtube.com/watch?v=fbddI2N6M74",
+        "difference": "Treasure-hunt videos catalog famous lost fortunes in third person; this turns Bayesian search, Indian treasure law, and the psychology of forgetting into a second-person power with a dotted paper-cut line from your shoes."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to 7 minutes, drop Beat 4 (the landfill/ocean depth barrier) and Beat 5 (the office ceiling-vent hard drive), moving directly from street jewelry and the Treasure Trove Act trap into the 1994 family deed and the courtyard heart-pill climax."
+      },
+      "views_case": "Lost-fortune and buried-secret videos consistently pull millions of views across Veritasium, Half as Interesting, and Fern (e.g., James Howells Bitcoin landfill and lost shipwrecks https://www.youtube.com/watch?v=kY9nLL_FEWg), and the glowing floor-line is an instant visual hook.",
+      "under_question": "If I could uncover everything that was ever hidden and forgotten, would the truth make my family richer—or tear us apart?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-teleport-anywhere-you-see",
+      "title": "What If You Could Teleport Anywhere You See?",
+      "premise": "Blink twice and you instantly swap places with the air at any spot you can see with your naked eyes—while keeping every bit of your momentum and air-pressure shock.",
+      "thumbnail": {
+        "image": "You on the left (head 1/4 frame height) looking through a speeding metro train window at a stationary station platform outside, mid-blink, while a ghostly crimson velocity arrow labelled '60 KM/H' points sideways from your chest toward a concrete pillar on the platform.",
+        "tag": "DON'T BLINK NOW"
+      },
+      "rule": "Focus on any unoccupied spot you can see directly with your naked eyes (through air or clear glass, never through screens or mirrors) and blink twice: your body instantly swaps volumes with the air at that target point. Cooldown is 3 seconds between jumps. The catch: Conservation of Momentum and Fluid Dynamics—you keep 100% of the velocity vector you had before blinking, and swapping 60 liters of human body with air creates an instantaneous vacuum implosion behind you and a sonic air-displacement boom where you arrive.",
+      "hook": "You are trapped inside a packed metro train gliding past your home station without stopping, you look through the glass at the empty platform outside and blink twice—what if you could teleport anywhere you see?",
+      "beats": [
+        "Beat 1 (Change & Rule - 0% to 8%): You always squint and double-blink at distant street signs when you forget your glasses. On the moving Pune metro, you double-blink at the stationary platform through the window: with a sharp crack of displaced air, you appear on the concrete—still moving sideways at 40 km/h! You skid across the tiles, scraping your elbow and spilling your bag. Plant line: your younger cousin laughing earlier as he cleaned your dusty spectacles, saying 'You never look at the ground before you jump.'",
+        "Beat 2 (First Jump: Stationary Hops & The Vacuum Boom - 8% to 20%): Standing still first, you blink onto the roof of the chai stall and into your locked bedroom. Inside the small closed bedroom, the 60-liter pocket of air swapped out of your arrival spot slams outward while the vacuum at your departure point implodes at the speed of sound (343 m/s), rattling the windowpanes like a thunderclap and terrifying your family downstairs.",
+        "Beat 3 (First Jump: Horizon & Glass Limits - 20% to 35%): You climb to the college terrace expecting to blink all the way to Mumbai. Misconception broken: because the Earth curves, a standing human's horizon on flat ground is only 4.7 kilometers away—and worse, human binocular depth perception (stereopsis) stops working entirely beyond 30 meters.",
+        "Beat 4 (Second Jump: The Depth-Perception Trap - 35% to 48%): Trying a 400-meter rooftop-to-rooftop jump at dusk, your eyes can only guess distance by angular size. You misjudge a distant water tank's scale by ten meters, blink into empty air three stories above the alley, and have to wait three terrifying seconds of freefall—accelerating to 29 m/s—before your cooldown finishes! If you blink onto the pavement now, your downward 29 m/s momentum will kill you on the flat ground.",
+        "Beat 5 (Second Jump: Vector Cancellation - 48% to 58%): In the last half-second of your fall, you spot the deep municipal swimming pool next door and blink horizontally over the water so the pool absorbs your downward kinetic energy. You learn to use vector physics: blinking into an upward-moving elevator or uphill ramp to bleed off speed.",
+        "Beat 6 (The Cost - 58% to 65%): You start showing off to your younger cousin, taking him on 'shortcut' errands by having him toss your backpack ahead while you blink from terrace to terrace across the neighborhood. Wanting to be just like you, your cousin climbs the rusty external fire ladder of the four-story coaching building to meet you on the roof before you arrive. On the hot tar roof, an inferior mirage and glare blind your line of sight from the street below; when the rusty rung snaps under his foot, you are 50 meters away behind a concrete billboard that blocks your direct line of sight by ten centimeters. You cannot blink through what you cannot see, and he falls onto the awning below, breaking his collarbone.",
+        "Beat 7 (Third Jump: High-Altitude Chaining - 65% to 75%): Months later, during an urban warehouse fire near your internship office, thick black smoke traps your boss and two coworkers on the top balcony. Smoke absorbs and scatters visible light—making line-of-sight teleportation from the street impossible because you can't see through the plume.",
+        "Beat 8 (The Choice - 75% to 82%): The only clear line of sight to the windward corner of the balcony is from straight above in the clear air above the smoke column. To reach that angle without dying from fall momentum, you have to blink 300 meters up into the freezing sky above the building, endure 3 seconds of freefall to get the visual angle past the smoke, blink onto the balcony while carrying 105 km/h of downward terminal speed, and aim your arrival straight into the rooftop water-storage tank to survive the splashdown and unbolt the fire escape from inside.",
+        "Beat 9 (Wordless Peak - 82% to 90%): HOLD 10 seconds: Dusk/Lamp mood high above the city roof. No narration. You hang in freefall in the silent sky above the smoke plume, coat whipping upward as your glasses reflect the orange balcony edge below; after three heartbeats you blink twice and smash through the open rooftop water tank in a geyser of white spray.",
+        "Beat 10 (Back to You - 90% to 100%): Next evening you walk home from the metro station on foot beside your cousin, taking every step on the uneven pavement and stopping at the pedestrian crossing like everyone else. Payoff line: 'Always look at the ground before you jump.' You'll never look out at the horizon without feeling how fast the ground beneath you is actually moving."
+      ],
+      "feeling_map": [
+        "exhilaration",
+        "surprise",
+        "vertigo",
+        "panic",
+        "guilt",
+        "clarity"
+      ],
+      "restarts": [
+        "Minute 3: Blinking out of a moving metro train onto a stationary platform proves Galilean relativity—teleporting position does not erase your 40 km/h momentum vector.",
+        "Minute 6: Earth's curvature caps flat-ground sight at 4.7 km, and because human binocular stereopsis dies past 30 meters, a long jump drops you into mid-air freefall with a 3-second cooldown.",
+        "Minute 9: An opaque obstacle and heat glare block your direct line of sight by inches when your cousin slips off a ladder, proving how fragile naked-eye visibility is.",
+        "Minute 12: Opaque smoke at a building fire blinds ground-level line of sight, forcing a high-altitude sky-drop and hydrodynamic splashdown to get a clear angle from above."
+      ],
+      "content_mine": [
+        {
+          "fact": "By Galilean invariance and Newton's First Law of Motion, a 65 kg human stepping or teleporting instantaneously from a vehicle moving at 60 km/h (16.7 m/s) onto stationary pavement retains 9,060 Joules of horizontal kinetic energy—equivalent to falling from a five-story window.",
+          "source": "https://physics.info/momentum/",
+          "beat": "Beat 1 (Change & Rule - 0% to 8%)"
+        },
+        {
+          "fact": "An average adult human body occupies roughly 60 to 65 liters of volume; instantaneously vacating 60 liters in standard 101.3 kPa atmospheric air leaves a vacuum cavity that implodes at the speed of sound (343 m/s), releasing ~6,000 Joules of acoustic shock energy.",
+          "source": "https://www.grc.nasa.gov/www/k-12/airplane/sound.html",
+          "beat": "Beat 2 (First Jump: Stationary Hops & The Vacuum Boom - 8% to 20%)"
+        },
+        {
+          "fact": "Due to Earth's mean radius of 6,371 kilometers, the geometric horizon distance for a 1.7-meter-tall observer on flat ground is only d ≈ 3.57 * sqrt(h) = 4.65 kilometers.",
+          "source": "https://www.britannica.com/science/horizon-astronomy",
+          "beat": "Beat 3 (First Jump: Horizon & Glass Limits - 20% to 35%)"
+        },
+        {
+          "fact": "Because human pupils are separated by only ~63 millimeters (interpupillary distance), binocular retinal disparity (stereopsis) becomes too small to measure depth beyond 20 to 30 meters; past that distance, the brain only guesses depth from familiar object size.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK11512/",
+          "beat": "Beat 4 (Second Jump: The Depth-Perception Trap - 35% to 48%)"
+        },
+        {
+          "fact": "Under standard gravity (g = 9.81 m/s^2), three seconds of freefall accelerates a human to 29.4 meters per second (106 km/h) and drops them 44.1 meters—meaning teleporting horizontally onto flat rock after 3 seconds of fall still results in a fatal 106 km/h vertical impact.",
+          "source": "https://physics.info/falling/",
+          "beat": "Beat 4 (Second Jump: The Depth-Perception Trap - 35% to 48%)"
+        },
+        {
+          "fact": "Water is roughly 800 times denser than air; entering deep water at ~28 m/s (comparable to cliff diving from 40 meters) decelerates the human body over 3 to 4 meters of depth, keeping peak deceleration within survivable human limits if entered feet-first.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/24906032/",
+          "beat": "Beat 5 (Second Jump: Vector Cancellation - 48% to 58%)"
+        },
+        {
+          "fact": "Even for a person with 20/20 vision, the diffraction limit of the human pupil restricts angular resolution to 1 arcminute (0.017 degrees), meaning details smaller than 30 centimeters are optically indistinguishable at 1 kilometer.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK11509/",
+          "beat": "Beat 3 (First Jump: Horizon & Glass Limits - 20% to 35%)"
+        },
+        {
+          "fact": "On hot asphalt and sunlit roofs, steep air-temperature gradients bend light rays upward via total internal reflection (inferior mirage), causing the eye to see a false sky position tens of meters away from the true solid surface.",
+          "source": "https://www.scientificamerican.com/article/what-causes-a-mirage/",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Neuroscientist David Eagleman demonstrated that visual consciousness lags roughly 80 milliseconds behind real-time photon arrival while the visual cortex integrates the image—meaning 'where you see' a moving target is always where it was 0.08 seconds ago.",
+          "source": "https://www.science.org/doi/10.1126/science.287.5460.2036",
+          "beat": "Beat 6 (The Cost - 58% to 65%)"
+        },
+        {
+          "fact": "Carbon soot particles in structural fire smoke have a high mass extinction coefficient (~8.7 m^2/g), scattering and absorbing visible light so strongly that naked-eye optical visibility drops below 1 meter.",
+          "source": "https://www.nist.gov/publications/specific-extinction-coefficient-flame-generated-smoke",
+          "beat": "Beat 7 (Third Jump: High-Altitude Chaining - 65% to 75%)"
+        },
+        {
+          "fact": "Because Earth spins as a rigid sphere (ω = 7.29 × 10^-5 rad/s), a point 300 meters higher in the sky has a slightly faster eastward tangential velocity (v = ωr) than the ground by ~2.2 cm/s, while atmospheric temperature drops by ~2°C and barometric pressure drops by 3.5 kPa.",
+          "source": "https://www.grc.nasa.gov/www/k-12/airplane/atmosmet.html",
+          "beat": "Beat 8 (The Choice - 75% to 82%)"
+        },
+        {
+          "fact": "Human blink duration averages 100 to 150 milliseconds, during which the brain actively suppresses visual cortex processing ('blink suppression', Volkmann et al. 1980) so we don't perceive the world going dark every five seconds.",
+          "source": "https://www.science.org/doi/10.1126/science.7384802",
+          "beat": "Beat 9 (Wordless Peak - 82% to 90%)"
+        }
+      ],
+      "twist": "Your eyes lie to you about distance and speed: past 30 meters your brain has zero 3D depth perception, your vision lags 80 milliseconds behind reality, and teleporting while falling keeps every kilometer-per-hour of your downward speed when you hit the ground.",
+      "ending": "Tomorrow morning when you look out the window of a moving bus or train, you won't see yourself sitting still—you'll feel the invisible momentum vector carrying your body forward.",
+      "closest_video": {
+        "title": "Because Science: Why You Do NOT Want to Teleport",
+        "url": "https://www.youtube.com/watch?v=T0f6u3bH2vU",
+        "difference": "Pop-science videos list theoretical physics problems at a chalkboard; this puts you inside a Pune metro commuter's shoes with a strict naked-eye line-of-sight rule, a 3-second cooldown, and the 30-meter failure of human binocular vision."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "To cut to 7 minutes, combine Beat 2 and Beat 3 into a fast rooftop test of the vacuum clap and 4.7 km horizon, skip Beat 5's elevator vector experiments, and go straight from the 30-meter depth-perception fall (Beat 4) into your cousin's ladder fall and the smoke sky-drop climax."
+      },
+      "views_case": "Superpower-with-real-physics videos consistently rack up huge views on What If, Because Science, and Kurzgesagt (e.g., teleportation and momentum videos https://www.youtube.com/watch?v=nQHBAdShgYI), and the metro-window cold open delivers the thumbnail promise in the first 7 seconds.",
+      "under_question": "If I could skip every step between where I am and where I want to be, what happens when I hit the ground at full speed?",
+      "proposers": [
+        "gemini"
+      ]
+    }
+  ]
+}
