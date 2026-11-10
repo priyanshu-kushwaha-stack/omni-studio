@@ -41,7 +41,7 @@ def test_the_professor_of_us_room_is_valid():
 
 def test_derived_cap(tmp_path):
     cfg = _cfg(tmp_path)
-    assert C.derived_cap(cfg) == 3 * (3 + 2) + 3 * 3 + 3 + 2  # 29
+    assert C.derived_cap(cfg) == 3 * (3 + 2) + 3 * 3 + 3 + 2 + 3 * 3  # 38: three owner-notes rounds of 3 seats
 
 
 def test_a_missing_mandatory_role_fails(tmp_path):
@@ -221,3 +221,14 @@ def test_a_voices_file_whose_voices_is_not_a_mapping_is_a_problem(tmp_path):
     assert any("voices" in p for p in C.validate(cfg))
     (tmp_path / "voices.yaml").write_text("voices: qwen3\n")
     assert any("voices" in p for p in C.validate(cfg))
+
+
+SS = REAL_ROOT / "channels" / "say-suppose"
+
+
+def test_the_say_suppose_room_is_valid_and_takes_pipeline_v2():
+    cfg = C.load_room(SS / "room.yaml")
+    assert C.validate(cfg) == []
+    assert cfg.rounds == 1 and cfg.owner_first and not cfg.viewer_required
+    assert all(s.limits == {"blockers": 3, "suggestions": 3, "keep": 3} for s in cfg.seats)
+    assert any("--under-from 2026-11-10" in linter for linter in cfg.linters)

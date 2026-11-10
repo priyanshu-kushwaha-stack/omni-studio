@@ -1,8 +1,8 @@
 """A channel's room.yaml: its seats (role, model, brief), caps, format parameters, linters and sources.
 
 Validation enforces the spine's invariants: the three mandatory roles, one model per seat from the registry,
-viewer/story/fact/neutrality seats and the judge never on the writer's family, mandatory seats spread over two or
-more other families, a daily cap that fits one script, and pre_g2_local only for channels whose voices are all
+viewer/story/fact/neutrality seats and the judge never on the writer's family, the required seats (the mandatory roles,
+or story and fact with `viewer_required: false`) spread over two or more other families, a daily cap that fits one script, and pre_g2_local only for channels whose voices are all
 free local engines.
 """
 
@@ -18,12 +18,14 @@ import yaml
 
 from studio.room import ledger
 from studio.room.models import UnknownModel, family_of, load_registry
-from studio.room.verdict import LOCKED_ROLES, MANDATORY, ROLES
+from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, ROLES
 
 SEATS_DIR = Path(__file__).resolve().parent / "seats"
 PITCH_CLIPS = ("after_g2", "pre_g2_local")
 LOCAL_TTS = ("qwen3", "chatterbox", "kokoro")
 REQUIRED = ("writer", "judge", "rounds", "seats")
+LIMIT_KEYS = ("blockers", "suggestions", "keep")
+OWNER_ROUNDS = 3  # owner-notes rounds the derived cap keeps calls for, past `rounds` (required seats only)
 
 
 class RoomConfigError(ValueError):
@@ -41,6 +43,7 @@ class SeatConfig:
     role: str
     model: str
     brief: Path
+    limits: dict[str, int] = field(default_factory=dict)
 
 
 @dataclass
@@ -55,6 +58,8 @@ class RoomConfig:
     adopted: Optional[date] = None
     pitch_clip: str = "after_g2"
     sources: list[str] = field(default_factory=list)
+    viewer_required: bool = True
+    owner_first: bool = False
     path: Optional[Path] = None
     channel_dir: Optional[Path] = None
 
@@ -81,6 +86,25 @@ def _int(data: dict, key: str, default: Optional[int], path: Path) -> int:
         raise RoomConfigError(f"{path}: {key} must be an integer, not {raw!r}") from exc
 
 
+def _limits(raw: Any, path: Path) -> dict[str, int]:
+    """Per-seat caps (pipeline v2): at most N blockers, suggestions and keep lines a seat may return."""
+    if raw is None:
+        return {}
+    if not isinstance(raw, dict) or not set(raw) <= set(LIMIT_KEYS):
+        raise RoomConfigError(f"{path}: limits must be a mapping with keys from {LIMIT_KEYS}, not {raw!r}")
+    for key, value in raw.items():
+        if isinstance(value, bool) or not isinstance(value, int) or value < 1:
+            raise RoomConfigError(f"{path}: limits.{key} must be a whole number of 1 or more, not {value!r}")
+    return dict(raw)
+
+
+def _flag(data: dict, key: str, default: bool, path: Path) -> bool:
+    raw = data.get(key, default)
+    if not isinstance(raw, bool):
+        raise RoomConfigError(f"{path}: {key} must be true or false, not {raw!r}")
+    return raw
+
+
 def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
     path = Path(path)
     channel_dir = Path(channel_dir) if channel_dir else path.parent
@@ -95,9 +119,12 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
     missing = [k for k in REQUIRED if k not in data]
     if missing:
         raise RoomConfigError(f"{path}: missing {missing}")
+    limits = _limits(data.get("limits"), path)
     try:
         seats = [
-            SeatConfig(str(s["name"]), str(s["role"]), str(s["model"]), _brief(str(s["brief"]), channel_dir, path))
+            SeatConfig(
+                str(s["name"]), str(s["role"]), str(s["model"]), _brief(str(s["brief"]), channel_dir, path), limits
+            )
             for s in data["seats"]
         ]
     except (KeyError, TypeError) as exc:
@@ -131,15 +158,23 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
         adopted=data.get("adopted"),
         pitch_clip=str(data.get("pitch_clip", "after_g2")),
         sources=list(data.get("sources") or []),
+        viewer_required=_flag(data, "viewer_required", True, path),
+        owner_first=_flag(data, "owner_first", False, path),
         path=path,
         channel_dir=channel_dir,
     )
 
 
+def required_roles(cfg: RoomConfig) -> tuple[str, ...]:
+    """The roles a round needs an ok verdict from to ship: MANDATORY, or story and fact when the viewer is optional."""
+    return MANDATORY if cfg.viewer_required else ALWAYS_REQUIRED
+
+
 def derived_cap(cfg: RoomConfig) -> int:
     seats = len(cfg.seats)
-    mandatory = sum(1 for s in cfg.seats if s.role in MANDATORY)
-    return cfg.rounds * (seats + 2) + cfg.rounds * seats + mandatory + 2
+    required = required_roles(cfg)
+    needed = sum(1 for s in cfg.seats if s.role in required)
+    return cfg.rounds * (seats + 2) + cfg.rounds * seats + needed + 2 + OWNER_ROUNDS * needed
 
 
 def _voices_problems(channel_dir: Path) -> list[str]:
@@ -180,6 +215,7 @@ def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
     if not 1 <= cfg.rounds <= 5:
         problems.append(f"rounds must be 1 to 5, not {cfg.rounds}")
     seen: set[str] = set()
+    required = required_roles(cfg)
     mandatory_families: set[str] = set()
     for s in cfg.seats:
         if s.name in seen:
@@ -190,7 +226,7 @@ def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
         f = fam(s.model, f"seat {s.name!r}")
         if f and writer and s.role in LOCKED_ROLES and f == writer:
             problems.append(f"seat {s.name!r} ({s.role}) is on the writer's family ({writer})")
-        if f and s.role in MANDATORY and f != writer:
+        if f and s.role in required and f != writer:
             mandatory_families.add(f)
         if not s.brief.is_file():
             problems.append(f"seat {s.name!r}: brief {s.brief} does not exist")
@@ -199,7 +235,7 @@ def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
         if role not in roles:
             problems.append(f"missing mandatory role {role!r}")
     if len(mandatory_families) < 2:
-        problems.append("the viewer, story and fact seats need two or more families other than the writer's")
+        problems.append(f"the {', '.join(required)} seats need two or more families other than the writer's")
     if cfg.pitch_clip not in PITCH_CLIPS:
         problems.append(f"pitch_clip must be one of {PITCH_CLIPS}")
     elif cfg.pitch_clip == "pre_g2_local" and cfg.channel_dir:

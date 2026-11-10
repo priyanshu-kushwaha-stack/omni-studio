@@ -19,7 +19,7 @@ from studio.room import report as R
 from studio.room.models import UnknownModel, family_of
 from studio.room.report import read_meta
 from studio.room.snapshot import drafts_dir, load_draft, sha256_file
-from studio.room.verdict import LOCKED_ROLES, MANDATORY, verdict_digest
+from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, verdict_digest
 
 MISMATCH = "belongs to a different seat, model, family, video, gate or round"
 
@@ -63,6 +63,7 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
     if not ship:
         return ["the room shipped no draft (no lint- and fact-clean round)"]
     problems: list[str] = []
+    required = _required(report, problems)
     want = ship["artifact_sha256"]
     try:
         have = sha256_file(artifact)
@@ -75,7 +76,7 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         load_draft(video_dir, want)
     except (OSError, ValueError) as exc:
         problems.append(f"the shipped draft's snapshot is missing or edited ({type(exc).__name__}: {exc})")
-    recomputed = R.shipped(R.load_rounds(video_dir, str(report.get("gate"))))
+    recomputed = R.shipped(R.load_rounds(video_dir, str(report.get("gate"))), required)
     if recomputed != ship:
         problems.append(f"the report's shipped round does not match the round files (recomputed: {recomputed})")
     rnd = next((r for r in report.get("rounds", []) if r.get("round") == ship.get("round")), None)
@@ -135,10 +136,10 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
     for raw in ok:
         if raw.get("draft_sha256") != want:
             problems.append(f"verdict {raw.get('seat')}: reviewed a different draft")
-    for role in MANDATORY:
+    for role in required:
         if not any(r.get("role") == role for r in ok):
             problems.append(f"round {n}: no ok {role} verdict")
-    if len({r.get("family") for r in ok if r.get("role") in MANDATORY} - {writer}) < 2:
+    if len({r.get("family") for r in ok if r.get("role") in required} - {writer}) < 2:
         problems.append(f"round {n}: mandatory seats need two or more families other than the writer's")
     for r in ok:
         if r.get("lint_overridden"):
@@ -207,6 +208,10 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
             problems.append(
                 f"judge call {str(cid)[:12]} was reserved under channel {row.channel!r}, not {report_channel!r}"
             )
+    return problems + _cap_problems(report, ledger, video, gate)
+
+
+def _cap_problems(report: dict[str, Any], ledger: Ledger, video: str, gate: Any) -> list[str]:
     cap = report["cap"]
     channel = report.get("channel")
     for calls in (
@@ -214,6 +219,15 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
         ledger.count(channel=channel if isinstance(channel, str) and channel else None, video=video, gate=gate),
     ):
         if calls > cap:
-            problems.append(f"{calls} calls, over the cap of {cap}")
-            break
-    return problems
+            return [f"{calls} calls, over the cap of {cap}"]
+    return []
+
+
+def _required(report: dict[str, Any], problems: list[str]) -> tuple[str, ...]:
+    """The report's required roles: story and fact always, nothing outside MANDATORY. Old reports mean MANDATORY."""
+    raw = report.get("required_roles", list(MANDATORY))
+    roles = tuple(r for r in raw if isinstance(r, str)) if isinstance(raw, list) else ()
+    if not set(ALWAYS_REQUIRED) <= set(roles) or not set(roles) <= set(MANDATORY):
+        problems.append(f"the report's required roles {raw!r} must include story and fact and stay within {MANDATORY}")
+        return MANDATORY
+    return roles

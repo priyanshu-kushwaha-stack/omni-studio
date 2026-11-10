@@ -155,13 +155,20 @@ def _numbered(text: str) -> str:
     return "\n".join(f"{i:>4}  {line}" for i, line in enumerate(text.splitlines(), 1))
 
 
-def seat_prompt(brief: str, role: str, inputs: dict[str, str]) -> str:
+def _caps_line(limits: dict[str, int]) -> str:
+    parts = [f"at most {n} {'keep lines' if k == 'keep' else k}" for k, n in limits.items()]
+    return "Give " + ", ".join(parts) + ", worst first. A fact seat lists every fact blocker."
+
+
+def seat_prompt(brief: str, role: str, inputs: dict[str, str], limits: Optional[dict[str, int]] = None) -> str:
     parts = [
         f"You are the {role} seat in a review room for a YouTube video. You work alone and never see the "
         "other reviewers' notes or who wrote the draft.",
         brief.strip(),
         VERDICT_SPEC,
     ]
+    if limits:
+        parts.append(_caps_line(limits))
     for name, text in inputs.items():
         parts.append(f"=== {name} ===\n{_numbered(text) if name == 'draft' else text}")
     return "\n\n".join(parts)
@@ -224,6 +231,12 @@ def invoke(cmd: list[str], *, runner=None, timeout: float = 600) -> tuple[int, s
         return proc.returncode, proc.stdout, time.monotonic() - t0
 
 
+def _parse(seat: SeatConfig, text: str, call_id: str, family: str) -> Verdict:
+    return parse_verdict(
+        text, call_id=call_id, seat=seat.name, role=seat.role, model=seat.model, family=family, limits=seat.limits
+    )
+
+
 def run_seat(
     seat: SeatConfig,
     *,
@@ -244,7 +257,7 @@ def run_seat(
     if draft_sha256 and draft_sha256 != own_sha:
         raise ValueError("draft_sha256 does not match the draft in inputs")
     draft_sha256 = own_sha
-    prompt = seat_prompt(seat.brief.read_text(encoding="utf-8"), seat.role, inputs)
+    prompt = seat_prompt(seat.brief.read_text(encoding="utf-8"), seat.role, inputs, seat.limits)
     cmd = build_command(seat.model, prompt, registry)
     version = cli_version(cli_of(seat.model, registry), runner)
     verdict: Optional[Verdict] = None
@@ -269,9 +282,7 @@ def run_seat(
             text = cli_text(stdout)
             if code == 0:
                 try:
-                    verdict = parse_verdict(
-                        text, call_id=call_id, seat=seat.name, role=seat.role, model=seat.model, family=family
-                    )
+                    verdict = _parse(seat, text, call_id, family)
                 except BadVerdict as exc:
                     error = str(exc)
             else:

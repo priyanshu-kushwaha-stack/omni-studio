@@ -10,6 +10,12 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-10
 
+- **Pipeline v2 adopted: "Looks fine."** The creative director's plan
+  (`docs/superpowers/specs/2026-11-10-say-suppose-pipeline-v2-design.md`): the under-question (`> UNDER:`) at G1; one
+  room round, the owner reads first, three blockers per seat, the protected spine and the author's cut; the viewer
+  seat off the critical path; the dreamer in the idea room; the G3 audition and the G4 look test; spend quotes a
+  sitting early. The loophole beat, the dilemma test and the residue stay suggestions for two films. Opus stays
+  director, measured on films 2 and 3. (`rules/story.md`, `room.yaml`)
 - **The narration must sound like a cinematic story, not a documentary.** After hearing K. V. Hagen, nine library
   narrators and six designed voices on the last-time film: "Everything feels like documentary but not a cinematic
   story when I hear them." The voice is not the problem ("Blend B is fine as voice"); the read is. Directions move

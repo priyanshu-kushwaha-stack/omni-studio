@@ -26,6 +26,34 @@ readable worldwide (no `₹` or local slang in the English title and thumbnail).
 Two cheap extra fails, from the first video's notes: no new power rule after the halfway point, and no new person
 after 60%.
 
+**The under-question (lint; owner, 2026-11-10).** After the five lines, one `> UNDER:` line: the question under the
+question, in the viewer's words ("Would you still forgive if you couldn't forget?"). It is chosen at G1 and approved
+with the packaging, and it is never spoken as an answer. Four rules keep it from becoming a lecture:
+
+1. Never stated, only staged. No narrator line answers it; it may be asked once, as a question to you, at the dilemma.
+2. The plot is the argument: each jump of consequence makes the question harder, not just bigger.
+3. The last image answers it without words (2 + 2). The residue line names a real thing, not a moral.
+4. No philosopher on screen. The thought experiment underneath (the Ring of Gyges, Funes, the veil of ignorance) is
+   the writer's lens; naming one in the script is a real-world claim and needs a `claims.md` row.
+
+The lint (`story_lint.py --under-from 2026-11-10`) checks that it is there, once, before the first beat, and is a
+question. Whether the plot argues it is the story seats' read, as a suggestion.
+
+**The protected spine (owner, 2026-11-10).** Once G1 passes, these change only by an owner note or a fact blocker: the
+five lines and `> UNDER:`; the dilemma line; the planted line and its return; the stranger's moment; every keep line a
+seat names (up to three per seat) and up to three `> DARLING:` lines the writer names and defends; the spoken style
+itself (fragments, half-sentences, a question answered at once).
+
+**The shelf: three hooks, suggestions for two films (owner, 2026-11-10).** Seats may suggest these, never block on
+them. After two films the owner decides whether they become must-pass.
+
+- **The loophole beat, every 60-90 s.** The narrator answers the viewer's "but what about" one beat before they think
+  it, and leaves exactly one loophole open for the comments.
+- **The dilemma at 75-80%.** A choice with two right answers, put as one narrator line; the figure acts at once. Test:
+  a cold reader can argue either side in one line.
+- **The residue in Riya's week.** The last line names one real thing the viewer will see differently tomorrow, inside
+  the last image: the chai stall, the metro door, a missed call.
+
 **Length.** No cap. A script that runs past about 8 minutes needs the story seat to name, in its verdict, the felt reason
 a viewer stays past 8:00; without one it fails.
 
