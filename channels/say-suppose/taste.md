@@ -16,6 +16,11 @@ rule. Where two notes disagree, the newer one wins.
   seat off the critical path; the dreamer in the idea room; the G3 audition and the G4 look test; spend quotes a
   sitting early. The loophole beat, the dilemma test and the residue stay suggestions for two films. Opus stays
   director, measured on films 2 and 3. (`rules/story.md`, `room.yaml`)
+- **"Everything looks very monotonous"** (the first full narration of the last-time film); then "all three fixes,
+  you decide". The fixes: per-line delivery (emotion, level and pace from each line's direction, never one setting for
+  every line); a rhythm pass (clipped fragments only where they punch, scene lines as full sentences); and real
+  voices (Mom, Grandpa and other characters speak short lines in their own voices; `cast.md`). This loosens the
+  protected spine's "spoken style": fragments are a device, not the default. (last-time film, G2 reopened)
 - **The narration must sound like a cinematic story, not a documentary.** After hearing K. V. Hagen, nine library
   narrators and six designed voices on the last-time film: "Everything feels like documentary but not a cinematic
   story when I hear them." The voice is not the problem ("Blend B is fine as voice"); the read is. Directions move

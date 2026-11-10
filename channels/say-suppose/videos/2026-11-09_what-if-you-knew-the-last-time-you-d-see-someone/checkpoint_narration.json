@@ -3,24 +3,15 @@
   "project_id": "2026-11-09_what-if-you-knew-the-last-time-you-d-see-someone",
   "pipeline_type": "studio-whatif",
   "stage": "narration",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-10T10:00:33.650164+00:00",
+  "status": "in_progress",
+  "timestamp": "2026-11-10T10:21:00.083121+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
-  "artifacts": {
-    "narration": "narration/narration.wav",
-    "words": "narration/words.json",
-    "props": "assets/narration/props.json"
-  },
+  "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G3: listen to narration/narration.wav at 1x (4:37). Free: Chatterbox on the Mac, owner's setting 'Between, steady' (exaggeration 0.85, cfg 0.5) in the Blend B voice. 64 takes, 8 retaken by seed (narration-takes.yaml), 9 breath clicks muted (mutes.txt); qc claims and clicks pass. Never approved by an agent.",
-    "media": "narration/narration.wav",
-    "tempo": 1.0,
-    "credits": 0,
-    "voice": "chatterbox, reference 'Say Suppose Narrator B' preview",
-    "takes": "narration-takes.yaml",
-    "mutes": "mutes.txt"
+    "for_owner": "Superseded: the v2 narration (4:37, free Chatterbox) was heard by the owner as monotonous; it is re-rendered after G2 v3 with per-line delivery and character voices.",
+    "credits": 0
   }
 }

@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-09_what-if-you-knew-the-last-time-you-d-see-someone",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "completed",
+  "timestamp": "2026-11-10T05:38:16.000841+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G2: read g2-owner.md (the script in full, the room scores, three open blockers with proposed fixes). Room shipped round 3 (judge), evidence verified. Never approved by an agent.",
+    "script": "script.md",
+    "claims": "claims.md",
+    "cues": "cues.yaml",
+    "room": "room-g2.md",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-10T05:38:15.959543+00:00",
+      "via": "omni approve",
+      "proof": "1e754c4779827612a125365b553db6570952bebdd5cd4d29b4b390b12e6ccf0f",
+      "note": "Owner approved G2 as written (round 3 draft, script sha a28bcf10), 2026-11-10: 'approve', then chose 'As written'. Open room blockers left as written: two chocolate lines, carriage counter over the reflection, last line 'Of course she is.'"
+    }
+  }
+}
