@@ -4,7 +4,8 @@ whatif_story      script.md -> story.json (Python, no cost)
 whatif_narration  story.json -> voice takes, word timings, props.json. New takes are paid Higgsfield calls: without
                   owner_approved_paid_call and a max_credits cap the tool passes no cap, so the build reuses cached
                   takes and refuses any new one.
-whatif_render     Remotion render of a scene entry, then the loudness limiter (no cost)
+whatif_render     Remotion render of a scene entry, then the loudness limiter (no cost): a 1280x720 preview for
+                  G4/G5, or quality=final, the one 1920x1080 render G6 watches
 whatif_stills     chosen frames as PNGs and one contact sheet (no cost)
 
 Video inputs are {"channel": "<slug>", "video": "<YYYY-MM-DD_slug>"}. Paths are relative to the omni-studio root and
@@ -54,6 +55,10 @@ VIDEO_RE = re.compile(r"^\d{4}-\d{2}-\d{2}_[a-z0-9]+(-[a-z0-9]+)*$")
 LIMITER = "alimiter=limit=0.84:level=false"
 # Set by `python -m studio.jobs run --queue`: a tool run inside it must not wait on the queue it is already in.
 HELD_ENV = "OMNI_JOBS_QUEUE_HELD"
+# G4/G5 watch 1280x720 previews; G6 watches one 1920x1080 render (pipeline v2, optimisation 5). Exactly 1280x720 in
+# doubles: --scale=0.6667 gives 720.036 and Remotion refuses it. An x264 preset saved nothing (drawing is the cost).
+PREVIEW_SCALE = 0.6666666666666666
+QUALITIES = ("preview", "final")
 
 
 def media_python() -> Path:
@@ -224,22 +229,39 @@ class WhatifRender(_WhatifTool):
     capability = "video_composition"
     determinism = Determinism.DETERMINISTIC
     capabilities = ["paper_cut_render", "loudness_limiter"]
-    best_for = ["render a what-if scene entry (a video's scenes/index.ts or the engine's example) to 1920x1080 mp4"]
+    best_for = ["a G4/G5 preview of a what-if scene entry at 1280x720, or the one 1920x1080 film G6 watches "
+                "(quality=final)"]
     input_schema = {"type": "object", "required": ["entry", "composition", "props", "public_dir", "output"], "properties": {
         "entry": {"type": "string"}, "composition": {"type": "string"}, "props": {"type": "string"},
         "public_dir": {"type": "string"}, "output": {"type": "string", "description": "final mp4; the raw render sits beside it"},
         "frames": {"type": "string", "description": "optional Remotion frame range, e.g. 0-299"},
+        "quality": {"enum": list(QUALITIES), "default": "preview",
+                    "description": "preview: 1280x720 for G4 and G5 watches; final: the one 1920x1080 render G6 watches"},
         "queue_wait_seconds": {"type": "number", "default": 7200,
                                "description": "how long to wait for the render queue before giving up"}}}
+
+    def timing_step(self, inputs: dict[str, Any]) -> str:
+        return "whatif_render.full-" + ("1080p" if inputs.get("quality") == "final" else "720p")
+
+    def _options(self, inputs: dict[str, Any], props: Path, public: Path) -> list[str]:
+        quality = inputs.get("quality", "preview")
+        if quality not in QUALITIES:
+            raise ValueError(f"quality must be one of {QUALITIES}")
+        if quality == "final" and inputs.get("frames"):
+            raise ValueError("a final render is the whole film: G6 watches one 1920x1080 render, never a slice")
+        opts = [f"--props={props}", f"--public-dir={public}", "--log=error"]
+        if inputs.get("frames"):
+            opts.append(f"--frames={inputs['frames']}")
+        if quality == "preview":
+            opts.append(f"--scale={PREVIEW_SCALE}")
+        return opts
 
     def command(self, inputs: dict[str, Any]):
         entry, props, public = (inside(inputs[k]) for k in ("entry", "props", "public_dir"))
         output = inside(inputs["output"])
         raw = output.with_name(output.stem + "-raw" + output.suffix)
         render = ["npx", "remotion", "render", str(entry), str(inputs["composition"]), str(raw),
-                  f"--props={props}", f"--public-dir={public}", "--log=error"]
-        if inputs.get("frames"):
-            render.append(f"--frames={inputs['frames']}")
+                  *self._options(inputs, props, public)]
         limit = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-c:v", "copy", "-af", LIMITER,
                  "-c:a", "aac", "-b:a", "256k", str(output)]
         return [render, limit], dict(os.environ)

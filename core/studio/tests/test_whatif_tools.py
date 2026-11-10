@@ -144,3 +144,42 @@ def test_whatif_tools_record_a_timing(tmp_path, monkeypatch):
     _Quick().execute({"channel": "say-suppose", "video": VIDEO})
     row = T.read_timings()[-1]
     assert (row["step"], row["video"]) == ("whatif_test_quick", VIDEO)
+
+
+def _render(**kw):
+    return {
+        "entry": "core/engines/whatif/examples/pause-sample/index.ts",
+        "composition": "Video",
+        "props": "core/engines/whatif/public/pause/props.json",
+        "public_dir": "core/engines/whatif/public",
+        "output": "core/engines/whatif/out/pause.mp4",
+        **kw,
+    }
+
+
+def test_a_render_is_a_720p_preview_unless_final_is_asked():
+    tool = wt.WhatifRender()
+    (render, _limit), _ = tool.command(_render())
+    assert f"--scale={wt.PREVIEW_SCALE}" in render
+    assert tool.timing_step(_render()) == "whatif_render.full-720p"
+    (render, _limit), _ = tool.command(_render(quality="final"))
+    assert not any(a.startswith("--scale") for a in render)
+    assert tool.timing_step(_render(quality="final")) == "whatif_render.full-1080p"
+
+
+def test_the_preview_scale_gives_whole_1280x720():
+    # Remotion refuses a fractional size ("height ... must be an integer, but is 720.036" at --scale=0.6667,
+    # the plan's benchmark); 0.6666666666666666 times 1920 and 1080 is exactly 1280 and 720 in doubles.
+    assert (1920 * wt.PREVIEW_SCALE, 1080 * wt.PREVIEW_SCALE) == (1280.0, 720.0)
+
+
+def test_a_final_render_is_the_whole_film():
+    with pytest.raises(ValueError, match="whole film"):
+        wt.WhatifRender().command(_render(quality="final", frames="0-299"))
+    with pytest.raises(ValueError, match="quality"):
+        wt.WhatifRender().command(_render(quality="4k"))
+
+
+def test_g6_has_the_render_tool():
+    stages = {s["name"]: s for s in load_pipeline_readonly("studio-whatif")["stages"]}
+    assert "whatif_render" in stages["final_watch"]["tools_available"]

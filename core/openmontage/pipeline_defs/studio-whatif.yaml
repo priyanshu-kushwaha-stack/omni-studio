@@ -113,7 +113,7 @@ stages:
       - G4 rough cut, something changes every 2 to 4 seconds, no hold over 6 seconds
       - Motion reads cue words, never hard-coded times
     success_criteria:
-      - A 1920x1080 render of the whole script with narration, in renders/
+      - A 1280x720 preview of the whole script with narration, in renders/ (whatif_render quality=preview)
 
   - name: final_edit
     skill: studio/studio-whatif-edit
@@ -131,7 +131,8 @@ stages:
   - name: final_watch
     skill: studio/studio-whatif-final-watch
     produces: []
-    tools_available: []
+    tools_available:
+      - whatif_render
     checkpoint_required: true
     human_approval_default: true
     review_focus:
