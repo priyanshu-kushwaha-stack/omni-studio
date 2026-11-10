@@ -1,0 +1,10 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: low
+example: 'make prepush in a fresh worktree fails core/studio/tests/test_whatif_story.py::test_the_pause_time_script_builds:
+  story._local_voice reads channels/say-suppose/brand/voice/arthur-ref.wav, which
+  is git-ignored and absent until copied from the main checkout'
+recorded_at: '2026-11-10T19:38:04.914850+00:00'
+note: Skip that test (or fall back) when the reference clip is missing, or have studio.cli
+  link copy/link the clip into worktrees.
