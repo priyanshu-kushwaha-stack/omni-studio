@@ -1,0 +1,72 @@
+{
+  "call_id": "adcb487cfba047d4a264ec4e482232b9",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "must-pass story structure": 7,
+    "causal progression": 6,
+    "stakes and turn": 8,
+    "ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "treasure in the soil worth more than ten rupees is reported and deposited with the Collector, and not reporting can mean up to a year in prison, under an Act from 1878",
+      "why": "Check #7, Misconception first: this lands three numbers in one fact beat.",
+      "fix": "Replace with: \"Under an old Indian law, treasure found in soil must be reported and deposited with the Collector.\"",
+      "domain": "story",
+      "line": 38
+    },
+    {
+      "quote": "You whisper. The old line snaps off; a new one, 6.1 m, crosses the wet courtyard to the white tablet by the crooked tulsi.",
+      "why": "Check #6, Every use has a gap: the power produces exactly the requested and expected result.",
+      "fix": "Replace with: \"You expect the line to cross the courtyard. Instead it loops back to a tear in his kurta lining: the tablet was inside the pocket he had patted three times.\"",
+      "domain": "story",
+      "line": 43
+    },
+    {
+      "quote": "Your mother's earring, lost eight years ago by the courtyard drain: the line goes up the neem tree to a crow's nest, where it sits with three other people's earrings. Sunday lunch at 1:15: grandfather's same story",
+      "why": "Check #5, But / therefore: the first-jump montage moves from the earring to lunch, the bazaar and the hearing aid without causal turns.",
+      "fix": "Move Sunday lunch before the searches, then chain them: the bicycle gives no line; therefore you test the earring; the crow's nest contains strangers' jewellery; therefore you take one to the bazaar; but a drain washer is already searching there; then the old man's request leads to Madhav.",
+      "domain": "story",
+      "line": 37
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 43,
+      "quote": "The whole sea is on your line. Drop it, for one pill?",
+      "fix": "Make abandoning a line irreversible in the rule stated before 0:30; otherwise the sea can simply be queried again after finding the pill and the dilemma is false."
+    },
+    {
+      "line": 42,
+      "quote": "Every lost thing on Earth has a line waiting.",
+      "fix": "Make one query ethically harder, not merely larger: plant a private object the grandmother deliberately discarded, then let its line appear during this sequence."
+    },
+    {
+      "line": 37,
+      "quote": "you and your cousin mouth it along with him",
+      "fix": "Add one plainly warm action here\u2014for example, Grandfather silently saves you the best mango slice\u2014so the later rupture costs more than the family anecdote."
+    }
+  ],
+  "keep": [
+    {
+      "line": 37,
+      "quote": "Some things stay lost. Keeps the peace."
+    },
+    {
+      "line": 39,
+      "quote": "Knowing where was never the hard part"
+    },
+    {
+      "line": 41,
+      "quote": "The earth goes back; the tulsi goes back in crooked"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "08e9e1d182092773913ce354804fb7d0e0e13e0b2ba414f192b5174080822146",
+  "draft_sha256": "686d09834336c29e26cd8740f3307a535753e58f32777f11f71e5abf47114047"
+}

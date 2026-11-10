@@ -8,6 +8,16 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-11
+
+- **G1, find anything ever lost: "Yes, A + a and the list."** Title A ("What If You Could Find Anything Ever
+  Lost?") with thumbnail a ("DOWN THERE?"), and the room's merged edit list as written: the stake named by 0:30 ("Even
+  the things your family decided to lose"); one law fact, not two (the 1878 Act in its own terms; no English case
+  name); the third jump scales what the film planted (the sea, the drains), not Cold War trivia outside Riya's week; the
+  last line names a real thing, never an unsourced one; one person per fact beat; the thumbnail's grate is shown
+  before the rule. Not taken: the kite spool for the crow, and a second rescue at the choice.
+  (`videos/2026-11-10_what-if-you-could-find-anything-ever-lost/review-g1-round1.md`)
+
 ## 2026-11-10
 
 - **G2, odds of success: "Take both fixes"** (first-time viewer, story #11, round 6). "But yours moved. Down."

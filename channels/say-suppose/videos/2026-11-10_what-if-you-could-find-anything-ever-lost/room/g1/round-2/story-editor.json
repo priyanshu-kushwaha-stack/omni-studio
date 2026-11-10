@@ -1,0 +1,57 @@
+{
+  "call_id": "492657f334d943c7817b08b28078fb08",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "if no living person knows where it is, within ten metres, a line draws itself from your shoes to it, with the distance",
+      "why": "Check #3, Second hook by 0:30: the title promises anything ever lost, but the stated rule limits the power to ten metres. Later forty-metre, sea and kilometre uses silently discard that limit.",
+      "fix": "Replace with: \"if no living person knows where it is, a line draws itself from your shoes to it, with the distance; one line at a time.\"",
+      "domain": "story",
+      "line": 36
+    },
+    {
+      "quote": "you whisper for the Konkan wreck again, then for every gold earring that ever went down a drain in this city, one grate after another, then for everything the sea has taken off this coast",
+      "why": "Fails #6 Every use has a gap and No new power rule after halfway. The wreck repeats its previous result, while plural searches introduce a category-search power absent from the singular rule.",
+      "fix": "Before midpoint, plant three singular, still-unsearched objects. Request them here one at a time, with each result contradicting the expected location. Keep one active line; build the planet image with paper-map inserts of the routes rather than plural searches.",
+      "domain": "story",
+      "line": 42
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 43,
+      "quote": "The whole sea is on your line. Drop it, for one pill?",
+      "fix": "Owner suggestion: plant before 0:30 that voluntarily dropping a line makes that target unfindable to you forever. Then choosing the pill permanently sacrifices the wreck instead of merely pausing its line."
+    },
+    {
+      "line": 39,
+      "quote": "Therefore you go for what has no owner left: lost crypto.",
+      "fix": "Make this jump argue the under-question: the route enters ground that would have to be torn open, so you stop at the boundary. Finding it should create a reason to leave it lost, not only an access problem."
+    }
+  ],
+  "keep": [
+    {
+      "line": 41,
+      "quote": "Let it stay lost."
+    },
+    {
+      "line": 39,
+      "quote": "Knowing where was never the hard part"
+    },
+    {
+      "line": 37,
+      "quote": "Some things stay lost. Keeps the peace."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "56d069b23ca03f26438d20abe11ce9cb6a53b4d4ef23eaa940669ee318f73815",
+  "draft_sha256": "ebca47df102079d1ad8fda42f1a98a81628f34548f45dce0d3a3dc632ac25394"
+}

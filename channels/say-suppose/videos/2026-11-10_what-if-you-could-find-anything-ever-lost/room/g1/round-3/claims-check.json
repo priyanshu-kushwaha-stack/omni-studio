@@ -1,0 +1,47 @@
+{
+  "call_id": "21ec3720732941cabff6ca8ad07206e5",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 39,
+      "quote": "A Welshman has been asking to dig his landfill since 2013 (not verified yet) and is still asking.",
+      "fix": "Change 'his landfill' to 'the council landfill' (needs a source): the site is owned and operated by Newport City Council, not Howells, which is why he has had to petition the council for permission to excavate."
+    },
+    {
+      "line": 39,
+      "quote": "Three million wrecks on the sea floor (not verified yet), and not one of them a step closer.",
+      "fix": "Frame as an estimate following UNESCO's exact wording ('over three million wrecks' or 'an estimated three million wrecks') with (needs a source), rather than stating an unqualified round count."
+    },
+    {
+      "line": 38,
+      "quote": "treasure in the soil worth more than ten rupees is reported and deposited with the Collector, and not reporting can mean up to a year in prison, under an Act from 1878 (not verified yet).",
+      "fix": "When drafting the G2 script line, verify against Section 4 of the Indian Treasure Trove Act 1878 (needs a source): the finder gives notice to the Collector and deposits the treasure in the nearest Government treasury or gives security, rather than handing it directly to the Collector."
+    }
+  ],
+  "keep": [
+    {
+      "line": 38,
+      "quote": "The fact, in the Act's own terms: treasure in the soil worth more than ten rupees is reported and deposited with the Collector, and not reporting can mean up to a year in prison, under an Act from 1878 (not verified yet)."
+    },
+    {
+      "line": 43,
+      "quote": "health: the tablet explains nothing and advises nothing"
+    },
+    {
+      "line": 45,
+      "quote": "The real line inside the last image: the drain grate outside the chai stall you step over every morning, and the man who sifts it at dawn, the nyariya from the first jump (source at G2)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "894cded593823e1a124fe65780560a296db3bba7d1516e5da964988c984bfaef",
+  "draft_sha256": "686d09834336c29e26cd8740f3307a535753e58f32777f11f71e5abf47114047"
+}

@@ -1,32 +1,32 @@
 # Room report, G1 (proposal)
 
-Shipped: none. No round is a candidate (lint ok, an ok verdict from story, fact, no fact blocker), so the gate check will fail.
-Calls: 3 of 18
+Shipped: round 3 (686d09834336) (shipped by the owner-notes rule (no judge))
+Calls: 7 of 18
 
-Owner first: round 1's draft went to the owner at 2026-11-10T16:25:21+00:00
+## Author's cut
 
-## Open notes in round 1
+Round 1's draft, the writer's own: room/drafts/456db0c91d2b4dbc4b56a654afe4d0fa229eacfd7f70da7cf149b8503575f059.md
+What review cost the voice: 43 lines changed; spine lines changed: none; keep lines lost: 0
 
-- claims check (fact) blocker, line 37: "The fact lands on you: anything found in the soil worth more than ten rupees goes to the Collector, or a year in prison, under an Act from 1878 (not verified yet); then one more, a finder beats everyone except the owner (Armory v Delamirie, not verified yet), and the owner's family is in the lane outside.". Scope and legal error: Armory v Delamirie (1722) is an English common law ruling concerning lost chattels found in public places; it does not apply to treasure buried in soil in India, which is governed by the Indian Treasure Trove Act 1878 (and under common law, chattels embedded in private soil belong to the landowner). Additionally, under the 1878 Act, treasure found in soil exceeding ten rupees must be reported and deposited with the Collector for inquiry; failure to report risks forfeiture and up to a year in prison, rather than an automatic forfeiture to the Collector. Fix: Drop Armory v Delamirie and ground the belief-breaking fact strictly in the Indian Treasure Trove Act of 1878: finding treasure in the soil worth more than ten rupees requires reporting and depositing it with the Collector, with failure to report punishable by up to a year in prison (needs a source).
-- claims check (fact) blocker, line 44: "The real line inside the last image: the drain grate outside the chai stall you step over every morning, with the city's museum three feet under it.". Unsupported factual claim: The closing real-world line asserts as literal fact that the city's museum is three feet under the chai stall drain grate. This is an invented factual claim about Pune with no source, not listed in Research for G2, and cannot be stated as a real-world finding. Fix: Replace with a verified real-world finding about what actually lies beneath city streets (needs a source) or reframe without asserting an unverified physical museum beneath the grate.
-- claims check (fact) blocker, line 41: "then a lost hydrogen bomb (six never recovered, not verified yet)". Scope error: The figure of six unrecovered weapons comes from the US Department of Defense Broken Arrows list (32 US accidents) and applies specifically to US nuclear weapons, not all lost hydrogen bombs globally. Fix: Scope the finding to US military records (needs a source): 'then a lost hydrogen bomb—one of six the US military never recovered—'.
-- claims check keep, line 10: "The line is invented. The real-world part, to source at G2, is what happens to a found thing: who owns it, who gets to dig, and how much of the world's lost fortune nobody will ever reach."
-- claims check keep, line 42: "health: the tablet explains nothing and advises nothing"
-- claims check keep, line 38: "A Welshman has been asking to dig his landfill since 2013 (not verified yet) and is still asking."
-- first-time viewer (viewer) blocker, line 35: "The stake sits in the rule's own word, "nobody", and the script never underlines it". story #3: by 0:30 I know what I gain ('everything anyone ever lost') and the question ('what do you go for first?'), but I cannot say what I can lose. On a phone with sound low I will not catch a stake hidden in one word of a rule. Nothing I could lose appears until the grandfather at 0:40, so the second hook has no downside by 0:30. Fix: End the rule beat at about 0:25 with one narrator line that names the risk without explaining it: "Everything anyone ever lost. Even the things your family decided to lose." Then ask "So. What do you go for first?" The family is planted before 0:30 and the tulsi turn is not given away.
-- first-time viewer (viewer) blocker, line 41: "then a lost hydrogen bomb (six never recovered, not verified yet), then a vanished hiker". The viewer's week: a lost hydrogen bomb and a vanished hiker do not come from chai, the metro, exams, the office or family. The rest of the film is built from my week (the metro gap, the courtyard drain, Sunday lunch, the cousin), and here it jumps to Cold War trivia just before the choice. The bomb's line then carries into line 42. Fix: Swap both for lost things already planted in the film, scaled up: "you whisper for the Konkan wreck again, then for every gold earring that ever went down a drain in this city, then for everything the sea has taken off this coast". Each tag gets longer than the last, in thousands of kilometres. In line 42, change "The bomb's line still runs out of your window" to "The sea's line still runs out of your window", so "The whole sea is on your line" still works.
-- first-time viewer keep, line 36: "you and your cousin mouth it along with him: "My brother took that deed.""
-- first-time viewer keep, line 42: ""The whole sea is on your line. Drop it, for one pill?""
-- first-time viewer keep, line 38: "Knowing where was never the hard part"
-- story editor (story) blocker, line 35: "The stake sits in the rule's own word, "nobody", and the script never underlines it". Check #3, Second hook by 0:30: "nobody" states a condition, not what you can lose. The question concerns what to find first, while the film's actual question concerns what to leave lost. Fix: Replace with: "By 0:25: One line at a time. Follow enough of them, and you could break the peace in your own house. So what should stay lost?"
-- story editor (story) blocker, line 37: "The fact lands on you: anything found in the soil worth more than ten rupees goes to the Collector, or a year in prison, under an Act from 1878 (not verified yet); then one more, a finder beats everyone except the owner (Armory v Delamirie, not verified yet), and the owner's family is in the lane outside.". Check #7, Misconception first: three numbers and two legal principles arrive together before the consequence, turning the reversal into a law briefing. Fix: Replace with: "The shopkeeper pushes the pouch back. Buried treasure must be reported to the Collector under an old law. Then the owner's family reaches the door. You expected money; you get a receipt and a queue."
-- story editor (story) blocker, line 38: "The picture only this premise can show: a paper cross-section, the teal dotted line falling through eleven metres of layered rubbish, a mattress, a scooter, a television, to a glowing drive, and you a small figure on top with a garden trowel.". Check #8 requires the premise-specific picture to be named in a `> SCENE:` line. It is currently prose inside a table cell. Fix: Add before this beat: "> SCENE: Paper cross-section of the dump: you and a garden trowel above eleven metres of layered rubbish, while the teal line drops to the glowing drive below."
-- story editor keep, line 26: "The deed your grandfather says his brother stole was hidden by his late wife under the tulsi he waters every morning, and the line takes you straight to it."
-- story editor keep, line 40: "Let it stay lost."
-- story editor keep, line 44: "Some things stay lost. Keeps the peace."
+Owner first: round 1's draft went to the owner at 2026-11-10T19:16:59+00:00
+
+## Open notes in round 3
+
+- claims check keep, line 38: "The fact, in the Act's own terms: treasure in the soil worth more than ten rupees is reported and deposited with the Collector, and not reporting can mean up to a year in prison, under an Act from 1878 (not verified yet)."
+- claims check keep, line 43: "health: the tablet explains nothing and advises nothing"
+- claims check keep, line 45: "The real line inside the last image: the drain grate outside the chai stall you step over every morning, and the man who sifts it at dawn, the nyariya from the first jump (source at G2)."
+- story editor (story) blocker, line 38: "treasure in the soil worth more than ten rupees is reported and deposited with the Collector, and not reporting can mean up to a year in prison, under an Act from 1878". Check #7, Misconception first: this lands three numbers in one fact beat. Fix: Replace with: "Under an old Indian law, treasure found in soil must be reported and deposited with the Collector."
+- story editor (story) blocker, line 43: "You whisper. The old line snaps off; a new one, 6.1 m, crosses the wet courtyard to the white tablet by the crooked tulsi.". Check #6, Every use has a gap: the power produces exactly the requested and expected result. Fix: Replace with: "You expect the line to cross the courtyard. Instead it loops back to a tear in his kurta lining: the tablet was inside the pocket he had patted three times."
+- story editor (story) blocker, line 37: "Your mother's earring, lost eight years ago by the courtyard drain: the line goes up the neem tree to a crow's nest, where it sits with three other people's earrings. Sunday lunch at 1:15: grandfather's same story". Check #5, But / therefore: the first-jump montage moves from the earring to lunch, the bazaar and the hearing aid without causal turns. Fix: Move Sunday lunch before the searches, then chain them: the bicycle gives no line; therefore you test the earring; the crow's nest contains strangers' jewellery; therefore you take one to the bazaar; but a drain washer is already searching there; then the old man's request leads to Madhav.
+- story editor keep, line 37: "Some things stay lost. Keeps the peace."
+- story editor keep, line 39: "Knowing where was never the hard part"
+- story editor keep, line 41: "The earth goes back; the tulsi goes back in crooked"
 
 ## Rounds
 
 | round | lint | seats ok | blockers | judge |
 |---|---|---|---|---|
 | 1 | ok | 3/3 | 8 | - |
+| 2 | ok | 1/2 | 2 | - |
+| 3 | ok | 2/2 | 3 | - |
+

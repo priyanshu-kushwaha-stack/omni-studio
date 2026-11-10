@@ -1,0 +1,16 @@
+{
+  "call_id": "54cc5f11f4be4fa99d61a40bf46d3879",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "failed",
+  "scores": {},
+  "blockers": [],
+  "suggestions": [],
+  "keep": [],
+  "error": "cursor-agent exited 124",
+  "trimmed": {},
+  "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "draft_sha256": "ebca47df102079d1ad8fda42f1a98a81628f34548f45dce0d3a3dc632ac25394"
+}
