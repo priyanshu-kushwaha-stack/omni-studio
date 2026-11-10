@@ -17,9 +17,10 @@ def _say(msg: str) -> None:
     print(f"{msg}; waiting", file=sys.stderr, flush=True)
 
 
-def _run(command: list[str], pass_fds: tuple[int, ...] = ()) -> int:
+def _run(command: list[str], pass_fds: tuple[int, ...] = (), held: str = "") -> int:
+    env = Q.env_holding(held) if held else None
     try:
-        return subprocess.run(command, pass_fds=pass_fds).returncode
+        return subprocess.run(command, pass_fds=pass_fds, env=env).returncode
     except OSError as exc:  # never started: the shell's own codes, 126 not executable and 127 not found
         print(f"could not run {command[0]}: {exc}", file=sys.stderr)
         return 126 if isinstance(exc, PermissionError) else 127
@@ -54,7 +55,7 @@ def cmd_run(args) -> int:
     t0 = time.monotonic()
     try:
         # The command shares the lock's descriptor, so the queue stays held while it runs even if this wrapper dies.
-        code = _run(command, (lock.fd,) if lock else ())
+        code = _run(command, (lock.fd,) if lock and lock.fd is not None else (), args.queue or "")
     finally:
         if lock:
             lock.__exit__(None, None, None)
@@ -73,8 +74,16 @@ def cmd_run(args) -> int:
     return code
 
 
+def _matches(row: dict, args) -> bool:
+    return (
+        (not args.video or row.get("video") == args.video)
+        and (not args.channel or row.get("channel") == args.channel)
+        and (not args.step or str(row.get("step", "")).startswith(args.step))
+    )
+
+
 def cmd_report(args) -> int:
-    rows = summarize(read_timings(since=args.since))
+    rows = summarize([r for r in read_timings(since=args.since) if _matches(r, args)])
     print(f"{'step':<28} {'runs':>5} {'fail':>5} {'total s':>10} {'median s':>10} {'max s':>10}")
     print("-" * 72)
     for r in rows:
@@ -82,6 +91,11 @@ def cmd_report(args) -> int:
             f"{r['step']:<28} {r['runs']:>5} {r['failures']:>5} {r['total_s']:>10.1f} {r['median_s']:>10.1f} "
             f"{r['max_s']:>10.1f}"
         )
+    total = sum(r["total_s"] for r in rows)
+    print(
+        f"{'total':<28} {sum(r['runs'] for r in rows):>5} {sum(r['failures'] for r in rows):>5} {total:>10.1f} "
+        f"{'':>10} {total / 3600:>8.2f} h"
+    )
     return 0
 
 
@@ -109,6 +123,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     r.set_defaults(fn=cmd_run)
     s = sub.add_parser("report")
     s.add_argument("--since")
+    s.add_argument("--video", help="only this video id")
+    s.add_argument("--channel", help="only this channel slug")
+    s.add_argument("--step", help="only steps that start with this, e.g. whatif_")
     s.set_defaults(fn=cmd_report)
     q = sub.add_parser("queue", help="who holds a queue; exit 0 free, 1 held")
     q.add_argument("name", nargs="?", default="render")

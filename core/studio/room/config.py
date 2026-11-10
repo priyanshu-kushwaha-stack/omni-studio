@@ -1,7 +1,7 @@
 """A channel's room.yaml: its seats (role, model, brief), caps, format parameters, linters and sources.
 
 Validation enforces the spine's invariants: the three mandatory roles, one model per seat from the registry,
-viewer/story/fact/neutrality seats and the judge never on the writer's family, the required seats (the mandatory roles,
+story/fact/neutrality seats and the judge never on the writer's family, the viewer never the writer's own model, the required seats (the mandatory roles,
 or story and fact with `viewer_required: false`) spread over two or more other families, a daily cap that fits one script, and pre_g2_local only for channels whose voices are all
 free local engines.
 """
@@ -18,7 +18,7 @@ import yaml
 
 from studio.room import ledger
 from studio.room.models import UnknownModel, family_of, load_registry
-from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, ROLES
+from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, ROLES, SELF_LOCKED
 
 SEATS_DIR = Path(__file__).resolve().parent / "seats"
 PITCH_CLIPS = ("after_g2", "pre_g2_local")
@@ -226,6 +226,8 @@ def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
         f = fam(s.model, f"seat {s.name!r}")
         if f and writer and s.role in LOCKED_ROLES and f == writer:
             problems.append(f"seat {s.name!r} ({s.role}) is on the writer's family ({writer})")
+        if s.role in SELF_LOCKED and s.model == cfg.writer:
+            problems.append(f"seat {s.name!r} ({s.role}) is the writer's own model ({cfg.writer})")
         if f and s.role in required and f != writer:
             mandatory_families.add(f)
         if not s.brief.is_file():

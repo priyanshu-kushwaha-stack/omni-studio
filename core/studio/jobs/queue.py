@@ -27,6 +27,9 @@ from typing import Any, Optional
 DEFAULT = Path.home() / ".local" / "state" / "omni-studio" / "jobs" / "queues"
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
 BUSY_EXIT = 75  # EX_TEMPFAIL: try again later
+# The queues a parent `python -m studio.jobs run --queue` holds, comma-separated, set for its command: a tool run
+# inside it (whatif_render) does not wait on the queue its parent already holds.
+HELD_ENV = "OMNI_JOBS_QUEUE_HELD"
 
 
 class QueueBusy(RuntimeError):
@@ -99,11 +102,21 @@ def describe(name: str, info: Optional[dict[str, Any]]) -> str:
     )
 
 
+def held_by_parent(name: str) -> bool:
+    return name in os.environ.get(HELD_ENV, "").split(",")
+
+
+def env_holding(name: str) -> dict[str, str]:
+    """This process's environment, telling a child that `name` is held for it."""
+    mine = [q for q in os.environ.get(HELD_ENV, "").split(",") if q]
+    return {**os.environ, HELD_ENV: ",".join([*mine, name])}
+
+
 class hold:
     """Context manager: take queue `name`, waiting (polling every `poll` s, at most `timeout` s) unless wait=False.
 
     Raises QueueBusy when it gives up. `fd` is the locked descriptor (pass it to a child to share the lock) and
-    `waited_s` how long it waited.
+    `waited_s` how long it waited. In a child of a holder (held_by_parent), it takes nothing and `fd` stays None.
     """
 
     def __init__(
@@ -125,6 +138,8 @@ class hold:
         self.waited_s = 0.0
 
     def __enter__(self) -> "hold":
+        if held_by_parent(self.name):
+            return self
         self.path.parent.mkdir(parents=True, exist_ok=True)
         fd = os.open(self.path, os.O_RDWR | os.O_CREAT, 0o644)
         t0, told = time.monotonic(), False

@@ -1,0 +1,30 @@
+{
+  "room": "both",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.7-flash-high",
+  "exit": 0,
+  "seconds": 136,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "fact-checker",
+    "role": "fact",
+    "model": "gemini-3.7-flash-high",
+    "family": "google",
+    "status": "ok",
+    "scores": {
+      "factual_accuracy": 10
+    },
+    "blockers": [],
+    "suggestions": [],
+    "keep": [
+      {
+        "line": 87,
+        "quote": "Last year? About one in a thousand UPSC applicants got in (c01)."
+      }
+    ],
+    "error": ""
+  }
+}

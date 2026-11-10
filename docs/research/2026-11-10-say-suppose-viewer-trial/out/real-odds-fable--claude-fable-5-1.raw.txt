@@ -1,0 +1,17 @@
+{"scores": {"hook, first 30 s": 8, "stays watching to the end": 8, "from Riya's week": 9, "clear without pausing": 7, "ending": 9},
+ "blockers": [
+  {"line": 235, "quote": "A chip in every window.", "why": "story #11: the 6 s hold just before it (line 233) has already shown the whole city with a chip in every window, and the delivery note asks for 'awed'. The line names the picture and the feeling instead of adding anything. It is also the spot where the film could plant the late rule at line 288 ('He can't see it. He never could.'), which made me pause and ask whether anyone but me ever saw the chips.", "fix": "Replace with: \"Nobody down there can see their own. Only you.\" (narration note: quiet, level)", "domain": "viewer"}
+ ],
+ "suggestions": [
+  {"line": 185, "quote": "Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.", "fix": "Lines 177 to 185 are four explaining lines in a row while you sit with your forehead on the bus window; this is the one stretch where my thumb drifts. Cut line 177 to \"The half of the rule you skipped: a chip only starts with the crowd.\" and cut line 185 to \"Ninety-one was the crowd's starting point, waiting to see what you'd do.\" so the bus beat is three lines, not four."},
+  {"line": 119, "quote": "the chair on your chip flips to an office lanyard and the flaps roll up and up.", "fix": "The rule at line 31 said the chip is what you'd choose with nobody watching, but here it swaps goals the instant you tick a box because of a number. Make the scene read as planted for line 294: \"the chair on your chip flickers twice, as if unsure, then flips to an office lanyard and the flaps roll up and up.\""},
+  {"line": 224, "quote": "Take it out, or leave it? You leave it.", "fix": "I did not know why you leave it until line 272, over a minute later. Add three words: \"Take it out, or leave it? You leave it. You're still ninety-one.\""},
+  {"line": 214, "quote": "And behind the cupboard, where nobody looks: the bat.", "fix": "Line 212 already shows you look into the gap and find the bat with tape on its handle, and the 5 s hold at 216 pushes into it. Cut line 214 and let the hold carry the find, so \"He didn't lose it. He hid it.\" is the first word after the picture."},
+  {"line": 249, "quote": "The teacher, three, marking your mock, then opening his own notes.", "fix": "You shut your notes in a drawer weeks ago, so 'your mock' made me stop to work out which exam. Change to: \"The teacher, three, marking a stack of mocks at midnight, then opening his own notes.\""},
+  {"line": 31, "quote": "The rule. A chip is your real chance at what you'd choose with nobody watching.", "fix": "Line 39 (the loss and the question) runs to about 00:32 by the script's own count; drop the two words \"The rule.\" so \"Another year, for that chair. Keep going?\" finishes inside 0:30."}
+ ],
+ "keep": [
+  {"line": 57, "quote": "In this lane you're the best batter alive. The lane is one scooter wide."},
+  {"line": 90, "quote": "Four hundred of you are asking directions from a man who's still looking for the place."},
+  {"line": 220, "quote": "He did what you do in row three. He copied the person in front of him."}
+ ]}

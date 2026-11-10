@@ -102,6 +102,18 @@ def args_bytes(inputs: dict[str, Any]) -> int:
     return total
 
 
+def step_for(tool: Any, inputs: dict[str, Any]) -> str:
+    """The tool's name, or the variant its timing_step(inputs) names (whatif_render.picture-720p)."""
+    name = getattr(tool, "name", type(tool).__name__)
+    named = getattr(tool, "timing_step", None)
+    if named is None:
+        return name
+    try:
+        return str(named(inputs)) or name
+    except Exception:
+        return name
+
+
 def record_tool(execute):
     @functools.wraps(execute)
     def wrapper(self, inputs):
@@ -112,7 +124,7 @@ def record_tool(execute):
         finally:
             try:
                 record(
-                    getattr(self, "name", type(self).__name__),
+                    step_for(self, inputs),
                     seconds=time.monotonic() - t0,
                     ok=bool(result is not None and getattr(result, "success", False)),
                     channel=str(inputs.get("channel", "")),

@@ -11,7 +11,10 @@ from typing import Any, Optional
 ROLES = ("viewer", "story", "fact", "neutrality", "voice", "craft")
 MANDATORY = ("viewer", "story", "fact")
 ALWAYS_REQUIRED = ("story", "fact")  # a channel may make only the viewer optional (room.yaml viewer_required: false)
-LOCKED_ROLES = ("viewer", "story", "fact", "neutrality")  # never the writer's family
+LOCKED_ROLES = ("story", "fact", "neutrality")  # never the writer's family
+# Never the writer's own model, but it may share the family: in the viewer trial (2026-11-10) Fable missed on its own
+# script what Opus, its family, found (docs/research/2026-11-10-say-suppose-viewer-trial/RESULTS.md, round 2).
+SELF_LOCKED = ("viewer",)
 FENCE_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.S)
 
 

@@ -195,6 +195,7 @@ def build_report(
     ledger: Ledger,
     cap: int,
     required: tuple[str, ...] = MANDATORY,
+    writer: str = "",
 ) -> dict[str, Any]:
     video_dir = Path(video_dir)
     rounds, skipped = scan_rounds(video_dir, gate)
@@ -230,6 +231,7 @@ def build_report(
         "stage": stage,
         "channel": channel,
         "writer_family": writer_family,
+        "writer": writer,
         "required_roles": list(required),
         "rounds": summary,
         "skipped_rounds": skipped,

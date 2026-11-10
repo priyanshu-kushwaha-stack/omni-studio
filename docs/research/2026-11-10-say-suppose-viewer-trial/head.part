@@ -1,0 +1,105 @@
+<title>Viewer Seat Trial</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a review desk on the channel's paper. Top: the verdict tally that fills as you mark. Then the blind
+   writer read side by side, then every blocker from both rooms as a card you mark agree or disagree.
+   Mustard = your decision, teal = a room, crimson = disagree / failure. Palette from the channel's style.md. */
+:root {
+  --page: #F7F0E3; --surface: #FDF9F1; --paper: #F3E9D7; --ink: #23252B; --ink-soft: #5B5D63; --rule: #DCCFB8;
+  --mustard: #F2B632; --mustard-ink: #8A6206; --mustard-wash: #FBE7B5;
+  --teal: #1D9A8F; --teal-ink: #11695F; --teal-wash: #D6EEEA;
+  --crimson: #D8344F; --crimson-ink: #A8213A; --crimson-wash: #F8D9DE;
+  --font-display: "Rubik", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #1B1C21; --surface: #24262C; --paper: #2B2D33; --ink: #F3E9D7; --ink-soft: #B9B1A3; --rule: #3C3E45;
+    --mustard-ink: #F5C658; --mustard-wash: #4A3A14; --teal: #2BB3A6; --teal-ink: #5FD0C4; --teal-wash: #173A37;
+    --crimson: #E5566E; --crimson-ink: #F08497; --crimson-wash: #4A1F27;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #1B1C21; --surface: #24262C; --paper: #2B2D33; --ink: #F3E9D7; --ink-soft: #B9B1A3; --rule: #3C3E45;
+  --mustard-ink: #F5C658; --mustard-wash: #4A3A14; --teal: #2BB3A6; --teal-ink: #5FD0C4; --teal-wash: #173A37;
+  --crimson: #E5566E; --crimson-ink: #F08497; --crimson-wash: #4A1F27;
+}
+* { box-sizing: border-box; }
+body { background: var(--page); color: var(--ink); font-family: var(--font-body); font-size: 0.97rem; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.1rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 800; }
+h3 { font-size: 1.1rem; font-weight: 700; }
+p { margin: 0; max-width: 72ch; }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--paper); padding: 0.05em 0.35em; border-radius: 3px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.muted { color: var(--ink-soft); }
+section { display: grid; gap: 20px; }
+header.top { padding-top: 48px; display: grid; gap: 16px; }
+.lede { font-size: 1.15rem; max-width: 76ch; }
+.status-line { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); min-height: 1.4em; }
+.status-line.warn { color: var(--crimson-ink); }
+
+/* tally */
+.tally { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.room-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; display: grid; gap: 12px; }
+.room-card h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.room-card dl { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.room-card dt { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+.room-card dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.seat-rows { display: grid; gap: 6px; font-size: 0.88rem; }
+.seat-row { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; }
+.seat-row .num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; text-align: right; }
+.chip { display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; padding: 0.1em 0.5em; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.chip.cur { color: var(--ink-soft); } .chip.per { color: var(--teal-ink); } .chip.both { color: var(--mustard-ink); } .chip.fail { color: var(--crimson-ink); }
+
+/* writer bake-off */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.script { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
+.script header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--rule); gap: 12px; }
+.script header b { font-family: var(--font-display); font-size: 1.3rem; }
+.script pre { margin: 0; padding: 16px; height: 560px; overflow: auto; white-space: pre-wrap; font-family: var(--font-body); font-size: 0.9rem; line-height: 1.55; }
+.pick { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.pick-note { width: 100%; min-height: 70px; font: inherit; padding: 10px 12px; border-radius: 6px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); }
+button { font: inherit; cursor: pointer; }
+.btn { font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; padding: 7px 14px; border-radius: 6px; border: 1.5px solid var(--ink-soft); background: var(--surface); color: var(--ink); }
+.btn[aria-pressed="true"] { background: var(--mustard); border-color: var(--mustard-ink); color: #23252B; }
+.btn:focus-visible, .seg button:focus-visible, .pick-note:focus-visible { outline: 3px solid var(--mustard); outline-offset: 2px; }
+.btn:disabled, .seg button:disabled { opacity: 0.55; cursor: default; }
+
+/* blockers */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.cards { display: grid; gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; display: grid; gap: 10px; }
+.card.agree { border-color: var(--teal); box-shadow: inset 4px 0 0 var(--teal); }
+.card.disagree { border-color: var(--crimson); box-shadow: inset 4px 0 0 var(--crimson); }
+.card.unsure { box-shadow: inset 4px 0 0 var(--mustard); }
+.card-head { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; justify-content: space-between; }
+.who { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.who b { font-family: var(--font-display); }
+.who .m { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); }
+.quote { font-family: var(--font-mono); font-size: 0.85rem; background: var(--paper); padding: 8px 10px; border-radius: 4px; overflow-wrap: anywhere; }
+.fx { display: grid; grid-template-columns: 52px 1fr; gap: 4px 10px; font-size: 0.92rem; }
+.fx dt { font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-soft); text-transform: uppercase; padding-top: 3px; }
+.fx dd { margin: 0; }
+.seg { display: inline-flex; border: 1.5px solid var(--ink-soft); border-radius: 6px; overflow: hidden; }
+.seg button { border: 0; background: var(--surface); color: var(--ink); padding: 6px 12px; font-size: 0.85rem; font-weight: 600; }
+.seg button + button { border-left: 1.5px solid var(--ink-soft); }
+.seg button[aria-pressed="true"][data-v="agree"] { background: var(--teal); color: #fff; }
+.seg button[aria-pressed="true"][data-v="disagree"] { background: var(--crimson); color: #fff; }
+.seg button[aria-pressed="true"][data-v="unsure"] { background: var(--mustard); color: #23252B; }
+details.draft { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; }
+details.draft summary { cursor: pointer; padding: 12px 16px; font-weight: 600; }
+details.draft pre { margin: 0; padding: 0 16px 16px; max-height: 520px; overflow: auto; font-family: var(--font-mono); font-size: 0.8rem; white-space: pre-wrap; }
+footer { font-size: 0.82rem; color: var(--ink-soft); border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 6px; }
+@media (max-width: 820px) { .tally, .pair { grid-template-columns: 1fr; } .room-card dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } .script pre { height: 420px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>

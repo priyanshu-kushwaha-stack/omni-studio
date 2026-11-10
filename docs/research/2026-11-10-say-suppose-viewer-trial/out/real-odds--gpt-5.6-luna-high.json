@@ -1,0 +1,57 @@
+{
+  "script": "real-odds",
+  "model": "gpt-5.6-luna-high",
+  "exit": 0,
+  "seconds": 67,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "gpt-5.6-luna-high",
+    "family": "openai",
+    "status": "ok",
+    "scores": {
+      "first-time-viewer clarity": 8,
+      "click-to-story match": 6,
+      "watch-through": 7
+    },
+    "blockers": [
+      {
+        "quote": "> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose.",
+        "why": "story #2: the first seven seconds show copying, not the thumbnail's glowing chip and shocked reaction.",
+        "fix": "> SCENE: A coaching hall at night under tube lights. Your crimson chip is already glowing beside your head at 0.04%; you freeze mid-copy, eyes wide, while the topper's notes remain beneath your pen.",
+        "domain": "viewer",
+        "line": 15
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 87,
+        "quote": "Last year? About one in a thousand UPSC applicants got in (c01).",
+        "fix": "This is where I would stop watching: the story pauses for a statistic after the stall reversal. Put the fact directly over an action\u2014your chip dropping as you reopen your notebook\u2014and cut lines 89\u201391's explanation."
+      },
+      {
+        "line": 31,
+        "quote": "A year of fees. A year of your life. On one chair. So... keep going?",
+        "fix": "Change \u201cOn one chair\u201d to \u201cFor one chair\u201d so the sacrifice and question are immediately clear."
+      }
+    ],
+    "keep": [
+      {
+        "line": 28,
+        "quote": "One chair. Out of two thousand five hundred."
+      },
+      {
+        "line": 83,
+        "quote": "You can't borrow someone's odds. Only their apron."
+      },
+      {
+        "line": 136,
+        "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+      }
+    ],
+    "error": ""
+  }
+}

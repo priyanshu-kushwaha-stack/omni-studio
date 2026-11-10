@@ -1,0 +1,48 @@
+{
+  "call_id": "1668fbf4c6c64e4ab92f33b9cd2dc958",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 9,
+    "retention": 8,
+    "length (about 5\u20135.5 minutes; no reason to stay past 8:00 is needed)": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 80,
+      "quote": "The chaiwala's chip turns over like a card. On its back, a stamped label.",
+      "fix": "Replace the label with the chaiwala dropping coins into a tin bearing a drawing of two stalls; remove the later HIS OWN RANK and MUSIC chip labels too, so the chips never reveal goals and line 33 remains true."
+    },
+    {
+      "line": 102,
+      "quote": "At home, Aarav's waiting. A fee slip for a cricket academy. And one question. For you. The one who can see the numbers.",
+      "fix": "Change the opening to \"But at home, Aarav's waiting\" so the cost explicitly turns against the hopeful row-three recovery rather than feeling like the next event."
+    },
+    {
+      "line": 123,
+      "quote": "The teacher? He's sitting the exam himself. Again. His three was never about you.",
+      "fix": "Compress the teacher, topper and chaiwala explanations into one fast visual montage, then reach Aarav's grey chip sooner; the second-stall reveal has already established that visible jobs and private goals differ."
+    }
+  ],
+  "keep": [
+    {
+      "line": 83,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 114,
+      "quote": "He didn't even argue."
+    },
+    {
+      "line": 136,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    }
+  ],
+  "error": "",
+  "output_sha256": "96b8efad9f99104f379d68910f0bf6ebd77ae486912b652980f211b0135dbdc3",
+  "draft_sha256": "687dca1525a3f5449b2fa6f23d7a82bbcf7fc0b20d1acdcf3e9ce05d5a73b9df"
+}

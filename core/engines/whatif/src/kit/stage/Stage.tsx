@@ -1,6 +1,7 @@
 import { AbsoluteFill, Easing, interpolate } from "remotion";
 import { HEIGHT, WIDTH } from "../theme";
 import type { Pause } from "../world/clock";
+import { useSoundOnly } from "../sound";
 import { layerBlur, Light, useLook } from "./Look";
 
 export interface Camera { x: number; y: number; zoom: number }
@@ -79,7 +80,9 @@ export const Stage: React.FC<{
   actors: React.ReactNode;
   front?: React.ReactNode;
 }> = ({ cam, radius, origin, sky, back, actors, front }) => {
+  const soundOnly = useSoundOnly();
   const look = useLook();
+  if (soundOnly) return null;
   const rim = look.rim
     ? { filter: `drop-shadow(${look.rim.dx}px ${look.rim.dy}px 0 ${look.rim.color}) drop-shadow(0 0 ${Math.hypot(look.rim.dx, look.rim.dy) * 2}px ${look.rim.color}66)` }
     : undefined;
@@ -102,7 +105,9 @@ export const Stage: React.FC<{
 };
 
 /** Printed-paper grain and a soft vignette over everything. */
-export const Finish: React.FC = () => (
+export const Finish: React.FC = () => {
+  if (useSoundOnly()) return null;
+  return (
   <AbsoluteFill style={{ pointerEvents: "none" }}>
     <svg width={WIDTH} height={HEIGHT} style={{ position: "absolute", mixBlendMode: "multiply", opacity: 0.22 }}>
       <filter id="grain">
@@ -118,4 +123,5 @@ export const Finish: React.FC = () => (
     </svg>
     <AbsoluteFill style={{ background: "radial-gradient(ellipse at center, transparent 58%, rgba(30,20,10,0.3) 100%)" }} />
   </AbsoluteFill>
-);
+  );
+};

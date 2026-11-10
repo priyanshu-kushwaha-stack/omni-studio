@@ -1,0 +1,74 @@
+{
+  "call_id": "751ee57c48e04e75a8bde4ee00ce046b",
+  "seat": "animator",
+  "role": "craft",
+  "model": "claude-sonnet-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "buildable this week (pick card #8)": 7,
+    "cue sheet intent (sound #1)": 9,
+    "music follows the story (sound #3)": 8,
+    "visual continuity and kit reuse": 7
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 85,
+      "quote": "rows to the horizon, every chip in it the same dim white",
+      "fix": "Do not build a separate exam centre. Reuse the code-drawn chair grid from line 26, re-lit white, with the camera pulling back along it. That is the same asset with a different light, and it keeps the set count down."
+    },
+    {
+      "line": 114,
+      "quote": "thousands, flickering, each one changing as its person moves",
+      "fix": "Build the city as one chip sprite instanced across two parallax layers, with silhouette houses and no numerals except on the key windows. Keep the bus to a window frame, your forehead and a drifting street layer. No bus interior and no crowd rigs."
+    },
+    {
+      "line": 123,
+      "quote": "the chai stall, shutters half down, the chaiwala dropping coins into a tin",
+      "fix": "Reuse the stall layers from line 64 with a half-down shutter layer added, and name them in the kit list. The tin with the second-stall drawing is the only new prop, and it is a flat rectangle."
+    },
+    {
+      "line": 128,
+      "quote": "In its glass door, a pale mirrored copy of your head and your crimson chip.",
+      "fix": "Stage it as your head and chip sprite flipped at about 25% alpha on a glass-door layer in front of the dark gap. If that costs the week, cut the reflection and keep the kneel and the dark gap."
+    },
+    {
+      "line": 71,
+      "quote": "You hang your scarf on a hook by the stall and tie on an apron.",
+      "fix": "Continuity: at line 89 you take the scarf from your bag. Change line 71 to 'You fold your scarf into your bag and tie on an apron.' so the scarf and the apron both carry through to the hall."
+    },
+    {
+      "line": 79,
+      "quote": "And your chip doesn't climb to sixty-one. It drops.",
+      "fix": "Sound #3: the cue sheet thins the clarinet when the cards start to fall, which is on the 'A month at the stall' side of the line. Hold cue_stall full until 'It drops.' and thin it on the 0.02% stamp, so the music does not announce the drop before the line does."
+    },
+    {
+      "line": 104,
+      "quote": "Zero point two. Against the family's money. And the biggest number is the right choice. Isn't it?",
+      "fix": "About 10 s of speech sits on one over-the-shoulder shot. Add a cut every 2 to 4 s: a close on the fee slip in Aarav's hands, then a close on your face, then a push on the lamp before you crouch."
+    },
+    {
+      "line": 152,
+      "quote": "Out in the lane... thwack.",
+      "fix": "The cue sheet takes music out before 'thwack' (planned silence 2). That is acceptable as a payoff, not a reveal. Keep the music fade finishing on 'Out in the lane...' and not earlier, so the silence does not arrive before the line."
+    }
+  ],
+  "keep": [
+    {
+      "line": 106,
+      "quote": "Quit."
+    },
+    {
+      "line": 107,
+      "quote": "the music drops to one held note on the drain, not on the nod"
+    },
+    {
+      "line": 132,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    }
+  ],
+  "error": "",
+  "output_sha256": "34fdd46b59afa566efc08786e1ed62381f5337324ae14397f77b8ede9275dac6",
+  "draft_sha256": "bb3683c5c6e82f79a45f658b553343e4a44c8b5a021232c95624bd97387ea918"
+}

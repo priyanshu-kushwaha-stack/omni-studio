@@ -4,7 +4,10 @@ whatif_story      script.md -> story.json (Python, no cost)
 whatif_narration  story.json -> voice takes, word timings, props.json. New takes are paid Higgsfield calls: without
                   owner_approved_paid_call and a max_credits cap the tool passes no cap, so the build reuses cached
                   takes and refuses any new one.
-whatif_render     Remotion render of a scene entry, then the loudness limiter (no cost)
+whatif_render     Remotion render of a scene entry, then the loudness limiter (no cost): a 1280x720 preview for
+                  G4/G5, or quality=final, the one 1920x1080 render G6 watches. mode=picture|audio gives a muted
+                  picture pass or an audio-only .wav, each with a .render.json sidecar
+whatif_mux        a picture pass and an audio pass in one watch file, refused when their timing differs (no cost)
 whatif_stills     chosen frames as PNGs and one contact sheet (no cost)
 
 Video inputs are {"channel": "<slug>", "video": "<YYYY-MM-DD_slug>"}. Paths are relative to the omni-studio root and
@@ -13,6 +16,8 @@ must stay inside it. Nothing here uploads.
 
 from __future__ import annotations
 
+import contextlib
+import json
 import os
 import re
 import shutil
@@ -35,12 +40,33 @@ from tools.base_tool import (
     ToolStatus,
     ToolTier,
 )
+from tools.studio import studio_whatif_cache as C
+
+try:  # B1 timing and the render queue (core/studio/jobs); outside the studio layer the tools run untimed, unqueued
+    from studio.jobs import queue as _queue
+    from studio.jobs.timing import record_tool as _record_tool
+
+    _QueueBusy = _queue.QueueBusy
+except ImportError:
+    _queue = None
+    _QueueBusy = ()  # catches nothing
+
+    def _record_tool(fn):
+        return fn
+
 
 STUDIO_ROOT = Path(__file__).resolve().parents[4]
 ENGINE = STUDIO_ROOT / "core" / "engines" / "whatif"
 SLUG_RE = re.compile(r"^[a-z]+(-[a-z]+)*$")
 VIDEO_RE = re.compile(r"^\d{4}-\d{2}-\d{2}_[a-z0-9]+(-[a-z0-9]+)*$")
 LIMITER = "alimiter=limit=0.84:level=false"
+# The audio of every watch file: the full render's limiter pass and whatif_mux must sound the same.
+LIMITED_AAC = ["-af", LIMITER, "-c:a", "aac", "-b:a", "256k"]
+# G4/G5 watch 1280x720 previews; G6 watches one 1920x1080 render (pipeline v2, optimisation 5). Exactly 1280x720 in
+# doubles: --scale=0.6667 gives 720.036 and Remotion refuses it. An x264 preset saved nothing (drawing is the cost).
+PREVIEW_SCALE = 0.6666666666666666
+QUALITIES = ("preview", "final")
+MODES = ("full", "picture", "audio")
 
 
 def media_python() -> Path:
@@ -79,6 +105,7 @@ class _WhatifTool(BaseTool):
     agent_skills: list[str] = []
     side_effects = ["writes files in the video's assets/ or renders/ folder, or the engine's out/"]
     resource_profile = ResourceProfile(cpu_cores=6, ram_mb=6000, disk_mb=2000)
+    queue: str | None = None  # "render" on tools that render: one render at a time on the Mac (CLAUDE.md)
 
     def get_status(self) -> ToolStatus:
         if not (ENGINE / "node_modules").is_dir() or shutil.which("npx") is None:
@@ -92,7 +119,30 @@ class _WhatifTool(BaseTool):
     def command(self, inputs: dict[str, Any]) -> tuple[list[list[str]], dict[str, str]]:
         """The commands to run in the engine folder, and their environment. Raise ValueError or PermissionError."""
 
+    def _queued(self, inputs: dict[str, Any]):
+        """The render queue (re-entrant for a command `studio.jobs run --queue render` started), else nothing."""
+        if self.queue is None or _queue is None:
+            return contextlib.nullcontext()
+        return _queue.hold(self.queue, step=self.name, channel=str(inputs.get("channel", "")),
+                           video=str(inputs.get("video", "")), timeout=float(inputs.get("queue_wait_seconds", 7200)))
+
     def execute(self, inputs: dict[str, Any]) -> ToolResult:
+        try:
+            with self._queued(inputs):
+                return self._timed(inputs)
+        except _QueueBusy as exc:
+            return ToolResult(success=False, error=f"the {self.queue} queue is held ({exc}); not run")
+
+    @_record_tool
+    def _timed(self, inputs: dict[str, Any]) -> ToolResult:
+        """Timed inside the queue, so a timing row is the work, never the wait for another session's render."""
+        return self.after(inputs, self._run(inputs))
+
+    def after(self, inputs: dict[str, Any], result: ToolResult) -> ToolResult:
+        """Runs inside the queue after the commands; passes that leave a sidecar write it here."""
+        return result
+
+    def _run(self, inputs: dict[str, Any]) -> ToolResult:
         start = time.time()
         try:
             cmds, env = self.command(inputs)
@@ -185,26 +235,114 @@ class WhatifNarration(_WhatifTool):
 
 class WhatifRender(_WhatifTool):
     name = "whatif_render"
+    queue = "render"
     capability = "video_composition"
     determinism = Determinism.DETERMINISTIC
     capabilities = ["paper_cut_render", "loudness_limiter"]
-    best_for = ["render a what-if scene entry (a video's scenes/index.ts or the engine's example) to 1920x1080 mp4"]
+    best_for = ["a G4/G5 preview of a what-if scene entry at 1280x720, or the one 1920x1080 film G6 watches "
+                "(quality=final)"]
     input_schema = {"type": "object", "required": ["entry", "composition", "props", "public_dir", "output"], "properties": {
         "entry": {"type": "string"}, "composition": {"type": "string"}, "props": {"type": "string"},
         "public_dir": {"type": "string"}, "output": {"type": "string", "description": "final mp4; the raw render sits beside it"},
-        "frames": {"type": "string", "description": "optional Remotion frame range, e.g. 0-299"}}}
+        "frames": {"type": "string", "description": "optional Remotion frame range, e.g. 0-299"},
+        "quality": {"enum": list(QUALITIES), "default": "preview",
+                    "description": "preview: 1280x720 for G4 and G5 watches; final: the one 1920x1080 render G6 watches"},
+        "mode": {"enum": list(MODES), "default": "full",
+                 "description": "picture: muted, for whatif_mux; audio: a .wav of the same mix, no frames drawn (render "
+                                "the video's RoughCutSound composition); full: both, then the limiter"},
+        "queue_wait_seconds": {"type": "number", "default": 7200,
+                               "description": "how long to wait for the render queue before giving up"}}}
+
+    def timing_step(self, inputs: dict[str, Any]) -> str:
+        mode = inputs.get("mode", "full")
+        if mode == "audio":
+            return "whatif_render.audio"
+        return f"whatif_render.{mode}-" + ("1080p" if inputs.get("quality") == "final" else "720p")
+
+    @staticmethod
+    def _check(inputs: dict[str, Any]) -> tuple[str, str]:
+        mode, quality = inputs.get("mode", "full"), inputs.get("quality", "preview")
+        if mode not in MODES:
+            raise ValueError(f"mode must be one of {MODES}")
+        if quality not in QUALITIES:
+            raise ValueError(f"quality must be one of {QUALITIES}")
+        if quality == "final" and mode != "full":
+            raise ValueError("a final render is one full render with its own audio (the file G6 watches); "
+                             "picture and audio passes are for previews")
+        if quality == "final" and inputs.get("frames"):
+            raise ValueError("a final render is the whole film: G6 watches one 1920x1080 render, never a slice")
+        return mode, quality
 
     def command(self, inputs: dict[str, Any]):
+        mode, quality = self._check(inputs)
         entry, props, public = (inside(inputs[k]) for k in ("entry", "props", "public_dir"))
         output = inside(inputs["output"])
-        raw = output.with_name(output.stem + "-raw" + output.suffix)
-        render = ["npx", "remotion", "render", str(entry), str(inputs["composition"]), str(raw),
-                  f"--props={props}", f"--public-dir={public}", "--log=error"]
+        render = ["npx", "remotion", "render", str(entry), str(inputs["composition"])]
+        opts = [f"--props={props}", f"--public-dir={public}", "--log=error"]
         if inputs.get("frames"):
-            render.append(f"--frames={inputs['frames']}")
-        limit = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-c:v", "copy", "-af", LIMITER,
-                 "-c:a", "aac", "-b:a", "256k", str(output)]
-        return [render, limit], dict(os.environ)
+            opts.append(f"--frames={inputs['frames']}")
+        if quality == "preview" and mode != "audio":
+            opts.append(f"--scale={PREVIEW_SCALE}")
+        if mode == "audio":
+            if output.suffix != ".wav":
+                raise ValueError("an audio pass writes a .wav")
+            return [[*render, str(output), "--codec=wav", *opts]], dict(os.environ)
+        if mode == "picture":
+            return [[*render, str(output), "--muted", *opts]], dict(os.environ)
+        raw = output.with_name(output.stem + "-raw" + output.suffix)
+        limit = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-c:v", "copy", *LIMITED_AAC, str(output)]
+        return [[*render, str(raw), *opts], limit], dict(os.environ)
+
+    def after(self, inputs: dict[str, Any], result: ToolResult) -> ToolResult:
+        if result.success and inputs.get("mode", "full") != "full":
+            C.write_sidecar(inside(inputs["output"]), mode=inputs["mode"], props=inside(inputs["props"]),
+                            entry=inside(inputs["entry"]), engine=ENGINE, frames=str(inputs.get("frames") or "all"))
+        return result
+
+
+class WhatifMux(_WhatifTool):
+    name = "whatif_mux"
+    capability = "video_composition"
+    determinism = Determinism.DETERMINISTIC
+    capabilities = ["mux_picture_and_audio", "loudness_limiter"]
+    best_for = ["a sound-only note at G4/G5: the new audio pass on the last picture pass, in seconds"]
+    not_good_for = ["the G6 file: that is one whatif_render quality=final"]
+    input_schema = {"type": "object", "required": ["picture", "audio", "output"], "properties": {
+        "picture": {"type": "string", "description": "a picture pass (whatif_render mode=picture)"},
+        "audio": {"type": "string", "description": "an audio pass (whatif_render mode=audio)"},
+        "output": {"type": "string"},
+        "sound_only_change": {"type": "boolean", "default": False,
+                              "description": "every scene file changed since the picture pass changes only sound"}}}
+
+    @staticmethod
+    def _changed(picture: Path, audio: Path, sound_only: bool) -> list[str]:
+        """The scene files that differ between the two passes; raises when they must not be joined."""
+        pic, aud = C.read_sidecar(picture), C.read_sidecar(audio)
+        if pic is None or aud is None:
+            raise ValueError("mux only joins passes whatif_render wrote (no .render.json beside them)")
+        if pic["mode"] != "picture" or aud["mode"] != "audio":
+            raise ValueError("picture must be a picture pass and audio an audio pass")
+        if pic["props_sha256"] != aud["props_sha256"] or pic["frames"] != aud["frames"]:
+            raise ValueError("the picture and the audio come from different timing (props.json or frames): "
+                             "render the picture again")
+        changed = C.changed_files(pic, aud)
+        if changed and not sound_only:
+            raise ValueError(f"scene files changed since the picture pass: {changed}; pass "
+                             "sound_only_change=true only if every one of them changes sound alone")
+        return changed
+
+    def command(self, inputs: dict[str, Any]):
+        picture, audio, output = (inside(inputs[k]) for k in ("picture", "audio", "output"))
+        self._changed(picture, audio, inputs.get("sound_only_change") is True)
+        mux = ["ffmpeg", "-v", "error", "-y", "-i", str(picture), "-i", str(audio), "-map", "0:v", "-map", "1:a",
+               "-c:v", "copy", *LIMITED_AAC, "-shortest", str(output)]
+        return [mux], dict(os.environ)
+
+    def after(self, inputs: dict[str, Any], result: ToolResult) -> ToolResult:
+        if result.success:
+            picture, audio = (inside(inputs[k]) for k in ("picture", "audio"))
+            result.data["scene_files_changed"] = self._changed(picture, audio, True)
+        return result
 
 
 class WhatifStills(_WhatifTool):

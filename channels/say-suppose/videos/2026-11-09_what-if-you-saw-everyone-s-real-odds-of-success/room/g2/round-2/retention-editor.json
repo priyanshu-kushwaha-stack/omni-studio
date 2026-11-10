@@ -1,0 +1,49 @@
+{
+  "call_id": "1bbe5a75297f4dd4b74d9b0ac87e73e6",
+  "seat": "retention editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story must-pass": 9,
+    "retention shape": 8,
+    "curious-viewer questions": 8,
+    "length (5\u20135.5 min; no post-8:00 reason required)": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 33,
+      "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching.",
+      "fix": "Replace with: \u201cEach chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.\u201d This answers how you can misread the chips."
+    },
+    {
+      "line": 119,
+      "quote": "The teacher, filling in the form. Again. His three per cent was never about you.",
+      "fix": "Cut this line and its setup; it repeats the chaiwala reveal. Move from the city montage directly to the topper's keyboard, then Aarav's grey chip."
+    },
+    {
+      "line": 151,
+      "quote": "You know your number now.",
+      "fix": "Cut this summary. Hold on your own handwriting, then let the offscreen \u201cthwack\u201d be the final story beat before the end card."
+    }
+  ],
+  "keep": [
+    {
+      "line": 83,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 132,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    },
+    {
+      "line": 138,
+      "quote": "But it's his. And it's moving."
+    }
+  ],
+  "error": "",
+  "output_sha256": "b700477c53847d98b29ddfa1d32cc8c8b912a503fc318af7c6f2ca7237009387",
+  "draft_sha256": "bb3683c5c6e82f79a45f658b553343e4a44c8b5a021232c95624bd97387ea918"
+}

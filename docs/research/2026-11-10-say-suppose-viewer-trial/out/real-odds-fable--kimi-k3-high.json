@@ -1,0 +1,66 @@
+{
+  "script": "real-odds-fable",
+  "model": "kimi-k3-high",
+  "exit": 0,
+  "seconds": 85,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "kimi-k3-high",
+    "family": "moonshot",
+    "status": "ok",
+    "scores": {
+      "G1 packaging": 9,
+      "G2 script": 8
+    },
+    "blockers": [
+      {
+        "quote": "Another year, for that chair. Keep going?",
+        "why": "story #3 (second hook by 0:30). The script's own timing note (line 340) says this hook starts about 00:29 and ends near 00:32, so at 0:30 the loss is only half spoken and the question 'Keep going?' has not landed yet. Watching at normal speed, at the 0:30 mark I cannot yet say both what I can lose and what the video asks \u2014 and 0:30 on a phone is exactly where my thumb decides.",
+        "fix": "Tighten the rule beat by about 3 seconds so the question ends by ~00:29: line 33 becomes 'It starts at the crowd's number. It moves with what you do.' and line 37 becomes 'One chair, out of two thousand five hundred.' (the chairs on screen already answer 'in people?').",
+        "domain": "viewer",
+        "line": 39
+      }
+    ],
+    "suggestions": [
+      {
+        "line": 183,
+        "quote": "Yours said one in two thousand five hundred. Worse than the crowd. It was watching you, and you were copying.",
+        "fix": "This is where I would stop watching (~03:55): right after the bat peak, the bus stretch runs four explaining lines in a row (177-185) while the story stands still. Cut this line \u2014 the two floors drawn side by side on the glass (line 181) already show 'worse than the crowd' \u2014 and go straight from the UPSC fact to 'Ninety-one was never a verdict. It was the crowd's starting point, waiting to see what you'd do.'"
+      },
+      {
+        "line": 288,
+        "quote": "He can't see it. He never could. He was fine until you read it to him.",
+        "fix": "At ~06:45 this made me pause and ask 'wait, who can see which chip?' \u2014 a new rule question at 86%, pulling me out of the goodbye. Cut 'He can't see it. He never could.' and keep 'He was fine until you read it to him.'"
+      },
+      {
+        "line": 290,
+        "quote": "So here's the honest part. It's still tiny. So is yours. The chips never lied.",
+        "fix": "'So here's the honest part' sounds like a teacher announcing the moral. Drop it and let the line start 'It's still tiny. So is yours. The chips never lied.'"
+      },
+      {
+        "line": null,
+        "quote": "Measured by `brand/thumbs/check.py` (K3, K4, K5, K8, K9, K10, K11)",
+        "fix": "K1-K4, K8-K11 and K14: needs the rendered thumbnail; left to the owner."
+      }
+    ],
+    "keep": [
+      {
+        "line": 90,
+        "quote": "Four hundred of you are asking directions from a man who's still looking for the place."
+      },
+      {
+        "line": 261,
+        "quote": "The biggest number tells you what is likely. It cannot tell you what is worth choosing."
+      },
+      {
+        "line": 316,
+        "quote": "Row three. You don't look up. Out in the lane: thwack."
+      }
+    ],
+    "error": ""
+  }
+}

@@ -1,3 +1,4 @@
+import { useSoundOnly } from "../sound";
 import { INK } from "../theme";
 import { dir, HEAD_R, joints, LIMB, STAND, TORSO, type Pose } from "./pose";
 
@@ -86,6 +87,7 @@ export const Figure: React.FC<FigureProps> = ({
   x, y, scale = 1, facing = 1, rotate = 0, pose = STAND, head, scarf, flow = 0, time = 0,
   look = { x: 0.4, y: 0 }, eyes = 1, blink = false, mouth = "none", brows = "none", lids = 0, tuft, tie, cap, coat, torso = TORSO, held,
 }) => {
+  if (useSoundOnly()) return null;
   const j = joints(pose, torso);
   const hand = handOf(j.shoulder, pose.armF);
   const eyeRy = blink ? 1.8 : 12.5 * eyes;
