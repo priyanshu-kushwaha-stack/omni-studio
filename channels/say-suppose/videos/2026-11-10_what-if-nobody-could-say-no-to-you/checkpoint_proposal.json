@@ -3,11 +3,11 @@
   "project_id": "2026-11-10_what-if-nobody-could-say-no-to-you",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-10T19:39:55.431288+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-10T19:56:21.465608+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -115,6 +115,12 @@
     "packaging": "packaging.md (room round 3, sha ffa970d4)",
     "room": "room-g1.md, review-g1-round1..3.md",
     "owner_pick": "title A with thumbnail b (EVEN HER?), 2026-11-11",
-    "awaiting": "omni approve by the owner"
+    "awaiting": "omni approve by the owner",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-10T19:56:21.459228+00:00",
+      "via": "omni approve",
+      "proof": "a81ed3dcdf55e068532a47e8fc7275ea278a38f62fe871235fcfb5fd8640a14b"
+    }
   }
 }
