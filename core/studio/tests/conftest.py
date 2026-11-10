@@ -232,3 +232,25 @@ def studio_helpers():
     from types import SimpleNamespace
 
     return SimpleNamespace(studio_root_at=studio_root_at, point_at_root=point_at_root, copying_media=copying_media)
+
+
+@pytest.fixture
+def fake_cli(monkeypatch):
+    """Room seat calls answered from a list of verdict dicts, in order; git and --version calls succeed."""
+    import json
+    import subprocess
+
+    from studio.room import call
+
+    def install(answers):
+        def run(cmd, **kw):
+            if cmd[0] == "git":
+                return subprocess.CompletedProcess(cmd, 0, stdout="", stderr="")
+            if cmd[-1] == "--version":
+                return subprocess.CompletedProcess(cmd, 0, stdout="1\n", stderr="")
+            out = json.dumps({"result": json.dumps(answers.pop(0))})
+            return subprocess.CompletedProcess(cmd, 0, stdout=out, stderr="")
+
+        monkeypatch.setattr(call.subprocess, "run", run)
+
+    return install

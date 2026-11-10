@@ -230,5 +230,5 @@ def test_the_say_suppose_room_is_valid_and_takes_pipeline_v2():
     cfg = C.load_room(SS / "room.yaml")
     assert C.validate(cfg) == []
     assert cfg.rounds == 1 and cfg.owner_first and not cfg.viewer_required
-    assert cfg.limits == {"blockers": 3, "suggestions": 3, "keep": 3}
+    assert all(s.limits == {"blockers": 3, "suggestions": 3, "keep": 3} for s in cfg.seats)
     assert any("--under-from 2026-11-10" in linter for linter in cfg.linters)

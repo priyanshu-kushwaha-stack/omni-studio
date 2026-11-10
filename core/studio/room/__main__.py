@@ -286,8 +286,9 @@ def cmd_judge(args) -> int:
     inputs = _read_inputs(args.input, cfg, reserved=("draft",))
     if inputs is None:
         return 2
-    best = R.best_before(rounds, args.round, required_roles(cfg))
-    if best is None or not R.is_candidate(current, required_roles(cfg)):
+    required = required_roles(cfg)
+    best = R.best_before(rounds, args.round, required)
+    if best is None or not R.is_candidate(current, required):
         print(json.dumps({"judged": False, "why": "fewer than two candidates"}))
         return 0
     if (R.round_dir(video, args.gate, args.round) / "judge.json").exists() or Ledger().count(

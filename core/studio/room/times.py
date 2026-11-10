@@ -7,7 +7,6 @@ checkpoint. The scorecard reads the owner's marks on room blockers, which the se
 
 from __future__ import annotations
 
-import json
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Optional
@@ -41,23 +40,13 @@ def _when(text: Any) -> Optional[datetime]:
 
 
 def _checkpoint(video: Path, gate: str) -> str:
-    try:
-        data = json.loads((video / CHECKPOINTS[gate]).read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        return "-"
-    return f"{data.get('status', '?')} {data.get('timestamp', '?')}" if isinstance(data, dict) else "-"
-
-
-def _linted_at(video: Path, gate: str) -> Optional[str]:
-    try:
-        return R.read_meta(video, gate, 1).get("linted_at")
-    except (OSError, ValueError):
-        return None
+    data = R._json(video / CHECKPOINTS[gate])
+    return f"{data.get('status', '?')} {data.get('timestamp', '?')}" if data else "-"
 
 
 def _gate(video: Path, gate: str, ledger: Ledger, channel: str) -> dict[str, Any]:
-    rounds = R.load_rounds(video, gate)
-    linted = _linted_at(video, gate)
+    metas = {p.parent.name: R._json(p) or {} for p in R.gate_dir(video, gate).glob("round-*/meta.json")}
+    linted = metas.get("round-1", {}).get("linted_at")
     presented = (R.read_presented(video, gate) or {}).get("at")
     a, b = _when(linted), _when(presented)
     calls = ledger.rows(channel=channel, video=video.name, gate=gate)
@@ -69,8 +58,8 @@ def _gate(video: Path, gate: str, ledger: Ledger, channel: str) -> dict[str, Any
         "minutes_to_owner": round((b - a).total_seconds() / 60) if a and b else None,
         "first_call": calls[0].at if calls else "-",
         "last_call_done": max(done).isoformat(timespec="seconds") if done else "-",
-        "room_rounds": sum(1 for r in rounds if not r.get("owner_notes")),
-        "owner_rounds": sum(1 for r in rounds if r.get("owner_notes")),
+        "room_rounds": sum(1 for m in metas.values() if m.get("owner_notes") is not True),
+        "owner_rounds": sum(1 for m in metas.values() if m.get("owner_notes") is True),
         "calls": len(calls),
         "checkpoint": _checkpoint(video, gate),
     }
@@ -80,10 +69,15 @@ def gate_times(video_dir: Path, ledger: Ledger, channel: str) -> list[dict[str, 
     return [_gate(Path(video_dir), gate, ledger, channel) for gate in CHECKPOINTS]
 
 
+def _table(columns: tuple[str, ...], rows: list[dict[str, Any]], head: tuple[str, ...] = ()) -> str:
+    head = head or columns
+    lines = ["| " + " | ".join(head) + " |", "|" + "---|" * len(head)]
+    lines += ["| " + " | ".join("-" if r[c] in (None, "") else str(r[c]) for c in columns) + " |" for r in rows]
+    return "\n".join(lines) + "\n"
+
+
 def render_times(rows: list[dict[str, Any]]) -> str:
-    head = ["| " + " | ".join(COLUMNS) + " |", "|" + "---|" * len(COLUMNS)]
-    body = ["| " + " | ".join("-" if r[c] is None else str(r[c]) for c in COLUMNS) + " |" for r in rows]
-    return "\n".join(head + body) + "\n"
+    return _table(COLUMNS, rows)
 
 
 def _marks(path: Path) -> list[dict[str, Any]]:
@@ -115,10 +109,5 @@ def scorecard(channel_dir: Path) -> list[dict[str, Any]]:
 
 
 def render_scorecard(rows: list[dict[str, Any]]) -> str:
-    lines = ["| seat | films | agreed | unsure | disagreed | agreed share | flag |", "|---|---|---|---|---|---|---|"]
-    lines += [
-        f"| {r['seat']} | {r['films']} | {r['agreed']} | {r['unsure']} | {r['disagreed']} | {r['share']} "
-        f"| {r['flag'] or '-'} |"
-        for r in rows
-    ]
-    return "\n".join(lines) + "\n"
+    columns = ("seat", "films", *MARKS, "share", "flag")
+    return _table(columns, rows, head=("seat", "films", *MARKS, "agreed share", "flag"))

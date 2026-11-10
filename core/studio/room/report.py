@@ -198,6 +198,7 @@ def build_report(
 ) -> dict[str, Any]:
     video_dir = Path(video_dir)
     rounds, skipped = scan_rounds(video_dir, gate)
+    ship = shipped(rounds, required)
     summary = []
     for rnd in rounds:
         summary.append(
@@ -233,10 +234,10 @@ def build_report(
         "rounds": summary,
         "skipped_rounds": skipped,
         "malformed_verdicts": sorted(m for r in rounds for m in r["malformed"]),
-        "shipped": shipped(rounds, required),
+        "shipped": ship,
         "calls": ledger.count(channel=channel, video=video_dir.name, gate=gate),
         "cap": cap,
-        "author_cut": _author_cut(video_dir, rounds, shipped(rounds, required)),
+        "author_cut": _author_cut(video_dir, rounds, ship),
         "presented": read_presented(video_dir, gate),
     }
 
@@ -246,6 +247,8 @@ def _author_cut(video_dir: Path, rounds: list[dict[str, Any]], ship: Optional[di
     if not rounds or not ship:
         return None
     first = rounds[0]
+    if first["draft_sha256"] == ship["artifact_sha256"]:
+        return {"round": first["round"], "draft_sha256": first["draft_sha256"], "cost": spine.NO_COST}
     keeps = [
         k.get("quote", "") if isinstance(k, dict) else str(k)
         for r in rounds

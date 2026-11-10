@@ -58,7 +58,6 @@ class RoomConfig:
     adopted: Optional[date] = None
     pitch_clip: str = "after_g2"
     sources: list[str] = field(default_factory=list)
-    limits: dict[str, int] = field(default_factory=dict)
     viewer_required: bool = True
     owner_first: bool = False
     path: Optional[Path] = None
@@ -159,7 +158,6 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
         adopted=data.get("adopted"),
         pitch_clip=str(data.get("pitch_clip", "after_g2")),
         sources=list(data.get("sources") or []),
-        limits=limits,
         viewer_required=_flag(data, "viewer_required", True, path),
         owner_first=_flag(data, "owner_first", False, path),
         path=path,

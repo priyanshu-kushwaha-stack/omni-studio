@@ -83,8 +83,7 @@ seats:
 """
 
 
-def test_the_cli_prints_both_tables(tmp_path, monkeypatch, capsys):
-    monkeypatch.setenv("OMNI_ROOM_LEDGER", str(tmp_path / "ledger.sqlite"))
+def test_the_cli_prints_both_tables(tmp_path, capsys):
     video = _video(tmp_path)
     cfg = video.parents[1] / "room.yaml"
     cfg.write_text(ROOM)

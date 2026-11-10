@@ -155,10 +155,9 @@ def _numbered(text: str) -> str:
     return "\n".join(f"{i:>4}  {line}" for i, line in enumerate(text.splitlines(), 1))
 
 
-def _caps_line(limits: Optional[dict[str, int]]) -> str:
-    names = {"blockers": "blockers", "suggestions": "suggestions", "keep": "keep lines"}
-    parts = [f"at most {limits[k]} {names[k]}" for k in names if k in (limits or {})]
-    return ("Give " + ", ".join(parts) + ", worst first. A fact seat lists every fact blocker.") if parts else ""
+def _caps_line(limits: dict[str, int]) -> str:
+    parts = [f"at most {n} {'keep lines' if k == 'keep' else k}" for k, n in limits.items()]
+    return "Give " + ", ".join(parts) + ", worst first. A fact seat lists every fact blocker."
 
 
 def seat_prompt(brief: str, role: str, inputs: dict[str, str], limits: Optional[dict[str, int]] = None) -> str:

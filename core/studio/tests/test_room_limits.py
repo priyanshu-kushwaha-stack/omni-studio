@@ -64,7 +64,7 @@ seats:
 def test_room_yaml_limits_reach_every_seat(tmp_path):
     (tmp_path / "room.yaml").write_text(BASE + "limits: {blockers: 3, suggestions: 3, keep: 3}\n")
     cfg = C.load_room(tmp_path / "room.yaml")
-    assert cfg.limits == LIMITS and all(s.limits == LIMITS for s in cfg.seats)
+    assert all(s.limits == LIMITS for s in cfg.seats)
 
 
 @pytest.mark.parametrize("bad", ["limits: 3", "limits: {blockers: 0}", "limits: {vetoes: 2}", "limits: {keep: x}"])

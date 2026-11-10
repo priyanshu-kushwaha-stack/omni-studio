@@ -28,9 +28,7 @@ from pathlib import Path
 
 FIVE = ("SITUATION", "DESIRE", "CONFLICT", "CHANGE", "RESULT")
 BEAT = re.compile(r"^## \[\d{2}:\d{2}\]")
-FIVE_LINE = re.compile(r"^>\s*(" + "|".join(FIVE) + r")\s*:(.*)$")
-UNDER_LINE = re.compile(r"^>\s*UNDER\s*:(.*)$")
-DARLING_LINE = re.compile(r"^>\s*DARLING\s*:(.*)$")
+HEADER_LINE = re.compile(r"^>\s*(" + "|".join((*FIVE, "UNDER", "DARLING")) + r")\s*:(.*)$")
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}")
 MAX_DARLINGS = 3
 
@@ -39,18 +37,22 @@ def _flat(text: str) -> str:
     return " ".join(text.split()).casefold()
 
 
-def meaning_problems(text: str, require_under: bool) -> list[str]:
-    unders: list[tuple[str, bool]] = []
-    darlings: list[str] = []
+def _headers(text: str) -> list[tuple[str, str, bool]]:
+    """(name, body, before the first beat) for every five-line, UNDER and DARLING direction line."""
+    found: list[tuple[str, str, bool]] = []
     before = True
     for raw in text.splitlines():
         line = raw.strip()
         if BEAT.match(line):
             before = False
-        if m := UNDER_LINE.match(line):
-            unders.append((m.group(1).strip(), before))
-        if m := DARLING_LINE.match(line):
-            darlings.append(m.group(1).strip().strip("\"'"))
+        if m := HEADER_LINE.match(line):
+            found.append((m.group(1), m.group(2).strip(), before))
+    return found
+
+
+def meaning_problems(headers: list[tuple[str, str, bool]], text: str, require_under: bool) -> list[str]:
+    unders = [(body, early) for name, body, early in headers if name == "UNDER"]
+    darlings = [body.strip("\"'") for name, body, _ in headers if name == "DARLING"]
     out: list[str] = []
     if require_under and not unders:
         out.append("the meaning layer: missing > UNDER: (the question under the question) before the first beat")
@@ -69,15 +71,8 @@ def meaning_problems(text: str, require_under: bool) -> list[str]:
 
 
 def problems(text: str, require_under: bool = False) -> list[str]:
-    found: list[tuple[str, str, bool]] = []  # (name, body, before the first beat)
-    before = True
-    for raw in text.splitlines():
-        line = raw.strip()
-        if BEAT.match(line):
-            before = False
-        m = FIVE_LINE.match(line)
-        if m:
-            found.append((m.group(1), m.group(2).strip(), before))
+    headers = _headers(text)
+    found = [h for h in headers if h[0] in FIVE]  # (name, body, before the first beat)
     out: list[str] = []
     missing = [n for n in FIVE if n not in {f[0] for f in found}]
     if missing:
@@ -99,7 +94,7 @@ def problems(text: str, require_under: bool = False) -> list[str]:
     order = [n for n, _, b in found if b]
     if not missing and len(order) == len(FIVE) and order != list(FIVE):
         out.append("five lines first: give them in the order " + ", ".join(FIVE) + f", not {', '.join(order)}")
-    return out + meaning_problems(text, require_under)
+    return out + meaning_problems(headers, text, require_under)
 
 
 def main(argv: list[str]) -> int:

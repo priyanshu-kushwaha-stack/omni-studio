@@ -52,6 +52,12 @@ class CallRow:
     verdict_sha256: Optional[str] = None
 
 
+def _where(**filters) -> tuple[str, list]:
+    """A WHERE clause (or "") and its arguments for the filters that are not None. Column names are ours, never input."""
+    cols = [(c, v) for c, v in filters.items() if v is not None]
+    return (" WHERE " + " AND ".join(f"{c} = ?" for c, _ in cols) if cols else ""), [v for _, v in cols]
+
+
 def ledger_path() -> Path:
     env = os.environ.get("OMNI_ROOM_LEDGER")
     return Path(env) if env else DEFAULT
@@ -148,10 +154,9 @@ class Ledger:
         self, *, channel: Optional[str] = None, video: Optional[str] = None, gate: Optional[str] = None
     ) -> list[CallRow]:
         """Every call for the channel, video and gate given, oldest first."""
-        where = [(c, v) for c, v in (("channel", channel), ("video", video), ("gate", gate)) if v is not None]
-        sql = "SELECT * FROM calls" + (" WHERE " + " AND ".join(f"{c} = ?" for c, _ in where) if where else "")
+        where, args = _where(channel=channel, video=video, gate=gate)
         with closing(self._connect()) as db:
-            return [CallRow(**dict(r)) for r in db.execute(sql + " ORDER BY at", [v for _, v in where])]
+            return [CallRow(**dict(r)) for r in db.execute("SELECT * FROM calls" + where + " ORDER BY at", args)]
 
     def count(
         self,
@@ -163,18 +168,6 @@ class Ledger:
         status: Optional[str] = None,
         seat: Optional[str] = None,
     ) -> int:
-        where, args = [], []
-        for col, val in (
-            ("channel", channel),
-            ("video", video),
-            ("gate", gate),
-            ("round", round),
-            ("status", status),
-            ("seat", seat),
-        ):
-            if val is not None:
-                where.append(f"{col} = ?")
-                args.append(val)
-        sql = "SELECT COUNT(*) FROM calls" + (" WHERE " + " AND ".join(where) if where else "")
+        where, args = _where(channel=channel, video=video, gate=gate, round=round, status=status, seat=seat)
         with closing(self._connect()) as db:
-            return db.execute(sql, args).fetchone()[0]
+            return db.execute("SELECT COUNT(*) FROM calls" + where, args).fetchone()[0]
