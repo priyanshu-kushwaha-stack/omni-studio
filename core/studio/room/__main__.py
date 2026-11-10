@@ -275,6 +275,9 @@ def cmd_judge(args) -> int:
     cfg = load_room(Path(args.config))
     if _problems(cfg):
         return 2
+    if cfg.judge is None:
+        print(json.dumps({"judged": False, "why": "no judge in room.yaml"}))
+        return 0
     video = _video_in(args, cfg)
     if video is None:
         return 2
