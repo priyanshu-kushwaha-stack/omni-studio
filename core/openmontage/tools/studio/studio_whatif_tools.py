@@ -13,6 +13,7 @@ must stay inside it. Nothing here uploads.
 
 from __future__ import annotations
 
+import contextlib
 import os
 import re
 import shutil
@@ -36,11 +37,23 @@ from tools.base_tool import (
     ToolTier,
 )
 
+try:  # B1 timing and the render queue (core/studio/jobs); outside the studio layer the tools run untimed, unqueued
+    from studio.jobs import queue as _queue
+    from studio.jobs.timing import record_tool as _record_tool
+except ImportError:
+    _queue = None
+
+    def _record_tool(fn):
+        return fn
+
+
 STUDIO_ROOT = Path(__file__).resolve().parents[4]
 ENGINE = STUDIO_ROOT / "core" / "engines" / "whatif"
 SLUG_RE = re.compile(r"^[a-z]+(-[a-z]+)*$")
 VIDEO_RE = re.compile(r"^\d{4}-\d{2}-\d{2}_[a-z0-9]+(-[a-z0-9]+)*$")
 LIMITER = "alimiter=limit=0.84:level=false"
+# Set by `python -m studio.jobs run --queue`: a tool run inside it must not wait on the queue it is already in.
+HELD_ENV = "OMNI_JOBS_QUEUE_HELD"
 
 
 def media_python() -> Path:
@@ -79,6 +92,7 @@ class _WhatifTool(BaseTool):
     agent_skills: list[str] = []
     side_effects = ["writes files in the video's assets/ or renders/ folder, or the engine's out/"]
     resource_profile = ResourceProfile(cpu_cores=6, ram_mb=6000, disk_mb=2000)
+    queue: str | None = None  # "render" on tools that render: one render at a time on the Mac (CLAUDE.md)
 
     def get_status(self) -> ToolStatus:
         if not (ENGINE / "node_modules").is_dir() or shutil.which("npx") is None:
@@ -92,7 +106,28 @@ class _WhatifTool(BaseTool):
     def command(self, inputs: dict[str, Any]) -> tuple[list[list[str]], dict[str, str]]:
         """The commands to run in the engine folder, and their environment. Raise ValueError or PermissionError."""
 
+    def _queued(self, inputs: dict[str, Any]):
+        held = os.environ.get(HELD_ENV, "").split(",")
+        if self.queue is None or _queue is None or self.queue in held:
+            return contextlib.nullcontext()
+        return _queue.hold(self.queue, step=self.name, channel=str(inputs.get("channel", "")),
+                           video=str(inputs.get("video", "")), timeout=float(inputs.get("queue_wait_seconds", 7200)))
+
+    @_record_tool
     def execute(self, inputs: dict[str, Any]) -> ToolResult:
+        try:
+            with self._queued(inputs):
+                return self.after(inputs, self._run(inputs))
+        except Exception as exc:
+            if _queue is not None and isinstance(exc, _queue.QueueBusy):
+                return ToolResult(success=False, error=f"the {self.queue} queue is held ({exc}); not run")
+            raise
+
+    def after(self, inputs: dict[str, Any], result: ToolResult) -> ToolResult:
+        """Runs inside the queue after the commands; passes that leave a sidecar write it here."""
+        return result
+
+    def _run(self, inputs: dict[str, Any]) -> ToolResult:
         start = time.time()
         try:
             cmds, env = self.command(inputs)
@@ -185,6 +220,7 @@ class WhatifNarration(_WhatifTool):
 
 class WhatifRender(_WhatifTool):
     name = "whatif_render"
+    queue = "render"
     capability = "video_composition"
     determinism = Determinism.DETERMINISTIC
     capabilities = ["paper_cut_render", "loudness_limiter"]
@@ -192,7 +228,9 @@ class WhatifRender(_WhatifTool):
     input_schema = {"type": "object", "required": ["entry", "composition", "props", "public_dir", "output"], "properties": {
         "entry": {"type": "string"}, "composition": {"type": "string"}, "props": {"type": "string"},
         "public_dir": {"type": "string"}, "output": {"type": "string", "description": "final mp4; the raw render sits beside it"},
-        "frames": {"type": "string", "description": "optional Remotion frame range, e.g. 0-299"}}}
+        "frames": {"type": "string", "description": "optional Remotion frame range, e.g. 0-299"},
+        "queue_wait_seconds": {"type": "number", "default": 7200,
+                               "description": "how long to wait for the render queue before giving up"}}}
 
     def command(self, inputs: dict[str, Any]):
         entry, props, public = (inside(inputs[k]) for k in ("entry", "props", "public_dir"))

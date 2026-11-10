@@ -9,6 +9,8 @@ from pathlib import Path
 import pytest
 
 from lib.pipeline_loader import load_pipeline_readonly
+from studio.jobs import queue as Q
+from studio.jobs import timing as T
 from tools.studio import studio_whatif_tools as wt
 from tools.tool_registry import registry
 
@@ -110,3 +112,35 @@ def test_a_timeout_kills_the_whole_command_and_is_reported(tmp_path):
         time.sleep(0.1)
     os.kill(child, 9)
     pytest.fail("the command's child process survived the timeout")
+
+
+class _Quick(wt._WhatifTool):
+    name = "whatif_test_quick"
+    queue = "render"
+
+    def command(self, inputs):
+        return [["true"]], dict(os.environ)
+
+
+def test_a_queued_tool_refuses_when_the_render_queue_stays_held(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
+    monkeypatch.delenv("OMNI_JOBS_QUEUE_HELD", raising=False)
+    with Q.hold("render", step="other session"):
+        result = _Quick().execute({"queue_wait_seconds": 0})
+    assert not result.success and "render queue" in result.error and "other session" in result.error
+    assert _Quick().execute({"queue_wait_seconds": 0}).success
+
+
+def test_a_tool_run_inside_studio_jobs_run_does_not_take_the_queue_twice(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
+    monkeypatch.setenv("OMNI_JOBS_QUEUE_HELD", "render")
+    with Q.hold("render", step="studio.jobs run"):
+        assert _Quick().execute({"queue_wait_seconds": 0}).success
+
+
+def test_whatif_tools_record_a_timing(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
+    monkeypatch.delenv("OMNI_JOBS_QUEUE_HELD", raising=False)
+    _Quick().execute({"channel": "say-suppose", "video": VIDEO})
+    row = T.read_timings()[-1]
+    assert (row["step"], row["video"]) == ("whatif_test_quick", VIDEO)
