@@ -1,0 +1,12 @@
+channel: say-suppose
+format: story
+stage: proposal
+severity: medium
+example: omni new-video say-suppose 'What If You Saw 60 Seconds Into the Future?'
+  run from worktree say-suppose-first-video-40c64e wrote the folder into the main
+  checkout (~/Exploration/projects/omni-studio/channels/say-suppose/videos/...), because
+  .venv/bin/omni resolves the root from the main checkout's install
+recorded_at: '2026-11-10T15:38:22.690263+00:00'
+note: 'In a worktree, omni new-video should create the folder under the current worktree
+  (or print a warning). Workaround used: mv the folder into the worktree; run studio.cli
+  with PYTHONPATH=$PWD/core/openmontage:$PWD/core.'

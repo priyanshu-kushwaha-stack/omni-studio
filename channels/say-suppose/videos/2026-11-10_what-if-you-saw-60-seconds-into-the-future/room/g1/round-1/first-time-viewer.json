@@ -1,0 +1,66 @@
+{
+  "call_id": "9da3e705c1f0443491352b894b450ce2",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "claude-opus-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "premise": 8,
+    "first 30 seconds (story #2, #3, #4)": 6,
+    "the viewer's week": 7,
+    "title and thumbnail set (K5-K7, K12, K13, K15)": 8,
+    "would I stay past 8:00": 8
+  },
+  "blockers": [
+    {
+      "quote": "Your phone is up, thumb refreshing: the bus app, the result page, mother's typing dots. The chai glass slips off the counter and smashes on the floor. You look down. It is still in your hand.",
+      "why": "story #3: the first 10 s show a picture but say nothing. The first spoken line is the title question somewhere before 0:20, so for ten seconds I get no premise and no stakes. The result due Friday is only a page on a phone I can't read at feed size. I see a glass break and not break, but I don't know what I could lose.",
+      "fix": "Put the first word within 1 s, spoken over the refresh and the smash: \"Result's due Friday. So you check everything before it happens. Tonight, something checks first.\" Then, as you look down: \"Your chai just broke. It's still in your hand.\" Keep the title question and \"You have one minute...\" at 0:10 to 0:20.",
+      "domain": "viewer",
+      "line": 30
+    },
+    {
+      "quote": "College nets: you call the ball before the bowler's arm comes over, swing where the ghost ball goes, and still miss, because the bowler saw you shift.",
+      "why": "The viewer's week: batting at the college nets is not in Riya's week (chai, bus or metro, exams, office, family). I would picture someone else's life here, not mine.",
+      "fix": "Move the gag to the college canteen TV with friends: \"You call the six before the bowler runs in. Your friends stop watching with you.\" The cricket fact then lands on the batter on screen: the ball beats the eye, so he reads the bowler's body, and you read the minute and it spoils the match instead.",
+      "domain": "viewer",
+      "line": 33
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 42,
+      "quote": "A firm spent about three hundred million dollars on a straighter cable to gain about three thousandths of a second",
+      "fix": "This is where I'd leave. The cable, the quake warning and Lorenz come back to back on one train ride where nothing happens to me: three facts in forty seconds is a lecture. Cut the cable beat and keep the quake brake, which I feel under my feet. Let Lorenz land only after grandfather says or does something on that train."
+    },
+    {
+      "line": 57,
+      "quote": "Can I just catch the glass, or does it always come true? Answered at 0:40: you catch it, and the ghost redraws.",
+      "fix": "The ghost is a minute ahead, so the real glass should slip at about 1:05, not 0:40. If I count, I stop trusting the rule. Move the catch to the end of the full minute, after the rule beat, and let a ghost-bus line fill the gap."
+    },
+    {
+      "line": 17,
+      "quote": "Final year, the result due Friday, and you check everything before it happens: the bus app, the result page, the typing dots.",
+      "fix": "The result is the stake in the opening and never comes back, so I'll wonder about it at the end. Pay it off in the last image: \"The result page and mother's dots both glow through the fabric, and you let them.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 44,
+      "quote": "Being caught out was the gift."
+    },
+    {
+      "line": 39,
+      "quote": "\"You've heard it.\" He does not finish."
+    },
+    {
+      "line": 43,
+      "quote": "\"Watch him, or hear him?\""
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "67d47017f3a854e80879396406f036a2db19d988e7f4c4e87df28bf4addc0ad6",
+  "draft_sha256": "06648cee791c86266693ac345de16135d57917d0fda91199d7f1f90720519086"
+}

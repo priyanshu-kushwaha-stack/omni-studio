@@ -1,0 +1,69 @@
+{
+  "call_id": "3a911ee715054d38b12eefd2b1a4ec12",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "you laugh on time anyway, and it works",
+      "why": "Check #6 fails: using the ghost produces exactly the expected result, with no gap.",
+      "fix": "Replace with: \"You laugh on time\u2014too perfectly. He pauses, then pours your chai into the saucer to cool it the way he did when you were six.\" Give the phone exchange an equivalent unexpected result.",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "The stranger is here: the one figure in the crowd with no ghost",
+      "why": "The stranger first appears at 65%, failing No new person after 60%.",
+      "fix": "Hide the stranger in the earlier platform wide on line 33, then remove this sentence and update line 53 to the earlier appearance.",
+      "domain": "story",
+      "line": 40
+    },
+    {
+      "quote": "The picture only this premise can show, at about 6:30: the dinner table with everyone's ghost one minute ahead.",
+      "why": "Check #8 fails because the picture is not named in a `> SCENE:` line.",
+      "fix": "Replace with: \"> SCENE: At about 6:30, the dinner table doubles: ghost mother has already cleared her plate and left while real mother is still speaking; you alone are not there yet.\"",
+      "domain": "story",
+      "line": 37
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 41,
+      "quote": "You stop reading it. You take his hand, close your eyes, and stand still.",
+      "fix": "Let grandfather choose where to stand while you stop steering by the ghost; reserve closing your eyes for the dilemma on line 43, so its answer has not already been given."
+    },
+    {
+      "line": 42,
+      "quote": "A firm spent about three hundred million dollars on a straighter cable to gain about three thousandths of a second",
+      "fix": "Cut the cable fact. Let the train-braking fact emerge from the ride home, then use Lorenz alone to force the realization that more foresight becomes less reliable."
+    },
+    {
+      "line": 33,
+      "quote": "The teacher's question: you answer before she asks it; she asks a different one.",
+      "fix": "Replace this familiar precognition gag with the late boss's typing dots: you answer the ghost request before it arrives, so the real request redraws into something worse."
+    }
+  ],
+  "keep": [
+    {
+      "line": 30,
+      "quote": "The chai glass slips off the counter and smashes on the floor. You look down. It is still in your hand."
+    },
+    {
+      "line": 41,
+      "quote": "The ghost redraws and redraws across the crowd while you do not move; then the two layers slide together into one as the minute arrives."
+    },
+    {
+      "line": 44,
+      "quote": "Being caught out was the gift."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "10fcecadf3f028c9da9122286a86219a3c1500f172d9e194f17cee4d4f33d7f3",
+  "draft_sha256": "06648cee791c86266693ac345de16135d57917d0fda91199d7f1f90720519086"
+}

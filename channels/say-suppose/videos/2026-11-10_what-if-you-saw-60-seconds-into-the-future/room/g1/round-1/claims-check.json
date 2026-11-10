@@ -1,0 +1,69 @@
+{
+  "call_id": "84be10a397b043e1a7fafd88e72e7c6e",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 7
+  },
+  "blockers": [
+    {
+      "quote": "Fact: in the seventies a group of physics students hid computers in their shoes to predict a roulette ball and reported a large edge, until the house noticed (greed)",
+      "why": "Claim id: needs a source. Historical overstatement and error: The casino (\"the house\") never detected the shoe computer. The Eudaemons (Farmer, Packard, et al.) abandoned the operation because of hardware failures\u2014specifically, short circuits delivering electrical shocks that burned an operator's foot\u2014and fragile wiring that proved too unreliable and risky. Stating that they operated 'until the house noticed' is historically inaccurate.",
+      "fix": "Fact: in the seventies a group of physics students hid computers in their shoes to predict a roulette ball and reported a large edge, until the hardware burned them and broke down (greed) (needs a source)",
+      "domain": "fact",
+      "line": 36
+    },
+    {
+      "quote": "The fact: what you see is about a tenth of a second old, and your brain guesses forward to cover the gap. Drawn on the glass as a paper diagram: the flash-lag illusion, a moving dot that looks ahead of a flash level with it.",
+      "why": "Claim id: needs a source. Contested scientific mechanism stated as definitive fact: Motion extrapolation (Nijhawan 1994) is not established consensus for the flash-lag effect; major neuroscience literature (e.g. Eagleman & Sejnowski 2000) provides counter-evidence supporting postdiction, while others support differential latency. Under the seat rules, contested scientific findings must be spoken with a caveat (\"some neuroscientists say\") and explain why.",
+      "fix": "The fact: what you see is about a tenth of a second old, and some neuroscientists argue your brain guesses forward to cover the gap, pointing to the flash-lag illusion\u2014a moving dot that looks ahead of a flash level with it (needs a source).",
+      "domain": "fact",
+      "line": 34
+    },
+    {
+      "quote": "Then why more would be worthless: Lorenz rounded one number and got a different weather; past a minute the ghost would be rumour on rumour.",
+      "why": "Claim id: needs a source. Scope and physical science error: Lorenz's 1961 discovery of deterministic chaos in numerical weather modeling established that predictability breaks down over days to two weeks, not one minute. Attributing a one-minute failure horizon directly to Lorenz's weather calculation misstates the physical timescale of atmospheric chaos.",
+      "fix": "Then why more would be worthless: Lorenz rounded one number and saw tiny differences blow up an entire forecast; when people react to what they see, that divergence collapses into rumour past a single minute (needs a source).",
+      "domain": "fact",
+      "line": 42
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "Misconception first: you still act as if seeing is knowing. The ghost shows mother burning her hand on the pan. You shout; she turns at your voice and knocks the boiling chai (redraw, worse); you grab it; nothing happens, except she does not speak again that evening. The fact, within two lines: a self-defeating prophecy, a prediction that prevents what it predicts because people act on it.",
+      "fix": "Describe the misconception fairly as people actually hold it\u2014'that seeing the future lets you intervene without changing it'\u2014rather than the slogan 'seeing is knowing', and source Merton's defined concept of a self-defeating prophecy with a concrete empirical example at G2 (needs a source)."
+    },
+    {
+      "line": 9,
+      "quote": "The real-world part, to be sourced at G2: your eyes already run a tenth of a second late and your brain guesses forward to cover it; what a few milliseconds of future have cost traders and saved trains; why a forecast past a minute forgets itself; and why a predicted reward lands as nothing.",
+      "fix": "Refine the physiological description before scripting G2: perceptual latency of ~100 ms is cortical processing and neural transmission delay across the visual hierarchy, not a delay in the eyes alone (needs a source)."
+    },
+    {
+      "line": 33,
+      "quote": "Fact, one number: at a hundred and fifty an hour the ball crosses the pitch in under half a second, less than the time to see and swing; the pros read the body, not the ball; you read the minute, and it still is not enough (delight).",
+      "fix": "State the speed unit explicitly ('a hundred and fifty kilometres an hour') in the spoken script to avoid ambiguity with miles per hour, and source batter reaction and bat-swing latency studies at G2 (needs a source)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 44,
+      "quote": "The fact: a reward the brain fully predicted produces almost no response in its reward cells; the surprise is the signal."
+    },
+    {
+      "line": 42,
+      "quote": "A firm spent about three hundred million dollars on a straighter cable to gain about three thousandths of a second (greed: what your minute is worth to someone). Japan's quake warning gives seconds, and the trains brake themselves on it (calm: the brake you just felt under your feet)."
+    },
+    {
+      "line": 9,
+      "quote": "The ghost is invented. The real-world part, to be sourced at G2: your eyes already run a tenth of a second late and your brain guesses forward to cover it; what a few milliseconds of future have cost traders and saved trains; why a forecast past a minute forgets itself; and why a predicted reward lands as nothing."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "45cab021cef5a8efda8909e947de8374259a9e271d0a8eac640c21cc6797d2e2",
+  "draft_sha256": "06648cee791c86266693ac345de16135d57917d0fda91199d7f1f90720519086"
+}

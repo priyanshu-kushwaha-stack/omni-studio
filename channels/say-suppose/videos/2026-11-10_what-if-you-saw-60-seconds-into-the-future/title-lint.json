@@ -1,0 +1,373 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "all_titles": [
+  {
+   "title": "What If You Saw 60 Seconds Into the Future?",
+   "chars": 43,
+   "score": 98,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Saw 60 Seconds Into the...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Could Never Be Surprised Again?",
+   "chars": 43,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Never Be Surprised...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Your Future Arrived 60 Seconds Early?",
+   "chars": 45,
+   "score": 98,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Your Future Arrived 60 Seconds...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "45 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Saw Everything 60 Seconds Early?",
+   "chars": 44,
+   "score": 84,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Saw Everything 60 Seconds...\" - check the subject survives"
+    ],
+    [
+     "vague",
+     "everything - swap for a number, a name or a date"
+    ]
+   ],
+   "good": [
+    "44 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Nothing Could Ever Surprise You Again?",
+   "chars": 46,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Nothing Could Ever Surprise You...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "46 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Lived One Minute in the Future?",
+   "chars": 43,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Lived One Minute in the...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Knew Every Minute Before It Happened?",
+   "chars": 49,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Knew Every Minute Before It...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "49 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Saw the Next Minute Before Everyone?",
+   "chars": 48,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Saw the Next Minute Before...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "48 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Could See One Minute Ahead?",
+   "chars": 39,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "39 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Always Knew What Came Next?",
+   "chars": 39,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "39 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  }
+ ],
+ "pairs": [
+  {
+   "title_id": "A",
+   "thumb_id": "a",
+   "thumb": "ALREADY?",
+   "title": "What If You Saw 60 Seconds Into the Future?",
+   "chars": 43,
+   "score": 100,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Saw 60 Seconds Into the...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "A",
+   "thumb_id": "b",
+   "thumb": "NOT YET!",
+   "title": "What If You Saw 60 Seconds Into the Future?",
+   "chars": 43,
+   "score": 100,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Saw 60 Seconds Into the...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "A",
+   "thumb_id": "c",
+   "thumb": "WAIT, WHAT?",
+   "title": "What If You Saw 60 Seconds Into the Future?",
+   "chars": 43,
+   "score": 100,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Saw 60 Seconds Into the...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "B",
+   "thumb_id": "a",
+   "thumb": "ALREADY?",
+   "title": "What If You Could Never Be Surprised Again?",
+   "chars": 43,
+   "score": 84,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Never Be Surprised...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "B",
+   "thumb_id": "b",
+   "thumb": "NOT YET!",
+   "title": "What If You Could Never Be Surprised Again?",
+   "chars": 43,
+   "score": 84,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Never Be Surprised...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "B",
+   "thumb_id": "c",
+   "thumb": "WAIT, WHAT?",
+   "title": "What If You Could Never Be Surprised Again?",
+   "chars": 43,
+   "score": 84,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Never Be Surprised...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "C",
+   "thumb_id": "a",
+   "thumb": "ALREADY?",
+   "title": "What If Your Future Arrived 60 Seconds Early?",
+   "chars": 45,
+   "score": 100,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Your Future Arrived 60 Seconds...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "45 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "C",
+   "thumb_id": "b",
+   "thumb": "NOT YET!",
+   "title": "What If Your Future Arrived 60 Seconds Early?",
+   "chars": 45,
+   "score": 100,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Your Future Arrived 60 Seconds...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "45 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title_id": "C",
+   "thumb_id": "c",
+   "thumb": "WAIT, WHAT?",
+   "title": "What If Your Future Arrived 60 Seconds Early?",
+   "chars": 45,
+   "score": 100,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Your Future Arrived 60 Seconds...\" - check the subject survives"
+    ]
+   ],
+   "good": [
+    "45 characters, inside the 60-character desktop cut",
+    "carries a concrete figure (60)",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  }
+ ]
+}
