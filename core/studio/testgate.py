@@ -15,7 +15,9 @@ Three things keep a push from paying 5-11 minutes for a script edit:
    `rules/`), the `_template` channel, or a video folder a test reads (found by name in the test folders).
 3. Parallel and queued. The suites run at the same time (the upstream one as three processes, by folder), and a full
    run takes the `tests` queue (`studio.jobs.queue`), so two sessions take turns instead of slowing each other
-   three-fold. The studio suite runs on `STUDIO_WORKERS` pytest-xdist workers (`studio_workers`).
+   three-fold. The studio suite runs on `STUDIO_WORKERS` pytest-xdist workers (`studio_workers`). Suites run at
+   `SUITE_NICE` so the desktop and the app keep the CPU, and a run stopped by Ctrl-C, SIGTERM or a closed terminal
+   kills every suite's process group (pytest, xdist workers, ffmpeg) instead of leaving them running.
 
 `OMNI_TESTGATE_FULL=1` forces the full suite. Run times go to `python -m studio.jobs report` as `tests-full` and
 `tests-fast`. The cache trusts the tree hash: untracked files and installed packages are not part of it.
@@ -24,8 +26,10 @@ Three things keep a push from paying 5-11 minutes for a script edit:
 from __future__ import annotations
 
 import argparse
+import contextlib
 import os
 import re
+import signal
 import subprocess
 import sys
 import tempfile
@@ -301,6 +305,55 @@ def _full_run_time(seconds: float, ok: bool) -> None:
         )
 
 
+# Suites run this much below normal priority, so the window server, the app and a render keep the CPU on a busy Mac.
+# An idle Mac runs them as fast as before.
+SUITE_NICE = 10
+
+
+def _start_suite(s: Suite, tmp: Path, root: Path, log) -> subprocess.Popen:
+    """Start one suite at SUITE_NICE in its own process group; pytest, its xdist workers and ffmpeg inherit both."""
+    cmd = s.command
+    if " -m pytest " in cmd:  # each pytest gets its own temp root, so parallel runs never share one
+        cmd += f" --basetemp={tmp / ('pt-' + s.name)}"
+    return subprocess.Popen(
+        cmd,
+        cwd=s.cwd,
+        shell=True,
+        stdout=log,
+        stderr=subprocess.STDOUT,
+        env=_env(root),
+        start_new_session=True,
+        preexec_fn=lambda: os.nice(SUITE_NICE),
+    )
+
+
+def _stop_suites(procs: list[subprocess.Popen]) -> None:
+    """Kill each suite's whole process group, TERM then KILL, so a stopped run leaves nothing on the CPU."""
+    for sig in (signal.SIGTERM, signal.SIGKILL):
+        for p in procs:
+            with contextlib.suppress(ProcessLookupError, PermissionError):
+                os.killpg(p.pid, sig)
+        deadline = time.monotonic() + 3
+        for p in procs:
+            with contextlib.suppress(subprocess.TimeoutExpired):
+                p.wait(max(0.0, deadline - time.monotonic()))
+
+
+@contextlib.contextmanager
+def _exit_on_signals():
+    """SIGTERM and SIGHUP (a stopped task, a closed terminal) unwind like Ctrl-C, so the suites get stopped."""
+
+    def stop(signum, _frame):
+        raise SystemExit(128 + signum)
+
+    old = {sig: signal.signal(sig, stop) for sig in (signal.SIGTERM, signal.SIGHUP)}
+    try:
+        yield
+    finally:
+        for sig, handler in old.items():
+            signal.signal(sig, handler)
+
+
 def run_full(root: Path, *, suites: Optional[list[Suite]] = None, queue: Optional[str] = QUEUE) -> int:
     """Run every suite at once; record a pass for HEAD's tree when all pass and no tracked file changed."""
     suites = suites if suites is not None else default_suites(root)
@@ -313,29 +366,21 @@ def run_full(root: Path, *, suites: Optional[list[Suite]] = None, queue: Optiona
         lock.__enter__()
     t0 = time.monotonic()
     try:
-        with tempfile.TemporaryDirectory(prefix="omni-testgate-") as tmp:
+        with tempfile.TemporaryDirectory(prefix="omni-testgate-") as tmp, _exit_on_signals():
             procs = []
-            for s in suites:
-                log = open(Path(tmp) / f"{s.name}.log", "w+")
-                cmd = s.command
-                if " -m pytest " in cmd:  # each pytest gets its own temp root, so parallel runs never share one
-                    cmd += f" --basetemp={Path(tmp) / ('pt-' + s.name)}"
-                procs.append(
-                    (
-                        s,
-                        log,
-                        time.monotonic(),
-                        subprocess.Popen(
-                            cmd, cwd=s.cwd, shell=True, stdout=log, stderr=subprocess.STDOUT, env=_env(root)
-                        ),
-                    )
-                )
-            ended: dict[int, float] = {}
-            while len(ended) < len(procs):  # note each suite's own finish time, not when we got round to it
-                for i, (_, _, _, p) in enumerate(procs):
-                    if i not in ended and p.poll() is not None:
-                        ended[i] = time.monotonic()
-                time.sleep(0.2)
+            try:
+                for s in suites:
+                    log = open(Path(tmp) / f"{s.name}.log", "w+")
+                    procs.append((s, log, time.monotonic(), _start_suite(s, Path(tmp), root, log)))
+                ended: dict[int, float] = {}
+                while len(ended) < len(procs):  # note each suite's own finish time, not when we got round to it
+                    for i, (_, _, _, p) in enumerate(procs):
+                        if i not in ended and p.poll() is not None:
+                            ended[i] = time.monotonic()
+                    time.sleep(0.2)
+            except BaseException:
+                _stop_suites([p for *_, p in procs])
+                raise
             codes = []
             for i, (s, log, started, p) in enumerate(procs):
                 code = p.returncode
