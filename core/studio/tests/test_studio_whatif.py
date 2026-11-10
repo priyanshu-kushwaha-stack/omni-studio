@@ -1,4 +1,4 @@
-"""The studio-whatif pipeline (Say Suppose): seven owner gates, its skills, its checks, and the script gate on a dummy channel."""
+"""The studio-whatif pipeline (Say Suppose): five owner gates, its skills, its checks, and the script gate on a dummy channel."""
 
 from __future__ import annotations
 
@@ -16,24 +16,25 @@ from tests.contracts.test_phase0_contracts import sample_artifact
 
 REAL_ROOT = Path(__file__).resolve().parents[3]
 OM = REAL_ROOT / "core" / "openmontage"
-STAGES = ["proposal", "story_script", "narration", "rough_cut", "final_edit", "final_watch", "publish_prep"]
+STAGES = ["proposal", "story_script", "final_edit", "final_watch", "publish_prep"]  # G1-G5 (spec 2026-11-10)
 LOUDNESS = {"story": {"integrated_lufs": -14, "tolerance_lu": 1, "true_peak_dbtp_max": -1, "lra_lu_max": 11}}
 
 
-def test_studio_whatif_has_seven_owner_gates_and_its_skills():
+def test_studio_whatif_has_five_owner_gates_and_its_skills():
     manifest = load_pipeline_readonly("studio-whatif")
     assert [s["name"] for s in manifest["stages"]] == STAGES
     assert all(s["human_approval_default"] is True for s in manifest["stages"])
-    assert len(manifest["required_skills"]) == 8
+    assert len(manifest["required_skills"]) == 6
     for skill in manifest["required_skills"]:
         assert (OM / "skills" / f"{skill}.md").is_file(), skill
 
 
 def test_studio_whatif_checks_per_gate():
     assert checks.stage_checks("studio-whatif", "proposal") == []
-    assert checks.stage_checks("studio-whatif", "story_script") == ["claims"]
-    assert checks.stage_checks("studio-whatif", "narration") == ["claims", "clicks"]
-    assert checks.stage_checks("studio-whatif", "rough_cut") == []
+    assert checks.stage_checks("studio-whatif", "story_script") == [
+        "claims",
+        "clicks",
+    ]  # story lock: script + narration
     for stage in ("final_edit", "final_watch"):
         assert checks.stage_checks("studio-whatif", stage) == ["loudness", "clicks", "opening", "similarity"]
     assert checks.stage_checks("studio-whatif", "publish_prep") == [
@@ -106,6 +107,17 @@ def _awaiting(channel, video, stage, artifacts=None):
     )
 
 
+def _quiet_narration(folder):
+    import wave
+
+    (folder / "narration").mkdir(exist_ok=True)
+    with wave.open(str(folder / "narration" / "narration.wav"), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(48000)
+        w.writeframes(b"\x00\x00" * 48000)
+
+
 def test_story_script_gate_wants_cited_digits_and_lets_story_numbers_in_words_pass(studio_root):
     channel = studio_root("dummy", formats={"story": "studio-whatif"}, loudness=LOUDNESS)
     folder = channels.new_video(channel, "Pause Time", "story", on=date(2026, 11, 6))
@@ -115,6 +127,7 @@ def test_story_script_gate_wants_cited_digits_and_lets_story_numbers_in_words_pa
 
     (folder / "script.md").write_text(SCRIPT.format(cite=""))
     (folder / "claims.md").write_text(CLAIMS)
+    _quiet_narration(folder)  # story lock carries the local narration, which the clicks check reads
     _awaiting(channel, video, "story_script")
     with pytest.raises(ChannelError, match="run `omni qc dummy"):
         channels.approve_stage(channel, video, "story_script")
@@ -128,3 +141,18 @@ def test_story_script_gate_wants_cited_digits_and_lets_story_numbers_in_words_pa
     assert cli.main(["qc", "dummy", video, "story_script"]) == 0
     channels.approve_stage(channel, video, "story_script", "dummy owner, test only")
     assert read_checkpoint(channel.videos_dir, video, "story_script")["status"] == "completed"
+
+
+def test_story_lock_checks_the_local_narration_for_clicks(tmp_path, monkeypatch):
+    """At story_script the clicks check reads narration/narration.wav, as the narration stage did."""
+    seen = {}
+    folder = tmp_path / "v"
+    (folder / "narration").mkdir(parents=True)
+    monkeypatch.setattr(checks.channels, "load_channel", lambda slug: object())
+    monkeypatch.setattr(checks.channels, "video_dir", lambda ch, vid: folder)
+    monkeypatch.setattr(checks, "project_identity", lambda ch, vid, fmt: ("story", "studio-whatif"))
+    monkeypatch.setattr(
+        checks, "run_check", lambda n, ch, vid, fmt, pipe, media, words: seen.setdefault(n, media) and {"ok": True}
+    )
+    checks.run_stage("say-suppose", "v", "story_script", write=False)
+    assert seen["clicks"] == (folder / "narration" / "narration.wav").resolve()

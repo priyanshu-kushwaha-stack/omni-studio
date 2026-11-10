@@ -5,19 +5,22 @@
 # video_compose's Remotion and HyperFrames paths are not used. No AI images, no AI video clips, no lip-sync
 # and no line-boil effect.
 #
-# Gate -> stage: G1 proposal, G2 story_script, G3 narration, G4 rough_cut, G5 final_edit, G6 final_watch,
-# G7 publish_prep. G2, G5 and G7 are not named script/edit/publish because those names require upstream
+# Gate -> stage (owner, 2026-11-10; docs/superpowers/specs/2026-11-10-say-suppose-first-cut-review-design.md):
+# G1 proposal (packaging), G2 story_script (story lock: script and local narration, reviewed on a 720p first cut),
+# G3 final_edit (picture lock: cut, key shot, text, music and mix, and the voice the A/B chose), G4 final_watch,
+# G5 publish_prep. Seven gates became five: narration folded into story lock and rough_cut into picture lock.
+# story_script, final_edit and publish_prep are not named script/edit/publish because those names require upstream
 # artifacts (script, edit_decisions, publish_log); these stages carry script.md, claims.md and the render.
 #
 # The engine is core/engines/whatif (imported from the owner's sample on 2026-11-06), run through the whatif_* studio
 # tools (tools/studio/studio_whatif_tools.py). whatif_narration makes paid calls only with the owner's approval and a
-# credit cap.
+# credit cap; a local narrator (voices.yaml use: local) is free. No paid call before G2.
 name: studio-whatif
 version: "1.0"
 description: >
   Say Suppose: one what-if per video, told in second person by one narrator. The story is invented; every
   claim about the real world is cited in claims.md. Code-drawn paper-cut scenes, 16:9, no length cap (the story decides).
-  Seven owner gates, G1-G7.
+  Five owner gates, G1-G5.
 category: custom
 stability: beta
 default_checkpoint_policy: manual_all
@@ -31,8 +34,6 @@ extensions:
 required_skills:
   - studio/studio-whatif-proposal
   - studio/studio-whatif-script
-  - studio/studio-whatif-narration
-  - studio/studio-whatif-rough-cut
   - studio/studio-whatif-edit
   - studio/studio-whatif-final-watch
   - studio/studio-whatif-publish
@@ -49,8 +50,7 @@ metadata:
   min_seconds: 360
   max_seconds: 480
   studio_checks:
-    story_script: [claims]
-    narration: [claims, clicks]
+    story_script: [claims, clicks]
     final_edit: [loudness, clicks, opening, similarity]
     final_watch: [loudness, clicks, opening, similarity]
     publish_prep: [claims, loudness, clicks, opening, similarity, upload_request]
@@ -75,60 +75,43 @@ stages:
     required_artifacts_in:
       - proposal_packet
     produces: []
-    tools_available: []
-    checkpoint_required: true
-    human_approval_default: true
-    review_focus:
-      - G2 the owner reads script.md in full before any asset is generated
-      - Second person, one narrator; three jumps on a clock, each bigger than the last
-      - Every real-world number, date, name or finding cites a claims.md row; story numbers are in words
-      - What the viewer does in the story is never stated as fact; uncertainty is spoken
-    success_criteria:
-      - script.md is 15 to 20% wordless, follows the beats in channels/<slug>/style.md and passes the channel's must-pass story checks (channels/<slug>/rules/story.md)
-      - claims ledger complete, a source for every factual claim (omni qc ... story_script)
-
-  - name: narration
-    skill: studio/studio-whatif-narration
-    produces: []
     tools_available:
       - whatif_story
       - whatif_narration
-    checkpoint_required: true
-    human_approval_default: true
-    review_focus:
-      - G3 narration lock in the channel's narrator voice
-      - No clicks or end-of-take pops (core/studio/rules/no-audio-clicks.md)
-    success_criteria:
-      - narration wav and words.json exist; omni qc narration passes (claims, clicks)
-
-  - name: rough_cut
-    skill: studio/studio-whatif-rough-cut
-    produces: []
-    tools_available:
       - whatif_render
       - whatif_stills
       - whatif_mux
     checkpoint_required: true
     human_approval_default: true
     review_focus:
-      - G4 rough cut, something changes every 2 to 4 seconds, no hold over 6 seconds
-      - Motion reads cue words, never hard-coded times
+      - G2 story lock, the script and its local narration together, read and heard in the 720p first cut
+      - Second person, one narrator; three jumps on a clock, each bigger than the last
+      - Every real-world number, date, name or finding cites a claims.md row; story numbers are in words
+      - What the viewer does in the story is never stated as fact; uncertainty is spoken
+      - No paid call before this gate passes; no clicks or end-of-take pops (core/studio/rules/no-audio-clicks.md)
     success_criteria:
-      - A 1280x720 preview of the whole script with narration, in renders/ (whatif_render quality=preview)
+      - script.md is 15 to 20% wordless, follows the beats in channels/<slug>/style.md and passes the channel's must-pass story checks (channels/<slug>/rules/story.md)
+      - claims ledger complete, a source for every factual claim; omni qc ... story_script passes (claims, clicks)
+      - A 1280x720 first cut of the whole script on the local narration, in renders/
 
   - name: final_edit
     skill: studio/studio-whatif-edit
     produces: []
     tools_available:
+      - whatif_story
+      - whatif_narration
       - whatif_render
       - whatif_stills
       - whatif_mux
     checkpoint_required: true
     human_approval_default: true
     review_focus:
-      - G5 edit, every G4 note applied or answered, text placement, sound effects and bed under the voice
+      - G3 picture lock, something changes every 2 to 4 seconds, no hold over 6 seconds
+      - Motion reads cue words, never hard-coded times
+      - The key shot the owner picked in the look test; text placement, sound effects and bed under the voice
+      - The voice the A/B chose (paid only on the owner's yes)
     success_criteria:
-      - omni qc final_edit passes (loudness, clicks, similarity)
+      - omni qc final_edit passes (loudness, clicks, opening, similarity)
 
   - name: final_watch
     skill: studio/studio-whatif-final-watch
