@@ -22,7 +22,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
+from studio.room import spine
 from studio.room.ledger import Ledger
+from studio.room.snapshot import load_draft
 from studio.room.verdict import MANDATORY
 
 NOT_VERDICTS = ("meta.json", "judge.json")
@@ -234,7 +236,51 @@ def build_report(
         "shipped": shipped(rounds, required),
         "calls": ledger.count(channel=channel, video=video_dir.name, gate=gate),
         "cap": cap,
+        "author_cut": _author_cut(video_dir, rounds, shipped(rounds, required)),
+        "presented": read_presented(video_dir, gate),
     }
+
+
+def _author_cut(video_dir: Path, rounds: list[dict[str, Any]], ship: Optional[dict[str, Any]]) -> Optional[dict]:
+    """Round 1's draft (the writer's own) and what the rounds after it cost the voice, once a round ships."""
+    if not rounds or not ship:
+        return None
+    first = rounds[0]
+    keeps = [
+        k.get("quote", "") if isinstance(k, dict) else str(k)
+        for r in rounds
+        for v in r["verdicts"]
+        if v.get("status") == "ok"
+        for k in v.get("keep") or []
+    ]
+    try:
+        cost = spine.voice_cost(
+            load_draft(video_dir, first["draft_sha256"]), load_draft(video_dir, ship["artifact_sha256"]), keeps
+        )
+    except (OSError, ValueError):
+        cost = None
+    return {"round": first["round"], "draft_sha256": first["draft_sha256"], "cost": cost}
+
+
+def _author_cut_lines(report: dict[str, Any]) -> list[str]:
+    lines: list[str] = []
+    cut = report.get("author_cut")
+    if cut:
+        cost = cut.get("cost") or {}
+        lines += [
+            "",
+            "## Author's cut",
+            "",
+            f"Round {cut['round']}'s draft, the writer's own: room/drafts/{cut['draft_sha256']}.md",
+            f"What review cost the voice: {cost.get('lines_changed', '?')} lines changed; spine lines changed: "
+            f"{', '.join(cost.get('header_changed') or []) or 'none'}; "
+            f"keep lines lost: {len(cost.get('keep_lost') or [])}",
+        ]
+        lines += [f'- lost keep line: "{q}"' for q in cost.get("keep_lost") or []]
+    presented = report.get("presented")
+    if presented:
+        lines += ["", f"Owner first: round 1's draft went to the owner at {presented.get('at')}"]
+    return lines
 
 
 def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
@@ -259,7 +305,8 @@ def write_report(video_dir: Path, report: dict[str, Any]) -> tuple[Path, Path]:
             "Shipped: none. No round is a candidate (lint ok, an ok verdict from "
             f"{', '.join(report.get('required_roles') or MANDATORY)}, no fact blocker), so the gate check will fail."
         )
-    lines += [f"Calls: {report['calls']} of {report['cap']}", "", f"## Open notes in round {focus}", ""]
+    lines += [f"Calls: {report['calls']} of {report['cap']}", *_author_cut_lines(report)]
+    lines += ["", f"## Open notes in round {focus}", ""]
     for rnd in load_rounds(video_dir, gate):
         if rnd["round"] != focus:
             continue
