@@ -1,6 +1,14 @@
 import { alignWords, type AsrWord } from "./align";
 
-export interface VoiceSpec { model: string; variant?: string; voiceType: string; voiceId: string }
+export interface VoiceSpec {
+  model: string;
+  variant?: string;
+  voiceType: string;
+  voiceId: string;
+  /** Local voices only: the reference clip, relative to story.json's folder, and its transcript. */
+  ref?: string;
+  refText?: string;
+}
 export interface ScriptLine {
   text: string;
   gapAfterSec: number;

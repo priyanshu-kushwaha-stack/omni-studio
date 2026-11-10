@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { args, tightName } from "../pipeline/voice";
+import { args, cost, isLocal, localText, tightName } from "../pipeline/voice";
 
 describe("voice CLI arguments", () => {
   const arthur = { voiceType: "preset", voiceId: "30fc8796-ceb6-4a66-b3a7-4a145ef7f346" };
@@ -19,5 +19,19 @@ describe("voice CLI arguments", () => {
   it("names a sped-up take by its tempo, so a new tempo re-tightens instead of reusing the old file", () => {
     expect(tightName("line-05-ab12cd34", 1)).toBe("line-05-ab12cd34.tight.wav");
     expect(tightName("line-05-ab12cd34", 1.1)).toBe("line-05-ab12cd34.x110.tight.wav");
+  });
+});
+
+describe("the local voice", () => {
+  const local = { model: "local:qwen3", voiceType: "local", voiceId: "abc", ref: "../../brand/voice/ref.wav", refText: "Hi." };
+  it("is told apart from the paid routes", () => {
+    expect(isLocal(local)).toBe(true);
+    expect(isLocal({ model: "elevenlabs_v4", voiceType: "preset", voiceId: "x" })).toBe(false);
+  });
+  it("drops bracket directions, which a local engine would read aloud", () => {
+    expect(localText("[warm, matter-of-fact] Every morning, she waves. [pause] Not looking.")).toBe("Every morning, she waves. Not looking.");
+  });
+  it("costs nothing and never asks the Higgsfield CLI", async () => {
+    expect(await cost("Hi.", local)).toBe(0);
   });
 });
