@@ -8,6 +8,13 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-10
+
+- **G2, odds of success: "Take the room's fix."** The bus line that captioned the picture ("That night, on the
+  bus, the whole city is lit up...") becomes the voice director's line: "The last bus home. And you can't stop
+  reading them. Like timetables." [hushed, a little awed, tired], the hold after it wordless. A line over a
+  wide shot says what the person feels, not what the frame shows. (`review-g2-round3.md`, voice blocker #11)
+
 ## 2026-11-09
 
 - **Rules adopted: "Adopt all".** The must-pass lists in `rules/` (story 12, sound 11, thumbnails K1-K15, the idea

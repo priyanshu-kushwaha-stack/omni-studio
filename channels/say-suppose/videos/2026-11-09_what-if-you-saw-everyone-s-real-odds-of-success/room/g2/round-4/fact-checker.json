@@ -1,0 +1,40 @@
+{
+  "call_id": "061c0dfe807e42cebfc776521355ac89",
+  "seat": "fact-checker",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "Last year? About one in a thousand UPSC applicants got in (c01).",
+      "why": "Overstated scope under claim c01. The verbatim quote from the PIB release covers only candidates who applied for the Civil Services Examination (9,37,876 applied; 958 recommended), not all applicants across the Commission. UPSC conducts dozens of other exams (NDA, CDS, ESE, CMS) with different applicant totals and acceptance rates. Stating 'UPSC applicants' generalizes a single exam's statistic to all UPSC applicants.",
+      "fix": "Last year? About one in a thousand UPSC civil services applicants got in (c01).",
+      "domain": "fact",
+      "line": 87
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 89,
+      "quote": "You've been wearing the crowd's number. Like a verdict.",
+      "fix": "Under rules/story.md #7 (misconception first), the fact that breaks the wrong belief should be supported by a claims row. Currently, c01 only establishes the crowd's base rate, leaving the verdict broken only by invented chip mechanics ('But yours moved. Down.'). Consider restoring dropped claim c02 ('Nearly four in ten of the people who applied never even sat the paper (c02)') so the belief that the crowd's number is a personal verdict is broken by the sourced fact that 38.5% of applicants were no-shows."
+    }
+  ],
+  "keep": [
+    {
+      "line": 34,
+      "quote": "It starts where the crowd starts. Then it moves with what they do."
+    },
+    {
+      "line": 136,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    }
+  ],
+  "error": "",
+  "output_sha256": "974abab0b83fe455175d075a7592b2b20ce1a62e88c88904d5e9b20166014c4a",
+  "draft_sha256": "687dca1525a3f5449b2fa6f23d7a82bbcf7fc0b20d1acdcf3e9ce05d5a73b9df"
+}

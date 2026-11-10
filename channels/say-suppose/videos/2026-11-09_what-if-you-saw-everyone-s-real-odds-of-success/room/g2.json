@@ -210,11 +210,119 @@
       "judge": null,
       "owner_notes": false,
       "candidate": false
+    },
+    {
+      "round": 4,
+      "draft_sha256": "687dca1525a3f5449b2fa6f23d7a82bbcf7fc0b20d1acdcf3e9ce05d5a73b9df",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "fact-checker",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "061c0dfe807e42cebfc776521355ac89",
+          "file": "room/g2/round-4/fact-checker.json",
+          "output_sha256": "974abab0b83fe455175d075a7592b2b20ce1a62e88c88904d5e9b20166014c4a",
+          "blockers": 1
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "grok-4.7-high",
+          "family": "xai",
+          "status": "ok",
+          "call_id": "e656ab174adf42a3bea70a6d5e0c9d2d",
+          "file": "room/g2/round-4/first-time-viewer.json",
+          "output_sha256": "3046f80a57e028430fa48304e9f0d9103a64c52bdda3e353d43c51324938d59e",
+          "blockers": 2
+        },
+        {
+          "seat": "retention editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "1668fbf4c6c64e4ab92f33b9cd2dc958",
+          "file": "room/g2/round-4/retention-editor.json",
+          "output_sha256": "96b8efad9f99104f379d68910f0bf6ebd77ae486912b652980f211b0135dbdc3",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "02af8839726b470b927ffb6db03d6d64",
+          "file": "room/g2/round-4/story-editor.json",
+          "output_sha256": "2a4b0f80dd10159912d97624e82cb59b318c67ecb7df89fb29d65fecd73d3450",
+          "blockers": 0
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 5,
+      "draft_sha256": "4d14f21907e759db90297ea6e19a2e6f1be86c62122abf05f953e897f18ddb90",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "fact-checker",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "7bf1e1c562e546dd978263e65eba42ef",
+          "file": "room/g2/round-5/fact-checker.json",
+          "output_sha256": "4511213197c9edbc842d5463803fd78b28f41891f57df1dd8c65dd35712df873",
+          "blockers": 0
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "grok-4.7-high",
+          "family": "xai",
+          "status": "ok",
+          "call_id": "34dc731e16ce491d94be2c7208e246a5",
+          "file": "room/g2/round-5/first-time-viewer.json",
+          "output_sha256": "d76394b496955c11265fbf2e0b4487464288b9c6e9a12b2a943ec30697072ae6",
+          "blockers": 1
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "400ba8c0cf9b454ca92b4ee00ac1a194",
+          "file": "room/g2/round-5/story-editor.json",
+          "output_sha256": "7c0c26daecc7ed900157318d280a46357742b1377329fceaa5b55a9afc25bff6",
+          "blockers": 0
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
-  "shipped": null,
-  "calls": 18,
-  "cap": 41
+  "shipped": {
+    "round": 5,
+    "artifact_sha256": "4d14f21907e759db90297ea6e19a2e6f1be86c62122abf05f953e897f18ddb90"
+  },
+  "calls": 27,
+  "cap": 35
 }

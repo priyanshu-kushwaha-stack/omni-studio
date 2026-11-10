@@ -84,7 +84,7 @@ You can't borrow someone's odds. Only their apron.
 > MOOD: night
 > SCENE: The hall at night, empty but for you. You sit in row three, apron still on. Your small crimson chip. The camera pulls back and the hall becomes the chair grid from the opening, re-lit white and stretching to the horizon: everyone who applied, every chip the same dim white.
 Your chip started from a crowd too.
-Last year? About one in a thousand UPSC applicants got in (c01).
+Last year? About one in a thousand UPSC civil services applicants got in (c01).
 > HOLD: 2 s. The camera drifts along the endless rows and settles back on you: the one crimson chip among them, sitting lower than the rest.
 You've been wearing the crowd's number. Like a verdict.
 But yours moved. Down.
@@ -116,7 +116,7 @@ He didn't even argue.
 ## [03:38] The third jump: the city
 > MOOD: night
 > SCENE: The last bus home, your forehead against the window. Outside, the city passes, and over every head in it a chip: thousands, flickering, each one changing as its person moves.
-That night, on the bus, the whole city is lit up. Every head. Every number. All of them moving.
+The last bus home. And you can't stop reading them. Like timetables.
 > HOLD: 2.5 s. The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.
 > SCENE: The bus slows past a lit window: the teacher at his kitchen table, filling in an exam form. His chip turns over like a card.
 > TAG: HIS OWN RANK
@@ -174,7 +174,8 @@ The beat clock times are that estimate. Under 8 minutes, so no stay-past-8:00 re
   "Sixty-one per cent." [a half-laugh, disbelieving], and the gap between the teacher's flat three and this must be
   audible; "But his tiny number follows you into the hall..." [dry, a touch rueful], with "The teacher." its own short
   take; "Only their apron." [dry]; c01 [plain, quiet, not a lecture]; "Row three. Your own notes this time. And the
-  chip... stirs." [hushed, a small hope], a breath before "stirs"; "At home, Aarav's waiting..." [warm, a little
+  chip... stirs." [hushed, a small hope], a breath before "stirs"; "The last bus home. And you can't stop reading them. Like timetables."
+  [hushed, a little awed, tired], the 2.5 s hold after it wordless (owner, G2, 2026-11-10); "At home, Aarav's waiting..." [warm, a little
   uneasy]; "And Aarav's." [hushed], nothing after it; the choice
   in two breaths with a beat between; "Quit." its own take, hushed and
   warm, a held breath after it, 1.0x, no tempo lift, cut straight into the peak: the cruelty is that it sounds kind;
