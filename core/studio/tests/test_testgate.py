@@ -90,7 +90,9 @@ def _git(cwd: Path, *args: str) -> str:
 
 
 @pytest.fixture()
-def repo(tmp_path):
+def repo(tmp_path, monkeypatch):
+    # `OMNI_TESTGATE_FULL=1 make prepush` runs this suite with the variable set; the prepush tests set it themselves.
+    monkeypatch.delenv("OMNI_TESTGATE_FULL", raising=False)
     root = tmp_path / "repo"
     root.mkdir()
     _git(root, "init", "-q", "-b", "main")
