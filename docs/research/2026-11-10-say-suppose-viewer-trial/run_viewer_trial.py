@@ -27,6 +27,10 @@ CANDIDATES = {
     "grok-4.7-high-fast": {"family": "xai", "cli": "cursor", "timeout_s": 1800},
     "gpt-5.6-luna-high": {"family": "openai", "cli": "cursor", "timeout_s": 900},
     "kimi-k3-high": {"family": "moonshot", "cli": "cursor", "timeout_s": 900},
+    # Round 2 (owner, 2026-11-10): can an Anthropic model be the viewer? The writer is Fable, so the room's family rule
+    # bars both today; this measures what that rule costs. Claude subscription through `claude -p --tools ""`.
+    "claude-opus-5-5": {"family": "anthropic", "cli": "claude", "timeout_s": 900},
+    "claude-fable-5-1": {"family": "anthropic", "cli": "claude", "timeout_s": 900},
 }
 REG.update(CANDIDATES)
 SCRIPTS = ["last-time", "real-odds", "real-odds-fable"]
@@ -66,9 +70,11 @@ def one(script: str, model: str) -> dict:
 
 def main() -> int:
     t0 = time.monotonic()
+    models = sys.argv[1:] or list(CANDIDATES)  # run_viewer_trial.py [model ...]: only those models
     with ThreadPoolExecutor(max_workers=12) as pool:
-        results = list(pool.map(lambda sm: one(*sm), [(s, m) for s in SCRIPTS for m in CANDIDATES]))
-    (OUT / "summary.json").write_text(json.dumps({"wall_s": round(time.monotonic() - t0), "calls": results}, indent=2))
+        results = list(pool.map(lambda sm: one(*sm), [(s, m) for s in SCRIPTS for m in models]))
+    name = "summary-" + "-".join(models) + ".json" if sys.argv[1:] else "summary.json"
+    (OUT / name).write_text(json.dumps({"wall_s": round(time.monotonic() - t0), "calls": results}, indent=2))
     print(f"done in {time.monotonic() - t0:.0f}s")
     return 0
 

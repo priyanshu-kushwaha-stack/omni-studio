@@ -28,6 +28,15 @@ def main(dest: str) -> None:
         random.SystemRandom().shuffle(models)
         key = {f"Viewer {i + 1}": m for i, m in enumerate(models)}
         key_path.write_text(json.dumps(key, indent=2) + "\n")
+    revealed = dict(key)  # round 1's key, opened after the owner marked
+    key2_path = OUT / "KEY-2-open-after-marking.json"  # round 2: models added later get the next numbers, blind
+    key2 = json.loads(key2_path.read_text()) if key2_path.exists() else {}
+    new = sorted({c["model"] for c in calls} - set(key.values()) - set(key2.values()))
+    if new:
+        random.SystemRandom().shuffle(new)
+        key2.update({f"Viewer {len(key) + len(key2) + i + 1}": m for i, m in enumerate(new)})
+        key2_path.write_text(json.dumps(key2, indent=2) + "\n")
+    key = {**key, **key2}
     label = {m: v for v, m in key.items()}
     blockers, rows = [], []
     for c in calls:
@@ -43,7 +52,10 @@ def main(dest: str) -> None:
             "scripts": [{"key": k, "title": t} for k, t in TITLES.items()]}
     issues_path = HERE / "issues.json"  # written after the owner marked: the key and each distinct issue
     if issues_path.exists():
-        data.update(reveal=key, issues=json.loads(issues_path.read_text()))
+        issues = json.loads(issues_path.read_text())
+        in_issues = {"Viewer " + c.split(".")[1][6:] for i in issues for c in i["cards"]}  # a round is revealed once
+        revealed.update({v: m for v, m in key.items() if v in in_issues})  # its cards are counted in issues.json
+        data.update(reveal=revealed, issues=issues)
     scripts_html = "\n".join(
         f'<details class="draft"><summary>{html.escape(t)}</summary><pre>'
         + "\n".join(f"{i:>4}  {html.escape(l)}" for i, l in

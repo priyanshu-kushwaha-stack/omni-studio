@@ -1,0 +1,74 @@
+{
+  "script": "last-time",
+  "model": "claude-fable-5-1",
+  "exit": 0,
+  "seconds": 92,
+  "attempts": 1,
+  "status": "ok",
+  "verdict": {
+    "call_id": "trial",
+    "seat": "first-time viewer",
+    "role": "viewer",
+    "model": "claude-fable-5-1",
+    "family": "anthropic",
+    "status": "ok",
+    "scores": {
+      "story #2 confirm the click": 9,
+      "story #3 second hook by 0:30": 8,
+      "story #4 a habit, then the change": 9,
+      "story #11 never say the feeling": 8,
+      "the viewer's week": 9,
+      "K13 payoff time": 9,
+      "would Riya stay to the end": 8
+    },
+    "blockers": [],
+    "suggestions": [
+      {
+        "line": 51,
+        "quote": "It's the best chai of your life. Station chai.",
+        "fix": "The hold at line 50 already shows the wide eyes and the look at the glass. Cut to 'Station chai.' alone, dry, and let the face say 'best of your life'; 'Maybe it's not just the chai.' still follows and still sets up the chocolate aside."
+      },
+      {
+        "line": 103,
+        "quote": "HOLD: 5 s. The train's rhythm. At each station one passenger steps off to someone waiting on the platform",
+        "fix": "This is where my thumb drifts to a message: right after the sharpest landing so far ('\"Let's see\" was a plan. And it did the maths.') comes five seconds of other people's numbers and nothing happening to me. Cut the hold to 3 s, two stations, and bring 'Thirty-nine. Fine. An allowance.' in over the second one so the picture and the line overlap."
+      },
+      {
+        "line": 103,
+        "quote": "In the dark window, a dim copy of your head, with its own counter.",
+        "fix": "Showing my own counter raises the question the packaging lists ('Does she have a counter for me?') and the script never answers it. Either make the reflected counter unreadable (flaps blurred, facing away like the stranger's) or pay it off with one line later, e.g. at the turn: 'You never see your own. You don't need to; it's hers that moves.'"
+      },
+      {
+        "line": 36,
+        "quote": "Two trips home a year. Keep that life, and the door gets forty-two more.",
+        "fix": "On the metro I do the sum at once: two a year, forty-two, so twenty-one years, and now I'm counting her life, which the film says it never does. Put the counter's rule in front of the number so the plan, not her, is the thing being measured: 'Two trips home a year. That's the plan you've got. Forty-two is what that plan buys you.'"
+      },
+      {
+        "line": 179,
+        "quote": "Of course she is.",
+        "fix": "After a 4 s wordless hold and ten seconds since the last line ('He prefers yours.'), 'she is' has no sentence to hang on; I'd hear it as a fragment. Restore the packaging's landing line, complete: 'She's still at the door. Of course she is.'"
+      },
+      {
+        "line": 127,
+        "quote": "A writer, Tim Urban, did this sum. On his own guesses.",
+        "fix": "The one place the story stands still for a fact: napkin, strip, a name I don't know, a percentage. It is rescued two lines later by 'Your strip is thinner', so keep it, but have the long strip draw itself during 'A writer, Tim Urban, did this sum' and the tiny strip appear exactly on 'Your strip is thinner', so something is happening to the picture on every line."
+      }
+    ],
+    "keep": [
+      {
+        "line": 61,
+        "quote": "She's your commute now."
+      },
+      {
+        "line": 98,
+        "quote": "\"Let's see\" was a plan. And it did the maths."
+      },
+      {
+        "line": 164,
+        "quote": "Saying no isn't a plan. A ticket is."
+      }
+    ],
+    "error": "",
+    "trimmed": {}
+  }
+}

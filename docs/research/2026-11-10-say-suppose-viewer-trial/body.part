@@ -1,10 +1,10 @@
 
 <style>
-.tally4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.tally4 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 @media (max-width: 900px) { .tally4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 480px) { .tally4 { grid-template-columns: 1fr; } }
 .script-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; border-top: 2px solid var(--ink); padding-top: 14px; }
-.chip.v1 { color: var(--teal-ink); } .chip.v2 { color: var(--mustard-ink); } .chip.v3 { color: var(--crimson-ink); } .chip.v4 { color: var(--ink-soft); }
+.chip.v1 { color: var(--teal-ink); } .chip.v2 { color: var(--mustard-ink); } .chip.v3 { color: var(--crimson-ink); } .chip.v4 { color: var(--ink-soft); } .chip.v5 { color: var(--teal-ink); } .chip.v6 { color: var(--crimson-ink); }
 
 .table-wrap { overflow-x: auto; }
 #issueTable { border-collapse: collapse; width: 100%; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
@@ -20,6 +20,7 @@
   <div class="eyebrow">Say Suppose · first-time viewer seat · trial run 10 Nov 2026</div>
   <h1>Viewer Seat Trial</h1>
   <p class="lede">Today's viewer seat runs on Grok 4.7 High and often takes 10 minutes or more. Three faster models ran the same viewer brief on the same three scripts. Each one is shown only as Viewer 1–4, so you judge the notes, not the model. Mark every blocker; the model that is right as often, in less time, takes the seat.</p>
+  <p class="lede"><strong>Round 2.</strong> Viewer 5 is Claude Opus 5.5 and Viewer 6 is Claude Fable 5.1, on the same three scripts. You marked them knowing both were Anthropic models, but not which was which, so round 2 is blind between the two of them and not against Viewers 1–4.</p>
   <div class="status-line" id="status" role="status">Loading your saved marks…</div>
 </header>
 
@@ -126,18 +127,19 @@
     }
   }
 
-  const who = (v) => DATA.reveal ? `${v} · ${DATA.reveal[v]}` : v;
+  const who = (v) => DATA.reveal && DATA.reveal[v] ? `${v} · ${DATA.reveal[v]}` : v;
   function renderIssues() {
     if (!DATA.issues) return;
     $("results").hidden = false;
+    const shown = Object.keys(DATA.reveal).sort();
     const t = $("issueTable");
     t.replaceChildren();
     const viewersOf = (i) => new Set(i.cards.map((c) => "Viewer " + c.split(".")[1].slice(6)));
     const head = el("tr", {}, el("th", { text: "Problem" }), el("th", { text: "Your mark" }));
-    for (const v of DATA.viewers) head.append(el("th", { text: DATA.reveal[v] }));
+    for (const v of shown) head.append(el("th", { text: DATA.reveal[v] }));
     t.append(el("thead", {}, head));
     const body = el("tbody");
-    const found = Object.fromEntries(DATA.viewers.map((v) => [v, 0]));
+    const found = Object.fromEntries(shown.map((v) => [v, 0]));
     for (const i of DATA.issues) {
       const vs = viewersOf(i);
       const marks = i.cards.map((c) => state.marks[c]);
@@ -145,7 +147,7 @@
       const tr = el("tr", { class: mark === "agree" ? "agreed" : "" },
         el("td", { text: `${DATA.scripts.find((s) => s.key === i.script).title.split(" · ")[0]}, line ${i.line}: ${i.issue}` }),
         el("td", { text: mark }));
-      for (const v of DATA.viewers) {
+      for (const v of shown) {
         tr.append(el("td", { class: "c", text: vs.has(v) ? "✓" : "" }));
         if (vs.has(v) && mark === "agree") found[v]++;
       }
@@ -153,10 +155,10 @@
     }
     const agreedTotal = DATA.issues.filter((i) => i.cards.some((c) => state.marks[c] === "agree")).length;
     const foot = el("tr", { class: "total" }, el("td", { text: "Problems you agreed with that each viewer found" }), el("td", { text: String(agreedTotal) }));
-    for (const v of DATA.viewers) foot.append(el("td", { class: "c", text: `${found[v]} of ${agreedTotal}` }));
+    for (const v of shown) foot.append(el("td", { class: "c", text: `${found[v]} of ${agreedTotal}` }));
     body.append(foot);
     const time = el("tr", {}, el("td", { text: "Median time per script" }), el("td", {}));
-    for (const v of DATA.viewers) time.append(el("td", { class: "c", text: Math.round(median(DATA.calls.filter((c) => c.viewer === v).map((c) => c.seconds)) / 60 * 10) / 10 + " min" }));
+    for (const v of shown) time.append(el("td", { class: "c", text: Math.round(median(DATA.calls.filter((c) => c.viewer === v).map((c) => c.seconds)) / 60 * 10) / 10 + " min" }));
     body.append(time);
     t.append(body);
   }
