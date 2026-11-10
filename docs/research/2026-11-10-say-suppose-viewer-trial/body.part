@@ -1,0 +1,152 @@
+
+<style>
+.tally4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .tally4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .tally4 { grid-template-columns: 1fr; } }
+.script-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; border-top: 2px solid var(--ink); padding-top: 14px; }
+.chip.v1 { color: var(--teal-ink); } .chip.v2 { color: var(--mustard-ink); } .chip.v3 { color: var(--crimson-ink); } .chip.v4 { color: var(--ink-soft); }
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">Say Suppose · first-time viewer seat · trial run 10 Nov 2026</div>
+  <h1>Viewer Seat Trial</h1>
+  <p class="lede">Today's viewer seat runs on Grok 4.7 High and often takes 10 minutes or more. Three faster models ran the same viewer brief on the same three scripts. Each one is shown only as Viewer 1–4, so you judge the notes, not the model. Mark every blocker; the model that is right as often, in less time, takes the seat.</p>
+  <div class="status-line" id="status" role="status">Loading your saved marks…</div>
+</header>
+
+<section id="tally">
+  <div class="eyebrow">The answer so far</div>
+  <h2>Blockers you agree with, by viewer</h2>
+  <div class="tally4" id="tallyCards"></div>
+  <p class="muted">Time is the median across the three scripts. A failed call is one that timed out or returned no usable verdict. The key to which model is which is in <code>out/KEY-open-after-marking.json</code>; I'll reveal it once you've marked.</p>
+</section>
+
+<section id="blockers">
+  <div class="eyebrow">Every blocker, grouped by script</div>
+  <h2>Would you want the writer to fix it before you read?</h2>
+  <div class="filters" role="group" aria-label="Filter blockers">
+    <button class="btn" data-f="all" aria-pressed="true" type="button">All</button>
+    <button class="btn" data-f="open" aria-pressed="false" type="button">Not marked yet</button>
+  </div>
+  <div id="groups" class="cards"></div>
+</section>
+
+<section id="scripts">
+  <div class="eyebrow">The three scripts, with line numbers</div>
+  {{SCRIPTS}}
+</section>
+
+<footer>
+  <div>Each viewer ran the room's own first-time viewer brief with the inputs a G2 viewer gets (audience, style, taste, cast, story rules, claims, packaging), through the quality room's prompt and sandbox, outside the call ledger and daily cap. Runner, inputs and raw outputs: <code>docs/research/2026-11-10-say-suppose-viewer-trial/</code>.</div>
+</footer>
+</div>
+
+<script id="trial-data" type="application/json">{{DATA}}</script>
+<script>
+(() => {
+  const DATA = JSON.parse(document.getElementById("trial-data").textContent);
+  const state = { marks: {} };
+  let ref = null, canWrite = false, filter = "all", writing = Promise.resolve();
+  const $ = (id) => document.getElementById(id);
+  const statusEl = $("status");
+  const setStatus = (t, warn) => { statusEl.textContent = t; statusEl.classList.toggle("warn", !!warn); };
+  function el(tag, attrs = {}, ...kids) {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else n.setAttribute(k, v);
+    }
+    for (const k of kids) if (k) n.append(k);
+    return n;
+  }
+  const median = (xs) => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length ? (s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2) : 0; };
+
+  function renderTally() {
+    const box = $("tallyCards");
+    box.replaceChildren();
+    for (const v of DATA.viewers) {
+      const mine = DATA.blockers.filter((b) => b.viewer === v);
+      const agreed = mine.filter((b) => state.marks[b.id] === "agree").length;
+      const marked = mine.filter((b) => state.marks[b.id]).length;
+      const calls = DATA.calls.filter((c) => c.viewer === v);
+      const card = el("div", { class: "room-card" });
+      card.append(el("h3", {}, el("span", { text: v }), el("span", { class: "chip v" + v.slice(-1), text: `${marked}/${mine.length} marked` })));
+      const dl = el("dl");
+      for (const [k, val] of [["agreed", agreed], ["raised", mine.length], ["median", Math.round(median(calls.map((c) => c.seconds)) / 60 * 10) / 10 + " min"], ["failed", calls.filter((c) => c.status !== "ok").length]]) {
+        dl.append(el("div", {}, el("dt", { text: k }), el("dd", { text: String(val) })));
+      }
+      card.append(dl);
+      box.append(card);
+    }
+  }
+
+  function renderGroups() {
+    const box = $("groups");
+    box.replaceChildren();
+    let shown = 0;
+    for (const s of DATA.scripts) {
+      const list = DATA.blockers.filter((b) => b.script === s.key && (filter === "all" || !state.marks[b.id]));
+      const calls = DATA.calls.filter((c) => c.script === s.key);
+      const head = el("div", { class: "script-head" }, el("h3", { text: s.title }),
+        el("span", { class: "muted", text: calls.map((c) => `${c.viewer}: ${c.status === "ok" ? c.blockers + " blockers" : "failed"}, ${Math.round(c.seconds)} s`).join(" · ") }));
+      box.append(head);
+      if (!list.length) { box.append(el("p", { class: "muted", text: filter === "open" ? "All marked for this script." : "No blockers on this script." })); continue; }
+      for (const b of list) {
+        shown++;
+        const v = state.marks[b.id] || "";
+        const seg = el("div", { class: "seg", role: "group", "aria-label": "Your verdict" });
+        for (const [val, label] of [["agree", "Agree"], ["disagree", "Disagree"], ["unsure", "Unsure"]]) {
+          const btn = el("button", { type: "button", "data-v": val, "aria-pressed": String(v === val), text: label });
+          btn.disabled = !canWrite;
+          btn.addEventListener("click", () => mark(b.id, v === val ? null : val));
+          seg.append(btn);
+        }
+        box.append(el("article", { class: "card " + v },
+          el("div", { class: "card-head" },
+            el("div", { class: "who" }, el("span", { class: "chip v" + b.viewer.slice(-1), text: b.viewer }),
+               el("span", { class: "m", text: (b.line ? "line " + b.line : "no line") + (b.domain ? " · " + b.domain : "") })), seg),
+          b.quote ? el("div", { class: "quote", text: b.quote }) : null,
+          el("dl", { class: "fx" }, el("dt", { text: "why" }), el("dd", { text: b.why || "" }), el("dt", { text: "fix" }), el("dd", { text: b.fix || "" }))));
+      }
+    }
+  }
+
+  function renderAll() { renderTally(); renderGroups(); }
+  function mark(id, val) {
+    const marks = { ...state.marks };
+    if (val) marks[id] = val; else delete marks[id];
+    state.marks = marks;
+    renderAll();
+    if (!ref || !canWrite) return;
+    const body = { marks: { ...state.marks }, updatedAt: new Date().toISOString() };
+    writing = writing.then(() => ref.set(body)).then(() => setStatus("Saved."), (e) => {
+      if (e && e.code === "invalid_argument") { canWrite = false; renderAll(); setStatus("This view can read the marks but not change them.", true); }
+      else setStatus("Couldn't save just now (" + (e && e.code || "error") + "). Your last change may not be kept.", true);
+    });
+  }
+  document.querySelectorAll("[data-f]").forEach((b) => b.addEventListener("click", () => {
+    filter = b.dataset.f;
+    document.querySelectorAll("[data-f]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    renderGroups();
+  }));
+  renderAll();
+  (async () => {
+    const api = window.claude;
+    if (!api || !api.use) { setStatus("Marks can't be saved in this view. Open the page on claude.ai to mark blockers.", true); return; }
+    const [db, user] = await Promise.all([api.use("db"), api.use("user")]);
+    if (!db) { setStatus("Marks can't be saved in this view (sign in on claude.ai to mark).", true); return; }
+    canWrite = user ? (user.canEdit() !== false) : true;
+    ref = db.doc("review/viewer-marks");
+    let loaded = false;
+    const timer = setTimeout(() => { if (!loaded) setStatus("Your saved marks can't be reached yet; marks you add may not be kept.", true); }, 10000);
+    ref.onSnapshot((snap) => {
+      if (!snap.metadata.fromCache) { loaded = true; clearTimeout(timer); }
+      const d = snap.exists ? snap.data() : null;
+      if (d) state.marks = { ...(d.marks || {}) };
+      if (loaded) setStatus(d ? "Your marks are saved and loaded." : (canWrite ? "No marks yet. Start with any blocker below." : "No marks yet."));
+      renderAll();
+    }, (e) => { clearTimeout(timer); setStatus("Saved marks unavailable (" + e.code + ").", true); });
+    renderAll();
+  })();
+})();
+</script>
