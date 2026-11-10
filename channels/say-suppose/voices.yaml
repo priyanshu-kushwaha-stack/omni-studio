@@ -10,3 +10,12 @@ voices:
     fallback: {tool: higgsfield text2speech_v2, variant: elevenlabs}   # the sample's route, no direction
     takes: one per script line, cached by a hash of voice, direction and text
     stitch: "silence capped at 0.3 s; no speed-up (about 115 words a minute)"
+    # The free local narrator for every review before the final voice A/B (owner, 2026-11-10; picked voice A, Qwen3,
+    # by ear). Cloned on this Mac from 13 s of Arthur's paid takes from the pause sample (2026-11-06). The wav is
+    # git-ignored (*.wav): copy it into brand/voice/ by hand on a new machine. WHATIF_VOICE=paid takes the paid
+    # narrator above for the A/B at picture lock; paid takes need a quote and the owner's yes.
+    use: local
+    local:
+      engine: qwen3
+      ref: brand/voice/arthur-ref.wav
+      ref_text: "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."

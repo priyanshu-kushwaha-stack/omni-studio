@@ -24,20 +24,25 @@
 # agreed, against 2 of 8 for grok-4.7-high-fast. Fable, the writer, missed on its own script what Opus found, so the
 # viewer may share the writer's family but never be the writer's own model (studio.room.verdict.SELF_LOCKED).
 # Round 2 was blind between Opus and Fable only; the owner's per-seat scores (PR #28) judge the seat on real films.
+#
+# First-cut review (owner, 2026-11-10: "lets keep 1 or 2 reviewer in the room"; spec
+# docs/superpowers/specs/2026-11-10-say-suppose-first-cut-review-design.md): two reviewers, the viewer and the story
+# editor, plus the claims check (the fact role, claims-only, its blockers never cut). The director leaves (the story
+# editor takes #2, #3, #8, #10) and so does the judge (the writer merges the notes; a note it will not take goes to the
+# owner as one line). pitch_clip pre_g2_local: the owner's first review gets the free local narration and a 720p first
+# cut (voices.yaml narrator use: local).
 writer: claude-fable-5-1
-judge: gpt-5.6-sol-high
 rounds: 1
 daily_cap: 80
 owner_first: true
 viewer_required: false
 limits: {blockers: 3, suggestions: 3, keep: 3}
 adopted: 2026-11-09
-pitch_clip: after_g2
+pitch_clip: pre_g2_local
 seats:
   - {name: first-time viewer, role: viewer, model: claude-opus-5-5, brief: room/seats/first-time-viewer.md}
   - {name: story editor, role: story, model: gpt-5.6-sol-high, brief: room/seats/story-editor.md}
-  - {name: fact-checker, role: fact, model: gemini-3.8-flash-high, brief: room/seats/fact-checker.md}
-  - {name: director, role: craft, model: claude-opus-5-5, brief: room/seats/director.md}
+  - {name: claims check, role: fact, model: gemini-3.8-flash-high, brief: room/seats/fact-checker.md}
 format:
   wpm: 115          # style.md: spoken at about 115 words a minute (Arthur, before the 1.1x tempo)
   # No word_budget: no length cap (owner, 2026-11-08). Past about 8 minutes the story editor names the felt

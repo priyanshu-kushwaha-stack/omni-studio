@@ -1,6 +1,6 @@
-# studio-whatif: publish_prep (G7)
+# studio-whatif: publish_prep (G5, publish)
 
-Write `publish.md` while the G6 render runs: title, description with the sources from `claims.md`, audience (not
+Write `publish.md` while the final-watch render runs: title, description with the sources from `claims.md`, audience (not
 made for kids), altered content answer, and the pinned comment: the film's dilemma, asked as a question, so the
 comments answer it. Write `upload.yaml` (`file`, `title`, `description`, `tags`,
 `made_for_kids`, `contains_synthetic_media`, optional `thumbnail`: a JPG or PNG of at most 2 MB in the video
@@ -15,7 +15,7 @@ Learned on the first Say Suppose video (pause-time, 2026-11-08).
 
 | Step | How |
 |---|---|
-| Upload, title, description, tags, kids, AI answer | `omni upload --run` (youtubeuploader), after the owner's G7 approval signs the file and metadata |
+| Upload, title, description, tags, kids, AI answer | `omni upload --run` (youtubeuploader), after the owner's publish (G5) approval signs the file and metadata |
 | Thumbnail | `thumbnail:` in upload.yaml; on an uploaded video `--thumbnail-only --run --confirm <slug>/<video>` (50 quota units) |
 | Subtitles | `captions:` in upload.yaml, added after a good read-back; or `--captions-only` (400 units a track) |
 | Dub audio track | Studio only: Languages, Add language, the language, Audio, Add. Audio-only, the video's length |

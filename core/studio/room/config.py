@@ -23,7 +23,7 @@ from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, ROLES,
 SEATS_DIR = Path(__file__).resolve().parent / "seats"
 PITCH_CLIPS = ("after_g2", "pre_g2_local")
 LOCAL_TTS = ("qwen3", "chatterbox", "kokoro")
-REQUIRED = ("writer", "judge", "rounds", "seats")
+REQUIRED = ("writer", "rounds", "seats")  # judge is optional: with none, the writer merges the notes
 LIMIT_KEYS = ("blockers", "suggestions", "keep")
 OWNER_ROUNDS = 3  # owner-notes rounds the derived cap keeps calls for, past `rounds` (required seats only)
 
@@ -49,7 +49,7 @@ class SeatConfig:
 @dataclass
 class RoomConfig:
     writer: str
-    judge: str
+    judge: Optional[str]
     rounds: int
     daily_cap: int
     seats: list[SeatConfig]
@@ -149,7 +149,7 @@ def load_room(path: Path, channel_dir: Optional[Path] = None) -> RoomConfig:
             raise RoomConfigError(f"{path}: {key} must be a list, not {type(data[key]).__name__}")
     return RoomConfig(
         writer=str(data["writer"]),
-        judge=str(data["judge"]),
+        judge=str(data["judge"]) if data.get("judge") else None,
         rounds=_int(data, "rounds", None, path),
         daily_cap=_int(data, "daily_cap", 80, path),
         seats=seats,
@@ -193,8 +193,16 @@ def _voices_problems(channel_dir: Path) -> list[str]:
     return [
         f"pitch_clip pre_g2_local: voice {name!r} uses {v.get('tool')!r}, not a free local engine {LOCAL_TTS}"
         for name, v in voices.items()
-        if not isinstance(v, dict) or v.get("tool") not in LOCAL_TTS
+        if not _is_local(v)
     ]
+
+
+def _is_local(voice: Any) -> bool:
+    """A voice that is free and local: its tool is a local engine, or it has a local engine beside a paid one."""
+    if not isinstance(voice, dict):
+        return False
+    local = voice.get("local")
+    return voice.get("tool") in LOCAL_TTS or (isinstance(local, dict) and local.get("engine") in LOCAL_TTS)
 
 
 def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
@@ -209,8 +217,8 @@ def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
             return None
 
     writer = fam(cfg.writer, "writer")
-    judge = fam(cfg.judge, "judge")
-    if writer and judge == writer:
+    judge = fam(cfg.judge, "judge") if cfg.judge else None
+    if writer and judge and judge == writer:
         problems.append(f"judge {cfg.judge} is the writer's family ({writer})")
     if not 1 <= cfg.rounds <= 5:
         problems.append(f"rounds must be 1 to 5, not {cfg.rounds}")

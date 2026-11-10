@@ -77,21 +77,26 @@ says who holds it.
 
 ## Gates
 
-Seven human gates. Never skip one, and only the owner passes a gate. Agents write
+Human gates: seven for Professor of Us, five for Say Suppose (owner, 2026-11-10). Never skip one, and only the owner
+passes a gate. Agents write
 `awaiting_human` and stop. On a channel project, OpenMontage accepts an approval only with the proof
 `omni approve` writes (`lib/studio_approval.py`, patch 9): a direct `write_checkpoint(human_approved=True)` or
 a hand-edited checkpoint is refused. Never call `write_checkpoint` with `human_approved=True` or run
 `omni approve` yourself unless the owner told you to approve that stage.
 
-| Gate | Owner approves |
-|---|---|
-| G1 | Packaging: title and thumbnail |
-| G2 | Script, read in full before any asset is generated |
-| G3 | Narration lock |
-| G4 | Rough cut |
-| G5 | Edit |
-| G6 | Final watch at 1x, with cold viewers |
-| G7 | Publish: upload private first; the public flip is by hand in YouTube Studio |
+| Gate | Professor of Us (seven) | Say Suppose (five, stage) |
+|---|---|---|
+| G1 | Packaging: title and thumbnail | Packaging: title, rendered thumbnail, five lines, `> UNDER:` (`proposal`) |
+| G2 | Script, read in full before any paid asset is generated | Story lock: script and local narration together, reviewed on a 720p first cut (`story_script`) |
+| G3 | Narration lock | Picture lock: cut, key shot, text, music and mix, and the voice the A/B chose (`final_edit`) |
+| G4 | Rough cut | Final watch at 1x, with cold viewers (`final_watch`) |
+| G5 | Edit | Publish: upload private first; the public flip is by hand in YouTube Studio (`publish_prep`) |
+| G6 | Final watch at 1x, with cold viewers | |
+| G7 | Publish: upload private first; the public flip is by hand in YouTube Studio | |
+
+Say Suppose's first review is on a film, not a text: the script, a free local narration and a 720p first cut, all made
+before G2; nothing paid is made before G2, and the paid voice comes last, only after the owner's A/B by ear
+(`docs/superpowers/specs/2026-11-10-say-suppose-first-cut-review-design.md`).
 
 Pipelines name automated checks per stage in `metadata.studio_checks` (`core/studio/checks.py`). `omni approve`
 re-runs them and refuses to sign while any fails, so the owner's approval can't pass a gate whose claims ledger,
@@ -104,18 +109,18 @@ Agents never upload and never make a video public. `omni upload` is a dry run un
 always private and there is no privacy flag: public, unlisted and any schedule (`publishAt`) in `upload.yaml` are
 refused before the binary runs, and `made_for_kids` and `contains_synthetic_media` must both be answered
 (channel.yaml or the video's `upload.yaml`). The upload must be the exact file the checks passed on: `omni approve`
-of publish_prep (G7), or `omni approve-upload` for a `legacy_upload: true` video with no pipeline state, signs that
+of publish_prep (G7; G5 on Say Suppose), or `omni approve-upload` for a `legacy_upload: true` video with no pipeline state, signs that
 file's path and sha256 and a digest of the upload metadata (the metaJSON: title, description, tags, category,
 language, privacy, kids and AI answers). `omni upload` re-hashes the file, refuses any other path, changed content
 or changed metadata, and gives youtubeuploader a private copy (0700 temp dir) hashed after copying. A pipeline video
-cannot reach G7 without a valid G6 media proof: publish_prep's `deliverable` check fails when final_watch is
-unapproved or its media proof is missing, forged or edited (the G6 stage proof covers approval.media).
+cannot reach publish without a valid final_watch media proof: publish_prep's `deliverable` check fails when final_watch is
+unapproved or its media proof is missing, forged or edited (the final_watch stage proof covers approval.media).
 youtubeuploader cannot do consent without uploading, and its own first-run consent could not check the channel
 first, so `omni upload --run` needs a token made by `omni youtube-auth`, which checks the channel before saving it
 (PKCE S256, loopback redirect only).
 
 Test upload, owner only: set the title in `upload.yaml` (e.g. `[TEST] ...`) BEFORE `omni approve-upload` (or
-before G7), because the approval signs the metadata. Any later change to the title, description, tags, category,
+before publish_prep), because the approval signs the metadata. Any later change to the title, description, tags, category,
 language or the kids or AI answer needs the owner to approve again; restoring the approved text matches again.
 
 Who can approve: `omni approve` and `omni approve-upload` are owner-only by convention, backed by the approval key

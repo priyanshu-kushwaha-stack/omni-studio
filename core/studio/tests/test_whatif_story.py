@@ -158,3 +158,42 @@ def test_mutes_measured_at_normal_speed_follow_a_faster_take():
         (0, pytest.approx(1.0 / 1.1), pytest.approx(0.1 / 1.1)),
         (1, pytest.approx(2.0), pytest.approx(0.04)),
     ]
+
+
+LOCAL = (
+    VOICES
+    + """    use: local
+    local: {engine: qwen3, ref: brand/voice/ref.wav, ref_text: "Hello there."}
+"""
+)
+
+
+def _local_video(tmp_path: Path, voices: str = LOCAL) -> Path:
+    video = _video(tmp_path)
+    channel = video.parent.parent
+    (channel / "voices.yaml").write_text(voices)
+    (channel / "brand" / "voice").mkdir(parents=True)
+    (channel / "brand" / "voice" / "ref.wav").write_bytes(b"RIFF-not-really-a-wav")
+    return video
+
+
+def test_a_local_narrator_gives_a_free_local_voice(tmp_path, monkeypatch):
+    monkeypatch.delenv("WHATIF_VOICE", raising=False)
+    video = _local_video(tmp_path)
+    voice = story.build(video)["voice"]
+    assert voice["model"] == "local:qwen3" and voice["voiceType"] == "local"
+    assert voice["ref"] == "../../brand/voice/ref.wav"  # relative to the video folder, where story.json lives
+    assert voice["refText"] == "Hello there."
+    assert voice["voiceId"] == story.build(video)["voice"]["voiceId"]  # a hash of the clip, stable
+
+
+def test_whatif_voice_paid_picks_the_paid_narrator_for_the_ab(tmp_path, monkeypatch):
+    monkeypatch.setenv("WHATIF_VOICE", "paid")
+    voice = story.build(_local_video(tmp_path))["voice"]
+    assert voice == {"model": "elevenlabs_v4", "voiceType": "preset", "voiceId": "30fc8796-ceb6-4a66-b3a7-4a145ef7f346"}
+
+
+def test_use_local_without_a_local_entry_is_refused(tmp_path, monkeypatch):
+    monkeypatch.delenv("WHATIF_VOICE", raising=False)
+    with pytest.raises(ValueError, match="narrator"):
+        story.build(_local_video(tmp_path, VOICES + "    use: local\n"))

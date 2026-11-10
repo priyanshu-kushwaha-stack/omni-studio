@@ -49,4 +49,5 @@ def path(name: str) -> Path:
     """One engine.yaml entry as an absolute path."""
     folder = channel_dir()
     value = Path(str(_config(folder)[name])).expanduser()
-    return value if value.is_absolute() else (folder / value).resolve()
+    # abspath, not resolve(): a venv's bin/python is a symlink, and following it loses the venv's packages.
+    return value if value.is_absolute() else Path(os.path.abspath(folder / value))

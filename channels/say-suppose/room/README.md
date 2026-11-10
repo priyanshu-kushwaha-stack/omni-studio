@@ -6,14 +6,19 @@ video 2 (`adopted: 2026-11-09`); the pause-time video and the UBI folder were re
 | Seat (role) | Model | Brief | Fails a draft on |
 |---|---|---|---|
 | first-time viewer (viewer) | Claude Opus 5.5 | `seats/first-time-viewer.md` | story #2, #3, #4, #11, the viewer's week; at G1 thumbnails K5-K7, K12, K13, K15 |
-| story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1, #5, #6, #7, #9, #12, the two late-rule fails, the 8-minute reason |
-| fact-checker (fact) | Gemini 3.8 Flash | `seats/fact-checker.md` | every unsupported or overstated line (fact blockers are never dropped) |
-| director (craft) | Claude Opus 5.5 | `seats/director.md` | story #2, #3, #8, #10 |
-| judge | GPT-5.6 Sol | shared | breaks ties between candidates only |
+| story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1-#3, #5-#10, #12, the two late-rule fails, the 8-minute reason |
+| claims check (fact) | Gemini 3.8 Flash | `seats/fact-checker.md` | every unsupported or overstated line; claims only, no story notes (fact blockers are never dropped) |
+
+No judge: the writer merges the two reviewers' notes, and a note it will not take goes to the owner as one line.
 
 Writer: **Claude Fable 5.1**. Each brief carries its checks, so a seat applies them even when a rules file is not among
 its inputs; when `rules/` changes, change the briefs with it. Every story check has an owner: #1, #5-#7, #9 and #12
-the story editor; #2 and #3 the viewer and the director; #4 and #11 the viewer; #8 and #10 the director.
+the story editor; #2 and #3 the viewer and the story editor; #4 and #11 the viewer; #8 and #10 the story editor.
+
+**First-cut review (owner, 2026-11-10).** One or two reviewers per room: the director seat and the judge left, the
+story editor took the director's checks, and the fact-checker became the claims check. The owner's first review is on
+the script, the free local narration (Qwen3 cloned from Arthur, `voices.yaml` `use: local`) and a 720p first cut
+(`pitch_clip: pre_g2_local`). Spec: `docs/superpowers/specs/2026-11-10-say-suppose-first-cut-review-design.md`.
 
 **Room v2 (owner, 2026-11-10).** From the film 2 trial (`docs/research/2026-11-09-say-suppose-room-trial/RESULTS.md`):
 Fable was the owner's blind pick as writer; the story editor's brief replaced the retention editor's (2 of 2 agreed);

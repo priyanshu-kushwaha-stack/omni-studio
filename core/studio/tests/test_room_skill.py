@@ -38,8 +38,10 @@ def test_the_skill_names_the_pipeline_v2_steps():
         assert needle in text, needle
 
 
-def test_the_whatif_skills_carry_the_audition_and_the_look_test():
+def test_the_whatif_skills_carry_the_first_cut_the_look_test_and_the_voice_ab():
     skills = SKILL.parent
-    assert "audition" in (skills / "studio-whatif-narration.md").read_text()
-    assert "look test" in (skills / "studio-whatif-rough-cut.md").read_text()
+    assert "first cut" in (skills / "studio-whatif-script.md").read_text()
+    assert "look test" in (skills / "studio-whatif-edit.md").read_text()
+    assert "A/B" in (skills / "studio-whatif-edit.md").read_text()
+    assert not (skills / "studio-whatif-narration.md").exists() and not (skills / "studio-whatif-rough-cut.md").exists()
     assert "> UNDER:" in (skills / "studio-whatif-proposal.md").read_text()

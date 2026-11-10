@@ -15,7 +15,9 @@ are directions. The first "## " heading without a time ends the spoken script.
 
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -56,9 +58,31 @@ def _ledger(text: str) -> dict[str, tuple[str, str]]:
     return rows
 
 
+LOCAL_ENGINES = ("qwen3",)
+
+
+def _local_voice(channel: Path, narrator: dict) -> dict:
+    """The free local narrator: a voice cloned on this Mac from a reference clip (voices.yaml narrator.local)."""
+    local = narrator.get("local")
+    if not isinstance(local, dict) or local.get("engine") not in LOCAL_ENGINES or not local.get("ref"):
+        raise ValueError(f"voices.yaml narrator has use: local but no local entry with engine {LOCAL_ENGINES} and ref")
+    ref = channel / str(local["ref"])
+    return {
+        "model": f"local:{local['engine']}",
+        "voiceType": "local",
+        "voiceId": hashlib.sha256(ref.read_bytes()).hexdigest()[:16],
+        # Relative to the video folder, where story.json lives, so the same clip hashes the same in every checkout.
+        "ref": str(Path("..", "..", local["ref"])),
+        "refText": str(local.get("ref_text") or ""),
+    }
+
+
 def _voice(channel: Path) -> dict:
     data = yaml.safe_load((channel / "voices.yaml").read_text(encoding="utf-8"))
     narrator = data["voices"]["narrator"]
+    # WHATIF_VOICE=paid|local overrides voices.yaml for one build: the final voice A/B (spec 2026-11-10, section 2).
+    if (os.environ.get("WHATIF_VOICE") or narrator.get("use", "paid")) == "local":
+        return _local_voice(channel, narrator)
     model = narrator["tool"].split()[-1]
     voice = {"model": model, "voiceType": narrator["voice_type"], "voiceId": narrator["voice_id"]}
     if narrator.get("variant"):

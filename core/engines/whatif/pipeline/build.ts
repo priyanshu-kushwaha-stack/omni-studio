@@ -3,17 +3,18 @@
  *
  *   tsx pipeline/build.ts --story <story.json> --out <public dir>/<subdir> [--max-credits N]
  *
- * Takes are cached by a hash of the voice and the spoken text, so an unchanged line is never bought twice. Lines with
+ * A local voice (model "local:<engine>") is made free on this Mac. For a paid voice:
+ * takes are cached by a hash of the voice and the spoken text, so an unchanged line is never bought twice. Lines with
  * no cached take are paid calls: the build quotes them first and refuses to run without --max-credits, or when the
  * quote is over it. Only the studio tool passes --max-credits, and only with the owner's approval.
  */
 import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { basename, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { parseArgs } from "node:util";
 import { buildTimeline, type LineAudio, type VideoScript } from "../src/kit/timeline";
 import { FPS } from "../src/kit/theme";
-import { cost, probeSeconds, silences, synthesize, tighten, tightName, transcribe } from "./voice";
+import { cost, isLocal, probeSeconds, silences, synthesize, synthesizeLocal, tighten, tightName, transcribe } from "./voice";
 
 const { values } = parseArgs({
   options: { story: { type: "string" }, out: { type: "string" }, "max-credits": { type: "string" } },
@@ -47,7 +48,11 @@ for (const c of clips) {
   if (twin) copyFileSync(join(out, twin), c.raw);
 }
 const pending = clips.filter((c) => !existsSync(c.raw));
-if (pending.length) {
+if (pending.length && isLocal(voice)) {
+  // Free: made on this Mac, no quote and no credit cap (spec 2026-11-10: local narration before any paid take).
+  console.log(`${pending.length} local take(s), free`);
+  await synthesizeLocal(pending.map((c) => ({ text: c.spoken, out: c.raw })), voice, dirname(values.story));
+} else if (pending.length) {
   let credits = 0;
   for (const c of pending) credits += await cost(c.spoken, voice);
   console.log(`${pending.length} new take(s), quoted ${credits.toFixed(2)} credits`);
@@ -55,7 +60,7 @@ if (pending.length) {
   // Credits are priced in hundredths; compare in hundredths so 0.46 + 0.23 is not 0.6900000000000001 > 0.69.
   if (Math.round(credits * 100) > Math.round(maxCredits * 100)) throw new Error(`quote ${credits.toFixed(2)} is over the approved ${maxCredits} credits`);
 }
-for (const c of pending) {
+for (const c of isLocal(voice) ? [] : pending) {
   await synthesize(c.spoken, voice, c.raw);
   console.log(`voice: ${c.spoken}`);
 }

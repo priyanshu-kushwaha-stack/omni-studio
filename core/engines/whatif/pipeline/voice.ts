@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { writeFileSync } from "node:fs";
+import { rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -55,7 +55,33 @@ function find(json: unknown, key: string): unknown {
   return undefined;
 }
 
+/** A free voice made on this Mac (story.py writes model "local:<engine>"), not a paid Higgsfield take. */
+export const isLocal = (v: VoiceSpec) => v.model.startsWith("local:");
+
+/** What a local engine reads: delivery directions in square brackets would be spoken as words, so they go. */
+export const localText = (text: string) => text.replace(/\s*\[[^\]]*\]\s*/g, " ").replace(/\s+/g, " ").trim();
+
+/** One media-venv process for every pending local take, so the model loads once. Each take becomes mono 44.1 kHz
+ *  like a paid one. refBase is story.json's folder, which the reference clip path is relative to. */
+export async function synthesizeLocal(jobs: { text: string; out: string }[], v: VoiceSpec, refBase: string): Promise<void> {
+  if (!jobs.length) return;
+  if (!v.ref) throw new Error(`local voice ${v.model} has no reference clip`);
+  const raw = jobs.map((j) => ({ text: localText(j.text), tmp: `${j.out}.local.wav`, out: j.out }));
+  const spec = join(tmpdir(), `what-if-local-${process.pid}.json`);
+  writeFileSync(spec, JSON.stringify({
+    engine: v.model.slice("local:".length), ref: resolve(refBase, v.ref), ref_text: v.refText ?? "",
+    jobs: raw.map((j) => [j.text, j.tmp]),
+  }));
+  await run(WHISPER_PY, [join(HERE, "local_tts.py"), spec]);
+  for (const j of raw) {
+    await run("ffmpeg", ["-v", "error", "-y", "-i", j.tmp, "-ac", "1", "-ar", "44100", j.out]);
+    rmSync(j.tmp, { force: true });
+  }
+  rmSync(spec, { force: true });
+}
+
 export async function cost(text: string, v: VoiceSpec): Promise<number> {
+  if (isLocal(v)) return 0;
   const out = await run("higgsfield", args("cost", v, text));
   const credits = Number(find(JSON.parse(out), "credits"));
   if (!Number.isFinite(credits)) throw new Error(`no credits in cost output: ${out.slice(0, 200)}`);

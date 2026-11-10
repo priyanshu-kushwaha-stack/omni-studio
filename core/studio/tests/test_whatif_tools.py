@@ -26,8 +26,10 @@ def test_the_tools_are_discovered():
 
 def test_the_pipeline_names_the_tools_on_its_production_stages():
     stages = {s["name"]: s for s in load_pipeline_readonly("studio-whatif")["stages"]}
-    assert set(stages["narration"]["tools_available"]) == {"whatif_story", "whatif_narration"}
-    assert {"whatif_render", "whatif_stills"} <= set(stages["rough_cut"]["tools_available"])
+    # Story lock makes the local narration and the first cut; picture lock builds the film out.
+    assert {"whatif_story", "whatif_narration", "whatif_render", "whatif_mux"} <= set(
+        stages["story_script"]["tools_available"]
+    )
     assert {"whatif_render", "whatif_stills"} <= set(stages["final_edit"]["tools_available"])
 
 

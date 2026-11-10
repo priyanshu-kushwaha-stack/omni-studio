@@ -250,7 +250,7 @@ def run_stage(
         raise ChannelError(f"No video {video_id!r} in channel {slug!r}")
     fmt, pipeline = project_identity(channel, video_id, format_name)
     names = stage_checks(pipeline, stage)
-    if media is None and stage == "narration":
+    if media is None and stage in ("narration", "story_script"):  # story lock carries the narration (studio-whatif)
         media = folder / "narration" / "narration.wav"
     if media is None and stage == PUBLISH_STAGE:
         media = deliverable(folder)
