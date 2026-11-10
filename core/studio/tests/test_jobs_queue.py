@@ -218,3 +218,15 @@ def test_queue_status_prints_free_or_the_holder(qdir, capsys):
         assert cli.main(["queue", "render"]) == 1
     out = capsys.readouterr().out
     assert "whatif-render" in out and "say-suppose" in out and "v1" in out
+
+
+def test_a_child_of_the_holder_takes_nothing(qdir, monkeypatch):
+    with Q.hold("render", step="studio.jobs run"):
+        monkeypatch.setenv(Q.HELD_ENV, "tts,render")
+        with Q.hold("render", wait=False) as inner:
+            assert inner.fd is None and Q.holder("render")["step"] == "studio.jobs run"
+        assert Q.holder("render") is not None  # the child's exit gives back nothing it did not take
+        monkeypatch.delenv(Q.HELD_ENV)
+        with pytest.raises(Q.QueueBusy):
+            with Q.hold("render", wait=False):
+                pass

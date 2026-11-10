@@ -1537,6 +1537,31 @@ rounds were sound-only and how many touched one beat, and the gaps between the `
   benchmark above; the 5-minute sound-composition target and the whole-film 720p time are checked in Task 4b step 5
   and Task 3 step 5 before anyone relies on them.
 
+## Built and measured (2026-11-10)
+
+Tasks 1, 2, 3, 4, 4b and 7 step 1 are built (branch `claude/say-suppose-g4g5-speedups`). Tasks 5-6 wait for film 1's
+numbers. Measured on video 1 through the tools, under the render queue, with `studio.jobs report --video
+2026-11-10_plan-check-sound --step whatif_`:
+
+| Step | Seconds | Against the estimate |
+|---|---|---|
+| `whatif_render.full-720p`, the whole film (9,433 frames, 1280x720, with audio) | 1,918.9 | 32 min, against 28 estimated |
+| `whatif_render.audio` with `RoughCutSound`, the whole film | 60.4 | 1 min, against the 5-minute target and 1,301 s before |
+| `whatif_render.picture-720p`, frames 0-299 | 78.2 | |
+| `whatif_mux` | 0.4 | 300 frames at 1280x720 out |
+
+The sound composition's whole-film wav is byte-identical to the full film's (`cmp`; null test -91 dB), so the audio
+pass is the same mix. With these numbers the video 1 replay is 2.2 h saved by 720p previews (6 x 32 + 65 = 257 min
+against 390) and 1.6 h by the audio pass and mux (32 -> 1 min once, 22 -> 1 min three times): 3.8 of 7.6 h, as
+estimated.
+
+/simplify changes against the tasks above: `hold` itself is re-entrant for a child of a `studio.jobs run --queue`
+holder (`queue.HELD_ENV`, `held_by_parent`, `env_holding`), so the tools no longer read the variable; tool rows time
+the work inside the queue, not the wait; sidecars carry `mode`, `props_sha256`, `frames` and `files` only (no
+`quality`, no `scenes_sha256`); an entry outside a `scenes/` folder or the engine's `examples/` is refused; the mux
+accepts only `picture` passes until beat caching adds its own; `Light` has no SoundOnly gate (it is drawn only
+inside `Stage`).
+
 ## Decisions for the owner
 
 Each is a yes or no, or a pick. Nothing is built until the owner says so; none of them is a gate approval.
