@@ -53,3 +53,8 @@ chose **"2 · Intense"**: free, rendered on the Mac.
   comes out as an exclamation; the dilemma line lands flat rather than as a question.
 - The engine's narration build only buys Higgsfield takes, so the local route is recorded with `omni fix`; the full
   64 lines are rendered from `story.json` until the engine supports it.
+
+**Revised the same day:** Intense was "good but too intense". From an intensity dial of six free reads the owner
+chose **"Between, steady"**: `exaggeration=0.85`, `cfg_weight=0.5` (steadier pace), seed 7, same voice and text. Its
+audition (opening ten lines and line 58): all 11 heard correctly; "Just you" is no longer an exclamation; the dilemma
+line still lands a little flat.
