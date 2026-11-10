@@ -18,9 +18,14 @@ shot; it is decided from renders, never described. Never restage the picked shot
 3. Life comes from poses, eyes, props and the camera. No lip-sync and no line boil.
 4. On-screen text is a tag, a counter or a speech bubble, off faces and inside the safe area
    (`core/studio/rules/text-placement.md`).
-5. Check frames with `whatif_stills`, then render the watch copy as a 1280x720 preview into `renders/` (git-ignored)
-   with `whatif_render` (`quality` defaults to `preview`). G4 and G5 are always watched at 720p; never render
-   1920x1080 before G6.
+5. Check frames with `whatif_stills`. Then build the watch copy, every time at 1280x720 in `renders/` (git-ignored):
+   - the picture: `whatif_render` `mode: picture` (`quality` defaults to `preview`);
+   - the sound: `whatif_render` `mode: audio`, `composition: RoughCutSound`, to a `.wav`;
+   - the watch file: `whatif_mux` of the two, then `omni qc` on it.
+   A sound-only note after that is an audio pass and a mux (`studio-whatif-edit`); a picture note is a new picture
+   pass. G4 and G5 are always watched at 720p; never render 1920x1080 before G6. Every render tool waits for the
+   render queue itself, so do not wrap it in `studio.jobs run --queue render` (that also works: the tool sees it
+   holds the queue). Per-video render hours: `python -m studio.jobs report --video <id> --step whatif_`.
    In the same sitting as the G4 watch, quote the music (tool, provider, model, cost) and ask the owner's yes, so G5
    does not wait on a second reply.
    `status: awaiting_human`, then stop.
