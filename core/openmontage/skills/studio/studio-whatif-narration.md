@@ -6,10 +6,15 @@
    check. Directions come from the script's "Narration notes".
 2. The voice comes from `channels/<slug>/voices.yaml` (Arthur on Eleven v4). Every new take is paid: quote first with
    `higgsfield generate cost` per line (the build also quotes), announce tool, provider, model and total to the owner,
-   and wait for a yes. Then run `whatif_narration` with `owner_approved_paid_call: true` and `max_credits` set to the
-   approved cap. Without both, the tool reuses cached takes only and the build refuses any new one.
+   and wait for a yes (asked in the G2 sitting, so it is usually given already). Then run `whatif_narration` with
+   `owner_approved_paid_call: true` and `max_credits` set to the approved cap. Without both, the tool reuses cached
+   takes only and the build refuses any new one.
+   **The audition first.** Take the opening ten lines and the dilemma line before the full batch, and let the owner
+   hear them. A wrong tempo or tone then costs ten takes, not seventy. The full batch follows the owner's yes on the
+   audition. The writer marks one emotion per line and the delivery directions in `say.yaml`.
 3. Takes are cached by a hash of voice and spoken text, so a changed line re-bills only that line. Fade every line
    edge and mute end-of-take pops (`core/studio/rules/no-audio-clicks.md`).
 4. Output: `assets/narration/` (git-ignored): takes, word timings, `props.json` for the render.
 5. `.venv/bin/omni qc <slug> <video> narration` (claims, clicks) must pass.
-6. `status: awaiting_human`, then stop.
+6. `status: awaiting_human`, then stop. The owner locks after the audition and any flagged line; the whole narration
+   is heard again inside the G4 cut. No model seat reviews narration: the checks do the listening.

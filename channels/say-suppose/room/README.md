@@ -24,6 +24,14 @@ G1, where there are no claims yet, because the fact role is mandatory at every g
 it costs calls, not round time. The viewer stays on Grok until a faster model is right as often (trial: Grok 2 of 3,
 Gemini 0 raised).
 
+**Pipeline v2 (owner, 2026-11-10).** One room round (`rounds: 1`); the owner reads round 1's draft first
+(`owner_first`, `python -m studio.room present`) while the room runs; at most three blockers, three suggestions and
+three keep lines per seat (`limits`; fact blockers are never cut); the viewer is off the critical path
+(`viewer_required: false`): a round ships on the story editor and the fact-checker, and a late viewer's notes join the
+owner-notes round as suggestions. The report shows the author's cut and what review cost the voice; `python -m
+studio.room times` and `scorecard` measure the gates and the seats. Spec:
+`docs/superpowers/specs/2026-11-10-say-suppose-pipeline-v2-design.md`.
+
 ## Inputs to pass
 
 As the skill says (G1: `audience.md`, `style.md`, `taste.md`, `cast.md`; G2: the same plus the video's `claims.md`

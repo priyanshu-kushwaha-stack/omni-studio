@@ -59,3 +59,20 @@ A topic must pass all nine; a fail is shown, never hidden.
   limited-ads territory (death dates, disaster as spectacle) keeps a real penalty.
 - Production cost is a scheduling constraint and a tiebreak, not a score.
 - The spread between models is shown; a high median with a wide spread is a bet, and is labelled so.
+
+## Pitch cards (owner, 2026-11-10)
+
+Pipeline v2 (`docs/superpowers/specs/2026-11-10-say-suppose-pipeline-v2-design.md`, section 2, room 0). Every entry on
+the final list carries three more lines, so the owner picks with the meaning in view:
+
+- **The under-question**, in the viewer's words ("Am I good, or just watched?").
+- **The thought experiment underneath** (Ring of Gyges, the experience machine, Funes): the writer's lens, never a
+  citation on screen.
+- **The kind:** mirror (about you, other people, time and worth), power, or frame-break. Mirror topics pulled hardest
+  in the 2026-11-09 evidence; a power topic needs a twist title to compete.
+
+## The dreamer (owner, 2026-11-10)
+
+Claude Fable 5.1 pitches from craft alone, with no web: the wish, the mirror, the under-question. It sits beside
+whichever researchers the seats table names, brings its ten like the others, and its entries get demand evidence and
+ratings like every other entry. In the first run it proposed or co-proposed 2 of the 5 films the owner picked.
