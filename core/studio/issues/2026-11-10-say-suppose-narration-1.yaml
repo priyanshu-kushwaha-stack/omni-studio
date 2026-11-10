@@ -1,0 +1,13 @@
+channel: say-suppose
+format: story
+stage: narration
+severity: medium
+example: 2026-11-09_what-if-you-knew-the-last-time-you-d-see-someone
+recorded_at: '2026-11-10T08:36:21.659884+00:00'
+note: 'Owner chose a free local narrator for the last-time film: Chatterbox (chatterbox-tts
+  0.1.7, .venv-media), reference clip = ElevenLabs-designed ''Say Suppose Narrator
+  B'' preview, exaggeration 1.0, cfg_weight 0.3, seed 7, square-bracket directions
+  stripped. whatif pipeline/build.ts only synthesizes through Higgsfield (voice.ts),
+  so the local route needs a voice spec (e.g. model: chatterbox in voices.yaml) that
+  build.ts renders locally with the same hash cache, no credits. Until then takes
+  are rendered by hand from story.json.'
