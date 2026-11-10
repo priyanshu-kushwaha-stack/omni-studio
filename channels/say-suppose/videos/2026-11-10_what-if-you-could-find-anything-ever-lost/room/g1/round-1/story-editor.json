@@ -1,0 +1,75 @@
+{
+  "call_id": "4ede0a8a28db44e6913af3d5de79945f",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "opening_and_hooks": 6,
+    "causality": 7,
+    "misconception_and_facts": 5,
+    "earned_stakes": 9,
+    "ending": 8,
+    "overall": 7
+  },
+  "blockers": [
+    {
+      "quote": "The stake sits in the rule's own word, \"nobody\", and the script never underlines it",
+      "why": "Check #3, Second hook by 0:30: \"nobody\" states a condition, not what you can lose. The question concerns what to find first, while the film's actual question concerns what to leave lost.",
+      "fix": "Replace with: \"By 0:25: One line at a time. Follow enough of them, and you could break the peace in your own house. So what should stay lost?\"",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "The fact lands on you: anything found in the soil worth more than ten rupees goes to the Collector, or a year in prison, under an Act from 1878 (not verified yet); then one more, a finder beats everyone except the owner (Armory v Delamirie, not verified yet), and the owner's family is in the lane outside.",
+      "why": "Check #7, Misconception first: three numbers and two legal principles arrive together before the consequence, turning the reversal into a law briefing.",
+      "fix": "Replace with: \"The shopkeeper pushes the pouch back. Buried treasure must be reported to the Collector under an old law. Then the owner's family reaches the door. You expected money; you get a receipt and a queue.\"",
+      "domain": "story",
+      "line": 37
+    },
+    {
+      "quote": "The picture only this premise can show: a paper cross-section, the teal dotted line falling through eleven metres of layered rubbish, a mattress, a scooter, a television, to a glowing drive, and you a small figure on top with a garden trowel.",
+      "why": "Check #8 requires the premise-specific picture to be named in a `> SCENE:` line. It is currently prose inside a table cell.",
+      "fix": "Add before this beat: \"> SCENE: Paper cross-section of the dump: you and a garden trowel above eleven metres of layered rubbish, while the teal line drops to the glowing drive below.\"",
+      "domain": "story",
+      "line": 38
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 39,
+      "quote": "Sunday lunch again; the cousin jokes about the orchard: \"Find the deed, we're rich.\"",
+      "fix": "Open the beat with a causal bridge: \"But the one fortune still within reach is at home. Sunday lunch again; the cousin jokes: \u2018Find the deed, we're rich.\u2019\""
+    },
+    {
+      "line": 36,
+      "quote": "the line goes up the neem tree to a crow's nest, where it sits with three other people's earrings",
+      "fix": "Avoid the first, familiar shiny-crow gag: make the line end in a festival kite spool caught in the neem, with the earring wound into its thread beside two lost metro cards."
+    },
+    {
+      "line": 42,
+      "quote": "The whole sea is on your line. Drop it, for one pill?",
+      "fix": "For a two-right-answers dilemma, make the existing line lead to Madhav, missing in the storm on his way over; switching lines may save Grandfather, while keeping it may save Madhav."
+    }
+  ],
+  "keep": [
+    {
+      "line": 26,
+      "quote": "The deed your grandfather says his brother stole was hidden by his late wife under the tulsi he waters every morning, and the line takes you straight to it."
+    },
+    {
+      "line": 40,
+      "quote": "Let it stay lost."
+    },
+    {
+      "line": 44,
+      "quote": "Some things stay lost. Keeps the peace."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "b81fd03e7fbee6d57d0f9115fb569834549025046858db5a692e030d2ad13c7c",
+  "draft_sha256": "456db0c91d2b4dbc4b56a654afe4d0fa229eacfd7f70da7cf149b8503575f059"
+}

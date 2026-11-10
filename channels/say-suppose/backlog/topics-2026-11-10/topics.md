@@ -1,5 +1,8 @@
 # Say Suppose topics, 2026-11-10
 
+**Picked (owner, 2026-11-10):** What If You Could Find Anything Ever Lost? (83), What If Nobody Could Say No to You?
+(78), What If You Saw 60 Seconds Into the Future? (76). Each goes to G1 in its own session.
+
 Ranked by total (content first). The owner picks three.
 
 ## 1. What If You Could Find Anything Ever Lost? — 83/100

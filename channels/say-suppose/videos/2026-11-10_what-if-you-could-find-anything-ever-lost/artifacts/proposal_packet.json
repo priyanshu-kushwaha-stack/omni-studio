@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "concept_options": [
+    {
+      "id": "A",
+      "title": "What If You Could Find Anything Ever Lost?",
+      "hook": "Your earbud slips through the metro gap; you mutter \"where did it go\", and a glowing dotted line draws itself from your shoe into the drain.",
+      "narrative_structure": "story",
+      "visual_approach": "a rainy night metro platform, a teal dotted line from your shoes into a glowing storm grate, one crimson arrow. Three thumbnail candidates a, b, c differ in the tag (DOWN THERE?, WHO HID THIS?, ALL OF IT?)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 660,
+      "why_this_works": "Owner's pick from the 2026-11-10 topic slate (1st, 83/100); pairs with thumbnail a, DOWN THERE?"
+    },
+    {
+      "id": "B",
+      "title": "What If Nothing Could Stay Lost?",
+      "hook": "Your earbud slips through the metro gap; you mutter \"where did it go\", and a glowing dotted line draws itself from your shoe into the drain.",
+      "narrative_structure": "story",
+      "visual_approach": "a rainy night metro platform, a teal dotted line from your shoes into a glowing storm grate, one crimson arrow. Three thumbnail candidates a, b, c differ in the tag (DOWN THERE?, WHO HID THIS?, ALL OF IT?)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 660,
+      "why_this_works": "Alternative title (title.py 94); pairs with b, WHO HID THIS?; see packaging.md"
+    },
+    {
+      "id": "C",
+      "title": "What If Lost Gold Glowed Under Your Feet?",
+      "hook": "Your earbud slips through the metro gap; you mutter \"where did it go\", and a glowing dotted line draws itself from your shoe into the drain.",
+      "narrative_structure": "story",
+      "visual_approach": "a rainy night metro platform, a teal dotted line from your shoes into a glowing storm grate, one crimson arrow. Three thumbnail candidates a, b, c differ in the tag (DOWN THERE?, WHO HID THIS?, ALL OF IT?)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 660,
+      "why_this_works": "Alternative title; pairs with c, ALL OF IT?; see packaging.md"
+    }
+  ],
+  "selected_concept": {
+    "concept_id": "A",
+    "rationale": "The writer's recommendation; the owner picks at G1. A, title A with thumbnail a (\"DOWN THERE?\")."
+  },
+  "production_plan": {
+    "pipeline": "studio-whatif",
+    "playbook": "say-suppose",
+    "render_runtime": "external",
+    "decision_log_ref": "artifacts/decision_log.json",
+    "stages": [
+      {
+        "stage": "proposal",
+        "tools": [],
+        "approach": "Packaging: three titles, three one-variable thumbnails drawn from the rig, the beat outline and the under-question; the G1 room (viewer, story editor, claims check), owner first"
+      },
+      {
+        "stage": "story_script",
+        "tools": [],
+        "approach": "research.md, claims.md and script.md under rules/story.md (14 checks); the free local Qwen-Arthur narration and a 720p first cut on it, reviewed together at G2; omni qc story_script must pass"
+      },
+      {
+        "stage": "final_edit",
+        "tools": [],
+        "approach": "Picture lock: the cut, key shot, text, music and mix, and the voice the owner chose by ear in the local-vs-paid Arthur A/B (paid takes only after a quote and the owner's yes)"
+      },
+      {
+        "stage": "final_watch",
+        "tools": [],
+        "approach": "The owner watches at 1x with cold viewers"
+      },
+      {
+        "stage": "publish_prep",
+        "tools": [],
+        "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+      }
+    ]
+  },
+  "cost_estimate": {
+    "total_estimated_usd": 0,
+    "budget_cap_usd": 5,
+    "budget_verdict": "within_budget",
+    "line_items": [
+      {
+        "tool": "higgsfield text2speech_v2",
+        "operation": "narration (paid Arthur), only if the owner picks it in the G3 A/B",
+        "estimated_usd": 0,
+        "notes": "Not estimated yet. Paid, in Higgsfield credits; quoted and approved by the owner before any call. G1 made no paid call: the thumbnails are drawn in code, and the G2 narration is the free local voice"
+      }
+    ]
+  },
+  "approval": {
+    "status": "pending"
+  }
+}

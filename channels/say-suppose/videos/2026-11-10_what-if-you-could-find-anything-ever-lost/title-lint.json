@@ -1,0 +1,254 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "written": [
+  {
+   "title": "What If You Could Find Anything Ever Lost?",
+   "chars": 42,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Find Anything Ever...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "42 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Nothing Could Stay Lost?",
+   "chars": 32,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "32 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Lost Gold Glowed Under Your Feet?",
+   "chars": 41,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Lost Gold Glowed Under Your...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "41 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Could Find Everything Ever Lost?",
+   "chars": 44,
+   "score": 66,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Find Everything Ever...\" - check the subject survives"
+    ],
+    [
+     "vague",
+     "everything - swap for a number, a name or a date"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "44 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If a Line Led You to Every Lost Thing?",
+   "chars": 43,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If a Line Led You to Every Lost...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Could Walk to Anything Lost?",
+   "chars": 40,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "40 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Every Lost Thing Had a Line to Your Feet?",
+   "chars": 49,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Every Lost Thing Had a Line to...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "49 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Found What Was Meant to Stay Lost?",
+   "chars": 46,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Found What Was Meant to...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "46 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Finding Lost Things Made You Rich?",
+   "chars": 42,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Finding Lost Things Made You...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "42 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Could Find Every Lost Fortune?",
+   "chars": 42,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Find Every Lost...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "42 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  }
+ ],
+ "kept": [
+  "A",
+  "B",
+  "C"
+ ],
+ "pairs": [
+  {
+   "title": "What If You Could Find Anything Ever Lost?",
+   "chars": 42,
+   "score": 84,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Find Anything Ever...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "42 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title": "What If Nothing Could Stay Lost?",
+   "chars": 32,
+   "score": 98,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "32 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "title": "What If Lost Gold Glowed Under Your Feet?",
+   "chars": 41,
+   "score": 84,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Lost Gold Glowed Under Your...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "41 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  }
+ ]
+}

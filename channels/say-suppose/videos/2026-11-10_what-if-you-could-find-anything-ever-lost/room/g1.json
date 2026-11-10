@@ -1,0 +1,70 @@
+{
+  "gate": "g1",
+  "stage": "proposal",
+  "channel": "say-suppose",
+  "writer_family": "anthropic",
+  "writer": "claude-fable-5-1",
+  "required_roles": [
+    "story",
+    "fact"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "draft_sha256": "456db0c91d2b4dbc4b56a654afe4d0fa229eacfd7f70da7cf149b8503575f059",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "acf732b0668846939c9e2c16fc8e0032",
+          "file": "room/g1/round-1/claims-check.json",
+          "output_sha256": "d40a70fb9f298dc669b271bdc8229f12f0323e98cc5b82d4ea0fed77135ed3b2",
+          "blockers": 3
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "claude-opus-5-5",
+          "family": "anthropic",
+          "status": "ok",
+          "call_id": "698bb7bef18840548c50a78ee5e9c051",
+          "file": "room/g1/round-1/first-time-viewer.json",
+          "output_sha256": "f8d4df9cae86017fe0d8da4d17a3ba684a0858296c7147b0f4bd62f10b84b6fb",
+          "blockers": 2
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "4ede0a8a28db44e6913af3d5de79945f",
+          "file": "room/g1/round-1/story-editor.json",
+          "output_sha256": "b81fd03e7fbee6d57d0f9115fb569834549025046858db5a692e030d2ad13c7c",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": false,
+      "candidate": false
+    }
+  ],
+  "skipped_rounds": [],
+  "malformed_verdicts": [],
+  "shipped": null,
+  "calls": 3,
+  "cap": 18,
+  "author_cut": null,
+  "presented": {
+    "draft_sha256": "456db0c91d2b4dbc4b56a654afe4d0fa229eacfd7f70da7cf149b8503575f059",
+    "at": "2026-11-10T16:25:21+00:00"
+  }
+}

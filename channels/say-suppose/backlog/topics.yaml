@@ -77,6 +77,24 @@ topics:
     room_id: M38
     source: idea-room
 
+  # Picked by the owner 2026-11-10 from the first /say-suppose-topics slate (backlog/topics-2026-11-10/), one G1
+  # session each. Totals are studio.topics' (content first, out of 100).
+  - what_if: "What If You Could Find Anything Ever Lost?"
+    status: selected          # G1 packaging 2026-11-10: videos/2026-11-10_what-if-you-could-find-anything-ever-lost
+    topic_id: g-find-anything-ever-lost
+    total: 83                 # ranked 1st; Gemini 4 Argon
+    source: topics-skill
+  - what_if: "What If Nobody Could Say No to You?"
+    status: selected
+    topic_id: f-nobody-says-no
+    total: 78                 # ranked 4th; Claude Fable
+    source: topics-skill
+  - what_if: "What If You Saw 60 Seconds Into the Future?"
+    status: selected
+    topic_id: f-sixty-seconds-ahead
+    total: 76                 # ranked 5th; Claude Fable
+    source: topics-skill
+
   # Shown 2026-11-06, not picked; all re-scored in the idea room 2026-11-09
   - what_if: "What if you never had to sleep again?"
     status: proposed          # idea room M04 (2 hours of sleep), median 6

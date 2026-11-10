@@ -1,0 +1,65 @@
+{
+  "call_id": "698bb7bef18840548c50a78ee5e9c051",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "claude-opus-5-5",
+  "family": "anthropic",
+  "status": "ok",
+  "scores": {
+    "first 30 seconds (story #2, #3, #4)": 7,
+    "packaging pair A+a (K5-K7, K12, K13, K15)": 8,
+    "would I stay to the end": 7,
+    "the viewer's week": 6
+  },
+  "blockers": [
+    {
+      "quote": "The stake sits in the rule's own word, \"nobody\", and the script never underlines it",
+      "why": "story #3: by 0:30 I know what I gain ('everything anyone ever lost') and the question ('what do you go for first?'), but I cannot say what I can lose. On a phone with sound low I will not catch a stake hidden in one word of a rule. Nothing I could lose appears until the grandfather at 0:40, so the second hook has no downside by 0:30.",
+      "fix": "End the rule beat at about 0:25 with one narrator line that names the risk without explaining it: \"Everything anyone ever lost. Even the things your family decided to lose.\" Then ask \"So. What do you go for first?\" The family is planted before 0:30 and the tulsi turn is not given away.",
+      "domain": "viewer",
+      "line": 35
+    },
+    {
+      "quote": "then a lost hydrogen bomb (six never recovered, not verified yet), then a vanished hiker",
+      "why": "The viewer's week: a lost hydrogen bomb and a vanished hiker do not come from chai, the metro, exams, the office or family. The rest of the film is built from my week (the metro gap, the courtyard drain, Sunday lunch, the cousin), and here it jumps to Cold War trivia just before the choice. The bomb's line then carries into line 42.",
+      "fix": "Swap both for lost things already planted in the film, scaled up: \"you whisper for the Konkan wreck again, then for every gold earring that ever went down a drain in this city, then for everything the sea has taken off this coast\". Each tag gets longer than the last, in thousands of kilometres. In line 42, change \"The bomb's line still runs out of your window\" to \"The sea's line still runs out of your window\", so \"The whole sea is on your line\" still works.",
+      "domain": "viewer",
+      "line": 41
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 37,
+      "quote": "then one more, a finder beats everyone except the owner (Armory v Delamirie, not verified yet)",
+      "fix": "This is where I would stop watching. Two legal facts in a row (the 1878 Act, then a 1722 case) while I stand at a jeweller's counter is a lecture, and 'Armory v Delamirie' is a name I would have to pause on. Keep only the Collector and prison fact, landing on the receipt in my hand. Let the owner's family in the lane outside carry the 'finder vs owner' point with no case name."
+    },
+    {
+      "line": 38,
+      "quote": "A Welshman has been asking to dig his landfill since 2013 (not verified yet) and is still asking.",
+      "fix": "This beat stacks three figures: a fifth of all bitcoin, the Welshman since 2013, and three million wrecks. Cut the cousin's bitcoin figure and keep the Welshman as the one person. The paper cross-section of the dump already tells me how much is lost. Also gloss 'nyariya' from line 36 in the picture (the man sifting the drain) so I don't need the word."
+    },
+    {
+      "line": 34,
+      "quote": "and the train pulls in on top of it",
+      "fix": "The tag 'DOWN THERE?' asks what is in the grate, and the outline never shows me. Before the rule beat, add one insert shot: fingers through the bars, the earbud in a puddle beside a coin and someone's ring. That keeps the thumbnail's promise and plants the 'museum under the grate' residue at line 44."
+    }
+  ],
+  "keep": [
+    {
+      "line": 36,
+      "quote": "you and your cousin mouth it along with him: \"My brother took that deed.\""
+    },
+    {
+      "line": 42,
+      "quote": "\"The whole sea is on your line. Drop it, for one pill?\""
+    },
+    {
+      "line": 38,
+      "quote": "Knowing where was never the hard part"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f8d4df9cae86017fe0d8da4d17a3ba684a0858296c7147b0f4bd62f10b84b6fb",
+  "draft_sha256": "456db0c91d2b4dbc4b56a654afe4d0fa229eacfd7f70da7cf149b8503575f059"
+}

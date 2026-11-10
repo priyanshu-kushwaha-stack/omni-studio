@@ -1,0 +1,69 @@
+{
+  "call_id": "acf732b0668846939c9e2c16fc8e0032",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 7
+  },
+  "blockers": [
+    {
+      "quote": "The fact lands on you: anything found in the soil worth more than ten rupees goes to the Collector, or a year in prison, under an Act from 1878 (not verified yet); then one more, a finder beats everyone except the owner (Armory v Delamirie, not verified yet), and the owner's family is in the lane outside.",
+      "why": "Scope and legal error: Armory v Delamirie (1722) is an English common law ruling concerning lost chattels found in public places; it does not apply to treasure buried in soil in India, which is governed by the Indian Treasure Trove Act 1878 (and under common law, chattels embedded in private soil belong to the landowner). Additionally, under the 1878 Act, treasure found in soil exceeding ten rupees must be reported and deposited with the Collector for inquiry; failure to report risks forfeiture and up to a year in prison, rather than an automatic forfeiture to the Collector.",
+      "fix": "Drop Armory v Delamirie and ground the belief-breaking fact strictly in the Indian Treasure Trove Act of 1878: finding treasure in the soil worth more than ten rupees requires reporting and depositing it with the Collector, with failure to report punishable by up to a year in prison (needs a source).",
+      "domain": "fact",
+      "line": 37
+    },
+    {
+      "quote": "The real line inside the last image: the drain grate outside the chai stall you step over every morning, with the city's museum three feet under it.",
+      "why": "Unsupported factual claim: The closing real-world line asserts as literal fact that the city's museum is three feet under the chai stall drain grate. This is an invented factual claim about Pune with no source, not listed in Research for G2, and cannot be stated as a real-world finding.",
+      "fix": "Replace with a verified real-world finding about what actually lies beneath city streets (needs a source) or reframe without asserting an unverified physical museum beneath the grate.",
+      "domain": "fact",
+      "line": 44
+    },
+    {
+      "quote": "then a lost hydrogen bomb (six never recovered, not verified yet)",
+      "why": "Scope error: The figure of six unrecovered weapons comes from the US Department of Defense Broken Arrows list (32 US accidents) and applies specifically to US nuclear weapons, not all lost hydrogen bombs globally.",
+      "fix": "Scope the finding to US military records (needs a source): 'then a lost hydrogen bomb\u2014one of six the US military never recovered\u2014'.",
+      "domain": "fact",
+      "line": 41
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "The cousin reads out the figure, about a fifth of all bitcoin gone for good (not verified yet).",
+      "fix": "Verify against Chainalysis's estimate of lost bitcoin (~3.7 million out of total supply) and preserve the spoken caveat 'about a fifth' at G2 (needs a source)."
+    },
+    {
+      "line": 38,
+      "quote": "Three million wrecks on the sea floor (not verified yet), and not one of them a step closer.",
+      "fix": "Align with UNESCO's wording ('over 3 million' shipwrecks) and cite the exact source at G2 (needs a source)."
+    },
+    {
+      "line": 36,
+      "quote": "at the next grate a man is already sifting, a nyariya who has washed these drains for forty years (not verified yet); you are not the first.",
+      "fix": "Find a dedicated source for bazaar drain-washers (nyariyas) specifically, as the World Gold Council brief link covers only household gold (needs a source)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 10,
+      "quote": "The line is invented. The real-world part, to source at G2, is what happens to a found thing: who owns it, who gets to dig, and how much of the world's lost fortune nobody will ever reach."
+    },
+    {
+      "line": 42,
+      "quote": "health: the tablet explains nothing and advises nothing"
+    },
+    {
+      "line": 38,
+      "quote": "A Welshman has been asking to dig his landfill since 2013 (not verified yet) and is still asking."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "d40a70fb9f298dc669b271bdc8229f12f0323e98cc5b82d4ea0fed77135ed3b2",
+  "draft_sha256": "456db0c91d2b4dbc4b56a654afe4d0fa229eacfd7f70da7cf149b8503575f059"
+}
