@@ -3,14 +3,12 @@
 # timeout_s: seconds one seat or judge call may run before it is killed and recorded as failed (exit 124, not
 # retried). Default 600, at most 1800. grok-4.7-high's ok G1 calls took 378-595 s on 2026-11-09 and every failure
 # stopped at exactly 600 s; its one G2 call run without that limit took 937 s. Twice its slowest ok call is over
-# the ceiling, so it gets the ceiling. grok-4.7-high-fast's slowest of three G2 viewer calls took 511 s in the
-# viewer trial (docs/research/2026-11-10-say-suppose-viewer-trial/RESULTS.md); twice that, rounded up, is 1200.
+# the ceiling, so it gets the ceiling.
 models:
   claude-fable-5-1: {family: anthropic, cli: claude}
   claude-opus-5-5: {family: anthropic, cli: claude}
   claude-sonnet-5-5: {family: anthropic, cli: claude}
   gpt-5.6-sol-high: {family: openai, cli: cursor}
   grok-4.7-high: {family: xai, cli: cursor, timeout_s: 1800}
-  grok-4.7-high-fast: {family: xai, cli: cursor, timeout_s: 1200}
   gemini-3.7-flash-high: {family: google, cli: cursor}
   composer-2.5: {family: cursor, cli: cursor}

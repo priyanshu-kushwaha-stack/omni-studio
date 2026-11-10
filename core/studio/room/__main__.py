@@ -338,6 +338,7 @@ def cmd_report(args) -> int:
         stage=args.stage,
         channel=channel,
         writer_family=family_of(cfg.writer),
+        writer=cfg.writer,
         ledger=Ledger(),
         cap=derived_cap(cfg),
         required=required_roles(cfg),

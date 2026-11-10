@@ -19,7 +19,7 @@ from studio.room import report as R
 from studio.room.models import UnknownModel, family_of
 from studio.room.report import read_meta
 from studio.room.snapshot import drafts_dir, load_draft, sha256_file
-from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, verdict_digest
+from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, SELF_LOCKED, verdict_digest
 
 MISMATCH = "belongs to a different seat, model, family, video, gate or round"
 
@@ -29,6 +29,19 @@ def _read_verdict(path: Path) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return None
+
+
+def _writer_rule(record: dict[str, Any], writer: Any, writer_model: Any) -> str:
+    """Story, fact and neutrality seats never share the writer's family; the viewer is never the writer's own model.
+
+    A viewer on the writer's family fails too when the report names no writer model, so an old report can't pass it.
+    """
+    seat, role, family = record.get("seat"), record.get("role"), record.get("family")
+    if role in LOCKED_ROLES and family == writer:
+        return f"seat {seat} ({role}) is on the writer's family ({writer})"
+    if role in SELF_LOCKED and family == writer and record.get("model") == (writer_model or record.get("model")):
+        return f"seat {seat} ({role}) is the writer's own model, or the report names no writer"
+    return ""
 
 
 def _family_problem(what: str, record: dict[str, Any]) -> str:
@@ -144,8 +157,8 @@ def _verify(video_dir: Path, report: dict[str, Any], artifact: Path, ledger: Led
     for r in ok:
         if r.get("lint_overridden"):
             problems.append(f"verdict {r.get('seat')}: ran on a draft that failed lint (lint_overridden)")
-        if r.get("role") in LOCKED_ROLES and r.get("family") == writer:
-            problems.append(f"seat {r.get('seat')} ({r.get('role')}) is on the writer's family ({writer})")
+        if problem := _writer_rule(r, writer, report.get("writer")):
+            problems.append(problem)
     judge = rnd.get("judge")
     if judge and judge.get("family") == writer:
         problems.append(f"the judge is on the writer's family ({writer})")
