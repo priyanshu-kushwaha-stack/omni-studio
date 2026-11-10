@@ -1,0 +1,45 @@
+{
+  "call_id": "57a2939ddd1b4a528cd1176e0f1da29c",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five lines and scene purpose": 9,
+    "causal beat chain": 9,
+    "power-use gaps and misconception": 9,
+    "earned stakes and ending": 10,
+    "length \u2014 about 5\u20135.5 minutes, under 8:00; no extended-retention reason required": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 30,
+      "quote": "It never tells you what that thing is.",
+      "fix": "Replace with \u201cAt first, you can't see what that thing is.\u201d This permits the later goal-label reveals instead of contradicting them."
+    },
+    {
+      "line": 71,
+      "quote": "you pour tea onto your own shoe; you count change wrong; you nap on a sack of tea leaves.",
+      "fix": "Make the montage premise-specific: you imitate the chaiwala\u2019s high pour and coin-counting while checking your chip after each attempt; it drops each time, while his rises when he puts a coin toward the second stall."
+    }
+  ],
+  "keep": [
+    {
+      "line": 17,
+      "quote": "Every night, the topper's notes. Then yours: zero point zero four per cent."
+    },
+    {
+      "line": 80,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 139,
+      "quote": "But it's his. And it's moving."
+    }
+  ],
+  "error": "",
+  "output_sha256": "a199b2bfac1f7aab900b3b74a6ae0dad950f1a4fa270a7eeccf2551362369228",
+  "draft_sha256": "bcf0dac6eb232e2695b4ea763d0bc759d32952e6bc654406bf8b76d19d2a3d6e"
+}

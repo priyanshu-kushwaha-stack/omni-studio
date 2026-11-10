@@ -1,0 +1,73 @@
+{
+  "call_id": "0f416ff8828c4b3bbef8dfd7900137de",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "grok-4.7-high",
+  "family": "xai",
+  "status": "ok",
+  "scores": {
+    "story #2": 8,
+    "story #3": 8,
+    "story #4": 9,
+    "story #11": 4,
+    "viewer's week": 8,
+    "K13": 9,
+    "stay": 7
+  },
+  "blockers": [
+    {
+      "quote": "But yours moved. Down.",
+      "why": "story #11: the hold already shows the crimson chip sitting lower than the crowd, and the line says that shot.",
+      "fix": "But a verdict doesn't move. Yours did.",
+      "domain": "viewer",
+      "line": 87
+    },
+    {
+      "quote": "Row three. The night batch. Your own notes.",
+      "why": "story #11: the frame is already row three, the night batch, and your own notebook. The line names the picture.",
+      "fix": "Every night. And you know the number.",
+      "domain": "viewer",
+      "line": 149
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 30,
+      "quote": "Here's how it works. Each chip is one person's chance at the one thing they'd choose... with nobody watching. It never tells you what that thing is.",
+      "fix": "Two rule lines while you only nod. Drop the teacher opener and play it on the chip in frame: \"His chip moves when he turns the page. It starts where the crowd starts. It never says what he wants.\""
+    },
+    {
+      "line": 84,
+      "quote": "Last year? About one in a thousand UPSC civil services applicants got in (c01).",
+      "why": "This is where I leave. The apron line already landed, then a second chair grid stops for a press-release fact.",
+      "fix": "Say it as you open your own notebook: \"Last year? About one in a thousand UPSC civil services applicants got in. You kept copying anyway.\""
+    },
+    {
+      "line": 103,
+      "quote": "Your own number moves. You've seen it. His... you just read.",
+      "fix": "I would pause. The shot is his chip, and I can't see what moved. \"Yours moved when you wrote your own notes. His, you're only reading.\""
+    },
+    {
+      "line": 117,
+      "quote": "The bus rolls through streets of chips, no numerals: a woman jogging, her chip brightening with each stride; a boy asleep on a shop counter, his dimming.",
+      "fix": "Cut the stranger montage. A chip moving when someone acts is already the rule. Hold only until the teacher at his kitchen table."
+    }
+  ],
+  "keep": [
+    {
+      "line": 80,
+      "quote": "You can't borrow someone's odds. Only their apron."
+    },
+    {
+      "line": 123,
+      "quote": "Her eight was music, all along. A year of notes... copied from someone who doesn't want the exam."
+    },
+    {
+      "line": 133,
+      "quote": "The biggest number? It tells you what's likely. It can't tell you what's worth choosing."
+    }
+  ],
+  "error": "",
+  "output_sha256": "e9e26d4682e8fb52330b7ba211c6a235f8f4afbef4bd46131f6b3d4cce2bacd4",
+  "draft_sha256": "bcf0dac6eb232e2695b4ea763d0bc759d32952e6bc654406bf8b76d19d2a3d6e"
+}

@@ -3,6 +3,11 @@
   "stage": "story_script",
   "channel": "say-suppose",
   "writer_family": "anthropic",
+  "writer": "claude-fable-5-1",
+  "required_roles": [
+    "story",
+    "fact"
+  ],
   "rounds": [
     {
       "round": 1,
@@ -71,7 +76,7 @@
       ],
       "judge": null,
       "owner_notes": false,
-      "candidate": false
+      "candidate": true
     },
     {
       "round": 2,
@@ -140,7 +145,7 @@
       ],
       "judge": null,
       "owner_notes": false,
-      "candidate": false
+      "candidate": true
     },
     {
       "round": 3,
@@ -209,7 +214,7 @@
       ],
       "judge": null,
       "owner_notes": false,
-      "candidate": false
+      "candidate": true
     },
     {
       "round": 4,
@@ -315,14 +320,125 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 6,
+      "draft_sha256": "bcf0dac6eb232e2695b4ea763d0bc759d32952e6bc654406bf8b76d19d2a3d6e",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "fact-checker",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "acd242f85bb14871a84b6743ac8545c8",
+          "file": "room/g2/round-6/fact-checker.json",
+          "output_sha256": "42f9231fa9dd6b4fe89ac2c1e29fb170180fd4647462ae9e9484e96cf20775d8",
+          "blockers": 0
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "grok-4.7-high",
+          "family": "xai",
+          "status": "ok",
+          "call_id": "0f416ff8828c4b3bbef8dfd7900137de",
+          "file": "room/g2/round-6/first-time-viewer.json",
+          "output_sha256": "e9e26d4682e8fb52330b7ba211c6a235f8f4afbef4bd46131f6b3d4cce2bacd4",
+          "blockers": 2
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "57a2939ddd1b4a528cd1176e0f1da29c",
+          "file": "room/g2/round-6/story-editor.json",
+          "output_sha256": "a199b2bfac1f7aab900b3b74a6ae0dad950f1a4fa270a7eeccf2551362369228",
+          "blockers": 0
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    },
+    {
+      "round": 7,
+      "draft_sha256": "f98baf71d9274beb1662a898c47c062b78a9619cace123c44bd1162cdaca008d",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "fact-checker",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "b04be092e9a244f1accd9d0c24ab6b5b",
+          "file": "room/g2/round-7/fact-checker.json",
+          "output_sha256": "ddffab28421bd42d5cc11d72252c8aa6493a3b602cf6fd797808c5e001ae80fb",
+          "blockers": 0
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "claude-opus-5-5",
+          "family": "anthropic",
+          "status": "ok",
+          "call_id": "b80fb34c51bd4df9a7a8943a67815781",
+          "file": "room/g2/round-7/first-time-viewer.json",
+          "output_sha256": "15df435b04b96907b2ac88b6b90ef118b616ce99c1423d716c3476bfbad3fd73",
+          "blockers": 2
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "dd9f11b115a44095839857b3d72010e1",
+          "file": "room/g2/round-7/story-editor.json",
+          "output_sha256": "2fa88edad60854b33b166964bd315e0a37c851cfd19bd961f5ac7f71f6d68ee8",
+          "blockers": 0
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 5,
-    "artifact_sha256": "4d14f21907e759db90297ea6e19a2e6f1be86c62122abf05f953e897f18ddb90"
+    "round": 7,
+    "artifact_sha256": "f98baf71d9274beb1662a898c47c062b78a9619cace123c44bd1162cdaca008d"
   },
-  "calls": 27,
-  "cap": 35
+  "calls": 33,
+  "cap": 40,
+  "author_cut": {
+    "round": 1,
+    "draft_sha256": "f9b4ac7913751c122a0fcdf56e2ba208d0be8ac8392f84df7e0ac8e9fb77e0e2",
+    "cost": {
+      "lines_changed": 117,
+      "header_changed": [],
+      "keep_lost": [
+        "Your own chip started from a crowd too. Last year, over 9 lakh people applied for UPSC's civil services exam. And 958 got in (c01). About one in a thousand.",
+        "But nearly four in ten of them never even sat the paper (c02).",
+        "And yours? Here's the number nobody puts on a coaching poster. Of the people who reached last year's interview room... about one in three got in (c03).",
+        "You know your number now. And you don't look up.",
+        "Your own chip started from a crowd too. Last year, about one in a thousand UPSC applicants got in (c01).",
+        "Last year? About one in a thousand UPSC applicants got in (c01)."
+      ]
+    }
+  },
+  "presented": null
 }

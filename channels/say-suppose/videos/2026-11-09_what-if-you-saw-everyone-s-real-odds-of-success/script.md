@@ -12,14 +12,11 @@ claims: claims.md
 
 ## [00:00] The change
 > MOOD: night
-> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose.
+> SCENE: A coaching hall at night under tube lights, rows of desks, a ceiling fan turning. Row three: you, bent over, copying the topper's notebook from the desk beside you, line for line. The thumbnail's set and pose from the first frame: up and to the right of your head, where every chip sits, your crimson chip is already lit. Tags are stamped beside a chip, never over a face.
 > HOLD: 0.2 s. A pen scratch and the tube-light hum on the first frame; the first word comes at once.
-Row three. The night batch. You, copying the topper's notes. Like every night.
-> SCENE: A soft flutter, like split-flap cards. Small glowing chips flicker on over the heads, row by row, warm white and unlabelled. Numerals show only on the key chips, never on the crowd.
-Then a little number lights up. Over every head.
-> SCENE: Over your shoulder: up and to the right of your head, where every chip sits, a crimson chip. Close on your face, the thumbnail's pose: eyes wide, brows up, pen stopped mid-word. Tags are stamped beside a chip, never over a face.
+Every night, the topper's notes. Then yours: zero point zero four per cent.
+> SCENE: On "Then yours", close on your face, the thumbnail's pose: eyes wide, brows up, pen stopped mid-word. Behind you, with a soft flutter like split-flap cards, small chips flicker on over the other heads, row by row, warm white and unlabelled. Numerals show only on the key chips, never on the crowd.
 > TAG: 0.04%
-And yours says... zero point zero four per cent.
 What if you saw everyone's real odds of success?
 
 ## [00:20] The rule
@@ -87,7 +84,7 @@ Your chip started from a crowd too.
 Last year? About one in a thousand UPSC civil services applicants got in (c01).
 > HOLD: 2 s. The camera drifts along the endless rows and settles back on you: the one crimson chip among them, sitting lower than the rest.
 You've been wearing the crowd's number. Like a verdict.
-But yours moved. Down.
+But a verdict doesn't move. Yours did.
 Copying their notes was never going to copy their number.
 > SCENE: Back in the empty hall. You untie the apron, take your scarf from your bag, and look at the door, then at your notes.
 So. Back to the kettle, or back to row three?
@@ -149,7 +146,7 @@ You promised.
 ## [04:48] Back to you
 > MOOD: night
 > SCENE: The coaching hall, the night batch. Row three. The topper's desk is empty. You, writing in your own notebook. The crimson chip above you, out of focus.
-Row three. The night batch. Your own notes.
+Every night. And you know the number.
 > HOLD: 3 s. You turn a page; your own handwriting fills it. Behind you the batch writes on, the chips over the crowd flickering, unlabelled. The topper's desk stays empty.
 > SCENE: Close on your face, down at the page. You don't look up; the chip stays out of focus at the edge of the frame. The right third of the frame goes quiet.
 > HOLD: 1.5 s. Through the hall's open window, far off: a ball off a bat.
@@ -167,8 +164,8 @@ The beat clock times are that estimate. Under 8 minutes, so no stay-past-8:00 re
   of the take text. The take text spells numbers out; the script keeps the cited digits for the claims check.
 - Spelled out: "UPSC" → "U-P-S-C"; "one in a thousand" stays in words. Every chip is said with "zero", the
   way Riya says it (voice director, G1 round 3): "zero point zero four per cent", "zero point two per cent".
-- Directions: the opening line [low, close, a little tired]; "And yours says... zero point zero four per cent."
-  [hushed, flat, stunned]; "Zero point zero four. What's that, in people?" [curious] then "One chair." [hushed];
+- Directions: the opening line in two breaths: "Every night, the topper's notes." [low, close, a little tired], then
+  "Then yours: zero point zero four per cent." [hushed, flat, stunned] (owner, G2, 2026-11-10); "Zero point zero four. What's that, in people?" [curious] then "One chair." [hushed];
   "Copy that." [dry]; "The biggest number is the right choice." [pleased with itself, certain: the planted line];
   "Zero point two per cent." [surprised, soft]; "Three per cent." [dry, flat]; "Eight per cent." [a small drop];
   "Sixty-one per cent." [a half-laugh, disbelieving], and the gap between the teacher's flat three and this must be
@@ -183,7 +180,7 @@ The beat clock times are that estimate. Under 8 minutes, so no stay-past-8:00 re
   going?"], a breath-length gap after "So..."; "Your chip started from a crowd too." / "Last year? About one in a
   thousand..." two beats [plain, quiet]; "You've been wearing the crowd's number..." three takes [quiet, dawning];
   "The teacher? He's sitting the exam himself..." [amused, soft]; "Her eight was music..." [wry, a little rueful];
-  "Row three. The night batch. Your own notes." [steady, warm, a little lighter than the opening, its opposite]; "The biggest number? It tells you what's likely. It can't tell you
+  "Every night. And you know the number." [steady, warm, a little lighter than the opening, its opposite: the same "Every night", now yours] (owner, G2, 2026-11-10); "The biggest number? It tells you what's likely. It can't tell you
   what's worth choosing." [quiet, almost amused, after the grey chip]; "You give it back." [simple]; the last
   lines [warm, low], with a real beat before "thwack" so the effect carries it; "thwack" its own take, or the effect
   alone.
