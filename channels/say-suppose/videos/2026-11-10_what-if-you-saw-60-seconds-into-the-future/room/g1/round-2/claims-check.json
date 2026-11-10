@@ -1,0 +1,47 @@
+{
+  "call_id": "aed7fcb3cd354d188290eaeeaf4d8a9b",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 44,
+      "quote": "Lorenz rounded one number and got a different weather.",
+      "fix": "Change to 'Lorenz rounded one number and got a different forecast' (needs a source), as Lorenz's 1961 discovery occurred in a numerical computer simulation of convection equations rather than in physical atmospheric weather."
+    },
+    {
+      "line": 34,
+      "quote": "at a hundred and fifty kilometres an hour the ball crosses the pitch in under half a second, less than the time to see and swing; the pros read the bowler's body, not the ball;",
+      "fix": "At G2, verify the pitch crossing kinematics (~0.44 s) and ensure the line clarifies that predictive body cues allow the batter to initiate the swing rather than stating swinging is impossible (needs a source)."
+    },
+    {
+      "line": 38,
+      "quote": "Fact: in the seventies a group of physics students hid computers in their shoes to predict a roulette ball and reported a large edge, until the wiring shocked them and kept breaking (greed)",
+      "fix": "At G2, source the Eudaemons claim (claims #1) with their documented expected advantage over the house (around 20% to 40%) to substantiate 'large edge' (needs a source)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 35,
+      "quote": "Some scientists think your brain guesses forward to cover the gap."
+    },
+    {
+      "line": 40,
+      "quote": "The fact, within two lines: a self-defeating prophecy, a prediction that prevents what it predicts because people act on it. The ghost is only ever a rumour about a world where you stood still."
+    },
+    {
+      "line": 46,
+      "quote": "The fact: a reward the brain fully predicted produces almost no response in its reward cells; the surprise is the signal."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "21421f325d2daab743c476dcba0655e0da7ac50cf8c93a439888c8712c89c7cb",
+  "draft_sha256": "171b3b96732f44a174dc23f6deeed463a59c4840b6f4e1aa3c6a5dbd1209d370"
+}

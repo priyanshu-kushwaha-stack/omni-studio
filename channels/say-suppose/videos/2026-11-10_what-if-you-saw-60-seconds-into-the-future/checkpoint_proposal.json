@@ -1,0 +1,108 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-10_what-if-you-saw-60-seconds-into-the-future",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-10T19:34:24.676340+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If You Saw 60 Seconds Into the Future?",
+          "hook": "The chai glass smashes on the floor. You look down. It is still in your hand.",
+          "narrative_structure": "story",
+          "visual_approach": "The chai stall at night: you, shocked, hold a full chai glass; your pale ghost one minute ahead stands beside you and the same glass lies smashed on the counter; one crimson arrow. Three thumbnails differ in the tag (a ALREADY?, b NOT YET!, c WAIT, WHAT?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 870,
+          "why_this_works": "Owner's pick, 2026-11-11, with thumbnail c (WAIT, WHAT?)"
+        },
+        {
+          "id": "B",
+          "title": "What If You Could Never Be Surprised Again?",
+          "hook": "The chai glass smashes on the floor. You look down. It is still in your hand.",
+          "narrative_structure": "story",
+          "visual_approach": "The chai stall at night: you, shocked, hold a full chai glass; your pale ghost one minute ahead stands beside you and the same glass lies smashed on the counter; one crimson arrow. Three thumbnails differ in the tag (a ALREADY?, b NOT YET!, c WAIT, WHAT?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 870,
+          "why_this_works": "Alternative title; see packaging.md"
+        },
+        {
+          "id": "C",
+          "title": "What If Your Future Arrived 60 Seconds Early?",
+          "hook": "The chai glass smashes on the floor. You look down. It is still in your hand.",
+          "narrative_structure": "story",
+          "visual_approach": "The chai stall at night: you, shocked, hold a full chai glass; your pale ghost one minute ahead stands beside you and the same glass lies smashed on the counter; one crimson arrow. Three thumbnails differ in the tag (a ALREADY?, b NOT YET!, c WAIT, WHAT?)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+          "target_duration_seconds": 870,
+          "why_this_works": "Alternative title; see packaging.md"
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "Owner, 2026-11-11, in chat: 'A+C, take fixes': title A with thumbnail c (WAIT, WHAT?); all fourteen room notes taken (review-g1-round1.md)."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/say-suppose-first-video-40c64e/channels/say-suppose/videos/2026-11-10_what-if-you-saw-60-seconds-into-the-future/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging: three titles, three one-variable thumbnails drawn from the rig, the beat outline; the G1 room, owner first"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "research.md, claims.md and script.md under rules/story.md; the G2 room; free local Qwen-Arthur narration and a 720p first cut before G2; omni qc story_script must pass"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Picture lock: cut, key shot, text, music and mix; the local voice A/B against paid Arthur, quoted and approved first"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "whatif_narration (local Qwen clone of Arthur)",
+            "operation": "G2 narration and first cut",
+            "estimated_usd": 0,
+            "notes": "Free and local. Paid Arthur only after the owner's A/B at G3, quoted first. G1 made no paid call: the thumbnails are drawn in code; the room used 3 of today's capped calls in round 1"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    }
+  },
+  "style_playbook": "say-suppose"
+}

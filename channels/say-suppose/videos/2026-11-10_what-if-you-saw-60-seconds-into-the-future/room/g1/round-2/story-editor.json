@@ -1,0 +1,73 @@
+{
+  "call_id": "8c5c0c186bb246749efef4e2746f4a41",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story structure": 7,
+    "causal chain": 5,
+    "hook and promise": 9,
+    "earned stakes": 8,
+    "ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "You stop reading it. You take his hand and stop steering: you let him choose where to stand, and he does, a step back from the doors, where he would have stood anyway.",
+      "why": "Check #5 But / therefore fails. The ghost initially shows that doing nothing gets him knocked down, so returning to what he would have done anyway cannot therefore save him.",
+      "fix": "Change line 42 so your steering causes the first danger: you point him toward the doors, the ghost shows him following your direction into the surge, and every correction worsens it. Then dropping your hand lets him choose the safe step.",
+      "domain": "story",
+      "line": 43
+    },
+    {
+      "quote": "past a minute the people in the ghost have already moved on what you did, and it would be rumour on rumour.",
+      "why": "No new power rule after the halfway point fails. The explanation for why the power stops at one minute first appears at 74%.",
+      "fix": "State this limit at line 32: \"It shows only one minute; beyond that, every reaction has already changed what comes next.\" At line 44, pay it off with: \"The train brakes under your feet. One minute is enough.\"",
+      "domain": "story",
+      "line": 44
+    },
+    {
+      "quote": "The ghost is that guess, turned up.",
+      "why": "Check #10 fails because this reveals at 3:00 that the ghost is an amplified existing sense, which is presented as the late reversal at line 46.",
+      "fix": "Replace with: \"A tenth of a second already makes now uncertain. Yours is a full minute.\"",
+      "domain": "story",
+      "line": 35
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 26,
+      "quote": "at eight minutes they have watched you fake the laugh at grandfather's story twice and get away with it",
+      "fix": "Replace with: \"At eight minutes, the warning has become mother's silence, while grandfather's too-perfect laugh remains unresolved; the viewer stays to learn what knowing will cost him.\""
+    },
+    {
+      "line": 34,
+      "quote": "The stairs: you walk through the ghost's gaps and shoulder into now, twice.",
+      "fix": "Cut this repeat and give its time to the boss request redrawing into a specific personal consequence."
+    },
+    {
+      "line": 44,
+      "quote": "Then one clause: Lorenz rounded one number and got a different weather.",
+      "fix": "Put a character reaction between the train-warning fact and Lorenz: grandfather feels the brake and tightens his hand on your sleeve before the route map changes."
+    }
+  ],
+  "keep": [
+    {
+      "line": 30,
+      "quote": "And the glass."
+    },
+    {
+      "line": 41,
+      "quote": "You've heard it."
+    },
+    {
+      "line": 46,
+      "quote": "Being caught out was the gift."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "b3ca155c6e61dbce91bfaf2c3d8db981e215030ace3c4e71441c5de8211b3428",
+  "draft_sha256": "171b3b96732f44a174dc23f6deeed463a59c4840b6f4e1aa3c6a5dbd1209d370"
+}

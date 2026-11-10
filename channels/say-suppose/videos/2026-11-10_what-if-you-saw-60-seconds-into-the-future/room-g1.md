@@ -1,32 +1,35 @@
 # Room report, G1 (proposal)
 
-Shipped: none. No round is a candidate (lint ok, an ok verdict from story, fact, no fact blocker), so the gate check will fail.
-Calls: 3 of 18
+Shipped: round 2 (171b3b96732f) (shipped by the owner-notes rule (no judge))
+Calls: 6 of 18
 
-Owner first: round 1's draft went to the owner at 2026-11-10T16:28:09+00:00
+## Author's cut
 
-## Open notes in round 1
+Round 1's draft, the writer's own: room/drafts/06648cee791c86266693ac345de16135d57917d0fda91199d7f1f90720519086.md
+What review cost the voice: 63 lines changed; spine lines changed: none; keep lines lost: 4
+- lost keep line: "A firm spent about three hundred million dollars on a straighter cable to gain about three thousandths of a second (greed: what your minute is worth to someone). Japan's quake warning gives seconds, and the trains brake themselves on it (calm: the brake you just felt under your feet)."
+- lost keep line: "The ghost is invented. The real-world part, to be sourced at G2: your eyes already run a tenth of a second late and your brain guesses forward to cover it; what a few milliseconds of future have cost traders and saved trains; why a forecast past a minute forgets itself; and why a predicted reward lands as nothing."
+- lost keep line: "The chai glass slips off the counter and smashes on the floor. You look down. It is still in your hand."
+- lost keep line: "The ghost redraws and redraws across the crowd while you do not move; then the two layers slide together into one as the minute arrives."
 
-- claims check (fact) blocker, line 36: "Fact: in the seventies a group of physics students hid computers in their shoes to predict a roulette ball and reported a large edge, until the house noticed (greed)". Claim id: needs a source. Historical overstatement and error: The casino ("the house") never detected the shoe computer. The Eudaemons (Farmer, Packard, et al.) abandoned the operation because of hardware failures—specifically, short circuits delivering electrical shocks that burned an operator's foot—and fragile wiring that proved too unreliable and risky. Stating that they operated 'until the house noticed' is historically inaccurate. Fix: Fact: in the seventies a group of physics students hid computers in their shoes to predict a roulette ball and reported a large edge, until the hardware burned them and broke down (greed) (needs a source)
-- claims check (fact) blocker, line 34: "The fact: what you see is about a tenth of a second old, and your brain guesses forward to cover the gap. Drawn on the glass as a paper diagram: the flash-lag illusion, a moving dot that looks ahead of a flash level with it.". Claim id: needs a source. Contested scientific mechanism stated as definitive fact: Motion extrapolation (Nijhawan 1994) is not established consensus for the flash-lag effect; major neuroscience literature (e.g. Eagleman & Sejnowski 2000) provides counter-evidence supporting postdiction, while others support differential latency. Under the seat rules, contested scientific findings must be spoken with a caveat ("some neuroscientists say") and explain why. Fix: The fact: what you see is about a tenth of a second old, and some neuroscientists argue your brain guesses forward to cover the gap, pointing to the flash-lag illusion—a moving dot that looks ahead of a flash level with it (needs a source).
-- claims check (fact) blocker, line 42: "Then why more would be worthless: Lorenz rounded one number and got a different weather; past a minute the ghost would be rumour on rumour.". Claim id: needs a source. Scope and physical science error: Lorenz's 1961 discovery of deterministic chaos in numerical weather modeling established that predictability breaks down over days to two weeks, not one minute. Attributing a one-minute failure horizon directly to Lorenz's weather calculation misstates the physical timescale of atmospheric chaos. Fix: Then why more would be worthless: Lorenz rounded one number and saw tiny differences blow up an entire forecast; when people react to what they see, that divergence collapses into rumour past a single minute (needs a source).
-- claims check keep, line 44: "The fact: a reward the brain fully predicted produces almost no response in its reward cells; the surprise is the signal."
-- claims check keep, line 42: "A firm spent about three hundred million dollars on a straighter cable to gain about three thousandths of a second (greed: what your minute is worth to someone). Japan's quake warning gives seconds, and the trains brake themselves on it (calm: the brake you just felt under your feet)."
-- claims check keep, line 9: "The ghost is invented. The real-world part, to be sourced at G2: your eyes already run a tenth of a second late and your brain guesses forward to cover it; what a few milliseconds of future have cost traders and saved trains; why a forecast past a minute forgets itself; and why a predicted reward lands as nothing."
-- first-time viewer (viewer) blocker, line 30: "Your phone is up, thumb refreshing: the bus app, the result page, mother's typing dots. The chai glass slips off the counter and smashes on the floor. You look down. It is still in your hand.". story #3: the first 10 s show a picture but say nothing. The first spoken line is the title question somewhere before 0:20, so for ten seconds I get no premise and no stakes. The result due Friday is only a page on a phone I can't read at feed size. I see a glass break and not break, but I don't know what I could lose. Fix: Put the first word within 1 s, spoken over the refresh and the smash: "Result's due Friday. So you check everything before it happens. Tonight, something checks first." Then, as you look down: "Your chai just broke. It's still in your hand." Keep the title question and "You have one minute..." at 0:10 to 0:20.
-- first-time viewer (viewer) blocker, line 33: "College nets: you call the ball before the bowler's arm comes over, swing where the ghost ball goes, and still miss, because the bowler saw you shift.". The viewer's week: batting at the college nets is not in Riya's week (chai, bus or metro, exams, office, family). I would picture someone else's life here, not mine. Fix: Move the gag to the college canteen TV with friends: "You call the six before the bowler runs in. Your friends stop watching with you." The cricket fact then lands on the batter on screen: the ball beats the eye, so he reads the bowler's body, and you read the minute and it spoils the match instead.
-- first-time viewer keep, line 44: "Being caught out was the gift."
-- first-time viewer keep, line 39: ""You've heard it." He does not finish."
-- first-time viewer keep, line 43: ""Watch him, or hear him?""
-- story editor (story) blocker, line 35: "you laugh on time anyway, and it works". Check #6 fails: using the ghost produces exactly the expected result, with no gap. Fix: Replace with: "You laugh on time—too perfectly. He pauses, then pours your chai into the saucer to cool it the way he did when you were six." Give the phone exchange an equivalent unexpected result.
-- story editor (story) blocker, line 40: "The stranger is here: the one figure in the crowd with no ghost". The stranger first appears at 65%, failing No new person after 60%. Fix: Hide the stranger in the earlier platform wide on line 33, then remove this sentence and update line 53 to the earlier appearance.
-- story editor (story) blocker, line 37: "The picture only this premise can show, at about 6:30: the dinner table with everyone's ghost one minute ahead.". Check #8 fails because the picture is not named in a `> SCENE:` line. Fix: Replace with: "> SCENE: At about 6:30, the dinner table doubles: ghost mother has already cleared her plate and left while real mother is still speaking; you alone are not there yet."
-- story editor keep, line 30: "The chai glass slips off the counter and smashes on the floor. You look down. It is still in your hand."
-- story editor keep, line 41: "The ghost redraws and redraws across the crowd while you do not move; then the two layers slide together into one as the minute arrives."
-- story editor keep, line 44: "Being caught out was the gift."
+Owner first: round 1's draft went to the owner at 2026-11-10T19:17:11+00:00
+
+## Open notes in round 2
+
+- claims check keep, line 35: "Some scientists think your brain guesses forward to cover the gap."
+- claims check keep, line 40: "The fact, within two lines: a self-defeating prophecy, a prediction that prevents what it predicts because people act on it. The ghost is only ever a rumour about a world where you stood still."
+- claims check keep, line 46: "The fact: a reward the brain fully predicted produces almost no response in its reward cells; the surprise is the signal."
+- story editor (story) blocker, line 43: "You stop reading it. You take his hand and stop steering: you let him choose where to stand, and he does, a step back from the doors, where he would have stood anyway.". Check #5 But / therefore fails. The ghost initially shows that doing nothing gets him knocked down, so returning to what he would have done anyway cannot therefore save him. Fix: Change line 42 so your steering causes the first danger: you point him toward the doors, the ghost shows him following your direction into the surge, and every correction worsens it. Then dropping your hand lets him choose the safe step.
+- story editor (story) blocker, line 44: "past a minute the people in the ghost have already moved on what you did, and it would be rumour on rumour.". No new power rule after the halfway point fails. The explanation for why the power stops at one minute first appears at 74%. Fix: State this limit at line 32: "It shows only one minute; beyond that, every reaction has already changed what comes next." At line 44, pay it off with: "The train brakes under your feet. One minute is enough."
+- story editor (story) blocker, line 35: "The ghost is that guess, turned up.". Check #10 fails because this reveals at 3:00 that the ghost is an amplified existing sense, which is presented as the late reversal at line 46. Fix: Replace with: "A tenth of a second already makes now uncertain. Yours is a full minute."
+- story editor keep, line 30: "And the glass."
+- story editor keep, line 41: "You've heard it."
+- story editor keep, line 46: "Being caught out was the gift."
 
 ## Rounds
 
 | round | lint | seats ok | blockers | judge |
 |---|---|---|---|---|
 | 1 | ok | 3/3 | 8 | - |
+| 2 | ok | 2/2 | 3 | - |
+

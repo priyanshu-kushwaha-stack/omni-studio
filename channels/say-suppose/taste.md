@@ -8,6 +8,13 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-11
+
+- **G1, sixty seconds ahead: "A+C, take fixes."** Title A ("What If You Saw 60 Seconds Into the Future?") with
+  thumbnail c ("WAIT, WHAT?"), over Fable's pick of a ("ALREADY?"): the plainest shock tag beside the plainest title.
+  All fourteen of the room's round-1 notes taken, including the viewer's and story editor's cut of the $300 million
+  cable from the train-home scale beat (the claims seat had marked it a keep). (`review-g1-round1.md`)
+
 ## 2026-11-10
 
 - **G2, odds of success: "Take both fixes"** (first-time viewer, story #11, round 6). "But yours moved. Down."

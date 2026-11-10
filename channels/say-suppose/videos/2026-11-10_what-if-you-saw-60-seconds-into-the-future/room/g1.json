@@ -55,16 +55,68 @@
       "judge": null,
       "owner_notes": false,
       "candidate": false
+    },
+    {
+      "round": 2,
+      "draft_sha256": "171b3b96732f44a174dc23f6deeed463a59c4840b6f4e1aa3c6a5dbd1209d370",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "aed7fcb3cd354d188290eaeeaf4d8a9b",
+          "file": "room/g1/round-2/claims-check.json",
+          "output_sha256": "21421f325d2daab743c476dcba0655e0da7ac50cf8c93a439888c8712c89c7cb",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "8c5c0c186bb246749efef4e2746f4a41",
+          "file": "room/g1/round-2/story-editor.json",
+          "output_sha256": "b3ca155c6e61dbce91bfaf2c3d8db981e215030ace3c4e71441c5de8211b3428",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
-  "shipped": null,
-  "calls": 3,
+  "shipped": {
+    "round": 2,
+    "artifact_sha256": "171b3b96732f44a174dc23f6deeed463a59c4840b6f4e1aa3c6a5dbd1209d370"
+  },
+  "calls": 6,
   "cap": 18,
-  "author_cut": null,
+  "author_cut": {
+    "round": 1,
+    "draft_sha256": "06648cee791c86266693ac345de16135d57917d0fda91199d7f1f90720519086",
+    "cost": {
+      "lines_changed": 63,
+      "header_changed": [],
+      "keep_lost": [
+        "A firm spent about three hundred million dollars on a straighter cable to gain about three thousandths of a second (greed: what your minute is worth to someone). Japan's quake warning gives seconds, and the trains brake themselves on it (calm: the brake you just felt under your feet).",
+        "The ghost is invented. The real-world part, to be sourced at G2: your eyes already run a tenth of a second late and your brain guesses forward to cover it; what a few milliseconds of future have cost traders and saved trains; why a forecast past a minute forgets itself; and why a predicted reward lands as nothing.",
+        "The chai glass slips off the counter and smashes on the floor. You look down. It is still in your hand.",
+        "The ghost redraws and redraws across the crowd while you do not move; then the two layers slide together into one as the minute arrives."
+      ]
+    }
+  },
   "presented": {
     "draft_sha256": "06648cee791c86266693ac345de16135d57917d0fda91199d7f1f90720519086",
-    "at": "2026-11-10T16:28:09+00:00"
+    "at": "2026-11-10T19:17:11+00:00"
   }
 }
