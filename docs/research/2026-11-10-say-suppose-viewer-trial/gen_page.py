@@ -41,6 +41,9 @@ def main(dest: str) -> None:
     blockers.sort(key=lambda b: (order[b["script"]], b["line"] or 0, b["viewer"]))
     data = {"viewers": sorted(key), "calls": rows, "blockers": blockers,
             "scripts": [{"key": k, "title": t} for k, t in TITLES.items()]}
+    issues_path = HERE / "issues.json"  # written after the owner marked: the key and each distinct issue
+    if issues_path.exists():
+        data.update(reveal=key, issues=json.loads(issues_path.read_text()))
     scripts_html = "\n".join(
         f'<details class="draft"><summary>{html.escape(t)}</summary><pre>'
         + "\n".join(f"{i:>4}  {html.escape(l)}" for i, l in
