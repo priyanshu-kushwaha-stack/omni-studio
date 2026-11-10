@@ -1541,6 +1541,9 @@ rounds were sound-only and how many touched one beat, and the gaps between the `
 
 Each is a yes or no, or a pick. Nothing is built until the owner says so; none of them is a gate approval.
 
+**Owner's answers, 2026-11-10:** 1 yes, 2 yes, 3 "Yes" (which option is being confirmed with the owner; until then
+Tasks 1-4b and 7 are approved to build, and Tasks 5-6 wait for that answer).
+
 1. **720p for every G4 and G5 watch, 1080p only at G6** (Task 3, about 2.6 h of render a video). You would watch
    rough cuts and edits at 1280x720 and see 1080p once, at G6, after G5 passes (one extra render at that point, which
    the estimate already counts; G7 prep runs beside it). Notes on colour, staging, music and pace read at 720p; fine
