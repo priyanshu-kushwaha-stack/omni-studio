@@ -54,3 +54,25 @@ def test_run_records_the_size_of_file_arguments_under_the_repo(tmp_path, monkeyp
     outside.write_bytes(b"x" * 500)
     assert cli.main(["run", "--step", "s", "--", sys.executable, "-c", "pass", str(inside), str(outside)]) == 0
     assert T.read_timings()[0]["inputs_bytes"] == inside.stat().st_size
+
+
+def test_report_filters_by_video_channel_and_step_prefix(tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv("OMNI_JOBS_TIMINGS", str(tmp_path / "t.jsonl"))
+    T.record("whatif_render.full-1080p", seconds=3600, ok=True, channel="say-suppose", video="v1")
+    T.record("whatif_render.audio", seconds=120, ok=True, channel="say-suppose", video="v2")
+    T.record("pou_tts", seconds=60, ok=True, channel="professor-of-us", video="v2")
+    assert cli.main(["report", "--video", "v2", "--step", "whatif_"]) == 0
+    out = capsys.readouterr().out.splitlines()
+    assert [line.split()[0] for line in out[2:]] == ["whatif_render.audio", "total"]
+    assert out[-1].split()[1] == "1" and out[-1].rstrip().endswith("0.03 h")
+    assert cli.main(["report", "--channel", "professor-of-us"]) == 0
+    assert [line.split()[0] for line in capsys.readouterr().out.splitlines()[2:]] == ["pou_tts", "total"]
+
+
+def test_run_with_a_queue_tells_the_command_it_holds_it(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_JOBS_TIMINGS", str(tmp_path / "t.jsonl"))
+    monkeypatch.setenv("OMNI_JOBS_QUEUES", str(tmp_path / "queues"))
+    monkeypatch.delenv("OMNI_JOBS_QUEUE_HELD", raising=False)
+    probe = "import os, sys; sys.exit(0 if 'render' in os.environ.get('OMNI_JOBS_QUEUE_HELD', '').split(',') else 4)"
+    assert cli.main(["run", "--step", "x", "--queue", "render", "--", sys.executable, "-c", probe]) == 0
+    assert cli.main(["run", "--step", "x", "--", sys.executable, "-c", probe]) == 4

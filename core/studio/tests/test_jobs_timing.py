@@ -136,3 +136,34 @@ def test_record_tool_sums_the_size_of_existing_file_args_under_the_repo(tmp_path
     assert T.read_timings()[0]["inputs_bytes"] == expected
     Tool().execute({"channel": "c"})
     assert T.read_timings()[1]["inputs_bytes"] == 0
+
+
+def test_record_tool_names_the_run_by_the_tools_timing_step():
+    class Tool:
+        name = "whatif_render"
+
+        def timing_step(self, inputs):
+            return f"whatif_render.{inputs['mode']}"
+
+        @T.record_tool
+        def execute(self, inputs):
+            return SimpleNamespace(success=True)
+
+    Tool().execute({"mode": "audio", "video": "2026-11-06_x", "channel": "say-suppose"})
+    row = T.read_timings()[-1]
+    assert (row["step"], row["video"], row["channel"]) == ("whatif_render.audio", "2026-11-06_x", "say-suppose")
+
+
+def test_a_broken_timing_step_falls_back_to_the_tool_name():
+    class Tool:
+        name = "whatif_render"
+
+        def timing_step(self, inputs):
+            raise KeyError("mode")
+
+        @T.record_tool
+        def execute(self, inputs):
+            return SimpleNamespace(success=True)
+
+    assert Tool().execute({}).success
+    assert T.read_timings()[-1]["step"] == "whatif_render"
