@@ -35,13 +35,14 @@ comfortable in English, on a phone in the evening), harvested from the four film
 - Drawn for one camera, `REF` = `{960, 540, 1}`: a set reads like a picture in 1920x1080 coordinates. `Deep` (from
   Nobody Could Say No) is the kit's `Layer` shifted so every depth draws where its coordinates say at REF; as the
   camera moves, far layers drift less (real parallax), and the mood's depth of field softens them.
-- `SetDef`: `spots` (x, y, scale, facing, `sit`), `cameras` (`wide` = REF plus named framings), `lights` (lamps and
-  windows that glow only in listed moods), `defaults` (swappable props), `Back`, optional `Mid` (a counter, a table,
+- `SetDef`: `spots` (x, y, scale, facing, `sit`; `seat()` builds a seated one), `cameras` (`wide` = REF plus named
+  framings), `lights(options)` (lamps, windows and screens that glow only in the moods they list, and only when the
+  set's switches have them on), `defaults` (swappable props), `Back`, optional `Mid` (a counter, a table,
   a cart, drawn between the `behind` cast and the rest) and `Front` (a pole, a railing), and an `example`.
 - Mood: every set takes `mood` and draws its windows, skies, lamps and lit windows from `OUTSIDE[mood]`;
-  `setLook(set.lights, mood, cam)` is `moodLook(mood)` plus the set's lights projected to the screen.
-- `SetScene` puts a set on the Stage with people on its spots (an unknown spot throws). It also takes the pause's
-  `radius` and `origin`.
+  `setLook(set.lights(options), mood, cam)` is `moodLook(mood)` plus the set's lights projected to the screen.
+- `SetScene` puts a set on the Stage with people on its spots (an unknown spot throws). It also takes the film's own
+  `look` (focus, extra glows) and the pause's `radius` and `origin`.
 - Words never appear on screen in a set: boards, signs, screens and chats are ink drawings, colour blocks and ink bars.
 
 ## Checks
