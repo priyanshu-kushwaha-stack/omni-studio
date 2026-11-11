@@ -1,0 +1,62 @@
+{
+  "call_id": "9bd407c4db854b16b91a3dd3680c46b6",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 6
+  },
+  "blockers": [
+    {
+      "quote": "Stanley Milgram, 1963. 40 men, a panel of switches, a stranger in the next room taking the shocks. 26 of them went all the way to the last switch. 450 volts. (c06)",
+      "why": "Claim c06. Stating that a stranger in the next room was 'taking the shocks' is factually false: the learner was an actor/confederate and no actual shocks were administered or taken. While participants believed shocks were delivered, asserting as real-world fact that someone was 'taking the shocks' misstates the experiment. Furthermore, the c06 ledger note explicitly directs: 'Say \"published in 1963\"; if a run year is said, \"1961\", never a month.' Saying 'Stanley Milgram, 1963' misleads on the study's run date (conducted in 1961 at Yale).",
+      "fix": "Stanley Milgram, published in 1963. 40 men, a panel of switches, a stranger in the next room they believed was taking the shocks. 26 of them went all the way to the last switch. 450 volts. (c06)",
+      "domain": "fact",
+      "line": 277
+    },
+    {
+      "quote": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. Nobody was being kind. Nobody was listening. (c03)",
+      "why": "Claim c03. The claim that 'Nobody was being kind. Nobody was listening' is unsupported and contradicts Langer et al. (1978). In that study, 60% of people agreed to let someone cut in with no reason at all, demonstrating baseline kindness/helpfulness. The finding was mindless compliance with the syntactic structure of a request ('because...'), not that people were unkind or deaf to the ask. The verbatim quote supports only the placebic request wording.",
+      "fix": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. (c03)",
+      "domain": "fact",
+      "line": 126
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 169,
+      "quote": "> SCENE: A paper diagram draws itself over the whiteboard: a card with three lines, one plainly longer; a row of heads all pointing at a shorter one; the last head looks at the others and points the same way.",
+      "fix": "> SCENE: A paper diagram draws itself over the whiteboard: a ring of heads nodding round a table, their speech bubbles flattening into identical checkmarks."
+    },
+    {
+      "line": 198,
+      "quote": "In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20, they didn't. (c05)",
+      "fix": "In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20 dollars, they didn't. (c05)"
+    },
+    {
+      "line": 124,
+      "quote": "He would have nodded for almost anyone.",
+      "fix": "For five copies, he would have nodded for almost anyone."
+    }
+  ],
+  "keep": [
+    {
+      "line": 129,
+      "quote": "Psychologists once sent students out to ask strangers for one small favour. They guessed they'd have to ask about twice as many people as they really did. (c01)"
+    },
+    {
+      "line": 131,
+      "quote": "Strangers were far more willing to say yes to everyday requests than you ever believed. You had simply never asked. (c02)"
+    },
+    {
+      "line": 213,
+      "quote": "Psychologists count it as a basic need, next to feeling capable and feeling close to people. Choosing for yourself. (c10)"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "120cce0177a20ada3fcf08863172b171e4efc921227dcaff1462b73b5c6bc6a9",
+  "draft_sha256": "cc14f11ef5df2d5274c27c2cf64a3b38e0416e24243e3549673117e3bde60915"
+}
