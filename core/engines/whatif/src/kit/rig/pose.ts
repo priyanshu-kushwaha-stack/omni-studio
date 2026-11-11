@@ -18,7 +18,12 @@ export const dir = (angle: number) => ({ x: Math.sin(rad(angle)), y: Math.cos(ra
 
 export const STAND: Pose = { lean: 0, tilt: 0, armB: [-7, 8], armF: [9, 10], legB: [-5, -2], legF: [6, -3], drop: 0 };
 export const SIT: Pose = { lean: 0, tilt: 0, armB: [10, 15], armF: [20, 20], legB: [90, -2], legF: [90, -2], drop: 0 };
+/** Sitting on a chair, bench or cot: thighs forward, shins down (Nobody Could Say No, CHAIR_SIT). */
+export const SEATED: Pose = { ...STAND, armB: [10, 25], armF: [25, 35], legB: [88, -88], legF: [92, -92] };
 export const SNAP: Pose = { lean: -4, tilt: -6, armB: [-20, 20], armF: [125, 45], legB: [-14, -3], legF: [16, -4], drop: 4 };
+
+/** The figure y that puts a SEATED figure's hips on a seat top at `seatTop` (the hips sit two limbs above the feet). */
+export const seatedY = (seatTop: number, scale = 1) => seatTop + 2 * LIMB * scale;
 
 export function lerpPose(a: Pose, b: Pose, t: number): Pose {
   const n = (x: number, y: number) => x + (y - x) * t;

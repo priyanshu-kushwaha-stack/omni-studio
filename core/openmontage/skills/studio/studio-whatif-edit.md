@@ -6,6 +6,46 @@ music and mix, and the voice the A/B chose. Watch copies are always 1280x720; ne
 Scenes live in the video folder, `scenes/` with an `index.ts` entry, and import the kit as `@whatif/kit/...`
 (`core/engines/whatif/src/kit`; worked example: `core/engines/whatif/examples/pause-sample`).
 
+## Reuse a library set before drawing a new one
+
+`core/engines/whatif/src/kit/sets/` (`@whatif/kit/sets`) holds the viewer's week as ready sets. Start every `> SCENE:`
+from one of them and draw a new set only when none fits; a film should reuse about 70% of its sets. Each set is drawn
+for one reference camera (`REF`, the 1920x1080 frame at zoom 1) in paper layers at different depths, takes its light
+from `> MOOD:` (windows, lamps, tube lights and street lamps follow the mood), and has:
+
+- `spots`: named places for figures (x, y, scale, facing, `sit` for chairs, benches and cots); `poseFor(spot)` gives
+  the pose;
+- `cameras`: `wide` (REF) and two or three named framings to start a shot from;
+- `defaults`: the props you can swap (what is on the stove, the whiteboard, the monitor, the train's door);
+- `example`: one composition, rendered in all six moods by `examples/set-library` (`whatif_stills`, composition
+  `SetLibrary`, props `{"set": "<name>"}`, frames 0-5).
+
+`<SetScene set={kitchen} mood="dusk" cam={...} options={{ stove: "kettle" }} cast={[...]} />` puts a set on the Stage
+with people on its spots; or use `set.Back`, `set.Mid` and `set.Front` in your own `<Stage>` for full control. A cast
+member marked `behind` is drawn before the set's `Mid` (a counter, a table, a cart), so it hides their legs.
+
+| Set | What it is |
+|---|---|
+| `classroom` | coaching class: whiteboard with ink drawings (no words), bench desks, far row of heads, fan and tube lights |
+| `metro-platform` | elevated metro platform: a train that pulls in and opens its door, the far platform, the city beyond |
+| `metro-coach` | inside a metro coach: the city sliding past two windows, bench, poles and handles, a reflection in the glass |
+| `bus` | inside a city bus: the street sliding past, the bench, straps and the yellow pole, strap-hangers |
+| `kitchen` | home kitchen: window with a grille, granite platform, gas stove (pressure cooker or kettle), spice shelf, fridge |
+| `bedroom` | your bedroom: window with curtains, bed, bedside alarm clock and phone, study desk with lamp and laptop |
+| `dining` | joint-family dining table: eight places, steel plates and dal, ceiling fan, garlanded photo, calendar |
+| `courtyard` | family courtyard: the tulsi on its plinth, a neem over the back wall, washing, a charpai, the house door |
+| `balcony` | a flat's balcony over the city: railing in front, plants and fairy lights, a plastic chair, washing |
+| `office-desk` | your desk on an open office floor: monitor, mug, plant, cubicles and colleagues, the boss's glass cabin |
+| `hostel-room` | shared hostel room: two steel cots, study table under the window, steel almirah, clothesline |
+| `street` | city street: shopfront buildings, road with a zebra crossing, trees, traffic light, lamps, bus, auto |
+| `bazaar` | bazaar lane: shopfronts, striped awnings over fruit crates, bunting, bulbs at night, a vegetable cart |
+| `chai-stall` | chai stall outside college: tin roof, shelf of jars, kettle steaming, glasses, the bulb at night |
+| `phone` | phone-screen close-up in your hand: a chat (ink bars, ticks, typing dots), a call, a feed |
+
+A set a film draws for itself goes in the video's `scenes/`. If it would serve other films (another room of the
+viewer's week), lift it into the library afterwards: same contract, a vitest entry in `tests/sets.test.ts`, and a still
+in all six moods for the owner.
+
 ## The look test first
 
 Before building out, render the one picture only this premise can show (story #8) in two or three ways, as stills or
@@ -16,7 +56,7 @@ never described. Never restage the picked shot afterwards.
 
 1. Build each `> SCENE:` from the kit, lit by its `> MOOD:` (`moodLook`), with pause bars, named expressions, shot
    helpers, and the channel's rule for sources (Say Suppose: in the description, not on screen). Use the kit: sets as
-   layers at different depths, rigged figures, props. Reuse a set before drawing a new one. No AI images and no AI
+   layers at different depths, rigged figures, props. Reuse a library set before drawing a new one (above). No AI images and no AI
    video clips: everything on screen is drawn in code. `scenes/Root.tsx` registers two compositions with the same
    props: `RoughCut` (the film) and `RoughCutSound`, the film inside `<SoundOnly.Provider value={true}>`
    (`@whatif/kit/sound`), which the audio pass renders. Put every `<Audio>` outside `<Stage>` and `<Figure>` (as the
