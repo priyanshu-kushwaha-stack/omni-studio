@@ -1,0 +1,848 @@
+{
+  "id": "2026-11-10_what-if-nobody-could-say-no-to-you",
+  "voice": {
+    "model": "local:qwen3",
+    "voiceType": "local",
+    "voiceId": "f49e5ec2f2e87941",
+    "ref": "../../brand/voice/arthur-ref.wav",
+    "refText": "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+  },
+  "leadInSec": 0.7,
+  "tailSec": 2.4,
+  "lines": [
+    {
+      "text": "What if nobody could say no to you? Even your mother. You'd never know what she really thought.",
+      "say": "[close, almost a dare, a breath before \"Even\"] What if nobody could say no to you? Even your mother. You'd never know what she really thought.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The message to your boss. Typed four times. Deleted four times.",
+      "say": "[dry, counting on the fingers] The message to your boss. Typed four times. Deleted four times.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You don't ask. They might say no.",
+      "say": "[quiet, confiding, the voice in your head] You don't ask. They might say no.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Mom: Eating properly?",
+      "say": "[warm, loud down a phone, mid-chore] Eating properly?",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You say \"fine\" and ask her nothing.",
+      "say": "[flat, a shrug in the voice] You say \"fine\" and ask her nothing.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "A fine at the gate. Yesterday's ticket. And you make a joke.",
+      "say": "[dry, picking up pace] A fine at the gate. Yesterday's ticket. And you make a joke.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Checker: Thank you. Go on.",
+      "say": "[cheerful, brisk, as if you did him a favour] Thank you. Go on.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "He thanks you. For letting him let you off.",
+      "say": "[amused, slow, savouring it] He thanks you. For letting him let you off.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Here's the rule, and it's already running.",
+      "say": "[low, leaning in] Here's the rule, and it's already running.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Ask anyone, face to face, out loud. They say yes. Gladly. And it won't switch off. Every no in your life, gone.",
+      "say": "[plain, exact, each clause its own breath] Ask anyone, face to face, out loud. They say yes. Gladly. And it won't switch off. Every no in your life, gone.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Not in writing. Not down a phone. You have to be looking at them.",
+      "say": "[plain, exact] Not in writing. Not down a phone. You have to be looking at them.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "By Friday you'll ask your mother one question. And you'll never know her real answer.",
+      "say": "[hushed, a catch before \"never\"] By Friday you'll ask your mother one question. And you'll never know her real answer.",
+      "gapAfterSec": 2.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Monday. Start small. A little extra chutney?",
+      "say": "[light, amused, testing] Monday. Start small. A little extra chutney?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "He gives you the bowl.",
+      "say": "[deadpan] He gives you the bowl.",
+      "gapAfterSec": 1.5,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "On the bus, the auntie's bag is on the seat, and you get as far as \"excuse...\"",
+      "say": "[quick, amused, cutting yourself off] On the bus, the auntie's bag is on the seat, and you get as far as \"excuse...\"",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Auntie: Sit, sit, beta.",
+      "say": "[warm, bossy, already moving] Sit, sit, beta.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "She moves before you finish the sentence.",
+      "say": "[dry, a little wondering] She moves before you finish the sentence.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Driver: Thank you, thank you.",
+      "say": "[grateful, humble, hands folded] Thank you, thank you.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "The auto goes by the meter. He thanks you for the fare.",
+      "say": "[deadpan, the second sentence slower] The auto goes by the meter. He thanks you for the fare.",
+      "gapAfterSec": 2.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Tuesday. A little more chai?",
+      "say": "[light, greedy, a grin in it] Tuesday. A little more chai?",
+      "gapAfterSec": 2.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Same glad smile as yesterday. Exactly the same.",
+      "say": "[quieter, the fun draining a little] Same glad smile as yesterday. Exactly the same.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "So you test the edges. In writing, nothing. Your boss replies \"let's discuss\", like a boss.",
+      "say": "[brisk, dry on the last three words] So you test the edges. In writing, nothing. Your boss replies \"let's discuss\", like a boss.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You tell the mirror to stop worrying. It doesn't.",
+      "say": "[wry, half a laugh] You tell the mirror to stop worrying. It doesn't.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Chai man: Of course, of course.",
+      "say": "[cheerful, automatic, not really listening] Of course, of course.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "He says yes. Same smile. And you have no idea.",
+      "say": "[low, the amusement gone] He says yes. Same smile. And you have no idea.",
+      "gapAfterSec": 1.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A yes. A thing. Never what anyone feels.",
+      "say": "[hushed, exact, three stones dropped] A yes. A thing. Never what anyone feels.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Then there's Dev. Your oldest friend. You've never had to ask him for anything.",
+      "say": "[warm, easing, fond] Then there's Dev. Your oldest friend. You've never had to ask him for anything.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Dev: Saved it. Hurry up.",
+      "say": "[easy, grinning, half shouting over the platform] Saved it. Hurry up.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "He saves the window seat. He splits the last chai.",
+      "say": "[warm, simple] He saves the window seat. He splits the last chai.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Dev: Just send it, yaar.",
+      "say": "[gentle, teasing, close] Just send it, yaar.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You ask him nothing. He helps anyway.",
+      "say": "[soft, a note held back] You ask him nothing. He helps anyway.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Wednesday. Your boss. Face to face.",
+      "say": "[brisk, a held breath] Wednesday. Your boss. Face to face.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Boss: Take Monday too.",
+      "say": "[breezy, generous, already looking back at the screen] Take Monday too.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "And the one you've been deleting all week. The pitch.",
+      "say": "[low, careful, the real ask] And the one you've been deleting all week. The pitch.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Boss: All yours. Obviously.",
+      "say": "[warm, instant, as if it was always decided] All yours. Obviously.",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You got the project you wanted. And you will never know if you earned it.",
+      "say": "[quiet, flat on the first half, slower on the second] You got the project you wanted. And you will never know if you earned it.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Thursday. The copy shop. Six people in the queue, and you need five copies.",
+      "say": "[light, setting a scene, a little mischief] Thursday. The copy shop. Six people in the queue, and you need five copies.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You walk past six people and say it: five copies, please, because I need to make copies.",
+      "say": "[amused, the reason said with a straight face] You walk past six people and say it: five copies, please, because I need to make copies.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Clerk: Haan, give.",
+      "say": "[bored, barely looking up] Haan, give.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A reason that isn't a reason. He nods anyway.",
+      "say": "[dry, a beat of wonder] A reason that isn't a reason. He nods anyway.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "He would have nodded for almost anyone.",
+      "say": "[quieter, the smile fading] He would have nodded for almost anyone.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. Nobody was being kind. Nobody was listening.",
+      "say": "[plain, exact, cooler on the last two sentences] In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. Nobody was being kind. Nobody was listening.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c03"
+      ]
+    },
+    {
+      "text": "Psychologists once sent students out to ask strangers for one small favour. They guessed they'd have to ask about twice as many people as they really did.",
+      "say": "[curious, telling a story, lifting on \"twice\"] Psychologists once sent students out to ask strangers for one small favour. They guessed they'd have to ask about twice as many people as they really did.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c01"
+      ]
+    },
+    {
+      "text": "Strangers were far more willing to say yes to everyday requests than you ever believed. You had simply never asked.",
+      "say": "[gentle, landing on you, the last sentence almost kind] Strangers were far more willing to say yes to everyday requests than you ever believed. You had simply never asked.",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": [
+        "c02"
+      ]
+    },
+    {
+      "text": "So far, that's strangers.",
+      "say": "[low, a warning under it] So far, that's strangers.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Sunday. Lunch at home. You haven't asked her for anything. You never do.",
+      "say": "[warm, slow, settling in] Sunday. Lunch at home. You haven't asked her for anything. You never do.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Mom: Come, come. Sit.",
+      "say": "[warm, bustling, from the door] Come, come. Sit.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "She tells the goat story. The one from when you were six. You laugh where you always laugh.",
+      "say": "[fond, smiling, a little tired] She tells the goat story. The one from when you were six. You laugh where you always laugh.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You nearly ask her something. You don't know what. You stop, the way you always stop.",
+      "say": "[hushed, close, the breath catching on \"stop\"] You nearly ask her something. You don't know what. You stop, the way you always stop.",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Mom: Come next Sunday?",
+      "say": "[hopeful, light, not pushing] Come next Sunday?",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Mom: Eat properly!",
+      "say": "[calling after you, loud and warm] Eat properly!",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "No tag over her head. Not yet. You've asked her nothing, so she is still just your mother.",
+      "say": "[soft, relieved, slower on the last words] No tag over her head. Not yet. You've asked her nothing, so she is still just your mother.",
+      "gapAfterSec": 2.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Monday, and you've stopped being careful.",
+      "say": "[brisk, a little cold] Monday, and you've stopped being careful.",
+      "gapAfterSec": 3.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A chair, a charger, a signature. Everyone you pass turns to you with the same smile, and somewhere in that row is a person who actually liked you on Friday. You can't find them.",
+      "say": "[quick on the list, then slowing, a hush on \"can't find them\"] A chair, a charger, a signature. Everyone you pass turns to you with the same smile, and somewhere in that row is a person who actually liked you on Friday. You can't find them.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Every yes is the same yes now. So you stop looking at faces.",
+      "say": "[low, flat, final] Every yes is the same yes now. So you stop looking at faces.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The pitch. Your first draft. The one you'd have thrown out on a normal week.",
+      "say": "[dry, a wince in it] The pitch. Your first draft. The one you'd have thrown out on a normal week.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Boss: Unanimous. Love it.",
+      "say": "[delighted, loud, slapping the table] Unanimous. Love it.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A meeting that says yes before you've finished isn't a meeting. It's an echo.",
+      "say": "[cool, exact, the last word small] A meeting that says yes before you've finished isn't a meeting. It's an echo.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Psychologists have a name for a room where nobody says no. Groupthink.",
+      "say": "[plain, exact, the name dropped quietly] Psychologists have a name for a room where nobody says no. Groupthink.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c13"
+      ]
+    },
+    {
+      "text": "Rooms take years to get there. You took one question. And a room like that commits.",
+      "say": "[dry, then a weight on \"commits\"] Rooms take years to get there. You took one question. And a room like that commits.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Boss: Friday. The whole floor's coming.",
+      "say": "[thrilled, booming, proud of you] Friday. The whole floor's coming.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.",
+      "say": "[tense, the words getting shorter, a breath before \"stage\"] Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.",
+      "gapAfterSec": 2.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "That evening, Dev is counting money he's been saving for weeks. A clutch for the bike. His sister's fees.",
+      "say": "[warm, quiet, watching him] That evening, Dev is counting money he's been saving for weeks. A clutch for the bike. His sister's fees.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Your rent bounced. You look at him across the table. And you ask.",
+      "say": "[low, slow, the last three words almost unwilling] Your rent bounced. You look at him across the table. And you ask.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Dev: Take it all. Seriously.",
+      "say": "[bright, generous, no hesitation at all] Take it all. Seriously.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "All of it. Cheerfully. Because you asked, across a table, looking at him.",
+      "say": "[hushed, uneasy, each phrase a little heavier] All of it. Cheerfully. Because you asked, across a table, looking at him.",
+      "gapAfterSec": 2.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "That's the first thing you've ever taken from him. He doesn't know that's what it was.",
+      "say": "[very quiet, close, no air on the second sentence] That's the first thing you've ever taken from him. He doesn't know that's what it was.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Dev's mother: The clutch? You had it.",
+      "say": "[puzzled, gentle, a mother's half-question] The clutch? You had it.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "He remembers agreeing. He can't remember wanting to.",
+      "say": "[hushed, slow, a catch before \"wanting\"] He remembers agreeing. He can't remember wanting to.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20, they didn't.",
+      "say": "[curious, even, a storyteller's lift on the twist] In nineteen fifty-nine, students did an hour of dull work, then were paid to tell the next person it was fun. Paid one dollar, they later rated the work more enjoyable. Paid twenty, they didn't.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": [
+        "c05"
+      ]
+    },
+    {
+      "text": "With no good reason for what he's done, Dev does what they did. He makes one up.",
+      "say": "[soft, sorry for him] With no good reason for what he's done, Dev does what they did. He makes one up.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Dev: Needed to help a friend.",
+      "say": "[quiet, convincing himself, a small smile in it] Needed to help a friend.",
+      "gapAfterSec": 2.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "And now he believes it. First you took his money. Then you took his why.",
+      "say": "[low, exact, the last word barely voiced] And now he believes it. First you took his money. Then you took his why.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You wanted every no gone. Here's what you got.",
+      "say": "[flat, close, a long exhale first] You wanted every no gone. Here's what you got.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "A no was the only thing that ever told you a yes was real. It was the proof. You've thrown out the proof.",
+      "say": "[steady, intimate, the last sentence slower] A no was the only thing that ever told you a yes was real. It was the proof. You've thrown out the proof.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You have not won a single argument this week, you have ended them.",
+      "say": "[quiet, even, one unbroken thought] You have not won a single argument this week, you have ended them.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Psychologists count it as a basic need, next to feeling capable and feeling close to people. Choosing for yourself.",
+      "say": "[plain, warm, the last three words gentle] Psychologists count it as a basic need, next to feeling capable and feeling close to people. Choosing for yourself.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": [
+        "c10"
+      ]
+    },
+    {
+      "text": "Every hand at the table.",
+      "say": "[deadpan, a tired laugh under it] Every hand at the table.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "He stays. He watches the door the whole time.",
+      "say": "[hushed, hurt held in] He stays. He watches the door the whole time.",
+      "gapAfterSec": 2.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "So you stop asking. Statements. Silences. And you find out how much of talking to someone was asking them things.",
+      "say": "[low, slow, a discovery] So you stop asking. Statements. Silences. And you find out how much of talking to someone was asking them things.",
+      "gapAfterSec": 3.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "In the old myth, King Midas wished that everything he touched would turn to gold. It did. Even his food.",
+      "say": "[quiet, a bedtime-story cadence, cold on the last word] In the old myth, King Midas wished that everything he touched would turn to gold. It did. Even his food.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": [
+        "c12"
+      ]
+    },
+    {
+      "text": "You can't turn it off. You can only stop touching things.",
+      "say": "[hushed, resigned] You can't turn it off. You can only stop touching things.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Sunday. You've managed a whole lunch without a question. She noticed. She didn't say.",
+      "say": "[soft, careful, almost proud, then sad] Sunday. You've managed a whole lunch without a question. She noticed. She didn't say.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Mom: So quiet today.",
+      "say": "[gentle, a little worried, not prying] So quiet today.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "And at the gate, without thinking, it comes out. The one thing you've never asked anyone.",
+      "say": "[hushed, the breath shortening] And at the gate, without thinking, it comes out. The one thing you've never asked anyone.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You hear yourself say it. \"You're happy, aren't you?\"",
+      "say": "[a whisper, the question itself small and bare] You hear yourself say it. \"You're happy, aren't you?\"",
+      "gapAfterSec": 4.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Mom: Of course, beta.",
+      "say": "[warm, instant, the same warmth as every other yes] Of course, beta.",
+      "gapAfterSec": 2.5,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Yes. She smiles the smile.",
+      "say": "[almost no voice, flat, broken] Yes. She smiles the smile.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Mom: Beta, listen. When you were...",
+      "say": "[tender, confiding, leaning in, fading under the music] Beta, listen. When you were...",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "She says yes to that too. And she tells you something. And you have no way on earth to know which it was.",
+      "say": "[hushed, steady, the last clause slow and plain] She says yes to that too. And she tells you something. And you have no way on earth to know which it was.",
+      "gapAfterSec": 3.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "The one question that mattered. You've asked it now. And it's gone.",
+      "say": "[very quiet, each sentence its own breath] The one question that mattered. You've asked it now. And it's gone.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Friday. The hall. Two hundred people, and your first draft on a screen the size of a wall.",
+      "say": "[tense, clipped, the room too big] Friday. The hall. Two hundred people, and your first draft on a screen the size of a wall.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "And from up here you can see it. It's wrong. It was always wrong.",
+      "say": "[low, sick, the last sentence slower] And from up here you can see it. It's wrong. It was always wrong.",
+      "gapAfterSec": 3.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Nobody in that hall can tell you it's the worst thing you've made. You've made sure of it.",
+      "say": "[cold, close, the second sentence a verdict] Nobody in that hall can tell you it's the worst thing you've made. You've made sure of it.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Stanley Milgram, 1963. 40 men, a panel of switches, a stranger in the next room taking the shocks. 26 of them went all the way to the last switch. 450 volts.",
+      "say": "[even, grave, the numbers plain and unhurried] Stanley Milgram, nineteen sixty-three. Forty men, a panel of switches, a stranger in the next room taking the shocks. Twenty-six of them went all the way to the last switch. Four hundred and fifty volts.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": [
+        "c06"
+      ]
+    },
+    {
+      "text": "The shocks were fake. The men didn't know that. Nobody shouted at them. A calm voice told them to go on.",
+      "say": "[quiet, exact, calm itself on the last sentence] The shocks were fake. The men didn't know that. Nobody shouted at them. A calm voice told them to go on.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": [
+        "c06"
+      ]
+    },
+    {
+      "text": "You know that voice now. It's the one that says \"go on?\" and gets a yes. It's yours.",
+      "say": "[hushed, a catch on the last two words] You know that voice now. It's the one that says \"go on?\" and gets a yes. It's yours.",
+      "gapAfterSec": 2.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Backstage, Dev finds you. He isn't smiling. He's the only one in the building who isn't.",
+      "say": "[quick, low, a strange relief in it] Backstage, Dev finds you. He isn't smiling. He's the only one in the building who isn't.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Dev: That was bad. Really bad.",
+      "say": "[blunt, upset, a friend not a critic] That was bad. Really bad.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "He's the one person you haven't asked today. Which makes him the one person still willing to tell you no without being asked.",
+      "say": "[steady, close, the second sentence slower and warmer] He's the one person you haven't asked today. Which makes him the one person still willing to tell you no without being asked.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Dev: I'm pulling my sign-off. Monday.",
+      "say": "[firm, quiet, decided, not angry] I'm pulling my sign-off. Monday.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "His name is on that page. On Monday he can take it back, and the client's yes goes with it. The last no that can stop this.",
+      "say": "[quick, exact, pressing] His name is on that page. On Monday he can take it back, and the client's yes goes with it. The last no that can stop this.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Dev: I'm done. I'm going.",
+      "say": "[tired, final, turning away] I'm done. I'm going.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "One word, \"stay?\", and he stays, and on Monday he pulls the pitch because you asked. Or he reaches that door with the only no you've got left, and whatever he does with it is his. The power, or the person?",
+      "say": "[urgent, in one breath, the last question quiet] One word, \"stay?\", and he stays, and on Monday he pulls the pitch because you asked. Or he reaches that door with the only no you've got left, and whatever he does with it is his. The power, or the person?",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You don't say it. You write it.",
+      "say": "[hushed, a held breath let go] You don't say it. You write it.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Paper. Where it has no power.",
+      "say": "[a whisper, exact] Paper. Where it has no power.",
+      "gapAfterSec": 12.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "He saved your seat before any of this. He wrote your first line for you. She packed your food every Sunday of your life.",
+      "say": "[warm, slow, each memory given room] He saved your seat before any of this. He wrote your first line for you. She packed your food every Sunday of your life.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "They were saying yes to you long before you could make them. Out of love, which is the one thing it couldn't touch.",
+      "say": "[tender, close, a breath before \"Out of love\"] They were saying yes to you long before you could make them. Out of love, which is the one thing it couldn't touch.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The power never changed them. It took one thing, and it took it from you.",
+      "say": "[quiet, steady, the last four words plain] The power never changed them. It took one thing, and it took it from you.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The chance of being told no. Which is the only way anyone has ever told you the truth.",
+      "say": "[hushed, warm, the whole thought landing] The chance of being told no. Which is the only way anyone has ever told you the truth.",
+      "gapAfterSec": 2.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Then you open the message to your boss. The ordinary way.",
+      "say": "[light, unguarded, a small smile] Then you open the message to your boss. The ordinary way.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You type it once.",
+      "say": "[soft, almost amused] You type it once.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You ask. They might say no.",
+      "say": "[quiet, close, the old line turned over gently] You ask. They might say no.",
+      "gapAfterSec": 3.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Three dots. For once, you don't know what's coming.",
+      "say": "[hushed, a breath of wonder, then stop] Three dots. For once, you don't know what's coming.",
+      "gapAfterSec": 2.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Who would you never risk asking?",
+      "say": "[warm, direct, to the viewer] Who would you never risk asking?",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    }
+  ],
+  "sources": {
+    "c03": "https://jamesclear.com/wp-content/uploads/2015/03/copy-machine-study-ellen-langer.pdf",
+    "c01": "https://content.lesaffaires.com/LAF/lacom/need%20help.pdf",
+    "c02": "https://content.lesaffaires.com/LAF/lacom/need%20help.pdf",
+    "c13": "https://en.wikipedia.org/wiki/Groupthink",
+    "c05": "https://psychclassics.yorku.ca/Festinger/",
+    "c10": "https://selfdeterminationtheory.org/theory/",
+    "c12": "https://ovid.lib.virginia.edu/trans/Metamorph11.htm",
+    "c06": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Influence_Compliance/Milgrim_1963_Behavioral_study_of_obedience.pdf"
+  },
+  "cues": {}
+}
