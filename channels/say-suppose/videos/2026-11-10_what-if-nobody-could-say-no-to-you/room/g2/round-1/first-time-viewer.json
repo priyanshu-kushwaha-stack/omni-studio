@@ -1,0 +1,16 @@
+{
+  "call_id": "62e487cd09f149adac125baf0071b5cf",
+  "seat": "first-time viewer",
+  "role": "viewer",
+  "model": "claude-opus-5-5",
+  "family": "anthropic",
+  "status": "failed",
+  "scores": {},
+  "blockers": [],
+  "suggestions": [],
+  "keep": [],
+  "error": "claude exited 1",
+  "trimmed": {},
+  "output_sha256": "d2423994431b6a8f7eb2e9cd5de4d903807538fb95cff0668d87a2be37bb521d",
+  "draft_sha256": "cc14f11ef5df2d5274c27c2cf64a3b38e0416e24243e3549673117e3bde60915"
+}
