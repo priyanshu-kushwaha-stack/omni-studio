@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-10_what-if-nobody-could-say-no-to-you",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-11T07:12:33.680317+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "script": "script.md v4 (room g2 round 4 shipped, sha 2bd5f087)",
+    "claims": "claims.md (16 rows; c01, c04, c08, c09, c11, c12, c14 unspoken or dropped)",
+    "narration": "local qwen3 Arthur clone, 113 lines, 527.2 s; mutes.txt",
+    "first_cut": "renders/first-cut-720p.mp4 (git-ignored), 1280x720",
+    "room": "room-g2.md, review-g2-round1.md, review-g2-round2.md",
+    "owner": "'Script is right' (2026-11-11)",
+    "awaiting": "omni approve by the owner (G2 story lock)"
+  }
+}

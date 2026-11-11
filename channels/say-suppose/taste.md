@@ -10,6 +10,10 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-11
 
+- **G2 first cut, nobody says no: "Script is right"** after watching the 720p first cut on the local narration. The script
+  v4 and the narration stand as they are; the room's open round-4 notes ("One clap if good?", cutting the repeated
+  photocopier line, the line after the peak, the dilemma's wording, Dev's envelope) are not taken into the script; the
+  envelope and picture notes wait for picture lock. (nobody-says-no film, G2)
 - **G2 drop 1, nobody says no: "Apply all fixes"** (`review-g2-round1.md`). A fact line says what the study found
   and no more (Milgram's learner was an actor; Langer's finding is mindless compliance, not unkindness); one number at a
   time; a rule is planted before the midpoint; a fact or a myth that pauses the story is cut (the second study, Midas);
