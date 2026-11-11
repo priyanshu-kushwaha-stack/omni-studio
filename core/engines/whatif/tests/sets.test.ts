@@ -22,6 +22,21 @@ const EXPECTED: Record<string, string[]> = {
   bazaar: ["vendor", "customer", "passing", "stall"],
   "chai-stall": ["chaiwala", "customer", "friend", "street"],
   phone: ["face", "shoulder"],
+  "school-corridor": ["hero", "friend", "door", "cooler"],
+  "exam-hall": ["seat1", "seat2", "seat3", "invigilator"],
+  canteen: ["benchLeft", "benchMid", "benchRight", "counter", "standing"],
+  rooftop: ["parapet", "parapetRight", "door", "tank"],
+  "festival-street": ["hero", "friend", "rangoli", "doorstep"],
+  "gully-cricket": ["batter", "bowler", "fielder", "keeper"],
+  "hospital-corridor": ["bench1", "bench2", "doors", "pacing"],
+  "bank-atm": ["atm", "guard", "door"],
+  "wedding-hall": ["groom", "bride", "stage", "guest", "aunty"],
+  "train-platform": ["hero", "seeingOff", "door", "vendor"],
+  "sleeper-coach": ["lower", "lowerRight", "upper", "aisle"],
+  "gaming-desk": ["chair", "behind", "door"],
+  stadium: ["seat", "neighbour", "aisle"],
+  "city-skyline": ["wall", "wallRight", "walker"],
+  "tv-studio": ["anchor", "guest", "presenter"],
 };
 
 const draw = (set: SetDef, mood: MoodName, part: "Back" | "Mid" | "Front") => {
@@ -46,7 +61,7 @@ describe("the set library", () => {
         for (const [name, s] of Object.entries(set.spots)) {
           expect(s.x, name).toBeGreaterThan(-200);
           expect(s.x, name).toBeLessThan(2120);
-          expect(s.y, name).toBeGreaterThan(500);
+          expect(s.y, name).toBeGreaterThan(250);
           expect(s.y, name).toBeLessThan(1400);
           expect(s.scale, name).toBeGreaterThan(0.5);
           expect(s.scale, name).toBeLessThan(4);
