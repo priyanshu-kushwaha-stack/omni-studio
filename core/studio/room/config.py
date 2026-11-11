@@ -241,7 +241,7 @@ def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:
         if not s.brief.is_file():
             problems.append(f"seat {s.name!r}: brief {s.brief} does not exist")
     roles = {s.role for s in cfg.seats}
-    for role in MANDATORY:
+    for role in required_roles(cfg):  # the viewer may be left out where viewer_required is false (owner, 2026-11-11)
         if role not in roles:
             problems.append(f"missing mandatory role {role!r}")
     if len(mandatory_families) < 2:

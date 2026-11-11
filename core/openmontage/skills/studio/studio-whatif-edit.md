@@ -48,7 +48,10 @@ autoplay preview: it looks like the thumbnail, because autoplay viewers never se
 must still hold on music, Foley and the sound beds alone (Dr Plants: "watchable with just sound"). Note what fails and
 fix it before G3.
 
-## The voice A/B (paid only on the owner's yes)
+## The voice A/B (only when the owner asks for it)
+
+The local Qwen-Arthur voice ships by default (owner, 2026-11-11, three films a week). Run this A/B only when the owner
+asks for it on a film, usually one that is breaking out.
 
 7. When the picture is near-final, take the opening ten lines and the dilemma line in the paid narrator: rebuild the
    story with `WHATIF_VOICE=paid` (`whatif_story`), quote them (`higgsfield generate cost` per line; the build also

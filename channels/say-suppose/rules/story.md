@@ -1,7 +1,7 @@
 # Story: must-pass checks
 
 Owner, 2026-11-09 ("Adopt all"); #13 and #14 and the tighter #3 added 2026-11-10 from the owner's three reference
-videos (`docs/superpowers/specs/2026-11-10-say-suppose-topics-skill-design.md`, section 5). Fourteen checks a story seat runs on the G1 beat outline and the G2 script; a fail
+videos (`docs/superpowers/specs/2026-11-10-say-suppose-topics-skill-design.md`, section 5). Nineteen checks (#15-#19, the template, added 2026-11-11 for three films a week) a story seat runs on the G1 beat outline and the G2 script; a fail
 needs a quoted line and a fix. Sources and the full shelf: `docs/research/2026-11-09-say-suppose-story-craft.md`,
 `docs/research/2026-11-09-say-suppose-owner-references.md`.
 
@@ -25,6 +25,11 @@ readable worldwide (no `₹` or local slang in the English title and thumbnail).
 | 12 | **Leave fast** | You end as the opposite of the opening; one real line inside the last image; end card; no summary | MrBeast memo, Goldman |
 | 13 | **Every fact moves the story** | Each real-world fact pushes a beat or a feeling on the feeling map; a fact that does neither is cut | Dr Plants |
 | 14 | **A restart every ~3 minutes** | A new complication from the rule about every 3 minutes; the front half is the densest; one big payoff is kept for the end | MrBeast, Aprilynne Alter |
+| 15 | **Cold open inside the power** | The first line puts you in a scene with the power already working; no teaser from later, no mood fragments; the premise question by 0:30 | Top-5 what-ifs, first-video retention |
+| 16 | **A flagged limit that pays off** | The rule takes two or three lines and flags one limit out loud ("remember that"); that limit, or another plant, solves the ticking-clock climax | Top-5 what-ifs |
+| 17 | **Pull every minute** | An open loop at least once a minute ("but here's the problem", "and that's when"); a stake jump about every 80 seconds; numbered problems after the "but" | Top-5 what-ifs (1.1 loops a minute, 8 stake jumps) |
+| 18 | **A running gag that carries the peak** | A small named cast; one gag or line returns at least three times and carries the emotional peak, where you give something up | Top-5 what-ifs |
+| 19 | **The close** | A sequel hook, then "So, would you …? Tell us in the comments. And if you'd have done the same, hit like and subscribe." Never a moral recap | Top-5 what-ifs |
 
 Two cheap extra fails, from the first video's notes: no new power rule after the halfway point, and no new person
 after 60%.

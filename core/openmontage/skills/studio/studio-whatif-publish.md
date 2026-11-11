@@ -2,7 +2,9 @@
 
 Write `publish.md` while the final-watch render runs: title, description with the sources from `claims.md`, audience (not
 made for kids), altered content answer, and the pinned comment: the film's dilemma, asked as a question, so the
-comments answer it. Write `upload.yaml` (`file`, `title`, `description`, `tags`,
+comments answer it. The description opens with 6-8 named chapters (`0:00 <name>`, one per beat). The film's spoken
+close is the template's ("So, would you …? Tell us in the comments. And if you'd have done the same, hit like and
+subscribe."). Write `upload.yaml` (`file`, `title`, `description`, `tags`,
 `made_for_kids`, `contains_synthetic_media`, optional `thumbnail`: a JPG or PNG of at most 2 MB in the video
 folder, optional `captions`: `{en: subtitles/en.srt, hi: subtitles/hi.srt}`; no privacy or schedule field) and run
 `.venv/bin/omni upload <slug> <video>`: the dry run prints the exact private upload. Agents never upload and
@@ -42,3 +44,10 @@ Build the files the steps need:
   no value for `false`; check it in Studio.
 - **Chrome uploads.** The browser's file upload takes at most 10 MB: send a dub as a 192 kbps MP3, not 320 kbps.
 - **Auto-dubbing** appears in Settings only on eligible channels (in practice the Partner Program). A new channel has none.
+
+## After release: the breakout rule
+
+Owner, 2026-11-11 (three films a week). Read the film's views at 48 hours (Studio, read only). If they are at least
+three times the channel's median long-video views, tell the owner at once and offer Part 2 from the film's
+`sequel.md`, to ship within three days: the same template, "Part 2" in the title, a PART badge on the thumbnail, and the
+first film linked in the description and the end screen.

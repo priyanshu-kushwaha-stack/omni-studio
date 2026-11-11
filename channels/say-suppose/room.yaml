@@ -31,6 +31,10 @@
 # editor takes #2, #3, #8, #10) and so does the judge (the writer merges the notes; a note it will not take goes to the
 # owner as one line). pitch_clip pre_g2_local: the owner's first review gets the free local narration and a 720p first
 # cut (voices.yaml narrator use: local).
+#
+# Three films a week (owner, 2026-11-11; docs/superpowers/specs/2026-11-11-say-suppose-three-a-week-design.md): one
+# reviewer, the story editor, who also judges the template checks (rules/story.md #15-#19), plus the claims check. The
+# first-time viewer seat leaves (it is optional: viewer_required false). Pace 155 words a minute (the research median).
 writer: claude-fable-5-1
 rounds: 1
 daily_cap: 80
@@ -40,11 +44,10 @@ limits: {blockers: 3, suggestions: 3, keep: 3}
 adopted: 2026-11-09
 pitch_clip: pre_g2_local
 seats:
-  - {name: first-time viewer, role: viewer, model: claude-opus-5-5, brief: room/seats/first-time-viewer.md}
   - {name: story editor, role: story, model: gpt-5.6-sol-high, brief: room/seats/story-editor.md}
   - {name: claims check, role: fact, model: gemini-3.8-flash-high, brief: room/seats/fact-checker.md}
 format:
-  wpm: 115          # style.md: spoken at about 115 words a minute (Arthur, before the 1.1x tempo)
+  wpm: 155          # style.md: about 155 words a minute (owner, 2026-11-11; was 115)
   # No word_budget: no length cap (owner, 2026-11-08). Past about 8 minutes the story editor names the felt
   # reason a viewer stays (rules/story.md, "Length"). No cadence: the choice put to you about once a minute is an
   # ordinary narrator line with no marker, so the story seats judge it.

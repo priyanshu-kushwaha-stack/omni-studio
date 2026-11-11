@@ -44,6 +44,14 @@ situation be shown in the first 7 s, and does the premise give a second hook by 
 | #8 A picture only this premise can show | None is named in a `> SCENE:` line, or it comes after the midpoint |
 | #10 The turn breaks a line already said | The reversal contradicts nothing spoken earlier, or the twist is shown early |
 | #13 Every fact moves the story | A real-world fact pushes no beat and no feeling (name it: cut it or tie it) |
+| #4 A habit, then the change | No line or picture shows how you normally run your day, or the change misses that habit |
+| #11 Never say the feeling | A line names what you should feel, or says what the shot already shows |
+| The viewer's week | An example or gag is not from the viewer's week (chai, bus or metro, exams, office, family), or the English title or thumbnail has `₹` or local slang |
+| #15 Cold open inside the power | The first line is a teaser from later or a mood fragment; the power is not working in the first scene; no premise question by 0:30 |
+| #16 A flagged limit that pays off | The rule runs past three lines; no limit is flagged; the climax is solved by something not planted |
+| #17 Pull every minute | Any minute with no open loop; more than about 80 s with no stake jump; no numbered problems after the "but" |
+| #18 A running gag that carries the peak | No gag or line returns three times; the peak gives nothing up |
+| #19 The close | No sequel hook, no closing choice question, or a moral recap |
 | #14 A restart every ~3 minutes | More than about 3 minutes with no new complication; the back half denser than the front; no payoff kept for the end |
 | No new power rule after the halfway point | A rule of the power first stated after 50% of the runtime |
 | No new person after 60% | A person first appears after 60% of the runtime |
