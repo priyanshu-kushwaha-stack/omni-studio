@@ -63,12 +63,15 @@ thumbnails stay readable worldwide (no `₹` or local slang in the English packa
 
 ## Script rules
 
-- No word count (2026-11-08; was 750 to 900). Spoken at about 115 words a minute; 15 to 20% of the runtime is
-  wordless: `> HOLD:` lines where action and music carry the story.
+- **The template (owner, 2026-11-11, three films a week):** 9-10 minutes at about 155 words a minute (1,300-1,500
+  spoken words), holds about 5% of the runtime, where a picture lands. Was 115 words a minute and 15-20% wordless,
+  which read slow and lost viewers in the first video's setup. The spine is `rules/story.md` #15-#19; 6-8 named
+  chapters; a sequel outline with every script (`sequel.md`).
 - Second person, present tense, short sentences. The narrator is dry, warm and exact, and never hypes.
 - **Written to be spoken, not read** (owner, 2026-11-08, for every language): fragments, half-sentences, thoughts
   that trail off, a question answered at once, key words repeated. Not every sentence is complete, because that is not
-  how people talk. The pause-time script (approved before this rule) stays as it is.
+  how people talk. The pause-time script (approved before this rule) stays as it is. Every line still moves the story
+  (2026-11-11): no run of mood-only fragments ("The bus. The result. Her dots.").
 - **But the landing line finishes** (owner, 2026-11-08): fragments give colour; the line that lands an idea is a
   complete thought. Example, Hinglish: "अब सोचो — आप रोज़ ten seconds, बस ten seconds के लिए time को pause कर सकते
   हो। ये ten seconds… अब आपके हाथ में हैं।", not a fragment.

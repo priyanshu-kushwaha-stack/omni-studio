@@ -5,15 +5,18 @@ video 2 (`adopted: 2026-11-09`); the pause-time video and the UBI folder were re
 
 | Seat (role) | Model | Brief | Fails a draft on |
 |---|---|---|---|
-| first-time viewer (viewer) | Claude Opus 5.5 | `seats/first-time-viewer.md` | story #2, #3, #4, #11, the viewer's week; at G1 thumbnails K5-K7, K12, K13, K15 |
-| story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1-#3, #5-#10, #12-#14, the two late-rule fails, the 8-minute reason |
+| story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1-#3, #5-#10, #12-#19, and #4 and #11 (the viewer seat's, since 2026-11-11), the two late-rule fails, the 8-minute reason |
 | claims check (fact) | Gemini 3.8 Flash | `seats/fact-checker.md` | every unsupported or overstated line; claims only, no story notes (fact blockers are never dropped) |
 
-No judge: the writer merges the two reviewers' notes, and a note it will not take goes to the owner as one line.
+No judge: the writer merges the reviewer's and the claims check's notes, and a note it will not take goes to the owner as one line.
 
 Writer: **Claude Fable 5.1**. Each brief carries its checks, so a seat applies them even when a rules file is not among
 its inputs; when `rules/` changes, change the briefs with it. Every story check has an owner: #1, #5-#7, #9 and #12
-the story editor; #2 and #3 the viewer and the story editor; #4 and #11 the viewer; #8 and #10 the story editor.
+the story editor; since 2026-11-11 every story check, #1-#19, is the story editor's.
+
+**Three films a week (owner, 2026-11-11).** One reviewer, the story editor, plus the claims check; the first-time
+viewer seat left (`viewer_required: false` lets a room omit it). Spec:
+`docs/superpowers/specs/2026-11-11-say-suppose-three-a-week-design.md`.
 
 **First-cut review (owner, 2026-11-10).** One or two reviewers per room: the director seat and the judge left, the
 story editor took the director's checks, and the fact-checker became the claims check. The owner's first review is on

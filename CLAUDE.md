@@ -94,6 +94,11 @@ a hand-edited checkpoint is refused. Never call `write_checkpoint` with `human_a
 | G6 | Final watch at 1x, with cold viewers | |
 | G7 | Publish: upload private first; the public flip is by hand in YouTube Studio | |
 
+Say Suppose makes three films a week on a locked template (owner, 2026-11-11;
+`docs/superpowers/specs/2026-11-11-say-suppose-three-a-week-design.md`): G1 packets are passed in batches of three,
+and on a template film one cut review lets the owner sign G2 and G3 in the same sitting; each gate is still the
+owner's own `omni approve`. The local voice ships unless the owner asks for the paid A/B.
+
 Say Suppose's first review is on a film, not a text: the script, a free local narration and a 720p first cut, all made
 before G2; nothing paid is made before G2, and the paid voice comes last, only after the owner's A/B by ear
 (`docs/superpowers/specs/2026-11-10-say-suppose-first-cut-review-design.md`).

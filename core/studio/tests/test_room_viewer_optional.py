@@ -41,10 +41,11 @@ def test_viewer_required_must_be_a_boolean(tmp_path):
         _cfg(tmp_path, "viewer_required: maybe\n")
 
 
-def test_the_viewer_seat_must_still_exist(tmp_path):
+def test_an_optional_viewer_seat_may_be_left_out(tmp_path):
+    # Owner, 2026-11-11 (three films a week): one reviewer plus the claims check; was "the seat must still exist".
     cfg = _cfg(tmp_path, "viewer_required: false\n")
     cfg.seats = [s for s in cfg.seats if s.role != "viewer"]
-    assert any("missing mandatory role 'viewer'" in p for p in C.validate(cfg))
+    assert not any("missing mandatory role" in p for p in C.validate(cfg))
 
 
 def test_the_cap_leaves_room_for_owner_notes_rounds(tmp_path):

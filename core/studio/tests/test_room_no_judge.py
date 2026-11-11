@@ -62,3 +62,19 @@ def test_pre_g2_local_accepts_a_paid_narrator_with_a_local_engine(tmp_path):
     assert C.validate(cfg) == []
     (tmp_path / "voices.yaml").write_text("voices:\n  narrator: {tool: higgsfield elevenlabs_v4}\n")
     assert any("not a free local engine" in p for p in C.validate(cfg))
+
+
+def test_a_room_with_no_viewer_is_valid_when_the_viewer_is_not_required(tmp_path):
+    # Three films a week (owner, 2026-11-11): one reviewer, the story editor, plus the claims check.
+    one = ROOM.replace(
+        '  - {name: first-time viewer, role: viewer, model: claude-opus-5-5, brief: "shared:viewer"}\n', ""
+    )
+    assert C.validate(_cfg(tmp_path, one)) == []
+
+
+def test_a_room_with_no_viewer_fails_when_the_viewer_is_required(tmp_path):
+    one = ROOM.replace(
+        '  - {name: first-time viewer, role: viewer, model: claude-opus-5-5, brief: "shared:viewer"}\n', ""
+    )
+    one = one.replace("viewer_required: false", "viewer_required: true")
+    assert any("missing mandatory role 'viewer'" in p for p in C.validate(_cfg(tmp_path, one)))

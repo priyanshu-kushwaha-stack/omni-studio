@@ -23,7 +23,12 @@ The first review gets the script, a free local narration and a 720p first cut. N
    up to three `> DARLING:` lines, each a spoken line you defend against review. Aim for the shelf hooks in
    `rules/story.md` (the loophole beat every 60-90 s, the dilemma a cold reader can argue either way, the residue in
    the viewer's week); they are craft aims, not checks yet.
-6. The room's writer (Claude Fable 5.1) keeps the pen; the session does the research, the claims and every revision.
+6. **Write to the template** (owner, 2026-11-11, three films a week; `rules/story.md` #15-#19, `style.md`): 9-10
+   minutes at about 155 words a minute, the spine (cold open inside the power, premise by 0:30, a flagged limit, a
+   honeymoon ladder, the "but", numbered problems, a planted ticking-clock climax, the peak gives something up, a sequel
+   hook and the closing line), an open loop every minute, a recurring cast with a running gag. Write `sequel.md` beside
+   the script: the hook, the new rule twist and five beats for Part 2, ready if the film breaks out.
+   The room's writer (Claude Fable 5.1) keeps the pen; the session does the research, the claims and every revision.
    The writer marks one emotion per line and the delivery directions in `say.yaml` (in the video folder, tracked) as
    `"<script line>": "<what the voice says>"`, with numbers spelled out; the script keeps its digits for the claims check.
 7. `.venv/bin/omni qc <slug> <video> story_script` must pass its claims check before anything is shown.
@@ -58,8 +63,11 @@ The first review gets the script, a free local narration and a 720p first cut. N
     is cut (Dr Plants). Offer the owner the stranger test: the opening played to one person who doesn't care about the
     topic, alone and unannounced, with where they looked away noted in `taste.md`.
 12. `.venv/bin/omni qc <slug> <video> story_script` (claims, clicks) must pass on the current narration.
-13. When the owner says the script and narration are right: `status: awaiting_human`, then stop. G2 locks the script
-    and the local narration together.
+13. **One cut review** (owner, 2026-11-11): on a template film the owner watches the cut once with the script and
+    gives every note at once (script, narration, picture, music). Apply them all in one notes round, picture notes
+    included, and re-render. When the owner says it's right, write `story_script` `awaiting_human` and, once G2 is
+    passed in that sitting, carry `final_edit` straight to `awaiting_human` too (`studio-whatif-edit`'s checks), so the
+    owner signs G2 and G3 together. G2 locks the script and the local narration.
 
 A video whose `story_script` was approved under the seven-gate pipeline (before 2026-11-10) makes drop 1 and drop 2,
 then writes `story_script` `awaiting_human` again: the old approval stays in its checkpoint history, and G2 now locks
