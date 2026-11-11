@@ -41,6 +41,21 @@ member marked `behind` is drawn before the set's `Mid` (a counter, a table, a ca
 | `bazaar` | bazaar lane: shopfronts, striped awnings over fruit crates, bunting, bulbs at night, a vegetable cart |
 | `chai-stall` | chai stall outside college: tin roof, shelf of jars, kettle steaming, glasses, the bulb at night |
 | `phone` | phone-screen close-up in your hand: a chat (ink bars, ticks, typing dots), a call, a feed |
+| `school-corridor` | school corridor: classroom doors and windows with heads inside, notice board, bell, cooler |
+| `exam-hall` | exam hall: single desks with answer sheets, the big wall clock (settable), far rows over papers |
+| `canteen` | college canteen: steel table and benches, counter with tea urn and samosas, cricket on the TV |
+| `gaming-desk` | gaming setup: big monitor (game, stream or off), RGB strip, gaming chair, headphones |
+| `train-platform` | railway platform: blue coaches with barred windows and an open door, board, clock, tea trolley |
+| `sleeper-coach` | sleeper coach bay: three tiers of berths, barred window with fields or city sliding past |
+| `hospital-corridor` | hospital corridor: waiting bench, theatre doors with the red lamp, drip stand, wheelchair |
+| `bank-atm` | ATM cabin: the machine (menu, cash or error, notes out of the slot), the guard, a queue |
+| `rooftop` | flat rooftop: water tank, dish, washing, parapet with lights, kites by day, the city all round |
+| `festival-street` | a lane on Diwali: string lights, lanterns, diyas, rangoli, rockets after dark (`Sparkler` prop) |
+| `wedding-hall` | wedding hall: stage with marigold curtain and the couple's thrones, guests, chandeliers |
+| `gully-cricket` | gully cricket: stumps chalked on the end wall, a parked bike, an aunty at the window (`Bat` prop) |
+| `stadium` | cricket stadium from the stands: tiers of crowd, flags and a wave, floodlights, big screen |
+| `city-skyline` | the city across the bay from a sea-front wall: layered skyline, flyover traffic, shore lamps |
+| `tv-studio` | news studio or live stream: anchor desk, big screen (chart, map or a guest), city backdrop |
 
 A set a film draws for itself goes in the video's `scenes/`. If it would serve other films (another room of the
 viewer's week), lift it into the library afterwards: same contract, a vitest entry in `tests/sets.test.ts`, and a still
