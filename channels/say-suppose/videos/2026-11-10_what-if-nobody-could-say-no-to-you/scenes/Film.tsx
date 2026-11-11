@@ -17,6 +17,8 @@ const DUCK_OUT = 18;
  *  hands over to the dark one; they cross over XFADE frames. */
 const DARK_FROM_LINE = 81;
 const XFADE = 60;
+/** The score fades out over the film's last OUTRO frames, so the loop never stops mid-wave. */
+const OUTRO = 60;
 
 export function scoreVolume(frame: number, clips: { from: number; frames: number }[]): number {
   let duck = 0;
@@ -69,7 +71,8 @@ export const Film: React.FC<FilmProps> = (props) => {
       </Sequence>
       <Sequence from={dark}>
         <Audio src={staticFile("music/theme-dark.mp3")} loop
-          volume={(f) => scoreVolume(f + dark, clips) * Math.min(1, f / XFADE)} />
+          volume={(f) => scoreVolume(f + dark, clips) * Math.min(1, f / XFADE)
+            * Math.min(1, Math.max(0, (totalFrames - (f + dark)) / OUTRO))} />
       </Sequence>
     </AbsoluteFill>
   );

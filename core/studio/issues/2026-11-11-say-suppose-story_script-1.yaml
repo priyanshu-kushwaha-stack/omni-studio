@@ -1,0 +1,13 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: low
+example: 2026-11-10_what-if-nobody-could-say-no-to-you
+recorded_at: '2026-11-11T05:11:36.638761+00:00'
+note: 'qc clicks: (1) flags a 5 ms burst at 526.92 s of the muxed first cut that peaks
+  at -90 dBFS (AAC encoder noise in digital silence, rise measured against true zero);
+  an absolute floor (e.g. ignore bursts under -60 dBFS) would stop it failing an inaudible
+  tail. (2) mix_narration.py mutes with volume=0:enable=between(t,...), which ffmpeg
+  applies per audio frame (~21 ms), so a mute edge can land late and leave a click
+  or a step; a short afade ramp at each edge, or a sample-accurate gate, would make
+  --mute exact'

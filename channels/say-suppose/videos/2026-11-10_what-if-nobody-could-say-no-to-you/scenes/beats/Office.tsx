@@ -336,7 +336,7 @@ const OfficeBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
       {scene === "flyer" && <FlyerShot frame={frame} k={k} />}
       {/* the wake: a snap for every desk along the aisle (the far rows flip silently under them) */}
       {SEATS.map((s, i) => (s.row === 0 && flips[i] < k.faces ? <Sfx key={i} at={flips[i]} name="snap" volume={0.32} /> : null))}
-      {Array.from({ length: 8 }, (_, i) => <Sfx key={`m${i}`} at={k.wave + i * 4} name="snap" volume={0.45} />)}
+      {Array.from({ length: 8 }, (_, i) => <Sfx key={`m${i}`} at={k.wave + i * 5} name="snap" volume={0.26} />)}
     </AbsoluteFill>
   );
 };
