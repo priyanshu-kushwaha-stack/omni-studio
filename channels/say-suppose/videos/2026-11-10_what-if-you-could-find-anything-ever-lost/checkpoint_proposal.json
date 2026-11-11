@@ -3,11 +3,11 @@
   "project_id": "2026-11-10_what-if-you-could-find-anything-ever-lost",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-10T19:38:31.500772+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-10T19:56:41.030463+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -109,6 +109,13 @@
     "packaging": "packaging.md",
     "room": "room-g1.md",
     "room_shipped_round": 3,
-    "owner_pick": "title A with thumbnail a (DOWN THERE?), 2026-11-11"
+    "owner_pick": "title A with thumbnail a (DOWN THERE?), 2026-11-11",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-10T19:56:41.024463+00:00",
+      "via": "omni approve",
+      "proof": "71af3ab668f6edc47aec1621eb33c7e73718035ca6a734e9ca579d56026b7215",
+      "note": "Owner in chat, 2026-11-11: \"G1 passed, go\". Title A with thumbnail a (DOWN THERE?), the room list applied, round 3 shipped."
+    }
   }
 }

@@ -1,0 +1,16 @@
+https://cointelegraph.com/news/lost-bitcoin-may-be-a-donation-but-is-it-hindering-adoption | fetched 2026-11-11 | Cointelegraph, "datePublished":"2022-02-06T22:01:00.000Z"
+
+MagazinePublishedFeb 6, 2022
+
+Estimates suggest 20% of Bitcoin’s supply has been lost. Are these funds a donation to everyone else, or a challenge to further adoption?
+
+There have also been cases in which users send cryptocurrency to the wrong address. Once again, because of the decentralized nature of the blockchain, there’s no remedial action to retrieve these tokens. Finally, users can pass away without leaving anyone else access to their funds.
+
+Speaking to Cointelegraph, Kim Grauer, director of research at blockchain forensics firm Chainalysis, noted that an estimated 3.7 million Bitcoin (BTC) (today worth over $140 billion) has been lost. Grauer said the estimate is a “bit old” and is set to be updated with further research later this year.
+
+Crypto assets are often considered lost after remaining dormant for a specific number of years. While this method does point to coins that are effectively not currently in circulation, it is flawed. In 2020, for example, a wallet with 50 BTC first mined in February 2009 moved its funds to two addresses.
+
+Michael Fasanello, director of training and regulatory affairs at the Blockchain Intelligence Group — which helps government agencies, cryptocurrency businesses and financial institutions address fraud — told Cointelegraph it may be difficult to approximate the monetary value of lost coins because “those who suffered losses would not always be interested in sharing such information.”
+
+The figure of 3.7 million represents close to 20% of Bitcoin’s circulating supply, which, to Grauer, likely has an “economic impact that will affect the long-term price” of the cryptocurrency. Grauer added:
+“There is also a more psychological impact. It’s possible people will be more hesitant to invest in Bitcoin out of a fear of losing it, at which point it is not recoverable.”

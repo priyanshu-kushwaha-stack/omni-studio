@@ -1,0 +1,55 @@
+https://www.indiacode.nic.in/bitstream/123456789/2286/1/A1878-06.pdf | fetched 2026-11-11 via the Wayback Machine copy https://web.archive.org/web/20250712165552/https://www.indiacode.nic.in/bitstream/123456789/2286/1/A1878-06.pdf (indiacode.nic.in itself returned 403 to the fetcher) | India Code, Legislative Department, 7-page PDF
+
+Relevant text, copied from the PDF's text layer (pages 2, 3, 5):
+
+THE INDIAN TREASURE-TROVE ACT, 1878
+ACT NO. 6 OF 1878
+[13th February, 1878.]
+An Act to amend the law relating to Treasure-trove.
+
+1. Short title.—This Act may be called the Indian Treasure-trove Act, 1878.
+
+3. Interpretation-clause.—In this Act—
+Treasure.—“treasure” means anything of any value hidden in the soil, or in anything affixed
+thereto;
+“Collector.”—“Collector” means (1) any Revenue officer in independent charge of a
+district, and (2) any officer appointed by the State Government to perform the functions
+of a Collector under this Act.
+
+PROCEDURE ON FINDING TREASURE
+4. Notice by finder of treasure.—Whenever any treasure exceeding in amount or value ten rupees is
+found, the finder shall, as soon as practicable, give to the Collector notice in writing—
+(a) of the nature and amount or approximate value of such treasure;
+(b) of the place in which it was found;
+(c) of the date of the finding;
+and either deposit the treasure in the nearest Government treasury, or give the Collector such
+security as the Collector thinks fit, to produce the treasure at such time and place as he may
+from time to time require.
+
+8. Time to be allowed for suit by person claiming the treasure.—If, upon an enquiry made
+under section 7, the Collector sees reason to believe that the treasure was hidden within one hundred
+years before the date of the finding, by a person appearing as required by the said notification and
+claiming such treasure, or by some other person under whom such person claims, the Collector shall
+make an order adjourning the hearing of the case for such period as he deems sufficient, to allow of a
+suit being instituted in the Civil Court by the claimant, to establish his right.
+
+12. [extract] If the finder and the person so claiming have not entered into any agreement then in force
+as to the disposal of the treasure, three-fourths of the treasure shall be allotted to such finder
+and the residue to such person.
+
+PENALTIES
+20. Penalty on finder failing to give notice, etc.—If the finder of any treasure fails to give the
+notice, or does not either make the deposit or give the security, required by section 4, or alters or
+attempts to alter such treasure so as to conceal its identity, the share of such treasure, or the money
+in lieu thereof to which he would otherwise be entitled, shall vest in Government,
+and he shall, on conviction before a Magistrate, be punished with imprisonment for a term which may
+extend to one year, or with fine, or with both.
+
+Footnote 1 (page 2, extract): Amended in—
+Bihar by Bihar Act 22 of 1947.
+Madras by Madras Act 36 of 1949.
+Punjab by Punjab Act 24 of 1960.
+Andhra Pradesh by Andhra Pradesh Act 15 of 1972.
+
+The only state amendment printed in this PDF is Maharashtra's (Bombay Act XXXIII of 1958), which touches section 1
+(extent) and adds section 22 (repeal and savings); it does not change sections 4 or 20.
