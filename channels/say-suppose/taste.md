@@ -10,6 +10,10 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-11
 
+- **G2 drop 1, nobody says no: "Apply all fixes"** (`review-g2-round1.md`). A fact line says what the study found
+  and no more (Milgram's learner was an actor; Langer's finding is mindless compliance, not unkindness); one number at a
+  time; a rule is planted before the midpoint; a fact or a myth that pauses the story is cut (the second study, Midas);
+  the end leaves fast. (nobody-says-no film, G2 drop 1)
 - **G1, nobody says no: "A with b (EVEN HER?)".** Title "What If Nobody Could Say No to You?" with the tag
   "EVEN HER?", the mother marked by her shawl and the one crimson arrow. (nobody-says-no film, G1 pick)
 - **G1, nobody says no: "Apply all fixes"** (round 1, all eight blockers and the suggestions in `review-g1-round1.md`).

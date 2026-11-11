@@ -1,7 +1,7 @@
 # Script: What If Nobody Could Say No to You?
 
 format: story
-status: v1, for G2 (G1 passed 2026-11-11: title A with thumbnail b, "EVEN HER?"; the room's open note #14 applied: the unanimous commitment and the crowd move into the office, Challenger cut)
+status: v2, G2 owner-notes round ("Apply all fixes", 2026-11-11, review-g2-round1.md); was v1, for G2 (G1 passed 2026-11-11: title A with thumbnail b, "EVEN HER?"; the room's open note #14 applied: the unanimous commitment and the crowd move into the office, Challenger cut)
 packaging: packaging.md
 claims: claims.md
 cues: cues.yaml
@@ -44,6 +44,7 @@ Here's the rule, and it's already running.
 Ask anyone, face to face, out loud. They say yes. Gladly. And it won't switch off. Every no in your life, gone.
 > SCENE: Your eyes drop to the phone in your other hand, the empty message box.
 Not in writing. Not down a phone. You have to be looking at them.
+And afterwards, they'll remember agreeing. Not choosing.
 > SCENE: You look up. Three commuters pass you; you watch their mouths, not their eyes. Far back, one of them is a bun and a shawl.
 By Friday you'll ask your mother one question. And you'll never know her real answer.
 > HOLD: 2.5 s. You close your hand on the paper pieces. The gate beeps you through. Then the ident, 3 s, from `brand/README.md`.
@@ -116,17 +117,15 @@ You got the project you wanted. And you will never know if you earned it.
 Thursday. The copy shop. Six people in the queue, and you need five copies.
 > SCENE: You step past the whole queue to the counter. The clerk, a grey head in spectacles, looks up.
 You walk past six people and say it: five copies, please, because I need to make copies.
-> SCENE: The clerk nods and takes your folder. Snap. The tag. Nobody in the queue says a word.
+> SCENE: The clerk nods and takes your folder without looking up. Snap. The tag. Nobody in the queue says a word.
 > TAG: YES
 Clerk: Haan, give.
 A reason that isn't a reason. He nods anyway.
 > SCENE: You turn and look at the queue. Six faces, not one of them looking at you. One checks his phone.
-He would have nodded for almost anyone.
+For five copies, he would have nodded for almost anyone.
 > SCENE: A paper diagram draws itself on the shop wall: a copier, a queue of pastel heads, one head stepping forward with a speech bubble that holds only an empty box.
-In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. Nobody was being kind. Nobody was listening. (c03)
+In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. (c03)
 > SCENE: You walk out with your copies. At the metro gate a different checker waves you through; your ticket is valid today, and you say nothing.
-> SCENE: A second paper diagram on the platform wall: a student with a clipboard before a row of pastel strangers; the student's thought bubble holds twice as many heads as the row.
-Psychologists once sent students out to ask strangers for one small favour. They guessed they'd have to ask about twice as many people as they really did. (c01)
 > SCENE: Close on your face, the copies held against your chest.
 Strangers were far more willing to say yes to everyday requests than you ever believed. You had simply never asked. (c02)
 > HOLD: 2 s. The train comes in. Your reflection in its window, the folder, your brows down.
@@ -166,14 +165,14 @@ The pitch. Your first draft. The one you'd have thrown out on a normal week.
 > TAG: YES
 Boss: Unanimous. Love it.
 A meeting that says yes before you've finished isn't a meeting. It's an echo.
-> SCENE: A paper diagram draws itself over the whiteboard: a card with three lines, one plainly longer; a row of heads all pointing at a shorter one; the last head looks at the others and points the same way.
+> SCENE: A paper diagram draws itself over the whiteboard: a ring of heads nodding round a table, their speech bubbles flattening one by one into the same tick.
 Psychologists have a name for a room where nobody says no. Groupthink. (c13)
 > SCENE: You look round the table. Every face is the same face.
 Rooms take years to get there. You took one question. And a room like that commits.
 > SCENE: The boss slides a glossy flyer across the table: a hall, a stage, rows of tiny pastel heads, a date ringed in crimson.
-Boss: Friday. The whole floor's coming.
+Boss: Next Friday. The whole floor's coming.
 > SCENE: Close on the flyer: rows and rows of heads, drawn small, all turned to a tiny stage.
-Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.
+Next Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.
 > HOLD: 2.5 s. You push your chair back. Dev caps his pen and taps the signature, grinning at you. You can't tell what the grin means.
 
 ## [06:05] The loan
@@ -195,7 +194,7 @@ Dev's mother: The clutch? You had it.
 > SCENE: Dev looks at his hands. In a thought bubble: the canteen table, your mouth open, his own nod. Nothing before it.
 He remembers agreeing. He can't remember wanting to.
 > SCENE: A paper diagram on the dining-room wall: a figure turning pegs on a board, then a hand holding out one note; the figure's flat-line mouth curls into a small smile.
-In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20, they didn't. (c05)
+In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20 dollars, they didn't. (c05)
 > SCENE: Dev lifts his head and smiles at his mother, a small, invented smile.
 With no good reason for what he's done, Dev does what they did. He makes one up.
 Dev: Needed to help a friend.
@@ -230,10 +229,7 @@ So you stop asking. Statements. Silences. And you find out how much of talking t
 > SCENE: The metro, you alone by the door, saying nothing. Above the window, where an ad should be, a small cream tag with a bell on it reads SUBSCRIBE. Nobody looks at it.
 > TAG: SUBSCRIBE
 > HOLD: 3 s. The train hums. You hold the pole. Your mouth stays closed.
-> SCENE: A paper diagram over the dark window: a crowned figure touches a twig, an apple, a loaf; each turns gold; the loaf stays gold in his hand.
-In the old myth, King Midas wished that everything he touched would turn to gold. It did. Even his food. (c12)
-> SCENE: You look at your own hands on the pole.
-You can't turn it off. You can only stop touching things.
+You can't turn it off. You can only go quiet.
 
 ## [08:30] The cost
 > MOOD: dusk
@@ -274,7 +270,7 @@ And from up here you can see it. It's wrong. It was always wrong.
 Nobody in that hall can tell you it's the worst thing you've made. You've made sure of it.
 > SCENE: You click to the next slide, and a paper diagram draws itself over the crowd: a row of pastel heads at a long panel of switches, a dial, the labels appearing left to right.
 > TAG: Slight Shock. Moderate. Strong. Very Strong. Intense. Extreme Intensity. Danger: Severe Shock. XXX
-Stanley Milgram, 1963. 40 men, a panel of switches, a stranger in the next room taking the shocks. 26 of them went all the way to the last switch. 450 volts. (c06)
+Stanley Milgram's study, published in 1963. Most of the men went all the way to the last switch. 450 volts. (c06)
 > SCENE: The dial swings to its end. The heads at the panel keep their hands on the switches.
 The shocks were fake. The men didn't know that. Nobody shouted at them. A calm voice told them to go on. (c06)
 > SCENE: Close on you at the lectern, the crowd's smile reflected on the screen behind you. Your mouth opens.
@@ -308,7 +304,6 @@ Paper. Where it has no power.
 > SCENE: Cut to black for a beat. Then the grey corridor, empty: the exit door, the chairs, a flyer on the floor. We do not see what he said.
 > HOLD: 3 s. Colour seeps back into the corridor from the door. The theme enters, very low.
 > SCENE: The metro home. You at a window seat, the tiffin stack on your lap, the envelope on top of it. In the dark window, small paper memories in full colour, no tags: Dev's hand flat on the seat, the one paper cup, the notebook page, the tiffin at the gate.
-He saved your seat before any of this. He wrote your first line for you. She packed your food every Sunday of your life.
 They were saying yes to you long before you could make them. Out of love, which is the one thing it couldn't touch.
 > SCENE: Your reflection in the window. Over your own head, for the first time in the film, there is nothing at all.
 The power never changed them. It took one thing, and it took it from you.

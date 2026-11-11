@@ -46,21 +46,21 @@ and the pause-time film's scenes (`videos/2026-11-06_pause-time-for-10-seconds-a
 
 ## Beats (narration lines, 0-based) and who draws them
 
-| Beat | File | Lines | Starts | Sets |
+| Beat | File | Lines | Starts (v1 take; re-timed by the v2 takes) | Sets |
 |---|---|---|---|---|
 | The change | `Change.tsx` | 0-7 | 0:00 | Metro (gate) |
-| The rule | `Rule.tsx` | 8-11 | 0:25 | Metro (gate) |
-| The first jump | `FirstJump.tsx` | 12-35 | 0:47 | ChaiStall, Metro (car, platform), Office (doorway); bus, auto, mirror drawn in the beat |
-| The clerk | `Clerk.tsx` | 36-44 | 2:09 | copy shop drawn in the beat; Metro (platform) |
+| The rule | `Rule.tsx` | 8-12 | 0:25 | Metro (gate) |
+| The first jump | `FirstJump.tsx` | 13-36 | 0:47 | ChaiStall, Metro (car, platform), Office (doorway); bus, auto, mirror drawn in the beat |
+| The clerk | `Clerk.tsx` | 37-44 | 2:09 | copy shop drawn in the beat; Metro (platform) |
 | Sunday | `Sunday.tsx` | 45-51 | 2:57 | MothersHouse (gate, table) |
 | The office | `Office.tsx` | 52-61 | 3:27 | Office (floor top-down, meeting room) |
 | The loan | `Loan.tsx` | 62-72 | 4:20 | canteen, Dev's family dinner, drawn in the beat |
-| The midpoint | `Midpoint.tsx` | 73-81 | 5:17 | your room, flat dinner drawn in the beat; Metro (car) |
-| The cost | `Cost.tsx` | 82-90 | 6:05 | MothersHouse (gate) |
-| The stage | `StageBeat.tsx` | 91-96 | 6:47 | Hall (stage, rows) |
-| The choice | `Choice.tsx` | 97-105 | 7:34 | Hall (backstage corridor) |
-| The paper | `PaperBeat.tsx` | 106-109 | 8:31 | Hall (corridor), Metro (car, night) |
-| Back to you | `Back.tsx` | 110-114 | 8:56 | Metro (car, night); the end card |
+| The midpoint | `Midpoint.tsx` | 73-80 | 5:17 | your room, flat dinner drawn in the beat; Metro (car) |
+| The cost | `Cost.tsx` | 81-89 | 6:05 | MothersHouse (gate) |
+| The stage | `StageBeat.tsx` | 90-95 | 6:47 | Hall (stage, rows) |
+| The choice | `Choice.tsx` | 96-104 | 7:34 | Hall (backstage corridor) |
+| The paper | `PaperBeat.tsx` | 105-107 | 8:31 | Hall (corridor), Metro (car, night) |
+| Back to you | `Back.tsx` | 108-112 | 8:56 | Metro (car, night); the end card |
 
 ## Shared sets (`sets/`)
 

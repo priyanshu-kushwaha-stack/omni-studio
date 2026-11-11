@@ -1,4 +1,4 @@
-// Beat "The rule" (script.md, ## [00:35] The rule; narration lines 8-11). Same pattern as Change.tsx: `times()` from
+// Beat "The rule" (script.md, ## [00:35] The rule; narration lines 8-12). Same pattern as Change.tsx: `times()` from
 // the clips, one component per shot, the beat picks by frame. The gate from The change, a moment later: the checker's
 // YES tag still hangs over his cap (it does not switch off).
 //
@@ -6,7 +6,7 @@
 //         face, brows up, then a slow frown.
 //   9     over your shoulder: the checker, still smiling under his tag; the crowd streams; pull back, you alone in it.
 //   10    insert: the phone in your other hand, the empty message box; close, your eyes lift to the people.
-//   11    three commuters pass, you watch their mouths; far back, a bun and a shawl; close on you.
+//   12    three commuters pass, you watch their mouths; far back, a bun and a shawl; close on you.
 //   hold  your hand closes on the pieces (insert); the gate turns green and you walk through.
 // The 3 s ident after the hold is not drawn here: the narration leaves no gap for it before line 12 (see the report).
 import { AbsoluteFill } from "remotion";
@@ -41,11 +41,11 @@ function times(clips: Clip[], to: number) {
     pull: at(9, 0.8), // "Every no in your life, gone.": pull back
     phone: from(10) - 4, // insert: the empty message box
     look: at(10, 0.6), // "You have to be looking at them."
-    pass: from(11) - 4, // three commuters pass; you watch their mouths
-    mother: at(11, 0.42), // far back, a bun and a shawl
-    answer: at(11, 0.74), // close: "never know her real answer"
-    close: lineEnd(clips, 11) + 4, // the hold: your hand closes on the pieces
-    beep: lineEnd(clips, 11) + 34, // the gate turns green; you walk through
+    pass: from(12) - 4, // three commuters pass; you watch their mouths
+    mother: at(12, 0.42), // far back, a bun and a shawl
+    answer: at(12, 0.74), // close: "never know her real answer"
+    close: lineEnd(clips, 12) + 4, // the hold: your hand closes on the pieces
+    beep: lineEnd(clips, 12) + 34, // the gate turns green; you walk through
     end: to,
     tagAt: checkerTagAt(clips),
   };

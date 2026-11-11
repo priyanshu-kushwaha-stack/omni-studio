@@ -13,9 +13,9 @@ const UNDER_VOICE = 0.039;
 const IN_HOLDS = 0.3;
 const DUCK_IN = 8;
 const DUCK_OUT = 18;
-/** The cost (script line 82, "Sunday. You've managed a whole lunch without a question.") is where the light theme
+/** The cost (script line 81, "Sunday. You've managed a whole lunch without a question.") is where the light theme
  *  hands over to the dark one; they cross over XFADE frames. */
-const DARK_FROM_LINE = 82;
+const DARK_FROM_LINE = 81;
 const XFADE = 60;
 
 export function scoreVolume(frame: number, clips: { from: number; frames: number }[]): number {

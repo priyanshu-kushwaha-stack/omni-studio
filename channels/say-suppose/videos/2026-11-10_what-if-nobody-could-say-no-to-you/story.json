@@ -88,6 +88,13 @@
       "claims": []
     },
     {
+      "text": "And afterwards, they'll remember agreeing. Not choosing.",
+      "say": "[plain, then quieter on the last two words] And afterwards, they'll remember agreeing. Not choosing.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
       "text": "By Friday you'll ask your mother one question. And you'll never know her real answer.",
       "say": "[hushed, a catch before \"never\"] By Friday you'll ask your mother one question. And you'll never know her real answer.",
       "gapAfterSec": 2.5,
@@ -291,28 +298,19 @@
       "claims": []
     },
     {
-      "text": "He would have nodded for almost anyone.",
-      "say": "[quieter, the smile fading] He would have nodded for almost anyone.",
+      "text": "For five copies, he would have nodded for almost anyone.",
+      "say": "[quieter, the smile fading] For five copies, he would have nodded for almost anyone.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. Nobody was being kind. Nobody was listening.",
-      "say": "[plain, exact, cooler on the last two sentences] In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. Nobody was being kind. Nobody was listening.",
+      "text": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour.",
+      "say": "[plain, exact, cooler on the last two sentences] In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
         "c03"
-      ]
-    },
-    {
-      "text": "Psychologists once sent students out to ask strangers for one small favour. They guessed they'd have to ask about twice as many people as they really did.",
-      "say": "[curious, telling a story, lifting on \"twice\"] Psychologists once sent students out to ask strangers for one small favour. They guessed they'd have to ask about twice as many people as they really did.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c01"
       ]
     },
     {
@@ -439,15 +437,15 @@
       "claims": []
     },
     {
-      "text": "Boss: Friday. The whole floor's coming.",
-      "say": "[thrilled, booming, proud of you] Friday. The whole floor's coming.",
+      "text": "Boss: Next Friday. The whole floor's coming.",
+      "say": "[thrilled, booming, proud of you] Next Friday. The whole floor's coming.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.",
-      "say": "[tense, the words getting shorter, a breath before \"stage\"] Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.",
+      "text": "Next Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.",
+      "say": "[tense, the words getting shorter, a breath before \"stage\"] Next Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.",
       "gapAfterSec": 2.5,
       "mood": "day",
       "claims": []
@@ -502,8 +500,8 @@
       "claims": []
     },
     {
-      "text": "In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20, they didn't.",
-      "say": "[curious, even, a storyteller's lift on the twist] In nineteen fifty-nine, students did an hour of dull work, then were paid to tell the next person it was fun. Paid one dollar, they later rated the work more enjoyable. Paid twenty, they didn't.",
+      "text": "In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20 dollars, they didn't.",
+      "say": "[curious, even, a storyteller's lift on the twist] In nineteen fifty-nine, students did an hour of dull work, then were paid to tell the next person it was fun. Paid one dollar, they later rated the work more enjoyable. Paid twenty dollars, they didn't.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": [
@@ -583,17 +581,8 @@
       "claims": []
     },
     {
-      "text": "In the old myth, King Midas wished that everything he touched would turn to gold. It did. Even his food.",
-      "say": "[quiet, a bedtime-story cadence, cold on the last word] In the old myth, King Midas wished that everything he touched would turn to gold. It did. Even his food.",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": [
-        "c12"
-      ]
-    },
-    {
-      "text": "You can't turn it off. You can only stop touching things.",
-      "say": "[hushed, resigned] You can't turn it off. You can only stop touching things.",
+      "text": "You can't turn it off. You can only go quiet.",
+      "say": "[hushed, resigned] You can't turn it off. You can only go quiet.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
@@ -683,8 +672,8 @@
       "claims": []
     },
     {
-      "text": "Stanley Milgram, 1963. 40 men, a panel of switches, a stranger in the next room taking the shocks. 26 of them went all the way to the last switch. 450 volts.",
-      "say": "[even, grave, the numbers plain and unhurried] Stanley Milgram, nineteen sixty-three. Forty men, a panel of switches, a stranger in the next room taking the shocks. Twenty-six of them went all the way to the last switch. Four hundred and fifty volts.",
+      "text": "Stanley Milgram's study, published in 1963. Most of the men went all the way to the last switch. 450 volts.",
+      "say": "[even, grave, the numbers plain and unhurried] Stanley Milgram's study, published in nineteen sixty-three. Most of the men went all the way to the last switch. Four hundred and fifty volts.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
@@ -771,13 +760,6 @@
       "claims": []
     },
     {
-      "text": "He saved your seat before any of this. He wrote your first line for you. She packed your food every Sunday of your life.",
-      "say": "[warm, slow, each memory given room] He saved your seat before any of this. He wrote your first line for you. She packed your food every Sunday of your life.",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
       "text": "They were saying yes to you long before you could make them. Out of love, which is the one thing it couldn't touch.",
       "say": "[tender, close, a breath before \"Out of love\"] They were saying yes to you long before you could make them. Out of love, which is the one thing it couldn't touch.",
       "gapAfterSec": 0.35,
@@ -836,12 +818,10 @@
   ],
   "sources": {
     "c03": "https://jamesclear.com/wp-content/uploads/2015/03/copy-machine-study-ellen-langer.pdf",
-    "c01": "https://content.lesaffaires.com/LAF/lacom/need%20help.pdf",
     "c02": "https://content.lesaffaires.com/LAF/lacom/need%20help.pdf",
     "c13": "https://en.wikipedia.org/wiki/Groupthink",
     "c05": "https://psychclassics.yorku.ca/Festinger/",
     "c10": "https://selfdeterminationtheory.org/theory/",
-    "c12": "https://ovid.lib.virginia.edu/trans/Metamorph11.htm",
     "c06": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Influence_Compliance/Milgrim_1963_Behavioral_study_of_obedience.pdf"
   },
   "cues": {}
