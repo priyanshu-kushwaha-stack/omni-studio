@@ -1,0 +1,537 @@
+{
+  "id": "2026-11-10_what-if-you-could-find-anything-ever-lost",
+  "voice": {
+    "model": "local:qwen3",
+    "voiceType": "local",
+    "voiceId": "f49e5ec2f2e87941",
+    "ref": "../../brand/voice/arthur-ref.wav",
+    "refText": "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+  },
+  "leadInSec": 0.6000000000000001,
+  "tailSec": 2.4,
+  "lines": [
+    {
+      "text": "Three pats. Phone, wallet, earbuds. Every door, every day.",
+      "say": "[close, rhythmic, a little amused, like a habit you'd never notice] Three pats. Phone, wallet, earbuds. Every door, every day.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Except today, the third pat is empty.",
+      "say": "[quieter, the beat drops] Except today, the third pat is empty.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You barely whisper it. And the floor answers.",
+      "say": "[hushed, breath in it, a small wonder] You barely whisper it. And the floor answers.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "What if you could find anything ever lost?",
+      "say": "[low, curious, intimate, a slow build] What if you could find anything ever lost?",
+      "gapAfterSec": 1.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Down there. With a coin. And someone's ring.",
+      "say": "[close, almost a whisper, delighted] Down there. With a coin. And someone's ring.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Everything anyone ever lost. Even the things your family decided to lose.",
+      "say": "[lower, a shadow crosses it, slow] Everything anyone ever lost. Even the things your family decided to lose.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The rule. Whisper the name of something lost.",
+      "say": "[plain, exact, leaning in] The rule. Whisper the name of something lost.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "If nobody alive knows where it is, a line draws itself from your shoes to it.",
+      "say": "[plain, exact, unhurried] If nobody alive knows where it is, a line draws itself from your shoes to it.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "One line at a time.",
+      "say": "[firm, a full stop] One line at a time.",
+      "gapAfterSec": 1.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "So. What do you go for first?",
+      "say": "[light, a grin in the voice, quick] So. What do you go for first?",
+      "gapAfterSec": 4.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Home. Your grandfather is looking at the empty hook by the door again. Where the orchard keys used to hang.",
+      "say": "[warm, tired, coming home out of the rain] Home. Your grandfather is looking at the empty hook by the door again. Where the orchard keys used to hang.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Grandfather: Some things stay lost. Keeps the peace.",
+      "say": "[dry, old, gentle, a habit of saying it] Some things stay lost. Keeps the peace.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Every Sunday, the same story. You and your cousin know it by heart.",
+      "say": "[warm, fond, a smile] Every Sunday, the same story. You and your cousin know it by heart.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Grandfather: My brother took that deed.",
+      "say": "[old man, theatrical, the punchline of a story told a hundred times] My brother took that deed.",
+      "gapAfterSec": 3.5,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "First test: your cousin's stolen bicycle. Nothing.",
+      "say": "[dry, deadpan] First test: your cousin's stolen bicycle. Nothing.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Of course. The thief knows exactly where it is.",
+      "say": "[amused, a shrug] Of course. The thief knows exactly where it is.",
+      "gapAfterSec": 1.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "So you try something nobody stole. Your mother's earring. Lost eight years ago, down the courtyard drain.",
+      "say": "[curious, picking up speed] So you try something nobody stole. Your mother's earring. Lost eight years ago, down the courtyard drain.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The line goes up. Up the neem tree. Into a crow's nest.",
+      "say": "[rising, a laugh held back] The line goes up. Up the neem tree. Into a crow's nest.",
+      "gapAfterSec": 2.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Her earring. And three that belong to strangers.",
+      "say": "[deadpan, delighted] Her earring. And three that belong to strangers.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Therefore, the bazaar. Rain washes gold into these drains.",
+      "say": "[brisk, eager] Therefore, the bazaar. Rain washes gold into these drains.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "But you're not the first one here.",
+      "say": "[a turn, quieter, wry] But you're not the first one here.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "In the old gold bazaars, men still sift the drains in the early morning. For the dust the workshops wash away.",
+      "say": "[low, respectful, unhurried, a real place] In the old gold bazaars, men still sift the drains in the early morning. For the dust the workshops wash away.",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": [
+        "c02"
+      ]
+    },
+    {
+      "text": "An old man is asking the whole lane for his hearing aid. You find it in a mango crate.",
+      "say": "[light, storytelling] An old man is asking the whole lane for his hearing aid. You find it in a mango crate.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "And the man who comes for it has the face from the folded photograph.",
+      "say": "[slower, the air changes, hushed] And the man who comes for it has the face from the folded photograph.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Madhav: Your grandfather's eyes. Take a mango.",
+      "say": "[old man, warm, a little rough, holding something back] Your grandfather's eyes. Take a mango.",
+      "gapAfterSec": 2.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Your great-uncle, Madhav. You say nothing at home.",
+      "say": "[quiet, careful, a secret] Your great-uncle, Maadhav. You say nothing at home.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Then your cousin shows you the news. An old bungalow, coming down. The owner buried her coins somewhere in the compound. Her family has dug for a year.",
+      "say": "[brisk, gossipy, leaning in] Then your cousin shows you the news. An old bungalow, coming down. The owner buried her coins somewhere in the compound. Her family has dug for a year.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You find them in ten minutes.",
+      "say": "[cocky, quick] You find them in ten minutes.",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Finders keepers. Right?",
+      "say": "[playful, a challenge] Finders keepers. Right?",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The jeweller doesn't pay you. He asks for a bill.",
+      "say": "[flat, the deflation] The jeweller doesn't pay you. He asks for a bill.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "There's a law from 1878. Treasure found in the soil goes to the Collector.",
+      "say": "[dry, exact, slower] There's a law from eighteen seventy-eight. Treasure found in the soil goes to the Collector.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c01"
+      ]
+    },
+    {
+      "text": "In writing. Into the government treasury.",
+      "say": "[dry, exact, clipped] In writing. Into the government treasury.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Keep quiet, and it's up to a year in prison.",
+      "say": "[low, dry, a beat of menace] Keep quiet, and it's up to a year in prison.",
+      "gapAfterSec": 2.5,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You expected money. You get a receipt. And a queue.",
+      "say": "[wry, tired, a small laugh at yourself] You expected money. You get a receipt. And a queue.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "So you go for fortunes nobody is coming back for.",
+      "say": "[bigger, hungry, a new idea] So you go for fortunes nobody is coming back for.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Cousin: A man threw out a hard drive. Bitcoin on it.",
+      "say": "[young, excited, reading off a phone] A man threw out a hard drive. Bitcoin on it.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Dawn at the city dump. You whisper.",
+      "say": "[hushed, cold air, early] Dawn at the city dump. You whisper.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "The line goes two steps forward. Then straight down.",
+      "say": "[slow, a sinking] The line goes two steps forward. Then straight down.",
+      "gapAfterSec": 5.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Since 2013, a man in Wales has asked to dig up the council's landfill. For one hard drive.",
+      "say": "[low, intimate, steady] Since twenty thirteen, a man in Wales has asked to dig up the council's landfill. For one hard drive.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": [
+        "c03"
+      ]
+    },
+    {
+      "text": "On it, the key to 8,000 bitcoin. A judge threw his case out.",
+      "say": "[quiet, plain] On it, the key to eight thousand bitcoin. A judge threw his case out.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": [
+        "c03"
+      ]
+    },
+    {
+      "text": "In 2025, he gave up.",
+      "say": "[softer, a door closing] In twenty twenty-five, he gave up.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": [
+        "c03"
+      ]
+    },
+    {
+      "text": "So, the sea. A wreck off the Konkan coast. The line runs straight into the water.",
+      "say": "[wind in it, wide, a little reckless] So, the sea. A wreck off the Konkan coast. The line runs straight into the water.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Forty-one metres. Down.",
+      "say": "[almost a whisper, heavy] Forty-one metres. Down.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "An estimated three million shipwrecks lie on the ocean floor. And not one of them is a step closer.",
+      "say": "[quiet, vast, slow] An estimated three million shipwrecks lie on the ocean floor. And not one of them is a step closer.",
+      "gapAfterSec": 2.5,
+      "mood": "night",
+      "claims": [
+        "c04"
+      ]
+    },
+    {
+      "text": "Knowing where was never the hard part.",
+      "say": "[very quiet, a truth, complete] Knowing where was never the hard part.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "But the one fortune still in reach is at home.",
+      "say": "[warmer, home, a small hope] But the one fortune still in reach is at home.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Cousin: Find the deed. We're rich.",
+      "say": "[young, mouth full, joking] Find the deed. We're rich.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Everyone laughs. Except your grandfather.",
+      "say": "[the laugh stops; quiet] Everyone laughs. Except your grandfather.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "And you think: it's in Madhav's house. The line will prove the story. You'll fix this family.",
+      "say": "[earnest, sure of yourself, a little too sure] And you think: it's in Maadhav's house. The line will prove the story. You'll fix this family.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "But the line doesn't go to the street.",
+      "say": "[slower, a frown in it] But the line doesn't go to the street.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "It crosses the living room. Out the back door. Across the courtyard.",
+      "say": "[tense, step by step, following it] It crosses the living room. Out the back door. Across the courtyard.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "To the tulsi he waters every morning.",
+      "say": "[hushed, stopped dead] To the tulsee he waters every morning.",
+      "gapAfterSec": 3.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "He's at the market.",
+      "say": "[quiet, careful, alone] He's at the market.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "In your grandmother's handwriting.",
+      "say": "[hushed, slow] In your grandmother's handwriting.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Let it stay lost.",
+      "say": "[barely there, her voice in yours, tender] Let it stay lost.",
+      "gapAfterSec": 2.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "The rule held. Nobody alive knew.",
+      "say": "[very quiet, the floor drops away] The rule held. Nobody alive knew.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "She hid it. Not his brother.",
+      "say": "[quiet, shaken, plain] She hid it. Not his brother.",
+      "gapAfterSec": 3.5,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You can't look at the envelope. So you look at everything else.",
+      "say": "[low, restless, night] You can't look at the envelope. So you look at everything else.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The oldest earring under this city's drains. Not in the bazaar. Out past the old fort.",
+      "say": "[rising, reaching, a little wild] The oldest earring under this city's drains. Not in the bazaar. Out past the old fort.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The first ship this coast ever lost. Not the wreck you found. Further. Out past it, to open sea.",
+      "say": "[bigger, breathless, far away] The first ship this coast ever lost. Not the wreck you found. Further. Out past it, to open sea.",
+      "gapAfterSec": 4.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Every lost thing on Earth has a line waiting.",
+      "say": "[vast, slow, awed] Every lost thing on Earth has a line waiting.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You could walk for the rest of your life.",
+      "say": "[quiet, a weight in it] You could walk for the rest of your life.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Next evening, a power cut. And Madhav is at the gate. Your cousin's video found him first.",
+      "say": "[tense, low, the story speeding up] Next evening, a power cut. And Maadhav is at the gate. Your cousin's video found him first.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Your grandfather pats his pocket. One, two, three.",
+      "say": "[slow, every count lands] Your grandfather pats his pocket. One, two, three.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "His heart tablet is gone.",
+      "say": "[almost a whisper, fear held down] His heart tablet is gone.",
+      "gapAfterSec": 1.5,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "The whole sea is on your line. Drop it, for one pill?",
+      "say": "[intimate, a real question, both sides weighed] The whole sea is on your line. Drop it, for one pill?",
+      "gapAfterSec": 2.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Not in the courtyard. In the lining. Under the pocket he patted.",
+      "say": "[quick relief, breath out, tender] Not in the courtyard. In the lining. Under the pocket he patted.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You give him the tablet. Then the envelope.",
+      "say": "[quiet, simple, letting go] You give him the tablet. Then the envelope.",
+      "gapAfterSec": 9.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Next morning. The doors open. You don't pat your pockets.",
+      "say": "[morning, light, easy, changed] Next morning. The doors open. You don't pat your pockets.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Some things stay lost. Keeps the peace.",
+      "say": "[soft, remembered, his words in your mouth] Some things stay lost. Keeps the peace.",
+      "gapAfterSec": 3.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Somewhere under that grate is something somebody lost.",
+      "say": "[gentle, curious, close] Somewhere under that grate is something somebody lost.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "What would you leave lost?",
+      "say": "[warm, direct, to the viewer, a smile] What would you leave lost?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    }
+  ],
+  "sources": {
+    "c02": "https://gulfnews.com/world/asia/india/kolkatas-gold-scavengers-reap-rewards-at-diwali-1.1402369",
+    "c01": "https://www.indiacode.nic.in/bitstream/123456789/2286/1/A1878-06.pdf",
+    "c03": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2025/22",
+    "c04": "http://www.unesco.org/new/en/culture/themes/underwater-cultural-heritage/underwater-cultural-heritage/wrecks/"
+  },
+  "cues": {}
+}
