@@ -1,0 +1,50 @@
+{
+  "call_id": "1cdd25ec3abb45ce95c46ae4f99ecad4",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "In Japan, bullet trains have their own quake sensors. At the first faint tremor, they cut the power and the train brakes itself (c13).",
+      "why": "The source (Compact UrEDAS) and ledger note specify that this is JR's trackside detection system along Shinkansen lines and substations, not onboard sensors mounted on the bullet trains themselves. Claiming the bullet trains 'have their own quake sensors' mislocates the instrumentation and overstates onboard train hardware.",
+      "fix": "In Japan, bullet train lines have their own trackside quake sensors. At the first faint tremor, they cut the power and the train brakes itself (c13).",
+      "domain": "fact",
+      "line": 206
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 146,
+      "quote": "In the late 1970s, two physics students, Doyne Farmer and Norman Packard, hid a computer in a shoe to beat roulette (c06).",
+      "fix": "The Eudaemons project began in the late 1970s with an armpit-mounted unit; the shoe concealment was developed later for casino runs. If strict chronology is questioned, rephrase to: 'In the late 1970s, two physics students, Doyne Farmer and Norman Packard, built a computer to beat roulette, later hiding it in a shoe (c06).'"
+    },
+    {
+      "line": 206,
+      "quote": "At the first faint tremor, they cut the power and the train brakes itself (c13).",
+      "fix": "Compact UrEDAS cuts power when it estimates the main earthquake will reach Japanese seismic intensity 4 or higher, rather than for any micro-tremor. If challenged on trigger thresholds, adjust to: 'At the first tremor of a damaging quake, they cut the power and the train brakes itself (c13).'"
+    }
+  ],
+  "keep": [
+    {
+      "line": 103,
+      "quote": "Some scientists think your brain guesses forward to cover the gap (c03)."
+    },
+    {
+      "line": 73,
+      "quote": "So the best batters read the bowler's hand and arm before the ball is even let go, and get ready early (c05)."
+    },
+    {
+      "line": 230,
+      "quote": "Your dopamine cells fire for a reward that surprises you. For one you saw coming, they stay flat (c16)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "d033361ef5ec5c9b1a33e09421c61fea2a3833c29125a3ab47328f1d9ce46360",
+  "draft_sha256": "c7b15ac2265b781529bbb66399223143824eb7c769c5952385c6c67f4aa2c4fa"
+}

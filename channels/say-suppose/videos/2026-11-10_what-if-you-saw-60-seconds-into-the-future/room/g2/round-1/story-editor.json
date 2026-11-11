@@ -1,0 +1,72 @@
+{
+  "call_id": "aff3465c0ff544789cd8239228aabe09",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "must-pass story structure": 7,
+    "earned stakes and reversal": 9,
+    "beat causality": 8,
+    "length (~9:15; viewers stay past 8:00 for Grandpa's punchline and the bus-stop payoff)": 8
+  },
+  "blockers": [
+    {
+      "quote": "You have one minute. You've always had one minute. You just never knew it.",
+      "why": "Check #3 fails: by 0:30 the power is clear, but what it can cost is not stated.",
+      "fix": "Replace with: \u201cYou have one minute. You've always had one minute. Now nothing can catch you out. And nothing can be new.\u201d",
+      "domain": "story",
+      "line": 31
+    },
+    {
+      "quote": "## [05:20] The table",
+      "why": "Check #8 fails: the only named picture unique to this premise begins after the midpoint of this roughly nine-minute script.",
+      "fix": "Move lines 152\u2013158 immediately after line 129 and change the heading to \u201c## [04:10] The table\u201d; keep the doubled-table scene unchanged.",
+      "domain": "story",
+      "line": 152
+    },
+    {
+      "quote": "The batter on that screen has it worse. At a hundred and fifty kilometres an hour, the ball reaches him in under half a second (c04).",
+      "why": "Check #7 fails: the fact introduces two numbers at once\u2014the speed and travel time.",
+      "fix": "Replace with: \u201cThe batter on that screen has it worse. A fast bowler's ball reaches him in under half a second (c04).\u201d",
+      "domain": "story",
+      "line": 71
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 97,
+      "quote": "You think this is new. It isn't, quite.",
+      "fix": "Replace with \u201cYou saw a minute ahead and still arrived late. Seeing always does.\u201d so the science beat follows from the lost seat instead of arriving as an \u2018and then\u2019."
+    },
+    {
+      "line": 134,
+      "quote": "Your cousin flips a coin. You call it ten times in a row.",
+      "fix": "Replace with \u201cSo you try something that cannot ask you back. A coin. You call it ten times in a row.\u201d This makes the money jump a consequence of having no answer for Mom."
+    },
+    {
+      "line": 206,
+      "quote": "In Japan, bullet trains have their own quake sensors. At the first faint tremor, they cut the power and the train brakes itself (c13).",
+      "fix": "Cut this sentence and the bullet-train overlay in line 205; let the real carriage braking, Grandpa's hand on your sleeve, and line 208 carry the reframe before the Lorenz fact."
+    }
+  ],
+  "keep": [
+    {
+      "line": 179,
+      "quote": "Grandpa: You've heard it."
+    },
+    {
+      "line": 232,
+      "quote": "Being caught out was the gift."
+    },
+    {
+      "line": 243,
+      "quote": "You have one minute. You always had."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "5b33b638f7ff89a886dae24b952f902d9e089e6984ae8572ebbc5615d213f350",
+  "draft_sha256": "c7b15ac2265b781529bbb66399223143824eb7c769c5952385c6c67f4aa2c4fa"
+}

@@ -1,0 +1,690 @@
+{
+  "id": "2026-11-10_what-if-you-saw-60-seconds-into-the-future",
+  "voice": {
+    "model": "local:qwen3",
+    "voiceType": "local",
+    "voiceId": "f49e5ec2f2e87941",
+    "ref": "../../brand/voice/arthur-ref.wav",
+    "refText": "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+  },
+  "leadInSec": 0.6000000000000001,
+  "tailSec": 2.4,
+  "lines": [
+    {
+      "text": "You check everything before it happens.",
+      "say": "[intimate, close, almost amused] You check everything before it happens.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "The bus. The result. Her dots.",
+      "say": "[close, hushed, a little wondering] The bus. The result. Her dots.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "And the glass.",
+      "say": "[a quick catch of breath] And the glass.",
+      "gapAfterSec": 1.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "It's still there.",
+      "say": "[hushed, disbelieving] It's still there.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "What if you saw sixty seconds into the future?",
+      "say": "[low, curious, slow] What if you saw sixty seconds into the future?",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You have one minute. You've always had one minute. You just never knew it.",
+      "say": "[slow, a smile in it, landing] You have one minute. You've always had one minute. You just never knew it.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Everything you look at has a ghost. The same street, one minute on.",
+      "say": "[confiding, easy] Everything you look at has a ghost. The same street, one minute on.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "It shows what happens if you do nothing.",
+      "say": "[confiding, easy] It shows what happens if you do nothing.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Move, and it redraws.",
+      "say": "[confiding, easy] Move, and it redraws.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Only a minute. Past that, everyone's reaction has already changed it.",
+      "say": "[confiding, easy] Only a minute. Past that, everyone's reaction has already changed it.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "And there's no off switch.",
+      "say": "[flat, a beat late] And there's no off switch.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Never late again. Never wrong-footed.",
+      "say": "[confiding, easy] Never late again. Never wrong-footed.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You'll never be caught out again. That's the gift.",
+      "say": "[warm, a little too pleased] You'll never be caught out again. That's the gift.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "And nothing will ever be new again. Small price.",
+      "say": "[wry, offhand] And nothing will ever be new again. Small price.",
+      "gapAfterSec": 5.5,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "But the minute's up. The real glass goes.",
+      "say": "[dry, amused] But the minute's up. The real glass goes.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You catch it. The saucer goes instead.",
+      "say": "[dry, amused] You catch it. The saucer goes instead.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Chai-wallah: Saucer is extra, boss.",
+      "say": "[gruff, deadpan street vendor] Saucer is extra, boss.",
+      "gapAfterSec": 1.5,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Next day, the canteen. Cricket on the TV, and the TV has a ghost too.",
+      "say": "[quick, deadpan, amused] Next day, the canteen. Cricket on the TV, and the TV has a ghost too.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Six.",
+      "say": "[deadpan, certain] Six.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Friend: How did you know?",
+      "say": "[loud, amazed] How did you know?",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "They stop watching with you.",
+      "say": "[quiet, a little sad, dry] They stop watching with you.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The batter on that screen has it worse. At a hundred and fifty kilometres an hour, the ball reaches him in under half a second.",
+      "say": "[quick, deadpan, amused] The batter on that screen has it worse. At a hundred and fifty kilometres an hour, the ball reaches him in under half a second.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c04"
+      ]
+    },
+    {
+      "text": "So the best batters read the bowler's hand and arm before the ball is even let go, and get ready early.",
+      "say": "[quick, deadpan, amused] So the best batters read the bowler's hand and arm before the ball is even let go, and get ready early.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c05"
+      ]
+    },
+    {
+      "text": "They guess, from the body. You don't have to guess.",
+      "say": "[quick, deadpan, amused] They guess, from the body. You don't have to guess.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "And you're the only one in the room not watching.",
+      "say": "[quiet, rueful] And you're the only one in the room not watching.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Your boss is typing. Well. His ghost is.",
+      "say": "[dry, amused] Your boss is typing. Well. His ghost is.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You send the deck before he's even asked for it.",
+      "say": "[quick, deadpan, amused] You send the deck before he's even asked for it.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Boss: Great. Since you're free...",
+      "say": "[cheerful, too eager] Great. Since you're free...",
+      "gapAfterSec": 4.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Every morning, the platform plays twice.",
+      "say": "[hushed, awed] Every morning, the platform plays twice.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You know which seat will be empty.",
+      "say": "[quick, deadpan, amused] You know which seat will be empty.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "So does the man who watched you walk to it.",
+      "say": "[dry, a beat late] So does the man who watched you walk to it.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You think this is new. It isn't, quite.",
+      "say": "[hushed, curious, slow] You think this is new. It isn't, quite.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "What you see is already old. Your brain takes about a tenth of a second to process it.",
+      "say": "[hushed, curious, slow] What you see is already old. Your brain takes about a tenth of a second to process it.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c01"
+      ]
+    },
+    {
+      "text": "Even this hand is a little bit ago.",
+      "say": "[whispered, wondering] Even this hand is a little bit ago.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "There's a trick of the eye called the flash-lag illusion. A light flashes level with a moving dot, but the dot looks ahead of it.",
+      "say": "[hushed, curious, slow] There's a trick of the eye called the flash-lag illusion. A light flashes level with a moving dot, but the dot looks ahead of it.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c02"
+      ]
+    },
+    {
+      "text": "Some scientists think your brain guesses forward to cover the gap.",
+      "say": "[hushed, curious, slow] Some scientists think your brain guesses forward to cover the gap.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c03"
+      ]
+    },
+    {
+      "text": "A tenth of a second already makes now uncertain. Yours is a full minute.",
+      "say": "[slow, low, letting it land] A tenth of a second already makes now uncertain. Yours is a full minute.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Sundays are grandfather's.",
+      "say": "[warm, fond] Sundays are grandfather's.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "And grandfather has one story.",
+      "say": "[warm, fond] And grandfather has one story.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Grandpa: A borrowed bicycle, a wedding...",
+      "say": "[old, delighted with himself, a storyteller] A borrowed bicycle, a wedding...",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "The bicycle. The wedding. The wrong bride's house. You've heard it all your life.",
+      "say": "[warm, fond] The bicycle. The wedding. The wrong bride's house. You've heard it all your life.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "This time, you hear the ending a minute early.",
+      "say": "[warm, fond] This time, you hear the ending a minute early.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "And you laugh exactly on time. Too exactly.",
+      "say": "[light, then a small doubt] And you laugh exactly on time. Too exactly.",
+      "gapAfterSec": 2.5,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Mom calls you twice a day. You've started answering before she asks.",
+      "say": "[warm, light] Mom calls you twice a day. You've started answering before she asks.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Yes, you ate. Yes, you'll sleep early. No, the result isn't out.",
+      "say": "[warm, light] Yes, you ate. Yes, you'll sleep early. No, the result isn't out.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Mom: You know me too well.",
+      "say": "[warm, bustling] You know me too well.",
+      "gapAfterSec": 1.5,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Mom: Are you okay?",
+      "say": "[warm, bustling] Are you okay?",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You saw this one coming too. You still don't have an answer.",
+      "say": "[soft, slow] You saw this one coming too. You still don't have an answer.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Your cousin flips a coin. You call it ten times in a row.",
+      "say": "[sly, quick] Your cousin flips a coin. You call it ten times in a row.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Cousin: Not playing with you.",
+      "say": "[sulky, young] Not playing with you.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "It works. Until the other person notices.",
+      "say": "[sly, quick] It works. Until the other person notices.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "At the office Diwali party, you can see every hand a minute before it's played.",
+      "say": "[sly, quick] At the office Diwali party, you can see every hand a minute before it's played.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You bet. And they fold, because you bet.",
+      "say": "[sly, quick] You bet. And they fold, because you bet.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "They stop dealing you in.",
+      "say": "[sly, quick] They stop dealing you in.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "In the late 1970s, two physics students, Doyne Farmer and Norman Packard, hid a computer in a shoe to beat roulette.",
+      "say": "[sly, quick] In the late nineteen-seventies, two physics students, Doyne Farmer and Norman Packard, hid a computer in a shoe to beat roulette.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": [
+        "c06"
+      ]
+    },
+    {
+      "text": "Farmer says it gave them about a twenty percent edge over the house. But the hardware kept failing.",
+      "say": "[sly, quick] Farmer says it gave them about a twenty percent edge over the house. But the hardware kept failing.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": [
+        "c07",
+        "c08"
+      ]
+    },
+    {
+      "text": "Your hardware never fails. It's everyone else that changes.",
+      "say": "[dry, then quieter] Your hardware never fails. It's everyone else that changes.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "At home, Mom has started stopping halfway through her sentences.",
+      "say": "[quiet, flat] At home, Mom has started stopping halfway through her sentences.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Because you keep finishing them.",
+      "say": "[quiet, flat] Because you keep finishing them.",
+      "gapAfterSec": 5.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "So far you've acted as if seeing it means knowing it.",
+      "say": "[low, flat, slow] So far you've acted as if seeing it means knowing it.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "She turns at your voice. And knocks the pan.",
+      "say": "[quick, then a drop] She turns at your voice. And knocks the pan.",
+      "gapAfterSec": 2.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Her hand is fine. She doesn't speak to you again that evening.",
+      "say": "[flat, very quiet] Her hand is fine. She doesn't speak to you again that evening.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Sociologists have a name for a forecast that stops itself coming true: a self-defeating prophecy.",
+      "say": "[low, flat, slow] Sociologists have a name for a forecast that stops itself coming true: a self-defeating prophecy.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": [
+        "c11"
+      ]
+    },
+    {
+      "text": "That's all the ghost ever was. Not the future. A rumour about a world where you stood still.",
+      "say": "[slow, low, certain] That's all the ghost ever was. Not the future. A rumour about a world where you stood still.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Every Sunday since, you've heard the bicycle story twice. Once a minute early. Once on time.",
+      "say": "[quiet, close] Every Sunday since, you've heard the bicycle story twice. Once a minute early. Once on time.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "This time you laugh one second early.",
+      "say": "[quiet, tense] This time you laugh one second early.",
+      "gapAfterSec": 2.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Grandpa: You've heard it.",
+      "say": "[old, delighted with himself, a storyteller] You've heard it.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "He does not finish.",
+      "say": "[almost a whisper] He does not finish.",
+      "gapAfterSec": 3.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Later, he tells it to your cousin instead. You listen from the kitchen.",
+      "say": "[quiet, close] Later, he tells it to your cousin instead. You listen from the kitchen.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Grandpa wants to see your college. His first ride on the metro.",
+      "say": "[tight, fast, urgent] Grandpa wants to see your college. His first ride on the metro.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Grandpa: So many people!",
+      "say": "[old, delighted with himself, a storyteller] So many people!",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You steer him to the door you saw. In the ghost, he follows your hand, and the crowd takes him down at the gap.",
+      "say": "[tight, fast, urgent] You steer him to the door you saw. In the ghost, he follows your hand, and the crowd takes him down at the gap.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You pull him left. It redraws. Worse.",
+      "say": "[fast, breathless] You pull him left. It redraws. Worse.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You call his name. He turns to your voice, and steps into it.",
+      "say": "[fast, breaking] You call his name. He turns to your voice, and steps into it.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Every move you make, he follows. And the minute moves with him.",
+      "say": "[tight, low] Every move you make, he follows. And the minute moves with him.",
+      "gapAfterSec": 9.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "In Japan, bullet trains have their own quake sensors. At the first faint tremor, they cut the power and the train brakes itself.",
+      "say": "[steady, low] In Japan, bullet trains have their own quake sensors. At the first faint tremor, they cut the power and the train brakes itself.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c13"
+      ]
+    },
+    {
+      "text": "That's what a little future is for. Not a winning hand. A stop.",
+      "say": "[warm, steady] That's what a little future is for. Not a winning hand. A stop.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A weather scientist, Edward Lorenz, once reran a computer weather model with one number rounded off, and got a completely different forecast.",
+      "say": "[steady, low] A weather scientist, Edward Lorenz, once reran a computer weather model with one number rounded off, and got a completely different forecast.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c14"
+      ]
+    },
+    {
+      "text": "Tiny changes don't stay tiny.",
+      "say": "[steady, low] Tiny changes don't stay tiny.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A ghost of next week would be rumour on rumour. One minute is enough.",
+      "say": "[steady, low] A ghost of next week would be rumour on rumour. One minute is enough.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Grandpa: Did I ever tell you...",
+      "say": "[old, delighted with himself, a storyteller] Did I ever tell you...",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Watch him, or hear him?",
+      "say": "[almost a whisper, close] Watch him, or hear him?",
+      "gapAfterSec": 3.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Grandpa: ...the wrong bride's house!",
+      "say": "[old, delighted with himself, a storyteller] ...the wrong bride's house!",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You laugh late. Loud. With your cousin.",
+      "say": "[warm, bright, a laugh in it] You laugh late. Loud. With your cousin.",
+      "gapAfterSec": 2.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Your dopamine cells fire for a reward that surprises you. For one you saw coming, they stay flat.",
+      "say": "[warm, opening up] Your dopamine cells fire for a reward that surprises you. For one you saw coming, they stay flat.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "text": "Being caught out was the gift.",
+      "say": "[slow, warm, landing] Being caught out was the gift.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "The ghost never gave you a new sense. It turned up one you already had, until it drowned out the thing it was for.",
+      "say": "[warm, opening up] The ghost never gave you a new sense. It turned up one you already had, until it drowned out the thing it was for.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Friday. The result is out. Her dots are typing.",
+      "say": "[quiet, sure, warm] Friday. The result is out. Her dots are typing.",
+      "gapAfterSec": 3.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You let them.",
+      "say": "[soft, sure] You let them.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "The bus comes when it comes.",
+      "say": "[easy, unhurried] The bus comes when it comes.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You have one minute. You always had.",
+      "say": "[hushed, warm, final] You have one minute. You always had.",
+      "gapAfterSec": 12.0,
+      "mood": "dusk",
+      "claims": []
+    }
+  ],
+  "sources": {
+    "c04": "https://cricketnamibia.com/batting-against-fast-bowling/",
+    "c05": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7706682/",
+    "c01": "https://elifesciences.org/articles/85301",
+    "c02": "https://pubmed.ncbi.nlm.nih.gov/12200181/",
+    "c03": "https://pubmed.ncbi.nlm.nih.gov/32699152/",
+    "c06": "https://www.doynefarmer.com/roulette",
+    "c07": "https://www.doynefarmer.com/roulette",
+    "c08": "https://www.doynefarmer.com/roulette",
+    "c11": "https://eclass.uowm.gr/modules/document/file.php/NURED263/Merton%20The%20Self-Fulfilling%20Prophecy%201948%20Antioch%20Review.pdf",
+    "c13": "https://www.japanpolicyforum.jp/economy/pt201506050206065026.html",
+    "c14": "https://www.aps.org/apsnews/2003/01/lorenz-butterfly-effect-1961",
+    "c16": "https://pubmed.ncbi.nlm.nih.gov/27069377/"
+  },
+  "cues": {},
+  "tempo": 0.8
+}

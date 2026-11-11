@@ -1,0 +1,70 @@
+{
+  "gate": "g2",
+  "stage": "story_script",
+  "channel": "say-suppose",
+  "writer_family": "anthropic",
+  "writer": "claude-fable-5-1",
+  "required_roles": [
+    "story",
+    "fact"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "draft_sha256": "c7b15ac2265b781529bbb66399223143824eb7c769c5952385c6c67f4aa2c4fa",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "1cdd25ec3abb45ce95c46ae4f99ecad4",
+          "file": "room/g2/round-1/claims-check.json",
+          "output_sha256": "d033361ef5ec5c9b1a33e09421c61fea2a3833c29125a3ab47328f1d9ce46360",
+          "blockers": 1
+        },
+        {
+          "seat": "first-time viewer",
+          "role": "viewer",
+          "model": "claude-opus-5-5",
+          "family": "anthropic",
+          "status": "failed",
+          "call_id": "79ea92d6ba844ff0a933ba0716d60d34",
+          "file": "room/g2/round-1/first-time-viewer.json",
+          "output_sha256": "d2423994431b6a8f7eb2e9cd5de4d903807538fb95cff0668d87a2be37bb521d",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "aff3465c0ff544789cd8239228aabe09",
+          "file": "room/g2/round-1/story-editor.json",
+          "output_sha256": "5b33b638f7ff89a886dae24b952f902d9e089e6984ae8572ebbc5615d213f350",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": false,
+      "candidate": false
+    }
+  ],
+  "skipped_rounds": [],
+  "malformed_verdicts": [],
+  "shipped": null,
+  "calls": 4,
+  "cap": 18,
+  "author_cut": null,
+  "presented": {
+    "draft_sha256": "c7b15ac2265b781529bbb66399223143824eb7c769c5952385c6c67f4aa2c4fa",
+    "at": "2026-11-11T03:05:47+00:00"
+  }
+}

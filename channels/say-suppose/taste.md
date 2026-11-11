@@ -10,6 +10,11 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-11
 
+- **G2, sixty seconds ahead: "Opus writes it now."** Fable 5.1 hit its weekly limit (resets 2026-11-13); rather
+  than wait, the owner let the session's Claude Opus 5.5 write the script and `say.yaml` from Fable's brief. A one-film
+  exception: `room.yaml` keeps Fable as the writer. The viewer seat is also Opus 5.5, so it may sit out as the
+  writer's own model (`SELF_LOCKED`); the round ships on story and claims.
+- **G1, sixty seconds ahead: "Approve G1."** Passed with `omni approve`.
 - **G1, sixty seconds ahead: "A+C, take fixes."** Title A ("What If You Saw 60 Seconds Into the Future?") with
   thumbnail c ("WAIT, WHAT?"), over Fable's pick of a ("ALREADY?"): the plainest shock tag beside the plainest title.
   All fourteen of the room's round-1 notes taken, including the viewer's and story editor's cut of the $300 million
