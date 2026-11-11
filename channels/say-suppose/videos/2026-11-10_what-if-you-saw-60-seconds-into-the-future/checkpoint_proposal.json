@@ -3,11 +3,11 @@
   "project_id": "2026-11-10_what-if-you-saw-60-seconds-into-the-future",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-10T19:34:24.676340+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-10T19:56:31.870611+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -104,5 +104,14 @@
       }
     }
   },
-  "style_playbook": "say-suppose"
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-10T19:56:31.858303+00:00",
+      "via": "omni approve",
+      "proof": "04b7d018f793634e5382ed836056484e8a7b152b08ceba1b13b9ec65be7b2ec7",
+      "note": "Owner, 2026-11-11, in chat: 'Approve G1'. Title A (What If You Saw 60 Seconds Into the Future?), thumbnail c (WAIT, WHAT?); all room notes taken ('A+C, take fixes')."
+    }
+  }
 }
