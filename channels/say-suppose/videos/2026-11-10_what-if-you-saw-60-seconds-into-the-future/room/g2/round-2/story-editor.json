@@ -1,0 +1,72 @@
+{
+  "call_id": "33018a7847d443dfb2d0d63d8f8d3c0b",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "must-pass compliance": 7,
+    "causal story structure": 7,
+    "emotional stakes and payoff": 9,
+    "length: about 9:18; the unresolved grandfather choice and gift reversal justify staying past 8:00": 8
+  },
+  "blockers": [
+    {
+      "quote": "And nothing will ever be new again. Small price.",
+      "why": "Check #3 Second hook by 0:30 fails: the cost arrives after the rule explanation, too late for the viewer to know by 0:30 what can be lost.",
+      "fix": "Move this exact line to immediately after line 31.",
+      "domain": "story",
+      "line": 43
+    },
+    {
+      "quote": "## [05:20] The table",
+      "why": "Check #8 fails: the picture only this premise can show is timestamped after the midpoint of this roughly nine-minute script. The following beat also jumps backward to 04:24.",
+      "fix": "Retimestamp the table to about 04:20 and the money beat to about 04:40, keeping the table before the 50% mark and restoring chronological order.",
+      "domain": "story",
+      "line": 131
+    },
+    {
+      "quote": "A tenth of a second already makes now uncertain. Yours is a full minute.",
+      "why": "Check #7 Misconception first fails its one-number-at-a-time requirement: this landing carries two time quantities at once.",
+      "fix": "Even that sliver makes now uncertain. Yours is a full minute.",
+      "domain": "story",
+      "line": 105
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 97,
+      "quote": "You saw a minute ahead and still arrived late. Seeing always does.",
+      "fix": "Replace with: \"You saw the empty seat. Therefore the man saw where you were going.\""
+    },
+    {
+      "line": 206,
+      "quote": "In Japan, the bullet train lines have their own quake sensors. At the first tremor of a big quake, they cut the power and the train brakes itself (c13).",
+      "fix": "Move this fact and line 208 before the platform crisis, so the warning-as-brake idea becomes ammunition for the climax instead of a lesson after its payoff."
+    },
+    {
+      "line": 61,
+      "quote": "> SCENE: The college canteen, afternoon. A wall TV with a cricket match; four friends packed on a bench under it. Over the TV, its own pale ghost, a minute ahead.",
+      "fix": "Show explicitly that the ghost belongs to the broadcast image and redraws when your prediction changes the room, resolving the screen loophole where it first arises."
+    }
+  ],
+  "keep": [
+    {
+      "line": 56,
+      "quote": "Chai-wallah: Saucer is extra, boss."
+    },
+    {
+      "line": 129,
+      "quote": "You saw this one coming too. You still don't have an answer."
+    },
+    {
+      "line": 232,
+      "quote": "Being caught out was the gift."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "a95d64f020dcfa44a94c4d2a698b74f6a29709efe9a69d4a4cd69643ae40d652",
+  "draft_sha256": "7d4730263ed9b5b6ff449b58eda6e8fdd932c8c143eabf5360894bb1d03f2ab1"
+}

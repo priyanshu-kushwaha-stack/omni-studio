@@ -1,7 +1,7 @@
 # Script: What If You Saw 60 Seconds Into the Future?
 
 format: story
-status: v1, G2 drop 1. Written by Claude Opus 5.5 at the owner's word ("Opus writes it now", 2026-11-11; Fable 5.1 at its weekly limit), from Fable's brief
+status: v3, G2 owner-notes round 3 (the round-2 room's fact and story fixes, under the owner's "Take the room's fixes", 2026-11-11). v2: owner-notes round 2. v1: Written by Claude Opus 5.5 at the owner's word ("Opus writes it now", 2026-11-11; Fable 5.1 at its weekly limit), from Fable's brief
 packaging: packaging.md (title A, thumbnail c, "WAIT, WHAT?")
 claims: claims.md
 
@@ -29,8 +29,12 @@ And the glass.
 It's still there.
 What if you saw sixty seconds into the future?
 You have one minute. You've always had one minute. You just never knew it.
+Never late again. Never wrong-footed.
+You'll never be caught out again. That's the gift.
+> SCENE: Behind you, unseen, the ghost of a man at the stall laughs at a joke; you're looking at your phone. A minute later the real man laughs at the same spot.
+And nothing will ever be new again. Small price.
 
-## [00:24] The rule
+## [00:31] The rule
 > SCENE: Wide on the street. Everything has a pale twin one step ahead: across the road the ghost bus pulls in while the real bus is still two headlights far down the road; a ghost dog trots past a beat before the dog.
 Everything you look at has a ghost. The same street, one minute on.
 > SCENE: The ghost chai-wallah pours a long arc of chai; a breath later the real one pours the same arc.
@@ -40,13 +44,9 @@ Move, and it redraws.
 Only a minute. Past that, everyone's reaction has already changed it.
 > SCENE: You squeeze your eyes shut, open them. The ghost layer is still there. You rub them. Still there.
 And there's no off switch.
-Never late again. Never wrong-footed.
-You'll never be caught out again. That's the gift.
-> SCENE: Behind you, unseen, the ghost of a man at the stall laughs at a joke; you're looking at your phone. A minute later the real man laughs at the same spot.
-And nothing will ever be new again. Small price.
 > HOLD: 3 s. Ident, from `brand/README.md` (picked at the picture lock).
 
-## [01:03] The gap
+## [00:51] The gap
 > SCENE: Across the road the ghost bus stops, opens its doors. Nobody gets off. It pulls away. You watch it.
 > HOLD: 2.5 s. The real bus comes up the road and does the same thing, exactly. Same doors. Same nobody. You mouth along with the hiss of the doors.
 > SCENE: Back at the counter. In the ghost, the glass slides again. You glance at it.
@@ -56,7 +56,7 @@ You catch it. The saucer goes instead.
 Chai-wallah: Saucer is extra, boss.
 > HOLD: 1.5 s. You look at your hand, then at the ghost, showing something new. The first time it has moved because of you.
 
-## [01:19] First jump: the canteen
+## [01:07] First jump: the canteen
 > MOOD: day
 > SCENE: The college canteen, afternoon. A wall TV with a cricket match; four friends packed on a bench under it. Over the TV, its own pale ghost, a minute ahead.
 Next day, the canteen. Cricket on the TV, and the TV has a ghost too.
@@ -68,7 +68,7 @@ Friend: How did you know?
 > SCENE: One by one your friends stop looking at the TV and look at you instead. Then one gets up and leaves. Then another.
 They stop watching with you.
 > SCENE: Close on the TV: the batter, the ball a blur. A paper diagram draws itself over the pitch: the bowler's hand, a long arrow to the bat.
-The batter on that screen has it worse. At a hundred and fifty kilometres an hour, the ball reaches him in under half a second (c04).
+The batter on that screen has it worse. The fastest balls reach him in under half a second (c04).
 > SCENE: On the diagram, a little eye sits on the bowler's wrist and arm before the ball leaves.
 So the best batters read the bowler's hand and arm before the ball is even let go, and get ready early (c05).
 They guess, from the body. You don't have to guess.
@@ -91,10 +91,10 @@ You know which seat will be empty.
 > SCENE: A man watches you walk with such purpose, cuts in, and sits. The ghost ripples: now no seat is empty.
 So does the man who watched you walk to it.
 
-## [02:42] You were never in now
+## [02:05] You were never in now
 > MOOD: day
 > SCENE: Inside the carriage. You by the door; the tunnel turns the glass into a mirror. Your reflection, and over it, its ghost, a minute on, looking somewhere else.
-You think this is new. It isn't, quite.
+You saw a minute ahead and still arrived late. Seeing always does.
 What you see is already old. Your brain takes about a tenth of a second to process it (c01).
 > SCENE: You hold up your own hand and look at it. Wiggle a finger.
 Even this hand is a little bit ago.
@@ -102,9 +102,9 @@ Even this hand is a little bit ago.
 There's a trick of the eye called the flash-lag illusion. A light flashes level with a moving dot, but the dot looks ahead of it (c02).
 Some scientists think your brain guesses forward to cover the gap (c03).
 > SCENE: Back to your hand against the glass. Its ghost moves before it does.
-A tenth of a second already makes now uncertain. Yours is a full minute.
+Even that sliver makes now uncertain. Yours is a full minute.
 
-## [03:30] Grandfather
+## [02:39] Grandfather
 > MOOD: dusk
 > SCENE: Grandfather's room, Sunday. A cane chair, a radio, a framed wedding photo, a steel tumbler and saucer. Grandpa (pale green head, white tuft, round glasses) leans forward with a story; your cousin (cap) on the floor with a phone.
 Sundays are grandfather's.
@@ -117,7 +117,7 @@ This time, you hear the ending a minute early.
 And you laugh exactly on time. Too exactly.
 > HOLD: 2.5 s. Grandpa pauses and looks at you a moment. Then he pours your chai from the tumbler into the saucer to cool it, the way he did when you were six, and slides it over. He says nothing.
 
-## [03:57] Mother
+## [03:04] Mother
 > MOOD: night
 > SCENE: Home, the kitchen, night. Mom at the stove. In the ghost, ghost-Mom turns and opens her mouth. You are already in the doorway.
 Mom calls you twice a day. You've started answering before she asks.
@@ -128,10 +128,18 @@ Mom: You know me too well.
 Mom: Are you okay?
 You saw this one coming too. You still don't have an answer.
 
-## [04:24] Second jump: money
+## [03:24] The table
+> MOOD: night
+> SCENE: Home, the kitchen. Mom starts a sentence; you finish it; she stops, spoon in the air.
+At home, Mom has started stopping halfway through her sentences.
+Because you keep finishing them.
+> SCENE: The dinner table doubles. Every person at it and their ghost one minute ahead: ghost Mom is already up and clearing plates while the real one is still eating; her ghost leaves the room before she finishes what she is saying. Ghost cousin has his phone out before the real one has put down his spoon. Your own ghost sits exactly where you sit, hands in the same place, because you have not moved in a minute and will not.
+> HOLD: 5 s. The picture only this premise can show. A slow push in on you across the doubled table. Nobody speaks the line; the picture is the line.
+
+## [03:35] Second jump: money
 > MOOD: day
 > SCENE: Home, the floor. Your cousin flips a coin; you call it before it leaves his thumb. Heads. Heads. Tails.
-Your cousin flips a coin. You call it ten times in a row.
+So you try something that can't look back at you. Your cousin's coin. You call it ten times in a row.
 > SCENE: On the eleventh he catches it, looks at you, and puts it in his pocket.
 Cousin: Not playing with you.
 It works. Until the other person notices.
@@ -143,21 +151,13 @@ You bet. And they fold, because you bet.
 > SCENE: Third hand. Fourth. Your stack grows. The dealer starts dealing around you; the boss raises an eyebrow.
 They stop dealing you in.
 > SCENE: The felt becomes a paper diagram: a roulette wheel, a shoe with a wire running out of it, a small box.
-In the late 1970s, two physics students, Doyne Farmer and Norman Packard, hid a computer in a shoe to beat roulette (c06).
+Two physics students, Doyne Farmer and Norman Packard, once built a computer to beat roulette, and later hid it in a shoe (c06).
 > SCENE: Under the paper table, the shoe taps; the paper wheel spins.
 Farmer says it gave them about a twenty percent edge over the house (c07). But the hardware kept failing (c08).
 > SCENE: Back at the party: you alone at the card table with your chips. Everyone else at the snacks.
 Your hardware never fails. It's everyone else that changes.
 
-## [05:20] The table
-> MOOD: night
-> SCENE: Home, the kitchen. Mom starts a sentence; you finish it; she stops, spoon in the air.
-At home, Mom has started stopping halfway through her sentences.
-Because you keep finishing them.
-> SCENE: The dinner table doubles. Every person at it and their ghost one minute ahead: ghost Mom is already up and clearing plates while the real one is still eating; her ghost leaves the room before she finishes what she is saying. Ghost cousin has his phone out before the real one has put down his spoon. Your own ghost sits exactly where you sit, hands in the same place, because you have not moved in a minute and will not.
-> HOLD: 5 s. The picture only this premise can show. A slow push in on you across the doubled table. Nobody speaks the line; the picture is the line.
-
-## [05:34] The belief breaks
+## [04:23] The belief breaks
 > SCENE: Next evening, the kitchen. Mom at the stove, a pan of chai on the boil. In the ghost, ghost Mom reaches for the hot handle, jerks back, hand to her mouth.
 So far you've acted as if seeing it means knowing it.
 > BUBBLE: You: "MOM, THE HANDLE!"
@@ -169,7 +169,7 @@ Sociologists have a name for a forecast that stops itself coming true: a self-de
 > SCENE: You shift your weight, and the ghost layer over the kitchen ripples and redraws. You stop breathing; it ripples again.
 That's all the ghost ever was. Not the future. A rumour about a world where you stood still.
 
-## [06:12] The cost
+## [04:53] The cost
 > MOOD: dusk
 > SCENE: Grandfather's room, Sunday, a month on. Same chair, same radio, same saucer.
 Every Sunday since, you've heard the bicycle story twice. Once a minute early. Once on time.
@@ -183,7 +183,7 @@ He does not finish.
 > HOLD: 3 s. You in the doorway. In the ghost layer, a minute on, you are still in the doorway.
 Later, he tells it to your cousin instead. You listen from the kitchen.
 
-## [06:41] Third jump: the platform
+## [05:18] Third jump: the platform
 > MOOD: morning
 > SCENE: The metro platform at rush hour. Grandpa in his good shirt with a cloth bag: his first metro ride. He wants to see your college. You hold his elbow.
 Grandpa wants to see your college. His first ride on the metro.
@@ -196,14 +196,14 @@ You pull him left. It redraws. Worse.
 You call his name. He turns to your voice, and steps into it.
 Every move you make, he follows. And the minute moves with him.
 
-## [07:20] The peak
+## [05:47] The peak
 > HOLD: 9 s. You stop. You let go of his elbow; your hand drops. Grandpa looks round, picks his own spot, a step back from the doors by the pillar, and takes hold of your sleeve. Across the crowd the ghost layer ripples and redraws, slower, slower, as you stop steering; then the pale layer slides down onto the coloured one and the two lock into one picture. The music thins to one held note. The doors close. The train goes. He is beside you, holding your sleeve.
 
-## [07:29] The scale
+## [05:55] The scale
 > MOOD: day
 > SCENE: The train home. Inside the carriage, a paper route map above the doors. Grandpa by the window, his bag on his lap.
 > SCENE: The train brakes hard; everyone sways. A paper diagram over the window: a quake sensor's line jumps; on a bullet train's diagram, the power cuts and the brakes close.
-In Japan, bullet trains have their own quake sensors. At the first faint tremor, they cut the power and the train brakes itself (c13).
+In Japan, the bullet train lines have their own quake sensors. When the first tremor warns of shaking to come, they cut the power and the train brakes itself (c13).
 > SCENE: The carriage steadies. Grandpa's hand is still closed on your sleeve. He doesn't let go.
 That's what a little future is for. Not a winning hand. A stop.
 > SCENE: On the window, a paper weather map; one number on it changes by a hair, and the whole map swirls into a different storm.
@@ -211,7 +211,7 @@ A weather scientist, Edward Lorenz, once reran a computer weather model with one
 Tiny changes don't stay tiny.
 A ghost of next week would be rumour on rumour. One minute is enough.
 
-## [08:12] The choice
+## [06:31] The choice
 > MOOD: night
 > SCENE: Grandfather's room that night, the whole family, plates on laps. Grandpa sets down his tumbler, leans forward, eyes bright.
 Grandpa: Did I ever tell you...
@@ -220,19 +220,19 @@ Watch him, or hear him?
 > SCENE: You close your eyes at once.
 > HOLD: 3 s. Close on your face, eyes shut. Around you the ghost layer goes on, unseen. Only sound: the radio, the fan, his voice building, words you can't make out.
 
-## [08:21] The turn
+## [06:38] The turn
 > SCENE: Eyes still shut. The punchline lands.
 Grandpa: ...the wrong bride's house!
 > SCENE: You laugh, late and loud, with your cousin. Grandpa slaps his knee, delighted, and points at you.
 You laugh late. Loud. With your cousin.
 > HOLD: 2 s. You open your eyes on his face, still laughing. He's already pouring your chai into the saucer.
 > SCENE: A small paper diagram beside the saucer: two little cells, one flaring bright for a surprise, one flat for a reward seen coming.
-Your dopamine cells fire for a reward that surprises you. For one you saw coming, they stay flat (c16).
+Your dopamine cells fire for a reward better than you expected. For one you saw coming, they stay flat (c16).
 > SCENE: Grandpa slides the saucer across. You take it.
 Being caught out was the gift.
 The ghost never gave you a new sense. It turned up one you already had, until it drowned out the thing it was for.
 
-## [08:56] Back to you
+## [07:04] Back to you
 > MOOD: dusk
 > SCENE: Friday. The bus stop outside college, the chai stall behind. You at the left. Your phone is in your pocket; through the fabric, two glows: the result page and mother's typing dots.
 Friday. The result is out. Her dots are typing.
@@ -254,7 +254,7 @@ You have one minute. You always had.
   confiding; the canteen is quick and deadpan; the carriage is hushed and curious; grandfather's room is warm; the
   belief break drops low and flat; the platform is tight and fast; the peak is silent; the turn opens up warm; the bus
   stop is quiet and sure.
-- Spoken forms (`say.yaml`): "1970s" → "nineteen-seventies"; "twenty percent" stays words; "Packard" plain.
+- Spoken forms (`say.yaml`): "twenty percent" stays words; "Packard" plain.
 
 ## Not said
 - Why the Eudaemons stopped (c10, dropped: the sources disagree) and the bettor's burn (c09, cut for pace).

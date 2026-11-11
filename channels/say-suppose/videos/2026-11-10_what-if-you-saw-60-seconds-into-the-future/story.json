@@ -53,6 +53,27 @@
       "claims": []
     },
     {
+      "text": "Never late again. Never wrong-footed.",
+      "say": "[close, hushed, a little wondering] Never late again. Never wrong-footed.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You'll never be caught out again. That's the gift.",
+      "say": "[warm, a little too pleased] You'll never be caught out again. That's the gift.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "And nothing will ever be new again. Small price.",
+      "say": "[wry, offhand] And nothing will ever be new again. Small price.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
       "text": "Everything you look at has a ghost. The same street, one minute on.",
       "say": "[confiding, easy] Everything you look at has a ghost. The same street, one minute on.",
       "gapAfterSec": 0.35,
@@ -83,27 +104,6 @@
     {
       "text": "And there's no off switch.",
       "say": "[flat, a beat late] And there's no off switch.",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Never late again. Never wrong-footed.",
-      "say": "[confiding, easy] Never late again. Never wrong-footed.",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "You'll never be caught out again. That's the gift.",
-      "say": "[warm, a little too pleased] You'll never be caught out again. That's the gift.",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "And nothing will ever be new again. Small price.",
-      "say": "[wry, offhand] And nothing will ever be new again. Small price.",
       "gapAfterSec": 5.5,
       "mood": "lamp",
       "claims": []
@@ -158,8 +158,8 @@
       "claims": []
     },
     {
-      "text": "The batter on that screen has it worse. At a hundred and fifty kilometres an hour, the ball reaches him in under half a second.",
-      "say": "[quick, deadpan, amused] The batter on that screen has it worse. At a hundred and fifty kilometres an hour, the ball reaches him in under half a second.",
+      "text": "The batter on that screen has it worse. The fastest balls reach him in under half a second.",
+      "say": "[quick, deadpan, amused] The batter on that screen has it worse. The fastest balls reach him in under half a second.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -232,8 +232,8 @@
       "claims": []
     },
     {
-      "text": "You think this is new. It isn't, quite.",
-      "say": "[hushed, curious, slow] You think this is new. It isn't, quite.",
+      "text": "You saw a minute ahead and still arrived late. Seeing always does.",
+      "say": "[dry, then quieter] You saw a minute ahead and still arrived late. Seeing always does.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
@@ -273,8 +273,8 @@
       ]
     },
     {
-      "text": "A tenth of a second already makes now uncertain. Yours is a full minute.",
-      "say": "[slow, low, letting it land] A tenth of a second already makes now uncertain. Yours is a full minute.",
+      "text": "Even that sliver makes now uncertain. Yours is a full minute.",
+      "say": "[slow, low, letting it land] Even that sliver makes now uncertain. Yours is a full minute.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
@@ -357,8 +357,22 @@
       "claims": []
     },
     {
-      "text": "Your cousin flips a coin. You call it ten times in a row.",
-      "say": "[sly, quick] Your cousin flips a coin. You call it ten times in a row.",
+      "text": "At home, Mom has started stopping halfway through her sentences.",
+      "say": "[quiet, flat] At home, Mom has started stopping halfway through her sentences.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Because you keep finishing them.",
+      "say": "[quiet, flat] Because you keep finishing them.",
+      "gapAfterSec": 5.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "So you try something that can't look back at you. Your cousin's coin. You call it ten times in a row.",
+      "say": "[sly, a little bitter, quick] So you try something that can't look back at you. Your cousin's coin. You call it ten times in a row.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
@@ -399,8 +413,8 @@
       "claims": []
     },
     {
-      "text": "In the late 1970s, two physics students, Doyne Farmer and Norman Packard, hid a computer in a shoe to beat roulette.",
-      "say": "[sly, quick] In the late nineteen-seventies, two physics students, Doyne Farmer and Norman Packard, hid a computer in a shoe to beat roulette.",
+      "text": "Two physics students, Doyne Farmer and Norman Packard, once built a computer to beat roulette, and later hid it in a shoe.",
+      "say": "[sly, quick] Two physics students, Doyne Farmer and Norman Packard, once built a computer to beat roulette, and later hid it in a shoe.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": [
@@ -425,45 +439,31 @@
       "claims": []
     },
     {
-      "text": "At home, Mom has started stopping halfway through her sentences.",
-      "say": "[quiet, flat] At home, Mom has started stopping halfway through her sentences.",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Because you keep finishing them.",
-      "say": "[quiet, flat] Because you keep finishing them.",
-      "gapAfterSec": 5.0,
-      "mood": "night",
-      "claims": []
-    },
-    {
       "text": "So far you've acted as if seeing it means knowing it.",
       "say": "[low, flat, slow] So far you've acted as if seeing it means knowing it.",
       "gapAfterSec": 0.35,
-      "mood": "night",
+      "mood": "lamp",
       "claims": []
     },
     {
       "text": "She turns at your voice. And knocks the pan.",
       "say": "[quick, then a drop] She turns at your voice. And knocks the pan.",
       "gapAfterSec": 2.0,
-      "mood": "night",
+      "mood": "lamp",
       "claims": []
     },
     {
       "text": "Her hand is fine. She doesn't speak to you again that evening.",
       "say": "[flat, very quiet] Her hand is fine. She doesn't speak to you again that evening.",
       "gapAfterSec": 0.35,
-      "mood": "night",
+      "mood": "lamp",
       "claims": []
     },
     {
       "text": "Sociologists have a name for a forecast that stops itself coming true: a self-defeating prophecy.",
       "say": "[low, flat, slow] Sociologists have a name for a forecast that stops itself coming true: a self-defeating prophecy.",
       "gapAfterSec": 0.35,
-      "mood": "night",
+      "mood": "lamp",
       "claims": [
         "c11"
       ]
@@ -472,7 +472,7 @@
       "text": "That's all the ghost ever was. Not the future. A rumour about a world where you stood still.",
       "say": "[slow, low, certain] That's all the ghost ever was. Not the future. A rumour about a world where you stood still.",
       "gapAfterSec": 0.35,
-      "mood": "night",
+      "mood": "lamp",
       "claims": []
     },
     {
@@ -553,8 +553,8 @@
       "claims": []
     },
     {
-      "text": "In Japan, bullet trains have their own quake sensors. At the first faint tremor, they cut the power and the train brakes itself.",
-      "say": "[steady, low] In Japan, bullet trains have their own quake sensors. At the first faint tremor, they cut the power and the train brakes itself.",
+      "text": "In Japan, the bullet train lines have their own quake sensors. When the first tremor warns of shaking to come, they cut the power and the train brakes itself.",
+      "say": "[steady, low] In Japan, the bullet train lines have their own quake sensors. When the first tremor warns of shaking to come, they cut the power and the train brakes itself.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -620,8 +620,8 @@
       "claims": []
     },
     {
-      "text": "Your dopamine cells fire for a reward that surprises you. For one you saw coming, they stay flat.",
-      "say": "[warm, opening up] Your dopamine cells fire for a reward that surprises you. For one you saw coming, they stay flat.",
+      "text": "Your dopamine cells fire for a reward better than you expected. For one you saw coming, they stay flat.",
+      "say": "[warm, opening up] Your dopamine cells fire for a reward better than you expected. For one you saw coming, they stay flat.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [

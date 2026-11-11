@@ -1,0 +1,69 @@
+{
+  "call_id": "402206840ce147139160b6260d081e7f",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "It shows what happens if you do nothing.",
+      "why": "Check #10 fails: this states the midpoint revelation before the reversal at line 170.",
+      "fix": "Replace with: \u201cFor one minute, it looks like what comes next.\u201d",
+      "domain": "story",
+      "line": 41
+    },
+    {
+      "quote": "Grandpa wants to see your college. His first ride on the metro.",
+      "why": "Check #5 fails: the platform follows the grandfather loss as an \u201cand then,\u201d without causal opposition or consequence.",
+      "fix": "Replace with: \u201cSo next Sunday, you give him a first of his own. His first ride on the metro.\u201d",
+      "domain": "story",
+      "line": 189
+    },
+    {
+      "quote": "A weather scientist, Edward Lorenz, once reran a computer weather model with one number rounded off, and got a completely different forecast (c14).",
+      "why": "Check #7 fails: the fact does not land on you or Grandpa within the next two lines.",
+      "fix": "Keep line 210, then replace line 211 with: \u201cYour hand dropped. Your whole platform changed.\u201d",
+      "domain": "story",
+      "line": 210
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 97,
+      "quote": "You saw a minute ahead and still arrived late. Seeing always does.",
+      "fix": "Replace with: \u201cYou saw the seat a minute early. You reached it one person late.\u201d"
+    },
+    {
+      "line": 196,
+      "quote": "You call his name. He turns to your voice, and steps into it.",
+      "fix": "Replace with: \u201cEven your warning becomes the shove.\u201d"
+    },
+    {
+      "line": 217,
+      "quote": "Grandpa: Did I ever tell you...",
+      "fix": "Replace with the four-word character line: \u201cGrandpa: Have I told you...\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 56,
+      "quote": "Chai-wallah: Saucer is extra, boss."
+    },
+    {
+      "line": 158,
+      "quote": "Your hardware never fails. It's everyone else that changes."
+    },
+    {
+      "line": 181,
+      "quote": "He does not finish."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "367c596eeea9710b59fb9ec9db752a3566c317b1e6180eaf1a0c5a50ef8103db",
+  "draft_sha256": "784ea2b583bcf881fae3f1a0cf17643d40dce5320323d3aa858e417845828073"
+}

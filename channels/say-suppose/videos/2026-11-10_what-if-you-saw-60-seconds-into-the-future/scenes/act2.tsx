@@ -102,10 +102,10 @@ export const MomKitchen: React.FC<{ s: S }> = ({ s }) => {
 
 // ---------- money (lines 48-56) ----------
 
-/** Lines 48-50: the coin, ten in a row; your cousin pockets it. */
+/** Lines 50-52: the coin, ten in a row; your cousin pockets it. */
 export const CoinToss: React.FC<{ s: S }> = ({ s }) => {
   const cam = { x: 960, y: 700, zoom: 1.3 };
-  const flips = s.f < s.at(49);
+  const flips = s.f < s.at(51);
   const y = flips ? 760 - Math.abs(Math.sin(s.f * 0.12)) * 260 : 900;
   return (
     <Scene cam={cam} back={<Home cam={cam} table={false} />}
@@ -115,24 +115,24 @@ export const CoinToss: React.FC<{ s: S }> = ({ s }) => {
         <You x={660} y={1000} scale={1.4} face="happy" look={{ x: 0.7, y: -0.5 }} pose={{ ...STAND, armF: flips && Math.floor(s.f / 20) % 2 ? [120, 0] : [20, 30] }} blink={blinking(s.frame)} />
       </>}
       ghost={flips ? <Coin x={1080} y={900} k={1.4} /> : undefined}
-      over={<Bubble x={1050} y={220} text="Not playing with you." p={linear(s.f, s.at(49), s.at(49) + 6)} tail="right" />}
+      over={<Bubble x={1050} y={220} text="Not playing with you." p={linear(s.f, s.at(51), s.at(51) + 6)} tail="right" />}
     />
   );
 };
 
-/** Lines 51-53: the Diwali card table; every hand face up in the ghost; you bet, they fold; dealt around. */
+/** Lines 53-55: the Diwali card table; every hand face up in the ghost; you bet, they fold; dealt around. */
 export const Cards: React.FC<{ s: S }> = ({ s }) => {
   const cam = camAt(s.f, [[0, { x: 960, y: 640, zoom: 1.05 }], [s.d, { x: 960, y: 660, zoom: 1.2 }]]);
-  const fold = s.f > s.at(52) + 20;
-  const stack = linear(s.f, s.at(52), s.d);
-  const r = rippleAt(s.f, s.at(52) + 4, 16);
+  const fold = s.f > s.at(54) + 20;
+  const stack = linear(s.f, s.at(54), s.d);
+  const r = rippleAt(s.f, s.at(54) + 4, 16);
   const seats = [{ x: 560, i: 0 }, { x: 1360, i: 4 }];
   return (
     <Scene cam={cam} back={<Party cam={cam} frame={s.frame} />}
       actors={<>
         {seats.map((p, k) => <Person key={k} i={p.i} x={p.x} y={940} scale={1.2} facing={k ? -1 : 1} face={fold ? "sceptical" : "neutral"} pose={{ ...STAND, armF: fold ? [10, 10] : [60, 60] }} />)}
-        <Boss x={1680} y={940} scale={1.2} facing={-1} face={s.f > s.at(53) ? "sceptical" : "happy"} pose={STAND} />
-        <You x={960} y={1020} scale={1.35} face={s.f > s.at(53) ? "sad" : "happy"} pose={{ ...STAND, armF: [70, 40] }} blink={blinking(s.frame)} />
+        <Boss x={1680} y={940} scale={1.2} facing={-1} face={s.f > s.at(55) ? "sceptical" : "happy"} pose={STAND} />
+        <You x={960} y={1020} scale={1.35} face={s.f > s.at(55) ? "sad" : "happy"} pose={{ ...STAND, armF: [70, 40] }} blink={blinking(s.frame)} />
         {Array.from({ length: Math.floor(stack * 8) }, (_, i) => <ellipse key={i} cx={1060} cy={820 - i * 8} rx={26} ry={8} fill={CRIMSON} stroke={INK} strokeWidth={2} />)}
         {!fold && [700, 1220].map((x) => <Card key={x} x={x} y={800} />)}
       </>}
@@ -142,7 +142,7 @@ export const Cards: React.FC<{ s: S }> = ({ s }) => {
   );
 };
 
-/** Lines 54-55: the felt becomes a paper diagram; the wheel, the shoe and its wire. */
+/** Lines 56-57: the felt becomes a paper diagram; the wheel, the shoe and its wire. */
 export const Roulette: React.FC<{ s: S }> = ({ s }) => {
   const cam = { x: 960, y: 540, zoom: 1 };
   const spin = s.f * 4;
@@ -160,14 +160,14 @@ export const Roulette: React.FC<{ s: S }> = ({ s }) => {
           <rect x={-30} y={-110} width={70} height={46} rx={6} fill="#3a3f4c" />
         </g>
         <path d={`M880 410 Q760 300 ${600 + Math.sin(s.f * 0.2) * 10} 330`} stroke={MUST} strokeWidth={5} fill="none" strokeDasharray="12 8" />
-        {s.f > s.at(55) && <text x={860} y={200} textAnchor="middle" fontFamily="Rubik" fontWeight={800} fontSize={64} fill={CRIMSON}>+20%</text>}
+        {s.f > s.at(57) && <text x={860} y={200} textAnchor="middle" fontFamily="Rubik" fontWeight={800} fontSize={64} fill={CRIMSON}>+20%</text>}
       </Diagram>}
     />
   );
 };
 const MUST = "#d99a1a";
 
-/** Line 56: you alone at the card table with your chips; everyone at the snacks. */
+/** Line 58: you alone at the card table with your chips; everyone at the snacks. */
 export const AloneTable: React.FC<{ s: S }> = ({ s }) => {
   const cam = camAt(s.f, [[0, { x: 960, y: 660, zoom: 1.4 }], [s.d, { x: 960, y: 680, zoom: 1.6 }]]);
   return (
@@ -183,10 +183,10 @@ export const AloneTable: React.FC<{ s: S }> = ({ s }) => {
 
 // ---------- the table (lines 57-58 and the hold) ----------
 
-/** Lines 57-58: Mom starts a sentence; you finish it; she stops, spoon in the air. */
+/** Lines 48-49: Mom starts a sentence; you finish it; she stops, spoon in the air. */
 export const Finishing: React.FC<{ s: S }> = ({ s }) => {
   const cam = { x: 800, y: 640, zoom: 1.3 };
-  const stop = s.f > s.at(58);
+  const stop = s.f > s.at(49);
   return (
     <Scene cam={cam} back={<Home cam={cam} />}
       actors={<>
@@ -198,7 +198,7 @@ export const Finishing: React.FC<{ s: S }> = ({ s }) => {
   );
 };
 
-/** The hold after line 58: the dinner table doubles. Every ghost a minute on; yours sits exactly where you sit. */
+/** The hold after line 49: the dinner table doubles. Every ghost a minute on; yours sits exactly where you sit. */
 export const Doubling: React.FC<{ s: S }> = ({ s }) => {
   const cam = camAt(s.f, [[0, { x: 1300, y: 640, zoom: 1.05 }], [s.d, { x: 1230, y: 660, zoom: 1.45 }]]);
   const momGo = linear(s.f, 0, s.d);

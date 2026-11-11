@@ -18,14 +18,14 @@ const E = (i: number, sec = 0): Start => (c) => c[i].from + c[i].frames + Math.r
 /** The shot list, in film order (script.md's > SCENE lines). */
 const SHOTS: [Start, React.FC<{ s: S }>][] = [
   [() => 0, A1.Click], [L(3), A1.StillThere],
-  [L(6), A1.StreetWide], [L(7), A1.Pour], [L(8), A1.Step], [L(10), A1.Rub], [L(11), A1.Gift], [L(13), A1.Laugh],
+  [L(6), A1.Gift], [L(8), A1.Laugh], [L(9), A1.StreetWide], [L(10), A1.Pour], [L(11), A1.Step], [L(12), A1.Step], [L(13), A1.Rub],
   [E(13, 3), A1.BusGap], [L(14), A1.Catch],
   [L(17), A1.CanteenSix], [L(21), A1.Pitch], [L(23), A1.Alone], [L(25), A1.BossDots],
   [E(27, 1.5), A1.PlatformWide], [L(29), A1.Seat],
   [L(31), A2.Reflection], [L(34), A2.FlashLag],
   [L(37), A2.GrandpaStory], [L(43), A2.MomKitchen],
-  [L(48), A2.CoinToss], [L(51), A2.Cards], [L(54), A2.Roulette], [L(56), A2.AloneTable],
-  [L(57), A2.Finishing], [E(58), A2.Doubling], [L(59), A2.PanKnock], [L(62), A2.Rumour],
+  [L(48), A2.Finishing], [E(49), A2.Doubling],
+  [L(50), A2.CoinToss], [L(53), A2.Cards], [L(56), A2.Roulette], [L(58), A2.AloneTable], [L(59), A2.PanKnock], [L(62), A2.Rumour],
   [L(64), A3.Early], [E(67), A3.Doorway],
   [L(69), A3.Steer], [E(74), A3.Peak],
   [L(75), A3.Brake], [L(77), A3.Lorenz],

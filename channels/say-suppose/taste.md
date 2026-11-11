@@ -10,6 +10,10 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-11
 
+- **G2, sixty seconds ahead: "Take the room's fixes."** All of round 1's list (`review-g2-round1.md`): the cost lands by
+  0:30, the doubled table before the midpoint, one number at a time, the trackside quake sensors. The one open call
+  (cut the bullet-train fact) was kept, corrected, as the claims seat's fix. Applied over owner-notes rounds 2 and 3
+  (`review-g2-round2.md`).
 - **G2, sixty seconds ahead: "Opus writes it now."** Fable 5.1 hit its weekly limit (resets 2026-11-13); rather
   than wait, the owner let the session's Claude Opus 5.5 write the script and `say.yaml` from Fable's brief. A one-film
   exception: `room.yaml` keeps Fable as the writer. The viewer seat is also Opus 5.5, so it may sit out as the

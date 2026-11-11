@@ -71,7 +71,7 @@ export const StillThere: React.FC<{ s: S }> = ({ s }) => {
 
 // ---------- the rule (lines 6-13) ----------
 
-/** Line 6: wide street; the ghost bus pulls in across the road while the real one is two headlights far away. */
+/** Line 9: wide street; the ghost bus pulls in across the road while the real one is two headlights far away. */
 export const StreetWide: React.FC<{ s: S }> = ({ s }) => {
   const cam = camAt(s.f, [[0, { x: 600, y: 600, zoom: 0.8 }], [s.d, { x: 520, y: 600, zoom: 0.85 }]]);
   const ghostBus = mix(1600, -420, ramp(s.f, 0, s.d * 0.8));
@@ -96,7 +96,7 @@ const Dog: React.FC<{ f: number; y: number }> = ({ f, y }) => (
   </g>
 );
 
-/** Line 7: the ghost chai-wallah pours an arc; a breath later the real one pours the same. */
+/** Line 10: the ghost chai-wallah pours an arc; a breath later the real one pours the same. */
 export const Pour: React.FC<{ s: S }> = ({ s }) => {
   const cam = { x: 1300, y: 640, zoom: 1.5 };
   const pourAt = (f: number) => Math.sin(linear(f, 0, 50) * Math.PI);
@@ -109,21 +109,21 @@ export const Pour: React.FC<{ s: S }> = ({ s }) => {
   );
 };
 
-/** Lines 8-9: you step toward the road; the ghost ripples and redraws you on the kerb. */
+/** Line 11 (and again at line 12, settled): you step toward the road; the ghost ripples and redraws you on the kerb. */
 export const Step: React.FC<{ s: S }> = ({ s }) => {
-  const step = ramp(s.f, s.at(8) + 4, s.at(8) + 22);
+  const step = ramp(s.f, s.at(11) + 4, s.at(11) + 22);
   const cam = camAt(s.f, [[0, { x: 760, y: 660, zoom: 1.1 }], [s.d, { x: 700, y: 660, zoom: 1.2 }]]);
-  const r = rippleAt(s.f, s.at(8) + 6, 16);
+  const r = rippleAt(s.f, s.at(11) + 6, 16);
   return (
     <Scene cam={cam} back={<StreetNight cam={cam} />}
       actors={<You x={mix(760, 640, step)} y={1010} scale={1.5} face="sceptical" pose={step > 0 && step < 1 ? walkPose(step * 3) : STAND} blink={blinking(s.frame)} />}
-      ghost={<You x={s.f < s.at(8) + 12 ? 760 : 520} y={s.f < s.at(8) + 12 ? 1250 : 1180} scale={1.5} pose={STAND} />}
+      ghost={<You x={s.f < s.at(11) + 12 ? 760 : 520} y={s.f < s.at(11) + 12 ? 1250 : 1180} scale={1.5} pose={STAND} />}
       r={r}
     />
   );
 };
 
-/** Line 10: you squeeze your eyes shut, open, rub; the ghost is still there. */
+/** Line 13 and the ident hold: you squeeze your eyes shut, open, rub; the ghost is still there. */
 export const Rub: React.FC<{ s: S }> = ({ s }) => {
   const cam = { x: 760, y: 620, zoom: 2.2 };
   const shut = s.f < s.d * 0.35;
@@ -131,11 +131,12 @@ export const Rub: React.FC<{ s: S }> = ({ s }) => {
     <Scene cam={cam} back={<StreetNight cam={cam} />}
       actors={<You x={760} y={1010} scale={1.5} face={shut ? "sad" : "sceptical"} lids={shut ? 1 : 0} pose={{ ...STAND, armF: s.f > s.d * 0.5 ? [150, 20] : [20, 30] }} />}
       ghost={<Smash x={1040} y={1000} k={1.3} />}
+      over={s.f > s.end(13) + 4 ? <Stamp x={560} y={430} text="SAY SUPPOSE" p={linear(s.f, s.end(13) + 4, s.end(13) + 14) * (1 - linear(s.f, s.d - 12, s.d))} size={110} tilt={-2} /> : null}
     />
   );
 };
 
-/** Lines 11-12: the gift, you grin at your own luck. */
+/** Lines 6-7: the gift, you grin at your own luck. */
 export const Gift: React.FC<{ s: S }> = ({ s }) => {
   const cam = camAt(s.f, [[0, { x: 820, y: 640, zoom: 1.6 }], [s.d, { x: 800, y: 630, zoom: 1.75 }]]);
   return (
@@ -146,11 +147,10 @@ export const Gift: React.FC<{ s: S }> = ({ s }) => {
   );
 };
 
-/** Line 13 and the ident hold: behind you a man laughs in the ghost, then for real; you're on your phone. */
+/** Line 8: behind you a man laughs in the ghost, then for real; you're on your phone. */
 export const Laugh: React.FC<{ s: S }> = ({ s }) => {
   const cam = { x: 1000, y: 640, zoom: 1.2 };
   const real = s.f > 40;
-  const ident = s.f > s.end(13) + 4;
   return (
     <Scene cam={cam} back={<StreetNight cam={cam} />}
       actors={<>
@@ -158,7 +158,6 @@ export const Laugh: React.FC<{ s: S }> = ({ s }) => {
         <You x={760} y={1010} scale={1.5} face="neutral" look={{ x: 0.3, y: 0.6 }} pose={{ ...STAND, armF: PHONE_UP }} held={<Phone x={0} y={-20} k={0.55} />} />
       </>}
       ghost={<Person i={3} x={1350} y={940} scale={1.2} facing={-1} face="happy" mouth="open" pose={{ ...STAND, tilt: -8 }} />}
-      over={ident ? <Stamp x={560} y={430} text="SAY SUPPOSE" p={linear(s.f, s.end(13) + 4, s.end(13) + 14) * (1 - linear(s.f, s.d - 12, s.d))} size={110} tilt={-2} /> : null}
     />
   );
 };

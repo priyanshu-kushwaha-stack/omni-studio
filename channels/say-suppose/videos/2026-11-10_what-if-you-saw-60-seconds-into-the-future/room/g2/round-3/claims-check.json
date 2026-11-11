@@ -1,0 +1,31 @@
+{
+  "call_id": "456bafbe90ab4d13b29a683f10ea445e",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [],
+  "keep": [
+    {
+      "line": 103,
+      "quote": "Some scientists think your brain guesses forward to cover the gap (c03)."
+    },
+    {
+      "line": 156,
+      "quote": "Farmer says it gave them about a twenty percent edge over the house (c07). But the hardware kept failing (c08)."
+    },
+    {
+      "line": 230,
+      "quote": "Your dopamine cells fire for a reward better than you expected. For one you saw coming, they stay flat (c16)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "cc2a7bdd16d1701fd406b9c8cc0efe44d83a68c493a191876f8ba2c29d912d34",
+  "draft_sha256": "784ea2b583bcf881fae3f1a0cf17643d40dce5320323d3aa858e417845828073"
+}

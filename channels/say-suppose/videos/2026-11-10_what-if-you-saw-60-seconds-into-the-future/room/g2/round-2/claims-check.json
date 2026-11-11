@@ -1,0 +1,70 @@
+{
+  "call_id": "56e2aaa9b870425f9241fabbb8fc4da6",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 7,
+    "claim_sourcing": 7
+  },
+  "blockers": [
+    {
+      "quote": "The batter on that screen has it worse. A fast bowler's ball reaches him in under half a second (c04).",
+      "why": "Scope overstatement. The source quote for c04 explicitly measures 0.48 seconds for a delivery leaving the hand at 150 km/h ('When the ball leaves the bowler\u2019s hand at 150kph... it takes 0.48 seconds to arrive at the batsman'). Stating that any fast bowler's ball arrives in under half a second overstates the finding, as typical fast bowling (130\u2013140 km/h) takes over half a second (~0.51\u20130.55 s).",
+      "fix": "The batter on that screen has it worse. A fast bowler's ball at 150 kilometres an hour reaches him in under half a second (c04).",
+      "domain": "fact",
+      "line": 71
+    },
+    {
+      "quote": "In the late 1970s, two physics students, Doyne Farmer and Norman Packard, built a computer to beat roulette, and later hid it in a shoe (c06).",
+      "why": "Unsupported date. The verbatim quote for c06 ('The earliest version of the computer was hidden under the armpits, but a later version was concealed in a shoe.') contains no date, and the ledger note acknowledges 'late 1970s' is unverified from Wikipedia. Under the rule that digits mean facts and lines cannot exceed the source quote, the spoken date needs a source or must be cut.",
+      "fix": "Two physics students, Doyne Farmer and Norman Packard, built a computer to beat roulette, and later hid it in a shoe (c06).",
+      "domain": "fact",
+      "line": 154
+    },
+    {
+      "quote": "In Japan, the bullet train lines have their own quake sensors. At the first tremor of a big quake, they cut the power and the train brakes itself (c13).",
+      "why": "Scope overstatement of trigger threshold. The verbatim quote for c13 states that UrEDAS cuts power 'when it judges that the main earthquake will be intensity 4 equivalent or higher' on Japan's seismic scale. JMA intensity 4 is moderate shaking (felt by most people indoors, dishes rattle), not 'a big quake'. Calling the threshold a 'big quake' overstates the seismic severity required for cutoff.",
+      "fix": "In Japan, the bullet train lines have their own quake sensors. At the first tremor of an earthquake, they cut the power and the train brakes itself (c13).",
+      "domain": "fact",
+      "line": 206
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 230,
+      "quote": "Your dopamine cells fire for a reward that surprises you. For one you saw coming, they stay flat (c16).",
+      "fix": "Your dopamine cells fire for a reward better than expected. For one you saw coming, they stay flat (c16)."
+    },
+    {
+      "line": 156,
+      "quote": "Farmer says it gave them about a twenty percent edge over the house (c07). But the hardware kept failing (c08).",
+      "fix": "Farmer says it gave them about a 20 percent edge over the house (c07). But the hardware kept failing (c08)."
+    },
+    {
+      "line": 210,
+      "quote": "A weather scientist, Edward Lorenz, once reran a computer weather model with one number rounded off, and got a completely different forecast (c14).",
+      "fix": "In 1961, a weather scientist, Edward Lorenz, reran a computer weather model with one number rounded off, and got a completely different forecast (c14)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 98,
+      "quote": "What you see is already old. Your brain takes about a tenth of a second to process it (c01)."
+    },
+    {
+      "line": 103,
+      "quote": "Some scientists think your brain guesses forward to cover the gap (c03)."
+    },
+    {
+      "line": 73,
+      "quote": "So the best batters read the bowler's hand and arm before the ball is even let go, and get ready early (c05)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "cfbc8d58dfeeb4773b4dca703ff16fda909b770b810078e7a74caabb6664092d",
+  "draft_sha256": "7d4730263ed9b5b6ff449b58eda6e8fdd932c8c143eabf5360894bb1d03f2ab1"
+}
