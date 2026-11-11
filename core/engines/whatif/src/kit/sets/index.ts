@@ -39,12 +39,12 @@ export { phone, type PhoneOptions } from "./Phone";
 export { Auto, CityBus, street, type StreetOptions } from "./Street";
 
 /** Every set, in the order of the library's contact sheet: travel, home, work and study, outside. */
-export const SET_LIST = [
+export const SET_LIST: SetDef[] = [
   metroPlatform, metroCoach, bus,
   kitchen, bedroom, dining, courtyard, balcony,
   classroom, officeDesk, hostelRoom,
   street, bazaar, chaiStall, phone,
-] as unknown as SetDef<never>[];
+];
 
 /** Every set, by name. */
-export const SETS: Record<string, SetDef<never>> = Object.fromEntries(SET_LIST.map((s) => [s.name, s]));
+export const SETS: Record<string, SetDef> = Object.fromEntries(SET_LIST.map((s) => [s.name, s]));

@@ -5,7 +5,7 @@ import { EXPRESSIONS } from "../rig/expressions";
 import { STAND } from "../rig/pose";
 import { INK, PAPER } from "../theme";
 import { HERO, MOTHER } from "./cast";
-import { Deep, defineSet, LIGHTS_ON, lightsOn, TubeLight, Window, type SetProps } from "./common";
+import { Deep, Floor, LIGHTS_ON, lightsOn, REF, TubeLight, Window, type SetDef, type SetProps } from "./common";
 import { ChaiGlass, Mug, PressureCooker, Tiffin } from "./props";
 
 const FLOOR = 960;
@@ -41,7 +41,7 @@ const Back: React.FC<SetProps<KitchenOptions>> = ({ cam, mood, frame, options })
   return (
     <>
       <Deep cam={cam} depth={0.85} flat>
-        <rect x={-1400} y={-800} width={4800} height={1800} fill="#d6e8d8" />
+        <rect x={-1400} y={-800} width={4800} height={2400} fill="#d6e8d8" />
         <Window id="kitchen" mood={mood} x={140} y={200} w={360} h={300} frame="#e8e2d2" />
         <rect x={128} y={496} width={384} height={18} rx={4} fill="#e8e2d2" stroke={INK} strokeWidth={4} />
         {/* the spice shelf and the steel plate rack */}
@@ -59,8 +59,7 @@ const Back: React.FC<SetProps<KitchenOptions>> = ({ cam, mood, frame, options })
         <TubeLight x={840} y={150} w={300} on={on} />
       </Deep>
       <Deep cam={cam} depth={1}>
-        <rect x={-1400} y={FLOOR - 20} width={4800} height={700} fill="#c98f5e" />
-        {Array.from({ length: 24 }, (_, i) => <line key={i} x1={-1400 + i * 200} y1={FLOOR - 20} x2={-1400 + i * 200 - 80} y2={1700} stroke="#000" strokeWidth={3} opacity={0.08} />)}
+        <Floor y={FLOOR - 20} fill="#c98f5e" gap={200} slant={-80} />
         {/* the platform: red cupboards under a granite top */}
         <rect x={COUNTER.from} y={TOP} width={COUNTER.to - COUNTER.from} height={FLOOR - 20 - TOP} fill="#d8344f" />
         {[1, 2, 3].map((k) => <line key={k} x1={COUNTER.from + k * 270} y1={TOP + 20} x2={COUNTER.from + k * 270} y2={FLOOR - 20} stroke="#a82238" strokeWidth={7} />)}
@@ -89,7 +88,7 @@ const Front: React.FC<SetProps<KitchenOptions>> = ({ cam }) => (
   </Deep>
 );
 
-export const kitchen = defineSet<KitchenOptions>({
+export const kitchen: SetDef<KitchenOptions> = {
   name: "kitchen",
   about: "home kitchen: window with a grille, granite platform, gas stove (pressure cooker or kettle), spice shelf, fridge",
   spots: {
@@ -98,11 +97,11 @@ export const kitchen = defineSet<KitchenOptions>({
     fridge: { x: 1560, y: FLOOR + 10, scale: 1.15, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     stove: { x: 760, y: 620, zoom: 1.7 },
     twoShot: { x: 800, y: 620, zoom: 1.4 },
   },
-  lights: [
+  lights: () => [
     { x: 840, y: 160, depth: 0.85, r: 520, color: "#fdfbea", strength: 0.3, moods: LIGHTS_ON },
     { x: 320, y: 350, depth: 0.85, r: 380, color: "#fff2cc", strength: 0.35, moods: ["morning", "day"] },
   ],
@@ -116,4 +115,4 @@ export const kitchen = defineSet<KitchenOptions>({
       { spot: "counter", who: { ...HERO, look: { x: 0.8, y: 0.2 } }, face: EXPRESSIONS.happy },
     ],
   },
-});
+};

@@ -2,11 +2,12 @@
 // the rows seen from the side, the screen for diagrams; sets/MothersHouse.tsx: the ceiling fan) and "60 Seconds"
 // (sets.tsx Diagram: ink drawings on a cream panel). The whiteboard carries ink drawings, never words; the students sit
 // at bench desks facing the teacher. Seat the students (`behind`), then the desks (Mid) go over their laps.
+import { evolvePath } from "@remotion/paths";
 import { EXPRESSIONS } from "../rig/expressions";
 import { STAND } from "../rig/pose";
 import { INK } from "../theme";
 import { FRIEND, HERO, PASTELS, TEACHER } from "./cast";
-import { Deep, defineSet, Fan, LIGHTS_ON, lightsOn, OUTSIDE, seatedY, TubeLight, Window, type SetProps } from "./common";
+import { Deep, Fan, Floor, LIGHTS_ON, lightsOn, OUTSIDE, REF, seat, TubeLight, Window, type SetDef, type SetProps } from "./common";
 import { Books } from "./props";
 
 const FLOOR = 960;
@@ -23,30 +24,38 @@ export interface ClassroomOptions {
   farRow: boolean;
 }
 
-/** The whiteboard's ink: a graph with a rising curve, or boxes joined by arrows. Lengths reveal with `drawn`. */
-const BoardInk: React.FC<{ kind: ClassroomOptions["board"]; drawn: number }> = ({ kind, drawn }) => {
+/** Each stroke on the board, as path data, in the order it is drawn. */
+const INK_STROKES: Record<Exclude<ClassroomOptions["board"], "blank">, { d: string; color: string; width: number }[]> = (() => {
   const { x, y, w, h } = BOARD;
-  const dash = (len: number, at: number) => ({ strokeDasharray: len, strokeDashoffset: len * (1 - Math.min(1, Math.max(0, drawn * 2 - at))) });
-  if (kind === "graph") {
-    return (
-      <g fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <path d={`M${x + 70} ${y + 60} V${y + h - 50} H${x + w - 60}`} stroke={INK} strokeWidth={7} style={dash(900, 0)} />
-        <path d={`M${x + 80} ${y + h - 70} Q${x + 260} ${y + h - 80} ${x + 360} ${y + 190} T${x + w - 80} ${y + 70}`} stroke="#d8344f" strokeWidth={9} style={dash(700, 0.5)} />
-        <circle cx={x + 360} cy={y + 190} r={14} fill="#1d9a8f" stroke="none" opacity={drawn > 0.9 ? 1 : 0} />
-      </g>
-    );
-  }
-  if (kind === "diagram") {
-    return (
-      <g fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth={7}>
-        {[[x + 60, y + 70], [x + 380, y + 70], [x + 220, y + 220]].map(([bx, by], i) => (
-          <rect key={i} x={bx} y={by} width={170} height={90} rx={12} stroke={[INK, "#1d9a8f", "#d8344f"][i]} style={dash(520, i * 0.3)} />
-        ))}
-        <path d={`M${x + 230} ${y + 115} H${x + 380} M${x + 145} ${y + 160} L${x + 260} ${y + 220} M${x + 465} ${y + 160} L${x + 350} ${y + 220}`} stroke={INK} style={dash(500, 0.8)} />
-      </g>
-    );
-  }
-  return null;
+  const box = (bx: number, by: number) => `M${bx + 12} ${by}H${bx + 158}Q${bx + 170} ${by} ${bx + 170} ${by + 12}V${by + 78}Q${bx + 170} ${by + 90} ${bx + 158} ${by + 90}H${bx + 12}Q${bx} ${by + 90} ${bx} ${by + 78}V${by + 12}Q${bx} ${by} ${bx + 12} ${by}Z`;
+  return {
+    graph: [
+      { d: `M${x + 70} ${y + 60}V${y + h - 50}H${x + w - 60}`, color: INK, width: 7 },
+      { d: `M${x + 80} ${y + h - 70}Q${x + 260} ${y + h - 80} ${x + 360} ${y + 190}T${x + w - 80} ${y + 70}`, color: "#d8344f", width: 9 },
+    ],
+    diagram: [
+      { d: box(x + 60, y + 70), color: INK, width: 7 },
+      { d: box(x + 380, y + 70), color: "#1d9a8f", width: 7 },
+      { d: box(x + 220, y + 220), color: "#d8344f", width: 7 },
+      { d: `M${x + 230} ${y + 115}H${x + 380}M${x + 145} ${y + 160}L${x + 260} ${y + 220}M${x + 465} ${y + 160}L${x + 350} ${y + 220}`, color: INK, width: 7 },
+    ],
+  };
+})();
+
+/** The whiteboard's ink: a graph with a rising curve, or boxes joined by arrows. The strokes draw on one after another
+ *  as `drawn` goes from 0 to 1 (evolvePath measures each path, as ui/DrawLine does). */
+const BoardInk: React.FC<{ kind: ClassroomOptions["board"]; drawn: number }> = ({ kind, drawn }) => {
+  if (kind === "blank") return null;
+  const strokes = INK_STROKES[kind];
+  return (
+    <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+      {strokes.map((s, i) => {
+        const t = Math.min(1, Math.max(0, drawn * strokes.length - i));
+        return t > 0 ? <path key={i} d={s.d} stroke={s.color} strokeWidth={s.width} {...evolvePath(t, s.d)} /> : null;
+      })}
+      {kind === "graph" && drawn >= 1 && <circle cx={BOARD.x + 360} cy={BOARD.y + 190} r={14} fill="#1d9a8f" />}
+    </g>
+  );
 };
 
 const Back: React.FC<SetProps<ClassroomOptions>> = ({ cam, mood, frame, options }) => {
@@ -55,7 +64,7 @@ const Back: React.FC<SetProps<ClassroomOptions>> = ({ cam, mood, frame, options 
   return (
     <>
       <Deep cam={cam} depth={0.7} flat>
-        <rect x={-1400} y={-800} width={4800} height={1800} fill={dark ? "#d9cba8" : "#f1e6c8"} />
+        <rect x={-1400} y={-800} width={4800} height={2400} fill={dark ? "#d9cba8" : "#f1e6c8"} />
         <rect x={-1400} y={720} width={4800} height={220} fill={dark ? "#9fb0a8" : "#bfd0c6"} />
         <Window id="classroom" mood={mood} x={-80} y={200} w={380} h={340} frame="#6b7a72" />
         {/* the coaching banner: colour blocks and a star, no words */}
@@ -81,8 +90,7 @@ const Back: React.FC<SetProps<ClassroomOptions>> = ({ cam, mood, frame, options 
       </Deep>
       <Deep cam={cam} depth={1} flat>
         <Fan x={760} y={110} frame={frame} scale={0.9} />
-        <rect x={-1400} y={FLOOR - 30} width={4800} height={800} fill="#a9a08e" />
-        {Array.from({ length: 24 }, (_, i) => <line key={i} x1={-1400 + i * 200} y1={FLOOR - 30} x2={-1400 + i * 200 - 100} y2={1700} stroke="#000" strokeWidth={3} opacity={0.08} />)}
+        <Floor y={FLOOR - 30} fill="#a9a08e" gap={200} slant={-100} />
         {/* the long bench the students sit on, and the teacher's platform */}
         <rect x={200} y={SEAT_TOP} width={900} height={18} rx={6} fill="#8a5c3b" stroke={INK} strokeWidth={4} />
         {[230, 1060].map((x) => <rect key={x} x={x} y={SEAT_TOP + 18} width={16} height={FLOOR - SEAT_TOP - 48} fill="#6a4630" />)}
@@ -114,22 +122,22 @@ const Front: React.FC<SetProps<ClassroomOptions>> = ({ cam }) => (
   </Deep>
 );
 
-export const classroom = defineSet<ClassroomOptions>({
+export const classroom: SetDef<ClassroomOptions> = {
   name: "classroom",
   about: "coaching class: whiteboard with ink drawings (no words), bench desks, far row of heads, fan and tube lights",
   spots: {
     teacher: { x: 1500, y: FLOOR - 60, scale: 1.15, facing: -1 },
     board: { x: 1760, y: FLOOR - 60, scale: 1.15, facing: -1 },
-    seat1: { x: SEATS[0], y: seatedY(SEAT_TOP, 1.05), scale: 1.05, facing: 1, sit: true },
-    seat2: { x: SEATS[1], y: seatedY(SEAT_TOP, 1.05), scale: 1.05, facing: 1, sit: true },
-    seat3: { x: SEATS[2], y: seatedY(SEAT_TOP, 1.05), scale: 1.05, facing: 1, sit: true },
+    seat1: seat(SEATS[0], SEAT_TOP, 1.05, 1),
+    seat2: seat(SEATS[1], SEAT_TOP, 1.05, 1),
+    seat3: seat(SEATS[2], SEAT_TOP, 1.05, 1),
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     board: { x: 1560, y: 420, zoom: 1.7 },
     bench: { x: 720, y: 640, zoom: 1.6 },
   },
-  lights: [
+  lights: () => [
     { x: 650, y: 100, depth: 0.7, r: 700, color: "#fdfbea", strength: 0.28, moods: LIGHTS_ON },
     { x: 110, y: 370, depth: 0.7, r: 420, color: "#fff2cc", strength: 0.35, moods: ["morning", "day"] },
   ],
@@ -146,4 +154,4 @@ export const classroom = defineSet<ClassroomOptions>({
       { spot: "teacher", who: { ...TEACHER, look: { x: 0.8, y: 0 } }, face: EXPRESSIONS.determined, pose: { ...STAND, armB: [-115, -10] } },
     ],
   },
-});
+};

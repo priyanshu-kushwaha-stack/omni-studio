@@ -2,7 +2,7 @@
 // door that slides open, the yellow edge) and "60 Seconds" (sets.tsx Platform: the pillars), opened up to the city so
 // the mood reads: the far platform and the skyline under the sky, the canopy's strip lights on in the evening.
 import { INK, PAPER } from "../theme";
-import { Deep, defineSet, LIGHTS_ON, lightsOn, noise, OUTSIDE, seatedY, Skyline, Sky, type SetProps } from "./common";
+import { DARK, Deep, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, seat, Sky, Skyline, type SetDef, type SetProps } from "./common";
 import { FRIEND, HERO, PASTELS } from "./cast";
 import { EXPRESSIONS } from "../rig/expressions";
 
@@ -99,24 +99,24 @@ const Front: React.FC<SetProps<MetroPlatformOptions>> = ({ cam }) => (
   </Deep>
 );
 
-export const metroPlatform = defineSet<MetroPlatformOptions>({
+export const metroPlatform: SetDef<MetroPlatformOptions> = {
   name: "metro-platform",
   about: "elevated metro platform: a train that pulls in and opens its door, the far platform and the city beyond",
   spots: {
     hero: { x: 760, y: FLOOR, scale: 1.15, facing: 1 },
     waiting: { x: 1100, y: FLOOR, scale: 1.15, facing: -1 },
     door: { x: DOOR, y: EDGE, scale: 1.0, facing: -1 },
-    bench: { x: BENCH.x, y: seatedY(BENCH.top, 1.1), scale: 1.1, facing: -1, sit: true },
+    bench: seat(BENCH.x, BENCH.top, 1.1, -1),
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     twoShot: { x: 980, y: 640, zoom: 1.45 },
     door: { x: DOOR, y: 620, zoom: 1.7 },
   },
-  lights: [
+  lights: () => [
     { x: 560, y: 110, r: 420, color: "#eef4ff", strength: 0.35, moods: LIGHTS_ON },
     { x: 1460, y: 110, r: 420, color: "#eef4ff", strength: 0.35, moods: LIGHTS_ON },
-    { x: DOOR, y: 560, r: 300, color: "#fff1c9", strength: 0.4, moods: ["night", "lamp"] },
+    { x: DOOR, y: 560, r: 300, color: "#fff1c9", strength: 0.4, moods: DARK },
   ],
   defaults: { train: 0, doorOpen: 0, crowd: true },
   Back,
@@ -130,4 +130,4 @@ export const metroPlatform = defineSet<MetroPlatformOptions>({
       { spot: "bench", who: { head: PASTELS[3], coat: "#5a6488" }, face: EXPRESSIONS.neutral },
     ],
   },
-});
+};

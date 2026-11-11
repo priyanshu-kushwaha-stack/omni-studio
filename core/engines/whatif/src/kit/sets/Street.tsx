@@ -6,7 +6,7 @@ import { EXPRESSIONS } from "../rig/expressions";
 import { walkPose } from "../rig/pose";
 import { CRIMSON, INK, PAPER } from "../theme";
 import { HERO, PASTELS, SIBLING } from "./cast";
-import { Deep, defineSet, lightsOn, noise, OUTSIDE, Skyline, Sky, type SetProps } from "./common";
+import { Deep, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, Sky, Skyline, type SetDef, type SetProps } from "./common";
 
 const ROAD_TOP = 740;
 const ROAD_BOTTOM = 930;
@@ -113,7 +113,7 @@ const Back: React.FC<SetProps<StreetOptions>> = ({ cam, mood, frame, options }) 
   );
 };
 
-export const street = defineSet<StreetOptions>({
+export const street: SetDef<StreetOptions> = {
   name: "street",
   about: "city street: skyline, shopfront buildings, road with a zebra crossing, trees, traffic light, lamps, bus, auto",
   spots: {
@@ -123,13 +123,13 @@ export const street = defineSet<StreetOptions>({
     far: { x: 380, y: 708, scale: 0.68, facing: 1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     pavement: { x: 860, y: 680, zoom: 1.4 },
     crossing: { x: 1260, y: 640, zoom: 1.5 },
   },
-  lights: [
-    { x: 780, y: 392, r: 320, color: "#ffe6a0", strength: 0.45, moods: ["dusk", "night", "lamp"] },
-    { x: 2180, y: 392, r: 320, color: "#ffe6a0", strength: 0.45, moods: ["dusk", "night", "lamp"] },
+  lights: () => [
+    { x: 780, y: 392, r: 320, color: "#ffe6a0", strength: 0.45, moods: LIGHTS_ON },
+    { x: 2180, y: 392, r: 320, color: "#ffe6a0", strength: 0.45, moods: LIGHTS_ON },
   ],
   defaults: { red: false, crowd: true, bus: null, auto: true },
   Back,
@@ -140,4 +140,4 @@ export const street = defineSet<StreetOptions>({
       { spot: "nearRight", who: { ...SIBLING, look: { x: 0.8, y: 0 } }, face: EXPRESSIONS.happy },
     ],
   },
-});
+};

@@ -6,7 +6,7 @@ import { EXPRESSIONS } from "../rig/expressions";
 import { STAND } from "../rig/pose";
 import { INK, PAPER } from "../theme";
 import { ELDER, FATHER, HERO, MOTHER, SIBLING } from "./cast";
-import { Deep, defineSet, Fan, LIGHTS_ON, lightsOn, OUTSIDE, seatedY, TubeLight, Window, type SetProps } from "./common";
+import { Deep, Fan, Floor, LIGHTS_ON, lightsOn, OUTSIDE, REF, seat, TubeLight, Window, type SetDef, type SetProps } from "./common";
 import { Bottle, SteelPlate } from "./props";
 
 const FLOOR = 960;
@@ -29,7 +29,7 @@ const Back: React.FC<SetProps<DiningOptions>> = ({ cam, mood, frame, options }) 
   return (
     <>
       <Deep cam={cam} depth={0.6} flat>
-        <rect x={-1400} y={-800} width={4800} height={1800} fill={dark ? "#c9a47c" : "#e8c9a0"} />
+        <rect x={-1400} y={-800} width={4800} height={2400} fill={dark ? "#c9a47c" : "#e8c9a0"} />
         <rect x={-1400} y={640} width={4800} height={300} fill={dark ? "#b38c66" : "#d9b48a"} />
         <rect x={-1400} y={632} width={4800} height={12} fill="#b98f66" />
         <Window id="dining" mood={mood} x={120} y={220} w={340} h={300} />
@@ -50,9 +50,8 @@ const Back: React.FC<SetProps<DiningOptions>> = ({ cam, mood, frame, options }) 
         <TubeLight x={560} y={150} w={280} on={on} />
       </Deep>
       <Deep cam={cam} depth={1} flat>
-        {options.fan ? <Fan x={980} y={110} frame={frame} /> : <Fan x={980} y={110} frame={0} />}
-        <rect x={-1400} y={FLOOR - 20} width={4800} height={800} fill="#b5553a" />
-        {Array.from({ length: 24 }, (_, i) => <line key={i} x1={-1400 + i * 200} y1={FLOOR - 20} x2={-1400 + i * 200} y2={1700} stroke="#000" strokeWidth={3} opacity={0.08} />)}
+        <Fan x={980} y={110} frame={options.fan ? frame : 0} />
+        <Floor y={FLOOR - 20} fill="#b5553a" gap={200} slant={0} />
         {/* the far-side chairs' backs, under the table edge */}
         {FAR.map((x) => <rect key={x} x={x - 50} y={SEAT_TOP - 140} width={100} height={140} rx={8} fill="#6b4b3a" stroke={INK} strokeWidth={4} />)}
       </Deep>
@@ -80,24 +79,24 @@ const Mid: React.FC<SetProps<DiningOptions>> = ({ options }) => {
   );
 };
 
-export const dining = defineSet<DiningOptions>({
+export const dining: SetDef<DiningOptions> = {
   name: "dining",
   about: "joint-family dining table: eight places, steel plates and dal, ceiling fan, garlanded photo, calendar, showcase",
   spots: {
-    far1: { x: FAR[0], y: seatedY(SEAT_TOP, 1.05), scale: 1.05, facing: 1, sit: true },
-    far2: { x: FAR[1], y: seatedY(SEAT_TOP, 1.05), scale: 1.05, facing: -1, sit: true },
-    far3: { x: FAR[2], y: seatedY(SEAT_TOP, 1.05), scale: 1.05, facing: 1, sit: true },
-    far4: { x: FAR[3], y: seatedY(SEAT_TOP, 1.05), scale: 1.05, facing: -1, sit: true },
-    headLeft: { x: 470, y: seatedY(SEAT_TOP + 10, 1.15), scale: 1.15, facing: 1, sit: true },
-    headRight: { x: 1490, y: seatedY(SEAT_TOP + 10, 1.15), scale: 1.15, facing: -1, sit: true },
+    far1: seat(FAR[0], SEAT_TOP, 1.05, 1),
+    far2: seat(FAR[1], SEAT_TOP, 1.05, -1),
+    far3: seat(FAR[2], SEAT_TOP, 1.05, 1),
+    far4: seat(FAR[3], SEAT_TOP, 1.05, -1),
+    headLeft: seat(470, SEAT_TOP + 10, 1.15, 1),
+    headRight: seat(1490, SEAT_TOP + 10, 1.15, -1),
     serving: { x: 1640, y: FLOOR + 10, scale: 1.15, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     table: { x: 980, y: 640, zoom: 1.35 },
     head: { x: 560, y: 600, zoom: 1.8 },
   },
-  lights: [{ x: 560, y: 160, depth: 0.6, r: 600, color: "#fdfbea", strength: 0.3, moods: LIGHTS_ON }],
+  lights: () => [{ x: 560, y: 160, depth: 0.6, r: 600, color: "#fdfbea", strength: 0.3, moods: LIGHTS_ON }],
   defaults: { food: 1, fan: true, photo: true },
   Back,
   Mid,
@@ -111,4 +110,4 @@ export const dining = defineSet<DiningOptions>({
       { spot: "serving", who: { ...MOTHER, look: { x: 0.8, y: 0.3 } }, face: EXPRESSIONS.neutral, pose: { ...STAND, armF: [70, 20] } },
     ],
   },
-});
+};

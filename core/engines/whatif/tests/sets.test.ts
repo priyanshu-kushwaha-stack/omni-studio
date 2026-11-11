@@ -1,10 +1,9 @@
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { MOODS, type MoodName } from "../src/kit/stage/moods";
-import { REF, screenOf, setLook, SETS, SetScene, SET_LIST, worldOf, type SetDef } from "../src/kit/sets";
+import type { MoodName } from "../src/kit/stage/moods";
+import { MOOD_NAMES, REF, screenOf, setLook, SETS, SetScene, SET_LIST, worldOf, type SetDef } from "../src/kit/sets";
 
-const MOOD_NAMES = Object.keys(MOODS) as MoodName[];
 
 /** The library the edit skill promises, and the spots each set must keep (films place people by these names). */
 const EXPECTED: Record<string, string[]> = {
@@ -25,10 +24,10 @@ const EXPECTED: Record<string, string[]> = {
   phone: ["face", "shoulder"],
 };
 
-const draw = (set: SetDef<never>, mood: MoodName, part: "Back" | "Mid" | "Front") => {
-  const C = set[part];
-  if (!C) return null;
-  return renderToStaticMarkup(createElement("svg", null, createElement(C, { cam: set.cameras.wide, mood, frame: 12, options: set.defaults })));
+const draw = (set: SetDef, mood: MoodName, part: "Back" | "Mid" | "Front") => {
+  const props = { cam: set.cameras.wide, mood, frame: 12, options: set.defaults };
+  const out = set[part]?.(props);
+  return out === undefined ? null : renderToStaticMarkup(createElement("svg", null, out));
 };
 
 describe("the set library", () => {
@@ -65,11 +64,8 @@ describe("the set library", () => {
       it("mounts in all six moods, and the example composition does too", () => {
         for (const mood of MOOD_NAMES) {
           expect(draw(set, mood, "Back"), mood).toMatch(/<g/);
-          for (const part of ["Mid", "Front"] as const) {
-            const out = draw(set, mood, part);
-            if (out !== null) expect(typeof out).toBe("string");
-          }
-          const scene = renderToStaticMarkup(createElement(SetScene<never>, { set, mood, frame: 30 }));
+          for (const part of ["Mid", "Front"] as const) draw(set, mood, part);
+          const scene = renderToStaticMarkup(createElement(SetScene, { set, mood, frame: 30 }));
           expect(scene, mood).toMatch(/<svg/);
           expect(scene, `${mood}: a number went missing`).not.toMatch(/NaN/);
         }
@@ -89,6 +85,13 @@ describe("set lighting", () => {
     expect(setLook([lamp], "day", REF).glows ?? []).toHaveLength(0);
   });
 
+  it("glows only where the drawn light is on: the bedroom lamp switched off casts nothing at night", () => {
+    const bedroom = SETS.bedroom;
+    const lamps = (lamp: boolean | null) => setLook(bedroom.lights({ ...bedroom.defaults, lamp } as never), "night", REF).glows ?? [];
+    expect(lamps(false).length).toBe(lamps(null).length - 1);
+    expect(lamps(true).length).toBe(lamps(null).length);
+  });
+
   it("puts a layer's point where it was drawn at REF, and moves far layers less as the camera moves", () => {
     expect(worldOf(REF, 300, 200, 0.3)).toEqual({ x: 300, y: 200 });
     const cam = { x: 1260, y: 540, zoom: 1 };
@@ -99,7 +102,7 @@ describe("set lighting", () => {
 
   it("refuses a spot that does not exist", () => {
     const set = SETS.kitchen;
-    expect(() => renderToStaticMarkup(createElement(SetScene<never>, { set, mood: "day", cast: [{ spot: "nowhere", who: { head: "#fc0" } }] })))
+    expect(() => renderToStaticMarkup(createElement(SetScene, { set, mood: "day", cast: [{ spot: "nowhere", who: { head: "#fc0" } }] })))
       .toThrow(/no spot "nowhere"/);
   });
 });

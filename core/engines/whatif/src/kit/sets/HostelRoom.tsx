@@ -4,7 +4,7 @@
 import { EXPRESSIONS } from "../rig/expressions";
 import { INK } from "../theme";
 import { FRIEND, HERO } from "./cast";
-import { Deep, defineSet, LIGHTS_ON, lightsOn, OUTSIDE, seatedY, TubeLight, Window, type SetProps } from "./common";
+import { Deep, Floor, LIGHTS_ON, lightsOn, OUTSIDE, REF, seat, TubeLight, Window, type SetDef, type SetProps } from "./common";
 import { Backpack, Books, Bottle, Laptop } from "./props";
 
 const FLOOR = 960;
@@ -38,7 +38,7 @@ const Back: React.FC<SetProps<HostelRoomOptions>> = ({ cam, mood, options }) => 
   return (
     <>
       <Deep cam={cam} depth={0.82} flat>
-        <rect x={-1400} y={-800} width={4800} height={1800} fill={dark ? "#9fb3b0" : "#cfe0dc"} />
+        <rect x={-1400} y={-800} width={4800} height={2400} fill={dark ? "#9fb3b0" : "#cfe0dc"} />
         <rect x={-1400} y={FLOOR - 140} width={4800} height={200} fill={dark ? "#8aa09c" : "#b9cfca"} />
         <Window id="hostel" mood={mood} x={800} y={240} w={340} h={300} frame="#5c6675" />
         {/* posters, a timetable, a mirror */}
@@ -50,8 +50,7 @@ const Back: React.FC<SetProps<HostelRoomOptions>> = ({ cam, mood, options }) => 
         <TubeLight x={970} y={150} w={300} on={on} />
       </Deep>
       <Deep cam={cam} depth={1}>
-        <rect x={-1400} y={FLOOR - 40} width={4800} height={800} fill="#9a8f80" />
-        {Array.from({ length: 16 }, (_, i) => <line key={i} x1={-1400 + i * 300} y1={FLOOR - 40} x2={-1400 + i * 300 - 140} y2={1700} stroke="#000" strokeWidth={3} opacity={0.08} />)}
+        <Floor y={FLOOR - 40} fill="#9a8f80" gap={300} slant={-140} />
         {/* the steel almirah at the far right */}
         <rect x={1860} y={300} width={260} height={FLOOR - 340} rx={8} fill="#7a8a94" stroke={INK} strokeWidth={5} />
         <line x1={1990} y1={300} x2={1990} y2={FLOOR - 40} stroke={INK} strokeWidth={4} />
@@ -87,21 +86,21 @@ const Front: React.FC<SetProps<HostelRoomOptions>> = ({ cam, options }) =>
     </Deep>
   ) : null;
 
-export const hostelRoom = defineSet<HostelRoomOptions>({
+export const hostelRoom: SetDef<HostelRoomOptions> = {
   name: "hostel-room",
   about: "shared hostel room: two steel cots, study table under the window, steel almirah, posters, clothesline, mess",
   spots: {
-    cotLeft: { x: 520, y: seatedY(COT.top, 1.1), scale: 1.1, facing: 1, sit: true },
-    cotRight: { x: 1420, y: seatedY(COT.top, 1.1), scale: 1.1, facing: -1, sit: true },
+    cotLeft: seat(520, COT.top, 1.1, 1),
+    cotRight: seat(1420, COT.top, 1.1, -1),
     table: { x: 1120, y: FLOOR + 10, scale: 1.15, facing: -1 },
     floor: { x: 960, y: FLOOR + 30, scale: 1.2, facing: 1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     twoShot: { x: 960, y: 640, zoom: 1.4 },
     table: { x: 980, y: 600, zoom: 1.8 },
   },
-  lights: [{ x: 970, y: 160, depth: 0.82, r: 620, color: "#fdfbea", strength: 0.32, moods: LIGHTS_ON }],
+  lights: () => [{ x: 970, y: 160, depth: 0.82, r: 620, color: "#fdfbea", strength: 0.32, moods: LIGHTS_ON }],
   defaults: { laptop: true, line: true, mess: true },
   Back,
   Front,
@@ -112,4 +111,4 @@ export const hostelRoom = defineSet<HostelRoomOptions>({
       { spot: "cotRight", who: { ...FRIEND, look: { x: 0.8, y: 0 } }, face: EXPRESSIONS.happy },
     ],
   },
-});
+};

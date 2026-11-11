@@ -6,7 +6,7 @@ import { EXPRESSIONS } from "../rig/expressions";
 import { STAND } from "../rig/pose";
 import { INK, PAPER } from "../theme";
 import { FRIEND, HERO, VENDOR } from "./cast";
-import { Deep, defineSet, lightsOn, noise, OUTSIDE, Sky, type SetProps } from "./common";
+import { Deep, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, Sky, type SetDef, type SetProps } from "./common";
 import { ChaiGlass } from "./props";
 
 const FLOOR = 960;
@@ -106,7 +106,7 @@ const Mid: React.FC<SetProps<ChaiStallOptions>> = ({ frame, options }) => {
   );
 };
 
-export const chaiStall = defineSet<ChaiStallOptions>({
+export const chaiStall: SetDef<ChaiStallOptions> = {
   name: "chai-stall",
   about: "chai stall outside college: tin roof, shelf of jars, kettle steaming on the stove, glasses, the bulb at night",
   spots: {
@@ -116,13 +116,13 @@ export const chaiStall = defineSet<ChaiStallOptions>({
     street: { x: 1760, y: FLOOR + 20, scale: 1.15, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     twoShot: { x: 1080, y: 600, zoom: 1.5 },
     counter: { x: 1010, y: 760, zoom: 3 },
   },
-  lights: [
-    { x: BULB.x, y: BULB.y, r: 480, color: "#ffd27a", strength: 0.55, moods: ["dusk", "night", "lamp"] },
-    { x: KETTLE.x - 55, y: KETTLE.y + 60, r: 160, color: "#ff9a4a", strength: 0.35, moods: ["dusk", "night", "lamp"] },
+  lights: () => [
+    { x: BULB.x, y: BULB.y, r: 480, color: "#ffd27a", strength: 0.55, moods: LIGHTS_ON },
+    { x: KETTLE.x - 55, y: KETTLE.y + 60, r: 160, color: "#ff9a4a", strength: 0.35, moods: LIGHTS_ON },
   ],
   defaults: { glasses: 5, poured: true, steam: 1 },
   Back,
@@ -135,4 +135,4 @@ export const chaiStall = defineSet<ChaiStallOptions>({
       { spot: "friend", who: { ...FRIEND, look: { x: 0.8, y: 0 } }, face: EXPRESSIONS.happy },
     ],
   },
-});
+};

@@ -4,7 +4,7 @@ import { EXPRESSIONS } from "../rig/expressions";
 import { STAND } from "../rig/pose";
 import { INK } from "../theme";
 import { FRIEND, HERO, PASTELS } from "./cast";
-import { Deep, defineSet, LIGHTS_ON, noise, OUTSIDE, seatedY, Sky, type SetProps } from "./common";
+import { Deep, LIGHTS_ON, noise, OUTSIDE, REF, seat, Sky, type SetDef, type SetProps } from "./common";
 
 const FLOOR = 960;
 const SEAT = 860;
@@ -105,22 +105,22 @@ const Front: React.FC<SetProps<MetroCoachOptions>> = ({ cam }) => (
   <Deep cam={cam} depth={1.35}><rect x={120} y={-400} width={46} height={1800} rx={23} fill="#c8ccd2" stroke={INK} strokeWidth={6} /></Deep>
 );
 
-export const metroCoach = defineSet<MetroCoachOptions>({
+export const metroCoach: SetDef<MetroCoachOptions> = {
   name: "metro-coach",
   about: "inside a metro coach: the city sliding past two windows, the bench, poles and handles, a reflection in the glass",
   spots: {
-    window: { x: 1480, y: seatedY(SEAT, 1.1), scale: 1.1, facing: -1, sit: true },
-    seat: { x: 1220, y: seatedY(SEAT, 1.1), scale: 1.1, facing: -1, sit: true },
-    seatLeft: { x: 520, y: seatedY(SEAT, 1.1), scale: 1.1, facing: 1, sit: true },
+    window: seat(1480, SEAT, 1.1, -1),
+    seat: seat(1220, SEAT, 1.1, -1),
+    seatLeft: seat(520, SEAT, 1.1, 1),
     pole: { x: 846, y: FLOOR + 20, scale: 1.2, facing: 1 },
     aisle: { x: 640, y: FLOOR + 20, scale: 1.2, facing: 1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     windowSeat: { x: 1340, y: 640, zoom: 1.6 },
     pole: { x: 880, y: 560, zoom: 1.5 },
   },
-  lights: [{ x: 960, y: 70, r: 700, color: "#eef4ff", strength: 0.25, moods: LIGHTS_ON }],
+  lights: () => [{ x: 960, y: 70, r: 700, color: "#eef4ff", strength: 0.25, moods: LIGHTS_ON }],
   defaults: { speed: 6, reflection: null, ads: ["#1d9a8f", "#d8344f"] },
   Back,
   Front,
@@ -132,4 +132,4 @@ export const metroCoach = defineSet<MetroCoachOptions>({
       { spot: "pole", who: { ...HERO, look: { x: 0.9, y: 0 } }, face: EXPRESSIONS.worried, pose: { ...STAND, armF: [92, 8] } },
     ],
   },
-});
+};

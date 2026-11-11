@@ -6,7 +6,7 @@ import { STAND } from "../rig/pose";
 import { INK } from "../theme";
 import { CONDUCTOR, HERO, PASTELS } from "./cast";
 import { HandPhone } from "./props";
-import { Deep, defineSet, lightsOn, LIGHTS_ON, noise, OUTSIDE, seatedY, Sky, type SetProps } from "./common";
+import { Deep, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, seat, Sky, type SetDef, type SetProps } from "./common";
 
 const FLOOR = 960;
 const SEAT = 840;
@@ -82,22 +82,22 @@ const Back: React.FC<SetProps<BusOptions>> = ({ cam, mood, frame, options }) => 
   );
 };
 
-export const bus = defineSet<BusOptions>({
+export const bus: SetDef<BusOptions> = {
   name: "bus",
   about: "inside a city bus: the street sliding past the windows, the bench, straps and the yellow pole, strap-hangers",
   spots: {
-    window: { x: 1360, y: seatedY(SEAT, 1.1), scale: 1.1, facing: -1, sit: true },
-    seat: { x: 1120, y: seatedY(SEAT, 1.1), scale: 1.1, facing: -1, sit: true },
-    seatLeft: { x: 420, y: seatedY(SEAT, 1.1), scale: 1.1, facing: 1, sit: true },
+    window: seat(1360, SEAT, 1.1, -1),
+    seat: seat(1120, SEAT, 1.1, -1),
+    seatLeft: seat(420, SEAT, 1.1, 1),
     aisle: { x: 850, y: FLOOR + 20, scale: 1.2, facing: 1 },
     pole: { x: 1620, y: FLOOR + 20, scale: 1.2, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     seats: { x: 1200, y: 650, zoom: 1.5 },
     aisle: { x: 900, y: 560, zoom: 1.6 },
   },
-  lights: [{ x: 700, y: 120, r: 600, color: "#fff4d8", strength: 0.2, moods: LIGHTS_ON }],
+  lights: () => [{ x: 700, y: 120, r: 600, color: "#fff4d8", strength: 0.2, moods: LIGHTS_ON }],
   defaults: { speed: 7, hangers: 2 },
   Back,
   example: {
@@ -108,4 +108,4 @@ export const bus = defineSet<BusOptions>({
       { spot: "aisle", who: { ...HERO, look: { x: 0.8, y: 0.3 } }, face: EXPRESSIONS.worried, pose: { ...STAND, armF: [92, 8] } },
     ],
   },
-});
+};

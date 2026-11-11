@@ -4,7 +4,7 @@
 import { EXPRESSIONS } from "../rig/expressions";
 import { CRIMSON, INK, MUSTARD, PAPER } from "../theme";
 import { HERO, MOTHER } from "./cast";
-import { Deep, defineSet, noise, OUTSIDE, type SetProps } from "./common";
+import { Deep, LIGHTS_ON, noise, OUTSIDE, REF, seat, type SetDef, type SetProps } from "./common";
 
 const PHONE = { x: 1180, y: 560 };
 
@@ -141,13 +141,13 @@ const Back: React.FC<SetProps<PhoneOptions>> = ({ cam, mood, frame, options }) =
       <Deep cam={cam} depth={0.1} flat>
         {b === "bedroom" && (
           <g>
-            <rect x={-1400} y={-800} width={4800} height={1800} fill={dark ? "#3d4670" : "#e8c9a0"} />
+            <rect x={-1400} y={-800} width={4800} height={2400} fill={dark ? "#3d4670" : "#e8c9a0"} />
             {Array.from({ length: 9 }, (_, i) => <rect key={i} x={-600 + i * 360} y={-200} width={160} height={1400} fill={dark ? "#4a5280" : "#7fa0c4"} opacity={0.5} />)}
           </g>
         )}
         {b === "metro" && (
           <g>
-            <rect x={-1400} y={-800} width={4800} height={1800} fill={dark ? "#1d2133" : "#cfd8d6"} />
+            <rect x={-1400} y={-800} width={4800} height={2400} fill={dark ? "#1d2133" : "#cfd8d6"} />
             <rect x={-1400} y={150} width={4800} height={340} fill={dark ? "#0b0d1c" : "#a8d4e6"} />
             {Array.from({ length: 10 }, (_, i) => <circle key={i} cx={((i * 520 - frame * 9) % 4800 + 4800) % 4800 - 1400} cy={300 + (i % 3) * 50} r={40} fill="#ffe9a8" opacity={dark ? 0.7 : 0.25} />)}
             <rect x={-1400} y={620} width={4800} height={600} fill="#41708c" />
@@ -155,7 +155,7 @@ const Back: React.FC<SetProps<PhoneOptions>> = ({ cam, mood, frame, options }) =
         )}
         {b === "desk" && (
           <g>
-            <rect x={-1400} y={-800} width={4800} height={1800} fill="#c9a77a" />
+            <rect x={-1400} y={-800} width={4800} height={2400} fill="#c9a77a" />
             {Array.from({ length: 12 }, (_, i) => <path key={i} d={`M-1400 ${-200 + i * 120} Q960 ${-160 + i * 120} 3400 ${-200 + i * 120}`} fill="none" stroke="#a88a68" strokeWidth={10} />)}
             <rect x={-200} y={-100} width={600} height={420} rx={20} fill="#3b3e47" />
           </g>
@@ -168,7 +168,7 @@ const Back: React.FC<SetProps<PhoneOptions>> = ({ cam, mood, frame, options }) =
 /** The phone itself, in the actors' slot: after anyone `behind`, before anyone else. */
 const Mid: React.FC<SetProps<PhoneOptions>> = ({ frame, options }) => <Handset x={PHONE.x} y={PHONE.y} frame={frame} o={options} />;
 
-export const phone = defineSet<PhoneOptions>({
+export const phone: SetDef<PhoneOptions> = {
   name: "phone",
   about: "phone-screen close-up in your hand: a chat (ink bars, ticks, typing dots), an incoming call, a feed; soft background",
   spots: {
@@ -178,11 +178,11 @@ export const phone = defineSet<PhoneOptions>({
     shoulder: { x: 1700, y: 1290, scale: 3.4, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     screen: { x: PHONE.x, y: PHONE.y - 60, zoom: 1.5 },
     keyboard: { x: PHONE.x, y: PHONE.y + 200, zoom: 2 },
   },
-  lights: [{ x: PHONE.x, y: PHONE.y, r: 520, color: "#cfe9f4", strength: 0.4, moods: ["dusk", "night", "lamp"] }],
+  lights: () => [{ x: PHONE.x, y: PHONE.y, r: 520, color: "#cfe9f4", strength: 0.4, moods: LIGHTS_ON }],
   defaults: { mode: "message", typed: 0.6, sent: 2, reply: 0, dots: true, contact: MOTHER.head, thumb: 0.55, behind: "bedroom" },
   Back,
   Mid,
@@ -190,5 +190,5 @@ export const phone = defineSet<PhoneOptions>({
     camera: "wide",
     cast: [{ spot: "face", who: { ...HERO, look: { x: 1, y: 0.3 } }, face: EXPRESSIONS.worried, behind: true }],
   },
-});
+};
 

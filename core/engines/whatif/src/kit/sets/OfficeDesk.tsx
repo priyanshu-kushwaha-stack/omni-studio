@@ -4,7 +4,7 @@
 import { EXPRESSIONS } from "../rig/expressions";
 import { INK } from "../theme";
 import { BOSS, FRIEND, HERO, PASTELS } from "./cast";
-import { Chair, Deep, defineSet, LIGHTS_ON, lightsOn, noise, OUTSIDE, seatedY, Skyline, Sky, TubeLight, type SetProps } from "./common";
+import { Chair, DARK, Deep, Floor, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, seat, Sky, Skyline, TubeLight, type SetDef, type SetProps } from "./common";
 import { Mug } from "./props";
 
 const FLOOR = 960;
@@ -47,7 +47,7 @@ const Back: React.FC<SetProps<OfficeDeskOptions>> = ({ cam, mood, frame, options
       </Deep>
       <Deep cam={cam} depth={0.45} flat>
         {/* the office's far wall: tall windows between pillars */}
-        <path d={`M-1400 -800 H3400 V900 H-1400Z ${Array.from({ length: 8 }, (_, i) => `M${-1100 + i * 560} 140 h460 v460 h-460Z`).join(" ")}`} fillRule="evenodd" fill={o.dark ? "#cfc8b8" : "#e9e4d8"} />
+        <path d={`M-1400 -800 H3400 V1600 H-1400Z ${Array.from({ length: 8 }, (_, i) => `M${-1100 + i * 560} 140 h460 v460 h-460Z`).join(" ")}`} fillRule="evenodd" fill={o.dark ? "#cfc8b8" : "#e9e4d8"} />
         {Array.from({ length: 8 }, (_, i) => <path key={i} d={`M${-870 + i * 560} 140 V600 M${-1100 + i * 560} 370 H${-640 + i * 560}`} stroke="#a5998a" strokeWidth={8} />)}
         <rect x={-1400} y={600} width={4800} height={300} fill={o.dark ? "#bfb7a6" : "#ddd6c6"} />
       </Deep>
@@ -71,8 +71,7 @@ const Back: React.FC<SetProps<OfficeDeskOptions>> = ({ cam, mood, frame, options
         {[-200, 700, 1600, 2500].map((x) => <TubeLight key={x} x={x} y={60} w={320} on={on} />)}
       </Deep>
       <Deep cam={cam} depth={1}>
-        <rect x={-1400} y={FLOOR - 40} width={4800} height={800} fill="#8a94a0" />
-        {Array.from({ length: 30 }, (_, i) => <line key={i} x1={-1400 + i * 160} y1={FLOOR - 40} x2={-1400 + i * 160 - 90} y2={1700} stroke="#000" strokeWidth={3} opacity={0.05} />)}
+        <Floor y={FLOOR - 40} fill="#8a94a0" gap={160} slant={-90} opacity={0.05} />
         {/* the boss's glass cabin at the right */}
         <rect x={CABIN.from} y={200} width={900} height={FLOOR - 240} fill="#dcd5c4" />
         <rect x={CABIN.from + 260} y={720} width={340} height={20} rx={4} fill="#5b3c2a" stroke={INK} strokeWidth={5} />
@@ -107,23 +106,23 @@ const Front: React.FC<SetProps<OfficeDeskOptions>> = ({ cam }) => (
   </>
 );
 
-export const officeDesk = defineSet<OfficeDeskOptions>({
+export const officeDesk: SetDef<OfficeDeskOptions> = {
   name: "office-desk",
   about: "your desk on an open office floor: monitor, mug, plant, cubicles and colleagues behind, the boss's glass cabin",
   spots: {
-    desk: { x: CHAIR.x, y: seatedY(CHAIR.top, 1.1), scale: 1.1, facing: 1, sit: true },
+    desk: seat(CHAIR.x, CHAIR.top, 1.1, 1),
     behind: { x: 560, y: FLOOR + 10, scale: 1.15, facing: 1 },
     beside: { x: 1480, y: FLOOR + 10, scale: 1.15, facing: -1 },
     cabin: { x: CABIN.door + 140, y: FLOOR - 20, scale: 1.1, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     desk: { x: 940, y: 620, zoom: 1.6 },
     screen: { x: 1060, y: 650, zoom: 2.6 },
   },
-  lights: [
+  lights: (o) => [
     { x: 700, y: 70, depth: 0.72, r: 600, color: "#fdfbea", strength: 0.25, moods: LIGHTS_ON },
-    { x: 1060, y: 650, r: 260, color: "#cfe9f4", strength: 0.35, moods: ["night", "lamp"] },
+    { x: 1060, y: 650, r: 260, color: "#cfe9f4", strength: 0.35, moods: o.screen === "off" ? [] : DARK },
   ],
   defaults: { screen: "code", colleagues: true, notes: 3 },
   Back,
@@ -136,4 +135,4 @@ export const officeDesk = defineSet<OfficeDeskOptions>({
       { spot: "cabin", who: { ...BOSS, look: { x: 0.6, y: 0 } }, face: EXPRESSIONS.sceptical },
     ],
   },
-});
+};

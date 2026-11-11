@@ -5,7 +5,7 @@ import { EXPRESSIONS } from "../rig/expressions";
 import { STAND } from "../rig/pose";
 import { INK } from "../theme";
 import { HERO, SIBLING } from "./cast";
-import { Chair, Deep, defineSet, lightsOn, noise, OUTSIDE, seatedY, Skyline, Sky, type SetProps } from "./common";
+import { Chair, DARK, Deep, Floor, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, seat, Sky, Skyline, type SetDef, type SetProps } from "./common";
 import { ChaiGlass } from "./props";
 
 const FLOOR = 960;
@@ -54,11 +54,10 @@ const Back: React.FC<SetProps<BalconyOptions>> = ({ cam, mood, frame, options })
       </Deep>
       <Deep cam={cam} depth={1}>
         {/* the wall of the flat at the left with its door, the balcony floor */}
-        <rect x={-1400} y={-800} width={1700} height={1800} fill={o.dark ? "#b89a80" : "#e8d3b0"} stroke={INK} strokeWidth={6} />
+        <rect x={-1400} y={-800} width={1700} height={2400} fill={o.dark ? "#b89a80" : "#e8d3b0"} stroke={INK} strokeWidth={6} />
         <rect x={60} y={300} width={200} height={FLOOR - 300} fill={on ? "#ffd99a" : "#6b8a9a"} stroke={INK} strokeWidth={6} />
         <path d="M60 300 V960 M160 300 V960" stroke="#3a3f4c" strokeWidth={5} opacity={0.6} />
-        <rect x={-1400} y={FLOOR - 30} width={4800} height={800} fill="#b9a690" />
-        {Array.from({ length: 22 }, (_, i) => <line key={i} x1={-1400 + i * 220} y1={FLOOR - 30} x2={-1400 + i * 220 - 120} y2={1700} stroke="#000" strokeWidth={3} opacity={0.08} />)}
+        <Floor y={FLOOR - 30} fill="#b9a690" gap={220} slant={-120} />
         {options.drying && (
           <g>
             <path d="M1640 960 L1720 600 L1800 960 M1680 780 H1760" fill="none" stroke="#9aa1ab" strokeWidth={8} />
@@ -78,7 +77,7 @@ const Front: React.FC<SetProps<BalconyOptions>> = ({ cam, mood, frame, options }
   return (
     <Deep cam={cam} depth={1.04}>
       <rect x={300} y={RAIL - 16} width={3200} height={20} rx={6} fill="#4a5262" stroke={INK} strokeWidth={4} />
-      {Array.from({ length: 34 }, (_, i) => <rect key={i} x={320 + i * 48} y={RAIL} width={10} height={FLOOR - RAIL - 30} fill="#4a5262" />)}
+      <line x1={320} y1={RAIL + (FLOOR - RAIL - 30) / 2} x2={3500} y2={RAIL + (FLOOR - RAIL - 30) / 2} stroke="#4a5262" strokeWidth={FLOOR - RAIL - 30} strokeDasharray="10 38" />
       <rect x={300} y={FLOOR - 40} width={3200} height={16} fill="#4a5262" />
       {options.fairyLights && Array.from({ length: 30 }, (_, i) => (
         <circle key={i} cx={330 + i * 54} cy={RAIL + 14 + Math.sin(i * 1.3) * 6} r={7}
@@ -94,23 +93,23 @@ const Front: React.FC<SetProps<BalconyOptions>> = ({ cam, mood, frame, options }
   );
 };
 
-export const balcony = defineSet<BalconyOptions>({
+export const balcony: SetDef<BalconyOptions> = {
   name: "balcony",
   about: "a flat's balcony over the city: railing in front, plants and fairy lights, a plastic chair, washing drying",
   spots: {
     railing: { x: 820, y: FLOOR, scale: 1.15, facing: 1 },
     railingRight: { x: 1150, y: FLOOR, scale: 1.15, facing: -1 },
-    chair: { x: CHAIR.x, y: seatedY(CHAIR.top, 1.1), scale: 1.1, facing: -1, sit: true },
+    chair: seat(CHAIR.x, CHAIR.top, 1.1, -1),
     door: { x: 160, y: FLOOR - 20, scale: 1.15, facing: 1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     railing: { x: 980, y: 560, zoom: 1.5 },
     city: { x: 1100, y: 420, zoom: 1.2 },
   },
-  lights: [
-    { x: 160, y: 600, r: 420, color: "#ffd99a", strength: 0.4, moods: ["dusk", "night", "lamp"] },
-    { x: 1000, y: RAIL, r: 700, color: "#ffe39a", strength: 0.2, moods: ["night", "lamp"] },
+  lights: () => [
+    { x: 160, y: 600, r: 420, color: "#ffd99a", strength: 0.4, moods: LIGHTS_ON },
+    { x: 1000, y: RAIL, r: 700, color: "#ffe39a", strength: 0.2, moods: DARK },
   ],
   defaults: { plants: true, fairyLights: true, drying: true },
   Back,
@@ -122,4 +121,4 @@ export const balcony = defineSet<BalconyOptions>({
       { spot: "railingRight", who: { ...SIBLING, look: { x: 0.8, y: 0 } }, face: EXPRESSIONS.happy },
     ],
   },
-});
+};

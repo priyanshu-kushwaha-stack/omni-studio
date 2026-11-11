@@ -6,7 +6,7 @@ import { EXPRESSIONS } from "../rig/expressions";
 import { STAND } from "../rig/pose";
 import { INK } from "../theme";
 import { HERO, PASTELS, VENDOR } from "./cast";
-import { Deep, defineSet, lightsOn, noise, OUTSIDE, Sky, type SetProps } from "./common";
+import { DARK, Deep, Floor, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, Sky, type SetDef, type SetProps } from "./common";
 
 const FLOOR = 980;
 const CART = { from: 1080, to: 1560, top: 800 };
@@ -94,8 +94,7 @@ const Back: React.FC<SetProps<BazaarOptions>> = ({ cam, mood, frame, options }) 
         )}
       </Deep>
       <Deep cam={cam} depth={1}>
-        <rect x={-1400} y={860} width={4800} height={800} fill={options.wet ? "#8d877c" : "#b8a98e"} />
-        {Array.from({ length: 24 }, (_, i) => <line key={i} x1={-1400 + i * 200} y1={860} x2={-1400 + i * 200 - 120} y2={1700} stroke="#000" strokeWidth={3} opacity={0.07} />)}
+        <Floor y={860} fill={options.wet ? "#8d877c" : "#b8a98e"} gap={200} slant={-120} opacity={0.07} />
         {options.wet && [200, 900, 1700].map((x) => <ellipse key={x} cx={x} cy={1010} rx={180} ry={26} fill={on ? "#ffd27a" : "#9fb7c4"} opacity={0.45} />)}
         <rect x={360} y={950} width={220} height={50} rx={6} fill="#4a4036" stroke={INK} strokeWidth={4} />
         {Array.from({ length: 6 }, (_, i) => <line key={i} x1={380 + i * 36} y1={956} x2={380 + i * 36} y2={994} stroke="#8a8070" strokeWidth={4} />)}
@@ -116,29 +115,29 @@ const Mid: React.FC<SetProps<BazaarOptions>> = ({ options }) => {
         <g key={x}><circle cx={x} cy={FLOOR - 50} r={50} fill="none" stroke={INK} strokeWidth={10} /><circle cx={x} cy={FLOOR - 50} r={8} fill={INK} /></g>
       ))}
       <path d={`M${c.to - 20} ${c.top} L${c.to + 120} ${c.top - 40}`} stroke="#6a4630" strokeWidth={12} strokeLinecap="round" />
-      <path d={`M${c.from + 240} ${c.top} V${c.top - 170} M${c.from + 200} ${c.top - 170} H${c.from + 280}`} stroke="#6a4630" strokeWidth={6} />
-      {[c.from + 205, c.from + 275].map((x) => <path key={x} d={`M${x} ${c.top - 170} L${x - 14} ${c.top - 110} H${x + 14}Z`} fill="#c9ced6" stroke={INK} strokeWidth={3} />)}
+      <path d={`M${c.to - 60} ${c.top} V${c.top - 170} M${c.to - 100} ${c.top - 170} H${c.to - 20}`} stroke="#6a4630" strokeWidth={6} />
+      {[c.to - 95, c.to - 25].map((x) => <path key={x} d={`M${x} ${c.top - 170} L${x - 14} ${c.top - 110} H${x + 14}Z`} fill="#c9ced6" stroke={INK} strokeWidth={3} />)}
     </g>
   );
 };
 
-export const bazaar = defineSet<BazaarOptions>({
+export const bazaar: SetDef<BazaarOptions> = {
   name: "bazaar",
   about: "bazaar lane: shopfronts and signboards, striped awnings over fruit crates, bunting, bulbs at night, a vegetable cart",
   spots: {
-    vendor: { x: 1340, y: FLOOR - 10, scale: 1.1, facing: -1 },
+    vendor: { x: 1340, y: FLOOR - 20, scale: 1.15, facing: -1 },
     customer: { x: 900, y: FLOOR + 20, scale: 1.2, facing: 1 },
     passing: { x: 420, y: FLOOR + 30, scale: 1.2, facing: 1 },
     stall: { x: 560, y: 850, scale: 0.85, facing: 1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     cart: { x: 1160, y: 680, zoom: 1.5 },
     lane: { x: 700, y: 560, zoom: 1.2 },
   },
-  lights: [
-    { x: 600, y: 400, depth: 0.78, r: 600, color: "#ffe39a", strength: 0.3, moods: ["dusk", "night", "lamp"] },
-    { x: 1500, y: 400, depth: 0.78, r: 500, color: "#ffe39a", strength: 0.3, moods: ["night", "lamp"] },
+  lights: () => [
+    { x: 600, y: 400, depth: 0.78, r: 600, color: "#ffe39a", strength: 0.3, moods: LIGHTS_ON },
+    { x: 1500, y: 400, depth: 0.78, r: 500, color: "#ffe39a", strength: 0.3, moods: DARK },
   ],
   defaults: { wet: false, shoppers: true, cart: "vegetables" },
   Back,
@@ -150,4 +149,4 @@ export const bazaar = defineSet<BazaarOptions>({
       { spot: "customer", who: { ...HERO, look: { x: 0.8, y: 0.3 } }, face: EXPRESSIONS.sceptical },
     ],
   },
-});
+};

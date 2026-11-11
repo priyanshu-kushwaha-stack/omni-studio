@@ -4,7 +4,7 @@
 import { EXPRESSIONS } from "../rig/expressions";
 import { INK } from "../theme";
 import { ELDER, HERO } from "./cast";
-import { Deep, defineSet, lightsOn, noise, OUTSIDE, seatedY, Sky, type SetProps } from "./common";
+import { Deep, Floor, LIGHTS_ON, lightsOn, noise, OUTSIDE, REF, seat, Sky, type SetDef, type SetProps } from "./common";
 import { ChaiGlass } from "./props";
 
 const FLOOR = 960;
@@ -68,8 +68,7 @@ const Back: React.FC<SetProps<CourtyardOptions>> = ({ cam, mood, frame, options 
         )}
       </Deep>
       <Deep cam={cam} depth={1}>
-        <rect x={-1400} y={FLOOR - 40} width={4800} height={800} fill={o.dark ? "#8a7458" : "#cdb98f"} />
-        {Array.from({ length: 20 }, (_, i) => <line key={i} x1={-1400 + i * 240} y1={FLOOR - 40} x2={-1400 + i * 240 - 100} y2={1700} stroke="#000" strokeWidth={3} opacity={0.08} />)}
+        <Floor y={FLOOR - 40} fill={o.dark ? "#8a7458" : "#cdb98f"} gap={240} slant={-100} />
         {/* the house: its side wall at the left, the door and the step */}
         <rect x={-1400} y={200} width={1900} height={FLOOR - 240} fill={o.dark ? "#c99a7a" : "#f0c9a0"} stroke={INK} strokeWidth={6} />
         <rect x={DOOR.x - 100} y={DOOR.top} width={200} height={FLOOR - 40 - DOOR.top} fill={on ? "#ffd99a" : "#6b3f2a"} stroke={INK} strokeWidth={6} />
@@ -105,23 +104,23 @@ const Back: React.FC<SetProps<CourtyardOptions>> = ({ cam, mood, frame, options 
   );
 };
 
-export const courtyard = defineSet<CourtyardOptions>({
+export const courtyard: SetDef<CourtyardOptions> = {
   name: "courtyard",
   about: "family courtyard: the tulsi on its plinth, a neem over the back wall, washing, a charpai, the house door",
   spots: {
     tulsi: { x: 860, y: FLOOR, scale: 1.15, facing: 1 },
-    charpai: { x: 1470, y: seatedY(CHARPAI.top, 1.1), scale: 1.1, facing: -1, sit: true },
+    charpai: seat(1470, CHARPAI.top, 1.1, -1),
     door: { x: DOOR.x + 40, y: FLOOR - 50, scale: 1.15, facing: 1 },
     yard: { x: 1180, y: FLOOR + 20, scale: 1.2, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     tulsi: { x: 980, y: 660, zoom: 1.6 },
     charpai: { x: 1380, y: 650, zoom: 1.5 },
   },
-  lights: [
-    { x: DOOR.x, y: 650, r: 380, color: "#ffd99a", strength: 0.45, moods: ["dusk", "night", "lamp"] },
-    { x: TULSI.x - 120, y: FLOOR - 70, r: 160, color: "#ffcf5a", strength: 0.6, moods: ["dusk", "night", "lamp"] },
+  lights: () => [
+    { x: DOOR.x, y: 650, r: 380, color: "#ffd99a", strength: 0.45, moods: LIGHTS_ON },
+    { x: TULSI.x - 120, y: FLOOR - 70, r: 160, color: "#ffcf5a", strength: 0.6, moods: LIGHTS_ON },
   ],
   defaults: { washing: true, diya: true, chai: true },
   Back,
@@ -132,4 +131,4 @@ export const courtyard = defineSet<CourtyardOptions>({
       { spot: "tulsi", who: { ...HERO, look: { x: 0.8, y: 0 } }, face: EXPRESSIONS.sceptical },
     ],
   },
-});
+};

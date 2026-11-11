@@ -4,7 +4,7 @@
 import { EXPRESSIONS } from "../rig/expressions";
 import { INK } from "../theme";
 import { HERO } from "./cast";
-import { Chair, Deep, defineSet, lightsOn, OUTSIDE, seatedY, Window, type SetProps } from "./common";
+import { Chair, Deep, LIGHTS_ON, lightsOn, MOOD_NAMES, OUTSIDE, REF, seat, Window, type SetDef, type SetProps } from "./common";
 import { Books, Laptop } from "./props";
 
 const FLOOR = 960;
@@ -35,7 +35,7 @@ const Back: React.FC<SetProps<BedroomOptions>> = ({ cam, mood, frame, options })
   return (
     <>
       <Deep cam={cam} depth={0.85} flat>
-        <rect x={-1400} y={-800} width={4800} height={1800} fill={dark ? "#c99a7a" : "#f0c9a0"} />
+        <rect x={-1400} y={-800} width={4800} height={2400} fill={dark ? "#c99a7a" : "#f0c9a0"} />
         <rect x={-1400} y={FLOOR - 120} width={4800} height={14} fill="#c08a64" />
         <Window id="bedroom" mood={mood} x={200} y={190} w={400} h={400} frame="#7a4a32" />
         <rect x={182} y={168} width={436} height={22} rx={4} fill={INK} />
@@ -79,22 +79,22 @@ const Back: React.FC<SetProps<BedroomOptions>> = ({ cam, mood, frame, options })
   );
 };
 
-export const bedroom = defineSet<BedroomOptions>({
+export const bedroom: SetDef<BedroomOptions> = {
   name: "bedroom",
   about: "your bedroom: window with red curtains, bed, bedside alarm clock and phone, study desk with a lamp and laptop",
   spots: {
-    bedEdge: { x: 900, y: seatedY(BED.top, 1.1), scale: 1.1, facing: 1, sit: true },
-    desk: { x: CHAIR.x, y: seatedY(CHAIR.top, 1.1), scale: 1.1, facing: 1, sit: true },
+    bedEdge: seat(900, BED.top, 1.1, 1),
+    desk: seat(CHAIR.x, CHAIR.top, 1.1, 1),
     standing: { x: 760, y: FLOOR, scale: 1.15, facing: 1 },
     door: { x: 1250, y: FLOOR, scale: 1.15, facing: -1 },
   },
   cameras: {
-    wide: { x: 960, y: 540, zoom: 1 },
+    wide: REF,
     bed: { x: 800, y: 620, zoom: 1.5 },
     desk: { x: 1500, y: 600, zoom: 1.7 },
   },
-  lights: [
-    { x: LAMP.x, y: LAMP.y + 40, r: 520, color: "#ffd27a", strength: 0.55, moods: ["dusk", "night", "lamp"] },
+  lights: (o) => [
+    { x: LAMP.x, y: LAMP.y + 40, r: 520, color: "#ffd27a", strength: 0.55, moods: o.lamp === null ? LIGHTS_ON : o.lamp ? MOOD_NAMES : [] },
     { x: 400, y: 400, depth: 0.85, r: 420, color: "#fff2cc", strength: 0.35, moods: ["morning", "day"] },
   ],
   defaults: { lamp: null, hour: 7, phoneLit: false, curtains: 0, desk: "both" },
@@ -104,4 +104,4 @@ export const bedroom = defineSet<BedroomOptions>({
     options: { phoneLit: true },
     cast: [{ spot: "bedEdge", who: { ...HERO, look: { x: -0.7, y: 0.4 } }, face: EXPRESSIONS.worried }],
   },
-});
+};
