@@ -1,0 +1,73 @@
+{
+  "call_id": "bc8aca4b0b3b4c088d42f7d0adfdf7ef",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "hooks_and_promise": 9,
+    "causality_and_stakes": 8,
+    "facts_and_pacing": 6,
+    "ending": 7
+  },
+  "blockers": [
+    {
+      "quote": "Stanley Milgram, 1963. 40 men, a panel of switches, a stranger in the next room taking the shocks. 26 of them went all the way to the last switch. 450 volts. (c06)",
+      "why": "Check #7 Misconception first fails: four numbers land at once.",
+      "fix": "Replace with: \"In Milgram's obedience study, most of the men went all the way to the final switch. (c06)\"",
+      "domain": "story",
+      "line": 277
+    },
+    {
+      "quote": "He saved your seat before any of this. He wrote your first line for you. She packed your food every Sunday of your life.",
+      "why": "Check #12 Leave fast fails: lines 311\u2013314 summarize what the memory images already show, delaying the opposite-of-opening action.",
+      "fix": "Cut lines 311\u2013314. Let line 310's images carry the history, retain protected line 315, then move directly to the phone action at line 320.",
+      "domain": "story",
+      "line": 311
+    },
+    {
+      "quote": "He remembers agreeing. He can't remember wanting to.",
+      "why": "The no-new-power-rule-after-halfway check fails: this memory rule first appears around 6:45, after the 6:40 midpoint of the estimated runtime.",
+      "fix": "Before line 173, add: \"They'll remember agreeing. Not choosing.\" Keep line 196 unchanged as its payoff.",
+      "domain": "story",
+      "line": 196
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 129,
+      "quote": "Psychologists once sent students out to ask strangers for one small favour. They guessed they'd have to ask about twice as many people as they really did. (c01)",
+      "fix": "Cut lines 128\u2013129; line 131 already breaks the misconception, so this second study repeats the same turn."
+    },
+    {
+      "line": 176,
+      "quote": "Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.",
+      "fix": "Change line 174 to \"Next Friday. Everyone's coming.\" and line 176 to \"Next Friday. A hall. Two hundred people. And the draft you'd have thrown out is going on a stage.\" This lets the second Sunday occur before the announced stage."
+    },
+    {
+      "line": 234,
+      "quote": "In the old myth, King Midas wished that everything he touched would turn to gold. It did. Even his food. (c12)",
+      "fix": "Cut lines 233\u2013235 and let line 236 follow line 232; the rule already established that the power cannot switch off, and the myth pauses the isolation without turning it."
+    }
+  ],
+  "keep": [
+    {
+      "line": 161,
+      "quote": "Every yes is the same yes now. So you stop looking at faces."
+    },
+    {
+      "line": 297,
+      "quote": "One word, \"stay?\", and he stays, and on Monday he pulls the pitch because you asked. Or he reaches that door with the only no you've got left, and whatever he does with it is his. The power, or the person?"
+    },
+    {
+      "line": 328,
+      "quote": "Three dots. For once, you don't know what's coming."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "35b7c0264a03aa615f0c43f99157c2c9a7936c166331beac388f57a752dde1ed",
+  "draft_sha256": "cc14f11ef5df2d5274c27c2cf64a3b38e0416e24243e3549673117e3bde60915"
+}
