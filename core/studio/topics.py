@@ -29,20 +29,22 @@ PAGE = Path(__file__).with_name("topics_page.html")
 
 
 CURSOR_PITCHERS = {"gemini-4-argon-high": "google", "gpt-5.6-sol-high": "openai"}
-PITCH_TIMEOUT_S = 1200
+PITCH_TIMEOUT_S = 1800  # GPT-5.6 Sol ran past 1200 s on an 8-topic slate (2026-11-11)
 
 
-def pitch(model: str, prompt: str, runner=None) -> dict[str, Any]:
+def pitch(model: str, prompt: str, runner=None, raw_path: Path | None = None) -> dict[str, Any]:
     """One cursor-agent pitcher, run like a room seat (sandbox, ask mode, clean env); its answer's JSON object."""
     from studio.room.call import build_command, cli_text, invoke
 
     registry = {model: {"family": CURSOR_PITCHERS.get(model, "other"), "cli": "cursor"}}
     code, stdout, _ = invoke(build_command(model, prompt, registry), runner=runner, timeout=PITCH_TIMEOUT_S)
     text = cli_text(stdout)
+    if raw_path is not None:
+        Path(raw_path).write_text(text, encoding="utf-8")  # kept so a bad answer can be repaired, not re-bought
     fenced = re.search(r"```(?:json)?\s*(\{.*\})\s*```", text, re.S)
     raw = fenced.group(1) if fenced else text[text.find("{") : text.rfind("}") + 1]
     try:
-        data = json.loads(raw)
+        data = json.loads(raw, strict=False)  # models leave raw newlines inside strings
     except json.JSONDecodeError as exc:
         raise ValueError(f"{model} (exit {code}) gave no JSON topics: {text[:200]!r}") from exc
     if not isinstance(data, dict) or not isinstance(data.get("topics"), list):
@@ -124,7 +126,8 @@ def _load(path: str) -> dict[str, Any]:
 
 def main(argv: list[str]) -> int:
     if argv[:1] == ["pitch"] and len(argv) == 4:
-        data = pitch(argv[1], Path(argv[2]).read_text(encoding="utf-8"))
+        out = Path(argv[3])
+        data = pitch(argv[1], Path(argv[2]).read_text(encoding="utf-8"), raw_path=out.with_suffix(".raw.txt"))
         Path(argv[3]).write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"{argv[1]}: {len(data['topics'])} topics -> {argv[3]}")
         return 0

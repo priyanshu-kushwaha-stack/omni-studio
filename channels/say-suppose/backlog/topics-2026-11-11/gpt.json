@@ -1,0 +1,989 @@
+{
+  "topics": [
+    {
+      "id": "o-visible-skill-tree",
+      "title": "What If You Saw Everyone's Skill Tree?",
+      "premise": "You can see anyone's current abilities and next unlock, but inspecting them exposes the same ability in you.",
+      "thumbnail": {
+        "image": "You stare at the topper's glowing score of 91 while she points at your exposed score of 03",
+        "tag": "THEY SEE YOURS"
+      },
+      "rule": "Focus on someone for three seconds to reveal one context-specific skill from 0-100 and its next unlock; they immediately see your score for that skill and know you inspected them. Scores reflect demonstrated performance under current conditions, not fixed potential.",
+      "hook": "The class topper has Panic Recovery: 08 above her head—then she turns, sees your 03, and asks why you were measuring her.",
+      "beats": [
+        "1. On the exam-day metro, skill trees appear above commuters; inspecting the topper triggers the humiliating reciprocal reveal.",
+        "2. During the exam, her low score rises while your strong recall collapses under pressure, proving the numbers are not destiny.",
+        "3. At the chai stall, you test harmless skills such as balance and remembering orders; every reading creates a socially awkward counter-reading.",
+        "4. Classmates offer notes and favours for diagnoses, while your best friend refuses to become a score.",
+        "5. At your internship, you build a complementary team from visible strengths and beat a group selected by confidence alone.",
+        "6. At family dinner, you inspect your mother's Asking for Help score; she sees your equally poor score and the argument becomes reciprocal.",
+        "7. Campus queues form for readings, then students blame you when stress, sleep and practice make their scores change.",
+        "8. A recruiter asks you to rank applicants privately, turning a useful power into institutional authority.",
+        "9. Your supposedly fragile friend handles a real emergency brilliantly; being labelled weak had changed the conditions under which she performed.",
+        "10. You refuse to rank the finalists and design a task where they demonstrate complementary skills; your shared Asking for Help scores both rise."
+      ],
+      "feeling_map": [
+        "wonder",
+        "competitive delight",
+        "embarrassment",
+        "power",
+        "guilt",
+        "humility"
+      ],
+      "restarts": [
+        "The inspected person can see your matching score.",
+        "The scores change during the exam.",
+        "Students begin trading favours for readings.",
+        "A recruiter wants to make the scores official."
+      ],
+      "content_mine": [
+        {
+          "fact": "People formed differentiated impressions from faces after only 100 milliseconds.",
+          "source": "https://doi.org/10.1111/j.1467-9280.2006.01750.x",
+          "beat": "Beat 1 makes instant numerical judgment feel frighteningly familiar."
+        },
+        {
+          "fact": "Social judgments frequently organize around warmth and competence.",
+          "source": "https://doi.org/10.1037/0022-3514.82.6.878",
+          "beat": "Beat 1 determines the first seductive skill categories."
+        },
+        {
+          "fact": "The halo effect lets one positive trait distort judgments of unrelated qualities.",
+          "source": "https://doi.org/10.1037/0022-3514.35.4.250",
+          "beat": "Beat 2 breaks the belief that the topper must excel at everything."
+        },
+        {
+          "fact": "People overestimate how visible their internal states are, called the illusion of transparency.",
+          "source": "https://doi.org/10.1037/0022-3514.75.2.332",
+          "beat": "Beat 3 turns reciprocal inspection into comedy and embarrassment."
+        },
+        {
+          "fact": "People differ reliably in how strongly they compare themselves with others.",
+          "source": "https://doi.org/10.1037/0022-3514.76.1.129",
+          "beat": "Beat 4 explains why identical scores inspire one student and crush another."
+        },
+        {
+          "fact": "An exceptional comparison target can inspire when success feels attainable but deflate when it feels unreachable.",
+          "source": "https://doi.org/10.1037/0022-3514.73.1.91",
+          "beat": "Beat 4 drives the classmates' opposite reactions."
+        },
+        {
+          "fact": "Stereotype threat can consume working-memory resources during performance.",
+          "source": "https://doi.org/10.1037/0022-3514.85.3.440",
+          "beat": "Beat 2 shows a visible label altering exam performance."
+        },
+        {
+          "fact": "Test motivation can materially affect measured intelligence-test performance.",
+          "source": "https://doi.org/10.1073/pnas.1018601108",
+          "beat": "Beat 2 separates measured performance from permanent ability."
+        },
+        {
+          "fact": "Deliberate practice explains different amounts of performance variance across domains, not one universal talent formula.",
+          "source": "https://doi.org/10.1177/0956797614535810",
+          "beat": "Beat 5 supports choosing complementary specialists rather than one genius."
+        },
+        {
+          "fact": "People may reject an algorithm after seeing it err even when it still outperforms them.",
+          "source": "https://doi.org/10.1037/xge0000033",
+          "beat": "Beat 8 complicates the recruiter's trust in the tree."
+        },
+        {
+          "fact": "Giving people limited control over an algorithm can increase willingness to use it.",
+          "source": "https://doi.org/10.1287/mnsc.2016.2643",
+          "beat": "Beat 10 motivates replacing ranking with a demonstrable task."
+        },
+        {
+          "fact": "More than one-third of feedback interventions in a major review reduced rather than improved performance.",
+          "source": "https://doi.org/10.1037/0033-2909.119.2.254",
+          "beat": "Beat 7 makes public skill feedback actively consequential."
+        },
+        {
+          "fact": "Ordinal classroom rank can influence later confidence, choices and achievement.",
+          "source": "https://doi.org/10.1093/restud/rdy044",
+          "beat": "Beats 7-8 escalate private readings into a self-reinforcing hierarchy."
+        }
+      ],
+      "twist": "The tree never revealed fixed talent: your labels changed pressure, opportunity and confidence, helping create the scores you claimed merely to observe.",
+      "ending": "You stop asking who has the highest number and start asking what conditions let each person become useful.",
+      "closest_video": {
+        "title": "Sight",
+        "url": "https://www.youtube.com/watch?v=lK_cdkpazjI",
+        "difference": "Sight uses private augmented reality for manipulation; this rule is reciprocal and attacks school, hiring, friendship and family judgments."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Remove two chai-stall tests, shorten the campus marketplace and retain the exam reversal, family mirror, recruiter demand and emergency payoff for 7-8 minutes."
+      },
+      "views_case": "The supplied 2026-11-11 competitor decode identifies infinite-IQ and real-life game mechanics as current breakout clusters. This keeps that instantly legible progression fantasy but adds reciprocal humiliation and an Indian exam-to-internship engine. Comparators: https://www.youtube.com/results?search_query=what+if+you+had+infinite+IQ and https://www.youtube.com/results?search_query=real+life+skill+tree+animation",
+      "under_question": "If everyone's ability became visible, would life get fairer—or would we just become crueler with numbers?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-lend-your-intelligence",
+      "title": "What If You Could Lend Your Intelligence?",
+      "premise": "You can lend someone a piece of your knowledge for one day, but you cannot access it until they return it.",
+      "thumbnail": {
+        "image": "Your cousin's exam score shoots upward while you stare at a suddenly blank answer sheet",
+        "tag": "YOUR BRAIN: EMPTY"
+      },
+      "rule": "Touch someone and name one learned skill or body of knowledge to transfer for 24 hours; they gain your current access to it while you lose it completely. They cannot copy it onward, and it returns early only if they successfully teach the core idea back to you.",
+      "hook": "You lend your cousin calculus before her exam—then your own paper opens to the same chapter and every symbol looks unfamiliar.",
+      "beats": [
+        "1. At breakfast, you transfer calculus to your terrified cousin and instantly forget what the symbols mean.",
+        "2. She aces a practice paper while you fail a question you taught her yesterday; intelligence now feels like property.",
+        "3. You lend cricket timing to a friend and presentation confidence to an intern, discovering that borrowed knowledge still meets an unfamiliar body and context.",
+        "4. Classmates offer favours for twenty-four-hour loans, creating a secret market before placements.",
+        "5. Your best friend asks for interview skills, but lending them would leave you helpless in an interview scheduled the same afternoon.",
+        "6. At home, your grandfather borrows your phone skills while you inherit none of his memories or judgment; information is not wisdom.",
+        "7. A coaching centre offers money and status if you become its private intelligence bank.",
+        "8. Too many people depend on you, so your own identity becomes a timetable of missing abilities.",
+        "9. Your cousin cannot return calculus because she memorized procedures without understanding enough to teach them back.",
+        "10. You sit together and rebuild the idea from first principles; teaching creates knowledge neither of you has to surrender."
+      ],
+      "feeling_map": [
+        "generosity",
+        "superiority",
+        "temptation",
+        "scarcity",
+        "resentment",
+        "connection"
+      ],
+      "restarts": [
+        "Borrowed knowledge performs differently in another person's body.",
+        "A market forms around exam and interview loans.",
+        "You need the same skill you promised your friend.",
+        "Returning knowledge requires genuine teaching."
+      ],
+      "content_mine": [
+        {
+          "fact": "People often distribute memory across partners through transactive-memory systems.",
+          "source": "https://doi.org/10.1037/0022-3514.84.1.93",
+          "beat": "Beat 1 turns a normal social-memory system into a literal transfer."
+        },
+        {
+          "fact": "Expecting information to remain externally available can change what people remember about it.",
+          "source": "https://doi.org/10.1126/science.1207745",
+          "beat": "Beat 2 explains your sudden dependence on the borrower."
+        },
+        {
+          "fact": "Cognitive offloading moves mental work onto external actions or devices.",
+          "source": "https://doi.org/10.1016/j.tics.2016.07.002",
+          "beat": "Beat 4 frames lending as powerful but dependency-forming."
+        },
+        {
+          "fact": "Working memory appears limited to roughly four meaningful chunks under many conditions.",
+          "source": "https://doi.org/10.1017/S0140525X01003922",
+          "beat": "Beat 3 prevents borrowed intelligence from becoming unlimited processing power."
+        },
+        {
+          "fact": "Retrieval practice can produce more long-term learning than repeated studying.",
+          "source": "https://doi.org/10.1126/science.1199327",
+          "beat": "Beat 10 makes active reconstruction stronger than passive transfer."
+        },
+        {
+          "fact": "Spacing learning events generally improves long-term retention.",
+          "source": "https://doi.org/10.1037/0033-2909.132.3.354",
+          "beat": "Beat 9 explains why one concentrated loan creates brittle knowledge."
+        },
+        {
+          "fact": "Sleep supports memory consolidation.",
+          "source": "https://doi.org/10.1038/nrn2762",
+          "beat": "Beat 9 prevents a one-day transfer from equalling durable mastery."
+        },
+        {
+          "fact": "Preparing to teach can improve how material is organized and recalled.",
+          "source": "https://doi.org/10.3758/s13421-014-0416-z",
+          "beat": "Beat 10 makes teaching back the emotional and scientific payoff."
+        },
+        {
+          "fact": "Collaborative recall can produce less information than pooled independent recall, called collaborative inhibition.",
+          "source": "https://doi.org/10.1037/0033-2909.130.1.23",
+          "beat": "Beat 8 complicates the fantasy of pooling everyone's intelligence."
+        },
+        {
+          "fact": "Remembering with other people can introduce socially transmitted memory errors.",
+          "source": "https://doi.org/10.1037/0278-7393.27.2.365",
+          "beat": "Beat 6 separates shared information from reliable understanding."
+        },
+        {
+          "fact": "Groups can display measurable collective intelligence that is not reducible to the smartest member.",
+          "source": "https://doi.org/10.1126/science.1193147",
+          "beat": "Beat 10 supports cooperation as the better engine than hoarding genius."
+        },
+        {
+          "fact": "Retrieving some information can temporarily impair recall of related information.",
+          "source": "https://doi.org/10.1037/0278-7393.20.5.1063",
+          "beat": "Beat 8 supplies real material for the feeling of a mind full of holes."
+        },
+        {
+          "fact": "Pressure can impair performance on tasks that depend heavily on working memory.",
+          "source": "https://doi.org/10.1111/j.0956-7976.2005.01535.x",
+          "beat": "Beat 5 makes the simultaneous interviews more than a simple knowledge contest."
+        }
+      ],
+      "twist": "Knowledge cannot be returned by touching you again; the borrower must understand it well enough to teach it, so giving intelligence away can create more of it.",
+      "ending": "You thought intelligence was something one person owned; tomorrow, every shared note and explanation looks like a way minds already overlap.",
+      "closest_video": {
+        "title": "What If You Had Infinite IQ?",
+        "url": "https://www.youtube.com/results?search_query=%22What+If+You+Had+Infinite+IQ%22",
+        "difference": "The fantasy is not limitless personal intelligence: it is scarce, transferable knowledge that tests friendship, inequality and what understanding actually means."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut one sports loan, compress the coaching-centre market and preserve the two exams, competing interviews and teach-back reversal for 7-8 minutes."
+      },
+      "views_case": "Infinite-IQ school stories are a reported current breakout cluster, while this offers a cleaner social thumbnail: your friend's score rises as your brain empties. It also supports sequels about lending creativity, confidence or childhood languages. Comparators: https://www.youtube.com/results?search_query=%22infinite+IQ%22+what+if and https://www.youtube.com/results?search_query=Ifverse+brain+10x",
+      "under_question": "If helping someone made you less capable for a day, how generous would you really be?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-one-undo-daily",
+      "title": "What If You Had One Undo a Day?",
+      "premise": "Once each day you can erase one action you completed, but everyone remembers it and its indirect consequences remain.",
+      "thumbnail": {
+        "image": "Your thumb hovers over UNDO while your mother calls and quotes the deleted voice note",
+        "tag": "THEY REMEMBER"
+      },
+      "rule": "Once before midnight, select one deliberate action you personally completed that day; its direct physical or digital result disappears, but memories and actions other people took afterward remain. You cannot undo another person's choice or something you failed to do.",
+      "hook": "You accidentally send the family group a voice note saying you cannot keep fixing everyone's life; you undo it, the message vanishes, and your mother calls quoting every word.",
+      "beats": [
+        "1. The erased family voice note remains in everyone's memory, revealing the catch immediately.",
+        "2. On the metro, you undo spilling chai on a student's notes; the stain vanishes but her anger does not.",
+        "3. In an exam, you undo changing a correct answer and begin treating every decision as provisional.",
+        "4. You hoard the token through lunch and avoid choosing where to sit because a bigger mistake might come later.",
+        "5. You say something cruel to your friend, erase the sentence, and make the betrayal worse by removing its evidence.",
+        "6. At the internship, you send a bold proposal, hear the boss's reaction and erase the email; she remembers the idea and your retreat.",
+        "7. Reversibility makes you reckless, while promises and judgments accumulate in other people's lives.",
+        "8. You undo accepting a family responsibility, but everyone has already reorganized the evening around your promise.",
+        "9. Your friend leaves Pune while you postpone apologizing; not calling was an inaction, so it never appears in the Undo list.",
+        "10. You call before midnight and apologize without an escape plan; the unused token expires."
+      ],
+      "feeling_map": [
+        "panic",
+        "relief",
+        "control",
+        "indecision",
+        "shame",
+        "courage"
+      ],
+      "restarts": [
+        "The family remembers the erased message.",
+        "Reversible decisions start reducing satisfaction.",
+        "An erased insult damages trust more deeply.",
+        "The defining regret is absent from the Undo list."
+      ],
+      "content_mine": [
+        {
+          "fact": "The brain produces a rapid error-related electrical response after mistakes.",
+          "source": "https://doi.org/10.1111/j.1467-9280.1993.tb00586.x",
+          "beat": "Beat 1 grounds the instant compulsion to press Undo."
+        },
+        {
+          "fact": "Negative outcomes commonly trigger counterfactual thinking that can support later learning.",
+          "source": "https://doi.org/10.1037/0033-2909.121.1.133",
+          "beat": "Beat 2 turns the power into a laboratory for better alternatives."
+        },
+        {
+          "fact": "Counterfactual thoughts influence later behaviour partly by creating intentions.",
+          "source": "https://doi.org/10.1177/1088868308316091",
+          "beat": "Beat 6 explains why you test a bold proposal before erasing it."
+        },
+        {
+          "fact": "Actions often produce stronger short-term regret, while inactions dominate many long-term regrets.",
+          "source": "https://doi.org/10.1037/0033-295X.102.2.379",
+          "beat": "Beat 9 powers the omission twist."
+        },
+        {
+          "fact": "Keeping decisions reversible can reduce satisfaction because people continue reconsidering them.",
+          "source": "https://doi.org/10.1037/0022-3514.82.4.503",
+          "beat": "Beats 3-4 turn freedom into paralysis."
+        },
+        {
+          "fact": "Choice-overload effects vary substantially with context rather than appearing everywhere.",
+          "source": "https://doi.org/10.1086/651235",
+          "beat": "Beat 4 keeps the paralysis specific to a scarce, consequential token."
+        },
+        {
+          "fact": "People disproportionately retain defaults and status-quo options.",
+          "source": "https://doi.org/10.1007/BF00055564",
+          "beat": "Beat 4 explains why saving Undo becomes doing nothing."
+        },
+        {
+          "fact": "Prospect theory describes greater sensitivity to losses than equivalent gains.",
+          "source": "https://doi.org/10.2307/1914185",
+          "beat": "Beat 3 explains hoarding the token against an imagined worse mistake."
+        },
+        {
+          "fact": "Corrected misinformation can continue influencing reasoning.",
+          "source": "https://doi.org/10.1177/1529100612451018",
+          "beat": "Beats 1 and 5 show why deletion cannot erase mental impact."
+        },
+        {
+          "fact": "Corrections work better when they provide a credible alternative explanation.",
+          "source": "https://doi.org/10.1177/1529100612451018",
+          "beat": "Beat 10 makes an honest apology stronger than erasure."
+        },
+        {
+          "fact": "Trust repair depends partly on whether a violation signals poor competence or poor integrity.",
+          "source": "https://doi.org/10.1037/0021-9010.89.1.104",
+          "beat": "Beat 5 makes the erased insult a relationship problem, not a technical one."
+        },
+        {
+          "fact": "Prior investment can make people continue an inferior course, the sunk-cost effect.",
+          "source": "https://doi.org/10.1016/0749-5978(85)90049-4",
+          "beat": "Beat 7 drives increasingly reckless use."
+        },
+        {
+          "fact": "After choosing, people can increase preference for the selected option and downgrade the rejected one.",
+          "source": "https://doi.org/10.1037/h0041006",
+          "beat": "Beat 10 explains the peace created by an irreversible apology."
+        }
+      ],
+      "twist": "The power can erase every regretted action, but the regret shaping your life is something you kept failing to do.",
+      "ending": "You stop seeing mistakes as stains to remove and start seeing them as moments that demand a response.",
+      "closest_video": {
+        "title": "One-Minute Time Machine",
+        "url": "https://www.youtube.com/watch?v=vBkBS4O3yvY",
+        "difference": "That comedy repeatedly resets an encounter; here only one action disappears, memories persist, downstream consequences remain and omissions cannot be repaired."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Remove the lunch-choice sequence and shorten the internship test while preserving the remembered voice note, erased insult, family promise and missing apology for 7-8 minutes."
+      },
+      "views_case": "Rewind and redo stories sit inside the proven time-control cluster, but retained memories make every use social rather than merely mechanical. The family-message thumbnail delivers the catch instantly. Comparators: https://www.youtube.com/watch?v=vBkBS4O3yvY and https://www.youtube.com/results?search_query=Ifverse+rewind+time",
+      "under_question": "If you could erase what you did but not how it made someone feel, what would Undo actually fix?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-buy-save-points",
+      "title": "What If You Could Buy Save Points?",
+      "premise": "You can pay to rewind 15 minutes, but digital records survive and every retry costs twice as much.",
+      "thumbnail": {
+        "image": "You reach for a glowing metro-gate reload button while duplicate payment alerts cover your phone",
+        "tag": "PAY TO RETRY"
+      },
+      "rule": "A save point rewinds the physical world and your body by 15 minutes; the first costs 150 rupees and each later use doubles. Bank records, messages, emails and cloud activity do not reset, only you remember discarded timelines, and the final timeline locks at midnight.",
+      "hook": "Your exam starts in eight minutes and the metro needs twelve—then the gate offers RELOAD 15 MINUTES, and the price doubles the moment you touch it.",
+      "beats": [
+        "1. You miss the train, buy a reload and reappear before the gate.",
+        "2. You catch the train but receive two debit notifications from different timelines.",
+        "3. You retrieve your admit card and reach the exam, making paid retries feel miraculous.",
+        "4. You rehearse an internship introduction through repeated timelines while every calendar response survives.",
+        "5. The interviewer receives five versions of the same email and asks which version of you is real.",
+        "6. A reload now costs more than your monthly travel; stopping feels like wasting every earlier payment.",
+        "7. You repeat a metro-to-demo sprint until fatigue and pressure make each attempt worse.",
+        "8. Your mother finds contradictory messages saying the exam went well, was missed and never happened.",
+        "9. She reconstructs your discarded day from the digital trail and realizes how many times you hid panic.",
+        "10. One expensive retry could save the internship, but you let the mistake stand and remain with your family when they need you."
+      ],
+      "feeling_map": [
+        "panic",
+        "euphoria",
+        "greed",
+        "compulsion",
+        "exposure",
+        "acceptance"
+      ],
+      "restarts": [
+        "The first duplicate debit survives the reset.",
+        "A supposedly perfect retry leaves five emails.",
+        "The price crosses from funny to frightening.",
+        "Your mother reconstructs timelines she cannot remember."
+      ],
+      "content_mine": [
+        {
+          "fact": "NPCI publishes monthly UPI transaction statistics, illustrating the enormous scale of persistent digital payment records in India.",
+          "source": "https://www.npci.org.in/what-we-do/upi/product-statistics",
+          "beat": "Beats 1-2 establish why transaction evidence survives."
+        },
+        {
+          "fact": "Losses generally weigh more heavily than equivalent gains in prospect theory.",
+          "source": "https://doi.org/10.2307/1914185",
+          "beat": "Beat 6 explains why abandoning previous payments feels intolerable."
+        },
+        {
+          "fact": "Prior investment can create a sunk-cost effect.",
+          "source": "https://doi.org/10.1016/0749-5978(85)90049-4",
+          "beat": "Beat 6 drives another irrationally expensive reload."
+        },
+        {
+          "fact": "Reversible choices can leave people less satisfied than irreversible choices.",
+          "source": "https://doi.org/10.1037/0022-3514.82.4.503",
+          "beat": "Beats 4-5 turn repeated optimization into doubt."
+        },
+        {
+          "fact": "Counterfactual thinking can support learning while intensifying regret.",
+          "source": "https://doi.org/10.1037/0033-2909.121.1.133",
+          "beat": "Beats 3 and 9 give retries both value and emotional cost."
+        },
+        {
+          "fact": "Near-misses can increase motivation to continue gambling-like play.",
+          "source": "https://doi.org/10.1016/j.neuroimage.2009.10.031",
+          "beat": "Beat 6 makes an almost-perfect timeline dangerously motivating."
+        },
+        {
+          "fact": "Financial scarcity can consume cognitive bandwidth.",
+          "source": "https://doi.org/10.1126/science.1238041",
+          "beat": "Beat 7 shows rising prices worsening the decisions meant to solve the crisis."
+        },
+        {
+          "fact": "Sleep deprivation can bias decisions toward anticipated gains.",
+          "source": "https://doi.org/10.1523/JNEUROSCI.4407-10.2011",
+          "beat": "Beat 7 escalates late-day retry behaviour."
+        },
+        {
+          "fact": "Switching tasks produces measurable time and performance costs.",
+          "source": "https://doi.org/10.1037/0096-1523.27.4.763",
+          "beat": "Beat 7 makes repeated exam, metro and internship switching degrade performance."
+        },
+        {
+          "fact": "Pressure can impair performance on working-memory-heavy tasks.",
+          "source": "https://doi.org/10.1111/j.0956-7976.2005.01535.x",
+          "beat": "Beat 7 explains why more attempts stop producing better outcomes."
+        },
+        {
+          "fact": "Longer commuting is associated with lower subjective well-being.",
+          "source": "https://doi.org/10.1111/j.1467-9442.2008.00542.x",
+          "beat": "Beat 1 grounds the ordinary frustration that sells the first reload."
+        },
+        {
+          "fact": "Concealing secrets can create recurring mental preoccupation.",
+          "source": "https://doi.org/10.1037/emo0000320",
+          "beat": "Beats 5 and 8 make contradictory timelines cognitively exhausting."
+        },
+        {
+          "fact": "Maintaining deception adds cognitive load.",
+          "source": "https://doi.org/10.1002/acp.1661",
+          "beat": "Beat 8 causes the story you tell your mother to collapse."
+        },
+        {
+          "fact": "Purchasing decisions involve both reward anticipation and anticipated loss or pain of paying.",
+          "source": "https://doi.org/10.1016/j.neuron.2006.11.010",
+          "beat": "Beats 2 and 6 animate the conflict inside each reload purchase."
+        }
+      ],
+      "twist": "Your mother cannot remember a single reset, yet the surviving records show every version of the day—and every time you told her you were fine.",
+      "ending": "The ordinary metro gate says Proceed, and for the first time an imperfect future feels more valuable than another retry.",
+      "closest_video": {
+        "title": "One-Minute Time Machine",
+        "url": "https://www.youtube.com/watch?v=vBkBS4O3yvY",
+        "difference": "This is a paid, exponentially costly reset where cloud records survive and family trust—not romantic trial and error—is the final stake."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Compress the exam success and repeated commute montage; keep duplicate payments, five emails, exponential cost, the mother's reconstruction and final choice for 7-8 minutes."
+      },
+      "views_case": "This combines two reported breakout clusters—money glitches and time control—inside one phone-readable rule. The glowing payment gate is a reusable sequel device with surge pricing, subscriptions or shared saves. Comparators: https://www.youtube.com/results?search_query=what+if+you+had+infinite+money and https://www.youtube.com/watch?v=vBkBS4O3yvY",
+      "under_question": "If money could erase mistakes but not their evidence, when would you finally stop paying?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-who-defends-you",
+      "title": "What If You Saw Who'd Defend You?",
+      "premise": "Every morning you see the one person each individual would publicly defend that day—except you cannot see your own choice.",
+      "thumbnail": {
+        "image": "Every gold arrow points away from you except one coming from your shocked rival",
+        "tag": "YOUR RIVAL DID"
+      },
+      "rule": "At 8:08 each morning, an arrow above every person points to the first person they would spontaneously defend at real social cost that day. It does not reveal affection or motive, staged confrontations erase relevant arrows, and your own arrow stays invisible until the moment of choice.",
+      "hook": "Every arrow in your classroom points away from you—except your rival's, and before lunch you are accused of cheating.",
+      "beats": [
+        "1. On the exam-day metro, arrows appear; a stranger's points to you.",
+        "2. At college, popular students attract fewer arrows than expected, breaking the assumption that visibility equals loyalty.",
+        "3. Your best friend's arrow points to your internship rival Tara rather than you.",
+        "4. You stage a canteen insult to test the rule; both arrows vanish because manufactured courage does not count.",
+        "5. At the internship, you assign a presentation using the network and score an apparent win.",
+        "6. At home, you mistake your parents' arrows for agreement about your career plans.",
+        "7. A leaked exam spreadsheet is traced to your login; almost every arrow points elsewhere.",
+        "8. Tara publicly produces timestamps that clear you, sacrificing credibility with the supervisor.",
+        "9. Suspicion turns toward Tara and your hidden arrow finally appears, pointing to her.",
+        "10. You defend Tara and risk the internship; the next morning every arrow on campus points toward one unknown first-year student."
+      ],
+      "feeling_map": [
+        "wonder",
+        "jealousy",
+        "control",
+        "abandonment",
+        "gratitude",
+        "courage"
+      ],
+      "restarts": [
+        "Your best friend's arrow points to your rival.",
+        "Testing an arrow destroys it.",
+        "The cheating accusation empties your side of the network.",
+        "Your own arrow appears only when defending someone becomes costly."
+      ],
+      "content_mine": [
+        {
+          "fact": "Ostracism threatens belonging, self-esteem, control and a sense of meaningful existence.",
+          "source": "https://doi.org/10.1146/annurev.psych.58.110405.085641",
+          "beat": "Beats 1 and 7 make the arrowless moment personally painful."
+        },
+        {
+          "fact": "A companion's presence can reduce how physically challenging an obstacle appears.",
+          "source": "https://doi.org/10.1016/j.jesp.2007.04.011",
+          "beat": "Beat 1 gives the stranger's arrow an immediate felt effect."
+        },
+        {
+          "fact": "People's friends tend to have more friends than they do, known as the friendship paradox.",
+          "source": "https://doi.org/10.1086/229693",
+          "beat": "Beat 2 explains why perceived popularity misleads you about support."
+        },
+        {
+          "fact": "People systematically underestimate how much new conversation partners like them.",
+          "source": "https://doi.org/10.1177/0956797618783714",
+          "beat": "Beats 2-3 break your confidence in reading relationships."
+        },
+        {
+          "fact": "Self-disclosure and liking reinforce one another.",
+          "source": "https://doi.org/10.1037/0033-2909.116.3.457",
+          "beat": "Beat 3 complicates why your friend may feel closer to Tara."
+        },
+        {
+          "fact": "Larger groups can inhibit helping when responsibility feels diffuse.",
+          "source": "https://doi.org/10.1037/0033-2909.89.2.308",
+          "beat": "Beat 7 explains why a crowded classroom produces few defenders."
+        },
+        {
+          "fact": "Shared group identity can increase emergency intervention.",
+          "source": "https://doi.org/10.1177/0146167204271651",
+          "beat": "Beat 8 explores why Tara crosses a social boundary to help."
+        },
+        {
+          "fact": "Public generosity can function as competitive status signalling.",
+          "source": "https://doi.org/10.1177/0146167206291006",
+          "beat": "Beat 5 warns that visible defence can be strategic."
+        },
+        {
+          "fact": "Costly punishment can create reputational benefits for the intervener.",
+          "source": "https://doi.org/10.1016/j.evolhumbehav.2008.01.001",
+          "beat": "Beat 8 keeps Tara's motive productively ambiguous."
+        },
+        {
+          "fact": "Coalition cues can reshape how people categorize others.",
+          "source": "https://doi.org/10.1073/pnas.251541498",
+          "beat": "Beat 6 separates family alliance from actual agreement."
+        },
+        {
+          "fact": "Reputation-sharing can serve prosocial functions such as warning others about exploitation.",
+          "source": "https://doi.org/10.1037/a0026650",
+          "beat": "Beat 7 gives the accusation social utility as well as danger."
+        },
+        {
+          "fact": "Gossip and ostracism can increase cooperation within groups under some conditions.",
+          "source": "https://doi.org/10.1177/0956797613510184",
+          "beat": "Beats 7-8 explain why the campus rapidly forms sides."
+        },
+        {
+          "fact": "Indirect reciprocity lets reputation affect later cooperation.",
+          "source": "https://doi.org/10.1038/nature04131",
+          "beat": "Beats 8-10 make today's defence reshape tomorrow's network."
+        },
+        {
+          "fact": "Exclusion can motivate reconnection when a socially safe opportunity appears.",
+          "source": "https://doi.org/10.1037/0022-3514.92.1.42",
+          "beat": "Beat 10 makes your costly defence a credible path back to connection."
+        }
+      ],
+      "twist": "The arrows never measured love; they measured willingness to pay a social cost, so your rival was more loyal in action than your closest people were in feeling.",
+      "ending": "Tomorrow you stop looking for arrows pointing at you and notice the person nobody else is willing to stand beside.",
+      "closest_video": {
+        "title": "What If You Could See Who Secretly Misses You?",
+        "url": "https://www.youtube.com/results?search_query=%22What+If+You+Could+See+Who+Secretly+Misses+You%22",
+        "difference": "Missing someone reveals a private feeling; this rule predicts a costly public action, cannot be safely tested and withholds your own moral choice."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Shorten the metro map and internship experiment while preserving the friend-rival reveal, failed test, accusation, costly defence and first-year sequel image for 7-8 minutes."
+      },
+      "views_case": "Secret-feelings videos about crushes, envy and who misses you are reported current breakouts. This changes passive affection into visible courage and gives the thumbnail a stronger reversal: your rival is the only arrow pointing toward you. Comparators: https://www.youtube.com/results?search_query=what+if+you+could+see+who+misses+you and https://www.youtube.com/results?search_query=what+if+you+could+see+who+likes+you",
+      "under_question": "Do I want people who feel close to me—or people who will actually stand up when it costs them?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-trusted-lie",
+      "title": "What If You Saw the Lie They'd Trust?",
+      "premise": "Above everyone appears the one false claim about you they would believe without asking for evidence.",
+      "thumbnail": {
+        "image": "Your denial becomes a giant red label copied above the heads of your friend, mother and recruiter",
+        "tag": "THEY BOUGHT IT"
+      },
+      "rule": "Each observer displays one lie shaped by their existing impression of you; arguments cannot remove it, but witnessed contradictory behaviour can. If you repeat the lie aloud—even to deny it—everyone hearing it inherits that label until midnight.",
+      "hook": "Your mother would believe you wanted to leave her, your friend would believe you stole her notes, and your recruiter would believe you faked the project—none believed it until you tried to defend yourself.",
+      "beats": [
+        "1. At breakfast, different red labels appear above every family member.",
+        "2. On the metro, strangers develop labels after a glance, showing how context shapes the available lie.",
+        "3. College fractures your identity into incompatible accusations: cheating, using people and buying the internship.",
+        "4. You remove one friend's label by surrendering the original notes and public credit.",
+        "5. You ask another friend whether she thinks you cheated; everyone nearby immediately inherits SHE CHEATED.",
+        "6. The phrase reaches your internship showcase, where tailored attempts to contradict every label make you look inconsistent.",
+        "7. You discover the lie Tara would trust and consider planting it to divert suspicion.",
+        "8. A project file disappears and nearly every label converges on YOU FAKED IT.",
+        "9. Instead of arguing, you release the edit history and give Tara the presentation slot, visibly contradicting several labels at personal cost.",
+        "10. You discover nobody deliberately started the rumour: your denial supplied its first repetition, while your friend's fear that success would make you leave supplied the motive to spread it."
+      ],
+      "feeling_map": [
+        "intrigue",
+        "exposure",
+        "mastery",
+        "panic",
+        "temptation",
+        "intimacy"
+      ],
+      "restarts": [
+        "One action successfully tears away a label.",
+        "Denying a lie infects the room with it.",
+        "The campus rumour reaches the internship.",
+        "You discover that no mastermind started it."
+      ],
+      "content_mine": [
+        {
+          "fact": "People can form meaningful impressions from very brief samples of behaviour.",
+          "source": "https://doi.org/10.1037/0033-2909.111.2.256",
+          "beat": "Beats 1-2 make rapidly appearing labels psychologically plausible."
+        },
+        {
+          "fact": "Social judgments commonly organize around warmth and competence.",
+          "source": "https://doi.org/10.1037/0022-3514.82.6.878",
+          "beat": "Beats 1 and 3 generate different lies for family, school and work."
+        },
+        {
+          "fact": "Confirmation bias favours information that supports an existing belief.",
+          "source": "https://doi.org/10.1037/1089-2680.2.2.175",
+          "beat": "Beats 2-3 explain why each observer accepts a different accusation."
+        },
+        {
+          "fact": "Negative information often carries greater psychological weight than equivalent positive information.",
+          "source": "https://doi.org/10.1037/1089-2680.5.4.323",
+          "beat": "Beat 3 lets one accusation overpower months of ordinary behaviour."
+        },
+        {
+          "fact": "Repetition can increase a statement's perceived truth.",
+          "source": "https://doi.org/10.1037/0278-7393.3.1.107",
+          "beat": "Beat 5 makes denial itself contagious."
+        },
+        {
+          "fact": "Prior knowledge does not fully protect people from repetition's illusory-truth effect.",
+          "source": "https://doi.org/10.1037/xge0000098",
+          "beat": "Beats 5-6 explain why friends also become vulnerable."
+        },
+        {
+          "fact": "A large Twitter study found false news spread farther, faster, deeper and more broadly than truth.",
+          "source": "https://doi.org/10.1126/science.aap9559",
+          "beat": "Beat 6 expands a canteen sentence into a campus rumour."
+        },
+        {
+          "fact": "Moral-emotional language is associated with increased diffusion in social networks.",
+          "source": "https://doi.org/10.1073/pnas.1618923114",
+          "beat": "Beat 6 explains why accusations about cheating and betrayal travel."
+        },
+        {
+          "fact": "High-arousal content is more likely to be shared.",
+          "source": "https://doi.org/10.1509/jmr.10.0353",
+          "beat": "Beat 6 helps the rumour outrun the boring evidence."
+        },
+        {
+          "fact": "One naturalistic study estimated gossip at roughly 14 percent of sampled daily conversation.",
+          "source": "https://doi.org/10.1177/1948550619837000",
+          "beat": "Beats 6 and 8 ground the ordinary scale of social transmission."
+        },
+        {
+          "fact": "Describing another person's traits can make listeners associate those traits with the speaker.",
+          "source": "https://doi.org/10.1037/0022-3514.74.3.837",
+          "beat": "Beat 7 makes weaponizing Tara's lie dangerous to you too."
+        },
+        {
+          "fact": "Initial beliefs can persist after their original evidence is discredited.",
+          "source": "https://doi.org/10.1037/0022-3514.32.5.880",
+          "beat": "Beat 8 prevents one correction from ending the crisis."
+        },
+        {
+          "fact": "Misinformation can continue influencing reasoning after correction.",
+          "source": "https://doi.org/10.1177/1529100612451018",
+          "beat": "Beats 8-9 require visible costly behaviour rather than a denial."
+        },
+        {
+          "fact": "Psychological inoculation can increase resistance to misinformation.",
+          "source": "https://doi.org/10.1002/gch2.201600008",
+          "beat": "Beat 9 supports showing the complete evidence trail before another rumour fills the gap."
+        }
+      ],
+      "twist": "There was no mastermind: your attempt to control the story supplied the rumour's first repetition, and your friend's fear supplied its emotional fuel.",
+      "ending": "You stop asking what lie each person might believe and finally ask the friend beside you what she is afraid of losing.",
+      "closest_video": {
+        "title": "What If Everyone Could Hear Your Thoughts?",
+        "url": "https://www.youtube.com/results?search_query=%22What+If+Everyone+Could+Hear+Your+Thoughts%22+%22IF+Nation%22",
+        "difference": "This reveals neither thoughts nor existing secrets; it reveals each relationship's vulnerability, and using the information can create the feared rumour."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Remove two stranger labels and compress the showcase defence while retaining the successful contradiction, contagious denial, scapegoat temptation and self-seeded-rumour reveal for 7-8 minutes."
+      },
+      "views_case": "Mind-reading and behind-your-back videos are reported current breakouts, but the power here shows a possible belief rather than private dialogue. The denial multiplying across faces is a cleaner visual engine and a fresh misconception-first story. Comparators: https://www.youtube.com/results?search_query=%22Everyone+Could+Hear+Your+Thoughts%22 and https://www.youtube.com/results?search_query=%22Hear+What+Everyone+Says+Behind+Your+Back%22",
+      "under_question": "If I knew exactly how people could misunderstand me, would I become honest—or spend my life performing against it?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-shadow-reacts-first",
+      "title": "What If Your Shadow Reacted First?",
+      "premise": "Your shadow displays every automatic physical reaction seven-tenths of a second before your body performs it.",
+      "thumbnail": {
+        "image": "You remain upright while your shadow has already ducked from a cricket ball",
+        "tag": "BODY LEAKED"
+      },
+      "rule": "Under one dominant light, your sharpest shadow previews your strongest prepared motor response 700 milliseconds early. Everyone can see it; extra dominant lights reveal competing responses, diffuse light removes the preview, and reacting to a shadow can change what your body does next.",
+      "hook": "On the metro platform your shadow jumps backward while you remain still—then a suitcase clips the exact spot where your foot was.",
+      "beats": [
+        "1. The impossible public dodge reveals the seven-tenths-of-a-second gap.",
+        "2. At breakfast, your shadow reaches toward your hidden phone before you decide to grab it.",
+        "3. During an exam, it glances toward a fallen answer sheet and the proctor treats an impulse as intent.",
+        "4. At the internship, your silhouette recoils before a difficult question and the room reads fear as dishonesty.",
+        "5. With one desk lamp and slow-motion video, you measure the rule and begin training against the preview.",
+        "6. At cricket practice, watching the crease shadow helps you anticipate your own duck or drive—until the bowler reads it too.",
+        "7. A phone flash creates a second shadow performing another response, revealing competing prepared movements.",
+        "8. Coworkers and opponents position hard lights to interrogate your first impulse.",
+        "9. Under stadium floodlights, multiple silhouettes explode around you on livestream and everyone trusts a different future.",
+        "10. You wait through the darkest shadow's lead and choose another response; under soft light, you leave the tempting final ball rather than chase glory."
+      ],
+      "feeling_map": [
+        "uncanny wonder",
+        "embarrassment",
+        "mastery",
+        "exposure",
+        "claustrophobia",
+        "freedom"
+      ],
+      "restarts": [
+        "The proctor mistakes impulse for intention.",
+        "An opponent learns to read the shadow too.",
+        "A second light reveals a competing reaction.",
+        "Floodlights turn one leak into many possible futures."
+      ],
+      "content_mine": [
+        {
+          "fact": "Geometric optics models light as travelling in straight lines through a uniform medium.",
+          "source": "https://openstax.org/books/physics/pages/16-1-reflection",
+          "beat": "Beat 1 establishes a simple visual language for the impossible shadow."
+        },
+        {
+          "fact": "Umbra and penumbra arise from source geometry and partial occlusion.",
+          "source": "https://science.nasa.gov/eclipses/",
+          "beat": "Beats 1 and 7 explain why one shadow can split or soften."
+        },
+        {
+          "fact": "Multiple coloured light sources can create multiple coloured shadows.",
+          "source": "https://www.exploratorium.edu/snacks/colored-shadows",
+          "beat": "Beats 7 and 9 create the competing-futures image."
+        },
+        {
+          "fact": "Larger or more diffuse light sources create softer shadow boundaries.",
+          "source": "https://openstax.org/books/university-physics-volume-3/pages/1-introduction",
+          "beat": "Beat 10 makes soft light a meaningful escape from surveillance."
+        },
+        {
+          "fact": "Libet's classic experiment reported a readiness potential hundreds of milliseconds before reported conscious intention.",
+          "source": "https://doi.org/10.1093/brain/106.3.623",
+          "beat": "Beats 2 and 5 supply the provocative first explanation."
+        },
+        {
+          "fact": "Accumulator models offer an alternative interpretation of readiness potentials rather than a settled decision timestamp.",
+          "source": "https://doi.org/10.1073/pnas.1210467109",
+          "beat": "Beats 7 and 10 break the belief that the shadow shows a fixed future."
+        },
+        {
+          "fact": "Brain-pattern studies classified some simple choices above chance before reported awareness, not complex future actions.",
+          "source": "https://doi.org/10.1038/nn.2112",
+          "beat": "Beats 4 and 10 keep the power narrow and scientifically honest."
+        },
+        {
+          "fact": "A startling stimulus can rapidly release an already prepared movement, called the StartReact effect.",
+          "source": "https://doi.org/10.1016/j.neuroscience.2006.05.044",
+          "beat": "Beats 1 and 6 connect preparation with sudden movement."
+        },
+        {
+          "fact": "The Stroop effect demonstrates conflict between automatic and controlled responses.",
+          "source": "https://doi.org/10.1037/h0054651",
+          "beat": "Beats 3 and 10 distinguish first impulse from final choice."
+        },
+        {
+          "fact": "People reflexively orient attention in response to another person's gaze direction.",
+          "source": "https://doi.org/10.3758/BF03208827",
+          "beat": "Beat 8 explains why observers cannot ignore the shadow's cue."
+        },
+        {
+          "fact": "Sparse moving points can communicate recognizable biological motion.",
+          "source": "https://doi.org/10.3758/BF03212378",
+          "beat": "Beat 4 makes a simple paper silhouette emotionally readable."
+        },
+        {
+          "fact": "Social observation can alter performance instead of merely revealing it.",
+          "source": "https://doi.org/10.1037/0033-2909.94.2.265",
+          "beat": "Beats 8-9 show surveillance changing the reactions it measures."
+        },
+        {
+          "fact": "Stopping an initiated response can be modelled as a race between go and stop processes.",
+          "source": "https://doi.org/10.1037/0033-295X.91.3.295",
+          "beat": "Beat 10 supports deliberately overriding the leading shadow."
+        },
+        {
+          "fact": "Cricket expertise depends substantially on anticipatory visual information, not reaction speed alone.",
+          "source": "https://doi.org/10.1080/02640410600802850",
+          "beat": "Beats 6 and 10 prevent the power from becoming automatic sporting victory."
+        }
+      ],
+      "twist": "The darkest shadow is not your future; it is merely the strongest prepared impulse, and the public has been judging you for choices you still have time not to make.",
+      "ending": "Tomorrow, when someone flinches before answering, you remember that a first reaction is not a final decision.",
+      "closest_video": {
+        "title": "Reaction Time 10x",
+        "url": "https://www.youtube.com/results?search_query=Ifverse+%22Reaction+Time+10x%22",
+        "difference": "Instead of private superhuman speed, your ordinary reaction leaks publicly before it happens, giving rivals an advantage and turning impulse into a social judgment."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Trim the home experiment and one workplace-light test; retain the exam accusation, cricket counterplay, second shadow, floodlight peak and impulse-not-fate choice for 7-8 minutes."
+      },
+      "views_case": "Reaction-time stories are a reported current breakout cluster. This preserves the physical thrill but adds a one-frame thumbnail mystery and social exposure across exams, interviews and cricket. Comparators: https://www.youtube.com/results?search_query=Ifverse+reaction+time and https://www.youtube.com/results?search_query=what+if+your+reaction+time+was+10x",
+      "under_question": "If everyone saw my first impulse, would they still judge me by what I finally chose?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-parallel-minds",
+      "title": "What If You Could Think in Parallel?",
+      "premise": "You can split your mind into five simultaneous thinkers, but they reunite with conflicting memories, loyalties and emotions.",
+      "thumbnail": {
+        "image": "Five versions of your face argue over one exam answer while the timer reaches zero",
+        "tag": "5 MINDS. ONE YOU."
+      },
+      "rule": "You may split into up to five conscious threads for ten minutes; each controls attention to one task while sharing the same body. When time ends, every memory and emotion merges at once. Threads cannot communicate during the split, and a majority can force one physical action that the reunited you must own.",
+      "hook": "The exam begins, your boss messages and your mother calls—so you split into five minds, and three of them decide the person you love most is the interruption.",
+      "beats": [
+        "1. On the metro, five inner voices appear and independently read notes, answer messages, plan dinner, watch the station and worry.",
+        "2. In the exam, parallel recall feels like infinite intelligence until three threads choose different answers for the same hand.",
+        "3. You assign one thread to every boring task and finish a day of internship work before lunch.",
+        "4. The merged memories arrive together: five conversations, five moods and no clear sense of which decision was yours.",
+        "5. You use separate threads for your friend, family and boss; each learns a different version of your priorities.",
+        "6. At the internship, parallel analysis finds a brilliant solution but every thread assumes another checked the basic error.",
+        "7. One thread begins protecting its own ten minutes, hiding information in notes for its next appearance.",
+        "8. During a family crisis, the threads vote to keep working because four know the deadline and only one is listening to your mother.",
+        "9. After merging, you feel all five consequences at once and discover that majority rule amplified shared blind spots rather than wisdom.",
+        "10. You split one final time but give all five minds the same task: listen; the power becomes depth rather than throughput."
+      ],
+      "feeling_map": [
+        "overload",
+        "exhilaration",
+        "greed",
+        "fragmentation",
+        "betrayal",
+        "stillness"
+      ],
+      "restarts": [
+        "Five answers compete for one hand.",
+        "Merged emotions arrive as a psychological pile-up.",
+        "A thread begins leaving messages for itself.",
+        "The majority vote chooses efficiency over the person you love."
+      ],
+      "content_mine": [
+        {
+          "fact": "Performing two close-together tasks can create a response-selection bottleneck.",
+          "source": "https://doi.org/10.1037/0033-295X.101.1.80",
+          "beat": "Beats 1-2 establish the ordinary bottleneck the power appears to defeat."
+        },
+        {
+          "fact": "Switching tasks carries measurable time costs.",
+          "source": "https://doi.org/10.1037/0096-1523.27.4.763",
+          "beat": "Beat 1 makes simultaneous threads immediately desirable."
+        },
+        {
+          "fact": "Working memory appears limited to roughly four meaningful chunks under many conditions.",
+          "source": "https://doi.org/10.1017/S0140525X01003922",
+          "beat": "Beat 2 gives five thinkers a clear advantage and a merging problem."
+        },
+        {
+          "fact": "Rapid successive targets can produce an attentional blink.",
+          "source": "https://doi.org/10.1037/0096-1523.18.3.849",
+          "beat": "Beat 3 supplies visual material for what parallel attention escapes."
+        },
+        {
+          "fact": "Heavy media multitaskers performed worse on some tests of cognitive control in a prominent study.",
+          "source": "https://doi.org/10.1073/pnas.0903620106",
+          "beat": "Beat 4 complicates the fantasy that more simultaneous input means better control."
+        },
+        {
+          "fact": "Choice-overload effects vary substantially depending on context.",
+          "source": "https://doi.org/10.1086/651235",
+          "beat": "Beat 2 keeps five answers from becoming automatically better than one."
+        },
+        {
+          "fact": "Groups can display collective intelligence not reducible to their smartest individual.",
+          "source": "https://doi.org/10.1126/science.1193147",
+          "beat": "Beat 6 shows why multiple perspectives can genuinely help."
+        },
+        {
+          "fact": "Groups often discuss shared information more than unique information held by one member.",
+          "source": "https://doi.org/10.1037/0022-3514.48.6.1467",
+          "beat": "Beats 6 and 9 explain the shared blind spot."
+        },
+        {
+          "fact": "Social loafing reduces individual effort when responsibility is diffused across a group.",
+          "source": "https://doi.org/10.1037/0033-2909.116.1.65",
+          "beat": "Beat 6 lets every thread assume another checked the error."
+        },
+        {
+          "fact": "Independent estimates can aggregate into surprisingly accurate group judgments under suitable conditions.",
+          "source": "https://doi.org/10.1038/075450a0",
+          "beat": "Beat 6 contrasts useful independence with later conformity."
+        },
+        {
+          "fact": "Undemanding tasks that permit mind-wandering can improve later creative incubation.",
+          "source": "https://doi.org/10.1177/0956797612446024",
+          "beat": "Beat 3 challenges the urge to assign every idle moment a task."
+        },
+        {
+          "fact": "Sleep supports memory consolidation and integration.",
+          "source": "https://doi.org/10.1038/nrn2762",
+          "beat": "Beat 4 asks what happens when five memory streams demand consolidation together."
+        },
+        {
+          "fact": "Transactive-memory systems let groups distribute responsibility for knowing different things.",
+          "source": "https://doi.org/10.1037/0022-3514.84.1.93",
+          "beat": "Beat 5 turns specialized threads into conflicting social selves."
+        },
+        {
+          "fact": "Group discussion can push members toward more extreme versions of their initial tendency.",
+          "source": "https://doi.org/10.1037/h0021268",
+          "beat": "Beat 8 makes the four-to-one efficiency vote more dangerous than simple arithmetic."
+        }
+      ],
+      "twist": "Five minds do not make you five times wiser: because they share your assumptions, their majority can become a faster and more confident version of your blind spot.",
+      "ending": "You began by splitting attention across everything; you end by using five minds to give one person your complete attention.",
+      "closest_video": {
+        "title": "What If You Had Infinite IQ?",
+        "url": "https://www.youtube.com/results?search_query=%22What+If+You+Had+Infinite+IQ%22",
+        "difference": "This is not limitless intelligence or faster thought; it is concurrent consciousness with coordination failures, competing relationships and one body that owns every vote."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Remove one productivity montage and shorten the self-message subplot while preserving the exam conflict, memory merge, unchecked error, family vote and listening payoff for 7-8 minutes."
+      },
+      "views_case": "Infinite-IQ, 10x-brain and game-interface stories are reported current breakouts. Five arguing versions of one face communicates the power instantly while the shared-body catch creates endless school, office, romance and family sequels. Comparators: https://www.youtube.com/results?search_query=what+if+you+had+infinite+IQ and https://www.youtube.com/results?search_query=what+if+your+brain+was+10x+faster",
+      "under_question": "If I could do everything at once, would I finally be present—or never fully there for anyone?",
+      "proposers": [
+        "gpt"
+      ]
+    }
+  ]
+}

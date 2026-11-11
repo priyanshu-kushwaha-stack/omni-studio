@@ -1,0 +1,1007 @@
+{
+  "topics": [
+    {
+      "id": "f-deleted-messages",
+      "title": "What If You Could Read Every Deleted Message?",
+      "premise": "Every message anyone typed to you and then deleted, or never sent, shows up on your phone, word for word.",
+      "thumbnail": {
+        "image": "You, large and left, eyes wide at a phone held close; on its screen one grey 'deleted' bubble is peeling open like paper with a crimson glow behind it; in the dark background the girl from the next row looks away",
+        "tag": "SHE TYPED THIS?"
+      },
+      "rule": "Tap any 'This message was deleted' line, or any chat where someone typed and stopped, and you read exactly what they wrote. It works on every chat you are in, as far back as the chat goes. The catch: each one you open sends out one of your own unsent drafts, from any year, to the person you wrote it for. You do not pick which.",
+      "hook": "Your crush typed for forty seconds, then nothing. Tonight you can open what she wrote. But the moment you do, something you never sent goes out too.",
+      "beats": [
+        "Night, your bed, the class group. 'Typing...' under her name for forty seconds, then it stops. You do what you always do: stare at it. Then the grey line opens under your thumb.",
+        "The rule, stated once, on the family group first: a cousin's deleted joke about your uncle's singing. Funny and harmless. You read ten in a row.",
+        "The first cost. Your phone buzzes: a draft from two years ago, 'happy birthday, sorry I forgot', has just gone to a school friend. He replies in a minute. It goes well, so you decide the catch is cheap.",
+        "You open the coaching group's deleted messages. Most are typos and wrong stickers. The gap: you expected secrets and got spelling mistakes; people delete far more out of embarrassment than malice.",
+        "You open hers. It is not a confession. It is a question about the notes, rewritten four times to sound casual. You learn she edits herself for you exactly the way you do for her.",
+        "The second jump: your boss at the internship. His deleted message at 11 pm was harsh; the one he sent instead was polite. You now know both, and you cannot un-know the first one at the morning meeting.",
+        "The cost lands. A draft you wrote in anger to your best friend last year, never sent, goes out with today's date on it. He reads it as if you mean it tonight.",
+        "You try to explain; every explanation needs you to admit you can read what people delete. The family group goes quiet when you answer a message your mother never sent.",
+        "The third jump: your mother's unsent drafts to you. Dozens, across years, all the same length: long. The ones she actually sent are two words: 'Eaten? Sleep.'",
+        "The choice: one draft of yours is left that you know about, written to your grandfather and never sent. Opening one more deleted message sends it. You open hers from tonight.",
+        "It sends. He replies with a voice note, his same old story, and for once you listen to the end.",
+        "Back to the opening: 'Typing...' under her name. You put the phone face down and wait for what she chooses to send."
+      ],
+      "feeling_map": [
+        "curiosity",
+        "glee",
+        "unease",
+        "shame",
+        "tenderness",
+        "calm"
+      ],
+      "restarts": [
+        "About minute 3: the catch turns out not to be cheap. Your drafts go out undated, so old anger arrives as today's.",
+        "About minute 6: it stops being about the crush. The boss's deleted line changes how you sit in a room with him.",
+        "About minute 8: your mother's unsent drafts reverse who the story is about: the person who deletes the most to you is the one who loves you most."
+      ],
+      "content_mine": [
+        {
+          "fact": "WhatsApp added 'Delete for Everyone' in 2017 and leaves a visible 'This message was deleted' marker in the chat.",
+          "source": "verify",
+          "beat": "Beat 1: the grey line everyone has stared at"
+        },
+        {
+          "fact": "The delete window started at about 7 minutes, was stretched to about an hour, and in 2022 to about two days.",
+          "source": "verify",
+          "beat": "Beat 2: why the family group is full of grey lines"
+        },
+        {
+          "fact": "WhatsApp has more than 2 billion users and India is its largest market.",
+          "source": "verify",
+          "beat": "Beat 2: the scale of what you can now read"
+        },
+        {
+          "fact": "A Facebook study (Das and Kramer, 2013) of 3.9 million users over 17 days found 71% typed at least one post or comment and then did not send it.",
+          "source": "verify",
+          "beat": "Beat 4: almost everyone deletes; you are not special"
+        },
+        {
+          "fact": "Kruger, Epley and colleagues (2005): email senders expected their tone to be read correctly about 78% of the time; readers got it right about 56% of the time.",
+          "source": "verify",
+          "beat": "Beat 7: the angry draft read with the wrong tone and the wrong date"
+        },
+        {
+          "fact": "The liking gap (Boothby and colleagues, 2018): after a conversation people consistently underestimate how much the other person liked them.",
+          "source": "verify",
+          "beat": "Beat 5: her four rewrites; she is as nervous as you"
+        },
+        {
+          "fact": "Illusion of transparency (Gilovich, Savitsky and Medvec, 1998): people overestimate how visible their feelings are to others.",
+          "source": "verify",
+          "beat": "Beat 5: you were sure she could tell; she could not"
+        },
+        {
+          "fact": "Negativity bias (Baumeister and colleagues, 2001, 'Bad Is Stronger Than Good'): one bad remark outweighs several good ones in memory.",
+          "source": "verify",
+          "beat": "Beat 6: one deleted line from the boss outweighs a month of polite ones"
+        },
+        {
+          "fact": "Gilovich and Medvec (1995): over the long run people regret the things they did not do or say more than the things they did.",
+          "source": "verify",
+          "beat": "Beat 10: the unsent draft to your grandfather"
+        },
+        {
+          "fact": "Zeigarnik (1927) reported that unfinished tasks are remembered better than finished ones; later replications are mixed, so the narrator says 'may'.",
+          "source": "verify",
+          "beat": "Beat 3: why a two-year-old unsent birthday wish was still in your head"
+        },
+        {
+          "fact": "WhatsApp turned on end-to-end encryption for all chats in 2016, built on the Signal protocol: not even the company can read a message in transit.",
+          "source": "verify",
+          "beat": "Beat 2: what makes your power impossible, said once and dryly"
+        },
+        {
+          "fact": "Pennebaker's expressive-writing studies (from 1986): writing out unsent thoughts for 15 to 20 minutes on several days was linked to better wellbeing in many, not all, studies.",
+          "source": "verify",
+          "beat": "Beat 9: why your mother's drafts exist at all; writing it was the point"
+        },
+        {
+          "fact": "The spotlight effect (Gilovich, Medvec and Savitsky, 2000): people believe others notice them about twice as much as they do.",
+          "source": "verify",
+          "beat": "Beat 4: the deleted messages are almost never about you"
+        }
+      ],
+      "twist": "The deleted messages you feared were about you are mostly typos. The longest, most rewritten, never-sent ones in your whole phone are from your mother, and the two-word texts she does send are what is left after she deletes the rest.",
+      "ending": "You will never see 'This message was deleted' as a secret again. It is someone being careful with you.",
+      "closest_video": {
+        "title": "Hearing everyone's thoughts / seeing who has a crush on you (Ifverse, Jeremy Bearimy cluster)",
+        "url": "verify",
+        "difference": "Not mind-reading: only what people chose to un-say, in an app the viewer opens fifty times a day, and the power fires your own unsent words back. Our own 'hear everything said about you' is speech behind your back; this is words addressed to you and withdrawn."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the coaching-group typo scene and the encryption aside; merge the boss beat into one scene; keep crush, best friend, mother, grandfather."
+      },
+      "views_case": "The secret-feelings cluster (crush, thoughts, who misses you) is the strongest in the competitor decode, and none of those videos lives inside WhatsApp, which every Indian viewer uses daily. No links: this lens did no web search; mark for verification.",
+      "under_question": "What did they almost say to me?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-one-percent-smarter",
+      "title": "What If You Got 1% Smarter Every Day?",
+      "premise": "Every morning you wake up one percent quicker at thinking than yesterday, and it never stops.",
+      "thumbnail": {
+        "image": "You at a coaching-class desk, head glowing mustard, calmly holding a finished paper while the clock shows two minutes gone; the topper beside you stares at your sheet with his pen dropped",
+        "tag": "DAY 70"
+      },
+      "rule": "Each sunrise your speed of thinking and learning grows by 1% of what it was the day before. It compounds. It cannot be paused, slowed or given away. The catch: only thinking speeds up. People still talk, buses still run and your patience stays exactly as it was on day one.",
+      "hook": "One percent smarter. Every day. It sounds like nothing. By next year you are thirty-seven times faster than everyone you love, and you cannot turn it off.",
+      "beats": [
+        "Day one, the back bench of a coaching class. Your habit: copying the answer from your best friend a second after he writes it. Today you get there a second before him.",
+        "The rule on a paper tag: one percent, every morning, compounding. You shrug. One percent of you is not much.",
+        "First jump, days ten to seventy, played for laughs: you win the family antakshari, beat your uncle at chess, finish the mock test and sit there. At about day seventy you are twice as fast. The teacher thinks you cheated.",
+        "The gap: being fast does not make you right. You confidently solve the wrong question in half the time. Speed is not knowledge; you still have to read the book.",
+        "So you read. A book an evening, then three. The topper asks for help. The girl in the next row asks how. You like this part.",
+        "Second jump, around day one-fifty: about four and a half times. Conversations start to drag. Your friend's sentences arrive like slow post. You finish them for him. He stops starting them.",
+        "The assumption that breaks: you thought being smarter would bring people closer. The fast kids in the famous long-term studies were not the ones who changed the world, and one of the fastest spent his life hiding.",
+        "The cost: your grandfather tells his one story. You have heard it, you can predict every word, and for the first time you cannot sit through it. He notices you looking at the door.",
+        "Third jump, day three-sixty-five: thirty-seven times. A minute of someone talking feels like half an hour. You top every exam and eat alone. The picture: a metro platform where everyone is a statue and only your eyes move.",
+        "The choice: you work out the one way to stop the growth, and it resets you to day one, slower than your own notes. Keep climbing alone, or go back and not understand what you wrote.",
+        "You go back. The notes are in your handwriting and you cannot follow them. Your friend explains page one to you, slowly, enjoying it.",
+        "Back bench again. He writes the answer; you copy it a second later. The one line: nobody was ever waiting for you to be faster."
+      ],
+      "feeling_map": [
+        "amusement",
+        "pride",
+        "impatience",
+        "loneliness",
+        "awe",
+        "relief"
+      ],
+      "restarts": [
+        "About minute 3: fast is not right. You fail a test at double speed and have to start actually learning.",
+        "About minute 6: the problem flips from 'am I smart enough' to 'everyone else is unbearable', and it is your fault, not theirs.",
+        "About minute 8: you find the off switch, and it costs everything you have learned."
+      ],
+      "content_mine": [
+        {
+          "fact": "1.01 multiplied by itself 365 times is about 37.8; 1% a day doubles you in about 70 days.",
+          "source": "verify",
+          "beat": "Beats 3 and 9: day seventy and day three-sixty-five"
+        },
+        {
+          "fact": "IQ tests are scaled so the average is 100 and about 68% of people score between 85 and 115.",
+          "source": "verify",
+          "beat": "Beat 2: what 'smart' is measured against"
+        },
+        {
+          "fact": "A score of 145, three standard deviations up, is roughly one person in 740.",
+          "source": "verify",
+          "beat": "Beat 5: when you pass the topper"
+        },
+        {
+          "fact": "The Flynn effect: average IQ scores rose about 3 points a decade through the 20th century.",
+          "source": "verify",
+          "beat": "Beat 3: your one week equals a decade of the whole world's gain"
+        },
+        {
+          "fact": "The brain is about 2% of body weight and uses about 20% of the body's resting energy.",
+          "source": "verify",
+          "beat": "Beat 5: you are hungry all the time; the mess aunty notices"
+        },
+        {
+          "fact": "The human brain has about 86 billion neurons (Herculano-Houzel, 2009).",
+          "source": "verify",
+          "beat": "Beat 2: the same hardware, run faster"
+        },
+        {
+          "fact": "The fastest nerve fibres carry signals at about 120 metres a second: thought has a physical speed limit.",
+          "source": "verify",
+          "beat": "Beat 9: the narrator admits where real biology would stop you"
+        },
+        {
+          "fact": "Working memory holds about four chunks at once (Cowan, 2001); Miller's older figure was seven, plus or minus two.",
+          "source": "verify",
+          "beat": "Beat 4: fast, but still only four things in your head"
+        },
+        {
+          "fact": "Chase and Simon (1973): chess masters recall real board positions far better than beginners, but random positions no better. Expertise is stored knowledge, not raw speed.",
+          "source": "verify",
+          "beat": "Beat 4: why you lose to your uncle once more before you read the book"
+        },
+        {
+          "fact": "Terman's study, begun in 1921, followed about 1,500 high-IQ children for life. None won a Nobel Prize; two boys who were tested and left out, Shockley and Alvarez, did.",
+          "source": "verify",
+          "beat": "Beat 7: the belief that breaks"
+        },
+        {
+          "fact": "William James Sidis entered Harvard at 11 in 1909 and spent his adult life in clerical jobs avoiding attention.",
+          "source": "verify",
+          "beat": "Beat 7: the fastest kid who hid"
+        },
+        {
+          "fact": "Ramanujan, largely self-taught, wrote to Hardy from Madras in 1913 and left about 3,900 results; Hardy said his own greatest contribution to mathematics was discovering him.",
+          "source": "verify",
+          "beat": "Beat 11: even the fastest mind needed one person who would read the letter"
+        },
+        {
+          "fact": "Dunning and Kruger (1999): the least skilled overestimate themselves most.",
+          "source": "verify",
+          "beat": "Beat 4: the confident wrong answer"
+        },
+        {
+          "fact": "Hollingworth's 'communication range' idea, that easy rapport fails beyond about 30 IQ points, is widely repeated but thinly evidenced; ledger status contested.",
+          "source": "verify",
+          "beat": "Beat 6: the friend's sentences arriving like slow post, said with a 'some argue'"
+        }
+      ],
+      "twist": "The growth never makes you wiser, only faster, so the thing that runs out is not intelligence but patience: at thirty-seven times, loving someone means sitting still for what feels like hours while they finish one sentence.",
+      "ending": "You will never hear 'one percent better every day' the same way: compounding does not ask whether you want to arrive.",
+      "closest_video": {
+        "title": "Infinite IQ at school / 10x brain (Jeremy Bearimy, Ifverse cluster)",
+        "url": "verify",
+        "difference": "Theirs is an instant jump to a superpower; ours is a slow compounding you can do the maths on, set in a coaching class, where the cost is boredom with the people you love rather than a villain or a lab."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut antakshari and chess to one gag, drop the nerve-speed aside and Sidis; keep the wrong-answer test, the friend, the grandfather's story and the reset."
+      },
+      "views_case": "Intelligence is the top breakout cluster (infinite IQ at school). The '1% every day' line is already a famous self-help promise, so the title carries a belief to break. No links: no web search in this lens; verify.",
+      "under_question": "If I were really smart, would anyone still be able to talk to me?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-save-point",
+      "title": "What If You Had One Save Point in Real Life?",
+      "premise": "You can save your life at any moment like a game and reload to it whenever things go wrong, but you only get one slot.",
+      "thumbnail": {
+        "image": "You outside an exam hall, hand raised over a floating paper-cut 'SAVE' tag that is half torn; behind you the same corridor repeats three times, each a little more faded",
+        "tag": "LOAD AGAIN?"
+      },
+      "rule": "Say 'save' and that instant is stored. Say 'load' and you are back in it; everyone else forgets what came after. One slot only: a new save wipes the old one for good. The catch: your body does not rewind. Hunger, tiredness and age all carry over, so forty tries at one day costs you forty days.",
+      "hook": "You have one save slot, like a game. Fail the exam, reload. Say the wrong thing, reload. Nobody remembers but you. And you are the only one getting older.",
+      "beats": [
+        "The morning of the big entrance exam. Your habit: three good-luck rituals, curd-sugar from your mother, touching the gate. Half as a joke you whisper 'save'. Something clicks.",
+        "You blank on question one and mutter 'load'. You are at the gate again, the curd-sugar taste still there, and you remember the paper.",
+        "First jump, small and funny: run after run. You memorise the paper, then the invigilator's cough, then where the fan drips. Run nine you score full marks and realise you have been awake twenty-six hours.",
+        "The gap: the day is never quite the same. One run the bus is late; one run the pen leaks. Tiny changes spread. You expected a recording and got a river.",
+        "You grind anyway and get the rank. Therefore you keep the trick. New save before every hard thing: the interview, the first conversation with her, telling your father you want a different branch.",
+        "Second jump: a life with no mistakes. Every talk with her is the best of thirty drafts. She thinks you always know what to say. The belief that breaks: being able to undo should make you content, and the studies on reversible choices say the opposite.",
+        "The cost: you look older than your classmates. Your mother asks if you are sleeping. You have lived about five extra months in one semester, and she has known one version of every day while you carry thirty.",
+        "The restart: your best friend finally gets his own result, the good one, after two failed attempts. It happens after your current save. That evening you fumble something with her badly.",
+        "The trap: loading fixes your evening and erases his day. He would live it again, but exams are a river too; he might not get it twice.",
+        "Third jump: you count what the slot has cost across the year, the faces that reacted to things they no longer remember, a whole second life only you attended. The wordless picture: a long corridor of identical doors, your footprints worn into only one.",
+        "The choice: load, or live with the worst evening of your year. You save instead, right there, in the mess of it, wiping the clean moment forever.",
+        "Next morning, no rituals at the gate of anything. You say sorry to her without a draft. It comes out badly. She laughs."
+      ],
+      "feeling_map": [
+        "glee",
+        "greed",
+        "tiredness",
+        "dread",
+        "guilt",
+        "freedom"
+      ],
+      "restarts": [
+        "About minute 3: reloads do not replay; small changes spread, so the 'same' day keeps surprising you.",
+        "About minute 6: the cost shows on your face. You are ageing alone inside days nobody else lived.",
+        "About minute 8: for the first time something good for someone else sits after your save, and loading would take it from him."
+      ],
+      "content_mine": [
+        {
+          "fact": "The Legend of Zelda (1986) was the first console cartridge with a battery so players could save; before it most games restarted from zero.",
+          "source": "verify",
+          "beat": "Beat 1: where the daydream comes from"
+        },
+        {
+          "fact": "Players call reloading until you get the result you want 'save scumming'.",
+          "source": "verify",
+          "beat": "Beat 3: the name for what you are doing"
+        },
+        {
+          "fact": "Edward Lorenz (1961) re-entered 0.506 instead of 0.506127 into a weather model and got a completely different forecast: the origin of the butterfly effect.",
+          "source": "verify",
+          "beat": "Beat 4: why the bus is late on run six"
+        },
+        {
+          "fact": "Roediger and Karpicke (2006): students who were tested on a passage remembered more a week later than students who reread it.",
+          "source": "verify",
+          "beat": "Beat 3: why sitting the paper nine times works better than studying"
+        },
+        {
+          "fact": "Ebbinghaus (1885): without review, most of new material is forgotten within days, steeply at first.",
+          "source": "verify",
+          "beat": "Beat 5: you got the rank and kept none of the physics"
+        },
+        {
+          "fact": "Gilbert and Ebert (2002): students allowed to swap the photo print they chose ended up liking it less than students whose choice was final.",
+          "source": "verify",
+          "beat": "Beat 6: the belief that breaks"
+        },
+        {
+          "fact": "Iyengar and Lepper (2000): shoppers offered 24 jams bought about 3% of the time; offered 6, about 30%.",
+          "source": "verify",
+          "beat": "Beat 6: thirty drafts of one conversation"
+        },
+        {
+          "fact": "Schwartz and colleagues (2002): 'maximisers', who search for the best option, report less satisfaction than people who accept good enough.",
+          "source": "verify",
+          "beat": "Beat 7: perfect days, tired face"
+        },
+        {
+          "fact": "Medvec, Madey and Gilovich (1995): Olympic bronze medallists look happier than silver medallists, who are busy imagining the gold.",
+          "source": "verify",
+          "beat": "Beat 6: the full-marks run still feels like a miss"
+        },
+        {
+          "fact": "Harold Ramis, director of Groundhog Day (1993), estimated the hero relives the day for about ten years, later saying more like thirty or forty.",
+          "source": "verify",
+          "beat": "Beat 7: adding up your own extra months"
+        },
+        {
+          "fact": "Claude Shannon estimated about 10 to the power 120 possible chess games: more than atoms in the observable universe.",
+          "source": "verify",
+          "beat": "Beat 4: how many versions one ordinary day has"
+        },
+        {
+          "fact": "India's civil services exam draws around a million applicants for about a thousand places in a typical year.",
+          "source": "verify",
+          "beat": "Beat 9: why your friend's result may not come twice"
+        },
+        {
+          "fact": "Hedonic adaptation (Brickman and Campbell, 1971): people return to a baseline mood after both good and bad changes.",
+          "source": "verify",
+          "beat": "Beat 11: the worst evening will not stay the worst"
+        },
+        {
+          "fact": "Ericsson's deliberate-practice work (1993): improvement comes from repeating the hard part with feedback, not from repeating the whole.",
+          "source": "verify",
+          "beat": "Beat 3: the narrator's dry note that you are the best-practised candidate in history"
+        }
+      ],
+      "twist": "The save was never a safety net for you alone: every load also deletes whatever good happened to everyone else since, and the one day worth protecting is somebody else's.",
+      "ending": "You will never wish for a do-over the same way: a day you cannot undo is the only kind anyone shares with you.",
+      "closest_video": {
+        "title": "Respawn / game mechanics in real life (IF Nation, Ifverse cluster)",
+        "url": "verify",
+        "difference": "No deaths and no stats screen: a single overwriting slot, a body that keeps ageing, and an Indian exam day as the level. Different from our own pause, rewind-style and borrow-time films because other people lose their days, not just you."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Trim the exam grind to three runs, drop the chess number and the jam study, fold the father conversation into a single line; keep the river, the tired face, the friend's result and the final save."
+      },
+      "views_case": "Game mechanics in real life is a proven cluster, and 'redo' is the owner's own favourite level of excitement; a save slot is the version every phone gamer already understands. No links: no web search in this lens; verify.",
+      "under_question": "If I could undo anything, would I ever be done?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-money-doubles",
+      "title": "What If You Doubled Your Money Every Day?",
+      "premise": "Whatever is in your bank account at midnight is doubled by morning, starting from a single coin, and it will not stop.",
+      "thumbnail": {
+        "image": "You at a chai stall, holding a phone whose balance digits spill off the screen onto the counter; the chaiwala holds out a tiny glass and a price tag with far too many zeros",
+        "tag": "DAY 31"
+      },
+      "rule": "At midnight your balance doubles. Every night, whatever the amount. The catch has two parts: it is brand-new money, not taken from anyone, and there is no off switch except a balance of exactly zero at midnight.",
+      "hook": "One coin in your account. It doubles every night. On day thirty-one you have over a billion. On day sixty there is not enough to buy in the whole world. And it will not stop.",
+      "beats": [
+        "The chai stall outside college. Your habit: checking your balance before ordering, then letting your friend pay. Tonight the balance is one. In the morning it is two.",
+        "The rule. You laugh; two is not money. The narrator puts a chessboard on the stall counter and one grain of rice on the first square.",
+        "First jump, days one to twenty: nothing, nothing, nothing, then a phone. You pay for the chai, for once. Your friend is suspicious. Day twenty is about half a million and you still take the bus out of habit.",
+        "The gap: the last few days outweigh all the days before, every time. You keep planning with yesterday's number. People are measurably bad at feeling doubling.",
+        "Days twenty-one to thirty-one: your father's home loan, gone in one transfer. Your cousin's wedding upgrades halls. Relatives you have never met know your name. The bank manager calls you 'sir' and asks one careful question.",
+        "Second jump: you cannot spend it faster than it grows. The assumption that breaks: you thought money was a pile of stuff. It is a claim on what other people make, and your street makes the same number of samosas as last month.",
+        "The cost: prices on your lane move first, because that is where you spend. The chaiwala's glass costs triple. Your father, proud a week ago, does the sums on his pension and savings and goes quiet.",
+        "You try to fix it by giving. Every gift is more new money chasing the same goods. The friend who used to pay for your chai now cannot afford the stall, because of you.",
+        "Third jump, days fifty to sixty: your balance passes what the country earns in a year, then the world. The number no longer fits the screen. The picture: the chessboard, rice burying the stall, the lane, the city.",
+        "The choice: the only stop is zero at midnight. Give it all away in one day and wreck every price, or delete it, all of it, including your father's cleared loan money still sitting in your account.",
+        "You send it to an account number that does not exist. At 11:59 the balance reads zero. Midnight. Zero doubled is zero.",
+        "The chai stall. You check your balance out of habit. Your friend pays. The price has come back down a little. One line about what a note really is."
+      ],
+      "feeling_map": [
+        "disbelief",
+        "greed",
+        "pride",
+        "dread",
+        "guilt",
+        "relief"
+      ],
+      "restarts": [
+        "About minute 3: the number goes from pocket money to more than the family has ever seen in ten days, and the relatives arrive.",
+        "About minute 6: the money works but the things do not multiply; your own lane's prices start climbing.",
+        "About minute 8: generosity makes it worse, and the off switch is zero."
+      ],
+      "content_mine": [
+        {
+          "fact": "Doubling from 1, day 31 is 2 to the power 30: 1,073,741,824.",
+          "source": "verify",
+          "beat": "Beat 5 and the thumbnail: day thirty-one"
+        },
+        {
+          "fact": "The Indian legend of the chessboard: one grain on the first square, doubled on each, comes to 18,446,744,073,709,551,615 grains on 64 squares.",
+          "source": "verify",
+          "beat": "Beat 2: the chessboard on the stall counter"
+        },
+        {
+          "fact": "That many grains is far more wheat or rice than the world has ever harvested in a year, by a factor of hundreds or more.",
+          "source": "verify",
+          "beat": "Beat 9: the rice burying the city"
+        },
+        {
+          "fact": "Wagenaar and Sagaria (1975): asked to extend an exponential series, most people guess a small fraction of the true value.",
+          "source": "verify",
+          "beat": "Beat 4: planning with yesterday's number"
+        },
+        {
+          "fact": "In any doubling series the newest term is larger than all earlier terms added together.",
+          "source": "verify",
+          "beat": "Beat 4: today outweighs your whole past"
+        },
+        {
+          "fact": "Mansa Musa of Mali gave away so much gold in Cairo on his 1324 pilgrimage that gold's price there stayed depressed for about a decade.",
+          "source": "verify",
+          "beat": "Beat 8: giving it away hurts the people you give it to"
+        },
+        {
+          "fact": "Germany, 1923: at the peak, prices doubled about every 3.7 days.",
+          "source": "verify",
+          "beat": "Beat 7: the chaiwala's price tag"
+        },
+        {
+          "fact": "Hungary, 1946, the worst inflation recorded: prices doubled roughly every 15 hours.",
+          "source": "verify",
+          "beat": "Beat 9: what happens if you keep going"
+        },
+        {
+          "fact": "Zimbabwe printed a 100 trillion dollar note in 2009; it could not buy a bus ticket.",
+          "source": "verify",
+          "beat": "Beat 7: the number is not the wealth"
+        },
+        {
+          "fact": "India withdrew its 500 and 1,000 rupee notes overnight in November 2016: about 86% of the cash in circulation by value.",
+          "source": "verify",
+          "beat": "Beat 10: money stops being money the moment people stop agreeing; the queue your father stood in"
+        },
+        {
+          "fact": "Brickman, Coates and Janoff-Bulman (1978): lottery winners were not notably happier than a comparison group and enjoyed small daily pleasures less.",
+          "source": "verify",
+          "beat": "Beat 6: the chai does not taste better"
+        },
+        {
+          "fact": "Kahneman and Deaton (2010) found day-to-day mood stopped rising above about 75,000 dollars a year; Killingsworth (2021) disputes the plateau. Ledger status contested.",
+          "source": "verify",
+          "beat": "Beat 6: said with 'one study found, another disagrees'"
+        },
+        {
+          "fact": "The whole world's yearly output is on the order of 100 trillion US dollars.",
+          "source": "verify",
+          "beat": "Beat 9: your balance passes the planet"
+        },
+        {
+          "fact": "Banks in India ask for a PAN on cash deposits above 50,000 rupees in a day, and large account movements are reported.",
+          "source": "verify",
+          "beat": "Beat 5: the bank manager's one careful question"
+        }
+      ],
+      "twist": "You were never getting richer after about day forty: each doubling only made every rupee held by everyone else, starting with your father's savings, worth less. The richest person in history is a tax on his own family.",
+      "ending": "You will never look at a banknote the same way: it is not a thing, it is a promise that other people will make something for you.",
+      "closest_video": {
+        "title": "Infinite money / infinite money glitch (Ifverse, IF Nation cluster)",
+        "url": "verify",
+        "difference": "Not a bottomless wallet for a spending spree: a doubling you can count day by day, no off switch, and the damage arrives on your own lane and in your father's passbook. Unlike our 'all money vanished' and UBI films, one person holds it all."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut the relatives montage to one gag, keep one hyperinflation fact not three, drop the happiness studies; keep chessboard, father, chaiwala, zero at midnight."
+      },
+      "views_case": "Infinite money is both a proven breakout and the owner's named favourite. The day-counter gives a built-in DAY 1 / DAY 31 thumbnail and a Part 2 (the glitch moves to someone else). No links: no web search in this lens; verify. Explains how money works; gives no money advice.",
+      "under_question": "If I had all the money, would there be anything left to buy?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-profile-viewers",
+      "title": "What If You Saw Who Checks Your Profile?",
+      "premise": "Every midnight your phone shows you exactly who looked at your profile and photos that day, and for how long.",
+      "thumbnail": {
+        "image": "You in bed, lit by a phone, mouth open; the screen shows a short list of round faces with timers, the top one hidden behind a crimson paper flap marked with a question mark and '4 min, every night'",
+        "tag": "EVERY NIGHT?"
+      },
+      "rule": "At midnight a list arrives: each person who opened your profile, which photo, how many seconds. Any app, any account, including fake ones. You may open three names a night for the detail. The catch: every name you open is told, at once, that you looked.",
+      "hook": "At midnight you get a list. Everyone who looked at your photos today, and for how long. One person looks for four minutes. Every single night.",
+      "beats": [
+        "Night, your bed. Your habit: posting a photo and then checking it nine times to see who has seen it. Midnight. A list drops in with timers beside the faces.",
+        "The rule, and the catch read out: three names, and each one will know. The top entry is hidden under a flap: four minutes, every night, at 11.",
+        "First jump, funny: you open safe names. The class gossip, two seconds per photo, all forty photos. An uncle who zooms. The topper, who checks only your marks post. Each gets a ping that you peeked; the gossip pings back a wink.",
+        "The gap: you expected fans or haters. Most views are one or two seconds with no feeling attached. A look is not an opinion.",
+        "The crush in the next row is on the list. Eleven seconds, once, the day you changed your picture. You spend the next day reading meaning into eleven seconds.",
+        "Second jump: you start performing for the list. You post for the eleven-second viewer. The time goes down, not up. Being watched changes you, and people can tell.",
+        "The cost: you open her name for detail. She is told. In class she is stiff and polite. Your best friend, whom you also opened, asks why you are 'checking up' on him.",
+        "The restart: an entry from an account with no photo: your ex-friend from school, the one you stopped talking to, every week for two years. And your own habits: whose lists are you on?",
+        "Third jump: the narrator turns the list around. Somewhere, your name is the four-minute entry on someone's list. You know exactly whose. You have never messaged them.",
+        "The choice: one tap left tonight. The flap, which tells the four-minute viewer you know, or leave it. You lift it. It is your mother, on the account your cousin set up for her, looking at one photo: you at the hostel gate.",
+        "She gets the ping. She calls, flustered, asking if she pressed something wrong. You talk for longer than four minutes.",
+        "Midnight again. You do not open the list. You open the ex-friend's chat and type first."
+      ],
+      "feeling_map": [
+        "curiosity",
+        "vanity",
+        "anxiety",
+        "embarrassment",
+        "tenderness",
+        "resolve"
+      ],
+      "restarts": [
+        "About minute 3: the views mean almost nothing; the power answers 'who' and never 'why'.",
+        "About minute 6: looking has a price. The people you open know, and they change around you.",
+        "About minute 8: the list turns around: you are a silent entry on other people's lists too."
+      ],
+      "content_mine": [
+        {
+          "fact": "LinkedIn shows members who viewed their profile; Instagram and WhatsApp show who saw a story or status. Most other profile views are deliberately hidden.",
+          "source": "verify",
+          "beat": "Beat 1: the half-version of this power everyone already has"
+        },
+        {
+          "fact": "Apps that promise to show 'who viewed your profile' are a long-running scam category; the platforms say no outside app can see it.",
+          "source": "verify",
+          "beat": "Beat 2: how badly people want this list"
+        },
+        {
+          "fact": "WhatsApp introduced blue ticks, read receipts, in November 2014.",
+          "source": "verify",
+          "beat": "Beat 7: the last time 'they know you saw' changed how everyone behaves"
+        },
+        {
+          "fact": "The spotlight effect (Gilovich, Medvec and Savitsky, 2000): students in an embarrassing T-shirt guessed about half the room noticed; about a quarter did.",
+          "source": "verify",
+          "beat": "Beat 4: most views are two seconds"
+        },
+        {
+          "fact": "The 90-9-1 rule (Nielsen, 2006): in online communities about 90% of people only look, 9% respond a little, 1% post most of the content.",
+          "source": "verify",
+          "beat": "Beat 3: the list is far longer than your likes"
+        },
+        {
+          "fact": "Mere exposure (Zajonc, 1968): simply seeing something repeatedly makes people like it more.",
+          "source": "verify",
+          "beat": "Beat 5: why eleven seconds might matter, or might not"
+        },
+        {
+          "fact": "Festinger's social comparison theory (1954): people judge themselves by comparing with others, especially similar others.",
+          "source": "verify",
+          "beat": "Beat 3: the topper only opens your marks post"
+        },
+        {
+          "fact": "Bateson, Nettle and Roberts (2006): a picture of eyes above an honesty box nearly tripled what people paid for their tea and coffee.",
+          "source": "verify",
+          "beat": "Beat 6: being watched changes what you do"
+        },
+        {
+          "fact": "Bentham's panopticon (1791): a prison where inmates cannot tell when they are watched, so they behave as if always watched.",
+          "source": "verify",
+          "beat": "Beat 6: you become your own guard"
+        },
+        {
+          "fact": "Marshall (2012): people who kept checking an ex-partner's Facebook page reported more distress and slower recovery.",
+          "source": "verify",
+          "beat": "Beat 8: the school friend's two years of weekly visits, and yours"
+        },
+        {
+          "fact": "Dunbar's layers: about 5 intimates, 15 close friends, 50 friends, 150 meaningful contacts.",
+          "source": "verify",
+          "beat": "Beat 9: the list is hundreds long; the four-minute tier holds one or two"
+        },
+        {
+          "fact": "Snapchat tells the sender when a recipient takes a screenshot.",
+          "source": "verify",
+          "beat": "Beat 2: the catch has a real cousin"
+        },
+        {
+          "fact": "Typical daily social media use worldwide is a little over two hours a person.",
+          "source": "verify",
+          "beat": "Beat 9: how much of everyone's day is silent looking"
+        },
+        {
+          "fact": "The liking gap (Boothby and colleagues, 2018): people underestimate how much others like them after talking.",
+          "source": "verify",
+          "beat": "Beat 12: why typing first is safer than it feels"
+        }
+      ],
+      "twist": "The longest look on your list every night is not a crush or a rival. It is your mother, staring at one photo, and the list you wanted for romance is really a map of who misses you and will never say so.",
+      "ending": "You will never see a view count the same way: every number on it is a person who looked and stayed silent, and you are that number for someone else.",
+      "closest_video": {
+        "title": "Seeing who has a crush on you / who secretly misses you (Jeremy Bearimy, Manifesting cluster)",
+        "url": "verify",
+        "difference": "The power shows behaviour, not feelings: who looked and for how long, never why, and looking back costs you. Different from our 'paid every time someone thought of you' (thoughts, money) and 'search history' (yours exposed) films."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the panopticon and the uncle gag, merge the performing-for-the-list beat into the crush beat; keep two-second views, the ping, the turnaround and the flap."
+      },
+      "views_case": "Secret feelings of the people around you is the strongest cluster in the decode, and 'who viewed my profile' is a wish so common that scam apps are built on it. Sequel: the list starts showing who screenshotted you. No links: no web search in this lens; verify.",
+      "under_question": "Who is quietly looking at me, and what does it mean?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-skill-in-10-seconds",
+      "title": "What If You Could Learn Any Skill in 10 Seconds?",
+      "premise": "Touch anyone for ten seconds while they do something and you can do it as well as they can, but you only have three slots.",
+      "thumbnail": {
+        "image": "You mid-cover-drive in a gully cricket match, perfect form, three glowing paper slots floating over your head, one of them cracking and fading; your cousin behind the stumps stares",
+        "tag": "SLOT 3 GONE"
+      },
+      "rule": "Hold someone's shoulder for ten seconds while they use a skill and you copy it at their level; they lose nothing. You hold three copied skills. A fourth pushes out the oldest. The catch you find out late: when the copied ones are full, the next thing pushed out is the oldest skill you learned the slow way.",
+      "hook": "Ten seconds with your hand on someone's shoulder and you can do what took them ten years. Three slots. And you have not been told what gets deleted when they are full.",
+      "beats": [
+        "Gully cricket. Your habit: fielding at the boundary so nobody sees you bat. You steady yourself on your cousin's shoulder as he plays a cover drive. Ten seconds. Your hands know it.",
+        "The rule appears as three paper slots above your head. One is lit: 'cover drive, district level'. You hit a six into the neighbour's balcony.",
+        "First jump, funny: slot two is the aunty next door's round rotis; slot three is the metro beatboxer. You use all three in one evening and are briefly the most interesting person in the building.",
+        "The gap: you have the skill and none of what came with it. You can bat but do not know the rules of a run-out. Skill is stored in the body; judgement and stories are stored elsewhere.",
+        "Exams. You shake the topper's hand for ten seconds while he solves integrals. Slot four pushes out the cover drive. Fine. You top the test. The crush asks you to teach her and you cannot explain a single step.",
+        "Second jump: you go shopping. Coding from the intern lead, French from a tourist, guitar from a busker. Each pushes one out. Each time your cousin asks for a net session you have a different excuse.",
+        "The assumption that breaks: you thought the three slots were extra. They sit on top of a stack. The stack is everything you ever learned slowly, oldest at the bottom.",
+        "The cost: you copy one more, a street magician's shuffle, with the slots already full of fresh ones you will not give up. The system takes the oldest thing you own. At dinner your grandmother speaks in the language you grew up in and you understand nothing.",
+        "You could copy it back from her in ten seconds. You do. It arrives perfect: her vocabulary, her accent, and none of your own words, the nicknames, the jokes with your cousin. It is her language now, not yours.",
+        "Third jump: you look at the whole stack: swimming, cycling, reading, how to comfort your mother. Decades of other people's hours with you, deletable in ten seconds each. The picture: a tower of paper slots as tall as the building, your hand over the bottom one.",
+        "The choice: keep collecting, or empty the three slots and never touch a shoulder again. You let them go dark, including the integrals, a week before the exam.",
+        "Gully cricket. You bat first, in front of everyone, and miss. Your cousin fixes your grip. It takes all evening. One line about what a skill is made of."
+      ],
+      "feeling_map": [
+        "delight",
+        "greed",
+        "smugness",
+        "panic",
+        "grief",
+        "humility"
+      ],
+      "restarts": [
+        "About minute 3: the skill arrives without understanding; you can do it and cannot teach or judge it.",
+        "About minute 6: the slots are not extra; your slow-learned skills are in the same queue.",
+        "About minute 8: getting the language back in ten seconds returns the skill and not the years inside it."
+      ],
+      "content_mine": [
+        {
+          "fact": "Ericsson, Krampe and Tesch-Romer (1993): the best violin students had practised about 10,000 hours by age 20; the source of the '10,000-hour rule'.",
+          "source": "verify",
+          "beat": "Beat 1: what ten seconds is replacing"
+        },
+        {
+          "fact": "Macnamara, Hambrick and Oswald (2014): deliberate practice explained about 26% of the difference in games, 21% in music, 18% in sport and 4% in education.",
+          "source": "verify",
+          "beat": "Beat 4: hours are not the whole of a skill"
+        },
+        {
+          "fact": "London taxi drivers, who memorise about 25,000 streets over three to four years, have a larger rear hippocampus than other people (Maguire, 2000).",
+          "source": "verify",
+          "beat": "Beat 7: skills take up real room in a brain"
+        },
+        {
+          "fact": "Draganski (2004): three months of learning to juggle visibly grew grey matter, which shrank back when people stopped.",
+          "source": "verify",
+          "beat": "Beat 7: use it or lose it; the stack is physical"
+        },
+        {
+          "fact": "Henry Molaison, the patient known as H.M., got better at mirror drawing day after day with no memory of ever having practised (Milner, 1962).",
+          "source": "verify",
+          "beat": "Beat 4: the body learns in a different place from the story"
+        },
+        {
+          "fact": "The US Foreign Service Institute estimates about 600 to 750 class hours for an English speaker to learn French, about 1,100 for Hindi and about 2,200 for Japanese.",
+          "source": "verify",
+          "beat": "Beat 6: what the tourist's ten seconds was worth"
+        },
+        {
+          "fact": "Pallier (2003): adults adopted from Korea to France as children showed no remaining recognition of Korean in tests or brain scans.",
+          "source": "verify",
+          "beat": "Beat 8: a first language really can go"
+        },
+        {
+          "fact": "India's constitution lists 22 scheduled languages; the census records hundreds of mother tongues.",
+          "source": "verify",
+          "beat": "Beat 8: the dinner table has three languages on it"
+        },
+        {
+          "fact": "Fitts and Posner (1967): a skill moves from thinking about each step, to linking steps, to automatic; experts often cannot describe what they do.",
+          "source": "verify",
+          "beat": "Beat 5: you cannot explain a single step"
+        },
+        {
+          "fact": "Walker (2002): people were about 20% faster at a finger-tapping sequence after a night's sleep, with no extra practice.",
+          "source": "verify",
+          "beat": "Beat 12: one evening of grip practice, better by morning"
+        },
+        {
+          "fact": "The IKEA effect (Norton, Mochon and Ariely, 2012): people value things more when they built them themselves.",
+          "source": "verify",
+          "beat": "Beat 9: the copied language feels like someone else's"
+        },
+        {
+          "fact": "Aronson and Mills (1959): the harder it was to get into a group, the more people valued belonging to it.",
+          "source": "verify",
+          "beat": "Beat 6: the nets with your cousin mattered because they were slow"
+        },
+        {
+          "fact": "Sachin Tendulkar played his first Test at 16, in 1989, after years of whole-day nets as a schoolboy.",
+          "source": "verify",
+          "beat": "Beat 2: 'district level' versus what the real thing takes"
+        },
+        {
+          "fact": "The power law of practice (Newell and Rosenbloom, 1981): improvement is fast at first and slows with every repetition.",
+          "source": "verify",
+          "beat": "Beat 12: missing the ball on day one is the steepest part of the curve"
+        }
+      ],
+      "twist": "You get your mother tongue back in ten seconds and it is useless: the words are all there, but the skill was never the words. It was the thousands of hours of someone talking to you, and those were what got deleted.",
+      "ending": "You will never envy a skill the same way: everything you can do is a record of who sat with you while you were bad at it.",
+      "closest_video": {
+        "title": "Infinite IQ / level up in real life (Jeremy Bearimy, IF Nation cluster)",
+        "url": "verify",
+        "difference": "Not a stat going up: a three-slot inventory with an eviction rule, where the thing you can lose is your own language at your own dinner table. The Indian many-languages home makes the cost specific."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut the beatboxer and the shopping montage to one line each, drop juggling and taxi drivers; keep cover drive, topper, grandmother's dinner, the hollow re-copy and the grip lesson."
+      },
+      "views_case": "Combines two proven clusters, intelligence and game mechanics (slots, inventory), with a recurring cast for a Part 2 (the cousin gets the power). No links: no web search in this lens; verify.",
+      "under_question": "If I could skip the hard part, what would I be skipping?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-two-places",
+      "title": "What If You Could Be in Two Places at Once?",
+      "premise": "You can split into two of yourself, live two days at the same time, and merge again at night with both sets of memories.",
+      "thumbnail": {
+        "image": "Two of you back to back, one in exam-hall clothes clutching an admit card, one in wedding clothes with marigolds, a torn-paper seam between them; both look sideways at each other, suspicious",
+        "tag": "WHICH ONE?"
+      },
+      "rule": "Clap twice and there are two of you, same clothes, same memories up to that second. Touch palms to merge: you keep both memories and both tirednesses. The catch: from the first second each one is living a different day, each is sure he is the original, and a merge needs both to agree.",
+      "hook": "Your final exam and your cousin's wedding are on the same morning. So you clap twice, and now there are two of you. Tonight you merge. If you both still want to.",
+      "beats": [
+        "Morning. Admit card in one hand, wedding invitation in the other, your mother shouting from downstairs. Your habit: saying yes to both and being late to each. You clap twice.",
+        "The rule: two of you at the mirror, arguing over who takes the exam. Rock-paper-scissors draws four times in a row; you think alike. For now.",
+        "First jump, funny: one writes the paper, one dances in the baraat. At night you touch palms. The merge: both days at once, the integrals and the dhol, and two days of sore feet. Worth it.",
+        "The gap: the memories blur. You answer a viva question with the wedding menu. Two similar days interfere with each other; you cannot always tell which you did what.",
+        "You do it daily. One at the internship, one in class. One listens to your grandfather's story, one meets the girl from the next row at the chai stall. You are, at last, on time for everyone.",
+        "Second jump: you stretch it. A week apart before merging. One of you has had a week of her; one has had a week of your boss. The assumption that breaks: you thought it was one life twice as wide. It is two people who started the same.",
+        "The cost: at the merge you find promises you never made. One of you told her yes to something. One of you told your father yes to the opposite. Both remember meaning it.",
+        "The restart: the next split, the other one hesitates before touching palms. He has had the better week. He asks, reasonably, why he should be the one to stop existing as himself.",
+        "Third jump: a month unmerged. Your mother, who never notices your haircut, looks at one of you across the dinner table and says 'you are not the one from this morning'.",
+        "The picture only this premise gives: two of you on opposite metro platforms, same face, different posture, trains pulling in from both directions.",
+        "The choice: merge and become a person who made both promises, or stay two and let each have half a family. You hold out your palm. So does he. The merged you keeps one promise and breaks one, out loud, in person.",
+        "Next double-booked morning. You pick one, phone the other and say no. You are late to nothing."
+      ],
+      "feeling_map": [
+        "glee",
+        "smugness",
+        "confusion",
+        "dread",
+        "sorrow",
+        "peace"
+      ],
+      "restarts": [
+        "About minute 3: the merged memories bleed into each other; the power has a quality cost, not just tiredness.",
+        "About minute 6: after a week apart the two of you want different things and have promised different people.",
+        "About minute 8: the other you declines to merge, and your mother can tell you apart."
+      ],
+      "content_mine": [
+        {
+          "fact": "Rubinstein, Meyer and Evans (2001): switching between tasks carries a time cost each switch; Meyer has estimated it can eat up to 40% of productive time.",
+          "source": "verify",
+          "beat": "Beat 1: why saying yes to both makes you late to each"
+        },
+        {
+          "fact": "Attention residue (Leroy, 2009): after switching tasks, part of your attention stays on the previous one and performance drops.",
+          "source": "verify",
+          "beat": "Beat 4: the wedding menu in the viva"
+        },
+        {
+          "fact": "Interference in memory (McGeoch, 1932): similar memories laid down close together disrupt each other.",
+          "source": "verify",
+          "beat": "Beat 4: two versions of the same Tuesday blur"
+        },
+        {
+          "fact": "Source-monitoring errors (Johnson, Hashtroudi and Lindsay, 1993): people often remember a fact but not where or how they got it.",
+          "source": "verify",
+          "beat": "Beat 7: you remember the promise and not which of you made it"
+        },
+        {
+          "fact": "Split-brain patients, studied by Sperry and Gazzaniga, can have each half of the brain act on different information; Sperry shared the 1981 Nobel Prize for it.",
+          "source": "verify",
+          "beat": "Beat 6: one skull can already hold two agendas"
+        },
+        {
+          "fact": "Fraga and colleagues (2005): identical twins are almost indistinguishable in their gene markings when young and measurably different by middle age.",
+          "source": "verify",
+          "beat": "Beat 6: same start, different people, given time"
+        },
+        {
+          "fact": "Derek Parfit's 1984 thought experiment: if a perfect copy of you is made and both live on, there is no fact about which one is 'really' you.",
+          "source": "verify",
+          "beat": "Beat 8: why the other you has a fair point"
+        },
+        {
+          "fact": "The Ship of Theseus, from Plutarch: replace every plank and people still argue whether it is the same ship.",
+          "source": "verify",
+          "beat": "Beat 9: your mother's version of the puzzle"
+        },
+        {
+          "fact": "Choice blindness (Johansson and Hall, 2005): shown a photo they did not choose, most people did not notice and confidently explained why they had chosen it.",
+          "source": "verify",
+          "beat": "Beat 7: both of you remember meaning it"
+        },
+        {
+          "fact": "Ophir, Nass and Wagner (2009): heavy media multitaskers were worse, not better, at filtering distractions and switching tasks.",
+          "source": "verify",
+          "beat": "Beat 5: being everywhere is not the same as paying attention anywhere"
+        },
+        {
+          "fact": "Przybylski and colleagues (2013) gave 'fear of missing out' its first research scale; it is strongest in people whose needs for closeness are least met.",
+          "source": "verify",
+          "beat": "Beat 12: what the double booking was really about"
+        },
+        {
+          "fact": "The brain runs on about 20 watts.",
+          "source": "verify",
+          "beat": "Beat 3: two days of memories arriving in one tired head"
+        },
+        {
+          "fact": "Sleep is when the day's memories are sorted and fixed; adults are advised at least seven hours.",
+          "source": "verify",
+          "beat": "Beat 3: one night's sleep for two days of living"
+        },
+        {
+          "fact": "India holds roughly ten million weddings a year, bunched into a few auspicious weeks, often in exam season.",
+          "source": "verify",
+          "beat": "Beat 1: why this clash is every family's clash"
+        }
+      ],
+      "twist": "The copy is not a tool. From the first second he is exactly as much you as you are, so the price of being everywhere is that one of you must agree to end, and after a good week neither of you will.",
+      "ending": "You will never say 'I wish there were two of me' the same way: you were not short of time, you were avoiding a choice.",
+      "closest_video": {
+        "title": "Pause time / speed-and-time powers (Ifverse cluster); clone premises on general what-if channels",
+        "url": "verify",
+        "difference": "No army of clones and no sci-fi lab: exactly two, a nightly merge that needs consent, and the stake is which promise to your family survives. Different from our pause and borrow-time films: time is not stretched, you are."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the split-brain and twins asides, shorten the daily-use montage; keep exam versus wedding, the blurred viva, the two promises, the refusal and the mother."
+      },
+      "views_case": "Speed and time is a proven cluster and 'two places at once' is a daydream every double-booked student has had; the two-figure thumbnail reads at a glance. Sequel: the copy who did not merge. No links: no web search in this lens; verify.",
+      "under_question": "If I never had to choose, would I still be one person?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-swap-lives",
+      "title": "What If You Could Swap Lives for a Day?",
+      "premise": "Shake someone's hand and tomorrow you wake up living their day in their body while they live yours.",
+      "thumbnail": {
+        "image": "You, wide-eyed, looking down at hands wearing your mother's bangles and holding a rolling pin; in a mirror behind, your own body stands in the doorway in a college bag, smiling shyly",
+        "tag": "SHE IS ME?"
+      },
+      "rule": "Shake hands and think 'swap'. Next morning you wake as them, they wake as you, until midnight. You both keep your own minds and remember everything afterwards. The catch: whatever either of you does stays done, they did not agree to it, and you can never swap with the same person twice.",
+      "hook": "Shake a hand tonight and tomorrow you are that person. The topper. Your boss. Anyone. For one day. But while you are living their life, they are loose in yours.",
+      "beats": [
+        "Results day at the coaching class. Your habit: looking at the topper's rank before your own and saying 'easy for him'. You shake his hand to congratulate him and think it.",
+        "Morning. His room, his alarm at 4:30, his timetable taped to the wall in fifteen-minute blocks. The rule lands; so does the second hook: somewhere, he has just woken up as you.",
+        "First jump, funny: his day is brutal and boring. No phone till night. His father checks every answer. Meanwhile he, as you, sleeps till ten, eats three parathas and tells your friends a joke. Your friends like you more today.",
+        "The gap: you expected his life to feel like winning. From the inside it feels like fear of slipping to rank two. What you called 'easy for him' was a situation, not a gift.",
+        "Emboldened, you swap with the internship boss who messages you at 11 pm. His day: sixty-hour week, his own boss messaging him at midnight, a child's school event missed. As you, he leaves the office at five and looks stunned.",
+        "Second jump: the swaps leave marks. The topper, having tasted a lazy day, bunks a class. The boss, as you, told a client the truth. You come back to consequences you did not choose. The assumption that breaks: you thought you were only visiting.",
+        "The cost: your best friend works it out, hurt. Yesterday 'you' were kinder to him than you have been in months. He asks which one was real.",
+        "The restart: at breakfast your mother wipes her hands and holds one out for you to pull her up from the floor. You think of the word before you can stop.",
+        "Third jump: her day, in her body. Up at five. The count of unpaid minutes. Everyone's tea before her own. Your father not looking up. Your own closed door, from the outside. The wordless peak: her hands, your eyes, a pressure cooker whistle, a door that does not open.",
+        "And her day as you: she did not rest. She took your bag and went to your college. Sat in your lecture, front row, took notes in her careful hand. She left school at sixteen.",
+        "The choice: you can never swap with her again, and she cannot go back. But the seat beside you is real every day. You stop saying 'easy for him' about anyone, and start with her.",
+        "Evening. You open your door and bring her tea first. Her notes from your lecture are on your desk, better than yours. One line about every life you have ever envied."
+      ],
+      "feeling_map": [
+        "envy",
+        "amusement",
+        "discomfort",
+        "shame",
+        "awe",
+        "warmth"
+      ],
+      "restarts": [
+        "About minute 3: the envied life is worse from inside, and the other person is improving yours.",
+        "About minute 6: the swaps are not visits; both of you change what you touch, and your friend notices the kinder you.",
+        "About minute 8: an accidental swap with your mother turns the film from other people's lives to the one inside your own house."
+      ],
+      "content_mine": [
+        {
+          "fact": "Jones and Harris (1967): people judged an essay writer's true opinion from the essay even when told the writer had been assigned the side. Ross (1977) named it the fundamental attribution error.",
+          "source": "verify",
+          "beat": "Beat 1: 'easy for him'"
+        },
+        {
+          "fact": "Actor-observer asymmetry (Jones and Nisbett, 1971): we explain our own behaviour by the situation and other people's by their character.",
+          "source": "verify",
+          "beat": "Beat 4: from inside, his rank is a situation"
+        },
+        {
+          "fact": "Petkova and Ehrsson (2008): with a headset showing another body's view and synchronised touch, volunteers felt they were in that body, even shaking hands with themselves.",
+          "source": "verify",
+          "beat": "Beat 2: the narrator's dry note that the lab version exists"
+        },
+        {
+          "fact": "The rubber hand illusion (Botvinick and Cohen, 1998): stroke a fake hand and a hidden real one together and most people feel the fake one as theirs within a minute or two.",
+          "source": "verify",
+          "beat": "Beat 9: how fast her hands feel like yours"
+        },
+        {
+          "fact": "India's Time Use Survey (2019): women spent about 299 minutes a day on unpaid domestic work, men about 97.",
+          "source": "verify",
+          "beat": "Beat 9: the count of unpaid minutes"
+        },
+        {
+          "fact": "Porter and Nohria (2018) tracked 27 chief executives for three months: they worked an average of 62.5 hours a week, including most weekend days.",
+          "source": "verify",
+          "beat": "Beat 5: the boss's day"
+        },
+        {
+          "fact": "Jordan and colleagues (2011), 'Misery Has More Company Than People Think': people consistently underestimate how often others feel bad.",
+          "source": "verify",
+          "beat": "Beat 4: the topper's fear"
+        },
+        {
+          "fact": "Chou and Edge (2012): the more time students spent on Facebook, the more they agreed that others were happier and had better lives.",
+          "source": "verify",
+          "beat": "Beat 1: where the envy is fed"
+        },
+        {
+          "fact": "The impostor phenomenon was first described by Clance and Imes in 1978, in high-achieving people who believed they were frauds.",
+          "source": "verify",
+          "beat": "Beat 3: what the timetable on the wall is for"
+        },
+        {
+          "fact": "The hot-cold empathy gap (Loewenstein): in a calm state people badly underestimate how a tired, hungry or frightened person will feel and act.",
+          "source": "verify",
+          "beat": "Beat 5: you judged the 11 pm message from your bed"
+        },
+        {
+          "fact": "Rozenblit and Keil (2002), the illusion of explanatory depth: people are sure they understand how everyday things work until asked to explain step by step.",
+          "source": "verify",
+          "beat": "Beat 9: you thought you knew how the house runs"
+        },
+        {
+          "fact": "John Rawls (1971): design the rules as if you did not know which life you would be born into.",
+          "source": "verify",
+          "beat": "Beat 11: the choice, as a habit rather than a power"
+        },
+        {
+          "fact": "Mark Twain's The Prince and the Pauper (1881) is the best-known swap story; both boys come back changed and neither wants the other's life.",
+          "source": "verify",
+          "beat": "Beat 6: the swap always leaves marks"
+        },
+        {
+          "fact": "Perspective-taking studies (Batson and colleagues, 1997): imagining how another person feels produces more concern for them than imagining yourself in their place.",
+          "source": "verify",
+          "beat": "Beat 12: you do not need the handshake"
+        }
+      ],
+      "twist": "You spent your swaps finding out other people's lives are harder than they look. Your mother spent her one day in yours doing the thing you complain about every morning: she went to your class, and it was the best day she has had in years.",
+      "ending": "You will never say 'easy for them' the same way, and you will not see your own boring day the same way either: it is somebody's wish.",
+      "closest_video": {
+        "title": "Hearing everyone's thoughts / what they say behind your back (Ifverse, Jeremy Bearimy cluster); body-swap comedies",
+        "url": "verify",
+        "difference": "Not a comedy of mixed-up bodies and not mind-reading: a consented-by-nobody one-day trade with permanent consequences, told through a coaching class, an internship and an Indian mother's unpaid day."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Shorten the boss swap to a single scene, drop the lab-illusion asides and Rawls; keep the topper, the friend's question, the mother's day both ways and the tea."
+      },
+      "views_case": "A personal power with the highest social stake in the slate, in the secret-lives-of-people-around-you cluster, with an Indian home the US channels cannot make. Sequel: you swap with your grandfather, or a stranger swaps with you. No links: no web search in this lens; verify.",
+      "under_question": "Is everyone else's life really easier than mine?",
+      "proposers": [
+        "fable"
+      ]
+    }
+  ]
+}
