@@ -1,0 +1,59 @@
+{
+  "gate": "g1",
+  "stage": "proposal",
+  "channel": "say-suppose",
+  "writer_family": "anthropic",
+  "writer": "claude-fable-5-1",
+  "required_roles": [
+    "story",
+    "fact"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "draft_sha256": "77166d076379c45408907337d6bf1828c2d49e6704267a77232f91e06f0c5473",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "7decf303956b4c368a52b0b634236a91",
+          "file": "room/g1/round-1/claims-check.json",
+          "output_sha256": "700f8e41adeb2bfec285da91aeffb342f7e56c5bb2961d38809889b52c0069d7",
+          "blockers": 3
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "28209f50facd4db48d0d260ec4624af6",
+          "file": "room/g1/round-1/story-editor.json",
+          "output_sha256": "979f5ece06ce7b766c1742d903ae9d27c273cbfe9e3150247ed51c1f8ee0a779",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": false,
+      "candidate": false
+    }
+  ],
+  "skipped_rounds": [],
+  "malformed_verdicts": [],
+  "shipped": null,
+  "calls": 2,
+  "cap": 16,
+  "author_cut": null,
+  "presented": {
+    "draft_sha256": "77166d076379c45408907337d6bf1828c2d49e6704267a77232f91e06f0c5473",
+    "at": "2026-11-11T17:48:42+00:00"
+  }
+}

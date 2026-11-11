@@ -1,0 +1,69 @@
+{
+  "call_id": "7decf303956b4c368a52b0b634236a91",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 7
+  },
+  "blockers": [
+    {
+      "quote": "Square thirty-one: rice to the rim of the glass. Square thirty-two onward, \"the second half of the board\": rice buries the stall, the lane, the college gate.",
+      "why": "Square thirty-one of a doubling chessboard starting from 1 grain contains 2^30 grains of rice (1,073,741,824 grains). At ~0.025 g and ~20 mm\u00b3 per grain, one billion grains weighs approximately 25 metric tons and occupies over 20 cubic meters of volume\u2014enough to fill two commercial dump trucks and completely bury the stall. A standard 150 ml chai glass holds only about 4,000 to 5,000 grains of rice, which is reached around square thirteen (2^12 = 4,096). Furthermore, square thirty-two is only double square thirty-one; one doubling cannot jump from a single drinking glass to burying an entire college gate. Needs a source.",
+      "fix": "Square thirteen: rice to the rim of the glass. Square thirty-one onward, \"the second half of the board\": rice buries the stall, the lane, the college gate.",
+      "domain": "fact",
+      "line": 38
+    },
+    {
+      "quote": "Narrator: \"A month ago you couldn't pay for that glass. This morning you could buy the glass, the stall, the road and the city it's standing in. Tonight it doubles again.\"",
+      "why": "On day thirty-one morning, your balance is 2^30 rupees = \u20b91,073,741,824 (\u20b9107.37 crore, or ~$13 million USD). While \u20b9107 crore is enough to buy the chai stall, the road, and the surrounding lane or commercial buildings, it cannot buy \"the city it's standing in\" (Pune's annual municipal corporation budget alone exceeds \u20b911,000 crore, and city GDP is over \u20b94 lakh crore). Stating that \u20b9107 crore can buy the entire city is an extreme factual overstatement in the spoken cold open hook. Needs a source.",
+      "fix": "Narrator: \"A month ago you couldn't pay for that glass. This morning you could buy the glass, the stall, the road and every building on this lane. Tonight it doubles again.\"",
+      "domain": "fact",
+      "line": 30
+    },
+    {
+      "quote": "What If You Had More Money Than Exists? | 94 (98 with c) | 39 characters, no cut | Scale: the day you pass every note in the country",
+      "why": "Title C promises \"Scale: the day you pass every note in the country\" under the headline \"What If You Had More Money Than Exists?\", mirrored in Tag c as \"holding more than there is\" (line 110). However, physical notes and coins in India (~\u20b943 lakh crore) represent only currency in circulation (M0/cash), whereas broad money (M3) in India exceeds \u20b9250 lakh crore and total global money is orders of magnitude larger. Passing India's cash does not mean having more money than exists; conflating physical currency with all existing money is an unsupported factual overstatement on the packaging. Needs a source.",
+      "fix": "Scale: the day you pass every note and coin in the country | If Title C is retained, rephrase to \"What If You Had More Cash Than India?\" or stick with recommended Title A (\"What If You Doubled Your Money Every Day?\").",
+      "domain": "fact",
+      "line": 83
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "Cantillon, two hundred years ago: new money raises prices first where it is spent first.",
+      "fix": "Cantillon, nearly three hundred years ago: new money raises prices first where it is spent first."
+    },
+    {
+      "line": 36,
+      "quote": "\"Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing.\"",
+      "fix": "\"Most money, sir, is made when a bank lends. And when a bank loan is repaid, the money doesn't go anywhere. It stops existing.\""
+    },
+    {
+      "line": 35,
+      "quote": "Wagenaar and Sagaria, 1975: asked to extend a doubling series, most people guess a small fraction of the truth, and being told doesn't fix it.",
+      "fix": "Wagenaar and Sagaria (1975): asked to extend a doubling series, most people guess a small fraction of the truth (to source at G2)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 35,
+      "quote": "The series fact, dry: every new day is bigger than all the days before it added together. \"Today is always your whole life so far, plus one.\""
+    },
+    {
+      "line": 36,
+      "quote": "\"Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing.\" Narrator: \"That is the most important boring sentence in this video.\""
+    },
+    {
+      "line": 41,
+      "quote": "All the notes and coins in India come to about \u20b943 lakh crore. You could not withdraw it even if the bank let you; there isn't that much cash."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "700f8e41adeb2bfec285da91aeffb342f7e56c5bb2961d38809889b52c0069d7",
+  "draft_sha256": "77166d076379c45408907337d6bf1828c2d49e6704267a77232f91e06f0c5473"
+}

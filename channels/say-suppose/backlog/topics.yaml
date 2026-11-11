@@ -77,6 +77,14 @@ topics:
     room_id: M38
     source: idea-room
 
+  # Picked by the owner 2026-11-11 from the second /say-suppose-topics slate (backlog/topics-2026-11-11/, PR #43) as
+  # the next film on the three-a-week template. Total is studio.topics' (content first, out of 100).
+  - what_if: "What If You Doubled Your Money Every Day?"
+    status: selected          # G1 packaging 2026-11-11: videos/2026-11-11_what-if-you-doubled-your-money-every-day
+    topic_id: f-money-doubles
+    total: 90                 # ranked 1st; Claude Fable
+    source: topics-skill
+
   # Shown 2026-11-06, not picked; all re-scored in the idea room 2026-11-09
   - what_if: "What if you never had to sleep again?"
     status: proposed          # idea room M04 (2 hours of sleep), median 6

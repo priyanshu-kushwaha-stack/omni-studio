@@ -1,0 +1,69 @@
+{
+  "call_id": "28209f50facd4db48d0d260ec4624af6",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "That night. Dadi's phone, face up on the dabba, an account she has never used. BALANCE: 1. Clack. 2.",
+      "why": "No new power rule after the halfway point: this reveals that the doubling transfers with the rupee, contradicting the established zero-at-midnight off switch.",
+      "fix": "Replace with: \u201cThat night. Kabir\u2019s edit finishes exporting: \u2018THE NIGHT EVERY LOAN VANISHED.\u2019 His thumb hovers over UPLOAD.\u201d Revise the sequel around the consequences of that upload.",
+      "domain": "story",
+      "line": 46
+    },
+    {
+      "quote": "So. What if your money doubled every single night, and nothing you did could stop it?",
+      "why": "Check #3 fails: by 0:30 the question is clear, but the viewer still does not know what can be lost.",
+      "fix": "Replace with: \u201cSo. What if your money doubled every single night, nothing you did could stop it, and Dadi\u2019s forty years of savings were the first thing you could lose?\u201d",
+      "domain": "story",
+      "line": 31
+    },
+    {
+      "quote": "The rice board (the picture only this premise can show) and Problem 1: your lane first",
+      "why": "Check #8 fails because the premise-specific picture is not named in a `> SCENE:` line.",
+      "fix": "Add before this beat: \u201c> SCENE: On Mangesh bhaiya\u2019s counter, rice doubles across a chessboard until it buries the stall, the lane and the college gate.\u201d",
+      "domain": "story",
+      "line": 38
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 35,
+      "quote": "You don't. Nobody does. The number is finally going up.",
+      "fix": "Replace with: \u201cYou open the transfer screen. Then Kabir sends the phone link, Baba counts eleven EMIs, and Mangesh bhaiya\u2019s tab is still open. You keep it one more night.\u201d"
+    },
+    {
+      "line": 42,
+      "quote": "Route one: give it all away today. Mansa Musa times a million; every price on earth breaks by Friday. Route two: the one place money stops existing. Repay loans.",
+      "fix": "Make the choice morally live: respecting Baba\u2019s refusal leaves enough money to trigger another doubling; using his eleven EMIs can reach zero but violates the promise you made him. Let Baba resolve that conflict with his passbook in the climax."
+    },
+    {
+      "line": 43,
+      "quote": "Kabir finds a student with a 945 fee loan.",
+      "fix": "Plant this student and the 945 balance during the college-scholarship beat at line 40, or replace the coincidence by calibrating Baba\u2019s already-planted eleven EMIs to leave the final rupee."
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "Not when it's new. Your double is her half."
+    },
+    {
+      "line": 43,
+      "quote": "for the part that ends."
+    },
+    {
+      "line": 45,
+      "quote": "Bhaiya. Likh lo."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "979f5ece06ce7b766c1742d903ae9d27c273cbfe9e3150247ed51c1f8ee0a779",
+  "draft_sha256": "77166d076379c45408907337d6bf1828c2d49e6704267a77232f91e06f0c5473"
+}

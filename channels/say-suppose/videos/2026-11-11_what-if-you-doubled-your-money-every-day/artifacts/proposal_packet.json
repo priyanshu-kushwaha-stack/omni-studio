@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "concept_options": [
+    {
+      "id": "A",
+      "title": "What If You Doubled Your Money Every Day?",
+      "hook": "Day thirty-one at Mangesh bhaiya's chai stall: you hold up your phone and the balance runs off the screen, across the counter. A month ago you couldn't pay for that glass.",
+      "narrative_structure": "story",
+      "visual_approach": "the library's chai stall at night: you large at the left, grinning, the phone held out, its balance (1073741824) spilling off the screen as split-flap digit tiles over the counter; Mangesh bhaiya behind the counter holding out a tiny glass, shocked. Three thumbnail candidates a, b, c differ in the tag (DAY 31., NO BRAKES., EVERYTHING.)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 570,
+      "why_this_works": "The topic title from the 2026-11-11 slate (f-money-doubles, 90/100, ranked 1st); the owner's pick; pairs with thumbnail a (DAY 31.)"
+    },
+    {
+      "id": "B",
+      "title": "What If You Couldn't Stop Getting Richer?",
+      "hook": "Day thirty-one at Mangesh bhaiya's chai stall: you hold up your phone and the balance runs off the screen, across the counter. A month ago you couldn't pay for that glass.",
+      "narrative_structure": "story",
+      "visual_approach": "the library's chai stall at night: you large at the left, grinning, the phone held out, its balance (1073741824) spilling off the screen as split-flap digit tiles over the counter; Mangesh bhaiya behind the counter holding out a tiny glass, shocked. Three thumbnail candidates a, b, c differ in the tag (DAY 31., NO BRAKES., EVERYTHING.)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 570,
+      "why_this_works": "Alternative title: the dread promise; pairs with thumbnail b (NO BRAKES.); see packaging.md"
+    },
+    {
+      "id": "C",
+      "title": "What If You Had More Money Than Exists?",
+      "hook": "Day thirty-one at Mangesh bhaiya's chai stall: you hold up your phone and the balance runs off the screen, across the counter. A month ago you couldn't pay for that glass.",
+      "narrative_structure": "story",
+      "visual_approach": "the library's chai stall at night: you large at the left, grinning, the phone held out, its balance (1073741824) spilling off the screen as split-flap digit tiles over the counter; Mangesh bhaiya behind the counter holding out a tiny glass, shocked. Three thumbnail candidates a, b, c differ in the tag (DAY 31., NO BRAKES., EVERYTHING.)",
+      "suggested_playbook": "say-suppose",
+      "target_platform": "youtube",
+      "target_audience": "Riya, 22, Pune (channels/say-suppose/audience.md)",
+      "target_duration_seconds": 570,
+      "why_this_works": "Alternative title: the scale promise; pairs with thumbnail c (EVERYTHING.); see packaging.md"
+    }
+  ],
+  "selected_concept": {
+    "concept_id": "A",
+    "rationale": "Writer's recommendation; the owner picks at G1. Title A with thumbnail a (\"DAY 31.\"): it matches the cold open frame for frame and leaves \"DAY 1.\" for Part 2."
+  },
+  "production_plan": {
+    "pipeline": "studio-whatif",
+    "playbook": "say-suppose",
+    "render_runtime": "external",
+    "decision_log_ref": "artifacts/decision_log.json",
+    "stages": [
+      {
+        "stage": "proposal",
+        "tools": [],
+        "approach": "Packaging: three titles, three one-variable thumbnails drawn in code on the library's chai stall, the beat outline on the template spine; the G1 room (story editor, claims check)"
+      },
+      {
+        "stage": "story_script",
+        "tools": [],
+        "approach": "research.md, claims.md, script.md, sequel.md and 6-8 chapters on the template (rules/story.md #1-#19, 155 wpm, 9-10 min); the free local Qwen-Arthur narration and a 720p first cut before G2; the G2 room; omni qc story_script must pass"
+      },
+      {
+        "stage": "final_edit",
+        "tools": [],
+        "approach": "Picture lock: cut, key shot, text, music and mix; signed with G2 in one cut review; the local voice ships unless the owner asks for the paid A/B"
+      },
+      {
+        "stage": "final_watch",
+        "tools": [],
+        "approach": "The owner watches at 1x with cold viewers"
+      },
+      {
+        "stage": "publish_prep",
+        "tools": [],
+        "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+      }
+    ]
+  },
+  "cost_estimate": {
+    "total_estimated_usd": 0,
+    "budget_cap_usd": 5,
+    "budget_verdict": "within_budget",
+    "line_items": [
+      {
+        "tool": "whatif_narration (local Qwen clone of Arthur)",
+        "operation": "G2 narration and first cut",
+        "estimated_usd": 0,
+        "notes": "Free and local. The paid voice only if the owner asks for the A/B, quoted first. G1 made no paid call: the thumbnails are drawn in code; the room used today's capped calls (story editor, claims check)"
+      }
+    ]
+  },
+  "approval": {
+    "status": "pending"
+  }
+}

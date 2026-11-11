@@ -1,0 +1,251 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "written": [
+  {
+   "title": "What If You Doubled Your Money Every Day?",
+   "chars": 41,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Doubled Your Money Every...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "41 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Couldn't Stop Getting Richer?",
+   "chars": 41,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Couldn't Stop Getting...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "41 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Had More Money Than Exists?",
+   "chars": 39,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "39 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Your Money Wouldn't Stop Growing?",
+   "chars": 41,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If Your Money Wouldn't Stop...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "41 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If One Coin Doubled Every Night?",
+   "chars": 37,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "37 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If Your Bank Balance Doubled Daily?",
+   "chars": 40,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "40 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Woke Up Twice as Rich Every Day?",
+   "chars": 44,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Woke Up Twice as Rich Every...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "44 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Became the Richest Person Ever?",
+   "chars": 43,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Became the Richest Person...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "43 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Could Never Spend It Fast Enough?",
+   "chars": 45,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Could Never Spend It Fast...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "45 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Had to Give Away a Billion Today?",
+   "chars": 45,
+   "score": 80,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Had to Give Away a Billion...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "45 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  }
+ ],
+ "pairs": [
+  {
+   "id": "A",
+   "thumb": "DAY 31.",
+   "title": "What If You Doubled Your Money Every Day?",
+   "chars": 41,
+   "score": 66,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Doubled Your Money Every...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ],
+    [
+     "duplicate",
+     "thumbnail repeats the title on day - the thumbnail should say what the title does not"
+    ]
+   ],
+   "good": [
+    "41 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "id": "B",
+   "thumb": "NO BRAKES.",
+   "title": "What If You Couldn't Stop Getting Richer?",
+   "chars": 41,
+   "score": 84,
+   "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Couldn't Stop Getting...\" - check the subject survives"
+    ],
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "41 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  },
+  {
+   "id": "C",
+   "thumb": "EVERYTHING.",
+   "title": "What If You Had More Money Than Exists?",
+   "chars": 39,
+   "score": 98,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "39 characters, inside the 60-character desktop cut",
+    "open question in the title",
+    "thumbnail and title carry different words"
+   ]
+  }
+ ],
+ "note": "A with DAY 31. flags 'duplicate' on 'day': a time marker, allowed by K7 for a day story (rules/thumbnails.md)."
+}
