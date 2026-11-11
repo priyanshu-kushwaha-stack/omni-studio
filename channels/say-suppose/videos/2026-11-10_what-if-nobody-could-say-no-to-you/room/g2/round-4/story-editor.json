@@ -1,0 +1,72 @@
+{
+  "call_id": "86c11dd0c80f419795901cf67003be4b",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "causal_chain": 7,
+    "must_pass_checks": 7,
+    "ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "> BUBBLE: You: Is this good?",
+      "why": "Check #6 Every use has a gap fails: you knowingly ask a crowd compelled to agree, and receive exactly the yes and applause expected.",
+      "fix": "Replace with `> BUBBLE: You: One clap if good?` so asking for one clap produces two hundred, preserving the applause while creating a gap.",
+      "domain": "story",
+      "line": 266
+    },
+    {
+      "quote": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. (c03)",
+      "why": "Check #13 Every fact moves the story fails: line 125 has already delivered this finding, so this repetition pauses the turn before line 130.",
+      "fix": "Cut lines 126-127 and move directly from the queue's realization to the valid-ticket scene and line 130.",
+      "domain": "story",
+      "line": 127
+    },
+    {
+      "quote": "They were saying yes to you long before you could make them. Out of love, which is the one thing it couldn't touch.",
+      "why": "Check #12 Leave fast fails: this captions the memory images and begins a spoken summary after the wordless peak.",
+      "fix": "Cut this line; let the untagged memories show the earlier willing yeses, then land directly on line 309 and the protected line 310.",
+      "domain": "story",
+      "line": 307
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 282,
+      "quote": "> SCENE: Backstage, a corridor of stacked chairs. Dev comes down it holding an envelope out in front of him: the rest of the money.",
+      "fix": "Replace the envelope with the signed meeting page and carry that page through lines 285 and 306; Dev previously gave you all the money, so him handing you \u201cthe rest\u201d breaks continuity."
+    },
+    {
+      "line": 207,
+      "quote": "You wanted every no gone. Here's what you got.",
+      "fix": "Before this line, show a written message from Dev\u2014`Ma asked about the fees.`\u2014so the consequence from his private dinner reaches you and therefore triggers the midpoint realization."
+    },
+    {
+      "line": 329,
+      "quote": "About 1,250 spoken words at 115 words a minute, plus about 2 minutes 10 seconds of `> HOLD:` lines (17% of the runtime), for an estimated 13 minutes 20 seconds.",
+      "fix": "Append the felt reason for the length: past 8:00 the viewer is waiting first for the promised answer from your mother, then for Dev's planted no to stop the stage commitment."
+    }
+  ],
+  "keep": [
+    {
+      "line": 160,
+      "quote": "Every yes is the same yes now. So you stop looking at faces."
+    },
+    {
+      "line": 195,
+      "quote": "He remembers agreeing. He can't remember wanting to."
+    },
+    {
+      "line": 310,
+      "quote": "The chance of being told no. Which is the only way anyone has ever told you the truth."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "3f356deea4e7b47c8774c0150b50237aecd67357e5b6e2ffed91b72e90231907",
+  "draft_sha256": "2bd5f087821ba5c90c07ef82d2dcf4bd6d798bbb389545c5c8cf53df7bc4b6ad"
+}

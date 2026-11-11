@@ -277,8 +277,8 @@
       "claims": []
     },
     {
-      "text": "You walk past six people and say it: five copies, please, because I need to make copies.",
-      "say": "[amused, the reason said with a straight face] You walk past six people and say it: five copies, please, because I need to make copies.",
+      "text": "You ask the first one in the queue, out loud: can I go ahead, five copies, because I need to make copies?",
+      "say": "[amused, the reason said with a straight face] You ask the first one in the queue, out loud: can I go ahead, five copies, because I need to make copies?",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
@@ -291,18 +291,20 @@
       "claims": []
     },
     {
-      "text": "A reason that isn't a reason. He nods anyway.",
-      "say": "[dry, a beat of wonder] A reason that isn't a reason. He nods anyway.",
+      "text": "A reason that isn't a reason. The queue lets you through anyway.",
+      "say": "[dry, a beat of wonder] A reason that isn't a reason. The queue lets you through anyway.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "For five copies, he would have nodded for almost anyone.",
-      "say": "[quieter, the smile fading] For five copies, he would have nodded for almost anyone.",
+      "text": "For five copies, with any reason at all, the queue would have let almost anyone through.",
+      "say": "[quieter, the smile fading] For five copies, with any reason at all, the queue would have let almost anyone through.",
       "gapAfterSec": 0.35,
       "mood": "day",
-      "claims": []
+      "claims": [
+        "c03"
+      ]
     },
     {
       "text": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour.",
@@ -421,8 +423,8 @@
       "claims": []
     },
     {
-      "text": "Psychologists have a name for a room where nobody says no. Groupthink.",
-      "say": "[plain, exact, the name dropped quietly] Psychologists have a name for a room where nobody says no. Groupthink.",
+      "text": "Psychologists have a name for a room that won't disagree. Groupthink.",
+      "say": "[plain, exact, the name dropped quietly] Psychologists have a name for a room that won't disagree. Groupthink.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -430,8 +432,8 @@
       ]
     },
     {
-      "text": "Rooms take years to get there. You took one question. And a room like that commits.",
-      "say": "[dry, then a weight on \"commits\"] Rooms take years to get there. You took one question. And a room like that commits.",
+      "text": "You took one question. And a room like that commits.",
+      "say": "[dry, then a weight on \"commits\"] You took one question. And a room like that commits.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
@@ -500,8 +502,8 @@
       "claims": []
     },
     {
-      "text": "In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20 dollars, they didn't.",
-      "say": "[curious, even, a storyteller's lift on the twist] In nineteen fifty-nine, students did an hour of dull work, then were paid to tell the next person it was fun. Paid one dollar, they later rated the work more enjoyable. Paid twenty dollars, they didn't.",
+      "text": "In a classic study, students paid less to call dull work fun later rated it more enjoyable than students paid more.",
+      "say": "[curious, even, a storyteller's lift on the twist] In a classic study, students paid less to call dull work fun later rated it more enjoyable than students paid more.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": [
@@ -672,8 +674,8 @@
       "claims": []
     },
     {
-      "text": "Stanley Milgram's study, published in 1963. Most of the men went all the way to the last switch. 450 volts.",
-      "say": "[even, grave, the numbers plain and unhurried] Stanley Milgram's study, published in nineteen sixty-three. Most of the men went all the way to the last switch. Four hundred and fifty volts.",
+      "text": "In Milgram's study, 65% of the men went all the way to the last switch.",
+      "say": "[even, grave, the numbers plain and unhurried] In Milgram's study, sixty-five per cent of the men went all the way to the last switch.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
@@ -681,12 +683,13 @@
       ]
     },
     {
-      "text": "The shocks were fake. The men didn't know that. Nobody shouted at them. A calm voice told them to go on.",
-      "say": "[quiet, exact, calm itself on the last sentence] The shocks were fake. The men didn't know that. Nobody shouted at them. A calm voice told them to go on.",
+      "text": "The shocks were fake, and the man in the next room was an actor. They didn't know. When they hesitated, the experimenter was scripted to say: please continue.",
+      "say": "[quiet, exact, calm itself on the last sentence] The shocks were fake, and the man in the next room was an actor. They didn't know. When they hesitated, the experimenter was scripted to say: please continue.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
-        "c06"
+        "c15",
+        "c16"
       ]
     },
     {
@@ -822,7 +825,9 @@
     "c13": "https://en.wikipedia.org/wiki/Groupthink",
     "c05": "https://psychclassics.yorku.ca/Festinger/",
     "c10": "https://selfdeterminationtheory.org/theory/",
-    "c06": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Influence_Compliance/Milgrim_1963_Behavioral_study_of_obedience.pdf"
+    "c06": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Influence_Compliance/Milgrim_1963_Behavioral_study_of_obedience.pdf",
+    "c15": "https://www.simplypsychology.org/milgram.html",
+    "c16": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Influence_Compliance/Milgrim_1963_Behavioral_study_of_obedience.pdf"
   },
   "cues": {}
 }

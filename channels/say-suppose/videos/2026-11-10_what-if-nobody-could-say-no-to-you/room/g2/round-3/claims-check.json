@@ -1,0 +1,50 @@
+{
+  "call_id": "eb8ecbab2f5f4386a1d623eb15b232fc",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [
+    {
+      "quote": "The shocks were fake, and the man in the next room was an actor. They didn't know. When they hesitated, the experimenter said: please continue. (c15, c16)",
+      "why": "Claim c16 is marked contested because archival research (Perry 2013, Gibson 2013) found the experimenter frequently went off-script and improvised coercive prods. Contested rows must be spoken with a caveat rather than stating flatly as fact that the experimenter simply said 'please continue'.",
+      "fix": "The shocks were fake, and the man in the next room was an actor. They didn't know. When they hesitated, the experimenter was scripted to say: please continue. (c15, c16)",
+      "domain": "fact",
+      "line": 275
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 125,
+      "quote": "For five copies, with any reason at all, he would have nodded for almost anyone.",
+      "fix": "For five copies, with any reason at all, he would have nodded for almost anyone. (c03)"
+    },
+    {
+      "line": 273,
+      "quote": "In Milgram's study, 65% of the men went all the way to the last switch. (c06, c07)",
+      "fix": "In Milgram's study, 65% of the men went all the way to the last switch. (c06)"
+    }
+  ],
+  "keep": [
+    {
+      "line": 127,
+      "quote": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. (c03)"
+    },
+    {
+      "line": 130,
+      "quote": "Strangers were far more willing to say yes to everyday requests than you ever believed. You had simply never asked. (c02)"
+    },
+    {
+      "line": 197,
+      "quote": "In a classic study, students paid less to call dull work fun later rated it more enjoyable than students paid more. (c05)"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "374789c6e124b82e29e9026d143ac35b1e33f58155ea5933ec1802c0c7da1ffa",
+  "draft_sha256": "eb4a3fead3b4e4fb8b615a59c3aa2ee889945eef9435f5e5ba7515100fbec335"
+}

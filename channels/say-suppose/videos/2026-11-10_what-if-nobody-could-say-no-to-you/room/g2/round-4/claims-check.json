@@ -1,0 +1,47 @@
+{
+  "call_id": "f6d42553c86b41ba9b80a294d28d6d21",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 125,
+      "quote": "For five copies, with any reason at all, the queue would have let almost anyone through. (c03)",
+      "fix": "For five copies, with any reason at all, almost anyone at the machine would have let you through. (c03)"
+    },
+    {
+      "line": 272,
+      "quote": "> TAG: Slight Shock. Moderate. Strong. Very Strong. Intense. Extreme Intensity. Danger: Severe Shock. XXX (c07)",
+      "fix": "> TAG: Slight Shock. Moderate Shock. Strong Shock. Very Strong Shock. Intense Shock. Extreme Intensity Shock. Danger: Severe Shock. XXX (c07)"
+    },
+    {
+      "line": 212,
+      "quote": "Psychologists count it as a basic need, next to feeling capable and feeling close to people. Choosing for yourself. (c10)",
+      "fix": "In self-determination theory, psychologists count it as a basic need, next to feeling capable and feeling close to people. Choosing for yourself. (c10)"
+    }
+  ],
+  "keep": [
+    {
+      "line": 273,
+      "quote": "In Milgram's study, 65% of the men went all the way to the last switch. (c06)"
+    },
+    {
+      "line": 275,
+      "quote": "The shocks were fake, and the man in the next room was an actor. They didn't know. When they hesitated, the experimenter was scripted to say: please continue. (c15, c16)"
+    },
+    {
+      "line": 130,
+      "quote": "Strangers were far more willing to say yes to everyday requests than you ever believed. You had simply never asked. (c02)"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f6f54599c97c683f8458094b017bd29548dae551993fa02ce923f5d660dbd7bc",
+  "draft_sha256": "2bd5f087821ba5c90c07ef82d2dcf4bd6d798bbb389545c5c8cf53df7bc4b6ad"
+}

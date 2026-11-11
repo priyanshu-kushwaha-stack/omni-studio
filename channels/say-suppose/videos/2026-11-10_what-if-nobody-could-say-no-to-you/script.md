@@ -1,7 +1,7 @@
 # Script: What If Nobody Could Say No to You?
 
 format: story
-status: v2, G2 owner-notes round ("Apply all fixes", 2026-11-11, review-g2-round1.md); was v1, for G2 (G1 passed 2026-11-11: title A with thumbnail b, "EVEN HER?"; the room's open note #14 applied: the unanimous commitment and the crowd move into the office, Challenger cut)
+status: v4, G2 owner-notes round 4 (c16's caveat; you ask the queue, not the clerk); v3, G2 owner-notes round 3 (fact fixes, no owner note crossed); v2, G2 owner-notes round ("Apply all fixes", 2026-11-11, review-g2-round1.md); was v1, for G2 (G1 passed 2026-11-11: title A with thumbnail b, "EVEN HER?"; the room's open note #14 applied: the unanimous commitment and the crowd move into the office, Challenger cut)
 packaging: packaging.md
 claims: claims.md
 cues: cues.yaml
@@ -115,14 +115,14 @@ You got the project you wanted. And you will never know if you earned it.
 > MOOD: day
 > SCENE: A photocopy shop near college, a queue of six students out of the door, a copier humming inside. You hold a thin folder.
 Thursday. The copy shop. Six people in the queue, and you need five copies.
-> SCENE: You step past the whole queue to the counter. The clerk, a grey head in spectacles, looks up.
-You walk past six people and say it: five copies, please, because I need to make copies.
-> SCENE: The clerk nods and takes your folder without looking up. Snap. The tag. Nobody in the queue says a word.
+> SCENE: You step up beside the queue and face the first student in it, a pastel head with a backpack and a folder of their own. Behind the counter the clerk, a grey head in spectacles, does not look up.
+You ask the first one in the queue, out loud: can I go ahead, five copies, because I need to make copies?
+> SCENE: The student nods and steps aside. Snap. The tag. Nobody behind them says a word. Then the clerk takes your folder without looking up.
 > TAG: YES
 Clerk: Haan, give.
-A reason that isn't a reason. He nods anyway.
+A reason that isn't a reason. The queue lets you through anyway.
 > SCENE: You turn and look at the queue. Six faces, not one of them looking at you. One checks his phone.
-For five copies, he would have nodded for almost anyone.
+For five copies, with any reason at all, the queue would have let almost anyone through. (c03)
 > SCENE: A paper diagram draws itself on the shop wall: a copier, a queue of pastel heads, one head stepping forward with a speech bubble that holds only an empty box.
 In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. (c03)
 > SCENE: You walk out with your copies. At the metro gate a different checker waves you through; your ticket is valid today, and you say nothing.
@@ -166,9 +166,9 @@ The pitch. Your first draft. The one you'd have thrown out on a normal week.
 Boss: Unanimous. Love it.
 A meeting that says yes before you've finished isn't a meeting. It's an echo.
 > SCENE: A paper diagram draws itself over the whiteboard: a ring of heads nodding round a table, their speech bubbles flattening one by one into the same tick.
-Psychologists have a name for a room where nobody says no. Groupthink. (c13)
+Psychologists have a name for a room that won't disagree. Groupthink. (c13)
 > SCENE: You look round the table. Every face is the same face.
-Rooms take years to get there. You took one question. And a room like that commits.
+You took one question. And a room like that commits.
 > SCENE: The boss slides a glossy flyer across the table: a hall, a stage, rows of tiny pastel heads, a date ringed in crimson.
 Boss: Next Friday. The whole floor's coming.
 > SCENE: Close on the flyer: rows and rows of heads, drawn small, all turned to a tiny stage.
@@ -194,7 +194,7 @@ Dev's mother: The clutch? You had it.
 > SCENE: Dev looks at his hands. In a thought bubble: the canteen table, your mouth open, his own nod. Nothing before it.
 He remembers agreeing. He can't remember wanting to.
 > SCENE: A paper diagram on the dining-room wall: a figure turning pegs on a board, then a hand holding out one note; the figure's flat-line mouth curls into a small smile.
-In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20 dollars, they didn't. (c05)
+In a classic study, students paid less to call dull work fun later rated it more enjoyable than students paid more. (c05)
 > SCENE: Dev lifts his head and smiles at his mother, a small, invented smile.
 With no good reason for what he's done, Dev does what they did. He makes one up.
 Dev: Needed to help a friend.
@@ -269,10 +269,10 @@ And from up here you can see it. It's wrong. It was always wrong.
 > HOLD: 3 s. The applause rolls. The camera pulls back from the stage over the rows of tags; every head tilts the same way. You stand still at the lectern.
 Nobody in that hall can tell you it's the worst thing you've made. You've made sure of it.
 > SCENE: You click to the next slide, and a paper diagram draws itself over the crowd: a row of pastel heads at a long panel of switches, a dial, the labels appearing left to right.
-> TAG: Slight Shock. Moderate. Strong. Very Strong. Intense. Extreme Intensity. Danger: Severe Shock. XXX
-Stanley Milgram's study, published in 1963. Most of the men went all the way to the last switch. 450 volts. (c06)
+> TAG: Slight Shock. Moderate. Strong. Very Strong. Intense. Extreme Intensity. Danger: Severe Shock. XXX (c07)
+In Milgram's study, 65% of the men went all the way to the last switch. (c06)
 > SCENE: The dial swings to its end. The heads at the panel keep their hands on the switches.
-The shocks were fake. The men didn't know that. Nobody shouted at them. A calm voice told them to go on. (c06)
+The shocks were fake, and the man in the next room was an actor. They didn't know. When they hesitated, the experimenter was scripted to say: please continue. (c15, c16)
 > SCENE: Close on you at the lectern, the crowd's smile reflected on the screen behind you. Your mouth opens.
 You know that voice now. It's the one that says "go on?" and gets a yes. It's yours.
 > HOLD: 2.5 s. The applause fades. The dial on the screen flickers out. Dev, at the back, is not clapping.

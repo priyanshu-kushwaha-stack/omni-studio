@@ -1,0 +1,69 @@
+{
+  "call_id": "3f53ea32877841c48c11fa8c7389b284",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "accuracy": 7
+  },
+  "blockers": [
+    {
+      "quote": "Stanley Milgram's study, published in 1963. Most of the men went all the way to the last switch. 450 volts. (c06)",
+      "why": "Claim c06. The phrase 'Most of the men' overstates the scope and departs from the row's verbatim quote ('Of the 40 subjects, 26 obeyed the orders of the experimenter to the end...'). The claim note specifically directs: say 'went to the last switch' or '65%', never 'most'. Without stating the 40-subject sample, it overgeneralizes from 40 participants in a single lab trial to men in general.",
+      "fix": "Stanley Milgram's study, published in 1963. 26 of the 40 men went all the way to the last switch. 450 volts. (c06)",
+      "domain": "fact",
+      "line": 273
+    },
+    {
+      "quote": "The shocks were fake. The men didn't know that. Nobody shouted at them. A calm voice told them to go on. (c06)",
+      "why": "Claim c06. The verbatim quote for c06 only supports obedience to the shock generator ('Of the 40 subjects, 26 obeyed the orders of the experimenter to the end...'). It does not support that the shocks were fake, that the men didn't know, or that 'Nobody shouted at them. A calm voice told them to go on.' Furthermore, archival findings (Perry 2013, Gibson 2013, cited in c06's note) established that prods were often improvised and coercive rather than uniformly calm, making this contested and unquoted.",
+      "fix": "needs a source",
+      "domain": "fact",
+      "line": 275
+    },
+    {
+      "quote": "Rooms take years to get there. You took one question. And a room like that commits.",
+      "why": "Claim c13. 'Rooms take years to get there' is an unsupported factual assertion about groupthink. Neither Janis (1972) nor c13's source states that groupthink requires years to develop; it can emerge in ad hoc task forces or cohesive groups under pressure regardless of how long the room has existed.",
+      "fix": "needs a source",
+      "domain": "fact",
+      "line": 171
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 272,
+      "quote": "> TAG: Slight Shock. Moderate. Strong. Very Strong. Intense. Extreme Intensity. Danger: Severe Shock. XXX",
+      "fix": "Add the row citation (c07) to the tag line so that the source for the shock generator labels is tracked for the description at publish: '> TAG: Slight Shock. Moderate. Strong. Very Strong. Intense. Extreme Intensity. Danger: Severe Shock. XXX (c07)'"
+    },
+    {
+      "line": 125,
+      "quote": "For five copies, he would have nodded for almost anyone.",
+      "fix": "Tie the high compliance explicitly to the placebic reason condition from Langer (c03): 'For five copies with any reason at all, he would have nodded for almost anyone.'"
+    },
+    {
+      "line": 169,
+      "quote": "Psychologists have a name for a room where nobody says no. Groupthink. (c13)",
+      "fix": "Align phrasing closer to Janis's definition of conformity pressure in c13: 'Psychologists have a name for when a room refuses to disagree. Groupthink. (c13)'"
+    }
+  ],
+  "keep": [
+    {
+      "line": 127,
+      "quote": "In the real study, at a real photocopier, an empty reason worked about as well as a real one, for a small favour. (c03)"
+    },
+    {
+      "line": 130,
+      "quote": "Strangers were far more willing to say yes to everyday requests than you ever believed. You had simply never asked. (c02)"
+    },
+    {
+      "line": 197,
+      "quote": "In 1959, students did an hour of dull work, then were paid to tell the next person it was fun. Paid 1 dollar, they later rated the work more enjoyable. Paid 20 dollars, they didn't. (c05)"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "4ffedee7d27956cdf15c77558f45a4469e1223abf81e3d7f0406d6fb51f0025d",
+  "draft_sha256": "c58b3b219954831834bdf67d728a9ac871d7036e3a5a75a944dacc101f26c421"
+}
