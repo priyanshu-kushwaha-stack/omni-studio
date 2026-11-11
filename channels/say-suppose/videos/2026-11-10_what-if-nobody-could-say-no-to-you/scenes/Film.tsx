@@ -74,6 +74,10 @@ export const Film: React.FC<FilmProps> = (props) => {
           volume={(f) => scoreVolume(f + dark, clips) * Math.min(1, f / XFADE)
             * Math.min(1, Math.max(0, (totalFrames - (f + dark)) / OUTRO))} />
       </Sequence>
+      {/* A room tone about 50 dB under the voice for the whole film (make_sfx.sh), so no moment is digital silence;
+       *  it fades over the last few frames only. */}
+      <Audio src={staticFile("sfx/roomtone.wav")} loop
+        volume={(f) => Math.min(1, f / 6, Math.max(0, (totalFrames - f) / 6))} />
     </AbsoluteFill>
   );
 };

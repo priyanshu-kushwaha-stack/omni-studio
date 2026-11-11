@@ -8,4 +8,7 @@ ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.12:c=white:a=0.9" -f lavfi -i "sin
   "[0]highpass=f=1800,lowpass=f=7000,afade=t=out:st=0.005:d=0.07[n];[1]volume=0.5,afade=t=out:st=0.0:d=0.06[t];[n][t]amix=inputs=2:normalize=0,afade=t=in:d=0.008,lowpass=f=5000,volume=0.45,aresample=48000" snap.wav
 # The mother's slow, soft flip.
 ffmpeg -v error -y -i snap.wav -af "atempo=0.5,lowpass=f=3500,volume=0.6,afade=t=out:st=0.05:d=0.18" snap-soft.wav
+
+# A very low room tone under the whole film (style.md, sound: an ambience bed), about -60 dBFS, 10 s, looped by Film.tsx.
+ffmpeg -v error -y -f lavfi -i "anoisesrc=d=10:c=pink:a=0.004,lowpass=f=3000,aresample=48000" -af "afade=t=in:d=0.05,afade=t=out:st=9.95:d=0.05" roomtone.wav
 echo "$out"

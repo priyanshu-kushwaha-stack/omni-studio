@@ -3,11 +3,11 @@
   "project_id": "2026-11-10_what-if-nobody-could-say-no-to-you",
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-11T07:12:33.680317+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-11T07:46:21.767827+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
@@ -17,6 +17,18 @@
     "first_cut": "renders/first-cut-720p.mp4 (git-ignored), 1280x720",
     "room": "room-g2.md, review-g2-round1.md, review-g2-round2.md",
     "owner": "'Script is right' (2026-11-11)",
-    "awaiting": "omni approve by the owner (G2 story lock)"
+    "awaiting": "omni approve by the owner (G2 story lock)",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-11T07:46:21.733588+00:00",
+      "via": "omni approve",
+      "proof": "a8a65df067fe4383f89d18073df398814c99baed6a9c2926b4a907a90bceb763",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-10_what-if-nobody-could-say-no-to-you/renders/first-cut-720p.mp4",
+        "sha256": "4eadaa7cf2b3f6b7dee7d3ff34a45bc79ac27eb76797fb9905da206e53e4d0b4",
+        "at": "2026-11-11T07:46:21.733588+00:00",
+        "proof": "b162546cbe6fdf638c39682784bee05431019c3ba34fece41b0c565fa8fdc7f8"
+      }
+    }
   }
 }
