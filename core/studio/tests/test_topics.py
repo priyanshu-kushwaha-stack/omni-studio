@@ -146,3 +146,16 @@ def test_pitch_with_no_json_in_the_answer_raises(monkeypatch):
 
     with pytest.raises(ValueError, match="no JSON"):
         T.pitch("gpt-5.6-sol-high", "pitch", runner=fake)
+
+
+def test_pitch_accepts_raw_newlines_in_strings_and_saves_the_raw_answer(tmp_path):
+    # Gemini's answer on 2026-11-11 failed json.loads: a literal newline inside a string. Keep it, and keep the raw text.
+    body = '```json\n{"topics": [{"title": "Line one\nline two"}]}\n```'
+
+    def fake(cmd, **kw):
+        return type("P", (), {"returncode": 0, "stdout": json.dumps({"result": body})})()
+
+    raw = tmp_path / "gemini.raw.txt"
+    got = T.pitch("gemini-4-argon-high", "pitch", runner=fake, raw_path=raw)
+    assert got["topics"][0]["title"] == "Line one\nline two"
+    assert raw.read_text() == body
