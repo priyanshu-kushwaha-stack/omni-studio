@@ -1,0 +1,18 @@
+channel: say-suppose
+format: story
+stage: proposal
+severity: high
+example: '2026-11-11_what-if-you-doubled-your-money-every-day G1: eight room rounds
+  (one ordinary, seven owner-notes) spent the gate''s 16-call cap; the claims check
+  (gemini-3.8-flash-high, limit 3 blockers) returned exactly 3 fact blockers every
+  round, each new round''s three smaller than the last (an off-by-one night, ''$365.5''
+  vs ''surpassed $365'', ''universe'' vs ''observable universe'', ''seventeen thousand''
+  without ''about''), so no round was ever a candidate and the gate cannot reach awaiting_human'
+recorded_at: '2026-11-11T19:08:52.759331+00:00'
+note: 'Needs an owner/studio decision, not a film-session change: (1) owner-notes
+  rounds should not share the ordinary derived cap (derived_cap counts OWNER_ROUNDS),
+  or the cap should scale with owner notes that rewrite the premise; (2) at G1 the
+  fact seat could block only on claims the packaging states as true with no row, and
+  pass precision nits as suggestions; (3) or the claims seat''s blocker limit forces
+  it to fill three slots. The owner rewrote the premise twice at this gate (no viewer;
+  not India), which a 2-owner-round budget does not cover.'

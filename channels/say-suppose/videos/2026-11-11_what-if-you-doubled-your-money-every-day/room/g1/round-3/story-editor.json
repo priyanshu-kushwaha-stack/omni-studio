@@ -1,0 +1,65 @@
+{
+  "call_id": "ba2eb3eec3314bafa8606dc4eecd720a",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "must-pass compliance": 8,
+    "causal structure": 8,
+    "stakes and payoff": 9,
+    "opening and ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "The rice board (the picture only this premise can show; `> SCENE:` at G2)",
+      "why": "Check #8 fails: the premise-specific picture is deferred instead of being named in a `> SCENE:` line at G1.",
+      "fix": "Insert: `> SCENE: One grain doubles across the chai-counter chessboard; from square thirty-three, rice buries the stall, the lane, the flyover and the city.`",
+      "domain": "story",
+      "line": 38
+    },
+    {
+      "quote": "Kabir: \"Twenty lakh.\" You: \"fifty?\" Wagenaar and Sagaria, 1975: asked to extend a doubling series, most people guess a small fraction of the truth, and being told doesn't fix it. Kabir writes ten lines on his laptop and runs it: day thirty-one, \u20b9107 crore.",
+      "why": "Check #7 fails: three competing amounts crowd the misconception instead of letting one number break the wrong belief.",
+      "fix": "Replace with: `You both guess it might cover a flat. Wagenaar and Sagaria found that people badly underestimate doubling even after being warned. Kabir runs the program. The screen shows \u20b9107 crore.`",
+      "domain": "story",
+      "line": 35
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 42,
+      "quote": "The choice is morally live: you promised Baba his eleven, and keeping that promise leaves too much to reach zero; you need his yes before midnight, and you don't ask.",
+      "fix": "Owner approval required for the protected dilemma: sharpen the two right answers to `Honor Baba's refusal and miss zero, or erase his eleven EMIs without asking and take away his choice.`"
+    },
+    {
+      "line": 46,
+      "quote": "That night. Dadi's phone, face up on the dabba, an account she has never used. BALANCE: 1. Clack. 2.",
+      "fix": "Owner approval required because RESULT is protected: place this sequel image before the morning stall beat, so the final story image remains you choosing the notebook over your zero balance\u2014the opposite of the opening."
+    },
+    {
+      "line": 34,
+      "quote": "A phone, the one Kabir wanted. \"Why do YOU have the phone I wanted?\"",
+      "fix": "Make this purchase cause the next complication: you buy Kabir his dream phone; he uses it to film the balance, and therefore unfamiliar relatives know your name by the next beat."
+    }
+  ],
+  "keep": [
+    {
+      "line": 39,
+      "quote": "Not when it's new. Your double is her half."
+    },
+    {
+      "line": 40,
+      "quote": "Things are expensive now, beta. The one keeps it going."
+    },
+    {
+      "line": 43,
+      "quote": "for the part that ends."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "6a80f1d891caf35f3dcfd685593f3b68cc35039e5b1089a8bb42c8cc1b458e79",
+  "draft_sha256": "4ca64da284849da9f181fb94148d050dc3ac2d0ba8e7c353f2d2ec6942ba8667"
+}

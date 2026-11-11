@@ -1,0 +1,69 @@
+{
+  "call_id": "37821bd0bff1409fa65c3726f8ba62c6",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 6
+  },
+  "blockers": [
+    {
+      "quote": "Every debt on Earth: about $365.5 trillion (IIF Global Debt Monitor, H1 2026; claims.md c02).",
+      "why": "Overstated and unsupported decimal precision under claim c02. The verbatim quote from the IIF Global Debt Monitor states that global debt 'surpassed $365 trillion in H1 2026', supporting 'about $365 trillion' or 'surpassed $365 trillion', but not '$365.5 trillion'.",
+      "fix": "Every debt on Earth: about $365 trillion (c02).",
+      "domain": "fact",
+      "line": 43
+    },
+    {
+      "quote": "Misconception first: you put down a deposit on a flat with a view, half a million's worth, sure that by month's end you'll manage a bigger one. Wagenaar and Sagaria (1975): asked to extend a doubling series, people guess a small fraction of the truth, and being told doesn't fix it.",
+      "why": "The wrong belief is described unfairly as a straw man and contradicts the cited study under claim c05. A buyer would not commit a non-refundable deposit on a half-million flat if they were already sure they would manage a bigger one by month's end. Under Wagenaar and Sagaria (1975) (c05), people grossly underestimate doubling because they intuitively extrapolate linearly, believing growth will plateau or add only modest sums (e.g. reaching one or two million), which is why they commit to the half-million flat as a permanent home before day thirty-one ($1,073,741,824) shatters that intuitive underestimation. The line also lacks the required inline (c05) citation.",
+      "fix": "Misconception first: you put down a deposit on a flat with a view, half a million's worth, sure that doubling will level off and leave you with just enough for this one. Wagenaar and Sagaria (1975) (c05): asked to extend a doubling series, people guess a small fraction of the truth, and being told doesn't fix it.",
+      "domain": "fact",
+      "line": 36
+    },
+    {
+      "quote": "\"The computer's number box is sixty-four bits. And because the bank counts in cents, day fifty-eight overflows the sixty-fourth bit into the negative.\"",
+      "why": "Overstated and technically unsupported under claim c06. Claim c06's note explicitly states that signed integer wrapping is undefined in standard C and typical rather than guaranteed ('so the film says \"on most systems\"'), but the draft asserts it unconditionally. Furthermore, 100 x 2^57 cents exceeds 2^63 - 1, which sets the 64th bit (the sign bit); it does not 'overflow the sixty-fourth bit' (which would mean exceeding 2^64). The line also lacks the inline (c06) citation.",
+      "fix": "\"On most computer systems, the number box is sixty-four bits. And because the bank counts in cents, day fifty-eight overflows into a negative nineteen-digit number (c06).\"",
+      "domain": "fact",
+      "line": 43
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 40,
+      "quote": "Cantillon, nearly three hundred years ago: new money raises prices first where it is spent first.",
+      "fix": "needs a source (add a row to claims.md for Richard Cantillon's Cantillon effect before G2 script lock)."
+    },
+    {
+      "line": 38,
+      "quote": "He sighs: \"Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing. The Bank of England wrote that down in 2014.\"",
+      "fix": "He sighs: \"Most money, sir, is made when a bank lends (c04). And when a loan is repaid, the money doesn't go anywhere. It stops existing. The Bank of England wrote that down in 2014 (c03).\""
+    },
+    {
+      "line": 32,
+      "quote": "If you counted it out loud, one dollar a second, you'd finish in thirty-four years.",
+      "fix": "If you counted it out loud, one dollar a second, you'd finish in thirty-four years (c08)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 8,
+      "quote": "by day forty-eight it is bigger than everything the whole world makes in a year (about $128 trillion, the IMF's 2026 projection; claims.md c01)"
+    },
+    {
+      "line": 40,
+      "quote": "The last square alone holds 9,223,372,036,854,775,808 grains; the whole board 18,446,744,073,709,551,615"
+    },
+    {
+      "line": 43,
+      "quote": "Keep going and on day two hundred and sixty-seven there are more dollars than atoms in the observable universe (about 10^80)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "35a524bc9064aca0f7d03bf0f4f01b300280492df77d1d4faf93485d490cd399",
+  "draft_sha256": "21751b1bd2223009737f379bc52f84bd4627d3f62faf2d96c24e1b70c18cd244"
+}

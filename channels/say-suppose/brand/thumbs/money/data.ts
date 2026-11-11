@@ -1,8 +1,8 @@
 // G1 thumbnail candidates for "What If You Doubled Your Money Every Day?" (2026-11-11). Plain data, no JSX, in the
 // shape of `../batch1.ts` so `../check.py` measures them. Rules: channels/say-suppose/rules/thumbnails.md (K1-K16).
-// The picture: the library's chai stall at night; you large at the left, owning it, your phone held out with its
-// balance spilling off the screen as split-flap digits over the counter; Mangesh bhaiya behind the counter, holding
-// out a tiny glass, shocked. One variable: the tag.
+// The picture: a pier kiosk at night, the bay and the city behind; you large at the left, owning it, your phone held
+// out with its balance spilling off the screen as split-flap digits over the counter; Mrs. Vance behind the counter,
+// holding out a paper cup, shocked. One variable: the tag.
 import { STAND, type Pose } from "../../../../../core/engines/whatif/src/kit/rig/pose";
 import { headOf, type Box, type Hero } from "../batch1";
 
@@ -16,7 +16,7 @@ export interface Candidate {
   id: string;
   variable: string;
   value: string;
-  scene: "chai-stall";
+  scene: "pier-kiosk";
   hero: Hero;
   tag: Tag;
   stake: string | null;
@@ -35,7 +35,7 @@ const SHOW: Pose = { ...STAND, lean: -3, tilt: -5, armF: [70, 62], armB: [-12, 1
 /** You, drawn at screen scale (the thumbnail's stage camera is the identity), cut at the knees like the family. */
 export const HERO: Hero = { x: 470, y: 1740, scale: 4.3, face: "shocked", look: { x: 0.9, y: 0.35 }, pose: SHOW };
 
-/** Mangesh bhaiya behind the counter, facing you: feet hidden by the counter. */
+/** Mrs. Vance behind the counter, facing you: feet hidden by the counter. */
 export const VENDOR = { x: 1190, y: 1250, scale: 2.5 };
 
 /** The counter's top edge on screen. */
@@ -77,11 +77,11 @@ const VALUES: { value: string; lines: string[] }[] = [
   { value: "EVERYTHING.", lines: ["EVERYTHING."] },
 ];
 
-// One variable (K15): the tag. The stall, you, the phone, the digits and the chaiwala are the same on all three.
+// One variable (K15): the tag. The kiosk, you, the phone, the digits and Mrs. Vance are the same on all three.
 export const CANDIDATES: Candidate[] = VALUES.map((v, i) => {
   const tag: Tag = { text: v.value, lines: v.lines, x: 48, y: 44, size: 190, tilt: -3, align: "right" };
   return {
-    video: VIDEO, id: "abc"[i], variable: "the tag", value: v.value, scene: "chai-stall",
+    video: VIDEO, id: "abc"[i], variable: "the tag", value: v.value, scene: "pier-kiosk",
     hero: HERO, tag, stake: BALANCE, pointers: 0,
     keys: {
       head: headBox(HERO), tag: tagBox(tag),

@@ -1,0 +1,73 @@
+{
+  "call_id": "43d795678c10432988c70de8a7f00e70",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 9,
+    "causal beat chain": 6,
+    "stakes and reversal": 8,
+    "opening and close": 7,
+    "premise-specific imagery": 9
+  },
+  "blockers": [
+    {
+      "quote": "You put down a deposit on a flat with a view, half a million's worth, sure that doubling grows slowly enough to leave you with just enough for this one.",
+      "why": "Check #5 But / therefore fails. Because the power doubles the remaining balance, this deposit\u2014and every later transfer\u2014must change all subsequent balances and crossover days, but the outline continues using the untouched powers-of-two sequence.",
+      "fix": "Either recalculate every later balance and deadline after each withdrawal, or make the uses leave the doubling account untouched. For this beat: sign a binding purchase agreement payable on day thirty-one, with no deposit leaving the account; apply the same accounting explicitly to the camera, Nana's transfer, the loan test and the giving montage.",
+      "domain": "story",
+      "line": 36
+    },
+    {
+      "quote": "You look at your balance out of habit: 0. \"Mrs. Vance. On the tab.\"",
+      "why": "Check #4 A habit, then the change fails. The opening habit is checking the balance before deciding and asking for a tab when it is thin; the ending repeats that exact sequence.",
+      "fix": "Morning: you point to the notebook before touching the phone. Mrs. Vance writes two. Only then does the phone light up with 0; you glance once and turn it face-down.",
+      "domain": "story",
+      "line": 47
+    },
+    {
+      "quote": "Day fifteen: the camera Theo wanted; he points it at your balance and never puts it down.",
+      "why": "Check #6 Every use has a gap fails. You expect to obtain the camera and obtain exactly the camera; no surprising result turns the use.",
+      "fix": "Day fifteen: you expect the camera to preserve a private joke between you and Theo; instead it records proof that escapes the flat, so by day twenty-five strangers on the pier know your name.",
+      "domain": "story",
+      "line": 36
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "Mr. Halloran, bored, emails him the loan-payoff batch template, including the creditor account map it requires.",
+      "fix": "Have Halloran send only a harmless sample format; Theo builds and tests the dry run, while Halloran supplies and authorizes the real creditor map during the climax."
+    },
+    {
+      "line": 44,
+      "quote": "The choice is playable: you can save everyone's money only by choosing for three billion people (story figure). No vote. No permission.",
+      "fix": "Make consent alter the action: Halloran can process opted-in loans safely, but reaching zero requires an unauthorized global batch. The two defensible choices then become permission versus preventing collapse."
+    },
+    {
+      "line": 43,
+      "quote": "Day two hundred and sixty-seven. More dollars than atoms in the universe.",
+      "fix": "Move this projection to the sequel hook or cut it here; proceed directly from the computer overflow to Halloran's debt call so the live day-forty-nine deadline keeps tightening."
+    }
+  ],
+  "keep": [
+    {
+      "line": 41,
+      "quote": "Your double is her half."
+    },
+    {
+      "line": 38,
+      "quote": "That is the most important boring sentence in this video."
+    },
+    {
+      "line": 45,
+      "quote": "for the part that ends."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "22e4793e358f6a076a60bdab2ac609f56a8cd7bd29d48aa0b4e4aeca0633091a",
+  "draft_sha256": "57cf6240c16f40555e5f92c16fd6e423b7db9236d51d1efead210a13ef34262f"
+}

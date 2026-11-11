@@ -1,0 +1,69 @@
+{
+  "call_id": "e49f823f075d451299d8a626a8f6c673",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 8
+  },
+  "blockers": [
+    {
+      "quote": "Whatever is in your bank account at midnight is doubled by morning, starting from the one-rupee coin your grandmother sends you on your birthday, and it will not stop: in a month it buys your lane, in seven weeks it is bigger than all the cash in India, and ten nights after that no computer on earth can hold the number.",
+      "why": "The premise states as fact that \"ten nights after that no computer on earth can hold the number.\" This is an unsupported factual overstatement stated as true in the packaging. Modern computers routinely handle arbitrarily large numbers using arbitrary-precision integers (BigInt / BigInteger) or database decimal types, and standard 128-bit integers hold up to 3.4 x 10^38. What overflows on day fifty-eight is specifically a standard signed 64-bit integer counting in paise (max 9.22 x 10^18, nineteen digits), which is a data-type limit, not a limit of all computers on Earth. Needs a source.",
+      "fix": "Whatever is in your bank account at midnight is doubled by morning, starting from the one-rupee coin your grandmother sends you on your birthday, and it will not stop: in a month it buys your lane, in seven weeks it is bigger than all the cash in India, and ten nights after that it overflows the number box most computers count in.",
+      "domain": "fact",
+      "line": 8
+    },
+    {
+      "quote": "| c | EVERYTHING. | C | Scale: a person at a chai stall holding more than there is |",
+      "why": "In round 1, Title C (\"What If You Had More Money Than Exists?\") was struck as an overclaim (note 3) because day forty-seven's balance (\u20b970.4 lakh crore) exceeds physical cash in India (~\u20b943 lakh crore), but is far less than broad money in India (~\u20b9250 lakh crore) or global wealth ($450T+). While Title C was corrected in line 85 to \"What If You Had More Cash Than India?\", the thumbnail packaging table in line 113 still explicitly promises \"Scale: a person at a chai stall holding more than there is\". Stating on the packaging that \u20b970.4 lakh crore is \"more than there is\" remains an unsupported factual overclaim. Needs a source.",
+      "fix": "| c | EVERYTHING. | C | Scale: a person at a chai stall holding more cash than all of India |",
+      "domain": "fact",
+      "line": 113
+    },
+    {
+      "quote": "Day fifty-eight, the number flips to a minus with seventeen digits.",
+      "why": "A signed 64-bit integer counting in paise overflows on day fifty-eight (100 x 2^57 = 14,411,518,807,585,587,200 paise) to -4,035,225,266,123,964,416, which has nineteen digits. Stating that it flips to a minus with \"seventeen digits\" contradicts the arithmetic and the very next sentence explaining that the box holds nineteen digits of paise (seventeen digits would be rupees, but the program counts in paise). Needs a source.",
+      "fix": "Day fifty-eight, the number flips to a minus with nineteen digits.",
+      "domain": "fact",
+      "line": 41
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 38,
+      "quote": "Square thirty-one onward, the second half of the board: rice buries the stall, the lane, the flyover, the city.",
+      "fix": "Square thirty-three onward, the second half of the board: rice buries the stall, the lane, the flyover, the city."
+    },
+    {
+      "line": 35,
+      "quote": "Wagenaar and Sagaria, 1975: asked to extend a doubling series, most people guess a small fraction of the truth, and being told doesn't fix it.",
+      "fix": "Wagenaar and Sagaria (1975): asked to extend a doubling series, most people guess a small fraction of the truth (to source at G2)."
+    },
+    {
+      "line": 43,
+      "quote": "Six p.m. RTGS runs all night with no upper limit (to source at G2).",
+      "fix": "Six p.m. RTGS runs 24x7 with no upper limit (to source at G2)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 35,
+      "quote": "The series fact, dry: every new day is bigger than all the days before it added together. \"Today is always your whole life so far, plus one.\""
+    },
+    {
+      "line": 36,
+      "quote": "\"Most money, sir, is made when a bank lends. And when a bank loan is repaid, the money doesn't go anywhere. It stops existing.\" Narrator: \"That is the most important boring sentence in this video.\""
+    },
+    {
+      "line": 41,
+      "quote": "All the notes and coins in India come to about \u20b943 lakh crore. You could not withdraw it even if the bank let you; the notes don't exist."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f9d33bec7dbd2dcbf18699a53751b5090a506a0693a2ef1d9e7a8c8b45535f98",
+  "draft_sha256": "98801aaa2b0be53d33a76fa1ec2b147960d8637ca68f78c64551897a69774298"
+}

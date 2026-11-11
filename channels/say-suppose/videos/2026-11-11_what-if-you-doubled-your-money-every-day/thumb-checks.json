@@ -13,9 +13,9 @@
     "pass": true
    },
    "K4": {
-    "head_lum": 0.275,
-    "ring_lum": 0.035,
-    "ratio": 3.83,
+    "head_lum": 0.33,
+    "ring_lum": 0.061,
+    "ratio": 3.43,
     "pass": true
    },
    "K5": {
@@ -29,14 +29,14 @@
     "pass": true
    },
    "K9": {
-    "colourfulness": 64.8,
-    "mean_lum": 0.127,
+    "colourfulness": 60.1,
+    "mean_lum": 0.15,
     "pass": true
    },
    "K10": {
-    "edge_lum": 0.055,
-    "edge_vs_white": 10.04,
-    "edge_vs_dark": 1.91,
+    "edge_lum": 0.065,
+    "edge_vs_white": 9.14,
+    "edge_vs_dark": 2.1,
     "note": "edge contrast only; 'found first' is the K1/K2 cold read"
    },
    "K11": {
@@ -55,9 +55,9 @@
     "pass": true
    },
    "K4": {
-    "head_lum": 0.275,
-    "ring_lum": 0.035,
-    "ratio": 3.83,
+    "head_lum": 0.33,
+    "ring_lum": 0.061,
+    "ratio": 3.43,
     "pass": true
    },
    "K5": {
@@ -71,14 +71,14 @@
     "pass": true
    },
    "K9": {
-    "colourfulness": 68.9,
-    "mean_lum": 0.134,
+    "colourfulness": 65.0,
+    "mean_lum": 0.156,
     "pass": true
    },
    "K10": {
-    "edge_lum": 0.055,
-    "edge_vs_white": 10.04,
-    "edge_vs_dark": 1.91,
+    "edge_lum": 0.065,
+    "edge_vs_white": 9.14,
+    "edge_vs_dark": 2.1,
     "note": "edge contrast only; 'found first' is the K1/K2 cold read"
    },
    "K11": {
@@ -97,9 +97,9 @@
     "pass": true
    },
    "K4": {
-    "head_lum": 0.275,
-    "ring_lum": 0.035,
-    "ratio": 3.84,
+    "head_lum": 0.33,
+    "ring_lum": 0.061,
+    "ratio": 3.44,
     "pass": true
    },
    "K5": {
@@ -113,14 +113,14 @@
     "pass": true
    },
    "K9": {
-    "colourfulness": 69.8,
-    "mean_lum": 0.137,
+    "colourfulness": 66.0,
+    "mean_lum": 0.157,
     "pass": true
    },
    "K10": {
-    "edge_lum": 0.055,
-    "edge_vs_white": 10.04,
-    "edge_vs_dark": 1.91,
+    "edge_lum": 0.065,
+    "edge_vs_white": 9.14,
+    "edge_vs_dark": 2.1,
     "note": "edge contrast only; 'found first' is the K1/K2 cold read"
    },
    "K11": {

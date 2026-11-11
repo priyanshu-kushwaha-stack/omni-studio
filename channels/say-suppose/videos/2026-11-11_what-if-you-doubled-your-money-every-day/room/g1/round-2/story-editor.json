@@ -1,0 +1,72 @@
+{
+  "call_id": "55a1766bb2b8496f9f94ea8b498139b8",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "causality": 8,
+    "stakes_and_payoff": 9,
+    "opening_and_close": 6
+  },
+  "blockers": [
+    {
+      "quote": "That night. Dadi's phone, face up on the dabba, an account she has never used. BALANCE: 1. Clack. 2. Kabir's day-three theory was right: it's her rupee.",
+      "why": "No new power rule after the halfway point: the ending reveals that the power follows the rupee, contradicting the stated rule that your balance doubles and weakening the zero-at-midnight victory.",
+      "fix": "Replace with: \u201cThat night, Kabir opens the loan map. Every marker is gone. Messages fill his phone from people waking up debt-free. \u2018Bro. What did we change?\u2019\u201d",
+      "domain": "story",
+      "line": 46
+    },
+    {
+      "quote": "the thumbnail's frame by 0:08.",
+      "why": "Checks #2 and #3 fail: the thumbnail situation arrives after seven seconds, and the doubling promise is not guaranteed within the first ten to fifteen seconds.",
+      "fix": "Open on the exact thumbnail frame at 0:00 and begin: \u201cEvery midnight, your money doubles. Day thirty-one: this screen can buy your whole lane. Tonight it doubles again\u2014and the people you love pay for it.\u201d",
+      "domain": "story",
+      "line": 30
+    },
+    {
+      "quote": "That's all a note ever was. Not a thing. Mangesh bhaiya's notebook, with the whole country's handwriting in it.",
+      "why": "Check #12 fails: this summarizes the lesson after the story has already shown it instead of leaving inside the final image.",
+      "fix": "Replace with: \u201cMangesh bhaiya: \u2018Still checking?\u2019 You lock the phone and point to the notebook. He writes ten.\u201d",
+      "domain": "story",
+      "line": 45
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 42,
+      "quote": "The choice is morally live: you promised Baba his eleven; respecting him leaves too much to reach zero, using them breaks your word.",
+      "fix": "Do not call this morally live when preventing national collapse clearly wins. Make the beat about earning Baba's consent before midnight, or add a consequence that makes preserving his loan genuinely defensible."
+    },
+    {
+      "line": 34,
+      "quote": "Bro. Double is double. Double is always more.",
+      "fix": "Make this cause the next beat: \u201cTherefore you make him prove it: you each write down day thirty-one before he runs the program.\u201d"
+    },
+    {
+      "line": 43,
+      "quote": "Six p.m. RTGS runs all night with no upper limit (to source at G2).",
+      "fix": "Let the first repayment total fail because balances changed during the day, forcing Kabir to rerun his planted program and calculate the live remainder before Baba offers the eleven."
+    }
+  ],
+  "keep": [
+    {
+      "line": 24,
+      "quote": "If I had all the money, would there be anything left to buy?"
+    },
+    {
+      "line": 39,
+      "quote": "Your double is her half."
+    },
+    {
+      "line": 43,
+      "quote": "for the part that ends."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "39e89d691ddd1a8f5113ff39a56381bef9450e4ad25e7d02a21e63f9b5bb5cc5",
+  "draft_sha256": "98801aaa2b0be53d33a76fa1ec2b147960d8637ca68f78c64551897a69774298"
+}

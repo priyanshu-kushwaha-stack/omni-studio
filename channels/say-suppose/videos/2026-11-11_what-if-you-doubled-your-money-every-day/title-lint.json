@@ -1,5 +1,6 @@
 {
  "tool": "~/.claude/skills/yt-package/title.py",
+ "round": 4,
  "written": [
   {
    "title": "What If You Doubled Your Money Every Day?",
@@ -40,17 +41,21 @@
    ]
   },
   {
-   "title": "What If You Had More Money Than Exists?",
-   "chars": 39,
-   "score": 94,
+   "title": "What If You Made More Than the Whole World?",
+   "chars": 43,
+   "score": 80,
    "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Made More Than the Whole...\" - check the subject survives"
+    ],
     [
      "no-number",
      "no number, date or name - the most reliable single fix"
     ]
    ],
    "good": [
-    "39 characters, inside the 60-character desktop cut",
+    "43 characters, inside the 60-character desktop cut",
     "open question in the title"
    ]
   },
@@ -123,25 +128,6 @@
    ]
   },
   {
-   "title": "What If You Became the Richest Person Ever?",
-   "chars": 43,
-   "score": 80,
-   "issues": [
-    [
-     "mobile",
-     "a mobile feed shows about \"What If You Became the Richest Person...\" - check the subject survives"
-    ],
-    [
-     "no-number",
-     "no number, date or name - the most reliable single fix"
-    ]
-   ],
-   "good": [
-    "43 characters, inside the 60-character desktop cut",
-    "open question in the title"
-   ]
-  },
-  {
    "title": "What If You Could Never Spend It Fast Enough?",
    "chars": 45,
    "score": 80,
@@ -161,13 +147,13 @@
    ]
   },
   {
-   "title": "What If You Had to Give Away a Billion Today?",
-   "chars": 45,
+   "title": "What If You Had to Give Away a Trillion Today?",
+   "chars": 46,
    "score": 80,
    "issues": [
     [
      "mobile",
-     "a mobile feed shows about \"What If You Had to Give Away a Billion...\" - check the subject survives"
+     "a mobile feed shows about \"What If You Had to Give Away a Trillion...\" - check the subject survives"
     ],
     [
      "no-number",
@@ -175,7 +161,22 @@
     ]
    ],
    "good": [
-    "45 characters, inside the 60-character desktop cut",
+    "46 characters, inside the 60-character desktop cut",
+    "open question in the title"
+   ]
+  },
+  {
+   "title": "What If You Owned More Than Earth Owed?",
+   "chars": 39,
+   "score": 94,
+   "issues": [
+    [
+     "no-number",
+     "no number, date or name - the most reliable single fix"
+    ]
+   ],
+   "good": [
+    "39 characters, inside the 60-character desktop cut",
     "open question in the title"
    ]
   }
@@ -231,20 +232,34 @@
   {
    "id": "C",
    "thumb": "EVERYTHING.",
-   "title": "What If You Had More Money Than Exists?",
-   "chars": 39,
-   "score": 98,
+   "title": "What If You Made More Than the Whole World?",
+   "chars": 43,
+   "score": 84,
    "issues": [
+    [
+     "mobile",
+     "a mobile feed shows about \"What If You Made More Than the Whole...\" - check the subject survives"
+    ],
     [
      "no-number",
      "no number, date or name - the most reliable single fix"
     ]
    ],
    "good": [
-    "39 characters, inside the 60-character desktop cut",
+    "43 characters, inside the 60-character desktop cut",
     "open question in the title",
     "thumbnail and title carry different words"
    ]
+  }
+ ],
+ "struck": [
+  {
+   "title": "What If You Had More Money Than Exists?",
+   "by": "claims check, round 1 (overclaim)"
+  },
+  {
+   "title": "What If You Had More Cash Than India?",
+   "by": "owner, round 3: the story no longer revolves around India"
   }
  ],
  "note": "A with DAY 31. flags 'duplicate' on 'day': a time marker, allowed by K7 for a day story (rules/thumbnails.md)."

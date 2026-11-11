@@ -1,0 +1,69 @@
+{
+  "call_id": "dd5c51524d71400f8d687433416c4982",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 8
+  },
+  "blockers": [
+    {
+      "quote": "\"You are the richest person in history and a tax on your own grandmother.\"",
+      "why": "At day forty, the balance is \u20b954,976 crore (approx. $6.55 billion USD). Stating that this makes you \"the richest person in history\" is an extreme factual overstatement: modern fortunes exceed $200 billion (\u20b916 lakh crore), and historical fortunes like Mansa Musa's and Rockefeller's exceeded $300\u2013$400 billion equivalent. A fortune of \u20b955,000 crore does not rank in India's top ten, let alone world history. The balance does not pass the richest fortunes in history until day forty-six (~\u20b935 lakh crore) or day forty-seven (\u20b970.4 lakh crore). Needs a source.",
+      "fix": "\"You have more money than anyone you will ever meet, and you are a tax on your own grandmother.\" (or defer the \"richest person in history\" claim to day forty-seven, when the balance reaches \u20b970.4 lakh crore).",
+      "domain": "fact",
+      "line": 39
+    },
+    {
+      "quote": "18 quintillion grains on the last square.",
+      "why": "On a doubling chessboard starting with 1 grain on square one, square sixty-four (the last square) contains 2^63 grains = 9,223,372,036,854,775,808 grains (~9.22 quintillion). The figure of 18,446,744,073,709,551,615 grains (~18.4 quintillion) is 2^64 - 1, which is the sum of the entire board (all 64 squares added together), as correctly stated in line 38. Attributing 18 quintillion grains to \"the last square\" is mathematically false and overstates the final square by a factor of two. Needs a source.",
+      "fix": "9 quintillion grains on the last square (18 quintillion on the whole board).",
+      "domain": "fact",
+      "line": 51
+    },
+    {
+      "quote": "\"The computer's number box is a chessboard too. Sixty-four squares. You're on forty-seven.\"",
+      "why": "Kabir's program flips to negative on day fifty-eight because it counts in paise: 100 * 2^57 paise overflows the signed 64-bit integer limit (2^63 - 1) on day fifty-eight, setting the 64th bit (the sign bit). On day forty-seven, counting in paise (100 * 2^46 = 7.04 * 10^15 paise), the value is ~2^52.64, placing it on the 53rd bit (square 53 of 64). Stating \"You're on forty-seven\" contradicts the premise's own overflow math: if day forty-seven were square 47, day fifty-eight would be square 58 and would not overflow a 64-bit integer until day sixty-four. Needs a source.",
+      "fix": "\"The computer's number box is a chessboard too. Sixty-four squares. And because you count in paise, day fifty-eight is square sixty-four.\"",
+      "domain": "fact",
+      "line": 41
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 8,
+      "quote": "in seven weeks it is bigger than all the cash in India, and ten nights after that it overflows the number box most computers count in.",
+      "fix": "in seven weeks it is bigger than all the cash in India, and eleven nights after that it overflows the number box most computers count in. (Day forty-seven passes India's cash; day fifty-eight is eleven nights later, though exactly ten nights after day forty-eight's loan threshold)."
+    },
+    {
+      "line": 36,
+      "quote": "Mr. Deshmukh calls: large cash movements are reported (to source at G2).",
+      "fix": "Mr. Deshmukh calls: suspicious account credits are reported (to source at G2). (In banking terminology, digital balance doubling is an electronic credit or STR flag, not a physical cash movement)."
+    },
+    {
+      "line": 35,
+      "quote": "Wagenaar and Sagaria, 1975: asked to extend a doubling series, most people guess a small fraction of the truth, and being told doesn't fix it.",
+      "fix": "Wagenaar and Sagaria (1975): asked to extend a doubling series, most people guess a small fraction of the truth, and being told doesn't fix it (to source at G2)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 35,
+      "quote": "The series fact, dry: every new day is bigger than all the days before it added together. \"Today is always your whole life so far, plus one.\""
+    },
+    {
+      "line": 36,
+      "quote": "\"Most money, sir, is made when a bank lends. And when a bank loan is repaid, the money doesn't go anywhere. It stops existing.\" Narrator: \"That is the most important boring sentence in this video.\""
+    },
+    {
+      "line": 41,
+      "quote": "All the notes and coins in India come to about \u20b943 lakh crore. You could not withdraw it even if the bank let you; the notes don't exist."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "ea2b8c5e121ce99298f71d333661b5978a0cf45355d2fe58773f93e5590f1491",
+  "draft_sha256": "4ca64da284849da9f181fb94148d050dc3ac2d0ba8e7c353f2d2ec6942ba8667"
+}

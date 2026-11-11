@@ -1,0 +1,72 @@
+{
+  "call_id": "b39129a01a614827ba3f9301a9c456e4",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "causal_chain": 7,
+    "emotional_payoff": 9,
+    "must_pass_readiness": 7
+  },
+  "blockers": [
+    {
+      "quote": "Theo opens the payoff batch template Mr. Halloran sent him, with its creditor account map; the first batch is rejected for a stale map, and you choose which debts go first before Theo runs it again.",
+      "why": "Check #16 fails: the plant supports a thousand loans, but the climax suddenly discovers and settles debts worldwide. The global payoff directory and cross-bank authority that solve the story were never planted.",
+      "fix": "At 3:00, add a successful test payment to a loan at another bank and establish that the template uses a shared settlement directory containing cross-bank payoff IDs; the climax then scales an operation already demonstrated.",
+      "domain": "story",
+      "line": 45
+    },
+    {
+      "quote": "Day fifteen: $16,384. The camera Theo wanted; he points it at your balance and never puts it down. Day twenty: $524,288.",
+      "why": "Check #7 fails: the misconception beat presents several balances before the single number meant to break the wrong belief, blunting the cause-and-effect turn.",
+      "fix": "Replace with: \u201cDay fifteen: the camera Theo wanted. Day twenty: you put down a deposit on a flat with a view, sure doubling will level off. Before the agent leaves, Theo\u2019s program jumps to day thirty-one: $1,073,741,824.\u201d",
+      "domain": "story",
+      "line": 36
+    },
+    {
+      "quote": "Keep going and on day two hundred and sixty-seven there are more dollars than atoms in the observable universe (about 10^80).",
+      "why": "Check #13 fails: this future fact changes no decision or consequence and lands on neither you nor Theo before the story returns to day forty-nine.",
+      "fix": "Cut the sentence; the world-output, overflow and global-debt figures already drive the deadline.",
+      "domain": "story",
+      "line": 43
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 40,
+      "quote": "A chessboard chalked on the counter, one grain of rice on square one, doubled on each",
+      "fix": "Compress the familiar chessboard demonstration to one cup-to-kiosk match cut, then let the split-flap counter swallowing the unchanged pier carry the jaw drop."
+    },
+    {
+      "line": 61,
+      "quote": "5:05, \"after tonight you never get richer again; nobody tells you.\" 6:15, \"every gift has an address, and the address pays.\"",
+      "fix": "Either add these exact hooks to the timed beats or replace them in the inventory with lines that actually appear there."
+    },
+    {
+      "line": 69,
+      "quote": "Why not withdraw it all in cash and burn it? Answered at 6:25: by day forty-eight your balance is more than everything the world makes in a year; the notes don't exist",
+      "fix": "Put that answer into the actual 6:20 beat: \u201cBurn it? By tomorrow, there aren\u2019t enough notes to print your balance.\u201d Source the cash comparison at G2."
+    }
+  ],
+  "keep": [
+    {
+      "line": 37,
+      "quote": "Today is always your whole life so far, plus one."
+    },
+    {
+      "line": 41,
+      "quote": "Not when it's new. Your double is her half."
+    },
+    {
+      "line": 47,
+      "quote": "Still checking?"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "b6f3ffa5592887cb1b69ad805d84e9cb19203d1d0297d602a5a6ce5bd7ba6e60",
+  "draft_sha256": "56d3a6faf2d4a53223e02a835244a9c67cae0ed20b110b4ba1106a8bdd5a082c"
+}

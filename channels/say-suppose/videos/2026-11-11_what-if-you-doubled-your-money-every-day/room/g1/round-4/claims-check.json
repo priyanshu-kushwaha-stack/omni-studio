@@ -1,0 +1,69 @@
+{
+  "call_id": "2502953029b94d1a8882ec4bd2cb4224",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 7
+  },
+  "blockers": [
+    {
+      "quote": "in forty-eight nights it is bigger than everything the whole world makes in a year, and ten nights after that it overflows the number box most computers count in.",
+      "why": "Two factual issues in packaging: (1) Starting from $1 on Day 1, reaching Day 48 ($140.7 trillion) takes forty-seven nights of doubling (2^47), not forty-eight nights (forty-eight nights reaches Day 49, $281.5 trillion). Ten nights after night 47 is night 57 (Day 58), whereas ten nights after 48 nights would be Day 59. (2) Packaging states as true that your balance surpasses world yearly output, but the underlying figure ($128 trillion in lines 43 and 87) has no claim row in claims.md and needs a source.",
+      "fix": "in forty-seven nights it is bigger than everything the whole world makes in a year (needs a source for yearly world output), and ten nights after that it overflows the number box most computers count in.",
+      "domain": "fact",
+      "line": 8
+    },
+    {
+      "quote": "Scale: day forty-eight delivers it, $140.7 trillion against the world's $128 trillion of yearly output; nothing promised the film doesn't show",
+      "why": "The packaging asserts a specific factual figure of '$128 trillion of yearly output' to justify Title C's promise, but this figure has no claim row in claims.md and needs a source (standard nominal Gross World Product is approximately $105 trillion).",
+      "fix": "Scale: day forty-eight delivers it, $140.7 trillion against the world's yearly output (needs a source); nothing promised the film doesn't show",
+      "domain": "fact",
+      "line": 87
+    },
+    {
+      "quote": "\"The computer's number box is a chessboard too. Sixty-four squares. And because the bank counts in cents, day fifty-eight is square sixty-four.\"",
+      "why": "Mathematically false. Square 64 on a chessboard holds 2^63 units (9,223,372,036,854,775,808). On day fifty-eight, starting from $1 (100 cents) on day one, the balance in cents is 100 * 2^57 = 14,411,518,807,585,587,200 cents, which is ~1.5625 * 2^63 cents. Because 100 is not 2^6 (64), day fifty-eight is not square sixty-four; square 64 of cents was crossed during day fifty-seven. While day fifty-eight does overflow a signed 64-bit integer (2^63 - 1), equating day fifty-eight to square sixty-four is mathematically incorrect.",
+      "fix": "\"The computer's number box is sixty-four bits. And because the bank counts in cents, day fifty-eight overflows the sixty-fourth bit into negative numbers.\"",
+      "domain": "fact",
+      "line": 43
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 43,
+      "quote": "Every debt on Earth: about $365.5 trillion.",
+      "fix": "Every debt on Earth: about $365.5 trillion (to source at G2)."
+    },
+    {
+      "line": 38,
+      "quote": "He sighs: \"Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing. The Bank of England wrote that down in 2014.\"",
+      "fix": "He sighs: \"Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing. The Bank of England wrote that down in 2014 (to source at G2: McLeay et al., Quarterly Bulletin 2014 Q1).\""
+    },
+    {
+      "line": 40,
+      "quote": "Square thirty-three onward, the second half of the board: rice buries the kiosk, the pier, the ships in the bay, the city behind it.",
+      "fix": "Square thirty-three onward, across the second half of the board: rice fills the kiosk, then buries the pier, the ships in the bay, and the city behind it."
+    }
+  ],
+  "keep": [
+    {
+      "line": 32,
+      "quote": "If you counted it out loud, one dollar a second, you'd finish in thirty-four years."
+    },
+    {
+      "line": 37,
+      "quote": "The series fact, dry: every new day is bigger than all the days before it added together. \"Today is always your whole life so far, plus one.\""
+    },
+    {
+      "line": 43,
+      "quote": "Keep going and on day two hundred and sixty-seven there are more dollars than atoms in the observable universe (about 10^80)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "48a51834200987ad5521ebf56e6fafb33012bdf90c9a9f380bd554b98c3fbdb9",
+  "draft_sha256": "d421603379df7ddd42eb749460a308380e6745ad4de2f990930e04e6f36356ea"
+}

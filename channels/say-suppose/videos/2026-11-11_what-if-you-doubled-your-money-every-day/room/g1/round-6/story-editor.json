@@ -1,0 +1,67 @@
+{
+  "call_id": "3401c1f7b6c644eaa160e273e321b18c",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "causal_chain": 8,
+    "hooks_and_packaging": 7,
+    "stakes_and_reversal": 9,
+    "plants_and_payoffs": 6,
+    "ending": 9
+  },
+  "blockers": [
+    {
+      "quote": "Mr. Halloran repairs the account map, and Theo runs it again.",
+      "why": "Check #16 fails: the climax depends on an unplanted global loan-account map and authority to repay strangers' debts. The earlier clearing-file format only explains file syntax.",
+      "fix": "At line 38 replace the clearing-file plant with: \u201cMr. Halloran emails Theo the loan-payoff batch template, including the creditor account map it requires. Theo saves it.\u201d",
+      "domain": "story",
+      "line": 45
+    },
+    {
+      "quote": "Tonight it doubles.",
+      "why": "Check #3 fails: the title\u2019s doubling promise appears at the end of a twenty-second beat, not by about 0:15.",
+      "fix": "Move it to the opening narration: \u201cEvery midnight, your money doubles. A month ago you checked this screen before ordering coffee. This morning you could buy the kiosk, the pier and the ship coming in.\u201d",
+      "domain": "story",
+      "line": 32
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 36,
+      "quote": "Day thirty-one: $1,073,741,824.",
+      "fix": "Clarify that this is Theo\u2019s forecast, not a jump forward in chronology: \u201cHis program jumps ahead to day thirty-one: $1,073,741,824.\u201d"
+    },
+    {
+      "line": 43,
+      "quote": "One hyperinflation, one line: Hungary, 1946, prices doubling every fifteen hours (to source at G2).",
+      "fix": "Cut this detour and go directly from the atoms limit to Mr. Halloran\u2019s day-forty-nine call, keeping the deadline moving."
+    },
+    {
+      "line": 44,
+      "quote": "The choice is morally live: three billion strangers' debts erased without anyone asking, and Mrs. Vance said no, and you keep that.",
+      "fix": "Make the dilemma playable rather than asserted: \u201cYou can save everyone\u2019s money only by choosing for three billion people. No vote. No permission. If you refuse, their money breaks by morning.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 41,
+      "quote": "Not when it's new. Your double is her half."
+    },
+    {
+      "line": 45,
+      "quote": "for the part that ends."
+    },
+    {
+      "line": 51,
+      "quote": "The number grows; nothing it can buy does."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "64bea79f4d2a2ae5d540077ade88d47c9b5edcf70623e1c85d5d187f66e831b1",
+  "draft_sha256": "21751b1bd2223009737f379bc52f84bd4627d3f62faf2d96c24e1b70c18cd244"
+}

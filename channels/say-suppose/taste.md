@@ -8,6 +8,19 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-11
+
+- **"Not necessarily it needs to revolve around India."** Same film, after round 2 (still a lane, a chai stall,
+  rupees): "Story should be making more sense whereever it has good content." The setting, the currency and the cast
+  follow wherever the idea's best real content and images are; India is one option, never the default.
+  (doubled-money film, G1)
+- **"Remove the concept of viewer."** G1 notes on the doubled-money film, after reading its "The viewer" paragraph
+  (Riya, 22, Pune; the broke student with a chai tab): "this is making the story biased. i want you to create imaginary
+  stories, mind boggling and that type." Stories are no longer written to one named viewer's week. "You" is anyone; the
+  premise and its imagination set the world, the scale and the gags, and every film reaches for the mind-boggling end
+  of its idea. The `audience.md` persona and the "every example comes from the viewer's week" rules (`rules/story.md`,
+  `style.md`) give way to this note; packaging stays readable worldwide. (doubled-money film, G1)
+
 ## 2026-11-10
 
 - **G2, odds of success: "Take both fixes"** (first-time viewer, story #11, round 6). "But yours moved. Down."
