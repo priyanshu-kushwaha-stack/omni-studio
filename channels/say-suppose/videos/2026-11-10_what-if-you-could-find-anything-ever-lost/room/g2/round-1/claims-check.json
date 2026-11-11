@@ -1,0 +1,69 @@
+{
+  "call_id": "a2908fd9da0f482e91ded3b3092b0f54",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 6
+  },
+  "blockers": [
+    {
+      "quote": "In 2025, he gave up (c03).",
+      "why": "Unsupported by claim c03's source URL and verbatim quote. Row c03 cites the High Court judgment from January 2025 ([2025] EWHC 22 (Ch)), whose verbatim quote only covers the August 2013 deposit of the hard drive. Giving up in August 2025 comes from an uncited BBC News article noted in the ledger, but not included in c03's source URL or verbatim quote.",
+      "fix": "needs a source (either add the BBC News URL and verbatim quote to claims.md for c03, or cut the line)",
+      "domain": "fact",
+      "line": 115
+    },
+    {
+      "quote": "On it, the key to 8,000 bitcoin (c03). A judge threw his case out.",
+      "why": "Overstated and unsupported by claim c03's verbatim quote. The verbatim quote only states 'a hard drive containing the private key to his Bitcoin'; it does not contain the figure 8,000. As the ledger note acknowledges, 8,000 bitcoin was an unverified pleaded assertion by the claimant assumed for the application, not a judicial finding. The second sentence is also absent from c03's verbatim quote.",
+      "fix": "On it, the key to his bitcoin (c03). (the figure 8,000 needs a source if stated as a fact)",
+      "domain": "fact",
+      "line": 114
+    },
+    {
+      "quote": "There's a law from 1878. Treasure found in the soil goes to the Collector (c01).",
+      "why": "Inaccurate and unsupported by claim c01's verbatim quote. The verbatim quote from the 1878 Act requires that the finder 'give to the Collector notice in writing\u2014'; the treasure itself is deposited in the nearest Government treasury (s. 4). Stating that the treasure 'goes to the Collector' misstates the law and contradicts line 95.",
+      "fix": "There's a law from 1878. Notice of treasure found in the soil goes to the Collector (c01).",
+      "domain": "fact",
+      "line": 94
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 96,
+      "quote": "Keep quiet, and it's up to a year in prison.",
+      "fix": "Add inline citation: 'Keep quiet, and it's up to a year in prison (c01).' and expand c01's verbatim quote in claims.md to include Section 20."
+    },
+    {
+      "line": 104,
+      "quote": "Cousin: A man threw out a hard drive. Bitcoin on it.",
+      "fix": "In Howells' case his ex-partner threw the bag out, not the claimant. Change to: 'Cousin: Someone threw out a hard drive. Bitcoin on it.'"
+    },
+    {
+      "line": 113,
+      "quote": "Since 2013, a man in Wales has asked to dig up the council's landfill (c03). For one hard drive.",
+      "fix": "Use past tense since the legal action has ended: 'Starting in 2013, a man in Wales asked to dig up the council's landfill (c03). For one hard drive.'"
+    }
+  ],
+  "keep": [
+    {
+      "line": 71,
+      "quote": "In the old gold bazaars, men still sift the drains in the early morning. For the dust the workshops wash away (c02)."
+    },
+    {
+      "line": 121,
+      "quote": "An estimated three million shipwrecks lie on the ocean floor (c04). And not one of them is a step closer."
+    },
+    {
+      "line": 91,
+      "quote": "Finders keepers. Right?"
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "9beea58b72da6f0413cc421c07f270e2b309606b406f307ca86ae357137eea9c",
+  "draft_sha256": "15b85a651910231826b0a5136c5b7fe280842f0f9ac5c4d0356854566e97de41"
+}

@@ -1,0 +1,65 @@
+{
+  "call_id": "942195003a14427997cf75d914a549ff",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "length: 7:50; the unread envelope sustains the ending": 9
+  },
+  "blockers": [
+    {
+      "quote": "Somewhere under that grate is something somebody lost.",
+      "why": "Check #12 Leave fast fails: the required real line inside the last image is an unsourced invention.",
+      "fix": "Set the chai stall beside the jewellery bazaar and replace with: \"Gold dust still washes into these drains, and men sift the mud for it (c02).\"",
+      "domain": "story",
+      "line": 200
+    },
+    {
+      "quote": "> SCENE: The jewellery bazaar after rain, early morning. Shutters half up, storm grates in the lane. You crouch at a grate; a short line, a tag: 0.6 m. A gold nose-pin comes up between your fingers. At the next grate, an old man in a vest is already crouched with a shallow pan, sifting black mud.",
+      "why": "Check #6 Every use has a gap fails: you expect lost gold in a bazaar grate and receive exactly that.",
+      "fix": "Have a shopkeeper ask for a washed-away nose-pin; you expect the nearest grate, but the line surfaces in the old sifter's pan. He notices it only when you point. Then have the shopkeeper direct you to the man missing his hearing aid.",
+      "domain": "story",
+      "line": 68
+    },
+    {
+      "quote": "Since 2013, a man in Wales has asked to dig up the council's landfill (c03). For one hard drive.",
+      "why": "Check #7 Misconception first fails at the landing: three consecutive fact lines follow your failed attempt without returning the consequence to you within two lines.",
+      "fix": "Replace lines 113\u2013115 with \"A man in Wales spent years asking to dig this landfill for a hard drive. In 2025, he gave up (c03).\" Then show you put the trowel back in your bag while the line remains eleven metres below.",
+      "domain": "story",
+      "line": 113
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 158,
+      "quote": "You can't look at the envelope. So you look at everything else.",
+      "fix": "Replace with \"You can't look at the envelope. So you search for something no family is waiting for.\" This makes the third jump argue the under-question instead of only increasing scale."
+    },
+    {
+      "line": 174,
+      "quote": "Next evening, a power cut. And Madhav is at the gate. Your cousin's video found him first.",
+      "fix": "Replace with \"Next evening, a power cut. Your cousin sent the video to the family group. It found Madhav first.\" This makes his arrival a consequence rather than an adjacent event."
+    }
+  ],
+  "keep": [
+    {
+      "line": 99,
+      "quote": "You expected money. You get a receipt. And a queue."
+    },
+    {
+      "line": 123,
+      "quote": "Knowing where was never the hard part."
+    },
+    {
+      "line": 150,
+      "quote": "The rule held. Nobody alive knew."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "6998fe4f8cb1b666b685ed8b23167a6a3121fb18f58a3b594b676f292869e41b",
+  "draft_sha256": "15b85a651910231826b0a5136c5b7fe280842f0f9ac5c4d0356854566e97de41"
+}
