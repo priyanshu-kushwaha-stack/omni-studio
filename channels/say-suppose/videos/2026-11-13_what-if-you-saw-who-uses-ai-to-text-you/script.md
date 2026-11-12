@@ -1,7 +1,7 @@
 # Script: What If You Saw Who Uses AI to Text You?
 
 format: story
-status: v1.1, G2 draft (2026-11-13), trimmed to length
+status: v1.3, G2 draft (2026-11-13): trimmed to length, then the G2 room's round-1 and round-2 notes
 claims: claims.md
 
 > SITUATION: Your birthday in Manila, your father eight months out on a ship, forty-one messages before breakfast, and you grading every one by its length: long means love.
@@ -35,11 +35,11 @@ Mother: What? What is it?
 
 > HOLD: 2 s. Performed. Your thumb scrolls down through dots and stops at the bottom bubble. A buzz, and no tick. Your eyes go from the bare bubble to the photo on the fridge, and back.
 
-That's what happens when a birthday wish is specific.
+You asked who meant it. The candle answered the easier question.
 
 So what if you could see who uses AI to text you? Everyone who did. Every time.
 
-Forty-one messages. Thirty-three dots. And the only one you'd have marked down for spelling is the only one a person typed.
+Forty-one messages. Thirty-three dots. One on your best friend's paragraph. And the only one you'd have marked down for spelling is the only one a person typed.
 
 Your father. Eight months out on a cargo ship. Three words, one of them wrong, same as always.
 
@@ -66,7 +66,7 @@ Your father is one of about two million Filipinos working overseas (c04). For a 
 
 You start writing him something long. Something worthy. After four words, the phone offers the rest. In grey.
 
-You don't send it. Not yet. First you want to know who else.
+You don't send it. Not yet. First you want to know who else. And whether eleven years of her paragraphs were ever hers.
 
 ## [01:34] The Detective
 
@@ -97,6 +97,8 @@ Nobody did anything. Two machines have fought and made up all week, and both aun
 
 > SCENE: The office, your desk, a dating app open: a month of his messages, pale-blue bubbles, every one dotted, down the whole screen.
 
+Your cousin abroad. Thinking of you always. Dot. Ouch.
+
 The man from the dating app. A month of flirting, every line dotted. He has never typed you a word.
 
 > SCENE: Insert, slower: the day's messages laid out as a paper column, the dotted ones long and warm, the bare ones short: your mother's eat first, a coworker's hbd!!, the landlord's two lines. Then a paper split screen: a figure told the message was written by AI, frowning; a figure told nothing, smiling at the same message.
@@ -105,7 +107,7 @@ Then the pattern. The warm ones are dotted. The bare ones are short, late and mi
 
 Your mother's eat first, every letter fixed by the phone: bare. Chosen words get a dot. Fixed letters don't.
 
-In a study this year, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere. Told nothing, most never suspected (c20).
+In a study this year, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).
 
 And you agree with them. A machine can't mean it.
 
@@ -147,7 +149,7 @@ Your sent folder. A year back.
 
 Your thank-you to your boss. Dot. Your condolence to a coworker whose father died. Dot. Half of this morning's thank-yous. Dots.
 
-Gmail has offered to write your replies since 2015, and to finish your sentences since 2018 (c11).
+For years, Google has offered to suggest your email replies and finish your sentences as you type (c11).
 
 The detective is a suspect.
 
@@ -199,7 +201,7 @@ Mother: He never could spell. Look.
 
 Mother: The card's not his. That is.
 
-Hallmark has printed greeting cards since 1915 (c14). For over a hundred years, people have signed their names under somebody else's words (c14).
+For over a hundred years, people have signed their names under somebody else's words (c14).
 
 And she kept every one, for three words in pen.
 
@@ -254,7 +256,7 @@ You'd have believed every one. She never sent them. Not good enough. You taught 
 
 Best friend: Eleven years, and you sent me ok.
 
-And then you look up, and it was never just your phone.
+But when you look up, it was never just your phone.
 
 ## [06:28] Fields of Red
 
@@ -267,9 +269,9 @@ Cousin: Thank you all so much. I love you all.
 
 Four hundred comments under your cousin's video. A field of red.
 
-At work, you start calling it. That review's fake. Those are bots. Right every time.
+At work, you start calling it. That review: machine-written. Those comments too. Right every time.
 
-One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of everything on the web, for the first time in a decade (c09).
+One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade (c09).
 
 > SCENE: Your phone on the desk. A message from your boss: a bonus figure, a rival campaign's name, the ask. A dot ticks on at its corner. Then the group chat beneath it: your mother's homecoming plans, twenty wouldn't-miss-its in a column, each dotted, and under them one bare bubble. A buzz, no tick.
 
@@ -296,9 +298,9 @@ You walk out.
 > MOOD: night
 > SCENE: The roof of your building. The city below, every lit window a chat, and from up here you can see them: tiny crimson points in thousands of windows. On "take away the dotted ones", the dotted windows go dark block by block until the city is almost black and a scatter of windows is left.
 
-You need to see how big it is.
+You walk out with the dots still yours. On the roof, you look at what keeping them protects.
 
-Around the turn of the century, the Philippines was called the texting capital of the world (c01). A few years later: over a billion texts a day (c02).
+Around the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008, Filipinos sent over a billion texts a day (c02).
 
 Every lit window is a chat. From up here, you can see the dots.
 
@@ -335,7 +337,7 @@ Every line. Both sides. Dotted.
 
 Her instruction. Yours. Two machines, told the same thing by two people who were asleep, booked a cafe.
 
-In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did.
+In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did (c22).
 
 You said a machine can't mean it.
 

@@ -1,0 +1,57 @@
+{
+  "call_id": "95400dc1603547988d30221031548dc4",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "Google has offered to suggest your replies since 2015, and to finish your sentences since 2018 (c11).",
+      "why": "Claim c11's verbatim quotes and source URLs apply specifically to email ('writes email', 'complete sentences in your emails'). Stating 'suggest your replies' and 'finish your sentences' in a scene showing phone chat messages overstates the scope of what Google offered in 2015 and 2018 to general messaging.",
+      "fix": "Google has offered to suggest your replies in email since 2015, and to finish your sentences since 2018 (c11).",
+      "domain": "fact",
+      "line": 152
+    },
+    {
+      "quote": "Around the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008: over a billion texts a day (c02).",
+      "why": "Claim c02's verbatim quote specifically measures volume in the Philippines ('the Philippines alone sent, on average, over 1 billion text messages a day'). Omitting geographic scope wording ('there') leaves the daily volume unbounded and overstates general text volume.",
+      "fix": "Around the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008: over a billion texts a day there (c02).",
+      "domain": "fact",
+      "line": 303
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 110,
+      "quote": "Told it was written by AI, they called the sender lazy and insincere.",
+      "fix": "Told it was written by AI, they called the sender lazy and insincere (c20)."
+    },
+    {
+      "line": 340,
+      "quote": "The use never hurt the conversation. The suspicion did.",
+      "fix": "The use never hurt the conversation. The suspicion did (c22)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 274,
+      "quote": "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade (c09)."
+    },
+    {
+      "line": 63,
+      "quote": "Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is."
+    },
+    {
+      "line": 340,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "5480204b7b548dbf2c0d4d84e82597af88be2726a6e902d01e57a17b61426f0b",
+  "draft_sha256": "97405ec49e0300981edb102024261367ad65688e22629ecef05057180940e85d"
+}

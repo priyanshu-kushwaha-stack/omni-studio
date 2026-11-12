@@ -1,0 +1,57 @@
+{
+  "call_id": "6f1f867a28c64ab99d9042aef84eff49",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of everything on the web, for the first time in a decade (c09).",
+      "why": "Overstates the source scope. Imperva's report (c09) measures network traffic, and its verbatim quote specifically states '51% of all web traffic in 2024'. Saying '51 per cent of everything on the web' overstates web traffic to imply all web content, pages, or accounts.",
+      "fix": "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade (c09).",
+      "domain": "fact",
+      "line": 272
+    },
+    {
+      "quote": "In a study this year, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere. Told nothing, most never suspected (c20).",
+      "why": "The spoken number '1,300' and demographic 'Americans' are unsupported by row c20's verbatim quote, which quotes only descriptors ('lazy', 'insincere') and lack of suspicion ('do not suspect AI use unless it is obvious'). At G2 every spoken digit must be supported by the row's verbatim quote or needs a source.",
+      "fix": "In a study this year, people read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere. Told nothing, most never suspected (c20).",
+      "domain": "fact",
+      "line": 108
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 150,
+      "quote": "Gmail has offered to write your replies since 2015, and to finish your sentences since 2018 (c11).",
+      "fix": "Google has offered to suggest your replies since 2015, and to finish your sentences since 2018 (c11)."
+    },
+    {
+      "line": 301,
+      "quote": "Around the turn of the century, the Philippines was called the texting capital of the world (c01). A few years later: over a billion texts a day (c02).",
+      "fix": "Around the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008: over a billion texts a day (c02)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 63,
+      "quote": "Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is."
+    },
+    {
+      "line": 223,
+      "quote": "What limits a friendship is time. Every friendship costs time to keep (c19)."
+    },
+    {
+      "line": 338,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "4c23dd0707d182a7ac93392a4a656ed539fd8a9fd8508a48cda6e7a96ad57b3c",
+  "draft_sha256": "93aaa7899ef1d6fa6816fa5a06fdd0637357e3724fb5b2c326464a6c3d955e7d"
+}

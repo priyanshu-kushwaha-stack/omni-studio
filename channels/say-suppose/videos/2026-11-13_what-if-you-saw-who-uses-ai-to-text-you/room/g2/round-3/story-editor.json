@@ -1,0 +1,69 @@
+{
+  "call_id": "140a31da4e85422c9de4f31f221e09f9",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story structure": 9,
+    "hook and premise": 9,
+    "causality and turns": 9,
+    "earned stakes": 9,
+    "close": 7,
+    "length \u2014 cafe mystery and the unanswered father message sustain interest past 8:00": 9
+  },
+  "blockers": [
+    {
+      "quote": "Tomorrow someone will send you three words with a mistake in them. Read them twice. Nobody else could have sent them.",
+      "why": "Check #19 The close fails: this turns the ending into a prescriptive moral recap.",
+      "fix": "Cut this line and move directly from Mother's \u201cHe never could spell\u201d to the voice-note sequel hook.",
+      "domain": "story",
+      "line": 371
+    },
+    {
+      "quote": "Those are the people typing. Everyone else is asleep, or working, or scared of getting it wrong.",
+      "why": "Check #11 Never say the feeling fails at the peak: the first sentence narrates the thumbs and remaining windows already shown.",
+      "fix": "Replace with: \u201cYou wanted proof of effort. This is what proof costs.\u201d",
+      "domain": "story",
+      "line": 311
+    },
+    {
+      "quote": "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade (c09).\nAround the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008, Filipinos sent over a billion texts a day (c02).",
+      "why": "Check #7 Misconception first fails its one-number-at-a-time rule in both scale passages.",
+      "fix": "Replace line 274 with \u201cA security company estimated that bot traffic had passed human traffic (c09).\u201d Replace line 303 with \u201cAt its peak, Filipinos sent over a billion texts a day (c02).\u201d",
+      "domain": "story",
+      "line": null
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 139,
+      "quote": "Then you make the mistake every detective makes. You check your own pockets.",
+      "fix": "Strengthen the causal connector: \u201cThat answer leaves one suspect you haven't checked: you.\u201d"
+    },
+    {
+      "line": 290,
+      "quote": "Manager: There's nothing there.",
+      "fix": "Change \u201cManager\u201d to \u201cBoss\u201d so the role does not appear to introduce a new person after 60%."
+    }
+  ],
+  "keep": [
+    {
+      "line": 57,
+      "quote": "But a dot says who wrote it. It never says why. Remember that."
+    },
+    {
+      "line": 240,
+      "quote": "She was keeping you with the only hours she had left: the ones she was asleep for."
+    },
+    {
+      "line": 344,
+      "quote": "Nobody wrote it. Both of you meant it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "dfaade7913c690b9c2db2331e0c06a2f071ce75119d515b6fa82cfed13b4d89c",
+  "draft_sha256": "eb6ff9d07b4652ef75588098a0f63e781e9ee85a39a060a65992721bf576f5ff"
+}

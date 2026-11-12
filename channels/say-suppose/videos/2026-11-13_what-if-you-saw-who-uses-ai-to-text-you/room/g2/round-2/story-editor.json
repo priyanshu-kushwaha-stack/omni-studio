@@ -1,0 +1,75 @@
+{
+  "call_id": "ff6e19b700484f94ade49e98221f8c07",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 9,
+    "hook and click": 6,
+    "beat causality": 8,
+    "misconception and facts": 7,
+    "earned stakes and reversal": 9,
+    "ending and close": 8,
+    "minute-by-minute pull": 7
+  },
+  "blockers": [
+    {
+      "quote": "Forty-one messages. Thirty-three dots. And the only one you'd have marked down for spelling is the only one a person typed.",
+      "why": "Check #3, Second hook by 0:30: the premise is clear, but the person or relationship you could lose is not identified within thirty seconds.",
+      "fix": "Replace with: \u201cForty-one messages. Thirty-three dots. And one sits on the paragraph from your best friend of eleven years. The wish can tell you who typed it. It can cost you who sent it.\u201d",
+      "domain": "story",
+      "line": 42
+    },
+    {
+      "quote": "You don't send it. Not yet. First you want to know who else.",
+      "why": "Check #17, Pull every minute: the listed stake jumps go from about 0:10 to 2:40, leaving roughly two and a half minutes without escalation. This line opens investigation but raises no cost.",
+      "fix": "Replace with: \u201cYou don't send it. Not yet. First: the dot on your best friend's paragraph. If it survives the one memory only she could know, eleven years changes.\u201d",
+      "domain": "story",
+      "line": 69
+    },
+    {
+      "quote": "Google has offered to suggest your replies since 2015, and to finish your sentences since 2018 (c11).",
+      "why": "Check #7, Misconception first: two numbers land in one breath. The same overload recurs in the greeting-card and rooftop facts.",
+      "fix": "Replace line 152 with \u201cFor years, Google has offered to write your replies and finish your sentences as you type (c11).\u201d Replace line 204 with \u201cFor over a century, greeting cards have carried somebody else's printed words under a person's signature (c14).\u201d Replace line 303 with \u201cAt its peak, the Philippines sent over a billion texts a day (c02).\u201d",
+      "domain": "story",
+      "line": 152
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 301,
+      "quote": "You need to see how big it is.",
+      "fix": "Tie the rooftop causally to refusing the offer: \u201cYou walk out with the dots still yours. On the roof, you look at what keeping them protects.\u201d"
+    },
+    {
+      "line": 311,
+      "quote": "Those are the people typing. Everyone else is asleep, or working, or scared of getting it wrong.",
+      "fix": "Avoid claiming one motive for every dark window: \u201cThose are the people typing. The dark windows are messages somebody let a machine carry.\u201d"
+    },
+    {
+      "line": 371,
+      "quote": "Tomorrow someone will send you three words with a mistake in them. Read them twice. Nobody else could have sent them.",
+      "fix": "Remove the false claim that a typo uniquely identifies its sender: \u201cTomorrow someone will send you three words with a mistake in them. Read them twice. The mistake may be the part they chose to leave.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 154,
+      "quote": "The detective is a suspect."
+    },
+    {
+      "line": 240,
+      "quote": "She was keeping you with the only hours she had left: the ones she was asleep for."
+    },
+    {
+      "line": 344,
+      "quote": "Nobody wrote it. Both of you meant it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "3645efb906c549c382c25169434ccae6428e4adeb3f5fe4bae3d06741682d7c3",
+  "draft_sha256": "97405ec49e0300981edb102024261367ad65688e22629ecef05057180940e85d"
+}

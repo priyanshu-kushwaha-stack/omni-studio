@@ -77,8 +77,8 @@
       "claims": []
     },
     {
-      "text": "That's what happens when a birthday wish is specific.",
-      "say": "[hushed, amused, close to the ear] That's what happens when a birthday wish is specific.",
+      "text": "You asked who meant it. The candle answered the easier question.",
+      "say": "[hushed, dry, a little stunned] You asked who meant it. The candle answered the easier question.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -93,8 +93,8 @@
       "claims": []
     },
     {
-      "text": "Forty-one messages. Thirty-three dots. And the only one you'd have marked down for spelling is the only one a person typed.",
-      "say": "[dry, soft, the last clause landing] Forty-one messages. Thirty-three dots. And the only one you'd have marked down for spelling is the only one a person typed.",
+      "text": "Forty-one messages. Thirty-three dots. One on your best friend's paragraph. And the only one you'd have marked down for spelling is the only one a person typed.",
+      "say": "[dry, soft, the last clause landing] Forty-one messages. Thirty-three dots. One on your best friend's paragraph. And the only one you'd have marked down for spelling is the only one a person typed.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -167,8 +167,8 @@
       "claims": []
     },
     {
-      "text": "You don't send it. Not yet. First you want to know who else.",
-      "say": "[quiet, a decision forming, a hook on the last three words] You don't send it. Not yet. First you want to know who else.",
+      "text": "You don't send it. Not yet. First you want to know who else. And whether eleven years of her paragraphs were ever hers.",
+      "say": "[quiet, a decision forming, a hook on the last three words] You don't send it. Not yet. First you want to know who else. And whether eleven years of her paragraphs were ever hers.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -231,6 +231,14 @@
       "claims": []
     },
     {
+      "text": "Your cousin abroad. Thinking of you always. Dot. Ouch.",
+      "say": "[wry, a small wince on the last word] Your cousin abroad. Thinking of you always. Dot. Ouch.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
       "text": "The man from the dating app. A month of flirting, every line dotted. He has never typed you a word.",
       "say": "[dry, then flat and a little hurt on the last sentence] The man from the dating app. A month of flirting, every line dotted. He has never typed you a word.",
       "speaker": "narrator",
@@ -261,6 +269,7 @@
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
+        "c20",
         "c20",
         "c20"
       ]
@@ -338,8 +347,8 @@
       "claims": []
     },
     {
-      "text": "Gmail has offered to write your replies since 2015, and to finish your sentences since 2018.",
-      "say": "[calm, exact, a fact that lands on you] Gmail has offered to write your replies since twenty fifteen, and to finish your sentences since twenty eighteen.",
+      "text": "For years, Google has offered to suggest your email replies and finish your sentences as you type.",
+      "say": "[calm, exact, a fact that lands on you] For years, Google has offered to suggest your email replies and finish your sentences as you type.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -452,13 +461,12 @@
       "claims": []
     },
     {
-      "text": "Hallmark has printed greeting cards since 1915. For over a hundred years, people have signed their names under somebody else's words.",
-      "say": "[calm, thinking, the fact said gently] Hallmark has printed greeting cards since nineteen fifteen. For over a hundred years, people have signed their names under somebody else's words.",
+      "text": "For over a hundred years, people have signed their names under somebody else's words.",
+      "say": "[calm, thinking, the fact said gently] For over a hundred years, people have signed their names under somebody else's words.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": [
-        "c14",
         "c14"
       ]
     },
@@ -601,8 +609,8 @@
       "claims": []
     },
     {
-      "text": "And then you look up, and it was never just your phone.",
-      "say": "[low, widening, a hook] And then you look up, and it was never just your phone.",
+      "text": "But when you look up, it was never just your phone.",
+      "say": "[low, widening, a hook] But when you look up, it was never just your phone.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -633,16 +641,16 @@
       "claims": []
     },
     {
-      "text": "At work, you start calling it. That review's fake. Those are bots. Right every time.",
-      "say": "[brisk, sharp, a little gleeful, a shade of warning on the last three words] At work, you start calling it. That review's fake. Those are bots. Right every time.",
+      "text": "At work, you start calling it. That review: machine-written. Those comments too. Right every time.",
+      "say": "[brisk, sharp, a little gleeful, a shade of warning on the last three words] At work, you start calling it. That review: machine-written. Those comments too. Right every time.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of everything on the web, for the first time in a decade.",
-      "say": "[clear, exact, a touch of awe] One security company estimated that in twenty twenty-four, bots, good and bad, passed people: fifty-one per cent of everything on the web, for the first time in a decade.",
+      "text": "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade.",
+      "say": "[clear, exact, a touch of awe] One security company estimated that in twenty twenty-four, bots, good and bad, passed people: fifty-one per cent of all web traffic, for the first time in a decade.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -699,16 +707,16 @@
       "claims": []
     },
     {
-      "text": "You need to see how big it is.",
-      "say": "[hushed, breath in it, climbing] You need to see how big it is.",
+      "text": "You walk out with the dots still yours. On the roof, you look at what keeping them protects.",
+      "say": "[quiet, resolved, then wide] You walk out with the dots still yours. On the roof, you look at what keeping them protects.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Around the turn of the century, the Philippines was called the texting capital of the world. A few years later: over a billion texts a day.",
-      "say": "[awe, slow, the number landing alone] Around the turn of the century, the Philippines was called the texting capital of the world. A few years later: over a billion texts a day.",
+      "text": "Around the turn of the century, the Philippines was called the texting capital of the world. By 2008, Filipinos sent over a billion texts a day.",
+      "say": "[awe, slow, the number landing alone] Around the turn of the century, the Philippines was called the texting capital of the world. By two thousand and eight, Filipinos sent over a billion texts a day.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -804,6 +812,7 @@
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": [
+        "c22",
         "c22",
         "c22"
       ]

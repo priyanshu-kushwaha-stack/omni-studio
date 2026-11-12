@@ -1,0 +1,47 @@
+{
+  "call_id": "1d407ec6c4ad441795e5f91f87c5d364",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 110,
+      "quote": "In a study this year, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).",
+      "fix": "In a 2026 study, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20)."
+    },
+    {
+      "line": 152,
+      "quote": "For years, Google has offered to suggest your email replies and finish your sentences as you type (c11).",
+      "fix": "For years, Gmail has offered to suggest your email replies and finish your sentences as you type (c11)."
+    },
+    {
+      "line": 225,
+      "quote": "What limits a friendship is time. Every friendship costs time to keep (c19).",
+      "fix": "What limits a friendship is time (c19). Every friendship costs time to keep (c19)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 303,
+      "quote": "Around the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008, Filipinos sent over a billion texts a day (c02)."
+    },
+    {
+      "line": 340,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did (c22)."
+    },
+    {
+      "line": 274,
+      "quote": "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade (c09)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "1fb6895b38bf24972a7ba074a45c28353f2dcfe29e90ef5f2151f991837f8cad",
+  "draft_sha256": "eb6ff9d07b4652ef75588098a0f63e781e9ee85a39a060a65992721bf576f5ff"
+}
