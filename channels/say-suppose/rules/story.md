@@ -57,8 +57,9 @@ itself (fragments, half-sentences, a question answered at once). They protect th
 from the writer (owner, 2026-11-12, `taste.md`: "lets no lock anything that hard"): when the owner's notes are better
 served by a bigger change, the writer may change any of it in a G2 rewrite, the situation, setting, cast and five lines
 included, and may propose a new title or thumbnail. Every such change is listed at the top of the round's review file
-under "Changed from the approved G1" (old line, new line, why), and the owner approves it again with the draft; a new
-title or thumbnail is rendered and re-picked, as at G1.
+under "Changed from the approved G1" (old line, new line, why) and rides with the next draft the owner reviews; it is
+not a stop of its own, and iterating goes on (owner, 2026-11-12: "we can always keep it iterating also"). The owner's
+own sign-off at the gate is the approval; a new title or thumbnail is rendered for the owner to pick, as at G1.
 
 **The shelf: three hooks, suggestions for two films (owner, 2026-11-10).** Seats may suggest these, never block on
 them. After two films the owner decides whether they become must-pass.

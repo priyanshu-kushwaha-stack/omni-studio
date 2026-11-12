@@ -16,7 +16,9 @@ rule. Where two notes disagree, the newer one wins.
   if the feedback is such and they can get it approved again by me. because it could be becoz of the sitaution i might
   have shared that feedback." The G1 spine binds the room, not the writer: in a G2 rewrite the writer may change the
   situation, setting, cast, five lines, even propose a new title or thumbnail, when that serves the owner's notes
-  better; every change is listed for the owner, who approves it again (`rules/story.md`, "The protected spine").
+  better; every change is listed for the owner and rides with the next draft. **"we can always keep it iterating
+  also"**: a listed change is not a stop of its own; the gate sign-off is the approval (`rules/story.md`, "The
+  protected spine").
   (saw who wants you to fail, G2)
 - **"it should start with a short skit and there it should show that you have or got this superpower somehow and then
   probably the narration of the story"** G2 review of the v2.1 cut (saw who wants you to fail): "the Opening of this
