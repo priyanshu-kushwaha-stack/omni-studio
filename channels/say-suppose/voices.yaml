@@ -52,6 +52,34 @@ voices:
       Driver: >-
         A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
         his shoulder like a public announcement.
+      # What If AI Predicted Every Choice You Make? (2026-11-13): a food court in Singapore. Nobody is named; the
+      # labels are roles.
+      Friend: >-
+        A warm, relaxed male baritone: a man of about thirty who runs a food stall with his best friend. Quick, joking,
+        laughs before his own punchline, a light Singapore English lilt. Close and easy, never loud.
+      Coffee seller: >-
+        A dry, brisk female alto: a woman in her fifties who runs the coffee stall next door. Low and a little husky,
+        unimpressed, few words, a faint Singapore English lilt.
+      Worker: >-
+        A cheerful, gravelly male bass: a city maintenance worker in his fifties up a ladder. Gruff, satisfied, talking
+        to himself.
+      Landlord: >-
+        A smooth, cool male baritone: a landlord in his sixties. Polite, unhurried, quietly cold, every word measured.
+      Kid: >-
+        A high, bright boy's voice, about ten years old. Quick, cheeky, outraged when he loses.
+      Magician: >-
+        A bright, theatrical male baritone: a street magician in his forties. Showy and warm, a performer's lift on
+        every word.
+      Pickpocket: >-
+        A hoarse, nervous male baritone: a thin man in his thirties. Quick, defensive, a little breathless.
+      Coach: >-
+        A loud, upbeat male baritone: a street salesman in his forties. Bouncy and confident, a pitch voice, every line a
+        slogan.
+      Date: >-
+        A flat, bored female mezzo: a woman of about thirty on a dull dinner date. Dry, deadpan, eyes on her phone.
+      Sister: >-
+        A small, frightened female mezzo: a young woman in her twenties on a phone line. Hushed and quick, trying to
+        stay calm.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.

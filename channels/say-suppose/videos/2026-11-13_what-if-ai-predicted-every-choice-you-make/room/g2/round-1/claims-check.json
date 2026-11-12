@@ -1,0 +1,49 @@
+{
+  "call_id": "bd41392b9e634e5f8ff6724d3ebe3e10",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10,
+    "claims_fidelity": 10,
+    "scope_precision": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 434,
+      "quote": "A hundred and sixty teams once got thousands of facts about thousands of families, to predict how the children's lives would turn out. The best predictions were only slightly better than a simple guess from four facts (c24).",
+      "fix": "A hundred and sixty teams once got thousands of facts about thousands of families, to predict how the children's lives would turn out (c24). The best predictions were only slightly better than a simple guess from four facts (c24)."
+    },
+    {
+      "line": 444,
+      "quote": "a false belief makes itself true, and the prophet points to what happened as proof he was right all along (c28).",
+      "fix": "a false belief can make itself true, and the prophet points to what happened as proof he was right all along (c28)."
+    },
+    {
+      "line": 426,
+      "quote": "An economist put it in 1975 (c18): lean on a number to control people, and the number stops behaving.",
+      "fix": "An economist put it in 1975 (c18): lean on a number to control people, and the number stops behaving (c18)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 422,
+      "quote": "Drivers tracked by their insurer for a discount braked hard about a fifth less often within six months (c17). The watching changed the driving."
+    },
+    {
+      "line": 251,
+      "quote": "In 2008 (c04), brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen (c04). The guess was right about sixty times in a hundred (c05). A coin gets fifty."
+    },
+    {
+      "line": 364,
+      "quote": "When scientists watched people choose where real charity money would go, the famous early brain signal was missing (c06)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "067635a77f2a5434d96dd5d9637c9511329ea79ae37e5ce4ab029369f6496468",
+  "draft_sha256": "227c78de1425c50b3cb6cd3a933e97859713ed524ae218b86c50e06d7c0fda64"
+}

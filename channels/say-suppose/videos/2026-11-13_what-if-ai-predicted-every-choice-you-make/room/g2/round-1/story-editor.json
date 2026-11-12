@@ -1,0 +1,73 @@
+{
+  "call_id": "c18a451508104d518cfcd7beb380bc02",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "overall_story": 8,
+    "opening_and_hooks": 6,
+    "causal_structure": 8,
+    "stakes_and_payoff": 9,
+    "turn_and_close": 9
+  },
+  "blockers": [
+    {
+      "quote": "> HOLD: 2 s. Performed. You grin back and pocket the key, slow, so he can watch it go. He shrugs, both hands up: tomorrow, then. Behind you both the worker clips the teal lamp to the lamppost and taps it twice. It blinks. Once. Twice. Stays on.",
+      "why": "Check #2 Confirm the click fails: the first seven seconds show the opposite of the thumbnail\u2019s situation\u2014you withdraw the key instead of holding it across the box.",
+      "fix": "Re-stage this so the lamp activates and tags drop while your arm is extended across the box, key above his open palm\u2014the thumbnail composition in teal\u2014then you pull it back and pocket it.",
+      "domain": "story",
+      "line": 26
+    },
+    {
+      "quote": "Do what the tag says, and your rent halves. Don't, and every head in the court turns. And here's the thing. It's right ninety-nine times in a hundred. About everybody.",
+      "why": "Check #3 Second hook by 0:30 fails: after the twelve-second skit and title question, these stakes land around 0:35\u20130:40.",
+      "fix": "Move this compressed replacement directly after line 49: \u201cObey, and your rent halves. Break it, and your prices climb where everyone can see.\u201d Then establish the nightly key habit.",
+      "domain": "story",
+      "line": 59
+    },
+    {
+      "quote": "In 2008 (c04), brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen (c04). The guess was right about sixty times in a hundred (c05). A coin gets fifty.",
+      "why": "Check #7 Misconception first fails its one-number-at-a-time clause: this beat stacks the date, accuracy and baseline. Similar stacks recur at lines 108, 177, 255, 430, 434 and 483.",
+      "fix": "Replace with: \u201cBrain scans once guessed a left-or-right press a few seconds early, but only about sixty per cent of the time (c04, c05).\u201d Replace line 255 with: \u201cBarely better than chance. And the card over you is almost certain. So where is all that certainty coming from?\u201d Give the other listed lines the same number-isolation pass.",
+      "domain": "story",
+      "line": 251
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 434,
+      "quote": "A hundred and sixty teams once got thousands of facts about thousands of families, to predict how the children's lives would turn out. The best predictions were only slightly better than a simple guess from four facts (c24).",
+      "fix": "Move this evidence to the midpoint after the brain-scan beat; cut it from The Board so the post-climax chain stays causal: watched drivers changed, therefore the ninety-nine was manufactured."
+    },
+    {
+      "line": 401,
+      "quote": "Friend: Someone's at my sister's. Tonight.",
+      "fix": "Keep the character line within four words: \u201cFriend: Someone found my sister.\u201d"
+    },
+    {
+      "line": 485,
+      "quote": "So, would you take the discount? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Leave faster: \u201cWould you take the discount? Tell us why.\u201d Let the end-card tags carry like and subscribe."
+    }
+  ],
+  "keep": [
+    {
+      "line": 294,
+      "quote": "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him."
+    },
+    {
+      "line": 326,
+      "quote": "It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court."
+    },
+    {
+      "line": 440,
+      "quote": "It never got better at seeing you. You got better at being seen."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "9ac843fc62c68a8e826faab4201b4e215d119f8211ac6c90dfccf99cdf7d63fb",
+  "draft_sha256": "227c78de1425c50b3cb6cd3a933e97859713ed524ae218b86c50e06d7c0fda64"
+}
