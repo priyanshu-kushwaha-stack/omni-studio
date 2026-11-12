@@ -1,0 +1,55 @@
+{
+  "call_id": "c9eb6600dba74d65aab0b4dfa249adde",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "Lotte has a note from that year above her oven. Fifty million marks (c10). Framed. Her grandfather's. It bought him a loaf. Once.",
+      "why": "Row c10 supports only that a 50,000,000-mark banknote was issued in 1923 ('50,000,000\u2133\ufe01' dated '1 Sep 1923'). The verbatim quote does not support that fifty million marks bought a loaf of bread ('needs a source'), especially when line 170 establishes that by late 1923 a loaf cost about 200 billion marks (c01).",
+      "fix": "Lotte has a note from that year above her oven. 50 million marks (c10). Framed. Her grandfather's. (needs a source for buying a loaf)",
+      "domain": "fact",
+      "line": 174
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 255,
+      "quote": "That's all he says. A bank can do this. One once credited a customer eighty-one trillion dollars by mistake, and reversed it within hours (c07). Hours. Yours takes fifty minutes.",
+      "fix": "That's all he says. A bank can do this. One once credited a customer 81 trillion dollars by mistake, and reversed it within hours (c07). Hours. Yours takes fifty minutes."
+    },
+    {
+      "line": 240,
+      "quote": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09). You have more than that. In cents. Above a bakery. And tomorrow is twice this.",
+      "fix": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09). You have more than that\u2014over 180 trillion euros, all from one cent. Above a bakery. And tomorrow is twice this."
+    },
+    {
+      "line": 221,
+      "quote": "In 1324, Mansa Musa came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns the same thing. By the weekend.",
+      "fix": "In 1324, Mansa Musa came through Cairo and gave away so much gold that gold there stayed cheap for at least 12 years (c06). Your street learns the same thing. By the weekend."
+    }
+  ],
+  "keep": [
+    {
+      "line": 170,
+      "quote": "By late 1923 a loaf of bread in Berlin cost about 200 billion marks (c01). Many workers were paid twice a day, and spent their wages at once (c02)."
+    },
+    {
+      "line": 197,
+      "quote": "The first of July, 1990 (c04). She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks. Wages, one to one. Savings, one to one, up to a line. Above the line, half (c04)."
+    },
+    {
+      "line": 109,
+      "quote": "Ask people to carry on a doubling, and most guess a small fraction of the true value (c08). You just did. In public."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "0152d4ed1ecf1444adbda1b5668f73d168c3f3089761ff49f3adf57a5db56020",
+  "draft_sha256": "2ad5cd7af7ae0e7ef229e03470bf2df66b3be3f6ce03f1256d7f5f4854b32f2f"
+}

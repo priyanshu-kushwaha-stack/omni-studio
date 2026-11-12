@@ -1,0 +1,47 @@
+{
+  "call_id": "c6be9694f1d942daa2f492129d90db7a",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 201,
+      "quote": "She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks (c04). Her savings above a line, cut in half (c04).",
+      "fix": "In 1990, she went to sleep in Leipzig with East German marks and woke up with Deutsche Marks, her savings above a line cut in half (c04)."
+    },
+    {
+      "line": 259,
+      "quote": "One once credited a customer eighty-one trillion dollars by mistake, and reversed it within hours (c07).",
+      "fix": "One once credited a customer 81 trillion dollars by mistake, and reversed it within hours (c07)."
+    },
+    {
+      "line": 225,
+      "quote": "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06).",
+      "fix": "In 1324, Mansa Musa came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 57,
+      "quote": "Her grandfather's story. The king and the chessboard (c05). A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    },
+    {
+      "line": 174,
+      "quote": "Berlin once ran this race the other way. By late 1923, a loaf there cost about two hundred billion marks (c01). Many workers spent their wages the moment they were paid (c02)."
+    },
+    {
+      "line": 244,
+      "quote": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09). You have more than that. In euros. Above a bakery. And tomorrow is twice this."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "acd310e51832711297aa6ed88e5297fa61247f2c7efc6cf1503dace5d76c96fc",
+  "draft_sha256": "2f30c1e521b7691328c6f75e06da335244a322ec201f56019099e3bfb60b4f59"
+}

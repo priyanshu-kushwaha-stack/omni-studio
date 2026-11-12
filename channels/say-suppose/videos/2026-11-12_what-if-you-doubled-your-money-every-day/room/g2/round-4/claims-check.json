@@ -1,0 +1,55 @@
+{
+  "call_id": "1b0694bb5f5b46d3be2b8b5ea4077aca",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [
+    {
+      "quote": "Lotte keeps a note from that year above her oven. Framed. Her grandfather's.",
+      "why": "Row c10 ('A fifty-million-mark banknote was issued in 1923') is designated for Lotte's framed note and listed in line 314 under 'Claims spoken', but line 178 omits the denomination and the inline citation (c10). At G2, any spoken ledger row must cite its row inline.",
+      "fix": "Lotte keeps a fifty-million-mark note from that year above her oven (c10). Framed. Her grandfather's.",
+      "domain": "fact",
+      "line": 178
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 201,
+      "quote": "She's had a night like this before. She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks (c04). Her savings above a line, cut in half (c04).",
+      "fix": "She's had a night like this before. She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks. Her savings above a line, cut in half (c04)."
+    },
+    {
+      "line": 57,
+      "quote": "Her grandfather's story. The king and the chessboard (c05). A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+      "fix": "Her grandfather's story. The king and the chessboard: a grain doubles on every square (c05). By the end, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    },
+    {
+      "line": 174,
+      "quote": "Many workers spent their wages the moment they were paid (c02).",
+      "fix": "Many workers were paid twice a day and spent their wages the moment they were paid (c02)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 174,
+      "quote": "By late 1923, a loaf there cost about two hundred billion marks (c01)."
+    },
+    {
+      "line": 225,
+      "quote": "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06)."
+    },
+    {
+      "line": 244,
+      "quote": "The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "22c06b880c918dedb154a08f2015b6e9d064a4433530507dc1dbf9127864ff2b",
+  "draft_sha256": "6a136c6d495e23acf9da1b7d73e5280a3af4db47d24acf6feb1cdf99430d061f"
+}

@@ -1,0 +1,65 @@
+{
+  "call_id": "acd2611cfcce42db88f804e23fd4a2e5",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure_and_causality": 8,
+    "hooks_stakes_and_escalation": 9,
+    "misconception_and_facts": 7,
+    "payoff_and_close": 9
+  },
+  "blockers": [
+    {
+      "quote": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09). You have more than that. In euros. Above a bakery. And tomorrow is twice this.",
+      "why": "Check #7 fails: the climax asks the viewer to process day fifty-five, 128 trillion and another doubling at once.",
+      "fix": "The number passes what the whole world makes in a year: about 128 trillion dollars (c09). Every loaf, every car, every hour of work on Earth. Your balance is larger. Above a bakery. And by morning it grows again.",
+      "domain": "story",
+      "line": 244
+    },
+    {
+      "quote": "For the first time in your life, you can't count it. Lotte looks at the ribbon on her floor. Then at the board. Then at you.",
+      "why": "Check #11 fails: the final three sentences narrate the eye movements already specified by the shot.",
+      "fix": "For the first time in your life, you can't count it. But Lotte can still count the rolls.",
+      "domain": "story",
+      "line": 161
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 82,
+      "quote": "Day fourteen. Eighty-one euros. You buy Lotte new chalk. Four colours. She uses the white.",
+      "fix": "Make the montage causal: \u201cSo, day fourteen. Eighty-one euros. You buy Lotte four colours of chalk. But she uses the white.\u201d"
+    },
+    {
+      "line": 314,
+      "quote": "Eight chapters: Two Cents \u00b7 The Chessboard \u00b7 Nothing, Nothing, a Roll \u00b7 Yesterday's Number \u00b7 One Careful Question \u00b7 Can't Spend It \u00b7 Lotte's Chalkboard \u00b7 Exactly Zero.",
+      "fix": "The script has eleven chapter headings. Fold \u201cNot Me\u201d into \u201cLotte\u2019s Chalkboard,\u201d and \u201cThe Planet\u201d and \u201cBack to the Counter\u201d into \u201cExactly Zero,\u201d so the stated eight chapters match the draft."
+    },
+    {
+      "line": 308,
+      "quote": "So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Sharpen the two-right-answers choice: \u201cSo\u2014erase it now, or keep Lotte\u2019s flour for one more morning? Tell us which.\u201d Leave like and subscribe to the visual end card."
+    }
+  ],
+  "keep": [
+    {
+      "line": 29,
+      "quote": "You always know the number."
+    },
+    {
+      "line": 206,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 285,
+      "quote": "Zero, doubled, is zero."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2edb40e6b27366c355320a340cf34cd6751851170fec18749ad1bd0e24e86ad8",
+  "draft_sha256": "2f30c1e521b7691328c6f75e06da335244a322ec201f56019099e3bfb60b4f59"
+}

@@ -1,0 +1,71 @@
+{
+  "call_id": "348fb6b6c09c4714849cb94ce2f62d0e",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "causal_chain": 7,
+    "hook_and_payoff": 8
+  },
+  "blockers": [
+    {
+      "quote": "So. What if your money doubled every day? Whatever's there at midnight, twice by morning. From one cent. And it will not stop.",
+      "why": "Check #3 fails: after the opening hold and dialogue, the title question lands well past about 0:15.",
+      "fix": "Move \u201cWhat if your money doubled every day?\u201d to line 26. Begin line 36 with \u201cWhatever's there at midnight, twice by morning. From one cent. And it will not stop.\u201d",
+      "domain": "story",
+      "line": 36
+    },
+    {
+      "quote": "You call Brandt.",
+      "why": "Check #5 fails at the decisive choice: this does not reveal whether you erase the balance now or wait one night, and the next scene jumps to day fifty-six without a causal answer.",
+      "fix": "Replace with \u201cYou call Brandt. Now.\u201d Then change the correction scene to day fifty-five and the final morning to day fifty-six.",
+      "domain": "story",
+      "line": 246
+    },
+    {
+      "quote": "Her grandfather's story. The king and the chessboard (c05). One grain on the first square. Two on the next. Sixty-four squares, and the king owes more wheat than the whole world grows in over a thousand years (c11).",
+      "why": "Check #7 fails: one reveal asks the viewer to process several numbers at once.",
+      "fix": "Replace with \u201cHer grandfather's story. The king and the chessboard (c05). A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years (c11).\u201d",
+      "domain": "story",
+      "line": 53
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 145,
+      "quote": "Day thirty-one. Lotte's counter.",
+      "fix": "Make the return causal: \u201cTherefore, by day thirty-one, you bring the phone back to the only counter that matters.\u201d"
+    },
+    {
+      "line": 90,
+      "quote": "> HOLD: 4 s. You on the tram, phone in your lap, the city sliding past in paper layers; in the window's reflection the flap turns as midnight passes.",
+      "fix": "Cut this to two seconds and let the flap turn trigger the next cut; reserve the long holds for the spill, cost and peak."
+    },
+    {
+      "line": 304,
+      "quote": "So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Sharpen the two-sided choice: \u201cWould you erase it now\u2014or keep it one more night? Tell us. Then hit like and subscribe.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 202,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 244,
+      "quote": "And here's your choice. Erase it now, and Lotte loses tomorrow's flour, the one promise you kept. Wait one night to keep it, and the street takes one more doubling."
+    },
+    {
+      "line": 300,
+      "quote": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "128f09c6445648a3e3229400216535838945af3a496eb33f3929428d169cba37",
+  "draft_sha256": "2ad5cd7af7ae0e7ef229e03470bf2df66b3be3f6ce03f1256d7f5f4854b32f2f"
+}

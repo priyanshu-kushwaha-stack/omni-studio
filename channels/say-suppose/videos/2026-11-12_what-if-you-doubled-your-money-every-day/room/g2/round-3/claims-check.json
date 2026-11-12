@@ -1,0 +1,62 @@
+{
+  "call_id": "435329b53fed48408fa2bc8d16726bca",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 8
+  },
+  "blockers": [
+    {
+      "quote": "Workers spent their wages the moment they were paid (c02).",
+      "why": "c02 overstates scope. The source quote states that 'As 1923 wore on, many workers were paid twice a day and would spend their wages immediately:'. Stating 'Workers' as a general class asserts that all German workers did this, violating the scope rule ('a source about one place, period, age group or species stated as general'). The line also drops the 1923 time context.",
+      "fix": "As 1923 wore on, many workers were paid twice a day and spent their wages at once (c02).",
+      "domain": "fact",
+      "line": 172
+    },
+    {
+      "quote": "Berlin once ran this race the other way. A loaf reached about two hundred billion marks (c01).",
+      "why": "c01 omits the time scope supported by the source quote ('cost 200 billion marks by late 1923', with ledger note ''late 1923', not a month; 'about''). Stating only that Berlin 'once' ran this race leaves the historical claim floating without its supported period ('by late 1923'), and leaves 'that year' in line 176 without a spoken antecedent.",
+      "fix": "By late 1923, a loaf of bread in Berlin reached about two hundred billion marks (c01).",
+      "domain": "fact",
+      "line": 172
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 176,
+      "quote": "Lotte keeps a note from that year above her oven. Framed. Her grandfather's.",
+      "fix": "Lotte keeps a fifty-million-mark note from 1923 above her oven (c10). Framed. Her grandfather's."
+    },
+    {
+      "line": 199,
+      "quote": "She's had a night like this before. She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks (c04). Her savings above a line, cut in half (c04).",
+      "fix": "She's had a night like this before. On 1 July 1990, she went to sleep in Leipzig with East German marks and woke up with Deutsche Marks (c04). Her savings above a line, cut in half (c04)."
+    },
+    {
+      "line": 257,
+      "quote": "One once credited a customer eighty-one trillion dollars by mistake, and reversed it within hours (c07).",
+      "fix": "One once credited a customer eighty-one trillion dollars by mistake, and reversed it several hours later (c07)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 111,
+      "quote": "Ask people to carry on a doubling, and most guess a small fraction of the true value (c08). You just did. In public."
+    },
+    {
+      "line": 223,
+      "quote": "In 1324, Mansa Musa came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns the same thing. By the weekend."
+    },
+    {
+      "line": 55,
+      "quote": "Her grandfather's story. The king and the chessboard (c05). A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "1fe0a433767ce3fbae7e6c4e1ed1eec427a4cc2fb63375b9153373c247173dd3",
+  "draft_sha256": "b685997f064ce32cee777fe7dd0379f2d3bec58c5be3e18625e7bc4d9e3a4f01"
+}

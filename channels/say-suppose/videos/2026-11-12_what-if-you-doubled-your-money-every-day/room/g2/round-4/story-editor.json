@@ -1,0 +1,64 @@
+{
+  "call_id": "575c833cf51649a1b33dabf6ab5af289",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story structure": 8,
+    "must-pass checks": 8,
+    "ending and payoff": 9
+  },
+  "blockers": [
+    {
+      "quote": "Day twenty-eight. One point three million. You buy the building. The bakery, the flats, the lot. Lotte never pays rent again. Do you tell her? You don't. You take the day-old roll she slides you, like every morning.",
+      "why": "#6 Every use has a gap: this purchase produces exactly its intended result.",
+      "fix": "Replace with: \"Day twenty-eight. One point three million. You buy the building\u2014the bakery, the flats, the lot\u2014so Lotte never pays rent again. This one should count. You hand her the deed. She sets it under the till and slides you the same day-old roll. Free.\"",
+      "domain": "story",
+      "line": 143
+    },
+    {
+      "quote": "You shrug. He's paid for your roll for three years. He finds this hilarious.",
+      "why": "#11 Never say the feeling: \"finds this hilarious\" names Jonas's reaction instead of giving it a playable action.",
+      "fix": "Replace with: \"You shrug. He's paid for your roll for three years. He asks Lotte for a receipt.\"",
+      "domain": "story",
+      "line": 80
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 128,
+      "quote": "Brandt: Where does it come from?",
+      "fix": "Use \"Brandt: Where's it from?\" to meet cast.md's four-word limit."
+    },
+    {
+      "line": 134,
+      "quote": "Brandt: If it's an erroneous credit, we can correct it.",
+      "fix": "Owner suggestion for the protected plant: \"Brandt: Erroneous credits get corrected.\" keeps the plant within four words."
+    },
+    {
+      "line": 314,
+      "quote": "Holds: 19, about 87 s, about 15% of a 9:50 runtime at the channel's 1.1x tempo.",
+      "fix": "Keep the nine-second peak, but run most other pictures under narration and reduce additional holds to about twenty seconds, matching the current roughly-five-percent template."
+    }
+  ],
+  "keep": [
+    {
+      "line": 206,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 285,
+      "quote": "Zero, doubled, is zero."
+    },
+    {
+      "line": 304,
+      "quote": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2b72179e6dc15f02749b8edb9d053ccbc951fb870c61eeda01e2c2f25b743c26",
+  "draft_sha256": "6a136c6d495e23acf9da1b7d73e5280a3af4db47d24acf6feb1cdf99430d061f"
+}

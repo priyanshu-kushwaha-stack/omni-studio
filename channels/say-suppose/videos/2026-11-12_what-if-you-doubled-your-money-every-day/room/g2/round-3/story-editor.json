@@ -1,0 +1,62 @@
+{
+  "call_id": "1a8f8e54928f46c582ceab8dc0967791",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8
+  },
+  "blockers": [
+    {
+      "quote": "Her grandfather's story. The king and the chessboard (c05). A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+      "why": "Check #7, Misconception first: the fact breaks the belief before you act on that belief.",
+      "fix": "Move the action from line 59 before the chessboard explanation: after line 49, use `Plenty of time. So you do the sensible thing. Nothing. You let Jonas pay.` Then reveal lines 51-57 and replace line 59 with `But you are counting squares. The money is counting nights.`",
+      "domain": "story",
+      "line": 55
+    },
+    {
+      "quote": "In 1324, Mansa Musa came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns the same thing. By the weekend.",
+      "why": "Check #7, Misconception first: the fact presents two numbers at once\u20141324 and twelve years.",
+      "fix": "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns the same thing. By the weekend.",
+      "domain": "story",
+      "line": 223
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 246,
+      "quote": "And here's your choice. Erase it now, and Lotte loses tomorrow's flour, the one promise you kept. Wait one night to keep it, and the street takes one more doubling.",
+      "fix": "Before this protected dilemma line, plant that tomorrow's flour payment clears only at midnight and cannot be prepaid; otherwise paying for the flour before calling Brandt is an apparent third option."
+    },
+    {
+      "line": 312,
+      "quote": "Holds: 19, about 87 s, about 15% of a 9:50 runtime at the channel's 1.1x tempo.",
+      "fix": "Keep the nine-second peak, but shorten or narrate over enough non-peak holds to bring wordless time near the current 5% template\u2014about thirty seconds total."
+    },
+    {
+      "line": 306,
+      "quote": "So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Use only `So, would you have erased it?` in narration; leave comment, like and subscribe as silent end-card tags."
+    }
+  ],
+  "keep": [
+    {
+      "line": 80,
+      "quote": "Day fourteen. Eighty-one euros. You buy Lotte new chalk. Four colours. She uses the white."
+    },
+    {
+      "line": 204,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 302,
+      "quote": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "e5521d24b60415b6a754fb420a379840174511f44c0cf11d9bb1960da91778ec",
+  "draft_sha256": "b685997f064ce32cee777fe7dd0379f2d3bec58c5be3e18625e7bc4d9e3a4f01"
+}

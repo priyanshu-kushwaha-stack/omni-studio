@@ -1,0 +1,669 @@
+{
+  "id": "2026-11-12_what-if-you-doubled-your-money-every-day",
+  "voice": {
+    "model": "local:qwen3",
+    "voiceType": "local",
+    "voiceId": "f49e5ec2f2e87941",
+    "ref": "../../brand/voice/arthur-ref.wav",
+    "refText": "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+  },
+  "leadInSec": 0.4,
+  "tailSec": 2.4,
+  "lines": [
+    {
+      "text": "Day two. You hold your phone up to pay for a roll, and the two cents on it come off the screen.",
+      "say": "[dry, close, matter-of-fact, no run-up] Day two. You hold your phone up to pay for a roll, and the two cents on it come off the screen.",
+      "gapAfterSec": 3.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "What if your money doubled every day?",
+      "say": "[curious, low, the question put plainly] What if your money doubled every day?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Last night, one cent. You know that.",
+      "say": "[warm, amused, a little proud of you] Last night, one cent. You know that.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You always know the number.",
+      "say": "[warm, amused] You always know the number.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "To the cent.",
+      "say": "[dry, a beat later] To the cent.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Counted?",
+      "say": "Lotte: Counted?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You nod. Jonas pays for both, like every morning.",
+      "say": "[dry, even, a small smile] You nod. Jonas pays for both, like every morning.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Jonas: Both. Like always.",
+      "say": "[easy, offhand, half a yawn] Both. Like always.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Whatever's there at midnight, twice by morning. From one cent. And it will not stop.",
+      "say": "[curious, leaning in, the last four words slower and colder] Whatever's there at midnight, twice by morning. From one cent. And it will not stop.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "And if you can't stop it, you lose the one counter you ever wanted to pay at. Hers.",
+      "say": "[quiet, a warning, the last word gentle] And if you can't stop it, you lose the one counter you ever wanted to pay at. Hers.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "The rule, once. At midnight, whatever's in the account doubles. New money. Taken from no one, the rule says. No off switch. Except one: exactly zero at midnight. Not a cent either side. Remember that.",
+      "say": "[exact, measured, a teacher's cadence, a beat before the last two words] The rule, once. At midnight, whatever's in the account doubles. New money. Taken from no one, the rule says. No off switch. Except one: exactly zero at midnight. Not a cent either side. Remember that.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Two cents. You laugh. Plenty of time. So you do the sensible thing. Nothing. You let Jonas pay.",
+      "say": "[amused, easy, sure of yourself] Two cents. You laugh. Plenty of time. So you do the sensible thing. Nothing. You let Jonas pay.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Lotte doesn't laugh.",
+      "say": "[a beat, quieter] Lotte doesn't laugh.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Lotte: The king's wheat.",
+      "say": "[low, half to herself, an old story surfacing] The king's wheat.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Her grandfather's story. The king and the chessboard. A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years.",
+      "say": "[storyteller, slow, hushed by the end] Her grandfather's story. The king and the chessboard. A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years.",
+      "gapAfterSec": 4.0,
+      "mood": "lamp",
+      "claims": [
+        "c05",
+        "c11"
+      ]
+    },
+    {
+      "text": "But you're counting squares. The money's counting nights.",
+      "say": "[low, a little ominous, the open loop] But you're counting squares. The money's counting nights.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Day eight. One euro twenty-eight. Enough for a roll, nearly. Do you buy it? You put it back. On principle. It isn't real yet.",
+      "say": "[light, quick, a shrug in the voice] Day eight. One euro twenty-eight. Enough for a roll, nearly. Do you buy it? You put it back. On principle. It isn't real yet.",
+      "gapAfterSec": 3.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day eleven. Ten euros. You've waited for this one. You count the coins into Lotte's palm yourself. One forty. Exact.",
+      "say": "[warm, building a small ceremony, proud] Day eleven. Ten euros. You've waited for this one. You count the coins into Lotte's palm yourself. One forty. Exact.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Counted?",
+      "say": "Lotte: Counted?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "That's it. That's the moment. She says it to everyone.",
+      "say": "[deflated, fond, a dry laugh under it] That's it. That's the moment. She says it to everyone.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Jonas: Lottery?",
+      "say": "[teasing, one eyebrow, mouth full] Lottery?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You shrug. He's paid for your roll for three years. He asks Lotte for a receipt.",
+      "say": "[amused, affectionate] You shrug. He's paid for your roll for three years. He asks Lotte for a receipt.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day fourteen. Eighty-one euros. You buy Lotte new chalk. Four colours. She uses the white.",
+      "say": "[light, quick, the punchline flat] Day fourteen. Eighty-one euros. You buy Lotte new chalk. Four colours. She uses the white.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day seventeen. Six hundred and fifty-five. You pay Jonas back. A month of rolls, one note, into his hand.",
+      "say": "[warm, a little formal, as if this settles something] Day seventeen. Six hundred and fifty-five. You pay Jonas back. A month of rolls, one note, into his hand.",
+      "gapAfterSec": 4.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day nineteen. Two thousand six hundred. You buy a better scarf. It itches. You keep yours.",
+      "say": "[dry, deadpan, the last two words a shrug] Day nineteen. Two thousand six hundred. You buy a better scarf. It itches. You keep yours.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day twenty-one. Ten thousand euros. And you still take the tram. Because what else would you take? The number is a thing on a phone. The tram is a thing with seats.",
+      "say": "[amused, reasonable, enjoying the logic] Day twenty-one. Ten thousand euros. And you still take the tram. Because what else would you take? The number is a thing on a phone. The tram is a thing with seats.",
+      "gapAfterSec": 2.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "But here's the problem. Every morning you come down the stairs with yesterday's number in your head. And every morning, it's wrong.",
+      "say": "[a turn, quieter, the last word landing] But here's the problem. Every morning you come down the stairs with yesterday's number in your head. And every morning, it's wrong.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day twenty-two. Twenty thousand euros. A month's money, you think. So you spend a month's money. On the street. Lanterns, a long table, Lotte baking till dark. Everyone comes.",
+      "say": "[warm, expansive, a party in the voice] Day twenty-two. Twenty thousand euros. A month's money, you think. So you spend a month's money. On the street. Lanterns, a long table, Lotte baking till dark. Everyone comes.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Who's paying?",
+      "say": "[sceptical, chalk in hand, half a smile] Who's paying?",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You hold up the phone. For once, it fits. Lotte wipes the board and writes one forty. Same as yesterday. For now. Then you go to bed.",
+      "say": "[content, slowing, the words for now a shade darker] You hold up the phone. For once, it fits. Lotte wipes the board and writes one forty. Same as yesterday. For now. Then you go to bed.",
+      "gapAfterSec": 5.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Forty thousand. The month you spent was one night's worth. By breakfast, it's small change.",
+      "say": "[flat, a little stunned, letting it sink] Forty thousand. The month you spent was one night's worth. By breakfast, it's small change.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Ask people to carry on a doubling, and most guess a small fraction of the true value. You just did. In public.",
+      "say": "[dry, exact, the last two words a wince] Ask people to carry on a doubling, and most guess a small fraction of the true value. You just did. In public.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": [
+        "c08"
+      ]
+    },
+    {
+      "text": "And it's worse. Each new night is worth more than every night before it, added together. So you weren't living a little behind. You were living in the wrong week.",
+      "say": "[hushed, the idea tightening, slow on the last sentence] And it's worse. Each new night is worth more than every night before it, added together. So you weren't living a little behind. You were living in the wrong week.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "The number's ahead of you now. You can't catch it. But the bank can. It calls.",
+      "say": "[low, urgent, a hook on the last word] The number's ahead of you now. You can't catch it. But the bank can. It calls.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Day twenty-four. Herr Brandt asks you in. One desk. One question.",
+      "say": "[clipped, careful, a lobby hush] Day twenty-four. Herr Brandt asks you in. One desk. One question.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Brandt: Where does it come from?",
+      "say": "[polite, precise, genuinely asking, no threat] Where does it come from?",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You don't know. So you say what you do know.",
+      "say": "[dry, sympathetic] You don't know. So you say what you do know.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Brandt: If it's an erroneous credit, we can correct it.",
+      "say": "[measured, neutral, a form being read aloud] If it's an erroneous credit, we can correct it.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "He writes that down. You watch him write it. Remember that, too.",
+      "say": "[quiet, deliberate, a plant being set, the last three words slower] He writes that down. You watch him write it. Remember that, too.",
+      "gapAfterSec": 4.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Day twenty-eight. One point three million. You buy the building, the bakery, the flats, the lot, so Lotte never pays rent again. This one should count. You hand her the deed. She sets it under the till and slides you the same day-old roll. Free.",
+      "say": "[warm, a secret kept, softening at the end] Day twenty-eight. One point three million. You buy the building, the bakery, the flats, the lot, so Lotte never pays rent again. This one should count. You hand her the deed. She sets it under the till and slides you the same day-old roll. Free.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Day-old. Free.",
+      "say": "[gruff, kind, not looking up] Day-old. Free.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Three years of those. You never paid for one.",
+      "say": "[tender, a note held back] Three years of those. You never paid for one.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day thirty-one. Lotte's counter.",
+      "say": "[plain, a breath before it] Day thirty-one. Lotte's counter.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Counted?",
+      "say": "Lotte: Counted?",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You hold the phone up to her. And the number won't fit.",
+      "say": "[hushed, slow, the last word almost whispered] You hold the phone up to her. And the number won't fit.",
+      "gapAfterSec": 6.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Ten million euros. Say it the other way. A billion. Cents.",
+      "say": "[awed, dry, a half-laugh on the last word] Ten million euros. Say it the other way. A billion. Cents.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "For the first time in your life, you can't count it. Lotte looks at the ribbon on her floor. Then at the board. Then at you.",
+      "say": "[quiet, watching her, each then a step] For the first time in your life, you can't count it. Lotte looks at the ribbon on her floor. Then at the board. Then at you.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "And that's when the first price moves.",
+      "say": "[low, cold, a hook] And that's when the first price moves.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "So you spend. Faster than it grows. Can you? Day thirty-two, every flower on the street. Day thirty-four, the tram line. Day thirty-six, you stop reading the number before you spend. It makes no difference. Every morning, more than you started with.",
+      "say": "[breathless, quickening, then flat on the last two sentences] So you spend. Faster than it grows. Can you? Day thirty-two, every flower on the street. Day thirty-four, the tram line. Day thirty-six, you stop reading the number before you spend. It makes no difference. Every morning, more than you started with.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Berlin once ran this race the other way. By late 1923, a loaf there cost about two hundred billion marks. Many workers spent their wages the moment they were paid.",
+      "say": "[low, documentary-dry, one image at a time] Berlin once ran this race the other way. By late nineteen twenty-three, a loaf there cost about two hundred billion marks. Many workers spent their wages the moment they were paid.",
+      "gapAfterSec": 5.0,
+      "mood": "day",
+      "claims": [
+        "c01",
+        "c02"
+      ]
+    },
+    {
+      "text": "Lotte keeps a fifty-million-mark note from that year above her oven. Framed. Her grandfather's.",
+      "say": "[quiet, close] Lotte keeps a fifty-million-mark note from that year above her oven. Framed. Her grandfather's.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c10"
+      ]
+    },
+    {
+      "text": "Here's what you'd believed. Money is a pile of stuff. More of it, more stuff. It isn't. It's a claim on what other people make. And Lotte bakes the same number of rolls as last month. Exactly the same. Your pile is just a bigger claim on the same bread.",
+      "say": "[patient, exact, the idea turning over, a complete thought at the end] Here's what you'd believed. Money is a pile of stuff. More of it, more stuff. It isn't. It's a claim on what other people make. And Lotte bakes the same number of rolls as last month. Exactly the same. Your pile is just a bigger claim on the same bread.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "But here's the second problem. Everything you spend has to land somewhere. And it lands where you stand.",
+      "say": "[a turn, low, the last clause slow] But here's the second problem. Everything you spend has to land somewhere. And it lands where you stand.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Day forty. Your street's prices move first, because that's where you spend. One forty. Two ten. Three. Four twenty.",
+      "say": "[dry, the prices read like a count, each one heavier] Day forty. Your street's prices move first, because that's where you spend. One forty. Two ten. Three. Four twenty.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "The flour man charges Lotte triple. He knows whose money she's holding. The pensioners from the corner read the board through the glass, and walk on.",
+      "say": "[quiet, sad, no judgement] The flour man charges Lotte triple. He knows whose money she's holding. The pensioners from the corner read the board through the glass, and walk on.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Same rolls.",
+      "say": "[tired, flat, chalk in hand] Same rolls.",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Same rolls. Four twenty.",
+      "say": "[echoing her, hushed] Same rolls. Four twenty.",
+      "gapAfterSec": 5.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "She's had a night like this before. She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks. Her savings above a line, cut in half.",
+      "say": "[quiet, remembering for her, unhurried] She's had a night like this before. She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks. Her savings above a line, cut in half.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": [
+        "c04",
+        "c04"
+      ]
+    },
+    {
+      "text": "Lotte: Half.",
+      "say": "[quiet, a memory, not bitter] Half.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "So she knows what you haven't said.",
+      "say": "[hushed] So she knows what you haven't said.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "It isn't taken from anyone. Except it is. From everyone. A little. Every night.",
+      "say": "[hushed, the turn, each fragment placed, the last two words cold] It isn't taken from anyone. Except it is. From everyone. A little. Every night.",
+      "gapAfterSec": 4.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You've counted the price of a roll to the cent for years. Now it won't fit on the board. And there isn't a coin for it.",
+      "say": "[quiet, personal, a loss named by its object] You've counted the price of a roll to the cent for years. Now it won't fit on the board. And there isn't a coin for it.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "So you try the obvious thing. You give it away. Day forty-five, a year's rent for everyone on the street. Lotte's flour, paid from your account every morning, from now on. For one morning, the whole street waves at you.",
+      "say": "[hopeful, brisk, warm by the end] So you try the obvious thing. You give it away. Day forty-five, a year's rent for everyone on the street. Lotte's flour, paid from your account every morning, from now on. For one morning, the whole street waves at you.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Lotte won't take an envelope. Flour, yes. Money, no.",
+      "say": "[dry, fond] Lotte won't take an envelope. Flour, yes. Money, no.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Flour. Not money.",
+      "say": "[firm, kind, final] Flour. Not money.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "By Saturday the board moves again. Six thirty. Because every envelope was new money. Chasing the same rolls.",
+      "say": "[flat, the hope going out, exact] By Saturday the board moves again. Six thirty. Because every envelope was new money. Chasing the same rolls.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years. Your street learns the same thing. By the weekend.",
+      "say": "[storyteller, wry, the last three words dry] Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years. Your street learns the same thing. By the weekend.",
+      "gapAfterSec": 4.0,
+      "mood": "morning",
+      "claims": [
+        "c06"
+      ]
+    },
+    {
+      "text": "Jonas can't afford Lotte's counter. The man who paid for your bread for three years. You hold the phone out to him. Take it. All of it.",
+      "say": "[quiet, then pleading on the last five words] Jonas can't afford Lotte's counter. The man who paid for your bread for three years. You hold the phone out to him. Take it. All of it.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Jonas: Not me.",
+      "say": "[gentle, certain, a small shake of the head] Not me.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "He means it. So. Three problems. One, you can't spend it. Two, you can't give it. Three, you can't hand it over, because Jonas knows it only makes the same rolls cost more.",
+      "say": "[exact, counting on fingers, tightening] He means it. So. Three problems. One, you can't spend it. Two, you can't give it. Three, you can't hand it over, because Jonas knows it only makes the same rolls cost more.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "And the only exit is the number you were told to remember on day two.",
+      "say": "[low, slow, a door opening] And the only exit is the number you were told to remember on day two.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars. You have more than that. In euros. Above a bakery. And tomorrow is twice this.",
+      "say": "[awed, hushed, wide, the last sentence almost a whisper] Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About a hundred and twenty-eight trillion dollars. You have more than that. In euros. Above a bakery. And tomorrow is twice this.",
+      "gapAfterSec": 6.0,
+      "mood": "night",
+      "claims": [
+        "c09"
+      ]
+    },
+    {
+      "text": "And here's your choice. Erase it now, and Lotte loses tomorrow's flour, the one promise you kept. Wait one night to keep it, and the street takes one more doubling.",
+      "say": "[grave, even, both halves weighed the same, no lean] And here's your choice. Erase it now, and Lotte loses tomorrow's flour, the one promise you kept. Wait one night to keep it, and the street takes one more doubling.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You call Brandt. Now.",
+      "say": "[flat, decided, no breath before it] You call Brandt. Now.",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Brandt: An erroneous credit.",
+      "say": "[neutral, formal, a phone voice, almost kind] An erroneous credit.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "That's all he says. A bank can do this. One once credited a customer eighty-one trillion dollars by mistake, and reversed it within hours. Hours. Yours takes fifty minutes.",
+      "say": "[quiet, exact, the repeated word hours slower] That's all he says. A bank can do this. One once credited a customer eighty-one trillion dollars by mistake, and reversed it within hours. Hours. Yours takes fifty minutes.",
+      "gapAfterSec": 4.0,
+      "mood": "lamp",
+      "claims": [
+        "c07"
+      ]
+    },
+    {
+      "text": "Zero. Everything. Your wages, your savings, three years of roll money. Ten minutes to midnight. You breathe out.",
+      "say": "[hushed, emptied, relief in the last three words] Zero. Everything. Your wages, your savings, three years of roll money. Ten minutes to midnight. You breathe out.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Then the phone buzzes. A refund. From the tram app. One cent.",
+      "say": "[a jolt, clipped, the last two words very quiet] Then the phone buzzes. A refund. From the tram app. One cent.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "One cent at midnight is two. Two is four. And it all starts again. Three minutes.",
+      "say": "[urgent, fast, the clock in the voice] One cent at midnight is two. Two is four. And it all starts again. Three minutes.",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Who do you pay a cent to, at three minutes to midnight?",
+      "say": "[breathless, a question that already knows] Who do you pay a cent to, at three minutes to midnight?",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Lotte: Counted?",
+      "say": "[soft, through the glass, surprised to see you, the same word gentler] Counted?",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "You count. One cent. Into her palm. For every day-old roll she never charged you for. She closes her hand.",
+      "say": "[tender, slow, each fragment a step, the last sentence barely spoken] You count. One cent. Into her palm. For every day-old roll she never charged you for. She closes her hand.",
+      "gapAfterSec": 9.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Zero, doubled, is zero.",
+      "say": "[hushed, exact, out of the silence, a complete thought] Zero, doubled, is zero.",
+      "gapAfterSec": 3.0,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Day fifty-six. Jonas pays. He always pays.",
+      "say": "[warm, light, morning in it] Day fifty-six. Jonas pays. He always pays.",
+      "gapAfterSec": 5.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You know the number.",
+      "say": "[quiet, warm, the opening line returned] You know the number.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "The board says three ninety. Down a little. Not back. It won't come back.",
+      "say": "[dry, honest, no comfort offered] The board says three ninety. Down a little. Not back. It won't come back.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Lotte slides you the day-old roll. In her other hand, last night's cent. She hasn't put it in the till.",
+      "say": "[tender, observing, slow] Lotte slides you the day-old roll. In her other hand, last night's cent. She hasn't put it in the till.",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow.",
+      "say": "[quiet, warm, a complete thought, the last word held] A coin isn't a thing. It's Lotte, agreeing to bake tomorrow.",
+      "gapAfterSec": 4.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "say": "[direct, friendly, unhurried, a smile on the last clause] So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "gapAfterSec": 5.0,
+      "mood": "morning",
+      "claims": []
+    }
+  ],
+  "sources": {
+    "c05": "https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem",
+    "c11": "https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem",
+    "c08": "https://link.springer.com/content/pdf/10.3758/BF03204114.pdf",
+    "c01": "https://en.wikipedia.org/wiki/Hyperinflation_in_the_Weimar_Republic",
+    "c02": "https://www.cityam.com/on-this-day-germany-introduces-the-rentenmark-to-curb-hyperinflation/",
+    "c10": "https://en.wikipedia.org/wiki/Papiermark",
+    "c04": "https://www.ddr-museum.de/en/blog/2025/western-money-at-last-the-monetary-union-of-1-july-1990",
+    "c06": "https://en.wikipedia.org/wiki/Mansa_Musa",
+    "c09": "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)",
+    "c07": "https://www.cbsnews.com/news/citi-mistakenly-credited-81-trillion-to-customer-account/"
+  },
+  "cues": {}
+}

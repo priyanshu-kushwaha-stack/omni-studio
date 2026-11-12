@@ -1,0 +1,69 @@
+{
+  "call_id": "17aaee932ba44bca96c75a355d999be5",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "He means it. So. Three problems. One, you can't spend it. Two, you can't give it. Three, you can't hand it over, because whoever holds it holds the problem, and it doubles in their pocket too.",
+      "why": "No new power rule after the halfway point: transferring the doubling rule to whoever holds the money was never established.",
+      "fix": "He means it. So. Three problems. One, you can't spend it. Two, you can't give it. Three, you can't hand it over, because Jonas knows it only makes the same rolls cost more.",
+      "domain": "story",
+      "line": 231
+    },
+    {
+      "quote": "A century ago, this street ran the same race the other way. By late 1923 a loaf of bread in Berlin cost about 200 billion marks (c01). Many workers were paid twice a day, and spent their wages at once (c02).",
+      "why": "Check #7, misconception first: this passage stacks a century, a year, 200 billion and twice daily. The conversion passage at line 199 repeats the overload.",
+      "fix": "Replace lines 172\u2013176 with: \u201cBerlin once ran this race the other way. A loaf reached about two hundred billion marks (c01). Workers spent wages the moment they were paid (c02). Lotte keeps a note from that collapse above her oven. Framed. Her grandfather's.\u201d Replace lines 199\u2013201 with: \u201cLotte has watched savings change meaning overnight. When East German marks became Deutsche Marks, everything above the protected line was cut in half (c04). Lotte: Half.\u201d",
+      "domain": "story",
+      "line": 172
+    },
+    {
+      "quote": "Day nineteen. Two thousand six hundred. You buy a scarf. The same scarf. In case.",
+      "why": "Check #6, every use has a gap: you intend to buy a duplicate and receive exactly that, so the use produces no reversal.",
+      "fix": "Day nineteen. Two thousand six hundred. You buy a better scarf. It itches. You keep yours.",
+      "domain": "story",
+      "line": 86
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 115,
+      "quote": "The number's ahead of you now. You can't catch it. And that's when the bank calls.",
+      "fix": "Make the connector causal: \u201cThe number's ahead of you now. You can't catch it. But the bank can. It calls.\u201d"
+    },
+    {
+      "line": 147,
+      "quote": "Day thirty-one. Lotte's counter.",
+      "fix": "Tie the building purchase to the next escalation: \u201cBut buying the whole building barely dents the balance. Day thirty-one. Lotte's counter.\u201d"
+    },
+    {
+      "line": 306,
+      "quote": "So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Leave on the choice and let the visual end card carry the generic CTA: \u201cWould you have erased it? Tell us why.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 94,
+      "quote": "But here's the problem. Every morning you come down the stairs with yesterday's number in your head. And every morning, it's wrong."
+    },
+    {
+      "line": 204,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 302,
+      "quote": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "341c4a0e42ad4e0cae28d7d9f5a758aee4474e4398badb9c8480ba82e813e3ec",
+  "draft_sha256": "49e9c38dba7c1d3b77d44e832a0249c0a81573800c06b3e87d0c8ebf85f94583"
+}
