@@ -10,6 +10,11 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-12
 
+- **"A + NOT HIM."** G1 pick on the saw-who-wants-you-to-fail film (Seoul, one autumn): title A, "What If
+  You Saw Who Wants You to Fail?", with tag a ("NOT HIM."), on the drawn cold-open frame (your best friend grinning
+  under minus eighty-four). The film's own title and the writer's recommendation; the room's three story notes (title
+  question by 0:15, the rule in three lines, one spoken number on exam day) go into the G2 script. (saw who wants you
+  to fail, G1)
 - **"A+a, keep the spill"** G1 pick on the doubled-money restart (Berlin, Lotte's bakery): title A with tag a
   ("SHE PAYS."), and the thumbnail keeps the day-thirty-one spill of digits over the counter rather than the opening's
   two cents. The thumbnail shows the film's strongest picture; the script makes its opening confirm the click

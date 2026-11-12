@@ -47,3 +47,12 @@ editor); the benign/malicious line, bronze and silver, and "a seat in one case a
 **For the owner.** Pick one title and thumbnail pair (recommended: A + "NOT HIM."), and approve the five lines and the
 under-question ("Can someone be glad for you and hurt by you in the same second?"). Notes 1-7 go into the owner-notes
 round with any notes of yours. G1 passes only by the owner's own `omni approve`.
+
+## The owner's pick (2026-11-12)
+
+"A + NOT HIM.": title A ("What If You Saw Who Wants You to Fail?") with thumbnail a ("NOT HIM."), the writer's
+recommendation. No other notes. The room's story blockers #1-#3 and the suggestions taken above go into the G2 script
+(title question by 0:15, the rule in three lines, one spoken number on exam day); #6 (bronze and silver) stays the
+owner's call at G2. Recorded in `taste.md` and in `artifacts/proposal_packet.json` (selected concept A).
+`packaging.md` is unchanged: it is the draft the room reviewed (`room verify` checks its hash). G1 passes only by the
+owner's own `omni approve`.
