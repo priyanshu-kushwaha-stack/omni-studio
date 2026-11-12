@@ -30,14 +30,17 @@ jumps of consequence and each is bigger than the last.
 ### Picking a what-if (owner, 2026-11-08; revised 2026-11-09)
 
 Topics come from the idea room (`rules/ideas.md`): five researcher models, a neutral moderator, ratings by all, one
-agreed scored list; the owner picks. A topic must pass the nine-point pick card in that file: a daydream the viewer
-already had; you can live it from an ordinary moment; a wrong belief it breaks; one belief-breaking fact and one late
+agreed scored list; the owner picks. A topic must pass the nine-point pick card in that file: a daydream people
+anywhere already had; you can live it from an ordinary moment, set where the idea's best content is; a wrong belief it
+breaks; one belief-breaking fact and one late
 mind-boggle; three jumps of consequence; earned stakes; buildable this week; not a neighbour's twist or title from the
 last 90 days.
 
-**The viewer** is one named person: a young Indian, comfortable in English, on a phone in the evening, whose week is
-chai, the bus or metro, exams, the office and family. Every example and gag comes from that week; titles and
-thumbnails stay readable worldwide (no `₹` or local slang in the English packaging).
+**"You" is anyone** (owner, 2026-11-11, `taste.md`; replaces the one named viewer). Stories are imaginary, hook hard
+and make people think (2026-11-12; mind-boggling is one way, not a rule); they are not written to one viewer's week.
+The setting, the currency and the cast follow wherever the idea's best real content and pictures are; India is one
+option, never the default. Titles and thumbnails stay readable worldwide (no slang, symbol or reference only one
+country reads in the English packaging).
 
 ### Writing it (owner, 2026-11-08 and 2026-11-09)
 

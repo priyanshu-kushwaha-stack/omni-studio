@@ -8,6 +8,32 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-12
+
+- **"A+a, keep the spill"** G1 pick on the doubled-money restart (Berlin, Lotte's bakery): title A with tag a
+  ("SHE PAYS."), and the thumbnail keeps the day-thirty-one spill of digits over the counter rather than the opening's
+  two cents. The thumbnail shows the film's strongest picture; the script makes its opening confirm the click
+  (story #2) without a teaser from later (#15). (doubled-money restart, G1)
+- **"mind boggling is one type not just this."** On the docs that carried the 2026-11-11 notes, which had made a
+  mind-boggling end a must-pass check: "Video should be hooked and should make people to think because that is what
+  this type of niche is and therefore donr restrict but understand my intent." The aim of every film is a hook that
+  holds and an idea that makes people think. Mind-boggling scale is one way to get there, beside others (a mirror on
+  how people are, a dilemma with two right answers, a rule whose catch rewires how you see something ordinary). No
+  check requires a mind-boggling end; the writer chooses what fits the idea. (say-suppose docs, PR after #46)
+
+## 2026-11-11
+
+- **"Not necessarily it needs to revolve around India."** Same film, after round 2 (still a lane, a chai stall,
+  rupees): "Story should be making more sense whereever it has good content." The setting, the currency and the cast
+  follow wherever the idea's best real content and images are; India is one option, never the default.
+  (doubled-money film, G1)
+- **"Remove the concept of viewer."** G1 notes on the doubled-money film, after reading its "The viewer" paragraph
+  (Riya, 22, Pune; the broke student with a chai tab): "this is making the story biased. i want you to create imaginary
+  stories, mind boggling and that type." Stories are no longer written to one named viewer's week. "You" is anyone; the
+  premise and its imagination set the world, the scale and the gags, and every film reaches for the mind-boggling end
+  of its idea. The `audience.md` persona and the "every example comes from the viewer's week" rules (`rules/story.md`,
+  `style.md`) give way to this note; packaging stays readable worldwide. (doubled-money film, G1)
+
 ## 2026-11-10
 
 - **G2, odds of success: "Take both fixes"** (first-time viewer, story #11, round 6). "But yours moved. Down."
