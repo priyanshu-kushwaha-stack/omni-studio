@@ -33,6 +33,29 @@ voices:
   characters:
     engine: qwen3-design
     cast:
+      # What If You Lived a Year Every Night (2026-11-13): Osaka, a hotel of sleep pods.
+      Flatmate: >-
+        A bright, warm female voice: a woman of about twenty-six, the listener's flatmate. Mezzo, quick and chatty,
+        always mid-story, a laugh under the words, casual modern English.
+      Boss: >-
+        A smooth male baritone: a hotel owner in his fifties who smells money. Slightly oily, pleased with himself,
+        clipped and greedy, a showman's grin in the voice.
+      Old sleeper: >-
+        A slow, deep male bass: a very old man who has lived thousands of years in his head. Soft, dry and unhurried,
+        every word placed, a long breath before it.
+      Piano teacher: >-
+        A low, kind female alto: a woman in her seventies, a piano teacher. Gentle, certain and patient, a little
+        husky, speaks as if from far away.
+      Student: >-
+        A high, sharp female voice: a girl of about seventeen in a school uniform. Quick, cheeky and clever, a
+        lawyer's question in a teenager's mouth.
+      Judge: >-
+        A flat, heavy male bass: a judge in his sixties. Grave, slow and final, three words like a door shutting.
+      Bride: >-
+        A soft, calm female mezzo: a woman of about thirty in a wedding dress. Warm, settled and amused, sure of
+        herself.
+      Teacher: >-
+        A tired, firm female alto: a schoolteacher in her forties. Brisk, unimpressed, used to being obeyed.
       # What If You Doubled Your Money Every Day (2026-11-12): Berlin, Lotte's bakery.
       Lotte: >-
         A low, warm female voice: a woman in her late fifties, a baker who has seen everything. Alto, slightly husky,

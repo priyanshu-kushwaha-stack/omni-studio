@@ -1,0 +1,55 @@
+{
+  "call_id": "9a6c006fde284119a7c078c4ecd4542e",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 9
+  },
+  "blockers": [
+    {
+      "quote": "Night one hundred and twenty-three. You've lived longer than anyone whose life has ever been verified: Jeanne Calment, 122 years and 164 days (c27). And you still pay rent on the same flat.",
+      "why": "Check #7, Misconception first: three competing quantities arrive before the rent turn lands.",
+      "fix": "Night one hundred and twenty-three. You've outlived the longest verified human life (c27). And you still pay rent on the same flat.",
+      "domain": "story",
+      "line": 285
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 314,
+      "quote": "Nobody comes with you. Remember that. If she plugs in tonight she doesn't arrive beside you. She arrives a newcomer in year forty-one of your life, where you have forty years of people she's never met. You'd be the stranger. And she'd start losing out here the way you have. Her brother's story. Her door code. Her.",
+      "fix": "Correct the chronology and close the joining loophole: \"If she plugs in tonight, she can share the next year. She cannot share the hundred and twenty-three before it. She arrives in a life full of people she's never met, and starts losing out here the way you have.\" Propagate the same correction through the later forty-year references."
+    },
+    {
+      "line": 289,
+      "quote": "Ten years of nights is more than three and a half thousand years lived. Unroll it.",
+      "fix": "Make clear that this is a projection: \"Keep plugging in for ten outside years and you'll have lived more than three and a half thousand. Unroll it.\""
+    },
+    {
+      "line": 384,
+      "quote": "So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Leave on the choice faster: \"Would you plug in? Tell us below.\" Let the end-card tags carry like and subscribe."
+    }
+  ],
+  "keep": [
+    {
+      "line": 217,
+      "quote": "Yesterday was a year ago."
+    },
+    {
+      "line": 347,
+      "quote": "You were told you'd never run out of time in there. You did. Not hours. Hers."
+    },
+    {
+      "line": 359,
+      "quote": "They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "9b188afee680ec21abe839442dbf36894c90c71dd28a4cba284cd53388c9c381",
+  "draft_sha256": "04ed38a1f0d3e14fb2d913cf20a053c29edcdfa9df7b6d6f5f5c7d15ef4b7cd9"
+}

@@ -1,0 +1,47 @@
+{
+  "call_id": "92769fe97ee34efabb6968debdfa3e5e",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 95,
+      "quote": "Michel Siffre came out of a cave with no clock 25 days behind the calendar (c16).",
+      "fix": "Michel Siffre came out of a cave with no clock after about two months, 25 days behind the calendar (c16)."
+    },
+    {
+      "line": 60,
+      "quote": "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times: one night.",
+      "fix": "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times, that fits into about eight and three-quarter hours: one night."
+    },
+    {
+      "line": 116,
+      "quote": "The hard ones take about 2,200 class hours at the US diplomats' school (c26). You've had seven years of evenings. Four languages, at a working level.",
+      "fix": "The hard ones take an English speaker about 2,200 class hours at the US diplomats' school (c26). You've had seven years of evenings. Four languages, at a working level."
+    }
+  ],
+  "keep": [
+    {
+      "line": 351,
+      "quote": "Out there a close friend takes more than 200 hours together (c23). In here, that's about twelve minutes of her evening."
+    },
+    {
+      "line": 213,
+      "quote": "People dropped 31 metres into a net later judged their own fall 36% longer than other people's (c18). A moment is as long as the memory it leaves."
+    },
+    {
+      "line": 127,
+      "quote": "Sleep is when the brain files the day (c14). And one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "6e51c58d92679ab456157b42db76c12145fc9c9c3f425c3b151a3c0779a89918",
+  "draft_sha256": "04ed38a1f0d3e14fb2d913cf20a053c29edcdfa9df7b6d6f5f5c7d15ef4b7cd9"
+}

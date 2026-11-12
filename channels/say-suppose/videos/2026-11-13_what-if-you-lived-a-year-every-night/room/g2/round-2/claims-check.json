@@ -1,0 +1,62 @@
+{
+  "call_id": "37a2629448da45669ecf36255225be71",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 8
+  },
+  "blockers": [
+    {
+      "quote": "Night thirty. Eight hours out here against 8,760 in there (c03). Every night, for a month. More than ninety-nine of every hundred hours you've lived this month happened in there.",
+      "why": "Arithmetic slip against row c03: at 1,000 times human speed, a year of 8,760 hours inside corresponds to 8.76 hours outside (about eight and three-quarter hours), not 8 hours. Eight hours outside at 1,000x speed yields only 8,000 hours inside. Stating 'Eight hours out here against 8,760 in there' contradicts the ledger row's own calculation ('8,760 / 1,000 = 8.76 h is our arithmetic').",
+      "fix": "Night thirty. About eight and three-quarter hours out here against 8,760 in there (c03). Every night, for a month. More than ninety-nine of every hundred hours you've lived this month happened in there.",
+      "domain": "fact",
+      "line": 232
+    },
+    {
+      "quote": "The hard ones take about 2,200 class hours at the diplomats' school (c26). You've had seven years of evenings. Four languages, at a working level.",
+      "why": "Scope overstatement: row c26 cites the Foreign Service Institute (FSI), which specifically measures class hours for native English-speaking US diplomats learning Category IV languages. Referring generally to 'the diplomats' school' without 'US' states a single country's specific training benchmark as an unqualified general finding.",
+      "fix": "The hard ones take about 2,200 class hours at the US diplomats' school (c26). You've had seven years of evenings. Four languages, at a working level.",
+      "domain": "fact",
+      "line": 116
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 390,
+      "quote": "Claims spoken: c03, c07, c10, c11, c13, c14, c16, c18, c22, c23, c26, c27, c28;",
+      "fix": "Remove c22 from 'Claims spoken' and move it to 'Not used' in the Word count summary, since the cosmonaut line (c22) was cut from the script in v3."
+    },
+    {
+      "line": 390,
+      "quote": "the bride (she knows him ten years longer)",
+      "fix": "Update to 'the bride (she knows him a year longer)' to match line 175 and the v2/v3 edit."
+    },
+    {
+      "line": 50,
+      "quote": "The rule, once. Plug in at bedtime, and your mind runs about a thousand times faster. Eight hours out here is a year in there.",
+      "fix": "The rule, once. Plug in at bedtime, and your mind runs about a thousand times faster. A night out here is a year in there."
+    }
+  ],
+  "keep": [
+    {
+      "line": 213,
+      "quote": "People dropped 31 metres into a net later judged their own fall 36% longer than other people's (c18). A moment is as long as the memory it leaves."
+    },
+    {
+      "line": 71,
+      "quote": "Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself (c10)."
+    },
+    {
+      "line": 127,
+      "quote": "Sleep is when the brain files the day (c14). And one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "24f44999608c1a95acbf3bbcfe4496e437654ba6f1c79830b8dff3d2813a4f77",
+  "draft_sha256": "557fd4e8aeba38fefceae003b6b1f07f1d2a047a223d6af515a0e0d14eecb5b6"
+}

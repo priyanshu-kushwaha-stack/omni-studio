@@ -1,0 +1,66 @@
+{
+  "call_id": "25022a2f2e2c487195fda88263c0f33a",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "stakes_and_payoff": 9,
+    "clarity": 8
+  },
+  "blockers": [
+    {
+      "quote": "Last night, before you plugged in, a row about the rent. For her it's fresh. For you it's a year cold, and half gone.",
+      "why": "Check #5, But / therefore: the city montage and this argument currently join as unrelated events.",
+      "fix": "Replace with: \"But outside, last night is still waiting for you. Before you plugged in, a row about the rent. For her it's fresh. For you it's a year cold, and half gone.\"",
+      "domain": "story",
+      "line": 201
+    },
+    {
+      "quote": "Night thirty. About eight and three-quarter hours out here against 8,760 in there (c03). Every night, for a month. More than ninety-nine of every hundred hours you've lived this month happened in there.",
+      "why": "Check #7, Misconception first: four numerical frames land at once, burying the midpoint revelation.",
+      "fix": "Replace with: \"After a month of plugging in, almost all the hours you've lived happened in there (c03).\" Keep the exact arithmetic in the picture.",
+      "domain": "story",
+      "line": 232
+    },
+    {
+      "quote": "Michel Siffre spent about two months alone in a cave and came out 25 days behind his calendar (c16).",
+      "why": "Check #7, Misconception first: two numbers compete in one fact beat.",
+      "fix": "Replace with: \"Michel Siffre came out of a cave experiment believing the date was twenty-five days earlier than it was (c16).\"",
+      "domain": "story",
+      "line": 95
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 314,
+      "quote": "If she plugs in tonight she doesn't arrive beside you. She arrives a newcomer in year forty-one of your life, where you have forty years of people she's never met.",
+      "fix": "Close the shared-town loophole: \"She can find you in there. But to stay, she starts losing her brother's story, her door code and her outside life\u2014a year at a time.\""
+    },
+    {
+      "line": 384,
+      "quote": "So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Make the choice specific and leave the generic CTA to the end card: \"Would you take the two-plug cable\u2014or leave it on the hook? Tell us below.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 217,
+      "quote": "Yesterday was a year ago."
+    },
+    {
+      "line": 347,
+      "quote": "You were told you'd never run out of time in there. You did. Not hours. Hers."
+    },
+    {
+      "line": 359,
+      "quote": "They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "a127784139b2bfd7a00059b636533eb263cf8e417bab6f9703b1eb121e84ea27",
+  "draft_sha256": "ed2e5f606ac980f553c1d8ef04065c0f67e058b0c73a9dfa40a46c889e818f1e"
+}

@@ -1,0 +1,15 @@
+{
+  "round": 2,
+  "draft_sha256": "557fd4e8aeba38fefceae003b6b1f07f1d2a047a223d6af515a0e0d14eecb5b6",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": [
+      "line 34: 'and then' joins two beats; use but or therefore"
+    ]
+  },
+  "owner_notes": true,
+  "owner_note": [],
+  "kind": "script",
+  "linted_at": "2026-11-12T21:08:28+00:00"
+}

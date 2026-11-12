@@ -1,0 +1,55 @@
+{
+  "call_id": "ebbbe24954474f0ea5dc1359990004b8",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [
+    {
+      "quote": "But a dream runs at real speed. Lucid dreamers counting to ten take as long as they do awake (c11). So it takes a plug.",
+      "why": "Overstated: claim c11's verbatim quote notes that performing motor tasks (squats) required about 40% more time in lucid dreams than in wakefulness, so dreams do not run strictly at real speed across the board. Stating unconditionally that 'a dream runs at real speed' overstates the science; c11 explicitly specifies 'runs at about real speed' and 'take about as long as awake'.",
+      "fix": "But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake (c11). So it takes a plug.",
+      "domain": "fact",
+      "line": 73
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 103,
+      "quote": "Two years in orbit bought one cosmonaut a forty-eighth of a second (c22). You bought a year with a pillow.",
+      "fix": "Two years in orbit bought one cosmonaut about a forty-eighth of a second (c22). You bought a year with a pillow."
+    },
+    {
+      "line": 355,
+      "quote": "Out there a close friend takes more than 200 hours (c23). In here, that's about twelve minutes of her evening.",
+      "fix": "Out there a close friend takes more than 200 hours together (c23). In here, that's about twelve minutes of her evening."
+    },
+    {
+      "line": 295,
+      "quote": "A thousand years back, the English of Beowulf. No English speaker today can read it without study (c28).",
+      "fix": "About a thousand years back, the English of Beowulf. No English speaker today can read it without study (c28)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 95,
+      "quote": "In 1962, Michel Siffre spent about two months in a cave. He came up thinking it was 20 August. It was 14 September. He'd lost 25 days (c16)."
+    },
+    {
+      "line": 131,
+      "quote": "Sleep is when the brain files the day (c14). And one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13)."
+    },
+    {
+      "line": 289,
+      "quote": "Night one hundred and twenty-three. You've lived longer than anyone whose life has ever been verified: Jeanne Calment, 122 years and 164 days (c27). And you still pay rent on the same flat."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "3ce3b52f7878affe3e29b9d2fce1072913341a9402e8670de9a71f488ad5e694",
+  "draft_sha256": "c58fc2d1b6bb8643ad1e14ba526e51a058624b9701bc2fad898616b37f74661a"
+}

@@ -1,0 +1,72 @@
+{
+  "call_id": "772ed07350ec43559674a9d55eeb7a6e",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 9,
+    "causal_chain": 8,
+    "earned_stakes": 9,
+    "ending": 9
+  },
+  "blockers": [
+    {
+      "quote": "> HOLD: 3 s. Performed. The lid tears. Your boss lifts out a coil of teal cable with a plug the size of a coin on its end, holds it to the lamp, grins, and drops it in your lap. Your flatmate leans on the mop, mid-story, eyes bright. You lift one flat hand at her without looking up.",
+      "why": "Check #2 Confirm the click fails. This three-second wordless hold, followed by three exchanges before the three-second hatch sequence, cannot produce the thumbnail frame at 0:06.",
+      "fix": "Replace the hold with: \"> HOLD: 1 s. Performed. The lid tears; your boss drops the cable in your lap while your flatmate leans in, ready to continue her story.\" Lock the open-hatch frame to 0:06.",
+      "domain": "story",
+      "line": 22
+    },
+    {
+      "quote": "In 1962, Michel Siffre spent about two months in a cave. He came up thinking it was 20 August. It was 14 September. He'd lost 25 days (c16).",
+      "why": "Check #7 Misconception first fails its one-number-at-a-time test: five date and duration values arrive before the emotional landing.",
+      "fix": "Replace with: \"Michel Siffre spent months alone in a cave and came out 25 days behind his calendar (c16).\"",
+      "domain": "story",
+      "line": 95
+    },
+    {
+      "quote": "The alarm. You hang the cable on its hook.",
+      "why": "Check #11 Never say the feeling fails because the shot already shows the hatch opening and the cable being hung up.",
+      "fix": "Replace with: \"This morning, the alarm means the same thing to both of you.\"",
+      "domain": "story",
+      "line": 366
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 194,
+      "quote": "And all of them went into the same town you did. Inside is filling up.",
+      "fix": "Make the city beat cause the apology beat: \"And you do what the whole city does: bring a year home to an argument only eight hours old.\""
+    },
+    {
+      "line": 318,
+      "quote": "Or you unplug, age at her speed, and lose forty years of friends who are more of your life than she is.",
+      "fix": "Before this line, silently reprise the piano teacher guiding your first wrong note and the grave from line 234, so the dilemma's inside life feels as costly to leave as the flatmate."
+    },
+    {
+      "line": 384,
+      "quote": "So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Use \"Would you plug in? Tell us below.\" Leave like and subscribe to the visual end card so the story exits faster."
+    }
+  ],
+  "keep": [
+    {
+      "line": 217,
+      "quote": "Yesterday was a year ago."
+    },
+    {
+      "line": 347,
+      "quote": "You were told you'd never run out of time in there. You did. Not hours. Hers."
+    },
+    {
+      "line": 359,
+      "quote": "They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "ca5d2f02b81351d5aec50a345774c13af8e46f0a94a7ae16db88d0a557d039bb",
+  "draft_sha256": "557fd4e8aeba38fefceae003b6b1f07f1d2a047a223d6af515a0e0d14eecb5b6"
+}

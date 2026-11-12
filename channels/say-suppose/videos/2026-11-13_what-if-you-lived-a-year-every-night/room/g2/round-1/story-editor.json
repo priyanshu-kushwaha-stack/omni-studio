@@ -1,0 +1,69 @@
+{
+  "call_id": "2ba5b63765204ba793394559c3690ce8",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8
+  },
+  "blockers": [
+    {
+      "quote": "> HOLD: 4 s. Performed. You sit, lift a flat piece of cardboard from the recycling with piano keys drawn on it in pen, lay it on the table, shut your eyes and play. Every finger lands. A real piano sounds under the picture. Her spoon stops halfway. Her brows go up and stay up. You open your eyes for the applause.",
+      "why": "Check #9, Earned stakes: she is present early, but the film gives the pair no warm shared beat before asking you to abandon forty years of friends for her.",
+      "fix": "Replace with: \"> HOLD: 4 s. Performed. You play the cardboard keys, eyes shut. Her spoon stops; then she taps the bowl in time. You miss a note, she catches the rhythm, and you find the ending together. She slides the last piece of toast to your side. You open your eyes, expecting applause.\"",
+      "domain": "story",
+      "line": 89
+    },
+    {
+      "quote": "And within a week, it isn't just you.",
+      "why": "Check #5, But / therefore: the boss's queue and the city montage currently join by elapsed time\u2014an \"and then\"\u2014rather than consequence.",
+      "fix": "Replace with: \"Your boss sells every coil before dawn. By the end of the week, the whole city is plugging in.\"",
+      "domain": "story",
+      "line": 155
+    },
+    {
+      "quote": "She looks up. And she tells it.",
+      "why": "Check #11, Never say the feeling: the narration repeats exactly what the performed shot already shows.",
+      "fix": "Replace with: \"For once, tomorrow gets nothing.\"",
+      "domain": "story",
+      "line": 378
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 103,
+      "quote": "Two years in orbit bought one cosmonaut a forty-eighth of a second (c22). You bought a year with a pillow.",
+      "fix": "Cut the orbit insert and this line; move directly from the piano's personal gap to \"But you'll fix the week.\""
+    },
+    {
+      "line": 127,
+      "quote": "The code. Four digits, last typed seven years ago. Your time.",
+      "fix": "Show several inside-town keypads with different codes flashing behind your hovering finger, so this particular memory loss feels caused rather than selected for the plot."
+    },
+    {
+      "line": 388,
+      "quote": "So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Replace the spoken CTA with: \"Would you plug in\u2014or wait for two plugs? Tell us below.\" Leave like and subscribe to the end-card tags."
+    }
+  ],
+  "keep": [
+    {
+      "line": 221,
+      "quote": "Yesterday was a year ago."
+    },
+    {
+      "line": 351,
+      "quote": "You were told you'd never run out of time in there. You did. Not hours. Hers."
+    },
+    {
+      "line": 363,
+      "quote": "They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "b94db7a719661cce167eacc33cc220e9ade3d201d1a6db8fe9c8a930d08adcfe",
+  "draft_sha256": "c58fc2d1b6bb8643ad1e14ba526e51a058624b9701bc2fad898616b37f74661a"
+}

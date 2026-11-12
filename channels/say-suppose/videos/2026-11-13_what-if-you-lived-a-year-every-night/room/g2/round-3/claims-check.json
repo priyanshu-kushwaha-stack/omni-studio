@@ -1,0 +1,39 @@
+{
+  "call_id": "92f6752bbe0841a4b0eff91f9d115a2d",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [
+    {
+      "quote": "Michel Siffre spent about two months alone in a cave and came out 25 days behind his calendar (c16).",
+      "why": "c16 notes Siffre lived in complete isolation with no clock or calendar; he did not maintain 'his calendar' in the cave that fell behind. When his team called him on 14 September, his subjective date count was 20 August, meaning he had lost 25 days relative to the outside calendar.",
+      "fix": "Michel Siffre spent about two months alone in a cave and came out 25 days behind the calendar (c16).",
+      "domain": "fact",
+      "line": 95
+    }
+  ],
+  "suggestions": [],
+  "keep": [
+    {
+      "line": 60,
+      "quote": "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times: one night."
+    },
+    {
+      "line": 213,
+      "quote": "People dropped 31 metres into a net later judged their own fall 36% longer than other people's (c18). A moment is as long as the memory it leaves."
+    },
+    {
+      "line": 351,
+      "quote": "Out there a close friend takes more than 200 hours together (c23). In here, that's about twelve minutes of her evening."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "c58955a2b2b66563339d4042cc41ec5f2b20f7d19b5e73d69b34d84851376f76",
+  "draft_sha256": "ed2e5f606ac980f553c1d8ef04065c0f67e058b0c73a9dfa40a46c889e818f1e"
+}
