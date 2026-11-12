@@ -1,0 +1,47 @@
+{
+  "call_id": "629c3204eefe45798d02bda548c99bdd",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 14,
+      "quote": "dreams running at about real speed, squats about 40% slower (c11);",
+      "fix": "dreams running at about real speed, squats taking about 40% longer (c11);"
+    },
+    {
+      "line": 53,
+      "quote": "The one spoken number: out there a close friend takes more than 200 hours (c23); in here, at a thousand times, that's twelve minutes of her evening.",
+      "fix": "The one spoken number: out there a close friend takes more than 200 hours (c23); in here, at a thousand times, that's about twelve minutes of her evening."
+    },
+    {
+      "line": 44,
+      "quote": "The real number behind it [curious]: an economist who studies uploaded minds, Robin Hanson, guessed a typical one would run about a thousand times human speed (c07); a year is 8,760 hours (c03); at a thousand times, that's one night.",
+      "fix": "The real number behind it [curious]: an economist who studies uploaded minds, Robin Hanson, guessed a typical one would run about a thousand times human speed (c07); a year is 8,760 hours (c03); at a thousand times, that's about eight and three-quarter hours, one night."
+    }
+  ],
+  "keep": [
+    {
+      "line": 51,
+      "quote": "Night one hundred and twenty-three: you've lived longer than anyone whose life has ever been verified, Jeanne Calment, 122 years and 164 days (c27), and you're still paying rent on the same flat."
+    },
+    {
+      "line": 46,
+      "quote": "Sleep is when the brain files the day (c14), and one small famous experiment from 1924 decided forgetting is mostly the new rubbing out the old (c13): a year of new, every night."
+    },
+    {
+      "line": 44,
+      "quote": "The real number behind it [curious]: an economist who studies uploaded minds, Robin Hanson, guessed a typical one would run about a thousand times human speed (c07); a year is 8,760 hours (c03); at a thousand times, that's one night."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "71abc7c383c766ccb9dbbd07c0e0f46525e9283a705da0088804e30325da0ea8",
+  "draft_sha256": "8057d407a311ebaa084498d0097deb40876b8d5808889f0ae45e9c2e87343205"
+}

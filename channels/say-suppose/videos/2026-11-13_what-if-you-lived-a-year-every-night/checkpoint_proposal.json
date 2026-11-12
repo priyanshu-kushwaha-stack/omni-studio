@@ -1,0 +1,148 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-you-lived-a-year-every-night",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-12T20:54:29.771161+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If You Lived a Year Every Night?",
+          "why_this_works": "The topic title (f-year-every-night, Fable's pitch, 77/100 blind); the writer's pick; pairs with thumbnail a (SAME DAY?)",
+          "narrative_structure": "story",
+          "visual_approach": "Seven in the morning in a dark hall of sleep pods, two tiers of hatches with warm porthole lamps behind (no lettering): you large at the left, sitting half out of your open pod (door swung up, a reading lamp, a pillow), lids heavy, a long flat stare at your flatmate; on the pod frame the crimson split-flap day counter has stopped on 365; your flatmate right of centre, lilac head, apron, mop in hand, still mid-sentence. Three candidates a, b, c differ only in the tag (SAME DAY?, ONE SLEEP., YESTERDAY?); drawn in code, brand/thumbs/yearnight",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 570,
+          "hook": "The pod hall after close: your boss unpacks a cable (\"Staff first.\"), your flatmate starts a story, you say \"tell me tomorrow\", climb into a pod and plug in; the hatch counter flutters to 365; you climb out a year older in your head while she finishes her sentence."
+        },
+        {
+          "id": "B",
+          "title": "What If You Woke Up a Year Older Every Morning?",
+          "why_this_works": "Alternative title: the morning side of the rule, promises the thumbnail's face; pairs with thumbnail b (ONE SLEEP.); 47 characters, the mobile cut ends at 'Every...'",
+          "narrative_structure": "story",
+          "visual_approach": "Seven in the morning in a dark hall of sleep pods, two tiers of hatches with warm porthole lamps behind (no lettering): you large at the left, sitting half out of your open pod (door swung up, a reading lamp, a pillow), lids heavy, a long flat stare at your flatmate; on the pod frame the crimson split-flap day counter has stopped on 365; your flatmate right of centre, lilac head, apron, mop in hand, still mid-sentence. Three candidates a, b, c differ only in the tag (SAME DAY?, ONE SLEEP., YESTERDAY?); drawn in code, brand/thumbs/yearnight",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 570,
+          "hook": "The pod hall after close: your boss unpacks a cable (\"Staff first.\"), your flatmate starts a story, you say \"tell me tomorrow\", climb into a pod and plug in; the hatch counter flutters to 365; you climb out a year older in your head while she finishes her sentence."
+        },
+        {
+          "id": "C",
+          "title": "What If You Lived Thirty Years in a Month?",
+          "why_this_works": "Alternative title: the midpoint's count as the claim, the biggest number; pairs with thumbnail c (YESTERDAY?)",
+          "narrative_structure": "story",
+          "visual_approach": "Seven in the morning in a dark hall of sleep pods, two tiers of hatches with warm porthole lamps behind (no lettering): you large at the left, sitting half out of your open pod (door swung up, a reading lamp, a pillow), lids heavy, a long flat stare at your flatmate; on the pod frame the crimson split-flap day counter has stopped on 365; your flatmate right of centre, lilac head, apron, mop in hand, still mid-sentence. Three candidates a, b, c differ only in the tag (SAME DAY?, ONE SLEEP., YESTERDAY?); drawn in code, brand/thumbs/yearnight",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 570,
+          "hook": "The pod hall after close: your boss unpacks a cable (\"Staff first.\"), your flatmate starts a story, you say \"tell me tomorrow\", climb into a pod and plug in; the hatch counter flutters to 365; you climb out a year older in your head while she finishes her sentence."
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "Writer's recommendation; the owner picks at G1. Title A with thumbnail a (\"SAME DAY?\"): the proven title form, and the tag plus the 365 tile is the whole rule in a half-second read."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/year-every-night-g1-365096/channels/say-suppose/videos/2026-11-13_what-if-you-lived-a-year-every-night/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging (G1, 2026-11-13): three titles, three one-variable thumbnails drawn in code (brand/thumbs/yearnight), the beat outline on the template spine with a performed skit opening and six scenes where the narrator stops; claims.md (c01-c30) sourced at G1; the G1 room (story editor, claims check)"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "script.md, sequel.md and 6-8 chapters on the template (rules/story.md #1-#19, 155 wpm, about 9.5 min), the room's G1 story notes applied; free local narration with per-character local voices and a 720p first cut before G2, a cue per section and an ambience bed per set; the G2 room; omni qc story_script must pass"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Picture lock: cut, key shot (staged exactly as the thumbnail), text, music and mix; the local voice ships unless the owner asks for the paid A/B"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "Private upload only, by the owner's exact instruction; the public flip by hand in YouTube Studio"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "local narration (free, per-character local voices)",
+            "operation": "G2 narration and first cut",
+            "estimated_usd": 0,
+            "notes": "Free and local. The paid voice only if the owner asks for the A/B, quoted first. G1 made no paid call: the thumbnails are drawn in code; the room used today's capped calls (story editor, claims check)"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    },
+    "decision_log": {
+      "version": "1.0",
+      "project_id": "2026-11-13_what-if-you-lived-a-year-every-night",
+      "decisions": [
+        {
+          "decision_id": "d-001",
+          "stage": "proposal",
+          "category": "render_runtime_selection",
+          "subject": "Composition runtime",
+          "options_considered": [
+            {
+              "option_id": "external",
+              "label": "The channel's paper-cut engine (core/engines/whatif)",
+              "score": 0.9,
+              "reason": "The look the owner approved on 2026-11-06; figures timed to cue words; the set library is built for it, and the pod-hall thumbnail is drawn in it"
+            },
+            {
+              "option_id": "remotion",
+              "label": "Remotion through video_compose",
+              "score": 0.4,
+              "reason": "Same library, but its stock scene types cannot draw the rig",
+              "rejected_because": "Would mean rebuilding the rig inside remotion-composer"
+            },
+            {
+              "option_id": "hyperframes",
+              "label": "HyperFrames through video_compose",
+              "score": 0.3,
+              "reason": "HTML and GSAP scenes; no rig, no cue timeline",
+              "rejected_because": "Would mean rewriting the approved look"
+            }
+          ],
+          "selected": "external",
+          "reason": "Proposed to the owner at G1 with the alternatives in one line each (packaging.md, Runtime)",
+          "confidence": 0.9
+        }
+      ]
+    }
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "room": "room-g1.md: shipped round 2 (round 1 had a claims blocker, fixed), 4 seat calls plus one timed-out re-run; room evidence ok"
+  }
+}

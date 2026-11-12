@@ -1,0 +1,69 @@
+{
+  "call_id": "7e773149da634c16b95551814234b9dd",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "Inside it, one room, one window, one clock: a room where time runs at the old speed, a day for a day",
+      "why": "Fails \u201cNo new power rule after the halfway point\u201d and check #16: the mechanism that enables the climax first appears after 80% of the runtime.",
+      "fix": "Plant it during line 45\u2019s first-year montage: \u201cYou pass one room where the wall clock moves at outside speed. A minute for a minute. Useless, when you have a year.\u201d Withhold the queue until the climax.",
+      "domain": "story",
+      "line": 53
+    },
+    {
+      "quote": "Night two you learn to cook. Night three you read every book in the inside town's library. Night four, a language. Night five, another.",
+      "why": "Fails check #6, Every use has a gap: four uses deliver exactly the expected benefit before the montage\u2019s later door-code turn.",
+      "fix": "Replace with: \u201cNight two, you learn to cook\u2014and make the breakfast she told you yesterday she hates. Night three, every book inside\u2014and not the note she left outside. Night four, one language. Night five, another. When she asks how you slept, the word you need is in neither.\u201d",
+      "domain": "story",
+      "line": 46
+    },
+    {
+      "quote": "Then the stake, 0:38: \"She just stayed at one speed. And you've got work in the morning.\"",
+      "why": "Fails check #3: the outline explicitly delays the second hook and personal loss until after 0:30.",
+      "fix": "Move the stake immediately after the title question, around 0:20: \u201cShe stays at one speed. Every year you gain in there pushes last night with her a year farther away.\u201d",
+      "domain": "story",
+      "line": 44
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 52,
+      "quote": "If she plugs in tonight, she doesn't arrive beside you. She arrives a newcomer in year forty-one of your life in there",
+      "fix": "Owner suggestion: resolve the contradiction with line 48\u2019s shared town. Make joining you threaten to erase her outside life too, so refusing her protects the person she is rather than treating \u201cnewcomer\u201d as an insurmountable barrier."
+    },
+    {
+      "line": 52,
+      "quote": "lose the forty years of friends who are more of your life than she is",
+      "fix": "Give the inside side of the dilemma a face: bring back the piano teacher during the final goodbye and let that established person ask you to stay."
+    },
+    {
+      "line": 54,
+      "quote": "And if you'd have done the same, hit like and subscribe.",
+      "fix": "Cut the spoken like-and-subscribe sentence; keep those requests as silent end-card tags so the closing choice remains the final address."
+    }
+  ],
+  "keep": [
+    {
+      "line": 47,
+      "quote": "Yesterday was a year ago."
+    },
+    {
+      "line": 53,
+      "quote": "They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free."
+    },
+    {
+      "line": 54,
+      "quote": "Tomorrow someone will say 'tell me tomorrow'. Hear how far away that is."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "d4d2cbafda9c355650fb0f2248de1ea7bed3d564eebcdee5d2e7e90e386efa27",
+  "draft_sha256": "8057d407a311ebaa084498d0097deb40876b8d5808889f0ae45e9c2e87343205"
+}

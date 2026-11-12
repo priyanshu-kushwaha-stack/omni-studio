@@ -1,0 +1,73 @@
+{
+  "call_id": "f12e8a00d42c4fdc93960f5286e221ca",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five_lines_and_causal_spine": 9,
+    "hook_and_packaging_delivery": 6,
+    "uses_and_escalation": 7,
+    "stakes_turn_and_close": 9,
+    "overall_story": 8
+  },
+  "blockers": [
+    {
+      "quote": "The thumbnail's frame, staged exactly, at 0:10",
+      "why": "Check #2 Confirm the click fails: the complete thumbnail situation arrives three seconds after the 0:07 limit.",
+      "fix": "By 0:06, show the hatch open, counter at 365, and your old-eyed stare at your unchanged flatmate; let her finish the sentence afterward.",
+      "domain": "story",
+      "line": 43
+    },
+    {
+      "quote": "A surgeon does one operation ten thousand times by breakfast.",
+      "why": "Check #6 Every use has a gap fails: the surgeon expects accelerated practice and gets exactly that.",
+      "fix": "Replace with: \"A surgeon rehearses one operation ten thousand times by breakfast. But the scan waiting outside is eight hours newer, so the perfect rehearsal is already wrong.\"",
+      "domain": "story",
+      "line": 48
+    },
+    {
+      "quote": "Inside, the oldest quarter of the town, `lamp`, 8:10.",
+      "why": "Check #8 and No new person after 60% fail: the only formal `> SCENE:` picture is after the midpoint, and the crucial old sleeper first appears near 83%.",
+      "fix": "Add a `> SCENE:` at 4:05 for the silent morning train, a premise-only image, and visibly seed the same grey-headed old sleeper in that carriage.",
+      "domain": "story",
+      "line": 56
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 45,
+      "quote": "Two years in orbit bought one cosmonaut a forty-eighth of a second (c22).",
+      "fix": "Cut this comparison so the opening moves directly from dreams running at normal speed to the cable buying a year; save the first scale comparison for after the piano lands."
+    },
+    {
+      "line": 52,
+      "quote": "You act at once: you put your hand on the cable, and plug in. One last year.",
+      "fix": "Keep her offered hand in frame as the hatch closes, making the cost of choosing the farewell year visible rather than merely explained."
+    },
+    {
+      "line": 54,
+      "quote": "So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Replace with \"So, would you plug in\u2014and why?\" and leave like and subscribe as silent end-card tags."
+    }
+  ],
+  "keep": [
+    {
+      "line": 33,
+      "quote": "Yesterday was a year ago."
+    },
+    {
+      "line": 53,
+      "quote": "Tomorrow's too far."
+    },
+    {
+      "line": 54,
+      "quote": "Tomorrow someone will say 'tell me tomorrow'. Hear how far away that is."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "7cecfd50934ab3d53af245cef939366d2707d590a0aef029ca59e3a1b759147c",
+  "draft_sha256": "1b4017870200002d50b22608ebb6c75ecbad9d1e22459a398ff9b8f27401d830"
+}

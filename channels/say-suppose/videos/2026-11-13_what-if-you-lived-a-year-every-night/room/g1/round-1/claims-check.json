@@ -1,0 +1,55 @@
+{
+  "call_id": "43c7157f0c314a14b41653876fb52902",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "Keep going. Past every language you could ever read. Past writing.",
+      "why": "Ten years of nights is ~3,650 years lived, setting the timeline back to ~1624 BCE. Human writing originated c. 3400\u20133100 BCE (over 5,000 years ago), so asserting that walking 3,500 years back reaches 'Past writing' is an unsourced and inaccurate real-world claim without a row in claims.md.",
+      "fix": "needs a source, or cut 'Past writing': 'Keep going. Past every language you could ever read.'",
+      "domain": "fact",
+      "line": 51
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 48,
+      "quote": "A student plugs in the night before the exam and sits it with a decade of revision; by Friday the exam board bans sleeping the night before.",
+      "fix": "A student plugs in the night before the exam and sits it with a year of revision; by Friday the exam board bans sleeping the night before."
+    },
+    {
+      "line": 10,
+      "quote": "and a head holds the new by rubbing out the old: a year of new, every night, and last night out here never stood a chance.",
+      "fix": "and a head holds the new by rubbing out the old (c13): a year of new, every night, and last night out here never stood a chance."
+    },
+    {
+      "line": 34,
+      "quote": "Out there a close friend takes more than 200 hours (c23). In here, that's twelve minutes of her evening.",
+      "fix": "Out there a close friend takes more than 200 hours (c23). In here, that's about twelve minutes of her evening."
+    }
+  ],
+  "keep": [
+    {
+      "line": 45,
+      "quote": "your sleeping brain already replays the day fast, six to seven times in rats (c10), but a dream runs at real speed, lucid dreamers counting to ten take as long as awake (c11)."
+    },
+    {
+      "line": 47,
+      "quote": "People dropped 31 metres into a net later judged their own fall 36% longer than other people's; a moment is as long as the memory it leaves (c18)."
+    },
+    {
+      "line": 51,
+      "quote": "Night one hundred and twenty-three: you've lived longer than anyone whose life has ever been verified, Jeanne Calment, 122 years and 164 days (c27), and you're still paying rent on the same flat."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f9e52eadd53cb73577a0a1bbb739226d3ddcf0ef981019c6068c4a0fe38c98ae",
+  "draft_sha256": "1b4017870200002d50b22608ebb6c75ecbad9d1e22459a398ff9b8f27401d830"
+}
