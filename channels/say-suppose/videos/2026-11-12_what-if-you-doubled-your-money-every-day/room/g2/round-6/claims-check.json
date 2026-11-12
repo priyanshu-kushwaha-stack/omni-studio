@@ -1,0 +1,47 @@
+{
+  "call_id": "1835f18ec85241c2a3935981c5c55b30",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 305,
+      "quote": "She counts what her savings will buy. Last month, a year of flour. Tonight, half a year. She didn't spend a cent.",
+      "fix": "Either change line 284 from \"Flour man: Triple.\" to \"Flour man: Double.\" so that a year of flour halved matches the price multiplier, or update line 305 to \"Tonight, four months.\" (or \"a third of a year.\") and line 307 to \"Lotte: A third.\" to resolve the arithmetic slip."
+    },
+    {
+      "line": 85,
+      "quote": "A king, a chessboard (c05). One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+      "fix": "A king, a chessboard. One grain on the first square, and double on every square after (c05). By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    },
+    {
+      "line": 354,
+      "quote": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09).",
+      "fix": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion US dollars (c09)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 169,
+      "quote": "Ask people to carry on a doubling, and most guess far too low (c08). You just did. In public. With a band."
+    },
+    {
+      "line": 327,
+      "quote": "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns it by the weekend."
+    },
+    {
+      "line": 85,
+      "quote": "A king, a chessboard (c05). One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "549679b8f041e3c9bb6c00ffd7cf01506fd2463b63e5115114021bdae5e22be0",
+  "draft_sha256": "4c2b8f89f9f745445d031a549b46890b554a908034f93068d313da3bfcbdeb1f"
+}

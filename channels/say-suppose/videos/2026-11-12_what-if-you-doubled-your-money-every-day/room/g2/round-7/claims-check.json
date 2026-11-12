@@ -1,0 +1,47 @@
+{
+  "call_id": "df82a71e09724c70be5380a3b07a9a8c",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 85,
+      "quote": "By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+      "fix": "By the last square, the board owes more wheat than the whole world grows in over 1,400 years (c11)."
+    },
+    {
+      "line": 325,
+      "quote": "Mansa Musa's gifts kept gold cheap in Cairo for at least twelve years (c06).",
+      "fix": "Mansa Musa's gifts in 1324 kept gold cheap in Cairo for at least 12 years (c06)."
+    },
+    {
+      "line": 352,
+      "quote": "About 128 trillion dollars (c09).",
+      "fix": "About 128 trillion US dollars (c09)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 167,
+      "quote": "Ask people to carry on a doubling, and most guess far too low (c08). You just did. In public. With a band."
+    },
+    {
+      "line": 325,
+      "quote": "Mansa Musa's gifts kept gold cheap in Cairo for at least twelve years (c06). Your gifts do it to bread. Ask Jonas."
+    },
+    {
+      "line": 85,
+      "quote": "A king, a chessboard (c05). One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "863b721467a46d6a6b5002822d2d95e99c77b550ad5cc65f7dd545b98bf3a6b1",
+  "draft_sha256": "29377335b02fb931c2bf96f125fbd2c5727f45267d4164cdc8d97bdd2f12d792"
+}

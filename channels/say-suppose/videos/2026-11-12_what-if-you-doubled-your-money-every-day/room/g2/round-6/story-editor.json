@@ -1,0 +1,72 @@
+{
+  "call_id": "ed63831ca2624ee4974d01b67c2a4948",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "causality": 7,
+    "stakes_and_payoff": 9,
+    "length \u2014 past 8:00 is earned by the exact-zero clock, tram-refund payoff and final Counted? beat": 9
+  },
+  "blockers": [
+    {
+      "quote": "What if your money doubled every day?",
+      "why": "Checks #3 and #15 fail: the premise question arrives around 0:40, and by 0:30 the viewer still lacks the exact-zero danger and the question driving the film.",
+      "fix": "Compress lines 22\u201350 so the midnight doubling lands by 0:12, then begin by 0:15 with: \u201cWhat if your money doubled every day? Every night, whatever is there doubles. It will not stop. Can you reach zero before Lotte\u2019s bread moves out of reach?\u201d",
+      "domain": "story",
+      "line": 61
+    },
+    {
+      "quote": "> SCENE: Day forty. The back door of the bakery. The flour man, arms folded, a sack half off the van. Lotte, the baker, in the doorway. Above the oven behind her, her grandfather's framed banknote from the bad year, a picture only.",
+      "why": "The \u201cNo new person after 60%\u201d check fails: the flour man first appears around 62% of the film.",
+      "fix": "Plant the same flour man in line 249\u2019s balloon scene, unloading sacks beside Lotte without speaking; line 282 then becomes his return.",
+      "domain": "story",
+      "line": 282
+    },
+    {
+      "quote": "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns it by the weekend.",
+      "why": "Check #13 fails: the fact follows an outcome already demonstrated and changes neither the next action nor anyone\u2019s feeling.",
+      "fix": "Replace with: \u201cMansa Musa\u2019s gifts kept gold cheap in Cairo for at least twelve years (c06). Jonas looks from Lotte\u2019s new price to your phone. You offer it. He steps back.\u201d",
+      "domain": "story",
+      "line": 327
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 205,
+      "quote": "Day twenty-eight. One point three million. You buy the building. The bakery, the flats, the lot. Lotte never pays rent again.",
+      "fix": "Strengthen the connector from the bank beat: \u201cYou told the bank it was yours. So you spend it where you owe the most. Day twenty-eight. You buy the building.\u201d"
+    },
+    {
+      "line": 129,
+      "quote": "Lotte: Your friend said thirty-one.",
+      "fix": "Replace the familiar age misunderstanding with a premise-specific escalation: \u201cLotte: Thirty-one yesterday. Sixty-two now.\u201d Then show a second delivery arriving because you doubled the order."
+    },
+    {
+      "line": 110,
+      "quote": "That's it. That's the moment. She says it to everyone.",
+      "fix": "Cut this line and let Lotte\u2019s \u201cI saw\u201d and Jonas asking for a receipt carry the anticlimax without narration."
+    }
+  ],
+  "keep": [
+    {
+      "line": 247,
+      "quote": "Jonas: I don't know what to do with my hands when they win."
+    },
+    {
+      "line": 310,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 421,
+      "quote": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "71e743c230a0d4b7866aee5052bd2cd8fd18e68314df6ab3365c3eb323c4838b",
+  "draft_sha256": "4c2b8f89f9f745445d031a549b46890b554a908034f93068d313da3bfcbdeb1f"
+}

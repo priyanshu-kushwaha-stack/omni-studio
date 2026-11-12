@@ -1,0 +1,69 @@
+{
+  "call_id": "5f857dcb62cc4067b658b9a8e8b2d1cc",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "What if your money doubled every day?",
+      "why": "Check #3 fails: the title promise arrives around 0:40, not 0:15, and by 0:30 neither the loss nor the central question is clear.",
+      "fix": "Compress the performed opening to ten seconds, move this line before 0:15, then add by 0:30: \u201cIt will not stop. And if you cannot hit zero, Lotte pays.\u201d",
+      "domain": "story",
+      "line": 61
+    },
+    {
+      "quote": "> SCENE: Lotte picks the paper 1 up between two floury fingers and holds it to the lamp. Jonas leans in. You shake the phone. Blank. Then 0,01 again.",
+      "why": "Check #15 fails: this shows money leaving the phone and regenerating immediately, a different power from the promised midnight doubling.",
+      "fix": "Replace lines 20\u201338 with a short Day Two scene where the lock screen replays DAY 1 / 0,01 turning into DAY 2 / 0,02 as one coin tears into two; Lotte asks, \u201cWasn't that one?\u201d, Jonas says, \u201cNow it's two,\u201d and no spendable paper leaves the phone.",
+      "domain": "story",
+      "line": 24
+    },
+    {
+      "quote": "> SCENE: Lotte takes the sack. The board: 1,40 wiped to 2,10, to 3,00, to 4,20. The two pensioners from the corner read it through the glass and walk on.",
+      "why": "The \u201cNo new person after 60%\u201d check fails: the two pensioners first appear after the runtime's 60% point.",
+      "fix": "Replace the final sentence with: \u201cJonas reads it through the glass, counts the coins in his hand, and walks on.\u201d",
+      "domain": "story",
+      "line": 292
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 203,
+      "quote": "Day twenty-eight. One point three million. You buy the building. The bakery, the flats, the lot. Lotte never pays rent again.",
+      "fix": "Make the bank-to-purchase connection causal: \u201cSo you prove the money is yours. Day twenty-eight: you buy the building\u2014the bakery, the flats, the lot\u2014and Lotte never pays rent again.\u201d"
+    },
+    {
+      "line": 325,
+      "quote": "Mansa Musa's gifts kept gold cheap in Cairo for at least twelve years (c06). Your gifts do it to bread. Ask Jonas.",
+      "fix": "Land the fact directly on the person: \u201cMansa Musa's gifts kept gold cheap in Cairo for at least twelve years (c06). Your envelopes do the same thing to Jonas's breakfast.\u201d"
+    },
+    {
+      "line": 423,
+      "quote": "So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Restore both sides of the dilemma: \u201cSo\u2014erase it now, or wait one more night? Tell us in the comments. Then like and subscribe.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 308,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 400,
+      "quote": "Zero, doubled, is zero."
+    },
+    {
+      "line": 419,
+      "quote": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "6cf24e566f2f855e430df7fb72e09738a9d8458e640a4dd8fc82b4ebf33e8bd3",
+  "draft_sha256": "29377335b02fb931c2bf96f125fbd2c5727f45267d4164cdc8d97bdd2f12d792"
+}

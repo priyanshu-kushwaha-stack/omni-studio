@@ -188,27 +188,111 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 6,
+      "draft_sha256": "4c2b8f89f9f745445d031a549b46890b554a908034f93068d313da3bfcbdeb1f",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "1835f18ec85241c2a3935981c5c55b30",
+          "file": "room/g2/round-6/claims-check.json",
+          "output_sha256": "549679b8f041e3c9bb6c00ffd7cf01506fd2463b63e5115114021bdae5e22be0",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "ed63831ca2624ee4974d01b67c2a4948",
+          "file": "room/g2/round-6/story-editor.json",
+          "output_sha256": "71e743c230a0d4b7866aee5052bd2cd8fd18e68314df6ab3365c3eb323c4838b",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    },
+    {
+      "round": 7,
+      "draft_sha256": "29377335b02fb931c2bf96f125fbd2c5727f45267d4164cdc8d97bdd2f12d792",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "df82a71e09724c70be5380a3b07a9a8c",
+          "file": "room/g2/round-7/claims-check.json",
+          "output_sha256": "863b721467a46d6a6b5002822d2d95e99c77b550ad5cc65f7dd545b98bf3a6b1",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "5f857dcb62cc4067b658b9a8e8b2d1cc",
+          "file": "room/g2/round-7/story-editor.json",
+          "output_sha256": "6cf24e566f2f855e430df7fb72e09738a9d8458e640a4dd8fc82b4ebf33e8bd3",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 5,
-    "artifact_sha256": "2f30c1e521b7691328c6f75e06da335244a322ec201f56019099e3bfb60b4f59"
+    "round": 7,
+    "artifact_sha256": "29377335b02fb931c2bf96f125fbd2c5727f45267d4164cdc8d97bdd2f12d792"
   },
-  "calls": 10,
-  "cap": 16,
+  "calls": 14,
+  "cap": 20,
   "author_cut": {
     "round": 1,
     "draft_sha256": "2ad5cd7af7ae0e7ef229e03470bf2df66b3be3f6ce03f1256d7f5f4854b32f2f",
     "cost": {
-      "lines_changed": 42,
+      "lines_changed": 350,
       "header_changed": [],
       "keep_lost": [
         "By late 1923 a loaf of bread in Berlin cost about 200 billion marks (c01). Many workers were paid twice a day, and spent their wages at once (c02).",
         "The first of July, 1990 (c04). She went to sleep in Leipzig with East German marks and woke up with Deutsche Marks. Wages, one to one. Savings, one to one, up to a line. Above the line, half (c04).",
+        "Ask people to carry on a doubling, and most guess a small fraction of the true value (c08). You just did. In public.",
+        "And here's your choice. Erase it now, and Lotte loses tomorrow's flour, the one promise you kept. Wait one night to keep it, and the street takes one more doubling.",
         "By late 1923 a loaf of bread in Berlin cost about 200 billion marks (c01).",
-        "In 1324, Mansa Musa came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns the same thing. By the weekend."
+        "Ask people to carry on a doubling, and most guess a small fraction of the true value (c08).",
+        "By the end, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+        "But here's the problem. Every morning you come down the stairs with yesterday's number in your head. And every morning, it's wrong.",
+        "In 1324, Mansa Musa came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns the same thing. By the weekend.",
+        "Her grandfather's story. The king and the chessboard (c05). A grain doubles on every square. By the end, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+        "Day fourteen. Eighty-one euros. You buy Lotte new chalk. Four colours. She uses the white.",
+        "By late 1923, a loaf there cost about two hundred billion marks (c01).",
+        "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06).",
+        "Berlin once ran this race the other way. By late 1923, a loaf there cost about two hundred billion marks (c01). Many workers spent their wages the moment they were paid (c02).",
+        "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09). You have more than that. In euros. Above a bakery. And tomorrow is twice this.",
+        "Mansa Musa once came through Cairo and gave away so much gold that gold there stayed cheap for at least twelve years (c06). Your street learns it by the weekend."
       ]
     }
   },
