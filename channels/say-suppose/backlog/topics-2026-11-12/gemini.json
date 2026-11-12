@@ -1,0 +1,932 @@
+{
+  "topics": [
+    {
+      "id": "g-everyones-exact-price",
+      "title": "What If You Saw Everyone's Exact Price?",
+      "premise": "Whenever you think of asking someone for anything, a stamped tag floats over their shoulder showing the exact dollar amount—or trade—it would take for them to say yes right now.",
+      "world": "Present-day Geneva, Switzerland, between the private banks of Rue du Rhône and the La Praille Freeport vaults, where $100 billion in untaxed art, gold, and secrets sit behind concrete doors and discretion is a centuries-old industry.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre in a dim Geneva bank vault, eyes wide in shock as a crimson pointer leads from your gaze to your older brother in a dark suit; floating above his shoulder is a stamped cream paper tag reading '$14,200' while everyone else in the background reads 'NO NUMBER'.",
+        "tag": "THAT CHEAP?"
+      },
+      "rule": "Hold any specific request in your mind while looking at a person within 10 meters, and a stamped paper tag appears above their shoulder showing the minimum money, object, or favor they would genuinely accept right now to say yes and stay quiet. If their moral boundary cannot be bought at any price, the tag reads NO NUMBER. The catch: the tag fluctuates second by second with their fear, pride, or desperation—and the instant you pay someone's number, you can never see a tag on them again, and your own price tag becomes visible to them.",
+      "hook": "You're standing at the security desk of a Geneva private bank, five minutes late with a scratched courier case that will get you fired, you silently wish the stern guard would mark you on time, and a stamped paper tag snaps into the air above his shoulder: 'TWO CIGARETTES AND AN APOLOGY.'",
+      "beats": [
+        "Beat 1 — The Guard at the Vault Door: You test the floating tag by offering the guard two cigarettes and a quiet apology; he waves you through without logging the scratch, and you realize everyone around you is broadcasting the exact reservation price of their compromises.",
+        "Beat 2 — Jump 1 (Personal & Funny, Rue du Rhône): You use the tags for petty shortcuts—skipping apartment waitlists, getting a watchmaker to repair your father's broken watch ahead of a six-month queue—and discover that offering cash to a proud craftsman makes his tag jump from a $12 pastry to $40,000 because cash turns a social favor into an insult.",
+        "Beat 3 — The Cheap Lie Trap: You pay a prickly office rival $50 to sign off on your messy ledger, expecting him to resent you, but watch him defend your work all week because a small price forces his brain to convince itself he wanted to help you.",
+        "Beat 4 — The Freeport Fixer: You move from courier to private settlement fixer inside the Geneva Freeport, reading the hidden walk-away numbers of art heirs and customs brokers among 1.2 million stored artworks, pocketing the spread between what buyers expect to pay and what sellers secretly need.",
+        "Beat 5 — Jump 2 (The Midpoint Misconception Breaks): You assume the wealthiest bankers on Rue du Rhône have the highest numbers, until a billionaire client's tag to betray his partner reads 'ONE INVITATION TO THE YACHT CLUB,' while a night-shift vault clerk's tag to leave a door unlatched reads 'NO NUMBER.'",
+        "Beat 6 — The Sacred Value Backfire: You try to buy off an environmental inspector whose tag reads 'NO NUMBER' by sliding a CHF 200,000 check across the table anyway; instead of tempting her, putting a dollar figure on a sacred principle triggers physical disgust and she opens a formal audit on your firm.",
+        "Beat 7 — The Cost Lands (60%): The audit lands on the desk of your older brother, a compliance officer at the same bank who raised you; when you look across the kitchen table and silently ask what it would take for him to bury the file, his tag doesn't say NO NUMBER—it flickers and stamps 'CHF 14,200.'",
+        "Beat 8 — The Secret Behind the Number: Heartbroken that your incorruptible brother can be bought for the price of a used car, you check the bank's medical ledger and realize CHF 14,200 is the exact uninsured balance for his infant daughter's cochlear implant—you weren't looking at his greed, you were looking at his desperation.",
+        "Beat 9 — Jump 3 (Systemic Scale & The Choice at 80%): The bank's managing directors corner you in the La Praille vault to use your eyes during a $2.4 trillion cross-border regulatory hearing, offering you $10 million to name the price of every prosecutor in the room, or let your brother take the fall for the missing file.",
+        "Beat 10 — Back to You (The Worldview Flip): You pay your brother's CHF 14,200 hospital bill anonymously without asking him to bury the file; the next morning his tag is NO NUMBER again, and as you walk into the hearing room to testify, you pay the lead prosecutor a single cup of coffee so your own tag becomes visible to the room: 'NO NUMBER.'"
+      ],
+      "feeling_map": [
+        "amused",
+        "clever",
+        "greedy",
+        "uneasy",
+        "ashamed",
+        "clear-eyed"
+      ],
+      "restarts": [
+        "Minute 3: Offering cash for a small favor causes a watchmaker's price tag to multiply 3,000x instantly, forcing you to learn the boundary between social currency and money.",
+        "Minute 6: A routine art transfer inside the Geneva Freeport reveals a forged provenance, pulling you from harmless negotiation into criminal hush-money arbitrage.",
+        "Minute 9: An inspector with a 'NO NUMBER' tag turns your bribe into a compliance investigation assigned directly to your older brother.",
+        "Minute 12: Paying your first high-stakes tag strips your power over that person forever and exposes your own floating price tag to them."
+      ],
+      "content_mine": [
+        {
+          "fact": "In behavioral economics, people demand 2 to 3 times more money to give up something they already hold (Willingness to Accept) than they would pay to acquire it (Willingness to Pay), known as the endowment effect.",
+          "source": "https://www.jstor.org/stable/2937761",
+          "beat": "Beat 1 — The Guard at the Vault Door"
+        },
+        {
+          "fact": "Dan Ariely and James Heyman showed that offering small cash payments instead of a gift switches the human brain from 'social norms' to 'market norms,' causing people to work less hard than they would for free.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/15482452/",
+          "beat": "Beat 2 — Jump 1 (Personal & Funny, Rue du Rhône)"
+        },
+        {
+          "fact": "In Festinger and Carlsmith's classic cognitive dissonance experiment, subjects paid just $1 to tell a lie changed their private beliefs to support the lie far more than subjects paid $20, because $1 was too small to justify feeling like a liar.",
+          "source": "https://psycnet.apa.org/doi/10.1037/h0041593",
+          "beat": "Beat 3 — The Cheap Lie Trap"
+        },
+        {
+          "fact": "The Geneva Freeport (Port Franc de Genève), founded in 1888, holds an estimated 1.2 million artworks—including roughly 1,000 Picassos—and $100 billion in personal property free of customs duties and taxes while in transit.",
+          "source": "https://www.economist.com/briefing/2013/11/23/the-uber-warehouses-for-the-ultra-rich",
+          "beat": "Beat 4 — The Freeport Fixer"
+        },
+        {
+          "fact": "Carl Menger's 1871 subjective theory of value proved that no good or service has an intrinsic price; value exists strictly at the margin of a person's most urgent unsatisfied need at that exact moment.",
+          "source": "https://mises.org/library/book/principles-economics",
+          "beat": "Beat 4 — The Freeport Fixer"
+        },
+        {
+          "fact": "Across Ultimatum Game experiments in 15 societies, humans routinely reject free money worth 20% to 30% of a windfall if they feel the split disrespects their status, proving pride has a measurable monetary threshold.",
+          "source": "https://www.aeaweb.org/articles?id=10.1257/aer.91.2.73",
+          "beat": "Beat 5 — Jump 2 (The Midpoint Misconception Breaks)"
+        },
+        {
+          "fact": "fMRI neuroimaging by Gregory Berns et al. shows that when people are offered cash to violate a 'sacred value,' the brain's utility-calculating ventromedial prefrontal cortex disengages while the anterior insula—the region for physical disgust—fires.",
+          "source": "https://royalsocietypublishing.org/doi/10.1098/rstb.2011.0262",
+          "beat": "Beat 6 — The Sacred Value Backfire"
+        },
+        {
+          "fact": "When economist Bruno Frey surveyed Swiss citizens on hosting a nuclear waste repository, 50.8% agreed out of civic duty—but when offered up to $8,700 a year in cash, acceptance dropped in half to 24.6% because cash crowded out moral duty.",
+          "source": "https://www.aeaweb.org/articles?id=10.1257/aer.87.4.746",
+          "beat": "Beat 6 — The Sacred Value Backfire"
+        },
+        {
+          "fact": "In Gneezy and Rustichini's daycare study, introducing a monetary fine for late parents actually doubled late pickups because parents stopped feeling guilty and treated the fine as a fair price to buy extra time.",
+          "source": "https://www.journals.uchicago.edu/doi/10.1086/468061",
+          "beat": "Beat 7 — The Cost Lands (60%)"
+        },
+        {
+          "fact": "Mullainathan and Shafir's scarcity research demonstrates that acute financial need for a family emergency consumes up to 13 IQ points of cognitive bandwidth, collapsing long-term risk calculation into a single urgent number.",
+          "source": "https://www.science.org/doi/10.1126/science.1238041",
+          "beat": "Beat 8 — The Secret Behind the Number"
+        },
+        {
+          "fact": "Article 47 of the Swiss Federal Act on Banks and Savings Banks (enacted 1934) made disclosing client secrets a criminal offense punishable by prison, helping Switzerland attract roughly $2.4 trillion in cross-border private wealth.",
+          "source": "https://www.fedlex.admin.ch/eli/cc/51/117_121_129/en",
+          "beat": "Beat 9 — Jump 3 (Systemic Scale & The Choice at 80%)"
+        },
+        {
+          "fact": "In auction theory, the 'Winner's Curse' (Capen, Clapp & Campbell, 1971) shows that whenever a counterparty accepts your opening bid immediately, you have priced in zero margin for the hidden risk they know about.",
+          "source": "https://doi.org/10.2118/2993-PA",
+          "beat": "Beat 10 — Back to You (The Worldview Flip)"
+        }
+      ],
+      "twist": "When your incorruptible older brother's tag to bury an audit shows 'CHF 14,200' instead of 'NO NUMBER,' you think everyone is corrupt—until you learn CHF 14,200 is the exact hospital bill for his daughter's surgery, and paying it without asking for the favor restores his tag to 'NO NUMBER.'",
+      "ending": "Tomorrow, when someone compromises on something they swore they'd never do, you won't ask how greedy they are—you'll ask what bill they're secretly trying to pay.",
+      "closest_video": {
+        "title": "What If You Could See Everyone's Stats?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of static RPG ability scores in a high school, this shows a live behavioral-economics price tag for whatever request you hold in your head, set in Geneva's private banking world with the psychological catch of sacred values and desperation."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, merge Beat 2 and Beat 3 (the watchmaker and office rival) into one opening montage and trim the Freeport art subplot to go straight from bank courier to your brother's compliance audit."
+      },
+      "views_case": "Hits the intersection of the Money cluster and the Secret Feelings cluster that drove Ifverse and IF Nation breakouts past 2M-8M views (https://www.youtube.com/@Ifverse), paired with an instant curiosity thumbnail ('THAT CHEAP?' over a family member).",
+      "under_question": "Does everyone really have a price, or just a person they're trying to protect?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-twenty-yes-or-no-questions",
+      "title": "What If Life Answered 20 Yes-or-No Questions?",
+      "premise": "Every day you can whisper up to 20 strictly yes-or-no questions about the past or present, and reality answers with a sharp click in your right ear for YES or a low hum in your left ear for NO.",
+      "world": "Present-day London, between the underwriting floor at Lloyd's of London and a cramped flat by the Thames, where shipwrecks, disappeared bullion, and corporate secrets are priced on paper slips before the public ever hears of them.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre at a rain-lit kitchen table at night, holding a paper notepad reading '19 / 20 USED' while a crimson pointer points to your best friend smiling across the table with a tea mug.",
+        "tag": "1 QUESTION LEFT"
+      },
+      "rule": "Speak any strictly binary yes-or-no question about a real fact in the past or present, and you hear a crisp mechanical click in your right ear for YES or a low bass hum in your left ear for NO. Questions about the future, opinions, or vague feelings ('Does she love me?') produce dead silence. You get exactly 20 answers every 24 hours; the 21st question triggers a blinding tinnitus until midnight.",
+      "hook": "You're sitting at the back of the Lloyd's of London underwriting room with a missing cargo claim on your desk, you mutter under your breath 'Did the captain sink his own ship?' and a sharp mechanical click snaps inside your right ear—along with a stamped paper counter in the corner of your vision: '19 LEFT TODAY.'",
+      "beats": [
+        "Beat 1 — The First Click at Lloyd's: You test the sound in your ear with known facts ('Is there a coin in my left pocket?') and realize you have an infallible 20-bit oracle, but when you ask 'Is my boss a good person?' it stays silent because only physical, verifiable facts register.",
+        "Beat 2 — Jump 1 (The Binary Search Trick): You waste your first two days asking bad guessing questions ('Is the thief John? Is it Mark?'), until you remember Claude Shannon's binary search: since 2 to the power of 20 is 1,048,576, 20 halved questions can pinpoint 1 person out of a million or 1 six-digit vault PIN in a single afternoon.",
+        "Beat 3 — Reading Passwords and Maps Without Touching Them: Using 5 bits per letter (Baudot binary splits), you read 4-letter merger ticker symbols from locked Canary Wharf boardrooms across the river and divide nautical grids in half 20 times to locate a sunken container of palladium to the exact square kilometer.",
+        "Beat 4 — The Confirmation Bias Trap: Flush with salvage finder's fees, you try to use the clicks on your personal life, only to discover that when you ask 'Did my girlfriend text another guy today?' (CLICK—it was her brother), your brain uses infallible facts to build completely wrong paranoid stories.",
+        "Beat 5 — Jump 2 (The Midpoint Misconception Breaks): You think 33 questions across two days (2^33 = 8.58 billion) can find anyone on Earth, until you try to ask about human feelings and hit the Sorites Paradox—the oracle goes silent on 'Does my friend resent me?', forcing you to reduce people you love to cold physiological checks ('Did his heart rate pass 100 bpm when I got promoted?').",
+        "Beat 6 — The Midnight Compulsion: By month three you are rich, exhausted, and addicted to spending leftover questions at 11:55 PM; because of Wegner's ironic process theory, having 3 unspent clicks before midnight makes it psychologically impossible not to whisper invasive questions about everyone around you.",
+        "Beat 7 — The Cost Lands (60%): A £40 million fraudulent marine claim lands on your desk at Lloyd's; someone inside your four-person team forged the underwriter's stamp, and if you don't name them by morning, you go to prison—so you spend 19 binary questions narrowing the timestamp, the ink, and the finger down to one person: your childhood best friend and flatmate, Dev.",
+        "Beat 8 — The 20th Question at the Kitchen Table: It is 11:58 PM in your Thames flat. Dev is making tea across from you. You have 1 question left out of 20. You can ask 'Did Dev hide the money in London?' to turn him in and save your career, or ask 'Did Dev do it to pay off the loan sharks threatening my family's shop?'",
+        "Beat 9 — Jump 3 (The Paradox & The Choice at 80%): Before you can speak, Lloyd's investigators knock on the flat door; if they question you under oath while you still have your 20th click active, your own voice will betray Dev—unless you burn your final question on a self-referential Gödelian paradox ('Will the answer to this question be no?') that shorts out the oracle in a roar of tinnitus.",
+        "Beat 10 — Back to You (The Worldview Flip): You whisper the paradox, blow out your 20th slot in ringing silence, and look across the table at Dev without a single metric between you—asking him with your own voice instead of an ear click, because trust only exists in the gap where you could be wrong."
+      ],
+      "feeling_map": [
+        "curious",
+        "intoxicated",
+        "calculating",
+        "paranoid",
+        "cornered",
+        "humbled"
+      ],
+      "restarts": [
+        "Minute 3: Guessing names one by one burns 18 questions in five minutes, forcing you to discover binary search and information theory.",
+        "Minute 6: The oracle refuses to answer any question containing an emotional word, forcing you to interrogate human relationships through creepy physical proxies.",
+        "Minute 9: A £40M forged underwriting slip at Lloyd's turns your money-making game into a locked-room whodunit where 19 binary cuts point straight at your best friend.",
+        "Minute 12: With 1 question left at 11:58 PM and investigators at the door, you have to choose between extracting the last fact or breaking the oracle with a logical paradox."
+      ],
+      "content_mine": [
+        {
+          "fact": "In Claude Shannon's 1948 Information Theory, a single equally likely yes-or-no answer carries exactly 1 bit (1 shannon) of information, cutting any search space in half; 20 bits narrows 1,048,576 possibilities down to 1.",
+          "source": "https://ieeexplore.ieee.org/document/6773024",
+          "beat": "Beat 2 — Jump 1 (The Binary Search Trick)"
+        },
+        {
+          "fact": "Because 2 to the power of 33 equals 8,589,934,592, it takes at most 33 yes-or-no binary cuts to isolate one specific human being out of all 8.16 billion people on Earth.",
+          "source": "https://en.wikipedia.org/wiki/Twenty_questions#Mathematical_analysis",
+          "beat": "Beat 5 — Jump 2 (The Midpoint Misconception Breaks)"
+        },
+        {
+          "fact": "Using the 5-bit Baudot binary code (2^5 = 32), any letter of the 26-letter English alphabet can be identified in 5 yes-or-no questions, allowing a 4-letter stock ticker or PIN to be read in 20 questions.",
+          "source": "https://www.britannica.com/technology/Baudot-code",
+          "beat": "Beat 3 — Reading Passwords and Maps Without Touching Them"
+        },
+        {
+          "fact": "The Geohash spatial indexing system (invented by Gustavo Niemeyer in 2008) divides Earth's 510 million square kilometers in half alternating latitude and longitude; 20 binary splits narrow a 1,000 km by 1,000 km ocean search box down to a single 1-square-kilometer cell.",
+          "source": "https://en.wikipedia.org/wiki/Geohash",
+          "beat": "Beat 3 — Reading Passwords and Maps Without Touching Them"
+        },
+        {
+          "fact": "UNESCO estimates that over 3 million unrecovered shipwrecks lie on the ocean floor holding tens of billions of dollars in cargo, while Lloyd's of London has recorded maritime losses in its Loss Book with a quill pen since 1774.",
+          "source": "https://www.unesco.org/en/underwater-heritage",
+          "beat": "Beat 1 — The First Click at Lloyd's"
+        },
+        {
+          "fact": "Financial Conduct Authority (FCA) market cleanliness studies in London found that roughly 10% to 20% of UK takeover announcements were preceded by abnormal price movements in the 48 hours before public disclosure.",
+          "source": "https://www.fca.org.uk/data/market-cleanliness-statistics",
+          "beat": "Beat 3 — Reading Passwords and Maps Without Touching Them"
+        },
+        {
+          "fact": "In Peter Wason's 1960 rule-discovery experiment, roughly 80% of humans given an infallible yes-or-no oracle failed to find the truth because they asked questions to confirm their suspicion rather than falsify it.",
+          "source": "https://journals.sagepub.com/doi/10.1080/17470216008416717",
+          "beat": "Beat 4 — The Confirmation Bias Trap"
+        },
+        {
+          "fact": "Eubulides of Miletus's Sorites Paradox (4th century BCE) and Lotfi Zadeh's 1965 Fuzzy Logic prove that natural human predicates like 'love,' 'loyalty,' or 'fairness' lack sharp boolean boundaries and cannot be assigned a binary truth value.",
+          "source": "https://plato.stanford.edu/entries/sorites-paradox/",
+          "beat": "Beat 5 — Jump 2 (The Midpoint Misconception Breaks)"
+        },
+        {
+          "fact": "The US National Research Council's 2003 review of polygraph science showed that physiological markers like heart-rate spikes and galvanic skin response measure acute emotional arousal—including fear of being doubted—rather than deception.",
+          "source": "https://nap.nationalacademies.org/catalog/10420/the-polygraph-and-lie-detection",
+          "beat": "Beat 5 — Jump 2 (The Midpoint Misconception Breaks)"
+        },
+        {
+          "fact": "Daniel Wegner's 1987 'White Bear' ironic process theory demonstrates that actively trying not to think of a forbidden question causes the brain's monitoring loop to surface that exact question twice as often.",
+          "source": "https://psycnet.apa.org/doi/10.1037/0022-3514.53.1.5",
+          "beat": "Beat 6 — The Midnight Compulsion"
+        },
+        {
+          "fact": "Kurt Gödel's 1931 First Incompleteness Theorem and the classic Liar Paradox prove that any formal system capable of answering yes-or-no truth queries breaks when asked a self-referential query ('Is the answer to this question no?').",
+          "source": "https://plato.stanford.edu/entries/goedel-incompleteness/",
+          "beat": "Beat 9 — Jump 3 (The Paradox & The Choice at 80%)"
+        },
+        {
+          "fact": "Gigerenzer and Garcia-Retamero's 2017 study on deliberate ignorance found that 85% to 90% of people refuse free foreknowledge about partner secrets or future regrets because uncertainty protects closeness.",
+          "source": "https://psycnet.apa.org/doi/10.1037/rev0000055",
+          "beat": "Beat 10 — Back to You (The Worldview Flip)"
+        }
+      ],
+      "twist": "Because human emotions aren't binary, the oracle stays silent whenever you ask 'Why?'—forcing you to burn 19 cold physical questions that convict your best friend on paper, leaving you only 1 question at 11:58 PM to discover he forged the claim to save your family.",
+      "ending": "You'll never ask a question the same way again—because a 'yes' or 'no' can tell you everything someone did, and nothing about why they loved you enough to do it.",
+      "closest_video": {
+        "title": "What If You had Infinite IQ at School?",
+        "url": "https://www.youtube.com/@JeremyBearimyChannel",
+        "difference": "Instead of generic super-intelligence at an American high school, your brain stays completely normal while you get 20 bits of raw binary truth per day in London's Lloyd's market, powered by real Claude Shannon information theory."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, combine the Canary Wharf ticker search and shipwreck Geohash into one rapid binary-search demonstration, moving directly to the confirmation-bias trap and Dev's forged slip."
+      },
+      "views_case": "Fits squarely in the Intelligence + Secret Feelings breakout clusters (Jeremy Bearimy and Ifverse 1M-10M hits, https://www.youtube.com/@Ifverse) with an interactive puzzle hook where viewers calculate how they'd spend 20 questions in the comments.",
+      "under_question": "If you could know every fact about the people you love, would any relationship survive?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-saw-who-wants-you-to-fail",
+      "title": "What If You Saw Who Wants You to Fail?",
+      "premise": "Whenever you share good news or take a risk, a stamped paper meter from +100% to -100% flips open above every person around you, showing whether your win secretly makes them happy or hurts them.",
+      "world": "Present-day Daechi-dong and Pangyo in Seoul, South Korea, where 1,500 night cram schools pack a single neighborhood under a strict 4% top-grade curve where your best friend's A+ mathematically pushes you down to a B.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre holding up an exam paper with a 'TOP 1%' stamp; behind you, your rival barely glances up with a '-4%' tag, while your smiling best friend hugging you has a bright crimson '-88%' tag floating over his head and a crimson arrow pointing to it.",
+        "tag": "YOUR BEST FRIEND?"
+      },
+      "rule": "Whenever you announce a win, an ambition, or a piece of good news, a split-flap paper meter between +100% (pure joy for you) and -100% (wishing you fail) appears above everyone who hears or reads it for 60 seconds. The catch: the meter shows the raw neural spike in their pain or reward centers at that instant—it never explains *why* your success hurts them, and if you confront someone about their number, every meter in the room locks onto you as a threat.",
+      "hook": "It's 10:00 PM outside a Daechi-dong night academy in Seoul, you tell your two closest friends you just made the final cut for the national scholarship, and as your best friend claps you on the shoulder with a huge grin, a crimson paper tag snaps above his head: '-84%.'",
+      "beats": [
+        "Beat 1 — The 10 PM Curfew Street: Your academy rival who trash-talks you every day walks past with a barely flickering '-6%' tag because he barely thinks about you, while your study partner Min-jun—who splits his convenience-store triangle kimbap with you every night—spikes to '-84%' crimson.",
+        "Beat 2 — Jump 1 (The Closeness Rule): You test the meter by telling strangers, distant cousins, and teachers your good news; you learn Leon Festinger's brutal law of social comparison—strangers never envy you because you aren't in their lane; the closer someone is to your age, background, and seat, the harder your win hits their brain's physical pain center.",
+        "Beat 3 — The Over-Helpful Sabotage: You watch how people with '-60%' tags behave—they never insult you; instead, they give you warm, cautious advice ('Don't overwork yourself, take the safe tier-two exam') designed to gently talk you out of competing with them.",
+        "Beat 4 — The Curve Game: Under Korea's Naesin 4% relative grading cap, you use the meter to spot which study-group classmates are secretly hiding past-exam sheets from you, cutting every crimson number out of your phone and climbing to the top of the cohort alone.",
+        "Beat 5 — Jump 2 (The Startup Filter in Pangyo Techno Valley): Five years later, you build a startup in Pangyo by hiring and partnering strictly with people who register '+50%' or higher when you pitch your vision—until you discover that people who feel zero envy toward you in your own field often just don't care about the craft at all.",
+        "Beat 6 — The Midpoint Misconception Breaks (Benign vs Malicious Envy): Your most loyal engineer spikes to '-72%' the day you win a major patent, so you fire him on the spot—only to find his notebook full of late-night designs built to beat your prototype for your *next* product; his crimson meter wasn't wishing you'd crash, it was 'benign envy' burning to rise to your level.",
+        "Beat 7 — The Cost Lands (60%): On the night your company is valued at $50 million, you go home to your cramped childhood apartment to tell your older sister, Ji-yoon, who dropped out of art school and worked six years at a logistics warehouse to pay your Daechi-dong tuition—and as she cries happy tears and hugs you, her meter slams to '-68%' crimson.",
+        "Beat 8 — The Hospital Corridor Walkout: Sickened that even the sister who sacrificed everything for you secretly wants you to fail, you pull away from her embrace and walk out into the rain, leaving the check on her table untouched.",
+        "Beat 9 — Jump 3 (The Live Broadcast & The Choice at 80%): At the national founder awards broadcast to millions, you look at the studio monitors and finally notice when Ji-yoon's meter turns crimson—not when they announce your money, but only when the host mentions you are flying to Paris for the fellowship *she* gave up ten years ago; you realize the meter doesn't measure hatred, it measures the ache of a counterfactual life.",
+        "Beat 10 — Back to You (The Worldview Flip): You walk off the live stage before accepting the trophy, drive back to your sister's apartment, and hand her the fellowship ticket to Paris; as she looks at her own name on the boarding pass, you see that someone can love you with their whole life and still ache when your win reminds them of the life they buried for you."
+      ],
+      "feeling_map": [
+        "betrayed",
+        "guarded",
+        "ruthless",
+        "lonely",
+        "heartbroken",
+        "forgiving"
+      ],
+      "restarts": [
+        "Minute 3: Discovering that enemies barely register '-5%' while your closest peers spike past '-80%' flips who you trust in your daily life.",
+        "Minute 6: Moving from high school into Pangyo startup founding turns the meter into a hiring weapon—until firing a '-72%' co-worker destroys your best product because you confused competitive fire with malice.",
+        "Minute 9: Seeing a '-68%' crimson tag over the older sister who paid for your education shatters your family and drives you into complete isolation.",
+        "Minute 12: A live broadcast reveals that the crimson meter triggers on counterfactual grief—the unlived life your sister gave up for you—not hatred."
+      ],
+      "content_mine": [
+        {
+          "fact": "South Korea's high school Naesin and CSAT relative grading system strictly caps Grade 1 (the top tier) at 4% of students in a cohort, meaning one classmate scoring higher mathematically pushes a friend below the cutoff.",
+          "source": "https://english.moe.go.kr/",
+          "beat": "Beat 1 — The 10 PM Curfew Street"
+        },
+        {
+          "fact": "Seoul's Daechi-dong neighborhood packs more than 1,500 private cram schools (hagwons) into roughly 3.5 square kilometers, operating under a government-enforced 10:00 PM curfew patrolled by education inspectors.",
+          "source": "https://www.reuters.com/world/asia-pacific/south-koreas-private-education-spend-hits-record-high-2023-03-07/",
+          "beat": "Beat 1 — The 10 PM Curfew Street"
+        },
+        {
+          "fact": "Leon Festinger's 1954 Social Comparison Theory proved that humans rarely compare themselves to distant elites; comparison intensity—and envy—peaks against peers of the exact same age, background, and starting line.",
+          "source": "https://journals.sagepub.com/doi/10.1177/001872675400700202",
+          "beat": "Beat 2 — Jump 1 (The Closeness Rule)"
+        },
+        {
+          "fact": "Hidehiko Takahashi et al.'s 2009 fMRI study in Science proved that envying a peer activates the dorsal anterior cingulate cortex (dACC)—the exact region that registers physical pain—while seeing that peer fail activates ventral striatum dopamine reward.",
+          "source": "https://www.science.org/doi/10.1126/science.1165604",
+          "beat": "Beat 2 — Jump 1 (The Closeness Rule)"
+        },
+        {
+          "fact": "Parrott and Smith's psychological studies show that over 75% of people conceal envy in close friendships behind exaggerated praise or overly cautious 'protective' advice meant to discourage risky ambition.",
+          "source": "https://psycnet.apa.org/doi/10.1037/0022-3514.64.6.906",
+          "beat": "Beat 3 — The Over-Helpful Sabotage"
+        },
+        {
+          "fact": "Abraham Tesser's Self-Evaluation Maintenance Model (1988) shows that when a close friend succeeds in a domain irrelevant to your identity you feel pride, but when they succeed in your own domain, closeness magnifies psychological pain.",
+          "source": "https://doi.org/10.1016/S0065-2601(08)60227-0",
+          "beat": "Beat 4 — The Curve Game"
+        },
+        {
+          "fact": "Harvard Business School professor Noam Wasserman's study of 10,000+ startups found that 65% of high-potential startup failures stem from co-founder conflict, and founding teams made of prior friends are statistically less stable than acquaintances.",
+          "source": "https://press.princeton.edu/books/paperback/9780691158303/the-founders-dilemmas",
+          "beat": "Beat 5 — Jump 2 (The Startup Filter in Pangyo Techno Valley)"
+        },
+        {
+          "fact": "Psychologists Niels van de Ven, Marcel Zeelenberg, and Rik Pieters (2009) proved that 'envy' splits into two distinct emotions with identical pain spikes: malicious envy (wanting to pull the winner down) and benign envy (pain that drives you to work harder).",
+          "source": "https://psycnet.apa.org/doi/10.1037/a0015669",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (Benign vs Malicious Envy)"
+        },
+        {
+          "fact": "Shelly Gable's 2004 relationship research demonstrated that how someone reacts to your good news ('capitalization') predicts relationship survival far more accurately than how they comfort you during bad news.",
+          "source": "https://psycnet.apa.org/doi/10.1037/0022-3514.87.2.228",
+          "beat": "Beat 7 — The Cost Lands (60%)"
+        },
+        {
+          "fact": "Fehr and Schmidt's 1999 inequity aversion experiments in the Quarterly Journal of Economics showed humans routinely sacrifice 30% to 50% of their own payout in lab games simply to avoid falling behind a peer.",
+          "source": "https://academic.oup.com/qje/article-abstract/114/3/817/1848113",
+          "beat": "Beat 4 — The Curve Game"
+        },
+        {
+          "fact": "Medvec, Madey, and Gilovich's 1995 study of Olympic athletes proved silver medalists are significantly less happy than bronze medalists because counterfactual thinking compares what you have against the one life you almost lived.",
+          "source": "https://psycnet.apa.org/doi/10.1037/0022-3514.69.4.603",
+          "beat": "Beat 9 — Jump 3 (The Live Broadcast & The Choice at 80%)"
+        },
+        {
+          "fact": "Neal Roese and Amy Summerville's meta-analysis of human regret found that suppressed educational and career paths top all life regrets (32%), and seeing a younger sibling live that exact path triggers involuntary counterfactual grief.",
+          "source": "https://journals.sagepub.com/doi/10.1177/0146167205274693",
+          "beat": "Beat 10 — Back to You (The Worldview Flip)"
+        }
+      ],
+      "twist": "The '-68%' crimson spike above the older sister who worked in a warehouse to pay your tuition isn't malice—the meter measures the brain's counterfactual pain center, firing because your win is the exact life she gave up so you could have yours.",
+      "ending": "The next time someone close to you goes quiet for half a second when you share big news, you won't assume they hate your success—you'll remember that watching you fly reminds them of the wings they folded away.",
+      "closest_video": {
+        "title": "What If You Knew Who Had a Crush on You?",
+        "url": "https://www.youtube.com/@IFNation",
+        "difference": "Flips the crush/affection meter into the darker, relatable question of hidden envy when you succeed, set in Seoul's 4%-curve hagwon and tech world and resolved through neuroscience and counterfactual grief."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, trim the Pangyo startup hiring montage (Beat 5) to one scene with the benign-envy engineer and move straight from the Daechi-dong curve to your sister's apartment."
+      },
+      "views_case": "Secret feelings of people around you (crush, envy, who misses you) is one of the highest-CTR clusters across IF Nation, Ifverse, and Manifesting (https://www.youtube.com/@Ifverse), and 'YOUR BEST FRIEND?' with a '-88%' tag triggers instant clicks.",
+      "under_question": "Why does it sometimes hurt a little when the person you love most gets everything you wanted?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-ten-slot-video-game-inventory",
+      "title": "What If You Had a 10-Slot Video Game Inventory?",
+      "premise": "Anything under 1,000 kilograms that you touch with both hands vanishes into one of 10 floating paper slots where it weighs zero grams, takes zero space, and zero time passes for it.",
+      "world": "Present-day Port of Rotterdam and Antwerp, Europe's largest cargo corridor where 438 million tonnes of freight, bullion, and Eurotransplant emergency organs cross borders every year under X-ray customs portals.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre on a rain-slicked Rotterdam shipping dock, holding up one empty hand as a 1,000 kg steel shipping counterweight vanishes into a glowing stamped paper slot (#9/10) while a crimson pointer points to Slot #10 marked with a red medical cross.",
+        "tag": "SLOT 10 FULL"
+      },
+      "rule": "Touch any single non-living object under 1,000 kg with both hands, and it snaps into one of 10 paper-card inventory slots visible at the bottom of your sight. Inside a slot, the object has zero weight, zero volume, and zero elapsed time (boiling coffee stays at 92°C forever; a donor organ never decays; a falling boulder keeps its exact velocity). You cannot store a living human. The catch: if you ever fall unconscious or fall asleep while holding items in your slots, all 10 slots eject into the room around you at once with their original mass and momentum conserved.",
+      "hook": "You're working the night shift on a Rotterdam dock when a crane cable snaps above your cousin, you grab the swinging 900-kilogram steel counterweight with both hands to push it away, and the entire block of steel vanishes into thin air as a paper card stamps into your vision: 'SLOT 1 OF 10 — 900 KG.'",
+      "beats": [
+        "Beat 1 — The Vanished Counterweight: You tap Slot 1 over an empty barge and the 900 kg steel block slams down at the exact speed it was moving when you grabbed it, denting the deck—teaching you that your pockets now freeze mass, time, and momentum.",
+        "Beat 2 — Jump 1 (Zero-Weight Smuggling & Everyday Tricks): You store piping-hot street waffles that stay fresh for weeks, pack your entire motorbike into Slot 2 to skip parking fees, and learn the 'one-object' rule—loose sand only stores a handful, but a shrink-wrapped pallet counts as a single 990 kg object.",
+        "Beat 3 — The 37-Centimeter Gold Cube: At an Antwerp bullion warehouse, you realize gold's extreme density (19.32 g/cm³) means a 1,000 kg slot fits inside a tiny 37-centimeter cube worth $88 million—and walks straight through airport metal detectors and weight-sensor floors at 0 grams.",
+        "Beat 4 — The Momentum Railgun & Buoyancy Hack: When cargo thieves corner you and your cousin Bram on a tugboat, you store 9,000 kg of flooded bilge water across 9 slots to instantly float the sinking hull by 88,000 Newtons of buoyancy, and fire stored highway pebbles like kinetic cannonballs by catching them off a spinning tire.",
+        "Beat 5 — Jump 2 (The Immortal Organ Courier): You realize the real miracle isn't weightless gold, it's frozen time—a human donor heart normally dies after 4 to 6 hours on ice, wasting 60% of thoracic organs, so you become Eurotransplant's ghost courier, carrying hearts across continents inside your slots with zero seconds of cellular decay.",
+        "Beat 6 — The Midpoint Misconception Breaks (The Sleep Ejection Disaster): Exhausted after a 30-hour flight from Tokyo to Rotterdam, you nod off for three seconds in your 5th-floor apartment while still holding four 900 kg machinery pallets in Slots 1–4; the moment you fall asleep, 3,600 kg ejects onto your living-room floorboards (engineered for only 200 kg/m²), crashing straight through into the apartment below.",
+        "Beat 7 — The Cost Lands (60%): To stay in the organ-courier network without sleeping, you keep Slots 1–9 filled with pressurized liquid nitrogen tanks, emergency blood bags, and surgical rigs, working alongside your cousin Bram on a winter rescue run in the North Sea when a rogue wave slams the deck and crushes Bram's chest against a winch.",
+        "Beat 8 — The Four-Minute Brain Clock: The coast guard helicopter is 25 minutes away in the storm. Bram's heart stops on the freezing deck. Irreversible brain death starts in 4 minutes—and as his pulse hits zero, for the first time in your life, a white pickup outline flickers over your cousin's body because clinically, for this second, the rule classifies him as an object.",
+        "Beat 9 — Jump 3 (The Boundary of Life & The Choice at 80%): You grab Bram with both hands and pull him into Slot 10—freezing his brain at zero seconds of oxygen loss while you climb the crane ladder toward the hospital helipad with a severe concussion of your own; if you black out for even one second on the climb, all 10 slots—including 8,000 kg of industrial cargo and Bram—will detonate inside the helicopter.",
+        "Beat 10 — Back to You (The Worldview Flip): You dump Slots 1–9 into the sea to empty the mass, keep yourself awake by biting your own hand until the trauma team shocks Bram's heart back in the operating room, and look down at your 10 empty slots—knowing that the heaviest things we carry in life are the ones we can never put down when we close our eyes."
+      ],
+      "feeling_map": [
+        "delighted",
+        "invincible",
+        "reckless",
+        "rattled",
+        "desperate",
+        "awestruck"
+      ],
+      "restarts": [
+        "Minute 3: Discovering that stored objects conserve the exact velocity they had when touched turns a storage pocket into a physics weapon.",
+        "Minute 6: Shifting from weightless bullion to time-frozen transplant hearts raises the stakes from money to human life.",
+        "Minute 9: Nodding off for three seconds in an upstairs apartment ejects 3.6 metric tons through the floor slab, revealing the lethal danger of falling unconscious with full slots.",
+        "Minute 12: When your cousin's heart stops on a storm-hit ship 25 minutes from a hospital, the inventory icon lights up over his body because the rule no longer considers him alive."
+      ],
+      "content_mine": [
+        {
+          "fact": "By conservation of linear momentum (p = mv), a 900 kg steel block falling at 15 m/s carries 13,500 newton-seconds of impulse and 101,250 joules of kinetic energy—equivalent to the muzzle energy of an anti-materiel cannon.",
+          "source": "https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions",
+          "beat": "Beat 1 — The Vanished Counterweight"
+        },
+        {
+          "fact": "The Port of Rotterdam is Europe's largest seaport, handling roughly 438 million metric tons of cargo annually across 42 kilometers of docks scanned by Dutch Customs X-ray portals.",
+          "source": "https://www.portofrotterdam.com/en/about-port-authority/port-facts-and-figures",
+          "beat": "Beat 2 — Jump 1 (Zero-Weight Smuggling & Everyday Tricks)"
+        },
+        {
+          "fact": "Pure gold has a density of 19.32 grams per cubic centimeter, meaning a full 1,000-kilogram metric ton of gold occupies a cube just 37.2 centimeters (14.6 inches) on each side—worth roughly $88 million.",
+          "source": "https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-gold.pdf",
+          "beat": "Beat 3 — The 37-Centimeter Gold Cube"
+        },
+        {
+          "fact": "One million US dollars in $100 bills weighs 10 kilograms, while €1 million in €500 banknotes weighs just 2.2 kilograms—meaning a single 1,000 kg slot can hold €454 million in physical cash.",
+          "source": "https://www.ecb.europa.eu/euro/banknotes/html/index.en.html",
+          "beat": "Beat 3 — The 37-Centimeter Gold Cube"
+        },
+        {
+          "fact": "By Archimedes' Principle, instantly removing 9,000 kilograms (8.78 cubic meters) of flooded seawater from inside a sinking vessel creates 88,290 Newtons of net upward buoyant force without pumps.",
+          "source": "https://www.britannica.com/science/Archimedes-principle",
+          "beat": "Beat 4 — The Momentum Railgun & Buoyancy Hack"
+        },
+        {
+          "fact": "A human donor heart preserved in static cold storage at 4°C survives only 4 to 6 hours of cold ischemia time before ATP depletion causes permanent myocardial damage, which is why over 60% of potential donor hearts go untransplanted.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6482927/",
+          "beat": "Beat 5 — Jump 2 (The Immortal Organ Courier)"
+        },
+        {
+          "fact": "In thermodynamics, storing hot or pressurized matter without entropy decay acts as a physical Maxwell's Demon (proposed by James Clerk Maxwell in 1867), bypassing the Second Law of Thermodynamics during storage.",
+          "source": "https://plato.stanford.edu/entries/statphys-statmech/",
+          "beat": "Beat 5 — Jump 2 (The Immortal Organ Courier)"
+        },
+        {
+          "fact": "Under European building standard Eurocode 1 (EN 1991-1-1), residential apartment floors are engineered for a live load of only 1.5 to 2.0 kilonewtons per square meter (~150 to 200 kg/m²), meaning a 3,600 kg point drop causes immediate punching-shear slab failure.",
+          "source": "https://eurocodes.jrc.ec.europa.eu/EN-Eurocodes/eurocode-1-actions-structures",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (The Sleep Ejection Disaster)"
+        },
+        {
+          "fact": "After cardiac arrest at normal body temperature, cerebral neurons suffer irreversible hypoxic damage within 4 to 6 minutes as brain oxygen stores deplete in under 20 seconds.",
+          "source": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000916",
+          "beat": "Beat 8 — The Four-Minute Brain Clock"
+        },
+        {
+          "fact": "Emergency trauma surgeons induce 'suspended animation' (Emergency Preservation and Resuscitation, pioneered by Dr. Samuel Tisherman) by cooling cardiac-arrest patients to 10°C to slow cellular metabolism and buy up to 60 minutes of operating time.",
+          "source": "https://www.newscientist.com/article/2224004-exclusive-humans-placed-in-suspended-animation-for-the-first-time/",
+          "beat": "Beat 8 — The Four-Minute Brain Clock"
+        },
+        {
+          "fact": "An Airbus H145 rescue helicopter has a maximum useful payload of approximately 1,900 kg; ejecting 8,000 kg of stored cargo inside its cabin in mid-air exceeds its structural lift capacity by more than fourfold.",
+          "source": "https://www.airbus.com/en/products-services/helicopters/civil-helicopters/h145",
+          "beat": "Beat 9 — Jump 3 (The Boundary of Life & The Choice at 80%)"
+        },
+        {
+          "fact": "Under the Uniform Determination of Death Act and clinical resuscitation medicine, 'clinical death' (cessation of heartbeat and breathing) is distinct from 'biological brain death,' creating a reversible window if cellular decay is halted immediately.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK538259/",
+          "beat": "Beat 10 — Back to You (The Worldview Flip)"
+        }
+      ],
+      "twist": "The rule forbids storing a living human—until your cousin's heart stops on a storm-hit dock 25 minutes from the hospital, and the Slot 10 outline suddenly lights up over his chest because for that second he is clinically dead, letting you freeze his brain at zero oxygen loss if you can stay conscious all the way to the trauma room.",
+      "ending": "Every time you cram your bag before walking out the door, you'll look at your two hands and remember what counts as 'things'—and the razor-thin line between an object and a life.",
+      "closest_video": {
+        "title": "What If Life Was an RPG?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Isolates one single video-game mechanic—a 10-slot weightless, time-frozen inventory—and pushes its real physics (conservation of momentum, floor load limits, gold density, and clinical death organ ischemia) to an emotional life-or-death climax in Rotterdam."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, trim the Antwerp gold cube beat and tugboat buoyancy scene into a 45-second escalation montage so the film hits the Eurotransplant organ courier job and apartment floor collapse by the midpoint."
+      },
+      "views_case": "Game mechanics in real life is a top-5 breakout cluster across Ifverse and IF Opposite (https://www.youtube.com/@Ifverse), and the Slot 10 clinical-death loophole gives comments a hook they have never seen.",
+      "under_question": "Where is the exact second a human body stops being a person and becomes an object—and back again?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-every-hour-you-slept-rewound-the-world",
+      "title": "What If Every Hour You Slept Rewound the World?",
+      "premise": "While you stay awake time moves forward normally, but every hour you sleep rewinds the entire world—and your place in it—backward by one hour while you keep your memories.",
+      "world": "Present-day Tokyo, Japan, between the 24-hour capsule pods of Shinjuku and the Tokyo Stock Exchange in Kabutocho, a city of missed last trains and commuter micro-naps where a 26-minute nap rewinds the closing bell.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre jolting awake inside a glowing Shinjuku capsule hotel pod with dark eye bags; a crimson pointer leads to the digital wall clock rolling backward from 'NOV 12' to 'NOV 09' while an empty sleeping-pill blister pack sits by your hand.",
+        "tag": "SLEPT TOO LONG"
+      },
+      "rule": "As long as you are awake, the clock moves forward at normal speed. The instant you fall asleep or lose consciousness, the entire world—including your physical position and injuries—rewinds by 1 hour for every 1 hour you stay unconscious, while your memory stays intact. Because a human who stays awake 16 hours and sleeps 8 hours only moves forward by 8 net hours (+16 minus 8), you live three subjective days for every one calendar day. The catch: your biological cells still age forward through every rewound day, and if you ever get knocked out or put into a multi-day medical coma, you wake up dragged days backward into the past.",
+      "hook": "You fall asleep on the 11:40 PM Chuo Line train in Tokyo after bombing the biggest interview of your life, you sleep for eight hours, and when you open your eyes you're sitting right back in the waiting chair at 3:40 PM yesterday with the interviewer calling your name.",
+      "beats": [
+        "Beat 1 — The 3:40 PM Wake-Up Call: You nail the interview on the second try using every answer you heard yesterday, then calculate the math on a paper napkin: 16 hours awake (+16) minus 8 hours asleep (-8) means your life now advances by only 8 net hours a day—giving you three tries at every afternoon.",
+        "Beat 2 — Jump 1 (The 26-Minute Shinjuku Nap): You rent a Shinjuku capsule pod 200 meters from the Tokyo Stock Exchange; every day at 3:00 PM you watch which stock spikes at the closing bell, pop into your pod for a 30-minute power nap, wake up at 2:30 PM, and buy the trade before it happens.",
+        "Beat 3 — The Panic Insomnia Catch: When your younger sister Hana gets hit by a delivery scooter outside Shinjuku Station, you sprint into a quiet stairwell and squeeze your eyes shut to rewind 15 minutes—only to learn that adrenaline and cortisol spike sleep onset latency, making it physically impossible to fall asleep on command when someone you love is bleeding.",
+        "Beat 4 — The Propofol Shortcut: After spending an agonizing 28 minutes trying to fall asleep naturally and having to sleep 45 minutes just to undo the crash, you start carrying high-dose sedatives in your jacket pocket so you can force yourself unconscious in 60 seconds during any emergency.",
+        "Beat 5 — Jump 2 (The 3-to-1 Aging Cost & Microsleep Glitches): To stop rewinding every night and reach next month with Hana at normal speed, you push yourself onto a 22-hour-awake schedule—until after 36 hours of sleep debt, involuntary 10-second microsleeps hit your brain in the middle of dinner, making the soup spoon and Hana's sentences stutter backward like a scratched DVD.",
+        "Beat 6 — The Midpoint Misconception Breaks: At your annual medical checkup two calendar years later, the doctor stares at your bloodwork in silence: because you have lived three biological days for every one calendar day—plus hundreds of rewound naps—your epigenetic clock and telomeres have aged seven years in twenty-four months.",
+        "Beat 7 — The Cost Lands (60%): You vow to quit rewinding and sleep a balanced polyphasic cycle, until Hana's small design shop in Shimokitazawa burns down in an electrical fire **three days ago** while your phone was off on a trip—meaning to reach that Tuesday afternoon and unplug the faulty heater, you have to sleep for 72 net hours backward.",
+        "Beat 8 — The 72-Hour Backward Dive: Because the human brain cannot sleep 72 hours straight, you check into a Shinjuku capsule pod and chain-dose sedatives—sleeping 14 hours, waking up for 10 groggy minutes two days ago to swallow another pill, and plunging deeper backward through Thursday, Wednesday, and Tuesday while your breathing slows to the edge of respiratory arrest.",
+        "Beat 9 — Jump 3 (The Coma Trap & The Choice at 80%): You wake up on Tuesday afternoon, stagger into Hana's shop, and pull the smoking heater from the wall—but you collapse on the floor from sedative toxicity; as the paramedics load you into the ambulance with an oxygen mask to induce a 48-hour protective coma, you realize that if they put you under for two days, you will rewind past the rescue or never wake up at all.",
+        "Beat 10 — Back to You (The Worldview Flip): You rip the IV sedative line from your arm in the ambulance, force yourself to stay awake for 18 straight hours inside the ICU with Hana holding your hand and talking to you through the night so you can finally cross into Wednesday morning—realizing that tomorrow isn't promised by the calendar, it's earned by letting yesterday stay finished."
+      ],
+      "feeling_map": [
+        "exhilarated",
+        "clever",
+        "frantic",
+        "exhausted",
+        "terrified",
+        "peaceful"
+      ],
+      "restarts": [
+        "Minute 3: Discovering the +16 awake / -8 asleep equation reveals you only advance 8 net hours per day, turning Shinjuku capsule naps into a stock-market time machine.",
+        "Minute 6: An accident in front of you reveals the cruel biological catch—panic and adrenaline make it impossible to fall asleep when you need an emergency rewind.",
+        "Minute 9: A blood test proves your cells age forward through every rewound day at 3x speed, while sleep deprivation causes reality to glitch backward during microsleeps.",
+        "Minute 12: After chain-sleeping 72 hours backward to stop a fire, paramedics try to put you into a medically induced coma that would undo the rescue itself."
+      ],
+      "content_mine": [
+        {
+          "fact": "Under Alexander Borbély's 1982 Two-Process Model of sleep regulation, an adult awake for 16 hours and asleep for 8 hours under a 1:1 sleep-rewind rule advances only +8 net hours per 24-hour biological cycle—living 3 biological days for every 1 calendar day.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/7047521/",
+          "beat": "Beat 1 — The 3:40 PM Wake-Up Call"
+        },
+        {
+          "fact": "NASA's 1994 Ames Fatigue Countermeasures study found that a 26-minute nap boosts alertness by 54% and performance by 34%—and in Tokyo, capsule hotels (invented by Kisho Kurokawa in 1979) rent nap pods by the hour steps from the financial district.",
+          "source": "https://ntrs.nasa.gov/citations/19950022488",
+          "beat": "Beat 2 — Jump 1 (The 26-Minute Shinjuku Nap)"
+        },
+        {
+          "fact": "During the 2005 Mizuho Securities 'fat-finger' crash on the Tokyo Stock Exchange, a trader typed an order to sell 610,000 shares at 1 yen instead of 1 share at 610,000 yen, losing ¥40.7 billion in 15 minutes—a window shorter than a single afternoon nap.",
+          "source": "https://www.reuters.com/article/idUST29445120080215/",
+          "beat": "Beat 2 — Jump 1 (The 26-Minute Shinjuku Nap)"
+        },
+        {
+          "fact": "Normal human sleep onset latency (measured by Carskadon and Dement's Multiple Sleep Latency Test) is 10 to 20 minutes in a dark quiet room, and acute sympathetic adrenaline spikes during a crisis block sleep onset entirely.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/7156656/",
+          "beat": "Beat 3 — The Panic Insomnia Catch"
+        },
+        {
+          "fact": "Short-acting sedative-hypnotics and intravenous GABA-A agonists like propofol induce unconsciousness in 30 seconds to 10 minutes, but carry a razor-thin therapeutic index between sleep induction and fatal respiratory arrest.",
+          "source": "https://www.nejm.org/doi/full/10.1056/NEJMra0808281",
+          "beat": "Beat 4 — The Propofol Shortcut"
+        },
+        {
+          "fact": "After 24 hours without sleep, human cognitive impairment equals a 0.10% blood alcohol concentration (Dawson & Reid, Nature 1997), and by 36 hours the brain forces involuntary 3-to-15-second microsleeps even while eyes remain open.",
+          "source": "https://www.nature.com/articles/40775",
+          "beat": "Beat 5 — Jump 2 (The 3-to-1 Aging Cost & Microsleep Glitches)"
+        },
+        {
+          "fact": "According to OECD data, Japanese workers average the shortest sleep duration among developed nations at 7 hours and 22 minutes per night, giving rise to 'inemuri' (sleeping while present on trains and in meetings).",
+          "source": "https://www.oecd.org/gender/data/balancingpaidworkunpaidworkandleisure.htm",
+          "beat": "Beat 2 — Jump 1 (The 26-Minute Shinjuku Nap)"
+        },
+        {
+          "fact": "Steve Horvath's 2013 Epigenetic Clock (DNA methylation across 353 CpG sites) measures cumulative cellular divisions and metabolic wear rather than calendar dates, advancing with every biological cycle lived.",
+          "source": "https://genomebiology.biomedcentral.com/articles/10.1186/gb-2013-14-10-r115",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks"
+        },
+        {
+          "fact": "Tononi and Cirelli's Synaptic Homeostasis Hypothesis shows sleep exists to downscale synaptic weights by 15% to 20% each night; retaining full waking memories across repeated rewound days saturates the amygdala and triggers acute emotional overload.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/16337419/",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks"
+        },
+        {
+          "fact": "Homeostatic sleep pressure (Process S, driven by adenosine clearance) prevents a healthy human from sleeping more than 12 to 14 continuous hours once adenosine is cleared, requiring chemical sedation to stay unconscious for 72 hours.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4689288/",
+          "beat": "Beat 8 — The 72-Hour Backward Dive"
+        },
+        {
+          "fact": "In intensive care medicine, patients who suffer sedative overdose or hypoxic collapse are routinely placed in 24-to-72-hour medically induced comas to reduce intracranial pressure and cerebral oxygen demand.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK430765/",
+          "beat": "Beat 9 — Jump 3 (The Coma Trap & The Choice at 80%)"
+        },
+        {
+          "fact": "Naloxone and flumazenil act as competitive receptor antagonists that can reverse opioid or benzodiazepine sedation within 60 to 120 seconds, forcing an unconscious brain back into waking beta-wave activity.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK470180/",
+          "beat": "Beat 10 — Back to You (The Worldview Flip)"
+        }
+      ],
+      "twist": "To go back three days and save your sister from a fire, you have to chain-sleep 72 hours on sedatives—and the moment you rescue her and collapse from the overdose, paramedics try to put you into a 48-hour medical coma that would rewind you right back before you saved her.",
+      "ending": "Tonight, when your head hits the pillow and the day closes behind you, you'll feel a quiet relief that when you open your eyes, it will be tomorrow.",
+      "closest_video": {
+        "title": "What If You Could Pause Time for 10 Seconds a Day?",
+        "url": "https://www.youtube.com/@SaySuppose",
+        "difference": "Instead of an on-demand 10-second button, time rewinding is tied involuntarily to your biological sleep—creating the +16/-8 net time math, panic insomnia when you need a rewind, and the terror of falling into a coma."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, merge the scooter panic-insomnia scene (Beat 3) and sedative shortcut (Beat 4) into one midpoint beat so the 3x aging reveal leads straight into the 72-hour backward dive."
+      },
+      "views_case": "Time-manipulation premises with a strict biological catch are the #1 signature of the niche (Ifverse, Jeremy Bearimy, and our own pause-time pilot, https://www.youtube.com/@Ifverse), and 'SLEPT TOO LONG' with a backward calendar is instantly legible worldwide.",
+      "under_question": "If closing your eyes took you back to yesterday, how hard would you have to fight just to reach tomorrow?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-every-bill-split-across-earth",
+      "title": "What If Every Bill You Paid Split Across Earth?",
+      "premise": "Whenever you buy anything, the price is divided equally across all 8.16 billion people on Earth, and you only pay your one-eight-billionth share.",
+      "world": "Present-day Singapore, between a Chinatown hawker centre and the Marina Bay financial towers, the world's most expensive city for cars and land—where a simple paper permit just to own a car costs $78,000—and Asia's largest currency-clearing hub.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre tapping a credit card on a glowing Marina Bay real-estate terminal reading '$81,600,000'; a crimson pointer leads to a split-flap receipt printing '$0.01 FROM EVERYONE ON EARTH' while phones in the crowd behind you all light up at once.",
+        "tag": "-$0.01 EVERYWHERE"
+      },
+      "rule": "Whenever you pay any bill, invoice, or price tag in your own name, the total cost is divided equally across all 8,160,000,000 humans on Earth, deducted instantly in each person's local currency from their bank account, mobile wallet, or physical coin pocket. Any per-person share below half a cent ($0.005—meaning any purchase you make under $40.8 million) rounds down to $0.00 on bank ledgers, costing nobody anything. The catch: you cannot resell anything you buy for cash, and the moment a single purchase crosses $40.8 million, it rounds up to at least 1 full cent pulled simultaneously from every human on the planet.",
+      "hook": "You're at a Singapore dealership looking at the $78,000 paper permit required just to drive a used sedan to your father's clinic, you accidentally tap your debit card with $14 in the account, and the receipt prints: 'APPROVED — YOUR SHARE: $0.0000095.'",
+      "beats": [
+        "Beat 1 — The $78,000 Permit for Zero Cents: You check your bank app in disbelief—your balance didn't drop by a single cent, and neither did the dealer's or your father's, because $78,000 divided by 8.16 billion people is 0.00095 cents, which bank rounding rules round down to $0.00.",
+        "Beat 2 — Jump 1 (The $40.8 Million Free Ceiling): You discover the mathematical sweet spot of ISO 4217 currency rounding: because half a cent ($0.005) times 8.16 billion people equals $40.8 million, any single checkout under $40,799,999 is a completely victimless rounding glitch.",
+        "Beat 3 — Salami-Slicing Marina Bay: You buy your parents a $12 million shophouse, charter flights, and clear every patient's bill at your father's dialysis clinic by splitting large invoices into separate sub-$40 million payments so no human on Earth ever loses even 1 cent.",
+        "Beat 4 — Crossing the 1-Cent Threshold: A private medical-device conglomerate threatens to shut down the regional supply of dialysis filters unless someone buys the entire $81.6 million factory in a single indivisible escrow transfer by 5:00 PM; you tap your card, crossing the 1-cent floor for the first time.",
+        "Beat 5 — Jump 2 (8.16 Billion Phones Ping at Once): At 4:59 PM, every bank account on Earth drops by $0.01 and a single penny vanishes from the pockets of 1.4 billion unbanked adults; in Singapore and New York people laugh at the viral 'One-Cent Ghost,' and emboldened that nobody got hurt, you start making $816 million and $8.16 billion purchases that charge humanity $0.10 and $1.00 a pop.",
+        "Beat 6 — The Midpoint Misconception Breaks (The Household & PPP Multiplier): You think charging everyone on Earth $1.00 to build free hospitals in Singapore is harmless—until your father shows you a news feed from rural Malawi and Niger, where average families have 8 children and live on $2.15 a day: your 'harmless' $1.00 per-person charge just pulled $10.00 at once out of a family's tin box, wiping out five days of food.",
+        "Beat 7 — The Cost Lands (60%): You realize your power isn't an infinite money glitch—it is an 8.16-billion-person flat poll tax, the most regressive tax in history, where a billionaire in Zurich and a newborn baby in a refugee camp pay the exact same dollar for your choices.",
+        "Beat 8 — The Global Clearinghouse Freeze: Because you triggered 5.4 billion simultaneous cross-border micro-debits across 180 currencies, CLS Bank and SWIFT liquidity circuit-breakers slam shut to stop a global bank run, freezing your father's clinic payroll and trapping millions of families without access to their accounts.",
+        "Beat 9 — Jump 3 (The Negative-Price Loophole & The Choice at 80%): The Monetary Authority of Singapore traces the origin terminal to your card; if you pay the $81.6 billion emergency liquidity bond to unfreeze the banks, you will extract $10.00 from every poor person on Earth ($80 per large family)—unless you find a market where the price on the invoice is *negative*.",
+        "Beat 10 — Back to You (The Worldview Flip): At the commodities desk in Marina Bay, you sign an invoice to take delivery of negatively priced industrial grid surplus and carbon-waste disposal contracts worth -$16.32 billion; because the bill is negative, the terminal divides -$16.32 billion across all 8.16 billion humans—depositing +$2.00 into every single pocket and tin box on Earth—before you cut your card in half."
+      ],
+      "feeling_map": [
+        "giddy",
+        "clever",
+        "generous",
+        "horrified",
+        "guilty",
+        "redeemed"
+      ],
+      "restarts": [
+        "Minute 3: Discovering that bank rounding zeroes out any share under $0.005 gives you a $40.8 million ceiling where nobody on Earth pays a cent.",
+        "Minute 6: An indivisible $81.6 million factory escrow forces you across the 1-cent threshold, pinging 8.16 billion accounts and coin pockets at the same millisecond.",
+        "Minute 9: Seeing how a '$1.00 per human' charge hits an 8-person household living on $2.15/day reveals your power is a devastating global poll tax.",
+        "Minute 12: With global currency clearing frozen, you must discover negative-price commodity invoices to turn a global debit into a global payout."
+      ],
+      "content_mine": [
+        {
+          "fact": "According to the United Nations World Population Prospects (2024 Revision), Earth's human population is 8.16 billion, making one person's equal share of an $81.6 million bill exactly $0.01.",
+          "source": "https://population.un.org/wpp/",
+          "beat": "Beat 1 — The $78,000 Permit for Zero Cents"
+        },
+        {
+          "fact": "In Singapore, a Certificate of Entitlement (COE)—just the 10-year paper license required before you are allowed to buy a car—costs roughly S$105,000 ($78,000 USD), making it the most expensive car permit in the world.",
+          "source": "https://www.lta.gov.sg/content/ltagov/en/industry_innovations/industry_matters/development_of_vehicle_population/certificate_of_entitlement.html",
+          "beat": "Beat 1 — The $78,000 Permit for Zero Cents"
+        },
+        {
+          "fact": "Under IEEE 754 floating-point banker's rounding and ISO 4217 currency minor-unit standards, retail currencies with two decimal places round any transaction under 0.5 cents ($0.005) down to $0.00—a ceiling of $40.8 million across 8.16 billion people.",
+          "source": "https://www.iso.org/iso-4217-currency-codes.html",
+          "beat": "Beat 2 — Jump 1 (The $40.8 Million Free Ceiling)"
+        },
+        {
+          "fact": "The World Bank's 2024 Poverty, Prosperity, and Planet report shows that 712 million people live in extreme poverty on less than $2.15 per day, and 3.5 billion people—44% of humanity—live on less than $6.85 per day.",
+          "source": "https://www.worldbank.org/en/publication/poverty-prosperity-and-planet",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (The Household & PPP Multiplier)"
+        },
+        {
+          "fact": "United Nations household composition data shows that while average household size in Europe and East Asia is 2.1 people, households in low-income nations like Niger, Senegal, and Afghanistan average 7 to 8.5 members, multiplying any per-capita charge by 8x per family.",
+          "source": "https://www.un.org/development/desa/pd/data/household-size-and-composition",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (The Household & PPP Multiplier)"
+        },
+        {
+          "fact": "The World Bank Global Findex Database reports that 1.4 billion adults worldwide have no bank account and store their entire liquid survival buffer in physical coins and banknotes.",
+          "source": "https://www.worldbank.org/en/publication/globalfindex",
+          "beat": "Beat 5 — Jump 2 (8.16 Billion Phones Ping at Once)"
+        },
+        {
+          "fact": "In 1381, England enacted a flat Poll Tax of 1 shilling per person regardless of wealth; because a flat per-head charge extracts a massive share of a peasant's food budget and almost nothing from a lord, it sparked the 1381 Peasants' Revolt within weeks.",
+          "source": "https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/taxation/overview/polltaxes/",
+          "beat": "Beat 7 — The Cost Lands (60%)"
+        },
+        {
+          "fact": "Purchasing Power Parity (PPP) conversion factors from the World Bank International Comparison Program show that $1.00 USD in nominal exchange buys 3 to 4 times more basic caloric staples in rural South Asia and Sub-Saharan Africa than in New York or Singapore.",
+          "source": "https://www.worldbank.org/en/programs/icp",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (The Household & PPP Multiplier)"
+        },
+        {
+          "fact": "Mancur Olson's 1965 'Logic of Collective Action' explains why extracting 1 cent from billions of people goes unchallenged (diffuse cost, concentrated benefit) until the deduction crosses a household's salience threshold.",
+          "source": "https://www.hup.harvard.edu/books/9780674537514",
+          "beat": "Beat 5 — Jump 2 (8.16 Billion Phones Ping at Once)"
+        },
+        {
+          "fact": "Standard payment rails incur a clearing overhead of $0.05 to $0.15 per transaction in messaging and ledger computation, meaning a 1-cent debit across 5.4 billion accounts burns more banking liquidity in settlement fees than the principal moved.",
+          "source": "https://www.federalreserve.gov/paymentsystems/fednow_about.htm",
+          "beat": "Beat 8 — The Global Clearinghouse Freeze"
+        },
+        {
+          "fact": "CLS Bank International settles roughly $6.5 trillion per day in foreign exchange only because it uses multilateral netting to shrink millions of trades by 96%; un-netted simultaneous retail debits across 180 currencies trip liquidity circuit-breakers.",
+          "source": "https://www.cls-group.com/about/what-we-do/",
+          "beat": "Beat 8 — The Global Clearinghouse Freeze"
+        },
+        {
+          "fact": "In commodity and wholesale electricity markets, prices regularly turn negative when storage is full—most famously on April 20, 2020, when US WTI crude oil futures settled at -$37.63 per barrel, meaning sellers paid buyers $37.63 per barrel to take the invoice.",
+          "source": "https://www.eia.gov/todayinenergy/detail.php?id=46336",
+          "beat": "Beat 10 — Back to You (The Worldview Flip)"
+        }
+      ],
+      "twist": "Your 'free money' power is only victimless under $40.8 million where half-cent rounding zeroes it out; once you spend billions to do good, the $1.00 per-person deduction acts as a global flat poll tax that takes $8.00 out of poor eight-person family food tins—until you sign a negatively priced commodity invoice that pays every human on Earth in reverse.",
+      "ending": "The next time someone says a policy or a fee only costs 'a dollar from everyone,' you'll remember that one dollar is never the same dollar in two different pockets.",
+      "closest_video": {
+        "title": "What If You Doubled Your Money Every Day?",
+        "url": "https://www.youtube.com/@SaySuppose",
+        "difference": "Instead of exponential personal cash growth, your money stays zero while every bill you touch is divided by 8.16 billion—exploring sub-cent bank rounding, the $40.8M threshold, household size multipliers, and negative-price commodity invoices."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, compress the sub-$40.8M shopping spree (Beats 2 and 3) into one 60-second sequence so the 1-cent threshold and the Malawi household twist hit before minute 4."
+      },
+      "views_case": "Infinite-money-glitch premises with a sharp mathematical catch are the owner's benchmark and consistently pull 2M-12M views on Ifverse and Manifesting (https://www.youtube.com/@Ifverse).",
+      "under_question": "If your dream life only cost every stranger on Earth ten cents, would you still swipe the card when you saw whose ten cents it was?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-everyones-exact-world-rank",
+      "title": "What If You Saw Everyone's Exact World Rank?",
+      "premise": "Name any skill, trait, or habit in your head, and a split-flap number out of 8,160,000,000 snaps above every person in sight—including yourself in the mirror.",
+      "world": "Present-day Shenzhen, China, inside the 38,000 electronics stalls of Huaqiangbei and the glass R&D towers of Nanshan, where teenage bench repairers without degrees work across the street from billion-dollar chip labs.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre looking in a bathroom mirror with a stamped paper tag above your reflection reading '#41,892,104', while through the doorway behind you an old street repairman soldering a circuit board has a glowing gold '#3 IN THE WORLD' tag and a crimson arrow pointing to it.",
+        "tag": "HE'S #3 ON EARTH?"
+      },
+      "rule": "Think of any specific activity or human trait ('Soldering microchips', 'Spotting a lie', 'Making fried rice', 'Being a good friend to me'), and a stamped paper rank from #1 to #8,160,000,000 flips open above everyone you see, updating live as they act. The catch: you can never filter by city or room—the number is always out of all 8.16 billion humans alive right now—and whenever you deliberately try to raise your own rank to look at the number, Goodhart's Law kicks in and the self-consciousness drops your live performance rank.",
+      "hook": "You're standing in a Shenzhen electronics stall watching your arrogant chief engineer lecture a quiet 60-year-old soldering auntie, you silently wonder 'Who's better at micro-circuit repair?' and two paper tags snap above their heads: '#1,420,911' over your boss, and '#14 ON EARTH' over the woman on the plastic stool.",
+      "beats": [
+        "Beat 1 — The Auntie on the Plastic Stool: You test the tags across Huaqiangbei's 38,000 stalls and discover Raj Chetty's 'Lost Einsteins' in real life—the #14 micro-solderer, the #9 acoustic ear, and the #41 battery chemist on Earth aren't in Silicon Valley boardrooms; they're fixing scooters and phones for $4 an hour because no exam ever found them.",
+        "Beat 2 — Jump 1 (The Mirror Gut-Punch): Excited to check the one skill you built your entire identity on ('Hardware Architecture'), you look into the bathroom mirror expecting top 1,000—and the tag stamps '#41,892,104,' teaching you the humbling math of an 8.16-billion world: even being in the top 0.5% of humanity means 40.8 million people are better than you.",
+        "Beat 3 — The Talent-Stack Loophole: Crushed by your eight-digit rank, you discover conditional probability—when you combine three top-1% skills into one specific phrase ('Mandarin-English Acoustic Drone Circuit Debugging'), the pool multiplies down by a million and your mirror tag jumps from #41 million to '#19 ON EARTH.'",
+        "Beat 4 — The Underground #1 Team: Together with your childhood friend Lin, you recruit a workshop crew of unrecognized top-100 outliers from night stalls, restaurants, and taxi cabs, building hardware prototypes in 48 hours that billion-dollar Nanshan labs can't match because human output at the far right tail follows a Pareto power law.",
+        "Beat 5 — Jump 2 (The Optimization Addiction): As venture money pours in, you stop looking at people's faces and start checking their global rank on everything—replacing suppliers, firing warm teammates ranked '#80,000,000' for cold strangers ranked '#4,000,' and even checking dates at dinner on 'Patience' and 'Emotional Stability.'",
+        "Beat 6 — The Midpoint Misconception Breaks (The Untested Potential Blind Spot): You fire Lin's teenage younger brother from the lab because his tag for 'PCB Layout' reads '#3,400,000,000'—only to realize a week later when he sketches a brilliant 3D antenna by hand that the leaderboard measures *current practiced habit*, so anyone who has never touched a tool for more than two hours ranks in the billions regardless of their ceiling.",
+        "Beat 7 — The Cost Lands (60%): Lin confronts you in the empty workshop at midnight after you cut his brother and replace half the original stall crew with high-ranked mercenaries; furious, you mentally check 'LOYALTY TO THIS COMPANY'—and see Lin sitting at '#1 / 8,160,000,000' while yours reads '#4,102.'",
+        "Beat 8 — The Goodhart's Law Collapse: Ashamed, you check a personal category for the first time—'BEING A GOOD FRIEND TO LIN'—and see your own tag in the glass window sitting at a pathetic '#1,920,400,000'; when you immediately try to say something warm and generous just to make the number go up, the tag plunges to '#5,400,000,000' because optimizing a human relationship as a score makes it fake.",
+        "Beat 9 — Jump 3 (The Sympathy Group of Five & The Choice at 80%): On the morning of your company's $200 million buyout signing, the investors demand you sign away the stall crew's equity shares; you scan the crowded Shenzhen plaza outside through the glass wall with the query 'PEOPLE WHO WOULD DROP EVERYTHING IF I LOST IT ALL TODAY'—and out of 8.16 billion humans, only five numbers light up in the top tier, and Lin is walking toward the subway at #2.",
+        "Beat 10 — Back to You (The Worldview Flip): You tear up the buyout clause that cuts the crew, run down into the Huaqiangbei subway to hand Lin's brother his bench pass back without checking a single tag above his head—and realize that for the skills that keep the lights on, #14 is a miracle, but for the people who love you, there are only five seats in the room."
+      ],
+      "feeling_map": [
+        "amazed",
+        "deflated",
+        "ambitious",
+        "obsessive",
+        "ashamed",
+        "grounded"
+      ],
+      "restarts": [
+        "Minute 3: Looking in the mirror reveals that even being top 0.5% on Earth puts you at #41,892,104, forcing you to discover the probability math of combining niche skills.",
+        "Minute 6: Recruiting hidden top-100 geniuses from street stalls turns your tiny shop into a powerhouse—until you start firing loyal friends for higher-ranked strangers.",
+        "Minute 9: Firing your best friend's brother for a '#3.4 billion' rank reveals the fatal flaw of rankings—someone who has never been given a chance ranks near the bottom regardless of their gift.",
+        "Minute 12: Checking your own rank at 'Being a Good Friend' triggers Goodhart's Law—every time you act nice just to raise your score, your rank drops by billions."
+      ],
+      "content_mine": [
+        {
+          "fact": "Harvard economist Raj Chetty's 'Lost Einsteins' study of 1.2 million patent holders showed that children from low-income families who score in the top 1% of 3rd-grade math become inventors at just one-fourth the rate of high-income peers.",
+          "source": "https://academic.oup.com/qje/article/134/2/647/5218522",
+          "beat": "Beat 1 — The Auntie on the Plastic Stool"
+        },
+        {
+          "fact": "Shenzhen's Huaqiangbei electronics district packs over 38,000 component and repair stalls into a 1.45-square-kilometer strip, where self-taught bench technicians perform BGA micro-soldering at tolerances under 0.2 millimeters.",
+          "source": "https://blogs.worldbank.org/en/eastasiapacific/shenzhen-from-factory-of-the-world-to-innovation-hub",
+          "beat": "Beat 1 — The Auntie on the Plastic Stool"
+        },
+        {
+          "fact": "In a population of 8.16 billion people, being 'one in a million' (99.9999th percentile) still leaves 8,160 people on Earth ranked higher than you, and being in the top 0.5% places you past #40,800,000.",
+          "source": "https://population.un.org/wpp/",
+          "beat": "Beat 2 — Jump 1 (The Mirror Gut-Punch)"
+        },
+        {
+          "fact": "Herbert Marsh's Big-Fish-Little-Pond Effect (confirmed across 41 countries in American Psychologist, 2003) proves that moving from a local reference group to a global comparison group sharply depresses self-concept even when skill stays identical.",
+          "source": "https://psycnet.apa.org/doi/10.1037/0003-066X.58.5.364",
+          "beat": "Beat 2 — Jump 1 (The Mirror Gut-Punch)"
+        },
+        {
+          "fact": "By joint probability of independent traits, combining three top-1% skills (0.01 x 0.01 x 0.01 = 10^-6) shrinks a competitor pool of 8.16 billion people down to roughly 8,160 people worldwide.",
+          "source": "https://openstax.org/books/introductory-statistics/pages/3-2-independent-and-mutually-exclusive-events",
+          "beat": "Beat 3 — The Talent-Stack Loophole"
+        },
+        {
+          "fact": "O'Boyle and Aguinis's 2012 study of 633,263 researchers, entertainers, politicians, and athletes proved that while human height follows a normal bell curve, real-world skill output follows a heavy-tailed Pareto power law where the top 1% produce multiples of the median.",
+          "source": "https://psycnet.apa.org/doi/10.1111/j.1744-6570.2011.01239.x",
+          "beat": "Beat 4 — The Underground #1 Team"
+        },
+        {
+          "fact": "In Arpad Elo's rating mathematics used by FIDE, the gap between a top-2,000 Grandmaster (2500 Elo) and #1 in the world (2882 Elo peak) gives #1 a 90% expected win share against someone who already beats 99.999% of humanity.",
+          "source": "https://ratings.fide.com/",
+          "beat": "Beat 4 — The Underground #1 Team"
+        },
+        {
+          "fact": "Kruger and Dunning's 1999 study showed that performers in the bottom quartile (12th percentile) estimate themselves at the 62nd percentile, while top-decile experts routinely underestimate how rare their competence is.",
+          "source": "https://psycnet.apa.org/doi/10.1037/0022-3514.77.6.1121",
+          "beat": "Beat 5 — Jump 2 (The Optimization Addiction)"
+        },
+        {
+          "fact": "Macnamara, Hambrick, and Oswald's 2014 meta-analysis of 88 studies (N = 11,135) in Psychological Science found that accumulated practice hours explain only 18% of variance in sports and 21% in music, leaving huge latent talent hidden in people who have never practiced.",
+          "source": "https://journals.sagepub.com/doi/10.1177/0956797614535810",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (The Untested Potential Blind Spot)"
+        },
+        {
+          "fact": "Russell, Duchaine, and Nakayama (2009) discovered 'super-recognizers'—the top 1% to 2% of humans in fusiform face-area processing who never forget a face seen once, most of whom live ordinary lives unaware they hold an elite cognitive rank.",
+          "source": "https://link.springer.com/article/10.3758/PBR.16.2.252",
+          "beat": "Beat 1 — The Auntie on the Plastic Stool"
+        },
+        {
+          "fact": "Goodhart's Law (formulated by economist Charles Goodhart in 1975) states that 'when a measure becomes a target, it ceases to be a good measure'—because conscious optimization corrupts the underlying behavior.",
+          "source": "https://doi.org/10.1007/978-1-349-17295-5_4",
+          "beat": "Beat 8 — The Goodhart's Law Collapse"
+        },
+        {
+          "fact": "Anthropologist Robin Dunbar's research on human social networks shows that while the neocortex tracks ~150 acquaintances, the innermost 'support clique' of people who will sacrifice for you in a crisis averages just 5 people out of 8.16 billion.",
+          "source": "https://royalsocietypublishing.org/doi/10.1098/rspb.2004.2970",
+          "beat": "Beat 9 — Jump 3 (The Sympathy Group of Five & The Choice at 80%)"
+        }
+      ],
+      "twist": "When you check your own global rank at 'Being a Good Friend to Lin' and try to say something kind just to raise the number, your rank plummets by three billion places in real time—because under Goodhart's Law, the moment you treat love like a leaderboard to optimize, it stops being real.",
+      "ending": "Tomorrow, when you pass a street stall or look at your own reflection, you'll remember that the world's real #1s rarely wear a badge—and the only leaderboard worth topping has just five people on it.",
+      "closest_video": {
+        "title": "What If You Saw Everyone's Real Odds of Success?",
+        "url": "https://www.youtube.com/@SaySuppose",
+        "difference": "Instead of forward probability percentages on actions, this ranks all 8.16 billion humans alive on any skill or trait you name—exploring 'Lost Einsteins' in Shenzhen stalls, the math of being #41 million in the mirror, and Goodhart's Law on friendship."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, trim the dinner-date ranking scene in Beat 5 and merge the talent-stack loophole (Beat 3) directly into recruiting the Huaqiangbei stall team."
+      },
+      "views_case": "Combines the Intelligence cluster and Game Mechanics leaderboard cluster (Jeremy Bearimy and Ifverse hits, https://www.youtube.com/@Ifverse) with an irresistible contrast thumbnail ('HE'S #3 ON EARTH?' over a humble street repairman).",
+      "under_question": "In a world of eight billion people, what happens when you judge everyone you love by where they rank?",
+      "proposers": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "g-paid-only-what-things-cost-to-make",
+      "title": "What If You Paid Only What Things Cost to Make?",
+      "premise": "Whenever you touch a price tag, the markup, brand tax, and patent monopoly burn away in crimson ink, leaving only the raw physical cost of the materials and direct labor inside that item.",
+      "world": "Present-day New York City, between the Diamond District on 47th Street, Fifth Avenue luxury flagships, and Billionaires' Row on 57th Street, where a $3,500 bag costs $57 to stitch, a $300 insulin vial costs $3 to brew, and empty air above buildings sells for $40 million.",
+      "thumbnail": {
+        "image": "You (mustard head, teal scarf) large left of centre inside a gleaming Fifth Avenue pharmacy-and-luxury arcade, holding a $300 medicine vial and a $12,000 watch as crimson ink burns their tags down to '$2.80' and '$140', with a crimson arrow pointing to a $100 bill in your other hand whose tag reads '$0.086'.",
+        "tag": "ALL A MARKUP?"
+      },
+      "rule": "Touch any price tag, invoice, or payment terminal with your bare fingers, and every layer of brand markup, patent rent, artificial scarcity, and middleman margin burns off the tag, leaving only the exact physical bill-of-materials and direct unit labor used to make that specific item. You pay only that number, and the register clears it as paid in full. The catch: once you buy any item at its raw production cost, its true cost stays permanently stamped on it for everyone else who ever touches it—destroying its resale and collateral value forever.",
+      "hook": "You're at a Manhattan pharmacy counter two hundred dollars short for your uncle's $610 blood-thinner refill, your thumb brushes the paper barcode on the box, and the '$610.00' burns away in crimson ink to stamp the exact cost of the powder and plastic inside: '$1.14.'",
+      "beats": [
+        "Beat 1 — The $1.14 Prescription: You tap a single dollar and fourteen cents on the pharmacy counter; the register prints 'PAID IN FULL,' and as you walk out onto Fifth Avenue touching tags through shop windows, you realize 98% of the prices around you aren't paying for matter—they're paying for permission.",
+        "Beat 2 — Jump 1 (Fifth Avenue & 47th Street Unmasked): You walk down Fifth Avenue and the 47th Street Diamond District buying $800 designer eyeglasses for $6.40 of cellulose acetate, a $3,500 luxury handbag for its €53 ($57) factory bill, and a $12,000 stainless-steel watch for $1.50 of steel and $420 of machining.",
+        "Beat 3 — The Zero-Marginal-Cost Glitch: You touch a terminal for a $24,000 enterprise software license and a concert seat; because the physical cost to copy existing digital bits over fiber-optic cable is a fraction of a watt-second of electricity, every digital product you touch drops to '$0.0001.'",
+        "Beat 4 — The Pawnshop Shock (The Permanent Stamp Catch): Needing cash to pay your uncle's back rent, you try to pawn the $12,000 watch and a 2-carat diamond on 47th Street—only for the jeweler to drop his loupe in horror because the moment he touches the watch and diamond, he sees '$421.50' and '$210 SYNTHESIS COST' permanently burned into their value.",
+        "Beat 5 — Jump 2 (The Medicine & Air-Rights Arbitrage): Since you can't flip luxury goods for cash, you open a neighborhood procurement co-op in Queens—buying $300 insulin vials at their $2.80 bioreactor cost, $100,000 cancer treatments at $180 of chemistry, and buying out your building's $45 million Manhattan condo conversion for just the $4.2 million of concrete, rebar, and bricklayer hours.",
+        "Beat 6 — The Midpoint Misconception Breaks (The Collateral Contagion): Because every condo and drug shipment you touch permanently reveals its raw physical cost to every bank appraiser and auditor who handles the paperwork, Manhattan real-estate collateral—where 85% of a skyscraper's price is invisible transferable air rights—starts failing mark-to-market margin calls across Wall Street.",
+        "Beat 7 — The Cost Lands (60%): Your younger cousin Maya, an independent watch restorer and hand-engraver who spent ten years ruining her eyesight to open her own tiny studio on Canal Street, invites you to her first exhibition; when you accidentally brush the price tag on her centerpiece clock (listed at $4,000), the tag doesn't drop to $30 of brass.",
+        "Beat 8 — The $142,000 Handmade Clock: Before the entire gallery, Maya's price tag burns upward in crimson ink and stamps '$142,800'—every unpaid 2:00 AM night, every ruined prototype, and ten years of her unrecovered human life baked into that single one-of-one object, pricing it so high no collector in the room can touch it.",
+        "Beat 9 — Jump 3 (The Federal Reserve Note & The Choice at 80%): Wall Street clearing banks offer you a $50 million cash settlement in physical $100 bills to never touch another real-estate deed or pharmaceutical lot again; as you reach across the glass table to touch the stacks of crisp $100 bills with your bare hand, you realize what will happen if your fingers touch the money itself.",
+        "Beat 10 — Back to You (The Worldview Flip): Your bare thumb brushes the top $100 bill in the briefcase; the '$100' burns off the green cotton-and-linen paper and stamps '$0.086'—the exact 8.6 cents the Federal Reserve pays to print a hundred-dollar note—rendering the entire $50 million bribe worth $43,000 of printed paper, as you walk back to Canal Street with gloves on your hands to help Maya wind her clock."
+      ],
+      "feeling_map": [
+        "relieved",
+        "gleeful",
+        "righteous",
+        "startled",
+        "sober",
+        "awakened"
+      ],
+      "restarts": [
+        "Minute 3: Trying to pawn a luxury watch bought for $421 reveals the catch—anything you buy locks permanently to its raw production cost for everyone else who touches it.",
+        "Minute 6: Shifting from personal shopping to buying insulin and Manhattan apartment buildings at raw concrete-and-chemistry cost triggers a collateral panic across banks.",
+        "Minute 9: Brushing your cousin's handmade clock makes its price tag spike upward from $4,000 to $142,800 because one-of-a-kind human mastery contains years of unrecovered life.",
+        "Minute 12: Touching a briefcase of $100 bills with your bare hand burns the face value down to 8.6 cents per note—the physical printing cost of money itself."
+      ],
+      "content_mine": [
+        {
+          "fact": "A 2018 BMJ Global Health production-cost study by Gotham, Barber, and Hill showed that a 10 mL vial of rapid-acting insulin analog (retailing for $250 to $300 before caps) costs between $2.28 and $3.42 to manufacture, bottle, and package.",
+          "source": "https://gh.bmj.com/content/3/5/e000850",
+          "beat": "Beat 5 — Jump 2 (The Medicine & Air-Rights Arbitrage)"
+        },
+        {
+          "fact": "A 30-day supply of generic apixaban (Eliquis) or imatinib (Gleevec, which launched at over $100,000/year in the US) has an active pharmaceutical ingredient and tableting cost of roughly $1.10 to $15 per month.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/27042222/",
+          "beat": "Beat 1 — The $1.14 Prescription"
+        },
+        {
+          "fact": "In June 2024, Milan Tribunal court investigators auditing Christian Dior's supply chain documented that a handbag retailing in stores for €2,600 ($2,780+) was produced by subcontractors for €53 ($57 USD).",
+          "source": "https://www.reuters.com/business/retail-consumer/dior-unit-put-under-judicial-administration-italy-over-labour-exploitation-2024-06-10/",
+          "beat": "Beat 2 — Jump 1 (Fifth Avenue & 47th Street Unmasked)"
+        },
+        {
+          "fact": "An $800 pair of designer acetate eyeglasses contains roughly $4 to $8 of cellulose acetate and polycarbonate lenses inside a market where EssilorLuxottica controls the frames, lenses, and retail chains under one roof.",
+          "source": "https://www.ft.com/content/71113142-058b-11e7-ace0-1ce02ef0def9",
+          "beat": "Beat 2 — Jump 1 (Fifth Avenue & 47th Street Unmasked)"
+        },
+        {
+          "fact": "A 1-carat gem-quality diamond is pure crystalline carbon that can be grown via Chemical Vapor Deposition (CVD) for $200 to $300 of electricity and methane; retail diamond pricing stems from De Beers' 1938 supply-control and N.W. Ayer marketing monopoly.",
+          "source": "https://www.theatlantic.com/magazine/archive/1982/02/have-you-ever-tried-to-sell-a-diamond/304575/",
+          "beat": "Beat 4 — The Pawnshop Shock (The Permanent Stamp Catch)"
+        },
+        {
+          "fact": "Hardware teardowns by TechInsights and TD Cowen show that a flagship $1,199 smartphone has a physical Bill of Materials (BoM) and assembly cost of roughly $485, while the raw quartz sand inside its silicon processor costs less than $0.10.",
+          "source": "https://www.techinsights.com/",
+          "beat": "Beat 2 — Jump 1 (Fifth Avenue & 47th Street Unmasked)"
+        },
+        {
+          "fact": "Nobel laureate Kenneth Arrow (1962) showed that information and software have an enormous fixed first-copy cost but a near-zero marginal reproduction cost—fractions of a cent of server electricity per download.",
+          "source": "https://www.nber.org/chapters/c2144",
+          "beat": "Beat 3 — The Zero-Marginal-Cost Glitch"
+        },
+        {
+          "fact": "Under New York City's 1961 Zoning Resolution for Transferable Development Rights ('air rights'), developers on Billionaires' Row pay tens of millions of dollars for empty air above neighboring buildings, while physical concrete-and-steel construction costs ~$1,500 per square foot.",
+          "source": "https://www.nyc.gov/site/planning/zoning/glossary.page",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (The Collateral Contagion)"
+        },
+        {
+          "fact": "Thorstein Veblen's 1899 'Theory of the Leisure Class' proved that for status goods ('Veblen goods'), high price is itself the product—when the visible cost of a luxury item drops to its material cost, demand from status buyers collapses to zero.",
+          "source": "https://www.gutenberg.org/ebooks/833",
+          "beat": "Beat 4 — The Pawnshop Shock (The Permanent Stamp Catch)"
+        },
+        {
+          "fact": "In Book I of The Wealth of Nations (1776), Adam Smith noted that the true labor cost of a master artisan's single work must include the years of unpaid apprenticeship, failed trials, and maintenance required to acquire the skill.",
+          "source": "https://www.econlib.org/library/Smith/smWN.html",
+          "beat": "Beat 8 — The $142,000 Handmade Clock"
+        },
+        {
+          "fact": "Look-through collateral valuation (Basel III mark-to-market rules) requires banks to value pledged real estate and inventory at realizable resale price; if market price resets to replacement brick-and-mortar cost, high-LTV loans immediately breach collateral covenants.",
+          "source": "https://www.bis.org/bcbs/basel3.htm",
+          "beat": "Beat 6 — The Midpoint Misconception Breaks (The Collateral Contagion)"
+        },
+        {
+          "fact": "According to the US Federal Reserve's official currency budget, a physical $100 Federal Reserve Note made of 75% cotton and 25% linen costs exactly 8.6 cents ($0.086) per note to print at the Bureau of Engraving and Printing.",
+          "source": "https://www.federalreserve.gov/faqs/currency_12771.htm",
+          "beat": "Beat 10 — Back to You (The Worldview Flip)"
+        }
+      ],
+      "twist": "When you accidentally touch your cousin's handmade clock, the price doesn't drop—it spikes from $4,000 to $142,800 because ten years of her unpaid life are inside that single unit; and when you touch a $100 bill with your bare thumb, its tag drops to 8.6 cents—the printing cost of money itself.",
+      "ending": "Tomorrow, when you look at a $3,000 bag, a $300 pill, or a $100 bill in your wallet, you'll see the two numbers printed on everything: what it took to make, and the story we all agreed to believe.",
+      "closest_video": {
+        "title": "What If Everything Cost $1?",
+        "url": "https://www.youtube.com/@whatifscienceshow",
+        "difference": "Instead of an arbitrary flat $1 price for everything, you pay the exact verified factory bill-of-materials cost—exposing the real $2.80 cost of insulin, €53 Dior bags, $142,800 artisan labor, and the 8.6-cent printing cost of a $100 bill."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a 6-8 minute cut, fold the software zero-marginal-cost beat (Beat 3) into the Fifth Avenue shopping walk and move straight from the 47th Street pawnshop catch to the insulin/condo co-op and Maya's clock."
+      },
+      "views_case": "Hits the Money / Pricing glitch cluster that regularly drives multi-million-view breakouts on Ifverse and IF Nation (https://www.youtube.com/@Ifverse), backed by viral real-world numbers ($3 insulin, $57 luxury bags, 8.6-cent $100 bills) that spark massive comment debates.",
+      "under_question": "How much of your life do you spend working to pay for things that cost pennies to make—while underpaying the people who actually poured their life into making something real?",
+      "proposers": [
+        "gemini"
+      ]
+    }
+  ]
+}
