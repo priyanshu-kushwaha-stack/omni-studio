@@ -1,0 +1,12 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: medium
+example: 'voices.yaml characters.cast is one channel-wide map keyed by role name,
+  but each film casts its own Friend/Kid/Boss: ai-predicts adds Friend and Kid, ai-rents-brain
+  adds Boss, year-every-night adds another Boss. When the four AI films merge, duplicate
+  YAML keys collide (last one wins silently or the parse fails). The AI-texts film
+  used distinct labels (Best friend, Manager, Bus kid) to stay apart.'
+recorded_at: '2026-11-12T22:52:40.959177+00:00'
+note: 'Proposal: a per-video cast (videos/<id>/voices.yaml or a cast: block in story.json)
+  that overrides the channel cast, or keys namespaced by video id.'

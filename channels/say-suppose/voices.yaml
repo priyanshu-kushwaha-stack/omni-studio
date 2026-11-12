@@ -52,6 +52,31 @@ voices:
       Driver: >-
         A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
         his shoulder like a public announcement.
+      # What If You Saw Who Uses AI to Text You? (2026-11-13): Manila, your birthday. Labels are roles, kept apart from
+      # other films' "Friend", "Kid" and "Boss" because the cast is channel-wide.
+      Mother: >-
+        A warm, low female alto: a mother in her late fifties in her own kitchen. Unhurried and teasing, soft-spoken,
+        a little husky, a light Filipino English lilt, love under every plain word.
+      Best friend: >-
+        A bright, tired female mezzo: a woman of about thirty who works night shifts at a call centre. Quick and warm,
+        a laugh close under the words, hoarse at the edges from talking all night, casual modern English.
+      Aunt one: >-
+        A sweet, chirpy female voice, a high mezzo: an aunt in her sixties. Fond and a little vague, delighted with
+        her phone, a light Filipino English lilt.
+      Aunt two: >-
+        A grand, slow female alto: an aunt in her sixties. Gracious and dramatic, savouring every word, a light
+        Filipino English lilt.
+      Manager: >-
+        A smooth, clipped male baritone: an office boss in his forties in a tie. Confident and transactional, quietly
+        pleased with himself, every sentence a deal.
+      Coworker: >-
+        A soft, low female voice, an alto: a call-centre worker in her twenties at four in the morning. A hushed
+        whisper, protective and tired.
+      Cousin: >-
+        A bright, sunny female soprano: a cousin in her twenties working abroad, waving into a phone camera. Cheerful
+        and a little homesick, a light Filipino English lilt.
+      Bus kid: >-
+        A high, bright boy's voice, about eight years old. Curious and earnest, whispering loudly on a night bus.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.
