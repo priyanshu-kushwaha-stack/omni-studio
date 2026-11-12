@@ -247,7 +247,7 @@ const LoadingDock: React.FC<{ shot: Shot }> = ({ shot }) => {
     <AbsoluteFill style={{ background: "#000" }}>
       <DockShot frame={shot.frame} k={k} />
       <MeterSound at={k.tag} soft />
-      <MeterSound at={k.tag2} soft />
+      <MeterSound at={k.tag2} soft volume={0.45} />
     </AbsoluteFill>
   );
 };

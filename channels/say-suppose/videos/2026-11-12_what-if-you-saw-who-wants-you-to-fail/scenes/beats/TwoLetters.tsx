@@ -269,7 +269,7 @@ const TwoLetters: React.FC<{ shot: Shot }> = ({ shot }) => {
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <TwoShot frame={shot.frame} k={k} />
-      <MeterSound at={k.snap} />
+      <MeterSound at={k.snap} volume={0.5} />
     </AbsoluteFill>
   );
 };
