@@ -47,6 +47,7 @@ def write_meta(
     lint: dict[str, Any],
     owner_notes: bool = False,
     kind: str = "",
+    owner_note: Optional[list[str]] = None,
 ) -> Path:
     d = round_dir(video_dir, gate, n)
     d.mkdir(parents=True, exist_ok=True)
@@ -58,6 +59,7 @@ def write_meta(
                 "draft_sha256": draft_sha256,
                 "lint": lint,
                 "owner_notes": bool(owner_notes),
+                "owner_note": list(owner_note or []),
                 "kind": kind,
                 "linted_at": now_iso(),
             },

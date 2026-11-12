@@ -11,13 +11,13 @@ import sys
 from pathlib import Path
 from typing import Optional
 
+from studio.room import owner_notes
 from studio.room import report as R
 from studio.room import times as T
 from studio.room.call import CallContext, is_secret_path, run_seat
 from studio.room.config import (
     SEATS_DIR,
     RoomConfigError,
-    derived_cap,
     load_room,
     required_roles,
     seat_slug,
@@ -64,7 +64,8 @@ def _problems(cfg) -> int:
 
 def _ctx(args, cfg, rnd: int) -> CallContext:
     channel = args.channel or Path(args.config).resolve().parent.name
-    return CallContext(channel, _video(args).name, args.gate, rnd, cfg.daily_cap, derived_cap(cfg))
+    video = _video(args)
+    return CallContext(channel, video.name, args.gate, rnd, cfg.daily_cap, owner_notes.gate_cap(cfg, video, args.gate))
 
 
 def _meta(video: Path, gate: str, n: int) -> Optional[dict]:
@@ -125,6 +126,21 @@ def _read_inputs(items: Optional[list[str]], cfg, reserved: tuple[str, ...] = ("
     return inputs
 
 
+def _owner_note_problems(args, cfg, video: Path) -> bool:
+    """True (and printed) when --owner-note can't register: it needs --owner-notes and a new taste.md quote."""
+    if not args.owner_note:
+        return False
+    if not args.owner_notes:
+        print("--owner-note goes only with --owner-notes", file=sys.stderr)
+        return True
+    problems = owner_notes.problems(
+        owner_notes.normalise(args.owner_note), cfg.channel_dir, video, args.gate, args.round
+    )
+    if problems:
+        print("\n".join(problems), file=sys.stderr)
+    return bool(problems)
+
+
 def cmd_lint(args) -> int:
     cfg = load_room(Path(args.config))
     video = _video_in(args, cfg)
@@ -146,6 +162,8 @@ def cmd_lint(args) -> int:
     if _reviewed(args, video):
         print(f"round {args.round} has been reviewed; start round {args.round + 1}", file=sys.stderr)
         return 2
+    if _owner_note_problems(args, cfg, video):
+        return 2
     if not _confined(args.draft, cfg, "--draft") or (
         args.ledger_file and not _confined(args.ledger_file, cfg, "--ledger-file")
     ):
@@ -165,7 +183,16 @@ def cmd_lint(args) -> int:
         ledger=ledger_file,
         channel_dir=cfg.channel_dir,
     )
-    R.write_meta(video, args.gate, args.round, sha, rep.as_dict(), owner_notes=args.owner_notes, kind=kind)
+    R.write_meta(
+        video,
+        args.gate,
+        args.round,
+        sha,
+        rep.as_dict(),
+        owner_notes=args.owner_notes,
+        kind=kind,
+        owner_note=owner_notes.normalise(args.owner_note),
+    )
     print(json.dumps({"round": args.round, "draft_sha256": sha, **rep.as_dict()}, indent=2))
     return 0 if rep.ok else 1
 
@@ -343,7 +370,7 @@ def cmd_report(args) -> int:
         writer_family=family_of(cfg.writer),
         writer=cfg.writer,
         ledger=Ledger(),
-        cap=derived_cap(cfg),
+        cap=owner_notes.gate_cap(cfg, video, args.gate),
         required=required_roles(cfg),
     )
     js, md = R.write_report(video, rep)
@@ -398,6 +425,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     s.add_argument("--kind", choices=["script", "packaging"])
     s.add_argument("--ledger-file")
     s.add_argument("--owner-notes", action="store_true")
+    s.add_argument("--owner-note", action="append", help="the owner's words from taste.md; adds rounds to the gate cap")
     s.set_defaults(fn=cmd_lint)
     s = sub.add_parser("present")
     common(s)
