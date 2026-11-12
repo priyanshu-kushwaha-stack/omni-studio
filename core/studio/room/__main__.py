@@ -133,7 +133,9 @@ def _owner_note_problems(args, cfg, video: Path) -> bool:
     if not args.owner_notes:
         print("--owner-note goes only with --owner-notes", file=sys.stderr)
         return True
-    problems = owner_notes.problems(args.owner_note, cfg.channel_dir, video, args.gate, args.round)
+    problems = owner_notes.problems(
+        owner_notes.normalise(args.owner_note), cfg.channel_dir, video, args.gate, args.round
+    )
     if problems:
         print("\n".join(problems), file=sys.stderr)
     return bool(problems)
@@ -189,7 +191,7 @@ def cmd_lint(args) -> int:
         rep.as_dict(),
         owner_notes=args.owner_notes,
         kind=kind,
-        owner_note=owner_notes.normalise(args.owner_note or []),
+        owner_note=owner_notes.normalise(args.owner_note),
     )
     print(json.dumps({"round": args.round, "draft_sha256": sha, **rep.as_dict()}, indent=2))
     return 0 if rep.ok else 1

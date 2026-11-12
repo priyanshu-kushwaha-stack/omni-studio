@@ -26,6 +26,7 @@ LOCAL_TTS = ("qwen3", "chatterbox", "kokoro")
 REQUIRED = ("writer", "rounds", "seats")  # judge is optional: with none, the writer merges the notes
 LIMIT_KEYS = ("blockers", "suggestions", "keep")
 OWNER_ROUNDS = 3  # owner-notes rounds the derived cap keeps calls for, past `rounds` (required seats only)
+OWNER_NOTE_ROUNDS = 2  # more such rounds per owner note registered at the gate (owner_notes.py)
 
 
 class RoomConfigError(ValueError):
@@ -170,11 +171,14 @@ def required_roles(cfg: RoomConfig) -> tuple[str, ...]:
     return MANDATORY if cfg.viewer_required else ALWAYS_REQUIRED
 
 
-def derived_cap(cfg: RoomConfig) -> int:
+def derived_cap(cfg: RoomConfig, notes: int = 0) -> int:
+    """One script's calls at a gate; each of `notes` owner notes registered there adds OWNER_NOTE_ROUNDS rounds."""
     seats = len(cfg.seats)
     required = required_roles(cfg)
     needed = sum(1 for s in cfg.seats if s.role in required)
-    return cfg.rounds * (seats + 2) + cfg.rounds * seats + needed + 2 + OWNER_ROUNDS * needed
+    return (
+        cfg.rounds * (seats + 2) + cfg.rounds * seats + needed + 2 + (OWNER_ROUNDS + OWNER_NOTE_ROUNDS * notes) * needed
+    )
 
 
 def _voices_problems(channel_dir: Path) -> list[str]:
