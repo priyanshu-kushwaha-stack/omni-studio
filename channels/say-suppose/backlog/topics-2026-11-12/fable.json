@@ -1,0 +1,1077 @@
+{
+  "topics": [
+    {
+      "id": "f-everyones-price",
+      "title": "What If You Saw Everyone's Price?",
+      "premise": "Think of any act, look at any person, and a number appears over their head: the least money they would do it for, right now.",
+      "world": "Istanbul's Grand Bazaar, in lira, today: about four thousand shops where nothing has a fixed price and every sale is two people guessing each other's number, so the one person who can read the number breaks the oldest game in the building.",
+      "thumbnail": {
+        "image": "You, large and left, eyes wide, staring up at a stamped paper price tag floating over the head of an old carpet seller who is smiling at you and pouring your tea; one crimson pointer on the tag, which reads a shockingly small number",
+        "tag": "THAT cheap?"
+      },
+      "rule": "You picture a specific act ('sell me this rug', 'tell me his secret', 'walk away from the stall') and look at a person: a paper tag shows the lowest sum they would accept, honestly, at this second. It moves with hunger, mood and who is watching. A dash means no amount. Limits: one act at a time, people only, and you cannot see your own tag except in a mirror. The catch: you cannot unsee a tag, the tag tells you how much and never why, and every time you pay someone exactly their number, your own number drops.",
+      "hook": "Your uncle has run this carpet stall for forty years and you would trust him with your life. This morning a little paper tag appears over his head, and it shows what he would take to sell you out. It is less than the rug you are standing on.",
+      "beats": [
+        "The habit: you are the worst haggler in the bazaar, you always pay the first price; the tags appear mid-sale over a tourist and you close a rug at his exact ceiling. Wonder.",
+        "Dumb uses: the tea boy's price to skip the queue, the cat-feeder's price for her stool, a rival's rock-bottom on a lamp. Every tag is a gap: the tough dealer folds for almost nothing, the tea boy shows a dash. Funny.",
+        "You learn the tag moves: before lunch the whole lane is cheaper. You start timing your asks to the call for lunch. Greed, and the first unease.",
+        "First jump, the stall: in one week you triple the takings. Uncle is proud and a little afraid of you; he says 'a price is a conversation, not a number' (the plant).",
+        "Restart: you offer a porter money to carry a favour and his tag jumps UP when you offer it. Paying for a kindness makes it cost more. You have insulted him.",
+        "Second jump, the lane: a developer wants the whole row of stalls. You can read what each neighbour would take, to the lira. He will pay you to tell him. You look at your uncle's tag for 'sell out the boy': it is tiny.",
+        "The cost: you stop drinking his tea. You check everyone you love, act by act. Nobody passes, because everyone has a number for something. You eat alone.",
+        "Midpoint wrong belief: you assumed a low number means a bad person. The porter, the poorest man in the lane, shows dashes where the richest dealer shows small change.",
+        "Third jump, the city: with tags you can buy a council vote, a judge's afternoon, a newspaper's silence, each for less than a rug. The scale: a whole city has a total, and it is smaller than you would guess. Fear.",
+        "The mirror: you finally read your own tag for 'give the developer the list'. It was a dash on day one. It has fallen with every exact-price deal you made. Wordless peak as it ticks down in the mirror.",
+        "The why: you ask your uncle straight. His small number was to sell the stall out from under you so you would leave the bazaar and go to university; he thought it was the kind thing. The tag gave you how much, never why.",
+        "Back to you: you overpay the tea boy on purpose, badly, the way you used to. His tag flickers to a dash. You stop looking up."
+      ],
+      "feeling_map": [
+        "wonder",
+        "glee",
+        "greed",
+        "suspicion",
+        "loneliness",
+        "shame",
+        "warmth"
+      ],
+      "restarts": [
+        "About minute 3: offering money raises the price of a favour; the power can make things more expensive, not cheaper.",
+        "About minute 6: the developer arrives and the tags stop being a party trick; your uncle's own tag is the stake.",
+        "About minute 9: the mirror shows your own number has been falling the whole film.",
+        "About minute 12: the tag was right about the amount and wrong about the man."
+      ],
+      "content_mine": [
+        {
+          "fact": "The Grand Bazaar in Istanbul has more than 4,000 shops on 61 covered streets and was begun in the 1450s, one of the oldest and largest covered markets in the world.",
+          "source": "https://en.wikipedia.org/wiki/Grand_Bazaar,_Istanbul",
+          "beat": "The habit: sets the world where no price is fixed"
+        },
+        {
+          "fact": "Anchoring: in Tversky and Kahneman's wheel-of-fortune study, people who saw the wheel stop on 65 guessed far higher answers to an unrelated question than people who saw 10 (medians of about 45 against 25).",
+          "source": "https://en.wikipedia.org/wiki/Anchoring_effect",
+          "beat": "Dumb uses: why the seller always names the first number, and why you no longer need to listen to it"
+        },
+        {
+          "fact": "Endowment effect: in the classic mug experiments, owners asked roughly twice as much to give up a mug as buyers were willing to pay for the same mug.",
+          "source": "https://en.wikipedia.org/wiki/Endowment_effect",
+          "beat": "Dumb uses: the lamp seller's tag is double what the lamp is worth to anyone else"
+        },
+        {
+          "fact": "The 'hungry judge' study (Danziger and colleagues, 2011) reported favourable parole rulings falling from about 65 percent after a meal break to almost zero just before the next one; the size and cause of the effect are disputed.",
+          "source": "https://en.wikipedia.org/wiki/Hungry_judge_effect",
+          "beat": "The tag moves: the whole lane is cheaper before lunch (ledger row: contested)"
+        },
+        {
+          "fact": "Ultimatum game: when one stranger splits a sum and the other can refuse, offers below about 20 to 30 percent are often rejected, so people pay real money to punish an unfair deal.",
+          "source": "https://en.wikipedia.org/wiki/Ultimatum_game",
+          "beat": "First jump: paying a person exactly their floor is a deal they hate you for"
+        },
+        {
+          "fact": "In ultimatum games run in 15 small-scale societies (Henrich and colleagues), average offers ran from about a quarter of the pot to more than half; no society behaved like the purely selfish model.",
+          "source": "verify",
+          "beat": "Midpoint: the poorest man in the lane has the most dashes"
+        },
+        {
+          "fact": "A Haifa day-care study (Gneezy and Rustichini, 'A Fine Is a Price', 2000): when a small fine for late pick-up was introduced, late pick-ups went up, and stayed up after the fine was removed.",
+          "source": "verify",
+          "beat": "Restart 1: offering the porter money raises his tag"
+        },
+        {
+          "fact": "Swiss villagers asked to host a nuclear waste site: about half agreed as a civic duty; when cash compensation was offered, agreement fell to about a quarter (Frey and Oberholzer-Gee, 1997).",
+          "source": "verify",
+          "beat": "Restart 1: money can push a 'yes' to a 'no'"
+        },
+        {
+          "fact": "Milgram's obedience experiments: about 65 percent of participants went to the maximum 450-volt switch, for no extra money, because a man in a coat asked.",
+          "source": "https://en.wikipedia.org/wiki/Milgram_experiment",
+          "beat": "Third jump: many tags in the city read zero if the right person asks"
+        },
+        {
+          "fact": "Loss aversion: losses weigh roughly twice as heavily as equal gains in people's choices.",
+          "source": "https://en.wikipedia.org/wiki/Loss_aversion",
+          "beat": "Second jump: the neighbours' prices to leave their stalls are double what the stalls would sell for"
+        },
+        {
+          "fact": "Sacred values (Tetlock's 'taboo trade-offs'): people asked to put a price on things like loyalty or a child react with moral outrage, and merely considering the offer makes them feel tainted.",
+          "source": "verify",
+          "beat": "The cost: why you cannot sit at your uncle's table after reading his tag"
+        },
+        {
+          "fact": "Dictator game: handed money with no obligation to share and nobody to punish them, people still give away about 28 percent on average (Engel's 2011 meta-analysis of more than a hundred studies).",
+          "source": "verify",
+          "beat": "Back to you: the dashes are the normal case, not the exception"
+        },
+        {
+          "fact": "Dan Ariely's matrix-task experiments: given the chance to cheat for cash, most people cheat a little and almost nobody cheats all the way; some of this research has since been questioned.",
+          "source": "verify",
+          "beat": "The mirror: your own number falls a little at a time, never in one go (ledger row: contested)"
+        },
+        {
+          "fact": "The World Bank has estimated that about one trillion dollars is paid in bribes each year worldwide; the figure is rough and disputed.",
+          "source": "verify",
+          "beat": "Third jump: the city's total, as one drawn number against the city's yearly budget (ledger row: contested)"
+        }
+      ],
+      "twist": "The number was always true and it told you nothing: your uncle's price to sell you out was small because he thought losing the stall would set you free. And your own tag, a dash on day one, has been dropping with every deal where you paid a person exactly what they were worth.",
+      "ending": "You will never hear 'everyone has a price' the same way: it is true, and the price is the least interesting thing about them. The last image is the tea glass, paid for twice over.",
+      "closest_video": {
+        "title": "What If You Could Hear Everyone's Thoughts (Ifverse-style secret-feelings films)",
+        "url": "verify",
+        "difference": "Not mind reading: one number per act, with no reasons attached, set in a haggling market where the number is the whole job; the turn is that the number is accurate and still misleads, and that using it reprices you."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the council and newspaper run of the third jump to one image of the city total, merge the two lunch-hour gags, and keep stall, developer, mirror, uncle."
+      },
+      "views_case": "Sits in two proven clusters at once, secret feelings of the people around you and money (the brief's breakouts: seeing who has a crush on you, hearing everyone's thoughts, infinite money; links to be verified by the scorer). The thumbnail is you owning the power with a loved person reacting, and a number anyone on Earth reads.",
+      "under_question": "If you knew exactly what it would take to buy the people you love, could you still love them?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-text-yesterday",
+      "title": "What If You Could Text Yourself Yesterday?",
+      "premise": "Once a day you can send one 160-character text to your own phone, exactly 24 hours in the past.",
+      "world": "Hong Kong, in Hong Kong dollars, today: a city of 6-from-49 lottery tickets, stock tickers on every tram stop and typhoon signals, where a day's head start is worth more per character than anywhere else.",
+      "thumbnail": {
+        "image": "You, large and left, lit by a phone, mouth open; on the screen one message bubble whose sender is your own face; behind you a dark harbour skyline; one crimson pointer on the timestamp reading TOMORROW",
+        "tag": "From ME?"
+      },
+      "rule": "One text a day, 160 characters, words only, to your own number, arriving exactly 24 hours before you pressed send. The catch: the moment yesterday-you reads it, the day that sent it is overwritten. The sender never exists. So you never remember sending anything; you only ever receive, from a you who lived a day you will now never live, and you cannot ask a follow-up.",
+      "hook": "Your phone buzzes at 7:42. The sender is you. It says: 'Umbrella. Take the tram not the ferry. Do NOT answer the door at 3.' You have never sent this. Somebody who was you, tomorrow, just spent their whole day to give you three sentences.",
+      "beats": [
+        "The habit: you always say 'I'll fix it tomorrow'. The first text arrives; you obey half of it, get soaked on the half you ignored. The rule is spoken.",
+        "Dumb uses: texts about which dumpling stall has no queue, which exam question comes up, where your keys are. Each has a gap: 160 characters is too short and tomorrow-you writes like a stranger in a hurry.",
+        "The lottery text: six numbers arrive. You play them. So, it turns out, did two hundred other people, because tomorrow-you picked the pretty numbers. You win and split it into lunch money. Funny, and the first lesson about one ticket in fourteen million.",
+        "First jump, a week: you work out the catch. You have received nine texts and sent none. Nine days of you are gone. One text ends: 'good day btw. worth it?'",
+        "Restart: a text arrives that just says 'Don't.' Nothing else. Don't what? You spend the whole day not doing things, and never learn which one mattered.",
+        "Second jump, your person: your little sister's recital is on Friday. Texts start arriving about her: 'She forgets bar 12. Sit left.' You fix her days from the future; she starts to feel the world is oddly easy, and stops practising.",
+        "Midpoint wrong belief: you thought the texts were warnings. You notice the worst days send nothing. Only a you who had something to lose, and gave it up, ever writes.",
+        "The cost: a text arrives: 'Best day of my life. She played it perfectly, we laughed till two. Sending anyway: lock the back gate.' A you erased the best day you will ever have, over a gate.",
+        "Third jump, the city: a text gives you tomorrow's market close. You move it by acting on it, so the text is now wrong; every use rewrites the tomorrow it came from. One nudged day spreads until the forecast, the trams and the harbour are off-script. Awe: the butterfly drawn across the whole skyline.",
+        "The count: your inbox, top-down shot: sixty-one messages. Sixty-one of you. Wordless peak as the thread scrolls.",
+        "The choice: Friday. You have the day itself now: the recital, bar 12 fumbled, her looking for you on the left. It is not perfect and it is yours. Your thumb is over send, with a fix.",
+        "Back to you: you put the phone face down. 'I'll fix it tomorrow' becomes 'I'll keep this one.' At 7:42 the next morning the phone stays silent, and that is the first day that belongs to you."
+      ],
+      "feeling_map": [
+        "wonder",
+        "glee",
+        "unease",
+        "guilt",
+        "grief",
+        "awe",
+        "peace"
+      ],
+      "restarts": [
+        "About minute 3: the lottery win is shared with everyone who picks the same pretty numbers; knowing the future is not the same as owning it.",
+        "About minute 5: you realise you never send, only receive; each text cost a whole you.",
+        "About minute 8: the 'Best day of my life. Sending anyway' text.",
+        "About minute 11: acting on a text makes the text false; the city drifts off its own tomorrow."
+      ],
+      "content_mine": [
+        {
+          "fact": "The 160-character SMS limit was set in 1985 by Friedhelm Hillebrand, who typed out ordinary sentences and postcards and found almost all fit in 160 characters.",
+          "source": "https://en.wikipedia.org/wiki/SMS",
+          "beat": "The rule: why the message from tomorrow is so short"
+        },
+        {
+          "fact": "The first SMS, 'Merry Christmas', was sent on 3 December 1992 by engineer Neil Papworth.",
+          "source": "https://en.wikipedia.org/wiki/SMS",
+          "beat": "Dumb uses: the first text ever sent was also to someone who could not reply"
+        },
+        {
+          "fact": "In a 6-from-49 lottery such as Hong Kong's Mark Six, the odds of matching all six numbers with one ticket are 1 in 13,983,816.",
+          "source": "https://en.wikipedia.org/wiki/Lottery_mathematics",
+          "beat": "The lottery text: the number you beat"
+        },
+        {
+          "fact": "Mark Six is a 6-from-49 lottery run by the Hong Kong Jockey Club, and the top prize is shared between all winning tickets.",
+          "source": "https://en.wikipedia.org/wiki/Mark_Six",
+          "beat": "The lottery text: you win and split it"
+        },
+        {
+          "fact": "Lottery players cluster on birthdays and neat patterns, so popular combinations are shared among many winners when they hit.",
+          "source": "verify",
+          "beat": "The lottery text: why two hundred people hold your numbers"
+        },
+        {
+          "fact": "In 1850 Paul Julius Reuter used carrier pigeons to carry stock prices between Aachen and Brussels, beating the train by hours.",
+          "source": "https://en.wikipedia.org/wiki/Reuters",
+          "beat": "Third jump: people have always paid for a few hours' head start"
+        },
+        {
+          "fact": "Spread Networks spent about 300 million dollars on a straighter fibre line between Chicago and New Jersey to cut the round trip by about three milliseconds.",
+          "source": "https://en.wikipedia.org/wiki/Spread_Networks",
+          "beat": "Third jump: three thousandths of a second cost 300 million; you hold twenty-four hours"
+        },
+        {
+          "fact": "Edward Lorenz found in 1961 that rounding one input from 0.506127 to 0.506 gave a completely different simulated weather two months on: the butterfly effect.",
+          "source": "https://en.wikipedia.org/wiki/Butterfly_effect",
+          "beat": "Third jump: one acted-on text and the city drifts off its tomorrow"
+        },
+        {
+          "fact": "A modern five-day weather forecast is about as accurate as a one-day forecast was in 1980.",
+          "source": "verify",
+          "beat": "Dumb uses: the umbrella text, against what the real forecast can already do"
+        },
+        {
+          "fact": "The grandfather paradox and Novikov's self-consistency principle: physicists who take time travel seriously argue either that the past cannot be changed, or that changing it makes a different history.",
+          "source": "https://en.wikipedia.org/wiki/Novikov_self-consistency_principle",
+          "beat": "First jump: why the sender has to vanish"
+        },
+        {
+          "fact": "Hugh Everett's 1957 many-worlds interpretation treats every quantum outcome as a real branch; it is one interpretation among several, not settled physics.",
+          "source": "https://en.wikipedia.org/wiki/Many-worlds_interpretation",
+          "beat": "The count: sixty-one of you (ledger row: contested)"
+        },
+        {
+          "fact": "Stephen Hawking held a party for time travellers on 28 June 2009 and sent the invitations afterwards. Nobody came.",
+          "source": "verify",
+          "beat": "The hook's echo at the midpoint: you are the only guest who ever showed up"
+        },
+        {
+          "fact": "Hindsight bias (Fischhoff, 1975): once people know an outcome they believe they would have predicted it.",
+          "source": "https://en.wikipedia.org/wiki/Hindsight_bias",
+          "beat": "Restart 'Don't.': tomorrow-you thinks the warning is obvious; today-you cannot decode it"
+        },
+        {
+          "fact": "Gilovich and Medvec (1995): over a lifetime people report more regret for what they did not do than for what they did.",
+          "source": "verify",
+          "beat": "The choice: the fix you do not send"
+        },
+        {
+          "fact": "A single false tweet from a hacked news account in April 2013 briefly wiped well over a hundred billion dollars off US share values within minutes.",
+          "source": "verify",
+          "beat": "Third jump: how little information it takes to move a market"
+        }
+      ],
+      "twist": "The bad days never write. Every text you have ever received came from a you whose day was good enough to keep, who gave it up anyway. The power does not save you from bad days; it spends your good ones.",
+      "ending": "You will never read advice the same way: every 'if I were you' is a postcard from a day someone already spent. The last image is the phone face down at 7:42, silent.",
+      "closest_video": {
+        "title": "What If You Could Rewind Time 10 Seconds (rewind and redo films in the speed-and-time cluster)",
+        "url": "verify",
+        "difference": "Nothing is redone and nobody travels: only 160 characters move, one way, and the sender is deleted by sending. It is also not this channel's 60-seconds-ahead or remember-tomorrow slates: you never see the future, you only inherit a stranger's note about it."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut the market run to one image, drop the exam and keys gags, keep umbrella, lottery, 'Don't.', the best-day text, the count and Friday."
+      },
+      "views_case": "Speed and time is a proven cluster (the brief's rewind, pause and 10x reaction breakouts; links to be verified) and time travel is one of the owner's named favourites. The rule is small enough to feel possible, and 'would you send it?' is a comment argument.",
+      "under_question": "Would you erase today to make yesterday a little better?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-smart-as-the-room",
+      "title": "What If You Were as Smart as the Whole Room?",
+      "premise": "Your intelligence becomes the sum of everyone standing within ten metres of you, and drops back the moment they leave.",
+      "world": "Tokyo, in yen, today: the world's busiest station and trains packed past capacity, a few stops from some of the most solitary rooms on Earth, so one commute swings you from genius to yourself and back.",
+      "thumbnail": {
+        "image": "You, large and left, jammed in a packed train, eyes blazing with a calm, total understanding while every commuter around you sleeps or stares at a phone; one crimson pointer to a paper counter over your head reading IQ 14,000",
+        "tag": "Don't get off."
+      },
+      "rule": "Within ten metres, everyone's thinking power and knowledge adds to yours: two people, you are two minds; a train carriage, two hundred. You borrow, they lose nothing and feel nothing. Limits: it is their minds, not their memories or secrets. The catch: it ends at ten metres. What a crowd-you understands, alone-you cannot hold; you are left with notes in your own handwriting that you cannot follow. And a room full of people who all believe the same wrong thing makes you wrong two hundred times over.",
+      "hook": "The 8:02 to Shinjuku is so full you cannot lift your arm. And somewhere between two stations you suddenly understand everything: the tax form, the proof on the ad above the door, why your sister stopped calling. Then the doors open, the carriage empties, and it is gone.",
+      "beats": [
+        "The habit: you avoid people; you eat at the counter facing the wall. On the packed train the change hits; you solve the crossword over a stranger's shoulder, in a language you barely read.",
+        "Dumb uses: you do your taxes on the Yamanote line, win a quiz in a full bar and cannot find the toilet when it empties, write brilliant emails in the lift and gibberish at your desk. Gap each time.",
+        "You map the city by headcount: the scramble crossing for big decisions, the ballpark for the hard problems, the capsule hotel for sleep and stupidity. A split-flap counter over your head is the rule device.",
+        "First jump, a week: you ride loops all night on the busiest line and fill a notebook. In the morning, alone, you can read the first page and nothing after it. It is your handwriting.",
+        "Your person: your grandmother runs a tofu shop with two stools. With her you are exactly two people. She says the plant: 'Too many cooks, you can't taste the soup.' You are bored for the first time in her company, and she sees it.",
+        "Restart: a rally fills a square with people who all believe one thing. You walk in for the boost and walk out certain, fluent, and wrong. Adding minds adds their blind spots too.",
+        "Second jump: you learn which rooms make you smart. Not the biggest: the mixed ones, where people disagree and take turns. A lecture hall of experts makes you a slightly better expert; a night bus of strangers makes you wise.",
+        "The cost: you cannot be alone, and you cannot be with one person. You skip the tofu shop for the stadium. Your grandmother stops setting out the second stool.",
+        "Third jump, the stadium: fifty-five thousand people. For ninety seconds you hold more mind than any single human ever has. Wordless peak: the crowd drains to grey, you stay in colour, the counter spins past what it can show.",
+        "What stadium-you does with it: one thing. It takes your pen and writes a line on your hand, small enough for alone-you to read.",
+        "Outside, alone, you read your hand: 'Go taste the soup.' The largest mind you will ever have used its ninety seconds to send you back to a room of two.",
+        "Back to you: the tofu shop, two stools. You are the least intelligent you have been all month and you understand her perfectly. The counter over your head reads 2."
+      ],
+      "feeling_map": [
+        "wonder",
+        "glee",
+        "hunger",
+        "frustration",
+        "loneliness",
+        "awe",
+        "warmth"
+      ],
+      "restarts": [
+        "About minute 3: the notebook you cannot read; the power leaves you with nothing you can keep.",
+        "About minute 6: the rally; a crowd that agrees makes you confidently wrong.",
+        "About minute 9: it is the mix of the room, not its size, that makes you smart.",
+        "About minute 12: the stadium mind spends itself on one small sentence."
+      ],
+      "content_mine": [
+        {
+          "fact": "Shinjuku Station in Tokyo is the world's busiest railway station, used by about 3.5 million people a day.",
+          "source": "https://en.wikipedia.org/wiki/Shinjuku_Station",
+          "beat": "The hook and the map: where you are smartest"
+        },
+        {
+          "fact": "Tokyo's rush-hour trains have run at around 180 to 200 percent of their rated capacity, and stations have employed 'pushers' to pack passengers in.",
+          "source": "https://en.wikipedia.org/wiki/Pusher_(railway_station_attendant)",
+          "beat": "The hook: two hundred minds within ten metres"
+        },
+        {
+          "fact": "In 1906 Francis Galton recorded 787 fairgoers guessing the weight of an ox: the middle guess was 1,207 pounds; the ox weighed 1,198. The crowd was within one percent.",
+          "source": "https://en.wikipedia.org/wiki/The_Wisdom_of_Crowds",
+          "beat": "Dumb uses: the full bar beats the quiz"
+        },
+        {
+          "fact": "IQ is scaled so the average is 100 and about two-thirds of people score between 85 and 115.",
+          "source": "https://en.wikipedia.org/wiki/Intelligence_quotient",
+          "beat": "The rule device: what the counter over your head is adding up"
+        },
+        {
+          "fact": "The human brain has about 86 billion neurons and runs on roughly 20 watts, about a fifth of the body's resting energy.",
+          "source": "https://en.wikipedia.org/wiki/Human_brain",
+          "beat": "Third jump: a stadium is about a megawatt of thinking, drawn as one bulb against a floodlight"
+        },
+        {
+          "fact": "Woolley and colleagues (Science, 2010) found groups have a measurable collective intelligence that is only weakly linked to the average or the smartest member's IQ; it tracked social sensitivity and how evenly people took turns speaking.",
+          "source": "https://en.wikipedia.org/wiki/Collective_intelligence",
+          "beat": "Second jump: the night bus beats the lecture hall"
+        },
+        {
+          "fact": "Asch's conformity experiments: about three-quarters of participants went along with a group's obviously wrong answer at least once.",
+          "source": "https://en.wikipedia.org/wiki/Asch_conformity_experiments",
+          "beat": "Restart, the rally: certain and wrong"
+        },
+        {
+          "fact": "Groupthink (Irving Janis, 1972): close, like-minded groups make worse decisions than their members would alone because nobody tests the shared view.",
+          "source": "https://en.wikipedia.org/wiki/Groupthink",
+          "beat": "Restart, the rally: blind spots add too"
+        },
+        {
+          "fact": "The Ringelmann effect: in rope-pulling tests each person pulls less hard as the group grows.",
+          "source": "https://en.wikipedia.org/wiki/Ringelmann_effect",
+          "beat": "Dumb uses: the bigger the room, the less each mind is actually trying"
+        },
+        {
+          "fact": "Kasparov versus the World (1999): more than 50,000 people from over 75 countries voted on each move against the world champion; Kasparov won after 62 moves and called it the greatest game in chess history.",
+          "source": "https://en.wikipedia.org/wiki/Kasparov_versus_the_World",
+          "beat": "Third jump: fifty thousand minds once nearly matched the best single one"
+        },
+        {
+          "fact": "The Polymath Project (2009): mathematician Tim Gowers posted an unsolved problem on his blog and a crowd of commenters produced a proof in about seven weeks.",
+          "source": "https://en.wikipedia.org/wiki/Polymath_Project",
+          "beat": "First jump: the notebook; real crowd proofs exist, written by nobody in particular"
+        },
+        {
+          "fact": "Tokyo Dome holds about 55,000 people.",
+          "source": "https://en.wikipedia.org/wiki/Tokyo_Dome",
+          "beat": "Third jump: the size of the biggest mind"
+        },
+        {
+          "fact": "Greater Tokyo is the world's most populous metropolitan area, about 37 million people.",
+          "source": "https://en.wikipedia.org/wiki/Greater_Tokyo_Area",
+          "beat": "The map: the city as a headcount"
+        },
+        {
+          "fact": "A 2023 Japanese government survey estimated about 1.46 million people living as hikikomori, withdrawn from society.",
+          "source": "verify",
+          "beat": "The cost: the city of crowds is also the city of rooms for one"
+        },
+        {
+          "fact": "Dunbar's number: humans seem able to keep about 150 stable relationships.",
+          "source": "https://en.wikipedia.org/wiki/Dunbar%27s_number",
+          "beat": "Second jump: past a certain size a crowd stops being people to you"
+        }
+      ],
+      "twist": "The largest mind you ever hold uses its ninety seconds on one thing: a note simple enough for you alone to read, sending you back to a room of two. The sum of fifty-five thousand people agrees with your grandmother.",
+      "ending": "You will never stand in a packed train the same way: nobody in it is clever alone, and every clever thing you own (words, numbers, the timetable) was thought by a room. The last image is the counter reading 2.",
+      "closest_video": {
+        "title": "What If You Had Infinite IQ (the intelligence cluster's school films)",
+        "url": "verify",
+        "difference": "The intelligence is never yours: it is borrowed by the metre, vanishes at the door and makes you worse in a room that agrees. Not this channel's 'lend your intelligence' or '1% smarter' slates: nothing accumulates, and the stake is who you can still bear to sit with."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Keep train, notebook, grandmother, rally, stadium, hand. Drop the lift and bar gags and fold the 'which rooms' beat into the rally."
+      },
+      "views_case": "Intelligence is the strongest breakout cluster in the brief (infinite IQ at school, 10x brain; links to be verified), and this is a fresh rule inside it with a counter-over-head image a stranger reads in a second. Part 2 is built in: what a room of the wrong people makes you.",
+      "under_question": "How much of what you think is actually yours?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-real-life-inventory",
+      "title": "What If You Had a Video Game Inventory?",
+      "premise": "You get nine invisible slots: anything you can lift vanishes into one, weighs nothing, and time stops for it until you take it out.",
+      "world": "Rotterdam, in euros, today: Europe's largest port, where the whole business is moving boxes and almost none are opened, so one person with nine weightless, timeless pockets is the strangest thing on the quay.",
+      "thumbnail": {
+        "image": "You, large and left, on a dark container quay, hands held out and shocked as a steaming bowl of soup hangs half-vanished into a glowing paper grid of nine squares beside you; eight squares full, one crimson pointer on the ninth, marked with a question mark",
+        "tag": "What's in 9?"
+      },
+      "rule": "Nine slots. Touch anything you can lift alone and it is in a slot: no weight, no bulk, no time passing inside. Hot stays hot, ice stays ice, a ringing phone comes out mid-ring. Only you can take it out, anywhere. Limits: one thing per slot, nothing you cannot lift, nothing fixed down. The catch: while it is in there it is nowhere. No signal, no clock, no one else can reach it, and if you are not there, neither is anything you carry.",
+      "hook": "You are carrying four bags, a pot plant and a hot coffee up five flights. You think: I wish I could just put this somewhere. The coffee vanishes. A little grid of nine squares hangs in the air. Two days later you take the coffee out, and it burns your tongue.",
+      "beats": [
+        "The habit: you never finish anything, you 'save it for later': half a sandwich, a voice note you will answer tomorrow. The grid appears on the stairs; the rule is spoken.",
+        "Dumb uses: ice cream in July, a bicycle on the tram, the last hot stroopwafel saved for weeks, your flat moved in four trips with empty hands. Gap: nine fills up fast and you cannot remember which square holds the fish.",
+        "The lift limit: you can pocket a gold bar the size of a brick, if you can lift it. It weighs over twelve kilos. You go to the gym for the first time in your life.",
+        "First jump, the quay: you work nights at the port. Whole ships exist to do, slowly and in steel, what your pocket does free. A man with a clipboard notices you never carry anything and always have everything.",
+        "Restart: an offer. Nine slots, no weight, no scan can see them, and almost no box here is ever opened. One trip would pay a year's rent. You look at the grid. You close it.",
+        "Second jump, the clock: time stops inside. You carry a cool-box across the city for a hospital courier who is stuck in traffic, and what is in it arrives as fresh as the minute it was packed. Now they call you every night. Things that had four hours have as long as you like.",
+        "Midpoint wrong belief: you thought the power was about space. It was about time. You start saving moments: your grandfather's soup still steaming, a birthday cake with the candles lit, a phone mid-ring with your sister on the line.",
+        "The cost: the slots fill with things kept perfect and never used. The soup is never eaten. The call is never answered; she has been 'mid-ring' for a month and thinks you ignored her. The hospital needs a slot and you have none free.",
+        "Third jump: you are the single point of failure. A storm closes the port, you are stuck on the wrong bank, and nine things the city is waiting for are nowhere at all. The scale picture: the harbour's thousands of boxes on one side, your nine squares on the other, and which one the night depends on.",
+        "The choice: to carry the cool-box you must empty a slot now. Not into a cupboard: into your hands, into time. You take out the soup, on the quay, in the rain, and eat it. Wordless peak.",
+        "Slot nine: it has been full since before the stairs. You have never opened it. Inside is a paper boat with a lit birthday candle from the year you turned seven, still burning, the first thing you ever saved for later.",
+        "Back to you: you blow it out. Then you answer the phone, mid-ring. The grid has nine empty squares and you leave them empty."
+      ],
+      "feeling_map": [
+        "delight",
+        "greed",
+        "temptation",
+        "pride",
+        "dread",
+        "grief",
+        "release"
+      ],
+      "restarts": [
+        "About minute 3: the gold bar; the slot is free but the lift is not.",
+        "About minute 5: the smuggling offer; the power's obvious use, refused.",
+        "About minute 7: time stops inside; the power turns from space to time.",
+        "About minute 10: the storm; nine things the city needs are nowhere because you are.",
+        "About minute 13: slot nine was never empty."
+      ],
+      "content_mine": [
+        {
+          "fact": "A Minecraft player's inventory has 36 slots, nine of them the hotbar, and most items stack to 64.",
+          "source": "https://minecraft.wiki/w/Inventory",
+          "beat": "The rule: why nine, and the picture everyone already knows"
+        },
+        {
+          "fact": "Newton's law of cooling: a hot object loses heat at a rate proportional to how much hotter it is than its surroundings, which is why coffee is lukewarm in half an hour.",
+          "source": "https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling",
+          "beat": "The hook: the coffee that burns you two days later"
+        },
+        {
+          "fact": "Gold's density is 19.3 grams per cubic centimetre: a one-litre carton of it would weigh 19.3 kilograms.",
+          "source": "https://en.wikipedia.org/wiki/Gold",
+          "beat": "The lift limit: small is not the same as light"
+        },
+        {
+          "fact": "A standard 'Good Delivery' gold bar weighs about 400 troy ounces, roughly 12.4 kilograms.",
+          "source": "https://en.wikipedia.org/wiki/Gold_bar",
+          "beat": "The lift limit: the brick you have to train for"
+        },
+        {
+          "fact": "The heaviest deadlift on record is 501 kilograms, by Hafthor Bjornsson in 2020.",
+          "source": "https://en.wikipedia.org/wiki/Deadlift",
+          "beat": "The lift limit: the ceiling on what any human could ever pocket"
+        },
+        {
+          "fact": "The first container ship voyage was Malcom McLean's Ideal X on 26 April 1956, carrying 58 containers from Newark to Houston.",
+          "source": "https://en.wikipedia.org/wiki/Malcom_McLean",
+          "beat": "First jump: the box that did, in steel, what your pocket does"
+        },
+        {
+          "fact": "Containers cut the cost of loading a ship from about 5.86 dollars a ton by hand to about 16 cents a ton.",
+          "source": "https://en.wikipedia.org/wiki/Malcom_McLean",
+          "beat": "First jump: how much the world paid for a better way to carry things"
+        },
+        {
+          "fact": "The Port of Rotterdam is the largest seaport in Europe.",
+          "source": "https://en.wikipedia.org/wiki/Port_of_Rotterdam",
+          "beat": "First jump: the world, and why you are odd in it"
+        },
+        {
+          "fact": "The largest container ships carry around 24,000 twenty-foot containers.",
+          "source": "https://en.wikipedia.org/wiki/Container_ship",
+          "beat": "Third jump: the harbour's boxes against your nine squares"
+        },
+        {
+          "fact": "Around 80 percent of world trade by volume travels by sea (UNCTAD).",
+          "source": "verify",
+          "beat": "First jump: almost everything you own once sat in a box on a quay like this"
+        },
+        {
+          "fact": "Only a small share of shipping containers, commonly put at a few percent, is ever physically opened and inspected.",
+          "source": "verify",
+          "beat": "Restart, the offer: why the clipboard man wants you"
+        },
+        {
+          "fact": "When the Ever Given blocked the Suez Canal for six days in 2021, an estimated 9.6 billion dollars of trade was held up each day.",
+          "source": "https://en.wikipedia.org/wiki/2021_Suez_Canal_obstruction",
+          "beat": "Third jump: one stuck carrier and everything waits"
+        },
+        {
+          "fact": "A donated heart is usually transplanted within about four to six hours of removal; kidneys can last about a day or more on ice.",
+          "source": "verify",
+          "beat": "Second jump: what a pocket with no clock is worth (explained, never advised)"
+        },
+        {
+          "fact": "The Svalbard Global Seed Vault stores more than a million seed samples at minus 18 degrees Celsius so they stay viable for centuries.",
+          "source": "https://en.wikipedia.org/wiki/Svalbard_Global_Seed_Vault",
+          "beat": "Midpoint: people already build places to stop time for things; none of them hold soup"
+        },
+        {
+          "fact": "The World Health Organization has estimated that a large share of vaccines, up to about half, is wasted worldwide, with breaks in the cold chain a major cause.",
+          "source": "verify",
+          "beat": "Second jump: why the hospital calls you every night"
+        }
+      ],
+      "twist": "Slot nine was full before the film began: a candle from your seventh birthday, still lit, the first thing you ever saved for later. The power did not arrive on the stairs. You have been doing this your whole life.",
+      "ending": "You will never say 'I'll save it for later' the same way: a thing kept perfect is a thing that has not happened yet. The last image is nine empty squares and a phone being answered.",
+      "closest_video": {
+        "title": "What If Real Life Had Video Game Stats / Level Ups (the game-mechanics cluster)",
+        "url": "verify",
+        "difference": "No stats, levels or respawns: one mechanic nobody in the cluster has taken seriously, with real physics (lift, heat, time) and a port that exists to do the same job. The turn is that an inventory is a way of not living things."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Trim the gym and gold beat to one gag, drop the flat-moving run, shorten the storm to the single scale picture; keep coffee, offer, cool-box, saved moments, soup, slot nine."
+      },
+      "views_case": "Game mechanics in real life is a proven cluster (the brief's stats, level-up and respawn breakouts; links to be verified) and 'inventory' is a word every player reads at once. The nine-square grid is a thumbnail device no neighbour is using, and 'what would your nine be?' fills comments. Part 2: slots can be shared.",
+      "under_question": "What are you keeping perfect instead of using?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-refund-anything",
+      "title": "What If You Could Refund Anything You Bought?",
+      "premise": "Name anything you ever paid for and you get every cent back, but it, and everything that only happened because you had it, never happened.",
+      "world": "The returns counter of a giant American mall, in dollars, today: the country that sends back more of what it buys than any other, where 'no questions asked' is a promise on the wall.",
+      "thumbnail": {
+        "image": "You, large and left, at a returns counter under a dark ceiling, holding a long curling receipt and a wedding ring over the scanner, face caught between greed and dread; a faded figure of a person stands behind you, half erased; one crimson pointer on the ring",
+        "tag": "Refund her?"
+      },
+      "rule": "Say the purchase, touch the counter: you get back exactly what you paid, in today's money. The thing is gone, and so is everything that only happened because you had it. You alone remember the old version. Limits: only things you paid for yourself, all or nothing, and a refunded thing is FINAL SALE: you can never buy it again. The catch: you are shown the price, never the list of what it led to, until after.",
+      "hook": "You return a blender you used once. Forty dollars drops into your hand. Then you notice the smoothie stain on your shirt is gone, the neighbour who borrowed it does not know your name, and the receipt prints two more words: FINAL SALE.",
+      "beats": [
+        "The habit: you keep every receipt and regret every purchase. The blender. The rule is spoken at the counter by a bored clerk with a four-word bubble: 'All sales unmade, sir.'",
+        "Dumb uses: the gym membership (your knees feel worse), a terrible haircut (your passport photo changes), a parking fine paid years ago (the money comes back; so does the dent you never got fixed). Funny, each with a gap.",
+        "The big-ticket run: the car that lost a fifth of its value the day you drove it off. Full price back. You are rich in a week, and you walk everywhere.",
+        "First jump: you refund a concert ticket from six years ago. Sixty dollars. Outside, your best friend walks past you without a flicker. You met in that queue.",
+        "Restart: FINAL SALE. You run back to buy the ticket again. The machine will not sell it. Nothing refunded can be bought twice.",
+        "Second jump: you get careful and it gets worse. You cannot tell which purchases are load-bearing. A two-dollar bus fare turns out to hold up your whole job; a four-thousand-dollar sofa held up nothing at all. Price and cost have nothing to do with each other.",
+        "Your person: your wife keeps the ring in a dish by the sink. It cost three months of your pay and would resell for a fraction. The counter would give you all of it back. You stand in the queue holding it, twice.",
+        "The cost near 60%: you refund your degree instead, tens of thousands, to pay off everything. You still know what you learned; nobody else does. Your wife is still your wife, but she fell for a different person, and looks at you slightly wrong.",
+        "Third jump, the mall: you work out that everyone's purchases are tangled. Your refund of a second-hand guitar un-sells it to the kid who bought it from you, who now never starts the band. One counter, and a whole city's 'because of' comes loose. The picture: the mall from above as a web of receipts, threads snapping.",
+        "The mirror: the clerk shows you the queue. Everyone in it is returning the same kind of thing: not the junk, the expensive good decisions that hurt. Wordless peak over their faces.",
+        "The twist receipt: in your mother's things, a hospital bill from the week you were born, the largest thing she ever paid. Stamped across it in the counter's ink: REFUND DECLINED BY CUSTOMER. She was offered. More than once.",
+        "Back to you: you leave the ring in the dish, buy a cheap blender you will use once, and throw the receipt away without looking. You end as the person who does not keep receipts."
+      ],
+      "feeling_map": [
+        "glee",
+        "greed",
+        "shock",
+        "dread",
+        "grief",
+        "awe",
+        "gratitude"
+      ],
+      "restarts": [
+        "About minute 3: the friend who no longer knows you; refunds take people.",
+        "About minute 5: FINAL SALE; nothing can be bought back.",
+        "About minute 8: the degree; you keep what you know and lose who you were to everyone else.",
+        "About minute 11: other people's lives hang off your receipts.",
+        "About minute 13: your mother's declined refund."
+      ],
+      "content_mine": [
+        {
+          "fact": "US shoppers returned roughly 743 billion dollars of goods in 2023, about 14.5 percent of everything sold (National Retail Federation).",
+          "source": "verify",
+          "beat": "The habit: why this counter, in this country"
+        },
+        {
+          "fact": "L.L.Bean ended its century-old lifetime return guarantee in 2018, saying a growing number of customers were abusing it, and set a one-year limit.",
+          "source": "https://en.wikipedia.org/wiki/L.L.Bean",
+          "beat": "Restart, FINAL SALE: even the most generous counter has a line"
+        },
+        {
+          "fact": "Mall of America has more than 500 stores and around 40 million visits a year.",
+          "source": "https://en.wikipedia.org/wiki/Mall_of_America",
+          "beat": "Third jump: the mall from above as a web of receipts"
+        },
+        {
+          "fact": "Sunk cost: in Arkes and Blumer's 1985 study, people who paid full price for theatre season tickets went to more plays than people given a discount, though the money was gone either way.",
+          "source": "https://en.wikipedia.org/wiki/Sunk_cost",
+          "beat": "Dumb uses: the gym membership you kept going to because you had paid"
+        },
+        {
+          "fact": "Endowment effect: owners in the classic mug experiments wanted about twice as much to give a mug up as others would pay for it.",
+          "source": "https://en.wikipedia.org/wiki/Endowment_effect",
+          "beat": "Your person: why the ring in the dish is worth more to you than any counter says"
+        },
+        {
+          "fact": "A new car typically loses around a fifth of its value in its first year.",
+          "source": "verify",
+          "beat": "The big-ticket run: full price back on the car"
+        },
+        {
+          "fact": "The slogan 'A Diamond Is Forever' was written for De Beers in 1947 by copywriter Frances Gerety.",
+          "source": "https://en.wikipedia.org/wiki/De_Beers",
+          "beat": "Your person: the ring cost three months of pay because an advert said so"
+        },
+        {
+          "fact": "Edward Jay Epstein's 1982 Atlantic article 'Have You Ever Tried to Sell a Diamond?' documented that retail diamonds resell for a fraction of what was paid.",
+          "source": "https://www.theatlantic.com/magazine/archive/1982/02/have-you-ever-tried-to-sell-a-diamond/304575/",
+          "beat": "Your person: the only place that gives full price back is this counter"
+        },
+        {
+          "fact": "The IKEA effect (Norton, Mochon and Ariely, 2012): people valued furniture they had assembled themselves about 63 percent higher than identical pre-built pieces.",
+          "source": "https://en.wikipedia.org/wiki/IKEA_effect",
+          "beat": "Second jump: the sofa held up nothing; the wobbly shelf you built held up a friendship"
+        },
+        {
+          "fact": "Van Boven and Gilovich (2003): people report more lasting happiness from money spent on experiences than on possessions.",
+          "source": "verify",
+          "beat": "First jump: the sixty-dollar ticket was the most valuable thing you owned"
+        },
+        {
+          "fact": "Brickman's 1978 study found lottery winners were not much happier than a comparison group and took less pleasure in everyday things.",
+          "source": "https://en.wikipedia.org/wiki/Hedonic_treadmill",
+          "beat": "The big-ticket run: rich in a week and no lighter"
+        },
+        {
+          "fact": "Americans owe about 1.7 trillion dollars in student loans.",
+          "source": "verify",
+          "beat": "The cost: the degree is the biggest receipt in the drawer"
+        },
+        {
+          "fact": "Choice-supportive bias: after choosing, people remember the option they picked as better than it was and the rejected one as worse.",
+          "source": "https://en.wikipedia.org/wiki/Choice-supportive_bias",
+          "beat": "The mirror: why the queue is full of good decisions that hurt"
+        },
+        {
+          "fact": "Because of inflation, a hundred US dollars from the year 2000 buys what takes roughly 180 dollars in the mid-2020s.",
+          "source": "verify",
+          "beat": "Dumb uses: the rule pays in today's money, so old purchases come back bigger"
+        },
+        {
+          "fact": "Opportunity cost: the true cost of anything is the best alternative you gave up for it, which never appears on a receipt.",
+          "source": "https://en.wikipedia.org/wiki/Opportunity_cost",
+          "beat": "Second jump: price and cost have nothing to do with each other"
+        }
+      ],
+      "twist": "You are not the first at this counter. Your mother was offered the refund on the most expensive week of her life, the one you were born in, and the receipt says she declined, more than once.",
+      "ending": "You will never look at a receipt the same way: it lists what you paid and leaves out everything it bought. The last image is a receipt in a bin, unread.",
+      "closest_video": {
+        "title": "What If You Had Infinite Money (the money cluster's glitch films)",
+        "url": "verify",
+        "difference": "The money is finite and exact: only what you already spent. The engine is not getting rich but un-happening your own life one purchase at a time. Not this channel's 'one undo a day' or 'every purchase paid you back double' slates: nothing is undone but purchases, and each takes its consequences with it."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Keep blender, ticket and friend, FINAL SALE, ring, degree, mother's receipt. Drop the haircut and parking gags and reduce the mall web to one shot."
+      },
+      "views_case": "Money is a proven cluster and one of the owner's named favourites (infinite money glitch; links to be verified). 'Refund' is a word understood everywhere, the ring-over-the-scanner thumbnail carries a person to lose, and 'what would you refund?' is a comment section by itself.",
+      "under_question": "Which thing you regret buying is actually holding your life up?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-feel-what-you-cause",
+      "title": "What If You Felt What You Make Others Feel?",
+      "premise": "Every feeling you cause in another person hits you too, at full strength, the instant they feel it.",
+      "world": "The football grounds of Germany's Ruhr, today: you are a referee, the one job where a single whistle changes the mood of eighty thousand people at once, climbing from Sunday pitches to the biggest standing terrace in Europe.",
+      "thumbnail": {
+        "image": "You, large and left, in a referee's kit, whistle at your lips, eyes squeezed in dread; behind you a dark wall of thousands of tiny paper faces mid-roar; one crimson pointer to the whistle",
+        "tag": "Blow it?"
+      },
+      "rule": "Whatever you make someone feel, you feel: the same emotion, the same strength, the same second, for as long as they feel it. One person, one dose; a crowd, every dose at once. Limits: only feelings you caused, not their feelings in general; it works through any distance and any screen. The catch: it has no off switch, it arrives with no name on it so you cannot tell whose it is, and it keeps arriving for as long as they keep feeling it. Years, sometimes.",
+      "hook": "You tell a small lie to get off the phone with your mother. A second later a sadness lands in your chest that is not yours. It is exactly the size of hers.",
+      "beats": [
+        "The habit: you are blunt, you say 'just being honest'. The phone call; the rule is spoken. You referee children's football on Sundays.",
+        "Dumb uses: you hold a door and get a small warm hit; you tell a joke and get the laugh from the inside; you cut a queue and get a stranger's flash of hate like a slap. You start farming it: compliments to everyone, a warm drip all day. Funny.",
+        "The whistle: under-nines, a penalty. One side's joy and the other's heartbreak land together, eleven of each. You nearly fall over. The gap: you expected pride.",
+        "First jump, a month: you become the nicest person anyone knows. You cannot give bad news, mark a foul, or tell your friend his business plan is terrible. He loses his savings; his despair lands weeks later, and you caused it by being kind.",
+        "Restart: a clip of you blowing a call goes online. Two million people have a feeling about you by lunchtime. It arrives all day, nameless, through walls. Scale by screen: the stadium is small next to a phone.",
+        "Second jump: you learn the exchange rate. Bad lands harder and lasts longer than good; one insult takes about five kindnesses to cover. And some feelings do not fade: someone you hurt at school still feels it on Tuesdays, and now so do you.",
+        "Midpoint wrong belief: you thought feeling it would make you good. It made you a coward. A person who feels every reaction can no longer do the right thing when the right thing upsets anyone.",
+        "Your person: your father taught you the whistle and the plant, 'the referee is the only one out there who isn't trying to be liked.' He is watching you duck calls from the stand, and what arrives from him is not anger. It is embarrassment for you.",
+        "The cost near 60%: you are promoted because nobody complains about you. The derby: eighty-one thousand people, twenty-four thousand of them standing on one terrace.",
+        "Third jump: last minute, a clear handball by the home side. The correct call puts the fury of a stadium through your chest. The choice at the whistle. Wordless peak: the wall of faces drains to grey, your hand rises, the sound drops out.",
+        "You blow it. It is the worst thing you have ever felt. And under it, small and separate, one feeling you can put a name to for the first time: your father's.",
+        "Back to you: late at night, alone, a warmth arrives from nowhere. Someone, somewhere, is remembering something you did years ago. You will never know what. You call your mother back, and tell her the truth."
+      ],
+      "feeling_map": [
+        "surprise",
+        "delight",
+        "overwhelm",
+        "cowardice",
+        "dread",
+        "anguish",
+        "pride",
+        "peace"
+      ],
+      "restarts": [
+        "About minute 3: the nice version of you ruins a friend by never telling him the truth.",
+        "About minute 5: the clip; a phone delivers more feeling than a stadium.",
+        "About minute 8: the feelings do not stop when the moment does; old ones keep arriving.",
+        "About minute 11: the derby handball; the right call is the one that hurts most.",
+        "About minute 13: the nameless warmth from a stranger years later."
+      ],
+      "content_mine": [
+        {
+          "fact": "Dortmund's Westfalenstadion holds about 81,000 people; its south terrace, the 'Yellow Wall', holds about 24,500 standing fans, the largest terrace in European football.",
+          "source": "https://en.wikipedia.org/wiki/Westfalenstadion",
+          "beat": "The cost and third jump: the size of the dose"
+        },
+        {
+          "fact": "In a 2002 experiment (Nevill and colleagues), referees judging filmed tackles with crowd noise playing gave about 15 percent fewer fouls against the home team than referees watching in silence.",
+          "source": "verify",
+          "beat": "Midpoint: real referees already bend to what the crowd feels"
+        },
+        {
+          "fact": "During the empty-stadium matches of 2020, home advantage shrank across European leagues and referees gave away teams fewer cards than before.",
+          "source": "verify",
+          "beat": "The cost: take the crowd away and the whistle changes"
+        },
+        {
+          "fact": "A top-level football referee makes a couple of hundred decisions and covers around ten kilometres in a match.",
+          "source": "verify",
+          "beat": "The whistle: how many doses one game holds"
+        },
+        {
+          "fact": "Mirror-touch synaesthesia: about 1.6 percent of people physically feel a touch they see on someone else (Banissy and colleagues, 2009).",
+          "source": "https://en.wikipedia.org/wiki/Mirror-touch_synesthesia",
+          "beat": "The rule: a small real version of you already exists"
+        },
+        {
+          "fact": "Mirror neurons were found in macaques in Parma in the early 1990s: cells that fire both when the monkey acts and when it watches the act. How much they explain human empathy is disputed.",
+          "source": "https://en.wikipedia.org/wiki/Mirror_neuron",
+          "beat": "Dumb uses: the laugh from the inside (ledger row: contested)"
+        },
+        {
+          "fact": "In the Cyberball experiments (Eisenberger and colleagues, 2003), being left out of a simple ball game activated brain regions that also respond to physical pain.",
+          "source": "verify",
+          "beat": "Dumb uses: the queue-cutter's slap; hurt feelings are not a figure of speech"
+        },
+        {
+          "fact": "Negativity bias: across many kinds of events bad outweighs good (Baumeister, 'Bad Is Stronger Than Good', 2001); John Gottman's work on couples put the balance at about five good exchanges to one bad.",
+          "source": "https://en.wikipedia.org/wiki/Negativity_bias",
+          "beat": "Second jump: the exchange rate, drawn as five small weights against one"
+        },
+        {
+          "fact": "A 2014 study on 689,003 Facebook users found that showing people fewer positive posts made their own posts slightly less positive: moods spread through a screen with no contact at all.",
+          "source": "https://en.wikipedia.org/wiki/Emotional_contagion",
+          "beat": "Restart, the clip: feeling travels through a phone"
+        },
+        {
+          "fact": "The online disinhibition effect (John Suler, 2004): people say harsher things online because they cannot see the other person's reaction.",
+          "source": "https://en.wikipedia.org/wiki/Online_disinhibition_effect",
+          "beat": "Restart, the clip: two million people who would never say it to your face"
+        },
+        {
+          "fact": "In a 2015 study of how long emotions last (Verduyn and Lavrijsen), sadness outlasted every other emotion, running for days where shame, surprise or irritation passed within hours.",
+          "source": "verify",
+          "beat": "Second jump: the Tuesday feeling that never stopped arriving"
+        },
+        {
+          "fact": "Compassion fatigue: nurses and carers who absorb other people's distress every day show measurable exhaustion and numbing.",
+          "source": "https://en.wikipedia.org/wiki/Compassion_fatigue",
+          "beat": "First jump: why the nicest version of you is also the most tired"
+        },
+        {
+          "fact": "Schadenfreude, pleasure at another's misfortune, shows up in brain scans as reward activity when an envied person fails (Takahashi and colleagues, 2009).",
+          "source": "https://en.wikipedia.org/wiki/Schadenfreude",
+          "beat": "The whistle: the away end's joy at the home side's penalty is real, and you get that too"
+        },
+        {
+          "fact": "Some version of the Golden Rule, treat others as you would be treated, appears in almost every major religious and ethical tradition.",
+          "source": "https://en.wikipedia.org/wiki/Golden_Rule",
+          "beat": "Midpoint: the rule everyone was taught, enforced, turns out not to make you good"
+        },
+        {
+          "fact": "About one percent of the general population meets the criteria for psychopathy, marked by blunted response to others' distress.",
+          "source": "https://en.wikipedia.org/wiki/Psychopathy",
+          "beat": "Back to you: the opposite of you exists, and neither end can referee"
+        }
+      ],
+      "twist": "Feeling everything you cause does not make you kind. It makes you a coward who can never upset anyone, and the first truly good thing you do with the power is the one that hurts you most. Then the late turn: feelings you caused years ago are still arriving, and some of them are warm.",
+      "ending": "You will never send a message or blow a whistle the same way: everything you do lands somewhere, and keeps landing long after you have forgotten it. The last image is the phone, and your mother picking up.",
+      "closest_video": {
+        "title": "What If You Could Feel Everyone's Emotions / Hear Everyone's Thoughts (secret-feelings cluster)",
+        "url": "verify",
+        "difference": "Not everyone's feelings: only the ones you caused, which turns a spying power into a responsibility. Set on a referee, the one person whose job is to cause feeling by the thousand, so the scale is built into the world, not added."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Keep the phone call, the under-nines penalty, the friend's savings, the clip, the derby, the late warmth. Drop the compliment-farming run and merge the exchange-rate beat into the clip."
+      },
+      "views_case": "Secret feelings of the people around you is a proven cluster (the brief's crush, envy and thoughts breakouts; links to be verified), and football is a picture read on every continent. The 'blow it?' thumbnail is a choice in one image, and people will argue the handball call in the comments.",
+      "under_question": "Would you still do the right thing if you had to feel exactly how much it hurt them?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-fast-when-unwatched",
+      "title": "What If You Were 10x Faster When No One Looked?",
+      "premise": "Whenever no eye and no camera is on you, you move and think ten times faster; one glance and you are ordinary again.",
+      "world": "London, in pounds, today: one of the most camera-covered cities on Earth, where a night-shift hotel porter has to learn exactly where nobody is looking, and how often that is.",
+      "thumbnail": {
+        "image": "You, large and left, frozen mid-stride and wide-eyed in a dark hotel corridor, a motion-blurred trail behind you with a dozen finished jobs in it; ahead, one security camera with a crimson pointer on its little red light",
+        "tag": "It blinked."
+      },
+      "rule": "Unseen by any eye or lens, you run at ten times speed: body and mind. The instant anything sees you, you drop to normal mid-step. Blinks count as not looking. Limits: you must be truly unobserved; a mirror someone can see counts. The catch: your momentum does not drop with you, your body burns ten times the fuel, and nobody can ever watch you do it, so there is no proof and no credit, ever.",
+      "hook": "The lift doors close. For eleven seconds nobody on Earth can see you. In those eleven seconds you tie both shoes, read the whole fire notice, answer four emails and get bored. The doors open and a woman says 'morning'.",
+      "beats": [
+        "The habit: you are always behind, always 'two minutes, sorry'. The lift. The rule is spoken; the rule device is a split-flap counter that reads x10 and slams to x1 when an eye opens.",
+        "Dumb uses: you clean forty rooms in the gap between a camera's sweeps, eat lunch in the stairwell in six seconds, and walk into a door frame at thirty miles an hour when a guest looks up. Momentum is the gap.",
+        "Blinks: a person blinks every few seconds. You learn to move in them. A conversation becomes a strobe: you refill the teapot between her eyelids. Funny, and a picture only this premise has.",
+        "The fuel: you are starving by ten every morning. Ten times the speed, a hundred times the punch in every step, and all of it paid for in sandwiches. The air itself pushes back.",
+        "First jump, a month: employee of the month, a mystery. The manager installs more cameras to learn how you do it, and every camera makes you slower. Being checked on is the one thing that stops you.",
+        "Restart: you go looking for unwatched London and expect to find almost none. You find the opposite: people do not look. You change coats, swap places with a colleague mid-chat, stand beside a friend for a minute; half of them never notice.",
+        "Midpoint wrong belief: you thought everyone was watching you. You count: the number of people who noticed your big mistake last week is two. You are fast nearly all the time, because nearly nobody is ever looking.",
+        "Second jump: with ten-times thinking in every unwatched minute, you learn three languages on night buses and do a year's work by spring. You cannot show a single person how. Your sister thinks you are lying about all of it.",
+        "Your person: your grandmother, who watches you. Actually watches: your hands, your face, whether you have eaten. In her flat you are x1 from the door to the goodbye. It is the slowest hour of your week and you start cutting it short.",
+        "The cost: she falls quiet on the phone. 'You're always rushing off.' With her, you have exactly as much time as anyone has.",
+        "Third jump, a lifetime: unwatched and at ten times speed you would live several extra lifetimes inside one, entirely alone, with nobody who saw any of it. The picture: one long corridor of years, lights off, counter at x10. Wordless peak.",
+        "The choice and back to you: her birthday, a full room, every eye on you carrying the cake at x1, the candles nearly out. You are 'two minutes, sorry' late again, on purpose, and nobody minds. The counter reads x1 and you leave it there."
+      ],
+      "feeling_map": [
+        "glee",
+        "mischief",
+        "hunger",
+        "surprise",
+        "pride",
+        "loneliness",
+        "tenderness"
+      ],
+      "restarts": [
+        "About minute 3: momentum and fuel; the power has a body.",
+        "About minute 5: more cameras; being measured makes you worse.",
+        "About minute 7: the count; almost nobody is ever looking.",
+        "About minute 10: the one person who really looks is the only place you are slow.",
+        "About minute 13: the corridor of unwatched lifetimes."
+      ],
+      "content_mine": [
+        {
+          "fact": "People blink roughly 15 to 20 times a minute and each blink shuts the eyes for a tenth of a second or more, so the eyes are closed for a noticeable slice of every waking hour.",
+          "source": "https://en.wikipedia.org/wiki/Blinking",
+          "beat": "Blinks: the strobe conversation"
+        },
+        {
+          "fact": "Saccadic masking: the brain suppresses vision while the eyes jump between points, which happens several times a second, so we are briefly blind many thousands of times a day without noticing.",
+          "source": "https://en.wikipedia.org/wiki/Saccadic_masking",
+          "beat": "Blinks: even an open eye is not always looking"
+        },
+        {
+          "fact": "In Simons and Levin's 1998 'door study', a stranger asking for directions was swapped for a different person behind a passing door; about half the people giving directions did not notice.",
+          "source": "https://en.wikipedia.org/wiki/Change_blindness",
+          "beat": "Restart: swapping places with a colleague mid-chat"
+        },
+        {
+          "fact": "In the 'invisible gorilla' experiment (Simons and Chabris, 1999), about half of viewers counting basketball passes failed to see a person in a gorilla suit walk through the scene.",
+          "source": "https://en.wikipedia.org/wiki/Inattentional_blindness",
+          "beat": "Restart: unwatched London is everywhere"
+        },
+        {
+          "fact": "The spotlight effect (Gilovich, 2000): students made to wear an embarrassing T-shirt guessed about half the room noticed it; about a quarter did.",
+          "source": "https://en.wikipedia.org/wiki/Spotlight_effect",
+          "beat": "Midpoint: two people saw your mistake, not everyone"
+        },
+        {
+          "fact": "Usain Bolt's top speed in his 2009 world-record 100 metres was about 44.7 kilometres an hour.",
+          "source": "https://en.wikipedia.org/wiki/Usain_Bolt",
+          "beat": "Dumb uses: your ten-times walk, about 50 km/h, is faster than the fastest man's sprint"
+        },
+        {
+          "fact": "Kinetic energy rises with the square of speed: ten times as fast means a hundred times the energy in every collision.",
+          "source": "https://en.wikipedia.org/wiki/Kinetic_energy",
+          "beat": "Dumb uses: the door frame"
+        },
+        {
+          "fact": "Air drag also rises with the square of speed, so at ten times the speed the air pushes back a hundred times harder.",
+          "source": "https://en.wikipedia.org/wiki/Drag_equation",
+          "beat": "The fuel: the corridor feels like wading"
+        },
+        {
+          "fact": "A resting adult runs on about 100 watts, roughly 2,000 kilocalories a day; hard sprinting can demand more than ten times that.",
+          "source": "verify",
+          "beat": "The fuel: starving by ten in the morning"
+        },
+        {
+          "fact": "The Hawthorne effect: workers in the 1920s factory studies changed how they worked simply because they were being observed; how large the original effect was is debated.",
+          "source": "https://en.wikipedia.org/wiki/Hawthorne_effect",
+          "beat": "First jump: the manager's cameras (ledger row: contested)"
+        },
+        {
+          "fact": "In a 2006 study (Bateson and colleagues), people put nearly three times as much money in an office honesty box when a picture of eyes was on the wall above it than when the picture showed flowers.",
+          "source": "verify",
+          "beat": "First jump: being watched changes everyone, not only you"
+        },
+        {
+          "fact": "London is among the most camera-dense cities in the world, with estimates in the high hundreds of thousands of CCTV cameras; the counts are rough and disputed.",
+          "source": "verify",
+          "beat": "The world: why you have to learn the gaps (ledger row: contested)"
+        },
+        {
+          "fact": "The quantum Zeno effect: an unstable quantum system that is measured often enough can be held in place; watching it stops it changing.",
+          "source": "https://en.wikipedia.org/wiki/Quantum_Zeno_effect",
+          "beat": "The rule: physics already has one thing that slows down when observed"
+        },
+        {
+          "fact": "Social facilitation: Norman Triplett noticed in 1898 that cyclists rode faster with others present; later work found an audience helps easy tasks and hurts hard ones.",
+          "source": "https://en.wikipedia.org/wiki/Social_facilitation",
+          "beat": "Second jump: for everyone else an audience is fuel; for you it is the brake"
+        },
+        {
+          "fact": "A typical visual reaction time is about a quarter of a second.",
+          "source": "verify",
+          "beat": "Blinks: at ten times speed, a quarter-second glance gives you two and a half seconds of warning"
+        }
+      ],
+      "twist": "You expected to be slow almost always in the most-watched city on Earth. You are fast almost always: the cameras record and nobody looks, and the people around you see far less of you than you feared. The only place you are reliably slow is in front of the one person who actually pays attention.",
+      "ending": "You will never feel 'everyone is staring at me' the same way: almost no one is, and the few who are, are the ones worth being slow for. The last image is the counter at x1 and a cake arriving late.",
+      "closest_video": {
+        "title": "Reaction Time 10x (Ifverse)",
+        "url": "verify",
+        "difference": "The speed is conditional on being unseen, so the story is about attention, not reflexes: no sport, no fights, no showing off, and the social stake is that nobody can ever witness it. The belief it breaks is the spotlight effect, not a fact about nerves."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Keep lift, door frame, blinks, cameras, the count, grandmother, corridor, cake. Drop the languages run and fold fuel into the door-frame gag."
+      },
+      "views_case": "Speed and time is a proven cluster and 10x is its proven number (the brief's 10x reaction time and Ifverse's 'Reaction Time 10x'; links to be verified). The condition gives it a fresh rule and a mirror on how people are, and 'how often is anyone really looking at you?' is the line people send a friend.",
+      "under_question": "How much of your life is anyone actually watching?",
+      "proposers": [
+        "fable"
+      ]
+    },
+    {
+      "id": "f-never-wait",
+      "title": "What If You Never Had to Wait for Anything?",
+      "premise": "Every queue, red light, loading bar and waiting list lets you through first, instantly, and your wait is handed to someone else.",
+      "world": "London, in pounds, across one summer: the city that treats the queue as a moral code and whose tennis tournament prints a rulebook for its own overnight line, so the one person who never stands in line is committing the local unforgivable sin.",
+      "thumbnail": {
+        "image": "You, large and left, strolling past the front of an endless paper queue under a dark sky, half smug, half noticing; at the very back of the line, tiny, one figure in a teal scarf like yours holding a flask and two cups; one crimson pointer to that figure",
+        "tag": "Who's waiting?"
+      },
+      "rule": "Any wait made by people or systems ends for you at once: queues part, lights turn, calls connect, lists put you top, bars fill. Limits: only waits others impose. Bread still takes an hour, a bone still takes six weeks, a train still takes its journey. The catch: waiting is conserved. Every minute you skip is added to somebody else's wait: first the strangers behind you, and whatever is left over lands on the one person who is waiting for you.",
+      "hook": "You are forty-first in the queue for coffee. You sigh. Forty people step aside without knowing why, and you are at the till. Behind you, a woman checks her watch: her wait just got one sigh longer.",
+      "beats": [
+        "The habit: you tap your foot at microwaves; you stand at the kerb pressing the button twice. The coffee queue; the rule is spoken.",
+        "Dumb uses: every light green across the city, no hold music ever, the airport in nine minutes door to gate, new phone on launch morning. The gap: you arrive everywhere early and there is nothing there yet. You have skipped the waits and not the time.",
+        "You notice the catch: a bus you skipped onto leaves the last man on the pavement. Your green wave is someone's four reds. A ripple of brake lights runs backward down the road from where you jumped in.",
+        "First jump, a month: you get used to it and lose the taste for things. The holiday you booked this morning starts this afternoon and is flat. The meal with no wait is just food. Wanting, it turns out, was doing half the work.",
+        "Your person: your dad, who queues overnight for tennis tickets every summer with a flask and two cups and has since you were six. The plant: 'The queue's the best bit.' You always thought he was joking.",
+        "Restart: fairness. People in a line you skip do not just lose minutes; they are angrier than the minutes are worth. A stranger follows you out of a shop to tell you so. A skipped queue costs more than its length.",
+        "Second jump: the lists. You are top of the list for a flat, a school place for your niece, a specialist's clinic. Each list is a queue you cannot see, with faces you cannot see, and each one just moved back by one.",
+        "Midpoint wrong belief: you assumed the wait went to 'the system'. There is no system. A queue is only people, each standing still on purpose because the others are.",
+        "The cost near 60%: the leftover minutes. Your dad's bus is late, his calls ring out, his hospital letter takes a season. He has been absorbing your skipped hours all summer. He never complains; he has brought a book.",
+        "Third jump, the city: one person who never waits is a rounding error. You do the sum for a city where everyone has your power: nobody stops at a junction, every line collapses into a shove. The picture: London's lights all green at once. The queue was the only thing holding it up. Wordless peak on the gridlock.",
+        "The choice: tournament morning. You can walk straight to the gate, or go to the back of a line that started yesterday, where a man with a flask has kept a place and a second cup.",
+        "Back to you: you take the cup. You stand still for nine hours. It is the best day of the summer, and you never reach the front before the tea runs out. You no longer press the button twice."
+      ],
+      "feeling_map": [
+        "glee",
+        "smugness",
+        "flatness",
+        "guilt",
+        "shame",
+        "awe",
+        "contentment"
+      ],
+      "restarts": [
+        "About minute 3: the wait is conserved; someone behind you gets it.",
+        "About minute 5: with no waiting, nothing is looked forward to; pleasure goes flat.",
+        "About minute 8: invisible queues; lists with faces you never see.",
+        "About minute 10: the leftover hours have been landing on your dad.",
+        "About minute 12: the whole city with your power: all green, nothing moves."
+      ],
+      "content_mine": [
+        {
+          "fact": "Queueing theory began in 1909 when the Danish engineer Agner Erlang worked out how many telephone lines Copenhagen needed so callers would not wait too long.",
+          "source": "https://en.wikipedia.org/wiki/Queueing_theory",
+          "beat": "The catch: waiting has had its own mathematics for over a century, and in it the wait never vanishes, it moves"
+        },
+        {
+          "fact": "With three checkout lines of equal length, the odds that one of the other two moves faster than yours are two in three.",
+          "source": "verify",
+          "beat": "The habit: why your line always seems the slow one"
+        },
+        {
+          "fact": "David Maister's 'The Psychology of Waiting Lines' (1985): occupied time feels shorter than empty time, unexplained waits feel longer than explained ones, and unfair waits feel longest of all.",
+          "source": "verify",
+          "beat": "Restart, fairness: the stranger's anger is bigger than his lost minutes"
+        },
+        {
+          "fact": "An often-told case from Houston airport: complaints about baggage waits stopped when the airport moved the arrival gates farther from the carousel, so passengers spent the wait walking instead of standing.",
+          "source": "verify",
+          "beat": "Dumb uses: arriving early to nothing; the wait was never the problem, the standing was"
+        },
+        {
+          "fact": "Phantom traffic jams: in a 2008 experiment (Sugiyama and colleagues), 22 cars driving round a 230-metre circle formed a jam with no cause at all, a wave that travelled backward through the traffic.",
+          "source": "https://en.wikipedia.org/wiki/Traffic_wave",
+          "beat": "The catch: the ripple of brake lights running back from where you jumped in"
+        },
+        {
+          "fact": "The Wimbledon tennis championships run an official overnight queue for day tickets, with numbered queue cards and a printed code of conduct.",
+          "source": "https://en.wikipedia.org/wiki/The_Championships,_Wimbledon",
+          "beat": "Your person: your dad's flask and two cups, and the plant line"
+        },
+        {
+          "fact": "Disney introduced FastPass in 1999, letting guests hold a place in a virtual line for a ride while doing something else.",
+          "source": "https://en.wikipedia.org/wiki/FastPass",
+          "beat": "Dumb uses: the world already sells small versions of your power"
+        },
+        {
+          "fact": "In a 1987 study by George Loewenstein, people said they would pay more for a kiss from a film star in three days than for the same kiss right now: anticipation has value of its own.",
+          "source": "verify",
+          "beat": "First jump: the holiday that starts this afternoon is flat"
+        },
+        {
+          "fact": "Dopamine neurons respond most strongly to the cue that predicts a reward and to surprises, not to the expected reward itself (Wolfram Schultz's reward prediction error work).",
+          "source": "https://en.wikipedia.org/wiki/Reward_system",
+          "beat": "First jump: wanting was doing half the work"
+        },
+        {
+          "fact": "The Stanford marshmallow test (Mischel, around 1970) linked children's ability to wait for a second treat to later success; a larger 2018 replication found the link much weaker once family background was counted.",
+          "source": "https://en.wikipedia.org/wiki/Stanford_marshmallow_experiment",
+          "beat": "Midpoint: waiting was sold to you as a virtue; the evidence is shakier than the legend (ledger row: contested)"
+        },
+        {
+          "fact": "Hyperbolic discounting: people sharply prefer a reward now over a larger one soon, far more than they prefer 'in a year' over 'in a year and a day'.",
+          "source": "https://en.wikipedia.org/wiki/Hyperbolic_discounting",
+          "beat": "The habit: the foot tapping at the microwave"
+        },
+        {
+          "fact": "Queue researchers such as Richard Larson find that being overtaken, a 'skip', angers people far more than the same delay from a slow line; fairness matters more than minutes.",
+          "source": "verify",
+          "beat": "Restart, fairness: a skipped queue costs more than its length"
+        },
+        {
+          "fact": "Amazon engineers reported that every extra 100 milliseconds of page delay cost about one percent of sales.",
+          "source": "verify",
+          "beat": "Dumb uses: loading bars; companies already spend fortunes to shave the waits you now skip free"
+        },
+        {
+          "fact": "A single serpentine line feeding several counters does not shorten the average wait but makes waits far more equal than separate lines, which is why banks and airports use it.",
+          "source": "verify",
+          "beat": "Midpoint: a queue is a machine for fairness built out of nothing but people standing still"
+        },
+        {
+          "fact": "A four-way junction with working signals carries far more traffic than the same junction when the lights fail and every driver edges forward at once.",
+          "source": "verify",
+          "beat": "Third jump: all of London green at once, and nothing moves"
+        }
+      ],
+      "twist": "The wait never disappeared: all summer the leftover hours have been landing on the one person who waits for you. And the larger turn: a queue has no owner and no enforcer. It is strangers agreeing to be fair with nobody making them, and a city where everyone could skip would stop.",
+      "ending": "You will never see a queue the same way: it is the most honest thing people do together, and the waiting is where the wanting lives. The last image is two cups on a pavement at dawn.",
+      "closest_video": {
+        "title": "What If You Could Skip or Fast-Forward Time (speed-and-time cluster)",
+        "url": "verify",
+        "difference": "Time itself never moves: only the waits other people impose, and each one is handed to someone else, so it is a fairness story with a conserved quantity. It is not this channel's backlog fast-forward: nothing boring is skipped, and nobody misses their own life."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Keep coffee queue, brake-light ripple, flat holiday, dad's flask, the lists, the all-green city, the nine-hour queue. Drop the airport and phone-launch gags and merge the fairness restart into the ripple."
+      },
+      "views_case": "Speed and time is a proven cluster (the brief's rewind, pause and 10x breakouts; links to be verified) and 'never wait again' is a daydream everyone has had at a red light. The catch gives the comment argument: would you skip if you knew who got your wait? Part 2: you can give your place away.",
+      "under_question": "If you never had to wait, who would be waiting instead?",
+      "proposers": [
+        "fable"
+      ]
+    }
+  ]
+}
