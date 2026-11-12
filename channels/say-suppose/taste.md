@@ -8,6 +8,15 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-12
+
+- **"mind boggling is one type not just this."** On the docs that carried the 2026-11-11 notes, which had made a
+  mind-boggling end a must-pass check: "Video should be hooked and should make people to think because that is what
+  this type of niche is and therefore donr restrict but understand my intent." The aim of every film is a hook that
+  holds and an idea that makes people think. Mind-boggling scale is one way to get there, beside others (a mirror on
+  how people are, a dilemma with two right answers, a rule whose catch rewires how you see something ordinary). No
+  check requires a mind-boggling end; the writer chooses what fits the idea. (say-suppose docs, PR after #46)
+
 ## 2026-11-11
 
 - **"Not necessarily it needs to revolve around India."** Same film, after round 2 (still a lane, a chai stall,

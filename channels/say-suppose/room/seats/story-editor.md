@@ -46,7 +46,7 @@ situation be shown in the first 7 s, and does the premise give a second hook by 
 | #13 Every fact moves the story | A real-world fact pushes no beat and no feeling (name it: cut it or tie it) |
 | #4 A habit, then the change | No line or picture shows how you normally run your day, or the change misses that habit |
 | #11 Never say the feeling | A line names what you should feel, or says what the shot already shows |
-| The viewer's week | An example or gag is not from the viewer's week (chai, bus or metro, exams, office, family), or the English title or thumbnail has `₹` or local slang |
+| The world follows the idea (`taste.md`, 2026-11-11) | The setting, currency or cast is a default the idea did not choose (picked for a viewer, not for the story), a gag only one country gets, or the English title or thumbnail has slang, a symbol or a reference only one country reads |
 | #15 Cold open inside the power | The first line is a teaser from later or a mood fragment; the power is not working in the first scene; no premise question by 0:30 |
 | #16 A flagged limit that pays off | The rule runs past three lines; no limit is flagged; the climax is solved by something not planted |
 | #17 Pull every minute | Any minute with no open loop; more than about 80 s with no stake jump; no numbered problems after the "but" |

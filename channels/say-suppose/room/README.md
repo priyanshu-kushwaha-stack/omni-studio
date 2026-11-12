@@ -5,7 +5,7 @@ video 2 (`adopted: 2026-11-09`); the pause-time video and the UBI folder were re
 
 | Seat (role) | Model | Brief | Fails a draft on |
 |---|---|---|---|
-| story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1-#3, #5-#10, #12-#19, and #4 and #11 (the viewer seat's, since 2026-11-11), the two late-rule fails, the 8-minute reason |
+| story editor (story) | GPT-5.6 Sol | `seats/story-editor.md` | story #1-#3, #5-#10, #12-#19, and #4 and #11 (the viewer seat's, since 2026-11-11), the two late-rule fails, the 8-minute reason, the world follows the idea (`taste.md`, 2026-11-11) |
 | claims check (fact) | Gemini 3.8 Flash | `seats/fact-checker.md` | every unsupported or overstated line; claims only, no story notes (fact blockers are never dropped) |
 
 No judge: the writer merges the reviewer's and the claims check's notes, and a note it will not take goes to the owner as one line.

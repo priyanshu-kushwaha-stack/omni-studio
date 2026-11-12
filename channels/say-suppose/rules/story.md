@@ -5,9 +5,12 @@ videos (`docs/superpowers/specs/2026-11-10-say-suppose-topics-skill-design.md`, 
 needs a quoted line and a fix. Sources and the full shelf: `docs/research/2026-11-09-say-suppose-story-craft.md`,
 `docs/research/2026-11-09-say-suppose-owner-references.md`.
 
-**The viewer.** One named person: a young Indian, comfortable in English, on a phone in the evening, whose week is
-chai, the bus or metro, exams, the office and family. Every example and gag comes from that week; the packaging stays
-readable worldwide (no `₹` or local slang in the English title and thumbnail).
+**Who "you" are (owner, 2026-11-11, `taste.md`; replaces the one named viewer).** "You" is anyone; no persona's week
+supplies the gags. The premise and its imagination set the world, the scale and the gags: the setting, the currency
+and the cast go wherever the idea's best real content and pictures are, and India is one option, never the default.
+Every film hooks and makes people think (owner, 2026-11-12); a mind-boggling end is one way, never a requirement, and
+the idea chooses its own. The packaging stays readable worldwide (no slang, symbol or reference only one country reads
+in the English title and thumbnail).
 
 | # | Check | Test | From |
 |---|---|---|---|
@@ -59,8 +62,8 @@ them. After two films the owner decides whether they become must-pass.
   it, and leaves exactly one loophole open for the comments.
 - **The dilemma at 75-80%.** A choice with two right answers, put as one narrator line; the figure acts at once. Test:
   a cold reader can argue either side in one line.
-- **The residue in Riya's week.** The last line names one real thing the viewer will see differently tomorrow, inside
-  the last image: the chai stall, the metro door, a missed call.
+- **The residue.** The last line names one real thing anyone will see differently tomorrow, inside the last image,
+  taken from the film's own world: a coin, a clock, a missed call.
 
 **Length.** No cap. A script that runs past about 8 minutes needs the story seat to name, in its verdict, the felt reason
 a viewer stays past 8:00; without one it fails.
