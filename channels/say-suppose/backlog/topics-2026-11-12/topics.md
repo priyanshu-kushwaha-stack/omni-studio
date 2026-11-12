@@ -1,5 +1,9 @@
 # Say Suppose topics, 2026-11-12
 
+## Picked (owner, 2026-11-12)
+
+- **What If You Saw Who Wants You to Fail?** (g-saw-who-wants-you-to-fail, 78/100, by gemini): goes to G1 (owner: "Picked, start G1").
+
 Ranked by total (content first). The owner picks three.
 
 ## 1. What If You Were 10x Faster When No One Looked? — 80/100
