@@ -8,6 +8,20 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-13
+
+- **"This looks much better now. I could understand almost all of it."** G2 review of the v3 cut (saw who wants you
+  to fail): the skit opening, plain roles and characters' own voices worked. More notes to come after a second watch.
+  (saw who wants you to fail, G2)
+- **"should we add better sound in the video just to break the continuous background music flowing throughout the
+  video which might be monotonous"** Same review. One theme looping under a whole long film is monotonous: the score
+  changes with each section (its own cue, made locally), every set has its own ambience bed, and the peak drops to a
+  floor. The levels under the voice stay as they are (`rules/sound.md` #4). (saw who wants you to fail, G2,
+  `cues.yaml`)
+- **Voices: "I am not sure if we keep these or should we try on elevenlabs".** Same review; open. The free local voices
+  stay while the story iterates; the paid A/B by ear comes at picture lock (`review-on-a-first-cut`, G3).
+  (saw who wants you to fail, G2)
+
 ## 2026-11-12
 
 - **"lets no lock anything that hard becoz that is limiting the Agent to come up with great ideas."** Asked whether

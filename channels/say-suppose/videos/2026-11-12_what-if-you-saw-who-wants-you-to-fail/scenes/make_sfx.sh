@@ -14,4 +14,8 @@ ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.6:c=white:a=0.5" -af "highpass=f=2
 ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.08:c=white:a=0.9" -af "highpass=f=1200,lowpass=f=3500,afade=t=in:d=0.012,afade=t=out:st=0.02:d=0.05,volume=0.25,aresample=48000" click.wav
 # A very low room tone under the whole film (style.md, sound: an ambience bed), about -60 dBFS, 10 s, looped by Film.tsx.
 ffmpeg -v error -y -f lavfi -i "anoisesrc=d=10:c=pink:a=0.004,lowpass=f=3000,aresample=48000" -af "afade=t=in:d=0.05,afade=t=out:st=9.95:d=0.05" roomtone.wav
+# The dock peak's one held note (rules/sound.md #3): a soft low A with its octave, a slow swell and a long release.
+ffmpeg -v error -y -f lavfi -i "aevalsrc='0.35*(sin(2*PI*110*t)+0.4*sin(2*PI*220*t)+0.15*sin(2*PI*330*t))*min(1\,t/2.5)*exp(-max(0\,t-8)*0.9)':d=12:s=48000" -af "lowpass=f=900,afade=t=out:st=10.5:d=1.5" peak-note.wav
+# The loading dock's score: the dark theme thinned (rules/sound.md #2: the signal, thinner, at the cost).
+ffmpeg -v error -y -i "$out/../music/theme-dark.mp3" -af "highpass=f=180,lowpass=f=1400,volume=1.4" -ar 48000 "$out/../music/theme-dark-thin.wav"
 echo "$out"
