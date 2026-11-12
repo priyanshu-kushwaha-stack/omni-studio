@@ -5,9 +5,11 @@ export interface VoiceSpec {
   variant?: string;
   voiceType: string;
   voiceId: string;
-  /** Local voices only: the reference clip, relative to story.json's folder, and its transcript. */
+  /** Local cloned voices only: the reference clip, relative to story.json's folder, and its transcript. */
   ref?: string;
   refText?: string;
+  /** Local designed voices only (a character): the written description the voice is made from. */
+  describe?: string;
 }
 export interface ScriptLine {
   text: string;
@@ -20,12 +22,16 @@ export interface ScriptLine {
   claims?: string[];
   /** Speed for this take when it differs from the story's (a countdown kept at real time). */
   tempo?: number;
+  /** Who speaks the line: "narrator" (the story's voice) or a character's name from script.md ("Lotte"). */
+  speaker?: string;
 }
 export interface CueAnchor { line: number; word: string }
 
 export interface VideoScript {
   id: string;
   voice?: VoiceSpec;
+  /** Each speaking character's own voice, by name. */
+  voices?: Record<string, VoiceSpec>;
   leadInSec: number;
   tailSec: number;
   lines: ScriptLine[];

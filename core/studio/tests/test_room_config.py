@@ -163,6 +163,15 @@ def test_pre_g2_local_needs_only_local_voices(tmp_path):
     assert any("not a free local engine" in p for p in C.validate(cfg))
 
 
+def test_pre_g2_local_takes_characters_designed_by_a_local_engine(tmp_path):
+    cfg = _cfg(tmp_path, BASE.replace("pitch_clip: after_g2", "pitch_clip: pre_g2_local"))
+    narrator = "  narrator: {tool: higgsfield elevenlabs_v4, local: {engine: qwen3}}\n"
+    (tmp_path / "voices.yaml").write_text("voices:\n" + narrator + "  characters: {engine: qwen3-design, cast: {}}\n")
+    assert C.validate(cfg) == []
+    (tmp_path / "voices.yaml").write_text("voices:\n" + narrator + "  characters: {engine: elevenlabs_v4}\n")
+    assert any("'characters'" in p for p in C.validate(cfg))
+
+
 def test_a_missing_key_is_a_config_error(tmp_path):
     with pytest.raises(C.RoomConfigError, match="seats"):
         _cfg(tmp_path, "writer: claude-opus-5-5\njudge: gpt-5.6-sol-high\nrounds: 3\n")

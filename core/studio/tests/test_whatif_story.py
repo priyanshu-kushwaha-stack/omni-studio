@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 import pytest
+import yaml
 
 REAL_ROOT = Path(__file__).resolve().parents[3]
 spec = importlib.util.spec_from_file_location("whatif_story", REAL_ROOT / "core/engines/whatif/pipeline/story.py")
@@ -197,3 +198,80 @@ def test_use_local_without_a_local_entry_is_refused(tmp_path, monkeypatch):
     monkeypatch.delenv("WHATIF_VOICE", raising=False)
     with pytest.raises(ValueError, match="narrator"):
         story.build(_local_video(tmp_path, VOICES + "    use: local\n"))
+
+
+CAST = """  characters:
+    engine: qwen3-design
+    cast:
+      Lotte: A baker in her fifties.
+    stock:
+      man: A man in his forties.
+      anyone: An adult.
+"""
+DIALOGUE = SCRIPT.replace(
+    "Nobody knows.\n", "Nobody knows.\nLotte: One cent. Counted?\nBank man: Mine. Right.\nDriver: Free today.\n"
+)
+
+
+def _cast_video(tmp_path: Path, say: str | None = None, voices: str = VOICES + CAST) -> Path:
+    video = _video(tmp_path, say)
+    (video / "script.md").write_text(DIALOGUE)
+    (video.parent.parent / "voices.yaml").write_text(voices)
+    return video
+
+
+def test_each_line_carries_its_speaker_and_a_character_name_is_not_spoken(tmp_path):
+    lines = story.build(_cast_video(tmp_path))["lines"]
+    assert [l["speaker"] for l in lines] == ["narrator", "narrator", "narrator", "Lotte", "Bank man", "Driver"]
+    assert lines[3]["text"] == "Lotte: One cent. Counted?"  # as written: say.yaml keys and cues read it
+    assert lines[3]["say"] == "One cent. Counted?"
+
+
+def test_say_yaml_keys_a_character_line_by_its_written_text(tmp_path):
+    say = '"Lotte: One cent. Counted?": "[brisk, palm out] One cent. Counted?"\n'
+    assert story.build(_cast_video(tmp_path, say))["lines"][3]["say"] == "[brisk, palm out] One cent. Counted?"
+
+
+def test_a_cast_character_gets_a_designed_voice_of_its_own(tmp_path):
+    voices = story.build(_cast_video(tmp_path))["voices"]
+    assert voices["Lotte"]["model"] == "local:qwen3-design"
+    assert voices["Lotte"]["voiceType"] == "design"
+    assert voices["Lotte"]["describe"] == "A baker in her fifties."
+    assert "ref" not in voices["Lotte"]  # nobody is cloned
+
+
+def test_an_unlisted_character_takes_a_stock_role_voice_never_the_narrator(tmp_path, capsys):
+    out = story.build(_cast_video(tmp_path))
+    voices = out["voices"]
+    assert voices["Bank man"]["describe"] == "A man in his forties."
+    assert voices["Driver"]["describe"] == "An adult."
+    assert out["voice"] not in voices.values()
+    assert "no voice for 'Bank man'" in capsys.readouterr().err
+
+
+def test_two_characters_on_one_stock_voice_still_sound_apart(tmp_path):
+    voices = story.build(
+        _cast_video(tmp_path, voices=VOICES + CAST.replace("anyone: An adult.", "anyone: A man in his forties."))
+    )["voices"]
+    assert voices["Bank man"]["describe"] == voices["Driver"]["describe"]
+    assert voices["Bank man"]["voiceId"] != voices["Driver"]["voiceId"]  # the id seeds the take
+
+
+def test_character_lines_without_a_characters_entry_are_refused(tmp_path):
+    with pytest.raises(ValueError, match="no characters entry"):
+        story.build(_cast_video(tmp_path, voices=VOICES))
+
+
+def test_a_bare_line_with_a_number_before_a_colon_stays_the_narrators(tmp_path):
+    assert story._spoken("Day 31: the spill.") == ("narrator", "Day 31: the spill.")
+    assert story._spoken("Lotte: Day-old. Free.") == ("Lotte", "Day-old. Free.")
+
+
+def test_a_script_without_characters_has_no_character_voices(tmp_path):
+    assert story.build(_video(tmp_path))["voices"] == {}
+
+
+def test_the_say_suppose_cast_is_voiced(tmp_path):
+    voices = yaml.safe_load((REAL_ROOT / "channels/say-suppose/voices.yaml").read_text())["voices"]
+    descriptions = [story._character_voice(voices["characters"], n)["describe"] for n in voices["characters"]["cast"]]
+    assert len(set(descriptions)) == len(descriptions)
