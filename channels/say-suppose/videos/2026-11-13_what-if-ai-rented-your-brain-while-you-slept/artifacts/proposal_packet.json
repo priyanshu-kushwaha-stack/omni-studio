@@ -1,0 +1,94 @@
+{
+ "version": "1.0",
+ "concept_options": [
+  {
+   "id": "A",
+   "title": "What If AI Rented Your Brain While You Slept?",
+   "why_this_works": "The topic title from the 2026-11-12 AI slate (f-ai-rents-your-sleeping-brain, 78/100, 1st of 24); the writer's pick; pairs with thumbnail a (THAT'S ME?)",
+   "narrative_structure": "story",
+   "visual_approach": "Your bedroom after midnight, mood night, the red curtains behind: you large at the left, asleep on your back on a dark pillow, smiling, a thin band with a teal light across your forehead; a dotted glowing thread rises to a pale second you, bolt upright at a little floating desk, wide awake, typing on a lit laptop; gold coins arc from the desk over your head into the half-full jar on your bedside table; one crimson arrow to the second you. Three candidates a, b, c differ only in the tag (THAT'S ME?, WORTH IT?, EASY CASH?); drawn in code, brand/thumbs/brainrent",
+   "suggested_playbook": "say-suppose",
+   "target_platform": "youtube",
+   "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+   "target_duration_seconds": 570,
+   "hook": "Dawn in an El Paso clinic chair: the nurse counts three notes into your hand ('Thursday. Not before.'), and a man in a grey suit at the door holds out a thin band: 'Sleep tonight. Get paid.' That night a pale second you sits up out of your head and works while you sleep, and coins fall into the jar."
+  },
+  {
+   "id": "B",
+   "title": "What If You Were Paid to Sleep?",
+   "why_this_works": "Alternative title: the daydream itself, broadest and simplest; hides the AI and the catch; pairs with thumbnail b (WORTH IT?); see packaging.md",
+   "narrative_structure": "story",
+   "visual_approach": "Your bedroom after midnight, mood night, the red curtains behind: you large at the left, asleep on your back on a dark pillow, smiling, a thin band with a teal light across your forehead; a dotted glowing thread rises to a pale second you, bolt upright at a little floating desk, wide awake, typing on a lit laptop; gold coins arc from the desk over your head into the half-full jar on your bedside table; one crimson arrow to the second you. Three candidates a, b, c differ only in the tag (THAT'S ME?, WORTH IT?, EASY CASH?); drawn in code, brand/thumbs/brainrent",
+   "suggested_playbook": "say-suppose",
+   "target_platform": "youtube",
+   "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+   "target_duration_seconds": 570,
+   "hook": "Dawn in an El Paso clinic chair: the nurse counts three notes into your hand ('Thursday. Not before.'), and a man in a grey suit at the door holds out a thin band: 'Sleep tonight. Get paid.' That night a pale second you sits up out of your head and works while you sleep, and coins fall into the jar."
+  },
+  {
+   "id": "C",
+   "title": "What If Your Brain Worked Nights Without You?",
+   "why_this_works": "Alternative title: the honest version, the night shift you never knew you ran; pairs with thumbnail c (EASY CASH?); see packaging.md",
+   "narrative_structure": "story",
+   "visual_approach": "Your bedroom after midnight, mood night, the red curtains behind: you large at the left, asleep on your back on a dark pillow, smiling, a thin band with a teal light across your forehead; a dotted glowing thread rises to a pale second you, bolt upright at a little floating desk, wide awake, typing on a lit laptop; gold coins arc from the desk over your head into the half-full jar on your bedside table; one crimson arrow to the second you. Three candidates a, b, c differ only in the tag (THAT'S ME?, WORTH IT?, EASY CASH?); drawn in code, brand/thumbs/brainrent",
+   "suggested_playbook": "say-suppose",
+   "target_platform": "youtube",
+   "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+   "target_duration_seconds": 570,
+   "hook": "Dawn in an El Paso clinic chair: the nurse counts three notes into your hand ('Thursday. Not before.'), and a man in a grey suit at the door holds out a thin band: 'Sleep tonight. Get paid.' That night a pale second you sits up out of your head and works while you sleep, and coins fall into the jar."
+  }
+ ],
+ "selected_concept": {
+  "concept_id": "A",
+  "rationale": "Writer's recommendation; the owner picks at G1. Title A with thumbnail a (\"THAT'S ME?\"): the topic's own title, the AI angle that makes the daydream new, and the tag is what a viewer asks of the ghost before they click."
+ },
+ "production_plan": {
+  "pipeline": "studio-whatif",
+  "playbook": "say-suppose",
+  "render_runtime": "external",
+  "decision_log_ref": "artifacts/decision_log.json",
+  "stages": [
+   {
+    "stage": "proposal",
+    "tools": [],
+    "approach": "Packaging (G1, 2026-11-13): three titles, three one-variable thumbnails drawn in code (brand/thumbs/brainrent), the beat outline on the template spine opening on a performed skit; claims.md started at G1 (25 rows); the G1 room (story editor, claims check)"
+   },
+   {
+    "stage": "story_script",
+    "tools": [],
+    "approach": "research.md, claims.md, script.md, sequel.md and 6-8 chapters on the template (rules/story.md #1-#19, 155 wpm, 9-10 min); the free local Qwen-Arthur narration and a 720p first cut before G2; the G2 room; omni qc story_script must pass"
+   },
+   {
+    "stage": "final_edit",
+    "tools": [],
+    "approach": "Picture lock: cut, key shot, text, music and mix; signed with G2 in one cut review; the local voice ships unless the owner asks for the paid A/B"
+   },
+   {
+    "stage": "final_watch",
+    "tools": [],
+    "approach": "The owner watches at 1x with cold viewers"
+   },
+   {
+    "stage": "publish_prep",
+    "tools": [],
+    "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+   }
+  ]
+ },
+ "cost_estimate": {
+  "total_estimated_usd": 0,
+  "budget_cap_usd": 5,
+  "budget_verdict": "within_budget",
+  "line_items": [
+   {
+    "tool": "whatif_narration (local Qwen clone of Arthur)",
+    "operation": "G2 narration and first cut",
+    "estimated_usd": 0,
+    "notes": "Free and local. The paid voice only if the owner asks for the A/B, quoted first. G1 made no paid call: the thumbnails are drawn in code; the writer and the room used subscriptions and today's capped room calls"
+   }
+  ]
+ },
+ "approval": {
+  "status": "pending"
+ }
+}

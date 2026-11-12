@@ -1,0 +1,47 @@
+{
+  "call_id": "ba2a254016db4569b1fadac7b5f5a2f1",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 12,
+      "quote": "The US lets companies pay for blood plasma, the law caps a donor at twice in seven days (c02)",
+      "fix": "The US lets companies pay for blood plasma (c01), the law caps a donor at twice in seven days (c02)"
+    },
+    {
+      "line": 48,
+      "quote": "every squiggly word you typed to prove you were human was digitising an old newspaper or a book, more than a hundred million a day (c16).",
+      "fix": "reCAPTCHA had people type squiggly words to prove they were human while digitising an old newspaper or Google Books, more than a hundred million a day (c16)."
+    },
+    {
+      "line": 74,
+      "quote": "twenty watts nobody is using (c10), and cells in a dish that got better at Pong in five minutes (c19).",
+      "fix": "twenty watts of power (c10) that the leaflet claims nobody is using, and cells in a dish that began to get better at Pong within five minutes (c19)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 50,
+      "quote": "in mice the spaces between brain cells open up by about sixty per cent during sleep and waste washes out faster (c12), so sleep is when your brain takes the trash out, and yours hasn't in a month; about a hundred years ago, in a test on two people, they forgot less after sleeping than after the same hours awake (c13), and in rats the day's activity replays during sleep, faster than real time (c14): your brain files your day at night, on fast forward, and nothing has been filed."
+    },
+    {
+      "line": 46,
+      "quote": "The narrator over the clinic door swinging shut: \"That's your Thursday. A chair in El Paso, twice a week, the most the law allows (c02).\""
+    },
+    {
+      "line": 54,
+      "quote": "In 2020 over a million people lent their idle home computers to one project, and its scientists called the result the first exascale computer (c18)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "936f1c84295c516016b26076dbf42f65c5b073c7d1d76f15e0a154091c160106",
+  "draft_sha256": "a0a86fecbb2e00056c63fecf34f1853724762f76cc57979c04cb34ed17dc1984"
+}
