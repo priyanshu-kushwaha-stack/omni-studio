@@ -13,7 +13,7 @@ import { setLook } from "@whatif/kit/sets/common";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { FONT } from "@whatif/kit/fonts";
 import { INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
-import { handAt, mix, Phone, Push, ramp, Tile, type ShotTime } from "./util";
+import { ease, handAt, mix, Phone, Push, ramp, Tile, type ShotTime } from "./util";
 
 const CAM: Camera = { x: 1150, y: 670, zoom: 2 };
 export const COUNTER_TOP = 820;
@@ -43,11 +43,14 @@ export interface CounterProps {
   phone?: "up" | "down" | "none" | "ear";
   spill?: number;
   floor?: boolean;
-  flaps?: boolean;
+  /** Split-flap tiles peeling off the phone's glass and dropping by the basket (day two: the 0 and the 2). */
+  flaps?: string[];
+  /** A real one-cent coin falls from your hand and rolls to the basket (the opening; the phone keeps its 0,01). */
+  drop?: boolean;
   you?: { face?: keyof typeof EXPRESSIONS; pose?: keyof typeof YOU_POSES; look?: { x: number; y: number } };
   lotte?: { face?: keyof typeof EXPRESSIONS; pose?: keyof typeof LOTTE_POSES; held?: "chalk" | "roll" | "coin" | "book" | null } | null;
   jonas?: { face?: keyof typeof EXPRESSIONS; held?: "coins" | "note" | "roll" | null } | null;
-  props?: ("deed" | "envelope" | "sacks" | "chess" | "coins" | "book")[];
+  props?: ("deed" | "envelope" | "sacks" | "chess" | "coins" | "book" | "jar")[];
   lamp?: boolean;
   dark?: number;
 }
@@ -102,6 +105,13 @@ const Counter: React.FC<{ props: CounterProps["props"]; t: ShotTime }> = ({ prop
     {props.includes("deed") && <g transform={`translate(${mix(1060, 1250, ramp(t.f, 20, 60))} ${COUNTER_TOP - 30})`}><rect x={-80} y={-20} width={160} height={30} rx={4} fill="#efe9dc" stroke={INK} strokeWidth={5} /><rect x={-20} y={-14} width={40} height={6} fill={TEAL} /></g>}
     {props.includes("envelope") && <g transform={`translate(${mix(1300, 1080, ramp(t.f, 30, 70))} ${COUNTER_TOP - 26})`}><rect x={-60} y={-24} width={120} height={40} rx={3} fill="#f4efe2" stroke={INK} strokeWidth={5} /><path d="M-60 -24 L0 4 L60 -24" fill="none" stroke={INK} strokeWidth={4} /></g>}
     {props.includes("coins") && [0, 1, 2].map((i) => <circle key={i} cx={1100 + i * 30} cy={COUNTER_TOP - 18} r={13} fill={MUSTARD} stroke={INK} strokeWidth={3} />)}
+    {props.includes("jar") && (
+      <g transform={`translate(1330 ${COUNTER_TOP - 22})`}>
+        <rect x={-30} y={-70} width={60} height={70} rx={10} fill="#cfe2f0" opacity={0.7} stroke={INK} strokeWidth={4} />
+        <rect x={-34} y={-82} width={68} height={16} rx={4} fill="#c94a3a" stroke={INK} strokeWidth={4} />
+        {[0, 1, 2].map((i) => <circle key={i} cx={-12 + i * 12} cy={-10 - (i % 2) * 8} r={9} fill={MUSTARD} stroke={INK} strokeWidth={2} />)}
+      </g>
+    )}
     {props.includes("book") && <rect x={1330} y={COUNTER_TOP - 40} width={110} height={30} rx={4} fill="#7a4a3a" stroke={INK} strokeWidth={5} />}
     {props.includes("chess") && (
       <g transform={`translate(1240 ${COUNTER_TOP - 28}) scale(1 0.35)`}>
@@ -138,17 +148,26 @@ const Spill: React.FC<{ amount: number; floor: boolean; from: { x: number; y: nu
   );
 };
 
-/** Two small flaps, the 0 and the 2 of 0,02, peeling off the glass and dropping by the basket (day two). */
-const Flaps: React.FC<{ t: ShotTime; from: { x: number; y: number } }> = ({ t, from }) => {
-  const k = ramp(t.f, 175, 255);
+/** Small flaps peeling off the glass and dropping by the basket (day two: the 0 and the 2 of 0,02). */
+const Flaps: React.FC<{ t: ShotTime; chars: string[]; from: { x: number; y: number } }> = ({ t, chars, from }) => {
+  const k = ramp(t.f, 20, 100);
   return (
     <g>
-      {["0", "2"].map((ch, i) => (
+      {chars.map((ch, i) => (
         <Tile key={ch} ch={ch} s={0.45} r={mix(0, 30 - i * 50, k)}
           x={mix(from.x + 60 + i * 50, 1400 + i * 70, k)} y={mix(from.y - 120, COUNTER_TOP - 40, k * k) - Math.sin(k * Math.PI) * 120} />
       ))}
     </g>
   );
+};
+
+/** A one-cent coin out of your fist: it falls to the counter, bounces and rolls up against the bread basket. */
+const Drop: React.FC<{ t: ShotTime; from: { x: number; y: number } }> = ({ t, from }) => {
+  const fall = ramp(t.f, 4, 22);
+  const roll = ease(ramp(t.f, 22, 60));
+  const x = fall < 1 ? mix(from.x + 40, 1180, fall) : mix(1180, 1440, roll);
+  const y = fall < 1 ? mix(from.y, COUNTER_TOP - 28, fall * fall) : COUNTER_TOP - 28 - Math.abs(Math.sin(roll * Math.PI * 2)) * 30 * (1 - roll);
+  return <circle cx={x} cy={y} r={16} fill="#c98a4a" stroke={INK} strokeWidth={4} />;
 };
 
 const LAYOUT = {
@@ -160,7 +179,7 @@ const LAYOUT = {
 } as const;
 
 export const Bakery: React.FC<{ t: ShotTime } & CounterProps> = ({
-  t, mood, layout = "medium", board = "1,40", balance = null, phone = "none", spill = 0, floor = false, flaps = false,
+  t, mood, layout = "medium", board = "1,40", balance = null, phone = "none", spill = 0, floor = false, flaps, drop = false,
   you = {}, lotte = {}, jonas = null, props = [], lamp = true, dark = 0,
 }) => {
   const L = LAYOUT[layout];
@@ -179,7 +198,8 @@ export const Bakery: React.FC<{ t: ShotTime } & CounterProps> = ({
           time={t.f / 30} look={{ x: 0.9, y: 0.2 }} held={lotte.held ? HELD[lotte.held] : undefined} />
       )}
       <Counter props={props} t={t} />
-      {flaps && <Flaps t={t} from={hand} />}
+      {flaps && <Flaps t={t} chars={flaps} from={hand} />}
+      {drop && t.f < 400 && <Drop t={t} from={hand} />}
       {spill > 0 && <Spill amount={spill} floor={floor} from={hand} />}
       {jonas && L.jonas && (
         <Figure x={L.jonas.x} y={L.jonas.y} scale={L.jonas.s} pose={{ ...STAND, armF: [60, 30], armB: [-12, 14] }} {...FRIEND}

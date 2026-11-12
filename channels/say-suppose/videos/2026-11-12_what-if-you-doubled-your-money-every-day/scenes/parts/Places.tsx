@@ -39,20 +39,35 @@ const Table: React.FC<{ bare: boolean; f: number }> = ({ bare, f }) => (
   </g>
 );
 
-export const Street: React.FC<{ t: ShotTime; mood: MoodName; mode: "party" | "after" | "spend" | "give"; bubble?: boolean }> = ({ t, mood, mode }) => {
+type Face = keyof typeof EXPRESSIONS;
+const PARTY_CROP = { lotte: [1.7, 960, 720], jonas: [1.35, 1500, 760], you: [1.35, 400, 760] } as const;
+
+/** The street. At the party Lotte stands behind the wall of cakes and Jonas comes down in pyjamas; `focus` crops in. */
+export const Street: React.FC<{ t: ShotTime; mood: MoodName; mode: "party" | "after" | "spend" | "give"; focus?: keyof typeof PARTY_CROP | null;
+  jonasFace?: Face; lotteFace?: Face; youFace?: Face }> = ({ t, mood, mode, focus = null, jonasFace = "shocked", lotteFace = "neutral", youFace }) => {
   const walk = mode === "spend" || mode === "give";
   const x = walk ? mix(300, 1400, ease(t.p)) : 230;
   const you = (
     <Figure x={x} y={1010} scale={1.35} pose={walk ? walkPose(t.f / 8) : { ...STAND, armF: [60, 40], armB: [-20, 20] }}
-      {...HERO} {...EXPRESSIONS[mode === "after" ? "worried" : mode === "give" ? "determined" : "happy"]} time={t.f / 30}
+      {...HERO} {...EXPRESSIONS[youFace ?? (mode === "after" ? "worried" : mode === "give" ? "determined" : "happy")]} time={t.f / 30}
       held={mode === "spend" ? <g>{[0, 1, 2].map((i) => <rect key={i} x={-14 + i * 10} y={-6} width={26} height={30} rx={3} fill={PASTELS[i]} stroke={INK} strokeWidth={2.5} />)}</g>
         : mode === "give" ? <rect x={-16} y={-14} width={32} height={20} rx={2} fill="#f4efe2" stroke={INK} strokeWidth={2.5} /> : undefined} />
   );
+  const party = mode === "party";
+  const crop = focus && party ? PARTY_CROP[focus] : null;
   return (
-    <Push t={t}>
+    <Push t={t} from={crop ? crop[0] : 1} to={crop ? crop[0] * 1.04 : 1.05} ox={crop ? crop[1] : 960} oy={crop ? crop[2] : 540}>
       <SetScene set={street} mood={mood} frame={t.f} cam={street.cameras.wide} options={{ auto: false, bus: mode === "spend" ? mix(2200, -900, t.p) : null, crowd: mode !== "party" && mode !== "after" }}
         cast={[]}
-        actors={<>{(mode === "party" || mode === "after") && <Table bare={mode === "after"} f={t.f} />}{you}</>} />
+        actors={<>
+          {party && <Figure x={960} y={1060} scale={1.3} facing={-1} pose={{ ...STAND, armF: [40, 30], armB: [-12, 14] }} {...LOTTE}
+            {...EXPRESSIONS[lotteFace]} time={t.f / 30} look={{ x: 0.6, y: 0.1 }} />}
+          {party && [0, 1, 2, 3, 4].map((i) => <ellipse key={i} cx={860 + i * 50} cy={850 - (i % 2) * 26} rx={30} ry={22} fill={PASTELS[i]} stroke={INK} strokeWidth={4} />)}
+          {(mode === "party" || mode === "after") && <Table bare={mode === "after"} f={t.f} />}
+          {party && <Figure x={1600} y={1010} scale={1.35} facing={-1} pose={{ ...STAND, armF: [30, 40], armB: [-12, 14] }} head={FRIEND.head} coat="#a8c4e0"
+            {...EXPRESSIONS[jonasFace]} time={t.f / 30 + 1} look={{ x: 0.7, y: 0.1 }} />}
+          {you}
+        </>} />
     </Push>
   );
 };

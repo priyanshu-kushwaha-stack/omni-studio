@@ -1,4 +1,4 @@
-// The doubled-money first cut (G2 drop 2): the shot under the playhead, the channel's title card after the hook, a
+// The doubled-money first cut (script v2, the character voices): the shot under the playhead, the channel's title card after the hook, a
 // paper subscribe tag at the street party, the script's tags and bubbles, the narration and the music bed. Render
 // with --props=<video>/assets/narration/props.json --public-dir=<video>/assets.
 import { AbsoluteFill, Audio, Freeze, Sequence, staticFile, useCurrentFrame } from "remotion";
@@ -13,8 +13,15 @@ import { Bubble, TagStamp } from "./parts/util";
 
 export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string> };
 
-const frameOf = (a: Anchor, clips: Timeline["clips"]) => {
-  const c = clips[a.line];
+/** The one spoken line that starts with these words; none or two is an error, so a script edit can't silently shift a shot. */
+export function lineOf(words: string, lines: ScriptLine[]): number {
+  const hits = lines.flatMap((l, i) => (l.text.startsWith(words) ? [i] : []));
+  if (hits.length !== 1) throw new Error(`shot anchor "${words}" matches ${hits.length} lines`);
+  return hits[0];
+}
+
+const frameOf = (a: Anchor, { clips }: Timeline, lines: ScriptLine[]) => {
+  const c = clips[lineOf(a.line, lines)];
   return (a.edge === "end" ? c.from + c.frames : c.from) + (a.plus ?? 0);
 };
 
@@ -35,12 +42,12 @@ export function scoreVolume(frame: number, clips: Timeline["clips"], silent: [nu
   return IN_HOLDS + (UNDER_VOICE - IN_HOLDS) * duck;
 }
 
-const Picture: React.FC<FilmProps> = ({ timeline }) => {
+const Picture: React.FC<FilmProps> = ({ timeline, lines }) => {
   const frame = useCurrentFrame();
   const soundOnly = useSoundOnly();
   if (soundOnly) return null;
-  const { clips, totalFrames } = timeline;
-  const starts = SHOTS.map((s, i) => (i === 0 ? 0 : frameOf(s.at, clips)));
+  const { totalFrames } = timeline;
+  const starts = SHOTS.map((s, i) => (i === 0 ? 0 : frameOf(s.at, timeline, lines)));
   let i = 0;
   for (let k = 0; k < starts.length; k++) if (frame >= starts[k]) i = k;
   const from = starts[i];
@@ -55,19 +62,18 @@ const Picture: React.FC<FilmProps> = ({ timeline }) => {
   );
 };
 
-const Overlays: React.FC<FilmProps> = ({ timeline }) => {
+const Overlays: React.FC<FilmProps> = ({ timeline, lines }) => {
   const frame = useCurrentFrame();
   if (useSoundOnly()) return null;
-  const { clips } = timeline;
   return (
     <>
       {TAGS.map((g, k) => {
-        const at = frameOf(g.at, clips);
+        const at = frameOf(g.at, timeline, lines);
         const len = g.frames ?? 120;
         return frame >= at && frame < at + len ? <TagStamp key={k} text={g.text} f={frame - at} /> : null;
       })}
       {BUBBLES.map((b, k) => {
-        const at = frameOf(b.at, clips);
+        const at = frameOf(b.at, timeline, lines);
         return frame >= at && frame < at + (b.frames ?? 90) ? <Bubble key={k} text={b.text} x={b.x} y={b.y} f={frame - at} /> : null;
       })}
     </>
@@ -75,12 +81,15 @@ const Overlays: React.FC<FilmProps> = ({ timeline }) => {
 };
 
 export const Film: React.FC<FilmProps> = (props) => {
-  const { clips, totalFrames } = props.timeline;
+  const { timeline, lines } = props;
+  const { clips, totalFrames } = timeline;
   if (!clips.length) return <AbsoluteFill style={{ background: "#000" }} />;
-  const cardFrom = clips[9].from + clips[9].frames;
-  const partyAt = clips[27].from + 60;
-  const silent: [number, number] = [clips[81].from + clips[81].frames, clips[82].from];
-  const endAt = clips[88].from + clips[88].frames;
+  const at = (line: string, edge: "start" | "end", plus = 0) => frameOf({ line, edge, plus }, timeline, lines);
+  // The title card after the premise; the subscribe tag at the party; the one planned silence at the glass door.
+  const cardFrom = at("Every night. Whatever's", "end");
+  const partyAt = at("Jonas: Who are all", "start", 60);
+  const silent: [number, number] = [at("You count. One cent.", "end"), at("Zero, doubled", "start")];
+  const endAt = at("So, would you have erased", "end");
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <Picture {...props} />

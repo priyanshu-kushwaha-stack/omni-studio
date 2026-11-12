@@ -26,3 +26,17 @@ the owner's note outranks the template (`taste.md`).
 come back (only the midnight tear doubles it), and the pensioners at the window become Jonas reading the board.
 
 Narration: 124 free local takes, 9:10; `omni qc story_script` passes (claims, clicks after 17 mutes).
+
+## Drop 3: character voices and the v2 cut (2026-11-12)
+
+The owner kept voicing A ("A: emotion per line", PR #51): Lotte, Jonas, the man from the bank, the flour man, the
+woman and the driver each speak in a free local Qwen3 VoiceDesign voice from `voices.yaml`, with their line's
+direction as the emotion; the narrator stays Arthur's local clone. 58 new character takes, nothing paid; 9:37 at
+tempo 1. `omni qc story_script` passes (claims; clicks after 21 mutes, take 78's widened to 140 ms).
+
+The cut follows script v2 shot by shot. Shots now anchor to a line's opening words, not its index, so a reordered
+script re-times the cut and a missing line fails the render. New places: the flat at midnight (Jonas asleep under his
+coat, then sitting up with your phone), the free tram (the woman with her bags, the driver, Jonas pretending not to
+know you), Jonas's ground (the score turns 0:2 to 4:2), the bread balloon (it drifts off; Jonas holds the rope), and
+the flour man at the back door. Round 7's two picture notes are in: the opening's cent is a real coin out of your fist
+and the phone keeps 0,01 (only the midnight tear doubles it), and Jonas reads the board on day forty.
