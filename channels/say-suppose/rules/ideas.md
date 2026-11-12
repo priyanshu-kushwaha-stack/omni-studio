@@ -55,8 +55,10 @@ slowest seat with the fewest top ideas. Each researcher brings 15 ideas instead 
 
 A topic must pass all nine; a fail is shown, never hidden.
 
-1. A daydream people already had, for the one named viewer (`story.md`).
-2. You can live it, from an ordinary moment of that viewer's week.
+1. A daydream people anywhere already had; "you" is anyone (owner, 2026-11-11, `taste.md`; was "for the one named
+   viewer").
+2. You can live it, from an ordinary moment set wherever the idea's best content is; India is one option, never the
+   default.
 3. A wrong belief it breaks, named before writing.
 4. One belief-breaking fact and one late mind-boggle, both sourceable.
 5. The mind-boggle lands late, after the story has earned it.

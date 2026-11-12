@@ -48,5 +48,5 @@ the lens above that is not one of these checks is a suggestion, never a blocker.
 - **The under-question (`> UNDER:`):** does each jump make it harder, does the dilemma ask it, does the last image
   answer it without words? Never propose a line that answers it aloud.
 - **The shelf (`rules/story.md`):** the loophole beat, the dilemma a cold reader can argue either way, the residue in
-  Riya's week. Suggestions only.
+  the film's own world. Suggestions only.
 - Up to three moments you would protect in the edit.

@@ -5,9 +5,12 @@ videos (`docs/superpowers/specs/2026-11-10-say-suppose-topics-skill-design.md`, 
 needs a quoted line and a fix. Sources and the full shelf: `docs/research/2026-11-09-say-suppose-story-craft.md`,
 `docs/research/2026-11-09-say-suppose-owner-references.md`.
 
-**The viewer.** One named person: a young Indian, comfortable in English, on a phone in the evening, whose week is
-chai, the bus or metro, exams, the office and family. Every example and gag comes from that week; the packaging stays
-readable worldwide (no `₹` or local slang in the English title and thumbnail).
+**Who "you" are (owner, 2026-11-11, `taste.md`; replaces the one named viewer).** "You" is anyone; no persona's week
+supplies the gags. The premise and its imagination set the world, the scale and the gags: the setting, the currency
+and the cast go wherever the idea's best real content and pictures are, and India is one option, never the default.
+Every film hooks and makes people think (owner, 2026-11-12); a mind-boggling end is one way, never a requirement, and
+the idea chooses its own. The packaging stays readable worldwide (no slang, symbol or reference only one country reads
+in the English title and thumbnail).
 
 | # | Check | Test | From |
 |---|---|---|---|
@@ -47,10 +50,16 @@ with the packaging, and it is never spoken as an answer. Four rules keep it from
 The lint (`story_lint.py --under-from 2026-11-10`) checks that it is there, once, before the first beat, and is a
 question. Whether the plot argues it is the story seats' read, as a suggestion.
 
-**The protected spine (owner, 2026-11-10).** Once G1 passes, these change only by an owner note or a fact blocker: the
+**The protected spine (owner, 2026-11-10; loosened 2026-11-12).** Once G1 passes, the room never rewrites these: the
 five lines and `> UNDER:`; the dilemma line; the planted line and its return; the stranger's moment; every keep line a
 seat names (up to three per seat) and up to three `> DARLING:` lines the writer names and defends; the spoken style
-itself (fragments, half-sentences, a question answered at once).
+itself (fragments, half-sentences, a question answered at once). They protect the writer from the room, not the story
+from the writer (owner, 2026-11-12, `taste.md`: "lets no lock anything that hard"): when the owner's notes are better
+served by a bigger change, the writer may change any of it in a G2 rewrite, the situation, setting, cast and five lines
+included, and may propose a new title or thumbnail. Every such change is listed at the top of the round's review file
+under "Changed from the approved G1" (old line, new line, why) and rides with the next draft the owner reviews; it is
+not a stop of its own, and iterating goes on (owner, 2026-11-12: "we can always keep it iterating also"). The owner's
+own sign-off at the gate is the approval; a new title or thumbnail is rendered for the owner to pick, as at G1.
 
 **The shelf: three hooks, suggestions for two films (owner, 2026-11-10).** Seats may suggest these, never block on
 them. After two films the owner decides whether they become must-pass.
@@ -59,8 +68,8 @@ them. After two films the owner decides whether they become must-pass.
   it, and leaves exactly one loophole open for the comments.
 - **The dilemma at 75-80%.** A choice with two right answers, put as one narrator line; the figure acts at once. Test:
   a cold reader can argue either side in one line.
-- **The residue in Riya's week.** The last line names one real thing the viewer will see differently tomorrow, inside
-  the last image: the chai stall, the metro door, a missed call.
+- **The residue.** The last line names one real thing anyone will see differently tomorrow, inside the last image,
+  taken from the film's own world: a coin, a clock, a missed call.
 
 **Length.** No cap. A script that runs past about 8 minutes needs the story seat to name, in its verdict, the felt reason
 a viewer stays past 8:00; without one it fails.
