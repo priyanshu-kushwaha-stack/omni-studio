@@ -209,7 +209,8 @@ class WhatifNarration(_WhatifTool):
     capability = "studio_tts"
     determinism = Determinism.STOCHASTIC
     capabilities = ["narration_from_story", "word_timings", "take_cache"]
-    best_for = ["Say Suppose narration: Arthur on Eleven v4 through Higgsfield, one cached take per line"]
+    best_for = ["Say Suppose narration: one cached take per line, the narrator (free local Arthur clone, or Eleven v4 "
+                "for the paid A/B) and each character in a free local voice of their own"]
     not_good_for = ["any new take without the owner's approval and a credit cap"]
     input_schema = {"type": "object", "required": ["channel", "video"], "properties": {
         "channel": {"type": "string"}, "video": {"type": "string"},
