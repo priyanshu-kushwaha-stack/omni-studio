@@ -107,9 +107,11 @@ function herAt(frame: number, k: T) {
     const on = ramp(frame, k.peel[0], k.peel[1]) * (1 - ramp(frame, k.back[0], k.back[1]));
     armB = mixArm(armB, aimArm(body, { x: yours.x + 10, y: yours.y - 70 }), on);
   }
-  if (frame >= k.flat) armB = mixArm(armB, aimArm(body, { x: 1404, y: 820 }), ramp(frame, k.flat, k.flat + 14));
   body.pose = { ...body.pose, armB };
-  const calAtSide = frame >= k.lift[1] + 4 ? (() => {
+  // the calendar down at her side in her near hand, then leant on the counter while she tapes; later her near hand
+  // flat on the fridge door (it stays under her chin, so it does not cross her face)
+  if (frame >= k.flat) body.pose = { ...body.pose, armF: mixArm(STAND.armF, aimArm(body, { x: 1418, y: 806 }), ramp(frame, k.flat, k.flat + 14)) };
+  const calAtSide = frame >= k.peel[0] ? { x: 960, y: 600, tilt: -5 } : frame >= k.lift[1] + 4 ? (() => {
     const h = handAt(body, "front");
     return { x: h.x - 6, y: h.y + 70, tilt: 4 };
   })() : null;

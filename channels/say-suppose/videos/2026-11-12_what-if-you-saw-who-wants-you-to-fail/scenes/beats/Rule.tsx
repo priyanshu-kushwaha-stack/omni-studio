@@ -162,18 +162,19 @@ const HalvesInsert: React.FC<{ frame: number; k: T; mood: ReturnType<typeof mood
       <circle cx={0} cy={0} r={76} fill={hand} stroke={INK} strokeWidth={8} />
     </g>
   );
+  const yours = ramp(frame, k.take + 10, k.take + 28);
   const actors = (
     <g>
-      {/* his two hands, from the right, pulling apart */}
-      {sleeve(mix(1060, 1180, split) + give * 40, 640, -8, MINJUN.coat, MINJUN.head)}
-      <Kimbap x={mix(1000, 1080, split) + give * 40} y={560} scale={3.2} half tilt={mix(0, 12, split)} />
-      <g transform={`translate(${mix(920, 860, split) - give * 420} ${560 + give * 20}) scale(-1 1)`}>
-        <Kimbap x={0} y={0} scale={3.2} half tilt={mix(0, 12, split)} />
+      {/* his two hands, from the right, pull the kimbap into halves; the left half slides to your hand */}
+      {sleeve(mix(1150, 1270, split), 700, -10, MINJUN.coat, MINJUN.head)}
+      <Kimbap x={mix(990, 1090, split)} y={560} scale={5.5} half tilt={mix(0, 10, split)} />
+      <g transform={`translate(${mix(950, 850, split) - give * 300} ${560 + give * 30}) scale(-1 1)`}>
+        <Kimbap x={0} y={0} scale={5.5} half tilt={mix(0, 10, split)} />
       </g>
-      {sleeve(mix(980, 1000, split), 760, 14, MINJUN.coat, MINJUN.head)}
+      {sleeve(mix(1020, 1060, split) - give * 300, 790, 18, MINJUN.coat, MINJUN.head)}
       {/* your hand, from the left, coming for your half */}
-      <g transform={`translate(${mix(-200, 420, ramp(frame, k.take + 10, k.take + 28)) - give * 60} 650) scale(-1 1)`}>
-        <rect x={0} y={-56} width={800} height={112} rx={50} fill="#3b3e47" stroke={INK} strokeWidth={8} />
+      <g transform={`translate(${mix(-260, 470, yours) - give * 80} 760) scale(-1 1)`}>
+        <rect x={0} y={-56} width={900} height={112} rx={50} fill="#3b3e47" stroke={INK} strokeWidth={8} />
         <circle cx={0} cy={0} r={72} fill={MUSTARD} stroke={INK} strokeWidth={8} />
       </g>
     </g>
@@ -188,7 +189,7 @@ const HalvesInsert: React.FC<{ frame: number; k: T; mood: ReturnType<typeof mood
 /** The counter's top seen close: pale laminate with a seam, a receipt roll at the edge. */
 const CounterTop: React.FC = () => (
   <g>
-    <rect x={-1400} y={-900} width={4800} height={2600} fill="#dfe4e1" />
+    <rect x={-1400} y={-900} width={4800} height={2600} fill="#9fb0ba" />
     {Array.from({ length: 10 }, (_, i) => <line key={i} x1={-1400} y1={-200 + i * 180} x2={3400} y2={-260 + i * 180} stroke="#000" strokeWidth={3} opacity={0.05} />)}
     <rect x={-1400} y={900} width={4800} height={40} fill="#c9d2d8" />
     <rect x={1500} y={160} width={160} height={110} rx={12} fill="#f4efe2" stroke={INK} strokeWidth={6} />

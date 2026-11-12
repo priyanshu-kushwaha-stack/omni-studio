@@ -61,7 +61,7 @@ function times(clips: Clip[], to: number) {
 const T0 = ACADEMY.thumb;
 /** You in the hug: the letter goes up in your BACK hand, high over your head and away from him (no arm crosses your
  *  face), the front arm drops. */
-const SHOW_HIGH: Pose = { ...SHOW, tilt: -4, armF: [12, 18], armB: [-168, 12] };
+const SHOW_HIGH: Pose = { ...SHOW, tilt: -4, armF: [12, 18], armB: [-160, -4] };
 /** Where Min-jun stands in the hug, near enough for his arm to reach your shoulder. */
 const HUG_X = 790;
 
@@ -126,7 +126,7 @@ const Street: React.FC<{ frame: number; k: T; cam: Camera; shot: string; you?: b
       <Shade id="you" x={yh.x} y={yh.y} r={yh.r} />
       {him && !hugging && minjun}
       {him && !hugging && meter}
-      {you && hugging && <Letter x={hand.x + 10} y={hand.y + 40} scale={2.07} tilt={-8} />}
+      {you && hugging && <Letter x={hand.x - 40} y={hand.y - 20} scale={2.07} tilt={-10} />}
       {you && (
         <>
           <Figure {...yb} {...HERO} flow={0.15} time={3 + frame * 0.4} {...yourFace(shot, frame, k)} blink={shot !== "wide" && blinking(frame, 0)} />
@@ -173,7 +173,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     hug: camAt(frame, [[k.hug, REF], [k.q, REF], [k.friend, { x: 760, y: 560, zoom: 1.12 }]]),
     friend: camAt(frame, [[k.friend, closeUp(mh.x - 30, mh.y - 110, 1.5)], [k.number, closeUp(mh.x - 30, mh.y - 120, 1.58)]]),
     number: camAt(frame, [[k.number, insert(card.x, card.y + 30, 2.0)], [k.letter, insert(card.x, card.y + 30, 2.25)]]),
-    letter: camAt(frame, [[k.letter, insert(hand.x + 10, hand.y - 110, 1.9)], [k.told, insert(hand.x + 10, hand.y - 100, 2.05)]]),
+    letter: camAt(frame, [[k.letter, insert(hand.x - 40, hand.y - 170, 1.9)], [k.told, insert(hand.x - 40, hand.y - 160, 2.05)]]),
     told: camAt(frame, [[k.told, closeUp(yh.x + 130, yh.y + 30, 1.55)], [k.always, closeUp(yh.x + 140, yh.y + 30, 1.68)]]),
     always: camAt(frame, [[k.always, { x: 720, y: 600, zoom: 1.08 }], [k.fond, { x: 740, y: 600, zoom: 1.16 }]]),
     fond: camAt(frame, [[k.fond, closeUp(mh.x - 20, mh.y - 60, 1.7)], [k.knew, closeUp(mh.x - 20, mh.y - 70, 1.78)]]),

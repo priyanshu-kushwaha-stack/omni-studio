@@ -57,7 +57,7 @@ export const HOME = {
   /** Standing places: you in the kitchen facing the doorway; her at the fridge (facing it); you in the doorway. */
   spots: {
     kitchen: { x: 1520, y: 940 },
-    fridge: { x: 1450, y: 940 },
+    fridge: { x: 1490, y: 940 },
     doorway: { x: 1790, y: 940 },
     inside: { x: 430, y: 940 },
   },
@@ -289,7 +289,7 @@ export const HomeBack: React.FC<HomeProps> = ({ cam, mood, frame, calendar = tru
         <rect x={-1400} y={-800} width={4800} height={HOME.floor + 820} fill={dark ? "#d9c7a6" : "#efe3cc"} />
         {Array.from({ length: 44 }, (_, i) => <rect key={i} x={-1400 + i * 110} y={-800} width={4} height={HOME.floor + 800} fill="#000" opacity={0.035} />)}
         <rect x={-1400} y={HOME.floor - 34} width={4800} height={30} fill="#c9a77a" />
-        <Window id="home" mood={mood} x={w.x} y={w.y} w={w.w} h={w.h} frame="#e8e2d2" bars={false} />
+        <Window id="home" mood={mood} x={w.x} y={w.y} w={w.w} h={w.h} frame="#9a7452" bars={false} />
         {!dark && (
           <path d={`M${w.x} ${w.y} L${w.x + w.w} ${w.y} L${w.x + w.w + 520} ${HOME.floor} L${w.x + 180} ${HOME.floor}Z`} fill="#fff4cf" opacity={0.22} />
         )}

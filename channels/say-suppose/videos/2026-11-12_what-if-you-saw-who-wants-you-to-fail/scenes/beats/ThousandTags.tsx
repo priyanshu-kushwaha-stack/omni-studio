@@ -69,9 +69,10 @@ const CLASS = [
   { x: 1215, y: 1112, head: PASTELS[2], value: 6 },
 ];
 
+/** Raising the letter: the front arm goes forward and up toward the crowd, below the face (no arm crosses it). */
 function yourPose(frame: number, k: T): Pose {
   const up = ramp(frame, k.raise, k.raise + 10);
-  return { ...STAND, armF: [mix(30, 145, up), mix(60, 25, up)], tilt: mix(0, -6, up) };
+  return { ...STAND, armF: [mix(30, 106, up), mix(60, 18, up)], tilt: mix(0, -6, up) };
 }
 
 /** The class and Min-jun, with their cards from `say`. Min-jun waves on the over-the-shoulder. */
@@ -118,7 +119,7 @@ const Stranger: React.FC<{ frame: number }> = ({ frame }) => {
  *  watch. */
 function inspectorAt(frame: number, k: T) {
   const p = linear(frame, k.inspector - 10, k.wide);
-  const x = mix(1450, 2350, Math.min(p, 0.62) + Math.max(0, p - 0.85) * 1.2);
+  const x = mix(2400, 3150, Math.min(p, 0.62) + Math.max(0, p - 0.85) * 1.2);
   const walking = frame < k.watch || frame > k.watch + 40;
   return { x, y: 1180, scale: 0.66, walking };
 }
@@ -174,7 +175,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     steps: camAt(frame, [[k.steps, closeUp(yh.x + 30, yh.y, 2.4)], [k.below, closeUp(yh.x + 30, yh.y, 2.6)]]),
     below: camAt(frame, [[k.below, { x: 640, y: 860, zoom: 1.45 }], [k.towers, { x: 700, y: 840, zoom: 1.35 }]]),
     towers: camAt(frame, [[k.towers, { x: 1000, y: 760, zoom: 1.15 }], [k.inspector, { x: 1000, y: 260, zoom: 1.2 }]]),
-    inspector: { x: ins.x + 60, y: 1010, zoom: 1.75 },
+    inspector: { x: ins.x + 60, y: 920, zoom: 1.6 },
     wide: camAt(frame, [[k.wide, { x: 980, y: 640, zoom: 0.92 }], [k.you, { x: 960, y: 650, zoom: 0.98 }]]),
     you: camAt(frame, [[k.you, closeUp(yh.x + 50, yh.y + 20, 2.3)], [k.say, closeUp(yh.x + 50, yh.y + 10, 2.5)]]),
     say: camAt(frame, [[k.say, { x: 820, y: 780, zoom: 1.0 }], [k.rise, { x: 860, y: 720, zoom: 0.86 }], [k.field, { x: 980, y: 600, zoom: 0.47 }], [k.three, { x: 980, y: 590, zoom: 0.45 }]]),

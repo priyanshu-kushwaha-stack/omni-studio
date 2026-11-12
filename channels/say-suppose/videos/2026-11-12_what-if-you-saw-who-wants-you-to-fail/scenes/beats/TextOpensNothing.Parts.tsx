@@ -1,10 +1,10 @@
 // Pieces drawn for "A Text Would Open Nothing" (beats/TextOpensNothing.tsx): the results screen (grade one as a big 1 in a
-// box, no words), Min-jun's phone, the seat-and-sea sheet, the regret pie, your thumb, and what goes past the bus
+// box, no words), Min-jun's phone, the seat-and-sea sheet, the regret pie, the phone face down, and what goes past the bus
 // windows (the shelter ad with its paper subscribe tag, the depot gates).
 import { spring } from "remotion";
 import { FONT } from "@whatif/kit/fonts";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { CRIMSON, FPS, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
+import { CRIMSON, FPS, INK, PAPER, TEAL } from "@whatif/kit/theme";
 import { noise } from "../shared";
 import { REF } from "../sets/common";
 
@@ -50,15 +50,6 @@ export const HeldResult: React.FC<{ x: number; y: number; scale?: number; tilt?:
     <rect x={-40} y={-78} width={80} height={156} rx={8} fill="#eef1f4" />
     <OneBox x={0} y={4} w={62} h={52} s={1} />
     <circle cx={-30} cy={88} r={16} fill={head} stroke={INK} strokeWidth={3} />
-  </g>
-);
-
-/** Your thumb, from the bottom right, its tip at (x, y). */
-export const Thumb: React.FC<{ x: number; y: number; scale?: number }> = ({ x, y, scale = 1 }) => (
-  <g transform={`translate(${x} ${y}) scale(${scale})`}>
-    <path d="M0 0 C-20 60 -60 160 -150 260 L-40 330 C10 230 40 90 30 10 Q16 -26 0 0Z" fill={MUSTARD} stroke={INK} strokeWidth={6} strokeLinejoin="round"
-      transform="scale(-1 1)" />
-    <ellipse cx={-12} cy={6} rx={16} ry={22} fill="#f7cf6e" />
   </g>
 );
 

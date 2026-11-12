@@ -88,7 +88,7 @@ const HER_X = DOCK.meet.her;
 const CARD = headAt(HER_X, TOP, S, STAND, -1);
 const YOU_HEAD = headAt(YOU_X, TOP, S, STAND, 1);
 const HER_HAND = { x: YOU_X - 22 * S, y: TOP - 196 * S };
-const YOUR_HAND = { x: HER_X + 18 * S, y: TOP - 214 * S };
+const YOUR_HAND = { x: HER_X - 30 * S, y: TOP - 196 * S };
 
 /** The feet line on the steps (a straight ramp, so the climb is smooth). */
 const stepY = (x: number) => (x <= DOCK.steps.from ? DOCK.ground : x >= DOCK.steps.to ? TOP : mix(DOCK.ground, TOP, (x - DOCK.steps.from) / (DOCK.steps.to - DOCK.steps.from)));
@@ -163,14 +163,14 @@ const Dock: React.FC<{ frame: number; k: T; cam: Camera; you: Face; her: Face; s
 
 /** Six years ago: the fridge with her letter on it, fresh, and the brushes in the jar; warm and faded. */
 const Memory: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.flash, { x: 1300, y: 600, zoom: 2.1 }], [k.podium, { x: 1330, y: 620, zoom: 2.5 }]]), frame, "dock-memory", 3);
+  const cam = drift(camAt(frame, [[k.flash, { x: 1250, y: 640, zoom: 2.1 }], [k.podium, { x: 1330, y: 690, zoom: 2.6 }]]), frame, "dock-memory", 3);
   return (
     <AbsoluteFill style={{ filter: "sepia(0.55) saturate(0.85) brightness(1.06)" }}>
       <LookContext.Provider value={moodLook("morning")}>
         <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<HomeBack cam={cam} mood="morning" frame={frame} calendar={false} yours={null} hers="fresh" hour={6} />}
           actors={null} />
       </LookContext.Provider>
-      <AbsoluteFill style={{ boxShadow: "inset 0 0 160px 60px rgba(243,233,215,0.85)" }} />
+      <AbsoluteFill style={{ boxShadow: "inset 0 0 120px 30px rgba(243,233,215,0.6)" }} />
     </AbsoluteFill>
   );
 };
@@ -192,7 +192,7 @@ const DockShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     you106: camAt(frame, [[k.you106, closeUp(YOU_HEAD.x + 50, YOU_HEAD.y - 20, 2.7)], [k.foldShot, closeUp(YOU_HEAD.x + 50, YOU_HEAD.y - 20, 2.85)]]),
     fold: camAt(frame, [[k.foldShot, { x: CARD.x - 40, y: CARD.y - 60, zoom: 2.6 }], [k.peak, { x: CARD.x - 40, y: CARD.y - 70, zoom: 2.8 }]]),
     peakA: camAt(frame, [[k.peak, { x: 800, y: 560, zoom: 1.9 }], [k.peakB - 10, insert(CARD.x, CARD.y - 115, 3.8)]]),
-    peakB: camAt(frame, [[k.peakB, insert(HER_HAND.x + 40, HER_HAND.y + 10, 3.0)], [k.two, insert(HER_HAND.x + 40, HER_HAND.y + 10, 3.5)]]),
+    peakB: camAt(frame, [[k.peakB, insert(HER_HAND.x + 30, HER_HAND.y + 20, 3.8)], [k.two, insert(HER_HAND.x + 30, HER_HAND.y + 20, 4.3)]]),
     two: camAt(frame, [[k.two, { x: 830, y: 540, zoom: 1.4 }], [k.her108, { x: 820, y: 545, zoom: 1.5 }]]),
     her108: camAt(frame, [[k.her108, closeUp(hugHead.x + 10, hugHead.y - 20, 3.0)], [k.flash, closeUp(hugHead.x + 10, hugHead.y - 20, 3.3)]]),
     podium: camAt(frame, [[k.podium, { x: 1000, y: 520, zoom: 1.45 }], [k.silverThinks, { x: 1120, y: 490, zoom: 1.85 }], [k.ots, { x: 1180, y: 480, zoom: 2.1 }]]),

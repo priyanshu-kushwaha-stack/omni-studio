@@ -63,7 +63,7 @@ export const StoreNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, 
             look={{ x: 0.3, y: 0.6 }} blink={blinking(frame, 7)} time={frame} />
           <StoreCounter />
           <Figure {...MINJUN} x={MX} y={floor} scale={s} pose={mPose} {...mFace} blink={blinking(frame, 2)} time={frame}
-            held={<Kimbap x={8} y={-20} scale={0.5} half />} />
+            held={<Kimbap x={10} y={-26} scale={0.95} half />} />
           <Figure {...HERO} x={yx} y={floor} scale={s} facing={-1} pose={yPose} brows="flat" lids={0.3} mouth="flat" eyes={1}
             look={{ x: 0.9, y: 0.1 }} blink={blinking(frame, 1)} time={frame} />
           <Bubble frame={frame} at={k.half} until={k.hold} x={mh.x + mh.r * 0.4} y={mh.y - mh.r * 1.05} text="Half?" size={30} side="right" />

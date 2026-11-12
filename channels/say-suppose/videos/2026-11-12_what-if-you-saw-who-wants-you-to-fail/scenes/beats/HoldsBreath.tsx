@@ -210,8 +210,8 @@ const MarketShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 const STREET_OPTS = { ...street.defaults, crowd: false, auto: false, bus: null, red: false };
 
 const BikeShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const x = mix(-500, 2500, linear(frame, k.bike - 6, k.breath + 8));
-  const cam = drift(camAt(frame, [[k.bike, { x: 760, y: 660, zoom: 1.3 }], [k.breath, { x: 1160, y: 660, zoom: 1.35 }]]), frame, "bike", 2);
+  const x = mix(-300, 2200, linear(frame, k.bike - 6, k.breath + 8));
+  const cam = drift({ x: 420 + 0.55 * x, y: 660, zoom: 1.3 }, frame, "bike", 2);
   const props = { cam, mood: "morning" as const, frame, options: STREET_OPTS };
   return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={street.Back(props)} actors={<PoliceBike x={x} y={905} frame={frame} scale={1.25} />} />;
 };
@@ -223,7 +223,7 @@ const YOU_AT = 1190;
 const JS = 1.1;
 
 /** Her face, tired off the night shift, and glad. */
-const herFace = (frame: number) => ({ brows: "none" as const, lids: 0.42, mouth: "smile" as const, eyes: 1, look: { x: 0.9, y: 0.05 }, blink: blinking(frame, 6) });
+const herFace = (frame: number) => ({ brows: "worry" as const, lids: 0.12, mouth: "smile" as const, eyes: 1, look: { x: 0.9, y: 0.05 }, blink: blinking(frame, 6) });
 
 const Gate: React.FC<{ frame: number; cam: Camera; you: React.ReactNode; her: React.ReactNode }> = ({ frame, cam, you, her }) => (
   <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<GateBack cam={cam} frame={frame} mood="morning" />}
@@ -286,7 +286,7 @@ const MonthShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return (
     <Gate frame={frame} cam={cam}
       her={<JiyoonWithLunch x={JY.x} y={JY.y} scale={JS} frame={frame} face={{ ...herFace(frame), look: { x: 0.9, y: 0.1 } }} holding={false} out={1} />}
-      you={<Figure {...HERO} x={x} y={GATE.floor + 10} scale={S} facing={turn ? -1 : 1} pose={pose} {...EXPRESSIONS.determined} lids={0.2}
+      you={<Figure {...HERO} x={x} y={GATE.floor + 10} scale={S} facing={turn ? -1 : 1} pose={pose} brows="flat" mouth="flat" lids={0.2}
         look={{ x: 0.9, y: 0 }} time={frame} held={<LunchBox x={4} y={26} scale={0.9} />} />} />
   );
 };

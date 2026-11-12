@@ -37,7 +37,7 @@ export const ExamTopBack: React.FC<{ cam: Camera; frame: number }> = ({ cam, fra
           {[0, 1, 2, 3].map((l) => <rect key={l} x={x - 30} y={y - 48 + l * 22} width={60 - (l % 2) * 18} height={6} rx={3} fill="#4a4d58" opacity={0.5} />)}
           <rect x={x + 22 + write} y={y + 6} width={8} height={56} rx={4} fill={you ? TEAL : "#3b4a6b"} transform={`rotate(-20 ${x + 26} ${y + 30})`} />
           <TopDownHead x={x} y={y + 100} head={you ? MUSTARD : PASTELS[(c * 3 + r) % PASTELS.length]} coat={you ? "#3b3e47" : ["#3b4a6b", "#2a2d36", "#3b3e47"][(c + r) % 3]}
-            turn={180} hair={you ? undefined : "#2a2730"} tuft={you} scale={0.95} />
+            turn={180} hair={you ? undefined : "#2a2730"} scale={0.95} />
         </g>
       );
     }))}

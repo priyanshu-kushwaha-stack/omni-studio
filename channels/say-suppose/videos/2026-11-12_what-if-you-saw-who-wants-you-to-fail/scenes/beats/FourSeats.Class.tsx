@@ -111,8 +111,8 @@ const NearCards: React.FC<{ frame: number; at: number; until: number; round: Roo
   const t = roomTags(at);
   return (
     <>
-      <Meter frame={frame} at={t.classmate} x={ch.x} headY={ch.y} r={ch.r} value={round.classmate} until={until} tilt={3} />
-      <Meter frame={frame} at={t.minjun} x={mh.x} headY={mh.y} r={mh.r} value={round.minjun} until={until} />
+      <Meter frame={frame} at={t.classmate} x={ch.x - 40} headY={ch.y} r={ch.r} value={round.classmate} until={until} tilt={3} />
+      <Meter frame={frame} at={t.minjun} x={mh.x + 30} headY={mh.y} r={mh.r} value={round.minjun} until={until} />
       <Meter frame={frame} at={t.kang} x={kh.x} headY={kh.y} r={kh.r} value={round.kang} until={until} />
     </>
   );
@@ -197,7 +197,8 @@ export const FolderShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName
   const fx = frame < k.keep ? mix(1400, rest.x, fly) : mix(rest.x, rest.x - 28, pull);
   const fy = frame < k.keep ? mix(735, rest.y, fly) - Math.sin(fly * Math.PI) * 70 : rest.y + pull * 4;
   // Ms. Kang hands it on; Min-jun reaches forward for it; your hand comes down flat on it.
-  const kPose: Pose = { ...KANG_POSE, armF: [mix(52, 82, ramp(frame, k.folder, k.folder + 8) * (1 - ramp(frame, k.folder + 30, k.folder + 44))), 10] };
+  const give = ramp(frame, k.folder, k.folder + 8) * (1 - ramp(frame, k.folder + 30, k.folder + 44));
+  const kPose: Pose = { ...KANG_POSE, armF: [mix(36, 82, give), mix(58, 10, give)] };
   const reachOut = ramp(frame, k.reach, k.reach + 12) * (1 - ramp(frame, k.keep + 24, k.keep + 40));
   const mPose: Pose = { ...SEATED, lean: mix(0, 14, reachOut), armF: [mix(25, 84, reachOut), mix(35, 4, reachOut)] };
   const hand = ramp(frame, k.keep - 4, k.keep + 6);

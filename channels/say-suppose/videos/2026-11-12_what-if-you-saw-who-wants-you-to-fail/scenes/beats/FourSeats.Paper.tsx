@@ -194,7 +194,7 @@ export const CutsSheet: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName 
           const y = 130 + i * 190;
           const at = Math.round(mix(k.cuts + 8, k.down - 20, i / 3));
           const ox = 180 + r.gap;
-          const s = r.size * 30;
+          const s = r.size * 44;
           return (
             <g key={i} opacity={frame >= at - 4 ? 1 : 0}>
               <HeadIcon x={180} y={y} r={34} color={HERO.head} tuft mouth="flat" />

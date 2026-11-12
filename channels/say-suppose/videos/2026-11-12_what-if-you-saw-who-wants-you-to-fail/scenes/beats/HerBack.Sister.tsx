@@ -192,7 +192,7 @@ export function hug(o: {
     armF: mixArm(STAND.armF, aimArm(her, back), t),
     armB: mixArm(STAND.armB, aimArm(her, { x: back.x + 14, y: back.y - 18 * scale }), t),
   };
-  const herBack = { x: herX + 18 * scale, y: floor - 214 * scale };
+  const herBack = { x: herX - 30 * scale, y: floor - 196 * scale };
   const stiff: [number, number] = [-2, 2];
   you.pose = {
     ...you.pose,

@@ -278,13 +278,13 @@ export const AcademyStreetBack: React.FC<{ cam: Camera; mood: MoodName; frame: n
       {street && (
         <Deep cam={cam} depth={1}>
           {/* the pavement, the kerb, the road with its lane marks, the near pavement */}
-          <rect x={-2600} y={960} width={7600} height={ACADEMY.kerb - 960} fill={o.dark ? "#2e313d" : "#57586a"} />
+          <rect x={-2600} y={960} width={7600} height={ACADEMY.kerb - 960} fill={o.dark ? "#454857" : "#5f6072"} />
           {Array.from({ length: 40 }, (_, i) => <line key={i} x1={-2600 + i * 190} y1={960} x2={-2660 + i * 190 - 120} y2={ACADEMY.kerb} stroke="#000" strokeWidth={3} opacity={0.12} />)}
           <rect x={-2600} y={ACADEMY.kerb} width={7600} height={14} fill="#8d8f96" />
           <rect x={-2600} y={ACADEMY.road.from} width={7600} height={ACADEMY.road.to - ACADEMY.road.from} fill={o.dark ? "#1b1d25" : "#3d3f4c"} />
           {Array.from({ length: 24 }, (_, i) => <rect key={i} x={-2600 + i * 320} y={1380} width={150} height={10} rx={5} fill={PAPER} opacity={0.5} />)}
           <rect x={-2600} y={ACADEMY.road.to} width={7600} height={14} fill="#8d8f96" />
-          <rect x={-2600} y={ACADEMY.road.to + 14} width={7600} height={900} fill={o.dark ? "#2e313d" : "#57586a"} />
+          <rect x={-2600} y={ACADEMY.road.to + 14} width={7600} height={900} fill={o.dark ? "#454857" : "#5f6072"} />
           <AcademyFront open={doors} lit={lit} />
           <KimbapShop />
           <BusStop />

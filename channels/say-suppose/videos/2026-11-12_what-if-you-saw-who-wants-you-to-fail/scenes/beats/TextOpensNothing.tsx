@@ -10,7 +10,7 @@
 //   97   the phone: her name, the box; you type half a line. 98 the thumb hovers over send and stops.
 //   99   the bus: you at the window, the city sliding past.
 //   100  a bus shelter goes by with a small paper subscribe tag (no voice); paper: a third of all regrets.
-//   101  your thumb over her name, the half-typed text; the phone face down on your knee; you look up: the depot gates.
+//   101  your thumb over the half-typed text to her; the phone face down on your knee; you look up: the depot gates.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -24,7 +24,7 @@ import { blinking, camAt, current, HERO, JIYOON, linear, MINJUN, mix, ramp, type
 import { Deep } from "../sets/common";
 import { MistakeBookSide } from "./HoldsBreath.Parts";
 import { aimArm, Dim, Fade, handAt, timer, type Body } from "./Notebook.Parts";
-import { DepotGates, HeldResult, PastTheWindow, PHONE, PhoneBack, RegretPie, ResultScreen, SeatAndSea, ShelterAd, Thumb } from "./TextOpensNothing.Parts";
+import { DepotGates, HeldResult, PastTheWindow, PHONE, PhoneBack, RegretPie, ResultScreen, SeatAndSea, ShelterAd } from "./TextOpensNothing.Parts";
 
 // ------------------------------------------------------------------------------------------------ timing
 
@@ -170,11 +170,11 @@ const GaveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const soft = ramp(frame, k.never + 10, k.never + 26);
   const myFace = shot === "me"
     ? { brows: soft > 0.5 ? "raised" as const : "flat" as const, lids: mix(0.2, 0.35, soft), mouth: soft > 0.5 ? "smile" as const : "flat" as const, eyes: 1, look: { x: 0.9, y: 0.1 } }
-    : { ...EXPRESSIONS.relieved, look: { x: 0.9, y: 0.1 } };
+    : { brows: "raised" as const, lids: 0.12, mouth: "smile" as const, eyes: 1, look: { x: 0.9, y: 0.1 } };
   return (
     <Desks frame={frame} cam={drift(cams[shot], frame, "gave", 2)} hisArm={arm} notebook
       myFace={myFace} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: shot === "him" ? 0.5 : 0.05 } }}
-      hisProp={out > 0 ? <Kimbap x={hand.x - 8} y={hand.y - 18} scale={0.5} half tilt={-10} /> : null}
+      hisProp={out > 0 ? <Kimbap x={hand.x - 8} y={hand.y - 18} scale={0.95} half tilt={-10} /> : null}
       over={<Bubble frame={frame} at={k.half + 10} until={k.take + 24} x={hisHead.x + 40} y={hisHead.y - 74} text="Half?" side="right" />} />
   );
 };
@@ -196,8 +196,8 @@ const TakeShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return (
     <Desks frame={frame} cam={cam} myArm={myArm} hisArm={hisNow} notebook
       myFace={{ ...EXPRESSIONS.happy, lids: 0.2, look: { x: 0.9, y: 0.1 } }} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: 0.05 } }}
-      hisProp={!got ? <Kimbap x={hisHand.x - 8} y={hisHand.y - 18} scale={0.5} half tilt={-10} /> : null}
-      myProp={got ? <Kimbap x={myHand.x + 8} y={myHand.y - 18} scale={0.5} half tilt={8} /> : null} />
+      hisProp={!got ? <Kimbap x={hisHand.x - 8} y={hisHand.y - 18} scale={0.95} half tilt={-10} /> : null}
+      myProp={got ? <Kimbap x={myHand.x + 8} y={myHand.y - 18} scale={0.95} half tilt={8} /> : null} />
   );
 };
 
@@ -271,7 +271,7 @@ const ThumbShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = drift(camAt(frame, [[k.thumb, { x: 1180, y: 420, zoom: 1.45 }], [k.down, { x: 1180, y: 440, zoom: 1.5 }], [k.up, { x: 1180, y: 640, zoom: 1.2 }]]), frame, "thumb", 2);
   const props = {
     cam, mood: "day" as const, frame,
-    options: { ...phone.defaults, mode: "message" as const, typed: 0.55, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb: null, behind: "metro" as const },
+    options: { ...phone.defaults, mode: "message" as const, typed: 0.55, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb: 0.5, behind: "metro" as const },
   };
   const sx = flip < 0.5 ? 1 - flip * 2 : flip * 2 - 1;
   const at = `translate(${PHONE.x} ${PHONE.y + 140 * land}) rotate(${8 * land}) scale(${Math.max(0.001, sx)} 1) translate(${-PHONE.x} ${-PHONE.y})`;
@@ -281,7 +281,7 @@ const ThumbShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
         <>
           {land > 0 && <ellipse cx={PHONE.x - 40} cy={PHONE.y + 260} rx={620} ry={420} fill="#3b3e47" opacity={land} />}
           <g transform={at}>
-            {flip < 0.5 ? <>{phone.Mid?.(props)}<Thumb x={1160} y={282} /></> : <PhoneBack x={PHONE.x} y={PHONE.y} />}
+            {flip < 0.5 ? phone.Mid?.(props) : <PhoneBack x={PHONE.x} y={PHONE.y} />}
           </g>
         </>
       } />
