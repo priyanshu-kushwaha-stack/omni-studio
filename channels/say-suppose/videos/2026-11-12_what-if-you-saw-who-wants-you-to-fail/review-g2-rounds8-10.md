@@ -49,3 +49,15 @@ Registered in round 8 (`room lint --owner-note`, two notes; the gate's cap went 
    thousand academies (c04). You say it once."
 3. Line 355: "Neither of you says a word. Nothing opens." captions the gate. Proposed: "For once, silence lets you
    accept what she gives."
+
+## Round 11 (2026-11-12): the skit's lead-in
+
+The skit's card had only about 1.7 s of the 4.4 s lead-in. One `> HOLD: 4 s. Performed.` was added before "I made it!"
+(you tear the seal, read, read again, look left and right, hold the letter out). It is direction only: no spoken line
+changed and nothing was re-voiced; the lead-in is now 8.4 s. The card's scale is drawn upright (teal at the top, red at
+the bottom) to match the script. Room round 11: claims 0; the story editor 2 notes, open for the owner:
+1. Line 38: still wants the premise question in the first narration slot: "You made the cut. And now every piece of
+   good news shows you who wants you to fail." (that would drop "That's your scholarship letter").
+2. Line 135: the mirror test as a personal stake: "The mirror. Nothing. So you can't test the one face that matters:
+   yours. If he wins next, you won't know whether you're any better."
+Shipped: round 11, `room verify` ok.

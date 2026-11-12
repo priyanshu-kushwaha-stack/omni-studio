@@ -1,17 +1,20 @@
-// Four in a Hundred, line 48 and the performed moment after it (script v2.1, HOLD 5 s; the narrator is silent): the
-// store at night (builder A's set), fluorescent white against the dark street. "Half?" Your best friend snaps his
-// chocolate bar and holds out the bigger half, looking at you, half a smile. You look at the chocolate, then at the
-// card over his head, still open on -88, then past him. You walk. His hand stays out one beat too long, then drops. He
-// looks at the half in his hand, then puts both halves in his pocket.
+// Four in a Hundred at the store (builder A's set, script v3), fluorescent white against the dark street.
+//   71-72 and the performed moment after his "Half...?" (5 s, the narrator silent): he holds out the bigger half of the
+//   bar he has already snapped, looking at you, half a smile; his card still open on -88 from the day's announcement.
+//   You look at the chocolate, then at the card, then past him. You walk. His hand stays out one beat too long, then
+//   drops. He looks at the half in his hand, then puts both halves in his pocket. The cat on the crate watches you go.
+//   73-74 the next night: you alone at the counter with one drink. The clerk looks past you at the door, then at you:
+//   "Just you tonight?"
 import { Figure } from "@whatif/kit/rig/Figure";
 import { dir, joints, LIMB, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { Bubble, Chocolate, headAt, Meter } from "../parts";
+import { Chocolate, headAt, Meter } from "../parts";
 import { blinking, camAt, current, HERO, linear, MINJUN, mix, PASTELS, ramp } from "../shared";
-import { STORE, StoreBack, StoreCounter, storeLook } from "../sets/Store";
+import { Cat, STORE, StoreBack, StoreCounter, storeLook } from "../sets/Store";
+import { roomTags } from "./FourSeats.Class";
 import type { SeatsTimes } from "./FourSeats.Times";
 
 /** The clerk: a pastel head and the store's teal uniform, left of the till so the screen never covers the face. */
@@ -29,16 +32,16 @@ function handOf(x: number, y: number, scale: number, pose: Pose, facing: 1 | -1,
   return { x: x + (j.shoulder.x + (a.x + b.x) * LIMB) * scale * facing, y: y + (j.shoulder.y + (a.y + b.y) * LIMB) * scale };
 }
 
-type View = "store" | "half" | "look" | "card" | "past" | "walk" | "stay" | "pocket";
+type View = "store" | "half" | "look" | "card" | "past" | "walk" | "stay" | "pocket" | "cat";
 
 /** His arms: the bar at his chest; snapped; the bigger half held out to you; held too long; dropped; pocketed. */
 function hisPose(frame: number, k: SeatsTimes): Pose {
-  const out = ramp(frame, k.offer, k.offer + 10) * (1 - ramp(frame, k.drop, k.drop + 14));
-  const pocketIn = Math.round(mix(k.pocket, k.climb, 0.5));
+  const out = ramp(frame, k.half - 8, k.half + 4) * (1 - ramp(frame, k.drop, k.drop + 14));
+  const pocketIn = Math.round(mix(k.pocket, k.cat, 0.55));
   const away = ramp(frame, pocketIn, pocketIn + 10);
   const chest: [number, number] = [mix(40, 86, out), mix(60, 4, out)];
   const low: [number, number] = [mix(chest[0], -6, away), mix(chest[1], 34, away)];
-  const back: [number, number] = frame < k.snap ? [30, 70] : [mix(30, -10, away), mix(70, 40, away)];
+  const back: [number, number] = [mix(30, -10, away), mix(70, 40, away)];
   const look = frame >= k.pocket && frame < pocketIn ? { armF: [mix(chest[0], 30, ramp(frame, k.pocket, k.pocket + 8)), 70] as [number, number] } : {};
   return { ...STAND, lean: mix(0, 5, out), armF: low, armB: back, ...look };
 }
@@ -47,8 +50,9 @@ function hisFace(frame: number, k: SeatsTimes, passed: boolean) {
   if (frame >= k.pocket) return { brows: "sad" as const, lids: 0.5, mouth: "flat" as const, eyes: 1, look: { x: 0.6, y: 0.85 } };
   if (frame >= k.drop) return { brows: "sad" as const, lids: 0.45, mouth: "flat" as const, eyes: 1, look: { x: -0.6, y: 0.3 } };
   if (passed) return { brows: "worry" as const, lids: 0.15, mouth: "flat" as const, eyes: 1, look: { x: -0.9, y: 0.05 } };
+  if (frame >= k.half && frame < k.look) return { brows: "raised" as const, lids: 0.1, mouth: "open" as const, eyes: 1, look: { x: 0.95, y: 0 } };
   if (frame >= k.half) return { brows: "raised" as const, lids: 0.1, mouth: "smirk" as const, eyes: 1, look: { x: 0.95, y: 0 } };
-  return { brows: "none" as const, lids: 0, mouth: "flat" as const, eyes: 1, look: { x: 0.6, y: 0.5 } };
+  return { brows: "none" as const, lids: 0, mouth: "smirk" as const, eyes: 1, look: { x: 0.8, y: 0.2 } };
 }
 
 /** Your eyes in the close-up: the chocolate, the card over his head, then past him. */
@@ -61,15 +65,16 @@ function yourFace(frame: number, k: SeatsTimes) {
 
 export const StoreNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, k }) => {
   const mood: MoodName = "night";
-  const view = current<View>(frame, [[0, "store"], [k.half, "half"], [k.look, "look"], [k.card, "card"], [k.pastHim, "past"], [k.walk, "walk"], [k.stay, "stay"], [k.pocket, "pocket"]]);
+  const view = current<View>(frame, [[0, "store"], [k.half, "half"], [k.look, "look"], [k.card, "card"], [k.pastHim, "past"], [k.walk, "walk"], [k.stay, "stay"],
+    [k.pocket, "pocket"], [k.cat, "cat"]]);
   const s = STORE.scale, floor = STORE.floor;
   const mPose = hisPose(frame, k);
   const mh = headAt(MX, floor, s, mPose, 1);
   const front = handOf(MX, floor, s, mPose, 1, "front");
   const back = handOf(MX, floor, s, mPose, 1, "back");
-  const pocketIn = Math.round(mix(k.pocket, k.climb, 0.5)) + 8;
-  const snapped = frame >= k.snap;
-  const walk = linear(frame, k.walk, k.drop + 6);
+  const pocketIn = Math.round(mix(k.pocket, k.cat, 0.55)) + 8;
+  // you walk from the counter to the door, out past the cat, by the end of the moment
+  const walk = linear(frame, k.walk, Math.round(mix(k.cat, k.nextNight, 0.85)));
   const yx = mix(YOU_FROM, YOU_TO, walk);
   const yPose = walk > 0 && walk < 1 ? walkPose(frame * 0.34) : STAND;
   const yh = headAt(yx, floor, s, yPose, -1);
@@ -82,13 +87,13 @@ export const StoreNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, 
     past: camAt(frame, [[k.pastHim, closeUp(yh.x - 40, yh.y, 2.85)], [k.walk, closeUp(yh.x - 40, yh.y, 2.95)]]),
     walk: camAt(frame, [[k.walk, { x: 1040, y: 690, zoom: 1.6 }], [k.stay, { x: 960, y: 690, zoom: 1.65 }]]),
     stay: camAt(frame, [[k.stay, { x: (mh.x + front.x) / 2 + 20, y: mh.y + 70, zoom: 2.5 }], [k.pocket, { x: (mh.x + front.x) / 2 + 10, y: mh.y + 60, zoom: 2.7 }]]),
-    pocket: camAt(frame, [[k.pocket, { x: MX + 40, y: mh.y + 90, zoom: 2.2 }], [k.climb, { x: MX + 30, y: mh.y + 80, zoom: 2.35 }]]),
+    pocket: camAt(frame, [[k.pocket, { x: MX + 40, y: mh.y + 90, zoom: 2.2 }], [k.cat, { x: MX + 30, y: mh.y + 80, zoom: 2.35 }]]),
+    cat: camAt(frame, [[k.cat, { x: 300, y: 770, zoom: 2.3 }], [k.nextNight, { x: 270, y: 780, zoom: 2.5 }]]),
   };
   const cam = drift(cams[view], frame, "storeN", 3);
   const c = { ...STORE.clerk, x: STORE.clerk.x - 90 };
-  const held = frame >= pocketIn ? null : snapped
-    ? <Chocolate x={6} y={-6} scale={0.62} half="right" tilt={-80} />
-    : <Chocolate x={6} y={-6} scale={0.55} tilt={-70} />;
+  const held = frame >= pocketIn ? null : <Chocolate x={6} y={-6} scale={0.62} half="right" tilt={-80} />;
+  const catLook = Math.max(-1, Math.min(1, (yx - STORE.cat.x) / 260));
   return (
     <LookContext.Provider value={storeLook(mood, cam)}>
       <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<StoreBack cam={cam} mood={mood} frame={frame} />} actors={
@@ -96,12 +101,61 @@ export const StoreNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, 
           <Figure {...CLERK} x={c.x} y={c.y} scale={c.scale} facing={c.facing} brows="none" lids={0.25} mouth="flat" eyes={1}
             look={{ x: 0.3, y: 0.6 }} blink={blinking(frame, 7)} time={frame} />
           <StoreCounter />
-          {snapped && frame < pocketIn && <Chocolate x={back.x} y={back.y - 4} scale={0.5} half="left" tilt={-100} />}
+          <Cat {...STORE.cat} frame={frame} look={catLook} />
+          {frame < pocketIn && <Chocolate x={back.x} y={back.y - 4} scale={0.5} half="left" tilt={-100} />}
           <Figure {...MINJUN} x={MX} y={floor} scale={s} pose={mPose} {...hisFace(frame, k, passed)} blink={blinking(frame, 2)} time={frame}
             held={held ?? undefined} />
-          <Meter frame={frame} at={k.second} x={mh.x} headY={mh.y} r={mh.r} value={-88} until={k.climb} />
+          <Meter frame={frame} at={roomTags(k.week2Tag).minjun} x={mh.x} headY={mh.y} r={mh.r} value={-88} until={k.nextNight} />
           <Figure {...HERO} x={yx} y={floor} scale={s} facing={-1} pose={yPose} {...yourFace(frame, k)} blink={blinking(frame, 1)} time={frame} />
-          <Bubble frame={frame} at={k.half} until={k.halfEnd} x={mh.x + mh.r * 0.95} y={mh.y + mh.r * 0.25} text="Half?" size={30} side="right" />
+        </>
+      } />
+    </LookContext.Provider>
+  );
+};
+
+// ------------------------------------------------------------------------------------------------ 73-74 the next night
+
+/** A drink can for your hand. */
+const Can: React.FC = () => (
+  <g transform="rotate(-6)">
+    <rect x={-14} y={-46} width={28} height={50} rx={6} fill="#1d9a8f" stroke="#23252b" strokeWidth={4} />
+    <rect x={-14} y={-30} width={28} height={12} fill="#f3e9d7" />
+  </g>
+);
+
+type NightView = "in" | "clerk" | "you";
+
+/** The next night: you come in alone and stand at the counter with one drink. The clerk looks past you at the door,
+ *  then at you: "Just you tonight?" Your face. */
+export const NextNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, k }) => {
+  const mood: MoodName = "night";
+  const view = current<NightView>(frame, [[0, "in"], [k.clerk, "clerk"], [k.clerkYou, "you"]]);
+  const s = STORE.scale, floor = STORE.floor, u = STORE.customer;
+  const walk = linear(frame, k.nextNight, Math.round(mix(k.nextNight, k.clerk, 0.8)));
+  const yx = mix(420, u.x, walk);
+  const yPose: Pose = walk > 0 && walk < 1 ? walkPose(frame * 0.32) : { ...STAND, armF: [40, 60] };
+  const yh = headAt(yx, floor, s, yPose, 1);
+  const c = { ...STORE.clerk, x: STORE.clerk.x - 90 };
+  const ch = headAt(c.x, c.y, c.scale, STAND, c.facing);
+  const atDoor = frame < k.clerkYou;
+  const clerkFace = atDoor
+    ? { brows: "raised" as const, lids: 0, mouth: frame >= k.clerk ? "open" as const : "flat" as const, eyes: 1, look: { x: 1, y: -0.15 } }
+    : { brows: "worry" as const, lids: 0.1, mouth: "open" as const, eyes: 1, look: { x: 0.85, y: 0.3 } };
+  const cams: Record<NightView, Camera> = {
+    in: camAt(frame, [[k.nextNight, { x: 1000, y: 640, zoom: 1.2 }], [k.clerk, { x: 1200, y: 660, zoom: 1.45 }]]),
+    clerk: camAt(frame, [[k.clerk, closeUp(ch.x - 80, ch.y - 10, 2.5)], [k.clerkYou, closeUp(ch.x - 80, ch.y - 10, 2.65)]]),
+    you: camAt(frame, [[k.clerkYou, closeUp(yh.x + 30, yh.y, 2.7)], [k.climb, closeUp(yh.x + 30, yh.y + 4, 2.9)]]),
+  };
+  const cam = drift(cams[view], frame, "night2", 2);
+  return (
+    <LookContext.Provider value={storeLook(mood, cam)}>
+      <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<StoreBack cam={cam} mood={mood} frame={frame} />} actors={
+        <>
+          <Cat {...STORE.cat} frame={frame} look={0.6} />
+          <Figure {...CLERK} x={c.x} y={c.y} scale={c.scale} facing={c.facing} {...clerkFace} blink={blinking(frame, 7)} time={frame} />
+          <StoreCounter />
+          <Figure {...HERO} x={yx} y={floor} scale={s} facing={1} pose={yPose} brows={view === "you" ? "sad" : "flat"} lids={view === "you" ? 0.3 : 0.2} mouth="flat" eyes={1}
+            look={view === "you" ? { x: 0.4, y: 0.8 } : { x: 0.9, y: 0 }} blink={blinking(frame, 1)} time={frame} held={walk >= 1 ? <Can /> : undefined} />
         </>
       } />
     </LookContext.Provider>

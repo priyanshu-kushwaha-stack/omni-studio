@@ -235,7 +235,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const out = ramp(frame, k.show, k.show + 8);
   const up = ramp(frame, k.point, k.point + 8);
   const youPose: Pose = lerpPose(lerpPose({ ...STAND, armF: [55, 85], armB: [30, 70] }, { ...STAND, armF: [92, 10], armB: [-7, 8] }, out),
-    { ...STAND, armF: [60, 70], armB: [-172, 4] }, up);
+    { ...STAND, armF: [60, 70], armB: [140, 20] }, up);
   const reading = frame >= k.read && frame < k.left;
   const youFace: Partial<Expression> =
     frame < k.read ? { ...EXPRESSIONS.neutral, look: { x: 0.6, y: 0.7 } }

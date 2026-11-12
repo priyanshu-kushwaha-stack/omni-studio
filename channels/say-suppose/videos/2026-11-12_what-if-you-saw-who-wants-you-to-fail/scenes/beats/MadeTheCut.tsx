@@ -1,18 +1,18 @@
-// Beat "Made the Cut" (script.md v2.1, ## [00:00] Made the Cut; narration lines 0-6). The academy street at ten, the
-// thumbnail's frame (AcademyStreet view "thumb", camera REF): you big at the left holding up the letter, your best
-// friend at the right grinning, fist up, reaching for the hug. The bubble "I made it." pops at once and his card snaps
-// open at frame 3, its flaps running to -84 inside the first second.
+// Beat "Made the Cut" (script.md v3, ## [00:11] Made the Cut; narration lines 1-6). After the platform skit: lines 1-2
+// in the morning (MadeTheCut.Morning.tsx: your hand comes down, the letter close, the classroom insert); then the
+// academy street at ten, the thumbnail's frame (AcademyStreet view "thumb", camera REF): you big at the left holding up
+// the letter, your best friend at the right grinning, fist up, reaching for the hug.
 //
-//   0      the thumbnail's frame; the bubble; the card snaps and runs to -84
-//   0      close on your face, then the card, then his grin
-//   hold   PERFORMED (the 4 s after line 0, narrator silent): he never looks up at the card; his fist pumps once; he
-//          steps in, his near arm hooks round your neck and pulls you in, eyes shut, grin wide; close on you: your eyes
-//          stay open on the card over his shoulder; his free hand thumps your back twice; the three of you, held
-//   1      slow push in on the three
-//   2      on him in the hug; "And that's minus eighty-four": push to the card
-//   3      insert: the letter; "You've told no one all day": your face, the smile going
-//   4      the two of you; "He always has": his fond face
-//   5      "Knew it. Knew it.": close on him laughing, the fist pumping
+//   1      close on you on the empty platform, your hand coming down; the letter close: the crest, the teal seal
+//   2      your face; ONE insert: the classroom, him talking at you, your hand flat on the letter in your jacket
+//   3      "Ten o'clock. The academy doors open. There he is.": the thumbnail's frame; close on your face; his grin;
+//          back to the two of you: "I made it." and the card snaps open over him, the flaps running down the red side
+//   hold   PERFORMED (the 4 s after line 3, narrator silent): the card close as the flaps stop on -84; he never looks up
+//          at it; his fist pumps once; he steps in, his near arm hooks round your neck and pulls you in, eyes shut,
+//          grin wide; close on you: your eyes stay open on the card over his shoulder; his free hand thumps your back
+//          twice; the three of you, held
+//   4      on him in the hug; "And that's minus eighty-four": push to the card
+//   5      "Knew it. Knew it." (his own voice): close on him laughing, the fist pumping
 //   6      the card close: it folds shut with a click; over his shoulder, your eyes on the empty air
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
@@ -27,7 +27,8 @@ import { Bubble, headAt, Letter, Meter, MeterSound } from "../parts";
 import { blinking, camAt, current, HERO, lineEnd, MINJUN, mix, ramp, type Beat, type Shot } from "../shared";
 import { REF } from "../sets/common";
 import { ACADEMY, AcademyStreetBack, academyLights, TOWER_DEPTH } from "../sets/AcademyStreet";
-import { CHEER, handAt, lineAt, lookFor, Shade, shoulderAt, SHOW, Strollers, type Body } from "./MadeTheCut.parts";
+import { CHEER, handAt, lineAt, lookFor, moodNow, Shade, shoulderAt, SHOW, Strollers, type Body } from "./MadeTheCut.parts";
+import { Morning } from "./MadeTheCut.Morning";
 
 // ------------------------------------------------------------------------------------------------ timing
 
@@ -37,28 +38,33 @@ type T = ReturnType<typeof times>;
 function times(clips: Clip[], to: number) {
   const at = lineAt(clips);
   const from = (i: number) => clips[i].from;
-  const gap0 = lineEnd(clips, 0), gap1 = from(1);
+  const gap0 = lineEnd(clips, 3), gap1 = from(4);
   const hp = (p: number) => Math.round(gap0 + (gap1 - gap0) * p);
   return {
-    meter: 3, // the card snaps open over him
-    face: at(0, 0.36), // close on your face
-    card: at(0, 0.6), // the card
-    grin: at(0, 0.8), // his grin
-    // the performed hold, staged in the gap between line 0 and line 1
-    hold: lineEnd(clips, 0) + 1, // the two of you, the card at -84; he never looks up at it
-    pump: hp(0.08), // his fist pumps once
-    hug: hp(0.24), // he steps in, the near arm hooks round your neck, eyes shut
-    you: hp(0.44), // close on you: eyes open on the card, over his shoulder
-    thump1: hp(0.56), // his free hand thumps your back
-    thump2: hp(0.7), // twice
+    // lines 1-2, the morning (MadeTheCut.Morning.tsx)
+    down: from(1), // your hand comes down on the empty platform
+    letter: at(1, 0.38), // the letter close
+    think: from(2), // your face: "So what if every piece of good news ..."
+    classroom: at(2, 0.55), // the classroom insert: "You tell nobody all day."
+    // line 3, the thumbnail's frame
+    t0: from(3), // "Ten o'clock. The academy doors open. There he is."
+    face: at(3, 0.34), // close on your face
+    grin: at(3, 0.6), // his grin
+    two: at(3, 0.8), // back to the two of you
+    bubble: at(3, 0.84), // "I made it."
+    meter: at(3, 0.9), // the card snaps open over him
+    // the performed hold, staged in the gap between line 3 and line 4
+    hold: lineEnd(clips, 3), // the card close: the flaps stop on -84
+    twoShot: hp(0.14), // the two of you; he never looks up at it
+    pump: hp(0.18), // his fist pumps once
+    hug: hp(0.3), // he steps in, the near arm hooks round your neck, eyes shut
+    you: hp(0.46), // close on you: eyes open on the card, over his shoulder
+    thump1: hp(0.58), // his free hand thumps your back
+    thump2: hp(0.72), // twice
     three: hp(0.84), // the three of you, held
-    q: from(1), // "What if you could see who wants you to fail?"
-    friend: from(2), // "Because that's your best friend."
-    number: at(2, 0.5), // "And that's minus eighty-four."
-    letter: from(3), // "Since this morning, a card opens ..."
-    told: at(3, 0.6), // "You've told no one all day."
-    always: from(4), // "Not because of the cards."
-    fond: at(4, 0.62), // "He always has."
+    q: from(4), // "Because that's your best friend."
+    friend: from(4),
+    number: at(4, 0.5), // "And that's minus eighty-four."
     knew: from(5) - 3, // "Knew it. Knew it."
     cardCU: from(6) - 3, // "Sixty seconds."
     fold: at(6, 0.28), // "The card folds shut."
@@ -118,18 +124,15 @@ type Face = Partial<Expression>;
 
 /** Your face for the shot on. */
 function yourFace(shot: string, frame: number, k: T): Face {
-  const fade = ramp(frame, k.told + 6, k.told + 30);
   switch (shot) {
     case "wide": return { brows: "raised", lids: 0, mouth: "o", eyes: 1.25, look: { x: 0.75, y: -0.55 } };
     case "face": return { brows: "raised", lids: 0, mouth: "open", eyes: 1.2, look: { x: 0.8, y: -0.6 } };
-    case "hold": return frame < k.hug ? { brows: "raised", lids: 0, mouth: "open", eyes: 1.15, look: { x: 0.8, y: -0.5 } }
+    case "two": return { brows: "raised", lids: 0, mouth: frame < k.meter ? "open" : "o", eyes: 1.2, look: frame < k.meter ? { x: 0.8, y: 0.1 } : { x: 0.75, y: -0.6 } };
+    case "cardHold": case "hold": return frame < k.hug ? { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.8, y: -0.6 } }
       : { brows: "raised", lids: 0, mouth: "smile", eyes: 1.15, look: { x: 0.7, y: -0.7 } };
     case "holdYou": return { brows: "raised", lids: 0, mouth: frame < k.thump2 ? "smile" : "flat", eyes: 1.2, look: { x: 0.75, y: -0.75 } };
     case "holdThree": return { brows: "worry", lids: 0.05, mouth: "flat", eyes: 1.15, look: { x: 0.75, y: -0.75 } };
-    case "told": return fade < 0.5
-      ? { brows: "raised", lids: 0, mouth: "smile", eyes: 1.1, look: { x: 0.8, y: -0.7 } }
-      : { brows: "worry", lids: 0.18, mouth: "flat", eyes: 1, look: { x: 0.8, y: -0.75 } };
-    case "always": case "fond": case "knew": return { brows: "worry", lids: 0.25, mouth: "smile", eyes: 1, look: { x: 0.9, y: -0.2 } };
+    case "friend": case "number": case "knew": return { brows: "worry", lids: 0.25, mouth: "smile", eyes: 1, look: { x: 0.9, y: -0.2 } };
     case "ots": case "cardCU": return { brows: "worry", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.7, y: -0.8 } };
     default: return { brows: "raised", lids: 0, mouth: "smile", eyes: 1.15, look: { x: 0.7, y: -0.6 } };
   }
@@ -138,7 +141,6 @@ function yourFace(shot: string, frame: number, k: T): Face {
 /** His face. In the hug his eyes are shut and his grin wide; he never looks up at the card. */
 function hisFace(shot: string, frame: number, k: T): Face & { blink?: boolean } {
   if (frame >= k.hug && frame < k.q) return { brows: "raised", lids: 0, mouth: "open", eyes: 1, blink: true };
-  if (shot === "fond") return { ...EXPRESSIONS.relieved, look: { x: 0.9, y: 0.2 } };
   if (shot === "knew") return { brows: "raised", lids: 0.35, mouth: "open", eyes: 1.05, look: { x: 0.9, y: 0.3 } };
   return { ...EXPRESSIONS.happy, mouth: "open", eyes: 1.1, look: { x: 0.9, y: 0.15 } };
 }
@@ -162,7 +164,7 @@ const Street: React.FC<{ frame: number; k: T; cam: Camera; shot: string; you?: b
       {/* his near arm round your neck; over his shoulder it comes in from the right edge */}
       <HookArm you={yb} him={mb} amount={hook} from={him ? undefined : { x: shoulderAt(yb).x + 900, y: shoulderAt(yb).y + 160 }} />
       {him && <Meter frame={frame} at={k.meter} x={mh.x} headY={mh.y} r={mh.r} value={-84} until={k.fold} />}
-      <Bubble frame={frame} at={0} until={k.face} x={yh.x - 40} y={yh.y - yh.r - 18} text="I made it." size={56} side="right" />
+      <Bubble frame={frame} at={k.bubble} until={k.twoShot} x={yh.x - 40} y={yh.y - yh.r - 18} text="I made it." size={56} side="right" />
     </>
   );
   const back = (
@@ -177,37 +179,33 @@ const Street: React.FC<{ frame: number; k: T; cam: Camera; shot: string; you?: b
 const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = times(clips, shot.to);
+  if (frame < k.t0) return <AbsoluteFill style={{ background: "#000" }}><Morning frame={frame} t={{ down: k.down, letter: k.letter, think: k.think, classroom: k.classroom, end: k.t0 }} mood={moodNow(shot)} /></AbsoluteFill>;
   const on = current(frame, [
-    [0, "wide"], [k.face, "face"], [k.card, "card"], [k.grin, "grin"], [k.hold, "hold"], [k.you, "holdYou"], [k.three, "holdThree"],
-    [k.q, "hug"], [k.friend, "friend"], [k.number, "number"],
-    [k.letter, "letter"], [k.told, "told"], [k.always, "always"], [k.fond, "fond"], [k.knew, "knew"], [k.cardCU, "cardCU"], [k.ots, "ots"],
+    [k.t0, "wide"], [k.face, "face"], [k.grin, "grin"], [k.two, "two"], [k.hold, "cardHold"], [k.twoShot, "hold"], [k.you, "holdYou"], [k.three, "holdThree"],
+    [k.q, "friend"], [k.number, "number"], [k.knew, "knew"], [k.cardCU, "cardCU"], [k.ots, "ots"],
   ]);
   const yb = youAt(frame, k), mb = minjunAt(frame, k);
   const yh = headAt(yb.x, yb.y, yb.scale, yb.pose, 1);
   const mh = headAt(mb.x, mb.y, mb.scale, mb.pose, -1);
   const card = { x: mh.x, y: mh.y - mh.r - mh.r * 1.05 }; // the card's middle
-  const hand = handAt(yb, "front");
   const bump = (pulse(frame, k.thump1) + pulse(frame, k.thump2)) * 5;
   const cams: Record<typeof on, Camera> = {
-    wide: frame < 2 ? REF : camAt(frame, [[0, REF], [k.face, { x: 980, y: 560, zoom: 1.04 }]]),
-    face: camAt(frame, [[k.face, closeUp(yh.x + 150, yh.y + 40, 1.5)], [k.card, closeUp(yh.x + 160, yh.y + 40, 1.6)]]),
-    card: camAt(frame, [[k.card, insert(card.x - 20, card.y + 40, 1.9)], [k.grin, insert(card.x - 20, card.y + 40, 2.05)]]),
-    grin: camAt(frame, [[k.grin, closeUp(mh.x - 40, mh.y - 70, 1.55)], [k.hold, closeUp(mh.x - 40, mh.y - 80, 1.62)]]),
-    hold: camAt(frame, [[k.hold, { x: 960, y: 560, zoom: 1.0 }], [k.hug, { x: 900, y: 570, zoom: 1.04 }], [k.you, { x: 760, y: 600, zoom: 1.14 }]]),
+    wide: camAt(frame, [[k.t0, REF], [k.face, { x: 980, y: 560, zoom: 1.04 }]]),
+    face: camAt(frame, [[k.face, closeUp(yh.x + 150, yh.y + 40, 1.5)], [k.grin, closeUp(yh.x + 160, yh.y + 40, 1.6)]]),
+    grin: camAt(frame, [[k.grin, closeUp(mh.x - 40, mh.y - 70, 1.55)], [k.two, closeUp(mh.x - 40, mh.y - 80, 1.62)]]),
+    two: camAt(frame, [[k.two, REF], [k.hold, { x: 1000, y: 560, zoom: 1.04 }]]),
+    cardHold: camAt(frame, [[k.hold, insert(card.x - 20, card.y + 40, 1.9)], [k.twoShot, insert(card.x - 20, card.y + 40, 2.05)]]),
+    hold: camAt(frame, [[k.twoShot, { x: 960, y: 560, zoom: 1.0 }], [k.hug, { x: 900, y: 570, zoom: 1.04 }], [k.you, { x: 760, y: 600, zoom: 1.14 }]]),
     holdYou: camAt(frame, [[k.you, { x: yh.x + 230, y: yh.y - 60 + bump, zoom: 1.4 }], [k.three, { x: yh.x + 240, y: yh.y - 60 + bump, zoom: 1.5 }]]),
     holdThree: camAt(frame, [[k.three, { x: 820, y: 580, zoom: 1.08 }], [k.q, { x: 820, y: 580, zoom: 1.1 }]]),
-    hug: camAt(frame, [[k.q, { x: 820, y: 580, zoom: 1.1 }], [k.friend, { x: 760, y: 560, zoom: 1.2 }]]),
     friend: camAt(frame, [[k.friend, closeUp(mh.x - 30, mh.y - 110, 1.5)], [k.number, closeUp(mh.x - 30, mh.y - 120, 1.58)]]),
-    number: camAt(frame, [[k.number, insert(card.x, card.y + 30, 2.0)], [k.letter, insert(card.x, card.y + 30, 2.25)]]),
-    letter: camAt(frame, [[k.letter, insert(hand.x - 10, hand.y - 120, 1.9)], [k.told, insert(hand.x - 10, hand.y - 110, 2.05)]]),
-    told: camAt(frame, [[k.told, closeUp(yh.x + 130, yh.y + 30, 1.55)], [k.always, closeUp(yh.x + 140, yh.y + 30, 1.68)]]),
-    always: camAt(frame, [[k.always, { x: 720, y: 600, zoom: 1.08 }], [k.fond, { x: 740, y: 600, zoom: 1.16 }]]),
-    fond: camAt(frame, [[k.fond, closeUp(mh.x - 20, mh.y - 60, 1.7)], [k.knew, closeUp(mh.x - 20, mh.y - 70, 1.78)]]),
+    number: camAt(frame, [[k.number, insert(card.x, card.y + 30, 2.0)], [k.knew, insert(card.x, card.y + 30, 2.25)]]),
     knew: camAt(frame, [[k.knew, closeUp(mh.x - 50, mh.y - 90, 1.45)], [k.cardCU, closeUp(mh.x - 50, mh.y - 90, 1.52)]]),
     cardCU: camAt(frame, [[k.cardCU, insert(card.x, card.y + 20, 2.3)], [k.ots, insert(card.x, card.y + 10, 2.45)]]),
     ots: camAt(frame, [[k.ots, closeUp(yh.x + 210, yh.y - 10, 1.45)], [k.end, closeUp(yh.x + 210, yh.y - 20, 1.55)]]),
   };
-  const cam = on === "wide" && frame < 2 ? REF : drift(cams[on], frame, "cut", on === "wide" ? 2 : 3);
+  // the first frames of line 3 are the thumbnail's frame exactly
+  const cam = on === "wide" && frame < k.t0 + 2 ? REF : drift(cams[on], frame, "cut", on === "wide" ? 2 : 3);
   const lightCam = cam;
   return (
     <AbsoluteFill style={{ background: "#000" }}>
@@ -221,4 +219,4 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const madeTheCut: Beat = { id: "MadeTheCut", firstLine: 0, Component: Scene };
+export const madeTheCut: Beat = { id: "MadeTheCut", firstLine: 1, Component: Scene };

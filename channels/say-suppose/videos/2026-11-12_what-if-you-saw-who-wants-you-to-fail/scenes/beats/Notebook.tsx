@@ -26,6 +26,7 @@ import { DrawLine } from "@whatif/kit/ui/DrawLine";
 import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { Meter, MeterSound, Sheet, headAt } from "../parts";
 import { blinking, camAt, current, HERO, linear, MINJUN, mix, PASTELS, ramp, type Beat, type Shot } from "../shared";
+import { Chair } from "../sets/common";
 import { PLAN, READING, ReadingRoomBack, TOP, TopDownHead } from "../sets/ReadingRoom";
 import { aimArm, Dim, LampLight, PointingHand, Rows, S, timer, type Body } from "./Notebook.Parts";
 
@@ -191,7 +192,13 @@ const ChairShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       : camAt(frame, [[k.mouth, closeUp(head.x + 40, head.y + 20, 2.7)], [k.ticks, closeUp(head.x + 40, head.y + 20, 3.05)]]);
   return (
     <Rows frame={frame} cam={drift(cam, frame, "chair", 2)} studiers={false}
-      you={<Figure {...HERO} {...body} {...face} blink={shot !== "chair" && blinking(frame, 2)} time={frame} />} />
+      you={
+        <>
+          {/* his empty chair, pushed back into the aisle and catching the lamp: what you turn to look at */}
+          {shot === "chair" && <Chair x={HIS.chair - 70} y={READING.seatTop} scale={1.2} color="#c99a68" />}
+          <Figure {...HERO} {...body} {...face} blink={shot !== "chair" && blinking(frame, 2)} time={frame} />
+        </>
+      } />
   );
 };
 

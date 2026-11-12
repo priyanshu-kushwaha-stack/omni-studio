@@ -19,6 +19,8 @@ claims: claims.md
 > MOOD: morning
 > SCENE: The metro platform, twenty to seven in the morning, nearly empty. A split-flap departure board hangs over the platform; it flutters through its times and clicks. You under it, mustard head, teal scarf, school bag, an envelope with a teal seal in both hands. One other face on the platform: a woman with a shopping bag, grey head, at the yellow line. You tear the seal. A sheet unfolds. You read it. Your mouth opens. You read it again. You look left, right: one face. Hers. You hold the open letter out at her.
 
+> HOLD: 4 s. Performed. The board flutters and clicks overhead. You tear the teal seal with your thumb; the sheet unfolds; your eyes run down it and stop. Your mouth opens. You read it again, closer. You look left: empty platform. Right: her. You hold the letter out at arm's length.
+
 > BUBBLE: You: I made it!
 
 > HOLD: 4 s. Performed. A soft paper snap: a cream card the size of a bus ticket unfolds in the air over her head. A scale is stamped down it, red at the bottom, a grey zero in the middle, teal at the top. Split-flap digits flutter up out of the red, through the zero, into the teal, and click still on plus twenty-two. She never looks up. Your eyes do, and stay there.

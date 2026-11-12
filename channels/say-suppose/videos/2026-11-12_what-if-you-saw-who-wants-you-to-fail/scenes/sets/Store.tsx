@@ -31,7 +31,7 @@ export const STORE = {
   /** Where on the counter something is put down (a chocolate bar, a coin). */
   counterTop: { x: 1460, y: 752 },
   /** The till's screen on the counter. */
-  till: { x: 1760, y: 700 },
+  till: { x: 1840, y: 700 },
   /** The clerk behind the counter, facing the customers (-1). Draw before <StoreCounter>. */
   clerk: { x: 1700, y: 960, scale: 1.15, facing: -1 as const },
   /** A customer at the counter, facing the clerk (1). Min-jun's place. */
@@ -266,7 +266,7 @@ export const StoreCounter: React.FC<{ frame?: number }> = () => {
       <rect x={STORE.till.x - 70} y={STORE.till.y - 50} width={140} height={86} rx={8} fill="#2b2f3c" stroke={INK} strokeWidth={5} />
       <rect x={STORE.till.x - 58} y={STORE.till.y - 40} width={116} height={64} rx={4} fill="#9fd3e6" />
       <rect x={1560} y={c.top - 34} width={60} height={34} rx={5} fill="#3b3e47" stroke={INK} strokeWidth={4} />
-      <rect x={1840} y={c.top - 26} width={46} height={26} rx={4} fill="#e6a0a0" stroke={INK} strokeWidth={3} />
+      <rect x={1440} y={c.top - 26} width={46} height={26} rx={4} fill="#e6a0a0" stroke={INK} strokeWidth={3} />
       <rect x={c.from - 20} y={c.top - 14} width={c.to - c.from + 40} height={22} rx={6} fill="#c9d2d8" stroke={INK} strokeWidth={5} />
       <rect x={c.from} y={c.top + 8} width={c.to - c.from} height={STORE.floor - c.top - 8} fill="#e9ecea" stroke={INK} strokeWidth={5} />
       <rect x={c.from + 20} y={c.top + 40} width={c.to - c.from - 40} height={70} rx={6} fill="#1d9a8f" opacity={0.85} />
@@ -288,13 +288,15 @@ export const StoreFront: React.FC<{ cam: Camera }> = ({ cam }) => (
 
 /**
  * The store cat, sitting, its base centre at (x, y) (put it on STORE.cat). Ginger with darker stripes; its tail
- * curls and flicks on `frame`, and it blinks slowly. `look` turns its eyes (-1..1). Nothing opens over a cat.
+ * curls and flicks on `frame`, and it blinks slowly. `look` turns its eyes (-1..1). `eyes` "shut" (asleep) or "one"
+ * (one eye open, the near one) overrides the blinking. Nothing opens over a cat.
  */
-export const Cat: React.FC<{ x: number; y: number; scale?: number; facing?: 1 | -1; frame: number; look?: number }> = ({
-  x, y, scale = 1, facing = 1, frame, look = 0.3,
+export const Cat: React.FC<{ x: number; y: number; scale?: number; facing?: 1 | -1; frame: number; look?: number; eyes?: "open" | "one" | "shut" }> = ({
+  x, y, scale = 1, facing = 1, frame, look = 0.3, eyes = "open",
 }) => {
   const flick = Math.sin(frame / 22) * 10 + (frame % 140 < 12 ? Math.sin(((frame % 140) / 12) * Math.PI) * 18 : 0);
   const blink = frame % 160 > 150;
+  const shut = (cx: number) => eyes === "shut" || (eyes === "one" && cx < 0) || (eyes === "open" && blink);
   const fur = "#d9893b", dark = "#a85f22";
   return (
     <g transform={`translate(${x} ${y}) scale(${scale * facing} ${scale})`}>
@@ -317,9 +319,9 @@ export const Cat: React.FC<{ x: number; y: number; scale?: number; facing?: 1 | 
         <ellipse cx={0} cy={0} rx={38} ry={33} fill={fur} stroke={INK} strokeWidth={5} />
         <path d="M-8 -30 L-6 -18 M8 -30 L6 -18 M0 -32 L0 -18" stroke={dark} strokeWidth={4} strokeLinecap="round" />
         <ellipse cx={8} cy={14} rx={16} ry={11} fill="#f3e2c8" />
-        {blink
-          ? [-12, 16].map((cx) => <line key={cx} x1={cx - 7} y1={-2} x2={cx + 7} y2={-2} stroke={INK} strokeWidth={4} strokeLinecap="round" />)
-          : [-12, 16].map((cx) => (
+        {[-12, 16].map((cx) => shut(cx)
+          ? <path key={cx} d={`M${cx - 7} -2 Q${cx} 3 ${cx + 7} -2`} fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" />
+          : (
             <g key={cx}>
               <ellipse cx={cx + look * 4} cy={-2} rx={7} ry={9} fill="#9fd36a" stroke={INK} strokeWidth={3} />
               <ellipse cx={cx + look * 5} cy={-2} rx={2.5} ry={7} fill={INK} />

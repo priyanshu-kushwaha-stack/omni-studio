@@ -58,10 +58,12 @@ export const Meter: React.FC<{
     <g transform={`translate(${x} ${top}) rotate(${tilt + sway}) scale(1 ${Math.max(0.001, open * close)})`}>
       <rect x={-w / 2 + h * 0.06} y={h * 0.08} width={w} height={h} rx={h * 0.14} fill="#000" opacity={0.3} />
       <rect x={-w / 2} y={0} width={w} height={h} rx={h * 0.14} fill={PAPER} stroke={INK} strokeWidth={Math.max(3, r * 0.05)} />
-      {/* the stamped scale: teal half, crimson half, and the marker */}
-      <rect x={-w / 2 + h * 0.12} y={h * 0.8} width={w / 2 - h * 0.12} height={h * 0.08} fill={TEAL} />
-      <rect x={0} y={h * 0.8} width={w / 2 - h * 0.12} height={h * 0.08} fill={CRIMSON} />
-      <path d={`M${-w / 2 + h * 0.12 + (w - h * 0.24) * marker} ${h * 0.76} l${-h * 0.07} ${-h * 0.1} h${h * 0.14}z`} fill={INK} />
+      {/* the stamped scale, upright at the card's left edge: teal at the top (+100), a grey zero, red at the bottom
+          (-100), and the marker beside it (the script: "red at the bottom, a grey zero in the middle, teal at the top") */}
+      <rect x={-w / 2 + h * 0.1} y={h * 0.1} width={h * 0.09} height={h * 0.4} fill={TEAL} />
+      <rect x={-w / 2 + h * 0.1} y={h * 0.5} width={h * 0.09} height={h * 0.4} fill={CRIMSON} />
+      <rect x={-w / 2 + h * 0.07} y={h * 0.48} width={h * 0.15} height={h * 0.04} fill={GREY} />
+      <path d={`M${-w / 2 + h * 0.21} ${h * 0.1 + h * 0.8 * marker} l${h * 0.1} ${-h * 0.07} v${h * 0.14}z`} fill={INK} />
       {chars.map((ch, i) => {
         const cx = (i - (chars.length - 1) / 2) * tw * 1.08;
         return (
