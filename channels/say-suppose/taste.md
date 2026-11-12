@@ -10,13 +10,25 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-12
 
+- **"it should start with a short skit and there it should show that you have or got this superpower somehow and then
+  probably the narration of the story"** G2 review of the v2.1 cut (saw who wants you to fail): "the Opening of this
+  video feels a little off. you have been holding this ? what this ?" Open on a short skit, before the narrator speaks:
+  how you get the power (or find you have it), acted, with nothing vague (never "this" without its picture). Then the
+  narration. This outranks the template's cold open (`rules/story.md` #15) for this film; the thumbnail's moment still
+  lands by 0:30 (K13). (saw who wants you to fail, G2)
+- **"Story should have more content and people should have a lot. Just like Mr. Beast videos. Every line in his script
+  has meaning and keeps the viewer on their toe."** Same review: "viewers are always curious on what happens next ...
+  I want such enthusiasm in this video also." More happens: more uses of the power, more people and reactions, more
+  turns; every line either raises a question or pays one off, and no line only describes. Threads that worked stay
+  ("cat was fine"). (saw who wants you to fail, G2)
 - **"i understood the intent of the script and the scientific part ... but didn't quite follow the complete script, it
   felt difficult"** Same review: "some of the words i was not aware of, split kimbap, so other people might not
   understand as well. We can rewrite the characters story probably along similar lines." The idea and the facts
   landed; the story did not. Every story detail a viewer anywhere knows without being told (a shared snack, not a
-  "split kimbap"; "a late-night study room", not a local term), one clear line of events, and few threads: the
-  people and props a beat needs, nothing else. The setting can stay specific, but nothing in the telling may need a
-  local word to follow. (saw who wants you to fail, G2)
+  "split kimbap"; "a late-night study room", not a local term). The setting can stay specific, but nothing in the
+  telling may need a local word to follow. (Corrected the same day: an earlier version of this entry added "few
+  threads, nothing else"; that was the writer's reading, not the owner's words. The owner: "cat was fine".)
+  (saw who wants you to fail, G2)
 - **"Names were a little difficult to follow."** G2 first-cut review of the saw-who-wants-you-to-fail film (Min-jun,
   Ji-yoon, Tae-ho, Ms. Kang). A viewer must never have to remember who a name is: say the role ("your best friend",
   "your sister", "the rival", "your maths teacher"), introduce a name once beside its role if at all, and keep the
