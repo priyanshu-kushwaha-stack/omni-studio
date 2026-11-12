@@ -1,0 +1,13 @@
+{
+  "round": 1,
+  "draft_sha256": "593e480639dee72089bd061336b6f0a87b5cadb7a22f6dc04af1cf7442ff7a1e",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": false,
+  "owner_note": [],
+  "kind": "packaging",
+  "linted_at": "2026-11-12T20:21:12+00:00"
+}

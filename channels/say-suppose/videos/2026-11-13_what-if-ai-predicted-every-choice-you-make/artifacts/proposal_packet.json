@@ -1,0 +1,94 @@
+{
+ "version": "1.0",
+ "concept_options": [
+  {
+   "id": "A",
+   "title": "What If AI Predicted Every Choice You Make?",
+   "why_this_works": "The topic title from the 2026-11-12 AI slate (g-ai-predicts-your-next-move, Gemini, 70/100 blind); the writer's pick; pairs with thumbnail a (TRUST HIM?)",
+   "narrative_structure": "story",
+   "visual_approach": "The food stall's counter at closing in a shuttered food court, one warm lamp over it (mood lamp): you large at the left, shocked, holding the cash-box key out across the counter on an open palm; the dark tin cash box between you; your best friend at the right, peach head, looking down at the key with a hand flat on the lid; over his head, on a thread from the city's small teal lamp, a crimson split-flap card reads 94%. The film's key shot (7:40). Three candidates a, b, c differ only in the tag (TRUST HIM?, HE WOULDN'T., IT'S WRONG.); drawn in code, brand/thumbs/predict",
+   "suggested_playbook": "say-suppose",
+   "target_platform": "youtube",
+   "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+   "target_duration_seconds": 570,
+   "hook": "Closing time at a food court: your best friend holds out his hand for the cash-box key as he does every night, you pocket it as a joke, and a city worker clips a teal lamp to the lamppost; a tag drops over every head saying what each person will do in the next ten seconds, and the coffee next door goes half price for doing it."
+  },
+  {
+   "id": "B",
+   "title": "What If You Got Paid to Be Predictable?",
+   "why_this_works": "Alternative title: the discount as the wish, hides the AI; pairs with thumbnail b (HE WOULDN'T.); see packaging.md",
+   "narrative_structure": "story",
+   "visual_approach": "The food stall's counter at closing in a shuttered food court, one warm lamp over it (mood lamp): you large at the left, shocked, holding the cash-box key out across the counter on an open palm; the dark tin cash box between you; your best friend at the right, peach head, looking down at the key with a hand flat on the lid; over his head, on a thread from the city's small teal lamp, a crimson split-flap card reads 94%. The film's key shot (7:40). Three candidates a, b, c differ only in the tag (TRUST HIM?, HE WOULDN'T., IT'S WRONG.); drawn in code, brand/thumbs/predict",
+   "suggested_playbook": "say-suppose",
+   "target_platform": "youtube",
+   "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+   "target_duration_seconds": 570,
+   "hook": "Closing time at a food court: your best friend holds out his hand for the cash-box key as he does every night, you pocket it as a joke, and a city worker clips a teal lamp to the lamppost; a tag drops over every head saying what each person will do in the next ten seconds, and the coffee next door goes half price for doing it."
+  },
+  {
+   "id": "C",
+   "title": "What If Surprising People Cost You Money?",
+   "why_this_works": "Alternative title: the catch as the premise; pairs with thumbnail c (IT'S WRONG.)",
+   "narrative_structure": "story",
+   "visual_approach": "The food stall's counter at closing in a shuttered food court, one warm lamp over it (mood lamp): you large at the left, shocked, holding the cash-box key out across the counter on an open palm; the dark tin cash box between you; your best friend at the right, peach head, looking down at the key with a hand flat on the lid; over his head, on a thread from the city's small teal lamp, a crimson split-flap card reads 94%. The film's key shot (7:40). Three candidates a, b, c differ only in the tag (TRUST HIM?, HE WOULDN'T., IT'S WRONG.); drawn in code, brand/thumbs/predict",
+   "suggested_playbook": "say-suppose",
+   "target_platform": "youtube",
+   "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+   "target_duration_seconds": 570,
+   "hook": "Closing time at a food court: your best friend holds out his hand for the cash-box key as he does every night, you pocket it as a joke, and a city worker clips a teal lamp to the lamppost; a tag drops over every head saying what each person will do in the next ten seconds, and the coffee next door goes half price for doing it."
+  }
+ ],
+ "selected_concept": {
+  "concept_id": "A",
+  "rationale": "The writer's recommendation (title A with tag a, TRUST HIM?); pending the owner's pick at G1"
+ },
+ "production_plan": {
+  "pipeline": "studio-whatif",
+  "playbook": "say-suppose",
+  "render_runtime": "external",
+  "decision_log_ref": "artifacts/decision_log.json",
+  "stages": [
+   {
+    "stage": "proposal",
+    "tools": [],
+    "approach": "Packaging (G1, 2026-11-13): three titles, three one-variable thumbnails drawn in code (brand/thumbs/predict), the beat outline on the template spine with the owner's skit opening and played scenes; claims.md (31 rows) started at G1; the G1 room (story editor, claims check)"
+   },
+   {
+    "stage": "story_script",
+    "tools": [],
+    "approach": "research, claims.md, script.md, sequel and 6-8 chapters on the template (rules/story.md #1-#19, 155 wpm, about 9.5 min); free local narration with each character in its own local voice, and a 720p first cut before G2; the G2 room; omni qc story_script must pass"
+   },
+   {
+    "stage": "final_edit",
+    "tools": [],
+    "approach": "Picture lock: cut, key shot, text, music by section with an ambience bed per set, and mix; the paid voice A/B only if the owner asks, at G3"
+   },
+   {
+    "stage": "final_watch",
+    "tools": [],
+    "approach": "The owner watches at 1x with cold viewers"
+   },
+   {
+    "stage": "publish_prep",
+    "tools": [],
+    "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+   }
+  ]
+ },
+ "cost_estimate": {
+  "total_estimated_usd": 0,
+  "budget_cap_usd": 5,
+  "budget_verdict": "within_budget",
+  "line_items": [
+   {
+    "tool": "whatif_narration (free local voices)",
+    "operation": "G2 narration and first cut",
+    "estimated_usd": 0,
+    "notes": "Free and local. The paid voice only if the owner asks for the A/B, quoted first. G1 made no paid call: the thumbnails are drawn in code; the writer ran on the Claude subscription; the room used today's capped calls (story editor, claims check)"
+   }
+  ]
+ },
+ "approval": {
+  "status": "pending"
+ }
+}

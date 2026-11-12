@@ -1,0 +1,47 @@
+{
+  "call_id": "fee34b46037746c692eaca3891d5be02",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 61,
+      "quote": "This app said in 2018 that more than seven hours in ten that people watch on it began with something it picked (c12).",
+      "fix": "This app said in 2018 that more than seven hours in ten that people watch on it came from something it picked (c12)."
+    },
+    {
+      "line": 55,
+      "quote": "Scientists gave 160 teams thousands of facts about thousands of families and asked them to predict how the children's lives would turn out; the best models were only slightly better than a simple guess from four facts (c24).",
+      "fix": "Scientists gave a hundred and sixty teams thousands of facts about thousands of families and asked them to predict how the children's lives would turn out; the best models were only slightly better than a simple guess from four facts (c24)."
+    },
+    {
+      "line": 53,
+      "quote": "Then the one fact: phone records from fifty thousand people showed where a person will be, hour by hour, is in principle guessable up to about ninety-three per cent of the time, and nobody fell below eighty (c09).",
+      "fix": "Then the one fact: phone records from fifty thousand people showed where a person will be, hour by hour, is in principle guessable up to about ninety-three per cent of the time, and nobody fell below eighty per cent (c09)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 55,
+      "quote": "in 2008 brain scans could guess whether a person would press a left or right button a few seconds before they felt they'd chosen (c04), and the guess was right about sixty times in a hundred, against fifty for a coin (c05)."
+    },
+    {
+      "line": 58,
+      "quote": "when scientists watched people choose where real charity money would go, the famous early brain signal was missing (c06)."
+    },
+    {
+      "line": 60,
+      "quote": "An economist put it in 1975: lean on a number to control people, and the number stops behaving (c18)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "1d63c80d0d39689696ea7a88b1f6bc74930b3ad1b9db8a7b3807853daef2682a",
+  "draft_sha256": "593e480639dee72089bd061336b6f0a87b5cadb7a22f6dc04af1cf7442ff7a1e"
+}

@@ -1,0 +1,72 @@
+{
+  "call_id": "9b559258a77e459f8b301a302368dfc8",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story structure": 8,
+    "causal escalation": 8,
+    "stakes and payoff": 9,
+    "clarity": 7
+  },
+  "blockers": [
+    {
+      "quote": "Your best friend: \"My sister's fine.\"",
+      "why": "No new person after 60% fails: the sister first appears after roughly 64% and becomes the reason for the climactic choice.",
+      "fix": "Plant her before halfway, for example at 4:15: \"His phone lights up: SISTER. He turns it face down.\"",
+      "domain": "story",
+      "line": 57
+    },
+    {
+      "quote": "Around you, every tag in the court dips a point, 99 to 98, because one person did a thing nobody had seen.",
+      "why": "No new power rule after halfway fails: one person's surprise changing everyone else's forecast is a new systemic mechanic introduced at the peak.",
+      "fix": "Replace with: \"Around you, every other tag stays fixed. Every face turns toward the two crimson cards.\"",
+      "domain": "story",
+      "line": 59
+    },
+    {
+      "quote": "Scientists gave 160 teams thousands of facts about thousands of families and asked them to predict how the children's lives would turn out; the best models were only slightly better than a simple guess from four facts (c24).",
+      "why": "Check #7 Misconception first fails: a second number-heavy finding arrives before the brain-scan finding lands on you.",
+      "fix": "Cut this finding here. Land the first fact immediately: \"Brain scans managed about sixty. The card over you says ninety-nine. So where did the rest come from?\"",
+      "domain": "story",
+      "line": 55
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 49,
+      "quote": "A paper flap inside 0.5 s: a tag dropping.",
+      "fix": "Make the cause precede the effect: the worker clips the lamp at 0:00, it blinks by 0:00.5, and then the first tag drops."
+    },
+    {
+      "line": 53,
+      "quote": "The exam hall: GUESSES C 76% over forty heads; the teacher reads the room instead of the papers. The penalty kick: the striker's tag KICKS LEFT 91%; the keeper saves every one in the league",
+      "fix": "Cut both examples and move directly from the ruined date to the pickpocket, turning private awkwardness into public punishment instead of extending the montage."
+    },
+    {
+      "line": 60,
+      "quote": "The evidence, one at a time: an American insurer already cuts your price if it can watch you drive, and about two drivers in ten see it rise (c16); within six months the watched drivers were braking hard about a fifth less often (c17).",
+      "fix": "Keep only the tracked-drivers result, then immediately run the board backward; the insurer setup repeats the fictional rule after the emotional peak."
+    }
+  ],
+  "keep": [
+    {
+      "line": 54,
+      "quote": "He reads the sixty-two. He shuts his mouth. He counts coins instead."
+    },
+    {
+      "line": 56,
+      "quote": "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him."
+    },
+    {
+      "line": 60,
+      "quote": "It never got better at seeing you. You got better at being seen."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "deae4485db8259d8c21a5939755e914b174b25f89486fcf485dd0f0e0eea49dc",
+  "draft_sha256": "593e480639dee72089bd061336b6f0a87b5cadb7a22f6dc04af1cf7442ff7a1e"
+}

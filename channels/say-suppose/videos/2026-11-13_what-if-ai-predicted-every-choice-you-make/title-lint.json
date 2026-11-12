@@ -1,0 +1,76 @@
+[
+ {
+  "pair": "A",
+  "thumb": "TRUST HIM?",
+  "lint": [
+   {
+    "title": "What If AI Predicted Every Choice You Make?",
+    "chars": 43,
+    "score": 84,
+    "issues": [
+     [
+      "mobile",
+      "a mobile feed shows about \"What If AI Predicted Every Choice You...\" - check the subject survives"
+     ],
+     [
+      "no-number",
+      "no number, date or name - the most reliable single fix"
+     ]
+    ],
+    "good": [
+     "43 characters, inside the 60-character desktop cut",
+     "open question in the title",
+     "thumbnail and title carry different words"
+    ]
+   }
+  ]
+ },
+ {
+  "pair": "B",
+  "thumb": "HE WOULDN'T.",
+  "lint": [
+   {
+    "title": "What If You Got Paid to Be Predictable?",
+    "chars": 39,
+    "score": 98,
+    "issues": [
+     [
+      "no-number",
+      "no number, date or name - the most reliable single fix"
+     ]
+    ],
+    "good": [
+     "39 characters, inside the 60-character desktop cut",
+     "open question in the title",
+     "thumbnail and title carry different words"
+    ]
+   }
+  ]
+ },
+ {
+  "pair": "C",
+  "thumb": "IT'S WRONG.",
+  "lint": [
+   {
+    "title": "What If Surprising People Cost You Money?",
+    "chars": 41,
+    "score": 84,
+    "issues": [
+     [
+      "mobile",
+      "a mobile feed shows about \"What If Surprising People Cost You...\" - check the subject survives"
+     ],
+     [
+      "no-number",
+      "no number, date or name - the most reliable single fix"
+     ]
+    ],
+    "good": [
+     "41 characters, inside the 60-character desktop cut",
+     "open question in the title",
+     "thumbnail and title carry different words"
+    ]
+   }
+  ]
+ }
+]
