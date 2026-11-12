@@ -8,7 +8,7 @@ Scenes live in the video folder, `scenes/` with an `index.ts` entry, and import 
 
 ## Reuse a library set before drawing a new one
 
-`core/engines/whatif/src/kit/sets/` (`@whatif/kit/sets`) holds the viewer's week as ready sets. Start every `> SCENE:`
+`core/engines/whatif/src/kit/sets/` (`@whatif/kit/sets`) holds everyday places as ready sets. Start every `> SCENE:`
 from one of them and draw a new set only when none fits; a film should reuse about 70% of its sets. Each set is drawn
 for one reference camera (`REF`, the 1920x1080 frame at zoom 1) in paper layers at different depths, takes its light
 from `> MOOD:` (windows, lamps, tube lights and street lamps follow the mood), and has:
@@ -57,8 +57,8 @@ member marked `behind` is drawn before the set's `Mid` (a counter, a table, a ca
 | `city-skyline` | the city across the bay from a sea-front wall: layered skyline, flyover traffic, shore lamps |
 | `tv-studio` | news studio or live stream: anchor desk, big screen (chart, map or a guest), city backdrop |
 
-A set a film draws for itself goes in the video's `scenes/`. If it would serve other films (another room of the
-viewer's week), lift it into the library afterwards: same contract, a vitest entry in `tests/sets.test.ts`, and a still
+A set a film draws for itself goes in the video's `scenes/`. If it would serve other films (a place other films
+will visit), lift it into the library afterwards: same contract, a vitest entry in `tests/sets.test.ts`, and a still
 in all six moods for the owner.
 
 ## The look test first
