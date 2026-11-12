@@ -53,3 +53,11 @@ better at seeing you. You got better at being seen." / the 2008 brain-scan line 
   film ("keep the spill").
 - **The key is small at feed size** (168 px wide). It reads as a gold glint by the box; the face, the card and the box
   carry the flash read.
+
+## G1 passed (2026-11-13)
+
+G1 was passed by the coordinator session (Say Suppose Architecture Review), on the owner's instruction in chat:
+"approve G1 yourself and keep the rough cut ready for all 4". The coordinator ran `omni approve` for the proposal
+stage in this worktree. The pick is the writer's recommendation, **pair a**: "What If AI Predicted Every Choice You
+Make?" with "TRUST HIM?". The topic's own title is the proven form, and the tag puts the film's dilemma in the viewer's
+mouth. The owner can change the pair at G2.

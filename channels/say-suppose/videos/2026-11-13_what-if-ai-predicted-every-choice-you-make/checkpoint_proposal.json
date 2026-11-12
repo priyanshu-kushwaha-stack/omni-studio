@@ -3,11 +3,11 @@
   "project_id": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-12T20:26:02.804283+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-12T20:28:43.425093+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -175,6 +175,13 @@
   "style_playbook": "say-suppose",
   "metadata": {
     "room": "room-g1.md: shipped round 1, 2 of 16 calls; room evidence ok; claims check 0 blockers, story editor 3 (to G2, review-g1-round1.md)",
-    "writer_recommends": "A + TRUST HIM? (pair a)"
+    "writer_recommends": "A + TRUST HIM? (pair a)",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-12T20:28:43.420232+00:00",
+      "via": "omni approve",
+      "proof": "7487bcc6830bc30f545755b9553df1082428a7a4037206139b3d46a879da414e",
+      "note": "G1 passed by the coordinator agent on the owner's instruction, 2026-11-13, in chat: 'approve G1 yourself and keep the rough cut ready for all 4'. Pick: the writer's recommendation, pair a, 'What If AI Predicted Every Choice You Make?' with 'TRUST HIM?'. The owner can change the title or thumbnail at G2."
+    }
   }
 }
