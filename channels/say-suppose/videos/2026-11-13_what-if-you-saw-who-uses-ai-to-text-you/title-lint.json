@@ -1,0 +1,80 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "round": 1,
+ "pairs": [
+  {
+   "pair": "A",
+   "thumb": "EVEN HER?",
+   "result": [
+    {
+     "title": "What If You Saw Who Uses AI to Text You?",
+     "chars": 40,
+     "score": 98,
+     "issues": [
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "40 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "B",
+   "thumb": "A MACHINE DID.",
+   "result": [
+    {
+     "title": "What If You Saw Who Really Typed Their Texts?",
+     "chars": 45,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Saw Who Really Typed Their...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "45 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "C",
+   "thumb": "ALL OF THEM?",
+   "result": [
+    {
+     "title": "What If You Saw a Red Dot on Every AI Text?",
+     "chars": 43,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Saw a Red Dot on Every AI...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "43 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+  "call_id": "d89525d0b1a74d7b86b3276752f8f671",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "causality": 7,
+    "emotional_turn": 9,
+    "ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "0:24, the thumbnail's frame: the phone close, your face falling, the cake half-lit behind you.",
+      "why": "Check #2 Confirm the click fails: the promised thumbnail situation arrives seventeen seconds after the seven-second limit.",
+      "fix": "Restage the opening: phone buzz at 0:00, Bea's paragraph at 0:01, \u201cWho means it?\u201d at 0:03, candle out at 0:05, and the dots complete the thumbnail composition by 0:06.",
+      "domain": "story",
+      "line": 47
+    },
+    {
+      "quote": "The restaurant's five-star reviews: dots. The comments under your cousin's video: a field of red. A petition with a million signatures and four hundred people.",
+      "why": "No new power rule after halfway fails: the dot expands from authored messages to reviews, signatures, people and bot detection at 6:30.",
+      "fix": "Replace with: \u201cAcross the city, inboxes bloom red: customer complaints, family replies, campaign DMs. Your boss offers a year's pay to mark which replies in a rival's inbox were machine-written.\u201d Remove the petition count and web-traffic fact.",
+      "domain": "story",
+      "line": 56
+    },
+    {
+      "quote": "The landlord's rent reminder: dot, obviously. The bank: dot, fine.",
+      "why": "Check #6 Every use has a gap fails: these results exactly match the expectation and therefore create no turn.",
+      "fix": "Replace with: \u201cThe landlord's stiff reminder: no dot\u2014he wrote every cold word himself. Your boss's perfect praise: no dot; his blunt one-word follow-up ticks red.\u201d",
+      "domain": "story",
+      "line": 49
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 58,
+      "quote": "You go. She is there.",
+      "fix": "Make the choice active: \u201cYou delete the reminder. Then you go anyway. She is there.\u201d"
+    },
+    {
+      "line": 54,
+      "quote": "Fact: a person keeps about five very close people, about a hundred and fifty in all, and what limits it is time: every friendship costs hours to keep (c19).",
+      "fix": "Move this fact onto the night-bus journey so the bench scene spends the ammunition instead of pausing after its reveal."
+    },
+    {
+      "line": 49,
+      "quote": "The group chat for a week has been two machines congratulating each other.",
+      "fix": "Beat the obvious AI-loop gag: one aunt types \u201clovely,\u201d her assistant expands it into an apology, and the other assistant accepts an offence neither aunt noticed."
+    }
+  ],
+  "keep": [
+    {
+      "line": 54,
+      "quote": "She was keeping you with the only hours she had left: the ones she was asleep for."
+    },
+    {
+      "line": 58,
+      "quote": "Nobody wrote it. Both of you meant it."
+    },
+    {
+      "line": 53,
+      "quote": "A dot is a greeting card that hides the card."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f744462a3c30fa3618b1b1ae853c4da137f63aa34d6ca7d22905cf6223710cf6",
+  "draft_sha256": "643d485393564265cde4535cee2c2998139dc716b86b4f5dbd41f3e83163836f"
+}

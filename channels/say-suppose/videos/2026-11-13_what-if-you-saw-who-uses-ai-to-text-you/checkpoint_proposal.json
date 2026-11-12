@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-you-saw-who-uses-ai-to-text-you",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-12T20:52:01.607960+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If You Saw Who Uses AI to Text You?",
+          "why_this_works": "The topic title (f-see-who-uses-ai-to-text, 77/100); the writer's pick; pairs with thumbnail a (EVEN HER?)",
+          "narrative_structure": "story",
+          "visual_approach": "Your birthday, a dark kitchen before six, the lamp on: you large at the left, head 37% of the frame, holding your phone up at chest height and looking down at it, the instant before you understand; on the screen four long warm bubbles (your best friend's pink first) each carry a crimson dot, and one short grey-blue bubble at the bottom (your father's three words) has none; behind you on the table a small cake, its one candle just blown out, smoke curling up. Three candidates a, b, c differ only in the tag (EVEN HER?, A MACHINE DID., ALL OF THEM?); drawn in code, brand/thumbs/texts. The film stages this frame at 0:24",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 570,
+          "hook": "Your birthday, before six: you blow out the candle, and in the smoke a small red dot ticks on beside every message a machine wrote. The paragraph from your best friend that made you cry: dot. At the bottom, three words from your father on a cargo ship, with a typo: no dot."
+        },
+        {
+          "id": "B",
+          "title": "What If You Saw Who Really Typed Their Texts?",
+          "why_this_works": "Alternative title: the honest question, hides whose; pairs with thumbnail b (A MACHINE DID.)",
+          "narrative_structure": "story",
+          "visual_approach": "Your birthday, a dark kitchen before six, the lamp on: you large at the left, head 37% of the frame, holding your phone up at chest height and looking down at it, the instant before you understand; on the screen four long warm bubbles (your best friend's pink first) each carry a crimson dot, and one short grey-blue bubble at the bottom (your father's three words) has none; behind you on the table a small cake, its one candle just blown out, smoke curling up. Three candidates a, b, c differ only in the tag (EVEN HER?, A MACHINE DID., ALL OF THEM?); drawn in code, brand/thumbs/texts. The film stages this frame at 0:24",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 570,
+          "hook": "Your birthday, before six: you blow out the candle, and in the smoke a small red dot ticks on beside every message a machine wrote. The paragraph from your best friend that made you cry: dot. At the bottom, three words from your father on a cargo ship, with a typo: no dot."
+        },
+        {
+          "id": "C",
+          "title": "What If You Saw a Red Dot on Every AI Text?",
+          "why_this_works": "Alternative title: the device in the title, the broadest search term; pairs with thumbnail c (ALL OF THEM?)",
+          "narrative_structure": "story",
+          "visual_approach": "Your birthday, a dark kitchen before six, the lamp on: you large at the left, head 37% of the frame, holding your phone up at chest height and looking down at it, the instant before you understand; on the screen four long warm bubbles (your best friend's pink first) each carry a crimson dot, and one short grey-blue bubble at the bottom (your father's three words) has none; behind you on the table a small cake, its one candle just blown out, smoke curling up. Three candidates a, b, c differ only in the tag (EVEN HER?, A MACHINE DID., ALL OF THEM?); drawn in code, brand/thumbs/texts. The film stages this frame at 0:24",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 570,
+          "hook": "Your birthday, before six: you blow out the candle, and in the smoke a small red dot ticks on beside every message a machine wrote. The paragraph from your best friend that made you cry: dot. At the bottom, three words from your father on a cargo ship, with a typo: no dot."
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "The writer's recommendation (title A with thumbnail a, EVEN HER?); the owner picks at G1"
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/ai-texts-you-g1-dac017/channels/say-suppose/videos/2026-11-13_what-if-you-saw-who-uses-ai-to-text-you/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging (G1, 2026-11-13): three titles, three one-variable thumbnails drawn in code (brand/thumbs/texts), the beat outline on the template spine opening on a performed skit; claims.md (27 rows) started at G1; the G1 room (story editor, claims check)"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "research, claims.md, script.md, sequel.md and chapters on the template (rules/story.md #1-#19, 155 wpm, about 9.5 min), with the owner's 2026-11-12/13 notes (skit opening, scenes that play, roles not names, plain words, a lot happens, emotion per scene); the free local narration with per-character local voices and a 720p first cut before G2; a score cue per section and an ambience bed per set; the G2 room; omni qc story_script must pass"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Picture lock: cut, key shot (the thumbnail frame at 0:24), text, music and mix; the paid voice A/B only at G3 and only if the owner asks"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "whatif_narration (local voices)",
+            "operation": "G2 narration and first cut",
+            "estimated_usd": 0,
+            "notes": "Free and local. G1 made no paid call: the thumbnails are drawn in code; the writer ran on the owner's Claude subscription (claude -p) and the room used today's capped calls (story editor, claims check)"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    }
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "room": "room-g1.md: shipped round 1, 2 of 16 calls; room evidence ok"
+  }
+}

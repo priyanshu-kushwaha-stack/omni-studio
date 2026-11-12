@@ -1,0 +1,48 @@
+{
+  "call_id": "829b434869ef46b9be9c6eedf945a62f",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 9,
+    "claims_grounding": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 54,
+      "quote": "Fact: a person keeps about five very close people, about a hundred and fifty in all, and what limits it is time: every friendship costs hours to keep (c19).",
+      "fix": "Fact: a person keeps about five very close people, about a hundred and fifty in all, and what limits it is time: every friendship costs time to keep up (c19)."
+    },
+    {
+      "line": 58,
+      "quote": "Fact: in a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly, even though actually using them made the chats closer and kinder; the use never hurt anyone, the suspicion did (c22).",
+      "fix": "Fact: in a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly, even though actually using them made the chats closer and kinder; the use didn't hurt the conversation, the suspicion did (c22)."
+    },
+    {
+      "line": 12,
+      "quote": "The alternative I weighed was the United States, where every study in the ledger was run (c20, c21, c22) and where the polls on AI-written texts live (c23).",
+      "fix": "The alternative I weighed was the United States, where the studies on AI-message perception in the ledger were run (c20, c21, c22) and where the polls on AI-written texts live (c23)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 57,
+      "quote": "The one number: this country was once called the texting capital of the world (c01); by 2008, over a billion texts a day (c02)."
+    },
+    {
+      "line": 49,
+      "quote": "Fact within two lines: in a study this year, people told a personal message was written by AI called the sender lazy and insincere; told nothing, most never suspected (c20)."
+    },
+    {
+      "line": 56,
+      "quote": "Fact: one security company estimated that in 2024 bots, good and bad, passed people at fifty-one per cent of web traffic, for the first time in a decade (c09)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2a08bf216d76bba5647790de071dbf1882d5cf0d18c29d12225f8774e0976d67",
+  "draft_sha256": "643d485393564265cde4535cee2c2998139dc716b86b4f5dbd41f3e83163836f"
+}
