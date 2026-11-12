@@ -10,6 +10,10 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-12
 
+- **"A+a, keep the spill"** G1 pick on the doubled-money restart (Berlin, Lotte's bakery): title A with tag a
+  ("SHE PAYS."), and the thumbnail keeps the day-thirty-one spill of digits over the counter rather than the opening's
+  two cents. The thumbnail shows the film's strongest picture; the script makes its opening confirm the click
+  (story #2) without a teaser from later (#15). (doubled-money restart, G1)
 - **"mind boggling is one type not just this."** On the docs that carried the 2026-11-11 notes, which had made a
   mind-boggling end a must-pass check: "Video should be hooked and should make people to think because that is what
   this type of niche is and therefore donr restrict but understand my intent." The aim of every film is a hook that

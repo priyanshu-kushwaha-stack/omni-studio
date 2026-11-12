@@ -4,7 +4,7 @@
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
   "status": "awaiting_human",
-  "timestamp": "2026-11-12T04:23:46.324354+00:00",
+  "timestamp": "2026-11-12T04:27:29.092727+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
@@ -51,7 +51,7 @@
       ],
       "selected_concept": {
         "concept_id": "A",
-        "rationale": "Writer's recommendation; the owner picks at G1. Title A with thumbnail a (\"SHE PAYS.\"): the proven title form, and the tag is the under-question made visible."
+        "rationale": "Owner's pick at G1, 2026-11-12, in chat: \"A+a, keep the spill\". Title A (What If You Doubled Your Money Every Day?) with thumbnail a (SHE PAYS.), the day-thirty-one spill kept on the thumbnail."
       },
       "production_plan": {
         "pipeline": "studio-whatif",
@@ -144,6 +144,7 @@
   "style_playbook": "say-suppose",
   "metadata": {
     "room": "room-g1.md: shipped round 1, 2 of 16 calls; room evidence ok",
-    "restart_of": "2026-11-11_what-if-you-doubled-your-money-every-day"
+    "restart_of": "2026-11-11_what-if-you-doubled-your-money-every-day",
+    "owner_pick": "A+a, keep the spill (2026-11-12)"
   }
 }

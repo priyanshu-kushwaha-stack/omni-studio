@@ -36,3 +36,11 @@ blocker; the story editor three. Story blockers don't stop a candidate; they go 
 Keep lines: "If all the money were mine, who would still bake the bread?" / "It isn't taken from anyone. Except it is. From
 everyone. A little. Every night." / "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow." (story editor); the
 1923 line, the wheat line and day fifty-five (claims check).
+
+## The owner's pick (2026-11-12)
+
+"A+a, keep the spill": title A with "SHE PAYS.", and the thumbnail keeps the day-thirty-one spill. Note #1 is settled
+that way; at G2 the script's opening has to confirm the click (story #2) without a teaser from later (#15), and notes
+#2 (what you can lose by 0:30) and #3 (the spill before the midpoint) go into the script. Recorded in `taste.md` and in
+`artifacts/proposal_packet.json` (selected concept A). `packaging.md` is unchanged: it is the draft the room reviewed
+(`room verify` checks its hash). G1 passes only by the owner's own `omni approve`.
