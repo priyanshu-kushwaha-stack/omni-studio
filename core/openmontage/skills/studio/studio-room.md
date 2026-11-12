@@ -141,6 +141,10 @@ Owner notes outrank the room. At a gate, the owner gives notes:
 
 1. The writer applies the notes to the draft and adds them to `channels/<slug>/taste.md` (dated, newest first).
 2. Run the NEXT round number with `python -m studio.room lint $V $G --round N --draft <draft> --config $CFG --owner-notes`.
+   Register each new owner note the round applies with `--owner-note "<the owner's words>"` (repeatable): the words
+   must match a `**"..."**` quote in `taste.md`, and each note registers once per video and gate. Each registered note
+   adds two rounds of the required seats to the gate's call cap (`studio.room.owner_notes.gate_cap`). A round you run
+   only to apply the room's own notes registers nothing and draws on the ordinary cap.
 3. Run the required seats only, not the optional seats, to stay within the cap: viewer, story and fact, or story and
    fact when `viewer_required: false`. A late round-1 viewer verdict joins here as suggestions.
 4. Then `report` and `verify`. No judge: an owner-notes round that is a candidate ships.

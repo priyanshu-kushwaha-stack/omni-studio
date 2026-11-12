@@ -35,6 +35,10 @@
 # Three films a week (owner, 2026-11-11; docs/superpowers/specs/2026-11-11-say-suppose-three-a-week-design.md): one
 # reviewer, the story editor, who also judges the template checks (rules/story.md #15-#19), plus the claims check. The
 # first-time viewer seat leaves (it is optional: viewer_required false). Pace 155 words a minute (the research median).
+# Room fix (owner, 2026-11-12, "G1 nits to G2"; docs/superpowers/specs/2026-11-12-room-owner-note-budget-design.md): at G1
+# the claims check blocks only on an unsourced or contradicted fact or a straw-man wrong belief (precision, rounding and
+# scope wording are suggestions, blocked at G2), and each owner note registered with `room lint --owner-note` adds two
+# rounds of the required seats to the gate's cap.
 writer: claude-fable-5-1
 rounds: 1
 daily_cap: 80
