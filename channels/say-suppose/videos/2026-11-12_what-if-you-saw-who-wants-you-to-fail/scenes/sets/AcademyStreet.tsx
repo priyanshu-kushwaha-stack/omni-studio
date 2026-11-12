@@ -5,7 +5,7 @@
 //   view "thumb":  the thumbnail's frame at REF, exactly: three sign towers and the pavement, nothing else. You and
 //                  Min-jun stand NEAR the camera, big (ACADEMY.thumb), their feet below the frame.
 //   view "street": the same towers with their ground-floor doors (`doors` 0..1 slides them open), and on the actors'
-//                  plane our academy's front (concrete steps up to glass doors that open), the kimbap shop, the
+//                  plane our academy's front (concrete steps up to glass doors that open), the snack shop, the
 //                  pavement and the road where the crowd stands, and the bus stop with its timetable board on the near
 //                  pavement below the frame (pull the camera back and up to see it).
 //
@@ -13,7 +13,7 @@
 // actors' slot at the ACADEMY spots; front={<AcademyStreetFront cam={cam} />} adds the bus shelter's near post and roof
 // edge over the stranger (street view only). Light: <LookContext.Provider value={setLook(academyLights(view), mood,
 // cam)}> adds the signboards' glow to the mood (optional).
-// Street view cameras: ACADEMY_CAMS.wide, .steps, .kimbap, .busStop, .field (the pulled-back wide).
+// Street view cameras: ACADEMY_CAMS.wide, .steps, .kimbap (the snack shop), .busStop, .field (the pulled-back wide).
 import type { Camera } from "@whatif/kit/stage/Stage";
 import { OUTSIDE, Sky, Skyline, type SetLight } from "@whatif/kit/sets/common";
 import type { MoodName } from "@whatif/kit/stage/moods";
@@ -34,7 +34,7 @@ export const ACADEMY = {
     hero: { x: 440, y: 1760, scale: 4.3, facing: 1 as const },
     friend: { x: 1390, y: 1640, scale: 3.3, facing: -1 as const },
   },
-  /** Street view. The pavement in front of the steps and the kimbap shop: the main feet line. */
+  /** Street view. The pavement in front of the steps and the snack shop: the main feet line. */
   floor: 1080,
   /** Our academy's front: concrete steps up to glass doors. Tread tops from the landing down; the pavement at `base`. */
   steps: { from: 20, to: 660, landing: 960, treads: [960, 1000, 1040] as const, base: 1080 },
@@ -42,11 +42,13 @@ export const ACADEMY = {
   doors: { from: 160, to: 520, top: 640, bottom: 960 },
   /** You on the landing, facing the street (1). */
   you: { x: 400, y: 960, scale: 0.78, facing: 1 as const },
-  /** Min-jun two steps down, by the kimbap shop, facing you (-1). */
+  /** Your best friend two steps down, by the snack shop, facing you (-1). */
   minjun: { x: 760, y: 1090, scale: 0.74, facing: -1 as const },
-  /** The kimbap shop front: from x `from` to `to`, its window, its door, base on the pavement. */
+  /** The snack shop front: from x `from` to `to`, its window, its door, base on the pavement. (`kimbap` is the old
+   *  name, kept for anyone who used it.) */
+  snackShop: { from: 760, to: 1260, top: 560, base: 1080, window: { x: 790, y: 690, w: 300, h: 310 }, door: { x: 1110, w: 120 } },
   kimbap: { from: 760, to: 1260, top: 560, base: 1080, window: { x: 790, y: 690, w: 300, h: 310 }, door: { x: 1110, w: 120 } },
-  /** Where your class stands in front of the kimbap shop (x range, feet line). */
+  /** Where your class stands in front of the snack shop (x range, feet line). */
   classSpot: { from: 820, to: 1220, y: 1110, scale: 0.7 },
   /** The kerb between the pavement and the road, and the road's far and near edges. */
   kerb: 1260,
@@ -184,16 +186,16 @@ const AcademyFront: React.FC<{ open: number; lit: number }> = ({ open, lit }) =>
   );
 };
 
-/** The kimbap shop: a lightbox with a triangle kimbap drawn on it (no words), a striped awning, a warm window with
- *  rows of kimbap, and its door. */
-const KimbapShop: React.FC = () => {
-  const k = ACADEMY.kimbap, w = k.window;
+/** The snack shop: a lightbox with a steaming cup drawn on it (no words), a striped awning, a warm window with rows
+ *  of snacks and cups, and its door. */
+const SnackShop: React.FC = () => {
+  const k = ACADEMY.snackShop, w = k.window;
   return (
     <g>
       <rect x={k.from} y={k.top} width={k.to - k.from} height={k.base - k.top} fill="#3a3046" stroke={INK} strokeWidth={6} />
       <rect x={k.from + 20} y={k.top - 90} width={k.to - k.from - 40} height={90} rx={10} fill="#fff4d6" stroke={INK} strokeWidth={6} />
-      <path d={`M${k.from + 110} ${k.top - 16} L${k.from + 150} ${k.top - 78} L${k.from + 190} ${k.top - 16}Z`} fill="#f7f4ea" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
-      <rect x={k.from + 136} y={k.top - 42} width={28} height={26} fill="#1f2b22" />
+      <path d={`M${k.from + 116} ${k.top - 60} h64 l-8 44 h-48z`} fill="#f7f4ea" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+      <path d={`M${k.from + 136} ${k.top - 66} q-8 -10 0 -18 M${k.from + 156} ${k.top - 66} q-8 -10 0 -18`} fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" />
       <rect x={k.from + 230} y={k.top - 64} width={180} height={18} rx={9} fill={CRIMSON} opacity={0.8} />
       <rect x={k.from + 230} y={k.top - 36} width={120} height={14} rx={7} fill={INK} opacity={0.5} />
       {/* the awning */}
@@ -201,12 +203,13 @@ const KimbapShop: React.FC = () => {
       {Array.from({ length: 7 }, (_, i) => (
         <path key={i} d={`M${k.from + i * 80} ${k.top + 20} h40 l-3 80 h-40Z`} fill={PAPER} opacity={0.9} />
       ))}
-      {/* the window: warm inside, a counter and rows of rolls */}
+      {/* the window: warm inside, shelves of snacks and cups */}
       <rect x={w.x} y={w.y} width={w.w} height={w.h} fill="#ffd98a" stroke={INK} strokeWidth={6} />
       {[0, 1].map((r) => Array.from({ length: 6 }, (_, i) => (
-        <g key={`${r}-${i}`} transform={`translate(${w.x + 30 + i * 48} ${w.y + 70 + r * 80})`}>
-          <path d="M0 -20 L22 16 L-22 16Z" fill="#f7f4ea" stroke={INK} strokeWidth={3} />
-          <rect x={-9} y={2} width={18} height={14} fill="#1f2b22" />
+        <g key={`${r}-${i}`} transform={`translate(${w.x + 30 + i * 48} ${w.y + 86 + r * 80})`}>
+          {(i + r) % 2 === 0
+            ? <><rect x={-12} y={-44} width={24} height={44} rx={3} fill={["#d8344f", "#1d9a8f", "#7fa0c4"][i % 3]} stroke={INK} strokeWidth={3} /><rect x={-12} y={-28} width={24} height={10} fill="#5a3422" /></>
+            : <path d="M-14 -40 h28 l-4 40 h-20z" fill="#f7f4ea" stroke={INK} strokeWidth={3} />}
         </g>
       )))}
       <rect x={w.x} y={w.y + 220} width={w.w} height={20} fill="#9a6a44" />
@@ -242,7 +245,7 @@ const BusStop: React.FC = () => {
 };
 
 /** The sky, the far skyline and the towers (both views), then the street's ground and, in the street view, our
- *  academy, the kimbap shop and the bus stop. `doors` opens every door on the street at once (street view). */
+ *  academy, the snack shop and the bus stop. `doors` opens every door on the street at once (street view). */
 export const AcademyStreetBack: React.FC<{ cam: Camera; mood: MoodName; frame: number; view: StreetView; doors?: number }> = ({
   cam, mood, frame, view, doors = 0,
 }) => {
@@ -286,7 +289,7 @@ export const AcademyStreetBack: React.FC<{ cam: Camera; mood: MoodName; frame: n
           <rect x={-2600} y={ACADEMY.road.to} width={7600} height={14} fill="#8d8f96" />
           <rect x={-2600} y={ACADEMY.road.to + 14} width={7600} height={900} fill={o.dark ? "#454857" : "#5f6072"} />
           <AcademyFront open={doors} lit={lit} />
-          <KimbapShop />
+          <SnackShop />
           <BusStop />
         </Deep>
       )}
@@ -305,12 +308,12 @@ export const AcademyStreetFront: React.FC<{ cam: Camera }> = ({ cam }) => {
   );
 };
 
-/** The signboards' glow, the kimbap shop's window and the academy doors, for setLook (after dark and at dusk). */
+/** The signboards' glow, the snack shop's window and the academy doors, for setLook (after dark and at dusk). */
 export const academyLights = (view: StreetView): SetLight[] => {
   const moods: MoodName[] = ["dusk", "night", "lamp"];
   const towers = TOWERS.map((t, i) => ({ x: t.x + t.w / 2, y: Math.max(200, t.top + 300), depth: TOWER_DEPTH, r: 520, color: SIGN_COLORS[(i + 2) % 6], strength: 0.14, moods }));
   if (view === "thumb") return towers;
-  const k = ACADEMY.kimbap.window, d = ACADEMY.doors;
+  const k = ACADEMY.snackShop.window, d = ACADEMY.doors;
   return [
     ...towers,
     { x: k.x + k.w / 2, y: k.y + k.h / 2, r: 360, color: "#ffd98a", strength: 0.35, moods },

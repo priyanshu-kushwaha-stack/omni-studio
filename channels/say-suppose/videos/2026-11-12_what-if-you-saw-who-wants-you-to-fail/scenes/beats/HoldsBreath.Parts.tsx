@@ -1,14 +1,14 @@
 // Pieces drawn for "The Country Holds Its Breath" (beats/HoldsBreath.tsx), each for the REF camera like a set: the exam
-// hall from straight above, the paper plane, the dark market board, the police motorbike, the school gate with the
-// parents, the lunch box, and the classroom desk from above for the notebook and the half kimbap.
+// hall from straight above, the paper plane, the empty runway, the school gate with the parents and its bell, the lunch
+// box, your sister with it, the hands on its knot, and the classroom desk from above for the notebook and the chocolate.
 import { Figure } from "@whatif/kit/rig/Figure";
-import { SEATED, seatedY, STAND, type Pose } from "@whatif/kit/rig/pose";
+import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { OUTSIDE, Sky, Skyline } from "@whatif/kit/sets";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import { INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { Ponytail, Vest } from "../parts";
-import { JIYOON, noise, PASTELS } from "../shared";
+import { JIYOON, mix, noise, PASTELS } from "../shared";
 import { Deep } from "../sets/common";
 import { TopDownHead } from "../sets/ReadingRoom";
 
@@ -55,88 +55,50 @@ export const PaperPlane: React.FC<{ x: number; y: number; scale?: number; tilt?:
   </g>
 );
 
-// ------------------------------------------------------------------------------------------------ the market board
+// ------------------------------------------------------------------------------------------------ the runway
 
-/** The trading floor with the board dark: rows of unlit price cells, a flat chart, empty desks with dark screens. */
-export const MarketBack: React.FC<{ cam: Camera; frame: number }> = ({ cam, frame }) => (
+/** The airport with nothing moving: a long empty runway running away to the horizon, its dashes, the terminal and
+ *  the tower far off, a paper plane parked at the apron, the windsock hanging limp. */
+export const RunwayBack: React.FC<{ cam: Camera; mood: MoodName }> = ({ cam, mood }) => (
   <>
-    <Deep cam={cam} depth={0.6} flat>
-      <rect x={-1400} y={-800} width={4800} height={2400} fill="#2a2d3a" />
-      <rect x={300} y={130} width={1320} height={540} rx={10} fill="#12141b" stroke={INK} strokeWidth={14} />
-      {Array.from({ length: 7 }, (_, r) => Array.from({ length: 6 }, (_, c) => (
-        <g key={`${r}-${c}`}>
-          <rect x={330 + c * 150} y={160 + r * 68} width={136} height={56} rx={4} fill="#1d212c" />
-          <rect x={344 + c * 150} y={176 + r * 68} width={60 + noise(r * 6 + c) * 30} height={10} rx={5} fill="#2b3040" />
-          <rect x={344 + c * 150} y={194 + r * 68} width={40} height={10} rx={5} fill="#2b3040" />
-          <path d={`M${450 + c * 150} ${180 + r * 68} l10 14 h-20z`} fill="#2b3040" />
-        </g>
-      )))}
-      <rect x={1240} y={160} width={350} height={480} rx={4} fill="#1d212c" />
-      <path d="M1260 420 H1570" stroke="#2f3a3a" strokeWidth={6} strokeDasharray="14 10" />
-      {/* the clock over the board, stopped at the hour the market should have opened */}
-      <circle cx={960} cy={70} r={46} fill="#3a3e4c" stroke={INK} strokeWidth={6} />
-      <line x1={960} y1={70} x2={960} y2={36} stroke="#9aa1ab" strokeWidth={5} strokeLinecap="round" />
-      <line x1={960} y1={70} x2={990} y2={70} stroke="#9aa1ab" strokeWidth={6} strokeLinecap="round" />
+    <Deep cam={cam} depth={0.05} flat><Sky id="runway" mood={mood} x={-1400} y={-800} w={4800} h={1300} sunAt={{ x: 1400, y: 200 }} /></Deep>
+    <Deep cam={cam} depth={0.3} flat>
+      <rect x={-1400} y={470} width={4800} height={1200} fill="#a9bf8f" />
+      <rect x={200} y={360} width={760} height={110} fill="#d9d2c2" stroke={INK} strokeWidth={4} />
+      {Array.from({ length: 12 }, (_, i) => <rect key={i} x={220 + i * 62} y={385} width={44} height={36} fill="#9fc0e0" />)}
+      <rect x={1180} y={230} width={40} height={240} fill="#d9d2c2" stroke={INK} strokeWidth={4} />
+      <rect x={1150} y={200} width={100} height={50} rx={6} fill="#9fc0e0" stroke={INK} strokeWidth={4} />
+      <PaperPlane x={560} y={455} scale={0.8} tilt={0} />
     </Deep>
     <Deep cam={cam} depth={1}>
-      <rect x={-1400} y={820} width={4800} height={900} fill="#23252f" />
-      {Array.from({ length: 7 }, (_, i) => (
-        <g key={i} transform={`translate(${-200 + i * 380} 0)`}>
-          <rect x={0} y={800} width={320} height={24} rx={4} fill="#4a4f5c" stroke={INK} strokeWidth={4} />
-          {[30, 170].map((mx) => (
-            <g key={mx}>
-              <rect x={mx} y={690} width={120} height={84} rx={6} fill="#1b1d24" stroke={INK} strokeWidth={4} />
-              <rect x={mx + 52} y={774} width={16} height={26} fill="#1b1d24" />
-            </g>
-          ))}
-          <rect x={120} y={850} width={80} height={14} rx={6} fill="#3a3550" opacity={0.8 + 0.2 * Math.sin(frame / 90)} />
-        </g>
-      ))}
+      <rect x={-1400} y={560} width={4800} height={1200} fill="#9fb98a" />
+      <path d="M880 470 L1040 470 L1700 1400 L220 1400Z" fill="#6b6f78" stroke={INK} strokeWidth={4} />
+      {Array.from({ length: 7 }, (_, i) => {
+        const t0 = Math.pow(i / 7, 1.6), t1 = Math.pow((i + 0.45) / 7, 1.6);
+        const y0 = 480 + t0 * 900, y1 = 480 + t1 * 900;
+        const w0 = 4 + t0 * 26, w1 = 4 + t1 * 26;
+        return <path key={i} d={`M${960 - w0} ${y0} L${960 + w0} ${y0} L${960 + w1} ${y1} L${960 - w1} ${y1}Z`} fill={PAPER} />;
+      })}
+      <path d="M886 480 L250 1400 M1034 480 L1670 1400" stroke={PAPER} strokeWidth={6} />
+      <rect x={1620} y={420} width={10} height={260} fill="#5c6675" />
+      <path d="M1630 430 L1700 448 L1696 470 L1630 474Z" fill="#e8792f" stroke={INK} strokeWidth={3} transform="rotate(62 1630 430)" />
     </Deep>
   </>
 );
 
-// ------------------------------------------------------------------------------------------------ the police motorbike
-
-/** A police motorbike, side on, nose to the right, wheels on y, a late student riding pillion. `frame` turns the
- *  wheels and blinks the light. */
-export const PoliceBike: React.FC<{ x: number; y: number; frame: number; scale?: number }> = ({ x, y, frame, scale = 1 }) => {
-  const seatTop = -96;
-  const ride: Pose = { ...SEATED, lean: 14, armF: [96, -10], armB: [92, -6] };
-  const hold: Pose = { ...SEATED, lean: 8, armF: [84, 4], armB: [80, 8] };
-  const spin = frame * 24;
-  const blue = Math.floor(frame / 5) % 2 === 0;
-  return (
-    <g transform={`translate(${x} ${y}) scale(${scale})`}>
-      <ellipse cx={0} cy={4} rx={190} ry={12} fill="#000" opacity={0.25} />
-      {[-110, 112].map((wx) => (
-        <g key={wx} transform={`translate(${wx} -48)`}>
-          <circle r={48} fill={INK} />
-          <circle r={26} fill="#9aa1ab" />
-          <g transform={`rotate(${spin})`}>{[0, 60, 120].map((a) => <line key={a} x1={-24} y1={0} x2={24} y2={0} stroke={INK} strokeWidth={4} transform={`rotate(${a})`} />)}</g>
-        </g>
-      ))}
-      <path d="M-150 -70 L-40 -70 L-10 -110 L90 -110 L150 -60 L130 -44 L-120 -44Z" fill="#eef1f4" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
-      <rect x={-110} y={-84} width={210} height={14} fill="#3d6fb0" />
-      <path d="M100 -110 L130 -160 L150 -158" fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" />
-      <path d="M130 -160 L170 -150 L160 -120Z" fill="#cfe9f4" stroke={INK} strokeWidth={4} opacity={0.8} />
-      <rect x={-170} y={-150} width={10} height={80} fill={INK} />
-      <rect x={-188} y={-170} width={46} height={24} rx={6} fill={blue ? "#3d6fb0" : "#d8344f"} stroke={INK} strokeWidth={4} />
-      <circle cx={-165} cy={-158} r={30} fill={blue ? "#3d6fb0" : "#d8344f"} opacity={0.3} />
-      {/* the student behind, holding on; the officer in front */}
-      <Figure x={-70} y={seatedY(seatTop, 1)} pose={hold} head={PASTELS[1]} coat="#3b4a6b" mouth="flat" brows="worry" look={{ x: 0.8, y: 0 }} time={frame} />
-      <Figure x={20} y={seatedY(seatTop, 1)} pose={ride} head="#e6c49a" coat="#2a3550" cap="#2a3550" mouth="flat" brows="flat" look={{ x: 1, y: 0 }} time={frame} />
-    </g>
-  );
-};
-
 // ------------------------------------------------------------------------------------------------ the school gate
 
 /** The gate anchors: the pavement line, the gate's gap, Ji-yoon's spot in the crowd. */
-export const GATE = { floor: 990, gap: { from: 780, to: 1140 }, jiyoon: { x: 1420, y: 990 } };
+export const GATE = {
+  floor: 990, gap: { from: 780, to: 1140 },
+  /** Your sister: half hidden behind two parents, then (once they part) one step closer to you. */
+  jiyoon: { x: 1470, y: 990 }, jiyoonOut: { x: 1350, y: 990 },
+  /** You, facing her, with your back to the gate. */
+  you: 1150,
+};
 
 /** Parents waiting outside, facing the gate, at scale s on floor y. */
-const Parents: React.FC<{ frame: number; y: number; s: number; xs: number[]; seed: number }> = ({ frame, y, s, xs, seed }) => (
+const Parents: React.FC<{ frame: number; y: number; s: number; xs: number[]; seed: number; still?: boolean }> = ({ frame, y, s, xs, seed, still }) => (
   <g>
     {xs.map((x, i) => {
       const toGate = x < (GATE.gap.from + GATE.gap.to) / 2 ? 1 : -1;
@@ -144,14 +106,15 @@ const Parents: React.FC<{ frame: number; y: number; s: number; xs: number[]; see
       return (
         <Figure key={i} x={x} y={y + (i % 2) * 8} scale={s} facing={toGate as 1 | -1} pose={pose} head={PASTELS[(i * 3 + seed) % PASTELS.length]}
           coat={["#6d7f8f", "#7a5a8c", "#8a5c3b", "#5a6488", "#a8a29a"][(i + seed) % 5]} mouth="flat" brows={noise(i * 3 + seed) < 0.5 ? "worry" : "none"}
-          lids={0.2} look={{ x: 0.9, y: -0.1 }} blink={(frame + i * 23) % 113 < 4} time={frame} />
+          lids={0.2} look={{ x: 0.9, y: -0.1 }} blink={!still && (frame + i * 23) % 113 < 4} time={frame} />
       );
     })}
   </g>
 );
 
 /** The street outside the school gate on exam morning: the school behind its wall, the gate open, parents along the wall. */
-export const GateBack: React.FC<{ cam: Camera; frame: number; mood: MoodName }> = ({ cam, frame, mood }) => {
+/** `bell` 0..1 rings the school bell; `still` freezes the parents (no blinks). */
+export const GateBack: React.FC<{ cam: Camera; frame: number; mood: MoodName; bell?: number; still?: boolean }> = ({ cam, frame, mood, bell = 0, still }) => {
   const o = OUTSIDE[mood];
   const g = GATE.gap;
   return (
@@ -177,7 +140,14 @@ export const GateBack: React.FC<{ cam: Camera; frame: number; mood: MoodName }> 
         {Array.from({ length: 9 }, (_, i) => <rect key={i} x={g.to + 90 + i * 30} y={600} width={10} height={370} fill="#3b3e47" />)}
         <rect x={g.to + 80} y={600} width={280} height={12} fill="#3b3e47" />
         <rect x={g.from} y={940} width={g.to - g.from} height={40} fill="#c9bfa8" />
-        <Parents frame={frame} y={985} s={0.8} xs={[-260, -100, 60, 220, 380, 540, 1280, 1460, 1640, 1820, 1990, 2160]} seed={2} />
+        {/* the school bell on the left pillar; it shakes while `bell` rings */}
+        <g transform={`translate(${g.from - 35} 470) rotate(${bell > 0 ? Math.sin(frame * 1.6) * 14 * bell : 0})`}>
+          <path d="M-26 34 Q-26 -6 0 -8 Q26 -6 26 34Z" fill="#c9a24a" stroke={INK} strokeWidth={4} />
+          <circle cx={0} cy={38} r={7} fill={INK} />
+        </g>
+        {bell > 0 && [0, 1].map((i) => <path key={i} d={`M${g.from - 80 - i * 16} ${440 - i * 10} q-14 30 0 60 M${g.from + 10 + i * 16} ${440 - i * 10} q14 30 0 60`}
+          fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" opacity={bell * (0.7 - i * 0.3)} />)}
+        <Parents frame={frame} y={985} s={0.8} xs={[-260, -100, 60, 220, 380, 540, 1280, 1460, 1640, 1820, 1990, 2160]} seed={2} still={still} />
       </Deep>
       <Deep cam={cam} depth={1}>
         <rect x={-1400} y={GATE.floor - 20} width={4800} height={900} fill="#d9cbb0" />
@@ -188,8 +158,12 @@ export const GateBack: React.FC<{ cam: Camera; frame: number; mood: MoodName }> 
 };
 
 /** The near parents, in the actors' slot (they stand clear of the gate and of Ji-yoon's spot). */
-export const GateCrowd: React.FC<{ frame: number }> = ({ frame }) => (
-  <Parents frame={frame} y={1010} s={1.1} xs={[80, 300, 520, 1700, 1930, 2150]} seed={7} />
+export const GateCrowd: React.FC<{ frame: number; still?: boolean; part?: number }> = ({ frame, still, part = 0 }) => (
+  <g>
+    <Parents frame={frame} y={1010} s={1.1} xs={[80, 300, 520, 1930, 2150]} seed={7} still={still} />
+    {/* the two who stand in front of her until the crowd parts (`part` 0..1 moves them aside) */}
+    <Parents frame={frame} y={1012} s={1.1} xs={[1330 + 370 * part, 1520 + 380 * part]} seed={3} still={still} />
+  </g>
 );
 
 /** The lunch box she packed, wrapped in a cloth knotted on top. (x, y) is its bottom centre. */
@@ -201,27 +175,47 @@ export const LunchBox: React.FC<{ x: number; y: number; scale?: number; tilt?: n
   </g>
 );
 
-/** Ji-yoon at the gate straight off the shift: hair tied back, the vest, the lunch box held in both hands. `out` 0..1
- *  lowers her arms once you have taken it. */
-export const JiyoonWithLunch: React.FC<{ x: number; y: number; scale: number; frame: number; face: object; holding: boolean; out?: number }> = ({
-  x, y, scale, frame, face, holding, out = 0,
-}) => {
-  const up: Pose = { ...STAND, armF: [38, 84], armB: [30, 92] };
+/** Your sister at the gate straight off the night shift: hair tied back and flat, the vest half zipped, the lunch box
+ *  held in both hands. `offer` 0..1 holds it out to you; `out` 0..1 lowers her arms once you have it; `nod` 0..1 is one
+ *  nod (head down and back up); `walk` sets a walking pose (she steps back into the crowd). */
+export const JiyoonWithLunch: React.FC<{
+  x: number; y: number; scale: number; frame: number; face: object; holding: boolean; out?: number; offer?: number; nod?: number;
+  facing?: 1 | -1; walk?: number | null;
+}> = ({ x, y, scale, frame, face, holding, out = 0, offer = 0, nod = 0, facing = -1, walk = null }) => {
+  const lerp = (a: [number, number], b: [number, number], t: number): [number, number] => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+  const close: Pose = { ...STAND, armF: [38, 84], armB: [30, 92] };
+  const held: Pose = { ...STAND, armF: [72, 34], armB: [66, 40] };
   const down: Pose = { ...STAND, armF: [14, 30], armB: [8, 34] };
-  const pose: Pose = {
-    ...STAND,
-    armF: [up.armF[0] + (down.armF[0] - up.armF[0]) * out, up.armF[1] + (down.armF[1] - up.armF[1]) * out],
-    armB: [up.armB[0] + (down.armB[0] - up.armB[0]) * out, up.armB[1] + (down.armB[1] - up.armB[1]) * out],
-  };
+  const armF = lerp(lerp(close.armF, held.armF, offer), down.armF, out);
+  const armB = lerp(lerp(close.armB, held.armB, offer), down.armB, out);
+  const base = walk === null ? STAND : walkPose(walk);
+  const pose: Pose = { ...base, tilt: 16 * Math.sin(Math.PI * nod), armF: walk === null ? armF : base.armF, armB: walk === null ? armB : base.armB };
   return (
     <g>
-      <Ponytail x={x} y={y} scale={scale} pose={pose} facing={-1} />
-      <Figure x={x} y={y} scale={scale} facing={-1} pose={pose} head={JIYOON.head} coat={JIYOON.coat} {...face} time={frame}
+      <Ponytail x={x} y={y} scale={scale} pose={pose} facing={facing} />
+      <Figure x={x} y={y} scale={scale} facing={facing} pose={pose} head={JIYOON.head} coat={JIYOON.coat} {...face} time={frame}
         held={holding ? <LunchBox x={-4} y={26} scale={0.9} /> : undefined} />
-      <Vest x={x} y={y} scale={scale} pose={pose} facing={-1} />
+      <Vest x={x} y={y} scale={scale} pose={pose} facing={facing} />
     </g>
   );
 };
+
+/** Insert: the lunch box's knot held between two hands: hers (peach, grey sleeve) from the right and yours (mustard, dark
+ *  sleeve) from the left, `touch` 0..1 bringing yours in until the fingers meet. REF units, box centred at (x, y). */
+export const HandsOnHandle: React.FC<{ x: number; y: number; touch: number; hers: number }> = ({ x, y, touch, hers }) => (
+  <g transform={`translate(${x} ${y})`}>
+    <g transform="scale(4.2)"><LunchBox x={0} y={60} /></g>
+    <g transform={`translate(${mix(160, 40, hers)} -70)`}>
+      <rect x={20} y={-30} width={600} height={90} rx={30} fill={JIYOON.coat} stroke={INK} strokeWidth={6} />
+      <rect x={-50} y={-38} width={110} height={106} rx={46} fill={JIYOON.head} stroke={INK} strokeWidth={6} />
+    </g>
+    <g transform={`translate(${mix(-700, -110, touch)} -66)`}>
+      <rect x={-640} y={-30} width={600} height={90} rx={30} fill="#3b3e47" stroke={INK} strokeWidth={6} />
+      <rect x={-60} y={-38} width={110} height={106} rx={46} fill={MUSTARD} stroke={INK} strokeWidth={6} />
+      <rect x={30} y={-20} width={70} height={30} rx={15} fill={MUSTARD} stroke={INK} strokeWidth={5} />
+    </g>
+  </g>
+);
 
 // ------------------------------------------------------------------------------------------------ the desk from above
 

@@ -1,29 +1,31 @@
-// Beat "A Text Would Open Nothing" (script.md "## [06:55] A Text Would Open Nothing"; narration lines 91-101; mood day).
-// Every frame comes from the clips (`times`), one component per shot.
+// Beat "A Text Would Open Nothing" (script.md v2.1; narration lines 81-89; mood day). Every frame comes from the clips
+// (`times`), one component per shot.
 //
-//   91   results, the phone in your hand: three boxes, each a big 1, one per "Grade one"; your face at the edge.
-//   92   the classroom: Min-jun at the next desk turns his phone to you; insert: his 1.
-//   93   paper: everyone who sat it as a sea of dots, the top four per cent teal.
-//   94   the same sheet: your class's seats on the left, four teal; "a seat" lifts the four, "a sea" the teal dots.
-//   95   close on Min-jun, your notebook on his desk; close on you, softening. He holds out half a kimbap: "Half?"
-//   96   you take it.
-//   97   the phone: her name, the box; you type half a line. 98 the thumb hovers over send and stops.
-//   99   the bus: you at the window, the city sliding past.
-//   100  a bus shelter goes by with a small paper subscribe tag (no voice); paper: a third of all regrets.
-//   101  your thumb over the half-typed text to her; the phone face down on your knee; you look up: the depot gates.
+//   81  results, the phone in your hand: three boxes, each a big 1 (top grade), one per "Top grade"; your face at the edge.
+//   82  the classroom: your best friend at the next desk turns his phone to you; insert: his 1.
+//   83  paper: "four places in a room": a small room of chairs, four teal; then "everyone in the country who sat it": a
+//       sea of dots, the top four per cent teal; on "His grade never cost you yours" your dot and his, side by side,
+//       both teal. Then the two of you: he holds out half a chocolate bar, "Half?"
+//   84  you take it, looking at him, not at the air above him, and eat it.
+//   85  paper over the two of you: a third of all regrets are about education.
+//   86  insert: her jar of brushes on the counter at home.
+//   87  the phone: her name, the box; you type half a line.
+//   88  "A text would open nothing": the thumb over the half-typed text; you turn the phone face down on your knee.
+//   89  (from the end of 88) you're on the bus: a shelter ad with a paper subscribe tag slides by, then the warehouse gates come into the window.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { SEATED, seatedY, type Pose } from "@whatif/kit/rig/pose";
-import { bus, classroom, HandPhone, phone } from "@whatif/kit/sets";
+import { bus, classroom, phone } from "@whatif/kit/sets";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
+import { drift, insert } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
-import { Bubble, Kimbap, Sheet, headAt } from "../parts";
+import { MUSTARD } from "@whatif/kit/theme";
+import { Bubble, Chocolate, Sheet, headAt } from "../parts";
 import { blinking, camAt, current, HERO, JIYOON, linear, MINJUN, mix, ramp, type Beat, type Shot } from "../shared";
 import { Deep } from "../sets/common";
-import { MistakeBookSide } from "./HoldsBreath.Parts";
-import { aimArm, Dim, Fade, handAt, timer, type Body } from "./Notebook.Parts";
+import { HOME, HomeBack } from "../sets/Home";
+import { aimArm, Dim, handAt, timer, type Body } from "./Notebook.Parts";
 import { DepotGates, HeldResult, PastTheWindow, PHONE, PhoneBack, RegretPie, ResultScreen, SeatAndSea, ShelterAd } from "./TextOpensNothing.Parts";
 
 // ------------------------------------------------------------------------------------------------ timing
@@ -33,43 +35,41 @@ type T = ReturnType<typeof times>;
 function times(clips: Clip[], to: number) {
   const { from, at, end } = timer(clips);
   return {
-    results: from(91),
-    g1: at(91, 0.16), // "Grade one."
-    g2: at(91, 0.34), // "Grade one."
-    g3: at(91, 0.52), // "Grade one."
-    holds: at(91, 0.72), // "The scholarship holds."
-    minjun: from(92), // the classroom, Min-jun at the next desk
-    his: at(92, 0.5), // "grade one in maths too": his phone
-    sea: from(93), // the sea of dots
-    teal: at(93, 0.55), // "the top four per cent of everyone who sat it"
-    seat: from(94), // the class's seats come in
-    seatHi: at(94, 0.42), // "A seat in one case"
-    seaHi: at(94, 0.7), // "and a sea in the other"
-    gave: from(95), // close on Min-jun, your notebook on his desk
-    never: at(95, 0.55), // "It was never a seat."
-    half: end(95) - 8, // he holds out half a kimbap: "Half?"
-    take: from(96), // "You take it."
-    her: from(97), // the phone: her name, the box
-    keep: from(98) + 4, // "A text would open nothing": the thumb over send
-    bus: from(99), // "You're on the bus."
-    ad: from(100) - 4, // the shelter ad goes by
-    pie: at(100, 0.4), // "the most common regret of a life is education, about a third"
-    thumb: from(101), // your thumb over her name
-    down: at(101, 0.42), // the phone face down
-    up: at(101, 0.78), // you look up: the depot gates
+    results: from(81),
+    g1: at(81, 0.16), // "Top grade."
+    g2: at(81, 0.32), // "Top grade."
+    g3: at(81, 0.48), // "Top grade."
+    holds: at(81, 0.7), // "The scholarship holds."
+    friend: from(82), // the classroom, your best friend at the next desk
+    his: at(82, 0.5), // "top grade in maths too": his phone
+    sheet: from(83), // "Here's what you had backwards."
+    room: at(83, 0.2), // "four places in a room"
+    sea: at(83, 0.46), // "the top 4 per cent of everyone in the country who sat it"
+    teal: at(83, 0.64),
+    pair: at(83, 0.82), // "His grade never cost you yours."
+    half: at(83, 0.95), // he holds out half a chocolate bar
+    bubble: end(83) - 2, // "Half?"
+    take: from(84), // "You take it."
+    regret: from(85), // a third of all regrets
+    pie: at(85, 0.3),
+    jar: from(86), // "Her brushes have stood in a jar for six years."
+    her: from(87), // the phone: her name, the box
+    text: from(88), // "A text would open nothing"
+    down: at(88, 0.58), // the phone face down on your knee
+    bus: at(88, 0.86), // the bus (line 89, "You're on the bus.", is too short to hold it alone)
     end: to,
   };
 }
 
-// ------------------------------------------------------------------------------------------------ line 91
+// ------------------------------------------------------------------------------------------------ line 81
 
 const ResultsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.results, { x: 960, y: 540, zoom: 1 }], [k.minjun, { x: 1060, y: 540, zoom: 1.12 }]]), frame, "results", 3);
+  const cam = drift(camAt(frame, [[k.results, { x: 960, y: 540, zoom: 1 }], [k.friend, { x: 1060, y: 540, zoom: 1.12 }]]), frame, "results", 3);
   const props = { cam, mood: "day" as const, frame, options: { ...phone.defaults, mode: "off" as const, thumb: null, behind: "desk" as const } };
   const spot = phone.spots.face;
   const face = frame < k.g1
     ? { ...EXPRESSIONS.worried, look: { x: 1, y: 0.2 } }
-    : frame < k.holds ? { ...EXPRESSIONS.shocked, look: { x: 1, y: 0.25 } } : { ...EXPRESSIONS.relieved, look: { x: 1, y: 0.2 } };
+    : frame < k.holds ? { ...EXPRESSIONS.shocked, look: { x: 1, y: 0.25 } } : { brows: "raised" as const, lids: 0.1, mouth: "smile" as const, eyes: 1.05, look: { x: 1, y: 0.2 } };
   return (
     <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={phone.Back(props)}
       actors={
@@ -82,7 +82,7 @@ const ResultsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ lines 92-96
+// ------------------------------------------------------------------------------------------------ lines 82-85
 
 const ROOM_OPTS = { ...classroom.defaults, board: "blank" as const, drawn: 0, farRow: true };
 const SS = 1.05;
@@ -90,11 +90,11 @@ const SEAT_TOP = 850;
 const ME_X = 640;
 const HIM_X = 900;
 
-/** You and Min-jun side by side at your bench desks, him turned toward you. `his` and `mine` set the arm poses. */
+/** You and your best friend side by side at your desks, him turned toward you. */
 const Desks: React.FC<{
   frame: number; cam: Camera; myFace: object; hisFace: object; myArm?: [number, number]; hisArm?: [number, number]; hisProp?: React.ReactNode;
-  myProp?: React.ReactNode; notebook?: boolean; over?: React.ReactNode;
-}> = ({ frame, cam, myFace, hisFace, myArm, hisArm, hisProp, myProp, notebook, over }) => {
+  myProp?: React.ReactNode; over?: React.ReactNode;
+}> = ({ frame, cam, myFace, hisFace, myArm, hisArm, hisProp, myProp, over }) => {
   const props = { cam, mood: "day" as const, frame, options: ROOM_OPTS };
   const y = seatedY(SEAT_TOP, SS);
   return (
@@ -105,7 +105,6 @@ const Desks: React.FC<{
           <Figure head={MINJUN.head} coat={MINJUN.coat} x={HIM_X} y={y} scale={SS} facing={-1} pose={hisArm ? { ...SEATED, armF: hisArm } : SEATED}
             {...hisFace} blink={blinking(frame, 4)} time={frame} />
           {classroom.Mid?.(props)}
-          {notebook && <MistakeBookSide x={HIM_X + 120} y={762} tilt={-7.6} scale={0.9} />}
           {hisProp}
           {myProp}
           {over}
@@ -117,147 +116,89 @@ const Desks: React.FC<{
 
 const me: Body = { x: ME_X, y: seatedY(SEAT_TOP, SS), scale: SS, facing: 1, pose: SEATED };
 const him: Body = { x: HIM_X, y: seatedY(SEAT_TOP, SS), scale: SS, facing: -1, pose: SEATED };
-const myHead = headAt(me.x, me.y, SS, SEATED);
 const hisHead = headAt(him.x, him.y, SS, SEATED, -1);
+const myHead = headAt(me.x, me.y, SS, SEATED);
 
-const MinjunShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const shot = current(frame, [[k.minjun, "two"], [k.his, "his"]]);
-  const up = ramp(frame, k.minjun + 6, k.minjun + 20);
+const FriendShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const shot = current(frame, [[k.friend, "two"], [k.his, "his"]]);
+  const up = ramp(frame, k.friend + 6, k.friend + 20);
   const arm: [number, number] = [mix(20, 72, up), mix(20, 40, up)];
   const hand = handAt({ ...him, pose: { ...SEATED, armF: arm } });
   const cams: Record<typeof shot, Camera> = {
-    two: camAt(frame, [[k.minjun, { x: 780, y: 650, zoom: 1.6 }], [k.his, { x: 790, y: 640, zoom: 1.7 }]]),
-    his: camAt(frame, [[k.his, insert(hand.x - 10, hand.y - 30, 3.2)], [k.sea, insert(hand.x - 10, hand.y - 30, 3.5)]]),
+    two: camAt(frame, [[k.friend, { x: 780, y: 650, zoom: 1.6 }], [k.his, { x: 790, y: 640, zoom: 1.7 }]]),
+    his: camAt(frame, [[k.his, insert(hand.x - 10, hand.y - 30, 3.2)], [k.sheet, insert(hand.x - 10, hand.y - 30, 3.5)]]),
   };
-  const seen = ramp(frame, k.minjun + 24, k.minjun + 36);
+  const seen = ramp(frame, k.friend + 24, k.friend + 36);
   return (
-    <Desks frame={frame} cam={drift(cams[shot], frame, "minjun", 2)} hisArm={arm}
-      myFace={seen > 0.5 ? { ...EXPRESSIONS.happy, eyes: 1.1, brows: "raised" as const, look: { x: 0.9, y: 0 } } : { ...EXPRESSIONS.relieved, look: { x: 0.9, y: 0.1 } }}
+    <Desks frame={frame} cam={drift(cams[shot], frame, "friend", 2)} hisArm={arm}
+      myFace={seen > 0.5 ? { ...EXPRESSIONS.happy, eyes: 1.1, brows: "raised" as const, look: { x: 0.9, y: 0 } } : { brows: "raised" as const, lids: 0.1, mouth: "smile" as const, eyes: 1, look: { x: 0.9, y: 0.1 } }}
       hisFace={{ ...EXPRESSIONS.happy, brows: "raised" as const, look: { x: 0.9, y: 0 } }}
       hisProp={<HeldResult x={hand.x - 6} y={hand.y - 70} scale={1} tilt={-6} head={MINJUN.head} />} />
   );
 };
 
-const SeaShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = { x: 780, y: 620, zoom: 1.25 };
-  const zoom = mix(1, 1.05, linear(frame, k.sea, k.gave));
+const SheetShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const zoom = mix(1, 1.05, linear(frame, k.sheet, k.half));
   return (
     <>
-      <Desks frame={frame} cam={drift(cam, frame, "sea", 3)} myFace={{ ...EXPRESSIONS.sceptical, look: { x: 0.6, y: -0.3 } }}
+      <Desks frame={frame} cam={drift({ x: 780, y: 620, zoom: 1.25 }, frame, "sheet", 3)} myFace={{ ...EXPRESSIONS.sceptical, look: { x: 0.6, y: -0.3 } }}
         hisFace={{ ...EXPRESSIONS.neutral, look: { x: -0.4, y: -0.3 } }} />
       <Dim amount={0.4} />
       <Stage cam={{ x: 960, y: 540, zoom }} radius={0} origin={{ x: 0, y: 0 }} back={null}
         actors={
-          <Sheet frame={frame} at={k.sea} x={960} y={520} w={1400} h={640} tilt={-1.5}>
-            <SeatAndSea frame={frame} sea={linear(frame, k.sea + 6, k.sea + 40)} teal={ramp(frame, k.teal, k.teal + 8)}
-              seats={ramp(frame, k.seat, k.seat + 16)} pulseSeats={frame >= k.seatHi && frame < k.seaHi ? 1 : 0} pulseSea={frame >= k.seaHi ? 1 : 0} />
+          <Sheet frame={frame} at={k.sheet} x={960} y={520} w={1400} h={640} tilt={-1.5}>
+            <SeatAndSea frame={frame} room={linear(frame, k.room - 10, k.room + 14)} sea={linear(frame, k.sea, k.sea + 30)}
+              teal={ramp(frame, k.teal, k.teal + 8)} pair={ramp(frame, k.pair, k.pair + 10)} you={MUSTARD} him={MINJUN.head} />
           </Sheet>
         } />
     </>
   );
 };
 
-const GaveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const shot = current(frame, [[k.gave, "him"], [k.never, "me"], [k.half, "two"]]);
-  const out = ramp(frame, k.half, k.half + 14);
-  const arm: [number, number] = [mix(20, 80, out), mix(20, 12, out)];
-  const hand = handAt({ ...him, pose: { ...SEATED, armF: arm } });
-  const cams: Record<typeof shot, Camera> = {
-    him: camAt(frame, [[k.gave, closeUp(hisHead.x - 30, hisHead.y, 2.6)], [k.never, closeUp(hisHead.x - 30, hisHead.y, 2.85)]]),
-    me: camAt(frame, [[k.never, closeUp(myHead.x + 40, myHead.y, 2.6)], [k.half, closeUp(myHead.x + 40, myHead.y, 2.8)]]),
-    two: camAt(frame, [[k.half, { x: 790, y: 630, zoom: 1.75 }], [k.take, { x: 790, y: 630, zoom: 1.8 }]]),
-  };
-  const soft = ramp(frame, k.never + 10, k.never + 26);
-  const myFace = shot === "me"
-    ? { brows: soft > 0.5 ? "raised" as const : "flat" as const, lids: mix(0.2, 0.35, soft), mouth: soft > 0.5 ? "smile" as const : "flat" as const, eyes: 1, look: { x: 0.9, y: 0.1 } }
-    : { brows: "raised" as const, lids: 0.12, mouth: "smile" as const, eyes: 1, look: { x: 0.9, y: 0.1 } };
-  return (
-    <Desks frame={frame} cam={drift(cams[shot], frame, "gave", 2)} hisArm={arm} notebook
-      myFace={myFace} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: shot === "him" ? 0.5 : 0.05 } }}
-      hisProp={out > 0 ? <Kimbap x={hand.x - 8} y={hand.y - 18} scale={0.95} half tilt={-10} /> : null}
-      over={<Bubble frame={frame} at={k.half + 10} until={k.take + 24} x={hisHead.x + 40} y={hisHead.y - 74} text="Half?" side="right" />} />
-  );
-};
+/** His arm out with the half bar (`out` 0..1); your arm taking it (`reach` 0..1) and bringing it to your mouth (`eat`). */
+function chocolateArms(out: number, reach: number, got: boolean, eat: number) {
+  const hisArm: [number, number] = got ? [mix(80, 20, eat), mix(12, 20, eat)] : [mix(20, 80, out), mix(20, 12, out)];
+  const hisHand = handAt({ ...him, pose: { ...SEATED, armF: [80, 12] } });
+  const reachArm = aimArm(me, { x: hisHand.x - 30, y: hisHand.y });
+  const mouthArm = aimArm(me, { x: myHead.x + 30, y: myHead.y + 26 });
+  const myArm: [number, number] = got
+    ? [mix(reachArm[0], mouthArm[0], eat), mix(reachArm[1], mouthArm[1], eat)]
+    : [mix(SEATED.armF[0], reachArm[0], reach), mix(SEATED.armF[1], reachArm[1], reach)];
+  return { hisArm, myArm, hisHand: handAt({ ...him, pose: { ...SEATED, armF: hisArm } }), myHand: handAt({ ...me, pose: { ...SEATED, armF: myArm } }) };
+}
 
-const TakeShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const hisArm: [number, number] = [80, 12];
-  const hisHand = handAt({ ...him, pose: { ...SEATED, armF: hisArm } });
+const HalfShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const reach = ramp(frame, k.take + 2, k.take + 14);
   const got = frame >= k.take + 16;
-  const back = ramp(frame, k.take + 18, k.take + 34);
-  const reachArm = aimArm(me, { x: hisHand.x - 30, y: hisHand.y });
-  const restArm: [number, number] = [60, 50];
-  const myArm: [number, number] = got
-    ? [mix(reachArm[0], restArm[0], back), mix(reachArm[1], restArm[1], back)]
-    : [mix(SEATED.armF[0], reachArm[0], reach), mix(SEATED.armF[1], reachArm[1], reach)];
-  const hisNow: [number, number] = got ? [mix(80, 20, back), mix(12, 20, back)] : hisArm;
-  const myHand = handAt({ ...me, pose: { ...SEATED, armF: myArm } });
-  const cam = drift(camAt(frame, [[k.take, { x: 790, y: 630, zoom: 1.8 }], [k.her, { x: 770, y: 640, zoom: 1.95 }]]), frame, "take", 2);
+  const eat = ramp(frame, k.take + 20, k.take + 46);
+  const { hisArm, myArm, hisHand, myHand } = chocolateArms(ramp(frame, k.half, k.half + 12), reach, got, eat);
+  const cam = drift(camAt(frame, [[k.half, { x: 790, y: 640, zoom: 1.75 }], [k.regret, { x: 780, y: 640, zoom: 1.95 }]]), frame, "half", 2);
+  // You look at him, at his face: level, never above his head.
+  const mine = got
+    ? { brows: "raised" as const, lids: 0.1, mouth: eat > 0.6 ? "o" as const : "smile" as const, eyes: 1, look: { x: 0.9, y: 0.05 } }
+    : { brows: "worry" as const, lids: 0.05, mouth: "flat" as const, eyes: 1.05, look: { x: 0.95, y: 0.05 } };
   return (
-    <Desks frame={frame} cam={cam} myArm={myArm} hisArm={hisNow} notebook
-      myFace={{ ...EXPRESSIONS.happy, lids: 0.2, look: { x: 0.9, y: 0.1 } }} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: 0.05 } }}
-      hisProp={!got ? <Kimbap x={hisHand.x - 8} y={hisHand.y - 18} scale={0.95} half tilt={-10} /> : null}
-      myProp={got ? <Kimbap x={myHand.x + 8} y={myHand.y - 18} scale={0.95} half tilt={8} /> : null} />
+    <Desks frame={frame} cam={cam} myArm={myArm} hisArm={hisArm}
+      myFace={mine} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: 0.05 } }}
+      hisProp={!got ? <Chocolate x={hisHand.x - 14} y={hisHand.y - 14} scale={0.9} half="left" tilt={-8} /> : null}
+      myProp={got && eat < 0.9 ? <Chocolate x={myHand.x + 14} y={myHand.y - 14} scale={0.9} half="right" tilt={8} /> : null}
+      over={<Bubble frame={frame} at={k.bubble} until={k.take + 20} x={hisHead.x + 40} y={hisHead.y - 74} text="Half?" side="right" />} />
   );
 };
 
-// ------------------------------------------------------------------------------------------------ lines 97-98
-
-const HerShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const typed = 0.55 * ramp(frame, k.her + 30, k.keep - 10);
-  const thumbX = frame < k.keep ? 0.15 + 0.6 * ((Math.sin(frame / 5) + 1) / 2) * Math.min(1, typed * 3) : mix(0.6, 0.86, ramp(frame, k.keep, k.keep + 20));
-  const cam = drift(camAt(frame, [[k.her, { x: 1000, y: 540, zoom: 1.0 }], [k.keep, { x: 1080, y: 560, zoom: 1.15 }], [k.bus, { x: 1180, y: 640, zoom: 1.6 }]]), frame, "her", 3);
-  const props = {
-    cam, mood: "day" as const, frame,
-    options: { ...phone.defaults, mode: "message" as const, typed, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb: thumbX, behind: "desk" as const },
-  };
-  const spot = phone.spots.face;
-  const sink = ramp(frame, k.keep + 20, k.keep + 40);
-  const face = { brows: sink > 0.5 ? "sad" as const : "worry" as const, lids: mix(0.15, 0.45, sink), mouth: "flat" as const, eyes: 1, look: { x: 1, y: 0.3 } };
-  return (
-    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={phone.Back(props)}
-      actors={<><Figure {...HERO} x={spot.x} y={spot.y} scale={spot.scale} facing={spot.facing} {...face} blink={blinking(frame, 5)} time={frame} />{phone.Mid?.(props)}</>} />
-  );
-};
-
-// ------------------------------------------------------------------------------------------------ lines 99-101
-
-const WIN = bus.spots.window;
-
-/** The bus with you at the window, the street going past at `street` (a frame count for the street's slide) and
- *  something past the windows. */
-const OnBus: React.FC<{ frame: number; street: number; cam: Camera; face: object; outside?: React.ReactNode; phoneUp?: boolean }> = ({
-  frame, street, cam, face, outside, phoneUp = true,
-}) => {
-  const props = { cam, mood: "day" as const, frame: street, options: { ...bus.defaults, speed: 7, hangers: 2 } };
-  const pose: Pose = phoneUp ? { ...SEATED, armF: [40, 80] } : { ...SEATED, armF: [30, 50] };
-  return (
-    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }}
-      back={<>{bus.Back(props)}{outside && <Deep cam={cam} depth={1} flat><PastTheWindow cam={cam} id="bus">{outside}</PastTheWindow></Deep>}</>}
-      actors={<Figure {...HERO} x={WIN.x} y={WIN.y} scale={WIN.scale} facing={WIN.facing} pose={pose} {...face} blink={blinking(frame, 3)} time={frame}
-        held={phoneUp ? <HandPhone lit /> : undefined} />} />
-  );
-};
-
-const myBusHead = headAt(WIN.x, WIN.y, WIN.scale, SEATED, WIN.facing);
-
-const BusShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.bus, { x: 960, y: 540, zoom: 1.0 }], [k.ad, { x: 1150, y: 600, zoom: 1.25 }]]), frame, "bus", 3);
-  return <OnBus frame={frame} street={frame} cam={cam} face={{ ...EXPRESSIONS.neutral, lids: 0.3, look: { x: 0.5, y: 0.7 } }} />;
-};
-
-const AdShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.ad, { x: 1300, y: 540, zoom: 1.7 }], [k.thumb, { x: 1330, y: 560, zoom: 1.85 }]]), frame, "ad", 2);
-  const x = 1750 - (frame - k.ad) * 7;
-  const follow = linear(frame, k.ad + 10, k.ad + 90);
-  const face = { brows: "none" as const, lids: 0.25, mouth: "flat" as const, eyes: 1, look: { x: mix(-0.6, 0.6, follow), y: -0.5 } };
+const RegretShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const cam = drift({ x: 760, y: 640, zoom: 1.6 }, frame, "regret", 2);
+  const eat = ramp(frame, k.take + 20, k.take + 46);
+  const arms = chocolateArms(1, 1, true, eat);
   return (
     <>
-      <OnBus frame={frame} street={frame} cam={cam} face={face} phoneUp={false} outside={<ShelterAd x={x} />} />
-      <Fade opacity={ramp(frame, k.pie, k.pie + 10)}><Dim amount={0.35} /></Fade>
+      <Desks frame={frame} cam={cam} myArm={arms.myArm} hisArm={arms.hisArm}
+        myFace={{ brows: "none", lids: 0.25, mouth: eat < 0.9 ? "o" : "flat", eyes: 1, look: { x: 0.6, y: 0.2 } }} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: 0.05 } }}
+        myProp={eat < 0.9 ? <Chocolate x={arms.myHand.x + 14} y={arms.myHand.y - 14} scale={0.9} half="right" tilt={8} /> : null} />
+      <Dim amount={ramp(frame, k.pie, k.pie + 10) * 0.35} />
       <Stage cam={{ x: 960, y: 540, zoom: 1 }} radius={0} origin={{ x: 0, y: 0 }} back={null}
         actors={
-          <Sheet frame={frame} at={k.pie} x={1300} y={440} w={600} h={560} tilt={2}>
+          <Sheet frame={frame} at={k.pie} x={1260} y={450} w={600} h={560} tilt={2}>
             <RegretPie cx={300} cy={250} r={170} shown={ramp(frame, k.pie + 14, k.pie + 34)} />
           </Sheet>
         } />
@@ -265,13 +206,38 @@ const AdShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-const ThumbShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const flip = linear(frame, k.down, k.down + 14);
-  const land = ramp(frame, k.down + 7, k.down + 20);
-  const cam = drift(camAt(frame, [[k.thumb, { x: 1180, y: 420, zoom: 1.45 }], [k.down, { x: 1180, y: 440, zoom: 1.5 }], [k.up, { x: 1180, y: 640, zoom: 1.2 }]]), frame, "thumb", 2);
+// ------------------------------------------------------------------------------------------------ lines 86-88
+
+const JarShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const cam = drift(camAt(frame, [[k.jar, insert(HOME.jar.x, HOME.jar.y - 110, 2.6)], [k.her, insert(HOME.jar.x, HOME.jar.y - 130, 3.0)]]), frame, "jar", 2);
+  return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<HomeBack cam={cam} mood="day" frame={frame} />} actors={null} />;
+};
+
+const HerShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const typed = 0.55 * ramp(frame, k.her + 30, k.text - 10);
+  const thumbX = 0.15 + 0.6 * ((Math.sin(frame / 5) + 1) / 2) * Math.min(1, typed * 3);
+  const cam = drift(camAt(frame, [[k.her, { x: 1000, y: 540, zoom: 1.0 }], [k.text, { x: 1080, y: 560, zoom: 1.15 }]]), frame, "her", 3);
   const props = {
     cam, mood: "day" as const, frame,
-    options: { ...phone.defaults, mode: "message" as const, typed: 0.55, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb: 0.5, behind: "metro" as const },
+    options: { ...phone.defaults, mode: "message" as const, typed, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb: thumbX, behind: "desk" as const },
+  };
+  const spot = phone.spots.face;
+  const face = { brows: "worry" as const, lids: 0.15, mouth: "flat" as const, eyes: 1, look: { x: 1, y: 0.3 } };
+  return (
+    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={phone.Back(props)}
+      actors={<><Figure {...HERO} x={spot.x} y={spot.y} scale={spot.scale} facing={spot.facing} {...face} blink={blinking(frame, 5)} time={frame} />{phone.Mid?.(props)}</>} />
+  );
+};
+
+/** "A text would open nothing": the thumb hovers over send and stops; then the phone goes face down on your knee. */
+const TextShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const flip = linear(frame, k.down, k.down + 14);
+  const land = ramp(frame, k.down + 7, k.down + 20);
+  const thumb = mix(0.6, 0.86, ramp(frame, k.text + 6, k.text + 30));
+  const cam = drift(camAt(frame, [[k.text, { x: 1180, y: 600, zoom: 1.6 }], [k.down, { x: 1180, y: 560, zoom: 1.45 }], [k.bus, { x: 1180, y: 640, zoom: 1.2 }]]), frame, "text", 2);
+  const props = {
+    cam, mood: "day" as const, frame,
+    options: { ...phone.defaults, mode: "message" as const, typed: 0.55, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb, behind: "metro" as const },
   };
   const sx = flip < 0.5 ? 1 - flip * 2 : flip * 2 - 1;
   const at = `translate(${PHONE.x} ${PHONE.y + 140 * land}) rotate(${8 * land}) scale(${Math.max(0.001, sx)} 1) translate(${-PHONE.x} ${-PHONE.y})`;
@@ -280,24 +246,40 @@ const ThumbShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       actors={
         <>
           {land > 0 && <ellipse cx={PHONE.x - 40} cy={PHONE.y + 260} rx={620} ry={420} fill="#3b3e47" opacity={land} />}
-          <g transform={at}>
-            {flip < 0.5 ? phone.Mid?.(props) : <PhoneBack x={PHONE.x} y={PHONE.y} />}
-          </g>
+          <g transform={at}>{flip < 0.5 ? phone.Mid?.(props) : <PhoneBack x={PHONE.x} y={PHONE.y} />}</g>
         </>
       } />
   );
 };
 
-const LookUpShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const span = Math.max(1, k.end - k.up);
-  const t = linear(frame, k.up, k.end);
-  const slide = span * 0.5 * (1 - (1 - t) * (1 - t));
-  const street = k.up + slide;
-  const gateX = 1000 + (span * 0.5 - slide) * 7;
-  const cam = drift(camAt(frame, [[k.up, closeUp(myBusHead.x - 20, myBusHead.y - 20, 2.4)], [k.up + Math.round(span * 0.45), { x: 1430, y: 480, zoom: 1.8 }]]), frame, "look", 2);
-  const lift = ramp(frame, k.up + 4, k.up + 18);
-  const face = { brows: lift > 0.5 ? "raised" as const : "flat" as const, lids: mix(0.35, 0, lift), mouth: "flat" as const, eyes: mix(1, 1.1, lift), look: { x: 0.3, y: mix(0.8, -0.5, lift) } };
-  return <OnBus frame={frame} street={street} cam={cam} face={face} phoneUp={false} outside={<DepotGates x={gateX} />} />;
+// ------------------------------------------------------------------------------------------------ line 89
+
+const WIN = bus.spots.window;
+
+/** The bus with you at the window, the street slid `slide` px, and things going past the windows. */
+const OnBus: React.FC<{ frame: number; slide: number; cam: Camera; face: object; outside?: React.ReactNode }> = ({ frame, slide, cam, face, outside }) => {
+  const props = { cam, mood: "day" as const, frame: slide / 7, options: { ...bus.defaults, speed: 7, hangers: 2 } };
+  const pose: Pose = { ...SEATED, armF: [30, 50] };
+  return (
+    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }}
+      back={<>{bus.Back(props)}{outside && <Deep cam={cam} depth={1} flat><PastTheWindow cam={cam} id="bus">{outside}</PastTheWindow></Deep>}</>}
+      actors={<Figure {...HERO} x={WIN.x} y={WIN.y} scale={WIN.scale} facing={WIN.facing} pose={pose} {...face} blink={blinking(frame, 3)} time={frame} />} />
+  );
+};
+
+/** You're on the bus: the shelter ad slides past behind you, the bus slows, the warehouse gates come into the window,
+ *  and you look up at them. One slide drives the street, the ad and the gates together. */
+const BusShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const t = linear(frame, k.bus, k.end);
+  const slide = 1300 * (1 - (1 - t) * (1 - t));
+  const lift = ramp(frame, mix(k.bus, k.end, 0.45), mix(k.bus, k.end, 0.7));
+  const face = { brows: lift > 0.5 ? "raised" as const : "none" as const, lids: mix(0.3, 0, lift), mouth: "flat" as const, eyes: mix(1, 1.1, lift),
+    look: { x: mix(-0.5, 0.2, lift), y: mix(-0.2, -0.6, lift) } };
+  const cam = drift(camAt(frame, [[k.bus, { x: 1360, y: 560, zoom: 1.35 }], [k.end, { x: 1420, y: 500, zoom: 1.5 }]]), frame, "bus", 2);
+  return (
+    <OnBus frame={frame} slide={slide} cam={cam} face={face}
+      outside={<><ShelterAd x={1100 - slide} /><DepotGates x={2300 - slide} /></>} />
+  );
 };
 
 // ------------------------------------------------------------------------------------------------ the beat
@@ -306,23 +288,22 @@ const TextOpensNothing: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = times(clips, shot.to);
   const scene = current(frame, [
-    [0, "results"], [k.minjun, "minjun"], [k.sea, "sea"], [k.gave, "gave"], [k.take, "take"], [k.her, "her"], [k.bus, "bus"],
-    [k.ad, "ad"], [k.thumb, "thumb"], [k.up, "up"],
+    [0, "results"], [k.friend, "friend"], [k.sheet, "sheet"], [k.half, "half"], [k.regret, "regret"], [k.jar, "jar"], [k.her, "her"],
+    [k.text, "text"], [k.bus, "bus"],
   ]);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {scene === "results" && <ResultsShot frame={frame} k={k} />}
-      {scene === "minjun" && <MinjunShot frame={frame} k={k} />}
-      {scene === "sea" && <SeaShot frame={frame} k={k} />}
-      {scene === "gave" && <GaveShot frame={frame} k={k} />}
-      {scene === "take" && <TakeShot frame={frame} k={k} />}
+      {scene === "friend" && <FriendShot frame={frame} k={k} />}
+      {scene === "sheet" && <SheetShot frame={frame} k={k} />}
+      {scene === "half" && <HalfShot frame={frame} k={k} />}
+      {scene === "regret" && <RegretShot frame={frame} k={k} />}
+      {scene === "jar" && <JarShot frame={frame} k={k} />}
       {scene === "her" && <HerShot frame={frame} k={k} />}
+      {scene === "text" && <TextShot frame={frame} k={k} />}
       {scene === "bus" && <BusShot frame={frame} k={k} />}
-      {scene === "ad" && <AdShot frame={frame} k={k} />}
-      {scene === "thumb" && <ThumbShot frame={frame} k={k} />}
-      {scene === "up" && <LookUpShot frame={frame} k={k} />}
     </AbsoluteFill>
   );
 };
 
-export const textOpensNothing: Beat = { id: "TextOpensNothing", firstLine: 91, Component: TextOpensNothing };
+export const textOpensNothing: Beat = { id: "TextOpensNothing", firstLine: 81, Component: TextOpensNothing };

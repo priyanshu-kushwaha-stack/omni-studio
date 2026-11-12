@@ -1,12 +1,13 @@
-// The reading room (scene_plan.md, "Shared sets"; owner: builder D). A Seoul study cafe past midnight: rows of
-// partitioned desks, one small lamp each, dark between. Three views, each drawn for the REF camera (sets/common.tsx):
+// The late-night study room (scene_plan.md, "Shared sets"; owner: builder D). Past midnight: rows of partitioned desks,
+// one small lamp each, dark between. Three views, each drawn for the REF camera (sets/common.tsx):
 //
 //   view "rows"  side on, along the rows: the near row of carrels (chair, desk, a front partition with a clamp lamp),
 //                two smaller rows behind it, the dark wall. People sit facing right. Draw seated people, then
 //                <ReadingRoomMid> (the near desk tops go over their laps), then anyone standing in front.
 //                Min-jun's carrel is READING.minjun, yours READING.you; his notebook lies open on his desk.
-//   view "top"   straight down on Min-jun's desk: the open notebook under his lamp, your wrong answers copied out in
-//                rows (ink bars), a "?" beside each in his blue pen. `rows` and `marks` (0..1) draw them on.
+//   view "top"   straight down on your best friend's desk: the open notebook under his lamp, your wrong answers copied
+//                out in rows (pencil bars), a "?" beside each in his blue pen and under it his working-out that gets it
+//                right, ending in a teal tick. `rows` and `marks` (0..1) draw them on.
 //   view "plan"  the whole room from above: the rows of desks as lanes, a lamp pool at each lit desk, heads bent over
 //                a few. `lane` picks one lane; `others` (0..1) dims every other lane to dark.
 //
@@ -90,7 +91,7 @@ const Carrels: React.FC<{
                 <path d={`M${x0 + 398} -330 L${x0 + 352} -366 L${x0 + 320} -340`} fill="none" stroke="#5a5a62" strokeWidth={6} strokeLinejoin="round" />
                 <path d={`M${x0 + 298} -342 L${x0 + 340} -342 L${x0 + 352} -312 L${x0 + 284} -312Z`} fill={SHADE} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
                 {on && <ellipse cx={x0 + 318} cy={-312} rx={26} ry={6} fill="#fff6dc" />}
-                {!sitting && <Chair x={x0 + 70 + out} y={-75} scale={1.2} color="#4a3b33" />}
+                {!sitting && <Chair x={x0 + 70 + out} y={-75} scale={1.2} color={out ? WOOD_LIT : "#5a4638"} />}
                 {sitting && (
                   <g>
                     <rect x={x0 + 40} y={-250} width={64} height={130} rx={26} fill={["#3b3e47", "#4a4f63", "#3d4a5c"][i % 3]} transform={`rotate(24 ${x0 + 72} -120)`} />
@@ -183,14 +184,17 @@ export const ReadingRoomMid: React.FC<{ lit?: number[]; notebook?: boolean; extr
 export const TOP = {
   left: { x: 440, y: 270, w: 470, h: 640 },
   right: { x: 910, y: 270, w: 470, h: 640 },
-  rows: 7,
-  /** Row r (0..13: seven on the left page, then seven on the right): where its bars start and end, and its "?". */
+  /** Rows per page. */
+  rows: 5,
+  /** Row r (0..9: five on the left page, then five on the right): where its bars start, how long they run, its "?",
+   *  and the working-out under it. */
   row: (r: number) => {
-    const page = r < 7 ? 0 : 1;
-    const k = r % 7;
+    const page = r < 5 ? 0 : 1;
+    const k = r % 5;
     const x = page ? 950 : 480;
-    const len = 250 + noise(r + 4) * 110;
-    return { x, y: 345 + k * 80, len, mark: { x: x + 395, y: 345 + k * 80 } };
+    const y = 335 + k * 118;
+    const len = 250 + noise(r + 4) * 100;
+    return { x, y, len, mark: { x: x + 395, y }, work: { x: x + 40, y: y + 44, len: 200 + noise(r + 9) * 110 } };
   },
 };
 
@@ -203,7 +207,9 @@ export const QMark: React.FC<{ x: number; y: number; s?: number; color?: string;
 );
 
 /** Pencil handwriting standing for a line of working: short ink bars of varying length. */
-const Writing: React.FC<{ x: number; y: number; len: number; shown: number; seed: number }> = ({ x, y, len, shown, seed }) => {
+const Writing: React.FC<{ x: number; y: number; len: number; shown: number; seed: number; color?: string; h?: number }> = ({
+  x, y, len, shown, seed, color = "#4a4d58", h = 14,
+}) => {
   const parts = Array.from({ length: 5 }, (_, i) => 0.12 + noise(seed * 9 + i) * 0.16);
   const total = parts.reduce((a, b) => a + b, 0) + 0.05 * parts.length;
   let at = 0;
@@ -213,7 +219,7 @@ const Writing: React.FC<{ x: number; y: number; len: number; shown: number; seed
         const from = at;
         at += p + 0.05;
         const vis = Math.max(0, Math.min(p, shown * total - from));
-        return vis > 0 ? <rect key={i} x={x + (from / total) * len} y={y - 7} width={(vis / total) * len} height={14} rx={7} fill="#4a4d58" opacity={0.85} /> : null;
+        return vis > 0 ? <rect key={i} x={x + (from / total) * len} y={y - h / 2} width={(vis / total) * len} height={h} rx={h / 2} fill={color} opacity={0.85} /> : null;
       })}
     </g>
   );
@@ -264,6 +270,12 @@ const TopBack: React.FC<{ cam: Camera; rows: number; marks: number }> = ({ cam, 
               <circle cx={row.x - 2} cy={row.y} r={10} fill="none" stroke="#4a4d58" strokeWidth={3} opacity={shown > 0 ? 0.8 : 0} />
               <Writing x={row.x + 22} y={row.y} len={row.len} shown={shown} seed={r} />
               {marked && <QMark x={row.mark.x} y={row.mark.y} s={0.9} tilt={6 + noise(r) * 8} />}
+              {marked && (
+                <g>
+                  <Writing x={row.work.x} y={row.work.y} len={row.work.len} shown={1} seed={r + 40} color={PEN} h={10} />
+                  <path d={`M${row.work.x + row.work.len + 18} ${row.work.y - 2} l10 12 l20 -24`} fill="none" stroke="#1d9a8f" strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
+                </g>
+              )}
             </g>
           );
         })}

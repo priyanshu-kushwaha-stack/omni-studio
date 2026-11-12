@@ -1,4 +1,4 @@
-// Who's Crimson, lines 14-19: the school corridor in the morning. You walk in with the letter; Tae-ho, sage head, one
+// Who's Red, lines 14-19: the school corridor in the morning. You walk in with the letter; the rival, sage head, one
 // foot up at the shoe lockers, swapping shoes. "Still here?" You hold up the letter: over your shoulder the card snaps
 // open over his head and flicks to -6. Your brows go up; he barely looks up. "Nice. Move."
 import { Figure } from "@whatif/kit/rig/Figure";
@@ -75,7 +75,7 @@ export const CorridorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: Mood
     still: camAt(frame, [[k.still, closeUp(th.x - 30, th.y - 10, 2.5)], [k.raise, closeUp(th.x - 30, th.y - 10, 2.65)]]),
     raise: camAt(frame, [[k.raise, { x: (YX + TX) / 2, y: 610, zoom: 1.7 }], [k.ots, { x: (YX + TX) / 2 + 10, y: 605, zoom: 1.78 }]]),
     ots: camAt(frame, [[k.ots, closeUp(th.x - 150, th.y - 80, 2.15)], [k.youLook, closeUp(th.x - 140, th.y - 85, 2.3)]]),
-    youLook: camAt(frame, [[k.youLook, closeUp(y.head.x + 40, y.head.y - 30, 2.5)], [k.barely, closeUp(y.head.x + 40, y.head.y - 35, 2.7)]]),
+    youLook: camAt(frame, [[k.youLook, closeUp(y.head.x - 30, y.head.y - 30, 2.6)], [k.barely, closeUp(y.head.x - 30, y.head.y - 35, 2.8)]]),
     barely: camAt(frame, [[k.barely, closeUp(th.x - 10, th.y - 70, 2.3)], [k.move, closeUp(th.x - 10, th.y - 70, 2.45)]]),
     move: camAt(frame, [[k.move, { x: (YX + TX) / 2 + 20, y: 610, zoom: 1.6 }], [k.kang, { x: (YX + TX) / 2 + 20, y: 605, zoom: 1.7 }]]),
   };

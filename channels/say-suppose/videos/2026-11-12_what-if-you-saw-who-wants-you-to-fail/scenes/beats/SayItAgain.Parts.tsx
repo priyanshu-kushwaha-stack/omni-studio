@@ -1,5 +1,5 @@
 // Helpers for "Say It Again" (SayItAgain.tsx): the second letter held up on the landing (an insert), the run home past
-// the store's light, and the paper sheet for the couples fact (c09). World coordinates, for a <Stage> slot.
+// the store's light. World coordinates, for a <Stage> slot.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { runPose } from "@whatif/kit/rig/pose";
 import { Skyline } from "@whatif/kit/sets/common";
@@ -88,47 +88,4 @@ export const NightRun: React.FC<{ frame: number; p: number }> = ({ frame, p }) =
       blink={blinking(frame, 1)} time={frame} flow={0.9} held={<Letter x={0} y={10} scale={0.36} tilt={-20} />} />
   );
   return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={back} actors={actors} />;
-};
-
-/** The couples fact on paper (c09): one of two heads hears news (a little letter), the other throws both arms up; a
- *  line climbs and a heart pops at its top. Centre (x, y); drawn from `at`. */
-export const CouplesSheet: React.FC<{ frame: number; at: number; until?: number; x: number; y: number }> = ({ frame, at, until, x, y }) => {
-  const W = 420, H = 280;
-  const arms = ramp(frame, at + 12, at + 24);
-  const heart = ramp(frame, at + 52, at + 62);
-  const burst = frame >= at + 20 ? 0.6 + 0.4 * Math.sin((frame - at) / 4) : 0;
-  return (
-    <Sheet frame={frame} at={at} until={until} x={x} y={y} w={W} h={H} tilt={-2}>
-      {/* the pair */}
-      <g transform="translate(70 170)">
-        <rect x={-14} y={0} width={28} height={70} rx={10} fill={INK} />
-        <circle cx={0} cy={-26} r={30} fill={PASTELS[0]} stroke={INK} strokeWidth={3} />
-        <circle cx={10} cy={-30} r={4} fill={INK} />
-        <g transform="translate(26 6) rotate(-14)">
-          <rect x={0} y={-30} width={30} height={40} rx={3} fill={PAPER} stroke={INK} strokeWidth={3} />
-          <circle cx={20} cy={0} r={5} fill={TEAL} />
-        </g>
-      </g>
-      <g transform="translate(160 170)">
-        <rect x={-14} y={0} width={28} height={70} rx={10} fill={INK} />
-        <circle cx={0} cy={-26} r={30} fill={PASTELS[3]} stroke={INK} strokeWidth={3} />
-        <circle cx={-10} cy={-30} r={4} fill={INK} />
-        <path d="M-14 -12 Q-4 -4 6 -12" fill="none" stroke={INK} strokeWidth={3} strokeLinecap="round" />
-        <line x1={-12} y1={10} x2={mix(-30, -40, arms)} y2={mix(40, -60, arms)} stroke={INK} strokeWidth={9} strokeLinecap="round" />
-        <line x1={12} y1={10} x2={mix(30, 40, arms)} y2={mix(40, -60, arms)} stroke={INK} strokeWidth={9} strokeLinecap="round" />
-        {burst > 0 && [-50, -20, 20, 50].map((a) => (
-          <line key={a} x1={Math.sin((a * Math.PI) / 180) * 50} y1={-30 - Math.cos((a * Math.PI) / 180) * 50}
-            x2={Math.sin((a * Math.PI) / 180) * 70} y2={-30 - Math.cos((a * Math.PI) / 180) * 70} stroke={MUSTARD} strokeWidth={6} strokeLinecap="round" opacity={burst} />
-        ))}
-      </g>
-      {/* the climbing line and the heart */}
-      <DrawLine d={`M${W / 2 + 30} ${H / 2 + 60} L${W / 2 + 80} ${H / 2 + 30} L${W / 2 + 120} ${H / 2 + 6} L${W / 2 + 170} ${H / 2 - 70}`}
-        from={at + 20} to={at + 52} color={TEAL} width={9} />
-      {heart > 0 && (
-        <g transform={`translate(${W / 2 + 175} ${H / 2 - 92}) scale(${heart})`}>
-          <path d="M0 14 C-30 -8 -18 -34 0 -18 C18 -34 30 -8 0 14Z" fill={CRIMSON} stroke={INK} strokeWidth={3} />
-        </g>
-      )}
-    </Sheet>
-  );
 };

@@ -1,6 +1,6 @@
 // The convenience store by the academies (scene_plan.md, "Shared sets"; owner: builder A), side on, drawn for the REF
 // camera (sets/common.tsx): fluorescent white inside, the dark street through the glass front at the left (the door,
-// and a blue crate by it for the cat), the triangle-kimbap chiller, the drinks fridge, and the counter at the right
+// and a blue crate by it for the cat), the snack shelf (chocolate bars and packets), the drinks fridge, and the counter at the right
 // with the clerk's spot behind it.
 //
 // Usage:
@@ -11,7 +11,7 @@
 //   The light: wrap the <Stage> in <LookContext.Provider value={storeLook(mood, cam)}> so the inside reads fluorescent
 //   white even at night (the night grade alone turns it blue).
 // Typical cameras: STORE_CAMS.wide (REF), .counter (Min-jun at the counter), .door (you by the door), .kimbap (the
-// chiller insert), .crate (the cat).
+// snack-shelf insert), .crate (the cat).
 import { Easing, interpolate } from "remotion";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import { setLook, OUTSIDE, Sky, Skyline, type SetLight } from "@whatif/kit/sets/common";
@@ -28,7 +28,7 @@ export const STORE = {
   scale: 1.15,
   /** The counter: front from x `from` to `to`, top at y `top`. */
   counter: { from: 1380, to: 1900, top: 760 },
-  /** Where on the counter something is put down (a kimbap, a coin). */
+  /** Where on the counter something is put down (a chocolate bar, a coin). */
   counterTop: { x: 1460, y: 752 },
   /** The till's screen on the counter. */
   till: { x: 1760, y: 700 },
@@ -44,7 +44,8 @@ export const STORE = {
   crate: { x: 190, y: 872 },
   /** The cat on the crate: <Cat {...STORE.cat} frame={frame} />. */
   cat: { x: 190, y: 872, scale: 1, facing: 1 as const },
-  /** The triangle-kimbap chiller: its shelves from x `from` to `to`, shelf tops at `shelves`. */
+  /** The snack shelf: its shelves from x `from` to `to`, shelf tops at `shelves`. (`kimbap` is the old name, kept.) */
+  snacks: { from: 660, to: 1100, shelves: [560, 680, 800] as const, x: 880, y: 680 },
   kimbap: { from: 660, to: 1100, shelves: [560, 680, 800] as const, x: 880, y: 680 },
 } as const;
 
@@ -77,31 +78,35 @@ export function storeLook(mood: MoodName, cam: Camera) {
 const WALL = "#eef1ec";
 const TILE = "#dfe3df";
 
-/** One small triangle kimbap in its wrapper: a white triangle with a coloured label band, centred at (x, y). */
-const Onigiri: React.FC<{ x: number; y: number; s: number; band: string }> = ({ x, y, s, band }) => (
-  <g transform={`translate(${x} ${y}) scale(${s})`}>
-    <path d="M0 -26 L28 20 L-28 20Z" fill="#f7f4ea" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
-    <rect x={-12} y={2} width={24} height={18} fill="#1f2b22" />
-    <rect x={-22} y={12} width={44} height={6} fill={band} />
-  </g>
-);
+/** One snack on a shelf, centred on its base at (x, y): a chocolate bar standing in its wrapper, or a crisp packet. */
+const Snack: React.FC<{ x: number; y: number; kind: number; color: string }> = ({ x, y, kind, color }) => kind % 2 === 0
+  ? (
+    <g transform={`translate(${x} ${y})`}>
+      <rect x={-14} y={-62} width={28} height={62} rx={3} fill={color} stroke={INK} strokeWidth={3} />
+      <rect x={-14} y={-40} width={28} height={16} fill="#5a3422" />
+    </g>
+  ) : (
+    <g transform={`translate(${x} ${y})`}>
+      <path d="M-18 0 L-20 -54 Q0 -62 20 -54 L18 0Z" fill={color} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <circle cx={0} cy={-28} r={8} fill={PAPER} opacity={0.8} />
+    </g>
+  );
 
 const BANDS = ["#d8344f", "#1d9a8f", "#f2b632", "#7fa0c4", "#e8792f"];
 
-/** The open chiller of triangle kimbap: three shelves, rows of them, a cold glow. */
-const KimbapChiller: React.FC = () => {
-  const k = STORE.kimbap;
+/** The snack shelf: three shelves of chocolate bars and packets under a coloured header (bars, no lettering). */
+const SnackShelf: React.FC = () => {
+  const k = STORE.snacks;
   return (
     <g>
       <rect x={k.from - 20} y={470} width={k.to - k.from + 40} height={480} rx={8} fill="#c9d2d8" stroke={INK} strokeWidth={5} />
-      <rect x={k.from} y={490} width={k.to - k.from} height={440} fill="#e9f6fb" />
+      <rect x={k.from} y={490} width={k.to - k.from} height={440} fill="#f4f7f8" />
       <rect x={k.from - 20} y={450} width={k.to - k.from + 40} height={34} rx={6} fill="#3f6f8a" stroke={INK} strokeWidth={5} />
-      {/* bars where a sign would be: no lettering */}
       <rect x={k.from + 30} y={461} width={150} height={12} rx={6} fill={PAPER} opacity={0.8} />
       {k.shelves.map((top, r) => (
         <g key={top}>
-          {Array.from({ length: 9 }, (_, i) => (
-            <Onigiri key={i} x={k.from + 30 + i * 48} y={top - 22} s={0.8} band={BANDS[(i + r * 2) % BANDS.length]} />
+          {Array.from({ length: 11 }, (_, i) => (
+            <Snack key={i} x={k.from + 26 + i * 39} y={top} kind={i + r} color={BANDS[(i + r * 2) % BANDS.length]} />
           ))}
           <rect x={k.from} y={top} width={k.to - k.from} height={12} fill="#9fb0ba" stroke={INK} strokeWidth={3} />
           <rect x={k.from + 10} y={top + 12} width={k.to - k.from - 20} height={10} fill="#f2b632" opacity={0.85} />
@@ -196,7 +201,7 @@ export const StoreBack: React.FC<{ cam: Camera; mood: MoodName; frame: number; d
         <rect x={-1400} y={-900} width={1960} height={1000} fill="#f6f8f5" />
         <rect x={-1400} y={970} width={1960} height={400} fill={TILE} />
         <rect x={548} y={100} width={24} height={870} fill="#8a949c" />
-        <KimbapChiller />
+        <SnackShelf />
         <Fridge x={1150} w={330} />
         <BackShelves x={1520} w={560} />
         {/* a coffee machine on a side table, and a poster made of bars (no lettering) */}
@@ -204,7 +209,8 @@ export const StoreBack: React.FC<{ cam: Camera; mood: MoodName; frame: number; d
         <rect x={2180} y={420} width={150} height={140} rx={10} fill="#3b3e47" stroke={INK} strokeWidth={5} />
         <circle cx={2255} cy={480} r={22} fill="#e8792f" />
         <rect x={720} y={200} width={300} height={170} rx={8} fill="#f2b632" stroke={INK} strokeWidth={5} />
-        <path d="M800 330 L850 250 L900 330Z" fill="#f7f4ea" stroke={INK} strokeWidth={4} />
+        <rect x={790} y={262} width={110} height={52} rx={5} fill="#5a3422" stroke={INK} strokeWidth={4} />
+        <rect x={790} y={262} width={30} height={52} rx={5} fill="#1d9a8f" stroke={INK} strokeWidth={4} />
         <rect x={930} y={240} width={70} height={14} rx={7} fill={INK} opacity={0.6} />
         <rect x={930} y={272} width={50} height={14} rx={7} fill={INK} opacity={0.6} />
         {/* the ceiling and its tubes */}

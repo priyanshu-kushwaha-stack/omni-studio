@@ -1,7 +1,7 @@
 // The crowd for A Thousand Tags: the people pouring out of the academies at ten, in rows on the far pavement, the
 // pavement and the road (AcademyStreet's ACADEMY.crowd), each walking out of the nearest tower door when the doors
 // open, then standing, turned toward you on the steps. When you say it, a card snaps open over every head in a ripple
-// out from the steps: nearly all grey zeros, a scatter of teal. Your class (with Min-jun) is drawn by the beat.
+// out from the steps: nearly all grey zeros, a scatter of teal. Your class (with your best friend) is drawn by the beat.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose } from "@whatif/kit/rig/pose";
 import { worldOf } from "@whatif/kit/sets/common";
@@ -12,7 +12,7 @@ import { ACADEMY, crowdScale, TOWER_DEPTH, towerDoors } from "../sets/AcademyStr
 
 export interface Member { x: number; y: number; scale: number; head: string; coat: string; value: number; seed: number; door: number }
 
-/** Keep-out boxes: the academy front and kimbap shop behind the far rows, the steps under you, your class. */
+/** Keep-out boxes: the academy front and snack shop behind the far rows, the steps under you, your class. */
 const blocked = (x: number, y: number) =>
   (y < 1080 && x > -260 && x < 1310) || (y < 1250 && x > 40 && x < 700) || (y < 1225 && x > 690 && x < 1290);
 

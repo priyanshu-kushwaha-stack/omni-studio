@@ -1,17 +1,19 @@
-// Beat "A Thousand Tags" (script.md, ## [02:46] A Thousand Tags; narration lines 39-45), the film's signature
+// Beat "A Thousand Cards" (script.md v2.1, ## [03:05] A Thousand Cards; narration lines 37-43), the film's signature
 // picture. The academy street at ten (AcademyStreet view "street", night).
 //
-//   39    close on you on the academy steps, thinking; the street from below: you up top, Min-jun and the class by the
-//         kimbap shop
-//   40    "about a thousand cram schools": the camera climbs the sign towers
-//   41    "inspectors have patrolled the streets": an inspector with a clipboard walks the pavement, checks his watch
-//   42    the wide: every door on the street opens at once and the crowd pours out
-//   43    close on you: the letter goes up, you say it; the wide: a thousand cards snap open over a thousand heads in a
-//         ripple from the steps, nearly all grey zeros, a scatter of teal, three crimson by the kimbap shop
+//   37    close on you at the foot of the academy steps, thinking; the street from below: the steps, your best friend
+//         and the class by the snack shop
+//   38    "about a thousand after-school academies": the camera climbs the sign towers
+//   39    "Inspectors have patrolled the streets": an inspector with a clipboard walks the pavement, checks his watch
+//   40    the wide: every door on the street opens at once and the crowd pours out
+//   41    "So you climb the academy steps": you climb to the landing; the letter goes up; "and say it into the crowd":
+//         the wide: a thousand cards snap open over a thousand heads in a ripple from the steps, nearly all grey zeros,
+//         a scatter of teal, three red by the snack shop
 //   hold  the camera rises and pulls back until the street is a field of cards; the stranger at the bus stop at the
 //         bottom of the frame reads the timetable and never looks up (no card: he never faces you)
-//   44    the field; "And three crimson": down to the kimbap shop, the three red cards over your class
-//   45    close on your face lit from below, eyes on the red cards; over your shoulder, Min-jun looking up, waving
+//   42    the field; "And three red": down to the snack shop, the three red cards over your class
+//   43    close on your face lit from below, eyes on the red cards; over your shoulder, your best friend looking up,
+//         waving
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS, type Expression } from "@whatif/kit/rig/expressions";
@@ -36,21 +38,22 @@ function times(clips: Clip[], to: number) {
   const at = lineAt(clips);
   const from = (i: number) => clips[i].from;
   return {
-    steps: from(39), // close on you on the steps
-    below: at(39, 0.5), // "So maybe the number fades ...": the street from below
-    towers: from(40), // "about a thousand cram schools": climb the towers
-    inspector: from(41), // "inspectors have patrolled the streets"
-    watch: at(41, 0.62), // he checks his watch
-    wide: from(42), // "So at ten, every door on the street opens at once."
-    doors: at(42, 0.42), // the doors open
-    you: from(43), // "You stand on the academy steps."
-    raise: at(43, 0.36), // "And you say it": the letter goes up
-    say: at(43, 0.5), // the cards snap open
-    rise: lineEnd(clips, 43) + 6, // the hold: the camera keeps rising
-    field: at(44, 0.36), // the field of cards
-    three: at(44, 0.56), // "And three crimson. All by the kimbap shop."
-    face: from(45), // close on your face, lit from below
-    ots: at(45, 0.5), // over your shoulder: Min-jun waving
+    steps: from(37), // close on you at the foot of the steps
+    below: at(37, 0.5), // "So maybe the number fades ...": the street from below
+    towers: from(38), // "about a thousand after-school academies": climb the towers
+    inspector: from(39), // "Inspectors have patrolled the streets"
+    watch: at(39, 0.62), // he checks his watch
+    wide: from(40), // "So at ten, every door on the street opens at once."
+    doors: at(40, 0.42), // the doors open
+    you: from(41), // "So you climb the academy steps"
+    climbed: at(41, 0.4), // on the landing
+    raise: at(41, 0.46), // the letter goes up
+    say: at(41, 0.62), // "and say it into the crowd": the cards snap open
+    rise: lineEnd(clips, 41) + 6, // the hold: the camera keeps rising
+    field: at(42, 0.36), // the field of cards
+    three: at(42, 0.56), // "And three red. All by the snack shop."
+    face: from(43), // close on your face, lit from below
+    ots: at(43, 0.5), // over your shoulder: your best friend waving
     end: to,
   };
 }
@@ -60,7 +63,7 @@ function times(clips: Clip[], to: number) {
 const YOU = ACADEMY.you;
 const MJ = ACADEMY.minjun;
 
-/** Your class by the kimbap shop: Min-jun and five more; three crimson (Min-jun's -84 and two others). */
+/** Your class by the snack shop: your best friend and five more; three red (his -84 and two others). */
 const CLASS = [
   { x: 880, y: 1112, head: PASTELS[1], value: -31 },
   { x: 965, y: 1124, head: PASTELS[7], value: 12 },
@@ -70,12 +73,24 @@ const CLASS = [
 ];
 
 /** Raising the letter: the front arm goes forward and up toward the crowd, below the face (no arm crosses it). */
+/** Where you stand: at the foot of the steps until line 41, then up the three treads to the landing. */
+function youAt(frame: number, k: T): { x: number; y: number; walking: boolean } {
+  const p = linear(frame, k.you + 4, k.climbed);
+  const s = ACADEMY.steps;
+  const treads = [ACADEMY.floor + 6, s.treads[2], s.treads[1], s.treads[0]];
+  const step = Math.min(3, Math.floor(p * 3.999));
+  const within = p * 4 - step;
+  const y = step >= 3 ? treads[3] : mix(treads[step], treads[step + 1], Math.min(1, within * 1.6));
+  return { x: mix(YOU.x - 10, YOU.x, p), y, walking: p > 0 && p < 1 };
+}
+
 function yourPose(frame: number, k: T): Pose {
+  if (youAt(frame, k).walking) return walkPose(frame * 0.3);
   const up = ramp(frame, k.raise, k.raise + 10);
   return { ...STAND, armF: [mix(30, 106, up), mix(60, 18, up)], tilt: mix(0, -6, up) };
 }
 
-/** The class and Min-jun, with their cards from `say`. Min-jun waves on the over-the-shoulder. */
+/** The class and your best friend, with their cards from `say`. He waves on the over-the-shoulder. */
 const Class: React.FC<{ frame: number; k: T; wave: boolean }> = ({ frame, k, wave }) => {
   const s = ACADEMY.classSpot.scale;
   const mjPose: Pose = wave ? { ...STAND, armB: [-150 + Math.sin(frame / 4) * 18, -20] } : STAND;
@@ -142,11 +157,12 @@ const Inspector: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 const Street: React.FC<{ frame: number; k: T; cam: Camera; face: Partial<Expression>; wave?: boolean; you?: boolean }> = ({ frame, k, cam, face, wave = false, you = true }) => {
   const doors = ramp(frame, k.doors, k.doors + 14);
   const pose = yourPose(frame, k);
+  const me = youAt(frame, k);
   const actors = (
     <>
       <Crowd frame={frame} cam={cam} doors={k.doors} say={k.say} until={k.end} you={{ x: YOU.x, y: YOU.y }} />
       {you && (
-        <Figure x={YOU.x} y={YOU.y} scale={YOU.scale} facing={1} pose={pose} {...HERO} {...face} blink={blinking(frame, 0)} time={frame}
+        <Figure x={me.x} y={me.y} scale={YOU.scale} facing={1} pose={pose} {...HERO} {...face} blink={blinking(frame, 0)} time={frame}
           flow={0.2} held={<Letter x={4} y={8} scale={0.45} tilt={-4} />} />
       )}
       <Class frame={frame} k={k} wave={wave} />
@@ -165,10 +181,11 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = times(clips, shot.to);
   const on = current(frame, [
-    [0, "steps"], [k.below, "below"], [k.towers, "towers"], [k.inspector, "inspector"], [k.wide, "wide"], [k.you, "you"], [k.say - 2, "say"],
+    [0, "steps"], [k.below, "below"], [k.towers, "towers"], [k.inspector, "inspector"], [k.wide, "wide"], [k.you, "climb"], [k.raise, "you"], [k.say - 2, "say"],
     [k.three, "three"], [k.face, "face"], [k.ots, "ots"],
   ]);
-  const yh = headAt(YOU.x, YOU.y, YOU.scale, yourPose(frame, k), 1);
+  const me = youAt(frame, k);
+  const yh = headAt(me.x, me.y, YOU.scale, yourPose(frame, k), 1);
   const mh = headAt(MJ.x, MJ.y, MJ.scale, STAND, -1);
   const ins = inspectorAt(frame, k);
   const cams: Record<typeof on, Camera> = {
@@ -177,7 +194,8 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     towers: camAt(frame, [[k.towers, { x: 1000, y: 760, zoom: 1.15 }], [k.inspector, { x: 1000, y: 260, zoom: 1.2 }]]),
     inspector: { x: ins.x + 60, y: 920, zoom: 1.6 },
     wide: camAt(frame, [[k.wide, { x: 980, y: 640, zoom: 0.92 }], [k.you, { x: 960, y: 650, zoom: 0.98 }]]),
-    you: camAt(frame, [[k.you, closeUp(yh.x + 50, yh.y + 20, 2.3)], [k.say, closeUp(yh.x + 50, yh.y + 10, 2.5)]]),
+    climb: camAt(frame, [[k.you, { x: 470, y: 880, zoom: 1.55 }], [k.raise, { x: 480, y: 850, zoom: 1.7 }]]),
+    you: camAt(frame, [[k.raise, closeUp(yh.x + 50, yh.y + 20, 2.3)], [k.say, closeUp(yh.x + 50, yh.y + 10, 2.5)]]),
     say: camAt(frame, [[k.say, { x: 820, y: 780, zoom: 1.0 }], [k.rise, { x: 860, y: 720, zoom: 0.86 }], [k.field, { x: 980, y: 600, zoom: 0.47 }], [k.three, { x: 980, y: 590, zoom: 0.45 }]]),
     three: camAt(frame, [[k.three, { x: 990, y: 930, zoom: 2.0 }], [k.face, { x: 990, y: 925, zoom: 2.15 }]]),
     face: camAt(frame, [[k.face, closeUp(yh.x + 40, yh.y, 2.7)], [k.ots, closeUp(yh.x + 40, yh.y, 2.9)]]),
@@ -190,6 +208,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     towers: EXPRESSIONS.determined,
     inspector: EXPRESSIONS.determined,
     wide: { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.5 } },
+    climb: { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.2 } },
     you: frame < k.raise ? { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.5 } } : { brows: "raised", lids: 0, mouth: "open", eyes: 1.15, look: { x: 0.9, y: 0.4 } },
     say: { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.9, y: 0.4 } },
     three: { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.9, y: 0.4 } },
@@ -211,4 +230,4 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const thousandTags: Beat = { id: "ThousandTags", firstLine: 39, Component: Scene };
+export const thousandTags: Beat = { id: "ThousandTags", firstLine: 37, Component: Scene };

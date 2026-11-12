@@ -74,38 +74,41 @@ const MiniChair: React.FC<{ x: number; y: number; on: boolean; s?: number }> = (
   </g>
 );
 
-/** The sheet's drawing: your class as rows of seats, four of them teal (left); everyone who sat the exam as a sea of
- *  dots, the top four per cent teal (right). `sea` 0..1 fills the dots in, `teal` 0..1 colours the top ones, `seats`
- *  0..1 brings the class in (and slides the sea over to make room). `pulseSeats`/`pulseSea` 0..1 lift each in turn. */
-export const SeatAndSea: React.FC<{ frame: number; sea: number; teal: number; seats: number; pulseSeats: number; pulseSea: number }> = ({
-  frame, sea, teal, seats, pulseSeats, pulseSea,
+/** The sheet's drawing. Left: what you thought, four teal places in a small room of twenty-four. Right: what it is, the
+ *  top four per cent of everyone in the country who sat it, a sea of dots with its first row teal; two of those teal
+ *  dots ringed, yours (mustard) and his (pale blue), side by side. `room` 0..1 draws the room in, `sea` 0..1 fills the
+ *  dots, `teal` 0..1 colours the top ones, `pair` 0..1 rings the two. */
+export const SeatAndSea: React.FC<{ frame: number; room: number; sea: number; teal: number; pair: number; you: string; him: string }> = ({
+  frame, room, sea, teal, pair, you, him,
 }) => {
   const cols = 30, rows = 14;
-  const seaX = 560 - 260 * (1 - seats);
-  const lift = (p: number) => 1 + 0.12 * p * Math.max(0, Math.sin(frame / 4));
+  const pulse = 1 + 0.15 * Math.max(0, Math.sin(frame / 4));
+  const ring = (c: number, color: string) => (
+    <circle cx={c * 26 + 13} cy={16} r={22 * (pair < 1 ? pair : pulse)} fill="none" stroke={color} strokeWidth={8} />
+  );
   return (
     <g>
-      {seats > 0 && (
-        <g opacity={seats}>
+      {room > 0 && (
+        <g opacity={Math.min(1, room * 1.5)}>
+          {/* the room: four walls with a door gap, twenty-four chairs, four of them teal */}
+          <path d="M60 110 H440 V560 H60 V360 M60 300 V110" fill="none" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
           {Array.from({ length: 24 }, (_, i) => {
             const on = i < 4;
-            const x = 90 + (i % 6) * 62;
-            const y = 170 + Math.floor(i / 6) * 92;
-            return <MiniChair key={i} x={x} y={y} on={on} s={on ? lift(pulseSeats) : 1} />;
+            return <MiniChair key={i} x={110 + (i % 6) * 62} y={200 + Math.floor(i / 6) * 96} on={on && room >= 1} s={on && room >= 1 ? pulse * 0.9 + 0.1 : 1} />;
           })}
-          <line x1={490} y1={60} x2={490} y2={560} stroke="#cdbfa6" strokeWidth={5} strokeDasharray="18 16" />
+          <line x1={500} y1={60} x2={500} y2={580} stroke="#cdbfa6" strokeWidth={5} strokeDasharray="18 16" />
         </g>
       )}
-      <g transform={`translate(${seaX} 90)`}>
+      <g transform="translate(560 120)">
         {Array.from({ length: cols * rows }, (_, i) => {
           const c = i % cols, r = Math.floor(i / cols);
           const shown = sea * (cols + 6) - c - noise(i) * 6 > 0;
           if (!shown) return null;
-          const top = r === 0 && c < 17; // the top four per cent: 17 of 420
-          const on = top && teal > 0;
-          const s = on ? lift(pulseSea) : 1;
-          return <circle key={i} cx={c * 26 + 13} cy={r * 32 + 16} r={8 * s} fill={on ? TEAL : "#9a9a94"} opacity={on ? 1 : 0.75} />;
+          const on = r === 0 && c < 17 && teal > 0; // the top four per cent: 17 of 420
+          return <circle key={i} cx={c * 26 + 13} cy={r * 32 + 16} r={8} fill={on ? TEAL : "#9a9a94"} opacity={on ? 1 : 0.75} />;
         })}
+        {pair > 0 && ring(6, you)}
+        {pair > 0 && ring(8, him)}
       </g>
     </g>
   );

@@ -4,10 +4,12 @@
 // coordinates, for a <Stage> slot, like parts.tsx. No sound here.
 import { setLook, type SetDef } from "@whatif/kit/sets";
 import { LookContext, type Look } from "@whatif/kit/stage/Look";
+import { joints, reach, type Pose } from "@whatif/kit/rig/pose";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
 import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
+import { Chocolate } from "../parts";
 import { lastIndex, lineEnd, type Shot } from "../shared";
 import { REF } from "../sets/common";
 
@@ -26,6 +28,13 @@ export function clock(clips: Clip[]) {
 export function moodAt(shot: Shot): MoodName {
   const i = Math.max(0, lastIndex(shot.clips, (c) => shot.frame >= c.from));
   return (shot.lines[i]?.mood ?? "day") as MoodName;
+}
+
+/** The arm angles (front or back arm) that put a hand on a world point, as far as the arm reaches. */
+export function armTo(x: number, y: number, scale: number, pose: Pose, facing: 1 | -1, target: { x: number; y: number }): [number, number] {
+  const j = joints(pose);
+  const sx = x + j.shoulder.x * scale * facing, sy = y + j.shoulder.y * scale;
+  return reach(((target.x - sx) / scale) * facing, (target.y - sy) / scale);
 }
 
 /** The camera that centres a point authored on a Deep layer of depth d (sets/common.tsx), at a zoom. */
@@ -114,16 +123,6 @@ export const Folder: React.FC<{ x: number; y: number; scale?: number; tilt?: num
   </g>
 );
 
-/** Half a triangle kimbap seen from above: a rice triangle cut down the middle, the seaweed band across its foot,
- *  the cut edge (the rice showing) on its right before `angle` turns it. Centred on (x, y). */
-const KimbapHalfTop: React.FC<{ x: number; y: number; angle: number }> = ({ x, y, angle }) => (
-  <g transform={`translate(${x} ${y}) rotate(${angle})`}>
-    <path d="M30 -70 L30 60 L-50 60Z" fill="#fbf8ef" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
-    <path d="M30 22 L30 60 L-28 60 L-5 22Z" fill="#1f2b22" />
-    <path d="M30 -64 L30 56" stroke="#e6dcc4" strokeWidth={8} />
-  </g>
-);
-
 /** A wooden surface seen from straight above (under a paper sheet or an insert of desks). Fills the world. */
 export const WoodTop: React.FC<{ color?: string; seed?: number }> = ({ color = "#c9a77a", seed = 0 }) => (
   <g>
@@ -162,7 +161,7 @@ export const Pencil: React.FC<{ x: number; y: number; angle?: number; scale?: nu
 
 /**
  * Two classroom desks side by side seen from straight above, centred on (x, y): two notebooks, two pencils, and in
- * the gap between them a napkin with the two halves of one kimbap. `halves` 0 hides the kimbap (the napkin stays).
+ * the gap between them a napkin with the two halves of one chocolate bar. `halves` false hides them (the napkin stays).
  */
 export const TwoDesksTop: React.FC<{ x: number; y: number; halves?: boolean; emptyRight?: boolean }> = ({ x, y, halves = true, emptyRight }) => (
   <g transform={`translate(${x} ${y})`}>
@@ -182,8 +181,8 @@ export const TwoDesksTop: React.FC<{ x: number; y: number; halves?: boolean; emp
     <rect x={-170} y={-110} width={340} height={230} rx={6} fill="#cfe6e0" stroke={INK} strokeWidth={4} transform="rotate(6)" />
     {halves && (
       <>
-        <KimbapHalfTop x={-80} y={6} angle={-18} />
-        <KimbapHalfTop x={80} y={0} angle={162} />
+        <Chocolate x={-80} y={10} scale={2.6} half="left" tilt={-14} />
+        <Chocolate x={80} y={-4} scale={2.6} half="right" tilt={9} />
       </>
     )}
   </g>

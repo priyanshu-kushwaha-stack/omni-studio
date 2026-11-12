@@ -1,16 +1,20 @@
-// Beat "The Notebook" (script.md "## [04:28] The Notebook"; narration lines 60-68; mood lamp). The reading room past
+// Beat "The Notebook" (script.md v2.1 "The Notebook"; narration lines 54-62; mood lamp). The late-night study room past
 // midnight (sets/ReadingRoom.tsx). Every frame comes from the clips (`times`), one component per shot.
 //
-//   60  wide along the rows, dark between the lamps; you walk in. Then his carrel: the chair pushed back, the notebook
-//       open under his lamp, you stop at it.
-//   61  top-down insert: the page, your wrong answers copied out in rows, a "?" beside each; your finger on one, "Why."
-//   62  close-up: your face over the page in the lamp's light; it softens on "He's climbing."
-//   63  a paper sheet: two kinds of envy, a teal arrow up a stair and a crimson arrow pulling a head down.
-//   64  you sit in his chair; close on "It meant it hurt."
-//   65  a paper sheet: two heads, the same spot lit in both (envy and pain).
-//   66  insert: two cards side by side, both crimson, the same number.
-//   67  the room from above: the rows are lanes; every lane but yours goes dark on "Outside yours, nobody bleeds."
-//   68  you alone in his chair under one lamp; the camera pulls back down the dark row.
+//   54    wide along the rows, dark between the lamps; you walk in. Then his desk: the chair pushed back, the notebook
+//         open under his lamp, you stop at it.
+//   hold  5 s, PERFORMED (the gap after line 54): your hand turns the page under his lamp; your own wrong answers copied
+//         clean in his handwriting, a "?" beside each and under it his working-out that gets it right; your finger
+//         stops on the third one; you turn and look at his empty chair, then back down; your other hand comes up to
+//         your mouth.
+//   55    "You stopped helping him...": your face, hand at your mouth; then his working-outs from above, each ticked.
+//   56    close-up: your face over the page; it softens on "He's climbing."
+//   57    a paper sheet: two kinds of envy, a teal arrow up a stair and a red arrow pulling a head down.
+//   58    you sit in his chair; close on "It meant it hurt."
+//   59    a paper sheet: two heads, the same spot lit in both (envy and pain).
+//   60    insert: two cards side by side, both red, the same number.
+//   61    the room from above: the rows are lanes; every lane but yours goes dark on "Outside yours, nobody bleeds."
+//   62    you alone in his chair under one lamp; the camera pulls back down the dark row.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -19,7 +23,7 @@ import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
 import { DrawLine } from "@whatif/kit/ui/DrawLine";
-import { CRIMSON, INK, MUSTARD, TEAL } from "@whatif/kit/theme";
+import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { Meter, MeterSound, Sheet, headAt } from "../parts";
 import { blinking, camAt, current, HERO, linear, MINJUN, mix, PASTELS, ramp, type Beat, type Shot } from "../shared";
 import { PLAN, READING, ReadingRoomBack, TOP, TopDownHead } from "../sets/ReadingRoom";
@@ -30,39 +34,48 @@ import { aimArm, Dim, LampLight, PointingHand, Rows, S, timer, type Body } from 
 type T = ReturnType<typeof times>;
 
 function times(clips: Clip[], to: number) {
-  const { from, at } = timer(clips);
+  const { from, at, end } = timer(clips);
+  const g0 = end(54); // the performed moment: the gap after line 54
+  const g1 = from(55);
+  const g = (p: number) => Math.round(mix(g0, g1, p));
   return {
-    start: from(60), // wide along the rows; you walk in
-    seat: at(60, 0.5), // "His seat's empty": his carrel
-    page: from(61) - 3, // the page from above
-    why: at(61, 0.78), // "Why.": your finger on a "?"
-    face: from(62) - 2, // your face over the page
-    climb: at(62, 0.5), // "He's climbing."
-    kinds: from(63), // two kinds of envy
-    up: at(63, 0.22), // "benign envy pushes you to move up"
-    down: at(63, 0.6), // "malicious envy to pull the other person down"
-    sit: from(64), // you sit in his chair
-    hurt: at(64, 0.6), // "It meant it hurt."
-    brain: from(65), // the brain-scan sheet
-    lit: at(65, 0.55), // "a region also active in pain"
-    tags: from(66), // two cards, one colour
-    lane: from(67), // the room from above
-    dim: at(67, 0.6), // "Outside yours, nobody bleeds."
-    one: from(68) - 2, // you alone under one lamp
+    start: from(54), // wide along the rows; you walk in
+    seat: at(54, 0.5), // "His seat's empty": his desk
+    turn: g0 - 4, // your hand turns the page (from above)
+    find: g(0.2), // your finger runs down the rows ...
+    stop: g(0.38), // ... and stops on the third one
+    chair: g(0.48), // you look up at his empty chair
+    down: g(0.64), // and back down
+    mouth: g(0.76), // your other hand comes up to your mouth
+    helped: from(55), // "You stopped helping him."
+    ticks: at(55, 0.5), // "He never stopped helping you.": his working-outs, ticked
+    face: from(56) - 2, // your face over the page
+    climb: at(56, 0.5), // "He's climbing."
+    kinds: from(57), // two kinds of envy
+    up: at(57, 0.28), // "One pushes you to move up."
+    down2: at(57, 0.62), // "The other pushes you to pull the other person down."
+    sit: from(58), // you sit in his chair
+    hurt: at(58, 0.6), // "It meant it hurt."
+    brain: from(59), // the brain-scan sheet
+    lit: at(59, 0.55), // "a region also active in pain"
+    tags: from(60), // two cards, one colour
+    lane: from(61), // the room from above
+    dim: at(61, 0.6), // "Outside yours, nobody bleeds."
+    one: from(62) - 2, // you alone under one lamp
     end: to,
   };
 }
 
 const FLOOR = READING.floor;
 const HIS = READING.carrel(READING.minjun);
-/** Where you stand at his desk, and where his notebook is. */
-const STAND_X = 762;
+/** Where you stand at his desk (his pushed-back chair just behind you), and where his notebook is. */
+const STAND_X = 845;
 const BOOK = READING.notebook;
 
 /** You standing at his desk, leaning over the page, your front hand on its edge. */
 function overPage(lean = 14): Body {
   const body: Body = { x: STAND_X, y: FLOOR, scale: S, facing: 1, pose: { ...STAND, lean, armB: [-4, 12] } };
-  body.pose = { ...body.pose, armF: aimArm(body, { x: BOOK.x - 70, y: BOOK.y - 8 }) };
+  body.pose = { ...body.pose, armF: aimArm(body, { x: BOOK.x - 40, y: BOOK.y - 8 }) };
   return body;
 }
 
@@ -73,7 +86,22 @@ function inHisChair(): Body {
   return body;
 }
 
-// ------------------------------------------------------------------------------------------------ line 60
+/** You at his desk with your front hand coming up to your mouth (`up` 0..1), the back hand on the page. */
+function handToMouth(up: number): Body {
+  const body = overPage(10);
+  const head = headAt(body.x, body.y, S, body.pose);
+  const mouth = { x: head.x + head.r * 0.45, y: head.y + head.r * 0.55 };
+  const onPage = body.pose.armF;
+  const atMouth = aimArm(body, mouth);
+  body.pose = {
+    ...body.pose,
+    armB: aimArm(body, { x: BOOK.x - 70, y: BOOK.y - 6 }),
+    armF: [mix(onPage[0], atMouth[0], up), mix(onPage[1], atMouth[1], up)],
+  };
+  return body;
+}
+
+// ------------------------------------------------------------------------------------------------ line 54
 
 const ArriveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current(frame, [[k.start, "wide"], [k.seat, "seat"]]);
@@ -86,33 +114,100 @@ const ArriveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     : { brows: sawIt > 0.5 ? "raised" as const : "flat" as const, lids: mix(0.3, 0, sawIt), mouth: "flat" as const, eyes: mix(1, 1.15, sawIt), look: { x: 0.8, y: mix(0.1, 0.9, sawIt) } };
   const cam: Camera = shot === "wide"
     ? camAt(frame, [[k.start, { x: 700, y: 640, zoom: 1.05 }], [k.seat, { x: 860, y: 660, zoom: 1.12 }]])
-    : camAt(frame, [[k.seat, { x: 1010, y: 770, zoom: 1.85 }], [k.page, { x: 980, y: 760, zoom: 2.0 }]]);
+    : camAt(frame, [[k.seat, { x: 1010, y: 770, zoom: 1.85 }], [k.turn, { x: 980, y: 760, zoom: 2.0 }]]);
   return (
     <Rows frame={frame} cam={drift(cam, frame, "arrive", 3)}
       you={<Figure {...HERO} x={x} y={FLOOR} scale={S} pose={pose} {...face} blink={blinking(frame, 1)} time={frame} />} />
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 61
+// ------------------------------------------------------------------------------------------------ the performed moment
 
-const PageShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+/** The page being turned, from above: a leaf swinging over the spine (t 0..1), blank but for its ruling. */
+const Leaf: React.FC<{ t: number }> = ({ t }) => {
+  if (t <= 0 || t >= 1) return null;
+  const c = Math.cos(Math.PI * t);
+  const p = TOP.right;
+  return (
+    <g transform={`translate(${p.x} 0) scale(${c} 1)`}>
+      <rect x={0} y={p.y} width={p.w} height={p.h} rx={6} fill={c > 0 ? PAPER : "#efe3cc"} stroke={INK} strokeWidth={4} />
+      {Array.from({ length: 15 }, (_, i) => <line key={i} x1={14} y1={p.y + 35 + i * 40} x2={p.w - 14} y2={p.y + 35 + i * 40} stroke="#9fc0e0" strokeWidth={2} opacity={0.6} />)}
+      <rect x={0} y={p.y} width={p.w} height={p.h} fill="#000" opacity={0.18 * (1 - Math.abs(c))} />
+    </g>
+  );
+};
+
+/** From above: the page turns under your hand, then your finger runs down the rows and stops on the third one. */
+const TurnShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const t = linear(frame, k.turn + 2, k.find - 4);
+  const p = TOP.right;
+  const edge = p.x + p.w * Math.cos(Math.PI * t);
+  const row = mix(0, 2, ramp(frame, k.find + 4, k.stop));
+  const lo = TOP.row(Math.floor(row)).mark, hi = TOP.row(Math.min(2, Math.floor(row) + 1)).mark;
+  const f = row - Math.floor(row);
+  const mark = { x: mix(lo.x, hi.x, f), y: mix(lo.y, hi.y, f) };
+  const finding = frame >= k.find;
   const cam = camAt(frame, [
-    [k.page, { x: 700, y: 470, zoom: 1.55 }],
-    [k.why - 10, { x: 1050, y: 560, zoom: 1.4 }],
-    [k.face, { x: 1080, y: 600, zoom: 1.5 }],
+    [k.turn, { x: 920, y: 560, zoom: 1.05 }],
+    [k.find, { x: 760, y: 520, zoom: 1.35 }],
+    [k.chair, { x: 760, y: 560, zoom: 1.6 }],
   ]);
-  const target = TOP.row(9).mark;
-  const reachIn = ramp(frame, k.why - 6, k.why + 12);
   return (
     <LampLight cam={cam} view="top">
-      <Stage cam={drift(cam, frame, "page", 2)} radius={0} origin={{ x: 0, y: 0 }}
-        back={<ReadingRoomBack cam={cam} view="top" />}
-        actors={reachIn > 0 ? <PointingHand x={mix(target.x + 400, target.x - 26, reachIn)} y={mix(target.y + 640, target.y + 30, reachIn)} rotate={-35} /> : null} />
+      <Stage cam={drift(cam, frame, "turn", 2)} radius={0} origin={{ x: 0, y: 0 }}
+        back={<ReadingRoomBack cam={cam} view="top" rows={1} marks={finding ? 1 : 0.5} />}
+        actors={
+          <>
+            <Leaf t={t} />
+            {finding
+              ? <PointingHand x={mark.x - 30} y={mark.y + 34} rotate={-35} />
+              : <PointingHand x={edge + 40} y={760} rotate={t < 0.5 ? -60 : 20} scale={0.9} />}
+          </>
+        } />
     </LampLight>
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 62
+/** At his desk: you turn and look at his empty chair, back down at the page, and your hand comes up to your mouth. */
+const ChairShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const shot = current(frame, [[k.chair, "chair"], [k.down, "down"], [k.mouth, "mouth"]]);
+  const up = ramp(frame, k.mouth + 4, k.mouth + 22);
+  const body = shot === "mouth" ? handToMouth(up) : overPage(shot === "chair" ? 4 : 12);
+  if (shot === "chair") {
+    body.pose = { ...STAND, lean: 6 };
+    body.facing = -1;
+    body.x = STAND_X + 60; // a step along, so his pushed-back chair is clear in the frame
+  }
+  const head = headAt(body.x, body.y, S, body.pose, body.facing);
+  const face = shot === "chair"
+    ? { brows: "worry" as const, lids: 0.1, mouth: "flat" as const, eyes: 1.1, look: { x: 0.4, y: 0.9 } }
+    : shot === "down"
+      ? { brows: "sad" as const, lids: 0.2, mouth: "flat" as const, eyes: 1.1, look: { x: 0.7, y: 0.95 } }
+      : { brows: "sad" as const, lids: mix(0.2, 0.35, up), mouth: "o" as const, eyes: 1.15, look: { x: 0.7, y: 0.8 } };
+  const cam = shot === "chair"
+    ? camAt(frame, [[k.chair, { x: 820, y: 800, zoom: 1.8 }], [k.down, { x: 810, y: 800, zoom: 1.9 }]])
+    : shot === "down"
+      ? camAt(frame, [[k.down, { x: 920, y: 770, zoom: 2.0 }], [k.mouth, { x: 930, y: 760, zoom: 2.1 }]])
+      : camAt(frame, [[k.mouth, closeUp(head.x + 40, head.y + 20, 2.7)], [k.ticks, closeUp(head.x + 40, head.y + 20, 3.05)]]);
+  return (
+    <Rows frame={frame} cam={drift(cam, frame, "chair", 2)} studiers={false}
+      you={<Figure {...HERO} {...body} {...face} blink={shot !== "chair" && blinking(frame, 2)} time={frame} />} />
+  );
+};
+
+// ------------------------------------------------------------------------------------------------ line 55
+
+/** "He never stopped helping you.": his working-outs from above, each one ticked. */
+const TicksShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const cam = camAt(frame, [[k.ticks, { x: 640, y: 420, zoom: 1.7 }], [k.face, { x: 1120, y: 640, zoom: 1.55 }]]);
+  return (
+    <LampLight cam={cam} view="top">
+      <Stage cam={drift(cam, frame, "ticks", 2)} radius={0} origin={{ x: 0, y: 0 }} back={<ReadingRoomBack cam={cam} view="top" />} actors={null} />
+    </LampLight>
+  );
+};
+
+// ------------------------------------------------------------------------------------------------ line 56
 
 const FaceShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const body = overPage();
@@ -128,7 +223,7 @@ const FaceShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 63
+// ------------------------------------------------------------------------------------------------ line 57
 
 /** A small paper head for the sheets, facing right. */
 const Head: React.FC<{ x: number; y: number; r?: number; fill: string }> = ({ x, y, r = 34, fill }) => (
@@ -141,7 +236,7 @@ const Head: React.FC<{ x: number; y: number; r?: number; fill: string }> = ({ x,
 
 const KindsSheet: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const climb = ramp(frame, k.up + 6, k.up + 40);
-  const fall = ramp(frame, k.down + 14, k.down + 34);
+  const fall = ramp(frame, k.down2 + 14, k.down2 + 34);
   const steps = "M70 540 H190 V440 H310 V340 H430 V240 H520";
   return (
     <Sheet frame={frame} at={k.kinds} x={960} y={520} w={1120} h={640}>
@@ -155,8 +250,8 @@ const KindsSheet: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       <path d="M700 260 H1000" fill="none" stroke={INK} strokeWidth={9} strokeLinecap="round" />
       <Head x={860} y={mix(224, 470, fall)} r={28} fill={PASTELS[4]} />
       <Head x={700} y={500} fill={MINJUN.head} />
-      <DrawLine d="M770 470 Q790 330 860 290 M770 470 Q760 380 800 300" from={k.down} to={k.down + 14} color={INK} width={6} />
-      <DrawLine d="M940 240 L940 500 M940 500 L912 456 M940 500 L968 456" from={k.down + 4} to={k.down + 26} color={CRIMSON} width={14} />
+      <DrawLine d="M770 470 Q790 330 860 290 M770 470 Q760 380 800 300" from={k.down2} to={k.down2 + 14} color={INK} width={6} />
+      <DrawLine d="M940 240 L940 500 M940 500 L912 456 M940 500 L968 456" from={k.down2 + 4} to={k.down2 + 26} color={CRIMSON} width={14} />
     </Sheet>
   );
 };
@@ -175,7 +270,7 @@ const KindsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 64
+// ------------------------------------------------------------------------------------------------ line 58
 
 const SitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const body = inHisChair();
@@ -194,7 +289,7 @@ const SitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 65
+// ------------------------------------------------------------------------------------------------ line 59
 
 /** A head in profile with the brain drawn in, and a spot that lights. */
 const BrainHead: React.FC<{ x: number; y: number; glow: number; frame: number }> = ({ x, y, glow, frame }) => (
@@ -235,7 +330,7 @@ const BrainShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 66
+// ------------------------------------------------------------------------------------------------ line 60
 
 const TagsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = { x: 960, y: 540, zoom: mix(1, 1.08, linear(frame, k.tags, k.lane)) };
@@ -257,7 +352,7 @@ const TagsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 67
+// ------------------------------------------------------------------------------------------------ line 61
 
 const LaneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const ly = PLAN.lanes[PLAN.you];
@@ -270,7 +365,7 @@ const LaneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 68
+// ------------------------------------------------------------------------------------------------ line 62
 
 const OneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const body = inHisChair();
@@ -289,13 +384,15 @@ const Notebook: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = times(clips, shot.to);
   const scene = current(frame, [
-    [0, "arrive"], [k.page, "page"], [k.face, "face"], [k.kinds, "kinds"], [k.sit, "sit"], [k.brain, "brain"],
-    [k.tags, "tags"], [k.lane, "lane"], [k.one, "one"],
+    [0, "arrive"], [k.turn, "turn"], [k.chair, "chair"], [k.ticks, "ticks"], [k.face, "face"], [k.kinds, "kinds"], [k.sit, "sit"],
+    [k.brain, "brain"], [k.tags, "tags"], [k.lane, "lane"], [k.one, "one"],
   ]);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {scene === "arrive" && <ArriveShot frame={frame} k={k} />}
-      {scene === "page" && <PageShot frame={frame} k={k} />}
+      {scene === "turn" && <TurnShot frame={frame} k={k} />}
+      {scene === "chair" && <ChairShot frame={frame} k={k} />}
+      {scene === "ticks" && <TicksShot frame={frame} k={k} />}
       {scene === "face" && <FaceShot frame={frame} k={k} />}
       {scene === "kinds" && <KindsShot frame={frame} k={k} />}
       {scene === "sit" && <SitShot frame={frame} k={k} />}
@@ -309,4 +406,4 @@ const Notebook: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const notebook: Beat = { id: "Notebook", firstLine: 60, Component: Notebook };
+export const notebook: Beat = { id: "Notebook", firstLine: 54, Component: Notebook };

@@ -112,50 +112,72 @@ export const You: React.FC<{ body: Body; face: Face; frame: number; held?: React
 
 /**
  * Ji-yoon from behind, standing in a doorway: dark hair over the back of her head and the ponytail, the grey top, and
- * the vest going on: `vest` 0 has it held low behind her, elbows out; 1 has it on her shoulders and her arms down.
- * `laugh` 0..1 bobs her shoulders. (x, y) is between her feet.
+ * the work vest going on in three moves: `vest` 0..0.35 her left arm goes in (the vest hangs off that shoulder),
+ * 0.35..0.7 it swings across her back and her right arm finds the other hole, 0.7..1 the zip runs up (elbows out,
+ * hands at her front); at 1 it is on and her arms hang. `laugh` 0..1 bobs her shoulders; `headTilt` (degrees) tilts
+ * her head to listen. (x, y) is between her feet.
  */
-export const SisterBack: React.FC<{ x: number; y: number; scale: number; frame: number; vest: number; laugh?: number; tilt?: number }> = ({
-  x, y, scale, frame, vest, laugh = 0, tilt = 0,
+export const SisterBack: React.FC<{ x: number; y: number; scale: number; frame: number; vest: number; laugh?: number; tilt?: number; headTilt?: number }> = ({
+  x, y, scale, frame, vest, laugh = 0, tilt = 0, headTilt = 0,
 }) => {
   const bob = laugh * Math.abs(Math.sin(frame * 0.55)) * -6;
   const sh = -222 + bob;
-  const lift = Math.min(1, vest / 0.65);
-  const settle = Math.max(0, (vest - 0.65) / 0.35);
-  // the hands: holding the vest's edges out at the waist, lifting it onto the shoulders, then down
-  const handY = vest < 0.65 ? mix(-128, -212, lift) : mix(-212, -104, settle);
-  const handX = vest < 0.65 ? mix(70, 56, lift) : mix(56, 46, settle);
-  const vTop = mix(-150, sh + 2, lift);
-  const vw = mix(48, 42, lift);
-  const arm = (side: 1 | -1) => {
+  const a = Math.min(1, vest / 0.35);
+  const b = Math.max(0, Math.min(1, (vest - 0.35) / 0.35));
+  const z = Math.max(0, Math.min(1, (vest - 0.7) / 0.3));
+  const done = vest >= 1;
+  // the vest hangs from her left shoulder, swung out to her right, until b brings it across
+  const swing = mix(mix(-70, -38, a), 0, b);
+  const vw = 42;
+  const arm = (side: 1 | -1, behind: boolean) => {
     const s = { x: side * 38, y: sh + 8 };
-    const h = { x: side * handX, y: handY };
-    const e = { x: (s.x + h.x) / 2 + side * mix(30, 8, settle), y: (s.y + h.y) / 2 + 10 };
-    return (
-      <g key={side}>
+    let h: { x: number; y: number };
+    let e: { x: number; y: number };
+    if (done) {
+      h = { x: side * 46, y: -104 };
+      e = { x: side * 48, y: -160 };
+    } else if (z > 0) {
+      // zipping: elbows out, hands at her front (hidden behind her), running up
+      h = { x: side * 14, y: mix(-118, -196, z) };
+      e = { x: side * 62, y: mix(-150, -176, z) };
+    } else if (side === -1) {
+      // her left arm pushes down through the armhole
+      h = { x: mix(-80, -50, a), y: mix(-150, -110, a) };
+      e = { x: mix(-70, -56, a), y: mix(-196, -164, a) };
+    } else {
+      // her right arm reaches back for the swinging side, then finds it
+      h = { x: mix(46, mix(84, 52, b), a), y: mix(-104, mix(-170, -112, b), a) };
+      e = { x: mix(48, 70, a), y: mix(-160, -176, a) };
+    }
+    const line = (
+      <g key={`${side}${behind}`}>
         <polyline points={`${s.x},${s.y} ${e.x},${e.y} ${h.x},${h.y}`} fill="none" stroke={JIYOON.coat} strokeWidth={15} strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx={h.x} cy={h.y} r={9} fill={JIYOON.head} />
+        {!(z > 0 && !done) && <circle cx={h.x} cy={h.y} r={9} fill={JIYOON.head} />}
       </g>
     );
+    return line;
   };
+  const zipping = z > 0 && !done;
   return (
     <g transform={`translate(${x} ${y}) scale(${scale}) rotate(${tilt} 0 -112)`}>
       {/* legs */}
       <line x1={-14} y1={-112} x2={-16} y2={-4} stroke="#3b3e47" strokeWidth={17} strokeLinecap="round" />
       <line x1={14} y1={-112} x2={16} y2={-4} stroke="#3b3e47" strokeWidth={17} strokeLinecap="round" />
+      {zipping && arm(-1, true)}
+      {zipping && arm(1, true)}
       {/* the grey top */}
       <path d={`M${-40} ${sh} L40 ${sh} L32 -104 L-32 -104Z`} fill={JIYOON.coat} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
-      {/* the vest, back panel: orange with the reflective H */}
-      <g>
-        <path d={`M${-vw} ${vTop} L${vw} ${vTop} L${vw - 6} ${vTop + 112} L${-vw + 6} ${vTop + 112}Z`} fill={JIYOON.vest} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
-        <line x1={-vw + 4} y1={vTop + 60} x2={vw - 4} y2={vTop + 60} stroke="#f4efe2" strokeWidth={9} />
-        <line x1={-vw * 0.5} y1={vTop + 4} x2={-vw * 0.5} y2={vTop + 108} stroke="#f4efe2" strokeWidth={7} />
-        <line x1={vw * 0.5} y1={vTop + 4} x2={vw * 0.5} y2={vTop + 108} stroke="#f4efe2" strokeWidth={7} />
+      {/* the vest, back panel: orange with the reflective H, hung from her left shoulder until it swings across */}
+      <g transform={`rotate(${swing} ${-vw} ${sh + 2})`}>
+        <path d={`M${-vw} ${sh + 2} L${vw} ${sh + 2} L${vw - 6} ${sh + 114} L${-vw + 6} ${sh + 114}Z`} fill={JIYOON.vest} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+        <line x1={-vw + 4} y1={sh + 62} x2={vw - 4} y2={sh + 62} stroke="#f4efe2" strokeWidth={9} />
+        <line x1={-vw * 0.5} y1={sh + 6} x2={-vw * 0.5} y2={sh + 110} stroke="#f4efe2" strokeWidth={7} />
+        <line x1={vw * 0.5} y1={sh + 6} x2={vw * 0.5} y2={sh + 110} stroke="#f4efe2" strokeWidth={7} />
       </g>
-      {arm(-1)}
-      {arm(1)}
-      {/* the head from behind: all hair, a sliver of neck, and the ponytail */}
-      <g transform={`translate(0 ${bob})`}>
+      {!zipping && arm(-1, false)}
+      {!zipping && arm(1, false)}
+      {/* the head from behind: all hair, ears, a sliver of neck, and the low ponytail */}
+      <g transform={`translate(0 ${bob}) rotate(${headTilt} 0 -228)`}>
         <rect x={-10} y={-236} width={20} height={20} fill={JIYOON.head} />
         <ellipse cx={-46} cy={-262} rx={8} ry={12} fill={JIYOON.head} stroke={INK} strokeWidth={2} />
         <ellipse cx={46} cy={-262} rx={8} ry={12} fill={JIYOON.head} stroke={INK} strokeWidth={2} />
@@ -173,14 +195,16 @@ export const SisterBack: React.FC<{ x: number; y: number; scale: number; frame: 
 
 /**
  * The hug at a strength t (0 apart, 1 holding): her leaning in with both arms round your back, you either stiff
- * (arms straight down, fists) or holding her back. `you` faces right at `youX`; she faces left at `herX`; both on
+ * (arms straight down; or `half` raised, hands hovering over her shoulders, not closing) or holding her back. `you` faces right at `youX`; she faces left at `herX`; both on
  * `floor` at `scale`. Her arms aim at your back, a little below your shoulder blades, so the near arm stays under her
  * chin; `squeeze` 0..1 pulls them in tighter.
  */
 export function hug(o: {
   youX: number; herX: number; floor: number; scale: number; t: number; hold: number; squeeze?: number; shake?: number; frame: number;
+  /** 0..1: your arms half raised, not closing round her (they hang there). */
+  half?: number;
 }) {
-  const { youX, herX, floor, scale, t, hold, squeeze = 0, shake = 0, frame } = o;
+  const { youX, herX, floor, scale, t, hold, squeeze = 0, shake = 0, frame, half = 0 } = o;
   const sob = shake * Math.sin(frame * 0.7) * 2.2;
   const herPose: Pose = { ...STAND, lean: mix(0, 22, t), tilt: mix(0, 10, t), drop: mix(0, 14, t) + sob };
   const her: Body = { x: herX, y: floor, scale, facing: -1, pose: herPose };
@@ -196,8 +220,8 @@ export function hug(o: {
   const stiff: [number, number] = [-2, 2];
   you.pose = {
     ...you.pose,
-    armF: hold > 0 ? mixArm(stiff, aimArm(you, herBack), hold) : mixArm(STAND.armF, stiff, t),
-    armB: hold > 0 ? mixArm(stiff, aimArm(you, { x: herBack.x - 10, y: herBack.y + 26 * scale }), hold) : mixArm(STAND.armB, [-4, 1], t),
+    armF: hold > 0 ? mixArm(stiff, aimArm(you, herBack), hold) : mixArm(mixArm(STAND.armF, stiff, t), [94, 16], half),
+    armB: hold > 0 ? mixArm(stiff, aimArm(you, { x: herBack.x - 10, y: herBack.y + 26 * scale }), hold) : mixArm(mixArm(STAND.armB, [-4, 1], t), [84, 22], half),
   };
   return { her, you };
 }
