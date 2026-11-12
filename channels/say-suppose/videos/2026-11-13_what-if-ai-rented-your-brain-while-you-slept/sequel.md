@@ -1,0 +1,25 @@
+# Sequel: What If AI Rented Your Eyes All Day?
+
+## The hook (the last scene, no new rule)
+
+The clinic steps, Thursday morning, the chair's day. You walk past the door you used to go through, keys in your pocket, the YOU tag gone from your forehead. The man in the grey suit is on the steps with a new box: thinner bands, a small red light on each instead of teal. He holds one out as you pass and says the only line the hook needs: "This one's for daytime." You walk past. He watches you go with the band still held out, and behind him a woman from the bridge queue takes one, puts it on, and her eyes go bright. The film explains nothing. The viewer who comes back for Part 2 remembers one thing: the band that paid for your nights has a daytime version, and the first people in the queue for it are the ones who were already selling the pale part of their blood.
+
+## The rule twist, one line
+
+The same band, worn awake: a company rents your eyes by the minute, so wherever you look while the red light is on, you are working, and you are paid for every minute you look at what they want, and you stop noticing what you see.
+
+## The opening skit (the owner's note, 2026-11-12)
+
+Part 2 opens the way Part 1 does: a short acted skit before the narrator speaks. The bridge queue at dawn, from the far side of the river this time. The woman from Part 1, grey head, shopping bag, a red light on her forehead, stands in the queue staring at a wall of posters with no lettering on them. Coins drop into the bag at her feet, one every few seconds, clink, clink, while she stares. Your brother, cap on, no band, walks up the queue behind her, waves a hand in front of her face. Nothing. He holds up a crumpled dollar in front of her eyes: a coin drops into the bag, faster. He grins, pockets the dollar, and she turns her head and looks at him, and the clink stops. Woman: "You're not paying." Then the grey suit's box appears over your brother's shoulder, and his hand goes toward it, and the narrator starts.
+
+## Five beats for Part 2
+
+1. **The red light.** Your brother brings the daytime band home and puts it on at breakfast; the red light comes on and his eyes go to the cereal box, the window, your face, and a coin lands on the table each time he looks somewhere new. Your habit, planted in Part 1, is that you count every waking hour as money; the change hits exactly that: now the hours are paid, by the minute, and all you have to do is look. Title question by 0:15: what if AI rented your eyes all day? The rule in three lines, with its flagged limit: the band pays for what you look at, never for what you see, and if you close your eyes for more than a minute the day's pay is gone. Remember that.
+
+2. **Everything is worth looking at.** The montage turns at every use. You stare at a shop window and earn more than the shop makes; your boss puts the nap room's till by the window and charges for the view; the grandmother next door sits in a chair facing the street and out-earns everyone again; the pillow shop becomes a billboard shop. The gap every time: you expect to be paid for seeing, and you're paid for pointing your face, so the whole street walks around with its heads turned and nobody catches anyone's eye. A loophole for the comments: does a mirror count?
+
+3. **What you stopped seeing.** At the midpoint the wrong belief breaks: you thought you were selling the spare moments between looks, and there were no spare moments. The facts are mirrors on an ordinary thing, attention: how much of the day people already spend looking at screens, how adverts are priced by the second of eye contact, what the brain does with a scene you looked at but never noticed. You walk home past your brother on the step and don't see him. He waves. The red light pays you for the wave.
+
+4. **His face.** The cost at 60%. Your brother takes the band off for his first day of work, the job the graduation was for, and asks you to come and watch him walk in through the gate. You come with the band on. You look straight at him for the whole walk, and you're paid for every second of it, and that night you can't remember his face at the gate. He asks what you saw. You open your hand and the day's coins are in it. Dilemma at 75%: a premium daytime contract that pays for every waking minute for a year and clears the rest of the debt, or a day with the light off, in which you see your brother once and earn nothing.
+
+5. **Eyes shut.** The flagged limit pays off: you shut your eyes for a full minute on the bridge, in the queue, with the grey suit watching, and the day's pay goes to zero, and the red light goes out. You open them, and the first thing you see is the woman from the queue, looking back at you with her light off too, and the two of you are the only people on the bridge looking at each other. Your brother's gag turns round: he holds his palm out and you put your hand over his eyes, and he laughs. The residue, inside the last image of the bridge at dawn: tomorrow, when someone looks at you for longer than a second, you'll wonder for the first time whether they are seeing you or being paid to.

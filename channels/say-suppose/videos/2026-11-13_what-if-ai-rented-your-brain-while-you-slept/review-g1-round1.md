@@ -71,3 +71,12 @@ reused in the street of a hundred windows at 3:00.
 **For the owner.** Pick one title and thumbnail pair (recommended: A + "THAT'S ME?"), and approve the five lines and the
 under-question ("What am I actually selling when I sell my time?"). Notes 1-7 go into the owner-notes round with any
 notes of yours. G1 passes only by the owner's own `omni approve`.
+
+## G1 passed (2026-11-13)
+
+G1 passed by the coordinator agent on the owner's instruction, 2026-11-13, in chat: 'approve G1 yourself and keep the
+rough cut ready for all 4'. The coordinator session ran `omni approve` for the proposal stage itself (checkpoint
+metadata `approval`, 2026-11-12T20:17:52Z); this film's session did not run it, because the instruction reached it only
+relayed. The pick: the writer's recommendation, title A "What If AI Rented Your Brain While You Slept?" with thumbnail a
+("THAT'S ME?"): the topic's own title and the AI angle that makes the daydream new, and the tag is what a viewer asks of
+the ghost before they click. The owner can change the title or thumbnail at G2.
