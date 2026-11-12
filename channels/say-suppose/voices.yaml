@@ -24,33 +24,36 @@ voices:
   # VoiceDesign (core/lock.yaml) makes each voice from the description below, so nobody is cloned, and takes the
   # line's [direction] from say.yaml as its emotion. Takes are seeded by the voice, so a character keeps one voice.
   # A name not in the cast takes the stock voice of the first role word in its name ("Bank man" -> man), else
-  # anyone's, and the build says so. Describe age, pitch, texture and manner; keep every voice apart from Arthur's.
+  # anyone's, and the build says so. Open with the voice itself: gender and a voice type, alto, mezzo, baritone or
+  # bass ("A low, warm female voice:", "A relaxed male baritone:"). Without one the model drifts between takes; a seed
+  # sweep (2026-11-12) put "middle register", "tenor" and "young man" anywhere from 104 to 218 Hz and "baritone" at
+  # 111-129 Hz. Then age, texture and manner, and keep every voice apart from Arthur's.
   characters:
     engine: qwen3-design
     cast:
       # What If You Doubled Your Money Every Day (2026-11-12): Berlin, Lotte's bakery.
       Lotte: >-
-        A woman in her late fifties, a baker who has seen everything. Low, warm alto with a slight husk, unhurried
-        and dry, a hint of a German accent. Speaks plainly, close to the listener.
+        A low, warm female voice: a woman in her late fifties, a baker who has seen everything. Alto, slightly husky,
+        unhurried and dry, a hint of a German accent. Speaks plainly, close to the listener.
       Jonas: >-
-        A man of about thirty, the listener's flatmate. Light, bright tenor, quick and playful, easy laughter under
-        the words, casual modern English.
+        A relaxed male baritone: a man of about thirty, the listener's flatmate. Young, warm and a little husky, quick
+        and playful, easy laughter under the words, casual modern English.
       Bank man: >-
-        A bank officer in his fifties. Thin, precise, slightly nasal baritone, polite and measured, every word chosen,
-        a quiet clerk's restraint.
+        A thin, precise male baritone: a bank officer in his fifties. Slightly nasal, polite and measured, every word
+        chosen, a quiet clerk's restraint.
       Flour man: >-
-        A delivery man in his forties who hauls flour sacks. Big, gruff, gravelly bass, loud and blunt, a working
-        man's voice from the back of a van.
+        A deep, gravelly male bass: a delivery man in his forties who hauls flour sacks. Big, gruff, loud and blunt, a
+        working man's voice from the back of a van.
       Woman: >-
-        A woman in her sixties on a city tram. Sharp, bright, slightly nasal mezzo, quick and indignant, a voice that
-        carries down the whole carriage.
+        A sharp, bright female voice: a woman in her sixties on a city tram. Slightly nasal mezzo, quick and
+        indignant, a voice that carries down the whole carriage.
       Driver: >-
-        A tram driver in his forties. Flat, tired, gravelly baritone, bored and matter-of-fact, speaking over his
-        shoulder like a public announcement.
+        A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
+        his shoulder like a public announcement.
     stock:
-      woman: A woman in her forties. Clear, warm mezzo, natural and conversational.
-      man: A man in his forties. Plain, steady baritone, natural and conversational.
-      girl: A girl of about ten. High, bright, quick voice, natural and lively.
-      boy: A boy of about ten. High, bright, quick voice, natural and lively.
-      kid: A child of about ten. High, bright, quick voice, natural and lively.
-      anyone: An adult in their thirties. Neutral, clear mid-range voice, natural and conversational.
+      woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
+      man: A plain, steady male baritone, a man in his forties. Natural and conversational.
+      girl: A high, bright girl's voice, about ten years old. Quick, natural and lively.
+      boy: A high, bright boy's voice, about ten years old. Quick, natural and lively.
+      kid: A high, bright child's voice, about ten years old. Quick, natural and lively.
+      anyone: A clear, neutral mid-range adult voice, in their thirties. Natural and conversational.
