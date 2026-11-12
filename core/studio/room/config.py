@@ -22,7 +22,7 @@ from studio.room.verdict import ALWAYS_REQUIRED, LOCKED_ROLES, MANDATORY, ROLES,
 
 SEATS_DIR = Path(__file__).resolve().parent / "seats"
 PITCH_CLIPS = ("after_g2", "pre_g2_local")
-LOCAL_TTS = ("qwen3", "chatterbox", "kokoro")
+LOCAL_TTS = ("qwen3", "qwen3-design", "chatterbox", "kokoro")
 REQUIRED = ("writer", "rounds", "seats")  # judge is optional: with none, the writer merges the notes
 LIMIT_KEYS = ("blockers", "suggestions", "keep")
 OWNER_ROUNDS = 3  # owner-notes rounds the derived cap keeps calls for, past `rounds` (required seats only)
@@ -202,11 +202,16 @@ def _voices_problems(channel_dir: Path) -> list[str]:
 
 
 def _is_local(voice: Any) -> bool:
-    """A voice that is free and local: its tool is a local engine, or it has a local engine beside a paid one."""
+    """A voice that is free and local: its tool is a local engine, it has a local engine beside a paid one, or it is
+    an entry made by one (voices.yaml characters: every character designed by its engine)."""
     if not isinstance(voice, dict):
         return False
     local = voice.get("local")
-    return voice.get("tool") in LOCAL_TTS or (isinstance(local, dict) and local.get("engine") in LOCAL_TTS)
+    return (
+        voice.get("tool") in LOCAL_TTS
+        or voice.get("engine") in LOCAL_TTS
+        or (isinstance(local, dict) and local.get("engine") in LOCAL_TTS)
+    )
 
 
 def validate(cfg: RoomConfig, registry: Optional[dict] = None) -> list[str]:

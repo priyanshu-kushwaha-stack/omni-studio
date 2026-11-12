@@ -67,3 +67,20 @@ ruff:
   # .venv lacks it. Keep pyproject.toml, uv.lock, the Makefile's RUFF and this entry on one version.
   pip: ruff
   version: 0.17.2
+local_voices:
+  # Free local voices for the what-if engine (core/engines/whatif/pipeline/local_tts.py, which loads these exact
+  # revisions), run in .venv-media through mlx-audio 0.6.2. Hugging Face cache, never in git.
+  qwen3:
+    # The narrator: Arthur, cloned from brand/voice/arthur-ref.wav (owner picked it by ear, 2026-11-10).
+    repo: mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16
+    revision: a6eb4f68e4b056f1215157bb696209bc82a6db48
+    publisher: Qwen (Alibaba); MLX conversion by mlx-community
+    license: apache-2.0
+  qwen3-design:
+    # Characters: a voice made from a written description, with the line's direction as its emotion; nobody is
+    # cloned. Owner approved the download on 2026-11-12 (4.52 GB).
+    repo: mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-bf16
+    revision: 7d3824abff87e49756bb0f83fb5411de75d160c4
+    publisher: Qwen (Alibaba); MLX conversion by mlx-community
+    license: apache-2.0
+    size_gb: 4.52
