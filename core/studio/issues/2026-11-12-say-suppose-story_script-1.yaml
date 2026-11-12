@@ -1,0 +1,14 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: medium
+example: '2026-11-12_what-if-you-doubled-your-money-every-day first cut: whatif_render
+  mode=picture/audio, quality=preview fails: Remotion 4.0.484 rounds --scale=0.6666666666666666
+  to 0.6667, so stitchFramesToVideo gets height 720.036 and refuses it (TypeError:
+  height must be an integer)'
+recorded_at: '2026-11-12T05:57:50.978218+00:00'
+note: 'studio_whatif_tools.PREVIEW_SCALE''s comment says the full double avoids the
+  rounding; with the pinned Remotion it no longer does. Fix candidates: render at
+  --scale=1 and downscale with ffmpeg, or pass --height/--width and scale inside the
+  composition. The first cut was rendered by hand at --scale=0.75 and downscaled to
+  1280x720 with the tool''s LIMITED_AAC limiter.'

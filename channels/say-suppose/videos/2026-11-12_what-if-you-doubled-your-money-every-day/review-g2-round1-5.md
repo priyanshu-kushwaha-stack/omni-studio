@@ -33,3 +33,22 @@ narrator for now: the pipeline has one narrator voice.
 **Next: the look test** (`studio-whatif-edit`): the day-thirty-one spill in three framings (`scenes/looktest/`,
 renders in `renders/looktest/`, git-ignored): A the thumbnail frame, B close on the phone, C Lotte and the board still
 at 1,40. The owner picks one; then the first cut is built.
+
+**The owner's pick (2026-11-12): "A, the thumbnail".** The day-thirty-one spill is the thumbnail's frame; the first
+cut stages it that way and never restages it.
+
+## Drop 2: the first cut (2026-11-12)
+
+`renders/firstcut/firstcut-720p.mp4` (git-ignored), 1280x720, 10:09, on the free local narration and the channel's
+music bed (`theme-dark`, under the voice, up in the holds, out for the 9-second peak). Built from a data-driven shot
+list (`scenes/shots.tsx`): every `> SCENE:` and `> HOLD:` anchored to its narration line, drawn with the kit
+(the bakery counter in four framings from the thumbnail drawing; library sets for the tram, street, bank, city skyline
+and flat; drawn paper-cuts for 1923 Berlin and Cairo; the phone close-ups; the glass door and Lotte's hand), the
+channel's title card after the hook, the subscribe tag at the street party and the end tags. Day thirty-one's spill is
+the thumbnail's frame (the owner's look-test pick). `omni qc story_script --media` passes on the cut (claims, clicks:
+one more breath click muted, take 23).
+
+Rendered by hand: `whatif_render`'s preview scale fails on the pinned Remotion (720.036 px), recorded with `omni fix`
+(`core/studio/issues/2026-11-12-say-suppose-story_script-1.yaml`); the cut is a 0.75-scale render downscaled to 720p
+with the tool's limiter. Known first-cut roughness for the owner's picture notes: some close framings crop the board
+or Lotte's head; the wheat shot hides you; character lines are in the narrator's voice.

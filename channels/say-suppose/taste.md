@@ -10,6 +10,10 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-12
 
+- **"A, the thumbnail"** G2 look test on the doubled-money restart: the day-thirty-one spill is staged exactly as
+  the thumbnail frames it (you large at the left, the phone up, the digits off the screen and over the counter, Lotte
+  behind it with her chalk), not close on the phone or on Lotte's board. The film's key shot and the thumbnail are one
+  picture. (doubled-money restart, G2)
 - **"A+a, keep the spill"** G1 pick on the doubled-money restart (Berlin, Lotte's bakery): title A with tag a
   ("SHE PAYS."), and the thumbnail keeps the day-thirty-one spill of digits over the counter rather than the opening's
   two cents. The thumbnail shows the film's strongest picture; the script makes its opening confirm the click
