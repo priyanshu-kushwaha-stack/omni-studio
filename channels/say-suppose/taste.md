@@ -10,6 +10,14 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-12
 
+- **"lets no lock anything that hard becoz that is limiting the Agent to come up with great ideas."** Asked whether
+  G1 fixes the situation and G2 only re-tells it: "when we are iterating over the story and the script.. i think we
+  should let Agent who is writing the story should be allowed to deviate and if it can write something more beautiful
+  if the feedback is such and they can get it approved again by me. because it could be becoz of the sitaution i might
+  have shared that feedback." The G1 spine binds the room, not the writer: in a G2 rewrite the writer may change the
+  situation, setting, cast, five lines, even propose a new title or thumbnail, when that serves the owner's notes
+  better; every change is listed for the owner, who approves it again (`rules/story.md`, "The protected spine").
+  (saw who wants you to fail, G2)
 - **"it should start with a short skit and there it should show that you have or got this superpower somehow and then
   probably the narration of the story"** G2 review of the v2.1 cut (saw who wants you to fail): "the Opening of this
   video feels a little off. you have been holding this ? what this ?" Open on a short skit, before the narrator speaks:

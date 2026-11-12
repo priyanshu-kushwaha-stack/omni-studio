@@ -104,8 +104,10 @@ Where `owner_first` is not set, run the rounds below as written and present at F
    then fact blockers, then the newest dated owner note in `taste.md`, then the channel's rules, then the shared
    rules. **The protected spine** changes only by an owner note or a fact blocker: the five lines and `> UNDER:`, the
    dilemma line, the planted line and its return, the stranger's moment, every keep line, the writer's `> DARLING:`
-   lines (at most three) and the spoken style (fragments, half-sentences, a question answered at once). A note that
-   touches the spine goes to the owner as one line. The writer applies the rest to the draft file. Never invent a source or number; a missing source goes back to research. Write
+   lines (at most three) and the spoken style (fragments, half-sentences, a question answered at once). A room note that
+   touches the spine goes to the owner as one line. The writer itself may change the spine, the situation included, when
+   owner notes call for it (`channels/<slug>/rules/story.md`, "The protected spine"); it lists every such change under
+   "Changed from the approved G1" in the review file, and the owner approves it again. The writer applies the rest to the draft file. Never invent a source or number; a missing source goes back to research. Write
    `$V/review-$G-round<N>.md`: each note, its seat, applied or not and why. Then round N+1.
 
 ## Stop without shipping

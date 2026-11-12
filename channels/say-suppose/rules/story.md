@@ -50,10 +50,15 @@ with the packaging, and it is never spoken as an answer. Four rules keep it from
 The lint (`story_lint.py --under-from 2026-11-10`) checks that it is there, once, before the first beat, and is a
 question. Whether the plot argues it is the story seats' read, as a suggestion.
 
-**The protected spine (owner, 2026-11-10).** Once G1 passes, these change only by an owner note or a fact blocker: the
+**The protected spine (owner, 2026-11-10; loosened 2026-11-12).** Once G1 passes, the room never rewrites these: the
 five lines and `> UNDER:`; the dilemma line; the planted line and its return; the stranger's moment; every keep line a
 seat names (up to three per seat) and up to three `> DARLING:` lines the writer names and defends; the spoken style
-itself (fragments, half-sentences, a question answered at once).
+itself (fragments, half-sentences, a question answered at once). They protect the writer from the room, not the story
+from the writer (owner, 2026-11-12, `taste.md`: "lets no lock anything that hard"): when the owner's notes are better
+served by a bigger change, the writer may change any of it in a G2 rewrite, the situation, setting, cast and five lines
+included, and may propose a new title or thumbnail. Every such change is listed at the top of the round's review file
+under "Changed from the approved G1" (old line, new line, why), and the owner approves it again with the draft; a new
+title or thumbnail is rendered and re-picked, as at G1.
 
 **The shelf: three hooks, suggestions for two films (owner, 2026-11-10).** Seats may suggest these, never block on
 them. After two films the owner decides whether they become must-pass.
