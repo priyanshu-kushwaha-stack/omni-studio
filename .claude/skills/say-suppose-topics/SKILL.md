@@ -18,14 +18,15 @@ Run from the omni-studio root (in a worktree, use the main checkout's `.venv` wi
 - **Already made:** every video folder name under `channels/say-suppose/videos/` and every title in
   `channels/say-suppose/backlog/` (`topics.yaml`, earlier `topics-*.md`). Write them to `$D/made.txt`.
 - **The pitch prompt** `$D/prompt-<lens>.md`, one per lens: the whole of `rules/topic-brief.md`, then
-  `channels/say-suppose/audience.md` and `style.md`, then `$D/made.txt` under "Already made, never repeat", then the
+  `channels/say-suppose/audience.md` and `style.md` (no persona: "you" is anyone and the world follows the idea;
+  owner, 2026-11-11, `taste.md`), then `$D/made.txt` under "Already made, never repeat", then the
   theme if the owner gave one, then the lens below.
 
 | Pitcher | Lens (append to its prompt) |
 |---|---|
-| Claude Fable 5.1 | **The wild premise.** No web search: pure daydream and craft. The rule and its catch first; the strangest consequences; facts you are sure of, marked "verify" where you cannot give a source. |
+| Claude Fable 5.1 | **The wild premise.** No web search: pure daydream and craft. The rule and its catch first; the strangest consequences and what they make you think; facts you are sure of, marked "verify" where you cannot give a source. |
 | Gemini 4 Argon | **The content mine.** Research-heavy: search the web for real science, money and history, and give a source for every fact. |
-| GPT-5.6 Sol | **The viewer's thrill.** Hooks, clicks and the thumbnail first: what a 20-year-old taps tonight, with the views case. |
+| GPT-5.6 Sol | **The viewer's thrill.** Hooks, clicks and the thumbnail first: what a stranger anywhere taps tonight, with the views case. |
 
 ## 2. Pitch (in parallel, in one message)
 
