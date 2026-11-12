@@ -15,7 +15,16 @@ Check only:
 - **What you do in the story is never stated as fact.**
 - **Body and health topics explain; they never advise.**
 
-Every unsupported or overstated line is a blocker. Quote the line by its number, name the claim id, and give a
-corrected line the quote supports. Never supply a new source or number yourself: write "needs a source". At G1
-check the premise, the wrong belief and any fact on the thumbnails or in the outline the same way; a fact with no
-row yet is "needs a source", a blocker only if the packaging states it as true.
+At G2 every unsupported or overstated line is a blocker. Quote the line by its number, name the claim id, and give a
+corrected line the quote supports. Never supply a new source or number yourself: write "needs a source".
+
+At G1 (packaging) block only on what G2 cannot fix (owner, 2026-11-12; spec
+`docs/superpowers/specs/2026-11-12-room-owner-note-budget-design.md`):
+- a real-world fact the packaging states as true that has no `claims.md` row ("needs a source");
+- a line that contradicts its row's verbatim quote;
+- a wrong belief that is a straw man, or that the row's fact doesn't break.
+
+Everything else at G1 is a suggestion with its corrected line: precision ("$365.5" against "surpassed $365"), rounding
+("about"), scope wording ("observable"), a missing inline `(cNN)` and arithmetic slips. G2 checks every spoken line
+against the ledger again and blocks on them there. Check the premise, the wrong belief and any fact on the thumbnails
+or in the outline. The blocker limit is a ceiling, not a quota: return fewer blockers, or none, rather than fill it.
