@@ -1,12 +1,12 @@
 # Script: What If You Saw Who Wants You to Fail?
 
 format: story
-status: v2.1, G2 owner-notes rounds 2-3 (2026-11-12): rewritten for plain words, roles not names, performed moments, and the room's edit list
+status: v3, G2 owner-notes round (2026-11-12): skit opening, more content, the cut threads back
 claims: claims.md
 
-> SITUATION: Seoul, the street of after-school academies, six weeks before the big exam. Good news, you say out loud: your best friend first, over half of his chocolate bar at ten at night, then your sister, who always asks to hear it twice.
+> SITUATION: Seoul, the street of after-school academies, six weeks before the big exam. Good news, you say out loud, and your best friend hears it first, over half of his chocolate bar at ten at night; then your sister, who always asks to hear it twice.
 > DESIRE: To say it once more and have the face in front of you mean it.
-> CONFLICT: The meter shows the hurt your win causes and never what it's about, and the deepest red sits over the two people you'd have sworn by.
+> CONFLICT: The card shows the hurt your win causes and never what it's about, and the deepest red sits over the two people you'd have sworn by.
 > CHANGE: You stop reading the number as a wish and start asking what hurts.
 > RESULT: You say it to her face, twice, through minus sixty-eight, and you don't let go.
 > UNDER: Can someone be glad for you and hurt by you in the same second?
@@ -14,25 +14,40 @@ claims: claims.md
 > DARLING: "She was never outside your lane. She was in it first."
 > DARLING: "That half-second is the other life, going past."
 
-## [00:00] Made the Cut
+## [00:00] The Platform
+
+> MOOD: morning
+> SCENE: The metro platform, twenty to seven in the morning, nearly empty. A split-flap departure board hangs over the platform; it flutters through its times and clicks. You under it, mustard head, teal scarf, school bag, an envelope with a teal seal in both hands. One other face on the platform: a woman with a shopping bag, grey head, at the yellow line. You tear the seal. A sheet unfolds. You read it. Your mouth opens. You read it again. You look left, right: one face. Hers. You hold the open letter out at her.
+
+> BUBBLE: You: I made it!
+
+> HOLD: 4 s. Performed. A soft paper snap: a cream card the size of a bus ticket unfolds in the air over her head. A scale is stamped down it, red at the bottom, a grey zero in the middle, teal at the top. Split-flap digits flutter up out of the red, through the zero, into the teal, and click still on plus twenty-two. She never looks up. Your eyes do, and stay there.
+
+> TAG: +22%
+
+Woman: Well done, love.
+
+> HOLD: 5 s. Performed. You point straight up at the card. She follows your finger: the station roof, a pigeon, nothing. She looks at you, and takes one step sideways along the platform. The train comes in behind her. She boards. You reach up and touch the card: the flaps fold shut with a click under your fingers, and it's gone. The doors close on her face. The train pulls out. You alone on the platform, the letter in one hand, the other hand still up in the empty air. Over your shoulder the departure board flutters once, and clicks.
+
+## [00:11] Made the Cut
+
+> SCENE: Close-up: your hand comes down. The letter, close: the teal seal, a school crest with no lettering. Then one two-second insert: the classroom, your best friend talking at you, your hand flat on the letter inside your jacket, your mouth shut.
+
+That's your scholarship letter. You made the cut. And a card just opened over a stranger, with a number only you can see.
+
+So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Because your best friend hears everything first. He always has.
 
 > MOOD: night
-> SCENE: The thumbnail's frame, exactly: the academy street at ten, towers of lit signboards behind with no lettering on any of them. You large at the left, mustard head, teal scarf, holding up the letter with the teal seal, mouth open, eyes up and right. Your best friend right of centre, pale-blue head, grinning, one fist up, the near arm reaching to pull you into the hug. Inside the first half second the rule device: a cream paper card the size of a bus ticket unfolds over his head with a soft paper snap, and its split-flap digits flutter down the red side and stop on the bubble "I made it." Close-up on your face, then the card, then his grin.
+> SCENE: The thumbnail's frame, exactly: the academy street at ten, towers of lit signboards behind with no lettering on any of them. You large at the left, mustard head, teal scarf, holding up the letter with the teal seal, mouth open, eyes up and right. Your best friend right of centre, pale-blue head, grinning, one fist up, the near arm reaching to pull you into the hug. On the bubble the rule device: the cream card unfolds over his head with the paper snap, and its split-flap digits flutter down the red side. Close-up on your face, then the card, then his grin.
 
-Ten o'clock. The academy doors open, and you've been holding this since four.
+Ten o'clock. The academy doors open. There he is.
 
 > BUBBLE: You: I made it.
 > TAG: -84%
 
 > HOLD: 4 s. Performed. The flaps run down the red side and stop on minus eighty-four. He never looks up at it. His fist pumps once; his near arm hooks round your neck and pulls your face into his shoulder; his eyes shut, his grin wide. Your eyes stay open, over his shoulder, on the card. His free hand thumps your back twice. The flutter, then the click of the last flap.
 
-What if you could see who wants you to fail?
-
 Because that's your best friend. And that's minus eighty-four.
-
-Since this morning, a card opens over anyone who hears your good news. You've told no one all day.
-
-Not because of the cards. Because he hears everything first. He always has.
 
 Min-jun: Knew it. Knew it.
 
@@ -40,20 +55,37 @@ Min-jun: Knew it. Knew it.
 
 Sixty seconds. The card folds shut. His arm stays. So does the number.
 
-## [00:36] The Rule
+## [00:51] The Rule
 
 > MOOD: night
-> SCENE: The title card ident (C), three seconds, cut from the last line. Then the convenience store: fluorescent white against the dark street, the snack shelf, the counter. Your best friend at the counter with one chocolate bar, snapping it in two along the fold. You by the door, the letter in your hand. Wide, then an insert on the two halves in his palms. On "The rule, once" an insert replays the opening card at -84, then a clean paper scale from plus one hundred to minus one hundred draws itself; no new card opens over him.
+> SCENE: The title card ident (C), three seconds, cut from the last line. Then the convenience store: fluorescent white against the dark street, the snack shelf, the counter, the clerk behind it, a cat asleep on a crate by the door. Your best friend at the counter with one chocolate bar, snapping it in two along the fold. You by the door, the letter in your hand. Wide, then an insert on the two halves in his palms. On "The rule, once" an insert replays the opening card at -84, then a clean paper scale from plus one hundred to minus one hundred draws itself, red below, teal above; no new card opens over him.
 
-The rule, once. Say good news out loud, to a face, and a meter opens over whoever hears it, for sixty seconds, from plus one hundred to minus one hundred.
+The rule, once. Say good news out loud, to a face, and a card opens over whoever hears it. Sixty seconds. Plus one hundred to minus one hundred.
 
-Plus one hundred: pure joy for you. Minus one hundred: they want you to fail.
+Plus one hundred, pure joy for you. Minus one hundred, they want you to fail.
 
 It never says why. Only out loud. Only to a face. A call, a text, a post: nothing opens. Remember that.
 
-> BUBBLE: Min-jun: Half?
+Min-jun: Half?
 
-Every night, one chocolate bar, two halves. You take yours and watch him chew.
+Every night, one chocolate bar, two halves. You take yours. Tonight you watch him chew.
+
+> SCENE: You turn to the counter. The clerk, grey-green head, apron, scanning the bar. You hold the letter up at him. The card snaps open over his head: the flaps don't move. One click. A grey zero.
+
+The only other face in the shop: the clerk.
+
+> BUBBLE: You: I made it.
+> TAG: 0%
+
+Clerk: Receipt?
+
+Zero. Grey. One click. The biggest news of your life, and you're a receipt.
+
+> SCENE: You crouch by the crate. The cat opens one eye. You hold the letter at it and your mouth moves. No snap. Nothing in the air. The cat closes the eye.
+
+The cat on the crate. Nothing. Not even a card.
+
+So either a cat isn't a face, or a cat doesn't care. You'll never know.
 
 > SCENE: Insert: your phone, one contact on the screen, a peach-coloured avatar (phone set). Over-the-shoulder, your thumb on the call. Cut to her: the warehouse aisle at night, peach head, the work vest, a pallet going by on a forklift behind her, the phone at her ear. No card opens anywhere.
 
@@ -61,14 +93,16 @@ Your phone. Your sister. Six years of night shifts at a warehouse to pay for tha
 
 Ji-yoon: Say it again.
 
-You do. You're grinning into a phone. Nothing opens over a phone. So you still don't know her number.
+You do. You're grinning into a phone. And nothing opens over a phone.
 
-## [01:25] Who's Red
+So you've read your best friend. And her number, you still don't have.
+
+## [02:00] Who's Red
 
 > MOOD: day
-> SCENE: The school corridor, morning: shoe lockers, the rival, sage head, one foot up, swapping shoes. You walk straight at him with the letter out. Over-the-shoulder on his head: the card snaps open on "You hold up the letter", the flaps flick to -6 and stop, barely into the red. Cut to the classroom: your maths teacher at the board, glasses, red pen; the card over her head runs up the teal side to +41 on "Your maths teacher."
+> SCENE: The school corridor, morning: shoe lockers, the rival, sage head, one foot up, swapping shoes. You walk straight at him with the letter out. Over-the-shoulder on his head: the card snaps open on "You hold up the letter", the flaps flick to -6 and stop, barely into the red.
 
-Next morning. You've worked it out. Red is for enemies. So you test it on one.
+Next morning. You've worked it out. Red is for enemies. So you go looking for one.
 
 The rival. Trash-talks you every morning, two years running.
 
@@ -82,41 +116,71 @@ Minus six. He barely looks up.
 
 Tae-ho: Nice. Move.
 
+Two years of trash talk: minus six. Your best friend: minus eighty-four. Whatever red means, the dangerous number is at the next desk.
+
+> SCENE: The classroom: your maths teacher at the board, glasses, red pen. You at her desk with the letter. The card over her head runs up the teal side to +41 and clicks. She doesn't look up from marking.
+
 Your maths teacher.
 
 > TAG: +41%
 
-Ms. Kang: Good.
+Teacher: Good.
 
-That's all you get. And it's plus forty-one.
+One word. And plus forty-one.
+
+> SCENE: The school toilets (the corridor set, a mirror over a sink): your face in the glass, the letter held up to it. Your mouth moves. No snap. Your eyes go to the air above your reflection's head, then above your own.
+
+The mirror in the school toilets. Nothing opens. So a mirror isn't a face. Or the one card you can't see is yours.
+
+> SCENE: The street outside the metro station, afternoon: a tour group of eleven, pastel heads, following a guide's flag. You step into their path with the letter up; eleven cards snap open together over eleven heads and all click to zero in a row. The group flows round you like water round a post.
+
+Outside the station, a tour group. Eleven of them, following a flag. You say it to all eleven.
+
+> TAG: 0%
+
+Eleven cards. Eleven zeros, in a row, like a timetable.
+
+> SCENE: The bus, afternoon: you at the window, a little kid in a cap on the seat beside you, feet swinging, a woman reading next to him. You show him the letter. The card over his cap runs far up the teal side and clicks on +77. He grins with every tooth.
+
+The bus home. A little kid in a cap, feet swinging. You try him.
+
+Kid: What did you win?
+
+> TAG: +77%
+
+Plus seventy-seven. The highest number of the day is a six-year-old who doesn't know what a scholarship is.
 
 > SCENE: The classroom, a top-down insert: two desks side by side, two halves of a chocolate bar on a napkin, two pencils. Then close-up on the rival three rows away, head down, not looking. Then your best friend at the next desk, looking straight at you.
 
-So the enemy doesn't care. Why?
+So a kid gives you everything, your enemy gives you nothing, and your best friend gives you minus eighty-four. Why?
 
 We measure ourselves against people near our own level, not far above or below (c10).
 
 And envy picks someone who started where you did, in a thing that matters to you (c12).
 
-The rival is twenty places ahead and throws that line at everyone. Your best friend has the next desk, the same chocolate bar, the same exam.
+The kid isn't in the race. The rival is twenty places ahead and throws that line at everyone. Your best friend has the next desk, the same chocolate bar, the same exam.
 
-But here's the problem. Problem one: the only people who can bleed at your news are the ones in your lane. The same race.
+But here's the problem. Problem one: the only people who can bleed at your news are the ones in your lane. The same race. The ones you'd miss.
 
 > SCENE: The academy street at dusk, the steps outside the academy: you and your best friend on the steps, bags between your feet. No card is open: you said nothing good.
 
 So you ask him, on the academy steps.
 
-> HOLD: 4 s. Performed. You point straight up at the air above his head, mouth open. He follows your finger: looks up, sees nothing, looks at the sky, then at you, brows up.
-> BUBBLE: Min-jun: What number?
-> HOLD: 2 s. Performed. He pats the top of his own head twice, checking, then laughs and shoves your shoulder.
+> HOLD: 5 s. Performed. You point straight up at the air above his head, mouth open. He follows your finger: looks up, sees nothing, looks at the sky, then at you, brows up. He pats the top of his own head twice, checking.
+
+Min-jun: What number?
+
+Min-jun: Is it a bug? Get it off.
+
+> HOLD: 2 s. Performed. He ducks, swatting at his own hair, then catches your face, laughs, and shoves your shoulder.
 
 He can't see it. Nobody sees the cards but you.
 
 And people don't like to admit being maliciously envious, even to themselves (c12).
 
-So you have a number. And no one to ask.
+So you have a number, and no one to ask. Not him. Not her. Not yet.
 
-## [02:34] Her Back
+## [04:05] Her Back
 
 > MOOD: lamp
 > SCENE: The small flat's kitchen, eleven at night, one lamp over the table. The letter already taped to the fridge; beside it a jar with her paintbrushes standing in it, bristles up. Insert: the brushes, close. Your sister in the doorway with her back to you, pulling on the work vest.
@@ -129,55 +193,77 @@ She's in the doorway, pulling on her work vest. She doesn't turn round.
 
 Ji-yoon: Say it again.
 
-> HOLD: 3 s. Performed. Your mouth moves; the letter in your hand lifts an inch and drops. No snap. Nothing over her head. Her shoulders shake once: the laugh. The door, and the stairwell light across the fridge and the letter.
+> HOLD: 4 s. Performed. Your mouth moves; the letter in your hand lifts an inch and drops. No snap. Nothing over her head. Her shoulders shake once: the laugh. She raps the door frame twice with her knuckles, her goodbye, and goes. The stairwell light across the fridge and the letter, then the door.
 
 You say it to her back. Nothing opens. A back is not a face.
 
-She laughs, and she's gone. And she still hasn't seen your face say it. Not yet.
+She laughs, and she's gone. Her number stays hidden. And before you risk seeing it, you test the rule on everyone else.
 
-## [03:05] A Thousand Cards
+## [04:39] A Thousand Cards
 
 > MOOD: night
 > SCENE: The academy street at ten, the picture only this premise can show. You on the academy steps, your best friend two steps down with the class by the snack shop. On "every door on the street opens at once" the doors of every building open together and the crowd pours out. You say it on "say it into the crowd", and a thousand cream cards snap open over a thousand heads and flap to their numbers: nearly all grey zeros, a scatter of pale teal, three red clustered by the snack shop where your class stands. The camera pulls up and back until the street is a field of cream cards with three red ones and the signboards a glow underneath. At the bus stop at the bottom of the frame the stranger, crimson head, long coat, reads a timetable and never looks up.
 
-Minus six for the rival. So maybe the number fades the further someone is from your lane.
+Minus six for the rival. So maybe a bigger crowd will show you who really wants you to fail.
 
-This one neighbourhood in Seoul has about a thousand after-school academies (c04).
+This one neighbourhood in Seoul has about 1,000 after-school academies (c04).
 
 And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure (c03).
 
-So at ten, every door on the street opens at once.
+So at ten, every door on the street opens at once. A thousand faces.
 
-So you climb the academy steps and say it into the crowd.
+You climb the academy steps and say it into the crowd.
 
 > HOLD: 3 s. The snap, a thousand times, like pigeons going up. The flutter. The street a field of grey zeros, pale teal here and there, three red by the snack shop. The camera keeps rising.
 
-A thousand strangers. A thousand zeros. A few teal. And three red. All by the snack shop. All from your class.
+You asked a thousand strangers to prove your best friend was the exception. Instead, every red card points back to your class.
 
-> SCENE: Close-up on your face on the steps, lit from below by the signboards, eyes on the three red cards. Over-the-shoulder: your best friend looking up at you, waving.
+One is your best friend. So who are the other two?
+
+> SCENE: Close-up on your face on the steps, lit from below by the signboards. Your eyes go from red card to red card. Under the second: a girl from your row, lilac head, a calculator in her hand. Under the third: a boy, grey-blue head, your old walking partner, laughing at something. Their cards: -30, -44.
+
+The girl who borrows your calculator. Minus thirty. The boy you walked home with all of first year. Minus forty-four.
 
 So. Minus means they want you to fail. And now you know exactly who to cut.
 
-## [03:48] Four in a Hundred
+## [05:34] Four in a Hundred
 
 > MOOD: day
-> SCENE: The classroom over two weeks, a montage that turns at every use. A mock score chalked on the board; you standing to say it aloud; cards snapping open over every head in the room. You turning your desk a quarter away from a red one. A classmate's hand out for your notes; you shaking your head. Over your best friend, at each of three announcements, the card runs to -84, then -88, then -91. A paper sheet: a hundred small heads in rows, four coloured teal, yours fourth and his fifth, then yours first. Last shot: a wide of the classroom, the desk beside you empty.
+> SCENE: The classroom over two weeks, a montage that turns at every use. A mock score chalked on the board; you standing to say it aloud; cards snapping open over every head in the room. Your phone: a group chat, a name swiped out, then another. A shared folder icon; a name removed. A classmate's hand out for your notes; you shaking your head. You turning your desk a quarter away from a red one. Over your best friend, at each of three announcements, the card runs to -84, then -88, then -91, one reading per beat. A paper sheet: a hundred small heads in rows, four coloured teal, yours fourth and his fifth, then yours second. Last shot: a wide of the classroom, the desk beside you empty.
 
 The exam grades on a curve. In most subjects, only the top 4 per cent get the top grade (c01).
 
 So you picture your class. A hundred of you. Four places. You're fourth. He's fifth.
 
-So the meter becomes a weapon.
+So the card becomes a weapon.
 
-Two weeks. Each mock score, you stand up, say it out loud, and read the room. Anyone who goes red, you stop helping. Stop lending notes.
+Two weeks. Each mock score, you stand up, say it out loud, and read the room.
+
+Teacher: Sit down.
+
+Anyone who goes red: out of the group chat. No more past papers from the shared folder. No notes. No help.
+
+Week one, three red. Week two, nine.
+
+Tae-ho: What's with you?
+
+Even the rival's noticed. And he's still minus six.
+
+> SCENE: The convenience store at ten. Your best friend at the counter, the bar snapped in two, the bigger half held out. The card over his head already open on -88 from the day's announcement.
 
 And every night at the counter:
 
-> BUBBLE: Min-jun: Half?
+Min-jun: Half...?
 
-> HOLD: 5 s. Performed. Under the white light he snaps the bar and holds out the bigger half, looking at you, half a smile. You look at the chocolate, then at the card over his head, still open on minus eighty-eight, then past him. You walk. His hand stays out one beat too long, then drops. He looks at the half in his hand, then puts both halves in his pocket.
+> HOLD: 5 s. Performed. Under the white light he holds out the bigger half, looking at you, half a smile. You look at the chocolate, then at the card over his head, still open on minus eighty-eight, then past him. You walk. His hand stays out one beat too long, then drops. He looks at the half in his hand, then puts both halves in his pocket. The cat on the crate watches you go.
 
-You climb.
+> SCENE: The next night. The same counter. You alone, one drink. The clerk looks past you at the door, then at you.
+
+The next night, you come in alone.
+
+Clerk: Just you tonight?
+
+You climb. Fourth. Third. Second.
 
 But the higher you go, the redder the room.
 
@@ -187,9 +273,9 @@ And his number keeps going down.
 
 > TAG: -91%
 
-You got the place you wanted. And lost the one beside it.
+Second place. An empty desk beside you. So what does first cost?
 
-## [04:42] The Notebook
+## [06:43] The Notebook
 
 > MOOD: lamp
 > SCENE: The late-night study room: rows of desks with partitions, one lamp each, past midnight. His seat empty, his notebook open under his lamp. Top-down insert: a page in your hand. On "A card has one colour" an insert of two cards side by side, both red, both reading the same number, no other difference.
@@ -214,7 +300,7 @@ But here's the second problem. Problem two: hurt needs a lane. Outside yours, no
 
 And you've only ever read one lane.
 
-## [05:37] Say It Again
+## [07:33] Say It Again
 
 > MOOD: lamp
 > SCENE: The small flat, the dining table, ten at night. Your sister at the table on a night off, no vest, hair down, a bowl in front of her. You come in at a run, a second letter in your hand. Close-up on her face as you say it; over her head the card snaps open and the flaps run down the red side to -68 on "You say it to her face." Insert: the jar of brushes behind her shoulder.
@@ -229,30 +315,28 @@ Your sister's at the table. A night off. You say it to her face.
 
 > HOLD: 4 s. Performed. She's up before you finish, the chair tipping; both arms round your neck, her face in your scarf. Over her shoulder the card: the flaps run to minus sixty-eight and stop. Your arms, half raised, hang there.
 
-Ji-yoon: Say it again.
+Ji-yoon: Say it again...
 
 > HOLD: 3 s. Performed. Her arms tighten. Yours don't close. Your eyes don't leave the card. The lamp. The jar of brushes behind her.
 
 Minus sixty-eight. Over the one person who ever asked to hear it twice.
 
-Ji-yoon: Say it again.
+Ji-yoon: Say it again...
 
-You can't.
-
-You just watched a card say what her arms didn't.
+You can't. You just watched a card say what her arms didn't.
 
 > SCENE: You step back out of the hug; the card folds shut over her head at sixty seconds. You pick up your bag from the floor. The front door. Her hands still half up.
 
 You take your bag. And you don't go home. Not that night. Not for a month.
 
-## [06:20] The Country Holds Its Breath
+## [08:12] The Country Holds Its Breath
 
 > MOOD: morning
 > SCENE: The late-night study room, a week of nights in one dissolve: your desk, a rolled jacket for a pillow; no cards anywhere; the street outside silent of snaps. The night before the exam, the classroom at dusk: you set your own notebook on his desk, half a chocolate bar on top, and walk out. Exam day: the exam hall from above, rows of heads; cut to the city skyline, one paper plane held still in the sky; the street outside the gate, parents in a crowd.
 
-A week in the study room. You say nothing good out loud, to anyone, and the cards go quiet, because you have.
+A week in the study room. You say nothing good to anyone, so the cards go quiet.
 
-The night before the exam. Your own notebook. Every mistake this year, and why. Leave it, or keep your place?
+The night before the exam. Your own notebook. Every mistake this year, and why. Leave it for him, or keep your place?
 
 You leave it on his desk. Half a chocolate bar on top.
 
@@ -266,16 +350,16 @@ A country holds its breath for you.
 
 At your gate, in the crowd of parents: the work vest. Straight off the night shift.
 
-> HOLD: 6 s. Performed. The crowd parts and she's there, vest half zipped, hair flat from the night, a lunch box in both hands. She holds it out. You look at her face, not at the air above it. You take the box; your fingers touch hers on the handle. She nods once, mouth shut, and steps back into the crowd. The bell. You turn to the gate.
+> HOLD: 6 s. Performed. The crowd parts and she's there, vest half zipped, hair flat from the night, a lunch box in both hands. She holds it out. You look at her face, not at the air above it. You take the box; your fingers touch hers on the handle. Her mouth opens for the words she always says, and shuts without them. She nods once, and steps back into the crowd. The bell. You turn to the gate.
 
 Neither of you says a word. Nothing opens.
 
 Results come in a month. For a month, you say nothing to anyone.
 
-## [07:16] A Text Would Open Nothing
+## [09:05] A Text Would Open Nothing
 
 > MOOD: day
-> SCENE: Results day, ten in the morning, the classroom: the phone set, your screen: three top grades in a column. Your best friend at the next desk, his own screen, the same. He holds out half a chocolate bar; you take it and eat it, looking at him, not at the air above him. Then the bus: you at the window, the city sliding past in paper layers, a bus-shelter ad with a small paper subscribe tag going by, no voice. Close-up: your thumb over her name, a half-typed text. You turn the phone face down on your knee and look up at the warehouse gates coming.
+> SCENE: Results day, ten in the morning, the classroom: the phone set, your screen: three top grades in a column. Your best friend at the next desk, his own screen, the same. He holds out half a chocolate bar; you take it and eat it, looking at him, not at the air above him. Your phone buzzes: a column of nine messages in the group chat. Then the bus: you at the window, the city sliding past in paper layers, a bus-shelter ad with a small paper subscribe tag going by, no voice. Close-up: your thumb over her name, a half-typed text. You turn the phone face down on your knee and look up at the warehouse gates coming.
 
 Results. Top grade. Top grade. Top grade. The scholarship holds.
 
@@ -283,9 +367,11 @@ Your best friend, beside you: top grade in maths too.
 
 Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours.
 
-> BUBBLE: Min-jun: Half?
+Min-jun: Half?
 
 You take it.
+
+Your phone buzzes. Nine messages from the nine you cut. Nine congratulations. Not one card. A screen opens nothing.
 
 In studies of regret, the most common is education: about a third of all regrets (c11).
 
@@ -297,20 +383,20 @@ A text would open nothing. You could keep her forever on a screen.
 
 You're on the bus.
 
-## [08:01] The Loading Dock
+## [10:02] The Loading Dock
 
 > MOOD: dusk
-> SCENE: The warehouse loading dock: a raised concrete lip, roller shutters half up, orange lamps coming on, pallets, a parked forklift. Your sister walks out with the shift, vest unzipped, and stops when she sees you at the foot of the steps. You climb them. Wide: the two of you small under the lamps. Close-up on her as you say it; the card snaps open and runs to -68 on "And you say it." Her arms. Yours too, this time. At sixty seconds the flaps fold shut, and on "Say it again" the card snaps open again and runs to the same number.
+> SCENE: The warehouse loading dock: a raised concrete lip, roller shutters half up, orange lamps coming on, pallets, a parked forklift. Your sister walks out with the shift, vest unzipped, and stops when she sees you at the foot of the steps. You climb them. Wide: the two of you small under the lamps. Close-up on her as you say it; the card snaps open and runs to -68 on "And you say it." Her arms. Yours too, this time. At sixty seconds the flaps fold shut, and on "You do" the card snaps open again and runs to the same number.
 
 Six o'clock. Her shift ends. You stand on the loading dock. And you say it.
 
 > TAG: -68%
 
-The same.
+Minus sixty-eight. The same.
 
 She holds on. And this time you don't go stiff.
 
-Ji-yoon: Say it again.
+Ji-yoon: Say it again...
 
 You do.
 
@@ -318,21 +404,21 @@ You do.
 
 > HOLD: 9 s. The one wordless peak. The card over her head on the same number, the two of you under the dock lamps, the shutters, the forklift. Music down to one held line under the flutter of the flaps, the film's one planned silence. The camera drifts in, slowly, on the number, then on her hands on your back. A slow-motion ghost on her shoulder as it shakes. Your hands close on the back of the vest.
 
+The card gets two minutes. It doesn't get to choose what you do next.
+
 You said nobody outside your lane bleeds.
 
 She was never outside your lane. She was in it first.
 
 Six years ago it was her letter on the fridge.
 
-At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).
+At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).
 
 > SCENE: Over her shoulder, close on your face: your eyes on the card, then off it, down to her. The second card runs its sixty seconds and folds. You don't move.
 
 She's not watching you fail. She's watching the life she handed you walk up the dock with the news. And she wants it in.
 
-The same number. The same arms. You hold on through the second sixty.
-
-## [09:01] Two Letters
+## [11:00] Two Letters
 
 > MOOD: morning
 > SCENE: The kitchen. Your sister at the fridge; the calendar, the letter, the jar. You in the doorway, saying nothing. Then the front door: your best friend, grinning, a letter of his own. Cut before any number. End card.
@@ -349,7 +435,9 @@ That half-second is the other life, going past.
 
 Then the door. Your best friend. A letter of his own. He says it. For the first time, the good news isn't yours.
 
-> HOLD: 4 s. He says it and grins. A paper snap sounds above you, out of frame. His grin falters at your face. Your eyes start to lift, then stop on his. Cut before your answer.
+Min-jun: I got in!
+
+> HOLD: 4 s. Performed. He holds his letter up the way you held yours, grinning, fist half raised. A paper snap sounds above you, out of frame. His grin falters at your face. Your eyes start to lift, then stop on his. Cut before your answer.
 
 So, would you still say it to her face? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
 
@@ -357,15 +445,15 @@ So, would you still say it to her face? Tell us in the comments. And if you'd ha
 
 ## Word count
 
-About 1,350 spoken words: 8:43 at 155 words a minute. Holds: 13, about 63 s (about 11% of the runtime, raised from v1's 5% by the owner's third note); nine are performed moments (the first hug 4 s, "What number?" 4 s, her back 5 s, the chocolate walked past 5 s, the notebook 5 s, the hug at the table 6 s, the lunch at the gate 6 s, the two letters 5 s, the sequel hook 4 s), the one wordless peak at the dock is the longest at 9 s, the thousand-card and exam-day holds are 3 s each, the end card 4 s; the title card ident 3 s. Runtime about 9:45; at the channel's 1.1x tempo about 8:55. The thumbnail's frame is on screen from the first half second and the meter reads minus eighty-four by 0:05; the title question starts at about 0:10 and "Because that's your best friend. And that's minus eighty-four." at about 0:13. The thousand-card picture lands at about 3:30, before the midpoint; the cost at about 6:00; the dilemma at about 7:50; the peak at about 8:35. Spoken names: none; the narrator says "your best friend", "your sister", "the rival" and "your maths teacher", and the four `Name:` prefixes are not spoken. Local words removed: the snack is half of his chocolate bar, the setting is the after-school academy and the late-night study room, the two curves are one plain fact (c01, "a hundred of you, four get it") and one plain late line ("Not four seats in a room"); c13 is dropped. "Say it again" is spoken five times (the phone, her back, twice through the hug, the dock) and withheld at the fridge. "Half?" returns three times (the store, walked past, taken). Plants: "Remember that" (0:55), the planted plus-and-minus line (0:48) and its break (5:05), "hurt needs a lane" (5:25) and its break (8:40). Claims spoken: c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12. Open loops about a minute apart: 0:13, 1:20, 2:10, 2:30, 3:00, 3:45, 4:35, 5:30, 6:15, 7:10, 7:55, 8:30. Stake jumps: 0:05, 1:30, 2:15, 3:30, 4:35, 6:00, 7:05, 7:50, 8:35. The stranger: the bus stop in the thousand-card wide shot. No new rule after halfway; the last new person is the stranger at 3:30. The room's list taken: the grounded-planes line (#1), the sequel hook with no card read over your head (#4), the steps as a "therefore" (#5), the regret fact before the dilemma (#6), the couples wording (#8b); bronze and silver kept at the dock (#7). The sequel hook is his face at 9:35; the film explains nothing.
+About 1,620 spoken words: 10:27 at 155 words a minute. The skit runs about 11 s before the first narrator line. Holds: 18, about 78 s (about 11% of the runtime, as in v2.1); ten are performed moments with the characters acting and speaking (the platform skit 4 s and 5 s, the first hug 4 s, "What number?" 5 s and 2 s, her back 3 s and 4 s, the chocolate walked past 5 s, the notebook 5 s, the hug at the table 4 s and 3 s, the lunch at the gate 6 s, the two letters 5 s, the sequel hook 4 s); the one wordless peak at the dock is the longest at 9 s; the thousand-card and exam-day holds are 3 s each; the end card 4 s; the title card ident 3 s. Runtime about 11:50; at the channel's 1.1x tempo about 10:45. The skit: the power is found, not explained; the card's look and sound (snap, the stamped scale red below and teal above, the flutter, the click, folding shut under your hand) are all shown before a word of narration, and the woman follows your finger and sees nothing, so "nobody sees the cards but you" is shown at 0:05 and said at 3:45. The thumbnail's frame is on screen from about 0:28 and the card reads minus eighty-four by about 0:31 (K13 relaxed by the owner's note B); the title question at about 0:36 and "Because that's your best friend. And that's minus eighty-four." at about 0:40. Uses of the power, each with a gap: the woman (+22), the best friend (-84), the clerk (0), the cat (nothing), the phone (nothing), the rival (-6), the maths teacher (+41), the mirror (nothing), the tour group (eleven zeros), the kid (+77), her back (nothing), the crowd (a thousand), two classmates (-30, -44), the montage (-84, -88, -91), the table (-68), the dock (-68 twice), the sequel hook (above you). Threads back from v2.1's cut: the clerk (two lines), the tour group, the cat (three appearances), the group chat and the shared folder (the weapon, then the nine congratulations). People who react: the woman, the clerk, the kid, the rival ("What's with you?"), the maths teacher ("Sit down."), the two classmates, the nine in the group chat, your sister at the gate, your sister at the hook. The thousand-card picture lands at about 5:15, before the midpoint; the cost at about 7:55; the dilemma at about 9:50; the peak at about 10:25. The cost and the dilemma sit later than the template's shares because the owner's note C front-loads the tests; the story seat should say whether that holds. Spoken names: none; the narrator says "your best friend", "your sister", "the rival", "your maths teacher", "the clerk", "the kid"; the `Name:` prefixes are not spoken. "Say it again" is spoken five times (the phone, her back, twice through the hug, the dock) and withheld twice (the gate, the fridge); the table and dock takes use "Say it again..." so the voice gets a softer take than the phone's. "Half?" returns three times (the store, walked past as "Half...?", taken). Plants: "Remember that" (1:12) and its payoffs (her back, the nine messages, the dilemma); the planted plus-and-minus line (1:05) and its break (7:05); "hurt needs a lane" (7:25) and its break (10:35); the mirror (2:55) and the snap above you (11:40). Claims spoken: c01, c02, c03, c04, c05, c06, c07, c08, c10, c11, c12 (c09 and c13 not used). Open loops as questions about a minute apart: 0:40, 1:55, 2:35, 2:55, 3:30, 4:00, 4:35, 5:30, 6:40, 7:30, 8:10, 9:00, 9:50, 10:25. Stake jumps: 0:31, 1:55, 3:30, 5:15, 5:30, 6:40, 7:55, 9:00, 9:50, 10:25. The room's three open notes are taken: the crowd test as an experiment (4:40), the "therefore" out of Her Back (4:35), the peak line (10:35). The stranger: the bus stop in the thousand-card wide shot. No new rule after halfway; the last new person is the stranger at 5:15. The sequel hook is his face at 11:45; the film explains nothing.
 
 ## Chapters
 
 - 0:00 Made the Cut
-- 0:36 The Rule
-- 1:25 Who's Red
-- 3:05 A Thousand Cards
-- 3:48 Four in a Hundred
-- 4:42 The Notebook
-- 5:37 Say It Again
-- 8:01 The Loading Dock
+- 0:51 The Rule
+- 2:00 Who's Red
+- 4:39 A Thousand Cards
+- 5:34 Four in a Hundred
+- 6:43 The Notebook
+- 7:33 Say It Again
+- 10:02 The Loading Dock

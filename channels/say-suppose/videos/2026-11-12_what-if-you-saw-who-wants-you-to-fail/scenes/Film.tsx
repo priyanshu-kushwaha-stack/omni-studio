@@ -13,9 +13,9 @@ const UNDER_VOICE = 0.039;
 const IN_HOLDS = 0.3;
 const DUCK_IN = 8;
 const DUCK_OUT = 18;
-/** The cost (script line 69, "The school confirms it. Four years, paid. If the exam holds.", the Say It Again beat) is
+/** The cost (script v3 line 89, "The school confirms it. Four years, paid. If the exam holds.", the Say It Again beat) is
  *  where the light theme hands over to the dark one; they cross over XFADE frames. */
-const DARK_FROM_LINE = 69;
+const DARK_FROM_LINE = 89;
 const XFADE = 60;
 /** The score fades out over the film's last OUTRO frames, so the loop never stops mid-wave. */
 const OUTRO = 60;

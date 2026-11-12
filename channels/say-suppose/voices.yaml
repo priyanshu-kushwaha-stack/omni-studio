@@ -52,6 +52,22 @@ voices:
       Driver: >-
         A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
         his shoulder like a public announcement.
+      # What If You Saw Who Wants You to Fail (2026-11-12): Seoul, a senior's autumn.
+      Min-jun: >-
+        A bright, light male tenor-baritone: a boy of eighteen, your best friend since you were twelve. Quick, warm and
+        easy, a grin in every word, a little breathless when he is happy, casual modern English.
+      Ji-yoon: >-
+        A warm female mezzo: a woman of twenty-four, your older sister, tired from night shifts. Soft and low, a little
+        husky, gentle and teasing, she speaks close and slowly, as if she has all the time in the world for you.
+      Tae-ho: >-
+        A flat, cool male baritone: a boy of eighteen, the class rival. Bored and clipped, half a smirk, never looks up
+        from what he is doing, short words.
+      Teacher: >-
+        A crisp female alto: a maths teacher in her forties. Precise and dry, one word at a time, kind underneath but
+        never says so.
+      Clerk: >-
+        A sleepy male baritone: a convenience-store clerk in his twenties on the night shift. Slow, polite and flat,
+        a yawn at the edge of every word.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.

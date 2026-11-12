@@ -260,21 +260,129 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 8,
+      "draft_sha256": "879e58c7f13d7b1fa50aecccef90ea709a3c02e4ace46d08e346fee129cc0355",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "bbf58d860e514d9f9668a91e3e264fb5",
+          "file": "room/g2/round-8/claims-check.json",
+          "output_sha256": "cba6a9a94f6eb7e201cf740d2a62f4dee2f234057dcd43196771ee45ae0684d3",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "911885a6742746f889e8aa8112a95333",
+          "file": "room/g2/round-8/story-editor.json",
+          "output_sha256": "faf4a78b1bb7d0593e08224fb393510bc97bb2e4a5db6ccb00b4e87affd27778",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    },
+    {
+      "round": 9,
+      "draft_sha256": "c4ca51a7b596a6e58e405672ed3cc1faaa98b73144f41e6bf713d2b3bdb1a469",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "4db91a0e1b62481eb3d95c2ffc0ff8b8",
+          "file": "room/g2/round-9/claims-check.json",
+          "output_sha256": "e84a131fc5adeaa686b2b0f93bd3e7302e2e68321530a69f80d3411423a926f4",
+          "blockers": 1
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "53be7617965c472aa3c595baf3678c40",
+          "file": "room/g2/round-9/story-editor.json",
+          "output_sha256": "2a8f0121dcf2759b86ca87603c774c23e41903b1c32daf754b0412e623e3b9f5",
+          "blockers": 1
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 10,
+      "draft_sha256": "368db214592857d81d60c186e26131414aab80a1f17860928e3cf436b29c816b",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "a62c31f2febb4f139a0e58f3a42da0a9",
+          "file": "room/g2/round-10/claims-check.json",
+          "output_sha256": "d26c664c3c831f03c0365f23859c5844947d2a6e0f89aa84e078e2f91540ae35",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "6bb6f1c8d9fd4825b6b2d282f8cffbcd",
+          "file": "room/g2/round-10/story-editor.json",
+          "output_sha256": "90e7645212a863947dedd7f15a7e59dbde8397cc9740d4be58efcaa3ac182c07",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 7,
-    "artifact_sha256": "e811367ce6768f7a4b178b8679c4456ff7290eac3f14906d4f34f66fcc743aad"
+    "round": 10,
+    "artifact_sha256": "368db214592857d81d60c186e26131414aab80a1f17860928e3cf436b29c816b"
   },
-  "calls": 14,
-  "cap": 28,
+  "calls": 20,
+  "cap": 36,
   "author_cut": {
     "round": 1,
     "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4",
     "cost": {
-      "lines_changed": 260,
+      "lines_changed": 378,
       "header_changed": [
         "SITUATION",
         "CONFLICT",
@@ -283,7 +391,10 @@
       "keep_lost": [
         "Out there the curve is the whole country's: in most subjects, the top four per cent of everyone who sat it (c01).",
         "A tag has one colour for every kind of hurt.",
-        "Across 11 studies, the most common regret of a life is education, about a third of all regrets (c11)."
+        "At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+        "You got the place you wanted. And lost the one beside it.",
+        "Across 11 studies, the most common regret of a life is education, about a third of all regrets (c11).",
+        "Not because of the cards. Because he hears everything first. He always has."
       ]
     }
   },

@@ -1,0 +1,16 @@
+{
+  "round": 8,
+  "draft_sha256": "879e58c7f13d7b1fa50aecccef90ea709a3c02e4ace46d08e346fee129cc0355",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": true,
+  "owner_note": [
+    "it should start with a short skit and there it should show that you have or got this superpower somehow and then probably the narration of the story",
+    "Story should have more content and people should have a lot. Just like Mr. Beast videos. Every line in his script has meaning and keeps the viewer on their toe."
+  ],
+  "kind": "script",
+  "linted_at": "2026-11-12T15:41:07+00:00"
+}

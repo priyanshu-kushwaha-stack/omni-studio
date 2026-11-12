@@ -54,27 +54,30 @@ and its `parts2.tsx` and `sets/`). The kit: `core/engines/whatif/src/kit/` (rig,
 
 ## Beats (narration lines, 0-based) and who builds them
 
-| Beat | File | Lines (v2.1) | Builder | Sets |
+| Beat | File | Lines (v3) | Builder | Sets |
 |---|---|---|---|---|
-| Made the Cut | `MadeTheCut.tsx` | 0-6 | A | AcademyStreet (night, the thumbnail's frame) |
-| The Rule | `Rule.tsx` | 7-13 | A | Store; the phone set; the warehouse aisle |
-| Who's Red | `WhosCrimson.tsx` | 14-31 | B | kit `schoolCorridor`, `classroom`; AcademyStreet (dusk, steps) |
-| Her Back | `HerBack.tsx` | 32-36 | C | Home |
-| A Thousand Cards | `ThousandTags.tsx` | 37-43 | A | AcademyStreet (night, steps, the crowd, the bus stop) |
-| Four in a Hundred | `FourSeats.tsx` | 44-53 | B | kit `classroom`; Store (night) |
-| The Notebook | `Notebook.tsx` | 54-62 | D | ReadingRoom ("the late-night study room") |
-| Say It Again | `SayItAgain.tsx` | 63-71 | C | Home (dining table) |
-| The Country Holds Its Breath | `HoldsBreath.tsx` | 72-80 | D | ReadingRoom; kit `classroom`, `examHall`, `citySkyline`, `street` |
-| A Text Would Open Nothing | `TextOpensNothing.tsx` | 81-89 | D | kit `classroom`, `phone`, `bus` |
-| The Loading Dock | `LoadingDock.tsx` | 90-100 | C | LoadingDock |
-| Two Letters | `TwoLetters.tsx` | 101-106 | C | Home; the end card |
+| The Platform (the opening skit) | `Platform.tsx` | 0 (plus the lead-in holds before it) | A | kit `metroPlatform` (morning) with a split-flap departure board |
+| Made the Cut | `MadeTheCut.tsx` | 1-6 | A | AcademyStreet (night, the thumbnail's frame) |
+| The Rule | `Rule.tsx` | 7-20 | A | Store (the clerk at 0, the cat on the crate); the phone set; the warehouse aisle |
+| Who's Red | `WhosCrimson.tsx` | 21-47 | B | kit `schoolCorridor`, `classroom`, a mirror over a sink, the street outside a metro station (tour group), kit `bus` (the kid); AcademyStreet (dusk, steps) |
+| Her Back | `HerBack.tsx` | 48-52 | C | Home |
+| A Thousand Cards | `ThousandTags.tsx` | 53-61 | A | AcademyStreet (night, steps, the crowd, the bus stop, two classmates' close-ups) |
+| Four in a Hundred | `FourSeats.tsx` | 62-79 | B | kit `classroom`, `phone` (group chat, shared folder); Store (night, two nights) |
+| The Notebook | `Notebook.tsx` | 80-88 | D | ReadingRoom |
+| Say It Again | `SayItAgain.tsx` | 89-96 | C | Home (dining table) |
+| The Country Holds Its Breath | `HoldsBreath.tsx` | 97-105 | D | ReadingRoom; kit `classroom`, `examHall`, `citySkyline`, `street` |
+| A Text Would Open Nothing | `TextOpensNothing.tsx` | 106-116 | D | kit `classroom`, `phone` (nine messages), `bus` |
+| The Loading Dock | `LoadingDock.tsx` | 117-127 | C | LoadingDock |
+| Two Letters | `TwoLetters.tsx` | 128-134 | C | Home; the end card |
 
-**v2.1 (owner's G2 notes, 2026-11-12, `taste.md`):** plain words (the snack is half of his chocolate bar: `Chocolate`
-in parts.tsx, not `Kimbap`), roles not names, and PERFORMED MOMENTS: every `> HOLD: N s. Performed.` is a gap after a
-line in which the narrator is silent and the characters act the scene in full, beat by beat as the HOLD describes
-(faces, hands, props, who moves first). Stage them in the frames between `lineEnd(clips, i)` and `clips[i + 1].from`;
-they are the owner's ask, so they get the care the peak gets (something changes every 2-4 s, a face reaction within
-2 s).
+**v3 (owner's notes, 2026-11-12, `taste.md`):** the film opens on a SKIT before the narrator speaks (the metro platform:
+you open the letter, show a stranger, a card snaps open over her and folds under your finger); more uses of the power,
+more people reacting (the clerk, the cat, the tour group, a mirror, a kid on the bus, the group chat, the folder); and
+characters now SPEAK in their own free local voices (lines with `speaker` in props.json `lines`). Plain words, roles
+not names, and the PERFORMED MOMENTS from v2.1 stay: every `> HOLD: N s. Performed.` is a gap after a line in which
+the narrator is silent and the characters act it in full, beat by beat; stage them in the frames between
+`lineEnd(clips, i)` and `clips[i + 1].from` (the skit's opening hold is the lead-in before line 0). Something changes
+every 2-4 s; a face reaction within 2 s; the snack is `Chocolate`.
 
 ## Shared sets (`sets/`) and owners
 

@@ -1,0 +1,47 @@
+{
+  "call_id": "bbf58d860e514d9f9668a91e3e264fb5",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 417,
+      "quote": "At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+      "fix": "At the 1992 Olympics, bronze medallists looked happier than silver medallists (c08). Silver thinks of the gold it nearly won. Bronze thinks of finishing without a medal (c08)."
+    },
+    {
+      "line": 213,
+      "quote": "And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure (c03).",
+      "fix": "And Seoul lets them teach only until 10 at night. Inspectors have patrolled the streets to make sure (c03)."
+    },
+    {
+      "line": 236,
+      "quote": "The exam grades on a curve. In most subjects, only the top 4 per cent get the top grade (c01).",
+      "fix": "The national exam grades on a curve. In most subjects, only the top 4 per cent get the top grade (c01)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 297,
+      "quote": "In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05)."
+    },
+    {
+      "line": 370,
+      "quote": "Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours."
+    },
+    {
+      "line": 293,
+      "quote": "Envy comes in two kinds (c07). One pushes you to move up. The other pushes you to pull the other person down (c07)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "cba6a9a94f6eb7e201cf740d2a62f4dee2f234057dcd43196771ee45ae0684d3",
+  "draft_sha256": "879e58c7f13d7b1fa50aecccef90ea709a3c02e4ace46d08e346fee129cc0355"
+}

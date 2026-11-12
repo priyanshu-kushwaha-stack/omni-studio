@@ -1,3 +1,4 @@
+import { platform } from "./Platform";
 import { madeTheCut } from "./MadeTheCut";
 import { rule } from "./Rule";
 import { whosCrimson } from "./WhosCrimson";
@@ -13,4 +14,4 @@ import { twoLetters } from "./TwoLetters";
 import type { Beat } from "../shared";
 
 /** The film's beats in order (script.md). firstLine must rise. */
-export const BEATS: Beat[] = [madeTheCut, rule, whosCrimson, herBack, thousandTags, fourSeats, notebook, sayItAgain, holdsBreath, textOpensNothing, loadingDock, twoLetters];
+export const BEATS: Beat[] = [platform, madeTheCut, rule, whosCrimson, herBack, thousandTags, fourSeats, notebook, sayItAgain, holdsBreath, textOpensNothing, loadingDock, twoLetters];
