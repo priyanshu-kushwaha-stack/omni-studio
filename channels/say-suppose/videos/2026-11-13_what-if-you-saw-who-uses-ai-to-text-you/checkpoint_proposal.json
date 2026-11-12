@@ -3,11 +3,11 @@
   "project_id": "2026-11-13_what-if-you-saw-who-uses-ai-to-text-you",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-12T20:52:01.607960+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-12T20:56:12.513649+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -106,6 +106,13 @@
   },
   "style_playbook": "say-suppose",
   "metadata": {
-    "room": "room-g1.md: shipped round 1, 2 of 16 calls; room evidence ok"
+    "room": "room-g1.md: shipped round 1, 2 of 16 calls; room evidence ok",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-12T20:56:12.508084+00:00",
+      "via": "omni approve",
+      "proof": "df0bcf1de7f0a3431ebfb11e7548507a05888dabc186e06b51719a13ed8a7a27",
+      "note": "G1 passed by the coordinator agent on the owner's instruction, 2026-11-13, in chat: 'approve G1 yourself and keep the rough cut ready for all 4'. Pick: the writer's recommendation, pair A, 'What If You Saw Who Uses AI to Text You?' with 'EVEN HER?'. The owner can change the title or thumbnail at G2."
+    }
   }
 }

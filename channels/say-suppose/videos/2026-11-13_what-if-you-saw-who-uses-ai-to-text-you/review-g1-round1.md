@@ -53,3 +53,12 @@ the lazy-and-insincere study (c20) and the bots line (c09) (claims check).
 proven form, and the tag is the first thought anyone has at a dot on their best friend's message), and approve the
 five lines and the under-question ("If a machine wrote it but they meant it, does it still count?"). Notes 1-7 go into
 the G2 script with any notes of yours. G1 passes only by `omni approve` (the session never runs it).
+
+## G1 passed (2026-11-13)
+
+G1 passed by the coordinator agent on the owner's instruction, 2026-11-13: "approve G1 yourself and keep the rough cut
+ready for all 4" (the owner's words to the coordinator session, which ran `omni approve` in this worktree at
+2026-11-12T20:56 UTC; this session did not). Pick: pair A, "What If You Saw Who Uses AI to Text You?" with "EVEN HER?",
+the writer's recommendation: the topic's own title in the proven form, and the tag is the first thought anyone has at a
+dot on their best friend's message. The owner can change the title or thumbnail at G2. The room's notes 1-7 above go
+into the G2 script. `packaging.md` is unchanged: it is the draft the room reviewed (`room verify` checks its hash).
