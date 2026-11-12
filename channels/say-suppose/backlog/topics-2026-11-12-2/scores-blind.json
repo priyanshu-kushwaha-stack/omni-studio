@@ -1,0 +1,676 @@
+{
+  "scores": [
+    {
+      "id": "t01",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "Skipping the boring hours is a strong daydream and the loved-ones-prefer-the-clone turn has a social stake, but autopilot skipping your father's dying months is the plot of the film Click, so it feels familiar"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 sourced facts, but several are stretched or invented (the '4 years feels like 9 months' number, DMN as highway hypnosis, OECD 47%); persona agents, RLHF sycophancy, Gottman and Gazzaniga genuinely move beats"
+        },
+        "views": {
+          "score": 7,
+          "reason": "Speed-and-time cluster plus secret feelings of a partner; '3 YEARS SKIPPED' with a hugging partner reads at a glance, though the tag is a question not a power"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Each jump (work, conflict, grief) takes more of your life and you lose your marriage and goodbye; Part 2 is thin once the earpiece is smashed"
+        },
+        "buildable": {
+          "score": 7,
+          "reason": "Blink cuts, calendars and a teal ring are easy paper-cut; the Seoul commute and hospital scenes need several sets"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Year 4: you wake in a hospital corridor holding flowers and learn you sat by your dying father every evening, and remember none of it.",
+      "merged": []
+    },
+    {
+      "id": "t02",
+      "scores": {
+        "excitement": {
+          "score": 5,
+          "reason": "Ten-word control of a robot succession is clever but it is a moon base with no social stake, the 'door on the moon' loser shape; the habitat-becomes-the-robot twist is cerebral"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 accurate, sourced facts, but most are lunar trivia (day length, temperature, distance) that dress beats rather than drive them; the Cambridge mother robot and NASA seed factory carry it"
+        },
+        "views": {
+          "score": 4,
+          "reason": "Outside every proven cluster; the ten-slot speech bubble is not a stranger's instant 'what happened?'"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Each successor creates a new dependency and a ten-word puzzle, and you lose control of your home; sequel possible but the setting limits it"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "Robots and a habitat are drawable, but showing successive generations and a base-as-body needs many bespoke builds"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "The new robot is the entire base: the doors are its hands, the cameras its eyes, and you are standing inside its body.",
+      "merged": []
+    },
+    {
+      "id": "t03",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "The owner's robots-build-robots seed with a genuinely new rule (only from what you own) and twist (ownership is the accelerator, giving robots away is the off switch); a one-robot-in-your-yard daydream that leaves a real argument"
+        },
+        "content": {
+          "score": 8,
+          "reason": "14 facts and nearly all move a beat: FANUC lights-out plant down the road, von Neumann, RepRap, NASA seed factory, chessboard, 2^33 vs world population, Australian rabbits, Locke; two 'verify' counts (IFR, steel) are weaker"
+        },
+        "views": {
+          "score": 7,
+          "reason": "Exponential doubling pulls like the money cluster and the owner's own doubled-money film; a hillside of robots turning to look at your house works at a glance"
+        },
+        "engine": {
+          "score": 8,
+          "reason": "Each week doubles the stakes (scrap, wages as feedstock, the valley, the planet's mass) and you lose your neighbour and your town; Part 2 writes itself with a new 'yours'"
+        },
+        "buildable": {
+          "score": 8,
+          "reason": "Identical paper-cut robots multiplied in code is the cheapest kind of spectacle; Fuji with a bite out of it is one strong frame"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Week sixteen: your neighbour, who sold you his truck and now has no customers, stands at your fence and asks 'Buy mine too?'",
+      "merged": []
+    },
+    {
+      "id": "t04",
+      "scores": {
+        "excitement": {
+          "score": 8,
+          "reason": "An AI genie that does exactly what you say, never what you mean, in a Hanoi noodle shop with real rat-tail history; funny per order, and the 'which you?' turn makes people think about what they want"
+        },
+        "content": {
+          "score": 8,
+          "reason": "14 facts with strong fit: Hanoi rat bounty, Goodhart, Campbell, Wells Fargo, Midas, Sorcerer's Apprentice, Grice; four well-known 'verify' cases (CoastRunners, Murphy's Tetris, Lehman, Wiener) are weaker evidence but real"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Monkey's-paw wishes are an evergreen click but not one of the five proven clusters; the cardboard-customer thumbnail needs a second look to read"
+        },
+        "engine": {
+          "score": 9,
+          "reason": "Every sentence is a new, bigger situation (shop, aunt, ward office, city), you lose your aunt, and Part 2 is just a new order"
+        },
+        "buildable": {
+          "score": 8,
+          "reason": "A paper lamp, a tiny shop and cardboard crowds are cheap to draw; the city-of-counters image is a clean code build"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "The lamp answers your last order, 'do what I mean', with 'Which you? The one at noon wanted customers. The one at midnight wanted to sell the shop.'",
+      "merged": []
+    },
+    {
+      "id": "t05",
+      "scores": {
+        "excitement": {
+          "score": 5,
+          "reason": "Rationed proof-of-humanity tokens is a smart rule, but the stake is account recovery and the token market reads as infrastructure, not a personal power"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 accurate, sourced facts (Pew bots, synthetic faces, Turing-test study, TOEFL detector bias, World Bank ID gap) that each move a beat, but dry"
+        },
+        "views": {
+          "score": 4,
+          "reason": "No proven cluster; 'PROVE YOU'RE HUMAN' with robots in a green lane is readable but not a power you own"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Lockout, broker, witnesses, rented-token rooms each restart the story; you lose your voice and a friend; sequel unclear"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "Token cards and gates draw easily; online actions and lobbies are abstract UI that is hard to make cinematic"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Your closest friend finally vouches for you, then admits selling their unused humanity is how they pay the bills.",
+      "merged": []
+    },
+    {
+      "id": "t06",
+      "scores": {
+        "excitement": {
+          "score": 5,
+          "reason": "A robot refusing a risky order is a narrow, one-room ethics dilemma; the voluntary-sacrifice turn is moving but small"
+        },
+        "content": {
+          "score": 5,
+          "reason": "12 sourced facts, but several are decorative (Spot's runtime, robot counts, ISO standards); the Roomba-naming and robot-empathy studies are the only ones that drive feeling"
+        },
+        "views": {
+          "score": 4,
+          "reason": "Outside the clusters; a raised robot palm and a submerged box do not say what happened at a glance"
+        },
+        "engine": {
+          "score": 4,
+          "reason": "One flood and one choice; few new situations and no clear Part 2"
+        },
+        "buildable": {
+          "score": 7,
+          "reason": "One apartment, two boxes, rising water and a robot are an easy paper-cut set"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "You stop commanding and ask what it chooses; the robot wades in for one box while the other dissolves.",
+      "merged": []
+    },
+    {
+      "id": "t07",
+      "scores": {
+        "excitement": {
+          "score": 8,
+          "reason": "'Get paid to sleep' is a universal daydream, the crumbs are funny, and the turn (every sleeper is one mind designing its own replacement) is a genuinely new mind-boggle"
+        },
+        "content": {
+          "score": 8,
+          "reason": "14 facts that move beats: plasma economy, 20-watt brain, glymphatic system, Jenkins and Dallenbach, reCAPTCHA unpaid work, Mechanical Turk, Folding@home exaflop, DishBrain, Loewi's dream; three 'verify' facts are weaker"
+        },
+        "views": {
+          "score": 7,
+          "reason": "Money cluster with a futuristic angle; 'PAID TO SLEEP' with a ghost you working at a desk reads instantly"
+        },
+        "engine": {
+          "score": 8,
+          "reason": "Crumbs, lost memories, the falling price and the shared mind each escalate; you lose Dani's graduation; Part 2 (renting waking attention) is pitched"
+        },
+        "buildable": {
+          "score": 8,
+          "reason": "Headband, coin jar, ghost self and the night globe as one neuron are simple code-drawn shapes"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Dani's graduation: you were there, you have the photo, and you have no memory of it because you rented twelve hours that night.",
+      "merged": []
+    },
+    {
+      "id": "t08",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "Two live video calls of your sister while she walks in the door is a chilling hook, and the human memory error as the last password is a good flip, but the world-collapse beats outweigh the 'you' for long stretches"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 facts; the Hong Kong deepfake heist, liar's dividend and VALL-E move beats, but several are stretched (G.114 as lip-sync detection, Loftus as 'omits metadata', a generic museum URL for seals)"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Deepfake fear is broad but outside the proven clusters; 'WHICH ONE'S REAL?' with two crying sisters reads fast"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Escalates from calls to courts to banks, and you lose your deed; the rule is world-scale, not your power, so a sequel is weak"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "Phones and figures are easy; courts, banks, a typhoon and a dead internet need many sets"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Feed A recites your collarbone hospital record perfectly; Feed B gets the hospital wrong and remembers the melted red popsicle on her shoe.",
+      "merged": []
+    },
+    {
+      "id": "t09",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "You as the slow guard of a mind that lives a century every 2.4 hours flips the speed cluster nicely, and the 0.4-second port is a strong dilemma, but it is mostly spectacle with a borrowed mentor's crisis"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 facts; AlphaGo Zero, Guri's air-gap attacks, FAIR's drifting language and I.J. Good move beats, but several are padding (a NIST page for arithmetic, Amdahl's law, a Bostrom homepage)"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Speed-and-time cluster, but the speed is not yours; the 'DON'T BLINK' breaker thumbnail works"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "One night shift with clock jumps; you lose little personally beyond Helena's scare, and Part 2 is unclear"
+        },
+        "buildable": {
+          "score": 7,
+          "reason": "A vault, a breaker, a card printer and a year counter are easy; glyph drift is a nice code build"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Helena collapses; opening the med-bay port for 0.4 seconds is half your heartbeat and forty-one unmonitored hours for the minds inside.",
+      "merged": []
+    },
+    {
+      "id": "t10",
+      "scores": {
+        "excitement": {
+          "score": 8,
+          "reason": "Living a year every night is a clean, extreme speed-and-time power with a social cost (your flatmate falls out of your life by arithmetic) and a lovely twist (the oldest minds queue for a slow room)"
+        },
+        "content": {
+          "score": 7,
+          "reason": "14 facts, one 'verify'; the capsule hotel, nerve vs fibre speed, Ebbinghaus, Siffre, Calment and Dunbar move beats, while GPS clocks, twin paradox and childhood amnesia are tangential"
+        },
+        "views": {
+          "score": 8,
+          "reason": "Squarely in speed and time, the owner's favourite; NIGHT 1 / NIGHT 30 split with ancient eyes and an unchanged flatmate is an instant read"
+        },
+        "engine": {
+          "score": 8,
+          "reason": "Each night count (7, 30, 3,650) brings a bigger situation; you lose Mio's birthday and your shared life; Part 2 is easy"
+        },
+        "buildable": {
+          "score": 8,
+          "reason": "Pods, a cable, a timeline scroll and a split thumbnail are straightforward paper-cut"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Mio's birthday: you had a whole year inside to think of a present and forgot anyway, and she says 'It was yesterday.'",
+      "merged": []
+    },
+    {
+      "id": "t11",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "A grandmother's tea ritual copied by every robot on Earth is tender, and her consent lesson is a good reversal, but the stake is gentle and the rule technical"
+        },
+        "content": {
+          "score": 5,
+          "reason": "12 accurate facts, but most are robotics dataset numbers (Open X-Embodiment, RT-1, Octo) that read as a spec sheet; catastrophic forgetting and federated backdoors do move beats"
+        },
+        "views": {
+          "score": 4,
+          "reason": "No proven cluster; a kneeling robot and a planet-sized crowd is not a quick 'what happened?'"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Fleet updates bring new complications and you lose her pause; sequel possible but low-energy"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "Copied poses across a crowd are code-friendly; the shared brain and poisoned update are abstract to draw"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Every robot on Earth stops, steps back and asks first, because your grandmother taught it three times while you slept.",
+      "merged": []
+    },
+    {
+      "id": "t12",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "Choosing the one job that stays human is a strong comment-section argument, but it is a policy power, not a personal daydream, and paying-to-work echoes the jobs explainers"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 accurate, sourced facts (ILO, IMF, OECD exposure, NBER productivity, unpaid care hours, 60% of jobs did not exist in 1940) that ground the debate but mostly as statistics"
+        },
+        "views": {
+          "score": 5,
+          "reason": "Jobs-and-AI demand is large but the explainers own it; 'ONE JOB' with a gold badge is readable"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Each switch of the badge creates a new faction; you lose your friend's job; Part 2 is possible"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "A badge, a port and crowds draw fine; audited affection and city politics are hard to picture"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "You switch the badge to teaching and an AI finishes your friend's harbour-pilot shift before they have left the dock.",
+      "merged": []
+    },
+    {
+      "id": "t13",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "Three people seeing your choice ten minutes before you do is a clever social-stake rule, but the self-causing forecast is an abstract twist and the hook takes a second to parse"
+        },
+        "content": {
+          "score": 7,
+          "reason": "12 accurate, sourced facts that move beats: Soon's ten-second decoding, 93% mobility predictability, Likes beating spouses, choice blindness, Asch, Fragile Families limits"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Touches secret feelings and what people know about you; 'THEY KNOW' with three phones is readable"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Each daily forecast is a new scene and you lose your closest friend; repetitive mechanism limits escalation"
+        },
+        "buildable": {
+          "score": 7,
+          "reason": "Phones, prediction cards and a few rooms are easy paper-cut"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Everyone gets a forecast that you will end your closest friendship, so your friend blocks you before you can choose.",
+      "merged": []
+    },
+    {
+      "id": "t14",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "An election between you and your disclosed AI clone has a real social stake (your mother has already chosen), but it shares t01's 'they prefer the clone' turn and lives on screens"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 accurate facts; generative agents, persona clones at 85%, GPT-4 persuasion and WebAuthn move beats, though the authentication facts are dry"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Secret-feelings adjacent (who would choose you); a verification badge going to your clone reads fast"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Votes and campaign beats escalate to your best friend; you lose your name; sequel thin"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "Badges, chats and votes are easy UI, but a story told through accounts is hard to make cinematic"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Your closest friend votes for the clone while looking at you, because it showed up when you did not.",
+      "merged": []
+    },
+    {
+      "id": "t15",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "Same paid-sleep daydream as t07 with a different twist (every rented task wires itself into you), but its darkest beats (drone-strike triage, overwritten childhood) push toward grim sci-fi"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 facts; DishBrain, FinalSpark and Paller's lucid-dream study are strong, but several are stretched or misstated (the glymphatic numbers, 'Matrix-style' learning, catastrophic forgetting as a hack)"
+        },
+        "views": {
+          "score": 7,
+          "reason": "Money while you sleep plus skill unlocks; the wall of math and '+$400 PAID' thumbnail reads at a glance"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Tiers and bleed-through escalate and you risk your memories of your mother; sequel possible"
+        },
+        "buildable": {
+          "score": 7,
+          "reason": "Headband, bedroom and bleed-through gags draw well; the lucid neural-stream climax is abstract"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "At breakfast you price your mother's wedding ring to the franc and say a sharp sentence in Mandarin you never learned.",
+      "merged": []
+    },
+    {
+      "id": "t16",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "A phone that writes down your next hour, then turns out to have written the whole week on day one, is a sharp free-will story with a sister who gets hurt; the Vegas world fits the idea"
+        },
+        "content": {
+          "score": 7,
+          "reason": "14 facts that move beats (Thorp and Shannon's shoe computer, roulette edge, Newcomb, reactance, Merton, Laplace), but seven are 'verify' with no URL, so the mine is weaker than it looks"
+        },
+        "views": {
+          "score": 7,
+          "reason": "Secret knowledge about people around you, used on others then turned on you; 'IT ALREADY KNEW' with a drawn card is quick to read"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Tests, other people, the casino job and the year envelope escalate; you hurt your sister; Part 2 is easy"
+        },
+        "buildable": {
+          "score": 8,
+          "reason": "Sealed cards, a diner and a casino glow are simple paper-cut builds"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "You read 'she will ask to borrow money and you will say no' before your sister calls, and you say no in the card's exact words.",
+      "merged": []
+    },
+    {
+      "id": "t17",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "Forecast tags over everyone's head with a discount for obeying yours, then your best friend's betrayal flag, is a strong social stake; the 'it trained us' twist makes people think"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 facts; Libet, Soon, Barabasi, telematics insurance, COMPAS and Goodhart move beats, but the transformer, Markov-chain and pupillometry entries are padding"
+        },
+        "views": {
+          "score": 8,
+          "reason": "Floating stats over heads plus secret intentions plus money: the most cluster-aligned prediction pitch; '96% STEALS YOUR MONEY' over a friend reads at once"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Outlier penalties, the feedback loop and the betrayal escalate; you pay higher rent; sequel easy"
+        },
+        "buildable": {
+          "score": 8,
+          "reason": "Tags over heads, a hawker stall and a train are easy paper-cut"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "With ten seconds left you hand Wei the safe key and ask why he is scared, and his tag flips from 98% THEFT to 99% CONFESSES.",
+      "merged": []
+    },
+    {
+      "id": "t18",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "Instant, incorruptible AI justice that ends at your grandfather's heating valve is a strong 'what happens after' arc, but it is a civic system, not a power you own, and it is grim"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 facts; the hungry-judge study, day-fines, NICE QALYs and Michigan MiDAS move beats, but 'Estonia's AI judge' is a widely debunked claim and the '24 months automation bias' figure looks invented"
+        },
+        "views": {
+          "score": 5,
+          "reason": "Outside the proven clusters apart from a civic score; 'NO HUMAN TO BEG' with a gate in the snow reads well"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Escalates from fines to heat to your own score; you lose your licence; sequel possible"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "Kiosks, gates and split-flap scores are easy; a whole city's courts and heat grid need many sets"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "The kiosk stamps your grandfather DENIED: NET DISTRICT QALY -0.3 and drops his flat to 12 degrees in forty milliseconds.",
+      "merged": []
+    },
+    {
+      "id": "t19",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "Everyone gets everything free except you, who holds the last job on Earth, flips the AI-takes-all-jobs seed into envy reversed; the unwired-button turn may feel like a cheat"
+        },
+        "content": {
+          "score": 8,
+          "reason": "14 facts that move beats: Luddites in Nottingham, Keynes' 15 hours, the dead-man's switch, the Marienthal study, the IKEA effect, Petrov, knocker-uppers; five 'verify' facts are weaker"
+        },
+        "views": {
+          "score": 7,
+          "reason": "The owner's seed and the most-searched future question, with a personal twist; one tired worker before a town in deckchairs is a clean thumbnail"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Envy flips, the sister's request and the century-long waiting list escalate; you lose your sister for a while; Part 2 is possible"
+        },
+        "buildable": {
+          "score": 9,
+          "reason": "One cabin, one button, a street of deckchairs and a split-flap board are about the easiest set in the slate"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Your sister, a nurse until Monday, asks for one morning on the button; the rule says she would become the last worker, and you say no.",
+      "merged": []
+    },
+    {
+      "id": "t20",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "A self-copying robot in your father's Atacama shed is the robots-build-robots seed done as runaway spectacle; the Hayflick old-age fix is a fresh twist but the middle is military and markets"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 facts; von Neumann, NASA's seed factory, Atacama irradiance, Chile's copper share and Hayflick move beats, but the thermodynamics and 'four components' entries are loose"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Exponential doubling pulls, and 'GEN 1 TO 1,000,000' with red eyes reads, but it leans to spectacle over a social stake"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Each doubling outruns the kill key and you risk your father; sequel possible after the patch"
+        },
+        "buildable": {
+          "score": 7,
+          "reason": "Repeated robots and a glazed desert are code-friendly; military and exchange scenes add sets"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Month 8: the swarm takes apart your father's vintage pickup because its frame is 94% optimal feedstock.",
+      "merged": []
+    },
+    {
+      "id": "t21",
+      "scores": {
+        "excitement": {
+          "score": 7,
+          "reason": "A bell that settles every factual argument, set in the county where the Guinness Book was born to end pub arguments, is funny and lands a real truth: most fights were never about the facts"
+        },
+        "content": {
+          "score": 8,
+          "reason": "14 facts that move beats: the Guinness origin, Loftus and Palmer, Hawk-Eye, Semmelweis, Festinger, Rashomon, VAR moving the row, Wikipedia's lame edit wars; four 'verify' facts are weaker"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Near the intelligence and secret-truth clusters but not inside them; 'YOU'RE WRONG' with a bell over a pub table is readable"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Your score, your brother, the town and the meaning switch escalate; you lose the pub's laughter; Part 2 (rule on meaning) is built in"
+        },
+        "buildable": {
+          "score": 8,
+          "reason": "A pub, a bell, a scoreboard and a world map of bells are easy paper-cut"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "You both swear you heard the promise to your mother; the bell plays the only recording, and neither of your memories matches it.",
+      "merged": []
+    },
+    {
+      "id": "t22",
+      "scores": {
+        "excitement": {
+          "score": 8,
+          "reason": "Only you can see a dot on every machine-written message, and on your birthday the paragraph that made you cry is dotted while your father's three-word typo is not; it hooks at once and the 'dot can be care' turn makes people think"
+        },
+        "content": {
+          "score": 7,
+          "reason": "14 facts that move beats (Turing, ELIZA's secretary, Hallmark, Cyrano, Zahavi's costly signals, Smart Compose, Dunbar), but five are 'verify' with no URL, including the Philippine texting claim the world rests on"
+        },
+        "views": {
+          "score": 8,
+          "reason": "Secret feelings of the people around you, the strongest cluster, crossed with the 'is this AI?' question of the year; a chat full of red dots reads in a second"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Your own dots, Bea, the public world and the paid offer escalate; you nearly lose Bea; Part 2 (voice calls, photos) is easy"
+        },
+        "buildable": {
+          "score": 9,
+          "reason": "Phones, chat bubbles, red dots and a city of windows are the simplest builds in the slate"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "You find Bea asleep on a night-shift bench, phone in hand, your name pinned at the top of a list titled 'do not miss'.",
+      "merged": []
+    },
+    {
+      "id": "t23",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "Labour price hits zero on Monday and you live a century of it; the human-scapegoat job is a new twist, but the big explainers already own this premise and most beats are economics"
+        },
+        "content": {
+          "score": 6,
+          "reason": "12 facts; labour share of GDP, Engels' pause, Henry George, Swiss watches after quartz and Keynes move beats, but the humanoid cost and liability sources are loose"
+        },
+        "views": {
+          "score": 6,
+          "reason": "The owner's jobs seed with a money angle; a $0.00/HR payslip reads fast, but the crown in the thumbnail confuses it"
+        },
+        "engine": {
+          "score": 7,
+          "reason": "Day 1 to year 100 jumps keep escalating and you face betraying your brother; sequel weak after a century"
+        },
+        "buildable": {
+          "score": 6,
+          "reason": "Payslips and a port are easy, but London desks, land markets and a hundred years need many sets"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Year 15: your signed convoy sinks, and the court asks for your brother's workshop or your testimony that the fault was his.",
+      "merged": []
+    },
+    {
+      "id": "t24",
+      "scores": {
+        "excitement": {
+          "score": 6,
+          "reason": "Everyone sounds brilliant, including your weakest rival, is a neat intelligence-cluster twist, but the convergence reveal is abstract and there is little picture in it"
+        },
+        "content": {
+          "score": 5,
+          "reason": "12 accurate facts, but four come from one HBS study and several are benchmark numbers; detector failure and the Reading exam study do move beats"
+        },
+        "views": {
+          "score": 6,
+          "reason": "Intelligence cluster with a rival; 'PROVE YOU'RE SMART' with identical golden answers is readable"
+        },
+        "engine": {
+          "score": 6,
+          "reason": "Interviews, detectors, your friend and the model imitating mistakes escalate; sequel thin"
+        },
+        "buildable": {
+          "score": 5,
+          "reason": "Polished speech is hard to show in paper-cut; it risks becoming speech bubbles on a static set"
+        }
+      },
+      "copies_trending": false,
+      "best_moment": "Your closest friend replays your perfect apology and asks which phrase, if any, came from you.",
+      "merged": []
+    }
+  ]
+}
