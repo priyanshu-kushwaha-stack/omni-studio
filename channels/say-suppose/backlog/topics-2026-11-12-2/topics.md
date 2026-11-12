@@ -1,5 +1,14 @@
 # Say Suppose topics, 2026-11-12
 
+## Picked (owner, 2026-11-13)
+
+Made one after another, in this order, one session each:
+
+1. What If AI Rented Your Brain While You Slept? (f-ai-rents-your-sleeping-brain, 78/100, by fable)
+2. What If AI Predicted Every Choice You Make? (g-ai-predicts-your-next-move, 70/100, by gemini)
+3. What If You Lived a Year Every Night? (f-year-every-night, 77/100, by fable)
+4. What If You Saw Who Uses AI to Text You? (f-see-who-uses-ai-to-text, 77/100, by fable)
+
 Ranked by total (content first). The owner picks three.
 
 ## 1. What If AI Rented Your Brain While You Slept? — 78/100
