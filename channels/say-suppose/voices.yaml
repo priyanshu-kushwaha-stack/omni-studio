@@ -22,7 +22,9 @@ voices:
   # Characters: a script line "Name: text" is spoken by that character in their own free local voice, never the
   # narrator's (owner, 2026-11-12: "the voice is flat and it's plain narration"; picked free local voices). Qwen3-TTS
   # VoiceDesign (core/lock.yaml) makes each voice from the description below, so nobody is cloned, and takes the
-  # line's [direction] from say.yaml as its emotion. Takes are seeded by the voice, so a character keeps one voice.
+  # line's [direction] from say.yaml as its emotion. Takes are seeded by the voice, but the model draws each take
+  # afresh, so a character's voice can drift a little between lines: the owner heard A/B on the doubled-money opening
+  # and kept per-line emotion over one voice cloned from a designed clip (2026-11-12, "A: emotion per line").
   # A name not in the cast takes the stock voice of the first role word in its name ("Bank man" -> man), else
   # anyone's, and the build says so. Open with the voice itself: gender and a voice type, alto, mezzo, baritone or
   # bass ("A low, warm female voice:", "A relaxed male baritone:"). Without one the model drifts between takes; a seed
