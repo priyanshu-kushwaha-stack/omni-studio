@@ -1,0 +1,47 @@
+{
+  "call_id": "22ad7ee929f243d192fc98758ab8efda",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 58,
+      "quote": "half of Lotte's savings, one night in 1990 (6:25);",
+      "fix": "half of Lotte's savings above the quota, one night in 1990 (6:25) (c04);"
+    },
+    {
+      "line": 92,
+      "quote": "From the phone's screen the balance, 1073741824, peels off as split-flap digits on a paper ribbon, over the counter's edge and past the bread basket: the prop and the stake, and it leads the eye, so no crimson pointer (K8, zero).",
+      "fix": "From the phone's screen the balance, 10.737.418,24, peels off as split-flap digits on a paper ribbon, over the counter's edge and past the bread basket: the prop and the stake, and it leads the eye, so no crimson pointer (K8, zero)."
+    },
+    {
+      "line": 70,
+      "quote": "Why not give it away? 6:50, every gift is new money chasing the same rolls, and Mansa Musa did the experiment in 1324. Why not hand it to someone else, or let it sit? 7:10, Jonas's \"Not me\", problem three: whoever holds it holds the problem, and sitting doubles it. Won't the bank notice, and can a number just be deleted? 3:50, Brandt's question; 8:15, a bank erased eighty-one trillion dollars the same way.",
+      "fix": "Why not give it away? 6:50, every gift is new money chasing the same rolls, and Mansa Musa did the experiment in 1324 (c06). Why not hand it to someone else, or let it sit? 7:10, Jonas's \"Not me\", problem three: whoever holds it holds the problem, and sitting doubles it. Won't the bank notice, and can a number just be deleted? 3:50, Brandt's question; 8:15, a bank erased eighty-one trillion dollars the same way (c07)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 12,
+      "quote": "by late 1923 a loaf in Berlin cost about two hundred billion marks (c01), many workers were paid twice a day and spent their wages at once (c02), and banknotes were pasted up as wallpaper (c03)."
+    },
+    {
+      "line": 43,
+      "quote": "sixty-four squares, more wheat than the whole world grows in over a thousand years (c11)."
+    },
+    {
+      "line": 50,
+      "quote": "Day fifty-five: the number passes everything the whole world makes in a year, about 128 trillion dollars, the IMF's 2026 projection (c09)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "c282df25a75987a0366a66178aa1a542f29e3477b550129e7da39929486e1f2d",
+  "draft_sha256": "8373798d2562aba0209036f21ac5c4d7700a1d99e8ba77dd8b43112633a51706"
+}

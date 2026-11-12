@@ -1,0 +1,70 @@
+{
+  "gate": "g1",
+  "stage": "proposal",
+  "channel": "say-suppose",
+  "writer_family": "anthropic",
+  "writer": "claude-fable-5-1",
+  "required_roles": [
+    "story",
+    "fact"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "draft_sha256": "8373798d2562aba0209036f21ac5c4d7700a1d99e8ba77dd8b43112633a51706",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "22ad7ee929f243d192fc98758ab8efda",
+          "file": "room/g1/round-1/claims-check.json",
+          "output_sha256": "c282df25a75987a0366a66178aa1a542f29e3477b550129e7da39929486e1f2d",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "7026d445f28d44b2a7a87adab795dda1",
+          "file": "room/g1/round-1/story-editor.json",
+          "output_sha256": "22d1def840612b58b7a659c1899c83364013a9fc46a871433cd331dfc0edf8f7",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": false,
+      "candidate": true
+    }
+  ],
+  "skipped_rounds": [],
+  "malformed_verdicts": [],
+  "shipped": {
+    "round": 1,
+    "artifact_sha256": "8373798d2562aba0209036f21ac5c4d7700a1d99e8ba77dd8b43112633a51706"
+  },
+  "calls": 2,
+  "cap": 16,
+  "author_cut": {
+    "round": 1,
+    "draft_sha256": "8373798d2562aba0209036f21ac5c4d7700a1d99e8ba77dd8b43112633a51706",
+    "cost": {
+      "lines_changed": 0,
+      "header_changed": [],
+      "keep_lost": []
+    }
+  },
+  "presented": {
+    "draft_sha256": "8373798d2562aba0209036f21ac5c4d7700a1d99e8ba77dd8b43112633a51706",
+    "at": "2026-11-12T04:19:07+00:00"
+  }
+}

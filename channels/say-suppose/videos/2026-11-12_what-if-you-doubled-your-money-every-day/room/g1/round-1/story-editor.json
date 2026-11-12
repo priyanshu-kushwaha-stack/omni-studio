@@ -1,0 +1,59 @@
+{
+  "call_id": "7026d445f28d44b2a7a87adab795dda1",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "On day two the phone shows 0,02 and the digits do not spill; the spill itself lands at 4:50.",
+      "why": "Check #2 fails: the first seven seconds omit the thumbnail's defining situation\u2014the spilling balance.",
+      "fix": "Change the thumbnail to the actual opening: 0,02 on the phone, no ribbon, Lotte holding chalk beside the 1,40 board.",
+      "domain": "story",
+      "line": 96
+    },
+    {
+      "quote": "By 0:28: \"and it will not stop.\"",
+      "why": "Check #3 fails: by 0:30 the viewer knows the rule but not what can be lost.",
+      "fix": "Replace with: \"And if you cannot stop it, you lose the one counter you wanted to pay at.\"",
+      "domain": "story",
+      "line": 42
+    },
+    {
+      "quote": "Day thirty-one, the counter: \"Counted?\" You hold up the phone and the digits run off the screen, over the counter edge, into the bread basket (the picture, 4:50).",
+      "why": "Check #8 fails: 4:50 is after the 4:47 midpoint of a 9:35 film.",
+      "fix": "Move the day-thirty-one spill to 4:35 by shortening the bank setup and preserving the same scene.",
+      "domain": "story",
+      "line": 46
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 50,
+      "quote": "one more night, to buy Lotte's whole street out of the mess you made, or erase it now and lose the money that was honestly yours and the flour you promised her for tomorrow?",
+      "fix": "Make both choices defensible: \"Erase it now, and Lotte loses tomorrow's flour. Wait one night to keep that promise, and the street takes one more doubling.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 31,
+      "quote": "If all the money were mine, who would still bake the bread?"
+    },
+    {
+      "line": 33,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 52,
+      "quote": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "22d1def840612b58b7a659c1899c83364013a9fc46a871433cd331dfc0edf8f7",
+  "draft_sha256": "8373798d2562aba0209036f21ac5c4d7700a1d99e8ba77dd8b43112633a51706"
+}

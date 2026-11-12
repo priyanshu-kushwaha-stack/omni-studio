@@ -1,0 +1,110 @@
+# Packaging: doubled your money every day
+
+status: G1 draft, round 1 (G1 restart, 2026-11-12, owner: "restart G1"). Written by Claude Fable 5.1 (`claude -p`)
+topic: second /say-suppose-topics slate (2026-11-11), f-money-doubles, ranked 1st at 90/100
+
+## Premise
+
+Whatever is in your bank account at midnight is doubled by morning. It starts from one cent, and it does not stop.
+
+**The catch.** Two parts. The money is new: the rule says it is taken from no one. And there is no off switch, except a balance of exactly zero at midnight. Not one cent either side. Zero.
+
+**Why this setting.** Berlin, in euros, at the bakery under your flat. The engine of this idea is new money chasing the same bread, and no city has lived that more exactly or left better pictures of it: by late 1923 a loaf in Berlin cost about two hundred billion marks (c01), many workers were paid twice a day and spent their wages at once (c02), and banknotes were pasted up as wallpaper (c03). Those photographs are paper-cut already: a wheelbarrow of notes, children building with brick-towers of them, a chalkboard price. A bakery is the oldest price tag in the world and a chalkboard is the cheapest prop in the kit. The baker, Lotte, grew up in Leipzig, so she has her own night when a number changed its meaning while she slept: on 1 July 1990 East German marks became Deutsche Marks, small savings one to one and everything above the line two to one (c04). That gives the twist a face instead of a lecture. One cent is the smallest thing you can hold, which makes day thirty-one a joke (a billion... cents) and day fifty-five the planet. The chessboard story (c05), Mansa Musa's gold (c06) and the bank that erased an eighty-one trillion dollar credit within hours (c07) travel anywhere. The brief's India had good material too (the 2016 note withdrawal, the deposit rule), but that is a story about money vanishing by decree; this idea is about money appearing out of nothing, and its best record is on Berlin's streets.
+
+**Invented:** you, Lotte, Jonas, Herr Brandt, the bakery and its street, every balance and every chalk price in the film, the one-cent refund and the correction form. **Real:** the chessboard legend and its total (c05), what people guess when asked to continue a doubling (c08), that each new doubling outweighs every one before it added together (arithmetic), Berlin's 1923 bread and wages (c01, c02), Lotte's 1990 night (c04), Mansa Musa's gold in Cairo (c06), what the whole world makes in a year (c09), and that a bank can erase a number in hours, because one did (c07).
+
+## Cast
+
+- **You.** Mustard head, teal scarf. Known on the street as the counter: you check your balance before you buy anything, and you know it to the cent. You never speak.
+- **Lotte.** Runs the bakery under your flat; thirty years at the counter, chalk in hand, a framed fifty-million-mark note from 1923 above the oven (c10). Asks "Counted?" every time you pay. The person to lose.
+- **Jonas.** Your flatmate. Pays for your roll every morning and pretends not to notice. Says "Lottery?", and later, "Not me."
+- **Herr Brandt.** The bank's man, tie, careful. Asks one question on day twenty-four and answers it on day fifty-six.
+- **The stranger.** Hidden once, reading a newspaper by the door of the bank lobby on day twenty-four. Crimson head, long coat. No line.
+
+## Five lines (rules/story.md, check 1)
+
+> SITUATION: Berlin, a flat above Lotte's bakery. You know your balance to the cent, and every morning Jonas pays for your roll.
+> DESIRE: To pay for your own bread, once, and have it count.
+> CONFLICT: The money arrives faster than anything can be made to spend it on, and every doubling thins what everyone else holds, starting with Lotte.
+> CHANGE: You stop wanting the number to rise and start needing it to reach exactly zero.
+> RESULT: Zero at midnight. Jonas pays for the roll. For the first time you don't check the phone, because you know the number.
+> UNDER: If all the money were mine, who would still bake the bread?
+> DARLING: "You always know the number."
+> DARLING: "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+> DARLING: "Zero, doubled, is zero."
+
+## Beat outline (runtime shares; about 9.5 minutes at 155 wpm)
+
+About 1,450 to 1,500 spoken words; holds about 5% of the runtime; one wordless peak of 9 s.
+
+| Clock | Beat | What happens | Checks |
+|---|---|---|---|
+| 0:00-0:30 | Two cents (day two, 7 a.m.) | A paper tear inside 0.5 s: the coin icon on your lock screen splits into two coins, the rule device. Lotte's counter, `morning`. You hold the phone up: 0,02. Last night, one. "You always know the number." Lotte, chalk in hand: BUBBLE "Counted?" You nod. Jonas pays for both rolls, as every morning. The title question by 0:18: what if your money doubled every day? Every night, whatever's there, starting from one cent. By 0:28: "and it will not stop." Same frame as the thumbnail (you, phone up, Lotte's chalk, the board); today the board says 1,40 and the phone still fits its number | 2, 3, 4, 11, 15, 17; K13 |
+| 0:30-1:00 | The rule (day two, after closing, `lamp`) | The narrator says it once: at midnight whatever is in the account doubles; new money, taken from no one; no off switch, except exactly zero at midnight. "Not a cent either side. Remember that." You laugh: two cents. On Lotte's counter a chessboard, one grain of wheat on the first square, two on the second: the old king-and-chessboard story (c05), sixty-four squares, more wheat than the whole world grows in over a thousand years (c11). Your wrong belief, acted on: doubling is slow. You order nothing and let Jonas pay | 3, 7, 13, 16 |
+| 1:00-3:00 | Nothing, nothing, a roll (days three to twenty-one) | A montage that turns at every use. Day eight, one euro twenty-eight: you buy nothing, on principle. Day eleven, ten euros: you pay for your own roll, coins counted into Lotte's palm, expecting a moment; "Counted?" is all you get. Jonas: BUBBLE "Lottery?" Day seventeen, six hundred and fifty: you pay Jonas back a month of rolls; he puts the note back in your pocket. Day twenty-one: ten thousand euros, the beat's one spoken number, and you still take the tram. Open loop at 1:40: "but here's the problem. Every morning you plan with yesterday's number." Humour about once a minute | 5, 6, 11, 14, 17 |
+| 3:00-3:45 | Yesterday's number (days twenty-two to twenty-three) | You throw the street a party on day twenty-two with "a month's money". By morning it was one night's. Asked to continue a doubling series, most people guess a small fraction of the true value (c08); and each new day is worth more than every day before it added together (arithmetic). It lands on you within two lines: you have been living in the wrong week. Stake jump: the number is ahead of you now, and you cannot catch it | 7, 13, 17 |
+| 3:45-5:15 | One careful question (days twenty-four to thirty-one) | Day twenty-four (TAG only, not spoken): Herr Brandt asks you in (BankAtm lobby, `day`). One question, BUBBLE "Where does it come from?", then: if it is an erroneous credit, the bank can correct it. You say it is yours. The plant. The stranger reads a paper by the door. Day twenty-seven: you buy the building so Lotte never pays rent again; warm beat, the day-old roll she always slipped you free. Day thirty-one, the counter: "Counted?" You hold up the phone and the digits run off the screen, over the counter edge, into the bread basket (the picture, 4:50). Ten million euros, the beat's one number: "A billion. Cents." Open loop: "and that's when the first price moves." Restart | 6, 8, 9, 14, 17 |
+| 5:15-6:00 | Can't spend it (days thirty-two to forty) | You try to spend faster than it grows. You can't: the florist, the tram, the street. A hundred years ago this street ran the same race the other way: by late 1923 a loaf cost about two hundred billion marks (c01), and many workers, paid twice a day, spent their wages at once (c02). Lotte's framed note above the oven. The belief that breaks: you thought money was a pile of stuff. It is a claim on what other people make, and Lotte bakes the same number of rolls as last month. Open loop: "but here's the second problem. Everything you spend has to land somewhere" | 7, 13, 17 |
+| 6:00-6:50 | Lotte's chalkboard (days forty to forty-five, `dusk`) | The cost, at 63%. Prices on your street move first, because that is where you spend: the board goes from one forty to four twenty; the flour man charges Lotte triple because he knows whose money she has; the pensioners from the corner stop coming. Lotte does the sums in her savings book and goes quiet. She had a night like this once: 1 July 1990, when her marks became Deutsche Marks, one to one up to a line and half above it (c04). THE TURN, breaking the rule's own line: "It isn't taken from anyone. Except it is. From everyone. A little. Every night." The cost hits your habit: the price you counted to the cent for years no longer fits on the board, and no coin exists for it | 9, 10, 11, 13 |
+| 6:50-7:35 | Not me (days forty-five to fifty) | You fix it by giving: a year's rent for everyone on the street, Lotte's flour paid. Every gift is new money chasing the same rolls; by the weekend the board moves again. In 1324 Mansa Musa gave away so much gold in Cairo that gold there stayed cheap for at least twelve years (c06). Jonas, who paid for your roll for years, can't afford Lotte's counter now. You hold the phone out to him: take it. BUBBLE "Not me." Numbered problems after the but: one, you can't spend it; two, you can't give it; three, you can't move it, because whoever holds it holds the problem. Open loop: "and the only exit is the number you were told to remember on day two." Restart | 5, 9, 13, 14, 17 |
+| 7:35-8:15 | The planet (day fifty-five, `night`) | Day fifty-five: the number passes everything the whole world makes in a year, about 128 trillion dollars, the IMF's 2026 projection (c09). The chessboard's wheat buries Lotte's counter, the street, the skyline (CitySkyline). The dilemma, one line at 78%: one more night, to buy Lotte's whole street out of the mess you made, or erase it now and lose the money that was honestly yours and the flour you promised her for tomorrow? You act at once: you call Brandt | 5, 17, dilemma |
+| 8:15-9:05 | Exactly zero (day fifty-six, 23:00 to midnight, `lamp`) | Brandt: BUBBLE "An erroneous credit." The bank corrects it, the way a bank once erased an eighty-one trillion dollar credit within hours (c07). 23:50: 0,00. Everything, your wages too. 23:57: a one-cent refund from the tram app lands. 0,01. One cent at midnight is two, and it all starts again. Three minutes. Lotte, locking up, through the glass: "Counted?" For the last time you count: one cent, into her palm, for every day-old roll she never charged. 23:59: 0,00. HOLD 9 s: the coin icon has nothing to tear; the split-flap stops; music out, the one planned silence; Lotte's lamp. "Zero, doubled, is zero" | 10, 11, 14, 16, 18 |
+| 9:05-9:35 | Back to the counter (day fifty-seven, 7 a.m., `morning`) | Lotte's counter. Jonas pays. He always pays. You put the phone face down on the counter and don't look: the opposite of 0:05. "You know the number." The board says three ninety: down a little, not back. The residue, inside the last image, on the coin in Lotte's palm: "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow." Sequel hook, no new rule: Jonas glances at his own phone as he pays and his face changes; we never see the screen. Then: "So, would you have erased it? Tell us in the comments. And if you'd have done the same, hit like and subscribe." End card, right third quiet | 12, 19 |
+
+> SCENE: Day thirty-one, Lotte's counter, `morning`. You hold the phone up to pay and the balance will not fit: the digits peel off the screen as a paper ribbon, over the counter edge, coil into the bread basket and across the floor to the door, while the chalkboard behind Lotte still says 1,40 and her chalk waits in the air.
+
+**The rule device.** The midnight tear: a flat paper one-cent coin that rips down the middle into two whole coins, with a soft paper tear, and a split-flap counter (DAY above, the balance below) that flaps once. It is on the phone's lock screen in the first half second and at every midnight of the montage; at the climax it is on screen with nothing to tear, and the flap does not move. It is heard every time (the rip, the flap), so the rule has a sound as well as a picture.
+
+**The jaw drops,** one spoken number per beat: wheat for over a thousand years (0:50); ten thousand euros and you still take the tram (2:50); most people guess a small fraction (3:15); ten million, "a billion, cents" (4:55); a loaf at about two hundred billion marks (5:30); half of Lotte's savings, one night in 1990 (6:25); gold cheap in Cairo for at least twelve years (7:05); the whole planet's year (7:40); eighty-one trillion erased in hours (8:20); zero (8:58). The day-twenty-four balance is a tag, never spoken.
+
+**The running gag** is Lotte's "Counted?" with her palm out. It returns five times: 0:12 (day two, you nod and Jonas pays), 1:35 (day eleven, your first paid roll, coins counted into her palm), 4:50 (day thirty-one, the digits spill and you cannot count them), 8:55 (through the glass at 23:57, and you count one cent into her palm: the peak, where you give up every euro and the promise to her), 9:10 (day fifty-seven, she does not ask, and you don't look). The gag carries the peak because the one person who could reach exactly zero is the one who always knew the number.
+
+**The flagged limit.** "Exactly zero. Not a cent either side. Remember that." (0:45). It pays off twice. Brandt's careful question at 3:50 ("if it is an erroneous credit, we can correct it") is the plant that gives you a way to zero at 8:15, so no new rule arrives after halfway. The one-cent refund at 8:40 turns "not a cent either side" into the whole ticking clock, and the habit from 0:05, knowing the number to the cent, is what lets you catch it in three minutes.
+
+**Open loops,** about a minute apart: 0:28 "and it will not stop"; 0:58 "remember that"; 1:40 "but here's the problem: you plan with yesterday's number"; 2:50 "and that's when the bank calls"; 3:40 "the number is ahead of you now"; 4:50 "and that's when the first price moves"; 5:55 "but here's the second problem"; 6:45 "so you try the obvious thing, and it makes it worse"; 7:30 "and the only exit is the number from day two"; 8:10 "but a correction takes everything"; 8:40 "one cent. Three minutes." Stake jumps about every 80 s: 0:50, 2:10, 3:30, 4:50, 6:10, 7:30, 8:40.
+
+**Chapters (8).** Two Cents · The Chessboard · Nothing, Nothing, a Roll · Yesterday's Number · One Careful Question · Can't Spend It · Lotte's Chalkboard · Exactly Zero.
+
+**The sequel.** "What If Your Debt Doubled Every Night?" (40 characters). The same rule, the other side of zero, on the person who paid for your bread every morning. Jonas's face at 9:20 is the only hook; the film explains nothing.
+
+**The five "but what about" questions.** Where does the money come from, is it taken from someone? Asked at 0:35 (the rule says no) and answered at 6:35 (the turn: from everyone, a little, every night). Why not just spend it? 5:15, you can't spend faster than it grows, and everything you spend lands on someone's price. Why not give it away? 6:50, every gift is new money chasing the same rolls, and Mansa Musa did the experiment in 1324. Why not hand it to someone else, or let it sit? 7:10, Jonas's "Not me", problem three: whoever holds it holds the problem, and sitting doubles it. Won't the bank notice, and can a number just be deleted? 3:50, Brandt's question; 8:15, a bank erased eighty-one trillion dollars the same way. One loophole is left open for the comments: what if you had let it reach the bank's account instead of yours?
+
+**Past 8 minutes.** From 7:35 the film is a clock: a number that has to be exact, a person we like locking up her shop, and a gag we have heard four times waiting for its fifth. The viewer stays to see whether the counter can count to zero and what it costs them.
+
+**How it differs from the nearest video.** Ifverse's infinite money glitch is a bottomless wallet, and the fun is the buying. Ours counts: one coin, a day counter you can check, no off switch, and the damage lands on one chalkboard and one savings book. The climax is subtraction, not a purchase. Unlike the slate's "all money vanished" and UBI briefs, one person holds it all, and the twist is that they were never getting richer, only everyone else poorer.
+
+## Claims the packaging states
+
+Every real-world fact the packaging states is a row in `claims.md` (c01-c11), sourced and quoted at G1, and cited inline by its id.
+
+## Titles
+
+| | Title | The promise |
+|---|---|---|
+| A | What If You Doubled Your Money Every Day? | The proven form, the whole rule in eight words, 41 characters; the film delivers it day by day |
+| B | What If You Got Twice as Rich Every Night? | The rule with the clock in it and the greed promise; "night" carries the midnight tear, 42 characters |
+| C | What If You Turned One Cent Into Everything? | Scale and the start in one line: one cent, and the day the world's year is passed; 44 characters |
+
+The other seven: What If Your Money Doubled Every Night? (not the "What If You…" form) · What If Your Bank Balance Doubled at Midnight? (not the form) · What If You Woke Up Twice as Rich Every Day? · What If You Couldn't Stop Your Money Doubling? · What If You Had More Money Than the Planet? · What If You Got Richer Every Single Night? · What If You Could Never Spend It Fast Enough?
+
+## Thumbnails (rules/thumbnails.md, K1-K16)
+
+**One picture for all three.** Lotte's bakery at night, drawn in code in `brand/thumbs/bakery/` (no AI images): the library's city skyline (`citySkyline.Back`) behind you, and the bakery drawn there, a cream tiled wall, a rack of loaves, a pretzel sign, a chalkboard of chalk marks (no figures, so K5 counts only the tag and the digits), a warm lamp and a wooden counter with a bread basket. Mood `night` (K9, a dark frame; K10, the mustard head holds on white and on #0F0F0F). You, large, at the left, arm up, holding the phone toward Lotte, a dark pool behind your head so the mustard holds 3:1 in greyscale (K4). From the phone's screen the balance, 1073741824, peels off as split-flap digits on a paper ribbon, over the counter's edge and past the bread basket: the prop and the stake, and it leads the eye, so no crimson pointer (K8, zero). Lotte behind the counter, right of centre, peach head, flour apron, chalk raised, shocked: the reaction. Three focal points: you, the digits, Lotte (K2). The tag sits top right in Rubik 800 at a 12.3% cap height (K5); nothing in the bottom-right badge zone (K11). The three differ only in the tag (K15). Family likeness with the channel's first thumbnails: you large left, one prop, a stamped tag (K14). Mobile cut: "What If You Doubled Your Money..." plus the spilling digits still says what the film is (K12).
+
+Measured by `brand/thumbs/check.py` on the round-1 render (`renders/packaging/`, git-ignored; numbers in `thumb-checks.json`): all three pass K3 (head 36.6%), K4 (3.76:1), K5 (three words counting the digits as one, cap 12.3%, contrast 8.4:1), K8 (0), K9 (colour 58-64, mean luminance 0.16-0.18) and K11; K10 edge 7.53:1 on white, 2.54:1 on dark.
+
+**K13, flagged for the owner.** The template's cold open (check 15) puts the thumbnail's frame on screen at 0:00: you, phone up, Lotte's chalk, the board. On day two the phone shows 0,02 and the digits do not spill; the spill itself lands at 4:50. If the room reads that as a K13 fail, the alternative is to open on day thirty-one and tell days one to thirty as a flashback, which costs the first-jump gags. I'd keep the cold open and the flag.
+
+| | Tag | Pairs with | The one promise the pair makes |
+|---|---|---|---|
+| a | She pays. | A | Free money has a bill, and the picture says the baker gets it |
+| b | Still counting. | B | The person who knows every cent faces a number nobody can count, and it ends when they count to zero |
+| c | Worth less. | C | More digits, the same roll: the money means less every time it doubles |
+
+No tag repeats a content word of its title (doubled, money, every, day; twice, rich, night; turned, cent, everything). Recommended: **pair a**, title A with "She pays.": the title is the proven breakout form, and the tag is the under-question made visible without answering it.
+
+## Runtime
+
+Rendered by the channel's paper-cut engine (`render_runtime: external`); alternatives Remotion or HyperFrames through `video_compose`.
+
+<!-- ROOM -->

@@ -1,0 +1,85 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "round": 1,
+ "pairs": [
+  {
+   "pair": "A",
+   "result": [
+    {
+     "title": "What If You Doubled Your Money Every Day?",
+     "chars": 41,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Doubled Your Money Every...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "41 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "B",
+   "result": [
+    {
+     "title": "What If You Got Twice as Rich Every Night?",
+     "chars": 42,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Got Twice as Rich Every...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "42 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "C",
+   "result": [
+    {
+     "title": "What If You Turned One Cent Into Everything?",
+     "chars": 44,
+     "score": 70,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Turned One Cent Into...\" - check the subject survives"
+      ],
+      [
+       "vague",
+       "everything - swap for a number, a name or a date"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "44 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  }
+ ]
+}
