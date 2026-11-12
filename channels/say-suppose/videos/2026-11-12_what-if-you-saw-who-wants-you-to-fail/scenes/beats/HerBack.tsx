@@ -1,17 +1,18 @@
-// Beat "Her Back" (script.md v2.1, ## Her Back; narration lines 32-36). The flat at eleven under one lamp. Plants the
+// Beat "Her Back" (script.md v3, ## Her Back; narration lines 48-52). The flat at eleven under one lamp. Plants the
 // fridge (your letter, the calendar) and the jar of brushes; your sister in the hall doorway with her back to you,
 // pulling on the work vest. Two performed moments, the narrator silent:
 //
-//   32   the room, wide, under the lamp; the fridge and your letter; INSERT the jar of brushes, bristles up.
-//   33   the doorway: her back; over your shoulder at "She doesn't turn round".
+//   48   the room, wide, under the lamp; the fridge and your letter; INSERT the jar of brushes, bristles up.
+//   49   the doorway: her back; over your shoulder at "She doesn't turn round".
 //   hold (3 s, performed) her back fills the frame: the vest on one arm, then the other, the zip up; she tilts her
 //        head to listen, and does not turn.
-//   34   still on her back, head tilted: "Say it again."
-//   hold (3 s, performed) close on you: your mouth moves, the letter in your hand lifts an inch and drops; the two
-//        of you: nothing over her head, her shoulders shake once (the laugh); she goes, and the stairwell light falls
-//        across the fridge and the letter.
-//   35   close on you in the light; the empty doorway.
-//   36   the letter in the fading light; close on you; the room, wide, you alone.
+//   50   still on her back, head tilted: "Say it again." (her own voice)
+//   hold (4 s, performed) close on you: your mouth moves, the letter in your hand lifts an inch and drops; the two
+//        of you: nothing over her head, her shoulders shake once (the laugh); she raps the door frame twice with her
+//        knuckles, her goodbye, and goes; the stairwell light falls across the fridge and the letter.
+//   51   close on you in the light; the empty doorway.
+//   52   the letter in the fading light; close on you ("Her number stays hidden"); the room, wide, you alone, set on
+//        testing the rule on everyone else.
 import { AbsoluteFill } from "remotion";
 import { STAND } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
@@ -29,34 +30,35 @@ type T = ReturnType<typeof times>;
 function times(clips: Clip[], start: number, end: number) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
-  const holdA = lineEnd(clips, 33) + 2; // performed: the vest goes on; she tilts her head
-  const holdB = lineEnd(clips, 34) + 2; // performed: you say it to her back; the laugh; she goes
-  const gapB = from(35) - holdB;
+  const holdA = lineEnd(clips, 49) + 2; // performed: the vest goes on; she tilts her head
+  const holdB = lineEnd(clips, 50) + 2; // performed: you say it to her back; the laugh; she goes
+  const gapB = from(51) - holdB;
   const inB = (p: number) => Math.round(holdB + gapB * p);
   return {
     start,
     end,
-    fridge: at(32, 0.26), // "The letter's already on the fridge"
-    jar: at(32, 0.57), // "next to the jar where her paintbrushes have stood"
-    doorway: from(33) - 3, // "She's in the doorway, pulling on her work vest"
-    ots: at(33, 0.69), // "She doesn't turn round"
+    fridge: at(48, 0.25), // "The letter's already on the fridge"
+    jar: at(48, 0.57), // "next to the jar where her paintbrushes have stood"
+    doorway: from(49) - 3, // "She's in the doorway, pulling on her work vest"
+    ots: at(49, 0.69), // "She doesn't turn round"
     holdA,
-    vest: [holdA + 2, Math.round(mix(holdA, from(34), 0.74))] as const,
-    listen: Math.round(mix(holdA, from(34), 0.78)),
-    againLine: [from(34), lineEnd(clips, 34)] as const, // "Say it again."
+    vest: [holdA + 2, Math.round(mix(holdA, from(50), 0.74))] as const,
+    listen: Math.round(mix(holdA, from(50), 0.78)),
+    againLine: [from(50), lineEnd(clips, 50)] as const, // "Say it again."
     holdB,
-    sayIt: [holdB + 2, inB(0.38)] as const,
-    lift: [inB(0.14), inB(0.26), inB(0.36)] as const, // the letter lifts an inch, holds, drops
-    two: inB(0.4), // nothing over her head
-    laughs: [inB(0.46), inB(0.6)] as const,
-    gone: [inB(0.56), inB(0.92)] as const, // she goes down the hall to the stairwell door
-    lightShot: inB(0.7), // the stairwell light across the fridge and the letter
-    light: [inB(0.62), inB(0.86), at(36, 0.3), at(36, 0.62)] as const, // up, full, fading, out
-    you35: from(35) - 2, // "You say it to her back."
-    door35: at(35, 0.6), // "A back is not a face."
-    letter36: from(36) - 2, // "She laughs, and she's gone."
-    close: at(36, 0.36), // "And she still hasn't seen your face say it."
-    notYet: at(36, 0.82), // "Not yet."
+    sayIt: [holdB + 2, inB(0.28)] as const,
+    lift: [inB(0.1), inB(0.2), inB(0.27)] as const, // the letter lifts an inch, holds, drops
+    two: inB(0.3), // nothing over her head
+    laughs: [inB(0.34), inB(0.46)] as const,
+    rap: [inB(0.48), inB(0.68)] as const, // two knocks on the door frame, her goodbye
+    gone: [inB(0.66), inB(0.92)] as const, // she goes down the hall to the stairwell door
+    lightShot: inB(0.74), // the stairwell light across the fridge and the letter
+    light: [inB(0.7), inB(0.88), at(52, 0.25), at(52, 0.55)] as const, // up, full, fading, out
+    you35: from(51) - 2, // "You say it to her back."
+    door35: at(51, 0.6), // "A back is not a face."
+    letter36: from(52) - 2, // "She laughs, and she's gone."
+    close: at(52, 0.28), // "Her number stays hidden."
+    notYet: at(52, 0.47), // "And before you risk seeing it, you test the rule on everyone else."
   };
 }
 
@@ -97,7 +99,7 @@ const Kitchen: React.FC<{ frame: number; k: T; cam: Camera; you: Face; showYou?:
       {away < 1 && (
         <g clipPath="url(#herback-doorway)" opacity={1 - ramp(frame, mix(k.gone[0], k.gone[1], 0.6), k.gone[1])}>
           <SisterBack x={HER_X + away * 10} y={mix(FLOOR, FLOOR - 70, away)} scale={mix(S, S * 0.72, away)} frame={frame} vest={vest} laugh={laugh}
-            tilt={speak} headTilt={listen * (1 - away)} />
+            tilt={speak} headTilt={listen * (1 - away)} rap={ramp(frame, k.rap[0], k.rap[1])} />
         </g>
       )}
       {showYou && <You body={body} face={you} frame={frame} held={<Letter x={0} y={12} scale={0.36} tilt={-6} />} />}
@@ -143,7 +145,7 @@ const HerBackShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
           ? { brows: "worry", lids: 0.15, mouth: "flat", eyes: 1, look: { x: 1, y: 0 } }
           : frame < k.notYet
             ? { brows: "worry", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.7, y: 0.35 } }
-            : { brows: "worry", lids: 0.15, mouth: "smirk", eyes: 1, look: { x: 1, y: -0.05 } };
+            : { brows: "angry", lids: 0.2, mouth: "flat", eyes: 1, look: { x: -0.2, y: 0 } };
   return (
     <>
       <Kitchen frame={frame} k={k} cam={cam} you={you} showYou={shot !== "ots"} />
@@ -161,4 +163,4 @@ const HerBack: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const herBack: Beat = { id: "HerBack", firstLine: 32, Component: HerBack };
+export const herBack: Beat = { id: "HerBack", firstLine: 48, Component: HerBack };

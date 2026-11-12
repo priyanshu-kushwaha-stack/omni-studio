@@ -1,17 +1,18 @@
-// Beat "Say It Again" (script.md v2.1, ## Say It Again; narration lines 63-71). The cost. The second letter; you run
+// Beat "Say It Again" (script.md v3, ## Say It Again; narration lines 89-96). The cost. The second letter; you run
 // home instead of to the store; your sister at the table on a night off, hair down. You say it to her face: her card
 // opens (soft snap) and runs to -68. Two performed moments, the narrator silent. You can't say it again; you take your
 // bag and go, and her hands stay half up.
 //
-//   63   INSERT the letter held up on the landing; the seal stamps on "paid"; the hands go still on "if the exam holds".
-//   64   you run past the store's white light; the front door bursts open and you're in; the bag drops.
-//   65   the room: she looks up from her bowl; you come to the table; close on her face: the card snaps on "face".
+//   89   INSERT the letter held up on the landing; the seal stamps on "paid"; the hands go still on "if the exam holds".
+//   90   you run past the store's white light; the front door bursts open and you're in; the bag drops.
+//   91   the room: she looks up from her bowl; you come to the table; close on her face: the card snaps on "face".
 //   hold (4 s, performed) she's up before you finish, the chair tipping; both arms round you, her face in your scarf;
 //        over her shoulder the card stops on -68; your arms, half raised, hang there.
-//   66   close on her at your shoulder: "Say it again."
+//   92   close on her at your shoulder, her own voice: "Say it again..."
 //   hold (3 s, performed) her arms tighten, yours don't close; your eyes don't leave the card; the lamp and the jar.
-//   67   INSERT the card; tilt down to the two of you.   68  close on her: "Say it again."   69  close on you: you can't.
-//   70   the card; her hands on your back.               71  you step back (the card folds), take your bag, go; her alone.
+//   93   INSERT the card; tilt down to the two of you.   94  close on her: "Say it again..."
+//   95   close on you: you can't; the card; her hands on your back.
+//   96   you step back (the card folds), take your bag, go; her alone.
 import { AbsoluteFill } from "remotion";
 import { Chair, seatedY } from "@whatif/kit/sets/common";
 import { lerpPose, SEATED, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -32,55 +33,55 @@ type T = ReturnType<typeof times>;
 function times(clips: Clip[], start: number, end: number) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
-  const hold4 = lineEnd(clips, 65) + 2; // performed: she's up, the hug, the card stops, your arms hang
-  const g4 = from(66) - hold4;
-  const hold3 = lineEnd(clips, 66) + 2; // performed: her arms tighten, yours don't close, the card, the lamp, the jar
-  const g3 = from(67) - hold3;
+  const hold4 = lineEnd(clips, 91) + 2; // performed: she's up, the hug, the card stops, your arms hang
+  const g4 = from(92) - hold4;
+  const hold3 = lineEnd(clips, 92) + 2; // performed: her arms tighten, yours don't close, the card, the lamp, the jar
+  const g3 = from(93) - hold3;
   return {
     start,
     end,
-    stamp: at(63, 0.46), // "Four years, paid"
-    holds: at(63, 0.7), // "If the exam holds"
-    run: from(64) - 2, // "For once you run home"
-    doorIn: at(64, 0.45), // "instead of to the store": the front door bursts open
-    inside: at(64, 0.85) + 4,
-    table: from(65) - 2, // "Your sister's at the table"
-    look: from(65) + 8,
-    walk: [at(65, 0.2), at(65, 0.58)] as const, // you come to the table
-    face: at(65, 0.6), // "You say it to her face"
-    sayIt: [at(65, 0.64), lineEnd(clips, 65) + 10] as const,
-    rise: [at(65, 0.8), hold4 + 8] as const, // she's up before you finish
-    tip: [at(65, 0.84), hold4 + 12] as const, // the chair tipping
-    tag: at(65, 0.86),
+    stamp: at(89, 0.46), // "Four years, paid"
+    holds: at(89, 0.7), // "If the exam holds"
+    run: from(90) - 2, // "For once you run home"
+    doorIn: at(90, 0.45), // "instead of to the store": the front door bursts open
+    inside: at(90, 0.85) + 4,
+    table: from(91) - 2, // "Your sister's at the table"
+    look: from(91) + 8,
+    walk: [at(91, 0.2), at(91, 0.58)] as const, // you come to the table
+    face: at(91, 0.6), // "You say it to her face"
+    sayIt: [at(91, 0.64), lineEnd(clips, 91) + 10] as const,
+    rise: [at(91, 0.8), hold4 + 8] as const, // she's up before you finish
+    tip: [at(91, 0.84), hold4 + 12] as const, // the chair tipping
+    tag: at(91, 0.86),
     step: [hold4 + 8, hold4 + 22] as const,
     hug: [hold4 + 14, hold4 + 32] as const,
     half: [hold4 + 26, hold4 + 46] as const, // your arms come half up and hang there
     up: hold4, // the two: she's up, the chair going over
     ots4: Math.round(hold4 + g4 * 0.38), // over her shoulder: the card stops on -68
     arms4: Math.round(hold4 + g4 * 0.72), // your arms, half raised, hanging
-    her66: from(66) - 2, // "Say it again."
-    again1: [from(66), lineEnd(clips, 66)] as const,
+    her66: from(92) - 2, // "Say it again."
+    again1: [from(92), lineEnd(clips, 92)] as const,
     hold3,
     squeeze: [hold3 + 2, hold3 + 22] as const,
     eyes3: Math.round(hold3 + g3 * 0.34), // your eyes don't leave the card
     jar: Math.round(hold3 + g3 * 0.67), // the lamp, the jar behind her
-    card: from(67) - 2, // "Minus sixty-eight."
-    tilt: at(67, 0.28), // "Over the one person who ever asked to hear it twice"
-    her68: from(68) - 2, // "Say it again."
-    again2: [from(68), lineEnd(clips, 68)] as const,
-    cant: from(69) - 2, // "You can't."
-    card2: from(70) - 2, // "You just watched a card say"
-    arms: at(70, 0.5), // "what her arms didn't"
-    back: from(71) - 2, // "You take your bag."
-    fold: from(71) + 10, // you step out of the hug; the card folds
-    stepBack: [from(71), at(71, 0.12)] as const,
-    toBag: [at(71, 0.12), at(71, 0.24)] as const,
-    pick: [at(71, 0.24), at(71, 0.33)] as const,
-    toDoor: [at(71, 0.33), at(71, 0.52)] as const,
-    out: [at(71, 0.52), at(71, 0.57)] as const,
-    shut: [at(71, 0.57), at(71, 0.64)] as const,
-    leave: at(71, 0.1),
-    alone: at(71, 0.56), // "Not that night. Not for a month."
+    card: from(93) - 2, // "Minus sixty-eight."
+    tilt: at(93, 0.28), // "Over the one person who ever asked to hear it twice"
+    her68: from(94) - 2, // "Say it again."
+    again2: [from(94), lineEnd(clips, 94)] as const,
+    cant: from(95) - 2, // "You can't."
+    card2: at(95, 0.24), // "You just watched a card say"
+    arms: at(95, 0.68), // "what her arms didn't"
+    back: from(96) - 2, // "You take your bag."
+    fold: from(96) + 10, // you step out of the hug; the card folds
+    stepBack: [from(96), at(96, 0.12)] as const,
+    toBag: [at(96, 0.12), at(96, 0.24)] as const,
+    pick: [at(96, 0.24), at(96, 0.33)] as const,
+    toDoor: [at(96, 0.33), at(96, 0.52)] as const,
+    out: [at(96, 0.52), at(96, 0.57)] as const,
+    shut: [at(96, 0.57), at(96, 0.64)] as const,
+    leave: at(96, 0.1),
+    alone: at(96, 0.56), // "Not that night. Not for a month."
   };
 }
 
@@ -295,4 +296,4 @@ const SayItAgain: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const sayItAgain: Beat = { id: "SayItAgain", firstLine: 63, Component: SayItAgain };
+export const sayItAgain: Beat = { id: "SayItAgain", firstLine: 89, Component: SayItAgain };

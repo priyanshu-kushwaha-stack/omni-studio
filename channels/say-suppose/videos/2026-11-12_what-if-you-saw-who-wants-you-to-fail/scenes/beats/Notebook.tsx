@@ -1,20 +1,20 @@
-// Beat "The Notebook" (script.md v2.1 "The Notebook"; narration lines 54-62; mood lamp). The late-night study room past
+// Beat "The Notebook" (script.md v2.1 "The Notebook"; narration lines 80-88; mood lamp). The late-night study room past
 // midnight (sets/ReadingRoom.tsx). Every frame comes from the clips (`times`), one component per shot.
 //
-//   54    wide along the rows, dark between the lamps; you walk in. Then his desk: the chair pushed back, the notebook
+//   80    wide along the rows, dark between the lamps; you walk in. Then his desk: the chair pushed back, the notebook
 //         open under his lamp, you stop at it.
-//   hold  5 s, PERFORMED (the gap after line 54): your hand turns the page under his lamp; your own wrong answers copied
+//   hold  5 s, PERFORMED (the gap after line 80): your hand turns the page under his lamp; your own wrong answers copied
 //         clean in his handwriting, a "?" beside each and under it his working-out that gets it right; your finger
 //         stops on the third one; you turn and look at his empty chair, then back down; your other hand comes up to
 //         your mouth.
-//   55    "You stopped helping him...": your face, hand at your mouth; then his working-outs from above, each ticked.
-//   56    close-up: your face over the page; it softens on "He's climbing."
-//   57    a paper sheet: two kinds of envy, a teal arrow up a stair and a red arrow pulling a head down.
-//   58    you sit in his chair; close on "It meant it hurt."
-//   59    a paper sheet: two heads, the same spot lit in both (envy and pain).
-//   60    insert: two cards side by side, both red, the same number.
-//   61    the room from above: the rows are lanes; every lane but yours goes dark on "Outside yours, nobody bleeds."
-//   62    you alone in his chair under one lamp; the camera pulls back down the dark row.
+//   81    "You stopped helping him...": your face, hand at your mouth; then his working-outs from above, each ticked.
+//   82    close-up: your face over the page; it softens on "He's climbing."
+//   83    a paper sheet: two kinds of envy, a teal arrow up a stair and a red arrow pulling a head down.
+//   84    you sit in his chair; close on "It meant it hurt."
+//   85    a paper sheet: two heads, the same spot lit in both (envy and pain).
+//   86    insert: two cards side by side, both red, the same number.
+//   87    the room from above: the rows are lanes; every lane but yours goes dark on "Outside yours, nobody bleeds."
+//   88    you alone in his chair under one lamp; the camera pulls back down the dark row.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -35,33 +35,33 @@ type T = ReturnType<typeof times>;
 
 function times(clips: Clip[], to: number) {
   const { from, at, end } = timer(clips);
-  const g0 = end(54); // the performed moment: the gap after line 54
-  const g1 = from(55);
+  const g0 = end(80); // the performed moment: the gap after line 80
+  const g1 = from(81);
   const g = (p: number) => Math.round(mix(g0, g1, p));
   return {
-    start: from(54), // wide along the rows; you walk in
-    seat: at(54, 0.5), // "His seat's empty": his desk
+    start: from(80), // wide along the rows; you walk in
+    seat: at(80, 0.5), // "His seat's empty": his desk
     turn: g0 - 4, // your hand turns the page (from above)
     find: g(0.2), // your finger runs down the rows ...
     stop: g(0.38), // ... and stops on the third one
     chair: g(0.48), // you look up at his empty chair
     down: g(0.64), // and back down
     mouth: g(0.76), // your other hand comes up to your mouth
-    helped: from(55), // "You stopped helping him."
-    ticks: at(55, 0.5), // "He never stopped helping you.": his working-outs, ticked
-    face: from(56) - 2, // your face over the page
-    climb: at(56, 0.5), // "He's climbing."
-    kinds: from(57), // two kinds of envy
-    up: at(57, 0.28), // "One pushes you to move up."
-    down2: at(57, 0.62), // "The other pushes you to pull the other person down."
-    sit: from(58), // you sit in his chair
-    hurt: at(58, 0.6), // "It meant it hurt."
-    brain: from(59), // the brain-scan sheet
-    lit: at(59, 0.55), // "a region also active in pain"
-    tags: from(60), // two cards, one colour
-    lane: from(61), // the room from above
-    dim: at(61, 0.6), // "Outside yours, nobody bleeds."
-    one: from(62) - 2, // you alone under one lamp
+    helped: from(81), // "You stopped helping him."
+    ticks: at(81, 0.5), // "He never stopped helping you.": his working-outs, ticked
+    face: from(82) - 2, // your face over the page
+    climb: at(82, 0.5), // "He's climbing."
+    kinds: from(83), // two kinds of envy
+    up: at(83, 0.28), // "One pushes you to move up."
+    down2: at(83, 0.62), // "The other pushes you to pull the other person down."
+    sit: from(84), // you sit in his chair
+    hurt: at(84, 0.6), // "It meant it hurt."
+    brain: from(85), // the brain-scan sheet
+    lit: at(85, 0.55), // "a region also active in pain"
+    tags: from(86), // two cards, one colour
+    lane: from(87), // the room from above
+    dim: at(87, 0.6), // "Outside yours, nobody bleeds."
+    one: from(88) - 2, // you alone under one lamp
     end: to,
   };
 }
@@ -101,7 +101,7 @@ function handToMouth(up: number): Body {
   return body;
 }
 
-// ------------------------------------------------------------------------------------------------ line 54
+// ------------------------------------------------------------------------------------------------ line 80
 
 const ArriveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current(frame, [[k.start, "wide"], [k.seat, "seat"]]);
@@ -195,7 +195,7 @@ const ChairShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 55
+// ------------------------------------------------------------------------------------------------ line 81
 
 /** "He never stopped helping you.": his working-outs from above, each one ticked. */
 const TicksShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
@@ -207,7 +207,7 @@ const TicksShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 56
+// ------------------------------------------------------------------------------------------------ line 82
 
 const FaceShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const body = overPage();
@@ -223,7 +223,7 @@ const FaceShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 57
+// ------------------------------------------------------------------------------------------------ line 83
 
 /** A small paper head for the sheets, facing right. */
 const Head: React.FC<{ x: number; y: number; r?: number; fill: string }> = ({ x, y, r = 34, fill }) => (
@@ -270,7 +270,7 @@ const KindsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 58
+// ------------------------------------------------------------------------------------------------ line 84
 
 const SitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const body = inHisChair();
@@ -289,7 +289,7 @@ const SitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 59
+// ------------------------------------------------------------------------------------------------ line 85
 
 /** A head in profile with the brain drawn in, and a spot that lights. */
 const BrainHead: React.FC<{ x: number; y: number; glow: number; frame: number }> = ({ x, y, glow, frame }) => (
@@ -330,7 +330,7 @@ const BrainShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 60
+// ------------------------------------------------------------------------------------------------ line 86
 
 const TagsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = { x: 960, y: 540, zoom: mix(1, 1.08, linear(frame, k.tags, k.lane)) };
@@ -352,7 +352,7 @@ const TagsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 61
+// ------------------------------------------------------------------------------------------------ line 87
 
 const LaneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const ly = PLAN.lanes[PLAN.you];
@@ -365,7 +365,7 @@ const LaneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 62
+// ------------------------------------------------------------------------------------------------ line 88
 
 const OneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const body = inHisChair();
@@ -406,4 +406,4 @@ const Notebook: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const notebook: Beat = { id: "Notebook", firstLine: 54, Component: Notebook };
+export const notebook: Beat = { id: "Notebook", firstLine: 80, Component: Notebook };

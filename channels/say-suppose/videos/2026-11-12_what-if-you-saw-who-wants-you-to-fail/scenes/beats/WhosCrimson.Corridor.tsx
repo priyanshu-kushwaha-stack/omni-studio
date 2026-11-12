@@ -1,6 +1,7 @@
-// Who's Red, lines 14-19: the school corridor in the morning. You walk in with the letter; the rival, sage head, one
+// Who's Red, lines 21-27 (script v3): the school corridor in the morning. You walk in with the letter; the rival, sage head, one
 // foot up at the shoe lockers, swapping shoes. "Still here?" You hold up the letter: over your shoulder the card snaps
-// open over his head and flicks to -6. Your brows go up; he barely looks up. "Nice. Move."
+// open over his head and flicks to -6. Your brows go up; he barely looks up. "Nice. Move." He walks off past you, his
+// -6 still over him.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { lerpPose, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -37,10 +38,14 @@ function you(frame: number, k: CrimsonTimes) {
   return { x, pose, head: headAt(x, FLOOR, S, pose) };
 }
 
+/** The rival: at the lockers, foot down on "Nice. Move.", then he walks off past you, his -6 still over him. */
 function taeho(frame: number, k: CrimsonTimes) {
-  const pose = lerpPose(FOOT_UP, FOOT_DOWN, ramp(frame, k.move + 4, k.move + 16));
-  const bob = Math.sin(frame / 11) * 2;
-  return { pose: { ...pose, armF: [pose.armF[0] + bob, pose.armF[1]] as [number, number] }, head: headAt(TX, FLOOR, S, pose, -1) };
+  const stood = lerpPose(FOOT_UP, FOOT_DOWN, ramp(frame, k.move + 4, k.move + 16));
+  const go = linear(frame, k.leave, k.nextDesk + 10);
+  const x = mix(TX, TX - 1200, go);
+  const pose = go > 0 && go < 1 ? walkPose(frame * 0.3) : stood;
+  const bob = go > 0 ? 0 : Math.sin(frame / 11) * 2;
+  return { x, pose: { ...pose, armF: [pose.armF[0] + bob, pose.armF[1]] as [number, number] }, head: headAt(x, FLOOR, S, pose, -1) };
 }
 
 /** Tae-ho's face: on his shoe, then "Still here?" at you, then back down; at `barely` the eyes flick up and drop. */
@@ -60,11 +65,11 @@ function youFace(frame: number, k: CrimsonTimes) {
   return { brows: "worry" as const, lids: 0.15, mouth: "flat" as const, eyes: 1.05, look: { x: 0.6, y: -0.55 } };
 }
 
-type View = "wide" | "track" | "lockers" | "still" | "raise" | "ots" | "youLook" | "barely" | "move";
+type View = "wide" | "track" | "lockers" | "still" | "raise" | "ots" | "youLook" | "barely" | "move" | "leave";
 
 export const CorridorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const view = current<View>(frame, [[0, "wide"], [k.youWalk, "track"], [k.lockers, "lockers"], [k.still, "still"], [k.raise, "raise"],
-    [k.ots, "ots"], [k.youLook, "youLook"], [k.barely, "barely"], [k.move, "move"]]);
+    [k.ots, "ots"], [k.youLook, "youLook"], [k.barely, "barely"], [k.move, "move"], [k.leave, "leave"]]);
   const y = you(frame, k);
   const t = taeho(frame, k);
   const th = t.head;
@@ -77,7 +82,8 @@ export const CorridorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: Mood
     ots: camAt(frame, [[k.ots, closeUp(th.x - 150, th.y - 80, 2.15)], [k.youLook, closeUp(th.x - 140, th.y - 85, 2.3)]]),
     youLook: camAt(frame, [[k.youLook, closeUp(y.head.x - 30, y.head.y - 30, 2.6)], [k.barely, closeUp(y.head.x - 30, y.head.y - 35, 2.8)]]),
     barely: camAt(frame, [[k.barely, closeUp(th.x - 10, th.y - 70, 2.3)], [k.move, closeUp(th.x - 10, th.y - 70, 2.45)]]),
-    move: camAt(frame, [[k.move, { x: (YX + TX) / 2 + 20, y: 610, zoom: 1.6 }], [k.kang, { x: (YX + TX) / 2 + 20, y: 605, zoom: 1.7 }]]),
+    move: camAt(frame, [[k.move, { x: (YX + TX) / 2 + 20, y: 610, zoom: 1.6 }], [k.leave, { x: (YX + TX) / 2 + 20, y: 605, zoom: 1.7 }]]),
+    leave: camAt(frame, [[k.leave, { x: 1050, y: 620, zoom: 1.3 }], [k.nextDesk, { x: 900, y: 630, zoom: 1.35 }]]),
   };
   const cam = drift(cams[view], frame, "corridor", 3);
   const showYou = view !== "ots" && view !== "lockers" && view !== "still" && view !== "barely";
@@ -85,13 +91,13 @@ export const CorridorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: Mood
   const actors = (
     <>
       <ShoeLockers x={TX - 190} y={FLOOR - 14} />
-      <Figure {...TAEHO} x={TX} y={FLOOR} scale={S} facing={-1} pose={t.pose} {...taehoFace(frame, k)} blink={blinking(frame, 3)} time={frame}
-        held={<Shoe x={6} y={4} scale={0.9} tilt={-20} />} />
-      <Meter frame={frame} at={k.taehoTag} x={th.x} headY={th.y} r={th.r} value={-6} until={k.kang} />
       {showYou && (
         <Figure {...HERO} x={y.x} y={FLOOR} scale={S} pose={y.pose} {...youFace(frame, k)} blink={blinking(frame, 1)} time={frame}
           flow={view === "wide" || view === "track" ? 0.25 : 0} held={letter} />
       )}
+      <Figure {...TAEHO} x={t.x} y={FLOOR + 6} scale={S} facing={-1} pose={t.pose} {...taehoFace(frame, k)} blink={blinking(frame, 3)} time={frame}
+        held={frame < k.move + 10 ? <Shoe x={6} y={4} scale={0.9} tilt={-20} /> : undefined} />
+      <Meter frame={frame} at={k.taehoTag} x={th.x} headY={th.y} r={th.r} value={-6} until={k.nextDesk} />
     </>
   );
   return (

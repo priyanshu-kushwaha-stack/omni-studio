@@ -1,5 +1,5 @@
-// Who's Red in the classroom (kit `classroom`): your maths teacher at the board, +41 (lines 20-22); then why the
-// enemy doesn't care (23-27): a top-down insert of two desks and the two halves of a chocolate bar, two paper sheets
+// Who's Red in the classroom (kit `classroom`, script v3): your best friend at the next desk (27); your maths teacher
+// marking at her lectern, +41, never looking up (28-30); then why the enemy doesn't care (37-41): a top-down insert of two desks and the two halves of a chocolate bar, two paper sheets
 // (the ladder of people near your level; two runners from one start line), the rival far off with his head down, your
 // best friend at the next desk looking straight at you, your face, and the lanes. No names on screen.
 import { interpolate } from "remotion";
@@ -37,24 +37,35 @@ export const MsKang: React.FC<{ frame: number; face: object; x?: number; y?: num
   </>
 );
 
-// ------------------------------------------------------------------------------------------------ 20-22 Ms. Kang
+// ------------------------------------------------------------------------------------------------ 28-30 your maths teacher, marking
 
 const YX = 1190;
 const LETTER_UP: [number, number] = [126, 16];
 
 type KangView = "kang" | "good" | "you" | "two";
 
+/** Marking at her lectern: the red pen down on the paper; the back hand stays on the board. */
+const MARKING: Pose = { ...KANG_POSE, lean: 8, armF: [62, 34] };
+
+/** Her lectern, in front of her on the platform, with a stack of papers being marked. */
+const Lectern: React.FC = () => (
+  <g>
+    <path d="M1310 782 L1450 770 L1450 792 L1310 804Z" fill="#a87c52" stroke={INK} strokeWidth={4} />
+    <rect x={1360} y={792} width={40} height={KY - 792} fill="#8a5c3b" stroke={INK} strokeWidth={4} />
+    {[0, 1, 2].map((i) => <rect key={i} x={1330 + i * 3} y={764 - i * 5} width={90} height={10} rx={2} fill="#f3e9d7" stroke={INK} strokeWidth={2} transform={`rotate(-5 1375 ${770 - i * 5})`} />)}
+  </g>
+);
+
 export const KangShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const view = current<KangView>(frame, [[0, "kang"], [k.good, "good"], [k.youKang, "you"], [k.kangTwo, "two"]]);
-  const kh = headAt(KX, KY, S, KANG_POSE, -1);
+  const kh = headAt(KX, KY, S, MARKING, -1);
   const lower = ramp(frame, k.kangTwo + 6, k.kangTwo + 20);
   const yPose: Pose = { ...STAND, armF: [mix(LETTER_UP[0], 20, lower), mix(LETTER_UP[1], 30, lower)] };
   const yh = headAt(YX, FLOOR, S, yPose);
-  const kangFace = view === "kang"
-    ? { brows: "flat" as const, lids: 0.3, mouth: "flat" as const, eyes: 1, look: { x: 0.95, y: 0.1 } }
-    : view === "two"
-      ? { brows: "none" as const, lids: 0.35, mouth: "flat" as const, eyes: 1, look: { x: 0.4, y: 0.6 } }
-      : { brows: "none" as const, lids: 0.35, mouth: "smile" as const, eyes: 1, look: { x: 0.95, y: 0.05 } };
+  // she never looks up from the marking; "Good." comes with the smallest smile
+  const kangFace = view === "good"
+    ? { brows: "none" as const, lids: 0.45, mouth: "smile" as const, eyes: 1, look: { x: 0.35, y: 0.9 } }
+    : { brows: "flat" as const, lids: 0.45, mouth: "flat" as const, eyes: 1, look: { x: 0.35, y: 0.9 } };
   const smile = ramp(frame, k.youKang + 30, k.youKang + 40);
   const youFace = view === "kang"
     ? { brows: "raised" as const, lids: 0, mouth: "flat" as const, eyes: 1.05, look: { x: 0.9, y: -0.1 } }
@@ -65,7 +76,7 @@ export const KangShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
     kang: camAt(frame, [[k.kang, { x: 1360, y: 610, zoom: 1.45 }], [k.good, { x: 1370, y: 600, zoom: 1.55 }]]),
     good: camAt(frame, [[k.good, closeUp(kh.x - 30, kh.y - 70, 2.3)], [k.youKang, closeUp(kh.x - 30, kh.y - 70, 2.45)]]),
     you: camAt(frame, [[k.youKang, closeUp(yh.x + 40, yh.y - 20, 2.5)], [k.kangTwo, closeUp(yh.x + 40, yh.y - 25, 2.7)]]),
-    two: camAt(frame, [[k.kangTwo, { x: 1360, y: 600, zoom: 1.6 }], [k.desks, { x: 1350, y: 610, zoom: 1.5 }]]),
+    two: camAt(frame, [[k.kangTwo, { x: 1360, y: 600, zoom: 1.6 }], [k.mirror, { x: 1350, y: 610, zoom: 1.5 }]]),
   };
   const cam = drift(cams[view], frame, "kang", 3);
   return (
@@ -78,8 +89,9 @@ export const KangShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
       }
       actors={
         <>
-          <MsKang frame={frame} face={kangFace} />
-          <Meter frame={frame} at={k.kangTag} x={kh.x} headY={kh.y} r={kh.r} value={41} until={k.desks} />
+          <MsKang frame={frame} face={kangFace} pose={MARKING} />
+          <Lectern />
+          <Meter frame={frame} at={k.kangTag} x={kh.x} headY={kh.y} r={kh.r} value={41} until={k.mirror} />
           <Figure {...HERO} x={YX} y={FLOOR} scale={S} pose={yPose} {...youFace} blink={blinking(frame, 1)} time={frame}
             held={<Letter x={0} y={8} scale={0.42} tilt={6} />} />
         </>
@@ -87,7 +99,29 @@ export const KangShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
   );
 };
 
-// ------------------------------------------------------------------------------------------------ 23 the desks
+// ------------------------------------------------------------------------------------------------ 27 the next desk
+
+/** "The dangerous number is at the next desk.": your best friend at the next desk, grinning and waving you over as you
+ *  sit down. No card: you said nothing. */
+export const NextDeskShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
+  const mh = headAt(SEAT.x[1], seatY, SEAT.scale, SEATED);
+  const wave = Math.sin((frame - k.nextDesk) / 4) * 12;
+  const mPose: Pose = { ...SEATED, armB: [-140 + wave, -20] };
+  const cam = drift(camAt(frame, [[k.nextDesk, { x: 800, y: 700, zoom: 1.8 }], [k.kang, closeUp(mh.x + 80, mh.y + 10, 2.5)]]), frame, "next", 2);
+  return (
+    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "graph", drawn: 1 }}
+      behind={
+        <>
+          <Figure {...MINJUN} x={SEAT.x[1]} y={seatY} scale={SEAT.scale} pose={mPose} {...EXPRESSIONS.happy} eyes={1.05} look={{ x: 1, y: -0.05 }}
+            blink={blinking(frame, 2)} time={frame} />
+          <Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} pose={SEATED} brows="worry" lids={0.2} mouth="flat" eyes={1}
+            look={{ x: -0.9, y: 0 }} blink={blinking(frame, 1)} time={frame} />
+        </>
+      } />
+  );
+};
+
+// ------------------------------------------------------------------------------------------------ 37 the desks
 
 export const DesksInsert: React.FC<{ frame: number; from: number; to: number; mood: MoodName; emptyRight?: boolean; halves?: boolean }> = ({ frame, from, to, mood, emptyRight, halves = true }) => {
   const cam = drift(camAt(frame, [[from, insert(960, 540, 1.22)], [to, insert(960, 550, 1.4)]]), frame, "desks", 2);
@@ -95,7 +129,7 @@ export const DesksInsert: React.FC<{ frame: number; from: number; to: number; mo
     actors={<TwoDesksTop x={960} y={540} emptyRight={emptyRight} halves={halves} />} />;
 };
 
-// ------------------------------------------------------------------------------------------------ 24-25 paper sheets
+// ------------------------------------------------------------------------------------------------ 38-39 paper sheets
 
 /** The ladder: seven people on its rungs, you in the middle; the two nearest you are bracketed, the far ones fade. */
 const LadderSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
@@ -158,7 +192,7 @@ const RaceSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = 
   );
 };
 
-// ------------------------------------------------------------------------------------------------ 26 the rival, your best friend
+// ------------------------------------------------------------------------------------------------ 40 the rival, your best friend
 
 /** Tae-ho on a far bench (a Deep layer behind the near desks), head down over his own book. */
 const TAEHO_FAR = { x: 1180, seat: 820, scale: 0.9, depth: 0.85 } as const;
@@ -212,7 +246,7 @@ export const ClassWhy: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
   );
 };
 
-// ------------------------------------------------------------------------------------------------ 27 the lanes
+// ------------------------------------------------------------------------------------------------ 41 the lanes
 
 /** Five lanes from above: you and Min-jun neck and neck in two lanes side by side, bracketed in teal; Tae-ho far
  *  back in the outside lane. */
@@ -241,7 +275,7 @@ const LaneSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = 
 
 type PaperView = "desks" | "ladder" | "race";
 
-/** Lines 23-25: the desks from above, then the two sheets. */
+/** Lines 37-39: the desks from above, then the two sheets. */
 export const WhyPaper: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const view = current<PaperView>(frame, [[0, "desks"], [k.ladder, "ladder"], [k.race, "race"]]);
   if (view === "desks") return <DesksInsert frame={frame} from={k.desks} to={k.ladder} mood={mood} />;

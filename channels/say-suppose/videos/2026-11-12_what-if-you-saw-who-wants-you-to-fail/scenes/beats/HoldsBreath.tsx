@@ -1,19 +1,20 @@
-// Beat "The Country Holds Its Breath" (script.md v2.1; narration lines 72-80; mood morning). Every frame comes from the
+// Beat "The Country Holds Its Breath" (script.md v3; narration lines 97-105; mood morning). Every frame comes from the
 // clips (`times`), one component per shot. No card opens anywhere in this beat.
 //
-//   72    a week in the study room in one dissolve: your desk, writing; asleep on a rolled jacket; writing; a yawn.
-//   73    the night before the exam, the classroom at dusk: you at his empty desk with your notebook; close on the choice.
-//   74    insert from above: the notebook onto his desk, half a chocolate bar on top; you walk out.
-//   75    exam day: the exam hall from straight above, rows of heads, yours among them; pull up.
-//   76    the city skyline, one paper plane held still in the sky; then the hall side on, you listening.
-//   hold  3 s (the gap after 76): the plane held still; the empty runway; the parents at the gate, not moving.
-//   77    the hall from high above: "A country holds its breath for you."
-//   78    the gate: parents along the wall; you walk up; between two of them, the work vest.
-//   hold  6 s, PERFORMED (the gap after 78): the crowd parts and she's there, the lunch box in both hands; she holds it
-//         out; close on you, looking at her face, not the air above it; the hands on the knot, fingers touch; she nods
-//         once, mouth shut; she steps back into the crowd; the bell; you turn to the gate.
-//   79    her face in the crowd, and the empty air over her head: nothing opens.
-//   80    you walk into the gate with the lunch; pull back.
+//   97    a week in the study room in one dissolve: your desk, writing; asleep on a rolled jacket; writing; a yawn.
+//   98    the night before the exam, the classroom at dusk: you at his empty desk with your notebook; close on the choice.
+//   99    insert from above: the notebook onto his desk, half a chocolate bar on top; you walk out.
+//   100   exam day: the exam hall from straight above, rows of heads, yours among them; pull up.
+//   101   the city skyline, one paper plane held still in the sky; then the hall side on, you listening.
+//   hold  3 s (the gap after 101): the plane held still; the empty runway; the parents at the gate, not moving.
+//   102   the hall from high above: "A country holds its breath for you."
+//   103   the gate: parents along the wall; you walk up; between two of them, the work vest.
+//   hold  6 s, PERFORMED (the gap after 103): the crowd parts and she's there, the lunch box in both hands; she holds it
+//         out; close on you, looking at her face, not the air above it; the hands on the knot, fingers touch; her mouth
+//         opens for the words she always says and shuts without them; she nods once; she steps back into the crowd;
+//         the bell; you turn to the gate.
+//   104   her face in the crowd, and the empty air over her head: nothing opens.
+//   105   you walk into the gate with the lunch; pull back.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -38,39 +39,39 @@ type T = ReturnType<typeof times>;
 
 function times(clips: Clip[], to: number) {
   const { from, at, end } = timer(clips);
-  const h = (p: number) => Math.round(mix(end(76), from(77), p)); // the 3 s hold after line 76
-  const p = (q: number) => Math.round(mix(end(78), from(79), q)); // the 6 s performed moment after line 78
+  const h = (p: number) => Math.round(mix(end(101), from(102), p)); // the 3 s hold after line 101
+  const p = (q: number) => Math.round(mix(end(103), from(104), q)); // the 6 s performed moment after line 103
   return {
-    week: from(72), // a week in the study room, one dissolve
-    eve: from(73), // the night before the exam, the classroom at dusk
-    choose: at(73, 0.62), // "Leave it, or keep your place?"
-    leave: from(74) - 2, // the notebook onto his desk, from above
-    choc: at(74, 0.5), // "Half a chocolate bar on top."
-    go: at(74, 0.86), // you walk out
-    exam: from(75), // "Exam day.": the hall from above
-    sky: from(76), // "the country grounded its planes for 35 minutes"
-    listen: at(76, 0.62), // "This year, you're the one listening."
+    week: from(97), // a week in the study room, one dissolve
+    eve: from(98), // the night before the exam, the classroom at dusk
+    choose: at(98, 0.62), // "Leave it for him, or keep your place?"
+    leave: from(99) - 2, // the notebook onto his desk, from above
+    choc: at(99, 0.5), // "Half a chocolate bar on top."
+    go: at(99, 0.86), // you walk out
+    exam: from(100), // "Exam day.": the hall from above
+    sky: from(101), // "the country grounded its planes for 35 minutes"
+    listen: at(101, 0.62), // "This year, you're the one listening."
     plane: h(0), // the hold: the plane held still
     runway: h(0.34), // the empty runway
     still: h(0.67), // the parents at the gate, not moving
-    breath: from(77), // "A country holds its breath for you."
-    gate: from(78), // the gate, the parents
-    vest: at(78, 0.45), // "the work vest"
+    breath: from(102), // "A country holds its breath for you."
+    gate: from(103), // the gate, the parents
+    vest: at(103, 0.45), // "the work vest"
     part: p(0), // the performed moment: the crowd parts
     offer: p(0.2), // she holds it out
     look: p(0.29), // close on you: her face, not the air above it
     hands: p(0.44), // the hands on the knot; fingers touch
-    nod: p(0.6), // she nods once, mouth shut
-    back: p(0.76), // she steps back into the crowd
+    nod: p(0.56), // her mouth opens for the words she always says, and shuts without them; she nods once
+    back: p(0.8), // she steps back into the crowd
     bell: p(0.9), // the bell; you turn to the gate
-    nothing: from(79), // "Neither of you says a word. Nothing opens."
-    air: at(79, 0.55), // the empty air over her head
-    month: from(80), // you walk into the gate
+    nothing: from(104), // "Neither of you says a word. Nothing opens."
+    air: at(104, 0.55), // the empty air over her head
+    month: from(105), // you walk into the gate
     end: to,
   };
 }
 
-// ------------------------------------------------------------------------------------------------ line 72
+// ------------------------------------------------------------------------------------------------ line 97
 
 const YOU = READING.carrel(READING.you);
 
@@ -123,7 +124,7 @@ const WeekShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ lines 73-74
+// ------------------------------------------------------------------------------------------------ lines 98-99
 
 const ROOM_OPTS = { ...classroom.defaults, board: "blank" as const, drawn: 0, farRow: false };
 /** His desk (the classroom's third bench desk): where your notebook goes. */
@@ -191,7 +192,7 @@ const GoShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ lines 75-77
+// ------------------------------------------------------------------------------------------------ lines 100-102
 
 const yourDesk = { x: HALL.cols[HALL.you.c], y: HALL.rows[HALL.you.r] };
 
@@ -241,7 +242,7 @@ const RunwayShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<RunwayBack cam={cam} mood="morning" />} actors={null} />;
 };
 
-// ------------------------------------------------------------------------------------------------ lines 78-80
+// ------------------------------------------------------------------------------------------------ lines 103-105
 
 const JS = 1.1;
 const ME = GATE.you;
@@ -295,7 +296,8 @@ const HandOffShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const offer = ramp(frame, k.offer, k.offer + 14);
   const handed = frame >= k.hands + Math.round((k.nod - k.hands) * 0.6);
   const out = handed ? ramp(frame, k.nod, k.nod + 12) : 0;
-  const nod = linear(frame, k.nod + 8, k.nod + 30);
+  const said = frame >= k.nod + 3 && frame < k.nod + 15; // her mouth open on the words she doesn't say
+  const nod = linear(frame, k.nod + 18, k.nod + 36);
   const boxAt = handAt(herBody(GATE.jiyoonOut.x));
   const me: Body = { x: ME, y: GATE.floor + 10, scale: S, facing: frame >= k.bell + 12 ? -1 : 1, pose: STAND };
   const reach = aimArm(me, { x: boxAt.x - 24, y: boxAt.y });
@@ -320,7 +322,7 @@ const HandOffShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     ? { brows: "worry" as const, lids: 0.08, mouth: "flat" as const, eyes: 1.08, look: { x: 0.95, y: -0.05 } }
     : { brows: "flat" as const, lids: 0.1, mouth: "flat" as const, eyes: 1, look: { x: me.facing === 1 ? 0.9 : 0.6, y: 0 } };
   const herNow = shot === "nod"
-    ? herFace(frame, { mouth: "flat" as const, lids: mix(0.12, 0.4, Math.sin(Math.PI * nod)), brows: "worry" as const })
+    ? herFace(frame, { mouth: said ? "open" as const : "flat" as const, lids: mix(0.12, 0.4, Math.sin(Math.PI * nod)), brows: said ? "raised" as const : "worry" as const })
     : herFace(frame, shot === "back" || shot === "bell" ? { look: { x: -0.4, y: 0 } } : {});
   const cams: Record<Exclude<typeof shot, "hands">, Camera> = {
     part: camAt(frame, [[k.part, { x: 1300, y: 720, zoom: 1.55 }], [k.offer, { x: 1280, y: 720, zoom: 1.65 }]]),
@@ -396,4 +398,4 @@ const HoldsBreath: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const holdsBreath: Beat = { id: "HoldsBreath", firstLine: 72, Component: HoldsBreath };
+export const holdsBreath: Beat = { id: "HoldsBreath", firstLine: 97, Component: HoldsBreath };

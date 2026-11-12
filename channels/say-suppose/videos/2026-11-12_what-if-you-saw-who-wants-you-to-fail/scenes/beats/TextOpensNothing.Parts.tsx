@@ -43,6 +43,31 @@ export const ResultScreen: React.FC<{ frame: number; at: number[] }> = ({ frame,
   </g>
 );
 
+/** The group chat over the kit phone's screen (draw the phone with mode "off"): a header with the group's faces and
+ *  nine messages in a column, each a classmate's head and a bubble of ink bars (no words), popping in at `at[i]`. */
+export const NineMessages: React.FC<{ frame: number; at: number[] }> = ({ frame, at }) => (
+  <g>
+    <rect x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={SCREEN.h} rx={18} fill="#eef1f4" />
+    <rect x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={74} rx={18} fill="#d9dee6" />
+    {[0, 1, 2].map((i) => <circle key={i} cx={SCREEN.x + 34 + i * 22} cy={SCREEN.y + 37} r={16} fill={["#7fa0c4", "#b58fc7", "#7fc29b"][i]} stroke="#eef1f4" strokeWidth={3} />)}
+    <rect x={SCREEN.x + 112} y={SCREEN.y + 28} width={110} height={16} rx={8} fill={INK} opacity={0.55} />
+    {at.map((a, i) => {
+      const s = pop(frame, a);
+      if (s <= 0) return null;
+      const y = SCREEN.y + 104 + i * 59;
+      const w = 150 + noise(i + 3) * 110;
+      return (
+        <g key={i} transform={`translate(${SCREEN.x + 20} ${y}) scale(${Math.min(1.08, s)})`}>
+          <circle cx={14} cy={22} r={14} fill={["#7fa0c4", "#b58fc7", "#7fc29b", "#e6a0a0", "#d9c26a", "#9fc0e0", "#c9a0d6", "#a8c97f", "#e0a070"][i]} stroke={INK} strokeWidth={2} />
+          <rect x={36} y={2} width={w} height={42} rx={16} fill="#fff" stroke="#c7ccd6" strokeWidth={3} />
+          <rect x={50} y={17} width={w * 0.62} height={12} rx={6} fill={INK} opacity={0.75} />
+          <path d={`M${50 + w * 0.68} 23 l6 -9 l6 9 l-6 9z`} fill={TEAL} />
+        </g>
+      );
+    })}
+  </g>
+);
+
 /** A phone held up, screen to us, with one result on it (Min-jun's). (x, y) is its centre; it sits in a hand. */
 export const HeldResult: React.FC<{ x: number; y: number; scale?: number; tilt?: number; head: string }> = ({ x, y, scale = 1, tilt = 6, head }) => (
   <g transform={`translate(${x} ${y}) rotate(${tilt}) scale(${scale})`}>

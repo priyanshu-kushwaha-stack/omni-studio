@@ -115,11 +115,12 @@ export const You: React.FC<{ body: Body; face: Face; frame: number; held?: React
  * the work vest going on in three moves: `vest` 0..0.35 her left arm goes in (the vest hangs off that shoulder),
  * 0.35..0.7 it swings across her back and her right arm finds the other hole, 0.7..1 the zip runs up (elbows out,
  * hands at her front); at 1 it is on and her arms hang. `laugh` 0..1 bobs her shoulders; `headTilt` (degrees) tilts
- * her head to listen. (x, y) is between her feet.
+ * her head to listen; `rap` 0..1 lifts her right hand to the door frame and knocks twice with her knuckles (her
+ * goodbye). (x, y) is between her feet.
  */
-export const SisterBack: React.FC<{ x: number; y: number; scale: number; frame: number; vest: number; laugh?: number; tilt?: number; headTilt?: number }> = ({
-  x, y, scale, frame, vest, laugh = 0, tilt = 0, headTilt = 0,
-}) => {
+export const SisterBack: React.FC<{
+  x: number; y: number; scale: number; frame: number; vest: number; laugh?: number; tilt?: number; headTilt?: number; rap?: number;
+}> = ({ x, y, scale, frame, vest, laugh = 0, tilt = 0, headTilt = 0, rap = 0 }) => {
   const bob = laugh * Math.abs(Math.sin(frame * 0.55)) * -6;
   const sh = -222 + bob;
   const a = Math.min(1, vest / 0.35);
@@ -133,7 +134,13 @@ export const SisterBack: React.FC<{ x: number; y: number; scale: number; frame: 
     const s = { x: side * 38, y: sh + 8 };
     let h: { x: number; y: number };
     let e: { x: number; y: number };
-    if (done) {
+    if (done && side === 1 && rap > 0 && rap < 1) {
+      // up to the door frame at her right, two knocks, down again
+      const up = Math.min(1, rap / 0.25) * Math.min(1, (1 - rap) / 0.2);
+      const knock = rap > 0.25 && rap < 0.8 ? Math.max(0, Math.sin(((rap - 0.25) / 0.55) * Math.PI * 2)) * 10 : 0;
+      h = { x: mix(46, 96, up) + knock, y: mix(-104, -206, up) };
+      e = { x: mix(48, 82, up), y: mix(-160, -150, up) };
+    } else if (done) {
       h = { x: side * 46, y: -104 };
       e = { x: side * 48, y: -160 };
     } else if (z > 0) {

@@ -1,17 +1,20 @@
-// Beat "A Text Would Open Nothing" (script.md v2.1; narration lines 81-89; mood day). Every frame comes from the clips
+// Beat "A Text Would Open Nothing" (script.md v3; narration lines 106-116; mood day). Every frame comes from the clips
 // (`times`), one component per shot.
 //
-//   81  results, the phone in your hand: three boxes, each a big 1 (top grade), one per "Top grade"; your face at the edge.
-//   82  the classroom: your best friend at the next desk turns his phone to you; insert: his 1.
-//   83  paper: "four places in a room": a small room of chairs, four teal; then "everyone in the country who sat it": a
+//   106 results, the phone in your hand: three boxes, each a big 1 (top grade), one per "Top grade"; your face at the edge.
+//   107 the classroom: your best friend at the next desk turns his phone to you; insert: his 1.
+//   108 paper: "four places in a room": a small room of chairs, four teal; then "everyone in the country who sat it": a
 //       sea of dots, the top four per cent teal; on "His grade never cost you yours" your dot and his, side by side,
 //       both teal. Then the two of you: he holds out half a chocolate bar, "Half?"
-//   84  you take it, looking at him, not at the air above him, and eat it.
-//   85  paper over the two of you: a third of all regrets are about education.
-//   86  insert: her jar of brushes on the counter at home.
-//   87  the phone: her name, the box; you type half a line.
-//   88  "A text would open nothing": the thumb over the half-typed text; you turn the phone face down on your knee.
-//   89  (from the end of 88) you're on the bus: a shelter ad with a paper subscribe tag slides by, then the warehouse gates come into the window.
+//   109 his line, "Half?", in his own voice, with the bubble.
+//   110 you take it, looking at him, not at the air above him, and eat it.
+//   111 your phone buzzes: the group chat, nine messages in a column (bars, no words), one after another; your face,
+//       and no card over anyone.
+//   112 paper over the two of you: a third of all regrets are about education.
+//   113 insert: her jar of brushes on the counter at home.
+//   114 the phone: her name, the box; you type half a line.
+//   115 "A text would open nothing": the thumb over the half-typed text; you turn the phone face down on your knee.
+//   116 (from the end of 115) you're on the bus: a shelter ad with a paper subscribe tag slides by, then the warehouse gates come into the window.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -26,42 +29,44 @@ import { blinking, camAt, current, HERO, JIYOON, linear, MINJUN, mix, ramp, type
 import { Deep } from "../sets/common";
 import { HOME, HomeBack } from "../sets/Home";
 import { aimArm, Dim, handAt, timer, type Body } from "./Notebook.Parts";
-import { DepotGates, HeldResult, PastTheWindow, PHONE, PhoneBack, RegretPie, ResultScreen, SeatAndSea, ShelterAd } from "./TextOpensNothing.Parts";
+import { DepotGates, HeldResult, NineMessages, PastTheWindow, PHONE, PhoneBack, RegretPie, ResultScreen, SeatAndSea, ShelterAd } from "./TextOpensNothing.Parts";
 
 // ------------------------------------------------------------------------------------------------ timing
 
 type T = ReturnType<typeof times>;
 
 function times(clips: Clip[], to: number) {
-  const { from, at, end } = timer(clips);
+  const { from, at } = timer(clips);
   return {
-    results: from(81),
-    g1: at(81, 0.16), // "Top grade."
-    g2: at(81, 0.32), // "Top grade."
-    g3: at(81, 0.48), // "Top grade."
-    holds: at(81, 0.7), // "The scholarship holds."
-    friend: from(82), // the classroom, your best friend at the next desk
-    his: at(82, 0.5), // "top grade in maths too": his phone
-    sheet: from(83), // "Here's what you had backwards."
-    room: at(83, 0.2), // "four places in a room"
-    sea: at(83, 0.46), // "the top 4 per cent of everyone in the country who sat it"
-    teal: at(83, 0.64),
-    pair: at(83, 0.82), // "His grade never cost you yours."
-    half: at(83, 0.95), // he holds out half a chocolate bar
-    bubble: end(83) - 2, // "Half?"
-    take: from(84), // "You take it."
-    regret: from(85), // a third of all regrets
-    pie: at(85, 0.3),
-    jar: from(86), // "Her brushes have stood in a jar for six years."
-    her: from(87), // the phone: her name, the box
-    text: from(88), // "A text would open nothing"
-    down: at(88, 0.58), // the phone face down on your knee
-    bus: at(88, 0.86), // the bus (line 89, "You're on the bus.", is too short to hold it alone)
+    results: from(106),
+    g1: at(106, 0.16), // "Top grade."
+    g2: at(106, 0.32), // "Top grade."
+    g3: at(106, 0.48), // "Top grade."
+    holds: at(106, 0.7), // "The scholarship holds."
+    friend: from(107), // the classroom, your best friend at the next desk
+    his: at(107, 0.5), // "top grade in maths too": his phone
+    sheet: from(108), // "Here's what you had backwards."
+    room: at(108, 0.2), // "four places in a room"
+    sea: at(108, 0.46), // "the top 4 per cent of everyone in the country who sat it"
+    teal: at(108, 0.64),
+    pair: at(108, 0.82), // "His grade never cost you yours."
+    half: at(108, 0.95), // he holds out half a chocolate bar
+    bubble: from(109) - 2, // "Half?" (his own voice)
+    take: from(110), // "You take it."
+    buzz: from(111), // "Your phone buzzes. Nine messages from the nine you cut."
+    nine: at(111, 0.62), // "Not one card. A screen opens nothing.": your face, nothing over anyone
+    regret: from(112), // a third of all regrets
+    pie: at(112, 0.3),
+    jar: from(113), // "Her brushes have stood in a jar for six years."
+    her: from(114), // the phone: her name, the box
+    text: from(115), // "A text would open nothing"
+    down: at(115, 0.58), // the phone face down on your knee
+    bus: at(115, 0.86), // the bus (line 89, "You're on the bus.", is too short to hold it alone)
     end: to,
   };
 }
 
-// ------------------------------------------------------------------------------------------------ line 81
+// ------------------------------------------------------------------------------------------------ line 106
 
 const ResultsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = drift(camAt(frame, [[k.results, { x: 960, y: 540, zoom: 1 }], [k.friend, { x: 1060, y: 540, zoom: 1.12 }]]), frame, "results", 3);
@@ -82,7 +87,7 @@ const ResultsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ lines 82-85
+// ------------------------------------------------------------------------------------------------ lines 107-112
 
 const ROOM_OPTS = { ...classroom.defaults, board: "blank" as const, drawn: 0, farRow: true };
 const SS = 1.05;
@@ -170,7 +175,7 @@ function chocolateArms(out: number, reach: number, got: boolean, eat: number) {
 const HalfShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const reach = ramp(frame, k.take + 2, k.take + 14);
   const got = frame >= k.take + 16;
-  const eat = ramp(frame, k.take + 20, k.take + 46);
+  const eat = ramp(frame, k.take + 16, k.buzz - 2);
   const { hisArm, myArm, hisHand, myHand } = chocolateArms(ramp(frame, k.half, k.half + 12), reach, got, eat);
   const cam = drift(camAt(frame, [[k.half, { x: 790, y: 640, zoom: 1.75 }], [k.regret, { x: 780, y: 640, zoom: 1.95 }]]), frame, "half", 2);
   // You look at him, at his face: level, never above his head.
@@ -182,19 +187,43 @@ const HalfShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       myFace={mine} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: 0.05 } }}
       hisProp={!got ? <Chocolate x={hisHand.x - 14} y={hisHand.y - 14} scale={0.9} half="left" tilt={-8} /> : null}
       myProp={got && eat < 0.9 ? <Chocolate x={myHand.x + 14} y={myHand.y - 14} scale={0.9} half="right" tilt={8} /> : null}
-      over={<Bubble frame={frame} at={k.bubble} until={k.take + 20} x={hisHead.x + 40} y={hisHead.y - 74} text="Half?" side="right" />} />
+      over={<Bubble frame={frame} at={k.bubble} until={k.take + 14} x={hisHead.x + 40} y={hisHead.y - 74} text="Half?" side="right" />} />
+  );
+};
+
+/** Your phone buzzes: the group chat fills with nine messages, one after another, and nothing opens over anyone. */
+const BuzzShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const shake = frame < k.buzz + 14 ? Math.sin(frame * 2.4) * 7 : 0;
+  const cam = drift(camAt(frame, [[k.buzz, { x: 1060, y: 540, zoom: 1.1 }], [k.nine, { x: 1120, y: 520, zoom: 1.25 }], [k.regret, { x: 700, y: 520, zoom: 1.2 }]]), frame, "buzz", 2);
+  const props = { cam, mood: "day" as const, frame, options: { ...phone.defaults, mode: "off" as const, thumb: null, behind: "desk" as const } };
+  const spot = phone.spots.face;
+  const step = (k.nine - k.buzz - 10) / 9;
+  const shown = Array.from({ length: 9 }, (_, i) => Math.round(k.buzz + 8 + i * step));
+  const after = ramp(frame, k.nine, k.nine + 16);
+  const face = frame < k.nine
+    ? { brows: "raised" as const, lids: 0, mouth: "flat" as const, eyes: 1.1, look: { x: 1, y: 0.2 } }
+    : { brows: "flat" as const, lids: mix(0, 0.35, after), mouth: "flat" as const, eyes: 1, look: { x: mix(1, 0.4, after), y: mix(0.2, -0.3, after) } };
+  return (
+    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={phone.Back(props)}
+      actors={
+        <>
+          <Figure {...HERO} x={spot.x} y={spot.y} scale={spot.scale} facing={spot.facing} {...face} blink={blinking(frame, 2)} time={frame} />
+          <g transform={`translate(${shake} 0)`}>
+            {phone.Mid?.(props)}
+            <NineMessages frame={frame} at={shown} />
+          </g>
+        </>
+      } />
   );
 };
 
 const RegretShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = drift({ x: 760, y: 640, zoom: 1.6 }, frame, "regret", 2);
-  const eat = ramp(frame, k.take + 20, k.take + 46);
-  const arms = chocolateArms(1, 1, true, eat);
+
   return (
     <>
-      <Desks frame={frame} cam={cam} myArm={arms.myArm} hisArm={arms.hisArm}
-        myFace={{ brows: "none", lids: 0.25, mouth: eat < 0.9 ? "o" : "flat", eyes: 1, look: { x: 0.6, y: 0.2 } }} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: 0.05 } }}
-        myProp={eat < 0.9 ? <Chocolate x={arms.myHand.x + 14} y={arms.myHand.y - 14} scale={0.9} half="right" tilt={8} /> : null} />
+      <Desks frame={frame} cam={cam} myArm={[40, 60]} hisArm={[20, 20]}
+        myFace={{ brows: "none", lids: 0.25, mouth: "flat", eyes: 1, look: { x: 0.3, y: 0.6 } }} hisFace={{ ...EXPRESSIONS.happy, look: { x: 0.9, y: 0.05 } }} />
       <Dim amount={ramp(frame, k.pie, k.pie + 10) * 0.35} />
       <Stage cam={{ x: 960, y: 540, zoom: 1 }} radius={0} origin={{ x: 0, y: 0 }} back={null}
         actors={
@@ -206,7 +235,7 @@ const RegretShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ lines 86-88
+// ------------------------------------------------------------------------------------------------ lines 113-115
 
 const JarShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = drift(camAt(frame, [[k.jar, insert(HOME.jar.x, HOME.jar.y - 110, 2.6)], [k.her, insert(HOME.jar.x, HOME.jar.y - 130, 3.0)]]), frame, "jar", 2);
@@ -252,7 +281,7 @@ const TextShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ line 89
+// ------------------------------------------------------------------------------------------------ line 116
 
 const WIN = bus.spots.window;
 
@@ -288,7 +317,7 @@ const TextOpensNothing: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = times(clips, shot.to);
   const scene = current(frame, [
-    [0, "results"], [k.friend, "friend"], [k.sheet, "sheet"], [k.half, "half"], [k.regret, "regret"], [k.jar, "jar"], [k.her, "her"],
+    [0, "results"], [k.friend, "friend"], [k.sheet, "sheet"], [k.half, "half"], [k.buzz, "buzz"], [k.regret, "regret"], [k.jar, "jar"], [k.her, "her"],
     [k.text, "text"], [k.bus, "bus"],
   ]);
   return (
@@ -297,6 +326,7 @@ const TextOpensNothing: React.FC<{ shot: Shot }> = ({ shot }) => {
       {scene === "friend" && <FriendShot frame={frame} k={k} />}
       {scene === "sheet" && <SheetShot frame={frame} k={k} />}
       {scene === "half" && <HalfShot frame={frame} k={k} />}
+      {scene === "buzz" && <BuzzShot frame={frame} k={k} />}
       {scene === "regret" && <RegretShot frame={frame} k={k} />}
       {scene === "jar" && <JarShot frame={frame} k={k} />}
       {scene === "her" && <HerShot frame={frame} k={k} />}
@@ -306,4 +336,4 @@ const TextOpensNothing: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const textOpensNothing: Beat = { id: "TextOpensNothing", firstLine: 81, Component: TextOpensNothing };
+export const textOpensNothing: Beat = { id: "TextOpensNothing", firstLine: 106, Component: TextOpensNothing };
