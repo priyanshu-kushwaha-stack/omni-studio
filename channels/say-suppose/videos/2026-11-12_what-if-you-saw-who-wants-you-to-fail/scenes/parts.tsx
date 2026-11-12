@@ -202,3 +202,19 @@ export const Glasses: React.FC<{ x: number; y: number; scale: number; pose: Pose
     </g>
   );
 };
+
+/** A chocolate bar in its paper wrapper, or one half of it snapped along the fold (v2: the snack he always shares).
+ *  (x, y) is its centre; `half` is "left", "right" or undefined for the whole bar. */
+export const Chocolate: React.FC<{ x: number; y: number; scale?: number; half?: "left" | "right"; tilt?: number }> = ({ x, y, scale = 1, half, tilt = 0 }) => {
+  const w = half ? 46 : 96;
+  const x0 = half === "right" ? 2 : -48;
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${tilt}) scale(${scale})`}>
+      <rect x={x0} y={-22} width={w} height={44} rx={5} fill="#5a3422" stroke={INK} strokeWidth={4} />
+      {Array.from({ length: half ? 2 : 4 }, (_, i) => <line key={i} x1={x0 + 23 * (i + 1)} y1={-20} x2={x0 + 23 * (i + 1)} y2={20} stroke="#3e2216" strokeWidth={3} />)}
+      <line x1={x0 + 2} y1={0} x2={x0 + w - 2} y2={0} stroke="#3e2216" strokeWidth={3} />
+      {/* the wrapper, peeled back on the outer end */}
+      <path d={half === "right" ? `M${x0 + w - 18} -24 h20 v48 h-20z` : `M${x0 - 2} -24 h20 v48 h-20z`} fill={TEAL} stroke={INK} strokeWidth={4} />
+    </g>
+  );
+};

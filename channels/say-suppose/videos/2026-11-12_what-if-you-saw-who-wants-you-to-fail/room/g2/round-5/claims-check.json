@@ -1,0 +1,57 @@
+{
+  "call_id": "50f31469c7e14de38ff8cb505dfb7340",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 8
+  },
+  "blockers": [
+    {
+      "quote": "The most common regret of a life is education: about a third of all regrets (c11).",
+      "why": "Overstated scope. The source (Roese & Summerville 2005 meta-analysis of 11 regret ranking studies) found education accounted for 32.2% of regrets across those specific studies, but the draft states this as an unqualified universal truth about human life ('of a life'). C11 in claims.md explicitly scopes the claim to 'Across eleven studies'.",
+      "fix": "Across eleven studies, the most common life regret was education: about a third of all regrets (c11).",
+      "domain": "fact",
+      "line": 290
+    },
+    {
+      "quote": "Here's what you had backwards. The curve was never your class. In most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours.",
+      "why": "The wrong belief is framed as a straw man (rules/story.md #7). No high school senior preparing for Korea's national entrance exam genuinely believes the national percentile curve is computed only across their own 100-student classroom. Dropping c13 (the school-level internal naesin curve) turned what was a genuine structural conflict into an implausible misunderstanding. The misconception should be framed as treating a percentage threshold as a fixed local quota of seats.",
+      "fix": "You treated the four per cent like four seats in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours.",
+      "domain": "fact",
+      "line": 284
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 327,
+      "quote": "At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+      "fix": "At the 1992 Olympics, bronze medallists looked happier than silver medallists (c08). A silver medallist thinks of the gold they nearly won. A bronze medallist thinks of nearly winning nothing (c08)."
+    },
+    {
+      "line": 360,
+      "quote": "Claims spoken: c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12.",
+      "fix": "Claims spoken: c01, c02, c03, c04, c05, c06, c07, c08, c10, c11, c12."
+    }
+  ],
+  "keep": [
+    {
+      "line": 209,
+      "quote": "In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05)."
+    },
+    {
+      "line": 261,
+      "quote": "Last year, the country grounded its planes for 35 minutes during the English listening test (c02). This year, you're the one listening."
+    },
+    {
+      "line": 147,
+      "quote": "And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure (c03)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "89b129c3e94e7dcaec437677a1426050fb0e3cf8336b18e53fb9f78881d4612b",
+  "draft_sha256": "daa5aa9490e08f7c9f6c53e4b2307a0065338df875ec1e459612012a414d3afc"
+}

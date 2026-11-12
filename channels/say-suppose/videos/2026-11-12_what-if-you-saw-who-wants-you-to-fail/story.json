@@ -11,85 +11,85 @@
   "tailSec": 2.4,
   "lines": [
     {
-      "text": "Ten o'clock. The doors open, and you've been holding this since four.",
-      "say": "[dry, close, a little breathless, no run-up] Ten o'clock. The doors open, and you've been holding this since four.",
-      "gapAfterSec": 2.0,
+      "text": "Ten o'clock. The academy doors open, and you've been holding this since four.",
+      "say": "[breathless, close, a grin in the voice] Ten o'clock. The academy doors open, and you've been holding this since four.",
+      "gapAfterSec": 4.0,
       "mood": "night",
       "claims": []
     },
     {
       "text": "What if you could see who wants you to fail?",
-      "say": "[curious, low, the question put plainly over the crimson card] What if you could see who wants you to fail?",
+      "say": "[quiet, level, the question laid down after the hug] What if you could see who wants you to fail?",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
       "text": "Because that's your best friend. And that's minus eighty-four.",
-      "say": "[quiet, flat, the second sentence slower and colder] Because that's your best friend. And that's minus eighty-four.",
+      "say": "[flat, hurt, each sentence its own breath] Because that's your best friend. And that's minus eighty-four.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Since this morning, a tag has opened over anyone who hears your good news. You've told no one all day.",
-      "say": "[warm, confiding, a touch amused at your restraint] Since this morning, a tag has opened over anyone who hears your good news. You've told no one all day.",
+      "text": "Since this morning, a card opens over anyone who hears your good news. You've told no one all day.",
+      "say": "[matter-of-fact, intimate] Since this morning, a card opens over anyone who hears your good news. You've told no one all day.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Not because of the tags. Because Min-jun hears everything first. He always has.",
-      "say": "[warm, fond, the last three words soft] Not because of the tags. Because Min-jun hears everything first. He always has.",
+      "text": "Not because of the cards. Because he hears everything first. He always has.",
+      "say": "[warm, fond, a little slower on the last three words] Not because of the cards. Because he hears everything first. He always has.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
       "text": "Min-jun: Knew it. Knew it.",
-      "say": "[delighted, loud, half a laugh, arm already round you] Knew it. Knew it.",
+      "say": "[delighted, breathless, boyish, half shouted into your shoulder] Knew it. Knew it.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
       "text": "Sixty seconds. The card folds shut. His arm stays. So does the number.",
-      "say": "[dry, even, four short beats, the last one quiet] Sixty seconds. The card folds shut. His arm stays. So does the number.",
+      "say": "[hushed, dry, the last four words slower] Sixty seconds. The card folds shut. His arm stays. So does the number.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "The rule, once. Say good news out loud, or what you're going for, to a face, and every time you say it a meter opens over whoever hears, for sixty seconds, from plus one hundred to minus one hundred.",
-      "say": "[exact, unhurried, laying it out once, a small lift on 'every time'] The rule, once. Say good news out loud, or what you're going for, to a face, and every time you say it a meter opens over whoever hears, for sixty seconds, from plus one hundred to minus one hundred.",
+      "text": "The rule, once. Say good news out loud, to a face, and a meter opens over whoever hears it, for sixty seconds, from plus one hundred to minus one hundred.",
+      "say": "[dry, exact, teacherly for one line] The rule, once. Say good news out loud, to a face, and a meter opens over whoever hears it, for sixty seconds, from plus one hundred to minus one hundred.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
       "text": "Plus one hundred: pure joy for you. Minus one hundred: they want you to fail.",
-      "say": "[level, the two halves weighed against each other, the last four words cold] Plus one hundred: pure joy for you. Minus one hundred: they want you to fail.",
+      "say": "[even, a beat between the two halves] Plus one hundred: pure joy for you. Minus one hundred: they want you to fail.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "It never says why. Calls, texts and posts open nothing. Remember that.",
-      "say": "[quiet, a warning, 'Remember that' slow and close] It never says why. Calls, texts and posts open nothing. Remember that.",
+      "text": "It never says why. Only out loud. Only to a face. A call, a text, a post: nothing opens. Remember that.",
+      "say": "[measured, clipped, the last two words leaned on] It never says why. Only out loud. Only to a face. A call, a text, a post: nothing opens. Remember that.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Every night, one kimbap, two halves. You take yours and watch him chew.",
-      "say": "[warm, amused, an ordinary ritual, the last word dry] Every night, one kimbap, two halves. You take yours and watch him chew.",
+      "text": "Every night, one chocolate bar, two halves. You take yours and watch him chew.",
+      "say": "[warm, amused, slow] Every night, one chocolate bar, two halves. You take yours and watch him chew.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Your phone. Ji-yoon, your sister. Six years of nights at the depot to pay for that classroom. You tell her.",
-      "say": "[tender, a little proud of her, 'six years' slowed] Your phone. Ji-yoon, your sister. Six years of nights at the depot to pay for that classroom. You tell her.",
+      "text": "Your phone. Your sister. Six years of night shifts at a warehouse to pay for that classroom. You tell her.",
+      "say": "[softer, close, the middle sentence weighted] Your phone. Your sister. Six years of night shifts at a warehouse to pay for that classroom. You tell her.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
@@ -102,92 +102,85 @@
       "claims": []
     },
     {
-      "text": "You do. You're grinning into a phone. Nothing opens over a phone. You still don't know her number.",
-      "say": "[warm, then the smile fading line by line, the last sentence quiet and exact] You do. You're grinning into a phone. Nothing opens over a phone. You still don't know her number.",
+      "text": "You do. You're grinning into a phone. Nothing opens over a phone. So you still don't know her number.",
+      "say": "[fond, then dry on the last sentence] You do. You're grinning into a phone. Nothing opens over a phone. So you still don't know her number.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Next morning. You've worked it out. Crimson is for enemies. So you test it on one.",
-      "say": "[brisk, amused, confident the way you are, a glint on 'test'] Next morning. You've worked it out. Crimson is for enemies. So you test it on one.",
+      "text": "Next morning. You've worked it out. Red is for enemies. So you test it on one.",
+      "say": "[brisk, amused, a plan in the voice] Next morning. You've worked it out. Red is for enemies. So you test it on one.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Tae-ho, at the shoe lockers. Trash-talks you every morning, two years running.",
-      "say": "[dry, a shrug in it] Tae-ho, at the shoe lockers. Trash-talks you every morning, two years running.",
+      "text": "The rival. Trash-talks you every morning, two years running.",
+      "say": "[dry, half a smile] The rival. Trash-talks you every morning, two years running.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "Tae-ho: Still here?",
-      "say": "[bored, sneering, not looking up] Still here?",
+      "say": "[bored, flat, a sneer without effort] Still here?",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "You hold up the letter.",
-      "say": "[flat, a beat held, the card about to snap] You hold up the letter.",
+      "say": "[quick, expectant] You hold up the letter.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "Minus six. He barely looks up.",
-      "say": "[deflated, amused, the number almost a disappointment] Minus six. He barely looks up.",
+      "say": "[deflated, amused at the deflation] Minus six. He barely looks up.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "Tae-ho: Nice. Move.",
-      "say": "[indifferent, already past you] Nice. Move.",
+      "say": "[flat, two words, already walking] Nice. Move.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Ms. Kang.",
-      "say": "[a small lift, hopeful, two words] Ms. Kang.",
+      "text": "Your maths teacher.",
+      "say": "[quick, a new test] Your maths teacher.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "Ms. Kang: Good.",
-      "say": "[clipped, warm underneath, one word and back to the board] Good.",
+      "say": "[brief, warm underneath, clipped] Good.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "That's all you get, and it's plus forty-one.",
-      "say": "[amused, warm, a little surprised by the number] That's all you get, and it's plus forty-one.",
+      "text": "That's all you get. And it's plus forty-one.",
+      "say": "[surprised, a small laugh] That's all you get. And it's plus forty-one.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "The clerk at the store: zero. Grey. A tour group outside the station: eleven zeros. The cat on the crate: nothing. Cats don't count.",
-      "say": "[quick, deadpan, a list, the last three words thrown away] The clerk at the store: zero. Grey. A tour group outside the station: eleven zeros. The cat on the crate: nothing. Cats don't count.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "So the enemy doesn't care. Here's why.",
-      "say": "[curious, leaning in, the puzzle turning] So the enemy doesn't care. Here's why.",
+      "text": "So the enemy doesn't care. Why?",
+      "say": "[curious, leaning in] So the enemy doesn't care. Why?",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "We measure ourselves against people near our own level, not far above or below.",
-      "say": "[exact, calm, a finding stated once] We measure ourselves against people near our own level, not far above or below.",
+      "say": "[plain, exact, unhurried] We measure ourselves against people near our own level, not far above or below.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -195,8 +188,8 @@
       ]
     },
     {
-      "text": "And envy wants someone who started where you did, in a thing that matters to you.",
-      "say": "[low, closer, each clause landing nearer home] And envy wants someone who started where you did, in a thing that matters to you.",
+      "text": "And envy picks someone who started where you did, in a thing that matters to you.",
+      "say": "[plain, a shade quieter] And envy picks someone who started where you did, in a thing that matters to you.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -204,36 +197,36 @@
       ]
     },
     {
-      "text": "Tae-ho has never once thought about you. Min-jun has the next desk, the same kimbap, the same four seats.",
-      "say": "[quiet, the second sentence slowing with each item, the last one almost hurt] Tae-ho has never once thought about you. Min-jun has the next desk, the same kimbap, the same four seats.",
+      "text": "The rival is twenty places ahead and throws that line at everyone. Your best friend has the next desk, the same chocolate bar, the same exam.",
+      "say": "[dry, then quieter on the second half] The rival is twenty places ahead and throws that line at everyone. Your best friend has the next desk, the same chocolate bar, the same exam.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "But here's the problem. Problem one: the only people who can bleed at your news are the ones in your lane.",
-      "say": "[a turn, dry, the count stated plainly, the end heavy] But here's the problem. Problem one: the only people who can bleed at your news are the ones in your lane.",
+      "text": "But here's the problem. Problem one: the only people who can bleed at your news are the ones in your lane. The same race.",
+      "say": "[a turn, tighter, the hook line] But here's the problem. Problem one: the only people who can bleed at your news are the ones in your lane. The same race.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "So you ask him. Straight out, on the steps.",
-      "say": "[brisk, a decision made, a small breath before 'straight out'] So you ask him. Straight out, on the steps.",
-      "gapAfterSec": 0.35,
+      "text": "So you ask him, on the academy steps.",
+      "say": "[light, a shrug] So you ask him, on the academy steps.",
+      "gapAfterSec": 6.0,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "He can't see it. Nobody sees the tags but you.",
-      "say": "[flat, gentle, a door closing] He can't see it. Nobody sees the tags but you.",
+      "text": "He can't see it. Nobody sees the cards but you.",
+      "say": "[quiet, the second sentence slower] He can't see it. Nobody sees the cards but you.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "And people don't like to admit being maliciously envious, even to themselves.",
-      "say": "[quiet, exact, 'even to themselves' slowed] And people don't like to admit being maliciously envious, even to themselves.",
+      "say": "[dry, gentle] And people don't like to admit being maliciously envious, even to themselves.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -242,63 +235,56 @@
     },
     {
       "text": "So you have a number. And no one to ask.",
-      "say": "[dry, resigned, two short sentences] So you have a number. And no one to ask.",
+      "say": "[flat, alone, the loop left open] So you have a number. And no one to ask.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Eleven. Home. The letter's already on the fridge, next to the kimchi jar where her brushes have stood for six years.",
-      "say": "[hushed, warm, a tired house, the jar noticed and let go] Eleven. Home. The letter's already on the fridge, next to the kimchi jar where her brushes have stood for six years.",
+      "text": "Eleven. Home. The letter's already on the fridge, next to the jar where her paintbrushes have stood for six years.",
+      "say": "[hushed, tired, slowing on the brushes] Eleven. Home. The letter's already on the fridge, next to the jar where her paintbrushes have stood for six years.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "She's in the doorway, pulling on the vest. She doesn't turn round.",
-      "say": "[soft, observed, the last sentence a half-beat late] She's in the doorway, pulling on the vest. She doesn't turn round.",
-      "gapAfterSec": 0.35,
+      "text": "She's in the doorway, pulling on her work vest. She doesn't turn round.",
+      "say": "[soft, observational] She's in the doorway, pulling on her work vest. She doesn't turn round.",
+      "gapAfterSec": 3.0,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "Ji-yoon: Say it again.",
       "say": "Ji-yoon: Say it again.",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 3.0,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "You say it to her back. Nothing opens. A back is not a face.",
-      "say": "[quiet, a rule remembered, the last sentence exact and a little rueful] You say it to her back. Nothing opens. A back is not a face.",
+      "say": "[dry, exact, the rule remembered] You say it to her back. Nothing opens. A back is not a face.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "She laughs, and she's gone.",
-      "say": "[warm, light, over before it lands] She laughs, and she's gone.",
+      "text": "She laughs, and she's gone. And she still hasn't seen your face say it. Not yet.",
+      "say": "[warm, then a shade darker on the last two words] She laughs, and she's gone. And she still hasn't seen your face say it. Not yet.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "And she still hasn't seen your face say it. Not yet.",
-      "say": "[low, an open door, 'not yet' slow] And she still hasn't seen your face say it. Not yet.",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Minus six for the rival. So maybe the number fades the further someone is from your lane. One way to find out.",
-      "say": "[curious, scheming, a grin in the last five words] Minus six for the rival. So maybe the number fades the further someone is from your lane. One way to find out.",
+      "text": "Minus six for the rival. So maybe the number fades the further someone is from your lane.",
+      "say": "[thinking aloud, curious] Minus six for the rival. So maybe the number fades the further someone is from your lane.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Daechi-dong has about a thousand cram schools.",
-      "say": "[exact, matter-of-fact, setting a stage] Daechi-dong has about a thousand cram schools.",
+      "text": "This one neighbourhood in Seoul has about a thousand after-school academies.",
+      "say": "[dry, a little amazed] This one neighbourhood in Seoul has about a thousand after-school academies.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
@@ -306,8 +292,8 @@
       ]
     },
     {
-      "text": "Seoul lets them teach only between five in the morning and ten at night, and inspectors have patrolled the streets to make sure.",
-      "say": "[dry, a little wry on 'inspectors', even pace] Seoul lets them teach only between five in the morning and ten at night, and inspectors have patrolled the streets to make sure.",
+      "text": "And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure.",
+      "say": "[dry, a smile at the inspectors] And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
@@ -316,116 +302,86 @@
     },
     {
       "text": "So at ten, every door on the street opens at once.",
-      "say": "[a lift, the picture arriving, 'at once' bright] So at ten, every door on the street opens at once.",
+      "say": "[building, slower, setting the picture] So at ten, every door on the street opens at once.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "You stand on the academy steps. And you say it. Into the crowd.",
-      "say": "[held breath, three beats, the last two words thrown out and let fall] You stand on the academy steps. And you say it. Into the crowd.",
+      "text": "So you climb the academy steps and say it into the crowd.",
+      "say": "[a breath held, then released on the last word] So you climb the academy steps and say it into the crowd.",
       "gapAfterSec": 3.0,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "A thousand strangers. A thousand zeros. A scatter of teal. And three crimson. All by the kimbap shop. All from your class.",
-      "say": "[awed, slow, counting the field, the last two sentences cold] A thousand strangers. A thousand zeros. A scatter of teal. And three crimson. All by the kimbap shop. All from your class.",
+      "text": "A thousand strangers. A thousand zeros. A few teal. And three red. All by the snack shop. All from your class.",
+      "say": "[hushed, awed, counting, the last two sentences cold] A thousand strangers. A thousand zeros. A few teal. And three red. All by the snack shop. All from your class.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
       "text": "So. Minus means they want you to fail. And now you know exactly who to cut.",
-      "say": "[hard, decided, a wrong certainty, 'exactly' sharp] So. Minus means they want you to fail. And now you know exactly who to cut.",
+      "say": "[hard, decided, wrong] So. Minus means they want you to fail. And now you know exactly who to cut.",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Your year is the last one graded on the old school curve.",
-      "say": "[exact, a little ominous, plain] Your year is the last one graded on the old school curve.",
+      "text": "The exam grades on a curve. In most subjects, only the top 4 per cent get the top grade.",
+      "say": "[plain, exact] The exam grades on a curve. In most subjects, only the top four per cent get the top grade.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
-        "c13"
+        "c01"
       ]
     },
     {
-      "text": "The top school grade goes to the top four per cent, and the five-tier scale after you widens it to ten per cent.",
-      "say": "[level, two facts set side by side, 'after you' pointed] The top school grade goes to the top four per cent, and the five-tier scale after you widens it to ten per cent.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c13"
-      ]
-    },
-    {
-      "text": "In your class, call it four seats. Min-jun wants one. So do you.",
-      "say": "[quiet, the arithmetic landing on two people, the last three words soft] In your class, call it four seats. Min-jun wants one. So do you.",
+      "text": "So you picture your class. A hundred of you. Four places. You're fourth. He's fifth.",
+      "say": "[quiet, counting it out, the last two words close] So you picture your class. A hundred of you. Four places. You're fourth. He's fifth.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "So the meter becomes a weapon.",
-      "say": "[cold, short, a turn] So the meter becomes a weapon.",
+      "say": "[cold, quiet] So the meter becomes a weapon.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Each mock score, you stand up and say it out loud, and read the room.",
-      "say": "[brisk, clinical, 'read the room' almost a sneer] Each mock score, you stand up and say it out loud, and read the room.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Anyone past minus forty goes out of the group chat.",
-      "say": "[flat, efficient, a rule being applied] Anyone past minus forty goes out of the group chat.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Keep the past-paper file moving, or keep the seat? You keep the seat.",
-      "say": "[a choice put quickly, answered at once, no pride in it] Keep the past-paper file moving, or keep the seat? You keep the seat.",
+      "text": "Two weeks. Each mock score, you stand up, say it out loud, and read the room. Anyone who goes red, you stop helping. Stop lending notes.",
+      "say": "[brisk, clipped, a montage voice] Two weeks. Each mock score, you stand up, say it out loud, and read the room. Anyone who goes red, you stop helping. Stop lending notes.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "And every night at the counter:",
-      "say": "[softer, the ritual returning, left hanging] And every night at the counter:",
-      "gapAfterSec": 0.35,
+      "say": "[a half-line, leading in] And every night at the counter:",
+      "gapAfterSec": 5.0,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "You walk past it.",
-      "say": "[quiet, three words, a small ache under the flatness] You walk past it.",
-      "gapAfterSec": 2.0,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "You climb. Three mock scores. Three announcements.",
-      "say": "[clipped, rising, a count up] You climb. Three mock scores. Three announcements.",
+      "text": "You climb.",
+      "say": "[flat, two words] You climb.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "But the higher you go, the redder the room.",
-      "say": "[low, the turn, 'redder' slow] But the higher you go, the redder the room.",
+      "say": "[darker, slower] But the higher you go, the redder the room.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
       "text": "When someone close beats you at something central to who you are, the closer they are, the sharper it cuts.",
-      "say": "[exact, unhurried, a finding that hurts, the end quiet] When someone close beats you at something central to who you are, the closer they are, the sharper it cuts.",
+      "say": "[plain, exact, the last three words slower] When someone close beats you at something central to who you are, the closer they are, the sharper it cuts.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -434,58 +390,59 @@
     },
     {
       "text": "And his number keeps going down.",
-      "say": "[hushed, an open loop, 'down' falling] And his number keeps going down.",
+      "say": "[quiet, the loop] And his number keeps going down.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Your score reaches the top. Min-jun's chair beside you stays empty.",
-      "say": "[even, two pictures, the second one slower, nothing added] Your score reaches the top. Min-jun's chair beside you stays empty.",
+      "text": "You got the place you wanted. And lost the one beside it.",
+      "say": "[flat, hollow, the win and the cost in one breath] You got the place you wanted. And lost the one beside it.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "The reading room. Past midnight. His seat's empty, and his notebook's open.",
-      "say": "[hushed, close, a lamp and a page] The reading room. Past midnight. His seat's empty, and his notebook's open.",
-      "gapAfterSec": 0.35,
+      "text": "The late-night study room. Past midnight. His seat's empty, and his notebook's open.",
+      "say": "[hushed, close, one lamp] The late-night study room. Past midnight. His seat's empty, and his notebook's open.",
+      "gapAfterSec": 5.0,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Your wrong answers, from the past papers you binned. Copied out in his hand. Beside each one, one word. Why.",
-      "say": "[slow, realising, each clause a step, the last word barely voiced] Your wrong answers, from the past papers you binned. Copied out in his hand. Beside each one, one word. Why.",
+      "text": "You stopped helping him. He never stopped helping you.",
+      "say": "[quiet, the floor going out from under you] You stopped helping him. He never stopped helping you.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "He isn't sawing your chair. He's climbing.",
-      "say": "[quiet, the floor shifting, the last two words warm] He isn't sawing your chair. He's climbing.",
+      "say": "[quiet, the turn, a breath before the second sentence] He isn't sawing your chair. He's climbing.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Envy comes in two kinds: benign envy pushes you to move up, malicious envy to pull the other person down.",
-      "say": "[exact, calm, the two kinds held apart with the hands] Envy comes in two kinds: benign envy pushes you to move up, malicious envy to pull the other person down.",
+      "text": "Envy comes in two kinds. One pushes you to move up. The other pushes you to pull the other person down.",
+      "say": "[plain, exact, even] Envy comes in two kinds. One pushes you to move up. The other pushes you to pull the other person down.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": [
+        "c07",
         "c07"
       ]
     },
     {
-      "text": "So the store was wrong. Minus never meant they want you to fail. It meant it hurt.",
-      "say": "[low, the planted line taken back, the last three words slow and gentle] So the store was wrong. Minus never meant they want you to fail. It meant it hurt.",
+      "text": "Minus never meant they want you to fail. It meant it hurt.",
+      "say": "[low, the planted line broken, slow] Minus never meant they want you to fail. It meant it hurt.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain.",
-      "say": "[even, careful, 'one study' honest, the last word soft] In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain.",
+      "say": "[plain, careful, unhurried] In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": [
@@ -493,71 +450,57 @@
       ]
     },
     {
-      "text": "A tag has one colour for every kind of hurt.",
-      "say": "[quiet, a complete thought, the landing line, no rush] A tag has one colour for every kind of hurt.",
+      "text": "A card has one colour for every kind of hurt.",
+      "say": "[quiet, complete, the landing line] A card has one colour for every kind of hurt.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "But here's the second problem. Problem two: hurt needs a lane. Outside yours, nobody bleeds.",
-      "say": "[a turn, dry, the count plain, a certainty that will break] But here's the second problem. Problem two: hurt needs a lane. Outside yours, nobody bleeds.",
+      "say": "[a turn, tighter, the hook] But here's the second problem. Problem two: hurt needs a lane. Outside yours, nobody bleeds.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "And you've only ever read one lane.",
-      "say": "[low, close, an open loop, 'one' pointed] And you've only ever read one lane.",
+      "say": "[soft, ominous, the loop] And you've only ever read one lane.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "The school confirms it. Four years, paid. If the exam holds.",
-      "say": "[bright, then a catch on the last four words] The school confirms it. Four years, paid. If the exam holds.",
+      "say": "[bright, quick, a catch on the last clause] The school confirms it. Four years, paid. If the exam holds.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "For once you run home instead of the store.",
-      "say": "[warm, quick, a little breathless, a small smile] For once you run home instead of the store.",
+      "text": "For once you run home instead of to the store.",
+      "say": "[warm, breathless, running] For once you run home instead of to the store.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Ji-yoon's at the table. A night off. You say it to her face.",
-      "say": "[tender, the last sentence held a half-beat before the snap] Ji-yoon's at the table. A night off. You say it to her face.",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Both arms round you, and her face in your scarf.",
-      "say": "[soft, close, the picture only] Both arms round you, and her face in your scarf.",
-      "gapAfterSec": 0.35,
+      "text": "Your sister's at the table. A night off. You say it to her face.",
+      "say": "[tender, then a held breath on the last sentence] Your sister's at the table. A night off. You say it to her face.",
+      "gapAfterSec": 4.0,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "Ji-yoon: Say it again.",
       "say": "Ji-yoon: Say it again.",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Minus sixty-eight. Over the one person who ever asked to hear it twice.",
-      "say": "[flat, hollow, the number first, the rest slow] Minus sixty-eight. Over the one person who ever asked to hear it twice.",
       "gapAfterSec": 3.0,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "You go stiff in the hug.",
-      "say": "[quiet, exact, five words, no comment] You go stiff in the hug.",
+      "text": "Minus sixty-eight. Over the one person who ever asked to hear it twice.",
+      "say": "[stunned, flat, slow] Minus sixty-eight. Over the one person who ever asked to hear it twice.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
@@ -571,72 +514,56 @@
     },
     {
       "text": "You can't.",
-      "say": "[barely voiced, two words] You can't.",
+      "say": "[barely voiced] You can't.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "It's been measured. Couples whose partner meets good news with enthusiasm report more intimacy and satisfaction.",
-      "say": "[even, careful, a finding set beside the hug, not against it] It's been measured. Couples whose partner meets good news with enthusiasm report more intimacy and satisfaction.",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": [
-        "c09"
-      ]
-    },
-    {
-      "text": "You just watched a tag say what her arms didn't.",
-      "say": "[low, hurt, 'didn't' falling] You just watched a tag say what her arms didn't.",
+      "text": "You just watched a card say what her arms didn't.",
+      "say": "[quiet, bitter, slow] You just watched a card say what her arms didn't.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "You take your bag. And you don't go home. Not that night. Not for a month.",
-      "say": "[flat, then each sentence longer and heavier, the last one quiet] You take your bag. And you don't go home. Not that night. Not for a month.",
+      "say": "[flat, each fragment colder] You take your bag. And you don't go home. Not that night. Not for a month.",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "A week at the reading room. You say nothing good out loud, to anyone, and the meters go quiet, because you have.",
-      "say": "[hushed, tired, the silence heard, 'because you have' gentle] A week at the reading room. You say nothing good out loud, to anyone, and the meters go quiet, because you have.",
+      "text": "A week in the study room. You say nothing good out loud, to anyone, and the cards go quiet, because you have.",
+      "say": "[hushed, tired, the last clause slower] A week in the study room. You say nothing good out loud, to anyone, and the cards go quiet, because you have.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Exam eve. Your mistake notebook, every error this year and why. Leave it, or keep the seat?",
-      "say": "[close, a choice put plainly, the question left in the air for half a beat] Exam eve. Your mistake notebook, every error this year and why. Leave it, or keep the seat?",
+      "text": "The night before the exam. Your own notebook. Every mistake this year, and why. Leave it, or keep your place?",
+      "say": "[quiet, a real question, no pause after it] The night before the exam. Your own notebook. Every mistake this year, and why. Leave it, or keep your place?",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "You leave it on his desk. Half a kimbap on top.",
-      "say": "[quiet, decided, a small warmth on the kimbap] You leave it on his desk. Half a kimbap on top.",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "It might cost you a seat. You leave it anyway.",
-      "say": "[level, honest about the price, 'anyway' steady] It might cost you a seat. You leave it anyway.",
+      "text": "You leave it on his desk. Half a chocolate bar on top.",
+      "say": "[soft, decided, a small smile on the chocolate] You leave it on his desk. Half a chocolate bar on top.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
       "text": "Exam day.",
-      "say": "[a breath, two words, the scale about to open] Exam day.",
+      "say": "[a breath, two words] Exam day.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Last year, the country grounded its flights for the English listening test. For thirty-five minutes, no plane crosses the sky while you listen.",
-      "say": "[awed, slow, the second sentence hushed, 'while you listen' close] Last year, the country grounded its flights for the English listening test. For thirty-five minutes, no plane crosses the sky while you listen.",
+      "text": "Last year, the country grounded its planes for 35 minutes during the English listening test. This year, you're the one listening.",
+      "say": "[hushed, awed, then close and personal] Last year, the country grounded its planes for thirty-five minutes during the English listening test. This year, you're the one listening.",
       "gapAfterSec": 3.0,
       "mood": "morning",
       "claims": [
@@ -644,52 +571,50 @@
       ]
     },
     {
-      "text": "The market opens late. Police motorbikes carry the late ones to the gates. A country holds its breath for you.",
-      "say": "[even, wondering, the last sentence warm and slow] The market opens late. Police motorbikes carry the late ones to the gates. A country holds its breath for you.",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": [
-        "c02"
-      ]
-    },
-    {
-      "text": "At your gate, in the crowd of parents: the warehouse vest. Straight off the shift. The lunch she packed.",
-      "say": "[hushed, a catch in it, three short pictures, the last one tender] At your gate, in the crowd of parents: the warehouse vest. Straight off the shift. The lunch she packed.",
+      "text": "A country holds its breath for you.",
+      "say": "[quiet, complete] A country holds its breath for you.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "You take the lunch. Neither of you says a word. Nothing opens.",
-      "say": "[quiet, still, the last two words almost relieved] You take the lunch. Neither of you says a word. Nothing opens.",
+      "text": "At your gate, in the crowd of parents: the work vest. Straight off the night shift.",
+      "say": "[soft, a catch on the vest] At your gate, in the crowd of parents: the work vest. Straight off the night shift.",
+      "gapAfterSec": 6.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Neither of you says a word. Nothing opens.",
+      "say": "[hushed, tender] Neither of you says a word. Nothing opens.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "And results come in a month. For a month, you say nothing to anyone.",
-      "say": "[low, an open loop, 'nothing' slowed] And results come in a month. For a month, you say nothing to anyone.",
+      "text": "Results come in a month. For a month, you say nothing to anyone.",
+      "say": "[level, the loop, slower on the second sentence] Results come in a month. For a month, you say nothing to anyone.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Results. Grade one. Grade one. Grade one. The scholarship holds.",
-      "say": "[tight, then three beats like flaps turning, then a breath out] Results. Grade one. Grade one. Grade one. The scholarship holds.",
+      "text": "Results. Top grade. Top grade. Top grade. The scholarship holds.",
+      "say": "[tight, then released, each top grade a beat] Results. Top grade. Top grade. Top grade. The scholarship holds.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Min-jun, beside you: grade one in maths too.",
-      "say": "[warm, surprised, glad for him] Min-jun, beside you: grade one in maths too.",
+      "text": "Your best friend, beside you: top grade in maths too.",
+      "say": "[warm, a grin] Your best friend, beside you: top grade in maths too.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Out there the curve is the whole country's: in most subjects, the top four per cent of everyone who sat it.",
-      "say": "[exact, the picture widening, 'everyone' lifted] Out there the curve is the whole country's: in most subjects, the top four per cent of everyone who sat it.",
+      "text": "Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it. His grade never cost you yours.",
+      "say": "[slow, the penny dropping, warm on the last line] Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top four per cent of everyone in the country who sat it. His grade never cost you yours.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -697,53 +622,15 @@
       ]
     },
     {
-      "text": "The same four per cent. A seat in one case, and a sea in the other.",
-      "say": "[quiet, a mirror turning, the two words set against each other] The same four per cent. A seat in one case, and a sea in the other.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c01",
-        "c13"
-      ]
-    },
-    {
-      "text": "You gave him the notebook thinking it was your seat. It was never a seat.",
-      "say": "[soft, rueful, the second sentence slow] You gave him the notebook thinking it was your seat. It was never a seat.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
       "text": "You take it.",
-      "say": "[warm, three words, a small smile] You take it.",
+      "say": "[soft, three words, a smile] You take it.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Now her. Text her, and never see her colour again. Or take the bus to the depot and say it to her face.",
-      "say": "[the dilemma, put plainly, both halves given their weight, no steer] Now her. Text her, and never see her colour again. Or take the bus to the depot and say it to her face.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "A text would open nothing. You could keep her forever on a screen.",
-      "say": "[low, tempting, honest, 'forever' slow] A text would open nothing. You could keep her forever on a screen.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "You're on the bus.",
-      "say": "[flat, decided, four words, a breath after] You're on the bus.",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Across eleven studies, the most common regret of a life is education, about a third of all regrets.",
-      "say": "[even, quiet, a fact laid down gently on the bus seat beside you] Across eleven studies, the most common regret of a life is education, about a third of all regrets.",
+      "text": "In studies of regret, the most common is education: about a third of all regrets.",
+      "say": "[quiet, careful, looking out of the window] In studies of regret, the most common is education: about a third of all regrets.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
@@ -752,70 +639,91 @@
     },
     {
       "text": "Her brushes have stood in a jar for six years.",
-      "say": "[hushed, the fact landing on her, 'six years' slow] Her brushes have stood in a jar for six years.",
+      "say": "[quiet, landing on her] Her brushes have stood in a jar for six years.",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Six o'clock. Her shift ends. You stand on the dock. And you say it.",
-      "say": "[held, close, four beats, the last one let go] Six o'clock. Her shift ends. You stand on the dock. And you say it.",
+      "text": "Text her, and never see her colour again. Or take the bus to the warehouse and say it to her face.",
+      "say": "[level, the dilemma, both halves given equal weight] Text her, and never see her colour again. Or take the bus to the warehouse and say it to her face.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A text would open nothing. You could keep her forever on a screen.",
+      "say": "[low, tempting, slow] A text would open nothing. You could keep her forever on a screen.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You're on the bus.",
+      "say": "[decided, quick, no pause before it] You're on the bus.",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Six o'clock. Her shift ends. You stand on the loading dock. And you say it.",
+      "say": "[hushed, steady, a breath before the last sentence] Six o'clock. Her shift ends. You stand on the loading dock. And you say it.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "The same.",
-      "say": "[flat, two words, no surprise left] The same.",
+      "say": "[flat, two words, no surprise] The same.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "She holds on. And this time you don't go stiff.",
-      "say": "[warm, quiet, 'this time' gentle] She holds on. And this time you don't go stiff.",
+      "say": "[warm, slow, the turn in your body] She holds on. And this time you don't go stiff.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "Ji-yoon: Say it again.",
-      "say": "[first, down the phone: bright, laughing, hungry for it; second, in the doorway with her back to you: thrown over a shoulder, easy, half a yawn; third, through the hug: wet, muffled in your scarf, joyful; fourth, into your shoulder, a moment later: smaller, pleading; fifth, on the dock: steady, crying, asking for it the way she always has] Say it again.",
+      "say": "[bright, laughing, hungry for it] Say it again.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "You say it again. The flaps fold at sixty seconds. And snap open.",
-      "say": "[steady, then the clock, then the snap, the last three words hushed] You say it again. The flaps fold at sixty seconds. And snap open.",
+      "text": "You do.",
+      "say": "[barely there, close] You do.",
       "gapAfterSec": 9.0,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "You said nobody outside your lane bleeds.",
-      "say": "[low, after the silence, the old line read back to you] You said nobody outside your lane bleeds.",
+      "say": "[low, after the silence, the planted line brought back] You said nobody outside your lane bleeds.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "She was never outside your lane. She was in it first.",
-      "say": "[quiet, exact, the turn, 'first' soft and complete] She was never outside your lane. She was in it first.",
+      "say": "[quiet, complete, the landing line, slow] She was never outside your lane. She was in it first.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "Six years ago it was her letter on the fridge.",
-      "say": "[hushed, a picture from before you, slow] Six years ago it was her letter on the fridge.",
+      "say": "[soft, a picture] Six years ago it was her letter on the fridge.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "At the 1992 Olympics, bronze medallists looked happier than silver. Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing.",
-      "say": "[even, warm, a finding told like a story, the two sentences weighed against each other] At the nineteen ninety-two Olympics, bronze medallists looked happier than silver. Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing.",
+      "say": "[plain, exact, gentle, slower through the last two sentences] At the nineteen ninety-two Olympics, bronze medallists looked happier than silver. Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": [
@@ -825,63 +733,56 @@
     },
     {
       "text": "She's not watching you fail. She's watching the life she handed you walk up the dock with the news. And she wants it in.",
-      "say": "[tender, slow, the second sentence a long picture, the last four words simple] She's not watching you fail. She's watching the life she handed you walk up the dock with the news. And she wants it in.",
+      "say": "[tender, slow, the last sentence almost whispered] She's not watching you fail. She's watching the life she handed you walk up the dock with the news. And she wants it in.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "The same number. The same arms. You hold on through the second sixty.",
-      "say": "[quiet, two beats and a complete thought, 'hold on' steady] The same number. The same arms. You hold on through the second sixty.",
+      "say": "[quiet, steady, complete] The same number. The same arms. You hold on through the second sixty.",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
       "text": "Morning. The fridge. She unpins the calendar, and behind it is a letter. Hers. Six years old.",
-      "say": "[hushed, morning light, the reveal in two small words] Morning. The fridge. She unpins the calendar, and behind it is a letter. Hers. Six years old.",
-      "gapAfterSec": 0.35,
+      "say": "[hushed, morning-light, slow on the last three words] Morning. The fridge. She unpins the calendar, and behind it is a letter. Hers. Six years old.",
+      "gapAfterSec": 5.0,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "She tapes yours beside it. She doesn't ask. You don't say it. And you don't pull back.",
-      "say": "[warm, even, four short facts, the last one gentle] She tapes yours beside it. She doesn't ask. You don't say it. And you don't pull back.",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "The brushes stay in the jar.",
-      "say": "[quiet, six words, left as they are] The brushes stay in the jar.",
+      "text": "For once, silence leaves both of you in the room.",
+      "say": "[soft, close, warm] For once, silence leaves both of you in the room.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
       "text": "Tomorrow someone you love will pause half a second before they say congratulations.",
-      "say": "[close, warm, speaking to the viewer now, 'half a second' slowed] Tomorrow someone you love will pause half a second before they say congratulations.",
+      "say": "[quiet, to the viewer, slow] Tomorrow someone you love will pause half a second before they say congratulations.",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
       "text": "That half-second is the other life, going past.",
-      "say": "[quiet, a complete thought, the residue, no rush, 'going past' let go] That half-second is the other life, going past.",
-      "gapAfterSec": 2.0,
+      "say": "[hushed, complete, the residue] That half-second is the other life, going past.",
+      "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Then the door. Min-jun. A letter of his own. He says it.",
-      "say": "[light, warm, then a catch on the last three words] Then the door. Min-jun. A letter of his own. He says it.",
-      "gapAfterSec": 3.0,
+      "text": "Then the door. Your best friend. A letter of his own. He says it. For the first time, the good news isn't yours.",
+      "say": "[light, quick, a smile that is about to stop] Then the door. Your best friend. A letter of his own. He says it. For the first time, the good news isn't yours.",
+      "gapAfterSec": 4.0,
       "mood": "morning",
       "claims": []
     },
     {
       "text": "So, would you still say it to her face? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
-      "say": "[warm, direct, the question real, the rest easy] So, would you still say it to her face? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "say": "[warm, direct, unhurried, no hype] So, would you still say it to her face? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
       "gapAfterSec": 4.0,
       "mood": "morning",
       "claims": []
@@ -892,13 +793,11 @@
     "c12": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3356518/",
     "c04": "https://en.wikipedia.org/wiki/Daechi-dong",
     "c03": "https://www.koreajoongangdaily.com/korea/ordinance-to-extend-hagwon-hours-in-seoul-sparks-debate-over-regulating-cram-schools/12409013",
-    "c13": "https://en.sedaily.com/society/2026/06/22/first-year-high-school-dropouts-top-10000-amid-new-5-tier",
+    "c01": "https://en.wikipedia.org/wiki/College_Scholastic_Ability_Test",
     "c06": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:3346807%20AND%20SRC:MED&resultType=core&format=json",
     "c07": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:19485619%20AND%20SRC:MED&resultType=core&format=json",
     "c05": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:19213918%20AND%20SRC:MED&resultType=core&format=json",
-    "c09": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:15301629%20AND%20SRC:MED&resultType=core&format=json",
     "c02": "https://www.trtworld.com/article/f19ad18cc24f",
-    "c01": "https://en.wikipedia.org/wiki/College_Scholastic_Ability_Test",
     "c11": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2394712/",
     "c08": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:7473022%20AND%20SRC:MED&resultType=core&format=json"
   },

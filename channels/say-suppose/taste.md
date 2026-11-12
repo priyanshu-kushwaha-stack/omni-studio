@@ -10,6 +10,22 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-12
 
+- **"i understood the intent of the script and the scientific part ... but didn't quite follow the complete script, it
+  felt difficult"** Same review: "some of the words i was not aware of, split kimbap, so other people might not
+  understand as well. We can rewrite the characters story probably along similar lines." The idea and the facts
+  landed; the story did not. Every story detail a viewer anywhere knows without being told (a shared snack, not a
+  "split kimbap"; "a late-night study room", not a local term), one clear line of events, and few threads: the
+  people and props a beat needs, nothing else. The setting can stay specific, but nothing in the telling may need a
+  local word to follow. (saw who wants you to fail, G2)
+- **"Names were a little difficult to follow."** G2 first-cut review of the saw-who-wants-you-to-fail film (Min-jun,
+  Ji-yoon, Tae-ho, Ms. Kang). A viewer must never have to remember who a name is: say the role ("your best friend",
+  "your sister", "the rival", "your maths teacher"), introduce a name once beside its role if at all, and keep the
+  named cast to the one or two people the story turns on. (saw who wants you to fail, G2)
+- **"At certain places where we can show the characters actually performing in real and narration stops just to make
+  the users feel those scenes for real would add a lot to this script."** Same review. Give the film's key moments to
+  the characters: the narrator stops and the scene plays, acted in full (faces, hands, a short line in their own
+  voice), long enough to feel it (several such moments, not one). This raises the template's "holds about 5%"
+  for this kind of film; the one wordless peak is still the longest. (saw who wants you to fail, G2)
 - **"A + NOT HIM."** G1 pick on the saw-who-wants-you-to-fail film (Seoul, one autumn): title A, "What If
   You Saw Who Wants You to Fail?", with tag a ("NOT HIM."), on the drawn cold-open frame (your best friend grinning
   under minus eighty-four). The film's own title and the writer's recommendation; the room's three story notes (title

@@ -54,20 +54,27 @@ and its `parts2.tsx` and `sets/`). The kit: `core/engines/whatif/src/kit/` (rig,
 
 ## Beats (narration lines, 0-based) and who builds them
 
-| Beat | File | Lines | Builder | Sets |
+| Beat | File | Lines (v2.1) | Builder | Sets |
 |---|---|---|---|---|
 | Made the Cut | `MadeTheCut.tsx` | 0-6 | A | AcademyStreet (night, the thumbnail's frame) |
-| The Rule | `Rule.tsx` | 7-13 | A | Store; the phone set; a warehouse aisle (drawn in the beat) |
-| Who's Crimson | `WhosCrimson.tsx` | 14-32 | B | kit `schoolCorridor`, `classroom`, `metroPlatform`; Store; AcademyStreet (dusk, steps) |
-| Her Back | `HerBack.tsx` | 33-38 | C | Home (kitchen: fridge, jar of brushes, doorway) |
-| A Thousand Tags | `ThousandTags.tsx` | 39-45 | A | AcademyStreet (night, steps, the crowd, the bus stop) |
-| Four Seats | `FourSeats.tsx` | 46-59 | B | kit `classroom`, `phone`; Store (night) |
-| The Notebook | `Notebook.tsx` | 60-68 | D | ReadingRoom |
-| Say It Again | `SayItAgain.tsx` | 69-80 | C | Home (dining table) |
-| The Country Holds Its Breath | `HoldsBreath.tsx` | 81-90 | D | ReadingRoom; kit `classroom`, `examHall`, `citySkyline`, `street` |
-| A Text Would Open Nothing | `TextOpensNothing.tsx` | 91-101 | D | kit `classroom`, `phone`, `bus` |
-| The Loading Dock | `LoadingDock.tsx` | 102-112 | C | LoadingDock |
-| Two Letters | `TwoLetters.tsx` | 113-119 | C | Home (kitchen, fridge, front door); the end card |
+| The Rule | `Rule.tsx` | 7-13 | A | Store; the phone set; the warehouse aisle |
+| Who's Red | `WhosCrimson.tsx` | 14-31 | B | kit `schoolCorridor`, `classroom`; AcademyStreet (dusk, steps) |
+| Her Back | `HerBack.tsx` | 32-36 | C | Home |
+| A Thousand Cards | `ThousandTags.tsx` | 37-43 | A | AcademyStreet (night, steps, the crowd, the bus stop) |
+| Four in a Hundred | `FourSeats.tsx` | 44-53 | B | kit `classroom`; Store (night) |
+| The Notebook | `Notebook.tsx` | 54-62 | D | ReadingRoom ("the late-night study room") |
+| Say It Again | `SayItAgain.tsx` | 63-71 | C | Home (dining table) |
+| The Country Holds Its Breath | `HoldsBreath.tsx` | 72-80 | D | ReadingRoom; kit `classroom`, `examHall`, `citySkyline`, `street` |
+| A Text Would Open Nothing | `TextOpensNothing.tsx` | 81-89 | D | kit `classroom`, `phone`, `bus` |
+| The Loading Dock | `LoadingDock.tsx` | 90-100 | C | LoadingDock |
+| Two Letters | `TwoLetters.tsx` | 101-106 | C | Home; the end card |
+
+**v2.1 (owner's G2 notes, 2026-11-12, `taste.md`):** plain words (the snack is half of his chocolate bar: `Chocolate`
+in parts.tsx, not `Kimbap`), roles not names, and PERFORMED MOMENTS: every `> HOLD: N s. Performed.` is a gap after a
+line in which the narrator is silent and the characters act the scene in full, beat by beat as the HOLD describes
+(faces, hands, props, who moves first). Stage them in the frames between `lineEnd(clips, i)` and `clips[i + 1].from`;
+they are the owner's ask, so they get the care the peak gets (something changes every 2-4 s, a face reaction within
+2 s).
 
 ## Shared sets (`sets/`) and owners
 
