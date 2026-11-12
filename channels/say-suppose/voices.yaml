@@ -19,3 +19,43 @@ voices:
       engine: qwen3
       ref: brand/voice/arthur-ref.wav
       ref_text: "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+  # Characters: a script line "Name: text" is spoken by that character in their own free local voice, never the
+  # narrator's (owner, 2026-11-12: "the voice is flat and it's plain narration"; picked free local voices). Qwen3-TTS
+  # VoiceDesign (core/lock.yaml) makes each voice from the description below, so nobody is cloned, and takes the
+  # line's [direction] from say.yaml as its emotion. Takes are seeded by the voice, but the model draws each take
+  # afresh, so a character's voice can drift a little between lines: the owner heard A/B on the doubled-money opening
+  # and kept per-line emotion over one voice cloned from a designed clip (2026-11-12, "A: emotion per line").
+  # A name not in the cast takes the stock voice of the first role word in its name ("Bank man" -> man), else
+  # anyone's, and the build says so. Open with the voice itself: gender and a voice type, alto, mezzo, baritone or
+  # bass ("A low, warm female voice:", "A relaxed male baritone:"). Without one the model drifts between takes; a seed
+  # sweep (2026-11-12) put "middle register", "tenor" and "young man" anywhere from 104 to 218 Hz and "baritone" at
+  # 111-129 Hz. Then age, texture and manner, and keep every voice apart from Arthur's.
+  characters:
+    engine: qwen3-design
+    cast:
+      # What If You Doubled Your Money Every Day (2026-11-12): Berlin, Lotte's bakery.
+      Lotte: >-
+        A low, warm female voice: a woman in her late fifties, a baker who has seen everything. Alto, slightly husky,
+        unhurried and dry, a hint of a German accent. Speaks plainly, close to the listener.
+      Jonas: >-
+        A relaxed male baritone: a man of about thirty, the listener's flatmate. Young, warm and a little husky, quick
+        and playful, easy laughter under the words, casual modern English.
+      Bank man: >-
+        A thin, precise male baritone: a bank officer in his fifties. Slightly nasal, polite and measured, every word
+        chosen, a quiet clerk's restraint.
+      Flour man: >-
+        A deep, gravelly male bass: a delivery man in his forties who hauls flour sacks. Big, gruff, loud and blunt, a
+        working man's voice from the back of a van.
+      Woman: >-
+        A sharp, bright female voice: a woman in her sixties on a city tram. Slightly nasal mezzo, quick and
+        indignant, a voice that carries down the whole carriage.
+      Driver: >-
+        A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
+        his shoulder like a public announcement.
+    stock:
+      woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
+      man: A plain, steady male baritone, a man in his forties. Natural and conversational.
+      girl: A high, bright girl's voice, about ten years old. Quick, natural and lively.
+      boy: A high, bright boy's voice, about ten years old. Quick, natural and lively.
+      kid: A high, bright child's voice, about ten years old. Quick, natural and lively.
+      anyone: A clear, neutral mid-range adult voice, in their thirties. Natural and conversational.

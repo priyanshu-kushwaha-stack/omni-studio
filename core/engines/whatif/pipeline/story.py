@@ -8,8 +8,9 @@ spelling out or the delivery needs a direction such as "[whispers]"), timing.yam
 "extra" seconds of action after a line, named "cues" as [line, word], "tempo" for every take and "tempo_lines" as
 {line: tempo} exceptions) and the channel's voices.yaml. Without a timing.yaml, cues already in story.json are kept.
 
-Script rules (channels/say-suppose/cast.md): bare lines under "## [mm:ss]" headings are spoken; "> MOOD: x" sets the
-light for the lines after it; "> HOLD: N s" is a wordless gap of N seconds after the previous line; other "> " lines
+Script rules (channels/say-suppose/cast.md): bare lines under "## [mm:ss]" headings are spoken by the narrator;
+"Name: text" is spoken by that character in their own voice (voices.yaml characters), without the name;
+"> MOOD: x" sets the light for the lines after it; "> HOLD: N s" is a wordless gap of N seconds after the previous line; other "> " lines
 are directions. The first "## " heading without a time ends the spoken script.
 """
 
@@ -31,6 +32,9 @@ MOODS = ("morning", "day", "dusk", "night", "lamp", "frozen")
 CITE_RE = re.compile(r"\s*\(((?:c\d{2,3})(?:\s*,\s*c\d{2,3})*)\)")
 TIMED_HEADING = re.compile(r"^## \[\d{2}:\d{2}\]")
 SKIP_PREFIXES = ("#", "|", "-", "format:", "status:", "claims:")
+# "Lotte: ...", "Bank man: ...": a name of one to three words, capitalised, then a colon (cast.md).
+SPEAKER_RE = re.compile(r"^([A-Z][\w'’-]*(?: [A-Za-z][\w'’-]*){0,2}):\s+(\S.*)$")
+NARRATOR = "narrator"
 
 
 def _ledger(text: str) -> dict[str, tuple[str, str]]:
@@ -59,6 +63,7 @@ def _ledger(text: str) -> dict[str, tuple[str, str]]:
 
 
 LOCAL_ENGINES = ("qwen3",)
+DESIGN_ENGINES = ("qwen3-design",)
 
 
 def _local_voice(channel: Path, narrator: dict) -> dict:
@@ -77,9 +82,8 @@ def _local_voice(channel: Path, narrator: dict) -> dict:
     }
 
 
-def _voice(channel: Path) -> dict:
-    data = yaml.safe_load((channel / "voices.yaml").read_text(encoding="utf-8"))
-    narrator = data["voices"]["narrator"]
+def _voice(channel: Path, voices: dict) -> dict:
+    narrator = voices["narrator"]
     # WHATIF_VOICE=paid|local overrides voices.yaml for one build: the final voice A/B (spec 2026-11-10, section 2).
     if (os.environ.get("WHATIF_VOICE") or narrator.get("use", "paid")) == "local":
         return _local_voice(channel, narrator)
@@ -88,6 +92,68 @@ def _voice(channel: Path) -> dict:
     if narrator.get("variant"):
         voice["variant"] = narrator["variant"]
     return voice
+
+
+def _character_voice(characters: dict, name: str) -> dict:
+    """A character's free local voice, designed from a written description (voices.yaml characters): nobody is cloned.
+    A name missing from the cast takes the stock voice of the first role word in its name (Bank man -> man), else
+    anyone's, and is told so: never the narrator. The name goes into the voice id, which seeds the take, so two
+    unlisted characters on one stock voice still sound apart."""
+    engine = characters.get("engine")
+    if engine not in DESIGN_ENGINES:
+        raise ValueError(f"voices.yaml characters needs an engine from {DESIGN_ENGINES}, not {engine!r}")
+    cast, stock = characters.get("cast") or {}, characters.get("stock") or {}
+    describe = cast.get(name)
+    if describe is None:
+        role = next((w for w in name.lower().split() if w in stock), "anyone")
+        if role not in stock:
+            raise ValueError(f"voices.yaml characters has no voice for {name!r} and no stock voice {role!r}")
+        print(f"voices.yaml: no voice for {name!r}; using the stock {role} voice", file=sys.stderr)
+        describe = stock[role]
+    describe = " ".join(str(describe).split())
+    return {
+        "model": f"local:{engine}",
+        "voiceType": "design",
+        "voiceId": hashlib.sha256(f"{name}\n{describe}".encode()).hexdigest()[:16],
+        "describe": describe,
+    }
+
+
+def _voices(channel: Path, lines: list[dict]) -> tuple[dict, dict]:
+    """The narrator's voice, and each speaking character's (name -> voice). Characters are always local and free."""
+    data = yaml.safe_load((channel / "voices.yaml").read_text(encoding="utf-8"))["voices"]
+    names = dict.fromkeys(l["speaker"] for l in lines if l["speaker"] != NARRATOR)
+    if names and not isinstance(data.get("characters"), dict):
+        raise ValueError(f"script.md has character lines ({', '.join(names)}) but voices.yaml has no characters entry")
+    return _voice(channel, data), {n: _character_voice(data["characters"], n) for n in names}
+
+
+def _spoken(line: str) -> tuple[str, str]:
+    """(speaker, words spoken): "Lotte: One cent." is Lotte's "One cent."; a bare line is the narrator's."""
+    m = SPEAKER_RE.match(line)
+    return (m.group(1), m.group(2)) if m else (NARRATOR, line)
+
+
+def _timing(video: Path, lines: list[dict], cues: dict) -> tuple[float | None, dict]:
+    """timing.yaml: tempo, per-line tempo, extra action seconds after a line and word cues. Returns (tempo, cues)."""
+    timing_path = video / "timing.yaml"
+    if not timing_path.is_file():
+        return None, cues
+    timing = yaml.safe_load(timing_path.read_text(encoding="utf-8")) or {}
+    tempo = float(timing["tempo"]) if timing.get("tempo") is not None else None
+    for index, line_tempo in (timing.get("tempo_lines") or {}).items():
+        lines[int(index)]["tempo"] = float(line_tempo)
+    for index, seconds in (timing.get("extra") or {}).items():
+        lines[int(index)]["gapAfterSec"] = round(lines[int(index)]["gapAfterSec"] + float(seconds), 3)
+    cues = {}
+    for name, (index, word) in (timing.get("cues") or {}).items():
+        spoken = [re.sub(r"[^a-z0-9']", "", w.lower()) for w in lines[int(index)]["text"].split()]
+        if re.sub(r"[^a-z0-9']", "", str(word).lower()) not in spoken:
+            raise ValueError(
+                f"timing.yaml cue {name}: {word!r} is not a word of line {index}: {lines[int(index)]['text']}"
+            )
+        cues[name] = {"line": int(index), "word": str(word)}
+    return tempo, cues
 
 
 def build(video: Path) -> dict:
@@ -135,7 +201,10 @@ def build(video: Path) -> dict:
             if ledger[cid][1] == "dropped":
                 raise ValueError(f"script cites {cid}, which claims.md marks dropped")
         text = CITE_RE.sub("", line).strip()
-        lines.append({"text": text, "say": text, "gapAfterSec": GAP, "mood": mood, "claims": claims})
+        speaker, words = _spoken(text)
+        lines.append(
+            {"text": text, "say": words, "speaker": speaker, "gapAfterSec": GAP, "mood": mood, "claims": claims}
+        )
 
     for l in lines:
         l.pop("_held", None)
@@ -148,28 +217,13 @@ def build(video: Path) -> dict:
 
     old = video / "story.json"
     cues = json.loads(old.read_text(encoding="utf-8")).get("cues", {}) if old.is_file() else {}
-    tempo = None
-    timing_path = video / "timing.yaml"
-    if timing_path.is_file():
-        timing = yaml.safe_load(timing_path.read_text(encoding="utf-8")) or {}
-        if timing.get("tempo") is not None:
-            tempo = float(timing["tempo"])
-        for index, line_tempo in (timing.get("tempo_lines") or {}).items():
-            lines[int(index)]["tempo"] = float(line_tempo)
-        for index, seconds in (timing.get("extra") or {}).items():
-            lines[int(index)]["gapAfterSec"] = round(lines[int(index)]["gapAfterSec"] + float(seconds), 3)
-        cues = {}
-        for name, (index, word) in (timing.get("cues") or {}).items():
-            spoken = [re.sub(r"[^a-z0-9']", "", w.lower()) for w in lines[int(index)]["text"].split()]
-            if re.sub(r"[^a-z0-9']", "", str(word).lower()) not in spoken:
-                raise ValueError(
-                    f"timing.yaml cue {name}: {word!r} is not a word of line {index}: {lines[int(index)]['text']}"
-                )
-            cues[name] = {"line": int(index), "word": str(word)}
+    tempo, cues = _timing(video, lines, cues)
     cited = [c for l in lines for c in l["claims"]]
+    narrator, characters = _voices(video.parent.parent, lines)
     story = {
         "id": video.name,
-        "voice": _voice(video.parent.parent),
+        "voice": narrator,
+        "voices": characters,
         "leadInSec": lead_in,
         "tailSec": TAIL,
         "lines": lines,

@@ -3,7 +3,7 @@ import { rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { VoiceSpec } from "../src/kit/timeline";
+import type { ScriptLine, VideoScript, VoiceSpec } from "../src/kit/timeline";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 /** faster-whisper lives in the studio's media venv; the studio tool passes WHISPER_PY when it runs from a worktree. */
@@ -24,6 +24,9 @@ function run(cmd: string, args: string[]): Promise<string> {
   });
 }
 
+/** What an engine without a direction input reads: directions in square brackets would be spoken as words. */
+export const localText = (text: string) => text.replace(/\s*\[[^\]]*\]\s*/g, " ").replace(/\s+/g, " ").trim();
+
 /** Higgsfield CLI arguments for one take. Eleven v4 takes a one-turn dialogue (direction such as "[whispers]" goes in
  *  the text); text2speech_v2 takes a prompt and an engine variant. */
 export function args(cmd: "create" | "cost", v: VoiceSpec, text: string): string[] {
@@ -33,8 +36,7 @@ export function args(cmd: "create" | "cost", v: VoiceSpec, text: string): string
   }
   if (!v.variant) throw new Error(`voice model ${v.model} needs a variant`);
   // This route takes no direction: "[whispers]" would be spoken as a word.
-  const plain = text.replace(/\s*\[[^\]]*\]\s*/g, " ").trim();
-  return ["generate", cmd, v.model, "--prompt", plain, "--variant", v.variant,
+  return ["generate", cmd, v.model, "--prompt", localText(text), "--variant", v.variant,
     "--voice_type", v.voiceType, "--voice_id", v.voiceId, "--json"];
 }
 
@@ -58,20 +60,44 @@ function find(json: unknown, key: string): unknown {
 /** A free voice made on this Mac (story.py writes model "local:<engine>"), not a paid Higgsfield take. */
 export const isLocal = (v: VoiceSpec) => v.model.startsWith("local:");
 
-/** What a local engine reads: delivery directions in square brackets would be spoken as words, so they go. */
-export const localText = (text: string) => text.replace(/\s*\[[^\]]*\]\s*/g, " ").replace(/\s+/g, " ").trim();
+/** The voice that speaks a line: the narrator's, or the character's own. A character without a voice is an error,
+ *  never the narrator in disguise. */
+export function lineVoice(script: VideoScript, line: ScriptLine): VoiceSpec {
+  if (!script.voice) throw new Error("story has no voice");
+  if (!line.speaker || line.speaker === "narrator") return script.voice;
+  const v = script.voices?.[line.speaker];
+  if (!v) throw new Error(`story.json has no voice for ${line.speaker}: rebuild it with story.py`);
+  return v;
+}
 
-/** One media-venv process for every pending local take, so the model loads once. Each take becomes mono 44.1 kHz
- *  like a paid one. refBase is story.json's folder, which the reference clip path is relative to. */
-export async function synthesizeLocal(jobs: { text: string; out: string }[], v: VoiceSpec, refBase: string): Promise<void> {
-  if (!jobs.length) return;
+
+/** The delivery directions in a line's square brackets, joined: "[deadpan, wiping her hands] Hi." -> "deadpan, ..." */
+export const direction = (text: string) => [...text.matchAll(/\[([^\]]*)\]/g)].map((m) => m[1].trim()).filter(Boolean).join("; ");
+
+/** What local_tts.py makes one take from. A designed voice (a character) hears its description and the line's
+ *  direction as one instruction, and a seed from its voice id so every line keeps the same voice. A cloned voice
+ *  (the narrator) has no instruction input: its direction is dropped. */
+export function localJob(text: string, v: VoiceSpec, out: string, refBase: string): Record<string, unknown> {
+  const engine = v.model.slice("local:".length);
+  const job = { engine, text: localText(text), out };
+  if (v.describe) {
+    const how = direction(text);
+    return { ...job, instruct: how ? `${v.describe} Delivery: ${how}.` : v.describe, seed: parseInt(v.voiceId.slice(0, 8), 16) };
+  }
   if (!v.ref) throw new Error(`local voice ${v.model} has no reference clip`);
-  const raw = jobs.map((j) => ({ text: localText(j.text), tmp: `${j.out}.local.wav`, out: j.out }));
+  return { ...job, ref: resolve(refBase, v.ref), ref_text: v.refText ?? "" };
+}
+
+/** One media-venv process for every pending local take, so each model loads once. Each take becomes mono 44.1 kHz
+ *  like a paid one. refBase is story.json's folder, which reference clip paths are relative to. */
+export async function synthesizeLocal(jobs: { text: string; out: string; voice: VoiceSpec }[], refBase: string): Promise<void> {
+  if (!jobs.length) return;
+  const raw = jobs.map((j) => {
+    const tmp = `${j.out}.local.wav`;
+    return { tmp, out: j.out, job: localJob(j.text, j.voice, tmp, refBase) };
+  });
   const spec = join(tmpdir(), `what-if-local-${process.pid}.json`);
-  writeFileSync(spec, JSON.stringify({
-    engine: v.model.slice("local:".length), ref: resolve(refBase, v.ref), ref_text: v.refText ?? "",
-    jobs: raw.map((j) => [j.text, j.tmp]),
-  }));
+  writeFileSync(spec, JSON.stringify({ jobs: raw.map((j) => j.job) }));
   await run(WHISPER_PY, [join(HERE, "local_tts.py"), spec]);
   for (const j of raw) {
     await run("ffmpeg", ["-v", "error", "-y", "-i", j.tmp, "-ac", "1", "-ar", "44100", j.out]);
