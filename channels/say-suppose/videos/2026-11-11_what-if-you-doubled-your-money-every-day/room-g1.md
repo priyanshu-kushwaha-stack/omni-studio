@@ -1,24 +1,34 @@
 # Room report, G1 (proposal)
 
-Shipped: none. No round is a candidate (lint ok, an ok verdict from story, fact, no fact blocker), so the gate check will fail.
-Calls: 16 of 16
+Shipped: round 10 (f06463ac3062) (shipped by the owner-notes rule (no judge))
+Calls: 20 of 24
+
+## Author's cut
+
+Round 1's draft, the writer's own: room/drafts/77166d076379c45408907337d6bf1828c2d49e6704267a77232f91e06f0c5473.md
+What review cost the voice: 155 lines changed; spine lines changed: SITUATION, DESIRE, CONFLICT, CHANGE, RESULT; keep lines lost: 8
+- lost keep line: ""Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing." Narrator: "That is the most important boring sentence in this video.""
+- lost keep line: "All the notes and coins in India come to about ₹43 lakh crore. You could not withdraw it even if the bank let you; there isn't that much cash."
+- lost keep line: "Bhaiya. Likh lo."
+- lost keep line: ""Most money, sir, is made when a bank lends. And when a bank loan is repaid, the money doesn't go anywhere. It stops existing." Narrator: "That is the most important boring sentence in this video.""
+- lost keep line: "All the notes and coins in India come to about ₹43 lakh crore. You could not withdraw it even if the bank let you; the notes don't exist."
+- lost keep line: "Things are expensive now, beta. The one keeps it going."
+- lost keep line: "If you counted it out loud, one dollar a second, you'd finish in thirty-four years."
+- lost keep line: "Keep going and on day two hundred and sixty-seven there are more dollars than atoms in the observable universe (about 10^80)."
 
 Owner first: round 1's draft went to the owner at 2026-11-11T18:11:59+00:00
 
-## Open notes in round 8
+## Open notes in round 10
 
-- claims check (fact) blocker, line 43: ""Day two hundred and sixty-seven. More dollars than atoms in the universe." (about 10^80, c09)". Overstates scope beyond what c09 and its source support. The source URL (en.wikipedia.org/wiki/Observable_universe) and verbatim quote ("approximately 10^80 hydrogen atoms, also known as the Eddington number") measure the observable universe, not the entire universe, which may be infinite. The claim row in claims.md c09 explicitly specifies "atoms in the observable universe". Fix: "Day two hundred and sixty-seven. More dollars than atoms in the observable universe." (about 10^80, c09)
-- claims check (fact) blocker, line 41: "Counting it out loud now takes seventeen thousand years (c08).". Overstates precision. 2^39 seconds is approximately 17,421 years (or 17,400 years as given in the c08 quote). The claim in claims.md c08 explicitly requires the caveat "about seventeen thousand", but the draft speaks it as an exact number without "about". Fix: Counting it out loud now takes about seventeen thousand years (c08).
-- claims check (fact) blocker, line 41: ""This morning you were given more than you had ever had in your life, added together."". Arithmetic error on doubling series. On day forty (2^39 = $550 billion), the new money given at midnight is 2^38 ($275 billion), which is not more than all previous days' balances added together ($550 billion), nor more than all previous credits added together ($275 billion). As correctly stated in line 37 ("Today is always your whole life so far, plus one"), it is your total balance that exceeds everything before it added together, not the morning increment. Fix: "This morning your balance is more than your whole life so far, added together."
-- claims check keep, line 38: ""Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing. The Bank of England wrote that down in 2014." (c03, c04)"
-- claims check keep, line 43: ""On most computer systems, the number box is sixty-four bits. And because the bank counts in cents, day fifty-eight overflows into a negative nineteen-digit number (c06).""
-- claims check keep, line 36: "Wagenaar and Sagaria (1975) (c05): asked to extend a doubling series, people guess a small fraction of the truth, and being told doesn't fix it."
-- story editor (story) blocker, line 36: "You put down a deposit on a flat with a view, half a million's worth, sure that doubling grows slowly enough to leave you with just enough for this one.". Check #5 But / therefore fails. Because the power doubles the remaining balance, this deposit—and every later transfer—must change all subsequent balances and crossover days, but the outline continues using the untouched powers-of-two sequence. Fix: Either recalculate every later balance and deadline after each withdrawal, or make the uses leave the doubling account untouched. For this beat: sign a binding purchase agreement payable on day thirty-one, with no deposit leaving the account; apply the same accounting explicitly to the camera, Nana's transfer, the loan test and the giving montage.
-- story editor (story) blocker, line 47: "You look at your balance out of habit: 0. "Mrs. Vance. On the tab."". Check #4 A habit, then the change fails. The opening habit is checking the balance before deciding and asking for a tab when it is thin; the ending repeats that exact sequence. Fix: Morning: you point to the notebook before touching the phone. Mrs. Vance writes two. Only then does the phone light up with 0; you glance once and turn it face-down.
-- story editor (story) blocker, line 36: "Day fifteen: the camera Theo wanted; he points it at your balance and never puts it down.". Check #6 Every use has a gap fails. You expect to obtain the camera and obtain exactly the camera; no surprising result turns the use. Fix: Day fifteen: you expect the camera to preserve a private joke between you and Theo; instead it records proof that escapes the flat, so by day twenty-five strangers on the pier know your name.
-- story editor keep, line 41: "Your double is her half."
-- story editor keep, line 38: "That is the most important boring sentence in this video."
-- story editor keep, line 45: "for the part that ends."
+- claims check keep, line 8: "Whatever is in your bank account at midnight is doubled by morning, starting from the one-dollar coin your grandmother sends you on your birthday, and it will not stop: in a month it buys the pier you live on, by day forty-eight it is bigger than everything the whole world makes in a year (about $128 trillion, the IMF's 2026 projection; claims.md c01), and by day fifty-eight it overflows the number box most computers count in (c06)."
+- claims check keep, line 40: ""Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing. The Bank of England wrote that down in 2014." (c03, c04)"
+- claims check keep, line 46: ""On most computer systems, the number box is sixty-four bits. And because the bank counts in cents, day fifty-eight overflows into a negative nineteen-digit number (c06).""
+- story editor (story) blocker, line 38: "(Every purchase until the repayment night is on a tab or a promise, every payment deferred to the repayment night, so the balances on the counter stay the clean powers of two.)". #5 But / therefore fails: no money is spent, yet the next beat raises local prices and the turn later says, "You spend here." The consequence has no cause. Fix: Defer purchases only through day thirty-one. Then have you actually clear the pier's tabs and pay local suppliers; show rounded balances thereafter, and move the first price rise to the following morning.
+- story editor (story) blocker, line 34: "Every midnight, your money doubles. A month ago you looked at that screen before you ordered this coffee. This morning you could buy the coffee, the kiosk, the pier, the street behind it and the ship coming in.". #3 Second hook by 0:30 fails at the stated pace: the cold open contains roughly thirty seconds of speech before the separate premise question, so its 0:20 endpoint is impossible. Fix: Replace the spoken opening with: "Mrs. Vance: What is that? Theo: Day thirty-one. Every midnight, your bank balance doubles. This morning it passed a billion dollars. You can buy this coffee, this kiosk, this pier—and tonight it doubles again." Then ask the premise question before 0:25.
+- story editor (story) blocker, line 41: "The last square alone holds 9,223,372,036,854,775,808 grains; the whole board 18,446,744,073,709,551,615 (c07).". #7 Misconception first fails its one-number-at-a-time requirement: the beat stacks square numbers and two enormous totals before either can land. Fix: Keep one spoken magnitude: "The last square alone holds nine quintillion grains (c07)." Cut the square-thirteen, square-thirty-three and whole-board totals from narration; let the cup, kiosk, pier and city show the progression.
+- story editor keep, line 42: "Your double is her half."
+- story editor keep, line 47: "for the part that ends."
+- story editor keep, line 49: "Still checking?"
 
 ## Rounds
 
@@ -32,3 +42,6 @@ Owner first: round 1's draft went to the owner at 2026-11-11T18:11:59+00:00
 | 6 | ok | 2/2 | 5 | - |
 | 7 | ok | 2/2 | 6 | - |
 | 8 | ok | 2/2 | 6 | - |
+| 9 | ok | 2/2 | 5 | - |
+| 10 | ok | 2/2 | 3 | - |
+

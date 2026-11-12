@@ -296,14 +296,112 @@
       "judge": null,
       "owner_notes": true,
       "candidate": false
+    },
+    {
+      "round": 9,
+      "draft_sha256": "ecb1e4701221ea43727c6e2a5b491fd144615c85043ddbd67cd7696fc1f789f0",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "9a76cd7cc93148e6a27b2c6da5b7a3c7",
+          "file": "room/g1/round-9/claims-check.json",
+          "output_sha256": "9a2423d7b7e7931877ecfbd231c76b07a674cb84d0c56931c95e83858ababac9",
+          "blockers": 2
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "388f1bcd3073442e9b43cb00c7500924",
+          "file": "room/g1/round-9/story-editor.json",
+          "output_sha256": "126eca8f435ccf02403832db0c6d971f64666166ac0b5ca9a222d07c91786305",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 10,
+      "draft_sha256": "f06463ac30627beba642c7cc6f4a8fa960fa8eee77b971519ff3e2550616defa",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "25c9021cc366466cbd249c5bb1af4837",
+          "file": "room/g1/round-10/claims-check.json",
+          "output_sha256": "540808101f27c3b6f570e3a1f868481b04e5dc31ea1a3c50942e1e313d0faf3f",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "fbe86e28a8bf4d8ba1093cb83de55484",
+          "file": "room/g1/round-10/story-editor.json",
+          "output_sha256": "0237e1c88dba60d5b15489e1ff032bed1e4d51abade5defcf79302c6217bf744",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
-  "shipped": null,
-  "calls": 16,
-  "cap": 16,
-  "author_cut": null,
+  "shipped": {
+    "round": 10,
+    "artifact_sha256": "f06463ac30627beba642c7cc6f4a8fa960fa8eee77b971519ff3e2550616defa"
+  },
+  "calls": 20,
+  "cap": 24,
+  "author_cut": {
+    "round": 1,
+    "draft_sha256": "77166d076379c45408907337d6bf1828c2d49e6704267a77232f91e06f0c5473",
+    "cost": {
+      "lines_changed": 155,
+      "header_changed": [
+        "SITUATION",
+        "DESIRE",
+        "CONFLICT",
+        "CHANGE",
+        "RESULT"
+      ],
+      "keep_lost": [
+        "\"Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing.\" Narrator: \"That is the most important boring sentence in this video.\"",
+        "All the notes and coins in India come to about \u20b943 lakh crore. You could not withdraw it even if the bank let you; there isn't that much cash.",
+        "Bhaiya. Likh lo.",
+        "\"Most money, sir, is made when a bank lends. And when a bank loan is repaid, the money doesn't go anywhere. It stops existing.\" Narrator: \"That is the most important boring sentence in this video.\"",
+        "All the notes and coins in India come to about \u20b943 lakh crore. You could not withdraw it even if the bank let you; the notes don't exist.",
+        "Things are expensive now, beta. The one keeps it going.",
+        "If you counted it out loud, one dollar a second, you'd finish in thirty-four years.",
+        "Keep going and on day two hundred and sixty-seven there are more dollars than atoms in the observable universe (about 10^80)."
+      ]
+    }
+  },
   "presented": {
     "draft_sha256": "77166d076379c45408907337d6bf1828c2d49e6704267a77232f91e06f0c5473",
     "at": "2026-11-11T18:11:59+00:00"

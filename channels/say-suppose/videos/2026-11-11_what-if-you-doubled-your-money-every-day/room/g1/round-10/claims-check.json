@@ -1,0 +1,47 @@
+{
+  "call_id": "25c9021cc366466cbd249c5bb1af4837",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 50,
+      "quote": "Theo, camera up: \"One question. Say you'd been minus one at midnight.\" \"Theo.\" \"Minus two. Minus four. Day thirty-one you owe a billion. Day forty-nine, you owe the planet.\" On the wall: DAY 50. 0.",
+      "fix": "Theo, camera up: \"One question. Say you'd been minus one at midnight.\" \"Theo.\" \"Minus two. Minus four. Day thirty-one you owe a billion. Day fifty, you owe the planet.\" On the wall: DAY 50. 0."
+    },
+    {
+      "line": 45,
+      "quote": "Day forty-nine, morning: $281 trillion. Mr. Halloran, second call, very quiet: \"Sir. At midnight your balance will be bigger than every debt on Earth put together.\" Every debt on Earth: more than $365 trillion (c02). At midnight you'd have $563 trillion.",
+      "fix": "Day forty-nine, morning: about $281.5 trillion. Mr. Halloran, second call, very quiet: \"Sir. At midnight your balance will be bigger than every debt on Earth put together.\" Every debt on Earth: surpassed $365 trillion (c02). At midnight you'd have about $563 trillion."
+    },
+    {
+      "line": 72,
+      "quote": "3. Why not spend it abroad, or on gold? Answered at 5:25: wherever you spend, that market's price breaks first; Mansa Musa did it with gold in Cairo.",
+      "fix": "3. Why not spend it abroad, or on gold? Answered at 5:25: wherever you spend, that market's price breaks first (c10); Mansa Musa did it with gold in Cairo (c11)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 8,
+      "quote": "Whatever is in your bank account at midnight is doubled by morning, starting from the one-dollar coin your grandmother sends you on your birthday, and it will not stop: in a month it buys the pier you live on, by day forty-eight it is bigger than everything the whole world makes in a year (about $128 trillion, the IMF's 2026 projection; claims.md c01), and by day fifty-eight it overflows the number box most computers count in (c06)."
+    },
+    {
+      "line": 40,
+      "quote": "\"Most money, sir, is made when a bank lends. And when a loan is repaid, the money doesn't go anywhere. It stops existing. The Bank of England wrote that down in 2014.\" (c03, c04)"
+    },
+    {
+      "line": 46,
+      "quote": "\"On most computer systems, the number box is sixty-four bits. And because the bank counts in cents, day fifty-eight overflows into a negative nineteen-digit number (c06).\""
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "540808101f27c3b6f570e3a1f868481b04e5dc31ea1a3c50942e1e313d0faf3f",
+  "draft_sha256": "f06463ac30627beba642c7cc6f4a8fa960fa8eee77b971519ff3e2550616defa"
+}

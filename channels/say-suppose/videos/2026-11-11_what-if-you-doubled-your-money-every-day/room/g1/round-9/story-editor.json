@@ -1,0 +1,64 @@
+{
+  "call_id": "388f1bcd3073442e9b43cb00c7500924",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "**Cold open: day thirty-one**",
+      "why": "Check #15 fails: this is a teaser from later, explicitly replayed at line 39.",
+      "fix": "Make day thirty-one the chronological start and proceed forward from there. Fold the dollar, footage and earlier mistakes into present-tense props or brief recollections; delete the later replay. This preserves the thumbnail frame and begins inside the power.",
+      "domain": "story",
+      "line": 32
+    },
+    {
+      "quote": "You spend here. **Problem one:** coffee is five. Mrs. Vance closes the notebook: \"Cash only now, love.\" The glance means nothing; you're the reason.",
+      "why": "Check #10 fails: this explains the inflation twist before the designated turn with Nana.",
+      "fix": "Keep the unexplained price rise here, but move \"you're the reason,\" the claim-on-stuff explanation and Cantillon to line 41 after Nana reveals what her savings now buy.",
+      "domain": "story",
+      "line": 40
+    },
+    {
+      "quote": "Day forty-seven: $70.4 trillion. Day forty-eight: $140.7 trillion.",
+      "why": "Check #7 fails: this beat stacks the day-forty-seven balance, day-forty-eight balance, world output, overflow, atom count and global debt before each revelation can land personally.",
+      "fix": "Replace the sequence with: \"Day forty-eight. Your balance passes everything the world makes in a year.\" Let Theo reach the last flap and react. Then introduce the debt threshold as the separate deadline that makes you open the payoff template. Cut the day-forty-seven amount, overflow and atom count from this beat.",
+      "domain": "story",
+      "line": 43
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 36,
+      "quote": "the balances on the counter stay the clean powers of two",
+      "fix": "Let spending visibly reduce the balance and describe later totals as approximate, or defer every payment until the repayment night. A balance cannot remain an exact power of two after money leaves an account that doubles whatever remains."
+    },
+    {
+      "line": 42,
+      "quote": "**One more night**: one more round of giving will fix it.",
+      "fix": "Replace with: \"You stop giving. The prices don't.\" Let that failed attempt trigger Halloran's deadline; repeating the belief after the beat has already disproved it weakens causality."
+    }
+  ],
+  "keep": [
+    {
+      "line": 37,
+      "quote": "Today is always your whole life so far, plus one."
+    },
+    {
+      "line": 41,
+      "quote": "Your double is her half."
+    },
+    {
+      "line": 45,
+      "quote": "for the part that ends."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "126eca8f435ccf02403832db0c6d971f64666166ac0b5ca9a222d07c91786305",
+  "draft_sha256": "ecb1e4701221ea43727c6e2a5b491fd144615c85043ddbd67cd7696fc1f789f0"
+}

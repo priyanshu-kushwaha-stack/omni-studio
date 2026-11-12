@@ -1,0 +1,16 @@
+{
+  "round": 9,
+  "draft_sha256": "ecb1e4701221ea43727c6e2a5b491fd144615c85043ddbd67cd7696fc1f789f0",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": true,
+  "owner_note": [
+    "Remove the concept of viewer.",
+    "Not necessarily it needs to revolve around India."
+  ],
+  "kind": "packaging",
+  "linted_at": "2026-11-12T03:30:22+00:00"
+}
