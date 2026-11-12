@@ -40,3 +40,8 @@ coat, then sitting up with your phone), the free tram (the woman with her bags, 
 know you), Jonas's ground (the score turns 0:2 to 4:2), the bread balloon (it drifts off; Jonas holds the rope), and
 the flour man at the back door. Round 7's two picture notes are in: the opening's cent is a real coin out of your fist
 and the phone keeps 0,01 (only the midnight tear doubles it), and Jonas reads the board on day forty.
+
+Cut: `renders/firstcut/firstcut-v2-720p.mp4`, 1280x720, 9:37, -15.9 LUFS, true peak -2.5 dBTP. `omni qc story_script
+--media` passes (claims, clicks). The music bed exposed one more end-of-take blip after "the lot." (217.8 s), now muted
+(`53@6.838:0.090`, 22 mutes). The Remotion mp4 audio sat 47.6 ms late (AAC priming), so the cut's sound is the
+RoughCutSound pass rendered to WAV and muxed onto the picture; recorded with `omni fix`.
