@@ -90,11 +90,11 @@ export const Bank: React.FC<{ t: ShotTime; page?: boolean; night?: boolean }> = 
             <rect x={1180} y={780} width={420} height={40} rx={6} fill="#c9c6c0" stroke={INK} strokeWidth={6} />
             <rect x={1200} y={820} width={380} height={190} fill="#8a8f98" stroke={INK} strokeWidth={6} />
             {night && <circle cx={1500} cy={560} r={260} fill="#ffd8a0" opacity={0.18} />}
-            <Figure x={1400} y={1010} scale={1.25} facing={-1} pose={{ ...STAND, armF: night ? [95, 20] : [90, 60], armB: night ? [-95, -20] : [-20, 20] }} {...BOSS}
+            <Figure x={1400} y={1010} scale={1.25} facing={-1} pose={{ ...STAND, armF: night ? [60, 50] : [90, 60], armB: night ? [-60, -50] : [-20, 20] }} {...BOSS}
               {...EXPRESSIONS[night ? "sad" : page ? "neutral" : "sceptical"]} {...talk("Herr Brandt")} time={t.f / 30} look={{ x: night ? 0 : -0.9, y: 0.2 }}
               held={night ? undefined : <rect x={-3} y={-24} width={6} height={28} rx={2} fill={INK} />} />
             {night && [-1, 1].map((side) => (
-              <g key={side} transform={`translate(${1395 + side * (6 + rip * 60)} 742) rotate(${side * rip * 14})`}>
+              <g key={side} transform={`translate(${1395 + side * (6 + rip * 150)} 770) rotate(${side * rip * 14})`}>
                 <rect x={side < 0 ? -46 : 0} y={-60} width={46} height={120} fill={PAPER} stroke={INK} strokeWidth={3} />
                 <rect x={side < 0 ? -36 : 6} y={-48} width={30} height={7} fill={INK} opacity={0.6} />
               </g>
