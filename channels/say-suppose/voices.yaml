@@ -33,23 +33,24 @@ voices:
   characters:
     engine: qwen3-design
     cast:
-      # What If You Doubled Your Money Every Day (2026-11-12): Berlin, Lotte's bakery.
+      # What If You Doubled Your Money Every Day (2026-11-12): Berlin, Lotte's bakery. v3 (owner, 2026-11-13): every
+      # speaking role has a name, so a returning character can be introduced; the voices are unchanged.
       Lotte: >-
         A low, warm female voice: a woman in her late fifties, a baker who has seen everything. Alto, slightly husky,
         unhurried and dry, a hint of a German accent. Speaks plainly, close to the listener.
       Jonas: >-
         A relaxed male baritone: a man of about thirty, the listener's flatmate. Young, warm and a little husky, quick
         and playful, easy laughter under the words, casual modern English.
-      Bank man: >-
+      Herr Brandt: >-
         A thin, precise male baritone: a bank officer in his fifties. Slightly nasal, polite and measured, every word
         chosen, a quiet clerk's restraint.
-      Flour man: >-
+      Karl: >-
         A deep, gravelly male bass: a delivery man in his forties who hauls flour sacks. Big, gruff, loud and blunt, a
         working man's voice from the back of a van.
-      Woman: >-
+      Frau Weber: >-
         A sharp, bright female voice: a woman in her sixties on a city tram. Slightly nasal mezzo, quick and
         indignant, a voice that carries down the whole carriage.
-      Driver: >-
+      Mehmet: >-
         A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
         his shoulder like a public announcement.
     stock:

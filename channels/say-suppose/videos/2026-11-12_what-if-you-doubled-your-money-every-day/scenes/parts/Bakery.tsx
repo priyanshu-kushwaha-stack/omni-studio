@@ -13,7 +13,8 @@ import { setLook } from "@whatif/kit/sets/common";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { FONT } from "@whatif/kit/fonts";
 import { INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
-import { ease, handAt, mix, Phone, Push, ramp, Tile, type ShotTime } from "./util";
+import { useTalk } from "./cast";
+import { handAt, mix, Phone, Push, ramp, Tile, type ShotTime } from "./util";
 
 const CAM: Camera = { x: 1150, y: 670, zoom: 2 };
 export const COUNTER_TOP = 820;
@@ -45,12 +46,12 @@ export interface CounterProps {
   floor?: boolean;
   /** Split-flap tiles peeling off the phone's glass and dropping by the basket (day two: the 0 and the 2). */
   flaps?: string[];
-  /** A real one-cent coin falls from your hand and rolls to the basket (the opening; the phone keeps its 0,01). */
-  drop?: boolean;
+  /** The card reader on the counter (the opening): idle, or flashing red DECLINED from frame 28. */
+  reader?: "idle" | "declined";
   you?: { face?: keyof typeof EXPRESSIONS; pose?: keyof typeof YOU_POSES; look?: { x: number; y: number } };
   lotte?: { face?: keyof typeof EXPRESSIONS; pose?: keyof typeof LOTTE_POSES; held?: "chalk" | "roll" | "coin" | "book" | null } | null;
   jonas?: { face?: keyof typeof EXPRESSIONS; held?: "coins" | "note" | "roll" | null } | null;
-  props?: ("deed" | "envelope" | "sacks" | "chess" | "coins" | "book" | "jar")[];
+  props?: ("deed" | "envelope" | "sacks" | "chess" | "coins" | "book")[];
   lamp?: boolean;
   dark?: number;
 }
@@ -105,13 +106,6 @@ const Counter: React.FC<{ props: CounterProps["props"]; t: ShotTime }> = ({ prop
     {props.includes("deed") && <g transform={`translate(${mix(1060, 1250, ramp(t.f, 20, 60))} ${COUNTER_TOP - 30})`}><rect x={-80} y={-20} width={160} height={30} rx={4} fill="#efe9dc" stroke={INK} strokeWidth={5} /><rect x={-20} y={-14} width={40} height={6} fill={TEAL} /></g>}
     {props.includes("envelope") && <g transform={`translate(${mix(1300, 1080, ramp(t.f, 30, 70))} ${COUNTER_TOP - 26})`}><rect x={-60} y={-24} width={120} height={40} rx={3} fill="#f4efe2" stroke={INK} strokeWidth={5} /><path d="M-60 -24 L0 4 L60 -24" fill="none" stroke={INK} strokeWidth={4} /></g>}
     {props.includes("coins") && [0, 1, 2].map((i) => <circle key={i} cx={1100 + i * 30} cy={COUNTER_TOP - 18} r={13} fill={MUSTARD} stroke={INK} strokeWidth={3} />)}
-    {props.includes("jar") && (
-      <g transform={`translate(1330 ${COUNTER_TOP - 22})`}>
-        <rect x={-30} y={-70} width={60} height={70} rx={10} fill="#cfe2f0" opacity={0.7} stroke={INK} strokeWidth={4} />
-        <rect x={-34} y={-82} width={68} height={16} rx={4} fill="#c94a3a" stroke={INK} strokeWidth={4} />
-        {[0, 1, 2].map((i) => <circle key={i} cx={-12 + i * 12} cy={-10 - (i % 2) * 8} r={9} fill={MUSTARD} stroke={INK} strokeWidth={2} />)}
-      </g>
-    )}
     {props.includes("book") && <rect x={1330} y={COUNTER_TOP - 40} width={110} height={30} rx={4} fill="#7a4a3a" stroke={INK} strokeWidth={5} />}
     {props.includes("chess") && (
       <g transform={`translate(1240 ${COUNTER_TOP - 28}) scale(1 0.35)`}>
@@ -161,13 +155,23 @@ const Flaps: React.FC<{ t: ShotTime; chars: string[]; from: { x: number; y: numb
   );
 };
 
-/** A one-cent coin out of your fist: it falls to the counter, bounces and rolls up against the bread basket. */
-const Drop: React.FC<{ t: ShotTime; from: { x: number; y: number } }> = ({ t, from }) => {
-  const fall = ramp(t.f, 4, 22);
-  const roll = ease(ramp(t.f, 22, 60));
-  const x = fall < 1 ? mix(from.x + 40, 1180, fall) : mix(1180, 1440, roll);
-  const y = fall < 1 ? mix(from.y, COUNTER_TOP - 28, fall * fall) : COUNTER_TOP - 28 - Math.abs(Math.sin(roll * Math.PI * 2)) * 30 * (1 - roll);
-  return <circle cx={x} cy={y} r={16} fill="#c98a4a" stroke={INK} strokeWidth={4} />;
+/** The card reader on the counter, its little screen showing 1,40; declined, it flashes red with a cross. */
+const Reader: React.FC<{ t: ShotTime; state: "idle" | "declined" }> = ({ t, state }) => {
+  const red = state === "declined" && t.f >= 28;
+  const on = red && (t.f < 56 || Math.floor(t.f / 8) % 2 === 0);
+  return (
+    <g transform={`translate(1130 ${COUNTER_TOP - 20}) rotate(-8)`}>
+      <rect x={-56} y={-150} width={112} height={160} rx={16} fill="#2a2d36" stroke={INK} strokeWidth={6} />
+      <rect x={-42} y={-136} width={84} height={64} rx={6} fill={on ? "#d8344f" : red ? "#7a2030" : "#cfe9d4"} stroke={INK} strokeWidth={3} />
+      {red ? (
+        <>
+          <path d="M-14 -118 L14 -90 M14 -118 L-14 -90" stroke={PAPER} strokeWidth={7} strokeLinecap="round" />
+          <text x={0} y={-48} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={17} fill={on ? "#d8344f" : PAPER}>DECLINED</text>
+        </>
+      ) : <text x={0} y={-94} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={26} fill={INK}>1,40</text>}
+      {[0, 1, 2].map((r) => [0, 1, 2].map((c) => <rect key={`${r}${c}`} x={-36 + c * 26} y={-34 + r * 14} width={20} height={9} rx={2} fill="#5a5e6a" />))}
+    </g>
+  );
 };
 
 const LAYOUT = {
@@ -179,10 +183,11 @@ const LAYOUT = {
 } as const;
 
 export const Bakery: React.FC<{ t: ShotTime } & CounterProps> = ({
-  t, mood, layout = "medium", board = "1,40", balance = null, phone = "none", spill = 0, floor = false, flaps, drop = false,
+  t, mood, layout = "medium", board = "1,40", balance = null, phone = "none", spill = 0, floor = false, flaps, reader,
   you = {}, lotte = {}, jonas = null, props = [], lamp = true, dark = 0,
 }) => {
   const L = LAYOUT[layout];
+  const talk = useTalk();
   const boardNow = Array.isArray(board) ? board[Math.min(board.length - 1, Math.floor(t.p * board.length * 1.15))] : board;
   const yp = YOU_POSES[you.pose ?? (phone === "up" ? "phoneUp" : phone === "ear" ? "ear" : "rest")];
   const hand = handAt(L.you.x, L.you.y, L.you.s, yp);
@@ -194,16 +199,16 @@ export const Bakery: React.FC<{ t: ShotTime } & CounterProps> = ({
     <g transform={`translate(${CAM.x} ${CAM.y}) scale(${1 / CAM.zoom}) translate(-960 -540)`}>
       <Wall board={boardNow} lamp={lamp} />
       {lotte && (
-        <Figure x={1480} y={1320} scale={2.5} facing={-1} pose={lp} {...LOTTE} {...EXPRESSIONS[lotte.face ?? "neutral"]}
+        <Figure x={1480} y={1320} scale={2.5} facing={-1} pose={lp} {...LOTTE} {...EXPRESSIONS[lotte.face ?? "neutral"]} {...talk("Lotte")}
           time={t.f / 30} look={{ x: 0.9, y: 0.2 }} held={lotte.held ? HELD[lotte.held] : undefined} />
       )}
       <Counter props={props} t={t} />
       {flaps && <Flaps t={t} chars={flaps} from={hand} />}
-      {drop && t.f < 400 && <Drop t={t} from={hand} />}
+      {reader && <Reader t={t} state={reader} />}
       {spill > 0 && <Spill amount={spill} floor={floor} from={hand} />}
       {jonas && L.jonas && (
         <Figure x={L.jonas.x} y={L.jonas.y} scale={L.jonas.s} pose={{ ...STAND, armF: [60, 30], armB: [-12, 14] }} {...FRIEND}
-          {...EXPRESSIONS[jonas.face ?? "happy"]} time={t.f / 30 + 1} look={{ x: 0.9, y: 0.2 }} held={jonas.held ? HELD[jonas.held] : undefined} />
+          {...EXPRESSIONS[jonas.face ?? "happy"]} {...talk("Jonas")} time={t.f / 30 + 1} look={{ x: 0.9, y: 0.2 }} held={jonas.held ? HELD[jonas.held] : undefined} />
       )}
       <Figure x={L.you.x} y={L.you.y} scale={L.you.s} pose={yp} head={MUSTARD} scarf={TEAL} tuft flow={0.15} time={t.f / 30 + 3}
         {...EXPRESSIONS[you.face ?? "neutral"]} look={you.look ?? { x: 0.9, y: 0.3 }} />

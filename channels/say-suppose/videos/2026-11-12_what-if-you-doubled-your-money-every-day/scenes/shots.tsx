@@ -1,9 +1,9 @@
-// The first cut's shot list for script v2: every `> SCENE:` and `> HOLD:` of script.md as a shot, anchored to a spoken
+// The first cut's shot list for script v3 (v2 plus the owner's eight notes of 2026-11-13): every `> SCENE:` and `> HOLD:` of script.md as a shot, anchored to a spoken
 // line (its start, or its end for a hold after it) by the line's opening words, so a new voice take or a reordered
 // script re-times the cut and a line that no longer exists fails the render. Tags are the script's `> TAG:` lines;
 // bubbles its `> BUBBLE:`.
 import type { ReactNode } from "react";
-import { Street, Bank, Flat, Wheat } from "./parts/Places";
+import { Street, Bank, Flat, FormClose, Wheat } from "./parts/Places";
 import { Balloon, BackDoor, Ground, Midnight, TramRide } from "./parts/Scenes";
 import { Bakery } from "./parts/Bakery";
 import { Cairo } from "./parts/Archive";
@@ -21,18 +21,17 @@ const E = (line: string, plus = 0): Anchor => ({ line, edge: "end", plus });
 const day = (n: number) => phoneLines(balanceOn(n));
 
 export const SHOTS: ShotDef[] = [
-  // One Cent (morning, performed, no narrator): the thumbnail's frame at its smallest. A real cent falls from your fist
-  // and rolls to the basket; the phone keeps its 0,01 (round 7: the cent never leaves the phone and comes back).
-  { at: S("Lotte: You dropped"), draw: (t) => <Bakery t={t} mood="morning" layout="thumb" phone="up" balance={day(1)} drop you={{ face: "neutral" }} lotte={{ face: "happy", held: "chalk" }} /> },
-  { at: S("Jonas: That's the whole"), draw: (t) => <Bakery t={t} mood="morning" phone="up" balance={day(1)} jonas={{ face: "sceptical" }} you={{ face: "neutral" }} lotte={{ held: "coin", pose: "palm" }} /> },
-  { at: S("Lotte: One cent."), draw: (t) => <Bakery t={t} mood="morning" layout="lotte" lotte={{ face: "happy", held: "coin", pose: "write" }} jonas={{}} /> },
-  { at: S("Jonas: You count"), draw: (t) => <Bakery t={t} mood="morning" jonas={{ face: "happy", held: "coins" }} you={{ face: "sceptical" }} lotte={{ held: "coin", pose: "rest" }} /> },
-  { at: S("Lotte: In you go"), draw: (t) => <Bakery t={t} mood="morning" layout="lotte" props={["jar", "coins"]} lotte={{ face: "happy", pose: "slide" }} jonas={{}} /> },
-  { at: S("Jonas: Baker's magic"), draw: (t) => <Bakery t={t} mood="morning" props={["jar", "coins"]} jonas={{ face: "sceptical", held: "coins" }} you={{ face: "neutral" }} lotte={{ face: "happy", pose: "rest" }} /> },
-  { at: S("Lotte: Baker's maths"), draw: (t) => <Bakery t={t} mood="morning" layout="lotte" props={["jar"]} lotte={{ face: "neutral", pose: "palm", held: "roll" }} jonas={{}} /> },
+  // One Cent (morning, performed, no narrator): the thumbnail's frame. You tap your phone on the card reader and it
+  // flashes red, DECLINED; Jonas reads your 0,01 out loud; Jonas pays; Lotte's free day-old roll (v3, note 2).
+  { at: S("Lotte: Declined."), draw: (t) => <Bakery t={t} mood="morning" layout="thumb" phone="up" balance={day(1)} reader="declined" you={{ face: "worried" }} lotte={{ face: "sceptical", pose: "rest" }} /> },
+  { at: S("Jonas: One cent?"), draw: (t) => <Bakery t={t} mood="morning" phone="up" balance={day(1)} reader="declined" jonas={{ face: "shocked" }} you={{ face: "worried" }} lotte={{ face: "sceptical", pose: "rest" }} /> },
+  { at: S("Lotte: One cent."), draw: (t) => <Bakery t={t} mood="morning" layout="lotte" reader="declined" lotte={{ face: "happy", pose: "rest" }} jonas={{}} /> },
+  { at: S("Jonas: You count"), draw: (t) => <Bakery t={t} mood="morning" reader="idle" jonas={{ face: "happy", held: "coins" }} you={{ face: "sceptical" }} lotte={{ pose: "rest" }} /> },
+  { at: S("Jonas: My treat."), draw: (t) => <Bakery t={t} mood="morning" reader="idle" props={["coins"]} jonas={{ face: "happy", held: t.p < 0.4 ? "coins" : null }} you={{ face: "sad" }} lotte={{ pose: "palm", held: t.p < 0.4 ? null : "coin" }} /> },
+  { at: S("Lotte: And a day-old"), draw: (t) => <Bakery t={t} mood="morning" layout="lotte" lotte={{ face: "happy", pose: "slide", held: "roll" }} jonas={{}} /> },
   // Midnight, the flat: the lock screen's coin tears into two (the hold), then Jonas.
-  { at: E("Lotte: Baker's maths"), draw: (t) => <Midnight t={t} mode="sleep" /> },
-  { at: E("Lotte: Baker's maths", 45), draw: (t) => <PhoneClose t={t} mood="night" mode="double" days={[1, 2]} /> },
+  { at: E("Lotte: And a day-old"), draw: (t) => <Midnight t={t} mode="sleep" /> },
+  { at: E("Lotte: And a day-old", 45), draw: (t) => <PhoneClose t={t} mood="night" mode="double" days={[1, 2]} /> },
   { at: S("Jonas: Did your phone"), draw: (t) => <Midnight t={t} mode="wake" /> },
   { at: S("Jonas: Two cents."), draw: (t) => <Midnight t={t} mode="lie" /> },
   // Two Cents (lamp): the narrator's first words, your face in the phone's glow; the premise; then the title card.
@@ -41,7 +40,8 @@ export const SHOTS: ShotDef[] = [
   // The Rule (morning): two cents' worth, the thumbnail's frame again; the 0 and the 2 peel off.
   { at: S("Here's the rule, once"), draw: (t) => <Bakery t={t} mood="morning" layout="thumb" phone="up" balance={day(2)} flaps={["0", "2"]} you={{ face: "happy" }} lotte={{ held: "chalk" }} /> },
   { at: S("There is no off switch"), draw: (t) => <PhoneClose t={t} mood="morning" mode="double" days={[2, 3]} /> },
-  { at: S("Two cents. You laugh"), draw: (t) => <Bakery t={t} mood="morning" props={["coins", "jar"]} jonas={{ held: "coins", face: "happy" }} you={{ face: "happy" }} lotte={{ pose: "palm" }} /> },
+  // Jonas pays on screen (v3, note 4): coins into Lotte's palm, two rolls back to him.
+  { at: S("Two cents. You laugh"), draw: (t) => <Bakery t={t} mood="morning" phone="up" balance={day(2)} jonas={{ held: t.p < 0.5 ? "coins" : "roll", face: "happy" }} you={{ face: "happy" }} lotte={{ pose: t.p < 0.5 ? "palm" : "slide", held: t.p < 0.5 ? null : "roll" }} /> },
   { at: S("Lotte doesn't laugh"), draw: (t) => <Bakery t={t} mood="morning" layout="lotte" lotte={{ face: "sceptical", pose: "rest" }} jonas={{}} /> },
   // The king's wheat (lamp, after closing).
   { at: E("Lotte doesn't laugh"), draw: (t) => <Bakery t={t} mood="lamp" props={["chess"]} you={{ face: "neutral" }} lotte={{ pose: "rest" }} /> },
@@ -70,20 +70,22 @@ export const SHOTS: ShotDef[] = [
   { at: S("Lotte: Counts everything"), draw: (t) => <Street t={t} mood="day" mode="party" focus="lotte" lotteFace="happy" /> },
   { at: S("Every morning you planned"), draw: (t) => <Street t={t} mood="dusk" mode="party" lotteFace="happy" jonasFace="happy" /> },
   // The Whole Tram (day).
-  { at: S("Woman: Who's paying"), draw: (t) => <TramRide t={t} focus="woman" /> },
-  { at: S("Driver: The one in"), draw: (t) => <TramRide t={t} focus="driver" /> },
-  { at: S("Woman: Why?"), draw: (t) => <TramRide t={t} focus="woman" /> },
+  { at: S("Frau Weber: Who's paying"), draw: (t) => <TramRide t={t} focus="woman" /> },
+  { at: S("Mehmet: That one"), draw: (t) => <TramRide t={t} focus="driver" /> },
+  { at: S("Frau Weber: Why?"), draw: (t) => <TramRide t={t} focus="woman" /> },
   { at: S("Jonas: That one can't"), draw: (t) => <TramRide t={t} focus="jonas" /> },
-  { at: S("Woman: Well."), draw: (t) => <TramRide t={t} focus="woman" full /> },
-  { at: E("Woman: Well."), draw: (t) => <TramRide t={t} full /> },
+  { at: S("Frau Weber: Well."), draw: (t) => <TramRide t={t} focus="woman" full /> },
+  { at: E("Frau Weber: Well."), draw: (t) => <TramRide t={t} full /> },
   // Yesterday's Number (dusk).
   { at: S("But here's the problem"), draw: (t) => <Street t={t} mood="dusk" mode="after" /> },
   { at: S("Ask people to carry on"), draw: (t) => <PhoneClose t={t} mood="dusk" mode="double" days={[22, 23]} /> },
   { at: S("Each new night"), draw: (t) => <PhoneClose t={t} mood="day" mode="double" days={[23, 24]} /> },
   { at: S("The number's ahead"), draw: (t) => <Bakery t={t} mood="day" phone="up" balance={day(24)} you={{ face: "worried" }} lotte={{}} /> },
-  // The Man from the Bank (day).
-  { at: S("Bank man: Where does"), draw: (t) => <Bank t={t} /> },
-  { at: E("Bank man: Is it a mistake"), draw: (t) => <Bank t={t} page /> },
+  // The Man from the Bank (day): you sign NOT A MISTAKE and he stamps it (v3, note 5: the form, not "Remember that, too").
+  { at: S("Herr Brandt: Where does"), draw: (t) => <Bank t={t} /> },
+  { at: E("Herr Brandt: Is it a mistake"), draw: (t) => <FormClose t={t} mode="sign" /> },
+  { at: S("Herr Brandt: Not a mistake."), draw: (t) => <FormClose t={t} mode="stamp" /> },
+  { at: E("Herr Brandt: Not a mistake.", 30), draw: (t) => <Bank t={t} page /> },
   // A Billion Cents (morning): the deed, then day thirty-one, the key shot.
   { at: S("Day twenty-eight."), draw: (t) => <Bakery t={t} mood="morning" props={["deed"]} you={{ face: "happy", pose: "give" }} lotte={{ pose: "slide", held: "roll" }} /> },
   { at: S("You hand her the deed"), draw: (t) => <Bakery t={t} mood="morning" layout="lotte" lotte={{ face: "neutral", pose: "slide", held: "roll" }} /> },
@@ -102,23 +104,25 @@ export const SHOTS: ShotDef[] = [
   { at: S("Jonas: They're winning"), draw: (t) => <Ground t={t} jonas="jump" score="3 : 2" /> },
   { at: S("Jonas: I don't know what"), draw: (t) => <Ground t={t} jonas="hands" score="3 : 2" /> },
   { at: S("By Sunday you could"), draw: (t) => <Ground t={t} jonas="hands" score="4 : 2" /> },
+  // The balloon is Jonas's delivery idea; Lotte has one oven (v3, note 6).
   { at: S("Day thirty-five."), draw: (t) => <Balloon t={t} /> },
-  { at: S("Lotte: Where is it going"), draw: (t) => <Balloon t={t} focus="lotte" lotteFace="sceptical" /> },
-  { at: S("Jonas: Everywhere."), draw: (t) => <Balloon t={t} focus="jonas" jonasFace="happy" /> },
-  { at: S("Lotte: They'll be cold"), draw: (t) => <Balloon t={t} focus="lotte" lotteFace="sceptical" /> },
-  { at: S("Jonas: People are ordering"), draw: (t) => <Balloon t={t} focus="jonas" jonasFace="shocked" /> },
+  { at: S("Jonas: Bread from the sky"), draw: (t) => <Balloon t={t} focus="jonas" jonasFace="happy" /> },
+  { at: S("Lotte: And who bakes"), draw: (t) => <Balloon t={t} focus="lotte" lotteFace="sceptical" /> },
+  { at: S("Jonas: You do. Look."), draw: (t) => <Balloon t={t} focus="jonas" jonasFace="happy" orders={[40, 100]} /> },
   { at: S("Lotte: I have two hands"), draw: (t) => <Balloon t={t} focus="lotte" lotteFace="determined" /> },
-  { at: E("Lotte: I have two hands"), draw: (t) => <Balloon t={t} gone /> },
+  { at: E("Lotte: I have two hands"), draw: (t) => <Balloon t={t} phase="rise" orders={[100, 400]} /> },
+  { at: S("The balloon comes back"), draw: (t) => <Balloon t={t} phase="back" orders={[400, 400]} jonasFace="worried" /> },
   { at: S("Day thirty-seven."), draw: (t) => <Street t={t} mood="day" mode="spend" youFace="worried" /> },
   { at: S("Here's what you'd believed"), draw: (t) => <PhoneClose t={t} mood="day" mode="double" days={[37, 39]} /> },
   { at: S("It isn't. Money is a ticket"), draw: (t) => <Bakery t={t} mood="day" lotte={{ pose: "rest" }} props={["coins"]} you={{ face: "sceptical" }} /> },
   { at: S("But everything you spend"), draw: (t) => <Bakery t={t} mood="dusk" layout="board" board={["1,40", "2,10"]} lotte={{ pose: "write", held: "chalk" }} /> },
-  // Lotte's Chalkboard (dusk): the flour man at the back door; Jonas reads the board (round 7, not the pensioners).
-  { at: S("Flour man: Triple."), draw: (t) => <BackDoor t={t} speaker="flour" /> },
-  { at: S("Lotte: Triple? For flour?"), draw: (t) => <BackDoor t={t} speaker="lotte" lotteFace="shocked" /> },
-  { at: S("Flour man: Everyone on"), draw: (t) => <BackDoor t={t} speaker="flour" /> },
-  { at: S("Lotte: Same flour."), draw: (t) => <BackDoor t={t} speaker="lotte" lotteFace="determined" /> },
-  { at: S("Flour man: Different street"), draw: (t) => <BackDoor t={t} take lotteFace="sad" flourFace="neutral" /> },
+  // Lotte's Chalkboard (dusk): Karl at the back door, prices rise where the money lands (v3, note 8); Jonas reads the board.
+  { at: S("Karl: Same flour."), draw: (t) => <BackDoor t={t} speaker="flour" /> },
+  { at: S("Lotte: Triple? Karl"), draw: (t) => <BackDoor t={t} speaker="lotte" lotteFace="shocked" /> },
+  { at: S("Karl: Same sack."), draw: (t) => <BackDoor t={t} speaker="flour" up={t.p > 0.5} /> },
+  { at: S("Karl: So the mill"), draw: (t) => <BackDoor t={t} flourFace="neutral" lotteFace="worried" /> },
+  { at: S("Lotte: And I charge"), draw: (t) => <BackDoor t={t} speaker="lotte" lotteFace="sad" /> },
+  { at: S("Karl: Everyone does."), draw: (t) => <BackDoor t={t} take lotteFace="sad" flourFace="neutral" /> },
   { at: S("Day forty."), draw: (t) => <Bakery t={t} mood="dusk" board={["1,40", "2,10", "3,00", "4,20"]} jonas={{ face: "worried", held: "coins" }} lotte={{ pose: "write", held: "chalk" }} /> },
   { at: S("Lotte: Same rolls."), draw: (t) => <Bakery t={t} mood="dusk" layout="lotte" board="4,20" lotte={{ face: "sad", pose: "rest" }} /> },
   { at: S("Same rolls. Four twenty"), draw: (t) => <Bakery t={t} mood="dusk" layout="board" board="4,20" lotte={{ pose: "rest" }} /> },
@@ -144,12 +148,13 @@ export const SHOTS: ShotDef[] = [
   { at: S("Day fifty-five."), draw: (t) => <Wheat t={t} level={[0, 320]} /> },
   { at: E("You have more than that"), draw: (t) => <Wheat t={t} level={[320, 980]} /> },
   { at: S("Here's your choice."), draw: (t) => <Bakery t={t} mood="night" phone="up" balance={day(55)} props={["sacks"]} you={{ face: "worried" }} lotte={{ face: "sad", pose: "rest" }} /> },
-  { at: S("You call the man"), draw: (t) => <Bakery t={t} mood="night" phone="ear" you={{ face: "determined", pose: "ear" }} lotte={{ face: "sad", pose: "rest" }} /> },
+  { at: S("You call Herr Brandt"), draw: (t) => <Bakery t={t} mood="night" phone="ear" you={{ face: "determined", pose: "ear" }} lotte={{ face: "sad", pose: "rest" }} /> },
   // Exactly Zero (lamp).
-  { at: S("Bank man: So it was"), draw: (t) => <Flat t={t} ear face="determined" /> },
-  { at: S("Bank man: Everything goes"), draw: (t) => <Flat t={t} ear face="worried" /> },
-  { at: S("Bank man: Fifty minutes"), draw: (t) => <Flat t={t} face="determined" /> },
-  { at: E("Bank man: Fifty minutes"), draw: (t) => <PhoneClose t={t} mood="lamp" mode="countdown" days={[55, 55]} cents={[2 ** 54, 0]} /> },
+  { at: S("Herr Brandt: So it was"), draw: (t) => <Flat t={t} ear face="determined" /> },
+  // Across the city he tears up the form you signed on day twenty-four (v3, note 5's payoff).
+  { at: S("Herr Brandt: Everything goes"), draw: (t) => <Bank t={t} night /> },
+  { at: S("Herr Brandt: Fifty minutes"), draw: (t) => <Flat t={t} face="determined" /> },
+  { at: E("Herr Brandt: Fifty minutes"), draw: (t) => <PhoneClose t={t} mood="lamp" mode="countdown" days={[55, 55]} cents={[2 ** 54, 0]} /> },
   { at: S("Zero. Everything."), draw: (t) => <Flat t={t} face="relieved" /> },
   { at: S("Then the phone buzzes"), draw: (t) => <PhoneClose t={t} mood="lamp" mode="refund" days={[55, 55]} /> },
   { at: S("One cent at midnight"), draw: (t) => <Flat t={t} face="afraid" /> },
@@ -176,17 +181,17 @@ export const TAGS: TagDef[] = [
   { at: S("Day eighteen."), text: `DAY 18 · ${balanceOn(18)}` },
   { at: S("Day nineteen."), text: `DAY 19 · ${balanceOn(19)}` },
   { at: S("Day twenty-one."), text: `DAY 21 · ${balanceOn(21)}` },
-  { at: S("Woman: Who's paying"), text: `DAY 22 · ${balanceOn(22)}` },
-  { at: S("Bank man: Where does"), text: "DAY 24 · 83.886,08" },
+  { at: S("Frau Weber: Who's paying"), text: `DAY 22 · ${balanceOn(22)}` },
+  { at: S("Herr Brandt: Where does"), text: "DAY 24 · 83.886,08" },
   { at: S("Day twenty-eight."), text: `DAY 28 · ${balanceOn(28)}` },
   { at: S("You hold the phone up"), text: "DAY 31 · 10.737.418,24" },
   { at: S("Day thirty-three."), text: `DAY 33 · ${balanceOn(33)}` },
   { at: S("Day thirty-five."), text: `DAY 35 · ${balanceOn(35)}` },
   { at: E("Day thirty-seven."), text: "DAY 37 · 687.194.767,36" },
-  { at: S("Flour man: Triple."), text: "DAY 40" },
+  { at: S("Karl: Same flour."), text: "DAY 40" },
   { at: S("So you try the obvious"), text: `DAY 45 · ${balanceOn(45)}` },
   { at: S("Day fifty-five."), text: "DAY 55 · 180.143.985.094.819,84" },
-  { at: E("Bank man: Fifty minutes"), text: "23:50 · 0,00" },
+  { at: E("Herr Brandt: Fifty minutes"), text: "23:50 · 0,00" },
   { at: S("Then the phone buzzes"), text: "23:57 · 0,01" },
   { at: E("You count. One cent."), text: "23:59 · 0,00" },
   { at: S("Day fifty-six."), text: "DAY 56" },
@@ -194,6 +199,18 @@ export const TAGS: TagDef[] = [
 
 export interface BubbleDef { at: Anchor; text: string; x: number; y: number; frames?: number }
 export const BUBBLES: BubbleDef[] = [
-  { at: E("Bank man: Where does"), text: "Mine.", x: 960, y: 520, frames: 60 },
-  { at: E("Bank man: So it was"), text: "Yes.", x: 1100, y: 380, frames: 50 },
+  { at: E("Herr Brandt: Where does"), text: "Mine.", x: 960, y: 520, frames: 60 },
+  { at: E("Herr Brandt: So it was"), text: "Yes.", x: 1100, y: 380, frames: 50 },
+];
+
+/** A character's name tag, about a second, the first time they are in frame (owner, 2026-11-13). Screen pixels. */
+export interface NameDef { at: Anchor; name: string; role?: string; x: number; y: number; side?: "left" | "right"; frames?: number }
+export const NAMES: NameDef[] = [
+  { at: S("Lotte: Declined."), name: "YOU", x: 250, y: 170 },
+  { at: S("Lotte: Declined."), name: "LOTTE", role: "the baker", x: 1250, y: 190, side: "left" },
+  { at: S("Jonas: One cent?"), name: "JONAS", role: "your flatmate", x: 860, y: 260 },
+  { at: S("Frau Weber: Who's paying"), name: "FRAU WEBER", role: "on the tram", x: 1330, y: 520 },
+  { at: S("Mehmet: That one"), name: "MEHMET", role: "the driver", x: 1680, y: 500, side: "left" },
+  { at: S("Herr Brandt: Where does"), name: "HERR BRANDT", role: "your bank", x: 1480, y: 470 },
+  { at: S("Day thirty-five."), name: "KARL", role: "the flour man", x: 1560, y: 620, side: "left" },
 ];

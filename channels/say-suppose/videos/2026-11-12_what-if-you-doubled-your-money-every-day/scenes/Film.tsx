@@ -1,5 +1,5 @@
-// The doubled-money first cut (script v2, the character voices): the shot under the playhead, the channel's title card after the hook, a
-// paper subscribe tag at the street party, the script's tags and bubbles, the narration and the music bed. Render
+// The doubled-money first cut (script v3, the character voices): the shot under the playhead, the channel's title card after the hook, a
+// paper subscribe tag at the street party, the script's tags, bubbles and name tags, the narration and a score cue per section. Render
 // with --props=<video>/assets/narration/props.json --public-dir=<video>/assets.
 import { AbsoluteFill, Audio, Freeze, Sequence, staticFile, useCurrentFrame } from "remotion";
 import type { ScriptLine, Timeline } from "@whatif/kit/timeline";
@@ -8,8 +8,10 @@ import { useSoundOnly } from "@whatif/kit/sound";
 import { C_FRAMES, Hi, IdentC } from "../../../brand/IdentC";
 import { S1_FRAMES, SubscribeTag } from "../../../brand/Subscribe";
 import { EndTags } from "./EndTags";
-import { BUBBLES, SHOTS, TAGS, type Anchor } from "./shots";
+import { BUBBLES, NAMES, SHOTS, TAGS, type Anchor } from "./shots";
 import { Bubble, TagStamp } from "./parts/util";
+import { NameTag } from "./parts/cast";
+import { SCORE } from "./sound";
 
 export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string> };
 
@@ -30,8 +32,14 @@ const UNDER_VOICE = 0.039;
 const IN_HOLDS = 0.22;
 const DUCK_IN = 8;
 const DUCK_OUT = 18;
+/** The one planned silence fades out and back over SILENCE_FADE frames, so it is never a step. */
+const SILENCE_FADE = 12;
 export function scoreVolume(frame: number, clips: Timeline["clips"], silent: [number, number]): number {
-  if (frame >= silent[0] && frame < silent[1]) return 0;
+  const quiet = Math.max(0, Math.min(1, (frame - silent[0]) / SILENCE_FADE, (silent[1] - frame) / SILENCE_FADE));
+  if (quiet >= 1) return 0;
+  return (1 - quiet) * duckVolume(frame, clips);
+}
+function duckVolume(frame: number, clips: Timeline["clips"]): number {
   let duck = 0;
   for (const c of clips) {
     const end = c.from + c.frames;
@@ -41,6 +49,20 @@ export function scoreVolume(frame: number, clips: Timeline["clips"], silent: [nu
   }
   return IN_HOLDS + (UNDER_VOICE - IN_HOLDS) * duck;
 }
+
+/** Each cue comes in LEAD frames before its section and crosses the one before it over FADE frames (rules/sound.md #7). */
+const LEAD = 30;
+const FADE = 45;
+const Placed: React.FC<{ src: string; start: number; end: number; gain: (f: number) => number }> = ({ src, start, end, gain }) => {
+  const a = Math.max(0, start - LEAD);
+  const b = end - LEAD + FADE;
+  const w = (f: number) => Math.max(0, Math.min(1, a === 0 ? 1 : (f - a) / FADE, (b - f) / FADE));
+  return (
+    <Sequence from={a} durationInFrames={Math.max(1, b - a)}>
+      <Audio src={staticFile(src)} loop volume={(f) => w(f + a) * gain(f + a)} />
+    </Sequence>
+  );
+};
 
 const Picture: React.FC<FilmProps> = ({ timeline, lines }) => {
   const frame = useCurrentFrame();
@@ -72,6 +94,12 @@ const Overlays: React.FC<FilmProps> = ({ timeline, lines }) => {
         const len = g.frames ?? 120;
         return frame >= at && frame < at + len ? <TagStamp key={k} text={g.text} f={frame - at} /> : null;
       })}
+      {NAMES.map((n, k) => {
+        const at = frameOf(n.at, timeline, lines);
+        const len = n.frames ?? 40;
+        return frame >= at && frame < at + len
+          ? <NameTag key={`n${k}`} name={n.name} role={n.role} x={n.x} y={n.y} side={n.side} f={frame - at} len={len} /> : null;
+      })}
       {BUBBLES.map((b, k) => {
         const at = frameOf(b.at, timeline, lines);
         return frame >= at && frame < at + (b.frames ?? 90) ? <Bubble key={k} text={b.text} x={b.x} y={b.y} f={frame - at} /> : null;
@@ -90,6 +118,7 @@ export const Film: React.FC<FilmProps> = (props) => {
   const partyAt = at("Jonas: Who are all", "start", 60);
   const silent: [number, number] = [at("You count. One cent.", "end"), at("Zero, doubled", "start")];
   const endAt = at("So, would you have erased", "end");
+  const cues = [...SCORE.map((c) => ({ file: c.file, start: c.from ? at(c.from, "start") : 0 })), { file: "theme-light.mp3", start: endAt }];
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <Picture {...props} />
@@ -108,7 +137,10 @@ export const Film: React.FC<FilmProps> = (props) => {
         <EndTags comment={30} />
       </Sequence>
       <Audio src={staticFile("narration/narration.wav")} />
-      <Audio src={staticFile("music/theme-dark.mp3")} loop volume={(f) => scoreVolume(f, clips, silent)} />
+      {cues.map((c, i) => (
+        <Placed key={c.file + i} src={`music/${c.file}`} start={c.start} end={cues[i + 1]?.start ?? totalFrames + LEAD}
+          gain={(f) => scoreVolume(f, clips, silent) * Math.min(1, (totalFrames - f) / 60)} />
+      ))}
     </AbsoluteFill>
   );
 };

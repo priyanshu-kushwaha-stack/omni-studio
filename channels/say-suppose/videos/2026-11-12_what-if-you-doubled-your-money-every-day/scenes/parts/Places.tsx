@@ -8,8 +8,10 @@ import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { SEATED, STAND, walkPose } from "@whatif/kit/rig/pose";
 import type { MoodName } from "@whatif/kit/stage/moods";
+import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, INK, MUSTARD, PAPER } from "@whatif/kit/theme";
 import { LOTTE } from "./Bakery";
+import { useTalk } from "./cast";
 import { ease, mix, Phone, Push, ramp, type ShotTime } from "./util";
 
 export const Tram: React.FC<{ t: ShotTime; mood: MoodName }> = ({ t, mood }) => (
@@ -46,6 +48,7 @@ const PARTY_CROP = { lotte: [1.7, 960, 720], jonas: [1.35, 1500, 760], you: [1.3
 export const Street: React.FC<{ t: ShotTime; mood: MoodName; mode: "party" | "after" | "spend" | "give"; focus?: keyof typeof PARTY_CROP | null;
   jonasFace?: Face; lotteFace?: Face; youFace?: Face }> = ({ t, mood, mode, focus = null, jonasFace = "shocked", lotteFace = "neutral", youFace }) => {
   const walk = mode === "spend" || mode === "give";
+  const talk = useTalk();
   const x = walk ? mix(300, 1400, ease(t.p)) : 230;
   const you = (
     <Figure x={x} y={1010} scale={1.35} pose={walk ? walkPose(t.f / 8) : { ...STAND, armF: [60, 40], armB: [-20, 20] }}
@@ -61,42 +64,90 @@ export const Street: React.FC<{ t: ShotTime; mood: MoodName; mode: "party" | "af
         cast={[]}
         actors={<>
           {party && <Figure x={960} y={1060} scale={1.3} facing={-1} pose={{ ...STAND, armF: [40, 30], armB: [-12, 14] }} {...LOTTE}
-            {...EXPRESSIONS[lotteFace]} time={t.f / 30} look={{ x: 0.6, y: 0.1 }} />}
+            {...EXPRESSIONS[lotteFace]} {...talk("Lotte")} time={t.f / 30} look={{ x: 0.6, y: 0.1 }} />}
           {party && [0, 1, 2, 3, 4].map((i) => <ellipse key={i} cx={860 + i * 50} cy={850 - (i % 2) * 26} rx={30} ry={22} fill={PASTELS[i]} stroke={INK} strokeWidth={4} />)}
           {(mode === "party" || mode === "after") && <Table bare={mode === "after"} f={t.f} />}
           {party && <Figure x={1600} y={1010} scale={1.35} facing={-1} pose={{ ...STAND, armF: [30, 40], armB: [-12, 14] }} head={FRIEND.head} coat="#a8c4e0"
-            {...EXPRESSIONS[jonasFace]} time={t.f / 30 + 1} look={{ x: 0.7, y: 0.1 }} />}
+            {...EXPRESSIONS[jonasFace]} {...talk("Jonas")} time={t.f / 30 + 1} look={{ x: 0.7, y: 0.1 }} />}
           {you}
         </>} />
     </Push>
   );
 };
 
-/** The bank lobby: Herr Brandt behind one desk, you in front of it; by the door the stranger reads a paper. */
-export const Bank: React.FC<{ t: ShotTime; page?: boolean }> = ({ t, page }) => {
+/** The bank lobby: Herr Brandt behind one desk, you in front of it; by the door the stranger reads a paper. `page`: the
+ *  stranger turns a page. `night`: after hours, Herr Brandt alone under one lamp tears the NOT A MISTAKE form in half. */
+export const Bank: React.FC<{ t: ShotTime; page?: boolean; night?: boolean }> = ({ t, page, night }) => {
   const turn = page ? ramp(t.p, 0.35, 0.55) : 0;
+  const talk = useTalk();
+  const rip = night ? ease(ramp(t.p, 0.3, 0.6)) : 0;
   return (
-    <Push t={t}>
-      <SetScene set={bankAtm} mood="day" frame={t.f} cam={bankAtm.cameras.wide} options={{ queue: 0, screen: "menu", cash: 0 }}
+    <Push t={t} from={night ? 2 : 1} to={night ? 2.1 : 1.05} ox={night ? 1400 : 960} oy={night ? 720 : 540}>
+      <SetScene set={bankAtm} mood={night ? "night" : "day"} frame={t.f} cam={bankAtm.cameras.wide} options={{ queue: 0, screen: "menu", cash: 0 }}
         cast={[]}
         actors={
           <>
             <rect x={1180} y={780} width={420} height={40} rx={6} fill="#c9c6c0" stroke={INK} strokeWidth={6} />
             <rect x={1200} y={820} width={380} height={190} fill="#8a8f98" stroke={INK} strokeWidth={6} />
-            <Figure x={1400} y={1010} scale={1.25} facing={-1} pose={{ ...STAND, armF: [90, 60], armB: [-20, 20] }} {...BOSS}
-              {...EXPRESSIONS[page ? "neutral" : "sceptical"]} time={t.f / 30} look={{ x: -0.9, y: 0.2 }}
-              held={<rect x={-3} y={-24} width={6} height={28} rx={2} fill={INK} />} />
-            <Figure x={900} y={1010} scale={1.3} pose={{ ...STAND, armF: [20, 10], armB: [-12, 14] }} {...HERO}
-              {...EXPRESSIONS.neutral} time={t.f / 30 + 2} look={{ x: 0.9, y: 0.1 }} />
-            <g>
-              <Figure x={250} y={1010} scale={1.2} pose={{ ...STAND, armF: [80, 80], armB: [-80, -80] }} head={CRIMSON} coat="#2a2a30" time={0} look={{ x: 0, y: 0 }} />
-              <g transform={`translate(270 790) scale(${mix(1, -1, turn)} 1)`}>
-                <rect x={-80} y={-70} width={160} height={150} fill="#e8e2cf" stroke={INK} strokeWidth={5} />
-                {[0, 1, 2, 3, 4].map((i) => <line key={i} x1={-60} y1={-40 + i * 25} x2={60} y2={-40 + i * 25} stroke={INK} strokeWidth={3} opacity={0.5} />)}
+            {night && <circle cx={1500} cy={560} r={260} fill="#ffd8a0" opacity={0.18} />}
+            <Figure x={1400} y={1010} scale={1.25} facing={-1} pose={{ ...STAND, armF: night ? [95, 20] : [90, 60], armB: night ? [-95, -20] : [-20, 20] }} {...BOSS}
+              {...EXPRESSIONS[night ? "sad" : page ? "neutral" : "sceptical"]} {...talk("Herr Brandt")} time={t.f / 30} look={{ x: night ? 0 : -0.9, y: 0.2 }}
+              held={night ? undefined : <rect x={-3} y={-24} width={6} height={28} rx={2} fill={INK} />} />
+            {night && [-1, 1].map((side) => (
+              <g key={side} transform={`translate(${1395 + side * (6 + rip * 60)} 742) rotate(${side * rip * 14})`}>
+                <rect x={side < 0 ? -46 : 0} y={-60} width={46} height={120} fill={PAPER} stroke={INK} strokeWidth={3} />
+                <rect x={side < 0 ? -36 : 6} y={-48} width={30} height={7} fill={INK} opacity={0.6} />
               </g>
-            </g>
+            ))}
+            {!night && (
+              <>
+                <Figure x={900} y={1010} scale={1.3} pose={{ ...STAND, armF: [20, 10], armB: [-12, 14] }} {...HERO}
+                  {...EXPRESSIONS.neutral} time={t.f / 30 + 2} look={{ x: 0.9, y: 0.1 }} />
+                <g>
+                  <Figure x={250} y={1010} scale={1.2} pose={{ ...STAND, armF: [80, 80], armB: [-80, -80] }} head={CRIMSON} coat="#2a2a30" time={0} look={{ x: 0, y: 0 }} />
+                  <g transform={`translate(270 790) scale(${mix(1, -1, turn)} 1)`}>
+                    <rect x={-80} y={-70} width={160} height={150} fill="#e8e2cf" stroke={INK} strokeWidth={5} />
+                    {[0, 1, 2, 3, 4].map((i) => <line key={i} x1={-60} y1={-40 + i * 25} x2={60} y2={-40 + i * 25} stroke={INK} strokeWidth={3} opacity={0.5} />)}
+                  </g>
+                </g>
+              </>
+            )}
           </>
         } />
+    </Push>
+  );
+};
+
+/** Close on the bank's form: NOT A MISTAKE. `sign`: your signature writes itself along the line. `stamp`: the red stamp
+ *  comes down, hard, then a hand slides the form away into a drawer. */
+export const FormClose: React.FC<{ t: ShotTime; mode: "sign" | "stamp" }> = ({ t, mode }) => {
+  const ink = mode === "sign" ? ease(ramp(t.p, 0.25, 0.8)) : 1;
+  const hit = mode === "stamp" ? ramp(t.f, 4, 10) : 0;
+  const away = mode === "stamp" ? ease(ramp(t.p, 0.7, 1)) : 0;
+  const squash = hit > 0 && hit < 1 ? 1.25 - hit * 0.25 : 1;
+  return (
+    <Push t={t} from={1} to={1.04}>
+      <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
+        <rect width={1920} height={1080} fill="#6a6f78" />
+        <rect x={0} y={0} width={1920} height={1080} fill="#8a8f98" opacity={0.5} />
+        <g transform={`translate(${960 + away * 900} 560) rotate(-3)`}>
+          <rect x={-470} y={-420} width={940} height={840} fill={PAPER} stroke={INK} strokeWidth={8} />
+          <text x={0} y={-270} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={110} fill={INK}>NOT A MISTAKE</text>
+          {[0, 1, 2, 3].map((i) => <rect key={i} x={-380} y={-170 + i * 50} width={i === 3 ? 420 : 760} height={14} rx={7} fill={INK} opacity={0.18} />)}
+          <text x={-380} y={190} fontFamily={FONT} fontWeight={700} fontSize={40} fill={INK} opacity={0.7}>Signed:</text>
+          <line x1={-220} y1={200} x2={330} y2={200} stroke={INK} strokeWidth={4} />
+          <path d="M-200 180 C -170 120, -150 220, -120 170 S -60 120, -40 180 S 20 140, 40 175 S 110 130, 130 178 S 200 150, 300 168"
+            fill="none" stroke="#1a3a8a" strokeWidth={8} strokeLinecap="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - ink} />
+          {hit > 0 && (
+            <g transform={`translate(240 300) rotate(-14) scale(${squash})`} opacity={0.9}>
+              <circle r={110} fill="none" stroke="#c4283c" strokeWidth={14} />
+              <circle r={86} fill="none" stroke="#c4283c" strokeWidth={5} />
+              <text y={-8} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40} fill="#c4283c">SIGNED</text>
+              <text y={36} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill="#c4283c">DAY 24</text>
+            </g>
+          )}
+        </g>
+      </svg>
     </Push>
   );
 };

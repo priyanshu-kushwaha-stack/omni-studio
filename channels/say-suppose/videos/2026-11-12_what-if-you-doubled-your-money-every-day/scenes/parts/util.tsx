@@ -39,7 +39,7 @@ export const Phone: React.FC<{ x: number; y: number; s?: number; lines: string[]
     {!down && lit && <rect x={-8} y={-238} width={146} height={276} rx={18} fill={TEAL} opacity={0.18} />}
     {!down && lit && <circle cx={34} cy={-200} r={14} fill={MUSTARD} stroke={INK} strokeWidth={3} />}
     {!down && lit && lines.map((l, i) => (
-      <text key={i} x={8} y={-120 + i * 62} fontFamily={FONT} fontWeight={800} fontSize={l.length > 7 ? 46 : 60} fill={INK}>{l}</text>
+      <text key={i} x={8} y={-120 + i * 62} fontFamily={FONT} fontWeight={800} fontSize={Math.min(60, 216 / l.length)} fill={INK}>{l}</text>
     ))}
   </g>
 );

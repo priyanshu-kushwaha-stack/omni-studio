@@ -7,12 +7,14 @@ import { STAND } from "@whatif/kit/rig/pose";
 import { HERO } from "@whatif/kit/sets/cast";
 import { INK, MUSTARD } from "@whatif/kit/theme";
 import { LOTTE } from "./Bakery";
+import { useTalk } from "./cast";
 import { ease, mix, Push, ramp, type ShotTime } from "./util";
 
 export const Door: React.FC<{ t: ShotTime; lampOut?: boolean; give?: boolean }> = ({ t, lampOut, give }) => {
   const lamp = lampOut ? 1 - ramp(t.p, 0.4, 0.6) : 1;
   const open = give ? ease(ramp(t.p, 0, 0.2)) : 0;
   const reach = give ? ramp(t.p, 0.3, 0.6) : 0;
+  const talk = useTalk();
   return (
     <Push t={t}>
       <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
@@ -28,7 +30,7 @@ export const Door: React.FC<{ t: ShotTime; lampOut?: boolean; give?: boolean }> 
         <rect x={790} y={150} width={760} height={750} fill="url(#door-lamp)" />
         <circle cx={1170} cy={220} r={26} fill={lamp > 0.5 ? "#fff1c8" : "#4a4638"} stroke={INK} strokeWidth={4} />
         <Figure x={1250} y={1180} scale={2.2} facing={-1} pose={{ ...STAND, armF: [mix(30, 85, reach), mix(20, -5, reach)], armB: [-10, 12] }}
-          {...LOTTE} {...EXPRESSIONS[give ? "sad" : "neutral"]} time={t.f / 30} look={{ x: 0.9, y: 0.25 }}
+          {...LOTTE} {...EXPRESSIONS[give ? "sad" : "neutral"]} {...talk("Lotte")} time={t.f / 30} look={{ x: 0.9, y: 0.25 }}
           held={<circle cx={0} cy={-6} r={7} fill="#c9c6c0" stroke={INK} strokeWidth={2.5} />} />
         <rect x={790} y={150} width={mix(760, 560, open)} height={750} fill="#9fc0e0" opacity={0.16} stroke={INK} strokeWidth={8} />
         <Figure x={430} y={1250} scale={2.4} pose={{ ...STAND, armF: [mix(20, 80, reach), mix(10, -5, reach)], armB: [-12, 14] }}

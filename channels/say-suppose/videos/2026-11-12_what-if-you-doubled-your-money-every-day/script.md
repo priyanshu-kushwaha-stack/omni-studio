@@ -1,7 +1,7 @@
 # Script: What If You Doubled Your Money Every Day?
 
 format: story
-status: v2 (2026-11-12), the owner's eight first-cut notes
+status: v3 (2026-11-13), the owner's eight notes on the v2 cut (names, the opening, one phone at midnight, Jonas pays on day two, the bank's form, the balloon, the flour man, music)
 claims: claims.md
 
 > SITUATION: Berlin, a flat above Lotte's bakery. You know your balance to the cent, and every morning Jonas pays for your roll.
@@ -17,35 +17,35 @@ claims: claims.md
 ## [00:00] One Cent
 
 > MOOD: morning
-> SCENE: Lotte's bakery, Berlin, seven in the morning. A performed scene: no narrator until the title. The thumbnail's frame, at its smallest: you large at the left, arm up, phone held toward Lotte, the baker (peach head, flour apron, chalk raised); behind her the chalkboard (Brötchen 1,40), the bread basket, the warm lamp, the pretzel sign. Jonas, your flatmate, at your shoulder, hand already in his pocket. The phone reads 0,01. Inside the first half second, a soft paper rip: the 0,01 peels off the glass as four small paper flaps, drifts over the counter's edge and lands by the bread basket. One cent's worth. Lotte's eyes follow it down.
+> SCENE: Lotte's bakery, Berlin, seven in the morning. A performed scene: no narrator until the title. The thumbnail's frame: you large at the left, phone up; Lotte, the baker, behind the counter (peach head, flour apron); behind her the chalkboard (Brötchen 1,40), the bread basket, the warm lamp, the pretzel sign; on the counter a card reader. Jonas, your flatmate, at your shoulder. Each of the three gets a name tag for a second as they first appear: YOU · LOTTE, the baker · JONAS, your flatmate. Whoever speaks, their mouth moves.
 
-Lotte: You dropped your money.
+> HOLD: 1.5 s. You tap the phone on the reader. It buzzes and flashes red: DECLINED.
 
-> SCENE: Lotte picks the paper 1 up between two floury fingers and holds it to the lamp. Jonas leans in. You shake the phone. Blank. Then 0,01 again.
+Lotte: Declined.
 
-Jonas: That's the whole account?
+> SCENE: Jonas leans over your shoulder and reads your screen out loud: 0,01.
+
+Jonas: One cent? That's your whole account?
 
 Lotte: One cent. You counted it, didn't you.
 
 Jonas: You count everything.
 
-> SCENE: Jonas puts coins on the counter for two rolls. Lotte doesn't take them yet. She drops the paper 1 into the tip jar, a jam jar with three coins in it, and taps the lid twice.
+> SCENE: Jonas puts coins in Lotte's palm for two rolls. She takes them, then slides you a day-old roll across the counter, free, as every morning.
 
-Lotte: In you go. Tomorrow, two.
+Jonas: My treat. Again.
 
-Jonas: Baker's magic?
+Lotte: And a day-old one for you. On the house.
 
-Lotte: Baker's maths. Counted?
-
-> SCENE: You nod. Jonas pays for both. Lotte slides you a day-old roll, free, as every morning. Cut: midnight. Your flat above the bakery, dark. Jonas asleep on the sofa under his coat. Your phone face up on the table.
+> SCENE: Cut: midnight. Your flat above the bakery, dark. Jonas asleep on the sofa under his coat. Your phone, alone, face up on the table. One phone in this scene, and it is yours.
 
 > HOLD: 3 s. The paper rip, louder. On the lock screen a paper one-cent coin tears down the middle into two whole coins. A split-flap flaps once: DAY 2 above, 0,02 below. The glow climbs the ceiling.
 
-> SCENE: Jonas sits up and holds the phone out to you as you come in from the kitchen, scarf on, a glass of water in your hand.
+> SCENE: Jonas sits up, picks your phone off the table and squints at it. You come in from the kitchen, scarf on, a tall glass of water in your hand, no phone. He holds your phone out; you cross the room and take it. One phone, passed once.
 
 Jonas: Did your phone just... rip?
 
-> SCENE: You take it. 0,02. You look at the phone. At the floor, where the bakery is. At the phone. Jonas lies back down and pulls the coat over his head.
+> SCENE: You hold it. 0,02. You look at the phone. At the floor, where the bakery is. At the phone. Jonas lies back down and pulls the coat over his head.
 
 Jonas: Two cents. Don't spend it all at once.
 
@@ -66,12 +66,14 @@ Every night. Whatever's there at midnight, twice by morning. From one cent. And 
 ## [00:58] The Rule
 
 > MOOD: morning
-> SCENE: Day two, the counter. You hold the phone up to Lotte: 0,02. The 0 and the 2 peel off, two flaps, and land by the basket. Two cents' worth, the thumbnail's frame again. Lotte sweeps them into the tip jar without looking. Jonas pays.
+> SCENE: Day two, the counter. You hold the phone up to Lotte: 0,02. The 0 and the 2 peel off, two flaps, and land by the basket. Two cents' worth, the thumbnail's frame again.
 
 Here's the rule, once. At midnight, whatever's in your account doubles. New money. Taken from no one, the rule says.
 There is no off switch. Except one. Exactly zero at midnight. Not a cent more, not a cent less. Remember that.
 
-Two cents. You laugh. So you do the sensible thing. Nothing. Jonas pays.
+> SCENE: Jonas counts coins into Lotte's palm; she hands him two rolls. You stand beside him with your phone, laughing.
+
+Two cents. You laugh. You spend nothing. And Jonas buys the rolls, like every morning.
 
 Lotte doesn't laugh.
 
@@ -141,17 +143,17 @@ Every morning you planned the party with that morning's number. Every morning th
 ## [02:47] The Whole Tram
 
 > MOOD: day
-> SCENE: Day twenty-two, a tram. You at the reader by the door, tapping your phone again and again, once for every seat. A woman with two shopping bags. The driver, half turned. Jonas in a seat, pretending not to know you.
+> SCENE: Day twenty-two, a tram. You at the reader by the door, tapping your phone again and again, once for every seat. Frau Weber with two shopping bags (name tag: FRAU WEBER, on the tram). Mehmet, the driver, half turned (name tag: MEHMET, the driver). Jonas in a seat, pretending not to know you.
 
-Woman: Who's paying for all this?
+Frau Weber: Who's paying for all this?
 
-Driver: The one in the scarf. Everyone rides free today.
+Mehmet: That one, by the door. Everyone rides free today.
 
-Woman: Why?
+Frau Weber: Why?
 
 Jonas: That one can't help it.
 
-Woman: Well. I'm staying on, then.
+Frau Weber: Well. I'm staying on, then.
 
 > HOLD: 3 s. Nobody gets off. The tram reaches the end of the line, full, and everyone stays in their seats for the ride back. You, standing, phone in hand, pleased.
 
@@ -173,27 +175,27 @@ The number's ahead of you now. You can't catch it. But the bank can. It calls.
 ## [03:40] The Man from the Bank
 
 > MOOD: day
-> SCENE: Day twenty-four. A bank, grey and clean. The man from the bank, tie, careful, behind one desk. By the door a figure with a crimson head and a long coat reads a newspaper and never looks up.
+> SCENE: Day twenty-four. A bank, grey and clean. Herr Brandt, tie, careful, behind one desk (name tag: HERR BRANDT, your bank). By the door a figure with a crimson head and a long coat reads a newspaper and never looks up.
 
 > TAG: DAY 24 · 83.886,08
 
-Bank man: Where does it come from?
+Herr Brandt: Where does it come from?
 
 > BUBBLE: You: "Mine."
 
-Bank man: Mine. Right.
+Herr Brandt: Mine. Right.
 
 > SCENE: He turns his screen to you. The number. He turns it back.
 
-Bank man: If it's a mistake, we can take it back. All of it. In a few hours.
+Herr Brandt: If it's a mistake, we can take it back. All of it. Tonight.
 
-Bank man: Is it a mistake?
+Herr Brandt: Is it a mistake?
 
-> SCENE: You shake your head. He writes.
+> HOLD: 3 s. You shake your head. He slides a form across the desk, NOT A MISTAKE across the top and a line for your name. You sign. He stamps it, hard.
 
-He writes that down. You watch him write it. Remember that, too.
+Herr Brandt: Not a mistake. Signed.
 
-> HOLD: 3 s. Over his shoulder, the newspaper by the door turns a page. The crimson head stays behind it. He caps his pen.
+> HOLD: 3 s. Close on the form: NOT A MISTAKE, your signature, the red stamp. He files it in his drawer. Over his shoulder, the newspaper by the door turns a page. The crimson head stays behind it.
 
 ## [04:03] A Billion Cents
 
@@ -244,24 +246,22 @@ Jonas: They're winning.
 
 Jonas: I don't know what to do with my hands when they win.
 
-> SCENE: He sits on his hands. Cut: day thirty-five, dawn, the street. A hot-air balloon over the roofs, striped paper, a basket of rolls going up on a rope. Lotte, the baker, in her doorway, arms folded. Jonas holding the rope. Beside her, the flour man unloads sacks from his van without a word; he will be back.
+> SCENE: He sits on his hands. Cut: day thirty-five, dawn, the street. A hot-air balloon over the roofs, striped paper, BREAD FROM THE SKY painted on its side, a basket for rolls on a rope. Jonas holding the rope in one hand and his phone in the other. Lotte, the baker, in her doorway, arms folded. Beside her, Karl, the flour man, unloads sacks from his van without a word (name tag: KARL, the flour man); he will be back.
 
 By Sunday you could have bought the league. Jonas only wanted the one that loses.
-Day thirty-five. A hundred and seventy million. Lotte's rolls deserve the sky.
+Day thirty-five. A hundred and seventy million. Jonas has a new idea: Lotte's rolls, delivered to the whole city. By balloon. You pay for the balloon.
 
-Lotte: Where is it going?
+Jonas: Bread from the sky! They order on the app, we drop it on their roof.
 
-Jonas: Everywhere. Bread from the sky.
+Lotte: And who bakes it?
 
-Lotte: They'll be cold by the sky.
+Jonas: You do. Look. Forty orders. A hundred!
 
-Jonas: People are ordering. Look. Forty.
+Lotte: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.
 
-Lotte: I have two hands. I bake what I bake.
+> HOLD: 3 s. The balloon goes up with eight rolls in its basket. Jonas's phone keeps counting orders: 200, 300, 400. Lotte goes back inside.
 
-> HOLD: 3 s. The balloon drifts off over the roofs. Lotte goes back inside. Jonas is left holding a rope with nothing on the end of it.
-
-The balloon comes back with forty orders and no rolls.
+The balloon comes back empty. Four hundred orders. Eight rolls.
 
 > SCENE: Days thirty-six and thirty-seven, you running: the florist's, every bunch; every shop window on the street full of your bags. Each midnight the coin tears and the flap turns, faster each time.
 
@@ -277,21 +277,23 @@ But everything you spend has to land somewhere. And it lands where you stand.
 ## [05:55] Lotte's Chalkboard
 
 > MOOD: dusk
-> SCENE: Day forty. The back door of the bakery. The flour man, arms folded, a sack half off the van. Lotte, the baker, in the doorway. Above the oven behind her, her grandfather's framed banknote from the bad year, a picture only.
+> SCENE: Day forty. The back door of the bakery. Karl, the flour man, a sack half off the van, an invoice in his hand. Lotte, the baker, in the doorway. Above the oven behind her, her grandfather's framed banknote from the bad year, a picture only.
 
-Flour man: Triple.
+Karl: Same flour. New price. Triple.
 
-Lotte: Triple? For flour?
+Lotte: Triple? Karl, it's the same sack as last month.
 
-Flour man: Everyone on this street spends the scarf's money now. I know who you're baking for.
+Karl: Same sack. But the whole street has money now. Your friend upstairs pays for everything.
 
-Lotte: Same flour.
+Karl: So the mill wants more. The farmer wants more. Everyone does.
 
-Flour man: Different street.
+Lotte: And I charge more for rolls.
+
+Karl: Everyone does.
 
 > SCENE: Lotte takes the sack. The board: 1,40 wiped to 2,10, to 3,00, to 4,20. The two pensioners from the corner read it through the glass and walk on.
 
-Day forty. Your street's prices move first, because that's where you spend. One forty. Two ten. Three. Four twenty.
+Day forty. Prices rise first where the new money lands. Your street. One forty. Two ten. Three. Four twenty.
 
 Lotte: Same rolls.
 
@@ -356,22 +358,22 @@ You have more than that. Above a bakery. And tomorrow is twice this.
 
 Here's your choice. Erase it now, and Lotte loses tomorrow's flour, the one promise you kept. Wait one night to keep it, and the street takes one more doubling.
 
-You call the man from the bank. Now.
+You call Herr Brandt. Now.
 
 ## [08:00] Exactly Zero
 
 > MOOD: lamp
 > SCENE: Eleven at night. Your flat, one lamp, the phone on the table on speaker. Through the floor, Lotte's lamp and the sound of trays being stacked.
 
-Bank man: So it was a mistake.
+Herr Brandt: So it was a mistake.
 
 > BUBBLE: You: "Yes."
 
-Bank man: Everything goes. Your wages too. You understand?
+Herr Brandt: Everything goes. Your wages too. You understand?
 
-> SCENE: You nod at the phone. Then remember he can't see you, and tap the table twice.
+> SCENE: At his desk across the city, Herr Brandt takes the stamped form out of his drawer, NOT A MISTAKE, and tears it in half. In your flat you nod at the phone, then remember he can't see you, and tap the table twice.
 
-Bank man: Fifty minutes.
+Herr Brandt: Fifty minutes.
 
 > TAG: 23:50 · 0,00
 
@@ -426,5 +428,5 @@ So, would you have erased it? Tell us in the comments. And if you'd have done th
 
 ## Word count, not said
 
-About 1,190 spoken words, of which about 330 are character lines in eight performed scenes (the opening, your own roll, the thirty-one cakes, the tram, the bank, the club, the balloon, the flour man, Jonas's "Not me", the phone call, the glass door). Holds: 15, about 62 s, about 11% of a 9:30 runtime at the channel's 1.1x tempo. Eight chapters: One Cent · The Rule · Thirty-One Cakes · Yesterday's Number · A Billion Cents · Can't Spend It · Lotte's Chalkboard · Exactly Zero. The narrator first speaks at about 0:40, after the performed opening; the title card follows the premise question at about 0:55. The thumbnail's frame appears at 0:01 (one cent's worth), at 1:00 (two cents' worth) and grown huge at about 4:25, before the midpoint; the cost at about 6:20; the dilemma at about 7:50. Named people: Lotte and Jonas only; the bank man, the flour man, the woman and the driver are roles, and each name returning after a gap carries its role. "Counted?" is spoken four times (the opening, day eleven, day thirty-one, through the glass) and withheld the fifth. Plants: "Remember that" (1:10) and "Remember that, too" (3:55); "I bake what I bake" (5:25) returning as "Lotte bakes what Lotte bakes" (5:45); the tram (2:47) returning as the one-cent refund (8:25); the day-old roll (0:20, 4:10, 7:15, 8:40, 9:10). Emotions, in order: amusement, wonder, dry joy, giddy fun, embarrassment, unease, awe, delight, guilt, shame, dread, relief, panic, tenderness, quiet. Claims spoken: c05, c06, c08, c09, c11; c01-c04, c07 and c10 are no longer spoken (the framed note is a picture above the oven at 5:55). The stranger: the newspaper in the bank, and a far window on day fifty-five. The sequel hook is Jonas's face at 9:15; the film explains nothing.
+About 1,190 spoken words, of which about 330 are character lines in eight performed scenes (the opening, your own roll, the thirty-one cakes, the tram, the bank, the club, the balloon, the flour man, Jonas's "Not me", the phone call, the glass door). Holds: 15, about 62 s, about 11% of a 9:30 runtime at the channel's 1.1x tempo. Eight chapters: One Cent · The Rule · Thirty-One Cakes · Yesterday's Number · A Billion Cents · Can't Spend It · Lotte's Chalkboard · Exactly Zero. The narrator first speaks at about 0:40, after the performed opening; the title card follows the premise question at about 0:55. The thumbnail's frame appears at 0:01 (one cent's worth), at 1:00 (two cents' worth) and grown huge at about 4:25, before the midpoint; the cost at about 6:20; the dilemma at about 7:50. Named people (v3, owner's note: a name tag for a second at each first appearance): you, Lotte the baker, Jonas your flatmate, Frau Weber and Mehmet on the tram, Herr Brandt at your bank, Karl the flour man; a returning name carries its role after a gap. "Counted?" is spoken four times (the opening, day eleven, day thirty-one, through the glass) and withheld the fifth. Plants: "Remember that" (1:10); the stamped NOT A MISTAKE form (3:55), torn at 8:05; "I bake what I bake" (5:25) returning as "Lotte bakes what Lotte bakes" (5:45); the tram (2:47) returning as the one-cent refund (8:25); the day-old roll (0:20, 4:10, 7:15, 8:40, 9:10). Emotions, in order: amusement, wonder, dry joy, giddy fun, embarrassment, unease, awe, delight, guilt, shame, dread, relief, panic, tenderness, quiet. Claims spoken: c05, c06, c08, c09, c11; c01-c04, c07 and c10 are no longer spoken (the framed note is a picture above the oven at 5:55). The stranger: the newspaper in the bank, and a far window on day fifty-five. The sequel hook is Jonas's face at 9:15; the film explains nothing.
 
