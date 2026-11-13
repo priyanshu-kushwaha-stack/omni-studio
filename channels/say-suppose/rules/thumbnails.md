@@ -27,6 +27,7 @@ stories, a DAY 1 / DAY N split whose time markers may repeat the title's span.
 | K14 | Family likeness | Same grammar as the channel's previous thumbnails, unless the owner chose a break |
 | K15 | Variant set | Three candidates, each differing in one variable, with a note of the difference |
 | K16 | Title length and claim | Under 50 characters, so it never truncates; sized to a long video; one extreme claim the film delivers (owner's reference videos, 2026-11-10) |
+| K17 | Mood | The power in use, and someone stunned, thrilled or scared; never a sad, crying or grieving face (owner, 2026-11-13) |
 
 K3, K4, K8, K9, K10 and K11 can be measured by script; that check is not built yet. The first video's live thumbnail
 (film-7) fails K3 (15.8%), K4 (1.33:1), K6 (a label) and K9 (26).
