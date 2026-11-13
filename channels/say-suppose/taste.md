@@ -10,6 +10,12 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-13
 
+- **"Looks good script wise now. Self Explanatory and understood everything."** The v4 cut (saw who wants you to fail,
+  G2). Then on the closing question, "Would you still say it to her face ?": the story had already answered it at the
+  dock, so it asked nothing. **"Yes, change it"**: the closing question turns the film on the viewer and points at the
+  open loop of the last shot (the card over you), asking for something easy to type and argue about ("what number would
+  open over your head?"). Never close on a choice the story has already made.
+
 Second watch of the v3 cut (saw who wants you to fail, G2), eleven notes. Applied in v4:
 
 - **"Well done mate ? Its not very clear. Maybe change the dialogue here or improve the script. And Voice definitely

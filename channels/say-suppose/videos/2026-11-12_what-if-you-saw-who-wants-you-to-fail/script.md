@@ -451,7 +451,7 @@ Min-jun: I got in!
 
 > HOLD: 4 s. Performed. He holds his letter up the way you held yours, grinning, fist half raised. A paper snap sounds above you, out of frame. His grin falters at your face. Your eyes start to lift, then stop on his. Cut before your answer.
 
-So, would you still say it to her face? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
+Now it's his news. And the card is over you. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
 
 > HOLD: 4 s. End card: like, subscribe and comment tags in the left two-thirds; the right third quiet.
 

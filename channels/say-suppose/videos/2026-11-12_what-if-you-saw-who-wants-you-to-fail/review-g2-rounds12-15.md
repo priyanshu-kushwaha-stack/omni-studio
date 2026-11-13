@@ -54,3 +54,12 @@ Claims check: ok, no blockers. Story editor, three blockers, none applied:
 - #7 "It's true. In November 2025 ... 35 minutes": two numbers land at once. Not applied: the owner asked for the year
   ("in which year it happened"); the card carries both.
 - #11 "Neither of you says a word. Nothing opens." repeats the hold. For the owner (one-line cut).
+
+## Round 15 (the closing question; ships)
+
+Owner on v4 (2026-11-13), "Yes, change it": the closing question "So, would you still say it to her face?" (already
+answered at the dock) is now "Now it's his news. And the card is over you. Be honest: what number would open over your
+head?", re-voiced. Claims check: ok, no blockers. Story editor, three blockers, none applied: #3 the hook timing (the
+owner said the start is OK); the card's true meaning arriving after halfway (the film's turn, which the owner has read
+and kept); #14 a restart every ~3 minutes, the back half denser than the front (for the owner; the owner read v4 as
+"Self Explanatory and understood everything").
