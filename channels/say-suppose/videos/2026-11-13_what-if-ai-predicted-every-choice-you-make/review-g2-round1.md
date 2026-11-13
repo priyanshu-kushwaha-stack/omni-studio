@@ -51,3 +51,27 @@ The sister is planted at about 4:25 (his phone lights up, he turns it face down)
 card stays as it was); the sixty lands on you first and the hundred and sixty teams move to The Board; the exam hall is
 cut and the penalty kick stays; c16 is cut and c17 stays; "came from" for the YouTube figure; every spoken number is a
 word; "nobody fell below eighty per cent".
+
+## The 720p first cut (for the owner's G2 read)
+
+`renders/firstcut/firstcut-720p.mp4` (git-ignored): 1280x720, 10:36, built on v1 as the room shipped it. The voices are
+local and free: the Qwen3 narrator plus a qwen3-design voice per character (voices.yaml). There is one ACE-Step score
+cue per section (cues.yaml, `make_music.py`), an ambience bed per set (`scenes/make_ambience.py`) and ffmpeg effects
+(`scenes/make_sfx.sh`). Nothing paid was used. qc story_script: claims and clicks pass.
+
+What the session decided, for the owner to overrule:
+- The title question lands at 19.6 s, not by 0:15. The skit runs long before it; the room's note 2 (the stakes straight
+  after the question) is the same trim.
+- The opening frame has no tag: the tags drop after the lamp blinks. Room note 1 would open on the thumbnail's frame.
+- The score changes per section: the theme at the open and the end card, the dark theme thinned at the key. At the key's
+  10 s peak the score drops to a floor under one held low note.
+- Clicks: 12 narration mutes (`mutes.txt`). One of them removes 1.3 s of stray TTS blips before the friend's "It knows
+  the bit." The tick, buzz and flap effects were reshaped with longer decays so none reads as a pop.
+
+What the scene builders flagged:
+- The stranger has no tag card.
+- The tourist's card "CALLS MUM 94%" was invented by a builder; it is not in the script.
+- There is no phone-ring, shutter or cup sound yet.
+- Your own card is not in The Key's opening frame.
+- The train ride and the closing hold override the section mood.
+- The G1 thumbnail's key is small at feed size.

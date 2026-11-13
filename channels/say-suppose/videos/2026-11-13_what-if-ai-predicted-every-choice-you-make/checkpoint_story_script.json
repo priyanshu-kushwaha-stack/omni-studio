@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-13T02:11:53.411560+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "script": "script.md v1 (Claude Fable 5.1), 13 sections, 110 lines; say.yaml; sequel.md",
+    "room": "room-g2.md: shipped round 1, 2 of 16 calls; claims check 0 blockers; story editor 3 blockers proposed for the owner-notes round (review-g2-round1.md)",
+    "first_cut": "renders/firstcut/firstcut-720p.mp4 (git-ignored), 1280x720, 635.67 s, local narration (Qwen3 narrator + qwen3-design cast), ACE-Step cues, ffmpeg effects; nothing paid",
+    "qc": "story_script on the first cut: claims PASS, clicks PASS (qc/story_script.json)",
+    "awaiting": "the owner's G2 read of the first cut; notes go in a round-2 table in review-g2-round1.md"
+  }
+}
