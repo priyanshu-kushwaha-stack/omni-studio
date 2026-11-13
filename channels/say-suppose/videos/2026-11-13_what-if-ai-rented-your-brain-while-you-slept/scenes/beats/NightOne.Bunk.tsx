@@ -4,9 +4,10 @@ import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, type Pose } from "@whatif/kit/rig/pose";
 import type { Expression } from "@whatif/kit/rig/expressions";
 import { INK } from "@whatif/kit/theme";
-import { Band, Blanket, Jar, Sleeper } from "../parts";
+import { DrawLine } from "@whatif/kit/ui/DrawLine";
+import { Band, bandLight, Blanket, CoinArc, Jar, Sleeper, Thread } from "../parts";
 import { BUNK } from "../sets/BunkRoom";
-import { BROTHER, HERO } from "../shared";
+import { BROTHER, GHOST, HERO, mix } from "../shared";
 import { aim, handLocal, type Placed } from "./Chair.Rig";
 
 /** Your arm out from under the blanket, the band held up over your face (unlit). */
@@ -17,6 +18,68 @@ export const BandHeldUp: React.FC<{ lift: number }> = ({ lift }) => {
       <path d={`M860 720 Q850 560 ${hand.x} ${hand.y}`} fill="none" stroke={INK} strokeWidth={40} strokeLinecap="round" />
       <Band x={hand.x - 6} y={hand.y + 52} scale={1.5} lit={false} tilt={-6} />
       <circle cx={hand.x} cy={hand.y} r={28} fill={HERO.head} />
+    </g>
+  );
+};
+
+/** A point in a <Sleeper>'s own coordinates (head centre 0,0, radius 46) in KEY pixels, for you at BUNK.you sunk `sink`. */
+function onYou(lx: number, ly: number, sink: number) {
+  const Y = BUNK.you;
+  const a = (Y.tilt * Math.PI) / 180;
+  return { x: Y.x + (lx * Math.cos(a) - ly * Math.sin(a)) * Y.scale, y: Y.y + sink + (lx * Math.sin(a) + ly * Math.cos(a)) * Y.scale };
+}
+
+/** Where the dotted thread of v3 line 7 ends: up out of the top of the frame. */
+const THREAD_TOP = { x: 700, y: 120 };
+
+/**
+ * v3 lines 6-7, the band defined. You on the pillow, eyes open; the band in your hand by the bed, a thin dark strip
+ * with one small teal light. `p` 0..1 lays it across your forehead (your hand holds its top end, so the arm stays
+ * above your face); `settle` 0..1 your eyes close and you sink back into the pillow. Then `glow` 0..1 the band's light
+ * glows, the dotted thread rises from it out of the top of the frame (`thread` [from, to] frames) and one coin drops
+ * back down out of the dark into the jar (`pay` frame, `fall` frames).
+ */
+export const BandOn: React.FC<{ frame: number; p: number; settle: number; glow: number; thread: readonly [number, number];
+  pay: number; fall: number }> = ({ frame, p, settle, glow, thread, pay, fall }) => {
+  const Y = BUNK.you;
+  const sink = settle * 10;
+  const on = p >= 1;
+  // the held band: from your hand by the bed to its place across your forehead
+  const start = { x: 730, y: 600, tilt: -8, scale: 1.5 };
+  const end = { ...onYou(2, -28, sink), tilt: Y.tilt, scale: 2.4 };
+  const c = { x: mix(start.x, end.x, p), y: mix(start.y, end.y, p) };
+  const tilt = mix(start.tilt, end.tilt, p);
+  const scale = mix(start.scale, end.scale, p);
+  const ta = (tilt * Math.PI) / 180;
+  const grip = { x: c.x + Math.cos(ta) * 46 * scale, y: c.y + Math.sin(ta) * 46 * scale };
+  // after it is on, the hand goes back under the blanket
+  const away = on ? settle : 0;
+  const hand = { x: mix(grip.x, 930, away), y: mix(grip.y, 700, away) };
+  const light = bandLight(Y.x, Y.y + sink, Y.scale, Y.tilt);
+  const d = `M${light.x} ${light.y} C${light.x + 40} ${light.y - 220} ${THREAD_TOP.x - 260} ${THREAD_TOP.y - 60} ${THREAD_TOP.x} ${THREAD_TOP.y}`;
+  return (
+    <g>
+      <Sleeper id="you-bandon" x={Y.x} y={Y.y + sink} scale={Y.scale} tilt={Y.tilt} head={HERO.head} scarf={HERO.scarf}
+        band={on} lit={0.15 + 0.85 * glow} eyes={settle > 0.5 ? "shut" : "open"} mouth={settle > 0.5 ? "smile" : "flat"} />
+      {glow > 0.02 && <circle cx={light.x} cy={light.y} r={60} fill={GHOST.light} opacity={0.22 * glow} />}
+      <Blanket x0={560} x1={1630} top={680} base={900} />
+      {away < 0.98 && (
+        <g>
+          <path d={`M900 730 Q${mix(760, 900, away)} ${mix(430, 700, away)} ${hand.x} ${hand.y}`} fill="none" stroke={INK} strokeWidth={40} strokeLinecap="round" />
+          {!on && <Band x={c.x} y={c.y} scale={scale} lit tilt={tilt} />}
+          <circle cx={hand.x} cy={hand.y} r={28} fill={HERO.head} />
+        </g>
+      )}
+      {/* line 7: the thread rises out of the frame; drawn, it turns to the device's dotted thread */}
+      {frame >= thread[0] && frame < thread[1] && (
+        <g>
+          <g opacity={0.2}><DrawLine d={d} from={thread[0]} to={thread[1]} color={GHOST.light} width={26} /></g>
+          <g opacity={0.85}><DrawLine d={d} from={thread[0]} to={thread[1]} color={GHOST.light} width={7} /></g>
+        </g>
+      )}
+      <Thread a={light} b={THREAD_TOP} t={frame >= thread[1] ? 1 : 0} />
+      <CoinArc frame={frame} start={pay} end={pay} from={{ x: 470, y: 140 }} via={{ x: 230, y: 260 }}
+        to={{ x: BUNK.jar.x + 10, y: BUNK.jar.y - 200 }} fall={fall} r={26} />
     </g>
   );
 };

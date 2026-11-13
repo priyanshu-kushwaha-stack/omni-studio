@@ -5,15 +5,16 @@ import type { Expression } from "@whatif/kit/rig/expressions";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
 import { INK } from "@whatif/kit/theme";
-import { BandBox, Band, Coin, CoinArc, deviceAt, Ghost, PaperCap, Thread } from "../parts";
+import { BandBox, Band, Bubble, Coin, CoinArc, deviceAt, Ghost, PaperCap, Thread } from "../parts";
 import { BROKER, GHOST, HERO, lineEnd, mix, NURSE, ramp } from "../shared";
 import { CLINIC, ClinicArmrest, ClinicChair, ClinicDoorPanel, ClinicScene, seatedInChair } from "../sets/Clinic";
-import { aim, BAND_LIGHT, BandOnHead, Body, handWorld, HeadGear, headToWorld, lineAt, Notes, toWorld, type Placed } from "./Chair.Rig";
+import { aim, BAND_LIGHT, BandOnHead, Body, handWorld, HeadGear, headToWorld, headWorld, lineAt, Notes, talk, toWorld, type Placed } from "./Chair.Rig";
 
 export type SkitT = ReturnType<typeof skitTimes>;
 
-/** Every frame of the skit. The lead-in before line 0 holds three performed moments (3 s, 2 s, 2 s in the script); they
- *  are placed as shares of it, so a new take of line 0 re-times them. */
+/** Every frame of the skit, from v3's clips in v3 numbering (shot.v3): 0 the nurse, 1 and 2 the broker, 3 Night One's
+ *  first line. The lead-in before line 0 holds three performed moments (3 s, 2 s, 2 s in the script); they are placed as
+ *  shares of it, so a new take of line 0 re-times them. Phrase shares (p) are from the takes' word timings. */
 export function skitTimes(clips: Clip[]) {
   const L = clips[0].from;
   const lead = (p: number) => Math.round(L * p);
@@ -21,7 +22,7 @@ export function skitTimes(clips: Clip[]) {
   const band = lead(3 / 7) - 3; // the band on your forehead: the chime
   const pluck = lead(5 / 7) + 2; // the nurse takes it off
   const coin = lead(0.6);
-  const shut = at(2, 0.28);
+  const shut = at(3, 0.12);
   return {
     L,
     face: lead(0.12), // close on you counting, eyelids dropping
@@ -40,18 +41,22 @@ export function skitTimes(clips: Clip[]) {
     drop: [lead(0.8), lead(0.87)] as const, // the band into his box
     notesShot: lead(0.885),
     cotton: [lead(0.9), lead(0.97)] as const,
-    nurseLine: [clips[0].from, lineEnd(clips, 0)] as const, // "Thursday. Not before."
+    nurseLine: [clips[0].from, lineEnd(clips, 0)] as const, // "That's all the plasma we can take this week. Come back Thursday."
     notes: [at(0, 0.08), at(0, 0.34), at(0, 0.6)] as const,
     nurseClose: at(0, 0.64),
-    nod: lineEnd(clips, 0) + 1,
-    brokerShot: Math.round(mix(lineEnd(clips, 0), clips[1].from, 0.5)),
+    thatsIt: lineEnd(clips, 0) + 1, // hold, 1 s: you look at the three notes; your bubble "That's it?"
+    twoShot: clips[1].from - 3, // "You fell asleep for ten seconds, and you earned a coin." he tips his head, points at it
+    point: [at(1, 0.3), at(1, 0.75)] as const, // the point at your fist, from "ten seconds"; held to the end of the line
+    coinLine: [clips[1].from, lineEnd(clips, 1)] as const,
+    bandShot: clips[2].from - 2, // "Wear this tonight. Sleep all night, and get paid for every hour." the band held out
+    bandOut: clips[2].from - 8,
+    bandLine: [clips[2].from, lineEnd(clips, 2)] as const,
     brokerWalk: [lead(0.97), clips[0].from + 60] as const, // back to the door during her line
-    brokerLine: [clips[1].from, lineEnd(clips, 1)] as const, // "Sleep tonight. Get paid."
-    take: lineEnd(clips, 1) - 3, // close: the notes, the coin, the band; you take it
-    grab: lineEnd(clips, 1) + 14,
+    take: lineEnd(clips, 2) - 3, // close: the notes, the coin, the band; you take it
+    grab: lineEnd(clips, 2) + 14,
     shut, // Night One: the door swings shut on his back
     doorClose: [shut + 10, shut + 34] as const,
-    bridge: at(2, 0.6),
+    bridge: at(3, 0.39), // "the pale part of your blood": the bridge walkway
   };
 }
 
@@ -66,8 +71,7 @@ type Face = Partial<Expression> & { blink?: boolean; look?: { x: number; y: numb
 /** Where you are in the chair this frame, and your face. */
 function you(frame: number, k: SkitT): { f: Placed; face: Face } {
   const jolt = ramp(frame, k.wake, k.wake + 4) * 12 - ramp(frame, k.wake + 4, k.wake + 14) * 6;
-  const nod = frame >= k.nod && frame < k.nod + 14 ? Math.sin(((frame - k.nod) / 14) * Math.PI) * 12 : 0;
-  const pose: Pose = { ...(frame >= k.notesShot ? OPEN : REST), tilt: nod };
+  const pose: Pose = { ...(frame >= k.notesShot ? OPEN : REST) };
   const f = { ...seatedInChair(pose, jolt), pose };
   const counting = Math.floor(frame / 7) % 2 === 0 ? "o" : "flat";
   let face: Face;
@@ -76,8 +80,10 @@ function you(frame: number, k: SkitT): { f: Placed; face: Face } {
     face = lids > 0.95 ? { blink: true, mouth: "smile" } : { brows: "flat", lids: lids * 0.85, mouth: counting, eyes: 1, look: { x: 0.8, y: -0.6 } };
   } else if (frame < k.wake) face = { blink: true, mouth: "smile" };
   else if (frame < k.notesShot) face = { brows: "raised", lids: 0, mouth: "o", eyes: 1.3, look: { x: 0.6, y: 0.5 } };
-  else if (frame < k.nod) face = { brows: "flat", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.7, y: 0.5 } };
-  else if (frame < k.brokerShot) face = { brows: "flat", lids: 0.35, mouth: "flat", eyes: 1, look: { x: 0.6, y: 0.3 } };
+  else if (frame < k.thatsIt) face = { brows: "flat", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.7, y: 0.5 } };
+  // the hold: you look down at the three notes in your palm. "That's it?"
+  else if (frame < k.twoShot) face = { brows: "worry", lids: 0.15, mouth: talk(frame, k.thatsIt + 4, k.thatsIt + 16, "frown"), eyes: 1.1, look: { x: 0.15, y: 1 } };
+  else if (frame >= k.point[0] && frame < k.bandOut) face = { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.5, y: 0.8 } };
   else face = { brows: "raised", lids: 0.1, mouth: "flat", eyes: 1, look: { x: -0.9, y: 0 } };
   return { f, face };
 }
@@ -85,7 +91,9 @@ function you(frame: number, k: SkitT): { f: Placed; face: Face } {
 /** The band's world point while it is on your head. */
 const bandPoint = (f: Placed) => headToWorld(f, { x: 0, y: -28 });
 
-/** The man in the grey suit: across the room on tiptoe, the band on, back a step, then back to the door. */
+/** The man in the grey suit: across the room on tiptoe, the band on, back a step, then back to the door. At the door,
+ *  line 1: he tips his head and points his BACK arm (he faces left) at the coin in your fist, the band low in his front
+ *  hand; line 2: he holds the band out. */
 function broker(frame: number, k: SkitT, yf: Placed): { f: Placed; band: "hand" | "none"; face: Face } {
   const D = CLINIC.spots.doorway.x;
   const near = 1250;
@@ -101,16 +109,21 @@ function broker(frame: number, k: SkitT, yf: Placed): { f: Placed; band: "hand" 
   const f: Placed = { x, y: CLINIC.floor - 10, scale: C.scale, facing: -1, pose };
   if (frame >= k.lift && frame < k.band + 6) {
     pose = { ...STAND, lean: 10, armF: aim({ ...f, pose: { ...STAND, lean: 10 } }, bandPoint(yf)) };
-  } else if (frame >= k.brokerLine[0] - 16) {
-    // at the door, holding the band out again; he tips his head at the coin
-    const tip = frame < k.brokerLine[0] ? Math.sin(ramp(frame, k.brokerLine[0] - 16, k.brokerLine[0]) * Math.PI) * -10 : 0;
-    pose = { ...STAND, tilt: tip, armF: [78, 18] };
+  } else if (frame >= k.bandOut) {
+    // line 2: at the door, holding the band out again
+    pose = { ...STAND, armF: [78, 18] };
+  } else if (frame >= k.coinLine[0] - 12) {
+    // line 1: he tips his head at the coin in your fist, then points at it with his back arm
+    const tip = Math.sin(ramp(frame, k.coinLine[0] - 12, k.coinLine[0] + 10) * Math.PI) * -12;
+    const p = ramp(frame, k.point[0] - 6, k.point[0] + 6) * (1 - ramp(frame, k.bandOut - 8, k.bandOut));
+    const at = aim({ ...f, pose: STAND }, handWorld(yf, "armF"));
+    pose = { ...STAND, tilt: tip, armF: [14, 12], armB: [mix(STAND.armB[0], at[0], p), mix(STAND.armB[1], at[1], p)] };
   }
-  const band = frame < k.band || frame >= k.brokerLine[0] - 16 ? "hand" : "none";
-  const talking = frame >= k.brokerLine[0] && frame < k.brokerLine[1];
+  const band = frame < k.band || frame >= k.coinLine[0] - 12 ? "hand" : "none";
+  const line = frame >= k.coinLine[0] && frame < k.coinLine[1] ? k.coinLine : frame >= k.bandLine[0] && frame < k.bandLine[1] ? k.bandLine : null;
   const face: Face = frame < k.band + 6
     ? { brows: "raised", lids: 0.1, mouth: "flat", eyes: 1, look: { x: 0.8, y: 0.3 } }
-    : talking ? { brows: "flat", lids: 0.25, mouth: Math.floor((frame - k.brokerLine[0]) / 5) % 3 === 0 ? "smirk" : "open", eyes: 1, look: { x: 1, y: 0.1 } }
+    : line ? { brows: "flat", lids: 0.25, mouth: Math.floor((frame - line[0]) / 5) % 3 === 0 ? "smirk" : "open", eyes: 1, look: { x: 1, y: 0.1 } }
       : { brows: "flat", lids: 0.3, mouth: "smirk", eyes: 1, look: { x: 0.9, y: 0.2 } };
   return { f: { ...f, pose }, band, face };
 }
@@ -190,6 +203,11 @@ export const SkitRoom: React.FC<{ frame: number; k: SkitT; cam: Camera; door?: n
         return frame >= k.cotton[1] ? <Notes x={h.x + 6} y={h.y - 6} n={3 - notes} scale={0.55} tilt={8} /> : null;
       })()}
       {n && !n.behind && <Nurse n={n} />}
+      {/* the hold after her line: your bubble, up and to the left of your face (you face left), above the nurse's cap */}
+      {frame >= k.thatsIt && frame < k.twoShot && (() => {
+        const h = headWorld(y.f);
+        return <Bubble frame={frame} at={k.thatsIt + 3} x={h.x - 50} y={h.y - 78} text="That's it?" size={38} side="left" />;
+      })()}
       <Thread a={light} b={{ x: G.x + 22, y: G.y - 150 }} t={t} bend={-60} />
       <Ghost x={G.x} y={G.y} scale={G.scale} t={t} frame={frame} facing={-1} head={GHOST.head} />
       <CoinArc frame={frame} start={k.coin} end={k.coin} from={deskEdge} via={{ x: deskEdge.x + 10, y: deskEdge.y - 30 }}

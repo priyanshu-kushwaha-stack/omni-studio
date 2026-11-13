@@ -1,21 +1,27 @@
-// Beat "The Rule" (script.md ## [00:53] The Rule; narration lines 10-16). The kitchen (the library `kitchen`,
-// morning): the jar on the table, the leaflet, your brother with his cereal.
+// Beat "The Rule" (script.md v3 ## [01:05] The Rule; v3 lines 15-26). Times come from shot.v3 (v3 numbering); phrase
+// shares (p) are from the takes' word timings. The kitchen (the library `kitchen`, morning): the jar on the table, the
+// leaflet, your brother with his cereal.
 //
-//   10  the title card (ident C, channels/say-suppose/brand/IdentC.tsx) plays first, 4 s: Night One's last frame
-//       shrinks to a paper print under the question, flips, and opens on the kitchen. "...your brain runs whatever
-//       they've rented it for": the leaflet unfolds top-down and its page one draws itself (the sleeper, the band, the
-//       dotted thread, the pale second you at its desk, coins into a jar, a clock: "pays you by the hour").
-//   11  "You feel nothing." close on you. "One job can link many bands": one laptop, three sleepers threaded to it;
-//       "each brain stays its own": a ring round each head; "One brain, one band, one jar": stamps BRAIN, BAND, JAR.
-//   12  "And you remember nothing." the table, two-shot. "Except the crumbs": a taste, a word, a face drawn on the
-//       leaflet; "harmless": a tick. "Remember that.": close on you.
-//   13  "Why would anyone want a sleeping brain? The leaflet again.": you turn the page, he looks over. Page two: a
-//       paper you, a slice of the head shaded (2%), a bar a fifth full (20% of the energy), a bulb (20 watts) that dims
-//       on "nobody's using them".
-//   14  page three: a dish of cells wired to a bat-and-ball game; the bat starts hitting back ("within five
-//       minutes"); "So a whole brain for eight hours is a bargain": you and the jar.
-//   15  your brother, the leaflet upside down over his cereal, chewing: "Still a scam."
-//   16  "He reads the leaflet upside down": the two-shot; "And by Saturday he's wearing one": close on him, his eyes on
+//   15  the title card (ident C, channels/say-suppose/brand/IdentC.tsx) plays first: Night One's last frame shrinks to a
+//       paper print under the question, flips, and opens on the kitchen. "The band came with a leaflet": the leaflet
+//       unfolds (at once if the card is still up, then as soon as it opens). "It sets out the deal."
+//   16  "Wear the band to bed": page one, the sleeper and the band; "the company runs its work on your brain": the
+//       dotted thread and the pale second you at its desk.
+//   17  "And every morning, the band pays you, by the hour.": coins into a jar on "pays you", a clock on "by the hour".
+//   18  "You won't feel a thing." close on you. "One company can link many bands": one laptop, three sleepers threaded
+//       to it.
+//   19  "each brain stays separate": a ring round each head; "One brain, one band, one jar": stamps BRAIN, BAND, JAR.
+//   20  "And you won't remember the work. Only small leftovers." the table, two-shot. "The leaflet calls them crumbs":
+//       the crumbs page; a taste, a word, a face drawn on it as each is named.
+//   21  "It says they're harmless.": a tick.
+//   22  "Why would anyone want a sleeping brain?" you turn the page, he looks over. "The leaflet explains that too.":
+//       page two, a paper you.
+//   23  "Your brain": its head shaded in; "about twenty watts": a bulb glows beside it; "the leaflet calls that unused
+//       power": the bulb dims.
+//   24  page three: a dish of cells wired to a bat-and-ball game; the bat starts hitting back ("began to get better");
+//       "So a whole brain for eight hours is a bargain": you and the jar.
+//   25  your brother, the leaflet upside down over his cereal, chewing: "Still a scam."
+//   26  "He reads the leaflet upside down": the two-shot; "And by Saturday he's wearing one": close on him, his eyes on
 //       the band on the table.
 import { AbsoluteFill, Audio, Freeze, Sequence, staticFile } from "remotion";
 import type { Mouth } from "@whatif/kit/rig/Figure";
@@ -31,39 +37,46 @@ import { LeafletInsert, LinkStamps, PageCrumbs, PageLink, PageOne, PageThree, Pa
 
 type T = ReturnType<typeof times>;
 
+/** The beat opens 6 frames after line 14 ends: the title card has a 4.1 s gap of its own before "The band came with a
+ *  leaflet" (owner, 2026-11-13: "More clarity around leaflet says and band.. Around 1:00"). v3 numbering. */
+const ruleOpen = (v3: Clip[]) => v3[14].from + v3[14].frames + 6;
+
 function times(clips: Clip[]) {
   const at = (i: number, p: number) => lineAt(clips, i, p);
   const from = (i: number) => clips[i].from;
-  const ident = from(10);
+  const ident = ruleOpen(clips); // the card plays in its own silence after line 14 (timing.yaml), not over line 15
+  const open = ident + C_FRAMES; // the card has opened on the kitchen
   return {
     ident,
-    open: ident + C_FRAMES, // the card has opened on the kitchen
-    page1: Math.max(ident + C_FRAMES + 24, at(10, 0.6)), // "...whatever they've rented it for"
-    feel: from(11) - 2, // "You feel nothing."
-    link: at(11, 0.13), // "One job can link many bands"
-    rings: at(11, 0.38), // "but the leaflet says each brain stays its own"
-    stamps: [at(11, 0.73), at(11, 0.84), at(11, 0.93)] as const, // "One brain, one band, one jar."
-    remember: from(12) - 2, // "And you remember nothing."
-    crumbs: at(12, 0.17), // "Except the crumbs"
-    taste: at(12, 0.31),
-    word: at(12, 0.4),
-    face: at(12, 0.47),
-    tick: at(12, 0.78), // "harmless"
-    that: at(12, 0.86), // "Remember that."
-    why: from(13) - 2, // "Why would anyone want a sleeping brain? The leaflet again."
-    page2: at(13, 0.31),
-    slice: at(13, 0.41), // "about two per cent of you"
-    bar: at(13, 0.53), // "burns about twenty per cent of your energy"
-    bulb: at(13, 0.72), // "about twenty watts"
-    dim: at(13, 0.88), // "And tonight nobody's using them."
-    page3: from(14) - 2, // "Brain cells in a dish..."
-    better: at(14, 0.47), // "began to get better at it"
-    bargain: at(14, 0.72), // "So a whole brain for eight hours is a bargain."
-    upside: lineEnd(clips, 14) + 2, // the leaflet upside down over his cereal
-    scam: [from(15), lineEnd(clips, 15)] as const, // "Still a scam."
-    reads: from(16) - 2, // "He reads the leaflet upside down."
-    saturday: at(16, 0.5), // "And by Saturday he's wearing one."
-    end: from(17),
+    open,
+    page1: Math.max(open + 6, at(15, 0.02)), // "The band came with a leaflet": it unfolds
+    sleeper: Math.max(open + 22, from(16)), // "Wear the band to bed"
+    work: at(16, 0.56), // "the company runs its work on your brain"
+    pays: at(17, 0.48), // "the band pays you"
+    hour: at(17, 0.69), // "by the hour"
+    feel: from(18) - 2, // "You won't feel a thing."
+    link: at(18, 0.29), // "One company can link many bands"
+    rings: at(19, 0.2), // "each brain stays separate"
+    stamps: [at(19, 0.57), at(19, 0.73), at(19, 0.87)] as const, // "One brain, one band, one jar."
+    remember: from(20) - 2, // "And you won't remember the work."
+    crumbs: at(20, 0.44), // "The leaflet calls them crumbs"
+    taste: at(20, 0.68),
+    word: at(20, 0.74),
+    face: at(20, 0.8),
+    tick: at(21, 0.46), // "It says they're harmless."
+    why: from(22) - 2, // "Why would anyone want a sleeping brain?"
+    page2: at(22, 0.55), // "The leaflet explains that too."
+    head: from(23), // "Your brain"
+    bulb: at(23, 0.19), // "about twenty watts"
+    dim: at(23, 0.78), // "the leaflet calls that unused power"
+    page3: from(24) - 2, // "It's true. In 2022, brain cells in a dish..."
+    better: at(24, 0.5), // "began to get better at it"
+    bargain: at(24, 0.76), // "So a whole brain for eight hours is a bargain."
+    upside: lineEnd(clips, 24) + 2, // the leaflet upside down over his cereal
+    scam: [from(25), lineEnd(clips, 25)] as const, // "Still a scam."
+    reads: from(26) - 2, // "He reads the leaflet upside down."
+    saturday: at(26, 0.55), // "And by Saturday he's wearing one."
+    end: from(27),
   };
 }
 
@@ -77,9 +90,7 @@ function kitchenState(frame: number, k: T): KitchenState {
       look: frame >= k.saturday ? { x: 0.6, y: 0.75 } : { x: 0.3, y: 0.15 } }
     : frame >= k.why && frame < k.page2 ? { brows: "raised" as const, lids: 0.1, mouth: chew, eyes: 1.05, look: { x: 0.9, y: 0.5 } }
       : { brows: "flat" as const, lids: 0.45, mouth: chew, eyes: 1, look: { x: 0.8, y: 0.4 } };
-  const you = frame >= k.that && frame < k.why
-    ? { brows: "raised" as const, lids: 0, mouth: "flat" as const, eyes: 1.1, look: { x: 0.25, y: -0.05 } }
-    : frame >= k.bargain && frame < k.upside
+  const you = frame >= k.bargain && frame < k.upside
       ? { brows: "raised" as const, lids: 0.1, mouth: "smile" as const, eyes: 1.05, look: { x: 0.9, y: 0.45 } }
       : frame >= k.upside
         ? { brows: "flat" as const, lids: 0.3, mouth: "smirk" as const, eyes: 1, look: { x: 0.9, y: 0 } }
@@ -94,7 +105,6 @@ function kitchenCam(frame: number, k: T, shot: string): Camera {
     case "open": return camAt(frame, [[k.ident, { x: 960, y: 620, zoom: 1.08 }], [k.page1, { x: 930, y: 640, zoom: 1.18 }]]);
     case "feel": return camAt(frame, [[k.feel, closeUp(YOU_HEAD.x + 60, YOU_HEAD.y, 2.6)], [k.link, closeUp(YOU_HEAD.x + 60, YOU_HEAD.y, 2.8)]]);
     case "remember": return camAt(frame, [[k.remember, { x: 930, y: 640, zoom: 1.4 }], [k.crumbs, { x: 920, y: 645, zoom: 1.5 }]]);
-    case "that": return camAt(frame, [[k.that, closeUp(YOU_HEAD.x + 50, YOU_HEAD.y, 2.7)], [k.why, closeUp(YOU_HEAD.x + 50, YOU_HEAD.y, 2.95)]]);
     case "why": return camAt(frame, [[k.why, { x: 960, y: 650, zoom: 1.3 }], [k.page2, { x: 1000, y: 650, zoom: 1.42 }]]);
     case "bargain": return camAt(frame, [[k.bargain, { x: 720, y: 680, zoom: 1.9 }], [k.upside, { x: 760, y: 690, zoom: 2.1 }]]);
     case "upside": return camAt(frame, [[k.upside, closeUp(BRO_HEAD.x - 90, BRO_HEAD.y, 2.3)], [k.reads, closeUp(BRO_HEAD.x - 90, BRO_HEAD.y, 2.45)]]);
@@ -107,18 +117,21 @@ function kitchenCam(frame: number, k: T, shot: string): Camera {
 function sheetCam(frame: number, k: T, shot: string): Camera {
   const S = (x: number, y: number, zoom: number) => ({ x, y, zoom });
   switch (shot) {
-    case "page1": return camAt(frame, [[k.page1, S(960, 560, 1.12)], [k.feel, S(900, 520, 1.3)]]);
+    // page one: the leaflet card (line 15) is up at first, lower left: the sheet sits high until it has gone
+    case "page1": return camAt(frame, [[k.page1, S(960, 600, 1.05)], [k.work, S(930, 560, 1.15)], [k.pays, S(980, 540, 1.2)], [k.feel, S(990, 520, 1.28)]]);
     case "link": return camAt(frame, [[k.link, S(960, 520, 1.15)], [k.rings, S(950, 540, 1.3)], [k.stamps[0] - 4, S(960, 560, 1.12)], [k.remember, S(960, 570, 1.18)]]);
-    case "crumbs": return camAt(frame, [[k.crumbs, S(960, 520, 1.2)], [k.that, S(940, 540, 1.38)]]);
-    case "page2": return camAt(frame, [[k.page2, S(900, 540, 1.15)], [k.bar, S(800, 520, 1.35)], [k.bulb, S(1150, 500, 1.5)], [k.page3, S(1180, 480, 1.7)]]);
-    default: return camAt(frame, [[k.page3, S(960, 480, 1.2)], [k.better, S(960, 440, 1.5)], [k.bargain, S(960, 430, 1.62)]]);
+    // the crumbs card (line 20) is up from "crumbs" to the tick: the drawings stay in the upper half
+    case "crumbs": return camAt(frame, [[k.crumbs, S(960, 560, 1.12)], [k.why, S(960, 540, 1.24)]]);
+    case "page2": return camAt(frame, [[k.page2, S(900, 540, 1.15)], [k.head, S(820, 520, 1.3)], [k.bulb, S(980, 510, 1.32)], [k.page3, S(1000, 500, 1.4)]]);
+    // page three: the IT'S TRUE card (line 24) is up for its first 5.5 s: the dish stays above it
+    default: return camAt(frame, [[k.page3, S(960, 600, 1.0)], [k.better, S(960, 590, 1.06)], [k.bargain, S(960, 580, 1.1)]]);
   }
 }
 
 /** The beat's picture at a frame (no sound). */
 const Picture: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current(frame, [[k.ident, "open"], [k.page1, "page1"], [k.feel, "feel"], [k.link, "link"], [k.remember, "remember"],
-    [k.crumbs, "crumbs"], [k.that, "that"], [k.why, "why"], [k.page2, "page2"], [k.page3, "page3"], [k.bargain, "bargain"],
+    [k.crumbs, "crumbs"], [k.why, "why"], [k.page2, "page2"], [k.page3, "page3"], [k.bargain, "bargain"],
     [k.upside, "upside"], [k.reads, "reads"], [k.saturday, "saturday"]] as [number, string][]);
   if (shot === "page1" || shot === "link" || shot === "crumbs" || shot === "page2" || shot === "page3") {
     const cam = drift(sheetCam(frame, k, shot), frame, "leaflet", 2);
@@ -126,10 +139,10 @@ const Picture: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     return (
       <LeafletInsert frame={frame} at={at} cam={cam} tilt={shot === "page2" ? 1.5 : -2}
         over={shot === "link" ? <LinkStamps frame={frame} at={k.stamps} /> : undefined}>
-        {shot === "page1" && <PageOne frame={frame} a={k.page1 + 8} />}
+        {shot === "page1" && <PageOne frame={frame} a={k.sleeper} work={k.work} pays={k.pays} hour={k.hour} />}
         {shot === "link" && <PageLink frame={frame} a={k.link + 4} ringAt={k.rings} />}
         {shot === "crumbs" && <PageCrumbs frame={frame} taste={k.taste} word={k.word} face={k.face} tick={k.tick} />}
-        {shot === "page2" && <PageTwo frame={frame} a={k.page2 + 8} slice={k.slice} bar={k.bar} bulb={k.bulb} dim={k.dim} />}
+        {shot === "page2" && <PageTwo frame={frame} a={k.page2 + 8} head={k.head} bulb={k.bulb} dim={k.dim} />}
         {shot === "page3" && <PageThree frame={frame} a={k.page3 + 8} better={k.better} />}
       </LeafletInsert>
     );
@@ -138,8 +151,8 @@ const Picture: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 };
 
 const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const { frame, clips } = shot;
-  const k = times(clips);
+  const { frame, v3 } = shot;
+  const k = times(v3);
   const sheets = [k.page1, k.link, k.crumbs, k.page2, k.page3];
   return (
     <AbsoluteFill style={{ background: "#000" }}>
@@ -147,7 +160,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       {/* The title card: Night One's last frame shrinks into a print under the question, flips, opens on the kitchen. */}
       <Sequence from={k.ident} durationInFrames={C_FRAMES}>
         <IdentC
-          front={<Freeze frame={k.ident - 1}><AbsoluteFill style={{ background: "#000" }}><NightOnePicture frame={k.ident - 1} clips={clips} /></AbsoluteFill></Freeze>}
+          front={<Freeze frame={k.ident - 1}><AbsoluteFill style={{ background: "#000" }}><NightOnePicture frame={k.ident - 1} clips={v3} /></AbsoluteFill></Freeze>}
           back={<Freeze frame={k.open}><AbsoluteFill style={{ background: "#000" }}><Picture frame={k.open} k={k} /></AbsoluteFill></Freeze>}
           title={["What if AI rented", <>your brain <Hi>while you slept?</Hi></>]}
         />
@@ -158,6 +171,6 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const rule: Beat = { id: "rule", firstLine: 10, Component: Scene };
+export const rule: Beat = { id: "rule", firstLine: 10, Component: Scene, openAt: ruleOpen };
 
 

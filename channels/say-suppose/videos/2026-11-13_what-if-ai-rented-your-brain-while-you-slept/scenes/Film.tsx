@@ -49,7 +49,7 @@ const Picture: React.FC<FilmProps> = ({ timeline, lines: v3Lines }) => {
   // The beats count lines in v1 numbering (remap.ts): hand them v3's clips and lines in that numbering.
   const clips = V1_TO_V3.map((n) => v3[n]);
   const lines = V1_TO_V3.map((n) => v3Lines[n]);
-  const starts = BEATS.map((b) => (b.firstLine === 0 ? 0 : clips[b.firstLine].from));
+  const starts = BEATS.map((b) => (b.openAt ? b.openAt(v3) : b.firstLine === 0 ? 0 : clips[b.firstLine].from));
   const index = Math.max(0, lastIndex(starts, (s) => frame >= s));
   const beat = BEATS[index];
   const to = starts[index + 1] ?? timeline.totalFrames;

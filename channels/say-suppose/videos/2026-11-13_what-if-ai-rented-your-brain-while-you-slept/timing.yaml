@@ -16,7 +16,7 @@ extra:
   11: 0.3
   12: 0.3
   13: 0.3
-  14: 0.3
+  14: 4.1  # the title card plays in its own gap (scenes/beats/Rule.tsx ruleOpen)
   15: 0.8
   16: 0.8
   17: 0.8

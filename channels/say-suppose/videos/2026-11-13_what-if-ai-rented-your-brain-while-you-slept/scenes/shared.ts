@@ -52,6 +52,8 @@ export interface Beat {
   /** Index of the first narration line in this beat (0-based, into props.json lines and clips). */
   firstLine: number;
   Component: React.FC<{ shot: Shot }>;
+  /** When the beat opens before its first line (a title card in the gap before it): its start frame, from v3 clips. */
+  openAt?: (v3: Clip[]) => number;
 }
 
 /** Eased progress from 0 to 1 across a frame range. */

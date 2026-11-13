@@ -30,13 +30,13 @@ import type { Camera } from "@whatif/kit/stage/Stage";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import type { Clip } from "@whatif/kit/timeline";
 import { INK } from "@whatif/kit/theme";
-import { ClinkSound, CoinArc, DeviceSound, landings } from "../parts";
+import { Bubble, ClinkSound, CoinArc, DeviceSound, landings } from "../parts";
 import { BRIDGE, BridgeScene } from "../sets/Bridge";
 import { BunkRoom } from "../sets/BunkRoom";
 import { BRIDGE_WOMAN, blinking, camAt, current, lineEnd, linear, mix, ramp, type Beat, type Shot } from "../shared";
 import { BRO_SEAT, CLOCK, Crayon, FoldingSheet, HeldPage, KitchenTable, Notebook, SheetBlob, SheetSquare, ShoeDrawing, Spoon,
   TABLE, TopDown, TopHand, YOU_SEAT, type CrumbKind } from "./Crumbs.Kitchen";
-import { CaptchaPhone, DoodleBubble, DreamingScientist, HeartOnBench, KnotInsert, Newspapers, NightCorridor, PageStage } from "./Crumbs.Inserts";
+import { CaptchaPhone, DreamingScientist, HeartOnBench, KnotInsert, Newspapers, NightCorridor, PageStage } from "./Crumbs.Inserts";
 import { aimArm, headOf, talk, ThoughtCloud, You, type Body, type Face } from "./Crumbs.Rig";
 import { SHOWER, ShowerStage } from "./Crumbs.Shower";
 
@@ -173,7 +173,8 @@ const BridgeShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
           {[-50, -20, 20, 50].map((dx) => <line key={dx} x1={dx} y1={20} x2={dx} y2={-20 + Math.abs(dx) * 0.5} />)}
         </g>
       </ThoughtCloud>
-      <DoodleBubble frame={frame} at={k.say + 2} until={k.notMine[0]} x={yh.x + 50} y={yh.y - 30} s={0.9} />
+      {/* you try the word on her (owner, v3: a hero bubble with a made-up word, so the moment reads) */}
+      <Bubble frame={frame} at={k.say + 2} until={k.notMine[0]} x={yh.x + 30} y={yh.y - 62} text="Vesh-tarra?" size={40} side="left" />
     </>
   );
   return <BridgeScene frame={frame} mood="morning" cam={cam} queue={8} walk={WALK} skip={[2, 3]} offset={queueOffset(k)} actors={people} />;
@@ -308,7 +309,11 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
   return (
     <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k6", 3)} mood={mood} jar={frame >= k.jar ? jarFill : frame >= k.keep ? 0.25 : null}
       clock={clockT} you={{ body: you, face: youFace, held }} brother={{ body: bro, face: broFace, light, bowl: true }}
-      onTable={notebook} extra={coins} />
+      onTable={notebook} extra={<>
+        {coins}
+        {/* "You wake saying sorry in a voice that isn't yours": your bubble by your mouth */}
+        {(() => { const h = headOf(you); return <Bubble frame={frame} at={k.sorry + 4} until={k.writes} x={h.x + 58} y={h.y - 8} text="Sorry." size={40} />; })()}
+      </>} />
   );
 };
 

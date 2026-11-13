@@ -1,9 +1,9 @@
 // The leaflet, top-down on the kitchen table: paper sheets whose drawings draw themselves as the narrator explains.
 // No words on the sheets; the only lettering is the three stamped tags (BRAIN, BAND, JAR).
-//   page one   the sleeper and the band, the dotted thread, the pale second you at its desk, coins into a jar, a clock
+//   page one   the sleeper and the band; the dotted thread, the pale second you at its desk; coins into a jar; a clock
 //   the link   one laptop, three sleepers threaded to it, a ring round each head; the stamps
 //   crumbs     a spoon with a drop, a speech bubble with a squiggle, a face that isn't yours; a tick
-//   page two   a paper you, a thin slice of the head shaded, a bar a fifth full, a bulb that glows, then dims
+//   page two   a paper you, the head shaded in, a bulb that glows beside it, then dims
 //   page three a dish of cells wired to a little bat-and-ball game; the bat starts hitting back
 import { interpolate } from "remotion";
 import { setLook } from "@whatif/kit/sets/common";
@@ -42,24 +42,26 @@ const SleeperInk: React.FC<{ x: number; y: number; r: number; a: number; frame: 
   </g>
 );
 
-/** Page one: the rule, drawn. */
-export const PageOne: React.FC<{ frame: number; a: number }> = ({ frame, a }) => {
-  const coins = [0, 1, 2, 3].filter((i) => frame >= a + 62 + i * 6);
+/** Page one: the deal, drawn, a piece per phrase. From `a` ("Wear the band to bed") the sleeper and the band; from `work`
+ *  ("the company runs its work on your brain") the dotted thread and the pale second you at its desk; from `pays` ("the
+ *  band pays you") a coin falls into a jar; from `hour` ("by the hour") a clock. */
+export const PageOne: React.FC<{ frame: number; a: number; work: number; pays: number; hour: number }> = ({ frame, a, work, pays, hour }) => {
+  const coins = [0, 1, 2, 3].filter((i) => frame >= pays + 16 + i * 6);
   return (
     <g>
       <SleeperInk x={260} y={520} r={56} a={a + 2} frame={frame} />
       <Ink d="M330 560 Q520 540 700 580 L740 640" a={a + 10} n={10} />
-      <DrawLine d="M285 470 C330 360 470 280 560 250" from={a + 24} to={a + 38} color={GHOST.light} width={9} dash />
+      <DrawLine d="M285 470 C330 360 470 280 560 250" from={work} to={work + 14} color={GHOST.light} width={9} dash />
       {/* the pale second you at its desk */}
-      <Ink d={circle(600, 196, 38)} a={a + 36} n={8} color="#5fb8bd" />
-      <Ink d="M600 234 V320 M600 262 L690 286 M562 320 H640 M572 320 V362 M628 320 V362" a={a + 40} n={10} color="#5fb8bd" />
-      <Ink d="M670 296 H830 M690 296 V364 M810 296 V364 M705 296 L695 236 H770 L780 296" a={a + 44} n={12} />
-      {/* coins into a jar, and the hour */}
-      <Ink d="M890 460 V610 Q890 624 904 624 H996 Q1010 624 1010 610 V460 M880 452 H1020" a={a + 56} n={10} />
+      <Ink d={circle(600, 196, 38)} a={work + 12} n={8} color="#5fb8bd" />
+      <Ink d="M600 234 V320 M600 262 L690 286 M562 320 H640 M572 320 V362 M628 320 V362" a={work + 16} n={10} color="#5fb8bd" />
+      <Ink d="M670 296 H830 M690 296 V364 M810 296 V364 M705 296 L695 236 H770 L780 296" a={work + 20} n={12} />
+      {/* the pay: coins into a jar, and the hour */}
+      <Ink d="M890 460 V610 Q890 624 904 624 H996 Q1010 624 1010 610 V460 M880 452 H1020" a={pays - 4} n={10} />
       {coins.map((i) => <circle key={i} cx={950 + ((i % 2) * 2 - 1) * 20} cy={600 - i * 22} r={16} fill="#ffd36b" stroke={INK} strokeWidth={3} />)}
-      {frame < a + 86 && frame >= a + 58 && <circle cx={840 + (frame - a - 58) * 3} cy={320 + ((frame - a - 58) % 14) * 16} r={14} fill="#ffd36b" stroke={INK} strokeWidth={3} />}
-      <Ink d={circle(960, 170, 54)} a={a + 78} n={10} />
-      <Ink d="M960 170 V132 M960 170 L988 184" a={a + 86} n={6} />
+      {frame < pays + 28 && frame >= pays && <circle cx={840 + (frame - pays) * 3} cy={320 + ((frame - pays) % 14) * 16} r={14} fill="#ffd36b" stroke={INK} strokeWidth={3} />}
+      <Ink d={circle(960, 170, 54)} a={hour} n={10} />
+      <Ink d="M960 170 V132 M960 170 L988 184" a={hour + 8} n={6} />
     </g>
   );
 };
@@ -99,24 +101,23 @@ export const PageCrumbs: React.FC<{ frame: number; taste: number; word: number; 
       <path d="M822 360 Q850 340 878 360" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />
       <path d="M770 300 Q850 210 930 300" fill="none" stroke={INK} strokeWidth={10} />
     </Pop>
-    <DrawLine d="M480 560 L540 620 L660 500" from={tick} to={tick + 10} color="#1d9a8f" width={16} />
+    {/* the tick sits right of the crumbs: the CRUMBS card is up, lower left, when "harmless" is said */}
+    <DrawLine d="M880 520 L940 580 L1060 460" from={tick} to={tick + 10} color="#1d9a8f" width={16} />
   </g>
 );
 
-/** Page two: a paper you, a slice of the head shaded, a bar a fifth full, a bulb that glows and then dims. */
-export const PageTwo: React.FC<{ frame: number; a: number; slice: number; bar: number; bulb: number; dim: number }> = ({ frame, a, slice, bar, bulb, dim }) => {
-  const sh = ramp(frame, slice, slice + 12);
-  const fill = ramp(frame, bar, bar + 16) * 0.2;
+/** Page two: a paper you, the head shaded in from `head` ("Your brain"), a bulb that glows beside it from `bulb` ("about
+ *  twenty watts") and dims from `dim` ("unused power"). */
+export const PageTwo: React.FC<{ frame: number; a: number; head: number; bulb: number; dim: number }> = ({ frame, a, head, bulb, dim }) => {
+  const sh = ramp(frame, head, head + 14);
   const glow = ramp(frame, bulb, bulb + 10) * (1 - ramp(frame, dim, dim + 24) * 0.85);
   return (
     <g>
-      <path d="M300 200 L300 130 A70 70 0 0 1 336 140 Z" fill="#e6a0a0" opacity={sh} />
+      <circle cx={300} cy={200} r={66} fill="#e6a0a0" opacity={0.8 * sh} />
       <Ink d={circle(300, 200, 70)} a={a + 2} n={10} />
       <Ink d="M300 270 V480 M300 330 L220 420 M300 330 L380 420 M300 480 L240 640 M300 480 L360 640" a={a + 10} n={16} />
-      {/* the energy bar: a fifth of it, flowing to the head */}
-      <Ink d="M500 200 H580 V620 H500 Z" a={bar - 10} n={10} />
-      <rect x={504} y={616 - 412 * fill} width={72} height={412 * fill} fill="#1d9a8f" opacity={0.85} />
-      <DrawLine d="M500 560 C440 520 400 300 372 220" from={bar + 8} to={bar + 22} color="#1d9a8f" width={6} dash />
+      {/* the head's power, out to the bulb */}
+      <DrawLine d="M376 200 C460 170 560 250 700 290" from={bulb - 6} to={bulb + 8} color="#1d9a8f" width={6} dash />
       {/* the bulb */}
       {glow > 0.02 && <circle cx={820} cy={300} r={170} fill="#ffe39a" opacity={0.45 * glow} />}
       <circle cx={820} cy={300} r={78} fill={glow > 0.05 ? `rgba(255,227,154,${0.35 + 0.65 * glow})` : "#f3e9d7"} stroke={INK} strokeWidth={6} opacity={frame >= bulb - 12 ? 1 : 0} />
