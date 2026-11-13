@@ -10,6 +10,37 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-13
 
+Second watch of the v3 cut (saw who wants you to fail, G2), eleven notes. Applied in v4:
+
+- **"Well done mate ? Its not very clear. Maybe change the dialogue here or improve the script. And Voice definitely
+  some one else."** A stranger's line in the first ten seconds must be heard right the first time: a full, plain
+  sentence ("Oh, congratulations! Your family must be so proud."), and a voice made for her, never one borrowed from
+  another film's cast.
+- **"The academy door opens. This could be something else more relateable."** Name the thing the viewer knows
+  ("extra classes let out") before the local word for it; the facts can explain the academies later.
+- **"A text, A call, nothing opens. Remember that. This is not needed here i feel."** Don't list the rule's limits in
+  the rules speech; show them in the story (the phone call, her back). **"its more like immersive story telling
+  experience that we we are doing with an Agenda so dialogues can be a little slower."** More air between lines.
+- **"After the script or during the script, we should introduce characters so people remember also else everything
+  else might look the same."** A cast tag at each recurring character's first close-up: name, role, one thing they do.
+- **"If some text makes sense to emphasise on something then we can add that but only if it makes sense."** On-screen
+  cards only for a real fact or a turn the viewer must hold (the curve, the planes, Problem 1 and 2), one at a time.
+- **"You can ask him on the academy step ? And then there was no dialogue. I think we should have one there by the
+  Hero."** When the narrator says "you ask", the hero asks, on screen.
+- **"Not clear at 7:35 about the problem 2 when you say school confirm it. Confirms what ?"** Say what is confirmed
+  and what it depends on.
+- **"Every mistake this year and why when it came initially. That time was not very clear. Leave it for him -> why
+  would you do that ?"** A choice needs its stakes both ways and the reason it is taken, said plainly.
+- **"Last year country grounded its plane for English Listening test becoz plane makes a lot of noise ? Is it for
+  real ? Then you can emphasise it by some text and in which year it happened."** A fact that sounds made up gets
+  "it's true", its year and a card.
+- **"In the crowd of parents, what is this scene depicting ? Exam Over ?"** Tell scenes in the order they happen
+  (the gate in the morning, then the test), and name the moment on screen.
+- **"Voices are not very clear so thats one thing and maybe at last we can check with Eleven labs once."** Local
+  voices made for clear diction now; the ElevenLabs A/B comes last, at picture lock.
+
+First watch:
+
 - **"This looks much better now. I could understand almost all of it."** G2 review of the v3 cut (saw who wants you
   to fail): the skit opening, plain roles and characters' own voices worked. More notes to come after a second watch.
   (saw who wants you to fail, G2)

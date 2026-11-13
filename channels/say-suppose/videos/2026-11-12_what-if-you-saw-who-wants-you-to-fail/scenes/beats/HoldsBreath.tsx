@@ -1,20 +1,21 @@
-// Beat "The Country Holds Its Breath" (script.md v3; narration lines 97-105; mood morning). Every frame comes from the
-// clips (`times`), one component per shot. No card opens anywhere in this beat.
+// Beat "The Country Holds Its Breath" (script.md v4; v4 lines 97-106, see `times`; mood morning). Every frame comes
+// from the clips, one component per shot, in the order things happen (owner on v3, 2026-11-13). No card opens.
 //
 //   97    a week in the study room in one dissolve: your desk, writing; asleep on a rolled jacket; writing; a yawn.
-//   98    the night before the exam, the classroom at dusk: you at his empty desk with your notebook; close on the choice.
-//   99    insert from above: the notebook onto his desk, half a chocolate bar on top; you walk out.
-//   100   exam day: the exam hall from straight above, rows of heads, yours among them; pull up.
-//   101   the city skyline, one paper plane held still in the sky; then the hall side on, you listening.
-//   hold  3 s (the gap after 101): the plane held still; the empty runway; the parents at the gate, not moving.
-//   102   the hall from high above: "A country holds its breath for you."
-//   103   the gate: parents along the wall; you walk up; between two of them, the work vest.
-//   hold  6 s, PERFORMED (the gap after 103): the crowd parts and she's there, the lunch box in both hands; she holds it
+//   98-99 the night before the exam, the classroom at dusk: you at his empty desk with your notebook; close on the choice.
+//   100   insert from above: the notebook onto his desk, half a chocolate bar on top; you walk out.
+//   101   exam morning: the gate, parents along the wall; you walk up (the EXAM MORNING title, Captions.tsx).
+//   102   between two of them, the work vest.
+//   hold  6 s, PERFORMED (the gap after 102): the crowd parts and she's there, the lunch box in both hands; she holds it
 //         out; close on you, looking at her face, not the air above it; the hands on the knot, fingers touch; her mouth
 //         opens for the words she always says and shuts without them; she nods once; she steps back into the crowd;
 //         the bell; you turn to the gate.
-//   104   her face in the crowd, and the empty air over her head: nothing opens.
-//   105   you walk into the gate with the lunch; pull back.
+//   103   her face in the crowd, and the empty air over her head: nothing opens.
+//   104   you walk into the gate with the lunch; then the exam hall from straight above, rows of heads; pull up.
+//   105   the city skyline, one paper plane held still in the sky; then the hall side on, you listening (the planes
+//         card, Captions.tsx).
+//   hold  3 s (the gap after 105): the plane held still; the empty runway; the parents at the gate, not moving.
+//   106   the hall from high above: "This year, a country holds its breath for you."
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -37,26 +38,23 @@ import {
 
 type T = ReturnType<typeof times>;
 
+/** On v4's lines (remap.ts; owner on v3, 2026-11-13: "In the crowd of parents, what is this scene depicting ? Exam
+ *  Over ?"): the gate on exam morning now comes before the test, as it happens. 97 the week, 98 the notebook, 99 the
+ *  choice, 100 left on his desk, 101 exam morning at the gate, 102 your sister in the crowd, the 6 s hand-off after it,
+ *  103 nothing opens, 104 the gate closes, 105 the planes (the 3 s hold after it), 106 a country holds its breath. */
 function times(clips: Clip[], to: number) {
   const { from, at, end } = timer(clips);
-  const h = (p: number) => Math.round(mix(end(101), from(102), p)); // the 3 s hold after line 101
-  const p = (q: number) => Math.round(mix(end(103), from(104), q)); // the 6 s performed moment after line 103
+  const h = (p: number) => Math.round(mix(end(105), from(106), p)); // the 3 s hold after the planes
+  const p = (q: number) => Math.round(mix(end(102), from(103), q)); // the 6 s performed moment after line 102
   return {
     week: from(97), // a week in the study room, one dissolve
     eve: from(98), // the night before the exam, the classroom at dusk
-    choose: at(98, 0.62), // "Leave it for him, or keep your place?"
-    leave: from(99) - 2, // the notebook onto his desk, from above
-    choc: at(99, 0.5), // "Half a chocolate bar on top."
-    go: at(99, 0.86), // you walk out
-    exam: from(100), // "Exam day.": the hall from above
-    sky: from(101), // "the country grounded its planes for 35 minutes"
-    listen: at(101, 0.62), // "This year, you're the one listening."
-    plane: h(0), // the hold: the plane held still
-    runway: h(0.34), // the empty runway
-    still: h(0.67), // the parents at the gate, not moving
-    breath: from(102), // "A country holds its breath for you."
-    gate: from(103), // the gate, the parents
-    vest: at(103, 0.45), // "the work vest"
+    choose: from(99), // "Give it to him, and he might pass you. Keep it, and first place stays yours."
+    leave: from(100) - 2, // the notebook onto his desk, from above
+    choc: at(100, 0.4), // "with half a chocolate bar on top"
+    go: at(100, 0.72), // "He did it for you first." You walk out
+    gate: from(101), // exam morning: the gate, the parents
+    vest: at(102, 0.45), // "still in her work vest"
     part: p(0), // the performed moment: the crowd parts
     offer: p(0.2), // she holds it out
     look: p(0.29), // close on you: her face, not the air above it
@@ -64,9 +62,16 @@ function times(clips: Clip[], to: number) {
     nod: p(0.56), // her mouth opens for the words she always says, and shuts without them; she nods once
     back: p(0.8), // she steps back into the crowd
     bell: p(0.9), // the bell; you turn to the gate
-    nothing: from(104), // "Neither of you says a word. Nothing opens."
-    air: at(104, 0.55), // the empty air over her head
-    month: from(105), // you walk into the gate
+    nothing: from(103), // "Neither of you says a word. Nothing opens."
+    air: at(103, 0.55), // the empty air over her head
+    month: from(104), // "The gate closes behind you": you walk in
+    exam: at(104, 0.55), // "And the whole country goes quiet.": the hall from above
+    sky: from(105), // "South Korea stopped its planes taking off and landing"
+    listen: at(105, 0.55), // the hall side on, you listening
+    plane: h(0), // the hold: the plane held still
+    runway: h(0.34), // the empty runway
+    still: h(0.67), // the parents at the gate, not moving
+    breath: from(106), // "This year, a country holds its breath for you."
     end: to,
   };
 }
@@ -183,9 +188,9 @@ const LeaveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 };
 
 const GoShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const walk = linear(frame, k.go, k.exam + 4);
+  const walk = linear(frame, k.go, k.gate + 4);
   const x = mix(1175, 640, walk);
-  const cam = drift(camAt(frame, [[k.go, { x: 960, y: 620, zoom: 1.15 }], [k.exam, { x: 1000, y: 680, zoom: 1.4 }]]), frame, "go", 2);
+  const cam = drift(camAt(frame, [[k.go, { x: 960, y: 620, zoom: 1.15 }], [k.gate, { x: 1000, y: 680, zoom: 1.4 }]]), frame, "go", 2);
   return (
     <Classroom frame={frame} cam={cam} onDesk
       you={<Figure {...HERO} x={x} y={960} scale={S} facing={-1} pose={walkPose(frame * 0.3)} brows="flat" mouth="flat" lids={0.2} look={{ x: 0.8, y: 0.1 }} time={frame} flow={0.2} />} />
@@ -355,10 +360,10 @@ const NothingShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 };
 
 const MonthShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const walk = linear(frame, k.month + 6, k.month + Math.round((k.end - k.month) * 0.8));
+  const walk = linear(frame, k.month + 6, k.month + Math.round((k.exam - k.month) * 0.85));
   const x = mix(ME, 960, walk);
   const pose: Pose = walk > 0 && walk < 1 ? { ...walkPose(frame * 0.3), armF: [40, 84] } : { ...STAND, armF: [40, 84], armB: [30, 90] };
-  const cam = drift(camAt(frame, [[k.month, { x: 1200, y: 700, zoom: 1.5 }], [k.end, { x: 1080, y: 600, zoom: 1.0 }]]), frame, "month", 2);
+  const cam = drift(camAt(frame, [[k.month, { x: 1200, y: 700, zoom: 1.5 }], [k.exam, { x: 1080, y: 600, zoom: 1.0 }]]), frame, "month", 2);
   return (
     <Gate frame={frame} cam={cam}
       her={<JiyoonWithLunch x={1430} y={GATE.jiyoon.y} scale={JS} frame={frame} face={herFace(frame, { look: { x: 0.9, y: 0.1 } })} holding={false} out={1} />}
@@ -370,11 +375,11 @@ const MonthShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 // ------------------------------------------------------------------------------------------------ the beat
 
 const HoldsBreath: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const { frame, clips } = shot;
-  const k = times(clips, shot.to);
+  const { frame } = shot;
+  const k = times(shot.v4, shot.to);
   const scene = current(frame, [
-    [0, "week"], [k.eve, "eve"], [k.leave, "leave"], [k.go, "go"], [k.exam, "exam"], [k.sky, "sky"], [k.listen, "listen"], [k.plane, "plane"],
-    [k.runway, "runway"], [k.still, "still"], [k.breath, "breath"], [k.gate, "gate"], [k.part, "handoff"], [k.nothing, "nothing"], [k.month, "month"],
+    [0, "week"], [k.eve, "eve"], [k.leave, "leave"], [k.go, "go"], [k.gate, "gate"], [k.part, "handoff"], [k.nothing, "nothing"], [k.month, "month"],
+    [k.exam, "exam"], [k.sky, "sky"], [k.listen, "listen"], [k.plane, "plane"], [k.runway, "runway"], [k.still, "still"], [k.breath, "breath"],
   ]);
   const hallClose = { x: yourDesk.x, y: yourDesk.y + 70, zoom: 2.4 };
   return (
@@ -389,7 +394,7 @@ const HoldsBreath: React.FC<{ shot: Shot }> = ({ shot }) => {
       {scene === "plane" && <SkyShot frame={frame} a={k.plane} b={k.runway} from={{ x: 1120, y: 330, zoom: 1.6 }} to={{ x: 1140, y: 320, zoom: 1.7 }} />}
       {scene === "runway" && <RunwayShot frame={frame} k={k} />}
       {scene === "still" && <StillGate frame={frame} k={k} />}
-      {scene === "breath" && <HallShot frame={frame} a={k.breath} b={k.gate} from={{ x: 960, y: 520, zoom: 0.8 }} to={{ x: 960, y: 540, zoom: 0.68 }} />}
+      {scene === "breath" && <HallShot frame={frame} a={k.breath} b={k.end} from={{ x: 960, y: 520, zoom: 0.8 }} to={{ x: 960, y: 540, zoom: 0.68 }} />}
       {scene === "gate" && <GateShot frame={frame} k={k} />}
       {scene === "handoff" && <HandOffShot frame={frame} k={k} />}
       {scene === "nothing" && <NothingShot frame={frame} k={k} />}

@@ -5,6 +5,8 @@
 //   after line 42 (5 s): you point straight up at the air above his head, mouth open. He follows your finger: looks
 //   up, sees nothing, looks at the sky, then at you, brows up. He pats the top of his own head twice, checking.
 //   Then his own lines, "What number?" and "Is it a bug? Get it off."
+//   v4 (owner on v3, 2026-11-13: "You can ask him on the academy step ? And then there was no dialogue. I think we
+//   should have one there by the Hero."): you ask it, in a bubble, as you point: "There's a number over your head!"
 //   after line 44 (2 s): he ducks, swatting at his own hair, then catches your face, laughs, and shoves your shoulder.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -14,7 +16,7 @@ import { LookContext } from "@whatif/kit/stage/Look";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { headAt } from "../parts";
+import { Bubble, headAt } from "../parts";
 import { blinking, camAt, current, HERO, MINJUN, mix, ramp } from "../shared";
 import { ACADEMY, academyLights, AcademyStreetBack } from "../sets/AcademyStreet";
 import { armTo } from "./WhosCrimson.Common";
@@ -116,6 +118,9 @@ export const StepsShot: React.FC<{ frame: number; k: CrimsonTimes }> = ({ frame,
           <Backpack x={366} y={1002} scale={0.36} color="#3d6fb0" />
           <Figure {...MINJUN} x={SM.x} y={mY} scale={SM.scale} facing={SM.facing} pose={mPose} {...minjunFace(frame, k, view)} blink={blinking(frame, 2)} time={frame} />
           <Figure {...HERO} x={yx} y={yY} scale={SY.scale} facing={SY.facing} pose={yPose} {...yourFace(frame, k, view)} blink={blinking(frame, 1)} time={frame} />
+          {/* your question as you point, above both heads, until he looks up (script v4's BUBBLE) */}
+          <Bubble frame={frame} at={k.point + 4} until={k.up} x={yh.x + 12} y={yh.y - yh.r - 18} size={17} side="right"
+            text="There's a number over your head!" />
           {/* his hand on his crown (the back arm itself stays behind his head), patting, then swatting */}
           {handUp > 0.5 && <circle cx={mh.x + 4 + sway} cy={mh.y - mh.r * 0.92 - tap} r={11 * SM.scale * 1.15} fill={MINJUN.head} stroke="#23252b" strokeWidth={3} />}
         </>

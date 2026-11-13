@@ -1,4 +1,5 @@
-# Cue sheet, G2 intent (rules/sound.md #1); final spotting at G4. Owner on v3 (2026-11-13): "better sound in the video
+# Cue sheet, G2 intent (rules/sound.md #1); final spotting at G4. v4 (2026-11-13): scenes/sound.ts carries the v3
+# spotting onto v4's lines (remap.ts). Owner on v3 (2026-11-13): "better sound in the video
 # just to break the continuous background music flowing throughout the video which might be monotonous". So the score
 # changes with each section (scenes/sound.ts places it) and every set has its own two-layer ambience bed
 # (scenes/make_ambience.py). Levels: rules/sound.md #4 (about 26 dB under the voice, about 8 dB under in holds),
@@ -18,7 +19,7 @@ beats:
   - {beat: Four in a Hundred, intent: narrowing, music_in: "cue_crowd tightens", music_out: "into cue_friend at the notebook", level: "-26 dB", bed: "classroom, the store", fx: []}
   - {beat: The Notebook, intent: warm, music_in: "cue_friend (felt piano and cello)", music_out: "into cue_dread at the cost", level: "-26 dB; the notebook hold at -8 dB", bed: "the late-night study room (lamp hum)", fx: [pages]}
   - {beat: Say It Again, intent: dread, music_in: "cue_dread (slow ticking pulse, low strings) after the cost line, not before", music_out: "-", level: "-26 dB", bed: home, fx: []}
-  - {beat: The Country Holds Its Breath, intent: hush, music_in: "cue_dread continues", music_out: "into cue_ache", level: "-26 dB", bed: "classroom, the hushed city, the exam hall", fx: []}
+  - {beat: The Country Holds Its Breath, intent: hush, music_in: "cue_dread continues", music_out: "into cue_ache", level: "-26 dB", bed: "the study room, the classroom the night before, the street at the gate on exam morning, then the hush once the gate closes (v4 order: the gate before the test)", fx: []}
   - {beat: A Text Would Open Nothing, intent: lonely, music_in: "cue_ache (sparse felt piano)", music_out: "into theme-dark-thin", level: "-26 dB", bed: "home and classroom by shot, then the bus", fx: []}
   - {beat: The Loading Dock, intent: peak, music_in: "theme-dark thinned (the signal, thinner at the cost, sound #2)", music_out: "drops to a floor with one held low note across the 9 s wordless peak, then comes back in once (sound #3)", level: "-26 dB; the floor about 10% of hold level", bed: "the dock (wind, the city far off)", fx: [meter snap, soft]}
   - {beat: Two Letters, intent: resolve, music_in: "cue_resolve (piano and soft strings, morning)", music_out: "theme-light on the end card", level: "-26 dB; end card at hold level", bed: home, fx: [card snap, soft]}
