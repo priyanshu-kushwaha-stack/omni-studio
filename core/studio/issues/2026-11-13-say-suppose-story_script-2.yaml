@@ -1,0 +1,13 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: low
+example: 'AI-texts film: the qc clicks check flagged a ''sample jump'' step INSIDE
+  a word (the p of ''spell'' in a Qwen3-design character take, 0.52 sample-to-sample).
+  A mute would cut the word, adeclick did nothing, and lowering the narration''s volume
+  does not help because the step threshold scales with the mix. Fixed by a 6 kHz low-pass
+  on that one take file (assets, git-ignored), which a rebuild would overwrite.'
+recorded_at: '2026-11-13T02:22:00.386041+00:00'
+note: 'Proposal: mix_narration.py (or build.ts) applies a gentle 7-8 kHz low-pass
+  or a de-esser to character takes, or accepts a per-take filter list beside mutes.txt
+  so the fix lives in the repo.'
