@@ -144,7 +144,7 @@ export const BunkRoom: React.FC<BunkRoomProps> = ({
         <Bedside jarFill={jarFill} drawerOpen={drawerOpen} />
         <Bunks top={topBunk} />
         <Brother pose={brother} frame={frame} face={brotherFace} band={brotherBand} />
-        <circle cx={Y.x} cy={Y.y} r={46 * Y.scale * 1.9} fill="url(#bunk-shade)" />
+        {you !== "none" && <circle cx={Y.x} cy={Y.y} r={46 * Y.scale * 1.9} fill="url(#bunk-shade)" />}
         <defs>
           <radialGradient id="bunk-shade" cx="0.5" cy="0.5" r="0.5">
             <stop offset="0.45" stopColor="#07080d" stopOpacity={mood === "night" || mood === "lamp" ? 0.92 : 0.4} />

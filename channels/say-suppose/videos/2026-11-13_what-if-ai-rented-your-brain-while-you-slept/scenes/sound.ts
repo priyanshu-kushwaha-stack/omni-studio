@@ -29,6 +29,6 @@ export const PEAK = { from: 579.1, to: 588.1, floor: 0.1 };
 export const BEDS: [number, string][] = [
   [0, "clinic"], [13.5, "bridge"], [17, "bunk-night"], [30, "bunk-morning"], [49.3, "kitchen"],
   [140, "bridge"], [150, "kitchen"], [214, "bus"], [225, "office"], [240, "street"],
-  [294.7, "bunk-night"], [369.8, "hall"], [385, "kitchen"], [414, "kitchen"], [425, "bridge"], [440, "warehouse"],
+  [294.7, "bunk-night"], [369.8, "hall"], [385, "kitchen"], [414, "kitchen"], [418, "bridge"], [434, "warehouse"], [482.5, "bridge"],
   [487.8, "kitchen-lamp"], [535.5, "bunk-night"], [627.8, "bunk-morning"], [655, "street"],
 ];
