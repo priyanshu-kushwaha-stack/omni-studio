@@ -31,3 +31,29 @@ back." replaces the "and then" line.
 Not changed yet, for the owner with their notes: the length (11:09 on v1; v2 is about 20 s longer before the extra air),
 the room's blockers #1 and #2 (the asides before the first stake jump, one number per line), the Coors aside, and the
 spoken close.
+
+## Part 2: the owner's notes on a second watch (2026-11-13), applied in v3
+
+Owner notes outrank the room. All five are in `taste.md` under 2026-11-13.
+
+| # | Owner note | Applied in v3 |
+|---|---|---|
+| 1 | "better Skit to start with and more clarity In the first and second line around." | The nurse says what she took ("That's all the plasma we can take this week. Come back Thursday."); your bubble over the three notes ("That's it?"); the broker explains the demonstration ("You fell asleep for ten seconds, and you earned a coin.") and then the offer ("Wear this tonight. Sleep all night, and get paid for every hour."). The first narrator lines: "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows." / "It's how your family keeps up with what it owes." |
+| 2 | "I would suggest you define Band also in the starting when you introduce it." | Right after the title question, on its own shot: "That's the band. A thin strip you wear across your forehead." / "While you sleep, it lends your brain to a company. And it pays you, by the hour." Then "That pale figure up there? That's your sleeping brain, at work for the company." A THE BAND card. |
+| 3 | "More clarity around leaflet says and band.. Around 1:00" | "The band came with a leaflet. It sets out the deal." The rule in short steps, one line each (wear it to bed; the company runs its work on your brain; it pays you by the hour; you won't feel a thing; many bands can link for one job, but the leaflet promises each brain stays separate); "crumbs" named as it is defined; the title card now plays in its own gap, so it no longer covers the first leaflet line. One number per line ("about twenty watts"). THE LEAFLET and CRUMBS cards. |
+| 4 | "More pauses and stresses in voice wherever required for better explanation of the concept." | `timing.yaml`: 0.3 s more air after every line, 0.8 s after 29 concept, card, problem and it's-true lines. Every concept line's direction names its stressed words; long explanations split into shorter lines. |
+| 5 | "Text on the Screen if needed." | 16 cards (the concepts as defined, Problems 1-3, the it's-true facts with their years, the job) and 7 role tags at first close-ups (roles, no names), one at a time, lower left (`scenes/Captions.tsx`). |
+
+**Narration v3.** 108 lines, 12:51 with the extra air (v1 11:09). Free and local; the six cast voices re-made for clear
+diction. Every take transcribed back: four were misheard and re-directed (the brother's "what'd" heard as "where'd",
+the countdown run together as "1941", the clerk's "rested" heard as "rusted", "pen" heard as "pin"); all four now
+transcribe right. 36 click mutes; `omni qc story_script` on the narration passes (claims, clicks).
+
+**For the owner.** The title question now lands at 0:30 (v1 0:15), because the skit and the plasma lines come first.
+The length is longer, as the clearer opening and the pauses asked; the room's trims (blockers #1 and #2, the Coors
+aside) are still open if you want it shorter. The room's owner-notes round is not run yet: it reads v3 after you do.
+
+**The v3 cut.** `renders/v3/v3-720p.mp4` (git-ignored; 1280x720, 12:51, -15.6 LUFS). The full-mix click scan is down
+from five spots to two (`qc/v3-mix-clicks.json`): 1:02.6 (the pay-flap effect on "What'd you get?") and 11:50 (the
+midnight knock on the door), both effects, kept for your ear. `story_script` is `awaiting_human` on v3; G2 passes only by
+your own `omni approve`.

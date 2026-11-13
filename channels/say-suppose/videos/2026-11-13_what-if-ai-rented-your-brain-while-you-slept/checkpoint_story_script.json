@@ -4,7 +4,7 @@
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
   "status": "awaiting_human",
-  "timestamp": "2026-11-13T03:58:59.674099+00:00",
+  "timestamp": "2026-11-13T12:53:18.162761+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
@@ -15,17 +15,17 @@
     "sequel_md": "sequel.md",
     "story_json": "story.json",
     "narration_wav": "assets/narration/narration.wav (git-ignored, local voices)",
-    "first_cut": "renders/firstcut/firstcut-720p.mp4 (git-ignored)",
-    "review_md": "review-g2-round1.md",
+    "first_cut": "renders/v3/v3-720p.mp4 (git-ignored)",
+    "review_md": "review-g2-owner-notes.md",
     "room_md": "room-g2.md",
     "qc_json": "qc/story_script.json (git-ignored)"
   },
   "style_playbook": "say-suppose",
   "metadata": {
     "gate": "G2 story lock",
-    "drop": 2,
-    "runtime_s": 668.9,
-    "runtime_note": "11:09, longer than the template's 9:30; trims proposed for the owner-notes round",
+    "draft": "v3 (owner-notes round)",
+    "runtime_s": 770.8,
+    "runtime_note": "12:51 with the pauses the owner asked for; the room trims are open",
     "room": "round 1 shipped; claims 0 blockers, story 3 blockers (ride the owner-notes round)",
     "paid_calls": 0
   }
