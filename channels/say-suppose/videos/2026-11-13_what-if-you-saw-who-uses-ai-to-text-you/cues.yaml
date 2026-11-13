@@ -1,0 +1,24 @@
+# Cue sheet, G2 intent (rules/sound.md #1); final spotting at G3. From the start, the owner's note on the wants-you-to-
+# fail cut (2026-11-13): "better sound in the video just to break the continuous background music flowing throughout the
+# video which might be monotonous". So the score changes with each section (scenes/sound.ts places it, anchored to
+# spoken lines) and every set has its own ambience bed (scenes/make_ambience.py). Levels: rules/sound.md #4 (about 26 dB
+# under the voice, about 8 dB under in holds); beds about 30 dB under the voice. Each section's music starts 1.0 s and
+# its bed 0.5 s under the cut (sound #7).
+# Rights (sound #11): theme-light and theme-dark are the channel themes; every cue_* is made locally by ACE-Step 1.5
+# (make_music.py) with a theme as reference_audio at low strength (U2); beds and effects are synthesised
+# (make_ambience.py, make_sfx.sh). No paid call.
+# Rule device sound (sound #8): the dot's soft tick, like a pen tapped on a desk; a phone buzz with no tick is your
+# father's messages.
+beats:
+  - {beat: Make a Wish, intent: hook, music_in: "theme-light from frame 0 (the channel signal)", level: "hold level in the skit", bed: home, fx: [phone buzz, candle blown, dot ticks]}
+  - {beat: The Rule, intent: wonder, music_in: "cue_wonder (pizzicato, celesta, ticking)", level: "-26 dB under voice", bed: home}
+  - {beat: The Detective, intent: nosy, music_in: "cue_hunt (plucked strings, muted marimba)", level: "-26 dB; the aunts' hold at -8 dB", bed: "bus, then home (the aunts), then office"}
+  - {beat: The Test and Your Own Dots, intent: unease, music_in: "cue_test (felt piano, muted string pulse)", level: "-26 dB", bed: "street at dusk, then home"}
+  - {beat: The Cold Week, intent: shut, music_in: "cue_cold (staccato low strings, a metallic tick)", level: "-26 dB", bed: "office, bus, office, home"}
+  - {beat: The Shoebox, intent: tender, music_in: "cue_home (solo felt piano)", level: "-26 dB; the cards hold at -8 dB", bed: home}
+  - {beat: The Bench and The Cost, intent: night, music_in: "cue_night (synth pad, lonely piano)", level: "-26 dB; the bench hold at -8 dB", bed: "night bus, then the call centre"}
+  - {beat: Fields of Red, intent: vast, music_in: "cue_crowd (shimmering strings over a low ostinato)", level: "-26 dB", bed: office}
+  - {beat: The Dark City, intent: peak, music_in: "theme-dark thinned (the signal, thinner, at the cost; sound #2)", music_out: "drops to a floor with one held low note across the 10 s wordless peak, then back in once (sound #3)", level: "-26 dB; the floor about 10% of hold level", bed: rooftop}
+  - {beat: The Cafe and Three Words, intent: resolve, music_in: "cue_resolve (piano and soft strings, morning)", level: "-26 dB", bed: "cafe, then home"}
+  - {beat: End card, intent: signal, music_in: "theme-light", level: "hold level", bed: home}
+planned_silences: []   # none; the roof peak is a floor with one note, not silence

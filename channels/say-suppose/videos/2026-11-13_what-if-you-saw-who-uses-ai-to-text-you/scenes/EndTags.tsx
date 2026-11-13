@@ -1,4 +1,4 @@
-// Copied from the pause-time film's end tags (scenes/beats/Ending.EndTags.tsx), without its pop sound.
+// Copied from the doubled-money film's end tags (itself from the pause-time film's) (scenes/beats/Ending.EndTags.tsx), without its pop sound.
 import { Sequence, spring, useCurrentFrame } from "remotion";
 import { CRIMSON, easeOut, INDIGO, INK, JOST, Mark, MUSTARD, PAPER, ramp, RUBIK } from "../../../brand/brand";
 
@@ -79,7 +79,7 @@ export const EndTags: React.FC<{ comment: number }> = ({ comment }) => {
       </Tag>
       <Tag at={comment} x={84} y={256} w={500} tilt={-1.5}>
         <Speech /><Word color={INDIGO}>Comment</Word>
-        <div style={{ fontFamily: JOST, fontWeight: 500, fontSize: 28, color: INK, opacity: 0.85 }}>your ten seconds</div>
+        <div style={{ fontFamily: JOST, fontWeight: 500, fontSize: 28, color: INK, opacity: 0.85 }}>fix the typo?</div>
       </Tag>
     </>
   );

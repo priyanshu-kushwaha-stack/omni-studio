@@ -77,7 +77,7 @@ export const SHOTS: ShotDef[] = [
   { at: S("Your sent folder."), draw: (t) => <Bedroom t={t} you="neutral" /> },
   { at: E("Your sent folder."), draw: (t) => <Insert t={t} mood="lamp" place="bedroom" msgs={SENT} dotsAt={4} dotEvery={4} contact="#F2B632" /> },
   { at: S("Your thank-you to your boss."), draw: (t) => <Insert t={t} mood="lamp" place="bedroom" msgs={SENT} dotsAt={0} dotEvery={0} contact="#F2B632" /> },
-  { at: S("Gmail has offered"), draw: (t) => <Insert t={t} mood="lamp" place="bedroom" msgs={[{ from: BLUE, mine: true, text: "Thank you so much for" }, { from: "#e4e7ec", mine: true, lines: 2 }]} contact="#F2B632" /> },
+  { at: S("For years, Google has offered"), draw: (t) => <Insert t={t} mood="lamp" place="bedroom" msgs={[{ from: BLUE, mine: true, text: "Thank you so much for" }, { from: "#e4e7ec", mine: true, lines: 2 }]} contact="#F2B632" /> },
   { at: S("The detective is a suspect."), draw: (t) => <Bedroom t={t} you="shocked" cam="desk" /> },
   { at: S("You typed that a year ago"), draw: (t) => <Insert t={t} mood="lamp" place="bedroom" msgs={[{ from: "#e4e7ec", text: "can send messages: on" }, { from: "#e4e7ec", text: "can add events: on" }, { from: "#ffe9a8", text: "don't let me lose her" }]} contact="#F2B632" highlight={2} /> },
   { at: S("You switch every suggestion"), draw: (t) => <Bedroom t={t} you="determined" /> },

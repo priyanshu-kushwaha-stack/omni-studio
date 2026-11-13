@@ -65,7 +65,7 @@ export const Bus: React.FC<{ t: ShotTime; mood: MoodName; you?: Face; kid?: Face
 
 /** Your two aunts, each in her own kitchen, side by side. */
 export const Aunts: React.FC<{ t: ShotTime; one?: Face; two?: Face }> = ({ t, one = "happy", two = "happy" }) => (
-  <AbsoluteFill style={{ display: "flex" }}>
+  <AbsoluteFill style={{ display: "flex", flexDirection: "row" }}>
     {[{ who: AUNT1, face: one }, { who: AUNT2, face: two }].map(({ who, face }, i) => (
       <div key={i} style={{ position: "relative", width: 960, height: 1080, overflow: "hidden", borderRight: i === 0 ? `8px solid ${INK}` : undefined }}>
         <div style={{ position: "absolute", left: -480, top: 0, width: 1920, height: 1080 }}>
