@@ -20,6 +20,7 @@ rule. Where two notes disagree, the newer one wins.
   shows the power working and someone stunned, never a sad face. Replaces the 2026-11-06 study's "a person to lose" and
   "the peak gives something up" (`rules/story.md` #9, #18, #20-#22; `style.md`; `rules/thumbnails.md` K17).
   (audience research, all films)
+
 AI rented your brain while you slept, G2 (the exciting note above is newer and wins where these disagree; the
 owner's "Emotional part should come only at the end where it is teaching a lesson" now lands as a win, not a tear,
 before the closing twist):
