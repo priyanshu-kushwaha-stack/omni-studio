@@ -10,37 +10,52 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-13
 
-v3 cut (AI rented your brain while you slept, G2, 12:51), the owner's notes:
+- **"most of the videos we made so far are emotional sort of ... I want exciting stuff."** Asked who our audience is
+  and what mood they arrive in, then "Yes, update rules" on the research
+  (`docs/research/2026-11-13-say-suppose-audience-mood.md`). On every comparable channel the emotion-led titles sit at
+  the bottom of the hit list (1.6x to 2.6x the median); power, status, reveals and spectacle sit at the top (6x to
+  49x). The viewers arrive bored and playful, wanting to feel powerful and clever. So: the power is the star
+  (escalating set pieces, the world reacting), the film closes the loopholes a viewer would type, a laugh in every
+  scene, and emotion is seasoning (one short tender beat at most, never the peak, never the ending). The thumbnail
+  shows the power working and someone stunned, never a sad face. Replaces the 2026-11-06 study's "a person to lose" and
+  "the peak gives something up" (`rules/story.md` #9, #18, #20-#22; `style.md`; `rules/thumbnails.md` K17).
+  (audience research, all films)
+- **"Looks good script wise now. Self Explanatory and understood everything."** The v4 cut (saw who wants you to fail,
+  G2). Then on the closing question, "Would you still say it to her face ?": the story had already answered it at the
+  dock, so it asked nothing. **"Yes, change it"**: the closing question turns the film on the viewer and points at the
+  open loop of the last shot (the card over you), asking for something easy to type and argue about ("what number would
+  open over your head?"). Never close on a choice the story has already made.
 
-- **"His spoon hits the floor. That he got amazed and surprised to see that. Does it mean that. ? Not obvious."** A
-  reaction the joke depends on is said, not left to a dropped object: "Nobody can fold a fitted sheet." and the
-  brother's "Since when can you do that?"
-- **"Around 4:00. review it again."** The reCAPTCHA aside sat between the dream fact and Problem one; it is cut, so the
-  stake jump comes straight after "Sleeping brains do real work. Normally, you keep it." (also the room's blocker #1).
-- **"voice at 5:58 broken."** A click mute cut into "nothing" ("Did you think it was for nothing?"). Mutes must sit
-  after speech, never inside it; whisper's word ends run early, so check the take's level on both sides of a mute.
-- **"Need to improve the music more ig. And maybe we should change the narrator voice."** Options rendered for the
-  owner's ear (narrator A-D, score M1-M3) before anything is re-made.
-- **"I want to make it a SciFi thing but not very emotional thing. Emotional part should come only at the end where it
-  is teaching a lesson."** The narration is cool, even and precise until Midnight; warmth only where the lesson lands.
-  The score follows: sci-fi colours, no sentimental cues until the end. (The local narrator clone takes no per-line
-  direction, so a delivery change needs a designed narrator voice.)
+Second watch of the v3 cut (saw who wants you to fail, G2), eleven notes. Applied in v4:
 
-First cut (AI rented your brain while you slept, G2, v1 720p cut, 11:09): **"This video felt good script wise. At
-certain places, it was difficult to understand. from context was sort of unclear."** Take the learnings from the fail
-film's notes wherever they apply. Then, on a second watch:
+- **"Well done mate ? Its not very clear. Maybe change the dialogue here or improve the script. And Voice definitely
+  some one else."** A stranger's line in the first ten seconds must be heard right the first time: a full, plain
+  sentence ("Oh, congratulations! Your family must be so proud."), and a voice made for her, never one borrowed from
+  another film's cast.
+- **"The academy door opens. This could be something else more relateable."** Name the thing the viewer knows
+  ("extra classes let out") before the local word for it; the facts can explain the academies later.
+- **"A text, A call, nothing opens. Remember that. This is not needed here i feel."** Don't list the rule's limits in
+  the rules speech; show them in the story (the phone call, her back). **"its more like immersive story telling
+  experience that we we are doing with an Agenda so dialogues can be a little slower."** More air between lines.
+- **"After the script or during the script, we should introduce characters so people remember also else everything
+  else might look the same."** A cast tag at each recurring character's first close-up: name, role, one thing they do.
+- **"If some text makes sense to emphasise on something then we can add that but only if it makes sense."** On-screen
+  cards only for a real fact or a turn the viewer must hold (the curve, the planes, Problem 1 and 2), one at a time.
+- **"You can ask him on the academy step ? And then there was no dialogue. I think we should have one there by the
+  Hero."** When the narrator says "you ask", the hero asks, on screen.
+- **"Not clear at 7:35 about the problem 2 when you say school confirm it. Confirms what ?"** Say what is confirmed
+  and what it depends on.
+- **"Every mistake this year and why when it came initially. That time was not very clear. Leave it for him -> why
+  would you do that ?"** A choice needs its stakes both ways and the reason it is taken, said plainly.
+- **"Last year country grounded its plane for English Listening test becoz plane makes a lot of noise ? Is it for
+  real ? Then you can emphasise it by some text and in which year it happened."** A fact that sounds made up gets
+  "it's true", its year and a card.
+- **"In the crowd of parents, what is this scene depicting ? Exam Over ?"** Tell scenes in the order they happen
+  (the gate in the morning, then the test), and name the moment on screen.
+- **"Voices are not very clear so thats one thing and maybe at last we can check with Eleven labs once."** Local
+  voices made for clear diction now; the ElevenLabs A/B comes last, at picture lock.
 
-- **"better Skit to start with and more clarity In the first and second line around."** The skit's lines say what
-  just happened in plain words (what the nurse takes, what the coin was for), and the first narrator lines name the
-  everyday thing first.
-- **"I would suggest you define Band also in the starting when you introduce it."** Define the film's device the
-  first time it is named: what it is, where you wear it, what it does, who pays.
-- **"More clarity around leaflet says and band.. Around 1:00"** Introduce an object before quoting it (the band came
-  with a leaflet); the rule in short plain steps; name a coined word ("crumbs") as it is defined.
-- **"More pauses and stresses in voice wherever required for better explanation of the concept."** Concept lines are
-  split into shorter lines with air between them, and their directions name the stressed words.
-- **"Text on the Screen if needed."** A card for each new concept as it is defined (the band, the leaflet, the
-  crumbs), each numbered problem, and each "it's true" fact; a role tag at each character's first close-up.
+First watch:
 
 - **"This looks much better now. I could understand almost all of it."** G2 review of the v3 cut (saw who wants you
   to fail): the skit opening, plain roles and characters' own voices worked. More notes to come after a second watch.
@@ -56,6 +71,23 @@ film's notes wherever they apply. Then, on a second watch:
 
 ## 2026-11-12
 
+- **"Start of the script felt boring."** G2 first-cut review of the doubled-money restart, the owner's eight notes in
+  one sitting: "Names were a little difficult to follow." / "At certain places where we can show the characters
+  actually performing in real and narration stops just to make the users feel those scenes for real would add a lot to
+  this script." / "vocabulary was diificult" / "What if we could start with a story and characters playing it some
+  way? And then finds that track which gives them that superpower, and then the narration starts. We show at that
+  point we show video title also." / "Wherever it feels that characters can deliver their dialogues to make the viewer
+  feel like they're part of the story." / "It was a long video, but the story did not have many components." / "We can
+  add multiple emotions in the video... Currently, the voice is flat and it's plain narration... I would also like to
+  see some hypothetical situations... with so much money, anyone could be doing anything... Something very exciting,
+  funny, or anything." For every film: open on a performed story (characters playing how the power arrives), then the
+  narrator and the title; let scenes play with the narrator silent and the characters talking; few names, each with
+  its role; plain words; many situations, not one ladder of days; emotion that changes with the scene, in the voices
+  too. These outrank the template's cold-open check (#15) where they disagree. (doubled-money restart, G2)
+- **"A, the thumbnail"** G2 look test on the doubled-money restart: the day-thirty-one spill is staged exactly as
+  the thumbnail frames it (you large at the left, the phone up, the digits off the screen and over the counter, Lotte
+  behind it with her chalk), not close on the phone or on Lotte's board. The film's key shot and the thumbnail are one
+  picture. (doubled-money restart, G2)
 - **"lets no lock anything that hard becoz that is limiting the Agent to come up with great ideas."** Asked whether
   G1 fixes the situation and G2 only re-tells it: "when we are iterating over the story and the script.. i think we
   should let Agent who is writing the story should be allowed to deviate and if it can write something more beautiful

@@ -15,8 +15,11 @@ quote; if the place you would leave is also a failed check, it is a blocker unde
 | Check | At | Fails when |
 |---|---|---|
 | story #2 Confirm the click | G1, G2 | The first 7 s do not show the thumbnail's situation |
-| story #3 Second hook by 0:30 | G1, G2 | The first 10 s don't give you the premise, the stakes and a tension; the title's promise isn't met by about 0:15; or by 0:30 you cannot say what you can lose and what question the video asks |
+| story #3 Second hook by 0:30 | G1, G2 | The first 10 s don't give you the premise, the stakes and a tension; the title's promise isn't met by about 0:15; or by 0:30 you cannot say what you can win or lose and what question the video asks |
 | story #4 A habit, then the change | G1, G2 | No line or picture shows how you normally run your day, or the change misses that habit |
+| story #21 Close the loopholes | G1, G2 | You thought "why don't they just...?" and the film never answered it |
+| story #22 A laugh in every scene | G2 | A scene went by without making you smile, or the film made you sad when you came to be excited |
+| K17 Mood | G1 | A thumbnail shows a sad or crying face, or not the power in use |
 | story #11 Never say the feeling | G2 | A line names what you should feel, or says what the shot already shows |
 | The world follows the idea (`taste.md`, 2026-11-11) | G1, G2 | The setting, currency or cast is a default the idea did not choose (picked for a viewer, not for the story), a gag only one country gets, or the English title or thumbnail has slang, a symbol or a reference only one country reads |
 | K5 Words | G1 | A thumbnail tag has more than 3 words |
