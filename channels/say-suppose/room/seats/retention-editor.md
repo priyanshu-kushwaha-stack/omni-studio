@@ -17,7 +17,7 @@ blocker.
 | #6 Every use has a gap | A use of the power where what you expect and what you get are the same |
 | #7 Misconception first | You do not act on the wrong belief before the fact breaks it; more than one number at a time; a fact that does not land on you or your person within two lines |
 | #8 A picture only this premise can show | None is named, or it comes after the midpoint |
-| #9 Earned stakes | The cost does not attack the habit from #4; a person to lose the premise did not earn; that person not named at least 2 min before the loss, with warm beats |
+| #9 Earned stakes | The catch does not attack the habit from #4, or what is at risk is vague; a person to lose the premise did not earn, not named at least 2 min before, or the loss is the peak or the ending |
 | #10 The turn breaks a line already said | The reversal contradicts nothing the script spoke earlier; the twist is shown early |
 | #12 Leave fast | The end is not the opposite of the opening; no real line inside the last image; a summary |
 | No new power rule after the halfway point | A rule of the power first stated after 50% of the runtime |
