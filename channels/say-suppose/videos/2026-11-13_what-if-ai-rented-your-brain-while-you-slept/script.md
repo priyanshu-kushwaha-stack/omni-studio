@@ -1,7 +1,7 @@
 # Script: What If AI Rented Your Brain While You Slept?
 
 format: story
-status: v2 draft, owner-notes round part 1 (2026-11-13): the owner's notes on the fail film carried over; not yet voiced
+status: v3, owner-notes round (2026-11-13): the owner's five notes on the first cut and the fail film's eleven carried over
 claims: claims.md
 
 > SITUATION: El Paso, dawn, the clinic chair where you sell the pale part of your blood twice a week, the most the law allows, counting every hour as money. A band on your forehead turns your nights into the best wage of your life.
@@ -25,30 +25,44 @@ claims: claims.md
 
 > HOLD: 2 s. Performed. The nurse, sage head, paper cap, unclips the tube with one hand and plucks the band off your forehead with the other. The ghost folds shut with the chime run backwards. You wake with a jolt. The coin is in your hand. She drops the band back in his box without looking at him, presses cotton on your arm, and counts three notes into your other palm.
 
-Nurse: That's twice this week. Come back Thursday.
+Nurse: That's all the plasma we can take this week. Come back Thursday.
 
-> HOLD: 1 s. Performed. You nod; you knew. At the door he holds the band out again, and tips his head at the coin in your fist.
+> HOLD: 1 s. Performed. You look at the three notes in your palm. Your bubble: "That's it?" At the door he holds the band out again, and tips his head at the coin in your fist.
 
-Broker: Why wait for Thursday? Sleep tonight, and get paid.
+Broker: You fell asleep for ten seconds, and you earned a coin.
+
+Broker: Wear this tonight. Sleep all night, and get paid for every hour.
 
 > SCENE: Close-up: the notes in one hand, the coin in the other, the clock, the band. You take it. The clinic door swings shut on his back.
 
-## [00:11] Night One
+## [00:16] Night One
 
 > SCENE: The door, shut. The clock through the glass. Then a two-second insert: you on the bridge walkway at dawn, the band in your pocket, counting the notes.
+> CARD: SELLING PLASMA: twice a week (on "the most the law allows")
 
-That's your Thursday. Selling your plasma, the pale part of your blood. Twice a week, the most the law allows (c02). It's how your family pays what it owes.
+Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows (c02).
+
+It's how your family keeps up with what it owes.
 
 So what if a company could rent your brain while you slept?
 
 > MOOD: night
+> SCENE: Close on the band in your hand by the bed: a thin dark strip with one small teal light. You lay it across your forehead and lie back.
+> CARD: THE BAND: rents out your brain while you sleep (on "That's the band")
+
+That's the band. A thin strip you wear across your forehead.
+
+While you sleep, it lends your brain to a company. And it pays you, by the hour.
+
 > SCENE: The thumbnail's frame, exactly: the bunk room after midnight, the window with red curtains behind. You, large at the left, asleep on your back on a dark pillow, smiling, eyes shut, the thin dark band across your forehead with its one small teal light. Out of the light a dotted glowing thread rises to a pale, glowing second you, the same tuft of hair, a pale-blue head, a pale scarf, bolt upright on a paper chair floating over your blanket, wide awake, brows up in worry, mouth open, both hands on the keys of a lit laptop on a little floating desk. Gold coins drop from the desk's edge in an arc over your sleeping head into a glass jar on the bedside table, already half full of gold. In the top bunk your brother, peach head, cap on, eyes open, watching the coins fall.
 
-Midnight. The band goes on. A chime. And a night you sell is a night your brain doesn't keep.
+Midnight. The band goes on. A chime.
+
+That pale figure up there? That's your sleeping brain, at work for the company.
 
 > HOLD: 3 s. Performed. The patter of typing. A coin lands in the jar; your brother flinches at the sound, leans over the edge of his bunk, and looks straight up at the ghost. The ghost doesn't look back. You smile in your sleep.
 
-You feel nothing. Up there, somebody's working your shift.
+You feel nothing. But a night you sell is a night your own brain doesn't get.
 
 > MOOD: morning
 > SCENE: Morning. He hangs down off the top bunk, shakes the jar over your face, and holds his palm out flat.
@@ -63,22 +77,36 @@ Ninety dollars. For eight hours of lying down. The best wage of your life. And t
 
 Because you count every waking hour as money you did or didn't earn. And nobody's ever paid you for one asleep.
 
-## [00:53] The Rule
+## [01:05] The Rule
 
 > MOOD: morning
-> SCENE: The title card ident (C), three seconds, cut from the last line. Then the kitchen: the jar on the table, a leaflet beside it, your brother with cereal. On "The rule, once" the leaflet unfolds itself and the band's thread-and-ghost is drawn on it as a paper diagram; on "one jar" three stamps land: BRAIN, BAND, JAR.
+> SCENE: The title card ident (C), three seconds, cut from the last line. Then the kitchen: the jar on the table, the leaflet beside it, your brother with cereal. On "The band came with a leaflet" the leaflet unfolds itself; on "runs its work on your brain" the band's thread-and-ghost is drawn on it as a paper diagram; on "one jar" three stamps land: BRAIN, BAND, JAR.
+> CARD: THE LEAFLET: the deal, in writing (on "It sets out the deal")
 
-The rule, once. Wear the band. While you sleep, your brain runs whatever they've rented it for, and every morning it pays you by the hour.
+The band came with a leaflet. It sets out the deal.
 
-You feel nothing. One job can link many bands, but the leaflet says each brain stays its own. One brain, one band, one jar.
+Wear the band to bed. While you sleep, the company runs its work on your brain.
 
-And you remember nothing. Except the crumbs: a taste, a word, a face that isn't yours. The leaflet calls them harmless.
+And every morning, the band pays you, by the hour.
 
-> SCENE: Page two of the leaflet draws itself: a paper you, a thin slice of the head shaded in, a bulb glowing beside it. On "nobody's using them" the bulb dims.
+You won't feel a thing. One company can link many bands, for one big job.
 
-Why would anyone want a sleeping brain? The leaflet again. Your brain is about two per cent of you and burns about twenty per cent of your energy, about twenty watts (c10). And tonight nobody's using them.
+But the leaflet promises each brain stays separate. One brain, one band, one jar.
+
+And you won't remember the work. Only small leftovers. The leaflet calls them crumbs: a taste, a word, a face that isn't yours.
+
+> CARD: CRUMBS: a taste, a word, a face that isn't yours (on "crumbs")
+
+It says they're harmless.
+
+> SCENE: Page two of the leaflet draws itself: a paper you, the head shaded in, a bulb glowing beside it. On "unused power" the bulb dims.
+
+Why would anyone want a sleeping brain? The leaflet explains that too.
+
+Your brain burns about twenty watts (c10). At night, the leaflet calls that unused power.
 
 > SCENE: Page three: a dish on a table, a tiny paper bat and ball bouncing above it, the bat starting to hit back.
+> CARD: IT'S TRUE: 2022, brain cells in a dish learned a video game (on "It's true")
 
 It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes (c19). So a whole brain for eight hours is a bargain.
 
@@ -132,6 +160,7 @@ Brother: Okay. What'd you get?
 Breakfast becomes a lottery draw. His crumb, your crumb, in his notebook. A taste, a tune, a word, a face. He wakes knowing a knot nobody taught him. You wake saying sorry in a voice that isn't yours.
 
 > SCENE: Insert drawn on the notebook page: a man in a nightshirt running down a corridor with a candle; a paper frog heart beating on a bench.
+> CARD: IT'S TRUE: a Nobel Prize experiment, first dreamt (on "Nobel Prize")
 
 So is a sleeping brain really working? About a hundred years ago a scientist said the experiment that won him a Nobel Prize came to him in a dream. He got up in the night and did it, on a frog's heart (c21).
 
@@ -144,6 +173,7 @@ And you've rented yours before, for free. Those squiggly words you typed to prov
 Spare seconds, turned into machine work. The band makes the same bargain with your whole night.
 
 > SCENE: The jar on the table, a quarter full. Your eyes on it, then on the clock.
+> CARD: PROBLEM 1: ninety dollars for eight hours (on "Problem one")
 
 But here's the problem. Problem one. Ninety dollars for eight hours. So what's twelve worth?
 
@@ -198,6 +228,7 @@ You sold twelve hours of nothing. And the nothing was never empty. Sleep was nev
 You thought you were selling spare time. There was no spare time.
 
 > SCENE: A paper clock draws itself; a third of its face shades dark.
+> CARD: A THIRD OF YOUR LIFE: asleep (on "A third")
 
 You spend about a third of your life asleep (c11). A third. Did you think it was for nothing?
 
@@ -216,6 +247,7 @@ Your brain files your day at night, on fast forward. For a month, nothing's been
 Sleep was never nothing. It was the one shift you always worked for yourself.
 
 > SCENE: The bathroom mirror: you, grey under the eyes, the band's mark on your forehead. Insert: a boy at a science fair table, a paper clock behind him with eleven ticks.
+> CARD: 1964: a boy stays awake for eleven days (on "in 1964")
 
 You've slept twelve hours a night and you look like the boy who stayed awake for eleven days for a science fair in 1964, whose thinking began to suffer by the end (c15). He skipped sleep. You sold it.
 
@@ -228,6 +260,8 @@ Your brother stops laughing. He gets out the stamp.
 > TAG: YOU
 
 Brother: Don't peel it.
+
+> CARD: PROBLEM 2: whatever you lose, you lose alone (on "Problem two")
 
 But here's the second problem. Problem two. It's your brain, only yours. Whatever you lose, you lose alone.
 
@@ -263,6 +297,8 @@ Brother: You cried. Remember?
 
 You were there. You have the photo. You sold the night before your brain could file the day.
 
+> CARD: PROBLEM 3: the price is about to fall (on "Problem three")
+
 But here's the third problem. Problem three. You weren't the only one who worked out the weekend rate. And the price is about to fall.
 
 ## [07:45] The Warehouses
@@ -278,6 +314,7 @@ Ninety. Forty-one. Twelve. Everyone has a band on now.
 
 > MOOD: dusk
 > SCENE: The bridge at dusk: the queue walking in; at the top of the ramp, three men in grey suits with shoeboxes. Insert: a paper map, one country shaded, a pale river running out of it to the rest of the world.
+> CARD: IT'S TRUE: the US supplies about two thirds of the world's plasma (on "two thirds")
 
 It's true. The US is one of the few countries that lets companies pay people for plasma (c01), and it supplies about two thirds of the world's (c03). People cross that bridge from Mexico twice a week to sell theirs (c05), because a day's work across the river pays about nine dollars (c22). Now they cross to sleep.
 
@@ -291,6 +328,8 @@ An eighteenth-century chess robot had a chess master hidden inside it. Amazon na
 > SCENE: The clerk at the door, clipboard, looking at the eyes of each sleeper in the queue; a grey-eyed one turned away.
 
 And the best-rested brains fetch the most. More than a third of American adults already don't get enough sleep (c24). So the people who need the money most earn the least.
+
+> CARD: IT'S TRUE: under $2 an hour, to train ChatGPT (on "less than two dollars")
 
 It's true. The Kenyan workers who labelled data to train ChatGPT were paid less than two dollars an hour (c09). The night is heading there.
 
@@ -314,6 +353,7 @@ So a night is worth twelve dollars, and he can't even sell that. But one offer h
 The kitchen table. A premium contract. Triple pay, every night, all night, for a year. It clears what the family owes by spring. And no more Thursdays in the chair.
 
 > SCENE: Insert drawn on the contract's margin: a sleeper, a screen glowing over the bed, a bottle floating into the dream cloud; then a page of forty small signatures.
+> CARD: IT'S TRUE: 2021, a beer ad aimed at your dreams (on "2021")
 
 Somebody has tried to buy the night before. Before the 2021 Super Bowl, America's biggest football night, a beer company ran a film meant to put its beer into people's dreams (c07). About forty sleep and dream scientists signed an open letter against it (c08).
 
@@ -357,6 +397,7 @@ One brain, one band, one jar, the leaflet said. Each brain stays its own.
 There was never one of anything. You never lost anything alone. For eight hours a night, every sleeper on the band was one mind.
 
 > SCENE: Insert: a paper globe, the dark half; a million small windows on it light one by one and the threads between them join up.
+> CARD: 2020: a million home computers, linked into one (on "a million")
 
 In 2020, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second (c18). Spare machines, linked into one. Now spare brains.
 
@@ -365,6 +406,8 @@ In 2020, over a million people lent their idle home computers to one project, an
 > SCENE: The notebook pages on the bed slide together, edge to edge; the crumbs join into one drawing. Lines, a frame, a housing. A machine. On the laptop, the strangers' pages do the same.
 
 So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.
+
+> CARD: THE JOB: design the thing that never needs sleepers (on "design")
 
 The job the sleepers are paid for is to design the thing that will never need sleepers.
 

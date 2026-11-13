@@ -10,6 +10,22 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-13
 
+First cut (AI rented your brain while you slept, G2, v1 720p cut, 11:09): **"This video felt good script wise. At
+certain places, it was difficult to understand. from context was sort of unclear."** Take the learnings from the fail
+film's notes wherever they apply. Then, on a second watch:
+
+- **"better Skit to start with and more clarity In the first and second line around."** The skit's lines say what
+  just happened in plain words (what the nurse takes, what the coin was for), and the first narrator lines name the
+  everyday thing first.
+- **"I would suggest you define Band also in the starting when you introduce it."** Define the film's device the
+  first time it is named: what it is, where you wear it, what it does, who pays.
+- **"More clarity around leaflet says and band.. Around 1:00"** Introduce an object before quoting it (the band came
+  with a leaflet); the rule in short plain steps; name a coined word ("crumbs") as it is defined.
+- **"More pauses and stresses in voice wherever required for better explanation of the concept."** Concept lines are
+  split into shorter lines with air between them, and their directions name the stressed words.
+- **"Text on the Screen if needed."** A card for each new concept as it is defined (the band, the leaflet, the
+  crumbs), each numbered problem, and each "it's true" fact; a role tag at each character's first close-up.
+
 - **"This looks much better now. I could understand almost all of it."** G2 review of the v3 cut (saw who wants you
   to fail): the skit opening, plain roles and characters' own voices worked. More notes to come after a second watch.
   (saw who wants you to fail, G2)
