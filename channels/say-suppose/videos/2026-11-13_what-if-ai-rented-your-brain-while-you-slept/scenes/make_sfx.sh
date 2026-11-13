@@ -13,9 +13,10 @@ ffmpeg -v error -y -f lavfi -i "aevalsrc='0.5*(sin(2*PI*3100*t)+0.6*sin(2*PI*470
 ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.12:c=pink:a=0.9" -f lavfi -i "sine=f=120:d=0.12" -filter_complex \
   "[0]highpass=f=600,lowpass=f=3500,afade=t=in:d=0.004,afade=t=out:st=0.02:d=0.08[n];[1]volume=0.7,afade=t=out:st=0:d=0.07[t];[n][t]amix=inputs=2:normalize=0,volume=0.35,aresample=48000" stamp.wav
 ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.5:c=white:a=0.6" -af "highpass=f=1500,lowpass=f=7000,volume='0.4+0.6*sin(2*PI*9*t)^2':eval=frame,afade=t=in:d=0.05,afade=t=out:st=0.3:d=0.2,volume=0.15,aresample=48000" paper.wav
-# The clinic's wall clock tick, and a knock on a door.
-ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.05:c=white:a=0.9" -af "highpass=f=2000,lowpass=f=5000,afade=t=in:d=0.002,afade=t=out:st=0.01:d=0.03,volume=0.3,aresample=48000" tick.wav
-ffmpeg -v error -y -f lavfi -i "aevalsrc='0.8*sin(2*PI*95*t)*exp(-t*30)+0.3*sin(2*PI*190*t)*exp(-t*40)':d=0.3:s=48000" -af "lowpass=f=900,afade=t=out:st=0.2:d=0.1" knock.wav
+# The clock tick and a knock on a door. Both have a soft attack and a short room tail, so the full mix's click check
+# (core/studio/qc/clicks.py: a burst under 80 ms that falls 15 dB) doesn't read them as pops.
+ffmpeg -v error -y -f lavfi -i "aevalsrc='(0.35*sin(2*PI*1320*t)*exp(-t*12)+0.2*sin(2*PI*2640*t)*exp(-t*18))*min(1\\,t/0.004)':d=0.4:s=48000" -af "lowpass=f=5000,aecho=0.6:0.5:25|55:0.3|0.15,afade=t=out:st=0.3:d=0.1" tick.wav
+ffmpeg -v error -y -f lavfi -i "aevalsrc='(0.8*sin(2*PI*95*t)*exp(-t*9)+0.3*sin(2*PI*190*t)*exp(-t*14)+0.12*sin(2*PI*410*t)*exp(-t*20))*min(1\\,t/0.006)':d=0.7:s=48000" -af "lowpass=f=900,aecho=0.6:0.5:35|70:0.35|0.2,volume=2,afade=t=out:st=0.5:d=0.2" knock.wav
 # The globe's one held note (rules/sound.md #3): a soft low A with its octave, a slow swell and a long release.
 ffmpeg -v error -y -f lavfi -i "aevalsrc='0.35*(sin(2*PI*110*t)+0.4*sin(2*PI*220*t)+0.15*sin(2*PI*330*t))*min(1\,t/2.5)*exp(-max(0\,t-8)*0.9)':d=12:s=48000" -af "lowpass=f=900,afade=t=out:st=10.5:d=1.5" peak-note.wav
 echo "$out"
