@@ -1,7 +1,7 @@
 # Script: What If AI Rented Your Brain While You Slept?
 
 format: story
-status: v1, G2 drop 1 (2026-11-13)
+status: v2 draft, owner-notes round part 1 (2026-11-13): the owner's notes on the fail film carried over; not yet voiced
 claims: claims.md
 
 > SITUATION: El Paso, dawn, the clinic chair where you sell the pale part of your blood twice a week, the most the law allows, counting every hour as money. A band on your forehead turns your nights into the best wage of your life.
@@ -25,11 +25,11 @@ claims: claims.md
 
 > HOLD: 2 s. Performed. The nurse, sage head, paper cap, unclips the tube with one hand and plucks the band off your forehead with the other. The ghost folds shut with the chime run backwards. You wake with a jolt. The coin is in your hand. She drops the band back in his box without looking at him, presses cotton on your arm, and counts three notes into your other palm.
 
-Nurse: Thursday. Not before.
+Nurse: That's twice this week. Come back Thursday.
 
 > HOLD: 1 s. Performed. You nod; you knew. At the door he holds the band out again, and tips his head at the coin in your fist.
 
-Broker: Sleep tonight. Get paid.
+Broker: Why wait for Thursday? Sleep tonight, and get paid.
 
 > SCENE: Close-up: the notes in one hand, the coin in the other, the clock, the band. You take it. The clinic door swings shut on his back.
 
@@ -37,7 +37,7 @@ Broker: Sleep tonight. Get paid.
 
 > SCENE: The door, shut. The clock through the glass. Then a two-second insert: you on the bridge walkway at dawn, the band in your pocket, counting the notes.
 
-That's your Thursday. Twice a week, the most the law allows (c02).
+That's your Thursday. Selling your plasma, the pale part of your blood. Twice a week, the most the law allows (c02). It's how your family pays what it owes.
 
 So what if a company could rent your brain while you slept?
 
@@ -72,7 +72,7 @@ The rule, once. Wear the band. While you sleep, your brain runs whatever they've
 
 You feel nothing. One job can link many bands, but the leaflet says each brain stays its own. One brain, one band, one jar.
 
-And you remember nothing. Except the crumbs: a taste, a word, a face that isn't yours. The leaflet calls them harmless. Remember that.
+And you remember nothing. Except the crumbs: a taste, a word, a face that isn't yours. The leaflet calls them harmless.
 
 > SCENE: Page two of the leaflet draws itself: a paper you, a thin slice of the head shaded in, a bulb glowing beside it. On "nobody's using them" the bulb dims.
 
@@ -80,7 +80,7 @@ Why would anyone want a sleeping brain? The leaflet again. Your brain is about t
 
 > SCENE: Page three: a dish on a table, a tiny paper bat and ball bouncing above it, the bat starting to hit back.
 
-Brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes (c19). So a whole brain for eight hours is a bargain.
+It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes (c19). So a whole brain for eight hours is a bargain.
 
 > SCENE: Your brother holding the leaflet upside down over his cereal, chewing.
 
@@ -114,7 +114,7 @@ Morning four. You fold a fitted sheet into a perfect square. His spoon hits the 
 > MOOD: day
 > SCENE: The bridge at dawn, a queue walking in; a woman with a shopping bag, grey head, near the front. You say a word to her; her shoulders go up.
 
-Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell the pale part of her blood (c05).
+Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too (c05).
 
 Bridge woman: Not mine.
 
@@ -274,25 +274,25 @@ But here's the third problem. Problem three. You weren't the only one who worked
 > TAG: $41
 > TAG: $12
 
-Ninety. Forty-one. Twelve. The whole border has a band on.
+Ninety. Forty-one. Twelve. Everyone has a band on now.
 
 > MOOD: dusk
 > SCENE: The bridge at dusk: the queue walking in; at the top of the ramp, three men in grey suits with shoeboxes. Insert: a paper map, one country shaded, a pale river running out of it to the rest of the world.
 
-This country lets companies pay for the pale part of your blood (c01), and it supplies about two thirds of the world's (c03). People cross that bridge twice a week to sell theirs (c05), because a day's work across the river pays about nine dollars (c22). Now they cross to sleep.
+It's true. The US is one of the few countries that lets companies pay people for plasma (c01), and it supplies about two thirds of the world's (c03). People cross that bridge from Mexico twice a week to sell theirs (c05), because a day's work across the river pays about nine dollars (c22). Now they cross to sleep.
 
 > MOOD: night
 > SCENE: Inside the warehouse by the bridge: rows of cots, a thousand sleepers in shifts, a thousand pale workers typing over them, a thousand threads of light to the rafters, coins into a trough. Insert: a paper chess robot in a turban, a little door in its cabinet opening on a man.
 
 The warehouse by the bridge. A thousand sleepers in shifts, a thousand pale workers typing over them.
 
-An eighteenth-century chess robot had a chess master hidden inside it. The website named after it paid people a few cents a task (c17). This is the human inside the machine. In bulk.
+An eighteenth-century chess robot had a chess master hidden inside it. Amazon named a website after it, Mechanical Turk, and paid people a few cents a task (c17). This is the human inside the machine. In bulk.
 
 > SCENE: The clerk at the door, clipboard, looking at the eyes of each sleeper in the queue; a grey-eyed one turned away.
 
 And the best-rested brains fetch the most. More than a third of American adults already don't get enough sleep (c24). So the people who need the money most earn the least.
 
-The Kenyan workers who labelled data to train ChatGPT were paid less than two dollars an hour (c09). The night is heading there.
+It's true. The Kenyan workers who labelled data to train ChatGPT were paid less than two dollars an hour (c09). The night is heading there.
 
 > SCENE: Midnight, the warehouse door, one lamp. Your brother, cap on, band on, the grey under his eyes.
 
@@ -304,14 +304,14 @@ Clerk: Rested ones only.
 
 > HOLD: 2 s. Performed. He walks home under the lamps, cap in his hand, the teal light going dark on his forehead.
 
-So a night is worth twelve dollars, and he can't even sell that. And that's when the man in the grey suit comes back.
+So a night is worth twelve dollars, and he can't even sell that. But one offer hasn't fallen. The man in the grey suit comes back.
 
 ## [09:06] The Contract
 
 > MOOD: lamp
 > SCENE: The kitchen table, one lamp. The grey suit sitting, a cream contract flat on the table, a pen laid across it. The kitchen clock behind him. Your brother in the doorway.
 
-The kitchen table. A premium contract. Triple pay, every night, all night, for a year. It clears what the family owes by spring. And the chair ends for good.
+The kitchen table. A premium contract. Triple pay, every night, all night, for a year. It clears what the family owes by spring. And no more Thursdays in the chair.
 
 > SCENE: Insert drawn on the contract's margin: a sleeper, a screen glowing over the bed, a bottle floating into the dream cloud; then a page of forty small signatures.
 
@@ -328,6 +328,8 @@ You pick up the pen.
 Brother: Not yet. Look.
 
 > HOLD: 3 s. Performed. He tips the notebook out on the table: pages of crumbs in two columns, a taste, a tune, a word, a face drawn twice. The grey suit looks at them, then at the clock, and stands.
+
+Six weeks of crumbs, his and yours. He thinks they add up to something.
 
 Broker: Offer closes midnight.
 
@@ -375,13 +377,15 @@ The biggest idea people ever had together, and nobody was awake for it.
 
 Eleven fifty-eight. The pen in one hand. The band in the other, its teal light on.
 
-You remember nothing. Except the crumbs. That's how you know.
+You remember nothing of your nights. Only the crumbs. And now you know what they were building. You'd rather sit in that chair every Thursday than build it every night.
 
 > HOLD: 3 s. Performed. You open the drawer. The band goes in; the teal light goes out. Your brother leans down from the top bunk and drops his on top. Click. He shuts the drawer with his foot.
 
 > HOLD: 3 s. Performed. A knock at the front door. Three. You both look at the door. Nobody moves. The knock stops. Footsteps go down the stairs.
 
-You lie down with nothing on your forehead. The money's gone. So is the chair's way out.
+The man in the grey suit, at midnight, for your answer. Nobody opens.
+
+You lie down with nothing on your forehead. The offer's gone. And so is your way out of the chair.
 
 And for the first time in six weeks, nobody's typing.
 

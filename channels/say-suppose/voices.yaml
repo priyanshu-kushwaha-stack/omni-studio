@@ -55,22 +55,23 @@ voices:
       # What If AI Rented Your Brain While You Slept? (2026-11-13): El Paso, the clinic, the bunk room.
       Brother: >-
         A light, bright male tenor: a boy of about eighteen in his last year of school, the listener's younger
-        brother. Quick, teasing and wry, a cracked laugh under the words, warm underneath, casual modern American English.
+        brother. Quick, teasing and wry, warm underneath, crisp clear diction, every word distinct, casual modern
+        American English.
       Nurse: >-
-        A low, brisk female alto: a clinic nurse in her forties at the end of a night shift. Dry, tired and kind,
-        clipped and practical, a hint of a Texas border accent.
+        A low, brisk female alto: a clinic nurse in her forties at the end of a night shift. Dry and kind, practical,
+        crisp clear diction, every word distinct, standard American English.
       Broker: >-
-        A smooth, soft male baritone: a salesman in a grey suit in his fifties. Velvety, unhurried and friendly, a
-        little too calm, every word a quiet offer, close to the listener's ear.
+        A smooth male baritone: a salesman in a grey suit in his fifties. Unhurried and friendly, a little too calm,
+        every word a quiet offer, crisp clear diction, every word distinct.
       Boss: >-
-        A loud, cheerful male baritone: an office boss in his late forties. Hearty and pleased with himself,
-        brisk, a salesman's grin in the voice.
+        A cheerful male baritone: an office boss in his late forties. Hearty and pleased with himself, brisk, a
+        grin in the voice, crisp clear diction, every word distinct.
       Grandmother: >-
-        A thin, bright female voice, an old soprano: a grandmother in her eighties next door. Crackly and dry,
-        delighted with herself, slow and satisfied, a hint of a Mexican Spanish accent.
+        A bright female voice, an old soprano: a grandmother in her eighties next door. Delighted with herself, slow
+        and satisfied, clear diction, every word distinct, a light Mexican Spanish accent.
       Clerk: >-
-        A flat, deep male bass: a warehouse door clerk in his thirties. Bored and blunt, monotone, speaking without
-        looking up from a clipboard.
+        A flat, deep male baritone: a warehouse door clerk in his thirties. Bored and blunt, short words, crisp clear
+        diction, every word distinct.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.
