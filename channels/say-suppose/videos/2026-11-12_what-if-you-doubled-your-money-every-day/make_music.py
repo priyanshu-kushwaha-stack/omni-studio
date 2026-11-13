@@ -8,7 +8,7 @@ music-rights.md U2: "Yes, keep it"). The same setup as the wants-you-to-fail fil
     .tools/ace-step-1.5/.venv/bin/python .../make_music.py giddy spree                                    # some
     .tools/ace-step-1.5/.venv/bin/python .../make_music.py giddy:29                                       # another seed
 
-One cue per section (scenes/sound.ts places them by the same line anchors); each cue's length is its section's length
+One cue per section (scenes/sound.ts places them by the same line anchors; "lotte" is made first, as the reference); each cue's length is its section's length
 in assets/narration/props.json plus a few seconds. An underscore under voices, never a song: no vocals, no drum kit,
 no big drops. Output: WAV into assets/music/cues/ (git-ignored), peak -1 dBFS; the level is set in Film.tsx.
 """
@@ -44,7 +44,13 @@ STYLE = (
     "instrumental, no vocals, no drum kit, sparse, leaves room for voices"
 )
 
-# name -> (from line, to line (None: the film's end), bpm, key, theme, brief). Lines by their opening words.
+# name -> (from line, to line (None: the film's end), bpm, key, reference, brief). Lines by their opening words. The
+# reference is a channel theme ("light", "dark") at REFERENCE_STRENGTH, or "lotte", Lotte's own theme, at LOTTE_STRENGTH.
+#
+# v4 (owner, 2026-11-13: "This is a little EMOTIONAL angle story ... Maybe with music we can make it better"): Lotte
+# gets a theme of her own, a short waltz on felt piano with a cello answering (LOTTE, made first, played nowhere on its
+# own), and every cue where the film's heart is (her savings book, Jonas's "Not me", the glass door, the morning after)
+# is made with it as the reference, so the same tune comes back each time, sadder, then tender, then whole.
 CUES = {
     "wonder": ("Two cents. Last night", "Day eleven.", 92, "C major", "light",
                "curious and wide-eyed, pizzicato strings and celesta, a soft ticking clock motif, a secret rule "
@@ -61,20 +67,41 @@ CUES = {
     "spree": ("So you spend.", "Karl: Same flour.", 124, "G major", "light",
               "brisk comic spending spree, marimba and pizzicato, a football crowd's joy, a balloon floating off, "
               "mischievous and quick"),
-    "cost": ("Karl: Same flour.", "So you try the obvious", 66, "E minor", "dark",
-             "sad and close, solo felt piano and cello, an old baker counting her savings, heavy-hearted but gentle"),
-    "dread": ("So you try the obvious", "Herr Brandt: So it was", 72, "B minor", "dark",
+    "price": ("Karl: Same flour.", "Same rolls. Four twenty", 88, "E minor", "dark",
+              "tense and close, a low plucked ostinato that keeps climbing one step at a time, muted strings, a "
+              "price going up and up, worry growing under a plain conversation"),
+    "ache": ("Same rolls. Four twenty", "So you try the obvious", 66, "D minor", "lotte",
+             "heartbroken and quiet, the same waltz tune slow and in a minor key on solo felt piano, a cello "
+             "under it, an old baker alone with her savings book after closing, a lamp, very sparse, lots of air"),
+    "giving": ("So you try the obvious", "Jonas: Six thirty?", 96, "G major", "light",
+               "hopeful and generous at first, warm strings and soft glockenspiel, envelopes handed door to door, "
+               "then a doubt creeping in, the tune stalls and turns uncertain"),
+    "notme": ("Jonas: Six thirty?", "Day fifty-five.", 70, "B minor", "lotte",
+              "hurt and tender, the waltz tune on a lone cello, piano chords under it, a friend refusing a gift, "
+              "pride and sadness, close and quiet"),
+    "dread": ("Day fifty-five.", "Herr Brandt: So it was", 72, "B minor", "dark",
               "growing dread, a slow pulse, low sustained strings swelling, wheat rising over a city, vast and cold"),
-    "countdown": ("Herr Brandt: So it was", "Day fifty-six.", 96, "C minor", "dark",
-                  "a ticking countdown at night, tense pizzicato and a held high string, minutes to midnight, then "
-                  "a tender, quiet resolve"),
-    "resolve": ("Day fifty-six.", None, 84, "C major", "light",
-                "warm and bittersweet morning, piano and soft strings, a bakery opening, hopeful, resolving gently"),
+    "countdown": ("Herr Brandt: So it was", "Lotte: All counted?", 96, "C minor", "dark",
+                  "a ticking countdown at night, tense pizzicato and a held high string, minutes to midnight, "
+                  "running down a staircase"),
+    "door": ("Lotte: All counted?", "Zero, doubled", 60, "D major", "lotte",
+             "tender and fragile, the waltz tune on solo felt piano, very slow and soft, one cent pressed into an "
+             "old woman's palm at a glass door at midnight, a held breath, fading to nothing"),
+    "resolve": ("Zero, doubled", None, 72, "D major", "lotte",
+                "the waltz tune whole at last, felt piano and warm strings and cello together, bittersweet and "
+                "hopeful, a bakery opening in the morning, gentle, resolving"),
 }
+# Lotte's theme, the reference above: made first, at its own length.
+LOTTE = ("lotte", 60, 72, "D major",
+         "a simple, singable waltz tune in three-four, solo felt piano with a warm cello answering each phrase, a "
+         "small bakery at dawn, nostalgic, bittersweet and kind, intimate, one clear melody repeated twice")
+LOTTE_STRENGTH = 0.45
 SEEDS = (11,)
 
 
 def seconds(name: str) -> int:
+    if name == LOTTE[0]:
+        return LOTTE[1]
     props = json.loads((HERE / "assets" / "narration" / "props.json").read_text(encoding="utf-8"))
     clips, lines = props["timeline"]["clips"], props["lines"]
 
@@ -104,15 +131,19 @@ def main(names: list[str]) -> None:
     )
     for spec in names:
         name, _, seed_text = spec.partition(":")
-        _, _, bpm, key, theme_name, brief = CUES[name]
-        theme = THEMES / f"theme-{theme_name}.mp3"
-        if not theme.is_file():
-            raise SystemExit(f"missing channel theme {theme}")
+        if name == LOTTE[0]:
+            bpm, key, ref, brief = LOTTE[2], LOTTE[3], None, LOTTE[4]
+        else:
+            _, _, bpm, key, ref, brief = CUES[name]
+        theme = OUT / "lotte.wav" if ref == "lotte" else THEMES / f"theme-{ref}.mp3"
+        if ref and not theme.is_file():
+            raise SystemExit(f"missing reference {theme} (make lotte first)")
+        strength = LOTTE_STRENGTH if ref == "lotte" else REFERENCE_STRENGTH
         for seed in [int(seed_text)] if seed_text else SEEDS:
             params = GenerationParams(
                 caption=f"{STYLE}; {brief}", lyrics="[Instrumental]", instrumental=True, duration=seconds(name),
                 bpm=bpm, keyscale=key, timesignature="4", inference_steps=8, shift=3.0, seed=seed, thinking=False,
-                reference_audio=str(theme), audio_cover_strength=REFERENCE_STRENGTH,
+                **({"reference_audio": str(theme), "audio_cover_strength": strength} if ref else {}),
                 enable_normalization=True, normalization_db=-1.0,
             )
             config = GenerationConfig(batch_size=1, use_random_seed=False, audio_format="wav")
@@ -126,4 +157,4 @@ def main(names: list[str]) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:] or list(CUES))
+    main(sys.argv[1:] or [LOTTE[0], *CUES])

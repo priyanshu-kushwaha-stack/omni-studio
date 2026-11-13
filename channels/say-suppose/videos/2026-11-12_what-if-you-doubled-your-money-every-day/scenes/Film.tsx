@@ -1,5 +1,6 @@
-// The doubled-money first cut (script v3, the character voices): the shot under the playhead, the channel's title card after the hook, a
-// paper subscribe tag at the street party, the script's tags, bubbles and name tags, the narration and a score cue per section. Render
+// The doubled-money first cut (script v4): the shot under the playhead, the channel's title card after the hook, a paper subscribe tag
+// at the street party, the script's tags, cards, bubbles and name tags, the narration, a score cue per section, an ambience bed per
+// set and each shot's effects. Render
 // with --props=<video>/assets/narration/props.json --public-dir=<video>/assets.
 import { AbsoluteFill, Audio, Freeze, Sequence, staticFile, useCurrentFrame } from "remotion";
 import type { ScriptLine, Timeline } from "@whatif/kit/timeline";
@@ -8,10 +9,10 @@ import { useSoundOnly } from "@whatif/kit/sound";
 import { C_FRAMES, Hi, IdentC } from "../../../brand/IdentC";
 import { S1_FRAMES, SubscribeTag } from "../../../brand/Subscribe";
 import { EndTags } from "./EndTags";
-import { BUBBLES, NAMES, SHOTS, TAGS, type Anchor } from "./shots";
+import { BUBBLES, CARDS, NAMES, SHOTS, TAGS, type Anchor } from "./shots";
 import { Bubble, TagStamp } from "./parts/util";
-import { NameTag } from "./parts/cast";
-import { SCORE } from "./sound";
+import { FactCard, NameTag } from "./parts/cast";
+import { BEDS, SCORE } from "./sound";
 
 export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string> };
 
@@ -40,7 +41,7 @@ export function scoreVolume(frame: number, clips: Timeline["clips"], silent: [nu
   if (quiet >= 1) return 0;
   return (1 - quiet) * duckVolume(frame, clips);
 }
-function duckVolume(frame: number, clips: Timeline["clips"]): number {
+export function duckVolume(frame: number, clips: Timeline["clips"]): number {
   let duck = 0;
   for (const c of clips) {
     const end = c.from + c.frames;
@@ -51,13 +52,20 @@ function duckVolume(frame: number, clips: Timeline["clips"]): number {
   return IN_HOLDS + (UNDER_VOICE - IN_HOLDS) * duck;
 }
 
-/** Each cue comes in LEAD frames before its section and crosses the one before it over FADE frames (rules/sound.md #7). */
+/** Each cue comes in LEAD frames before its section and crosses the one before it over FADE frames; a bed, BED_LEAD and
+ *  BED_FADE (rules/sound.md #7: the next scene's sound under the cut). Beds sit BED_UNDER_VOICE of full under the voice
+ *  and come up to full (the file's -36 dBFS, about 8 dB under the hold music) in the holds and the planned silence. */
 const LEAD = 30;
 const FADE = 45;
-const Placed: React.FC<{ src: string; start: number; end: number; gain: (f: number) => number }> = ({ src, start, end, gain }) => {
-  const a = Math.max(0, start - LEAD);
-  const b = end - LEAD + FADE;
-  const w = (f: number) => Math.max(0, Math.min(1, a === 0 ? 1 : (f - a) / FADE, (b - f) / FADE));
+const BED_LEAD = 15;
+const BED_FADE = 24;
+const BED_UNDER_VOICE = 0.4;
+const Placed: React.FC<{ src: string; start: number; end: number; gain: (f: number) => number; lead?: number; fade?: number }> = ({
+  src, start, end, gain, lead = LEAD, fade = FADE,
+}) => {
+  const a = Math.max(0, start - lead);
+  const b = end - lead + fade;
+  const w = (f: number) => Math.max(0, Math.min(1, a === 0 ? 1 : (f - a) / fade, (b - f) / fade));
   return (
     <Sequence from={a} durationInFrames={Math.max(1, b - a)}>
       <Audio src={staticFile(src)} loop volume={(f) => w(f + a) * gain(f + a)} />
@@ -65,12 +73,14 @@ const Placed: React.FC<{ src: string; start: number; end: number; gain: (f: numb
   );
 };
 
+const shotStarts = (timeline: Timeline, lines: ScriptLine[]) => SHOTS.map((s, i) => (i === 0 ? 0 : frameOf(s.at, timeline, lines)));
+
 const Picture: React.FC<FilmProps> = ({ timeline, lines }) => {
   const frame = useCurrentFrame();
   const soundOnly = useSoundOnly();
   if (soundOnly) return null;
   const { totalFrames } = timeline;
-  const starts = SHOTS.map((s, i) => (i === 0 ? 0 : frameOf(s.at, timeline, lines)));
+  const starts = shotStarts(timeline, lines);
   let i = 0;
   for (let k = 0; k < starts.length; k++) if (frame >= starts[k]) i = k;
   const from = starts[i];
@@ -99,7 +109,13 @@ const Overlays: React.FC<FilmProps> = ({ timeline, lines }) => {
         const at = frameOf(n.at, timeline, lines);
         const len = n.frames ?? 40;
         return frame >= at && frame < at + len
-          ? <NameTag key={`n${k}`} name={n.name} role={n.role} x={n.x} y={n.y} side={n.side} f={frame - at} len={len} /> : null;
+          ? <NameTag key={`n${k}`} name={n.name} role={n.role} does={n.does} x={n.x} y={n.y} side={n.side} f={frame - at} len={len} /> : null;
+      })}
+      {CARDS.map((c, k) => {
+        const at = frameOf(c.at, timeline, lines);
+        const len = Math.round((c.secs ?? 4.5) * 30);
+        return frame >= at && frame < at + len
+          ? <FactCard key={`c${k}`} top={c.top} sub={c.sub} problem={c.problem} right={c.right} f={frame - at} len={len} /> : null;
       })}
       {BUBBLES.map((b, k) => {
         const at = frameOf(b.at, timeline, lines);
@@ -118,8 +134,25 @@ export const Film: React.FC<FilmProps> = (props) => {
   const cardFrom = at("Every night. Whatever's", "end");
   const partyAt = at("Jonas: Who are all", "start", 60);
   const silent: [number, number] = [at("You count. One cent.", "end"), at("Zero, doubled", "start")];
-  const endAt = at("So, would you have erased", "end");
+  const endAt = at("Be honest.", "end");
   const cues = [...SCORE.map((c) => ({ file: c.file, start: c.from ? at(c.from, "start") : 0 })), { file: "theme-light.mp3", start: endAt }];
+  const outro = (f: number) => Math.min(1, (totalFrames - f) / 60);
+  const beds = BEDS.map(([name, from]) => ({
+    name, start: from === null ? 0 : typeof from === "string" ? at(from, "start") : frameOf(from, timeline, lines),
+  }));
+  const bedGain = (f: number) =>
+    (BED_UNDER_VOICE + (1 - BED_UNDER_VOICE) * (duckVolume(f, clips) - UNDER_VOICE) / (IN_HOLDS - UNDER_VOICE)) * outro(f);
+  // Effects: each shot's own (at a share of the shot or a frame into it), a split-flap flutter as each day tag turns and
+  // a paper snap as each card lands.
+  const starts = shotStarts(timeline, lines);
+  const fx = [
+    ...SHOTS.flatMap((s, i) => (s.sfx ?? []).map((e) => {
+      const dur = (starts[i + 1] ?? totalFrames) - starts[i];
+      return { file: e.file, at: starts[i] + (e.f ?? Math.round((e.p ?? 0) * dur)), vol: e.vol ?? 0.5 };
+    })),
+    ...TAGS.map((g) => ({ file: "flutter", at: frameOf(g.at, timeline, lines), vol: 0.8 })),
+    ...CARDS.map((c) => ({ file: "snap", at: frameOf(c.at, timeline, lines), vol: 0.6 })),
+  ];
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <Picture {...props} />
@@ -140,7 +173,16 @@ export const Film: React.FC<FilmProps> = (props) => {
       <Audio src={staticFile("narration/narration.wav")} />
       {cues.map((c, i) => (
         <Placed key={c.file + i} src={`music/${c.file}`} start={c.start} end={cues[i + 1]?.start ?? totalFrames + LEAD}
-          gain={(f) => scoreVolume(f, clips, silent) * Math.min(1, (totalFrames - f) / 60)} />
+          gain={(f) => scoreVolume(f, clips, silent) * outro(f)} />
+      ))}
+      {beds.map((b, i) => (
+        <Placed key={`b${i}`} src={`sfx/bed-${b.name}.wav`} start={b.start} end={beds[i + 1]?.start ?? totalFrames + BED_LEAD}
+          lead={BED_LEAD} fade={BED_FADE} gain={bedGain} />
+      ))}
+      {fx.map((e, i) => (
+        <Sequence key={`x${i}`} from={Math.max(0, e.at)} durationInFrames={240}>
+          <Audio src={staticFile(`sfx/${e.file}.wav`)} volume={e.vol} />
+        </Sequence>
       ))}
     </AbsoluteFill>
   );

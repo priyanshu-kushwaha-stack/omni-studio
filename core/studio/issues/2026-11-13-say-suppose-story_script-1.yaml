@@ -1,0 +1,14 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: medium
+example: 'doubled-money v4: mutes.txt 121@0.602:0.150 left the click at 642.935 s;
+  the mixed track went silent only from 642.985 s (90 ms late), and a -4 dBFS pop
+  at 647.595 s survived 121@5.250:0.350'
+recorded_at: '2026-11-13T16:11:19.685131+00:00'
+note: 'mix_narration.py applies mutes with ffmpeg volume=0:enable=''between(t,...)''
+  after amix; enable is evaluated per audio frame, so a mute''s start and end snap
+  to frame boundaries (up to ~85 ms late). Fix: apply each mute per take (atrim/volume
+  on the take''s own chain with sample-accurate envelopes, or asetnsamples=n=1 before
+  the volume filters). Worked around in the film by widening each mute to the whole
+  word gap.'
