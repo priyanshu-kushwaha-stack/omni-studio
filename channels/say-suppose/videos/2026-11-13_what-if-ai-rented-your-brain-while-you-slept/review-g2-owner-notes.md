@@ -70,3 +70,6 @@ your own `omni approve`.
 
 **Narration v4.** 107 lines, voice B, 87 new local takes, all transcribed back. Six pitch outliers re-taken; the voice now
 sits at 90-118 Hz line to line. Two click mutes, none inside speech. `omni qc story_script` passes on the narration.
+
+**The v4 cut.** `renders/v4/v4-720p.mp4` (git-ignored; 11:55, -20.7 LUFS, levelled at G3). On the full mix the click scan
+flags two effect spots (2:44.6, 10:57.1) and one small level step at 8:27.3 (`qc/v4-mix-clicks.json`); picture-lock work.
