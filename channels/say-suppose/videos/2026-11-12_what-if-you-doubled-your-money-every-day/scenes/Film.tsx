@@ -32,10 +32,11 @@ const UNDER_VOICE = 0.039;
 const IN_HOLDS = 0.22;
 const DUCK_IN = 8;
 const DUCK_OUT = 18;
-/** The one planned silence fades out and back over SILENCE_FADE frames, so it is never a step. */
-const SILENCE_FADE = 12;
+/** The one planned silence: the music is gone by the time the last line before it ends (fading under the voice, so
+ *  no pluck is left alone against digital silence) and comes back under the next line, over SILENCE_FADE frames. */
+const SILENCE_FADE = 18;
 export function scoreVolume(frame: number, clips: Timeline["clips"], silent: [number, number]): number {
-  const quiet = Math.max(0, Math.min(1, (frame - silent[0]) / SILENCE_FADE, (silent[1] - frame) / SILENCE_FADE));
+  const quiet = Math.max(0, Math.min(1, (frame - silent[0] + SILENCE_FADE) / SILENCE_FADE, (silent[1] - frame) / SILENCE_FADE));
   if (quiet >= 1) return 0;
   return (1 - quiet) * duckVolume(frame, clips);
 }

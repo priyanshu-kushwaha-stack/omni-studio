@@ -13,3 +13,9 @@ Felt understanding gap"). Eight notes, each applied in script v3 and the v3 cut:
 | 6 | "Lotte's rolls deserve the sky", "People are ordering": no context | The balloon is Jonas's delivery idea, said plainly by the narrator ("Lotte's rolls, delivered to the whole city. By balloon"), BREAD FROM THE SKY painted on it. Jonas: orders on the app; Lotte: "And who bakes it?"; she has two hands and one oven, eighty rolls a morning. Eight rolls go up while the order count climbs to four hundred; "The balloon comes back empty. Four hundred orders. Eight rolls." |
 | 7 | Monotonous music | One cue per section instead of the dark theme looping: wonder, giddy (a soft street band), uneasy, awe, spree, cost, dread, countdown, resolve, made locally with ACE-Step 1.5 (`make_music.py`, the channel themes as style reference, U2 cleared 2026-11-09), crossfaded at each section (`scenes/sound.ts`); the channel theme opens and closes the film |
 | 8 | A better skit; an understanding gap | Karl's back-door scene now says how prices rise: same sack, triple price, because the whole street has your money now; the mill and the farmer want more; Lotte charges more for rolls; "Everyone does." The narrator: "Prices rise first where the new money lands. Your street." The confusing nickname "the scarf" is gone everywhere |
+
+Cut: `renders/firstcut/firstcut-v3-720p.mp4`, 1280x720, 10:03 (the new skits add about 26 s), -16.0 LUFS, true peak
+-3.0 dBTP. `omni qc story_script --media` passes (claims, clicks). Free throughout: 32 new local takes, nine ACE-Step cues.
+The full-mix check found a breath after Jonas's "everything" (muted, `3@1.045:0.100`) and a music pluck alone against
+the planned silence (the score now fades out under the last line before the silence instead of after it). The sound is
+the RoughCutSound pass rendered to WAV and muxed onto the picture, so no AAC lead-in lag.
