@@ -1,0 +1,15 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: medium
+example: 'AI rented your brain: the owner picked a designed narrator (voice B) for
+  this film only; story.py takes one narrator per channel, so videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/narrator.py
+  patches story.json after every story.py run'
+recorded_at: '2026-11-13T16:45:00.953304+00:00'
+note: 'Wanted: a per-video narrator override in story.py (e.g. <video>/narrator.yaml
+  with a clone ref and an optional end-section voice). Also: the qwen3 clone narrator
+  ignores per-line direction, so say.yaml stresses are not heard; a designed narrator
+  drifts between takes; clone-of-a-designed-read is the consistent path. And click
+  mutes from the qc report can land inside a word because whisper word ends run early
+  (a mute chopped ''nothing'' at 5:58); mix_narration could refuse a mute with speech
+  level on both sides.'

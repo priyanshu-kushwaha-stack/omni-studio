@@ -38,36 +38,37 @@ OUT = HERE / "assets" / "music" / "cues"
 THEMES = HERE.parents[1] / "brand" / "music"
 REFERENCE_STRENGTH = 0.2
 
-STYLE = ("cinematic underscore for an animated paper-cut story with spoken dialogue, small chamber ensemble, "
-         "instrumental, no vocals, no drum kit, sparse, leaves room for voices")
+# v4 (owner, 2026-11-13: "I want to make it a SciFi thing but not very emotional thing. Emotional part should come
+# only at the end where it is teaching a lesson."). Sci-fi palette M2 from the options (ambient drones, glassy pads,
+# subtle digital blips), cool and not sentimental, for every section before Midnight; the warm cues (release, dawn)
+# only at the end, where the lesson lands. Only the warm cues take a channel theme as reference.
+STYLE = ("ambient science-fiction underscore for an animated story with a narrator, glassy synth pads, slow evolving "
+         "drones, subtle digital blips and data clicks, instrumental, no vocals, no drum kit, sparse, cool and "
+         "precise, not sentimental, leaves room for speech")
+WARM_STYLE = ("cinematic underscore for an animated story with a narrator, instrumental, no vocals, no drum kit, "
+              "sparse, leaves room for speech")
+WARM = {"release", "dawn"}
 
 # name -> (where in the film, seconds, bpm, key, theme, brief)
 CUES = {
     "hush": ("0:13-0:49, Night One: the first rented night, the ghost sits up, coins into the jar", 40, 76, "D major",
-             "light", "hushed night wonder, music box and soft celesta over a warm low pad, a secret magic, small and "
-             "glowing"),
+             "light", "quiet night discovery, a soft glowing pad, a slow pulse like a status light, faint data blips, cool wonder"),
     "leaflet": ("0:49-1:44, The Rule: the kitchen, the leaflet drawing itself, the brother's 'still a scam'", 58, 104,
-                "G major", "light", "bright and curious morning, pizzicato strings and light woodwinds, a tidy ticking "
-                "motif, playful explanation"),
+                "G major", "light", "clean and explanatory, a tidy ticking arpeggio over a light pad, like an interface booting up, neutral and curious"),
     "crumbs": ("1:44-3:34, Crumbs: the shoe, the tune through the wall, the fitted sheet, the bridge word, breakfast "
-               "lottery", 114, 116, "C major", "light", "comic and mischievous, plucked strings, muted marimba and "
-               "whistle-like flute, quirky little surprises, light and bouncy"),
+               "lottery", 114, 116, "C major", "light", "light and odd, small glitchy plucks and bleeps, quirky but cool, curious little anomalies"),
     "boom": ("3:34-4:55, More Hours: the bus nap, the nap room with a till, the street in bed by seven, the keys, the "
-             "door", 84, 120, "A minor", "light", "a greedy gold rush turning uneasy, busy plucked ostinato that "
-             "speeds up, coins-like glockenspiel, then thinning out and losing its footing"),
+             "door", 84, 120, "A minor", "light", "busy and expanding, a quickening synth sequence, many small data pulses multiplying, then thinning out and losing its grip"),
     "unease": ("4:55-6:10, The Night Shift: the facts land, the filing cabinet, the stamps", 78, 72, "E minor",
-               "dark", "uneasy and thoughtful, low clarinet and soft pulsing strings, a clock-like tick, a quiet "
-               "realisation"),
+               "dark", "cool and analytical, low drone with a slow clock-like tick, a cold realisation, clinical"),
     "photo": ("6:10-6:54, The Photo: the graduation, the photo you can't remember", 47, 80, "F major", "dark",
-              "tender then hollow, solo felt piano with a soft cello, warm memory draining to loss"),
+              "hollow and detached, a single sustained tone with sparse glassy notes, memory as missing data, restrained"),
     "market": ("6:54-8:08, The Warehouses: the price falls, the bridge, the cots, the clerk", 77, 92, "D minor",
-               "dark", "cold and mechanical, repetitive low strings and muted piano ostinato, a falling figure, "
-               "industrial hum, restrained"),
+               "dark", "cold and mechanical, repetitive low sequence, a falling figure, server-room hum, impersonal"),
     "dread": ("8:08-8:56, The Contract: the table, the pen, the brother's hand, midnight offer", 51, 66, "B minor",
-              "dark", "quiet dread, slow ticking pulse, low sustained strings, held breath, tightening"),
+              "dark", "quiet tension, a slow ticking pulse, low sustained drone, tightening, clinical"),
     "awe": ("8:56-10:04, One Mind: the matching crumbs, the globe, the machine", 71, 70, "E major", "light",
-            "vast awe slowly building, high shimmering strings, soft choir-like pad without words, a single neuron "
-            "pulse, enormous and quiet"),
+            "vast and quiet, a huge shimmering pad slowly building, a single neuron-like pulse, enormous scale, cool awe"),
     "release": ("10:04-10:28, Midnight: the drawer, the knock, nobody typing", 27, 64, "A major", "dark",
                 "very still, sparse piano, release after tension, a breath let out"),
     "dawn": ("10:28-11:09, Morning: you remember your street, the empty hand, the tags, the sequel hook", 44, 84,
@@ -96,9 +97,9 @@ def main(names: list[str]) -> None:
             raise SystemExit(f"missing channel theme {theme}")
         for seed in [int(seed_text)] if seed_text else SEEDS:
             params = GenerationParams(
-                caption=f"{STYLE}; {brief}", lyrics="[Instrumental]", instrumental=True, duration=seconds,
+                caption=f"{WARM_STYLE if name in WARM else STYLE}; {brief}", lyrics="[Instrumental]", instrumental=True, duration=seconds,
                 bpm=bpm, keyscale=key, timesignature="4", inference_steps=8, shift=3.0, seed=seed, thinking=False,
-                reference_audio=str(theme), audio_cover_strength=REFERENCE_STRENGTH,
+                **({"reference_audio": str(theme), "audio_cover_strength": REFERENCE_STRENGTH} if name in WARM else {}),
                 enable_normalization=True, normalization_db=-1.0)
             config = GenerationConfig(batch_size=1, use_random_seed=False, audio_format="wav")
             result = generate_music(dit, llm, params, config, save_dir=str(OUT / f"{name}-{seed}"))
