@@ -77,8 +77,12 @@ function times(clips: Clip[], start: number, end: number) {
     // 28: the page
     page: from(28), bed: at(28, 0.24), dream: at(28, 0.62), corridor: at(28, 0.76), heart: at(28, 0.89),
     // 29-31: keep it; the phone; the papers; the night
-    keep: from(29), temple: at(29, 0.64), phoneHand: from(30), captcha: at(30, 0.2), papers: at(30, 0.45), fast: at(30, 0.86),
-    night: at(31, 0.5), coinsNight: at(31, 0.62),
+    keep: from(29), temple: at(29, 0.64),
+    // 30-31 (the reCAPTCHA aside and "Spare seconds") were cut in v4 (owner on v3: "Around 4:00. review it again."),
+    // so the phone, papers and night shots are empty and "keep it" holds until the jar: they start past this beat's
+    // end (line 33 opens More Hours), in rising order so every camera key stays strictly increasing.
+    phoneHand: from(33) + 1, captcha: from(33) + 2, papers: from(33) + 3, fast: from(33) + 4, night: from(33) + 5,
+    coinsNight: from(33) + 6,
     // 32: the jar and the clock
     jar: from(32), eyesJar: at(32, 0.26), eight: at(32, 0.45), clock: at(32, 0.79), eyesClock: at(32, 0.9),
   };
@@ -459,8 +463,8 @@ const Crumbs: React.FC<{ shot: Shot }> = ({ shot }) => {
       {k.bangs.map((b) => <Sequence key={b} from={b} durationInFrames={20}><Audio src={staticFile("sfx/knock.wav")} volume={0.55} /></Sequence>)}
       <ClinkSound at={[k.lands, k.lands + 7]} volume={0.9} />
       <Sequence from={k.slap} durationInFrames={20}><Audio src={staticFile("sfx/paper.wav")} volume={0.4} /></Sequence>
-      <DeviceSound at={k.night - 4} frames={k.jar - k.night} volume={0.8} />
-      <ClinkSound at={landings(k.coinsNight, k.jar - 30)} volume={0.6} />
+      {k.jar - k.night > 30 && <DeviceSound at={k.night - 4} frames={k.jar - k.night} volume={0.8} />}
+      {k.jar - k.night > 30 && <ClinkSound at={landings(k.coinsNight, k.jar - 30)} volume={0.6} />}
       <ClinkSound at={landings(k.eight + 2, k.eight + 30, 4, 14)} volume={0.7} />
     </AbsoluteFill>
   );

@@ -57,3 +57,16 @@ aside) are still open if you want it shorter. The room's owner-notes round is no
 from five spots to two (`qc/v3-mix-clicks.json`): 1:02.6 (the pay-flap effect on "What'd you get?") and 11:50 (the
 midnight knock on the door), both effects, kept for your ear. `story_script` is `awaiting_human` on v3; G2 passes only by
 your own `omni approve`.
+
+## Part 3: the owner's notes on the v3 cut (2026-11-13), applied in v4
+
+| # | Owner note | Applied in v4 |
+|---|---|---|
+| 1 | "His spoon hits the floor. That he got amazed and surprised to see that. Does it mean that. ? Not obvious." | "Nobody can fold a fitted sheet." added, and the brother says it: "Since when can you do that?" |
+| 2 | "Around 4:00. review it again." | The reCAPTCHA aside and "Spare seconds..." are cut (also the room's blocker #1): the dream fact, "Sleeping brains do real work. Normally, you keep it.", then Problem one at once. |
+| 3 | "voice at 5:58 broken." | A click mute had cut into "nothing" ("Did you think it was for nothing?"). The narration is re-voiced, and every mute is now refused when there is speech on both sides of it. |
+| 4 | "Need to improve the music more ig. And maybe we should change the narrator voice." | Options rendered first: narrators A-D, scores M1-M3. The owner picked **B** and heard it drift between sentences, so B is cloned from one cool read for every line (`narrator.py`), and from Midnight from one warm read. The score is in **M2** (ambient drones, glassy pads, data blips) for every section before Midnight; the owner didn't pick a score, so M2 is the default, the coolest of the three. |
+| 5 | "I want to make it a SciFi thing but not very emotional thing. Emotional part should come only at the end where it is teaching a lesson." | 77 narrator directions before Midnight re-written to cool, precise sci-fi delivery (the clone carries the cool read's delivery); warmth only from Midnight (the warm clone, and the warm release and dawn cues). |
+
+**Narration v4.** 107 lines, voice B, 87 new local takes, all transcribed back. Six pitch outliers re-taken; the voice now
+sits at 90-118 Hz line to line. Two click mutes, none inside speech. `omni qc story_script` passes on the narration.

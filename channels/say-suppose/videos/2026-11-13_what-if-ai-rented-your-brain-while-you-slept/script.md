@@ -1,7 +1,7 @@
 # Script: What If AI Rented Your Brain While You Slept?
 
 format: story
-status: v3, owner-notes round (2026-11-13): the owner's five notes on the first cut and the fail film's eleven carried over
+status: v4, owner-notes round 2 (voice B, sci-fi tone); v3 (2026-11-13): the owner's five notes on the first cut and the fail film's eleven carried over
 claims: claims.md
 
 > SITUATION: El Paso, dawn, the clinic chair where you sell the pale part of your blood twice a week, the most the law allows, counting every hour as money. A band on your forehead turns your nights into the best wage of your life.
@@ -77,7 +77,7 @@ Ninety dollars. For eight hours of lying down. The best wage of your life. And t
 
 Because you count every waking hour as money you did or didn't earn. And nobody's ever paid you for one asleep.
 
-## [01:18] The Rule
+## [01:19] The Rule
 
 > MOOD: morning
 > SCENE: The title card ident (C), three seconds, cut from the last line. Then the kitchen: the jar on the table, the leaflet beside it, your brother with cereal. On "The band came with a leaflet" the leaflet unfolds itself; on "runs its work on your brain" the band's thread-and-ghost is drawn on it as a paper diagram; on "one jar" three stamps land: BRAIN, BAND, JAR.
@@ -116,7 +116,7 @@ Brother: Still a scam.
 
 He reads the leaflet upside down. And by Saturday he's wearing one.
 
-## [02:28] Crumbs
+## [02:27] Crumbs
 
 > MOOD: morning
 > SCENE: A week, in the kitchen, the shower, the bridge. Morning two: you at the table with a crayon, drawing fast on the back of the leaflet.
@@ -173,7 +173,7 @@ Sleeping brains do real work. Normally, you keep it.
 
 But here's the problem. Problem one. Ninety dollars for eight hours. So what's twelve worth?
 
-## [04:22] More Hours
+## [03:57] More Hours
 
 > MOOD: day
 > SCENE: The bus, afternoon: you against the window, the band on, the ghost typing above you, two coins into your lap. Out of the window a bus-shelter ad goes by with a small paper subscribe tag, no voice. The bus empties; the driver looks at you in the mirror.
@@ -216,7 +216,7 @@ Brother: You live here.
 
 You sold twelve hours of nothing. And the nothing was never empty. Sleep was never idle.
 
-## [05:45] The Night Shift
+## [05:18] The Night Shift
 
 > MOOD: lamp
 > SCENE: Your room, one lamp. You on the bottom bunk, the band in your hand, not on. Your brother above, the notebook open.
@@ -263,7 +263,7 @@ But here's the second problem. Problem two. It's your brain, only yours. Whateve
 
 And Saturday is his graduation.
 
-## [07:06] The Photo
+## [06:36] The Photo
 
 > MOOD: day
 > SCENE: The hall: folding chairs, a stage, a banner with no lettering. Your brother in a gown and his cap, no teal light under it. You in the second row, phone up.
@@ -297,7 +297,7 @@ You were there. You have the photo. You sold the night before your brain could f
 
 But here's the third problem. Problem three. You weren't the only one who worked out the weekend rate. And the price is about to fall.
 
-## [07:53] The Warehouses
+## [07:21] The Warehouses
 
 > MOOD: morning
 > SCENE: Three breakfasts in one dissolve: the band's split-flap on the table flutters down each morning.
@@ -341,7 +341,7 @@ Clerk: Rested ones only.
 
 So a night is worth twelve dollars, and he can't even sell that. But one offer hasn't fallen. The man in the grey suit comes back.
 
-## [09:18] The Contract
+## [08:38] The Contract
 
 > MOOD: lamp
 > SCENE: The kitchen table, one lamp. The grey suit sitting, a cream contract flat on the table, a pen laid across it. The kitchen clock behind him. Your brother in the doorway.
@@ -371,7 +371,7 @@ Broker: Offer closes midnight.
 
 The kitchen clock. Eleven.
 
-## [10:14] One Mind
+## [09:30] One Mind
 
 > MOOD: night
 > SCENE: Your room. The notebook pages spread on the bottom bunk, his column and yours. The two of you cross-legged either side.
@@ -409,7 +409,7 @@ The job the sleepers are paid for is to design the thing that will never need sl
 
 The biggest idea people ever had together, and nobody was awake for it.
 
-## [11:27] Midnight
+## [10:37] Midnight
 
 > MOOD: night
 > SCENE: The clock on the wall: eleven fifty-eight. You standing by the bedside drawer, the pen in one hand, the band in the other, its teal light on. Your brother in the top bunk, his band in his hand, watching you.
@@ -428,7 +428,7 @@ You lie down with nothing on your forehead. The offer's gone. And so is your way
 
 And for the first time in six weeks, nobody's typing.
 
-## [12:04] Morning
+## [11:13] Morning
 
 > MOOD: morning
 > SCENE: Morning light through the red curtains. You wake, and look at the window, then at the top bunk, and smile at nothing. Insert: a paper bridge in your own colours, mustard and teal, held in the air over your pillow for one second.
@@ -465,13 +465,13 @@ About 1,645 spoken words: 10:37 at 155 words a minute. The skit runs about 10 s 
 ## Chapters
 
 - 0:00 The Chair
-- 1:18 The Rule
-- 2:28 Crumbs
-- 4:22 More Hours
-- 5:45 The Night Shift
-- 7:06 The Photo
-- 7:53 The Warehouses
-- 10:14 One Mind
+- 1:19 The Rule
+- 2:27 Crumbs
+- 3:57 More Hours
+- 5:18 The Night Shift
+- 6:36 The Photo
+- 7:21 The Warehouses
+- 9:30 One Mind
 
 ## Changed from the approved G1
 
