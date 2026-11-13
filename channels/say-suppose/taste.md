@@ -20,6 +20,42 @@ rule. Where two notes disagree, the newer one wins.
   shows the power working and someone stunned, never a sad face. Replaces the 2026-11-06 study's "a person to lose" and
   "the peak gives something up" (`rules/story.md` #9, #18, #20-#22; `style.md`; `rules/thumbnails.md` K17).
   (audience research, all films)
+AI rented your brain while you slept, G2 (the exciting note above is newer and wins where these disagree; the
+owner's "Emotional part should come only at the end where it is teaching a lesson" now lands as a win, not a tear,
+before the closing twist):
+
+v3 cut (AI rented your brain while you slept, G2, 12:51), the owner's notes:
+
+- **"His spoon hits the floor. That he got amazed and surprised to see that. Does it mean that. ? Not obvious."** A
+  reaction the joke depends on is said, not left to a dropped object: "Nobody can fold a fitted sheet." and the
+  brother's "Since when can you do that?"
+- **"Around 4:00. review it again."** The reCAPTCHA aside sat between the dream fact and Problem one; it is cut, so the
+  stake jump comes straight after "Sleeping brains do real work. Normally, you keep it." (also the room's blocker #1).
+- **"voice at 5:58 broken."** A click mute cut into "nothing" ("Did you think it was for nothing?"). Mutes must sit
+  after speech, never inside it; whisper's word ends run early, so check the take's level on both sides of a mute.
+- **"Need to improve the music more ig. And maybe we should change the narrator voice."** Options rendered for the
+  owner's ear (narrator A-D, score M1-M3) before anything is re-made.
+- **"I want to make it a SciFi thing but not very emotional thing. Emotional part should come only at the end where it
+  is teaching a lesson."** The narration is cool, even and precise until Midnight; warmth only where the lesson lands.
+  The score follows: sci-fi colours, no sentimental cues until the end. (The local narrator clone takes no per-line
+  direction, so a delivery change needs a designed narrator voice.)
+
+First cut (AI rented your brain while you slept, G2, v1 720p cut, 11:09): **"This video felt good script wise. At
+certain places, it was difficult to understand. from context was sort of unclear."** Take the learnings from the fail
+film's notes wherever they apply. Then, on a second watch:
+
+- **"better Skit to start with and more clarity In the first and second line around."** The skit's lines say what
+  just happened in plain words (what the nurse takes, what the coin was for), and the first narrator lines name the
+  everyday thing first.
+- **"I would suggest you define Band also in the starting when you introduce it."** Define the film's device the
+  first time it is named: what it is, where you wear it, what it does, who pays.
+- **"More clarity around leaflet says and band.. Around 1:00"** Introduce an object before quoting it (the band came
+  with a leaflet); the rule in short plain steps; name a coined word ("crumbs") as it is defined.
+- **"More pauses and stresses in voice wherever required for better explanation of the concept."** Concept lines are
+  split into shorter lines with air between them, and their directions name the stressed words.
+- **"Text on the Screen if needed."** A card for each new concept as it is defined (the band, the leaflet, the
+  crumbs), each numbered problem, and each "it's true" fact; a role tag at each character's first close-up.
+
 - **"Looks good script wise now. Self Explanatory and understood everything."** The v4 cut (saw who wants you to fail,
   G2). Then on the closing question, "Would you still say it to her face ?": the story had already answered it at the
   dock, so it asked nothing. **"Yes, change it"**: the closing question turns the film on the viewer and points at the
