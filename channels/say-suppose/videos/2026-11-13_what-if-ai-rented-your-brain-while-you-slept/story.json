@@ -80,7 +80,7 @@
     },
     {
       "text": "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows.",
-      "say": "[low, plain, close to the ear, a stress on plasma, a short pause before It's the most] Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on plasma, a short pause before It's the most] Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -90,7 +90,7 @@
     },
     {
       "text": "It's how your family keeps up with what it owes.",
-      "say": "[quiet, a little heavy, a stress on family and owes] It's how your family keeps up with what it owes.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on family and owes] It's how your family keeps up with what it owes.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -98,7 +98,7 @@
     },
     {
       "text": "So what if a company could rent your brain while you slept?",
-      "say": "[curious, leaning in, the question offered like a coin] So what if a company could rent your brain while you slept?",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; the question offered like a coin] So what if a company could rent your brain while you slept?",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -106,7 +106,7 @@
     },
     {
       "text": "That's the band. A thin strip you wear across your forehead.",
-      "say": "[clear, slow, presenting it, a stress on band, a pause after it] That's the band. A thin strip you wear across your forehead.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, slow, a stress on band, a pause after it] That's the band. A thin strip you wear across your forehead.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "night",
@@ -114,7 +114,7 @@
     },
     {
       "text": "While you sleep, it lends your brain to a company. And it pays you, by the hour.",
-      "say": "[clear, explaining, a stress on lends your brain, a pause before And it pays you, a stress on by the hour] While you sleep, it lends your brain to a company. And it pays you, by the hour.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, explaining, a stress on lends your brain, a pause before And it pays you, a stress on by the hour] While you sleep, it lends your brain to a company. And it pays you, by the hour.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "night",
@@ -122,7 +122,7 @@
     },
     {
       "text": "Midnight. The band goes on. A chime.",
-      "say": "[hushed, three short beats with air between them] Midnight. The band goes on. A chime.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; three short beats with air between them] Midnight. The band goes on. A chime.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -130,7 +130,7 @@
     },
     {
       "text": "That pale figure up there? That's your sleeping brain, at work for the company.",
-      "say": "[curious on the question, then plain, a stress on sleeping brain] That pale figure up there? That's your sleeping brain, at work for the company.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; curious on the question, then plain, a stress on sleeping brain] That pale figure up there? That's your sleeping brain, at work for the company.",
       "speaker": "narrator",
       "gapAfterSec": 3.8,
       "mood": "night",
@@ -138,7 +138,7 @@
     },
     {
       "text": "You feel nothing. But a night you sell is a night your own brain doesn't get.",
-      "say": "[quiet, a pause after nothing, then slow and cold, a stress on own] You feel nothing. But a night you sell is a night your own brain doesn't get.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after nothing, then slow and cold, a stress on own] You feel nothing. But a night you sell is a night your own brain doesn't get.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "night",
@@ -162,7 +162,7 @@
     },
     {
       "text": "Ninety dollars. For eight hours of lying down. The best wage of your life. And that's the problem.",
-      "say": "[dry, a smile on the wage, then the smile gone on the last sentence] Ninety dollars. For eight hours of lying down. The best wage of your life. And that's the problem.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Ninety dollars. For eight hours of lying down. The best wage of your life. And that's the problem.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -170,7 +170,7 @@
     },
     {
       "text": "Because you count every waking hour as money you did or didn't earn. And nobody's ever paid you for one asleep.",
-      "say": "[warm, knowing, a little sad on the second sentence] Because you count every waking hour as money you did or didn't earn. And nobody's ever paid you for one asleep.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Because you count every waking hour as money you did or didn't earn. And nobody's ever paid you for one asleep.",
       "speaker": "narrator",
       "gapAfterSec": 4.45,
       "mood": "morning",
@@ -178,7 +178,7 @@
     },
     {
       "text": "The band came with a leaflet. It sets out the deal.",
-      "say": "[clear, brisk, a stress on leaflet and on deal] The band came with a leaflet. It sets out the deal.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, a stress on leaflet and on deal] The band came with a leaflet. It sets out the deal.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -186,7 +186,7 @@
     },
     {
       "text": "Wear the band to bed. While you sleep, the company runs its work on your brain.",
-      "say": "[plain, step by step, a pause after bed, a stress on your brain] Wear the band to bed. While you sleep, the company runs its work on your brain.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, step by step, a pause after bed, a stress on your brain] Wear the band to bed. While you sleep, the company runs its work on your brain.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -194,7 +194,7 @@
     },
     {
       "text": "And every morning, the band pays you, by the hour.",
-      "say": "[light, a stress on pays you, the last words slow] And every morning, the band pays you, by the hour.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on pays you, the last words slow] And every morning, the band pays you, by the hour.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -202,7 +202,7 @@
     },
     {
       "text": "You won't feel a thing. One company can link many bands, for one big job.",
-      "say": "[measured, a pause after thing, a stress on many bands and one big job] You won't feel a thing. One company can link many bands, for one big job.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after thing, a stress on many bands and one big job] You won't feel a thing. One company can link many bands, for one big job.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -210,7 +210,7 @@
     },
     {
       "text": "But the leaflet promises each brain stays separate. One brain, one band, one jar.",
-      "say": "[slow, a stress on promises and separate, then each of the three short phrases its own beat] But the leaflet promises each brain stays separate. One brain, one band, one jar.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, a stress on promises and separate, then each of the three short phrases its own beat] But the leaflet promises each brain stays separate. One brain, one band, one jar.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -218,7 +218,7 @@
     },
     {
       "text": "And you won't remember the work. Only small leftovers. The leaflet calls them crumbs: a taste, a word, a face that isn't yours.",
-      "say": "[measured, a pause after work, a stress on crumbs, the list slow] And you won't remember the work. Only small leftovers. The leaflet calls them crumbs: a taste, a word, a face that isn't yours.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after work, a stress on crumbs, the list slow] And you won't remember the work. Only small leftovers. The leaflet calls them crumbs: a taste, a word, a face that isn't yours.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -226,7 +226,7 @@
     },
     {
       "text": "It says they're harmless.",
-      "say": "[light, a hint of doubt on harmless] It says they're harmless.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] It says they're harmless.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -234,7 +234,7 @@
     },
     {
       "text": "Why would anyone want a sleeping brain? The leaflet explains that too.",
-      "say": "[curious, a real question, a pause after it] Why would anyone want a sleeping brain? The leaflet explains that too.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a real question, a pause after it] Why would anyone want a sleeping brain? The leaflet explains that too.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -242,7 +242,7 @@
     },
     {
       "text": "Your brain burns about twenty watts. At night, the leaflet calls that unused power.",
-      "say": "[plain, a stress on twenty watts, then the salesman's phrase unused power half-mocked] Your brain burns about twenty watts. At night, the leaflet calls that unused power.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on twenty watts] Your brain burns about twenty watts. At night, the leaflet calls that unused power.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -252,7 +252,7 @@
     },
     {
       "text": "It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes. So a whole brain for eight hours is a bargain.",
-      "say": "[amazed, a little delighted on it's true, then dry on the bargain] It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes. So a whole brain for eight hours is a bargain.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes. So a whole brain for eight hours is a bargain.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -270,7 +270,7 @@
     },
     {
       "text": "He reads the leaflet upside down. And by Saturday he's wearing one.",
-      "say": "[fond, amused, the second sentence a wink] He reads the leaflet upside down. And by Saturday he's wearing one.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] He reads the leaflet upside down. And by Saturday he's wearing one.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -278,7 +278,7 @@
     },
     {
       "text": "Morning two. You wake craving a food you can't name. So you draw it for him.",
-      "say": "[light, quick, a story beginning] Morning two. You wake craving a food you can't name. So you draw it for him.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Morning two. You wake craving a food you can't name. So you draw it for him.",
       "speaker": "narrator",
       "gapAfterSec": 3.3,
       "mood": "morning",
@@ -294,7 +294,7 @@
     },
     {
       "text": "Morning three. You hum a tune in the shower that nobody has written. The grandmother next door bangs on the wall.",
-      "say": "[amused, a little mischievous, the bang in the voice] Morning three. You hum a tune in the shower that nobody has written. The grandmother next door bangs on the wall.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Morning three. You hum a tune in the shower that nobody has written. The grandmother next door bangs on the wall.",
       "speaker": "narrator",
       "gapAfterSec": 2.3,
       "mood": "morning",
@@ -302,23 +302,31 @@
     },
     {
       "text": "Then she hums it back. Note for note. Through the wall.",
-      "say": "[slow, surprised, a chill under the smile] Then she hums it back. Note for note. Through the wall.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow] Then she hums it back. Note for note. Through the wall.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Morning four. You fold a fitted sheet into a perfect square. His spoon hits the floor.",
-      "say": "[brisk, deadpan, the spoon landing dry] Morning four. You fold a fitted sheet into a perfect square. His spoon hits the floor.",
+      "text": "Morning four. You fold a fitted sheet into a perfect square. Nobody can fold a fitted sheet. His spoon hits the floor.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a small stress on Nobody] Morning four. You fold a fitted sheet into a perfect square. Nobody can fold a fitted sheet. His spoon hits the floor.",
       "speaker": "narrator",
+      "gapAfterSec": 0.65,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Brother: Since when can you do that?",
+      "say": "[amazed, almost accusing, a stress on when] Since when can you do that?",
+      "speaker": "Brother",
       "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
     {
       "text": "Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too.",
-      "say": "[curious, quick, warmer on the woman] Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -336,7 +344,7 @@
     },
     {
       "text": "She shrugs. She doesn't know it either. So whose is it?",
-      "say": "[quiet, a question left in the air] She shrugs. She doesn't know it either. So whose is it?",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a question left in the air] She shrugs. She doesn't know it either. So whose is it?",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -344,7 +352,7 @@
     },
     {
       "text": "Saturday. Your brother, palm out. And a teal light under his cap.",
-      "say": "[fond, a beat before the light, caught-you in the voice] Saturday. Your brother, palm out. And a teal light under his cap.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a beat before the light] Saturday. Your brother, palm out. And a teal light under his cap.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -360,7 +368,7 @@
     },
     {
       "text": "Breakfast becomes a lottery draw. His crumb, your crumb, in his notebook. A taste, a tune, a word, a face. He wakes knowing a knot nobody taught him. You wake saying sorry in a voice that isn't yours.",
-      "say": "[playful, quick, the list bouncing, then a shade stranger on the last sentence] Breakfast becomes a lottery draw. His crumb, your crumb, in his notebook. A taste, a tune, a word, a face. He wakes knowing a knot nobody taught him. You wake saying sorry in a voice that isn't yours.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Breakfast becomes a lottery draw. His crumb, your crumb, in his notebook. A taste, a tune, a word, a face. He wakes knowing a knot nobody taught him. You wake saying sorry in a voice that isn't yours.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -368,7 +376,7 @@
     },
     {
       "text": "So is a sleeping brain really working? About a hundred years ago a scientist said the experiment that won him a Nobel Prize came to him in a dream. He got up in the night and did it, on a frog's heart.",
-      "say": "[curious, then a storyteller's hush, the frog's heart with a small smile] So is a sleeping brain really working? About a hundred years ago a scientist said the experiment that won him a Nobel Prize came to him in a dream. He got up in the night and did it, on a frog's heart.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] So is a sleeping brain really working? About a hundred years ago a scientist said the experiment that won him a Nobel Prize came to him in a dream. He got up in the night and did it, on a frog's heart.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -378,25 +386,7 @@
     },
     {
       "text": "Sleeping brains do real work. Normally, you keep it.",
-      "say": "[plain, steady, the second sentence pointed] Sleeping brains do real work. Normally, you keep it.",
-      "speaker": "narrator",
-      "gapAfterSec": 1.15,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "And you've rented yours before, for free. Those squiggly words you typed to prove you weren't a robot? One of those tests, reCAPTCHA, used them to read old newspapers and books that computers couldn't. More than a hundred million a day.",
-      "say": "[conspiratorial, amused, the number landing with a lift] And you've rented yours before, for free. Those squiggly words you typed to prove you weren't a robot? One of those tests, reCAPTCHA, used them to read old newspapers and books that computers couldn't. More than a hundred million a day.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.65,
-      "mood": "morning",
-      "claims": [
-        "c16"
-      ]
-    },
-    {
-      "text": "Spare seconds, turned into machine work. The band makes the same bargain with your whole night.",
-      "say": "[low, exact, the second sentence slower] Spare seconds, turned into machine work. The band makes the same bargain with your whole night.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain] Sleeping brains do real work. Normally, you keep it.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -404,7 +394,7 @@
     },
     {
       "text": "But here's the problem. Problem one. Ninety dollars for eight hours. So what's twelve worth?",
-      "say": "[slow, a pause after problem, Problem one said as a heading, a stress on twelve] But here's the problem. Problem one. Ninety dollars for eight hours. So what's twelve worth?",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, a pause after problem, Problem one said as a heading, a stress on twelve] But here's the problem. Problem one. Ninety dollars for eight hours. So what's twelve worth?",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -412,7 +402,7 @@
     },
     {
       "text": "You rent your nap on the bus. You wake at the end of the line with four dollars and a craving for pickles.",
-      "say": "[amused, deadpan on the pickles] You rent your nap on the bus. You wake at the end of the line with four dollars and a craving for pickles.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] You rent your nap on the bus. You wake at the end of the line with four dollars and a craving for pickles.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -420,7 +410,7 @@
     },
     {
       "text": "And you're not the only one counting. The nurse has a band under her cap now, so the clinic shuts at noon. Therefore your boss sees the jar on your desk, and opens a nap room at work. With a till.",
-      "say": "[quickening, one thing tipping the next, dry on the till] And you're not the only one counting. The nurse has a band under her cap now, so the clinic shuts at noon. Therefore your boss sees the jar on your desk, and opens a nap room at work. With a till.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] And you're not the only one counting. The nurse has a band under her cap now, so the clinic shuts at noon. Therefore your boss sees the jar on your desk, and opens a nap room at work. With a till.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -436,7 +426,7 @@
     },
     {
       "text": "Therefore sleeping for money is a day job. So the couple across the street sleep in shifts, and their jar never stops. And the empty warehouse by the bridge fills with cots, and a clerk with a clipboard stands at its door.",
-      "say": "[building, matter-of-fact, a shade darker on the warehouse] Therefore sleeping for money is a day job. So the couple across the street sleep in shifts, and their jar never stops. And the empty warehouse by the bridge fills with cots, and a clerk with a clipboard stands at its door.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Therefore sleeping for money is a day job. So the couple across the street sleep in shifts, and their jar never stops. And the empty warehouse by the bridge fills with cots, and a clerk with a clipboard stands at its door.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -444,7 +434,7 @@
     },
     {
       "text": "Therefore the grandmother next door, eleven hours a night, out-earns the whole street.",
-      "say": "[delighted, a grin in the voice] Therefore the grandmother next door, eleven hours a night, out-earns the whole street.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Therefore the grandmother next door, eleven hours a night, out-earns the whole street.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -460,7 +450,7 @@
     },
     {
       "text": "Therefore nobody buys coffee. The coffee shops close. The pillow shop stays open till midnight. And the whole city is in bed by seven.",
-      "say": "[the chain running out, amused, then quiet on the last sentence] Therefore nobody buys coffee. The coffee shops close. The pillow shop stays open till midnight. And the whole city is in bed by seven.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Therefore nobody buys coffee. The coffee shops close. The pillow shop stays open till midnight. And the whole city is in bed by seven.",
       "speaker": "narrator",
       "gapAfterSec": 5.3,
       "mood": "dusk",
@@ -468,7 +458,7 @@
     },
     {
       "text": "Ten hours a night. Then twelve. Your jar becomes a shelf of jars.",
-      "say": "[hushed, counting up, a little awed] Ten hours a night. Then twelve. Your jar becomes a shelf of jars.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Ten hours a night. Then twelve. Your jar becomes a shelf of jars.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "dusk",
@@ -476,7 +466,7 @@
     },
     {
       "text": "So what did twelve hours cost? First your keys. Then your PIN, gone, at the cash machine. Then you walk past your own front door. Twice.",
-      "say": "[a turn, each loss its own beat, the last word flat] So what did twelve hours cost? First your keys. Then your PIN, gone, at the cash machine. Then you walk past your own front door. Twice.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; each loss its own beat] So what did twelve hours cost? First your keys. Then your PIN, gone, at the cash machine. Then you walk past your own front door. Twice.",
       "speaker": "narrator",
       "gapAfterSec": 4.3,
       "mood": "day",
@@ -492,7 +482,7 @@
     },
     {
       "text": "You sold twelve hours of nothing. And the nothing was never empty. Sleep was never idle.",
-      "say": "[low, steady, the last sentence landing like a door shutting] You sold twelve hours of nothing. And the nothing was never empty. Sleep was never idle.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] You sold twelve hours of nothing. And the nothing was never empty. Sleep was never idle.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -500,7 +490,7 @@
     },
     {
       "text": "You thought you were selling spare time. There was no spare time.",
-      "say": "[quiet, close, the second sentence slower] You thought you were selling spare time. There was no spare time.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; the second sentence slower] You thought you were selling spare time. There was no spare time.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -508,7 +498,7 @@
     },
     {
       "text": "You spend about a third of your life asleep. A third. Did you think it was for nothing?",
-      "say": "[plain, then a challenge, almost gentle] You spend about a third of your life asleep. A third. Did you think it was for nothing?",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain] You spend about a third of your life asleep. A third. Did you think it was for nothing?",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "lamp",
@@ -518,7 +508,7 @@
     },
     {
       "text": "In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster. Sleep is when your brain takes the trash out. Yours hasn't in a month.",
-      "say": "[clear, a storyteller's wonder, then flat and close on the last sentence] In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster. Sleep is when your brain takes the trash out. Yours hasn't in a month.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear] In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster. Sleep is when your brain takes the trash out. Yours hasn't in a month.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -528,7 +518,7 @@
     },
     {
       "text": "About a hundred years ago, in 1924, two people were tested, and they forgot less after sleeping than after the same hours awake. And in rats, the day's activity replays in sleep, faster than real time.",
-      "say": "[measured, curious, a lift on faster than real time] About a hundred years ago, in nineteen twenty-four, two people were tested, and they forgot less after sleeping than after the same hours awake. And in rats, the day's activity replays in sleep, faster than real time.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] About a hundred years ago, in nineteen twenty-four, two people were tested, and they forgot less after sleeping than after the same hours awake. And in rats, the day's activity replays in sleep, faster than real time.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -539,7 +529,7 @@
     },
     {
       "text": "Your brain files your day at night, on fast forward. For a month, nothing's been filed.",
-      "say": "[quick on the first sentence, then slow, the weight landing] Your brain files your day at night, on fast forward. For a month, nothing's been filed.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; then slow] Your brain files your day at night, on fast forward. For a month, nothing's been filed.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "lamp",
@@ -547,7 +537,7 @@
     },
     {
       "text": "Sleep was never nothing. It was the one shift you always worked for yourself.",
-      "say": "[warm, low, intimate, every word placed] Sleep was never nothing. It was the one shift you always worked for yourself.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Sleep was never nothing. It was the one shift you always worked for yourself.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "lamp",
@@ -555,7 +545,7 @@
     },
     {
       "text": "You've slept twelve hours a night and you look like the boy who stayed awake for eleven days for a science fair in 1964, whose thinking began to suffer by the end. He skipped sleep. You sold it.",
-      "say": "[dry, a story told fast, then the two short sentences cold] You've slept twelve hours a night and you look like the boy who stayed awake for eleven days for a science fair in nineteen sixty-four, whose thinking began to suffer by the end. He skipped sleep. You sold it.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] You've slept twelve hours a night and you look like the boy who stayed awake for eleven days for a science fair in nineteen sixty-four, whose thinking began to suffer by the end. He skipped sleep. You sold it.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -565,7 +555,7 @@
     },
     {
       "text": "Your brother stops laughing. He gets out the stamp.",
-      "say": "[quiet, tender, a small smile on the stamp] Your brother stops laughing. He gets out the stamp.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Your brother stops laughing. He gets out the stamp.",
       "speaker": "narrator",
       "gapAfterSec": 4.3,
       "mood": "lamp",
@@ -581,7 +571,7 @@
     },
     {
       "text": "But here's the second problem. Problem two. It's your brain, only yours. Whatever you lose, you lose alone.",
-      "say": "[low, a pause after problem, Problem two as a heading, a stress on only yours and alone] But here's the second problem. Problem two. It's your brain, only yours. Whatever you lose, you lose alone.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after problem, Problem two as a heading, a stress on only yours and alone] But here's the second problem. Problem two. It's your brain, only yours. Whatever you lose, you lose alone.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "lamp",
@@ -589,7 +579,7 @@
     },
     {
       "text": "And Saturday is his graduation.",
-      "say": "[soft, a warning the voice doesn't want to give] And Saturday is his graduation.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] And Saturday is his graduation.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -597,7 +587,7 @@
     },
     {
       "text": "Saturday. The hall. Folding chairs. Your brother on the stage in a gown and his cap, and no band under it today.",
-      "say": "[warm, proud, a lift on no band] Saturday. The hall. Folding chairs. Your brother on the stage in a gown and his cap, and no band under it today.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Saturday. The hall. Folding chairs. Your brother on the stage in a gown and his cap, and no band under it today.",
       "speaker": "narrator",
       "gapAfterSec": 3.3,
       "mood": "day",
@@ -605,7 +595,7 @@
     },
     {
       "text": "The weekend rate triples. So that night, you take twelve hours.",
-      "say": "[matter-of-fact, a shadow under it] The weekend rate triples. So that night, you take twelve hours.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] The weekend rate triples. So that night, you take twelve hours.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -621,7 +611,7 @@
     },
     {
       "text": "Two hundred and seventy dollars. The best night yet. You show him the band. He shows you his phone.",
-      "say": "[bright on the number, then slowing, the last sentence quiet] Two hundred and seventy dollars. The best night yet. You show him the band. He shows you his phone.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; then slowing] Two hundred and seventy dollars. The best night yet. You show him the band. He shows you his phone.",
       "speaker": "narrator",
       "gapAfterSec": 4.3,
       "mood": "morning",
@@ -637,7 +627,7 @@
     },
     {
       "text": "You were there. You have the photo. You sold the night before your brain could file the day.",
-      "say": "[very quiet, close, no music in the voice] You were there. You have the photo. You sold the night before your brain could file the day.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] You were there. You have the photo. You sold the night before your brain could file the day.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -645,7 +635,7 @@
     },
     {
       "text": "But here's the third problem. Problem three. You weren't the only one who worked out the weekend rate. And the price is about to fall.",
-      "say": "[steady, Problem three as a heading, a pause before And the price, a stress on fall] But here's the third problem. Problem three. You weren't the only one who worked out the weekend rate. And the price is about to fall.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; Problem three as a heading, a pause before And the price, a stress on fall] But here's the third problem. Problem three. You weren't the only one who worked out the weekend rate. And the price is about to fall.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -653,7 +643,7 @@
     },
     {
       "text": "Ninety. Forty-one. Twelve. Everyone has a band on now.",
-      "say": "[slow, counting down, each number its own beat with a full pause after it] Ninety. ... Forty-one. ... Twelve. ... Everyone has a band on now.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, each number its own beat with a full pause after it] Ninety. ... Forty-one. ... Twelve. ... Everyone has a band on now.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -661,7 +651,7 @@
     },
     {
       "text": "It's true. The US is one of the few countries that lets companies pay people for plasma, and it supplies about two thirds of the world's. People cross that bridge from Mexico twice a week to sell theirs, because a day's work across the river pays about nine dollars. Now they cross to sleep.",
-      "say": "[plain, factual, a weight on it's true, the last sentence quiet and flat] It's true: the US is one of the few countries that lets companies pay people for plasma, and it supplies about two thirds of the world's. People cross that bridge from Mexico twice a week to sell theirs, because a day's work across the river pays about nine dollars. Now they cross to sleep.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain] It's true: the US is one of the few countries that lets companies pay people for plasma, and it supplies about two thirds of the world's. People cross that bridge from Mexico twice a week to sell theirs, because a day's work across the river pays about nine dollars. Now they cross to sleep.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "dusk",
@@ -674,7 +664,7 @@
     },
     {
       "text": "The warehouse by the bridge. A thousand sleepers in shifts, a thousand pale workers typing over them.",
-      "say": "[hushed, wide, a little horrified] The warehouse by the bridge. A thousand sleepers in shifts, a thousand pale workers typing over them.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] The warehouse by the bridge. A thousand sleepers in shifts, a thousand pale workers typing over them.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -682,7 +672,7 @@
     },
     {
       "text": "An eighteenth-century chess robot had a chess master hidden inside it. Amazon named a website after it, Mechanical Turk, and paid people a few cents a task. This is the human inside the machine. In bulk.",
-      "say": "[a storyteller's curiosity, then cold and clipped on the last two sentences] An eighteenth-century chess robot had a chess master hidden inside it. Amazon named a website after it, Mechanical Turk, and paid people a few cents a task. This is the human inside the machine. In bulk.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] An eighteenth-century chess robot had a chess master hidden inside it. Amazon named a website after it, Mechanical Turk, and paid people a few cents a task. This is the human inside the machine. In bulk.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -692,7 +682,7 @@
     },
     {
       "text": "And the best-rested brains fetch the most. More than a third of American adults already don't get enough sleep. So the people who need the money most earn the least.",
-      "say": "[level, grim, the last sentence slow] And the best-rested brains fetch the most. More than a third of American adults already don't get enough sleep. So the people who need the money most earn the least.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; the last sentence slow] And the best-rested brains fetch the most. More than a third of American adults already don't get enough sleep. So the people who need the money most earn the least.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -702,7 +692,7 @@
     },
     {
       "text": "It's true. The Kenyan workers who labelled data to train ChatGPT were paid less than two dollars an hour. The night is heading there.",
-      "say": "[plain, quiet anger held in, the last sentence flat] It's true. The Kenyan workers who labelled data to train ChatGPT were paid less than two dollars an hour. The night is heading there.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain] It's true. The Kenyan workers who labelled data to train ChatGPT were paid less than two dollars an hour. The night is heading there.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "night",
@@ -712,7 +702,7 @@
     },
     {
       "text": "Your brother, band on, at the warehouse door at midnight.",
-      "say": "[low, worried, watching from a distance] Your brother, band on, at the warehouse door at midnight.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Your brother, band on, at the warehouse door at midnight.",
       "speaker": "narrator",
       "gapAfterSec": 4.3,
       "mood": "night",
@@ -728,7 +718,7 @@
     },
     {
       "text": "So a night is worth twelve dollars, and he can't even sell that. But one offer hasn't fallen. The man in the grey suit comes back.",
-      "say": "[quiet, bitter on the first sentence, then low and slow: the turn] So a night is worth twelve dollars, and he can't even sell that. But one offer hasn't fallen. The man in the grey suit comes back.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; then low and slow: the turn] So a night is worth twelve dollars, and he can't even sell that. But one offer hasn't fallen. The man in the grey suit comes back.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -736,7 +726,7 @@
     },
     {
       "text": "The kitchen table. A premium contract. Triple pay, every night, all night, for a year. It clears what the family owes by spring. And no more Thursdays in the chair.",
-      "say": "[low, tempted, the terms laid down one by one, the last sentence almost kind] The kitchen table. A premium contract. Triple pay, every night, all night, for a year. It clears what the family owes by spring. And no more Thursdays in the chair.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] The kitchen table. A premium contract. Triple pay, every night, all night, for a year. It clears what the family owes by spring. And no more Thursdays in the chair.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -744,7 +734,7 @@
     },
     {
       "text": "Somebody has tried to buy the night before. Before the 2021 Super Bowl, America's biggest football night, a beer company ran a film meant to put its beer into people's dreams. About forty sleep and dream scientists signed an open letter against it.",
-      "say": "[dry, a raised eyebrow on the beer, then sober on the letter] Somebody has tried to buy the night before. Before the twenty twenty-one Super Bowl, America's biggest football night, a beer company ran a film meant to put its beer into people's dreams. About forty sleep and dream scientists signed an open letter against it.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Somebody has tried to buy the night before. Before the twenty twenty-one Super Bowl, America's biggest football night, a beer company ran a film meant to put its beer into people's dreams. About forty sleep and dream scientists signed an open letter against it.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "lamp",
@@ -755,7 +745,7 @@
     },
     {
       "text": "Sign, and nobody in this house sits in that chair again. Don't, and it's Thursday forever. You can't sleep on it. Sleeping is the job.",
-      "say": "[even, both sides given their full weight, the last two sentences slow and dry] Sign, and nobody in this house sits in that chair again. Don't, and it's Thursday forever. You can't sleep on it. Sleeping is the job.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; even, the last two sentences slow and dry] Sign, and nobody in this house sits in that chair again. Don't, and it's Thursday forever. You can't sleep on it. Sleeping is the job.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -763,7 +753,7 @@
     },
     {
       "text": "You pick up the pen.",
-      "say": "[quiet, clear, a small stress on pen] You pick up the pen.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, a small stress on pen] You pick up the pen.",
       "speaker": "narrator",
       "gapAfterSec": 3.3,
       "mood": "lamp",
@@ -779,7 +769,7 @@
     },
     {
       "text": "Six weeks of crumbs, his and yours. He thinks they add up to something.",
-      "say": "[quiet, curious, leaning toward the notebook] Six weeks of crumbs, his and yours. He thinks they add up to something.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] Six weeks of crumbs, his and yours. He thinks they add up to something.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -795,7 +785,7 @@
     },
     {
       "text": "The kitchen clock. Eleven.",
-      "say": "[flat, a tick in the voice] The kitchen clock. Eleven.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] The kitchen clock. Eleven.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -803,7 +793,7 @@
     },
     {
       "text": "The crumbs on the bed. His and yours.",
-      "say": "[hushed, close, a secret about to open] The crumbs on the bed. His and yours.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] The crumbs on the bed. His and yours.",
       "speaker": "narrator",
       "gapAfterSec": 8.3,
       "mood": "night",
@@ -811,7 +801,7 @@
     },
     {
       "text": "He opens the laptop.",
-      "say": "[quiet, quick, a held breath] He opens the laptop.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] He opens the laptop.",
       "speaker": "narrator",
       "gapAfterSec": 3.3,
       "mood": "night",
@@ -819,7 +809,7 @@
     },
     {
       "text": "One brain, one band, one jar, the leaflet said. Each brain stays its own.",
-      "say": "[slow, the leaflet's words turned over and found wrong] One brain, one band, one jar, the leaflet said. Each brain stays its own.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow] One brain, one band, one jar, the leaflet said. Each brain stays its own.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -827,7 +817,7 @@
     },
     {
       "text": "There was never one of anything. You never lost anything alone. For eight hours a night, every sleeper on the band was one mind.",
-      "say": "[slow, each sentence its own step with air between, a stress on never, on alone, on one mind] There was never one of anything. You never lost anything alone. For eight hours a night, every sleeper on the band was one mind.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, each sentence its own step with air between, a stress on never] There was never one of anything. You never lost anything alone. For eight hours a night, every sleeper on the band was one mind.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "night",
@@ -835,7 +825,7 @@
     },
     {
       "text": "In 2020, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second. Spare machines, linked into one. Now spare brains.",
-      "say": "[wonder, building, then the last two fragments quiet and cold] In twenty twenty, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second. Spare machines, linked into one. Now spare brains.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] In twenty twenty, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second. Spare machines, linked into one. Now spare brains.",
       "speaker": "narrator",
       "gapAfterSec": 9.8,
       "mood": "night",
@@ -845,7 +835,7 @@
     },
     {
       "text": "So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.",
-      "say": "[a whisper, a question, then each piece clicking into place] So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a question, then each piece clicking into place] So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -853,7 +843,7 @@
     },
     {
       "text": "The job the sleepers are paid for is to design the thing that will never need sleepers.",
-      "say": "[slow, clear, a pause after for, a stress on design and never] The job the sleepers are paid for is to design the thing that will never need sleepers.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, clear, a pause after for, a stress on design and never] The job the sleepers are paid for is to design the thing that will never need sleepers.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "night",
@@ -861,7 +851,7 @@
     },
     {
       "text": "The biggest idea people ever had together, and nobody was awake for it.",
-      "say": "[quiet, almost tender, a line said once] The biggest idea people ever had together, and nobody was awake for it.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental] The biggest idea people ever had together, and nobody was awake for it.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -962,7 +952,6 @@
     "c19": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9747182/",
     "c05": "https://www.propublica.org/article/pharmaceutical-companies-are-luring-mexicans-across-the-u.s.-border-to-donate-blood-plasma",
     "c21": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4291908/",
-    "c16": "https://www.nytimes.com/2011/03/29/science/29recaptcha.html",
     "c11": "https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep",
     "c12": "https://europepmc.org/article/MED/24136970",
     "c13": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3768102/",

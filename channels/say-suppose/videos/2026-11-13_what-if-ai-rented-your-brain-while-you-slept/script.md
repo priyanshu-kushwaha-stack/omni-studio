@@ -137,7 +137,9 @@ Then she hums it back. Note for note. Through the wall.
 
 > SCENE: The kitchen. A fitted sheet, folded into a perfect square on the table. His spoon on the floor.
 
-Morning four. You fold a fitted sheet into a perfect square. His spoon hits the floor.
+Morning four. You fold a fitted sheet into a perfect square. Nobody can fold a fitted sheet. His spoon hits the floor.
+
+Brother: Since when can you do that?
 
 > MOOD: day
 > SCENE: The bridge at dawn, a queue walking in; a woman with a shopping bag, grey head, near the front. You say a word to her; her shoulders go up.
@@ -165,12 +167,6 @@ Breakfast becomes a lottery draw. His crumb, your crumb, in his notebook. A tast
 So is a sleeping brain really working? About a hundred years ago a scientist said the experiment that won him a Nobel Prize came to him in a dream. He got up in the night and did it, on a frog's heart (c21).
 
 Sleeping brains do real work. Normally, you keep it.
-
-> SCENE: Insert: a phone screen, a box of squiggly letters, a thumb typing; behind it a stack of old newspapers turns into clean text, page after page.
-
-And you've rented yours before, for free. Those squiggly words you typed to prove you weren't a robot? One of those tests, reCAPTCHA, used them to read old newspapers and books that computers couldn't. More than a hundred million a day (c16).
-
-Spare seconds, turned into machine work. The band makes the same bargain with your whole night.
 
 > SCENE: The jar on the table, a quarter full. Your eyes on it, then on the clock.
 > CARD: PROBLEM 1: ninety dollars for eight hours (on "Problem one")

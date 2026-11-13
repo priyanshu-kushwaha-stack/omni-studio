@@ -10,6 +10,22 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-13
 
+v3 cut (AI rented your brain while you slept, G2, 12:51), the owner's notes:
+
+- **"His spoon hits the floor. That he got amazed and surprised to see that. Does it mean that. ? Not obvious."** A
+  reaction the joke depends on is said, not left to a dropped object: "Nobody can fold a fitted sheet." and the
+  brother's "Since when can you do that?"
+- **"Around 4:00. review it again."** The reCAPTCHA aside sat between the dream fact and Problem one; it is cut, so the
+  stake jump comes straight after "Sleeping brains do real work. Normally, you keep it." (also the room's blocker #1).
+- **"voice at 5:58 broken."** A click mute cut into "nothing" ("Did you think it was for nothing?"). Mutes must sit
+  after speech, never inside it; whisper's word ends run early, so check the take's level on both sides of a mute.
+- **"Need to improve the music more ig. And maybe we should change the narrator voice."** Options rendered for the
+  owner's ear (narrator A-D, score M1-M3) before anything is re-made.
+- **"I want to make it a SciFi thing but not very emotional thing. Emotional part should come only at the end where it
+  is teaching a lesson."** The narration is cool, even and precise until Midnight; warmth only where the lesson lands.
+  The score follows: sci-fi colours, no sentimental cues until the end. (The local narrator clone takes no per-line
+  direction, so a delivery change needs a designed narrator voice.)
+
 First cut (AI rented your brain while you slept, G2, v1 720p cut, 11:09): **"This video felt good script wise. At
 certain places, it was difficult to understand. from context was sort of unclear."** Take the learnings from the fail
 film's notes wherever they apply. Then, on a second watch:
