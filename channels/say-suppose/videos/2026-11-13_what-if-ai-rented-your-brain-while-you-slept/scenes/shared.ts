@@ -42,6 +42,8 @@ export interface Shot {
   from: number;
   /** The frame the next beat starts on. */
   to: number;
+  /** v3's clips in v3 numbering (remap.ts), for a beat rebuilt on v3 lines. */
+  v3: Clip[];
 }
 
 /** A beat: its component and the pauses (time stopped) it contains, in whole-film frames. */

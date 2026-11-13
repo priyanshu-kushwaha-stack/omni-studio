@@ -1,0 +1,8 @@
+/** v1 -> v3 line map (script v3, the owner's notes on the first cut, 2026-11-13). The beats were built on v1's line
+ *  numbers; v3 changed or added lines but kept the order. Film hands each beat the v3 clips in v1 numbering
+ *  (V1_TO_V3[i] is v1 line i's v3 line), so a beat's line numbers still name the same moment; a beat rebuilt for v3
+ *  reads shot.v3 instead. New v3 lines sit inside the beat that holds them. V1_FROM is each v1 line's start frame in the
+ *  v1 cut: the sound plan (sound.ts) was spotted in v1 seconds and is retimed through these anchors. */
+export const V1_TO_V3: number[] = [0, 2, 3, 5, 8, 10, 11, 12, 13, 14, 15, 18, 20, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 100, 101, 102, 103, 104, 105, 106, 107];
+export const V1_FROM: number[] = [222, 328, 406, 530, 631, 898, 1020, 1052, 1087, 1297, 1479, 1738, 2021, 2270, 2624, 2923, 2970, 3111, 3372, 3450, 3712, 3826, 4009, 4327, 4393, 4511, 4653, 4720, 5149, 5507, 5631, 6052, 6223, 6420, 6625, 6964, 7071, 7496, 7659, 7705, 8094, 8238, 8623, 8666, 8842, 8963, 9114, 9469, 9873, 10052, 10193, 10569, 10770, 10810, 11023, 11093, 11398, 11524, 11585, 11887, 12035, 12191, 12421, 12542, 13021, 13217, 13587, 13884, 14103, 14324, 14426, 14634, 14946, 15416, 15688, 15809, 15943, 15998, 16066, 16389, 16519, 16720, 16948, 17643, 17835, 17978, 18104, 18278, 18571, 18725, 18833, 18983, 19172, 19380, 19563, 19674];
+export const V1_TOTAL = 20067;

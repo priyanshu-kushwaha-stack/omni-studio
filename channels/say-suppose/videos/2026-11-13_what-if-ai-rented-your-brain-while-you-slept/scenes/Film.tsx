@@ -6,7 +6,9 @@ import { moodLook, type MoodName } from "@whatif/kit/stage/moods";
 import { Finish } from "@whatif/kit/stage/Stage";
 import { BEATS } from "./beats";
 import { lastIndex, type Shot } from "./shared";
-import { BEDS, PEAK, SCORE } from "./sound";
+import { Captions } from "./Captions";
+import { V1_TO_V3 } from "./remap";
+import { soundPlan } from "./sound";
 
 /** The score's level, the owner's (taste.md 2026-11-08, G5 of the pause-time film): about 26 dB under the voice while
  *  it speaks, rising to about 8 dB under it in the wordless holds. It dips DUCK_IN frames before a line and comes back
@@ -41,21 +43,25 @@ export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Reco
 
 /** The picture at the current frame: the beat on, lit by the current line's mood, and the paper finish. Sources are
  *  not shown on screen; they go in the description (owner, 2026-11-07). */
-const Picture: React.FC<FilmProps> = ({ timeline, lines }) => {
+const Picture: React.FC<FilmProps> = ({ timeline, lines: v3Lines }) => {
   const frame = useCurrentFrame();
-  const { clips, cues } = timeline;
+  const { clips: v3, cues } = timeline;
+  // The beats count lines in v1 numbering (remap.ts): hand them v3's clips and lines in that numbering.
+  const clips = V1_TO_V3.map((n) => v3[n]);
+  const lines = V1_TO_V3.map((n) => v3Lines[n]);
   const starts = BEATS.map((b) => (b.firstLine === 0 ? 0 : clips[b.firstLine].from));
   const index = Math.max(0, lastIndex(starts, (s) => frame >= s));
   const beat = BEATS[index];
   const to = starts[index + 1] ?? timeline.totalFrames;
-  const shot: Shot = { frame, t: frame, wc: (f) => f, cues, clips, lines, pauses: [], from: starts[index], to };
-  const lineIndex = Math.max(0, lastIndex(clips, (c) => frame >= c.from));
-  const mood = (lines[lineIndex]?.mood ?? "day") as MoodName;
+  const shot: Shot = { frame, t: frame, wc: (f) => f, cues, clips, lines, pauses: [], from: starts[index], to, v3 };
+  const lineIndex = Math.max(0, lastIndex(v3, (c) => frame >= c.from));
+  const mood = (v3Lines[lineIndex]?.mood ?? "day") as MoodName;
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <LookContext.Provider value={moodLook(mood)}>
         <beat.Component shot={shot} />
       </LookContext.Provider>
+      <Captions frame={frame} clips={v3} />
       <Finish />
     </AbsoluteFill>
   );
@@ -68,12 +74,12 @@ function window(f: number, from: number, to: number, fade: number): number {
   return Math.max(0, Math.min(1, rise, (to - f) / fade));
 }
 
-/** The dock's peak: the score sinks to PEAK.floor across it, over a second each way. */
-function peakDip(f: number): number {
-  const a = PEAK.from * FPS;
-  const b = PEAK.to * FPS;
+/** The globe's peak: the score sinks to the floor across it, over a second each way. */
+function peakDip(f: number, peak: { from: number; to: number; floor: number }): number {
+  const a = peak.from * FPS;
+  const b = peak.to * FPS;
   const d = Math.max(0, Math.min(1, (f - a) / FPS, (b - f) / FPS));
-  return 1 - (1 - PEAK.floor) * d;
+  return 1 - (1 - peak.floor) * d;
 }
 
 /** A sound placed from `from` to `to` seconds with its lead and crossfade, its gain given per film frame. */
@@ -93,8 +99,9 @@ const Placed: React.FC<{ src: string; from: number; to: number; lead: number; fa
 export const Film: React.FC<FilmProps> = (props) => {
   const { clips, totalFrames } = props.timeline;
   if (!clips.length) return <AbsoluteFill style={{ background: "#000" }} />;
+  const { SCORE, BEDS, PEAK } = soundPlan(clips, totalFrames);
   const outro = (f: number) => Math.min(1, Math.max(0, (totalFrames - f) / OUTRO));
-  const score = (f: number) => scoreVolume(f, clips) * peakDip(f) * outro(f);
+  const score = (f: number) => scoreVolume(f, clips) * peakDip(f, PEAK) * outro(f);
   const bed = (f: number) => (BED_UNDER_VOICE + (1 - BED_UNDER_VOICE) * (scoreVolume(f, clips) - UNDER_VOICE)
     / (IN_HOLDS - UNDER_VOICE)) * outro(f);
   const total = totalFrames / FPS;

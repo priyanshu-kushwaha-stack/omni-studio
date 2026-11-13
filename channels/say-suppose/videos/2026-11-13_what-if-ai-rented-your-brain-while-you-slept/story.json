@@ -352,7 +352,7 @@
     },
     {
       "text": "Brother: Okay. What'd you get?",
-      "say": "[sheepish, then grinning, a convert] Okay. What'd you get?",
+      "say": "[bright, curious, crisp and clear, a stress on what'd] Okay. What'd you get?",
       "speaker": "Brother",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -653,7 +653,7 @@
     },
     {
       "text": "Ninety. Forty-one. Twelve. Everyone has a band on now.",
-      "say": "[flat, counting down, each number a flap falling] Ninety. Forty-one. Twelve. Everyone has a band on now.",
+      "say": "[slow, counting down, each number its own beat with a full pause after it] Ninety. ... Forty-one. ... Twelve. ... Everyone has a band on now.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
@@ -720,7 +720,7 @@
     },
     {
       "text": "Clerk: Rested ones only.",
-      "say": "[bored, final, not unkind, already looking past him] Rested ones only.",
+      "say": "[flat, blunt, crisp, a clear stress on rested] Rested ones only.",
       "speaker": "Clerk",
       "gapAfterSec": 2.3,
       "mood": "night",
@@ -763,7 +763,7 @@
     },
     {
       "text": "You pick up the pen.",
-      "say": "[quick, a held breath] You pick up the pen.",
+      "say": "[quiet, clear, a small stress on pen] You pick up the pen.",
       "speaker": "narrator",
       "gapAfterSec": 3.3,
       "mood": "lamp",
