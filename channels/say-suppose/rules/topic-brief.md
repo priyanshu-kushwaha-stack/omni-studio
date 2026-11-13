@@ -52,11 +52,11 @@ Answer with a single JSON object, nothing else, in a ```json fence:
   "title": "Under 50 characters, sized to a long video, one extreme claim the film delivers",
   "premise": "One sentence a stranger gets at once",
   "world": "Where and when it happens, in one line, and why the idea's best content is there",
-  "thumbnail": {"image": "who, the emotion, the stake, in one picture", "tag": "3 words or fewer"},
+  "thumbnail": {"image": "you, the power in use, someone stunned, the stake, in one picture", "tag": "3 words or fewer"},
   "rule": "The power exactly: what it can do, its limits, and its catch",
   "hook": "The first 10 seconds in one breath: setup, stakes, tension; no warm-up",
   "beats": ["8 to 12 pointers, each a scene: what happens, what we learn or feel; three jumps of consequence, each bigger"],
-  "feeling_map": ["4 to 6 feelings in order: wonder, greed, fear, guilt, awe ..."],
+  "feeling_map": ["4 to 6 feelings in order: thrill, triumph, laughter, dread, awe ... (one tender beat at most)"],
   "restarts": ["a new complication about every 3 minutes, so a long video never runs on one storyline"],
   "content_mine": [{"fact": "a real fact, number or piece of science", "source": "https://...", "beat": "the beat it moves"}],
   "twist": "The late turn or mind-boggle, after the story has earned it",
@@ -71,7 +71,10 @@ Answer with a single JSON object, nothing else, in a ```json fence:
 Rules for the brief:
 - **At least 12 facts in `content_mine`**, each with a source URL and the beat it moves. A fact with no beat is cut,
   never padded in. If you cannot find 12, the topic is too thin: replace it.
-- **Character over spectacle:** *you* stand to lose something real; spectacle alone does not hold 15 minutes.
+- **Character over spectacle:** *you* stand to win or lose something real (caught, exposed, outsmarted, the edge
+  gone); spectacle alone does not hold 15 minutes.
+- **Exciting, not sad** (owner, 2026-11-13): the best moment is a triumph, a reveal or a mind-boggling image, never a
+  loss or a goodbye. People tap to feel powerful and clever (`docs/research/2026-11-13-say-suppose-audience-mood.md`).
 - **No thumbnail, no idea.** If no single image makes a stranger wonder "what happened?", replace the topic.
 - **Not a copy.** Never the same twist as a trending video; the same daydream with a new rule, a new belief and a
   new thumbnail promise is fine. Never a title on the "already made" list you are given.
@@ -83,10 +86,10 @@ Score each topic 1-10, with a one-line reason each, content first:
 
 | Key | Weight | Asks |
 |---|---|---|
-| `excitement` | x3 | Would you click and tell a friend? One clear sentence, original, extreme, fun; a personal power with a social stake scores higher than spectacle; it leaves people thinking; a world picked by default rather than for the idea scores lower |
+| `excitement` | x3 | Would you click and tell a friend? One clear sentence, original, extreme, fun; a personal power with a social stake scores higher than spectacle; it leaves people thinking; a world picked by default rather than for the idea scores lower; a topic whose best moment is a loss or a goodbye scores lower (owner, 2026-11-13) |
 | `content` | x3 | Real material for an exciting 15 min, so 6-8 min is easy? Count the facts that move a beat; flag a thin mine |
 | `views` | x2 | Is it in a proven breakout cluster (intelligence, secret feelings, speed and time, money, game mechanics) with a fresh twist; does the thumbnail work at a glance (you owning the power, someone reacting, 1-3 words)? |
-| `engine` | x1 | Does the rule keep making new, bigger situations; does *you* lose something; can it return as Part 2? |
+| `engine` | x1 | Does the rule keep making new, bigger situations, wins, catches and narrow escapes; can it return as Part 2? |
 | `buildable` | x1 | Can code-drawn paper-cut scenes show it this week? |
 
 Also give `copies_trending` (true when the twist is a trending video's; it costs 10) and `best_moment` (the one scene

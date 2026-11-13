@@ -8,7 +8,7 @@ anywhere, on a phone, free to leave at any second.
 ## "You" is anyone
 
 - **The figure on screen is you, whoever is watching.** The channel gives "you" no country, age, job or family of its
-  own. The premise gives you only what the story needs: a stall to run, a train to catch, a person to lose.
+  own. The premise gives you only what the story needs: a stall to run, a train to catch, a rival to beat.
 - **The world follows the idea** (owner, 2026-11-11: "Story should be making more sense whereever it has good
   content."). The setting, the currency and the cast go wherever the idea's best real content and pictures are: a port
   city in dollars, a night train in Tokyo, a Roman mint, a coaching class in Kota. India is one option, never the
@@ -20,6 +20,23 @@ anywhere, on a phone, free to leave at any second.
   that changes how you see something ordinary are others. The idea chooses.
 - **Packaging stays readable worldwide.** English titles and thumbnails a stranger anywhere gets at a glance: no
   local slang, no symbol or reference only one country reads.
+
+## Who taps, and in what mood (owner, 2026-11-13)
+
+From the comparables' outliers and their top comments (`docs/research/2026-11-13-say-suppose-audience-mood.md`):
+mostly teens and young adults on a phone, arriving **bored and playful, wanting to feel powerful and clever**. They
+joke about themselves ("if I had 500 IQ I would still procrastinate"), scheme with the power ("I'd befriend the
+future rich"), check the logic ("so many flaws with the logic"), talk in gamer and anime references, and don't mind
+that a film is made with AI. In order of size:
+
+1. **"What would I do?"** Self-insertion and scheming; the power used smartly and bigger each time.
+2. **Status.** Who is richer, smarter, taller, more wanted (ConChaser's wealth and IQ, 11-12x its median).
+3. **The nosy one.** Hidden social truths: crushes, who wants you to fail, who texts with AI.
+4. **Spectacle and curiosity.** Doom, scale, "how does that even work".
+5. **The feel-something viewer.** Real but small; they come back for characters they already know, so a tender beat
+   works best in a sequel.
+
+They tap for excitement and stay for the ride. Emotion-led titles sit at the bottom of every comparable's hit list.
 
 ## What they also watch (comparables)
 
@@ -47,6 +64,7 @@ From the first video's reviewers (five seats, rounds 1-5 and G4) and the owner's
 
 ## What keeps them
 
+- The power used cleverly, bigger each time, with the world reacting and a laugh in every scene (owner, 2026-11-13).
 - A person they care about, planted early, with warm beats before anything happens to them (the mother in the
   pause-time video).
 - One line they would send a friend ("You're not a saint. You're a person with ten seconds").
