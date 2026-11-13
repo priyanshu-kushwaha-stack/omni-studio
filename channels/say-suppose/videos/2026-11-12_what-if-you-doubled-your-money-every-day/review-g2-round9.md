@@ -46,3 +46,7 @@ a snap on each card. `cues.yaml` is the cue sheet.
 
 Also fixed: the end card's comment tag still read "your ten seconds" (copied from the pause film's end tags, on screen
 in v3 too); it now reads "your day", matching the closing question.
+
+Cut: `renders/firstcut/firstcut-v4-720p.mp4`, 1280x720, 10:59 (v3 10:03: the extra air and the new lines), -16.1 LUFS,
+true peak -2.8 dBTP. `omni qc story_script --media` passes (claims, clicks). The full-mix check found a vocal click
+before Jonas's "Then it's me" (muted, `99@0.280:0.100`). Free throughout: 20 local takes, 15 ACE-Step cues.
