@@ -73,7 +73,7 @@ export interface KitchenTableProps {
   cam: Camera;
   mood: MoodName;
   you?: { body: Body; face: Face; held?: React.ReactNode; band?: boolean; tongue?: boolean; seated?: boolean } | null;
-  brother?: { body: Body; face: Face; held?: React.ReactNode; light?: number; bowl?: boolean } | null;
+  brother?: { body: Body; face: Face; held?: React.ReactNode; light?: number; two?: boolean; bowl?: boolean } | null;
   /** The jar on the table and its fill, or null. */
   jar?: number | null;
   /** The clock's minute hand (radians). */
@@ -94,7 +94,7 @@ export const KitchenTable: React.FC<KitchenTableProps> = ({ frame, cam, mood, yo
       <Chair x={BRO_SEAT.x} y={SEAT_TOP} scale={1.1} facing={-1} color="#7a5236" />
       {you && <You body={you.body} face={you.face} frame={frame} held={you.held} band={you.band} />}
       {you?.tongue && <Tongue body={you.body} />}
-      {brother && <Brother body={brother.body} face={brother.face} frame={frame} held={brother.held} light={brother.light} />}
+      {brother && <Brother body={brother.body} face={brother.face} frame={frame} held={brother.held} light={brother.light} two={brother.two} />}
       {/* the table */}
       <rect x={TABLE.from + 30} y={TABLE.top + 20} width={18} height={TABLE.floor - TABLE.top - 20} fill="#6b4630" stroke={INK} strokeWidth={4} />
       <rect x={TABLE.to - 48} y={TABLE.top + 20} width={18} height={TABLE.floor - TABLE.top - 20} fill="#6b4630" stroke={INK} strokeWidth={4} />

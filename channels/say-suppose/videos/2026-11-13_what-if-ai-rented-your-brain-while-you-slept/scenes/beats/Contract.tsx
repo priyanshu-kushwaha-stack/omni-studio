@@ -29,28 +29,40 @@ import { CRIMSON, INK, MUSTARD } from "@whatif/kit/theme";
 import { Coin } from "../parts";
 import { BROTHER, camAt, current, lineEnd, linear, mix, noise, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, Broker, Brother, CrumbPage, headOf, mixArm, Notebook, Pen, talk, WallClock, You, type Body, type Face } from "./Contract.Kit";
+import { isV5, V5 } from "./V5.Kit";
+import { ShoeQuery, shoeSpan } from "./V5.Late";
 
 type T = ReturnType<typeof times>;
 
 /** Every frame the beat uses, from the narration clips (`at(i, p)`: p of the way through line i). */
-function times(clips: Clip[], start: number, end: number) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const hold1 = lineEnd(clips, 74); // performed: the pen to the line; his hand comes down flat
   const in1 = (p: number) => Math.round(hold1 + (from(75) - hold1) * p);
   const hold2 = lineEnd(clips, 75); // performed: the notebook tipped out; the broker looks, at the clock, stands
-  const in2 = (p: number) => Math.round(hold2 + (from(76) - hold2) * p);
+  // v5: "Six weeks of crumbs" and "Is that a shoe?" (V5.Late's insert) come before "Offer closes midnight": the pages tip
+  // out before the shoe, and he looks at the clock and stands after it
+  const v5 = isV5(v3);
+  const tipEnd = v5 ? v3[V5.shoe].from - 4 : from(76);
+  const in2 = (p: number) => Math.round(hold2 + (tipEnd - hold2) * p);
+  const side2 = v5 ? in2(0.7) : in2(0.46);
+  const lookClock = v5 ? Math.max(side2 + 2, Math.min(lineEnd(v3, V5.shoe) + 10, from(76) - 6)) : in2(0.62);
+  const stand = v5 ? [lookClock + 2, Math.max(lookClock + 3, from(76) - 2)] as const : [in2(0.74), in2(0.98)] as const;
   return {
     start, end,
     contract: at(71, 0.13), coins: at(71, 0.28), year: at(71, 0.44),
     broker: at(71, 0.6), you71: at(71, 0.8),
-    margin: from(72) - 4, screen: at(72, 0.17), cloud: at(72, 0.33), bottle: at(72, 0.4),
-    you72: at(72, 0.55), sigs: at(72, 0.62),
+    // 72 (the margin doodle, the forty signatures) was cut in v5: its one-frame clip would put these keys out of order,
+    // so they fold into the frames just before 73, strictly increasing
+    ...(clips[72].frames > 1 ? {
+      margin: from(72) - 4, screen: at(72, 0.17), cloud: at(72, 0.33), bottle: at(72, 0.4), you72: at(72, 0.55), sigs: at(72, 0.62),
+    } : (() => { const b0 = from(73) - 11; return { margin: b0, screen: b0 + 1, cloud: b0 + 2, bottle: b0 + 3, you72: b0 + 4, sigs: b0 + 5 }; })()),
     close73: from(73) - 4, pen73: at(73, 0.42), closer73: at(73, 0.7),
     pick: from(74) - 3, reach: [from(74) - 3, lineEnd(clips, 74)] as const,
     hold1, toLine: [in1(0.02), in1(0.36)] as const, slam: [in1(0.5), in1(0.6)] as const, room1: in1(0.78),
     notYet: [from(75), lineEnd(clips, 75)] as const,
-    hold2, tip: [in2(0.04), in2(0.4)] as const, side2: in2(0.46), lookClock: in2(0.62), stand: [in2(0.74), in2(0.98)] as const,
+    hold2, tip: v5 ? [in2(0.04), in2(0.55)] as const : [in2(0.04), in2(0.4)] as const, side2, lookClock, stand,
     closes: [from(76), lineEnd(clips, 76)] as const,
     clock: from(77) - 4,
   };
@@ -222,7 +234,7 @@ const SIGN = { x: PAGE.x - 40, y: PAGE.y + 322 };
 const Doodle: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const c = "#36507a";
   const t0 = k.margin + 6;
-  const bob = ramp(frame, k.bottle, k.you72 - 4);
+  const bob = ramp(frame, k.bottle, Math.max(k.bottle + 1, k.you72 - 4));
   return (
     <g transform={`translate(${MARGIN.x} ${MARGIN.y})`}>
       <DrawLine d="M-70 90 H70 M-70 90 V60 M70 90 V70 M-70 60 Q-60 52 -40 56 H70 V70" from={t0} to={t0 + 24} color={c} width={3.5} />
@@ -384,7 +396,11 @@ const ClockInsert: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 const youHead = () => headOf({ x: YOU_X, y: seatedY, scale: S, facing: 1, pose: { ...SEATED, lean: 4 } });
 const brokerHead = () => headOf({ x: BROKER_X, y: seatedY, scale: S, facing: -1, pose: SEATED });
 
-const ContractShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+const ContractShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k, v3 }) => {
+  if (isV5(v3)) {
+    const shoe = shoeSpan(v3);
+    if (frame >= shoe.from && frame < shoe.to) return <ShoeQuery frame={frame} v3={v3} />;
+  }
   const shot = current(frame, [[k.start, "wide"], [k.contract, "contract"], [k.broker, "broker"], [k.you71, "you71"], [k.margin, "margin"],
     [k.you72, "you72"], [k.sigs, "sigs"], [k.close73, "close73"], [k.pen73, "pen73"], [k.closer73, "closer73"], [k.pick, "pick"],
     [k.hold1, "hand"], [k.room1, "room1"], [k.notYet[0], "notYet"], [k.hold2, "tip"], [k.side2, "side2"], [k.closes[0], "closes"],
@@ -431,10 +447,10 @@ const ContractSound: React.FC<{ k: T }> = ({ k }) => (
 );
 
 const Contract: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <ContractShot frame={shot.frame} k={k} />
+      <ContractShot frame={shot.frame} k={k} v3={shot.v3} />
       <ContractSound k={k} />
     </AbsoluteFill>
   );

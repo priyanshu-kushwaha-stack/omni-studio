@@ -39,6 +39,8 @@ import { BRO_SEAT, CLOCK, Crayon, FoldingSheet, HeldPage, KitchenTable, Notebook
 import { CaptchaPhone, DreamingScientist, HeartOnBench, KnotInsert, Newspapers, NightCorridor, PageStage } from "./Crumbs.Inserts";
 import { aimArm, headOf, talk, ThoughtCloud, You, type Body, type Face } from "./Crumbs.Rig";
 import { SHOWER, ShowerStage } from "./Crumbs.Shower";
+import { ChairAgain, chairSpan, TwoBands, twoBandsSpan } from "./V5.Crumbs";
+import { isV5 } from "./V5.Kit";
 
 type T = ReturnType<typeof times>;
 
@@ -83,9 +85,18 @@ function times(clips: Clip[], start: number, end: number) {
     // end (line 33 opens More Hours), in rising order so every camera key stays strictly increasing.
     phoneHand: from(33) + 1, captcha: from(33) + 2, papers: from(33) + 3, fast: from(33) + 4, night: from(33) + 5,
     coinsNight: from(33) + 6,
-    // 32: the jar and the clock
-    jar: from(32), eyesJar: at(32, 0.26), eight: at(32, 0.45), clock: at(32, 0.79), eyesClock: at(32, 0.9),
+    // 32: the jar and the clock (cut since v3: its one-frame clip would give equal camera keys, so each step is at
+    // least a frame after the one before)
+    ...rising([from(32), at(32, 0.26), at(32, 0.45), at(32, 0.79), at(32, 0.9)], ["jar", "eyesJar", "eight", "clock", "eyesClock"] as const),
   };
+}
+
+/** Frames named in order, each nudged to at least one frame after the one before (keys stay strictly increasing). */
+function rising<N extends string>(frames: number[], names: readonly N[]): Record<N, number> {
+  const out = {} as Record<N, number>;
+  let last = -Infinity;
+  names.forEach((n, i) => { last = Math.max(frames[i], last + 1); out[n] = last; });
+  return out;
 }
 
 const WALK = 0.9;
@@ -312,11 +323,13 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
   };
   return (
     <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k6", 3)} mood={mood} jar={frame >= k.jar ? jarFill : frame >= k.keep ? 0.25 : null}
-      clock={clockT} you={{ body: you, face: youFace, held }} brother={{ body: bro, face: broFace, light, bowl: true }}
+      clock={clockT} you={{ body: you, face: youFace, held }} brother={{ body: bro, face: broFace, light, two: true, bowl: true }}
       onTable={notebook} extra={<>
         {coins}
         {/* "You wake saying sorry in a voice that isn't yours": your bubble by your mouth */}
         {(() => { const h = headOf(you); return <Bubble frame={frame} at={k.sorry + 4} until={k.writes} x={h.x + 58} y={h.y - 8} text="Sorry." size={40} />; })()}
+        {/* v5: two teal lights under his cap. Your bubble: "Two?" */}
+        {(() => { const h = headOf(you); return <Bubble frame={frame} at={k.youShock + 2} until={k.whatd[0]} x={h.x + 58} y={h.y - 40} text="Two?" size={40} />; })()}
       </>} />
   );
 };
@@ -452,6 +465,16 @@ const CrumbsShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame, 
   return <KitchenShot frame={frame} k={k} mood={mood} />;
 };
 
+/** The v5 moments (V5.Crumbs) drawn over the old beat's picture where their lines play; the beat's sound runs on. */
+function v5Moment(frame: number, v3: Clip[], mood: MoodName) {
+  if (!isV5(v3)) return null;
+  const chair = chairSpan(v3);
+  if (frame >= chair.from && frame < chair.to) return <ChairAgain frame={frame} v3={v3} />;
+  const two = twoBandsSpan(v3);
+  if (frame >= two.from && frame < two.to) return <TwoBands frame={frame} v3={v3} mood={mood} />;
+  return null;
+}
+
 const Crumbs: React.FC<{ shot: Shot }> = ({ shot }) => {
   const k = times(shot.clips, shot.from, shot.to);
   const i = Math.max(17, shot.clips.findIndex((c, n) => n >= 17 && shot.frame < c.from + c.frames + 11));
@@ -459,7 +482,7 @@ const Crumbs: React.FC<{ shot: Shot }> = ({ shot }) => {
   const kitchenMood: MoodName = mood === "day" ? "morning" : mood;
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <CrumbsShot frame={shot.frame} k={k} mood={kitchenMood} />
+      {v5Moment(shot.frame, shot.v3, kitchenMood) ?? <CrumbsShot frame={shot.frame} k={k} mood={kitchenMood} />}
       {k.bangs.map((b) => <Sequence key={b} from={b} durationInFrames={20}><Audio src={staticFile("sfx/knock.wav")} volume={0.55} /></Sequence>)}
       <ClinkSound at={[k.lands, k.lands + 7]} volume={0.9} />
       <Sequence from={k.slap} durationInFrames={20}><Audio src={staticFile("sfx/paper.wav")} volume={0.4} /></Sequence>

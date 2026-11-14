@@ -33,20 +33,28 @@ import { aimArm, handOf, PaperInsert, Sfx, talk, type Body } from "./NightShift.
 import { FaceMarks } from "./NightShift.Rooms";
 import { MorningKitchen } from "./Photo.Parts";
 import { BTABLE, Breakfast, Broker, CapAndBand, ChessSheet, ClipboardSheet, HeldCap, LabelSheet, MapSheet, TableThings } from "./Warehouses.Parts";
+import { atV, isV5, V5 } from "./V5.Kit";
+import { signSpan, VisaSign } from "./V5.Late";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
+  // v5 split v1's plasma line into four (87-90): the bridge opens on the first, the map on "two thirds of the world's",
+  // the crossing on "People cross that bridge", the band lights on "Now they cross to sleep."
+  const P = V5.plasma;
+  const plasma = isV5(v3) ? {
+    bridge: v3[P].from - 2, map: v3[P + 1].from - 2, flow: [atV(v3, P + 1, 0.2), atV(v3, P + 1, 0.95)] as const, cross: v3[P + 2].from - 2,
+    sleep: atV(v3, P + 3, 0.55), lit: atV(v3, P + 3, 0.85),
+  } : { bridge: from(63) - 2, map: at(63, 0.12), flow: [at(63, 0.2), at(63, 0.46)] as const, cross: at(63, 0.48), sleep: at(63, 0.78), lit: at(63, 0.9) };
   const h4 = lineEnd(clips, 68) + 2; // performed: the brim
   const in4 = (p: number) => Math.round(h4 + (from(69) - h4) * p);
   const h5 = lineEnd(clips, 69) + 2; // performed: he walks home
   return {
     start, end,
     flaps: [at(62, 0.02), at(62, 0.2), at(62, 0.38)] as const, wideTable: at(62, 0.55),
-    bridge: from(63) - 2, map: at(63, 0.12), flow: [at(63, 0.2), at(63, 0.46)] as const, cross: at(63, 0.48),
-    sleep: at(63, 0.78), lit: at(63, 0.9),
+    ...plasma,
     front: from(64) - 2, inside: at(64, 0.24), rows: at(64, 0.62),
     chess: from(65) - 2, door: at(65, 0.2), cents: at(65, 0.42), bulk: at(65, 0.72),
     clerkA: from(66) - 2, nodA: at(66, 0.16), inA: [at(66, 0.2), at(66, 0.36)] as const, clip: at(66, 0.36),
@@ -300,7 +308,11 @@ const HomeBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, shot
   );
 };
 
-const WarehousesShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+const WarehousesShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k, v3 }) => {
+  if (isV5(v3)) {
+    const sign = signSpan(v3);
+    if (frame >= sign.from && frame < sign.to) return <VisaSign frame={frame} v3={v3} />;
+  }
   const shot = shotAt(frame, k);
   switch (shot) {
     case "flap": case "wideTable": return <BreakfastBit frame={frame} k={k} wide={shot === "wideTable"} />;
@@ -316,10 +328,10 @@ const WarehousesShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 };
 
 const Warehouses: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <WarehousesShot frame={shot.frame} k={k} />
+      <WarehousesShot frame={shot.frame} k={k} v3={shot.v3} />
       <Sfx name="flip" at={[...k.flaps]} volume={0.3} frames={20} />
       <Sfx name="paper" at={[k.map, k.chess, k.clip, k.label]} volume={0.3} />
       <DeviceSound at={k.lit} frames={0} volume={0.6} />

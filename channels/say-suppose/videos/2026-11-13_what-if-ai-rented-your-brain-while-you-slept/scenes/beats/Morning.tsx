@@ -29,13 +29,15 @@ import { CLINIC_OUT, ClinicOutside } from "../sets/Clinic";
 import { blinking, BROTHER, camAt, current, lineEnd, linear, mix, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, Broker, headOf, talk, You, type Body, type Face } from "./Contract.Kit";
 import { EndTags, HALL, HallBack, Keys, OpenHand, PaperBridge } from "./Morning.Hall";
+import { gapAfter, isV5, V5 } from "./V5.Kit";
+import { DaytimeStreet, twistSpan } from "./V5.Late";
 
 type T = ReturnType<typeof times>;
 
 /** The daytime band's small red light. */
 const CRIMSON_LIGHT = "#ff4a5a";
 
-function times(clips: Clip[], start: number, end: number) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const holdE = lineEnd(clips, 92); // performed: the empty hand
@@ -43,6 +45,11 @@ function times(clips: Clip[], start: number, end: number) {
   const holdW = inE(1); // performed: the hall, the keys
   const inW = (p: number) => Math.round(holdW + (from(93) - holdW) * p);
   const holdP = lineEnd(clips, 94); // performed: you walk past him
+  // v5: the clinic steps open on "Thursday. The clinic steps." (133); he calls "Everyone else already said yes." after
+  // you (135); then the twist, the street awake (136, V5.Late), before the end card
+  const v5 = isV5(v3);
+  const clinic = v5 ? gapAfter(v3, V5.steps - 1) : from(94) - 4;
+  const twist = v5 ? twistSpan(v3).from : from(95) - 2;
   return {
     start, end,
     wake: at(90, 0.15), window: at(90, 0.32), up: at(90, 0.56), smile: at(90, 0.76),
@@ -52,7 +59,8 @@ function times(clips: Clip[], start: number, end: number) {
     holdW, walk1: [inW(0.0), inW(0.48)] as const, take: [inW(0.5), inW(0.64)] as const, walk2: [inW(0.66), from(93) + 4] as const,
     feel: [from(93), at(93, 0.14)] as const, stick: [at(93, 0.14), at(93, 0.3)] as const, tagShot: at(93, 0.32), doorShot: at(93, 0.56),
     open: [at(93, 0.58), at(93, 0.74)] as const, out: [at(93, 0.7), lineEnd(clips, 93) + 6] as const,
-    clinic: from(94) - 4, daytime: [from(94), lineEnd(clips, 94)] as const, holdP, pass: [from(94) - 4, from(95) - 2] as const, turn: holdP + 16,
+    clinic, daytime: [from(94), lineEnd(clips, 94)] as const, holdP, pass: [clinic + 6, Math.max(clinic + 7, twist - 20)] as const, turn: holdP + 16,
+    yes: v5 ? [v3[V5.yes].from, lineEnd(v3, V5.yes)] as const : [holdP, holdP] as const, twist,
     card: from(95) - 2, comment: at(95, 0.42), like: at(95, 0.8), subscribe: at(95, 0.9),
   };
 }
@@ -178,7 +186,8 @@ const Steps: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam }
   if (turned) broker.pose = { ...broker.pose, armB: aimArm({ ...broker }, reachTo), armF: aimArm(broker, { x: broker.x + 30, y: O.step.top - 120 }) };
   else broker.pose = { ...broker.pose, armF: aimArm(broker, reachTo), armB: aimArm(broker, { x: broker.x - 40, y: O.step.top - 120 }) };
   const bandAt = reachTo;
-  const bFace: Face = { brows: "flat", lids: 0.35, mouth: talk(frame, k.daytime[0], k.daytime[1], "smirk"), eyes: 1, look: { x: 1, y: 0.1 } };
+  const speaking = frame >= k.yes[0] ? talk(frame, k.yes[0], k.yes[1], "smirk") : talk(frame, k.daytime[0], k.daytime[1], "smirk");
+  const bFace: Face = { brows: frame >= k.yes[0] && frame < k.yes[1] ? "raised" : "flat", lids: 0.35, mouth: speaking, eyes: 1, look: { x: 1, y: 0.1 } };
   const myFace: Face = { brows: "none", lids: 0.15, mouth: "flat", eyes: 1, look: { x: 1, y: 0 } };
   const actors = (
     <>
@@ -212,16 +221,17 @@ const EndCard: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 // ------------------------------------------------------------------------------------------------ the cut
 
-const MorningShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+const MorningShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k, v3 }) => {
   const shot = current(frame, [[k.start, "wake"], [k.up, "up"], [k.bridge[0] - 6, "bridge"], [k.smile91, "smile91"], [k.hang, "hang"],
     [k.handShot, "hand"], [k.grinShot, "grin"], [k.drop, "drop"], [k.holdW, "hall"], [k.feel[0], "feel"], [k.tagShot, "tag"],
-    [k.doorShot, "door"], [k.clinic, "clinic"], [k.holdP, "pass"], [k.card, "card"]]);
+    [k.doorShot, "door"], [k.clinic, "clinic"], [k.holdP, "pass"], [k.twist, "twist"], [k.card, "card"]]);
   if (shot === "card") return <EndCard frame={frame} k={k} />;
+  if (shot === "twist") return <DaytimeStreet frame={frame} v3={v3} />;
   const d = (c: Camera) => drift(c, frame, "morning", 3);
   if (shot === "clinic" || shot === "pass") {
     const cams: Camera = shot === "clinic"
       ? camAt(frame, [[k.clinic, { x: 1180, y: 660, zoom: 1.55 }], [k.holdP, { x: 1150, y: 660, zoom: 1.6 }]])
-      : camAt(frame, [[k.holdP, { x: 1150, y: 640, zoom: 1.12 }], [k.card, { x: 1100, y: 640, zoom: 1.1 }]]);
+      : camAt(frame, [[k.holdP, { x: 1150, y: 640, zoom: 1.12 }], [Math.max(k.holdP + 1, k.twist), { x: 1100, y: 640, zoom: 1.1 }]]);
     return <Steps frame={frame} k={k} cam={d(cams)} />;
   }
   if (shot === "hall" || shot === "feel" || shot === "tag" || shot === "door") {
@@ -258,10 +268,10 @@ const MorningSound: React.FC<{ k: T }> = ({ k }) => (
 );
 
 const Morning: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <MorningShot frame={shot.frame} k={k} />
+      <MorningShot frame={shot.frame} k={k} v3={shot.v3} />
       <MorningSound k={k} />
     </AbsoluteFill>
   );

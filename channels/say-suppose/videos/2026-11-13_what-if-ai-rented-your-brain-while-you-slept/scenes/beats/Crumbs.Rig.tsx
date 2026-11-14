@@ -50,7 +50,7 @@ export const You: React.FC<{ body: Body; face: Face; frame: number; held?: React
 );
 
 /** A cap worn backwards: the dome over the head, the brim sticking out behind. Drawn over a figure's head. */
-export const BackCap: React.FC<{ body: Body; light?: number }> = ({ body, light = 0 }) => {
+export const BackCap: React.FC<{ body: Body; light?: number; two?: boolean }> = ({ body, light = 0, two = false }) => {
   const h = headOf(body);
   const r = h.r;
   const f = body.facing;
@@ -63,6 +63,9 @@ export const BackCap: React.FC<{ body: Body; light?: number }> = ({ body, light 
         <g>
           <circle cx={h.x + f * r * 0.86} cy={h.y - r * 0.2} r={r * 0.24} fill={GHOST.light} opacity={0.4 * light} />
           <circle cx={h.x + f * r * 0.86} cy={h.y - r * 0.2} r={r * 0.1} fill={GHOST.light} stroke="#1b1d24" strokeWidth={2} opacity={light} />
+          {/* Saturday (v5): a second band under the cap, its light just above the first */}
+          {two && <circle cx={h.x + f * r * 0.88} cy={h.y - r * 0.46} r={r * 0.24} fill={GHOST.light} opacity={0.4 * light} />}
+          {two && <circle cx={h.x + f * r * 0.88} cy={h.y - r * 0.46} r={r * 0.1} fill={GHOST.light} stroke="#1b1d24" strokeWidth={2} opacity={light} />}
         </g>
       )}
     </g>
@@ -70,10 +73,10 @@ export const BackCap: React.FC<{ body: Body; light?: number }> = ({ body, light 
 };
 
 /** Your brother: peach head, grey hoodie, the cap on backwards. `light` shows the band's teal glow under the cap. */
-export const Brother: React.FC<{ body: Body; face: Face; frame: number; held?: React.ReactNode; light?: number }> = ({ body, face, frame, held, light = 0 }) => (
+export const Brother: React.FC<{ body: Body; face: Face; frame: number; held?: React.ReactNode; light?: number; two?: boolean }> = ({ body, face, frame, held, light = 0, two }) => (
   <g>
     <Figure head={BROTHER.head} coat={BROTHER.coat} {...body} {...face} blink={blinking(frame, 4)} time={frame} held={held} />
-    <BackCap body={body} light={light} />
+    <BackCap body={body} light={light} two={two} />
   </g>
 );
 

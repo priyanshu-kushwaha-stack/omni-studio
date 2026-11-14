@@ -31,10 +31,11 @@ import { GLOBE, GLOBE_HOME, GlobeScene, type GlobeState } from "../sets/Globe";
 import { BROTHER, camAt, current, lineEnd, linear, mix, ramp, type Beat, type Shot } from "../shared";
 import { Brother, CROSS, headOf, StrangerFace, talk, Word, You, type Body, type Face } from "./Contract.Kit";
 import { BedTop, ComputersSheet, HumNotes, LaptopScreen, LeafletOne, Machine, PagesTop, SideLaptop } from "./OneMind.Parts";
+import { atV, isV5, V5 } from "./V5.Kit";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const hold8 = lineEnd(clips, 78); // performed: the hum, the bridge word, the face drawn twice
@@ -42,6 +43,9 @@ function times(clips: Clip[], start: number, end: number) {
   const holdL = lineEnd(clips, 79); // performed: the strangers' page; his hand stops on the keys
   const inL = (p: number) => Math.round(holdL + (from(80) - holdL) * p);
   const peak = lineEnd(clips, 82); // THE wordless peak, to clips[83].from
+  // v5: the peak ends on "Brother: What'd we get?" (116), close on him over the pages, before they join (v1's 83)
+  const v5 = isV5(v3);
+  const weGet = v5 ? v3[V5.weGet].from - 4 : from(83) - 4;
   return {
     start, end,
     hisHum: [in8(0.03), in8(0.17)] as const, yourHum: [in8(0.18), in8(0.31)] as const, look: in8(0.31),
@@ -51,9 +55,17 @@ function times(clips: Clip[], start: number, end: number) {
     screen: holdL, stop: inL(0.55), lit: inL(0.72),
     leaflet: from(80) - 3, stamps: [at(80, 0.06), at(80, 0.2), at(80, 0.34)] as [number, number, number], twoLit: at(80, 0.58),
     many: from(81) - 3, manyRun: [from(81), at(81, 0.35)] as const, closeBoth: at(81, 0.4), wide81: at(81, 0.68),
-    globe: from(82) - 3, computers: at(82, 0.28), compOn: [at(82, 0.3), at(82, 0.55)] as [number, number],
-    compLink: [at(82, 0.6), at(82, 0.76)] as [number, number], globe2: at(82, 0.78),
-    peak, peakEnd: from(83),
+    // v5 split v1's 2020 line into three (113-115): the globe on the first, the computers coming on across it and the
+    // next, linking on "Spare machines, linked into one"
+    ...(v5 ? {
+      globe: v3[V5.computers].from - 3, computers: atV(v3, V5.computers, 0.3),
+      compOn: [atV(v3, V5.computers, 0.35), atV(v3, V5.computers + 1, 0.45)] as [number, number],
+      compLink: [atV(v3, V5.computers + 1, 0.55), atV(v3, V5.computers + 2, 0.3)] as [number, number], globe2: atV(v3, V5.computers + 2, 0.4),
+    } : {
+      globe: from(82) - 3, computers: at(82, 0.28), compOn: [at(82, 0.3), at(82, 0.55)] as [number, number],
+      compLink: [at(82, 0.6), at(82, 0.76)] as [number, number], globe2: at(82, 0.78),
+    }),
+    peak, peakEnd: v5 ? weGet : from(83), weGet, weGetLine: v5 ? [v3[V5.weGet].from, lineEnd(v3, V5.weGet)] as const : [weGet, weGet] as const,
     pages: from(83) - 3, join: [from(83), at(83, 0.42)] as const, machine: at(83, 0.36),
     screen84: from(84) - 3, slide84: [from(84), at(84, 0.55)] as const, you84: at(84, 0.62),
     wide85: from(85) - 3,
@@ -114,6 +126,10 @@ function pair(frame: number, k: T) {
                 : frame < k.wide81
                   ? { brows: "sad", lids: 0, mouth: "smile", eyes: 1, look: { x: 1, y: 0 } }
                   : { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.6, y: 0.5 } };
+  if (frame >= k.weGet && frame < k.pages) {
+    return { you, him, youFace: { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.7, y: 0.6 } } as Face,
+      himFace: { brows: "raised", lids: 0, mouth: talk(frame, k.weGetLine[0], k.weGetLine[1], "smile"), eyes: 1.2, look: { x: 0.8, y: 0.7 } } as Face };
+  }
   return { you, him, youFace, himFace };
 }
 
@@ -260,13 +276,13 @@ const GlobeInsert: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 // ------------------------------------------------------------------------------------------------ the cut
 
 type Name = "est" | "hum" | "humYou" | "look" | "word" | "faces" | "longLook" | "laptop" | "screen" | "lit" | "leaflet" | "twoLit" | "many"
-  | "closeBoth" | "wide81" | "globe" | "computers" | "globe2" | "pages" | "screen84" | "you84" | "wide85";
+  | "closeBoth" | "wide81" | "globe" | "computers" | "globe2" | "weGet" | "pages" | "screen84" | "you84" | "wide85";
 
 const OneMindShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current<Name>(frame, [[k.start, "est"], [k.hisHum[0] - 4, "hum"], [k.yourHum[0] - 2, "humYou"], [k.look, "look"], [k.word, "word"],
     [k.faces, "faces"], [k.longLook, "longLook"], [k.laptop, "laptop"], [k.screen, "screen"], [k.lit, "lit"], [k.leaflet, "leaflet"],
     [k.twoLit, "twoLit"], [k.many, "many"], [k.closeBoth, "closeBoth"], [k.wide81, "wide81"], [k.globe, "globe"], [k.computers, "computers"],
-    [k.globe2, "globe2"], [k.pages, "pages"], [k.screen84, "screen84"], [k.you84, "you84"], [k.wide85, "wide85"]]);
+    [k.globe2, "globe2"], [k.weGet, "weGet"], [k.pages, "pages"], [k.screen84, "screen84"], [k.you84, "you84"], [k.wide85, "wide85"]]);
   if (shot === "globe" || shot === "globe2") return <GlobeInsert frame={frame} k={k} />;
   const top = (c: Camera) => drift(c, frame, "onemind-top", 3);
   if (shot === "faces") return <FacesInsert frame={frame} k={k} cam={top(camAt(frame, [[k.faces, { x: 960, y: 540, zoom: 1.02 }], [k.longLook, { x: 1000, y: 540, zoom: 1.12 }]]))} />;
@@ -291,6 +307,7 @@ const OneMindShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     twoLit: camAt(frame, [[k.twoLit, { x: 1010, y: 560, zoom: 1.5 }], [k.many, { x: 1010, y: 560, zoom: 1.62 }]]),
     closeBoth: camAt(frame, [[k.closeBoth, { x: 1000, y: 540, zoom: 1.75 }], [k.wide81, { x: 1000, y: 540, zoom: 1.9 }]]),
     wide81: camAt(frame, [[k.wide81, { x: 1000, y: 600, zoom: 1.4 }], [k.globe, { x: 960, y: 560, zoom: 1.0 }]]),
+    weGet: camAt(frame, [[k.weGet, { x: hh.x - 120, y: hh.y + 60, zoom: 2.2 }], [Math.max(k.weGet + 1, k.pages), { x: hh.x - 130, y: hh.y + 60, zoom: 2.35 }]]),
     you84: camAt(frame, [[k.you84, { x: yh.x + 70, y: yh.y + 20, zoom: 2.4 }], [k.wide85, { x: yh.x + 70, y: yh.y + 20, zoom: 2.6 }]]),
     wide85: camAt(frame, [[k.wide85, { x: 1000, y: 600, zoom: 1.5 }], [k.end, { x: 960, y: 560, zoom: 0.92 }]]),
   };
@@ -310,7 +327,7 @@ const OneMindSound: React.FC<{ k: T }> = ({ k }) => (
 );
 
 const OneMind: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <OneMindShot frame={shot.frame} k={k} />

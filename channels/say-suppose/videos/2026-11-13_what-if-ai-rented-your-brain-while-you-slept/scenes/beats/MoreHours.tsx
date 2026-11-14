@@ -39,11 +39,16 @@ import { BOSS, CLERK, GHOST, HERO, NURSE, PASTELS, blinking, camAt, current, lin
 import { aimArm, Brother, handAt, headOf, Pickle, talk, ThoughtCloud, You, type Body, type Face } from "./Crumbs.Rig";
 import { BusAd, BusStage, COUPLE, CoupleHouse, DoorRowBack, DOORS, GranWall, GranWindow, GRAN_WIN, HallBack, HALL, Lit, Mirror, NAP,
   NapRoomBack, NapRoomProps } from "./MoreHours.Places";
+import { NewsWindow, newsSpan, NoonBunk, noonSpan } from "./V5.More";
+import { isV5, V5 } from "./V5.Kit";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
+  // v5: the news (58) and noon on the bunk (59-61) sit between v1's 39 and 40, so the pull back ends before the news
+  // and the shelf of jars opens on "So you push the nights instead." (62)
+  const v5 = isV5(v3);
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const h39 = lineEnd(clips, 39);
   const h41 = lineEnd(clips, 41);
@@ -66,8 +71,9 @@ function times(clips: Clip[], start: number, end: number) {
     gran: from(37), storm: at(37, 0.38), outEarn: at(37, 0.68), finally: [from(38), lineEnd(clips, 38)] as const,
     // 39-40: the hundred windows
     coffee: from(39), sign: from(39) + 8, shut: [at(39, 0.28), at(39, 0.38)] as const, pillow: at(39, 0.44), yours: at(39, 0.72),
-    pull: [at(39, 0.8), h39 + Math.round((from(40) - h39) * 0.85)] as const, stranger: [h39 + 10, from(40)] as const, hold: h39,
-    shelf: from(40), clockRuns: from(40), jars: at(40, 0.55),
+    pull: [at(39, 0.8), v5 ? Math.max(at(39, 0.8) + 2, newsSpan(v3).from - 8) : h39 + Math.round((from(40) - h39) * 0.85)] as const,
+    stranger: [h39 + 10, v5 ? newsSpan(v3).from : from(40)] as const, hold: h39,
+    shelf: v5 ? v3[V5.push].from - 3 : from(40), clockRuns: v5 ? v3[V5.push].from - 3 : from(40), jars: at(40, 0.55),
     // 41 + hold + 42-43: the cost
     hall: from(41), keys: at(41, 0.21), pockets: at(41, 0.28), atm: at(41, 0.36), keypad: at(41, 0.42), atmFace: at(41, 0.55),
     doors: at(41, 0.67), turn: at(41, 0.86), sit: in41(0.2), broOut: in41(0.3), broWalk: [in41(0.36), in41(0.78)] as const,
@@ -475,7 +481,13 @@ const DoorsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 // ------------------------------------------------------------------------------------------------ the beat
 
-const MoreHoursShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+const MoreHoursShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k, v3 }) => {
+  if (isV5(v3)) {
+    const news = newsSpan(v3);
+    const noon = noonSpan(v3);
+    if (frame >= news.from && frame < news.to) return <NewsWindow frame={frame} v3={v3} />;
+    if (frame >= noon.from && frame < noon.to) return <NoonBunk frame={frame} v3={v3} />;
+  }
   if (frame < k.clinic) return <BusShot frame={frame} k={k} />;
   if (frame < k.office) return <ClinicShot frame={frame} k={k} />;
   if (frame < k.napDoor) return <OfficeShot frame={frame} k={k} />;
@@ -490,11 +502,11 @@ const MoreHoursShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 };
 
 const MoreHours: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   const late = lateWindows(k);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <MoreHoursShot frame={shot.frame} k={k} />
+      <MoreHoursShot frame={shot.frame} k={k} v3={shot.v3} />
       <DeviceSound at={k.on} frames={k.wake - k.on} volume={0.8} />
       <ClinkSound at={landings(k.coins, k.coins + 18, 18, 26)} volume={0.6} />
       <DeviceSound at={k.driverBand} frames={0} volume={0.5} />
