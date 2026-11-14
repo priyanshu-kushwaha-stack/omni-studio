@@ -156,7 +156,7 @@ Three notes from the chair.
 
 Ninety from the band. Nobody said you had to choose.
 
-Nurse: Rested, for once.
+Nurse: You look rested. For once.
 
 > SCENE: The bridge at dawn, a queue walking in; a woman with a shopping bag, grey head, near the front. You say a word to her; her shoulders go up.
 
@@ -457,7 +457,7 @@ Spare machines, linked into one. Now spare brains.
 
 > SCENE: The notebook pages on the bed slide together, edge to edge; the crumbs join into one drawing. Lines, a frame, a housing. A machine. On the laptop, the strangers' pages do the same.
 
-Brother: What'd we get?
+Brother: So what did we get?
 
 So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.
 

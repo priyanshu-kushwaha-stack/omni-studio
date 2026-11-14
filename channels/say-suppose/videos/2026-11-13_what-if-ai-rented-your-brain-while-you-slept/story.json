@@ -372,8 +372,8 @@
       "claims": []
     },
     {
-      "text": "Nurse: Rested, for once.",
-      "say": "[dry, approving, a nurse who has seen you every Thursday for years] Rested, for once.",
+      "text": "Nurse: You look rested. For once.",
+      "say": "[dry, surprised, crisp, a stress on rested, a pause before For once] You look rested. For once.",
       "speaker": "Nurse",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -1021,8 +1021,8 @@
       "claims": []
     },
     {
-      "text": "Brother: What'd we get?",
-      "say": "[hushed, amazed, almost a whisper, the old joke turned into wonder] What'd we get?",
+      "text": "Brother: So what did we get?",
+      "say": "[hushed, amazed, crisp and clear, the old joke turned into wonder, a stress on we] So what did we get?",
       "speaker": "Brother",
       "gapAfterSec": 1.15,
       "mood": "night",
