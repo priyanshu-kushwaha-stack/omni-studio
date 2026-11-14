@@ -22,11 +22,11 @@ import { EXPRESSIONS, type Expression } from "@whatif/kit/rig/expressions";
 import { joints, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { setLook } from "@whatif/kit/sets/common";
 import { LookContext } from "@whatif/kit/stage/Look";
-import { closeUp, drift, ForegroundHead } from "@whatif/kit/stage/shots";
+import { closeUp, drift } from "@whatif/kit/stage/shots";
 import { Stage, toScreen, type Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
 import { INK, PAPER } from "@whatif/kit/theme";
-import { headAt, Letter, Meter, MeterSound } from "../parts";
+import { headAt, Letter, Meter, MeterSound, YourShoulder } from "../parts";
 import { blinking, camAt, current, HERO, lineEnd, linear, MINJUN, mix, PASTELS, ramp, STRANGER, type Beat, type Shot } from "../shared";
 import { ACADEMY, academyLights, AcademyStreetBack, AcademyStreetFront } from "../sets/AcademyStreet";
 import { lineAt, moodNow } from "./MadeTheCut.parts";
@@ -53,6 +53,7 @@ function times(clips: Clip[], to: number) {
     say: at(57, 0.62), // "and say it into the crowd": the cards snap open
     rise: lineEnd(clips, 57) + 6, // the hold: the camera keeps rising
     field: at(58, 0.3), // the field of cards
+    lock: at(58, 0.42), // the wide held; then the grey and teal cards dim and the camera pushes in on the class
     three: at(58, 0.62), // "every red card points back to your class"
     mj: from(59), // "One is your best friend."
     look: at(59, 0.5), // "So who are the other two?": your eyes go card to card
@@ -109,7 +110,7 @@ function yourPose(frame: number, k: T): Pose {
 }
 
 /** The class and your best friend, with their cards from `say`. He waves on the over-the-shoulder. */
-const Class: React.FC<{ frame: number; k: T; wave: boolean }> = ({ frame, k, wave }) => {
+const Class: React.FC<{ frame: number; k: T; wave: boolean; dim: number }> = ({ frame, k, wave, dim }) => {
   const s = ACADEMY.classSpot.scale;
   const mjPose: Pose = wave ? { ...STAND, armB: [-150 + Math.sin(frame / 4) * 18, -20] } : STAND;
   const mh = headAt(MJ.x, MJ.y, MJ.scale, mjPose, -1);
@@ -125,7 +126,9 @@ const Class: React.FC<{ frame: number; k: T; wave: boolean }> = ({ frame, k, wav
                 : { ...EXPRESSIONS.neutral, look: { x: 0.7, y: -0.4 } })}
               pose={c.who === "girl" ? { ...STAND, armF: [50, 80] } : STAND} held={c.who === "girl" ? CALC : undefined}
               blink={blinking(frame, i + 10)} time={frame} />
-            <Meter frame={frame} at={k.say + 3 + i * 2} x={h.x} headY={h.y} r={h.r} value={c.value} until={k.end} />
+            <g opacity={c.value < 0 ? 1 : 1 - 0.72 * dim}>
+              <Meter frame={frame} at={k.say + 3 + i * 2} x={h.x} headY={h.y} r={h.r} value={c.value} until={k.end} />
+            </g>
           </g>
         );
       })}
@@ -152,8 +155,9 @@ const Stranger: React.FC<{ frame: number }> = ({ frame }) => {
   );
 };
 
-/** The inspector walking the pavement on line 41: grey coat, a yellow armband, a clipboard; he stops to check his
- *  watch. */
+/** The inspector walking the pavement on line 55: not to be mistaken for your best friend (outside review of v4.1), so a
+ *  warm tan head under a navy peaked cap with a badge, a navy uniform coat with a reflective stripe across the chest, a
+ *  yellow armband and a clipboard; he stops to check his watch. */
 function inspectorAt(frame: number, k: T) {
   const p = linear(frame, k.inspector - 10, k.wide);
   const x = mix(2400, 3150, Math.min(p, 0.62) + Math.max(0, p - 0.85) * 1.2);
@@ -161,33 +165,63 @@ function inspectorAt(frame: number, k: T) {
   return { x, y: 1180, scale: 0.66, walking };
 }
 
+const INSPECTOR = { head: "#c08a5c", coat: "#26334d", cap: "#1c2740" } as const;
+
+const CLIPBOARD = (
+  <g transform="rotate(-8) translate(-4 -34)">
+    <rect x={-20} y={-6} width={42} height={56} rx={4} fill="#9a6a3e" stroke={INK} strokeWidth={4} />
+    <rect x={-14} y={2} width={30} height={42} fill={PAPER} />
+    {[0, 1, 2].map((i) => <line key={i} x1={-10} y1={12 + i * 10} x2={i === 2 ? 2 : 12} y2={12 + i * 10} stroke={INK} strokeWidth={3} opacity={0.6} />)}
+    <rect x={-8} y={-11} width={18} height={10} rx={3} fill="#c9ccd2" stroke={INK} strokeWidth={3} />
+  </g>
+);
+
 const Inspector: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const ins = inspectorAt(frame, k);
   const pose: Pose = ins.walking ? walkPose(frame * 0.24) : { ...STAND, armF: [70, 95] };
+  const s = ins.scale;
+  const h = headAt(ins.x, ins.y, s, pose, 1);
+  const j = joints(pose);
+  const nx = ins.x + j.neck.x * s, ny = ins.y + j.neck.y * s;
+  const hx = ins.x + j.hip.x * s, hy = ins.y + j.hip.y * s;
+  const band = (t: number) => ({ x: mix(nx, hx, t), y: mix(ny, hy, t) });
+  const b1 = band(0.34), b2 = band(0.8);
   return (
     <g>
-      <Figure x={ins.x} y={ins.y} scale={ins.scale} facing={1} pose={pose} head={PASTELS[0]} coat="#6b6f7a" brows="flat" lids={0.3}
-        mouth="flat" look={ins.walking ? { x: 0.8, y: 0.1 } : { x: 0.5, y: 0.9 }} time={frame}
-        held={<rect x={-14} y={-30} width={34} height={44} rx={4} fill={PAPER} stroke={INK} strokeWidth={4} />} />
-      <rect x={ins.x - 18 * ins.scale} y={ins.y - 190 * ins.scale} width={36 * ins.scale} height={14 * ins.scale} fill="#f2b632" />
+      <Figure x={ins.x} y={ins.y} scale={s} facing={1} pose={pose} head={INSPECTOR.head} coat={INSPECTOR.coat} brows="flat" lids={0.3}
+        mouth="flat" look={ins.walking ? { x: 0.8, y: 0.1 } : { x: 0.5, y: 0.9 }} time={frame} held={CLIPBOARD} />
+      {/* the reflective stripes across the chest and the hem */}
+      {[b1, b2].map((b, i) => (
+        <g key={i}>
+          <line x1={b.x - 25 * s} y1={b.y} x2={b.x + 25 * s} y2={b.y} stroke={INK} strokeWidth={13 * s} strokeLinecap="round" />
+          <line x1={b.x - 23 * s} y1={b.y} x2={b.x + 23 * s} y2={b.y} stroke="#eef3f6" strokeWidth={8 * s} strokeLinecap="round" />
+        </g>
+      ))}
+      <rect x={ins.x - 18 * s} y={ins.y - 190 * s} width={36 * s} height={14 * s} fill="#f2b632" />
+      {/* the peaked cap: a navy crown over the top of the head, a brim forward, a small gold badge */}
+      <path d={`M${h.x - h.r * 1.04} ${h.y - h.r * 0.28} A${h.r * 1.04} ${h.r * 1.04} 0 0 1 ${h.x + h.r * 1.04} ${h.y - h.r * 0.28} Z`}
+        fill={INSPECTOR.cap} stroke={INK} strokeWidth={4 * s} strokeLinejoin="round" />
+      <path d={`M${h.x + h.r * 0.2} ${h.y - h.r * 0.3} H${h.x + h.r * 1.55} Q${h.x + h.r * 1.6} ${h.y - h.r * 0.12} ${h.x + h.r * 1.3} ${h.y - h.r * 0.12} H${h.x + h.r * 0.2}Z`}
+        fill={INSPECTOR.cap} stroke={INK} strokeWidth={4 * s} strokeLinejoin="round" />
+      <circle cx={h.x + h.r * 0.25} cy={h.y - h.r * 0.68} r={h.r * 0.16} fill="#f2b632" stroke={INK} strokeWidth={3 * s} />
     </g>
   );
 }
 
 // ------------------------------------------------------------------------------------------------ the shot
 
-const Street: React.FC<{ frame: number; k: T; cam: Camera; face: Partial<Expression>; wave?: boolean; you?: boolean }> = ({ frame, k, cam, face, wave = false, you = true }) => {
+const Street: React.FC<{ frame: number; k: T; cam: Camera; face: Partial<Expression>; wave?: boolean; you?: boolean; dim: number }> = ({ frame, k, cam, face, wave = false, you = true, dim }) => {
   const doors = ramp(frame, k.doors, k.doors + 14);
   const pose = yourPose(frame, k);
   const me = youAt(frame, k);
   const actors = (
     <>
-      <Crowd frame={frame} cam={cam} doors={k.doors} say={k.say} until={k.end} you={{ x: YOU.x, y: YOU.y }} />
+      <Crowd frame={frame} cam={cam} doors={k.doors} say={k.say} until={k.end} you={{ x: YOU.x, y: YOU.y }} dim={dim} />
       {you && (
         <Figure x={me.x} y={me.y} scale={YOU.scale} facing={1} pose={pose} {...HERO} {...face} blink={blinking(frame, 0)} time={frame}
           flow={0.2} held={<Letter x={4} y={8} scale={0.45} tilt={-4} />} />
       )}
-      <Class frame={frame} k={k} wave={wave} />
+      <Class frame={frame} k={k} wave={wave} dim={dim} />
       {frame >= k.inspector && frame < k.wide && <Inspector frame={frame} k={k} />}
       <Stranger frame={frame} />
     </>
@@ -218,7 +252,10 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     wide: camAt(frame, [[k.wide, { x: 980, y: 640, zoom: 0.92 }], [k.you, { x: 960, y: 650, zoom: 0.98 }]]),
     climb: camAt(frame, [[k.you, { x: 470, y: 880, zoom: 1.55 }], [k.raise, { x: 480, y: 850, zoom: 1.7 }]]),
     you: camAt(frame, [[k.raise, closeUp(yh.x + 50, yh.y + 20, 2.3)], [k.say, closeUp(yh.x + 50, yh.y + 10, 2.5)]]),
-    say: camAt(frame, [[k.say, { x: 820, y: 780, zoom: 1.0 }], [k.rise, { x: 860, y: 720, zoom: 0.86 }], [k.field, { x: 980, y: 600, zoom: 0.47 }], [k.three, { x: 980, y: 590, zoom: 0.45 }]]),
+    // the field held wide, then (the outside review of v4.1: guide the eye to the three red cards) the grey and teal cards
+    // dim and the camera pushes in on your class, where the only red cards are
+    say: camAt(frame, [[k.say, { x: 820, y: 780, zoom: 1.0 }], [k.rise, { x: 860, y: 720, zoom: 0.86 }], [k.field, { x: 980, y: 600, zoom: 0.47 }],
+      [k.lock, { x: 980, y: 600, zoom: 0.45 }], [k.three, { x: 990, y: 935, zoom: 1.45 }]]),
     three: camAt(frame, [[k.three, { x: 990, y: 930, zoom: 2.0 }], [k.mj, { x: 990, y: 925, zoom: 2.15 }]]),
     mj: camAt(frame, [[k.mj, closeUp(mh.x - 10, mh.y - 60, 3.0)], [k.look, closeUp(mh.x - 10, mh.y - 65, 3.15)]]),
     look: camAt(frame, [[k.look, closeUp(yh.x + 40, yh.y, 2.7)], [k.girl, closeUp(yh.x + 40, yh.y, 2.85)]]),
@@ -251,9 +288,9 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <LookContext.Provider value={look}>
-        <Street frame={frame} k={k} cam={cam} face={faces[on]} wave={on === "ots"} you={on !== "ots"} />
+        <Street frame={frame} k={k} cam={cam} face={faces[on]} wave={on === "ots"} you={on !== "ots"} dim={ramp(frame, k.lock, k.lock + 20)} />
       </LookContext.Provider>
-      {on === "ots" && <ForegroundHead x={260} side="left" blur={18} />}
+      {on === "ots" && <YourShoulder side="left" />}
       <MeterSound at={k.say} />
       {[3, 7, 11, 16, 22].map((d, i) => <MeterSound key={d} at={k.say + d} soft={i % 2 === 1} volume={0.55 - i * 0.07} />)}
     </AbsoluteFill>

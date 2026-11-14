@@ -5,7 +5,7 @@
 import { Audio, interpolate, Sequence, spring, staticFile } from "remotion";
 import { joints, HEAD_R, type Pose } from "@whatif/kit/rig/pose";
 import { FONT } from "@whatif/kit/fonts";
-import { CRIMSON, FPS, INK, PAPER, TEAL } from "@whatif/kit/theme";
+import { CRIMSON, FPS, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { JIYOON } from "./shared";
 
 /** Where a figure's head centre is, in world coordinates. `facing` mirrors x. */
@@ -220,3 +220,18 @@ export const Chocolate: React.FC<{ x: number; y: number; scale?: number; half?: 
     </g>
   );
 };
+
+/** The edge of your own head and scarf in the near foreground, for a shot over your shoulder (outside review of v4.1,
+ *  2026-11-13: the kit's anonymous black ForegroundHead read as "an accidental foreground object"). Screen space, put
+ *  it OUTSIDE <Stage> like ForegroundHead: only a slice of the mustard head and the teal scarf shows at the frame's
+ *  edge, softly out of focus, so the viewer knows whose eyes these are. Not for a shot where you are in the frame. */
+export const YourShoulder: React.FC<{ side?: "left" | "right"; blur?: number }> = ({ side = "left", blur = 7 }) => (
+  <svg width={1920} height={1080} style={{ position: "absolute", inset: 0, filter: `blur(${blur}px)`, pointerEvents: "none" }}>
+    <g transform={`translate(${side === "left" ? -60 : 1980} 1080) scale(${side === "left" ? 1 : -1} 1)`}>
+      <rect x={-260} y={-250} width={470} height={320} rx={150} fill={INK} />
+      <path d="M-240 -250 Q-20 -300 190 -235 L170 -175 Q-20 -225 -230 -180Z" fill={TEAL} stroke={INK} strokeWidth={8} />
+      <circle cx={0} cy={-420} r={175} fill={MUSTARD} stroke={INK} strokeWidth={10} />
+      <path d="M-10 -590 q22 -46 44 -6" fill="none" stroke={INK} strokeWidth={14} strokeLinecap="round" />
+    </g>
+  </svg>
+);

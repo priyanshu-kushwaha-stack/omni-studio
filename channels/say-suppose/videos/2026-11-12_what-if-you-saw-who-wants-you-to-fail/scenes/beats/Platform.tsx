@@ -31,7 +31,7 @@ import type { Clip } from "@whatif/kit/timeline";
 import { INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { Bubble, FLAP_FRAMES, headAt, Letter, Meter } from "../parts";
 import { blinking, camAt, current, HERO, lineEnd, linear, mix, noise, ramp, type Beat, type Shot } from "../shared";
-import { moodNow } from "./MadeTheCut.parts";
+import { moodNow, SnapLines } from "./MadeTheCut.parts";
 
 // ------------------------------------------------------------------------------------------------ the platform
 
@@ -107,12 +107,19 @@ const Pigeon: React.FC<{ frame: number }> = ({ frame }) => {
   );
 };
 
-/** The envelope with its teal seal, or torn open; for the front hand (Figure `held`). */
-const Envelope: React.FC<{ torn: number }> = ({ torn }) => (
+/** The envelope with its teal seal, or torn open; for the front hand (Figure `held`). `strip` 0..1 flicks the torn
+ *  seal strip up and away, spinning (v4.2: the tear reads at a glance). */
+const Envelope: React.FC<{ torn: number; strip?: number }> = ({ torn, strip = 0 }) => (
   <g transform="rotate(-6) translate(-4 -30)">
     <rect x={-46} y={-30} width={92} height={60} rx={4} fill={PAPER} stroke={INK} strokeWidth={4} />
     <path d={`M-46 -30 L0 ${mix(4, -52, torn)} L46 -30`} fill={torn > 0.5 ? "#e8dcc4" : PAPER} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
     {torn < 0.5 && <circle cx={0} cy={2} r={11} fill={TEAL} stroke={INK} strokeWidth={3} />}
+    {strip > 0 && strip < 1 && (
+      <g transform={`translate(${30 + strip * 70} ${-34 - strip * 90}) rotate(${strip * 260})`} opacity={1 - strip * strip}>
+        <rect x={-26} y={-6} width={52} height={12} rx={3} fill={PAPER} stroke={INK} strokeWidth={3} />
+        <circle cx={0} cy={0} r={8} fill={TEAL} stroke={INK} strokeWidth={2} />
+      </g>
+    )}
   </g>
 );
 
@@ -231,7 +238,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const doorOpen = ramp(frame, k.board, k.board + 8) * (1 - ramp(frame, k.shut, k.shut + 8));
 
   // you: the envelope, the letter, the look round, the letter held out, the finger up, the hand on the card
-  const held = frame < k.read ? <Envelope torn={ramp(frame, k.tear, k.tear + 10)} /> : <Letter x={2} y={4} scale={0.42} tilt={-4} />;
+  const held = frame < k.read ? <Envelope torn={ramp(frame, k.tear, k.tear + 10)} strip={linear(frame, k.tear + 4, k.tear + 20)} /> : <Letter x={2} y={4} scale={0.42} tilt={-4} />;
   const out = ramp(frame, k.show, k.show + 8);
   const up = ramp(frame, k.point, k.point + 8);
   const youPose: Pose = lerpPose(lerpPose({ ...STAND, armF: [55, 85], armB: [30, 70] }, { ...STAND, armF: [92, 10], armB: [-7, 8] }, out),
@@ -252,10 +259,14 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     ? <Meter frame={frame} at={k.snap} x={wh.x} headY={wh.y} r={wh.r} value={cardValue(frame, k.snap)} until={k.fold} scale={1.15} />
     : null;
   const cardMid = { x: wh.x, y: wh.y - wh.r - wh.r * 1.05 * 1.15 };
-  const bubble = <Bubble frame={frame} at={k.show + 2} until={k.cardCU} x={yh.x + yh.r * 0.8} y={yh.y - yh.r * 1.1} text="I made it!" size={44} side="right" />;
+  // the snap drawn: ink strokes flick out round the card as it opens (it opens in the two-shot, so it has to read there)
+  const snapLines = <SnapLines frame={frame} at={k.snap} x={cardMid.x} y={cardMid.y} r={wh.r * 1.5} count={8} tilt={10} />;
+  // "I made it!" on your far side, so it never sits over the card as it snaps open beside it (v4.1 overlapped at 0:05)
+  const bubble = <Bubble frame={frame} at={k.show + 2} until={k.cardCU} x={yh.x - yh.r * 0.8} y={yh.y - yh.r * 1.1} text="I made it!" size={44} side="left" />;
 
   const cams: Record<typeof on, Camera> = {
-    wide: camAt(frame, [[0, { x: 1000, y: 520, zoom: 1.05 }], [k.tear, { x: 1000, y: 540, zoom: 1.12 }]]),
+    // one camera step closer than v4.1 (outside review): the board's lower rows, you and her, knees up
+    wide: camAt(frame, [[0, { x: 1010, y: 505, zoom: 1.4 }], [k.tear, { x: 1010, y: 520, zoom: 1.48 }]]),
     you: camAt(frame, [[k.tear, closeUp(yh.x + 40, yh.y + 60, 2.2)], [k.left, closeUp(yh.x + 40, yh.y + 50, 2.4)], [k.show, closeUp(yh.x + 60, yh.y + 40, 2.2)]]),
     show: camAt(frame, [[k.show, { x: 1080, y: 620, zoom: 1.55 }], [k.cardCU, { x: 1090, y: 600, zoom: 1.6 }]]),
     card: camAt(frame, [[k.cardCU, insert(cardMid.x, cardMid.y + 40, 3.0)], [k.settled, insert(cardMid.x, cardMid.y + 40, 3.3)]]),
@@ -286,7 +297,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       <PlatformStage frame={frame} cam={cam} mood={mood} flutter={flutter} train={train} doorOpen={doorOpen}
         you={{ pose: youPose, face: youFace, held }}
         woman={fade > 0 ? { x: wx, y: wy, pose: womanPose, face: womanFace, fade } : null}
-        card={<>{card}{bubble}</>} extra={hand} />
+        card={<>{card}{snapLines}{bubble}</>} extra={hand} />
       {/* the board's flutter and click, at the start and once at the end */}
       <Sequence from={0} durationInFrames={18}><Audio src={staticFile("sfx/flutter.wav")} volume={0.5} /></Sequence>
       <Sequence from={16} durationInFrames={10}><Audio src={staticFile("sfx/click.wav")} volume={0.6} /></Sequence>

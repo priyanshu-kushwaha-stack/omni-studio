@@ -1,5 +1,6 @@
 // Helpers for "Two Letters" (TwoLetters.tsx): the end card's stamped paper tags (LIKE, SUBSCRIBE, COMMENT, the rule
-// device's look), in screen pixels, and Min-jun with his own letter. The right third of the frame stays empty.
+// device's look), in screen pixels, over the last two-shot at the door, and Min-jun with his own letter. The right third
+// of the frame stays empty.
 import { AbsoluteFill, spring } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { FONT } from "@whatif/kit/fonts";
@@ -32,12 +33,12 @@ const EndTag: React.FC<{ frame: number; at: number; x: number; y: number; text: 
   );
 };
 
-/** The three tags in the middle third of the frame (screen pixels): COMMENT on "Tell us in the comments", then LIKE
- *  and SUBSCRIBE on "hit like and subscribe". Nothing right of x 1280. */
-export const EndTags: React.FC<{ frame: number; comment: number; like: number; subscribe: number }> = ({ frame, comment, like, subscribe }) => (
+/** The three tags in the middle third of the frame (screen pixels), their left edge at `x`: COMMENT on "Tell us in the
+ *  comments", then LIKE and SUBSCRIBE on "hit like and subscribe". Nothing right of x 1280 (YouTube's end screen). */
+export const EndTags: React.FC<{ frame: number; comment: number; like: number; subscribe: number; x?: number }> = ({ frame, comment, like, subscribe, x = 700 }) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>
     <svg width={1920} height={1080}>
-      <g transform="translate(700 250) scale(1.05)">
+      <g transform={`translate(${x} 250) scale(1.05)`}>
         <EndTag frame={frame} at={comment} x={0} y={0} text="COMMENT" icon="talk" tilt={-3} />
         <EndTag frame={frame} at={like} x={30} y={140} text="LIKE" icon="like" tilt={2} />
         <EndTag frame={frame} at={subscribe} x={0} y={280} text="SUBSCRIBE" icon="bell" tilt={-2} />

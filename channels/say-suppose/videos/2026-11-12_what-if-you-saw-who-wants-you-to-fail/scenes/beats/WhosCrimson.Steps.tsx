@@ -8,6 +8,9 @@
 //   v4 (owner on v3, 2026-11-13: "You can ask him on the academy step ? And then there was no dialogue. I think we
 //   should have one there by the Hero."): you ask it, in a bubble, as you point: "There's a number over your head!"
 //   after line 44 (2 s): he ducks, swatting at his own hair, then catches your face, laughs, and shoves your shoulder.
+//   v4.2 (outside review of v4.1, 4:00-4:15): the shove turns you a little away and you stay turned; his hand stays on
+//   your shoulder; the framings after it change (closer on the hand and his laugh, then on your smile failing). The
+//   steps come in during line 41 ("The same race. The ones you'd miss."), the lanes sheet cut short.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { lerpPose, SEATED, seatedY, type Pose } from "@whatif/kit/rig/pose";
@@ -57,7 +60,9 @@ function yourFace(frame: number, k: CrimsonTimes, view: View) {
   if (frame < k.back) return { brows: "raised" as const, lids: 0, mouth: "open" as const, eyes: 1.1, look: { x: 0.8, y: -0.75 } };
   if (frame < k.catches) return { brows: "raised" as const, lids: 0, mouth: "flat" as const, eyes: 1.05, look: { x: 0.85, y: -0.5 } };
   if (frame < k.laugh) return { brows: "worry" as const, lids: 0.1, mouth: "flat" as const, eyes: 1.05, look: { x: 0.9, y: -0.2 } };
-  if (frame < k.yours) return { brows: "none" as const, lids: 0.2, mouth: "smile" as const, eyes: 1, look: { x: 0.85, y: -0.55 } };
+  // after the shove, turned a little away: the smile holds, then fails, while his hand is still on your shoulder
+  if (frame < k.yours + 24) return { brows: "none" as const, lids: 0.2, mouth: "smile" as const, eyes: 1, look: { x: 0.6, y: -0.5 } };
+  if (frame < k.yours + 54) return { brows: "none" as const, lids: 0.25, mouth: "flat" as const, eyes: 1, look: { x: 0.55, y: -0.6 } };
   return { brows: "worry" as const, lids: 0.25, mouth: "flat" as const, eyes: 1, look: { x: 0.7, y: -0.7 } };
 }
 
@@ -67,16 +72,19 @@ export const StepsShot: React.FC<{ frame: number; k: CrimsonTimes }> = ({ frame,
     [k.duck, "duck"], [k.catches, "catches"], [k.pair, "pair"], [k.yours, "yours"], [k.wide, "wide"]]);
   // you: the arm goes up and stays while he looks; down when he looks back at you; rocked back by the shove
   const point = ramp(frame, k.point + 2, k.point + 12) * (1 - ramp(frame, k.back + 4, k.back + 16));
-  const rock = ramp(frame, k.shove + 2, k.shove + 8) * (1 - ramp(frame, k.shove + 14, k.shove + 30));
+  // the shove rocks you back and leaves you turned a little away until the wide
+  const rock = ramp(frame, k.shove + 2, k.shove + 8) * (1 - 0.55 * ramp(frame, k.shove + 14, k.shove + 30)) * (1 - ramp(frame, k.wide - 8, k.wide + 8));
   const yBase = lerpPose(SEATED, POINT, point);
-  const yPose: Pose = { ...yBase, lean: yBase.lean - 12 * rock };
+  const yPose: Pose = { ...yBase, lean: yBase.lean - 12 * rock, tilt: yBase.tilt - 10 * rock };
   const yx = SY.x - 8 * rock;
   const yh = headAt(yx, yY, SY.scale, yPose, SY.facing);
   // him: head back to look up; the duck (lean and drop) while he swats; the lean in for the shove
   const lookUp = ramp(frame, k.up - 4, k.up + 6) * (1 - ramp(frame, k.back - 4, k.back + 4)) + ramp(frame, k.bug, k.bug + 8) * (1 - ramp(frame, k.duck, k.duck + 6));
   const duck = ramp(frame, k.duck, k.duck + 6) * (1 - ramp(frame, k.catches, k.catches + 8));
   const shoving = ramp(frame, k.shove - 6, k.shove + 2) * (1 - ramp(frame, k.shove + 12, k.shove + 26));
-  const mBase: Pose = { ...SEATED, tilt: -16 * lookUp + 14 * duck, lean: 26 * duck + 22 * shoving, drop: 10 * duck };
+  // his hand stays on your shoulder after the shove, until the wide
+  const handOn = ramp(frame, k.shove - 6, k.shove + 2) * (1 - ramp(frame, k.wide - 14, k.wide + 2));
+  const mBase: Pose = { ...SEATED, tilt: -16 * lookUp + 14 * duck, lean: 26 * duck + 22 * Math.max(shoving, 0.8 * handOn), drop: 10 * duck };
   const mh0 = headAt(SM.x, mY, SM.scale, mBase, SM.facing);
   // the back hand on his head: two pats (pat .. ask), then the swatting (bug .. catches)
   const patting = frame >= k.pat - 6 && frame < k.ask + 4;
@@ -94,10 +102,10 @@ export const StepsShot: React.FC<{ frame: number; k: CrimsonTimes }> = ({ frame,
     : SEATED.armB;
   const yShoulder = { x: yx + 14 * SY.scale, y: yY - 205 * SY.scale };
   const shoveArm = armTo(SM.x, mY, SM.scale, mBase, SM.facing, yShoulder);
-  const mPose: Pose = { ...mBase, armB, armF: [mix(SEATED.armF[0], shoveArm[0], shoving), mix(SEATED.armF[1], shoveArm[1], shoving)] };
+  const mPose: Pose = { ...mBase, armB, armF: [mix(SEATED.armF[0], shoveArm[0], handOn), mix(SEATED.armF[1], shoveArm[1], handOn)] };
   const mh = headAt(SM.x, mY, SM.scale, mPose, SM.facing);
   const cams: Record<View, Camera> = {
-    steps: camAt(frame, [[k.steps, { x: 420, y: 800, zoom: 1.5 }], [k.point, { x: 400, y: 810, zoom: 1.75 }]]),
+    steps: camAt(frame, [[k.stepsIn, { x: 440, y: 790, zoom: 1.4 }], [k.point, { x: 400, y: 810, zoom: 1.75 }]]),
     point: camAt(frame, [[k.point, { x: 372, y: 790, zoom: 2.55 }], [k.up, { x: 380, y: 785, zoom: 2.7 }]]),
     up: camAt(frame, [[k.up, closeUp(mh.x + 10, mh.y - 30, 3.8)], [k.sky, closeUp(mh.x + 10, mh.y - 80, 3.8)], [k.back, closeUp(mh.x + 10, mh.y - 90, 3.9)]]),
     back: camAt(frame, [[k.back, { x: 372, y: 805, zoom: 2.7 }], [k.pat, { x: 372, y: 805, zoom: 2.8 }]]),
@@ -106,8 +114,8 @@ export const StepsShot: React.FC<{ frame: number; k: CrimsonTimes }> = ({ frame,
     bug: camAt(frame, [[k.bug, closeUp(mh.x + 10, mh.y - 50, 3.3)], [k.duck, closeUp(mh.x + 10, mh.y - 40, 3.2)]]),
     duck: camAt(frame, [[k.duck, { x: 380, y: 815, zoom: 2.6 }], [k.catches, { x: 380, y: 815, zoom: 2.7 }]]),
     catches: camAt(frame, [[k.catches, { x: 372, y: 805, zoom: 2.6 }], [k.pair, { x: 372, y: 810, zoom: 2.45 }]]),
-    pair: camAt(frame, [[k.pair, { x: 372, y: 805, zoom: 2.3 }], [k.yours, { x: 372, y: 800, zoom: 2.45 }]]),
-    yours: camAt(frame, [[k.yours, closeUp(yh.x - 10, yh.y - 20, 4.0)], [k.wide, closeUp(yh.x - 10, yh.y - 24, 4.2)]]),
+    pair: camAt(frame, [[k.pair, closeUp((yh.x + mh.x) / 2 + 20, yh.y + 30, 3.2)], [k.yours, closeUp((yh.x + mh.x) / 2 + 30, yh.y + 25, 3.45)]]),
+    yours: camAt(frame, [[k.yours, closeUp(yh.x + 10, yh.y + 10, 3.6)], [k.wide, closeUp(yh.x + 4, yh.y + 6, 3.95)]]),
     wide: camAt(frame, [[k.wide, { x: 520, y: 800, zoom: 1.5 }], [k.end, { x: 700, y: 640, zoom: 0.95 }]]),
   };
   const cam = drift(cams[view], frame, "steps", view === "wide" ? 4 : 2);

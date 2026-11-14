@@ -1,5 +1,5 @@
 // Four in a Hundred in the classroom (kit `classroom`, script v3), the montage that turns at every use: your maths
-// teacher draws the curve (62); your face, set (64); week one: you stand and say the mock score, cards over every head,
+// teacher writes the mock scores up (62; the board carries the ranked list in every shot, not the kit's growth graph); your face, set (64); week one: you stand and say the mock score, cards over every head,
 // three red, him -84 (65); her "Sit down." (66); no notes, no help: a hand out, you shake your head and turn your back
 // (67); week one's three red, then week two's nine, him -88 (68); the rival's "What's with you?", still -6 (69-70);
 // the room redder, him -91 (76, close at 78); second place, the desk beside you empty (79). The card over your best
@@ -11,26 +11,28 @@ import { classroom } from "@whatif/kit/sets";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { DrawLine } from "@whatif/kit/ui/DrawLine";
 import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, INK, PAPER, TEAL } from "@whatif/kit/theme";
-import { spring } from "remotion";
+import { interpolate, spring } from "remotion";
 import { headAt, Meter } from "../parts";
 import { blinking, camAt, current, HERO, MINJUN, mix, PASTELS, ramp, TAEHO } from "../shared";
 import { Deep } from "../sets/common";
 import { FLOOR, KANG_POSE, KX, KY, MsKang, SEAT, seatY } from "./WhosCrimson.Class";
 import { armTo, HeadIcon, SetShot } from "./WhosCrimson.Common";
 import type { SeatsTimes } from "./FourSeats.Times";
+import { EmptyDesks } from "./FourSeats.Desks";
+import { MistakeMark } from "./Notebook.Parts";
 
 const S = 1.15;
 const CLASSMATE = { head: PASTELS[2], coat: "#5a6488" } as const;
 
-/** A mock-score sheet for your hand: paper, ink lines, a big red ring. No digits. */
+/** A mock-score sheet for your hand: paper, ink lines, and your one wrong answer ringed in red (MistakeMark, the same
+ *  mark his notebook copies later). No digits. */
 const ScoreSheet: React.FC = () => (
   <g transform="rotate(8) translate(-50 -130)">
     <rect x={0} y={0} width={100} height={130} rx={4} fill={PAPER} stroke={INK} strokeWidth={4} />
     {[0, 1, 2, 3].map((i) => <line key={i} x1={14} y1={24 + i * 20} x2={i === 3 ? 50 : 86} y2={24 + i * 20} stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.5} />)}
-    <ellipse cx={66} cy={104} rx={26} ry={18} fill="none" stroke={CRIMSON} strokeWidth={6} />
+    <MistakeMark x={58} y={106} scale={0.95} />
   </g>
 );
 
@@ -68,6 +70,39 @@ const FarCards: React.FC<{ frame: number; cam: Camera; at: number; until: number
   );
 };
 
+// ------------------------------------------------------------------------------------------------ the board
+
+/** The mock scores on the whiteboard (outside review of v4.1: in place of the kit's generic growth graph): a ranked
+ *  list, a head, a name bar and a score bar per row, the top four bracketed teal and a red line under the fourth; you
+ *  fourth, your best friend fifth. With `from`/`to` the rows are written on one by one between those frames. */
+const ScoreBoard: React.FC<{ cam: Camera; frame: number; from?: number; to?: number }> = ({ cam, frame, from, to }) => {
+  const rows = [PASTELS[0], PASTELS[5], PASTELS[3], HERO.head, MINJUN.head, PASTELS[6]];
+  const x0 = 1300, y0 = 232, step = 50;
+  const n = rows.length;
+  const drawn = (i: number) => (from === undefined || to === undefined ? 1
+    : interpolate(frame, [mix(from, to, i / n), mix(from, to, (i + 1) / n)], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+  const bracket = drawn(3);
+  return (
+    <Deep cam={cam} depth={0.92}>
+      {rows.map((c, i) => {
+        const d = drawn(i);
+        const y = y0 + i * step;
+        return (
+          <g key={i} opacity={d > 0 ? 1 : 0}>
+            <HeadIcon x={x0 + 86} y={y} r={17} color={c} tuft={i === 3} />
+            <rect x={x0 + 120} y={y - 6} width={130 * d} height={12} rx={6} fill={INK} opacity={0.5} />
+            <rect x={x0 + 280} y={y - 9} width={(270 - i * 30) * d} height={18} rx={6} fill={i < 4 ? TEAL : "#9a9a94"} />
+          </g>
+        );
+      })}
+      <g opacity={bracket}>
+        <path d={`M${x0 + 58} ${y0 - 22} h-18 V${y0 + 3 * step + 22} h18`} fill="none" stroke={TEAL} strokeWidth={7} strokeLinecap="round" strokeLinejoin="round" />
+        <line x1={x0 + 40} y1={y0 + 3.5 * step} x2={x0 + 580} y2={y0 + 3.5 * step} stroke={CRIMSON} strokeWidth={5} strokeDasharray="16 10" />
+      </g>
+    </Deep>
+  );
+};
+
 // ------------------------------------------------------------------------------------------------ the class
 
 const mh = headAt(SEAT.x[1], seatY, SEAT.scale, SEATED);
@@ -85,9 +120,10 @@ function youAt(up: number, sheet: number) {
 const Room: React.FC<{
   frame: number; cam: Camera; mood: MoodName; board?: "graph" | "diagram" | "blank"; you: ReturnType<typeof youAt>; youFace: object;
   minjun?: { pose?: Pose; face: object } | null; kang?: { pose?: Pose; face: object } | null; far?: React.ReactNode; cards?: React.ReactNode;
-  props?: React.ReactNode; classmateFace?: object; classmate?: boolean;
-}> = ({ frame, cam, mood, board = "graph", you, youFace, minjun, kang, far, cards, props, classmateFace, classmate = true }) => (
-  <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board, drawn: 1 }} far={far}
+  props?: React.ReactNode; classmateFace?: object; classmate?: boolean; scores?: React.ReactNode | false;
+}> = ({ frame, cam, mood, board = "blank", you, youFace, minjun, kang, far, cards, props, classmateFace, classmate = true, scores }) => (
+  <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board, drawn: 1 }}
+    far={<>{scores === false ? null : scores ?? <ScoreBoard cam={cam} frame={frame} />}{far}</>}
     behind={
       <>
         {classmate && <Figure {...CLASSMATE} x={SEAT.x[0]} y={seatY} scale={SEAT.scale} pose={SEATED} {...(classmateFace ?? EXPRESSIONS.neutral)}
@@ -122,17 +158,17 @@ const NearCards: React.FC<{ frame: number; at: number; until: number; round: Roo
 const kangLooking = { face: { brows: "none" as const, lids: 0.3, mouth: "flat" as const, eyes: 1, look: { x: 0.9, y: 0.1 } } };
 const minjunPlain = { face: { ...EXPRESSIONS.neutral, look: { x: 1, y: -0.25 } } };
 
-// ------------------------------------------------------------------------------------------------ 62 the curve
+// ------------------------------------------------------------------------------------------------ 62 the mock scores
 
-const CURVE = "M1350 500 C1480 500 1520 230 1610 230 S1740 500 1870 500";
-
+/** "The exam grades on a curve.": your maths teacher at the board, the mock scores going up row by row (no bell curve:
+ *  outside review of v4.1); the camera pushes in on the list, and the cut goes to a hundred heads on paper. */
 export const CurveShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const mid = Math.round((k.curve + k.pct) / 2);
   const cam = drift(camAt(frame, [[k.curve, { x: 1000, y: 580, zoom: 1.08 }], [mid, { x: 1150, y: 520, zoom: 1.3 }], [k.pct, { x: 1560, y: 400, zoom: 1.85 }]]), frame, "curve", 3);
   return (
     <Room frame={frame} cam={cam} mood={mood} board="blank" you={youAt(0, 0)} youFace={{ ...EXPRESSIONS.neutral, look: { x: 1, y: -0.3 } }}
       minjun={minjunPlain} kang={{ face: { ...kangLooking.face, look: { x: -0.6, y: -0.2 } } }}
-      far={<Deep cam={cam} depth={0.92}><DrawLine d={CURVE} from={k.curve + 6} to={mid + 6} color={INK} width={9} /></Deep>} />
+      scores={<ScoreBoard cam={cam} frame={frame} from={k.curve + 4} to={mid + 10} />} />
   );
 };
 
@@ -247,7 +283,7 @@ export const HelpShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }
     : { ...yBase, armF: armTo(SEAT.x[2], seatY, SEAT.scale, yBase, 1, { x: book.x + 40, y: book.y - 26 }) };
   const cam = drift(camAt(frame, [[k.notes, { x: 1080, y: 680, zoom: 1.95 }], [k.weekOne, { x: 1070, y: 675, zoom: 2.1 }]]), frame, "help", 2);
   return (
-    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "graph", drawn: 1 }}
+    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }} far={<ScoreBoard cam={cam} frame={frame} />}
       behind={<Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} facing={turned ? -1 : 1} pose={yPose} brows={turned ? "angry" : "flat"}
         lids={0.3} mouth="flat" eyes={1} look={turned ? { x: 0.4, y: 0.4 } : { x: 0.7 + shake * 0.3, y: 0.1 }} blink={blinking(frame, 1)} time={frame} />}
       actors={
@@ -275,7 +311,7 @@ export const RivalShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName 
   const cam = drift(cams[view], frame, "rival", 2);
   const asking = frame < k.still6;
   return (
-    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "graph", drawn: 1 }}
+    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }} far={<ScoreBoard cam={cam} frame={frame} />}
       behind={<Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} pose={SEATED} brows={asking ? "raised" : "flat"} lids={asking ? 0 : 0.3} mouth="flat"
         eyes={1} look={{ x: 0.9, y: -0.35 }} blink={blinking(frame, 1)} time={frame} />}
       actors={
@@ -328,10 +364,16 @@ const RankList: React.FC<{ frame: number; at: number; cam: Camera }> = ({ frame,
 };
 
 export const TopShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const cam = drift(camAt(frame, [[k.top, { x: 1500, y: 360, zoom: 2.3 }], [k.pull, { x: 1440, y: 400, zoom: 1.9 }], [k.pull + 40, { x: 900, y: 560, zoom: 1.12 }], [k.end, { x: 880, y: 570, zoom: 1.08 }]]), frame, "top", 3);
-  const look = ramp(frame, k.pull + 30, k.pull + 42);
+  // "So what does first cost?": from above, his empty desk and the untouched half, held to the end of the line
+  if (frame >= k.emptyDesk) return <EmptyDesks frame={frame} from={k.emptyDesk} to={k.end} mood={mood} />;
+  const wide = frame >= k.pull;
+  // "Second place.": the list close; "An empty desk beside you.": you on the bench, his place beside you empty
+  const cam = drift(wide
+    ? camAt(frame, [[k.pull, { x: 820, y: 640, zoom: 1.55 }], [k.emptyDesk, { x: 780, y: 650, zoom: 1.42 }]])
+    : camAt(frame, [[k.top, { x: 1500, y: 360, zoom: 2.3 }], [k.pull, { x: 1480, y: 375, zoom: 2.15 }]]), frame, "top", 3);
+  const look = ramp(frame, k.pull + 6, k.pull + 18);
   return (
-    <Room frame={frame} cam={cam} mood={mood} board="blank" you={youAt(0, 0)} minjun={null} kang={null}
+    <Room frame={frame} cam={cam} mood={mood} board="blank" you={youAt(0, 0)} minjun={null} kang={null} scores={false}
       youFace={{ brows: look > 0.5 ? "sad" : "none", lids: mix(0.1, 0.4, look), mouth: "flat", eyes: 1, look: { x: mix(0.9, -0.9, look), y: mix(-0.5, 0.3, look) } }}
       far={<RankList frame={frame} at={k.top + 8} cam={cam} />} />
   );

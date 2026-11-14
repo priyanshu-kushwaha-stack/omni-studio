@@ -10,6 +10,13 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-13
 
+- **An outside picture review, then "yes apply all that makes sense and valid".** The owner asked for one reviewer from
+  another model family, frame by frame ("In Depth review of each frame and see how can we make it more better"):
+  Cursor, GPT-5.6 Sol, on one frame per second of the v4.1 cut. Applied in v4.2 (`review-g2-cursor-v4.1.md`, "Applied
+  in v4.2"): no anonymous black foreground head (use your own shoulder, or nothing when you are in the frame); a hold
+  acts out what the line says instead of resting on a still diagram; cards never sit on a face or the drawing's key
+  part. Not taken: anything the owner had already settled (the opening's timing, the script's wording) and timing
+  changes, which wait for a script round.
 - **"Looks good script wise now. Self Explanatory and understood everything."** The v4 cut (saw who wants you to fail,
   G2). Then on the closing question, "Would you still say it to her face ?": the story had already answered it at the
   dock, so it asked nothing. **"Yes, change it"**: the closing question turns the film on the viewer and points at the

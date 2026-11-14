@@ -3,18 +3,21 @@
 //
 //   106 results, the phone in your hand: three boxes, each a big 1 (top grade), one per "Top grade"; your face at the edge.
 //   107 the classroom: your best friend at the next desk turns his phone to you; insert: his 1.
-//   108 paper: "four places in a room": a small room of chairs, four teal; then "everyone in the country who sat it": a
-//       sea of dots, the top four per cent teal; on "His grade never cost you yours" your dot and his, side by side,
-//       both teal. Then the two of you: he holds out half a chocolate bar, "Half?"
+//   108 paper, two large panels from the first frame, YOUR CLASS and THE COUNTRY: the class's twenty-four heads come in
+//       and four light teal on "four places in a room"; then "everyone in the country who sat it": the country fills with
+//       heads, you and him among them, and zooms out from the two of you to thousands; the top four per cent light teal;
+//       on "His grade never cost you yours" your head and his are ringed, both inside it. Then the two of you: he holds
+//       out half a chocolate bar, "Half?"
 //   109 his line, "Half?", in his own voice, with the bubble.
 //   110 you take it, looking at him, not at the air above him, and eat it.
-//   111 your phone buzzes: the group chat, nine messages in a column (bars, no words), one after another; your face,
-//       and no card over anyone.
-//   112 paper over the two of you: a third of all regrets are about education.
+//   111 your phone buzzes: the group chat, "Congrats!" and "You did it!" legible, then seven more as notification dots,
+//       a count badge running to nine; your face, and no card over anyone.
+//   112 paper over the two of you: a third of all regrets are about education, her paintbrush in that third.
 //   113 insert: her jar of brushes on the counter at home.
-//   114 the phone: her name, the box; you type half a line.
-//   115 "A text would open nothing": the thumb over the half-typed text; you turn the phone face down on your knee.
-//   116 (from the end of 115) you're on the bus: a shelter ad with a paper subscribe tag slides by, then the warehouse gates come into the window.
+//   114 the phone: her name; you type "I got the scholarship"; your thumb holds over send while a bus goes by in the
+//       glass ("or take the bus"); on "say it to her face" the phone goes face down.
+//   115 "A text would open nothing": the phone face down; on "You could keep her forever" you're already on the bus:
+//   116 a shelter ad with a paper subscribe tag slides by, then the warehouse gates come into the window.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
@@ -29,7 +32,8 @@ import { blinking, camAt, current, HERO, JIYOON, linear, MINJUN, mix, ramp, type
 import { Deep } from "../sets/common";
 import { HOME, HomeBack } from "../sets/Home";
 import { aimArm, Dim, handAt, timer, type Body } from "./Notebook.Parts";
-import { DepotGates, HeldResult, NineMessages, PastTheWindow, PHONE, PhoneBack, RegretPie, ResultScreen, SeatAndSea, ShelterAd } from "./TextOpensNothing.Parts";
+import { BusReflection, DepotGates, DraftText, HeldResult, NineMessages, PastTheWindow, PHONE, PhoneBack, ResultScreen, SendThumb, ShelterAd } from "./TextOpensNothing.Parts";
+import { ClassAndCountry, RegretPie } from "./TextOpensNothing.Paper";
 
 // ------------------------------------------------------------------------------------------------ timing
 
@@ -46,8 +50,8 @@ function times(clips: Clip[], to: number) {
     friend: from(107), // the classroom, your best friend at the next desk
     his: at(107, 0.5), // "top grade in maths too": his phone
     sheet: from(108), // "Here's what you had backwards."
-    room: at(108, 0.2), // "four places in a room"
-    sea: at(108, 0.46), // "the top 4 per cent of everyone in the country who sat it"
+    room: at(108, 0.285), // "four places in a room"
+    sea: at(108, 0.555), // "it's the top 4 per cent of everyone in the country who sat it"
     teal: at(108, 0.64),
     pair: at(108, 0.82), // "His grade never cost you yours."
     half: at(108, 0.95), // he holds out half a chocolate bar
@@ -59,9 +63,11 @@ function times(clips: Clip[], to: number) {
     pie: at(112, 0.3),
     jar: from(113), // "Her brushes have stood in a jar for six years."
     her: from(114), // the phone: her name, the box
+    typed: [from(114) + 9, from(114) + 80] as const, // "I got the scholarship", letter by letter
+    hold: from(114) + 84, // the thumb over send, "or take the bus": a bus goes by in the glass
+    down: at(114, 0.79), // "say it to her face": the phone face down
     text: from(115), // "A text would open nothing"
-    down: at(115, 0.58), // the phone face down on your knee
-    bus: at(115, 0.86), // the bus (line 89, "You're on the bus.", is too short to hold it alone)
+    bus: at(115, 0.4), // "You could keep her forever on a screen": already on the bus
     end: to,
   };
 }
@@ -152,8 +158,9 @@ const SheetShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       <Stage cam={{ x: 960, y: 540, zoom }} radius={0} origin={{ x: 0, y: 0 }} back={null}
         actors={
           <Sheet frame={frame} at={k.sheet} x={960} y={520} w={1400} h={640} tilt={-1.5}>
-            <SeatAndSea frame={frame} room={linear(frame, k.room - 10, k.room + 14)} sea={linear(frame, k.sea, k.sea + 30)}
-              teal={ramp(frame, k.teal, k.teal + 8)} pair={ramp(frame, k.pair, k.pair + 10)} you={MUSTARD} him={MINJUN.head} />
+            <ClassAndCountry frame={frame} panels={linear(frame, k.sheet + 6, k.sheet + 18)} room={linear(frame, k.sheet + 14, k.sheet + 44)}
+              lit={ramp(frame, k.room, k.room + 10)} sea={linear(frame, k.sea - 4, k.sea + 8)} zoom={ramp(frame, k.sea + 36, k.sea + 84)}
+              teal={linear(frame, k.teal, k.teal + 14)} pair={ramp(frame, k.pair, k.pair + 10)} you={MUSTARD} him={MINJUN.head} />
           </Sheet>
         } />
     </>
@@ -242,31 +249,43 @@ const JarShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<HomeBack cam={cam} mood="day" frame={frame} />} actors={null} />;
 };
 
+/** Her name on the phone: you type "I got the scholarship" (legible), your thumb comes to rest over send and holds
+ *  there while a bus goes past in the glass, the camera close on the draft. */
 const HerShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const typed = 0.55 * ramp(frame, k.her + 30, k.text - 10);
-  const thumbX = 0.15 + 0.6 * ((Math.sin(frame / 5) + 1) / 2) * Math.min(1, typed * 3);
-  const cam = drift(camAt(frame, [[k.her, { x: 1000, y: 540, zoom: 1.0 }], [k.text, { x: 1080, y: 560, zoom: 1.15 }]]), frame, "her", 3);
+  const typed = linear(frame, k.typed[0], k.typed[1]);
+  const hold = ramp(frame, k.hold, k.hold + 10);
+  const typing = typed > 0 && typed < 1;
+  const cam = drift(camAt(frame, [[k.her, { x: 1040, y: 560, zoom: 1.05 }], [k.typed[0] + 20, { x: 1150, y: 600, zoom: 1.5 }], [k.down, { x: 1170, y: 610, zoom: 1.62 }]]), frame, "her", 2);
   const props = {
     cam, mood: "day" as const, frame,
-    options: { ...phone.defaults, mode: "message" as const, typed, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb: thumbX, behind: "desk" as const },
+    options: { ...phone.defaults, mode: "message" as const, typed: 0, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head,
+      thumb: frame < k.hold ? 0.2 + 0.55 * ((Math.sin(frame / 2.5) + 1) / 2) * (typing ? 1 : 0.3) : null, behind: "desk" as const },
   };
   const spot = phone.spots.face;
   const face = { brows: "worry" as const, lids: 0.15, mouth: "flat" as const, eyes: 1, look: { x: 1, y: 0.3 } };
   return (
     <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={phone.Back(props)}
-      actors={<><Figure {...HERO} x={spot.x} y={spot.y} scale={spot.scale} facing={spot.facing} {...face} blink={blinking(frame, 5)} time={frame} />{phone.Mid?.(props)}</>} />
+      actors={
+        <>
+          <Figure {...HERO} x={spot.x} y={spot.y} scale={spot.scale} facing={spot.facing} {...face} blink={blinking(frame, 5)} time={frame} />
+          {phone.Mid?.(props)}
+          <DraftText frame={frame} typed={typed} hold={hold} />
+          <BusReflection p={linear(frame, k.hold + 4, k.hold + 40)} />
+          {frame >= k.hold && <SendThumb lift={1 - hold} />}
+        </>
+      } />
   );
 };
 
-/** "A text would open nothing": the thumb hovers over send and stops; then the phone goes face down on your knee. */
+/** "Say it to her face": the phone turns over and goes face down on the desk; it stays there through "A text would open
+ *  nothing" while the camera eases back. */
 const TextShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const flip = linear(frame, k.down, k.down + 14);
   const land = ramp(frame, k.down + 7, k.down + 20);
-  const thumb = mix(0.6, 0.86, ramp(frame, k.text + 6, k.text + 30));
-  const cam = drift(camAt(frame, [[k.text, { x: 1180, y: 600, zoom: 1.6 }], [k.down, { x: 1180, y: 560, zoom: 1.45 }], [k.bus, { x: 1180, y: 640, zoom: 1.2 }]]), frame, "text", 2);
+  const cam = drift(camAt(frame, [[k.down, { x: 1170, y: 610, zoom: 1.62 }], [k.down + 20, { x: 1180, y: 600, zoom: 1.4 }], [k.bus, { x: 1180, y: 640, zoom: 1.2 }]]), frame, "text", 2);
   const props = {
     cam, mood: "day" as const, frame,
-    options: { ...phone.defaults, mode: "message" as const, typed: 0.55, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb, behind: "metro" as const },
+    options: { ...phone.defaults, mode: "message" as const, typed: 0, sent: 0 as const, reply: 0, dots: false, contact: JIYOON.head, thumb: null, behind: "desk" as const },
   };
   const sx = flip < 0.5 ? 1 - flip * 2 : flip * 2 - 1;
   const at = `translate(${PHONE.x} ${PHONE.y + 140 * land}) rotate(${8 * land}) scale(${Math.max(0.001, sx)} 1) translate(${-PHONE.x} ${-PHONE.y})`;
@@ -275,7 +294,7 @@ const TextShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       actors={
         <>
           {land > 0 && <ellipse cx={PHONE.x - 40} cy={PHONE.y + 260} rx={620} ry={420} fill="#3b3e47" opacity={land} />}
-          <g transform={at}>{flip < 0.5 ? phone.Mid?.(props) : <PhoneBack x={PHONE.x} y={PHONE.y} />}</g>
+          <g transform={at}>{flip < 0.5 ? <>{phone.Mid?.(props)}<DraftText frame={frame} typed={1} hold={0} /></> : <PhoneBack x={PHONE.x} y={PHONE.y} />}</g>
         </>
       } />
   );
@@ -318,7 +337,7 @@ const TextOpensNothing: React.FC<{ shot: Shot }> = ({ shot }) => {
   const k = times(clips, shot.to);
   const scene = current(frame, [
     [0, "results"], [k.friend, "friend"], [k.sheet, "sheet"], [k.half, "half"], [k.buzz, "buzz"], [k.regret, "regret"], [k.jar, "jar"], [k.her, "her"],
-    [k.text, "text"], [k.bus, "bus"],
+    [k.down, "text"], [k.bus, "bus"],
   ]);
   return (
     <AbsoluteFill style={{ background: "#000" }}>

@@ -3,23 +3,24 @@
 // your best friend in this beat. The title-card ident the script asks for before line 7 is not drawn: story.json
 // leaves 0.35 s after line 6, not the 3 s it needs, and the ident's sounds are not in this video's assets/sfx.
 //
-//   7     "The rule, once": an insert replays the opening card at -84 (the street at ten, his grin under it); then a
-//         clean paper scale draws itself on a sheet, upright: teal above, a grey zero, red below
-//   8     the marker: "Plus one hundred" at the top, "Minus one hundred" at the bottom
-//   9     the store: him at the counter snapping a chocolate bar along its fold, you by the door with the letter, the
-//         cat asleep on its crate; "A call, a text, a post": you look at the phone in your hand; "Remember that": you
-//   10    "Half?" (his own voice), holding out half
-//   11    insert: the two halves in his palms, one to your hand; "Tonight you watch him chew"
-//   12    the clerk scanning the bar; you hold the letter up at him: "I made it."; his card snaps open, the flaps don't
-//         move, one click, a grey zero
-//   13    "Receipt?" (his own voice)
+//   7-8   the rule, acted (Rule.Explain.tsx: the replay, the platform card with its sixty-second dial, the scale with a
+//         teal reading and a red one)
+//   9     "And it never tells you why.": close on you by the store door; then, in the gap, the store: him at the counter
+//         snapping a chocolate bar along its fold, the cat asleep on its crate
+//   10    "You want half?" (his own voice), holding out half
+//   11    insert: the bar bends in his two palms and snaps, crumbs; the bigger half is yours; your hand comes, stops,
+//         then takes it; his half goes up to his mouth; "Tonight you watch him chew"
+//   12    the clerk sweeps the bar across the scanner (a red flash, the till lights); you hold the letter up at him: "I
+//         made it."; his card snaps open, the flaps don't move, one click, a grey zero
+//   13    "Receipt?" (his own voice): the till prints, he tears the slip and holds it out to you
 //   14    the grey zero close; your face
 //   15    you crouch by the crate; the cat opens one eye; your mouth moves; no snap, nothing
 //   16    the eye closes; close on the cat; you
-//   17    insert: your phone calling one contact, a peach avatar; cut to her at the warehouse, a forklift behind her;
-//         you, phone to ear
+//   17    insert: your phone calling one contact, a peach avatar; cut to the warehouse wide, then waist up on her: the
+//         vest, the phone at her ear, a forklift crossing behind her; you, phone to ear
 //   18    her, laughing: "Say it again." (her own voice)
-//   19    you grinning into the phone; her, and the empty air over her head
+//   19    you grinning into the phone, waist up, him chewing at the counter behind you; the phone close, the camera
+//         tilting up off it into the empty air where a card would be
 //   20    you, the smile going
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
@@ -32,15 +33,13 @@ import { LookContext } from "@whatif/kit/stage/Look";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
-import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
-import { FONT } from "@whatif/kit/fonts";
-import { DrawLine } from "@whatif/kit/ui/DrawLine";
-import { Bubble, Chocolate, headAt, Letter, Meter, MeterSound, Ponytail, Sheet, Vest } from "../parts";
-import { blinking, camAt, current, HERO, JIYOON, linear, MINJUN, mix, ramp, type Beat, type Shot } from "../shared";
+import { CRIMSON, INK, MUSTARD, PAPER } from "@whatif/kit/theme";
+import { Bubble, Chocolate, headAt, Letter, Meter, MeterSound, Ponytail, Vest } from "../parts";
+import { blinking, camAt, current, HERO, JIYOON, lineEnd, linear, MINJUN, mix, ramp, type Beat, type Shot } from "../shared";
 import { REF } from "../sets/common";
-import { ACADEMY, AcademyStreetBack } from "../sets/AcademyStreet";
 import { Cat, STORE, StoreBack, StoreCounter, storeLook } from "../sets/Store";
-import { aimArm, CHEER, handAt, lineAt, moodNow, type Body } from "./MadeTheCut.parts";
+import { aimArm, handAt, lineAt, moodNow, SnapLines, type Body } from "./MadeTheCut.parts";
+import { Explain, ExplainSound } from "./Rule.Explain";
 import { DEPOT, DepotBack, depotLights } from "./Rule.Warehouse";
 
 // ------------------------------------------------------------------------------------------------ timing
@@ -53,12 +52,17 @@ function times(clips: Clip[], to: number) {
   return {
     replay: from(7), // "The rule, once.": the opening card again, at -84
     meter: from(7) + 2, // the replayed card snaps
-    scale: at(7, 0.24), // "... a meter opens over whoever hears it ...": the paper scale draws itself
-    plus: from(8), // "Plus one hundred: pure joy for you."
-    minus: at(8, 0.5), // "Minus one hundred: they want you to fail."
-    wide: from(9), // "It never says why. Only out loud. Only to a face.": the store
-    calls: at(9, 0.45), // "A call, a text, a post: nothing opens."
-    remember: at(9, 0.8), // "Remember that."
+    say: at(7, 0.13), // "Say your good news out loud, to someone's face": the platform, you say it to her
+    open: at(7, 0.4), // "and a card opens over their head"
+    sixty: at(7, 0.58), // "For sixty seconds": the card close, the dial starts
+    lands: at(7, 0.72), // "it shows how your news lands with them": her under the card
+    fold7: lineEnd(clips, 7) - 2, // the dial runs out, the card folds shut
+    plus: from(8), // "Plus one hundred": the scale, the marker to the teal end
+    joy: at(8, 0.3), // "means pure joy for you": her beaming under the teal card
+    minus: at(8, 0.48), // "Minus one hundred": the scale, the marker to the red end
+    enemy: at(8, 0.7), // "means they want you to fail": his grin under the red card
+    why: from(9), // "And it never tells you why.": your face, by the store door
+    wide: lineEnd(clips, 9) + 2, // the store wide, him snapping the bar
     halves: from(10), // "Half?" (his own voice)
     take: from(11), // "Every night, one chocolate bar, two halves.": insert, the two halves
     chew: at(11, 0.62), // "Tonight you watch him chew."
@@ -74,7 +78,8 @@ function times(clips: Clip[], to: number) {
     catShut: at(16, 0.3), // "So either a cat isn't a face, or a cat doesn't care.": the eye closes
     never: at(16, 0.62), // "You'll never know."
     phone: from(17), // insert: your phone, calling your sister
-    her: at(17, 0.2), // "Your sister. Six years of night shifts at a warehouse ..."
+    her: at(17, 0.2), // "Your sister. Six years of night shifts at a warehouse ...": the warehouse wide
+    herClose: at(17, 0.5), // waist up on her: the vest, the phone, the forklift behind
     tell: at(17, 0.84), // "You tell her."
     again: from(18) - 3, // "Say it again." (her own voice)
     you: from(19), // "You do. You're grinning into a phone."
@@ -93,11 +98,11 @@ const YOU_COUNTER = 1010;
 
 /** The clerk behind the counter: grey-green head, a green apron over a grey shirt. */
 const CLERK = { head: "#9fb59a", coat: "#7a7f8c", apron: "#3f7a6a" } as const;
-const Clerk: React.FC<{ frame: number; face: Look; held?: React.ReactNode }> = ({ frame, face, held }) => {
+const Clerk: React.FC<{ frame: number; face: Look; held?: React.ReactNode; arm?: [number, number] }> = ({ frame, face, held, arm }) => {
   const { x } = STORE.clerk;
   return (
     <g>
-      <Figure x={x} y={STORE.floor} scale={S} facing={-1} pose={held ? { ...STAND, armF: [70, 40] } : STAND} head={CLERK.head} coat={CLERK.coat} {...face}
+      <Figure x={x} y={STORE.floor} scale={S} facing={-1} pose={arm ? { ...STAND, armF: arm } : held ? { ...STAND, armF: [70, 40] } : STAND} head={CLERK.head} coat={CLERK.coat} {...face}
         blink={blinking(frame, 7)} time={frame} held={held} />
       <path d={`M${x - 22 * S} ${STORE.floor - 205 * S} h${44 * S} l${8 * S} ${150 * S} h${-60 * S}z`} fill={CLERK.apron} stroke={INK} strokeWidth={4} />
     </g>
@@ -122,9 +127,9 @@ const StoreShot: React.FC<{
   frame: number; k: T; cam: Camera; mood: ReturnType<typeof moodNow>; youX: number; youFace: Look; youPhone?: "ear" | "hand" | null;
   mjFacing?: 1 | -1; mjFace: Look; mjPose?: Pose; mjHeld?: React.ReactNode; youHeld?: React.ReactNode; youPose?: Pose;
   youFacing?: 1 | -1; mjX?: number; clerkFace?: Look; clerkHeld?: React.ReactNode; clerkCard?: boolean; youBubble?: boolean;
-  catEyes?: "open" | "one" | "shut";
+  catEyes?: "open" | "one" | "shut"; clerkArm?: [number, number]; counterExtra?: React.ReactNode;
 }> = ({ frame, k, cam, mood, youX, youFace, youPhone = null, mjFacing = 1, mjFace, mjPose = STAND, mjHeld, youHeld, youPose = STAND,
-  youFacing = 1, mjX = MJ_X, clerkFace, clerkHeld, clerkCard, youBubble, catEyes = "shut" }) => {
+  youFacing = 1, mjX = MJ_X, clerkFace, clerkHeld, clerkCard, youBubble, catEyes = "shut", clerkArm, counterExtra }) => {
   const ch = headAt(STORE.clerk.x, STORE.floor, S, STAND, -1);
   let you: Body = { x: youX, y: STORE.floor, scale: S, facing: youFacing, pose: youPose };
   const yh = headAt(you.x, you.y, S, youPose, youFacing);
@@ -139,9 +144,10 @@ const StoreShot: React.FC<{
   }
   const actors = (
     <>
-      <Clerk frame={frame} face={clerkFace ?? { ...EXPRESSIONS.neutral, lids: 0.35, look: { x: 0.4, y: 0.5 } }} held={clerkHeld} />
+      <Clerk frame={frame} face={clerkFace ?? { ...EXPRESSIONS.neutral, lids: 0.35, look: { x: 0.4, y: 0.5 } }} held={clerkHeld} arm={clerkArm} />
       {clerkCard && <Meter frame={frame} at={k.clerkCard} x={ch.x} headY={ch.y} r={ch.r} value={0} until={k.cat} />}
       <StoreCounter />
+      {counterExtra}
       <Cat {...STORE.cat} frame={frame} look={0.6} eyes={catEyes} />
       <Figure x={mjX} y={STORE.floor} scale={S} facing={mjFacing} pose={mjPose} head={MINJUN.head} coat={MINJUN.coat} {...mjFace}
         blink={blinking(frame, 2)} time={frame} held={mjHeld} />
@@ -164,113 +170,72 @@ const BAR = <Chocolate x={8} y={-4} scale={0.42} tilt={-10} />;
 const HALF = <Chocolate x={6} y={-4} scale={0.42} half="right" tilt={-10} />;
 const YOUR_HALF = <Chocolate x={6} y={-4} scale={0.42} half="left" tilt={-10} />;
 
-/** "The rule, once": the opening frame again, close on his card at -84 over his grin. */
-const ReplayInsert: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const f = ACADEMY.thumb.friend;
-  const h = headAt(f.x, f.y, f.scale, CHEER, -1);
-  const card = { x: h.x, y: h.y - h.r * 2.05 };
-  const cam = drift(camAt(frame, [[k.replay, insert(card.x - 20, card.y + 110, 1.7)], [k.scale, insert(card.x - 20, card.y + 80, 1.95)]]), frame, "replay", 2);
-  const actors = (
-    <>
-      <Figure x={f.x} y={f.y} scale={f.scale} facing={-1} pose={CHEER} head={MINJUN.head} coat={MINJUN.coat} {...EXPRESSIONS.happy}
-        mouth="open" eyes={1.1} look={{ x: 0.9, y: 0.15 }} time={frame} />
-      <Meter frame={frame} at={k.meter} x={h.x} headY={h.y} r={h.r} value={-84} until={k.scale} />
-    </>
-  );
-  return <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={<AcademyStreetBack cam={cam} mood="night" frame={frame} view="thumb" />} actors={actors} />;
-};
-
-/** Stamped flap tiles, the card's own lettering, centred at (x, y). */
-const Stamp: React.FC<{ x: number; y: number; text: string; color: string; size: number }> = ({ x, y, text, color, size }) => (
-  <g transform={`translate(${x} ${y})`}>
-    {text.split("").map((ch, i, all) => {
-      const cx = (i - (all.length - 1) / 2) * size * 0.62;
-      return (
-        <g key={i} transform={`translate(${cx} 0)`}>
-          <rect x={-size * 0.28} y={-size * 0.42} width={size * 0.56} height={size * 0.84} rx={size * 0.08} fill={color} stroke={INK} strokeWidth={4} />
-          <text x={0} y={size * 0.26} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={size * 0.66} fill={PAPER}>{ch}</text>
-        </g>
-      );
-    })}
-  </g>
-);
-
-/** The paper scale that draws itself, upright: teal above (+100), a grey zero in the middle, red below (-100); its
- *  marker goes to the teal end on "Plus one hundred" and the red end on "Minus one hundred". */
-const ScaleSheet: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const W = 760, H = 900, x = 250, y0 = 110, y1 = H - 110, mid = H / 2;
-  const drawn = k.scale + 8, done = k.scale + 44;
-  const toPlus = ramp(frame, k.plus + 4, k.plus + 22), toMinus = ramp(frame, k.minus + 2, k.minus + 26);
-  const m = mid + (y0 - mid) * toPlus + (y1 - y0) * toMinus;
-  const cam = drift(camAt(frame, [[k.scale, { x: 960, y: 540, zoom: 1.0 }], [k.wide, { x: 960, y: 540, zoom: 1.06 }]]), frame, "scale", 2);
-  const sheet = (
-    <Sheet frame={frame} at={k.scale} x={960} y={540} w={W} h={H} tilt={-1.5}>
-      <DrawLine d={`M${x} ${mid} V${y0}`} from={drawn} to={done} color={TEAL} width={40} />
-      <DrawLine d={`M${x} ${mid} V${y1}`} from={drawn} to={done} color={CRIMSON} width={40} />
-      {frame >= done && [-1, -0.5, 0, 0.5, 1].map((t) => <line key={t} x1={x - 70} y1={mid + t * (y1 - mid)} x2={x - 34} y2={mid + t * (y1 - mid)} stroke={INK} strokeWidth={6} />)}
-      {frame >= done - 6 && <Stamp x={x + 230} y={y0} text="+100" color={TEAL} size={120} />}
-      {frame >= done && <Stamp x={x + 160} y={mid} text="0" color="#9a9a94" size={120} />}
-      {frame >= done + 6 && <Stamp x={x + 230} y={y1} text="-100" color={CRIMSON} size={120} />}
-      {frame >= k.plus && <path d={`M${x - 32} ${m} l-44 -28 v56z`} fill={INK} />}
-    </Sheet>
-  );
-  return (
-    <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }}
-      back={<rect x={-1400} y={-900} width={4800} height={2600} fill="#2a2d38" />} actors={sheet} />
-  );
-};
-
-/** Line 9: the store. Him at the counter snapping the bar, you by the door; your phone; "Remember that". */
+/** Line 9: "And it never tells you why." on your face by the store door, looking across at him; then, in the gap, the
+ *  store wide: him at the counter snapping the bar. */
 const StoreRule: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
-  const on = current(frame, [[k.wide, "wide"], [k.calls, "calls"], [k.remember, "remember"]]);
+  const on = current(frame, [[k.why, "why"], [k.wide, "wide"]]);
   const you = headAt(STORE.door.x, STORE.floor, S, STAND, 1);
   const cams: Record<typeof on, Camera> = {
-    wide: camAt(frame, [[k.wide, REF], [k.calls, { x: 990, y: 600, zoom: 1.12 }]]),
-    calls: camAt(frame, [[k.calls, closeUp(you.x + 40, you.y + 70, 2.2)], [k.remember, closeUp(you.x + 40, you.y + 70, 2.35)]]),
-    remember: camAt(frame, [[k.remember, closeUp(you.x + 20, you.y, 2.6)], [k.halves, closeUp(you.x + 20, you.y, 2.8)]]),
+    why: camAt(frame, [[k.why, closeUp(you.x + 30, you.y, 2.55)], [k.wide, closeUp(you.x + 20, you.y, 2.8)]]),
+    wide: camAt(frame, [[k.wide, REF], [k.halves, { x: 990, y: 600, zoom: 1.08 }]]),
   };
   const cam = drift(cams[on], frame, "rule-store", 3);
-  const glance = ramp(frame, k.calls + 6, k.calls + 20);
-  const snapped = frame >= k.wide + 40;
-  const youFace: Look = on === "calls"
-    ? { ...EXPRESSIONS.sceptical, lids: 0.2, look: { x: mix(0.8, 0.1, glance), y: mix(0, 0.9, glance) } }
-    : on === "remember" ? { brows: "flat", lids: 0.25, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.1 } }
-    : { brows: "raised", lids: 0, mouth: "smile", eyes: 1.05, look: { x: 0.9, y: 0.1 } };
+  const snapped = frame >= k.wide + 12;
+  const down = ramp(frame, k.why + 26, k.why + 40);
+  const youFace: Look = on === "why"
+    ? { brows: "worry", lids: mix(0.15, 0.4, down), mouth: "flat", eyes: 1, look: { x: mix(0.9, 0.5, down), y: mix(0, 0.5, down) } }
+    : { brows: "flat", lids: 0.2, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.1 } };
   return (
-    <StoreShot frame={frame} k={k} cam={cam} mood={mood} youX={STORE.door.x} youFace={youFace} youHeld={LETTER} youPhone={on === "calls" ? "hand" : null}
+    <StoreShot frame={frame} k={k} cam={cam} mood={mood} youX={STORE.door.x} youFace={youFace} youHeld={LETTER}
       mjFace={{ ...EXPRESSIONS.happy, look: { x: 0.6, y: 0.5 } }} mjHeld={snapped ? HALF : BAR} mjPose={{ ...STAND, armF: [55, 70], armB: snapped ? [40, 60] : [-7, 8] }} />
   );
 };
 
-/** Lines 7-9: the replay, the scale, the store. */
+/** Lines 7-9: the rule, acted (Rule.Explain.tsx), then your face and the store. */
 const RuleShots: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
-  if (frame < k.scale) return <ReplayInsert frame={frame} k={k} />;
-  if (frame < k.wide) return <ScaleSheet frame={frame} k={k} />;
+  if (frame < k.why) return <Explain frame={frame} k={k} />;
   return <StoreRule frame={frame} k={k} mood={mood} />;
 };
 
-/** The insert: the two halves in his palms over the counter; one goes to your hand. */
+/** The insert: the bar in his two palms over the counter bends and snaps (ink snap strokes, crumbs falling); the halves
+ *  are not equal and the bigger one is yours; your hand comes in, stops short, then takes it; his half goes up to his
+ *  mouth. (v4.1 snapped it in ten frames and held three seconds; outside review.) */
 const HalvesInsert: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
-  const split = ramp(frame, k.take, k.take + 10);
-  const give = ramp(frame, k.take + 22, k.take + 40);
-  const cam = drift(camAt(frame, [[k.take, { x: 960, y: 560, zoom: 1.0 }], [k.chew, { x: 960, y: 560, zoom: 1.08 }]]), frame, "halves", 2);
+  const t = frame - k.take;
+  const bend = ramp(t, 2, 14) * 12;
+  const part = ramp(t, 14, 24);
+  const cam = drift(camAt(frame, [[k.take, { x: 960, y: 580, zoom: 1.0 }], [k.chew, { x: 940, y: 560, zoom: 1.12 }]]), frame, "halves", 2);
   const palm = (x: number, y: number, flip: 1 | -1) => (
     <g transform={`translate(${x} ${y}) scale(${flip} 1)`}>
       <rect x={-60} y={60} width={140} height={700} rx={60} fill={MINJUN.coat} stroke={INK} strokeWidth={8} transform="rotate(-18)" />
       <ellipse cx={0} cy={30} rx={150} ry={92} fill={MINJUN.head} stroke={INK} strokeWidth={8} />
     </g>
   );
-  const yours = ramp(frame, k.take + 10, k.take + 28);
-  const leftX = mix(900, 800, split) - give * 260;
+  // your hand: in from the left, stops short (you hesitate), then takes the bigger half and draws it away
+  const come = ramp(t, 24, 38), take = ramp(t, 52, 62), away = ramp(t, 64, 82);
+  const hand = { x: mix(-300, 470, come) + take * 150 - away * 520, y: mix(820, 700, come) - take * 60 + away * 40 };
+  // his: the right half (the smaller) goes up toward his mouth after you take yours
+  const eat = ramp(t, 70, 99);
+  const right = { x: 960 + part * 120 + eat * 160, y: 600 - eat * 300 };
+  const leftFree = { x: 960 - part * 120, y: 600 };
+  const left = t < 60 ? leftFree : { x: hand.x + 120, y: hand.y - 90 };
+  const half = (at: { x: number; y: number }, side: "left" | "right", sx: number, rot: number) => (
+    <g transform={`translate(${at.x} ${at.y}) rotate(${rot}) scale(${4.2 * sx} 4.2)`}><Chocolate x={0} y={0} half={side} /></g>
+  );
   const actors = (
     <g>
-      {/* his two palms, the bar snapped across them; the left half goes to your hand */}
-      {palm(mix(1060, 1160, split), 620, 1)}
-      <Chocolate x={mix(1020, 1120, split)} y={590} scale={4.2} half="right" tilt={mix(0, 8, split)} />
-      {palm(leftX, 640, -1)}
-      <Chocolate x={leftX + 40} y={600 + give * 10} scale={4.2} half="left" tilt={mix(0, -8, split)} />
-      {/* your hand, from the left, coming for your half */}
-      <g transform={`translate(${mix(-260, 420, yours) - give * 60} 800) scale(-1 1)`}>
+      {palm(right.x + 70, right.y + 40, 1)}
+      {half(right, "right", 0.8, bend - part * 4 + eat * 10)}
+      {palm(leftFree.x - 150 - away * 200, leftFree.y + 40 + away * 120, -1)}
+      {half(left, "left", 1.25, -bend + part * 4 - take * 10)}
+      <SnapLines frame={frame} at={k.take + 14} x={960} y={590} r={70} count={7} tilt={-20} />
+      {/* crumbs off the break */}
+      {t >= 14 && t < 40 && [0, 1, 2, 3].map((i) => (
+        <rect key={i} x={950 + (i - 1.5) * 18 + (i - 1.5) * (t - 14) * 2} y={610 + Math.pow(t - 14, 2) * (0.8 + i * 0.15)} width={12} height={10}
+          fill="#5a3422" transform={`rotate(${(t - 14) * 20 * (i % 2 ? 1 : -1)} ${955 + (i - 1.5) * 18} ${615 + Math.pow(t - 14, 2)})`} />
+      ))}
+      {/* your hand, from the left */}
+      <g transform={`translate(${hand.x} ${hand.y}) scale(-1 1)`}>
         <rect x={0} y={-56} width={900} height={112} rx={50} fill="#3b3e47" stroke={INK} strokeWidth={8} />
         <circle cx={0} cy={0} r={72} fill={MUSTARD} stroke={INK} strokeWidth={8} />
       </g>
@@ -331,15 +296,39 @@ const ClerkShots: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNo
   const youFace: Look = on === "you" ? { brows: "sad", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 0.8, y: 0.3 } }
     : frame >= k.clerkCard + 6 ? { brows: "raised", lids: 0, mouth: "flat", eyes: 1.1, look: { x: 0.8, y: -0.7 } }
     : { brows: "raised", lids: 0, mouth: frame >= k.show ? "open" : "smile", eyes: 1.1, look: { x: 0.9, y: 0 } };
+  // he sweeps the bar across the scanner (a red flash and the till lighting at the beep); then, on "Receipt?", the till
+  // prints, he tears the slip and holds it out to you, and keeps holding it out
   const scanning = frame < k.show + 10;
+  const sweep = ramp(frame, k.clerk + 8, k.clerk + 30);
+  const beep = frame >= k.clerk + 18 && frame < k.clerk + 26;
+  const print = ramp(frame, k.receipt - 14, k.receipt - 2);
+  const offer = ramp(frame, k.receipt, k.receipt + 8);
+  const tear = frame >= k.receipt - 2 && frame < k.receipt + 2 ? 4 : 0;
+  const receipt = frame >= k.receipt - 14
+    ? (
+      <g transform={`translate(${-4 + tear} -4) rotate(${mix(8, -4, offer)})`}>
+        <rect x={-14} y={0} width={28} height={10 + 70 * print} rx={2} fill={PAPER} stroke={INK} strokeWidth={3} />
+        {Array.from({ length: Math.floor(print * 5) }, (_, i) => <rect key={i} x={-8} y={14 + i * 13} width={i % 2 ? 10 : 16} height={4} rx={2} fill={INK} opacity={0.5} />)}
+        <path d={`M-14 ${10 + 70 * print} l5 5 l5 -5 l5 5 l5 -5 l5 5 l4 -5`} fill="none" stroke={INK} strokeWidth={2} />
+      </g>
+    ) : undefined;
+  const clerkArm: [number, number] | undefined = scanning ? [mix(40, 100, sweep), mix(60, 10, sweep)]
+    : receipt ? [mix(40, 95, offer), mix(50, 0, offer)] : undefined;
   const clerkFace: Look = on === "receipt"
     ? { brows: "flat", lids: 0.4, mouth: Math.floor((frame - k.receipt) / 5) % 2 ? "o" : "flat", eyes: 1, look: { x: 0.8, y: 0.1 } }
     : { brows: "none", lids: 0.4, mouth: "flat", eyes: 1, look: scanning ? { x: 0.3, y: 0.7 } : { x: 0.8, y: 0.1 } };
+  const flash = beep ? (
+    <g>
+      <rect x={1556} y={STORE.counter.top - 40} width={68} height={42} rx={6} fill={CRIMSON} opacity={0.35} />
+      <line x1={1566} y1={STORE.counter.top - 36} x2={1614} y2={STORE.counter.top - 36} stroke={CRIMSON} strokeWidth={6} strokeLinecap="round" />
+      <rect x={STORE.till.x - 58} y={STORE.till.y - 40} width={116} height={64} rx={4} fill="#ffffff" opacity={0.6} />
+    </g>
+  ) : null;
   return (
     <StoreShot frame={frame} k={k} cam={cam} mood={mood} youX={YX} youFace={youFace} youHeld={LETTER}
       youPose={{ ...STAND, armF: [mix(30, 100, up), mix(60, 10, up)] }} youBubble mjX={1150}
       mjFace={{ brows: "none", lids: 0.4, mouth: Math.floor(frame / 6) % 2 ? "flat" : "smile", eyes: 1, look: { x: 0.5, y: 0.3 } }} mjHeld={HALF}
-      clerkFace={clerkFace} clerkHeld={scanning ? <Chocolate x={6} y={-4} scale={0.4} half="right" /> : undefined} clerkCard />
+      clerkFace={clerkFace} clerkHeld={scanning ? <Chocolate x={6} y={-4} scale={0.4} half="right" /> : receipt} clerkArm={clerkArm} counterExtra={flash} clerkCard />
   );
 };
 
@@ -382,12 +371,28 @@ const PhoneInsert: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodN
   );
 };
 
+/** "And nothing opens over a phone.": your phone close, in the call (her avatar), then the camera tilts up off it into
+ *  the empty air above, where a card would open. */
+const PhoneAir: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
+  const cam = drift(camAt(frame, [[k.nothing, { x: 1180, y: 560, zoom: 1.5 }], [k.nothing + 18, { x: 1180, y: 540, zoom: 1.5 }], [k.fade, { x: 1170, y: 40, zoom: 1.6 }]]), frame, "phone-air", 2);
+  const options = { ...phone.defaults, mode: "call" as const, contact: JIYOON.head, thumb: null, behind: "desk" as const };
+  const props = { cam, mood, frame, options };
+  return (
+    <LookContext.Provider value={storeLook(mood, cam)}>
+      <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }}
+        back={<><StoreBack cam={cam} mood={mood} frame={frame} /><rect x={-1400} y={-900} width={4800} height={2600} fill="#0d0f18" opacity={0.45} /></>}
+        actors={phone.Mid?.(props)} />
+    </LookContext.Provider>
+  );
+};
+
 /** Your sister at the warehouse, the phone to her ear (her back arm), the vest, the hair tied back. */
 const DepotShot: React.FC<{ frame: number; k: T; cam: Camera; face: Look; mood: ReturnType<typeof moodNow> }> = ({ frame, k, cam, face, mood }) => {
   const d = DEPOT.jiyoon;
   const e = earPhone({ x: d.x, y: d.y, scale: d.scale, facing: d.facing, pose: STAND });
   const pose = e.pose;
-  const lift = linear(frame, k.her - 20, k.tell + 20);
+  // the forklift crosses behind her through the wide and the waist-up shot
+  const lift = mix(0.08, 0.72, linear(frame, k.her, k.tell));
   const actors = (
     <>
       <Phone at={e.phone} scale={d.scale} facing={-1} />
@@ -405,19 +410,21 @@ const DepotShot: React.FC<{ frame: number; k: T; cam: Camera; face: Look; mood: 
 
 /** Lines 11-13: the call. */
 const CallShots: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
-  const on = current(frame, [[k.phone, "phone"], [k.her, "her"], [k.tell, "tell"], [k.again, "again"], [k.you, "grin"], [k.nothing, "nothing"], [k.fade, "fade"]]);
+  const on = current(frame, [[k.phone, "phone"], [k.her, "her"], [k.herClose, "herClose"], [k.tell, "tell"], [k.again, "again"], [k.you, "grin"], [k.nothing, "nothing"], [k.fade, "fade"]]);
   if (on === "phone") return <PhoneInsert frame={frame} k={k} mood={mood} />;
   const jh = headAt(DEPOT.jiyoon.x, DEPOT.jiyoon.y, DEPOT.jiyoon.scale, STAND, -1);
-  if (on === "her" || on === "again" || on === "nothing") {
-    const cams: Record<"her" | "again" | "nothing", Camera> = {
-      her: camAt(frame, [[k.her, { x: 1060, y: 640, zoom: 1.2 }], [k.tell, { x: 1090, y: 630, zoom: 1.4 }]]),
-      again: camAt(frame, [[k.again, closeUp(jh.x - 30, jh.y, 2.6)], [k.you, closeUp(jh.x - 30, jh.y, 2.75)]]),
-      nothing: camAt(frame, [[k.nothing, { x: jh.x - 20, y: jh.y - 40, zoom: 2.0 }], [k.fade, { x: jh.x - 20, y: jh.y - 150, zoom: 2.0 }]]),
+  if (on === "nothing") return <PhoneAir frame={frame} k={k} mood={mood} />;
+  if (on === "her" || on === "herClose" || on === "again") {
+    const cams: Record<"her" | "herClose" | "again", Camera> = {
+      her: camAt(frame, [[k.her, { x: 1060, y: 640, zoom: 1.2 }], [k.herClose, { x: 1075, y: 640, zoom: 1.3 }]]),
+      // waist up: her head high in frame, the vest's stripe and the phone readable, the aisle and the forklift behind
+      herClose: camAt(frame, [[k.herClose, { x: jh.x - 70, y: jh.y + 120, zoom: 2.35 }], [k.tell, { x: jh.x - 60, y: jh.y + 110, zoom: 2.5 }]]),
+      again: camAt(frame, [[k.again, closeUp(jh.x - 70, jh.y - 10, 2.9)], [k.you, closeUp(jh.x - 70, jh.y - 10, 3.05)]]),
     };
-    const faces: Record<"her" | "again" | "nothing", Look> = {
+    const faces: Record<"her" | "herClose" | "again", Look> = {
       her: { brows: "raised", lids: 0.2, mouth: "smile", eyes: 1, look: { x: 0.4, y: 0.4 } },
-      again: { brows: "raised", lids: 0.3, mouth: "open", eyes: 1.1, look: { x: 0.8, y: 0 } },
-      nothing: { ...EXPRESSIONS.happy, lids: 0.35, look: { x: 0.6, y: 0.2 } },
+      herClose: { brows: "raised", lids: 0.15, mouth: frame > k.herClose + 30 ? "open" : "smile", eyes: 1.1, look: { x: 0.6, y: 0.1 } },
+      again: { brows: "raised", lids: 0.45, mouth: Math.floor((frame - k.again) / 6) % 3 === 2 ? "smile" : "open", eyes: 1.05, look: { x: 0.8, y: 0 } },
     };
     return <DepotShot frame={frame} k={k} cam={drift(cams[on], frame, "depot", 3)} face={faces[on]} mood={mood} />;
   }
@@ -425,7 +432,8 @@ const CallShots: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow
   const fading = ramp(frame, k.fade + 8, k.fade + 40);
   const cams: Record<"tell" | "grin" | "fade", Camera> = {
     tell: camAt(frame, [[k.tell, closeUp(you.x + 40, you.y, 2.3)], [k.again, closeUp(you.x + 40, you.y, 2.4)]]),
-    grin: camAt(frame, [[k.you, closeUp(you.x + 60, you.y, 2.5)], [k.nothing, closeUp(you.x + 60, you.y, 2.62)]]),
+    // your grin, waist up and wider, with him at the counter behind you chewing (the friend you just read)
+    grin: camAt(frame, [[k.you, { x: 930, y: 700, zoom: 1.5 }], [k.nothing, { x: 900, y: 690, zoom: 1.6 }]]),
     fade: camAt(frame, [[k.fade, closeUp(you.x + 30, you.y, 2.7)], [k.end, closeUp(you.x + 30, you.y, 2.95)]]),
   };
   const faces: Record<"tell" | "grin" | "fade", Look> = {
@@ -435,7 +443,7 @@ const CallShots: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow
   };
   return (
     <StoreShot frame={frame} k={k} cam={drift(cams[on], frame, "call", 3)} mood={mood} youX={STORE.door.x} youFace={faces[on]} youPhone="ear" youHeld={LETTER}
-      mjFace={{ brows: "none", lids: 0.4, mouth: "flat", eyes: 1, look: { x: 0.5, y: 0.3 } }} mjHeld={HALF} />
+      mjFace={{ brows: "none", lids: 0.4, mouth: on === "grin" && Math.floor(frame / 6) % 2 ? "flat" : "smile", eyes: 1, look: { x: 0.5, y: 0.3 } }} mjHeld={HALF} />
   );
 };
 
@@ -454,6 +462,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       {part === "cat" && <CatShots frame={frame} k={k} mood={mood} />}
       {part === "call" && <CallShots frame={frame} k={k} mood={mood} />}
       <MeterSound at={k.meter} />
+      <ExplainSound k={k} />
       {/* the clerk's card: the snap, no flutter (the flaps don't move), one click */}
       <Sequence from={k.clerkCard} durationInFrames={20}><Audio src={staticFile("sfx/snap.wav")} /></Sequence>
       <Sequence from={k.clerkCard + 10} durationInFrames={10}><Audio src={staticFile("sfx/click.wav")} /></Sequence>

@@ -11,9 +11,11 @@ export function seatsTimes(clips: Clip[], to: number) {
   const g0 = end(72), gap = from(73) - g0;
   const inGap = (p: number) => Math.round(g0 + gap * p);
   return {
-    // 62 one plain fact: the curve, the top four per cent
+    // 62 one plain fact: your maths teacher lists the mock scores on the board; then (outside review of v4.1: no bell curve,
+    // no blank paper) straight to a hundred heads, and the top four places light with TOP 4% on "the top 4 per cent"
     curve: from(62),
     pct: at(62, 0.42),
+    top4: at(62, 0.68),
     // 63 a hundred of you, four places; you fourth, him fifth
     hundred: from(63),
     heads: at(63, 0.3), // "A hundred of you."
@@ -50,22 +52,30 @@ export function seatsTimes(clips: Clip[], to: number) {
     drop: inGap(0.6), // ... then drops
     pocket: inGap(0.7), // he looks at the half, then puts both halves in his pocket
     cat: inGap(0.86), // the cat on the crate watches you go
-    // 73-74 the next night: you alone, one drink; the clerk looks past you at the door, then at you
+    // 73-74 the next night: a second on the glass door sliding open on the dark street (the reset), then the empty spot by
+    // the chiller where your best friend always stands, you walking past it alone; the clerk looks past you, then at you
     nextNight: from(73),
+    empty: from(73) + 32,
     clerk: from(74), // his "Just you tonight?"
     clerkYou: at(74, 0.6),
-    // 75 you climb: fourth, third, second
+    // 75 you climb: a tally, 4 -> 3 -> 2
     climb: from(75),
+    fourth2: at(75, 0.4),
     third: at(75, 0.6),
     second: at(75, 0.85),
-    // 76-78 the room redder, him -91; the closer, the sharper; him close, still -91
+    // 76-78 the room redder, him -91; the closer, the sharper (his desk slides toward yours in three steps, his card
+    // deeper red each time); him close, still -91
     red: from(76),
     redTag: at(76, 0.15),
     cuts: from(77),
+    nearer: at(77, 0.36),
+    nearest: at(77, 0.68),
     down: from(78),
-    // 79 second place; the desk beside you empty
+    // 79 second place; the room, the bench beside you empty; then from above, held: his empty desk, his chocolate half
+    // untouched
     top: from(79),
-    pull: at(79, 0.4),
+    pull: at(79, 0.3),
+    emptyDesk: at(79, 0.55),
     end: to,
   };
 }

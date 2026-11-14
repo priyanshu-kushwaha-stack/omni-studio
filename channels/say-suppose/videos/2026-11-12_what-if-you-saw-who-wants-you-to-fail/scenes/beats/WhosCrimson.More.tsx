@@ -1,7 +1,9 @@
-// Who's Red, more uses of the card (script v3): the mirror in the school toilets (31: no snap; your eyes go above
-// your reflection's head, then above your own); the tour group outside the station (32-33: eleven cards snap open
-// together and click to zero in a row; the group flows round you like water round a post); the bus home (34-36: a
-// little kid in a cap, feet swinging, "What did you win?", +77, a grin with every tooth).
+// Who's Red, more uses of the card (script v3): the mirror in the school toilets (31: no snap; one shot over your
+// shoulder with the sink, your back and your reflection together, the empty air above the reflection, then the focus
+// racks to the empty air above your own head); the tour group outside the station (32-33: eleven cards ripple open down
+// the group, in one row above the heads like a timetable, and click to zero; the group flows round you like water round
+// a post); the bus home (34-36: a little kid in a cap, feet swinging, "What did you win?", +77, a grin with every tooth;
+// then, outside, the bus pulls away). Outside review of v4.1, 2:40-3:15.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { dir, joints, LIMB, SEATED, seatedY, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -9,7 +11,7 @@ import { bus, street } from "@whatif/kit/sets";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { CRIMSON, INK, PAPER, TEAL } from "@whatif/kit/theme";
+import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { headAt, Letter, Meter } from "../parts";
 import { blinking, camAt, current, HERO, mix, PASTELS, ramp } from "../shared";
 import { FlatShot, SetShot } from "./WhosCrimson.Common";
@@ -38,10 +40,12 @@ const TileWall: React.FC = () => (
   </g>
 );
 
-const MIRROR = { x: 620, y: 110, w: 680, h: 600 } as const;
-/** Your reflection, big, facing out of the glass (-1): the letter up by your face in the raised back hand. */
-const REFL = { x: 960, y: 960, scale: 2.0 } as const;
+const MIRROR = { x: 760, y: 90, w: 640, h: 600 } as const;
+/** Your reflection, facing out of the glass (-1): the letter up by your face in the raised back hand. */
+const REFL = { x: 1090, y: 950, scale: 1.8 } as const;
 const REFL_POSE: Pose = { ...STAND, armB: [-150, -20], armF: [10, 20] };
+/** Your own head from behind, in the near foreground at the lower left (world). */
+const BACK = { x: 640, y: 840, r: 132 } as const;
 
 /** The mirror over the sink: glass, frame, the basin and tap below, and your reflection inside the glass. */
 const MirrorAndSink: React.FC<{ frame: number; face: object }> = ({ frame, face }) => {
@@ -54,7 +58,7 @@ const MirrorAndSink: React.FC<{ frame: number; face: object }> = ({ frame, face 
       <g clipPath="url(#mirror-glass)">
         <path d={Array.from({ length: 10 }, (_, i) => `M${m.x + i * 90} ${m.y} V${m.y + m.h}`).join(" ")} stroke="#aec4c6" strokeWidth={3} />
         <Figure {...HERO} x={REFL.x} y={REFL.y} scale={REFL.scale} facing={-1} pose={REFL_POSE} {...face} blink={blinking(frame, 1)} time={frame} />
-        <Letter x={hand.x} y={hand.y + 30} scale={0.8} tilt={-8} />
+        <Letter x={hand.x} y={hand.y + 30} scale={0.72} tilt={-8} />
         {[0, 1].map((i) => <path key={i} d={`M${m.x + 80 + i * 260} ${m.y} l90 0 l-260 ${m.h} l-90 0Z`} fill="#fff" opacity={0.12} />)}
       </g>
       <rect x={m.x} y={m.y} width={m.w} height={m.h} rx={10} fill="none" stroke="#8a949c" strokeWidth={18} />
@@ -66,28 +70,53 @@ const MirrorAndSink: React.FC<{ frame: number; face: object }> = ({ frame, face 
   );
 };
 
-type MirrorView = "glass" | "own";
+/** You from behind, big in the near foreground: the back of your head and its tuft, the teal scarf, your shoulders,
+ *  and the raised arm holding the letter (its back) up at the glass, off to the left so the reflection stays clear. `up` 0..1 tips your head back to look above it. */
+const YouFromBehind: React.FC<{ up: number }> = ({ up }) => {
+  const { x, y, r } = BACK;
+  const hy = y - up * 10;
+  return (
+    <g>
+      <rect x={x - 250} y={y + r - 30} width={500} height={600} rx={170} fill={INK} />
+      <polyline points={`${x - 200},${y + r + 40} ${x - 300},${y + 10} ${x - 330},${y - 120}`} fill="none" stroke={INK} strokeWidth={46} strokeLinecap="round" strokeLinejoin="round" />
+      <g transform={`translate(${x - 336} ${y - 96}) rotate(6)`}>
+        <rect x={-64} y={-170} width={128} height={172} rx={6} fill="#efe6d2" stroke={INK} strokeWidth={5} />
+        {[0, 1, 2].map((i) => <line key={i} x1={-40} y1={-140 + i * 24} x2={44} y2={-140 + i * 24} stroke={INK} strokeWidth={5} opacity={0.12} />)}
+      </g>
+      <circle cx={x - 330} cy={y - 100} r={24} fill={MUSTARD} stroke={INK} strokeWidth={5} />
+      <path d={`M${x - 220} ${y + r - 40} Q${x} ${y + r + 30} ${x + 220} ${y + r - 40} L${x + 200} ${y + r + 40} Q${x} ${y + r + 100} ${x - 200} ${y + r + 40}Z`}
+        fill={TEAL} stroke={INK} strokeWidth={8} strokeLinejoin="round" />
+      <circle cx={x} cy={hy} r={r} fill={MUSTARD} stroke={INK} strokeWidth={9} />
+      <path d={`M${x - 8} ${hy - r + 4} q${10 - up * 6} -58 46 -18`} fill="none" stroke={INK} strokeWidth={16} strokeLinecap="round" />
+    </g>
+  );
+};
 
+type MirrorView = "glass" | "air" | "own";
+
+/** Line 31 as a test, in one set-up over your shoulder: the sink, your back and your reflection; "Nothing opens.", the
+ *  camera finds the empty air above the reflection; "Or the one card you can't see is yours.", the focus racks off the
+ *  glass to the empty air above your real head. */
 export const MirrorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const view = current<MirrorView>(frame, [[0, "glass"], [k.ownHead, "own"]]);
-  if (view === "glass") {
-    const saying = frame < Math.round(mix(k.mirror, k.mirrorUp, 0.6));
-    const up = ramp(frame, k.mirrorUp, k.mirrorUp + 10);
-    const face = { brows: up > 0.5 ? "worry" as const : "raised" as const, lids: 0, mouth: saying ? "open" as const : "flat" as const, eyes: 1.05,
-      look: { x: mix(0.05, 0.1, up), y: mix(0.05, -1, up) } };
-    const cam = drift(camAt(frame, [[k.mirror, { x: 960, y: 470, zoom: 1.4 }], [k.mirrorUp, { x: 960, y: 420, zoom: 1.5 }], [k.ownHead, { x: 960, y: 380, zoom: 1.6 }]]), frame, "mirror", 2);
-    return <FlatShot cam={cam} mood={mood} back={<TileWall />} actors={<MirrorAndSink frame={frame} face={face} />} />;
-  }
-  // side on, in front of the glass: your eyes go to the air over your own head
-  const yx = 700, yy = 1000, s = 1.3;
-  const h = headAt(yx, yy, s, STAND);
-  const cam = drift(camAt(frame, [[k.ownHead, closeUp(h.x + 30, h.y - 30, 2.6)], [k.tour, closeUp(h.x + 30, h.y - 110, 2.6)]]), frame, "own", 2);
+  const view = current<MirrorView>(frame, [[0, "glass"], [k.mirrorUp, "air"], [k.ownHead, "own"]]);
+  const saying = frame >= k.mirror + 50 && frame < k.mirror + 80;
+  const up = ramp(frame, k.mirrorUp, k.mirrorUp + 10);
+  const face = { brows: up > 0.5 ? "worry" as const : "raised" as const, lids: 0, mouth: saying ? "open" as const : "flat" as const, eyes: 1.05,
+    look: { x: mix(0.05, 0.1, up), y: mix(0.05, -1, up) } };
+  const rack = ramp(frame, k.ownHead, k.ownHead + 14);
+  const cams: Record<MirrorView, Camera> = {
+    glass: camAt(frame, [[k.mirror, { x: 990, y: 560, zoom: 1.12 }], [k.mirrorUp, { x: 1000, y: 540, zoom: 1.2 }]]),
+    air: camAt(frame, [[k.mirrorUp, { x: 1060, y: 420, zoom: 1.4 }], [k.ownHead, { x: 1070, y: 380, zoom: 1.48 }]]),
+    own: camAt(frame, [[k.ownHead, { x: 760, y: 560, zoom: 1.35 }], [k.tourIn, { x: 740, y: 540, zoom: 1.45 }]]),
+  };
+  const cam = drift(cams[view], frame, "mirror", 2);
   return (
     <FlatShot cam={cam} mood={mood} back={<TileWall />} actors={
       <>
-        <rect x={1060} y={110} width={40} height={600} fill="#8a949c" stroke={INK} strokeWidth={5} />
-        <Figure {...HERO} x={yx} y={yy} scale={s} pose={{ ...STAND, armF: [60, 70] }} brows="worry" lids={0.1} mouth="flat" eyes={1.1}
-          look={{ x: 0.15, y: -1 }} blink={blinking(frame, 1)} time={frame} held={<Letter x={0} y={8} scale={0.42} tilt={20} />} />
+        <filter id="mirror-rack" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation={mix(0, 6, rack)} /></filter>
+        <filter id="mirror-near" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation={mix(3, 0, rack)} /></filter>
+        <g filter="url(#mirror-rack)"><MirrorAndSink frame={frame} face={face} /></g>
+        <g filter="url(#mirror-near)"><YouFromBehind up={view === "own" ? ramp(frame, k.ownHead + 8, k.ownHead + 20) : 0} /></g>
       </>
     } />
   );
@@ -117,7 +146,12 @@ const StationSign: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   </g>
 );
 
-export const tourTagAt = (k: CrimsonTimes, i: number) => k.tourTag + (i % 3);
+/** The eleven cards open one after another down the group, a quick ripple (3 frames apart) from the guide back. */
+export const tourTagAt = (k: CrimsonTimes, i: number) => k.tourTag + i * 3;
+
+/** All eleven cards hang in one row (their bottoms on this line), clear of every head, yours included: a timetable. */
+const CARD_ROW = 588;
+const CARD_SCALE = 0.85;
 
 function tourist(frame: number, k: CrimsonTimes, i: number) {
   const speed = (TOUR.start - TOUR.you) / Math.max(30, k.tourTag - k.tour);
@@ -135,7 +169,7 @@ export const TourShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
   const yPose: Pose = { ...STAND, armF: LETTER_UP };
   const yh = headAt(TOUR.you, TOUR.y, 1.2, yPose);
   const cams: Record<TourView, Camera> = {
-    group: camAt(frame, [[k.tour, { x: 1060, y: 700, zoom: 1.05 }], [k.tourTag - 40, { x: 1000, y: 720, zoom: 1.12 }]]),
+    group: camAt(frame, [[k.tourIn, { x: 1060, y: 700, zoom: 1.05 }], [k.tourTag - 40, { x: 1000, y: 720, zoom: 1.12 }]]),
     say: camAt(frame, [[k.tourTag - 40, { x: 900, y: 760, zoom: 1.45 }], [k.tourTag + 30, { x: 900, y: 750, zoom: 1.5 }]]),
     zeros: camAt(frame, [[k.tourTag + 30, { x: 960, y: 700, zoom: 1.08 }], [k.tourClose, { x: 940, y: 710, zoom: 1.14 }]]),
     flow: camAt(frame, [[k.tourClose, closeUp(yh.x + 40, yh.y - 20, 2.3)], [k.bus, closeUp(yh.x + 40, yh.y - 20, 2.45)]]),
@@ -148,7 +182,8 @@ export const TourShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
         facing={-1} pose={p.i === 0 ? { ...p.pose, armF: [40, 50] } : p.pose} brows={frame >= k.tourTag ? "raised" : "none"} lids={0.1}
         mouth={p.i % 3 === 0 ? "smile" : "flat"} eyes={1} look={{ x: frame >= k.tourTag && Math.abs(p.x - TOUR.you) < 260 ? -0.8 : 0.7, y: 0.05 }}
         blink={blinking(frame, p.i + 2)} time={frame} held={p.i === 0 ? <Flag /> : undefined} />
-      <Meter frame={frame} at={tourTagAt(k, p.i)} x={p.head.x} headY={p.head.y} r={p.head.r} value={0} until={k.bus} tilt={p.i % 2 ? 3 : -3} />
+      <Meter frame={frame} at={tourTagAt(k, p.i)} x={p.head.x} headY={CARD_ROW + p.head.r * (1 + 0.525 * CARD_SCALE)} r={p.head.r} value={0} until={k.bus}
+        tilt={p.i % 2 ? 2 : -2} scale={CARD_SCALE} />
     </g>
   );
   const yFace = view === "flow"
@@ -175,7 +210,7 @@ const KID = { x: 1215, scale: 0.66 } as const;
 const WOMAN = { x: 1010, scale: 1.05 } as const;
 
 /** The kid's cap, over the top of his head, the bill toward where he faces. Draw after his Figure. */
-const Cap: React.FC<{ h: { x: number; y: number; r: number }; facing: 1 | -1 }> = ({ h, facing }) => (
+export const Cap: React.FC<{ h: { x: number; y: number; r: number }; facing: 1 | -1 }> = ({ h, facing }) => (
   <g>
     <path d={`M${h.x - h.r * 0.9} ${h.y - h.r * 0.5} A${h.r} ${h.r} 0 0 1 ${h.x + h.r * 0.9} ${h.y - h.r * 0.5}Z`} fill={CRIMSON} stroke={INK} strokeWidth={4} />
     <path d={`M${h.x + facing * h.r * 0.55} ${h.y - h.r * 0.56} Q${h.x + facing * h.r * 1.5} ${h.y - h.r * 0.62} ${h.x + facing * h.r * 1.6} ${h.y - h.r * 0.42} L${h.x + facing * h.r * 0.55} ${h.y - h.r * 0.46}Z`}
@@ -183,10 +218,11 @@ const Cap: React.FC<{ h: { x: number; y: number; r: number }; facing: 1 | -1 }> 
   </g>
 );
 
-type BusView = "bus" | "try" | "kid" | "grin" | "two";
+type BusView = "bus" | "try" | "kid" | "grin" | "two" | "away";
 
 export const BusShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const view = current<BusView>(frame, [[0, "bus"], [k.tryHim, "try"], [k.kid, "kid"], [k.kidGrin, "grin"], [k.busTwo, "two"]]);
+  const view = current<BusView>(frame, [[0, "bus"], [k.tryHim, "try"], [k.kid, "kid"], [k.kidGrin, "grin"], [k.busTwo, "two"], [k.busAway, "away"]]);
+  if (view === "away") return <BusAway frame={frame} k={k} mood={mood} />;
   const swing = Math.sin(frame / 6) * 22;
   const kPose: Pose = { ...SEATED, legF: [70 + swing, -70], legB: [70 - swing, -70], armF: [40, 40], armB: [30, 50] };
   const ky = seatedY(SEAT_TOP, KID.scale);
@@ -210,7 +246,8 @@ export const BusShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName 
     try: camAt(frame, [[k.tryHim, { x: 1300, y: 690, zoom: 2.0 }], [k.kid, { x: 1300, y: 690, zoom: 2.1 }]]),
     kid: camAt(frame, [[k.kid, closeUp(kh.x + 20, kh.y - 50, 3.0)], [k.kidGrin, closeUp(kh.x + 20, kh.y - 60, 3.1)]]),
     grin: camAt(frame, [[k.kidGrin, closeUp(kh.x + 20, kh.y - 60, 3.2)], [k.busTwo, closeUp(kh.x + 20, kh.y - 60, 3.4)]]),
-    two: camAt(frame, [[k.busTwo, { x: 1220, y: 670, zoom: 1.75 }], [k.desks, { x: 1220, y: 665, zoom: 1.85 }]]),
+    two: camAt(frame, [[k.busTwo, { x: 1220, y: 670, zoom: 1.75 }], [k.busAway, { x: 1220, y: 665, zoom: 1.85 }]]),
+    away: { x: 960, y: 540, zoom: 1 },
   };
   const cam = drift(cams[view], frame, "bus", 2);
   return (
@@ -230,3 +267,20 @@ export const BusShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName 
   );
 };
 
+
+/** Outside: the bus pulls away from the stop and out of frame to the left, you and the kid's cap in two of its windows. */
+const BusAway: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
+  const t = frame - k.busAway;
+  const bx = 820 - 0.9 * t * t - 6 * t; // pulls away, gathering speed
+  const cam = drift(camAt(frame, [[k.busAway, { x: 940, y: 690, zoom: 1.4 }], [k.desks, { x: 860, y: 690, zoom: 1.32 }]]), frame, "busaway", 3);
+  // the two heads in the second and third windows, on the bus's own plane (the street set draws it at the actors' depth)
+  const heads = (
+    <g transform={`translate(${bx} 0)`}>
+        <circle cx={300} cy={700} r={24} fill={PASTELS[4]} stroke={INK} strokeWidth={4} />
+        <path d="M276 692 A24 24 0 0 1 324 692Z M276 692 L258 695 L276 700Z" fill={CRIMSON} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+        <circle cx={420} cy={692} r={30} fill={MUSTARD} stroke={INK} strokeWidth={4} />
+        <path d="M416 662 q6 -18 18 -8" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />
+    </g>
+  );
+  return <SetShot set={street} mood={mood} frame={frame} cam={cam} options={{ auto: false, crowd: false, bus: bx }} actors={heads} />;
+};

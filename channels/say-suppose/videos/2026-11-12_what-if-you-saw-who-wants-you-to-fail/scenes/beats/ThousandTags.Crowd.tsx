@@ -49,9 +49,10 @@ const MEMBERS = crowd();
 const WALK = 46;
 
 /** The crowd at this frame. `doors` is the frame the doors open (nobody before it), `say` the frame you say it (the
- *  cards), `until` when the cards fold (the cut away). Draws only the people the camera can see. */
-export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: number; until: number; you: { x: number; y: number } }> = ({
-  frame, cam, doors, say, until, you,
+ *  cards), `until` when the cards fold (the cut away), `dim` 0..1 fades their cards (none is red) so your class's three red
+ *  cards stand out. Draws only the people the camera can see. */
+export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: number; until: number; you: { x: number; y: number }; dim?: number }> = ({
+  frame, cam, doors, say, until, you, dim = 0,
 }) => {
   if (frame < doors) return null;
   const halfW = 960 / cam.zoom + 120, halfH = 540 / cam.zoom + 200;
@@ -76,7 +77,11 @@ export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: n
           <g key={m.seed}>
             <Figure x={x} y={y} scale={s} facing={facing} pose={pose} head={m.head} coat={m.coat} mouth="flat"
               look={{ x: 0.6, y: walking ? 0 : -0.3 }} time={frame} />
-            {!walking && <Meter frame={frame} at={at} x={h.x} headY={h.y} r={h.r} value={m.value} until={until} tilt={-3 + (noise(m.seed) - 0.5) * 8} />}
+            {!walking && (
+              <g opacity={1 - 0.72 * dim}>
+                <Meter frame={frame} at={at} x={h.x} headY={h.y} r={h.r} value={m.value} until={until} tilt={-3 + (noise(m.seed) - 0.5) * 8} />
+              </g>
+            )}
           </g>
         );
       })}

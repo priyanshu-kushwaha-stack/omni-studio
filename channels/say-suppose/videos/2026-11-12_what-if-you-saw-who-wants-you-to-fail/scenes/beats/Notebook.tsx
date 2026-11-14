@@ -5,15 +5,18 @@
 //         open under his lamp, you stop at it.
 //   hold  5 s, PERFORMED (the gap after line 80): your hand turns the page under his lamp; your own wrong answers copied
 //         clean in his handwriting, a "?" beside each and under it his working-out that gets it right; your finger
-//         stops on the third one; you turn and look at his empty chair, then back down; your other hand comes up to
-//         your mouth.
+//         stops on the third one: YOUR mark, the hooked answer in the red ring from your mock sheet, and under it his
+//         correction in blue pen, ticked (outside review of v4.1); you turn and look at his empty chair, then back
+//         down; your other hand comes up to your mouth.
 //   81    "You stopped helping him...": your face, hand at your mouth; then his working-outs from above, each ticked.
 //   82    close-up: your face over the page; it softens on "He's climbing."
-//   83    a paper sheet: two kinds of envy, a teal arrow up a stair and a red arrow pulling a head down.
+//   83    a paper sheet: two kinds of envy as actions: your best friend climbing paper steps; a hand from below pulling
+//         a figure off a ledge (Notebook.Sheets).
 //   84    you sit in his chair; close on "It meant it hurt."
-//   85    a paper sheet: two heads, the same spot lit in both (envy and pain).
+//   85    briefly, a paper sheet: one head, envy's patch and pain's patch overlapping; then your face again.
 //   86    insert: two cards side by side, both red, the same number.
-//   87    the room from above: the rows are lanes; every lane but yours goes dark on "Outside yours, nobody bleeds."
+//   87    your classroom cluster in one pool of light; your sister's portrait outside it in the dark, darker on "Outside
+//         yours, nobody bleeds." (in place of v4.1's top-down lanes, which were hard to read)
 //   88    you alone in his chair under one lamp; the camera pulls back down the dark row.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
@@ -23,12 +26,13 @@ import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
 import { DrawLine } from "@whatif/kit/ui/DrawLine";
-import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
-import { Meter, MeterSound, Sheet, headAt } from "../parts";
-import { blinking, camAt, current, HERO, linear, MINJUN, mix, PASTELS, ramp, type Beat, type Shot } from "../shared";
+import { INK, PAPER } from "@whatif/kit/theme";
+import { Meter, MeterSound, headAt } from "../parts";
+import { blinking, camAt, current, HERO, linear, mix, ramp, type Beat, type Shot } from "../shared";
 import { Chair } from "../sets/common";
-import { PLAN, READING, ReadingRoomBack, TOP, TopDownHead } from "../sets/ReadingRoom";
-import { aimArm, Dim, LampLight, PointingHand, Rows, S, timer, type Body } from "./Notebook.Parts";
+import { READING, ReadingRoomBack, TOP } from "../sets/ReadingRoom";
+import { aimArm, Dim, LampLight, MistakeMark, PointingHand, Rows, S, timer, type Body } from "./Notebook.Parts";
+import { BrainSheet, ClusterShot, KindsSheet } from "./Notebook.Sheets";
 
 // ------------------------------------------------------------------------------------------------ timing
 
@@ -59,6 +63,7 @@ function times(clips: Clip[], to: number) {
     hurt: at(84, 0.6), // "It meant it hurt."
     brain: from(85), // the brain-scan sheet
     lit: at(85, 0.55), // "a region also active in pain"
+    brainOut: at(85, 0.78), // the sheet goes (kept brief): your face again to the end of the line
     tags: from(86), // two cards, one colour
     lane: from(87), // the room from above
     dim: at(87, 0.6), // "Outside yours, nobody bleeds."
@@ -138,6 +143,22 @@ const Leaf: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
+/** Over the third row of the open page: your answer as your mock sheet had it, ringed in red (MistakeMark), and his
+ *  correction under it in blue pen (the page's own working and tick), boxed in blue from `fixFrom`. */
+const BLUE = "#2f5d9a";
+const YourRow: React.FC<{ ring: number; fixFrom: number }> = ({ ring, fixFrom }) => {
+  const r = TOP.row(2);
+  const ax = r.x + r.len - 30;
+  const w = r.work;
+  return (
+    <g>
+      <rect x={ax - 70} y={r.y - 26} width={110} height={52} fill={PAPER} />
+      <MistakeMark x={ax - 14} y={r.y} scale={2} ring={ring} />
+      <DrawLine d={`M${w.x - 14} ${w.y - 18} h${w.len + 70} v36 h${-(w.len + 70)} z`} from={fixFrom} to={fixFrom + 16} color={BLUE} width={5} />
+    </g>
+  );
+};
+
 /** From above: the page turns under your hand, then your finger runs down the rows and stops on the third one. */
 const TurnShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const t = linear(frame, k.turn + 2, k.find - 4);
@@ -160,6 +181,7 @@ const TurnShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
         actors={
           <>
             <Leaf t={t} />
+            {finding && <YourRow ring={1} fixFrom={k.stop - 4} />}
             {finding
               ? <PointingHand x={mark.x - 30} y={mark.y + 34} rotate={-35} />
               : <PointingHand x={edge + 40} y={760} rotate={t < 0.5 ? -60 : 20} scale={0.9} />}
@@ -209,7 +231,8 @@ const TicksShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = camAt(frame, [[k.ticks, { x: 640, y: 420, zoom: 1.7 }], [k.face, { x: 1120, y: 640, zoom: 1.55 }]]);
   return (
     <LampLight cam={cam} view="top">
-      <Stage cam={drift(cam, frame, "ticks", 2)} radius={0} origin={{ x: 0, y: 0 }} back={<ReadingRoomBack cam={cam} view="top" />} actors={null} />
+      <Stage cam={drift(cam, frame, "ticks", 2)} radius={0} origin={{ x: 0, y: 0 }} back={<ReadingRoomBack cam={cam} view="top" />}
+        actors={<YourRow ring={1} fixFrom={k.ticks - 40} />} />
     </LampLight>
   );
 };
@@ -232,37 +255,6 @@ const FaceShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 // ------------------------------------------------------------------------------------------------ line 83
 
-/** A small paper head for the sheets, facing right. */
-const Head: React.FC<{ x: number; y: number; r?: number; fill: string }> = ({ x, y, r = 34, fill }) => (
-  <g>
-    <circle cx={x} cy={y} r={r} fill={fill} stroke={INK} strokeWidth={5} />
-    <circle cx={x + r * 0.25} cy={y - r * 0.1} r={r * 0.12} fill={INK} />
-    <circle cx={x + r * 0.62} cy={y - r * 0.1} r={r * 0.12} fill={INK} />
-  </g>
-);
-
-const KindsSheet: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const climb = ramp(frame, k.up + 6, k.up + 40);
-  const fall = ramp(frame, k.down2 + 14, k.down2 + 34);
-  const steps = "M70 540 H190 V440 H310 V340 H430 V240 H520";
-  return (
-    <Sheet frame={frame} at={k.kinds} x={960} y={520} w={1120} h={640}>
-      {/* benign: up the stair, after the one ahead */}
-      <path d={steps} fill="none" stroke={INK} strokeWidth={9} strokeLinejoin="round" />
-      <Head x={480} y={204} r={28} fill={PASTELS[4]} />
-      <Head x={mix(130, 370, climb)} y={mix(504, 304, climb)} fill={MINJUN.head} />
-      <DrawLine d="M110 420 L380 200 M380 200 L330 204 M380 200 L372 250" from={k.up} to={k.up + 22} color={TEAL} width={14} />
-      <line x1={560} y1={60} x2={560} y2={580} stroke="#cdbfa6" strokeWidth={5} strokeDasharray="18 16" />
-      {/* malicious: the one below pulls the one ahead off the ledge */}
-      <path d="M700 260 H1000" fill="none" stroke={INK} strokeWidth={9} strokeLinecap="round" />
-      <Head x={860} y={mix(224, 470, fall)} r={28} fill={PASTELS[4]} />
-      <Head x={700} y={500} fill={MINJUN.head} />
-      <DrawLine d="M770 470 Q790 330 860 290 M770 470 Q760 380 800 300" from={k.down2} to={k.down2 + 14} color={INK} width={6} />
-      <DrawLine d="M940 240 L940 500 M940 500 L912 456 M940 500 L968 456" from={k.down2 + 4} to={k.down2 + 26} color={CRIMSON} width={14} />
-    </Sheet>
-  );
-};
-
 const KindsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const body = overPage(8);
   const cam = drift({ x: 900, y: 720, zoom: 1.6 }, frame, "kinds", 3);
@@ -272,7 +264,7 @@ const KindsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
         you={<Figure {...HERO} {...body} {...EXPRESSIONS.sceptical} look={{ x: 0.7, y: 0.9 }} time={frame} />} />
       <Dim amount={0.45} />
       <Stage cam={{ x: 960, y: 540, zoom: mix(1, 1.04, linear(frame, k.kinds, k.sit)) }} radius={0} origin={{ x: 0, y: 0 }} back={null}
-        actors={<KindsSheet frame={frame} k={k} />} />
+        actors={<KindsSheet frame={frame} at={k.kinds} up={k.up} down2={k.down2} />} />
     </>
   );
 };
@@ -298,41 +290,24 @@ const SitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 // ------------------------------------------------------------------------------------------------ line 85
 
-/** A head in profile with the brain drawn in, and a spot that lights. */
-const BrainHead: React.FC<{ x: number; y: number; glow: number; frame: number }> = ({ x, y, glow, frame }) => (
-  <g>
-    <circle cx={x} cy={y} r={150} fill="#f0d9c2" stroke={INK} strokeWidth={7} />
-    <path d={`M${x - 100} ${y + 10} q-10 -70 50 -90 q30 -50 90 -20 q60 -20 80 40 q40 30 0 80 q-20 40 -80 20 q-40 30 -90 0 q-60 10 -50 -30z`}
-      fill="#e6a0a0" stroke={INK} strokeWidth={5} />
-    <path d={`M${x - 40} ${y - 70} q10 40 -10 70 M${x + 40} ${y - 80} q-20 50 10 90`} fill="none" stroke={INK} strokeWidth={4} opacity={0.5} />
-    {glow > 0 && <circle cx={x + 20} cy={y - 20} r={40 + 8 * Math.sin(frame / 5)} fill={CRIMSON} opacity={0.35 * glow} />}
-    <circle cx={x + 20} cy={y - 20} r={22} fill={glow > 0 ? CRIMSON : "#c98a8a"} stroke={INK} strokeWidth={4} />
-    <circle cx={x + 120} cy={y + 10} r={10} fill={INK} />
-  </g>
-);
-
 const BrainShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const g1 = ramp(frame, k.brain + 20, k.brain + 34);
-  const g2 = ramp(frame, k.lit, k.lit + 14);
   const body = inHisChair();
+  if (frame >= k.brainOut) {
+    // the sheet kept brief: back on your face in his chair to the end of the line
+    const head = headAt(body.x, body.y, S, body.pose);
+    const cam = camAt(frame, [[k.brainOut, closeUp(head.x + 50, head.y + 10, 2.6)], [k.tags, closeUp(head.x + 45, head.y + 10, 2.8)]]);
+    return (
+      <Rows frame={frame} cam={drift(cam, frame, "brainOut", 2)} chairOut={[]} studiers={false}
+        seated={<Figure {...HERO} {...body} brows="sad" lids={0.4} mouth="flat" eyes={1} look={{ x: 0.6, y: 0.5 }} blink={blinking(frame, 3)} time={frame} />} you={null} />
+    );
+  }
   return (
     <>
       <Rows frame={frame} cam={drift({ x: 940, y: 740, zoom: 1.5 }, frame, "brain", 3)} chairOut={[]}
         seated={<Figure {...HERO} {...body} {...EXPRESSIONS.sad} look={{ x: 0.7, y: 0.6 }} time={frame} />} you={null} />
       <Dim amount={0.45} />
-      <Stage cam={{ x: 960, y: 540, zoom: mix(1, 1.04, linear(frame, k.brain, k.tags)) }} radius={0} origin={{ x: 0, y: 0 }} back={null}
-        actors={
-          <Sheet frame={frame} at={k.brain} x={960} y={520} w={1120} h={640} tilt={1.5}>
-            {/* envy: a peer a step above you; pain: a thorn. The same spot lights in both */}
-            <BrainHead x={290} y={360} glow={g1} frame={frame} />
-            <Head x={470} y={120} r={30} fill={PASTELS[4]} />
-            <path d="M470 160 V200" stroke={TEAL} strokeWidth={8} strokeLinecap="round" />
-            <rect x={530} y={300} width={60} height={14} rx={7} fill={INK} />
-            <rect x={530} y={336} width={60} height={14} rx={7} fill={INK} />
-            <BrainHead x={830} y={360} glow={g2} frame={frame} />
-            <path d="M990 130 l-40 40 l30 6 l-40 44" fill="none" stroke={CRIMSON} strokeWidth={9} strokeLinejoin="round" strokeLinecap="round" opacity={g2 > 0 ? 1 : 0.35} />
-          </Sheet>
-        } />
+      <Stage cam={{ x: 960, y: 540, zoom: mix(1, 1.05, linear(frame, k.brain, k.brainOut)) }} radius={0} origin={{ x: 0, y: 0 }} back={null}
+        actors={<BrainSheet frame={frame} at={k.brain} envy={k.brain + 16} pain={k.lit} />} />
     </>
   );
 };
@@ -361,16 +336,7 @@ const TagsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 // ------------------------------------------------------------------------------------------------ line 87
 
-const LaneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const ly = PLAN.lanes[PLAN.you];
-  const cam = camAt(frame, [[k.lane, { x: 1180, y: ly + 40, zoom: 1.7 }], [k.dim, { x: 1000, y: ly - 40, zoom: 1.05 }], [k.one, { x: 960, y: 560, zoom: 0.8 }]]);
-  const others = 1 - ramp(frame, k.dim, k.dim + 30);
-  return (
-    <Stage cam={drift(cam, frame, "lane", 2)} radius={0} origin={{ x: 0, y: 0 }}
-      back={<ReadingRoomBack cam={cam} view="plan" others={others} />}
-      actors={<TopDownHead x={PLAN.hisSeat} y={ly + 80} head={MUSTARD} coat={TEAL} tuft turn={180} />} />
-  );
-};
+const LaneShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => <ClusterShot frame={frame} from={k.lane} dim={k.dim} to={k.one} />;
 
 // ------------------------------------------------------------------------------------------------ line 88
 

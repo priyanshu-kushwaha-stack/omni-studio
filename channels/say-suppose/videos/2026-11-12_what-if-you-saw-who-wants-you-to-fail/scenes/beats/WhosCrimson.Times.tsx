@@ -26,20 +26,24 @@ export function crimsonTimes(clips: Clip[], to: number) {
     barely: at(25, 0.45), // close on him: he barely looks up
     move: from(26), // his "Nice. Move."
     leave: from(27), // "Two years of trash talk: minus six.": he walks off under his -6
-    nextDesk: at(27, 0.3), // "Your best friend ... the dangerous number is at the next desk.": your best friend, waving
+    nextDesk: at(27, 0.3), // "Your best friend: minus eighty-four.": your best friend at the next desk, waving
+    farRows: at(27, 0.53), // "Whatever red means,": the rival, rows away, head down
+    twoDesks: at(27, 0.68), // "the dangerous number": the two desks side by side
+    watching: at(27, 0.84), // "is at the next desk.": your best friend, watching you
     // 28-30 the classroom, your maths teacher, marking
     kang: from(28),
     kangTag: from(28) + 4,
     good: from(29),
     youKang: from(30),
     kangTwo: at(30, 0.6),
-    // 31 the mirror in the school toilets
+    // 31 the mirror in the school toilets: your back, the sink and your reflection in one shot
     mirror: from(31),
-    mirrorUp: at(31, 0.4), // "Nothing opens.": your reflection's eyes go up
-    ownHead: at(31, 0.61), // "Or the one card you can't see is yours.": above your own head
+    mirrorUp: at(31, 0.4), // "Nothing opens.": the empty air above the reflection
+    ownHead: at(31, 0.61), // "Or the one card you can't see is yours.": focus racks to the air above your own head
     // 32-33 the tour group outside the station
+    tourIn: end(31), // the cut to the station, in the gap before the line
     tour: from(32),
-    tourTag: end(32) + 2, // eleven cards together
+    tourTag: end(32) + 2, // the first of eleven cards; the rest ripple down the group (tourTagAt)
     tourClose: at(33, 0.5),
     // 34-36 the bus, the kid
     bus: from(34),
@@ -48,14 +52,19 @@ export function crimsonTimes(clips: Clip[], to: number) {
     kidTag: end(35) + 2, // +77
     kidGrin: from(36),
     busTwo: at(36, 0.45),
-    // 37-41 why: the desks, two paper sheets, the rival far off, your best friend at the next desk, the lanes
+    busAway: at(36, 0.85), // outside: the bus pulls away
+    // 37-41 why: the desks, your two faces, the ladder sheet, the track, the rival far off, your best friend, the lanes
     desks: from(37),
+    deskFaces: at(37, 0.5), // "...your best friend gives you minus eighty-four. Why?": the two of you at your desks
     ladder: from(38),
-    race: from(39),
+    race: from(39), // the track: the kid outside it, the rival far ahead, you beside your best friend
+    raceFaces: Math.round(from(39) + 3.5 * 30), // the two faces on the track
+    kidOut: from(40), // "The kid isn't in the race."
     taehoFar: at(40, 0.19), // "The rival is twenty places ahead"
     minjun: at(40, 0.56), // "Your best friend has the next desk"
     youLane: from(41),
     lanes: at(41, 0.27),
+    stepsIn: at(41, 0.6), // "The same race. The ones you'd miss.": the academy steps, before line 42
     // 42 the academy steps at dusk; then the first performed moment in the gap after it
     steps: from(42),
     point: g0, // you point straight up above his head, mouth open; he looks at your face ...

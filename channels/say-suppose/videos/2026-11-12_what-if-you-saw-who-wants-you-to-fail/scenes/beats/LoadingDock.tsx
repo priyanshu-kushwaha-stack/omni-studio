@@ -12,23 +12,27 @@
 //        slow drift in on the number (her shoulder shaking, a slow-motion ghost); then her hands on your back, and your
 //        hands close on the back of the vest.
 //   122  the two under the lamps: "The card gets two minutes."   123  close on you, the card in frame.
-//   124  close on her.     125  memory: the fridge six years ago, her letter, fresh.
-//   126  the podium on paper (c08): bronze smiles, silver frowns up at gold, bronze looks down at nothing.
-//   127  over her shoulder on your face: eyes on the card, then down to her; her hands on your back; wide under the
-//        lamps as the second card folds; you don't move.
+//   124  close on her; on "She was in it first" it dissolves to your letter on the fridge at home, and
+//   125  your letter dissolves to hers in the same place, six years ago, fresh (a match cut); the memory widens.
+//   126  the podium on paper (c08), in its own frame over the blurred, dimmed dock: medal-toned heads, bronze beams,
+//        silver sours up at gold, bronze looks down at nothing; the camera goes to silver, then to bronze.
+//   127  close on you: your eyes leave the card and settle on her; her hands on your back; wide under the lamps as the
+//        second card folds; you don't move. (No foreground silhouette: outside review of v4.1.)
+// The shift that walks out in 117 is in silhouette, behind and quickly gone (outside review of v4.1).
 import { AbsoluteFill } from "remotion";
 import { STAND, walkPose } from "@whatif/kit/rig/pose";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { moodLook } from "@whatif/kit/stage/moods";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { closeUp, drift, ForegroundHead, insert } from "@whatif/kit/stage/shots";
+import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
-import { headAt, Meter, MeterSound, Vest } from "../parts";
-import { HomeBack } from "../sets/Home";
+import { headAt, Meter, MeterSound } from "../parts";
+import { HOME, HomeBack } from "../sets/Home";
 import { DOCK, dockLamps, LoadingDockBack, LoadingDockFront } from "../sets/LoadingDock";
-import { camAt, current, JIYOON, lineEnd, linear, mix, PASTELS, ramp, type Beat, type Shot } from "../shared";
+import { camAt, current, JIYOON, lineEnd, linear, mix, ramp, type Beat, type Shot } from "../shared";
 import { ArmOver, hug, Sister, talk, useGlows, You, type Body, type Face } from "./HerBack.Sister";
+import { LETTER_CAM, SnapMarks, YourLetter } from "./LoadingDock.Inserts";
 import { Podium } from "./LoadingDock.Podium";
 
 type T = ReturnType<typeof times>;
@@ -68,7 +72,8 @@ function times(clips: Clip[], start: number, end: number) {
     two: from(122) - 2, // "The card gets two minutes. It doesn't get to choose what you do next."
     you123: from(123) - 2, // "You said nobody outside your lane bleeds."
     her96: from(124) - 2, // "She was never outside your lane."
-    flash: from(125) - 2, // "Six years ago it was her letter on the fridge."
+    yours: at(124, 0.6), // "She was in it first.": dissolve to your letter on the fridge at home
+    flash: from(125) - 2, // "Six years ago it was her letter on the fridge.": your letter dissolves to hers
     podium: from(126) - 2, // "At the 1992 Olympics"
     bronze: at(126, 0.21),
     silver: at(126, 0.41),
@@ -89,6 +94,9 @@ const TOP = DOCK.top;
 const YOU_X = DOCK.meet.you;
 const HER_X = DOCK.meet.her;
 const CARD = headAt(HER_X, TOP, S, STAND, -1);
+/** The card's paper (Meter's geometry over CARD): its centre and size, for the snap marks. */
+const CARD_H = CARD.r * 1.05;
+const CARD_BOX = { x: CARD.x, y: CARD.y - CARD.r - CARD_H, w: CARD_H * 2.5, h: CARD_H };
 const YOU_HEAD = headAt(YOU_X, TOP, S, STAND, 1);
 const HER_HAND = { x: YOU_X - 22 * S, y: TOP - 196 * S };
 const YOUR_HAND = { x: HER_X - 30 * S, y: TOP - 196 * S };
@@ -96,21 +104,17 @@ const YOUR_HAND = { x: HER_X - 30 * S, y: TOP - 196 * S };
 /** The feet line on the steps (a straight ramp, so the climb is smooth). */
 const stepY = (x: number) => (x <= DOCK.steps.from ? DOCK.ground : x >= DOCK.steps.to ? TOP : mix(DOCK.ground, TOP, (x - DOCK.steps.from) / (DOCK.steps.to - DOCK.steps.from)));
 
-/** The shift walking out of the bays and off along the dock to the right. */
+/** The shift walking out of the bays and off along the dock to the right: dark silhouettes, smaller, quick, gone before
+ *  she reaches you (outside review of v4.1: the passing worker drew the eye from the two of you). */
 const Shift: React.FC<{ frame: number; k: T }> = ({ frame, k }) => (
-  <g>
+  <g opacity={0.7}>
     {[0, 1, 2, 3].map((i) => {
       const bay = DOCK.bays[1 + (i % 2)];
-      const t0 = k.start + i * 18;
-      const p = linear(frame, t0, t0 + 260);
+      const t0 = k.start - 40 + i * 14;
+      const p = linear(frame, t0, t0 + 150);
       if (p <= 0 || p >= 1) return null;
-      const body = { x: bay.x + mix(-40, 900, p), y: TOP, scale: S * 0.96, facing: 1 as const, pose: walkPose(frame * 0.25 + i) };
-      return (
-        <g key={i}>
-          <Figure head={PASTELS[(i * 3 + 1) % PASTELS.length]} coat="#6b6f7a" {...body} look={{ x: 1, y: 0 }} mouth="flat" time={frame} />
-          <Vest {...body} />
-        </g>
-      );
+      const body = { x: bay.x + mix(40, 1000, p), y: TOP, scale: S * 0.86, facing: 1 as const, pose: walkPose(frame * 0.3 + i) };
+      return <Figure key={i} head="#2c2838" coat="#2c2838" {...body} look={{ x: 1, y: 0 }} eyes={0} mouth="none" time={frame} />;
     })}
   </g>
 );
@@ -129,8 +133,8 @@ function herBody(frame: number, k: T): Body {
 }
 
 /** The dock with the two of you, the shift, the card(s). `showYou` false for over-her-shoulder shots. */
-const Dock: React.FC<{ frame: number; k: T; cam: Camera; you: Face; her: Face; showYou?: boolean; podium?: boolean }> = ({
-  frame, k, cam, you, her, showYou = true, podium,
+const Dock: React.FC<{ frame: number; k: T; cam: Camera; you: Face; her: Face; showYou?: boolean }> = ({
+  frame, k, cam, you, her, showYou = true,
 }) => {
   const lamps = ramp(frame, k.lamps[0], k.lamps[1]);
   const look = useGlows(cam, dockLamps(lamps));
@@ -153,7 +157,7 @@ const Dock: React.FC<{ frame: number; k: T; cam: Camera; you: Face; her: Face; s
       {t > 0.05 && showYou && <ArmOver body={sis} hand={JIYOON.head} />}
       <Meter frame={frame} at={k.tag} x={CARD.x} headY={CARD.y} r={CARD.r} value={-68} until={card1Until} />
       <Meter frame={frame} at={k.tag2} x={CARD.x} headY={CARD.y} r={CARD.r} value={-68} until={k.fold2} />
-      {podium && <Podium frame={frame} at={k.podium + 4} x={1230} y={470} bronze={k.bronze} silver={k.silver} silverThinks={k.silverThinks} bronzeThinks={k.bronzeThinks} />}
+      <SnapMarks frame={frame} at={k.tag2} {...CARD_BOX} />
     </>
   );
   return (
@@ -166,7 +170,7 @@ const Dock: React.FC<{ frame: number; k: T; cam: Camera; you: Face; her: Face; s
 
 /** Six years ago: the fridge with her letter on it, fresh, and the brushes in the jar; warm and faded. */
 const Memory: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.flash, { x: 1250, y: 640, zoom: 2.1 }], [k.podium, { x: 1330, y: 690, zoom: 2.6 }]]), frame, "dock-memory", 3);
+  const cam = drift(camAt(frame, [[k.flash, LETTER_CAM(HOME.hers.x)], [k.flash + 24, LETTER_CAM(HOME.hers.x)], [k.podium, { x: 1300, y: 640, zoom: 2.3 }]]), frame, "dock-memory", 2);
   return (
     <AbsoluteFill style={{ filter: "sepia(0.55) saturate(0.85) brightness(1.06)" }}>
       <LookContext.Provider value={moodLook("morning")}>
@@ -178,14 +182,44 @@ const Memory: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
+/** The podium in its own frame: the dock behind it blurred and dimmed (the empty bays, not the two of you); the camera
+ *  goes to silver on "Silver thinks", then to bronze on "Bronze thinks". */
+const PodiumShot: React.FC<{ frame: number; k: T; you: Face; her: Face }> = ({ frame, k, you, her }) => {
+  const behind = { x: 1560, y: 520, zoom: 1.3 };
+  const cam = drift(camAt(frame, [[k.podium, { x: 960, y: 560, zoom: 1.0 }], [k.silverThinks - 4, { x: 950, y: 556, zoom: 1.05 }],
+    [k.silverThinks + 12, { x: 780, y: 500, zoom: 1.3 }], [k.bronzeThinks - 4, { x: 790, y: 500, zoom: 1.33 }], [k.bronzeThinks + 12, { x: 1170, y: 600, zoom: 1.3 }],
+    [k.ots, { x: 1120, y: 590, zoom: 1.24 }]]), frame, "dock-podium", 2);
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ filter: "blur(14px) brightness(0.5)" }}>
+        <Dock frame={frame} k={k} cam={behind} you={you} her={her} />
+      </AbsoluteFill>
+      <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={null}
+        actors={
+          <g transform="translate(960 545) scale(2.45) translate(-960 -545)">
+            <Podium frame={frame} at={k.podium + 2} x={960} y={545} bronze={k.bronze} silver={k.silver} silverThinks={k.silverThinks} bronzeThinks={k.bronzeThinks} />
+          </g>
+        } />
+    </AbsoluteFill>
+  );
+};
+
+/** One shot over another fading in across `len` frames from `at` (a dissolve). */
+const Dissolve: React.FC<{ frame: number; at: number; len: number; under: React.ReactNode; over: React.ReactNode }> = ({ frame, at, len, under, over }) =>
+  frame >= at + len ? <>{over}</> : (
+    <AbsoluteFill>
+      {under}
+      <AbsoluteFill style={{ opacity: ramp(frame, at, at + len) }}>{over}</AbsoluteFill>
+    </AbsoluteFill>
+  );
+
 const DockShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current(frame, [[k.start, "wide"], [k.steps, "steps"], [k.face, "face"], [k.same, "same"], [k.hugShot, "hug"],
     [k.her93, "her93"], [k.you94, "you94"], [k.peak, "fold"], [k.drift, "peakA"], [k.peakB, "peakB"], [k.two, "two"],
-    [k.you123, "you123"], [k.her96, "her96"], [k.flash, "flash"], [k.podium, "podium"], [k.ots, "ots"], [k.close, "close"],
-    [k.wide, "wideEnd"]]);
-  if (shot === "flash") return <Memory frame={frame} k={k} />;
+    [k.you123, "you123"], [k.her96, "her96"], [k.yours, "yours"], [k.flash, "flash"], [k.podium, "podium"], [k.ots, "ots"],
+    [k.close, "close"], [k.wide, "wideEnd"]]);
   const hugHead = headAt(HER_X, TOP, S, { ...STAND, lean: 22, drop: 14 }, -1);
-  const cams: Record<Exclude<typeof shot, "flash">, Camera> = {
+  const cams: Record<Exclude<typeof shot, "flash" | "yours" | "podium">, Camera> = {
     wide: camAt(frame, [[k.start, { x: 900, y: 560, zoom: 1.0 }], [k.steps, { x: 860, y: 580, zoom: 1.08 }]]),
     steps: camAt(frame, [[k.steps, { x: 640, y: 680, zoom: 1.5 }], [k.face, { x: 700, y: 620, zoom: 1.65 }]]),
     face: camAt(frame, [[k.face, closeUp(CARD.x - 30, CARD.y - 30, 2.3)], [k.same, closeUp(CARD.x - 30, CARD.y - 40, 2.5)]]),
@@ -199,12 +233,10 @@ const DockShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     two: camAt(frame, [[k.two, { x: 830, y: 540, zoom: 1.4 }], [k.you123, { x: 820, y: 545, zoom: 1.5 }]]),
     you123: camAt(frame, [[k.you123, { x: YOU_HEAD.x + 70, y: YOU_HEAD.y - 50, zoom: 2.6 }], [k.her96, { x: YOU_HEAD.x + 70, y: YOU_HEAD.y - 50, zoom: 2.8 }]]),
     her96: camAt(frame, [[k.her96, closeUp(hugHead.x + 10, hugHead.y - 20, 3.0)], [k.flash, closeUp(hugHead.x + 10, hugHead.y - 20, 3.3)]]),
-    podium: camAt(frame, [[k.podium, { x: 1000, y: 520, zoom: 1.45 }], [k.silverThinks, { x: 1120, y: 490, zoom: 1.85 }], [k.ots, { x: 1180, y: 480, zoom: 2.1 }]]),
-    ots: camAt(frame, [[k.ots, closeUp(YOU_HEAD.x + 70, YOU_HEAD.y - 30, 2.8)], [k.close, closeUp(YOU_HEAD.x + 70, YOU_HEAD.y - 20, 3.0)]]),
+    ots: camAt(frame, [[k.ots, closeUp(YOU_HEAD.x + 40, YOU_HEAD.y - 40, 3.0)], [k.close, closeUp(YOU_HEAD.x + 30, YOU_HEAD.y - 30, 3.4)]]),
     close: camAt(frame, [[k.close, insert(HER_HAND.x + 40, HER_HAND.y + 10, 3.0)], [k.wide, insert(HER_HAND.x + 40, HER_HAND.y + 10, 3.3)]]),
     wideEnd: camAt(frame, [[k.wide, { x: 820, y: 560, zoom: 1.6 }], [k.end, { x: 900, y: 540, zoom: 1.05 }]]),
   };
-  const cam = drift(cams[shot], frame, "dock", shot === "fold" || shot === "peakA" || shot === "peakB" ? 1.5 : 3);
 
   // You: looking up from the yard; saying it; eyes on the card; holding on; saying it again; eyes down to her.
   const you: Face = frame < k.climb[0]
@@ -232,12 +264,16 @@ const DockShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
         : frame < k.hug[0]
           ? { brows: "worry", lids: 0.2, mouth: "smile", eyes: 1.05, look: { x: 1, y: 0 } }
           : { brows: "worry", lids: 0.85, mouth: frame < k.peak ? talk(frame, k.again[0], k.again[1], "smile") : "wobble", eyes: 1, look: { x: 1, y: 0.3 } };
-  return (
-    <>
-      <Dock frame={frame} k={k} cam={cam} you={you} her={her} podium={shot === "podium"} />
-      {shot === "ots" && <ForegroundHead x={1720} side="right" blur={18} />}
-    </>
+  const dock = (name: keyof typeof cams) => (
+    <Dock frame={frame} k={k} cam={drift(cams[name], frame, "dock", name === "fold" || name === "peakA" || name === "peakB" ? 1.5 : 3)} you={you} her={her} />
   );
+  // "She was in it first": the hug dissolves to your letter on the fridge at home, and yours to hers six years ago in
+  // the same place (a match cut, outside review of v4.1).
+  const yours = <YourLetter frame={frame} from={k.yours} to={k.flash + 12} />;
+  if (shot === "yours") return <Dissolve frame={frame} at={k.yours} len={12} under={dock("her96")} over={yours} />;
+  if (shot === "flash") return <Dissolve frame={frame} at={k.flash} len={14} under={yours} over={<Memory frame={frame} k={k} />} />;
+  if (shot === "podium") return <PodiumShot frame={frame} k={k} you={you} her={her} />;
+  return dock(shot);
 };
 
 const LoadingDock: React.FC<{ shot: Shot }> = ({ shot }) => {
@@ -246,7 +282,7 @@ const LoadingDock: React.FC<{ shot: Shot }> = ({ shot }) => {
     <AbsoluteFill style={{ background: "#000" }}>
       <DockShot frame={shot.frame} k={k} />
       <MeterSound at={k.tag} soft />
-      <MeterSound at={k.tag2} soft volume={0.45} />
+      <MeterSound at={k.tag2} soft volume={0.8} />
     </AbsoluteFill>
   );
 };

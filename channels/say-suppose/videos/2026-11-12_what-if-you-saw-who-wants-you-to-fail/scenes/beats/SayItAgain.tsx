@@ -3,14 +3,19 @@
 // opens (soft snap) and runs to -68. Two performed moments, the narrator silent. You can't say it again; you take your
 // bag and go, and her hands stay half up.
 //
-//   89   INSERT the letter held up on the landing; the seal stamps on "paid"; the hands go still on "if the exam holds".
+//   89   INSERTS on the landing, one pair of hands lowering each paper and raising the next (SayItAgain.Pages.tsx; outside
+//        review of v4.1: twelve seconds of one letter read as a slide): the letter, sealed on "confirmed"; the year pad
+//        flipping YEAR 1 to 4 on "four years"; the tuition bill struck through, PAID; the answer sheet stamped TOP GRADES
+//        REQUIRED. The run starts on "three weeks from now".
 //   90   you run past the store's white light; the front door bursts open and you're in; the bag drops.
 //   91   the room: she looks up from her bowl; you come to the table; close on her face: the card snaps on "face".
 //   hold (4 s, performed) she's up before you finish, the chair tipping; both arms round you, her face in your scarf;
 //        over her shoulder the card stops on -68; your arms, half raised, hang there.
 //   92   close on her at your shoulder, her own voice: "Say it again..."
-//   hold (3 s, performed) her arms tighten, yours don't close; your eyes don't leave the card; the lamp and the jar.
-//   93   INSERT the card; tilt down to the two of you.   94  close on her: "Say it again..."
+//   hold (3 s, performed) her arms tighten, yours don't close (your fingers almost close round her and fall back); your
+//        eyes don't leave the card; the lamp and the jar. Through the hug her grip tightens on each "Say it again" and
+//        her shoulders shake a little; on "You can't" your hands drop to your sides (outside review of v4.1).
+//   93   the card over the two of you, the hug framed under it; tilt down.   94  close on her: "Say it again..."
 //   95   close on you: you can't; the card; her hands on your back.
 //   96   you step back (the card folds), take your bag, go; her alone.
 import { AbsoluteFill } from "remotion";
@@ -19,13 +24,14 @@ import { lerpPose, SEATED, STAND, walkPose, type Pose } from "@whatif/kit/rig/po
 import { Backpack } from "@whatif/kit/sets/props";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { closeUp, drift, ForegroundHead, insert } from "@whatif/kit/stage/shots";
+import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
 import { headAt, Letter, Meter, MeterSound } from "../parts";
 import { HOME, HOME_LAMP, HomeBack, HomeTable } from "../sets/Home";
 import { camAt, current, lineEnd, linear, mix, ramp, type Beat, type Shot } from "../shared";
-import { aimArm, ArmOver, handAt, hug, Sister, talk, useGlows, You, type Body, type Face } from "./HerBack.Sister";
-import { LetterInsert, NightRun } from "./SayItAgain.Parts";
+import { aimArm, ArmOver, handAt, hug, mixArm, Sister, talk, useGlows, You, type Body, type Face } from "./HerBack.Sister";
+import { ScholarshipInsert, type LetterBeats } from "./SayItAgain.Pages";
+import { NightRun } from "./SayItAgain.Parts";
 
 type T = ReturnType<typeof times>;
 
@@ -40,9 +46,18 @@ function times(clips: Clip[], start: number, end: number) {
   return {
     start,
     end,
-    stamp: at(89, 0.46), // "Four years, paid"
-    holds: at(89, 0.7), // "If the exam holds"
-    run: from(90) - 2, // "For once you run home"
+    letter: {
+      rise: start,
+      seal: at(89, 0.25), // "The scholarship is confirmed."
+      years: at(89, 0.33), // "Four years of university": the year pad
+      flips: [at(89, 0.37), at(89, 0.41), at(89, 0.45)], // YEAR 2, 3, 4
+      bill: at(89, 0.475), // "fully paid": the tuition bill
+      strike: at(89, 0.5),
+      paid: at(89, 0.53),
+      exam: at(89, 0.585), // "On one condition": the answer sheet
+      stamp: at(89, 0.72), // "top grades in the national exam"
+    } satisfies LetterBeats,
+    run: at(89, 0.835), // "three weeks from now": the run home starts (8:10.8)
     doorIn: at(90, 0.45), // "instead of to the store": the front door bursts open
     inside: at(90, 0.85) + 4,
     table: from(91) - 2, // "Your sister's at the table"
@@ -63,13 +78,14 @@ function times(clips: Clip[], start: number, end: number) {
     again1: [from(92), lineEnd(clips, 92)] as const,
     hold3,
     squeeze: [hold3 + 2, hold3 + 22] as const,
+    reach1: [hold3 + 4, hold3 + 26, hold3 + 32, hold3 + 48] as const, // your fingers almost close round her, then fall back
     eyes3: Math.round(hold3 + g3 * 0.34), // your eyes don't leave the card
     jar: Math.round(hold3 + g3 * 0.67), // the lamp, the jar behind her
     card: from(93) - 2, // "Minus sixty-eight."
     tilt: at(93, 0.28), // "Over the one person who ever asked to hear it twice"
     her68: from(94) - 2, // "Say it again."
     again2: [from(94), lineEnd(clips, 94)] as const,
-    cant: from(95) - 2, // "You can't."
+    cant: from(95) - 2, // "You can't." (your hands drop)
     card2: at(95, 0.24), // "You just watched a card say"
     arms: at(95, 0.68), // "what her arms didn't"
     back: from(96) - 2, // "You take your bag."
@@ -103,6 +119,26 @@ function hugAmount(frame: number, k: T) {
   const her = ramp(frame, k.hug[0], k.hug[1]) * mix(1, 0.55, ramp(frame, k.stepBack[0], k.stepBack[1]));
   const you = ramp(frame, k.hug[0], k.hug[1]) * (1 - ramp(frame, k.stepBack[0], k.stepBack[1]));
   return { her, you };
+}
+
+/** The hug's secondary motion (outside review of v4.1: "several seconds look frozen rather than held"): her grip
+ *  tightening on each "Say it again" (`grip`), her shoulders shaking a little after each (`sob`), your fingers almost
+ *  closing round her and falling back (`reach`), and your hands dropping to your sides on "You can't" (`drop`). */
+function hugLife(frame: number, k: T) {
+  const pulse = (a: number, up: number, down: number) => ramp(frame, a, a + up) * (1 - ramp(frame, a + up + 8, a + up + 8 + down));
+  const grip = Math.max(pulse(k.again1[0] + 4, 10, 34), pulse(k.again2[0] + 4, 10, 34), 0.45 * ramp(frame, k.squeeze[0], k.squeeze[1]));
+  const sob = Math.max(pulse(k.hold3, 8, 34), pulse(k.again2[1], 8, 40));
+  const r1 = ramp(frame, k.reach1[0], k.reach1[1]) * (1 - ramp(frame, k.reach1[2], k.reach1[3]));
+  const r2 = ramp(frame, k.again2[0], k.again2[1] + 6) * (1 - ramp(frame, k.cant + 4, k.cant + 14));
+  return { grip, sob, reach: Math.max(0.75 * r1, 0.85 * r2), drop: ramp(frame, k.cant + 8, k.cant + 26) };
+}
+
+/** Your arms in the hug with `hugLife` on them: from half raised, almost closing round her, or dropped. */
+function yourHugArms(you: Body, life: ReturnType<typeof hugLife>): Body {
+  const around = { x: HER_X + 6 * S, y: FLOOR - 200 * S };
+  const armF = mixArm(mixArm(you.pose.armF, aimArm(you, around), life.reach), [-2, 2], life.drop);
+  const armB = mixArm(mixArm(you.pose.armB, aimArm(you, { x: around.x - 14, y: around.y + 22 * S }), life.reach), [-4, 1], life.drop);
+  return { ...you, pose: { ...you.pose, armF, armB } };
 }
 
 /** Where you are and how you stand, from the door to the hug and back out of the door. */
@@ -178,12 +214,16 @@ const Room: React.FC<{ frame: number; k: T; cam: Camera; you: Face; her: Face }>
   let sis = herBody(frame, k);
   let yb = y.body;
   if (frame >= k.hug[0] - 2) {
-    const shake = frame < k.stepBack[0] ? 1 : 0;
-    const squeeze = ramp(frame, k.squeeze[0], k.squeeze[1]) * (1 - ramp(frame, k.stepBack[0] - 10, k.stepBack[0]));
+    const inHug = frame < k.stepBack[0] ? 1 : 0;
+    const life = hugLife(frame, k);
+    const squeeze = (0.6 * ramp(frame, k.squeeze[0], k.squeeze[1]) + 2 * life.grip) * (1 - ramp(frame, k.stepBack[0] - 10, k.stepBack[0]));
     const half = ramp(frame, k.half[0], k.half[1]);
-    const h = hug({ youX: YOU_X, herX: HER_X, floor: FLOOR, scale: S, t: amt.her, hold: 0, half, squeeze, shake: shake * 0.3, frame });
-    sis = h.her;
-    if (frame < k.stepBack[0]) yb = h.you;
+    const shake = inHug * (0.3 + 1.3 * life.sob);
+    const h = hug({ youX: YOU_X, herX: HER_X, floor: FLOOR, scale: S, t: amt.her, hold: 0, half, squeeze, shake, frame });
+    // she presses in as her grip tightens; her shoulders shake a little (a slow shudder, not a wobble of the drawing)
+    const press = inHug * life.grip;
+    sis = { ...h.her, pose: { ...h.her.pose, lean: h.her.pose.lean + 4 * press, drop: h.her.pose.drop + 4 * press, tilt: h.her.pose.tilt + shake * Math.sin(frame * 0.7) * 1.2 } };
+    if (frame < k.stepBack[0]) yb = yourHugArms(h.you, life);
   }
   const door = ramp(frame, k.doorIn, k.doorIn + 7) * (1 - ramp(frame, k.inside, k.inside + 14)) + ramp(frame, k.toDoor[1] - 8, k.out[0]) * (1 - ramp(frame, k.shut[0], k.shut[1]));
   const bagHand = handAt(yb, "back");
@@ -224,8 +264,10 @@ const SayShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     [k.card, "card"], [k.tilt, "tilt"], [k.her68, "her68"], [k.cant, "cant"], [k.card2, "card2"], [k.arms, "arms"], [k.back, "back"],
     [k.leave, "leave"], [k.alone, "alone"]]);
   if (shot === "letter") {
-    const cam = drift(camAt(frame, [[k.start, { x: 960, y: 560, zoom: 1 }], [k.run, { x: 960, y: 580, zoom: 1.12 }]]), frame, "letter", 4);
-    return <LetterInsert frame={frame} cam={cam} rise={k.start} stamp={k.stamp} holds={k.holds} />;
+    const b = k.letter;
+    const cam = drift(camAt(frame, [[k.start, { x: 960, y: 560, zoom: 1 }], [b.years, { x: 980, y: 550, zoom: 1.06 }], [b.exam, { x: 960, y: 540, zoom: 1.05 }],
+      [k.run, { x: 960, y: 520, zoom: 1.16 }]]), frame, "letter", 4);
+    return <ScholarshipInsert frame={frame} cam={cam} b={b} />;
   }
   if (shot === "run") return <NightRun frame={frame} p={linear(frame, k.run, k.doorIn)} />;
   const hugHead = headAt(HER_X, FLOOR, S, { ...STAND, lean: 22, drop: 14 }, -1);
@@ -236,17 +278,20 @@ const SayShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     table: camAt(frame, [[k.table, { x: 640, y: 600, zoom: 1.22 }], [k.face, { x: 650, y: 610, zoom: 1.4 }]]),
     face: camAt(frame, [[k.face, closeUp(herSeated.x + 10, herSeated.y - 60, 2.2)], [k.up, closeUp(herSeated.x - 20, herSeated.y - 90, 2.35)]]),
     up: camAt(frame, [[k.up, { x: 660, y: 640, zoom: 1.65 }], [k.ots4, { x: 650, y: 630, zoom: 1.8 }]]),
-    ots4: camAt(frame, [[k.ots4, closeUp(YOU_HEAD.x + 70, YOU_HEAD.y - 50, 2.6)], [k.arms4, closeUp(YOU_HEAD.x + 70, YOU_HEAD.y - 50, 2.8)]]),
+    // the two of you, the card stopping over her: no foreground head (you are in this hug; outside review of v4.1)
+    ots4: camAt(frame, [[k.ots4, { x: (YOU_HEAD.x + CARD.x) / 2, y: YOU_HEAD.y - 10, zoom: 2.35 }], [k.arms4, { x: (YOU_HEAD.x + CARD.x) / 2 + 5, y: YOU_HEAD.y, zoom: 2.5 }]]),
     arms4: camAt(frame, [[k.arms4, { x: 600, y: 740, zoom: 2.3 }], [k.her66, { x: 600, y: 730, zoom: 2.45 }]]),
     her66: camAt(frame, [[k.her66, closeUp(hugHead.x + 10, hugHead.y - 10, 3.0)], [k.hold3, closeUp(hugHead.x + 10, hugHead.y - 10, 3.2)]]),
-    tighten: camAt(frame, [[k.hold3, { x: 610, y: 720, zoom: 2.4 }], [k.eyes3, { x: 610, y: 715, zoom: 2.6 }]]),
+    tighten: camAt(frame, [[k.hold3, { x: 610, y: 690, zoom: 2.4 }], [k.eyes3, { x: 610, y: 690, zoom: 2.55 }]]),
     eyes3: camAt(frame, [[k.eyes3, { x: YOU_HEAD.x + 60, y: YOU_HEAD.y - 60, zoom: 2.9 }], [k.jar, { x: YOU_HEAD.x + 60, y: YOU_HEAD.y - 60, zoom: 3.1 }]]),
     jar: camAt(frame, [[k.jar, { x: 870, y: 560, zoom: 2.0 }], [k.card, { x: 900, y: 570, zoom: 2.2 }]]),
-    card: camAt(frame, [[k.card, insert(CARD.x, CARD.y - 120, 4.2)], [k.tilt, insert(CARD.x, CARD.y - 115, 4.6)]]),
-    tilt: camAt(frame, [[k.tilt, insert(CARD.x, CARD.y - 110, 3.4)], [k.her68, { x: 630, y: 640, zoom: 2.2 }]]),
+    // the card readable at the top of the frame, her arms round you and your hands that don't close in the middle (v4.1
+    // put the card alone at 4.2x and it outweighed the embrace)
+    card: camAt(frame, [[k.card, { x: 640, y: 615, zoom: 2.55 }], [k.tilt, { x: 645, y: 605, zoom: 2.7 }]]),
+    tilt: camAt(frame, [[k.tilt, { x: 645, y: 605, zoom: 2.7 }], [k.her68, { x: 630, y: 650, zoom: 2.2 }]]),
     her68: camAt(frame, [[k.her68, closeUp(hugHead.x + 10, hugHead.y - 10, 2.8)], [k.cant, closeUp(hugHead.x + 10, hugHead.y - 10, 3.05)]]),
     cant: camAt(frame, [[k.cant, closeUp(YOU_HEAD.x + 20, YOU_HEAD.y, 3.0)], [k.card2, closeUp(YOU_HEAD.x + 20, YOU_HEAD.y, 3.3)]]),
-    card2: camAt(frame, [[k.card2, insert(CARD.x, CARD.y - 90, 3.4)], [k.arms, insert(CARD.x - 20, CARD.y - 60, 3.0)]]),
+    card2: camAt(frame, [[k.card2, { x: 650, y: 600, zoom: 2.75 }], [k.arms, { x: 640, y: 620, zoom: 2.6 }]]),
     arms: camAt(frame, [[k.arms, insert(herHand.x + 30, herHand.y, 3.2)], [k.back, insert(herHand.x + 30, herHand.y, 3.5)]]),
     back: camAt(frame, [[k.back, { x: 600, y: 630, zoom: 1.8 }], [k.leave, { x: 590, y: 630, zoom: 1.8 }]]),
     leave: camAt(frame, [[k.leave, { x: 470, y: 600, zoom: 1.32 }], [k.alone, { x: 450, y: 600, zoom: 1.38 }]]),
@@ -278,12 +323,7 @@ const SayShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
           : frame < k.alone
             ? { brows: "worry", lids: 0.1, mouth: "o", eyes: 1.1, look: { x: 1, y: 0 } }
             : { brows: "sad", lids: 0.4, mouth: "flat", eyes: 1, look: { x: 1, y: 0.25 } };
-  return (
-    <>
-      <Room frame={frame} k={k} cam={cam} you={you} her={her} />
-      {shot === "ots4" && <ForegroundHead x={1760} side="right" blur={18} />}
-    </>
-  );
+  return <Room frame={frame} k={k} cam={cam} you={you} her={her} />;
 };
 
 const SayItAgain: React.FC<{ shot: Shot }> = ({ shot }) => {

@@ -7,7 +7,7 @@ import { LookContext, useLook } from "@whatif/kit/stage/Look";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
-import { INK, MUSTARD } from "@whatif/kit/theme";
+import { CRIMSON, INK, MUSTARD } from "@whatif/kit/theme";
 import { lastIndex, PASTELS, type Shot } from "../shared";
 import { READING, ReadingRoomBack, ReadingRoomMid, readingGlows, withGlows, type ReadingView } from "../sets/ReadingRoom";
 
@@ -104,4 +104,17 @@ export const Rows: React.FC<{
         </>
       } />
   </LampLight>
+);
+
+/** Your wrong answer as it was marked on your mock sheet (FourSeats.Class ScoreSheet): a hooked squiggle of an answer
+ *  inside a red-pen ring with a tail, and a small red x. The same mark is copied into his notebook (outside review of
+ *  v4.1: make one wrong-answer mark recognisably yours). Centred at (x, y); at scale 1 the ring is 52 x 36. */
+export const MistakeMark: React.FC<{ x: number; y: number; scale?: number; ink?: string; ring?: number }> = ({ x, y, scale = 1, ink = INK, ring = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${scale})`} fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M-15 6 C-11 -9 -6 -9 -4 2 S3 11 7 -3 L13 -9" stroke={ink} strokeWidth={4} />
+    <g opacity={ring}>
+      <path d="M22 -10 A26 18 0 1 0 25 6 L33 13" stroke={CRIMSON} strokeWidth={5} />
+      <path d="M29 -24 l9 9 m0 -9 l-9 9" stroke={CRIMSON} strokeWidth={4} />
+    </g>
+  </g>
 );

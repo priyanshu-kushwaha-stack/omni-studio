@@ -3,8 +3,10 @@
 //   bar he has already snapped, looking at you, half a smile; his card still open on -88 from the day's announcement.
 //   You look at the chocolate, then at the card, then past him. You walk. His hand stays out one beat too long, then
 //   drops. He looks at the half in his hand, then puts both halves in his pocket. The cat on the crate watches you go.
-//   73-74 the next night: you alone at the counter with one drink. The clerk looks past you at the door, then at you:
-//   "Just you tonight?"
+//   73-74 the next night (outside review of v4.1: make the reset visible): a second on the glass door sliding open on
+//   the dark street as you come in; then the spot by the chiller where your best friend always stands, empty, and you
+//   walking past it alone to the counter with one drink. The clerk looks past you at the door, then at you: "Just you
+//   tonight?"
 import { Figure } from "@whatif/kit/rig/Figure";
 import { dir, joints, LIMB, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
@@ -81,12 +83,13 @@ export const StoreNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, 
   const passed = yx < MX - 40;
   const cams: Record<View, Camera> = {
     store: camAt(frame, [[k.store, { x: 1120, y: 650, zoom: 1.28 }], [k.half, { x: 1150, y: 660, zoom: 1.4 }]]),
-    half: camAt(frame, [[k.half, { x: 1190, y: 690, zoom: 1.75 }], [k.look, { x: 1180, y: 690, zoom: 1.85 }]]),
+    // (the camera sits higher than before so his -88 card clears the top tenth of the frame: outside review of v4.1)
+    half: camAt(frame, [[k.half, { x: 1190, y: 640, zoom: 1.75 }], [k.look, { x: 1180, y: 640, zoom: 1.85 }]]),
     look: camAt(frame, [[k.look, closeUp(yh.x - 40, yh.y, 2.7)], [k.card, closeUp(yh.x - 40, yh.y, 2.85)]]),
     card: camAt(frame, [[k.card, closeUp(mh.x + 40, mh.y - 90, 2.4)], [k.pastHim, closeUp(mh.x + 40, mh.y - 95, 2.5)]]),
     past: camAt(frame, [[k.pastHim, closeUp(yh.x - 40, yh.y, 2.85)], [k.walk, closeUp(yh.x - 40, yh.y, 2.95)]]),
     walk: camAt(frame, [[k.walk, { x: 1040, y: 690, zoom: 1.6 }], [k.stay, { x: 960, y: 690, zoom: 1.65 }]]),
-    stay: camAt(frame, [[k.stay, { x: (mh.x + front.x) / 2 + 20, y: mh.y + 70, zoom: 2.5 }], [k.pocket, { x: (mh.x + front.x) / 2 + 10, y: mh.y + 60, zoom: 2.7 }]]),
+    stay: camAt(frame, [[k.stay, { x: (mh.x + front.x) / 2 + 20, y: mh.y + 5, zoom: 2.4 }], [k.pocket, { x: (mh.x + front.x) / 2 + 10, y: mh.y + 5, zoom: 2.55 }]]),
     pocket: camAt(frame, [[k.pocket, { x: MX + 40, y: mh.y + 90, zoom: 2.2 }], [k.cat, { x: MX + 30, y: mh.y + 80, zoom: 2.35 }]]),
     cat: camAt(frame, [[k.cat, { x: 300, y: 770, zoom: 2.3 }], [k.nextNight, { x: 270, y: 780, zoom: 2.5 }]]),
   };
@@ -123,16 +126,18 @@ const Can: React.FC = () => (
   </g>
 );
 
-type NightView = "in" | "clerk" | "you";
+type NightView = "door" | "in" | "clerk" | "you";
 
 /** The next night: you come in alone and stand at the counter with one drink. The clerk looks past you at the door,
  *  then at you: "Just you tonight?" Your face. */
 export const NextNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, k }) => {
   const mood: MoodName = "night";
-  const view = current<NightView>(frame, [[0, "in"], [k.clerk, "clerk"], [k.clerkYou, "you"]]);
+  const view = current<NightView>(frame, [[0, "door"], [k.empty, "in"], [k.clerk, "clerk"], [k.clerkYou, "you"]]);
   const s = STORE.scale, floor = STORE.floor, u = STORE.customer;
-  const walk = linear(frame, k.nextNight, Math.round(mix(k.nextNight, k.clerk, 0.8)));
-  const yx = mix(420, u.x, walk);
+  // in through the sliding door from the dark street, past his empty spot, to the counter
+  const walk = linear(frame, k.nextNight + 6, k.clerk - 8);
+  const yx = mix(340, u.x, walk);
+  const doorOpen = ramp(frame, k.nextNight + 1, k.nextNight + 16) * (1 - ramp(frame, k.empty + 10, k.empty + 30));
   const yPose: Pose = walk > 0 && walk < 1 ? walkPose(frame * 0.32) : { ...STAND, armF: [40, 60] };
   const yh = headAt(yx, floor, s, yPose, 1);
   const c = { ...STORE.clerk, x: STORE.clerk.x - 90 };
@@ -142,20 +147,22 @@ export const NextNight: React.FC<{ frame: number; k: SeatsTimes }> = ({ frame, k
     ? { brows: "raised" as const, lids: 0, mouth: frame >= k.clerk ? "open" as const : "flat" as const, eyes: 1, look: { x: 1, y: -0.15 } }
     : { brows: "worry" as const, lids: 0.1, mouth: "open" as const, eyes: 1, look: { x: 0.85, y: 0.3 } };
   const cams: Record<NightView, Camera> = {
-    in: camAt(frame, [[k.nextNight, { x: 1000, y: 640, zoom: 1.2 }], [k.clerk, { x: 1200, y: 660, zoom: 1.45 }]]),
+    door: camAt(frame, [[k.nextNight, { x: 440, y: 690, zoom: 1.95 }], [k.empty, { x: 470, y: 690, zoom: 2.05 }]]),
+    in: camAt(frame, [[k.empty, { x: 1080, y: 680, zoom: 1.75 }], [k.empty + 30, { x: 1100, y: 680, zoom: 1.75 }], [k.clerk, { x: 1220, y: 670, zoom: 1.55 }]]),
     clerk: camAt(frame, [[k.clerk, closeUp(ch.x - 80, ch.y - 10, 2.5)], [k.clerkYou, closeUp(ch.x - 80, ch.y - 10, 2.65)]]),
     you: camAt(frame, [[k.clerkYou, closeUp(yh.x + 30, yh.y, 2.7)], [k.climb, closeUp(yh.x + 30, yh.y + 4, 2.9)]]),
   };
   const cam = drift(cams[view], frame, "night2", 2);
   return (
     <LookContext.Provider value={storeLook(mood, cam)}>
-      <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<StoreBack cam={cam} mood={mood} frame={frame} />} actors={
+      <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<StoreBack cam={cam} mood={mood} frame={frame} doorOpen={doorOpen} />} actors={
         <>
-          <Cat {...STORE.cat} frame={frame} look={0.6} />
+          <Cat {...STORE.cat} frame={frame} look={view === "door" ? Math.max(-1, Math.min(1, (yx - STORE.cat.x) / 260)) : 0.6} />
           <Figure {...CLERK} x={c.x} y={c.y} scale={c.scale} facing={c.facing} {...clerkFace} blink={blinking(frame, 7)} time={frame} />
           <StoreCounter />
           <Figure {...HERO} x={yx} y={floor} scale={s} facing={1} pose={yPose} brows={view === "you" ? "sad" : "flat"} lids={view === "you" ? 0.3 : 0.2} mouth="flat" eyes={1}
-            look={view === "you" ? { x: 0.4, y: 0.8 } : { x: 0.9, y: 0 }} blink={blinking(frame, 1)} time={frame} held={walk >= 1 ? <Can /> : undefined} />
+            look={view === "you" ? { x: 0.4, y: 0.8 } : view === "in" && Math.abs(yx - MX) < 160 ? { x: 0.5, y: 0.1 } : { x: 0.9, y: 0 }} blink={blinking(frame, 1)} time={frame}
+            held={walk >= 1 ? <Can /> : undefined} />
         </>
       } />
     </LookContext.Provider>

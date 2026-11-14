@@ -7,6 +7,7 @@ import { setLook, type SetLight } from "@whatif/kit/sets/common";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
+import { INK, PAPER, TEAL } from "@whatif/kit/theme";
 import { lastIndex, noise, PASTELS, type Shot } from "../shared";
 import { Deep } from "../sets/common";
 
@@ -82,5 +83,50 @@ export const Strollers: React.FC<{ cam: Camera; depth: number; frame: number; y:
         );
       })}
     </Deep>
+  );
+};
+
+/** The card's sixty seconds, drawn: a small paper dial whose teal wedge sweeps clockwise from twelve as `p` runs 0..1
+ *  (outside review of v4.1: "a visible 60-second fold"). (x, y) is its centre, r its radius, in world units. It is a
+ *  prop beside the card, never text. Hidden once `p` passes 1 by more than `linger` (the card has folded). */
+export const SixtyDial: React.FC<{ x: number; y: number; r: number; p: number; opacity?: number }> = ({ x, y, r, p, opacity = 1 }) => {
+  if (p <= 0 || opacity <= 0) return null;
+  const a = Math.min(1, p) * Math.PI * 2;
+  const ex = x + r * 0.86 * Math.sin(a), ey = y - r * 0.86 * Math.cos(a);
+  const wedge = p >= 0.999
+    ? <circle cx={x} cy={y} r={r * 0.86} fill={TEAL} />
+    : <path d={`M${x} ${y} L${x} ${y - r * 0.86} A${r * 0.86} ${r * 0.86} 0 ${a > Math.PI ? 1 : 0} 1 ${ex} ${ey}Z`} fill={TEAL} />;
+  return (
+    <g opacity={opacity}>
+      <circle cx={x + r * 0.08} cy={y + r * 0.12} r={r} fill="#000" opacity={0.3} />
+      <circle cx={x} cy={y} r={r} fill={PAPER} stroke={INK} strokeWidth={Math.max(3, r * 0.09)} />
+      {wedge}
+      {[0, 1, 2, 3].map((i) => {
+        const t = (i * Math.PI) / 2;
+        return <line key={i} x1={x + r * 0.7 * Math.sin(t)} y1={y - r * 0.7 * Math.cos(t)} x2={x + r * 0.95 * Math.sin(t)} y2={y - r * 0.95 * Math.cos(t)}
+          stroke={INK} strokeWidth={Math.max(2, r * 0.07)} strokeLinecap="round" />;
+      })}
+      <line x1={x} y1={y} x2={ex} y2={ey} stroke={INK} strokeWidth={Math.max(2, r * 0.08)} strokeLinecap="round" />
+      <circle cx={x} cy={y} r={r * 0.1} fill={INK} />
+    </g>
+  );
+};
+
+/** A paper snap, drawn: short ink strokes flicking out from a point for eight frames from `at` (the card opening, the
+ *  bar breaking). World units; `r` is the inner radius the strokes start at. */
+export const SnapLines: React.FC<{ frame: number; at: number; x: number; y: number; r: number; count?: number; tilt?: number }> = ({
+  frame, at, x, y, r, count = 6, tilt = 0,
+}) => {
+  const t = (frame - at) / 8;
+  if (t < 0 || t > 1) return null;
+  return (
+    <g opacity={1 - t * t}>
+      {Array.from({ length: count }, (_, i) => {
+        const a = ((tilt + (i * 360) / count) * Math.PI) / 180;
+        const r0 = r * (1 + 0.5 * t), r1 = r * (1.35 + 0.6 * t);
+        return <line key={i} x1={x + r0 * Math.cos(a)} y1={y + r0 * Math.sin(a)} x2={x + r1 * Math.cos(a)} y2={y + r1 * Math.sin(a)}
+          stroke={INK} strokeWidth={Math.max(3, r * 0.08)} strokeLinecap="round" />;
+      })}
+    </g>
   );
 };

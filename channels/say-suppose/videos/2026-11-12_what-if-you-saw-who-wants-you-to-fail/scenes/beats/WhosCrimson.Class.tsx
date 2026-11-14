@@ -1,21 +1,23 @@
-// Who's Red in the classroom (kit `classroom`, script v3): your best friend at the next desk (27); your maths teacher
-// marking at her lectern, +41, never looking up (28-30); then why the enemy doesn't care (37-41): a top-down insert of two desks and the two halves of a chocolate bar, two paper sheets
-// (the ladder of people near your level; two runners from one start line), the rival far off with his head down, your
-// best friend at the next desk looking straight at you, your face, and the lanes. No names on screen.
+// Who's Red in the classroom (kit `classroom`, script v3): your best friend at the next desk, the rival rows away, the
+// two desks side by side, your best friend watching you (27); your maths teacher marking at her lectern, +41, never
+// looking up (28-30); then why the enemy doesn't care (38-41): the ladder sheet, the rival far off with his head down
+// (over your shoulder), your best friend at the next desk looking straight at you, your face, and the lanes. The board
+// carries ordinary maths (MathsBoard), not the kit's rising curve, which would show the curve long before it matters
+// (outside review of v4.1, 2:27). The desks and the track (37, 39) are in WhosCrimson.Track.tsx. No names on screen.
 import { interpolate } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { SEATED, seatedY, STAND, type Pose } from "@whatif/kit/rig/pose";
 import { classroom } from "@whatif/kit/sets";
 import type { MoodName } from "@whatif/kit/stage/moods";
-import { closeUp, drift, ForegroundHead, insert } from "@whatif/kit/stage/shots";
+import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import { DrawLine } from "@whatif/kit/ui/DrawLine";
-import { INK, TEAL } from "@whatif/kit/theme";
-import { Glasses, headAt, Letter, Meter, Sheet } from "../parts";
+import { CRIMSON, INK, TEAL } from "@whatif/kit/theme";
+import { Chocolate, Glasses, headAt, Letter, Meter, Sheet, YourShoulder } from "../parts";
 import { blinking, camAt, current, HERO, KANG, MINJUN, mix, PASTELS, ramp, TAEHO } from "../shared";
 import { Deep } from "../sets/common";
-import { FlatShot, HeadIcon, onLayer, RedPen, SetShot, TwoDesksTop, WoodTop } from "./WhosCrimson.Common";
+import { FlatShot, HeadIcon, onLayer, RedPen, SetShot, WoodTop } from "./WhosCrimson.Common";
 import type { CrimsonTimes } from "./WhosCrimson.Times";
 
 export const FLOOR = 960;
@@ -36,6 +38,36 @@ export const MsKang: React.FC<{ frame: number; face: object; x?: number; y?: num
     <Glasses x={x} y={y} scale={S} pose={pose} facing={-1} />
   </>
 );
+
+/** The classroom set's whiteboard (kit Classroom.tsx: x 1300, y 180, 620 x 360, on a Deep layer at 0.92). */
+const BOARD = { x: 1300, y: 180, w: 620, h: 360, depth: 0.92 } as const;
+
+/**
+ * An ordinary maths board over the kit's blank one (pass the set `board: "blank"` and this as SetShot's `far`): a right
+ * triangle with its right angle and one angle marked, three lines of working, and a boxed answer with a red tick. Ink
+ * drawings, no words.
+ */
+export const MathsBoard: React.FC<{ cam: Camera }> = ({ cam }) => {
+  const { x, y } = BOARD;
+  const scrawl = (sx: number, sy: number, n: number) =>
+    `M${sx} ${sy}` + Array.from({ length: n }, (_, i) => ` q9 ${i % 2 ? 12 : -14} 18 0`).join("");
+  return (
+    <Deep cam={cam} depth={BOARD.depth}>
+      <g fill="none" stroke={INK} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round">
+        <path d={`M${x + 70} ${y + 300} V${y + 80} L${x + 270} ${y + 300}Z`} />
+        <path d={`M${x + 70} ${y + 270} h30 v30`} strokeWidth={4} />
+        <path d={`M${x + 228} ${y + 300} A42 42 0 0 0 ${x + 242} ${y + 268}`} stroke={TEAL} strokeWidth={5} />
+        <path d={scrawl(x + 330, y + 90, 9)} strokeWidth={5} />
+        <path d={`M${x + 510} ${y + 84} h26 M${x + 510} ${y + 98} h26`} strokeWidth={5} />
+        <path d={scrawl(x + 330, y + 150, 7)} strokeWidth={5} />
+        <path d={scrawl(x + 360, y + 210, 6)} strokeWidth={5} />
+        <rect x={x + 350} y={y + 250} width={140} height={60} rx={6} strokeWidth={5} />
+        <path d={scrawl(x + 372, y + 282, 5)} strokeWidth={5} />
+        <path d={`M${x + 510} ${y + 276} l16 20 l34 -44`} stroke={CRIMSON} strokeWidth={7} />
+      </g>
+    </Deep>
+  );
+};
 
 // ------------------------------------------------------------------------------------------------ 28-30 your maths teacher, marking
 
@@ -80,7 +112,7 @@ export const KangShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
   };
   const cam = drift(cams[view], frame, "kang", 3);
   return (
-    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "graph", drawn: 1 }}
+    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }} far={<MathsBoard cam={cam} />}
       behind={
         <>
           <Figure head={PASTELS[2]} coat="#5a6488" x={SEAT.x[0]} y={seatY} scale={SEAT.scale} pose={SEATED} {...EXPRESSIONS.neutral} look={{ x: 1, y: -0.2 }} blink={blinking(frame, 8)} time={frame} />
@@ -101,38 +133,63 @@ export const KangShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
 
 // ------------------------------------------------------------------------------------------------ 27 the next desk
 
-/** "The dangerous number is at the next desk.": your best friend at the next desk, grinning and waving you over as you
- *  sit down. No card: you said nothing. */
+type NextView = "wave" | "far" | "desks" | "watch";
+
+/** The halves of one chocolate bar on the two desks, each at the near end of its desk top (the slanted tops of kit
+ *  Classroom.tsx's bench desks run from (seat + 70, 770) up to (seat + 220, 750)). */
+export const DeskHalves: React.FC = () => (
+  <>
+    <Chocolate x={SEAT.x[1] + 196} y={741} scale={0.62} half="right" tilt={-8} />
+    <Chocolate x={SEAT.x[2] + 92} y={755} scale={0.62} half="left" tilt={-8} />
+  </>
+);
+
+/** Line 27 in four shots (outside review of v4.1, 2:27: the wide was held eight seconds): "Your best friend: minus
+ *  eighty-four.", your best friend at the next desk, grinning and waving you over as you sit down; "Whatever red
+ *  means,", the rival rows away, head down, over your shoulder; "the dangerous number", the two desks side by side,
+ *  the two halves of one chocolate bar; "is at the next desk.", your best friend watching you. No card: you said
+ *  nothing. */
 export const NextDeskShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
+  const view = current<NextView>(frame, [[0, "wave"], [k.farRows, "far"], [k.twoDesks, "desks"], [k.watching, "watch"]]);
   const mh = headAt(SEAT.x[1], seatY, SEAT.scale, SEATED);
-  const wave = Math.sin((frame - k.nextDesk) / 4) * 12;
-  const mPose: Pose = { ...SEATED, armB: [-140 + wave, -20] };
-  const cam = drift(camAt(frame, [[k.nextDesk, { x: 800, y: 700, zoom: 1.8 }], [k.kang, closeUp(mh.x + 80, mh.y + 10, 2.5)]]), frame, "next", 2);
+  const th = headAt(TAEHO_FAR.x, seatedY(TAEHO_FAR.seat, TAEHO_FAR.scale), TAEHO_FAR.scale, HEAD_DOWN);
+  const waving = view === "wave";
+  const wave = waving ? Math.sin((frame - k.nextDesk) / 4) * 12 : 0;
+  const mPose: Pose = waving ? { ...SEATED, armB: [-140 + wave, -20] } : SEATED;
+  const cams: Record<NextView, Camera> = {
+    wave: camAt(frame, [[k.nextDesk, { x: 800, y: 700, zoom: 1.8 }], [k.farRows, { x: 790, y: 700, zoom: 1.95 }]]),
+    far: camAt(frame, [[k.farRows, onLayer(th.x - 40, th.y + 40, TAEHO_FAR.depth, 1.75)], [k.twoDesks, onLayer(th.x - 20, th.y + 30, TAEHO_FAR.depth, 1.9)]]),
+    desks: camAt(frame, [[k.twoDesks, insert(905, 800, 3.3)], [k.watching, insert(915, 790, 3.6)]]),
+    watch: camAt(frame, [[k.watching, closeUp(mh.x + 110, mh.y + 10, 2.4)], [k.kang, closeUp(mh.x + 90, mh.y + 10, 2.7)]]),
+  };
+  const cam = drift(cams[view], frame, "next", 2);
+  const mFace = view === "watch"
+    ? { brows: "none" as const, lids: 0.1, mouth: "smile" as const, eyes: 1.05, look: { x: 1, y: 0.05 } }
+    : { ...EXPRESSIONS.happy, eyes: 1.05, look: { x: 1, y: -0.05 } };
+  const yFace = view === "watch"
+    ? { brows: "worry" as const, lids: 0.25, mouth: "flat" as const, eyes: 1, look: { x: 0.6, y: 0.45 } }
+    : { brows: "worry" as const, lids: 0.2, mouth: "flat" as const, eyes: 1, look: { x: -0.9, y: 0 } };
+  const near = view !== "far";
   return (
-    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "graph", drawn: 1 }}
-      behind={
-        <>
-          <Figure {...MINJUN} x={SEAT.x[1]} y={seatY} scale={SEAT.scale} pose={mPose} {...EXPRESSIONS.happy} eyes={1.05} look={{ x: 1, y: -0.05 }}
-            blink={blinking(frame, 2)} time={frame} />
-          <Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} pose={SEATED} brows="worry" lids={0.2} mouth="flat" eyes={1}
-            look={{ x: -0.9, y: 0 }} blink={blinking(frame, 1)} time={frame} />
-        </>
-      } />
+    <>
+      <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }}
+        far={<>{<MathsBoard cam={cam} />}{view === "far" && <FarTaeho frame={frame} cam={cam} />}</>}
+        behind={near ? (
+          <>
+            <Figure {...MINJUN} x={SEAT.x[1]} y={seatY} scale={SEAT.scale} pose={mPose} {...mFace} blink={blinking(frame, 2)} time={frame} />
+            <Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} pose={SEATED} {...yFace} blink={blinking(frame, 1)} time={frame} />
+          </>
+        ) : null}
+        actors={near ? <DeskHalves /> : null} />
+      {view === "far" && <YourShoulder side="left" />}
+    </>
   );
 };
 
-// ------------------------------------------------------------------------------------------------ 37 the desks
-
-export const DesksInsert: React.FC<{ frame: number; from: number; to: number; mood: MoodName; emptyRight?: boolean; halves?: boolean }> = ({ frame, from, to, mood, emptyRight, halves = true }) => {
-  const cam = drift(camAt(frame, [[from, insert(960, 540, 1.22)], [to, insert(960, 550, 1.4)]]), frame, "desks", 2);
-  return <FlatShot cam={cam} mood={mood} back={<rect x={-1400} y={-800} width={4800} height={2600} fill="#a9a08e" />}
-    actors={<TwoDesksTop x={960} y={540} emptyRight={emptyRight} halves={halves} />} />;
-};
-
-// ------------------------------------------------------------------------------------------------ 38-39 paper sheets
+// ------------------------------------------------------------------------------------------------ 38 the ladder sheet
 
 /** The ladder: seven people on its rungs, you in the middle; the two nearest you are bracketed, the far ones fade. */
-const LadderSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
+export const LadderSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const W = 900, H = 760, step = 92;
   const fade = ramp(frame, k.ladder + 40, k.ladder + 70);
   const heads = [PASTELS[5], PASTELS[1], MINJUN.head, HERO.head, PASTELS[3], PASTELS[7], PASTELS[0]];
@@ -155,39 +212,6 @@ const LadderSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> 
         <DrawLine d={`M610 ${90 + 2 * step - 72} h40 V${90 + 4 * step + 8} h-40`} from={k.ladder + 14} to={k.ladder + 40} color={TEAL} width={9} />
         <DrawLine d={`M290 ${90 + 2 * step - 72} h-40 V${90 + 4 * step + 8} h40`} from={k.ladder + 14} to={k.ladder + 40} color={TEAL} width={9} />
       </Sheet>
-    } />
-  );
-};
-
-/** Two runners from one start line, you and Min-jun neck and neck toward one seat; a third (Tae-ho) far off on a line
- *  of his own, grey. */
-const RaceSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const W = 1100, H = 640;
-  const run = interpolate(frame, [k.race + 10, k.race + 80], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const far = interpolate(frame, [k.race + 70, k.race + 110], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const cam = drift(camAt(frame, [[k.race, insert(960, 540, 1.15)], [k.taehoFar, insert(990, 520, 1.3)]]), frame, "race", 2);
-  return (
-    <FlatShot cam={cam} mood={mood} back={<WoodTop seed={2} />} actors={
-      <>
-        <Sheet frame={frame} at={k.race - 4} x={960} y={540} w={W} h={H} tilt={1.5}>
-          <line x1={130} y1={110} x2={130} y2={420} stroke={INK} strokeWidth={8} strokeLinecap="round" />
-          <DrawLine d="M170 250 H800" from={k.race + 10} to={k.race + 80} color={INK} width={6} />
-          <DrawLine d="M170 360 H785" from={k.race + 10} to={k.race + 80} color={INK} width={6} />
-          {/* the seat both want, at the end of the two lines */}
-          <g transform="translate(930 260)">
-            <rect x={-46} y={-8} width={92} height={18} rx={6} fill={TEAL} stroke={INK} strokeWidth={5} />
-            <rect x={-46} y={-96} width={16} height={92} rx={6} fill={TEAL} stroke={INK} strokeWidth={5} />
-            <line x1={-36} y1={10} x2={-38} y2={60} stroke={INK} strokeWidth={8} strokeLinecap="round" />
-            <line x1={36} y1={10} x2={38} y2={60} stroke={INK} strokeWidth={8} strokeLinecap="round" />
-          </g>
-          <HeadIcon x={mix(170, 760, run)} y={210} r={34} color={HERO.head} tuft mouth="flat" />
-          <HeadIcon x={mix(170, 745, run)} y={320} r={34} color={MINJUN.head} mouth="flat" />
-          <g opacity={far}>
-            <line x1={260} y1={560} x2={520} y2={560} stroke={INK} strokeWidth={6} strokeLinecap="round" strokeDasharray="4 18" opacity={0.6} />
-            <HeadIcon x={300} y={520} r={30} color={TAEHO.head} dim={0.55} mouth="flat" />
-          </g>
-        </Sheet>
-      </>
     } />
   );
 };
@@ -232,8 +256,8 @@ export const ClassWhy: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
   const showNear = view !== "taeho";
   return (
     <>
-      <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "diagram", drawn: 1 }}
-        far={view === "taeho" ? <FarTaeho frame={frame} cam={cam} /> : null}
+      <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }}
+        far={<><MathsBoard cam={cam} />{view === "taeho" && <FarTaeho frame={frame} cam={cam} />}</>}
         behind={showNear ? (
           <>
             <Figure {...MINJUN} x={SEAT.x[1]} y={seatY} scale={SEAT.scale} pose={SEATED} brows="flat" lids={0.1} mouth="flat" eyes={1.05}
@@ -241,7 +265,8 @@ export const ClassWhy: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
             <Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} pose={SEATED} {...youFace} blink={blinking(frame, 1)} time={frame} />
           </>
         ) : null} />
-      {view === "taeho" && <ForegroundHead x={1740} side="right" blur={18} />}
+      {/* over your shoulder at him: the edge of your own head and scarf, not the kit's anonymous black head */}
+      {view === "taeho" && <YourShoulder side="left" />}
     </>
   );
 };
@@ -252,8 +277,8 @@ export const ClassWhy: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName
  *  back in the outside lane. */
 const LaneSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const W = 1200, H = 620, lane = 100, top = 60;
-  const go = interpolate(frame, [k.lanes, k.steps], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const cam = drift(camAt(frame, [[k.lanes, insert(960, 540, 1.12)], [k.steps, insert(1000, 520, 1.3)]]), frame, "lanes", 2);
+  const go = interpolate(frame, [k.lanes, k.stepsIn], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const cam = drift(camAt(frame, [[k.lanes, insert(960, 540, 1.12)], [k.stepsIn, insert(1000, 520, 1.3)]]), frame, "lanes", 2);
   const icons: [number, number, string, boolean][] = [[0, 380, PASTELS[0], false], [1, 640, MINJUN.head, true], [2, 660, HERO.head, true], [3, 470, PASTELS[4], false], [4, 230, TAEHO.head, false]];
   return (
     <FlatShot cam={cam} mood={mood} back={<WoodTop seed={1} />} actors={
@@ -271,16 +296,6 @@ const LaneSheet: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = 
       </>
     } />
   );
-};
-
-type PaperView = "desks" | "ladder" | "race";
-
-/** Lines 37-39: the desks from above, then the two sheets. */
-export const WhyPaper: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const view = current<PaperView>(frame, [[0, "desks"], [k.ladder, "ladder"], [k.race, "race"]]);
-  if (view === "desks") return <DesksInsert frame={frame} from={k.desks} to={k.ladder} mood={mood} />;
-  if (view === "ladder") return <LadderSheet frame={frame} k={k} mood={mood} />;
-  return <RaceSheet frame={frame} k={k} mood={mood} />;
 };
 
 export const LanesPaper = LaneSheet;

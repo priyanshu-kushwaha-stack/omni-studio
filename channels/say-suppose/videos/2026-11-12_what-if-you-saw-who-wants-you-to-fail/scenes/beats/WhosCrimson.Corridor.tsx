@@ -1,15 +1,16 @@
 // Who's Red, lines 21-27 (script v3): the school corridor in the morning. You walk in with the letter; the rival, sage head, one
 // foot up at the shoe lockers, swapping shoes. "Still here?" You hold up the letter: over your shoulder the card snaps
-// open over his head and flicks to -6. Your brows go up; he barely looks up. "Nice. Move." He walks off past you, his
-// -6 still over him.
+// open over his head and flicks to -6, and the shot stays on that one axis (your scarf and the letter in the near
+// foreground, his face and his -6 beyond: outside review of v4.1, 2:17) until he barely looks up. "Nice. Move." He
+// walks off past you, his -6 still over him.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { lerpPose, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { schoolCorridor } from "@whatif/kit/sets";
-import { closeUp, drift, ForegroundHead } from "@whatif/kit/stage/shots";
+import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { headAt, Letter, Meter } from "../parts";
+import { headAt, Letter, Meter, YourShoulder } from "../parts";
 import { blinking, camAt, current, HERO, linear, mix, ramp, TAEHO } from "../shared";
 import { SetShot, Shoe, ShoeLockers } from "./WhosCrimson.Common";
 import type { CrimsonTimes } from "./WhosCrimson.Times";
@@ -65,11 +66,25 @@ function youFace(frame: number, k: CrimsonTimes) {
   return { brows: "worry" as const, lids: 0.15, mouth: "flat" as const, eyes: 1.05, look: { x: 0.6, y: -0.55 } };
 }
 
-type View = "wide" | "track" | "lockers" | "still" | "raise" | "ots" | "youLook" | "barely" | "move" | "leave";
+type View = "wide" | "track" | "lockers" | "still" | "raise" | "ots" | "barely" | "move" | "leave";
+
+/** Your arm and the letter held up toward him, in the near foreground of the over-the-shoulder shot (screen space, over
+ *  YourShoulder's edge at the left). The letter rises an inch as the card snaps open. */
+const LetterUp: React.FC<{ frame: number; k: CrimsonTimes }> = ({ frame, k }) => {
+  const lift = ramp(frame, k.ots, k.ots + 8) * 18 + ramp(frame, k.taehoTag, k.taehoTag + 6) * 10;
+  const lx = 330, ly = 720 - lift;
+  return (
+    <svg width={1920} height={1080} style={{ position: "absolute", inset: 0, filter: "blur(3px)", pointerEvents: "none" }}>
+      <polyline points={`60,1080 170,${ly + 170} ${lx - 20},${ly - 10}`} fill="none" stroke="#23252b" strokeWidth={34} strokeLinecap="round" strokeLinejoin="round" />
+      <Letter x={lx} y={ly + 40} scale={1.55} tilt={-9} />
+      <circle cx={lx - 26} cy={ly - 6} r={22} fill="#23252b" />
+    </svg>
+  );
+};
 
 export const CorridorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const view = current<View>(frame, [[0, "wide"], [k.youWalk, "track"], [k.lockers, "lockers"], [k.still, "still"], [k.raise, "raise"],
-    [k.ots, "ots"], [k.youLook, "youLook"], [k.barely, "barely"], [k.move, "move"], [k.leave, "leave"]]);
+    [k.ots, "ots"], [k.barely, "barely"], [k.move, "move"], [k.leave, "leave"]]);
   const y = you(frame, k);
   const t = taeho(frame, k);
   const th = t.head;
@@ -79,8 +94,7 @@ export const CorridorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: Mood
     lockers: camAt(frame, [[k.lockers, { x: TX - 70, y: 650, zoom: 1.75 }], [k.still, { x: TX - 80, y: 640, zoom: 1.95 }]]),
     still: camAt(frame, [[k.still, closeUp(th.x - 30, th.y - 10, 2.5)], [k.raise, closeUp(th.x - 30, th.y - 10, 2.65)]]),
     raise: camAt(frame, [[k.raise, { x: (YX + TX) / 2, y: 610, zoom: 1.7 }], [k.ots, { x: (YX + TX) / 2 + 10, y: 605, zoom: 1.78 }]]),
-    ots: camAt(frame, [[k.ots, closeUp(th.x - 150, th.y - 80, 2.15)], [k.youLook, closeUp(th.x - 140, th.y - 85, 2.3)]]),
-    youLook: camAt(frame, [[k.youLook, closeUp(y.head.x - 30, y.head.y - 30, 2.6)], [k.barely, closeUp(y.head.x - 30, y.head.y - 35, 2.8)]]),
+    ots: camAt(frame, [[k.ots, closeUp(th.x - 170, th.y - 80, 2.1)], [k.barely, closeUp(th.x - 130, th.y - 95, 2.35)]]),
     barely: camAt(frame, [[k.barely, closeUp(th.x - 10, th.y - 70, 2.3)], [k.move, closeUp(th.x - 10, th.y - 70, 2.45)]]),
     move: camAt(frame, [[k.move, { x: (YX + TX) / 2 + 20, y: 610, zoom: 1.6 }], [k.leave, { x: (YX + TX) / 2 + 20, y: 605, zoom: 1.7 }]]),
     leave: camAt(frame, [[k.leave, { x: 1050, y: 620, zoom: 1.3 }], [k.nextDesk, { x: 900, y: 630, zoom: 1.35 }]]),
@@ -103,7 +117,8 @@ export const CorridorShot: React.FC<{ frame: number; k: CrimsonTimes; mood: Mood
   return (
     <>
       <SetShot set={schoolCorridor} mood={mood} frame={frame} cam={cam} options={{ bags: false }} actors={actors} />
-      {view === "ots" && <ForegroundHead x={250} side="left" blur={16} />}
+      {view === "ots" && <LetterUp frame={frame} k={k} />}
+      {view === "ots" && <YourShoulder side="left" />}
     </>
   );
 };

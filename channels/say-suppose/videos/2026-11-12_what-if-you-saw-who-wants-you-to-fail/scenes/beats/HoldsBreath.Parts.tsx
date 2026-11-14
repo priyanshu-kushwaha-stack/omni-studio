@@ -1,14 +1,16 @@
 // Pieces drawn for "The Country Holds Its Breath" (beats/HoldsBreath.tsx), each for the REF camera like a set: the exam
-// hall from straight above, the paper plane, the empty runway, the school gate with the parents and its bell, the lunch
-// box, your sister with it, the hands on its knot, and the classroom desk from above for the notebook and the chocolate.
+// hall from straight above, the paper plane, the runway with a grounded jet, the school gate with the parents and its
+// bell, the lunch box, your sister with it, the classroom desk from above for the notebook and the chocolate, and the
+// day pad that tears through the month to results day.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { OUTSIDE, Sky, Skyline } from "@whatif/kit/sets";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
+import { FONT } from "@whatif/kit/fonts";
+import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { Ponytail, Vest } from "../parts";
-import { JIYOON, mix, noise, PASTELS } from "../shared";
+import { JIYOON, noise, PASTELS, ramp } from "../shared";
 import { Deep } from "../sets/common";
 import { TopDownHead } from "../sets/ReadingRoom";
 
@@ -57,19 +59,43 @@ export const PaperPlane: React.FC<{ x: number; y: number; scale?: number; tilt?:
 
 // ------------------------------------------------------------------------------------------------ the runway
 
-/** The airport with nothing moving: a long empty runway running away to the horizon, its dashes, the terminal and
- *  the tower far off, a paper plane parked at the apron, the windsock hanging limp. */
-export const RunwayBack: React.FC<{ cam: Camera; mood: MoodName }> = ({ cam, mood }) => (
+/** An airliner on the ground, side on, nose to the right, wheels on (x, y): white body, teal tail and stripe, a row of
+ *  windows, the wing and engine, the gear down. About 560 wide at scale 1. */
+export const GroundedJet: React.FC<{ x: number; y: number; scale?: number }> = ({ x, y, scale = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${scale})`}>
+    <ellipse cx={0} cy={0} rx={270} ry={12} fill="#000" opacity={0.16} />
+    <path d="M-20 -66 L-110 -104 L-70 -104 L50 -68Z" fill="#9aa3ad" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+    <path d="M-236 -78 L-286 -196 L-228 -196 L-150 -78Z" fill={TEAL} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+    {[-150, 0, 160].map((gx) => (
+      <g key={gx}>
+        <rect x={gx - 4} y={-40} width={8} height={26} fill="#5c6675" />
+        <circle cx={gx} cy={-11} r={11} fill="#2a2d36" stroke={INK} strokeWidth={3} />
+      </g>
+    ))}
+    <path d="M-280 -72 Q-280 -110 -210 -110 L210 -110 Q280 -108 292 -70 Q282 -36 210 -36 L-210 -36 Q-262 -38 -280 -72Z" fill="#f2f0ea" stroke={INK} strokeWidth={6} />
+    <rect x={-250} y={-62} width={470} height={8} fill={TEAL} />
+    {Array.from({ length: 15 }, (_, i) => <rect key={i} x={-190 + i * 26} y={-92} width={14} height={16} rx={5} fill="#9fc0e0" stroke={INK} strokeWidth={2} />)}
+    <path d="M236 -96 L268 -96 Q280 -88 284 -78 L240 -80Z" fill="#9fc0e0" stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+    <path d="M70 -56 L-120 -14 L-60 -14 L120 -54Z" fill="#c9ced6" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+    <rect x={-50} y={-44} width={82} height={30} rx={14} fill="#9aa3ad" stroke={INK} strokeWidth={4} />
+  </g>
+);
+
+/** The airport with nothing moving: the runway running away to the horizon with its edge lines, centre dashes and
+ *  threshold bars, the terminal and the tower far off, the windsock hanging limp. `jet` puts an airliner holding on
+ *  the ground beside the threshold; `plane` hangs a paper plane still in the sky at (x, y) (a layer at depth 0.5, so a
+ *  camera can close on it: see `planeCam`). */
+export const RunwayBack: React.FC<{ cam: Camera; mood: MoodName; jet?: boolean; plane?: { x: number; y: number } }> = ({ cam, mood, jet, plane }) => (
   <>
-    <Deep cam={cam} depth={0.05} flat><Sky id="runway" mood={mood} x={-1400} y={-800} w={4800} h={1300} sunAt={{ x: 1400, y: 200 }} /></Deep>
+    <Deep cam={cam} depth={0.05} flat><Sky id="runway" mood={mood} x={-1400} y={-800} w={4800} h={2400} sunAt={{ x: 1400, y: 200 }} /></Deep>
     <Deep cam={cam} depth={0.3} flat>
       <rect x={-1400} y={470} width={4800} height={1200} fill="#a9bf8f" />
       <rect x={200} y={360} width={760} height={110} fill="#d9d2c2" stroke={INK} strokeWidth={4} />
       {Array.from({ length: 12 }, (_, i) => <rect key={i} x={220 + i * 62} y={385} width={44} height={36} fill="#9fc0e0" />)}
       <rect x={1180} y={230} width={40} height={240} fill="#d9d2c2" stroke={INK} strokeWidth={4} />
       <rect x={1150} y={200} width={100} height={50} rx={6} fill="#9fc0e0" stroke={INK} strokeWidth={4} />
-      <PaperPlane x={560} y={455} scale={0.8} tilt={0} />
     </Deep>
+    {plane && <Deep cam={cam} depth={0.5} flat><PaperPlane x={plane.x} y={plane.y} scale={0.75} tilt={-4} /></Deep>}
     <Deep cam={cam} depth={1}>
       <rect x={-1400} y={560} width={4800} height={1200} fill="#9fb98a" />
       <path d="M880 470 L1040 470 L1700 1400 L220 1400Z" fill="#6b6f78" stroke={INK} strokeWidth={4} />
@@ -80,11 +106,58 @@ export const RunwayBack: React.FC<{ cam: Camera; mood: MoodName }> = ({ cam, moo
         return <path key={i} d={`M${960 - w0} ${y0} L${960 + w0} ${y0} L${960 + w1} ${y1} L${960 - w1} ${y1}Z`} fill={PAPER} />;
       })}
       <path d="M886 480 L250 1400 M1034 480 L1670 1400" stroke={PAPER} strokeWidth={6} />
-      <rect x={1620} y={420} width={10} height={260} fill="#5c6675" />
-      <path d="M1630 430 L1700 448 L1696 470 L1630 474Z" fill="#e8792f" stroke={INK} strokeWidth={3} transform="rotate(62 1630 430)" />
+      {/* the threshold bars at the near end */}
+      {Array.from({ length: 8 }, (_, i) => {
+        const top = 960 + (i - 3.5) * 90, bot = 960 + (i - 3.5) * 98;
+        return <path key={i} d={`M${top - 14} 1004 L${top + 14} 1004 L${bot + 16} 1066 L${bot - 16} 1066Z`} fill={PAPER} opacity={0.92} />;
+      })}
+      <rect x={1780} y={420} width={10} height={260} fill="#5c6675" />
+      <path d="M1790 430 L1860 448 L1856 470 L1790 474Z" fill="#e8792f" stroke={INK} strokeWidth={3} transform="rotate(62 1790 430)" />
+      {jet && <GroundedJet x={1450} y={706} scale={0.78} />}
     </Deep>
   </>
 );
+
+/** The camera that centres a point (x, y) of the plane layer (depth 0.5) at `zoom`. */
+export const planeCam = (x: number, y: number, zoom: number): Camera => ({ x: 960 + (x - 960) / 0.5, y: 540 + (y - 540) / 0.5, zoom });
+
+// ------------------------------------------------------------------------------------------------ the month
+
+/** A tear-off day pad, screen space (put it OUTSIDE <Stage>, top right, clear of the top 10%): the day pages tear off
+ *  from `from`, quick in the middle of the month and slowing, and it stops at `land` on results day, ringed in red. */
+export const DayPad: React.FC<{ frame: number; from: number; land: number }> = ({ frame, from, land }) => {
+  const days = 30;
+  const dayAt = (f: number) => Math.max(1, Math.min(days, 1 + Math.floor(ramp(f, from, land) * (days - 1) + 1e-6)));
+  const day = dayAt(frame);
+  let turned = frame; // the frame this page came up (the last one tore off then)
+  while (turned > frame - 12 && dayAt(turned - 1) === day) turned--;
+  const off = day > 1 ? (frame - turned) / 5 : 1;
+  const results = frame >= land;
+  const ring = ramp(frame, land + 2, land + 12);
+  const page = (n: number, last: boolean) => (
+    <g>
+      <rect x={-150} y={-120} width={300} height={290} rx={10} fill={PAPER} stroke={INK} strokeWidth={6} />
+      <rect x={-150} y={-120} width={300} height={70} rx={10} fill={last ? CRIMSON : TEAL} stroke={INK} strokeWidth={6} />
+      {last && <text x={0} y={-72} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40} fill={PAPER}>RESULTS</text>}
+      <text x={0} y={110} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={140} fill={INK}>{n}</text>
+    </g>
+  );
+  return (
+    <svg width={1920} height={1080} style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+      <g transform="translate(1600 290) rotate(2)">
+        <rect x={-146} y={-110} width={300} height={290} rx={10} fill="#000" opacity={0.3} />
+        {page(day, results)}
+        {results && ring > 0 && (
+          <ellipse cx={0} cy={66} rx={104} ry={84} pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - ring} fill="none" stroke={CRIMSON} strokeWidth={10} />
+        )}
+        {day > 1 && off < 1 && (
+          <g transform={`translate(${40 * off} ${-160 * off}) rotate(${-18 * off})`} opacity={1 - off}>{page(day - 1, false)}</g>
+        )}
+        {[-90, -30, 30, 90].map((rx) => <rect key={rx} x={rx - 7} y={-134} width={14} height={32} rx={7} fill="#9a9a94" stroke={INK} strokeWidth={4} />)}
+      </g>
+    </svg>
+  );
+};
 
 // ------------------------------------------------------------------------------------------------ the school gate
 
@@ -199,23 +272,6 @@ export const JiyoonWithLunch: React.FC<{
     </g>
   );
 };
-
-/** Insert: the lunch box's knot held between two hands: hers (peach, grey sleeve) from the right and yours (mustard, dark
- *  sleeve) from the left, `touch` 0..1 bringing yours in until the fingers meet. REF units, box centred at (x, y). */
-export const HandsOnHandle: React.FC<{ x: number; y: number; touch: number; hers: number }> = ({ x, y, touch, hers }) => (
-  <g transform={`translate(${x} ${y})`}>
-    <g transform="scale(4.2)"><LunchBox x={0} y={60} /></g>
-    <g transform={`translate(${mix(160, 40, hers)} -70)`}>
-      <rect x={20} y={-30} width={600} height={90} rx={30} fill={JIYOON.coat} stroke={INK} strokeWidth={6} />
-      <rect x={-50} y={-38} width={110} height={106} rx={46} fill={JIYOON.head} stroke={INK} strokeWidth={6} />
-    </g>
-    <g transform={`translate(${mix(-700, -110, touch)} -66)`}>
-      <rect x={-640} y={-30} width={600} height={90} rx={30} fill="#3b3e47" stroke={INK} strokeWidth={6} />
-      <rect x={-60} y={-38} width={110} height={106} rx={46} fill={MUSTARD} stroke={INK} strokeWidth={6} />
-      <rect x={30} y={-20} width={70} height={30} rx={15} fill={MUSTARD} stroke={INK} strokeWidth={5} />
-    </g>
-  </g>
-);
 
 // ------------------------------------------------------------------------------------------------ the desk from above
 

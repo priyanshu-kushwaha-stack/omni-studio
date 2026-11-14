@@ -1,11 +1,11 @@
 // Pieces drawn for "A Text Would Open Nothing" (beats/TextOpensNothing.tsx): the results screen (grade one as a big 1 in a
-// box, no words), Min-jun's phone, the seat-and-sea sheet, the regret pie, the phone face down, and what goes past the bus
-// windows (the shelter ad with its paper subscribe tag, the depot gates).
+// box, no words), Min-jun's phone, the group chat, your draft to her, the phone face down, and what goes past the bus
+// windows (the shelter ad with its paper subscribe tag, the depot gates). The class-and-country sheet and the regret pie
+// are in TextOpensNothing.Paper.tsx.
 import { spring } from "remotion";
 import { FONT } from "@whatif/kit/fonts";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { CRIMSON, FPS, INK, PAPER, TEAL } from "@whatif/kit/theme";
-import { noise } from "../shared";
+import { CRIMSON, FPS, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { REF } from "../sets/common";
 
 /** The kit phone set's handset centre (core/engines/whatif/src/kit/sets/Phone.tsx), and its screen. */
@@ -43,30 +43,51 @@ export const ResultScreen: React.FC<{ frame: number; at: number[] }> = ({ frame,
   </g>
 );
 
-/** The group chat over the kit phone's screen (draw the phone with mode "off"): a header with the group's faces and
- *  nine messages in a column, each a classmate's head and a bubble of ink bars (no words), popping in at `at[i]`. */
-export const NineMessages: React.FC<{ frame: number; at: number[] }> = ({ frame, at }) => (
-  <g>
-    <rect x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={SCREEN.h} rx={18} fill="#eef1f4" />
-    <rect x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={74} rx={18} fill="#d9dee6" />
-    {[0, 1, 2].map((i) => <circle key={i} cx={SCREEN.x + 34 + i * 22} cy={SCREEN.y + 37} r={16} fill={["#7fa0c4", "#b58fc7", "#7fc29b"][i]} stroke="#eef1f4" strokeWidth={3} />)}
-    <rect x={SCREEN.x + 112} y={SCREEN.y + 28} width={110} height={16} rx={8} fill={INK} opacity={0.55} />
-    {at.map((a, i) => {
-      const s = pop(frame, a);
-      if (s <= 0) return null;
-      const y = SCREEN.y + 104 + i * 59;
-      const w = 150 + noise(i + 3) * 110;
-      return (
-        <g key={i} transform={`translate(${SCREEN.x + 20} ${y}) scale(${Math.min(1.08, s)})`}>
-          <circle cx={14} cy={22} r={14} fill={["#7fa0c4", "#b58fc7", "#7fc29b", "#e6a0a0", "#d9c26a", "#9fc0e0", "#c9a0d6", "#a8c97f", "#e0a070"][i]} stroke={INK} strokeWidth={2} />
-          <rect x={36} y={2} width={w} height={42} rx={16} fill="#fff" stroke="#c7ccd6" strokeWidth={3} />
-          <rect x={50} y={17} width={w * 0.62} height={12} rx={6} fill={INK} opacity={0.75} />
-          <path d={`M${50 + w * 0.68} 23 l6 -9 l6 9 l-6 9z`} fill={TEAL} />
+const CLASSMATES = ["#7fa0c4", "#b58fc7", "#7fc29b", "#e6a0a0", "#d9c26a", "#9fc0e0", "#c9a0d6", "#a8c97f", "#e0a070"];
+
+/** The group chat over the kit phone's screen (draw the phone with mode "off"): a header with the group's faces and a
+ *  crimson count badge, the first two messages legible ("Congrats!", "You did it!", outside review of v4.1), then seven
+ *  more as notification dots, each a classmate's face with a teal dot, popping in at `at[i]`. */
+export const NineMessages: React.FC<{ frame: number; at: number[] }> = ({ frame, at }) => {
+  const count = at.filter((a) => frame >= a).length;
+  return (
+    <g>
+      <rect x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={SCREEN.h} rx={18} fill="#eef1f4" />
+      <rect x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={74} rx={18} fill="#d9dee6" />
+      {[0, 1, 2].map((i) => <circle key={i} cx={SCREEN.x + 34 + i * 22} cy={SCREEN.y + 37} r={16} fill={CLASSMATES[i]} stroke="#eef1f4" strokeWidth={3} />)}
+      <rect x={SCREEN.x + 112} y={SCREEN.y + 28} width={110} height={16} rx={8} fill={INK} opacity={0.55} />
+      {count > 0 && (
+        <g transform={`translate(${SCREEN.x + SCREEN.w - 44} ${SCREEN.y + 37}) scale(${0.85 + 0.15 * pop(frame, at[count - 1])})`}>
+          <circle r={24} fill={CRIMSON} stroke={INK} strokeWidth={3} />
+          <text y={10} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={PAPER}>{count}</text>
         </g>
-      );
-    })}
-  </g>
-);
+      )}
+      {["Congrats!", "You did it!"].map((text, i) => {
+        const s = pop(frame, at[i]);
+        if (s <= 0) return null;
+        return (
+          <g key={i} transform={`translate(${SCREEN.x + 18} ${SCREEN.y + 100 + i * 96}) scale(${Math.min(1.06, s)})`}>
+            <circle cx={22} cy={36} r={22} fill={CLASSMATES[i]} stroke={INK} strokeWidth={3} />
+            <rect x={52} y={6} width={250} height={62} rx={22} fill="#fff" stroke="#c7ccd6" strokeWidth={3} />
+            <text x={70} y={48} fontFamily={FONT} fontWeight={800} fontSize={33} fill={INK}>{text}</text>
+          </g>
+        );
+      })}
+      {at.slice(2).map((a, j) => {
+        const s = pop(frame, a);
+        if (s <= 0) return null;
+        const col = j % 4, row = Math.floor(j / 4);
+        const cx = SCREEN.x + 58 + col * 74 + row * 37, cy = SCREEN.y + 330 + row * 84;
+        return (
+          <g key={j} transform={`translate(${cx} ${cy}) scale(${Math.min(1.1, s)})`}>
+            <circle r={28} fill={CLASSMATES[j + 2]} stroke={INK} strokeWidth={3} />
+            <circle cx={20} cy={-20} r={10} fill={TEAL} stroke="#eef1f4" strokeWidth={3} />
+          </g>
+        );
+      })}
+    </g>
+  );
+};
 
 /** A phone held up, screen to us, with one result on it (Min-jun's). (x, y) is its centre; it sits in a hand. */
 export const HeldResult: React.FC<{ x: number; y: number; scale?: number; tilt?: number; head: string }> = ({ x, y, scale = 1, tilt = 6, head }) => (
@@ -88,83 +109,61 @@ export const PhoneBack: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   </g>
 );
 
-// ------------------------------------------------------------------------------------------------ seat and sea
+// ------------------------------------------------------------------------------------------------ the draft
 
-/** A small chair from the front-left, for counting seats on paper. */
-const MiniChair: React.FC<{ x: number; y: number; on: boolean; s?: number }> = ({ x, y, on, s = 1 }) => (
-  <g transform={`translate(${x} ${y}) scale(${s})`}>
-    <rect x={-18} y={-40} width={36} height={30} rx={5} fill={on ? TEAL : "#d9d2c2"} stroke={INK} strokeWidth={4} />
-    <rect x={-22} y={-10} width={44} height={10} rx={4} fill={on ? TEAL : "#d9d2c2"} stroke={INK} strokeWidth={4} />
-    <path d="M-16 0 V18 M16 0 V18" stroke={INK} strokeWidth={5} strokeLinecap="round" />
-  </g>
-);
+const BOX = { x: SCREEN.x + 12, y: PHONE.y - 12, w: 246, h: 92 };
+const SEND = { x: SCREEN.x + SCREEN.w - 38, y: PHONE.y + 48 };
+const DRAFT = ["I got the", "scholarship"];
 
-/** The sheet's drawing. Left: what you thought, four teal places in a small room of twenty-four. Right: what it is, the
- *  top four per cent of everyone in the country who sat it, a sea of dots with its first row teal; two of those teal
- *  dots ringed, yours (mustard) and his (pale blue), side by side. `room` 0..1 draws the room in, `sea` 0..1 fills the
- *  dots, `teal` 0..1 colours the top ones, `pair` 0..1 rings the two. */
-export const SeatAndSea: React.FC<{ frame: number; room: number; sea: number; teal: number; pair: number; you: string; him: string }> = ({
-  frame, room, sea, teal, pair, you, him,
-}) => {
-  const cols = 30, rows = 14;
-  const pulse = 1 + 0.15 * Math.max(0, Math.sin(frame / 4));
-  const ring = (c: number, color: string) => (
-    <circle cx={c * 26 + 13} cy={16} r={22 * (pair < 1 ? pair : pulse)} fill="none" stroke={color} strokeWidth={8} />
-  );
+/** Your draft to her over the kit phone's message box (draw the phone with typed 0, thumb null): "I got the
+ *  scholarship" typed letter by letter (`typed` 0..1), a caret, the send button teal once there is text, and a ring
+ *  round it while your thumb holds over it (`hold` 0..1). One phrase, legible (outside review of v4.1). */
+export const DraftText: React.FC<{ frame: number; typed: number; hold: number }> = ({ frame, typed, hold }) => {
+  const total = DRAFT.join(" ").length;
+  let left = Math.round(total * typed);
+  const lines = DRAFT.map((l, i) => {
+    const n = Math.max(0, Math.min(l.length + (i === 0 ? 1 : 0), left));
+    left -= n;
+    return l.slice(0, n);
+  });
+  const last = lines[1].length > 0 || typed >= 1 ? 1 : 0;
+  const caretX = BOX.x + 20 + lines[last].length * 17;
   return (
     <g>
-      {room > 0 && (
-        <g opacity={Math.min(1, room * 1.5)}>
-          {/* the room: four walls with a door gap, twenty-four chairs, four of them teal */}
-          <path d="M60 110 H440 V560 H60 V360 M60 300 V110" fill="none" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
-          {Array.from({ length: 24 }, (_, i) => {
-            const on = i < 4;
-            return <MiniChair key={i} x={110 + (i % 6) * 62} y={200 + Math.floor(i / 6) * 96} on={on && room >= 1} s={on && room >= 1 ? pulse * 0.9 + 0.1 : 1} />;
-          })}
-          <line x1={500} y1={60} x2={500} y2={580} stroke="#cdbfa6" strokeWidth={5} strokeDasharray="18 16" />
-        </g>
-      )}
-      <g transform="translate(560 120)">
-        {Array.from({ length: cols * rows }, (_, i) => {
-          const c = i % cols, r = Math.floor(i / cols);
-          const shown = sea * (cols + 6) - c - noise(i) * 6 > 0;
-          if (!shown) return null;
-          const on = r === 0 && c < 17 && teal > 0; // the top four per cent: 17 of 420
-          return <circle key={i} cx={c * 26 + 13} cy={r * 32 + 16} r={8} fill={on ? TEAL : "#9a9a94"} opacity={on ? 1 : 0.75} />;
-        })}
-        {pair > 0 && ring(6, you)}
-        {pair > 0 && ring(8, him)}
-      </g>
+      <rect x={BOX.x} y={BOX.y} width={BOX.w} height={BOX.h} rx={26} fill="#fff" stroke="#c7ccd6" strokeWidth={4} />
+      {lines.map((l, i) => <text key={i} x={BOX.x + 20} y={BOX.y + 38 + i * 40} fontFamily={FONT} fontWeight={800} fontSize={31} fill={INK}>{l}</text>)}
+      {Math.floor(frame / 12) % 2 === 0 && hold === 0 && <rect x={caretX} y={BOX.y + 12 + last * 40} width={4} height={32} fill={CRIMSON} />}
+      {hold > 0 && <circle cx={SEND.x} cy={SEND.y} r={40 + 6 * Math.sin(frame / 5)} fill="none" stroke={TEAL} strokeWidth={5} opacity={0.6 * hold} />}
+      <circle cx={SEND.x} cy={SEND.y} r={30} fill={typed > 0 ? TEAL : "#c7ccd6"} stroke="#fff" strokeWidth={4} />
+      <path d={`M${SEND.x - 12} ${SEND.y} h22 m-9 -9 l9 9 l-9 9`} fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
     </g>
   );
 };
 
-/** A pie on paper: about a third teal (education) with a little book in it, the rest the other regrets; eleven dots for
- *  the eleven studies along the bottom. In the Sheet's own units, centre (cx, cy). */
-export const RegretPie: React.FC<{ cx: number; cy: number; r: number; shown: number }> = ({ cx, cy, r, shown }) => {
-  const wedge = (a0: number, a1: number) => {
-    const p = (a: number) => `${cx + Math.sin(a) * r} ${cy - Math.cos(a) * r}`;
-    return `M${cx} ${cy} L${p(a0)} A${r} ${r} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${p(a1)}Z`;
-  };
-  const third = (Math.PI * 2) / 3;
-  const slices = [0.22, 0.18, 0.15, 0.13]; // the other kinds, in grey
-  let a = third;
+/** Your thumb (the kit phone's, drawn here so it can rest just over the send button and not press it). `lift` 0..1
+ *  raises it off the screen a little. */
+export const SendThumb: React.FC<{ lift: number }> = ({ lift }) => (
+  <g transform={`translate(${SEND.x + 4} ${SEND.y + 26 + 10 * lift}) rotate(${-4 * lift})`}>
+    <path d="M0 0 C-20 60 -60 160 -150 260 L-40 330 C10 230 40 90 30 10 Q16 -26 0 0Z" fill={MUSTARD} stroke={INK} strokeWidth={6} strokeLinejoin="round" />
+    <ellipse cx={12} cy={6} rx={16} ry={22} fill="#f7cf6e" />
+  </g>
+);
+
+/** A bus going past, reflected in the phone's glass: its window row slides across the screen, faint. `p` 0..1. */
+export const BusReflection: React.FC<{ p: number }> = ({ p }) => {
+  if (p <= 0 || p >= 1) return null;
+  const x = SCREEN.x + SCREEN.w + 80 - p * (SCREEN.w + 900);
+  const fade = Math.sin(p * Math.PI);
   return (
     <g>
-      <circle cx={cx} cy={cy} r={r} fill="#d9d2c2" stroke={INK} strokeWidth={6} />
-      {slices.map((f, i) => {
-        const a0 = a;
-        a += f * Math.PI * 2;
-        return <path key={i} d={wedge(a0, Math.min(a, Math.PI * 2))} fill={["#c9c1b0", "#d9d2c2", "#c4bcab", "#d2cab9"][i]} stroke={INK} strokeWidth={4} />;
-      })}
-      {shown > 0 && <path d={wedge(0, third * Math.min(1, shown))} fill={TEAL} stroke={INK} strokeWidth={6} />}
-      {shown >= 1 && (
-        <g transform={`translate(${cx + r * 0.48} ${cy - r * 0.3})`}>
-          <path d="M-30 -18 L0 -8 L30 -18 V18 L0 28 L-30 18Z" fill={PAPER} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
-          <path d="M0 -8 V28" stroke={INK} strokeWidth={4} />
-        </g>
-      )}
-      {Array.from({ length: 11 }, (_, i) => <circle key={i} cx={cx - 150 + i * 30} cy={cy + r + 50} r={9} fill={INK} opacity={0.75} />)}
+      <clipPath id="ton-glass"><rect x={SCREEN.x} y={SCREEN.y} width={SCREEN.w} height={SCREEN.h} rx={18} /></clipPath>
+      <g clipPath="url(#ton-glass)" opacity={0.32 * fade}>
+        <rect x={x - 40} y={SCREEN.y + 90} width={900} height={200} fill="#2f8a6a" />
+        {[0, 1, 2, 3].map((i) => <rect key={i} x={x + i * 220} y={SCREEN.y + 110} width={180} height={120} rx={18} fill="#e9f6ff" />)}
+        <rect x={x - 40} y={SCREEN.y + 250} width={900} height={18} fill="#f2b632" />
+      </g>
+      <path d={`M${SCREEN.x} ${SCREEN.y + 280} L${SCREEN.x + SCREEN.w} ${SCREEN.y + 90} V${SCREEN.y + 140} L${SCREEN.x} ${SCREEN.y + 330}Z`}
+        fill="#fff" opacity={0.12 * fade} clipPath="url(#ton-glass)" />
     </g>
   );
 };

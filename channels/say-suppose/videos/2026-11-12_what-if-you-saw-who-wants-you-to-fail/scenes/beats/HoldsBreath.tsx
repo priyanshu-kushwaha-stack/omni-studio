@@ -2,41 +2,44 @@
 // from the clips, one component per shot, in the order things happen (owner on v3, 2026-11-13). No card opens.
 //
 //   97    a week in the study room in one dissolve: your desk, writing; asleep on a rolled jacket; writing; a yawn.
-//   98-99 the night before the exam, the classroom at dusk: you at his empty desk with your notebook; close on the choice.
+//   98-99 the night before the exam, the classroom at dusk (HoldsBreath.Choice.tsx): you open your notebook at your
+//         desk; three page inserts (the mistakes in red, the fixes in teal, the pages riffling under tabs); the two desks,
+//         1st over yours and 2nd over his, the notebook moved to his and back, the tags swapping; close on the choice.
 //   100   insert from above: the notebook onto his desk, half a chocolate bar on top; you walk out.
 //   101   exam morning: the gate, parents along the wall; you walk up (the EXAM MORNING title, Captions.tsx).
 //   102   between two of them, the work vest.
 //   hold  6 s, PERFORMED (the gap after 102): the crowd parts and she's there, the lunch box in both hands; she holds it
-//         out; close on you, looking at her face, not the air above it; the hands on the knot, fingers touch; her mouth
+//         out; close on you, looking at her face, not the air above it; a tight two-shot on the box between you, your
+//         hand on it by hers, fingers touch (v4.1's giant-hand insert read as a render error); her mouth
 //         opens for the words she always says and shuts without them; she nods once; she steps back into the crowd;
 //         the bell; you turn to the gate.
 //   103   her face in the crowd, and the empty air over her head: nothing opens.
 //   104   you walk into the gate with the lunch; then the exam hall from straight above, rows of heads; pull up.
-//   105   the city skyline, one paper plane held still in the sky; then the hall side on, you listening (the planes
-//         card, Captions.tsx).
-//   hold  3 s (the gap after 105): the plane held still; the empty runway; the parents at the gate, not moving.
+//   105   the runway, its markings plain, an airliner held on the ground by the threshold, one paper plane held still
+//         overhead (v4.1's city by the water read as a river); then the hall side on, you listening (the planes card,
+//         Captions.tsx).
+//   hold  3 s (the gap after 105): close on the paper plane held still; the runway; the parents at the gate, not moving.
 //   106   the hall from high above: "This year, a country holds its breath for you."
+//   107   the month: the study room night after night, the lamps changing, while a day pad tears off its pages and stops
+//         on results day, ringed in red, as the beat changes (v4.1 held the exam hall, so no time passed).
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
-import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { SEATED, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
-import { citySkyline, classroom, examHall, Mug, PASTELS } from "@whatif/kit/sets";
+import { examHall, Mug, PASTELS } from "@whatif/kit/sets";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
+import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
-import { Chocolate, headAt } from "../parts";
+import { headAt } from "../parts";
 import { blinking, camAt, current, HERO, linear, mix, ramp, type Beat, type Shot } from "../shared";
-import { Deep } from "../sets/common";
 import { READING } from "../sets/ReadingRoom";
 import { aimArm, Fade, handAt, Rows, S, timer, type Body } from "./Notebook.Parts";
-import {
-  DeskTopBack, ExamTopBack, GATE, GateBack, GateCrowd, HALL, HandsOnHandle, JiyoonWithLunch, LunchBox, MistakeBook, MistakeBookSide,
-  PaperPlane, RunwayBack,
-} from "./HoldsBreath.Parts";
+import { ChoiceShot, DecideShot, EveShot, GoShot, LeaveShot, PagesShot } from "./HoldsBreath.Choice";
+import { DayPad, ExamTopBack, GATE, GateBack, GateCrowd, HALL, JiyoonWithLunch, LunchBox, MistakeBookSide, planeCam, RunwayBack } from "./HoldsBreath.Parts";
 
 // ------------------------------------------------------------------------------------------------ timing
 
 type T = ReturnType<typeof times>;
+export type HoldsTimes = T;
 
 /** On v4's lines (remap.ts; owner on v3, 2026-11-13: "In the crowd of parents, what is this scene depicting ? Exam
  *  Over ?"): the gate on exam morning now comes before the test, as it happens. 97 the week, 98 the notebook, 99 the
@@ -49,7 +52,15 @@ function times(clips: Clip[], to: number) {
   return {
     week: from(97), // a week in the study room, one dissolve
     eve: from(98), // the night before the exam, the classroom at dusk
-    choose: from(99), // "Give it to him, and he might pass you. Keep it, and first place stays yours."
+    open: at(98, 0.18), // "you open your own notebook"
+    page1: at(98, 0.36), // "every mistake you made this year": the left page, marked in red
+    page2: at(98, 0.59), // "and how you fixed it": the right page, the fixes in teal
+    page3: at(98, 0.76), // "The best study guide in your class": the pages riffling under tabs
+    choose: from(99), // "Give it to him": the notebook to his desk; 1st over yours, 2nd over his
+    pass: at(99, 0.27), // "he might pass you": the tags swap
+    keep: at(99, 0.46), // "Keep it": back to your desk
+    first: at(99, 0.62), // "first place stays yours": the tags swap back
+    decide: at(99, 0.88), // close on you deciding
     leave: from(100) - 2, // the notebook onto his desk, from above
     choc: at(100, 0.4), // "with half a chocolate bar on top"
     go: at(100, 0.72), // "He did it for you first." You walk out
@@ -72,6 +83,7 @@ function times(clips: Clip[], to: number) {
     runway: h(0.34), // the empty runway
     still: h(0.67), // the parents at the gate, not moving
     breath: from(106), // "This year, a country holds its breath for you."
+    wait: from(107), // "Results come in a month. For a month, you say nothing to anyone.": the month passes
     end: to,
   };
 }
@@ -113,89 +125,34 @@ const Night: React.FC<{ frame: number; s: number; cam: Camera }> = ({ frame, s, 
   );
 };
 
-const WeekShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const n = 4;
-  const len = (k.eve - k.week) / n;
-  const p = (frame - k.week) / len;
-  const s = Math.max(0, Math.min(n - 1, Math.floor(p)));
-  const into = (p - s) * len;
-  const fade = s > 0 && into < 14 ? 1 - into / 14 : 0;
-  const cam = camAt(frame, [[k.week, { x: 560, y: 790, zoom: 1.7 }], [k.eve, { x: 540, y: 800, zoom: 1.95 }]]);
+/** Nights at your desk in the study room between frames a and b, `n` of them in dissolves (cycling the four). */
+const Nights: React.FC<{ frame: number; a: number; b: number; n: number; from: Camera; to: Camera; dissolve?: number }> = ({ frame, a, b, n, from, to, dissolve = 14 }) => {
+  const len = (b - a) / n;
+  const p = (frame - a) / len;
+  const i = Math.max(0, Math.min(n - 1, Math.floor(p)));
+  const into = (p - i) * len;
+  const fade = i > 0 && into < dissolve ? 1 - into / dissolve : 0;
+  const cam = camAt(frame, [[a, from], [b, to]]);
   return (
     <>
-      <Night frame={frame} s={s} cam={cam} />
-      <Fade opacity={fade}><Night frame={frame} s={s - 1} cam={cam} /></Fade>
+      <Night frame={frame} s={i % 4} cam={cam} />
+      <Fade opacity={fade}><Night frame={frame} s={(i + 3) % 4} cam={cam} /></Fade>
     </>
   );
 };
 
-// ------------------------------------------------------------------------------------------------ lines 98-99
+const WeekShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => (
+  <Nights frame={frame} a={k.week} b={k.eve} n={4} from={{ x: 560, y: 790, zoom: 1.7 }} to={{ x: 540, y: 800, zoom: 1.95 }} />
+);
 
-const ROOM_OPTS = { ...classroom.defaults, board: "blank" as const, drawn: 0, farRow: false };
-/** His desk (the classroom's third bench desk): where your notebook goes. */
-const HIS_DESK = { x: 1010, y: 765, tilt: -7.6 };
-
-const Classroom: React.FC<{ frame: number; cam: Camera; you: React.ReactNode; onDesk: boolean }> = ({ frame, cam, you, onDesk }) => {
-  const props = { cam, mood: "dusk" as const, frame, options: ROOM_OPTS };
-  return (
-    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={classroom.Back(props)}
-      actors={
-        <>
-          {classroom.Mid?.(props)}
-          {onDesk && (
-            <g>
-              <MistakeBookSide x={HIS_DESK.x} y={HIS_DESK.y} tilt={HIS_DESK.tilt} />
-              <Chocolate x={HIS_DESK.x + 4} y={HIS_DESK.y - 22} scale={0.55} half="left" tilt={HIS_DESK.tilt} />
-            </g>
-          )}
-          {you}
-        </>
-      }
-      front={classroom.Front?.(props)} />
-  );
-};
-
-const EveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const body: Body = { x: 1175, y: 960, scale: S, facing: -1, pose: { ...STAND, armF: [52, 70], armB: [8, 16] } };
-  const head = headAt(body.x, body.y, S, body.pose, -1);
-  const decide = ramp(frame, k.choose + 18, k.choose + 30);
-  const face = frame < k.choose
-    ? { ...EXPRESSIONS.sceptical, look: { x: 0.5, y: 0.7 } }
-    : decide < 0.5 ? { ...EXPRESSIONS.worried, mouth: "flat" as const, look: { x: 0.3, y: 0.8 } } : { brows: "flat" as const, lids: 0.15, mouth: "flat" as const, eyes: 1.05, look: { x: 0.9, y: 0.8 } };
-  const cam = frame < k.choose
-    ? camAt(frame, [[k.eve, { x: 980, y: 620, zoom: 1.2 }], [k.choose, { x: 1040, y: 640, zoom: 1.4 }]])
-    : camAt(frame, [[k.choose, closeUp(head.x - 40, head.y, 2.6)], [k.leave, closeUp(head.x - 40, head.y, 2.85)]]);
-  return (
-    <Classroom frame={frame} cam={drift(cam, frame, "eve", 3)} onDesk={false}
-      you={<Figure {...HERO} {...body} {...face} blink={blinking(frame, 2)} time={frame}
-        held={<g transform="rotate(-70)"><MistakeBookSide x={0} y={8} scale={0.75} /></g>} />} />
-  );
-};
-
-const LeaveShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const slide = ramp(frame, k.leave, k.leave + 18);
-  const drop = ramp(frame, k.choc, k.choc + 8);
-  const cam = drift(camAt(frame, [[k.leave, insert(960, 560, 1.0)], [k.go, insert(980, 540, 1.12)]]), frame, "leave", 2);
-  return (
-    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<DeskTopBack cam={cam} />}
-      actors={
-        <>
-          <MistakeBook x={mix(900, 960, slide)} y={mix(1500, 560, slide)} tilt={mix(-14, -4, slide)} />
-          {frame >= k.choc && <Chocolate x={1000} y={mix(380, 470, drop)} scale={mix(4.6, 3.8, drop)} half="left" tilt={-16} />}
-        </>
-      } />
-  );
-};
-
-const GoShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const walk = linear(frame, k.go, k.gate + 4);
-  const x = mix(1175, 640, walk);
-  const cam = drift(camAt(frame, [[k.go, { x: 960, y: 620, zoom: 1.15 }], [k.gate, { x: 1000, y: 680, zoom: 1.4 }]]), frame, "go", 2);
-  return (
-    <Classroom frame={frame} cam={cam} onDesk
-      you={<Figure {...HERO} x={x} y={960} scale={S} facing={-1} pose={walkPose(frame * 0.3)} brows="flat" mouth="flat" lids={0.2} look={{ x: 0.8, y: 0.1 }} time={frame} flow={0.2} />} />
-  );
-};
+/** Line 107, the month: night after night at your desk, the lamps changing round you, while the day pad tears through
+ *  the month and stops on results day, ringed in red, just before the results (TextOpensNothing). */
+const WaitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => (
+  <>
+    <Nights frame={frame} a={k.wait} b={k.end} n={6} from={{ x: 640, y: 740, zoom: 1.35 }} to={{ x: 580, y: 780, zoom: 1.6 }} dissolve={8} />
+    <DayPad frame={frame} from={k.wait + 4} land={k.end - 20} />
+  </>
+);
 
 // ------------------------------------------------------------------------------------------------ lines 100-102
 
@@ -204,19 +161,6 @@ const yourDesk = { x: HALL.cols[HALL.you.c], y: HALL.rows[HALL.you.r] };
 const HallShot: React.FC<{ frame: number; from: Camera; to: Camera; a: number; b: number }> = ({ frame, from, to, a, b }) => {
   const cam = drift(camAt(frame, [[a, from], [b, to]]), frame, "hall", 2);
   return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<ExamTopBack cam={cam} frame={frame} />} actors={null} />;
-};
-
-const SKY_OPTS = { ...citySkyline.defaults, birds: false, traffic: false };
-
-/** The city with one paper plane held still in the sky. */
-const SkyShot: React.FC<{ frame: number; a: number; b: number; from: Camera; to: Camera }> = ({ frame, a, b, from, to }) => {
-  const cam = drift(camAt(frame, [[a, from], [b, to]]), frame, "sky", 2);
-  const props = { cam, mood: "morning" as const, frame, options: SKY_OPTS };
-  return (
-    <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }}
-      back={<>{citySkyline.Back(props)}<Deep cam={cam} depth={0.08} flat><PaperPlane x={1180} y={250} scale={0.9} /></Deep></>}
-      actors={null} />
-  );
 };
 
 const EXAM_OPTS = { ...examHall.defaults, minute: 12 };
@@ -242,9 +186,13 @@ const ListenShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-const RunwayShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.runway, { x: 960, y: 600, zoom: 1.0 }], [k.still, { x: 960, y: 580, zoom: 1.08 }]]), frame, "runway", 2);
-  return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<RunwayBack cam={cam} mood="morning" />} actors={null} />;
+/** The paper plane held still over the airport. */
+const PLANE = { x: 760, y: 210 };
+
+/** The runway, nothing moving: the jet held on the ground by the threshold, the paper plane still overhead. */
+const RunwayShot: React.FC<{ frame: number; a: number; b: number; from: Camera; to: Camera }> = ({ frame, a, b, from, to }) => {
+  const cam = drift(camAt(frame, [[a, from], [b, to]]), frame, "runway", 2);
+  return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<RunwayBack cam={cam} mood="morning" jet plane={PLANE} />} actors={null} />;
 };
 
 // ------------------------------------------------------------------------------------------------ lines 103-105
@@ -312,27 +260,18 @@ const HandOffShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     : { ...STAND, armF: [mix(STAND.armF[0], reach[0], reachT), mix(STAND.armF[1], reach[1], reachT)] };
   const myHead = headAt(me.x, me.y, S, me.pose, me.facing);
   const herHead = headAt(herX, GATE.jiyoon.y, JS, STAND, -1);
-  if (shot === "hands") {
-    const cam = drift(insert(960, 560, 1.0), frame, "hands", 2);
-    const bg = { x: (ME + GATE.jiyoonOut.x) / 2, y: boxAt.y - 60, zoom: 3.2 };
-    return (
-      <>
-        <Gate frame={frame} cam={bg} her={null} you={null} part={1} />
-        <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={null}
-          actors={<HandsOnHandle x={960} y={640} touch={ramp(frame, k.hands + 4, k.hands + 22)} hers={1} />} />
-      </>
-    );
-  }
   const myFace = shot === "look"
     ? { brows: "worry" as const, lids: 0.08, mouth: "flat" as const, eyes: 1.08, look: { x: 0.95, y: -0.05 } }
     : { brows: "flat" as const, lids: 0.1, mouth: "flat" as const, eyes: 1, look: { x: me.facing === 1 ? 0.9 : 0.6, y: 0 } };
   const herNow = shot === "nod"
     ? herFace(frame, { mouth: said ? "open" as const : "flat" as const, lids: mix(0.12, 0.4, Math.sin(Math.PI * nod)), brows: said ? "raised" as const : "worry" as const })
     : herFace(frame, shot === "back" || shot === "bell" ? { look: { x: -0.4, y: 0 } } : {});
-  const cams: Record<Exclude<typeof shot, "hands">, Camera> = {
+  const cams: Record<typeof shot, Camera> = {
     part: camAt(frame, [[k.part, { x: 1300, y: 720, zoom: 1.55 }], [k.offer, { x: 1280, y: 720, zoom: 1.65 }]]),
     offer: camAt(frame, [[k.offer, { x: 1250, y: 730, zoom: 1.75 }], [k.look, { x: 1250, y: 730, zoom: 1.85 }]]),
     look: camAt(frame, [[k.look, closeUp(myHead.x + 50, myHead.y, 2.6)], [k.hands, closeUp(myHead.x + 50, myHead.y, 2.85)]]),
+    // a tight two-shot on the lunch box between you: both faces, your hand coming onto the box by her fingers
+    hands: camAt(frame, [[k.hands, { x: (ME + GATE.jiyoonOut.x) / 2, y: boxAt.y - 34, zoom: 2.55 }], [k.nod, { x: (ME + GATE.jiyoonOut.x) / 2 - 6, y: boxAt.y - 30, zoom: 2.75 }]]),
     nod: camAt(frame, [[k.nod, closeUp(herHead.x - 40, herHead.y, 2.6)], [k.back, closeUp(herHead.x - 40, herHead.y, 2.8)]]),
     back: camAt(frame, [[k.back, { x: 1250, y: 700, zoom: 1.5 }], [k.bell, { x: 1200, y: 690, zoom: 1.4 }]]),
     bell: camAt(frame, [[k.bell, { x: 1080, y: 640, zoom: 1.1 }], [k.nothing, { x: 1060, y: 640, zoom: 1.12 }]]),
@@ -378,23 +317,27 @@ const HoldsBreath: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame } = shot;
   const k = times(shot.v4, shot.to);
   const scene = current(frame, [
-    [0, "week"], [k.eve, "eve"], [k.leave, "leave"], [k.go, "go"], [k.gate, "gate"], [k.part, "handoff"], [k.nothing, "nothing"], [k.month, "month"],
-    [k.exam, "exam"], [k.sky, "sky"], [k.listen, "listen"], [k.plane, "plane"], [k.runway, "runway"], [k.still, "still"], [k.breath, "breath"],
+    [0, "week"], [k.eve, "eve"], [k.page1, "pages"], [k.choose, "choice"], [k.decide, "decide"], [k.leave, "leave"], [k.go, "go"], [k.gate, "gate"], [k.part, "handoff"], [k.nothing, "nothing"], [k.month, "month"],
+    [k.exam, "exam"], [k.sky, "sky"], [k.listen, "listen"], [k.plane, "plane"], [k.runway, "runway"], [k.still, "still"], [k.breath, "breath"], [k.wait, "wait"],
   ]);
   const hallClose = { x: yourDesk.x, y: yourDesk.y + 70, zoom: 2.4 };
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {scene === "week" && <WeekShot frame={frame} k={k} />}
       {scene === "eve" && <EveShot frame={frame} k={k} />}
+      {scene === "pages" && <PagesShot frame={frame} k={k} />}
+      {scene === "choice" && <ChoiceShot frame={frame} k={k} />}
+      {scene === "decide" && <DecideShot frame={frame} k={k} />}
       {scene === "leave" && <LeaveShot frame={frame} k={k} />}
       {scene === "go" && <GoShot frame={frame} k={k} />}
       {scene === "exam" && <HallShot frame={frame} a={k.exam} b={k.sky} from={hallClose} to={{ x: yourDesk.x, y: yourDesk.y - 60, zoom: 0.9 }} />}
-      {scene === "sky" && <SkyShot frame={frame} a={k.sky} b={k.listen} from={{ x: 960, y: 430, zoom: 1.25 }} to={{ x: 1040, y: 400, zoom: 1.35 }} />}
+      {scene === "sky" && <RunwayShot frame={frame} a={k.sky} b={k.listen} from={{ x: 960, y: 560, zoom: 1.0 }} to={{ x: 990, y: 540, zoom: 1.08 }} />}
       {scene === "listen" && <ListenShot frame={frame} k={k} />}
-      {scene === "plane" && <SkyShot frame={frame} a={k.plane} b={k.runway} from={{ x: 1120, y: 330, zoom: 1.6 }} to={{ x: 1140, y: 320, zoom: 1.7 }} />}
-      {scene === "runway" && <RunwayShot frame={frame} k={k} />}
+      {scene === "plane" && <RunwayShot frame={frame} a={k.plane} b={k.runway} from={planeCam(PLANE.x, PLANE.y + 40, 2.1)} to={planeCam(PLANE.x, PLANE.y + 30, 2.25)} />}
+      {scene === "runway" && <RunwayShot frame={frame} a={k.runway} b={k.still} from={{ x: 960, y: 600, zoom: 1.0 }} to={{ x: 960, y: 580, zoom: 1.08 }} />}
       {scene === "still" && <StillGate frame={frame} k={k} />}
-      {scene === "breath" && <HallShot frame={frame} a={k.breath} b={k.end} from={{ x: 960, y: 520, zoom: 0.8 }} to={{ x: 960, y: 540, zoom: 0.68 }} />}
+      {scene === "breath" && <HallShot frame={frame} a={k.breath} b={k.wait} from={{ x: 960, y: 520, zoom: 0.8 }} to={{ x: 960, y: 540, zoom: 0.7 }} />}
+      {scene === "wait" && <WaitShot frame={frame} k={k} />}
       {scene === "gate" && <GateShot frame={frame} k={k} />}
       {scene === "handoff" && <HandOffShot frame={frame} k={k} />}
       {scene === "nothing" && <NothingShot frame={frame} k={k} />}
