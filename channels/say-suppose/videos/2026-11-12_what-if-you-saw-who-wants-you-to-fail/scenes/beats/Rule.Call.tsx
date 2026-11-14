@@ -20,7 +20,7 @@ import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { headAt, Ponytail, Vest } from "../parts";
 import { blinking, camAt, current, HERO, JIYOON, linear, mix, ramp } from "../shared";
 import { STORE, StoreBack, storeLook } from "../sets/Store";
-import { Shade } from "./MadeTheCut.parts";
+import { aimArm, handAt, Shade } from "./MadeTheCut.parts";
 import { DEPOT, DepotBack, depotLights } from "./Rule.Warehouse";
 import { VideoPhoneShot } from "./Rule.Video";
 import { earPhone, HALF, LETTER, Phone, S, StoreShot, type Look, type Mood } from "./Rule.Store";
@@ -71,11 +71,7 @@ export const CallShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame
     const cam = drift(camAt(frame, [[k.video, { x: 960, y: 580, zoom: 1.0 }], [k.grinBack, { x: 960, y: 520, zoom: 1.12 }]]), frame, "video", 2);
     return <VideoPhoneShot frame={frame} cam={cam} mood={mood} switchAt={k.video} />;
   }
-  if (on === "nothing") {
-    // the phone, then the tilt up off it into the empty air over the screen, where a card would open
-    const cam = drift(camAt(frame, [[k.nothing, { x: 960, y: 540, zoom: 1.08 }], [k.nothing + 20, { x: 960, y: 520, zoom: 1.1 }], [k.limit, { x: 960, y: -240, zoom: 1.15 }]]), frame, "video-air", 2);
-    return <VideoPhoneShot frame={frame} cam={cam} mood={mood} switchAt={k.video} />;
-  }
+  if (on === "nothing") return <SplitCheck frame={frame} k={k} mood={mood} />;
   if (on === "limit") return <LimitShot frame={frame} k={k} mood={mood} />;
   if (on === "her" || on === "herClose" || on === "again") {
     const cams: Record<"her" | "herClose" | "again", Camera> = {
@@ -111,34 +107,101 @@ export const CallShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame
 };
 
 
+/** "And nothing opens over a screen." (v7, outside review: a split screen): on the right her face fills your phone, the
+ *  space over her head empty; on the left you lift the phone and look above it, turn it sideways, and peer behind it. */
+const SplitCheck: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mood }) => {
+  const span = k.limit - k.nothing;
+  const b = (p: number) => k.nothing + Math.round(span * p);
+  const lift = ramp(frame, b(0.04), b(0.16));
+  const side = ramp(frame, b(0.42), b(0.52));
+  const behind = ramp(frame, b(0.7), b(0.8));
+  const X = STORE.door.x;
+  const pose = { ...STAND, lean: -behind * 10, tilt: side * 12 - behind * 6, armB: [mix(30, 105, lift), mix(70, 40, lift)] as [number, number] };
+  const body = { x: X, y: STORE.floor, scale: S, facing: 1 as const, pose };
+  const hand = handAt(body, "back");
+  const yh = headAt(X, STORE.floor, S, pose, 1);
+  const face: Look = behind > 0.5 ? { brows: "raised", lids: 0, mouth: "o", eyes: 1.15, look: { x: 0.2, y: -0.2 } }
+    : side > 0.5 ? { brows: "worry", lids: 0, mouth: "flat", eyes: 1.1, look: { x: 0.6, y: -0.3 } }
+    : lift > 0.5 ? { brows: "raised", lids: 0, mouth: "flat", eyes: 1.15, look: { x: 0.5, y: -0.95 } }
+    : { brows: "raised", lids: 0.1, mouth: "smile", eyes: 1.05, look: { x: 0.6, y: -0.2 } };
+  const z = 2.2;
+  const leftCam = drift({ x: yh.x + 70 + 480 / z, y: yh.y + 90, zoom: z }, frame, "split-you", 2);
+  const phone = (
+    <g transform={`rotate(${side * 90 - behind * 30} ${hand.x} ${hand.y})`}><Phone at={hand} scale={S * 0.9} facing={1} /></g>
+  );
+  return (
+    <>
+      <div style={{ position: "absolute", inset: 0, clipPath: "inset(0 50% 0 0)" }}>
+        <StoreShot frame={frame} cam={leftCam} mood={mood} youX={X} youFace={face} youPose={pose} youHeld={LETTER}
+          mjFace={{ brows: "none", lids: 0.4, mouth: "flat", eyes: 1, look: { x: 0.5, y: 0.3 } }} mjHeld={HALF} youExtra={phone} />
+      </div>
+      <div style={{ position: "absolute", inset: 0, clipPath: "inset(0 0 0 50%)" }}>
+        <VideoPhoneShot frame={frame} cam={drift({ x: 480, y: 560, zoom: 1.0 }, frame, "split-phone", 1.5)} mood={mood} switchAt={k.video} emptyCard />
+      </div>
+      <div style={{ position: "absolute", left: 954, top: 0, width: 12, height: 1080, background: "#f2e6c8" }} />
+    </>
+  );
+};
+
 // ------------------------------------------------------------------------------------------------ the limit
 
 /** The mirror line: the glass shop front ends at x 560; a reflection stands as far left of it as you stand right. */
 const MIRROR = 545;
 const GLASS_END = 556;
 
-/** Line 21: you walk to the door; your reflection in the dark glass walks to meet you; you stop face to face; the
- *  camera pushes onto the face in the glass. No card opens: a reflection is the one face left untested. */
+/** A face drawn by a finger in breath on the glass: a fog patch, then a circle, two eyes and a smile drawn in clear
+ *  strokes as `draw` runs 0..1. World units, (x, y) its centre, r the drawn face's radius. */
+const FogFace: React.FC<{ x: number; y: number; r: number; fog: number; draw: number }> = ({ x, y, r, fog, draw }) => {
+  if (fog <= 0) return null;
+  const ring = Math.PI * 2 * r;
+  const seg = (from: number, to: number) => Math.max(0, Math.min(1, (draw - from) / (to - from)));
+  return (
+    <g>
+      <ellipse cx={x} cy={y} rx={r * 1.7} ry={r * 1.5} fill="#e8eef2" opacity={0.32 * fog} />
+      <g stroke="#0d0f18" strokeWidth={r * 0.13} strokeLinecap="round" fill="none" opacity={0.75}>
+        <circle cx={x} cy={y} r={r} strokeDasharray={`${ring * seg(0, 0.55)} ${ring}`} transform={`rotate(-90 ${x} ${y})`} />
+        {seg(0.55, 0.65) > 0 && <line x1={x - r * 0.35} y1={y - r * 0.25} x2={x - r * 0.35} y2={y - r * 0.25 + r * 0.2 * seg(0.55, 0.65)} />}
+        {seg(0.65, 0.75) > 0 && <line x1={x + r * 0.35} y1={y - r * 0.25} x2={x + r * 0.35} y2={y - r * 0.25 + r * 0.2 * seg(0.65, 0.75)} />}
+        {seg(0.75, 1) > 0 && <path d={`M${x - r * 0.45} ${y + r * 0.2} Q${x} ${y + r * 0.65} ${x + r * 0.45} ${y + r * 0.2}`} strokeDasharray={`${r * 1.4 * seg(0.75, 1)} ${r * 2}`} />}
+      </g>
+    </g>
+  );
+};
+
+/** Line 21: you walk to the door; your reflection in the dark glass walks to meet you; face to face, you breathe on the
+ *  glass and, on "Remember that", draw a face in the fog with your finger; the camera pushes onto the face in the
+ *  glass beside it. No card opens: a reflection is the one face left untested (the plant for the window). */
 const LimitShot: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mood }) => {
-  const on = current(frame, [[k.limit, "walk"], [k.glass, "glass"], [k.matter, "matter"]]);
-  const walk = ramp(frame, k.limit, k.limit + 54);
+  const on = current(frame, [[k.limit, "walk"], [k.glass, "glass"], [k.draw, "draw"], [k.matter, "matter"]]);
+  const walk = ramp(frame, k.limit, k.limit + 50);
   const youX = mix(900, 660, walk);
   const moving = walk > 0 && walk < 1;
-  const pose = moving ? walkPose((frame - k.limit) * 0.24) : STAND;
+  const base = moving ? walkPose((frame - k.limit) * 0.24) : STAND;
+  const yh0 = headAt(youX, STORE.floor, S, STAND, -1);
+  const fogAt = { x: MIRROR + 2, y: yh0.y + 40 };
+  const reachUp = ramp(frame, k.draw - 6, k.draw + 6) * (1 - ramp(frame, k.matter + 10, k.matter + 22));
+  const trace = { x: fogAt.x + 10 + Math.sin((frame - k.draw) / 4) * 18 * reachUp, y: fogAt.y + Math.cos((frame - k.draw) / 4) * 18 * reachUp };
+  const pose = reachUp > 0
+    ? { ...base, armF: lerpArm(base.armF, aimArm({ x: youX, y: STORE.floor, scale: S, facing: -1, pose: base }, trace), reachUp) }
+    : base;
   const mirrorX = 2 * MIRROR - youX;
   const yh = headAt(youX, STORE.floor, S, STAND, -1);
   const rh = headAt(mirrorX, STORE.floor, S, STAND, 1);
   const mid = (yh.x + rh.x) / 2;
   const cams: Record<typeof on, Camera> = {
     walk: camAt(frame, [[k.limit, { x: 640, y: 700, zoom: 1.6 }], [k.glass, { x: 600, y: 690, zoom: 1.75 }]]),
-    glass: camAt(frame, [[k.glass, closeUp(mid, yh.y + 10, 2.5)], [k.matter, closeUp(mid - 10, yh.y + 10, 2.65)]]),
-    matter: camAt(frame, [[k.matter, closeUp(mid - 20, yh.y + 10, 2.7)], [k.end, closeUp(rh.x + 10, rh.y + 5, 3.6)]]),
+    glass: camAt(frame, [[k.glass, closeUp(mid, yh.y + 10, 2.5)], [k.draw, closeUp(mid - 10, yh.y + 10, 2.6)]]),
+    draw: camAt(frame, [[k.draw, closeUp(fogAt.x + 30, fogAt.y - 10, 3.0)], [k.matter, closeUp(fogAt.x + 20, fogAt.y - 20, 3.2)]]),
+    matter: camAt(frame, [[k.matter, closeUp(mid - 20, yh.y + 10, 2.7)], [k.end, closeUp(rh.x + 30, rh.y + 15, 3.4)]]),
   };
   const cam = drift(cams[on], frame, "limit", 2);
   const settle = ramp(frame, k.glass, k.glass + 20);
+  const breathing = frame >= k.glass + 12 && frame < k.glass + 26;
   const face: Look = on === "walk"
     ? { brows: "flat", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.6, y: 0.3 } }
-    : { brows: settle > 0.5 ? "raised" : "flat", lids: mix(0.3, 0.05, settle), mouth: "flat", eyes: 1.05, look: { x: 1, y: 0 } };
+    : { brows: settle > 0.5 ? "raised" : "flat", lids: mix(0.3, 0.05, settle), mouth: breathing ? "o" : "flat", eyes: 1.05, look: on === "draw" ? { x: 1, y: 0.25 } : { x: 1, y: 0 } };
+  const fog = ramp(frame, k.glass + 14, k.glass + 26);
+  const draw = linear(frame, k.draw + 2, k.matter - 4);
   // the reflection: you, mirrored, dim, only where there is glass
   const reflection = (
     <g>
@@ -152,6 +215,7 @@ const LimitShot: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mo
         </g>
         {/* a streak of sheen across the glass, over the reflection */}
         <path d={`M${rh.x - 160} ${rh.y + 260} l70 0 l120 -420 l-70 0Z`} fill="#fff" opacity={0.07} />
+        <FogFace x={fogAt.x - 40} y={fogAt.y - 20} r={yh.r * 0.55} fog={fog} draw={draw} />
       </g>
     </g>
   );
@@ -161,3 +225,5 @@ const LimitShot: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mo
       counterExtra={reflection} />
   );
 };
+
+const lerpArm = (a: [number, number], b: [number, number], t: number): [number, number] => [mix(a[0], b[0], t), mix(a[1], b[1], t)];

@@ -22,15 +22,18 @@ export const YOU_COUNTER = 1010;
 /** Where you stand facing the clerk (lines 12-16). */
 export const YOU_CLERK = 1460;
 
-/** The clerk behind the counter: grey-green head, a green apron over a grey shirt. */
+/** The clerk behind the counter: grey-green head, a green apron over a grey shirt. v7 (outside review: his head read
+ *  as Tae-ho's in close framing): a green store cap and a white name badge, so every crop says "clerk". */
 export const CLERK = { head: "#9fb59a", coat: "#7a7f8c", apron: "#3f7a6a" } as const;
 const Clerk: React.FC<{ frame: number; face: Look; held?: React.ReactNode; arm?: [number, number]; blink?: boolean }> = ({ frame, face, held, arm, blink }) => {
   const { x } = STORE.clerk;
   return (
     <g>
       <Figure x={x} y={STORE.floor} scale={S} facing={-1} pose={arm ? { ...STAND, armF: arm } : held ? { ...STAND, armF: [70, 40] } : STAND} head={CLERK.head} coat={CLERK.coat} {...face}
-        blink={blink ?? blinking(frame, 7)} time={frame} held={held} />
+        cap={CLERK.apron} blink={blink ?? blinking(frame, 7)} time={frame} held={held} />
       <path d={`M${x - 22 * S} ${STORE.floor - 205 * S} h${44 * S} l${8 * S} ${150 * S} h${-60 * S}z`} fill={CLERK.apron} stroke={INK} strokeWidth={4} />
+      <rect x={x - 14 * S} y={STORE.floor - 190 * S} width={26 * S} height={14 * S} rx={2 * S} fill={PAPER} stroke={INK} strokeWidth={2.5} />
+      <rect x={x - 10 * S} y={STORE.floor - 185 * S} width={16 * S} height={3.5 * S} fill={INK} opacity={0.6} />
     </g>
   );
 };
@@ -75,9 +78,9 @@ export const StoreShot: React.FC<{
   mjFacing?: 1 | -1; mjFace: Look; mjPose?: Pose; mjHeld?: React.ReactNode; youHeld?: React.ReactNode; youPose?: Pose;
   youFacing?: 1 | -1; mjX?: number; clerkFace?: Look; clerkHeld?: React.ReactNode; clerkCard?: [number, number]; bubble?: BubbleSpec;
   catEyes?: "open" | "one" | "shut"; clerkArm?: [number, number]; clerkBlink?: boolean; counterExtra?: React.ReactNode;
-  front?: React.ReactNode; doorOpen?: number;
+  front?: React.ReactNode; doorOpen?: number; youExtra?: React.ReactNode;
 }> = ({ frame, cam, mood, youX, youFace, youPhone = null, mjFacing = 1, mjFace, mjPose = STAND, mjHeld, youHeld, youPose = STAND,
-  youFacing = 1, mjX = MJ_X, clerkFace, clerkHeld, clerkCard, bubble, catEyes = "shut", clerkArm, clerkBlink, counterExtra, front, doorOpen }) => {
+  youFacing = 1, mjX = MJ_X, clerkFace, clerkHeld, clerkCard, bubble, catEyes = "shut", clerkArm, clerkBlink, counterExtra, front, doorOpen, youExtra }) => {
   const ch = headAt(STORE.clerk.x, STORE.floor, S, STAND, -1);
   let you: Body = { x: youX, y: STORE.floor, scale: S, facing: youFacing, pose: youPose };
   const yh = headAt(you.x, you.y, S, youPose, youFacing);
@@ -102,6 +105,7 @@ export const StoreShot: React.FC<{
       {phoneAt && youPhone === "ear" && <Phone at={phoneAt} scale={S} facing={1} />}
       <Figure {...you} {...HERO} {...youFace} blink={blinking(frame, 0)} time={frame} held={youHeld} />
       {phoneAt && youPhone === "hand" && <Phone at={phoneAt} scale={S * 0.9} facing={1} />}
+      {youExtra}
       {bubble && <Bubble frame={frame} at={bubble.at} until={bubble.until} x={yh.x + (bubble.side === "left" ? -1 : bubble.side === "right" ? 1 : youFacing) * yh.r * 0.8} y={yh.y - yh.r * 1.1} text={bubble.text} size={bubble.size ?? 40} side={bubble.side ?? (youFacing === 1 ? "right" : "left")} />}
     </>
   );

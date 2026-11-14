@@ -1,72 +1,96 @@
-// Beat "The Country Holds Its Breath" (script v5, 2026-11-14; story.json lines 91-96; mood morning). Every frame comes
-// from the clips, one component per shot, in the order things happen. No card opens.
+// Beat "The Country Holds Its Breath" (v7, 2026-11-14, outside review of v6; story.json lines 91-96; mood morning).
+// Every frame comes from the clips (fractions of a line placed on its words), one component per shot, in the order
+// things happen. No card opens.
 //
-//   91    the night before, the classroom at dusk (HoldsBreath.Choice.tsx): you lay your own notebook on his desk; insert
-//         from above, half a chocolate bar dropped on top; close on you, a small smile ("he can have the good wood");
-//         you walk out.
-//   92    exam morning: the gate, parents along the wall; you walk up (the EXAM MORNING title, Captions.tsx, upper left);
-//         "still in her vest: your sister. With a lunch box.": between two parents, the work vest.
-//   hold  6 s, PERFORMED (the gap after 92), the film's one tender beat, wordless: the crowd parts and she's there, the
-//         lunch box in both hands; she holds it out; close on you, looking at her face, not the air above it; a tight
-//         two-shot on the box between you, fingers touch on the handle; her mouth opens for the words she always says
-//         and shuts without them; she nods once; she steps back into the crowd; the bell; you turn to the gate.
-//   93    her face in the crowd, and the empty air over her head: nothing opens. "Some faces you don't read."
-//   94    you walk into the gate with the lunch; then the exam hall from straight above, rows of heads: the country goes
-//         quiet.
-//   95    the runway, an airliner held on the ground by the threshold, one paper plane held still overhead (c02; the
-//         NOVEMBER 2025 card, Captions.tsx, lower left); then the hall side on, you listening.
-//   hold  3 s (the gap after 95): close on the paper plane held still; the runway; the parents at the gate, not moving.
-//   96    the hall from high above ("A country holds its breath for you."); then the month: night after night at your
-//         desk while a day pad tears off its pages and stops on results day, ringed in red, as The Window begins.
+//   91    the night before (HoldsBreath.Choice.tsx): in, notebook down, in three beats; from above it opens on a
+//         corrected page and shuts; the bar snaps, the SMALLER half goes on top, a hesitation, the swap to the bigger
+//         half; close on you eating the small half ("not a monster"); your hand rests on the notebook, lets go ("You
+//         leave it anyway"); the half stands upright and becomes a ladder ("the good wood"); a smile; out.
+//   92    exam morning at the gate (HoldsBreath.Gate.tsx): you walk up (two framings); the crowd parts on "and there in
+//         the crowd"; the vest's stripes catch the light; her face; the six-tier lunch box, the camera tilting up it.
+//   hold  3.3 s, wordless, the one tender beat: your eyes go up the stack; fingers touch on the box; her mouth opens and
+//         shuts; one nod; she steps back.
+//   93    her face, nothing over it; the bell; you turn.
+//   94    from inside the yard the gate rolls shut across the frame on "closes"; then the hall from above goes quiet.
+//   95    the montage (HoldsBreath.Air.tsx): a jet taxis up ("In November 2025"; the card, Captions.tsx, lower left);
+//         you listening in the hall; the tower's STOP paddle; the nose wheel halts at the hold line; planes stack up
+//         circling; the empty runway, the paper plane held still a second; one pencil on one sheet.
+//   hold  3.3 s inside the exam: the pencil, then every sheet in the hall turns at once, then nothing moves.
+//   96    the hall from high above; the sheet's corner "1" match-cuts to the day pad; the month at your desk.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
-import { SEATED, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
+import { SEATED, type Pose } from "@whatif/kit/rig/pose";
 import { examHall, Mug, PASTELS } from "@whatif/kit/sets";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { closeUp, drift } from "@whatif/kit/stage/shots";
+import { drift } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
 import { headAt } from "../parts";
-import { blinking, camAt, current, HERO, linear, mix, ramp, type Beat, type Shot } from "../shared";
+import { blinking, camAt, current, HERO, mix, ramp, type Beat, type Shot } from "../shared";
 import { READING } from "../sets/ReadingRoom";
-import { aimArm, Fade, handAt, Rows, S, timer, type Body } from "./Notebook.Parts";
-import { GoShot, LeaveShot, PlaceShot, SmileShot } from "./HoldsBreath.Choice";
-import { DayPad, ExamTopBack, GATE, GateBack, GateCrowd, HALL, JiyoonWithLunch, LunchBox, MistakeBookSide, planeCam, RunwayBack } from "./HoldsBreath.Parts";
+import { aimArm, Fade, Rows, S, timer, type Body } from "./Notebook.Parts";
+import { CornerShot, EmptyRunwayShot, PencilShot, StackShot, TaxiShot, TowerShot, WheelShot } from "./HoldsBreath.Air";
+import { BookShot, ChocShot, CostShot, EatShot, GoShot, LadderShot, PlaceShot, SmileShot } from "./HoldsBreath.Choice";
+import { BoxShot, GateShot, HandOffShot, NothingShot, RevealShot, ShutShot } from "./HoldsBreath.Gate";
+import { DayPad, ExamTopBack, HALL, MistakeBookSide } from "./HoldsBreath.Parts";
 
 // ------------------------------------------------------------------------------------------------ timing
 
 type T = ReturnType<typeof times>;
 export type HoldsTimes = T;
 
+/** The line fractions sit on the words of the v7 narration (narration/words.json), e.g. 91 "fix" at 0.32. */
 function times(clips: Clip[], to: number) {
   const { from, at, end } = timer(clips);
-  const h = (p: number) => Math.round(mix(end(95), from(96), p)); // the 3 s hold after the planes
-  const p = (q: number) => Math.round(mix(end(92), from(93), q)); // the 6 s performed moment after line 92
+  const p = (q: number) => Math.round(mix(end(92), from(93), q)); // the 3.3 s performed hold after line 92
+  const h = (q: number) => Math.round(mix(end(95), from(96), q)); // the 3.3 s hold after the planes
   return {
     place: from(91), // "The night before, you leave your own notebook on his desk."
-    leave: at(91, 0.3), // "Every mistake you made this year, and the fix.": the notebook onto his desk, from above
-    choc: at(91, 0.54), // "Half a chocolate bar on top."
-    smile: at(91, 0.68), // "If he's building a ladder, he can have the good wood."
-    go: end(91) - 6, // you walk out
-    gate: from(92), // exam morning: the gate, the parents
-    vest: at(92, 0.6), // "still in her vest: your sister"
-    part: p(0), // the performed moment: the crowd parts
-    offer: p(0.2), // she holds it out
-    look: p(0.29), // close on you: her face, not the air above it
-    hands: p(0.44), // the hands on the handle; fingers touch
-    nod: p(0.56), // her mouth opens for the words she always says, and shuts without them; she nods once
-    back: p(0.8), // she steps back into the crowd
-    bell: p(0.9), // the bell; you turn to the gate
-    nothing: from(93), // "Neither of you says a word. Nothing opens."
-    air: at(93, 0.55), // the empty air over her head
-    month: from(94), // "The gate closes behind you": you walk in
-    exam: at(94, 0.5), // "And the whole country goes quiet.": the hall from above
-    sky: from(95), // "South Korea stopped its planes taking off and landing"
-    listen: at(95, 0.82), // the hall side on, you listening (after the NOVEMBER 2025 card, which would sit on the row of faces)
-    plane: h(0), // the hold: the plane held still
-    runway: h(0.34), // the empty runway
-    still: h(0.67), // the parents at the gate, not moving
-    breath: from(96), // "A country holds its breath for you."
-    wait: at(96, 0.36), // "Results come in a month. For a month, you say nothing to anyone.": the month passes
+    open: at(91, 0.175), // "Every mistake you made this year,": the notebook from above
+    cover: at(91, 0.198), // it opens
+    riffle: at(91, 0.225), // a year of pages
+    tick: at(91, 0.322), // "and the fix."
+    fold: at(91, 0.341), // it shuts
+    brk: at(91, 0.355), // "Half a chocolate bar
+    snap: at(91, 0.372), // (snap)
+    small: at(91, 0.435), // on top.": the smaller half
+    swap: at(91, 0.485), // "The bigger half.": the swap
+    eat: at(91, 0.54), // "You're competitive,
+    pop: at(91, 0.594), // not a monster.": the small half, gone
+    cost: at(91, 0.655), // "It might cost you first place."
+    hand: at(91, 0.735), // your hand on the cover, from above
+    lift: at(91, 0.8), // "You leave it anyway.": it lets go
+    ladder: at(91, 0.85), // "If he's building a ladder,
+    smile: at(91, 0.93), // he can have the good wood."
+    go: at(91, 0.985), // out
+    gate: from(92), // "Exam morning. Outside every exam school,
+    crowd: at(92, 0.23), // parents crowd the gate to see their kids in.
+    part: at(92, 0.39), // And there in the crowd, straight off the night shift,
+    vest: at(92, 0.62), // still in her vest:
+    sister: at(92, 0.715), // your sister.
+    box: at(92, 0.785), // With a lunch box
+    tilt: at(92, 0.84), // packed like the exam lasts a week."
+    react: end(92), // the hold: your eyes go up the stack
+    hands: p(0.27), // fingers touch
+    nod: p(0.58), // the words she doesn't say; the nod
+    back: p(0.84), // she steps back
+    nothing: from(93), // "Neither of you says a word. Nothing opens.
+    air: at(93, 0.5), // the empty air over her head
+    bell: at(93, 0.8), // the bell
+    closes: from(94), // "The gate closes behind you.
+    exam: at(94, 0.55), // And the whole country goes quiet."
+    taxi: from(95), // "It's true. In November 2025,
+    listen: at(95, 0.25), // during the English listening test,
+    tower: at(95, 0.4), // South Korea stopped its planes
+    wheel: at(95, 0.55), // taking off
+    wstop: at(95, 0.625), // (the wheel stops)
+    stack: at(95, 0.64), // and landing for 35 minutes,
+    empty: at(95, 0.785), // so their noise
+    pencil: at(95, 0.86), // wouldn't disturb the students."
+    turn: h(0.32), // the hold: every sheet turns at once
+    still: h(0.64), // then nothing moves
+    breath: from(96), // "A country holds its breath for you.
+    corner: at(96, 0.335), // Results come in a month.
+    wait: at(96, 0.45), // For a month, you say nothing to anyone."
     end: to,
   };
 }
@@ -133,22 +157,24 @@ const WaitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => (
   </>
 );
 
-// ------------------------------------------------------------------------------------------------ the hall and the runway (94-95)
+// ------------------------------------------------------------------------------------------------ the hall (94-96)
 
 const yourDesk = { x: HALL.cols[HALL.you.c], y: HALL.rows[HALL.you.r] };
 
-const HallShot: React.FC<{ frame: number; from: Camera; to: Camera; a: number; b: number }> = ({ frame, from, to, a, b }) => {
+const HallShot: React.FC<{ frame: number; from: Camera; to: Camera; a: number; b: number; turn?: number; still?: boolean }> = ({ frame, from, to, a, b, turn, still }) => {
   const cam = drift(camAt(frame, [[a, from], [b, to]]), frame, "hall", 2);
-  return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<ExamTopBack cam={cam} frame={frame} />} actors={null} />;
+  return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<ExamTopBack cam={cam} frame={frame} turn={turn} still={still} />} actors={null} />;
 };
 
 const EXAM_OPTS = { ...examHall.defaults, minute: 12 };
 
-/** "This year, you're the one listening.": the hall side on, you at your desk, eyes up, the pencil still. */
+/** "...during the English listening test,": the hall side on, you at your desk, eyes up, listening. Framed with the
+ *  faces high and right: the NOVEMBER 2025 card (Captions.tsx) holds the lower left. */
 const ListenShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const seat = examHall.spots.seat2;
   const head = headAt(seat.x, seat.y, seat.scale, SEATED);
-  const cam = drift(camAt(frame, [[k.listen, { x: 900, y: 640, zoom: 1.5 }], [k.plane, closeUp(head.x + 40, head.y, 2.5)]]), frame, "listen", 2);
+  const at = (zoom: number): Camera => ({ x: head.x - 390 / zoom, y: head.y + 170 / zoom, zoom });
+  const cam = drift(camAt(frame, [[k.listen, at(1.9)], [k.tower, at(2.1)]]), frame, "listen", 2);
   const props = { cam, mood: "morning" as const, frame, options: EXAM_OPTS };
   const writer: Pose = { ...SEATED, lean: 14, armF: [80, 30] };
   return (
@@ -168,155 +194,47 @@ const ListenShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 /** The paper plane held still over the airport. */
 const PLANE = { x: 760, y: 210 };
 
-/** The runway, nothing moving: the jet held on the ground by the threshold, the paper plane still overhead. */
-const RunwayShot: React.FC<{ frame: number; a: number; b: number; from: Camera; to: Camera }> = ({ frame, a, b, from, to }) => {
-  const cam = drift(camAt(frame, [[a, from], [b, to]]), frame, "runway", 2);
-  return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<RunwayBack cam={cam} mood="morning" jet plane={PLANE} />} actors={null} />;
-};
-
-// ------------------------------------------------------------------------------------------------ the gate (92-94)
-
-const JS = 1.1;
-const ME = GATE.you;
-
-/** Her face: tired off the night shift, tender. */
-const herFace = (frame: number, extra: object = {}) => ({ brows: "worry" as const, lids: 0.12, mouth: "smile" as const, eyes: 1, look: { x: 0.9, y: 0.05 }, blink: blinking(frame, 6), ...extra });
-
-/** Her front hand with the box held out (`offer` 1), at her forward spot. */
-const herBody = (x: number): Body => ({ x, y: GATE.jiyoon.y, scale: JS, facing: -1, pose: { ...STAND, armF: [72, 34] } });
-
-const Gate: React.FC<{ frame: number; cam: Camera; you: React.ReactNode; her: React.ReactNode; part?: number; bell?: number; still?: boolean }> = ({
-  frame, cam, you, her, part = 0, bell = 0, still,
-}) => (
-  <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<GateBack cam={cam} frame={frame} mood="morning" bell={bell} still={still} />}
-    actors={<>{her}<GateCrowd frame={frame} part={part} still={still} />{you}</>} />
-);
-
-/** The parents at the gate during the hold: nobody moves (the frame held, no blinks). */
-const StillGate: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift({ x: 960, y: 640, zoom: 1.0 }, frame, "still", 1.5);
-  return (
-    <Gate frame={k.still} cam={cam} still
-      her={<JiyoonWithLunch x={GATE.jiyoon.x} y={GATE.jiyoon.y} scale={JS} frame={k.still} face={herFace(k.still, { blink: false })} holding />} you={null} />
-  );
-};
-
-const GateShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const shot = current(frame, [[k.gate, "wide"], [k.vest, "vest"]]);
-  const x = mix(300, ME, ramp(frame, k.gate, k.part - 6));
-  const walking = frame < k.part - 10;
-  const herHead = headAt(GATE.jiyoon.x, GATE.jiyoon.y, JS, STAND, -1);
-  const cams: Record<typeof shot, Camera> = {
-    wide: camAt(frame, [[k.gate, { x: 900, y: 600, zoom: 1.0 }], [k.vest, { x: 1100, y: 640, zoom: 1.08 }]]),
-    vest: camAt(frame, [[k.vest, { x: herHead.x - 120, y: herHead.y + 160, zoom: 1.7 }], [k.part, { x: herHead.x - 120, y: herHead.y + 150, zoom: 1.8 }]]),
-  };
-  return (
-    <Gate frame={frame} cam={drift(cams[shot], frame, "gate", 3)}
-      her={<JiyoonWithLunch x={GATE.jiyoon.x} y={GATE.jiyoon.y} scale={JS} frame={frame} face={herFace(frame)} holding />}
-      you={<Figure {...HERO} x={x} y={GATE.floor + 10} scale={S} pose={walking ? walkPose(frame * 0.3) : STAND}
-        brows="flat" mouth="flat" lids={0.1} look={{ x: 0.9, y: 0 }} blink={blinking(frame, 1)} time={frame} />} />
-  );
-};
-
-/** The performed moment at the gate, beat by beat. */
-const HandOffShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const shot = current(frame, [[k.part, "part"], [k.offer, "offer"], [k.look, "look"], [k.hands, "hands"], [k.nod, "nod"], [k.back, "back"], [k.bell, "bell"]]);
-  const part = ramp(frame, k.part, k.part + Math.round((k.offer - k.part) * 0.7)) * (1 - ramp(frame, k.back + 10, k.bell));
-  const step = ramp(frame, k.part + 10, k.offer);
-  const leave = ramp(frame, k.back, k.bell - 4);
-  const herX = frame < k.back ? mix(GATE.jiyoon.x, GATE.jiyoonOut.x, step) : mix(GATE.jiyoonOut.x, 1430, leave);
-  const offer = ramp(frame, k.offer, k.offer + 14);
-  const handed = frame >= k.hands + Math.round((k.nod - k.hands) * 0.6);
-  const out = handed ? ramp(frame, k.nod, k.nod + 12) : 0;
-  const said = frame >= k.nod + 3 && frame < k.nod + 15; // her mouth open on the words she doesn't say
-  const nod = linear(frame, k.nod + 18, k.nod + 36);
-  const boxAt = handAt(herBody(GATE.jiyoonOut.x));
-  const me: Body = { x: ME, y: GATE.floor + 10, scale: S, facing: frame >= k.bell + 12 ? -1 : 1, pose: STAND };
-  const reach = aimArm(me, { x: boxAt.x - 24, y: boxAt.y });
-  const hold: Pose = { ...STAND, armF: [40, 84], armB: [30, 90] };
-  const reachT = ramp(frame, k.look + 6, k.hands);
-  me.pose = handed ? { ...hold, armF: [mix(reach[0], 40, ramp(frame, k.nod, k.nod + 12)), mix(reach[1], 84, ramp(frame, k.nod, k.nod + 12))] }
-    : { ...STAND, armF: [mix(STAND.armF[0], reach[0], reachT), mix(STAND.armF[1], reach[1], reachT)] };
-  const myHead = headAt(me.x, me.y, S, me.pose, me.facing);
-  const herHead = headAt(herX, GATE.jiyoon.y, JS, STAND, -1);
-  const myFace = shot === "look"
-    ? { brows: "worry" as const, lids: 0.08, mouth: "flat" as const, eyes: 1.08, look: { x: 0.95, y: -0.05 } }
-    : { brows: "flat" as const, lids: 0.1, mouth: "flat" as const, eyes: 1, look: { x: me.facing === 1 ? 0.9 : 0.6, y: 0 } };
-  const herNow = shot === "nod"
-    ? herFace(frame, { mouth: said ? "open" as const : "flat" as const, lids: mix(0.12, 0.4, Math.sin(Math.PI * nod)), brows: said ? "raised" as const : "worry" as const })
-    : herFace(frame, shot === "back" || shot === "bell" ? { look: { x: -0.4, y: 0 } } : {});
-  const cams: Record<typeof shot, Camera> = {
-    part: camAt(frame, [[k.part, { x: 1300, y: 720, zoom: 1.55 }], [k.offer, { x: 1280, y: 720, zoom: 1.65 }]]),
-    offer: camAt(frame, [[k.offer, { x: 1250, y: 730, zoom: 1.75 }], [k.look, { x: 1250, y: 730, zoom: 1.85 }]]),
-    look: camAt(frame, [[k.look, closeUp(myHead.x + 50, myHead.y, 2.6)], [k.hands, closeUp(myHead.x + 50, myHead.y, 2.85)]]),
-    // a tight two-shot on the lunch box between you: both faces, your hand coming onto the box by her fingers
-    hands: camAt(frame, [[k.hands, { x: (ME + GATE.jiyoonOut.x) / 2, y: boxAt.y - 34, zoom: 2.55 }], [k.nod, { x: (ME + GATE.jiyoonOut.x) / 2 - 6, y: boxAt.y - 30, zoom: 2.75 }]]),
-    nod: camAt(frame, [[k.nod, closeUp(herHead.x - 40, herHead.y, 2.6)], [k.back, closeUp(herHead.x - 40, herHead.y, 2.8)]]),
-    back: camAt(frame, [[k.back, { x: 1250, y: 700, zoom: 1.5 }], [k.bell, { x: 1200, y: 690, zoom: 1.4 }]]),
-    bell: camAt(frame, [[k.bell, { x: 1080, y: 640, zoom: 1.1 }], [k.nothing, { x: 1060, y: 640, zoom: 1.12 }]]),
-  };
-  const walking = frame >= k.back && frame < k.bell - 4;
-  return (
-    <Gate frame={frame} cam={drift(cams[shot], frame, "handoff", 2)} part={part} bell={ramp(frame, k.bell, k.bell + 6)}
-      her={<JiyoonWithLunch x={herX} y={GATE.jiyoon.y} scale={JS} frame={frame} face={herNow} holding={!handed} offer={offer} out={out}
-        nod={nod} facing={walking ? 1 : -1} walk={walking ? frame * 0.3 : null} />}
-      you={<Figure {...HERO} {...me} {...myFace} blink={shot !== "look" && blinking(frame, 3)} time={frame}
-        held={handed ? <LunchBox x={4} y={26} scale={0.9} /> : undefined} />} />
-  );
-};
-
-const NothingShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const herHead = headAt(1430, GATE.jiyoon.y, JS, STAND, -1);
-  const cam = drift(camAt(frame, [[k.nothing, closeUp(herHead.x - 30, herHead.y, 2.4)], [k.air, closeUp(herHead.x - 30, herHead.y - 40, 2.4)],
-    [k.month, { x: herHead.x - 30, y: herHead.y - 170, zoom: 2.2 }]]), frame, "nothing", 2);
-  return (
-    <Gate frame={frame} cam={cam}
-      her={<JiyoonWithLunch x={1430} y={GATE.jiyoon.y} scale={JS} frame={frame} face={herFace(frame)} holding={false} out={1} />}
-      you={<Figure {...HERO} x={ME} y={GATE.floor + 10} scale={S} facing={-1} pose={{ ...STAND, armF: [40, 84], armB: [30, 90] }} brows="flat" mouth="flat"
-        lids={0.1} look={{ x: -0.6, y: 0 }} time={frame} held={<LunchBox x={4} y={26} scale={0.9} />} />} />
-  );
-};
-
-const MonthShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const walk = linear(frame, k.month + 6, k.month + Math.round((k.exam - k.month) * 0.85));
-  const x = mix(ME, 960, walk);
-  const pose: Pose = walk > 0 && walk < 1 ? { ...walkPose(frame * 0.3), armF: [40, 84] } : { ...STAND, armF: [40, 84], armB: [30, 90] };
-  const cam = drift(camAt(frame, [[k.month, { x: 1200, y: 700, zoom: 1.5 }], [k.exam, { x: 1080, y: 600, zoom: 1.0 }]]), frame, "month", 2);
-  return (
-    <Gate frame={frame} cam={cam}
-      her={<JiyoonWithLunch x={1430} y={GATE.jiyoon.y} scale={JS} frame={frame} face={herFace(frame, { look: { x: 0.9, y: 0.1 } })} holding={false} out={1} />}
-      you={<Figure {...HERO} x={x} y={GATE.floor + 10} scale={S} facing={-1} pose={pose} brows="flat" mouth="flat" lids={0.2}
-        look={{ x: 0.9, y: 0 }} time={frame} held={<LunchBox x={4} y={26} scale={0.9} />} />} />
-  );
-};
-
 // ------------------------------------------------------------------------------------------------ the beat
 
 const HoldsBreath: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame } = shot;
   const k = times(shot.clips, shot.to);
   const scene = current(frame, [
-    [0, "place"], [k.leave, "leave"], [k.smile, "smile"], [k.go, "go"], [k.gate, "gate"], [k.part, "handoff"], [k.nothing, "nothing"], [k.month, "month"],
-    [k.exam, "exam"], [k.sky, "sky"], [k.listen, "listen"], [k.plane, "plane"], [k.runway, "runway"], [k.still, "still"], [k.breath, "breath"], [k.wait, "wait"],
+    [0, "place"], [k.open, "book"], [k.brk, "choc"], [k.eat, "eat"], [k.cost, "cost"], [k.hand, "ladder"], [k.smile, "smile"], [k.go, "go"],
+    [k.gate, "gate"], [k.part, "reveal"], [k.box, "box"], [k.react, "handoff"], [k.nothing, "nothing"], [k.closes, "closes"], [k.exam, "exam"],
+    [k.taxi, "taxi"], [k.listen, "listen"], [k.tower, "tower"], [k.wheel, "wheel"], [k.stack, "stack"], [k.empty, "empty"], [k.pencil, "pencil"],
+    [k.turn, "turn"], [k.breath, "breath"], [k.corner, "corner"], [k.wait, "wait"],
   ]);
   const hallClose = { x: yourDesk.x, y: yourDesk.y + 70, zoom: 2.4 };
+  const hallMid = { x: yourDesk.x, y: yourDesk.y, zoom: 1.3 };
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {scene === "place" && <PlaceShot frame={frame} k={k} />}
-      {scene === "leave" && <LeaveShot frame={frame} k={k} />}
+      {scene === "book" && <BookShot frame={frame} k={k} />}
+      {scene === "choc" && <ChocShot frame={frame} k={k} />}
+      {scene === "eat" && <EatShot frame={frame} k={k} />}
+      {scene === "cost" && <CostShot frame={frame} k={k} />}
+      {scene === "ladder" && <LadderShot frame={frame} k={k} />}
       {scene === "smile" && <SmileShot frame={frame} k={k} />}
       {scene === "go" && <GoShot frame={frame} k={k} />}
       {scene === "gate" && <GateShot frame={frame} k={k} />}
+      {scene === "reveal" && <RevealShot frame={frame} k={k} />}
+      {scene === "box" && <BoxShot frame={frame} k={k} />}
       {scene === "handoff" && <HandOffShot frame={frame} k={k} />}
       {scene === "nothing" && <NothingShot frame={frame} k={k} />}
-      {scene === "month" && <MonthShot frame={frame} k={k} />}
-      {scene === "exam" && <HallShot frame={frame} a={k.exam} b={k.sky} from={hallClose} to={{ x: yourDesk.x, y: yourDesk.y - 60, zoom: 0.9 }} />}
-      {scene === "sky" && <RunwayShot frame={frame} a={k.sky} b={k.listen} from={{ x: 960, y: 560, zoom: 1.0 }} to={{ x: 990, y: 540, zoom: 1.08 }} />}
+      {scene === "closes" && <ShutShot frame={frame} k={k} />}
+      {scene === "exam" && <HallShot frame={frame} a={k.exam} b={k.taxi} from={hallClose} to={{ x: yourDesk.x, y: yourDesk.y - 60, zoom: 0.9 }} />}
+      {scene === "taxi" && <TaxiShot frame={frame} a={k.taxi} b={k.listen} />}
       {scene === "listen" && <ListenShot frame={frame} k={k} />}
-      {scene === "plane" && <RunwayShot frame={frame} a={k.plane} b={k.runway} from={planeCam(PLANE.x, PLANE.y + 40, 2.1)} to={planeCam(PLANE.x, PLANE.y + 30, 2.25)} />}
-      {scene === "runway" && <RunwayShot frame={frame} a={k.runway} b={k.still} from={{ x: 960, y: 600, zoom: 1.0 }} to={{ x: 960, y: 580, zoom: 1.08 }} />}
-      {scene === "still" && <StillGate frame={frame} k={k} />}
-      {scene === "breath" && <HallShot frame={frame} a={k.breath} b={k.wait} from={{ x: 960, y: 520, zoom: 0.8 }} to={{ x: 960, y: 540, zoom: 0.7 }} />}
+      {scene === "tower" && <TowerShot frame={frame} a={k.tower} b={k.wheel} />}
+      {scene === "wheel" && <WheelShot frame={frame} a={k.wheel} b={k.stack} stop={k.wstop} />}
+      {scene === "stack" && <StackShot frame={frame} a={k.stack} b={k.empty} />}
+      {scene === "empty" && <EmptyRunwayShot frame={frame} a={k.empty} b={k.pencil} plane={PLANE} />}
+      {scene === "pencil" && <PencilShot frame={frame} a={k.pencil} b={k.turn} />}
+      {scene === "turn" && <HallShot frame={frame} a={k.turn} b={k.breath} from={hallMid} to={{ ...hallMid, zoom: 1.2 }}
+        turn={ramp(frame, k.turn + 4, k.turn + 24)} still={frame >= k.still} />}
+      {scene === "breath" && <HallShot frame={frame} a={k.breath} b={k.corner} from={{ x: 960, y: 520, zoom: 0.8 }} to={{ x: 960, y: 540, zoom: 0.62 }} turn={1} still />}
+      {scene === "corner" && <CornerShot frame={frame} a={k.corner} />}
       {scene === "wait" && <WaitShot frame={frame} k={k} />}
     </AbsoluteFill>
   );

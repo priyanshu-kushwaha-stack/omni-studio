@@ -17,6 +17,15 @@
 //   18-20 the call (Rule.Call.tsx): your phone, her at the warehouse, "Say it again.", then video: her grin fills
 //         your phone, you grin back into it, and nothing opens over the screen (Rule.Video.tsx)
 //   21    the flagged limit (Rule.Call.tsx): you at the dark glass door, your own face in the glass beside you
+//
+// v7 (outside review of v6): lines 7-9 rebuilt (Rule.Explain.tsx: no third replay of the hug, a neutral card, the
+// platform recalled inside a paper panel, the scale acted by three cards, "never tells you why" as two contradictory
+// Min-jun panels); the clerk wears a cap and a name badge; "Receipt?" lands on a slip printing out toward the lens; the
+// zero holds one beat, then the clerk lays the receipt on your letter and the card folds before the lie; the lie in
+// three different framings, then silence, the cat, the receipt pushed closer; "A lie opens nothing" as a card stamped
+// LIE that tries to unfold over him and fails; the cat in four acted beats (it swats the letter); the video call in a
+// split screen while you check above, beside and behind the phone; the limit plays on the glass (a face drawn in your
+// breath on it).
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { STAND, type Pose } from "@whatif/kit/rig/pose";
@@ -24,7 +33,7 @@ import { LookContext } from "@whatif/kit/stage/Look";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
-import { CRIMSON, INK, MUSTARD } from "@whatif/kit/theme";
+import { CRIMSON, INK, MUSTARD, PAPER } from "@whatif/kit/theme";
 import { Chocolate, headAt, MeterSound } from "../parts";
 import { camAt, current, lineEnd, MINJUN, mix, ramp, type Beat, type Shot } from "../shared";
 import { REF } from "../sets/common";
@@ -65,22 +74,25 @@ function times(clips: Clip[], to: number) {
     clerkCard: at(12, 0.72), // his card snaps open: the flaps don't move, one click, a grey zero
     receipt: from(13) - 2, // "Receipt?" (his own voice)
     zero: from(14), // "Zero. Grey. One click.": the card close
-    you12: at(14, 0.45), // "The biggest news of your life, and you're a receipt."
+    you12: at(14, 0.3), // "The biggest news of your life": your face
+    slip: at(14, 0.62), // "and you're a receipt.": the clerk lays the receipt on your letter
+    cardFold: at(14, 0.85), // the grey card folds shut before the lie
     lie: from(15), // "So you try the obvious cheat.": the card has folded; you lean on the counter, letter down
     idea: at(15, 0.45), // "Make something up, and scan the whole world for free.": the wind-up
     shout, // the hold: arms out, "I won the lottery!"
-    silence: shout + 30, // no snap: the empty air over the clerk
-    blinkAt: shout + 40, // the clerk blinks once
-    closer: shout + 52, // and holds the receipt an inch closer
-    nap: shout + 70, // the cat does not open an eye
-    flop: from(16), // "Nothing. A lie opens nothing.": your face falls
+    silence: shout + 18, // no snap: the empty air over the clerk
+    blinkAt: shout + 24, // the clerk blinks once
+    nap: shout + 34, // the cat does not open an eye
+    closer: shout + 56, // back on the clerk: he holds the receipt an inch closer
+    flop: from(16), // "Nothing.": your face falls
+    lieCard: at(16, 0.07), // "A lie opens nothing.": a card stamped LIE tries to unfold over him and fails
     truth: at(16, 0.22), // "The card works on good news that's true, and yours.": the letter insert
     oneLetter: at(16, 0.5), // "So you've got exactly one letter"
     snacks: at(16, 0.68), // "and you're spending it on a man who scans snacks."
     cat: from(17), // "The cat on the crate.": you crouch by the crate
     eye: at(17, 0.06), // the cat opens one eye
-    speak: at(17, 0.14), // your mouth moves; no snap
-    catStare: at(17, 0.36), // "So either a cat isn't a face": the cat, one eye on you
+    speak: at(17, 0.2), // you crouch lower and hold the letter at it; your mouth moves; no snap
+    catStare: at(17, 0.36), // "So either a cat isn't a face": it swats the letter; you recoil
     catShut: at(17, 0.6), // "or a cat doesn't care": the eye closes
     never: at(17, 0.84), // "You'll never know."
     phone: from(18), // insert: your phone, calling your sister
@@ -93,8 +105,9 @@ function times(clips: Clip[], to: number) {
     grinBack: at(20, 0.42), // "so you can see her grin": your grin back into the phone
     nothing: at(20, 0.64), // "And nothing opens over a screen.": her face on the phone, the camera tilts up into empty air
     limit: from(21), // "So. Only out loud. Only to a face you can see.": you at the glass door
-    glass: at(21, 0.42), // "Remember that.": your face in the dark glass
-    matter: at(21, 0.64), // "It's going to matter.": the push onto the reflection
+    glass: at(21, 0.3), // "Only to a face you can see.": face to face with your reflection; you breathe on the glass
+    draw: at(21, 0.5), // "Remember that.": your finger draws a face in the fog
+    matter: at(21, 0.68), // "It's going to matter.": the push onto the reflection beside the drawn face
     end: to,
   };
 }
@@ -104,18 +117,9 @@ function times(clips: Clip[], to: number) {
 /** Line 9: "And it never tells you why." on your face by the store door, looking across at him; then, in the gap, the
  *  store wide: him at the counter snapping the bar. */
 const StoreRule: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mood }) => {
-  const on = current(frame, [[k.why, "why"], [k.wide, "wide"]]);
-  const you = headAt(STORE.door.x, STORE.floor, S, STAND, 1);
-  const cams: Record<typeof on, Camera> = {
-    why: camAt(frame, [[k.why, closeUp(you.x + 30, you.y, 2.55)], [k.wide, closeUp(you.x + 20, you.y, 2.8)]]),
-    wide: camAt(frame, [[k.wide, REF], [k.halves, { x: 990, y: 600, zoom: 1.08 }]]),
-  };
-  const cam = drift(cams[on], frame, "rule-store", 3);
-  const snapped = frame >= k.wide + 12;
-  const down = ramp(frame, k.why + 26, k.why + 40);
-  const youFace: Look = on === "why"
-    ? { brows: "worry", lids: mix(0.15, 0.4, down), mouth: "flat", eyes: 1, look: { x: mix(0.9, 0.5, down), y: mix(0, 0.5, down) } }
-    : { brows: "flat", lids: 0.2, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.1 } };
+  const cam = drift(camAt(frame, [[k.wide, REF], [k.halves, { x: 990, y: 600, zoom: 1.08 }]]), frame, "rule-store", 3);
+  const snapped = frame >= k.wide + 4;
+  const youFace: Look = { brows: "flat", lids: 0.2, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.1 } };
   return (
     <StoreShot frame={frame} cam={cam} mood={mood} youX={STORE.door.x} youFace={youFace} youHeld={LETTER}
       mjFace={{ ...EXPRESSIONS.happy, look: { x: 0.6, y: 0.5 } }} mjHeld={snapped ? HALF : BAR} mjPose={{ ...STAND, armF: [55, 70], armB: snapped ? [40, 60] : [-7, 8] }} />
@@ -124,7 +128,7 @@ const StoreRule: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mo
 
 /** Lines 7-9: the rule, acted (Rule.Explain.tsx), then your face and the store. */
 const RuleShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mood }) => {
-  if (frame < k.why) return <Explain frame={frame} k={k} />;
+  if (frame < k.wide) return <Explain frame={frame} k={k} />;
   return <StoreRule frame={frame} k={k} mood={mood} />;
 };
 
@@ -210,7 +214,7 @@ const HalfShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mo
 /** Lines 12-14: the clerk. You turn to the counter, he scans the bar; you hold the letter up at him; his card: the flaps
  *  don't move, one click, a grey zero; "Receipt?"; the card close; your face. */
 const ClerkShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, mood }) => {
-  const on = current(frame, [[k.clerk, "clerk"], [k.show, "show"], [k.receipt, "receipt"], [k.zero, "zero"], [k.you12, "you"]]);
+  const on = current(frame, [[k.clerk, "clerk"], [k.show, "show"], [k.receipt, "receipt"], [k.zero, "zero"], [k.you12, "you"], [k.slip, "slip"]]);
   const ch = headAt(STORE.clerk.x, STORE.floor, S, STAND, -1);
   const card = { x: ch.x, y: ch.y - ch.r * 2.05 };
   const YX = YOU_CLERK;
@@ -220,11 +224,13 @@ const ClerkShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, m
     show: camAt(frame, [[k.show, { x: 1580, y: 600, zoom: 1.75 }], [k.receipt, { x: 1600, y: 590, zoom: 1.85 }]]),
     receipt: camAt(frame, [[k.receipt, closeUp(ch.x - 40, ch.y - 50, 2.5)], [k.zero, closeUp(ch.x - 40, ch.y - 55, 2.6)]]),
     zero: camAt(frame, [[k.zero, insert(card.x, card.y + 30, 4.2)], [k.you12, insert(card.x, card.y + 30, 4.5)]]),
-    you: camAt(frame, [[k.you12, closeUp(yh.x + 30, yh.y, 2.6)], [k.lie, closeUp(yh.x + 30, yh.y, 2.8)]]),
+    you: camAt(frame, [[k.you12, closeUp(yh.x + 30, yh.y, 2.6)], [k.slip, closeUp(yh.x + 30, yh.y, 2.8)]]),
+    // "and you're a receipt.": the two of you; he lays the slip on your letter; the grey card folds
+    slip: camAt(frame, [[k.slip, { x: 1580, y: 600, zoom: 1.75 }], [k.lie, { x: 1585, y: 610, zoom: 1.85 }]]),
   };
   const cam = drift(cams[on], frame, "clerk", on === "zero" ? 1.5 : 3);
   const up = ramp(frame, k.show, k.show + 8);
-  const youFace: Look = on === "you" ? { brows: "sad", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 0.8, y: 0.3 } }
+  const youFace: Look = on === "you" || on === "slip" ? { brows: "sad", lids: 0.45, mouth: "flat", eyes: 1, look: on === "slip" ? { x: 0.6, y: -0.2 } : { x: 0.8, y: 0.3 } }
     : frame >= k.clerkCard + 6 ? { brows: "raised", lids: 0, mouth: "flat", eyes: 1.1, look: { x: 0.8, y: -0.7 } }
     : { brows: "raised", lids: 0, mouth: frame >= k.show ? "open" : "smile", eyes: 1.1, look: { x: 0.9, y: 0 } };
   // he sweeps the bar across the scanner (a red flash and the till lighting at the beep); then, on "Receipt?", the till
@@ -236,7 +242,12 @@ const ClerkShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, m
   const offer = ramp(frame, k.receipt, k.receipt + 8);
   const tear = frame >= k.receipt - 2 && frame < k.receipt + 2 ? 4 : 0;
   const receipt = frame >= k.receipt - 14 ? <Receipt print={print} offer={offer} tear={tear} /> : undefined;
+  // "and you're a receipt.": he reaches over and lays the slip on the letter you are still holding up
+  const lay = ramp(frame, k.slip + 4, k.slip + 18);
+  const laid = frame >= k.slip + 18;
   const clerkArm: [number, number] | undefined = scanning ? [mix(40, 100, sweep), mix(60, 10, sweep)]
+    : laid ? [mix(110, 40, ramp(frame, k.slip + 18, k.slip + 28)), mix(-10, 60, ramp(frame, k.slip + 18, k.slip + 28))]
+    : on === "slip" ? [mix(95, 110, lay), mix(0, -10, lay)]
     : receipt ? [mix(40, 95, offer), mix(50, 0, offer)] : undefined;
   const clerkFace: Look = on === "receipt"
     ? { brows: "flat", lids: 0.4, mouth: Math.floor((frame - k.receipt) / 5) % 2 ? "o" : "flat", eyes: 1, look: { x: 0.8, y: 0.1 } }
@@ -249,10 +260,31 @@ const ClerkShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, m
     </g>
   ) : null;
   return (
-    <StoreShot frame={frame} cam={cam} mood={mood} youX={YX} youFace={youFace} youHeld={LETTER}
-      youPose={{ ...STAND, armF: [mix(30, 100, up), mix(60, 10, up)] }} bubble={{ at: k.show + 4, until: k.clerkCard, text: "I made it." }} mjX={1150}
-      mjFace={chewFace(frame)} mjHeld={HALF}
-      clerkFace={clerkFace} clerkHeld={scanning ? <Chocolate x={6} y={-4} scale={0.4} half="right" /> : receipt} clerkArm={clerkArm} counterExtra={flash} clerkCard={[k.clerkCard, k.lie]} />
+    <>
+      <StoreShot frame={frame} cam={cam} mood={mood} youX={YX} youFace={youFace} youHeld={laid ? <g>{LETTER}<g transform="translate(14 -70) rotate(16) scale(1.1)"><Receipt /></g></g> : LETTER}
+        youPose={{ ...STAND, armF: [mix(30, 100, up), mix(60, 10, up)] }} bubble={{ at: k.show + 4, until: k.clerkCard, text: "I made it." }} mjX={1150}
+        mjFace={chewFace(frame)} mjHeld={HALF}
+        clerkFace={clerkFace} clerkHeld={scanning ? <Chocolate x={6} y={-4} scale={0.4} half="right" /> : laid ? undefined : receipt} clerkArm={clerkArm} counterExtra={flash} clerkCard={[k.clerkCard, k.cardFold]} />
+      {on === "receipt" && <ReceiptToLens frame={frame} at={k.receipt} />}
+    </>
+  );
+};
+
+/** "Receipt?": the slip printing out of the till toward the lens, filling the lower right of the frame on the word.
+ *  Screen space, over the clerk's close-up. */
+const ReceiptToLens: React.FC<{ frame: number; at: number }> = ({ frame, at }) => {
+  const t = ramp(frame, at - 4, at + 8);
+  if (t <= 0) return null;
+  const h = 120 + 700 * t;
+  return (
+    <svg width={1920} height={1080} style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+      <g transform={`translate(1450 1120) rotate(${mix(-4, -14, t)}) scale(${mix(0.7, 1.25, t)})`}>
+        <rect x={-150 + 10} y={-h + 14} width={300} height={h} fill="#000" opacity={0.25} />
+        <rect x={-150} y={-h} width={300} height={h} fill={PAPER} stroke={INK} strokeWidth={8} />
+        {Array.from({ length: Math.floor(h / 70) }, (_, i) => <rect key={i} x={-110} y={-h + 50 + i * 70} width={i % 3 === 2 ? 120 : 220} height={16} rx={8} fill={INK} opacity={0.45} />)}
+        <path d={`M-150 ${-h} l25 -22 l25 22 l25 -22 l25 22 l25 -22 l25 22 l25 -22 l25 22 l25 -22 l25 22 l25 -22 l25 22`} fill={PAPER} stroke={INK} strokeWidth={6} />
+      </g>
+    </svg>
   );
 };
 
@@ -271,11 +303,12 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       {part === "lie" && <LieShots frame={frame} k={k} mood={mood} />}
       {part === "cat" && <CatShots frame={frame} k={k} mood={mood} />}
       {part === "call" && <CallShots frame={frame} k={k} mood={mood} />}
-      <MeterSound at={k.meter} />
       <ExplainSound k={k} />
       {/* the clerk's card: the snap, no flutter (the flaps don't move), one click */}
       <Sequence from={k.clerkCard} durationInFrames={20}><Audio src={staticFile("sfx/snap.wav")} /></Sequence>
       <Sequence from={k.clerkCard + 10} durationInFrames={10}><Audio src={staticFile("sfx/click.wav")} /></Sequence>
+      <Sequence from={k.receipt - 4} durationInFrames={14}><Audio src={staticFile("sfx/flutter.wav")} volume={0.5} /></Sequence>
+      <Sequence from={k.cardFold} durationInFrames={10}><Audio src={staticFile("sfx/click.wav")} volume={0.7} /></Sequence>
     </AbsoluteFill>
   );
 };

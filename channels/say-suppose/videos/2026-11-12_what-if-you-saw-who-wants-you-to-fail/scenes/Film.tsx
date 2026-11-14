@@ -8,7 +8,7 @@ import { BEATS } from "./beats";
 import { lastIndex, type Shot } from "./shared";
 import { Captions } from "./Captions";
 import { soundPlan } from "./sound";
-import { COLD, coldCuts, ColdFlash, ColdSound, coldSource } from "./ColdOpen";
+import { COLD, coldCuts, ColdFlash, ColdSound, coldSnap, coldSource } from "./ColdOpen";
 
 /** The score's level, the owner's (taste.md 2026-11-08, G5 of the pause-time film): about 26 dB under the voice while
  *  it speaks, rising to about 8 dB under it in the wordless holds. It dips DUCK_IN frames before a line and comes back
@@ -116,7 +116,7 @@ export const Film: React.FC<FilmProps> = (props) => {
       <Picture {...props} />
       {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
       {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} />}
-      <ColdSound cuts={coldCuts(clips, clips.slice(COLD))} end={clips[COLD - 1].from} />
+      <ColdSound cuts={coldCuts(clips, clips.slice(COLD))} end={clips[COLD - 1].from} snap={coldSnap(clips.slice(COLD))} />
       {SCORE.map((c, i) => (
         <Placed key={`s${i}`} src={`music/${c.file}`} from={c.from} to={i === SCORE.length - 1 ? total + 1 : c.to}
           lead={SCORE_LEAD} fade={SCORE_FADE} total={totalFrames} gain={score} />

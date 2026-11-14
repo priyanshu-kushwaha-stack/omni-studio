@@ -1,11 +1,11 @@
-// Five Hundred's school hall (script v5, lines 64-65), drawn for this beat: seen from the side of the stage, the stage
+// Five Hundred's school hall (script v7, lines 64-65), drawn for this beat: seen from the side of the stage, the stage
 // and its curtain at the left (you at the microphone, Ms. Kang at the side), five hundred seated heads in twenty rows
 // running back to the far wall, the far wall with its clock, EXIT sign and doors; at the very back by the radiator the
 // janitor with his mop. World coordinates for a <Stage> (REF 1920 x 1080). No sound here.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { FONT } from "@whatif/kit/fonts";
-import { INK, PAPER } from "@whatif/kit/theme";
+import { INK, PAPER, TEAL } from "@whatif/kit/theme";
 import { Glasses, headAt, Letter, Meter } from "../parts";
 import { blinking, HERO, KANG, linear, mix, noise, PASTELS } from "../shared";
 import { HeadIcon } from "./WhosCrimson.Common";
@@ -96,21 +96,38 @@ export const OnStage: React.FC<{ frame: number; you: ReturnType<typeof youOnStag
   );
 };
 
-/** Five hundred seated heads, back row first; each with its card from `wave` (rolling back from the front rows). */
-export const Audience: React.FC<{ frame: number; wave: number; until: number; turn: number }> = ({ frame, wave, until, turn }) => (
+/** When row r's cards snap, after `wave` (outside review of v6, sheet 24: in blocks, front to back, so the pattern
+ *  reads): the two front rows, the next two, then your class's red row alone, then the rest in three blocks. */
+export function rowDelay(r: number) {
+  if (r >= 18) return 0;
+  if (r >= 16) return 8;
+  if (r === RED_ROW) return 18;
+  if (r >= 10) return 30;
+  if (r >= 5) return 38;
+  return 46;
+}
+/** The janitor's card, last, alone at the back. */
+export const JANITOR_DELAY = 62;
+
+/** Five hundred seated heads, back row first; each with its card from `wave` (rolling back from the front in blocks).
+ *  `dim` 0..1 fades the grey cards so the red row and the teal at the back stand out. */
+export const Audience: React.FC<{ frame: number; wave: number; until: number; turn: number; dim?: number }> = ({ frame, wave, until, turn, dim = 0 }) => (
   <g>
     {Array.from({ length: ROWS }, (_, r) => (
       <g key={r}>
         {Array.from({ length: PER_ROW }, (_, c) => {
           const s = seatAt(r, c);
-          const at = wave + (ROWS - 1 - r) * 2.4 + Math.floor(noise(r * 7 + c) * 5);
+          const at = wave + rowDelay(r) + Math.floor(noise(r * 7 + c) * 3);
+          const v = seatValue(r, c);
           return (
             <g key={c}>
               <rect x={s.x - s.r * 1.3} y={s.y + s.r * 0.7} width={s.r * 2.6} height={s.r * 2.2} rx={s.r * 0.8} fill={["#2a2d36", "#3b4a6b", "#4a3f63"][(r + c) % 3]} />
               <g transform={`translate(${s.x} ${s.y}) rotate(${(noise(c + r * 3) - 0.5) * 10 * turn}) translate(${-s.x} ${-s.y})`}>
                 <HeadIcon x={s.x} y={s.y} r={s.r} color={PASTELS[(r * 5 + c * 3) % PASTELS.length]} />
               </g>
-              <Meter frame={frame} at={at} x={s.x} headY={s.y} r={s.r} value={seatValue(r, c)} until={until} scale={0.85} tilt={(noise(c * 3 + r) - 0.5) * 8} />
+              <g opacity={v === 0 ? 1 - 0.65 * dim : 1}>
+                <Meter frame={frame} at={at} x={s.x} headY={s.y} r={s.r} value={v} until={until} scale={0.85} tilt={(noise(c * 3 + r) - 0.5) * 8} />
+              </g>
             </g>
           );
         })}
@@ -119,24 +136,45 @@ export const Audience: React.FC<{ frame: number; wave: number; until: number; tu
   </g>
 );
 
-/** The janitor at the very back: grey overalls, a cap, the mop in his back hand; `thumbs` 0..1 raises a thumb. */
-export const Janitor: React.FC<{ frame: number; at: number; until: number; thumbs: number }> = ({ frame, at, until, thumbs }) => {
+/** The radiator at the back warming up (`warm` 0..1): an orange flush and three heat curls rising off it. */
+export const Radiator: React.FC<{ frame: number; warm: number }> = ({ frame, warm }) => (
+  <g opacity={warm}>
+    <rect x={2110} y={210} width={150} height={90} rx={8} fill="#f08a3a" opacity={0.55} />
+    {[0, 1, 2].map((i) => {
+      const t = ((frame + i * 12) % 36) / 36;
+      return (
+        <path key={i} d={`M${2140 + i * 45} ${200 - t * 70} q-10 -12 0 -24 q10 -12 0 -24`} fill="none" stroke="#f08a3a" strokeWidth={5} strokeLinecap="round"
+          opacity={1 - t} />
+      );
+    })}
+  </g>
+);
+
+/** The janitor at the very back: grey overalls, a cap, the mop in his back hand. `nod` 0..1 thumbs-up at the radiator;
+ *  `clap` > 0 claps (alone); `halo` rings his card in teal so it reads in the wide. */
+export const Janitor: React.FC<{ frame: number; at: number; until: number; nod: number; clap: number; halo?: number }> = ({ frame, at, until, nod, clap, halo = 0 }) => {
   const { x, y, scale } = JANITOR;
-  const pose: Pose = { ...STAND, armB: [20, 10], armF: [mix(10, 80, thumbs), mix(10, 95, thumbs)] };
+  const beat = clap > 0 ? (Math.sin(frame / 2.4) + 1) / 2 : 0;
+  const pose: Pose = clap > 0
+    ? { ...STAND, armB: [mix(70, 92, beat), 70], armF: [mix(70, 92, beat), mix(80, 64, beat)] }
+    : { ...STAND, tilt: 6 * Math.sin(frame / 5) * nod, armB: [20, 10], armF: [mix(10, 80, nod), mix(10, 95, nod)] };
   const h = headAt(x, y, scale, pose, -1);
+  const thumbs = nod > 0.3 && clap === 0;
   return (
     <g>
-      {/* the mop: a stick from his back hand to the floor, the grey head on the floor */}
-      <line x1={x + 34 * scale} y1={y - 160 * scale} x2={x + 70 * scale} y2={y + 6} stroke="#8a5c3b" strokeWidth={10 * scale} strokeLinecap="round" />
+      {/* the mop leaning on the wall when he claps, else in his back hand */}
+      <line x1={x + (clap > 0 ? 90 : 34) * scale} y1={y - 160 * scale} x2={x + 70 * scale} y2={y + 6} stroke="#8a5c3b" strokeWidth={10 * scale} strokeLinecap="round" />
       <path d={`M${x + 40 * scale} ${y + 6} q30 ${-20 * scale} ${60 * scale} 0 l6 ${10 * scale} h${-72 * scale}z`} fill="#c9ccd2" stroke={INK} strokeWidth={4 * scale} />
       <Figure head="#d9c26a" coat="#6b7f8a" cap="#2f4a4a" x={x} y={y} scale={scale} facing={-1} pose={pose}
-        brows="raised" lids={0} mouth={thumbs > 0.3 ? "smile" : "open"} eyes={1.1} look={{ x: 1, y: 0 }} blink={blinking(frame, 4)} time={frame}
-        held={thumbs > 0.3 ? (
+        brows="raised" lids={clap > 0 ? 0.4 : 0} mouth={nod > 0.3 || clap > 0 ? "smile" : "open"} eyes={1.1} look={{ x: nod > 0.3 && clap === 0 ? -0.9 : 1, y: 0 }}
+        blink={blinking(frame, 4)} time={frame}
+        held={thumbs ? (
           <g transform="rotate(-10)">
             <rect x={-12} y={-12} width={24} height={22} rx={8} fill="#d9c26a" stroke={INK} strokeWidth={4} />
             <rect x={-6} y={-34} width={11} height={26} rx={5} fill="#d9c26a" stroke={INK} strokeWidth={4} />
           </g>
         ) : undefined} />
+      {halo > 0 && frame >= at && <circle cx={h.x} cy={h.y - h.r - 26} r={44 + 6 * Math.sin(frame / 6)} fill="none" stroke={TEAL} strokeWidth={6} opacity={0.8 * halo} />}
       <Meter frame={frame} at={at} x={h.x} headY={h.y} r={h.r} value={JANITOR_VALUE} until={until} scale={1.1} />
     </g>
   );

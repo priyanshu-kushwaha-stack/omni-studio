@@ -22,13 +22,13 @@ type Cut = { from: number; src: number };
 /** The cuts, from the film's clips (`all`, with the cold open's lines) and the beats' clips (`clips`, without them). */
 export function coldCuts(all: Clip[], clips: Clip[]): Cut[] {
   const words = (i: number, p: number) => at(all, i, p);
-  // the hug (beats' line 3, "Ten at night ... your best friend"): the bubble at 0.84 of it, the card at 0.9
-  const bubble = at(clips, 3, 0.84);
+  // the hug (beats' line 3, "Ten at night ... your best friend"): from the thumbnail's two-shot (outside review v6:
+  // open on the exact thumbnail frame), his grin, the two of you; the bubble at 0.84 of it, the card at 0.9
   return [
-    { from: 0, src: bubble - 60 }, // the wide, his grin, the two of you; "I made it." at 2 s; -84 locked by about 3.3 s
+    { from: 0, src: at(clips, 3, 0.42) }, // the thumbnail's frame; "I made it." about 3.4 s in; -84 locked by about 4.6 s
     { from: words(1, 0), src: at(clips, 54, 0.52) }, // "Six weeks before the big exam": the class under its cards
     { from: words(1, 0.3), src: end(clips, 69) + 4 }, // "A card that shows you who's really racing you": the thousand
-    { from: words(1, 0.58), src: at(clips, 88, 0.4) - 48 }, // "... a hundred chairs turn their backs on you": Backs
+    { from: words(1, 0.58), src: at(clips, 88, 0.46) }, // "... a hundred chairs turn their backs on you": the wave, Tae-ho last, the backs
   ];
 }
 
@@ -41,9 +41,13 @@ export function coldSource(frame: number, cuts: Cut[]): number {
 
 /** The cold open's own sounds (the beats' sounds play only at their own frames): the card's snap over him, a soft snap
  *  under each flash, and the white flash into the platform. */
-export const ColdSound: React.FC<{ cuts: Cut[]; end: number }> = ({ cuts, end: to }) => (
+export function coldSnap(clips: Clip[]): number {
+  return at(clips, 3, 0.9) - at(clips, 3, 0.42);
+}
+
+export const ColdSound: React.FC<{ cuts: Cut[]; end: number; snap: number }> = ({ cuts, end: to, snap }) => (
   <>
-    <MeterSound at={60 + 15} />
+    <MeterSound at={snap} />
     <MeterSound at={cuts[1].from + 10} soft volume={0.6} />
     <MeterSound at={cuts[2].from + 2} soft volume={0.7} />
     <Sequence from={to - 4} durationInFrames={16}><Audio src={staticFile("sfx/flutter.wav")} volume={0.4} /></Sequence>

@@ -3,7 +3,7 @@
 // bell, the lunch box, your sister with it, the classroom desk from above for the notebook and the chocolate, and the
 // day pad that tears through the month to results day.
 import { Figure } from "@whatif/kit/rig/Figure";
-import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
+import { joints, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { OUTSIDE, Sky, Skyline } from "@whatif/kit/sets";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import type { Camera } from "@whatif/kit/stage/Stage";
@@ -24,19 +24,25 @@ export const HALL = {
 };
 
 /** The exam hall from straight above: rows of single desks, an answer sheet on each, heads bent over them. */
-export const ExamTopBack: React.FC<{ cam: Camera; frame: number }> = ({ cam, frame }) => (
+/** `turn` 0..1 turns every answer sheet over at once (the synchronised page turn); `still` stops every pencil. */
+export const ExamTopBack: React.FC<{ cam: Camera; frame: number; turn?: number; still?: boolean }> = ({ cam, frame, turn = 0, still }) => (
   <Deep cam={cam} depth={1}>
     <rect x={-1400} y={-800} width={4800} height={2600} fill="#cbbd9f" />
     {Array.from({ length: 40 }, (_, i) => <line key={i} x1={-1400 + i * 130} y1={-800} x2={-1400 + i * 130} y2={1800} stroke="#000" strokeWidth={3} opacity={0.06} />)}
     {HALL.rows.map((y, r) => HALL.cols.map((x, c) => {
       const you = c === HALL.you.c && r === HALL.you.r;
-      const write = Math.sin(frame / (5 + noise(c * 7 + r) * 4) + c) * 6;
+      const write = still ? 0 : Math.sin(frame / (5 + noise(c * 7 + r) * 4) + c) * 6;
+      const flip = Math.cos(Math.PI * turn); // the sheet's width as it turns over its left edge
       return (
         <g key={`${r}-${c}`}>
           <rect x={x - 110} y={y - 70} width={220} height={120} rx={6} fill="#c9a77a" stroke={INK} strokeWidth={4} />
-          <rect x={x - 40 + noise(c + r * 11) * 20} y={y - 62} width={92} height={104} rx={3} fill={PAPER} stroke={INK} strokeWidth={2}
-            transform={`rotate(${noise(r * 5 + c) * 10 - 5} ${x} ${y})`} />
-          {[0, 1, 2, 3].map((l) => <rect key={l} x={x - 30} y={y - 48 + l * 22} width={60 - (l % 2) * 18} height={6} rx={3} fill="#4a4d58" opacity={0.5} />)}
+          <g transform={`rotate(${noise(r * 5 + c) * 10 - 5} ${x} ${y})`}>
+            <rect x={x - 40 + noise(c + r * 11) * 20} y={y - 62} width={92} height={104} rx={3} fill={PAPER} stroke={INK} strokeWidth={2} />
+            <g transform={`translate(${x - 40 + noise(c + r * 11) * 20} 0) scale(${Math.abs(flip) < 0.02 ? 0.02 : flip} 1) translate(${-(x - 40 + noise(c + r * 11) * 20)} 0)`}>
+              <rect x={x - 40 + noise(c + r * 11) * 20} y={y - 62} width={92} height={104} rx={3} fill={flip < 0 ? "#efe7d4" : PAPER} stroke={INK} strokeWidth={2} />
+              {flip > 0 && [0, 1, 2, 3].map((l) => <rect key={l} x={x - 30} y={y - 48 + l * 22} width={60 - (l % 2) * 18} height={6} rx={3} fill="#4a4d58" opacity={0.5} />)}
+            </g>
+          </g>
           <rect x={x + 22 + write} y={y + 6} width={8} height={56} rx={4} fill={you ? TEAL : "#3b4a6b"} transform={`rotate(-20 ${x + 26} ${y + 30})`} />
           <TopDownHead x={x} y={y + 100} head={you ? MUSTARD : PASTELS[(c * 3 + r) % PASTELS.length]} coat={you ? "#3b3e47" : ["#3b4a6b", "#2a2d36", "#3b3e47"][(c + r) % 3]}
             turn={180} hair={you ? undefined : "#2a2730"} scale={0.95} />
@@ -171,7 +177,7 @@ export const GATE = {
 };
 
 /** Parents waiting outside, facing the gate, at scale s on floor y. */
-const Parents: React.FC<{ frame: number; y: number; s: number; xs: number[]; seed: number; still?: boolean }> = ({ frame, y, s, xs, seed, still }) => (
+export const Parents: React.FC<{ frame: number; y: number; s: number; xs: number[]; seed: number; still?: boolean }> = ({ frame, y, s, xs, seed, still }) => (
   <g>
     {xs.map((x, i) => {
       const toGate = x < (GATE.gap.from + GATE.gap.to) / 2 ? 1 : -1;
@@ -239,22 +245,56 @@ export const GateCrowd: React.FC<{ frame: number; still?: boolean; part?: number
   </g>
 );
 
-/** The lunch box she packed, wrapped in a cloth knotted on top. (x, y) is its bottom centre. */
-export const LunchBox: React.FC<{ x: number; y: number; scale?: number; tilt?: number }> = ({ x, y, scale = 1, tilt = 0 }) => (
+/** The lunch box she packed "like the exam lasts a week": `tiers` boxes stacked, a cloth tied over the top. (x, y) is
+ *  its bottom centre. */
+export const TallLunchBox: React.FC<{ x: number; y: number; scale?: number; tilt?: number; tiers?: number }> = ({ x, y, scale = 1, tilt = 0, tiers = 6 }) => (
   <g transform={`translate(${x} ${y}) rotate(${tilt}) scale(${scale})`}>
-    <rect x={-50} y={-56} width={100} height={56} rx={10} fill="#e6a0a0" stroke={INK} strokeWidth={4} />
-    <path d="M-50 -30 H50" stroke="#c97f7f" strokeWidth={5} />
-    <path d="M-8 -56 Q-30 -82 -14 -86 Q0 -74 0 -60 Q0 -74 14 -86 Q30 -82 8 -56Z" fill="#e6a0a0" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+    {Array.from({ length: tiers }, (_, i) => (
+      <g key={i} transform={`translate(${(i % 2 ? 3 : -3)} ${-i * 42})`}>
+        <rect x={-50} y={-42} width={100} height={42} rx={8} fill={["#e6a0a0", "#9fd3b8", "#f0d58a", "#c9b0e0"][i % 4]} stroke={INK} strokeWidth={4} />
+        <path d="M-50 -14 H50" stroke="#000" strokeOpacity={0.15} strokeWidth={4} />
+      </g>
+    ))}
+    <rect x={-8} y={-tiers * 42 - 4} width={16} height={tiers * 42 + 4} fill="#e6a0a0" stroke={INK} strokeWidth={3} />
+    <g transform={`translate(0 ${-tiers * 42})`}>
+      <path d="M-8 0 Q-34 -28 -16 -32 Q0 -20 0 -6 Q0 -20 16 -32 Q34 -28 8 0Z" fill="#e6a0a0" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+    </g>
   </g>
 );
+
+/** Light catching her vest's reflective stripes: `t` 0..1 sweeps a bright glint across them. Draw AFTER <Vest>. */
+export const VestGlint: React.FC<{ x: number; y: number; scale: number; pose: Pose; facing?: 1 | -1; t: number }> = ({ x, y, scale, pose, facing = 1, t }) => {
+  const j = joints(pose);
+  const nx = x + j.neck.x * scale * facing, ny = y + j.neck.y * scale;
+  const hx = x + j.hip.x * scale * facing, hy = y + j.hip.y * scale;
+  const w = 24 * scale;
+  const rows = [0.5, 0.78].map((f) => ({ cx: nx + (hx - nx) * f, cy: ny + (hy - ny) * f + 6 * scale }));
+  const sweep = -1.4 + 2.8 * t;
+  return (
+    <g>
+      {rows.map((r, i) => (
+        <g key={i}>
+          <path d={`M${r.cx - w * 0.95} ${r.cy} L${r.cx + w * 0.95} ${r.cy}`} stroke="#fffdf4" strokeWidth={7 * scale} />
+          <path d={`M${r.cx + w * (sweep - 0.25)} ${r.cy} L${r.cx + w * Math.min(0.95, sweep + 0.25)} ${r.cy}`} stroke="#ffffff" strokeWidth={10 * scale}
+            opacity={sweep > -1.2 && sweep < 1.2 ? 1 : 0} />
+        </g>
+      ))}
+      {t > 0.3 && t < 0.9 && [[-0.6, -0.3], [0.7, 0.2]].map(([dx, dy], i) => {
+        const s = Math.sin(Math.PI * (t - 0.3) / 0.6) * 9 * scale;
+        const px = rows[0].cx + dx * w, py = rows[i].cy + dy * 20 * scale;
+        return <path key={i} d={`M${px} ${py - s} L${px + s * 0.3} ${py} L${px} ${py + s} L${px - s * 0.3} ${py}Z M${px - s} ${py} L${px} ${py + s * 0.3} L${px + s} ${py} L${px} ${py - s * 0.3}Z`} fill="#ffffff" />;
+      })}
+    </g>
+  );
+};
 
 /** Your sister at the gate straight off the night shift: hair tied back and flat, the vest half zipped, the lunch box
  *  held in both hands. `offer` 0..1 holds it out to you; `out` 0..1 lowers her arms once you have it; `nod` 0..1 is one
  *  nod (head down and back up); `walk` sets a walking pose (she steps back into the crowd). */
 export const JiyoonWithLunch: React.FC<{
   x: number; y: number; scale: number; frame: number; face: object; holding: boolean; out?: number; offer?: number; nod?: number;
-  facing?: 1 | -1; walk?: number | null;
-}> = ({ x, y, scale, frame, face, holding, out = 0, offer = 0, nod = 0, facing = -1, walk = null }) => {
+  facing?: 1 | -1; walk?: number | null; glint?: number;
+}> = ({ x, y, scale, frame, face, holding, out = 0, offer = 0, nod = 0, facing = -1, walk = null, glint }) => {
   const lerp = (a: [number, number], b: [number, number], t: number): [number, number] => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
   const close: Pose = { ...STAND, armF: [38, 84], armB: [30, 92] };
   const held: Pose = { ...STAND, armF: [72, 34], armB: [66, 40] };
@@ -267,8 +307,9 @@ export const JiyoonWithLunch: React.FC<{
     <g>
       <Ponytail x={x} y={y} scale={scale} pose={pose} facing={facing} />
       <Figure x={x} y={y} scale={scale} facing={facing} pose={pose} head={JIYOON.head} coat={JIYOON.coat} {...face} time={frame}
-        held={holding ? <LunchBox x={-4} y={26} scale={0.9} /> : undefined} />
+        held={holding ? <TallLunchBox x={-4} y={26} scale={0.9} /> : undefined} />
       <Vest x={x} y={y} scale={scale} pose={pose} facing={facing} />
+      {glint !== undefined && <VestGlint x={x} y={y} scale={scale} pose={pose} facing={facing} t={glint} />}
     </g>
   );
 };

@@ -656,21 +656,57 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 19,
+      "draft_sha256": "27324b4772fc4a7672626ec5c2668c6309f71cdeafdabd2fbedad8cba4b56ef2",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "9d0b273add914e858c825dd8e2e32f61",
+          "file": "room/g2/round-19/claims-check.json",
+          "output_sha256": "3e12c56f54ce3fc221aa0c591f6e9649fd406f607d79d346feb39ac8e437dd34",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "ec85c8116d4946ffa22b8f50f6c08109",
+          "file": "room/g2/round-19/story-editor.json",
+          "output_sha256": "29d0e7e5d2ca064386d46e4e4c1053eaa29dad232d7130ee6fc5b1318e18538d",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 18,
-    "artifact_sha256": "72d6f591dba61b121c0fdf636e9663fed5a790f4fae984ba564f0e10a4881226"
+    "round": 19,
+    "artifact_sha256": "27324b4772fc4a7672626ec5c2668c6309f71cdeafdabd2fbedad8cba4b56ef2"
   },
-  "calls": 36,
-  "cap": 96,
+  "calls": 38,
+  "cap": 100,
   "author_cut": {
     "round": 1,
     "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4",
     "cost": {
-      "lines_changed": 591,
+      "lines_changed": 593,
       "header_changed": [
         "SITUATION",
         "DESIRE",
@@ -703,6 +739,6 @@
   },
   "presented": {
     "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4",
-    "at": "2026-11-14T16:07:20+00:00"
+    "at": "2026-11-14T17:54:47+00:00"
   }
 }

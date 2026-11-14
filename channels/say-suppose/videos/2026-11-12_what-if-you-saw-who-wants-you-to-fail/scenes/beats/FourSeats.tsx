@@ -1,27 +1,34 @@
-// Beat "The Weapon" (script v5, lines 51-61): the classroom over two weeks, a montage that turns at every use. One
-// component per shot, picked by frame; every frame comes from the narration clips (FourSeats.Times.tsx).
+// Beat "The Weapon" (script v7, lines 51-61; outside review of v6, sheets 20-23 and top-15 #6: performed classroom
+// action, not slides). One component per shot, picked by frame; every frame comes from the narration clips
+// (FourSeats.Times.tsx).
 //
-//   51  your maths teacher writes the mock scores up; paper: a hundred small heads, the top four lit, TOP 4% (Class,
-//       Paper; THE CURVE card lower right from Captions)
-//   52  the same paper: four places teal, yours fourth and his fifth (Paper)
-//   53  your face, set; mock papers slap down week after week, TRUE stamped, your hand slides one off: ammunition (Paper)
-//   54  you stand and say it, cards over every head, three red, him -84; you read the room (Class)
+//   51  the national exam: a country-wide field of exam desks, the camera pulling back; the top band lights teal;
+//       TOP 4% = TOP GRADE, one big card (Nation)
+//   52  "So you picture your class": a hundred heads built fast, four places, you fourth, him fifth (Paper); then the two
+//       real desks side by side, 4 and 5 on paper tents (Class)
+//   53  your face, set; "A mock score": your hand slaps WEEK 1 down, TRUE once; WEEK 2, WEEK 3; "Fresh ammunition"
+//       (Class, Paper)
+//   54  you stand and say it, the paper beside your head; his card first (-84), your eyes on it; two rows back the rival
+//       (-6) notices where you looked; the room, three red (Class)
 //   55  her "Sit down." (Class)
-//   56  your phone: his name swiped out first ("Him first."), then the classmate; the shared folder; week one's three
-//       red; week two: you stand again, nine red, him -86 (Paper, Class)
-//   57  people notice: you bragging, eyes on the air over their heads; the group chat renamed WEATHERMAN (Class, Paper)
-//   58  the rival points at the ceiling: "Weatherman. Cloudy today?"; a chalk cloud over you; the class snickers (Class)
-//   59-61 the counter: "You want half?"; you take the smaller half, on principle; his card -88 (Half)
+//   56  your phone: MIN-JUN -84% into the REMOVED bin ("Him first."), the folders lock, WEEK 1: 3, WEEK 2: 9 (Phone)
+//   57  week two in the room: his card first again, everyone follows your eyes up, a knowing look (Class); the
+//       contact renamed WEATHERMAN (Phone)
+//   58  the rival points at the ceiling: "Weatherman. Cloudy today?"; the cloud on "Cloudy" (Class)
+//   59-61 the counter: "You want half?"; you measure the halves and take the smaller, on principle; his card -84 and
+//       ticking down to -88 (Half)
 import { AbsoluteFill } from "remotion";
 import { MeterSound } from "../parts";
 import { current, type Beat, type Shot } from "../shared";
 import { moodAt } from "./WhosCrimson.Common";
-import { CurveShot, NoticeShot, roomTags, SitShot, StandShot, TaeShot, WeaponShot, WeeksShot } from "./FourSeats.Class";
+import { DesksShot, NoticeShot, roomTags, SitShot, StandShot, TaeShot, WeaponShot } from "./FourSeats.Class";
 import { StoreHalf } from "./FourSeats.Half";
-import { AmmoShot, HundredSheet, NicknameShot, PhoneShot } from "./FourSeats.Paper";
+import { NationShot } from "./FourSeats.Nation";
+import { AmmoShot, HundredSheet } from "./FourSeats.Paper";
+import { NicknameShot, PhoneShot } from "./FourSeats.Phone";
 import { seatsTimes } from "./FourSeats.Times";
 
-type Cut = "curve" | "hundred" | "weapon" | "ammo" | "stand" | "sit" | "phone" | "weeks" | "notice" | "nick" | "tae" | "store";
+type Cut = "nation" | "hundred" | "desks" | "weapon" | "ammo" | "stand" | "sit" | "phone" | "notice" | "nick" | "tae" | "store";
 
 /** Every card of a room round: his at full volume, the rest of the room quieter. */
 const RoundSound: React.FC<{ at: number }> = ({ at }) => {
@@ -40,19 +47,19 @@ const TheWeapon: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = seatsTimes(clips, shot.to);
   const mood = moodAt(shot);
-  const cut = current<Cut>(frame, [[0, "curve"], [k.pct, "hundred"], [k.weapon, "weapon"], [k.ammo, "ammo"], [k.stand, "stand"], [k.sit, "sit"],
-    [k.chat, "phone"], [k.weekOne, "weeks"], [k.notice, "notice"], [k.nickname, "nick"], [k.tae, "tae"], [k.store, "store"]]);
+  const cut = current<Cut>(frame, [[0, "nation"], [k.hundred, "hundred"], [k.desks, "desks"], [k.weapon, "weapon"], [k.ammo, "ammo"], [k.stand, "stand"],
+    [k.sit, "sit"], [k.chat, "phone"], [k.notice, "notice"], [k.nickname, "nick"], [k.tae, "tae"], [k.store, "store"]]);
   const props = { frame, k, mood };
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      {cut === "curve" && <CurveShot {...props} />}
+      {cut === "nation" && <NationShot {...props} />}
       {cut === "hundred" && <HundredSheet {...props} />}
+      {cut === "desks" && <DesksShot {...props} />}
       {cut === "weapon" && <WeaponShot {...props} />}
       {cut === "ammo" && <AmmoShot {...props} />}
       {cut === "stand" && <StandShot {...props} />}
       {cut === "sit" && <SitShot {...props} />}
       {cut === "phone" && <PhoneShot {...props} />}
-      {cut === "weeks" && <WeeksShot {...props} />}
       {cut === "notice" && <NoticeShot {...props} />}
       {cut === "nick" && <NicknameShot {...props} />}
       {cut === "tae" && <TaeShot {...props} />}

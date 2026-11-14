@@ -1,6 +1,10 @@
 // The Rule, line 20 (round 17, the video-call loophole): "You do. You even switch on video, so you can see her grin. And
 // nothing opens over a screen." Your phone close in your hand: the call flips to video and her face fills the screen,
 // grinning, the warehouse racking behind her, your own face small in the corner. No card opens over her or the screen.
+//
+// v7 (outside review of v6: the phone was too small to prove that her visible face opens no card): the self view moves
+// to the screen's lower left, and `emptyCard` draws a dashed card outline over her head that stays empty, for the
+// split screen in Rule.Call.tsx.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
@@ -46,7 +50,7 @@ const HerOnScreen: React.FC<{ frame: number; from: number }> = ({ frame, from })
 };
 
 /** Your phone in your hand, in a video call with her. `flip` 0..1 wipes the call screen (her avatar) to the video. */
-const VideoHandset: React.FC<{ frame: number; from: number; flip: number }> = ({ frame, from, flip }) => {
+const VideoHandset: React.FC<{ frame: number; from: number; flip: number; emptyCard?: boolean }> = ({ frame, from, flip, emptyCard }) => {
   const { x, y, w, h } = VPHONE;
   const wipe = SCREEN.h * flip;
   return (
@@ -65,12 +69,17 @@ const VideoHandset: React.FC<{ frame: number; from: number; flip: number }> = ({
         <g clipPath="url(#vphone-wipe)"><HerOnScreen frame={frame} from={from} /></g>
         {/* your face, small, in the corner (the self view) */}
         {flip > 0.6 && (
-          <g>
+          <g transform={`translate(${-(SCREEN.w - 144)} ${SCREEN.h - 300})`}>
             <rect x={SCREEN.x + SCREEN.w - 120} y={SCREEN.y + 24} width={96} height={130} rx={14} fill="#eef1ec" stroke={INK} strokeWidth={4} />
             <path d={`M${SCREEN.x + SCREEN.w - 104} ${SCREEN.y + 154} q24 -34 64 0`} fill={TEAL} stroke={INK} strokeWidth={3} />
             <circle cx={SCREEN.x + SCREEN.w - 72} cy={SCREEN.y + 84} r={32} fill={MUSTARD} stroke={INK} strokeWidth={4} />
             <path d={`M${SCREEN.x + SCREEN.w - 84} ${SCREEN.y + 94} q12 12 24 0`} fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" />
           </g>
+        )}
+        {/* where a card would open over her: an empty dashed outline, blinking faintly */}
+        {emptyCard && flip > 0.9 && (
+          <rect x={x - 130} y={SCREEN.y + 40} width={260} height={100} rx={14} fill="none" stroke="#f2e6c8" strokeWidth={6}
+            strokeDasharray="22 14" opacity={0.55 + 0.35 * Math.abs(Math.sin(frame / 8))} />
         )}
         {/* the hang-up button */}
         <circle cx={x} cy={SCREEN.y + SCREEN.h - 70} r={36} fill="#d8344f" stroke={INK} strokeWidth={4} opacity={0.9} />
@@ -82,13 +91,13 @@ const VideoHandset: React.FC<{ frame: number; from: number; flip: number }> = ({
 };
 
 /** The phone close over the darkened store: the video call. `switchAt` is when the screen flips to video. */
-export const VideoPhoneShot: React.FC<{ frame: number; cam: Camera; mood: Mood; switchAt: number }> = ({ frame, cam, mood, switchAt }) => {
+export const VideoPhoneShot: React.FC<{ frame: number; cam: Camera; mood: Mood; switchAt: number; emptyCard?: boolean }> = ({ frame, cam, mood, switchAt, emptyCard }) => {
   const flip = ramp(frame, switchAt + 6, switchAt + 16);
   return (
     <LookContext.Provider value={storeLook(mood, cam)}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }}
         back={<><StoreBack cam={cam} mood={mood} frame={frame} /><rect x={-1400} y={-900} width={4800} height={2600} fill="#0d0f18" opacity={0.5} /></>}
-        actors={<VideoHandset frame={frame} from={switchAt} flip={flip} />} />
+        actors={<VideoHandset frame={frame} from={switchAt} flip={flip} emptyCard={emptyCard} />} />
     </LookContext.Provider>
   );
 };

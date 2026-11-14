@@ -1,8 +1,10 @@
-// The crowd for A Thousand Tags: the people pouring out of the academies at ten, in rows on the far pavement, the
-// pavement and the road (AcademyStreet's ACADEMY.crowd), each walking out of the nearest tower door when the doors
-// open, then standing, turned toward you on the steps. When you say it, a card snaps open over every head in a ripple
-// out from the steps: nearly all grey zeros, a scatter of teal, and red on the eight nearest the snack shop (your class
-// in the crowd). `annoyed` turns the crowd's faces sour ("would like you to get off the steps"). Your class (with your best friend) is drawn by the beat.
+// The crowd for A Thousand Cards: the people pouring out of the academies at ten, in rows on the far pavement, the
+// pavement and the road (AcademyStreet's ACADEMY.crowd). Outside review of v6, sheet 27: they pour out of doors you can
+// see, a stream per door in a quick cascade (our academy's glass doors first, then the snack shop's, then the tower
+// doors either side), not out of the frame's edges. When you say it, a card snaps open over every head in a ripple
+// out from the steps, ring by ring over a second and a half: nearly all small grey zeros, a scatter of teal, and red on
+// the eight nearest the snack shop (your class in the crowd), larger. `annoyed` turns the crowd's faces sour and some
+// jerk a thumb: off the steps. Your class (with your best friend) is drawn by the beat.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose } from "@whatif/kit/rig/pose";
 import { worldOf } from "@whatif/kit/sets/common";
@@ -12,6 +14,15 @@ import { linear, mix, noise, PASTELS } from "../shared";
 import { ACADEMY, crowdScale, TOWER_DEPTH, towerDoors } from "../sets/AcademyStreet";
 
 export interface Member { x: number; y: number; scale: number; head: string; coat: string; value: number; seed: number; door: number }
+
+/** The doors the crowd comes out of, in cascade order: our academy's glass doors (on the landing), the snack shop's
+ *  door, then the tower doors right and left (on the tower layer). */
+const SPAWNS = [
+  { x: 340, y: 965, tower: false },
+  { x: 1170, y: 1080, tower: false },
+  ...[4, 1, 5, 0, 6].map((i) => ({ i, tower: true })),
+] as const;
+const CASCADE = 7;
 
 /** Keep-out boxes: the academy front and snack shop behind the far rows, the steps under you, your class. */
 const blocked = (x: number, y: number) =>
@@ -32,8 +43,10 @@ export function crowd(): Member[] {
       const seed = out.length;
       const roll = noise(seed * 13 + 5);
       const value = roll < 0.075 ? Math.round(4 + noise(seed + 77) * 30) : 0;
+      // the nearest door of SPAWNS
+      const sx = (k: number) => { const sp = SPAWNS[k]; return "i" in sp ? doors[sp.i].x : sp.x; };
       let door = 0;
-      doors.forEach((d, i) => { if (Math.abs(d.x - jx) < Math.abs(doors[door].x - jx)) door = i; });
+      SPAWNS.forEach((_, k) => { if (Math.abs(sx(k) - jx) < Math.abs(sx(door) - jx)) door = k; });
       out.push({
         x: jx, y: jy, scale: s, value, seed, door,
         head: PASTELS[Math.floor(noise(seed + 3) * PASTELS.length)],
@@ -65,18 +78,19 @@ export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: n
     <g>
       {MEMBERS.map((m) => {
         if (Math.abs(m.x - cam.x) > halfW || m.y - cam.y > halfH || cam.y - m.y > halfH + 300) return null;
-        const start = doors + 6 + Math.floor(noise(m.seed + 31) * 70);
+        const start = doors + 4 + m.door * CASCADE + Math.floor(noise(m.seed + 31) * 50);
         if (frame < start) return null;
-        const d = td[m.door];
-        const spawn = worldOf(cam, d.x, d.bottom, TOWER_DEPTH);
+        const sp = SPAWNS[m.door];
+        const spawn = "i" in sp ? worldOf(cam, td[sp.i].x, td[sp.i].bottom, TOWER_DEPTH) : { x: sp.x, y: sp.y };
         const p = linear(frame, start, start + WALK);
         const x = mix(spawn.x, m.x, p), y = mix(spawn.y, m.y, p);
-        const s = mix(crowdScale(940), m.scale, p);
+        const s = mix("i" in sp ? crowdScale(940) : crowdScale(Math.max(960, sp.y)), m.scale, p);
         const walking = p < 1;
         const facing: 1 | -1 = walking ? (m.x > spawn.x ? 1 : -1) : m.x < you.x ? 1 : -1;
-        const pose = walking ? walkPose(frame * 0.25 + m.seed) : STAND;
+        const shoo = annoyed > 0.5 && !walking && noise(m.seed + 81) < 0.3;
+        const pose = walking ? walkPose(frame * 0.25 + m.seed) : shoo ? { ...STAND, armF: [100 + Math.sin(frame / 3 + m.seed) * 25, 70] as [number, number] } : STAND;
         const h = headAt(x, y, s, pose, facing);
-        const at = say + Math.min(26, Math.hypot(m.x - you.x, (m.y - you.y) * 2) / 110) + Math.floor(noise(m.seed + 51) * 5);
+        const at = say + Math.min(46, Math.hypot(m.x - you.x, (m.y - you.y) * 2) / 60) + Math.floor(noise(m.seed + 51) * 2);
         return (
           <g key={m.seed}>
             <Figure x={x} y={y} scale={s} facing={facing} pose={pose} head={m.head} coat={m.coat}
@@ -86,7 +100,8 @@ export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: n
               look={{ x: 0.6, y: walking ? 0 : -0.3 }} time={frame} />
             {!walking && (
               <g opacity={m.value < 0 ? 1 : 1 - 0.72 * dim}>
-                <Meter frame={frame} at={at} x={h.x} headY={h.y} r={h.r} value={m.value} until={until} tilt={-3 + (noise(m.seed) - 0.5) * 8} />
+                <Meter frame={frame} at={at} x={h.x} headY={h.y} r={h.r} value={m.value} until={until} tilt={-3 + (noise(m.seed) - 0.5) * 8}
+                  scale={m.value < 0 ? 1.15 : m.value === 0 ? 0.82 : 1} />
               </g>
             )}
           </g>

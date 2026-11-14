@@ -11,10 +11,11 @@ import type { MoodName } from "@whatif/kit/stage/moods";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { FPS, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
-import { Bubble, headAt, Meter } from "../parts";
+import { Bubble, headAt } from "../parts";
 import { HOME, HomeBack } from "../sets/Home";
 import { camAt, current, JIYOON, mix, ramp } from "../shared";
-import { aimArm, mixArm, Sister, You, type Body } from "./HerBack.Sister";
+import { aimArm, handAt, mixArm, Sister, You, type Body } from "./HerBack.Sister";
+import { FlapCard, opened } from "./Window.Glass";
 
 // ------------------------------------------------------------------------------------------------ 97 the phone
 
@@ -33,7 +34,10 @@ const ResultsPhone: React.FC<{ frame: number; x: number; y: number; rows: number
       {/* the header bar: the exam board's colour, no words */}
       <rect x={-w / 2 + 24} y={-h / 2 + 60} width={w - 48} height={70} rx={20} fill={TEAL} />
       <rect x={-w / 2 + 24} y={-h / 2 + 100} width={w - 48} height={30} fill={TEAL} />
-      <rect x={-120} y={-h / 2 + 84} width={240} height={20} rx={10} fill="#e9f6f3" opacity={0.8} />
+      {/* outside review v6: one big readable line, counting up as the grades stamp on */}
+      <text x={0} y={-h / 2 + 112} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={44} fill={PAPER} letterSpacing={1}>
+        {frame >= rows[0] ? `TOP GRADE ×${rows.filter((r) => frame >= r).length}` : ""}
+      </text>
       {rows.map((at, i) => {
         const ry = -h / 2 + 200 + i * 130;
         const s = stamp(at);
@@ -66,7 +70,7 @@ const ResultsPhone: React.FC<{ frame: number; x: number; y: number; rows: number
 };
 
 export interface HomeTimes {
-  rows: number[]; seal: number; face: number; sofa: number; crouch: [number, number]; say: number; snap: number;
+  rows: number[]; seal: number; face: number; sofa: number; glove: [number, number]; crouch: [number, number]; say: number; snap: number;
   nudge: [number, number]; eye: number; close: number; smile: number; end: number;
 }
 
@@ -112,6 +116,23 @@ const OneEyeShut: React.FC<{ body: Body }> = ({ body }) => (
     <path d={`M${-10 + 12 - 9} 4 Q${2} 10 ${-10 + 12 + 9} 4`} fill="none" stroke={INK} strokeWidth={3} strokeLinecap="round" />
   </g>
 );
+
+/** A point of her body (drawn standing) after she is laid along the sofa: rotated 90 degrees about her feet. */
+const rotHand = (p: { x: number; y: number }) => ({ x: HER_FEET.x - (p.y - HER_FEET.y), y: HER_FEET.y + (p.x - HER_FEET.x) });
+
+/** Her orange work glove, half off her hand on the seat: it slides off over the line and drops to the floor. */
+const Glove: React.FC<{ frame: number; k: HomeTimes; hand: { x: number; y: number } }> = ({ frame, k, hand }) => {
+  const slip = ramp(frame, k.glove[0], k.glove[1]);
+  const drop = ramp(frame, k.glove[1], k.glove[1] + 8);
+  const x = hand.x + 18 * slip + 10 * drop;
+  const y = hand.y + 6 + 26 * slip + (HOME.floor - 30 - hand.y) * drop;
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${-20 + 70 * slip + 40 * drop})`}>
+      <path d="M-16 -10 h26 q8 0 8 8 v20 q0 8 -8 8 h-26z" fill={JIYOON.vest} stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+      {[0, 1, 2].map((i) => <rect key={i} x={18} y={-8 + i * 9} width={14} height={7} rx={3} fill={JIYOON.vest} stroke={INK} strokeWidth={3} />)}
+    </g>
+  );
+};
 
 export const HomeShot: React.FC<{ frame: number; k: HomeTimes; mood: MoodName }> = ({ frame, k, mood }) => {
   const shot = current(frame, [[0, "phone"], [k.face, "face"], [k.sofa, "sofa"], [k.nudge[0], "nudge"], [k.say, "two"], [k.snap, "card"], [k.close, "eye"]]);
@@ -167,10 +188,14 @@ export const HomeShot: React.FC<{ frame: number; k: HomeTimes; mood: MoodName }>
     <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<HomeBack cam={cam} mood={mood} frame={frame} />} actors={
       <g>
         <Sofa />
-        <g transform={`rotate(90 ${HER_FEET.x} ${HER_FEET.y})`}>
-          <Sister body={her} face={herFace} frame={frame} duty="open" />
-          {oneEye && <OneEyeShut body={her} />}
+        {/* her chest rising and falling (a slow breath), the work glove slipping off her hand and dropping */}
+        <g transform={`translate(0 ${HER_FEET.y}) scale(1 ${1 + 0.035 * Math.max(0, Math.sin(frame / 26))}) translate(0 ${-HER_FEET.y})`}>
+          <g transform={`rotate(90 ${HER_FEET.x} ${HER_FEET.y})`}>
+            <Sister body={her} face={herFace} frame={frame} duty="open" />
+            {oneEye && <OneEyeShut body={her} />}
+          </g>
         </g>
+        <Glove frame={frame} k={k} hand={rotHand(handAt(her, "front"))} />
         {!oneEye && <Snore frame={frame} x={herHead.x + 10} y={herHead.y - 50} />}
         {frame >= k.crouch[0] && (
           <g>
@@ -185,7 +210,7 @@ export const HomeShot: React.FC<{ frame: number; k: HomeTimes; mood: MoodName }>
           </g>
         )}
         <Bubble frame={frame} at={k.say} until={k.close} x={yh.x - 40} y={yh.y - 60} text="I made it." side="left" size={40} />
-        <Meter frame={frame} at={k.snap} x={herHead.x} headY={herHead.y} r={herHead.r} value={100} until={k.end} />
+        <FlapCard frame={frame} at={k.snap} x={herHead.x} headY={herHead.y} r={herHead.r} read={opened(frame, k.snap, 100)} until={k.end} />
       </g>
     } />
   );

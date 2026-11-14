@@ -2,21 +2,16 @@
 // paper-cut actions using the actual cast"):
 //   83  two kinds of envy, as actions: your best friend climbing paper steps toward the one ahead; on the other side a
 //       hand comes up from below and pulls a figure off a ledge.
-//   85  the brain-scan finding, brief: one head, two patches of activity, envy's and pain's, overlapping in one region;
-//       never an equals sign.
 //   87  "hurt needs a lane": your classroom cluster in one pool of light around you (your best friend, the classmate, the
 //       rival, your maths teacher); your sister's portrait outside it in the dark, going darker on "Outside yours,
 //       nobody bleeds."
-import { interpolate } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
-import { CRIMSON, INK, MUSTARD } from "@whatif/kit/theme";
+import { INK } from "@whatif/kit/theme";
 import { Glasses, Ponytail, Sheet, Vest } from "../parts";
 import { blinking, HERO, JIYOON, KANG, MINJUN, mix, PASTELS, ramp, TAEHO } from "../shared";
-import { HeadIcon } from "./WhosCrimson.Common";
 
-const clamp01 = (frame: number, a: number, b: number) => interpolate(frame, [a, b], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
 // ------------------------------------------------------------------------------------------------ 83 two kinds of envy
 
@@ -79,51 +74,6 @@ export const KindsSheet: React.FC<{ frame: number; at: number; up: number; down2
           </g>
         </g>
       )}
-    </Sheet>
-  );
-};
-
-// ------------------------------------------------------------------------------------------------ 85 the brain scan
-
-/** One head in profile, the brain drawn in; envy's patch (amber) lights first, then pain's (crimson), and where they
- *  overlap glows. Beside it: a peer a step above you (envy) and a thorn (pain), each with a dotted lead to its patch. */
-export const BrainSheet: React.FC<{ frame: number; at: number; envy: number; pain: number }> = ({ frame, at, envy, pain }) => {
-  const e = clamp01(frame, envy, envy + 14);
-  const p = clamp01(frame, pain, pain + 14);
-  const both = Math.min(e, p);
-  const cx = 560, cy = 330;
-  const A = { x: cx - 30, y: cy - 40, r: 76 };
-  const B = { x: cx + 50, y: cy - 30, r: 76 };
-  const throb = 1 + 0.05 * Math.sin(frame / 5);
-  return (
-    <Sheet frame={frame} at={at} x={960} y={500} w={1120} h={620} tilt={1.5}>
-      <defs>
-        <clipPath id="nb-envy"><circle cx={A.x} cy={A.y} r={A.r} /></clipPath>
-      </defs>
-      <circle cx={cx} cy={cy} r={200} fill="#f0d9c2" stroke={INK} strokeWidth={7} />
-      <circle cx={cx + 150} cy={cy + 20} r={12} fill={INK} />
-      <path d={`M${cx - 150} ${cy + 20} q-14 -100 70 -130 q44 -70 130 -28 q86 -26 116 56 q56 44 0 112 q-28 56 -116 28 q-56 42 -130 0 q-86 14 -70 -38z`}
-        fill="#e6b0a8" stroke={INK} strokeWidth={6} />
-      <path d={`M${cx - 60} ${cy - 100} q14 56 -14 100 M${cx + 50} ${cy - 110} q-28 70 14 126`} fill="none" stroke={INK} strokeWidth={4} opacity={0.4} />
-      <circle cx={A.x} cy={A.y} r={A.r * mix(0.6, 1, e)} fill={MUSTARD} opacity={0.55 * e} />
-      <circle cx={B.x} cy={B.y} r={B.r * mix(0.6, 1, p)} fill={CRIMSON} opacity={0.45 * p} />
-      <g clipPath="url(#nb-envy)" opacity={both}>
-        <circle cx={B.x} cy={B.y} r={B.r * throb} fill={CRIMSON} opacity={0.6} />
-      </g>
-      {/* envy: a peer a step above you */}
-      <g transform="translate(160 270) scale(1.5) translate(-160 -270)">
-        <path d="M80 300 H160 V240 H240" fill="none" stroke={INK} strokeWidth={7} strokeLinejoin="round" />
-        <HeadIcon x={120} y={270} r={24} color={HERO.head} tuft mouth="flat" />
-        <HeadIcon x={205} y={210} r={24} color={PASTELS[4]} mouth="smile" />
-      </g>
-      <path d={`M290 260 Q360 250 ${A.x - A.r + 4} ${A.y}`} fill="none" stroke={MUSTARD} strokeWidth={6} strokeDasharray="4 14" strokeLinecap="round" opacity={e} />
-      {/* pain: a thorn in a finger */}
-      <g transform="translate(960 250) scale(1.6)" opacity={mix(0.5, 1, p)}>
-        <rect x={-22} y={-10} width={44} height={110} rx={22} fill="#f0d9c2" stroke={INK} strokeWidth={5} />
-        <path d="M-50 10 L4 22 L-50 32Z" fill={INK} />
-        <path d="M24 -26 l-18 18 l14 4 l-18 20" fill="none" stroke={CRIMSON} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round" />
-      </g>
-      <path d={`M900 290 Q780 300 ${B.x + B.r - 4} ${B.y}`} fill="none" stroke={CRIMSON} strokeWidth={6} strokeDasharray="4 14" strokeLinecap="round" opacity={p} />
     </Sheet>
   );
 };

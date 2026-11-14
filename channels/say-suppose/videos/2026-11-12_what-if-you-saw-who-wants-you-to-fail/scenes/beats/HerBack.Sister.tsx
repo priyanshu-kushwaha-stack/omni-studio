@@ -116,11 +116,12 @@ export const You: React.FC<{ body: Body; face: Face; frame: number; held?: React
  * 0.35..0.7 it swings across her back and her right arm finds the other hole, 0.7..1 the zip runs up (elbows out,
  * hands at her front); at 1 it is on and her arms hang. `laugh` 0..1 bobs her shoulders; `headTilt` (degrees) tilts
  * her head to listen; `rap` 0..1 lifts her right hand to the door frame and knocks twice with her knuckles (her
- * goodbye). (x, y) is between her feet.
+ * goodbye); `finger` 0..1 raises her right hand by her shoulder, one finger up ("Say it again."). (x, y) is between her
+ * feet.
  */
 export const SisterBack: React.FC<{
-  x: number; y: number; scale: number; frame: number; vest: number; laugh?: number; tilt?: number; headTilt?: number; rap?: number;
-}> = ({ x, y, scale, frame, vest, laugh = 0, tilt = 0, headTilt = 0, rap = 0 }) => {
+  x: number; y: number; scale: number; frame: number; vest: number; laugh?: number; tilt?: number; headTilt?: number; rap?: number; finger?: number;
+}> = ({ x, y, scale, frame, vest, laugh = 0, tilt = 0, headTilt = 0, rap = 0, finger = 0 }) => {
   const bob = laugh * Math.abs(Math.sin(frame * 0.55)) * -6;
   const sh = -222 + bob;
   const a = Math.min(1, vest / 0.35);
@@ -134,7 +135,11 @@ export const SisterBack: React.FC<{
     const s = { x: side * 38, y: sh + 8 };
     let h: { x: number; y: number };
     let e: { x: number; y: number };
-    if (done && side === 1 && rap > 0 && rap < 1) {
+    if (done && side === 1 && finger > 0 && !(rap > 0 && rap < 1)) {
+      // the raised finger: hand up by her right shoulder
+      h = { x: mix(46, 70, finger), y: mix(-104, -262, finger) };
+      e = { x: mix(48, 84, finger), y: mix(-160, -196, finger) };
+    } else if (done && side === 1 && rap > 0 && rap < 1) {
       // up to the door frame at her right, two knocks, down again
       const up = Math.min(1, rap / 0.25) * Math.min(1, (1 - rap) / 0.2);
       const knock = rap > 0.25 && rap < 0.8 ? Math.max(0, Math.sin(((rap - 0.25) / 0.55) * Math.PI * 2)) * 10 : 0;
@@ -160,6 +165,9 @@ export const SisterBack: React.FC<{
       <g key={`${side}${behind}`}>
         <polyline points={`${s.x},${s.y} ${e.x},${e.y} ${h.x},${h.y}`} fill="none" stroke={JIYOON.coat} strokeWidth={15} strokeLinecap="round" strokeLinejoin="round" />
         {!(z > 0 && !done) && <circle cx={h.x} cy={h.y} r={9} fill={JIYOON.head} />}
+        {side === 1 && done && finger > 0.5 && !(rap > 0 && rap < 1) && (
+          <line x1={h.x} y1={h.y - 6} x2={h.x + 2} y2={h.y - 26} stroke={JIYOON.head} strokeWidth={7} strokeLinecap="round" />
+        )}
       </g>
     );
     return line;

@@ -35,10 +35,12 @@ const EndTag: React.FC<{ frame: number; at: number; x: number; y: number; text: 
 
 /** The three tags in the middle third of the frame (screen pixels), their left edge at `x`: COMMENT on "Tell us in the
  *  comments", then LIKE and SUBSCRIBE on "hit like and subscribe". Nothing right of x 1280 (YouTube's end screen). */
-export const EndTags: React.FC<{ frame: number; comment: number; like: number; subscribe: number; x?: number }> = ({ frame, comment, like, subscribe, x = 700 }) => (
+export const EndTags: React.FC<{ frame: number; comment: number; like: number; subscribe: number; x?: number; y?: number; scale?: number }> = ({
+  frame, comment, like, subscribe, x = 700, y = 250, scale = 1.05,
+}) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>
     <svg width={1920} height={1080}>
-      <g transform={`translate(${x} 250) scale(1.05)`}>
+      <g transform={`translate(${x} ${y}) scale(${scale})`}>
         <EndTag frame={frame} at={comment} x={0} y={0} text="COMMENT" icon="talk" tilt={-3} />
         <EndTag frame={frame} at={like} x={30} y={140} text="LIKE" icon="like" tilt={2} />
         <EndTag frame={frame} at={subscribe} x={0} y={280} text="SUBSCRIBE" icon="bell" tilt={-2} />
@@ -46,6 +48,62 @@ export const EndTags: React.FC<{ frame: number; comment: number; like: number; s
     </svg>
   </AbsoluteFill>
 );
+
+/** A flat paper cutout of a person standing, seen from behind or in silhouette: a white paper border round a flat
+ *  head and body, no face. (x, y) is between the feet; h the height. */
+const Cutout: React.FC<{ x: number; y: number; h: number; head: string; body: string; scarf?: string; tuft?: boolean; letter?: boolean }> = ({
+  x, y, h, head, body, scarf, tuft, letter,
+}) => {
+  const r = h * 0.14;
+  const shape = (fill: string, grow: number) => (
+    <g fill={fill}>
+      <circle cx={0} cy={-h + r} r={r + grow} />
+      <rect x={-r * 0.95 - grow} y={-h + r * 2.1 - grow} width={r * 1.9 + grow * 2} height={h * 0.5 + grow * 2} rx={r * 0.7} />
+      <rect x={-r * 0.75 - grow} y={-h * 0.38 - grow} width={r * 0.6 + grow * 2} height={h * 0.38 + grow} rx={r * 0.2} />
+      <rect x={r * 0.15 - grow} y={-h * 0.38 - grow} width={r * 0.6 + grow * 2} height={h * 0.38 + grow} rx={r * 0.2} />
+      {letter && <rect x={r * 0.9 - grow} y={-h * 0.62 - grow} width={r * 1.1 + grow * 2} height={r * 1.4 + grow * 2} rx={4} transform={`rotate(-10 ${r} ${-h * 0.55})`} />}
+    </g>
+  );
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <g transform="translate(10 12)" opacity={0.35}>{shape("#000", 10)}</g>
+      {shape(PAPER, 10)}
+      {shape(body, 0)}
+      <circle cx={0} cy={-h + r} r={r} fill={head} />
+      {scarf && <rect x={-r * 1.0} y={-h + r * 2.0} width={r * 2} height={r * 0.5} rx={r * 0.2} fill={scarf} />}
+      {tuft && <path d={`M${-r * 0.1} ${-h + r * 0.05} q${r * 0.2} ${-r * 0.5} ${r * 0.5} ${-r * 0.15}`} fill="none" stroke={INK} strokeWidth={r * 0.14} strokeLinecap="round" />}
+      {letter && <rect x={r * 0.9} y={-h * 0.62} width={r * 1.1} height={r * 1.4} rx={4} fill={PAPER} stroke={INK} strokeWidth={3} transform={`rotate(-10 ${r} ${-h * 0.55})`} />}
+    </g>
+  );
+};
+
+/**
+ * The end card (outside review v6: distinct from the last story shot, the cliffhanger shut first): the night-dark
+ * kitchen window filling the left two-thirds, the two of you lowered into it as flat paper cutouts, you turned to the
+ * glass, nothing over your head; the tags, a quarter bigger, stamp in over the glass. The right third stays dark and
+ * empty for YouTube's end screen. Screen pixels; `from` is the cut to it.
+ */
+export const EndCard: React.FC<{ frame: number; from: number; comment: number; like: number; subscribe: number }> = ({ frame, from, comment, like, subscribe }) => {
+  const s = spring({ frame: frame - from, fps: FPS, config: { damping: 14, stiffness: 120, mass: 0.8 } });
+  const drop = 60 * (1 - Math.min(1, s));
+  return (
+    <AbsoluteFill style={{ background: "#0d1120" }}>
+      <svg width={1920} height={1080}>
+        {/* the window: a frame, a mullion, the dark glass with one sheen */}
+        <rect x={110} y={120} width={1080} height={820} rx={10} fill="#141c33" stroke="#b9895f" strokeWidth={22} />
+        <line x1={650} y1={120} x2={650} y2={940} stroke="#b9895f" strokeWidth={16} />
+        <path d="M230 131 l120 0 l-240 798 l-120 0Z" fill="#dfe9ff" opacity={0.06} />
+        <path d="M790 131 l40 0 l-240 798 l-40 0Z" fill="#dfe9ff" opacity={0.08} />
+        <g transform={`translate(0 ${drop})`}>
+          <Cutout x={380} y={930} h={430} head={MINJUN.head} body={MINJUN.coat} letter />
+          <Cutout x={600} y={930} h={420} head={MUSTARD} body={INK} scarf={TEAL} tuft />
+        </g>
+        <rect x={98} y={930} width={1104} height={30} fill="#b9895f" stroke={INK} strokeWidth={5} />
+      </svg>
+      <EndTags frame={frame} comment={comment} like={like} subscribe={subscribe} x={700} y={190} scale={1.31} />
+    </AbsoluteFill>
+  );
+};
 
 /** Min-jun at the door with his own letter held up in his front hand. */
 export const MinJun: React.FC<{ body: Body; face: Face; frame: number; letter: number }> = ({ body, face, frame, letter }) => (

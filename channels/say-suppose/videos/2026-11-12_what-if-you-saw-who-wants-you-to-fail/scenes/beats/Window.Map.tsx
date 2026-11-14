@@ -3,10 +3,11 @@
 // of desks that fills the whole map of the country, and the top four per cent are teal specks scattered from Seoul to
 // Jeju. "For a seat that was never in the room": the room's four go grey. World units: the map, x = (lon - 125.8) * 300,
 // y = (38.7 - lat) * 360.
-import { interpolate } from "remotion";
+import { AbsoluteFill, interpolate } from "remotion";
+import { FONT } from "@whatif/kit/fonts";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { INK, TEAL } from "@whatif/kit/theme";
+import { INK, PAPER, TEAL } from "@whatif/kit/theme";
 import { mix, noise, PASTELS, ramp } from "../shared";
 import { FlatShot } from "./WhosCrimson.Common";
 
@@ -53,19 +54,37 @@ const DeskCell: React.FC<{ x: number; y: number; head: string; desk?: string }> 
   </g>
 );
 
-export interface MapTimes { from: number; four: number; pull: [number, number]; specks: [number, number]; war: number; never: number; end: number }
+export interface MapTimes {
+  from: number; four: number; pull: [number, number]; specks: [number, number]; label: number; dive: [number, number]; war: number; never: number; end: number;
+}
+
+/** "ALL OF SOUTH KOREA", big, in screen pixels (outside review v6: the silhouette alone won't read abroad). */
+const CountryLabel: React.FC<{ o: number }> = ({ o }) => (
+  <AbsoluteFill style={{ pointerEvents: "none" }}>
+    <svg width={1920} height={1080}>
+      <g opacity={o} transform={`translate(1470 560) scale(${0.85 + 0.15 * o}) rotate(-2)`}>
+        <rect x={-385} y={-70} width={770} height={120} rx={16} fill={PAPER} stroke={INK} strokeWidth={6} />
+        <text x={0} y={18} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={66} fill={INK} letterSpacing={2}>ALL OF SOUTH KOREA</text>
+      </g>
+    </svg>
+  </AbsoluteFill>
+);
 
 export const MapShot: React.FC<{ frame: number; k: MapTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  // the pull back: zoom eases from the room to the whole country, Seoul's place on screen sliding up-left
-  const t = ramp(frame, k.pull[0], k.pull[1]);
-  const zoom = Math.exp(mix(Math.log(7.2), Math.log(0.5), t)) * (1 + 0.04 * ramp(frame, k.pull[1], k.end));
+  // the pull back: zoom eases from the room to the whole country, Seoul's place on screen sliding up-left; then the
+  // dive straight back down through Seoul to the room ("Four seats, a hundred backs, six weeks of war")
+  const d = ramp(frame, k.dive[0], k.dive[1]);
+  const t = ramp(frame, k.pull[0], k.pull[1]) * (1 - d);
+  const zoom = Math.exp(mix(Math.log(mix(7.2, 5.4, d)), Math.log(0.5), t)) * (1 + 0.05 * ramp(frame, k.dive[1], k.end));
   const off = { x: mix(0, (SEOUL.x - 600) * 0.5, t), y: mix(0, (SEOUL.y - 990) * 0.5, t) };
   const cam: Camera = { x: SEOUL.x - off.x / zoom, y: SEOUL.y - off.y / zoom, zoom };
   const lit = ramp(frame, k.four, k.four + 10);
   const grey = ramp(frame, k.never, k.never + 24);
   const war = frame >= k.war && frame < k.never ? 0.5 + 0.5 * Math.sin((frame - k.war) / 4) : 0;
   const seat = interpolate(grey, [0, 1], [1, 0]);
+  const label = ramp(frame, k.label, k.label + 8) * (1 - ramp(frame, k.dive[0] + 4, k.dive[0] + 12));
   return (
+    <AbsoluteFill>
     <FlatShot cam={cam} mood={mood} actors={null} back={
       <g>
         <defs>
@@ -115,5 +134,7 @@ export const MapShot: React.FC<{ frame: number; k: MapTimes; mood: MoodName }> =
         {war > 0 && <rect x={ROOM.x - 4} y={ROOM.y - 4} width={ROOM_W + 8} height={ROOM_W + 8} fill="none" stroke="#D8344F" strokeWidth={2 + 6 / zoom} opacity={0.4 + 0.5 * war} />}
       </g>
     } />
+    {label > 0 && <CountryLabel o={label} />}
+    </AbsoluteFill>
   );
 };

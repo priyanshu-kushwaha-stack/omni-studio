@@ -130,3 +130,73 @@ export const SnapLines: React.FC<{ frame: number; at: number; x: number; y: numb
     </g>
   );
 };
+
+/** v7 (outside review of v6, "intermediate split-flap values are readable as results"): the flaps' run smeared
+ *  vertically from `from` to `to`, then crisp on the click at `to` with a small scale punch about (x, y) and a soft rim
+ *  of `rim` colour behind the card. Wrap a <Meter> in it (world units). */
+export const FlapFx: React.FC<{ id: string; frame: number; from: number; to: number; x: number; y: number; r: number; rim?: string; children: React.ReactNode }> = ({
+  id, frame, from, to, x, y, r, rim, children,
+}) => {
+  const running = frame >= from && frame < to;
+  const blur = running ? 7 * Math.min(1, (frame - from + 2) / 4) : 0;
+  const d = frame - to;
+  const punch = d >= 0 && d < 8 ? 1 + 0.16 * Math.sin(((8 - d) / 8) * Math.PI * 0.5) : 1;
+  const glow = rim && frame >= to ? Math.max(0.3, 0.75 - d * 0.03) : 0;
+  return (
+    <g>
+      {blur > 0 && (
+        <defs>
+          <filter id={`flapfx-${id}`} x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation={`0.5 ${blur}`} /></filter>
+        </defs>
+      )}
+      {glow > 0 && (
+        <>
+          <defs>
+            <radialGradient id={`flaprim-${id}`} cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0.35" stopColor={rim} stopOpacity={1} />
+              <stop offset="1" stopColor={rim} stopOpacity={0} />
+            </radialGradient>
+          </defs>
+          <ellipse cx={x} cy={y} rx={r * 2.4} ry={r * 1.2} fill={`url(#flaprim-${id})`} opacity={glow} />
+        </>
+      )}
+      <g filter={blur > 0 ? `url(#flapfx-${id})` : undefined} transform={`translate(${x} ${y}) scale(${punch}) translate(${-x} ${-y})`}>{children}</g>
+    </g>
+  );
+};
+
+/** v7 ("the floating clock can look like literal time"): the card's sixty seconds as a paper strip hung from the card's
+ *  bottom edge, its teal bar shrinking to nothing at `end`, folding shut with the card. Same geometry as <Meter>
+ *  (x, headY, r, scale); shown from `start`. */
+export const TimerStrip: React.FC<{ frame: number; start: number; end: number; p0?: number; x: number; headY: number; r: number; scale?: number; tilt?: number }> = ({
+  frame, start, end, p0 = 0.75, x, headY, r, scale = 1, tilt = -3,
+}) => {
+  if (frame < start || frame >= end + 8) return null;
+  const h = r * 1.05 * scale;
+  const w = h * 2.5;
+  const top = headY - r - h * 1.5;
+  const drop = Math.min(1, (frame - start) / 6);
+  const close = frame >= end ? 1 - (frame - end) / 8 : 1;
+  const left = 1 - (p0 + (1 - p0) * Math.min(1, (frame - start) / Math.max(1, end - start)));
+  const y0 = h * 1.02, sh = h * 0.26;
+  return (
+    <g transform={`translate(${x} ${top}) rotate(${tilt}) scale(1 ${Math.max(0.001, close)})`}>
+      <g transform={`translate(0 ${y0}) scale(1 ${drop}) translate(0 ${-y0})`}>
+        <rect x={-w * 0.46} y={y0} width={w * 0.92} height={sh} rx={sh * 0.3} fill={PAPER} stroke={INK} strokeWidth={Math.max(3, r * 0.045)} />
+        <rect x={-w * 0.46 + sh * 0.2} y={y0 + sh * 0.2} width={Math.max(0, (w * 0.92 - sh * 0.4) * left)} height={sh * 0.6} rx={sh * 0.2} fill={TEAL} />
+      </g>
+    </g>
+  );
+};
+
+/** v7 (round 19, the hug gag): a brown square of chocolate smudged on a cheek, with two drag streaks. World units;
+ *  (x, y) its centre, s its size. */
+export const ChocSmudge: React.FC<{ x: number; y: number; s: number; tilt?: number }> = ({ x, y, s, tilt = -12 }) => (
+  <g transform={`translate(${x} ${y}) rotate(${tilt})`} opacity={0.9}>
+    <rect x={-s / 2} y={-s / 2} width={s} height={s} rx={s * 0.12} fill="#5a3422" />
+    <line x1={-s * 0.1} y1={-s * 0.5} x2={-s * 0.1} y2={s * 0.5} stroke="#3e2216" strokeWidth={s * 0.08} />
+    <line x1={-s / 2} y1={s * 0.05} x2={s / 2} y2={s * 0.05} stroke="#3e2216" strokeWidth={s * 0.08} />
+    <path d={`M${s / 2} ${-s * 0.3} q${s * 0.35} ${s * 0.05} ${s * 0.5} ${-s * 0.02}`} fill="none" stroke="#5a3422" strokeWidth={s * 0.14} strokeLinecap="round" />
+    <path d={`M${s / 2} ${s * 0.25} q${s * 0.25} ${s * 0.04} ${s * 0.38} 0`} fill="none" stroke="#5a3422" strokeWidth={s * 0.1} strokeLinecap="round" />
+  </g>
+);

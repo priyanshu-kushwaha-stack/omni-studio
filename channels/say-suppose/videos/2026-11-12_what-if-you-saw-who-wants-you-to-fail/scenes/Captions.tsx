@@ -12,17 +12,17 @@ import { JIYOON, KANG, MINJUN, TAEHO } from "./shared";
 type Item = { line: number; p: number; secs: number; kind: "cast" | "fact" | "title"; head?: string; top: string; sub: string; accent?: string; right?: boolean; high?: boolean };
 
 const ITEMS: Item[] = [
-  { line: 4, p: 0.05, secs: 4, kind: "cast", head: MINJUN.head, top: "MIN-JUN", sub: "your best friend since you were twelve", right: true }, // the left is his face in the close-up
-  { line: 18, p: 0, secs: 2.6, kind: "cast", head: JIYOON.head, top: "JI-YOON", sub: "your big sister · six years of night shifts" },
-  { line: 23, p: 0, secs: 4, kind: "cast", head: TAEHO.head, top: "TAE-HO", sub: "the rival · trash talk every morning" },
-  { line: 29, p: 0, secs: 3.5, kind: "cast", head: KANG.head, top: "MS. KANG", sub: "maths · one word at a time" },
-  { line: 42, p: 0.2, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 1", sub: "Only the people in your race can hurt at your news.", high: true },
-  { line: 51, p: 0, secs: 5, kind: "fact", accent: TEAL, top: "THE CURVE", sub: "Only the top 4% get the top grade", right: true },
-  { line: 67, p: 0, secs: 6.5, kind: "fact", accent: TEAL, top: "ONE NEIGHBOURHOOD IN SEOUL", sub: "about 1,000 academies · closed by 10 pm" },
+  { line: 4, p: 0.05, secs: 4, kind: "cast", head: MINJUN.head, top: "MIN-JUN", sub: "best friend since age twelve", right: true }, // the left is his face in the close-up
+  { line: 18, p: 0, secs: 2.6, kind: "cast", head: JIYOON.head, top: "JI-YOON", sub: "big sister · night shifts" },
+  { line: 23, p: 0, secs: 4, kind: "cast", head: TAEHO.head, top: "TAE-HO", sub: "the rival" },
+  { line: 29, p: 0, secs: 3.5, kind: "cast", head: KANG.head, top: "MS. KANG", sub: "maths teacher" },
+  { line: 42, p: 0.2, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 1", sub: "Only your race can hurt at your news.", high: true },
+  // v7: { line: 51, p: 0, secs: 5, kind: "fact", accent: TEAL, top: "THE CURVE", sub: "Top 4% get the top grade", right: true },  (now drawn in the beat itself; outside review: say a fact once)
+  // v7: { line: 67, p: 0, secs: 6.5, kind: "fact", accent: TEAL, top: "ONE NEIGHBOURHOOD IN SEOUL", sub: "about 1,000 academies · closed by 10 pm" },  (now drawn in the beat itself; outside review: say a fact once)
   { line: 81, p: 0, secs: 5.5, kind: "fact", accent: TEAL, top: "TWO KINDS OF ENVY", sub: "One makes you climb. One pulls them down." },
-  { line: 84, p: 0.1, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 2", sub: "The rival has worked out your trick.", high: true },
+  { line: 84, p: 0.1, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 2", sub: "The rival knows your trick.", high: true },
   { line: 92, p: 0, secs: 4, kind: "title", top: "EXAM MORNING", sub: "8:00 am" },
-  { line: 95, p: 0.08, secs: 8, kind: "fact", accent: CRIMSON, top: "NOVEMBER 2025 · SOUTH KOREA", sub: "No takeoffs, no landings for 35 minutes · during the English listening test" },
+  { line: 95, p: 0.08, secs: 8, kind: "fact", accent: CRIMSON, top: "NOVEMBER 2025 · SOUTH KOREA", sub: "No takeoffs or landings for 35 minutes" },
   { line: 97, p: 0, secs: 3.5, kind: "title", top: "RESULTS DAY", sub: "one month later" },
 ];
 
@@ -45,7 +45,7 @@ const Card: React.FC<{ item: Item; t: number; total: number }> = ({ item, t, tot
       {item.kind === "fact" && <div style={{ width: 12, alignSelf: "stretch", borderRadius: 6, background: item.accent, flexShrink: 0 }} />}
       <div>
         <div style={{ fontWeight: 800, fontSize: title ? 72 : 60, letterSpacing: 3, lineHeight: 1.05 }}>{item.top}</div>
-        <div style={{ fontWeight: 800, fontSize: title ? 40 : 38, opacity: 0.78, marginTop: 6, lineHeight: 1.2 }}>{item.sub}</div>
+        <div style={{ fontWeight: 800, fontSize: title ? 46 : 46, opacity: 0.9, marginTop: 6, lineHeight: 1.2 }}>{item.sub}</div>
       </div>
     </div>
   );

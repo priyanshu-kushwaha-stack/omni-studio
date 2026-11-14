@@ -103,14 +103,26 @@ export const LadderSheet: React.FC<{ frame: number; at: number; cross: number; b
 
 // ------------------------------------------------------------------------------------------------ L83 one colour
 
-/** Two cards side by side, both red: your best friend (-91) and the rival (-71); you smile at "sweet", then the
- *  camera slides onto the rival. */
+/** Your chair with a saw cut in its front leg (`cut` 0..1 deep) and a little heap of sawdust. Chair's own coords. */
+const SawnChair: React.FC<{ x: number; y: number; scale: number; cut: number; notchY?: number }> = ({ x, y, scale, cut, notchY }) => (
+  <g>
+    <Chair x={x} y={y} scale={scale} color="#c99a68" />
+    <path d={`M${x + 33 * scale} ${notchY ?? y + 38 * scale} l${-12 * scale * cut} ${4 * scale} l${12 * scale * cut} ${4 * scale}Z`} fill="#14151c" />
+    <ellipse cx={x + 40 * scale} cy={y + 64 * scale} rx={26 * scale} ry={5 * scale} fill="#e2c08e" opacity={0.9} />
+  </g>
+);
+
+/** Two cards side by side, both red, already landed (no flaps running): your best friend up on his paper ladder of
+ *  your mistakes (-91), the rival beside your chair with a cut in its leg, hands behind his back (-71). You smile at
+ *  "sweet" (SweetShot), then the camera slides onto the rival. */
 export const TwoRedShot: React.FC<{ frame: number; at: number; rival: number }> = ({ frame, at, rival }) => {
   const S2 = 1.25;
-  const MJ = { x: 640, y: 980 }, TH = { x: 1300, y: 980 };
-  const mh = headAt(MJ.x, MJ.y, S2, STAND, 1);
+  const MJ = { x: 600, y: 980 }, TH = { x: 1330, y: 980 };
+  const LIFT = 150; // he stands on the second rung
+  const mh = headAt(MJ.x, MJ.y - LIFT, S2, STAND, 1);
   const th = headAt(TH.x, TH.y, S2, STAND, -1);
-  const cam = camAt(frame, [[at, { x: 970, y: 720, zoom: 1.45 }], [rival - 20, { x: 980, y: 720, zoom: 1.5 }], [rival + 10, { x: 1240, y: 730, zoom: 1.95 }]]);
+  const landed = at - 30;
+  const cam = camAt(frame, [[at, { x: 970, y: 640, zoom: 1.4 }], [rival - 20, { x: 980, y: 640, zoom: 1.45 }], [rival + 10, { x: 1260, y: 600, zoom: 1.7 }]]);
   return (
     <AbsoluteFill style={{ background: "#14151c" }}>
       <Stage cam={drift(cam, frame, "twored", 2)} radius={0} origin={{ x: 0, y: 0 }}
@@ -118,37 +130,51 @@ export const TwoRedShot: React.FC<{ frame: number; at: number; rival: number }> 
           <g>
             <rect x={-1400} y={-800} width={4800} height={2600} fill="#14151c" />
             <ellipse cx={MJ.x} cy={MJ.y + 10} rx={260} ry={40} fill="#ffd98a" opacity={0.12} />
-            <ellipse cx={TH.x} cy={TH.y + 10} rx={260} ry={40} fill="#ffd98a" opacity={0.12} />
+            <ellipse cx={TH.x} cy={TH.y + 10} rx={300} ry={40} fill="#ffd98a" opacity={0.12} />
           </g>
         }
         actors={
           <>
-            {/* his paper ladder leant beside him */}
-            <g transform={`translate(${MJ.x - 200} ${MJ.y}) rotate(-8)`}>
-              <rect x={-60} y={-380} width={16} height={380} fill="#efe3cc" stroke={INK} strokeWidth={4} />
-              <rect x={44} y={-380} width={16} height={380} fill="#efe3cc" stroke={INK} strokeWidth={4} />
-              {[0, 1, 2, 3].map((i) => <rect key={i} x={-60} y={-60 - i * 90} width={120} height={22} fill={PAPER} stroke={INK} strokeWidth={3} />)}
+            {/* his paper ladder of your mistake pages, him standing on it */}
+            <g transform={`translate(${MJ.x} ${MJ.y})`}>
+              <rect x={-90} y={-470} width={18} height={470} fill="#efe3cc" stroke={INK} strokeWidth={4} />
+              <rect x={72} y={-470} width={18} height={470} fill="#efe3cc" stroke={INK} strokeWidth={4} />
+              {[0, 1, 2, 3, 4].map((i) => (
+                <g key={i} transform={`translate(0 ${-70 - i * 90})`}>
+                  <rect x={-100} y={-14} width={200} height={30} fill={PAPER} stroke={INK} strokeWidth={3} />
+                  <MistakeMark x={40} y={0} scale={0.6} />
+                </g>
+              ))}
             </g>
-            <Figure x={MJ.x} y={MJ.y} scale={S2} facing={1} head={MINJUN.head} coat={MINJUN.coat} brows="flat" mouth="smile" lids={0.15} eyes={1}
-              look={{ x: 0.8, y: 0 }} blink={blinking(frame, 2)} time={frame} />
-            <Figure x={TH.x} y={TH.y} scale={S2} facing={-1} pose={{ ...STAND, armF: [30, 60] }} head={TAEHO.head} coat={TAEHO.coat} brows="angry"
+            <Figure x={MJ.x} y={MJ.y - LIFT} scale={S2} facing={1} pose={{ ...STAND, armF: [150, 10], armB: [-20, 20] }} head={MINJUN.head} coat={MINJUN.coat}
+              brows="flat" mouth="smile" lids={0.15} eyes={1} look={{ x: 0.8, y: -0.3 }} blink={blinking(frame, 2)} time={frame} />
+            <SawnChair x={TH.x + 190} y={TH.y - 70} scale={1.3} cut={1} />
+            <Figure x={TH.x} y={TH.y} scale={S2} facing={-1} pose={{ ...STAND, armF: [-30, 40], armB: [-40, 50] }} head={TAEHO.head} coat={TAEHO.coat} brows="angry"
               mouth="smirk" lids={0.3} eyes={1} look={{ x: 0.8, y: 0 }} blink={blinking(frame, 4)} time={frame} />
-            <Meter frame={frame} at={at + 2} until={rival + 30} x={mh.x} headY={mh.y} r={mh.r} value={-91} />
-            <Meter frame={frame} at={at + 12} until={rival + 30} x={th.x} headY={th.y} r={th.r} value={-71} />
+            <Meter frame={frame} at={landed} until={rival + 140} x={mh.x} headY={mh.y} r={mh.r} value={-91} />
+            <Meter frame={frame} at={landed} until={rival + 140} x={th.x} headY={th.y} r={th.r} value={-71} />
           </>
         } />
     </AbsoluteFill>
   );
 };
 
-/** "...and he does not build ladders.": the rival under one lamp, sleeves up, a saw in his hand; he looks up at you,
- *  grins, and gives the saw one slow test stroke. */
+/** "...and he does not build ladders.": the rival under one lamp, a saw in his hand, its blade in the front leg of
+ *  your chair (entering from the left); he looks up at you, grins, and saws; shavings drop from the cut. */
 export const RivalSawShot: React.FC<{ frame: number; at: number; to: number }> = ({ frame, at, to }) => {
   const X = 980, Y = 990, SC = 1.3;
   const head = headAt(X, Y, SC, STAND, -1);
   const up = ramp(frame, at + 16, at + 26);
-  const stroke = Math.sin(Math.max(0, frame - at - 40) / 5) * 30 * ramp(frame, at + 40, at + 50);
-  const cam = camAt(frame, [[at, closeUp(head.x - 60, head.y + 120, 1.9)], [to, closeUp(head.x - 50, head.y + 110, 2.15)]]);
+  const sawing = ramp(frame, at + 30, at + 40);
+  const stroke = Math.sin(Math.max(0, frame - at - 30) / 3) * 26 * sawing;
+  // the chair stands on his floor; its front leg crosses the blade (his hand low, the blade tilted down to the left)
+  const CH = { x: 679, y: 804, s: 3 };
+  const cutX = CH.x + 37 * CH.s, cutY = 852;
+  const cam = camAt(frame, [[at, closeUp(head.x - 120, head.y + 130, 1.8)], [to, closeUp(head.x - 110, head.y + 120, 2.0)]]);
+  const chips = sawing > 0 ? [0, 1, 2, 3].map((i) => {
+    const t = ((frame - at - 30 + i * 9) % 36) / 36;
+    return { x: cutX + (noise(i) - 0.5) * 30 + t * 20, y: cutY + 10 + t * t * 260, o: 1 - t, r: (noise(i + 5) * 40) };
+  }) : [];
   return (
     <AbsoluteFill style={{ background: "#14151c" }}>
       <Stage cam={drift(cam, frame, "rivalsaw", 2)} radius={0} origin={{ x: 0, y: 0 }}
@@ -161,15 +187,20 @@ export const RivalSawShot: React.FC<{ frame: number; at: number; to: number }> =
                 <stop offset="100%" stopColor="#ffb85a" stopOpacity={0} />
               </radialGradient>
             </defs>
-            <ellipse cx={X - 100} cy={720} rx={520} ry={420} fill="url(#nb-rival-pool)" />
-            <rect x={X - 620} y={860} width={560} height={22} rx={5} fill="#7d5f44" stroke={INK} strokeWidth={5} />
+            <ellipse cx={X - 160} cy={720} rx={560} ry={420} fill="url(#nb-rival-pool)" />
           </g>
         }
         actors={
-          <Figure x={X} y={Y} scale={SC} facing={-1} pose={{ ...STAND, armF: [70 + stroke * 0.2, 30] }} head={TAEHO.head} coat={TAEHO.coat}
-            brows={up > 0.5 ? "angry" : "flat"} mouth={up > 0.5 ? "smirk" : "flat"} lids={mix(0.5, 0.2, up)} eyes={1}
-            look={{ x: mix(0.4, 0.9, up), y: mix(0.9, -0.1, up) }} blink={blinking(frame, 4)} time={frame}
-            held={<Saw x={stroke} y={0} scale={0.9} tilt={-10} />} />
+          <>
+            <SawnChair x={CH.x} y={CH.y} scale={CH.s} cut={mix(0.3, 1, sawing * ramp(frame, at + 30, to))} notchY={cutY - 6} />
+            {chips.map((c, i) => (
+              <rect key={i} x={c.x} y={c.y} width={12} height={5} rx={2} fill="#e2c08e" stroke={INK} strokeWidth={1.5} opacity={c.o} transform={`rotate(${c.r} ${c.x} ${c.y})`} />
+            ))}
+            <Figure x={X} y={Y} scale={SC} facing={-1} pose={{ ...STAND, lean: -6, armF: [25, 5] }} head={TAEHO.head} coat={TAEHO.coat}
+              brows={up > 0.5 ? "angry" : "flat"} mouth={up > 0.5 ? "smirk" : "flat"} lids={mix(0.5, 0.2, up)} eyes={1}
+              look={{ x: mix(0.4, 0.9, up), y: mix(0.9, -0.1, up) }} blink={blinking(frame, 4)} time={frame}
+              held={<Saw x={stroke} y={0} scale={0.9} tilt={15} />} />
+          </>
         } />
       <Dim amount={0.08} />
     </AbsoluteFill>
