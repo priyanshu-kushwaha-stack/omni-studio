@@ -64,7 +64,8 @@ A topic must pass all nine; a fail is shown, never hidden.
 5. The mind-boggle lands late, after the story has earned it.
 6. Three jumps of consequence to you and your person, each bigger; the planet or a lifetime is one image, not a
    forced rung.
-7. Stakes the premise earns; a person to lose only when it does.
+7. Stakes the premise earns: something you can win or lose (caught, exposed, outsmarted); a person to lose is
+   optional, never the default, and never the ending (owner, 2026-11-13).
 8. Buildable in paper-cut this week (a new set that is the long pole fails).
 9. Not the same twist or title a neighbour used in the last 90 days; the same daydream with a new belief and a new
    thumbnail promise is eligible.

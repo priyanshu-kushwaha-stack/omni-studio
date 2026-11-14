@@ -10,6 +10,16 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-13
 
+- **"most of the videos we made so far are emotional sort of ... I want exciting stuff."** Asked who our audience is
+  and what mood they arrive in, then "Yes, update rules" on the research
+  (`docs/research/2026-11-13-say-suppose-audience-mood.md`). On every comparable channel the emotion-led titles sit at
+  the bottom of the hit list (1.6x to 2.6x the median); power, status, reveals and spectacle sit at the top (6x to
+  49x). The viewers arrive bored and playful, wanting to feel powerful and clever. So: the power is the star
+  (escalating set pieces, the world reacting), the film closes the loopholes a viewer would type, a laugh in every
+  scene, and emotion is seasoning (one short tender beat at most, never the peak, never the ending). The thumbnail
+  shows the power working and someone stunned, never a sad face. Replaces the 2026-11-06 study's "a person to lose" and
+  "the peak gives something up" (`rules/story.md` #9, #18, #20-#22; `style.md`; `rules/thumbnails.md` K17).
+  (audience research, all films)
 - **An outside picture review, then "yes apply all that makes sense and valid".** The owner asked for one reviewer from
   another model family, frame by frame ("In Depth review of each frame and see how can we make it more better"):
   Cursor, GPT-5.6 Sol, on one frame per second of the v4.1 cut. Applied in v4.2 (`review-g2-cursor-v4.1.md`, "Applied
@@ -68,6 +78,23 @@ First watch:
 
 ## 2026-11-12
 
+- **"Start of the script felt boring."** G2 first-cut review of the doubled-money restart, the owner's eight notes in
+  one sitting: "Names were a little difficult to follow." / "At certain places where we can show the characters
+  actually performing in real and narration stops just to make the users feel those scenes for real would add a lot to
+  this script." / "vocabulary was diificult" / "What if we could start with a story and characters playing it some
+  way? And then finds that track which gives them that superpower, and then the narration starts. We show at that
+  point we show video title also." / "Wherever it feels that characters can deliver their dialogues to make the viewer
+  feel like they're part of the story." / "It was a long video, but the story did not have many components." / "We can
+  add multiple emotions in the video... Currently, the voice is flat and it's plain narration... I would also like to
+  see some hypothetical situations... with so much money, anyone could be doing anything... Something very exciting,
+  funny, or anything." For every film: open on a performed story (characters playing how the power arrives), then the
+  narrator and the title; let scenes play with the narrator silent and the characters talking; few names, each with
+  its role; plain words; many situations, not one ladder of days; emotion that changes with the scene, in the voices
+  too. These outrank the template's cold-open check (#15) where they disagree. (doubled-money restart, G2)
+- **"A, the thumbnail"** G2 look test on the doubled-money restart: the day-thirty-one spill is staged exactly as
+  the thumbnail frames it (you large at the left, the phone up, the digits off the screen and over the counter, Lotte
+  behind it with her chalk), not close on the phone or on Lotte's board. The film's key shot and the thumbnail are one
+  picture. (doubled-money restart, G2)
 - **"lets no lock anything that hard becoz that is limiting the Agent to come up with great ideas."** Asked whether
   G1 fixes the situation and G2 only re-tells it: "when we are iterating over the story and the script.. i think we
   should let Agent who is writing the story should be allowed to deviate and if it can write something more beautiful
