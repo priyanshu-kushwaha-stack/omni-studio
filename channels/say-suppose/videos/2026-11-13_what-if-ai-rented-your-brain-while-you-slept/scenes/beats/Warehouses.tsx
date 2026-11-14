@@ -59,7 +59,8 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
     chess: from(65) - 2, door: at(65, 0.2), cents: at(65, 0.42), bulk: at(65, 0.72),
     clerkA: from(66) - 2, nodA: at(66, 0.16), inA: [at(66, 0.2), at(66, 0.36)] as const, clip: at(66, 0.36),
     clerkB: at(66, 0.62), shakeB: at(66, 0.68), awayB: [at(66, 0.76), lineEnd(clips, 66) + 8] as const,
-    label: from(67) - 2, heading: at(67, 0.6),
+    // v5 cut the labeller line (v1 67): its two shots start past the beat's end so they never play and no key repeats.
+    label: isV5(v3) ? end + 1 : from(67) - 2, heading: isV5(v3) ? end + 2 : at(67, 0.6),
     arrive: from(68) - 2, walkIn: [from(68), lineEnd(clips, 68)] as const,
     h4, look: [in4(0.02), in4(0.26)] as const, lift: [in4(0.3), in4(0.4)] as const, drop: in4(0.62), shake: [in4(0.74), in4(0.96)] as const,
     rested: [from(69), lineEnd(clips, 69)] as const, closeClerk: from(69) - 2,
