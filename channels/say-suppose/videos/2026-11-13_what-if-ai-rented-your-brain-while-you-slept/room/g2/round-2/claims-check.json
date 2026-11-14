@@ -1,0 +1,69 @@
+{
+  "call_id": "41dd481b6c324fc38f0ebd0d35c828c2",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "> CARD: IT'S TRUE: 2022, brain cells in a dish learned a video game (on \"It's true\")",
+      "why": "Contradicts claim c19 and the ledger's Dropped list. The verbatim quote supports 'apparent learning', and 'learned to play' was explicitly dropped as an overstatement with the note instructing to say 'began to get better at Pong within five minutes'. While the spoken line (line 111) follows this, the on-screen card overstates the finding by asserting that the cells 'learned a video game'.",
+      "fix": "> CARD: IT'S TRUE: 2022, brain cells in a dish got better at a video game (on \"It's true\")",
+      "domain": "fact",
+      "line": 109
+    },
+    {
+      "quote": "In 2020, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second (c18). Spare machines, linked into one. Now spare brains.",
+      "why": "Overstatement and attribution error under claim c18. The verbatim quote states citizen scientists banded together 'to create the first exascale computer', and the note instructs: 'Frame it as \"the scientists say\" or \"the first to pass an exaflop\".' The scientists did not call it 'the first computer to pass a billion billion sums a second'; that phrase conflates the NIST definition of an exaflop (from c10) with what the Folding@home authors actually called the achievement.",
+      "fix": "In 2020, over a million people lent their idle home computers to one project, and its scientists called the result the first exascale computer \u2014 passing a billion billion sums a second (c18). Spare machines, linked into one. Now spare brains.",
+      "domain": "fact",
+      "line": 444
+    },
+    {
+      "quote": "Your brain files your day at night, on fast forward. For a month, nothing's been filed.",
+      "why": "Scope overstatement under claim c14. The ledger note on c14 specifically warns: 'The replay evidence comes from animal recordings (rat hippocampal place cells)... Say \"in animals\" or \"in rats\" for the replay.' Line 283 properly limits the finding ('In rats...'), but line 287 turns the rat replay mechanism into an unsupported factual statement about human brains operating 'on fast forward'.",
+      "fix": "Your brain needs that night shift to file your day. For a month, nothing's been filed.",
+      "domain": "fact",
+      "line": 287
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 358,
+      "quote": "People cross that bridge from Mexico twice a week to sell theirs (c05), because a day's work across the river pays about nine dollars (c22).",
+      "fix": "People cross that bridge from Mexico twice a week to sell theirs (c05), because a typical worker across the river makes about nine dollars a day (c22)."
+    },
+    {
+      "line": 371,
+      "quote": "An eighteenth-century chess robot had a chess master hidden inside it. Amazon named a website after it, Mechanical Turk, and paid people a few cents a task (c17). This is the human inside the machine. In bulk.",
+      "fix": "An eighteenth-century chess robot had a chess master hidden inside it (c17). Amazon named a website after it, Mechanical Turk, and paid people a few cents a task (c17). This is the human inside the machine. In bulk."
+    },
+    {
+      "line": 43,
+      "quote": "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows (c02).",
+      "fix": "Twice a week, you sell your plasma, the pale part of your blood. It's the most US law allows (c02)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 111,
+      "quote": "It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes (c19). So a whole brain for eight hours is a bargain."
+    },
+    {
+      "line": 277,
+      "quote": "In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster (c12). Sleep is when your brain takes the trash out. Yours hasn't in a month."
+    },
+    {
+      "line": 283,
+      "quote": "In rats, the day's activity replays in sleep, faster than real time (c14)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "bc270d9408ba5611e77b858470641e213c9166957ec26da37a632a0bf0bd690b",
+  "draft_sha256": "982ad041656375295eb43fdeb9866fce35c2244cd64487f1c1366cee3800a300"
+}

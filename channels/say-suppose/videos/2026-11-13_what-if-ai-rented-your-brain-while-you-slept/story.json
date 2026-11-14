@@ -86,8 +86,8 @@
       "claims": []
     },
     {
-      "text": "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on plasma, a short pause before It's the most] Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows.",
+      "text": "Twice in seven days, you sell your plasma, the pale part of your blood. It's the most US law allows.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on plasma, a short pause before It's the most] Twice in seven days, you sell your plasma, the pale part of your blood. It's the most US law allows.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "morning",
@@ -385,9 +385,7 @@
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
-      "claims": [
-        "c05"
-      ]
+      "claims": []
     },
     {
       "text": "Bridge woman: Not mine.",
@@ -626,8 +624,8 @@
       ]
     },
     {
-      "text": "In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster. Sleep is when your brain takes the trash out. Yours hasn't in a month.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear] In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster. Sleep is when your brain takes the trash out. Yours hasn't in a month.",
+      "text": "In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster. If yours does the same, sleep is when your brain takes the trash out. Yours hasn't in a month.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear] In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster. If yours does the same, sleep is when your brain takes the trash out. Yours hasn't in a month.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "lamp",
@@ -654,8 +652,8 @@
       ]
     },
     {
-      "text": "Your brain files your day at night, on fast forward. For a month, nothing's been filed.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; then slow] Your brain files your day at night, on fast forward. For a month, nothing's been filed.",
+      "text": "If yours does the same, it files your day at night. And for a month, nothing's been filed.",
+      "say": "[cool, even, precise; a small lift on If yours does the same, a pause before And for a month] If yours does the same, it files your day at night. And for a month, nothing's been filed.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "lamp",
@@ -774,15 +772,42 @@
       "claims": []
     },
     {
-      "text": "It's true. The US is one of the few countries that lets companies pay people for plasma, and it supplies about two thirds of the world's. People cross that bridge from Mexico twice a week to sell theirs, because a day's work across the river pays about nine dollars. Now they cross to sleep.",
-      "say": "[Cool, even, precise, a report; stress two thirds, nine dollars and sleep; a half-beat before Now] It's true. The US is one of the few countries that lets companies pay people for plasma, and it supplies about two thirds of the world's. People cross that bridge from Mexico twice a week to sell theirs, because a day's work across the river pays about nine dollars. Now they cross to sleep.",
+      "text": "It's true. The US is one of the few countries that lets companies pay people for plasma.",
+      "say": "[cool, even, precise sci-fi narration; a weight on It's true, a stress on pay people] It's true. The US is one of the few countries that lets companies pay people for plasma.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": [
+        "c01"
+      ]
+    },
+    {
+      "text": "It supplies about two thirds of the world's.",
+      "say": "[cool, even, precise; a stress on two thirds] It supplies about two thirds of the world's.",
       "speaker": "narrator",
       "gapAfterSec": 1.15,
       "mood": "dusk",
       "claims": [
-        "c01",
-        "c03",
-        "c05",
+        "c03"
+      ]
+    },
+    {
+      "text": "People cross that bridge from Mexico to sell theirs, some twice a week.",
+      "say": "[cool, even, precise; a stress on some twice a week] People cross that bridge from Mexico to sell theirs, some twice a week.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.15,
+      "mood": "dusk",
+      "claims": [
+        "c05"
+      ]
+    },
+    {
+      "text": "In 2019, a typical worker across the river made about nine dollars a day. Now they cross to sleep.",
+      "say": "[cool, even, precise; a stress on nine dollars, the last sentence quiet and flat] In twenty nineteen, a typical worker across the river made about nine dollars a day. Now they cross to sleep.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.15,
+      "mood": "dusk",
+      "claims": [
         "c22"
       ]
     },
@@ -817,6 +842,7 @@
       "gapAfterSec": 0.65,
       "mood": "night",
       "claims": [
+        "c17",
         "c17"
       ]
     },
@@ -967,14 +993,40 @@
       "claims": []
     },
     {
-      "text": "In 2020, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second. Spare machines, linked into one. Now spare brains.",
-      "say": "[Cool, precise, a fact with a lift at the end; stress million, one project, billion billion, spare and brains] In twenty twenty, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second. Spare machines, linked into one. Now spare brains.",
+      "text": "In 2020, over a million people lent their idle home computers to one project.",
+      "say": "[cool, even, precise; a stress on a million] In twenty twenty, over a million people lent their idle home computers to one project.",
       "speaker": "narrator",
-      "gapAfterSec": 9.8,
+      "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
         "c18"
       ]
+    },
+    {
+      "text": "The scientists behind it say it became the first computer to pass a billion billion sums a second.",
+      "say": "[cool, even, precise, quiet awe; a stress on first, a pause before a billion billion] The scientists behind it say it became the first computer to pass a billion billion sums a second.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.15,
+      "mood": "night",
+      "claims": [
+        "c18"
+      ]
+    },
+    {
+      "text": "Spare machines, linked into one. Now spare brains.",
+      "say": "[cool, slow, a pause between the two sentences, a stress on brains] Spare machines, linked into one. Now spare brains.",
+      "speaker": "narrator",
+      "gapAfterSec": 9.8,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Brother: What'd we get?",
+      "say": "[hushed, amazed, almost a whisper, the old joke turned into wonder] What'd we get?",
+      "speaker": "Brother",
+      "gapAfterSec": 1.15,
+      "mood": "night",
+      "claims": []
     },
     {
       "text": "So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.",
@@ -1149,13 +1201,13 @@
     "c02": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-F/part-640/subpart-G/section-640.65",
     "c10": "https://pmc.ncbi.nlm.nih.gov/articles/PMC124895/",
     "c19": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9747182/",
-    "c05": "https://www.propublica.org/article/pharmaceutical-companies-are-luring-mexicans-across-the-u.s.-border-to-donate-blood-plasma",
     "c21": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4291908/",
     "c11": "https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep",
     "c12": "https://europepmc.org/article/MED/24136970",
     "c14": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3768102/",
     "c01": "https://www.propublica.org/article/pharmaceutical-companies-are-luring-mexicans-across-the-u.s.-border-to-donate-blood-plasma",
     "c03": "https://www.npr.org/2021/05/21/999241523/another-shortage-caused-by-the-pandemic-blood-plasma",
+    "c05": "https://www.propublica.org/article/pharmaceutical-companies-are-luring-mexicans-across-the-u.s.-border-to-donate-blood-plasma",
     "c22": "https://www.propublica.org/article/pharmaceutical-companies-are-luring-mexicans-across-the-u.s.-border-to-donate-blood-plasma",
     "c17": "https://www.cnbc.com/2026/08/25/amazon-service-that-jeff-bezos-called-artificial-ai-is-shutting-down.html",
     "c24": "https://archive.cdc.gov/www_cdc_gov/media/releases/2016/p0215-enough-sleep.html",

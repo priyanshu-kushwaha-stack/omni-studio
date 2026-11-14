@@ -30,10 +30,10 @@ const ITEMS: Item[] = [
   { line: 68, p: 0.18, secs: 4.5, kind: "fact", accent: TEAL, top: "A THIRD OF YOUR LIFE", sub: "asleep" },
   { line: 76, p: 0.29, secs: 4.5, kind: "fact", accent: CRIMSON, top: "PROBLEM 2", sub: "whatever you lose, you lose alone" },
   { line: 85, p: 0.22, secs: 4.5, kind: "fact", accent: CRIMSON, top: "PROBLEM 3", sub: "the price is about to fall" },
-  { line: 87, p: 0.38, secs: 5.5, kind: "fact", accent: MUSTARD, top: "IT'S TRUE", sub: "the US supplies about two thirds of the world's plasma" },
-  { line: 95, p: 0.0, secs: 3.5, kind: "cast", head: CLERK.head, top: "THE CLERK", sub: "picks who sleeps in the warehouse" },
-  { line: 110, p: 0.06, secs: 5.5, kind: "fact", accent: MUSTARD, top: "2020", sub: "a million home computers, linked into one" },
-  { line: 113, p: 0.46, secs: 5.5, kind: "fact", accent: TEAL, top: "THE JOB", sub: "design the thing that never needs sleepers" },
+  { line: 90, p: 0.38, secs: 5.5, kind: "fact", accent: MUSTARD, top: "IT'S TRUE", sub: "the US supplies about two thirds of the world's plasma" },
+  { line: 98, p: 0.0, secs: 3.5, kind: "cast", head: CLERK.head, top: "THE CLERK", sub: "picks who sleeps in the warehouse" },
+  { line: 115, p: 0.06, secs: 5.5, kind: "fact", accent: MUSTARD, top: "2020", sub: "a million home computers, linked into one" },
+  { line: 119, p: 0.46, secs: 5.5, kind: "fact", accent: TEAL, top: "THE JOB", sub: "design the thing that never needs sleepers" },
 ];
 
 const IN = 9;

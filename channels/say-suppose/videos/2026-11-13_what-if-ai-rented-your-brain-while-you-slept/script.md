@@ -38,9 +38,9 @@ Broker: Wear this tonight. Sleep all night, and get paid for every hour.
 ## [00:21] Night One
 
 > SCENE: The door, shut. The clock through the glass. Then a two-second insert: you on the bridge walkway at dawn, the band in your pocket, counting the notes.
-> CARD: SELLING PLASMA: twice a week (on "the most the law allows")
+> CARD: SELLING PLASMA: twice a week (on "the most US law allows")
 
-Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows (c02).
+Twice in seven days, you sell your plasma, the pale part of your blood. It's the most US law allows (c02).
 
 It's how your family keeps up with what it owes.
 
@@ -106,7 +106,7 @@ Why would anyone want a sleeping brain? The leaflet explains that too.
 Your brain burns about twenty watts (c10). At night, the leaflet calls that unused power.
 
 > SCENE: Page three: a dish on a table, a tiny paper bat and ball bouncing above it, the bat starting to hit back.
-> CARD: IT'S TRUE: 2022, brain cells in a dish learned a video game (on "It's true")
+> CARD: IT'S TRUE: 2022, brain cells in a dish got better at a video game (on "It's true")
 
 It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes (c19). So a whole brain for eight hours is a bargain.
 
@@ -160,7 +160,7 @@ Nurse: Rested, for once.
 
 > SCENE: The bridge at dawn, a queue walking in; a woman with a shopping bag, grey head, near the front. You say a word to her; her shoulders go up.
 
-Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too (c05).
+Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too.
 
 Bridge woman: Not mine.
 
@@ -274,7 +274,7 @@ You spend about a third of your life asleep (c11). A third. Did you think it was
 
 > SCENE: Insert: a paper mouse asleep; between the cells of its drawn brain the gaps widen and a tide washes through. Cut to your room: a bin overflowing in the corner.
 
-In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster (c12). Sleep is when your brain takes the trash out. Yours hasn't in a month.
+In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster (c12). If yours does the same, sleep is when your brain takes the trash out. Yours hasn't in a month.
 
 Brother: Explains the smell.
 
@@ -284,7 +284,7 @@ In rats, the day's activity replays in sleep, faster than real time (c14).
 
 > SCENE: Your own day, drawn as a filing cabinet: the drawers fly open, the day's pages whirl in on fast forward. Then the cabinet shut, the pages on the floor, unfiled.
 
-Your brain files your day at night, on fast forward. For a month, nothing's been filed.
+If yours does the same, it files your day at night. And for a month, nothing's been filed.
 
 Sleep was never nothing. It was the one shift you always worked for yourself.
 
@@ -355,7 +355,13 @@ Ninety. Forty-one. Twelve. Everyone has a band on now.
 > SCENE: The bridge at dusk: the queue walking in. Insert: a paper map, one country shaded, a pale river running out of it to the rest of the world.
 > CARD: IT'S TRUE: the US supplies about two thirds of the world's plasma (on "two thirds")
 
-It's true. The US is one of the few countries that lets companies pay people for plasma (c01), and it supplies about two thirds of the world's (c03). People cross that bridge from Mexico twice a week to sell theirs (c05), because a day's work across the river pays about nine dollars (c22). Now they cross to sleep.
+It's true. The US is one of the few countries that lets companies pay people for plasma (c01).
+
+It supplies about two thirds of the world's (c03).
+
+People cross that bridge from Mexico to sell theirs, some twice a week (c05).
+
+In 2019, a typical worker across the river made about nine dollars a day (c22). Now they cross to sleep.
 
 > SCENE: The top of the ramp: the paper sign, and a new line stamped onto it, the ink still wet: NO SLEEPING ON A VISITOR VISA. Directly beneath it, three men in grey suits with shoeboxes, handing out bands to the queue.
 
@@ -368,7 +374,7 @@ The three men in grey suits stand right under the sign.
 
 The warehouse by the bridge. A thousand sleepers in shifts, a thousand pale workers typing over them.
 
-An eighteenth-century chess robot had a chess master hidden inside it. Amazon named a website after it, Mechanical Turk, and paid people a few cents a task (c17). This is the human inside the machine. In bulk.
+An eighteenth-century chess robot had a chess master hidden inside it (c17). Amazon named a website after it, Mechanical Turk, and paid people a few cents a task (c17). This is the human inside the machine. In bulk.
 
 > SCENE: The clerk at the door, clipboard, looking at the eyes of each sleeper in the queue; a grey-eyed one turned away.
 
@@ -441,11 +447,17 @@ There was never one of anything. You never lost anything alone. For eight hours 
 > SCENE: Insert: a paper globe, the dark half; a million small windows on it light one by one and the threads between them join up.
 > CARD: 2020: a million home computers, linked into one (on "a million")
 
-In 2020, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second (c18). Spare machines, linked into one. Now spare brains.
+In 2020, over a million people lent their idle home computers to one project (c18).
+
+The scientists behind it say it became the first computer to pass a billion billion sums a second (c18).
+
+Spare machines, linked into one. Now spare brains.
 
 > HOLD: 9 s. The one wordless peak, played as wonder. The globe at night, the dark half lit like a single brain cell firing, cities as the sparks along it, the threads between them pulsing in one rhythm. The music opens out to one wide, bright chord and holds it; under it, very far away, the patter of typing. The camera drifts in, slowly, on one spark: your window. Your brother's face in the laptop's light, mouth open, delighted.
 
 > SCENE: The notebook pages on the bed slide together, edge to edge; the crumbs join into one drawing. Lines, a frame, a housing. A machine. On the laptop, the strangers' pages do the same.
+
+Brother: What'd we get?
 
 So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.
 
@@ -557,7 +569,7 @@ About 1,880 spoken words: 12:08 at 155 words a minute. Holds: 31, about 96 s; ru
 ## Changed from the approved G1
 
 1. **The skit.** Old: the nurse unclips you, the grey suit offers a band at the door, you take it. New: the grey suit lays a band on you while you doze in the chair; the ghost sits up and one coin drops into your palm before the nurse plucks it off; then her line, his line, and you take it. Why: the room's note 2, the thumbnail's moment confirmed by 0:05.
-2. **The first narrator line.** Old: "That's your Thursday. A chair in El Paso, twice a week, the most the law allows (c02)." New: "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows (c02)." Why: the owner's clarity note; El Paso stays in the five lines.
+2. **The first narrator line.** Old: "That's your Thursday. A chair in El Paso, twice a week, the most the law allows (c02)." New: "Twice in seven days, you sell your plasma, the pale part of your blood. It's the most US law allows (c02)." Why: the owner's clarity note; El Paso stays in the five lines.
 3. **The cost by 0:30.** New: "a night you sell is a night your own brain doesn't get" over the thumbnail frame. Why: the room's note 1.
 4. **The rule's second line.** New: "One company can link many bands, for one big job. But the leaflet promises each brain stays separate. One brain, one band, one jar." Why: the room's note 3; the turn breaks a line already said.
 5. **reCAPTCHA cut** (v3) at the owner's note; Problem one follows the dream fact.
