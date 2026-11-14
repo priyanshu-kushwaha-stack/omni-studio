@@ -1,0 +1,69 @@
+{
+  "call_id": "cf6201410c034113bc86f0c209403643",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 6
+  },
+  "blockers": [
+    {
+      "quote": "> CARD: PROBLEM 3 \u00b7 Whoever holds it makes the bread cost more",
+      "why": "Check #21, Close the loopholes on screen: giving away the entire balance would reach zero and stop the doubling. The film shows a partial giveaway but never answers this obvious exploit, weakening the bank correction and climax.",
+      "fix": "Replace with: \u201cYes, giving away everything would stop the doubling. But five trillion new euros would remain in Berlin, chasing the same bread. Zero for you. Not for the city.\u201d",
+      "domain": "story",
+      "line": 349
+    },
+    {
+      "quote": "Day thirty-one. Ten million euros, pouring off your phone.",
+      "why": "Check #15, Cold open inside the power: this is explicitly a flash-forward teaser from later, followed by a rewind, rather than the chronological moment the power first works.",
+      "fix": "Replace lines 17\u201330 with chronological day two at the bakery: the phone tears from 0,01 to 0,02 while held toward Lotte in the thumbnail composition; the reader declines, Jonas pays, and the title question follows.",
+      "domain": "story",
+      "line": 22
+    },
+    {
+      "quote": "A thousand drones take off. Eighty of them carry a roll. Forty thousand orders.",
+      "why": "Check #11, Never say the feeling: this narrates exactly what line 271 already shows instead of landing the failed expectation.",
+      "fix": "Replace with: \u201cYou bought a thousand deliveries. You did not make one more roll.\u201d",
+      "domain": "story",
+      "line": 273
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 137,
+      "quote": "Lotte: Your friend ordered thirty-one. Last night.",
+      "fix": "Replace with \u201cLotte: Thirty-one. Then thirty-one more.\u201d so the sixty-two-cake reveal has a visible cause."
+    },
+    {
+      "line": 354,
+      "quote": "> SCENE: Day fifty-two. A TV studio, the anchor at her desk, silent under the narration: BREAKING across the bottom, a map of Berlin glowing gold behind her.",
+      "fix": "Remove the late-arriving anchor: show BREAKING on the bakery television while Lotte, Jonas and you watch the gold spread across the map."
+    },
+    {
+      "line": 368,
+      "quote": "> SCENE: Out past the Earth, past the stars: coins drifting among galaxies.",
+      "fix": "Carry the bakery image into the scale jump: make Lotte\u2019s printed receipt unspool around Earth and continue past the stars toward the atom comparison."
+    }
+  ],
+  "keep": [
+    {
+      "line": 245,
+      "quote": "Jonas: I don't know what to do with my hands when they win."
+    },
+    {
+      "line": 314,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 419,
+      "quote": "Zero, doubled, is zero."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "63d1bb5afa41850d3f3747e18e2f8e55442ecfad2ab2b530602b8ad597b9bf1e",
+  "draft_sha256": "1043b77d3b5bc27b79f2ad71346c3bd90caf7b6fb1899bfc51858db6926c37b2"
+}

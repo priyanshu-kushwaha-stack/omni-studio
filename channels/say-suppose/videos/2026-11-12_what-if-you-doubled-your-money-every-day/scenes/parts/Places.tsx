@@ -63,6 +63,27 @@ export const Street: React.FC<{ t: ShotTime; mood: MoodName; mode: "party" | "af
       <SetScene set={street} mood={mood} frame={t.f} cam={street.cameras.wide} options={{ auto: false, bus: mode === "spend" ? mix(2200, -900, t.p) : null, crowd: mode !== "party" && mode !== "after" }}
         cast={[]}
         actors={<>
+          {/* v5: the sixty-two cakes and the brass band the dialogue talks about (the outside review). */}
+          {party && Array.from({ length: 21 }, (_, i) => {
+            const row = i < 6 ? 0 : i < 11 ? 1 : i < 15 ? 2 : i < 18 ? 3 : i < 20 ? 4 : 5;
+            const start = [0, 6, 11, 15, 18, 20][row];
+            const n = [6, 5, 4, 3, 2, 1][row];
+            const cx = 960 + (i - start - (n - 1) / 2) * 74;
+            const cy = 690 - row * 52;
+            return (
+              <g key={`k${i}`} transform={`translate(${cx} ${cy})`}>
+                <rect x={-32} y={-26} width={64} height={40} rx={6} fill="#f2a7c3" stroke={INK} strokeWidth={3} />
+                <rect x={-32} y={-26} width={64} height={10} rx={4} fill={PAPER} />
+                <rect x={-2} y={-42} width={4} height={16} fill={PASTELS[i % PASTELS.length]} />
+                <circle cx={0} cy={-46} r={4} fill={MUSTARD} />
+              </g>
+            );
+          })}
+          {party && [380, 1380].map((bx, i) => (
+            <Figure key={`b${i}`} x={bx} y={1010} scale={1.05} facing={i ? -1 : 1} pose={{ ...STAND, armF: [70 + Math.sin(t.f / 5 + i) * 10, 60], armB: [-40, 60] }}
+              head={PASTELS[i + 2]} coat="#a8343f" cap="#f2b632" {...EXPRESSIONS.happy} time={t.f / 30 + i}
+              held={<g><circle cx={0} cy={-10} r={34} fill="none" stroke={MUSTARD} strokeWidth={9} /><circle cx={22} cy={-36} r={16} fill={MUSTARD} stroke={INK} strokeWidth={3} /></g>} />
+          ))}
           {party && <Figure x={960} y={1060} scale={1.3} facing={-1} pose={{ ...STAND, armF: [40, 30], armB: [-12, 14] }} {...LOTTE}
             {...EXPRESSIONS[lotteFace]} {...talk("Lotte")} time={t.f / 30} look={{ x: 0.6, y: 0.1 }} />}
           {party && [0, 1, 2, 3, 4].map((i) => <ellipse key={i} cx={860 + i * 50} cy={850 - (i % 2) * 26} rx={30} ry={22} fill={PASTELS[i]} stroke={INK} strokeWidth={4} />)}

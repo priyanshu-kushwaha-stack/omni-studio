@@ -1,6 +1,5 @@
-# v4 pacing (owner, 2026-11-13, on the wants-you-to-fail film, applied here too: "dialogues can be a little slower"):
-# 0.3 s more air after every line on top of story.py's 0.35 s gap, 0.7 s where a fact or problem card lands. Takes
-# still play at 1x.
+# v5 pacing: 0.3 s more air after every line (owner on the wants-you-to-fail film: "dialogues can be a little slower"),
+# 0.7 s where a card lands. Takes play at 1x.
 extra:
   0: 0.3
   1: 0.3
@@ -15,12 +14,12 @@ extra:
   10: 0.3
   11: 0.3
   12: 0.3
-  13: 0.3
-  14: 0.7
+  13: 0.7
+  14: 0.3
   15: 0.3
   16: 0.3
-  17: 0.3
-  18: 0.7
+  17: 0.7
+  18: 0.3
   19: 0.3
   20: 0.3
   21: 0.3
@@ -74,9 +73,9 @@ extra:
   69: 0.3
   70: 0.3
   71: 0.3
-  72: 0.3
+  72: 0.7
   73: 0.3
-  74: 0.7
+  74: 0.3
   75: 0.3
   76: 0.3
   77: 0.3
@@ -84,27 +83,27 @@ extra:
   79: 0.3
   80: 0.3
   81: 0.3
-  82: 0.3
+  82: 0.7
   83: 0.3
-  84: 0.7
+  84: 0.3
   85: 0.3
   86: 0.3
   87: 0.3
-  88: 0.3
-  89: 0.3
+  88: 0.7
+  89: 0.7
   90: 0.3
   91: 0.3
   92: 0.3
-  93: 0.3
-  94: 0.7
+  93: 0.7
+  94: 0.3
   95: 0.7
   96: 0.3
-  97: 0.3
+  97: 0.7
   98: 0.3
-  99: 0.7
+  99: 0.3
   100: 0.3
   101: 0.3
-  102: 0.7
+  102: 0.3
   103: 0.3
   104: 0.3
   105: 0.3
@@ -117,9 +116,3 @@ extra:
   112: 0.3
   113: 0.3
   114: 0.3
-  115: 0.3
-  116: 0.3
-  117: 0.3
-  118: 0.3
-  119: 0.3
-  120: 0.3

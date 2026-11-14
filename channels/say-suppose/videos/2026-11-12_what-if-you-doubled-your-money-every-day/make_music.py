@@ -39,57 +39,51 @@ OUT = HERE / "assets" / "music" / "cues"
 THEMES = HERE.parents[1] / "brand" / "music"
 REFERENCE_STRENGTH = 0.2
 
-STYLE = (
-    "cinematic underscore for an animated paper-cut story with spoken dialogue, small chamber ensemble, "
-    "instrumental, no vocals, no drum kit, sparse, leaves room for voices"
-)
 
 # name -> (from line, to line (None: the film's end), bpm, key, reference, brief). Lines by their opening words. The
 # reference is a channel theme ("light", "dark") at REFERENCE_STRENGTH, or "lotte", Lotte's own theme, at LOTTE_STRENGTH.
 #
-# v4 (owner, 2026-11-13: "This is a little EMOTIONAL angle story ... Maybe with music we can make it better"): Lotte
-# gets a theme of her own, a short waltz on felt piano with a cello answering (LOTTE, made first, played nowhere on its
-# own), and every cue where the film's heart is (her savings book, Jonas's "Not me", the glass door, the morning after)
-# is made with it as the reference, so the same tune comes back each time, sadder, then tender, then whole.
+# v5 (owner, 2026-11-13: "most of the videos we made so far are emotional sort of ... I want exciting stuff"; the
+# Gemini outside review: electronic, building, 120-150 bpm, each midnight a step up, Lotte's piano once): a futuristic
+# synth score that climbs with the money; Lotte's theme (LOTTE, the reference) only for her savings book.
+STYLE = (
+    "modern cinematic electronic underscore for an animated story with spoken dialogue, pulsing analog synth "
+    "arpeggios, punchy light percussion, instrumental, no vocals, energetic but leaves room for voices"
+)
 CUES = {
-    "wonder": ("Two cents. Last night", "Day eleven.", 92, "C major", "light",
-               "curious and wide-eyed, pizzicato strings and celesta, a soft ticking clock motif, a secret rule "
-               "being explained, a cold low cello note for the king's wheat"),
-    "giddy": ("Day eleven.", "But here's the problem", 116, "F major", "light",
-              "giddy and celebratory, a small street brass band played softly, tuba and clarinet, bouncy, a party "
-              "getting out of hand, cheeky, then a happy tram rattle"),
-    "uneasy": ("But here's the problem", "Day twenty-eight.", 84, "D minor", "dark",
-               "uneasy and suspicious, plucked low strings and a muted clock tick, a polite bank office, something "
-               "being signed that should not be"),
-    "awe": ("Day twenty-eight.", "So you spend.", 76, "A major", "light",
-            "rising awe, shimmering high strings and a music box, a fortune pouring out, wonder with a hint of "
-            "vertigo"),
-    "spree": ("So you spend.", "Karl: Same flour.", 124, "G major", "light",
-              "brisk comic spending spree, marimba and pizzicato, a football crowd's joy, a balloon floating off, "
-              "mischievous and quick"),
-    "price": ("Karl: Same flour.", "Same rolls. Four twenty", 88, "E minor", "dark",
-              "tense and close, a low plucked ostinato that keeps climbing one step at a time, muted strings, a "
-              "price going up and up, worry growing under a plain conversation"),
-    "ache": ("Same rolls. Four twenty", "So you try the obvious", 66, "D minor", "lotte",
-             "heartbroken and quiet, the same waltz tune slow and in a minor key on solo felt piano, a cello "
-             "under it, an old baker alone with her savings book after closing, a lamp, very sparse, lots of air"),
-    "giving": ("So you try the obvious", "Jonas: Six thirty?", 96, "G major", "light",
-               "hopeful and generous at first, warm strings and soft glockenspiel, envelopes handed door to door, "
-               "then a doubt creeping in, the tune stalls and turns uncertain"),
-    "notme": ("Jonas: Six thirty?", "Day fifty-five.", 70, "B minor", "lotte",
-              "hurt and tender, the waltz tune on a lone cello, piano chords under it, a friend refusing a gift, "
-              "pride and sadness, close and quiet"),
-    "dread": ("Day fifty-five.", "Herr Brandt: So it was", 72, "B minor", "dark",
-              "growing dread, a slow pulse, low sustained strings swelling, wheat rising over a city, vast and cold"),
-    "countdown": ("Herr Brandt: So it was", "Lotte: All counted?", 96, "C minor", "dark",
-                  "a ticking countdown at night, tense pizzicato and a held high string, minutes to midnight, "
-                  "running down a staircase"),
-    "door": ("Lotte: All counted?", "Zero, doubled", 60, "D major", "lotte",
-             "tender and fragile, the waltz tune on solo felt piano, very slow and soft, one cent pressed into an "
-             "old woman's palm at a glass door at midnight, a held breath, fading to nothing"),
-    "resolve": ("Zero, doubled", None, 72, "D major", "lotte",
-                "the waltz tune whole at last, felt piano and warm strings and cello together, bittersweet and "
-                "hopeful, a bakery opening in the morning, gentle, resolving"),
+    "hook": ("Day thirty-one. Ten million", "Lotte: Declined.", 128, "A minor", "light",
+             "a huge cinematic synth swell and a fast arpeggio, a jackpot of glittering digits, then a sudden stop"),
+    "wonder": ("Two cents. Last night", "Day eleven.", 120, "C major", "light",
+               "curious ticking synth pulse, plucky arpeggio, a secret rule, rising sub-bass under a chessboard, "
+               "a riser and a drop"),
+    "climb": ("Day eleven.", "But here's the problem", 124, "F major", "light",
+              "upbeat electro-pop groove that keeps adding layers, bright synth stabs, a party getting out of hand, "
+              "a playful brass riff, cheeky and fun"),
+    "uneasy": ("But here's the problem", "Day twenty-eight.", 110, "D minor", "dark",
+               "tense pulsing synth bass and a ticking clock, a sleek bank, something being signed, curious and "
+               "suspicious"),
+    "jackpot": ("Day twenty-eight.", "Day thirty-five. A hundred", 130, "A major", "light",
+                "euphoric synthwave drive, shimmering arpeggios, a fortune pouring out, a shopping spree, a stadium "
+                "cheering, triumphant and fast"),
+    "future": ("Day thirty-five. A hundred", "Karl: Same flour.", 136, "G major", "light",
+               "futuristic high-energy synthwave, a swarm of drones taking off, whooshing sweeps, mischievous and "
+               "huge"),
+    "price": ("Karl: Same flour.", "She counts what her savings", 112, "E minor", "dark",
+              "tense climbing synth ostinato that rises one step at a time, prices going up and up, worry growing"),
+    "ache": ("She counts what her savings", "So you try the obvious", 66, "D minor", "lotte",
+             "the waltz tune slow and in a minor key on solo felt piano, an old baker alone with her savings book, "
+             "sparse, lots of air"),
+    "chaos": ("So you try the obvious", "Day fifty-two. You're", 140, "B minor", "dark",
+              "relentless driving electronic thriller pulse, a whole city glitching, alarms and risers, playful chaos"),
+    "planet": ("Day fifty-two. You're", "Herr Brandt: So it was", 100, "C minor", "light",
+               "massive cinematic synth and brass swell, breaking news, the whole Earth wrapped in gold, then out "
+               "into the universe, vast awe and wonder"),
+    "countdown": ("Herr Brandt: So it was", "Zero, doubled", 150, "C minor", "dark",
+                  "a racing ticking countdown at midnight, fast percussion and a pulsing bass, running down stairs, "
+                  "a heist, urgent and exciting"),
+    "triumph": ("Zero, doubled", None, 120, "C major", "light",
+                "a triumphant electronic anthem hit, warm synths and a big beat, a victory with two seconds to spare, "
+                "then a bright playful groove and a cheeky cliffhanger sting"),
 }
 # Lotte's theme, the reference above: made first, at its own length.
 LOTTE = ("lotte", 60, 72, "D major",

@@ -1,29 +1,22 @@
 # Cue sheet, G2 intent (rules/sound.md #1); final spotting at G4. scenes/sound.ts is where it plays.
-# v4 (owner, 2026-11-13): "This is a little EMOTIONAL angle story. I don't know if this will go big. Maybe with music we
-# can make it better." Lotte gets a theme of her own (make_music.py LOTTE, a waltz on felt piano with a cello answering),
-# and it comes back at each of the film's four heart moments: sad at her savings book, on a lone cello at Jonas's "Not
-# me", tender at the glass door, whole after the silence. Every set has a two-layer ambience bed (make_ambience.py) and
-# the story's props have their sounds (make_sfx.sh), as on the wants-you-to-fail film's v3 notes; until v3 this film
-# had voice and music only.
-# Levels (sound #4, unchanged): music about 28 dB under the voice, up to hold level in the holds; beds about 30 dB under
-# the voice, about 8 dB under the hold music; at most two effects under a line (#9). Music leads each section by 1 s,
-# beds by 0.5 s (#7). Rights (#11): theme-light and theme-dark are the channel themes (U1); every cue is made locally by
-# ACE-Step 1.5 (U2, owner 2026-11-09, "Yes, keep it"); beds and effects are synthesised. No paid call.
+# v5 (owner, 2026-11-13: "I want exciting stuff"; the Gemini outside review): an electronic score that climbs with the
+# money (make_music.py, ACE-Step 1.5, local; the channel themes as style reference, U2), Lotte's piano theme once, at her
+# savings book. Beds (make_ambience.py) and effects (make_sfx.sh) as in v4, plus the cash machine and the drones' whoosh.
+# Levels (sound #4, unchanged). One planned silence, 4 s (was 9), at midnight; the triumph cue is the one entry after it.
 beats:
-  - {beat: One Cent, intent: amused, music: "theme-light from frame 0 (the channel signal)", bed: bakery, then flat-night, fx: [reader tap, declined buzz, the midnight rip louder]}
-  - {beat: Two Cents and the Rule, intent: wonder, music: cue wonder, bed: "flat-night, bakery, bakery-lamp (the chessboard)", fx: [a rip at each midnight, rule card snap]}
-  - {beat: Your Own Roll to the Tram, intent: giddy, music: cue giddy (soft street band), bed: "bakery, street, party, tram", fx: [day-tag flutter]}
-  - {beat: Yesterday's Number and the Bank, intent: uneasy, music: cue uneasy, bed: "street-quiet, bakery, bank", fx: [the stamp]}
-  - {beat: A Billion Cents, intent: awe, music: cue awe, bed: bakery, fx: [the digits pouring (the flutter, long)]}
-  - {beat: Can't Spend It, intent: mischief, music: cue spree, bed: "street, ground (a crowd swelling), street", fx: [problem 1 card]}
+  - {beat: Flash-Forward, intent: thrill, music: "cue hook (synth swell, a jackpot arpeggio, a stop)", bed: bakery, fx: [the digits pouring]}
+  - {beat: One Cent, intent: amused, music: "theme-light (the channel signal)", bed: "bakery, flat-night", fx: [reader tap, declined buzz, the midnight rip]}
+  - {beat: The Rule and the Chessboard, intent: wonder, music: "cue wonder (ticking pulse, a riser and a drop on the dune)", bed: "bakery, bakery-lamp", fx: [a rip at each midnight, rule card snap]}
+  - {beat: Your Own Roll to the Tram, intent: giddy, music: "cue climb (electro-pop that adds layers)", bed: "bakery, street, party, tram", fx: [day-tag flutter]}
+  - {beat: The Bar Chart and the Bank, intent: curious, music: cue uneasy, bed: "street-quiet, bakery, bank", fx: [the stamp]}
+  - {beat: A Billion Cents to the Shares, intent: euphoric, music: "cue jackpot (synthwave drive)", bed: "bakery, hush, ground, bakery", fx: [the pour, a rip at midnight]}
+  - {beat: BREAD-NET, intent: spectacle, music: "cue future (high-energy synthwave)", bed: street, fx: [the drones' whoosh, problem 1 card]}
   - {beat: Karl at the Back Door, intent: worry, music: "cue price (a climbing ostinato)", bed: "backdoor, bakery", fx: [card]}
-  - {beat: Lotte's Savings Book, intent: heartbreak, music: "cue ache: Lotte's theme, slow, minor, solo piano; it blooms in the 5 s hold", bed: bakery-lamp, fx: []}
-  - {beat: Giving It Away, intent: hope souring, music: cue giving, bed: "street, bakery, hush (Cairo)", fx: [problem 2 card, the 1324 card]}
-  - {beat: Not Me, intent: hurt, music: "cue notme: Lotte's theme on a lone cello", bed: bakery, fx: [problem 3 card]}
-  - {beat: The Planet, intent: dread, music: cue dread, bed: "night, bakery-lamp", fx: [card]}
-  - {beat: Exactly Zero, intent: tension, music: cue countdown (ticking), bed: "flat-clock (the clock near), bank-night, flat-clock", fx: [the form torn, the phone buzzing]}
-  - {beat: The Glass Door, intent: tender, music: "cue door: Lotte's theme, very soft, gone by the end of 'She closes her hand.'", bed: door, fx: [the cent into her palm]}
-  - {beat: The Silence, intent: peak, music: "none: the one planned silence, 9 s, faded under the line before it (sound #5), the door bed is its floor", bed: door, fx: []}
-  - {beat: Zero Doubled and the Morning, intent: resolve, music: "cue resolve: Lotte's theme whole, the one entry after the peak (#3); theme-light on the end card", bed: "door, then bakery", fx: [the key, the lamp]}
+  - {beat: Lotte's Savings Book, intent: the one quiet beat, music: "cue ache: Lotte's theme, once, about 20 s", bed: bakery-lamp, fx: []}
+  - {beat: A Million Each, intent: chaos, music: "cue chaos (driving thriller pulse)", bed: "street, bakery, hush, bakery", fx: [phones buzzing, problem 2 and 3 cards, the 1324 card]}
+  - {beat: The Planet and the Universe, intent: awe, music: "cue planet (a huge synth and brass swell)", bed: "hush, bakery-lamp", fx: [cards]}
+  - {beat: Exactly Zero, intent: race, music: "cue countdown (150 bpm)", bed: "flat-clock, bank-night, flat-clock, street, door", fx: [the form torn, the phone buzzing, the cent into her palm]}
+  - {beat: Midnight, intent: peak, music: "none: 4 s silence over the door bed, faded under the line before it", bed: door, fx: []}
+  - {beat: Counted and the Cliffhanger, intent: triumph, music: "cue triumph (the win, then a cheeky sting); theme-light on the end card", bed: "door, bakery", fx: [the key, the lamp, Jonas's phone ripping]}
 planned_silences:
-  - {where: "after 'You count. One cent. ... She closes her hand.'", length: 9 s, slope: fade, reason: "midnight passes and the coin has nothing to tear"}
+  - {where: "after 'You count. One cent. ... Twenty-three fifty-nine and fifty-eight.'", length: 4 s, slope: fade, reason: "midnight passes and the coin has nothing to tear"}

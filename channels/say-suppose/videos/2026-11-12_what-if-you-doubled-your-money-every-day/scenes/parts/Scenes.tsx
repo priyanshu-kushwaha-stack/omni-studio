@@ -79,8 +79,13 @@ export const TramRide: React.FC<{ t: ShotTime; focus?: "woman" | "driver" | "jon
           { spot: "window", who: { head: PASTELS[0], coat: "#5a5f6a" }, face: EXPRESSIONS.happy },
           { spot: "pole", who: { ...HERO, held: <SmallPhone /> }, face: EXPRESSIONS.happy, pose: { ...STAND, armF: [70 + tap, 40] } },
         ]}
-        actors={<Figure x={1800} y={960} scale={1.2} facing={-1} pose={{ ...STAND, armF: [70, 40] }} head="#c9b79c" coat="#2f3a4a" cap="#2f3a4a"
-          {...EXPRESSIONS[focus === "driver" ? "sceptical" : "neutral"]} {...talk("Mehmet")} time={t.f / 30} look={{ x: 0.8, y: 0.1 }} />} />
+        actors={<>
+          {/* v5: the tram packed to the windows (the outside review: "thirty people" in a near-empty car). */}
+          {Array.from({ length: 26 }, (_, i) => (
+            <circle key={i} cx={120 + (i % 13) * 118 + (i > 12 ? 50 : 0)} cy={i > 12 ? 560 : 500} r={34} fill={PASTELS[i % PASTELS.length]} stroke={INK} strokeWidth={4} />
+          ))}
+          <Figure x={1800} y={960} scale={1.2} facing={-1} pose={{ ...STAND, armF: [70, 40] }} head="#c9b79c" coat="#3f6fa0" cap="#f2b632"
+            {...EXPRESSIONS[focus === "driver" ? "sceptical" : "neutral"]} {...talk("Mehmet")} time={t.f / 30} look={{ x: 0.8, y: 0.1 }} /></>} />
     </Framed>
   );
 };
@@ -114,10 +119,6 @@ export const Ground: React.FC<{ t: ShotTime; jonas: "sit" | "shock" | "jump" | "
 export const Balloon: React.FC<{ t: ShotTime; phase?: "ready" | "rise" | "back"; focus?: "lotte" | "jonas" | null; jonasFace?: Face;
   lotteFace?: Face; orders?: [number, number] }> = ({ t, phase = "ready", focus = null, jonasFace = "happy", lotteFace = "sceptical", orders }) => {
   const talk = useTalk();
-  const lift = phase === "rise" ? ease(t.p) : phase === "back" ? 1 - ease(ramp(t.p, 0, 0.6)) : 0;
-  const bx = mix(1150, 1500, lift) + Math.sin(t.f / 40) * 12;
-  const by = mix(360, 90, lift) + Math.sin(t.f / 25) * 8;
-  const hand = { x: 1110, y: 760 };
   const crops: Record<string, Focus> = { lotte: [1.7, 330, 720], jonas: [1.6, 1100, 640] };
   const count = orders ? Math.round(mix(orders[0], orders[1], ease(ramp(t.p, 0.1, 0.85)))) : null;
   const inside = phase === "rise" && t.p > 0.6;
@@ -126,22 +127,33 @@ export const Balloon: React.FC<{ t: ShotTime; phase?: "ready" | "rise" | "back";
       <SetScene set={street} mood="morning" frame={t.f} cam={street.cameras.wide} options={{ auto: false, bus: null, crowd: false }} cast={[]}
         actors={
           <>
-            <defs><clipPath id="bal"><ellipse cx={0} cy={0} rx={160} ry={190} /></clipPath></defs>
-            <path d={`M${bx} ${by + 250} Q ${mix(bx, hand.x, 0.5) - 40} ${mix(620, 700, lift)} ${hand.x} ${hand.y}`} fill="none" stroke={INK} strokeWidth={4} />
-            <g transform={`translate(${bx} ${by}) scale(${mix(1, 0.7, lift)})`}>
-              <g clipPath="url(#bal)">
-                {Array.from({ length: 8 }, (_, i) => <rect key={i} x={-160 + i * 40} y={-200} width={40} height={400} fill={i % 2 ? "#d8344f" : PAPER} />)}
+            {/* v5: a thousand delivery drones (BREAD-NET) instead of the balloon; 120 drawn, every twelfth carries a roll. */}
+            {Array.from({ length: 120 }, (_, i) => {
+              const r1 = Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 1;
+              const r2 = Math.abs(Math.sin(i * 78.233) * 12345.678) % 1;
+              const go = phase === "rise" ? ease(ramp(t.p, r1 * 0.4, r1 * 0.4 + 0.5)) : 0;
+              const x0 = 480 + r2 * 1400;
+              const y0 = 250 + (i % 4) * 40 + r1 * 30;
+              const x = x0 + go * (r2 - 0.5) * 600;
+              const y = y0 - go * (300 + r1 * 500) + Math.sin(t.f / 6 + i) * (go > 0 ? 4 : 0);
+              const s = 0.9 - go * 0.4;
+              return (
+                <g key={i} transform={`translate(${x} ${y}) scale(${s})`}>
+                  <rect x={-14} y={-6} width={28} height={12} rx={4} fill={INK} />
+                  <path d="M-30 -8 L30 -8" stroke={INK} strokeWidth={4} />
+                  <ellipse cx={-30} cy={-12} rx={14} ry={3} fill="#8a8f98" opacity={go > 0 ? 0.6 : 1} />
+                  <ellipse cx={30} cy={-12} rx={14} ry={3} fill="#8a8f98" opacity={go > 0 ? 0.6 : 1} />
+                  <rect x={-9} y={8} width={18} height={12} rx={2} fill="#b8874f" stroke={INK} strokeWidth={2} />
+                  {i % 12 === 0 && phase === "rise" && <ellipse cx={0} cy={6} rx={9} ry={6} fill="#d89a58" stroke={INK} strokeWidth={2} />}
+                </g>
+              );
+            })}
+            {phase !== "rise" && (
+              <g transform="translate(1300 160)">
+                <rect x={-170} y={-50} width={340} height={100} rx={14} fill={INK} />
+                <text x={0} y={18} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={54} fill="#5fc4b8">BREAD-NET</text>
               </g>
-              <ellipse cx={0} cy={0} rx={160} ry={190} fill="none" stroke={INK} strokeWidth={7} />
-              <rect x={-150} y={-36} width={300} height={72} rx={10} fill={PAPER} stroke={INK} strokeWidth={5} />
-              <text x={0} y={-6} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={INK}>BREAD FROM</text>
-              <text x={0} y={26} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={INK}>THE SKY</text>
-              <path d="M-60 175 L-40 230 M60 175 L40 230" stroke={INK} strokeWidth={4} />
-              <rect x={-50} y={228} width={100} height={50} rx={6} fill="#b8874f" stroke={INK} strokeWidth={5} />
-              {phase === "rise" && Array.from({ length: 8 }, (_, i) => (
-                <ellipse key={i} cx={-39 + (i % 4) * 26} cy={i < 4 ? 222 : 204} rx={17} ry={11} fill="#d89a58" stroke={INK} strokeWidth={3} />
-              ))}
-            </g>
+            )}
             {!inside ? (
               <g>
                 <rect x={180} y={620} width={230} height={390} fill="#ffd8a0" opacity={0.5} stroke={INK} strokeWidth={8} />
@@ -156,11 +168,11 @@ export const Balloon: React.FC<{ t: ShotTime; phase?: "ready" | "rise" | "back";
               <g transform="translate(870 560)">
                 <rect x={-120} y={-56} width={240} height={96} rx={16} fill={PAPER} stroke={INK} strokeWidth={5} />
                 <text x={0} y={-14} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={INK} opacity={0.7}>ORDERS</text>
-                <text x={0} y={30} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={46} fill="#d8344f">{count}</text>
+                <text x={0} y={30} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={46} fill="#d8344f">{count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</text>
               </g>
             )}
             <rect x={1500} y={760} width={420} height={250} rx={14} fill="#8a8f98" stroke={INK} strokeWidth={7} />
-            <Figure x={1560} y={1010} scale={1.45} facing={-1} pose={{ ...STAND, armF: [70, 50], armB: [-20, 20] }} head="#c9b79c" coat="#4a4a52" cap="#4a4a52"
+            <Figure x={1560} y={1010} scale={1.45} facing={-1} pose={{ ...STAND, armF: [70, 50], armB: [-20, 20] }} head="#d9b48a" coat="#8a6a4a" cap="#e8e2cf"
               {...EXPRESSIONS.neutral} time={t.f / 30 + 2} look={{ x: 0.5, y: 0 }} held={<Sack />} />
           </>
         } />
@@ -200,8 +212,8 @@ export const BackDoor: React.FC<{ t: ShotTime; speaker?: "flour" | "lotte" | nul
         <circle cx={1800} cy={1000} r={46} fill="#2a2a30" stroke={INK} strokeWidth={6} />
         <Figure x={640} y={1060} scale={1.6} facing={1} pose={{ ...STAND, armF: take ? [80, 30] : [30, 20], armB: [-12, 14] }} {...LOTTE}
           {...EXPRESSIONS[lotteFace]} {...talk("Lotte")} time={t.f / 30} look={{ x: 0.9, y: 0.1 }} held={take ? <Sack /> : undefined} />
-        <Figure x={1080} y={1060} scale={1.8} facing={-1} pose={{ ...STAND, armF: take ? [20, 10] : [35, 25], armB: [-30, 20] }} head="#c9b79c"
-          coat="#4a4a52" cap="#4a4a52" {...EXPRESSIONS[flourFace]} {...talk("Karl")} time={t.f / 30 + 2} look={up ? { x: 0.2, y: -0.9 } : { x: 0.9, y: 0.1 }}
+        <Figure x={1080} y={1060} scale={1.8} facing={-1} pose={{ ...STAND, armF: take ? [20, 10] : [35, 25], armB: [-30, 20] }} head="#d9b48a"
+          coat="#8a6a4a" cap="#e8e2cf" {...EXPRESSIONS[flourFace]} {...talk("Karl")} time={t.f / 30 + 2} look={up ? { x: 0.2, y: -0.9 } : { x: 0.9, y: 0.1 }}
           held={take ? undefined : <g transform="rotate(-8)"><rect x={-22} y={-40} width={44} height={56} fill={PAPER} stroke={INK} strokeWidth={3} />
             {[0, 1, 2].map((i) => <rect key={i} x={-14} y={-30 + i * 12} width={28} height={4} fill={INK} opacity={0.5} />)}
             <text x={0} y={10} transform="scale(-1 1)" textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={12} fill="#c4283c">x3</text></g>} />

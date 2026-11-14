@@ -1,0 +1,62 @@
+{
+  "call_id": "b220948888dd484188e16c5403b26827",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "Day fifty-five. More money than the whole planet makes in a year.",
+      "why": "The spoken line states the real-world finding about global economic output from claim c09 without citing its ledger row inline.",
+      "fix": "Day fifty-five. More money than the whole planet makes in a year (c09).",
+      "domain": "fact",
+      "line": 26
+    },
+    {
+      "quote": "And if you never stop? Day two hundred and sixty-seven. More cents in your account than atoms in the observable universe (c12).",
+      "why": "Overstates the certainty of claim c12. The verbatim quote states the Eddington number is 'approximately 10^80 hydrogen atoms'. Because day 267 (2^266 cents \u2248 1.19 \u00d7 10^80) is an order-of-magnitude comparison against an estimate, stating an absolute count ('than atoms') rather than an estimate exceeds what the source quote supports.",
+      "fix": "And if you never stop? Day two hundred and sixty-seven. More cents in your account than estimated atoms in the observable universe (c12).",
+      "domain": "fact",
+      "line": 366
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 233,
+      "quote": "Day thirty-three. Forty million euros.",
+      "fix": "Day thirty-three. Twenty-seven million euros."
+    },
+    {
+      "line": 95,
+      "quote": "A king, a chessboard (c05). One grain on the first square, and double on every square after.",
+      "fix": "A king, a chessboard. One grain on the first square, and double on every square after (c05)."
+    },
+    {
+      "line": 257,
+      "quote": "Day thirty-five. A hundred and seventy million.",
+      "fix": "Day thirty-five. A hundred and eight million."
+    }
+  ],
+  "keep": [
+    {
+      "line": 327,
+      "quote": "In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06)."
+    },
+    {
+      "line": 359,
+      "quote": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09)."
+    },
+    {
+      "line": 169,
+      "quote": "Ask people to carry on a doubling, and most guess far too low (c08)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "828dc50a10d4154dbd2351e253c138cf181579f7eecf067b6153f109fd006049",
+  "draft_sha256": "c012ee2aa6387a80763b2ff9435911e0b1b04b61ef7810c8603dbaf25c7ec014"
+}

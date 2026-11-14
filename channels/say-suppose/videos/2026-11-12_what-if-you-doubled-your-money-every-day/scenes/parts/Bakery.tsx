@@ -27,6 +27,8 @@ const LOTTE_POSES: Record<string, Pose> = {
   slide: { ...STAND, lean: -8, armF: [80, 10], armB: [-10, 12] },
   palm: { ...STAND, lean: -4, armF: [75, -5], armB: [-10, 12] },
   write: { ...STAND, tilt: 6, armF: [150, 40], armB: [-10, 12] },
+  // v5: the savings book held low at the chest, read (the outside review: held overhead it read as a brick).
+  read: { ...STAND, tilt: 12, armF: [60, 40], armB: [-10, 12] },
 };
 const YOU_POSES: Record<string, Pose> = {
   phoneUp: { ...STAND, lean: -3, tilt: -5, armF: [70, 62], armB: [-12, 14] },

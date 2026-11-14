@@ -48,9 +48,10 @@ export interface PhoneCloseProps {
 export const PhoneClose: React.FC<{ t: ShotTime } & PhoneCloseProps> = ({ t, mood, mode, days = [2, 3], cents = [0, 0] }) => {
   const [a, b] = BACK[mood] ?? BACK.day;
   const nights = days[1] - days[0];
-  // The doubling: one midnight per stretch of the shot; the coin tears as the flap turns.
-  const step = nights > 0 ? Math.min(nights, Math.floor(t.p * nights * 1.1)) : 0;
-  const local = nights > 0 ? (t.p * nights * 1.1) % 1 : 0;
+  // The doubling: one midnight per stretch of the first half of the shot (v5: so the phone lands on the day the tag and
+  // the narrator name, not after them); the coin tears as the flap turns.
+  const step = nights > 0 ? Math.min(nights, Math.floor(t.p * nights * 2)) : 0;
+  const local = nights > 0 ? (t.p * nights * 2) % 1 : 0;
   const tear = mode === "double" ? ramp(local, 0.55, 0.85) : 0;
   let day = days[0] + step;
   let bal = balanceOn(day);

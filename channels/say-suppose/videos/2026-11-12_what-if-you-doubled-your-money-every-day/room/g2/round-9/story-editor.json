@@ -1,0 +1,69 @@
+{
+  "call_id": "0501784ceab340acaa0429c8c795204d",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 6
+  },
+  "blockers": [
+    {
+      "quote": "So you spend. Faster than it grows. Can you?",
+      "why": "Check #21, Close the loopholes on screen: withdrawing or transferring the entire balance would make the named account zero. Jonas refusing does not explain why another recipient, cash withdrawal or another account cannot stop the doubling.",
+      "fix": "Plant before the midpoint that transfers this large take days, then replace this line with: \"First, TRANSFER ALL. Still pending. It clears in three days; midnight comes in three hours. So you spend. Can that outrun tonight?\"",
+      "domain": "story",
+      "line": 224
+    },
+    {
+      "quote": "## [00:00] Flash-Forward",
+      "why": "Check #15, Cold open inside the power: this is explicitly a teaser from later, followed by a rewind.",
+      "fix": "Replace lines 17-30 with a chronological day-two skit in the thumbnail composition: the lock-screen coin tears into two, the 0,02 digits spill as a comically tiny ribbon, Lotte's chalk stops, and Jonas says, \"Two cents?\" Preserve day thirty-one as the larger payoff.",
+      "domain": "story",
+      "line": 17
+    },
+    {
+      "quote": "What if your money doubled every day?",
+      "why": "Check #3, Second hook by 0:30: the title question arrives at 0:30, and the gain, loss and exact-zero danger arrive later.",
+      "fix": "Move this to the first narration in the opening skit and replace it with: \"What if your money doubled every day? Keep it, and one cent can buy a city. Miss exactly zero at midnight, and it never stops.\" Do not repeat the rule later.",
+      "domain": "story",
+      "line": 67
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 327,
+      "quote": "This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06). Your gifts do it to bread. Ask Jonas.",
+      "fix": "Move the Mansa Musa fact immediately before the citywide transfer as a warning you ignore; then the fact causes the decision instead of pausing after its consequence."
+    },
+    {
+      "line": 366,
+      "quote": "Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of atoms in the observable universe (c12).",
+      "fix": "Make the scale trigger the turn: follow it immediately with, \"You stop scrolling and call Herr Brandt.\""
+    },
+    {
+      "line": 233,
+      "quote": "Day thirty-three. Forty million euros. Jonas has a football club. Not supports. Has. The one at the end of the tram line, that loses every Saturday.",
+      "fix": "After the win, add: \"Before the cheer ends, three rival clubs are outside Lotte's asking you to buy them too.\" This makes the world react wider instead of leaving the purchase as a standalone gag."
+    }
+  ],
+  "keep": [
+    {
+      "line": 241,
+      "quote": "Jonas: I don't know what to do with my hands when they win."
+    },
+    {
+      "line": 310,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 415,
+      "quote": "Zero, doubled, is zero."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "c36a6df37a286459c3ec73b52e60d43582a2cb63b25e2351d91afd125e92fd1b",
+  "draft_sha256": "36bfbf6d0d94dc0efffdbbcd50406ca82f4b3518eff509dc641a7733e2cdce5f"
+}

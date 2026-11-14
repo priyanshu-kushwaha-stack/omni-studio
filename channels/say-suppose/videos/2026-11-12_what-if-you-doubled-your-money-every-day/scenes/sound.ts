@@ -12,26 +12,26 @@
 import type { Anchor } from "./shots";
 
 export const SCORE: { file: string; from: string | null }[] = [
-  { file: "theme-light.mp3", from: null },                       // One Cent: the card declined, the midnight rip
-  { file: "cues/wonder.wav", from: "Two cents. Last night" },     // the narrator, the rule, the king's wheat
-  { file: "cues/giddy.wav", from: "Day eleven." },               // your own roll, thirty-one cakes, the whole tram
-  { file: "cues/uneasy.wav", from: "But here's the problem" },   // yesterday's number, Herr Brandt's form
-  { file: "cues/awe.wav", from: "Day twenty-eight." },           // the building, the billion cents
-  { file: "cues/spree.wav", from: "So you spend." },             // the club, the balloon, the shops
+  // v5 (owner, 2026-11-13: "I want exciting stuff"; the outside review): an electronic score that climbs with the money.
+  { file: "cues/hook.wav", from: null },                         // the flash-forward
+  { file: "theme-light.mp3", from: "Lotte: Declined." },         // One Cent: the channel signal
+  { file: "cues/wonder.wav", from: "Two cents. Last night" },     // the narrator, the rule, the chessboard (riser, drop)
+  { file: "cues/climb.wav", from: "Day eleven." },               // your own roll, the cakes, the tram
+  { file: "cues/uneasy.wav", from: "But here's the problem" },   // the bar chart, the bank
+  { file: "cues/jackpot.wav", from: "Day twenty-eight." },       // the building, the billion cents, the spree, the club, the shares
+  { file: "cues/future.wav", from: "Day thirty-five. A hundred" }, // BREAD-NET's thousand drones
   { file: "cues/price.wav", from: "Karl: Same flour." },         // the back door, the board climbing
-  { file: "cues/ache.wav", from: "Same rolls. Four twenty" },    // Lotte's savings book (her theme, sad)
-  { file: "cues/giving.wav", from: "So you try the obvious" },   // the envelopes
-  { file: "cues/notme.wav", from: "Jonas: Six thirty?" },        // Jonas's "Not me" (her theme on cello)
-  { file: "cues/dread.wav", from: "Day fifty-five." },           // the planet, the choice
-  { file: "cues/countdown.wav", from: "Herr Brandt: So it was" }, // exactly zero, the refund, down the stairs
-  { file: "cues/door.wav", from: "Lotte: All counted?" },        // the glass door (her theme, tender), into the silence
-  { file: "cues/resolve.wav", from: "Zero, doubled" },           // after the silence: her theme whole, the morning
+  { file: "cues/ache.wav", from: "She counts what her savings" }, // the one quiet beat: Lotte's theme, once
+  { file: "cues/chaos.wav", from: "So you try the obvious" },    // a million each, the city stops, Mansa Musa, "Not me"
+  { file: "cues/planet.wav", from: "Day fifty-two. You're" },    // the news, the Earth, the universe
+  { file: "cues/countdown.wav", from: "Herr Brandt: So it was" }, // the call, the refund, the run, into the silence
+  { file: "cues/triumph.wav", from: "Zero, doubled" },           // after the silence: the win, the cliffhanger
 ];
 
 /** [bed (assets/sfx/bed-<name>.wav), from the start of this line (or an anchor)]; the first plays from frame 0. */
 export const BEDS: [string, string | Anchor | null][] = [
   ["bakery", null],                              // the counter, seven in the morning
-  ["flat-night", { line: "Lotte: And a day-old", edge: "end" }], // midnight, the flat
+  ["flat-night", { line: "Jonas: My treat.", edge: "end" }], // midnight, the flat
   ["bakery", "Here's the rule, once"],
   ["bakery-lamp", { line: "Lotte doesn't laugh", edge: "end" }], // after closing, the chessboard
   ["bakery", "Day eleven."],
@@ -42,22 +42,24 @@ export const BEDS: [string, string | Anchor | null][] = [
   ["bakery", "The number's ahead"],
   ["bank", "Herr Brandt: Where does"],
   ["bakery", "Day twenty-eight."],
-  ["street", "So you spend."],
+  ["hush", "So you spend."],
   ["ground", "Day thirty-three."],
-  ["street", "Day thirty-five."],                // the balloon over the roofs
+  ["bakery", "You're thinking it."],
+  ["street", "Day thirty-five. A hundred"],                // the balloon over the roofs
   ["bakery", "It isn't. Money is a ticket"],
   ["backdoor", "Karl: Same flour."],
   ["bakery", "Day forty."],
-  ["bakery-lamp", { line: "Same rolls. Four twenty", edge: "end" }], // her savings book
+  ["bakery-lamp", { line: "Day forty.", edge: "end" }], // her savings book
   ["street", "So you try the obvious"],
   ["bakery", "Lotte: Flour. Not money."],
   ["hush", "This has happened before."],         // Cairo, a picture
-  ["bakery", "Jonas: Six thirty?"],
-  ["night", "Day fifty-five."],
-  ["bakery-lamp", "Here's your choice."],
+  ["bakery", "Jonas: Sixty-three?"],
+  ["hush", "Day fifty-two. You're"],             // the studio, the Earth, the universe
+    ["bakery-lamp", "And there's only one way out"],
   ["flat-clock", "Herr Brandt: So it was"],      // eleven at night, the clock
   ["bank-night", "Herr Brandt: Everything goes"],
   ["flat-clock", "Herr Brandt: Fifty minutes"],
+  ["street", "Who takes one cent"],              // the night run
   ["door", "Lotte: All counted?"],               // the glass door: the silence's floor
   ["bakery", "Day fifty-six."],
 ];

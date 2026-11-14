@@ -1,0 +1,71 @@
+{
+  "call_id": "9d6af9ba5b444780867040a6191e5c7f",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 7,
+    "must_pass_compliance": 6,
+    "escalation_and_payoff": 8
+  },
+  "blockers": [
+    {
+      "quote": "Day thirty-one. Ten million euros, pouring off your phone.",
+      "why": "Check #15, Cold open inside the power: the opening is explicitly a teaser from later, not the acted arrival of the power.",
+      "fix": "Replace lines 17\u201330 with: `> SCENE: Lotte's counter in the thumbnail composition. Your lock-screen notification replays 0,01 tearing into 0,02; Lotte's chalk stops; Jonas leans in.` Then: `Jonas: That just doubled.` / `What if your money doubled every day?` Continue into the declined card and rule.",
+      "domain": "story",
+      "line": 22
+    },
+    {
+      "quote": "> CARD: PROBLEM 3 \u00b7 Whoever holds it makes the bread cost more",
+      "why": "Check #21, Close the loopholes on screen: this does not answer the obvious exploit of transferring the entire balance before midnight. The stated rule doubles only your account, not the recipient's.",
+      "fix": "Before the midpoint, show the attempt: `> SCENE: You transfer the full balance to another account. RETURNED: SOURCE UNKNOWN. Every cent snaps back before midnight.` Replace the card with `> CARD: PROBLEM 3 \u00b7 You can't move it`.",
+      "domain": "story",
+      "line": 349
+    },
+    {
+      "quote": "> HOLD: 4 s. The film's one quiet beat. After closing. Lotte at the counter with a small savings book, pencil moving down a column, slowing, stopping.",
+      "why": "Check #22, A laugh in every scene: this separate savings-book scene contains only sadness.",
+      "fix": "Keep the quiet calculation, then add: `> SCENE: Her calculator flashes ERROR. Lotte turns it upside down.` / `Lotte: Helpful.` Then retain `Lotte: A third.`",
+      "domain": "story",
+      "line": 308
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 237,
+      "quote": "Day thirty-three. Forty million euros. Jonas has a football club. Not supports. Has. The one at the end of the tram line, that loses every Saturday.",
+      "fix": "Force the connector from the failed spending run: `Four million gone, and the balance still rose. Therefore, day thirty-three: Jonas has a football club. Not supports. Has.`"
+    },
+    {
+      "line": 376,
+      "quote": "You call Herr Brandt. Now. The universe can wait. Berlin can't.",
+      "fix": "Restore a two-right-answers dilemma immediately before this action: `Call now, and every promise you made with that money breaks. Wait one night, and the damage doubles. You call Herr Brandt.`"
+    },
+    {
+      "line": 370,
+      "quote": "Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of atoms in the observable universe (c12).",
+      "fix": "Make the scale tighten the present decision rather than merely grow: follow it with `That is what one missed midnight becomes. And Berlin has one left.`"
+    }
+  ],
+  "keep": [
+    {
+      "line": 245,
+      "quote": "Jonas: I don't know what to do with my hands when they win."
+    },
+    {
+      "line": 314,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 419,
+      "quote": "Zero, doubled, is zero."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "4e067ecdb5aed061e24dcefbe3b5b888acf9fbe45160851bfcde4c872c4fe37b",
+  "draft_sha256": "d83bc834a26cd86fc6bd2fca08494e2deff4ee06374d6e4d47bbcdc065c2cb66"
+}

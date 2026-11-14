@@ -1,0 +1,42 @@
+{
+  "call_id": "09a46936889a47b5a6d538fedad90e65",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 95,
+      "quote": "A king, a chessboard (c05). One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+      "fix": "A king, a chessboard (c05). One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years (c05, c11)."
+    },
+    {
+      "line": 359,
+      "quote": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars (c09).",
+      "fix": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About one hundred and twenty-eight trillion dollars (c09)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 327,
+      "quote": "This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06)."
+    },
+    {
+      "line": 366,
+      "quote": "Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of atoms in the observable universe (c12)."
+    },
+    {
+      "line": 169,
+      "quote": "Ask people to carry on a doubling, and most guess far too low (c08)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "73588ec98cafc1021ab70e0c4d42f2ccd2ecf5305c66f9498b0324669f896ae4",
+  "draft_sha256": "36bfbf6d0d94dc0efffdbbcd50406ca82f4b3518eff509dc641a7733e2cdce5f"
+}
