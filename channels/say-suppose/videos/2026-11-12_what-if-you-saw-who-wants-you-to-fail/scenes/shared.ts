@@ -35,7 +35,7 @@ export interface Shot {
   from: number;
   /** The frame the next beat starts on. */
   to: number;
-  /** v4's clips in v4 numbering (remap.ts), for a beat rebuilt on v4 lines. */
+  /** The same clips as `clips` (v5: one numbering, story.json's); kept so older beat code still reads. */
   v4: Clip[];
 }
 

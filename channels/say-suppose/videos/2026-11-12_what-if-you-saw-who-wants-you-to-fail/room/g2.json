@@ -548,39 +548,87 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 16,
+      "draft_sha256": "957f6f345968834d2fd3d71b374b71fff40145f545398880f523697b94b856e9",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "9ae99f4477494aa2b97af1898ef84c29",
+          "file": "room/g2/round-16/claims-check.json",
+          "output_sha256": "3800d59db72b9c2e8069ec9b2d8f833d54d1030f46b577f763a4be046c0dc99d",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "f569b9cd8dfc435ba22f675a084acd6e",
+          "file": "room/g2/round-16/story-editor.json",
+          "output_sha256": "60232231cebb53ebfc3f98ca9c0ed40d7f4b51edbf8b337f100e5b1b68842fb4",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 15,
-    "artifact_sha256": "9abd2722a6cb05564358c34921e01790c1e654d91ad36462d8762f50820dca26"
+    "round": 16,
+    "artifact_sha256": "957f6f345968834d2fd3d71b374b71fff40145f545398880f523697b94b856e9"
   },
-  "calls": 30,
-  "cap": 88,
+  "calls": 32,
+  "cap": 92,
   "author_cut": {
     "round": 1,
     "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4",
     "cost": {
-      "lines_changed": 396,
+      "lines_changed": 540,
       "header_changed": [
         "SITUATION",
+        "DESIRE",
         "CONFLICT",
+        "CHANGE",
+        "RESULT",
+        "UNDER",
         "DARLING"
       ],
       "keep_lost": [
         "Out there the curve is the whole country's: in most subjects, the top four per cent of everyone who sat it (c01).",
         "A tag has one colour for every kind of hurt.",
+        "She was never outside your lane. She was in it first.",
+        "That half-second is the other life, going past.",
         "At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+        "A text would open nothing. You could keep her forever on a screen.",
         "You got the place you wanted. And lost the one beside it.",
         "Across 11 studies, the most common regret of a life is education, about a third of all regrets (c11).",
         "Last year, the country grounded its planes for 35 minutes during the English listening test (c02). This year, you're the one listening.",
-        "Not because of the cards. Because he hears everything first. He always has."
+        "Not because of the cards. Because he hears everything first. He always has.",
+        "He isn't sawing your chair. He's climbing.",
+        "Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours.",
+        "The card gets two minutes. It doesn't get to choose what you do next.",
+        "You stopped helping him. He never stopped helping you.",
+        "At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08)."
       ]
     }
   },
   "presented": {
     "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4",
-    "at": "2026-11-12T06:31:21+00:00"
+    "at": "2026-11-14T04:14:51+00:00"
   }
 }

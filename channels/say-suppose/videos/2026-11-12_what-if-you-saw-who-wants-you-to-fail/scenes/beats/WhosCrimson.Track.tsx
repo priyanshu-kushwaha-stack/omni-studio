@@ -1,13 +1,15 @@
 // Who's Red, why the enemy doesn't care, with the people themselves rather than diagrams (outside review of v4.1,
 // 3:12-3:43: the still top-down desks and the lane-and-chair sheet read as slides).
 //
-//   37  "So a kid gives you everything ... Why?": the two desks from above, alive (the bar breaks in two, the halves
+//   38  "So a kid gives you everything ... Why?": the two desks from above, alive (the bar breaks in two, the halves
 //       slide to each desk, the same worksheet lands on both, a pencil rolls) and pushing in; after about three and a
 //       half seconds, the two of you at your desks, his half of the bar in his hand, and the push to your face on "Why?"
-//   39  "And envy picks someone who started where you did ...": one running track, paper figures on it: the kid outside
+//   40  "And envy picks someone who started where you did ...": one running track, paper figures on it: the kid outside
 //       it on a bench, the rival far ahead strolling, you and your best friend side by side at the same start line,
 //       walking level; after three and a half seconds, your two faces
-//   40  "The kid isn't in the race.": the kid on his bench outside the track, feet swinging, the race going on past him
+//   41  "The kid isn't in the race.": the kid on his bench outside the track, feet swinging, the race going on past him;
+//       (the rival and the next desk are in WhosCrimson.Class.tsx) "the same chocolate bar,": the two of you behind your
+//       desks, the halves of one bar; "the same exam.": from above, one mock paper slaps down on both desks at once
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { SEATED, seatedY, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -19,18 +21,21 @@ import { INK, PAPER, TEAL } from "@whatif/kit/theme";
 import { Chocolate, headAt } from "../parts";
 import { blinking, camAt, current, HERO, MINJUN, mix, PASTELS, ramp, TAEHO } from "../shared";
 import { DeskHalves, MathsBoard, SEAT, seatY } from "./WhosCrimson.Class";
+import { CRIMSON } from "@whatif/kit/theme";
 import { FlatShot, Pencil, SetShot } from "./WhosCrimson.Common";
 import { Cap } from "./WhosCrimson.More";
 import type { CrimsonTimes } from "./WhosCrimson.Times";
 
 type Props = { frame: number; k: CrimsonTimes; mood: MoodName };
 
-// ------------------------------------------------------------------------------------------------ 37 the desks
+// ------------------------------------------------------------------------------------------------ 38 the desks
 
-/** One worksheet, the same on both desks: four lines of working and the board's triangle. Centred on (0, 0). */
-const Worksheet: React.FC = () => (
+/** One worksheet, the same on both desks: four lines of working and the board's triangle (`exam`: a red header band, the
+ *  mock exam). Centred on (0, 0). */
+const Worksheet: React.FC<{ exam?: boolean }> = ({ exam }) => (
   <g>
     <rect x={-150} y={-110} width={300} height={220} rx={6} fill={PAPER} stroke={INK} strokeWidth={4} />
+    {exam && <rect x={-150} y={-110} width={300} height={34} rx={6} fill={CRIMSON} stroke={INK} strokeWidth={4} />}
     {[0, 1, 2, 3].map((i) => <line key={i} x1={-120} y1={-70 + i * 36} x2={i === 3 ? 0 : 40} y2={-70 + i * 36} stroke={TEAL} strokeWidth={3} opacity={0.5} />)}
     <path d="M70 70 V-60 L130 70Z" fill="none" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
   </g>
@@ -38,14 +43,14 @@ const Worksheet: React.FC = () => (
 
 /** The two desks side by side from straight above, centred on (x, y), alive: `sheets` 0..1 lands the same worksheet on
  *  both, `split` 0..1 breaks the bar on the napkin and slides the halves toward each desk, `roll` rolls one pencil. */
-const DesksAlive: React.FC<{ x: number; y: number; sheets: number; split: number; roll: number }> = ({ x, y, sheets, split, roll }) => (
+const DesksAlive: React.FC<{ x: number; y: number; sheets: number; split: number; roll: number; exam?: boolean }> = ({ x, y, sheets, split, roll, exam }) => (
   <g transform={`translate(${x} ${y})`}>
     {[-1, 1].map((side) => (
       <g key={side} transform={`translate(${side * 330} 0)`}>
         <rect x={-320} y={-260} width={640} height={520} rx={14} fill="#c9935e" stroke={INK} strokeWidth={6} />
         <rect x={-320} y={-260} width={640} height={30} rx={14} fill="#a87c52" />
         <g transform={`translate(${-50 + side * 10} ${mix(-260, -40, sheets)}) rotate(${mix(side * -16, side * -5, sheets)})`} opacity={Math.min(1, sheets * 3)}>
-          <Worksheet />
+          <Worksheet exam={exam} />
         </g>
         <Pencil x={side * 40 - 60 + (side === 1 ? roll * 46 : 0)} y={150 + (side === 1 ? roll * 6 : 0)} angle={side * 8 - 4 + (side === 1 ? roll * 14 : 0)} />
       </g>
@@ -90,7 +95,7 @@ export const DesksWhy: React.FC<Props> = ({ frame, k, mood }) => {
   );
 };
 
-// ------------------------------------------------------------------------------------------------ 39-40 the track
+// ------------------------------------------------------------------------------------------------ 40-41 the track
 
 /** The track's ground, side on: sky, a line of trees, the infield grass, three lanes of red track, the start line. */
 const TRACK = { top: 800, lane: 70, start: 520, finish: 1840 } as const;
@@ -162,5 +167,31 @@ export const TrackShot: React.FC<Props> = ({ frame, k, mood }) => {
         <Figure {...HERO} x={pairX} y={yFeet} scale={1.0} pose={yPose} {...runnerFace(-0.55)} blink={blinking(frame, 1)} time={frame} flow={0.25} />
       </>
     } />
+  );
+};
+
+// ------------------------------------------------------------------------------------------------ 41 the same bar, the same exam
+
+/** "the same chocolate bar,": the two of you behind your desks, the halves of one bar on them, pushing in; "the same
+ *  exam.": from straight above, one mock paper slaps down on both desks in the same frame. */
+export const SameShot: React.FC<Props> = ({ frame, k, mood }) => {
+  if (frame >= k.sameExam) {
+    const cam = drift(camAt(frame, [[k.sameExam, insert(960, 520, 1.25)], [k.youLane, insert(960, 520, 1.4)]]), frame, "exam", 2);
+    return (
+      <FlatShot cam={cam} mood={mood} back={<rect x={-1400} y={-800} width={4800} height={2600} fill="#a9a08e" />}
+        actors={<DesksAlive x={960} y={540} sheets={ramp(frame, k.sameExam + 2, k.sameExam + 8)} split={1} roll={0} exam />} />
+    );
+  }
+  const cam = drift(camAt(frame, [[k.sameBar, insert(905, 790, 2.9)], [k.sameExam, insert(915, 785, 3.2)]]), frame, "samebar", 2);
+  return (
+    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }} far={<MathsBoard cam={cam} />}
+      behind={
+        <>
+          <Figure {...MINJUN} x={SEAT.x[1]} y={seatY} scale={SEAT.scale} pose={SEATED} {...EXPRESSIONS.happy} look={{ x: 0.6, y: 0.5 }} blink={blinking(frame, 2)} time={frame} />
+          <Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} pose={SEATED} brows="none" lids={0.1} mouth="flat" eyes={1}
+            look={{ x: -0.6, y: 0.5 }} blink={blinking(frame, 1)} time={frame} />
+        </>
+      }
+      actors={<DeskHalves />} />
   );
 };

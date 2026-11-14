@@ -1,21 +1,19 @@
-// Beat "A Thousand Cards" (script.md v3, ## [04:39] A Thousand Cards; narration lines 53-61), the film's signature
-// picture. The academy street at ten (AcademyStreet view "street", night).
+// Beat "A Thousand Cards" (script v5, ## [05:00] A Thousand Cards; lines 66-73), the film's signature picture. The
+// academy street at ten (AcademyStreet view "street", night).
 //
-//   53    close on you at the foot of the academy steps; the street from below: the steps, your best friend and the
-//         class by the snack shop
-//   54    "about 1,000 after-school academies": the camera climbs the sign towers
-//   55    "Inspectors have patrolled the streets": an inspector with a clipboard walks the pavement, checks his watch
-//   56    the wide: every door on the street opens at once and the crowd pours out
-//   57    "You climb the academy steps": you climb to the landing; the letter goes up; "and say it into the crowd": the
-//         wide: a thousand cards snap open in a ripple from the steps, nearly all grey zeros, a scatter of teal, three
-//         red by the snack shop
-//   hold  the camera rises and pulls back until the street is a field of cards; the stranger at the bus stop at the
-//         bottom of the frame reads the timetable and never looks up (no card: he never faces you)
-//   58    the field; "every red card points back to your class": down to the class by the snack shop
-//   59    "One is your best friend.": him under -84; "So who are the other two?": your face, lit from below
-//   60    the girl from your row (lilac head, a calculator) under -30; the boy, your old walking partner (grey-blue
-//         head), laughing, under -44
-//   61    your face, lit from below; over your shoulder, your best friend looking up, waving
+//   66    close on you at the foot of the steps; "go on the news": you at a TV desk, the letter up to the studio
+//         camera, nothing opens, you tap the lens and sag (ThousandTags.Tv); "a crowd is a thousand faces": the street
+//   67    "about 1,000 after-school academies": the camera climbs the sign towers (ONE NEIGHBOURHOOD card lower left)
+//   68    "Inspectors have patrolled the streets": an inspector with a clipboard walks the pavement, checks his watch
+//   69    the wide: every door on the street opens at once and the crowd pours out; you climb to the landing, the letter
+//         up; in the hold after the line a thousand cards snap open in a ripple from the steps: nearly all grey zeros,
+//         a scatter of teal, a dozen red by the snack shop; the camera rises until the street is a field of cards
+//   70    the field; "Nine hundred and eighty-eight of them would like you to get off the steps": you on the landing,
+//         sheepish grin, the crowd's faces sour (the laugh)
+//   71    the rest dim; the camera pushes in on the red cluster by the snack shop: your class
+//   72    the girl from your row (lilac head, a calculator) under -30; the boy, your old walking partner, laughing, -44
+//   73    your face, lit from below; "And your list was right.": over your shoulder, your best friend waving under -88
+//   The stranger stands at the bus stop at the bottom of the street reading the timetable throughout.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS, type Expression } from "@whatif/kit/rig/expressions";
@@ -31,6 +29,7 @@ import { blinking, camAt, current, HERO, lineEnd, linear, MINJUN, mix, PASTELS, 
 import { ACADEMY, academyLights, AcademyStreetBack, AcademyStreetFront } from "../sets/AcademyStreet";
 import { lineAt, moodNow } from "./MadeTheCut.parts";
 import { Crowd } from "./ThousandTags.Crowd";
+import { TvShot } from "./ThousandTags.Tv";
 
 // ------------------------------------------------------------------------------------------------ timing
 
@@ -39,28 +38,32 @@ type T = ReturnType<typeof times>;
 function times(clips: Clip[], to: number) {
   const at = lineAt(clips);
   const from = (i: number) => clips[i].from;
+  const say = lineEnd(clips, 69) + 4;
   return {
-    steps: from(53), // close on you at the foot of the steps
-    below: at(53, 0.5), // "So maybe a bigger crowd ...": the street from below
-    towers: from(54), // "about 1,000 after-school academies": climb the towers
-    inspector: from(55), // "Inspectors have patrolled the streets"
-    watch: at(55, 0.62), // he checks his watch
-    wide: from(56), // "So at ten, every door on the street opens at once."
-    doors: at(56, 0.36), // the doors open
-    you: from(57), // "You climb the academy steps"
-    climbed: at(57, 0.4), // on the landing
-    raise: at(57, 0.46), // the letter goes up
-    say: at(57, 0.62), // "and say it into the crowd": the cards snap open
-    rise: lineEnd(clips, 57) + 6, // the hold: the camera keeps rising
-    field: at(58, 0.3), // the field of cards
-    lock: at(58, 0.42), // the wide held; then the grey and teal cards dim and the camera pushes in on the class
-    three: at(58, 0.62), // "every red card points back to your class"
-    mj: from(59), // "One is your best friend."
-    look: at(59, 0.5), // "So who are the other two?": your eyes go card to card
-    girl: from(60), // "The girl who borrows your calculator. Minus thirty."
-    boy: at(60, 0.5), // "The boy you walked home with all of first year. Minus forty-four."
-    face: from(61), // close on your face, lit from below
-    ots: at(61, 0.5), // over your shoulder: your best friend waving
+    steps: from(66), // "Just your class, or all of Seoul?": close on you at the foot of the steps
+    tv: at(66, 0.15), // "Why not go on the news ...": you at a news desk, live
+    tvSay: at(66, 0.27), // you say it to the studio camera
+    tvNone: at(66, 0.44), // "Because a camera isn't a face.": nothing opens
+    tvTap: at(66, 0.52), // you tap the lens; then sag
+    below: at(66, 0.66), // "But a crowd is a thousand faces, and this street has one.": the street from below
+    towers: from(67), // "about 1,000 after-school academies": climb the towers (ONE NEIGHBOURHOOD card lower left)
+    inspector: from(68), // "Inspectors have patrolled the streets"
+    watch: at(68, 0.62), // he checks his watch
+    wide: from(69), // "So at ten, every door on the street opens at once."
+    doors: at(69, 0.22), // the doors open
+    you: at(69, 0.5), // "You climb the academy steps"
+    climbed: at(69, 0.78), // on the landing
+    raise: at(69, 0.84), // the letter goes up
+    say, // in the hold: a thousand cards snap open
+    rise: say + 20, // the camera keeps rising
+    field: from(70), // "You just told a thousand strangers ...": the field of cards
+    annoyed: at(70, 0.42), // "Nine hundred and eighty-eight of them would like you to get off the steps."
+    lock: from(71), // "And every red card points back to your class.": the rest dim
+    three: at(71, 0.35), // push in on the red cluster by the snack shop
+    girl: from(72), // "The girl who borrows your calculator. Minus thirty."
+    boy: at(72, 0.5), // "The boy you walked home with all of first year. Minus forty-four."
+    face: from(73), // "So. Red means they want you to fail.": your face, lit from below
+    ots: at(73, 0.55), // "And your list was right.": over your shoulder, your best friend waving under his red card
     end: to,
   };
 }
@@ -68,18 +71,20 @@ function times(clips: Clip[], to: number) {
 // ------------------------------------------------------------------------------------------------ the cast
 
 const YOU = ACADEMY.you;
+/** Your best friend's card here: -88 since the counter (The Weapon). */
+const MJ_VALUE = -88;
 const MJ = ACADEMY.minjun;
 
-/** Your class by the snack shop: your best friend and five more; three red: his -84, the girl from your row with the
- *  calculator (-30) and the boy, your old walking partner, laughing (-44). */
+/** Your class by the snack shop: your best friend and five more, all red: his -88, the girl from your row with the
+ *  calculator (-30), the boy, your old walking partner, laughing (-44), and three more. */
 const GIRL = { head: "#c9a0d6" } as const;
 const BOY = { head: "#8fa3b8" } as const;
 const CLASS = [
   { x: 880, y: 1112, head: GIRL.head, value: -30, who: "girl" },
-  { x: 965, y: 1124, head: PASTELS[7], value: 12, who: "" },
+  { x: 965, y: 1124, head: PASTELS[7], value: -18, who: "" },
   { x: 1050, y: 1108, head: BOY.head, value: -44, who: "boy" },
-  { x: 1135, y: 1126, head: PASTELS[4], value: 0, who: "" },
-  { x: 1215, y: 1112, head: PASTELS[2], value: 6, who: "" },
+  { x: 1135, y: 1126, head: PASTELS[4], value: -12, who: "" },
+  { x: 1215, y: 1112, head: PASTELS[2], value: -25, who: "" },
 ];
 
 /** The girl's calculator, for her front hand. */
@@ -134,7 +139,7 @@ const Class: React.FC<{ frame: number; k: T; wave: boolean; dim: number }> = ({ 
       })}
       <Figure x={MJ.x} y={MJ.y} scale={MJ.scale} facing={-1} pose={mjPose} head={MINJUN.head} coat={MINJUN.coat}
         {...(wave ? { ...EXPRESSIONS.happy, mouth: "open" as const } : EXPRESSIONS.happy)} look={{ x: 0.8, y: -0.6 }} blink={blinking(frame, 2)} time={frame} />
-      <Meter frame={frame} at={k.say + 2} x={mh.x} headY={mh.y} r={mh.r} value={-84} until={k.end} />
+      <Meter frame={frame} at={k.say + 2} x={mh.x} headY={mh.y} r={mh.r} value={MJ_VALUE} until={k.end} />
     </g>
   );
 };
@@ -210,13 +215,13 @@ const Inspector: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 // ------------------------------------------------------------------------------------------------ the shot
 
-const Street: React.FC<{ frame: number; k: T; cam: Camera; face: Partial<Expression>; wave?: boolean; you?: boolean; dim: number }> = ({ frame, k, cam, face, wave = false, you = true, dim }) => {
+const Street: React.FC<{ frame: number; k: T; cam: Camera; face: Partial<Expression>; wave?: boolean; you?: boolean; dim: number; annoyed?: number }> = ({ frame, k, cam, face, wave = false, you = true, dim, annoyed = 0 }) => {
   const doors = ramp(frame, k.doors, k.doors + 14);
   const pose = yourPose(frame, k);
   const me = youAt(frame, k);
   const actors = (
     <>
-      <Crowd frame={frame} cam={cam} doors={k.doors} say={k.say} until={k.end} you={{ x: YOU.x, y: YOU.y }} dim={dim} />
+      <Crowd frame={frame} cam={cam} doors={k.doors} say={k.say} until={k.end} you={{ x: YOU.x, y: YOU.y }} dim={dim} annoyed={annoyed} />
       {you && (
         <Figure x={me.x} y={me.y} scale={YOU.scale} facing={1} pose={pose} {...HERO} {...face} blink={blinking(frame, 0)} time={frame}
           flow={0.2} held={<Letter x={4} y={8} scale={0.45} tilt={-4} />} />
@@ -233,39 +238,51 @@ const Street: React.FC<{ frame: number; k: T; cam: Camera; face: Partial<Express
   );
 };
 
+type View = "steps" | "tv" | "below" | "towers" | "inspector" | "wide" | "climb" | "you" | "say" | "annoyed" | "dim" | "girl" | "boy" | "face" | "ots";
+
 const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = times(clips, shot.to);
-  const on = current(frame, [
-    [0, "steps"], [k.below, "below"], [k.towers, "towers"], [k.inspector, "inspector"], [k.wide, "wide"], [k.you, "climb"], [k.raise, "you"], [k.say - 2, "say"],
-    [k.three, "three"], [k.mj, "mj"], [k.look, "look"], [k.girl, "girl"], [k.boy, "boy"], [k.face, "face"], [k.ots, "ots"],
+  const on = current<View>(frame, [
+    [0, "steps"], [k.tv, "tv"], [k.below, "below"], [k.towers, "towers"], [k.inspector, "inspector"], [k.wide, "wide"], [k.you, "climb"], [k.raise, "you"],
+    [k.say - 2, "say"], [k.annoyed, "annoyed"], [k.lock, "dim"], [k.girl, "girl"], [k.boy, "boy"], [k.face, "face"], [k.ots, "ots"],
   ]);
+  const mood = moodNow(shot);
+  if (on === "tv") {
+    return (
+      <AbsoluteFill style={{ background: "#000" }}>
+        <TvShot frame={frame} from={k.tv} say={k.tvSay} none={k.tvNone} tap={k.tvTap} to={k.below} mood="day" />
+      </AbsoluteFill>
+    );
+  }
   const me = youAt(frame, k);
   const yh = headAt(me.x, me.y, YOU.scale, yourPose(frame, k), 1);
   const mh = headAt(MJ.x, MJ.y, MJ.scale, STAND, -1);
   const ins = inspectorAt(frame, k);
-  const cams: Record<typeof on, Camera> = {
-    steps: camAt(frame, [[k.steps, closeUp(yh.x + 30, yh.y, 2.4)], [k.below, closeUp(yh.x + 30, yh.y, 2.6)]]),
-    below: camAt(frame, [[k.below, { x: 640, y: 860, zoom: 1.45 }], [k.towers, { x: 700, y: 840, zoom: 1.35 }]]),
-    towers: camAt(frame, [[k.towers, { x: 1000, y: 760, zoom: 1.15 }], [k.inspector, { x: 1000, y: 260, zoom: 1.2 }]]),
+  const cams: Record<Exclude<View, "tv">, Camera> = {
+    steps: camAt(frame, [[k.steps, closeUp(yh.x + 30, yh.y, 2.4)], [k.tv, closeUp(yh.x + 30, yh.y, 2.6)]]),
+    below: camAt(frame, [[k.below, { x: 640, y: 860, zoom: 1.45 }], [k.towers, { x: 760, y: 820, zoom: 1.3 }]]),
+    towers: camAt(frame, [[k.towers, { x: 1000, y: 420, zoom: 1.15 }], [k.inspector, { x: 1000, y: 120, zoom: 1.2 }]]),
     inspector: { x: ins.x + 60, y: 920, zoom: 1.6 },
     wide: camAt(frame, [[k.wide, { x: 980, y: 640, zoom: 0.92 }], [k.you, { x: 960, y: 650, zoom: 0.98 }]]),
     climb: camAt(frame, [[k.you, { x: 470, y: 880, zoom: 1.55 }], [k.raise, { x: 480, y: 850, zoom: 1.7 }]]),
     you: camAt(frame, [[k.raise, closeUp(yh.x + 50, yh.y + 20, 2.3)], [k.say, closeUp(yh.x + 50, yh.y + 10, 2.5)]]),
-    // the field held wide, then (the outside review of v4.1: guide the eye to the three red cards) the grey and teal cards
-    // dim and the camera pushes in on your class, where the only red cards are
+    // the snap in the hold, then the camera rises until the street is a field of cards
     say: camAt(frame, [[k.say, { x: 820, y: 780, zoom: 1.0 }], [k.rise, { x: 860, y: 720, zoom: 0.86 }], [k.field, { x: 980, y: 600, zoom: 0.47 }],
-      [k.lock, { x: 980, y: 600, zoom: 0.45 }], [k.three, { x: 990, y: 935, zoom: 1.45 }]]),
-    three: camAt(frame, [[k.three, { x: 990, y: 930, zoom: 2.0 }], [k.mj, { x: 990, y: 925, zoom: 2.15 }]]),
-    mj: camAt(frame, [[k.mj, closeUp(mh.x - 10, mh.y - 60, 3.0)], [k.look, closeUp(mh.x - 10, mh.y - 65, 3.15)]]),
-    look: camAt(frame, [[k.look, closeUp(yh.x + 40, yh.y, 2.7)], [k.girl, closeUp(yh.x + 40, yh.y, 2.85)]]),
+      [k.annoyed, { x: 980, y: 610, zoom: 0.45 }]]),
+    // the laugh: you on the landing with the crowd's sour faces in the foreground
+    annoyed: camAt(frame, [[k.annoyed, { x: 620, y: 960, zoom: 1.25 }], [k.lock, { x: 600, y: 950, zoom: 1.35 }]]),
+    // every red card points back to your class: the rest dim and the camera pushes in on the red cluster
+    dim: camAt(frame, [[k.lock, { x: 980, y: 640, zoom: 0.5 }], [k.three, { x: 1000, y: 960, zoom: 1.4 }], [k.girl, { x: 990, y: 930, zoom: 1.9 }]]),
     girl: camAt(frame, [[k.girl, closeUp(CLASS[0].x, CLASS[0].y - 210, 3.8)], [k.boy, closeUp(CLASS[0].x, CLASS[0].y - 212, 3.95)]]),
     boy: camAt(frame, [[k.boy, closeUp(CLASS[2].x, CLASS[2].y - 210, 3.8)], [k.face, closeUp(CLASS[2].x, CLASS[2].y - 212, 3.95)]]),
     face: camAt(frame, [[k.face, closeUp(yh.x + 40, yh.y, 2.7)], [k.ots, closeUp(yh.x + 40, yh.y, 2.9)]]),
     ots: camAt(frame, [[k.ots, closeUp(mh.x + 30, mh.y - 40, 2.3)], [k.end, closeUp(mh.x + 30, mh.y - 50, 2.45)]]),
   };
-  const cam = drift(cams[on], frame, "tags", on === "say" ? 2 : 3);
-  const faces: Record<typeof on, Partial<Expression>> = {
+  const view = on as Exclude<View, "tv">;
+  const cam = drift(cams[view], frame, "tags", on === "say" ? 2 : 3);
+  const awed: Partial<Expression> = { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.9, y: 0.4 } };
+  const faces: Record<Exclude<View, "tv">, Partial<Expression>> = {
     steps: { ...EXPRESSIONS.sceptical, look: { x: 0.8, y: 0.3 } },
     below: { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.4 } },
     towers: EXPRESSIONS.determined,
@@ -273,22 +290,22 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     wide: { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.5 } },
     climb: { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.2 } },
     you: frame < k.raise ? { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.5 } } : { brows: "raised", lids: 0, mouth: "open", eyes: 1.15, look: { x: 0.9, y: 0.4 } },
-    say: { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.9, y: 0.4 } },
-    three: { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.9, y: 0.4 } },
-    mj: EXPRESSIONS.determined,
-    look: { brows: "worry", lids: 0.1, mouth: "flat", eyes: 1.1, look: { x: 0.85, y: Math.sin((frame - k.look) / 10) * 0.25 + 0.55 } },
+    say: awed,
+    annoyed: { brows: "worry", lids: 0, mouth: "smile", eyes: 1.1, look: { x: Math.sin((frame - k.annoyed) / 6) * 0.6 + 0.3, y: 0.5 } },
+    dim: awed,
     girl: EXPRESSIONS.determined,
     boy: EXPRESSIONS.determined,
     face: { brows: "angry", lids: mix(0.1, 0.35, ramp(frame, k.face + 20, k.face + 50)), mouth: "flat", eyes: 1, look: { x: 0.85, y: 0.65 } },
     ots: EXPRESSIONS.determined,
   };
   // The close-up on your face takes the signboards' light from below.
-  const under = on === "face" || on === "look" ? [{ x: toScreen(cam, yh.x, yh.y).x, y: 1180, r: 700, color: "#ff6f91", strength: 0.35 }] : [];
-  const look = setLook(academyLights("street"), moodNow(shot), cam, { glows: under });
+  const under = on === "face" ? [{ x: toScreen(cam, yh.x, yh.y).x, y: 1180, r: 700, color: "#ff6f91", strength: 0.35 }] : [];
+  const look = setLook(academyLights("street"), mood, cam, { glows: under });
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <LookContext.Provider value={look}>
-        <Street frame={frame} k={k} cam={cam} face={faces[on]} wave={on === "ots"} you={on !== "ots"} dim={ramp(frame, k.lock, k.lock + 20)} />
+        <Street frame={frame} k={k} cam={cam} face={faces[view]} wave={on === "ots"} you={on !== "ots"} dim={ramp(frame, k.lock, k.lock + 20)}
+          annoyed={on === "annoyed" ? ramp(frame, k.annoyed, k.annoyed + 6) : 0} />
       </LookContext.Provider>
       {on === "ots" && <YourShoulder side="left" />}
       <MeterSound at={k.say} />
@@ -297,4 +314,4 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const thousandTags: Beat = { id: "ThousandTags", firstLine: 53, Component: Scene };
+export const thousandTags: Beat = { id: "ThousandTags", firstLine: 66, Component: Scene };

@@ -1,27 +1,23 @@
-// Beat "The Country Holds Its Breath" (script.md v4; v4 lines 97-106, see `times`; mood morning). Every frame comes
-// from the clips, one component per shot, in the order things happen (owner on v3, 2026-11-13). No card opens.
+// Beat "The Country Holds Its Breath" (script v5, 2026-11-14; story.json lines 91-96; mood morning). Every frame comes
+// from the clips, one component per shot, in the order things happen. No card opens.
 //
-//   97    a week in the study room in one dissolve: your desk, writing; asleep on a rolled jacket; writing; a yawn.
-//   98-99 the night before the exam, the classroom at dusk (HoldsBreath.Choice.tsx): you open your notebook at your
-//         desk; three page inserts (the mistakes in red, the fixes in teal, the pages riffling under tabs); the two desks,
-//         1st over yours and 2nd over his, the notebook moved to his and back, the tags swapping; close on the choice.
-//   100   insert from above: the notebook onto his desk, half a chocolate bar on top; you walk out.
-//   101   exam morning: the gate, parents along the wall; you walk up (the EXAM MORNING title, Captions.tsx).
-//   102   between two of them, the work vest.
-//   hold  6 s, PERFORMED (the gap after 102): the crowd parts and she's there, the lunch box in both hands; she holds it
-//         out; close on you, looking at her face, not the air above it; a tight two-shot on the box between you, your
-//         hand on it by hers, fingers touch (v4.1's giant-hand insert read as a render error); her mouth
-//         opens for the words she always says and shuts without them; she nods once; she steps back into the crowd;
-//         the bell; you turn to the gate.
-//   103   her face in the crowd, and the empty air over her head: nothing opens.
-//   104   you walk into the gate with the lunch; then the exam hall from straight above, rows of heads; pull up.
-//   105   the runway, its markings plain, an airliner held on the ground by the threshold, one paper plane held still
-//         overhead (v4.1's city by the water read as a river); then the hall side on, you listening (the planes card,
-//         Captions.tsx).
-//   hold  3 s (the gap after 105): close on the paper plane held still; the runway; the parents at the gate, not moving.
-//   106   the hall from high above: "This year, a country holds its breath for you."
-//   107   the month: the study room night after night, the lamps changing, while a day pad tears off its pages and stops
-//         on results day, ringed in red, as the beat changes (v4.1 held the exam hall, so no time passed).
+//   91    the night before, the classroom at dusk (HoldsBreath.Choice.tsx): you lay your own notebook on his desk; insert
+//         from above, half a chocolate bar dropped on top; close on you, a small smile ("he can have the good wood");
+//         you walk out.
+//   92    exam morning: the gate, parents along the wall; you walk up (the EXAM MORNING title, Captions.tsx, upper left);
+//         "still in her vest: your sister. With a lunch box.": between two parents, the work vest.
+//   hold  6 s, PERFORMED (the gap after 92), the film's one tender beat, wordless: the crowd parts and she's there, the
+//         lunch box in both hands; she holds it out; close on you, looking at her face, not the air above it; a tight
+//         two-shot on the box between you, fingers touch on the handle; her mouth opens for the words she always says
+//         and shuts without them; she nods once; she steps back into the crowd; the bell; you turn to the gate.
+//   93    her face in the crowd, and the empty air over her head: nothing opens. "Some faces you don't read."
+//   94    you walk into the gate with the lunch; then the exam hall from straight above, rows of heads: the country goes
+//         quiet.
+//   95    the runway, an airliner held on the ground by the threshold, one paper plane held still overhead (c02; the
+//         NOVEMBER 2025 card, Captions.tsx, lower left); then the hall side on, you listening.
+//   hold  3 s (the gap after 95): close on the paper plane held still; the runway; the parents at the gate, not moving.
+//   96    the hall from high above ("A country holds its breath for you."); then the month: night after night at your
+//         desk while a day pad tears off its pages and stops on results day, ringed in red, as The Window begins.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { SEATED, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -33,7 +29,7 @@ import { headAt } from "../parts";
 import { blinking, camAt, current, HERO, linear, mix, ramp, type Beat, type Shot } from "../shared";
 import { READING } from "../sets/ReadingRoom";
 import { aimArm, Fade, handAt, Rows, S, timer, type Body } from "./Notebook.Parts";
-import { ChoiceShot, DecideShot, EveShot, GoShot, LeaveShot, PagesShot } from "./HoldsBreath.Choice";
+import { GoShot, LeaveShot, PlaceShot, SmileShot } from "./HoldsBreath.Choice";
 import { DayPad, ExamTopBack, GATE, GateBack, GateCrowd, HALL, JiyoonWithLunch, LunchBox, MistakeBookSide, planeCam, RunwayBack } from "./HoldsBreath.Parts";
 
 // ------------------------------------------------------------------------------------------------ timing
@@ -41,54 +37,41 @@ import { DayPad, ExamTopBack, GATE, GateBack, GateCrowd, HALL, JiyoonWithLunch, 
 type T = ReturnType<typeof times>;
 export type HoldsTimes = T;
 
-/** On v4's lines (remap.ts; owner on v3, 2026-11-13: "In the crowd of parents, what is this scene depicting ? Exam
- *  Over ?"): the gate on exam morning now comes before the test, as it happens. 97 the week, 98 the notebook, 99 the
- *  choice, 100 left on his desk, 101 exam morning at the gate, 102 your sister in the crowd, the 6 s hand-off after it,
- *  103 nothing opens, 104 the gate closes, 105 the planes (the 3 s hold after it), 106 a country holds its breath. */
 function times(clips: Clip[], to: number) {
   const { from, at, end } = timer(clips);
-  const h = (p: number) => Math.round(mix(end(105), from(106), p)); // the 3 s hold after the planes
-  const p = (q: number) => Math.round(mix(end(102), from(103), q)); // the 6 s performed moment after line 102
+  const h = (p: number) => Math.round(mix(end(95), from(96), p)); // the 3 s hold after the planes
+  const p = (q: number) => Math.round(mix(end(92), from(93), q)); // the 6 s performed moment after line 92
   return {
-    week: from(97), // a week in the study room, one dissolve
-    eve: from(98), // the night before the exam, the classroom at dusk
-    open: at(98, 0.18), // "you open your own notebook"
-    page1: at(98, 0.36), // "every mistake you made this year": the left page, marked in red
-    page2: at(98, 0.59), // "and how you fixed it": the right page, the fixes in teal
-    page3: at(98, 0.76), // "The best study guide in your class": the pages riffling under tabs
-    choose: from(99), // "Give it to him": the notebook to his desk; 1st over yours, 2nd over his
-    pass: at(99, 0.27), // "he might pass you": the tags swap
-    keep: at(99, 0.46), // "Keep it": back to your desk
-    first: at(99, 0.62), // "first place stays yours": the tags swap back
-    decide: at(99, 0.88), // close on you deciding
-    leave: from(100) - 2, // the notebook onto his desk, from above
-    choc: at(100, 0.4), // "with half a chocolate bar on top"
-    go: at(100, 0.72), // "He did it for you first." You walk out
-    gate: from(101), // exam morning: the gate, the parents
-    vest: at(102, 0.45), // "still in her work vest"
+    place: from(91), // "The night before, you leave your own notebook on his desk."
+    leave: at(91, 0.3), // "Every mistake you made this year, and the fix.": the notebook onto his desk, from above
+    choc: at(91, 0.54), // "Half a chocolate bar on top."
+    smile: at(91, 0.68), // "If he's building a ladder, he can have the good wood."
+    go: end(91) - 6, // you walk out
+    gate: from(92), // exam morning: the gate, the parents
+    vest: at(92, 0.6), // "still in her vest: your sister"
     part: p(0), // the performed moment: the crowd parts
     offer: p(0.2), // she holds it out
     look: p(0.29), // close on you: her face, not the air above it
-    hands: p(0.44), // the hands on the knot; fingers touch
+    hands: p(0.44), // the hands on the handle; fingers touch
     nod: p(0.56), // her mouth opens for the words she always says, and shuts without them; she nods once
     back: p(0.8), // she steps back into the crowd
     bell: p(0.9), // the bell; you turn to the gate
-    nothing: from(103), // "Neither of you says a word. Nothing opens."
-    air: at(103, 0.55), // the empty air over her head
-    month: from(104), // "The gate closes behind you": you walk in
-    exam: at(104, 0.55), // "And the whole country goes quiet.": the hall from above
-    sky: from(105), // "South Korea stopped its planes taking off and landing"
-    listen: at(105, 0.55), // the hall side on, you listening
+    nothing: from(93), // "Neither of you says a word. Nothing opens."
+    air: at(93, 0.55), // the empty air over her head
+    month: from(94), // "The gate closes behind you": you walk in
+    exam: at(94, 0.5), // "And the whole country goes quiet.": the hall from above
+    sky: from(95), // "South Korea stopped its planes taking off and landing"
+    listen: at(95, 0.82), // the hall side on, you listening (after the NOVEMBER 2025 card, which would sit on the row of faces)
     plane: h(0), // the hold: the plane held still
     runway: h(0.34), // the empty runway
     still: h(0.67), // the parents at the gate, not moving
-    breath: from(106), // "This year, a country holds its breath for you."
-    wait: from(107), // "Results come in a month. For a month, you say nothing to anyone.": the month passes
+    breath: from(96), // "A country holds its breath for you."
+    wait: at(96, 0.36), // "Results come in a month. For a month, you say nothing to anyone.": the month passes
     end: to,
   };
 }
 
-// ------------------------------------------------------------------------------------------------ line 97
+// ------------------------------------------------------------------------------------------------ the nights (96)
 
 const YOU = READING.carrel(READING.you);
 
@@ -141,11 +124,7 @@ const Nights: React.FC<{ frame: number; a: number; b: number; n: number; from: C
   );
 };
 
-const WeekShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => (
-  <Nights frame={frame} a={k.week} b={k.eve} n={4} from={{ x: 560, y: 790, zoom: 1.7 }} to={{ x: 540, y: 800, zoom: 1.95 }} />
-);
-
-/** Line 107, the month: night after night at your desk, the lamps changing round you, while the day pad tears through
+/** Line 96, the month: night after night at your desk, the lamps changing round you, while the day pad tears through
  *  the month and stops on results day, ringed in red, just before the results (TextOpensNothing). */
 const WaitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => (
   <>
@@ -154,7 +133,7 @@ const WaitShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => (
   </>
 );
 
-// ------------------------------------------------------------------------------------------------ lines 100-102
+// ------------------------------------------------------------------------------------------------ the hall and the runway (94-95)
 
 const yourDesk = { x: HALL.cols[HALL.you.c], y: HALL.rows[HALL.you.r] };
 
@@ -195,7 +174,7 @@ const RunwayShot: React.FC<{ frame: number; a: number; b: number; from: Camera; 
   return <Stage cam={cam} radius={0} origin={{ x: 0, y: 0 }} back={<RunwayBack cam={cam} mood="morning" jet plane={PLANE} />} actors={null} />;
 };
 
-// ------------------------------------------------------------------------------------------------ lines 103-105
+// ------------------------------------------------------------------------------------------------ the gate (92-94)
 
 const JS = 1.1;
 const ME = GATE.you;
@@ -315,21 +294,22 @@ const MonthShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 const HoldsBreath: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame } = shot;
-  const k = times(shot.v4, shot.to);
+  const k = times(shot.clips, shot.to);
   const scene = current(frame, [
-    [0, "week"], [k.eve, "eve"], [k.page1, "pages"], [k.choose, "choice"], [k.decide, "decide"], [k.leave, "leave"], [k.go, "go"], [k.gate, "gate"], [k.part, "handoff"], [k.nothing, "nothing"], [k.month, "month"],
+    [0, "place"], [k.leave, "leave"], [k.smile, "smile"], [k.go, "go"], [k.gate, "gate"], [k.part, "handoff"], [k.nothing, "nothing"], [k.month, "month"],
     [k.exam, "exam"], [k.sky, "sky"], [k.listen, "listen"], [k.plane, "plane"], [k.runway, "runway"], [k.still, "still"], [k.breath, "breath"], [k.wait, "wait"],
   ]);
   const hallClose = { x: yourDesk.x, y: yourDesk.y + 70, zoom: 2.4 };
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      {scene === "week" && <WeekShot frame={frame} k={k} />}
-      {scene === "eve" && <EveShot frame={frame} k={k} />}
-      {scene === "pages" && <PagesShot frame={frame} k={k} />}
-      {scene === "choice" && <ChoiceShot frame={frame} k={k} />}
-      {scene === "decide" && <DecideShot frame={frame} k={k} />}
+      {scene === "place" && <PlaceShot frame={frame} k={k} />}
       {scene === "leave" && <LeaveShot frame={frame} k={k} />}
+      {scene === "smile" && <SmileShot frame={frame} k={k} />}
       {scene === "go" && <GoShot frame={frame} k={k} />}
+      {scene === "gate" && <GateShot frame={frame} k={k} />}
+      {scene === "handoff" && <HandOffShot frame={frame} k={k} />}
+      {scene === "nothing" && <NothingShot frame={frame} k={k} />}
+      {scene === "month" && <MonthShot frame={frame} k={k} />}
       {scene === "exam" && <HallShot frame={frame} a={k.exam} b={k.sky} from={hallClose} to={{ x: yourDesk.x, y: yourDesk.y - 60, zoom: 0.9 }} />}
       {scene === "sky" && <RunwayShot frame={frame} a={k.sky} b={k.listen} from={{ x: 960, y: 560, zoom: 1.0 }} to={{ x: 990, y: 540, zoom: 1.08 }} />}
       {scene === "listen" && <ListenShot frame={frame} k={k} />}
@@ -338,12 +318,8 @@ const HoldsBreath: React.FC<{ shot: Shot }> = ({ shot }) => {
       {scene === "still" && <StillGate frame={frame} k={k} />}
       {scene === "breath" && <HallShot frame={frame} a={k.breath} b={k.wait} from={{ x: 960, y: 520, zoom: 0.8 }} to={{ x: 960, y: 540, zoom: 0.7 }} />}
       {scene === "wait" && <WaitShot frame={frame} k={k} />}
-      {scene === "gate" && <GateShot frame={frame} k={k} />}
-      {scene === "handoff" && <HandOffShot frame={frame} k={k} />}
-      {scene === "nothing" && <NothingShot frame={frame} k={k} />}
-      {scene === "month" && <MonthShot frame={frame} k={k} />}
     </AbsoluteFill>
   );
 };
 
-export const holdsBreath: Beat = { id: "HoldsBreath", firstLine: 97, Component: HoldsBreath };
+export const holdsBreath: Beat = { id: "HoldsBreath", firstLine: 91, Component: HoldsBreath };

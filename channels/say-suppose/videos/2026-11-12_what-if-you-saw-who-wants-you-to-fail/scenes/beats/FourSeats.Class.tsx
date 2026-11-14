@@ -11,16 +11,14 @@ import { classroom } from "@whatif/kit/sets";
 import type { MoodName } from "@whatif/kit/stage/moods";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, INK, PAPER, TEAL } from "@whatif/kit/theme";
-import { interpolate, spring } from "remotion";
+import { interpolate } from "remotion";
 import { headAt, Meter } from "../parts";
 import { blinking, camAt, current, HERO, MINJUN, mix, PASTELS, ramp, TAEHO } from "../shared";
 import { Deep } from "../sets/common";
 import { FLOOR, KANG_POSE, KX, KY, MsKang, SEAT, seatY } from "./WhosCrimson.Class";
 import { armTo, HeadIcon, SetShot } from "./WhosCrimson.Common";
 import type { SeatsTimes } from "./FourSeats.Times";
-import { EmptyDesks } from "./FourSeats.Desks";
 import { MistakeMark } from "./Notebook.Parts";
 
 const S = 1.15;
@@ -46,9 +44,7 @@ export interface RoomRound { minjun: number; classmate: number; kang: number; fa
 /** Week one: three red (him, the classmate, one at the back). */
 export const ROUND_ONE: RoomRound = { minjun: -84, classmate: -44, kang: 41, far: [12, 0, 8, 0, 5, 14, -52, 0, 3] };
 /** Week two: nine red. */
-export const ROUND_TWO: RoomRound = { minjun: -88, classmate: -58, kang: 41, far: [-45, -30, 6, -60, -38, 0, -72, -25, -50] };
-/** The last mock score: the room redder still. */
-export const ROUND_THREE: RoomRound = { minjun: -91, classmate: -66, kang: 41, far: [-52, -41, -18, -70, -44, -9, -80, -36, -61] };
+export const ROUND_TWO: RoomRound = { minjun: -86, classmate: -58, kang: 41, far: [-45, -30, 6, -60, -38, 0, -72, -25, -50] };
 /** The rival's reading, from the week-two announcement. */
 export const RIVAL_VALUE = -6;
 
@@ -105,19 +101,19 @@ const ScoreBoard: React.FC<{ cam: Camera; frame: number; from?: number; to?: num
 
 // ------------------------------------------------------------------------------------------------ the class
 
-const mh = headAt(SEAT.x[1], seatY, SEAT.scale, SEATED);
+export const mh = headAt(SEAT.x[1], seatY, SEAT.scale, SEATED);
 const ch = headAt(SEAT.x[0], seatY, SEAT.scale, SEATED);
 const kh = headAt(KX, KY, S, KANG_POSE, -1);
 
 /** You at your desk (seat 3): seated, or standing with the score sheet up (`up` 0..1). */
-function youAt(up: number, sheet: number) {
+export function youAt(up: number, sheet: number) {
   const pose = lerpPose(SEATED, { ...STAND, armF: [mix(20, 132, sheet), mix(30, 10, sheet)] }, up);
   const y = mix(seatY, FLOOR, up);
   return { pose, y, head: headAt(SEAT.x[2], y, SEAT.scale, pose) };
 }
 
 /** The classroom with the three of you on the bench and Ms. Kang; every option a shot needs. */
-const Room: React.FC<{
+export const Room: React.FC<{
   frame: number; cam: Camera; mood: MoodName; board?: "graph" | "diagram" | "blank"; you: ReturnType<typeof youAt>; youFace: object;
   minjun?: { pose?: Pose; face: object } | null; kang?: { pose?: Pose; face: object } | null; far?: React.ReactNode; cards?: React.ReactNode;
   props?: React.ReactNode; classmateFace?: object; classmate?: boolean; scores?: React.ReactNode | false;
@@ -155,7 +151,7 @@ const NearCards: React.FC<{ frame: number; at: number; until: number; round: Roo
   );
 };
 
-const kangLooking = { face: { brows: "none" as const, lids: 0.3, mouth: "flat" as const, eyes: 1, look: { x: 0.9, y: 0.1 } } };
+export const kangLooking = { face: { brows: "none" as const, lids: 0.3, mouth: "flat" as const, eyes: 1, look: { x: 0.9, y: 0.1 } } };
 const minjunPlain = { face: { ...EXPRESSIONS.neutral, look: { x: 1, y: -0.25 } } };
 
 // ------------------------------------------------------------------------------------------------ 62 the mock scores
@@ -240,141 +236,88 @@ export const WeeksShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName 
   );
 };
 
-/** Line 76: the last mock score, the room redder; him -91. The camera pulls back from you to the whole room. */
-export const RedShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const y = youAt(1, 1);
-  const cam = drift(camAt(frame, [[k.red, { x: 940, y: 620, zoom: 1.55 }], [k.redTag + 20, { x: 780, y: 545, zoom: 1.0 }], [k.cuts, { x: 760, y: 560, zoom: 1.08 }]]), frame, "red", 3);
-  return (
-    <Room frame={frame} cam={cam} mood={mood} you={y} youFace={{ brows: "angry", lids: 0.25, mouth: "flat", eyes: 1, look: { x: -0.7, y: 0.1 } }}
-      kang={kangLooking} minjun={{ face: { brows: "sad", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 1, y: -0.3 } } }}
-      classmateFace={{ ...EXPRESSIONS.sceptical, look: { x: 1, y: -0.3 } }}
-      far={<FarCards frame={frame} cam={cam} at={k.redTag} until={k.cuts} round={ROUND_THREE} />}
-      cards={<NearCards frame={frame} at={k.redTag} until={k.cuts} round={ROUND_THREE} />} />
-  );
-};
+// ------------------------------------------------------------------------------------------------ 57-58 people notice
 
-// ------------------------------------------------------------------------------------------------ 67, 69-70 at your desk
-
-/** Someone standing in front of your desk, facing you (-1), the front hand held out (for help, for your notes). */
-const Asker: React.FC<{ frame: number; who: { head: string; coat: string }; out: number; face: object }> = ({ frame, who, out, face }) => (
-  <Figure {...who} x={1200} y={FLOOR} scale={SEAT.scale} facing={-1} pose={{ ...STAND, lean: 6 * out, armF: [mix(15, 84, out), mix(25, 6, out)] }}
+/** Someone standing in front of your desk, facing you (-1). `point` 0..1 raises the front arm to the ceiling. */
+export const Asker: React.FC<{ frame: number; who: { head: string; coat: string }; point?: number; face: object; x?: number }> = ({ frame, who, point = 0, face, x = 1200 }) => (
+  <Figure {...who} x={x} y={FLOOR} scale={SEAT.scale} facing={-1} pose={{ ...STAND, lean: -4 * point, armF: [mix(15, 128, point), mix(25, 34, point)] }}
     {...face} blink={blinking(frame, 9)} time={frame} />
 );
-const ASKER_HEAD = headAt(1200, FLOOR, SEAT.scale, { ...STAND, lean: 6 }, -1);
+export const ASKER_HEAD = headAt(1200, FLOOR, SEAT.scale, STAND, -1);
 
-/** A small notebook flat on your desk (side on), its bottom-left at (x, y). */
-const Notebook: React.FC<{ x: number; y: number }> = ({ x, y }) => (
-  <g transform={`translate(${x} ${y}) rotate(-7)`}>
-    <rect x={0} y={-16} width={110} height={16} rx={3} fill={TEAL} stroke={INK} strokeWidth={4} />
-    <rect x={6} y={-12} width={98} height={6} fill={PAPER} />
-  </g>
-);
-
-/** "No notes. No help.": the red classmate at your desk, hand out for your notes, week one's -44 still over him. Your
- *  hand flat on the notebook, you shake your head; then you turn your back on him. */
-export const HelpShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const turnAt = Math.round(mix(k.notes, k.weekOne, 0.55));
-  const turned = frame >= turnAt;
-  const shake = turned ? 0 : Math.sin((frame - k.notes) / 2.6) * (frame >= k.notes + 4 ? 1 : 0);
-  const book = { x: 990, y: 764 };
-  const yBase: Pose = { ...SEATED, lean: 10, tilt: shake * 9 };
-  const yPose: Pose = turned
-    ? { ...SEATED, armF: [55, 95], armB: [40, 100] }
-    : { ...yBase, armF: armTo(SEAT.x[2], seatY, SEAT.scale, yBase, 1, { x: book.x + 40, y: book.y - 26 }) };
-  const cam = drift(camAt(frame, [[k.notes, { x: 1080, y: 680, zoom: 1.95 }], [k.weekOne, { x: 1070, y: 675, zoom: 2.1 }]]), frame, "help", 2);
+/** A little chalk cloud doodle with three drops (the nickname), centred at (x, y), popping in at `at`. Bobs gently. */
+export const Cloud: React.FC<{ frame: number; at: number; x: number; y: number; scale?: number }> = ({ frame, at, x, y, scale = 1 }) => {
+  if (frame < at) return null;
+  const s = scale * Math.min(1, (frame - at) / 6) * (1 + 0.15 * Math.max(0, 1 - (frame - at) / 10));
+  const bob = Math.sin((frame - at) / 11) * 5;
   return (
-    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }} far={<ScoreBoard cam={cam} frame={frame} />}
-      behind={<Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} facing={turned ? -1 : 1} pose={yPose} brows={turned ? "angry" : "flat"}
-        lids={0.3} mouth="flat" eyes={1} look={turned ? { x: 0.4, y: 0.4 } : { x: 0.7 + shake * 0.3, y: 0.1 }} blink={blinking(frame, 1)} time={frame} />}
-      actors={
-        <>
-          <Notebook x={book.x} y={book.y} />
-          <Asker frame={frame} who={CLASSMATE} out={ramp(frame, k.notes - 6, k.notes + 4)}
-            face={turned ? { brows: "sad", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.3 } } : { brows: "raised", lids: 0, mouth: "smile", eyes: 1, look: { x: 0.9, y: 0.2 } }} />
-          <Meter frame={frame} at={roomTags(k.roomTag).classmate} x={ASKER_HEAD.x} headY={ASKER_HEAD.y} r={ASKER_HEAD.r} value={ROUND_ONE.classmate} until={k.weekOne} tilt={3} />
-        </>
-      } />
+    <g transform={`translate(${x} ${y + bob}) scale(${s})`}>
+      <path d="M-60 20 Q-84 20 -84 -2 Q-84 -26 -56 -26 Q-52 -56 -18 -56 Q8 -74 34 -50 Q70 -54 72 -20 Q94 -14 88 8 Q84 22 62 20Z"
+        fill="#eef1f4" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
+      {[-40, 0, 40].map((d, i) => {
+        const fall = ((frame - at + i * 9) % 30) / 30;
+        return <path key={d} d={`M${d} ${34 + fall * 40} q-8 14 0 18 q8 -4 0 -18z`} fill="#7fb6d8" stroke={INK} strokeWidth={3} opacity={1 - fall} />;
+      })}
+    </g>
   );
 };
 
-type RivalView = "asks" | "you" | "card";
+/** Line 57: "But people notice. You brag, and you stare at the air above their heads." You on your feet with the sheet,
+ *  mouth going, eyes up at the air over everyone; the classmate and your best friend trade a look; Ms. Kang's brows go up. */
+export const NoticeShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
+  const y = youAt(1, 1);
+  const trade = frame >= Math.round(mix(k.notice, k.nickname, 0.45));
+  const cam = drift(camAt(frame, [[k.notice, { x: 760, y: 600, zoom: 1.25 }], [k.nickname, { x: 720, y: 610, zoom: 1.4 }]]), frame, "notice", 3);
+  const gab = Math.floor(frame / 5) % 2 === 0;
+  const scan = Math.sin((frame - k.notice) / 12);
+  return (
+    <Room frame={frame} cam={cam} mood={mood} you={y}
+      youFace={{ brows: "raised", lids: 0, mouth: gab ? "open" : "smirk", eyes: 1, look: { x: scan * 0.8, y: -0.95 } }}
+      kang={{ face: { brows: "raised", lids: 0.1, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0 } } }}
+      minjun={{ face: { brows: "flat", lids: 0.35, mouth: "flat", eyes: 1, look: trade ? { x: -1, y: 0 } : { x: 1, y: -0.5 } } }}
+      classmateFace={{ brows: "raised", lids: 0.2, mouth: trade ? "smirk" : "flat", eyes: 1, look: trade ? { x: 1, y: 0 } : { x: 1, y: -0.4 } }} />
+  );
+};
 
-/** The rival at your desk: "What's with you?"; your face; his week-two card, still -6. */
-export const RivalShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const view = current<RivalView>(frame, [[0, "asks"], [k.still6, "you"], [Math.round(mix(k.still6, k.store, 0.5)), "card"]]);
+/** Line 58: the rival at your desk, pointing at the ceiling with a grin: "Weatherman. Cloudy today?" A chalk cloud
+ *  pops over your head; the classmate and your best friend snicker into their hands; you, deadpan. */
+export const TaeShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
+  const point = ramp(frame, k.tae - 4, k.tae + 8);
+  const cloudAt = Math.round(mix(k.tae, k.taeEnd, 0.55));
+  const laugh = frame >= cloudAt + 4;
+  const shake = laugh ? Math.sin(frame / 2.2) * 5 : 0;
   const yh = headAt(SEAT.x[2], seatY, SEAT.scale, SEATED);
-  const cams: Record<RivalView, Camera> = {
-    asks: camAt(frame, [[k.rival, { x: 1080, y: 640, zoom: 1.9 }], [k.still6, { x: 1100, y: 630, zoom: 2.0 }]]),
-    you: closeUp(yh.x + 40, yh.y, 2.7),
-    card: camAt(frame, [[Math.round(mix(k.still6, k.store, 0.5)), closeUp(ASKER_HEAD.x, ASKER_HEAD.y - 70, 2.4)], [k.store, closeUp(ASKER_HEAD.x, ASKER_HEAD.y - 75, 2.55)]]),
-  };
-  const cam = drift(cams[view], frame, "rival", 2);
-  const asking = frame < k.still6;
+  const cam = drift(camAt(frame, [[k.tae, { x: 900, y: 600, zoom: 1.5 }], [k.store, { x: 860, y: 610, zoom: 1.38 }]]), frame, "tae", 2);
+  const snicker = { brows: "raised" as const, lids: 0.5, mouth: (Math.floor(frame / 4) % 2 ? "open" : "smile") as "open" | "smile", eyes: 1, look: { x: 1, y: -0.2 } };
   return (
-    <SetShot set={classroom} mood={mood} frame={frame} cam={cam} options={{ board: "blank", drawn: 1 }} far={<ScoreBoard cam={cam} frame={frame} />}
-      behind={<Figure {...HERO} x={SEAT.x[2]} y={seatY} scale={SEAT.scale} pose={SEATED} brows={asking ? "raised" : "flat"} lids={asking ? 0 : 0.3} mouth="flat"
-        eyes={1} look={{ x: 0.9, y: -0.35 }} blink={blinking(frame, 1)} time={frame} />}
-      actors={
-        <>
-          <Asker frame={frame} who={TAEHO} out={0}
-            face={{ brows: "flat", lids: 0.25, mouth: asking ? "open" : "flat", eyes: 1, look: { x: 0.9, y: 0.25 } }} />
-          <Meter frame={frame} at={roomTags(k.week2Tag).rival} x={ASKER_HEAD.x} headY={ASKER_HEAD.y} r={ASKER_HEAD.r} value={RIVAL_VALUE} until={k.store} />
-        </>
-      } />
+    <Room frame={frame} cam={cam} mood={mood} you={youAt(0, 0)}
+      youFace={{ brows: "flat", lids: 0.5, mouth: "flat", eyes: 1, look: { x: 0.9, y: -0.2 } }}
+      minjun={{ pose: { ...SEATED, tilt: shake * 0.6, armF: laugh ? [150, 30] : SEATED.armF }, face: laugh ? snicker : minjunPlain.face }}
+      classmateFace={laugh ? snicker : { ...EXPRESSIONS.neutral, look: { x: 1, y: -0.2 } }}
+      props={<Asker frame={frame} who={TAEHO} point={point}
+        face={{ brows: "raised", lids: 0.15, mouth: frame < k.taeEnd ? (Math.floor(frame / 5) % 2 ? "open" : "smirk") : "smile", eyes: 1, look: { x: 0.9, y: 0.2 } }} />}
+      cards={<Cloud frame={frame} at={cloudAt} x={yh.x - 10} y={yh.y - yh.r - 110} scale={1.1} />} />
   );
 };
 
-// ------------------------------------------------------------------------------------------------ 78 him at -91, still open
+// ------------------------------------------------------------------------------------------------ Five Hundred, 62-63
 
-export const DownShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  const slump: Pose = { ...SEATED, lean: 8, tilt: 10, armF: [30, 50] };
-  const h = headAt(SEAT.x[1], seatY, SEAT.scale, slump);
-  const cam = drift(camAt(frame, [[k.down, closeUp(h.x + 50, h.y - 70, 2.35)], [k.top, closeUp(h.x + 50, h.y - 75, 2.6)]]), frame, "down", 2);
+/** Line 62: "Then your maths teacher does the worst thing a teacher can do." Ms. Kang at her platform slowly turns her
+ *  eyes on you; you sink in your seat. Line 63 "Up.": close on her, the red pen jabbing up. */
+export const UpShot: React.FC<{ frame: number; from: number; up: number; to: number; mood: MoodName }> = ({ frame, from, up, to, mood }) => {
+  const turn = ramp(frame, from + 20, from + 50);
+  const sink = ramp(frame, from + 50, from + 70);
+  const close = frame >= up;
+  const jab = close ? ramp(frame, up, up + 6) : 0;
+  const pose: Pose = { ...KANG_POSE, armF: [mix(36, 125, jab), mix(58, 40, jab)] };
+  const cam = drift(close
+    ? camAt(frame, [[up, closeUp(kh.x - 60, kh.y - 40, 2.6)], [to, closeUp(kh.x - 60, kh.y - 40, 2.8)]])
+    : camAt(frame, [[from, { x: 1150, y: 600, zoom: 1.1 }], [up, { x: 1300, y: 560, zoom: 1.6 }]]), frame, "up", 2);
+  const you = youAt(0, 0);
+  const youSunk = { ...you, y: you.y + 18 * sink };
   return (
-    <Room frame={frame} cam={cam} mood={mood} you={youAt(1, 1)} youFace={{ ...EXPRESSIONS.determined, look: { x: -0.5, y: 0.1 } }} kang={kangLooking}
-      minjun={{ pose: slump, face: { brows: "sad", lids: 0.55, mouth: "frown", eyes: 1, look: { x: 0.6, y: 0.75 } } }}
-      cards={<Meter frame={frame} at={roomTags(k.redTag).minjun} x={h.x} headY={h.y} r={h.r} value={-91} until={k.top} />} />
-  );
-};
-
-// ------------------------------------------------------------------------------------------------ 79 second place
-
-/** The rank list pinned to the board: rows of names as ink bars; you second, with a stamped 2. */
-const RankList: React.FC<{ frame: number; at: number; cam: Camera }> = ({ frame, at, cam }) => {
-  const thump = frame < at ? 0 : spring({ frame: frame - at, fps: 30, config: { damping: 9, stiffness: 220, mass: 0.6 } });
-  return (
-    <Deep cam={cam} depth={0.92}>
-      <rect x={1352} y={208} width={300} height={316} rx={4} fill="#000" opacity={0.2} />
-      <rect x={1340} y={198} width={300} height={316} rx={4} fill={PAPER} stroke={INK} strokeWidth={4} />
-      {Array.from({ length: 6 }, (_, r) => (
-        <g key={r}>
-          {r === 1
-            ? <HeadIcon x={1430} y={248 + 48} r={22} color={HERO.head} tuft mouth="flat" />
-            : <circle cx={1430} cy={248 + r * 48} r={14} fill="#c9c2b0" />}
-          <rect x={1466} y={240 + r * 48} width={r === 1 ? 150 : 110 + ((r * 37) % 40)} height={14} rx={7} fill={INK} opacity={r === 1 ? 0.8 : 0.4} />
-        </g>
-      ))}
-      <g transform={`translate(1378 296) rotate(-12) scale(${mix(1.8, 1, Math.min(1, thump))})`} opacity={Math.min(1, thump * 1.5)}>
-        <circle r={26} fill="none" stroke={CRIMSON} strokeWidth={6} />
-        <text x={0} y={13} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={38} fill={CRIMSON}>2</text>
-      </g>
-      <circle cx={1490} cy={206} r={9} fill={TEAL} stroke={INK} strokeWidth={3} />
-    </Deep>
-  );
-};
-
-export const TopShot: React.FC<{ frame: number; k: SeatsTimes; mood: MoodName }> = ({ frame, k, mood }) => {
-  // "So what does first cost?": from above, his empty desk and the untouched half, held to the end of the line
-  if (frame >= k.emptyDesk) return <EmptyDesks frame={frame} from={k.emptyDesk} to={k.end} mood={mood} />;
-  const wide = frame >= k.pull;
-  // "Second place.": the list close; "An empty desk beside you.": you on the bench, his place beside you empty
-  const cam = drift(wide
-    ? camAt(frame, [[k.pull, { x: 820, y: 640, zoom: 1.55 }], [k.emptyDesk, { x: 780, y: 650, zoom: 1.42 }]])
-    : camAt(frame, [[k.top, { x: 1500, y: 360, zoom: 2.3 }], [k.pull, { x: 1480, y: 375, zoom: 2.15 }]]), frame, "top", 3);
-  const look = ramp(frame, k.pull + 6, k.pull + 18);
-  return (
-    <Room frame={frame} cam={cam} mood={mood} board="blank" you={youAt(0, 0)} minjun={null} kang={null} scores={false}
-      youFace={{ brows: look > 0.5 ? "sad" : "none", lids: mix(0.1, 0.4, look), mouth: "flat", eyes: 1, look: { x: mix(0.9, -0.9, look), y: mix(-0.5, 0.3, look) } }}
-      far={<RankList frame={frame} at={k.top + 8} cam={cam} />} />
+    <Room frame={frame} cam={cam} mood={mood} you={youSunk} youFace={{ brows: "worry", lids: 0.1, mouth: sink > 0.5 ? "wobble" : "flat", eyes: 1.1, look: { x: 1, y: -0.2 } }}
+      minjun={minjunPlain}
+      kang={{ pose, face: { brows: close ? "flat" : "none", lids: mix(0, 0.35, turn), mouth: close && frame < up + 16 ? "open" : "smirk", eyes: 1, look: { x: mix(-0.6, 0.95, turn), y: 0.1 } } }} />
   );
 };

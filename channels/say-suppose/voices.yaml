@@ -73,6 +73,10 @@ voices:
       Old woman: >-
         A warm, clear female alto: a kind woman in her seventies on a metro platform, a grandmother. Gentle and
         unhurried, a smile in the voice, crisp clear diction, every word distinct, standard English with no slang.
+      # The bus kid (saw who wants you to fail v5, 2026-11-14): one line, "What did you win?".
+      Kid: >-
+        A high, bright boy's voice, about six years old, on a bus. Curious and delighted, quick, clear diction,
+        every word distinct, standard English with no slang.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.

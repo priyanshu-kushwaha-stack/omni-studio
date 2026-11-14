@@ -1,4 +1,4 @@
-// Who's Red, lines 42-47 (script v3): the academy steps at dusk (builder A's AcademyStreet, street view), you and your
+// Who's Red, lines 43-47 (script v5): the academy steps at dusk (builder A's AcademyStreet, street view), you and your
 // best friend sitting with your bags between your feet. No card opens: you said nothing good.
 //
 // Two performed moments, the narrator silent:
@@ -11,6 +11,10 @@
 //   v4.2 (outside review of v4.1, 4:00-4:15): the shove turns you a little away and you stay turned; his hand stays on
 //   your shoulder; the framings after it change (closer on the hand and his laugh, then on your smile failing). The
 //   steps come in during line 41 ("The same race. The ones you'd miss."), the lanes sheet cut short.
+//   v5: the steps come in on line 43 ("So why not just ask him?"); the bubble and his look up play in the gap after it;
+//   the swat plays inside "Is it a bug? Get it off." and the laugh and shove land on "He can't see it."; no failing
+//   smile now (the owner: exciting, not sad): a knowing look at the empty air over his head, then set and determined
+//   on "You'll have to read them. All of them." as the camera pulls out over the street.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { lerpPose, SEATED, seatedY, type Pose } from "@whatif/kit/rig/pose";
@@ -60,10 +64,10 @@ function yourFace(frame: number, k: CrimsonTimes, view: View) {
   if (frame < k.back) return { brows: "raised" as const, lids: 0, mouth: "open" as const, eyes: 1.1, look: { x: 0.8, y: -0.75 } };
   if (frame < k.catches) return { brows: "raised" as const, lids: 0, mouth: "flat" as const, eyes: 1.05, look: { x: 0.85, y: -0.5 } };
   if (frame < k.laugh) return { brows: "worry" as const, lids: 0.1, mouth: "flat" as const, eyes: 1.05, look: { x: 0.9, y: -0.2 } };
-  // after the shove, turned a little away: the smile holds, then fails, while his hand is still on your shoulder
-  if (frame < k.yours + 24) return { brows: "none" as const, lids: 0.2, mouth: "smile" as const, eyes: 1, look: { x: 0.6, y: -0.5 } };
-  if (frame < k.yours + 54) return { brows: "none" as const, lids: 0.25, mouth: "flat" as const, eyes: 1, look: { x: 0.55, y: -0.6 } };
-  return { brows: "worry" as const, lids: 0.25, mouth: "flat" as const, eyes: 1, look: { x: 0.7, y: -0.7 } };
+  // after the shove, grinning along with him; then a knowing look up at the empty air over his head; then set
+  if (frame < k.yours) return { brows: "none" as const, lids: 0.1, mouth: "smile" as const, eyes: 1, look: { x: 0.8, y: -0.3 } };
+  if (frame < k.wide) return { ...EXPRESSIONS.sceptical, look: { x: 0.7, y: -0.85 } };
+  return { ...EXPRESSIONS.determined, look: { x: 1, y: -0.1 } };
 }
 
 export const StepsShot: React.FC<{ frame: number; k: CrimsonTimes }> = ({ frame, k }) => {

@@ -2,7 +2,7 @@
  *  close-up ("we should introduce characters so people remember also else everything else might look the same"), and
  *  a card only where a fact or a turn has to be held ("If some text makes sense to emphasise on something then we can
  *  add that but only if it makes sense"). One at a time, in the lower left, inside the UI-safe area, off the drawing's
- *  faces, inside YouTube's safe area; the exam title sits upper left. Each is placed on a v4 line: [line, share of the line, seconds on screen]. */
+ *  faces, inside YouTube's safe area; the exam title sits upper left. Each is placed on a v5 line: [line, share of the line, seconds on screen]. */
 import { interpolate } from "remotion";
 import type { Clip } from "@whatif/kit/timeline";
 import { FONT } from "@whatif/kit/fonts";
@@ -14,16 +14,16 @@ type Item = { line: number; p: number; secs: number; kind: "cast" | "fact" | "ti
 const ITEMS: Item[] = [
   { line: 4, p: 0.05, secs: 4, kind: "cast", head: MINJUN.head, top: "MIN-JUN", sub: "your best friend since you were twelve", right: true }, // the left is his face in the close-up
   { line: 18, p: 0, secs: 2.6, kind: "cast", head: JIYOON.head, top: "JI-YOON", sub: "your big sister · six years of night shifts" },
-  { line: 22, p: 0, secs: 4, kind: "cast", head: TAEHO.head, top: "TAE-HO", sub: "the rival · trash talk every morning" },
-  { line: 28, p: 0, secs: 3.5, kind: "cast", head: KANG.head, top: "MS. KANG", sub: "maths · one word at a time" },
-  { line: 41, p: 0.2, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 1", sub: "Only the people in your race can hurt at your news.", high: true },
-  { line: 54, p: 0, secs: 6.5, kind: "fact", accent: TEAL, top: "ONE NEIGHBOURHOOD IN SEOUL", sub: "about 1,000 academies · closed by 10 pm" },
-  { line: 62, p: 0, secs: 5, kind: "fact", accent: TEAL, top: "THE CURVE", sub: "Only the top 4% get the top grade", right: true }, // the left is the class's faces
-  { line: 83, p: 0, secs: 5.5, kind: "fact", accent: TEAL, top: "TWO KINDS OF ENVY", sub: "One makes you climb. One pulls them down." },
-  { line: 87, p: 0.25, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 2", sub: "Hurt needs a race. Outside yours, nobody bleeds.", high: true },
-  { line: 89, p: 0.15, secs: 5.5, kind: "fact", accent: TEAL, top: "SCHOLARSHIP CONFIRMED", sub: "4 years, fully paid · if you get top grades" },
-  { line: 101, p: 0, secs: 4, kind: "title", top: "EXAM MORNING", sub: "8:00 am" },
-  { line: 105, p: 0.08, secs: 8, kind: "fact", accent: CRIMSON, top: "NOVEMBER 2025 · SOUTH KOREA", sub: "No takeoffs, no landings for 35 minutes · during the English listening test" },
+  { line: 23, p: 0, secs: 4, kind: "cast", head: TAEHO.head, top: "TAE-HO", sub: "the rival · trash talk every morning" },
+  { line: 29, p: 0, secs: 3.5, kind: "cast", head: KANG.head, top: "MS. KANG", sub: "maths · one word at a time" },
+  { line: 42, p: 0.2, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 1", sub: "Only the people in your race can hurt at your news.", high: true },
+  { line: 51, p: 0, secs: 5, kind: "fact", accent: TEAL, top: "THE CURVE", sub: "Only the top 4% get the top grade", right: true },
+  { line: 67, p: 0, secs: 6.5, kind: "fact", accent: TEAL, top: "ONE NEIGHBOURHOOD IN SEOUL", sub: "about 1,000 academies · closed by 10 pm" },
+  { line: 81, p: 0, secs: 5.5, kind: "fact", accent: TEAL, top: "TWO KINDS OF ENVY", sub: "One makes you climb. One pulls them down." },
+  { line: 84, p: 0.1, secs: 5, kind: "fact", accent: CRIMSON, top: "PROBLEM 2", sub: "The rival has worked out your trick.", high: true },
+  { line: 92, p: 0, secs: 4, kind: "title", top: "EXAM MORNING", sub: "8:00 am" },
+  { line: 95, p: 0.08, secs: 8, kind: "fact", accent: CRIMSON, top: "NOVEMBER 2025 · SOUTH KOREA", sub: "No takeoffs, no landings for 35 minutes · during the English listening test" },
+  { line: 97, p: 0, secs: 3.5, kind: "title", top: "RESULTS DAY", sub: "one month later" },
 ];
 
 const IN = 9;

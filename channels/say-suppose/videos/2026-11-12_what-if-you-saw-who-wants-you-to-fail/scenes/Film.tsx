@@ -7,7 +7,6 @@ import { Finish } from "@whatif/kit/stage/Stage";
 import { BEATS } from "./beats";
 import { lastIndex, type Shot } from "./shared";
 import { Captions } from "./Captions";
-import { V3_TO_V4 } from "./remap";
 import { soundPlan } from "./sound";
 
 /** The score's level, the owner's (taste.md 2026-11-08, G5 of the pause-time film): about 26 dB under the voice while
@@ -46,9 +45,9 @@ export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Reco
 const Picture: React.FC<FilmProps> = ({ timeline, lines: v4Lines }) => {
   const frame = useCurrentFrame();
   const { clips: v4, cues } = timeline;
-  // The beats count lines in v3 numbering (remap.ts): hand them v4's clips and lines in that numbering.
-  const clips = V3_TO_V4.map((n) => v4[n]);
-  const lines = V3_TO_V4.map((n) => v4Lines[n]);
+  // v5 (2026-11-14): the beats count lines in story.json's own numbering.
+  const clips = v4;
+  const lines = v4Lines;
   const starts = BEATS.map((b) => (b.firstLine === 0 ? 0 : clips[b.firstLine].from));
   const index = Math.max(0, lastIndex(starts, (s) => frame >= s));
   const beat = BEATS[index];

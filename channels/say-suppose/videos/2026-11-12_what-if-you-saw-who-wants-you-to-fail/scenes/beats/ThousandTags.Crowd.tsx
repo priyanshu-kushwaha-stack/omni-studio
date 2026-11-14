@@ -1,7 +1,8 @@
 // The crowd for A Thousand Tags: the people pouring out of the academies at ten, in rows on the far pavement, the
 // pavement and the road (AcademyStreet's ACADEMY.crowd), each walking out of the nearest tower door when the doors
 // open, then standing, turned toward you on the steps. When you say it, a card snaps open over every head in a ripple
-// out from the steps: nearly all grey zeros, a scatter of teal. Your class (with your best friend) is drawn by the beat.
+// out from the steps: nearly all grey zeros, a scatter of teal, and red on the eight nearest the snack shop (your class
+// in the crowd). `annoyed` turns the crowd's faces sour ("would like you to get off the steps"). Your class (with your best friend) is drawn by the beat.
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose } from "@whatif/kit/rig/pose";
 import { worldOf } from "@whatif/kit/sets/common";
@@ -40,6 +41,9 @@ export function crowd(): Member[] {
       });
     }
   });
+  // your class among the crowd: the eight people nearest the snack shop's pavement go red (a dozen red with the class)
+  const near = out.map((m, i) => ({ i, d: Math.hypot(m.x - 1030, (m.y - 1175) * 1.6) })).sort((a, b) => a.d - b.d).slice(0, 8);
+  near.forEach(({ i }, n) => { out[i].value = -Math.round(9 + noise(i + 41) * 38 + n); });
   return out;
 }
 
@@ -51,8 +55,8 @@ const WALK = 46;
 /** The crowd at this frame. `doors` is the frame the doors open (nobody before it), `say` the frame you say it (the
  *  cards), `until` when the cards fold (the cut away), `dim` 0..1 fades their cards (none is red) so your class's three red
  *  cards stand out. Draws only the people the camera can see. */
-export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: number; until: number; you: { x: number; y: number }; dim?: number }> = ({
-  frame, cam, doors, say, until, you, dim = 0,
+export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: number; until: number; you: { x: number; y: number }; dim?: number; annoyed?: number }> = ({
+  frame, cam, doors, say, until, you, dim = 0, annoyed = 0,
 }) => {
   if (frame < doors) return null;
   const halfW = 960 / cam.zoom + 120, halfH = 540 / cam.zoom + 200;
@@ -75,10 +79,13 @@ export const Crowd: React.FC<{ frame: number; cam: Camera; doors: number; say: n
         const at = say + Math.min(26, Math.hypot(m.x - you.x, (m.y - you.y) * 2) / 110) + Math.floor(noise(m.seed + 51) * 5);
         return (
           <g key={m.seed}>
-            <Figure x={x} y={y} scale={s} facing={facing} pose={pose} head={m.head} coat={m.coat} mouth="flat"
+            <Figure x={x} y={y} scale={s} facing={facing} pose={pose} head={m.head} coat={m.coat}
+              {...(annoyed > 0.5 && !walking
+                ? { brows: noise(m.seed + 61) < 0.5 ? "angry" as const : "flat" as const, lids: 0.45, mouth: noise(m.seed + 71) < 0.4 ? "frown" as const : "flat" as const }
+                : { mouth: "flat" as const })}
               look={{ x: 0.6, y: walking ? 0 : -0.3 }} time={frame} />
             {!walking && (
-              <g opacity={1 - 0.72 * dim}>
+              <g opacity={m.value < 0 ? 1 : 1 - 0.72 * dim}>
                 <Meter frame={frame} at={at} x={h.x} headY={h.y} r={h.r} value={m.value} until={until} tilt={-3 + (noise(m.seed) - 0.5) * 8} />
               </g>
             )}
