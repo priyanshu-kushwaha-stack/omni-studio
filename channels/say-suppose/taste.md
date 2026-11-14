@@ -8,6 +8,14 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-14
+
+- **"yes lets plan and fix the opening as to what would be the best thing to do ? Looks fine otherwise."** On saw who
+  wants you to fail v5, after the room's story editor flagged the opening in two rounds (the thumbnail's frame and
+  minus eighty-four only arrived at 0:48; the title question at 0:24). Replaces "Start Script is OK" for this film's
+  first seconds: open cold on the thumbnail's frame (the card landing by 0:07), the title question and the stakes by
+  0:30, then the skit. For every film: the first seven seconds show the thumbnail's promise.
+
 ## 2026-11-13
 
 - **"most of the videos we made so far are emotional sort of ... I want exciting stuff."** Asked who our audience is

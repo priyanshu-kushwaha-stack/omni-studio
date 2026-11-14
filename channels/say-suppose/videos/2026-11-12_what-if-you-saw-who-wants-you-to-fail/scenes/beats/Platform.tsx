@@ -163,9 +163,10 @@ export const PlatformStage: React.FC<{
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], to: number) {
-  const lead = clips[0].from;
-  const lp = (p: number) => Math.round(lead * p);
+function times(clips: Clip[], from: number, to: number) {
+  // G2 round 18: the skit starts after the cold open (shot.from), not at frame 0.
+  const lead = clips[0].from - from;
+  const lp = (p: number) => from + Math.round(lead * p);
   const g0 = lineEnd(clips, 0), g1 = clips[1]?.from ?? to;
   const gp = (p: number) => Math.round(g0 + (g1 - g0) * p);
   return {
@@ -208,7 +209,7 @@ function cardValue(frame: number, snap: number) {
 
 const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
-  const k = times(clips, shot.to);
+  const k = times(clips, shot.from, shot.to);
   const mood = moodNow(shot);
   const on = current(frame, [
     [0, "wide"], [k.tear, "you"], [k.show, "show"], [k.cardCU, "card"], [k.settled, "two"], [k.line, "her"], [k.point, "point"],
@@ -266,7 +267,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
 
   const cams: Record<typeof on, Camera> = {
     // one camera step closer than v4.1 (outside review): the board's lower rows, you and her, knees up
-    wide: camAt(frame, [[0, { x: 1010, y: 505, zoom: 1.4 }], [k.tear, { x: 1010, y: 520, zoom: 1.48 }]]),
+    wide: camAt(frame, [[shot.from, { x: 1010, y: 505, zoom: 1.4 }], [k.tear, { x: 1010, y: 520, zoom: 1.48 }]]),
     you: camAt(frame, [[k.tear, closeUp(yh.x + 40, yh.y + 60, 2.2)], [k.left, closeUp(yh.x + 40, yh.y + 50, 2.4)], [k.show, closeUp(yh.x + 60, yh.y + 40, 2.2)]]),
     show: camAt(frame, [[k.show, { x: 1080, y: 620, zoom: 1.55 }], [k.cardCU, { x: 1090, y: 600, zoom: 1.6 }]]),
     card: camAt(frame, [[k.cardCU, insert(cardMid.x, cardMid.y + 40, 3.0)], [k.settled, insert(cardMid.x, cardMid.y + 40, 3.3)]]),
@@ -291,7 +292,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     </g>
   ) : null;
 
-  const flutter = Math.max(1 - ramp(frame, 0, 16), frame >= k.flutter ? 1 - ramp(frame, k.flutter, k.flutter + 14) : 0);
+  const flutter = Math.max(1 - ramp(frame, shot.from, shot.from + 16), frame >= k.flutter ? 1 - ramp(frame, k.flutter, k.flutter + 14) : 0);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <PlatformStage frame={frame} cam={cam} mood={mood} flutter={flutter} train={train} doorOpen={doorOpen}
@@ -299,8 +300,8 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
         woman={fade > 0 ? { x: wx, y: wy, pose: womanPose, face: womanFace, fade } : null}
         card={<>{card}{snapLines}{bubble}</>} extra={hand} />
       {/* the board's flutter and click, at the start and once at the end */}
-      <Sequence from={0} durationInFrames={18}><Audio src={staticFile("sfx/flutter.wav")} volume={0.5} /></Sequence>
-      <Sequence from={16} durationInFrames={10}><Audio src={staticFile("sfx/click.wav")} volume={0.6} /></Sequence>
+      <Sequence from={shot.from} durationInFrames={18}><Audio src={staticFile("sfx/flutter.wav")} volume={0.5} /></Sequence>
+      <Sequence from={shot.from + 16} durationInFrames={10}><Audio src={staticFile("sfx/click.wav")} volume={0.6} /></Sequence>
       <Sequence from={k.flutter} durationInFrames={16}><Audio src={staticFile("sfx/flutter.wav")} volume={0.5} /></Sequence>
       <Sequence from={k.flutter + 14} durationInFrames={10}><Audio src={staticFile("sfx/click.wav")} volume={0.6} /></Sequence>
       {/* the card: a soft paper snap, a long flutter up through the numbers, one click still on +22; its click shut */}

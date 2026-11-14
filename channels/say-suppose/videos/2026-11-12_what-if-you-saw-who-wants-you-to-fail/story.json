@@ -51,9 +51,33 @@
       "describe": "A high, bright boy's voice, about six years old, on a bus. Curious and delighted, quick, clear diction, every word distinct, standard English with no slang."
     }
   },
-  "leadInSec": 8.4,
+  "leadInSec": 4.4,
   "tailSec": 2.4,
   "lines": [
+    {
+      "text": "So what if every piece of good news showed you who wants you to fail?",
+      "say": "[intrigued, cinematic, leaning in, a beat before the last three words] So what if every piece of good news showed you who wants you to fail?",
+      "speaker": "narrator",
+      "gapAfterSec": 0.65,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Six weeks before the big exam. A card that shows you who's really racing you. Get caught reading it, and a hundred chairs turn their backs on you.",
+      "say": "[quick, building, a trailer read; a grin on the card, the last clause dropped low] Six weeks before the big exam. A card that shows you who's really racing you. Get caught reading it, and a hundred chairs turn their backs on you.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.65,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "It started this morning. With a stranger.",
+      "say": "[light, conspiratorial, a beat between the two sentences] It started this morning. With a stranger.",
+      "speaker": "narrator",
+      "gapAfterSec": 8.3,
+      "mood": "night",
+      "claims": []
+    },
     {
       "text": "Old woman: Oh, congratulations! Your family must be so proud.",
       "say": "[warm, delighted, clear and unhurried, a grandmother's smile] Oh, congratulations! Your family must be so proud.",
@@ -71,8 +95,8 @@
       "claims": []
     },
     {
-      "text": "So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Because your best friend hears everything first. He always has.",
-      "say": "[curious, leaning in on the question, then warm and fond] So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Because your best friend hears everything first. He always has.",
+      "text": "You tell nobody all day. Because your best friend hears everything first. He always has.",
+      "say": "[low, warm and fond, a little rueful] You tell nobody all day. Because your best friend hears everything first. He always has.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",

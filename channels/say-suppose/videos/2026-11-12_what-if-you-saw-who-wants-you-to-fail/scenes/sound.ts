@@ -45,12 +45,18 @@ export type SoundPlan = {
   peak: { from: number; to: number; floor: number };
 };
 
-/** The plan in seconds, from the clips. */
-export function soundPlan(clips: Clip[], totalFrames: number): SoundPlan {
-  const at = (i: number) => (i === 0 ? 0 : clips[i].from / FPS);
+/** The cold open's sound (G2 round 18): the hunt under the hug and the flashes, the night street's bed. */
+const COLD_SCORE = "cues/hunt.wav";
+const COLD_BED = "street-night";
+
+/** The plan in seconds, from the beats' clips (the cold open's lines left out) and the frame the platform starts on. */
+export function soundPlan(clips: Clip[], totalFrames: number, start = 0): SoundPlan {
+  const at = (i: number) => (i === 0 ? start / FPS : clips[i].from / FPS);
   const end = (i: number) => (clips[i].from + clips[i].frames) / FPS;
-  const starts = SCORE.map((c) => at(c.line));
-  const score = SCORE.map((c, i) => ({ file: c.file, from: starts[i], to: starts[i + 1] ?? totalFrames / FPS }));
-  const beds = BEDS.map(([line, name]): [number, string] => [at(line), name]);
+  const cues = [...(start > 0 ? [{ file: COLD_SCORE, line: -1 }] : []), ...SCORE];
+  const starts = cues.map((c) => (c.line < 0 ? 0 : at(c.line)));
+  const score = cues.map((c, i) => ({ file: c.file, from: starts[i], to: starts[i + 1] ?? totalFrames / FPS }));
+  const beds: [number, string][] = [...(start > 0 ? [[0, COLD_BED] as [number, string]] : []),
+    ...BEDS.map(([line, name]): [number, string] => [at(line), name])];
   return { score, beds, peak: { from: end(PEAK_AFTER), to: at(PEAK_AFTER + 1), floor: 0.1 } };
 }

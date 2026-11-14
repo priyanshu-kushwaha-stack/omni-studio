@@ -1,7 +1,7 @@
 # Script: What If You Saw Who Wants You to Fail?
 
 format: story
-status: v6, G2 round 16 (2026-11-14): set pieces reordered so the scale only climbs (one face, the class, the hall, the street, the country, the window); the street lands at 5:00; the loopholes are closed on screen; a laugh in every scene; the peak is a reveal and a triumph
+status: v6.1, G2 round 18 (2026-11-14): a cold open on the thumbnail's frame, -84 by 0:05, the title question by 0:08, the stakes by 0:20; the platform skit after it word for word. Earlier: G2 round 16 (2026-11-14): set pieces reordered so the scale only climbs (one face, the class, the hall, the street, the country, the window); the street lands at 5:00; the loopholes are closed on screen; a laugh in every scene; the peak is a reveal and a triumph
 claims: claims.md
 
 > SITUATION: Seoul, the street of after-school academies, six weeks before the big exam. Good news, you say out loud, and your best friend hears it first, over half of his chocolate bar at ten at night.
@@ -14,7 +14,28 @@ claims: claims.md
 > DARLING: "He isn't sawing your chair. He's building a ladder. Out of your mistakes. You've been his textbook for two years."
 > DARLING: "A face in a mirror is still a face. The toilets weren't broken. The one card you can't see was always yours."
 
-## [00:00] The Platform
+## [00:00] Cold Open
+
+> MOOD: night
+> SCENE: Cold open on the thumbnail's frame, before anything is explained (G2 round 18, the owner: fix the opening): the academy street at ten, the lit signboard towers. You large at the left, mustard head, teal scarf, holding up the letter with the teal seal, mouth open. Your best friend right of centre, pale-blue head, grinning, his near arm reaching to pull you into the hug. No cast tag yet.
+
+> BUBBLE: You: I made it.
+
+> HOLD: 4 s. Performed. A paper snap: the cream card unfolds over his head and its split-flap digits run down the red side and stop on minus eighty-four, five seconds in. His arm hooks round your neck, his eyes shut, his grin wide. Your eyes stay open, on the card.
+
+> TAG: -84%
+
+So what if every piece of good news showed you who wants you to fail?
+
+> SCENE: Three fast flashes of what is coming, about a second and a half each: a classroom of a hundred heads with cards snapping open over them; the academy street at ten with a thousand cards over a thousand heads; a hundred chairs scraping round, a hundred backs, the rival grinning over his shoulder. Then a hard cut to white.
+
+Six weeks before the big exam. A card that shows you who's really racing you. Get caught reading it, and a hundred chairs turn their backs on you.
+
+> SCENE: White to the metro platform at twenty to seven, the departure board fluttering.
+
+It started this morning. With a stranger.
+
+## [00:22] The Platform
 
 > MOOD: morning
 > SCENE: The metro platform, twenty to seven in the morning, nearly empty. A split-flap departure board hangs over the platform; it flutters through its times and clicks. You under it, mustard head, teal scarf, school bag, an envelope with a teal seal in both hands. One other face on the platform: a woman with a shopping bag, grey head, at the yellow line. You tear the seal. A sheet unfolds. You read it. Your mouth opens. You read it again. You look left, right: one face. Hers. You hold the open letter out at her.
@@ -37,7 +58,7 @@ Old woman: Oh, congratulations! Your family must be so proud.
 
 That's your scholarship letter. You made the cut. And a card just opened over a stranger, with a number only you can see.
 
-So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Because your best friend hears everything first. He always has.
+You tell nobody all day. Because your best friend hears everything first. He always has.
 
 > MOOD: night
 > SCENE: The thumbnail's frame, exactly: the academy street at ten, towers of lit signboards behind with no lettering on any of them. You large at the left, mustard head, teal scarf, holding up the letter with the teal seal, mouth open, eyes up and right. Your best friend right of centre, pale-blue head, grinning, one fist up, the near arm reaching to pull you into the hug. On the bubble the rule device: the cream card unfolds over his head with the paper snap, and its split-flap digits flutter down the red side. Close-up on your face, then the card, then his grin. On his first close-up a cast tag writes itself in the lower left, off both faces: MIN-JUN, your best friend since you were twelve.

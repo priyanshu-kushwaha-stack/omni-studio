@@ -8,6 +8,7 @@ import { BEATS } from "./beats";
 import { lastIndex, type Shot } from "./shared";
 import { Captions } from "./Captions";
 import { soundPlan } from "./sound";
+import { COLD, coldCuts, ColdFlash, ColdSound, coldSource } from "./ColdOpen";
 
 /** The score's level, the owner's (taste.md 2026-11-08, G5 of the pause-time film): about 26 dB under the voice while
  *  it speaks, rising to about 8 dB under it in the wordless holds. It dips DUCK_IN frames before a line and comes back
@@ -42,25 +43,31 @@ export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Reco
 
 /** The picture at the current frame: the beat on, lit by the current line's mood, and the paper finish. Sources are
  *  not shown on screen; they go in the description (owner, 2026-11-07). */
-const Picture: React.FC<FilmProps> = ({ timeline, lines: v4Lines }) => {
+const Picture: React.FC<FilmProps> = ({ timeline, lines: allLines }) => {
   const frame = useCurrentFrame();
-  const { clips: v4, cues } = timeline;
-  // v5 (2026-11-14): the beats count lines in story.json's own numbering.
-  const clips = v4;
-  const lines = v4Lines;
-  const starts = BEATS.map((b) => (b.firstLine === 0 ? 0 : clips[b.firstLine].from));
-  const index = Math.max(0, lastIndex(starts, (s) => frame >= s));
+  const { clips: all, cues } = timeline;
+  // v5 (2026-11-14): the beats count lines in story.json's own numbering, from the platform on. G2 round 18: the cold
+  // open speaks story.json's first COLD lines, so the beats get the clips and lines after them (frames unchanged).
+  const clips = all.slice(COLD);
+  const lines = allLines.slice(COLD);
+  const coldEnd = all[COLD - 1].from; // "It started this morning.": the platform
+  const starts = BEATS.map((b) => (b.firstLine === 0 ? coldEnd : clips[b.firstLine].from));
+  const cuts = coldCuts(all, clips);
+  const cold = frame < coldEnd;
+  const src = cold ? coldSource(frame, cuts) : frame;
+  const index = Math.max(0, lastIndex(starts, (s) => src >= s));
   const beat = BEATS[index];
   const to = starts[index + 1] ?? timeline.totalFrames;
-  const shot: Shot = { frame, t: frame, wc: (f) => f, cues, clips, lines, pauses: [], from: starts[index], to, v4 };
-  const lineIndex = Math.max(0, lastIndex(v4, (c) => frame >= c.from));
-  const mood = (v4Lines[lineIndex]?.mood ?? "day") as MoodName;
+  const shot: Shot = { frame: src, t: src, wc: (f) => f, cues, clips, lines, pauses: [], from: starts[index], to, v4: clips };
+  const lineIndex = Math.max(0, lastIndex(clips, (c) => src >= c.from));
+  const mood = (lines[lineIndex]?.mood ?? "day") as MoodName;
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <LookContext.Provider value={moodLook(mood)}>
         <beat.Component shot={shot} />
       </LookContext.Provider>
-      <Captions frame={frame} clips={v4} />
+      {!cold && <Captions frame={frame} clips={clips} />}
+      <ColdFlash frame={frame} cuts={cuts} end={coldEnd} />
       <Finish />
     </AbsoluteFill>
   );
@@ -99,7 +106,7 @@ export const Film: React.FC<FilmProps> = (props) => {
   const { clips, totalFrames } = props.timeline;
   if (!clips.length) return <AbsoluteFill style={{ background: "#000" }} />;
   const outro = (f: number) => Math.min(1, Math.max(0, (totalFrames - f) / OUTRO));
-  const { score: SCORE, beds: BEDS, peak: PEAK } = soundPlan(clips, totalFrames);
+  const { score: SCORE, beds: BEDS, peak: PEAK } = soundPlan(clips.slice(COLD), totalFrames, clips[COLD - 1].from);
   const score = (f: number) => scoreVolume(f, clips) * peakDip(f, PEAK) * outro(f);
   const bed = (f: number) => (BED_UNDER_VOICE + (1 - BED_UNDER_VOICE) * (scoreVolume(f, clips) - UNDER_VOICE)
     / (IN_HOLDS - UNDER_VOICE)) * outro(f);
@@ -109,6 +116,7 @@ export const Film: React.FC<FilmProps> = (props) => {
       <Picture {...props} />
       {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
       {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} />}
+      <ColdSound cuts={coldCuts(clips, clips.slice(COLD))} end={clips[COLD - 1].from} />
       {SCORE.map((c, i) => (
         <Placed key={`s${i}`} src={`music/${c.file}`} from={c.from} to={i === SCORE.length - 1 ? total + 1 : c.to}
           lead={SCORE_LEAD} fade={SCORE_FADE} total={totalFrames} gain={score} />

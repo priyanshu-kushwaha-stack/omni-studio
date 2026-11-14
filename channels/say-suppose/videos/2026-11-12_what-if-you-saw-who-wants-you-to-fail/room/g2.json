@@ -584,21 +584,93 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 17,
+      "draft_sha256": "b6cb6ab8899116eed5583eff0c24874f96a5afdd386955d27f7f9ee3651a8027",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "ccf2e5c323ec4e89bd44c08da5608af9",
+          "file": "room/g2/round-17/claims-check.json",
+          "output_sha256": "0ecfa914f5c7fabc753fb6714a1db631a753c969bbd0547a03896530c089a387",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "246bbcaaa70c4a9ab954295229f4423d",
+          "file": "room/g2/round-17/story-editor.json",
+          "output_sha256": "f6ecfcd8512ac10f5c5588477d93fda34cb5a42b87f9b9c311efd974d21a7c6c",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    },
+    {
+      "round": 18,
+      "draft_sha256": "72d6f591dba61b121c0fdf636e9663fed5a790f4fae984ba564f0e10a4881226",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "e3923dea7ca24c9baa67cd905cee828d",
+          "file": "room/g2/round-18/claims-check.json",
+          "output_sha256": "3ab1dcb17da1982742bdd33dd86d179efec42b13d08390cec19d4694e8ded8dc",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "7ff7b8189d0448f38f7a92df38f57a7d",
+          "file": "room/g2/round-18/story-editor.json",
+          "output_sha256": "0aa7214254e42dd2882a3925f4f15c187dd00ed56d1c126d94ae853687f966d9",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 16,
-    "artifact_sha256": "957f6f345968834d2fd3d71b374b71fff40145f545398880f523697b94b856e9"
+    "round": 18,
+    "artifact_sha256": "72d6f591dba61b121c0fdf636e9663fed5a790f4fae984ba564f0e10a4881226"
   },
-  "calls": 32,
-  "cap": 92,
+  "calls": 36,
+  "cap": 96,
   "author_cut": {
     "round": 1,
     "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4",
     "cost": {
-      "lines_changed": 540,
+      "lines_changed": 591,
       "header_changed": [
         "SITUATION",
         "DESIRE",
@@ -613,6 +685,7 @@
         "A tag has one colour for every kind of hurt.",
         "She was never outside your lane. She was in it first.",
         "That half-second is the other life, going past.",
+        "Envy comes in two kinds (c07). One pushes you to move up. The other pushes you to pull the other person down (c07).",
         "At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
         "A text would open nothing. You could keep her forever on a screen.",
         "You got the place you wanted. And lost the one beside it.",
@@ -623,12 +696,13 @@
         "Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours.",
         "The card gets two minutes. It doesn't get to choose what you do next.",
         "You stopped helping him. He never stopped helping you.",
-        "At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08)."
+        "At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+        "Minus never meant they want you to fail. It meant it hurt. In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05)."
       ]
     }
   },
   "presented": {
     "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4",
-    "at": "2026-11-14T04:14:51+00:00"
+    "at": "2026-11-14T16:07:20+00:00"
   }
 }
