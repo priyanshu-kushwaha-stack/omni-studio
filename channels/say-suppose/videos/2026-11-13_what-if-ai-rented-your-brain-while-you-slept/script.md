@@ -1,14 +1,14 @@
 # Script: What If AI Rented Your Brain While You Slept?
 
 format: story
-status: v4, owner-notes round 2 (voice B, sci-fi tone); v3 (2026-11-13): the owner's five notes on the first cut and the fail film's eleven carried over
+status: v5, G2 owner-notes round 3: exciting, not sad (2026-11-14)
 claims: claims.md
 
-> SITUATION: El Paso, dawn, the clinic chair where you sell the pale part of your blood twice a week, the most the law allows, counting every hour as money. A band on your forehead turns your nights into the best wage of your life.
+> SITUATION: El Paso, dawn, the clinic chair where you sell the pale part of your blood twice a week, the most the law allows, counting every hour as money. A band on your forehead turns your nights into the best wage on the street.
 > DESIRE: To get out of the chair for good and clear what the family owes, by doing nothing.
-> CONFLICT: The hours you sell were never spare: they were the shift your brain worked for you, and now your days go unfiled while the price of a night falls for everyone.
-> CHANGE: You stop counting hours as money and start asking what the hours were for.
-> RESULT: The band in the drawer. You sleep for free, wake knowing your street and yesterday's faces, and bring back one dream that is only yours.
+> CONFLICT: Every trick you find, the whole city finds a week later: the price of a night crashes, the hours you sell were never spare, and the one offer that still pays is for a job nobody awake has seen.
+> CHANGE: You and your brother work out, from six weeks of crumbs in a notebook, what every sleeper on the band is building together.
+> RESULT: The band in the drawer. You sleep for free, the only brain on the street still working for its owner, and the man in the grey suit is back with a band for the daytime.
 > UNDER: What am I actually selling when I sell my time?
 > DARLING: "Sleep was never nothing. It was the one shift you always worked for yourself."
 > DARLING: "Sign, and nobody in this house sits in that chair again. Don't, and it's Thursday forever. You can't sleep on it. Sleeping is the job."
@@ -35,7 +35,7 @@ Broker: Wear this tonight. Sleep all night, and get paid for every hour.
 
 > SCENE: Close-up: the notes in one hand, the coin in the other, the clock, the band. You take it. The clinic door swings shut on his back.
 
-## [00:20] Night One
+## [00:21] Night One
 
 > SCENE: The door, shut. The clock through the glass. Then a two-second insert: you on the bridge walkway at dawn, the band in your pocket, counting the notes.
 > CARD: SELLING PLASMA: twice a week (on "the most the law allows")
@@ -54,7 +54,7 @@ That's the band. A thin strip you wear across your forehead.
 
 While you sleep, it lends your brain to a company. And it pays you, by the hour.
 
-> SCENE: The thumbnail's frame, exactly: the bunk room after midnight, the window with red curtains behind. You, large at the left, asleep on your back on a dark pillow, smiling, eyes shut, the thin dark band across your forehead with its one small teal light. Out of the light a dotted glowing thread rises to a pale, glowing second you, the same tuft of hair, a pale-blue head, a pale scarf, bolt upright on a paper chair floating over your blanket, wide awake, brows up in worry, mouth open, both hands on the keys of a lit laptop on a little floating desk. Gold coins drop from the desk's edge in an arc over your sleeping head into a glass jar on the bedside table, already half full of gold. In the top bunk your brother, peach head, cap on, eyes open, watching the coins fall.
+> SCENE: The thumbnail's frame, exactly: the bunk room after midnight, the window with red curtains behind. You, large at the left, asleep on your back on a dark pillow, smiling, eyes shut, the thin dark band across your forehead with its one small teal light. Out of the light a dotted glowing thread rises to a pale, glowing second you, the same tuft of hair, a pale-blue head, a pale scarf, bolt upright on a paper chair floating over your blanket, wide awake, brows up in worry, mouth open, both hands on the keys of a lit laptop on a little floating desk. Gold coins drop from the desk's edge in an arc over your sleeping head into a glass jar on the bedside table, already half full of gold. In the top bunk your brother, peach head, cap on, eyes open, stunned, watching the coins fall.
 
 Midnight. The band goes on. A chime.
 
@@ -77,7 +77,7 @@ Ninety dollars. For eight hours of lying down. The best wage of your life. And t
 
 Because you count every waking hour as money you did or didn't earn. And nobody's ever paid you for one asleep.
 
-## [01:19] The Rule
+## [01:22] The Rule
 
 > MOOD: morning
 > SCENE: The title card ident (C), three seconds, cut from the last line. Then the kitchen: the jar on the table, the leaflet beside it, your brother with cereal. On "The band came with a leaflet" the leaflet unfolds itself; on "runs its work on your brain" the band's thread-and-ghost is drawn on it as a paper diagram; on "one jar" three stamps land: BRAIN, BAND, JAR.
@@ -110,16 +110,22 @@ Your brain burns about twenty watts (c10). At night, the leaflet calls that unus
 
 It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes (c19). So a whole brain for eight hours is a bargain.
 
+> SCENE: Page four draws itself: a paper computer the size of a wardrobe, a plug, a coin meter beside it spinning. Then the paper you, lying flat, a coin meter beside it reading nothing. Your brother's eyes go from one to the other.
+
+So why doesn't the company just use a computer?
+
+The leaflet has one line on that. Computers cost money to run. You're already lying there.
+
 > SCENE: Your brother holding the leaflet upside down over his cereal, chewing.
 
 Brother: Still a scam.
 
 He reads the leaflet upside down. And by Saturday he's wearing one.
 
-## [02:27] Crumbs
+## [02:42] Crumbs
 
 > MOOD: morning
-> SCENE: A week, in the kitchen, the shower, the bridge. Morning two: you at the table with a crayon, drawing fast on the back of the leaflet.
+> SCENE: A week, in the kitchen, the shower, the clinic, the bridge. Morning two: you at the table with a crayon, drawing fast on the back of the leaflet.
 
 Morning two. You wake craving a food you can't name. So you draw it for him.
 
@@ -142,6 +148,16 @@ Morning four. You fold a fitted sheet into a perfect square. Nobody can fold a f
 Brother: Since when can you do that?
 
 > MOOD: day
+> SCENE: The clinic, the same morning. You in the chair, the tube at your arm, the band's teal light showing from your scarf pocket. The nurse counts three notes into your palm and glances at your forehead: no grey under your eyes for once.
+
+And the chair? You still sit in it. Why wouldn't you?
+
+Three notes from the chair.
+
+Ninety from the band. Nobody said you had to choose.
+
+Nurse: Rested, for once.
+
 > SCENE: The bridge at dawn, a queue walking in; a woman with a shopping bag, grey head, near the front. You say a word to her; her shoulders go up.
 
 Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too (c05).
@@ -151,11 +167,20 @@ Bridge woman: Not mine.
 She shrugs. She doesn't know it either. So whose is it?
 
 > MOOD: morning
-> SCENE: Saturday breakfast. Your brother across the table, palm out, a teal light under the brim of his cap.
+> SCENE: Saturday breakfast. Your brother across the table, palm out, and under the brim of his cap, two teal lights, side by side. Your bubble: "Two?"
 
-Saturday. Your brother, palm out. And a teal light under his cap.
+Saturday. Your brother, palm out. And two teal lights under his cap.
 
 Brother: Okay. What'd you get?
+
+> SCENE: Insert drawn on the notebook page: two paper bands on one paper head; the first's thread goes up to a ghost, the second's thread goes up to nothing and droops. Then the jar on the table: the same ninety.
+> CARD: ONE BRAIN, ONE BAND: a second band pays nothing (on "paid nothing")
+
+Two bands. Because why not wear two?
+
+One brain, one band, the leaflet said. The second band found his brain busy and paid nothing. He slept in a hat with two lights on it.
+
+Brother: Worth a shot.
 
 > SCENE: The notebook opens on the table, two columns: HIM, YOU. Inserts: a knot in a shoelace, your mouth saying a word with the wrong face.
 
@@ -173,7 +198,7 @@ Sleeping brains do real work. Normally, you keep it.
 
 But here's the problem. Problem one. Ninety dollars for eight hours. So what's twelve worth?
 
-## [03:57] More Hours
+## [04:49] More Hours
 
 > MOOD: day
 > SCENE: The bus, afternoon: you against the window, the band on, the ghost typing above you, two coins into your lap. Out of the window a bus-shelter ad goes by with a small paper subscribe tag, no voice. The bus empties; the driver looks at you in the mirror.
@@ -203,6 +228,25 @@ Therefore nobody buys coffee. The coffee shops close. The pillow shop stays open
 
 > HOLD: 5 s. The pull back and up. The patter of a hundred keyboards, a hundred coins landing in glass, a chime here and there as a late window lights. The figure in the long coat passes under the lamp and out of frame.
 
+> SCENE: Insert drawn on a paper page: a news desk, the anchor at it, mouth open mid-sentence; behind the anchor, the hundred windows, every one dark.
+
+It makes the evening news. Nobody's up to watch it.
+
+> MOOD: day
+> SCENE: Noon, the bunk room, hard daylight through the red curtains. You flat on the bottom bunk, eyes shut tight, the band on. Above you the pale figure sits on its floating chair with its arms folded and its laptop shut, waiting. No coins. Your brother in the doorway with a sandwich.
+
+Eleven hours. So why not all day? You try. Noon, the bunk, the band on.
+
+> HOLD: 3 s. Performed. You squeeze your eyes shut harder. One eye opens and looks up at the ghost. The ghost looks down at you, taps its wrist. Your brother takes a bite.
+
+Your brain won't go. The pale figure sits over you, arms folded. The band pays for sleep, not for lying there with your eyes shut.
+
+Brother: You're doing it wrong.
+
+> SCENE: Night. The bedside split-flap flutters up: ten, then twelve. The bedside table, then the shelf above it: jars, in a row.
+
+So you push the nights instead.
+
 Ten hours a night. Then twelve. Your jar becomes a shelf of jars.
 
 > MOOD: day
@@ -216,7 +260,7 @@ Brother: You live here.
 
 You sold twelve hours of nothing. And the nothing was never empty. Sleep was never idle.
 
-## [05:18] The Night Shift
+## [06:44] The Night Shift
 
 > MOOD: lamp
 > SCENE: Your room, one lamp. You on the bottom bunk, the band in your hand, not on. Your brother above, the notebook open.
@@ -232,20 +276,17 @@ You spend about a third of your life asleep (c11). A third. Did you think it was
 
 In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster (c12). Sleep is when your brain takes the trash out. Yours hasn't in a month.
 
-> SCENE: Insert: two paper figures at a desk, one yawning; then a paper rat running a maze, and the same maze replayed above its sleeping head at double speed.
+Brother: Explains the smell.
 
-About a hundred years ago, in 1924, two people were tested, and they forgot less after sleeping than after the same hours awake (c13). And in rats, the day's activity replays in sleep, faster than real time (c14).
+> SCENE: Insert: a paper rat running a maze, and the same maze replayed above its sleeping head at double speed.
+
+In rats, the day's activity replays in sleep, faster than real time (c14).
 
 > SCENE: Your own day, drawn as a filing cabinet: the drawers fly open, the day's pages whirl in on fast forward. Then the cabinet shut, the pages on the floor, unfiled.
 
 Your brain files your day at night, on fast forward. For a month, nothing's been filed.
 
 Sleep was never nothing. It was the one shift you always worked for yourself.
-
-> SCENE: The bathroom mirror: you, grey under the eyes, the band's mark on your forehead. Insert: a boy at a science fair table, a paper clock behind him with eleven ticks.
-> CARD: 1964: a boy stays awake for eleven days (on "in 1964")
-
-You've slept twelve hours a night and you look like the boy who stayed awake for eleven days for a science fair in 1964, whose thinking began to suffer by the end (c15). He skipped sleep. You sold it.
 
 > SCENE: Your brother with a stamp and a sheet of cream tags.
 
@@ -263,7 +304,7 @@ But here's the second problem. Problem two. It's your brain, only yours. Whateve
 
 And Saturday is his graduation.
 
-## [06:36] The Photo
+## [07:44] The Photo
 
 > MOOD: day
 > SCENE: The hall: folding chairs, a stage, a banner with no lettering. Your brother in a gown and his cap, no teal light under it. You in the second row, phone up.
@@ -272,9 +313,9 @@ Saturday. The hall. Folding chairs. Your brother on the stage in a gown and his 
 
 > HOLD: 3 s. Performed. He crosses the stage, takes the rolled paper, and looks for you. Finds you: second row, phone up, crying. He grins and points at you. You point back, wiping your face with the scarf.
 
-> SCENE: Insert: the band's split-flap on the bedside table flutters to a weekend rate, three times the number. You lying down, the band going on, the ghost sitting up.
+> SCENE: Insert: the leaflet's last page, tiny print; your finger runs along one line and a stamp lands on it: x3 WEEKENDS. The band's split-flap on the bedside table flutters to a weekend rate, three times the number. You lying down, the band going on, the ghost sitting up.
 
-The weekend rate triples. So that night, you take twelve hours.
+You read the small print nobody else on the street has. Weekend nights pay triple. So that night, you take twelve hours.
 
 > MOOD: morning
 > SCENE: Morning. The kitchen. He's already up, palm out before you're through the door.
@@ -285,11 +326,13 @@ Brother: What'd you get? Show me.
 
 Two hundred and seventy dollars. The best night yet. You show him the band. He shows you his phone.
 
-> HOLD: 4 s. Performed. The photo: you in the second row, crying, phone up; him on the stage, pointing. You look at it the way you'd look at a stranger's. You tilt it to the light. Nothing moves in your face.
+> HOLD: 3 s. Performed. The photo: you in the second row, crying, phone up; him on the stage, pointing. You look at it the way you'd look at a stranger's. You tilt it to the light. Nothing moves in your face.
 
 Brother: You cried. Remember?
 
-> HOLD: 3 s. Performed. You don't. He waits. His face. He puts the phone in his pocket, turns to the counter, and makes the coffee with his back to you.
+> HOLD: 2 s. Performed. You don't. He waits. His face. Then he shrugs, pockets the phone, and plucks at his gown, still on over his pyjamas.
+
+Brother: Fine. I'll fail something. You can come to the retake.
 
 You were there. You have the photo. You sold the night before your brain could file the day.
 
@@ -297,7 +340,7 @@ You were there. You have the photo. You sold the night before your brain could f
 
 But here's the third problem. Problem three. You weren't the only one who worked out the weekend rate. And the price is about to fall.
 
-## [07:21] The Warehouses
+## [08:40] The Warehouses
 
 > MOOD: morning
 > SCENE: Three breakfasts in one dissolve: the band's split-flap on the table flutters down each morning.
@@ -309,10 +352,16 @@ But here's the third problem. Problem three. You weren't the only one who worked
 Ninety. Forty-one. Twelve. Everyone has a band on now.
 
 > MOOD: dusk
-> SCENE: The bridge at dusk: the queue walking in; at the top of the ramp, three men in grey suits with shoeboxes. Insert: a paper map, one country shaded, a pale river running out of it to the rest of the world.
+> SCENE: The bridge at dusk: the queue walking in. Insert: a paper map, one country shaded, a pale river running out of it to the rest of the world.
 > CARD: IT'S TRUE: the US supplies about two thirds of the world's plasma (on "two thirds")
 
 It's true. The US is one of the few countries that lets companies pay people for plasma (c01), and it supplies about two thirds of the world's (c03). People cross that bridge from Mexico twice a week to sell theirs (c05), because a day's work across the river pays about nine dollars (c22). Now they cross to sleep.
+
+> SCENE: The top of the ramp: the paper sign, and a new line stamped onto it, the ink still wet: NO SLEEPING ON A VISITOR VISA. Directly beneath it, three men in grey suits with shoeboxes, handing out bands to the queue.
+
+By week six, the border has a rule for it. No sleeping on a visitor visa.
+
+The three men in grey suits stand right under the sign.
 
 > MOOD: night
 > SCENE: Inside the warehouse by the bridge: rows of cots, a thousand sleepers in shifts, a thousand pale workers typing over them, a thousand threads of light to the rafters, coins into a trough. Insert: a paper chess robot in a turban, a little door in its cabinet opening on a man.
@@ -325,13 +374,11 @@ An eighteenth-century chess robot had a chess master hidden inside it. Amazon na
 
 And the best-rested brains fetch the most. More than a third of American adults already don't get enough sleep (c24). So the people who need the money most earn the least.
 
-> CARD: IT'S TRUE: under $2 an hour, to train ChatGPT (on "less than two dollars")
-
-It's true. The Kenyan workers who labelled data to train ChatGPT were paid less than two dollars an hour (c09). The night is heading there.
-
-> SCENE: Midnight, the warehouse door, one lamp. Your brother, cap on, band on, the grey under his eyes.
+> SCENE: Midnight, the warehouse door, one lamp. Your brother, cap on, band on, the grey under his eyes, chin up, eyes wide open on purpose.
 
 Your brother, band on, at the warehouse door at midnight.
+
+Brother: I'm extremely rested.
 
 > HOLD: 4 s. Performed. The clerk looks him up and down: the cap, the eyes, the clipboard. Lifts the brim with one finger, looks at the teal light, lets the brim drop. Shakes his head once.
 
@@ -341,17 +388,12 @@ Clerk: Rested ones only.
 
 So a night is worth twelve dollars, and he can't even sell that. But one offer hasn't fallen. The man in the grey suit comes back.
 
-## [08:38] The Contract
+## [10:06] The Contract
 
 > MOOD: lamp
 > SCENE: The kitchen table, one lamp. The grey suit sitting, a cream contract flat on the table, a pen laid across it. The kitchen clock behind him. Your brother in the doorway.
 
 The kitchen table. A premium contract. Triple pay, every night, all night, for a year. It clears what the family owes by spring. And no more Thursdays in the chair.
-
-> SCENE: Insert drawn on the contract's margin: a sleeper, a screen glowing over the bed, a bottle floating into the dream cloud; then a page of forty small signatures.
-> CARD: IT'S TRUE: 2021, a beer ad aimed at your dreams (on "2021")
-
-Somebody has tried to buy the night before. Before the 2021 Super Bowl, America's biggest football night, a beer company ran a film meant to put its beer into people's dreams (c07). About forty sleep and dream scientists signed an open letter against it (c08).
 
 > SCENE: Close on your face, the lamp, the pen.
 
@@ -363,15 +405,17 @@ You pick up the pen.
 
 Brother: Not yet. Look.
 
-> HOLD: 3 s. Performed. He tips the notebook out on the table: pages of crumbs in two columns, a taste, a tune, a word, a face drawn twice. The grey suit looks at them, then at the clock, and stands.
+> HOLD: 3 s. Performed. He tips the notebook out on the table: pages of crumbs in two columns, a taste, a tune, a word, a face drawn twice, and the shoe. The grey suit looks at them, turns the shoe page round, then looks at the clock, and stands.
 
 Six weeks of crumbs, his and yours. He thinks they add up to something.
+
+Broker: Is that a shoe?
 
 Broker: Offer closes midnight.
 
 The kitchen clock. Eleven.
 
-## [09:30] One Mind
+## [10:46] One Mind
 
 > MOOD: night
 > SCENE: Your room. The notebook pages spread on the bottom bunk, his column and yours. The two of you cross-legged either side.
@@ -383,6 +427,8 @@ The crumbs on the bed. His and yours.
 > HOLD: 2 s. Performed. He says the bridge word. You say it with him, the same beat.
 
 > HOLD: 3 s. Performed. The face, drawn twice in two hands. He holds his page beside yours. The same face. He looks at it for a long second.
+
+The same face. Drawn badly, the same way.
 
 He opens the laptop.
 
@@ -397,19 +443,22 @@ There was never one of anything. You never lost anything alone. For eight hours 
 
 In 2020, over a million people lent their idle home computers to one project, and its scientists called the result the first computer to pass a billion billion sums a second (c18). Spare machines, linked into one. Now spare brains.
 
-> HOLD: 9 s. The one wordless peak. The globe at night, the dark half lit like a single brain cell firing, cities as the sparks along it, the threads between them pulsing in one rhythm. The music down to a floor, one held line; under it, very far away, the patter of typing. The camera drifts in, slowly, on one spark: your window.
+> HOLD: 9 s. The one wordless peak, played as wonder. The globe at night, the dark half lit like a single brain cell firing, cities as the sparks along it, the threads between them pulsing in one rhythm. The music opens out to one wide, bright chord and holds it; under it, very far away, the patter of typing. The camera drifts in, slowly, on one spark: your window. Your brother's face in the laptop's light, mouth open, delighted.
 
 > SCENE: The notebook pages on the bed slide together, edge to edge; the crumbs join into one drawing. Lines, a frame, a housing. A machine. On the laptop, the strangers' pages do the same.
 
 So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.
 
+> SCENE: Insert: the leaflet's page four, the wardrobe-sized paper computer, now drawn in a thousand hands, the paper you lying beneath it.
 > CARD: THE JOB: design the thing that never needs sleepers (on "design")
+
+Why didn't the company just use a computer? Nobody's built one that can. Yet. That's the job.
 
 The job the sleepers are paid for is to design the thing that will never need sleepers.
 
 The biggest idea people ever had together, and nobody was awake for it.
 
-## [10:37] Midnight
+## [12:08] Midnight
 
 > MOOD: night
 > SCENE: The clock on the wall: eleven fifty-eight. You standing by the bedside drawer, the pen in one hand, the band in the other, its teal light on. Your brother in the top bunk, his band in his hand, watching you.
@@ -420,15 +469,23 @@ You remember nothing of your nights. Only the crumbs. And now you know what they
 
 > HOLD: 3 s. Performed. You open the drawer. The band goes in; the teal light goes out. Your brother leans down from the top bunk and drops his on top. Click. He shuts the drawer with his foot.
 
-> HOLD: 3 s. Performed. A knock at the front door. Three. You both look at the door. Nobody moves. The knock stops. Footsteps go down the stairs.
+Brother: Scam. Told you.
+
+> HOLD: 3 s. Performed. A knock at the front door. Three. You both look at the door. Nobody moves. Your brother leans down from the bunk, cups a hand round his mouth, and whispers at the door, delighted with himself.
+
+Brother: Come back Thursday.
+
+> SCENE: The knock stops. Footsteps go down the stairs.
 
 The man in the grey suit, at midnight, for your answer. Nobody opens.
 
-You lie down with nothing on your forehead. The offer's gone. And so is your way out of the chair.
+> SCENE: The window, from outside: your street at midnight, a hundred windows glowing with a hundred pale typists, and one window dark. Yours.
+
+You lie down with nothing on your forehead. The offer's gone. Yours is the only window on the street not working.
 
 And for the first time in six weeks, nobody's typing.
 
-## [11:13] Morning
+## [12:51] Morning
 
 > MOOD: morning
 > SCENE: Morning light through the red curtains. You wake, and look at the window, then at the top bunk, and smile at nothing. Insert: a paper bridge in your own colours, mustard and teal, held in the air over your pillow for one second.
@@ -443,6 +500,8 @@ Brother: What'd you get, then?
 
 > HOLD: 3 s. Performed. You open your hand. Nothing. He looks at it. He grins. He drops back onto his pillow.
 
+Nothing. The best deal on the street, and you're the only one taking it.
+
 > HOLD: 3 s. Performed. You walk to the door, past KEYS, past DOOR, without reading one of them. You take your keys off the hook. At the door you feel the tag on your forehead, peel it off, and stick it on the frame.
 
 Tonight you'll lie down, and you'll be clocking in. You always were. The shift is yours.
@@ -450,9 +509,17 @@ Tonight you'll lie down, and you'll be clocking in. You always were. The shift i
 > MOOD: day
 > SCENE: The clinic steps. The grey suit with a new box: thinner bands, a small red light on each. He holds one out as you pass.
 
+Thursday. The clinic steps.
+
 Broker: This one's for daytime.
 
-> HOLD: 2 s. Performed. You walk past. He watches you go, the band still held out.
+> HOLD: 2 s. Performed. You walk past. He watches you go, the band still held out. Then he calls after you, pleasantly.
+
+Broker: Everyone else already said yes.
+
+> HOLD: 3 s. Performed. You stop on the bottom step and look up the street. The queue at the bridge, the woman with the shopping bag, your boss, the clerk, the grandmother at her window, the nurse in the clinic doorway behind you: a small red light on every forehead, every eye open, every hand busy. Above each of them, in broad daylight, a pale second self at a floating desk, typing.
+
+Nobody's asleep. And everybody's typing.
 
 So, would you rent your nights? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
 
@@ -460,30 +527,51 @@ So, would you rent your nights? Tell us in the comments. And if you'd have done 
 
 ## Word count
 
-About 1,645 spoken words: 10:37 at 155 words a minute. The skit runs about 10 s before the first narrator line; the title question begins at about 0:15 and ends at 0:20. Holds: 27, about 93 s (about 13% of the runtime, above the 10% asked because the owner's performed moments are nine of them); twenty are performed moments with the characters acting and speaking (the chair skit 3 s, 2 s, 2 s and 1 s; the brother watching the coins 3 s; the shoe 3 s; the hum through the wall 2 s; the doorstep 4 s; the stamped tags 4 s; the stage 3 s; the photo 4 s and 3 s; the warehouse door 4 s and 2 s; the hand on the contract 3 s and 3 s; the crumbs matched 3 s, 2 s, 3 s and 3 s; the drawer 3 s and 3 s; the empty hand 3 s and the tags walked past 3 s; the sequel hook 2 s); the one wordless peak at the globe is the longest at 9 s; the street of a hundred windows 5 s; the end card 4 s; the title card ident 3 s. Runtime about 12:15; at the channel's 1.1x tempo about 11:10. The skit: the power is tested on you before anyone explains it; the band's look and sound (the chime, the thread, the ghost at the floating desk, the patter, one coin in your palm) are all shown by 0:05, and the nurse plucking it off shows that a waking brain earns nothing. The thumbnail's frame is on screen from about 0:20 and the cost line ("a night you sell is a night your brain doesn't keep") ends at about 0:27. Uses of the power, each with a gap: night one (ninety dollars, and your brother watching), the shoe, the tune and the wall, the fitted sheet, the bridge word (she doesn't know it either), his first night (a knot), your sorry in another voice, the bus (four dollars and pickles), the nurse, the boss's nap room, the couple in shifts, the grandmother's eleven hours, the whole street by seven, twelve hours (the keys, the PIN, the door), the weekend night (two hundred and seventy, and the photo), the warehouse (twelve dollars, and he's refused), the matched crumbs, the drawing. People who react: the nurse, the broker, your brother (nine lines), the grandmother through the wall, the woman at the bridge, your boss, the grandmother, the clerk, the strangers on the laptop. The picture only this premise can show lands at about 4:50, before the midpoint; the cost at about 7:20; the dilemma at about 9:30; the peak at about 10:40. Spoken names: none; the narrator says "your brother", "the nurse", "the man in the grey suit", "your boss", "the grandmother next door", "the clerk", "the woman at the bridge"; the `Role:` prefixes are not spoken; the city is not named in the spoken script (the five lines carry it). "What'd you get?" returns four times (shaking the jar; "Okay. What'd you get?" with the band under his cap; "What'd you get? Show me." before the photo; "What'd you get, then?" to an empty hand), each a different take; the stamped tags (6:40) pay off at the door (11:55). Plants: "Remember that" (1:05) and its payoffs (the crumbs as comedy, the notebook on the contract, "That's how you know"); "each brain stays its own. One brain, one band, one jar" (1:00) and its break (10:30); "whatever you lose, you lose alone" (6:50) and its break (10:30); "Sleep was never idle" (5:25) paid by the night shift. Claims spoken: c01, c02, c03, c05, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c21, c22, c24 (c04, c06, c20, c23, c25 not used). The three claims fixes are in: c01 cited where companies paying for plasma is said (7:55), "squiggly words" scoped to reCAPTCHA (3:35), "began to get better at it within five minutes" (1:40). Plain words: no "exascale" (the first computer to pass a billion billion sums a second, its scientists said), no "Pong" (the old bat-and-ball video game), the Super Bowl named with "America's biggest football night". Open loops about a minute apart: 0:27, 0:45, 1:05, 1:50, 2:45, 3:55, 4:55, 5:25, 6:50, 6:55, 7:40, 9:00, 9:50, 10:30, 10:45. Numbered problems: one, ninety for eight so what's twelve worth (3:55); two, you lose alone (6:50); three, the price falls (7:40). Stake jumps: 0:20, 1:56, 4:01, 4:50, 5:10, 7:05, 7:50, 9:06, 9:35, 10:40. The stranger: under the lamp in the hundred-window wide shot at 4:50. No new rule after halfway: the linked mind is planted in the rule's second line and the contract is a price. The last new person is the clerk, planted at the warehouse door at 4:35 (37%) and speaking at 8:50; the stranger at 4:50. The sequel hook is the red-light band at 12:05; the film explains nothing.
+About 1,880 spoken words: 12:08 at 155 words a minute. Holds: 31, about 96 s; runtime about 13:45, at the channel's 1.1x tempo about 12:30. The target was 1,600 to 1,800; the four closed loopholes cost about 150 words, paid for by cutting the Super Bowl aside, the 1924 test, the eleven-day boy and the Kenyan labellers. The felt reason a viewer stays past 8:00 is the price crash into the contract into the reveal, each about a minute apart. The skit runs about 10 s before the first narrator line; the title question begins at about 0:15 and ends at 0:21; the thumbnail's frame is on screen from about 0:40 and the cost line ends by about 0:55.
+
+**The set pieces, in order, with the world's reaction.** Night one, ninety dollars (the flat: your brother stunned, "Scam."). The crumbs week: the shoe, the hum answered through the wall (the neighbour joins in), the fitted sheet, the chair with the band in your pocket (the nurse: "Rested, for once."), the bridge word (the queue). Two bands (the flat, a funny backfire: a hat with two lights, the same ninety). The bus nap (the driver), the nurse's band shuts the clinic, the boss's nap room with a till (work), the couple in shifts and the warehouse filling with cots (the street), the grandmother's eleven hours (the street, out-earned), the city in bed by seven and the evening news nobody watches (the city). Sleeping all day (a funny backfire: the ghost with its arms folded). Twelve hours (keys, PIN, your own door, twice: a funny backfire). The small print: triple weekends, two hundred and seventy dollars (a small win). The price crash to twelve, the border's new rule and the grey suits under the sign (governments), the warehouse of a thousand, the clerk ("I'm extremely rested." / "Rested ones only."). The contract and the notebook slammed on it (a narrow escape). The matched crumbs and the globe (the reveal). The drawer, the knock answered with "Come back Thursday." (a narrow escape), the morning (the win), the red band (the twist).
+
+**The loopholes closed on screen.** Why not use computers: asked and answered at the leaflet (page four) and answered again at the reveal ("Nobody's built one that can. Yet. That's the job."). Why not sell plasma and nights both: asked and answered in the chair (you do; the band then eats the clinic a beat later when the nurse puts one on). Why not wear two bands: asked and answered on Saturday (one brain, one band; a hat with two lights). Why not sleep all day: asked and answered at noon in the bunk (the band pays for sleep, not for lying there).
+
+**A laugh in every scene.** The Chair: "That's it?" against the coin. Night One: "Scam." The Rule: "You're already lying there." / "Still a scam." upside down. Crumbs: the shoe; the grandmother humming back; "Nobody can fold a fitted sheet."; "Rested, for once."; "Not mine."; the hat with two lights, "Worth a shot." More Hours: pickles; "Pillows are mine."; "Finally."; the news nobody's up for; the ghost tapping its wrist, "You're doing it wrong."; "You live here." The Night Shift: "Explains the smell."; the YOU tag, "Don't peel it." The Photo: "Fine. I'll fail something. You can come to the retake." The Warehouses: the grey suits right under the sign; "I'm extremely rested." The Contract: "Is that a shoe?" One Mind: "Drawn badly, the same way." Midnight: "Scam. Told you."; "Come back Thursday." Morning: the empty hand as the best deal on the street.
+
+**The one tender beat.** The photo, from "You cried. Remember?" to the retake line: about 12 s, at about 8:15, well over two minutes before the end, and turned by a laugh. The sad hold of his back at the coffee is cut.
+
+**The peak.** The globe, 9 s, played as wonder: the music opens to one bright chord, your brother's face delighted in the laptop's light, then the reveal lines ("Nobody's built one that can. Yet. That's the job." / "The biggest idea people ever had together, and nobody was awake for it.") at about 11:40.
+
+**The twist.** The clinic steps: "This one's for daytime." / "Everyone else already said yes." and the street with a red light on every forehead, every eye open, a pale typist over each in daylight, then "Nobody's asleep. And everybody's typing.", the mirror of Midnight's "nobody's typing." The film explains nothing. The closing question follows.
+
+**Other checks.** "What'd you get?" returns four times (the jar; "Okay. What'd you get?" under two lights; "What'd you get? Show me." before the photo; "What'd you get, then?" to an empty hand) and "Scam." three times (night one, the leaflet, the drawer, where it becomes the verdict). Plants and payoffs: "one brain, one band, one jar" (1:40) breaks at One Mind (11:10) and closes the two-band loophole (4:20); "whatever you lose, you lose alone" (7:35) breaks at One Mind; "why not a computer?" (2:25) is answered at the reveal (11:45); "Come back Thursday" (0:12) is whispered through the door (12:30); the YOU tag (7:20) is peeled at the door (13:10); "nobody's typing" (12:45) flips to "everybody's typing" (13:40). Numbered problems: one, ninety for eight so what's twelve worth (4:45); two, you lose alone (7:35); three, the price falls (8:35). Open loops about a minute apart: 0:55, 1:45, 2:25, 3:30, 4:20, 4:45, 5:45, 6:30, 7:35, 8:35, 9:55, 10:40, 11:10, 11:45, 12:45, 13:40. The picture only this premise can show (the hundred windows) lands at about 6:05, before the midpoint. No new rule after halfway (the daytime band is a sequel hook, not a rule); the last new person is the clerk, planted at 5:30 and speaking at 9:50. Spoken names: none. Claims spoken: c01, c02, c03, c05, c10, c11, c12, c14, c17, c18, c19, c21, c22, c24 (c04, c06, c07, c08, c09, c13, c15, c16, c20, c23, c25 not used). Plain words: "the old bat-and-ball video game", "the first computer to pass a billion billion sums a second". Story numbers are words; one number per line in every new line.
 
 ## Chapters
 
 - 0:00 The Chair
-- 1:19 The Rule
-- 2:27 Crumbs
-- 3:57 More Hours
-- 5:18 The Night Shift
-- 6:36 The Photo
-- 7:21 The Warehouses
-- 9:30 One Mind
+- 1:22 The Rule
+- 2:42 Crumbs
+- 4:49 More Hours
+- 6:44 The Night Shift
+- 7:44 The Photo
+- 8:40 The Warehouses
+- 10:46 One Mind
 
 ## Changed from the approved G1
 
-1. **The skit.** Old: the nurse unclips you, the grey suit offers a band at the door, you take it. New: the grey suit lays a band on you while you doze in the chair; the ghost sits up and one coin drops into your palm before the nurse plucks it off; then her line, his line, and you take it. Why: the room's note 2, the thumbnail's moment confirmed by 0:05; the skit still shows how you get the power.
-2. **The first narrator line.** Old: "That's your Thursday. A chair in El Paso, twice a week, the most the law allows (c02)." New: "That's your Thursday. Twice a week, the most the law allows (c02)." The c01 fact (companies pay for plasma) moves to the warehouses beat. Why: the title question begins at 0:15; El Paso stays in the five lines, and the spoken script needs no place name.
-3. **The cost by 0:30.** Old: the cost of a paid night first lands at the keys (3:10). New: "a night you sell is a night your brain doesn't keep" over the thumbnail frame, ending at about 0:27, with "Because you count every waking hour as money" moved after the gag as the bridge into the rule. Why: the room's note 1.
-4. **The rule's second line.** Old: "It's your brain, only yours: one brain, one band, one jar." New: "One job can link many bands, but the leaflet says each brain stays its own. One brain, one band, one jar." Why: the room's note 3; the turn now breaks a line already said and adds no power after halfway.
-5. **reCAPTCHA.** Old: "every squiggly word you typed to prove you were human was digitising an old newspaper". New: scoped to reCAPTCHA, "read old newspapers and books that computers couldn't", then "Spare seconds, turned into machine work. The band makes the same bargain with your whole night." Why: the room's notes 4 and 7.
-6. **"Then everyone" is a therefore chain.** Old: a list (the nurse, the couple, the boss, the grandmother, the shops). New: the nurse's band shuts the clinic, therefore the boss opens the nap room, therefore daytime renting is a job, so the couple sleep in shifts and the warehouse fills with cots, therefore the grandmother out-earns the street, therefore the coffee shops close and the city is in bed by seven. Why: the room's note 5. The warehouse and its clerk are now planted here (4:35), so the clerk's line at 8:50 is a return, not a new person after 60%.
-7. **Plain words.** Old: "exascale computer", "Pong", "the 2021 Super Bowl". New: "the first computer to pass a billion billion sums a second", "the old bat-and-ball video game", "the 2021 Super Bowl, America's biggest football night". Why: the owner's vocabulary note.
-8. **More crumbs and more reactions.** New: the grandmother hums the tune back through the wall (she had only banged); the woman at the bridge speaks ("Not mine."); his first night's crumb is a knot, yours is a sorry in another voice; the pillow shop stays open till midnight; the YOU tag is peeled off at the door and stuck on the frame. Why: lesson 5, a lot happens; lesson 2, the characters act in their own voices.
-9. **The gag's four lines differ.** Old: "What'd you get?" four times. New: the same question, four takes ("Okay. What'd you get?", "What'd you get? Show me.", "What'd you get, then?"). Why: four directions for the voice, and say.yaml needs four keys.
-10. **The three problems are numbered,** and problem three is spoken at the photo ("You weren't the only one who worked out the weekend rate. And the price is about to fall."). Old: "and the price is about to fall" alone. Why: lesson 10, numbered problems after the "but".
-11. **Runtime.** Old: about 9:40 on 1,430 to 1,500 words and 6% holds. New: about 12:15 on 1,645 words and 13% holds (11:10 at tempo). Why: the owner's performed moments and the extra content; the beat clocks in the headings are the new ones, and the shares (picture before the midpoint, cost at 60%, dilemma at 77%) hold.
-12. **The last line of Midnight.** New: "And for the first time in six weeks, nobody's typing." Why: the rule device is heard by its absence (sound check: the rule device is heard); the line says what the silent room can't.
+1. **The skit.** Old: the nurse unclips you, the grey suit offers a band at the door, you take it. New: the grey suit lays a band on you while you doze in the chair; the ghost sits up and one coin drops into your palm before the nurse plucks it off; then her line, his line, and you take it. Why: the room's note 2, the thumbnail's moment confirmed by 0:05.
+2. **The first narrator line.** Old: "That's your Thursday. A chair in El Paso, twice a week, the most the law allows (c02)." New: "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows (c02)." Why: the owner's clarity note; El Paso stays in the five lines.
+3. **The cost by 0:30.** New: "a night you sell is a night your own brain doesn't get" over the thumbnail frame. Why: the room's note 1.
+4. **The rule's second line.** New: "One company can link many bands, for one big job. But the leaflet promises each brain stays separate. One brain, one band, one jar." Why: the room's note 3; the turn breaks a line already said.
+5. **reCAPTCHA cut** (v3) at the owner's note; Problem one follows the dream fact.
+6. **"Then everyone" is a therefore chain** (v3), the warehouse and clerk planted at 5:30.
+7. **Plain words** (v3): no "exascale", no "Pong", no bare "Super Bowl".
+8. **More crumbs and more reactions** (v3): the grandmother hums back; "Not mine."; the knot; the sorry; the YOU tag peeled at the door.
+9. **The gag's four takes** (v3).
+10. **The three problems numbered** (v3).
+11. **Voice B, sci-fi tone** (v4): cool, even and precise until the lesson.
+12. **"And for the first time in six weeks, nobody's typing."** (v4).
+13. **Exciting, not sad (v5).** The five lines rewritten: the conflict is the city catching up with every trick, the change is the deduction, the result is a win and a twist. The DARLINGs and UNDER unchanged.
+14. **Four loopholes closed on screen (v5):** computers (the leaflet, and again at the reveal), plasma and nights both (the chair), two bands (Saturday), sleeping all day (noon in the bunk). Why: story #21.
+15. **The world reacts wider (v5):** the evening news nobody watches (the city), the border's "No sleeping on a visitor visa" with the grey suits under it (governments). Why: story #20.
+16. **One tender beat, 12 s, turned by a laugh (v5):** the photo; the back-turned coffee hold is cut; the brother offers a retake. Why: story #22.
+17. **The peak as wonder (v5):** the globe's music opens rather than drops; your brother is delighted, not grieving; the computer loophole is answered inside the reveal. Why: story #18.
+18. **The ending as a win, then a sharper twist (v5):** "Yours is the only window on the street not working", "The best deal on the street, and you're the only one taking it", then "Everyone else already said yes." and a street of red lights, eyes open, typing in daylight. Why: STYLE "Back to you" and story #12, #19.
+19. **Cut for runtime (v5):** the Super Bowl dream ad (c07, c08), the 1924 test (c13), the eleven-day boy (c15), the Kenyan labellers (c09).

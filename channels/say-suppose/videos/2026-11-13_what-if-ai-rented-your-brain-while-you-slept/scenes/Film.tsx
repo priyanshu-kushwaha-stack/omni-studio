@@ -1,5 +1,5 @@
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
-import type { ScriptLine, Timeline } from "@whatif/kit/timeline";
+import type { Clip, ScriptLine, Timeline } from "@whatif/kit/timeline";
 import { FPS } from "@whatif/kit/theme";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { moodLook, type MoodName } from "@whatif/kit/stage/moods";
@@ -39,6 +39,21 @@ export function scoreVolume(frame: number, clips: { from: number; frames: number
   return IN_HOLDS + (UNDER_VOICE - IN_HOLDS) * duck;
 }
 
+/** v3's clips in the beats' v1 numbering (remap.ts). A v1 line cut later maps onto the same clip as the line before
+ *  it; it gets a one-frame clip just before the next line instead, so its insert never shows and every camera key a
+ *  beat builds from its lines stays strictly increasing. */
+export function beatClips(v3: Clip[]): Clip[] {
+  const out = V1_TO_V3.map((n) => v3[n]);
+  for (let i = 1; i < out.length; i++) {
+    if (V1_TO_V3[i] !== V1_TO_V3[i - 1]) continue;
+    let j = i;
+    while (j < out.length && V1_TO_V3[j] === V1_TO_V3[i - 1]) j++;
+    const next = j < out.length ? out[j].from : out[i - 1].from + out[i - 1].frames + (j - i) * 2 + 2;
+    for (let k = i; k < j; k++) out[k] = { ...out[k], from: next - (j - k) * 2, frames: 1 };
+  }
+  return out;
+}
+
 export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string>; narration?: boolean };
 
 /** The picture at the current frame: the beat on, lit by the current line's mood, and the paper finish. Sources are
@@ -47,7 +62,7 @@ const Picture: React.FC<FilmProps> = ({ timeline, lines: v3Lines }) => {
   const frame = useCurrentFrame();
   const { clips: v3, cues } = timeline;
   // The beats count lines in v1 numbering (remap.ts): hand them v3's clips and lines in that numbering.
-  const clips = V1_TO_V3.map((n) => v3[n]);
+  const clips = beatClips(v3);
   const lines = V1_TO_V3.map((n) => v3Lines[n]);
   const starts = BEATS.map((b) => (b.openAt ? b.openAt(v3) : b.firstLine === 0 ? 0 : clips[b.firstLine].from));
   const index = Math.max(0, lastIndex(starts, (s) => frame >= s));
