@@ -4,7 +4,7 @@
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
   "status": "awaiting_human",
-  "timestamp": "2026-11-13T18:37:26.700760+00:00",
+  "timestamp": "2026-11-14T12:48:11.331185+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
@@ -15,18 +15,18 @@
     "sequel_md": "sequel.md",
     "story_json": "story.json",
     "narration_wav": "assets/narration/narration.wav (git-ignored, local voices)",
-    "first_cut": "renders/v4/v4-720p.mp4 (git-ignored)",
-    "review_md": "review-g2-owner-notes.md",
+    "first_cut": "renders/v5/v5-720p.mp4 (git-ignored)",
+    "review_md": "review-g2-exciting.md",
     "room_md": "room-g2.md",
     "qc_json": "qc/story_script.json (git-ignored)"
   },
   "style_playbook": "say-suppose",
   "metadata": {
     "gate": "G2 story lock",
-    "draft": "v4 (owner-notes round 2: voice B, sci-fi tone)",
-    "runtime_s": 715.5,
-    "runtime_note": "11:55, voice B cloned, the M2 sci-fi score",
-    "room": "round 1 shipped; claims 0 blockers, story 3 blockers (ride the owner-notes round)",
+    "draft": "v5 (owner-notes round 3: exciting, not sad)",
+    "runtime_s": 800.4,
+    "runtime_note": "13:20, 138 lines, voice B cloned (cool, warm from Midnight on), the M2 sci-fi score",
+    "room": "rounds 2-6, round 6 shipped (12 of 24 calls, verify ok); claims clean; 5 story blockers left for the owner, listed in review-g2-exciting.md",
     "paid_calls": 0
   }
 }

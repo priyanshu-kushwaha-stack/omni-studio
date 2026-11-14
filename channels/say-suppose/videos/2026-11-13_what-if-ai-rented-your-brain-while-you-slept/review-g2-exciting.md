@@ -61,4 +61,8 @@ inside speech; `omni qc story_script` passes on the narration. New set pieces ar
 picture flaws: the Midnight two-shot still crowds his head over yours; the red-band street is wide and its figures small;
 "So you push the nights instead" reuses the shelf-of-jars shot.
 
+The full mix (`renders/v5/v5-720p.mp4`, 13:22) flags two effect spots, as v3 and v4 did (`qc/v5-mix-clicks.json`):
+a pop at 1:02.4 (the pay-flap effect on "What'd you get?") and a small level step at 3:23.3. Both are in the effects,
+not the voice; picture-lock work (G3).
+
 `story_script` stays `awaiting_human`. G2 passes only by the owner's own `omni approve`.
