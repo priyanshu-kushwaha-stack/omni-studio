@@ -83,8 +83,11 @@ export function lastIndex<T>(items: T[], pass: (item: T) => boolean): number {
 }
 
 /** The camera between keyframes [frame, camera], eased linearly and held at both ends. */
-export function camAt(frame: number, keys: [number, Camera][]): Camera {
-  if (keys.length === 1) return keys[0][1];
+export function camAt(frame: number, rawKeys: [number, Camera][]): Camera {
+  if (rawKeys.length === 1) return rawKeys[0][1];
+  // interpolate() needs strictly increasing frames; a key that lands on or before the previous one moves a frame later.
+  const keys: [number, Camera][] = [];
+  for (const [f, c] of rawKeys) keys.push([keys.length ? Math.max(f, keys[keys.length - 1][0] + 1) : f, c]);
   const at = (pick: (c: Camera) => number) =>
     interpolate(frame, keys.map((k) => k[0]), keys.map((k) => pick(k[1])), { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return { x: at((c) => c.x), y: at((c) => c.y), zoom: at((c) => c.zoom) };

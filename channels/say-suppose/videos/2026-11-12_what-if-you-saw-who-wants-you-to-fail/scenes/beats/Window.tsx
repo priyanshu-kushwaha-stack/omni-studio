@@ -104,7 +104,7 @@ function roomCam(frame: number, k: T, shot: string): Camera {
     case "mjGlass":
       return camAt(frame, [[k.mjGlass, glassOn(MJ_REFL, 5.2)], [k.close.mj, glassOn(MJ_REFL, 5.8)]]);
     default:
-      return camAt(frame, [[k.thGlass, glassOn(TH_REFL, 5.2)], [k.close.th, glassOn(TH_REFL, 5.8)]]);
+      return camAt(frame, [[k.thGlass, glassOn(TH_REFL, 5.2)], [Math.max(k.close.th, k.thGlass + 12), glassOn(TH_REFL, 5.8)]]);
   }
 }
 
