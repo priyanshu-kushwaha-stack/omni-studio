@@ -10,6 +10,11 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-14
 
+- **"Everything valid"** On the outside review of saw who wants you to fail v6 (Cursor, GPT-5.6 Sol, frame by frame)
+  and the room's round 18 notes: apply every valid fix. The review's rule for every film: a new action, framing or reveal
+  every 2-4 seconds outside the wordless peak; jokes are performed on screen, not only narrated; text is one or two large
+  lines a phone can read.
+
 - **"yes lets plan and fix the opening as to what would be the best thing to do ? Looks fine otherwise."** On saw who
   wants you to fail v5, after the room's story editor flagged the opening in two rounds (the thumbnail's frame and
   minus eighty-four only arrived at 0:48; the title question at 0:24). Replaces "Start Script is OK" for this film's

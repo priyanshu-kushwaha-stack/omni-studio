@@ -1,10 +1,12 @@
 # v5 pacing (owner, 2026-11-13: "dialogues can be a little slower"): 0.3 s more air after every line on top of
 # story.py's 0.35 s gap, and 0.7 s where a card or a bubble lands with no hold after it. No tempo change.
 # G2 round 18: three cold-open lines added before the platform; every index below moved up by 3.
+# Outside review v6 (2026-11-14): holds trimmed after lines 2 (platform), 67 (hall), 81 (notebook walk), 95 (the
+# gate), 107 (the window); the end card hold is cut in script.md.
 extra:
   0: 0.3
   1: 0.3
-  2: 0.3
+  2: -2.7
   3: 0.3
   4: 0.3
   5: 0.3
@@ -69,7 +71,7 @@ extra:
   64: 0.7
   65: 0.3
   66: 0.3
-  67: 0.3
+  67: -1.2
   68: 0.3
   69: 0.3
   70: 0.3
@@ -83,7 +85,7 @@ extra:
   78: 0.7
   79: 0.7
   80: 0.3
-  81: 0.3
+  81: -1.7
   82: 0.3
   83: 0.3
   84: 0.3
@@ -97,7 +99,7 @@ extra:
   92: 0.3
   93: 0.3
   94: 0.3
-  95: 0.3
+  95: -2.7
   96: 0.3
   97: 0.3
   98: 0.3
@@ -109,7 +111,7 @@ extra:
   104: 0.3
   105: 0.3
   106: 0.3
-  107: 0.3
+  107: -1.7
   108: 0.3
   109: 0.3
   110: 0.7

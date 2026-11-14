@@ -225,7 +225,7 @@ You say it to her back. Nothing opens. A back is not a face. Your sister has the
 ## [04:00] The Weapon
 
 > MOOD: day
-> SCENE: The classroom over two weeks, a montage that turns at every use. A mock score chalked on the board; you standing to say it aloud; cards snapping open over every head. Your phone: a group chat, his name swiped out first, then another, then another. A paper sheet: a hundred small heads, four coloured teal, yours fourth, his fifth. On the curve line a card: TOP 4% GET THE TOP GRADE.
+> SCENE: The classroom over two weeks, a montage that turns at every use. A mock score chalked on the board; you standing to say it aloud; cards snapping open over every head; every time, your eyes go to your best friend's card first, and two rows back the rival notices. Your phone: a group chat, his name swiped out first, then another, then another. A paper sheet: a hundred small heads, four coloured teal, yours fourth, his fifth. On the curve line a card: TOP 4% GET THE TOP GRADE.
 
 The national exam grades on a curve. In most subjects, only the top 4 per cent get the top grade (c01).
 
@@ -307,7 +307,7 @@ Tae-ho: Weather?
 > BUBBLE: You: Second place.
 > TAG: -71%
 
-Minus seventy-one. Two years of trash talk gave you minus six. One mock score gave you minus seventy-one. You're in his lane now. Your rival finally hates you, and you've never been prouder.
+Minus seventy-one. Two years of trash talk gave you minus six. One mock score gave you minus seventy-one. You're in his lane now. Your rival finally hates you. The enemy you went looking for has finally arrived.
 
 > TAG: -91%
 
@@ -337,7 +337,7 @@ A card has one colour for every kind of hurt. Which is sweet, until you remember
 > MOOD: day
 > SCENE: The classroom. The rival at the front, arms folded, watching you stand with a paper. Then on "Backs" a hundred chairs scrape round at once: every student faces the wall, the rival last, grinning over his shoulder before he turns. You alone at your desk facing a hundred backs. On "Problem two" a card: PROBLEM 2. No face, no card.
 
-But here's problem two. The rival has been watching you watch the air.
+But here's problem two. Every time, you read your best friend first. And the rival has been watching.
 
 Tae-ho: You only brag to faces.
 
@@ -358,9 +358,9 @@ No faces. No cards. Your edge is gone, your phone says "removed from group", and
 > MOOD: morning
 > SCENE: The classroom at dusk, the night before: you set your own notebook on his desk, half a chocolate bar on top, and walk out. Then exam morning, eight o'clock, the street outside the exam school gate. A title in the upper left: EXAM MORNING. Students file in; along the railings a crowd of parents. You come up the street.
 
-The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.
+The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. The bigger half. You're competitive, not a monster. It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.
 
-Exam morning. Outside every exam school, parents crowd the gate to see their kids in. And there in the crowd, straight off the night shift, still in her vest: your sister. With a lunch box.
+Exam morning. Outside every exam school, parents crowd the gate to see their kids in. And there in the crowd, straight off the night shift, still in her vest: your sister. With a lunch box packed like the exam lasts a week.
 
 > HOLD: 6 s. Performed. The crowd parts and she's there, vest half zipped, hair flat from the night, a lunch box in both hands. She holds it out. You take it; your fingers touch hers on the handle. Her mouth opens for the words she always says, and shuts without them. She nods once and steps back. The bell.
 
@@ -420,7 +420,7 @@ Your best friend? Minus eighty-four. Still. He's glad for you. He also wants to 
 > TAG: -84%
 > TAG: -6%
 
-And the rival is back to minus six. You've never been so happy to be hated less.
+And the rival is back to minus six. Between rivals, that's practically a handshake.
 
 Tae-ho: Weather?
 
@@ -441,9 +441,9 @@ Ji-yoon: Say it again.
 
 > HOLD: 2 s. He does. A second snap, above you. Your head turns to the window. Cut.
 
-Now it's his news. And the card is over you. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
+Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
 
-> HOLD: 4 s. End card: like, subscribe and comment tags in the left two-thirds; the right third quiet.
+> HOLD: 1 s. End card (cut short, outside review v6): like, subscribe and comment tags in the left two-thirds; the right third quiet.
 
 ## Not spoken
 

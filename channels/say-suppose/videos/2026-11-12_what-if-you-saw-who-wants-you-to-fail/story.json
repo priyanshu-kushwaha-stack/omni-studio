@@ -74,7 +74,7 @@
       "text": "It started this morning. With a stranger.",
       "say": "[light, conspiratorial, a beat between the two sentences] It started this morning. With a stranger.",
       "speaker": "narrator",
-      "gapAfterSec": 8.3,
+      "gapAfterSec": 5.3,
       "mood": "night",
       "claims": []
     },
@@ -602,7 +602,7 @@
       "text": "The school assembly. Five hundred faces. She wants you to announce it.",
       "say": "[hushed, the scale landing, a gulp] The school assembly. Five hundred faces. She wants you to announce it.",
       "speaker": "narrator",
-      "gapAfterSec": 4.3,
+      "gapAfterSec": 2.8,
       "mood": "day",
       "claims": []
     },
@@ -699,8 +699,8 @@
       "claims": []
     },
     {
-      "text": "Minus seventy-one. Two years of trash talk gave you minus six. One mock score gave you minus seventy-one. You're in his lane now. Your rival finally hates you, and you've never been prouder.",
-      "say": "[surprised, then building, then gleeful on the last sentence] Minus seventy-one. Two years of trash talk gave you minus six. One mock score gave you minus seventy-one. You're in his lane now. Your rival finally hates you, and you've never been prouder.",
+      "text": "Minus seventy-one. Two years of trash talk gave you minus six. One mock score gave you minus seventy-one. You're in his lane now. Your rival finally hates you. The enemy you went looking for has finally arrived.",
+      "say": "[surprised, then building, then gleeful on the last sentence] Minus seventy-one. Two years of trash talk gave you minus six. One mock score gave you minus seventy-one. You're in his lane now. Your rival finally hates you. The enemy you went looking for has finally arrived.",
       "speaker": "narrator",
       "gapAfterSec": 1.05,
       "mood": "day",
@@ -718,7 +718,7 @@
       "text": "The late-night study room. Past midnight. His seat's empty, and his notebook's open. You look. Obviously.",
       "say": "[hushed, slow, then dry on the last two words] The late-night study room. Past midnight. His seat's empty, and his notebook's open. You look. Obviously.",
       "speaker": "narrator",
-      "gapAfterSec": 5.3,
+      "gapAfterSec": 3.3,
       "mood": "lamp",
       "claims": []
     },
@@ -767,8 +767,8 @@
       "claims": []
     },
     {
-      "text": "But here's problem two. The rival has been watching you watch the air.",
-      "say": "[leaning in, hushed, uneasy] But here's problem two. The rival has been watching you watch the air.",
+      "text": "But here's problem two. Every time, you read your best friend first. And the rival has been watching.",
+      "say": "[leaning in, hushed, uneasy] But here's problem two. Every time, you read your best friend first. And the rival has been watching.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -823,18 +823,18 @@
       "claims": []
     },
     {
-      "text": "The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.",
-      "say": "[quiet, warm, a smile on the last sentence] The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.",
+      "text": "The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. The bigger half. You're competitive, not a monster. It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.",
+      "say": "[quiet, warm, a smile on the last sentence] The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. The bigger half. You're competitive, not a monster. It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Exam morning. Outside every exam school, parents crowd the gate to see their kids in. And there in the crowd, straight off the night shift, still in her vest: your sister. With a lunch box.",
-      "say": "[hushed, cold morning air, then tender and slowing on the last four words] Exam morning. Outside every exam school, parents crowd the gate to see their kids in. And there in the crowd, straight off the night shift, still in her vest: your sister. With a lunch box.",
+      "text": "Exam morning. Outside every exam school, parents crowd the gate to see their kids in. And there in the crowd, straight off the night shift, still in her vest: your sister. With a lunch box packed like the exam lasts a week.",
+      "say": "[hushed, cold morning air, then tender and slowing on the last four words] Exam morning. Outside every exam school, parents crowd the gate to see their kids in. And there in the crowd, straight off the night shift, still in her vest: your sister. With a lunch box packed like the exam lasts a week.",
       "speaker": "narrator",
-      "gapAfterSec": 6.3,
+      "gapAfterSec": 3.3,
       "mood": "morning",
       "claims": []
     },
@@ -934,7 +934,7 @@
       "text": "The card never said a face had to be the right way round.",
       "say": "[quiet, sly, a smile you can hear] The card never said a face had to be the right way round.",
       "speaker": "narrator",
-      "gapAfterSec": 9.3,
+      "gapAfterSec": 7.3,
       "mood": "night",
       "claims": []
     },
@@ -963,8 +963,8 @@
       "claims": []
     },
     {
-      "text": "And the rival is back to minus six. You've never been so happy to be hated less.",
-      "say": "[deadpan, relieved] And the rival is back to minus six. You've never been so happy to be hated less.",
+      "text": "And the rival is back to minus six. Between rivals, that's practically a handshake.",
+      "say": "[deadpan, relieved] And the rival is back to minus six. Between rivals, that's practically a handshake.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -1003,10 +1003,10 @@
       "claims": []
     },
     {
-      "text": "Now it's his news. And the card is over you. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
-      "say": "[quiet, direct, a small smile on be honest, unhurried] Now it's his news. And the card is over you. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "text": "Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "say": "[quiet, direct, a small smile on be honest, unhurried] Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
       "speaker": "narrator",
-      "gapAfterSec": 4.3,
+      "gapAfterSec": 1.3,
       "mood": "morning",
       "claims": []
     }
