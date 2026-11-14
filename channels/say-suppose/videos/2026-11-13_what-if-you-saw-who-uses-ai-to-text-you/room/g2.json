@@ -118,29 +118,187 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 4,
+      "draft_sha256": "25c65e7ddab3edfec14c485baa6e239134ad028191da3cea38b5a893bf0459d7",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "54a4c4f400b5428c8525af5f8c7440bb",
+          "file": "room/g2/round-4/claims-check.json",
+          "output_sha256": "3c1e0ab14e62e6b553fa991512892f0b42f320afcaf1c533d4e5feaa0d1bd414",
+          "blockers": 2
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "92c94ab5e8154db083055d8a286897e4",
+          "file": "room/g2/round-4/story-editor.json",
+          "output_sha256": "21b1546fd3c2e334cd8cc12ba069b9cb2b4808b4989728199ac0d1c73d9a7e67",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 5,
+      "draft_sha256": "679302fa9f002fd652bf31b64c99bd4c6de5addf7d71663fffeb0b24e02e304e",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "5a4bb99f4ab04e7da23d8777136e2f47",
+          "file": "room/g2/round-5/claims-check.json",
+          "output_sha256": "913d5261ba8a9857f53ce9c4c08d9044a9baabd8f83542b1352038862e991b3f",
+          "blockers": 3
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "ba770a89885a41f1b8641ad8983758b9",
+          "file": "room/g2/round-5/story-editor.json",
+          "output_sha256": "2bfbac3dd5b2897f67f02b001a441a4e3d6e3b8bbd54fd00dab41aef2a24fac6",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 6,
+      "draft_sha256": "0c9aa3ee718daae23d64bc00b1a803c2dfcb619b3283aa8fea4e142ecd5e87f9",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "418e4f69af494d3f89a4ba01c9b3b89f",
+          "file": "room/g2/round-6/claims-check.json",
+          "output_sha256": "a9ca2b8caffac6f5900e638a5ce3b01485d5e0013dc4b444d1e3746f8387a0ec",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "4b1ace33bec24e16a9ab3b248b94e2c8",
+          "file": "room/g2/round-6/story-editor.json",
+          "output_sha256": "b4789ce1a534ce71703c709c570b46bb93bc74de4abc511f72067f35429afb83",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    },
+    {
+      "round": 7,
+      "draft_sha256": "bc46e4d90cf07b72733436ccf839249386d941525ed609a217a6d6eabf797bc7",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "84a5ba6cff394fb1b98e157e034025cf",
+          "file": "room/g2/round-7/claims-check.json",
+          "output_sha256": "9882f5df08393e73bfab7d2688ee23d3ffb466b036a4884cbfa147f84a5951d8",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "3d21bc32178444289c6cebd1bab64afd",
+          "file": "room/g2/round-7/story-editor.json",
+          "output_sha256": "cf2cab896e9a16e50eaf463bd34d2bc8014e1c733d80db52064779fb9f846bc8",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 3,
-    "artifact_sha256": "eb6ff9d07b4652ef75588098a0f63e781e9ee85a39a060a65992721bf576f5ff"
+    "round": 7,
+    "artifact_sha256": "bc46e4d90cf07b72733436ccf839249386d941525ed609a217a6d6eabf797bc7"
   },
-  "calls": 6,
-  "cap": 16,
+  "calls": 14,
+  "cap": 20,
   "author_cut": {
     "round": 1,
     "draft_sha256": "93aaa7899ef1d6fa6816fa5a06fdd0637357e3724fb5b2c326464a6c3d955e7d",
     "cost": {
-      "lines_changed": 28,
-      "header_changed": [],
+      "lines_changed": 475,
+      "header_changed": [
+        "DESIRE",
+        "CONFLICT",
+        "CHANGE",
+        "RESULT",
+        "DARLING"
+      ],
       "keep_lost": [
-        "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did."
+        "What limits a friendship is time. Every friendship costs time to keep (c19).",
+        "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did.",
+        "She was keeping you with the only hours she had left: the ones she was asleep for.",
+        "One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade (c09).",
+        "Around the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008, Filipinos sent over a billion texts a day (c02).",
+        "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did (c22).",
+        "Told it was written by AI, they called the sender lazy and insincere. Told nothing, most never suspected (c20).",
+        "Nobody wrote it. Both of you meant it. Phones face down. Nothing to dot. Now you have to talk. Harder than it looks.",
+        "Nobody suspects a thing. In a 2026 study, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20)."
       ]
     }
   },
   "presented": {
     "draft_sha256": "93aaa7899ef1d6fa6816fa5a06fdd0637357e3724fb5b2c326464a6c3d955e7d",
-    "at": "2026-11-12T23:16:28+00:00"
+    "at": "2026-11-14T04:17:21+00:00"
   }
 }

@@ -1,0 +1,73 @@
+{
+  "call_id": "92c94ab5e8154db083055d8a286897e4",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "hook and click confirmation": 6,
+    "causal story chain": 8,
+    "escalating set pieces": 6,
+    "ending and payoff": 8,
+    "length \u2014 the reminder, cafe reveal, boss threat and voice-note hook justify staying past 8:00": 8
+  },
+  "blockers": [
+    {
+      "quote": "The thumbnail's frame, exactly:",
+      "why": "#2 Confirm the click fails: the timing note places this frame at 0:09\u20130:11, after the required first 7 seconds.",
+      "fix": "Compress the skit so the wish is blown by 0:02, dots appear by 0:05, and the exact dotted-wishes/bare-father thumbnail frame lands by 0:07.",
+      "domain": "story",
+      "line": 32
+    },
+    {
+      "quote": "Still. Her dot. Two seconds, every time, at four in the morning. You go and catch her at it.",
+      "why": "#20 Escalating set pieces fails: after an entire office reacts, the story contracts to one friend and one shift lead.",
+      "fix": "Move the complete \u201cCatch Her at It\u201d section before \u201cThe Office.\u201d The progression then widens from family, to friendship, to workplace, to city, news and campaign.",
+      "domain": "story",
+      "line": 259
+    },
+    {
+      "quote": "The dating app: a month of his messages, pale-blue bubbles, every one dotted, down the whole screen; his contact photo, pale-blue head, sunglasses.",
+      "why": "No new person after 60% fails: the dating-app man first appears after 6:00; the newsreader and senator arrive later still.",
+      "fix": "Before 6:00, plant his pale-blue avatar in the bus scroll and show the same newsreader and senator briefly on the party television. Their later scenes then pay off established people.",
+      "domain": "story",
+      "line": 319
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 335,
+      "quote": "Only you can tell which half is which. Lovely, until the people in charge find out.",
+      "fix": "Replace with: \u201cYour boss watched you call three messages right. By evening, the people in charge know enough to make an offer.\u201d"
+    },
+    {
+      "line": 393,
+      "quote": "You delete it. At nine, you go anyway.",
+      "fix": "Replace with: \u201cYou delete it. At eight fifty-nine, you're outside the cafe anyway.\u201d"
+    },
+    {
+      "line": 431,
+      "quote": "The first thing he's ever typed to you himself. So you know he means it. You taught him that.",
+      "fix": "Replace with: \u201cThe first thing he's typed himself. You know he chose the words. Why is still none of your business.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 44,
+      "quote": "And the only wish you'd have marked down for spelling is the only one a person typed. Your father. Eight months out on a cargo ship. Three words, one wrong. Same as always."
+    },
+    {
+      "line": 370,
+      "quote": "Nobody can buy what nobody can see. The flaw in the power is the lock on it."
+    },
+    {
+      "line": 420,
+      "quote": "Nobody wrote it. Both of you meant it. Phones face down. Nothing to dot. Now you have to talk. Harder than it looks."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "21b1546fd3c2e334cd8cc12ba069b9cb2b4808b4989728199ac0d1c73d9a7e67",
+  "draft_sha256": "25c65e7ddab3edfec14c485baa6e239134ad028191da3cea38b5a893bf0459d7"
+}

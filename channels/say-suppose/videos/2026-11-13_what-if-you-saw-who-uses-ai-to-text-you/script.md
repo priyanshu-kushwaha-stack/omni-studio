@@ -1,56 +1,58 @@
 # Script: What If You Saw Who Uses AI to Text You?
 
 format: story
-status: v1.3, G2 draft (2026-11-13): trimmed to length, then the G2 room's round-1 and round-2 notes
+status: v2.3, G2 owner-notes round (2026-11-13): exciting not sad; room rounds 4-6 notes applied
 claims: claims.md
 
 > SITUATION: Your birthday in Manila, your father eight months out on a ship, forty-one messages before breakfast, and you grading every one by its length: long means love.
-> DESIRE: To know who, of everyone who texts you, actually means it.
-> CONFLICT: The dot tells you who wrote a message and never why, and it sits on the warmest messages on your phone, your best friend's first, then your own.
-> CHANGE: You stop reading a dot as "didn't care" and go and look at the person behind it.
-> RESULT: You send your father three words with a typo in them, and leave the typo.
+> DESIRE: To be the only person in the city who can tell who wrote what.
+> CONFLICT: The dot tells you who wrote a message and never why, and the people in charge want it: the office, a campaign, your boss with a bonus bigger than a year's pay.
+> CHANGE: The flaw in the power becomes the lock on it: nobody can buy what nobody else can see.
+> RESULT: The lie detector stays yours, two machines book you a coffee, your boss types to you by hand for the first time, and a dot begins to form beside a voice.
 > UNDER: If a machine wrote it but they meant it, does it still count?
 > DARLING: "But a dot says who wrote it. It never says why. Remember that."
-> DARLING: "She was keeping you with the only hours she had left: the ones she was asleep for."
-> DARLING: "Nobody wrote it. Both of you meant it."
+> DARLING: "Dot. On the answer. You can't just ask. People lie. Dots don't."
+> DARLING: "Half the city is talking, and nobody's home. And you're the only person alive who knows which half."
 
 ## [00:00] Make a Wish
 
 > MOOD: lamp
-> SCENE: The kitchen, before six in the morning, one lamp over the table, the window still dark. A phone buzzes face-up on the table inside the first half second and lights: the family group chat, bubbles stacking, a column of birthday wishes. You at the table, mustard head, teal scarf, pulling the phone close; a long pale-pink paragraph at the top of the column; you wipe one eye with the back of your hand. Behind you your mother, lavender head, apron, carrying a small cake with one candle. On the fridge, a photo: a man in overalls on a ship's deck, sage head.
+> SCENE: The kitchen, before six in the morning, one lamp over the table, the window still dark. A phone buzzes face-up on the table inside the first half second and lights: the family group chat, bubbles stacking, a column of birthday wishes. You at the table, mustard head, teal scarf, pulling the phone close; a long pale-pink paragraph at the top of the column; you grin at it with a hand flat on your chest. Behind you your mother, lavender head, apron, carrying a small cake with one candle. A cast tag off her face: "YOUR MOTHER: runs the family chat, types with one finger." On the fridge, a photo: a man in overalls on a ship's deck, sage head.
 
-> HOLD: 4 s. Performed. The buzz, then another, then three at once; the column of bubbles stacks up the screen. You read the pink paragraph, scroll it, read it again, wipe your eye. Your mother sets the cake down at your elbow and shields the candle with her hand.
+> HOLD: 2 s. Performed. The buzz, then another, then three at once; the column of bubbles stacks up the screen. You read the pink paragraph, scroll it, read it again, grin, press the phone to your chest. Your mother sets the cake down at your elbow and shields the candle with her hand.
 
 Mother: Make a wish. A real one.
 
 > BUBBLE: You: Who means it?
 
-> HOLD: 3 s. Performed. You look from her to the phone, and blow. The smoke drifts across the screen, and where it passes a small crimson dot ticks on beside each message, one soft tick each, like a pen tapped on a desk. Dot. Dot. Dot. The pink paragraph: dot. Your face stops. Your mother leans in over your shoulder and sees a screen of birthday wishes, nothing else.
+> HOLD: 2 s. Performed. You look from her to the phone, and blow. The smoke drifts across the screen, and where it passes a small crimson dot ticks on beside each message, one soft tick each, like a pen tapped on a desk. Dot. Dot. Dot. The pink paragraph: dot. Your brows shoot up, eyes wide, mouth open. Your mother leans in over your shoulder and sees a screen of birthday wishes, nothing else.
 
 Mother: What? What is it?
 
-> SCENE: The thumbnail's frame, exactly: the kitchen before six, the lamp the only light, your mother already stepped back to the sink and out of frame. You large and left of centre, holding the phone at chest height, tilted to the viewer, looking down at it; brows lifted at the inner ends, eyes down, the small open falling mouth. On the screen four long warm bubbles, pink, mint, peach, lavender, each with one crimson dot at its lower corner, and at the bottom one short grey-blue bubble with no dot. Behind you, right and lower, the cake, its candle just out, a thread of smoke still curling toward the phone. Insert on the bare bubble.
+> SCENE: The thumbnail's frame, exactly: the kitchen before six, the lamp the only light, your mother already stepped back to the sink and out of frame. You large and left of centre, holding the phone at chest height, tilted to the viewer, stunned: brows high, eyes wide on the phone, mouth open. On the screen four long warm bubbles, pink, mint, peach, lavender, each with one crimson dot at its lower corner, and at the bottom one short grey-blue bubble with no dot. Behind you, right and lower, the cake, its candle just out, a thread of smoke still curling toward the phone. Insert on the bare bubble.
 
 > TAG: Hapy birthday kid
 
-> HOLD: 2 s. Performed. Your thumb scrolls down through dots and stops at the bottom bubble. A buzz, and no tick. Your eyes go from the bare bubble to the photo on the fridge, and back.
+> HOLD: 2 s. Performed. Your thumb scrolls down through dots and stops at the bottom bubble. A buzz, and no tick. Your eyes go from the bare bubble to the photo on the fridge, and back, and the open mouth turns into a grin.
 
-You asked who meant it. The candle answered the easier question.
+You asked who meant it. The candle gave you something better.
 
 So what if you could see who uses AI to text you? Everyone who did. Every time.
 
-Forty-one messages. Thirty-three dots. One on your best friend's paragraph. And the only one you'd have marked down for spelling is the only one a person typed.
+Catch anyone you like. Just never get caught catching.
 
-Your father. Eight months out on a cargo ship. Three words, one of them wrong, same as always.
+Forty-one birthday wishes. Thirty-three dots. One on your best friend's paragraph. Even her.
 
-## [00:41] The Rule
+And the only wish you'd have marked down for spelling is the only one a person typed. Your father. Eight months out on a cargo ship. Three words, one wrong. Same as always.
+
+## [00:43] The Rule
 
 > MOOD: morning
-> SCENE: The title card ident (C), three seconds, cut from the last line. Then the kitchen as the first grey light comes through the window. You at the table, the phone in both hands; your mother drying a cup at the sink, peering over. An insert replays the smoke and a dot ticking on; then a clean paper diagram draws itself: a bubble, a hand pressing a send button, a dot stamping itself beside the bubble; a second bubble with no hand at all, a dot; a third bubble with a thumb typing every letter, no dot.
+> SCENE: The title card ident (C), three seconds, cut from the last line. Then the kitchen as the first grey light comes through the window. You at the table, the phone in both hands, scrolling fast, delighted; your mother drying a cup at the sink, peering over. An insert replays the smoke and a dot ticking on; then a clean paper diagram draws itself: a bubble, a hand pressing a send button, a dot stamping itself beside the bubble; a second bubble with no hand at all, a dot; a third bubble with a thumb typing every letter, no dot; a fourth bubble with a thumb copying the words off a second screen, letter by letter, and a dot.
 
 You've always graded people by their messages. Long means love. Short means busy. A typo means they couldn't be bothered.
 
-The rule. Every message you can read, in any app, from anyone, a text, a comment, a review: if a machine wrote it and a person only pressed send, or didn't even do that, it gets a small red dot.
+The rule. Every message you can read, in any app, from anyone, a text, a comment, a review: if a machine chose the words, it gets a small red dot. Whoever's thumbs pressed send.
 
 Only you see them. They are never wrong.
 
@@ -58,30 +60,30 @@ But a dot says who wrote it. It never says why. Remember that.
 
 Mother: Dots? What dots?
 
-> SCENE: She takes the phone, turns it over, holds it up to the window. Nothing. She hands it back and goes back to the cup. Insert: the photo on the fridge; then a paper map draws itself, this country, with threads running out from it to ships and cities on three continents.
+> SCENE: She takes the phone, holds it up to the window like a banknote, tilts it, squints at it. Nothing. She hands it back and goes back to the cup. Insert: the photo on the fridge; then a paper map draws itself, this country, with threads running out from it to ships and cities on three continents.
 
 Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is.
 
-> SCENE: Over your shoulder: you open his message and start a long reply. After four words the phone offers your next sentence in grey. Your thumb stops over it.
+> SCENE: Over your shoulder: you open his message and start a reply. After four words the phone offers your next sentence in grey. Your thumb stops over it. Your eyes narrow.
 
-You start writing him something long. Something worthy. After four words, the phone offers the rest. In grey.
+Four words in, and your own phone offers to be you. In grey.
 
-You don't send it. Not yet. First you want to know who else. And whether eleven years of her paragraphs were ever hers.
+You don't send it. First: who else?
 
-## [01:34] The Detective
+## [01:33] The Detective
 
 > MOOD: day
-> SCENE: The bus to work, morning: you at the window, the phone up, thumb flicking. Each message you open fills the frame for a second: the landlord's reminder, a plain grey bubble, no dot; your boss's paragraph, dot, then his one word, bare.
+> SCENE: The bus to work, morning: you at the window, the phone up, thumb flicking, a customs officer's face. Each message you open fills the frame for a second and gets a stamp: your boss's paragraph, dot; his one word, bare; a dating-app chat flicks past, a pale-blue head in sunglasses, a month of dotted bubbles, and you swipe it away for later.
 
-The landlord. Rent reminder, cold, two lines. No dot.
+You go through your phone like customs.
 
-Your boss. So proud of this team, a whole paragraph. Dot. Your sick day, noted. No dot. He typed the one you didn't want.
+Your boss. So proud of this team, a whole paragraph. Dot. Your sick day, noted. No dot. He only types the bad news.
 
-> SCENE: Two kitchens side by side in a split frame: your two aunts, mint and peach heads, each at her own table with a phone and a cup. Insert on each screen as the texts arrive.
+> SCENE: Two kitchens side by side in a split frame: your two aunts, mint and peach heads, each at her own table with a phone and a cup. Cast tags off their faces: "AUNT ONE: types one word and presses the button." / "AUNT TWO: admires the result." Insert on each screen as the texts arrive.
 
 Your two aunts. Eleven messages this week, all between them.
 
-> HOLD: 6 s. Performed. Aunt one types one word with one finger, lovely, and presses a button; the word swells into a paragraph that scrolls off the bubble; a dot ticks on. Aunt two reads, nods, presses her own button; a paragraph flows back; dot. Aunt one reads the reply, and her brows come down.
+> HOLD: 5 s. Performed. Aunt one types one word with one finger, lovely, and presses a button; the word swells into a paragraph that scrolls off the bubble; a dot ticks on. Aunt two reads, nods, presses her own button; a paragraph flows back; dot. Aunt one reads the reply, and her brows come down.
 
 Aunt one: Lovely.
 
@@ -93,306 +95,419 @@ Aunt two: She writes so beautifully.
 
 Aunt one: Forgive me? For what?
 
-Nobody did anything. Two machines have fought and made up all week, and both aunts are proud of them.
+Nobody did anything. Two machines fought and made up all week, and both aunts are proud of them.
 
-> SCENE: The office, your desk, a dating app open: a month of his messages, pale-blue bubbles, every one dotted, down the whole screen.
+> SCENE: You, on the bus, typing to aunt one. Insert on your bubble as it sends, then on her kitchen: she reads it, beams, presses her button.
 
-Your cousin abroad. Thinking of you always. Dot. Ouch.
+Now, the obvious move. Why not just ask?
 
-The man from the dating app. A month of flirting, every line dotted. He has never typed you a word.
+> BUBBLE: You: Did you write that?
 
-> SCENE: Insert, slower: the day's messages laid out as a paper column, the dotted ones long and warm, the bare ones short: your mother's eat first, a coworker's hbd!!, the landlord's two lines. Then a paper split screen: a figure told the message was written by AI, frowning; a figure told nothing, smiling at the same message.
+Aunt one: Every word, my love.
 
-Then the pattern. The warm ones are dotted. The bare ones are short, late and misspelt.
+> SCENE: Her answer lands on your screen. A beat. A tick. A dot at its corner. Your face: a slow grin.
 
-Your mother's eat first, every letter fixed by the phone: bare. Chosen words get a dot. Fixed letters don't.
+Dot. On the answer. You can't just ask. People lie. Dots don't.
 
-In a study this year, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).
+> SCENE: Insert: your mother's message from this morning, eat first, two words, bare; an insert replays her one finger typing and the phone fixing each letter as it lands. Then a paper split screen: a figure told the message was written by AI, frowning; a figure told nothing, smiling at the same message. A card beside the second figure: "Told nothing, most never suspected."
 
-And you agree with them. A machine can't mean it.
+Your mother's eat first, every letter fixed by the phone. Bare. Chosen words get a dot. Fixed letters don't.
 
-But here's problem one. You've checked everyone but the one you're afraid to.
+Nobody suspects a thing. In a study of more than 1,300 Americans, people read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).
 
-## [02:49] The Test
+> SCENE: The bus pulls in. You stop scrolling. Your thumb hovers over the pink contact. A card stamps itself across the top of the frame: "PROBLEM ONE".
+
+But here's problem one. You've checked everyone except the one you're afraid to.
+
+## [02:37] The Test
 
 > MOOD: dusk
-> SCENE: The bus stop after work, the sky going orange. You on the bench, the phone close. Insert: the pink paragraph from the morning, its dot; then your thumb typing a short message to the pink contact.
+> SCENE: The bus stop after work, the sky going orange. You on the bench, the phone close. Insert: the pink paragraph from the morning, its dot; a cast tag off the photo in her contact, pale-pink head, a headset round her neck: "YOUR BEST FRIEND: works nights, writes the paragraphs." Then your thumb typing a short message to her.
 
-Your best friend. Bea. Eleven years. The paragraph that made you cry this morning had a dot on it.
+Your best friend. Bea. Eleven years. Her paragraph had a dot on it.
 
-You don't ask. Asking is accusing. You test: the one thing only she would know.
+You don't ask. You know what asking gets you. You test. The one thing no machine could know.
 
 > TAG: the goat on the bus?
 
-The day a goat got on your school bus and sat down next to her.
+> HOLD: 5 s. Performed. Over your shoulder, the memory draws itself on paper above the phone: a school bus, a goat climbing the step, sitting down in the seat beside a small pale-pink head, the driver shouting. Then the reply lands: a long pink paragraph, the goat, the driver, the exact seat, a laugh at the end. A dot ticks on at its corner. Your face lights, and freezes.
 
-> HOLD: 6 s. Performed. The reply lands in seconds: a long pink paragraph, the goat, the driver shouting, the exact seat, a laugh at the end. A dot ticks on at its corner. Your face lights, then falls. Your thumb starts a long reply, deletes it, types two letters, sends.
+Perfect. In nine seconds. Dot.
+
+So the machine knows about the goat. Which means somewhere, there's a file on you.
+
+> SCENE: Your thumb starts a long reply, stops, deletes it to nothing, types two letters, sends.
+
+You delete your long reply. Two letters.
 
 > TAG: ok
 
-> HOLD: 2 s. Performed. Her reply, at once. A tick. You turn the phone face down on your knee.
+> HOLD: 2 s. Performed. Her reply, at once. A tick. You turn the phone over in your hand and look at the back of it as if the answer were there.
 
 > TAG: Everything alright?
 
-The first time in eleven years you've sent her two letters.
+Two seconds. Dot. Then you make the mistake every detective makes. You check your own pockets.
 
-Then you make the mistake every detective makes. You check your own pockets.
-
-## [03:25] Your Own Dots
+## [03:13] Your Own Dots
 
 > MOOD: lamp
-> SCENE: Your bedroom, one lamp. You open your own sent folder and scroll back through a year of your messages; the dots light down the screen one at a time with a flurry of paper ticks, the thank-yous, the condolence, the long birthday replies from this morning, until the column is more crimson than paper; the camera pushes in on your face lit by the screen.
+> SCENE: Your bedroom, one lamp. You open your own sent folder and scroll back through a year of your messages; the dots light down the screen one at a time with a flurry of paper ticks, the thank-yous, the long birthday replies from this morning, until the column is more crimson than paper; the camera pushes in on your face lit by the screen.
 
 Your sent folder. A year back.
 
-> HOLD: 3 s. The flurry of ticks, like rain on a tin roof. The column goes red from the bottom up. Your face in the screen's light, the mouth closing.
+> HOLD: 3 s. The flurry of ticks, like rain on a tin roof. The column goes red from the bottom up. Your face in the screen's light: the brows go up, then down, then you laugh once through your nose.
 
-Your thank-you to your boss. Dot. Your condolence to a coworker whose father died. Dot. Half of this morning's thank-yous. Dots.
+Your thank-you to your boss. Dot. Half this morning's thank-yous. Dots. You've been grading people for a crime you commit before breakfast.
 
-For years, Google has offered to suggest your email replies and finish your sentences as you type (c11).
+For years, Gmail has offered to suggest your replies and finish your sentences as you type (c11).
 
 The detective is a suspect.
 
-> SCENE: You open the assistant's settings. A list of instructions you typed yourself. The camera pushes in on the last one, dated a year ago.
+> SCENE: You open the assistant's settings. Two switches at the top, both on: "can send messages: on", "can add events: on". Beneath them a list of instructions you typed yourself. The camera pushes in on the last one, dated a year ago.
 
 > TAG: don't let me lose her
 
-You typed that a year ago, after a fight with her. You forgot. The machine never did.
+You typed that a year ago, after a fight with her, and forgot. The machine didn't.
 
-You switch every suggestion off.
+> SCENE: Your thumb flicks every switch off, one after another, the way a pilot shuts down a cockpit, and a last long press on the biggest one.
 
-But here's problem two. You can't un-know what you are. So you become the opposite.
+You switch every suggestion off. Not guilt. Strategy. You can't see everyone's dots and be covered in them.
 
-## [04:01] The Cold Week
+> SCENE: You lean back against the headboard, the phone held up like a badge. A card stamps itself across the top of the frame: "PROBLEM TWO".
+
+Problem two. Now you think dots predict people. So you bet dinner on them.
+
+## [03:54] Set for Two
 
 > MOOD: day
-> SCENE: A week in a montage: the office, the street, the bus. Your messages go out short, bare, misspelt: fine, busy, k. Her replies come in long, perfect, dotted, each longer than the last. A top-down insert: the group chat, your thumb leaving it; the dating app, your thumb pressing block.
+> SCENE: Saturday, the kitchen, midday. Your mother at the stove with a pot the size of a sink, a spoon in her hand. You at the table with the group chat open: her party invitation, and under it twenty "wouldn't miss it"s in a column. Insert: your thumb counting down the column, a dot beside each. Nineteen. One bare bubble: your cousin's, lilac head in her contact photo. A cast tag off her face: "YOUR COUSIN: abroad, posts videos to the family."
 
-You type every word yourself now. Short. Late. Clumsy. Not a dot on you.
+Saturday. Your mother's party for you. Twenty wouldn't-miss-its. You count the dots. Nineteen.
 
-Hers get longer. Are we okay. Did I do something. I'm here, whenever. Dot. Dot. Dot.
+> BUBBLE: You: Cook for one.
 
-The dots become a blade. You leave the aunts' chat. You block the man from the dating app.
+Mother: Twenty said yes.
 
-> HOLD: 4 s. Performed. Him at a desk, pale-blue head, typing with his thumbs for the first time, slowly, backspacing. He sends. No dot. The screen says Blocked. He puts the phone face down.
+> HOLD: 3 s. Performed. She waves the spoon at you and goes on stirring. You hold up one finger. She holds up ten, twice. You shrug and lay out twenty plates down the table anyway. On the small television on the counter, a newsreader, slate head, reads beside a senator's face; nobody watches.
 
-> TAG: hey did i say somthing
+> SCENE: Evening. The table laid for twenty. One chair filled: your best friend, pale-pink head, headset round her neck, in your kitchen, eating. Your cousin, lilac head, the one bare yes, only on a video call propped against a glass, waving from abroad. Nineteen clean plates. Your mother with the pot and the spoon, looking at the door.
 
-You never see it.
+One came. Not your cousin, the bare yes: she only calls in from abroad. Your best friend, dotted all week, in your kitchen anyway.
 
-> SCENE: The kitchen, evening. Your mother at the sink, not turning. You at the table, scrolling. The phone buzzes; no tick.
+> HOLD: 4 s. Performed. Your mother stares at the nineteen plates, then at you. You tap one finger on the table. She points the spoon at you, opens her mouth, closes it.
 
-Mother: Why so cold with everyone?
+Mother: Twenty said yes.
+
+> SCENE: She photographs the nineteen plates with one finger and sends it to your father. Insert on the chat: the photo, then his reply landing within seconds. A buzz, no tick.
+
+Your mother sends your father a photo of nineteen clean plates. His reply, in seconds.
 
 > TAG: cal me kid
 
-Your father. No dot. You don't call.
+No dot. You don't call. You're busy predicting the future. As long as the future is a dinner party.
 
-The one person who never gets a dot is the one you keep not answering.
-
-## [04:35] The Shoebox
-
-> MOOD: lamp
-> SCENE: The kitchen, late. Your mother typing to your father with one finger, then reaching up to the top of the cupboard for a shoebox. She brings it to the table and opens it: cards, dozens, printed verses on the front, foreign stamps.
-
-> HOLD: 6 s. Performed. She lays the cards out down the table. Twenty-four years of ports, every card a printed verse in gold, somebody else's words. She turns one over: at the bottom, in pen, three words, one of them wrong. Then the next card, the same. She looks at you.
-
-Mother: He never could spell. Look.
-
-Mother: The card's not his. That is.
-
-For over a hundred years, people have signed their names under somebody else's words (c14).
-
-And she kept every one, for three words in pen.
-
-A dot is a greeting card that hides the card.
-
-But a card has a signature. A dot means they didn't even sign.
-
-So you decide to end it. Eleven years. To her face.
-
-## [05:11] The Bench
+## [04:28] Catch Her at It
 
 > MOOD: night
-> SCENE: The night bus across the city, near two in the morning: you at the window, the lit towers going by, a bus-shelter ad with a small paper subscribe tag sliding past, no voice. Across the aisle a kid in a cap, up far too late, on his mother's phone, typing one letter at a time with his tongue out. His mother asleep against the glass. A paper diagram over the city: a ring of heads with a clock face behind them.
+> SCENE: Your bedroom, late. Insert on the pink chat: a column of her replies to you, every one timed between four and five in the morning, every one dotted, every one landing two seconds after yours. You pull a jacket on.
 
-The night bus. Two in the morning. Her call centre is across the city.
+But your best friend's dot still doesn't fit. Two seconds, every time, at four in the morning. You go and catch her at it.
+
+> SCENE: The night bus across the city: you at the window, the lit towers going by, a bus-shelter ad with a small paper subscribe tag sliding past, no voice. Across the aisle a kid in a cap, up far too late, on his mother's phone, typing one letter at a time with his tongue out. His mother asleep against the glass.
+
+Two a.m. The night bus.
 
 Bus kid: How do you spell sorry?
 
-> HOLD: 3 s. Performed. You spell it for him with your fingers in the air. He types each letter, checks, sends. A buzz, no tick. He grins at you with every tooth.
+> HOLD: 2 s. Performed. You spell it for him with your fingers in the air. He types each letter, checks, sends. A buzz, no tick. He grins at you with every tooth.
 
-What limits a friendship is time. Every friendship costs time to keep (c19).
+Six years old. Not a dot on him.
 
-Twelve hours a night. For eleven years you graded her hours, and never asked where they came from.
+> SCENE: The call centre break room, one lamp. A bench along the wall. Your best friend asleep on it, pale-pink head, the headset round her neck, her phone in her hand, screen lit. The shift lead, grey-green head, lanyard, in the doorway with two cups. A cast tag off her face: "SHIFT LEAD: runs the night floor, whispers."
 
-> SCENE: The call centre break room, one lamp. A bench along the wall. Your best friend asleep on it, pale-pink head, the headset round her neck, her phone in her hand, screen lit. Her coworker, teal-grey head, in the doorway with two cups.
+Shift lead: Twelve hours. Don't wake her.
 
-> HOLD: 9 s. Performed. You stop in the doorway. The coworker puts a finger to her lips and whispers. You cross the room, crouch, and read the phone in her hand: a list titled do not miss; your name pinned at the top; beneath it one instruction. You sit down on the floor beside the bench, your back to it. She stirs; her hand finds your shoulder before her eyes open.
-
-Coworker: Twelve hours. Don't wake her.
+> HOLD: 5 s. Performed. You tiptoe across the room, crouch, and read the phone in her hand without touching it: a list titled do not miss; your name pinned at the top; beneath it one instruction. Your detective face goes. You sit down on the floor beside the bench, your back to it.
 
 > TAG: do not miss
 > TAG: never leave them unanswered. even when I'm asleep
 
+That's who answers you at four in the morning. Her, a year ago, making sure she'd never miss you.
+
+A dot never says why. That's a why.
+
+> SCENE: She stirs; her hand finds your shoulder before her eyes open.
+
 Best friend: You came?
 
-She was keeping you with the only hours she had left: the ones she was asleep for.
-
-You said a dot means they didn't even sign. She signed a year ago.
-
-## [05:57] The Cost
-
-> MOOD: lamp
-> SCENE: The break room, the two of you on the floor against the bench. She hands you her phone. Insert: your week on her screen, ok, fine, k, each bare, each with a long dotted reply under it. Then her drafts folder: twenty unsent messages, timed four in the morning, short, misspelt, no dots.
-
-Her side. Your week. Ok. Fine. K. Not a dot on them. All honest. All read as you leaving.
-
-Then her drafts. Twenty she never sent. Four in the morning. Her own thumbs. Misspelt. Bare.
-
-Best friend: I didn't know how to say it right.
-
-You'd have believed every one. She never sent them. Not good enough. You taught her that. Long means love.
+> SCENE: She sits up, sees your face, and laughs, hoarse, awake now.
 
 Best friend: Eleven years, and you sent me ok.
 
-But when you look up, it was never just your phone.
+> HOLD: 2 s. Performed. While she is talking, the phone in her hand lights by itself. Your phone buzzes in your pocket. You pull it out: a long pink paragraph, from her, a tick, a dot. You hold it up to her. She looks at her own hand as if it belonged to someone else.
 
-## [06:28] Fields of Red
+Her machine is still texting you while she's talking to you. You'd have bet the house on that dot.
+
+## [05:14] The Office
 
 > MOOD: day
-> SCENE: The office, morning. Your screen: the reviews of the restaurant downstairs, five stars each, a dot on each. Then your cousin's video in the group chat, lilac head waving from a window; the comments under it scroll past as a field of red. Then the office floor: you at your desk, pointing at a screen; coworkers turning; your boss, grey-blue head, tie, at his glass door, watching.
+> SCENE: Monday, the agency floor, desks in rows, a glass office at the end. A client's complaint on the big screen, red and long. Your coworker, teal-grey head, rolled sleeves, at the next desk, already cracking his knuckles. A cast tag off his face: "YOUR COWORKER: writes everything in ten minutes." Behind the glass, your boss, grey-blue head, tie, watching the floor. A cast tag off his face: "YOUR BOSS: praises in paragraphs, types the bad news."
 
-The restaurant downstairs. Five-star reviews. A dot on every one.
+Monday. The office. The client complains. Your coworker takes it.
+
+Coworker: Ten minutes. I'll write something.
+
+> SCENE: He presses one button. A paragraph of apology fills his screen. A tick. A dot at its corner, on your screen only. You lean over his shoulder.
+
+He writes something. Dot.
+
+> BUBBLE: You: A machine wrote that.
+
+Coworker: Prove it.
+
+> SCENE: You screenshot his message and hold the phone up to the floor. Insert: the screenshot, the paragraph, no dot anywhere on it. Two coworkers look, shrug, go back to work.
+
+You can't. A screenshot comes out clean. Nobody else sees a dot.
+
+Coworker: Fine. I'll type it myself.
+
+> HOLD: 4 s. Performed. He props his phone up on a second screen with the machine's paragraph on it, and types the same words into the client's reply with two fingers, letter by letter, tongue out, checking each line against the screen. A clock in the corner of the frame runs from nine to twenty past. He presses send and throws his arms up.
+
+Coworker: I typed every letter!
+
+> SCENE: Insert on your phone: his retyped message, and a tick. A dot at its corner. His face as you turn the phone to him: he sees nothing, and you grin at nothing.
+
+Dot. The dot follows who chose the words, not whose thumbs moved.
+
+> HOLD: 4 s. Performed. You stand up on the floor. Three coworkers hold up their phones. You point at the first: a nod, a hand goes up, caught. The second: caught. The third: she shakes her head, you shake yours, she turns the phone round, bare, and you bow. The floor laughs.
+
+So you prove it the one way you can. Out loud. Right, three times in a row.
+
+> SCENE: Lunch. A wide of the floor: every head down, every thumb typing, slow, nobody pressing the one button. One coworker covers his screen with his hand as another walks past.
+
+By lunch, the whole floor types with its thumbs. Like an exam.
+
+> SCENE: Your boss at the glass door, a pen and a paper notebook in his hands, not his phone.
+
+Manager: How do you know?
+
+> SCENE: You shrug. He writes something in the notebook. By hand. He looks at you a second longer than he needs to, then goes back behind the glass.
+
+You shrug. He writes that down. By hand. Trouble is, everybody wants to plug in the lie detector.
+
+## [06:00] Fields of Red
+
+> MOOD: day
+> SCENE: Morning, the street outside your building. You look up from the phone: the restaurant downstairs, its reviews on your screen, five stars each, a dot on each. Then the wider street, every phone in every hand, and on each screen, from where you stand, a tiny red point.
+
+Then you look up, and the city is red.
+
+> SCENE: Insert on the reviews: five stars, dotted, scrolling; one two-star review at the bottom, bare, in lower case.
+
+> TAG: 2 stars. fish was ok. waiter was rude.
+
+The restaurant downstairs. Five stars, dotted, every one. One bare review: two stars, fish was ok, waiter was rude. You eat there.
+
+> HOLD: 2 s. Performed. You at a table with a plate of fish. One bite. A shrug. The waiter drops the bill on the table from a height without looking at you.
+
+One bare review. First useful thing you've read all day.
+
+> SCENE: The office, your desk, your phone: your cousin's video in the group chat, lilac head waving from a window, wiping her eyes; the comments under it scroll past as a field of red, four hundred dots.
 
 Cousin: Thank you all so much. I love you all.
 
-Four hundred comments under your cousin's video. A field of red.
+Four hundred comments under your cousin's video. A field of red. She's crying at bots.
 
-At work, you start calling it. That review: machine-written. Those comments too. Right every time.
+> SCENE: The dating app: a month of his messages, pale-blue bubbles, every one dotted, down the whole screen; his contact photo, pale-blue head, sunglasses. A cast tag off his face: "THE DATING-APP MAN: a month of flirting, never typed a word." His newest message, a dinner invitation, long, warm, dotted.
 
-One security company estimated that in 2024, bots, good and bad, passed people: 51 per cent of all web traffic, for the first time in a decade (c09).
+The dating-app man. A month of flirting, never typed a word. He asks you to dinner. Dotted.
 
-> SCENE: Your phone on the desk. A message from your boss: a bonus figure, a rival campaign's name, the ask. A dot ticks on at its corner. Then the group chat beneath it: your mother's homecoming plans, twenty wouldn't-miss-its in a column, each dotted, and under them one bare bubble. A buzz, no tick.
+> BUBBLE: You: Type it yourself.
 
-Then your boss's message. A bonus bigger than a year's pay. Mark which of a rival campaign's supporters are real. It arrives with a dot.
+> HOLD: 3 s. Performed. Him at a desk, pale-blue head, typing with his thumbs for the first time, slowly, backspacing, wiping his forehead. He sends. A buzz on your phone, no tick.
 
-> TAG: cant wait
+> TAG: ur prety. dinner?
 
-Your father, under your mother's homecoming plans. No dot. The only bare bubble in twenty.
+His first real message. Bare. Awful. You say yes.
 
-If a machine wrote it but they meant it, does it still count? Because a dot never says why.
+> SCENE: The street at dusk from your window: every phone in every hand, a red point on most of them, more than you could ever count.
 
-Sell what you see, and every fake gets a price on its head. So does every night-shift worker who let a machine finish a sentence. Keep it, and every tired person keeps their machine.
+You can make one man type. You can't make a city do it. And now the people in charge find out.
 
-> SCENE: You walk into his office and hold the phone out to him, the group chat open, dots everywhere. He looks. He turns it over. He hands it back.
+## [06:53] The Offer
+
+> MOOD: lamp
+> SCENE: The kitchen, evening. The small television on the counter: a newsreader, slate head, at a desk, a senator's face in a box behind her with a paragraph of apology beside it. Your mother at the table with a tissue. You behind her with your phone, pointing it at the screen: the apology in the box, and a dot at its corner.
+
+Newsreader: The senator's apology has now been shared over a million times.
+
+Dot. A machine apologised, a million machines accepted, and your mother cried.
+
+Mother: He sounds so sincere.
+
+> SCENE: You look from the television to your phone to your mother. You open the phone's keypad, look at the station's number on screen, and put the phone down.
+
+You could call the station. And say what?
+
+> SCENE: Your phone on the table. A message from your boss: a bonus figure, a rival campaign's name, the ask: a list of which of the senator's supporters are real. A dot ticks on at its corner. Insert: the senator's supporters' page, a thousand comments, dotted and bare mixed down the screen.
+
+Then your boss. The senator's rival wants a list of which supporters are real. A bonus bigger than a year's pay. It arrives with a dot. He didn't even write it.
+
+> SCENE: A paper scale draws itself over the kitchen: on one side a stack of money; on the other, a small paper crowd of dotted supporters, a tired woman in a work vest among them with a phone finishing her sentence. The scale tips, tips back. Your hand closes around the phone.
+
+That bonus could bring your father home for good.
+
+You'd sell. Everyone would. But a dot never says why. Half of those dotted supporters are tired people who let a phone finish a sentence. If a machine wrote it but they meant it, does it still count? The first one who proves she's real, you're the fraud, and every liar in town has your name. Keep it, and it stays yours.
+
+> SCENE: Monday. The glass office. You walk in and hold the phone out to your boss, the supporters' page open, dots everywhere.
+
+So you do the cleverest thing all week. You hand him everything.
+
+> HOLD: 4 s. Performed. He takes the phone. He scrolls. He turns it over. He holds it up to the window like your mother did. He scrolls again. He hands it back with the face of a man given an empty envelope.
 
 Manager: There's nothing there.
 
 > BUBBLE: You: Exactly.
 
-You walk out.
+Nobody can buy what nobody can see. The flaw in the power is the lock on it.
 
-## [07:35] The Dark City
+## [07:52] The Dark City
 
 > MOOD: night
-> SCENE: The roof of your building. The city below, every lit window a chat, and from up here you can see them: tiny crimson points in thousands of windows. On "take away the dotted ones", the dotted windows go dark block by block until the city is almost black and a scatter of windows is left.
+> SCENE: The roof of your building, night. You at the edge, in full colour, the phone in your pocket. The city below, every lit window a chat, and from up here you can see them: tiny crimson points in thousands of windows. You grin at it before you can stop yourself.
 
-You walk out with the dots still yours. On the roof, you look at what keeping them protects.
+On the roof, you see what keeping them buys. Try not to enjoy it.
 
-Around the turn of the century, the Philippines was called the texting capital of the world (c01). By 2008, Filipinos sent over a billion texts a day (c02).
-
-Every lit window is a chat. From up here, you can see the dots.
+Around the turn of the century, the Philippines was called the texting capital of the world (c01). Every lit window is a chat. From up here, you see the dots.
 
 Now take away the dotted ones.
 
-> HOLD: 10 s. The one wordless peak. The dotted windows go out, block by block, until the city is almost black. The music drops to a floor, the film's one planned silence. The camera drifts closer to the windows left: inside each, a thumb on a phone, a short clumsy bubble; a kid, an old man, a woman in a work vest. A slow-motion ghost on one thumb pressing send.
+> HOLD: 10 s. The one wordless peak. The dotted windows go out, block by block, until the city is almost black, and the windows left burn brighter than before: an answer key the size of a city, and you in colour at the roof's edge, reading it. The music drops to a floor, the film's one planned silence. The camera drifts closer to the windows left: a thumb on a phone, a short clumsy bubble, a kid in a cap, an old man, a woman in a work vest. Then out across the black water to the port: a ship's bridge, one lit window, a gloved hand on a phone, three words on the screen, one of them wrong. A slow-motion ghost on the thumb pressing send. No tick.
 
-Those are the people typing. Everyone else is asleep, or working, or scared of getting it wrong.
+Half the city is talking, and nobody's home. And you're the only person alive who knows which half.
 
-## [08:12] The Cafe
+> SCENE: Your phone buzzes in your pocket. You pull it out: a calendar reminder for nine in the morning, which you never set. Your thumb hovers.
 
-> MOOD: morning
-> SCENE: The roof, then your phone buzzing: a calendar reminder for nine in the morning that you never set. Your thumb swipes it away. Then the corner cafe, morning light, four tables. At the corner table a figure in a long coat, crimson head, reading a newspaper, never looking up. Your best friend at the window table, two cups already.
-
-Your phone buzzes. A calendar reminder you never set.
+Your phone buzzes on the roof. A calendar reminder you never set.
 
 > TAG: Coffee. 9am. The corner cafe.
 
-You delete it. At nine you go anyway.
+You delete it. At nine, you go anyway.
 
-> HOLD: 8 s. Performed. You stop in the cafe door. She's at the window table, two cups, and she looks up as surprised as you. You cross to her. Neither of you sits for a moment. Then both of you do.
+## [08:26] The Cafe
+
+> MOOD: morning
+> SCENE: The corner cafe, morning light, four tables. At the corner table a figure in a long coat, crimson head, reading a newspaper, never looking up. Your best friend at the window table, two cups already.
+
+> HOLD: 4 s. Performed. You stop in the cafe door. She's at the window table, two cups, and she looks up as surprised as you. You point at her. She points at you. You cross to her. Neither of you sits for a moment. Then both of you do.
 
 Best friend: You booked this?
 
-> HOLD: 2 s. Performed. You shake your head. She opens her mouth, closes it, looks at her phone.
+> HOLD: 2 s. Performed. You shake your head. She opens her mouth, closes it, looks at her phone, looks at yours.
 
 Best friend: ...Neither did I.
 
-> SCENE: Two phones side by side on the table. You scroll back to the midnight conversation three months ago, two hours long, the one where you made up after the fight. Insert: every line, both sides, dotted, down the whole screen. Then two settings pages side by side: hers, never leave them unanswered; yours, don't let me lose her. Behind her shoulder, the newspaper at the corner table turns a page.
+> SCENE: Two phones side by side on the table. You both scroll back to the midnight conversation three months ago, the one where you made up after the fight. Insert: every line, both sides, dotted, down the whole screen. Then two settings pages side by side: hers, never leave them unanswered; yours, don't let me lose her; above each, can add events: on. Behind her shoulder, the newspaper at the corner table turns a page.
 
-The best conversation of your year. Midnight, three months ago, the night you made up after the fight.
+Two phones. The night you made up, three months ago. Every line. Both sides. Dotted.
 
-Every line. Both sides. Dotted.
+Her instruction. Yours. Two machines, told the same thing by two people who were asleep, made up on your behalf and booked you a cafe.
 
-Her instruction. Yours. Two machines, told the same thing by two people who were asleep, booked a cafe.
+> SCENE: A paper split screen over the table: two figures chatting with suggested replies, leaning toward each other; a third figure beside them squinting at the pair, frowning.
 
-In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). But actually using them made the conversation warmer and closer (c22). The use never hurt the conversation. The suspicion did (c22).
+In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). Using them made the conversation warmer and closer (c22).
 
-You said a machine can't mean it.
+> HOLD: 2 s. Performed. She laughs first, a hand over her mouth; then you. You both turn your phones face down at the same moment. Face to face across two cups. A silence. She opens her mouth to speak and nothing comes out, and you both laugh again.
 
-Nobody wrote it. Both of you meant it.
+Neither of you wrote it. Both of you still came. Phones face down. Nothing to dot. Now you have to talk. Harder than it looks.
 
-> HOLD: 3 s. Performed. She laughs first, a hand over her mouth; then you. Face to face across two cups. Both phones face down. Nothing on the table to dot.
-
-## [09:10] Three Words
+## [09:19] Three Words
 
 > MOOD: lamp
-> SCENE: The kitchen, evening, the lamp. You at the table, your mother at the sink. The group chat open: his message at the bottom, two weeks old, unanswered, bare. You start typing. Insert: three words appear; a red underline on the third; your thumb goes to it, and stops.
+> SCENE: The kitchen, evening, the lamp. You at the table, your mother at the sink. The phone buzzes. A message from your boss, short, no paragraph. A buzz, and no tick. Your face.
 
-Your father's message. Two weeks old. You were going to write something long. Something worthy.
+That evening. Your boss. No dot.
 
-Three words. One of them wrong. Your thumb goes to fix it.
+> TAG: Monday. My office. Bring the phone.
 
-You leave it.
+The first thing he's ever typed to you himself. You taught him what bare looks like. Not why he sent it.
+
+> SCENE: You scroll past it, down to the bottom of the group chat: your father's message, still there, still bare. You type three words with your thumbs. Insert: a red underline on the third word; your thumb goes past it to send.
 
 > TAG: Miss you to
 
-Send. No dot.
+Your father, still at the bottom. Three words, one wrong. Send. No dot. Obviously.
 
-> HOLD: 5 s. Performed. You turn the phone face down. Before your hand has left it, it buzzes. No tick. You turn it over. Your mother, at the sink, doesn't turn round.
+> HOLD: 2 s. Performed. You turn the phone face down. Before your hand has left it, it buzzes. No tick. You turn it over. Your mother, at the sink, doesn't turn round.
 
 > TAG: me to kid
 
 Mother: He never could spell.
 
-No paragraph. No grade. No fix.
+> SCENE: The group chat. Your cousin drops a voice note into it, a small waveform, the first one the chat has ever had. You press play.
 
-Tomorrow someone will send you three words with a mistake in them. Read them twice. Nobody else could have sent them.
+Then your cousin drops a voice note. The first voice in a chat that's only ever been text.
 
-> SCENE: The group chat. Your cousin drops a voice note; you press play; her voice starts; beside the voice note, something small and red begins to tick on. Cut before it settles.
+> HOLD: 3 s. Performed. The voice note plays; your cousin's voice, mid-word, warm. Beside the waveform, something small and red begins to tick on. Your eyes go to it. Your mouth opens. Cut before it settles.
 
-> HOLD: 3 s. Performed. The voice note plays; your cousin's voice, mid-word. A tick, half-formed. Your eyes go to it. Cut.
-
-So, would you fix the typo? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
+So, how many of your last ten texts would get a dot? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
 
 > HOLD: 4 s. End card: like, subscribe and comment tags in the left two-thirds; the right third quiet.
 
 ## Word count
 
-**Changed from the approved G1.** (1) The thumbnail's frame: old, at 0:24 after the first narrator lines; new, at about 0:10, inside the skit, with the title question at about 0:14; why, room note 1 and the owner's skit note together. (2) The landlord: old, "rent reminder: dot, obviously"; new, the landlord's cold two lines have no dot, and your boss's praise is dotted while his one-word "noted" is bare; why, room note 3, every use needs a gap. (3) Fields of Red: old, "a petition with a million signatures and four hundred people"; new, cut, and "a text, a comment, a review" is planted inside the rule's first line so the reviews and comments at 6:28 are the rule, not a new power; why, room note 2. (4) "You go. She is there.": new, you delete the reminder and at nine go anyway; why, room note 4. (5) Dunbar (c19): old, in the break room after the reveal; new, on the night bus before it, beside a kid asking how to spell sorry; why, room note 5. (6) The aunts: old, two machines congratulating each other; new, one aunt types "lovely", her assistant turns it into an apology, the other's accepts it, and she asks "Forgive me? For what?"; why, room note 6. (7) Claims wording: "costs hours" is now "costs time to keep" (c19); "the use never hurt anyone" is now "the use never hurt the conversation" (c22); why, room note 7. (8) The first DARLING: old, "A dot says who wrote it. It never says why."; new, "But a dot says who wrote it. It never says why. Remember that."; why, a DARLING quotes a spoken line word for word, and the flag is the same line. (9) Small new voices for "a lot happens": a kid on the night bus, your cousin speaking one line in her video, and your best friend's "Eleven years, and you sent me ok."; your boss's "How do you know?" was added at v1 and cut again at v1.1 for length; the cafe waiter from the cast list is not used, so no new person arrives after the kid at about 5:15. (10) c21 (a friend's AI help read as less effort) was tried in the cold week and cut for length; the cold week carries no fact.
+**Changed from v1.3 (owner note: exciting, not sad).**
 
-**Cut for length (v1 to v1.1).** Spoken words 1,570 to about 1,310; holds 109 s to 83 s; runtime about 12:00 to about 9:55. Went: the restaurant and the cousin abroad in the detective run (the restaurant survives only as the reviews at 6:28); "The bank. Dot. Fine."; "Only you. Your mother sees a phone." and "The group chat is forty cousins on three continents." (the scene plays the first, the map draws the second); "Yesterday you were everyone. Today you're the only one who knows."; "You answer: fine. Busy. K." (the montage shows it, the Cost repeats it); "You'll call when you've worked out what to say."; the shoebox's spoken lead-in (your mother reaching for the cupboard is shown); "Her shoebox is a hundred years of it."; Dunbar's five and 150 (the time half of c19 stays, the one of the two night-bus facts that the bench needs); "in the only hour she had" (the DARLING just said it); "She shows you her side." merged into "Her side."; "You said yes a long time ago, and forgot." (the instruction scene says it); the boss's "How do you know?"; "Half the internet, and you're the only one who can tell."; "You hand him the phone." (shown); "Your cousin's video from abroad, the one the whole family shared." merged into the comments line; "You climb to the roof."; "Then your phone buzzes on the roof."; "Two phones on the table."; "Still at the bottom."; and word-level trims in most narrator lines. Holds shortened: the aunts 10 to 6 s, the goat 10 to 6 s, the sent folder 4 to 3 s, the blocked man 6 to 4 s, the shoebox 10 to 6 s, the bench 15 to 9 s, the cafe 12 to 8 s, the three words 6 to 5 s. The roof stays at 10 s and is now the longest hold alone. No event, cited fact, DARLING, role line or return of the running gag was cut; every kept (cNN) sentence is word for word.
+1. The frame of the film: old, a tender drama in which the dot is a wound and the peak is leaving a typo in; new, a nosy thriller in which the dot is a power, the middle is a run of escalating set pieces, the showdown is you out-thinking your boss and the peak is the city seen from above as an answer key; why, the owner's note and the audience research (power, reveals and the nosy cluster at the top of every hit list, emotion at the bottom).
+2. The five lines: old DESIRE "to know who means it", CONFLICT the dot on the warmest messages, CHANGE "go and look at the person behind it", RESULT the typo left in; new DESIRE "to be the only person in the city who can tell", CONFLICT the people in charge want it, CHANGE the flaw becomes the lock, RESULT the lie detector stays yours, the machines book a coffee, the boss types by hand, a dot forms beside a voice; why, #9 concrete stakes (exposed, hunted, losing the edge). SITUATION and `> UNDER:` unchanged.
+3. The skit: old, you wipe one eye at the pink paragraph and your face falls; new, you grin at it with a hand on your chest, and on the dots your brows shoot up, eyes wide, mouth open, which turns into a grin at the bare bubble; why, K17 and the stunned thumbnail. Nothing else in the skit moves: buzz in the first half second, dots in the smoke at about 0:05, the frame at about 0:10, the title question at about 0:15.
+4. The rule's first line: old "if a machine wrote it and a person only pressed send, or didn't even do that"; new "if a machine chose the words, it gets a small red dot. Whoever's thumbs pressed send."; why, #21: the retype loophole is answered at 4:45 from the rule as spoken, with no rule added after halfway. The paper diagram gains a fourth bubble, a thumb copying off a second screen, dotted.
+5. "Why not just ask?" (new, 2:05): you ask aunt one on screen, "Every word, my love", dot on the answer; why, #21 and the owner's "when the narrator says you ask, you ask on screen". The second DARLING changes from the bench line to "Dot. On the answer. You can't just ask. People lie. Dots don't."
+6. The cold week (4:01-4:35): cut whole (the blade, leaving the aunts' chat, blocking the man, "Why so cold with everyone?", c21 never used); why, it was the hurt. Replaced by Set for Two (3:54): a clever use with a win, your mother's party, nineteen dotted yeses, you say two, two come, "Twenty said yes" twice.
+7. The shoebox (4:35-5:11) cut, with c14; why, a tender scene and a moral ("a dot is a greeting card that hides the card"); the running gag's origin now stays in your mother's one line at 9:35. Replaced by The Office (4:28): the lie detector at work, the screenshot that comes out clean, the coworker retyping a machine by hand for eleven minutes and still getting a dot, the floor typing with its thumbs like an exam, the boss writing you down by hand.
+8. The bench (5:11-5:57): old, you go to end eleven years to her face and find her asleep, the DARLING "the only hours she had left"; new, Catch Her at It (5:14): you go to catch her machine at it, find the file, and her phone replies to you while she talks to you; why, #22, emotion as seasoning. This is the film's one tender beat, about 20 s (the 5 s hold and two lines, 5:40-6:00), not the peak, not in the last two minutes. c19 (Dunbar) cut with the old scene.
+9. The Cost (5:57-6:28) cut: her drafts folder, "I didn't know how to say it right", "You taught her that"; why, the hurt. "Eleven years, and you sent me ok." kept as her laugh line at 5:55.
+10. Fields of Red: old, the reviews and comments as grim scale; new, a set piece with uses: you eat where the one bare review is ("The fish is ok. The waiter is rude."), the cousin "crying at bots", the dating man told "Type it yourself" and his first bare message is awful and gets a yes; why, #20 and a laugh in every scene. The man is no longer blocked.
+11. The news (new, 6:53): a newsreader, the senator's dotted apology shared a million times, your mother crying at it, "You could call the station. And say what?"; why, #20, the world reacting wider (news and people in charge) and the "tell the news" loophole.
+12. The offer: old, the dilemma weighed as a moral (night-shift workers sold as fakes); new, the stakes both ways and the reason plainly: sell and you're the fraud the first real supporter exposes and every liar in town has your name; keep it and it stays yours; the under-question asked once here as a question to you; the "cleverest thing all week" is handing him everything; "There's nothing there." / "Exactly." kept; new line "The flaw in the power is the lock on it."; why, #9, #21, taste (a choice has its stakes both ways and its reason said plainly).
+13. The peak: old, the dark city as a lament ("Everyone else is asleep, or working, or scared"); new, the same image as awe and power: the windows left burn brighter, "an answer key the size of a city", you in colour at the roof's edge, a gloved hand on a bridge at the port with three words, one wrong (the gag carries the peak); why, #18. Open note #11 handled: "Those are the people typing." cut; the line after the hold says what the picture can't: "Half the city is talking, and nobody's home. And you're the only person alive who knows which half." (the third DARLING).
+14. Open note #7 handled: the bots line speaks one number ("One security company found that in 2024, bot traffic passed human traffic on the web (c09). For the first time in a decade (c09).") with a card; the roof speaks "over a billion texts a day (c02)" and no year; c20 keeps its one number.
+19. Room round 4 (v2.1, applied by the session): the skit's first two holds go from 4 s and 3 s to 2 s each, so the thumbnail's frame lands at about 0:07 (#2); "Catch Her at It" now plays before "The Office", so the world widens family, friend, workplace, city, news (#20), and opens "Her dot, though." for "Still. Her dot."; the dating-app man flicks past on the morning bus and the newsreader and the senator are on the party television before 6:00 (no new person after 60%); the bots line is one company's estimate of web traffic, not a head count, and "It's true" is cut (claims, c09); the roof names the Philippines and says "A few years later" for the billion, so the 2001 nickname and the 2008 volume are not read as one year (claims, c01, c02); "In a 2026 study" for "this year" (c20).
+20. Room round 5 (v2.2, applied by the session): the dinner prediction has a gap now (#6): you say one guest and expect the cousin, the one bare yes; she only calls in from abroad and your best friend, dotted all week, comes (nineteen clean plates); "The fish is ok. The waiter is rude." said what the shot showed (#11), now "One bare review. First useful thing you've read all day."; the bots fact (c09) is cut, because no wrong belief of yours meets it (#7), for "You can make one man type. You can't make a city do it. And now the people in charge find out."; the roof speaks one fact and no number, "Around the turn of the century, the Philippines was called the texting capital of the world (c01)", and c02 is no longer spoken (claims: a billion a day needs its year, and two numbers break #7); c20's middle sentence cites its row; "That bonus could bring your father home for good." before the dilemma, so selling has a real reason (story suggestion); "But your best friend's dot still doesn't fit." for "Her dot, though.". Open for the owner (story suggestion): the voice-note dot is a sequel hook beside a voice, not a read message; the writer keeps it as the protected RESULT's cliffhanger.
+21. Room round 6 (v2.3, applied by the session; claims 0): the second hook says what you can win or lose by 0:30, "Catch anyone you like. Just never get caught catching." (#3); "Four words in, and your own phone offers to be you. In grey." for a line that narrated the shot (#11); c20 speaks one number, "In a study of more than 1,300 Americans" (#7); suggestions taken: "Neither of you wrote it. Both of you still came." (stages the under-question instead of answering it), the boss's bare message keeps the limit ("You taught him what bare looks like. Not why he sent it."), "Now you think dots predict people. So you bet dinner on them."
+15. The cafe: old, c22 in four sentences and the warm close "Nobody wrote it. Both of you meant it."; new, c22 in two sentences, the reveal played as a gag (the machines "made up on your behalf and booked you a cafe"), and the laugh "Now you have to talk. Harder than it looks."; why, #22.
+16. The end: old, the typo left in as the emotional peak, then the residue line "Tomorrow someone will send you three words with a mistake in them..." (open note #19), then "would you fix the typo?"; new, the twist (your boss's first hand-typed message, bare: "Monday. My office. Bring the phone."), the gag return played dry ("Send. No dot. Obviously." / "me to kid" / "He never could spell."), the cliffhanger (the voice note's dot), and the new closing question "So, how many of your last ten texts would get a dot?"; why, `style.md` last tenth, #19, and the owner's note on closing questions (the typo question was a choice the story had made). The residue line is cut, not replaced.
+17. Cut for the new length: the landlord's bare reminder, "Your cousin abroad. Thinking of you always. Dot. Ouch." (the cousin now first appears at 4:00 in the dinner and speaks at 6:20), "A machine can't mean it" and its break, "the goat on the bus" narration (the memory is drawn in the hold), "whether eleven years of her paragraphs were ever hers", the two-minute Dunbar and shoebox facts.
+18. Narration: every direction in say.yaml is rewritten from tender and mournful to sly, quick, conspiratorial and amazed.
 
-About 1,310 spoken words: 8:27 at 155 words a minute. The skit runs about 9 s before the first narrator line, with the buzz inside the first half second; the dots tick on at about 0:05, the pink paragraph's dot at about 0:06, the father's bare message and the thumbnail's frame at about 0:09 to 0:11, the first narrator line at 0:12 and the title question by about 0:14 (K13 and the room's note 1). The rule is three spoken lines at about 0:48 to 1:12, after the title card ident; "Remember that" is at about 1:12. Holds: 18, about 83 s (about 14% of the runtime; the owner's note on performed scenes raises the template's 5%); fourteen are performed moments with the characters acting and speaking (the skit 4 s, 3 s and 2 s; the aunts 6 s; the goat test 6 s and 2 s; the blocked man 4 s; the shoebox 6 s; the kid 3 s; the bench 9 s; the cafe 8 s, 2 s and 3 s; the three words 5 s; the hook 3 s); the sent folder is a 3 s flurry; the one wordless peak on the roof is the longest at 10 s and is the film's one planned silence; the end card 4 s; the ident 3 s. Runtime about 9:55; at the channel's 1.1x tempo about 9:00. Uses of the power, each with a gap: the smoke (you expect a wish, you get thirty-three dots); the father (the typo you'd have marked down is the only human); the landlord (cold and bare); the boss (the praise dotted, the "noted" bare); the aunts (a week of machines apologising to each other); the dating man (a month, not one word); your mother's "eat first" (autocorrect is not a dot); the goat test (a perfect answer, dotted); "Everything alright?" (dotted at once); your own sent folder (the flurry); your own instruction; the blocked man's first typed message (bare, seen by nobody); "cal me kid"; the drafts folder (twenty bare messages, never sent); the reviews; the comments under the cousin's video; the boss's offer (dotted); "cant wait" (one bare bubble in twenty); the city (every dotted window out); the calendar reminder (two machines booking a cafe); the midnight conversation (both sides dotted); "Miss you to"; "me to kid"; the voice note (a dot half-formed). People who react: your mother (seven lines), two aunts (three lines), the man (blocked), the kid, her coworker, your best friend (five lines), your cousin, your boss (one line). Spoken names: one, "Bea", once at about 2:50 beside "your best friend"; the `Role:` prefixes are not spoken. Plants and payoffs: "Long means love" (0:45) returns at 6:18; "Remember that" (1:12) pays off at 5:40 (her instruction), 7:12 (the dilemma) and 9:00 (two whys the same); "A machine can't mean it" (2:40) is broken at 9:05; "A dot means they didn't even sign" (5:05) is broken at 5:52; "don't let me lose her" (3:50) meets "never leave them unanswered" (5:38) at the cafe (8:50); "He never could spell" (4:45, 9:28) closes the film. The running gag is your father's three words, one misspelt, never a dot: 0:10, 4:28, 7:08, 9:20 (you send one back and leave the typo, the emotional peak) and 9:27 (the reply before your hand has left the phone); the roof at 7:55 is the gag at the scale of a city. The picture only this premise can show is your own sent folder at about 3:28, before the midpoint; the cost at about 5:57 to 6:28; the dilemma at about 7:12, the under-question asked once there as a question to you; the peak at 7:55 to 8:05. Claims spoken: c04, c20, c11, c14, c19, c09, c01, c02, c22 (c21 tried and cut; c05, c12, c13, c16 are lenses, never spoken); every spoken digit cites its row, story numbers are words, and the roof speaks one number. The autocorrect question is answered at 2:30, "why not ask her" at 2:55, "do your own messages get dots" at 3:28, "why not tell everyone" at 7:15, "did the friendship happen" at 9:00; the loophole left for the comments is your mother typing for your father, bare. Open loops about a minute apart: 0:20, 1:30, 2:45, 3:20, 3:58, 4:33, 5:08, 5:52, 6:25, 7:12, 7:50, 8:15, 9:15. Stake jumps: 0:10, 2:40, 3:20, 3:28, 4:25, 5:35, 6:18, 7:12, 7:50, 8:15, 9:20. The stranger: the corner table of the cafe at about 8:15, behind a newspaper, no line; a hidden fixture for the second watch, not a person in the story. No new rule after halfway: the reminder is the two machines doing what they were told. The sequel hook is the half-formed dot beside a voice note at 9:45; the film explains nothing.
+**Changed from the approved G1.** (1) The thumbnail face: old, pair A's hurt face (inner brows up, eyes down, small falling mouth); new, the same frame with you stunned: brows high, eyes wide on the phone, mouth open; the tag "EVEN HER?" and the frame (the kitchen before six, the lamp, the phone at chest height with four warm dotted bubbles and one short bare one, the cake with its candle just out) unchanged; the key-shot `> SCENE:` at about 0:10 is written for the stunned face; why, K17. (2) The five lines, except SITUATION and UNDER, and DARLINGs two and three (above). (3) The cast: the shoebox, the bench and the cold week are gone; the man from the dating app ends with a yes, not a block; new roles the session must voice: `Shift lead:` (was "Coworker" in the break room; `Coworker:` now belongs to the office), `Newsreader:`, and the dating man has a `> TAG:` and no spoken line. (4) The ending is no longer the typo; the typo stays as a gag return. (5) c14 and c19 are no longer spoken. Title unchanged.
+
+About 1,330 spoken words (about 1,230 narrator, about 100 in character lines): 8:35 at 155 words a minute. The skit runs about 11 s before the first narrator line, with the buzz inside the first half second; the dots tick on at about 0:05, the pink paragraph's dot at about 0:06, the father's bare message and the thumbnail's frame at about 0:09 to 0:11, the first narrator line at about 0:12 and the title question by about 0:15 (K13). The rule is three spoken lines at about 0:50 to 1:10, after the ident; "Remember that" at about 1:10. Holds: 20, about 85 s (about 14% of the runtime; the owner's note on performed scenes); seventeen are performed with the characters acting and speaking (the skit 4, 3 and 2 s; the aunts 5 s; the goat 5 and 2 s; the dinner 3 and 4 s; the retype 4 s; three in a row 4 s; the kid 2 s; the file 5 s and her machine 2 s; the restaurant 2 s; the date 3 s; the boss 4 s; the cafe 4, 2 and 2 s; the reply 2 s; the voice note 3 s); the sent folder is a 3 s flurry; the roof is the one wordless peak, 10 s, the film's one planned silence; the end card 4 s; the ident 3 s. Runtime about 10:00; at the channel's 1.1x tempo about 9:10.
+
+**The set pieces, in order, and how the world reacts wider each time.** (1) The aunts, 1:50: you ask, the answer is dotted, two people in two kitchens. (2) Set for Two, 3:54: the family chat; you predict a dinner party and your mother cooks for twenty anyway; the family sees two chairs filled. (3) The Office, 4:28: the lie detector at work; the retype backfire; by lunch the whole floor types with its thumbs and the boss writes you down. (4) Catch Her at It, 5:14: you catch a machine running a friendship; the night shift sees you do it. (5) Fields of Red, 6:00: the city's reviews, a viral video with four hundred dotted comments, a stranger made to type for the first time. (6) The Offer, 6:53: the news, a senator's apology shared a million times, a campaign that wants to buy you, the showdown in the boss's office at 7:45 (about 78%). (7) The Dark City, 8:08: the whole city switched off window by window and you the only one who can read it.
+
+**Uses of the power, each with a gap:** the smoke (you expect a wish, you get thirty-three dots); the father (the typo you'd have marked down is the only human); the boss (the praise dotted, the "noted" bare); the aunts (a week of machines apologising to each other); asking aunt one (the denial is dotted); your mother's "eat first" (autocorrect is not a dot); the goat test (a perfect answer, dotted, and a file on you); "Everything alright?" (two seconds); your own sent folder (the flurry); your own instruction; the dinner (nineteen yeses, two chairs); "cal me kid" (bare, in seconds); the coworker's complaint (dotted), his retype (dotted anyway), the screenshot (clean); three calls in a row (right); her 4 a.m. replies (a list and a sleeping friend); her phone replying while she speaks; the one bare review (honest and the restaurant is bad); the comments (a field of red under tears); the dating man (a month dotted, then "ur prety" bare); the senator's apology (dotted, a million shares); the boss's offer (dotted); the boss holding the phone (nothing there); the city (every dotted window out); the calendar reminder (two machines booking a cafe); the midnight conversation (both sides dotted); "Monday. My office." (bare, the first he typed); "Miss you to" / "me to kid" (bare, in seconds); the voice note (a dot half-formed beside a voice).
+
+**The laugh in each scene:** Make a Wish, the open mouth turning into a grin and "the candle gave you something better"; The Rule, your mother checking the phone like a banknote; The Detective, "He only types the bad news", "Forgive me? For what?", "Every word, my love" with a dot; The Test, a goat in a bus seat and "somewhere, there's a file on you"; Your Own Dots, "a crime you commit before breakfast" and the switches flicked like a pilot shutting down; Set for Two, "Twenty said yes" twice and "as long as the future is a dinner party"; The Office, "I typed every letter!" and the floor typing like an exam; Catch Her at It, the six-year-old's clean record and her machine texting you while she talks; Fields of Red, "The fish is ok. The waiter is rude.", "She's crying at bots", "ur prety. dinner?"; The Offer, "a million machines accepted, and your mother cried", "And say what?", "Exactly."; The Dark City, "Try not to enjoy it."; The Cafe, "Neither did I." and "Harder than it looks."; Three Words, "You taught him that", "Obviously", "He never could spell".
+
+**The one tender beat:** the file in her hand and "making sure she'd never miss you", about 20 s at 5:40-6:00, followed at once by her machine talking over her. Nothing tender after 8:00.
+
+**Loopholes closed, and where:** "why not just ask them?" at 2:05 (aunt one, dotted denial); "what about autocorrect?" at 2:20 (eat first, "Fixed letters don't"); "do your own messages get dots?" at 3:15 (yes); "what if they retype the machine's words by hand?" at 4:45 (eleven minutes, still a dot; the rule's "whoever's thumbs pressed send" at 0:55); "why not prove it / screenshot it?" at 4:40 (clean) and at 7:45 (the boss: "There's nothing there."); "why not tell the news?" at 7:05 ("And say what?"); "why not sell it?" at 7:20 (the fraud, every liar in town, the lock); "isn't half the internet bots anyway?" at 6:45 (c09, and only you can tell which half). Left open for the comments: a message your mother types for your father carries no dot; is a person's ghostwriter more honest than a machine's?
+
+**Plants and payoffs:** "Long means love" (0:45) returns at the dinner (words against plates) and the cafe; "Whoever's thumbs pressed send" (0:55) pays off at 4:45; "Remember that" (1:10) pays off at 5:50 ("That's a why"), 7:25 (the dilemma) and 8:50 (two whys the same); "People lie. Dots don't." (2:05) pays off at 9:25 (the boss types by hand, "So you know he means it"); "a file on you" (3:00) pays off at 5:40 (do not miss); "don't let me lose her" (3:40) meets "never leave them unanswered" (5:42) at the cafe (8:50); "Nobody else sees a dot" (4:40) pays off at 7:45; "He never could spell" (9:35) is the gag's origin in one line. The running gag is your father's three words, one misspelt, never a dot: 0:10, 4:25, the roof at 8:12 (a gloved hand on a bridge, the gag at the scale of a city) and 9:30 twice. No new rule after halfway: the reminder is the two machines doing what they were told, planted at 3:40 (can send messages, can add events).
+
+**Claims spoken:** c04 (1:15), c20 (2:25), c11 (3:25), c01 (8:00), c22 (8:55); c09 and c02 cut in room round 5. c14, c19 and c21 are not spoken (cut with the shoebox, the bench and the cold week); c05, c12, c13, c16 are lenses, never spoken. Every spoken digit cites its row, story numbers are words, each fact line speaks one number. One name, "Bea", once at 2:40 beside "your best friend"; the `Role:` prefixes are not spoken.
+
+**Open loops**, about a minute apart: 0:35 (the only one a person typed), 1:30 (who else), 2:35 (problem one), 3:10 (your own pockets), 3:50 (problem two), 4:25 (cal me kid), 5:10 (plug in the lie detector), 5:58 (bet the house), 6:50 (until the people in charge find out), 7:20 (he didn't even write it), 7:50 (the lock), 8:25 (a reminder you never set), 9:20 (Bring the phone), 9:45 (the voice note). **Stake jumps:** 0:10, 2:05, 2:55, 3:15, 4:00, 4:45, 5:35, 6:45, 7:20, 7:45, 8:08, 9:20, 9:45. **Restarts:** your own dots at 3:13, the offer at 7:15, the cafe at 8:26. The dilemma at 7:25 is the once the under-question is asked. The picture only this premise can show is your own sent folder at 3:15. The stranger: the corner table of the cafe at 8:30, behind a newspaper, no line. The sequel hook is the half-formed dot beside a voice note at 9:45; the film explains nothing. Cards: PROBLEM ONE, PROBLEM TWO, c20's "told nothing, most never suspected"; no other text on screen but tags and bubbles.
 
 ## Chapters
 
 - 0:00 Make a Wish
-- 1:34 The Detective
-- 3:25 Your Own Dots
-- 4:35 The Shoebox
-- 5:11 The Bench
-- 6:28 Fields of Red
-- 8:12 The Cafe
-- 9:10 Three Words
+- 1:33 The Detective
+- 3:13 Your Own Dots
+- 4:28 Catch Her at It
+- 5:14 The Office
+- 6:00 Fields of Red
+- 7:52 The Dark City
+- 8:26 The Cafe
+- 9:19 Three Words

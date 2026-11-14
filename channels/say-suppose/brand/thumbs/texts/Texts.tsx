@@ -121,7 +121,7 @@ const Scene: React.FC = () => {
       <Shade />
       <Cake />
       <Figure x={HERO.x} y={HERO.y} scale={HERO.scale} pose={HERO.pose} head={MUSTARD} scarf={TEAL} tuft flow={0.1}
-        time={3} brows="worry" lids={0.1} mouth="o" eyes={1.15} look={HERO.look} />
+        time={3} brows="raised" lids={0} mouth="open" eyes={1.3} look={HERO.look} />
       <Phone />
     </OnScreen>
   );

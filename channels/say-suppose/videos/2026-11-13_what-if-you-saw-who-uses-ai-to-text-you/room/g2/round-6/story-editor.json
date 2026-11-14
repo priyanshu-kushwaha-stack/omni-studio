@@ -1,0 +1,70 @@
+{
+  "call_id": "4b1ace33bec24e16a9ab3b248b94e2c8",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "length \u2014 the roof payoff, calendar mystery and caf\u00e9 reveal justify staying past 8:00": 8
+  },
+  "blockers": [
+    {
+      "quote": "So what if you could see who uses AI to text you? Everyone who did. Every time.",
+      "why": "Check #3, Second hook by 0:30: the premise lands, but the viewer does not yet know what can be won or lost.",
+      "fix": "Replace with: \u201cSo what if you could see who uses AI to text you? Everyone who did. Every time. Only you can see it. Catch anyone\u2014but let them catch on, and the whole city comes for your lie detector.\u201d",
+      "domain": "story",
+      "line": 40
+    },
+    {
+      "quote": "You start writing him back. After four words, the phone offers the rest. In grey.",
+      "why": "Check #11, Never say the feeling: this only narrates the action already shown in line 65.",
+      "fix": "Replace with: \u201cFour words in, and your own phone volunteers to impersonate you.\u201d",
+      "domain": "story",
+      "line": 67
+    },
+    {
+      "quote": "Nobody suspects a thing. In a 2026 study, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).",
+      "why": "Check #7, Misconception first: the fact presents two numbers at once\u2014the year and sample size.",
+      "fix": "Replace with: \u201cNobody suspects a thing. In a study of more than 1,300 Americans, people read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).\u201d",
+      "domain": "story",
+      "line": 114
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 420,
+      "quote": "Nobody wrote it. Both of you meant it. Phones face down. Nothing to dot. Now you have to talk. Harder than it looks.",
+      "fix": "Stage rather than answer the under-question: \u201cNeither of you wrote it. Both of you still came. Phones face down. Nothing to dot. Now you have to talk. Harder than it looks.\u201d"
+    },
+    {
+      "line": 431,
+      "quote": "The first thing he's ever typed to you himself. So you know he means it. You taught him that.",
+      "fix": "Preserve the stated limit that dots never reveal why: \u201cThe first thing he's ever typed to you himself. You taught him what bare looks like. Not why he sent it.\u201d"
+    },
+    {
+      "line": 176,
+      "quote": "Problem two. Now you know what a dot is worth. So you start spending them.",
+      "fix": "Tie the connector directly to the next set piece: \u201cProblem two. Now you think dots predict people. So you bet dinner on them.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 96,
+      "quote": "Nobody did anything. Two machines fought and made up all week, and both aunts are proud of them."
+    },
+    {
+      "line": 158,
+      "quote": "Your thank-you to your boss. Dot. Half this morning's thank-yous. Dots. You've been grading people for a crime you commit before breakfast."
+    },
+    {
+      "line": 370,
+      "quote": "Nobody can buy what nobody can see. The flaw in the power is the lock on it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "b4789ce1a534ce71703c709c570b46bb93bc74de4abc511f72067f35429afb83",
+  "draft_sha256": "0c9aa3ee718daae23d64bc00b1a803c2dfcb619b3283aa8fea4e142ecd5e87f9"
+}

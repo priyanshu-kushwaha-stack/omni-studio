@@ -1,0 +1,72 @@
+{
+  "call_id": "3d21bc32178444289c6cebd1bab64afd",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story structure": 8,
+    "must-pass compliance": 6,
+    "escalation and payoff": 8,
+    "length \u2014 dark-city peak and coffee mystery justify staying past 8:00": 8
+  },
+  "blockers": [
+    {
+      "quote": "The thumbnail's frame, exactly: the kitchen before six, the lamp the only light",
+      "why": "Check #2 Confirm the click fails. The draft's timing note places this frame at 0:09\u20130:11, after the required first seven seconds.",
+      "fix": "Merge this composition into the final second of line 28: mother steps back while the smoke crosses the phone, revealing the exact thumbnail frame by 0:07. Delete the later duplicate.",
+      "domain": "story",
+      "line": 32
+    },
+    {
+      "quote": "Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is.",
+      "why": "Check #7 Misconception first fails here and at line 381. Both facts provide context, but neither explains a failed action or breaks a belief you acted upon.",
+      "fix": "Replace lines 63\u201369 with: \"Your father's three words are still open when your own phone offers to finish the reply.\" Cut line 381 and enter the roof image directly with line 383.",
+      "domain": "story",
+      "line": 65
+    },
+    {
+      "quote": "Dot. A machine apologised, a million machines accepted, and your mother cried.",
+      "why": "Check #11 Never say the feeling fails: the shot already shows the dot, the broadcast and your mother crying. Similar direct captions recur at lines 141, 203 and 449.",
+      "fix": "Replace with: \"A machine apologised. A million shares later, it reaches your kitchen.\" Replace line 141 with \"Small enough to be yours. You hope.\" and line 449 with \"A voice. Outside the rule. You think.\"",
+      "domain": "story",
+      "line": 344
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 360,
+      "quote": "You'd sell. Everyone would. But a dot never says why.",
+      "fix": "Owner-only dilemma proposal: \"Sell it, and your father comes home\u2014but tired people get stamped fake. Keep it, and no campaign can weaponise the dots\u2014but one person decides what counts as real. You.\""
+    },
+    {
+      "line": 364,
+      "quote": "So you do the cleverest thing all week. You hand him everything.",
+      "fix": "Replace with: \"You hand him the answer\u2014and wait for him to find nothing.\""
+    },
+    {
+      "line": 329,
+      "quote": "ur prety. dinner?",
+      "fix": "Use a less expected first-human-message gag: \"i panicked. noodles?\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 98,
+      "quote": "Nobody did anything. Two machines fought and made up all week, and both aunts are proud of them."
+    },
+    {
+      "line": 249,
+      "quote": "Her machine is still texting you while she's talking to you. You'd have bet the house on that dot."
+    },
+    {
+      "line": 372,
+      "quote": "Nobody can buy what nobody can see. The flaw in the power is the lock on it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "cf2cab896e9a16e50eaf463bd34d2bc8014e1c733d80db52064779fb9f846bc8",
+  "draft_sha256": "bc46e4d90cf07b72733436ccf839249386d941525ed609a217a6d6eabf797bc7"
+}

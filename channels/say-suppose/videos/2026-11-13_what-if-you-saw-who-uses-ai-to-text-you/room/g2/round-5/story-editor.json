@@ -1,0 +1,71 @@
+{
+  "call_id": "ba770a89885a41f1b8641ad8983758b9",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "must-pass checks": 7,
+    "length\u2014justified by the city-scale peak and cafe reveal after 8:00": 8
+  },
+  "blockers": [
+    {
+      "quote": "Two came. The cousin, and your best friend, dotted all week, in your kitchen anyway.",
+      "why": "Check #6, Every use has a gap: you predict two guests and get two. The power produces exactly the expected result, while a cousin on a video call is also counted as having come.",
+      "fix": "Change line 185 to \u201cYou: One guest.\u201d Replace this line with: \u201cOne came. Your best friend\u2014the dotted one. Your bare cousin only calls.\u201d The expected person and actual person now reverse.",
+      "domain": "story",
+      "line": 193
+    },
+    {
+      "quote": "One security company found that in 2024, bot traffic passed human traffic on the web (c09). For the first time in a decade (c09).",
+      "why": "Check #7, Misconception first: you take no mistaken action that this fact explains or defeats. The statistic interrupts the escalation instead of breaking your belief.",
+      "fix": "Cut the fact and replace lines 331\u2013335 with: \u201cYou can make one man type. You can't make a city do it. And now the people in charge find out.\u201d",
+      "domain": "story",
+      "line": 333
+    },
+    {
+      "quote": "The fish is ok. The waiter is rude.",
+      "why": "Check #11, Never say the feeling: the preceding shot already shows the mediocre fish and rude waiter exactly.",
+      "fix": "Replace with: \u201cOne bare review. First useful thing you've read all day.\u201d",
+      "domain": "story",
+      "line": 311
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 449,
+      "quote": "The voice note plays; your cousin's voice, mid-word, warm. Beside the waveform, something small and red begins to tick on.",
+      "fix": "Owner decision on the protected RESULT: either exempt sequel hooks from the no-new-rule check, or replace this with an existing-rule hook\u2014a dotted text reading \u201cI can see them too.\u201d"
+    },
+    {
+      "line": 358,
+      "quote": "You'd sell. Everyone would.",
+      "fix": "Before this protected dilemma, add: \u201cThat bonus could bring your father home for good.\u201d This makes selling genuinely defensible before the dangers answer it."
+    },
+    {
+      "line": 212,
+      "quote": "Her dot, though. Two seconds, every time, at four in the morning.",
+      "fix": "Replace with: \u201cBut your best friend's dot still doesn't fit. Two seconds, every time, at four in the morning.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 57,
+      "quote": "But a dot says who wrote it. It never says why. Remember that."
+    },
+    {
+      "line": 108,
+      "quote": "Dot. On the answer. You can't just ask. People lie. Dots don't."
+    },
+    {
+      "line": 385,
+      "quote": "Half the city is talking, and nobody's home. And you're the only person alive who knows which half."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2bfbac3dd5b2897f67f02b001a441a4e3d6e3b8bbd54fd00dab41aef2a24fac6",
+  "draft_sha256": "679302fa9f002fd652bf31b64c99bd4c6de5addf7d71663fffeb0b24e02e304e"
+}

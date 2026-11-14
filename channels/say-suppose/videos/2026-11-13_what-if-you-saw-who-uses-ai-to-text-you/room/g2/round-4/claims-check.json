@@ -1,0 +1,57 @@
+{
+  "call_id": "54a4c4f400b5428c8525af5f8c7440bb",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 7
+  },
+  "blockers": [
+    {
+      "quote": "In 2024, bots passed people on the web. It's true (c09). For the first time in a decade, more machines than humans (c09).",
+      "why": "c09 verbatim quote measures web traffic volume on Imperva's network ('Automated bot traffic surpassed human-generated traffic for the first time in a decade, constituting 51% of all web traffic in 2024'), not a census of machine entities versus human beings. Stating 'more machines than humans' overstates traffic volume as a population count, and stating 'It's true' treats one security vendor's network estimate as an established universal fact.",
+      "fix": "In 2024, bot traffic passed human traffic on the web (c09). For the first time in a decade, more automated traffic than human (c09).",
+      "domain": "fact",
+      "line": 333
+    },
+    {
+      "quote": "This country was once called the texting capital of the world (c01), over a billion texts a day (c02).",
+      "why": "c02 verbatim quote establishes that over 1 billion texts a day was reached in 2008, whereas the nickname 'texting capital of the world' (c01) dates to around 2001 when daily volume was only about 30 million. Juxtaposing them without the date implies the turn-of-the-century volume was over a billion a day, overstating 2001 volume by more than 30-fold. In addition, claims.md explicitly requires stating 'the Philippines' rather than leaving the geographic entity unnamed while set in Manila.",
+      "fix": "The Philippines was once called the texting capital of the world (c01), sending over a billion texts a day by 2008 (c02).",
+      "domain": "fact",
+      "line": 379
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 114,
+      "quote": "In a study this year, more than 1,300 Americans read a personal message (c20).",
+      "fix": "In a 2026 study, more than 1,300 Americans read a personal message (c20)."
+    },
+    {
+      "line": 331,
+      "quote": "A card: \"2024: bots passed people on the web.\"",
+      "fix": "A card: \"2024: bot traffic passed human traffic.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 416,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). Using them made the conversation warmer and closer (c22)."
+    },
+    {
+      "line": 114,
+      "quote": "Told it was written by AI, they called the sender lazy and insincere. Told nothing, most never suspected (c20)."
+    },
+    {
+      "line": 63,
+      "quote": "Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "3c1e0ab14e62e6b553fa991512892f0b42f320afcaf1c533d4e5feaa0d1bd414",
+  "draft_sha256": "25c65e7ddab3edfec14c485baa6e239134ad028191da3cea38b5a893bf0459d7"
+}

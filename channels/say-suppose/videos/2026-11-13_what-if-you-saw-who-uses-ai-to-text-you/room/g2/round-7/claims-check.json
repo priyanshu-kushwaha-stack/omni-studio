@@ -1,0 +1,43 @@
+{
+  "call_id": "84a5ba6cff394fb1b98e157e034025cf",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10,
+    "claims": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 65,
+      "quote": "Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is.",
+      "fix": "Your father is one of about 2 million Filipinos working overseas (c04). For a family like yours, the phone is where home is."
+    },
+    {
+      "line": 116,
+      "quote": "Nobody suspects a thing. In a study of more than 1,300 Americans, people read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).",
+      "fix": "Nobody suspects a thing. In a study of more than 1,300 Americans, people read personal messages (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 381,
+      "quote": "Around the turn of the century, the Philippines was called the texting capital of the world (c01). Every lit window is a chat. From up here, you see the dots."
+    },
+    {
+      "line": 418,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). Using them made the conversation warmer and closer (c22)."
+    },
+    {
+      "line": 116,
+      "quote": "Nobody suspects a thing. In a study of more than 1,300 Americans, people read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "9882f5df08393e73bfab7d2688ee23d3ffb466b036a4884cbfa147f84a5951d8",
+  "draft_sha256": "bc46e4d90cf07b72733436ccf839249386d941525ed609a217a6d6eabf797bc7"
+}

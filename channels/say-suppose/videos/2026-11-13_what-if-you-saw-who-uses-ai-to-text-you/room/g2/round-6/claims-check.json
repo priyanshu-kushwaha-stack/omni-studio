@@ -1,0 +1,47 @@
+{
+  "call_id": "418e4f69af494d3f89a4ba01c9b3b89f",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 114,
+      "quote": "Nobody suspects a thing. In a 2026 study, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20).",
+      "fix": "Nobody suspects a thing. In a 2026 study, more than 1,300 U.S. adults read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20)."
+    },
+    {
+      "line": 416,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). Using them made the conversation warmer and closer (c22).",
+      "fix": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). Using them made conversation partners evaluate each other as warmer and closer (c22)."
+    },
+    {
+      "line": 63,
+      "quote": "Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is.",
+      "fix": "Your father is one of about 2.2 million Filipinos working overseas (c04). For a family like yours, the phone is where home is."
+    }
+  ],
+  "keep": [
+    {
+      "line": 416,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). Using them made the conversation warmer and closer (c22)."
+    },
+    {
+      "line": 379,
+      "quote": "Around the turn of the century, the Philippines was called the texting capital of the world (c01). Every lit window is a chat. From up here, you see the dots."
+    },
+    {
+      "line": 114,
+      "quote": "Nobody suspects a thing. In a 2026 study, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere (c20). Told nothing, most never suspected (c20)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "a9ca2b8caffac6f5900e638a5ce3b01485d5e0013dc4b444d1e3746f8387a0ec",
+  "draft_sha256": "0c9aa3ee718daae23d64bc00b1a803c2dfcb619b3283aa8fea4e142ecd5e87f9"
+}

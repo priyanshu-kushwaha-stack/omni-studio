@@ -1,0 +1,69 @@
+{
+  "call_id": "5a4bb99f4ab04e7da23d8777136e2f47",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 7
+  },
+  "blockers": [
+    {
+      "quote": "A few years later, over a billion texts a day (c02).",
+      "why": "Scope is missing and the timeline is unanchored (c02). The quote in c02 specifically measures the Philippines ('the Philippines alone sent, on average, over 1 billion text messages a day'), but the spoken line drops the country/subject, stating the figure as general. In addition, 'A few years later' lacks an anchor year because the preceding sentence omitted the date from c01 ('Around 2001' / 'turn of the century').",
+      "fix": "By 2008, Filipinos sent over a billion texts a day (c02).",
+      "domain": "fact",
+      "line": 379
+    },
+    {
+      "quote": "One security company found that in 2024, bot traffic passed human traffic on the web (c09).",
+      "why": "Overstates the finding (c09). The note in claims.md explicitly states 'Imperva's own network, one company's estimate', and the claim as spoken in the ledger specifies 'estimated'. Using 'found' presents a single vendor's customer telemetry as an established census of all web traffic.",
+      "fix": "One security company estimated that in 2024, bot traffic passed human traffic on the web (c09).",
+      "domain": "fact",
+      "line": 333
+    },
+    {
+      "quote": "Told it was written by AI, they called the sender lazy and insincere.",
+      "why": "Missing inline citation (c20). Every spoken finding about the real world must cite its ledger row inline. While the surrounding sentences cite (c20), this spoken finding has no citation tag attached.",
+      "fix": "Told it was written by AI, they called the sender lazy and insincere (c20).",
+      "domain": "fact",
+      "line": 114
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 379,
+      "quote": "The Philippines was once called the texting capital of the world (c01).",
+      "fix": "Around the turn of the century, the Philippines was called the texting capital of the world (c01)."
+    },
+    {
+      "line": 114,
+      "quote": "In a 2026 study, more than 1,300 Americans read a personal message (c20). Told it was written by AI, they called the sender lazy and insincere. Told nothing, most never suspected (c20).",
+      "fix": "In a 2026 study, more than 1,300 Americans read a personal message: told it was written by AI, they called the sender lazy and insincere; told nothing, most never suspected (c20)."
+    },
+    {
+      "line": 333,
+      "quote": "One security company found that in 2024, bot traffic passed human traffic on the web (c09). For the first time in a decade (c09).",
+      "fix": "One security company estimated that in 2024, bot traffic passed human traffic on the web for the first time in a decade (c09)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 63,
+      "quote": "Your father is one of about two million Filipinos working overseas (c04). For a family like yours, the phone is where home is."
+    },
+    {
+      "line": 416,
+      "quote": "In a 2023 study, people who suspected their chat partner was using AI-suggested replies judged them more harshly (c22). Using them made the conversation warmer and closer (c22)."
+    },
+    {
+      "line": 160,
+      "quote": "For years, Gmail has offered to suggest your replies and finish your sentences as you type (c11)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "913d5261ba8a9857f53ce9c4c08d9044a9baabd8f83542b1352038862e991b3f",
+  "draft_sha256": "679302fa9f002fd652bf31b64c99bd4c6de5addf7d71663fffeb0b24e02e304e"
+}
