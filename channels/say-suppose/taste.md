@@ -8,6 +8,67 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-13
+
+- **"most of the videos we made so far are emotional sort of ... I want exciting stuff."** Asked who our audience is
+  and what mood they arrive in, then "Yes, update rules" on the research
+  (`docs/research/2026-11-13-say-suppose-audience-mood.md`). On every comparable channel the emotion-led titles sit at
+  the bottom of the hit list (1.6x to 2.6x the median); power, status, reveals and spectacle sit at the top (6x to
+  49x). The viewers arrive bored and playful, wanting to feel powerful and clever. So: the power is the star
+  (escalating set pieces, the world reacting), the film closes the loopholes a viewer would type, a laugh in every
+  scene, and emotion is seasoning (one short tender beat at most, never the peak, never the ending). The thumbnail
+  shows the power working and someone stunned, never a sad face. Replaces the 2026-11-06 study's "a person to lose" and
+  "the peak gives something up" (`rules/story.md` #9, #18, #20-#22; `style.md`; `rules/thumbnails.md` K17).
+  (audience research, all films)
+- **"Looks good script wise now. Self Explanatory and understood everything."** The v4 cut (saw who wants you to fail,
+  G2). Then on the closing question, "Would you still say it to her face ?": the story had already answered it at the
+  dock, so it asked nothing. **"Yes, change it"**: the closing question turns the film on the viewer and points at the
+  open loop of the last shot (the card over you), asking for something easy to type and argue about ("what number would
+  open over your head?"). Never close on a choice the story has already made.
+
+Second watch of the v3 cut (saw who wants you to fail, G2), eleven notes. Applied in v4:
+
+- **"Well done mate ? Its not very clear. Maybe change the dialogue here or improve the script. And Voice definitely
+  some one else."** A stranger's line in the first ten seconds must be heard right the first time: a full, plain
+  sentence ("Oh, congratulations! Your family must be so proud."), and a voice made for her, never one borrowed from
+  another film's cast.
+- **"The academy door opens. This could be something else more relateable."** Name the thing the viewer knows
+  ("extra classes let out") before the local word for it; the facts can explain the academies later.
+- **"A text, A call, nothing opens. Remember that. This is not needed here i feel."** Don't list the rule's limits in
+  the rules speech; show them in the story (the phone call, her back). **"its more like immersive story telling
+  experience that we we are doing with an Agenda so dialogues can be a little slower."** More air between lines.
+- **"After the script or during the script, we should introduce characters so people remember also else everything
+  else might look the same."** A cast tag at each recurring character's first close-up: name, role, one thing they do.
+- **"If some text makes sense to emphasise on something then we can add that but only if it makes sense."** On-screen
+  cards only for a real fact or a turn the viewer must hold (the curve, the planes, Problem 1 and 2), one at a time.
+- **"You can ask him on the academy step ? And then there was no dialogue. I think we should have one there by the
+  Hero."** When the narrator says "you ask", the hero asks, on screen.
+- **"Not clear at 7:35 about the problem 2 when you say school confirm it. Confirms what ?"** Say what is confirmed
+  and what it depends on.
+- **"Every mistake this year and why when it came initially. That time was not very clear. Leave it for him -> why
+  would you do that ?"** A choice needs its stakes both ways and the reason it is taken, said plainly.
+- **"Last year country grounded its plane for English Listening test becoz plane makes a lot of noise ? Is it for
+  real ? Then you can emphasise it by some text and in which year it happened."** A fact that sounds made up gets
+  "it's true", its year and a card.
+- **"In the crowd of parents, what is this scene depicting ? Exam Over ?"** Tell scenes in the order they happen
+  (the gate in the morning, then the test), and name the moment on screen.
+- **"Voices are not very clear so thats one thing and maybe at last we can check with Eleven labs once."** Local
+  voices made for clear diction now; the ElevenLabs A/B comes last, at picture lock.
+
+First watch:
+
+- **"This looks much better now. I could understand almost all of it."** G2 review of the v3 cut (saw who wants you
+  to fail): the skit opening, plain roles and characters' own voices worked. More notes to come after a second watch.
+  (saw who wants you to fail, G2)
+- **"should we add better sound in the video just to break the continuous background music flowing throughout the
+  video which might be monotonous"** Same review. One theme looping under a whole long film is monotonous: the score
+  changes with each section (its own cue, made locally), every set has its own ambience bed, and the peak drops to a
+  floor. The levels under the voice stay as they are (`rules/sound.md` #4). (saw who wants you to fail, G2,
+  `cues.yaml`)
+- **Voices: "I am not sure if we keep these or should we try on elevenlabs".** Same review; open. The free local voices
+  stay while the story iterates; the paid A/B by ear comes at picture lock (`review-on-a-first-cut`, G3).
+  (saw who wants you to fail, G2)
+
 ## 2026-11-12
 
 - **"Start of the script felt boring."** G2 first-cut review of the doubled-money restart, the owner's eight notes in
@@ -27,6 +88,49 @@ rule. Where two notes disagree, the newer one wins.
   the thumbnail frames it (you large at the left, the phone up, the digits off the screen and over the counter, Lotte
   behind it with her chalk), not close on the phone or on Lotte's board. The film's key shot and the thumbnail are one
   picture. (doubled-money restart, G2)
+- **"lets no lock anything that hard becoz that is limiting the Agent to come up with great ideas."** Asked whether
+  G1 fixes the situation and G2 only re-tells it: "when we are iterating over the story and the script.. i think we
+  should let Agent who is writing the story should be allowed to deviate and if it can write something more beautiful
+  if the feedback is such and they can get it approved again by me. because it could be becoz of the sitaution i might
+  have shared that feedback." The G1 spine binds the room, not the writer: in a G2 rewrite the writer may change the
+  situation, setting, cast, five lines, even propose a new title or thumbnail, when that serves the owner's notes
+  better; every change is listed for the owner and rides with the next draft. **"we can always keep it iterating
+  also"**: a listed change is not a stop of its own; the gate sign-off is the approval (`rules/story.md`, "The
+  protected spine").
+  (saw who wants you to fail, G2)
+- **"it should start with a short skit and there it should show that you have or got this superpower somehow and then
+  probably the narration of the story"** G2 review of the v2.1 cut (saw who wants you to fail): "the Opening of this
+  video feels a little off. you have been holding this ? what this ?" Open on a short skit, before the narrator speaks:
+  how you get the power (or find you have it), acted, with nothing vague (never "this" without its picture). Then the
+  narration. This outranks the template's cold open (`rules/story.md` #15) for this film; the thumbnail's moment still
+  lands by 0:30 (K13). (saw who wants you to fail, G2)
+- **"Story should have more content and people should have a lot. Just like Mr. Beast videos. Every line in his script
+  has meaning and keeps the viewer on their toe."** Same review: "viewers are always curious on what happens next ...
+  I want such enthusiasm in this video also." More happens: more uses of the power, more people and reactions, more
+  turns; every line either raises a question or pays one off, and no line only describes. Threads that worked stay
+  ("cat was fine"). (saw who wants you to fail, G2)
+- **"i understood the intent of the script and the scientific part ... but didn't quite follow the complete script, it
+  felt difficult"** Same review: "some of the words i was not aware of, split kimbap, so other people might not
+  understand as well. We can rewrite the characters story probably along similar lines." The idea and the facts
+  landed; the story did not. Every story detail a viewer anywhere knows without being told (a shared snack, not a
+  "split kimbap"; "a late-night study room", not a local term). The setting can stay specific, but nothing in the
+  telling may need a local word to follow. (Corrected the same day: an earlier version of this entry added "few
+  threads, nothing else"; that was the writer's reading, not the owner's words. The owner: "cat was fine".)
+  (saw who wants you to fail, G2)
+- **"Names were a little difficult to follow."** G2 first-cut review of the saw-who-wants-you-to-fail film (Min-jun,
+  Ji-yoon, Tae-ho, Ms. Kang). A viewer must never have to remember who a name is: say the role ("your best friend",
+  "your sister", "the rival", "your maths teacher"), introduce a name once beside its role if at all, and keep the
+  named cast to the one or two people the story turns on. (saw who wants you to fail, G2)
+- **"At certain places where we can show the characters actually performing in real and narration stops just to make
+  the users feel those scenes for real would add a lot to this script."** Same review. Give the film's key moments to
+  the characters: the narrator stops and the scene plays, acted in full (faces, hands, a short line in their own
+  voice), long enough to feel it (several such moments, not one). This raises the template's "holds about 5%"
+  for this kind of film; the one wordless peak is still the longest. (saw who wants you to fail, G2)
+- **"A + NOT HIM."** G1 pick on the saw-who-wants-you-to-fail film (Seoul, one autumn): title A, "What If
+  You Saw Who Wants You to Fail?", with tag a ("NOT HIM."), on the drawn cold-open frame (your best friend grinning
+  under minus eighty-four). The film's own title and the writer's recommendation; the room's three story notes (title
+  question by 0:15, the rule in three lines, one spoken number on exam day) go into the G2 script. (saw who wants you
+  to fail, G1)
 - **"A+a, keep the spill"** G1 pick on the doubled-money restart (Berlin, Lotte's bakery): title A with tag a
   ("SHE PAYS."), and the thumbnail keeps the day-thirty-one spill of digits over the counter rather than the opening's
   two cents. The thumbnail shows the film's strongest picture; the script makes its opening confirm the click
