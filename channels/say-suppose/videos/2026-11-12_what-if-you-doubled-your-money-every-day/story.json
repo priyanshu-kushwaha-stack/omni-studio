@@ -77,8 +77,8 @@
       "claims": []
     },
     {
-      "text": "Every night. Whatever's there at midnight, twice by morning. From one cent. And it will not stop.",
-      "say": "[steady, building, each clause a step, the last four words cold and even] Every night. Whatever's there at midnight, twice by morning. From one cent. And it will not stop.",
+      "text": "Every night. Whatever's there at midnight, twice by morning. From one cent. New money. Taken from no one. And it will not stop.",
+      "say": "[steady, building, each clause a step, a faint doubt on 'taken from no one', the last four words cold and even] Every night. Whatever's there at midnight, twice by morning. From one cent. New money. Taken from no one. And it will not stop.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -450,23 +450,13 @@
       ]
     },
     {
-      "text": "Right here in Berlin, in 1923, a loaf of bread cost about two hundred billion marks.",
-      "say": "[leaning in, amazed, the number huge and clear] Right here in Berlin, in nineteen twenty-three, a loaf of bread cost about two hundred billion marks.",
+      "text": "Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way.",
+      "say": "[leaning in, amazed, the number huge and clear; the last sentence dry and close, a look at the board] Right here in Berlin, by late nineteen twenty-three, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
         "c01"
-      ]
-    },
-    {
-      "text": "People papered their walls with banknotes.",
-      "say": "[wry, quick, a raised eyebrow] People papered their walls with banknotes.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c03"
       ]
     },
     {
@@ -498,8 +488,8 @@
       ]
     },
     {
-      "text": "The sticky note gets its last number.",
-      "say": "[quiet, decided, a turn, slow] The sticky note gets its last number.",
+      "text": "You look from the galaxies to Anna's dark bakery. The sticky note gets its last number.",
+      "say": "[quiet, decided, a turn, slow; the last sentence final] You look from the galaxies to Anna's dark bakery. The sticky note gets its last number.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -647,7 +637,6 @@
     "c11": "https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem",
     "c06": "https://en.wikipedia.org/wiki/Mansa_Musa",
     "c01": "https://en.wikipedia.org/wiki/Hyperinflation_in_the_Weimar_Republic",
-    "c03": "https://en.wikipedia.org/wiki/Hyperinflation_in_the_Weimar_Republic",
     "c09": "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)",
     "c12": "https://en.wikipedia.org/wiki/Observable_universe"
   },
