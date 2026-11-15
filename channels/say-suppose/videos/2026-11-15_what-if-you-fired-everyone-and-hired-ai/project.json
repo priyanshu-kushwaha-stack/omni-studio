@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "created_at": "2026-11-15T18:06:48.616124+00:00",
+  "project_id": "2026-11-15_what-if-you-fired-everyone-and-hired-ai",
+  "title": "What If You Fired Everyone and Hired AI?",
+  "pipeline_type": "studio-whatif",
+  "style_playbook": "say-suppose",
+  "channel": "say-suppose",
+  "format": "story"
+}

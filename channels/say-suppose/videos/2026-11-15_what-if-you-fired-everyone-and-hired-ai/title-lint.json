@@ -1,0 +1,81 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "round": 1,
+ "pairs": [
+  {
+   "pair": "A",
+   "thumb": "WHO EATS?",
+   "result": [
+    {
+     "title": "What If You Fired Everyone and Hired AI?",
+     "chars": 40,
+     "score": 100,
+     "issues": [
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "40 characters, inside the 60-character desktop cut",
+      "1 all-caps word for emphasis",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "B",
+   "thumb": "ANYONE?",
+   "result": [
+    {
+     "title": "What If You Replaced Every Worker With a Robot?",
+     "chars": 47,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Replaced Every Worker With...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "47 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "C",
+   "thumb": "UH OH.",
+   "result": [
+    {
+     "title": "What If You Could Hire a Robot for Any Job?",
+     "chars": 43,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Could Hire a Robot for Any...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "43 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+  "call_id": "307b2467b2f64599bad345d48341cda7",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 6
+  },
+  "blockers": [
+    {
+      "quote": "a union leader, Walter Reuther, liked to tell how a car-plant manager showed him a hall of machines and asked how he'd collect union dues from them, and he asked how the manager would get the machines to buy cars",
+      "why": "Check #10 fails: this states the missing-customer reversal almost two minutes before the planned turn.",
+      "fix": "Cut this story from 2:15 and place it immediately after the missing-line revelation at 4:35, where it corroborates rather than spoils the turn.",
+      "domain": "story",
+      "line": 54
+    },
+    {
+      "quote": "One loophole is left open for the comments: in your town, who owns the dial?",
+      "why": "Check #21 fails: control of the dial is the most obvious exploit, and the outline explicitly leaves it unanswered.",
+      "fix": "Before the climax, add: \"Boss: Who sets the toll? You place the phone in a glass case at town hall. The town sets the public rate each month; only you physically turn the dial.\"",
+      "domain": "story",
+      "line": 80
+    },
+    {
+      "quote": "your apron buzzes; a new tile on the app: TAG \"SHOP\". The door chimes: a steel customer in a cap orders a burger to go, pays with its own card, and walks out with it, across the road.",
+      "why": "The no-new-power-rule-after-halfway check fails: SHOP and a machine spending its own money introduce a functioning new capability at 8:50.",
+      "fix": "Reuse the established CUSTOMER use: \"The door chimes. The steel CUSTOMER from stool four returns, pays with a card you do not recognize, and carries the burger across the road. Your phone does not ping.\"",
+      "domain": "story",
+      "line": 62
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 61,
+      "quote": "You turn the dial up.",
+      "fix": "Let the first setting overshoot and empty the owners' napkins; then you use the missing line to set it correctly, so trying\u2014not the power alone\u2014earns the peak."
+    },
+    {
+      "line": 60,
+      "quote": "You act at once: you pick up the napkin and the phone.",
+      "fix": "Show the dilemma being answered: \"You lower Marco's wrench. Keep the machines. Then you pick up the napkin and the phone.\""
+    },
+    {
+      "line": 62,
+      "quote": "So, would you have turned the dial?",
+      "fix": "Tie the choice to the unresolved final image: \"The card isn't yours. Do you serve the next one\u2014or follow the money?\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 40,
+      "quote": "You didn't fire a cook. You fired a customer who happened to know how to cook."
+    },
+    {
+      "line": 41,
+      "quote": "Everyone in town has done the sum. Everyone got it right. That's the problem."
+    },
+    {
+      "line": 42,
+      "quote": "A machine never calls in sick. It never eats the pie, either."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "d893798d763c1859a2b4c466c21905a48a17266a756cc46229e3540d4c28545d",
+  "draft_sha256": "ebb3e6896e592ecb7fe0240502f4562becad685871520339324bceb6dc0c6337"
+}

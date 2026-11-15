@@ -1,0 +1,47 @@
+{
+  "call_id": "45f973e92cbb470ab44ebe3485ec5935",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 61,
+      "quote": "Card, 8:05: this year the two economists' model found one fix and only one: a tax on the machine itself. Their fix. Your dial. Not yet checked by other economists (c06, c01).",
+      "fix": "Card, 8:05: this year the two economists' model found that standard fixes like basic income fail, but a tax on the machine itself can stop the race. Their fix. Your dial. Not yet checked by other economists (c06, c01)."
+    },
+    {
+      "line": 62,
+      "quote": "Card, 8:55: in 2025 Visa said AI agents had already made real purchases for shoppers (c28).",
+      "fix": "Card, 8:55: in 2025 Visa said AI agents had already completed real test purchases in pilot trials (c28)."
+    },
+    {
+      "line": 59,
+      "quote": "Card, 6:25: a string quartet takes four musicians and the same time it took two hundred years ago, and their pay keeps rising, so live music gets dearer against everything a machine makes (c13); a 2015 study found people prefer handmade things and feel they contain love (c21).",
+      "fix": "Card, 6:25: a string quartet takes four musicians and the same time it took two centuries ago, and their pay keeps rising, so live music gets dearer against everything a machine makes (c13); a 2015 study found people prefer handmade things and feel they contain love (c21)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 56,
+      "quote": "Card, 3:50: in 1930 Keynes named technological unemployment, jobs lost because we save labour faster than we find new uses for it; he called it a temporary phase, and guessed that in about a hundred years, about now, we might be down to a fifteen-hour week (c07, c08)."
+    },
+    {
+      "line": 54,
+      "quote": "At the gate an old worker tells the story: a union leader, Walter Reuther, liked to tell how a car-plant manager showed him a hall of machines and asked how he'd collect union dues from them, and he asked how the manager would get the machines to buy cars (c18; card: \"a story, retold since the 1950s\")."
+    },
+    {
+      "line": 57,
+      "quote": "Card, 4:45: this year two economists, Hemenway Falk and Tsoukalas, wrote the sum down: each firm keeps the whole saving and bears only a fraction of the spending it destroys, the rest falls on its rivals; one model, not yet checked by other economists (c01, c02)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "3bc298afc30ac45b12ef9058253e8dda8b42ec751079ffb7be2e3f17eb669662",
+  "draft_sha256": "ebb3e6896e592ecb7fe0240502f4562becad685871520339324bceb6dc0c6337"
+}
