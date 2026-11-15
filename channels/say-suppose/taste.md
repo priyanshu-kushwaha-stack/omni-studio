@@ -10,6 +10,9 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-15
 
+- **"Lotte is a difficult name should we keep it to something else ?"** Then picked **Anna** over Rosa and Greta. A
+  name a viewer hears once must be heard right anywhere: short, two plain syllables, no sound a transcriber or an
+  accent can bend ("Lotte" came back as "Lot" and "Lotta"). (doubled-money film, G2)
 - **"The whole story feels very zoomed in in here."** The v5 cut of the doubled-money film (G2), with a reference,
   "What If Your GTA Money Was Real?": "This is also a similar story and it has different storylines and different
   pattern also of narration. Could you take some samples from it". Too zoomed in means one place and one short span:

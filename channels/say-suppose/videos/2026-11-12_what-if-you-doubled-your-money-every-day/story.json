@@ -14,10 +14,10 @@
       "voiceId": "227e692abf478924",
       "describe": "A relaxed male baritone: a man of about thirty, the listener's flatmate. Young, warm and a little husky, quick and playful, easy laughter under the words, casual modern English."
     },
-    "Lotte": {
+    "Anna": {
       "model": "local:qwen3-design",
       "voiceType": "design",
-      "voiceId": "d8f283b8f0ecf975",
+      "voiceId": "97120a1334fe1b2d",
       "describe": "A low, warm female voice: a woman in her late fifties, a baker who has seen everything. Alto, slightly husky, unhurried and dry, a hint of a German accent. Speaks plainly, close to the listener."
     },
     "Herr Brandt": {
@@ -136,9 +136,9 @@
       "claims": []
     },
     {
-      "text": "Lotte: I saw.",
+      "text": "Anna: I saw.",
       "say": "[flat, two words, writing on the board, not looking up] I saw.",
-      "speaker": "Lotte",
+      "speaker": "Anna",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
@@ -216,25 +216,25 @@
       "claims": []
     },
     {
-      "text": "Day twenty-eight. You buy the building. Lotte never pays rent again.",
-      "say": "[proud, warm, quick] Day twenty-eight. You buy the building. Lotte never pays rent again.",
+      "text": "Day twenty-eight. You buy the building. Anna never pays rent again.",
+      "say": "[proud, warm, quick] Day twenty-eight. You buy the building. Anna never pays rent again.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Lotte has never seen the sea. Day twenty-nine, she does.",
-      "say": "[warm, light, a gift, the last words open] Lotte has never seen the sea. Day twenty-nine, she does.",
+      "text": "Anna has never seen the sea. Day twenty-nine, she does.",
+      "say": "[warm, light, a gift, the last words open] Anna has never seen the sea. Day twenty-nine, she does.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Lotte: It's bigger than the oven.",
+      "text": "Anna: It's bigger than the oven.",
       "say": "[dry, deadpan, squinting at the horizon, secretly delighted] It's bigger than the oven.",
-      "speaker": "Lotte",
+      "speaker": "Anna",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
@@ -328,17 +328,17 @@
       "claims": []
     },
     {
-      "text": "Day thirty-five. A hundred and seventy million. Jonas has a new idea: Lotte's rolls, delivered to the whole city. By drone. A thousand drones. You pay.",
-      "say": "[excited, quick, the idea growing as it goes, 'A thousand drones' big, 'You pay' dry] Day thirty-five. A hundred and seventy million. Jonas has a new idea: Lotte's rolls, delivered to the whole city. By drone. A thousand drones. You pay.",
+      "text": "Day thirty-five. A hundred and seventy million. Jonas has a new idea: Anna's rolls, delivered to the whole city. By drone. A thousand drones. You pay.",
+      "say": "[excited, quick, the idea growing as it goes, 'A thousand drones' big, 'You pay' dry] Day thirty-five. A hundred and seventy million. Jonas has a new idea: Anna's rolls, delivered to the whole city. By drone. A thousand drones. You pay.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Lotte: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.",
+      "text": "Anna: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.",
       "say": "[calm, firm, counting it out for a child, the last sentence final] I have two hands and one oven. Eighty rolls a morning. I bake what I bake.",
-      "speaker": "Lotte",
+      "speaker": "Anna",
       "gapAfterSec": 3.0,
       "mood": "day",
       "claims": []
@@ -570,9 +570,9 @@
       "claims": []
     },
     {
-      "text": "Lotte: All counted?",
+      "text": "Anna: All counted?",
       "say": "[tired, warm, through a door opened a hand's width, the gag one last time, almost a kindness, clear words] All counted?",
-      "speaker": "Lotte",
+      "speaker": "Anna",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
@@ -594,9 +594,9 @@
       "claims": []
     },
     {
-      "text": "Lotte: Counted.",
+      "text": "Anna: Counted.",
       "say": "[deadpan, dry, one word, the smallest smile, the gag's last return] Counted.",
-      "speaker": "Lotte",
+      "speaker": "Anna",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
@@ -610,8 +610,8 @@
       "claims": []
     },
     {
-      "text": "A coin isn't a thing. It's Lotte, agreeing to bake tomorrow.",
-      "say": "[quiet, clear, the one idea to take home, said as a complete thought, warmth on her name] A coin isn't a thing. It's Lotte, agreeing to bake tomorrow.",
+      "text": "A coin isn't a thing. It's Anna, agreeing to bake tomorrow.",
+      "say": "[quiet, clear, the one idea to take home, said as a complete thought, warmth on her name] A coin isn't a thing. It's Anna, agreeing to bake tomorrow.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",

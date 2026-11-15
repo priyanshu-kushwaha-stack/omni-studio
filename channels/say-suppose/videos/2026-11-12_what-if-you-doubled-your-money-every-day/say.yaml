@@ -1,7 +1,7 @@
 # say.yaml: every spoken line of script.md v6 (2026-11-15), in order. The key is the line as written, with its
 # (cNN) cites removed; character lines keep their "Name: " prefix in the key only. The value is
 # "[emotion, acting direction] what the voice says", numbers spelled out. Narrator: Arthur (free local voice);
-# Lotte, Jonas, Herr Brandt and Karl speak in their own voices. Reused lines keep their earlier direction so their
+# Anna, Jonas, Herr Brandt and Karl speak in their own voices. Reused lines keep their earlier direction so their
 # cached takes are reused.
 "Jonas: Did your phone just... rip?": "[groggy, alarmed, whispered too loud, sitting up in the dark] Did your phone just... rip?"
 "Jonas: Two cents. Don't spend it all at once.": "[sleepy sarcasm, flat, the coat already going back over his head] Two cents. Don't spend it all at once."
@@ -15,7 +15,7 @@
 "A king, a chessboard. One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years.": "[storytelling, hushed, patient at the start, a widening awe toward the end, no hype] A king, a chessboard. One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years."
 "For ten days, nothing happens. Cents. Then it does.": "[dry, slow on 'nothing happens', then a sudden lift on the last three words] For ten days, nothing happens. Cents. Then it does."
 "Day eleven. Ten euros. You pay for your own roll.": "[bright, proud, a small victory] Day eleven. Ten euros. You pay for your own roll."
-"Lotte: I saw.": "[flat, two words, writing on the board, not looking up] I saw."
+"Anna: I saw.": "[flat, two words, writing on the board, not looking up] I saw."
 "Day seventeen. Jonas's rent. Paid.": "[quick, pleased, a montage beat, 'Paid' crisp] Day seventeen. Jonas's rent. Paid."
 "Jonas: I'll pay you back.": "[touched, a little embarrassed, earnest] I'll pay you back."
 "Jonas: I won't, will I.": "[a beat later, honest and amused at himself, a grin] I won't, will I."
@@ -25,9 +25,9 @@
 "Herr Brandt: Is it a mistake?": "[quiet, direct, looking at you over his glasses, a real question] Is it a mistake?"
 "Herr Brandt: Not a mistake. Signed.": "[satisfied, precise, the stamp coming down on 'signed', filing it away] Not a mistake. Signed."
 "Day twenty-seven. A penthouse over Berlin. Your old room would fit in the bath.": "[wide-eyed, delighted, the last sentence a comic punch] Day twenty-seven. A penthouse over Berlin. Your old room would fit in the bath."
-"Day twenty-eight. You buy the building. Lotte never pays rent again.": "[proud, warm, quick] Day twenty-eight. You buy the building. Lotte never pays rent again."
-"Lotte has never seen the sea. Day twenty-nine, she does.": "[warm, light, a gift, the last words open] Lotte has never seen the sea. Day twenty-nine, she does."
-"Lotte: It's bigger than the oven.": "[dry, deadpan, squinting at the horizon, secretly delighted] It's bigger than the oven."
+"Day twenty-eight. You buy the building. Anna never pays rent again.": "[proud, warm, quick] Day twenty-eight. You buy the building. Anna never pays rent again."
+"Anna has never seen the sea. Day twenty-nine, she does.": "[warm, light, a gift, the last words open] Anna has never seen the sea. Day twenty-nine, she does."
+"Anna: It's bigger than the oven.": "[dry, deadpan, squinting at the horizon, secretly delighted] It's bigger than the oven."
 "Day thirty. Jonas's football club. The one that loses every Saturday. Not anymore.": "[excited, building, 'Not anymore' a cheer] Day thirty. Jonas's football club. The one that loses every Saturday. Not anymore."
 "Jonas: I don't know what to do with my hands when they win.": "[lost, comic, looking at his own hands, a man whose world has changed shape] I don't know what to do with my hands when they win."
 "Day thirty-one. Ten million euros. A billion cents.": "[awed, slow, each number landing bigger, 'A billion cents' almost laughing] Day thirty-one. Ten million euros. A billion cents."
@@ -39,8 +39,8 @@
 "At midnight, what's left doubles anyway. Thirteen million. You shopped all day, and woke up richer.": "[comic deflation, deadpan, the last clause a punchline] At midnight, what's left doubles anyway. Thirteen million. You shopped all day, and woke up richer."
 "You're thinking it. Why not just invest it?": "[knowing, straight to the viewer, a raised eyebrow] You're thinking it. Why not just invest it?"
 "You try. You buy shares. The price shoots up. Because you're the one buying. Now you're richer twice.": "[quick, building, then a comic beat on 'richer twice', exasperated and amused] You try. You buy shares. The price shoots up. Because you're the one buying. Now you're richer twice."
-"Day thirty-five. A hundred and seventy million. Jonas has a new idea: Lotte's rolls, delivered to the whole city. By drone. A thousand drones. You pay.": "[excited, quick, the idea growing as it goes, 'A thousand drones' big, 'You pay' dry] Day thirty-five. A hundred and seventy million. Jonas has a new idea: Lotte's rolls, delivered to the whole city. By drone. A thousand drones. You pay."
-"Lotte: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.": "[calm, firm, counting it out for a child, the last sentence final] I have two hands and one oven. Eighty rolls a morning. I bake what I bake."
+"Day thirty-five. A hundred and seventy million. Jonas has a new idea: Anna's rolls, delivered to the whole city. By drone. A thousand drones. You pay.": "[excited, quick, the idea growing as it goes, 'A thousand drones' big, 'You pay' dry] Day thirty-five. A hundred and seventy million. Jonas has a new idea: Anna's rolls, delivered to the whole city. By drone. A thousand drones. You pay."
+"Anna: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.": "[calm, firm, counting it out for a child, the last sentence final] I have two hands and one oven. Eighty rolls a morning. I bake what I bake."
 "You bought a thousand deliveries. You didn't make one more roll.": "[dry, clear, the punchline slow and flat] You bought a thousand deliveries. You didn't make one more roll."
 "Money is a ticket for things people make. Your pile is a bigger ticket for the same bread.": "[clear, firm, plain, the last sentence slow] Money is a ticket for things people make. Your pile is a bigger ticket for the same bread."
 "And everything you spend has to land somewhere. It lands where you stand.": "[lower, a turn, quiet and sure] And everything you spend has to land somewhere. It lands where you stand."
@@ -68,12 +68,12 @@
 "Then the phone buzzes. A refund. From the tram app. From the day you paid for every tram in Berlin. One cent.": "[sudden, tense, quick, each phrase a jolt, 'One cent' flat and terrible] Then the phone buzzes. A refund. From the tram app. From the day you paid for every tram in Berlin. One cent."
 "One cent at midnight is two. Two is four. And it all starts again. Three minutes.": "[panicked, fast, the doubling heard as a clock, the last two words urgent] One cent at midnight is two. Two is four. And it all starts again. Three minutes."
 "Who takes one cent, at three minutes to midnight? The machine wants a euro. The tram is still free. Jonas is asleep.": "[breathless, running, urgent and funny, each failure faster] Who takes one cent, at three minutes to midnight? The machine wants a euro. The tram is still free. Jonas is asleep."
-"Lotte: All counted?": "[tired, warm, through a door opened a hand's width, the gag one last time, almost a kindness, clear words] All counted?"
+"Anna: All counted?": "[tired, warm, through a door opened a hand's width, the gag one last time, almost a kindness, clear words] All counted?"
 "You count. One cent. Into her palm. Twenty-three fifty-nine and fifty-eight.": "[tense, quick, then slowing on the time, every word clear, a held breath] You count. One cent. Into her palm. Twenty-three fifty-nine and fifty-eight."
 "Zero, doubled, is zero.": "[quiet, complete, after the silence, a thing finally true, no music] Zero, doubled, is zero."
-"Lotte: Counted.": "[deadpan, dry, one word, the smallest smile, the gag's last return] Counted."
+"Anna: Counted.": "[deadpan, dry, one word, the smallest smile, the gag's last return] Counted."
 "Day fifty-six. Jonas pays. He always pays.": "[morning, plain, a small smile, back where we began] Day fifty-six. Jonas pays. He always pays."
-"A coin isn't a thing. It's Lotte, agreeing to bake tomorrow.": "[quiet, clear, the one idea to take home, said as a complete thought, warmth on her name] A coin isn't a thing. It's Lotte, agreeing to bake tomorrow."
+"A coin isn't a thing. It's Anna, agreeing to bake tomorrow.": "[quiet, clear, the one idea to take home, said as a complete thought, warmth on her name] A coin isn't a thing. It's Anna, agreeing to bake tomorrow."
 "Then Jonas's phone rips.": "[sudden, low, a cliffhanger sting] Then Jonas's phone rips."
 "Jonas: Did my phone just... rip?": "[stunned, staring at his own screen, whispered too loud] Did my phone just... rip?"
 "Be honest. If one cent started doubling in your account tonight, which day would you stop it? Tell us the day in the comments. And subscribe. Jonas might need you.": "[direct, friendly, lighter, leaning toward you, the question real and easy to answer; the last sentence a small knowing smile, no hype] Be honest. If one cent started doubling in your account tonight, which day would you stop it? Tell us the day in the comments. And subscribe. Jonas might need you."

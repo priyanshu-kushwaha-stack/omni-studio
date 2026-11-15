@@ -4,9 +4,9 @@ format: story
 status: v6 (2026-11-15), wider (owner on v5: "The whole story feels very zoomed in in here."; the GTA-money reference, reference-gta-money.md): a new place for nearly every beat, single-line narration beats with a picture each, a full stretch of wish-fulfilment before the costs, a running sticky note, true stories as proof, the cost promised by 0:30. Keeps the exciting-not-sad rules (2026-11-13). v5 is in history/script-v5/
 claims: claims.md
 
-> SITUATION: Berlin, a flat above Lotte's bakery. One cent in your account, and Jonas pays for your roll every morning.
+> SITUATION: Berlin, a flat above Anna's bakery. One cent in your account, and Jonas pays for your roll every morning.
 > DESIRE: Everything you ever wanted. Then: to stop it before it eats the city.
-> CONFLICT: The money arrives faster than anything can be made to spend it on, and every doubling thins what everyone else holds, starting with Lotte's bread.
+> CONFLICT: The money arrives faster than anything can be made to spend it on, and every doubling thins what everyone else holds, starting with Anna's bread.
 > CHANGE: The note on your phone goes from "stop at a thousand" to "stop at zero".
 > RESULT: Zero at midnight, with two seconds to spare. Then Jonas's phone rips.
 > UNDER: If all the money were mine, who would still bake the bread?
@@ -41,7 +41,7 @@ Sounds like the best thing that could ever happen to you. Let's see what it cost
 ## [00:30] The Rule
 
 > MOOD: morning
-> SCENE: Morning, Lotte's bakery from across the street, wide: the shop, the chalkboard, the flat above. Inside: you, phone up; Lotte, the baker, behind the counter (name tag: LOTTE, the baker, slips you a free roll every day).
+> SCENE: Morning, Anna's bakery from across the street, wide: the shop, the chalkboard, the flat above. Inside: you, phone up; Anna, the baker, behind the counter (name tag: ANNA, the baker, slips you a free roll every day).
 
 There is no off switch. Except one. Exactly zero at midnight. Not a cent more. Not a cent less.
 
@@ -52,7 +52,7 @@ There is no off switch. Except one. Exactly zero at midnight. Not a cent more. N
 So you make yourself a rule too. A sticky note. Stop at a thousand.
 
 > MOOD: lamp
-> SCENE: After closing. Lotte sets one grain of wheat on her grandfather's chessboard, two on the next, four. Then the grains spill off the board, off the counter, and the camera pulls back until the bakery is a speck under a dune of wheat.
+> SCENE: After closing. Anna sets one grain of wheat on her grandfather's chessboard, two on the next, four. Then the grains spill off the board, off the counter, and the camera pulls back until the bakery is a speck under a dune of wheat.
 
 A king, a chessboard. One grain on the first square, and double on every square after (c05). By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11).
 
@@ -63,11 +63,11 @@ For ten days, nothing happens. Cents. Then it does.
 ## [01:25] Everything You Ever Wanted
 
 > MOOD: morning
-> SCENE: Day eleven, the counter. You count coins into Lotte's palm yourself. Jonas behind you, pointing.
+> SCENE: Day eleven, the counter. You count coins into Anna's palm yourself. Jonas behind you, pointing.
 
 Day eleven. Ten euros. You pay for your own roll.
 
-Lotte: I saw.
+Anna: I saw.
 
 > SCENE: Day seventeen. Jonas at the kitchen table opens his banking app: RENT · PAID. He looks across at you.
 
@@ -100,15 +100,15 @@ Herr Brandt: Not a mistake. Signed.
 
 Day twenty-seven. A penthouse over Berlin. Your old room would fit in the bath.
 
-> SCENE: Day twenty-eight. You hand Lotte the deed to the building.
+> SCENE: Day twenty-eight. You hand Anna the deed to the building.
 
-Day twenty-eight. You buy the building. Lotte never pays rent again.
+Day twenty-eight. You buy the building. Anna never pays rent again.
 
-> SCENE: Day twenty-nine. A beach, the sea to the horizon, sunset. Lotte with her shoes in her hand, apron still on. Jonas in the waves.
+> SCENE: Day twenty-nine. A beach, the sea to the horizon, sunset. Anna with her shoes in her hand, apron still on. Jonas in the waves.
 
-Lotte has never seen the sea. Day twenty-nine, she does.
+Anna has never seen the sea. Day twenty-nine, she does.
 
-Lotte: It's bigger than the oven.
+Anna: It's bigger than the oven.
 
 > SCENE: Day thirty. A small football ground, a wooden stand, a crowd. The green team scores. Jonas on his feet.
 
@@ -117,11 +117,11 @@ Day thirty. Jonas's football club. The one that loses every Saturday. Not anymor
 Jonas: I don't know what to do with my hands when they win.
 
 > MOOD: morning
-> SCENE: Day thirty-one. Lotte's counter, the thumbnail's frame: you large at the left, phone up, Lotte with her chalk, Jonas at your shoulder.
+> SCENE: Day thirty-one. Anna's counter, the thumbnail's frame: you large at the left, phone up, Anna with her chalk, Jonas at your shoulder.
 
 > TAG: DAY 31 · 10.737.418,24
 
-> HOLD: 3 s. The digits peel off the screen as a split-flap ribbon, pour over the counter's edge and run across the floor to the door. Lotte's chalk stops in the air.
+> HOLD: 3 s. The digits peel off the screen as a split-flap ribbon, pour over the counter's edge and run across the floor to the door. Anna's chalk stops in the air.
 
 Day thirty-one. Ten million euros. A billion cents.
 
@@ -149,11 +149,11 @@ At midnight, what's left doubles anyway. Thirteen million. You shopped all day, 
 You're thinking it. Why not just invest it?
 You try. You buy shares. The price shoots up. Because you're the one buying. Now you're richer twice.
 
-> SCENE: Day thirty-five, dawn. A thousand delivery drones on the roofs of the street, BREAD-NET on a screen. Jonas with his phone. Lotte in her doorway, arms folded.
+> SCENE: Day thirty-five, dawn. A thousand delivery drones on the roofs of the street, BREAD-NET on a screen. Jonas with his phone. Anna in her doorway, arms folded.
 
-Day thirty-five. A hundred and seventy million. Jonas has a new idea: Lotte's rolls, delivered to the whole city. By drone. A thousand drones. You pay.
+Day thirty-five. A hundred and seventy million. Jonas has a new idea: Anna's rolls, delivered to the whole city. By drone. A thousand drones. You pay.
 
-Lotte: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.
+Anna: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.
 
 > HOLD: 3 s. A thousand drones lift off at once and darken the sky. Eighty carry a roll. Jonas's phone counts orders: 1,000, 10,000, 40,000.
 
@@ -165,7 +165,7 @@ Money is a ticket for things people make. Your pile is a bigger ticket for the s
 And everything you spend has to land somewhere. It lands where you stand.
 
 > MOOD: dusk
-> SCENE: Day forty. The bakery's back door. Karl, the flour man, a sack half off his van, an invoice in his hand (name tag: KARL, the flour man, brings Lotte her flour). Lotte in the doorway.
+> SCENE: Day forty. The bakery's back door. Karl, the flour man, a sack half off his van, an invoice in his hand (name tag: KARL, the flour man, brings Anna her flour). Anna in the doorway.
 
 Karl: Same flour. New price. Triple.
 
@@ -178,7 +178,7 @@ Day forty. Prices rise first where the new money lands. Your street. One forty. 
 > CARD: WHERE THE MONEY LANDS · New money raises prices there first
 
 > MOOD: lamp
-> HOLD: 3 s. The film's one quiet beat. After closing. Lotte at the counter with a small savings book, pencil moving down a column, slowing, stopping.
+> HOLD: 3 s. The film's one quiet beat. After closing. Anna at the counter with a small savings book, pencil moving down a column, slowing, stopping.
 
 She counts what her savings will buy. Last month, a year of flour. Tonight, four months.
 
@@ -191,7 +191,7 @@ It isn't taken from anyone. Except it is. From everyone. A little. Every night.
 
 So you try the obvious thing. You give it away. Day fifty. Five trillion. A million euros to every phone in Berlin.
 
-> HOLD: 3 s. Phones buzzing in every window. The tram stops in the street, its driver gone. Lotte's board: 4,20, wiped, 42,00, wiped, 63,00.
+> HOLD: 3 s. Phones buzzing in every window. The tram stops in the street, its driver gone. Anna's board: 4,20, wiped, 42,00, wiped, 63,00.
 
 Nobody goes to work. Why would you? And by Saturday, a roll costs sixty-three euros. Because every million was new money. Chasing the same rolls.
 
@@ -271,9 +271,9 @@ One cent at midnight is two. Two is four. And it all starts again. Three minutes
 
 Who takes one cent, at three minutes to midnight? The machine wants a euro. The tram is still free. Jonas is asleep.
 
-> SCENE: Lotte at her glass door, keys in hand, locking up. She sees you running and opens it a hand's width.
+> SCENE: Anna at her glass door, keys in hand, locking up. She sees you running and opens it a hand's width.
 
-Lotte: All counted?
+Anna: All counted?
 
 You count. One cent. Into her palm. Twenty-three fifty-nine and fifty-eight.
 
@@ -283,9 +283,9 @@ You count. One cent. Into her palm. Twenty-three fifty-nine and fifty-eight.
 
 Zero, doubled, is zero.
 
-> SCENE: A big hit of music. Lotte looks at the cent in her palm.
+> SCENE: A big hit of music. Anna looks at the cent in her palm.
 
-Lotte: Counted.
+Anna: Counted.
 
 ## [08:25] Back to the Counter
 
@@ -294,7 +294,7 @@ Lotte: Counted.
 
 Day fifty-six. Jonas pays. He always pays.
 
-A coin isn't a thing. It's Lotte, agreeing to bake tomorrow.
+A coin isn't a thing. It's Anna, agreeing to bake tomorrow.
 
 > SCENE: Jonas's phone, in his hand, rips. On his lock screen a paper coin tears in two. His face.
 
@@ -308,4 +308,4 @@ Be honest. If one cent started doubling in your account tonight, which day would
 
 ## Word count, not said
 
-About 1,150 spoken words: narrator lines in single beats, 20 character lines, never more than two in a row (the reference's pattern: one line, one picture, one punch). Places, in order: the flat at midnight, the bakery from across the street, the chessboard and the dune, the kitchen, the street party, every tram in Berlin, the bank, a penthouse over the city, the sea, the football ground, the counter (the thumbnail's frame), a cash machine, the shop app, the share chart, the city's sky full of drones, the back door, the savings book, the whole city lit by phones, Cairo, Berlin 1923, the news studio, the Earth, the universe, the penthouse at night, the bank at night, the night street, the glass door, the counter at dawn: the bakery is home base, about one beat in four. The running prop: the sticky note, STOP AT 1.000 € → 1 MILLION → 1 BILLION → 0,00 (its last number is the rule's exit). The cost is promised at 0:25 ("Let's see what it costs"). Wish-fulfilment from 1:25 to 3:20, then the costs. Real stories as proof: Mansa Musa (c06), Berlin 1923 (c01), the wallpaper (c03). One quiet beat (Lotte's savings book, about 15 s, at about 5:15). The peak is a triumph ("Zero, doubled, is zero." / "Counted."), the end a cliffhanger. Claims spoken: c01, c03, c05, c06, c09, c11, c12. The thumbnail's frame lands at about 3:05.
+About 1,150 spoken words: narrator lines in single beats, 20 character lines, never more than two in a row (the reference's pattern: one line, one picture, one punch). Places, in order: the flat at midnight, the bakery from across the street, the chessboard and the dune, the kitchen, the street party, every tram in Berlin, the bank, a penthouse over the city, the sea, the football ground, the counter (the thumbnail's frame), a cash machine, the shop app, the share chart, the city's sky full of drones, the back door, the savings book, the whole city lit by phones, Cairo, Berlin 1923, the news studio, the Earth, the universe, the penthouse at night, the bank at night, the night street, the glass door, the counter at dawn: the bakery is home base, about one beat in four. The running prop: the sticky note, STOP AT 1.000 € → 1 MILLION → 1 BILLION → 0,00 (its last number is the rule's exit). The cost is promised at 0:25 ("Let's see what it costs"). Wish-fulfilment from 1:25 to 3:20, then the costs. Real stories as proof: Mansa Musa (c06), Berlin 1923 (c01), the wallpaper (c03). One quiet beat (Anna's savings book, about 15 s, at about 5:15). The peak is a triumph ("Zero, doubled, is zero." / "Counted."), the end a cliffhanger. Claims spoken: c01, c03, c05, c06, c09, c11, c12. The thumbnail's frame lands at about 3:05.

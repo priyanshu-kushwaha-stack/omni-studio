@@ -35,7 +35,8 @@ voices:
     cast:
       # What If You Doubled Your Money Every Day (2026-11-12): Berlin, Lotte's bakery. v3 (owner, 2026-11-13): every
       # speaking role has a name, so a returning character can be introduced; the voices are unchanged.
-      Lotte: >-
+      # The baker was Lotte until 2026-11-15 (owner: "Lotte is a difficult name"; picked Anna). Same voice description.
+      Anna: >-
         A low, warm female voice: a woman in her late fifties, a baker who has seen everything. Alto, slightly husky,
         unhurried and dry, a hint of a German accent. Speaks plainly, close to the listener.
       Jonas: >-
