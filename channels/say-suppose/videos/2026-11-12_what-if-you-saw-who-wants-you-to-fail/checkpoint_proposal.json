@@ -3,11 +3,11 @@
   "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-15T08:49:15.561467+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-15T08:50:31.567295+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -152,6 +152,12 @@
       "via": "omni approve",
       "proof": "215055adeb4e6d35f5e9ff68cc8feecc06b3317f5b7a764f5ae319c8b4fee6da",
       "note": "Owner, 2026-11-12, in chat: \"A + NOT HIM.\" then \"looks fine. Lets proceed.\" then \"Yes, approve G1\""
+    },
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-15T08:50:31.560104+00:00",
+      "via": "omni approve",
+      "proof": "facd579985ce80d89a16118d9e8fecb1be51a4baa8220ee8864e7d8b56e7a156"
     }
   }
 }
