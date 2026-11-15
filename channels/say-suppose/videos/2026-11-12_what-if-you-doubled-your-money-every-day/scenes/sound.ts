@@ -36,7 +36,7 @@ export const BEDS: [string, string | Anchor | null][] = [
   ["flat-clock", "Day seventeen."],
   ["party", "Day twenty-one."],
   ["street", "Day twenty-two."],
-  ["hush", "The sticky note gets a new number."],
+  ["hush", { line: "Day twenty-two.", edge: "end" }],
   ["bank", "Herr Brandt: Is it a mistake"],
   ["night", "Day twenty-seven."],
   ["bakery", "Day twenty-eight."],

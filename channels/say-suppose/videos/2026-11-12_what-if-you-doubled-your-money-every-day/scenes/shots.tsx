@@ -49,7 +49,7 @@ export const SHOTS: ShotDef[] = [
   { at: S("Day seventeen."), draw: (t) => <Kitchen t={t} /> },
   { at: S("Day twenty-one."), draw: (t) => <Street t={t} mood="day" mode="party" lotteFace="happy" jonasFace="shocked" /> },
   { at: S("Day twenty-two."), draw: (t) => <TramsFree t={t} /> },
-  { at: S("The sticky note gets a new number."), draw: (t) => <StickyNote t={t} old="STOP AT 1.000 €" text="STOP AT 1 MILLION" /> },
+  { at: E("Day twenty-two."), draw: (t) => <StickyNote t={t} old="STOP AT 1.000 €" text="STOP AT 1 MILLION" /> },
   { at: S("Herr Brandt: Is it a mistake"), draw: (t) => <Bank t={t} /> },
   { at: E("Herr Brandt: Is it a mistake"), draw: (t) => <FormClose t={t} mode="sign" /> },
   { at: S("Herr Brandt: Not a mistake."), draw: (t) => <FormClose t={t} mode="stamp" />, sfx: [{ file: "stamp", f: 5, vol: 0.25 }] },
@@ -86,6 +86,8 @@ export const SHOTS: ShotDef[] = [
   { at: S("Jonas: Not me."), draw: (t) => <Bakery t={t} mood="morning" board="63,00" phone="up" balance={day(50)} jonas={{ face: "sceptical" }} you={{ face: "worried", pose: "give" }} lotte={{ face: "neutral" }} /> },
   { at: S("This has happened before."), draw: (t) => <Cairo t={t} /> },
   { at: S("Right here in Berlin"), draw: (t) => <Berlin1923 t={t} /> },
+  // "Anna's board is heading the same way. Give it all away? You hit zero. Berlin doesn't." (room round 13, rule #21)
+  { at: E("Right here in Berlin", -150), draw: (t) => <Bakery t={t} mood="morning" layout="board" board={["63,00", "630,00"]} lotte={{ pose: "write", held: "chalk", face: "sceptical" }} /> },
   { at: S("Day fifty-two."), draw: (t) => <News t={t} /> },
   { at: S("Day fifty-five."), draw: (t) => <Globe t={t} /> },
   { at: S("Never hit zero"), draw: (t) => <Cosmos t={t} /> },

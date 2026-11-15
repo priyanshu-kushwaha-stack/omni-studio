@@ -210,7 +210,7 @@ Jonas: Not me.
 > SCENE: Two pictures, one after the other: a king on a camel throwing gold in Cairo; a Berlin baker's window in 1923 with a price tag of 200.000.000.000 marks; then Anna's board.
 
 This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06).
-Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks (c01). Anna's board is heading the same way.
+Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks (c01). Anna's board is heading the same way. Give it all away? You hit zero. Berlin doesn't.
 
 > CARD: IT'S TRUE · Berlin, late 1923: a loaf of bread, about 200 billion marks
 

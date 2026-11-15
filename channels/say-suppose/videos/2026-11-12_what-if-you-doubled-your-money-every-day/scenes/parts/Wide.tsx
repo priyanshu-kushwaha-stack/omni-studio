@@ -32,10 +32,10 @@ export const Kitchen: React.FC<{ t: ShotTime }> = ({ t }) => {
           { spot: "counter", who: { ...FRIEND, look: { x: -0.9, y: 0.2 } }, face: { ...EXPRESSIONS[paid ? "shocked" : "neutral"], ...talk("Jonas") }, pose: { ...STAND, armF: [70, 50] } },
         ]}
         actors={
-          <g transform="translate(1250 420)">
-            <rect x={-170} y={-90} width={340} height={150} rx={18} fill={PAPER} stroke={INK} strokeWidth={5} opacity={paid ? 1 : 0} />
-            <Txt x={0} y={-30} s={30} w={700}>RENT</Txt>
-            {paid && <Txt x={0} y={30} s={52} fill={TEAL}>PAID ✓</Txt>}
+          <g transform="translate(860 330) rotate(-3)">
+            <rect x={-260} y={-120} width={520} height={240} rx={24} fill={PAPER} stroke={INK} strokeWidth={7} />
+            <Txt x={0} y={-30} s={72} w={800}>JONAS · RENT</Txt>
+            {paid && <Txt x={0} y={75} s={96} fill={TEAL}>PAID ✓</Txt>}
           </g>
         } />
     </Push>

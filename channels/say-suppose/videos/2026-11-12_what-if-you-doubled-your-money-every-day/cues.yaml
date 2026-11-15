@@ -1,22 +1,20 @@
 # Cue sheet, G2 intent (rules/sound.md #1); final spotting at G4. scenes/sound.ts is where it plays.
-# v5 (owner, 2026-11-13: "I want exciting stuff"; the Gemini outside review): an electronic score that climbs with the
-# money (make_music.py, ACE-Step 1.5, local; the channel themes as style reference, U2), Lotte's piano theme once, at her
-# savings book. Beds (make_ambience.py) and effects (make_sfx.sh) as in v4, plus the cash machine and the drones' whoosh.
-# Levels (sound #4, unchanged). One planned silence, 4 s (was 9), at midnight; the triumph cue is the one entry after it.
+# v6 (owner, 2026-11-15: "The whole story feels very zoomed in in here."): the v5 electronic cues (make_music.py,
+# ACE-Step 1.5, local) re-spotted on the wider story; no new music made. Beds (make_ambience.py) and effects
+# (make_sfx.sh) as in v5. Levels (sound #4, unchanged). One planned silence, 4 s, at midnight; the triumph cue is the one
+# entry after it.
 beats:
-  - {beat: Flash-Forward, intent: thrill, music: "cue hook (synth swell, a jackpot arpeggio, a stop)", bed: bakery, fx: [the digits pouring]}
-  - {beat: One Cent, intent: amused, music: "theme-light (the channel signal)", bed: "bakery, flat-night", fx: [reader tap, declined buzz, the midnight rip]}
-  - {beat: The Rule and the Chessboard, intent: wonder, music: "cue wonder (ticking pulse, a riser and a drop on the dune)", bed: "bakery, bakery-lamp", fx: [a rip at each midnight, rule card snap]}
-  - {beat: Your Own Roll to the Tram, intent: giddy, music: "cue climb (electro-pop that adds layers)", bed: "bakery, street, party, tram", fx: [day-tag flutter]}
-  - {beat: The Bar Chart and the Bank, intent: curious, music: cue uneasy, bed: "street-quiet, bakery, bank", fx: [the stamp]}
-  - {beat: A Billion Cents to the Shares, intent: euphoric, music: "cue jackpot (synthwave drive)", bed: "bakery, hush, ground, bakery", fx: [the pour, a rip at midnight]}
-  - {beat: BREAD-NET, intent: spectacle, music: "cue future (high-energy synthwave)", bed: street, fx: [the drones' whoosh, problem 1 card]}
-  - {beat: Karl at the Back Door, intent: worry, music: "cue price (a climbing ostinato)", bed: "backdoor, bakery", fx: [card]}
-  - {beat: Lotte's Savings Book, intent: the one quiet beat, music: "cue ache: Lotte's theme, once, about 20 s", bed: bakery-lamp, fx: []}
-  - {beat: A Million Each, intent: chaos, music: "cue chaos (driving thriller pulse)", bed: "street, bakery, hush, bakery", fx: [phones buzzing, problem 2 and 3 cards, the 1324 card]}
-  - {beat: The Planet and the Universe, intent: awe, music: "cue planet (a huge synth and brass swell)", bed: "hush, bakery-lamp", fx: [cards]}
-  - {beat: Exactly Zero, intent: race, music: "cue countdown (150 bpm)", bed: "flat-clock, bank-night, flat-clock, street, door", fx: [the form torn, the phone buzzing, the cent into her palm]}
-  - {beat: Midnight, intent: peak, music: "none: 4 s silence over the door bed, faded under the line before it", bed: door, fx: []}
-  - {beat: Counted and the Cliffhanger, intent: triumph, music: "cue triumph (the win, then a cheeky sting); theme-light on the end card", bed: "door, bakery", fx: [the key, the lamp, Jonas's phone ripping]}
+  - {beat: Midnight, intent: intrigue, music: "theme-light (the channel signal)", bed: flat-night, fx: [the rip, two cents]}
+  - {beat: The Rule and the Sticky Note, intent: wonder, music: "cue wonder (ticking pulse, a riser)", bed: "bakery, hush, bakery-lamp", fx: [rule card snap, the pen on the note]}
+  - {beat: Everything You Ever Wanted, intent: giddy, music: "cue climb (electro-pop that adds layers)", bed: "bakery, flat-clock, party, street, hush, bank", fx: [day-tag flutter, the stamp]}
+  - {beat: Penthouse to the Billion Cents, intent: euphoric, music: "cue jackpot (synthwave drive)", bed: "night, bakery, street-quiet, ground, bakery", fx: [the crowd, the pour, a rip at midnight]}
+  - {beat: What It Costs, intent: spectacle, music: "cue future (high-energy synthwave)", bed: "street, hush, street, bakery", fx: [the cash machine, the drones' whoosh, problem 1 card]}
+  - {beat: Karl and the Board, intent: worry, music: "cue price (a climbing ostinato)", bed: "backdoor, bakery", fx: [card]}
+  - {beat: Anna's Savings Book, intent: the one quiet beat, music: "cue ache: Anna's theme, once, about 20 s", bed: bakery-lamp, fx: []}
+  - {beat: A Million Each, 1324, 1923, intent: chaos, music: "cue chaos (driving thriller pulse)", bed: "street, bakery, hush", fx: [phones buzzing, problem 2 and 3 cards, the 1923 card]}
+  - {beat: The Planet and the Universe, intent: awe, music: "cue planet (a huge synth and brass swell)", bed: hush, fx: [cards, the last number on the note]}
+  - {beat: Exactly Zero, intent: race, music: "cue countdown (150 bpm)", bed: "night, bank-night, night, street, door", fx: [the form torn, the phone buzzing, the cent into her palm]}
+  - {beat: Midnight Again, intent: peak, music: "none: 4 s silence over the door bed, faded under the line before it", bed: door, fx: []}
+  - {beat: Counted and the Cliffhanger, intent: triumph, music: "cue triumph (the win, then a cheeky sting); theme-light on the end card", bed: "door, bakery", fx: [Jonas's phone ripping]}
 planned_silences:
   - {where: "after 'You count. One cent. ... Twenty-three fifty-nine and fifty-eight.'", length: 4 s, slope: fade, reason: "midnight passes and the coin has nothing to tear"}

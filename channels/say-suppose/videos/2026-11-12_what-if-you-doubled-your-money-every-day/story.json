@@ -3,9 +3,9 @@
   "voice": {
     "model": "local:qwen3",
     "voiceType": "local",
-    "voiceId": "f49e5ec2f2e87941",
-    "ref": "../../brand/voice/arthur-ref.wav",
-    "refText": "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+    "voiceId": "6c836a64b6a08732",
+    "ref": "../../brand/voice/narrator-b-cool.wav",
+    "refText": "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows. That's the band. A thin strip you wear across your forehead. While you sleep, it lends your brain to a company. And it pays you, by the hour."
   },
   "voices": {
     "Jonas": {
@@ -450,8 +450,8 @@
       ]
     },
     {
-      "text": "Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way.",
-      "say": "[leaning in, amazed, the number huge and clear; the last sentence dry and close, a look at the board] Right here in Berlin, by late nineteen twenty-three, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way.",
+      "text": "Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way. Give it all away? You hit zero. Berlin doesn't.",
+      "say": "[leaning in, amazed, the number huge and clear; then dry and close, a look at the board; the last two sentences quick, a shrug, a punchline] Right here in Berlin, by late nineteen twenty-three, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way. Give it all away? You hit zero. Berlin doesn't.",
       "speaker": "narrator",
       "gapAfterSec": 1.05,
       "mood": "day",

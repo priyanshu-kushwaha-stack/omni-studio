@@ -1,0 +1,73 @@
+{
+  "call_id": "fbc7fc3a917e46f1b6aaf6a9b70ae7d4",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "hook_and_promise": 6,
+    "causal_story": 7,
+    "escalation_and_spectacle": 9,
+    "payoff_and_close": 8,
+    "must_pass_compliance": 6
+  },
+  "blockers": [
+    {
+      "quote": "> BUBBLE: You: \"Take it. All of it.\"",
+      "why": "Check #21, Close the loopholes on screen: Jonas refusing does not explain why you cannot transfer every cent to a willing recipient. Anna accepting the final cent proves that reaching zero through payment works.",
+      "fix": "Replace line 35 with: \"Every night, whatever money is still yours doubles. Move it or give it away, and the doubling follows it. Only spending it on something real makes it stop being yours.\" Make the final cent explicitly payment for tomorrow's roll.",
+      "domain": "story",
+      "line": 204
+    },
+    {
+      "quote": "Sounds like the best thing that could ever happen to you. Let's see what it costs.",
+      "why": "Check #3, Second hook by 0:30: \"costs\" is unspecified, so the viewer does not yet know what can be lost or what question drives the film.",
+      "fix": "Replace with: \"Sounds like everything you ever wanted. But unless you hit zero, the bakery downstairs goes first, then Berlin. Can you stop it before the city pays? Let's see what it costs.\"",
+      "domain": "story",
+      "line": 37
+    },
+    {
+      "quote": "> SCENE: Day fifty-two. A TV studio, the anchor at her desk, silent under the narration: BREAKING, a map of Berlin glowing gold.",
+      "why": "No new person after 60%: the anchor first appears well past 60% of the runtime.",
+      "fix": "Replace with: \"> SCENE: Day fifty-two. Every public screen in Berlin flashes BREAKING over a map of the city glowing gold.\"",
+      "domain": "story",
+      "line": 217
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 8,
+      "quote": "> DESIRE: Everything you ever wanted. Then: to stop it before it eats the city.",
+      "fix": "Ask the owner to make the protected desire concrete: \"> DESIRE: To buy Jonas and Anna everything you could never afford, then stop the doubling before it destroys their street.\""
+    },
+    {
+      "line": 144,
+      "quote": "A car. A tiny jet. A racehorse. Four million, gone by dinner.",
+      "fix": "Beat the obvious rich-person montage: \"Every unsold car in Berlin. Every empty hotel room tonight. A racehorse called Exact Change. Four million, gone by dinner.\""
+    },
+    {
+      "line": 232,
+      "quote": "Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of hydrogen atoms in the observable universe (c12).",
+      "fix": "Tie the scale to the decision: \"Wait until day two hundred and sixty-seven and the number outruns the atoms in the observable universe. You have one night to make sure it never sees that day (c12).\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 117,
+      "quote": "Jonas: I don't know what to do with my hands when they win."
+    },
+    {
+      "line": 185,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 283,
+      "quote": "Zero, doubled, is zero."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "944b35b0e9d380923880ef5c7675bf22192b256b8bcc95136b20d7daa436454e",
+  "draft_sha256": "25b3e006752db6c1864aafd119337a0581a3501fec85f28992de2b3030dc1bf4"
+}
