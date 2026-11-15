@@ -3,11 +3,11 @@
   "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "completed",
-  "timestamp": "2026-11-12T05:51:12.601051+00:00",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-15T08:49:15.561467+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": true,
+  "human_approved": false,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -145,7 +145,8 @@
   "metadata": {
     "room": "room-g1.md: shipped round 1, 2 of 16 calls; room evidence ok",
     "owner_pick": "A + NOT HIM. (2026-11-12)",
-    "approval": {
+    "for_owner": "G1 reopened at the owner's word (2026-11-15, \"Yes, reopen G1\"): the 2026-11-12 approval (\"Yes, approve G1\") no longer verifies with this Mac's approval key; the packaging is unchanged since it. Re-sign with omni approve. Never approved by an agent.",
+    "previous_approval": {
       "by": "priyanshu.kushwaha",
       "at": "2026-11-12T05:51:12.592197+00:00",
       "via": "omni approve",
