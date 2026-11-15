@@ -48,3 +48,8 @@ this cut is voice B (free, local); the characters keep their own voices.
 `renders/firstcut/firstcut-v6-720p.mp4`, 6:58. Narration 6:58 in free local voices: 52 new narrator takes in voice B,
 the characters' takes re-voiced for Anna; 5 click mutes. Every take was checked against its line by transcript. The
 music is v5's cues re-spotted (`cues.yaml`); no new music was made.
+
+Voice B reads about 4 dB quieter than voice A did, so the final mux adds 3.5 dB and a light de-esser (the clicks check
+read the "st" of Jonas's opening "just" as a step once the level went up): -16.7 LUFS, true peak -1.5 dBTP, about where
+v5 sat. The channel's -14 LUFS target is checked at picture lock (G3). qc story_script --media passes on the cut
+(claims, clicks).
