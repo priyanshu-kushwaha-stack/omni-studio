@@ -11,8 +11,12 @@ that after the owner's cuts a tight 6-8 minute script is easy. The owner's favou
 your life; time travel. A strong rule with a catch, lots of real science, money or society behind it, and consequences
 that keep getting bigger.
 
-The viewer: a young Indian, comfortable in English, on a phone in the evening, whose week is chai, the bus or metro,
-exams, the office and family (`channels/say-suppose/rules/story.md`). The packaging stays readable worldwide.
+Imaginary stories that hook and make people think (owner, 2026-11-11 and 2026-11-12, `taste.md`). There is no target
+viewer: "you" is anyone, and no persona's week supplies the gags. The premise and its imagination set the world, the
+scale and the gags; the setting, the currency and the cast go wherever the idea's best real content and pictures are,
+and India is one option, never the default. Mind-boggling is one kind of idea, not the only one: a mirror on how
+people are, a dilemma or a catch that changes how you see something ordinary work as well. The packaging stays
+readable worldwide.
 
 ## What breaks out (competitor decode, 2026-11-11)
 
@@ -25,8 +29,13 @@ Manifesting). Their hits share four things; pitch to them:
 - **The proven clusters:** intelligence (IQ, 10x brain), secret feelings of the people around you (crush, envy, who
   misses you, what they say behind your back), speed and time (reaction, rewind, pause), money, and game mechanics in
   real life (stats, level up, respawn). A fresh twist inside a proven cluster beats a new cluster.
-- **Our open lane: their stories are all American school and gamer life.** Put the same engine in our viewer's world:
-  coaching class, board exams, the crush in the next row, hostel, joint family, the office, the metro, cricket.
+- **Our open lane: their stories all live in one default world, American school and gamer life.** Ours go wherever the
+  idea is strongest: the place, the era, the currency and the cast that make the rule strangest and its facts richest
+  (a port city in dollars, a night train in Tokyo, a Roman mint, a coaching class in Kota). Name the world and why the
+  idea belongs there; never pick a place for a viewer.
+- **Make them think.** Keep you at the centre, then let the rule lead somewhere the viewer has not pictured: a
+  staggering scale, a truth about people, or a choice they keep arguing in the comments. A topic that hooks but
+  leaves nothing to think about is replaced.
 - **Sequel potential.** The breakouts got Parts 2 and 3 within days. Pitch a rule that can return with a new twist,
   and a small recurring cast (you, a cousin, a best friend, family).
 
@@ -42,11 +51,12 @@ Answer with a single JSON object, nothing else, in a ```json fence:
   "id": "short-slug",
   "title": "Under 50 characters, sized to a long video, one extreme claim the film delivers",
   "premise": "One sentence a stranger gets at once",
-  "thumbnail": {"image": "who, the emotion, the stake, in one picture", "tag": "3 words or fewer"},
+  "world": "Where and when it happens, in one line, and why the idea's best content is there",
+  "thumbnail": {"image": "you, the power in use, someone stunned, the stake, in one picture", "tag": "3 words or fewer"},
   "rule": "The power exactly: what it can do, its limits, and its catch",
   "hook": "The first 10 seconds in one breath: setup, stakes, tension; no warm-up",
   "beats": ["8 to 12 pointers, each a scene: what happens, what we learn or feel; three jumps of consequence, each bigger"],
-  "feeling_map": ["4 to 6 feelings in order: wonder, greed, fear, guilt, awe ..."],
+  "feeling_map": ["4 to 6 feelings in order: thrill, triumph, laughter, dread, awe ... (one tender beat at most)"],
   "restarts": ["a new complication about every 3 minutes, so a long video never runs on one storyline"],
   "content_mine": [{"fact": "a real fact, number or piece of science", "source": "https://...", "beat": "the beat it moves"}],
   "twist": "The late turn or mind-boggle, after the story has earned it",
@@ -61,7 +71,10 @@ Answer with a single JSON object, nothing else, in a ```json fence:
 Rules for the brief:
 - **At least 12 facts in `content_mine`**, each with a source URL and the beat it moves. A fact with no beat is cut,
   never padded in. If you cannot find 12, the topic is too thin: replace it.
-- **Character over spectacle:** *you* stand to lose something real; spectacle alone does not hold 15 minutes.
+- **Character over spectacle:** *you* stand to win or lose something real (caught, exposed, outsmarted, the edge
+  gone); spectacle alone does not hold 15 minutes.
+- **Exciting, not sad** (owner, 2026-11-13): the best moment is a triumph, a reveal or a mind-boggling image, never a
+  loss or a goodbye. People tap to feel powerful and clever (`docs/research/2026-11-13-say-suppose-audience-mood.md`).
 - **No thumbnail, no idea.** If no single image makes a stranger wonder "what happened?", replace the topic.
 - **Not a copy.** Never the same twist as a trending video; the same daydream with a new rule, a new belief and a
   new thumbnail promise is fine. Never a title on the "already made" list you are given.
@@ -73,10 +86,10 @@ Score each topic 1-10, with a one-line reason each, content first:
 
 | Key | Weight | Asks |
 |---|---|---|
-| `excitement` | x3 | Would you click and tell a friend? One clear sentence, original, extreme, fun; a personal power with a social stake scores higher than spectacle |
+| `excitement` | x3 | Would you click and tell a friend? One clear sentence, original, extreme, fun; a personal power with a social stake scores higher than spectacle; it leaves people thinking; a world picked by default rather than for the idea scores lower; a topic whose best moment is a loss or a goodbye scores lower (owner, 2026-11-13) |
 | `content` | x3 | Real material for an exciting 15 min, so 6-8 min is easy? Count the facts that move a beat; flag a thin mine |
 | `views` | x2 | Is it in a proven breakout cluster (intelligence, secret feelings, speed and time, money, game mechanics) with a fresh twist; does the thumbnail work at a glance (you owning the power, someone reacting, 1-3 words)? |
-| `engine` | x1 | Does the rule keep making new, bigger situations; does *you* lose something; can it return as Part 2? |
+| `engine` | x1 | Does the rule keep making new, bigger situations, wins, catches and narrow escapes; can it return as Part 2? |
 | `buildable` | x1 | Can code-drawn paper-cut scenes show it this week? |
 
 Also give `copies_trending` (true when the twist is a trending video's; it costs 10) and `best_moment` (the one scene

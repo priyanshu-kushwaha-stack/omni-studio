@@ -33,7 +33,7 @@ the lens above that is not one of these checks is a suggestion, never a blocker.
 | Check | Fails when |
 |---|---|
 | #2 Confirm the click | The first 7 s do not show the thumbnail's situation (`packaging.md`) |
-| #3 Second hook by 0:30 | By 0:30 the viewer does not know what you can lose and what question the video asks |
+| #3 Second hook by 0:30 | By 0:30 the viewer does not know what you can win or lose and what question the video asks |
 | #8 A picture only this premise can show | None is named in a `> SCENE:` line, or it comes after the midpoint |
 | #10 The turn breaks a line already said | The reversal contradicts nothing spoken earlier, or the twist is shown early |
 
@@ -48,5 +48,5 @@ the lens above that is not one of these checks is a suggestion, never a blocker.
 - **The under-question (`> UNDER:`):** does each jump make it harder, does the dilemma ask it, does the last image
   answer it without words? Never propose a line that answers it aloud.
 - **The shelf (`rules/story.md`):** the loophole beat, the dilemma a cold reader can argue either way, the residue in
-  Riya's week. Suggestions only.
+  the film's own world. Suggestions only.
 - Up to three moments you would protect in the edit.

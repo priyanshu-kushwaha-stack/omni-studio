@@ -37,20 +37,23 @@ situation be shown in the first 7 s, and does the premise give a second hook by 
 | #5 But / therefore | Two beats join with "and then"; a montage that does not turn |
 | #6 Every use has a gap | A use of the power where what you expect and what you get are the same |
 | #7 Misconception first | You do not act on the wrong belief before the fact breaks it; more than one number at a time; a fact that does not land on you or your person within two lines |
-| #9 Earned stakes | The cost does not attack the habit from #4; a person to lose the premise did not earn; that person not named at least 2 min before the loss, with warm beats |
+| #9 Earned stakes | The catch does not attack the habit from #4, or what is at risk is vague; a person to lose the premise did not earn, not named at least 2 min before, or the loss is the peak or the ending |
 | #12 Leave fast | The end is not the opposite of the opening; no real line inside the last image; a summary |
 | #2 Confirm the click | The first 7 s do not show the thumbnail's situation (`packaging.md`) |
-| #3 Second hook by 0:30 | The first 10 s miss premise, stakes or tension; the title's promise is not met by about 0:15; or by 0:30 the viewer does not know what you can lose and what question the video asks |
+| #3 Second hook by 0:30 | The first 10 s miss premise, stakes or tension; the title's promise is not met by about 0:15; or by 0:30 the viewer does not know what you can win or lose and what question the video asks |
 | #8 A picture only this premise can show | None is named in a `> SCENE:` line, or it comes after the midpoint |
 | #10 The turn breaks a line already said | The reversal contradicts nothing spoken earlier, or the twist is shown early |
 | #13 Every fact moves the story | A real-world fact pushes no beat and no feeling (name it: cut it or tie it) |
 | #4 A habit, then the change | No line or picture shows how you normally run your day, or the change misses that habit |
 | #11 Never say the feeling | A line names what you should feel, or says what the shot already shows |
-| The viewer's week | An example or gag is not from the viewer's week (chai, bus or metro, exams, office, family), or the English title or thumbnail has `₹` or local slang |
+| The world follows the idea (`taste.md`, 2026-11-11) | The setting, currency or cast is a default the idea did not choose (picked for a viewer, not for the story), a gag only one country gets, or the English title or thumbnail has slang, a symbol or a reference only one country reads |
 | #15 Cold open inside the power | The first line is a teaser from later or a mood fragment; the power is not working in the first scene; no premise question by 0:30 |
 | #16 A flagged limit that pays off | The rule runs past three lines; no limit is flagged; the climax is solved by something not planted |
 | #17 Pull every minute | Any minute with no open loop; more than about 80 s with no stake jump; no numbered problems after the "but" |
-| #18 A running gag that carries the peak | No gag or line returns three times; the peak gives nothing up |
+| #18 A running gag that carries the peak | No gag or line returns three times; the peak is not a triumph, a reveal or a mind-boggling image |
+| #20 Escalating set pieces | The middle is one storyline with few uses of the power; a use that is not bigger than the last; the world does not react wider |
+| #21 Close the loopholes on screen | An obvious exploit a viewer would type is never raised and answered (name it) |
+| #22 A laugh in every scene | A scene with no laugh; more than one tender or sad beat, one over about 20 s, a sad peak, or sadness in the last two minutes |
 | #19 The close | No sequel hook, no closing choice question, or a moral recap |
 | #14 A restart every ~3 minutes | More than about 3 minutes with no new complication; the back half denser than the front; no payoff kept for the end |
 | No new power rule after the halfway point | A rule of the power first stated after 50% of the runtime |

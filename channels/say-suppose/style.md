@@ -20,9 +20,9 @@ stays (`rules/story.md`). The 6 to 8 minute target (7:00) and its clock times ar
 | within 20 s | The change | Open inside an ordinary moment that shows one habit of yours; the one change happens to you and hits that habit. The title question is spoken. No intro, no channel name |
 | within 30 s | The rule | State the change exactly, once, and what you stand to gain or lose (the second hook) |
 | to about 35% | The first jump | Small, personal, funny. You use it for dumb things; each use has a gap between what you expect and what you get |
-| to about 65% | The second jump | Bigger consequences, for you and your person. Around the midpoint one thing you assumed turns out wrong; the cost lands near 60% |
-| to about 90% | The third jump | The scale the title deserves, felt through you: a lifetime, a century, the planet as one image. The choice comes at 75 to 80%; the honest answer lands here |
-| the last tenth | Back to you | You end as the opposite of the opening. One line on a real thing the viewer will see differently tomorrow, inside the last image; the comment invitation; stop |
+| to about 65% | The second jump | Bigger uses, and the world notices. Around the midpoint one thing you assumed turns out wrong; near 60% the catch bites (a rival, a hunter, a limit, the world turning on you) |
+| to about 90% | The third jump | The scale the title deserves, felt through you: a lifetime, a century, the planet as one image. The showdown at 75 to 80%: your cleverest, biggest use of the power against the catch |
+| the last tenth | Back to you | You end as the opposite of the opening, on a twist, a bigger consequence or a cliffhanger, never a goodbye. One line on a real thing the viewer will see differently tomorrow, inside the last image; the comment invitation; stop |
 
 The jump labels change with the topic (hours, year, century; or day, decade, forever). There are always three
 jumps of consequence and each is bigger than the last.
@@ -30,14 +30,17 @@ jumps of consequence and each is bigger than the last.
 ### Picking a what-if (owner, 2026-11-08; revised 2026-11-09)
 
 Topics come from the idea room (`rules/ideas.md`): five researcher models, a neutral moderator, ratings by all, one
-agreed scored list; the owner picks. A topic must pass the nine-point pick card in that file: a daydream the viewer
-already had; you can live it from an ordinary moment; a wrong belief it breaks; one belief-breaking fact and one late
+agreed scored list; the owner picks. A topic must pass the nine-point pick card in that file: a daydream people
+anywhere already had; you can live it from an ordinary moment, set where the idea's best content is; a wrong belief it
+breaks; one belief-breaking fact and one late
 mind-boggle; three jumps of consequence; earned stakes; buildable this week; not a neighbour's twist or title from the
 last 90 days.
 
-**The viewer** is one named person: a young Indian, comfortable in English, on a phone in the evening, whose week is
-chai, the bus or metro, exams, the office and family. Every example and gag comes from that week; titles and
-thumbnails stay readable worldwide (no `₹` or local slang in the English packaging).
+**"You" is anyone** (owner, 2026-11-11, `taste.md`; replaces the one named viewer). Stories are imaginary, hook hard
+and make people think (2026-11-12; mind-boggling is one way, not a rule); they are not written to one viewer's week.
+The setting, the currency and the cast follow wherever the idea's best real content and pictures are; India is one
+option, never the default. Titles and thumbnails stay readable worldwide (no slang, symbol or reference only one
+country reads in the English packaging).
 
 ### Writing it (owner, 2026-11-08 and 2026-11-09)
 
@@ -53,12 +56,19 @@ thumbnails stay readable worldwide (no `₹` or local slang in the English packa
 
 ### Story craft (reference study, adopted 2026-11-06)
 
-- **A person to lose, when the premise earns one** (2026-11-09). The viewer cares about a person, not the power. The
-  cost lands near 60% of the runtime; at 75 to 80% comes a choice between the power and that person.
+- **The power is the star** (owner, 2026-11-13; replaces "a person to lose", 2026-11-09). People tap to feel
+  powerful and clever (`docs/research/2026-11-13-say-suppose-audience-mood.md`): the film is a ride of clever,
+  escalating uses, narrow escapes and the world reacting (`rules/story.md` #20). A person to care about is optional,
+  and a loss is never the peak or the ending.
+- **Close the loopholes on screen.** The audience checks the logic; the film says the obvious exploit first and
+  answers it (#21).
+- **Emotion is seasoning.** One short tender beat at most (about 20 s), never the peak, never in the last two
+  minutes (#22).
 - **Plant and pay off.** One line in the first minute comes back, in the same or mirrored words, in the last minute.
-- **Wordless peaks.** The biggest beat gets 8 to 10 seconds with no narration: the music swells or drops, the colour
-  drains, motion slows. Peaks are cut at half the usual rate.
-- **Humour breaks tension**, about once a minute in the first half.
+- **Wordless peaks.** The biggest beat (a triumph, a reveal or the mind-boggling image, not a loss) gets 8 to 10
+  seconds with no narration: the music swells or drops, motion slows. Peaks are cut at half the usual rate.
+- **A laugh in every scene** (owner, 2026-11-13; was once a minute in the first half): a gag, a reaction, a
+  self-aware line, the way the comments under the reference hits talk.
 - **End on a twist and one question** to the viewer.
 
 ## Script rules
@@ -168,7 +178,8 @@ cold open; ConChaser's neon counters over heads and dark pill captions; Primal S
 ## Thumbnails
 
 Revised 2026-11-09 (owner, from HimanshuG's thumbnail study and the Veritasium and Dr. Plants grids). You, large
-(head at least a quarter of the frame height), left of centre, mid-reaction at the instant before the outcome. One
+(head at least a quarter of the frame height), left of centre, mid-reaction at the instant before the outcome. The
+mood is the power working and someone stunned, thrilled or scared; never a sad or crying face (owner, 2026-11-13). One
 prop or stake, at most one crimson pointer to it. A dark or flat set behind, so you stand at 3:1 in greyscale. At most
 three words on a stamped tag in Rubik 800: your reaction or a question, never a bare label. The thumbnail never repeats
 the title, except the time markers of a DAY 1 / DAY N split for change-over-time stories. Three variants, each

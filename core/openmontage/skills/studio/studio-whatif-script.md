@@ -22,10 +22,13 @@ The first review gets the script, a free local narration and a 720p first cut. N
 5. **The meaning layer.** Keep the `> UNDER:` line approved at G1 after the five lines; never answer it aloud. Name
    up to three `> DARLING:` lines, each a spoken line you defend against review. Aim for the shelf hooks in
    `rules/story.md` (the loophole beat every 60-90 s, the dilemma a cold reader can argue either way, the residue in
-   the viewer's week); they are craft aims, not checks yet.
+   the film's own world); they are craft aims, not checks yet. "You" is anyone: write no persona's week into the
+   gags, set the film wherever the idea's best content is (India is one option, never the default), and make the film
+   leave people thinking; a mind-boggling end is one way, not a rule (owner, 2026-11-11 and 2026-11-12, `taste.md`).
 6. **Write to the template** (owner, 2026-11-11, three films a week; `rules/story.md` #15-#19, `style.md`): 9-10
-   minutes at about 155 words a minute, the spine (cold open inside the power, premise by 0:30, a flagged limit, a
-   honeymoon ladder, the "but", numbered problems, a planted ticking-clock climax, the peak gives something up, a sequel
+   minutes at about 155 words a minute, exciting not sad (owner, 2026-11-13: escalating set pieces, loopholes closed on
+   screen, a laugh in every scene; #20-#22), the spine (cold open inside the power, premise by 0:30, a flagged limit, a
+   honeymoon ladder, the "but", numbered problems, a planted ticking-clock climax, a peak of triumph, reveal or mind-boggle (never a loss; #18, #22), a sequel
    hook and the closing line), an open loop every minute, a recurring cast with a running gag. Write `sequel.md` beside
    the script: the hook, the new rule twist and five beats for Part 2, ready if the film breaks out.
    The room's writer (Claude Fable 5.1) keeps the pen; the session does the research, the claims and every revision.
