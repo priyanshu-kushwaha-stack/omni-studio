@@ -3,9 +3,9 @@
   "voice": {
     "model": "local:qwen3",
     "voiceType": "local",
-    "voiceId": "f49e5ec2f2e87941",
-    "ref": "../../brand/voice/arthur-ref.wav",
-    "refText": "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+    "voiceId": "wants-you-to-fail-b4101-cool",
+    "ref": "assets/voice/narrator-cool.wav",
+    "refText": "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows. That's the band. A thin strip you wear across your forehead. While you sleep, it lends your brain to a company. And it pays you, by the hour."
   },
   "voices": {
     "Old woman": {
@@ -51,7 +51,7 @@
       "describe": "A high, bright boy's voice, about six years old, on a bus. Curious and delighted, quick, clear diction, every word distinct, standard English with no slang."
     }
   },
-  "leadInSec": 4.4,
+  "leadInSec": 0.6000000000000001,
   "tailSec": 2.4,
   "lines": [
     {

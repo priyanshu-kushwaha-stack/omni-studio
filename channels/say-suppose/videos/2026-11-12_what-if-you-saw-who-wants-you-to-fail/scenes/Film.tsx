@@ -25,6 +25,9 @@ const SCORE_FADE = 1.5;
 const BED_LEAD = 0.5;
 const BED_FADE = 0.8;
 const BED_UNDER_VOICE = 0.4;
+/** The mix's master gain (final_edit qc, v7: -15.5 LUFS against the channel's -14 +/-1): about +1.6 dB on the narration,
+ *  the score, the beds and the peak note; the watch file's limiter still caps the peaks. */
+const MASTER = 1.2;
 /** The score fades out over the film's last OUTRO frames, so the loop never stops mid-wave. */
 const OUTRO = 60;
 
@@ -96,7 +99,7 @@ const Placed: React.FC<{ src: string; from: number; to: number; lead: number; fa
   return (
     <Sequence from={start} durationInFrames={Math.max(1, end - start)}>
       <Audio src={staticFile(src)} loop
-        volume={(f) => window(f + start, start, end, Math.round(fade * FPS)) * gain(f + start)} />
+        volume={(f) => window(f + start, start, end, Math.round(fade * FPS)) * gain(f + start) * MASTER} />
     </Sequence>
   );
 };
@@ -115,7 +118,7 @@ export const Film: React.FC<FilmProps> = (props) => {
     <AbsoluteFill style={{ background: "#000" }}>
       <Picture {...props} />
       {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
-      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} />}
+      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} volume={MASTER} />}
       <ColdSound cuts={coldCuts(clips, clips.slice(COLD))} end={clips[COLD - 1].from} snap={coldSnap(clips.slice(COLD))} />
       {SCORE.map((c, i) => (
         <Placed key={`s${i}`} src={`music/${c.file}`} from={c.from} to={i === SCORE.length - 1 ? total + 1 : c.to}
@@ -124,7 +127,7 @@ export const Film: React.FC<FilmProps> = (props) => {
       {/* One held low note across the peak (make_sfx.sh), about -34 dB: quieter than the hold music it replaces, so
        *  the peak is a floor and not a swell. */}
       <Sequence from={Math.round(PEAK.from * FPS)} durationInFrames={Math.round((PEAK.to - PEAK.from + 3) * FPS)}>
-        <Audio src={staticFile("sfx/peak-note.wav")} volume={0.07} />
+        <Audio src={staticFile("sfx/peak-note.wav")} volume={0.07 * MASTER} />
       </Sequence>
       {/* An ambience bed per set (make_ambience.py), so no moment is digital silence and the muted-music test holds. */}
       {BEDS.map(([from, name], i) => (

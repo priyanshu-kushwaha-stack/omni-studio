@@ -16,16 +16,23 @@ export const COLD = 3;
 const at = (clips: Clip[], i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
 const end = (clips: Clip[], i: number) => clips[i].from + clips[i].frames;
 
-/** A cut of the cold open: from frame `from` of the film it plays the later film from `src` on, in real time. */
-type Cut = { from: number; src: number };
+/** A cut of the cold open: from frame `from` of the film it plays the later film from `src` on, in real time. A `soft`
+ *  cut is a plain cut inside the hug (no white flash, no snap). */
+type Cut = { from: number; src: number; soft?: boolean };
+
+/** Frames of the thumbnail's wide before the cut into the two-shot. */
+const WIDE = 24;
 
 /** The cuts, from the film's clips (`all`, with the cold open's lines) and the beats' clips (`clips`, without them). */
 export function coldCuts(all: Clip[], clips: Clip[]): Cut[] {
   const words = (i: number, p: number) => at(all, i, p);
-  // the hug (beats' line 3, "Ten at night ... your best friend"): from the thumbnail's two-shot (outside review v6:
-  // open on the exact thumbnail frame), his grin, the two of you; the bubble at 0.84 of it, the card at 0.9
+  // the hug (beats' line 3, "Ten at night ... your best friend"): the thumbnail's two-shot first (outside review v6),
+  // then the bubble (0.84 of the line) and the card (0.9) under the title question, which starts about 0.6 s in
+  // (final_edit qc: the first word within 1 s)
+  const bubble = at(clips, 3, 0.84);
   return [
-    { from: 0, src: at(clips, 3, 0.42) }, // the thumbnail's frame; "I made it." about 3.4 s in; -84 locked by about 4.6 s
+    { from: 0, src: at(clips, 3, 0.42) }, // the thumbnail's frame
+    { from: WIDE, src: bubble - 6, soft: true }, // "I made it." at about 1 s; -84 locked by about 2 s
     { from: words(1, 0), src: at(clips, 54, 0.52) }, // "Six weeks before the big exam": the class under its cards
     { from: words(1, 0.3), src: end(clips, 69) + 4 }, // "A card that shows you who's really racing you": the thousand
     { from: words(1, 0.58), src: at(clips, 88, 0.46) }, // "... a hundred chairs turn their backs on you": the wave, Tae-ho last, the backs
@@ -39,24 +46,28 @@ export function coldSource(frame: number, cuts: Cut[]): number {
   return cut.src + (frame - cut.from);
 }
 
-/** The cold open's own sounds (the beats' sounds play only at their own frames): the card's snap over him, a soft snap
- *  under each flash, and the white flash into the platform. */
+/** The cold-open frame the card snaps over him. */
 export function coldSnap(clips: Clip[]): number {
-  return at(clips, 3, 0.9) - at(clips, 3, 0.42);
+  return WIDE + at(clips, 3, 0.9) - (at(clips, 3, 0.84) - 6);
 }
 
-export const ColdSound: React.FC<{ cuts: Cut[]; end: number; snap: number }> = ({ cuts, end: to, snap }) => (
-  <>
-    <MeterSound at={snap} />
-    <MeterSound at={cuts[1].from + 10} soft volume={0.6} />
-    <MeterSound at={cuts[2].from + 2} soft volume={0.7} />
-    <Sequence from={to - 4} durationInFrames={16}><Audio src={staticFile("sfx/flutter.wav")} volume={0.4} /></Sequence>
-  </>
-);
+/** The cold open's own sounds (the beats' sounds play only at their own frames): the card's snap over him, a soft snap
+ *  under each flash, and the white flash into the platform. */
+export const ColdSound: React.FC<{ cuts: Cut[]; end: number; snap: number }> = ({ cuts, end: to, snap }) => {
+  const flashes = cuts.filter((c, i) => i > 0 && !c.soft);
+  return (
+    <>
+      <MeterSound at={snap} />
+      <MeterSound at={flashes[0].from + 10} soft volume={0.6} />
+      <MeterSound at={flashes[1].from + 2} soft volume={0.7} />
+      <Sequence from={to - 4} durationInFrames={16}><Audio src={staticFile("sfx/flutter.wav")} volume={0.4} /></Sequence>
+    </>
+  );
+};
 
 /** A white flash on each cut and into the platform, a few frames, over the picture. */
 export const ColdFlash: React.FC<{ frame: number; cuts: Cut[]; end: number }> = ({ frame, cuts, end: to }) => {
-  const marks = [...cuts.slice(1).map((c) => c.from), to];
+  const marks = [...cuts.slice(1).filter((c) => !c.soft).map((c) => c.from), to];
   let a = 0;
   for (const m of marks) {
     const d = frame - m;

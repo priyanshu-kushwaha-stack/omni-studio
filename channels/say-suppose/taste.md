@@ -8,6 +8,14 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-15
+
+- **"B (AI-rents voice)"** On four free local narrator samples for saw who wants you to fail (A Arthur's clone, B the
+  AI-rents film's designed voice, C a new energetic baritone, D a new female storyteller), after: "I like Film: What If
+  AI Rented Your Brain While You Slept? the one used in this one better because we have more control over it right ?"
+  The narrator is a voice we design from a description (Qwen3 VoiceDesign) and clone from one reference read, so it
+  stays one voice from line to line; free and local. The film carries it in its own `narrator.py`.
+
 ## 2026-11-14
 
 - **"Everything valid"** On the outside review of saw who wants you to fail v6 (Cursor, GPT-5.6 Sol, frame by frame)
