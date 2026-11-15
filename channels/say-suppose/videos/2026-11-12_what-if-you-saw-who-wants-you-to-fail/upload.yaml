@@ -1,0 +1,50 @@
+# Private upload request for `omni upload` (publish_prep, G5). Agents never upload; the owner runs --run and makes it public by hand.
+file: renders/final/film-1080p.mp4   # 12:26, the same cut as renders/v9/cut-v9-720p.mp4 (signed at G3)
+thumbnail: renders/packaging/thumb-a.png   # G1 pair A, the owner's pick 2026-11-12 ("A + NOT HIM."); 1.85 MiB PNG, under the 2 MiB limit
+captions:   # from the script (core/engines/whatif/pipeline/subtitles.py), not speech recognition
+  en: subtitles/en.srt
+title: What If You Saw Who Wants You to Fail?
+description: |-
+  Say your good news out loud, and a card snaps open over the listener's head: how much your win hurts them. Six weeks before Korea's big exam, who is really racing you?
+
+  Be honest: what number would open over your head? Tell us in the comments. The best what-ifs become videos.
+
+  Chapters
+  0:00 Made the cut
+  1:06 The rule
+  2:32 Who's red
+  4:59 The weapon
+  6:18 A thousand cards
+  7:46 The ladder
+  8:35 Backs
+  10:20 The window
+
+  The card is made up. The facts are real:
+  - On Korea's college entrance exam, most subjects are graded on a curve, and the top grade goes to the top 4 per cent:
+    https://en.wikipedia.org/wiki/College_Scholastic_Ability_Test
+    https://math-zen.com/blog/how-to-prepare-for-suneung-math
+  - On exam day in November 2025, planes stopped taking off and landing for 35 minutes during the English listening test: TRT World
+    https://www.trtworld.com/article/f19ad18cc24f
+  - Seoul's cram schools may teach only until ten at night, and inspectors have patrolled the streets to enforce it: Korea JoongAng Daily; TIME (2011)
+    https://www.koreajoongangdaily.com/korea/ordinance-to-extend-hagwon-hours-in-seoul-sparks-debate-over-regulating-cram-schools/12409013
+    https://content.time.com/time/printout/0,8816,2094427,00.html
+  - Daechi-dong, in Seoul, has about a thousand after-school academies:
+    https://en.wikipedia.org/wiki/Daechi-dong
+    https://www.abc.net.au/news/2014-10-24/south-korea-launches-happy-education-policy-to-shorten-study-ho/5840152
+  - In one brain-scan study, envying someone who did better at something that mattered came with activity in a region also active in pain: Takahashi et al., Science (2009)
+    https://pubmed.ncbi.nlm.nih.gov/19213918/
+  - Envy comes in two kinds, benign (move up) and malicious (pull the other down): Van de Ven, Zeelenberg and Pieters, Emotion (2009)
+    https://pubmed.ncbi.nlm.nih.gov/19485619/
+  - We compare ourselves with people close to our own level: Festinger (1954), A Theory of Social Comparison Processes
+    https://www.humanscience.org/docs/Festinger%20(1954)%20A%20Theory%20of%20Social%20Comparison%20Processes.pdf
+  - We envy people who started out like us, in what matters to us, and people don't like to admit malicious envy, even to themselves: Van de Ven, Zeelenberg and Pieters, Motivation and Emotion (2012)
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC3356518/
+
+  Narrated with an AI voice. Animated in code.
+tags: [what if, envy, best friend, rivalry, Korea, Seoul, suneung, cram school, animated story, say suppose]
+made_for_kids: false
+# Altered or synthetic content: false, as on pause-time (owner, 2026-11-08), NOT YET CONFIRMED BY THE OWNER FOR THIS FILM.
+# The disclosure is for realistic content a viewer could mistake for real people, places or events; this is a stylised
+# paper-cut cartoon with fictional characters. The narration (local Qwen3 voice B) and the score (local ACE-Step) are
+# AI-made; the description says "Narrated with an AI voice".
+contains_synthetic_media: false
