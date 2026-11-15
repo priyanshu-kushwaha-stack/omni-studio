@@ -36,15 +36,18 @@ def test_studio_whatif_checks_per_gate():
         "clicks",
     ]  # story lock: script + narration
     for stage in ("final_edit", "final_watch"):
-        assert checks.stage_checks("studio-whatif", stage) == ["loudness", "clicks", "opening", "similarity"]
+        assert checks.stage_checks("studio-whatif", stage) == ["loudness", "clicks", "similarity"]
     assert checks.stage_checks("studio-whatif", "publish_prep") == [
         "claims",
         "loudness",
         "clicks",
-        "opening",
         "similarity",
         "upload_request",
     ]
+    # The opening's timing is judged film by film (owner, 2026-11-15): reported, never blocking.
+    for stage in ("final_edit", "final_watch", "publish_prep"):
+        assert checks.stage_warnings("studio-whatif", stage) == ["opening"]
+    assert checks.stage_warnings("studio-whatif", "story_script") == []
 
 
 def test_studio_whatif_is_code_drawn_with_no_lip_sync_or_boil():
@@ -156,3 +159,67 @@ def test_story_lock_checks_the_local_narration_for_clicks(tmp_path, monkeypatch)
     )
     checks.run_stage("say-suppose", "v", "story_script", write=False)
     assert seen["clicks"] == (folder / "narration" / "narration.wav").resolve()
+
+
+# --- the opening is a warning, not a gate (owner, 2026-11-15) ---
+
+LATE_OPENING = {"check": "opening", "ok": False, "problems": ["first word comes at 4.4 s (want within 1 s)"]}
+
+
+def _all_pass_but_opening(name, *args):
+    return dict(LATE_OPENING) if name == "opening" else {"check": name, "ok": True, "problems": []}
+
+
+def _at_final_edit(studio_root, monkeypatch, run_check):
+    """A dummy what-if video with G1 and G2 passed and final_edit awaiting the owner; returns (channel, video,
+    render)."""
+    channel = studio_root("dummy", formats={"story": "studio-whatif"}, loudness=LOUDNESS)
+    folder = channels.new_video(channel, "Cold Open", "story", on=date(2026, 11, 15))
+    video = folder.name
+    monkeypatch.setattr(checks, "run_check", run_check)
+    _awaiting(channel, video, "proposal", {"proposal_packet": sample_artifact("proposal_packet")})
+    channels.approve_stage(channel, video, "proposal", "dummy owner, test only")
+    _quiet_narration(folder)
+    _awaiting(channel, video, "story_script")
+    assert cli.main(["qc", "dummy", video, "story_script"]) == 0
+    channels.approve_stage(channel, video, "story_script", "dummy owner, test only")
+    render = folder / "render.mp4"
+    render.write_bytes(b"dummy render, test only")
+    _awaiting(channel, video, "final_edit")
+    return channel, video, render
+
+
+def test_failing_opening_warns_in_qc_and_approve_still_signs(studio_root, monkeypatch, capsys):
+    channel, video, render = _at_final_edit(studio_root, monkeypatch, _all_pass_but_opening)
+    folder = channels.video_dir(channel, video)
+    capsys.readouterr()
+
+    assert cli.main(["qc", "dummy", video, "final_edit", "--media", str(render)]) == 0
+    out = capsys.readouterr().out
+    assert "[WARN] opening" in out and "first word comes at 4.4 s" in out and "  ok" in out
+    report = yaml.safe_load((folder / "qc" / "final_edit.json").read_text())
+    assert report["ok"] is True
+    assert next(r for r in report["checks"] if r["check"] == "opening")["warning"] is True
+
+    channels.approve_stage(channel, video, "final_edit", "dummy owner, test only")
+    assert read_checkpoint(channel.videos_dir, video, "final_edit")["status"] == "completed"
+    assert "warning (does not block the gate): opening: first word comes at 4.4 s" in capsys.readouterr().err
+
+
+def test_a_failing_blocking_check_still_refuses_beside_a_warning(studio_root, monkeypatch):
+    def loud(name, *args):
+        if name == "loudness":
+            return {"check": name, "ok": False, "problems": ["too loud"]}
+        return _all_pass_but_opening(name, *args)
+
+    channel, video, render = _at_final_edit(studio_root, monkeypatch, loud)
+    assert cli.main(["qc", "dummy", video, "final_edit", "--media", str(render)]) == 1
+    with pytest.raises(ChannelError, match="loudness: too loud") as err:
+        channels.approve_stage(channel, video, "final_edit")
+    assert "opening" not in str(err.value)
+
+
+def test_a_check_cannot_be_both_blocking_and_a_warning(monkeypatch):
+    monkeypatch.setattr(checks, "_named_checks", lambda pipeline, stage, key: ["opening"])
+    with pytest.raises(ChannelError, match="both a check and a warning"):
+        checks.stage_warnings("studio-whatif", "final_edit")
