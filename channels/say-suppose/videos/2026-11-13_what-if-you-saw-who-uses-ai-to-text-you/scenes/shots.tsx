@@ -31,7 +31,8 @@ export const SHOTS: ShotDef[] = [
   { at: S(FIRST), draw: (t) => <Insert t={t} mood="lamp" msgs={BIRTHDAY.slice(0, 4).map((m) => ({ ...m, dot: false }))} /> },
   { at: S(FIRST, 1), draw: (t) => <Kitchen t={t} mood="lamp" you="happy" mother="happy" cake /> },
   { at: E(FIRST), draw: (t) => <Kitchen t={t} mood="lamp" you="neutral" mother="happy" cake cam="stove" /> },
-  { at: E(FIRST, 24), draw: (t) => <Insert t={t} mood="lamp" msgs={BIRTHDAY.slice(0, 4)} dotsAt={4} dotEvery={6} /> },
+  // The thumbnail's frame, exactly, as the dots tick on in the smoke: about 0:05 (#2, taste 2026-11-15: the promise in 7 s).
+  { at: E(FIRST, 24), draw: (t) => <KeyShot t={t} dotsAt={[4, 10, 16, 22]} smoke={1} /> },
   { at: S("Mother: What? What is it?"), draw: (t) => <Kitchen t={t} mood="lamp" you="shocked" mother="worried" /> },
   { at: E("Mother: What? What is it?"), draw: (t) => <KeyShot t={t} dotsAt={[0, 5, 10, 15]} smoke={1} /> },
   { at: S("You asked who meant it."), draw: (t) => <KeyShot t={t} push={0.03} /> },

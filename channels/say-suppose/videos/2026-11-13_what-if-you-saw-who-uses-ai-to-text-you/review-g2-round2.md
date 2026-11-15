@@ -17,7 +17,7 @@ rounds 4-6 were applied by this session (v2.1-v2.3), and round 7 shipped. Every 
 |---|---|---|---|
 | 1 | The dot is a wound; the peak is leaving a typo in | The dot is a power. The middle is seven set pieces, each wider: the aunts, the dinner bet, catching her machine, the office, the city's reviews and comments, the news and a campaign. The showdown is you out-thinking your boss | #20, the owner's note |
 | 2 | DESIRE: know who means it. CHANGE: look at the person behind the dot | DESIRE: be the only one in the city who can tell. CONFLICT: the people in charge want it. CHANGE: the flaw becomes the lock | #9: what's at risk is getting caught, exposed or bought |
-| 3 | The skit: you wipe a tear; your face falls at the dots | You grin at the paragraph; at the dots your brows shoot up, eyes wide, mouth open; the key shot by about 0:06 | K17, #2 |
+| 3 | The skit: you wipe a tear; your face falls at the dots | You grin at the paragraph; at the dots your brows shoot up, eyes wide, mouth open; the key shot at about 0:05 on the cut | K17, #2 |
 | 4 | The rule: "if a machine wrote it and a person only pressed send" | "If a machine chose the words, it gets a small red dot. Whoever's thumbs pressed send." | #21: answers the retype loophole from the rule as spoken |
 | 5 | Never asks | "Why not just ask?" You ask aunt one on screen; her "Every word, my love" is dotted | #21; when the narrator says you ask, you ask |
 | 6 | The cold week, the shoebox, the Cost (her drafts) | Cut. Set for Two (you bet the dinner on the dots) and The Office (the screenshot comes out clean, the coworker retypes a machine and still gets a dot, the floor types like an exam) | #22: the hurt goes, a laugh in every scene |
@@ -41,7 +41,7 @@ rounds 4-6 were applied by this session (v2.1-v2.3), and round 7 shipped. Every 
 |---|---|---|---|
 | 4 | claims, blocker | "bots passed people ... more machines than humans" turns web traffic into a head count (c09) | Reworded; then cut in round 5 |
 | 4 | claims, blocker | The 2001 nickname and the 2008 billion read as one year; the country unnamed (c01, c02) | "The Philippines"; then c02 cut in round 5 |
-| 4 | story, blocker | The thumbnail's frame after 7 s (#2) | The skit's first two holds cut from 4 s and 3 s to 2 s each; the frame lands at about 0:06 |
+| 4 | story, blocker | The thumbnail's frame after 7 s (#2) | The skit's first two holds cut from 4 s and 3 s to 2 s each; on the cut the exact frame now comes up as the dots tick on, at about 0:05 (it was 8.2 s on the first render, after your mother's line; moved in the shot list) |
 | 4 | story, blocker | The set pieces contract after the office (#20) | "Catch Her at It" moved before "The Office": family, friend, work, city, news |
 | 4 | story, blocker | The dating-app man and the newsreader arrive after 60% | Planted: the man's chat flicks past on the morning bus; the newsreader and the senator are on the party television |
 | 5 | claims, blockers | c02 needs its year; c09 "found" for "estimated"; c20's middle sentence uncited | c02 and c09 cut (see the story note); c20 cited |
@@ -54,8 +54,8 @@ rounds 4-6 were applied by this session (v2.1-v2.3), and round 7 shipped. Every 
 
 ## Open for the owner (round 7, story editor)
 
-1. **#2, the thumbnail's frame.** The seat read the script's timing note, which still says 0:09-0:11. On the cut, after
-   round 4's hold changes, the frame lands at about 0:06 (see the hand-over). No change proposed.
+1. **#2, the thumbnail's frame.** The seat read the script's timing note, which still says 0:09-0:11. On the cut the exact
+   frame comes up with the dots at about 0:05. The first render had it at 8.2 s, so the shot list moved it. No script change proposed.
 2. **#7, the context facts.** c04 (two million overseas) and c01 (the texting capital) don't break a belief you act on.
    Proposed: cut both and go straight to the reply and the roof. Writer's view: keep both. The world follows the idea,
    and each carries a picture (the map, the city of windows).

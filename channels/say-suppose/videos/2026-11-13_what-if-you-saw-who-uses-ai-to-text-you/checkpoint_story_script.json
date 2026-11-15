@@ -4,21 +4,20 @@
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
   "status": "awaiting_human",
-  "timestamp": "2026-11-13T03:05:09.849483+00:00",
+  "timestamp": "2026-11-15T18:09:04.191580+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "script": "script.md v1.3 (Fable 5.1; room g2 round 3 shipped, sha eb6ff9d0)",
-    "claims": "claims.md (27 rows; spoken: c01, c02, c04, c09, c11, c14, c19, c20, c22)",
-    "narration": "local voices (Qwen3 Arthur clone narrator; Qwen3-design characters: Mother, Best friend, Aunt one, Aunt two, Manager, Coworker, Cousin, Bus kid), 102 lines, 585.9 s; mutes.txt; line 99 take low-passed at 6 kHz (omni fix story_script-2)",
-    "first_cut": "renders/firstcut/firstcut-720p.mp4 (git-ignored), 1280x720, 9:46; picture-720p.mp4 + audio.wav muxed",
-    "sound": "a score cue per section (ACE-Step, local) and an ambience bed per set (cues.yaml, scenes/sound.ts)",
+    "script": "script.md v2.3, exciting not sad (owner note 2026-11-13; Fable 5.1 rewrite; room g2 rounds 4-7, round 7 shipped)",
+    "review": "review-g2-round2.md (every change and why; three story notes open for the owner)",
+    "claims": "claims.md; spoken: c01, c04, c11, c20, c22",
+    "narration": "voice B narrator (main #59) and local character voices incl. new Shift lead, Newsreader; 105 lines; mutes.txt (4, between words); line 103 take low-passed at 6 kHz (omni fix story_script-2)",
+    "first_cut": "renders/firstcut-v2/firstcut-720p.mp4 (git-ignored), 1280x720, 9:35",
+    "thumbnail": "K17: pair A redrawn with you stunned (brand/thumbs/texts); a change from the approved G1",
     "qc": "omni qc story_script on the cut: claims ok, clicks ok",
-    "room": "room-g2.md, review-g2-round1.md (three story notes open for the owner)",
-    "g1": "approved by the coordinator on the owner's instruction (pair A + EVEN HER?)",
-    "awaiting": "the owner's one cut review, then omni approve by the owner (G2 story lock)"
+    "awaiting": "the owner's cut review, then omni approve by the owner only"
   }
 }
