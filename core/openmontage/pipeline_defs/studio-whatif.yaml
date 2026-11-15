@@ -45,15 +45,21 @@ compatible_playbooks:
   custom_allowed: true
 
 # Automated checks per stage: `omni qc` runs them, `omni approve` re-runs them before it signs (core/studio/checks.py).
+# studio_warnings run and are reported (WARN) but never block a gate. The opening's timing is judged film by film:
+# a wordless cold open can be right (owner, 2026-11-15).
 metadata:
   target_seconds: 420
   min_seconds: 360
   max_seconds: 480
   studio_checks:
     story_script: [claims, clicks]
-    final_edit: [loudness, clicks, opening, similarity]
-    final_watch: [loudness, clicks, opening, similarity]
-    publish_prep: [claims, loudness, clicks, opening, similarity, upload_request]
+    final_edit: [loudness, clicks, similarity]
+    final_watch: [loudness, clicks, similarity]
+    publish_prep: [claims, loudness, clicks, similarity, upload_request]
+  studio_warnings:
+    final_edit: [opening]
+    final_watch: [opening]
+    publish_prep: [opening]
 
 stages:
   - name: proposal
@@ -111,7 +117,7 @@ stages:
       - The key shot the owner picked in the look test; text placement, sound effects and bed under the voice
       - The voice the A/B chose (paid only on the owner's yes)
     success_criteria:
-      - omni qc final_edit passes (loudness, clicks, opening, similarity)
+      - omni qc final_edit passes (loudness, clicks, similarity); an opening WARN is the owner's call
 
   - name: final_watch
     skill: studio/studio-whatif-final-watch
