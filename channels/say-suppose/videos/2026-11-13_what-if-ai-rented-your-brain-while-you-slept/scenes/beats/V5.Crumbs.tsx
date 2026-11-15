@@ -6,6 +6,7 @@
 //   44-46  the notebook page draws itself: two paper bands on one paper head; the first's thread up to a little ghost
 //          and $90, the second's thread up to nothing, drooping, and $0 (44-45); then the table: him, two lights under
 //          his cap, pleased with himself: "Worth a shot." (45-46)
+import { DEBT } from "./V6.Kit";
 import { STAND, SEATED, type Pose } from "@whatif/kit/rig/pose";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
@@ -33,11 +34,14 @@ const REST: Pose = { ...SEATED, armF: [30, 60], armB: [55, 40] };
 export const ChairAgain: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 }) => {
   const c = V5.chair;
   const { from, to } = chairSpan(v3);
-  const notesShot = v3[c + 1].from - 2;
-  const bandShot = v3[c + 2].from - 2;
+  // script v6: one line (27) "...Thirty from the chair, ninety from the band. Why choose?": the notes and $30 land on
+  // "Thirty" (0.38 of the line), the band's flap and $90 on "ninety" (0.55)
+  const notesShot = atV(v3, c, 0.2);
+  const bandShot = atV(v3, c, 0.5);
   const nurseShot = v3[c + 3].from - 4;
-  const counts = [atV(v3, c + 1, 0.12), atV(v3, c + 1, 0.4), atV(v3, c + 1, 0.68)];
-  const flap = atV(v3, c + 2, 0.18);
+  const counts = [atV(v3, c, 0.26), atV(v3, c, 0.31), atV(v3, c, 0.36)];
+  const flap30 = atV(v3, c, 0.36);
+  const flap = atV(v3, c, 0.54);
   const rested = [v3[c + 3].from, lineEnd(v3, c + 3)] as const;
 
   const yf: Placed = { ...seatedInChair(REST), pose: REST };
@@ -86,7 +90,8 @@ export const ChairAgain: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 
       <Fig f={nb} head={NURSE.head} coat={NURSE.coat} {...nurseFace} blink={(frame + 5) % 97 < 4} />
       <HeadGear f={nb}><PaperCap x={0} y={0} r={46} /></HeadGear>
       {/* three notes from the chair, ninety from the band: the band's flap beside the notes, clear of your face */}
-      <PayFlap frame={frame} at={flap} until={nurseShot} x={pocket.x + 40} y={pocket.y + 110} value="$90" size={34} />
+      <PayFlap frame={frame} at={flap30} until={bandShot} x={palm.x + 70} y={palm.y - 70} value="$30" size={34} settle={3} />
+      <PayFlap frame={frame} at={flap} until={nurseShot} x={pocket.x + 40} y={pocket.y + 110} value="$90" size={34} settle={3} />
     </>
   );
   return <ClinicScene frame={frame + 22} mood="morning" cam={drift(cams[shot], frame, "v5-chair", 3)} door={0} actors={actors} />;
@@ -102,12 +107,14 @@ export function twoBandsSpan(v3: Clip[]) {
 const TwoBandsPage: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 }) => {
   const b = V5.twoBands;
   const { from } = twoBandsSpan(v3);
-  const head = atV(v3, b, 0.02);
-  const band1 = atV(v3, b, 0.12);
+  // script v6: the page opens already drawn (the head and the first band)
+  const head = from - 20;
+  const band1 = from - 10;
   const band2 = atV(v3, b, 0.48);
   const thread1 = [v3[b + 1].from, atV(v3, b + 1, 0.2)] as const;
   const thread2 = [atV(v3, b + 1, 0.24), atV(v3, b + 1, 0.44)] as const;
-  const pays = [atV(v3, b + 1, 0.47), atV(v3, b + 1, 0.53)] as const;
+  // script v6 line 35 "The second band paid nothing": band one's $90 already up, $0 lands on "paid" (0.12)
+  const pays = [v3[b + 1].from - 6, atV(v3, b + 1, 0.11)] as const;
   const cam = drift(camAt(frame, [[from, { x: 960, y: 470, zoom: 1.3 }], [atV(v3, b + 1, 0.66), { x: 960, y: 460, zoom: 1.4 }]]), frame, "v5-two", 3);
   // the page's own coordinates: 0..1000 by 0..600
   const H = { x: 330, y: 400, r: 120 };
@@ -147,7 +154,7 @@ const TwoBandsPage: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 }) =>
         <DrawLine d={`M${L2.x} ${L2.y + 26} C${L2.x - 30} ${L2.y - 120} ${L2.x + 40} ${L2.y - 230} ${L2.x - 90} ${L2.y - 200} S${L2.x - 150} ${L2.y - 110} ${L2.x - 170} ${L2.y - 60}`}
           from={thread2[0]} to={thread2[1]} color={C} width={7} />
         <PayFlap frame={frame} at={pays[0]} x={ghostAt.x + 170} y={ghostAt.y + 200} value="$90" size={50} />
-        <PayFlap frame={frame} at={pays[1]} x={L2.x - 170} y={L2.y + 30} value="$0" size={50} />
+        <PayFlap frame={frame} at={pays[1]} x={L2.x - 170} y={L2.y + 30} value="$0" size={50} settle={2} />
       </Sheet>
     </TopDown>
   );
@@ -166,7 +173,7 @@ const TwoBandsTable: React.FC<{ frame: number; v3: Clip[]; mood: MoodName }> = (
   const youFace: Face = { brows: "flat", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 1, y: 0 } };
   const cam = camAt(frame, [[at, closeUp(bh.x - 60, bh.y - 10, 2.3)], [to, closeUp(bh.x - 60, bh.y - 10, 2.5)]]);
   return (
-    <KitchenTable frame={frame} cam={drift(cam, frame, "v5-two-table", 3)} mood={mood} jar={0.3}
+    <KitchenTable frame={frame} cam={drift(cam, frame, "v5-two-table", 3)} mood={mood} debt={{ amount: DEBT.crumbs }} jar={0.3}
       you={{ body: YOU_SEAT, face: youFace }} brother={{ body: bro, face: broFace, light: 1, two: true, bowl: true }} />
   );
 };

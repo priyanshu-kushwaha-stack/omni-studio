@@ -139,9 +139,12 @@ const Held: React.FC<{ prop: Waker["prop"] }> = ({ prop }) => {
   return <g transform="rotate(-10)"><rect x={-14} y={-44} width={28} height={50} rx={5} fill="#1b1d24" /><rect x={-11} y={-40} width={22} height={40} rx={2} fill="#cfe9f4" /></g>;
 };
 
-export const DaytimeStreet: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 }) => {
+export const DaytimeStreet: React.FC<{ frame: number; v3: Clip[]; until?: number }> = ({ frame, v3, until }) => {
   const { from, to } = twistSpan(v3);
-  const cam = drift(camAt(frame, [[from, { x: 1000, y: 770, zoom: 1.5 }], [to, { x: 990, y: 765, zoom: 1.58 }]]), frame, "v5-twist", 2);
+  // script v6: the awake street holds to the end of the film, pushing in slowly under the end tags (`until`)
+  const keys: [number, { x: number; y: number; zoom: number }][] = [[from, { x: 1000, y: 770, zoom: 1.5 }], [to, { x: 990, y: 765, zoom: 1.58 }]];
+  if (until !== undefined && until > to + 1) keys.push([until, { x: 940, y: 720, zoom: 1.95 }]);
+  const cam = drift(camAt(frame, keys), frame, "v5-twist", 2);
   const props = { cam, mood: "day" as const, frame, options: { ...street.defaults, crowd: false, auto: false } };
   const s = 1.0;
   const y = 1010;

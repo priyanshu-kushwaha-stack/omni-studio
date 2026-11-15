@@ -115,7 +115,7 @@ export const KitchenTable: React.FC<{ frame: number; cam: Camera; s: KitchenStat
   return (
     <LookContext.Provider value={setLook(kitchen.lights(OPTIONS), mood, cam)}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={kitchen.Back(props)}
-        actors={<><People frame={frame} s={s} />{children}</>} front={kitchen.Front?.(props)} />
+        actors={<><People frame={frame} s={s} />{children}</>} />
     </LookContext.Provider>
   );
 };

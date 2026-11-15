@@ -12,20 +12,22 @@
 //   89   the room, wide: nothing above the blanket where the pale second you used to type. Nobody's typing.
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
-import { dir, joints, LIMB, STAND, type Pose } from "@whatif/kit/rig/pose";
+import { dir, joints, LIMB, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { drift } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
 import { INK } from "@whatif/kit/theme";
-import { Band } from "../parts";
+import { Band, BandBox } from "../parts";
+import { windowIndex, WindowStreetScene, WS, yourWindow } from "../sets/WindowStreet";
 import { BunkRoom, BUNK } from "../sets/BunkRoom";
-import { blinking, BROTHER, camAt, current, GHOST, lineEnd, mix, ramp, type Beat, type Shot } from "../shared";
+import { blinking, BROKER, BROTHER, camAt, current, GHOST, lineEnd, mix, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, handAt, headOf, Pen, talk, WallClock, You, type Body, type Face } from "./Contract.Kit";
 import { isV5, V5 } from "./V5.Kit";
+import { at6, isV6, V6 } from "./V6.Kit";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const holdA = lineEnd(clips, 87); // performed: the drawer
@@ -55,6 +57,11 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
     stepsAt, steps: v5 ? [inS(0.1), inS(0.3), inS(0.5), inS(0.7)] : [inB(0.7), inB(0.78), inB(0.86), inB(0.94)],
     lie, jar88: at(88, 0.45), shut88: at(88, 0.66), eyes88: at(88, 0.86),
     wide89: from(89) - 3,
+    // script v6 line 100: the grey suit at your front door, knocking, then leaving; line 101 on "Yours is the only window
+    // on the street not working": the hundred windows at night, every pane lit with a typist but yours
+    ...(isV6(v6) ? {
+      landing: stepsAt, leave: at6(v6, V6.knock, 0.72), windows: at6(v6, V6.window, 0.58),
+    } : { landing: lie - 2, leave: lie - 1, windows: from(89) - 4 }),
   };
 }
 
@@ -86,7 +93,7 @@ function brotherAt(frame: number, k: T) {
   const rot = mix(-90, -112, lean);
   // while he talks down from the bunk (123-124) his back arm lies along the mattress, off his face
   const talking = frame >= k.scam - 4 && frame < k.stepsAt;
-  const pose: Pose = { ...STAND, legB: [-4, 0], legF: [4, 0], armB: talking ? [-20, 10] : [80, 10], armF: [mix(60, 92, lean), mix(40, 0, lean)] };
+  const pose: Pose = { ...STAND, legB: [-4, 0], legF: [4, 0], armB: talking ? [-20, 10] : [80, 10], armF: [mix(60, 80, lean), mix(40, 34, lean)] };
   const body: Body = { x: BRO.hipX, y: BRO.hipY + 112 * BRO.scale, scale: BRO.scale, facing: -1, pose };
   const hand = worldPoint(body, rot, handLocal(pose));
   const head = worldPoint(body, rot, joints(pose).head);
@@ -170,12 +177,13 @@ const Room: React.FC<{ frame: number; k: T; view: { x: number; y: number; zoom: 
       {/* his foot, down off the bunk, pushing the drawer shut */}
       {frame >= k.footShot && frame < k.holdB && (
         <g>
-          <path d={`M${mix(330, 300, shut)} 300 L${mix(330, 250, shut)} ${DRAWER.y + 10}`} stroke="#3b3e47" strokeWidth={34} strokeLinecap="round" />
+          {/* a short leg, bent at the knee, coming into the top of the insert (not a long pole from the bunk) */}
+          <path d={`M${mix(360, 340, shut)} 560 Q${mix(250, 230, shut)} 700 ${mix(330, 250, shut)} ${DRAWER.y + 10}`} fill="none" stroke={BROTHER.coat} strokeWidth={30} strokeLinecap="round" />
           <ellipse cx={mix(318, 238, shut)} cy={DRAWER.y + 26} rx={36} ry={18} fill="#e9e4da" stroke={INK} strokeWidth={4} />
         </g>
       )}
       <You body={body} face={face} frame={frame}
-        held={into < 0.99 ? <Band x={0} y={8} scale={0.42} lit={lit} tilt={-20} /> : undefined} />
+        held={into < 0.99 ? <Band x={0} y={8} scale={0.7} lit={lit} tilt={-20} /> : undefined} />
       {/* the pen in the other hand */}
       <g transform={`translate(${handAt(body, "back").x} ${handAt(body, "back").y})`}><Pen x={0} y={0} tilt={-70} scale={1.5} /></g>
       <defs>
@@ -216,17 +224,60 @@ const ClockInsert: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={null} actors={actors} />;
 };
 
+/** Script v6 line 100: the landing outside your front door at midnight. The grey suit knocks, waits, and goes. */
+const Landing: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const knock = frame < k.leave && Math.floor((frame - k.landing) / 7) % 2 === 0 && frame - k.landing < 40;
+  const gone = ramp(frame, k.leave, k.leave + 70);
+  const x = mix(1240, 2200, gone);
+  const pose: Pose = frame < k.leave
+    ? { ...STAND, armF: knock ? [-38, -70] : [-20, -60], armB: [30, 60] }
+    : walkPose(frame * 0.3);
+  const cam = drift(camAt(frame, [[k.landing, { x: 1040, y: 600, zoom: 1.25 }], [k.lie, { x: 1080, y: 590, zoom: 1.4 }]]), frame, "landing", 3);
+  const actors = (
+    <>
+      <rect x={-1000} y={-800} width={4000} height={2800} fill="#2b2a38" />
+      <rect x={-1000} y={960} width={4000} height={800} fill="#1f1d29" />
+      <line x1={-1000} y1={960} x2={3000} y2={960} stroke={INK} strokeWidth={6} />
+      <circle cx={1150} cy={200} r={260} fill="#ffd98a" opacity={0.14} />
+      <rect x={1130} y={160} width={40} height={30} rx={6} fill="#ffe2a8" stroke={INK} strokeWidth={4} />
+      {/* your front door, shut */}
+      <rect x={740} y={330} width={330} height={630} fill="#5a3b28" stroke={INK} strokeWidth={8} />
+      <rect x={780} y={380} width={250} height={240} rx={6} fill="none" stroke="#3e2819" strokeWidth={6} />
+      <rect x={780} y={660} width={250} height={250} rx={6} fill="none" stroke="#3e2819" strokeWidth={6} />
+      <circle cx={1030} cy={660} r={14} fill="#c9a36b" stroke={INK} strokeWidth={4} />
+      <Figure x={x} y={960} scale={1.6} facing={frame < k.leave ? -1 : 1} pose={pose} head={BROKER.head} coat={BROKER.coat} tie={BROKER.tie}
+        brows="flat" lids={0.3} mouth="smirk" look={{ x: 0.9, y: 0 }} blink={blinking(frame, 6)} time={frame} />
+      <BandBox x={x + (frame < k.leave ? 50 : -50)} y={700} scale={0.8} color={GHOST.light} />
+    </>
+  );
+  return <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={null} actors={actors} />;
+};
+
+/** Script v6 line 101: the hundred windows at night, every pane lit with a sleeper and a typist, but one: yours. */
+const OnlyDark: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const Y = yourWindow();
+  const mine = windowIndex(WS.yours.col, WS.yours.row);
+  const cam = camAt(frame, [[k.windows, { x: Y.x + 60, y: Y.y + 20, zoom: 2.3 }], [k.wide89, { x: Y.x + 40, y: Y.y - 30, zoom: 1.55 }]]);
+  return <WindowStreetScene frame={frame} mood="night" cam={drift(cam, frame, "onlydark", 3)} onAt={(i) => (i === mine ? 1e9 : -999)} coins={false} />;
+};
+
 const MidnightShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current(frame, [[k.start, "clock"], [k.you86, "you86"], [k.band86, "band86"], [k.bro86, "bro86"], [k.close87, "close87"],
     [k.decide87, "decide87"], [k.holdA, "drawer"], [k.lean[0], "lean"], [k.footShot, "foot"], [k.scam, "scam"], [k.holdB, "knock"], [k.youLook, "youLook"],
-    [k.broLook, "broLook"], [k.thursday, "thursday"], [k.stepsAt, "steps"], [k.lie, "lie"], [k.jar88, "jar88"], [k.shut88, "shut88"], [k.wide89, "wide89"]]);
+    [k.broLook, "broLook"], [k.thursday, "thursday"], [k.stepsAt, "steps"], [k.landing, "landing"], [k.lie, "lie"], [k.jar88, "jar88"], [k.shut88, "shut88"],
+    [k.windows, "windows"], [k.wide89, "wide89"]]);
   if (shot === "clock") return <ClockInsert frame={frame} k={k} />;
+  if (shot === "landing") return <Landing frame={frame} k={k} />;
+  if (shot === "windows") return <OnlyDark frame={frame} k={k} />;
   const yh = headOf(you(frame, k));
   const bh = brotherAt(frame, k).head;
   const bandHand = handAt(you(frame, k));
+  const penHand = handAt(you(frame, k), "back");
   const views: Record<string, { x: number; y: number; zoom: number }> = {
     you86: camAt(frame, [[k.you86, { x: 620, y: 560, zoom: 1.0 }], [k.band86, { x: 600, y: 580, zoom: 1.08 }]]),
-    band86: camAt(frame, [[k.band86, { x: bandHand.x + 40, y: bandHand.y - 60, zoom: 2.6 }], [k.bro86, { x: bandHand.x + 40, y: bandHand.y - 70, zoom: 2.85 }]]),
+    // script v6: both hands in frame, the pen in one, the band with its teal light in the other
+    band86: camAt(frame, [[k.band86, { x: (bandHand.x + penHand.x) / 2, y: (bandHand.y + penHand.y) / 2 - 80, zoom: 1.9 }],
+      [k.bro86, { x: (bandHand.x + penHand.x) / 2, y: (bandHand.y + penHand.y) / 2 - 90, zoom: 2.1 }]]),
     bro86: camAt(frame, [[k.bro86, { x: bh.x + 120, y: bh.y + 60, zoom: 2.3 }], [k.close87, { x: bh.x + 120, y: bh.y + 60, zoom: 2.45 }]]),
     close87: camAt(frame, [[k.close87, { x: yh.x - 40, y: yh.y + 30, zoom: 2.4 }], [k.decide87, { x: yh.x - 40, y: yh.y + 30, zoom: 2.6 }]]),
     decide87: camAt(frame, [[k.decide87, { x: yh.x - 20, y: yh.y + 30, zoom: 2.9 }], [k.holdA, { x: yh.x - 20, y: yh.y + 30, zoom: 3.0 }]]),
@@ -255,11 +306,12 @@ const MidnightSound: React.FC<{ k: T }> = ({ k }) => (
     <Sequence from={k.shut[1] - 2} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.25} /></Sequence>
     {k.knocks.map((f) => <Sequence key={f} from={f} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.75} /></Sequence>)}
     {k.steps.map((f) => <Sequence key={f} from={f} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.12} playbackRate={0.85} /></Sequence>)}
+    {[0, 14, 28].map((d) => <Sequence key={`l${d}`} from={k.landing + 4 + d} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.6} /></Sequence>)}
   </>
 );
 
 const Midnight: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to, shot.v3);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3, shot.v6);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <MidnightShot frame={shot.frame} k={k} />

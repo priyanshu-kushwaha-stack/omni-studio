@@ -65,7 +65,9 @@ export const BandOn: React.FC<{ frame: number; p: number; settle: number; glow: 
       <Blanket x0={560} x1={1630} top={680} base={900} />
       {away < 0.98 && (
         <g>
-          <path d={`M900 730 Q${mix(760, 900, away)} ${mix(430, 700, away)} ${hand.x} ${hand.y}`} fill="none" stroke={INK} strokeWidth={40} strokeLinecap="round" />
+          {/* the forearm out from under the blanket: a short sleeve, so nothing reads as a stalk on the band */}
+          <path d={`M${hand.x + 150} ${hand.y + 170} L${hand.x} ${hand.y}`} fill="none" stroke={INK} strokeWidth={46} strokeLinecap="round" />
+          <path d={`M${hand.x + 150} ${hand.y + 170} L${hand.x} ${hand.y}`} fill="none" stroke="#3e5c8f" strokeWidth={36} strokeLinecap="round" />
           {!on && <Band x={c.x} y={c.y} scale={scale} lit tilt={tilt} />}
           <circle cx={hand.x} cy={hand.y} r={28} fill={HERO.head} />
         </g>

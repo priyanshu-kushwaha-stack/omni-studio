@@ -30,19 +30,20 @@ import { BunkRoom } from "../sets/BunkRoom";
 import { GLOBE, GLOBE_HOME, GlobeScene, type GlobeState } from "../sets/Globe";
 import { BROTHER, camAt, current, lineEnd, linear, mix, ramp, type Beat, type Shot } from "../shared";
 import { Brother, CROSS, headOf, StrangerFace, talk, Word, You, type Body, type Face } from "./Contract.Kit";
-import { BedTop, ComputersSheet, HumNotes, LaptopScreen, LeafletOne, Machine, PagesTop, SideLaptop } from "./OneMind.Parts";
+import { BandDrawing, BedTop, ComputersSheet, HumNotes, LaptopScreen, LeafletOne, PagesTop, SideLaptop } from "./OneMind.Parts";
+import { isV6, V6 } from "./V6.Kit";
 import { atV, isV5, V5 } from "./V5.Kit";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const hold8 = lineEnd(clips, 78); // performed: the hum, the bridge word, the face drawn twice
   const in8 = (p: number) => Math.round(hold8 + (from(79) - hold8) * p);
   const holdL = lineEnd(clips, 79); // performed: the strangers' page; his hand stops on the keys
   const inL = (p: number) => Math.round(holdL + (from(80) - holdL) * p);
-  const peak = lineEnd(clips, 82); // THE wordless peak, to clips[83].from
+  const peak = isV6(v6) ? lineEnd(clips, 81) + 72 : lineEnd(clips, 82); // THE wordless peak, to clips[83].from
   // v5: the peak ends on "Brother: What'd we get?" (116), close on him over the pages, before they join (v1's 83)
   const v5 = isV5(v3);
   const weGet = v5 ? v3[V5.weGet].from - 4 : from(83) - 4;
@@ -57,7 +58,12 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
     many: from(81) - 3, manyRun: [from(81), at(81, 0.35)] as const, closeBoth: at(81, 0.4), wide81: at(81, 0.68),
     // v5 split v1's 2020 line into three (113-115): the globe on the first, the computers coming on across it and the
     // next, linking on "Spare machines, linked into one"
-    ...(v5 ? {
+    // script v6 cut the 2020 computers (113-115): the globe holds 6 s on its own, from the end of v1's 81 to "What'd we
+    // get?"; the computers shot never comes up (it starts with globe2, which wins)
+    ...(isV6(v6) ? (() => {
+      const g = lineEnd(clips, 81) + 2;
+      return { globe: g, computers: g + 40, compOn: [g + 40, g + 41] as [number, number], compLink: [g + 42, g + 43] as [number, number], globe2: g + 40 };
+    })() : v5 ? {
       globe: v3[V5.computers].from - 3, computers: atV(v3, V5.computers, 0.3),
       compOn: [atV(v3, V5.computers, 0.35), atV(v3, V5.computers + 1, 0.45)] as [number, number],
       compLink: [atV(v3, V5.computers + 1, 0.55), atV(v3, V5.computers + 2, 0.3)] as [number, number], globe2: atV(v3, V5.computers + 2, 0.4),
@@ -67,7 +73,12 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
     }),
     peak, peakEnd: v5 ? weGet : from(83), weGet, weGetLine: v5 ? [v3[V5.weGet].from, lineEnd(v3, V5.weGet)] as const : [weGet, weGet] as const,
     pages: from(83) - 3, join: [from(83), at(83, 0.42)] as const, machine: at(83, 0.36),
-    screen84: from(84) - 3, slide84: [from(84), at(84, 0.55)] as const, you84: at(84, 0.62),
+    // script v6: the drawing holds through 93 ("A band with a red light") and 94, the camera pushing in on the red light;
+    // the laptop (84) never comes up (it starts with the room, which wins)
+    ...(isV6(v6) ? {
+      screen84: from(85) - 3, slide84: [from(85) - 3, from(85) - 2] as const, you84: from(85) - 3,
+      red: v6[V6.redLight].from + 18, ai: v6[V6.designed].from,
+    } : { screen84: from(84) - 3, slide84: [from(84), at(84, 0.55)] as const, you84: at(84, 0.62), red: at(83, 0.9), ai: from(84) }),
     wide85: from(85) - 3,
   };
 }
@@ -229,8 +240,8 @@ const MachineInsert: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, 
   const actors = (
     <>
       <BedTop />
-      <PagesTop x={960} y={600} join={join} shade={0.12 * ramp(frame, k.machine, k.machine + 40)} />
-      <Machine x={960} y={620} s={0.95} at={k.machine} span={Math.round((k.screen84 - k.machine) * 0.75)} color="#1d3f86" width={9} />
+      <PagesTop x={960} y={600} join={join} shade={0.5 * ramp(frame, k.machine, k.machine + 40)} />
+      <BandDrawing frame={frame} x={960} y={660} s={1.2} at={k.machine} span={Math.min(90, Math.round((k.red - k.machine) * 0.8))} red={k.red} />
     </>
   );
   return <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={null} actors={actors} />;
@@ -287,12 +298,15 @@ const OneMindShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const top = (c: Camera) => drift(c, frame, "onemind-top", 3);
   if (shot === "faces") return <FacesInsert frame={frame} k={k} cam={top(camAt(frame, [[k.faces, { x: 960, y: 540, zoom: 1.02 }], [k.longLook, { x: 1000, y: 540, zoom: 1.12 }]]))} />;
   if (shot === "screen") return <ScreenInsert frame={frame} k={k} cam={top(camAt(frame, [[k.screen, { x: 960, y: 560, zoom: 1.0 }], [k.lit, { x: 1080, y: 640, zoom: 1.25 }]]))} />;
-  if (shot === "screen84") return <ScreenInsert frame={frame} k={k} machine cam={top(camAt(frame, [[k.screen84, { x: 960, y: 540, zoom: 1.0 }], [k.you84, { x: 960, y: 560, zoom: 1.08 }]]))} />;
+  if (shot === "screen84") return <ScreenInsert frame={frame} k={k} machine cam={top(camAt(frame, [[k.screen84, { x: 960, y: 540, zoom: 1.0 }], [Math.max(k.screen84 + 1, k.you84), { x: 960, y: 560, zoom: 1.08 }]]))} />;
   if (shot === "leaflet" || shot === "many") return <PaperInsert frame={frame} k={k} what="leaflet" cam={top(camAt(frame, shot === "leaflet"
     ? [[k.leaflet, { x: 900, y: 560, zoom: 1.12 }], [k.twoLit, { x: 920, y: 540, zoom: 1.2 }]]
     : [[k.many, { x: 960, y: 540, zoom: 1.2 }], [k.closeBoth, { x: 960, y: 540, zoom: 1.0 }]]))} />;
   if (shot === "computers") return <PaperInsert frame={frame} k={k} what="computers" cam={top(camAt(frame, [[k.computers, { x: 900, y: 520, zoom: 1.15 }], [k.globe2, { x: 960, y: 540, zoom: 1.02 }]]))} />;
-  if (shot === "pages") return <MachineInsert frame={frame} k={k} cam={top(camAt(frame, [[k.pages, { x: 960, y: 560, zoom: 0.92 }], [k.screen84, { x: 960, y: 600, zoom: 1.05 }]]))} />;
+  // the pages join into the drawing; it fills the frame; then the push in on the red light (93-94)
+  if (shot === "pages") return <MachineInsert frame={frame} k={k} cam={top(camAt(frame, [[k.pages, { x: 960, y: 560, zoom: 0.92 }],
+    [k.machine, { x: 960, y: 560, zoom: 0.98 }], [k.red - 10, { x: 1000, y: 520, zoom: 1.12 }], [k.ai, { x: 1040, y: 700, zoom: 1.75 }],
+    [k.screen84, { x: 1068, y: 722, zoom: 2.5 }]]))} />;
   const p = pair(frame, k);
   const yh = headOf(p.you), hh = headOf(p.him);
   const views: Record<string, { x: number; y: number; zoom: number }> = {
@@ -308,7 +322,7 @@ const OneMindShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     closeBoth: camAt(frame, [[k.closeBoth, { x: 1000, y: 540, zoom: 1.75 }], [k.wide81, { x: 1000, y: 540, zoom: 1.9 }]]),
     wide81: camAt(frame, [[k.wide81, { x: 1000, y: 600, zoom: 1.4 }], [k.globe, { x: 960, y: 560, zoom: 1.0 }]]),
     weGet: camAt(frame, [[k.weGet, { x: hh.x - 120, y: hh.y + 60, zoom: 2.2 }], [Math.max(k.weGet + 1, k.pages), { x: hh.x - 130, y: hh.y + 60, zoom: 2.35 }]]),
-    you84: camAt(frame, [[k.you84, { x: yh.x + 70, y: yh.y + 20, zoom: 2.4 }], [k.wide85, { x: yh.x + 70, y: yh.y + 20, zoom: 2.6 }]]),
+    you84: camAt(frame, [[k.you84, { x: yh.x + 70, y: yh.y + 20, zoom: 2.4 }], [Math.max(k.you84 + 1, k.wide85), { x: yh.x + 70, y: yh.y + 20, zoom: 2.6 }]]),
     wide85: camAt(frame, [[k.wide85, { x: 1000, y: 600, zoom: 1.5 }], [k.end, { x: 960, y: 560, zoom: 0.92 }]]),
   };
   const v = drift({ x: views[shot].x, y: views[shot].y, zoom: views[shot].zoom }, frame, "onemind", 4);
@@ -327,7 +341,7 @@ const OneMindSound: React.FC<{ k: T }> = ({ k }) => (
 );
 
 const OneMind: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to, shot.v3);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3, shot.v6);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <OneMindShot frame={shot.frame} k={k} />

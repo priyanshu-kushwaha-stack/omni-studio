@@ -3,6 +3,7 @@
 // rear-view mirror, the nap room at work (a door with a bed plate, cots, pillows, the till on a stool), the couple's
 // front door across the street, the grandmother's window with three jars, your hall with the empty key hook, and your
 // street's row of front doors and steps.
+import { FONT } from "@whatif/kit/fonts";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND } from "@whatif/kit/rig/pose";
 import { bus } from "@whatif/kit/sets";
@@ -317,6 +318,13 @@ export const DoorRowBack: React.FC<{ cam: Camera; mood: MoodName; open: number }
             <circle cx={x - DOORS.w / 2 + 22} cy={770} r={9} fill="#e8c23a" stroke={INK} strokeWidth={3} />
           </g>
           <rect x={x - DOORS.w / 2 - 14} y={DOORS.top - 14} width={DOORS.w + 28} height={DOORS.step - DOORS.top + 14} fill="none" stroke="#efe6d4" strokeWidth={10} />
+          {/* script v6 review: your door is marked, so the walk past it reads */}
+          {x === DOORS.yours && (
+            <g>
+              <rect x={x - 70} y={DOORS.top - 92} width={140} height={56} rx={8} fill={PAPER} stroke={INK} strokeWidth={5} />
+              <text x={x} y={DOORS.top - 50} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={38} fill="#1d9a8f">HOME</text>
+            </g>
+          )}
           <rect x={x - 100} y={DOORS.step} width={200} height={DOORS.floor - DOORS.step} fill="#c9c0b0" stroke={INK} strokeWidth={4} />
         </g>
       ))}

@@ -20,7 +20,8 @@ import { atV, FoldedGhost, gapAfter, V5 } from "./V5.Kit";
 // ------------------------------------------------------------------------------------------------ 58: the news
 
 export function newsSpan(v3: Clip[]) {
-  return { from: v3[V5.news].from - 6, to: gapAfter(v3, V5.news) };
+  // script v6 cut noon on the bunk: the news runs on to the shelf of jars ("So you push your nights.")
+  return { from: v3[V5.news].from - 6, to: v3[V5.push].from - 3 };
 }
 
 const NEWS_WIN = { col: 3, row: 2 };
@@ -75,7 +76,9 @@ export const NewsWindow: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 
 // ------------------------------------------------------------------------------------------------ 59-61: noon
 
 export function noonSpan(v3: Clip[]) {
-  return { from: gapAfter(v3, V5.news), to: v3[V5.push].from - 3 };
+  // script v6 cut noon on the bunk (its lines are one-frame placeholders): an empty span, so it never flashes
+  const at = v3[V5.push].from - 3;
+  return { from: at, to: at };
 }
 
 const Y = BUNK.you;

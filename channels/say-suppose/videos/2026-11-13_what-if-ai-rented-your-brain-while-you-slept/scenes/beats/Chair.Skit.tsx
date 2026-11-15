@@ -6,62 +6,63 @@ import type { Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
 import { INK } from "@whatif/kit/theme";
 import { BandBox, Band, Bubble, Coin, CoinArc, deviceAt, Ghost, PaperCap, Thread } from "../parts";
-import { BROKER, GHOST, HERO, lineEnd, mix, NURSE, ramp } from "../shared";
+import { BROKER, camAt, GHOST, HERO, lineEnd, mix, NURSE, ramp } from "../shared";
 import { CLINIC, ClinicArmrest, ClinicChair, ClinicDoorPanel, ClinicScene, seatedInChair } from "../sets/Clinic";
 import { aim, BAND_LIGHT, BandOnHead, Body, handWorld, HeadGear, headToWorld, headWorld, lineAt, Notes, talk, toWorld, type Placed } from "./Chair.Rig";
 
 export type SkitT = ReturnType<typeof skitTimes>;
 
-/** Every frame of the skit, from v3's clips in v3 numbering (shot.v3): 0 the nurse, 1 and 2 the broker, 3 Night One's
- *  first line. The lead-in before line 0 holds three performed moments (3 s, 2 s, 2 s in the script); they are placed as
- *  shares of it, so a new take of line 0 re-times them. Phrase shares (p) are from the takes' word timings. */
+/** Every frame of the skit, from script v6's clips (shot.v6, story.json numbering): 0 the broker's coin line, 1 the
+ *  nurse, 2 the broker's band line, 3 the premise (over the shut door). Before line 0 (3.4 s), all close: 1.5 s you doze
+ *  and the grey suit lays the band on (the chime), 1.5 s the pale second you rises big in frame and types, a coin drops
+ *  into your palm. Line 0 lands on the coin. The nurse's 2 s hold follows it. */
 export function skitTimes(clips: Clip[]) {
-  const L = clips[0].from;
-  const lead = (p: number) => Math.round(L * p);
   const at = (i: number, p: number) => lineAt(clips, i, p);
-  const band = lead(3 / 7) - 3; // the band on your forehead: the chime
-  const pluck = lead(5 / 7) + 2; // the nurse takes it off
-  const coin = lead(0.6);
-  const shut = at(3, 0.12);
+  const L = clips[0].from;
+  const band = 36; // the band on your forehead: the chime
+  const coin = 66; // one coin leaves the desk's edge
+  const pluck = lineEnd(clips, 0) + 10; // the nurse takes the band off
+  const shut = clips[3].from;
+  const thatsIt = lineEnd(clips, 1) + 1;
   return {
     L,
-    face: lead(0.12), // close on you counting, eyelids dropping
-    wide: lead(0.25), // the room: he tiptoes across
-    walk: [lead(0.09), lead(0.35)] as const,
-    lift: lead(0.36),
+    face: 0, // close on you dozing, eyelids dropping; his grey arm lays the band on
+    walk: [2, 22] as const,
+    lift: 22,
     band,
-    stepBack: [band + 8, band + 36] as const,
-    ghostShot: lead(3 / 7),
-    coin, // one coin leaves the desk's edge
+    stepBack: [band + 8, band + 30] as const,
+    ghostShot: 45, // the ghost rises big in frame
+    coin,
     landed: coin + 18,
-    coinShot: coin + 6,
-    nurseWalk: [lead(0.52), lead(0.7)] as const,
+    coinShot: at(0, 0.48), // "One coin.": close on the coin in your palm
+    nurseWalk: [at(0, 0.2), lineEnd(clips, 0) + 2] as const,
+    pluckShot: lineEnd(clips, 0) + 2,
     pluck,
     wake: pluck + 6,
-    drop: [lead(0.8), lead(0.87)] as const, // the band into his box
-    notesShot: lead(0.885),
-    cotton: [lead(0.9), lead(0.97)] as const,
-    nurseLine: [clips[0].from, lineEnd(clips, 0)] as const, // "That's all the plasma we can take this week. Come back Thursday."
-    notes: [at(0, 0.08), at(0, 0.34), at(0, 0.6)] as const,
-    nurseClose: at(0, 0.64),
-    thatsIt: lineEnd(clips, 0) + 1, // hold, 1 s: you look at the three notes; your bubble "That's it?"
-    twoShot: clips[1].from - 3, // "You fell asleep for ten seconds, and you earned a coin." he tips his head, points at it
-    point: [at(1, 0.3), at(1, 0.75)] as const, // the point at your fist, from "ten seconds"; held to the end of the line
-    coinLine: [clips[1].from, lineEnd(clips, 1)] as const,
+    drop: [pluck + 14, pluck + 28] as const, // the band into his box
+    notesShot: pluck + 34,
+    cotton: [pluck + 36, pluck + 52] as const,
+    nurseLine: [clips[1].from, lineEnd(clips, 1)] as const, // "That's all the plasma we can take this week. Come back Thursday."
+    notes: [at(1, 0.08), at(1, 0.34), at(1, 0.6)] as const,
+    nurseClose: at(1, 0.64),
+    thatsIt, // hold, 1 s: you look at the three notes; your bubble "That's it?"
+    twoShot: thatsIt + 18, // at the door he tips his head at the coin in your fist
+    point: [thatsIt + 20, clips[2].from - 6] as const,
+    coinLine: [thatsIt + 18, clips[2].from - 4] as const,
+    talk: [[clips[0].from, lineEnd(clips, 0)], [clips[2].from, lineEnd(clips, 2)]] as const,
     bandShot: clips[2].from - 2, // "Wear this tonight. Sleep all night, and get paid for every hour." the band held out
-    bandOut: clips[2].from - 8,
+    bandOut: clips[2].from - 4,
     bandLine: [clips[2].from, lineEnd(clips, 2)] as const,
-    brokerWalk: [lead(0.97), clips[0].from + 60] as const, // back to the door during her line
-    take: lineEnd(clips, 2) - 3, // close: the notes, the coin, the band; you take it
-    grab: lineEnd(clips, 2) + 14,
-    shut, // Night One: the door swings shut on his back
-    doorClose: [shut + 10, shut + 34] as const,
-    bridge: at(3, 0.39), // "the pale part of your blood": the bridge walkway
+    brokerWalk: [pluck + 40, pluck + 96] as const, // back to the door during her line
+    take: lineEnd(clips, 2) - 16, // close: the notes, the coin, the band; you take it
+    grab: lineEnd(clips, 2) - 2,
+    shut, // line 3: the door swings shut on his back, the band in your hand, its light on
+    doorClose: [shut + 2, shut + 26] as const,
   };
 }
 
 const C = CLINIC.chair;
-const G = { x: 1060, y: 560, scale: 0.75 };
+const G = { x: 1050, y: 572, scale: 0.9 };
 /** Your arms in the chair: the near hand on the armrest (palm up), the far hand on your lap. */
 const REST: Pose = { ...SEATED, armF: [30, 60], armB: [40, 50] };
 const OPEN: Pose = { ...SEATED, armF: [30, 60], armB: [55, 40] };
@@ -99,7 +100,7 @@ function broker(frame: number, k: SkitT, yf: Placed): { f: Placed; band: "hand" 
   const near = 1250;
   const off = 1395;
   const x = frame < k.stepBack[0]
-    ? mix(D, near, ramp(frame, k.walk[0], k.walk[1]))
+    ? mix(1340, near, ramp(frame, k.walk[0], k.walk[1]))
     : frame < k.brokerWalk[0]
       ? mix(near, off, ramp(frame, k.stepBack[0], k.stepBack[1]))
       : mix(off, D, ramp(frame, k.brokerWalk[0], k.brokerWalk[1]));
@@ -120,7 +121,7 @@ function broker(frame: number, k: SkitT, yf: Placed): { f: Placed; band: "hand" 
     pose = { ...STAND, tilt: tip, armF: [14, 12], armB: [mix(STAND.armB[0], at[0], p), mix(STAND.armB[1], at[1], p)] };
   }
   const band = frame < k.band || frame >= k.coinLine[0] - 12 ? "hand" : "none";
-  const line = frame >= k.coinLine[0] && frame < k.coinLine[1] ? k.coinLine : frame >= k.bandLine[0] && frame < k.bandLine[1] ? k.bandLine : null;
+  const line = k.talk.find(([a, b]) => frame >= a && frame < b) ?? null;
   const face: Face = frame < k.band + 6
     ? { brows: "raised", lids: 0.1, mouth: "flat", eyes: 1, look: { x: 0.8, y: 0.3 } }
     : line ? { brows: "flat", lids: 0.25, mouth: Math.floor((frame - line[0]) / 5) % 3 === 0 ? "smirk" : "open", eyes: 1, look: { x: 1, y: 0.1 } }
@@ -162,7 +163,7 @@ const Nurse: React.FC<{ n: NonNullable<ReturnType<typeof nurse>> }> = ({ n }) =>
   <g>
     <Body f={n.f} head={NURSE.head} coat={NURSE.coat} {...n.face} />
     <HeadGear f={n.f}><PaperCap x={0} y={0} r={46} /></HeadGear>
-    {n.band && (() => { const h = handWorld(n.f, "armB"); return <Band x={h.x} y={h.y + 8} scale={0.42} lit={false} />; })()}
+    {n.band && (() => { const h = handWorld(n.f, "armB"); return <Band x={h.x} y={h.y + 8} scale={0.62} lit={false} />; })()}
   </g>
 );
 
@@ -179,14 +180,14 @@ export const SkitRoom: React.FC<{ frame: number; k: SkitT; cam: Camera; door?: n
   const palmB = handWorld(y.f, "armB");
   const elbow = toWorld(y.f, { x: 28, y: -163 });
   const tubeOn = frame < k.pluck;
-  const deskEdge = { x: G.x - 128, y: G.y - 88 };
+  const deskEdge = { x: G.x - 128 * (G.scale / 0.75), y: G.y - 88 * (G.scale / 0.75) };
   const notes = k.notes.filter((n) => frame >= n).length;
   const actors = (
     <>
       {n?.behind && <Nurse n={n} />}
       <BandBox x={box.x} y={box.y} scale={0.55} />
       <Body f={b.f} head={BROKER.head} coat={BROKER.coat} tie={BROKER.tie} {...b.face}
-        held={b.band === "hand" ? <Band x={0} y={10} scale={0.42} lit /> : undefined} />
+        held={b.band === "hand" ? <Band x={0} y={10} scale={0.66} lit /> : undefined} />
       <ClinicChair />
       {/* the tube from the machine to the crook of your arm; unclipped, it hangs */}
       <path d={tubeOn ? `M${CLINIC.machine.x + 80} ${CLINIC.machine.top + 60} C${CLINIC.machine.x + 160} ${CLINIC.machine.top + 140} ${elbow.x - 60} ${elbow.y + 60} ${elbow.x} ${elbow.y}`
@@ -249,7 +250,7 @@ export const TakeInsert: React.FC<{ frame: number; k: SkitT }> = ({ frame, k }) 
 /** The door swings shut on his back; you in the chair with the band in your hand; the clock. */
 export const DoorShot: React.FC<{ frame: number; k: SkitT }> = ({ frame, k }) => {
   const shutT = ramp(frame, k.doorClose[0], k.doorClose[1]);
-  const away = ramp(frame, k.shut - 4, k.doorClose[0] + 6);
+  const away = ramp(frame, k.doorClose[0] - 12, k.doorClose[0] + 6);
   const f: Placed = { x: mix(1560, 1700, away), y: CLINIC.floor - 10 - away * 30, scale: C.scale * mix(1, 0.85, away), facing: 1, pose: walkPose(frame * 0.3) };
   const pose: Pose = { ...REST, armB: [70, 60] };
   const yf: Placed = { ...seatedInChair(pose), pose };
@@ -266,11 +267,14 @@ export const DoorShot: React.FC<{ frame: number; k: SkitT }> = ({ frame, k }) =>
       <ClinicChair />
       <Body f={yf} head={HERO.head} scarf={HERO.scarf} tuft time={frame} brows="flat" lids={0.2} mouth="flat" look={{ x: 0.4, y: 0.4 }} />
       <ClinicArmrest />
-      <Band x={hand.x - 6} y={hand.y + 14} scale={0.4} tilt={-10} />
+      <Band x={hand.x - 2} y={hand.y + 10} scale={0.62} tilt={-10} />
       <Coin x={palm.x - 4} y={palm.y - 12} r={13} tilt={-20} />
     </>
   );
-  return <ClinicScene frame={frame + 22} mood="morning" cam={{ x: 1150 + (frame - k.shut) * 0.5, y: 540, zoom: 1.12 }} door={1 - shutT} actors={actors} />;
+  // line 3 over it: a slow push from the closing door onto the band in your hand, its light on
+  const cam = camAt(frame, [[k.shut, { x: 1260, y: 560, zoom: 1.3 }], [k.doorClose[1] + 6, { x: 1180, y: 560, zoom: 1.45 }],
+    [k.shut + 115, { x: hand.x + 30, y: hand.y - 20, zoom: 2.9 }]]);
+  return <ClinicScene frame={frame + 22} mood="morning" cam={cam} door={1 - shutT} actors={actors} />;
 };
 
 export { GHOST };

@@ -32,7 +32,8 @@ export const BUNK = {
   jar: { x: 150, y: 742 },
   /** The ghost's desk edge, where coins leave, and the top of the arc. */
   coinFrom: { x: 1115, y: 702 },
-  coinVia: { x: 520, y: 330 },
+  // script v6: a low arc down over your head into the jar (it rose up along the thread before: coins come DOWN)
+  coinVia: { x: 640, y: 480 },
   /** The top bunk's mattress top, and where your brother's head lies on it. */
   topBunk: { y: 170, from: 280, to: 1700 },
   brother: { x: 1300, y: 120 },

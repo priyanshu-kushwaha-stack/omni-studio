@@ -32,6 +32,7 @@ import { BROTHER, camAt, CLERK, current, GHOST, lineEnd, mix, PASTELS, ramp, typ
 import { aimArm, handOf, PaperInsert, Sfx, talk, type Body } from "./NightShift.Rig";
 import { FaceMarks } from "./NightShift.Rooms";
 import { MorningKitchen } from "./Photo.Parts";
+import { DEBT } from "./V6.Kit";
 import { BTABLE, Breakfast, Broker, CapAndBand, ChessSheet, ClipboardSheet, HeldCap, LabelSheet, MapSheet, TableThings } from "./Warehouses.Parts";
 import { atV, isV5, V5 } from "./V5.Kit";
 import { signSpan, VisaSign } from "./V5.Late";
@@ -53,7 +54,8 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const h5 = lineEnd(clips, 69) + 2; // performed: he walks home
   return {
     start, end,
-    flaps: [at(62, 0.02), at(62, 0.2), at(62, 0.38)] as const, wideTable: at(62, 0.55),
+    // script v6 line 67: each number flips on its word (90, 41, 12 at 0.0, 0.11, 0.32 of the line)
+    flaps: [from(62) - 4, at(62, 0.1), at(62, 0.31)] as const, wideTable: at(62, 0.55),
     ...plasma,
     front: from(64) - 2, inside: at(64, 0.24), rows: at(64, 0.62),
     chess: from(65) - 2, door: at(65, 0.2), cents: at(65, 0.42), bulk: at(65, 0.72),
@@ -86,14 +88,14 @@ const BreakfastBit: React.FC<{ frame: number; k: T; wide: boolean }> = ({ frame,
     : camAt(frame, [[k.start, insert(BTABLE.band.x, 700, 2.6)], [k.wideTable, insert(BTABLE.band.x, 700, 3.0)]]);
   const glum = { brows: "sad" as const, lids: 0.35 + m * 0.1, mouth: "flat" as const, look: { x: 0.9, y: 0.6 } };
   const scene = (mm: number) => (
-    <MorningKitchen frame={frame} cam={drift(cam, frame, "wh-table", 2)} jarFill={0.95}
+    <MorningKitchen frame={frame} cam={drift(cam, frame, "wh-table", 2)} jarFill={0.95} debt={{ amount: DEBT.crash, was: DEBT.photo }}
       actors={
         <g>
           <Breakfast frame={frame} morning={mm} youFace={glum} broFace={{ ...glum, look: { x: 0.9, y: 0.7 } }} />
           <TableThings morning={mm} />
           {values.map((v, i) => (
             <PayFlap key={v} frame={frame} at={k.flaps[i]} until={i < 2 ? k.flaps[i + 1] : undefined} x={BTABLE.band.x} y={wide ? 660 : 690}
-              value={v} size={wide ? 44 : 60} />
+              value={v} size={wide ? 44 : 60} settle={3} popAt={k.flaps[0]} />
           ))}
         </g>
       } />

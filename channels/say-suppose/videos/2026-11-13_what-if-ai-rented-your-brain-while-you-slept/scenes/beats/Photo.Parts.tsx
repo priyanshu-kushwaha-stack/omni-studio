@@ -5,6 +5,7 @@ import { Figure, type FigureProps } from "@whatif/kit/rig/Figure";
 import { joints, STAND, type Pose } from "@whatif/kit/rig/pose";
 import { HandPhone } from "@whatif/kit/sets/props";
 import { kitchen, type KitchenOptions } from "@whatif/kit/sets/Kitchen";
+import { FridgeNotes } from "./V6.Kit";
 import { Deep, setLook, SetScene } from "@whatif/kit/sets";
 import { LookContext } from "@whatif/kit/stage/Look";
 import type { MoodName } from "@whatif/kit/stage/moods";
@@ -86,13 +87,14 @@ const OPTIONS: KitchenOptions = { stove: "kettle", steam: 0.4, counter: ["mug"] 
 
 /** The library kitchen at `cam` with the table; `under` draws behind the table, `actors` in front of it. */
 export const MorningKitchen: React.FC<{ frame: number; cam: Camera; mood?: MoodName; jarFill?: number; under?: React.ReactNode;
-  onTable?: React.ReactNode; actors?: React.ReactNode }> = ({ frame, cam, mood = "morning", jarFill = 0.5, under, onTable, actors }) => {
+  onTable?: React.ReactNode; actors?: React.ReactNode; debt?: { amount: string; was?: string; flyer?: boolean } }> = ({ frame, cam, mood = "morning", jarFill = 0.5, under, onTable, actors, debt }) => {
   const props = { cam, mood, frame, options: OPTIONS };
   return (
     <LookContext.Provider value={setLook(kitchen.lights(OPTIONS), mood, cam)}>
-      <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={kitchen.Back(props)} front={kitchen.Front?.(props)}
+      <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={kitchen.Back(props)}
         actors={
           <>
+            {debt && <FridgeNotes {...debt} />}
             {under}
             <rect x={TABLE.from} y={TABLE.top} width={TABLE.to - TABLE.from} height={26} rx={8} fill="#b27a4d" stroke={INK} strokeWidth={5} />
             <rect x={TABLE.from + 30} y={TABLE.top + 26} width={22} height={140} fill="#8a5c3b" stroke={INK} strokeWidth={4} />
@@ -175,6 +177,6 @@ export const PalmBand: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <g>
     <ellipse cx={x} cy={y + 30} rx={150} ry={70} fill={MUSTARD} stroke={INK} strokeWidth={6} />
     {[-90, -40, 10, 60].map((dx, i) => <ellipse key={i} cx={x + dx} cy={y - 26 + Math.abs(dx + 15) * 0.2} rx={26} ry={44} fill={MUSTARD} stroke={INK} strokeWidth={5} />)}
-    <Band x={x} y={y + 10} scale={1.5} lit={false} />
+    <Band x={x} y={y + 10} scale={1.5} lit />
   </g>
 );

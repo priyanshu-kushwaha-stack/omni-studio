@@ -154,8 +154,9 @@ const Hall: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam })
   const youOut = frame >= k.out[0] && h.body.x > D.x - D.w / 2 + 30;
   const actors = (
     <>
-      <StampTag frame={frame} at={k.start} x={HALL.hook.x} y={HALL.hook.y - 80} text="KEYS" size={40} tilt={-5} />
-      <StampTag frame={frame} at={k.start} x={D.x} y={470} text="DOOR" size={40} tilt={4} />
+      {/* script v6: you peel the labels off, one by one: KEYS as you take your keys, DOOR as you reach the door */}
+      <Peeled frame={frame} at={k.take[0]} x={HALL.hook.x} y={HALL.hook.y - 80} text="KEYS" tilt={-5} />
+      <Peeled frame={frame} at={k.walk2[1] - 10} x={D.x} y={470} text="DOOR" tilt={4} />
       <clipPath id="morning-hall-door"><rect x={-1400} y={-800} width={D.x + D.w / 2 + 1400} height={2600} /></clipPath>
       <g clipPath={youOut ? "url(#morning-hall-door)" : undefined} opacity={youOut ? 1 - ramp(frame, k.out[1] - 8, k.out[1]) : 1}>
         <You body={h.body} face={face} frame={frame} held={!h.keys ? <Keys x={0} y={0} s={0.8} /> : undefined} />
@@ -169,6 +170,18 @@ const Hall: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam })
     <LookContext.Provider value={look}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={<HallBack cam={cam} mood="morning" keys={h.keys} open={open} />} actors={actors} />
     </LookContext.Provider>
+  );
+};
+
+/** A stamped label on the wall until `at`, then peeled: it curls off, drops and fades over 14 frames. */
+const Peeled: React.FC<{ frame: number; at: number; x: number; y: number; text: string; tilt: number }> = ({ frame, at, x, y, text, tilt }) => {
+  if (frame < at) return <StampTag frame={frame} at={-999} x={x} y={y} text={text} size={40} tilt={tilt} />;
+  const t = ramp(frame, at, at + 14);
+  if (t >= 1) return null;
+  return (
+    <g opacity={1 - t}>
+      <StampTag frame={frame} at={-999} x={x + 40 * t} y={y + 160 * t * t} text={text} size={40} tilt={tilt + 70 * t} />
+    </g>
   );
 };
 
@@ -225,7 +238,13 @@ const MorningShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k, 
   const shot = current(frame, [[k.start, "wake"], [k.up, "up"], [k.bridge[0] - 6, "bridge"], [k.smile91, "smile91"], [k.hang, "hang"],
     [k.handShot, "hand"], [k.grinShot, "grin"], [k.drop, "drop"], [k.holdW, "hall"], [k.feel[0], "feel"], [k.tagShot, "tag"],
     [k.doorShot, "door"], [k.clinic, "clinic"], [k.holdP, "pass"], [k.twist, "twist"], [k.card, "card"]]);
-  if (shot === "card") return <EndCard frame={frame} k={k} />;
+  // script v6: no cut to a walking shot; the awake street holds to the end, the tags over it
+  if (shot === "card") return (
+    <AbsoluteFill>
+      <DaytimeStreet frame={frame} v3={v3} until={k.end} />
+      <EndTags frame={frame} comment={k.comment} like={k.like} subscribe={k.subscribe} />
+    </AbsoluteFill>
+  );
   if (shot === "twist") return <DaytimeStreet frame={frame} v3={v3} />;
   const d = (c: Camera) => drift(c, frame, "morning", 3);
   if (shot === "clinic" || shot === "pass") {

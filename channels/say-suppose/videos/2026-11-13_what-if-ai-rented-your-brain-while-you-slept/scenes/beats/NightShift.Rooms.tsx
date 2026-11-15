@@ -1,6 +1,7 @@
 // The Night Shift's people and places beyond the bunk room's own: you sitting up awake on the bottom bunk (KEY
 // coordinates, drawn as BunkRoom children), the overflowing bin, the gown on its hanger, your brother standing at the
 // bunk with the stamp, the bathroom mirror, and the wall inserts where the KEYS and DOOR tags land.
+import { FONT } from "@whatif/kit/fonts";
 import { Figure, type FigureProps } from "@whatif/kit/rig/Figure";
 import { joints, SIT, STAND, type Pose } from "@whatif/kit/rig/pose";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
@@ -103,22 +104,23 @@ export const Notebook: React.FC = () => (
 
 /** A rubber stamp, held: a wooden knob and handle on a dark pad. */
 export const StampTool: React.FC = () => (
-  <g transform="translate(0 -8)">
-    <circle cx={0} cy={-46} r={14} fill="#a8774a" stroke={INK} strokeWidth={4} />
-    <rect x={-7} y={-36} width={14} height={26} fill="#a8774a" stroke={INK} strokeWidth={3} />
-    <rect x={-26} y={-12} width={52} height={16} rx={3} fill="#5a3a28" stroke={INK} strokeWidth={4} />
-    <rect x={-24} y={4} width={48} height={7} fill="#c0392b" />
+  // script v6 review: a handheld label maker (a grey body, a little keypad, a cream label strip coming out of the top),
+  // not a stamp
+  <g transform="translate(0 -14)">
+    <rect x={-24} y={-62} width={48} height={70} rx={10} fill="#d8344f" stroke={INK} strokeWidth={4} />
+    <rect x={-16} y={-54} width={32} height={14} rx={2} fill="#2f3542" />
+    {[0, 1, 2].map((r) => [0, 1, 2].map((c) => <rect key={`${r}${c}`} x={-15 + c * 11} y={-34 + r * 10} width={8} height={7} rx={1} fill="#f3e9d7" />))}
+    <rect x={-10} y={-82} width={36} height={14} rx={2} fill={PAPER} stroke={INK} strokeWidth={2} transform="rotate(-8 8 -75)" />
   </g>
 );
 
-/** The sheet of cream tags on the mattress (a few already stamped: crimson bars, no letters). */
+/** The strip of printed labels on the mattress: KEYS, DOOR, YOU (the label maker's tape; `used` peeled off). */
 export const TagSheet: React.FC<{ x: number; y: number; used?: number }> = ({ x, y, used = 0 }) => (
   <g transform={`translate(${x} ${y}) rotate(-6)`}>
-    <rect x={-90} y={-60} width={180} height={120} rx={6} fill={PAPER} stroke={INK} strokeWidth={4} />
-    {[0, 1, 2, 3].map((i) => (
-      <g key={i}>
-        <rect x={-80 + (i % 2) * 85} y={-50 + Math.floor(i / 2) * 55} width={75} height={45} rx={4} fill="none" stroke="#cdbfa6" strokeWidth={3} strokeDasharray="6 5" />
-        {i < used && <rect x={-70 + (i % 2) * 85} y={-32 + Math.floor(i / 2) * 55} width={55} height={10} rx={5} fill="#d8344f" opacity={0.7} />}
+    {["KEYS", "DOOR", "YOU"].map((t, i) => (
+      <g key={t} opacity={i < used - 1 ? 0.25 : 1}>
+        <rect x={-90} y={-62 + i * 44} width={180} height={36} rx={5} fill={PAPER} stroke={INK} strokeWidth={4} />
+        <text x={0} y={-35 + i * 44} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={26} fill={INK}>{t}</text>
       </g>
     ))}
   </g>

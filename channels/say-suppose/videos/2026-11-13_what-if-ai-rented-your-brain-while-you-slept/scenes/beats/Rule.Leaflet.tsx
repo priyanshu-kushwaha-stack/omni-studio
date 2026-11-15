@@ -5,12 +5,14 @@
 //   crumbs     a spoon with a drop, a speech bubble with a squiggle, a face that isn't yours; a tick
 //   page two   a paper you, the head shaded in, a bulb that glows beside it, then dims
 //   page three a dish of cells wired to a little bat-and-ball game; the bat starts hitting back
+//   page four  (v6) a wardrobe computer, its plug and a spinning coin meter; then a paper you lying flat, its meter at $0
 import { interpolate } from "remotion";
 import { setLook } from "@whatif/kit/sets/common";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { DrawLine } from "@whatif/kit/ui/DrawLine";
-import { INK } from "@whatif/kit/theme";
+import { FONT } from "@whatif/kit/fonts";
+import { INK, MUSTARD } from "@whatif/kit/theme";
 import { Sheet, StampTag } from "../parts";
 import { GHOST, ramp } from "../shared";
 
@@ -157,6 +159,57 @@ export const PageThree: React.FC<{ frame: number; a: number; better: number }> =
   );
 };
 
+/** A coin meter: a little box with a dial of digits; `spin` 0..1 rolls them (a running cost), `value` when still. */
+const Meter: React.FC<{ x: number; y: number; frame: number; spin: number; value: string }> = ({ x, y, frame, spin, value }) => {
+  const digits = value.split("");
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <rect x={-110} y={-60} width={220} height={120} rx={14} fill="#f3e9d7" stroke={INK} strokeWidth={6} />
+      <circle cx={-78} cy={-30} r={14} fill="#ffd36b" stroke={INK} strokeWidth={3} />
+      {digits.map((d, i) => (
+        <g key={i} transform={`translate(${-40 + i * 44} 8)`}>
+          <rect x={-18} y={-30} width={36} height={60} rx={5} fill="#2f3542" />
+          <text x={0} y={18} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={44} fill={MUSTARD}>
+            {spin > 0.02 && d !== "0" ? String((Math.floor(frame / (2 + i)) + i * 3) % 10) : d}
+          </text>
+        </g>
+      ))}
+    </g>
+  );
+};
+
+/** Page four: why not a computer. A paper computer the size of a wardrobe, its plug, and a coin meter beside it, all
+ *  drawn when the page opens; from `cost` ("Computers cost money to run") the meter spins; from `lying` ("You're already
+ *  lying there") a paper you lies flat beside it, its meter at nothing. */
+export const PageFour: React.FC<{ frame: number; a: number; cost: number; lying: number }> = ({ frame, a, cost, lying }) => {
+  const spin = frame >= cost ? 1 : 0;
+  const lit = Math.floor(frame / 6) % 3;
+  return (
+    <g>
+      {/* the wardrobe computer */}
+      <Ink d="M120 110 H360 V620 H120 Z" a={a} n={10} />
+      {[0, 1, 2, 3, 4, 5].map((i) => <Ink key={i} d={`M150 ${170 + i * 60} H330`} a={a + 4} n={6} />)}
+      {[0, 1, 2].map((i) => frame >= a + 8 && <circle key={i} cx={170 + i * 30} cy={140} r={8} fill={i === lit ? "#7ff0e6" : "#9aa1ab"} stroke={INK} strokeWidth={2} />)}
+      {/* its plug, into the wall */}
+      <Ink d="M360 560 C430 560 430 640 500 640 H520 M520 624 V656 M520 632 H540 M520 648 H540" a={a + 6} n={10} />
+      {frame >= a + 10 && <Meter x={440} y={190} frame={frame} spin={spin} value="$480" />}
+      {frame >= cost && frame < cost + 40 && [0, 1, 2].map((i) => {
+        const t = ((frame - cost) / 40 + i / 3) % 1;
+        return <circle key={i} cx={560 + t * 60} cy={170 - t * 120} r={13} fill="#ffd36b" stroke={INK} strokeWidth={3} opacity={1 - t} />;
+      })}
+      {/* the paper you, lying flat, its meter at nothing */}
+      {frame >= lying && (
+        <g>
+          <Ink d="M690 560 Q850 520 1040 560" a={lying} n={8} />
+          <Ink d={circle(720, 500, 44)} a={lying + 2} n={8} />
+          <Ink d="M764 500 H1000 M820 500 L800 450 M900 500 L930 450 M1000 500 L1040 470 M1000 500 L1040 530" a={lying + 6} n={10} />
+          <Meter x={880} y={250} frame={frame} spin={0} value="$0" />
+        </g>
+      )}
+    </g>
+  );
+};
+
 /** The three stamps under the link page's heads: BRAIN, BAND, JAR. World coordinates. */
 export const LinkStamps: React.FC<{ frame: number; at: readonly [number, number, number] }> = ({ frame, at }) => (
   <>
@@ -186,7 +239,8 @@ export const LeafletInsert: React.FC<{ frame: number; at: number; cam: Camera; c
     <LookContext.Provider value={setLook([], "morning", cam, { dof: 0 })}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={back} actors={(
         <>
-          <Sheet frame={frame} at={at} x={SHEET.x} y={SHEET.y} w={SHEET.w} h={SHEET.h} tilt={tilt}>{children}</Sheet>
+          {/* script v6: no insert opens on blank paper, so the sheet is open on the cut's first frame */}
+          <Sheet frame={frame} at={at - 16} x={SHEET.x} y={SHEET.y} w={SHEET.w} h={SHEET.h} tilt={tilt}>{children}</Sheet>
           {over}
         </>
       )} />

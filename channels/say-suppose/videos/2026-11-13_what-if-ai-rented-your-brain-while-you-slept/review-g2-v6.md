@@ -66,4 +66,54 @@ The room was not re-run this round. The owner asked for a judgement without the 
 
 ## Picture
 
-<!-- filled in after the build -->
+The picture builder worked on the reviewers' picture items. Every existing beat now reads a virtual v5 timeline cut from
+v6's clips (`scenes/remap.ts` `V5_TO_V6`), and the new moments read v6's own clips. Lower-third cards are cut to nine,
+at about 1.3 times the size, and none of them only repeats the voice.
+
+**Done:**
+
+- **Cold open:** a close-up; the ghost is big in frame and the coin lands on the line.
+- **Night One:** a kitchen with "OWE $14,200" and the graduation flyer.
+- **The debt note recurs:** $14,000, then $12,900 by the photo, $14,200 after the crash, and on the contract table.
+- **The Rule:** no title card; every leaflet page is already drawn when it cuts in.
+- **Blank paper:** every sheet opens drawn.
+- **The reveal:** the drawing is a thin band with an open eye and a red light, filling the frame.
+- **The globe:** about 6.6 s.
+- **Midnight:**
+  - the pen and the glowing band in your hands;
+  - the broker knocking at your shut door, then leaving;
+  - the window wall with one dark pane.
+- **Money counters:** each lands on its word: $30, $90, $0, $270, then 90, 41, 12.
+- **The contract:** the broker's "why you" close-up.
+- **Coins and data:** light pulses go up the thread, and the coins fall into the jar.
+- **The ending:** the awake street holds to the end with a push-in, the call to action over it.
+- **Smaller fixes:**
+  - the folded sheet is a square;
+  - two teal lights sit under the cap;
+  - the craving is drawn as a steaming boot;
+  - a HOME label is on your door;
+  - the label maker prints KEYS, DOOR and YOU;
+  - the same face is in both notebook columns;
+  - KEYS and DOOR are peeled off at the end.
+
+**Partial:**
+
+- **The band:** redrawn as a thin glowing strip everywhere. The hand-held moments in the Night Shift and the Photo are not checked frame by frame.
+- **The brother on the top bunk (Midnight, about 9:11-9:33):** the arm is shorter, but his body still reads as a grey wedge.
+- **Long holds:** about 4:26, 9:10-9:36 and 9:48-10:00 in v5 time were not re-cut.
+- **Stray boxes:** the white boxes over the fridge (v5 2:26) were not checked.
+
+**Known flaws:**
+
+- The coin in your palm is small.
+- The line-96 shot of your hands crops your face at the top.
+- The landing outside your door is a sparse, dark set.
+- The KEYS / DOOR / YOU strip overlaps the bunk rail.
+
+
+**Render and checks:**
+
+- **The cut:** `renders/v6/v6-720p.mp4`, 10:47, 720p.
+- **The first full render crashed** on a cut line's one-frame placeholder at frame 9166. The video's `ramp` and `linear` helpers now treat a collapsed range as a step. Stills at all 109 placeholder frames then rendered without errors, and so did the full render.
+- **The full mix** (`qc/v6-mix-clicks.json`) flags two effect spots, as v3 to v5 did: a pop at 0:53.4 (the pay-flap effect) and a small level step at 2:35.8. Both are in the effects, not the voice; they're picture-lock work (G3).
+- **The narration:** `omni qc story_script` passes (claims and clicks).

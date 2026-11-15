@@ -24,12 +24,13 @@ import { closeUp, drift, ForegroundHead, insert } from "@whatif/kit/stage/shots"
 import type { Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
 import { INK } from "@whatif/kit/theme";
-import { ClinkSound, DeviceSound, headAt, landings, PayFlap } from "../parts";
+import { Band, ClinkSound, DeviceSound, headAt, landings, PayFlap } from "../parts";
 import { BunkRoom, KEY_VIEW } from "../sets/BunkRoom";
 import { GRAD, Scroll } from "../sets/GradHall";
 import { BROTHER, camAt, current, HERO, lineEnd, mix, PASTELS, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, Draw, handOf, PaperInsert, Sfx, talk, type Body } from "./NightShift.Rig";
 import { SIT_UP, SittingYou, youBody, type Face } from "./NightShift.Rooms";
+import { DEBT } from "./V6.Kit";
 import { GradBrother, HallAudience, HallStage, MorningKitchen, PalmBand, PhoneInsert, youInRow } from "./Photo.Parts";
 
 type T = ReturnType<typeof times>;
@@ -222,13 +223,14 @@ const KitchenBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, s
   const handY = handOf(you, you.pose.armF);
   return (
     <>
-      <MorningKitchen frame={frame} cam={drift(cam, frame, "photo-kitchen", 3)}
+      <MorningKitchen frame={frame} cam={drift(cam, frame, "photo-kitchen", 3)} debt={{ amount: DEBT.photo, was: DEBT.crumbs }}
         onTable={<g />}
         actors={
           palm ? (
             <g>
               <PalmBand x={1300} y={690} />
-              <PayFlap frame={frame} at={k.palm + 6} x={1300} y={520} value="$270" size={70} />
+              {/* script v6: $270 is up on "Two hundred and seventy" and stays to the cut */}
+              <PayFlap frame={frame} at={k.palm - 4} x={1300} y={520} value="$270" size={70} settle={4} />
             </g>
           ) : (
             <g>
@@ -238,7 +240,7 @@ const KitchenBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, s
                 blink={(frame + 3) % 97 < 4} held={youHeld} time={frame} />
               {frame >= k.holdOut && frame < k.h2 && (() => {
                 const hb = handOf(you, you.pose.armB);
-                return <g transform={`translate(${hb.x} ${hb.y})`}><path d="M-34 0 a34 12 0 1 0 68 0 a34 12 0 1 0 -68 0" fill="none" stroke="#1b1d24" strokeWidth={7} /><circle cy={11} r={6} fill="#2a3a3a" /></g>;
+                return <Band x={hb.x} y={hb.y + 6} scale={0.9} lit />;
               })()}
               {frame >= k.you60 && <PayFlap frame={frame} at={k.you60 + 8} x={handY.x - 10} y={handY.y - 110} value="$270" size={46} />}
             </g>

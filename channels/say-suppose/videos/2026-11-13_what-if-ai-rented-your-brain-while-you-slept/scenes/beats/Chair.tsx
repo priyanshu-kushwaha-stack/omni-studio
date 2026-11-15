@@ -23,8 +23,7 @@ import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import { ClinkSound, DeviceSound } from "../parts";
 import { camAt, current, type Beat, type Shot } from "../shared";
-import { CLINIC } from "../sets/Clinic";
-import { SkitRoom, skitTimes, TakeInsert, type SkitT } from "./Chair.Skit";
+import { DoorShot, SkitRoom, skitTimes, TakeInsert, type SkitT } from "./Chair.Skit";
 
 /** The clock ticks once a second (the room's clock runs 22 frames ahead, so the first tick lands at frame 8). */
 export const TICK_OFFSET = 22;
@@ -37,24 +36,25 @@ export const ticks = (from: number, to: number) => {
 const YOU_HEAD = { x: 1090, y: 600 };
 const NURSE_HEAD = { x: 800, y: 590 };
 
-function camera(frame: number, k: SkitT): Camera | "take" {
-  const shot = current(frame, [[0, "clock"], [k.face, "face"], [k.wide, "wide"], [k.ghostShot, "ghost"], [k.coinShot, "coin"],
-    [k.coinShot + 14, "pluck"], [k.notesShot, "notes"], [k.nurseClose, "nurse"], [k.thatsIt, "thatsIt"], [k.twoShot, "two"],
-    [k.bandShot, "door"], [k.take, "take"]] as [number, string][]);
-  const C = CLINIC.clock;
+function camera(frame: number, k: SkitT): Camera | "take" | "shut" {
+  const shot = current(frame, [[0, "face"], [k.ghostShot, "ghost"], [k.coinShot, "coin"], [k.pluckShot, "pluck"],
+    [k.notesShot, "notes"], [k.nurseClose, "nurse"], [k.thatsIt, "thatsIt"], [k.twoShot, "two"], [k.bandShot, "door"],
+    [k.take, "take"], [k.shut, "shut"]] as [number, string][]);
   switch (shot) {
-    case "clock": return camAt(frame, [[0, insert(C.x + 40, C.y + 20, 3.1)], [k.face, insert(C.x + 30, C.y + 20, 3.3)]]);
-    case "face": return camAt(frame, [[k.face, closeUp(YOU_HEAD.x - 120, YOU_HEAD.y - 40, 2.5)], [k.wide, closeUp(YOU_HEAD.x - 110, YOU_HEAD.y - 30, 2.7)]]);
-    case "wide": return camAt(frame, [[k.wide, { x: 1120, y: 560, zoom: 1.08 }], [k.ghostShot, { x: 1110, y: 570, zoom: 1.16 }]]);
-    case "ghost": return camAt(frame, [[k.ghostShot, { x: 1030, y: 560, zoom: 1.7 }], [k.coinShot, { x: 1020, y: 545, zoom: 1.9 }]]);
-    case "coin": return camAt(frame, [[k.coinShot, insert(930, 610, 3.0)], [k.coinShot + 14, insert(930, 630, 3.2)]]);
-    case "pluck": return camAt(frame, [[k.coinShot + 14, { x: 1130, y: 600, zoom: 1.65 }], [k.notesShot, { x: 1150, y: 600, zoom: 1.75 }]]);
+    // 0-1.5 s: close on you dozing, the clock behind; his grey arm lays the band across your forehead
+    case "face": return camAt(frame, [[0, closeUp(YOU_HEAD.x - 20, YOU_HEAD.y - 60, 2.6)], [k.ghostShot, closeUp(YOU_HEAD.x - 10, YOU_HEAD.y - 60, 2.8)]]);
+    // 1.5-3.4 s: the pale second you rises big in frame, types; the coin drops into your palm
+    case "ghost": return camAt(frame, [[k.ghostShot, { x: 1010, y: 482, zoom: 2.3 }], [k.coinShot, { x: 1000, y: 492, zoom: 2.5 }]]);
+    // the coin kept up and right of the lower-left caption card
+    case "coin": return camAt(frame, [[k.coinShot, insert(890, 672, 3.1)], [k.pluckShot, insert(888, 668, 3.35)]]);
+    case "pluck": return camAt(frame, [[k.pluckShot, { x: 1130, y: 600, zoom: 1.65 }], [k.notesShot, { x: 1150, y: 600, zoom: 1.75 }]]);
     case "notes": return camAt(frame, [[k.notesShot, { x: 950, y: 610, zoom: 1.85 }], [k.nurseClose, { x: 950, y: 600, zoom: 2.05 }]]);
     case "nurse": return camAt(frame, [[k.nurseClose, closeUp(NURSE_HEAD.x + 110, NURSE_HEAD.y, 2.5)], [k.thatsIt, closeUp(NURSE_HEAD.x + 110, NURSE_HEAD.y, 2.65)]]);
     case "thatsIt": return camAt(frame, [[k.thatsIt, closeUp(YOU_HEAD.x - 110, YOU_HEAD.y - 40, 2.3)], [k.twoShot, closeUp(YOU_HEAD.x - 110, YOU_HEAD.y - 40, 2.45)]]);
     case "two": return camAt(frame, [[k.twoShot, { x: 1290, y: 560, zoom: 1.45 }], [k.bandShot, { x: 1300, y: 560, zoom: 1.55 }]]);
     case "door": return camAt(frame, [[k.bandShot, { x: 1500, y: 600, zoom: 1.75 }], [k.take, { x: 1530, y: 590, zoom: 1.95 }]]);
-    default: return "take";
+    case "take": return "take";
+    default: return "shut";
   }
 }
 
@@ -73,13 +73,15 @@ export const SkitSound: React.FC<{ k: SkitT; to: number }> = ({ k, to }) => (
 );
 
 const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const { frame, v3 } = shot;
-  const k = skitTimes(v3);
+  const { frame, v6 } = shot;
+  const k = skitTimes(v6);
   const cam = camera(frame, k);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      {cam === "take" ? <TakeInsert frame={frame} k={k} /> : <SkitRoom frame={frame} k={k} cam={drift(cam, frame, "chair", 3)} />}
+      {cam === "take" ? <TakeInsert frame={frame} k={k} /> : cam === "shut" ? <DoorShot frame={frame} k={k} />
+        : <SkitRoom frame={frame} k={k} cam={drift(cam, frame, "chair", 3)} />}
       <SkitSound k={k} to={shot.to} />
+      <Sequence from={k.doorClose[1] - 2} durationInFrames={20}><Audio src={staticFile("sfx/knock.wav")} volume={0.22} /></Sequence>
     </AbsoluteFill>
   );
 };

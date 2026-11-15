@@ -13,6 +13,7 @@ import { INK, MUSTARD, PAPER } from "@whatif/kit/theme";
 import { Jar } from "../parts";
 import { BROTHER, HERO, mix, noise } from "../shared";
 import { Brother, Tongue, You, type Body, type Face } from "./Crumbs.Rig";
+import { FridgeNotes } from "./V6.Kit";
 
 export const TABLE = { from: 610, to: 1280, top: 790, floor: 960, mid: 945 };
 const SEAT_TOP = 850;
@@ -56,7 +57,7 @@ export const Spoon: React.FC<{ x?: number; y?: number; rot?: number; s?: number 
 export const HeldPage: React.FC<{ turn?: number }> = ({ turn = 0 }) => (
   <g transform={`scale(${mix(1, 0.12, turn)} 1) translate(-60 -110)`}>
     <rect x={0} y={0} width={120} height={90} fill={PAPER} stroke={INK} strokeWidth={3} />
-    <path d="M18 66 L104 66 Q110 58 104 52 L80 44 Q66 26 52 38 L34 40 Q16 44 18 66Z M44 42 l6 8 l6 -8 l6 8" fill="none" stroke="#c0582f" strokeWidth={4} strokeLinejoin="round" />
+    <path d="M20 74 L22 14 L50 14 L52 46 Q72 46 96 56 Q108 60 106 74Z M26 26 H46 M26 36 H47" fill="none" stroke="#c0582f" strokeWidth={4} strokeLinejoin="round" />
   </g>
 );
 
@@ -82,14 +83,17 @@ export interface KitchenTableProps {
   onTable?: React.ReactNode;
   /** Drawn last (a bubble, a falling spoon). */
   extra?: React.ReactNode;
+  /** Script v6: the debt note on the fridge (and the graduation flyer beside it), at its story amount. */
+  debt?: { amount: string; was?: string; flyer?: boolean };
 }
 
 /** The kitchen with the breakfast table, lit by the mood. */
-export const KitchenTable: React.FC<KitchenTableProps> = ({ frame, cam, mood, you, brother, jar = null, clock = 1.2, onTable, extra }) => {
+export const KitchenTable: React.FC<KitchenTableProps> = ({ frame, cam, mood, you, brother, jar = null, clock = 1.2, onTable, extra, debt }) => {
   const options = { ...kitchen.defaults, stove: "kettle" as const, steam: 0, counter: ["mug" as const] };
   const props = { cam, mood, frame, options };
   const actors = (
     <>
+      {debt && <FridgeNotes {...debt} />}
       {(!you || you.seated !== false) && <Chair x={YOU_SEAT.x} y={SEAT_TOP} scale={1.1} facing={1} color="#7a5236" />}
       <Chair x={BRO_SEAT.x} y={SEAT_TOP} scale={1.1} facing={-1} color="#7a5236" />
       {you && <You body={you.body} face={you.face} frame={frame} held={you.held} band={you.band} />}
@@ -110,7 +114,7 @@ export const KitchenTable: React.FC<KitchenTableProps> = ({ frame, cam, mood, yo
     <LookContext.Provider value={setLook(kitchen.lights(options), mood, cam)}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }}
         back={<>{kitchen.Back(props)}<Deep cam={cam} depth={0.85}><WallClock x={CLOCK.x} y={CLOCK.y} r={CLOCK.r} t={clock} /></Deep></>}
-        actors={actors} front={kitchen.Front?.(props)} />
+        actors={actors} />
     </LookContext.Provider>
   );
 };
@@ -160,13 +164,15 @@ export const ShoeDrawing: React.FC<{ from: number; to: number; tilt?: number }> 
   const C = "#c0582f";
   const seg = (a: number, b: number) => [Math.round(mix(from, to, a)), Math.round(mix(from, to, b))] as const;
   const lines: [string, readonly [number, number], number][] = [
-    ["M640 700 L1250 700 Q1300 700 1300 650 L1290 630", seg(0, 0.25), 16],
-    ["M640 700 Q610 560 760 540 L900 520 Q975 460 1045 520 L1180 600 Q1290 610 1290 630", seg(0.2, 0.55), 16],
-    ["M860 548 L905 600 L935 532 L965 600 L995 545 L1030 600", seg(0.5, 0.7), 10],
-    ["M700 680 L1240 680", seg(0.65, 0.75), 8],
-    ["M800 470 q24 -30 0 -60 q-24 -30 0 -60", seg(0.75, 0.85), 9],
-    ["M920 440 q24 -30 0 -60 q-24 -30 0 -60", seg(0.82, 0.92), 9],
-    ["M1040 470 q24 -30 0 -60 q-24 -30 0 -60", seg(0.88, 1), 9],
+    // script v6 review: a tall laced boot, steaming, so "That's a shoe" lands (it read as bread)
+    ["M600 730 L1270 730 Q1320 728 1312 676", seg(0, 0.2), 18],
+    ["M600 730 L612 330 L850 330 L862 560 Q1010 560 1180 616 Q1316 646 1312 676", seg(0.15, 0.5), 16],
+    ["M640 390 L830 410 M640 450 L834 470 M640 510 L840 530", seg(0.45, 0.65), 9],
+    ["M612 330 Q730 300 850 330", seg(0.6, 0.68), 9],
+    ["M600 700 L1300 700", seg(0.65, 0.75), 8],
+    ["M980 520 q24 -30 0 -60 q-24 -30 0 -60", seg(0.75, 0.85), 9],
+    ["M1100 540 q24 -30 0 -60 q-24 -30 0 -60", seg(0.82, 0.92), 9],
+    ["M1220 580 q24 -30 0 -60 q-24 -30 0 -60", seg(0.88, 1), 9],
   ];
   return (
     <g transform={`rotate(${tilt} 960 560)`}>
@@ -227,12 +233,19 @@ export const SheetBlob: React.FC = () => (
     <path d="M30 20 q30 20 60 0 M20 70 q40 -10 70 20" fill="none" stroke="#cfc6b6" strokeWidth={4} />
   </g>
 );
-export const SheetSquare: React.FC<{ x: number }> = ({ x }) => (
-  <g>
-    <rect x={x - 60} y={TABLE.top - 26} width={120} height={22} rx={3} fill="#f7f4ee" stroke={INK} strokeWidth={4} />
-    <line x1={x - 56} y1={TABLE.top - 15} x2={x + 56} y2={TABLE.top - 15} stroke="#e2dccf" strokeWidth={3} />
-  </g>
-);
+export const SheetSquare: React.FC<{ x: number }> = ({ x }) => {
+  // script v6 review: a crisp folded square seen from a little above (a top face and a thick edge, its fold lines),
+  // never a white cloud
+  const t = TABLE.top - 4;
+  return (
+    <g>
+      <path d={`M${x - 80} ${t - 26} L${x - 40} ${t - 66} L${x + 100} ${t - 66} L${x + 60} ${t - 26}Z`} fill="#fbf8f2" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+      <path d={`M${x - 80} ${t - 26} H${x + 60} V${t} H${x - 80}Z M${x + 60} ${t - 26} L${x + 100} ${t - 66} V${t - 40} L${x + 60} ${t}`} fill="#e9e3d6" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+      {[0.33, 0.66].map((f) => <line key={f} x1={x - 80 + 140 * f + 40 * 0} y1={t - 26} x2={x - 40 + 140 * f} y2={t - 66} stroke="#d6cdbb" strokeWidth={3} />)}
+      {[t - 18, t - 10].map((y) => <line key={y} x1={x - 76} y1={y} x2={x + 56} y2={y} stroke="#d6cdbb" strokeWidth={2} />)}
+    </g>
+  );
+};
 
 /** The notebook open on the table, from above: his page (left, a cap at the top) and yours (right, a tuft), the
  *  crumbs doodled down each column as they appear (`crumbs` [frame, column, kind]). */
@@ -244,7 +257,7 @@ const CrumbDoodle: React.FC<{ kind: CrumbKind; x: number; y: number; t: number }
   return (
     <g transform={`translate(${x} ${y}) scale(${sc})`} opacity={Math.min(1, t * 3)} stroke={C} strokeWidth={6} fill="none" strokeLinecap="round" strokeLinejoin="round">
       {kind === "squiggle" && <path d="M-80 0 q20 -30 40 0 t40 0 t40 0 t40 0" />}
-      {kind === "shoe" && <path d="M-70 20 L60 20 Q72 10 64 0 L30 -10 Q14 -34 -4 -18 L-40 -14 Q-72 -8 -70 20Z M-14 -16 l8 10 l8 -10 l8 10" stroke="#c0582f" />}
+      {kind === "shoe" && <path d="M-60 30 L-58 -40 L-20 -40 L-18 0 Q20 0 50 14 Q66 20 64 30Z M-52 -26 H-24 M-52 -12 H-22" stroke="#c0582f" />}
       {kind === "bowl" && <g><path d="M-50 -6 Q0 50 50 -6Z" /><path d="M-16 -20 q8 -12 0 -24 M10 -20 q8 -12 0 -24" /></g>}
       {kind === "note" && <g><ellipse cx={-10} cy={14} rx={14} ry={10} /><path d="M4 14 V-36 q20 8 14 30" /></g>}
       {kind === "word" && <g><rect x={-60} y={-32} width={120} height={56} rx={24} /><path d="M-40 -4 q10 -14 20 0 t20 0 t20 0 t20 0" /><path d="M-30 24 l-10 18 l24 -18" /></g>}

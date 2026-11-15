@@ -49,6 +49,37 @@ export const Machine: React.FC<{ x: number; y: number; s?: number; at: number; s
   );
 };
 
+/**
+ * Script v6's reveal: the ONE drawing the crumbs make, filling the frame. A thin band like yours, with an open eye drawn
+ * on it and a small RED light; a sun beside it (a band for the daytime). Its lines draw themselves from `at` over `span`
+ * frames; the red light fills and glows from `red`. (x, y) is the band's centre.
+ */
+export const BandDrawing: React.FC<{ frame: number; x: number; y: number; s?: number; at: number; span: number; red: number;
+  color?: string; width?: number }> = ({ frame, x, y, s = 1, at, span, red, color = "#1d3f86", width = 11 }) => {
+  const parts = [
+    "M-420 -60 Q0 90 420 -60",
+    "M-420 -60 L-420 0 M420 -60 L420 0",
+    "M-420 0 Q0 150 420 0",
+    "M-230 30 Q-150 -30 -70 30 Q-150 90 -230 30Z",
+    "M-174 30 a24 24 0 1 0 48 0 a24 24 0 1 0 -48 0",
+    "M50 52 a40 40 0 1 0 80 0 a40 40 0 1 0 -80 0",
+    "M250 -300 a80 80 0 1 0 160 0 a80 80 0 1 0 -160 0",
+    "M330 -420 V-460 M330 -180 V-140 M210 -300 H170 M450 -300 H490 M245 -385 L218 -412 M415 -385 L442 -412 M245 -215 L218 -188 M415 -215 L442 -188",
+  ];
+  const step = span / parts.length;
+  const glow = ramp(frame, red, red + 12);
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      {frame >= at + step * 6 && <circle cx={330} cy={-300} r={78} fill="#ffd36b" opacity={0.55 * ramp(frame, at + step * 6, at + step * 7.5)} />}
+      {frame >= at + step * 4 && <circle cx={-150} cy={30} r={22} fill={color} opacity={ramp(frame, at + step * 4, at + step * 5)} />}
+      {glow > 0 && <circle cx={90} cy={52} r={110} fill="#ff4a5a" opacity={0.3 * glow} />}
+      {glow > 0 && <circle cx={90} cy={52} r={38} fill="#ff4a5a" opacity={glow} />}
+      {parts.map((d, i) => <DrawLine key={i} d={d} from={Math.round(at + i * step * 0.8)} to={Math.round(at + i * step * 0.8 + step * 1.6)}
+        color={i >= 6 ? "#c98f1f" : i === 5 ? "#b8202f" : color} width={width} />)}
+    </g>
+  );
+};
+
 /** The pages of crumbs on the bed, top down: scattered, then sliding edge to edge (`join` 0..1) into a 3 x 2 sheet. */
 export const PagesTop: React.FC<{ x: number; y: number; join: number; shade?: number }> = ({ x, y, join, shade = 0 }) => {
   const W = 300, H = 400;
@@ -112,7 +143,7 @@ export const LaptopScreen: React.FC<{ frame: number; scroll: number; machine: nu
             </g>
           );
         })}
-        {machine > 0 && <Machine x={960} y={560} s={0.95} at={machineAt} span={50} color="#1d3f86" width={9} />}
+        {machine > 0 && <BandDrawing frame={frame} x={900} y={600} s={0.9} at={machineAt} span={50} red={machineAt + 50} />}
       </g>
       {hand && (
         <g>

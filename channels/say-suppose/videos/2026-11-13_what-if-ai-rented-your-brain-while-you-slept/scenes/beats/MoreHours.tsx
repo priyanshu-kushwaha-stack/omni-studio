@@ -73,12 +73,15 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
     coffee: from(39), sign: from(39) + 8, shut: [at(39, 0.28), at(39, 0.38)] as const, pillow: at(39, 0.44), yours: at(39, 0.72),
     pull: [at(39, 0.8), v5 ? Math.max(at(39, 0.8) + 2, newsSpan(v3).from - 8) : h39 + Math.round((from(40) - h39) * 0.85)] as const,
     stranger: [h39 + 10, v5 ? newsSpan(v3).from : from(40)] as const, hold: h39,
-    shelf: v5 ? v3[V5.push].from - 3 : from(40), clockRuns: v5 ? v3[V5.push].from - 3 : from(40), jars: at(40, 0.55),
+    shelf: v5 ? v3[V5.push].from - 3 : from(40), clockRuns: v5 ? v3[V5.push].from - 3 : from(40),
+    jars: v5 ? Math.round(v3[V5.push].from + v3[V5.push].frames * 0.72) : at(40, 0.55), // "Your jar becomes a shelf of jars."
     // 41 + hold + 42-43: the cost
     hall: from(41), keys: at(41, 0.21), pockets: at(41, 0.28), atm: at(41, 0.36), keypad: at(41, 0.42), atmFace: at(41, 0.55),
     doors: at(41, 0.67), turn: at(41, 0.86), sit: in41(0.2), broOut: in41(0.3), broWalk: [in41(0.36), in41(0.78)] as const,
     broSit: in41(0.84), thumb: in41(0.9), live: [from(42), lineEnd(clips, 42)] as const, sheepish: lineEnd(clips, 42) - 4,
-    last: from(43), lastClose: at(43, 0.39), lastWide: at(43, 0.78),
+    // v1 43 was cut in v6 (a one-frame placeholder): its three shots fold into the beat's last frames, strictly increasing
+    ...(clips[43].frames > 1 ? { last: from(43), lastClose: at(43, 0.39), lastWide: at(43, 0.78) }
+      : { last: end - 3, lastClose: end - 2, lastWide: end - 1 }),
   };
 }
 

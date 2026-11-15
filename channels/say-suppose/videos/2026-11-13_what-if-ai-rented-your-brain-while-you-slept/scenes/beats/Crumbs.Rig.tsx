@@ -59,13 +59,22 @@ export const BackCap: React.FC<{ body: Body; light?: number; two?: boolean }> = 
     <g transform={`rotate(${tilt} ${h.x} ${h.y})`}>
       <path d={`M${h.x - r} ${h.y - r * 0.18} A${r} ${r} 0 0 1 ${h.x + r} ${h.y - r * 0.18} Z`} fill={BROTHER.cap} stroke={INK} strokeWidth={3} />
       <path d={`M${h.x - f * r * 0.8} ${h.y - r * 0.28} l${-f * r * 0.62} ${r * 0.12} l${f * r * 0.1} ${r * 0.18} Z`} fill={BROTHER.cap} stroke={INK} strokeWidth={3} />
-      {light > 0 && (
+      {light > 0 && !two && (
         <g>
           <circle cx={h.x + f * r * 0.86} cy={h.y - r * 0.2} r={r * 0.24} fill={GHOST.light} opacity={0.4 * light} />
           <circle cx={h.x + f * r * 0.86} cy={h.y - r * 0.2} r={r * 0.1} fill={GHOST.light} stroke="#1b1d24" strokeWidth={2} opacity={light} />
-          {/* Saturday (v5): a second band under the cap, its light just above the first */}
-          {two && <circle cx={h.x + f * r * 0.88} cy={h.y - r * 0.46} r={r * 0.24} fill={GHOST.light} opacity={0.4 * light} />}
-          {two && <circle cx={h.x + f * r * 0.88} cy={h.y - r * 0.46} r={r * 0.1} fill={GHOST.light} stroke="#1b1d24" strokeWidth={2} opacity={light} />}
+        </g>
+      )}
+      {/* Saturday (v5; v6 review): two bands, two small teal lights side by side just under the brim, never one disc */}
+      {light > 0 && two && (
+        <g>
+          <path d={`M${h.x + f * r * 0.2} ${h.y - r * 0.3} L${h.x + f * r * 0.98} ${h.y - r * 0.3}`} stroke="#1b1d24" strokeWidth={r * 0.12} strokeLinecap="round" />
+          {[0.42, 0.78].map((dx) => (
+            <g key={dx}>
+              <circle cx={h.x + f * r * dx} cy={h.y - r * 0.3} r={r * 0.15} fill={GHOST.light} opacity={0.35 * light} />
+              <circle cx={h.x + f * r * dx} cy={h.y - r * 0.3} r={r * 0.08} fill={GHOST.light} stroke="#1b1d24" strokeWidth={2} opacity={light} />
+            </g>
+          ))}
         </g>
       )}
     </g>

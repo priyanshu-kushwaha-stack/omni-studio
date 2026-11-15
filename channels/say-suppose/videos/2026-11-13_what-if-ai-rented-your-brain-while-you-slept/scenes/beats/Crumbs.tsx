@@ -22,6 +22,7 @@
 //   30    your phone; INSERT the box of squiggly letters, typed; the old newspapers coming out as clean lines
 //   31    the papers riffle faster; the bunk room at night, the band on, the ghost, the coins (the same bargain)
 //   32    the jar a quarter full; your eyes on it; eight coins in; the clock; your eyes on the clock
+import { DEBT } from "./V6.Kit";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { dir, joints, LIMB, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -56,7 +57,7 @@ function times(clips: Clip[], start: number, end: number) {
   return {
     start, end, at, from,
     // 17 + hold + 18: the drawing
-    crave: at(17, 0.18), draw: at(17, 0.66), drawLines: [at(17, 0.7), h17 - 4] as const,
+    crave: at(17, 0.18), draw: at(17, 0.66), drawLines: [at(17, 0.66) - 14, h17 - 4] as const, // the insert opens on the sole already drawn
     tongue: h17, turn: in17(0.27), squint: in17(0.48), tiltA: in17(0.58), tiltB: in17(0.72), looks: in17(0.88),
     shoeLine: [at(18, 0.4), at(18, 0.9)] as const, offended: at(18, 0.82),
     // 19 + hold + 20: the shower
@@ -74,7 +75,9 @@ function times(clips: Clip[], start: number, end: number) {
     slap: from(27), book: at(27, 0.14), knot: at(27, 0.61), smug: at(27, 0.72), sorry: at(27, 0.8), writes: at(27, 0.93),
     crumbs: [
       [at(27, 0.16), 0, "squiggle"], [at(27, 0.22), 1, "shoe"], [at(27, 0.37), 1, "bowl"], [at(27, 0.43), 0, "note"],
-      [at(27, 0.48), 1, "word"], [at(27, 0.53), 0, "face"], [at(27, 0.94), 0, "knot"], [at(27, 0.97), 1, "sorry"],
+      [at(27, 0.48), 1, "word"], [at(27, 0.53), 0, "face"],
+      // script v6 review: the same stranger's face, drawn badly the same way, in BOTH columns (nobody remarks on it)
+      [at(27, 0.57), 1, "face"], [at(27, 0.94), 0, "knot"], [at(27, 0.97), 1, "sorry"],
     ] as [number, 0 | 1, CrumbKind][],
     // 28: the page
     page: from(28), bed: at(28, 0.24), dream: at(28, 0.62), corridor: at(28, 0.76), heart: at(28, 0.89),
@@ -236,7 +239,7 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
       you: closeUp(yh.x + 50, yh.y, 2.6),
     };
     return (
-      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k2", 3)} mood={mood}
+      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k2", 3)} mood={mood} debt={{ amount: DEBT.crumbs }}
         you={{ body: you, face: youFace, held, tongue: frame >= k.tongue && frame < k.turn }} brother={{ body: bro, face: broFace, held: spoon }} onTable={page} />
     );
   }
@@ -262,7 +265,7 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
     };
     void sh;
     return (
-      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k4", 3)} mood={mood}
+      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k4", 3)} mood={mood} debt={{ amount: DEBT.crumbs }}
         you={{ body: standing, face: youFace, held: frame < k.fold ? <SheetBlob /> : undefined, seated: false }}
         brother={{ body: bro, face: broFace, held: frame < k.slip ? spoon : undefined }}
         onTable={proud ? <SheetSquare x={760} /> : null}
@@ -322,7 +325,7 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
     eyesClock: closeUp(yh.x + 40, yh.y - 10, 2.6),
   };
   return (
-    <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k6", 3)} mood={mood} jar={frame >= k.jar ? jarFill : frame >= k.keep ? 0.25 : null}
+    <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k6", 3)} mood={mood} debt={{ amount: DEBT.crumbs }} jar={frame >= k.jar ? jarFill : frame >= k.keep ? 0.25 : null}
       clock={clockT} you={{ body: you, face: youFace, held }} brother={{ body: bro, face: broFace, light, two: true, bowl: true }}
       onTable={notebook} extra={<>
         {coins}

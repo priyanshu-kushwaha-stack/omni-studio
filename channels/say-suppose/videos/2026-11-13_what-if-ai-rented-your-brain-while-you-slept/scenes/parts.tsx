@@ -6,7 +6,7 @@
 //
 // The rule device is drawn exactly as the G1 thumbnail draws it (brand/thumbs/brainrent/Rent.tsx), so the film's key
 // shot and the thumbnail are one picture (owner, 2026-11-12: "A, the thumbnail").
-import { Audio, interpolate, Sequence, spring, staticFile } from "remotion";
+import { Audio, interpolate, Sequence, spring, staticFile, useCurrentFrame } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { HEAD_R, joints, SEATED, STAND, type Pose } from "@whatif/kit/rig/pose";
 import { Chair } from "@whatif/kit/sets/common";
@@ -45,6 +45,7 @@ export const Sleeper: React.FC<{
         <Figure x={0} y={264} pose={STAND} head={head} scarf={scarf} tuft={tuft} cap={cap} blink={eyes === "shut"}
           mouth={mouth} look={{ x: 0.6, y: -0.2 }} />
         {band && <path d="M-40 -24 Q2 -34 44 -22" fill="none" stroke="#1b1d24" strokeWidth={9} strokeLinecap="round" />}
+        {band && lit > 0.05 && <circle cx={30} cy={-27} r={18} fill={GHOST.light} opacity={0.35 * lit} />}
         {band && <circle cx={30} cy={-27} r={8} fill={lit > 0.05 ? GHOST.light : "#2a3a3a"} stroke="#1b1d24" strokeWidth={3}
           opacity={0.4 + 0.6 * lit} />}
       </g>
@@ -128,15 +129,38 @@ export const Ghost: React.FC<{ x: number; y: number; scale: number; t: number; f
   );
 };
 
-/** The dotted glowing thread from the band's light (a) up to the ghost's back (b). `t` 0..1 draws it. */
+/** The dotted glowing thread from the band's light (a) up to the ghost's back (b). `t` 0..1 draws it. Script v6: bright
+ *  pulses run along it from the band UP to the ghost (the brain's work goes up; the money comes down, as coins). */
 export const Thread: React.FC<{ a: { x: number; y: number }; b: { x: number; y: number }; t: number; bend?: number }> = ({ a, b, t, bend = 260 }) => {
+  const frame = useCurrentFrame();
   if (t <= 0.01) return null;
-  const d = `M${a.x} ${a.y} C${a.x + 40} ${a.y - 220} ${b.x - bend} ${b.y - 60} ${b.x} ${b.y}`;
+  const c1 = { x: a.x + 40, y: a.y - 220 };
+  const c2 = { x: b.x - bend, y: b.y - 60 };
+  const d = `M${a.x} ${a.y} C${c1.x} ${c1.y} ${c2.x} ${c2.y} ${b.x} ${b.y}`;
+  const at = (u: number) => {
+    const v = 1 - u;
+    return {
+      x: v * v * v * a.x + 3 * v * v * u * c1.x + 3 * v * u * u * c2.x + u * u * u * b.x,
+      y: v * v * v * a.y + 3 * v * v * u * c1.y + 3 * v * u * u * c2.y + u * u * u * b.y,
+    };
+  };
+  const len = Math.hypot(b.x - a.x, b.y - a.y);
   return (
     <g opacity={t}>
       <path d={d} fill="none" stroke={GHOST.light} strokeWidth={26} opacity={0.18} strokeLinecap="round" />
       <path d={d} fill="none" stroke={GHOST.light} strokeWidth={7} opacity={0.8} strokeLinecap="round" strokeDasharray="2 16" pathLength={1000}
-        strokeDashoffset={-(1 - t) * 0} />
+        strokeDashoffset={frame * 6} />
+      {[0, 1, 2].map((i) => {
+        const u = ((frame / 40) + i / 3) % 1;
+        const p = at(u);
+        const r = Math.max(5, len * 0.012);
+        return (
+          <g key={i} opacity={Math.min(1, u * 6, (1 - u) * 6)}>
+            <circle cx={p.x} cy={p.y} r={r * 2.4} fill={GHOST.light} opacity={0.35} />
+            <circle cx={p.x} cy={p.y} r={r} fill="#ffffff" />
+          </g>
+        );
+      })}
     </g>
   );
 };
@@ -196,12 +220,16 @@ export const Jar: React.FC<{ x: number; y: number; w?: number; h?: number; fill?
   </g>
 );
 
-/** A band held in a hand or lying on a table: the thin dark loop with its teal light. (x, y) is its centre. */
+/** A band held in a hand or lying on a table: the thumbnail's band, a thin dark strip, gently curved, with its one
+ *  small teal light glowing (script v6: never a ring, never a stalk). (x, y) is its centre; at scale 1 it is about a
+ *  head wide (100 units). */
 export const Band: React.FC<{ x: number; y: number; scale?: number; lit?: boolean; color?: string; tilt?: number }> = ({
   x, y, scale = 1, lit = true, color, tilt = 0 }) => (
   <g transform={`translate(${x} ${y}) rotate(${tilt}) scale(${scale})`}>
-    <ellipse rx={46} ry={16} fill="none" stroke="#1b1d24" strokeWidth={9} />
-    <circle cx={0} cy={15} r={8} fill={lit ? (color ?? GHOST.light) : "#2a3a3a"} stroke="#1b1d24" strokeWidth={3} />
+    {lit && <circle cx={0} cy={8} r={22} fill={color ?? GHOST.light} opacity={0.35} />}
+    <path d="M-52 -4 Q0 16 52 -4" fill="none" stroke="#1b1d24" strokeWidth={11} strokeLinecap="round" />
+    <path d="M-46 -6 Q0 11 46 -6" fill="none" stroke="#3b3f4a" strokeWidth={3} strokeLinecap="round" />
+    <circle cx={0} cy={6} r={8} fill={lit ? (color ?? GHOST.light) : "#2a3a3a"} stroke="#1b1d24" strokeWidth={3} />
   </g>
 );
 
@@ -221,11 +249,12 @@ export const BandBox: React.FC<{ x: number; y: number; scale?: number; color?: s
  * value over FLAP frames from `at`. (x, y) is its centre. Story numbers on screen (> TAG: $90).
  */
 const FLAP = 16;
-export const PayFlap: React.FC<{ frame: number; at: number; until?: number; x: number; y: number; value: string; size?: number }> = ({
-  frame, at, until, x, y, value, size = 90 }) => {
+export const PayFlap: React.FC<{ frame: number; at: number; until?: number; x: number; y: number; value: string; size?: number;
+  settle?: number; popAt?: number }> = ({ frame, at, until, x, y, value, size = 90, settle = FLAP, popAt }) => {
   if (frame < at || (until !== undefined && frame >= until)) return null;
-  const s = pop(frame, at, 240);
-  const p = Math.min(1, (frame - at) / FLAP);
+  // `popAt`: when the plate itself appeared (a later value on the same plate flips its digits without popping again)
+  const s = pop(frame, popAt ?? at, 240);
+  const p = Math.min(1, (frame - at) / Math.max(1, settle));
   const chars = value.split("");
   const w = size * 0.78;
   const x0 = -((chars.length - 1) * w) / 2;
@@ -294,9 +323,9 @@ export const Sheet: React.FC<{
   children?: React.ReactNode;
 }> = ({ frame, at, until, x, y, w, h, tilt = -2, children }) => {
   if (frame < at || (until !== undefined && frame >= until)) return null;
-  const t = interpolate(frame, [at, at + 14], [0, 1], { extrapolateRight: "clamp" });
+  // script v6: no insert opens on blank or folded paper: the sheet is fully open on its first frame
   return (
-    <g transform={`translate(${x} ${y}) rotate(${tilt}) scale(${0.6 + 0.4 * t} ${t})`}>
+    <g transform={`translate(${x} ${y}) rotate(${tilt})`}>
       <rect x={-w / 2 + 10} y={-h / 2 + 14} width={w} height={h} rx={10} fill="#000" opacity={0.25} />
       <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={10} fill={PAPER} stroke="#cdbfa6" strokeWidth={4} />
       <line x1={-w / 2} y1={0} x2={w / 2} y2={0} stroke="#e2d6bf" strokeWidth={3} />

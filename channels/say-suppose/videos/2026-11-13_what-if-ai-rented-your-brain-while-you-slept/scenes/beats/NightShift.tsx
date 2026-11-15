@@ -101,12 +101,13 @@ const NightShiftShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     <BunkRoom frame={frame} mood="lamp" you="none" jarFill={0.9} {...p} view={drift(view, frame, "nightshift", 4)}>{children}</BunkRoom>
   );
   // ---------------------------------------------------------------- the inserts
-  if (shot === "clock") return <PaperInsert frame={frame} at={k.clock} end={k.youThird}><ClockSheet frame={frame} at={k.clock} shade={k.shade} /></PaperInsert>;
-  if (shot === "mouse") return <PaperInsert frame={frame} at={k.mouse} end={k.bin}><MouseSheet frame={frame} at={k.mouse} widen={k.widen} tide={k.tide} /></PaperInsert>;
-  if (shot === "memory") return <PaperInsert frame={frame} at={k.memory} end={k.brotherReads}><MemorySheet frame={frame} at={k.memory} loss={k.loss} /></PaperInsert>;
-  if (shot === "maze") return <PaperInsert frame={frame} at={k.maze} end={k.cabinet} tilt={1.5}><MazeSheet frame={frame} at={k.maze} run={k.run} sleep={k.sleep} replay={k.replay} /></PaperInsert>;
-  if (shot === "cabinet") return <PaperInsert frame={frame} at={k.cabinet} end={k.shift}><CabinetSheet frame={frame} at={k.cabinet} open={k.open} whirl={k.whirl} shut={k.shut} fall={k.fall} /></PaperInsert>;
-  if (shot === "fair") return <PaperInsert frame={frame} at={k.fair} end={k.mirror2} tilt={1}><FairSheet frame={frame} at={k.fair} ticks={k.ticks} /></PaperInsert>;
+  // script v6: every sheet's drawing starts 1 s before its cut, so it is drawn on the first frame
+  if (shot === "clock") return <PaperInsert frame={frame} at={k.clock} end={k.youThird}><ClockSheet frame={frame} at={k.clock - 30} shade={k.shade} /></PaperInsert>;
+  if (shot === "mouse") return <PaperInsert frame={frame} at={k.mouse} end={k.bin}><MouseSheet frame={frame} at={k.mouse - 30} widen={k.widen} tide={k.tide} /></PaperInsert>;
+  if (shot === "memory") return <PaperInsert frame={frame} at={k.memory} end={k.brotherReads}><MemorySheet frame={frame} at={k.memory - 30} loss={k.loss} /></PaperInsert>;
+  if (shot === "maze") return <PaperInsert frame={frame} at={k.maze} end={k.cabinet} tilt={1.5}><MazeSheet frame={frame} at={k.maze - 30} run={k.run} sleep={k.sleep} replay={k.replay} /></PaperInsert>;
+  if (shot === "cabinet") return <PaperInsert frame={frame} at={k.cabinet} end={k.shift}><CabinetSheet frame={frame} at={k.cabinet - 30} open={k.open} whirl={k.whirl} shut={k.shut} fall={k.fall} /></PaperInsert>;
+  if (shot === "fair") return <PaperInsert frame={frame} at={k.fair} end={k.mirror2} tilt={1}><FairSheet frame={frame} at={k.fair - 30} ticks={k.ticks} /></PaperInsert>;
   if (shot === "hook") return <WallInsert frame={frame} kind="hook" tagAt={k.keysAt} start={k.h} end={k.door} />;
   if (shot === "door") return <WallInsert frame={frame} kind="door" tagAt={k.doorAt} start={k.door} end={k.press} />;
   if (shot === "mirror" || shot === "mirror2") {

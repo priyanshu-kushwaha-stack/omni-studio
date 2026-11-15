@@ -7,7 +7,7 @@ import { Finish } from "@whatif/kit/stage/Stage";
 import { BEATS } from "./beats";
 import { lastIndex, type Shot } from "./shared";
 import { Captions } from "./Captions";
-import { V1_TO_V3 } from "./remap";
+import { V1_TO_V3, v5Lines, v5Timeline } from "./remap";
 import { soundPlan } from "./sound";
 
 /** The score's level, the owner's (taste.md 2026-11-08, G5 of the pause-time film): about 26 dB under the voice while
@@ -58,9 +58,12 @@ export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Reco
 
 /** The picture at the current frame: the beat on, lit by the current line's mood, and the paper finish. Sources are
  *  not shown on screen; they go in the description (owner, 2026-11-07). */
-const Picture: React.FC<FilmProps> = ({ timeline, lines: v3Lines }) => {
+const Picture: React.FC<FilmProps> = ({ timeline, lines: v6Lines }) => {
   const frame = useCurrentFrame();
-  const { clips: v3, cues } = timeline;
+  const { clips: v6, cues } = timeline;
+  // Script v6: the beats count v5 lines (remap.ts V5_TO_V6); v6's new moments read shot.v6.
+  const v3 = v5Timeline(v6);
+  const v3Lines = v5Lines(v6Lines);
   // The beats count lines in v1 numbering (remap.ts): hand them v3's clips and lines in that numbering.
   const clips = beatClips(v3);
   const lines = V1_TO_V3.map((n) => v3Lines[n]);
@@ -68,15 +71,15 @@ const Picture: React.FC<FilmProps> = ({ timeline, lines: v3Lines }) => {
   const index = Math.max(0, lastIndex(starts, (s) => frame >= s));
   const beat = BEATS[index];
   const to = starts[index + 1] ?? timeline.totalFrames;
-  const shot: Shot = { frame, t: frame, wc: (f) => f, cues, clips, lines, pauses: [], from: starts[index], to, v3 };
-  const lineIndex = Math.max(0, lastIndex(v3, (c) => frame >= c.from));
-  const mood = (v3Lines[lineIndex]?.mood ?? "day") as MoodName;
+  const shot: Shot = { frame, t: frame, wc: (f) => f, cues, clips, lines, pauses: [], from: starts[index], to, v3, v6 };
+  const lineIndex = Math.max(0, lastIndex(v6, (c) => frame >= c.from));
+  const mood = (v6Lines[lineIndex]?.mood ?? "day") as MoodName;
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <LookContext.Provider value={moodLook(mood)}>
         <beat.Component shot={shot} />
       </LookContext.Provider>
-      <Captions frame={frame} clips={v3} />
+      <Captions frame={frame} clips={v6} />
       <Finish />
     </AbsoluteFill>
   );
@@ -114,7 +117,7 @@ const Placed: React.FC<{ src: string; from: number; to: number; lead: number; fa
 export const Film: React.FC<FilmProps> = (props) => {
   const { clips, totalFrames } = props.timeline;
   if (!clips.length) return <AbsoluteFill style={{ background: "#000" }} />;
-  const { SCORE, BEDS, PEAK } = soundPlan(clips, totalFrames);
+  const { SCORE, BEDS, PEAK } = soundPlan(v5Timeline(clips), totalFrames);
   const outro = (f: number) => Math.min(1, Math.max(0, (totalFrames - f) / OUTRO));
   const score = (f: number) => scoreVolume(f, clips) * peakDip(f, PEAK) * outro(f);
   const bed = (f: number) => (BED_UNDER_VOICE + (1 - BED_UNDER_VOICE) * (scoreVolume(f, clips) - UNDER_VOICE)
