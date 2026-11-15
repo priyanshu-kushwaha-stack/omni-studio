@@ -4,6 +4,9 @@
 `omni approve` (channels.approve_stage) re-runs the same checks on the inputs that report names, and refuses to
 sign while any check fails. No gate is skipped or added: a check can only hold a gate shut.
 
+`metadata.studio_warnings` names checks that run and are reported (WARN in `omni qc`, printed by `omni approve`)
+but never hold a gate: the owner judges them film by film (studio-whatif `opening`, owner 2026-11-15).
+
 Checks:
   claims          claims ledger complete, a source per factual claim (studio/claims.py)
   no_quiz_boards  script_lint.py item 27 (owner rule 2026-11-06)
@@ -19,6 +22,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import sys
 from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
@@ -45,15 +49,29 @@ def _script_lint():
     return module
 
 
-def stage_checks(pipeline: str, stage: str) -> list[str]:
+def _named_checks(pipeline: str, stage: str, key: str) -> list[str]:
     channels._upstream()
     from lib.pipeline_loader import load_pipeline_readonly
 
-    names = ((load_pipeline_readonly(pipeline).get("metadata") or {}).get("studio_checks") or {}).get(stage, [])
+    names = ((load_pipeline_readonly(pipeline).get("metadata") or {}).get(key) or {}).get(stage, [])
     unknown = [n for n in names if n not in KNOWN]
     if unknown:
         raise ChannelError(f"pipeline {pipeline!r} stage {stage!r} names unknown checks {unknown}")
     return list(names)
+
+
+def stage_checks(pipeline: str, stage: str) -> list[str]:
+    """Checks that must pass before `omni approve` signs the stage (`metadata.studio_checks`)."""
+    return _named_checks(pipeline, stage, "studio_checks")
+
+
+def stage_warnings(pipeline: str, stage: str) -> list[str]:
+    """Checks that are run and reported but never block the stage (`metadata.studio_warnings`)."""
+    names = _named_checks(pipeline, stage, "studio_warnings")
+    both = sorted(set(names) & set(stage_checks(pipeline, stage)))
+    if both:
+        raise ChannelError(f"pipeline {pipeline!r} stage {stage!r} lists {both} as both a check and a warning")
+    return names
 
 
 def project_identity(
@@ -250,6 +268,7 @@ def run_stage(
         raise ChannelError(f"No video {video_id!r} in channel {slug!r}")
     fmt, pipeline = project_identity(channel, video_id, format_name)
     names = stage_checks(pipeline, stage)
+    warns = stage_warnings(pipeline, stage)
     if media is None and stage in ("narration", "story_script"):  # story lock carries the narration (studio-whatif)
         media = folder / "narration" / "narration.wav"
     if media is None and stage == PUBLISH_STAGE:
@@ -258,6 +277,7 @@ def run_stage(
         words = folder / "narration" / "words.json"
     media = Path(media).resolve() if media else None
     results = [run_check(n, channel, video_id, fmt, pipeline, media, words) for n in names]
+    results += [{**run_check(n, channel, video_id, fmt, pipeline, media, words), "warning": True} for n in warns]
     if stage == PUBLISH_STAGE and names:
         results.append(_deliverable_check(channel, video_id, media))
     report = {
@@ -273,9 +293,9 @@ def run_stage(
             "words": _rel(Path(words).resolve()) if words else None,
         },
         "checks": results,
-        "ok": all(r["ok"] for r in results),
+        "ok": all(r["ok"] for r in results if not r.get("warning")),
     }
-    if write and names:
+    if write and (names or warns):
         out = folder / "qc" / f"{stage}.json"
         out.parent.mkdir(exist_ok=True)
         out.write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -283,8 +303,10 @@ def run_stage(
 
 
 def require_passing(channel: channels.Channel, video_id: str, stage: str, pipeline: str) -> Optional[dict[str, Any]]:
-    """Refuse a gate while its checks fail. Re-runs them on the inputs the stage's qc report names."""
-    if not stage_checks(pipeline, stage):
+    """Refuse a gate while its checks fail. Re-runs them on the inputs the stage's qc report names. Failing
+    warnings (`metadata.studio_warnings`) are printed to stderr and never refuse."""
+    names = stage_checks(pipeline, stage) + stage_warnings(pipeline, stage)
+    if not names:
         return None
     path = channels.video_dir(channel, video_id) / "qc" / f"{stage}.json"
     if not path.is_file():
@@ -296,7 +318,7 @@ def require_passing(channel: channels.Channel, video_id: str, stage: str, pipeli
     inputs = previous.get("inputs", {})
     media = ROOT / inputs["media"] if inputs.get("media") else None
     words = ROOT / inputs["words"] if inputs.get("words") else None
-    if MEDIA_CHECKS & set(stage_checks(pipeline, stage)):
+    if MEDIA_CHECKS & set(names):
         if media is None or not inputs.get("media_sha256"):
             raise ChannelError(f"the {stage!r} qc report names no checked file and sha256; run omni qc with --media")
         if not media.is_file() or _sha256(media) != inputs["media_sha256"]:
@@ -306,9 +328,27 @@ def require_passing(channel: channels.Channel, video_id: str, stage: str, pipeli
             )
     report = run_stage(channel.slug, video_id, stage, media, words, format_name=previous.get("format"))
     if not report["ok"]:
-        failed = [f"{r['check']}: {p}" for r in report["checks"] if not r["ok"] for p in r["problems"]]
+        failed = _blocking_failures(report)
         raise ChannelError(f"stage {stage!r} cannot pass while its checks fail:\n  " + "\n  ".join(failed))
+    for line in warning_lines(report):
+        print(line, file=sys.stderr)
     return report
+
+
+def _blocking_failures(report: dict[str, Any]) -> list[str]:
+    return [
+        f"{r['check']}: {p}" for r in report["checks"] if not r["ok"] and not r.get("warning") for p in r["problems"]
+    ]
+
+
+def warning_lines(report: dict[str, Any]) -> list[str]:
+    """One line per problem of each failing warning check: reported, never blocking."""
+    return [
+        f"warning (does not block the gate): {r['check']}: {p}"
+        for r in report["checks"]
+        if r.get("warning") and not r["ok"]
+        for p in r["problems"]
+    ]
 
 
 def upload_metadata_sha256(channel: channels.Channel, video_id: str) -> str:
@@ -361,8 +401,10 @@ def approve_upload(slug: str, video_id: str, format_name: str, note: Optional[st
         )
     report = run_stage(slug, video_id, PUBLISH_STAGE, format_name=format_name)
     if not report["ok"]:
-        failed = [f"{r['check']}: {p}" for r in report["checks"] if not r["ok"] for p in r["problems"]]
+        failed = _blocking_failures(report)
         raise ChannelError("upload cannot be approved while its checks fail:\n  " + "\n  ".join(failed))
+    for line in warning_lines(report):
+        print(line, file=sys.stderr)
     at = datetime.now(timezone.utc).isoformat()
     record = {
         "by": getpass.getuser(),
@@ -419,7 +461,8 @@ def format_report(report: dict[str, Any]) -> str:
         if r["check"] == "loudness" and "measured" in r:
             m = r["measured"]
             extra = f" ({m['integrated_lufs']:.1f} LUFS, {m['true_peak_dbtp']:.2f} dBTP, LRA {m['lra_lu']:.1f} LU)"
-        lines.append(f"  [{'PASS' if r['ok'] else 'FAIL'}] {r['check']}{extra}")
+        mark = "PASS" if r["ok"] else ("WARN" if r.get("warning") else "FAIL")
+        lines.append(f"  [{mark}] {r['check']}{extra}")
         lines += [f"         - {p}" for p in r["problems"]]
     lines.append(f"  {'ok' if report['ok'] else 'FAILED'}")
     return "\n".join(lines)
