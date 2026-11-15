@@ -145,7 +145,8 @@ three painted looks, then that sample re-coloured and on a painted backdrop, and
 
 - **No empty opening** (owner, 2026-11-08: "First 2 seconds are empty ... the attention span is so low these
   days"): a sound a phone can play within 0.5 s and the first word within 1 s. `omni qc` checks it (`opening`) at the
-  edit, the final watch and publish.
+  edit, the final watch and publish as a warning, not a gate: the owner judges the opening film by film, and a
+  wordless cold open that holds attention can stand (owner, 2026-11-15: "it goes video to video").
 
 Owner, 2026-11-07:
 - **Opening.** Hook first, then a 3 to 4 s ident in our own visual language, never "welcome to the channel".
