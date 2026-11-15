@@ -24,6 +24,16 @@ import type { Camera } from "@whatif/kit/stage/Stage";
 import { ClinkSound, DeviceSound } from "../parts";
 import { camAt, current, type Beat, type Shot } from "../shared";
 import { DoorShot, SkitRoom, skitTimes, TakeInsert, type SkitT } from "./Chair.Skit";
+import { BunkRoom, KEY_VIEW } from "../sets/BunkRoom";
+
+/** G3, the first 30 seconds (studio-whatif-edit.md): the opening frames are the thumbnail's picture (the bunk room after
+ *  midnight, you asleep with the band lit, the pale second you typing, coins arcing into the jar), so the autoplay
+ *  preview looks like the thumbnail; a hard cut at THUMB_OPEN to the clinic close. */
+const THUMB_OPEN = 14;
+const ThumbOpen: React.FC<{ frame: number }> = ({ frame }) => (
+  <BunkRoom frame={frame + 200} mood="night" view={{ ...KEY_VIEW, zoom: 1 + frame * 0.002 }} you="band" device={{ on: -100 }}
+    coins={{ from: -100 }} jarFill={0.55} />
+);
 
 /** The clock ticks once a second (the room's clock runs 22 frames ahead, so the first tick lands at frame 8). */
 export const TICK_OFFSET = 22;
@@ -78,7 +88,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const cam = camera(frame, k);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      {cam === "take" ? <TakeInsert frame={frame} k={k} /> : cam === "shut" ? <DoorShot frame={frame} k={k} />
+      {frame < THUMB_OPEN ? <ThumbOpen frame={frame} /> : cam === "take" ? <TakeInsert frame={frame} k={k} /> : cam === "shut" ? <DoorShot frame={frame} k={k} />
         : <SkitRoom frame={frame} k={k} cam={drift(cam, frame, "chair", 3)} />}
       <SkitSound k={k} to={shot.to} />
       <Sequence from={k.doorClose[1] - 2} durationInFrames={20}><Audio src={staticFile("sfx/knock.wav")} volume={0.22} /></Sequence>

@@ -12,14 +12,16 @@
 //   89   the room, wide: nothing above the blanket where the pale second you used to type. Nobody's typing.
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
-import { dir, joints, LIMB, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
+import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { drift } from "@whatif/kit/stage/shots";
 import type { Clip } from "@whatif/kit/timeline";
-import { INK } from "@whatif/kit/theme";
+import { INK, PAPER, TEAL } from "@whatif/kit/theme";
+import { FONT } from "@whatif/kit/fonts";
 import { Band, BandBox } from "../parts";
 import { windowIndex, WindowStreetScene, WS, yourWindow } from "../sets/WindowStreet";
 import { BunkRoom, BUNK } from "../sets/BunkRoom";
+import { BrotherInBed, brotherLying } from "./Midnight.Brother";
 import { blinking, BROKER, BROTHER, camAt, current, GHOST, lineEnd, mix, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, handAt, headOf, Pen, talk, WallClock, You, type Body, type Face } from "./Contract.Kit";
 import { isV5, V5 } from "./V5.Kit";
@@ -70,44 +72,21 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]
 const S = 3.0;
 const YOU = { x: 410, feet: 1250 };
 const DRAWER = { x: 100, y: 870 };
-/** Your brother lying on the top bunk on his front, head to the left end, leaning over the edge (`lean` 0..1). */
-const BRO = { hipX: 840, hipY: 126, scale: 2.2 };
-
-/** A point of a figure drawn with Figure's `rotate` (about its hip), in world coordinates. */
-function worldPoint(b: Body, rot: number, p: { x: number; y: number }) {
-  const hipY = joints(b.pose).hip.y * b.scale;
-  const lx = p.x * b.scale * b.facing, ly = p.y * b.scale;
-  const a = (rot * Math.PI) / 180;
-  const dx = lx, dy = ly - hipY;
-  return { x: b.x + dx * Math.cos(a) - dy * Math.sin(a), y: b.y + hipY + dx * Math.sin(a) + dy * Math.cos(a) };
-}
-
-function handLocal(pose: Pose) {
-  const j = joints(pose);
-  const a = dir(pose.armF[0]), c = dir(pose.armF[0] + pose.armF[1]);
-  return { x: j.shoulder.x + (a.x + c.x) * LIMB, y: j.shoulder.y + (a.y + c.y) * LIMB };
-}
-
 function brotherAt(frame: number, k: T) {
   const lean = ramp(frame, k.lean[0], k.lean[1]);
-  const rot = mix(-90, -112, lean);
-  // while he talks down from the bunk (123-124) his back arm lies along the mattress, off his face
-  const talking = frame >= k.scam - 4 && frame < k.stepsAt;
-  const pose: Pose = { ...STAND, legB: [-4, 0], legF: [4, 0], armB: talking ? [-20, 10] : [80, 10], armF: [mix(60, 80, lean), mix(40, 34, lean)] };
-  const body: Body = { x: BRO.hipX, y: BRO.hipY + 112 * BRO.scale, scale: BRO.scale, facing: -1, pose };
-  const hand = worldPoint(body, rot, handLocal(pose));
-  const head = worldPoint(body, rot, joints(pose).head);
-  return { body, rot, hand, head, lean };
+  // while he whispers "Come back Thursday." his hand comes up by his mouth (the cupped hand Room draws)
+  const talking = frame >= k.thursday && frame < k.stepsAt;
+  const b = brotherLying(lean, talking);
+  return { hand: b.hand, head: b.head, lean, talking };
 }
 
-/** Your brother on the top bunk, on his front, leaning down; his band in his hand until he drops it. */
+/** Your brother on the top bunk, lying in bed, leaning down; his band in his hand until he drops it (G3: a figure in
+ *  bed, Midnight.Brother.tsx, not the rotated rig that read as a grey wedge). */
 const BrotherLean: React.FC<{ frame: number; k: T; face: Face }> = ({ frame, k, face }) => {
   const b = brotherAt(frame, k);
   return (
-    <g>
-      <Figure {...b.body} rotate={b.rot} head={BROTHER.head} coat={BROTHER.coat} {...face} blink={blinking(frame, 3)} time={frame} />
-      {frame < k.drop[0] && <Band x={b.hand.x} y={b.hand.y + 10} scale={0.55} lit tilt={10} />}
-    </g>
+    <BrotherInBed lean={b.lean} talking={b.talking} face={face} blink={blinking(frame, 3)}
+      holding={frame < k.drop[0] ? <Band x={0} y={12} scale={0.55} lit tilt={10} /> : undefined} />
   );
 };
 
@@ -224,6 +203,55 @@ const ClockInsert: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={null} actors={actors} />;
 };
 
+/** G3: the landing outside your front door, lit: a warm wall lamp by the door, the door with its HOME label, a doormat,
+ *  the stair rail going down to the right (where the grey suit leaves), the ceiling light. World px. */
+const LandingSet: React.FC = () => (
+  <g>
+    <rect x={-1000} y={-800} width={4000} height={2800} fill="#4b4057" />
+    {Array.from({ length: 30 }, (_, i) => <rect key={i} x={-1000 + i * 140} y={-800} width={60} height={1760} fill="#55496a" opacity={0.6} />)}
+    {/* the wainscot and the floor */}
+    <rect x={-1000} y={700} width={4000} height={260} fill="#3a3046" />
+    <line x1={-1000} y1={700} x2={3000} y2={700} stroke={INK} strokeWidth={6} />
+    <rect x={-1000} y={960} width={4000} height={800} fill="#5e4636" />
+    {Array.from({ length: 24 }, (_, i) => <line key={i} x1={-1000 + i * 180} y1={960} x2={-1000 + i * 180 - 60} y2={1400} stroke="#4a3729" strokeWidth={4} />)}
+    <line x1={-1000} y1={960} x2={3000} y2={960} stroke={INK} strokeWidth={6} />
+    {/* the ceiling light and its pool */}
+    <circle cx={1150} cy={200} r={300} fill="#ffd98a" opacity={0.16} />
+    <rect x={1110} y={150} width={80} height={36} rx={10} fill="#ffe2a8" stroke={INK} strokeWidth={4} />
+    {/* the wall lamp by the door, a warm cone on the wall */}
+    <defs>
+      <radialGradient id="landing-lamp">
+        <stop offset="0" stopColor="#ffd98a" stopOpacity={0.55} />
+        <stop offset="1" stopColor="#ffd98a" stopOpacity={0} />
+      </radialGradient>
+    </defs>
+    <circle cx={600} cy={430} r={330} fill="url(#landing-lamp)" />
+    <rect x={590} y={440} width={20} height={40} fill="#2a2230" stroke={INK} strokeWidth={4} />
+    <path d="M555 440 L645 440 L625 380 L575 380 Z" fill="#ffe2a8" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+    {/* your front door, shut, lit by the lamp, the HOME label on it */}
+    <rect x={720} y={316} width={370} height={650} fill="#3e2819" stroke={INK} strokeWidth={8} />
+    <rect x={740} y={330} width={330} height={630} fill="#8a5a3a" stroke={INK} strokeWidth={6} />
+    <rect x={740} y={330} width={330} height={630} fill="#ffd98a" opacity={0.12} />
+    <rect x={780} y={480} width={250} height={170} rx={6} fill="none" stroke="#5c3a24" strokeWidth={6} />
+    <rect x={780} y={680} width={250} height={240} rx={6} fill="none" stroke="#5c3a24" strokeWidth={6} />
+    <circle cx={1030} cy={660} r={15} fill="#e0b56b" stroke={INK} strokeWidth={4} />
+    <g transform="translate(905 410) rotate(-3)">
+      <rect x={-105} y={-40} width={210} height={80} rx={8} fill={PAPER} stroke={INK} strokeWidth={5} />
+      <text x={0} y={19} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={54} fill={TEAL}>HOME</text>
+    </g>
+    {/* the doormat */}
+    <path d="M760 962 L1050 962 L1080 1000 L730 1000 Z" fill="#9a7a4a" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+    {[800, 860, 920, 980].map((x) => <line key={x} x1={x} y1={966} x2={x - 6} y2={996} stroke="#7d6038" strokeWidth={5} />)}
+    {/* the stairs down, the rail and its posts */}
+    <path d="M1560 960 L1560 1010 L1700 1010 L1700 1060 L1840 1060 L1840 1110 L2600 1110 L2600 960 Z" fill="#4a3729" stroke={INK} strokeWidth={5} />
+    <rect x={1540} y={640} width={40} height={322} rx={8} fill="#6b4630" stroke={INK} strokeWidth={5} />
+    <circle cx={1560} cy={636} r={26} fill="#6b4630" stroke={INK} strokeWidth={5} />
+    {[1640, 1730, 1820, 1910, 2000].map((x, i) => <rect key={x} x={x} y={680 + i * 45} width={14} height={300} fill="#6b4630" stroke={INK} strokeWidth={3} />)}
+    <path d="M1560 650 L2100 880" stroke={INK} strokeWidth={30} strokeLinecap="round" />
+    <path d="M1560 650 L2100 880" stroke="#8a5a3a" strokeWidth={20} strokeLinecap="round" />
+  </g>
+);
+
 /** Script v6 line 100: the landing outside your front door at midnight. The grey suit knocks, waits, and goes. */
 const Landing: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const knock = frame < k.leave && Math.floor((frame - k.landing) / 7) % 2 === 0 && frame - k.landing < 40;
@@ -235,16 +263,7 @@ const Landing: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cam = drift(camAt(frame, [[k.landing, { x: 1040, y: 600, zoom: 1.25 }], [k.lie, { x: 1080, y: 590, zoom: 1.4 }]]), frame, "landing", 3);
   const actors = (
     <>
-      <rect x={-1000} y={-800} width={4000} height={2800} fill="#2b2a38" />
-      <rect x={-1000} y={960} width={4000} height={800} fill="#1f1d29" />
-      <line x1={-1000} y1={960} x2={3000} y2={960} stroke={INK} strokeWidth={6} />
-      <circle cx={1150} cy={200} r={260} fill="#ffd98a" opacity={0.14} />
-      <rect x={1130} y={160} width={40} height={30} rx={6} fill="#ffe2a8" stroke={INK} strokeWidth={4} />
-      {/* your front door, shut */}
-      <rect x={740} y={330} width={330} height={630} fill="#5a3b28" stroke={INK} strokeWidth={8} />
-      <rect x={780} y={380} width={250} height={240} rx={6} fill="none" stroke="#3e2819" strokeWidth={6} />
-      <rect x={780} y={660} width={250} height={250} rx={6} fill="none" stroke="#3e2819" strokeWidth={6} />
-      <circle cx={1030} cy={660} r={14} fill="#c9a36b" stroke={INK} strokeWidth={4} />
+      <LandingSet />
       <Figure x={x} y={960} scale={1.6} facing={frame < k.leave ? -1 : 1} pose={pose} head={BROKER.head} coat={BROKER.coat} tie={BROKER.tie}
         brows="flat" lids={0.3} mouth="smirk" look={{ x: 0.9, y: 0 }} blink={blinking(frame, 6)} time={frame} />
       <BandBox x={x + (frame < k.leave ? 50 : -50)} y={700} scale={0.8} color={GHOST.light} />
@@ -263,7 +282,7 @@ const OnlyDark: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 
 const MidnightShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current(frame, [[k.start, "clock"], [k.you86, "you86"], [k.band86, "band86"], [k.bro86, "bro86"], [k.close87, "close87"],
-    [k.decide87, "decide87"], [k.holdA, "drawer"], [k.lean[0], "lean"], [k.footShot, "foot"], [k.scam, "scam"], [k.holdB, "knock"], [k.youLook, "youLook"],
+    [k.pages87, "pages87"], [k.decide87, "decide87"], [k.holdA, "drawer"], [k.lean[0], "lean"], [k.footShot, "foot"], [k.scam, "scam"], [k.holdB, "knock"], [k.youLook, "youLook"],
     [k.broLook, "broLook"], [k.thursday, "thursday"], [k.stepsAt, "steps"], [k.landing, "landing"], [k.lie, "lie"], [k.jar88, "jar88"], [k.shut88, "shut88"],
     [k.windows, "windows"], [k.wide89, "wide89"]]);
   if (shot === "clock") return <ClockInsert frame={frame} k={k} />;
@@ -274,17 +293,21 @@ const MidnightShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const bandHand = handAt(you(frame, k));
   const penHand = handAt(you(frame, k), "back");
   const views: Record<string, { x: number; y: number; zoom: number }> = {
-    you86: camAt(frame, [[k.you86, { x: 620, y: 560, zoom: 1.0 }], [k.band86, { x: 600, y: 580, zoom: 1.08 }]]),
+    you86: camAt(frame, [[k.you86, { x: 620, y: 470, zoom: 1.0 }], [k.band86, { x: 600, y: 480, zoom: 1.08 }]]),
     // script v6: both hands in frame, the pen in one, the band with its teal light in the other
-    band86: camAt(frame, [[k.band86, { x: (bandHand.x + penHand.x) / 2, y: (bandHand.y + penHand.y) / 2 - 80, zoom: 1.9 }],
-      [k.bro86, { x: (bandHand.x + penHand.x) / 2, y: (bandHand.y + penHand.y) / 2 - 90, zoom: 2.1 }]]),
+    // G3: both hands AND your face in frame (v6 cropped your head at the top): the pen in one hand, the band with its
+    // teal light in the other, a slow push
+    band86: camAt(frame, [[k.band86, { x: (bandHand.x + penHand.x) / 2 + 20, y: 560, zoom: 1.32 }],
+      [k.bro86, { x: (bandHand.x + penHand.x) / 2 + 10, y: 555, zoom: 1.42 }]]),
     bro86: camAt(frame, [[k.bro86, { x: bh.x + 120, y: bh.y + 60, zoom: 2.3 }], [k.close87, { x: bh.x + 120, y: bh.y + 60, zoom: 2.45 }]]),
-    close87: camAt(frame, [[k.close87, { x: yh.x - 40, y: yh.y + 30, zoom: 2.4 }], [k.decide87, { x: yh.x - 40, y: yh.y + 30, zoom: 2.6 }]]),
+    close87: camAt(frame, [[k.close87, { x: yh.x - 40, y: yh.y + 30, zoom: 2.4 }], [k.pages87, { x: yh.x - 40, y: yh.y + 30, zoom: 2.55 }]]),
+    // G3: a cut on "Only the crumbs" to the two of you, him on the top bunk over you, so the close never holds 6 s
+    pages87: camAt(frame, [[k.pages87, { x: 640, y: 330, zoom: 1.3 }], [k.decide87, { x: 610, y: 340, zoom: 1.42 }]]),
     decide87: camAt(frame, [[k.decide87, { x: yh.x - 20, y: yh.y + 30, zoom: 2.9 }], [k.holdA, { x: yh.x - 20, y: yh.y + 30, zoom: 3.0 }]]),
     drawer: camAt(frame, [[k.holdA, { x: 400, y: 700, zoom: 1.45 }], [k.lean[0], { x: 380, y: 720, zoom: 1.55 }]]),
     lean: camAt(frame, [[k.lean[0], { x: 640, y: 470, zoom: 1.0 }], [k.footShot, { x: 620, y: 480, zoom: 1.04 }]]),
     foot: camAt(frame, [[k.footShot, { x: 260, y: 780, zoom: 2.2 }], [k.scam, { x: 250, y: 790, zoom: 2.35 }]]),
-    scam: camAt(frame, [[k.scam, { x: 720, y: 520, zoom: 1.45 }], [k.holdB, { x: 720, y: 520, zoom: 1.55 }]]),
+    scam: camAt(frame, [[k.scam, { x: 720, y: 460, zoom: 1.45 }], [k.holdB, { x: 720, y: 460, zoom: 1.55 }]]),
     knock: camAt(frame, [[k.holdB, { x: 700, y: 500, zoom: 1.0 }], [k.youLook, { x: 700, y: 510, zoom: 1.06 }]]),
     youLook: camAt(frame, [[k.youLook, { x: yh.x - 30, y: yh.y + 30, zoom: 2.5 }], [k.broLook, { x: yh.x - 30, y: yh.y + 30, zoom: 2.6 }]]),
     broLook: camAt(frame, [[k.broLook, { x: bh.x + 80, y: bh.y + 50, zoom: 2.4 }], [k.thursday, { x: bh.x + 80, y: bh.y + 50, zoom: 2.5 }]]),

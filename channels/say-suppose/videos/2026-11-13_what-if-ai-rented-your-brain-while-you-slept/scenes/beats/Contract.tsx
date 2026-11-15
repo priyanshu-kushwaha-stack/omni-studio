@@ -56,6 +56,8 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]
     broker: at(71, 0.6), you71: at(71, 0.8),
     // script v6 line 78, the broker admiring: "Twelve hours a night, six weeks straight. Nobody on this street sleeps deeper."
     deeper: isV6(v6) ? [v6[V6.deeper].from - 4, lineEnd(v6, V6.deeper)] as const : [from(72) - 8, from(72) - 6] as const,
+    // G3: a cut on "Nobody on this street sleeps deeper." to the two of you across the table (one close held 6 s in v6)
+    deeperTwo: isV6(v6) ? Math.round(v6[V6.deeper].from + v6[V6.deeper].frames * 0.5) : from(72) - 7,
     // 72 (the margin doodle, the forty signatures) was cut in v5: its one-frame clip would put these keys out of order,
     // so they fold into the frames just before 73, strictly increasing
     ...(clips[72].frames > 1 ? {
@@ -408,7 +410,7 @@ const ContractShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k,
     const shoe = shoeSpan(v3);
     if (frame >= shoe.from && frame < shoe.to) return <ShoeQuery frame={frame} v3={v3} />;
   }
-  const shot = current(frame, [[k.start, "wide"], [k.contract, "contract"], [k.broker, "broker"], [k.you71, "you71"], [k.deeper[0], "deeper"], [k.margin, "margin"],
+  const shot = current(frame, [[k.start, "wide"], [k.contract, "contract"], [k.broker, "broker"], [k.you71, "you71"], [k.deeper[0], "deeper"], [k.deeperTwo, "deeperTwo"], [k.margin, "margin"],
     [k.you72, "you72"], [k.sigs, "sigs"], [k.close73, "close73"], [k.pen73, "pen73"], [k.closer73, "closer73"], [k.pick, "pick"],
     [k.hold1, "hand"], [k.room1, "room1"], [k.notYet[0], "notYet"], [k.hold2, "tip"], [k.side2, "side2"], [k.closes[0], "closes"],
     [k.clock, "clock"]]);
@@ -420,7 +422,8 @@ const ContractShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k,
     contract: camAt(frame, [[k.contract, { x: 900, y: 420, zoom: 2.0 }], [k.year, { x: 880, y: 360, zoom: 2.3 }], [k.broker, { x: 900, y: 420, zoom: 1.6 }]]),
     broker: camAt(frame, [[k.broker, closeUp(b.x - 60, b.y + 30, 2.5)], [k.you71, closeUp(b.x - 60, b.y + 30, 2.7)]]),
     you71: camAt(frame, [[k.you71, closeUp(y.x + 60, y.y + 30, 2.5)], [k.deeper[0], closeUp(y.x + 60, y.y + 30, 2.75)]]),
-    deeper: camAt(frame, [[k.deeper[0], closeUp(b.x - 90, b.y + 50, 2.2)], [k.margin, closeUp(b.x - 70, b.y + 30, 2.7)]]),
+    deeper: camAt(frame, [[k.deeper[0], closeUp(b.x - 90, b.y + 50, 2.2)], [k.deeperTwo, closeUp(b.x - 75, b.y + 35, 2.55)]]),
+    deeperTwo: camAt(frame, [[k.deeperTwo, { x: 1180, y: 600, zoom: 1.4 }], [k.margin, { x: 1150, y: 590, zoom: 1.6 }]]),
     margin: camAt(frame, [[k.margin, insert(MARGIN.x - 10, MARGIN.y + 10, 3.4)], [k.cloud, insert(MARGIN.x - 10, MARGIN.y - 20, 3.2)],
       [k.you72, insert(MARGIN.x - 10, MARGIN.y - 50, 3.5)]]),
     you72: camAt(frame, [[k.you72, closeUp(y.x + 70, y.y + 40, 2.6)], [k.sigs, closeUp(y.x + 70, y.y + 40, 2.8)]]),

@@ -31,7 +31,7 @@ const PEAK_V1 = { from: 579.1, to: 588.1, floor: 0.1 };
 
 /** Ambience beds (assets/sfx/bed-<name>.wav), each from its start to the next one's. */
 const BEDS_V1: [number, string][] = [
-  [0, "clinic"], [13.5, "bridge"], [17, "bunk-night"], [30, "bunk-morning"], [49.3, "kitchen"],
+  [0, "clinic"], [13.5, "kitchen-lamp"], [17, "bunk-night"], // v6: the fridge note replaced the bridge walk here [30, "bunk-morning"], [49.3, "kitchen"],
   [140, "bridge"], [150, "kitchen"], [214, "bus"], [225, "office"], [240, "street"],
   [294.7, "bunk-night"], [369.8, "hall"], [385, "kitchen"], [414, "kitchen"], [418, "bridge"], [434, "warehouse"], [482.5, "bridge"],
   [487.8, "kitchen-lamp"], [535.5, "bunk-night"], [627.8, "bunk-morning"], [655, "street"],

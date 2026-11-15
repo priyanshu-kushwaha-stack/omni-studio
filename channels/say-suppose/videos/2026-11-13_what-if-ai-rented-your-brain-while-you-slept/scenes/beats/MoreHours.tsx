@@ -373,7 +373,10 @@ const StreetShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     coffee: camAt(frame, [[k.coffee, { x: 470, y: 830, zoom: 2.6 }], [k.shut[1], { x: 500, y: 830, zoom: 2.4 }]]),
     pillow: camAt(frame, [[k.pillow, { x: 1300, y: 850, zoom: 2.1 }], [k.yours, { x: 1420, y: 850, zoom: 2.0 }]]),
     yours: pullCam(start, final, ramp(frame, k.pull[0], k.pull[1])),
-    shelf: camAt(frame, [[k.shelf, { x: Y.x, y: Y.y + 4, zoom: 5.4 }], [k.end, { x: Y.x, y: Y.y + 4, zoom: 6.0 }]]),
+    // G3: a push from the neighbours' windows onto yours as the jars multiply (one framing held 6 s in v6)
+    shelf: k.jars > k.shelf && k.end > k.jars
+      ? camAt(frame, [[k.shelf, { x: Y.x - 40, y: Y.y - 10, zoom: 3.0 }], [k.jars, { x: Y.x, y: Y.y + 4, zoom: 5.2 }], [k.end, { x: Y.x, y: Y.y + 4, zoom: 6.2 }]])
+      : camAt(frame, [[k.shelf, { x: Y.x, y: Y.y + 4, zoom: 5.4 }], [Math.max(k.shelf + 1, k.end), { x: Y.x, y: Y.y + 4, zoom: 6.0 }]]),
   };
   const cam = drift(cams[shot], frame, "more-street", shot === "yours" ? 1 : 2);
   const jars = frame < k.jars ? 1 : Math.min(6, 2 + Math.floor((frame - k.jars) / 7));

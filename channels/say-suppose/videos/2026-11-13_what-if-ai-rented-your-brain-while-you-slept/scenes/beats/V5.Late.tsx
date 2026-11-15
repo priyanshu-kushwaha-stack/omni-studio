@@ -66,7 +66,8 @@ export const VisaSign: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 })
   const glance = [atV(v3, V5.suits, 0.5), atV(v3, V5.suits, 0.78)] as const;
   const shot = current(frame, [[from, "sign"], [suits, "suits"]]);
   const cams: Record<typeof shot, Camera> = {
-    sign: camAt(frame, [[from, { x: SIGN.x, y: 440, zoom: 1.95 }], [suits, { x: SIGN.x, y: 440, zoom: 2.08 }]]),
+    // G3: a real push across the 5.6 s (it read as a held frame in v6), from the queue under the sign onto the stamp
+    sign: camAt(frame, [[from, { x: SIGN.x - 60, y: 560, zoom: 1.45 }], [stamp, { x: SIGN.x, y: 470, zoom: 1.85 }], [Math.max(stamp + 1, suits), { x: SIGN.x, y: 440, zoom: 2.1 }]]),
     suits: camAt(frame, [[suits, { x: SIGN.x, y: 450, zoom: 1.95 }], [back, { x: 1250, y: 610, zoom: 1.28 }], [to, { x: 1240, y: 615, zoom: 1.24 }]]),
   };
   const scale = 1.1;
@@ -123,13 +124,15 @@ export function twistSpan(v3: Clip[]) {
 }
 
 type Waker = { x: number; head: string; coat: string; facing: 1 | -1; tie?: string; cap?: boolean; prop: "bag" | "mug" | "clip" | "phone" };
+// G3: the last 15 s keep the right third of the frame quiet for the end screens, so the street's people stand closer
+// (180 apart, was 200) and you stand at the crowd's right end, all inside the left two-thirds of the frame.
 const WAKERS: Waker[] = [
   { x: 420, head: BRIDGE_WOMAN.head, coat: BRIDGE_WOMAN.coat, facing: 1, prop: "bag" },
-  { x: 620, head: BOSS.head, coat: BOSS.coat, tie: BOSS.tie, facing: 1, prop: "mug" },
-  { x: 820, head: CLERK.head, coat: CLERK.coat, facing: -1, prop: "clip" },
-  { x: 1020, head: NURSE.head, coat: NURSE.coat, facing: 1, cap: true, prop: "phone" },
-  { x: 1220, head: GRANDMOTHER.head, coat: GRANDMOTHER.coat, facing: -1, prop: "phone" },
-  { x: 1420, head: PASTELS[0], coat: "#5a6488", facing: 1, prop: "phone" },
+  { x: 600, head: BOSS.head, coat: BOSS.coat, tie: BOSS.tie, facing: 1, prop: "mug" },
+  { x: 780, head: CLERK.head, coat: CLERK.coat, facing: -1, prop: "clip" },
+  { x: 960, head: NURSE.head, coat: NURSE.coat, facing: 1, cap: true, prop: "phone" },
+  { x: 1140, head: GRANDMOTHER.head, coat: GRANDMOTHER.coat, facing: -1, prop: "phone" },
+  { x: 1320, head: PASTELS[0], coat: "#5a6488", facing: 1, prop: "phone" },
 ];
 
 const Held: React.FC<{ prop: Waker["prop"] }> = ({ prop }) => {
@@ -142,8 +145,10 @@ const Held: React.FC<{ prop: Waker["prop"] }> = ({ prop }) => {
 export const DaytimeStreet: React.FC<{ frame: number; v3: Clip[]; until?: number }> = ({ frame, v3, until }) => {
   const { from, to } = twistSpan(v3);
   // script v6: the awake street holds to the end of the film, pushing in slowly under the end tags (`until`)
-  const keys: [number, { x: number; y: number; zoom: number }][] = [[from, { x: 1000, y: 770, zoom: 1.5 }], [to, { x: 990, y: 765, zoom: 1.58 }]];
-  if (until !== undefined && until > to + 1) keys.push([until, { x: 940, y: 720, zoom: 1.95 }]);
+  // G3: framed so everyone sits in the left two-thirds (screen x < 1280 at every zoom here); the right third is the
+  // quiet street for the end screens. A slow push from 1.0 to 1.08.
+  const keys: [number, { x: number; y: number; zoom: number }][] = [[from, { x: 1210, y: 660, zoom: 1.0 }], [Math.max(from + 1, to), { x: 1205, y: 655, zoom: 1.04 }]];
+  if (until !== undefined && until > to + 1) keys.push([until, { x: 1200, y: 650, zoom: 1.08 }]);
   const cam = drift(camAt(frame, keys), frame, "v5-twist", 2);
   const props = { cam, mood: "day" as const, frame, options: { ...street.defaults, crowd: false, auto: false } };
   const s = 1.0;
@@ -165,7 +170,7 @@ export const DaytimeStreet: React.FC<{ frame: number; v3: Clip[]; until?: number
       </g>
     );
   });
-  const me: Body = { x: 1580, y: y + 20, scale: 1.2, facing: -1, pose: { ...STAND } };
+  const me: Body = { x: 1430, y: y + 20, scale: 1.2, facing: -1, pose: { ...STAND } };
   const actors = (
     <>
       {people}

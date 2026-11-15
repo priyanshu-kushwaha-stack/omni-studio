@@ -22,7 +22,7 @@
 //   30    your phone; INSERT the box of squiggly letters, typed; the old newspapers coming out as clean lines
 //   31    the papers riffle faster; the bunk room at night, the band on, the ghost, the coins (the same bargain)
 //   32    the jar a quarter full; your eyes on it; eight coins in; the clock; your eyes on the clock
-import { DEBT } from "./V6.Kit";
+import { at6, DEBT, isV6, V6 } from "./V6.Kit";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { dir, joints, LIMB, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -45,7 +45,7 @@ import { isV5 } from "./V5.Kit";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number) {
+function times(clips: Clip[], start: number, end: number, v6: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const h17 = lineEnd(clips, 17);
@@ -90,7 +90,12 @@ function times(clips: Clip[], start: number, end: number) {
     coinsNight: from(33) + 6,
     // 32: the jar and the clock (cut since v3: its one-frame clip would give equal camera keys, so each step is at
     // least a frame after the one before)
-    ...rising([from(32), at(32, 0.26), at(32, 0.45), at(32, 0.79), at(32, 0.9)], ["jar", "eyesJar", "eight", "clock", "eyesClock"] as const),
+    // G3: on v6 the jar and the clock play across "Problem one. Ninety dollars for eight hours. And everyone on your
+    // street can count." (v6 38), which held one close for 6 s in v6: the jar on "Ninety dollars", eight coins on "eight
+    // hours", the clock on "everyone", your eyes on "can count"
+    ...rising(isV6(v6) ? [at6(v6, V6.problemOne, 0.3), at6(v6, V6.problemOne, 0.4), at6(v6, V6.problemOne, 0.5),
+      at6(v6, V6.problemOne, 0.68), at6(v6, V6.problemOne, 0.86)]
+      : [from(32), at(32, 0.26), at(32, 0.45), at(32, 0.79), at(32, 0.9)], ["jar", "eyesJar", "eight", "clock", "eyesClock"] as const),
   };
 }
 
@@ -284,7 +289,7 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
       : frame < k.sorry ? { brows: "none", lids: 0.2, mouth: "smile", eyes: 1, look: { x: 0.8, y: 0.5 } }
         : frame < k.writes ? { brows: "raised", lids: 0.55, mouth: talk(frame, k.sorry + 4, k.writes - 4, "smirk"), eyes: 1, look: { x: 0.9, y: -0.3 } }
           : frame < k.temple ? { brows: "none", lids: 0.2, mouth: "smile", eyes: 1, look: { x: 1, y: 0 } }
-            : frame < k.phoneHand ? { brows: "raised", lids: 0.3, mouth: "smile", eyes: 1, look: { x: 0.6, y: -0.4 } }
+            : frame < Math.min(k.phoneHand, k.jar) ? { brows: "raised", lids: 0.3, mouth: "smile", eyes: 1, look: { x: 0.6, y: -0.4 } }
               : frame < k.jar ? { brows: "none", lids: 0.2, mouth: "flat", eyes: 1, look: { x: 0.8, y: 0.8 } }
                 : frame < k.eyesClock ? { brows: "worry", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 1, y: 0.7 } }
                   : { brows: "angry", lids: 0.35, mouth: "flat", eyes: 1, look: { x: 0.1, y: -1 } };
@@ -479,7 +484,7 @@ function v5Moment(frame: number, v3: Clip[], mood: MoodName) {
 }
 
 const Crumbs: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to);
+  const k = times(shot.clips, shot.from, shot.to, shot.v6);
   const i = Math.max(17, shot.clips.findIndex((c, n) => n >= 17 && shot.frame < c.from + c.frames + 11));
   const mood = (shot.lines[i]?.mood ?? "morning") as MoodName;
   const kitchenMood: MoodName = mood === "day" ? "morning" : mood;

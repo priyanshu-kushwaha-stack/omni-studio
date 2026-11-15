@@ -200,7 +200,8 @@ const KitchenBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, s
                 : { brows: "sad", lids: 0.45, mouth: "flat", look: { x: 0.6, y: 0.7 } };
   if (frame >= k.you60) {
     you.pose = { ...STAND, armF: [55, 70] };
-    youHeld = <g transform="translate(6 -10)"><g transform="scale(0.5)"><path d="M-46 0 a46 16 0 1 0 92 0 a46 16 0 1 0 -92 0" fill="none" stroke="#1b1d24" strokeWidth={9} /></g></g>;
+    // G3: the thumbnail's band, headband size, its one teal light glowing (it was drawn as a dark ring here: a wheel)
+    youHeld = <Band x={4} y={-4} scale={0.85} lit tilt={-10} />;
   }
   // the head shakes once, just, as you don't remember
   if (shot === "youBlank") you.pose = { ...you.pose, tilt: Math.sin(((frame - k.h3) / 26) * Math.PI * 2) * 4 };

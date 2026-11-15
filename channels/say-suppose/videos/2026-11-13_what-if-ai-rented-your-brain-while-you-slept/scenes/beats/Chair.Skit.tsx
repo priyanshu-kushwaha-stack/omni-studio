@@ -62,6 +62,21 @@ export function skitTimes(clips: Clip[]) {
 }
 
 const C = CLINIC.chair;
+
+/** The coin in your palm: r 19 (it was 13), a warm glow, and a white glint that flares as it lands and then twinkles. */
+const PalmCoin: React.FC<{ x: number; y: number; frame: number }> = ({ x, y, frame }) => {
+  const flare = Math.max(0, 1 - frame / 14);
+  const twinkle = 0.55 + 0.45 * Math.sin(frame * 0.35);
+  const g = 1 + 1.2 * flare;
+  return (
+    <g>
+      <circle cx={x} cy={y} r={42 * g} fill="#ffd36b" opacity={0.28 + 0.3 * flare} />
+      <Coin x={x} y={y} r={19} tilt={-20} />
+      <path d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z" fill="#fff"
+        transform={`translate(${x + 9} ${y - 10}) scale(${1.4 * Math.max(twinkle, flare * 2)})`} />
+    </g>
+  );
+};
 const G = { x: 1050, y: 572, scale: 0.9 };
 /** Your arms in the chair: the near hand on the armrest (palm up), the far hand on your lap. */
 const REST: Pose = { ...SEATED, armF: [30, 60], armB: [40, 50] };
@@ -196,7 +211,8 @@ export const SkitRoom: React.FC<{ frame: number; k: SkitT; cam: Camera; door?: n
       <Body f={y.f} head={HERO.head} scarf={HERO.scarf} tuft time={frame} {...y.face} />
       <ClinicArmrest />
       {frame >= k.band && frame < k.pluck && <HeadGear f={y.f}><BandOnHead lit={lit} /></HeadGear>}
-      {frame >= k.landed && <Coin x={palmF.x - 4} y={palmF.y - 12} r={13} tilt={-20} />}
+      {/* G3: the coin reads on a phone: bigger, and it catches the light as it lands (a warm glow, a glint) */}
+      {frame >= k.landed && <PalmCoin x={palmF.x - 4} y={palmF.y - 14} frame={frame - k.landed} />}
       {frame >= k.cotton[0] + 6 && <circle cx={elbow.x} cy={elbow.y} r={11} fill="#ffffff" stroke={INK} strokeWidth={3} />}
       {notes > 0 && <Notes x={palmB.x - 6} y={palmB.y - 14} n={notes} scale={0.55} tilt={-10} />}
       {n && !n.behind && frame >= k.notesShot && frame < k.notes[2] + 2 && (() => {
@@ -212,7 +228,7 @@ export const SkitRoom: React.FC<{ frame: number; k: SkitT; cam: Camera; door?: n
       <Thread a={light} b={{ x: G.x + 22, y: G.y - 150 }} t={t} bend={-60} />
       <Ghost x={G.x} y={G.y} scale={G.scale} t={t} frame={frame} facing={-1} head={GHOST.head} />
       <CoinArc frame={frame} start={k.coin} end={k.coin} from={deskEdge} via={{ x: deskEdge.x + 10, y: deskEdge.y - 30 }}
-        to={{ x: palmF.x - 4, y: palmF.y - 12 }} every={100} fall={k.landed - k.coin} r={13} />
+        to={{ x: palmF.x - 4, y: palmF.y - 14 }} every={100} fall={k.landed - k.coin} r={19} />
     </>
   );
   return <ClinicScene frame={frame + 22} mood="morning" cam={cam} door={door} actors={actors} />;
@@ -241,7 +257,7 @@ export const TakeInsert: React.FC<{ frame: number; k: SkitT }> = ({ frame, k }) 
       <path d={`M640 720 L${hand.x} ${hand.y}`} stroke={INK} strokeWidth={30} strokeLinecap="round" />
       {held && <Band x={hand.x + 4} y={hand.y + 30} scale={0.85} tilt={8} />}
       <circle cx={hand.x} cy={hand.y} r={22} fill={HERO.head} />
-      <Coin x={hand.x - 18} y={hand.y + 8} r={13} tilt={-30} />
+      <Coin x={hand.x - 20} y={hand.y + 8} r={17} tilt={-30} />
     </g>
   );
   return <ClinicScene frame={frame + 22} mood="morning" cam={cam} door={1} actors={actors} />;
@@ -268,7 +284,7 @@ export const DoorShot: React.FC<{ frame: number; k: SkitT }> = ({ frame, k }) =>
       <Body f={yf} head={HERO.head} scarf={HERO.scarf} tuft time={frame} brows="flat" lids={0.2} mouth="flat" look={{ x: 0.4, y: 0.4 }} />
       <ClinicArmrest />
       <Band x={hand.x - 2} y={hand.y + 10} scale={0.62} tilt={-10} />
-      <Coin x={palm.x - 4} y={palm.y - 12} r={13} tilt={-20} />
+      <Coin x={palm.x - 4} y={palm.y - 14} r={17} tilt={-20} />
     </>
   );
   // line 3 over it: a slow push from the closing door onto the band in your hand, its light on

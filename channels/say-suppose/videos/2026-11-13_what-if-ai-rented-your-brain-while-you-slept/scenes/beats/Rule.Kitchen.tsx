@@ -11,6 +11,8 @@ import { INK, PAPER } from "@whatif/kit/theme";
 import { Band, Jar } from "../parts";
 import { BROTHER, HERO } from "../shared";
 import { aim, Body, handWorld, type Placed } from "./Chair.Rig";
+// G3: the debt note is on the fridge in every kitchen shot (the Rule's kitchen showed the bare fridge and its small tab)
+import { DEBT, FridgeNotes } from "./V6.Kit";
 
 /** Where everything is at the table (REF world units). */
 export const TABLE = {
@@ -115,7 +117,7 @@ export const KitchenTable: React.FC<{ frame: number; cam: Camera; s: KitchenStat
   return (
     <LookContext.Provider value={setLook(kitchen.lights(OPTIONS), mood, cam)}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={kitchen.Back(props)}
-        actors={<><People frame={frame} s={s} />{children}</>} />
+        actors={<><FridgeNotes amount={DEBT.start} /><People frame={frame} s={s} />{children}</>} />
     </LookContext.Provider>
   );
 };

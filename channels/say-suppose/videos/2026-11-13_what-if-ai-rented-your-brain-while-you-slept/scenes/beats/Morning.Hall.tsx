@@ -106,14 +106,16 @@ const EndTag: React.FC<{ frame: number; at: number; x: number; y: number; text: 
   );
 };
 
-/** The three tags, screen pixels, in the middle third: COMMENT, then LIKE and SUBSCRIBE. Nothing right of x 1280. */
+/** The three tags, screen pixels, in one row along the top of the left two-thirds, over the buildings and clear of every
+ *  face and pale worker below (G3: stacked in the middle they sat on faces): COMMENT, then LIKE and SUBSCRIBE. Nothing
+ *  right of x 1280. */
 export const EndTags: React.FC<{ frame: number; comment: number; like: number; subscribe: number }> = ({ frame, comment, like, subscribe }) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>
     <svg width={1920} height={1080}>
-      <g transform="translate(700 230) scale(1.05)">
+      <g transform="translate(150 118)">
         <EndTag frame={frame} at={comment} x={0} y={0} text="COMMENT" icon="talk" tilt={-3} />
-        <EndTag frame={frame} at={like} x={30} y={140} text="LIKE" icon="like" tilt={2} />
-        <EndTag frame={frame} at={subscribe} x={0} y={280} text="SUBSCRIBE" icon="bell" tilt={-2} />
+        <EndTag frame={frame} at={like} x={370} y={6} text="LIKE" icon="like" tilt={2} />
+        <EndTag frame={frame} at={subscribe} x={650} y={0} text="SUBSCRIBE" icon="bell" tilt={-2} />
       </g>
     </svg>
   </AbsoluteFill>

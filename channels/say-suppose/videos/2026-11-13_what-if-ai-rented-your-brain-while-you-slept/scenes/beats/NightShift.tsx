@@ -27,6 +27,7 @@ import type { Clip } from "@whatif/kit/timeline";
 import { BunkRoom, BUNK, type BunkRoomProps } from "../sets/BunkRoom";
 import { current, lineEnd, mix, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, handOf, PaperInsert, Sfx, talk } from "./NightShift.Rig";
+import { at6, isV6, V6 } from "./V6.Kit";
 import { CabinetSheet, ClockSheet, FairSheet, MazeSheet, MemorySheet, MouseSheet } from "./NightShift.Sheets";
 import { Bathroom, Bin, broBody, GownHanger, Notebook, SIT_UP, SittingYou, StampTool, StandingBrother, TagSheet, WallInsert, youHead,
   type Face } from "./NightShift.Rooms";
@@ -34,7 +35,7 @@ import { Bathroom, Bin, broBody, GownHanger, Notebook, SIT_UP, SittingYou, Stamp
 type T = ReturnType<typeof times>;
 
 /** Every frame the beat uses, from the narration clips (`at(i, p)`: p of the way through line i). */
-function times(clips: Clip[], start: number, end: number) {
+function times(clips: Clip[], start: number, end: number, v6: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const h = lineEnd(clips, 51) + 2; // performed: the stamps
@@ -48,7 +49,7 @@ function times(clips: Clip[], start: number, end: number) {
     youMonth: at(46, 0.84), // "Yours hasn't in a month."
     memory: from(47) - 2, loss: [at(47, 0.1), at(47, 0.42)] as const,
     brotherReads: at(47, 0.45),
-    maze: at(47, 0.55), run: [at(47, 0.58), at(47, 0.79)] as const, sleep: at(47, 0.8), replay: [at(47, 0.82), at(47, 0.99)] as const,
+    maze: at(47, 0.55), ...mazeTimes(clips, v6),
     cabinet: from(48) - 2, open: [at(48, 0.04), at(48, 0.1)] as const, whirl: [at(48, 0.1), at(48, 0.46)] as const,
     shut: at(48, 0.52), fall: [at(48, 0.55), at(48, 0.9)] as const,
     shift: from(49) - 2, lookUp: at(49, 0.45),
@@ -60,6 +61,16 @@ function times(clips: Clip[], start: number, end: number) {
     alone: from(53) - 2, bro53: at(53, 0.36), wide53: at(53, 0.6), go: [at(53, 0.66), lineEnd(clips, 53)] as const,
     gown: from(54) - 2,
   };
+}
+
+/** The rat's maze: run, sleep, replay. Script v6 moved "In rats, the day replays in sleep" to its own line (v6 53), so
+ *  v1 line 47 is now a 40-frame quip and the whole maze played in 0.6 s, then held still for 7 s (G3). On v6 it plays
+ *  across line 53: the run, the sleep, the replay at double speed. */
+function mazeTimes(clips: Clip[], v6: Clip[]) {
+  const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
+  if (!isV6(v6)) return { run: [at(47, 0.58), at(47, 0.79)] as const, sleep: at(47, 0.8), replay: [at(47, 0.82), at(47, 0.99)] as const };
+  const r = (p: number) => at6(v6, V6.rats, p);
+  return { run: [r(0.02), r(0.4)] as const, sleep: r(0.44), replay: [r(0.5), r(0.96)] as const };
 }
 
 type Name = "room" | "closeYou" | "clock" | "youThird" | "mouse" | "bin" | "youMonth" | "memory" | "brotherReads" | "maze"
@@ -157,7 +168,7 @@ const NightShiftShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     }
     case "shift": {
       const up = frame >= k.lookUp;
-      return room({ brother: "sit", brotherFace: broFace({ mouth: "smile" }) }, viewAt(frame, [[k.shift, { ...CLOSE_YOU, zoom: 1.9 }], [k.mirror, { ...CLOSE_YOU, x: CLOSE_YOU.x - 20, zoom: 2.35 }]]),
+      return room({ brother: "sit", brotherFace: broFace({ mouth: "smile" }) }, viewAt(frame, [[k.shift, { ...CLOSE_YOU, x: CLOSE_YOU.x + 60, y: CLOSE_YOU.y + 30, zoom: 1.7 }], [k.mirror, { ...CLOSE_YOU, x: CLOSE_YOU.x - 30, zoom: 2.45 }]]),
         you(up ? { brows: "sad", lids: 0.3, mouth: "flat", look: { x: 1, y: -0.3 } } : { ...lookBand, brows: "sad", lids: 0.4 }));
     }
     case "stops": {
@@ -169,8 +180,9 @@ const NightShiftShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       const down = ramp(frame, k.stampOut + 6, k.stampOut + 12) * (1 - ramp(frame, k.stampOut + 14, k.stampOut + 20));
       return room({ brother: "sit", brotherFace: broFace({ held: <StampTool />, mouth: "flat", brows: "angry", look: { x: 0.9, y: 0.8 }, facing: 1,
         pose: broSit([60 + down * 40, 40 - down * 20], [30, 40]) }) },
-        viewAt(frame, [[k.stampOut, { x: 1360, y: 230, zoom: 2.0 }], [k.h, { x: 1370, y: 230, zoom: 2.15 }]]),
-        <TagSheet x={1500} y={130} used={frame >= k.stampOut + 12 ? 3 : 2} />);
+        viewAt(frame, [[k.stampOut, { x: 1360, y: 200, zoom: 2.0 }], [k.h, { x: 1370, y: 205, zoom: 2.15 }]]),
+        // G3: the printed strip stuck on the wall above the bunk, clear of the guard rail (it sat on the rail in v6)
+        <TagSheet x={1575} y={26} used={frame >= k.stampOut + 12 ? 3 : 2} />);
     }
     default:
       break;
@@ -240,7 +252,7 @@ const NightShiftShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 };
 
 const NightShift: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to);
+  const k = times(shot.clips, shot.from, shot.to, shot.v6);
   const ticks = Array.from({ length: 11 }, (_, i) => Math.round(mix(k.ticks[0], k.ticks[1], (i + 1) / 11.999)));
   return (
     <AbsoluteFill style={{ background: "#000" }}>

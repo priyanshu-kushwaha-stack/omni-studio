@@ -15,7 +15,8 @@ type Item = { line: number; p: number; secs: number; kind: "cast" | "fact"; head
 // Script v6 (2026-11-15, review-cursor-v5.md): half the cards, twice the size, none that only repeats the voice; the
 // clerk's tag at his first appearance; the problems say what each one is.
 const ITEMS: Item[] = [
-  { line: 0, p: 0.0, secs: 3.0, kind: "cast", head: BROKER.head, top: "THE MAN IN THE GREY SUIT", sub: "sells the bands" },
+  // G3: from the coin close (line 0 at 0.5), so the card never sits over your face in the ghost shot before it
+  { line: 0, p: 0.5, secs: 3.0, kind: "cast", head: BROKER.head, top: "THE MAN IN THE GREY SUIT", sub: "sells the bands" },
   { line: 6, p: 0.0, secs: 4.0, kind: "fact", accent: TEAL, top: "THE BAND", sub: "rents out your brain while you sleep" },
   { line: 9, p: 0.0, secs: 3.0, kind: "cast", head: BROTHER.head, top: "YOUR BROTHER", sub: "keeps score" },
   { line: 17, p: 0.25, secs: 4.5, kind: "fact", accent: MUSTARD, top: "IT'S TRUE", sub: "2022: brain cells in a dish got better at a video game" },

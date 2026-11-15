@@ -48,7 +48,8 @@ export const SittingYou: React.FC<{ frame: number; face: Face; pose?: Pose; band
       <ellipse cx={420} cy={700} rx={110} ry={170} fill="#e9dcc4" stroke={INK} strokeWidth={6} transform="rotate(-12 420 700)" />
       <path d="M300 860 C290 760 360 700 450 720 C520 690 600 730 620 860Z" fill="#3e5c8f" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
       <Figure x={b.x} y={b.y} scale={b.scale} pose={pose} {...HERO} {...face}
-        held={band ? <Band x={6} y={-6} scale={0.55} lit={false} tilt={-20} /> : undefined} />
+        // G3: headband size (about a head wide) and glowing, its one teal light on; at 0.55 and unlit it read as a remote
+        held={band ? <Band x={4} y={-2} scale={0.9} lit tilt={-12} /> : undefined} />
       <FaceMarks b={b} look={face.look} mark={mark} />
       <path d={`M${b.x + 20} ${YOU_SIT.seat + 6} C${b.x + 60} ${YOU_SIT.seat - 70} ${b.x + 200} ${YOU_SIT.seat - 50} ${b.x + 300} ${YOU_SIT.seat - 40}
         C${b.x + 420} ${YOU_SIT.seat - 30} ${b.x + 520} ${YOU_SIT.seat - 20} ${b.x + 600} ${YOU_SIT.seat + 6}Z`} fill="#3e5c8f" stroke={INK} strokeWidth={6} strokeLinejoin="round" />

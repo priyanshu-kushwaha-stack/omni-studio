@@ -98,7 +98,8 @@ const NightKitchen: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cams = {
     wide: camAt(frame, [[k.kitchen, { x: 1240, y: 600, zoom: 1.7 }], [k.noteClose, { x: 1300, y: 560, zoom: 1.9 }]]),
     note: camAt(frame, [[k.noteClose, { x: N.x + 60, y: N.y + 30, zoom: 2.8 }], [k.flyer, { x: N.x + 60, y: N.y + 20, zoom: 3.1 }]]),
-    flyer: camAt(frame, [[k.flyer, { x: F.x, y: F.y + 20, zoom: 3.2 }], [k.bandClose, { x: F.x + 10, y: F.y + 10, zoom: 3.5 }]]),
+    // G3: a tighter cut onto the flyer, so it reads as a new shot (at 3.2 it framed the note and the flyer as before)
+    flyer: camAt(frame, [[k.flyer, { x: F.x - 6, y: F.y + 6, zoom: 4.6 }], [k.bandClose, { x: F.x, y: F.y, zoom: 5.0 }]]),
   };
   const cam = drift(cams[shot as keyof typeof cams], frame, "n1-kitchen", 3);
   return (
@@ -200,7 +201,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       <ClinkSound at={[k.payLands]} volume={0.5} />
       <ClinkSound at={k.lands} volume={0.55} />
       <ClinkSound at={[k.morning + 2, k.morning + 6, k.morning + 11, k.morning + 15, k.morning + 19]} volume={0.45} />
-      <Sequence from={k.flap} durationInFrames={20}><Audio src={staticFile("sfx/flip.wav")} volume={0.3} /></Sequence>
+      <Sequence from={k.flap} durationInFrames={20}><Audio src={staticFile("sfx/flip.wav")} volume={0.13} />{/* G3: 7 dB down, it read as a pop at 0:53 */}</Sequence>
     </AbsoluteFill>
   );
 };

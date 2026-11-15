@@ -115,7 +115,9 @@ const TwoBandsPage: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 }) =>
   const thread2 = [atV(v3, b + 1, 0.24), atV(v3, b + 1, 0.44)] as const;
   // script v6 line 35 "The second band paid nothing": band one's $90 already up, $0 lands on "paid" (0.12)
   const pays = [v3[b + 1].from - 6, atV(v3, b + 1, 0.11)] as const;
-  const cam = drift(camAt(frame, [[from, { x: 960, y: 470, zoom: 1.3 }], [atV(v3, b + 1, 0.66), { x: 960, y: 460, zoom: 1.4 }]]), frame, "v5-two", 3);
+  // G3: a fuller push (1.3 to 1.4 read as a held page for 4 s in v6), from the head with its bands out to the whole page
+  const cam = drift(camAt(frame, [[from, { x: 760, y: 500, zoom: 1.75 }], [band2, { x: 820, y: 490, zoom: 1.55 }],
+    [Math.max(band2 + 1, atV(v3, b + 1, 0.66)), { x: 960, y: 460, zoom: 1.32 }]]), frame, "v5-two", 3);
   // the page's own coordinates: 0..1000 by 0..600
   const H = { x: 330, y: 400, r: 120 };
   const L1 = { x: 380, y: 318 };
