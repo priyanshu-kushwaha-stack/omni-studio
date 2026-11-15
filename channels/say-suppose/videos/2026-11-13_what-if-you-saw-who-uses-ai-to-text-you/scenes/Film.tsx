@@ -13,7 +13,7 @@ import { S1_FRAMES, SubscribeTag } from "../../../brand/Subscribe";
 import { EndTags } from "./EndTags";
 import { BUBBLES, SHOTS, TAGS, type Anchor } from "./shots";
 import { BEDS, CARD, END, PEAK, SCORE, SUBSCRIBE } from "./sound";
-import { Bubble, TagStamp, TextBubble } from "./parts/util";
+import { Bubble, CastTag, TagStamp, TextBubble } from "./parts/util";
 
 export type FilmProps = { timeline: Timeline; lines: ScriptLine[]; sources: Record<string, string> };
 
@@ -72,9 +72,10 @@ const Overlays: React.FC<FilmProps> = ({ timeline, lines }) => {
     <>
       {TAGS.map((g, k) => {
         const at = frameOf(g.at, timeline, lines);
-        const len = g.frames ?? 90;
+        const len = g.frames ?? (g.kind === "cast" ? 120 : 90);
         if (frame < at || frame >= at + len) return null;
         return g.kind === "label" ? <TagStamp key={k} text={g.text} f={frame - at} />
+          : g.kind === "cast" ? <CastTag key={k} text={g.text} f={frame - at} />
           : <TextBubble key={k} text={g.text} f={frame - at} dot={g.dot} from={g.from} />;
       })}
       {BUBBLES.map((b, k) => {

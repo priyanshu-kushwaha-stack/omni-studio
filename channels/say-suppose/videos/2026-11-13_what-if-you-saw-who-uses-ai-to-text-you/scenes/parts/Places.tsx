@@ -24,6 +24,9 @@ export const BOSS = { head: "#8fa6c4", coat: "#2f3242", tie: CRIMSON } as const;
 export const COWORKER = { head: "#8fb8b4", coat: "#4a5a5a" } as const;
 export const KID = { head: "#e6c08a", coat: "#c96f2d", cap: "#3d6fb0" } as const;
 export const STRANGER = { head: "#D8344F", coat: "#3f3346" } as const;
+export const SHIFT = { head: "#a9c6a0", coat: "#4f5f4a" } as const;
+export const NEWS = { head: "#8a96a8", coat: "#2a2f3a" } as const;
+export const SENATOR = { head: "#e3c79a", coat: "#2b2b38", tie: "#3d6fb0" } as const;
 
 export type Face = keyof typeof EXPRESSIONS;
 

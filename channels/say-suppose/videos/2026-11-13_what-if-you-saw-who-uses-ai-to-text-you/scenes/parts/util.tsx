@@ -67,6 +67,23 @@ export const TagStamp: React.FC<{ text: string; f: number }> = ({ text, f }) => 
   );
 };
 
+/** A cast tag at a recurring character's first close-up (taste.md 2026-11-13): role in caps, one thing they do; lower
+ *  left, off the faces. */
+export const CastTag: React.FC<{ text: string; f: number }> = ({ text, f }) => {
+  const k = ramp(f, 0, 10);
+  const [role, what] = text.split(":").map((x) => x.trim());
+  return (
+    <div style={{
+      position: "absolute", left: 60, bottom: 70, opacity: k, transform: `translateY(${mix(24, 0, k)}px)`,
+      background: PAPER, color: INK, border: `5px solid ${INK}`, borderRadius: 16, fontFamily: FONT, padding: "10px 24px 8px",
+      boxShadow: "0 10px 18px rgba(0,0,0,.35)", maxWidth: 760,
+    }}>
+      <div style={{ fontWeight: 800, fontSize: 40, letterSpacing: 1.5 }}>{role}</div>
+      {what ? <div style={{ fontWeight: 600, fontSize: 30, marginTop: 2 }}>{what}</div> : null}
+    </div>
+  );
+};
+
 /** A speech bubble, four words or fewer, at a screen point (the tail points down-left to the speaker). */
 export const Bubble: React.FC<{ text: string; x: number; y: number; f: number }> = ({ text, x, y, f }) => {
   const k = ramp(f, 0, 6);

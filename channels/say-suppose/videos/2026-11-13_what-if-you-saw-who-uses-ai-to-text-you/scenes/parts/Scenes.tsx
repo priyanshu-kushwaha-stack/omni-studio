@@ -7,7 +7,7 @@ import type { MoodName } from "@whatif/kit/stage/moods";
 import { STAND, SEATED } from "@whatif/kit/rig/pose";
 import { FONT } from "@whatif/kit/fonts";
 import { INK, PAPER } from "@whatif/kit/theme";
-import { AUNT1, AUNT2, BEST, BOSS, COUSIN, COWORKER, KID, MAN, MOTHER, on, Place, STRANGER, YOU, type Face } from "./Places";
+import { AUNT1, AUNT2, BEST, BOSS, COUSIN, COWORKER, KID, MAN, MOTHER, NEWS, on, Place, SENATOR, SHIFT, STRANGER, YOU, type Face } from "./Places";
 import { ChatPhone, Dot, ease, mix, Paper, ramp, type Msg, type ShotTime } from "./util";
 
 const PINK = "#f9c6d3", MINT = "#c3ead7", PEACH = "#fbd8b8", LAV = "#dacbf0", GREY = "#b9c8dc", BLUE = "#bfe3f0";
@@ -32,15 +32,30 @@ export const Insert: React.FC<{
 };
 
 /** The kitchen: you at the counter with your phone, your mother at the stove (or the sink, or beside you). */
-export const Kitchen: React.FC<{ t: ShotTime; mood: MoodName; you?: Face; mother?: Face | null; cam?: "wide" | "stove" | "twoShot"; cake?: boolean }> = ({
-  t, mood, you = "neutral", mother = "neutral", cam = "twoShot", cake,
+export const Kitchen: React.FC<{ t: ShotTime; mood: MoodName; you?: Face; mother?: Face | null; cam?: "wide" | "stove" | "twoShot"; cake?: boolean; tv?: { dot?: boolean } }> = ({
+  t, mood, you = "neutral", mother = "neutral", cam = "twoShot", cake, tv,
 }) => (
   <Place t={t} set={kitchen} mood={mood} cam={cam} options={{ stove: "kettle", steam: mood === "lamp" ? 0.3 : 0.6 }}
     cast={[
       ...(mother ? [on("cook", MOTHER, mother, cake ? { pose: { ...STAND, armF: [70, 20] } } : {})] : []),
       on("counter", YOU, you, { phone: true, pose: { ...STAND, armF: [40, 70] } }),
     ]}
-    overlay={cake ? <SmallCake x={1060} y={760} /> : undefined} />
+    overlay={cake ? <SmallCake x={1060} y={760} /> : tv ? <NewsTv f={t.f} dot={tv.dot} /> : undefined} />
+);
+
+/** The small kitchen television: a newsreader at a desk, a senator's face in a box with a paragraph of apology. */
+export const NewsTv: React.FC<{ f: number; dot?: boolean; x?: number; y?: number; s?: number }> = ({ f, dot, x = 300, y = 300, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <rect x={-10} y={-10} width={460} height={300} rx={22} fill="#1b1d26" stroke={INK} strokeWidth={8} />
+    <rect x={10} y={10} width={420} height={260} rx={10} fill="#d9e4f2" />
+    <circle cx={110} cy={150} r={46} fill={NEWS.head} stroke={INK} strokeWidth={5} />
+    <path d="M50 270 Q110 196 170 270Z" fill={NEWS.coat} stroke={INK} strokeWidth={5} />
+    <rect x={30} y={226} width={180} height={44} fill="#7c8aa6" stroke={INK} strokeWidth={4} />
+    <rect x={232} y={40} width={180} height={190} rx={8} fill={PAPER} stroke={INK} strokeWidth={4} />
+    <circle cx={322} cy={96} r={34} fill={SENATOR.head} stroke={INK} strokeWidth={4} />
+    {[0, 1, 2, 3].map((i) => <rect key={i} x={250} y={146 + i * 18} width={i === 3 ? 90 : 144} height={9} rx={4} fill={INK} opacity={0.45} />)}
+    {dot ? <circle cx={400} cy={216} r={14 * Math.min(1, f / 8)} fill="#D8344F" stroke={PAPER} strokeWidth={3} /> : null}
+  </g>
 );
 
 const SmallCake: React.FC<{ x: number; y: number }> = ({ x, y }) => (
@@ -78,11 +93,12 @@ export const Aunts: React.FC<{ t: ShotTime; one?: Face; two?: Face }> = ({ t, on
 );
 
 /** The office: you at your desk; your boss at his glass door. */
-export const Office: React.FC<{ t: ShotTime; you?: Face; boss?: Face | null; cam?: "wide" | "desk" | "screen"; screen?: "mail" | "chart" | "off" }> = ({
-  t, you = "neutral", boss = null, cam = "desk", screen = "mail",
+export const Office: React.FC<{ t: ShotTime; you?: Face; boss?: Face | null; coworker?: Face | null; cam?: "wide" | "desk" | "screen"; screen?: "mail" | "chart" | "off"; mood?: MoodName }> = ({
+  t, you = "neutral", boss = null, coworker = null, cam = "desk", screen = "mail", mood = "day",
 }) => (
-  <Place t={t} set={officeDesk} mood="day" cam={cam} options={{ screen, colleagues: true }}
-    cast={[on("desk", YOU, you, { phone: true }), ...(boss ? [on("cabin", BOSS, boss)] : [])]} />
+  <Place t={t} set={officeDesk} mood={mood} cam={cam} options={{ screen, colleagues: true }}
+    cast={[on("desk", YOU, you, { phone: true }), ...(coworker ? [on("beside", COWORKER, coworker, { phone: true })] : []),
+      ...(boss ? [on("cabin", BOSS, boss)] : [])]} />
 );
 
 /** Your bedroom under one lamp: you at the desk with the phone. */
@@ -107,7 +123,7 @@ export const BreakRoom: React.FC<{ t: ShotTime; you?: Face | null; friend?: "asl
       cast={[
         { ...on("desk", BEST, sleeping ? "neutral" : (friend as Face), { phone: true }), face: sleeping ? { brows: "none", lids: 1, mouth: "flat", eyes: 1 } : undefined,
           pose: sleeping ? { ...SEATED, tilt: 16, lean: 6, armF: [30, 60] } : undefined },
-        ...(coworker ? [on("cabin", COWORKER, coworker)] : []),
+        ...(coworker ? [on("cabin", SHIFT, coworker)] : []),
         ...(you ? [on(youSpot, YOU, you)] : []),
       ]} />
   );
@@ -135,6 +151,14 @@ const CoffeeCups: React.FC = () => (
       </g>
     ))}
   </g>
+);
+
+/** The restaurant downstairs: you alone at a table with a plate of fish, a waiter passing with the bill. */
+export const Diner: React.FC<{ t: ShotTime; you?: Face }> = ({ t, you = "neutral" }) => (
+  <Place t={t} set={canteen} mood="day" cam="table" options={{ tv: "off", food: true }}
+    cast={[on("benchLeft", YOU, you), on("standing", COWORKER, "sceptical", { who: { head: "#c7b08a", coat: "#2f2f2f" } })]}
+    overlay={<g transform="translate(930 700)"><ellipse rx={90} ry={26} fill={PAPER} stroke={INK} strokeWidth={5} />
+      <path d="M-54 -4 Q0 -34 46 -4 L70 -20 L66 10 L46 2 Q0 26 -54 -4Z" fill="#f2b58a" stroke={INK} strokeWidth={4} /></g>} />
 );
 
 /** The man from the dating app at his desk, typing with his thumbs for the first time. */
