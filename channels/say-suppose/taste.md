@@ -8,6 +8,35 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-15
+
+- **"Lets not set this as hard rule because when i watched it previously, it looked fine and it goes video to video
+  and this one looked just fine in this also."** On final_edit's opening check (the first word within 1 s), which
+  had forced saw who wants you to fail's cold open to start the title question at 0.6 s instead of 4.4 s. The
+  opening's timing is a per-film call: a wordless cold open on the thumbnail's frame is fine when it works. The check
+  should warn, not block a gate. This film keeps the 0.6 s version ("this one looked just fine").
+
+- **"B (AI-rents voice)"** On four free local narrator samples for saw who wants you to fail (A Arthur's clone, B the
+  AI-rents film's designed voice, C a new energetic baritone, D a new female storyteller), after: "I like Film: What If
+  AI Rented Your Brain While You Slept? the one used in this one better because we have more control over it right ?"
+  The narrator is a voice we design from a description (Qwen3 VoiceDesign) and clone from one reference read, so it
+  stays one voice from line to line; free and local. Then locked as the channel's narrator for every film: "lets lock it as
+  the narrators voice and i will tell you if we have to make changes to it in future" (`voices.yaml`; the recipe is the
+  AI-rents film's `narrator.py`).
+
+## 2026-11-14
+
+- **"Everything valid"** On the outside review of saw who wants you to fail v6 (Cursor, GPT-5.6 Sol, frame by frame)
+  and the room's round 18 notes: apply every valid fix. The review's rule for every film: a new action, framing or reveal
+  every 2-4 seconds outside the wordless peak; jokes are performed on screen, not only narrated; text is one or two large
+  lines a phone can read.
+
+- **"yes lets plan and fix the opening as to what would be the best thing to do ? Looks fine otherwise."** On saw who
+  wants you to fail v5, after the room's story editor flagged the opening in two rounds (the thumbnail's frame and
+  minus eighty-four only arrived at 0:48; the title question at 0:24). Replaces "Start Script is OK" for this film's
+  first seconds: open cold on the thumbnail's frame (the card landing by 0:07), the title question and the stakes by
+  0:30, then the skit. For every film: the first seven seconds show the thumbnail's promise.
+
 ## 2026-11-13
 
 - **"most of the videos we made so far are emotional sort of ... I want exciting stuff."** Asked who our audience is
@@ -20,6 +49,13 @@ rule. Where two notes disagree, the newer one wins.
   shows the power working and someone stunned, never a sad face. Replaces the 2026-11-06 study's "a person to lose" and
   "the peak gives something up" (`rules/story.md` #9, #18, #20-#22; `style.md`; `rules/thumbnails.md` K17).
   (audience research, all films)
+- **An outside picture review, then "yes apply all that makes sense and valid".** The owner asked for one reviewer from
+  another model family, frame by frame ("In Depth review of each frame and see how can we make it more better"):
+  Cursor, GPT-5.6 Sol, on one frame per second of the v4.1 cut. Applied in v4.2 (`review-g2-cursor-v4.1.md`, "Applied
+  in v4.2"): no anonymous black foreground head (use your own shoulder, or nothing when you are in the frame); a hold
+  acts out what the line says instead of resting on a still diagram; cards never sit on a face or the drawing's key
+  part. Not taken: anything the owner had already settled (the opening's timing, the script's wording) and timing
+  changes, which wait for a script round.
 
 AI rented your brain while you slept, G2 (the exciting note above is newer and wins where these disagree; the
 owner's "Emotional part should come only at the end where it is teaching a lesson" now lands as a win, not a tear,
