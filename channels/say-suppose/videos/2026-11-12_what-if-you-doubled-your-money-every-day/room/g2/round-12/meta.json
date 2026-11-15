@@ -1,0 +1,15 @@
+{
+  "round": 12,
+  "draft_sha256": "445baab9ab0584e61e70642418d4722787ff07defc8ca1bd8d8ee3eea62bf7c8",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": true,
+  "owner_note": [
+    "The whole story feels very zoomed in in here."
+  ],
+  "kind": "script",
+  "linted_at": "2026-11-15T09:42:27+00:00"
+}

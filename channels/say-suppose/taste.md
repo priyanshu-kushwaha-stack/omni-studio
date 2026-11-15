@@ -8,7 +8,25 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-15
+
+- **"The whole story feels very zoomed in in here."** The v5 cut of the doubled-money film (G2), with a reference,
+  "What If Your GTA Money Was Real?": "This is also a similar story and it has different storylines and different
+  pattern also of narration. Could you take some samples from it". Too zoomed in means one place and one short span:
+  40 of v5's 116 shots sat at one counter, mostly medium shots. Widen: a new place for most beats (the home base
+  about one beat in four), wide shots by default, single-line narration beats each with its own picture and punch,
+  characters one or two lines at a time, a run of plain wish-fulfilment before the costs, a running prop that
+  escalates, true stories as proof, the cost promised early ("Let's see what it costs"). Take the reference's scope,
+  framing and narration, not its sadness (`videos/2026-11-12_what-if-you-doubled-your-money-every-day/reference-gta-money.md`).
+  (doubled-money film, G2)
+
 ## 2026-11-13
+
+- **"The vibe from the video should come as exciting what happens when the money doubles. If you look at the existing
+  videos on the internet they portray it beautifully. Ours is too emotional and missing the excitement part and
+  futuristic part."** The v4 cut of the doubled-money film (G2), asking for one outside reviewer from another model
+  family, frame by frame (`review-g2-outside-gemini.md`). Earlier the same day: **"This is a little EMOTIONAL angle
+  story. I don't know if this will go big. Maybe with music we can make it better."** (doubled-money film, G2)
 
 - **"most of the videos we made so far are emotional sort of ... I want exciting stuff."** Asked who our audience is
   and what mood they arrive in, then "Yes, update rules" on the research
