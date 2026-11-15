@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-you-lived-a-year-every-night",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-13T03:55:25.210566+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G2 (story lock): watch renders/firstcut-720p.mp4 (9:34, 720p, free local narration with per-character local voices, a score cue per section, an ambience bed per set) next to script.md (v5). The room shipped round 4 (claims check 0 blockers, story editor 1); room verify ok. review-g2-round1.md lists what changed from G1 and five open notes for you (Calment's three numbers; the 'year forty-one' chronology slip; ten years as a projection; claims wording; the closing line). Never approved by an agent.",
+    "script": "script.md",
+    "claims": "claims.md",
+    "cues": "cues.yaml",
+    "room": "room-g2.md",
+    "review": "review-g2-round1.md",
+    "first_cut": "renders/firstcut-720p.mp4",
+    "qc": "omni qc story_script on the cut: claims PASS, clicks PASS; omni similar ok; -15.3 LUFS integrated"
+  }
+}

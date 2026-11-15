@@ -135,7 +135,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       {sfx("click", k.lampOff + 2, 0.45)}
       {sfx("click", k.kettleOff + 2, 0.45)}
       {sfx("snap", k.tape[0] + 8, 0.3)}
-      {[0, 1, 2, 3].map((i) => sfx("tick", k.steps - 8 + i * 9, 0.5, 8))}
+      {[0, 1, 2, 3].map((i) => sfx("tick", k.steps - 8 + i * 9, 0.18, 8))}
       {sfx("snap", k.bar, 0.5)}
       {sfx("snap", p.plug, 0.7)}
       {peakTicks(p).map((t) => sfx("tick", t, 0.45, 8))}

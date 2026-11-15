@@ -4,20 +4,21 @@
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
   "status": "awaiting_human",
-  "timestamp": "2026-11-13T03:55:25.210566+00:00",
+  "timestamp": "2026-11-15T16:59:57.389278+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G2 (story lock): watch renders/firstcut-720p.mp4 (9:34, 720p, free local narration with per-character local voices, a score cue per section, an ambience bed per set) next to script.md (v5). The room shipped round 4 (claims check 0 blockers, story editor 1); room verify ok. review-g2-round1.md lists what changed from G1 and five open notes for you (Calment's three numbers; the 'year forty-one' chronology slip; ten years as a projection; claims wording; the closing line). Never approved by an agent.",
+    "for_owner": "G2 (story lock), v7, exciting not sad (owner, 2026-11-13: 'I want exciting stuff'): watch renders/v7-firstcut-720p.mp4 (8:56, 720p, free local narration in voice B, the film's own character voices, a score cue per section) next to script.md (v7). The room shipped round 6 (claims check 0 blockers, story editor 3); room verify ok. review-g2-round2.md lists every change from v5 and G1, including a NEW THUMBNAIL for K17 (you juggling, your flatmate stunned; same title and tag) for you to approve, and four open notes. Never approved by an agent.",
     "script": "script.md",
     "claims": "claims.md",
     "cues": "cues.yaml",
     "room": "room-g2.md",
-    "review": "review-g2-round1.md",
-    "first_cut": "renders/firstcut-720p.mp4",
-    "qc": "omni qc story_script on the cut: claims PASS, clicks PASS; omni similar ok; -15.3 LUFS integrated"
+    "review": "review-g2-round2.md",
+    "first_cut": "renders/v7-firstcut-720p.mp4",
+    "thumbnail": "brand/thumbs/yearnight (v2), thumb-checks-v2.json",
+    "qc": "omni qc story_script on the cut: claims PASS, clicks PASS; omni similar ok; story lint ok; -19.7 LUFS integrated"
   }
 }
