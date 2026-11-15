@@ -10,6 +10,12 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-15
 
+- **"Lets not set this as hard rule because when i watched it previously, it looked fine and it goes video to video
+  and this one looked just fine in this also."** On final_edit's opening check (the first word within 1 s), which
+  had forced saw who wants you to fail's cold open to start the title question at 0.6 s instead of 4.4 s. The
+  opening's timing is a per-film call: a wordless cold open on the thumbnail's frame is fine when it works. The check
+  should warn, not block a gate. This film keeps the 0.6 s version ("this one looked just fine").
+
 - **"B (AI-rents voice)"** On four free local narrator samples for saw who wants you to fail (A Arthur's clone, B the
   AI-rents film's designed voice, C a new energetic baritone, D a new female storyteller), after: "I like Film: What If
   AI Rented Your Brain While You Slept? the one used in this one better because we have more control over it right ?"
