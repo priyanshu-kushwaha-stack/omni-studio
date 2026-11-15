@@ -168,7 +168,7 @@ export const PeakScene: React.FC<{ frame: number; k: KL }> = ({ frame, k }) => {
   else if (frame < p.face) { on = "climb"; cam = camAt(frame, [[p.climb[0], wide], [p.face, { ...wide, zoom: 1.04 }]]); }
   else if (frame < p.dissolve[0]) {
     on = "face";
-    cam = camAt(frame, [[p.face, closeUp(bh.x - 140, bh.y + 20, 2.3)], [p.pull, closeUp(bh.x - 160, bh.y + 20, 2.45)], [p.pull + 34, { x: 820, y: 620, zoom: 1.2 }], [p.dissolve[0], { x: 830, y: 620, zoom: 1.12 }]]);
+    cam = camAt(frame, [[p.face, closeUp(bh.x - 140, bh.y + 20, 2.3)], [p.pull, closeUp(bh.x - 160, bh.y + 20, 2.45)], [p.pull + Math.max(1, Math.round((p.dissolve[0] - p.pull) * 0.7)), { x: 820, y: 620, zoom: 1.2 }], [p.dissolve[0] + 1, { x: 830, y: 620, zoom: 1.12 }]]);
   } else if (frame < p.reveal) { on = "dawn"; cam = camAt(frame, [[p.dissolve[0], { x: 830, y: 620, zoom: 1.12 }], [p.reveal, { x: 900, y: 630, zoom: 1.04 }]]); }
   else { on = "reveal"; cam = camAt(frame, [[p.reveal, { x: 980, y: 630, zoom: 1.0 }], [p.bubble - 10, { x: 980, y: 630, zoom: 1.02 }], [k.teach, { x: 820, y: 660, zoom: 1.2 }]]); }
   cam = drift(cam, frame, "kl-peak", 2);

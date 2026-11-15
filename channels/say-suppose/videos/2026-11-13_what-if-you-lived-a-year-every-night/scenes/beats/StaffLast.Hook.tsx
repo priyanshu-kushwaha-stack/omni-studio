@@ -147,21 +147,28 @@ export interface TrappedTimes { start: number; hatch: number; cables: number; pa
 /** Trapped: you glance at the way out and half rise; at your old hatch (the taped socket under it) and sink; the boss
  *  polishing the padlock with his sleeve; the hook from your chair, and his little wave. */
 export const TrappedShot: React.FC<{ frame: number; k: TrappedTimes }> = ({ frame, k }) => {
-  const rise = ramp(frame, k.start + 4, k.start + 12) * (1 - ramp(frame, k.hatch + 6, k.hatch + 16));
-  const me: Body = { ...YOU_SEATED, y: YOU_SEATED.y - 26 * rise, pose: { ...YOU_SEATED.pose, lean: mix(-4, 14, rise), armF: [30, 50], armB: [20, 60] } };
+  // you half rise for the way out; on "lose the hatch" you get up and make for the exit, stop, and look back at your
+  // old hatch (the taped socket under it in plain view); you are back in the chair by the time we see you again
+  const rise = ramp(frame, k.start + 4, k.start + 12);
+  const going = frame >= k.hatch && frame < k.padlocked;
+  const step = ramp(frame, k.hatch, k.hatch + 18);
+  const standing: Body = { x: mix(YOU_SEATED.x + 30, 900, step), y: 960, scale: 1.1, facing: step < 1 ? 1 : -1,
+    pose: step < 1 ? walkPose(frame * 0.4) : { ...STAND, lean: -4, tilt: -8, armF: [14, 20], armB: [-6, 14] } };
+  const me: Body = going ? standing
+    : { ...YOU_SEATED, y: YOU_SEATED.y - 26 * (frame < k.hatch ? rise : 0), pose: { ...YOU_SEATED.pose, lean: frame < k.hatch ? mix(-4, 14, rise) : -4, armF: [30, 50], armB: [20, 60] } };
   const wave = ramp(frame, k.end - 34, k.end - 28);
   const polishing = frame >= k.cables && frame < k.end - 34;
   const bAt: Body = { x: 236, y: 950, scale: 1.12, facing: wave > 0 ? 1 : -1, pose: { ...STAND, lean: 6 } };
   const rub = { x: HOOK.x + 14 + Math.cos(frame / 3) * 10, y: HOOK.y + 12 + Math.sin(frame / 3) * 6 };
   bAt.pose = { ...bAt.pose, armF: wave > 0 ? [mix(20, 160, wave) + Math.sin(frame) * 10 * wave, 20] : polishing ? aim(bAt, rub) : [20, 20] };
-  const look = frame < k.hatch ? { x: -1, y: 0 } : frame < k.cables ? { x: -0.5, y: -0.9 } : { x: 1, y: -0.2 };
+  const look = frame < k.hatch ? { x: -1, y: 0 } : frame < k.cables ? (step < 1 ? { x: 1, y: 0 } : { x: 1, y: 0.4 }) : { x: 1, y: -0.2 };
   const mh = head(me);
   const cam: Camera = frame >= k.padlocked
     ? camAt(frame, [[k.padlocked, { x: 430, y: 690, zoom: 1.55 }], [k.end, { x: 410, y: 690, zoom: 1.62 }]])
     : frame >= k.cables
       ? camAt(frame, [[k.cables, { x: 210, y: 640, zoom: 2.3 }], [k.padlocked, { x: 200, y: 640, zoom: 2.5 }]])
       : frame >= k.hatch
-        ? camAt(frame, [[k.hatch, { x: 600, y: 610, zoom: 1.65 }], [k.cables, { x: 590, y: 600, zoom: 1.8 }]])
+        ? camAt(frame, [[k.hatch, { x: 660, y: 600, zoom: 1.55 }], [k.cables, { x: 640, y: 600, zoom: 1.65 }]])
         : camAt(frame, [[k.start, closeUp(mh.x - 20, mh.y + 20, 2.0)], [k.hatch, closeUp(mh.x - 20, mh.y + 20, 2.1)]]);
   return (
     <Lobby frame={frame} cam={drift(cam, frame, "sl-trap", 2)} mood="morning">

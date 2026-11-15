@@ -196,7 +196,7 @@ const CardItem: React.FC<{ i: number }> = ({ i }) => (
 export const CrateOut: React.FC<{ frame: number; k: KL }> = ({ frame, k }) => {
   const close = frame >= k.crosses[0] && frame < k.sulk;
   const cam = close
-    ? drift(camAt(frame, [[k.crosses[0], { x: 1240, y: 520, zoom: 2.2 }], [k.sulk, { x: 1240, y: 560, zoom: 2.0 }]]), frame, "kl-card", 2)
+    ? drift(camAt(frame, [[k.crosses[0], { x: 1240, y: 530, zoom: 3.0 }], [k.sulk, { x: 1240, y: 540, zoom: 2.8 }]]), frame, "kl-card", 2)
     : drift(camAt(frame, [[k.crate, { x: 1080, y: 620, zoom: 1.2 }], [k.end, { x: 1100, y: 640, zoom: 1.35 }]]), frame, "kl-crate", 3);
   const n = Math.round(11 * ramp(frame, k.crosses[0] + 6, k.crosses[1]));
   const sulk = frame >= k.sulk;

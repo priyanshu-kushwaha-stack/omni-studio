@@ -14,7 +14,7 @@ import { aimArm, handAt, Person, type Body, type Face } from "./TellMeTomorrow.K
 
 const FLOOR = 960;
 const TOP = 740;
-export const BULB = { x: 1240, y: 300 };
+export const BULB = { x: 1480, y: 300 };
 
 /** An old radio case, its back off: a box, a dial, a speaker grille, a valve or two showing. */
 const Radio: React.FC<{ x: number; y: number; s?: number; open?: boolean; c?: string }> = ({ x, y, s = 1, open, c = "#8a5a3c" }) => (
@@ -56,8 +56,8 @@ export interface WorkshopProps {
 
 /** The back room: the teacher soldering, you holding the lamp cord up to the bulb. */
 export const Workshop: React.FC<WorkshopProps> = ({ frame, cam, mood, face, teacher, nod = 0 }) => {
-  const you: Body = { x: 1420, y: FLOOR, scale: 1.15, facing: -1, pose: { ...STAND, tilt: -10 } };
-  const lift = { x: 1300 + Math.sin(frame / 18) * 10, y: 470 + Math.sin(frame / 11) * 6 };
+  const you: Body = { x: 1700, y: FLOOR, scale: 1.15, facing: -1, pose: { ...STAND, tilt: -10 } };
+  const lift = { x: 1560 + Math.sin(frame / 18) * 10, y: 480 + Math.sin(frame / 11) * 6 };
   const youPose: Pose = { ...STAND, tilt: -12, armF: aimArm(you, lift), armB: [20, 60] };
   const hand = handAt({ ...you, pose: youPose }, "front");
   const tb: Body = { x: 520, y: FLOOR, scale: 1.15, facing: 1, pose: { ...STAND, lean: 14 } };
@@ -114,8 +114,8 @@ export const Workshop: React.FC<WorkshopProps> = ({ frame, cam, mood, face, teac
               return <circle key={k} cx={iron.x + 14 + Math.sin(q * 6 + k) * 10} cy={iron.y + 20 - q * 120} r={8 + q * 10} fill="#e9e6df" opacity={0.5 * (1 - q)} />;
             })}
             {/* the lamp cord you hold up to the light: from your hand down to the lamp base, the plug dangling */}
-            <path d={`M${hand.x} ${hand.y} C ${hand.x - 40} ${hand.y + 160}, 1360 ${TOP - 120}, 1320 ${TOP - 10}`} fill="none" stroke={INK} strokeWidth={9} strokeLinecap="round" />
-            <path d={`M${hand.x} ${hand.y} C ${hand.x - 40} ${hand.y + 160}, 1360 ${TOP - 120}, 1320 ${TOP - 10}`} fill="none" stroke="#e9dcc2" strokeWidth={4} strokeLinecap="round" />
+            <path d={`M${hand.x} ${hand.y} C ${hand.x - 60} ${hand.y + 200}, 1420 ${TOP - 140}, 1320 ${TOP - 10}`} fill="none" stroke={INK} strokeWidth={9} strokeLinecap="round" />
+            <path d={`M${hand.x} ${hand.y} C ${hand.x - 60} ${hand.y + 200}, 1420 ${TOP - 140}, 1320 ${TOP - 10}`} fill="none" stroke="#e9dcc2" strokeWidth={4} strokeLinecap="round" />
             <path d={`M${hand.x} ${hand.y} q-10 40 -2 ${70 + Math.sin(frame / 7) * 6}`} fill="none" stroke={INK} strokeWidth={7} />
             <g transform={`translate(${hand.x - 2} ${hand.y + 74 + Math.sin(frame / 7) * 6}) rotate(${Math.sin(frame / 9) * 12})`}>
               <rect x={-14} y={0} width={28} height={30} rx={5} fill="#2b2f3d" stroke={INK} strokeWidth={3} />

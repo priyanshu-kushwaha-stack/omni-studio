@@ -99,7 +99,7 @@ export const EndScene: React.FC<{ frame: number; k: TM }> = ({ frame, k }) => {
             </g>
           </g>
         )}
-        <Bubble frame={frame} at={k.bubble} until={k.bossIn[0]} x={yh.x - 30} y={yh.y - 36} text="So, last night..." size={34} side="left" />
+        {on !== "her" && <Bubble frame={frame} at={k.bubble} until={k.bossIn[0]} x={yh.x - 50} y={yh.y + 10} text="So, last night..." size={34} side="left" />}
       </>
     );
   }

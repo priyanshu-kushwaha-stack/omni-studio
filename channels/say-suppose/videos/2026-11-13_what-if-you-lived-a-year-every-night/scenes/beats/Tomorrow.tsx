@@ -69,7 +69,7 @@ const Hall: React.FC<{ frame: number; k: TM; on: string }> = ({ frame, k, on }) 
     roll: camAt(frame, [[k.l76, { x: 780, y: 720, zoom: 1.9 }], [k.unroll, { x: 820, y: 720, zoom: 1.6 }]]),
     walk: walkCam(frame),
     page: camAt(frame, [[k.stamp, { x: yearX(1000), y: 700, zoom: 1.5 }], [k.unread, { x: yearX(1000), y: 690, zoom: 1.85 }], [k.keep, { x: yearX(1000) + 20, y: 690, zoom: 1.95 }]]),
-    walk2: camAt(frame, [[k.keep, { x: yearX(1000) + 20, y: 690, zoom: 1.6 }], [k.keep + 24, walkCam(k.keep + 24)], [k.l77, walkCam(k.l77)]]),
+    walk2: camAt(frame, [[k.keep, { x: yearX(1000) + 20, y: 690, zoom: 1.6 }], [Math.min(k.keep + 24, k.l77 - 2), walkCam(Math.min(k.keep + 24, k.l77 - 2))], [k.l77, walkCam(k.l77)]]),
     wide: camAt(frame, [[k.l77, { x: 2300, y: 680, zoom: 0.9 }], [k.far, { x: 2000, y: 660, zoom: 0.62 }], [k.rotaIn, { x: 1950, y: 660, zoom: 0.6 }]]),
     bossRota: camAt(frame, [[k.rotaIn, { x: 760, y: 700, zoom: 1.5 }], [k.l78, { x: 770, y: 700, zoom: 1.62 }]]),
   };

@@ -119,10 +119,11 @@ function hallActors(frame: number, cam: Camera, k: T) {
 const Fingers: React.FC<{ n: number }> = ({ n }) => (
   <g>
     {Array.from({ length: n }, (_, i) => {
-      const a = ((-30 + i * 22) * Math.PI) / 180;
-      return <line key={i} x1={0} y1={0} x2={Math.sin(a) * 22} y2={-Math.cos(a) * 22} stroke={BOSS.head} strokeWidth={6} strokeLinecap="round" />;
+      const a = ((-36 + i * 24) * Math.PI) / 180;
+      return <g key={i}><line x1={0} y1={0} x2={Math.sin(a) * 34} y2={-Math.cos(a) * 34} stroke={INK} strokeWidth={13} strokeLinecap="round" />
+        <line x1={0} y1={0} x2={Math.sin(a) * 34} y2={-Math.cos(a) * 34} stroke={BOSS.head} strokeWidth={8} strokeLinecap="round" /></g>;
     })}
-    <circle r={10} fill={BOSS.head} stroke={INK} strokeWidth={2} />
+    <circle r={14} fill={BOSS.head} stroke={INK} strokeWidth={3} />
   </g>
 );
 

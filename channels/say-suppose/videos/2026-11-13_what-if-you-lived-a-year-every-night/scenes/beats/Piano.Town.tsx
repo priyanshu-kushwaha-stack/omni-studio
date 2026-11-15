@@ -78,7 +78,7 @@ export const Bakery: React.FC<{ frame: number; wave?: boolean }> = ({ frame, wav
   const knead = Math.sin(frame / 4);
   const you: Body = { x: 920, y: STREET, scale: 1.15, facing: 1, pose: { ...STAND, lean: 14, armF: [70 + knead * 12, 50], armB: [55 - knead * 12, 60] } };
   const hk: Body = wave
-    ? { x: 960, y: STREET, scale: 1.25, facing: -1, pose: { ...STAND, tilt: Math.sin(frame / 5) * 6, armF: [160 + Math.sin(frame / 3) * 18, 30], armB: [20, 40] } }
+    ? { x: 960, y: STREET, scale: 1.25, facing: -1, pose: { ...STAND, tilt: Math.sin(frame / 5) * 6, armF: [115, 55 + Math.sin(frame / 3) * 22], armB: [20, 40] } }
     : { x: 1330, y: STREET, scale: 1.15, facing: -1, pose: { ...STAND, lean: 6, tilt: -6, armF: [80, 60], armB: [30, 60] } };
   return (
     <>

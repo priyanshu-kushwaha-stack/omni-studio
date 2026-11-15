@@ -7,29 +7,29 @@
 /** One score cue per section; `file` is under assets/music/. v7 (2026-11-14): exciting, not sad. */
 export const SCORE: { file: string; from: number; to: number }[] = [
   { file: "theme-light.mp3", from: 0, to: 12.8 },          // the skit in the pod hall: the channel's signal
-  { file: "cues/wonder.wav", from: 12.8, to: 72.5 },       // The Rule: juggling, the counters, the limit, the strip
-  { file: "cues/piano.wav", from: 72.5, to: 131.7 },       // Night One: the inside year, the cardboard keys, Haruko
-  { file: "cues/montage.wav", from: 131.7, to: 222.0 },    // Seven Years a Week: eggs, the lottery, the coach party
-  { file: "cues/city.wav", from: 222.0, to: 320.3 },       // The City Plugs In, down to the train and the town
-  { file: "cues/staff.wav", from: 320.3, to: 367.6 },      // Staff Last: the catch, the padlock, no naps
-  { file: "cues/vertigo.wav", from: 367.6, to: 388.6 },    // Night Thirty: the town of thousands
-  { file: "cues/warm.wav", from: 388.6, to: 409.9 },       // three in the morning: the one warm beat, then the idea
-  { file: "cues/heist.wav", from: 409.9, to: 458.7 },      // The Kettle Lead: the caper, the stall, the peak's floor
-  { file: "cues/triumph.wav", from: 458.7, to: 492.6 },    // the design spreads; kettles banned and un-banned
-  { file: "cues/awe.wav", from: 492.6, to: 528.1 },        // Tomorrow: night 123, the timeline, the city
-  { file: "cues/twist.wav", from: 528.1, to: 547.7 },      // the hatch beside yours, "Tell me tomorrow.", two plugs
-  { file: "theme-light.mp3", from: 547.7, to: 554.1 },     // the end card: the signal again
+  { file: "cues/wonder.wav", from: 12.8, to: 73.7 },       // The Rule: juggling, the counters, the limit, the strip
+  { file: "cues/piano.wav", from: 73.7, to: 134.8 },       // Night One: the inside year, the cardboard keys, Haruko
+  { file: "cues/montage.wav", from: 134.8, to: 217.2 },    // Seven Years a Week: eggs, the lottery, the coach party
+  { file: "cues/city.wav", from: 217.2, to: 313.1 },       // The City Plugs In, down to the train and the town
+  { file: "cues/staff.wav", from: 313.1, to: 356.4 },      // Staff Last: the catch, the padlock, no naps
+  { file: "cues/vertigo.wav", from: 356.4, to: 377.3 },    // Night Thirty: the town of thousands
+  { file: "cues/warm.wav", from: 377.3, to: 397.1 },       // three in the morning: the one warm beat, then the idea
+  { file: "cues/heist.wav", from: 397.1, to: 445.7 },      // The Kettle Lead: the caper, the stall, the peak's floor
+  { file: "cues/triumph.wav", from: 445.7, to: 475.8 },    // the design spreads; kettles banned and un-banned
+  { file: "cues/awe.wav", from: 475.8, to: 510.9 },        // Tomorrow: night 123, the timeline, the city
+  { file: "cues/twist.wav", from: 510.9, to: 523.6 },      // the hatch beside yours, "Tell me tomorrow.", two plugs
+  { file: "theme-light.mp3", from: 523.6, to: 536.2 },     // the end card: the signal again
 ];
 
 /** The wordless peak (the 9 s hold after "Your hands have had thirty years."): the caper drops to a floor under the
  *  slowed counter flutter, the click on 365 lands in the quiet, then the triumph comes in (rules/sound.md #3). */
-export const PEAK = { from: 449.7, to: 458.7, floor: 0.1 };
+export const PEAK = { from: 436.7, to: 445.7, floor: 0.1 };
 
 /** Ambience beds (assets/sfx/bed-<name>.wav), each from its start to the next one's. Section-level for the first cut;
  *  finer set changes are spotted at G4. */
 export const BEDS: [number, string][] = [
-  [0, "pod-hall"], [72.5, "town"], [100.8, "kitchen"], [131.7, "kitchen"], [137.1, "town"], [169.0, "room"],
-  [183.1, "kitchen-morning"], [215.9, "pod-hall"], [219.3, "street-night"], [222.0, "pod-hall"], [230.3, "room"],
-  [298.2, "train"], [316.0, "town"], [320.3, "room"], [353.0, "pod-hall"], [367.6, "town"], [388.6, "pod-hall"],
-  [492.6, "pod-hall"], [520.1, "street-night"], [528.1, "pod-hall"],
+  [0, "pod-hall"], [73.7, "town"], [103.3, "kitchen"], [134.8, "kitchen"], [139.9, "town"], [167.9, "room"],
+  [182.3, "kitchen-morning"], [211.8, "pod-hall"], [214.9, "street-night"], [217.2, "pod-hall"], [225.3, "room"],
+  [291.0, "train"], [308.8, "town"], [313.1, "room"], [342.3, "pod-hall"], [356.4, "town"], [377.3, "pod-hall"],
+  [475.8, "pod-hall"], [502.5, "street-night"], [510.9, "pod-hall"],
 ];

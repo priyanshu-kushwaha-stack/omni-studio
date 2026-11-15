@@ -61,3 +61,19 @@ below wait for your notes round.
    monopoly. But you also made plugging in ordinary, even for yourself." before it.
 4. **Suggestions:** "Which means all of them went into the same town you did"; "So you bring back the one skill nobody
    can keep to themselves"; Siffre "In 1962" (claims). Not taken in words: "If you'd plug in, like and subscribe" (#19).
+
+## After the merge of main (2026-11-15)
+
+- **Narrator: voice B**, the channel narrator the owner locked on 2026-11-15 (voices.yaml, main #59). The narration
+  is re-voiced locally with it; the characters keep this film's own cast (Guest, Traveller, Nurse and Surgeon added
+  for v7). Free and local; no paid call.
+- Checked v7 against main's new notes (taste.md 2026-11-15): the thumbnail's promise (the juggling, the 365, her
+  stunned face) is on screen by 0:06, inside the first 7 s; the device is defined where it is named (the cable in the
+  rule's first line, "Plug in at bedtime..."); there is no person-to-lose peak and no goodbye ending (#57 holds);
+  click mutes sit between lines, after speech, never inside a word.
+- With voice B the narration runs 8:56 (536 s), shorter than the 9.5-10 minute aim: voice B reads faster than voice A
+  (9:14 on the same script). The words are the shipped round-6 draft; adding a minute means new set pieces, a script
+  change for your notes round. `timing.yaml` gives the title card its full 3 s after "And you've got work in the
+  morning." (the script asks for it; a timing note, not a word change).
+- The picture puts your flatmate's twist hatch directly above yours (the one hatch the hall draws dark all film); the
+  script says "the hatch next to yours". Say if it must be beside.

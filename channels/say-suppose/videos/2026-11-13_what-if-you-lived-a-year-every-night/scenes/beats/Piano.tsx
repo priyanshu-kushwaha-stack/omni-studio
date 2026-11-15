@@ -133,7 +133,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     [0, "pod"], [k.rats, "rats"], [k.dream, "dream"], [k.plug, "plug"], [k.dawn, "dawn"], [k.sun, "sun"], [k.bakery, "bakery"], [k.winter, "winter"],
     [k.teacher, "teacher"], [k.back, "back"], [Math.min(k.time - 30, k.back + 66), "back2"], [k.time, "hands"], [k.wince, "wince"], [k.sure, "sure"], [k.nod, "nod"], [k.hatch, "hatch"],
     [k.kitchen, "two"], [g(0.22), "keys1"], [g(0.36), "her"], [g(0.5), "keys2"], [g(0.62), "two2"], [g(0.88), "eyes"], [k.since, "since"],
-    [k.who, "who"], [k.haruko, "haruko"], [k.siffre, "siffre"], [k.stuck, "stuck"], [k.applause, "applause"], [k.wrong, "wrong"], [k.fine, "fine"],
+    [k.bubble, "who"], [k.who, "who"], [k.haruko, "haruko"], [k.siffre, "siffre"], [k.stuck, "stuck"], [k.applause, "applause"], [k.wrong, "wrong"], [k.fine, "fine"],
   ]);
 
   const walkX = mix(-100, 1500, linear(frame, k.winter, k.teacher));
@@ -169,7 +169,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       // the plant: wide on the bench of radios and lamps in pieces, then close on you holding the lamp cord to the bulb
       const b2 = Math.min(k.time - 30, k.back + 66);
       const cam = on === "back" ? camAt(frame, [[k.back, { x: 1000, y: 600, zoom: 1.15 }], [b2, { x: 1060, y: 600, zoom: 1.25 }]])
-        : camAt(frame, [[b2, { x: 1300, y: 520, zoom: 1.9 }], [k.time, { x: 1290, y: 510, zoom: 2.05 }]]);
+        : camAt(frame, [[b2, { x: 1560, y: 560, zoom: 1.8 }], [k.time, { x: 1550, y: 550, zoom: 1.95 }]]);
       picture = <Workshop frame={frame} mood="day" cam={drift(cam, frame, "ws", 3)} nod={on === "back2" ? linear(frame, b2 + 20, k.time) : 0}
         face={on === "back2" && frame > b2 + 24 ? { brows: "raised", lids: 0, mouth: "smile", eyes: 1.1, look: { x: 0.4, y: -0.9 } } : { brows: "raised", lids: 0, mouth: "o", eyes: 1.15, look: { x: 0.5, y: -0.9 } }}
         teacher={on === "back2" ? { brows: "raised", lids: 0.3, mouth: "smile", look: { x: 0.9, y: -0.2 } } : { brows: "flat", lids: 0.3, mouth: "flat", look: { x: 0.6, y: 0.6 } }} />;
@@ -202,7 +202,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
         two2: camAt(frame, [[g(0.62), { x: 900, y: 640, zoom: 1.4 }], [g(0.88), { x: 860, y: 640, zoom: 1.55 }]]),
         eyes: closeUp(YOU_HEAD.x + 10, YOU_HEAD.y, 2.3),
         since: closeUp(MATE_HEAD.x - 40, MATE_HEAD.y, 2.0),
-        who: camAt(frame, [[k.who, { x: 900, y: 600, zoom: 1.45 }], [k.haruko, { x: 920, y: 600, zoom: 1.55 }]]),
+        who: camAt(frame, [[k.bubble, { x: 900, y: 600, zoom: 1.45 }], [k.haruko, { x: 920, y: 600, zoom: 1.55 }]]),
         stuck: camAt(frame, [[k.stuck, { x: 900, y: 620, zoom: 1.35 }], [k.applause, { x: 880, y: 620, zoom: 1.45 }]]),
         applause: closeUp(YOU_HEAD.x + 20, YOU_HEAD.y, 2.2),
         wrong: closeUp(MATE_HEAD.x - 30, MATE_HEAD.y, 2.3),
@@ -214,7 +214,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       if (on === "since" || on === "who") {
         // your bubble pops over the cut to the two-shot; in the close on her it sits at the top left, clear of her face
         over = on === "who"
-          ? <Overlay><Bubble frame={frame} at={k.bubble} until={k.who + 20} x={560} y={330} text="Morning, Haruko." size={46} side="right" /></Overlay>
+          ? <Overlay><Bubble frame={frame} at={k.bubble} until={k.who + 24} x={560} y={330} text="Morning, Haruko." size={46} side="right" /></Overlay>
           : <Overlay><Bubble frame={frame} at={k.bubble} x={220} y={300} text="Morning, Haruko." size={46} side="right" /></Overlay>;
       }
     }
