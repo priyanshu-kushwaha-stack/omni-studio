@@ -199,3 +199,26 @@ export const Stamp: React.FC<{ x: number; y: number; text: string; color: string
 
 /** Pose helpers. */
 export const withArms = (p: Pose, armF?: [number, number], armB?: [number, number]): Pose => ({ ...p, ...(armF ? { armF } : {}), ...(armB ? { armB } : {}) });
+
+/** A role tag (owner note 2026-11-15): a small pinned cream slip naming a recurring character at their first close-up,
+ *  beside the shoulder and off the face. (x, y) is the head centre, r its radius; `side` 1 puts it to the right. It pops
+ *  in at `at` and leaves after `hold` frames. World units. */
+export const RoleTag: React.FC<{ frame: number; at: number; x: number; y: number; r: number; text: string; side?: 1 | -1; hold?: number }> = ({
+  frame, at, x, y, r, text, side = 1, hold = 75,
+}) => {
+  if (frame < at || frame >= at + hold) return null;
+  const s = Math.min(1, (frame - at) / 5) * Math.min(1, (at + hold - frame) / 6);
+  const fs = r * 0.3;
+  const w = text.length * fs * 0.68 + fs * 1.4;
+  const h = fs * 1.7;
+  const cx = x + side * (r * 1.25 + w / 2);
+  const cy = y + r * 1.15;
+  return (
+    <g transform={`translate(${cx} ${cy}) rotate(${side * 4}) scale(${s})`} opacity={s}>
+      <rect x={-w / 2 + 4} y={-h / 2 + 6} width={w} height={h} rx={h * 0.18} fill="#000" opacity={0.25} />
+      <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={h * 0.18} fill={PAPER} stroke={INK} strokeWidth={Math.max(2, r * 0.035)} />
+      <circle cx={-w / 2 + fs * 0.5} cy={0} r={fs * 0.16} fill={INK} />
+      <text x={fs * 0.15} y={fs * 0.36} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={fs} fill={INK} letterSpacing={1}>{text}</text>
+    </g>
+  );
+};

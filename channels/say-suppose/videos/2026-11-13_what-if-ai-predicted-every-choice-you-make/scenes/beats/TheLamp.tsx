@@ -22,7 +22,7 @@ import { aimArm, handAt, headAt, moodNow } from "../kit";
 import { camAt, current, lineEnd, mix, ramp, type Beat, type Shot } from "../shared";
 import { COURT, Key } from "../sets/FoodCourt";
 import {
-  CloseShot, Coin, CourtShot, firstTags, type CourtTags, friendBody, IcedCoffee, LADDER, Palm, pillarLamp, workerReach,
+  CloseShot, Coin, CourtShot, firstTags, RoleTag, type CourtTags, friendBody, IcedCoffee, LADDER, Palm, pillarLamp, workerReach,
   youBody, type Face, type Mood,
 } from "./TheLamp.Court";
 
@@ -123,8 +123,15 @@ const KeyClose: React.FC<{ frame: number; k: T; mood: Mood; tags: CourtTags }> =
         : { brows: "none", lids: 0.05, mouth: "smile", eyes: 1, look: { x: 1, y: 0.1 } };
   // the key: large on your open palm (the thumbnail's), shrinking to a held size as it goes into your pocket
   const keyHand = handAt(youBody(youPose), "front");
-  const inPocket = frame >= k.pocketed;
-  const extra = !inPocket ? <Key x={keyHand.x + mix(20, 0, back)} y={keyHand.y - mix(30, 10, back)} scale={mix(1.35, 0.7, back)} rotate={mix(-14, 30, back)} glint={back < 0.5} /> : null;
+  const inPocket = back > 0.6; // below the counter's edge: gone into your pocket
+  const extra = (
+    <>
+      {!inPocket && <Key x={keyHand.x + mix(20, 0, back)} y={keyHand.y - mix(30, 10, back)} scale={mix(1.35, 0.7, back)} rotate={mix(-14, 30, back)} glint={back < 0.5} />}
+      {/* role tags at your first close-ups, on the chest and beside him, off both faces */}
+      <RoleTag frame={frame} at={14} until={k.trust - 4} x={430} y={890} text="YOU" />
+      <RoleTag frame={frame} at={20} until={k.trust + 10} x={1720} y={880} text="BEST FRIEND" />
+    </>
+  );
   return (
     <CloseShot frame={frame} cam={cam} mood={mood} teal={k.lampOn}
       you={{ pose: youPose, face: youFace }}
@@ -145,7 +152,7 @@ const PointWide: React.FC<{ frame: number; k: T; mood: Mood; tags: CourtTags }> 
   const yh = headAt(COURT.you.x, COURT.floor, COURT.scale, STAND, 1);
   const point = ramp(frame, k.point, k.point + 8);
   const fB = { x: COURT.friend.x, y: COURT.floor, scale: COURT.scale, pose: STAND, facing: -1 as const };
-  const pointAt = aimArm(fB, { x: yh.x + 60, y: yh.y - 260 });
+  const pointAt = aimArm(fB, { x: yh.x + 120, y: yh.y - 600 }); // up at your card
   const fPose: Pose = { ...STAND, tilt: -6 * point, armF: [mix(9, pointAt[0], point), mix(10, pointAt[1], point)] };
   return (
     <CourtShot frame={frame} cam={cam} mood={mood} tags={tags} lampOn={k.lampOn} workerDrop={drop} pillarKeys={[{ at: 0, value: "100" }]}
@@ -193,6 +200,9 @@ const CoffeeShot: React.FC<{ frame: number; k: T; mood: Mood; tags: CourtTags }>
       extra={<>
         {!taken && <IcedCoffee x={cup.x} y={cup.y} scale={2.2} />}
         {frame >= k.payCoin + 2 && <Coin x={1470} y={COURT.coffee.top - 4} r={10} edge={0.5} />}
+      {/* the cup across the steel (cues.yaml) */}
+      <Sequence from={k.slide} durationInFrames={30}><Audio src={staticFile("sfx/scrape.wav")} volume={0.6} /></Sequence>
+        <RoleTag frame={frame} at={k.her + 2} until={k.end} x={sellerHead.x + sellerHead.r * 2.3} y={sellerHead.y + sellerHead.r * 0.9} text="COFFEE SELLER" size={14} />
       </>} />
   );
 };

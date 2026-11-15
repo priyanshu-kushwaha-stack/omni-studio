@@ -20,7 +20,7 @@
 //   14   the gantry over the main road, a price lit on it, cars under it, the price stepping up with the hour; "by time of
 //        day since 1998": a paper sheet, a clock and a day's price curve drawing itself, 1998
 //   15   your lamppost at the corner: YOUR RATE 100, a crimson arrow up and a teal arrow down beside it
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
@@ -179,8 +179,9 @@ const WalkShot: React.FC<WalkProps> = ({ frame, k, cam, tags, youFace, friendFac
   const tearing = frame >= k.jump && frame < k.dropTorn + 8;
   let armF = fWalk.armF;
   if (tearing) {
-    const cardTop = { x: h0.x, y: h0.y + lift - h0.r * 1.7 }; // the card hangs at standing height
-    const high = { x: fx + 40, y: h0.y - h0.r * 2 };
+    // the card hangs at standing height; the hand goes up past the far side of his head, never across his face
+    const cardTop = { x: h0.x + h0.r * 1.15, y: h0.y + lift - h0.r * 1.7 };
+    const high = { x: h0.x + h0.r * 1.6, y: h0.y - h0.r * 1.9 };
     const read = { x: fx + 110, y: h0.y + h0.r * 1.6 };
     const target = frame < k.tear ? cardTop : frame < k.readNew ? high : frame < k.lookTorn - 6 ? { x: fx + 70, y: h0.y - h0.r * 0.5 } : read;
     armF = aimArm(fb0, target);
@@ -427,6 +428,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       <TagSounds keys={tags.you} volume={0.7} />
       <TagSounds keys={tags.hums} volume={0.7} />
       <TagSounds keys={tags.fresh} volume={0.8} />
+      <Sequence from={k.tear} durationInFrames={30}><Audio src={staticFile("sfx/tear.wav")} volume={0.45} /></Sequence>
       {Object.values(boards).map((keys, i) => <BoardSounds key={i} keys={keys} volume={0.5} />)}
       <BoardSounds keys={gantryKeys(k)} volume={0.4} />
     </AbsoluteFill>

@@ -18,7 +18,7 @@
 //   46-47  you on the platform, TAKES THE SIX-TEN 98%; the paper map, the route worn thick, 93; the train, 6:10, tick
 //   48-49  the forty-phone train (TheCityPlays.Train): LOOKS AT PHONE 99% forty times, the fare board 2.10 to 1.80, and
 //          the stranger at the far end with no phone and no card
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { BoardSounds, TagSounds } from "../device";
 import { current, type Beat, type Shot as ShotT } from "../shared";
 import { BettingShop } from "./TheCityPlays.Bookie";
@@ -61,6 +61,7 @@ const Scene: React.FC<{ shot: ShotT }> = ({ shot }) => {
         <TagSounds key={i} volume={0.5} keys={[{ at: k.row + 6 + i * 9 - 8, text: "KICKS LEFT", pct: 91, state: "new" }, { at: k.row + 6 + i * 9 + 8, text: "KICKS LEFT", pct: 91, state: "tick" }]} />
       ))}
       <TagSounds keys={tg.you} />
+      <Sequence from={k.doors} durationInFrames={40}><Audio src={staticFile("sfx/hiss.wav")} volume={0.55} /></Sequence>
       <TagSounds keys={coachSoundKeys(k.t)} volume={1.3} />
       {bd.odds.map((keys, i) => <BoardSounds key={i} keys={keys} volume={0.7} />)}
       <BoardSounds keys={bd.clock} />

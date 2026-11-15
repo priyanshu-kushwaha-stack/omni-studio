@@ -255,7 +255,7 @@ const Morning: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> 
     const sb = body(COURT.coffee.seller.x, STAND, -1);
     const sh = headAt(sb.x, sb.y, sb.scale, sb.pose, -1);
     const overhead = on === "overhead";
-    const cupAt = overhead ? { x: sh.x + 10, y: sh.y - sh.r * 1.6 } : { x: cupX + 10, y: COURT.coffee.top - 50 };
+    const cupAt = overhead ? { x: sh.x + sh.r * 1.9, y: sh.y - sh.r * 1.4 } : { x: cupX + 10, y: COURT.coffee.top - 50 };
     const coffee: Actor = {
       pose: reachPose(sb, cupAt), held: overhead ? <IcedCoffee x={0} y={30} scale={0.5} /> : undefined,
       face: { brows: "flat", lids: 0.35, mouth: talk(frame, k.say + 2, k.sayEnd, "flat", 6), eyes: 1, look: { x: 0.5, y: -0.9 } },
@@ -354,11 +354,11 @@ const Crate: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }>
     : { brows: "none", lids: 0.25, mouth: "smirk", eyes: 1, look: { x: 0.95, y: 0.1 } } as const;
   const toast = on === "toast" ? ramp(frame, k.toast, k.toast + 14) : 0;
   const cams: Record<typeof on, Camera> = {
-    enter: camAt(frame, [[k.hold, { x: 900, y: 620, zoom: 1.2 }], [k.yourBoard, { x: 940, y: 610, zoom: 1.26 }]]),
+    enter: camAt(frame, [[k.hold, { x: 900, y: 520, zoom: 1.05 }], [k.yourBoard, { x: 930, y: 520, zoom: 1.1 }]]),
     board: camAt(frame, [[k.yourBoard, { x: CRATE.board.x, y: CRATE.board.y + 50, zoom: 3.0 }], [k.lookCup, { x: CRATE.board.x, y: CRATE.board.y + 50, zoom: 3.2 }]]),
-    looks: camAt(frame, [[k.lookCup, { x: 990, y: 620, zoom: 1.5 }], [k.cost, { x: 1000, y: 600, zoom: 1.6 }]]),
-    cost: camAt(frame, [[k.cost, closeUp(ch.friend.x - 60, ch.friend.y, 2.3)], [k.toast, closeUp(ch.friend.x - 60, ch.friend.y, 2.4)]]),
-    toast: camAt(frame, [[k.toast, { x: (ch.you.x + ch.friend.x) / 2, y: 560, zoom: 1.55 }], [k.rent, { x: (ch.you.x + ch.friend.x) / 2, y: 560, zoom: 1.62 }]]),
+    looks: camAt(frame, [[k.lookCup, { x: 970, y: 520, zoom: 1.25 }], [k.cost, { x: 980, y: 515, zoom: 1.32 }]]),
+    cost: camAt(frame, [[k.cost, { x: ch.friend.x - 60, y: ch.friend.y - 110, zoom: 1.9 }], [k.toast, { x: ch.friend.x - 60, y: ch.friend.y - 110, zoom: 2.0 }]]),
+    toast: camAt(frame, [[k.toast, { x: (ch.you.x + ch.friend.x) / 2, y: 510, zoom: 1.3 }], [k.rent, { x: (ch.you.x + ch.friend.x) / 2, y: 505, zoom: 1.36 }]]),
   };
   return (
     <CrateScene frame={frame} cam={drift(cams[on], frame, `crate-${on}`, 2.5)} mood={mood} t={{ enter: k.enter, set: k.set, sit: k.sit }}
@@ -388,7 +388,10 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       <TagSounds keys={yourKeys(k)} />
       <BoardSounds keys={hisRate(k)} />
       <BoardSounds keys={yourRate(k)} />
-      {/* the lock's click (tick.wav stands in); the shutter rattle and clank and the cup's clacks have no sfx yet */}
+      {/* the lock's click (tick.wav), the shutter's rattle and clank, the cup set on the tray */}
+      <Sequence from={k.open} durationInFrames={40}><Audio src={staticFile("sfx/rattle.wav")} volume={0.5} /></Sequence>
+      <Sequence from={k.shutter} durationInFrames={30}><Audio src={staticFile("sfx/clank.wav")} volume={0.6} /></Sequence>
+      <Sequence from={k.set} durationInFrames={30}><Audio src={staticFile("sfx/clack.wav")} volume={0.7} /></Sequence>
       <Sequence from={k.lock + 14} durationInFrames={10}><Audio src={staticFile("sfx/tick.wav")} volume={0.6} /></Sequence>
       {/* your fingers closing round the key: its clink */}
       <Sequence from={k.grip + 14} durationInFrames={14}><Audio src={staticFile("sfx/coin.wav")} volume={0.3} /></Sequence>

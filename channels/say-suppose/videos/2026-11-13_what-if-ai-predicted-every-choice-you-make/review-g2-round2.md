@@ -97,6 +97,51 @@ Two tags are rendered for the owner to pick: "TRUST HIM?" (the G1 pick) and "TRU
 bubble; the writer recommends it). The film's key shot stages the same frame. **This is a change to the approved G1
 packaging, for the owner to accept or reject.**
 
+## Main merged mid-round (2026-11-15)
+
+Main brought #57 (already carried here), #58 (the qc opening check is a warning) and #59. #59 gives the channel voice B
+as its narrator (owner, 2026-11-15) and adds new owner notes for every film. What changed here because of it:
+- The narration is re-voiced with voice B (`voices.yaml`, `brand/voice/narrator-b-cool.wav`). The characters keep
+  their own voices.
+- Click mutes are measured again on the new takes and placed after speech, never inside a word (the AI-rents film's
+  "voice at 5:58 broken").
+- The builders were given these notes:
+  - a new action every 2-4 s;
+  - jokes performed on screen;
+  - a role tag at each recurring character's first close-up;
+  - no card on a face;
+  - no anonymous foreground head.
+- The script needed no change for #57: its peak is a triumph and it ends on a twist and a cliffhanger. The thumbnail's
+  promise is in the first 7 s: the key held out under two tags at 0:00.
+
 ## The 720p first cut (v2)
 
-(Filled in after the render: length, qc, and what the builders flagged.)
+`renders/firstcut/firstcut-720p.mp4` (git-ignored): 1280x720, 10:24, built on v2 as merged. The v1 cut is kept in
+`renders/firstcut-v1/`. qc story_script passes on the cut: claims and clicks.
+
+- **Voices:** all free and local. The narrator is voice B (83 takes re-made); the characters keep their designed
+  voices, plus the new Newsreader. Six click mutes (`mutes.txt`), each before the first word or after the last, never
+  inside speech.
+- **Score:** one cue per section (`scenes/sound.ts`).
+  - Sixty Per Cent is now on mischief; the sad "warm" cue is retired.
+  - At the key, the thinned theme runs under 94, 96, 98, then 1.7 s of nothing for the blank card, then the light
+    theme in full for the triumph.
+- **Sound fixes on this cut:**
+  - The wonder cue had a drum hit that landed in a narration gap and failed the clicks check. The cues now go through
+    `scenes/soften_cues.py`, and the originals are kept as `.orig.wav`.
+  - The tag's flap and the paper tear have softer attacks.
+- **New effects** (`scenes/make_sfx.sh`): a cup or plate scrape on steel, a paper tear, the train doors, the shutter's
+  rattle and clank, and a cup set down. They are placed where the script names them.
+- **Scenes:** built by four builder agents on the shared kit, each checked on contact sheets through the render queue.
+  - The opening frame is the thumbnail counter with the key held out, and the first tag drops by frame 6.
+  - Role tags (YOU, BEST FRIEND, COFFEE SELLER, LANDLORD, PICKPOCKET, KID, MAGICIAN, NEWSREADER) sit at each
+    character's first close-up, off the face.
+
+What the builders and the session flagged:
+- A hinge creak has no sound of its own: a slow scrape stands in.
+- The title ident card (C) is not drawn in the scenes build.
+- In Sixty Per Cent, his rate board's middle values, 106 and 112, are the builder's in-betweens; the script says only
+  118.
+- In the court wide at The Key, the other people's teal cards reuse v2's TAG texts (WIPES COUNTER, STARES).
+- A few fixes made after the builders' last contact sheet were not seen in a still: the kid's fist, the pickpocket
+  tag, the landlord card, and his arm at the torn tag.

@@ -4,17 +4,18 @@
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
   "status": "awaiting_human",
-  "timestamp": "2026-11-13T02:11:53.411560+00:00",
+  "timestamp": "2026-11-15T22:33:39.029881+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "script": "script.md v1 (Claude Fable 5.1), 13 sections, 110 lines; say.yaml; sequel.md",
-    "room": "room-g2.md: shipped round 1, 2 of 16 calls; claims check 0 blockers; story editor 3 blockers proposed for the owner-notes round (review-g2-round1.md)",
-    "first_cut": "renders/firstcut/firstcut-720p.mp4 (git-ignored), 1280x720, 635.67 s, local narration (Qwen3 narrator + qwen3-design cast), ACE-Step cues, ffmpeg effects; nothing paid",
-    "qc": "story_script on the first cut: claims PASS, clicks PASS (qc/story_script.json)",
-    "awaiting": "the owner's G2 read of the first cut; notes go in a round-2 table in review-g2-round1.md"
+    "script": "script.md v2 (Claude Fable 5.1), exciting not sad (owner 2026-11-13), 13 sections, 114 lines; say.yaml; sequel.md; changes-v2.md",
+    "room": "room-g2.md: owner-notes rounds 2-4 (verify ok on the final script); claims check 0 blockers in every round; story editor notes taken or sent to the owner (review-g2-round2.md)",
+    "first_cut": "renders/firstcut/firstcut-720p.mp4 (git-ignored), 1280x720, 624.4 s, narrator voice B and designed character voices, all local and free; nothing paid",
+    "qc": "story_script on the cut: claims PASS, clicks PASS",
+    "packaging_change": "thumbnail K17 fix proposed (faces, key 2.3x) with TRUST HIM? and TRUST ME? for the owner to pick",
+    "awaiting": "the owner's G2 read of the v2 cut"
   }
 }

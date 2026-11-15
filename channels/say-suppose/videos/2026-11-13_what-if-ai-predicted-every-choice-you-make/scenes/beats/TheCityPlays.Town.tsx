@@ -12,7 +12,7 @@ import { headAt, type Body } from "../kit";
 import { blinking, camAt, current, MAGICIAN, mix, PASTELS, ramp } from "../shared";
 import { FoodCourtBack, foodCourtLights } from "../sets/FoodCourt";
 import { News } from "./TheCityPlays.Bookie";
-import { CardFan, glide, Shot, talk } from "./TheCityPlays.Parts";
+import { CardFan, glide, RoleTag, Shot, talk } from "./TheCityPlays.Parts";
 import { boards, tags, type T } from "./TheCityPlays.Times";
 
 // ------------------------------------------------------------------------------------------------ the magician
@@ -48,6 +48,7 @@ export const Magician: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       })}
       <Figure {...MAG} pose={pose} head={MAGICIAN.head} coat={MAGICIAN.coat} {...face} blink={blinking(frame, 7)} time={frame} held={<CardFan spread={1 - lower * 0.7} />} />
       <Tag frame={frame} x={mh.x} headY={mh.y} r={mh.r} keys={tg.magician} />
+      <RoleTag frame={frame} at={k.magClose + 2} x={mh.x} y={mh.y} r={mh.r} text="MAGICIAN" side={-1} hold={Math.max(20, k.noAct - k.magClose)} />
     </>
   );
   const options = { ...street.defaults, auto: false };

@@ -14,6 +14,7 @@ import type { MoodName } from "@whatif/kit/stage/moods";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { setLook, type SetLight } from "@whatif/kit/sets/common";
 import { INK, PAPER, TEAL } from "@whatif/kit/theme";
+import { FONT } from "@whatif/kit/fonts";
 import { RateBoard, Tag, TealLamp, type BoardKey, type TagKey } from "../device";
 import { aimArm, Apron, headAt, PaperCap, Shade, type Body } from "../kit";
 import { blinking, COFFEE, FRIEND, HERO, PASTELS, WORKER } from "../shared";
@@ -80,6 +81,22 @@ export const Clip: React.FC<{ id: string; x: number; y: number; w: number; h: nu
     <g clipPath={`url(#clip-${id})`}>{children}</g>
   </g>
 );
+
+// ------------------------------------------------------------------------------------------------ role tags
+
+/** A role tag (owner, 2026-11-15): a small dark plate naming a recurring character's role at their first close-up,
+ *  placed off the face. (x, y) its centre in world units; `size` its letter height. Pops in at `at`, gone at `until`. */
+export const RoleTag: React.FC<{ frame: number; at: number; until: number; x: number; y: number; text: string; size?: number }> = ({ frame, at, until, x, y, text, size = 30 }) => {
+  if (frame < at || frame >= until) return null;
+  const o = Math.min(1, (frame - at) / 6, (until - frame) / 6);
+  const w = text.length * size * 0.72 + size;
+  return (
+    <g transform={`translate(${x} ${y}) rotate(-2)`} opacity={o}>
+      <rect x={-w / 2} y={-size * 0.85} width={w} height={size * 1.7} rx={size * 0.25} fill="#1b1e29" stroke={PAPER} strokeWidth={3} />
+      <text x={0} y={size * 0.35} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={size} fill={PAPER} letterSpacing={2}>{text}</text>
+    </g>
+  );
+};
 
 // ------------------------------------------------------------------------------------------------ the counter close
 

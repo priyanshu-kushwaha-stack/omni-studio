@@ -246,7 +246,8 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       <BoardSounds keys={rateKeys(k)} volume={0.7} />
       <BoardSounds keys={coffeeSounds(c)} />
       <TagSounds keys={coin.friend} />
-      {/* the cup across the steel: no scrape file yet (randomCupScrape gives its frame) */}
+      {/* the cup across the steel */}
+      <Sequence from={c.coffee + 4} durationInFrames={30}><Audio src={staticFile("sfx/scrape.wav")} volume={0.55} /></Sequence>
       {coinFlips(c).map((f) => <Sequence key={f} from={f} durationInFrames={20}><Audio src={staticFile("sfx/coin.wav")} volume={0.5} /></Sequence>)}
       <Sequence from={coinDrop(c)} durationInFrames={20}><Audio src={staticFile("sfx/coin.wav")} volume={0.9} /></Sequence>
       {["you", "friend", "seller", "d11", "d21", "d3-1"].filter((id) => lunch[id]).map((id) => (

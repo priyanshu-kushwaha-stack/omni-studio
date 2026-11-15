@@ -40,12 +40,13 @@ import { cityKeys, CourtWide, KidOnChair, PhoneSlip, talking, type CourtTimes } 
 
 /** The wordless peak's length: ten seconds after "Ninety-four." */
 export const PEAK_LEN = 300;
-/** The peak's first and last frame in the whole film, from a timeline's clips (the score drops to a floor between). */
-export const peakWindow = (clips: Clip[]) => ({ from: lineEnd(clips, 86), to: lineEnd(clips, 86) + PEAK_LEN });
-/** The peak in whole-film frames: the 10 s after "Ninety-four." (line 86) in assets/narration/props.json at 30 fps. The
- *  score's floor (sound.ts PEAK, in seconds) is from / 30 to to / 30. peakWindow() recomputes it from any timeline.
- *  Taken from the v2 props.json (114 lines, 2026-11-14); re-read after every re-voice. */
-export const PEAK_FRAMES = { from: 14619, to: 14919 } as const;
+/** The peak's length after "Ninety-four." (line 86): 10 s unless the timeline left less room before line 87 (the
+ *  bubble and the 4 s blank hold come after it). */
+const peakLen = (clips: Clip[]) => Math.min(PEAK_LEN, Math.max(150, clips[87].from - lineEnd(clips, 86) - 120));
+/** The peak's first and last frame in the whole film, computed from the timeline's clips (so a re-voice moves it). The
+ *  score's floor (sound.ts PEAK, in seconds) is from / 30 to to / 30. */
+export const PEAK_FRAMES = (clips: Clip[]) => ({ from: lineEnd(clips, 86), to: lineEnd(clips, 86) + peakLen(clips) });
+export const peakWindow = PEAK_FRAMES;
 
 // ------------------------------------------------------------------------------------------------ timing
 
@@ -56,8 +57,7 @@ function times(clips: Clip[], to: number) {
   const from = (i: number) => clips[i].from;
   const end = (i: number) => lineEnd(clips, i);
   const peak = end(86);
-  // the peak is 10 s unless the timeline left less room before line 87 (the bubble and the 4 s blank hold come after it)
-  const len = Math.min(PEAK_LEN, Math.max(150, from(87) - peak - 120));
+  const len = peakLen(clips);
   const P = (n: number) => peak + Math.round((n * len) / PEAK_LEN);
   const ask = peak + len;
   const hold88 = end(88);
@@ -270,6 +270,9 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       {sfx(k.flap98, "flap.wav", 0.95)}
       {/* the coins shifting in the open box as he pushes it across */}
       {sfx(k.push + 8, "coin.wav", 0.5)}
+      {/* the hinge as he lifts the lid (a slow scrape stands in for a creak), and her phone clattering */}
+      {sfx(k.lid, "scrape.wav", 0.35)}
+      {sfx(k.drop + 11, "clank.wav", 0.55)}
       <TagSounds keys={hisTag(k).slice(1)} volume={0.8} />
       <TagSounds keys={yourTag(k).slice(1)} volume={0.6} />
       <BoardSounds keys={cityKeys(ct)} volume={0.75} />

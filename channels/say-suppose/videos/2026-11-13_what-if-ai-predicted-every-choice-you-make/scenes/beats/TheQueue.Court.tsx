@@ -8,6 +8,7 @@ import { STAND, type Pose } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { setLook } from "@whatif/kit/sets/common";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
+import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, INK, MUSTARD, PAPER } from "@whatif/kit/theme";
 import { RateBoard, Tag, TealLamp, type BoardKey, type TagKey } from "../device";
 import { Apron, headAt, PaperCap } from "../kit";
@@ -35,8 +36,8 @@ export const TV = { x: 230, y: 120, w: 420, h: 250 };
 /** The Newsreader at her desk, full frame (screen pixels): a studio of dark blue, a crimson band with no lettering, and
  *  an inset over her shoulder: a shaky phone clip of your counter last night ("clip"), or the city's board ("board").
  *  She speaks while `speak` says so; on "ninety-nine" a flicker of relief (the laugh). */
-export const NewsDesk: React.FC<{ frame: number; inset: "clip" | "board"; speaking: boolean; relief: boolean; score: BoardKey[]; from: number }> = ({
-  frame, inset, speaking, relief, score, from,
+export const NewsDesk: React.FC<{ frame: number; inset: "clip" | "board"; speaking: boolean; relief: boolean; score: BoardKey[]; from: number; role?: boolean }> = ({
+  frame, inset, speaking, relief, score, from, role = false,
 }) => {
   const shake = { x: (noise(frame * 0.7) - 0.5) * 16, y: (noise(frame * 0.9 + 40) - 0.5) * 12 };
   return (
@@ -72,6 +73,14 @@ export const NewsDesk: React.FC<{ frame: number; inset: "clip" | "board"; speaki
       <Figure x={620} y={1240} scale={2.6} facing={1} pose={{ ...STAND, armF: [40, 50], armB: [30, 50] }} head={PASTELS[4]} coat="#2f3340" tie={CRIMSON}
         brows={relief ? "raised" : "flat"} lids={relief ? 0 : 0.15} mouth={speaking ? "open" : relief ? "smile" : "flat"} eyes={relief ? 1.15 : 1}
         look={{ x: 0.15, y: 0 }} blink={blinking(frame, 11)} time={frame} />
+      {/* her role tag at her first close-up, a small stamped card off her face (owner, 2026-11-14) */}
+      {role && (
+        <g transform="translate(150 230) rotate(-4)">
+          <line x1={110} y1={-300} x2={110} y2={0} stroke={PAPER} strokeWidth={3} opacity={0.7} />
+          <rect x={0} y={0} width={300} height={66} rx={10} fill={PAPER} stroke={INK} strokeWidth={5} />
+          <text x={150} y={45} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={34} fill={INK} letterSpacing={2}>NEWSREADER</text>
+        </g>
+      )}
       <rect x={-200} y={820} width={2320} height={500} fill="#2b335f" stroke={INK} strokeWidth={8} />
       <rect x={-200} y={820} width={2320} height={26} fill="#3c4682" />
       <rect x={60} y={900} width={1300} height={92} fill={CRIMSON} />
@@ -96,7 +105,7 @@ const CornerTv: React.FC<{ frame: number; desk: React.ReactNode }> = ({ desk }) 
 // ------------------------------------------------------------------------------------------------ the queue
 
 /** The queue down the court in front of your counter, first in line nearest you; each one faces your counter. */
-export const QUEUE = [1240, 1420, 1590, 1760, 1930, 2100, 2270, 2440, 2610];
+export const QUEUE = [1430, 1670, 1910, 2150, 2390, 2630, 2870];
 
 /** One person in the queue: their arm out across your counter, palm up, a key on it; their card HANDS OVER KEY 97%. */
 const InLine: React.FC<{ frame: number; x: number; i: number; keys: TagKey[]; grin?: boolean }> = ({ frame, x, i, keys, grin }) => {
@@ -109,7 +118,7 @@ const InLine: React.FC<{ frame: number; x: number; i: number; keys: TagKey[]; gr
       <Figure x={x} y={y} scale={S} facing={-1} pose={pose} head={PASTELS[(i * 3 + 1) % PASTELS.length]} coat={SHIRTS[i % SHIRTS.length]}
         brows={grin ? "raised" : "none"} mouth={grin ? "smile" : i % 3 === 1 ? "smirk" : "flat"} eyes={1.05} look={{ x: 1, y: 0.15 }} blink={blinking(frame, i + 13)}
         time={frame} held={<BrassKey x={0} y={-10} scale={0.36} rotate={-10} glint={0.2} />} />
-      <Tag frame={frame} x={h.x} headY={h.y} r={h.r} scale={0.62} keys={keys} />
+      <Tag frame={frame} x={h.x} headY={h.y - (i % 2) * 110} r={h.r} scale={0.62} keys={keys} />
     </g>
   );
 };

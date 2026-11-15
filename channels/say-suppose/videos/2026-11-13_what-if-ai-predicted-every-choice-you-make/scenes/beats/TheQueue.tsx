@@ -126,7 +126,7 @@ const NewsShot: React.FC<{ frame: number; k: T; cam: Camera; inset: "clip" | "bo
   return (
     <LookContext.Provider value={setLook([], "morning", cam, { dof: 0 })}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }}
-        back={<NewsDesk frame={frame} inset={inset} speaking={speaking} relief={relief} score={scoreKeys(k)} from={k.start - 400} />} actors={null} front={<Bezel />} />
+        back={<NewsDesk frame={frame} inset={inset} speaking={speaking} relief={relief} score={scoreKeys(k)} from={k.start - 400} role={inset === "clip"} />} actors={null} front={<Bezel />} />
     </LookContext.Provider>
   );
 };
@@ -212,6 +212,8 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       <BoardSounds keys={coffeeKeys(q).filter((b, i) => i === 0 || b.at >= k.start)} volume={0.5} />
       <BoardSounds keys={scoreKeys(k)} volume={0.6} />
       <TagSounds keys={nosySounds} volume={0.6} />
+      <Sequence from={k.slide} durationInFrames={30}><Audio src={staticFile("sfx/scrape.wav")} volume={0.5} /></Sequence>
+      <Sequence from={k.l108end - 4} durationInFrames={30}><Audio src={staticFile("sfx/scrape.wav")} volume={0.5} /></Sequence>
       <BoardSounds keys={fareKeys(t).filter((b, i) => i === 0 || b.at >= k.train)} volume={0.4} />
       {/* the key's small clink in his palm */}
       <Sequence from={k.fall + 10} durationInFrames={20}><Audio src={staticFile("sfx/coin.wav")} volume={0.45} /></Sequence>

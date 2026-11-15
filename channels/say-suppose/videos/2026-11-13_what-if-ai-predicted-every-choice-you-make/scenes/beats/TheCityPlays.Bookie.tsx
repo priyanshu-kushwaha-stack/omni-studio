@@ -9,7 +9,7 @@ import { INK, PAPER } from "@whatif/kit/theme";
 import { RateBoard } from "../device";
 import { aimArm, headAt, type Body } from "../kit";
 import { blinking, camAt, current, mix, PASTELS, ramp } from "../shared";
-import { Coin, Shot, talk } from "./TheCityPlays.Parts";
+import { Coin, RoleTag, Shot, talk } from "./TheCityPlays.Parts";
 import { boards, type T } from "./TheCityPlays.Times";
 
 /** The newsreader (v2's one new role): a navy head, a dark jacket. */
@@ -87,6 +87,7 @@ export const News: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       <rect x={-200} y={-200} width={900} height={1480} fill="#22305a" />
       <Figure {...nb} head={NEWSREADER.head} coat={NEWSREADER.coat} brows={after ? "raised" : "flat"} lids={after ? 0.15 : 0.35}
         mouth={talk(frame, k.news + 2, k.news + 30, "flat")} eyes={1} look={after ? { x: 0.9, y: -0.1 } : { x: 0.3, y: 0.05 }} blink={blinking(frame, 3)} time={frame} />
+      <RoleTag frame={frame} at={k.news + 2} {...headAt(nb.x, nb.y, nb.scale, nb.pose, 1)} text="NEWSREADER" hold={60} />
       <rect x={140} y={760} width={680} height={24} rx={6} fill="#c9ced6" stroke={INK} strokeWidth={5} />
       <rect x={170} y={784} width={620} height={400} fill="#2f3a66" stroke={INK} strokeWidth={5} />
       {/* the league table */}

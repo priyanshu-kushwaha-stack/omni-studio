@@ -10,14 +10,14 @@ import { Tag } from "../device";
 import { aimArm, Apron, headAt, type Body } from "../kit";
 import { blinking, camAt, FRIEND, HERO, LANDLORD, mix, ramp } from "../shared";
 import { COURT, FoodCourtBack, foodCourtLights, StallCounter, StallLamp } from "../sets/FoodCourt";
-import { Envelope, glide, Shot, talk } from "./TheCityPlays.Parts";
+import { Envelope, glide, RoleTag, Shot, talk } from "./TheCityPlays.Parts";
 import { tags, type T } from "./YourStall.Times";
 
 export const Landlord: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const tg = tags(k);
   const push = frame >= k.handUp - 6;
   const cam = drift(push
-    ? camAt(frame, [[k.handUp - 6, { x: 820, y: 540, zoom: 1.55 }], [k.thought, { x: 800, y: 530, zoom: 1.68 }]])
+    ? camAt(frame, [[k.handUp - 6, { x: 830, y: 470, zoom: 1.5 }], [k.thought, { x: 820, y: 460, zoom: 1.6 }]])
     : camAt(frame, [[k.landlord, { x: 960, y: 560, zoom: 1.4 }], [k.handUp - 6, { x: 980, y: 560, zoom: 1.5 }]]), frame, "land", 3);
   const step = ramp(frame, k.handUp - 10, k.handUp + 4);
   const meet = { x: 760, y: 360 };
@@ -50,6 +50,7 @@ export const Landlord: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
         mouth={talk(frame, k.keep, k.keep + 26, "flat")} look={{ x: 0.9, y: 0.2 }} blink={blinking(frame, 8)} time={frame}
         held={frame < k.take ? <Envelope /> : undefined} />
       <Tag frame={frame} x={fh.x} headY={fh.y} r={fh.r} keys={tg.friend} />
+      <RoleTag frame={frame} at={k.landlord + 6} {...headAt(lb.x, lb.y, lb.scale, lb.pose, -1)} text="LANDLORD" side={-1} hold={Math.min(75, k.handUp - 12 - k.landlord)} />
     </>
   );
   return (
@@ -62,7 +63,7 @@ export const Landlord: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 export const Thought: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const yu: Body = { x: COURT.you.x, y: COURT.you.y, scale: COURT.scale, facing: 1, pose: STAND };
   const yh = headAt(yu.x, yu.y, yu.scale, STAND, 1);
-  const fr: Body = { x: 980, y: COURT.friend.y, scale: COURT.scale, facing: 1, pose: { ...STAND, armF: [150 + Math.sin(frame / 5) * 14, 10] } };
+  const fr: Body = { x: 1060, y: COURT.friend.y, scale: COURT.scale, facing: 1, pose: { ...STAND, armF: [118 + Math.sin(frame / 5) * 12, -20] } };
   const out = frame >= k.anyone;
   const cam: Camera = drift(out
     ? glide(frame, k.anyone, k.end, closeUp(yh.x + 80, yh.y - 20, 2.4), closeUp(yh.x + 60, yh.y - 10, 2.9))

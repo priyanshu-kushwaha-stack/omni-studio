@@ -43,7 +43,7 @@ export const PhoneSlip: React.FC<{ frame: number; k: CourtTimes }> = ({ frame, k
   const t = frame - k.drop;
   const fallT = Math.min(1, Math.max(0, t / 11));
   const bounce = t > 11 && t < 19 ? Math.sin(((t - 11) / 8) * Math.PI) * 40 : 0;
-  const py = mix(hand.y, counterY - 18, fallT * fallT) - bounce;
+  const py = mix(hand.y + 160, counterY - 18, fallT * fallT) - bounce;
   const rot = mix(0, 92, Math.min(1, Math.max(0, t / 14)));
   const shake = t >= 11 && t < 17 ? Math.sin(t * 3) * 5 : 0;
   const actors = (
@@ -57,7 +57,7 @@ export const PhoneSlip: React.FC<{ frame: number; k: CourtTimes }> = ({ frame, k
         <rect x={700} y={counterY} width={1400} height={400} fill="#2f5f63" stroke={INK} strokeWidth={8} />
         <rect x={680} y={counterY} width={1440} height={30} fill="#4a8a8a" stroke={INK} strokeWidth={6} />
       </g>
-      {gone && <g transform={`translate(${hand.x - 20} ${py}) rotate(${rot}) scale(${1.6 * s})`}><HandPhone lit /></g>}
+      {gone && <g transform={`translate(${hand.x - 150} ${py}) rotate(${rot}) scale(${1.6 * s})`}><HandPhone lit /></g>}
     </>
   );
   return (
@@ -71,11 +71,11 @@ export const PhoneSlip: React.FC<{ frame: number; k: CourtTimes }> = ({ frame, k
 
 /** The kid with the cap at the last lit table, standing on his chair, arms up: "Do it again." */
 export const KidOnChair: React.FC<{ frame: number; k: CourtTimes }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.kid, { x: 980, y: 560, zoom: 1.55 }], [k.kidEnd, { x: 975, y: 545, zoom: 1.75 }]]), frame, "kid-chair", 3);
-  const s = 2.0;
+  const cam = drift(camAt(frame, [[k.kid, { x: 1040, y: 520, zoom: 1.15 }], [k.kidEnd, { x: 1030, y: 510, zoom: 1.28 }]]), frame, "kid-chair", 3);
+  const s = 1.45;
   const seat = 1000 - 120;
   const bob = Math.abs(Math.sin((frame - k.kid) / 5)) * 10 * (frame < k.kidEnd ? 1 : 0);
-  const pose: Pose = { ...STAND, armF: [mix(150, 165, bob / 10), 12], armB: [mix(140, 160, bob / 10), 18] };
+  const pose: Pose = { ...STAND, armF: [72, mix(-20, -35, bob / 10)], armB: [mix(-150, -165, bob / 10), 10] };
   const x = 960, y = seat - bob;
   const h = headAt(x, y, s, pose, 1);
   const actors = (
@@ -106,7 +106,7 @@ export const KidOnChair: React.FC<{ frame: number; k: CourtTimes }> = ({ frame, 
 
 /** Faces in the dark court for the wide, each under a teal card (v2 TAG lines), every one turned toward the stall. */
 const CROWD = [
-  { x: -520, s: 1.5, text: "WIPES COUNTER", pct: 99 }, { x: -250, s: 1.6, text: "HUMS", pct: 99 }, { x: 20, s: 1.55, text: "STANDS STILL", pct: 99 },
+  { x: -520, s: 1.5, text: "WIPES COUNTER", pct: 99 }, { x: -250, s: 1.6, text: "HUMS", pct: 99 }, { x: -720, s: 1.55, text: "STANDS STILL", pct: 99 },
   { x: 2050, s: 1.6, text: "LISTENS", pct: 99 }, { x: 2330, s: 1.5, text: "LOOKS AT PHONE", pct: 99 }, { x: 2600, s: 1.45, text: "STARES", pct: 95 },
 ];
 

@@ -10,7 +10,7 @@
 //   29-31  the landlord's envelope; "Keep it up."; the tear; HIGH-FIVES 98% a second before the hand comes up; "Half!";
 //          the slap, tick
 //   32     you close, grinning; on "anyone's" your eyes slide out over the court
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { BoardSounds, TagSounds } from "../device";
 import { current, type Beat, type Shot as ShotT } from "../shared";
 import { Landlord, Thought } from "./YourStall.Landlord";
@@ -38,6 +38,8 @@ const Scene: React.FC<{ shot: ShotT }> = ({ shot }) => {
       <TagSounds keys={busyTicks(k)} volume={0.35} />
       <TagSounds keys={[{ at: k.nextDoor + 2, text: "ORDERS RICE", pct: 88, state: "new" }, { at: k.nextDoor + 33, text: "ORDERS RICE", pct: 88, state: "tick" }]} volume={0.7} />
       <TagSounds keys={tg.friend} />
+      {[k.p1, k.p2, k.p3].map((f) => <Sequence key={f} from={f} durationInFrames={24}><Audio src={staticFile("sfx/scrape.wav")} volume={0.45} /></Sequence>)}
+      <Sequence from={k.tear} durationInFrames={30}><Audio src={staticFile("sfx/tear.wav")} volume={0.6} /></Sequence>
       <BoardSounds keys={bd.yours} />
     </AbsoluteFill>
   );

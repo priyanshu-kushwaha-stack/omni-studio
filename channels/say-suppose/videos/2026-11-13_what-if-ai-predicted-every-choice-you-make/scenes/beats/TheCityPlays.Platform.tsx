@@ -13,7 +13,7 @@ import { RateBoard, Tag } from "../device";
 import { aimArm, Cap, headAt, PaperCap, Sheet, type Body } from "../kit";
 import { blinking, camAt, COFFEE, current, HERO, KID, linear, mix, PASTELS, PICKPOCKET, ramp } from "../shared";
 import { COURT, CoffeeCounter, FoodCourtBack, foodCourtLights } from "../sets/FoodCourt";
-import { glide, Hood, pump, Shot, ShoulderBag, Stamp, talk, Throw } from "./TheCityPlays.Parts";
+import { glide, Hood, pump, RoleTag, Shot, ShoulderBag, Stamp, talk, Throw } from "./TheCityPlays.Parts";
 import { boards, tags, type T } from "./TheCityPlays.Times";
 
 const FLOOR = 960;
@@ -60,7 +60,7 @@ export const RPS: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const winning = frame >= k.win && frame < k.win + 34;
   const lost = frame >= k.throw2 + 6;
   const capOff = frame >= k.capOff && frame < k.throw4 - 30;
-  const kidArm: [number, number] = winning ? [172, 6] : capOff ? [70, 50] : kid.armF;
+  const kidArm: [number, number] = winning ? [140, -30] : capOff ? [70, 50] : kid.armF;
   const kidFace = winning ? { brows: "raised" as const, lids: 0, mouth: "open" as const, eyes: 1.2, look: { x: 0.5, y: -0.5 } }
     : frame >= k.throw4 + 6 ? { brows: "raised" as const, lids: 0, mouth: "o" as const, eyes: 1.3, look: { x: 0.9, y: 0.2 } }
     : frame >= k.noFair ? { brows: "angry" as const, lids: 0.1, mouth: talk(frame, k.noFair + 3, k.noFair + 40, "frown"), eyes: 1.1, look: { x: 0.9, y: -0.1 } }
@@ -79,6 +79,7 @@ export const RPS: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       <Figure {...KID_B} pose={{ ...STAND, armF: kidArm, tilt: winning ? -8 : 0 }} head={KID.head} coat={KID.coat} cap={capOff ? undefined : KID.cap}
         {...kidFace} blink={blinking(frame, 1)} time={frame} held={kidHeld} />
       <Tag frame={frame} x={kh.x} headY={kh.y} r={kh.r} keys={tg.kid} scale={1.15} />
+      <RoleTag frame={frame} at={k.win + 8} x={kh.x} y={kh.y} r={kh.r} text="KID" side={-1} hold={Math.max(20, k.read - k.win - 8)} />
     </>
   );
   return platformShot(cam, "day", frame, actors);
@@ -165,6 +166,7 @@ export const Pickpocket: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
           blink={blinking(frame, i + 20)} time={frame} />;
       })}
       <Thief frame={frame} b={b} face={face} k={k} />
+      <RoleTag frame={frame} at={k.touch + 4} {...headAt(b.x, b.y, b.scale, b.pose, 1)} text="PICKPOCKET" side={1} hold={36} />
       <Figure {...her} pose={STAND} head={WOMAN.head} coat={WOMAN.coat} {...herFace} blink={blinking(frame, 9)} time={frame} />
       <Figure {...you} pose={youPose} {...HERO} coat="#3b3e47" {...youFace} blink={blinking(frame, 0)} time={frame} />
       <g transform={`translate(${bagDx} 0)`}><ShoulderBag b={WOMAN_B} /></g>

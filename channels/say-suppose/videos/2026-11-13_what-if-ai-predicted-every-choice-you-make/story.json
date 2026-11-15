@@ -3,9 +3,9 @@
   "voice": {
     "model": "local:qwen3",
     "voiceType": "local",
-    "voiceId": "f49e5ec2f2e87941",
-    "ref": "../../brand/voice/arthur-ref.wav",
-    "refText": "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+    "voiceId": "6c836a64b6a08732",
+    "ref": "../../brand/voice/narrator-b-cool.wav",
+    "refText": "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows. That's the band. A thin strip you wear across your forehead. While you sleep, it lends your brain to a company. And it pays you, by the hour."
   },
   "voices": {
     "Friend": {
