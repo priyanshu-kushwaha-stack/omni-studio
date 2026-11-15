@@ -10,15 +10,20 @@ voices:
     fallback: {tool: higgsfield text2speech_v2, variant: elevenlabs}   # the sample's route, no direction
     takes: one per script line, cached by a hash of voice, direction and text
     stitch: "silence capped at 0.3 s; no speed-up (about 115 words a minute)"
-    # The free local narrator for every review before the final voice A/B (owner, 2026-11-10; picked voice A, Qwen3,
-    # by ear). Cloned on this Mac from 13 s of Arthur's paid takes from the pause sample (2026-11-06). The wav is
-    # git-ignored (*.wav): copy it into brand/voice/ by hand on a new machine. WHATIF_VOICE=paid takes the paid
-    # narrator above for the A/B at picture lock; paid takes need a quote and the owner's yes.
+    # The channel's narrator: voice B, locked by the owner on 2026-11-15 ("lets lock it as the narrators voice and i
+    # will tell you if we have to make changes to it in future"). Free and local: a voice designed from text with Qwen3
+    # VoiceDesign (seed 4101, nobody cloned), whose own cool read every line is cloned from with Qwen3 Base, so it stays
+    # one voice. The recipe to remake the wavs is in
+    # videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/narrator.py. The wavs are git-ignored (*.wav):
+    # copy narrator-b-cool.wav and narrator-b-warm.wav into brand/voice/ by hand on a new machine. narrator-b-warm.wav is
+    # the same voice's warm read, for a film's closing lesson (that film's narrator.py points those lines at it).
+    # Voice A (the earlier local narrator, cloned from Arthur's paid takes) stays in brand/voice/arthur-ref.wav.
+    # WHATIF_VOICE=paid takes the paid narrator above; paid takes need a quote and the owner's yes.
     use: local
     local:
       engine: qwen3
-      ref: brand/voice/arthur-ref.wav
-      ref_text: "You wake up and discover you can pause time. 10 seconds once a day. At first, you use it for dumb things. You catch your falling coffee. You dodge your boss in the hallway."
+      ref: brand/voice/narrator-b-cool.wav
+      ref_text: "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows. That's the band. A thin strip you wear across your forehead. While you sleep, it lends your brain to a company. And it pays you, by the hour."
   # Characters: a script line "Name: text" is spoken by that character in their own free local voice, never the
   # narrator's (owner, 2026-11-12: "the voice is flat and it's plain narration"; picked free local voices). Qwen3-TTS
   # VoiceDesign (core/lock.yaml) makes each voice from the description below, so nobody is cloned, and takes the
