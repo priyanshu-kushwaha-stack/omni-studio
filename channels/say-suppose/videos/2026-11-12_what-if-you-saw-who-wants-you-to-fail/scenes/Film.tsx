@@ -28,6 +28,9 @@ const BED_UNDER_VOICE = 0.4;
 /** The mix's master gain (final_edit qc, v7: -15.5 LUFS against the channel's -14 +/-1): about +1.6 dB on the narration,
  *  the score, the beds and the peak note; the watch file's limiter still caps the peaks. */
 const MASTER = 1.2;
+/** Voice B (the owner's pick, 2026-11-15) reads about 4.5 dB quieter than Arthur's clone (narration.wav -19.9 LUFS):
+ *  the narration alone comes up by NARR, so the voice keeps its level over the score and the beds. */
+const NARR = 1.75;
 /** The score fades out over the film's last OUTRO frames, so the loop never stops mid-wave. */
 const OUTRO = 60;
 
@@ -118,7 +121,7 @@ export const Film: React.FC<FilmProps> = (props) => {
     <AbsoluteFill style={{ background: "#000" }}>
       <Picture {...props} />
       {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
-      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} volume={MASTER} />}
+      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} volume={MASTER * NARR} />}
       <ColdSound cuts={coldCuts(clips, clips.slice(COLD))} end={clips[COLD - 1].from} snap={coldSnap(clips.slice(COLD))} />
       {SCORE.map((c, i) => (
         <Placed key={`s${i}`} src={`music/${c.file}`} from={c.from} to={i === SCORE.length - 1 ? total + 1 : c.to}
