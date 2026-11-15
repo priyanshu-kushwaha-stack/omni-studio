@@ -1,0 +1,72 @@
+{
+  "call_id": "112fbd3629cd408ba4237bd1604d3d9b",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "hook": 8,
+    "escalation": 8,
+    "ending": 9
+  },
+  "blockers": [
+    {
+      "quote": "First, the obvious trick. Take it all out in cash. The machine gives you five hundred euros. Move it to another bank? Still your money. It doubles there too.",
+      "why": "Check #21 fails: transferring the entire balance to another person, charity or seller would reach the stated exit of zero. Moving it between your own accounts does not answer that exploit, so the climax is avoidable.",
+      "fix": "Add an on-screen SEND ALL attempt here that fails because outgoing transfers are capped and settle after midnight; later, once you choose zero, the account freeze must make bank correction the only remaining route.",
+      "domain": "story",
+      "line": 140
+    },
+    {
+      "quote": "Day twenty-eight. You buy the building. Anna never pays rent again.",
+      "why": "Check #6 fails: this and several wish-fulfilment uses deliver exactly what was expected. The montage grows larger but repeatedly has no expectation/result gap.",
+      "fix": "Give every use in lines 68\u2013117 an expectation and reversal; for example: \u201cDay twenty-eight. You hand Anna the deed, expecting tears. She hands you the repair bill. The roof still leaks.\u201d",
+      "domain": "story",
+      "line": 105
+    },
+    {
+      "quote": "> HOLD: 3 s. The film's one quiet beat. After closing. Anna at the counter with a small savings book, pencil moving down a column, slowing, stopping.",
+      "why": "Check #22 fails: this scene has no laugh, and several later scale and crisis scenes also play entirely straight.",
+      "fix": "Replace with: \u201c> HOLD: 3 s. After closing. Anna totals the savings book, sharpens the pencil, totals it again\u2014and reaches the same four months.\u201d Give each remaining straight scene an equally brief dry visual turn.",
+      "domain": "story",
+      "line": 181
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 101,
+      "quote": "Day twenty-seven. A penthouse over Berlin. Your old room would fit in the bath.",
+      "fix": "Cut the description already visible: \u201cDay twenty-seven. Your old room would fit in the bath.\u201d"
+    },
+    {
+      "line": 219,
+      "quote": "Day fifty-two. You're on the news. Day fifty-three, every bank in Europe freezes your account. It doesn't matter. Frozen money doubles too.",
+      "fix": "Make the causal connector explicit: \u201cThe news reaches every bank in Europe. Therefore, by day fifty-three, they freeze your account. But frozen money doubles too.\u201d"
+    },
+    {
+      "line": 238,
+      "quote": "You look from the galaxies to Anna's dark bakery. The sticky note gets its last number.",
+      "fix": "Sharpen the under-question into a choice: \u201cOne more night could buy Anna's street back. It could also price her out by breakfast. You write: STOP AT 0,00.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 160,
+      "quote": "You bought a thousand deliveries. You didn't make one more roll."
+    },
+    {
+      "line": 185,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 283,
+      "quote": "Zero, doubled, is zero."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "e9858ec73791729040c4e47caee2315a40dc409f56c8d5476e102070312fd4ce",
+  "draft_sha256": "b81bb672eb531659912f141ff950ba7f326b960208c73bfdcb59890759e68fb9"
+}

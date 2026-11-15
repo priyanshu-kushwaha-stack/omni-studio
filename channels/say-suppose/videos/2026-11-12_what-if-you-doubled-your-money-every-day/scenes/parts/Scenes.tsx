@@ -158,7 +158,7 @@ export const Balloon: React.FC<{ t: ShotTime; phase?: "ready" | "rise" | "back";
               <g>
                 <rect x={180} y={620} width={230} height={390} fill="#ffd8a0" opacity={0.5} stroke={INK} strokeWidth={8} />
                 <Figure x={300} y={1010} scale={1.3} facing={1} pose={{ ...STAND, armF: [25, 20], armB: [-25, 20] }} {...LOTTE}
-                  {...EXPRESSIONS[lotteFace]} {...talk("Lotte")} time={t.f / 30} look={{ x: 0.8, y: -0.5 }} />
+                  {...EXPRESSIONS[lotteFace]} {...talk("Anna")} time={t.f / 30} look={{ x: 0.8, y: -0.5 }} />
               </g>
             ) : <rect x={180} y={620} width={230} height={390} fill="#3a2a20" stroke={INK} strokeWidth={8} />}
             <Figure x={1060} y={1010} scale={1.35} facing={1} pose={{ ...STAND, armF: [150, 10], armB: [-70, -60] }} {...FRIEND}
@@ -211,7 +211,7 @@ export const BackDoor: React.FC<{ t: ShotTime; speaker?: "flour" | "lotte" | nul
         <circle cx={1300} cy={1000} r={46} fill="#2a2a30" stroke={INK} strokeWidth={6} />
         <circle cx={1800} cy={1000} r={46} fill="#2a2a30" stroke={INK} strokeWidth={6} />
         <Figure x={640} y={1060} scale={1.6} facing={1} pose={{ ...STAND, armF: take ? [80, 30] : [30, 20], armB: [-12, 14] }} {...LOTTE}
-          {...EXPRESSIONS[lotteFace]} {...talk("Lotte")} time={t.f / 30} look={{ x: 0.9, y: 0.1 }} held={take ? <Sack /> : undefined} />
+          {...EXPRESSIONS[lotteFace]} {...talk("Anna")} time={t.f / 30} look={{ x: 0.9, y: 0.1 }} held={take ? <Sack /> : undefined} />
         <Figure x={1080} y={1060} scale={1.8} facing={-1} pose={{ ...STAND, armF: take ? [20, 10] : [35, 25], armB: [-30, 20] }} head="#d9b48a"
           coat="#8a6a4a" cap="#e8e2cf" {...EXPRESSIONS[flourFace]} {...talk("Karl")} time={t.f / 30 + 2} look={up ? { x: 0.2, y: -0.9 } : { x: 0.9, y: 0.1 }}
           held={take ? undefined : <g transform="rotate(-8)"><rect x={-22} y={-40} width={44} height={56} fill={PAPER} stroke={INK} strokeWidth={3} />

@@ -85,7 +85,7 @@ export const Street: React.FC<{ t: ShotTime; mood: MoodName; mode: "party" | "af
               held={<g><circle cx={0} cy={-10} r={34} fill="none" stroke={MUSTARD} strokeWidth={9} /><circle cx={22} cy={-36} r={16} fill={MUSTARD} stroke={INK} strokeWidth={3} /></g>} />
           ))}
           {party && <Figure x={960} y={1060} scale={1.3} facing={-1} pose={{ ...STAND, armF: [40, 30], armB: [-12, 14] }} {...LOTTE}
-            {...EXPRESSIONS[lotteFace]} {...talk("Lotte")} time={t.f / 30} look={{ x: 0.6, y: 0.1 }} />}
+            {...EXPRESSIONS[lotteFace]} {...talk("Anna")} time={t.f / 30} look={{ x: 0.6, y: 0.1 }} />}
           {party && [0, 1, 2, 3, 4].map((i) => <ellipse key={i} cx={860 + i * 50} cy={850 - (i % 2) * 26} rx={30} ry={22} fill={PASTELS[i]} stroke={INK} strokeWidth={4} />)}
           {(mode === "party" || mode === "after") && <Table bare={mode === "after"} f={t.f} />}
           {party && <Figure x={1600} y={1010} scale={1.35} facing={-1} pose={{ ...STAND, armF: [30, 40], armB: [-12, 14] }} head={FRIEND.head} coat="#a8c4e0"

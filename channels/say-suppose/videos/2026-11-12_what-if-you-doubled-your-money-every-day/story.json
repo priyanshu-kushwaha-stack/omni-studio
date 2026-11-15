@@ -40,7 +40,7 @@
       "text": "Jonas: Did your phone just... rip?",
       "say": "[groggy, alarmed, whispered too loud, sitting up in the dark] Did your phone just... rip?",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "night",
       "claims": []
     },
@@ -48,7 +48,7 @@
       "text": "Jonas: Two cents. Don't spend it all at once.",
       "say": "[sleepy sarcasm, flat, the coat already going back over his head] Two cents. Don't spend it all at once.",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "night",
       "claims": []
     },
@@ -56,7 +56,7 @@
       "text": "Two cents. Last night, one. You know that.",
       "say": "[hushed, close to the mic, the first words of the narrator, a secret shared in the dark] Two cents. Last night, one. You know that.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -64,7 +64,7 @@
       "text": "You always know the number.",
       "say": "[warm, slow, a fact about a friend, a small smile] You always know the number.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -72,7 +72,7 @@
       "text": "What if your money doubled every day?",
       "say": "[curious, lifting, the question asked plainly to you, eyes wide] What if your money doubled every day?",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -80,7 +80,7 @@
       "text": "Every night. Whatever's there at midnight, twice by morning. From one cent. New money. Taken from no one. And it will not stop.",
       "say": "[steady, building, each clause a step, a faint doubt on 'taken from no one', the last four words cold and even] Every night. Whatever's there at midnight, twice by morning. From one cent. New money. Taken from no one. And it will not stop.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -88,7 +88,7 @@
       "text": "Sounds like the best thing that could ever happen to you. Let's see what it costs.",
       "say": "[warm and bright, then a knowing turn, the last sentence slow and dry, a hook] Sounds like the best thing that could ever happen to you. Let's see what it costs.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -96,7 +96,7 @@
       "text": "There is no off switch. Except one. Exactly zero at midnight. Not a cent more. Not a cent less.",
       "say": "[lowered, deliberate, slow, a finger raised, slowing on 'exactly zero', the last two sentences even and quiet, a rule, not a warning] There is no off switch. Except one. Exactly zero at midnight. Not a cent more. Not a cent less.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "morning",
       "claims": []
     },
@@ -104,7 +104,7 @@
       "text": "So you make yourself a rule too. A sticky note. Stop at a thousand.",
       "say": "[playful, confident, 'Stop at a thousand' said like a promise you won't keep] So you make yourself a rule too. A sticky note. Stop at a thousand.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -112,7 +112,7 @@
       "text": "A king, a chessboard. One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years.",
       "say": "[storytelling, hushed, patient at the start, a widening awe toward the end, no hype] A king, a chessboard. One grain on the first square, and double on every square after. By the last square, the board owes more wheat than the whole world grows in over a thousand years.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "lamp",
       "claims": [
         "c05",
@@ -123,7 +123,7 @@
       "text": "For ten days, nothing happens. Cents. Then it does.",
       "say": "[dry, slow on 'nothing happens', then a sudden lift on the last three words] For ten days, nothing happens. Cents. Then it does.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -131,7 +131,7 @@
       "text": "Day eleven. Ten euros. You pay for your own roll.",
       "say": "[bright, proud, a small victory] Day eleven. Ten euros. You pay for your own roll.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -139,7 +139,7 @@
       "text": "Anna: I saw.",
       "say": "[flat, two words, writing on the board, not looking up] I saw.",
       "speaker": "Anna",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -147,7 +147,7 @@
       "text": "Day seventeen. Jonas's rent. Paid.",
       "say": "[quick, pleased, a montage beat, 'Paid' crisp] Day seventeen. Jonas's rent. Paid.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -155,7 +155,7 @@
       "text": "Jonas: I'll pay you back.",
       "say": "[touched, a little embarrassed, earnest] I'll pay you back.",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -163,7 +163,7 @@
       "text": "Jonas: I won't, will I.",
       "say": "[a beat later, honest and amused at himself, a grin] I won't, will I.",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -171,7 +171,7 @@
       "text": "Day twenty-one. Jonas's birthday. You ordered one cake. He woke up to the whole street.",
       "say": "[gleeful, quick, the last sentence a comic reveal] Day twenty-one. Jonas's birthday. You ordered one cake. He woke up to the whole street.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -179,7 +179,7 @@
       "text": "Day twenty-two. Every tram in the city. Free. All day. On you.",
       "say": "[big, generous, each phrase bigger, 'On you' with a grin] Day twenty-two. Every tram in the city. Free. All day. On you.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -187,7 +187,7 @@
       "text": "The sticky note gets a new number.",
       "say": "[dry, knowing, a wink] The sticky note gets a new number.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -195,7 +195,7 @@
       "text": "Herr Brandt: Is it a mistake?",
       "say": "[quiet, direct, looking at you over his glasses, a real question] Is it a mistake?",
       "speaker": "Herr Brandt",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -203,7 +203,7 @@
       "text": "Herr Brandt: Not a mistake. Signed.",
       "say": "[satisfied, precise, the stamp coming down on 'signed', filing it away] Not a mistake. Signed.",
       "speaker": "Herr Brandt",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -211,7 +211,7 @@
       "text": "Day twenty-seven. A penthouse over Berlin. Your old room would fit in the bath.",
       "say": "[wide-eyed, delighted, the last sentence a comic punch] Day twenty-seven. A penthouse over Berlin. Your old room would fit in the bath.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -219,7 +219,7 @@
       "text": "Day twenty-eight. You buy the building. Anna never pays rent again.",
       "say": "[proud, warm, quick] Day twenty-eight. You buy the building. Anna never pays rent again.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -227,7 +227,7 @@
       "text": "Anna has never seen the sea. Day twenty-nine, she does.",
       "say": "[warm, light, a gift, the last words open] Anna has never seen the sea. Day twenty-nine, she does.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -235,7 +235,7 @@
       "text": "Anna: It's bigger than the oven.",
       "say": "[dry, deadpan, squinting at the horizon, secretly delighted] It's bigger than the oven.",
       "speaker": "Anna",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -243,7 +243,7 @@
       "text": "Day thirty. Jonas's football club. The one that loses every Saturday. Not anymore.",
       "say": "[excited, building, 'Not anymore' a cheer] Day thirty. Jonas's football club. The one that loses every Saturday. Not anymore.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -251,7 +251,7 @@
       "text": "Jonas: I don't know what to do with my hands when they win.",
       "say": "[lost, comic, looking at his own hands, a man whose world has changed shape] I don't know what to do with my hands when they win.",
       "speaker": "Jonas",
-      "gapAfterSec": 3.0,
+      "gapAfterSec": 3.3,
       "mood": "day",
       "claims": []
     },
@@ -259,7 +259,7 @@
       "text": "Day thirty-one. Ten million euros. A billion cents.",
       "say": "[awed, slow, each number landing bigger, 'A billion cents' almost laughing] Day thirty-one. Ten million euros. A billion cents.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -267,7 +267,7 @@
       "text": "Jonas: Is that... all yours?",
       "say": "[stunned, small, a loop of paper in his fingers, a joke he cannot find] Is that... all yours?",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -275,7 +275,7 @@
       "text": "The sticky note gets a new number. It always does.",
       "say": "[dry, knowing, the second sentence lower, a smirk] The sticky note gets a new number. It always does.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -283,7 +283,7 @@
       "text": "So you spend. Faster than it grows. Can you?",
       "say": "[playful, a challenge, quick] So you spend. Faster than it grows. Can you?",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -291,7 +291,7 @@
       "text": "First, the obvious trick. Take it all out in cash. The machine gives you five hundred euros. Move it to another bank? Still your money. It doubles there too.",
       "say": "[quick, conspiratorial, a clever plan, then flat comic deflation on 'five hundred euros'; 'Still your money' a shrug, the last line deadpan] First, the obvious trick. Take it all out in cash. The machine gives you five hundred euros. Move it to another bank? Still your money. It doubles there too.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -299,7 +299,7 @@
       "text": "A car. A tiny jet. A racehorse. Four million, gone by dinner.",
       "say": "[fast montage energy, ticking items off, gleeful, 'racehorse' with a laugh] A car. A tiny jet. A racehorse. Four million, gone by dinner.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -307,7 +307,7 @@
       "text": "At midnight, what's left doubles anyway. Thirteen million. You shopped all day, and woke up richer.",
       "say": "[comic deflation, deadpan, the last clause a punchline] At midnight, what's left doubles anyway. Thirteen million. You shopped all day, and woke up richer.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -315,7 +315,7 @@
       "text": "You're thinking it. Why not just invest it?",
       "say": "[knowing, straight to the viewer, a raised eyebrow] You're thinking it. Why not just invest it?",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -323,7 +323,7 @@
       "text": "You try. You buy shares. The price shoots up. Because you're the one buying. Now you're richer twice.",
       "say": "[quick, building, then a comic beat on 'richer twice', exasperated and amused] You try. You buy shares. The price shoots up. Because you're the one buying. Now you're richer twice.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -331,7 +331,7 @@
       "text": "Day thirty-five. A hundred and seventy million. Jonas has a new idea: Anna's rolls, delivered to the whole city. By drone. A thousand drones. You pay.",
       "say": "[excited, quick, the idea growing as it goes, 'A thousand drones' big, 'You pay' dry] Day thirty-five. A hundred and seventy million. Jonas has a new idea: Anna's rolls, delivered to the whole city. By drone. A thousand drones. You pay.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -339,7 +339,7 @@
       "text": "Anna: I have two hands and one oven. Eighty rolls a morning. I bake what I bake.",
       "say": "[calm, firm, counting it out for a child, the last sentence final] I have two hands and one oven. Eighty rolls a morning. I bake what I bake.",
       "speaker": "Anna",
-      "gapAfterSec": 3.0,
+      "gapAfterSec": 3.3,
       "mood": "day",
       "claims": []
     },
@@ -347,7 +347,7 @@
       "text": "You bought a thousand deliveries. You didn't make one more roll.",
       "say": "[dry, clear, the punchline slow and flat] You bought a thousand deliveries. You didn't make one more roll.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "day",
       "claims": []
     },
@@ -355,7 +355,7 @@
       "text": "Money is a ticket for things people make. Your pile is a bigger ticket for the same bread.",
       "say": "[clear, firm, plain, the last sentence slow] Money is a ticket for things people make. Your pile is a bigger ticket for the same bread.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -363,7 +363,7 @@
       "text": "And everything you spend has to land somewhere. It lands where you stand.",
       "say": "[lower, a turn, quiet and sure] And everything you spend has to land somewhere. It lands where you stand.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -371,7 +371,7 @@
       "text": "Karl: Same flour. New price. Triple.",
       "say": "[blunt, invoice held out, no apology, the last word dropped like a sack] Same flour. New price. Triple.",
       "speaker": "Karl",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "dusk",
       "claims": []
     },
@@ -379,7 +379,7 @@
       "text": "Karl: The whole street has money now. Everyone charges more. Everyone does.",
       "say": "[matter-of-fact, gruff, not unkind, clear words, a shrug on the last two words] The whole street has money now. Everyone charges more. Everyone does.",
       "speaker": "Karl",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "dusk",
       "claims": []
     },
@@ -387,7 +387,7 @@
       "text": "Day forty. Prices rise first where the new money lands. Your street. One forty. Two ten. Three euros. Four twenty.",
       "say": "[slow, clear, explaining one hard thing, the numbers falling one by one like chalk] Day forty. Prices rise first where the new money lands. Your street. One forty. Two ten. Three euros. Four twenty.",
       "speaker": "narrator",
-      "gapAfterSec": 3.0,
+      "gapAfterSec": 3.7,
       "mood": "dusk",
       "claims": []
     },
@@ -395,7 +395,7 @@
       "text": "She counts what her savings will buy. Last month, a year of flour. Tonight, four months.",
       "say": "[quiet, close, slowing, the last two words soft] She counts what her savings will buy. Last month, a year of flour. Tonight, four months.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -403,7 +403,7 @@
       "text": "It isn't taken from anyone. Except it is. From everyone. A little. Every night.",
       "say": "[the turn: quiet, confessional, each fragment heavier, 'every night' almost broken] It isn't taken from anyone. Except it is. From everyone. A little. Every night.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -411,7 +411,7 @@
       "text": "So you try the obvious thing. You give it away. Day fifty. Five trillion. A million euros to every phone in Berlin.",
       "say": "[bold, bright, a big plan, rising to 'every phone in Berlin'] So you try the obvious thing. You give it away. Day fifty. Five trillion. A million euros to every phone in Berlin.",
       "speaker": "narrator",
-      "gapAfterSec": 3.0,
+      "gapAfterSec": 3.3,
       "mood": "day",
       "claims": []
     },
@@ -419,7 +419,7 @@
       "text": "Nobody goes to work. Why would you? And by Saturday, a roll costs sixty-three euros. Because every million was new money. Chasing the same rolls.",
       "say": "[comic, quick, 'Why would you?' a shrug, then clear and firm on the reason] Nobody goes to work. Why would you? And by Saturday, a roll costs sixty-three euros. Because every million was new money. Chasing the same rolls.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "day",
       "claims": []
     },
@@ -427,7 +427,7 @@
       "text": "Jonas: Sixty-three? Since when?",
       "say": "[outraged, comic, counting his coins again, clear words] Sixty-three? Since when?",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -435,7 +435,7 @@
       "text": "Jonas: Not me.",
       "say": "[gentle, immovable, two words, shaking his head at the phone] Not me.",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "day",
       "claims": []
     },
@@ -443,7 +443,7 @@
       "text": "This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years.",
       "say": "[storytelling, leaning in, 'For real' quiet and certain, a little wonder on the gold] This has happened before. For real. In thirteen twenty-four, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": [
         "c06"
@@ -453,7 +453,7 @@
       "text": "Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way.",
       "say": "[leaning in, amazed, the number huge and clear; the last sentence dry and close, a look at the board] Right here in Berlin, by late nineteen twenty-three, a loaf of bread cost about two hundred billion marks. Anna's board is heading the same way.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "day",
       "claims": [
         "c01"
@@ -463,7 +463,7 @@
       "text": "Day fifty-two. You're on the news. Day fifty-three, every bank in Europe freezes your account. It doesn't matter. Frozen money doubles too.",
       "say": "[fast, rising, the world reacting, then dry and comic on the last sentence] Day fifty-two. You're on the news. Day fifty-three, every bank in Europe freezes your account. It doesn't matter. Frozen money doubles too.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "day",
       "claims": []
     },
@@ -471,7 +471,7 @@
       "text": "Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About 128 trillion dollars.",
       "say": "[awed and afraid, slow, the list building, the figure said plainly, no hype] Day fifty-five. The number passes what the whole world makes in a year. Every loaf, every car, every hour of work on Earth. About a hundred and twenty-eight trillion dollars.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "night",
       "claims": [
         "c09"
@@ -481,7 +481,7 @@
       "text": "Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of hydrogen atoms in the observable universe.",
       "say": "[hushed awe turning to urgency, slowing on the number, 'cents' crisp with its t, the last words wide and quiet] Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of hydrogen atoms in the observable universe.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.05,
       "mood": "night",
       "claims": [
         "c12"
@@ -491,7 +491,7 @@
       "text": "You look from the galaxies to Anna's dark bakery. The sticky note gets its last number.",
       "say": "[quiet, decided, a turn, slow; the last sentence final] You look from the galaxies to Anna's dark bakery. The sticky note gets its last number.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "night",
       "claims": []
     },
@@ -499,7 +499,7 @@
       "text": "You call Herr Brandt. Now. The universe can wait. Berlin can't.",
       "say": "[decided, fast, a breath before 'now'; the last two sentences a dry joke, quick] You call Herr Brandt. Now. The universe can wait. Berlin can't.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -507,7 +507,7 @@
       "text": "Herr Brandt: So it was a mistake.",
       "say": "[quiet, on speaker, a statement and a question, no triumph in it] So it was a mistake.",
       "speaker": "Herr Brandt",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -515,7 +515,7 @@
       "text": "Herr Brandt: Everything goes. Your wages as well. You understand?",
       "say": "[careful, slower, a man making sure, clear words, a touch of pity on 'your wages as well'] Everything goes. Your wages as well. You understand?",
       "speaker": "Herr Brandt",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -523,7 +523,7 @@
       "text": "Herr Brandt: Fifty minutes.",
       "say": "[brisk, procedural, the keyboard already going] Fifty minutes.",
       "speaker": "Herr Brandt",
-      "gapAfterSec": 2.0,
+      "gapAfterSec": 2.3,
       "mood": "lamp",
       "claims": []
     },
@@ -531,7 +531,7 @@
       "text": "Zero. Everything. Ten minutes to midnight. You breathe out.",
       "say": "[relief, slow, a long breath before the last sentence] Zero. Everything. Ten minutes to midnight. You breathe out.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -539,7 +539,7 @@
       "text": "Then the phone buzzes. A refund. From the tram app. From the day you paid for every tram in Berlin. One cent.",
       "say": "[sudden, tense, quick, each phrase a jolt, 'One cent' flat and terrible] Then the phone buzzes. A refund. From the tram app. From the day you paid for every tram in Berlin. One cent.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -547,7 +547,7 @@
       "text": "One cent at midnight is two. Two is four. And it all starts again. Three minutes.",
       "say": "[panicked, fast, the doubling heard as a clock, the last two words urgent] One cent at midnight is two. Two is four. And it all starts again. Three minutes.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -555,7 +555,7 @@
       "text": "Who takes one cent, at three minutes to midnight? The machine wants a euro. The tram is still free. Jonas is asleep.",
       "say": "[breathless, running, urgent and funny, each failure faster] Who takes one cent, at three minutes to midnight? The machine wants a euro. The tram is still free. Jonas is asleep.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -563,7 +563,7 @@
       "text": "Anna: All counted?",
       "say": "[tired, warm, through a door opened a hand's width, the gag one last time, almost a kindness, clear words] All counted?",
       "speaker": "Anna",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -571,7 +571,7 @@
       "text": "You count. One cent. Into her palm. Twenty-three fifty-nine and fifty-eight.",
       "say": "[tense, quick, then slowing on the time, every word clear, a held breath] You count. One cent. Into her palm. Twenty-three fifty-nine and fifty-eight.",
       "speaker": "narrator",
-      "gapAfterSec": 4.0,
+      "gapAfterSec": 4.3,
       "mood": "lamp",
       "claims": []
     },
@@ -579,7 +579,7 @@
       "text": "Zero, doubled, is zero.",
       "say": "[quiet, complete, after the silence, a thing finally true, no music] Zero, doubled, is zero.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -587,7 +587,7 @@
       "text": "Anna: Counted.",
       "say": "[deadpan, dry, one word, the smallest smile, the gag's last return] Counted.",
       "speaker": "Anna",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "lamp",
       "claims": []
     },
@@ -595,7 +595,7 @@
       "text": "Day fifty-six. Jonas pays. He always pays.",
       "say": "[morning, plain, a small smile, back where we began] Day fifty-six. Jonas pays. He always pays.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -603,7 +603,7 @@
       "text": "A coin isn't a thing. It's Anna, agreeing to bake tomorrow.",
       "say": "[quiet, clear, the one idea to take home, said as a complete thought, warmth on her name] A coin isn't a thing. It's Anna, agreeing to bake tomorrow.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -611,7 +611,7 @@
       "text": "Then Jonas's phone rips.",
       "say": "[sudden, low, a cliffhanger sting] Then Jonas's phone rips.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },
@@ -619,7 +619,7 @@
       "text": "Jonas: Did my phone just... rip?",
       "say": "[stunned, staring at his own screen, whispered too loud] Did my phone just... rip?",
       "speaker": "Jonas",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 0.65,
       "mood": "morning",
       "claims": []
     },

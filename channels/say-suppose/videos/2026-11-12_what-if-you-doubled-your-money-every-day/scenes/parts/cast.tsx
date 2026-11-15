@@ -26,7 +26,7 @@ export function mouthAt(name: string, frame: number): Mouth | null {
   return null;
 }
 
-/** `talk("Lotte")` is `{ mouth }` while Lotte speaks, else `{}`: spread it after the face so it wins. */
+/** `talk("Anna")` is `{ mouth }` while Lotte speaks, else `{}`: spread it after the face so it wins. */
 export function useTalk(): (name: string) => { mouth?: Mouth } {
   const frame = useCurrentFrame();
   return (name) => {

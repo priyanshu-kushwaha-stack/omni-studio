@@ -1,4 +1,4 @@
-// The doubled-money first cut (script v4): the shot under the playhead, the channel's title card after the hook, a paper subscribe tag
+// The doubled-money first cut (script v6): the shot under the playhead, the channel's title card after the hook, a paper subscribe tag
 // at the street party, the script's tags, cards, bubbles and name tags, the narration, a score cue per section, an ambience bed per
 // set and each shot's effects. Render
 // with --props=<video>/assets/narration/props.json --public-dir=<video>/assets.
@@ -132,7 +132,7 @@ export const Film: React.FC<FilmProps> = (props) => {
   const at = (line: string, edge: "start" | "end", plus = 0) => frameOf({ line, edge, plus }, timeline, lines);
   // The title card after the premise; the subscribe tag at the party; the one planned silence at the glass door.
   const cardFrom = at("Every night. Whatever's", "end");
-  const partyAt = at("Jonas: Who are all", "start", 60);
+  const partyAt = at("Day twenty-one.", "start", 45);
   const silent: [number, number] = [at("You count. One cent.", "end"), at("Zero, doubled", "start")];
   const endAt = at("Be honest.", "end");
   const cues = [...SCORE.map((c) => ({ file: c.file, start: c.from ? at(c.from, "start") : 0 })), { file: "theme-light.mp3", start: endAt }];

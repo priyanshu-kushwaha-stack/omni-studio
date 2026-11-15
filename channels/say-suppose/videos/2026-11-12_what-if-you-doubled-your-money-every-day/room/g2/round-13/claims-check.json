@@ -1,0 +1,47 @@
+{
+  "call_id": "006420f7038149799592283bf62dcfe0",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 57,
+      "quote": "By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+      "fix": "Across all sixty-four squares, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    },
+    {
+      "line": 57,
+      "quote": "One grain on the first square, and double on every square after (c05).",
+      "fix": "One grain on the first square, doubled on every square to over eighteen quintillion grains (c05)."
+    },
+    {
+      "line": 226,
+      "quote": "About 128 trillion dollars (c09).",
+      "fix": "That's about 128 trillion dollars (c09)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 232,
+      "quote": "Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of hydrogen atoms in the observable universe (c12)."
+    },
+    {
+      "line": 212,
+      "quote": "This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06)."
+    },
+    {
+      "line": 213,
+      "quote": "Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks (c01). Anna's board is heading the same way."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "7553c2517a840e141ff5e454987e6198768eadcfc41f12e41194efc5a8d6d218",
+  "draft_sha256": "b81bb672eb531659912f141ff950ba7f326b960208c73bfdcb59890759e68fb9"
+}

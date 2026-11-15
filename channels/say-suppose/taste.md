@@ -10,6 +10,9 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-15
 
+- **"Midnight, as written"** Asked whether v6 should open on the thumbnail's frame (the day-31 spill) or on midnight,
+  the power arriving: midnight. The opening shows the power arrive, in order; the thumbnail's frame lands later as a
+  payoff, not as a teaser. (doubled-money film, G2)
 - **"Lotte is a difficult name should we keep it to something else ?"** Then picked **Anna** over Rosa and Greta. A
   name a viewer hears once must be heard right anywhere: short, two plain syllables, no sound a transcriber or an
   accent can bend ("Lotte" came back as "Lot" and "Lotta"). (doubled-money film, G2)

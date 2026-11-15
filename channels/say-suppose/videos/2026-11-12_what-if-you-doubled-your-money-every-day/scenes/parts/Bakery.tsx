@@ -201,7 +201,7 @@ export const Bakery: React.FC<{ t: ShotTime } & CounterProps> = ({
     <g transform={`translate(${CAM.x} ${CAM.y}) scale(${1 / CAM.zoom}) translate(-960 -540)`}>
       <Wall board={boardNow} lamp={lamp} />
       {lotte && (
-        <Figure x={1480} y={1320} scale={2.5} facing={-1} pose={lp} {...LOTTE} {...EXPRESSIONS[lotte.face ?? "neutral"]} {...talk("Lotte")}
+        <Figure x={1480} y={1320} scale={2.5} facing={-1} pose={lp} {...LOTTE} {...EXPRESSIONS[lotte.face ?? "neutral"]} {...talk("Anna")}
           time={t.f / 30} look={{ x: 0.9, y: 0.2 }} held={lotte.held ? HELD[lotte.held] : undefined} />
       )}
       <Counter props={props} t={t} />
