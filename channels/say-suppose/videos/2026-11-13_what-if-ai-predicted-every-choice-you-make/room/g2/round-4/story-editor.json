@@ -1,0 +1,73 @@
+{
+  "call_id": "faf270aa34d34fce8b92039e7a7bea61",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story spine": 9,
+    "causal chain": 8,
+    "premise mechanics": 6,
+    "stakes and payoff": 9,
+    "G2 readiness": 6
+  },
+  "blockers": [
+    {
+      "quote": "A coin can't choose for you. You still choose to flip it. And it saw you reach.",
+      "why": "#21 Close the loopholes on screen fails. Predicting the decision to flip does not predict the random result or the choice delegated to it, so external randomness can still defeat the premise.",
+      "fix": "Show the tag waiting for the coin to land, then immediately forecasting the action based on its result. Replace the narration with: \"It doesn't have to guess the coin. It waits for it to land, then predicts what you'll do with the result.\"",
+      "domain": "story",
+      "line": 140
+    },
+    {
+      "quote": "> TAG: UNPREDICTABLE",
+      "why": "No new power rule after the halfway point fails. Tags have only forecast ten-second actions; turning them into persistent status labels, later lasting thirty days, introduces a new mechanic at the climax.",
+      "fix": "Replace every post-climax UNPREDICTABLE tag with \"> TAG: (blank)\" and remove the thirty-day duration. Let the planted blank-card limit carry the consequence.",
+      "domain": "story",
+      "line": 444
+    },
+    {
+      "quote": "Runtime about 10:30; at the channel's 1.1x tempo about 9:33.",
+      "why": "Length fails. At the required 115 words per minute plus holds, this runs substantially longer still, and the central dilemma resolves at 8:10 before more than two minutes of explanation and epilogue.",
+      "fix": "Target roughly 750 spoken words and no more than 60 seconds of holds. Collapse the kid, magician and football examples into one montage; retain one post-peak fact; compress The Board and The Queue into a single 45-second denouement ending on the blank card.",
+      "domain": "story",
+      "line": 553
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 407,
+      "quote": "Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing (c06).",
+      "fix": "Move the charity finding into Sixty Per Cent, where evidence is being assembled, so the dilemma can run directly from the planted limitation into the choice."
+    },
+    {
+      "line": 216,
+      "quote": "The whole city tries your trick. The penalty kick. Tag says left, keeper goes left.",
+      "fix": "Tie the montage together causally: \"Once every opponent can read the choice, every contest becomes a stalemate.\""
+    },
+    {
+      "line": 547,
+      "quote": "So, would you pay full price to make your card go blank? Tell us in the comments. And if you would, hit like and subscribe.",
+      "fix": "Keep only the closing choice question; move the like-and-subscribe prompt to silent end-card text so the cliffhanger remains the final spoken beat."
+    }
+  ],
+  "keep": [
+    {
+      "line": 345,
+      "quote": "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him."
+    },
+    {
+      "line": 448,
+      "quote": "You can't steal what you've just been handed. And the machine had no card for that."
+    },
+    {
+      "line": 537,
+      "quote": "You never look up."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "efe5601eff154eca0007dda9409035fef7328ac95b4cf5024cc0e2ae4c710d05",
+  "draft_sha256": "2a1c07f1de79811766a6f413c78e015fd05771010cc8ef82a28f263095fd66c1"
+}

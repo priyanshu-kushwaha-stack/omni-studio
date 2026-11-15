@@ -1,4 +1,4 @@
-# Cue sheet, G2 intent (rules/sound.md #1); final spotting at G4. The owner on the last film (taste.md, 2026-11-13):
+# Cue sheet, G2 intent (v2, exciting not sad, 2026-11-14: thrill, mischief, triumph; no warm cue) (rules/sound.md #1); final spotting at G4. The owner on the last film (taste.md, 2026-11-13):
 # "better sound in the video just to break the continuous background music flowing throughout the video which might be
 # monotonous". So the score changes with each section (scenes/sound.ts places it) and every set has its own two-layer
 # ambience bed (scenes/make_ambience.py). Levels: rules/sound.md #4 (about 26 dB under the voice, about 8 dB under in
@@ -10,17 +10,17 @@
 # Rule device sound (sound #8): the tag's paper flap as it drops or turns, the digits' flutter, a soft tick when it comes
 # true, a dull buzz when it goes crimson, and nothing at all when it goes blank (the film's first silence, at the peak).
 beats:
-  - {beat: The Lamp, intent: hook, music_in: "theme-light from frame 0 (the channel signal)", music_out: "into cue_wonder at the title question", level: "hold level in the skit", bed: court-night, fx: [coin into the tin, lamp click and blinks, a hundred tags dropping, ticks]}
-  - {beat: Half Price, intent: wonder, music_in: "cue_wonder (pizzicato, celesta, a clock-shop tick)", music_out: "-", level: "-26 dB under voice", bed: court-night, fx: [rate board flutter, ticks in a wave]}
-  - {beat: The Rule, intent: wonder, music_in: "cue_wonder continues", music_out: "into cue_mischief at the mirror", level: "-26 dB", bed: "walkway (insects, far traffic)", fx: [tags handed from lamp to lamp, the crimson buzz insert]}
-  - {beat: Random, intent: playful, music_in: "cue_mischief (plucked strings, muted marimba)", music_out: "into cue_carnival", level: "-26 dB; the mirror hold at -8 dB", bed: "bathroom, then the court by day", fx: [four buzzes, board flaps up, the coin's ticks]}
-  - {beat: The City Plays, intent: busy, music_in: "cue_carnival (staccato strings, glockenspiel)", music_out: "hushed and glassy on the forty-phone train", level: "-26 dB", bed: "platform, street, court, train", fx: [tags per use, the pickpocket's buzz, doors]}
-  - {beat: The Cheapest Man, intent: mechanical, music_in: "cue_routine (metronomic, music box, low clarinet)", music_out: "into cue_warm", level: "-26 dB; the sixty-two hold at -8 dB", bed: court-day, fx: [the phone buzzing face down]}
-  - {beat: Sixty Per Cent, intent: warm, music_in: "cue_warm (felt piano and cello)", music_out: "into cue_dread at the hand", level: "-26 dB", bed: "court at dusk", fx: []}
-  - {beat: Red, intent: dread, music_in: "cue_dread (slow ticking pulse, low strings) after the crimson tag, not before", music_out: "-", level: "-26 dB", bed: "court at closing, then by day", fx: [the crimson buzz, a shutter stopping]}
-  - {beat: A Man in Trouble, intent: dread, music_in: "cue_dread continues", music_out: "into cue_clock", level: "-26 dB", bed: "paper, then the court at closing", fx: [the phone's tinny voice, LIES buzz]}
-  - {beat: The Dilemma, intent: suspense, music_in: "cue_clock (piano ostinato over a low pedal)", music_out: "into theme-dark-thin", level: "-26 dB", bed: court-night, fx: [crimson buzz]}
-  - {beat: The Key, intent: peak, music_in: "theme-dark thinned (the signal, thinner, at the cost, sound #2)", music_out: "drops to a floor with one held low note across the 10 s wordless peak; at the blank card nothing at all, then the theme back in once (sound #3)", level: "-26 dB; the floor about 10% of hold level", bed: court-night, fx: [flaps 94-96-98, no sound for the blank, the double crimson buzz]}
-  - {beat: The Board, intent: revelation, music_in: "cue_reveal (high strings, slow piano)", music_out: "into cue_resolve", level: "-26 dB", bed: "lamppost, then the city", fx: [the board spun backwards]}
-  - {beat: The Train, intent: resolve, music_in: "cue_resolve (piano and soft strings, morning)", music_out: "theme-light on the end card", level: "-26 dB; end card at hold level", bed: "court by day, then the train", fx: [the key into his hand]}
-planned_silences: ["the blank card at the peak (about 1 s): no flap, no tick"]
+  - {beat: The Lamp, intent: hook, music_in: "theme-light from frame 0 (the channel signal)", music_out: "into cue_wonder at the title question", level: "hold level in the skit", bed: court-night, fx: [lamp click and blinks, tags dropping, ticks, the cup's scrape on steel]}
+  - {beat: Half Price, intent: wonder, music_in: "cue_wonder", music_out: "-", level: "-26 dB under voice", bed: court-night, fx: [rate board flutter, ticks in a wave]}
+  - {beat: The Rule, intent: wonder, music_in: "cue_wonder continues", music_out: "into cue_mischief at the mirror", level: "-26 dB", bed: walkway, fx: [the torn tag, a new tag dropping]}
+  - {beat: Random, intent: playful, music_in: "cue_mischief", music_out: "-", level: "-26 dB; the mirror hold at -8 dB", bed: "bathroom, then the court by day", fx: [four buzzes, board flaps up, the coin]}
+  - {beat: Your Stall, intent: winning, music_in: "cue_carnival", music_out: "-", level: "-26 dB", bed: court-day, fx: [plates down, the queue doubling]}
+  - {beat: The City Plays, intent: busy, music_in: "cue_carnival continues", music_out: "into cue_routine", level: "-26 dB", bed: "platform, street, court, train", fx: [the pickpocket's buzz, doors, the betting window, the TV]}
+  - {beat: Boring Pays, intent: mechanical comedy, music_in: "cue_routine", music_out: "into cue_mischief", level: "-26 dB", bed: court-day, fx: [the napkin card flapping before a word]}
+  - {beat: Sixty Per Cent, intent: playful, music_in: "cue_mischief (v1's warm cue retired)", music_out: "into cue_dread at the hand", level: "-26 dB", bed: court-day, fx: [his board climbing]}
+  - {beat: Red, intent: dread into comedy, music_in: "cue_dread after the crimson tag", music_out: "into cue_clock", level: "-26 dB", bed: "closing, the coffee stall, the platform, paper, closing", fx: [crimson buzz, the shutter rattle and clank, the cup scraping away and back, the coffee clack on the tray]}
+  - {beat: The Dilemma, intent: suspense, music_in: "cue_clock", music_out: "into theme-dark-thin", level: "-26 dB", bed: court-night, fx: [the coffee seller's phone up, crimson buzz]}
+  - {beat: The Key, intent: triumph, music_in: "theme-dark thinned under 94, 96, 98", music_out: "floor and one held low note across the 10 s peak; nothing at all at the blank card; then theme-light in full for the triumph", level: "-26 dB; the floor about 10% of hold level", bed: court-night, fx: [flaps 94-96-98, silence for the blank, the hinge creak, the double crimson buzz, the dropped phone]}
+  - {beat: The Board, intent: revelation, music_in: "cue_reveal", music_out: "into cue_resolve", level: "-26 dB", bed: "lamppost, then the city", fx: [the board spun backwards]}
+  - {beat: The Queue, intent: cheeky twist, music_in: "cue_resolve", music_out: "theme-light on the close and end card", level: "-26 dB; end card at hold level", bed: "court by day, then the train", fx: [the TV, NOSY flaps, the key's clink in his palm]}
+planned_silences: ["the blank card at the peak (about 1.7 s): no flap, no tick, no score"]

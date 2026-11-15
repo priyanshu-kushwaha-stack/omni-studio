@@ -1,19 +1,22 @@
-// Beat "The Dilemma" (script.md, ## [07:12] The Dilemma; narration lines 78-83). Mood lamp, closing.
+// Beat "The Dilemma" (script.md v2, ## [06:54] The Dilemma; narration lines 80-85). Mood lamp, closing.
 //
-//   78  closing, the last customers gone: the coffee seller at the edge of frame, phone up, filming; him at the counter,
+//   80  closing, the last customers gone: the coffee seller at the edge of frame, phone up, filming; him at the counter,
 //       both hands on the box lid; his card flips crimson, TAKES THE BOX 94%; yours drops, POCKETS KEY 97%; her phone;
-//       his hands on the lid; his card on "Ninety-four"
-//   79  a paper strip of every card you've confirmed, stamped teal one after another as it runs past: PAYS, TAKES THE
+//       his hands on the lid; his card on "Ninety-four". The laugh: she was already filming; when the card buzzes she
+//       rises on her toes and pushes the phone in closer, eyebrows up
+//   81  a paper strip of every card you've confirmed, stamped teal one after another as it runs past: PAYS, TAKES THE
 //       SIX-TEN, WIPES COUNTER, POCKETS KEY x3; then the brain diagram again, the early signal line drawn as before,
 //       then a flat line over it, the early one fading (c06)
-//   80  the flat line; "And you're about to.": the counter in the thumbnail's geometry, your eyes going to your pocket
-//   81  close on your face; behind you, out of focus, the coffee board on 1.50, the landlord's envelope, the man with the
+//   82  the flat line; "And you're about to.": the counter in the thumbnail's geometry, your eyes going to your pocket
+//   83  close on your face; behind you, out of focus, the coffee board on 1.50, the landlord's envelope, the man with the
 //       same lunch's empty table
-//   82  insert: your hand in your pocket on the key; his hands flat on the lid; the two cards over you, his crimson,
+//   84  insert: your hand in your pocket on the key; his hands flat on the lid; the two cards over you, his crimson,
 //       yours teal (it ticks); close on yours; her phone still filming and her board
-//   83  your hand comes up out of your pocket with the key, a close cut on the thumbnail's geometry; the next beat (The
-//       Key) opens on the thumbnail's wide frame with the key on your open palm, a cut on the action
-import { AbsoluteFill } from "remotion";
+//   85  "Remember that? ...": insert, your hand coming up out of the pocket with the key, the key catching the lamp;
+//       "So make one.": the counter in the thumbnail's geometry, the key coming up in your hand, your eyes going to
+//       him with a small mischievous smile; the next beat (The Key) opens on the thumbnail's wide frame with the key on
+//       your open palm, a cut on the action
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { STAND, lerpPose, type Pose } from "@whatif/kit/rig/pose";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
@@ -34,29 +37,30 @@ function times(clips: Clip[], to: number) {
   const at = lineAt(clips);
   const from = (i: number) => clips[i].from;
   return {
-    open: from(78), // "Closing. The last customers gone."
-    box: from(78) + 10, // his card: TAKES THE BOX 94%
-    yours: from(78) + 34, // your card: POCKETS KEY 97%
-    phone: at(78, 0.3), // "The coffee seller's phone is already up."
-    hands: at(78, 0.56), // "Because his tag says takes the box."
-    card: at(78, 0.8), // "Ninety-four."
-    strip: from(79), // "Everything it ever got right about you ..."
-    pays: at(79, 0.1),
-    train: at(79, 0.22), // "... a coffee, a train ..."
-    wipes: at(79, 0.28),
-    keys: at(79, 0.33), // "... a key."
-    brain: at(79, 0.41), // "When scientists watched people choose where real charity money would go ..."
-    signal: at(79, 0.46),
-    flat: at(79, 0.8), // "... the famous early brain signal was missing."
-    never: from(80), // "It has never seen you choose something that mattered."
-    about: at(80, 0.52), // "And you're about to."
-    face: from(81), // "A month of half price. What did you stop doing for it?"
-    pocket: from(82), // "Pocket the key, and the city's right, and your rent stays half."
-    lid: at(82, 0.22),
-    cards: at(82, 0.42), // "Hold it out ..."
-    mine: at(82, 0.62), // "... and your tag goes crimson in front of everyone."
-    money: at(82, 0.84), // "And so, maybe, does your money."
-    out: from(83), // "You take the key out of your pocket."
+    open: from(80), // "Closing. The last customers gone."
+    box: from(80) + 10, // his card: TAKES THE BOX 94%
+    yours: from(80) + 34, // your card: POCKETS KEY 97%
+    phone: at(80, 0.3), // "The coffee seller's phone is already up."
+    hands: at(80, 0.56), // "Because his tag says takes the box."
+    card: at(80, 0.8), // "Ninety-four."
+    strip: from(81), // "Everything it ever got right about you ..."
+    pays: at(81, 0.1),
+    train: at(81, 0.22), // "... a coffee, a train ..."
+    wipes: at(81, 0.28),
+    keys: at(81, 0.33), // "... a key."
+    brain: at(81, 0.41), // "When scientists watched people choose where real charity money would go ..."
+    signal: at(81, 0.46),
+    flat: at(81, 0.8), // "... the famous early brain signal was missing."
+    never: from(82), // "It has never seen you choose something that mattered."
+    about: at(82, 0.52), // "And you're about to."
+    face: from(83), // "A month of half price. What did you stop doing for it?"
+    pocket: from(84), // "Pocket the key, and the city's right, and your rent stays half."
+    lid: at(84, 0.22),
+    cards: at(84, 0.42), // "Hold it out ..."
+    mine: at(84, 0.62), // "... and your tag goes crimson in front of everyone."
+    money: at(84, 0.84), // "And so, maybe, does your money."
+    out: from(85), // "Remember that? It has never seen a choice you've never made.": the hand comes out of the pocket with the key
+    make: at(85, 0.72), // "So make one.": the counter, the key coming up
     end: to,
   };
 }
@@ -84,9 +88,11 @@ const Closing: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow>;
   };
   const cb = body(COURT.coffee.seller.x, STAND, -1);
   const ch = headOf(undefined, COURT.coffee.seller.x, -1);
+  // Already filming; when his card buzzes she rises on her toes and pushes the phone in, eyebrows up.
+  const keen = ramp(frame, k.phone + 18, k.phone + 30);
   const coffee: Actor = {
-    pose: reachPose(cb, { x: ch.x - 210, y: ch.y + 10 }), held: <Phone />,
-    face: { brows: "raised", lids: 0.2, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.2 } },
+    pose: reachPose({ ...cb, pose: { ...STAND, lean: -6 * keen } }, { x: ch.x - 210 - keen * 90, y: ch.y + 10 - keen * 40 }), held: <Phone />,
+    face: keen > 0.5 ? { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0.9, y: 0.3 } } : { brows: "raised", lids: 0.2, mouth: "smirk", eyes: 1, look: { x: 0.9, y: 0.2 } },
   };
   const h = heads(you, friend);
   const cams: Record<typeof on, Camera> = {
@@ -144,11 +150,11 @@ const DOWN: Pose = { ...STAND, armF: [8, 14] };
 const UP: Pose = { ...STAND, lean: 3, armF: [62, 72] };
 
 const Counter: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow>; on: "about" | "face" | "lid" | "cards" | "mine" | "out" }> = ({ frame, k, mood, on }) => {
-  const rise = ramp(frame, k.out + 6, k.out + 44);
+  const rise = ramp(frame, k.make, k.make + 30);
   const youPose = on === "out" ? lerpPose(DOWN, UP, rise) : DOWN;
   const h = thHeads(youPose);
   const youFace = on === "out"
-    ? { brows: rise > 0.5 ? "raised" : "flat", lids: rise > 0.5 ? 0 : 0.25, mouth: "flat", eyes: rise > 0.5 ? 1.15 : 1, look: rise > 0.3 ? { x: 1, y: 0.1 } : { x: 0.6, y: 0.9 } } as const
+    ? { brows: rise > 0.5 ? "raised" : "flat", lids: rise > 0.5 ? 0.15 : 0.25, mouth: rise > 0.6 ? "smirk" : "flat", eyes: 1, look: rise > 0.3 ? { x: 1, y: 0.1 } : { x: 0.6, y: 0.9 } } as const
     : on === "about" ? { brows: "worry", lids: 0.3, mouth: "flat", eyes: 1, look: frame < k.about + 25 ? { x: 1, y: 0.4 } : { x: 0.3, y: 0.95 } } as const
     : on === "face" ? { brows: "worry", lids: 0.2 + 0.15 * Math.sin((frame - k.face) / 30), mouth: "flat", eyes: 1, look: { x: 0.9 - ramp(frame, k.face + 40, k.face + 60) * 0.5, y: 0.15 } } as const
     : on === "mine" ? { brows: "worry", lids: 0.1, mouth: "flat", eyes: 1, look: { x: 0.2, y: -0.95 } } as const
@@ -160,7 +166,7 @@ const Counter: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow>;
     lid: camAt(frame, [[k.lid, insert(TBOX.x + 20, lidTop() - 30, 2.4)], [k.cards, insert(TBOX.x + 20, lidTop() - 30, 2.6)]]),
     cards: camAt(frame, [[k.cards, { x: 960, y: 520, zoom: 0.96 }], [k.mine, { x: 960, y: 520, zoom: 1.02 }]]),
     mine: camAt(frame, [[k.mine, { x: h.you.x + 60, y: 480, zoom: 1.6 }], [k.money, { x: h.you.x + 60, y: 470, zoom: 1.7 }]]),
-    out: camAt(frame, [[k.out, { x: 650, y: 800, zoom: 1.55 }], [k.end, { x: 680, y: 790, zoom: 1.6 }]]),
+    out: camAt(frame, [[k.make, { x: 650, y: 800, zoom: 1.55 }], [k.end, { x: 680, y: 790, zoom: 1.6 }]]),
   };
   return (
     <ThumbScene frame={frame} cam={drift(cams[on], frame, `dilemma-th-${on}`, on === "out" ? 1.5 : 3)} mood={mood}
@@ -177,7 +183,8 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const k = times(clips, shot.to);
   const mood = moodNow(shot);
   const on = current(frame, [[0, "wide"], [k.phone, "phone"], [k.hands, "hands"], [k.card, "card"], [k.strip, "strip"], [k.brain, "brain"],
-    [k.about, "about"], [k.face, "face"], [k.pocket, "pocket"], [k.lid, "lid"], [k.cards, "cards"], [k.mine, "mine"], [k.money, "money"], [k.out, "out"]] as [number, string][]);
+    [k.about, "about"], [k.face, "face"], [k.pocket, "pocket"], [k.lid, "lid"], [k.cards, "cards"], [k.mine, "mine"], [k.money, "money"], [k.out, "draw"],
+    [k.make, "out"]] as [number, string][]);
   let picture: React.ReactNode;
   if (on === "wide" || on === "phone" || on === "hands" || on === "card" || on === "money") picture = <Closing frame={frame} k={k} mood={mood} on={on} />;
   else if (on === "strip") picture = <Strip frame={frame} k={k} />;
@@ -189,14 +196,20 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   } else if (on === "pocket") {
     const cam = camAt(frame, [[k.pocket, { x: 960, y: 560, zoom: 1.0 }], [k.lid, { x: 960, y: 600, zoom: 1.12 }]]);
     picture = <PocketShot mood={mood} cam={drift(cam, frame, "dilemma-pocket", 2)} inside={1} grip={1} glint={0.5 + 0.5 * Math.sin((frame - k.pocket) / 8)} />;
+  } else if (on === "draw") {
+    const cam = camAt(frame, [[k.out, { x: 960, y: 560, zoom: 1.05 }], [k.make, { x: 960, y: 460, zoom: 1.2 }]]);
+    const up = ramp(frame, k.out + 10, k.make - 6);
+    picture = <PocketShot mood={mood} cam={drift(cam, frame, "dilemma-draw", 2)} inside={1 - up} grip={1} glint={up} />;
   } else picture = <Counter frame={frame} k={k} mood={mood} on={on as "about" | "face" | "lid" | "cards" | "mine" | "out"} />;
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {picture}
       <TagSounds keys={hisKeys(k).slice(1)} />
       <TagSounds keys={yourKeys(k)} />
+      {/* the key's clink as it comes out of the pocket */}
+      <Sequence from={k.out + 12} durationInFrames={14}><Audio src={staticFile("sfx/coin.wav")} volume={0.3} /></Sequence>
     </AbsoluteFill>
   );
 };
 
-export const theDilemma: Beat = { id: "theDilemma", firstLine: 78, Component: Scene };
+export const theDilemma: Beat = { id: "theDilemma", firstLine: 80, Component: Scene };

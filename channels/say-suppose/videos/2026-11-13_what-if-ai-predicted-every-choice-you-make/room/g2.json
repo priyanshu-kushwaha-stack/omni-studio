@@ -44,23 +44,139 @@
       "judge": null,
       "owner_notes": false,
       "candidate": true
+    },
+    {
+      "round": 2,
+      "draft_sha256": "902d305a395b8973eb338a257065d8d15490156a90421f6a6701b1b89d4490fd",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "7275fef81bf541f8b4433d8c98020d0d",
+          "file": "room/g2/round-2/claims-check.json",
+          "output_sha256": "d69c855a2d402e1735cba7cffc1583783f6e5f20634d019d419fda9666edea8f",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "1f33460665e44d50b9f41f152243f2b0",
+          "file": "room/g2/round-2/story-editor.json",
+          "output_sha256": "bec096be6e196ba8d989cfa647fc226dfaf1bb3d1da60ae2a29a55e6e797ec66",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    },
+    {
+      "round": 3,
+      "draft_sha256": "56c781bee157fc600e451f0b117fd378cfe3998b9b36768a381b638cf7e5e32e",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "dcdb35db33d84dfa8ad203aac7d2b740",
+          "file": "room/g2/round-3/claims-check.json",
+          "output_sha256": "d69c855a2d402e1735cba7cffc1583783f6e5f20634d019d419fda9666edea8f",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "82ce981a2a18497d91055a9330468039",
+          "file": "room/g2/round-3/story-editor.json",
+          "output_sha256": "7bad58ecac5ad48d44d98fe6cbcf4f813a11a5f9af3eda11f44ebf68f7c4a577",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    },
+    {
+      "round": 4,
+      "draft_sha256": "2a1c07f1de79811766a6f413c78e015fd05771010cc8ef82a28f263095fd66c1",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "fc84000aff2346fab042fc00aae070d9",
+          "file": "room/g2/round-4/claims-check.json",
+          "output_sha256": "9e58cf80713ad407d7569818d5854c288c04fc51902179761cd00e1213a990cc",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "faf270aa34d34fce8b92039e7a7bea61",
+          "file": "room/g2/round-4/story-editor.json",
+          "output_sha256": "efe5601eff154eca0007dda9409035fef7328ac95b4cf5024cc0e2ae4c710d05",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 1,
-    "artifact_sha256": "227c78de1425c50b3cb6cd3a933e97859713ed524ae218b86c50e06d7c0fda64"
+    "round": 4,
+    "artifact_sha256": "2a1c07f1de79811766a6f413c78e015fd05771010cc8ef82a28f263095fd66c1"
   },
-  "calls": 2,
-  "cap": 16,
+  "calls": 8,
+  "cap": 20,
   "author_cut": {
     "round": 1,
     "draft_sha256": "227c78de1425c50b3cb6cd3a933e97859713ed524ae218b86c50e06d7c0fda64",
     "cost": {
-      "lines_changed": 0,
-      "header_changed": [],
-      "keep_lost": []
+      "lines_changed": 436,
+      "header_changed": [
+        "SITUATION",
+        "DESIRE",
+        "CONFLICT",
+        "RESULT"
+      ],
+      "keep_lost": [
+        "Drivers tracked by their insurer for a discount braked hard about a fifth less often within six months (c17). The watching changed the driving.",
+        "In 2008 (c04), brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen (c04). The guess was right about sixty times in a hundred (c05). A coin gets fifty."
+      ]
     }
   },
   "presented": {

@@ -1,5 +1,5 @@
-// The Cheapest Man, by day and at dusk: the man with the same lunch (43), the Hanoi rat-tail diagram (44), the coach
-// who sells boring (45, 46), the magician reading tags for tips and your rate falling (47).
+// Boring Pays, by day and at dusk: the man with the same lunch (50, and the cut back to him after 51), the Hanoi rat-tail
+// diagram (52), the coach who sells boring (53, 54), and your rate falling at the till (55).
 import { Figure } from "@whatif/kit/rig/Figure";
 import { seatedY, SEATED, STAND, type Pose } from "@whatif/kit/rig/pose";
 import { street } from "@whatif/kit/sets/Street";
@@ -9,9 +9,9 @@ import { CRIMSON, INK, PAPER } from "@whatif/kit/theme";
 import { DrawLine } from "@whatif/kit/ui/DrawLine";
 import { RateBoard, Tag, TealLamp } from "../device";
 import { aimArm, Apron, headAt, Sheet, type Body } from "../kit";
-import { blinking, camAt, COACH, current, HERO, MAGICIAN, mix, PASTELS, ramp, SAME_LUNCH } from "../shared";
+import { blinking, camAt, COACH, current, HERO, mix, PASTELS, ramp, SAME_LUNCH } from "../shared";
 import { COURT, FoodCourtBack, foodCourtLights, StallCounter, StallLamp } from "../sets/FoodCourt";
-import { CardFan, Coin, glide, Rat, SandwichBoard, Shot, Stamp, Tail, talk } from "./TheCityPlays.Parts";
+import { Coin, glide, Rat, SandwichBoard, Shot, Stamp, Tail, talk } from "./TheCityPlays.Parts";
 import { boards, tags, type T } from "./TheCheapestMan.Times";
 
 // ------------------------------------------------------------------------------------------------ the same lunch
@@ -47,12 +47,13 @@ export const SameLunch: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const tg = tags(k);
   const bd = boards(k);
   const lh = headAt(LUNCH.x, LUNCH.y, LS, SEATED, 1);
-  const on = current(frame, [[k.lunch, "wide"], [k.spoon, "him"], [k.clock, "clock"], [k.lowest, "glance"]]);
+  const on = current(frame, [[k.lunch, "wide"], [k.spoon, "him"], [k.clock, "clock"], [k.lowest, "glance"], [k.react, "him2"]]);
   const cams: Record<typeof on, Camera> = {
     wide: camAt(frame, [[k.lunch, { x: 760, y: 590, zoom: 1.25 }], [k.spoon, { x: 740, y: 600, zoom: 1.32 }]]),
     him: camAt(frame, [[k.spoon, closeUp(lh.x + 60, lh.y - 30, 2.3)], [k.clock, closeUp(lh.x + 60, lh.y - 30, 2.45)]]),
     clock: camAt(frame, [[k.clock, insert(330, 500, 1.9)], [k.lowest, insert(320, 490, 2.0)]]),
-    glance: glide(frame, k.lowest, k.hanoi, { x: 420, y: 520, zoom: 1.7 }, { x: 980, y: 600, zoom: 1.35 }),
+    glance: glide(frame, k.lowest, k.champ, { x: 420, y: 520, zoom: 1.7 }, { x: 980, y: 600, zoom: 1.35 }),
+    him2: camAt(frame, [[k.react, closeUp(lh.x + 90, lh.y + 10, 2.0)], [k.hanoi, closeUp(lh.x + 90, lh.y + 10, 2.2)]]),
   };
   const cam = drift(cams[on], frame, "lunch", 3);
   // the same spoon, the same rhythm: down to the bowl, up to the mouth, every 36 frames
@@ -137,11 +138,11 @@ export const Coach: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cams: Record<typeof on, Camera> = {
     wide: camAt(frame, [[k.street, { x: 1060, y: 640, zoom: 1.2 }], [k.coach, { x: 1040, y: 640, zoom: 1.3 }]]),
     coach: camAt(frame, [[k.coach, closeUp(ch.x + 80, ch.y + 60, 1.9)], [k.queue, closeUp(ch.x + 80, ch.y + 40, 2.05)]]),
-    queue: glide(frame, k.queue, k.magic, { x: 1000, y: 560, zoom: 1.9 }, { x: 1480, y: 560, zoom: 1.9 }),
+    queue: glide(frame, k.queue, k.rate, { x: 1000, y: 560, zoom: 1.9 }, { x: 1480, y: 560, zoom: 1.9 }),
   };
   const cam = drift(cams[on], frame, "coach", 3);
   const phrase = Math.max(0, Math.min(2, Math.floor((frame - k.coach) / ((k.queue - k.coach) / 2.2))));
-  const speaking = frame >= k.coach && frame < k.magic - 6;
+  const speaking = frame >= k.coach && frame < k.rate - 6;
   const pose: Pose = speaking ? { ...STAND, armB: [[150, 120, 160][phrase], 20], armF: [30, 40] } : { ...STAND, armF: [40, 50] };
   const actors = (
     <>
@@ -155,7 +156,7 @@ export const Coach: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
           </g>
         );
       })}
-      <Figure {...COACH_B} pose={pose} head={COACH.head} coat={COACH.coat} brows="raised" lids={0} mouth={talk(frame, k.coach + 2, k.magic - 8, "smile", 6)}
+      <Figure {...COACH_B} pose={pose} head={COACH.head} coat={COACH.coat} brows="raised" lids={0} mouth={talk(frame, k.coach + 2, k.rate - 8, "smile", 6)}
         eyes={1.1} look={{ x: 0.9, y: 0 }} blink={blinking(frame, 9)} time={frame} />
       <SandwichBoard b={{ ...COACH_B, pose }} frame={frame} />
     </>
@@ -164,44 +165,11 @@ export const Coach: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return <Shot cam={cam} mood="day" lights={street.lights(options)} back={street.Back({ cam, mood: "day", frame, options })} actors={actors} />;
 };
 
-// ------------------------------------------------------------------------------------------------ dusk: tips, and your rate
-
-const MAG2: Body = { x: 800, y: 1010, scale: 1.3, facing: 1, pose: STAND };
-const TOURIST: Body = { x: 1150, y: 1010, scale: 1.25, facing: -1, pose: STAND };
-
-/** "The magician reads tags for tips.": a folding table on the street at dusk, the tourist's card, the coin. */
-export const Tips: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const tg = tags(k);
-  const th = headAt(TOURIST.x, TOURIST.y, TOURIST.scale, STAND, -1);
-  const cam = drift(camAt(frame, [[k.magic, { x: 980, y: 640, zoom: 1.55 }], [k.rate, { x: 990, y: 650, zoom: 1.68 }]]), frame, "tips", 3);
-  const pointing = frame >= k.magic + 8;
-  const give = ramp(frame, k.tip, k.tip + 14);
-  const hand = { x: mix(1060, 980, give), y: mix(880, 870, give) };
-  const tPose: Pose = frame >= k.tip - 4 ? { ...STAND, armF: aimArm(TOURIST, hand) } : STAND;
-  const actors = (
-    <>
-      <Figure {...MAG2} pose={{ ...STAND, armF: pointing ? [128, 6] : [60, 40], armB: [60, 60] }} head={MAGICIAN.head} coat={MAGICIAN.coat}
-        brows="raised" lids={0.2} mouth={talk(frame, k.magic + 8, k.tip, "smirk")} eyes={1} look={{ x: 0.6, y: -0.7 }} blink={blinking(frame, 7)} time={frame}
-        held={pointing ? undefined : <CardFan spread={0.4} />} />
-      <Figure {...TOURIST} pose={tPose} head={PASTELS[5]} coat="#c97a3a" brows={frame >= k.magic + 20 ? "raised" : "none"} lids={0}
-        mouth={frame >= k.magic + 20 ? "o" : "smile"} eyes={frame >= k.magic + 20 ? 1.25 : 1} look={{ x: 0.9, y: 0.2 }} blink={blinking(frame, 2)} time={frame} />
-      {/* the folding table and the tip tin */}
-      <rect x={880} y={846} width={220} height={16} rx={4} fill="#5a3b2a" stroke={INK} strokeWidth={5} />
-      <path d="M900 862 L1080 1010 M1080 862 L900 1010" stroke={INK} strokeWidth={8} />
-      <rect x={950} y={812} width={64} height={36} rx={6} fill="#9aa1ab" stroke={INK} strokeWidth={4} />
-      {frame >= k.tip + 14 && <Coin x={982} y={810 + Math.min(1, (frame - k.tip - 14) / 6) * 8} r={10} />}
-      {frame >= k.tip && frame < k.tip + 14 && <Coin x={hand.x} y={hand.y - 6} r={10} />}
-      <Tag frame={frame} x={th.x} headY={th.y} r={th.r} keys={tg.tourist} />
-    </>
-  );
-  const options = { ...street.defaults, auto: false, crowd: false };
-  return <Shot cam={cam} mood="dusk" lights={street.lights(options)} back={street.Back({ cam, mood: "dusk", frame, options })} actors={actors} />;
-};
+// ------------------------------------------------------------------------------------------------ dusk: your rate
 
 /** "Your rate falls. Sixty-one. Fifty-five. You've learned to read your tag before you reach.": your board on the
  *  pillar; then you at the till, the hand going out, stopping, your eyes up to your card, then the hand. */
 export const YourRate: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const tg = tags(k);
   const bd = boards(k);
   const you: Body = { x: COURT.you.x, y: COURT.you.y, scale: COURT.scale, facing: 1, pose: STAND };
   const yh = headAt(you.x, you.y, you.scale, STAND, 1);
@@ -209,7 +177,7 @@ export const YourRate: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const on = current(frame, [[k.rate, "board"], [k.reach - 6, "you"]]);
   const cam = drift(on === "board"
     ? camAt(frame, [[k.rate, insert(COURT.pillar.board.x + 30, COURT.pillar.board.y + 50, 2.7)], [k.reach - 6, insert(COURT.pillar.board.x + 30, COURT.pillar.board.y + 50, 2.95)]])
-    : camAt(frame, [[k.reach - 6, closeUp(yh.x - 20, yh.y + 10, 1.45)], [k.phone, closeUp(yh.x - 10, yh.y + 5, 1.55)]]), frame, "rate", 2);
+    : camAt(frame, [[k.reach - 6, closeUp(yh.x + 40, yh.y + 150, 1.9)], [k.napkin, closeUp(yh.x + 50, yh.y + 140, 2.0)]]), frame, "rate", 2);
   // out, stop half way, the eyes up, then the hand on
   const out = frame < k.reach ? 0 : frame < k.reach + 12 ? ramp(frame, k.reach, k.reach + 12) * 0.55 : frame < k.reach + 40 ? 0.55 : 0.55 + 0.45 * ramp(frame, k.reach + 40, k.reach + 50);
   const target = { x: mix(you.x + 60, till.x, out), y: mix(you.y - 360, till.y - 6, out) };
@@ -226,7 +194,6 @@ export const YourRate: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       {/* the till: a small drawer box on the counter */}
       <rect x={till.x - 60} y={till.y - 30} width={120} height={70} rx={8} fill="#3a4150" stroke={INK} strokeWidth={6} />
       <rect x={till.x - 44} y={till.y - 18} width={88} height={22} rx={4} fill="#7fe0d4" opacity={0.6} />
-      <Tag frame={frame} x={yh.x} headY={yh.y} r={yh.r} keys={tg.you} />
     </>
   );
   return (

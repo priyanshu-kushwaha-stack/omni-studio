@@ -1,31 +1,28 @@
-// Beat "Sixty Per Cent" (script.md, ## [04:53] Sixty Per Cent; narration lines 53-59). Mood dusk; the court behind
+// Beat "Sixty Per Cent" (script.md v2, ## [05:06] Sixty Per Cent; narration lines 60-65). Mood dusk; the court behind
 // is closing (shutters down), our own stall's shutter half down.
 //
-//   53  the stall, the shutter half down; cut to the shutter: a paper sheet unfolds, a head in profile draws itself,
+//   60  the stall, the shutter half down; cut to the shutter: a paper sheet unfolds, a head in profile draws itself,
 //       a scanner ring round it, two buttons
-//   54  a hand hovering over the buttons; a clock ticking a few seconds back; a tally, sixty marks against forty, "60";
+//   61  a hand hovering over the buttons; a clock ticking a few seconds back; a tally, sixty marks against forty, "60";
 //       a coin spinning, fifty and fifty, "50"
-//   55  close on your card, WIPES COUNTER 99% (it ticks: you are wiping); your face under it, brows pinched, looking up
-//   56  him with a napkin folded into a tie, chest out, the landlord's walk; you laughing, a hand over your mouth
-//   HOLD (5 s, performed): his slow nod and the envelope hand; you lean on the box laughing; his card drops,
-//       LANDLORD VOICE 97%; he stops mid-word, looks up at it; finishes the bit, quieter (the card ticks); pulls the
-//       napkin off
-//   57  "It knows the bit." (his own voice), the napkin in his hand
-//   58  insert: six in the morning, him alone, coins in rows, COUNTS COINS 88%; insert: the walkway at ten at night,
-//       him under a lamp with the phone, CHECKS PHONE 91%
-//   59  the next night's closing: the box, his hand flat on the counter, not yet out; your eyes on it
+//   62  close on your card, WIPES COUNTER 99% (it ticks: you are wiping); your face under it, brows pinched, looking up
+//   63  him at the counter turning a coin over, eyes up at his pillar; his board HIS RATE clatters up on "Up." and again
+//       on "Up again." to 118; insert: the landlord's envelope in his hand, his face reading it, not smiling; him at
+//       the back of the stall, cloth stopped on a tray, eyes on the tin box, a slow push in
+//   64  "Machine hates me." (his own voice): deadpan, a thumb jabbed at the board; the board flutters on 118 as if it
+//       answered; a double take; you snort into your hand (the laugh)
+//   65  the next night's closing: the box, his hand flat on the counter, not yet out; your eyes on it
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
-import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
+import { STAND, type Pose } from "@whatif/kit/rig/pose";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import type { Clip } from "@whatif/kit/timeline";
 import { lineAt, moodNow } from "../kit";
-import { TagSounds, type TagKey } from "../device";
-import { camAt, current, lineEnd, mix, ramp, type Beat, type Shot } from "../shared";
+import { BoardSounds, TagSounds, type BoardKey, type TagKey } from "../device";
+import { camAt, current, lineEnd, type Beat, type Shot } from "../shared";
 import { COURT } from "../sets/FoodCourt";
 import { BrainShot, onSheet, type BrainTimes } from "./SixtyPerCent.Brain";
-import { WalkwayShot, WALK } from "./SixtyPerCent.Walkway";
-import { Cloth, CoinRows, friendBody, heads, reachPose, StallScene, tagShot, talk, Tray, youBody, type Actor } from "./SixtyPerCent.Parts";
+import { Cloth, Envelope, friendBody, heads, reachPose, StallScene, tagShot, talk, Tray, youBody, type Actor } from "./SixtyPerCent.Parts";
 
 type T = ReturnType<typeof times>;
 
@@ -33,37 +30,45 @@ function times(clips: Clip[], to: number) {
   const at = lineAt(clips);
   const from = (i: number) => clips[i].from;
   const end = (i: number) => lineEnd(clips, i);
-  const hold = end(56), gap = Math.max(60, from(57) - end(56));
+  const flutter = at(64, 0.55);
   return {
-    open: from(53), // "You thought it read minds.": the stall, the shutter half down
-    sheet: at(53, 0.28), // the sheet unfolds on the shutter
-    ring: at(53, 0.62), // "Nothing reads minds.": the scanner ring
-    buttons: at(53, 0.85),
-    hover: from(54), // "In 2008, brain scans could guess whether a person would press a left or a right button"
-    hover2: at(54, 0.22), // "... whether a person would press a left or a right button"
-    clock: at(54, 0.44), // "... a few seconds before they felt they'd chosen."
-    tally: at(54, 0.66), // "The guess was right about sixty times in a hundred."
-    tallyDone: at(54, 0.77),
-    coin: at(54, 0.88), // "A coin gets fifty."
-    card: from(55), // "Sixty. And the card over you says ninety-nine."
-    cardTick: at(55, 0.2),
-    face: at(55, 0.5), // "So where's the other thirty-nine coming from?"
-    tie: from(56), // "Quiet all week. Then tonight, the landlord impression."
-    laugh: at(56, 0.62), // "The napkin tie. The one that always gets you."
-    hold, // HOLD: the nod and the envelope hand
-    flap: hold + Math.round(gap * 0.36), // his card: LANDLORD VOICE 97%
-    up: hold + Math.round(gap * 0.46), // he stops mid-word, looks up
-    quiet: hold + Math.round(gap * 0.62), // finishes the bit, quieter
-    napkinOff: hold + Math.round(gap * 0.8),
-    knows: from(57) - 2, // "It knows the bit."
-    knowsEnd: end(57),
-    six: from(58), // "At six in the morning his tag says counts coins."
-    ten: at(58, 0.52), // "At ten at night, checks phone."
-    next: from(59), // "Tomorrow his hand comes out, like every night."
-    eyes: at(59, 0.5), // "And the tag over it won't be a joke."
+    open: from(60), // "You thought it read minds.": the stall, the shutter half down
+    sheet: at(60, 0.28), // the sheet unfolds on the shutter
+    ring: at(60, 0.62), // "Nothing reads minds.": the scanner ring
+    buttons: at(60, 0.85),
+    hover: from(61), // "In 2008, brain scans could guess whether a person would press a left or a right button"
+    hover2: at(61, 0.22),
+    clock: at(61, 0.44), // "... a few seconds before they felt they'd chosen."
+    tally: at(61, 0.66), // "The guess was right about sixty per cent of the time."
+    tallyDone: at(61, 0.77),
+    coin: at(61, 0.88), // "A coin gets fifty."
+    card: from(62), // "Sixty. And the card over you says ninety-nine."
+    cardTick: at(62, 0.2),
+    face: at(62, 0.5), // "So where's the other thirty-nine coming from?"
+    his: from(63), // "And your best friend's board never came down after the coin."
+    board: at(63, 0.3),
+    up1: at(63, 0.55), // "Up."
+    up2: at(63, 0.61), // "Up again."
+    envelope: at(63, 0.67), // "He's been staring ..."
+    stare: at(63, 0.8), // "... at the box all week."
+    hates: from(64), // "Machine hates me."
+    hatesEnd: end(64),
+    flutter, // the board flutters back at him
+    react: flutter + 18, // double take; you snort (it runs on under the start of line 65)
+    next: Math.max(flutter + 46, at(65, 0.15)), // "Tomorrow his hand comes out, like every night."
+    eyes: Math.max(flutter + 90, at(65, 0.5)), // "And the tag over it won't be a joke."
     end: to,
   };
 }
+
+const yourKeys = (k: T): TagKey[] => [
+  { at: k.card + 4, text: "WIPES COUNTER", pct: 99, state: "new" },
+  { at: k.cardTick, text: "WIPES COUNTER", pct: 99, state: "tick" },
+];
+/** His rate: up on "Up.", up again on "Up again." to 118; on "Machine hates me." it flutters on 118 as if it answered. */
+const hisRate = (k: T): BoardKey[] => [
+  { at: -1e4, value: "106" }, { at: k.up1, value: "112" }, { at: k.up2, value: "118" }, { at: k.flutter, value: "118" },
+];
 
 // ------------------------------------------------------------------------------------------------ the diagram
 
@@ -94,124 +99,92 @@ function wiping(frame: number, lean = 10): Pose {
   return reachPose(b, { x: 660 + Math.sin(frame / 6) * 46, y: 774 + Math.cos(frame / 6) * 8 });
 }
 
-/** Him behind the counter doing the landlord: chest out, a slow pompous walk, the back hand behind him. */
-function landlordWalk(frame: number, from: number): Pose {
-  const w = walkPose((frame - from) * 0.12);
-  return { ...w, lean: -7, tilt: -6, armB: [-22, 64], armF: [20 + Math.sin((frame - from) / 8) * 10, 30] };
-}
-
-/** The landlord's slow nod and the envelope hand: the front arm out, palm down, flicking. */
-function landlordNod(frame: number, from: number, size = 1): Pose {
-  const t = (frame - from) / 14;
-  return { ...STAND, lean: -5, tilt: -4 + Math.sin(t) * 9 * size, armB: [-22, 64], armF: [78 + Math.sin(t * 1.6) * 8 * size, 18] };
-}
+/** Him at the back of the stall (line 63's stare). */
+const BACK_X = 1220;
+const COIN = <ellipse cx={0} cy={0} rx={12} ry={5} fill="#e8b84a" stroke="#23252b" strokeWidth={3} />;
 
 const StallShots: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
-  const on = current(frame, [[k.open, "open"], [k.card, "card"], [k.face, "face"], [k.tie, "tie"], [k.laugh, "laugh"], [k.hold, "bit"],
-    [k.flap, "flap"], [k.quiet, "quiet"], [k.knows, "knows"]]);
-  const yourTag: TagKey[] = [
-    { at: k.card + 4, text: "WIPES COUNTER", pct: 99, state: "new" },
-    { at: k.cardTick, text: "WIPES COUNTER", pct: 99, state: "tick" },
-  ];
-  const hisTag: TagKey[] = [
-    { at: k.flap, text: "LANDLORD VOICE", pct: 97, state: "new" },
-    { at: k.quiet + 8, text: "LANDLORD VOICE", pct: 97, state: "tick" },
-  ];
+  const on = current(frame, [[k.open, "open"], [k.card, "card"], [k.face, "face"], [k.his, "his"], [k.board, "board"], [k.envelope, "envelope"],
+    [k.stare, "stare"], [k.hates, "hates"], [k.flutter, "flutter"], [k.react, "react"]]);
+  const rate = { label: "HIS RATE", keys: hisRate(k) };
   // You.
-  const laughing = frame >= k.laugh && frame < k.knows;
-  const leanBox = frame >= k.hold && frame < k.flap + 20;
-  const fade = ramp(frame, k.up, k.up + 30);
   let you: Actor;
   if (on === "open" || on === "card" || on === "face") {
     const pinched = on === "face" || (on === "card" && frame > k.cardTick + 10);
     you = {
-      pose: wiping(frame), held: <Cloth />, tag: on === "open" ? undefined : yourTag,
+      pose: wiping(frame), held: <Cloth />, tag: on === "open" ? undefined : yourKeys(k),
       face: pinched ? { brows: "worry", lids: 0.15, mouth: "flat", eyes: 1, look: { x: 0.2, y: -0.9 } }
         : { brows: "none", lids: 0.25, mouth: "flat", eyes: 1, look: { x: 0.6, y: 0.7 } },
     };
-  } else if (leanBox) {
-    const b = youBody({ ...STAND, lean: 22, drop: 14 });
-    you = { pose: reachPose(b, { x: 730, y: 672 }, { x: 700, y: 676 }), face: { brows: "raised", lids: 0.55, mouth: "open", eyes: 1, look: { x: 0.9, y: -0.1 } } };
-  } else if (laughing) {
-    const b = youBody({ ...STAND, lean: 6, tilt: 8 });
+  } else if (on === "react") {
+    // The snort: a hand to the mouth, shoulders bouncing, eyes squeezed.
+    const b = youBody({ ...STAND, lean: 8 + Math.abs(Math.sin((frame - k.react) / 3)) * 5, tilt: 8 });
     const h = heads({ pose: b.pose }).you;
-    const smile = frame >= k.quiet ? mix(1, 0, fade) : 1;
-    you = {
-      pose: frame >= k.quiet ? b.pose : reachPose(b, { x: h.x + h.r * 0.55, y: h.y + h.r * 0.45 }),
-      face: { brows: smile > 0.5 ? "raised" : "flat", lids: smile > 0.5 ? 0.6 : 0.15, mouth: smile > 0.5 ? "smile" : "flat", eyes: 1, look: { x: 0.9, y: frame >= k.up ? -0.6 : 0 } },
-    };
+    you = { pose: reachPose(b, { x: h.x + h.r * 0.55, y: h.y + h.r * 0.45 }), face: { brows: "raised", lids: 0.75, mouth: "smile", eyes: 1, look: { x: 0.9, y: 0 } } };
   } else {
-    you = { pose: STAND, face: { brows: "raised", lids: 0.2, mouth: "smile", eyes: 1, look: { x: 0.9, y: 0 } } };
+    you = { pose: wiping(frame, 6), held: <Cloth />, face: { brows: "none", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.1 } } };
   }
   // Him.
   let friend: Actor;
-  const tieOn = frame >= k.tie;
-  const napkin = tieOn ? ramp(frame, k.napkinOff, k.napkinOff + 14) : undefined;
+  const fb = friendBody({ ...STAND, lean: 6 });
   if (on === "open" || on === "card" || on === "face") {
     friend = { pose: { ...STAND, armF: [55, 75], armB: [30, 60] }, held: <Tray />, face: { brows: "none", lids: 0.3, mouth: "flat", eyes: 1, look: { x: 0.5, y: 0.6 } } };
-  } else if (frame < k.hold) {
-    const x = mix(1200, 1040, ramp(frame, k.tie, k.laugh + 20));
-    friend = { x, pose: landlordWalk(frame, k.tie), napkin, face: { brows: "flat", lids: 0.45, mouth: talk(frame, k.tie + 10, k.hold, "smirk", 7), eyes: 1, look: { x: 0.6, y: -0.2 } } };
-  } else if (frame < k.up) {
-    friend = { x: 1040, pose: landlordNod(frame, k.hold), napkin, tag: hisTag, face: { brows: "flat", lids: 0.45, mouth: talk(frame, k.hold, k.up, "flat", 6), eyes: 1, look: { x: 0.8, y: 0 } } };
-  } else if (frame < k.quiet) {
-    friend = { x: 1040, pose: { ...landlordNod(k.up, k.hold), tilt: 4 }, napkin, tag: hisTag, face: { brows: "raised", lids: 0, mouth: "o", eyes: 1.15, look: { x: 0.1, y: -1 } } };
-  } else {
-    const off = frame >= k.napkinOff;
-    const b = friendBody({ ...STAND, lean: -2 });
+  } else if (on === "his" || on === "board") {
+    // Turning a coin over on the counter, eyes up at his board on the pillar.
+    const flip = Math.floor((frame - k.his) / 14) % 2;
+    friend = { pose: reachPose(fb, { x: 980, y: 776 - flip * 26 }), held: COIN, face: { brows: "flat", lids: 0.4, mouth: "flat", eyes: 1, look: { x: 0.9, y: -0.55 } } };
+  } else if (on === "envelope") {
+    const h0 = heads(undefined, { pose: fb.pose }).friend;
+    friend = { pose: reachPose(fb, { x: h0.x - h0.r * 1.6, y: h0.y + h0.r * 1.4 }), held: <Envelope x={10} y={-6} scale={0.55} tilt={-14} />,
+      face: { brows: "flat", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 0.8, y: 0.6 } } };
+  } else if (on === "stare") {
+    const stop = frame >= k.stare + 14;
     friend = {
-      x: 1040, napkin, tag: hisTag,
-      pose: off ? reachPose({ ...b, x: 1040 }, { x: 960, y: 700 }) : landlordNod(frame, k.hold, 0.4),
-      held: off ? <g transform="rotate(30)"><path d="M-12 -30 L12 -30 L8 30 L0 40 L-8 30Z" fill="#f3e9d7" stroke="#23252b" strokeWidth={3} /></g> : undefined,
-      face: on === "knows"
-        ? { brows: "worry", lids: 0.3, mouth: talk(frame, k.knows + 2, k.knowsEnd, "flat", 6), eyes: 1, look: frame < k.knows + 30 ? { x: 0.2, y: -0.9 } : { x: 0.9, y: 0 } }
-        : { brows: "flat", lids: 0.35, mouth: talk(frame, k.quiet, k.napkinOff, "flat", 9), eyes: 1, look: { x: 0.8, y: 0.2 } },
+      x: BACK_X, held: <Tray tilt={-4} />, back: <Cloth />,
+      pose: { ...STAND, lean: 6, armF: [60, 50], armB: [50 + (stop ? 0 : Math.sin(frame / 5) * 12), 60] },
+      face: { brows: stop ? "flat" : "none", lids: stop ? 0.2 : 0.4, mouth: "flat", eyes: 1, look: stop ? { x: 0.95, y: 0.55 } : { x: 0.4, y: 0.85 } },
     };
+  } else if (on === "hates" || on === "flutter") {
+    // Deadpan, a thumb jabbed back over his shoulder at the board.
+    const h0 = heads(undefined, { pose: fb.pose }).friend;
+    friend = { pose: reachPose(fb, { x: h0.x - h0.r * 2.4, y: h0.y - h0.r * 0.4 }),
+      face: { brows: "flat", lids: 0.55, mouth: talk(frame, k.hates + 2, k.hatesEnd, "flat", 6), eyes: 1, look: { x: 0.8, y: 0 } } };
+  } else {
+    // The double take: throws both hands out at the board, eyes snapping to it, then to you.
+    const t = frame - k.react;
+    friend = { pose: { ...STAND, lean: -4, armF: [110, -20], armB: [70, -10] },
+      face: { brows: t < 12 ? "raised" : "flat", lids: t < 12 ? 0 : 0.5, mouth: t < 12 ? "o" : "smirk", eyes: t < 12 ? 1.25 : 1, look: t < 12 ? { x: 0.9, y: -0.6 } : { x: 0.95, y: 0 } } };
   }
   const h = heads(you, friend);
+  const board = { x: COURT.pillar.board.x, y: COURT.pillar.board.y + 50 };
   const cams: Record<typeof on, Camera> = {
     open: camAt(frame, [[k.open, { x: 840, y: 470, zoom: 1.2 }], [k.sheet, { x: 830, y: 480, zoom: 1.3 }]]),
     card: camAt(frame, [[k.card, tagShot(h.you, 2.3)], [k.face, { x: h.you.x, y: h.you.y - 160, zoom: 2.1 }]]),
-    face: camAt(frame, [[k.face, closeUp(h.you.x + 20, h.you.y, 2.5)], [k.tie, closeUp(h.you.x + 20, h.you.y, 2.7)]]),
-    tie: camAt(frame, [[k.tie, { x: 1060, y: 520, zoom: 1.7 }], [k.laugh, { x: 1000, y: 520, zoom: 1.8 }]]),
-    laugh: camAt(frame, [[k.laugh, closeUp(h.you.x + 30, h.you.y, 2.4)], [k.hold, closeUp(h.you.x + 30, h.you.y, 2.55)]]),
-    bit: camAt(frame, [[k.hold, { x: 820, y: 470, zoom: 1.45 }], [k.flap, { x: 840, y: 460, zoom: 1.52 }]]),
-    flap: camAt(frame, [[k.flap, tagShot(h.friend, 1.9)], [k.quiet, tagShot(h.friend, 2.05)]]),
-    quiet: camAt(frame, [[k.quiet, { x: 860, y: 470, zoom: 1.5 }], [k.knows, { x: 900, y: 460, zoom: 1.6 }]]),
-    knows: camAt(frame, [[k.knows, closeUp(h.friend.x - 20, h.friend.y - 30, 2.4)], [k.six, closeUp(h.friend.x - 20, h.friend.y - 30, 2.6)]]),
+    face: camAt(frame, [[k.face, closeUp(h.you.x + 20, h.you.y, 2.5)], [k.his, closeUp(h.you.x + 20, h.you.y, 2.7)]]),
+    his: camAt(frame, [[k.his, { x: 1000, y: 560, zoom: 1.8 }], [k.board, { x: 980, y: 550, zoom: 1.9 }]]),
+    board: camAt(frame, [[k.board, { ...board, zoom: 3.0 }], [k.envelope, { ...board, zoom: 3.4 }]]),
+    envelope: camAt(frame, [[k.envelope, closeUp(h.friend.x - 60, h.friend.y + 20, 2.6)], [k.stare, closeUp(h.friend.x - 60, h.friend.y + 20, 2.8)]]),
+    stare: camAt(frame, [[k.stare, { x: 1020, y: 560, zoom: 1.35 }], [k.hates, { x: 1120, y: 470, zoom: 1.9 }]]),
+    hates: camAt(frame, [[k.hates, closeUp(h.friend.x - 40, h.friend.y, 2.3)], [k.flutter, closeUp(h.friend.x - 40, h.friend.y, 2.45)]]),
+    flutter: camAt(frame, [[k.flutter, { ...board, zoom: 3.2 }], [k.react, { ...board, zoom: 3.25 }]]),
+    react: camAt(frame, [[k.react, { x: 820, y: 480, zoom: 1.45 }], [k.next, { x: 830, y: 480, zoom: 1.5 }]]),
   };
   return (
     <StallScene frame={frame} cam={drift(cams[on], frame, `sixty-${on}`, 3)} mood={mood} backMood="lamp" ourShutter={0.45}
-      you={you} friend={friend} coffeeBoard={[{ at: 0, value: "1.50" }]} />
+      you={you} friend={friend} coffeeBoard={[{ at: 0, value: "1.50" }]} pillarBoard={rate}
+      box={{ open: on === "stare" ? 0.3 : 0 }} />
   );
 };
 
-// ------------------------------------------------------------------------------------------------ the two inserts and the next night
+// ------------------------------------------------------------------------------------------------ the next night
 
-const Inserts: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
-  const on = current(frame, [[k.six, "six"], [k.ten, "ten"], [k.next, "next"], [k.eyes, "eyes"]]);
-  if (on === "ten") {
-    const tag: TagKey[] = [{ at: k.ten + 6, text: "CHECKS PHONE", pct: 91, state: "new" }, { at: k.ten + 34, text: "CHECKS PHONE", pct: 91, state: "tick" }];
-    const cam = camAt(frame, [[k.ten, { x: WALK.friend.x + 60, y: 380, zoom: 1.7 }], [k.next, { x: WALK.friend.x + 40, y: 370, zoom: 1.85 }]]);
-    return <WalkwayShot frame={frame} cam={drift(cam, frame, "walk", 3)} tag={tag} from={k.ten} />;
-  }
-  if (on === "six") {
-    const tag: TagKey[] = [{ at: k.six + 6, text: "COUNTS COINS", pct: 88, state: "new" }, { at: k.six + 34, text: "COUNTS COINS", pct: 88, state: "tick" }];
-    const coins = Math.min(24, 4 + Math.floor((frame - k.six) / 5));
-    const n = coins - 1;
-    const target = { x: 600 + (n % 8) * 34, y: 780 - Math.floor(n / 8) * 14 };
-    const b = friendBody({ ...STAND, lean: 18 });
-    const friend: Actor = { pose: reachPose(b, target), tag, face: { brows: "flat", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.9 } } };
-    const cam = camAt(frame, [[k.six, { x: 900, y: 450, zoom: 1.35 }], [k.ten, { x: 910, y: 440, zoom: 1.45 }]]);
-    return (
-      <StallScene frame={frame} cam={drift(cam, frame, "six", 3)} mood="morning" backMood="morning" diners={false}
-        friend={friend} box={{ hidden: true }} front={<CoinRows x={600} y={786} n={24} shown={coins} />} />
-    );
-  }
-  // The next night: the box; his hand flat on the counter, not yet out; your eyes on it.
+const NextNight: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodNow> }> = ({ frame, k, mood }) => {
+  const on = current(frame, [[k.next, "next"], [k.eyes, "eyes"]]);
+  // The box; his hand flat on the counter, not yet out (the fingers drum once); your eyes on it.
+  const drum = Math.max(0, Math.sin((frame - k.next) / 5)) * 6 * (frame < k.next + 40 ? 1 : 0);
   const b = friendBody({ ...STAND, lean: 6 });
-  const friend: Actor = { pose: reachPose(b, { x: 980, y: 784 }), face: { brows: "none", lids: 0.35, mouth: "flat", eyes: 1, look: { x: 0.6, y: 0.8 } } };
-  const you: Actor = { pose: STAND, face: { brows: "worry", lids: 0.25, mouth: "flat", eyes: 1, look: { x: 1, y: 0.75 } } };
+  const friend: Actor = { pose: reachPose(b, { x: 980, y: 784 - drum }), face: { brows: "none", lids: 0.35, mouth: "flat", eyes: 1, look: { x: 0.6, y: 0.8 } } };
+  const you: Actor = { pose: STAND, face: { brows: "flat", lids: 0.25, mouth: "flat", eyes: 1, look: { x: 1, y: 0.75 } } };
   const h = heads(you, friend);
   const cam = on === "next"
     ? camAt(frame, [[k.next, insert(900, 700, 2.6)], [k.eyes, insert(920, 710, 2.8)]])
@@ -225,26 +198,23 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const { frame, clips } = shot;
   const k = times(clips, shot.to);
   const mood = moodNow(shot);
-  const part = current(frame, [[0, "open"], [k.sheet, "diagram"], [k.card, "stall"], [k.six, "inserts"]]);
-  const yourTag: TagKey[] = [{ at: k.card + 4, text: "WIPES COUNTER", pct: 99, state: "new" }, { at: k.cardTick, text: "WIPES COUNTER", pct: 99, state: "tick" }];
-  const hisTag: TagKey[] = [{ at: k.flap, text: "LANDLORD VOICE", pct: 97, state: "new" }, { at: k.quiet + 8, text: "LANDLORD VOICE", pct: 97, state: "tick" }];
-  const sixTag: TagKey[] = [{ at: k.six + 6, text: "COUNTS COINS", pct: 88, state: "new" }, { at: k.six + 34, text: "COUNTS COINS", pct: 88, state: "tick" }];
-  const tenTag: TagKey[] = [{ at: k.ten + 6, text: "CHECKS PHONE", pct: 91, state: "new" }, { at: k.ten + 34, text: "CHECKS PHONE", pct: 91, state: "tick" }];
+  const part = current(frame, [[0, "open"], [k.sheet, "diagram"], [k.card, "stall"], [k.next, "next"]]);
+  const coinTaps = [0, 1, 2].map((i) => k.his + 14 + i * 28).filter((f) => f < k.board);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {(part === "open" || part === "stall") && <StallShots frame={frame} k={k} mood={mood} />}
       {part === "diagram" && <Diagram frame={frame} k={k} mood={mood} />}
-      {part === "inserts" && <Inserts frame={frame} k={k} mood={mood} />}
-      <TagSounds keys={yourTag} />
-      <TagSounds keys={hisTag} />
-      <TagSounds keys={sixTag} volume={0.8} />
-      <TagSounds keys={tenTag} volume={0.8} />
-      {/* the coins going into rows at six in the morning */}
-      {[0, 1, 2, 3].map((i) => (
-        <Sequence key={i} from={k.six + 8 + i * 15} durationInFrames={14}><Audio src={staticFile("sfx/coin.wav")} volume={0.35} /></Sequence>
+      {part === "next" && <NextNight frame={frame} k={k} mood={mood} />}
+      <TagSounds keys={yourKeys(k)} />
+      <BoardSounds keys={hisRate(k)} volume={0.7} />
+      {/* his coin turned over on the steel counter */}
+      {coinTaps.map((f) => (
+        <Sequence key={f} from={f} durationInFrames={14}><Audio src={staticFile("sfx/coin.wav")} volume={0.25} /></Sequence>
       ))}
+      {/* the envelope's paper */}
+      <Sequence from={k.envelope} durationInFrames={20}><Audio src={staticFile("sfx/flap.wav")} volume={0.35} /></Sequence>
     </AbsoluteFill>
   );
 };
 
-export const sixtyPerCent: Beat = { id: "sixtyPerCent", firstLine: 53, Component: Scene };
+export const sixtyPerCent: Beat = { id: "sixtyPerCent", firstLine: 60, Component: Scene };

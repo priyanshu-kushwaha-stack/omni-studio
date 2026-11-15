@@ -80,6 +80,9 @@ voices:
       Sister: >-
         A small, frightened female mezzo: a young woman in her twenties on a phone line. Hushed and quick, trying to
         stay calm.
+      Newsreader: >-
+        A crisp, bright female alto: a television newsreader in her thirties. Polished and quick, a smile in the
+        voice, every line a headline.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.

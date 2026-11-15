@@ -11,7 +11,7 @@ import type { Camera } from "@whatif/kit/stage/Stage";
 import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, INK, PAPER, TEAL } from "@whatif/kit/theme";
 import { Tag } from "../device";
-import { blinking, COFFEE, FRIEND, HERO, PASTELS } from "../shared";
+import { blinking, COFFEE, FRIEND, HERO, KID, PASTELS } from "../shared";
 import { Deep } from "../sets/common";
 
 // ------------------------------------------------------------------------------------------------ the geometry (data.ts)
@@ -53,6 +53,8 @@ export const BOX = { x: HAND0.x - 60, w: 300, h: COUNTER_TOP - HAND0.y - 8 };
 /** Your palm and the key on it. */
 export const PALM = frontHand(YOU.x, YOU.y, YOU.scale, OFFER);
 export const KEY_AT = { x: PALM.x + 20, y: PALM.y - 30 };
+/** The key on your palm drawn large, as in the thumbnail (about 12% of the frame's width). */
+export const KEY_SCALE = 2.3;
 export const YOUR_HEAD = headOf(YOU.x, YOU.y, YOU.scale, OFFER);
 export const HIS_HEAD = headOf(HIM.x, HIM.y, HIM.scale, LEAN, -1);
 /** His shoulder, for aiming his front arm. */
@@ -124,14 +126,15 @@ const YourShade: React.FC = () => (
  *  the counter. */
 export interface Watcher { x: number; y: number; s: number; head: string; coat: string; text: string; pct: number; turn: number; away: 1 | -1 }
 
-/** The watchers, their faces turning on the peak at `turn` frames after it starts (TheKey.tsx adds the start). */
+/** The watchers, their faces turning on the peak at `turn` frames after it starts (TheKey.tsx adds the start). Their
+ *  cards are v2 TAG lines that fit a court at closing, teal, and never change. */
 export const WATCHERS: Watcher[] = [
-  { x: 120, y: 905, s: 0.8, head: PASTELS[0], coat: "#2a2d36", text: "GOES HOME", pct: 92, turn: 24, away: -1 },
-  { x: 780, y: 915, s: 0.85, head: PASTELS[3], coat: "#3b4a6b", text: "STACKS CHAIRS", pct: 96, turn: 70, away: -1 },
-  { x: 1000, y: 900, s: 0.78, head: PASTELS[2], coat: "#2a2d36", text: "SWEEPS", pct: 98, turn: 112, away: 1 },
-  { x: 1310, y: 910, s: 0.82, head: PASTELS[5], coat: "#5f3d6b", text: "LOCKS UP", pct: 97, turn: 48, away: 1 },
-  { x: -380, y: 905, s: 0.8, head: PASTELS[6], coat: "#3b4a6b", text: "CHECKS PHONE", pct: 94, turn: 90, away: -1 },
-  { x: 2150, y: 905, s: 0.8, head: PASTELS[4], coat: "#2a2d36", text: "WALKS OUT", pct: 93, turn: 140, away: 1 },
+  { x: 120, y: 905, s: 0.8, head: PASTELS[0], coat: "#2a2d36", text: "WIPES COUNTER", pct: 99, turn: 26, away: -1 },
+  { x: 780, y: 915, s: 0.85, head: PASTELS[3], coat: "#3b4a6b", text: "STANDS STILL", pct: 99, turn: 122, away: -1 },
+  { x: 1000, y: 900, s: 0.78, head: PASTELS[2], coat: "#2a2d36", text: "HUMS", pct: 99, turn: 136, away: 1 },
+  { x: 1310, y: 910, s: 0.82, head: PASTELS[5], coat: "#5f3d6b", text: "LISTENS", pct: 99, turn: 48, away: 1 },
+  { x: -380, y: 905, s: 0.8, head: PASTELS[6], coat: "#3b4a6b", text: "LOOKS AT PHONE", pct: 99, turn: 150, away: -1 },
+  { x: 2150, y: 905, s: 0.8, head: PASTELS[4], coat: "#2a2d36", text: "STARES", pct: 95, turn: 164, away: 1 },
 ];
 /** Where the coffee seller stands with her phone up, at the right of the court. */
 export const SELLER = { x: 1845, y: 920, s: 0.95 };
@@ -155,29 +158,50 @@ const Watchers: React.FC<{ frame: number; peak: number; long: number }> = ({ fra
   </g>
 );
 
-/** The coffee seller with her phone up, filming; she lowers it from `lower`. */
-const Seller: React.FC<{ frame: number; lower: number }> = ({ frame, lower }) => {
-  const t = Math.min(1, Math.max(0, (frame - lower) / 14));
-  const up: Pose = { ...STAND, armF: [150 - 120 * t, 30 + 10 * t], armB: [140 - 120 * t, 40] };
+/** The coffee seller with her phone up, filming; at `drop` it slips out of her hand (TheKey.Court draws the fall close),
+ *  and her hands stay up, empty, her mouth a round O. */
+const Seller: React.FC<{ frame: number; drop: number }> = ({ frame, drop }) => {
+  const gone = frame >= drop;
+  const up: Pose = { ...STAND, armF: gone ? [120, 40] : [150, 30], armB: gone ? [110, 50] : [140, 40] };
   const h = headOf(SELLER.x, SELLER.y, SELLER.s, up, -1);
   return (
     <g>
       <Figure x={SELLER.x} y={SELLER.y} scale={SELLER.s} facing={-1} pose={up} head={COFFEE.head} coat={COFFEE.coat}
-        mouth={t > 0.5 ? "o" : "flat"} brows={t > 0.5 ? "raised" : "flat"} lids={t > 0.5 ? 0 : 0.3} look={{ x: 0.9, y: 0.1 }}
-        blink={blinking(frame, 9)} time={frame} held={<g transform="scale(1.6)"><HandPhone lit /></g>} />
+        mouth={gone ? "o" : "flat"} brows={gone ? "raised" : "flat"} lids={gone ? 0 : 0.3} eyes={gone ? 1.2 : 1} look={{ x: 0.9, y: 0.1 }}
+        blink={blinking(frame, 9)} time={frame} held={gone ? undefined : <g transform="scale(1.6)"><HandPhone lit /></g>} />
       <path d={`M${h.x - h.r * 0.9} ${h.y - h.r * 0.55} Q${h.x} ${h.y - h.r * 1.45} ${h.x + h.r * 0.9} ${h.y - h.r * 0.55} Z`} fill={COFFEE.cap}
         stroke={INK} strokeWidth={3} />
     </g>
   );
 };
 
-/** Everything behind the actors: the court, the watchers, the coffee seller, the lamp, the shade behind your head. */
-export const KeyBack: React.FC<{ cam: Camera; frame: number; peak: number; lower: number }> = ({ cam, frame, peak, lower }) => (
+/** The kid with the cap at the last lit table, small in the dark court: sitting until `up`, then standing on his chair. */
+const KidAtTable: React.FC<{ frame: number; up: number }> = ({ frame, up }) => {
+  const x = 1150, floor = 905;
+  const stood = frame >= up;
+  const y = stood ? floor - 46 : floor;
+  const pose: Pose = stood ? { ...STAND, armF: [150, 10], armB: [140, 20] } : { ...STAND, armF: [60, 40] };
+  return (
+    <g>
+      <ellipse cx={x} cy={floor - 10} rx={170} ry={40} fill="#ffd98a" opacity={0.12} />
+      <rect x={x + 40} y={floor - 120} width={150} height={12} fill="#2a2e3c" />
+      <rect x={x - 40} y={floor - 46} width={80} height={10} fill="#2a2e3c" />
+      <rect x={x - 34} y={floor - 36} width={8} height={36} fill="#2a2e3c" />
+      <rect x={x + 26} y={floor - 36} width={8} height={36} fill="#2a2e3c" />
+      <Figure x={x} y={y} scale={0.6} facing={1} pose={pose} head={KID.head} coat={KID.coat} cap={KID.cap} brows={stood ? "raised" : "none"}
+        mouth={stood ? "open" : "flat"} eyes={1.1} look={{ x: 1, y: 0.1 }} blink={blinking(frame, 7)} time={frame} />
+    </g>
+  );
+};
+/** Everything behind the actors: the court, the watchers, the kid at the last lit table, the coffee seller, the lamp,
+ *  the shade behind your head. */
+export const KeyBack: React.FC<{ cam: Camera; frame: number; peak: number; drop: number; kidUp: number }> = ({ cam, frame, peak, drop, kidUp }) => (
   <g>
     <Deep cam={cam} depth={0.7}>
       <Court />
       <Watchers frame={frame} peak={peak} long={peak - 400} />
-      <Seller frame={frame} lower={lower} />
+      <KidAtTable frame={frame} up={kidUp} />
+      <Seller frame={frame} drop={drop} />
       <rect x={-1400} y={-900} width={4800} height={2800} fill="#05060a" opacity={0.28} />
     </Deep>
     <Lamp />
@@ -282,14 +306,14 @@ export const KeyCounter: React.FC = () => (
 
 export type Face = Partial<{ brows: "none" | "raised" | "worry" | "sad" | "angry" | "flat"; lids: number; mouth: "none" | "smile" | "smirk" | "o" | "flat" | "open" | "frown" | "wobble"; eyes: number; look: { x: number; y: number }; blink: boolean }>;
 
-/** You, in the thumbnail's pose, the key on your palm unless `key` is false. */
+/** You, in the thumbnail's pose, the key large on your palm unless `showKey` is false. */
 export const You: React.FC<{ frame: number; face: Face; pose?: Pose; showKey?: boolean }> = ({ frame, face, pose = OFFER, showKey = true }) => {
   const hand = frontHand(YOU.x, YOU.y, YOU.scale, pose);
   return (
     <g>
       <Figure x={YOU.x} y={YOU.y} scale={YOU.scale} pose={pose} head={HERO.head} scarf={HERO.scarf} tuft flow={0.1} time={frame}
         blink={blinking(frame, 1)} {...face} />
-      {showKey && <BrassKey x={hand.x + 20} y={hand.y - 30} />}
+      {showKey && <BrassKey x={hand.x + 20} y={hand.y - 30} scale={KEY_SCALE} />}
     </g>
   );
 };

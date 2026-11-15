@@ -1,0 +1,73 @@
+{
+  "call_id": "1f33460665e44d50b9f41f152243f2b0",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 9,
+    "causal beat chain": 7,
+    "stakes and payoff": 9,
+    "close": 6,
+    "must-pass compliance": 7
+  },
+  "blockers": [
+    {
+      "quote": "The train. Every head on its phone, every card LOOKS AT PHONE 99%, and in the middle of the bench two crimson cards, yours and his. The passengers either side shift down the bench without looking up. The fare board ticks down for them and holds for you.",
+      "why": "Check #22 fails: this introduces social rejection and sadness inside the last two minutes, without a laugh.",
+      "fix": "Replace the passengers shifting away with them leaning over to read the crimson cards; their own cards flip NOSY 99%, and they recoil into their phones, caught. Add `> TAG: NOSY 99%`.",
+      "domain": "story",
+      "line": 526
+    },
+    {
+      "quote": "So, would your tag be blank? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "why": "Check #19 fails: whether the tag is blank is an outcome, not a closing choice.",
+      "fix": "So\u2014take the discount, or make the card go blank? Tell us in the comments. If you'd risk full price, hit like and subscribe.",
+      "domain": "story",
+      "line": 546
+    },
+    {
+      "quote": "Morning. A queue at your stall. Every one of them holding out a key.",
+      "why": "Check #11 fails: the narration says exactly what the shot already shows.",
+      "fix": "By breakfast, your impossible choice is the city's newest half-price trick.",
+      "domain": "story",
+      "line": 500
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 477,
+      "quote": "A hundred and sixty teams once tried to predict how children's lives would turn out (c24). Thousands of facts on every family (c24). The best guesses were only slightly better than a simple one from four facts (c24).",
+      "fix": "Cut this fact block; the insurance, Goodhart and self-fulfilling-prophecy facts already establish the reversal, and this delays the copycat consequence."
+    },
+    {
+      "line": 212,
+      "quote": "His tag says which card. By lunch, no act.",
+      "fix": "His tag says which card. Once surprise becomes a tell, every game built on it starts collapsing."
+    },
+    {
+      "line": 224,
+      "quote": "Soon every striker obeys, and nobody scores.",
+      "fix": "Therefore every striker obeys, every keeper knows, and the game collapses into nil-nil."
+    }
+  ],
+  "keep": [
+    {
+      "line": 345,
+      "quote": "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him."
+    },
+    {
+      "line": 375,
+      "quote": "It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court."
+    },
+    {
+      "line": 481,
+      "quote": "It never got better at seeing you. You got better at being seen."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "bec096be6e196ba8d989cfa647fc226dfaf1bb3d1da60ae2a29a55e6e797ec66",
+  "draft_sha256": "902d305a395b8973eb338a257065d8d15490156a90421f6a6701b1b89d4490fd"
+}

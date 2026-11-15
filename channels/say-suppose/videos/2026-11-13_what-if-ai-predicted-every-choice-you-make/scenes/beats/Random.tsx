@@ -1,25 +1,30 @@
-// Beat "Random" (script.md, ## [01:38] Random; narration lines 15-23). Morning. Your bathroom mirror (sets/
+// Beat "Random" (script.md v2, ## [01:35] Random; narration lines 16-25). Morning. Your bathroom mirror (sets/
 // MirrorBathroom): you try to break the forecast and lose four times; the paper keys F and D; the coffee stall's 3.60;
-// your best friend's coin; the court at lunch, a card over every head, ticking. The court scenes are in Random.Court.
+// your best friend's coin and the loophole that isn't one ("it saw you reach"); the court at lunch, a card over every
+// head, ticking, and you reading them. The court scenes are in Random.Court.
 //
-//   15   the mirror: your face, toothbrush, BRUSHES 97% over you on a thread from the teal lamp over the glass, the small
-//        board 100 in the corner; "So guess wrong": you lift your chin at the card
-//   hold RAISES RIGHT 71%; you raise your left hand: buzz, crimson, 108; RAISES LEFT 88%; you freeze, hand half up: buzz,
-//        117; FREEZES 93%; tongue out: buzz, 121; TONGUE 79%; both hands flat on the basin, staring: buzz, 125;
-//        STARES 95%, tick; the tongue goes back in
-//   16   "Four reds. Up twenty-five": the board on 125
-//   17   a paper sheet over the mirror: the keys F and D; a row of guesses drawing itself over a row of presses, seven
-//        joined of ten; your face under it, toothpaste at the corner of your mouth
-//   18   "Trying to be random is a pattern.": your face, close
-//   19   the coffee stall: her board for you flaps to 3.60; she slides the cup and taps the board, eyebrows up
-//   20   "You're up today." (her own voice), close
-//   21   your stall: your best friend, a coin on his thumb, FLIPS AGAIN 90%; he flips: tick; pockets it, folds his arms;
-//        insert: FLIPS AGAIN 70%; he stares at the seventy
-//   hold his hand goes back into his pocket on its own; the coin out; he looks at it; flips: tick; drops it on the counter
-//        like it burned and wipes his hand on his apron
-//   22   "It's in my head." (his own voice), close
-//   23   the court filling for lunch, a card over every head, nearly all teal, ticking; a pan across the tables; the
-//        pillar's board flapping down
+//   16   the mirror: your face, toothbrush, RAISES RIGHT 71% dropping over you on a thread from the teal lamp over the
+//        glass, the small board 100 in the corner; "So guess wrong": you lift your chin at the card
+//   hold you raise your left hand: buzz, crimson, 108; RAISES LEFT 88%; you freeze, hand half up: buzz, 117; FREEZES 93%;
+//        tongue out: buzz, 121; TONGUE 79%; both hands flat on the basin, staring: buzz, 125; STARES 95%, tick; the
+//        tongue goes back in
+//   17   "Four reds. Up twenty-five": the board on 125 (YOUR RATE 125)
+//   18   a paper sheet over the mirror, one sentence at a time: the keys F and D and the program's guesses; seven of ten
+//        joined; "He couldn't beat it himself": your face under it, toothpaste at the corner of your mouth, comic dismay
+//   19   "Trying to be random is a pattern.": your face, close; you try one last random face and catch yourself
+//   20   the coffee stall: her board for you clatters to 3.60; she slides the cup across the steel (the scrape) and taps
+//        the board, eyebrows up
+//   21   "You're up today." (her own voice), close
+//   22   "Fine. Let a coin choose.": your best friend, a coin on his thumb, FLIPS AGAIN 90%; he flips: tick; pockets it,
+//        folds his arms; insert: FLIPS AGAIN 70%; he stares at the seventy
+//   hold his hand goes back into his pocket on its own; the coin out; he looks at it; flips: tick; drops it on the steel
+//        like it burned (a sharp clink) and wipes his hand on his apron
+//   23   "It's in my head." (his own voice), close, alarmed
+//   24   "A coin can't choose for you.": the coin on the counter; "You still choose to flip it.": his hand creeps toward it,
+//        his other hand slaps it away; "And it saw you reach.": his card ticks anyway, he glares up at it; you laugh
+//   25   the court filling for lunch, a card over every head, nearly all teal, ticking; a pan across the tables; "So you
+//        stop fighting your tag. And start reading everyone else's.": you at your counter, eyes up on the cards over the
+//        queue, a sly smile
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, type Pose } from "@whatif/kit/rig/pose";
@@ -46,17 +51,19 @@ function times(clips: LineClip[], to: number) {
   const at = lineAt(clips);
   const from = (i: number) => clips[i].from;
   const end = (i: number) => lineEnd(clips, i);
-  const e15 = end(15);
-  const g = from(16) - e15; // the 6 s hold
-  const h = (p: number) => e15 + Math.round(g * p);
+  const e16 = end(16);
+  const g = from(17) - e16; // the 6 s hold
+  const h = (p: number) => e16 + Math.round(g * p);
   const court: CourtTimes = {
-    coffee: from(19), dearer: at(19, 0.36), tap: at(19, 0.58), upToday: from(20), upEnd: end(20),
-    coin: from(21), coinEnd: end(21), pocketAgain: end(21) + Math.round((from(22) - end(21)) * 0.12),
-    head: from(22), headEnd: end(22), lunch: from(23), pan: at(23, 0.4), boards: at(23, 0.76), end: to,
+    coffee: from(20), dearer: at(20, 0.36), tap: at(20, 0.58), upToday: from(21), upEnd: end(21),
+    coin: from(22), coinEnd: end(22), pocketAgain: end(22) + Math.round((from(23) - end(22)) * 0.12),
+    head: from(23), headEnd: end(23), reach: from(24), creep: at(24, 0.42), slap: at(24, 0.6), saw: at(24, 0.74),
+    lunch: from(25), pan: at(25, 0.35), you: at(25, 0.62), end: to,
   };
   return {
-    mirror: from(15), // "Morning."
-    chin: at(15, 0.71), // "So guess wrong."
+    mirror: from(16), // "Morning."
+    card: from(16) + 8, // your card drops: RAISES RIGHT 71%
+    chin: at(16, 0.71), // "So guess wrong."
     right: h(0.02), // RAISES RIGHT 71%
     raiseLeft: h(0.12),
     red1: h(0.17),
@@ -72,12 +79,14 @@ function times(clips: LineClip[], to: number) {
     stares: h(0.81), // STARES 95%
     staresTick: h(0.9),
     tongueIn: h(0.84),
-    reds: from(16), // "Four reds. Up twenty-five before breakfast."
-    sheet: from(17), // the professor's program
-    cells: at(17, 0.1),
-    cellsDone: at(17, 0.62),
-    himself: at(17, 0.87), // "He couldn't beat it himself."
-    pattern: from(18), // "Trying to be random is a pattern."
+    reds: from(17), // "Four reds. Up twenty-five before breakfast."
+    sheet: from(18), // "A professor once wrote a tiny program ..."
+    cells: at(18, 0.12),
+    cellsDone: at(18, 0.72), // "Right seventy to eighty per cent of the time."
+    himself: at(18, 0.84), // "He couldn't beat it himself."
+    pattern: from(19), // "Trying to be random is a pattern."
+    wiggle: at(19, 0.45), // one last random face
+    caught: at(19, 0.75),
     court,
     end: to,
   };
@@ -89,8 +98,7 @@ function mirrorTags(k: T): TagKey[] {
   const n = (at: number, text: string, pct: number): TagKey => ({ at, text, pct, state: "new" });
   const red = (at: number, text: string, pct: number): TagKey => ({ at, text, pct, state: "crimson" });
   return [
-    { at: -1e4, text: "BRUSHES", pct: 97, state: "tick" },
-    n(k.right, "RAISES RIGHT", 71), red(k.red1, "RAISES RIGHT", 71),
+    n(k.card, "RAISES RIGHT", 71), red(k.red1, "RAISES RIGHT", 71),
     n(k.left, "RAISES LEFT", 88), red(k.red2, "RAISES LEFT", 88),
     n(k.freezes, "FREEZES", 93), red(k.red3, "FREEZES", 93),
     n(k.tongueTag, "TONGUE", 79), red(k.red4, "TONGUE", 79),
@@ -111,7 +119,7 @@ function mirrorActing(frame: number, k: T): { pose: Pose; face: Face; tongue: bo
   const mouthSide = { x: h.x + h.r * 1.3, y: h.y + h.r * 0.6 };
   const sinkL = { x: 760, y: MIRROR.basin + 4 }, sinkR = { x: 1170, y: MIRROR.basin + 4 };
   const down: [number, number] = [-7, 8];
-  const brushing = frame < k.right;
+  const brushing = frame < k.raiseLeft;
   const scrub = Math.sin(frame / 2.2) * 14;
   if (brushing) {
     const lifted = frame >= k.chin;
@@ -191,10 +199,14 @@ const MirrorShots: React.FC<{ frame: number; k: T; mood: ReturnType<typeof moodN
     pattern: camAt(frame, [[k.pattern, closeUp(h.x, h.y - 40, 2.2)], [k.end, closeUp(h.x, h.y - 40, 2.35)]]),
   };
   const cam = drift(cams[on], frame, `mirror-${on}`, 2);
-  const face: Face = frame >= k.sheet
-    ? (frame >= k.himself ? { brows: "worry", lids: 0.3, mouth: "frown", eyes: 1, look: { x: 0, y: -0.7 } } : { brows: "flat", lids: 0.2, mouth: "flat", eyes: 1, look: { x: 0.1, y: -0.8 } })
+  // after the sheet: reading it; comic dismay at "himself"; then one last random face, caught by your own reflection
+  const face: Face = frame >= k.caught ? { brows: "flat", lids: 0.4, mouth: "smirk", eyes: 1, look: { x: 0, y: 0 } }
+    : frame >= k.wiggle ? { brows: "angry", lids: 0, mouth: "open", eyes: 1.25, look: { x: 0.6, y: -0.3 } }
+    : frame >= k.himself ? { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: 0, y: -0.7 } }
+    : frame >= k.sheet ? { brows: "flat", lids: 0.2, mouth: "flat", eyes: 1, look: { x: 0.1, y: -0.8 } }
     : a.face;
-  const pose = frame >= k.sheet ? { ...STAND, armF: [-7, 8] as [number, number] } : a.pose;
+  const pose: Pose = frame >= k.wiggle && frame < k.caught ? { ...STAND, tilt: 14, armF: [120, 40], armB: [-150, -30] }
+    : frame >= k.sheet ? { ...STAND, armF: [-7, 8] } : a.pose;
   const hh = headAt(M.x, M.y, M.scale, pose, 1);
   const actors = (
     <>
@@ -220,7 +232,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const k = times(clips, shot.to);
   const mood = moodNow(shot);
   const c = k.court;
-  const part = current(frame, [[0, "mirror"], [c.coffee, "coffee"], [c.coin - 10, "coin"], [c.lunch, "lunch"]]);
+  const part = current(frame, [[0, "mirror"], [c.coffee, "coffee"], [c.coin - 8, "coin"], [c.lunch, "lunch"]]);
   const coin = coinTags(c);
   const lunch = lunchTags(c);
   const lb = lunchBoardKeys(c);
@@ -234,6 +246,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       <BoardSounds keys={rateKeys(k)} volume={0.7} />
       <BoardSounds keys={coffeeSounds(c)} />
       <TagSounds keys={coin.friend} />
+      {/* the cup across the steel: no scrape file yet (randomCupScrape gives its frame) */}
       {coinFlips(c).map((f) => <Sequence key={f} from={f} durationInFrames={20}><Audio src={staticFile("sfx/coin.wav")} volume={0.5} /></Sequence>)}
       <Sequence from={coinDrop(c)} durationInFrames={20}><Audio src={staticFile("sfx/coin.wav")} volume={0.9} /></Sequence>
       {["you", "friend", "seller", "d11", "d21", "d3-1"].filter((id) => lunch[id]).map((id) => (
@@ -245,4 +258,7 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const random: Beat = { id: "random", firstLine: 15, Component: Scene };
+/** The frame the coffee cup starts across the steel this morning (the scrape's sound, which has no file yet). */
+export const randomCupScrape = (clips: LineClip[], to: number) => times(clips, to).court.coffee + 4;
+
+export const random: Beat = { id: "random", firstLine: 16, Component: Scene };

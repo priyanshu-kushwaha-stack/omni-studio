@@ -1,6 +1,5 @@
-// The City Plays on the metro platform (library set metroPlatform, `day`): the kid's rock-paper-scissors and its paper
-// diagram (24-26), the pickpocket's crimson card, the doors, the coffee seller's back, the verdict, the platform at
-// dusk (33-35), and your six-ten with its paper map (36, 37).
+// The City Plays on the metro platform (library set metroPlatform, `day`): the pickpocket's crimson card and your tug
+// on the bag, the police line, the doors, the coffee seller's back, the verdict, the platform at dusk (33-36), the kid's rock-paper-scissors (37-39), and your six-ten with its paper map (46, 47).
 import { Figure } from "@whatif/kit/rig/Figure";
 import { EXPRESSIONS } from "@whatif/kit/rig/expressions";
 import { seatedY, SEATED, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -11,8 +10,8 @@ import type { Camera } from "@whatif/kit/stage/Stage";
 import { CRIMSON, INK, MUSTARD, TEAL } from "@whatif/kit/theme";
 import { DrawLine } from "@whatif/kit/ui/DrawLine";
 import { RateBoard, Tag } from "../device";
-import { Cap, headAt, PaperCap, Sheet, type Body } from "../kit";
-import { blinking, camAt, COFFEE, current, HERO, KID, linear, PASTELS, PICKPOCKET, ramp } from "../shared";
+import { aimArm, Cap, headAt, PaperCap, Sheet, type Body } from "../kit";
+import { blinking, camAt, COFFEE, current, HERO, KID, linear, mix, PASTELS, PICKPOCKET, ramp } from "../shared";
 import { COURT, CoffeeCounter, FoodCourtBack, foodCourtLights } from "../sets/FoodCourt";
 import { glide, Hood, pump, Shot, ShoulderBag, Stamp, talk, Throw } from "./TheCityPlays.Parts";
 import { boards, tags, type T } from "./TheCityPlays.Times";
@@ -34,7 +33,7 @@ const MAN_B: Body = { x: 1090, y: FLOOR, scale: 1.15, facing: -1, pose: STAND };
 const MAN = { head: PASTELS[4], coat: "#3b4a6b" } as const;
 
 /** The kid's and the man's throws: [frame, kid's shape, man's shape]. */
-const throwsOf = (k: T): [number, "rock", "scissors" | "paper"][] => [[k.throw1, "rock", "scissors"], [k.throw2, "rock", "paper"], [k.throw3, "rock", "paper"]];
+const throwsOf = (k: T): [number, "rock", "scissors" | "paper"][] => [[k.throw1, "rock", "scissors"], [k.throw2, "rock", "paper"], [k.throw3, "rock", "paper"], [k.throw4, "rock", "paper"]];
 
 function armsAt(frame: number, k: T) {
   let kid = pump(frame, k.throw1), man = pump(frame, k.throw1), shape: "scissors" | "paper" = "scissors";
@@ -46,22 +45,24 @@ export const RPS: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const tg = tags(k);
   const kh = headAt(KID_B.x, KID_B.y, KID_B.scale, STAND, 1);
   const mh = headAt(MAN_B.x, MAN_B.y, MAN_B.scale, STAND, -1);
-  const on = current(frame, [[k.start, "two"], [k.win + 6, "kid"], [k.read, "man"], [k.throw2 - 28, "two2"], [k.capOff - 8, "cap"]]);
+  const on = current(frame, [[k.start, "two"], [k.win + 6, "kid"], [k.read, "man"], [k.throw2 - 28, "two2"], [k.capOff - 8, "cap"], [k.throw4 - 30, "two3"]]);
   const two: Camera = { x: 960, y: 650, zoom: 1.5 };
   const cams: Record<typeof on, Camera> = {
     two: camAt(frame, [[k.start, { x: 940, y: 660, zoom: 1.32 }], [k.win + 6, two]]),
     kid: camAt(frame, [[k.win + 6, closeUp(kh.x + 30, kh.y - 70, 2.3)], [k.read, closeUp(kh.x + 30, kh.y - 80, 2.45)]]),
     man: camAt(frame, [[k.read, closeUp(mh.x - 40, mh.y - 40, 2.4)], [k.throw2 - 28, closeUp(mh.x - 50, mh.y - 40, 2.5)]]),
     two2: camAt(frame, [[k.throw2 - 28, two], [k.capOff - 8, { x: 950, y: 640, zoom: 1.62 }]]),
-    cap: camAt(frame, [[k.capOff - 8, closeUp(kh.x + 10, kh.y - 40, 2.5)], [k.diagram, closeUp(kh.x + 10, kh.y - 40, 2.7)]]),
+    cap: camAt(frame, [[k.capOff - 8, closeUp(kh.x + 10, kh.y - 40, 2.5)], [k.throw4 - 30, closeUp(kh.x + 10, kh.y - 40, 2.7)]]),
+    two3: camAt(frame, [[k.throw4 - 30, two], [k.diagram, { x: 960, y: 640, zoom: 1.6 }]]),
   };
   const cam = drift(cams[on], frame, "rps", 3);
   const { kid, man, shape } = armsAt(frame, k);
   const winning = frame >= k.win && frame < k.win + 34;
   const lost = frame >= k.throw2 + 6;
-  const capOff = frame >= k.capOff;
+  const capOff = frame >= k.capOff && frame < k.throw4 - 30;
   const kidArm: [number, number] = winning ? [172, 6] : capOff ? [70, 50] : kid.armF;
   const kidFace = winning ? { brows: "raised" as const, lids: 0, mouth: "open" as const, eyes: 1.2, look: { x: 0.5, y: -0.5 } }
+    : frame >= k.throw4 + 6 ? { brows: "raised" as const, lids: 0, mouth: "o" as const, eyes: 1.3, look: { x: 0.9, y: 0.2 } }
     : frame >= k.noFair ? { brows: "angry" as const, lids: 0.1, mouth: talk(frame, k.noFair + 3, k.noFair + 40, "frown"), eyes: 1.1, look: { x: 0.9, y: -0.1 } }
     : lost ? { brows: "worry" as const, lids: 0, mouth: "o" as const, eyes: 1.2, look: { x: 0.9, y: 0.2 } }
     : { ...EXPRESSIONS.determined, look: { x: 0.9, y: 0.1 } };
@@ -83,45 +84,19 @@ export const RPS: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   return platformShot(cam, "day", frame, actors);
 };
 
-/** Line 26: a paper diagram on the platform wall: a fist that wins, and an arrow looping back to the fist. */
-export const RpsDiagram: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const a = k.diagram;
-  const cam = drift(camAt(frame, [[a, { x: 960, y: 460, zoom: 1.5 }], [k.magician, { x: 960, y: 450, zoom: 1.62 }]]), frame, "rpsd", 2);
-  const fist = (x: number, y: number, s: number, at: number) => frame >= at && (
-    <g transform={`translate(${x} ${y}) scale(${s * Math.min(1, (frame - at) / 6)})`}>
-      <circle r={40} fill={KID.head} stroke={INK} strokeWidth={6} />
-      {[-16, 0, 16].map((yy) => <line key={yy} x1={10} y1={yy} x2={34} y2={yy} stroke={INK} strokeWidth={5} strokeLinecap="round" />)}
-      <rect x={-70} y={-22} width={40} height={44} rx={10} fill={KID.coat} stroke={INK} strokeWidth={5} />
-    </g>
-  );
-  const star = frame >= a + 22 && (
-    <g transform={`translate(460 150) scale(${Math.min(1, (frame - a - 22) / 6)})`}>
-      <path d="M0 -50 L14 -16 L50 -14 L22 8 L32 44 L0 24 L-32 44 L-22 8 L-50 -14 L-14 -16Z" fill={MUSTARD} stroke={INK} strokeWidth={5} />
-    </g>
-  );
-  const sheet = (
-    <Sheet frame={frame} at={a} x={960} y={450} w={720} h={400} tilt={-1.5}>
-      {fist(190, 220, 1, a + 6)}
-      <DrawLine d="M260 190 Q340 120 400 140" from={a + 12} to={a + 22} color={INK} width={8} />
-      {star}
-      <DrawLine d="M500 200 Q620 320 420 340 Q260 350 230 290" from={a + 30} to={a + 54} color={CRIMSON} width={10} />
-      {frame >= a + 54 && <path d="M230 290 l-6 -30 l28 14z" fill={CRIMSON} />}
-    </Sheet>
-  );
-  return platformShot(cam, "day", frame, sheet);
-};
-
 // ------------------------------------------------------------------------------------------------ the pickpocket
 
 const WOMAN = { head: PASTELS[3], coat: "#5a6488" } as const;
 const THIEF_B: Body = { x: 880, y: FLOOR, scale: 1.15, facing: 1, pose: STAND };
 const WOMAN_B: Body = { x: 1060, y: FLOOR, scale: 1.1, facing: 1, pose: STAND };
+/** You, two steps from her, facing her and him. */
+const YOU_PB: Body = { x: 1250, y: FLOOR, scale: 1.15, facing: -1, pose: STAND };
 /** The platform's other faces: x, facing before the turn, facing after it (toward him). */
 const FACES: { x: number; head: string; coat: string; away: 1 | -1 }[] = [
   { x: 330, head: PASTELS[0], coat: "#2a2d36", away: -1 },
   { x: 560, head: PASTELS[6], coat: "#4a3b46", away: -1 },
-  { x: 1320, head: PASTELS[2], coat: "#2f4a48", away: 1 },
-  { x: 1560, head: PASTELS[7], coat: "#3b4a6b", away: 1 },
+  { x: 1520, head: PASTELS[2], coat: "#2f4a48", away: 1 },
+  { x: 1740, head: PASTELS[7], coat: "#3b4a6b", away: 1 },
 ];
 
 const Thief: React.FC<{ frame: number; b: Body; face: Partial<React.ComponentProps<typeof Figure>>; k: T; tagScale?: number; keys?: "thief" | "still" }> = ({
@@ -137,36 +112,89 @@ const Thief: React.FC<{ frame: number; b: Body; face: Partial<React.ComponentPro
   );
 };
 
-/** Lines 33, 34 and "Every head turns" on 35: the card goes crimson, every head turns, he steps back, hands open. */
+/** Lines 33, 34 and the hold between: the card goes crimson; you reach past her and tug her bag to her far side before
+ *  his hand moves; she turns to you, startled; he steps back, hands open and empty; every head turns. */
 export const Pickpocket: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const on = current(frame, [[k.pick2, "pair"], [k.turn, "wide"], [k.touch, "him"], [k.touch + 40, "wide2"]]);
+  const on = current(frame, [[k.pick2, "pair"], [k.crimson - 4, "card"], [k.tug - 10, "pair2"], [k.turn, "wide"], [k.touch, "him"], [k.touch + 40, "wide2"]]);
   const th = headAt(THIEF_B.x, FLOOR, 1.15, STAND, 1);
   const cams: Record<typeof on, Camera> = {
-    pair: camAt(frame, [[k.pick2, { x: 980, y: 660, zoom: 1.85 }], [k.turn, { x: 960, y: 640, zoom: 2.0 }]]),
-    wide: camAt(frame, [[k.turn, { x: 960, y: 600, zoom: 1.12 }], [k.touch, { x: 950, y: 610, zoom: 1.2 }]]),
+    pair: camAt(frame, [[k.pick2, { x: 1040, y: 650, zoom: 1.6 }], [k.crimson - 4, { x: 1030, y: 640, zoom: 1.7 }]]),
+    card: camAt(frame, [[k.crimson - 4, closeUp(th.x + 40, th.y - 90, 2.3)], [k.tug - 10, closeUp(th.x + 40, th.y - 90, 2.45)]]),
+    pair2: camAt(frame, [[k.tug - 10, { x: 1060, y: 660, zoom: 1.75 }], [k.turn, { x: 1050, y: 650, zoom: 1.85 }]]),
+    wide: camAt(frame, [[k.turn, { x: 1000, y: 600, zoom: 1.1 }], [k.touch, { x: 990, y: 610, zoom: 1.18 }]]),
     him: camAt(frame, [[k.touch, closeUp(th.x - 30, th.y - 60, 2.2)], [k.touch + 40, closeUp(th.x - 40, th.y - 60, 2.3)]]),
-    wide2: camAt(frame, [[k.touch + 40, { x: 950, y: 610, zoom: 1.22 }], [k.doors, { x: 950, y: 610, zoom: 1.3 }]]),
+    wide2: camAt(frame, [[k.touch + 40, { x: 990, y: 610, zoom: 1.2 }], [k.doors, { x: 990, y: 610, zoom: 1.3 }]]),
   };
   const cam = drift(cams[on], frame, "thief", 3);
   const turned = frame >= k.turn;
-  const back = ramp(frame, k.touch - 6, k.touch + 10);
-  const b: Body = { ...THIEF_B, x: THIEF_B.x - back * 90, pose: turned ? { ...STAND, armF: [118, 40], armB: [112, 40], lean: -4 } : { ...STAND, armF: [55, 40] } };
+  const backed = ramp(frame, k.back, k.back + 14);
+  const open = frame >= k.back;
+  // his hand creeping toward the bag until you take it away
+  const creep = frame < k.tug ? ramp(frame, k.crimson, k.tug) : 0;
+  const b: Body = { ...THIEF_B, x: THIEF_B.x - backed * 90, pose: open ? { ...STAND, armF: [118, 40], armB: [112, 40], lean: -4 } : { ...STAND, armF: [mix(40, 70, creep), 40] } };
   const darting = Math.floor(frame / 9) % 2 ? 0.9 : -0.7;
-  const face = turned
-    ? { brows: "worry" as const, lids: 0, mouth: talk(frame, k.touch + 2, k.touch + 40, "o"), eyes: 1.25, look: { x: darting, y: 0 } }
-    : { brows: "flat" as const, lids: 0.3, mouth: "flat" as const, eyes: 1, look: { x: 0.8, y: 0.4 } };
+  const face = frame >= k.touch
+    ? { brows: "raised" as const, lids: 0, mouth: talk(frame, k.touch + 2, k.touch + 40, "o"), eyes: 1.25, look: { x: darting, y: 0 } }
+    : open ? { brows: "raised" as const, lids: 0, mouth: "o" as const, eyes: 1.3, look: { x: 0.9, y: -0.1 } }
+    : { brows: "flat" as const, lids: 0.3, mouth: "smirk" as const, eyes: 1, look: { x: 0.8, y: 0.4 } };
+  // you: eyes up at his card, a step in, the tug, a step back, the smirk
+  const stepIn = ramp(frame, k.tug - 14, k.tug - 4) * (1 - ramp(frame, k.tug + 18, k.tug + 32));
+  const you: Body = { ...YOU_PB, x: YOU_PB.x - stepIn * 100 };
+  const tug = ramp(frame, k.tug, k.tug + 10);
+  const bagDx = tug * 80;
+  const bagAt = { x: WOMAN_B.x - 33 + bagDx, y: FLOOR - 120 };
+  const reaching = frame >= k.tug - 10 && frame < k.tug + 20;
+  const youPose = reaching ? { ...STAND, armF: aimArm(you, bagAt) } : { ...STAND, armF: [30, 30] as [number, number] };
+  const youFace = frame >= k.tug + 20
+    ? { brows: "flat" as const, lids: 0.2, mouth: "smirk" as const, eyes: 1, look: { x: 0.9, y: -0.1 } }
+    : frame >= k.crimson
+      ? { brows: "raised" as const, lids: 0, mouth: "flat" as const, eyes: 1.15, look: { x: 0.7, y: frame >= k.tug - 12 ? 0.3 : -0.7 } }
+      : { brows: "none" as const, lids: 0.2, mouth: "flat" as const, eyes: 1, look: { x: 0.8, y: 0.1 } };
+  const startled = frame >= k.startle;
+  const hop = startled && frame < k.startle + 8 ? -Math.sin(((frame - k.startle) / 8) * Math.PI) * 14 : 0;
+  const her: Body = { ...WOMAN_B, y: WOMAN_B.y + hop, facing: turned ? -1 : 1 };
+  const herFace = startled
+    ? { brows: "raised" as const, lids: 0, mouth: "o" as const, eyes: 1.25, look: { x: 0.9, y: 0 } }
+    : { brows: "none" as const, lids: 0.35, mouth: "flat" as const, eyes: 1, look: { x: 0.5, y: 0.8 } };
   const actors = (
     <>
       {FACES.map((f, i) => {
         const facing: 1 | -1 = turned ? (f.x < b.x ? 1 : -1) : f.away;
         return <Figure key={i} x={f.x} y={FLOOR} scale={1.1} facing={facing} pose={STAND} head={f.head} coat={f.coat}
-          brows={turned ? "raised" : "none"} lids={turned ? 0 : 0.3} mouth="flat" eyes={turned ? 1.15 : 1} look={turned ? { x: 0.9, y: 0 } : { x: 0.4, y: 0.4 }}
+          brows={turned ? "raised" : "none"} lids={turned ? 0 : 0.3} mouth={turned ? "o" : "flat"} eyes={turned ? 1.15 : 1} look={turned ? { x: 0.9, y: -0.3 } : { x: 0.4, y: 0.4 }}
           blink={blinking(frame, i + 20)} time={frame} />;
       })}
-      <Figure {...WOMAN_B} facing={turned ? -1 : 1} head={WOMAN.head} coat={WOMAN.coat} brows={turned ? "raised" : "none"} lids={turned ? 0 : 0.35}
-        mouth={turned ? "o" : "flat"} eyes={turned ? 1.2 : 1} look={{ x: 0.8, y: 0 }} blink={blinking(frame, 9)} time={frame} />
-      <ShoulderBag b={{ ...WOMAN_B, facing: turned ? -1 : 1 }} />
       <Thief frame={frame} b={b} face={face} k={k} />
+      <Figure {...her} pose={STAND} head={WOMAN.head} coat={WOMAN.coat} {...herFace} blink={blinking(frame, 9)} time={frame} />
+      <Figure {...you} pose={youPose} {...HERO} coat="#3b3e47" {...youFace} blink={blinking(frame, 0)} time={frame} />
+      <g transform={`translate(${bagDx} 0)`}><ShoulderBag b={WOMAN_B} /></g>
+    </>
+  );
+  return platformShot(cam, "day", frame, actors);
+};
+
+/** Line 35: "Call the police? For what.": his card close over his open, empty hands; you, palms up; his card again. */
+export const Police: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const b: Body = { x: 900, y: FLOOR, scale: 1.15, facing: 1, pose: { ...STAND, armF: [118, 40], armB: [112, 40], lean: -4 } };
+  const th = headAt(b.x, b.y, b.scale, b.pose, 1);
+  const you: Body = { ...YOU_PB, x: 1180 };
+  const yh = headAt(you.x, you.y, you.scale, STAND, -1);
+  const on = current(frame, [[k.police, "hands"], [k.shrug, "you"], [k.forecast, "card"]]);
+  const cams: Record<typeof on, Camera> = {
+    hands: camAt(frame, [[k.police, closeUp(th.x + 40, th.y + 40, 2.2)], [k.shrug, closeUp(th.x + 40, th.y + 30, 2.35)]]),
+    you: camAt(frame, [[k.shrug, closeUp(yh.x - 50, yh.y - 30, 2.3)], [k.forecast, closeUp(yh.x - 50, yh.y - 30, 2.45)]]),
+    card: camAt(frame, [[k.forecast, closeUp(th.x, th.y - 110, 2.4)], [k.anyway, closeUp(th.x, th.y - 110, 2.65)]]),
+  };
+  const cam = drift(cams[on], frame, "police", 2);
+  const wiggle = Math.sin(frame / 4) * 6;
+  const pose = { ...b.pose, armF: [118 + wiggle, 40] as [number, number], armB: [112 - wiggle, 40] as [number, number] };
+  const shrug = ramp(frame, k.shrug + 4, k.shrug + 14);
+  const youPose = { ...STAND, armF: [mix(20, 70, shrug), mix(20, 90, shrug)] as [number, number], armB: [mix(-10, 60, shrug), mix(10, 90, shrug)] as [number, number], drop: -4 * shrug };
+  const actors = (
+    <>
+      <Thief frame={frame} b={{ ...b, pose }} k={k} face={{ brows: "raised", lids: 0, mouth: "o", eyes: 1.25, look: { x: Math.floor(frame / 11) % 2 ? 0.9 : -0.6, y: 0 } }} />
+      <Figure {...you} pose={youPose} {...HERO} coat="#3b3e47" brows={shrug > 0.5 ? "raised" : "flat"} lids={0.1} mouth={shrug > 0.5 ? "smirk" : "flat"} eyes={1}
+        look={on === "you" ? { x: 0.4, y: 0.05 } : { x: 0.9, y: -0.4 }} blink={blinking(frame, 0)} time={frame} />
     </>
   );
   return platformShot(cam, "day", frame, actors);
@@ -239,7 +267,7 @@ export const Verdict: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
         return <Figure key={i} x={x} y={FLOOR} scale={1.1} facing={walking ? dirn : (f.x < 960 ? 1 : -1)} pose={walking ? walkPose(frame * 0.3 + i) : STAND}
           head={f.head} coat={f.coat} brows="flat" lids={0.3} mouth="flat" look={{ x: walking ? -0.8 : 0.8, y: 0 }} blink={blinking(frame, i + 30)} time={frame} />;
       })}
-      <Thief frame={frame} b={b} k={k} face={close ? { brows: "worry", lids: 0.1, mouth: "wobble", eyes: 1.1, look: { x: 0.3, y: -0.9 } } : { ...EXPRESSIONS.sad }} />
+      <Thief frame={frame} b={b} k={k} face={close ? { brows: "raised", lids: 0, mouth: "flat", eyes: 1.2, look: { x: 0.3, y: -0.9 } } : { brows: "raised", lids: 0, mouth: "o", eyes: 1.2, look: { x: Math.floor(frame / 10) % 2 ? 0.9 : -0.8, y: 0 } }} />
     </>
   );
   return platformShot(cam, "day", frame, actors);
@@ -300,32 +328,17 @@ const MapSheet: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   );
 };
 
-/** "Nobody fell below eighty per cent.": a row of bars, every one above the dashed line at 80. Sheet units 620 x 380. */
-const BarsSheet: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const base = 330, line = 200, per = 6.5;
-  const values = [84, 88, 91, 82, 93, 86, 90, 81, 89, 92];
-  return (
-    <Sheet frame={frame} at={k.bars} x={1330} y={600} w={620} h={380} tilt={1.5}>
-      {values.map((v, i) => (
-        <DrawLine key={i} d={`M${150 + i * 44} ${base} V${base - (v - 60) * per}`} from={k.bars + 6 + i * 2} to={k.bars + 20 + i * 2} color={i === 4 ? TEAL : "#7fa0c4"} width={26} />
-      ))}
-      <DrawLine d={`M120 ${line + (80 - 80)} H590`} from={k.bars + 24} to={k.bars + 40} color={CRIMSON} width={6} dash />
-      {frame >= k.bars + 34 && <Stamp x={68} y={base - 20 * per} text="80" color={CRIMSON} size={56} />}
-    </Sheet>
-  );
-};
-
 export const SixTen: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const tg = tags(k);
   const bd = boards(k);
-  const on = current(frame, [[k.sixTen, "you"], [k.map, "two"], [k.route, "map"], [k.bars, "bars"], [k.timetable, "close"]]);
+  const on = current(frame, [[k.sixTen, "you"], [k.map, "two"], [k.route, "map"], [k.ninety, "ninety"], [k.timetable, "close"]]);
   const yh = headAt(YOU_B.x, YOU_B.y, YOU_B.scale, STAND, 1);
   const cams: Record<typeof on, Camera> = {
     you: camAt(frame, [[k.sixTen, closeUp(yh.x + 40, yh.y - 70, 2.2)], [k.map, closeUp(yh.x + 40, yh.y - 70, 2.35)]]),
     two: glide(frame, k.map, k.route, { x: 900, y: 560, zoom: 1.3 }, { x: 980, y: 520, zoom: 1.14 }),
-    map: camAt(frame, [[k.route, { x: 1290, y: 430, zoom: 1.7 }], [k.bars, { x: 1300, y: 420, zoom: 1.85 }]]),
-    bars: camAt(frame, [[k.bars, { x: 1320, y: 560, zoom: 1.75 }], [k.timetable, { x: 1320, y: 570, zoom: 1.9 }]]),
-    close: camAt(frame, [[k.timetable, closeUp(yh.x - 40, yh.y - 60, 1.95)], [k.landlord, closeUp(yh.x + 40, yh.y - 60, 2.1)]]),
+    map: camAt(frame, [[k.route, { x: 1290, y: 430, zoom: 1.7 }], [k.ninety, { x: 1300, y: 420, zoom: 1.85 }]]),
+    ninety: camAt(frame, [[k.ninety, { x: 1200, y: 360, zoom: 2.2 }], [k.timetable, { x: 1220, y: 350, zoom: 2.35 }]]),
+    close: camAt(frame, [[k.timetable, closeUp(yh.x - 40, yh.y - 60, 1.95)], [k.t.train, closeUp(yh.x + 40, yh.y - 60, 2.1)]]),
   };
   const cam = drift(cams[on], frame, "sixten", 3);
   const train = frame < k.arrive - 34 ? null : Math.round(2600 * Math.pow(1 - ramp(frame, k.arrive - 34, k.board), 2));
@@ -339,7 +352,6 @@ export const SixTen: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     <>
       <RateBoard frame={frame} x={402} y={360} size={46} keys={bd.clock} />
       {frame < k.timetable && <MapSheet frame={frame} k={k} />}
-      {frame < k.timetable && <BarsSheet frame={frame} k={k} />}
       <Figure {...b} {...HERO} coat="#3b3e47" {...face} blink={blinking(frame, 0)} time={frame} />
       <Tag frame={frame} x={headAt(b.x, b.y, b.scale, b.pose, 1).x} headY={yh.y} r={yh.r} keys={tg.you} />
     </>

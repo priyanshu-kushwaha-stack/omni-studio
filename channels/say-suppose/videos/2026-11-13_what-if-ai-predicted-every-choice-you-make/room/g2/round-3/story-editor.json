@@ -1,0 +1,72 @@
+{
+  "call_id": "82ce981a2a18497d91055a9330468039",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "causal_escalation": 7,
+    "must_pass_readiness": 6,
+    "ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "His coffee's gone. His rent doubles. He's the pickpocket now. To everyone but you.",
+      "why": "#22 A laugh in every scene fails. From the coffee refusal through the platform isolation and bias diagrams, several consecutive scenes are sad, and the sequence runs well over twenty seconds.",
+      "fix": "Compress lines 347\u2013375 into one comic escalation under twenty seconds: the seller repeatedly pulls the cup away as his tag predicts each reach, the landlord swaps in the full-rent envelope, and commuters sidestep him so far that they crowd beside the pickpocket. Keep the coffee-on-the-crate scene as the sole tender beat.",
+      "domain": "story",
+      "line": 360
+    },
+    {
+      "quote": "The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again.",
+      "why": "#20 Escalating set pieces fails. A children's game follows the pickpocket's citywide social verdict, making the next use smaller than the last.",
+      "fix": "Reorder this run as kid, magician, pickpocket, televised football, then the forty-phone train, so each use expands from a game to a livelihood, public exclusion, citywide entertainment and finally the whole population.",
+      "domain": "story",
+      "line": 198
+    },
+    {
+      "quote": "Across the aisle, the kid with the cap. No phone. Over his head, a card with nothing on it. He winks.",
+      "why": "#11 Never say the feeling fails because the narration repeats every element already visible in the preceding scene direction, weakening the final image.",
+      "fix": "Delete this line and replace line 547 with: \"And the city hasn't noticed yet.\"",
+      "domain": "story",
+      "line": 543
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 417,
+      "quote": "Pocket the key, and the city's right, and your rent stays half. Hold it out, and your tag goes crimson in front of everyone. And so, maybe, does your money.",
+      "fix": "Sharpen the two-right-answers dilemma: \"Pocket the key, and your rent stays half\u2014but his tag becomes the truth. Hold it out, and both rents in that box depend on what he does next.\""
+    },
+    {
+      "line": 477,
+      "quote": "A hundred and sixty teams once tried to predict how children's lives would turn out (c24). Thousands of facts on every family (c24). The best guesses were only slightly better than a simple one from four facts (c24).",
+      "fix": "Cut this post-peak study and move directly from the board reaching seventy-one to \"It never got better at seeing you.\""
+    },
+    {
+      "line": 549,
+      "quote": "So, would you pay full price to make your card go blank? Tell us in the comments. And if you would, hit like and subscribe.",
+      "fix": "Keep only: \"Would you pay full price to make your card go blank?\" Let the silent end card carry the like-and-subscribe request."
+    }
+  ],
+  "keep": [
+    {
+      "line": 345,
+      "quote": "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him."
+    },
+    {
+      "line": 448,
+      "quote": "You can't steal what you've just been handed. And the machine had no card for that."
+    },
+    {
+      "line": 481,
+      "quote": "It never got better at seeing you. You got better at being seen."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "7bad58ecac5ad48d44d98fe6cbcf4f813a11a5f9af3eda11f44ebf68f7c4a577",
+  "draft_sha256": "56c781bee157fc600e451f0b117fd378cfe3998b9b36768a381b638cf7e5e32e"
+}

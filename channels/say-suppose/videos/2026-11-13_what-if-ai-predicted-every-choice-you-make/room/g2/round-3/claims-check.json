@@ -1,0 +1,44 @@
+{
+  "call_id": "dcdb35db33d84dfa8ad203aac7d2b740",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10,
+    "claims_fidelity": 10,
+    "scope_precision": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 477,
+      "quote": "A hundred and sixty teams once tried to predict how children's lives would turn out (c24). Thousands of facts on every family (c24). The best guesses were only slightly better than a simple one from four facts (c24).",
+      "fix": "A hundred and sixty teams once tried to predict how children's lives would turn out. Thousands of facts on every family. The best guesses were only slightly better than a simple one from four facts (c24)."
+    },
+    {
+      "line": 119,
+      "quote": "A professor once wrote a tiny program that guessed which of two keys people would press when they tried to type at random (c07). Right seventy to eighty per cent of the time (c07). He couldn't beat it himself (c07).",
+      "fix": "A professor once wrote a tiny program that guessed which of two keys people would press when they tried to type at random. Right seventy to eighty per cent of the time, and he couldn't beat it himself (c07)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 465,
+      "quote": "Drivers tracked by their insurer for a discount braked hard about a fifth less often (c17). Within six months (c17). The watching changed the driving."
+    },
+    {
+      "line": 306,
+      "quote": "In 2008 (c04), brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen (c04). The guess was right about sixty per cent of the time (c05). A coin gets fifty."
+    },
+    {
+      "line": 407,
+      "quote": "When scientists watched people choose where real charity money would go, the famous early brain signal was missing (c06)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "d69c855a2d402e1735cba7cffc1583783f6e5f20634d019d419fda9666edea8f",
+  "draft_sha256": "56c781bee157fc600e451f0b117fd378cfe3998b9b36768a381b638cf7e5e32e"
+}

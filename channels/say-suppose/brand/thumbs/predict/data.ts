@@ -2,7 +2,7 @@
 // shape of `../batch1.ts` so `../check.py` measures them. Rules: channels/say-suppose/rules/thumbnails.md (K1-K16).
 // The picture is the film's key shot (7:40): the food stall's counter at closing, one lamp over it, the food court
 // shuttered and dark behind. You, large at the left, shocked, hold the cash-box key out across the counter on an open
-// palm; your best friend at the right looks down at it, one hand flat on the tin box, and over his head, on a thread
+// palm; your best friend at the right, stunned, eyes coming up to you (K17), one hand flat on the tin box, and over his head, on a thread
 // from the city's teal lamp, a crimson card reads 94%. One variable: the tag.
 import { dir, joints, LIMB, STAND, type Pose } from "../../../../../core/engines/whatif/src/kit/rig/pose";
 import { headOf, type Box, type Hero } from "../batch1";
@@ -72,9 +72,10 @@ const tagBox = (t: Tag): Box => {
 };
 
 export const VALUES: { value: string; lines: string[] }[] = [
+  // G2 v2 (2026-11-14): pair a's tag and the writer's alternative, the running gag (the peak's bubble). G1's
+  // "HE WOULDN'T." and "IT'S WRONG." were not picked.
   { value: "TRUST HIM?", lines: ["TRUST HIM?"] },
-  { value: "HE WOULDN'T.", lines: ["HE WOULDN'T."] },
-  { value: "IT'S WRONG.", lines: ["IT'S WRONG."] },
+  { value: "TRUST ME?", lines: ["TRUST ME?"] },
 ];
 
 // One variable (K15): the tag. The counter, you, the key, the box, your friend and the card are the same on all three.

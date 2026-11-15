@@ -1,194 +1,147 @@
-// The Cheapest Man at the stall: his phone lighting up and turned face down (48, the sister planted), the performed
-// six-second TELLS JOKE 62% hold and the counting (49, 50), your hand on the lid, the key, your pocket (51), and the
-// lamppost outside, CITY SCORE 99.5 under the steady teal lamp (52).
+// Boring Pays at your stall: "That's the champion?" (51), the napkin tie and its 5 s performed hold, "It knows the
+// bit." and "That's what the discount costs." (56-58), and the lamppost outside, CITY SCORE 99.5 under the steady teal
+// lamp (59).
 import { Figure } from "@whatif/kit/rig/Figure";
-import { STAND, type Pose } from "@whatif/kit/rig/pose";
+import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { Sky, Skyline } from "@whatif/kit/sets/common";
 import type { MoodName } from "@whatif/kit/stage/moods";
-import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
+import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
-import { INK, PAPER } from "@whatif/kit/theme";
+import { INK } from "@whatif/kit/theme";
 import { RateBoard, Tag, TealLamp } from "../device";
 import { aimArm, Apron, headAt, type Body } from "../kit";
-import { blinking, camAt, current, FRIEND, HERO, mix, ramp } from "../shared";
+import { blinking, camAt, current, FRIEND, HERO, ramp } from "../shared";
 import { Deep } from "../sets/common";
-import { CashBox, COURT, FoodCourtBack, foodCourtLights, Key, StallCounter, StallLamp } from "../sets/FoodCourt";
-import { Coin, glide, Shot } from "./TheCityPlays.Parts";
+import { COURT, FoodCourtBack, foodCourtLights, StallCounter, StallLamp } from "../sets/FoodCourt";
+import { glide, Shot, talk } from "./TheCityPlays.Parts";
 import { boards, tags, type T } from "./TheCheapestMan.Times";
 
-/** His sister's colour on the phone's avatar (she is heard, never seen, until 6:55). */
-export const SISTER = "#e6a0a0";
-
+const NAPKIN = "#f3efe6";
 const YOU_B: Body = { x: COURT.you.x, y: COURT.you.y, scale: COURT.scale, facing: 1, pose: STAND };
-const FR_B: Body = { x: COURT.friend.x, y: COURT.friend.y, scale: COURT.scale, facing: -1, pose: STAND };
-const PHONE_AT = { x: 1000, y: COURT.counter.top };
-const COINS = [880, 905, 930, 955, 980, 1005];
 
 type Face = Partial<React.ComponentProps<typeof Figure>>;
 
-/** The stall with the two of you behind the counter: your pose and face, his pose and face, the box, the phone. */
+/** The stall with the two of you behind the counter. */
 const Stall: React.FC<{
-  frame: number; cam: Camera; mood: MoodName; you: Pose; youFace: Face; fr: Pose; frFace: Face; boxOpen: number; phone: "up" | "down" | null;
-  coins?: boolean; keyNode?: React.ReactNode; youHeld?: React.ReactNode; card?: boolean; k: T;
-}> = ({ frame, cam, mood, you, youFace, fr, frFace, boxOpen, phone, coins, keyNode, youHeld, card, k }) => {
-  const fh = headAt(FR_B.x, FR_B.y, FR_B.scale, fr, -1);
-  const ringing = phone === "up";
+  frame: number; cam: Camera; mood: MoodName; you: Pose; youFace: Face; fr: Body; frFace: Face; frTie?: string; frHeld?: React.ReactNode;
+  card?: boolean; extra?: React.ReactNode; k: T;
+}> = ({ frame, cam, mood, you, youFace, fr, frFace, frTie, frHeld, card, extra, k }) => {
+  const fh = headAt(fr.x, fr.y, fr.scale, fr.pose, fr.facing);
   const actors = (
     <>
-      <Figure {...YOU_B} pose={you} {...HERO} coat="#3b3e47" blink={blinking(frame, 0)} time={frame} held={youHeld} {...youFace} />
+      <Figure {...YOU_B} pose={you} {...HERO} coat="#3b3e47" blink={blinking(frame, 0)} time={frame} {...youFace} />
       <Apron b={{ ...YOU_B, pose: you }} />
-      <Figure {...FR_B} pose={fr} head={FRIEND.head} coat={FRIEND.coat} blink={blinking(frame, 2)} time={frame} {...frFace} />
-      <Apron b={{ ...FR_B, pose: fr }} />
-      {ringing && <ellipse cx={fh.x - 10} cy={fh.y + fh.r * 0.5} rx={fh.r} ry={fh.r * 0.55} fill="#d6eef7" opacity={0.2} />}
-      <StallCounter box={false} />
-      <CashBox x={COURT.box.x} y={COURT.counter.top} open={boxOpen} />
-      {keyNode}
-      {coins && COINS.map((x, i) => <Coin key={i} x={x} y={COURT.counter.top - 7} r={11} edge={0.45} />)}
-      {phone && (
-        <g transform={`translate(${PHONE_AT.x + (ringing ? Math.sin(frame * 2.1) * 2 : 0)} ${PHONE_AT.y})`}>
-          {ringing && <ellipse cx={0} cy={-10} rx={60 + (frame % 20) * 2} ry={22} fill="#d6eef7" opacity={0.25 * (1 - (frame % 20) / 20)} />}
-          <rect x={-40} y={-9} width={80} height={9} rx={3} fill="#1b1d24" />
-          <rect x={-34} y={-11} width={68} height={3} rx={1.5} fill={ringing ? "#d6eef7" : "#1b1d24"} />
-        </g>
-      )}
+      <Figure {...fr} head={FRIEND.head} coat={FRIEND.coat} tie={frTie} blink={blinking(frame, 2)} time={frame} held={frHeld} {...frFace} />
+      <Apron b={fr} />
+      <StallCounter />
+      {extra}
       {card && <Tag frame={frame} x={fh.x} headY={fh.y} r={fh.r} keys={tags(k).friend} />}
     </>
   );
   return (
-    <Shot cam={cam} mood={mood} lights={foodCourtLights} back={<><FoodCourtBack cam={cam} mood={mood} frame={frame} /><StallLamp /></>} actors={actors} />
+    <Shot cam={cam} mood={mood} lights={foodCourtLights} back={<><FoodCourtBack cam={cam} mood={mood} frame={frame} /><StallLamp on={mood === "lamp" || mood === "dusk"} /></>} actors={actors} />
   );
 };
 
-/** The counter from straight above: the phone face up, ringing, his sister's face on it; his hand turns it over. */
-const PhoneTop: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame, k, mood }) => {
-  const flip = ramp(frame, k.flip + 6, k.flip + 18);
-  const sx = Math.cos(flip * Math.PI);
-  const ringing = flip < 0.5;
-  const handIn = frame >= k.flip ? ramp(frame, k.flip - 4, k.flip + 6) * (1 - ramp(frame, k.flip + 24, k.flip + 36)) : 0;
-  const cam = drift(frame < k.flip ? camAt(frame, [[k.phone, { x: 960, y: 540, zoom: 1.0 }], [k.look, { x: 960, y: 540, zoom: 1.08 }]]) : { x: 960, y: 540, zoom: 1.04 }, frame, "ptop", 2);
-  const buzz = ringing ? Math.sin(frame * 2.3) * 4 : 0;
-  const back = (
-    <g>
-      <rect x={-1400} y={-900} width={4800} height={2600} fill="#8a5d3c" />
-      {Array.from({ length: 18 }, (_, i) => <path key={i} d={`M-400 ${-100 + i * 80} Q900 ${-60 + i * 80} 2400 ${-110 + i * 80}`} stroke="#6b452c" strokeWidth={6} fill="none" opacity={0.5} />)}
-      <circle cx={420} cy={300} r={90} fill="#e8b84a" stroke={INK} strokeWidth={8} opacity={0.9} />
-      <circle cx={360} cy={520} r={90} fill="#e8b84a" stroke={INK} strokeWidth={8} opacity={0.9} />
-    </g>
-  );
-  const actors = (
-    <g>
-      <g transform={`translate(${960 + buzz} 540) rotate(-8) scale(${sx} 1)`}>
-        <rect x={-170} y={-320} width={340} height={640} rx={44} fill="#1b1d24" stroke={INK} strokeWidth={8} />
-        {sx > 0 ? (
-          <g>
-            <rect x={-146} y={-286} width={292} height={572} rx={24} fill="#2f3550" />
-            {ringing && [0, 1, 2].map((i) => {
-              const p = ((frame / 24) + i / 3) % 1;
-              return <circle key={i} cx={0} cy={-80} r={90 + p * 110} fill="none" stroke="#d6eef7" strokeWidth={6} opacity={0.6 * (1 - p)} />;
-            })}
-            <circle cx={0} cy={-80} r={84} fill="#3a3550" />
-            <circle cx={0} cy={-96} r={36} fill={SISTER} />
-            <path d="M-52 -18 Q0 -64 52 -18Z" fill={PAPER} opacity={0.8} />
-            <rect x={-90} y={40} width={180} height={18} rx={9} fill={PAPER} opacity={0.75} />
-            <circle cx={-80} cy={200} r={40} fill="#d8344f" />
-            <circle cx={80} cy={200} r={40} fill="#1d9a8f" />
-          </g>
-        ) : (
-          <g>
-            <rect x={-146} y={-286} width={292} height={572} rx={24} fill="#3a3e4a" />
-            <circle cx={-90} cy={-230} r={26} fill="#1b1d24" stroke="#5a5f6e" strokeWidth={6} />
-          </g>
-        )}
-      </g>
-      {/* his hand, from the right: a peach palm and a dark sleeve */}
-      {handIn > 0 && (
-        <g transform={`translate(${mix(2300, 1110, handIn)} ${560}) rotate(-12)`}>
-          <rect x={60} y={-70} width={1200} height={140} rx={60} fill="#3b3e47" stroke={INK} strokeWidth={8} />
-          <ellipse cx={0} cy={0} rx={130} ry={96} fill={FRIEND.head} stroke={INK} strokeWidth={8} />
-        </g>
-      )}
-    </g>
-  );
-  return <Shot cam={cam} mood={mood} lights={[]} back={back} actors={actors} />;
-};
-
-/** Line 48: his phone lights up, his face over it, the turn face down, you looking at the back of it, then at him. */
-export const PhoneLights: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const on = current(frame, [[k.phone, "top"], [k.look, "him"], [k.flip, "top2"], [k.ask, "two"]]);
-  if (on === "top" || on === "top2") return <PhoneTop frame={frame} k={k} mood="dusk" />;
-  const fh = headAt(FR_B.x, FR_B.y, FR_B.scale, STAND, -1);
-  const cam = drift(on === "him"
-    ? camAt(frame, [[k.look, closeUp(fh.x - 60, fh.y + 40, 2.3)], [k.flip, closeUp(fh.x - 60, fh.y + 40, 2.45)]])
-    : camAt(frame, [[k.ask, { x: 820, y: 560, zoom: 1.5 }], [k.hold, { x: 820, y: 560, zoom: 1.58 }]]), frame, "phone", 3);
-  const wipe = on === "two" && frame >= k.ask + 20;
-  const fr: Pose = wipe ? { ...STAND, armF: aimArm(FR_B, { x: 1040 + Math.sin((frame - k.ask) / 6) * 60, y: COURT.counter.top - 10 }) } : { ...STAND, armF: [40, 50] };
-  const youLook = frame >= k.ask + 34 ? { x: 0.9, y: -0.1 } : { x: 0.7, y: 0.75 };
-  return (
-    <Stall frame={frame} k={k} cam={cam} mood="dusk" boxOpen={0} phone={on === "him" ? "up" : "down"}
-      you={STAND} youFace={{ brows: frame >= k.ask + 34 ? "worry" : "flat", lids: 0.2, mouth: "flat", eyes: 1, look: youLook }}
-      fr={fr} frFace={on === "him" ? { brows: "worry", lids: 0.1, mouth: "flat", eyes: 1, look: { x: 0.4, y: 0.9 } } : { brows: "flat", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 0.5, y: 0.85 } }} />
-  );
-};
-
-/** The six-second hold, then lines 49 and 50: TELLS JOKE 62%, the open mouth, the eyes up, the grin that stays, the
- *  mouth shut, the counting with no sound; you looking at him; COUNTS COINS 97%. */
-export const SixtyTwo: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const fh = headAt(FR_B.x, FR_B.y, FR_B.scale, STAND, -1);
+/** Your hand over your mouth, laughing; the shoulders shaking. */
+function laughing(frame: number): { pose: Pose; face: Face } {
   const yh = headAt(YOU_B.x, YOU_B.y, YOU_B.scale, STAND, 1);
-  const on = current(frame, [[k.hold, "two"], [k.eyesUp - 4, "him"], [k.count - 6, "count"], [k.youLook, "you"], [k.counts - 8, "tick"], [k.reads, "wide"], [k.costs, "card"]]);
-  const cams: Record<typeof on, Camera> = {
-    two: camAt(frame, [[k.hold, { x: 880, y: 520, zoom: 1.55 }], [k.eyesUp - 4, { x: 900, y: 510, zoom: 1.66 }]]),
-    him: camAt(frame, [[k.eyesUp - 4, closeUp(fh.x - 30, fh.y - 110, 2.35)], [k.count - 6, closeUp(fh.x - 30, fh.y - 110, 2.55)]]),
-    count: camAt(frame, [[k.count - 6, { x: 1000, y: 640, zoom: 2.0 }], [k.youLook, { x: 990, y: 640, zoom: 2.1 }]]),
-    you: camAt(frame, [[k.youLook, closeUp(yh.x + 40, yh.y, 2.6)], [k.counts - 8, closeUp(yh.x + 40, yh.y, 2.75)]]),
-    tick: camAt(frame, [[k.counts - 8, closeUp(fh.x - 30, fh.y - 100, 2.3)], [k.reads, closeUp(fh.x - 30, fh.y - 100, 2.4)]]),
-    wide: glide(frame, k.reads, k.costs, { x: 830, y: 540, zoom: 1.4 }, { x: 860, y: 560, zoom: 1.58 }),
-    card: camAt(frame, [[k.costs, closeUp(fh.x - 20, fh.y - 120, 2.6)], [k.habit, closeUp(fh.x - 20, fh.y - 110, 2.9)]]),
+  const shake = Math.round(Math.sin(frame / 2.2) * 3);
+  const pose: Pose = { ...STAND, drop: shake, tilt: 6, armF: aimArm(YOU_B, { x: yh.x + yh.r * 0.55, y: yh.y + yh.r * 0.55 }) };
+  return { pose, face: { brows: "raised", lids: 0.55, mouth: "smile", eyes: 1, look: { x: 0.9, y: 0.2 } } };
+}
+
+/** Line 51: your friend leaning over the counter, a hand shading his eyes toward the man with the same lunch; then
+ *  round to you, "That's the champion?"; you snort into your hand. */
+export const Champion: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const turned = frame >= k.champLine - 4;
+  const fr0: Body = { x: COURT.friend.x, y: COURT.friend.y, scale: COURT.scale, facing: turned ? -1 : 1, pose: STAND };
+  const fh = headAt(fr0.x, fr0.y, fr0.scale, STAND, fr0.facing);
+  const pose: Pose = turned
+    ? { ...STAND, lean: 4, armF: [100, 70], armB: [-20, 20] }
+    : { ...STAND, lean: 14, armF: aimArm({ ...fr0, pose: { ...STAND, lean: 14 } }, { x: fh.x + 30, y: fh.y - fh.r * 0.6 }) };
+  const fr: Body = { ...fr0, pose };
+  const cam = drift(turned
+    ? camAt(frame, [[k.champLine - 4, closeUp(fh.x - 120, fh.y + 20, 2.0)], [k.react, closeUp(fh.x - 140, fh.y + 20, 2.15)]])
+    : camAt(frame, [[k.champ, { x: 900, y: 520, zoom: 1.55 }], [k.champLine - 4, { x: 920, y: 520, zoom: 1.65 }]]), frame, "champ", 2);
+  const snort = frame >= k.react - 10;
+  const l = laughing(frame);
+  return (
+    <Stall frame={frame} k={k} cam={cam} mood="day" fr={fr}
+      frFace={turned ? { brows: "raised", lids: 0.2, mouth: talk(frame, k.champLine + 2, k.react - 6, "flat"), eyes: 1.1, look: { x: 0.9, y: 0 } }
+        : { brows: "flat", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.2 } }}
+      you={snort ? l.pose : { ...STAND, armF: [40, 60] }} youFace={snort ? l.face : { brows: "none", lids: 0.1, mouth: "smirk", eyes: 1, look: { x: 0.9, y: 0 } }} />
+  );
+};
+
+/** The landlord's walk: up and down behind the counter, chest out, hands behind the back. */
+function strutX(frame: number, k: T) {
+  const t = Math.min(frame, k.hold) - k.napkin;
+  return { x: 1080 + Math.sin(t / 22) * 90, dir: (Math.cos(t / 22) >= 0 ? 1 : -1) as 1 | -1 };
+}
+
+/** Lines 56-58 and the hold: the napkin tie, the strut, you laughing; his mouth opens and the card flaps first; he
+ *  stops, looks up, finishes the bit quieter, pulls the napkin off; "It knows the bit."; you crack up again. */
+export const Napkin: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
+  const laughAgain = k.knows + Math.round((k.costs - k.knows) * 0.55);
+  const on = current(frame, [
+    [k.napkin, "two"], [k.napkin + Math.round((k.hold - k.napkin) * 0.45), "you"], [k.hold - 6, "two2"], [k.mouth - 4, "him"],
+    [k.bit - 12, "youTake"], [k.bit + 4, "two3"], [k.knows, "him2"], [laughAgain, "you2"], [k.costs, "card"],
+  ]);
+  const strutting = frame < k.hold;
+  const s = strutX(frame, k);
+  const fr: Body = {
+    x: s.x, y: COURT.friend.y, scale: COURT.scale, facing: strutting ? s.dir : -1,
+    pose: strutting ? { ...walkPose(frame * 0.22), lean: -8, drop: -3, armF: [-40, 40], armB: [-46, 40] }
+      : frame >= k.pull && frame < k.pull + 14 ? { ...STAND, armF: [150, 30] }
+      : frame >= k.bit && frame < k.pull ? { ...STAND, lean: -3, armF: [80 + Math.sin(frame / 5) * 6, 40] }
+      : frame >= k.pull ? { ...STAND, armF: [60, 50] } : { ...STAND, lean: -8, drop: -3, armF: [-40, 40], armB: [-46, 40] },
   };
-  const cam = drift(cams[on], frame, "sixty", 2.5);
-  const breath = ramp(frame, k.hold, k.hold + 16);
-  const counting = frame >= k.count;
-  const coinX = COINS[Math.floor((frame - k.count) / 14) % COINS.length];
-  const fr: Pose = counting
-    ? { ...STAND, lean: 6, armF: aimArm(FR_B, { x: coinX, y: COURT.counter.top - 14 }) }
-    : { ...STAND, lean: mix(4, -4, breath), drop: mix(2, -3, breath), armF: [30, 40] };
-  // the face, beat by beat
+  const fh = headAt(fr.x, fr.y, fr.scale, fr.pose, fr.facing);
+  const yh = headAt(YOU_B.x, YOU_B.y, YOU_B.scale, STAND, 1);
+  const cams: Record<typeof on, Camera> = {
+    two: camAt(frame, [[k.napkin, { x: 860, y: 520, zoom: 1.5 }], [k.napkin + 60, { x: 880, y: 520, zoom: 1.58 }]]),
+    you: camAt(frame, [[k.napkin, closeUp(yh.x + 60, yh.y + 20, 2.3)], [k.hold, closeUp(yh.x + 60, yh.y + 20, 2.45)]]),
+    two2: { x: 860, y: 500, zoom: 1.55 },
+    him: camAt(frame, [[k.mouth - 4, closeUp(fh.x, fh.y - 90, 2.2)], [k.bit - 12, closeUp(fh.x, fh.y - 100, 2.4)]]),
+    youTake: closeUp(yh.x + 60, yh.y - 20, 2.4),
+    two3: camAt(frame, [[k.bit + 4, { x: 860, y: 500, zoom: 1.5 }], [k.knows, { x: 880, y: 500, zoom: 1.6 }]]),
+    him2: camAt(frame, [[k.knows, closeUp(fh.x - 60, fh.y + 10, 2.2)], [laughAgain, closeUp(fh.x - 60, fh.y + 10, 2.35)]]),
+    you2: camAt(frame, [[laughAgain, closeUp(yh.x + 60, yh.y + 20, 2.3)], [k.costs, closeUp(yh.x + 60, yh.y + 20, 2.4)]]),
+    card: glide(frame, k.costs, k.score, closeUp(fh.x - 40, fh.y - 140, 2.3), closeUp(fh.x - 40, fh.y - 130, 2.75)),
+  };
+  const cam = drift(cams[on], frame, "napkin", 2.5);
+  // his face, beat by beat: the strut's smug grin; the open mouth; the stop; the eyes up; the quiet bit; the deadpan
   let frFace: Face;
-  if (frame < k.mouth) frFace = { brows: "raised", lids: 0, mouth: "smile", eyes: 1.1, look: { x: 0.9, y: -0.1 } };
-  else if (frame < k.eyesUp) frFace = { brows: "raised", lids: 0, mouth: "open", eyes: 1.15, look: { x: 0.9, y: -0.1 } };
-  else if (frame < k.eyesDown) frFace = { brows: "raised", lids: 0, mouth: "open", eyes: 1.1, look: { x: -0.2, y: -0.95 } };
-  else if (frame < k.shut) frFace = { brows: "flat", lids: 0.2, mouth: "smile", eyes: 1, look: { x: 0.5, y: 0.4 } };
-  else if (frame < k.count) frFace = { brows: "sad", lids: 0.35, mouth: "flat", eyes: 1, look: { x: 0.5, y: 0.8 } };
-  else frFace = { brows: "sad", lids: 0.45, mouth: Math.floor((frame - k.count) / 7) % 2 ? "o" : "flat", eyes: 1, look: { x: 0.4, y: 0.9 } };
-  const youFace: Face = frame >= k.youLook
-    ? { brows: "worry", lids: 0.1, mouth: "flat", eyes: 1, look: { x: 0.95, y: -0.1 } }
-    : { brows: "none", lids: 0.1, mouth: frame < k.shut ? "smile" : "flat", eyes: 1, look: { x: 0.9, y: -0.2 } };
+  if (strutting || frame < k.mouth) frFace = { brows: "flat", lids: 0.35, mouth: "smirk", eyes: 1, look: { x: 0.9, y: 0 } };
+  else if (frame < k.up) frFace = { brows: frame >= k.stop ? "raised" : "flat", lids: 0, mouth: "open", eyes: frame >= k.stop ? 1.2 : 1, look: { x: 0.9, y: 0 } };
+  else if (frame < k.bit) frFace = { brows: "raised", lids: 0, mouth: "open", eyes: 1.2, look: { x: -0.2, y: -0.95 } };
+  else if (frame < k.pull) frFace = { brows: "flat", lids: 0.3, mouth: talk(frame, k.bit, k.pull, "o", 7), eyes: 1, look: { x: 0.9, y: 0.1 } };
+  else if (frame < k.knows) frFace = { brows: "flat", lids: 0.4, mouth: "flat", eyes: 1, look: { x: 0.9, y: 0.1 } };
+  else if (frame < k.costs) frFace = { brows: "flat", lids: 0.4, mouth: talk(frame, k.knows + 2, laughAgain - 4, "flat"), eyes: 1, look: { x: 0.9, y: 0 } };
+  else frFace = { brows: "raised", lids: 0.1, mouth: "smirk", eyes: 1, look: { x: -0.3, y: -0.9 } };
+  // yours: laughing at the strut; the laugh cut off by the card (look at him, at the card, at him); a snort at the
+  // quiet bit; cracking up at "It knows the bit."
+  const l = laughing(frame);
+  let you: Pose = { ...STAND, armF: [40, 60] };
+  let youFace: Face;
+  if (frame < k.card + 4 || (frame >= laughAgain && frame < k.costs)) { you = l.pose; youFace = l.face; }
+  else if (frame < k.bit) {
+    const t = frame - k.card;
+    youFace = { brows: "raised", lids: 0, mouth: "o", eyes: 1.25, look: t < 20 ? { x: 0.9, y: 0 } : t < 40 ? { x: 0.7, y: -0.8 } : { x: 0.9, y: 0 } };
+  } else if (frame < laughAgain) youFace = { brows: "raised", lids: 0.3, mouth: "smile", eyes: 1, look: { x: 0.9, y: 0 } };
+  else youFace = { brows: "none", lids: 0.2, mouth: "smile", eyes: 1, look: { x: 0.9, y: -0.2 } };
+  const napkinHeld = frame >= k.pull && frame < k.costs
+    ? <path d="M-14 -20 L14 -20 L6 18 L-6 18Z" fill={NAPKIN} stroke={INK} strokeWidth={3} transform="rotate(20)" /> : undefined;
+  const napkinDown = frame >= k.costs
+    ? <path d={`M${fr.x - 40} ${COURT.counter.top - 4} l70 -6 l10 10 l-76 6z`} fill={NAPKIN} stroke={INK} strokeWidth={4} /> : null;
   return (
-    <Stall frame={frame} k={k} cam={cam} mood="lamp" boxOpen={1} phone="down" coins card
-      you={{ ...STAND, armF: [40, 60] }} youFace={youFace} fr={fr} frFace={frFace} />
+    <Stall frame={frame} k={k} cam={cam} mood="lamp" fr={fr} frFace={frFace} frTie={frame < k.pull ? NAPKIN : undefined} frHeld={napkinHeld}
+      you={you} youFace={youFace} card={frame >= k.card} extra={napkinDown} />
   );
 };
 
-/** Line 51: your hand on the lid, the key, your pocket. */
-export const Habit: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const lid = 1 - ramp(frame, k.habit, k.habit + 10);
-  const lock = { x: COURT.box.x, y: COURT.counter.top - 120 + 36 + 21 };
-  const pocket = { x: YOU_B.x + 40, y: COURT.counter.top - 30 };
-  const turn = ramp(frame, k.key, k.key + 8);
-  const out = ramp(frame, k.key + 10, k.pocket);
-  const keyAt = { x: mix(lock.x + 34, pocket.x, out), y: mix(lock.y, pocket.y, out) - Math.sin(out * Math.PI) * 60 };
-  const target = frame < k.key - 4 ? { x: COURT.box.x - 20, y: COURT.counter.top - 120 } : frame < k.pocket + 6 ? keyAt : pocket;
-  const you: Pose = { ...STAND, armF: aimArm(YOU_B, target) };
-  const cam = drift(glide(frame, k.habit, k.score, insert(760, 700, 2.4), insert(660, 690, 2.6)), frame, "habit", 2);
-  const keyNode = frame < k.pocket + 4 ? <Key x={keyAt.x} y={keyAt.y} scale={0.55} rotate={mix(-14, 76, turn) - out * 60} glint={out < 0.2} /> : null;
-  return (
-    <Stall frame={frame} k={k} cam={cam} mood="lamp" boxOpen={lid} phone="down" keyNode={keyNode}
-      you={you} youFace={{ brows: "none", lids: 0.4, mouth: "flat", eyes: 1, look: { x: 0.8, y: 0.8 } }}
-      fr={{ ...STAND, lean: 6, armF: [40, 50] }} frFace={{ brows: "sad", lids: 0.45, mouth: "flat", eyes: 1, look: { x: 0.4, y: 0.9 } }} card />
-  );
-};
-
-/** Line 52: the lamppost outside, CITY SCORE 99.4 to 99.5, the teal lamp steady over it; up to the lamp. */
+/** Line 59: the lamppost outside, CITY SCORE 99.4 to 99.5, the teal lamp steady over it; up to the lamp. */
 export const CityScore: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const bd = boards(k);
   const cam = drift(frame < k.tilt

@@ -180,12 +180,13 @@ export const CloseShot: React.FC<{
 // ------------------------------------------------------------------------------------------------ the court wide
 
 /** The late people in the court at closing: a cleaner with a mop, a last customer, a cook, a guard. Behind the
- *  counters, smaller, so only heads and shoulders show above them. */
+ *  counters, smaller, so only heads and shoulders show above them. Their cards carry digits only: every card with a
+ *  forecast line is a `> TAG:` in the script (v2), and these people have none. */
 export const EXTRAS = [
-  { id: "mop", x: 375, y: 1000, scale: 1.35, head: PASTELS[2], coat: "#3b4a6b", facing: 1 as const, text: "MOPS", pct: 99, mop: true },
-  { id: "last", x: 1250, y: 1000, scale: 1.35, head: PASTELS[0], coat: "#2a2d36", facing: -1 as const, text: "LEAVES", pct: 94, mop: false },
-  { id: "cook", x: 1525, y: 1000, scale: 1.35, head: PASTELS[3], coat: "#5f3d6b", facing: 1 as const, text: "YAWNS", pct: 97, mop: false },
-  { id: "guard", x: 1870, y: 1000, scale: 1.35, head: PASTELS[4], coat: "#2f3340", facing: -1 as const, text: "LOCKS UP", pct: 98, mop: false },
+  { id: "mop", x: 375, y: 1000, scale: 1.35, head: PASTELS[2], coat: "#3b4a6b", facing: 1 as const, pct: 99, mop: true },
+  { id: "last", x: 1250, y: 1000, scale: 1.35, head: PASTELS[0], coat: "#2a2d36", facing: -1 as const, pct: 94, mop: false },
+  { id: "cook", x: 1525, y: 1000, scale: 1.35, head: PASTELS[3], coat: "#5f3d6b", facing: 1 as const, pct: 97, mop: false },
+  { id: "guard", x: 1870, y: 1000, scale: 1.35, head: PASTELS[4], coat: "#2f3340", facing: -1 as const, pct: 98, mop: false },
 ];
 
 /** The worker's spots: the ladder against the pillar and where he stands on it. */
@@ -209,16 +210,17 @@ export const CourtShot: React.FC<{
   frame: number; cam: Camera; mood: Mood; you: CourtWho; friend: CourtWho; seller: CourtWho; worker?: CourtWho | null;
   lampHeld?: boolean; lampOn?: number; lampDim?: number; tags?: CourtTags; tagScale?: number; up?: Record<string, number>;
   pillarKeys?: BoardKey[] | null; priceKeys?: BoardKey[] | null; extra?: React.ReactNode; front?: React.ReactNode;
-  diners?: boolean; pillarLabel?: string;
+  diners?: boolean; pillarLabel?: string; workerDrop?: number; looks?: Record<string, { x: number; y: number }>;
 }> = ({ frame, cam, mood, you, friend, seller, worker = null, lampHeld = false, lampOn = -1000, lampDim = 1, tags = {}, tagScale = 0.7, up = {},
-  pillarKeys = null, priceKeys = null, extra, front, diners = false, pillarLabel = "YOUR RATE" }) => {
+  pillarKeys = null, priceKeys = null, extra, front, diners = false, pillarLabel = "YOUR RATE", workerDrop = 0, looks = {} }) => {
   const S = COURT.scale;
   const lamp = pillarLamp(cam);
   const yB: Body = { x: you.x ?? COURT.you.x, y: COURT.floor, scale: S, pose: you.pose ?? STAND, facing: you.facing ?? 1 };
   const fB: Body = { x: friend.x ?? COURT.friend.x, y: COURT.floor, scale: S, pose: friend.pose ?? STAND, facing: friend.facing ?? -1 };
   const sB: Body = { x: COURT.coffee.seller.x, y: COURT.floor, scale: S, pose: seller.pose ?? STAND, facing: -1 };
   const W = LADDER.worker;
-  const wB: Body = { x: W.x, y: W.y, scale: W.scale, pose: worker?.pose ?? STAND, facing: -1 };
+  // workerDrop 0..1 takes him down the ladder to the floor
+  const wB: Body = { x: W.x + (LADDER.foot.x - 60 - W.x) * workerDrop, y: W.y + (COURT.floor - W.y) * workerDrop, scale: W.scale, pose: worker?.pose ?? STAND, facing: -1 };
   const head = (b: Body) => headAt(b.x, b.y, b.scale, b.pose, b.facing);
   const yh = head(yB), fh = head(fB), sh = head(sB), wh = head(wB);
   const hang = (who: string, h: { x: number; y: number; r: number }, scale = tagScale) =>
@@ -241,7 +243,7 @@ export const CourtShot: React.FC<{
       {!lampHeld && <TealLamp frame={frame} x={lamp.x} y={lamp.y} size={22} on={lampOn} dim={lampDim} />}
       {extras.map(({ e, pose, u }) => (
         <Figure key={e.id} x={e.x} y={e.y} scale={e.scale} facing={e.facing} pose={pose} head={e.head} coat={e.coat} mouth="flat"
-          look={{ x: 0.5 - 0.4 * u, y: 0.3 - 1.1 * u }} brows={u > 0.5 ? "raised" : "none"} blink={blinking(frame, e.x)} time={frame}
+          look={looks[e.id] ?? { x: 0.5 - 0.4 * u, y: 0.3 - 1.1 * u }} brows={u > 0.5 || looks[e.id] ? "raised" : "none"} blink={blinking(frame, e.x)} time={frame}
           held={e.mop ? <Mop /> : undefined} />
       ))}
       <Figure x={fB.x} y={fB.y} scale={S} facing={fB.facing} pose={fB.pose} head={FRIEND.head} coat="#2a2d36" {...friend.face}
@@ -282,18 +284,29 @@ export const workerReach = (target: { x: number; y: number }): Pose => {
 
 // ------------------------------------------------------------------------------------------------ the tags of the first night
 
-/** Every head's first tag: new (crimson type, digits running) at `drop + stagger`, teal with a tick at `tick`. */
-export function firstTags(drop: number, tick: number): CourtTags {
+/** A card with digits only (no forecast line): the people with no `> TAG:` in the script. New at `at`, teal at `t`. */
+export const digitsOnly = (pct: number, at: number, t: number): TagKey[] => [
+  { at, text: "", pct, state: "new" },
+  { at: t, text: "", pct, state: "tick" },
+];
+
+/** Every head's first card (v2): yours and his are the script's (POCKETS KEY 91%, HOLDS OUT HAND 96%), dropping at
+ *  `you` and `friend` and ticking teal at `tick`; everyone else's carry digits only, dropping from `rest` and ticking
+ *  one after another from `wave` (the wave of heads), `step` frames apart, left to right. */
+export function firstTags(k: { you: number; friend: number; tick: number; rest: number; wave: number; step?: number }): CourtTags {
+  const step = k.step ?? 6;
   const two = (text: string, pct: number, at: number, t: number): TagKey[] => [
     { at, text, pct, state: "new" },
     { at: t, text, pct, state: "tick" },
   ];
   const out: CourtTags = {
-    worker: two("CLIMBS DOWN", 96, drop, tick - 10),
-    you: two("POCKETS KEY", 91, drop + 9, tick),
-    friend: two("HOLDS OUT HAND", 96, drop + 11, tick + 2),
-    seller: two("SERVES", 98, drop + 6, tick - 6),
+    you: two("POCKETS KEY", 91, k.you, k.tick),
+    friend: two("HOLDS OUT HAND", 96, k.friend, k.tick + 2),
   };
-  EXTRAS.forEach((e, i) => { out[e.id] = two(e.text, e.pct, drop + 3 + i * 4, tick - 14 + i * 3); });
+  const others = [
+    { id: "worker", x: LADDER.worker.x, pct: 96 }, ...EXTRAS.map((e) => ({ id: e.id, x: e.x, pct: e.pct })),
+    { id: "seller", x: COURT.coffee.seller.x, pct: 98 },
+  ].sort((a, b) => a.x - b.x);
+  others.forEach((o, i) => { out[o.id] = digitsOnly(o.pct, k.rest + i * 2, k.wave + i * step); });
   return out;
 }

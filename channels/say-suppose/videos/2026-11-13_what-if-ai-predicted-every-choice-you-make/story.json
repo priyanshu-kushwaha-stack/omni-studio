@@ -14,17 +14,23 @@
       "voiceId": "54f24faefc5e4302",
       "describe": "A warm, relaxed male baritone: a man of about thirty who runs a food stall with his best friend. Quick, joking, laughs before his own punchline, a light Singapore English lilt. Close and easy, never loud."
     },
-    "Worker": {
-      "model": "local:qwen3-design",
-      "voiceType": "design",
-      "voiceId": "53bbbbad6a3d1db3",
-      "describe": "A cheerful, gravelly male bass: a city maintenance worker in his fifties up a ladder. Gruff, satisfied, talking to himself."
-    },
     "Coffee seller": {
       "model": "local:qwen3-design",
       "voiceType": "design",
       "voiceId": "dd70343034479d97",
       "describe": "A dry, brisk female alto: a woman in her fifties who runs the coffee stall next door. Low and a little husky, unimpressed, few words, a faint Singapore English lilt."
+    },
+    "Landlord": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "df76cc6a6f245b66",
+      "describe": "A smooth, cool male baritone: a landlord in his sixties. Polite, unhurried, quietly cold, every word measured."
+    },
+    "Pickpocket": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "d82e48577b3844b5",
+      "describe": "A hoarse, nervous male baritone: a thin man in his thirties. Quick, defensive, a little breathless."
     },
     "Kid": {
       "model": "local:qwen3-design",
@@ -38,52 +44,26 @@
       "voiceId": "6ed6b78614b6c189",
       "describe": "A bright, theatrical male baritone: a street magician in his forties. Showy and warm, a performer's lift on every word."
     },
-    "Date": {
+    "Newsreader": {
       "model": "local:qwen3-design",
       "voiceType": "design",
-      "voiceId": "02b58c584ad52602",
-      "describe": "A flat, bored female mezzo: a woman of about thirty on a dull dinner date. Dry, deadpan, eyes on her phone."
-    },
-    "Pickpocket": {
-      "model": "local:qwen3-design",
-      "voiceType": "design",
-      "voiceId": "d82e48577b3844b5",
-      "describe": "A hoarse, nervous male baritone: a thin man in his thirties. Quick, defensive, a little breathless."
-    },
-    "Landlord": {
-      "model": "local:qwen3-design",
-      "voiceType": "design",
-      "voiceId": "df76cc6a6f245b66",
-      "describe": "A smooth, cool male baritone: a landlord in his sixties. Polite, unhurried, quietly cold, every word measured."
+      "voiceId": "4adf7e895ae0a38b",
+      "describe": "A crisp, bright female alto: a television newsreader in her thirties. Polished and quick, a smile in the voice, every line a headline."
     },
     "Coach": {
       "model": "local:qwen3-design",
       "voiceType": "design",
       "voiceId": "c8377a28a245775e",
       "describe": "A loud, upbeat male baritone: a street salesman in his forties. Bouncy and confident, a pitch voice, every line a slogan."
-    },
-    "Sister": {
-      "model": "local:qwen3-design",
-      "voiceType": "design",
-      "voiceId": "68e7c51d18d96ddc",
-      "describe": "A small, frightened female mezzo: a young woman in her twenties on a phone line. Hushed and quick, trying to stay calm."
     }
   },
-  "leadInSec": 3.4,
+  "leadInSec": 2.4,
   "tailSec": 2.4,
   "lines": [
     {
       "text": "Friend: Trust me?",
       "say": "Trust me?",
       "speaker": "Friend",
-      "gapAfterSec": 2.0,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Worker: There we go.",
-      "say": "[offhand, pleased with himself, up a ladder, to nobody] There we go.",
-      "speaker": "Worker",
       "gapAfterSec": 5.0,
       "mood": "lamp",
       "claims": []
@@ -98,39 +78,39 @@
     },
     {
       "text": "Coffee seller: Half.",
-      "say": "[flat, bored, already stacking cups] Half.",
+      "say": "[flat, bored, already stacking cups, not looking up] Half.",
       "speaker": "Coffee seller",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Closing time. A food court in Singapore.",
-      "say": "[low, close, a place set in two breaths] Closing time. A food court in Singapore.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
       "text": "So what if an AI predicted every choice you make, and paid you every time it was right?",
-      "say": "[curious, leaning in on the question, a small smile on the last clause] So what if an AI predicted every choice you make, and paid you every time it was right?",
+      "say": "[leaning in, mischievous, a grin on the last clause, as if offering a deal] So what if an AI predicted every choice you make, and paid you every time it was right?",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.",
-      "say": "[warm, fond, a rhythm like a habit, then the last sentence dropped quiet] Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.",
+      "text": "Obey your tag, and your rent halves. Break it, and it goes crimson where every head can see, and your prices climb.",
+      "say": "[brisk, a dealer laying out terms, bright on the halving, a shade colder and slower on crimson] Obey your tag, and your rent halves. Break it, and it goes crimson where every head can see, and your prices climb.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Do what the tag says, and your rent halves. Don't, and every head in the court turns. And here's the thing. It's right ninety-nine times in a hundred. About everybody.",
-      "say": "[brisk, a dealer laying out terms, a shade colder on the turning heads, the last two words hushed as a hook] Do what the tag says, and your rent halves. Don't, and every head in the court turns. And here's the thing. It's right ninety-nine times in a hundred. About everybody.",
+      "text": "Closing time. A food court in Singapore. Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.",
+      "say": "[warm, close, the place in two breaths, then a rhythm like a habit, the last sentence dropped quiet with a smile] Closing time. A food court in Singapore. Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "And here's the thing. It's right ninety-nine times in a hundred. About everybody.",
+      "say": "[a secret shared, relish on the number, the last two words hushed as a hook] And here's the thing. It's right ninety-nine times in a hundred. About everybody.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -146,15 +126,31 @@
     },
     {
       "text": "Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.",
-      "say": "[plain, each item a small gift, then slower and almost tender on the last sentence] Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.",
+      "say": "[plain, each item a small gift, then slower and almost fond on the last sentence] Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Break it, and your tag goes crimson where everyone can see, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.",
-      "say": "[measured, a warning without heat, each limit its own beat, the last two words almost a whisper] Break it, and your tag goes crimson where everyone can see, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.",
+      "text": "Break it, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.",
+      "say": "[measured, a warning without heat, each limit its own beat, the last two words almost a whisper and a little playful] Break it, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.",
+      "speaker": "narrator",
+      "gapAfterSec": 3.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Friend: Oh, come on.",
+      "say": "[outraged, laughing, the torn card still in his hand] Oh, come on.",
+      "speaker": "Friend",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Tear it off, and the next lamp prints another. It saw that coming too.",
+      "say": "[dry, amused, the second sentence a shrug] Tear it off, and the next lamp prints another. It saw that coming too.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -196,7 +192,7 @@
     },
     {
       "text": "Morning. You've worked it out. It guesses. So guess wrong.",
-      "say": "[brisk, confident, a little mischievous, a dare on the last three words] Morning. You've worked it out. It guesses. So guess wrong.",
+      "say": "[brisk, confident, mischievous, a dare on the last three words] Morning. You've worked it out. It guesses. So guess wrong.",
       "speaker": "narrator",
       "gapAfterSec": 6.0,
       "mood": "morning",
@@ -212,11 +208,12 @@
     },
     {
       "text": "A professor once wrote a tiny program that guessed which of two keys people would press when they tried to type at random. Right seventy to eighty per cent of the time. He couldn't beat it himself.",
-      "say": "[calm, a story told at a table, a small amused weight on the last sentence] A professor once wrote a tiny program that guessed which of two keys people would press when they tried to type at random. Right seventy to eighty per cent of the time. He couldn't beat it himself.",
+      "say": "[calm, a story told at a table, a grin held back on the last sentence] A professor once wrote a tiny program that guessed which of two keys people would press when they tried to type at random. Right seventy to eighty per cent of the time. He couldn't beat it himself.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": [
+        "c07",
         "c07",
         "c07"
       ]
@@ -231,7 +228,7 @@
     },
     {
       "text": "So your coffee this morning costs more than it did last night.",
-      "say": "[dry, sympathetic, landing on you] So your coffee this morning costs more than it did last night.",
+      "say": "[dry, sympathetic, a smile at your expense] So your coffee this morning costs more than it did last night.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -239,15 +236,15 @@
     },
     {
       "text": "Coffee seller: You're up today.",
-      "say": "[dry, eyebrows up, tapping the board, not unkind] You're up today.",
+      "say": "[dry, eyebrows up, tapping the board, enjoying it] You're up today.",
       "speaker": "Coffee seller",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Your best friend tries a coin.",
-      "say": "[light, quick, watching] Your best friend tries a coin.",
+      "text": "Fine. Let a coin choose.",
+      "say": "[quick, a new plan, cheerful] Fine. Let a coin choose.",
       "speaker": "narrator",
       "gapAfterSec": 3.0,
       "mood": "morning",
@@ -255,132 +252,47 @@
     },
     {
       "text": "Friend: It's in my head.",
-      "say": "[unsettled, half laughing, wiping his hand, the laugh not quite working] It's in my head.",
+      "say": "[spooked, half laughing, wiping his hand, the laugh not quite working] It's in my head.",
       "speaker": "Friend",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Problem one. Being random costs money. But the city worked that out long ago. And it's playing a different game.",
-      "say": "[leaning in, a storyteller numbering the trouble, the last sentence low and a little ominous] Problem one: being random costs money. But the city worked that out long ago. And it's playing a different game.",
+      "text": "A coin can't choose for you. You still choose to flip it. And it saw you reach.",
+      "say": "[level, three short blows, the last one quiet and pleased with itself] A coin can't choose for you. You still choose to flip it. And it saw you reach.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "The platform. The kid with the cap plays rock-paper-scissors with the man beside him. Wins with rock. His tag says rock again. Eighty-three.",
-      "say": "[amused, quick, a commentator at a small match, the number dropped like a punchline] The platform. The kid with the cap plays rock-paper-scissors with the man beside him. Wins with rock. His tag says rock again. Eighty-three.",
+      "text": "Problem one. Being random costs money. So you stop fighting your tag. And start reading everyone else's.",
+      "say": "[leaning in, numbering the trouble, then a turn, brightening, a scheme forming on the last sentence] Problem one: being random costs money. So you stop fighting your tag. And start reading everyone else's.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
-      "mood": "day",
+      "mood": "morning",
       "claims": []
     },
     {
-      "text": "Kid: No fair.",
-      "say": "[outraged, seven years old, cap in hand] No fair.",
-      "speaker": "Kid",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "People who win tend to play the same thing again.",
-      "say": "[clear, calm, the fact plain, a smile under it] People who win tend to play the same thing again.",
+      "text": "Lunch. You read the queue before it orders.",
+      "say": "[quick, sly, a card sharp at work] Lunch. You read the queue before it orders.",
       "speaker": "narrator",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 5.0,
       "mood": "day",
-      "claims": [
-        "c08"
-      ]
+      "claims": []
     },
     {
-      "text": "The magician.",
-      "say": "[quick, a new try, a little gleeful] The magician.",
-      "speaker": "narrator",
+      "text": "Coffee seller: Show-off.",
+      "say": "[muttered, mouth still open, impressed against her will] Show-off.",
+      "speaker": "Coffee seller",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Magician: Pick a card.",
-      "say": "[showman's patter, bright, already fading as the crowd leaves] Pick a card.",
-      "speaker": "Magician",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "His tag says which card. By lunch, no act.",
-      "say": "[deadpan, two short blows, the second softer] His tag says which card. By lunch, no act.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "A couple on a date. Her tag: checks phone. His: same joke. Both obey. Half price.",
-      "say": "[dry, clipped, each item flatter than the last, the last two words almost sad] A couple on a date. Her tag: checks phone. His: same joke. Both obey. Half price.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Date: Heard this one.",
-      "say": "[bored, not looking up from the phone, fond underneath] Heard this one.",
-      "speaker": "Date",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "The penalty kick. Tag says left, keeper goes left. Soon every striker obeys, and nobody scores.",
-      "say": "[building like a commentator, then flat on the last three words] The penalty kick. Tag says left, keeper goes left. Soon every striker obeys, and nobody scores.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Then the first crimson the city has seen.",
-      "say": "[hushed, a change of air, slower] Then the first crimson the city has seen.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Pickpocket: I didn't touch it.",
-      "say": "[frightened, fast, hands open, to a platform of faces] I didn't touch it.",
-      "speaker": "Pickpocket",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Every head turns. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.",
-      "say": "[cold and quick on the first three sentences, then slow and level on the verdict, then dry and a little sorry on the ending] Every head turns. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Phone records from fifty thousand people once showed where a person will be is, in principle, guessable up to about ninety-three per cent of the time. Nobody fell below eighty per cent.",
-      "say": "[calm, exact, a touch of awe held back, the last sentence quiet] Phone records from fifty thousand people once showed where a person will be is, in principle, guessable up to about ninety-three per cent of the time. Nobody fell below eighty per cent.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c09",
-        "c09"
-      ]
-    },
-    {
-      "text": "You thought you were a free spirit. You're a timetable.",
-      "say": "[dry, warm, the joke on you] You thought you were a free spirit. You're a timetable.",
+      "text": "Nobody waits. Nobody orders. The queue doubles by the weekend, and the court next door is reading tags too.",
+      "say": "[brisk, triumphant, a montage in one breath, the last clause a raised eyebrow] Nobody waits. Nobody orders. The queue doubles by the weekend, and the court next door is reading tags too.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -411,8 +323,141 @@
       "claims": []
     },
     {
+      "text": "Half rent. And a thought you can't put down. If you can read their tags, you can read anyone's.",
+      "say": "[warm, then slower, a grin spreading, the last sentence a dare to yourself] Half rent. And a thought you can't put down. If you can read their tags, you can read anyone's.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The platform. A hood behind a woman's bag, and the first crimson the city has seen.",
+      "say": "[hushed, quick, a change of air, the last word slow] The platform. A hood behind a woman's bag, and the first crimson the city has seen.",
+      "speaker": "narrator",
+      "gapAfterSec": 3.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Pickpocket: I didn't touch it.",
+      "say": "[frightened, fast, hands open, to a platform of faces] I didn't touch it.",
+      "speaker": "Pickpocket",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Call the police? For what. He hasn't done anything. That's the point of a forecast.",
+      "say": "[the viewer's question said back, then dry and exact, a shrug on the last sentence] Call the police? For what. He hasn't done anything. That's the point of a forecast.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Every head turns anyway. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.",
+      "say": "[cold and quick on the first three sentences, level on the verdict, then dry and amused on the ending] Every head turns anyway. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again.",
+      "say": "[amused, quick, a commentator at a small match, the last three words a punchline] The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Kid: No fair.",
+      "say": "[outraged, seven years old, cap in hand] No fair.",
+      "speaker": "Kid",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "People who win tend to play the same thing again.",
+      "say": "[clear, calm, the fact plain, a smile under it] People who win tend to play the same thing again.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c08"
+      ]
+    },
+    {
+      "text": "Magician: Pick a card.",
+      "say": "[showman's patter, bright, already fading as the crowd leaves] Pick a card.",
+      "speaker": "Magician",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "His tag says which card. By lunch, no act.",
+      "say": "[deadpan, two short blows, the second softer] His tag says which card. By lunch, no act.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The whole city tries your trick. The penalty kick. Tag says left, keeper goes left.",
+      "say": "[building like a commentator, gleeful, the save landing like a goal] The whole city tries your trick. The penalty kick. Tag says left, keeper goes left.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Bet on it? Everyone can read the tag. The bookie read it first, and pays a dollar for a dollar.",
+      "say": "[the viewer's idea said back with a grin, then dry, the last clause flat as a shut window] Bet on it? Everyone can read the tag. The bookie read it first, and pays a dollar for a dollar.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Soon every striker obeys, and nobody scores.",
+      "say": "[quick, then flat on the last three words] Soon every striker obeys, and nobody scores.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Newsreader: Another nil-nil.",
+      "say": "[broadcast even, squared off, the smallest sigh in it] Another nil-nil.",
+      "speaker": "Newsreader",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Phone records from fifty thousand people once showed this. Where a person will be is, in principle, guessable up to about ninety-three per cent of the time.",
+      "say": "[calm, exact, a touch of awe held back on the number] Phone records from fifty thousand people once showed this. Where a person will be is, in principle, guessable up to about ninety-three per cent of the time.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c09",
+        "c09"
+      ]
+    },
+    {
+      "text": "You thought you were a free spirit. You're a timetable.",
+      "say": "[dry, warm, the joke on you] You thought you were a free spirit. You're a timetable.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
       "text": "The morning train. Forty heads. Forty tags, the same three words. Nobody looks out of the window.",
-      "say": "[hushed, slow, a little awed, the last sentence sad] The morning train. Forty heads. Forty tags, the same three words. Nobody looks out of the window.",
+      "say": "[hushed, slow, awed, the last sentence a little eerie] The morning train. Forty heads. Forty tags, the same three words. Nobody looks out of the window.",
       "speaker": "narrator",
       "gapAfterSec": 3.0,
       "mood": "day",
@@ -420,7 +465,7 @@
     },
     {
       "text": "But here's the problem. Problem two: the cheapest people in this city never surprise anyone.",
-      "say": "[leaning in, low, the number plain, the last four words a chill] But here's the problem. Problem two: the cheapest people in this city never surprise anyone.",
+      "say": "[leaning in, low, the number plain, the last four words a chill with a smile in it] But here's the problem. Problem two: the cheapest people in this city never surprise anyone.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -428,15 +473,23 @@
     },
     {
       "text": "The man with the same lunch. Same table, same minute, same dish, for a year. Lowest rate in the city.",
-      "say": "[dry, a rhythm like a clock, the last sentence flat and a little admiring] The man with the same lunch. Same table, same minute, same dish, for a year. Lowest rate in the city.",
+      "say": "[dry, a rhythm like a clock, the last sentence flat and mock-admiring] The man with the same lunch. Same table, same minute, same dish, for a year. Lowest rate in the city.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "People farm it. In 1902, Hanoi paid a bounty for every rat tail, and officials found people breeding rats for the tails. Pay for predictability, and people breed it.",
-      "say": "[amused, a story with a sting, the last sentence slow and exact] People farm it. In nineteen oh two, Hanoi paid a bounty for every rat tail, and officials found people breeding rats for the tails. Pay for predictability, and people breed it.",
+      "text": "Friend: That's the champion?",
+      "say": "[incredulous, leaning over the counter, a laugh in it] That's the champion?",
+      "speaker": "Friend",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "People farm it. In 1902, Hanoi paid a bounty for every rat tail. Officials found people breeding rats for the tails. Pay for predictability, and people breed it.",
+      "say": "[amused, a story with a sting, a chuckle on the breeding, the last sentence slow and exact] People farm it. In nineteen oh two, Hanoi paid a bounty for every rat tail. Officials found people breeding rats for the tails. Pay for predictability, and people breed it.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -462,48 +515,40 @@
       "claims": []
     },
     {
-      "text": "The magician reads tags for tips. Your rate falls. Sixty-one. Fifty-five. You've learned to read your tag before you reach.",
-      "say": "[quick and wry on the magician, then slower, the numbers dropping like coins, the last sentence quiet and a little uneasy] The magician reads tags for tips. Your rate falls. Sixty-one. Fifty-five. You've learned to read your tag before you reach.",
+      "text": "Your rate falls. Sixty-one. Fifty-five. You've learned to read your tag before you reach.",
+      "say": "[pleased on the numbers, dropping like coins, then the last sentence slower, a first flicker of unease under the smile] Your rate falls. Sixty-one. Fifty-five. You've learned to read your tag before you reach.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "His phone lights up on the counter. His sister. He turns it face down. You don't ask.",
-      "say": "[hushed, watching, each short sentence a small weight, the last three words softer] His phone lights up on the counter. His sister. He turns it face down. You don't ask.",
+      "text": "Quiet all week. Then tonight, the landlord impression. The napkin tie.",
+      "say": "[warm, relieved, a laugh already starting] Quiet all week. Then tonight, the landlord impression. The napkin tie.",
       "speaker": "narrator",
-      "gapAfterSec": 6.0,
-      "mood": "dusk",
+      "gapAfterSec": 5.0,
+      "mood": "lamp",
       "claims": []
     },
     {
-      "text": "He reads the sixty-two. He shuts his mouth. He counts coins instead.",
-      "say": "[very quiet, slow, hurt held in, no music under it] He reads the sixty-two. He shuts his mouth. He counts coins instead.",
-      "speaker": "narrator",
+      "text": "Friend: It knows the bit.",
+      "say": "[deflated, a rueful laugh, pulling the napkin off] It knows the bit.",
+      "speaker": "Friend",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
       "text": "That's what the discount costs. Not money.",
-      "say": "[low, level, the point landing] That's what the discount costs. Not money.",
+      "say": "[low, level, the point landing, no pity in it] That's what the discount costs. Not money.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "You count the box. That's the habit.",
-      "say": "[flat, tired, close] You count the box. That's the habit.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "And the board says ninety-nine point five now. It's getting better. Or something is.",
-      "say": "[quiet, a hook, the last three words slower and colder] And the board says ninety-nine point five now. It's getting better. Or something is.",
+      "text": "And the board outside says ninety-nine point five now. It's getting better. Or something is.",
+      "say": "[quiet, a hook, the last three words slower and colder] And the board outside says ninety-nine point five now. It's getting better. Or something is.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -511,15 +556,15 @@
     },
     {
       "text": "You thought it read minds. Nothing reads minds.",
-      "say": "[plain, a correction said gently] You thought it read minds. Nothing reads minds.",
+      "say": "[plain, a correction said with a grin] You thought it read minds. Nothing reads minds.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "In 2008, brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen. The guess was right about sixty times in a hundred. A coin gets fifty.",
-      "say": "[clear, careful, a story told exactly, the last sentence dry] In two thousand and eight, brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen. The guess was right about sixty times in a hundred. A coin gets fifty.",
+      "text": "In 2008, brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen. The guess was right about sixty per cent of the time. A coin gets fifty.",
+      "say": "[clear, careful, a story told exactly, the last sentence dry as a shrug] In two thousand and eight, brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen. The guess was right about sixty per cent of the time. A coin gets fifty.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
@@ -531,32 +576,24 @@
     },
     {
       "text": "Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?",
-      "say": "[slow, puzzled, the question held open, not answered] Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?",
+      "say": "[slow, puzzled, the question held open like a riddle, not answered] Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "Quiet all week. Then tonight, the landlord impression. The napkin tie. The one that always gets you.",
-      "say": "[warm, relieved, a laugh under it, fond on the last sentence] Quiet all week. Then tonight, the landlord impression. The napkin tie. The one that always gets you.",
+      "text": "And your best friend's board never came down after the coin. Up. Up again. He's been staring at the box all week.",
+      "say": "[low, watching, the two Ups like steps, the last sentence quiet and uneasy] And your best friend's board never came down after the coin. Up. Up again. He's been staring at the box all week.",
       "speaker": "narrator",
-      "gapAfterSec": 5.0,
+      "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "Friend: It knows the bit.",
-      "say": "[quiet, the smile gone, pulling the napkin off] It knows the bit.",
+      "text": "Friend: Machine hates me.",
+      "say": "[grumbling, half a joke, not looking up from the box] Machine hates me.",
       "speaker": "Friend",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "At six in the morning his tag says counts coins. At ten at night, checks phone.",
-      "say": "[hushed, worried, each time of day its own picture] At six in the morning his tag says counts coins. At ten at night, checks phone.",
-      "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
@@ -581,7 +618,7 @@
       "text": "Friend: Trust me?",
       "say": "Trust me?",
       "speaker": "Friend",
-      "gapAfterSec": 4.0,
+      "gapAfterSec": 3.0,
       "mood": "lamp",
       "claims": []
     },
@@ -594,16 +631,8 @@
       "claims": []
     },
     {
-      "text": "He laughs. It stops halfway.",
-      "say": "[very quiet, flat] He laughs. It stops halfway.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
       "text": "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.",
-      "say": "[low, slow, tender and hurt, the landing line finished] You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.",
+      "say": "[low, slow, the sting felt, the landing line finished] You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -618,17 +647,17 @@
       "claims": []
     },
     {
-      "text": "Landlord: Nothing personal.",
-      "say": "[clipped, eyes down, an envelope held out] Nothing personal.",
-      "speaker": "Landlord",
+      "text": "His coffee's gone. His rent doubles. And the whole platform would rather sit next to the pickpocket.",
+      "say": "[brisk, each blow quicker, a grin breaking on the last clause] His coffee's gone. His rent doubles. And the whole platform would rather sit next to the pickpocket.",
+      "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "His rent doubles. His coffee's gone. He's the pickpocket now. To everyone but you.",
-      "say": "[flat, each blow short, the last four words warmer] His rent doubles. His coffee's gone. He's the pickpocket now. To everyone but you.",
-      "speaker": "narrator",
+      "text": "Pickpocket: Plenty of room, everyone.",
+      "say": "[sly, cheerful, a host welcoming guests] Plenty of room, everyone.",
+      "speaker": "Pickpocket",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
@@ -663,55 +692,31 @@
     },
     {
       "text": "It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.",
-      "say": "[quiet, sad, the landing line complete, the last sentence a little bitter] It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.",
+      "say": "[quiet, level, the landing line complete, the last sentence dry and a little bitter] It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Fewer people sit near the stall. You count the box alone.",
-      "say": "[slow, the numbers like footsteps, the last sentence quiet and lonely] Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Fewer people sit near the stall. You count the box alone.",
+      "text": "Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box.",
+      "say": "[the numbers like footsteps, then a beat, the last sentence quiet and decided] Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box.",
       "speaker": "narrator",
       "gapAfterSec": 4.0,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "Sister: Are they gone yet?",
-      "say": "[small, tinny, frightened, down a phone line] Are they gone yet?",
-      "speaker": "Sister",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "Friend: My sister's fine.",
-      "say": "[too quick, too bright, a smile forced on] My sister's fine.",
+      "text": "Friend: That cost you.",
+      "say": "[soft, surprised, a grin breaking through, looking at your card] That cost you.",
       "speaker": "Friend",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "You both read it.",
-      "say": "[flat, very quiet] You both read it.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "The month ends. Rent's due tomorrow. Both your rents, in one tin box.",
-      "say": "[low, steady, the stakes counted, the last phrase slow] The month ends. Rent's due tomorrow. Both your rents, in one tin box.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "And that's when his tag says the thing the whole court has been waiting for.",
-      "say": "[hushed, a held breath, a hook] And that's when his tag says the thing the whole court has been waiting for.",
+      "text": "Rent's due tomorrow. Both your rents, in one tin box. And that's when his tag says the thing the whole court has been waiting for.",
+      "say": "[low, steady, the stakes counted, then a held breath and a hook] Rent's due tomorrow. Both your rents, in one tin box. And that's when his tag says the thing the whole court has been waiting for.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
@@ -727,7 +732,7 @@
     },
     {
       "text": "Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing.",
-      "say": "[low, thinking aloud, then careful and exact on the fact] Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing.",
+      "say": "[low, thinking aloud, then careful and exact on the fact, a spark on missing] Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -737,7 +742,7 @@
     },
     {
       "text": "It has never seen you choose something that mattered. And you're about to.",
-      "say": "[slow, intimate, the last four words almost a dare] It has never seen you choose something that mattered. And you're about to.",
+      "say": "[slow, intimate, the last four words a dare] It has never seen you choose something that mattered. And you're about to.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -760,8 +765,8 @@
       "claims": []
     },
     {
-      "text": "You take the key out of your pocket.",
-      "say": "[a breath in, quick, the decision] You take the key out of your pocket.",
+      "text": "Remember that? It has never seen a choice you've never made. So make one.",
+      "say": "[a grin in the voice, the plant called back, then quick and bright, a starting gun on the last three words] Remember that? It has never seen a choice you've never made. So make one.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -777,7 +782,7 @@
     },
     {
       "text": "The first blank card the city has ever made.",
-      "say": "[hushed, awed, slow] The first blank card the city has ever made.",
+      "say": "[hushed, awed, slow, a smile arriving at the end] The first blank card the city has ever made.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -785,31 +790,31 @@
     },
     {
       "text": "Friend: I was going to.",
-      "say": "[broken, barely out, eyes on the key] I was going to.",
-      "speaker": "Friend",
-      "gapAfterSec": 3.0,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Friend: Someone's at my sister's. Tonight.",
-      "say": "[low, fast, a confession, the last word cracking] Someone's at my sister's. Tonight.",
+      "say": "[barely out, eyes on the key, honest] I was going to.",
       "speaker": "Friend",
       "gapAfterSec": 4.0,
       "mood": "lamp",
       "claims": []
     },
     {
+      "text": "Kid: Do it again.",
+      "say": "[a shout from the back, thrilled, standing on his chair] Do it again.",
+      "speaker": "Kid",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
       "text": "You can't steal what you've just been handed. And the machine had no card for that.",
-      "say": "[quiet, warm, certain, the landing line complete] You can't steal what you've just been handed. And the machine had no card for that.",
+      "say": "[warm, certain, triumphant under a quiet voice, the landing line complete] You can't steal what you've just been handed. And the machine had no card for that.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Two crimson cards. Every face in the court turns toward them. Nothing else moves.",
-      "say": "[slow, wide, a held picture] Two crimson cards. Every face in the court turns toward them. Nothing else moves.",
+      "text": "Two crimson cards. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.",
+      "say": "[slow, wide, a held picture, then a lift of wonder on the last clause] Two crimson cards. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -817,19 +822,20 @@
     },
     {
       "text": "It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.",
-      "say": "[the planted line said back soft, then a hard stop on the No, then slow and clear] It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.",
+      "say": "[the planted line said back soft, a hard stop on the No, then slow and clear, a reveal] It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Drivers tracked by their insurer for a discount braked hard about a fifth less often within six months. The watching changed the driving.",
-      "say": "[clear, exact, then the second sentence slow and pointed] Drivers tracked by their insurer for a discount braked hard about a fifth less often within six months. The watching changed the driving.",
+      "text": "Drivers tracked by their insurer for a discount braked hard about a fifth less often. Within six months. The watching changed the driving.",
+      "say": "[clear, exact, the second sentence a beat on its own, the third slow and pointed] Drivers tracked by their insurer for a discount braked hard about a fifth less often. Within six months. The watching changed the driving.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
+        "c17",
         "c17"
       ]
     },
@@ -840,34 +846,29 @@
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
+        "c18",
         "c18"
       ]
     },
     {
       "text": "Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.",
-      "say": "[quiet, the numbers falling like a countdown, the last sentence flat and surprised] Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.",
+      "say": "[a dare, the numbers falling like a countdown, the last sentence flat and delighted] Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "A hundred and sixty teams once got thousands of facts about thousands of families, to predict how the children's lives would turn out. The best predictions were only slightly better than a simple guess from four facts.",
-      "say": "[calm, a story told exactly, a shade of wonder on the last clause] A hundred and sixty teams once got thousands of facts about thousands of families, to predict how the children's lives would turn out. The best predictions were only slightly better than a simple guess from four facts.",
+      "text": "A hundred and sixty teams once tried to predict how children's lives would turn out. Thousands of facts on every family. The best guesses were only slightly better than a simple one from four facts.",
+      "say": "[calm, a story told exactly, a shade of wonder on the last clause] A hundred and sixty teams once tried to predict how children's lives would turn out. Thousands of facts on every family. The best guesses were only slightly better than a simple one from four facts.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
+        "c24",
+        "c24",
         "c24"
       ]
-    },
-    {
-      "text": "Machines are bad at people. Until people get simple.",
-      "say": "[level, then a shade slower on the second sentence] Machines are bad at people. Until people get simple.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
     },
     {
       "text": "It never got better at seeing you. You got better at being seen.",
@@ -878,8 +879,8 @@
       "claims": []
     },
     {
-      "text": "A sociologist named it in 1948: a false belief makes itself true, and the prophet points to what happened as proof he was right all along. Predicting a comet, he noted, doesn't change its orbit.",
-      "say": "[dry, a story from an old journal, a small smile on the comet] A sociologist named it in nineteen forty-eight: a false belief makes itself true, and the prophet points to what happened as proof he was right all along. Predicting a comet, he noted, doesn't change its orbit.",
+      "text": "A sociologist named it in 1948: a false belief can make itself true, and the prophet points to what happened as proof he was right all along. Predicting a comet, he noted, doesn't change its orbit.",
+      "say": "[dry, a story from an old journal, a small smile on the comet] A sociologist named it in nineteen forty-eight: a false belief can make itself true, and the prophet points to what happened as proof he was right all along. Predicting a comet, he noted, doesn't change its orbit.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -898,17 +899,49 @@
       "claims": []
     },
     {
-      "text": "A city of teal lights. Under every one, someone doing what the card says. Because it was cheaper.",
-      "say": "[hushed, wide, a little awed, the last sentence flat and sad] A city of teal lights. Under every one, someone doing what the card says. Because it was cheaper.",
+      "text": "A city of teal lights. Under every one, someone doing what the card says. And one lamp that just got dimmer.",
+      "say": "[hushed, wide, awed, the last sentence a quiet grin] A city of teal lights. Under every one, someone doing what the card says. And one lamp that just got dimmer.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "A month later.",
-      "say": "[light, a new morning] A month later.",
+      "text": "Newsreader: A blank forecast, filmed at a food court.",
+      "say": "[broadcast even, crisp, a flicker of disbelief on blank] A blank forecast, filmed at a food court.",
+      "speaker": "Newsreader",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "By breakfast, your one surprise is the city's newest half-price trick.",
+      "say": "[light, amused, a grin spreading, quick on the last three words] By breakfast, your one surprise is the city's newest half-price trick.",
       "speaker": "narrator",
+      "gapAfterSec": 4.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Friend: That was ours.",
+      "say": "[affronted, arms folded, mock-wounded] That was ours.",
+      "speaker": "Friend",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "By lunch the city has a card for it. Of course it does. It watched a thousand people do it.",
+      "say": "[dry, a shrug, the second sentence a wry aside] By lunch the city has a card for it. Of course it does. It watched a thousand people do it.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Newsreader: Confidence is back to ninety-nine.",
+      "say": "[broadcast even, brisk, relieved on behalf of the city] Confidence is back to ninety-nine.",
+      "speaker": "Newsreader",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
@@ -923,7 +956,7 @@
     },
     {
       "text": "Your tag, crimson for thirty days.",
-      "say": "[dry, matter of fact, almost proud] Your tag, crimson for thirty days.",
+      "say": "[dry, matter of fact, proud] Your tag, crimson for thirty days.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -931,23 +964,23 @@
     },
     {
       "text": "Coffee seller: Full price. Same?",
-      "say": "[dry, a small warmth, pouring anyway] Full price. Same?",
+      "say": "[dry, a small warmth, the cup already moving] Full price. Same?",
       "speaker": "Coffee seller",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "The train. Every head on its phone, two red tags in the middle. People shift down the bench.",
-      "say": "[amused, warm, a little defiant on the last sentence] The train. Every head on its phone, two red tags in the middle. People shift down the bench.",
+      "text": "The train. Two red tags in the middle, and every head sneaking a look.",
+      "say": "[amused, sly, the last clause a stage whisper] The train. Two red tags in the middle, and every head sneaking a look.",
       "speaker": "narrator",
-      "gapAfterSec": 6.0,
+      "gapAfterSec": 5.0,
       "mood": "morning",
       "claims": []
     },
     {
       "text": "Friend: Trust me?",
-      "say": "[bright, easy, the oldest joke, grinning before the words] Trust me?",
+      "say": "[bright, easy, the oldest joke, grinning before the words; the same read each time it comes back, at the crimson seventy-one and on the train, so the card and the faces do the changing] Trust me?",
       "speaker": "Friend",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -962,27 +995,16 @@
       "claims": []
     },
     {
-      "text": "Across the aisle, the kid with the cap. Over his head, a tag with nothing on it. He winks.",
-      "say": "[curious, slow, a smile in the voice, the last two words a hook] Across the aisle, the kid with the cap. Over his head, a tag with nothing on it. He winks.",
+      "text": "And the city hasn't noticed yet.",
+      "say": "[soft, delighted, a secret shared, the last word held] And the city hasn't noticed yet.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Your phone's in your hand. This app said in 2018 that more than seventy per cent of watch time came from its recommendations. It's picking your next one now. Watch your thumb.",
-      "say": "[close, dry, exact on the fact, then intimate and a little playful on the last two sentences] Your phone's in your hand. This app said in twenty eighteen that more than seventy per cent of watch time came from its recommendations. It's picking your next one now. Watch your thumb.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": [
-        "c12",
-        "c12"
-      ]
-    },
-    {
-      "text": "So, would you take the discount? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
-      "say": "[warm, direct, a friend asking, brisk on the last clause] So, would you take the discount? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "text": "So, would you pay full price to make your card go blank? Tell us in the comments. And if you would, hit like and subscribe.",
+      "say": "[warm, direct, a friend daring you with a grin, brisk on the last clause] So, would you pay full price to make your card go blank? Tell us in the comments. And if you would, hit like and subscribe.",
       "speaker": "narrator",
       "gapAfterSec": 4.0,
       "mood": "morning",
@@ -1003,8 +1025,7 @@
     "c17": "https://www.informs.org/News-Room/INFORMS-Releases/News-Releases/When-the-insurance-company-monitors-your-driving-in-real-time-does-it-help",
     "c18": "https://en.wikipedia.org/wiki/Goodhart%27s_law",
     "c24": "https://www.pure.ed.ac.uk/ws/files/142847984/1915006117.full.pdf",
-    "c28": "https://eclass.uowm.gr/modules/document/file.php/NURED263/Merton%20The%20Self-Fulfilling%20Prophecy%201948%20Antioch%20Review.pdf",
-    "c12": "https://ailab-ua.github.io/courses/resources/netflix_recommender_system_tmis_2015.pdf"
+    "c28": "https://eclass.uowm.gr/modules/document/file.php/NURED263/Merton%20The%20Self-Fulfilling%20Prophecy%201948%20Antioch%20Review.pdf"
   },
   "cues": {}
 }

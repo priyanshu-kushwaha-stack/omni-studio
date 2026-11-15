@@ -261,6 +261,10 @@ export const CityNight: React.FC<{ cam: Camera; frame: number }> = ({ cam, frame
         {/* the food court's long low roof, and the two crimson dots by it */}
         <rect x={roof.x - 150} y={roof.y - 40} width={300} height={56} rx={6} fill="#2a2f45" stroke="#0b0d1a" strokeWidth={4} />
         <rect x={roof.x - 140} y={roof.y + 10} width={280} height={8} fill="#ffcf7a" opacity={0.6} />
+        {/* the lamp over them: one shade dimmer than every other teal light in the city */}
+        <line x1={roof.x + 60} y1={roof.y + 60} x2={roof.x + 60} y2={roof.y - 70} stroke="#0b0d1a" strokeWidth={5} />
+        <circle cx={roof.x + 60} cy={roof.y - 78} r={30} fill={TEAL} opacity={0.12} />
+        <circle cx={roof.x + 60} cy={roof.y - 78} r={11} fill="#3f8f86" stroke="#0b0d1a" strokeWidth={2} />
         {[-26, 26].map((dx) => (
           <g key={dx}>
             <circle cx={roof.x + dx} cy={roof.y + 50} r={44} fill={CRIMSON} opacity={0.3} />

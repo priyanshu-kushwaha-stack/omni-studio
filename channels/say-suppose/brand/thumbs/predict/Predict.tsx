@@ -2,7 +2,7 @@
 // film's key shot (7:40). A food stall's counter at closing, mood `lamp`: one warm lamp over the counter, the food court
 // behind shuttered and dark (shutters, blank stall boards with no lettering, stacked chairs, so K5 counts only the tag
 // and the card). You at the left, shocked, hold the cash-box key out across the counter on an open palm; the tin box
-// sits between you; your best friend at the right looks down at the key, a hand flat on the lid, and over his head a
+// sits between you; your best friend at the right, stunned, his eyes coming up from the key to you (K17, G2 v2), a hand flat on the lid, and over his head a
 // crimson split-flap card reads 94%, hung on a thread from the city's small teal lamp. Frame i is candidate i. No AI images.
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
@@ -56,9 +56,10 @@ const Card: React.FC = () => {
   );
 };
 
-/** The cash-box key on your palm: a brass bow, a shank and two teeth, catching the lamp. */
+/** The cash-box key on your palm: a brass bow, a shank and two teeth, catching the lamp. Drawn at 2.3x so it is about
+ *  12% of the frame width and reads at feed size (G2 v2, 2026-11-14). */
 const Key: React.FC<{ x: number; y: number }> = ({ x, y }) => (
-  <g transform={`translate(${x} ${y}) rotate(-14)`}>
+  <g transform={`translate(${x} ${y}) rotate(-14) scale(2.3)`}>
     <circle cx={0} cy={0} r={48} fill="#fff6c8" opacity={0.28} />
     <circle cx={-34} cy={-16} r={26} fill={BRASS} stroke={INK} strokeWidth={6} />
     <circle cx={-34} cy={-16} r={10} fill={INK} />
@@ -166,7 +167,7 @@ const Scene: React.FC = () => {
   const actors = (
     <g>
       <Figure x={FRIEND.x} y={FRIEND.y} scale={FRIEND.scale} facing={-1} pose={LEAN} head={PEACH} coat="#6b4f3a"
-        brows="worry" lids={0.3} mouth="frown" eyes={1.05} look={{ x: 0.7, y: 0.8 }} />
+        brows="raised" lids={0} mouth="o" eyes={1.25} look={{ x: 0.95, y: -0.2 }} />
       <Card />
       <Counter />
       <CashBox />

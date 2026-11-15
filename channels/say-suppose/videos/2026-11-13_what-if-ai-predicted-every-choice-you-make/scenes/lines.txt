@@ -2,259 +2,296 @@
 
 ## 00:00 The Lamp
       > MOOD: lamp
-      > SCENE: A food court at closing. Shutters half down, chairs stacked on tables, one hanging lamp over your stall's counter. You, mustard head, teal scarf, apron, dropping coins one by one from the till into a dark tin cash box with a brass lock. Your best friend, peach head, apron, wiping the counter beside you. The coffee seller next door, sage head, paper cap, stacking cups at her stall. Behind the court a city worker on a ladder at the lamppost, a small teal lamp in one hand. Inside 0.5 s: the first coin hitting the tin.
-      > HOLD: 3 s. Performed. You count the last coins in, shut the lid, turn the key and pull it out. Your best friend's hand slides into frame, palm up, open, the way it does every night. He grins before he speaks.
-  0  Friend: Trust me?
-      > HOLD: 2 s. Performed. You grin back and pocket the key, slow, so he can watch it go. He shrugs, both hands up: tomorrow, then. Behind you both the worker clips the teal lamp to the lamppost and taps it twice. It blinks. Once. Twice. Stays on.
-  1  Worker: There we go.
-      > HOLD: 3 s. Performed. A paper flap. Then a hundred. Cream stamped cards drop on threads from the teal glow over every head in the court, yours included, crimson type, split-flap digits fluttering. You look up. Over you: POCKETS KEY 91%. Over him: HOLDS OUT HAND 96%. A soft tick, and both cards flip teal with a tick mark. He reads yours. You read his. Your eyebrows go up; his go higher.
+      > SCENE: The opening frame, with tags already on it. A food court at closing: shutters half down, chairs stacked on tables, one hanging lamp over your stall's counter. The dark tin cash box between you, lid shut. You, mustard head, teal scarf, apron, your arm out level across the box, the small brass key on your open palm. Your best friend, peach head, apron, his hand under yours, palm up, grinning. Inside the first half second the small teal lamp on the lamppost behind the court blinks with a soft electric tick, and in the same half second the first paper flap: cream stamped cards are dropping on threads from the teal glow over every head in the court, yours and his first, crimson type, split-flap digits fluttering to a stop. Over you: POCKETS KEY 91%. Over him: HOLDS OUT HAND 96%. The city worker is still on his ladder at the lamppost, one hand on the lamp.
       > TAG: POCKETS KEY 91%
       > TAG: HOLDS OUT HAND 96%
-      > HOLD: 2 s. Performed. At the next stall the coffee seller slides an iced coffee across to your best friend without looking at him; the card over him flaps to PAYS 97%. He pays, still staring up. Her price board flaps from 3.00 to 1.50. He looks at the board, then at her.
+      > HOLD: 2 s. Performed. He reads yours. You read his. His eyebrows go up; yours go higher. He grins wider before he speaks.
+  0  Friend: Trust me?
+      > HOLD: 2 s. Performed. You pull the key back and pocket it, slow, so he can watch it go. A soft tick: both cards flip teal with a tick mark. He points up at your card with a told-you face. Behind you the worker taps the lamp twice and climbs down.
+      > HOLD: 3 s. Performed. At the next stall the coffee seller, sage head, paper cap, slides an iced coffee across the steel counter to your best friend without looking at him: the cup scrapes across the steel. The card over him flaps to PAYS 97%. He pays, still staring up. Her price board clatters from 3.00 to 1.50 in split-flap. He looks at the board, then at her.
       > TAG: PAYS 97%
-  2  Friend: Half?
-  3  Coffee seller: Half.
+  1  Friend: Half?
+  2  Coffee seller: Half.
 
-## 00:12 Half Price
-      > SCENE: Close on the lamp, blinking teal. Then your face, lit from below by the coins, eyes on the card over his head. He looks up at his own tag, then at you, and points at it with the cup.
-  4  Closing time. A food court in Singapore.
-  5  So what if an AI predicted every choice you make, and paid you every time it was right?
-      > SCENE: Three quick inserts of the same counter on three other nights, the lamp warmer each time: the coins, his open hand, your hand going to your pocket. Then back to tonight: the two teal ticks over your heads.
-  6  Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.
-      > SCENE: Insert: the coffee seller's board on 1.50; the iced coffee in his hand. Then the lamppost outside the court: a split-flap rate board under the teal lamp, YOUR RATE 100. Heads around the court tilt up at their own cards, one after another, like a wave.
+## 00:07 Half Price
+      > SCENE: Close on your face under your teal card, eyes on the price board. Then his, pointing at his own card with the cup.
+  3  So what if an AI predicted every choice you make, and paid you every time it was right?
+      > SCENE: Insert: the lamppost outside the court, a split-flap rate board under the teal lamp, YOUR RATE 100, a small teal arrow and a small crimson arrow beside it. Then a quick flash of a card buzzing crimson over a stranger's head across the court, every face near him turning.
       > TAG: YOUR RATE 100
-  7  Do what the tag says, and your rent halves. Don't, and every head in the court turns. And here's the thing. It's right ninety-nine times in a hundred. About everybody.
+  4  Obey your tag, and your rent halves. Break it, and it goes crimson where every head can see, and your prices climb.
+      > SCENE: Three quick inserts of the same counter on three other nights, the lamp warmer each time: the coins dropping into the tin, his open hand, your key held out over it and pulled back. Then tonight: the two teal ticks over your heads.
+  5  Closing time. A food court in Singapore. Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.
+      > SCENE: Heads around the court tilt up at their own cards, one after another, like a wave, and every card ticks teal in turn.
+  6  And here's the thing. It's right ninety-nine times in a hundred. About everybody.
       > SCENE: The title card ident (C), three seconds, cut from the last word.
 
-## 00:48 The Rule
+## 00:45 The Rule
       > MOOD: night
       > SCENE: The walk home: a covered walkway, lampposts every twenty paces, each with a teal lamp and a split-flap rate board. Your best friend beside you, humming. The tags over you hang from each lamp you pass and hand over to the next with a flap. On "Over every head" an insert of the card: the forecast line, the split-flap percentage. On "every lamppost" the camera tilts up the post to the lamp.
-  8  Over every head, a tag. What you'll do in the next ten seconds, and how sure the city is. It watches from every lamppost.
-  9  Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.
-      > SCENE: An insert: your own card going crimson for one frame, a dull buzz, the rate board flapping up one notch, then back to teal. On "Remember that" a close-up of your face, half lit.
- 10  Break it, and your tag goes crimson where everyone can see, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.
+  7  Over every head, a tag. What you'll do in the next ten seconds, and how sure the city is. It watches from every lamppost.
+  8  Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.
+      > SCENE: An insert: your own card going crimson for one frame with a dull buzz, the rate board flapping up one notch, then back to teal. On "Remember that" a close-up of your face, half lit.
+  9  Break it, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.
+      > SCENE: Your best friend jumps, grabs his card and rips it off its thread: a paper tear. He holds it up, triumphant. The next lamp drops a fresh one over him with a flap before he lands.
+      > TAG: TEARS OFF TAG 99%
+      > HOLD: 3 s. Performed. He reads the new card. He looks at the torn one in his hand. He looks at the new one again. He lets the torn one drop.
+ 10  Friend: Oh, come on.
+ 11  Tear it off, and the next lamp prints another. It saw that coming too.
       > SCENE: Over his head: HUMS 99%. He stops humming mid-note and watches the card. It flaps: STOPS 88%, teal tick. He glares at it. Then he hums again, louder, arms out, walking backwards.
       > TAG: HUMS 99%
       > TAG: STOPS 88%
- 11  He hums all the way home. He stops. It saw that too.
- 12  Friend: It likes me.
-      > SCENE: Beyond the walkway, a gantry over the main road, a price lit on it, cars passing under. Then your lamppost at the corner, the board: YOUR RATE 100, and a small crimson arrow and a teal arrow beside it.
- 13  Nobody here finds a price on a choice strange. This city has billed drivers for its busiest roads by time of day since 1998 .
- 14  Tomorrow you'll find out which way yours moves.
+ 12  He hums all the way home. He stops. It saw that too.
+ 13  Friend: It likes me.
+      > SCENE: Beyond the walkway, a gantry over the main road, a price lit on it, cars passing under. Then your lamppost at the corner, the board: YOUR RATE 100.
+ 14  Nobody here finds a price on a choice strange. This city has billed drivers for its busiest roads by time of day since 1998 (c30).
+ 15  Tomorrow you'll find out which way yours moves.
 
-## 01:38 Random
+## 01:35 Random
       > MOOD: morning
       > SCENE: Your bathroom mirror. Your face, toothbrush in hand, your tag on a thread from a teal lamp over the glass, and a small rate board in the corner of the mirror reading 100. On "So guess wrong" you lift your chin at the card.
- 15  Morning. You've worked it out. It guesses. So guess wrong.
-      > HOLD: 6 s. Performed. Your card: RAISES RIGHT 71%. You raise your left hand. Buzz, crimson. The card flaps: RAISES LEFT 88%. You freeze with the hand half up. Buzz. FREEZES 93%. You stick out your tongue at it. Buzz. TONGUE 79%. You put both hands flat on the sink and stare. Buzz. STARES 95%. With every buzz the little board flaps upward: 100, 108, 117, 125. Your tongue goes back in.
+ 16  Morning. You've worked it out. It guesses. So guess wrong.
+      > HOLD: 6 s. Performed. Your card: RAISES RIGHT 71%. You raise your left hand. Buzz, crimson. The card flaps: RAISES LEFT 88%. You freeze with the hand half up. Buzz. FREEZES 93%. You stick out your tongue at it. Buzz. TONGUE 79%. You put both hands flat on the sink and stare. Buzz. STARES 95%. With every buzz the little board clatters upward: 100, 108, 117, 125. Your tongue goes back in.
       > TAG: RAISES RIGHT 71%
+      > TAG: RAISES LEFT 88%
       > TAG: FREEZES 93%
+      > TAG: TONGUE 79%
+      > TAG: STARES 95%
       > TAG: YOUR RATE 125
- 16  Four reds. Up twenty-five before breakfast.
+ 17  Four reds. Up twenty-five before breakfast.
       > SCENE: A paper diagram over the mirror: two keys, F and D, and a line of guesses drawing itself above a line of presses, matching seven times in ten. Your face under it, toothpaste at the corner of your mouth.
- 17  A professor once wrote a tiny program that guessed which of two keys people would press when they tried to type at random. Right seventy to eighty per cent of the time . He couldn't beat it himself .
- 18  Trying to be random is a pattern.
-      > SCENE: The coffee stall, morning. The coffee seller's board for you: 3.60. She slides the cup over and taps the board with one finger, eyebrows up.
- 19  So your coffee this morning costs more than it did last night.
- 20  Coffee seller: You're up today.
+ 18  A professor once wrote a tiny program that guessed which of two keys people would press when they tried to type at random (c07). Right seventy to eighty per cent of the time (c07). He couldn't beat it himself (c07).
+ 19  Trying to be random is a pattern.
+      > SCENE: The coffee stall, morning. The coffee seller's board for you clatters to 3.60. She slides the cup across the steel to you and taps the board with one finger, eyebrows up.
+ 20  So your coffee this morning costs more than it did last night.
+ 21  Coffee seller: You're up today.
       > SCENE: Your stall. Your best friend with a coin on his thumb, the card over him: FLIPS AGAIN 90%. He flips. Tick. He pockets the coin and folds his arms. The card flaps: FLIPS AGAIN 70%. He stares at the seventy.
- 21  Your best friend tries a coin.
+ 22  Fine. Let a coin choose.
+      > TAG: FLIPS AGAIN 90%
       > TAG: FLIPS AGAIN 70%
-      > HOLD: 3 s. Performed. His hand goes back into his pocket on its own. He pulls the coin out. He looks at it. He flips it. Tick. He drops the coin on the counter like it burned him and wipes his hand on his apron.
- 22  Friend: It's in my head.
-      > SCENE: Wide of the food court filling for lunch: a hundred cards on a hundred threads, nearly all teal, ticking like a clock shop. The rate boards on the pillars flapping down.
- 23  Problem one. Being random costs money. But the city worked that out long ago. And it's playing a different game.
+      > HOLD: 3 s. Performed. His hand goes back into his pocket on its own. He pulls the coin out. He looks at it. He flips it. Tick. He drops the coin on the steel counter like it burned him, a sharp clink, and wipes his hand on his apron.
+ 23  Friend: It's in my head.
+ 24  A coin can't choose for you. You still choose to flip it. And it saw you reach.
+      > SCENE: Wide of the court filling for lunch: a hundred cards on a hundred threads, nearly all teal, ticking like a clock shop. You at your counter, eyes up, not on the customers but on the cards over the queue.
+ 25  Problem one. Being random costs money. So you stop fighting your tag. And start reading everyone else's.
 
-## 02:28 The City Plays
+## 02:28 Your Stall
       > MOOD: day
-      > SCENE: The train platform. The kid with the cap, pale blue head, playing rock-paper-scissors with the man beside him for who stands by the door. The kid throws rock and wins, fist in the air. The card over him flaps: ROCK AGAIN 83%. The man reads it, throws paper, wins. The kid throws rock again. Paper again. His cap comes off in his hand.
- 24  The platform. The kid with the cap plays rock-paper-scissors with the man beside him. Wins with rock. His tag says rock again. Eighty-three.
- 25  Kid: No fair.
-      > SCENE: A paper diagram on the platform wall: a hand throwing rock, winning, and an arrow looping back to rock.
- 26  People who win tend to play the same thing again .
-      > SCENE: The street. The magician, lilac head, a fan of cards out to a small crowd. Over him: PALMS THE QUEEN 99%. The crowd reads it and walks off before the trick. He looks up at his own card and lowers the fan.
- 27  The magician.
- 28  Magician: Pick a card.
- 29  His tag says which card. By lunch, no act.
-      > SCENE: A food-court table, the couple on a date, lilac and sage heads. Hers: CHECKS PHONE 88%. His: SAME JOKE 95%. She checks her phone. He tells it. Two rate boards on the table flap down together. Neither looks at the other. The food steams between them, untouched.
- 30  A couple on a date. Her tag: checks phone. His: same joke. Both obey. Half price.
- 31  Date: Heard this one.
-      > SCENE: A television in the corner of the court: a penalty kick, the striker's card KICKS LEFT 91%, the keeper already diving left. Then a quick row of three strikers, three tags, three saves, and a scoreboard of zeros.
- 32  The penalty kick. Tag says left, keeper goes left. Soon every striker obeys, and nobody scores.
-      > SCENE: The platform again. A man in a hood, grey head, close behind a woman with a bag. The card over him buzzes and goes crimson: TAKES WALLET 97%. Every head on the platform turns toward him at once. He steps back, both hands open and empty, looking from face to face.
- 33  Then the first crimson the city has seen.
+      > SCENE: The lunch queue at your stall. Over the first three heads: ORDERS NOODLES 92%, ORDERS RICE 88%, CHANGES MIND 81%. You don't look at a single face. You plate noodles and slide the plate across the steel before the first man opens his mouth.
+ 26  Lunch. You read the queue before it orders.
+      > TAG: ORDERS NOODLES 92%
+      > TAG: ORDERS RICE 88%
+      > TAG: CHANGES MIND 81%
+      > HOLD: 5 s. Performed. Three plates slide across the steel, one after another, each arriving as a mouth opens. The third man gets rice and noodles both and stares at them. Tick, tick, tick. Your rate board on the pillar clatters down: 100, 94, 90. The coffee seller watches with her mouth open, then slowly looks up at the cards over her own queue.
+ 27  Coffee seller: Show-off.
+ 28  Nobody waits. Nobody orders. The queue doubles by the weekend, and the court next door is reading tags too.
+      > SCENE: The landlord, grey head, tie, hands your best friend an envelope. Your best friend tears it open, reads, and the card over him flaps HIGH-FIVES 98% a second before his hand comes up. You slap it. Tick.
+      > TAG: HIGH-FIVES 98%
+ 29  The landlord's letter.
+ 30  Landlord: Keep it up.
+ 31  Friend: Half!
+ 32  Half rent. And a thought you can't put down. If you can read their tags, you can read anyone's.
+
+## 02:54 The City Plays
+      > MOOD: day
+      > SCENE: The train platform. A man in a hood, grey head, close behind a woman with a bag. You, two steps away, see the card over him buzz and go crimson: TAKES WALLET 97%. The first crimson the city has seen.
+ 33  The platform. A hood behind a woman's bag, and the first crimson the city has seen.
       > TAG: TAKES WALLET 97%
+      > HOLD: 3 s. Performed. You reach past the woman and tug her bag to the far side of her, before his hand moves. She turns to you, startled. He steps back, both hands open and empty. Every head on the platform turns toward his card at once.
  34  Pickpocket: I didn't touch it.
-      > SCENE: The train doors close on him. Later, at the coffee stall, the coffee seller looks up at his pale crimson card and turns her back. Later still, the platform at dusk: the pickpocket against a pillar, hands in his pockets, his card teal: STANDS STILL 99%, a woman with a bag asleep on the bench right beside him.
- 35  Every head turns. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.
+ 35  Call the police? For what. He hasn't done anything. That's the point of a forecast.
+      > SCENE: The train doors slide shut on him with a hiss. Later, at the coffee stall, the coffee seller looks up at his pale crimson card and turns her back. Later still, the platform at dusk: the pickpocket against a pillar, hands in his pockets, his card teal: STANDS STILL 99%, a woman with a bag asleep on the bench right beside him.
+ 36  Every head turns anyway. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.
+      > TAG: STANDS STILL 99%
+      > SCENE: The platform, the next morning. The kid with the cap, pale blue head, playing rock-paper-scissors with the man beside him for the seat by the door. The kid throws rock and wins, fist in the air. The card over him flaps: ROCK AGAIN 83%. The man reads it, throws paper, wins. Rock again. Paper again. His cap comes off in his hand.
+ 37  The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again.
+      > TAG: ROCK AGAIN 83%
+ 38  Kid: No fair.
+ 39  People who win tend to play the same thing again (c08).
+      > SCENE: The street. The magician, lilac head, a fan of cards out to a small crowd. Over him: PALMS THE QUEEN 99%. The crowd reads it and walks off before the trick. He looks up at his own card and lowers the fan.
+ 40  Magician: Pick a card.
+      > TAG: PALMS THE QUEEN 99%
+ 41  His tag says which card. By lunch, no act.
+      > SCENE: A television in the corner of the court: a penalty kick, the striker's card KICKS LEFT 91%, the keeper already diving left. In the stands, every head reading the card. Then a betting shop window: the odds board clatters to a line of ones.
+ 42  The whole city tries your trick. The penalty kick. Tag says left, keeper goes left.
+      > TAG: KICKS LEFT 91%
+ 43  Bet on it? Everyone can read the tag. The bookie read it first, and pays a dollar for a dollar.
+      > SCENE: A quick row of three strikers, three tags, three saves, and a scoreboard of zeros. The newsreader on the screen, navy head, over a graphic of a league table full of nils.
+ 44  Soon every striker obeys, and nobody scores.
+ 45  Newsreader: Another nil-nil.
       > SCENE: You on the platform, your card: TAKES THE SIX-TEN 98%. A paper map draws itself behind you: your flat, the food court, the stall, the platform, a line between them worn thick.
- 36  Phone records from fifty thousand people once showed where a person will be is, in principle, guessable up to about ninety-three per cent of the time . Nobody fell below eighty per cent .
- 37  You thought you were a free spirit. You're a timetable.
-      > SCENE: The stall. The landlord, grey head, tie, hands your best friend an envelope. Your best friend tears it open, reads, and the card over him flaps HIGH-FIVES 98% a second before his hand comes up. You slap it. Tick.
- 38  The landlord's letter.
- 39  Landlord: Keep it up.
- 40  Friend: Half!
-      > SCENE: The morning train, the picture only this premise can show. The camera starts on your card, LOOKS AT PHONE 99%, and your face lit from below by the screen, then pulls back down the coach: forty pale heads, forty identical cards on forty threads from the ceiling lamps, LOOKS AT PHONE 99%, nobody looking out of the window at the city going past. At the end of the coach a split-flap fare board ticks down with every tick of every card: 2.10, 2.00, 1.90. At the far end one figure in a long coat faces the doors, crimson head, the only passenger with no phone.
- 41  The morning train. Forty heads. Forty tags, the same three words. Nobody looks out of the window.
-      > HOLD: 3 s. The forty cards tick together. The fare board flaps to 1.80. Outside the window a sunrise over the towers, and no face turned to it.
- 42  But here's the problem. Problem two: the cheapest people in this city never surprise anyone.
+      > TAG: TAKES THE SIX-TEN 98%
+ 46  Phone records from fifty thousand people once showed this (c09). Where a person will be is, in principle, guessable up to about ninety-three per cent of the time (c09).
+ 47  You thought you were a free spirit. You're a timetable.
+      > SCENE: The morning train, the picture only this premise can show. The camera starts on your card, LOOKS AT PHONE 99%, and your face lit from below by the screen, then pulls back down the coach: forty pale heads, forty identical cards on forty threads from the ceiling lamps, LOOKS AT PHONE 99%, nobody looking out of the window at the city going past. At the end of the coach a split-flap fare board ticks down with every tick of every card: 2.10, 2.00, 1.90. At the far end one figure in a long coat faces the doors, crimson head, the only passenger with no phone and no card.
+      > TAG: LOOKS AT PHONE 99%
+ 48  The morning train. Forty heads. Forty tags, the same three words. Nobody looks out of the window.
+      > HOLD: 3 s. The forty cards tick together. The fare board clatters to 1.80. Outside the window a sunrise over the towers, and no face turned to it.
+ 49  But here's the problem. Problem two: the cheapest people in this city never surprise anyone.
 
-## 03:53 The Cheapest Man
+## 04:16 Boring Pays
       > MOOD: day
-      > SCENE: The food court at noon. The man with the same lunch, pale blue head, tie, at the same table, the same tray. His card: SAME LUNCH 100%, teal, not a flicker. The rate board on his pillar reads 12. People at the next tables glance at his board, then at their own.
- 43  The man with the same lunch. Same table, same minute, same dish, for a year. Lowest rate in the city.
+      > SCENE: The food court at noon. The man with the same lunch, pale blue head, tie, at the same table, the same tray. His card: SAME LUNCH 100%, teal, not a flicker. The rate board on his pillar reads 12. People at the next tables glance at his board, then at their own. Your best friend leans over your counter to look.
+ 50  The man with the same lunch. Same table, same minute, same dish, for a year. Lowest rate in the city.
+      > TAG: SAME LUNCH 100%
+      > TAG: HIS RATE 12
+ 51  Friend: That's the champion?
       > SCENE: A paper diagram over the court: a rat's tail, a coin; then a row of tails, a row of coins; then a cage full of rats drawn behind them.
- 44  People farm it. In 1902 , Hanoi paid a bounty for every rat tail, and officials found people breeding rats for the tails . Pay for predictability, and people breed it.
+ 52  People farm it. In 1902 (c20), Hanoi paid a bounty for every rat tail. Officials found people breeding rats for the tails (c20). Pay for predictability, and people breed it.
       > SCENE: The street outside the court. The coach, grey-green head, in a sandwich board with no lettering, a small paper subscribe tag pinned to its corner, no voice. A short queue in front of him, every card in the queue reading LISTENS 99%.
- 45  On the street, a man sells boring.
- 46  Coach: Same route. Same lunch. Same face.
+      > TAG: LISTENS 99%
+ 53  On the street, a man sells boring.
+ 54  Coach: Same route. Same lunch. Same face.
       > MOOD: dusk
-      > SCENE: The magician at a folding table, reading a tourist's card for a coin. Then your stall: your rate board flaps 61, then 55. Your hand goes to the till, stops, your eyes go up to your card, and only then does the hand move.
- 47  The magician reads tags for tips. Your rate falls. Sixty-one. Fifty-five. You've learned to read your tag before you reach.
-      > SCENE: Your best friend's phone lights up on the counter between you, face up, ringing. He looks at it, and turns it face down without answering. You look at the back of the phone, then at him. He wipes the counter.
- 48  His phone lights up on the counter. His sister. He turns it face down. You don't ask.
+      > SCENE: Your stall: your rate board clatters 61, then 55. Your hand goes to the till, stops, your eyes go up to your card, and only then does the hand move.
+      > TAG: YOUR RATE 61
+      > TAG: YOUR RATE 55
+ 55  Your rate falls. Sixty-one. Fifty-five. You've learned to read your tag before you reach.
       > MOOD: lamp
-      > SCENE: Closing. The box open between you. Your best friend straightens up, takes a breath, grin already starting. The card over him flaps.
-      > TAG: TELLS JOKE 62%
-      > HOLD: 6 s. Performed. He opens his mouth. His eyes go up to the card. Sixty-two. The grin stays on his face a second after his eyes leave it. He shuts his mouth. He looks down at the coins and starts counting, lips moving, no sound. You look at him. He doesn't look up. The card ticks teal: COUNTS COINS 97%.
- 49  He reads the sixty-two. He shuts his mouth. He counts coins instead.
- 50  That's what the discount costs. Not money.
-      > SCENE: Your hand on the box lid. The key. Your pocket.
- 51  You count the box. That's the habit.
+      > SCENE: Closing. Your best friend behind the counter, a paper napkin folded into a tie at his collar, chest puffed, the landlord's walk. You're already laughing, hand over your mouth.
+ 56  Quiet all week. Then tonight, the landlord impression. The napkin tie.
+      > HOLD: 5 s. Performed. He opens his mouth for the landlord's first word. The card over him flaps before any sound comes out: LANDLORD VOICE 97%. He stops with his mouth open. He looks up at it. He finishes the bit anyway, quieter, and pulls the napkin off.
+      > TAG: LANDLORD VOICE 97%
+ 57  Friend: It knows the bit.
+ 58  That's what the discount costs. Not money.
       > SCENE: The lamppost outside, the board: CITY SCORE 99.5. The teal lamp over it, steady.
- 52  And the board says ninety-nine point five now. It's getting better. Or something is.
+      > TAG: CITY SCORE 99.5
+ 59  And the board outside says ninety-nine point five now. It's getting better. Or something is.
 
-## 04:53 Sixty Per Cent
+## 05:06 Sixty Per Cent
       > MOOD: dusk
       > SCENE: The stall at closing, the shutters half down. A paper diagram draws itself on the shutter: a head in profile, a scanner ring round it, two buttons, left and right.
- 53  You thought it read minds. Nothing reads minds.
+ 60  You thought it read minds. Nothing reads minds.
       > SCENE: The diagram: a hand hovering over the two buttons; a clock drawn beside it ticking a few seconds back; then a tally, sixty marks against forty; then a coin, fifty and fifty.
- 54  In 2008 , brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen . The guess was right about sixty times in a hundred . A coin gets fifty.
+ 61  In 2008 (c04), brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen (c04). The guess was right about sixty per cent of the time (c05). A coin gets fifty.
       > SCENE: Close on your card over your head: WIPES COUNTER 99%. Your face under it, brows pinched, looking up.
- 55  Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?
-      > SCENE: Your best friend behind the counter, a paper napkin folded into a tie at his collar, chest puffed, the landlord's walk. You're already laughing, hand over your mouth.
- 56  Quiet all week. Then tonight, the landlord impression. The napkin tie. The one that always gets you.
-      > HOLD: 5 s. Performed. He does the landlord's slow nod and the envelope hand. You laugh so hard you lean on the box. The card over him flaps: LANDLORD VOICE 97%. He stops mid-word. He looks up at it. He finishes the bit anyway, quieter, and pulls the napkin off.
- 57  Friend: It knows the bit.
-      > SCENE: Two inserts: the stall at six in the morning, him alone, coins in rows, COUNTS COINS 88%; the walkway at ten at night, him under a lamp, the phone, CHECKS PHONE 91%.
- 58  At six in the morning his tag says counts coins. At ten at night, checks phone.
+      > TAG: WIPES COUNTER 99%
+ 62  Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?
+      > SCENE: Your best friend's rate board on his pillar, clattering up a notch: HIS RATE 118. Insert: the landlord's envelope in his hand, and his face reading it, not smiling. Then him at the back of the stall, eyes on the tin box, longer than they should be.
+      > TAG: HIS RATE 118
+ 63  And your best friend's board never came down after the coin. Up. Up again. He's been staring at the box all week.
+ 64  Friend: Machine hates me.
       > SCENE: Closing, the next night. The box. His hand, flat on the counter, not yet out. Your eyes on it.
- 59  Tomorrow his hand comes out, like every night. And the tag over it won't be a joke.
+ 65  Tomorrow his hand comes out, like every night. And the tag over it won't be a joke.
 
-## 05:42 Red
+## 05:46 Red
       > MOOD: lamp
-      > SCENE: Closing. The court half dark, one lamp over the counter. You lock the box and take the key out. The coffee seller next door pulling her shutter.
- 60  Closing. The court half dark. His hand comes out.
-      > HOLD: 4 s. Performed. His hand slides into frame, palm up, open, the grin already there. He says it the way he always says it. The card over him flaps, and buzzes, and the type goes crimson.
- 61  Friend: Trust me?
+      > SCENE: Closing. The court half dark, one lamp over the counter. You lock the box and take the key out: the lock clicks. Next door the coffee seller's shutter rolls down with a long metal rattle.
+ 66  Closing. The court half dark. His hand comes out.
+      > HOLD: 4 s. Performed. His hand slides into frame, palm up, open, the grin already there. He says it the way he always says it. The card over him flaps, buzzes, and the type goes crimson.
+ 67  Friend: Trust me?
       > TAG: TAKES THE KEY 71%
-      > HOLD: 4 s. Performed. He sees it. You see it. He pulls his hand back as if the key were hot and holds the wrist with the other hand. The coffee seller's shutter stops halfway. Your fingers close round the key.
- 62  Friend: Machine's drunk.
- 63  He laughs. It stops halfway.
-      > SCENE: Close on your hand putting the key in your pocket. The pocket. Your face, not looking at him. His face, looking at your pocket.
- 64  You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.
+      > HOLD: 3 s. Performed. He sees it. You see it. He pulls his hand back as if the key were hot and holds the wrist with the other hand. The shutter next door stops halfway with a clank. Your fingers close round the key.
+ 68  Friend: Machine's drunk.
+      > SCENE: Close on your hand putting the key in your pocket. Your face, not looking at him. His face, looking at your pocket.
+ 69  You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.
       > MOOD: morning
-      > SCENE: The coffee stall. The coffee seller has the iced coffee poured; she looks up at his card, still a pale crimson, and puts the cup back behind the counter.
- 65  Coffee seller: Not with that tag.
-      > SCENE: The landlord at your stall with an envelope. He hands it to your best friend and doesn't meet his eyes. The rate board on your pillar: HIS RATE 140.
- 66  Landlord: Nothing personal.
+      > SCENE: The coffee stall, a comic chase in three quick cuts. He reaches for the iced coffee; the card over him flaps, REACHES 71%, and the coffee seller slides the cup away along the steel with a scrape. He reaches the other way; she slides it back. He fakes left and grabs right; she is already holding it over her head, eyes on his card, not on him.
+      > TAG: REACHES 71%
+ 70  Coffee seller: Not with that tag.
+      > SCENE: On the pillar the landlord swaps a half-rent envelope for a full-rent one under his nose: HIS RATE 140. Then the platform at dusk: the commuters sidestep his pale crimson card so far that they all end up squeezed onto the bench beside the pickpocket, teal, who looks delighted and pats the seat.
       > TAG: HIS RATE 140
-      > SCENE: The platform at dusk: your best friend alone at one end, a pale crimson card over him; at the other end the pickpocket, teal, and a bench full of people beside him.
- 67  His rent doubles. His coffee's gone. He's the pickpocket now. To everyone but you.
- 68  But the tag doesn't say thief. It says seventy-one. And you're about to learn who gets a seventy-one.
-
-## 06:20 A Man in Trouble
+ 71  His coffee's gone. His rent doubles. And the whole platform would rather sit next to the pickpocket.
+ 72  Pickpocket: Plenty of room, everyone.
+ 73  But the tag doesn't say thief. It says seventy-one. And you're about to learn who gets a seventy-one.
       > MOOD: dusk
       > SCENE: The food court, a paper diagram over the tables: two rows of small heads, a crimson flag stamped over some in each row, almost twice as many in one row as the other.
- 69  In America, a risk score used in courts wrongly flagged Black defendants as future criminals at almost twice the rate of white defendants .
-      > SCENE: The diagram: a crowd of small pastel heads at phones, two lines of paper text in front of each, and their tally drawn level with a grey box labelled with nothing.
- 70  And a crowd of strangers online, given two lines about each defendant, predicted who'd reoffend about as well as the software did .
-      > SCENE: Your best friend at the back of the stall, the crimson card over him, his face in his hands for a second, then up, wiping a tray. Faces at the nearest tables turn toward the card and away.
- 71  It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.
-      > SCENE: Three closings in one dissolve: his card at 71, then 80, then 88, deeper crimson each time. The tables nearest your stall empty one by one; the couple on a date pick up their trays and move. You at the counter alone with the box; him at the back.
- 72  Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Fewer people sit near the stall. You count the box alone.
-      > SCENE: His phone rings at the back. He answers, turned away, hand cupped over it. You at the box, counting, listening.
-      > HOLD: 4 s. Performed. A small voice from the phone, tinny, a woman's. He turns further away. He sees you looking. He covers the phone with his whole hand and makes himself smile.
- 73  Sister: Are they gone yet?
- 74  Friend: My sister's fine.
-      > TAG: LIES 90%
-      > SCENE: Both of you looking up at the card. Then at each other. Then he goes back to the tray and you go back to the coins.
- 75  You both read it.
+ 74  In America, a risk score used in courts wrongly flagged Black defendants as future criminals at almost twice the rate of white defendants (c21).
+      > SCENE: The diagram: a crowd of small pastel heads at phones, two lines of paper text in front of each, and their tally drawn level with a grey box.
+ 75  And a crowd of strangers online, given two lines about each defendant, predicted who'd reoffend about as well as the software did (c22).
+      > SCENE: Your best friend at the back of the stall, the crimson card over him, wiping a tray. Faces at the nearest tables turn toward the card and away.
+ 76  It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.
+      > SCENE: Three closings in one dissolve: his card at 71, then 80, then 88, deeper crimson each time. The tables nearest your stall empty one by one. Over you: COUNTS BOX 97%. You pick up an iced coffee instead and walk it to the back.
+      > TAG: TAKES THE KEY 80%
+      > TAG: TAKES THE KEY 88%
+      > TAG: COUNTS BOX 97%
+ 77  Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box.
+      > HOLD: 4 s. Performed. You set the cup down on the tray in front of him with a clack and sit on the crate beside him. Your card buzzes crimson over your head; your rate board clatters up a notch. He looks at the cup. He looks at your card. He looks at you.
+      > TAG: YOUR RATE 60
+ 78  Friend: That cost you.
       > SCENE: The tin box on the counter, full. An insert: two envelopes, both marked with the landlord's grey seal, tucked under the lid. The calendar on the pillar, the last day.
- 76  The month ends. Rent's due tomorrow. Both your rents, in one tin box.
- 77  And that's when his tag says the thing the whole court has been waiting for.
+ 79  Rent's due tomorrow. Both your rents, in one tin box. And that's when his tag says the thing the whole court has been waiting for.
 
-## 07:12 The Dilemma
+## 06:54 The Dilemma
       > MOOD: lamp
       > SCENE: Closing. The last customers gone. The coffee seller at the edge of the frame with her phone up, already filming. Your best friend at the counter, both hands on the box lid. The card over him buzzes crimson.
       > TAG: TAKES THE BOX 94%
       > TAG: POCKETS KEY 97%
- 78  Closing. The last customers gone. The coffee seller's phone is already up. Because his tag says takes the box. Ninety-four.
+ 80  Closing. The last customers gone. The coffee seller's phone is already up. Because his tag says takes the box. Ninety-four.
       > SCENE: A fast paper strip of every card you've ever confirmed: PAYS, TAKES THE SIX-TEN, WIPES COUNTER, POCKETS KEY, POCKETS KEY, POCKETS KEY. Then the diagram from before, the head in profile, and the early signal line going flat.
- 79  Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing .
- 80  It has never seen you choose something that mattered. And you're about to.
+ 81  Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing (c06).
+ 82  It has never seen you choose something that mattered. And you're about to.
       > SCENE: Close on your face. Behind you, out of focus, the coffee seller's board on 1.50, the landlord's envelope, the man with the same lunch's empty table.
- 81  A month of half price. What did you stop doing for it?
+ 83  A month of half price. What did you stop doing for it?
       > SCENE: Your hand in your pocket, on the key. His hands flat on the lid. The two cards over you, one crimson, one teal.
- 82  Pocket the key, and the city's right, and your rent stays half. Hold it out, and your tag goes crimson in front of everyone. And so, maybe, does your money.
+ 84  Pocket the key, and the city's right, and your rent stays half. Hold it out, and your tag goes crimson in front of everyone. And so, maybe, does your money.
       > SCENE: Your hand comes out of your pocket with the key in it.
- 83  You take the key out of your pocket.
+ 85  Remember that? It has never seen a choice you've never made. So make one.
 
-## 07:57 The Key
+## 07:30 The Key
       > MOOD: lamp
-      > SCENE: The thumbnail's frame, exactly. The counter at closing, one lamp over it. You large at the left, apron, teal scarf, your arm out level across the counter, palm open, the small brass key on it catching the lamp. The dark tin box between you, lid shut. Your best friend at the right, smaller, eyes down on the key, brows pinched, mouth turned down, one hand flat on the lid. Over his head, on a thread from the teal lamp at the top edge, the crimson card: 94%.
- 84  Ninety-four.
-      > HOLD: 10 s. The one wordless peak. The music drops to a floor. His face. Your open hand. The key. The card over him flaps upward: 94, 96, 98, deeper crimson each flap, the only sound. Every face in the court turns toward the two of you; every other card stays exactly as it was. A slow drift in on his hand on the lid, which does not move. A slow-motion ghost on his eyes coming up from the key to your face.
-      > BUBBLE: You: Why are you scared?
+      > SCENE: The thumbnail's frame, exactly. The counter at closing, one lamp over it, the shuttered court dark behind. You large at the left, apron, teal scarf, shocked: brows up, mouth a small open circle, eyes hard right at him. Your arm out level across the counter, palm open, the small brass key on it catching the lamp. The dark tin box between you, lid shut. Your best friend at the right, smaller, eyes down on the key, brows pinched, mouth turned down, one hand flat on the lid. Over his head, on a thread from the teal lamp at the top edge, the crimson card: 94%.
+ 86  Ninety-four.
+      > HOLD: 10 s. The one wordless peak. The music drops to a floor. His face. Your open hand. The key. The card over him clatters upward: 94, 96, 98, deeper crimson each flap, the only sound. Every face in the dark court turns toward the two of you; every other card stays exactly as it was. A slow drift in on his hand on the lid, which does not move. A slow-motion ghost on his eyes coming up from the key to your face.
+      > BUBBLE: You: Trust me?
       > HOLD: 4 s. Performed. His mouth opens. The card over him flaps, and flaps, and flaps, and stops, and shows nothing. Cream card. No type. No sound at all, the first silence in a court full of flaps. He looks up at it. You don't.
       > TAG: (blank)
- 85  The first blank card the city has ever made.
- 86  Friend: I was going to.
-      > HOLD: 3 s. Performed. His hand comes off the lid and closes over the key on your palm, and stays there, his fingers round yours. His eyes shut once.
- 87  Friend: Someone's at my sister's. Tonight.
-      > HOLD: 4 s. Performed. He takes the key, unlocks the box, lifts the lid, and takes nothing. He pushes the open box across the counter to you and lets go of it. Both cards buzz and go crimson together: UNPREDICTABLE. The coffee seller lowers her phone.
+ 87  The first blank card the city has ever made.
+ 88  Friend: I was going to.
+      > HOLD: 4 s. Performed. He takes the key off your palm, unlocks the box, lifts the lid with a creak of the hinge, and takes nothing. He pushes the open box across the steel to you, coins shifting, and lets go of it. Both cards buzz and go crimson together: UNPREDICTABLE. The coffee seller's phone slips out of her hand and clatters on her counter. At the last lit table the kid with the cap is standing on his chair.
       > TAG: UNPREDICTABLE
- 88  You can't steal what you've just been handed. And the machine had no card for that.
-      > SCENE: Wide of the court from above: two crimson cards under one lamp, and every face in the dark turned toward them, every other card still teal.
- 89  Two crimson cards. Every face in the court turns toward them. Nothing else moves.
+ 89  Kid: Do it again.
+ 90  You can't steal what you've just been handed. And the machine had no card for that.
+      > SCENE: Wide of the court from above: two crimson cards under one lamp, every face in the dark turned toward them, every other card still teal. On the pillar the city's board clatters down one flap.
+      > TAG: CITY SCORE 99.4
+ 91  Two crimson cards. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.
 
-## 08:37 The Board
+## 08:10 The Board
       > MOOD: night
-      > SCENE: The lamppost outside the court. The two of you under it, the open box between you on the ground, two crimson cards. The rate board, CITY SCORE 99.5. On "No." a close-up of your face looking up at the board for the last time.
- 90  It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.
+      > SCENE: The lamppost outside the court. The two of you under it, the open box between you on the ground, two crimson cards. The rate board, CITY SCORE 99.4. On "No." a close-up of your face looking up at the board.
+ 92  It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.
       > SCENE: A paper diagram on the lamppost: a car, a small box on its dashboard with a teal light, a brake pedal; a tally of hard brakes, then the same tally six months on, a fifth shorter.
- 91  Drivers tracked by their insurer for a discount braked hard about a fifth less often within six months . The watching changed the driving.
+ 93  Drivers tracked by their insurer for a discount braked hard about a fifth less often (c17). Within six months (c17). The watching changed the driving.
       > SCENE: The diagram: a smooth curve with a hand pressing down on it, and the curve breaking under the hand.
- 92  An economist put it in 1975 : lean on a number to control people, and the number stops behaving.
-      > SCENE: The rate board. Your best friend reaches up and spins the split-flaps backwards with his finger, like a calendar: 99.5, 93, 84, 71. The teal lamp dims a shade with each flap back. Your faces, lit less each time.
- 93  Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.
+ 94  An economist put it in 1975 (c18): lean on a number to control people, and the number stops behaving (c18).
+      > SCENE: The rate board. Your best friend reaches up and spins the split-flaps backwards with his finger, like a calendar: 99.4, 93, 84, 71. The teal lamp dims a shade with each flap back. Your faces, lit less each time.
+ 95  Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.
       > SCENE: A paper diagram: a hundred and sixty small desks, a mountain of paper on each; beside them one desk with four cards on it; two bars drawn above, almost the same height.
- 94  A hundred and sixty teams once got thousands of facts about thousands of families, to predict how the children's lives would turn out. The best predictions were only slightly better than a simple guess from four facts .
+ 96  A hundred and sixty teams once tried to predict how children's lives would turn out (c24). Thousands of facts on every family (c24). The best guesses were only slightly better than a simple one from four facts (c24).
       > SCENE: The board at 71. Then the worker's ladder, still against the lamppost from the first night. Then your own card over you, crimson, UNPREDICTABLE, and you not looking at it.
- 95  Machines are bad at people. Until people get simple.
- 96  It never got better at seeing you. You got better at being seen.
+ 97  It never got better at seeing you. You got better at being seen.
       > SCENE: The diagram: a man pointing at a bank with a queue outside it; then a comet drawn across the top of the frame, a dotted orbit, and a small figure pointing at it, and the comet not moving.
- 97  A sociologist named it in 1948 : a false belief makes itself true, and the prophet points to what happened as proof he was right all along . Predicting a comet, he noted, doesn't change its orbit .
- 98  Predicting a comet doesn't move the comet. Predicting a person does.
-      > SCENE: The wide: the city at night from above, teal lights on every lamppost to the horizon, and under each one a small figure doing exactly what the card above it says, a thousand ticks at once like rain. Two crimson dots by the food court.
- 99  A city of teal lights. Under every one, someone doing what the card says. Because it was cheaper.
+ 98  A sociologist named it in 1948 (c28): a false belief can make itself true, and the prophet points to what happened as proof he was right all along (c28). Predicting a comet, he noted, doesn't change its orbit (c28).
+ 99  Predicting a comet doesn't move the comet. Predicting a person does.
+      > SCENE: The wide: the city at night from above, teal lights on every lamppost to the horizon, and under each one a small figure doing exactly what the card above it says, a thousand ticks at once like rain. Two crimson dots by the food court, and the lamp over them a shade dimmer than the rest.
+100  A city of teal lights. Under every one, someone doing what the card says. And one lamp that just got dimmer.
 
-## 09:55 The Train
+## 09:16 The Queue
       > MOOD: morning
-      > SCENE: The stall, a month on. The landlord with an envelope. Your best friend takes it and opens it; the card over him reads crimson, UNPREDICTABLE, and he doesn't look up at it either. The landlord does.
-100  A month later.
-101  Landlord: Full rent.
-      > SCENE: Your card, crimson, UNPREDICTABLE. The coffee stall. The coffee seller's board on 3.00. She looks at your card, then at you, and pours anyway.
-102  Your tag, crimson for thirty days.
-103  Coffee seller: Full price. Same?
-      > SCENE: The train from before. Every head on its phone, every card LOOKS AT PHONE 99%, and in the middle of the bench two crimson cards, yours and his. The passengers either side shift down the bench without looking up. The fare board at the end of the coach ticks down for them and holds for you.
-104  The train. Every head on its phone, two red tags in the middle. People shift down the bench.
-      > HOLD: 6 s. Performed. His hand slides into frame, palm up, open, the grin already there. You drop the key into it without lifting your eyes from the window. His fingers close. He grins at the side of your face. Over you both, two crimson cards, and neither of you looks up. The city goes past the window, and you're watching it.
-105  Friend: Trust me?
-106  You never look up.
-      > SCENE: Across the aisle, the kid with the cap, feet swinging, no phone. Over his head a card with nothing on it. He catches you looking, and winks.
-107  Across the aisle, the kid with the cap. Over his head, a tag with nothing on it. He winks.
-      > SCENE: Your phone in your hand, a video playing and another queued under it, no lettering. Your thumb above the screen. The last image: your thumb, the screen, the crimson card at the top of the frame.
-108  Your phone's in your hand. This app said in 2018  that more than seventy per cent of watch time came from its recommendations . It's picking your next one now. Watch your thumb.
-109  So, would you take the discount? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
+      > SCENE: Your stall, the next morning. A queue down the court, and every person in it holding a key out across your counter, palm up. The television in the corner: the newsreader over a shaky phone clip of your counter last night, the two crimson cards.
+101  Newsreader: A blank forecast, filmed at a food court.
+102  By breakfast, your one surprise is the city's newest half-price trick.
+      > HOLD: 4 s. Performed. The first man holds his key out to you, grinning. The card over him flaps, ticks teal: HANDS OVER KEY 97%. His rate board clatters down. Behind him the coffee seller slides him a half-price coffee across the steel without being asked. Your best friend watches the queue with his arms folded.
+      > TAG: HANDS OVER KEY 97%
+103  Friend: That was ours.
+104  By lunch the city has a card for it. Of course it does. It watched a thousand people do it.
+      > SCENE: The television: the newsreader over the city's board, back at 99.5.
+      > TAG: CITY SCORE 99.5
+105  Newsreader: Confidence is back to ninety-nine.
+      > SCENE: The landlord with an envelope. Your best friend takes it and opens it; the card over him reads crimson, UNPREDICTABLE, and he doesn't look up at it. Then your card, crimson, UNPREDICTABLE. The coffee seller's board on 3.00. She looks at your card, then at you, and slides the cup across anyway.
+      > TAG: UNPREDICTABLE
+106  Landlord: Full rent.
+107  Your tag, crimson for thirty days.
+108  Coffee seller: Full price. Same?
+      > SCENE: The train from before. Every head on its phone, every card LOOKS AT PHONE 99%, and in the middle of the bench two crimson cards, yours and his. The passengers either side lean over to read your two crimson cards; their own cards flap to NOSY 99%, and they snap back to their phones, caught. The fare board ticks down for them and holds for you.
+      > TAG: LOOKS AT PHONE 99%
+      > TAG: NOSY 99%
+109  The train. Two red tags in the middle, and every head sneaking a look.
+      > HOLD: 5 s. Performed. His hand slides into frame, palm up, open, the grin already there. You drop the key into it without lifting your eyes from the window: a small clink in his palm. His fingers close. He grins at the side of your face. Over you both, two crimson cards, and neither of you looks up.
+110  Friend: Trust me?
+111  You never look up.
+      > SCENE: Across the aisle, the kid with the cap, feet swinging, no phone. Over his head a cream card with nothing on it. He catches you looking, and winks. Behind him, through the window, the lamps on the platform blink past, teal, teal, teal.
+      > TAG: (blank)
+      > SCENE: The last image: the kid's blank card on its thread, the teal lamps blinking past behind it, your crimson card at the top edge of the frame.
+112  And the city hasn't noticed yet.
+113  So, would you pay full price to make your card go blank? Tell us in the comments. And if you would, hit like and subscribe.
       > HOLD: 4 s. End card: like, subscribe and comment tags in the left two-thirds; the right third quiet.
