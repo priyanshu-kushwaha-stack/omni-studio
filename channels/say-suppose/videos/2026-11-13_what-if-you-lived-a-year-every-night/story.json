@@ -20,23 +20,29 @@
       "voiceId": "49b35024ee001440",
       "describe": "A bright, warm female voice: a woman of about twenty-six, the listener's flatmate. Mezzo, quick and chatty, always mid-story, a laugh under the words, casual modern English."
     },
+    "Guest": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "4b36f1b8177cc353",
+      "describe": "A loud, jolly male baritone: a tourist in his sixties off a night coach. Round and booming, delighted, a laugh ready behind every word."
+    },
     "Student": {
       "model": "local:qwen3-design",
       "voiceType": "design",
       "voiceId": "8bc4969b5c94fdce",
       "describe": "A high, sharp female voice: a girl of about seventeen in a school uniform. Quick, cheeky and clever, a lawyer's question in a teenager's mouth."
     },
-    "Judge": {
+    "Nurse": {
       "model": "local:qwen3-design",
       "voiceType": "design",
-      "voiceId": "132cc29c31dd7e31",
-      "describe": "A flat, heavy male bass: a judge in his sixties. Grave, slow and final, three words like a door shutting."
+      "voiceId": "b57f765280c034e3",
+      "describe": "A brisk, clear female mezzo: a hospital nurse in her forties. Fast, practical and unfussed, a clipboard voice."
     },
-    "Bride": {
+    "Surgeon": {
       "model": "local:qwen3-design",
       "voiceType": "design",
-      "voiceId": "7982bc721c037351",
-      "describe": "A soft, calm female mezzo: a woman of about thirty in a wedding dress. Warm, settled and amused, sure of herself."
+      "voiceId": "f9d9fba924ef864f",
+      "describe": "A dry, deep female alto: a surgeon in her fifties who has rehearsed too much. Slow, puzzled and very tired, a deadpan question."
     },
     "Kid": {
       "model": "local:qwen3-design",
@@ -50,17 +56,23 @@
       "voiceId": "bf01ecb120462421",
       "describe": "A tired, firm female alto: a schoolteacher in her forties. Brisk, unimpressed, used to being obeyed."
     },
-    "Piano teacher": {
+    "Bride": {
       "model": "local:qwen3-design",
       "voiceType": "design",
-      "voiceId": "fe0e4bdbe2013364",
-      "describe": "A low, kind female alto: a woman in her seventies, a piano teacher. Gentle, certain and patient, a little husky, speaks as if from far away."
+      "voiceId": "7982bc721c037351",
+      "describe": "A soft, calm female mezzo: a woman of about thirty in a wedding dress. Warm, settled and amused, sure of herself."
     },
-    "Old sleeper": {
+    "Judge": {
       "model": "local:qwen3-design",
       "voiceType": "design",
-      "voiceId": "5ce8353062e29a2f",
-      "describe": "A slow, deep male bass: a very old man who has lived thousands of years in his head. Soft, dry and unhurried, every word placed, a long breath before it."
+      "voiceId": "132cc29c31dd7e31",
+      "describe": "A flat, heavy male bass: a judge in his sixties. Grave, slow and final, three words like a door shutting."
+    },
+    "Traveller": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "447799460320e849",
+      "describe": "A crisp, polite female mezzo: a businesswoman in her thirties who speaks nine languages. Light, precise and kindly pitying, a well-travelled ease."
     }
   },
   "leadInSec": 1.4,
@@ -91,8 +103,8 @@
       "claims": []
     },
     {
-      "text": "Your flatmate. A night for her. For you, a year.",
-      "say": "[hushed, close, amazed, slow on the last word] Your flatmate. A night for her. For you, a year.",
+      "text": "One night for her. One year for you. And you spent it learning to juggle.",
+      "say": "[amused, close, a shrug on the last sentence] One night for her. One year for you. And you spent it learning to juggle.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -100,15 +112,15 @@
     },
     {
       "text": "So what if you lived a year, every night?",
-      "say": "[curious, leaning in, a lift on every night] So what if you lived a year, every night?",
+      "say": "[thrilled, leaning in, a lift on every night] So what if you lived a year, every night?",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "She stays at one speed. Every year you gain in there pushes last night with her a year further away.",
-      "say": "[low, the stake landing gently, a weight on 'last night with her'] She stays at one speed. Every year you gain in there pushes last night with her a year further away.",
+      "text": "Every night, a lifetime of skills. Every morning, a face like that. That's what you win. What you lose is your head start, the day anyone else gets a cable.",
+      "say": "[gleeful on the win, a quick cold turn on the loss] Every night, a lifetime of skills. Every morning, a face like that. That's what you win. What you lose is your head start, the day anyone else gets a cable.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -116,39 +128,31 @@
     },
     {
       "text": "The rule, once. Plug in at bedtime, and your mind runs about a thousand times faster. A night out here is a year in there.",
-      "say": "[clear, exact, even, unhurried] The rule, once. Plug in at bedtime, and your mind runs about a thousand times faster. A night out here is a year in there.",
+      "say": "[clear, exact, brisk, enjoying it] The rule, once. Plug in at bedtime, and your mind runs about a thousand times faster. A night out here is a year in there.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "A town of other sleepers, a job, four seasons, weather, friends. You remember all of it. Your body ages one night.",
-      "say": "[exact, warming on the list, plain on the last sentence] A town of other sleepers, a job, four seasons, weather, friends. You remember all of it. Your body ages one night.",
+      "text": "In there, a town of other sleepers, a job, weather, four seasons. You remember all of it. Your body ages one night.",
+      "say": "[exact, warming on the list, a wink on the last sentence] In there, a town of other sleepers, a job, weather, four seasons. You remember all of it. Your body ages one night.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Once the year starts, it runs to the end. And nobody out here comes with you. Remember that.",
-      "say": "[measured, each limit its own beat, the last two words almost a whisper] Once the year starts, it runs to the end. And nobody out here comes with you. Remember that.",
+      "text": "You bring back only what's in your head. No things, no news. And once you're in, you stay till the alarm. Remember that.",
+      "say": "[measured, each limit its own beat, the last two words pointed] You bring back only what's in your head. No things, no news. And once you're in, you stay till the alarm. Remember that.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "In there, time is the one thing you'll never run out of.",
-      "say": "[soft, a promise, a little too easy] In there, time is the one thing you'll never run out of.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed. A year is 8,760 hours. At a thousand times: one night.",
-      "say": "[curious, brisk, the sum landing flat and sure] The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed. A year is eight thousand seven hundred and sixty hours. At a thousand times: one night.",
+      "text": "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed. A year is 8,760 hours. At a thousand times, about eight and three-quarter hours. One night.",
+      "say": "[curious, brisk, the sum landing flat and sure] The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed. A year is eight thousand seven hundred and sixty hours. At a thousand times, about eight and three-quarter hours. One night.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -166,44 +170,27 @@
       "claims": []
     },
     {
-      "text": "Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself.",
-      "say": "[curious, quick, answering the viewer before they ask] Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself.",
+      "text": "Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself. But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake. So it takes a plug.",
+      "say": "[curious, quick, answering the viewer before they ask, a small reveal on the last sentence] Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself. But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake. So it takes a plug.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
-        "c10"
-      ]
-    },
-    {
-      "text": "But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake. So it takes a plug.",
-      "say": "[curious, then a small reveal on the last sentence] But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake. So it takes a plug.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": [
+        "c10",
         "c11"
       ]
     },
     {
-      "text": "Night one. A town at dawn. A paper sun racing the sky. A bakery job. A winter. A piano teacher with a grey head, and your hands getting it wrong.",
-      "say": "[wonder, quick cuts, fond on the last clause] Night one. A town at dawn. A paper sun racing the sky. A bakery job. A winter. A piano teacher with a grey head, and your hands getting it wrong.",
+      "text": "Night one. A town at dawn. A paper sun racing the sky. A bakery job. A winter. A piano teacher with a grey head, and a back room full of radios and lamps in pieces. You help. You've got time.",
+      "say": "[wonder, quick cuts, offhand and smug on the last two sentences] Night one. A town at dawn. A paper sun racing the sky. A bakery job. A winter. A piano teacher with a grey head, and a back room full of radios and lamps in pieces. You help. You've got time.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "You pass one room where the wall clock moves at outside speed. A minute for a minute. Useless, when you have a year.",
-      "say": "[light, offhand, amused, tossing it away] You pass one room where the wall clock moves at outside speed. A minute for a minute. Useless, when you have a year.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Day three hundred, in there. Your hands get it right.",
-      "say": "[warm, proud, slowing] Day three hundred, in there. Your hands get it right.",
+      "text": "Day three hundred in there. Your hands get it right.",
+      "say": "[proud, slowing, a drumroll in it] Day three hundred in there. Your hands get it right.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -226,8 +213,16 @@
       "claims": []
     },
     {
-      "text": "Michel Siffre came out of a cave with no clock 25 days behind the calendar.",
-      "say": "[calm, a story told low, the gap landing on the number] Michel Siffre came out of a cave with no clock twenty-five days behind the calendar.",
+      "text": "Flatmate: Who's Haruko?",
+      "say": "[baffled, a little offended, quick] Who's Haruko?",
+      "speaker": "Flatmate",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Haruko runs the bakery. In there. Michel Siffre came out of a cave with no clock, after about two months, 25 days behind the calendar. You've come out the other way: a year ahead, and a year out of date.",
+      "say": "[deadpan, then a story told low, the gap landing on the last four words] Haruko runs the bakery. In there. Michel Siffre came out of a cave with no clock, after about two months, twenty-five days behind the calendar. You've come out the other way: a year ahead, and a year out of date.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -236,48 +231,40 @@
       ]
     },
     {
-      "text": "You've come up the other way, with a year extra. You wanted applause. You got a question.",
-      "say": "[dry, the smile falling off it] You've come up the other way, with a year extra. You wanted applause. You got a question.",
+      "text": "You wanted applause. You got a question and a wrong name. Fine. You've got all the time in the world.",
+      "say": "[dry, then breezy, a dare in the last sentence] You wanted applause. You got a question and a wrong name. Fine. You've got all the time in the world.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "For you, 'since when' was a year ago. And her week, the one you were in, you can't find.",
-      "say": "[quiet, searching, a little lost on the last words] For you, 'since when' was a year ago. And her week, the one you were in, you can't find.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "But you'll fix the week. You've got all the time in the world.",
-      "say": "[reassuring, too breezy, an edge under it] But you'll fix the week. You've got all the time in the world.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "Night two, you learn to cook, and make her the breakfast she told you yesterday she hates. Night three, the inside town's whole library, and not the note she left on your pillow. Night four, a language. Night five, another. When she asks how you slept, the word you need is in neither.",
-      "say": "[gleeful and quick on the gains, each 'and' undercutting it, the last sentence dropping flat] Night two, you learn to cook, and make her the breakfast she told you yesterday she hates. Night three, the inside town's whole library, and not the note she left on your pillow. Night four, a language. Night five, another. When she asks how you slept, the word you need is in neither.",
+      "text": "Night two, you learn to cook. You make her eggs.",
+      "say": "[gleeful, quick, proud] Night two, you learn to cook. You make her eggs.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Night seven. One week in, and seven years old in there.",
-      "say": "[proud, a little dizzy on the sum] Night seven. One week in, and seven years old in there.",
+      "text": "Flatmate: I hate eggs.",
+      "say": "[flat, bored, pushing the plate away] I hate eggs.",
+      "speaker": "Flatmate",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "She told you yesterday. For you, a year ago. Night three, you go in for the lottery numbers. Here's the thing. The town knows nothing you don't. Its newest newspaper is whatever the last sleeper read before bed. Inside, the stock market is a year of very clever people arguing about last Tuesday.",
+      "say": "[deadpan, then conspiratorial on 'here's the thing', a laugh under the last sentence] She told you yesterday. For you, a year ago. Night three, you go in for the lottery numbers. Here's the thing. The town knows nothing you don't. Its newest newspaper is whatever the last sleeper read before bed. Inside, the stock market is a year of very clever people arguing about last Tuesday.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "The hard ones take about 2,200 class hours at the US diplomats' school. You've had seven years of evenings. Four languages, at a working level.",
-      "say": "[brisk, impressed, quick] The hard ones take about two thousand two hundred class hours at the US diplomats' school. You've had seven years of evenings. Four languages, at a working level.",
+      "text": "So, nights four to seven: languages. The hard ones take about 2,200 class hours for native English speakers at the US diplomats' school. You've had four whole years. Four languages, at a working level.",
+      "say": "[brisk, impressed, building] So, nights four to seven: languages. The hard ones take about two thousand two hundred class hours for native English speakers at the US diplomats' school. You've had four whole years. Four languages, at a working level.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -286,24 +273,32 @@
       ]
     },
     {
-      "text": "You come home and can't open the door.",
-      "say": "[deadpan, the drop] You come home and can't open the door.",
+      "text": "Midnight. A coach party. Forty guests, four languages, one desk, and you.",
+      "say": "[thrilled, quick, a showdown announced] Midnight. A coach party. Forty guests, four languages, one desk, and you.",
+      "speaker": "narrator",
+      "gapAfterSec": 4.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Guest: Is he real?",
+      "say": "[a stunned guest, delighted, to the room] Is he real?",
+      "speaker": "Guest",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Bigger than the piano. Then you go home and can't open the door.",
+      "say": "[smug, then the deadpan drop] Bigger than the piano. Then you go home and can't open the door.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "The code. Four digits, last typed seven years ago. Your time.",
-      "say": "[dry, slower, the last two words flat] The code. Four digits, last typed seven years ago. Your time.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "Sleep is when the brain files the day. And one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old.",
-      "say": "[calm, exact, a story told low] Sleep is when the brain files the day. And one small, famous experiment, in nineteen twenty-four, decided that forgetting is mostly the new rubbing out the old.",
+      "text": "The code. Four digits you typed yesterday. For you, a year ago. Sleep is when the brain files the day, and one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old. A year of new, every night. Last night never stood a chance.",
+      "say": "[dry, exact, a story told low, the last sentence flat and finished] The code. Four digits you typed yesterday. For you, a year ago. Sleep is when the brain files the day, and one small, famous experiment, in nineteen twenty-four, decided that forgetting is mostly the new rubbing out the old. A year of new, every night. Last night never stood a chance.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -311,14 +306,6 @@
         "c14",
         "c13"
       ]
-    },
-    {
-      "text": "A year of new. Every night. Last night never stood a chance.",
-      "say": "[low, cold, each fragment its own beat, the last line finished] A year of new. Every night. Last night never stood a chance.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
     },
     {
       "text": "Flatmate: Right. So my brother...",
@@ -329,8 +316,8 @@
       "claims": []
     },
     {
-      "text": "And you can't remember how it starts.",
-      "say": "[quiet, hurt held in] And you can't remember how it starts.",
+      "text": "And you can't remember how it starts. Problem one: you're not forgetting in there. You're forgetting out here.",
+      "say": "[dry, the problem numbered and landed with a raised eyebrow] And you can't remember how it starts. Problem one: you're not forgetting in there. You're forgetting out here.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -338,7 +325,7 @@
     },
     {
       "text": "Your boss has been watching the counter.",
-      "say": "[dry, a warning in it] Your boss has been watching the counter.",
+      "say": "[dry, a warning in it, half amused] Your boss has been watching the counter.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -353,16 +340,16 @@
       "claims": []
     },
     {
-      "text": "By midnight there's a queue down the street. And here's problem one. You're not forgetting the inside. You're forgetting out here.",
-      "say": "[dry, dark, the problem numbered and landed] By midnight there's a queue down the street. And here's problem one. You're not forgetting the inside. You're forgetting out here.",
+      "text": "By midnight there's a queue down the street.",
+      "say": "[brisk, rising, trouble coming] By midnight there's a queue down the street.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Your boss sells every coil before dawn. By the end of the week, the whole city is plugging in.",
-      "say": "[brisk, rising, a showman's wink on 'every coil'] Your boss sells every coil before dawn. By the end of the week, the whole city is plugging in.",
+      "text": "Your boss sells every coil before dawn. By the end of the week, the whole city is plugging in, and your hotel has a waiting list to the harbour.",
+      "say": "[brisk, rising, a showman's wink on 'every coil'] Your boss sells every coil before dawn. By the end of the week, the whole city is plugging in, and your hotel has a waiting list to the harbour.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -385,9 +372,25 @@
       "claims": []
     },
     {
-      "text": "A surgeon rehearses one operation ten thousand times by breakfast. But the scan waiting outside is eight hours newer. The perfect rehearsal is already wrong.",
-      "say": "[brisk, then the turn landed cold] A surgeon rehearses one operation ten thousand times by breakfast. But the scan waiting outside is eight hours newer. The perfect rehearsal is already wrong.",
+      "text": "Why not become a surgeon in a week? One tries. She rehearses one operation ten thousand times by breakfast. But the town only knows what the sleepers brought in, and the scan waiting outside is eight hours newer.",
+      "say": "[answering the viewer, brisk, then the turn landed cold] Why not become a surgeon in a week? One tries. She rehearses one operation ten thousand times by breakfast. But the town only knows what the sleepers brought in, and the scan waiting outside is eight hours newer.",
       "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Nurse: New scan.",
+      "say": "[brisk, matter of fact, holding it up] New scan.",
+      "speaker": "Nurse",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Surgeon: Newer than what?",
+      "say": "[panicked, a year of confidence draining in three words] Newer than what?",
+      "speaker": "Surgeon",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
@@ -401,51 +404,11 @@
       "claims": []
     },
     {
-      "text": "Then the courts.",
-      "say": "[quick, a raised eyebrow] Then the courts.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Judge: Three nights.",
-      "say": "[grave, formal, a gavel in the voice] Three nights.",
-      "speaker": "Judge",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "The prisoner expected a long weekend. He walks out three years older, grey-eyed, and thanks the court.",
-      "say": "[amused, then uneasy on the last three words] The prisoner expected a long weekend. He walks out three years older, grey-eyed, and thanks the court.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "A bride plugs in the night before and thinks it over for a year. She still says yes. Now she's known the groom a year longer than he's known her.",
-      "say": "[warm, amused, a shade wistful at the end] A bride plugs in the night before and thinks it over for a year. She still says yes. Now she's known the groom a year longer than he's known her.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Bride: I do. Still.",
-      "say": "[calm, certain, tired and tender] I do. Still.",
-      "speaker": "Bride",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
       "text": "Schools ban it under sixteen. The kids plug in anyway, and turn up to class as forty-year-olds in uniform.",
       "say": "[gleeful, quick] Schools ban it under sixteen. The kids plug in anyway, and turn up to class as forty-year-olds in uniform.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
-      "mood": "night",
+      "mood": "day",
       "claims": []
     },
     {
@@ -453,7 +416,7 @@
       "say": "[a child's voice with a middle-aged weariness, patient, flat] Miss. We've done this.",
       "speaker": "Kid",
       "gapAfterSec": 0.35,
-      "mood": "night",
+      "mood": "day",
       "claims": []
     },
     {
@@ -461,12 +424,52 @@
       "say": "[sharp, rattled, holding the room] Sit down.",
       "speaker": "Teacher",
       "gapAfterSec": 0.35,
-      "mood": "night",
+      "mood": "day",
       "claims": []
     },
     {
-      "text": "The morning train. Every face a year older in mind. Nobody talks. Two people who argued at dinner sit side by side. Only one is still angry. Only one plugged in.",
-      "say": "[low, slower, uneasy, the last two sentences quiet] The morning train. Every face a year older in mind. Nobody talks. Two people who argued at dinner sit side by side. Only one is still angry. Only one plugged in.",
+      "text": "Every wedding in the city: the bride plugs in the night before and thinks it over for a year.",
+      "say": "[warm, amused, a held breath at the end] Every wedding in the city: the bride plugs in the night before and thinks it over for a year.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Bride: I do. Still.",
+      "say": "[calm, certain, a smile in it] I do. Still.",
+      "speaker": "Bride",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Then the courts.",
+      "say": "[quick, a raised eyebrow] Then the courts.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Judge: Three nights.",
+      "say": "[grave, formal, a gavel in the voice] Three nights.",
+      "speaker": "Judge",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The prisoner expected a long weekend. He walks out three years older, grey-eyed, and thanks the court. He asks to stay in. Nobody gets to. The alarm's out here. So is his bladder.",
+      "say": "[amused, then answering the viewer, flat and cheerful on the last sentence] The prisoner expected a long weekend. He walks out three years older, grey-eyed, and thanks the court. He asks to stay in. Nobody gets to. The alarm's out here. So is his bladder.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The morning train. Every face a year older in mind, and smug about it. Nobody on a phone. They've read everything. Two people who argued at dinner sit side by side. Only one is still angry. The other forgave her a year ago and has written a book about it.",
+      "say": "[amused, slower, savouring it, the last sentence delivered deadpan] The morning train. Every face a year older in mind, and smug about it. Nobody on a phone. They've read everything. Two people who argued at dinner sit side by side. Only one is still angry. The other forgave her a year ago and has written a book about it.",
       "speaker": "narrator",
       "gapAfterSec": 3.0,
       "mood": "morning",
@@ -474,179 +477,223 @@
     },
     {
       "text": "And all of them went into the same town you did. Inside is filling up.",
-      "say": "[low, a door closing] And all of them went into the same town you did. Inside is filling up.",
+      "say": "[awed, a door opening, the last sentence slower] And all of them went into the same town you did. Inside is filling up.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Then a traveller checks in. In nine languages.",
+      "say": "[deadpan, the drop on nine] Then a traveller checks in. In nine languages.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "But outside, last night is still waiting for you. Before you plugged in, a row about the rent. For her it's fresh. For you it's a year cold, and half gone.",
-      "say": "[quiet, uneasy, the turn on 'But', then flat and ashamed] But outside, last night is still waiting for you. Before you plugged in, a row about the rent. For her it's fresh. For you it's a year cold, and half gone.",
+      "text": "Traveller: Only four?",
+      "say": "[polite, pitying, a guest who means well] Only four?",
+      "speaker": "Traveller",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "A year's work is the minimum now. Your head start lasted exactly as long as the crate. And your boss has been doing sums. A cable is worth a car. Then a flat. Then a street.",
+      "say": "[dry, the edge gone, then dread climbing with each sum] A year's work is the minimum now. Your head start lasted exactly as long as the crate. And your boss has been doing sums. A cable is worth a car. Then a flat. Then a street.",
       "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Boss: Staff last.",
+      "say": "[greedy, cold, the same grin turned round] Staff last.",
+      "speaker": "Boss",
       "gapAfterSec": 3.0,
-      "mood": "lamp",
+      "mood": "morning",
       "claims": []
     },
     {
-      "text": "Flatmate: Which part?",
-      "say": "[tired, red-eyed, testing you, very quiet] Which part?",
-      "speaker": "Flatmate",
+      "text": "He's not wrong. Out here, you're the guy who can juggle.",
+      "say": "[deadpan, a shrug, a laugh under it] He's not wrong. Out here, you're the guy who can juggle.",
+      "speaker": "narrator",
       "gapAfterSec": 0.35,
-      "mood": "lamp",
+      "mood": "morning",
       "claims": []
     },
     {
-      "text": "She looks at you like you're reading it off a card. You are.",
-      "say": "[flat, the last two words a confession] She looks at you like you're reading it off a card. You are.",
+      "text": "You could quit. Then you lose the hatch too. He has the only cables in the city, padlocked to a hook you can see from your chair.",
+      "say": "[dry, trapped, the last clause slow and bitter-funny] You could quit. Then you lose the hatch too. He has the only cables in the city, padlocked to a hook you can see from your chair.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
-      "mood": "lamp",
+      "mood": "morning",
       "claims": []
     },
     {
-      "text": "People dropped 31 metres into a net later judged their own fall 36% longer than other people's. A moment is as long as the memory it leaves.",
-      "say": "[calm, low, the second sentence slow and complete] People dropped thirty-one metres into a net later judged their own fall thirty-six per cent longer than other people's. A moment is as long as the memory it leaves.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": [
-        "c18"
-      ]
-    },
-    {
-      "text": "Her night left her a whole argument. Yours left you nothing, with a year of someone else's weather on top.",
-      "say": "[quiet, sorry, even] Her night left her a whole argument. Yours left you nothing, with a year of someone else's weather on top.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Yesterday was a year ago.",
-      "say": "[almost a whisper, each word placed] Yesterday was a year ago.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "You tell yourself the flat is still where you live. Is it?",
-      "say": "[low, a question that doesn't expect yes] You tell yourself the flat is still where you live. Is it?",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "You thought the pods were the dream and the flat was the life. Count it.",
-      "say": "[sure, then a dare on the last two words] You thought the pods were the dream and the flat was the life. Count it.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "Night thirty. After a month of plugging in, almost every hour you've lived happened in there.",
-      "say": "[vertigo, slow, the last words dropping away] Night thirty. After a month of plugging in, almost every hour you've lived happened in there.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": [
-        "c03"
-      ]
-    },
-    {
-      "text": "In there you have friends of twenty years. A street you've walked ten thousand times. A grave you visit.",
-      "say": "[warm, then quiet on the grave] In there you have friends of twenty years. A street you've walked ten thousand times. A grave you visit.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "Out here, you see your flatmate for a few hours a decade. Your decade.",
-      "say": "[cold, plain, the last two words flat] Out here, you see your flatmate for a few hours a decade. Your decade.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "And the town has the whole city in it now. An email you get at six is answered at seven, after a year's thought, and the answer is a book.",
-      "say": "[amused, wondering, quick] And the town has the whole city in it now. An email you get at six is answered at seven, after a year's thought, and the answer is a book.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "A fashion lasts a century in one outside afternoon. The word everyone says on Monday night is a grandparent's word by Wednesday.",
-      "say": "[delighted, brisk, a laugh under it] A fashion lasts a century in one outside afternoon. The word everyone says on Monday night is a grandparent's word by Wednesday.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "Here's problem two. In there, you're twenty years deep in people. Out here, you're a month behind on one.",
-      "say": "[dry, dark, the problem numbered] Here's problem two. In there, you're twenty years deep in people. Out here, you're a month behind on one.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "And her birthday's coming. You've got a year to think of a present.",
-      "say": "[light, hopeful, an edge of warning] And her birthday's coming. You've got a year to think of a present.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "You plug in with the present on your mind. Spring. The bakery. A friend's wedding. A hard winter.",
-      "say": "[soft, the seasons passing, the present slipping] You plug in with the present on your mind. Spring. The bakery. A friend's wedding. A hard winter.",
+      "text": "So you nap at the desk. A twenty-minute nap is about two weeks in there. You wake up humming a whole opera.",
+      "say": "[sly, answering the viewer, gleeful on the opera] So you nap at the desk. A twenty-minute nap is about two weeks in there. You wake up humming a whole opera.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "The alarm.",
-      "say": "[flat, quiet, a breath] The alarm.",
+      "text": "Boss: No naps.",
+      "say": "[flat, final, slapping a tag on] No naps.",
+      "speaker": "Boss",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Problem two. A thousand people in this hall are living a year tonight. You're doing eight hours and the rota.",
+      "say": "[dry, the problem numbered, the last word flat] Problem two. A thousand people in this hall are living a year tonight. You're doing eight hours and the rota.",
       "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Count it anyway. Thirty nights. Thirty years in there, one month out here. And the town has the whole city in it now.",
+      "say": "[awed, slow on the reveal, then quickening] Count it anyway. Thirty nights. Thirty years in there, one month out here. And the town has the whole city in it now.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "An email you get at six is answered at seven, after a year's thought, and the answer is a book. A fashion lasts a century in one outside afternoon. The word everyone says on Monday night is a grandparent's word by Wednesday.",
+      "say": "[delighted, brisk, a laugh under it] An email you get at six is answered at seven, after a year's thought, and the answer is a book. A fashion lasts a century in one outside afternoon. The word everyone says on Monday night is a grandparent's word by Wednesday.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Three in the morning. The only two people in the city having a normal night.",
+      "say": "[tender, quiet, a smile in it] Three in the morning. The only two people in the city having a normal night.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Flatmate: So. My brother.",
+      "say": "[settling in, warm, finally getting to tell it] So. My brother.",
+      "speaker": "Flatmate",
       "gapAfterSec": 4.0,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Flatmate: It was yesterday.",
-      "say": "[tired, not angry, very quiet, keys in hand] It was yesterday.",
+      "text": "You finally hear the middle. It's a terrible story. It takes four minutes. You've been putting it off for thirty years.",
+      "say": "[tender, amused, the last sentence fond] You finally hear the middle. It's a terrible story. It takes four minutes. You've been putting it off for thirty years.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "She gets to the kettle. You look at its lead, and remember the back room.",
+      "say": "[a spark, low, conspiratorial] She gets to the kettle. You look at its lead, and remember the back room.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "lamp",
+      "claims": []
+    },
+    {
+      "text": "Your boss knows about the piano and the languages. He doesn't know about the radios. You've had his cable in your hands every night for a month. In there, you spent a year drawing it from memory with a man who fixes lamps. It's a lamp cord with opinions.",
+      "say": "[sly, quickening, a heist being laid out, deadpan on the last sentence] Your boss knows about the piano and the languages. He doesn't know about the radios. You've had his cable in your hands every night for a month. In there, you spent a year drawing it from memory with a man who fixes lamps. It's a lamp cord with opinions.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Why not just buy one? A cable costs a street. You earn a desk.",
+      "say": "[answering the viewer, deadpan, quick] Why not just buy one? A cable costs a street. You earn a desk.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Next night shift. The desk lamp's cord. The kettle lead. The taped-over spare socket under your old hatch.",
+      "say": "[hushed, quick, each item a beat, a thief's checklist] Next night shift. The desk lamp's cord. The kettle lead. The taped-over spare socket under your old hatch.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Footsteps on the stairs.",
+      "say": "[panicked, a whisper] Footsteps on the stairs.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Flatmate: Sir. So my brother, right...",
+      "say": "[bright, loud, blocking the stairs, stalling for her life] Sir. So my brother, right...",
       "speaker": "Flatmate",
       "gapAfterSec": 0.35,
-      "mood": "lamp",
+      "mood": "night",
       "claims": []
     },
     {
-      "text": "You had a year to think of a present. A year is a long time. That's the whole trouble with a year.",
-      "say": "[guilt, almost no voice, the last sentence complete] You had a year to think of a present. A year is a long time. That's the whole trouble with a year.",
+      "text": "Boss: Not now.",
+      "say": "[irritated, trying to get past] Not now.",
+      "speaker": "Boss",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Flatmate: He bought a kettle.",
+      "say": "[earnest, urgent, as if it matters enormously] He bought a kettle.",
+      "speaker": "Flatmate",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "He's stuck. She can do four minutes. You need two. Your hands have had thirty years.",
+      "say": "[breathless, counting down, the last sentence sure] He's stuck. She can do four minutes. You need two. Your hands have had thirty years.",
+      "speaker": "narrator",
+      "gapAfterSec": 9.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "And that year inside? You spent it teaching. Every sleeper in the town, the whole design, from a kettle lead and a lamp cord. Only what's in your head comes back. A design is in your head.",
+      "say": "[triumphant, quick, the last two sentences slow and landed] And that year inside? You spent it teaching. Every sleeper in the town, the whole design, from a kettle lead and a lamp cord. Only what's in your head comes back. A design is in your head.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
-      "mood": "lamp",
+      "mood": "night",
       "claims": []
     },
     {
-      "text": "And you go back in that night. Of course you do. In there, nobody's angry with you.",
-      "say": "[low, resigned, the last sentence gentle and awful] And you go back in that night. Of course you do. In there, nobody's angry with you.",
+      "text": "By morning, the whole city wakes up knowing how to build one. By lunch, there isn't a kettle lead left in the city. By dinner, a cable costs a kettle. Your boss's crate goes out on the pavement with a price card crossed out eleven times.",
+      "say": "[gleeful, accelerating, relishing every 'by', a laugh on eleven] By morning, the whole city wakes up knowing how to build one. By lunch, there isn't a kettle lead left in the city. By dinner, a cable costs a kettle. Your boss's crate goes out on the pavement with a price card crossed out eleven times.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
-      "mood": "lamp",
+      "mood": "morning",
       "claims": []
     },
     {
-      "text": "Night one hundred and twenty-three. You've lived longer than anyone whose life has ever been verified: Jeanne Calment, 122 years and 164 days. And you still pay rent on the same flat.",
-      "say": "[awed, then dry on the rent] Night one hundred and twenty-three. You've lived longer than anyone whose life has ever been verified: Jeanne Calment, one hundred and twenty-two years and one hundred and sixty-four days. And you still pay rent on the same flat.",
+      "text": "By the weekend, three governments ban kettles. By Monday, they un-ban them. The ministers plugged in.",
+      "say": "[deadpan, quick, the last sentence a shrug] By the weekend, three governments ban kettles. By Monday, they un-ban them. The ministers plugged in.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Night one hundred and twenty-three. You've outlived the longest verified human life. And you're still on the night shift.",
+      "say": "[awed, then dry on the night shift] Night one hundred and twenty-three. You've outlived the longest verified human life. And you're still on the night shift.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -655,16 +702,8 @@
       ]
     },
     {
-      "text": "Ten years of nights is more than three and a half thousand years lived. Unroll it.",
-      "say": "[awed, slow, the last two words an instruction] Ten years of nights is more than three and a half thousand years lived. Unroll it.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "About a thousand years back, the English of Beowulf. No English speaker today can read it without study.",
-      "say": "[colder, slower, wonder going out of it] About a thousand years back, the English of Beowulf. No English speaker today can read it without study.",
+      "text": "Keep this up ten years and you'll have lived more than three and a half thousand. Unroll it. English from about a thousand years ago, the English of Beowulf, can't be read today without study. Keep going.",
+      "say": "[awed, slow, each step a beat, the last two words a dare] Keep this up ten years and you'll have lived more than three and a half thousand. Unroll it. English from about a thousand years ago, the English of Beowulf, can't be read today without study. Keep going.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -673,186 +712,40 @@
       ]
     },
     {
-      "text": "Keep going. Past every language you could ever read.",
-      "say": "[colder, slower, each step a beat] Keep going. Past every language you could ever read.",
+      "text": "The one who climbs out of that pod won't understand a word the one who climbed in said. You won't understand you. Your boss will still want the rota.",
+      "say": "[hushed, mind-boggled, then deadpan on the rota] The one who climbs out of that pod won't understand a word the one who climbed in said. You won't understand you. Your boss will still want the rota.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "The one who climbs out of that pod would not understand one word the one who climbed in said. You wouldn't understand you.",
-      "say": "[hushed, the last sentence barely spoken] The one who climbs out of that pod would not understand one word the one who climbed in said. You wouldn't understand you.",
+      "text": "And the city? Every night now, it lives a year. It designs in a week what used to take a century. Nobody's impressed by that either.",
+      "say": "[awed, quick, a shrug on the last sentence] And the city? Every night now, it lives a year. It designs in a week what used to take a century. Nobody's impressed by that either.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "And that's problem three. There's one person who knows what you were like before. And you're losing her by arithmetic.",
-      "say": "[low, exact, the last word cold] And that's problem three. There's one person who knows what you were like before. And you're losing her by arithmetic.",
+      "text": "Then the hatch next to yours opens.",
+      "say": "[a hush, the turn, a smile hidden in it] Then the hatch next to yours opens.",
       "speaker": "narrator",
       "gapAfterSec": 4.0,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Flatmate: I'll come too.",
-      "say": "[brave, quiet, a hand held out] I'll come too.",
+      "text": "Flatmate: Tell me tomorrow.",
+      "say": "[smug, heavy-lidded, delighted with herself, your line in her mouth] Tell me tomorrow.",
       "speaker": "Flatmate",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Nobody comes with you. Remember that. If she plugs in tonight she doesn't arrive beside you. She arrives a newcomer in year forty-one of your life, where you have forty years of people she's never met. You'd be the stranger. And she'd start losing out here the way you have. Her brother's story. Her door code. Her.",
-      "say": "[tender, exact, slow, the last sentence landing] Nobody comes with you. Remember that. If she plugs in tonight she doesn't arrive beside you. She arrives a newcomer in year forty-one of your life, where you have forty years of people she's never met. You'd be the stranger. And she'd start losing out here the way you have. Her brother's story. Her door code. Her.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Piano teacher: Stay.",
-      "say": "[old, gentle, certain, from forty years away] Stay.",
-      "speaker": "Piano teacher",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Or you unplug, age at her speed, and lose forty years of friends who are more of your life than she is.",
-      "say": "[even, fair, both sides weighed] Or you unplug, age at her speed, and lose forty years of friends who are more of your life than she is.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "In there, a thousand years. Out here, one of her.",
-      "say": "[the dilemma, two beats, no side taken] In there, a thousand years. Out here, one of her.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "One last year. To say goodbye to forty years of people.",
-      "say": "[quiet, decided, a breath before the second sentence] One last year. To say goodbye to forty years of people.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Flatmate: I'll be here.",
-      "say": "[soft, steady, through a closing door] I'll be here.",
-      "speaker": "Flatmate",
-      "gapAfterSec": 3.0,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "Your last year. You go looking for the oldest sleepers, the most nights of anyone, to say goodbye. They aren't at the feasts.",
-      "say": "[low, searching, the last sentence a turn] Your last year. You go looking for the oldest sleepers, the most nights of anyone, to say goodbye. They aren't at the feasts.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "They're in a queue. Down a street, round a corner, for a door.",
-      "say": "[hushed, puzzled, slow] They're in a queue. Down a street, round a corner, for a door.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "One room. One window. One clock. Time in there runs at the old speed, a day for a day. And the queue to sit in it for an hour is a year long.",
-      "say": "[hushed, wondering, each fragment placed, the last sentence complete] One room. One window. One clock. Time in there runs at the old speed, a day for a day. And the queue to sit in it for an hour is a year long.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Old sleeper: Tomorrow's too far.",
-      "say": "[very old, very quiet, patient, almost asleep] Tomorrow's too far.",
-      "speaker": "Old sleeper",
-      "gapAfterSec": 9.0,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "You were told you'd never run out of time in there. You did. Not hours. Hers.",
-      "say": "[the turn, barely spoken, the last word alone] You were told you'd never run out of time in there. You did. Not hours. Hers.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "Out there a close friend takes more than 200 hours together. In here, that's about twelve minutes of her evening.",
-      "say": "[quiet, exact, the number landing soft] Out there a close friend takes more than two hundred hours together. In here, that's about twelve minutes of her evening.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": [
-        "c23"
-      ]
-    },
-    {
-      "text": "Forty years of friends, for a few of her evenings.",
-      "say": "[low, the sum of it, no comfort] Forty years of friends, for a few of her evenings.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "The oldest minds in the world are queueing for a room where a minute costs a minute.",
-      "say": "[hushed, awed, slow and complete] The oldest minds in the world are queueing for a room where a minute costs a minute.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free.",
-      "say": "[warm, plain, the last three fragments gentle and sure] They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "This morning, the alarm means the same thing to both of you.",
-      "say": "[warm, quiet, a new day in it] This morning, the alarm means the same thing to both of you.",
-      "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Flatmate: So... my brother...",
-      "say": "[flat, tired, expecting the usual, not looking up] So... my brother...",
-      "speaker": "Flatmate",
-      "gapAfterSec": 4.0,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "For once, tomorrow gets nothing.",
-      "say": "[warm, quiet, a small smile you can hear] For once, tomorrow gets nothing.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "Tomorrow someone will say 'tell me tomorrow'. Hear how far away that is.",
-      "say": "[warm, plain, close, the last sentence slow] Tomorrow someone will say 'tell me tomorrow'. Hear how far away that is.",
+      "text": "Tomorrow's a year away. For once, it isn't yours.",
+      "say": "[amused, warm, the last clause slow] Tomorrow's a year away. For once, it isn't yours.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -867,8 +760,8 @@
       "claims": []
     },
     {
-      "text": "So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
-      "say": "[warm, direct, easy, a smile in it] So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "text": "So, who gets your second plug? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "say": "[direct, easy, a grin in it] So, who gets your second plug? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
       "speaker": "narrator",
       "gapAfterSec": 4.0,
       "mood": "morning",
@@ -884,10 +777,8 @@
     "c26": "https://www.state.gov/foreign-language-training/",
     "c14": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:20046194%20AND%20SRC:MED&resultType=core&format=json",
     "c13": "https://archive.org/download/sim_american-journal-of-psychology_1924-10_35_4/sim_american-journal-of-psychology_1924-10_35_4_djvu.txt",
-    "c18": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:18074019%20AND%20SRC:MED&resultType=core&format=json",
     "c27": "https://www.guinnessworldrecords.com/world-records/oldest-person",
-    "c28": "https://en.wikipedia.org/wiki/Old_English",
-    "c23": "https://news.ku.edu/news/article/2018/03/06/study-reveals-number-hours-it-takes-make-friend"
+    "c28": "https://en.wikipedia.org/wiki/Old_English"
   },
   "cues": {}
 }

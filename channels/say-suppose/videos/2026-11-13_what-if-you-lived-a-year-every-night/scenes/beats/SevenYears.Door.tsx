@@ -17,10 +17,10 @@ export const PAD = { x: 1440, y: 560 };
 
 /** The landing: a pale wall, the flat's teal door (swung open by `open` 0..1 on the warm kitchen light), the keypad
  *  beside it. You stand at it; when the door is open your flatmate is in the doorway with toast. */
-export const LandingScene: React.FC<{ frame: number; cam: Camera; mood: MoodName; open: number; you: { pose?: Pose; face: Face; press?: number }; mate?: { x: number; face: Face; talk: boolean } }> = ({
+export const LandingScene: React.FC<{ frame: number; cam: Camera; mood: MoodName; open: number; you: { pose?: Pose; face: Face; press?: number; x?: number }; mate?: { x: number; face: Face; talk: boolean } }> = ({
   frame, cam, mood, open, you, mate,
 }) => {
-  const yb: Body = { x: 1580, y: FLOOR, scale: 1.15, facing: -1, pose: STAND };
+  const yb: Body = { x: you.x ?? 1580, y: FLOOR, scale: 1.15, facing: -1, pose: STAND };
   const press = you.press ?? 0;
   const pose: Pose = you.pose ?? { ...STAND, armF: press > 0 ? aimArm(yb, { x: PAD.x + 30 - press * 8, y: PAD.y + 10 }) : [20, 30], armB: [-6, 10] };
   const look = setLook([{ x: DOOR.x + DOOR.w / 2, y: DOOR.y + DOOR.h / 2, r: 420, color: "#ffe2a6", strength: 0.5 * open, moods: ["morning", "day", "night", "lamp", "dusk", "frozen"] }], mood, cam);
@@ -113,8 +113,9 @@ export const QueueStreet: React.FC<{ frame: number; cam: Camera }> = ({ frame, c
               const old = i === 0;
               const shuffle = Math.sin(frame / 25 + i) * 2;
               return old
-                ? <Person key={i} who="old" b={{ x, y, scale: 1.05, facing: 1, pose: { ...STAND, lean: 6, armF: [20, 40], armB: [10, 30] } }}
-                    face={{ brows: "flat", lids: 0.85, mouth: "flat", look: { x: 0.8, y: 0.1 } }} frame={frame} seed={8} />
+                ? <Person key={i} who="old" b={{ x, y, scale: 1.05, facing: 1, pose: { ...STAND, lean: 6, armF: [60, 70], armB: [10, 30] } }}
+                    face={{ brows: "flat", lids: 0.88, mouth: "smile", look: { x: 0.8, y: 0.1 } }} frame={frame} seed={8}
+                    held={<ellipse cx={-6} cy={-10} rx={44} ry={26} fill="#e9ecf6" stroke={INK} strokeWidth={4} transform="rotate(-12)" />} />
                 : <Person key={i} who={{ head: PASTELS[i % PASTELS.length], coat: noise(i) > 0.5 ? "#4a4f5c" : undefined }}
                     b={{ x: x + shuffle, y, scale: 1.0 + noise(i + 3) * 0.08, facing: 1, pose: i % 4 === 3 ? walkPose(0.6) : { ...STAND, armF: [10 + noise(i) * 20, 20] } }}
                     face={{ brows: "none", lids: 0.3 + noise(i + 5) * 0.3, mouth: noise(i + 2) > 0.6 ? "smile" : "flat", look: { x: 0.7, y: 0 } }} frame={frame} seed={i} />;

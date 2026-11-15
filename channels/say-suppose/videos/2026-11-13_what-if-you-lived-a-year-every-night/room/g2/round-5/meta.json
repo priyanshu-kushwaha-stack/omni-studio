@@ -1,0 +1,17 @@
+{
+  "round": 5,
+  "draft_sha256": "99eb02637f283191640a74cb22a81ad9c50125b2f2b8988e83bd8c206d71860a",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": [
+      "line 34: 'and then' joins two beats; use but or therefore"
+    ]
+  },
+  "owner_notes": true,
+  "owner_note": [
+    "most of the videos we made so far are emotional sort of ... I want exciting stuff."
+  ],
+  "kind": "script",
+  "linted_at": "2026-11-13T18:52:57+00:00"
+}

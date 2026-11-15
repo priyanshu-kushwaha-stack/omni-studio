@@ -160,26 +160,115 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 5,
+      "draft_sha256": "99eb02637f283191640a74cb22a81ad9c50125b2f2b8988e83bd8c206d71860a",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": [
+          "line 34: 'and then' joins two beats; use but or therefore"
+        ]
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "ab37ac36675146029d68adddc418e001",
+          "file": "room/g2/round-5/claims-check.json",
+          "output_sha256": "36f1b792535c6197f9de018585ddb62040e93cd0e68d72fad9670a697057cf72",
+          "blockers": 1
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "42692d19e57f4d04bedf60eedb23e09c",
+          "file": "room/g2/round-5/story-editor.json",
+          "output_sha256": "ec492fa254c8bb25b632257c0e7525354f095b15a0cdc0def64a13e10f16ceaa",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 6,
+      "draft_sha256": "54eaa69f8c7be45c93e407f4d643811cb62f5706a79ed8b917d5ac3323a37146",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": [
+          "line 34: 'and then' joins two beats; use but or therefore"
+        ]
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "d7391298ba374366801ce5c7b2364265",
+          "file": "room/g2/round-6/claims-check.json",
+          "output_sha256": "878b75215aaca0def0d8c5db2c9ffe60fedafccbb78c6bea42060049c8a5f8f0",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "cfb2195638ed40faa0a5e6d789cf8c42",
+          "file": "room/g2/round-6/story-editor.json",
+          "output_sha256": "82c1b45828b499d78ebd105f44b4d1ad07cc1f9e763c2b48c3917369f95c9715",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 4,
-    "artifact_sha256": "04ed38a1f0d3e14fb2d913cf20a053c29edcdfa9df7b6d6f5f5c7d15ef4b7cd9"
+    "round": 6,
+    "artifact_sha256": "54eaa69f8c7be45c93e407f4d643811cb62f5706a79ed8b917d5ac3323a37146"
   },
-  "calls": 8,
-  "cap": 16,
+  "calls": 12,
+  "cap": 20,
   "author_cut": {
     "round": 1,
     "draft_sha256": "c58fc2d1b6bb8643ad1e14ba526e51a058624b9701bc2fad898616b37f74661a",
     "cost": {
-      "lines_changed": 48,
+      "lines_changed": 426,
       "header_changed": [
+        "DESIRE",
+        "CONFLICT",
+        "CHANGE",
+        "RESULT",
+        "UNDER",
         "DARLING"
       ],
       "keep_lost": [
-        "In 1962, Michel Siffre spent about two months in a cave. He came up thinking it was 20 August. It was 14 September. He'd lost 25 days (c16)."
+        "In 1962, Michel Siffre spent about two months in a cave. He came up thinking it was 20 August. It was 14 September. He'd lost 25 days (c16).",
+        "Sleep is when the brain files the day (c14). And one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13).",
+        "Night one hundred and twenty-three. You've lived longer than anyone whose life has ever been verified: Jeanne Calment, 122 years and 164 days (c27). And you still pay rent on the same flat.",
+        "Yesterday was a year ago.",
+        "You were told you'd never run out of time in there. You did. Not hours. Hers.",
+        "They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free.",
+        "People dropped 31 metres into a net later judged their own fall 36% longer than other people's (c18). A moment is as long as the memory it leaves.",
+        "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times: one night.",
+        "Out there a close friend takes more than 200 hours together (c23). In here, that's about twelve minutes of her evening."
       ]
     }
   },

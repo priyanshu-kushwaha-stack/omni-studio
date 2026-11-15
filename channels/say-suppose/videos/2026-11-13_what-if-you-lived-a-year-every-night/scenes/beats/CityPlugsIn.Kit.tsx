@@ -119,3 +119,33 @@ export const InkBubble: React.FC<{ frame: number; at: number; until?: number; x:
     </g>
   );
 };
+
+// ------------------------------------------------------------------------------------------------ v7 additions
+
+/** Roughly when `text` is spoken in line i: its share of the line's characters mapped onto the clip (the line's start
+ *  when the text is not found), plus `nudge` frames. */
+export function phrase(shot: Shot, i: number, text: string, nudge = 0): number {
+  const line = shot.lines[i]?.text ?? "";
+  const k = line.indexOf(text);
+  const c = shot.clips[i];
+  return Math.round(c.from + c.frames * (k < 0 ? 0 : k / Math.max(1, line.length))) + nudge;
+}
+
+/** Where a hand of `body` is, in world coordinates. */
+export function hand(body: Body, arm: "front" | "back" = "front") {
+  const j = joints(body.pose);
+  const [u, f] = arm === "front" ? body.pose.armF : body.pose.armB;
+  const a = { x: Math.sin((u * Math.PI) / 180), y: Math.cos((u * Math.PI) / 180) };
+  const b = { x: Math.sin(((u + f) * Math.PI) / 180), y: Math.cos(((u + f) * Math.PI) / 180) };
+  return {
+    x: body.x + (j.shoulder.x + (a.x + b.x) * 56) * body.scale * body.facing,
+    y: body.y + (j.shoulder.y + (a.y + b.y) * 56) * body.scale,
+  };
+}
+
+/** Children drawn in the head's own coordinates (as the Figure draws its face: +x is the way it faces, the mouth near
+ *  y 20), for moustaches, glasses, veils and grey eyes. */
+export const OnFace: React.FC<{ body: Body; children: React.ReactNode }> = ({ body, children }) => {
+  const h = head(body);
+  return <g transform={`translate(${h.x} ${h.y}) scale(${body.scale * body.facing} ${body.scale}) rotate(${body.pose.tilt})`}>{children}</g>;
+};

@@ -1,0 +1,49 @@
+{
+  "call_id": "d7391298ba374366801ce5c7b2364265",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 10,
+    "claim_grounding": 10,
+    "scope_precision": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 372,
+      "quote": "Claims spoken: c03 (twice), c07, c10, c11, c13, c14, c16, c26, c27, c28;",
+      "fix": "Claims spoken: c03, c07, c10, c11, c13, c14, c16, c26, c27, c28;"
+    },
+    {
+      "line": 98,
+      "quote": "Michel Siffre came out of a cave with no clock, after about two months, 25 days behind the calendar (c16).",
+      "fix": "In 1962, Michel Siffre came out of a cave with no clock, after about two months, 25 days behind the calendar (c16)."
+    },
+    {
+      "line": 74,
+      "quote": "In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself (c10). But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake (c11).",
+      "fix": "In rats, the sleeping brain replayed a learned route 6 to 7 times faster than the run itself (c10). But a dream runs at about real speed. Lucid dreamers counting to 10 take about as long as they do awake (c11)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 63,
+      "quote": "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times, about eight and three-quarter hours. One night."
+    },
+    {
+      "line": 74,
+      "quote": "Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself (c10). But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake (c11). So it takes a plug."
+    },
+    {
+      "line": 136,
+      "quote": "The code. Four digits you typed yesterday. For you, a year ago. Sleep is when the brain files the day (c14), and one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13). A year of new, every night. Last night never stood a chance."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "878b75215aaca0def0d8c5db2c9ffe60fedafccbb78c6bea42060049c8a5f8f0",
+  "draft_sha256": "54eaa69f8c7be45c93e407f4d643811cb62f5706a79ed8b917d5ac3323a37146"
+}

@@ -198,6 +198,15 @@ export const CaveSheet: React.FC<{ frame: number; at: number; until: number; sta
               fill="none" stroke={PAPER} strokeWidth={6} />
           </g>
         )}
+        {/* the torn-out run of pages, fluttering away */}
+        {frame >= tear && Array.from({ length: 9 }, (_, i) => {
+          const q = linear(frame, tear + i * 2, tear + 44 + i * 2);
+          if (q <= 0 || q >= 1) return null;
+          const px = 60 + i * 64 + q * (380 + noise(i) * 260);
+          const py = 260 - q * (320 + noise(i + 4) * 200) + Math.sin(q * 9 + i) * 30;
+          return <rect key={`pg${i}`} x={px - 34} y={py - 28} width={68} height={56} rx={4} fill={PAPER} stroke="#b9a68c" strokeWidth={3}
+            transform={`rotate(${q * (200 + i * 40)} ${px} ${py})`} opacity={1 - q * 0.6} />;
+        })}
         {frame >= stamp && <circle cx={20 + 1 * 90 + 40} cy={78 + 1 * 78 + 34} r={36 * Math.min(1, ramp(frame, stamp, stamp + 6) * 1.3)} fill="none" stroke={CRIMSON} strokeWidth={9} />}
         {frame >= stamp + 10 && <circle cx={20 + 6 * 90 + 40} cy={78 + 4 * 78 + 34} r={36 * Math.min(1, ramp(frame, stamp + 10, stamp + 16) * 1.3)} fill="none" stroke={CRIMSON} strokeWidth={9} />}
         {frame >= say25 && <text x={330} y={310} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={130} fill={MUSTARD}

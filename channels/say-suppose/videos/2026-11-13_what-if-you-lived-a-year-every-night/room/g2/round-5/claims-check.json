@@ -1,0 +1,55 @@
+{
+  "call_id": "ab37ac36675146029d68adddc418e001",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "More of your life has happened in there than out here (c03).",
+      "why": "Row c03's verbatim quote is strictly '24 hours per day, 365 days per year, giving a total of 8,760 hours'. It establishes only the number of hours in a year; it does not support the claim that 'more of your life has happened in there than out here', which also assumes an unstated character age and states an invented story event as a cited factual claim.",
+      "fix": "Eight hours out here against 8,760 in there (c03)\u2014more than ninety-nine of every hundred hours you've lived this month happened in there.",
+      "domain": "fact",
+      "line": 251
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 98,
+      "quote": "Michel Siffre came out of a cave with no clock 25 days behind the calendar (c16).",
+      "fix": "Michel Siffre came out of a cave with no clock, after about two months, 25 days behind the calendar (c16)."
+    },
+    {
+      "line": 117,
+      "quote": "The hard ones take about 2,200 class hours at the US diplomats' school (c26).",
+      "fix": "The hard ones take about 2,200 class hours for native English speakers at the US diplomats' school (c26)."
+    },
+    {
+      "line": 329,
+      "quote": "No English speaker today can read it without study (c28).",
+      "fix": "English from about a thousand years ago, the English of Beowulf, can't be read today without study (c28)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 63,
+      "quote": "The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times, about eight and three-quarter hours. One night."
+    },
+    {
+      "line": 74,
+      "quote": "In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself (c10). But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake (c11)."
+    },
+    {
+      "line": 136,
+      "quote": "Sleep is when the brain files the day (c14), and one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "36f1b792535c6197f9de018585ddb62040e93cd0e68d72fad9670a697057cf72",
+  "draft_sha256": "99eb02637f283191640a74cb22a81ad9c50125b2f2b8988e83bd8c206d71860a"
+}

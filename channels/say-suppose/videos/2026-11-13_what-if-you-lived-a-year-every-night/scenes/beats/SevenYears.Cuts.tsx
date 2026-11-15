@@ -84,7 +84,8 @@ export const LibraryCut: React.FC<{ frame: number; cam: Camera }> = ({ frame, ca
 };
 
 /** A made-up alphabet: rows of chalk squiggles drawn on as `drawn` goes 0..1. `kind` 0 is loops, 1 is angles. */
-const Squiggles: React.FC<{ kind: 0 | 1; drawn: number; x: number; y: number; color: string }> = ({ kind, drawn, x, y, color }) => {
+export type BoardKind = 0 | 1 | 2 | 3;
+const Squiggles: React.FC<{ kind: BoardKind; drawn: number; x: number; y: number; color: string }> = ({ kind, drawn, x, y, color }) => {
   const glyphs = 24;
   const shown = Math.floor(glyphs * drawn);
   return (
@@ -96,7 +97,11 @@ const Squiggles: React.FC<{ kind: 0 | 1; drawn: number; x: number; y: number; co
         const c = noise(i * 3 + kind * 71);
         const d = kind === 0
           ? `M${gx} ${gy + 30} q${10 + a * 30} ${-40 - b * 20} ${20 + c * 20} ${-6} t${10 + b * 20} ${14 - c * 20} ${c > 0.5 ? `m${-8} ${-30} l${4} ${-6}` : `q${-6} ${24} ${-24} ${18}`}`
-          : `M${gx} ${gy + 10 + c * 20} l${10 + a * 20} ${30 - b * 20} l${-6 + c * 20} ${-36 + a * 10} l${8 + b * 14} ${24 + c * 16}${a > 0.5 ? ` m${-20} ${-40} h${12 + c * 10}` : ` m${-4} ${10} l${10} ${12}`}`;
+          : kind === 1
+          ? `M${gx} ${gy + 10 + c * 20} l${10 + a * 20} ${30 - b * 20} l${-6 + c * 20} ${-36 + a * 10} l${8 + b * 14} ${24 + c * 16}${a > 0.5 ? ` m${-20} ${-40} h${12 + c * 10}` : ` m${-4} ${10} l${10} ${12}`}`
+          : kind === 2
+          ? `M${gx} ${gy + 20} h${20 + a * 20} m${-10} ${-14} v${28} ${b > 0.5 ? `m${10} ${-24} h${12}` : `m${-20} ${6} l${8} ${8}`} m${4} ${-30} a4 4 0 1 0 1 0`
+          : `M${gx + 14} ${gy + 4} a${12 + a * 6} ${12 + a * 6} 0 1 ${b > 0.5 ? 1 : 0} ${4} ${24 + c * 8} ${c > 0.4 ? `l${14} ${-6}` : `m${-10} ${-34} l${6} ${-8}`}`;
         return <path key={i} d={d} fill="none" stroke={color} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />;
       })}
     </g>
@@ -104,7 +109,7 @@ const Squiggles: React.FC<{ kind: 0 | 1; drawn: number; x: number; y: number; co
 };
 
 /** The kit classroom with its board turned blackboard: you at it, chalk in hand, writing a made-up alphabet. */
-export const BoardCut: React.FC<{ frame: number; cam: Camera; kind: 0 | 1; from: number; until: number }> = ({ frame, cam, kind, from, until }) => {
+export const BoardCut: React.FC<{ frame: number; cam: Camera; kind: BoardKind; from: number; until: number }> = ({ frame, cam, kind, from, until }) => {
   const options = { ...classroom.defaults, board: "blank" as const, farRow: true };
   const props = { cam, mood: "day" as const, frame, options };
   const drawn = linear(frame, from, until);
@@ -119,8 +124,8 @@ export const BoardCut: React.FC<{ frame: number; cam: Camera; kind: 0 | 1; from:
         actors={
           <>
             <Deep cam={cam} depth={0.92}>
-              <rect x={1300} y={180} width={620} height={360} rx={6} fill={kind === 0 ? "#2f4a3a" : "#24262c"} />
-              <Squiggles kind={kind} drawn={drawn} x={1340} y={220} color={kind === 0 ? PAPER : "#bfe0f0"} />
+              <rect x={1300} y={180} width={620} height={360} rx={6} fill={["#2f4a3a", "#24262c", "#3a2f4a", "#2f3d4a"][kind]} />
+              <Squiggles kind={kind} drawn={drawn} x={1340} y={220} color={[PAPER, "#bfe0f0", "#f6d36b", "#f2b8c6"][kind]} />
             </Deep>
             <Person who="you" b={{ ...you, pose }} face={{ brows: "angry", lids: 0.2, mouth: "flat", look: { x: 0.7, y: -0.6 } }} frame={frame} />
           </>
@@ -177,7 +182,7 @@ export const FlagsSheet: React.FC<{ frame: number; at: number; until: number; ta
 /** The drawer of cards (c14, c13): a new card drops in at the front, every card shuffles back one, and the oldest
  *  slides out the back and falls (`swap` frames start each swap). From `pile`, a tall stack of new cards drops onto
  *  the one old card left, which flattens. */
-export const DrawerSheet: React.FC<{ frame: number; at: number; until: number; swaps: number[]; pile: number }> = ({ frame, at: from, until, swaps, pile }) => {
+export const DrawerSheet: React.FC<{ frame: number; at: number; until: number; swaps: number[]; pile: number; skid?: number }> = ({ frame, at: from, until, swaps, pile, skid }) => {
   const done = swaps.filter((s) => frame >= s + 16).length;
   const live = swaps.find((s) => frame >= s && frame < s + 16);
   const p = live === undefined ? 0 : linear(frame, live, live + 16);
@@ -209,7 +214,16 @@ export const DrawerSheet: React.FC<{ frame: number; at: number; until: number; s
       )}
       {piling && (
         <g>
-          <rect x={560} y={mix(640, 660, drop)} width={280} height={mix(40, 14, drop)} rx={4} fill="#e9dcc2" stroke={INK} strokeWidth={4} />
+          {(() => {
+            // the one old card shoots out from under the pile and skids across the floor
+            const sk = skid === undefined ? 0 : ramp(frame, skid, skid + 16);
+            return <rect x={560 + sk * 760} y={mix(640, 660, drop) + sk * 30} width={280} height={mix(40, 14, drop)} rx={4} fill="#e9dcc2" stroke={INK} strokeWidth={4}
+              transform={`rotate(${sk * 28} ${700 + sk * 760} 660)`} />;
+          })()}
+          {skid !== undefined && frame >= skid && frame < skid + 20 && [0, 1, 2].map((k) => (
+            <line key={k} x1={560 + ramp(frame, skid, skid + 16) * 760 - 40 - k * 50} y1={650 + k * 14} x2={560 + ramp(frame, skid, skid + 16) * 760 - 120 - k * 50} y2={650 + k * 14}
+              stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.6} />
+          ))}
           {Array.from({ length: 20 }, (_, i) => (
             <rect key={i} x={560 + noise(i) * 20 - 10} y={mix(-700, 640, drop) - 14 - i * 28} width={280} height={24} rx={3} fill={i % 2 ? "#fff6dc" : PAPER} stroke={INK} strokeWidth={3} />
           ))}
@@ -219,9 +233,12 @@ export const DrawerSheet: React.FC<{ frame: number; at: number; until: number; s
   );
 };
 
-/** The price card in the boss's hand: one coin, crossed out at `cross`; three coins drawn from `three`. */
-export const PriceCard: React.FC<{ frame: number; cross: number; three: number }> = ({ frame, cross, three }) => {
+/** The price card in the boss's hand: one coin, crossed out at `cross`; two coins drawn from `two`, crossed out too at
+ *  `cross2` (he keeps raising it). Coins only, no digits. */
+export const PriceCard: React.FC<{ frame: number; cross: number; two: number; cross2: number }> = ({ frame, cross, two, cross2 }) => {
   const c = ramp(frame, cross, cross + 8);
+  const c2 = ramp(frame, cross2, cross2 + 8);
+  const pen = frame < two ? { x: mix(-360, -160, c), y: mix(40, -160, c) } : frame < cross2 ? { x: 40 + ramp(frame, two, two + 10) * 150, y: -60 } : { x: mix(-60, 300, c2), y: mix(40, -160, c2) };
   return (
     <g>
       <rect width={1920} height={1080} fill="#2a2420" />
@@ -230,13 +247,50 @@ export const PriceCard: React.FC<{ frame: number; cross: number; three: number }
         <rect x={-460} y={-260} width={920} height={520} rx={16} fill={PAPER} stroke={INK} strokeWidth={8} />
         <circle cx={-260} cy={-60} r={80} fill={MUSTARD} stroke={INK} strokeWidth={6} />
         <line x1={-360} y1={40} x2={mix(-360, -160, c)} y2={mix(40, -160, c)} stroke={CRIMSON} strokeWidth={18} strokeLinecap="round" />
-        {[0, 1, 2].map((k) => frame >= three + k * 5 ? (
-          <circle key={k} cx={20 + k * 150} cy={-60} r={70 * ramp(frame, three + k * 5, three + k * 5 + 5)} fill={MUSTARD} stroke={INK} strokeWidth={6} />
+        {[0, 1].map((k) => frame >= two + k * 6 ? (
+          <circle key={k} cx={40 + k * 150} cy={-60} r={70 * ramp(frame, two + k * 6, two + k * 6 + 5)} fill={MUSTARD} stroke={INK} strokeWidth={6} />
         ) : null)}
+        {frame >= cross2 && <line x1={-60} y1={40} x2={mix(-60, 300, c2)} y2={mix(40, -160, c2)} stroke={CRIMSON} strokeWidth={18} strokeLinecap="round" />}
         <rect x={-380} y={120} width={500} height={24} rx={8} fill={INK} opacity={0.7} />
         <rect x={-380} y={170} width={320} height={24} rx={8} fill={INK} opacity={0.5} />
       </g>
-      <BigHand from={{ x: 1900, y: 1180 }} x={mix(1500, 1300, c)} y={mix(780, 640, c)} r={70} skin={BOSS.head} sleeve="#3b3f4a" />
+      <BigHand from={{ x: 1900, y: 1180 }} x={960 + pen.x + 60} y={520 + pen.y + 80} r={70} skin={BOSS.head} sleeve="#3b3f4a" />
     </g>
+  );
+};
+
+/** The 1924 experiment (c13), on paper: two students who learned the same card. One sleeps and keeps it, glowing over
+ *  the pillow; the other stays awake, and a flurry of new cards flies in and knocks the old one out (from `storm`, in
+ *  waves). */
+export const ExperimentSheet: React.FC<{ frame: number; at: number; until: number; storm: number }> = ({ frame, at: from, until, storm }) => {
+  const wave = Math.max(0, frame - storm) % 60;
+  const knocked = frame >= storm ? Math.min(1, Math.max(0, (frame - storm - 16) / 14)) : 0;
+  return (
+    <Sheet frame={frame} at={from} until={until} x={960} y={540} w={1440} h={760} tilt={1}>
+      <line x1={720} y1={60} x2={720} y2={700} stroke="#cdbfa6" strokeWidth={5} strokeDasharray="14 12" />
+      {/* the sleeper: a bed, a head on the pillow, the card glowing above */}
+      <rect x={110} y={470} width={480} height={90} rx={14} fill="#7fa0c4" stroke={INK} strokeWidth={5} />
+      <path d="M130 470 q10 -50 90 -46 l40 46 Z" fill="#e9ecf6" stroke={INK} strokeWidth={4} />
+      <circle cx={210} cy={420} r={44} fill="#9fc0e0" stroke={INK} strokeWidth={4} />
+      <path d="M190 418 h16 M220 418 h16" stroke={INK} strokeWidth={4} strokeLinecap="round" />
+      <rect x={250} y={440} width={330} height={40} rx={12} fill="#cfd8e6" stroke={INK} strokeWidth={4} />
+      <circle cx={330} cy={250} r={90} fill="#fff2b0" opacity={0.5} />
+      <rect x={290} y={200} width={80} height={110} rx={6} fill="#e9dcc2" stroke={MUSTARD} strokeWidth={6} />
+      {[0, 1, 2].map((k) => <rect key={k} x={302} y={222 + k * 24} width={56 - k * 12} height={7} rx={3} fill={INK} opacity={0.6} />)}
+      {/* the one awake: standing, the old card over his head, new cards flying in */}
+      <circle cx={1040} cy={360} r={50} fill="#e6a0a0" stroke={INK} strokeWidth={4} />
+      <ellipse cx={1025} cy={350} rx={7} ry={11} fill={INK} /><ellipse cx={1058} cy={350} rx={7} ry={11} fill={INK} />
+      <path d="M1030 384 q12 -8 24 0" fill="none" stroke={INK} strokeWidth={4} />
+      <path d="M1000 410 L1080 410 L1100 640 L980 640 Z" fill="#5a6070" stroke={INK} strokeWidth={5} />
+      <g transform={`translate(${1000 + knocked * 300} ${150 + knocked * knocked * 500}) rotate(${knocked * 160})`}>
+        <rect x={0} y={0} width={80} height={110} rx={6} fill="#e9dcc2" stroke={INK} strokeWidth={4} />
+      </g>
+      {frame >= storm && Array.from({ length: 7 }, (_, i) => {
+        const q = Math.min(1, Math.max(0, (wave - i * 3) / 22));
+        const sx = 760 + (i % 3) * 30, sy = 80 + i * 70;
+        return q > 0 && q < 1 ? <rect key={i} x={mix(sx, 1000 + (i % 3) * 20, q)} y={mix(sy, 160 + (i % 4) * 30, q)} width={70} height={96} rx={6} fill="#fff6dc" stroke={INK} strokeWidth={3}
+          transform={`rotate(${(1 - q) * 90 - 20} ${mix(sx, 1000, q)} ${mix(sy, 200, q)})`} /> : null;
+      })}
+    </Sheet>
   );
 };

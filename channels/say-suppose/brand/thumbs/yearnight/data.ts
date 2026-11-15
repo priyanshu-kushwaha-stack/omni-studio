@@ -1,9 +1,11 @@
-// G1 thumbnail candidates for "What If You Lived a Year Every Night?" (2026-11-13). Plain data, no JSX, in the shape
-// of `../batch1.ts` so `../check.py` measures them. Rules: channels/say-suppose/rules/thumbnails.md (K1-K16).
-// The picture is the film's skit at 0:10, staged exactly in the film: seven in the morning in a dark hall of sleep
-// pods. You, large at the left, sit half out of an open pod with heavy lids and a long stare: a year older in your
-// head after one night. On the hatch beside you the split-flap day counter has stopped on 365, in crimson. Your
-// flatmate, right of centre, mop in hand, is still mid-sentence, fresh as the night before. One variable: the tag.
+// Thumbnail candidates for "What If You Lived a Year Every Night?". Plain data, no JSX, in the shape of `../batch1.ts`
+// so `../check.py` measures them. Rules: channels/say-suppose/rules/thumbnails.md (K1-K17).
+// v2 (2026-11-14, K17 "the power in use and someone stunned", owner 2026-11-13): the film's key shot at 0:06, staged
+// exactly in the film. A dark hall of sleep pods; you, large at the left, sit half out of your open pod, lids heavy
+// and a sly grin, juggling three coils of the boss's teal cable in a perfect cascade: a year of practice, one night.
+// On the pod frame the split-flap day counter has stopped on 365, in crimson. Your flatmate, right of centre, jaw
+// dropped, her mop sliding out of her hand. (v1, the G1 pick: a flat stare at her mid-sentence; it fails K17.)
+// One variable: the tag.
 import { SEATED, type Pose } from "../../../../../core/engines/whatif/src/kit/rig/pose";
 import { headOf, type Box, type Hero } from "../batch1";
 
@@ -30,17 +32,17 @@ const VIDEO = "2026-11-13_what-if-you-lived-a-year-every-night";
 /** The day counter on your pod's hatch, the film's rule device. */
 export const COUNTER = "365";
 
-/** Sitting on the lip of the pod, shoulders sunk, the front hand gripping the rim. */
-const SLUMP: Pose = { ...SEATED, lean: 4, tilt: 6, armF: [28, 40], armB: [-6, 30] };
+/** Sitting on the lip of the pod, both forearms up and out at chest height: juggling. */
+const JUGGLE: Pose = { ...SEATED, lean: 2, tilt: 4, armF: [72, 62], armB: [40, 100] };
 
 /** You, drawn at screen scale (the thumbnail's stage camera is the identity), cut by the frame below the knees. */
-export const HERO: Hero = { x: 470, y: 1694, scale: 4.3, face: "sceptical", look: { x: 0.95, y: 0.05 }, pose: SLUMP };
+export const HERO: Hero = { x: 470, y: 1694, scale: 4.3, face: "sceptical", look: { x: 0.9, y: -0.2 }, pose: JUGGLE };
 
 /** Your flatmate, right of centre, facing you, mop in the back hand, mid-sentence. */
 export const MATE = { x: 1500, y: 1500, scale: 3.1 };
 
 /** The counter's tiles, on the pod frame right of your head. */
-export const COUNTER_AT = { x: 975, y: 470, tile: 150 };
+export const COUNTER_AT = { x: 1210, y: 425, tile: 140 };
 
 const headBox = (h: Hero): Box => {
   const c = headOf(h);

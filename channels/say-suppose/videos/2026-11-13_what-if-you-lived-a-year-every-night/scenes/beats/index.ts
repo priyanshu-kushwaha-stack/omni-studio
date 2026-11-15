@@ -3,14 +3,12 @@ import { rule } from "./Rule";
 import { piano } from "./Piano";
 import { sevenYears } from "./SevenYears";
 import { cityPlugsIn } from "./CityPlugsIn";
-import { coldApology } from "./ColdApology";
+import { staffLast } from "./StaffLast";
 import { nightThirty } from "./NightThirty";
-import { wasYesterday } from "./WasYesterday";
-import { timeline } from "./Timeline";
-import { herOffer } from "./HerOffer";
-import { slowRoom } from "./SlowRoom";
-import { tellMeNow } from "./TellMeNow";
+import { kettleLead } from "./KettleLead";
+import { tomorrow } from "./Tomorrow";
 import type { Beat } from "../shared";
 
-/** The film's beats in order (script.md v2). firstLine must rise; it is the index into story.json lines. */
-export const BEATS: Beat[] = [tellMeTomorrow, rule, piano, sevenYears, cityPlugsIn, coldApology, nightThirty, wasYesterday, timeline, herOffer, slowRoom, tellMeNow];
+/** The film's beats in order (script.md v7). firstLine must rise; it is the index into story.json lines.
+ *  Piano.tsx is the beat "Night One". */
+export const BEATS: Beat[] = [tellMeTomorrow, rule, piano, sevenYears, cityPlugsIn, staffLast, nightThirty, kettleLead, tomorrow];

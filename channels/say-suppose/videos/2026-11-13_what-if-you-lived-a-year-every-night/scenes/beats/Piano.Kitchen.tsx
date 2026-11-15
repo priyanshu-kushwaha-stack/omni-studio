@@ -1,6 +1,7 @@
 // The flat's kitchen in the morning (library `kitchen`, kettle on, rain on the window): a small table in front of the
-// counter, you on the left chair, your flatmate on the right over a bowl of cereal; the cardboard keyboard, the bowl
-// she taps in time, the last piece of toast she slides across. Shared by The Piano and Seven Years a Week.
+// counter, you on the left chair, your flatmate on the right over a bowl of cereal, a spoon in her hand (milk dripping
+// off it when it stops mid-air); the cardboard keyboard, the bowl she taps in time, a plate of eggs you slide across
+// and she pushes back with one finger. Shared by Night One (Piano.tsx) and Seven Years a Week.
 import { kitchen } from "@whatif/kit/sets/Kitchen";
 import { setLook } from "@whatif/kit/sets/common";
 import { SEATED, seatedY, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -10,7 +11,7 @@ import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { INK, PAPER } from "@whatif/kit/theme";
 import { Chair } from "../sets/common";
 import { mix, noise } from "../shared";
-import { aimArm, Person, type Body, type Face } from "./TellMeTomorrow.Kit";
+import { aimArm, handAt, Person, type Body, type Face } from "./TellMeTomorrow.Kit";
 
 export const KITCHEN = {
   floor: 960,
@@ -40,8 +41,13 @@ export interface KitchenState {
   toast?: number;
   /** Her x when she gets up and goes (null: seated). */
   mateWalk?: number | null;
-  /** A plate in front of her she pushes away (Seven Years: the fancy breakfast), 0..1 pushed. */
-  push?: number | null;
+  /** A plate of eggs on the table at x (world), slid by you ("you": your front hand on it) or pushed back by her
+   *  ("her": one finger on its far rim). */
+  plate?: { x: number; by?: "you" | "her" } | null;
+  /** Milk dripping off her stopped spoon. */
+  drip?: boolean;
+  /** Your pose, overriding the one the state implies (the flourish, chin up, hands behind your head). */
+  youPose?: Pose;
 }
 
 /** Rain streaks on the kitchen window (the kit window is at 140, 200, 360 x 300 on its 0.85 layer). */
@@ -55,13 +61,24 @@ const Rain: React.FC<{ frame: number }> = ({ frame }) => (
   </g>
 );
 
-/** The fancy breakfast: a tall stack on a plate with a sprig and a drizzle. */
-const Fancy: React.FC<{ x: number; y: number }> = ({ x, y }) => (
+/** A plate of two fried eggs. */
+const Eggs: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <g transform={`translate(${x} ${y})`}>
-    <ellipse cx={0} cy={-6} rx={80} ry={14} fill={PAPER} stroke={INK} strokeWidth={4} />
-    {[0, 1, 2].map((k) => <ellipse key={k} cx={0} cy={-22 - k * 16} rx={50 - k * 4} ry={12} fill="#d9a35a" stroke={INK} strokeWidth={3} />)}
-    <path d="M-30 -66 Q0 -40 34 -64" fill="none" stroke="#7a2b3a" strokeWidth={6} />
-    <path d="M6 -80 l-8 -16 M6 -80 l10 -14" stroke="#5aa04a" strokeWidth={6} strokeLinecap="round" />
+    <ellipse cx={0} cy={-6} rx={78} ry={14} fill={PAPER} stroke={INK} strokeWidth={4} />
+    {[-28, 26].map((dx) => (
+      <g key={dx}>
+        <path d={`M${dx - 30} -12 q4 -16 22 -14 q14 -10 28 2 q10 10 -6 14 q-20 6 -44 -2Z`} fill="#fffaf0" stroke={INK} strokeWidth={3} />
+        <ellipse cx={dx} cy={-16} rx={11} ry={8} fill="#f2b632" stroke={INK} strokeWidth={3} />
+      </g>
+    ))}
+  </g>
+);
+
+/** Her spoon, in her front hand (figure-local units). */
+const Spoon: React.FC = () => (
+  <g transform="rotate(-30)">
+    <line x1={0} y1={0} x2={0} y2={-34} stroke="#9aa1ab" strokeWidth={5} strokeLinecap="round" />
+    <ellipse cx={0} cy={-40} rx={8} ry={11} fill="#c9ced6" stroke={INK} strokeWidth={2.5} />
   </g>
 );
 
@@ -77,6 +94,7 @@ export const KitchenScene: React.FC<{ frame: number; cam: Camera; mood: MoodName
   const cardPos = card === null ? null : card < 1 ? { x: mix(K.you + 40, K.card.x, card), y: mix(K.floor - 60, K.card.y - 8, card) - Math.sin(card * Math.PI) * 80 } : { x: K.card.x, y: K.card.y - 8 };
   let youPose: Pose = s.youSeated ? { ...SEATED, lean: 6, armF: [40, 50], armB: [20, 50] } : walkPose(frame * 0.3);
   if (s.youSeated && cardPos && card !== null && card < 1) youPose = { ...youPose, lean: 14, armF: aimArm({ ...youBase, pose: { ...youPose, lean: 14 } }, cardPos) };
+  if (s.youSeated && s.plate?.by === "you") youPose = { ...youPose, lean: 16, armF: aimArm({ ...youBase, pose: { ...youPose, lean: 16 } }, { x: s.plate.x - 60, y: K.table.top - 10 }) };
   if (s.youSeated && s.playing) {
     const p = Math.sin(frame / 3) * 10;
     const lean = { ...SEATED, lean: 14 };
@@ -95,10 +113,12 @@ export const KitchenScene: React.FC<{ frame: number; cam: Camera; mood: MoodName
     else if (spoon === "tap") matePose = { ...lean, armF: aimArm({ ...mateBase, pose: lean }, { x: K.bowl.x + 10, y: K.bowl.y - 30 + (frame % 8 < 3 ? 10 : -6) }), armB: [20, 40] };
     else if (spoon === "talk") matePose = { ...SEATED, lean: 4, armF: [70 + Math.sin(frame / 6) * 10, 70], armB: [20, 40] };
     else matePose = { ...lean, lean: 18, armF: aimArm({ ...mateBase, pose: { ...lean, lean: 18 } }, { x: mix(K.toast.from, K.toast.to, s.toast ?? 0) + 30, y: K.toast.y - 10 }), armB: [20, 40] };
-    if (s.push !== undefined && s.push !== null) matePose = { ...lean, lean: 2 - s.push * 10, armF: aimArm({ ...mateBase, pose: lean }, { x: mix(K.bowl.x - 10, K.bowl.x - 120, s.push), y: K.bowl.y - 20 }), armB: [30, 60] };
+    if (s.plate?.by === "her") matePose = { ...lean, lean: 16, armF: aimArm({ ...mateBase, pose: { ...lean, lean: 16 } }, { x: s.plate.x + 70, y: K.table.top - 14 }), armB: [30, 60] };
   }
+  if (s.youPose) youPose = s.youPose;
   const toastX = mix(K.toast.from, K.toast.to, s.toast ?? 0);
-  const pushX = s.push !== undefined && s.push !== null ? mix(K.bowl.x - 40, K.bowl.x - 200, s.push) : null;
+  const spoon = !walking && s.spoon !== "talk" && s.spoon !== "toast" && s.plate?.by !== "her";
+  const spoonHand = handAt({ ...mateBase, pose: matePose }, "front");
 
   return (
     <LookContext.Provider value={setLook(kitchen.lights(options), mood, cam)}>
@@ -109,7 +129,7 @@ export const KitchenScene: React.FC<{ frame: number; cam: Camera; mood: MoodName
             <Chair x={K.you} y={K.seatTop} scale={1.1} facing={1} />
             <Chair x={K.mate} y={K.seatTop} scale={1.1} facing={-1} />
             <Person who="you" b={{ ...youBase, pose: youPose }} face={s.youFace} frame={frame} />
-            <Person who="mate" b={{ ...mateBase, pose: matePose }} face={s.mateFace} frame={frame} seed={5} />
+            <Person who="mate" b={{ ...mateBase, pose: matePose }} face={s.mateFace} frame={frame} seed={5} held={spoon ? <Spoon /> : undefined} />
             {/* the table, over your laps */}
             <rect x={K.table.from + 30} y={K.table.top + 10} width={16} height={K.floor - K.table.top - 10} fill="#6b4b3a" stroke={INK} strokeWidth={4} />
             <rect x={K.table.to - 46} y={K.table.top + 10} width={16} height={K.floor - K.table.top - 10} fill="#6b4b3a" stroke={INK} strokeWidth={4} />
@@ -123,7 +143,12 @@ export const KitchenScene: React.FC<{ frame: number; cam: Camera; mood: MoodName
               <ellipse cx={0} cy={-6} rx={56} ry={10} fill={PAPER} stroke={INK} strokeWidth={4} />
               <rect x={-30} y={-46} width={60} height={42} rx={14} fill="#d9a35a" stroke={INK} strokeWidth={4} />
             </g>}
-            {pushX !== null && <Fancy x={pushX} y={K.bowl.y} />}
+            {s.plate && <Eggs x={s.plate.x} y={K.table.top} />}
+            {s.plate?.by === "her" && <line x1={spoonHand.x} y1={spoonHand.y} x2={spoonHand.x - 16} y2={spoonHand.y + 2} stroke="#c9b4ec" strokeWidth={8} strokeLinecap="round" />}
+            {spoon && s.drip && [0, 1, 2].map((d) => {
+              const q = ((frame + d * 9) % 27) / 27;
+              return <ellipse key={d} cx={spoonHand.x - 22} cy={spoonHand.y - 24 + q * (K.table.top - spoonHand.y + 10)} rx={5} ry={7} fill="#fbfaf4" stroke={INK} strokeWidth={2} opacity={1 - q * 0.3} />;
+            })}
             {cardPos && <g transform={`translate(${cardPos.x} ${cardPos.y}) rotate(${card !== null && card < 1 ? -20 * (1 - card) : 0})`}>
               <rect x={-100} y={-14} width={200} height={16} rx={2} fill="#c9a06a" stroke={INK} strokeWidth={4} />
               {Array.from({ length: 9 }, (_, i) => <line key={i} x1={-90 + i * 22} y1={-14} x2={-90 + i * 22} y2={2} stroke={INK} strokeWidth={2} />)}

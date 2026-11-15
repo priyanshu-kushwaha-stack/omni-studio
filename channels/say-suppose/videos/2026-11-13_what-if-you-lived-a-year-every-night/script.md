@@ -1,25 +1,25 @@
 # Script: What If You Lived a Year Every Night?
 
 format: story
-status: v5, G2 draft (2026-11-13), on the approved G1 packet (pair A): the G1 room's round-2 notes and the G2 room's rounds 1-3 notes applied
+status: v7, G2 draft (2026-11-14), exciting-not-sad rewrite on the owner's 2026-11-13 note; Fable 5.1 wrote it, the session revised it
 claims: claims.md
 
 > SITUATION: Osaka, a hotel of sleep pods where you and your flatmate work the night desk. Everything she tells you, you answer "tell me tomorrow", and your boss has just unpacked a cable that makes tomorrow a year away.
-> DESIRE: To come back every morning with more to give her.
-> CONFLICT: Each year inside buys you skills, friends and a whole life, and costs you one more night of hers, until she is someone you see for a few hours a decade.
-> CHANGE: You stop counting what the cable gives you and start counting whose minutes you are in.
-> RESULT: You hang the cable on its hook, and when she starts the story again, you say "Tell me now."
-> UNDER: If I had a thousand lifetimes, who would I still make time for?
-> DARLING: "Yesterday was a year ago."
-> DARLING: "Out there a close friend takes more than 200 hours together (c23). In here, that's about twelve minutes of her evening."
-> DARLING: "The oldest minds in the world are queueing for a room where a minute costs a minute."
+> DESIRE: To come up the stairs every morning with a new lifetime of skills and watch her jaw drop.
+> CONFLICT: Every night you plug in, the city plugs in behind you, until a year's work is the minimum, nobody's impressed, and your boss, sitting on the only cables in town, takes yours away.
+> CHANGE: You stop renting the power and start building it, out of the one thing the rule lets you keep: what's in your head.
+> RESULT: Your kettle-lead cable works, the design is in every sleeper's head by morning, the price falls to nothing, and your flatmate climbs out of a pod a year older and tells you "Tell me tomorrow."
+> UNDER: If everyone could live a lifetime every night, what would still be worth bragging about?
+> DARLING: "He's not wrong. Out here, you're the guy who can juggle."
+> DARLING: "By the weekend, three governments ban kettles. By Monday, they un-ban them. The ministers plugged in."
+> DARLING: "One night for her. One year for you. And you spent it learning to juggle."
 
 ## [00:00] Tell Me Tomorrow
 
 > MOOD: night
-> SCENE: The hall of sleep pods after close: two tiers of hatches stacked behind, each with a warm porthole lamp, no lettering anywhere. The night desk at the near end, a wall clock above it. Your boss, tie, at a crate on the desk. Pod one, lowest tier, nearest the camera, its door swung up: a reading lamp in its ceiling, a pillow, the mattress edge. You sit on its lip in your teal scarf, legs over the edge. Your flatmate, pale-lilac head, work apron, mop in hand, stands right of centre, already talking. Within half a second: the paper snap of the crate's lid tearing.
+> SCENE: The hall of sleep pods after close: two tiers of hatches stacked behind, each with a warm porthole lamp, no lettering anywhere. The night desk at the near end: a desk lamp, a kettle, a wall clock above. Your boss, tie, at a crate on the desk. Pod one, lowest tier, nearest the camera, its door swung up: a reading lamp in its ceiling, a pillow, the mattress edge. Under the hatch counter, two sockets, one taped over. You sit on the pod's lip in your teal scarf, legs over the edge. Your flatmate, pale-lilac head, work apron, mop in hand, stands right of centre, already talking. Within half a second: the paper snap of the crate's lid tearing.
 
-> HOLD: 1 s. Performed. The lid tears; your boss drops a coil of teal cable in your lap while your flatmate leans in on the mop, ready to go on with her story.
+> HOLD: 1 s. Performed. The lid tears; your boss drops a tangle of three teal coils in your lap while your flatmate leans in on the mop, ready to go on with her story.
 
 Boss: Staff first.
 
@@ -27,155 +27,153 @@ Flatmate: So my brother, right...
 
 > BUBBLE: You: Tell me tomorrow.
 
-> HOLD: 3 s. Performed. You swing your legs in and push the plug into the socket under the hatch counter. The door swings down and shuts. On the pod frame the crimson split-flap counter flutters from 001 to 365 in a blur, a card flutter and a last click, while the wall clock behind your flatmate ticks once. The door swings up. You sit up, half out of the pod, the lamp and pillow behind you, one hand on the rim beside the counter, lids heavy, and look straight at her. She has not moved: same mop, same breath, mouth open mid-word. The thumbnail's frame, exactly, locked at 0:06.
+> HOLD: 3 s. Performed. You swing your legs in and push one plug into the socket under the hatch counter. The door swings down and shuts. On the pod frame the crimson split-flap counter flutters from 001 to 365 in a blur, a card flutter and a last click, while the wall clock behind your flatmate ticks once. The door swings up. You sit half out of the pod, lamp and pillow behind you, lids heavy, a small sly grin, and three teal coils are flying in a perfect cascade between your hands. She has not moved: same mop, same breath, mouth open mid-word. The thumbnail's frame, exactly, locked at 0:06.
 
 > TAG: 365
 
 Flatmate: ...and then he dropped it.
 
-> HOLD: 3 s. Performed. You keep looking at her, brows flat, mouth a flat line, the way you'd look at a stranger on a platform. She waits for the laugh. She tilts her head. Behind her, your boss counts the coils left in the crate on his fingers. Under your hand the counter holds on 365.
+> HOLD: 3 s. Performed. Her jaw drops. Her eyes go wide. The mop slides out of her hand and clatters on the floor. You catch all three coils in one hand without looking. Behind her, your boss counts the coils left in the crate on his fingers, stops, counts again, and looks at the three in your hand.
 
-## [00:10] The Rule
+## [00:11] The Rule
 
-> SCENE: Close on your face, the lids, then the counter under your hand, then her open mouth. The wall clock: one tick.
+> MOOD: night
+> SCENE: Close on your grin, then the coils, then the counter under your hand, then her open mouth. The wall clock: one tick.
 
-Your flatmate. A night for her. For you, a year.
+One night for her. One year for you. And you spent it learning to juggle.
 
 So what if you lived a year, every night?
 
-She stays at one speed. Every year you gain in there pushes last night with her a year further away.
+> SCENE: Quick cuts: you at the desk playing a drawn violin, you flipping an omelette, you bowing to a guest in a hat; between each, her jaw dropping a notch further. Then the crate: your boss's hand closing the lid.
+
+Every night, a lifetime of skills. Every morning, a face like that. That's what you win. What you lose is your head start, the day anyone else gets a cable.
 
 > SCENE: The hall, wide. On "a thousand times faster" the counter on every hatch in the hall flutters once in a ripple, left to right, and stops. On "a town of other sleepers" a paper inset opens over the pods: a small town under a sky where the same split-flap counter hangs in place of the sun, blurring. Four seasons cross the inset in four cuts.
 
 The rule, once. Plug in at bedtime, and your mind runs about a thousand times faster. A night out here is a year in there.
 
-A town of other sleepers, a job, four seasons, weather, friends. You remember all of it. Your body ages one night.
+In there, a town of other sleepers, a job, weather, four seasons. You remember all of it. Your body ages one night.
 
-Once the year starts, it runs to the end. And nobody out here comes with you. Remember that.
+> SCENE: A paper figure of you walks out of the inset towards the hatch lip carrying a suitcase and a rolled newspaper. At the lip, the suitcase and the paper turn to ash and blow away; only the figure's head crosses, glowing. On "stay till the alarm" a drawn bolt slides across the hatch from the inside and an alarm clock is stamped beside it.
 
-In there, time is the one thing you'll never run out of.
+You bring back only what's in your head. No things, no news. And once you're in, you stay till the alarm. Remember that.
 
 > SCENE: A paper diagram draws itself on the hatch door: a long strip stamped 8,760, folding on itself a thousand times until it is one short strip the width of a night, laid against the wall clock.
 
-The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times: one night.
+The thousand isn't ours. An economist who studies uploaded minds, Robin Hanson, guessed one would run about a thousand times human speed (c07). A year is 8,760 hours (c03). At a thousand times, about eight and three-quarter hours. One night.
 
-> SCENE: Back to the two of you. She shrugs, picks the mop up and goes back to the floor. You look at the clock. Then the title card ident (C), three seconds.
+> SCENE: Back to the two of you. She picks up the mop without taking her eyes off you. You look at the clock. Then the title card ident (C), three seconds.
 
 And you've got work in the morning.
 
-## [01:09] The Piano
+## [01:19] Night One
 
 > MOOD: night
 > SCENE: Inside your pod, the lamp on, you lying with the cable in. A paper inset: a rat on a track, then the same track replayed as a quick streak over its sleeping head. Then a sleeper counting on their fingers at ordinary speed.
 
-Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself (c10).
+Why a cable? In rats, the sleeping brain replayed a learned route six to seven times faster than the run itself (c10). But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake (c11). So it takes a plug.
 
-But a dream runs at about real speed. Lucid dreamers counting to ten take about as long as they do awake (c11). So it takes a plug.
+> SCENE: The inside town, eight cuts, each two seconds: dawn over paper roofs; the counter-sun racing across the sky; you in a bakery apron beside a baker with a teal headscarf; snow; a piano teacher with a grey head tapping a key; your hands on the keys, a wrong note, your face; the teacher's back room, radios and lamps in pieces on a bench, a soldering iron, you holding a lamp cord up to the light; the teacher nodding.
 
-> SCENE: The inside town, seven cuts, each two seconds: dawn over paper roofs; the counter-sun racing across the sky; you in a bakery apron; snow; a piano teacher with a grey head tapping a key; your hands on the keys, a wrong note, your face; then, walking home, a plain door on a side street with one window, and through it a wall clock whose hand creeps while the sky's counter blurs above. You glance in and walk on.
-
-Night one. A town at dawn. A paper sun racing the sky. A bakery job. A winter. A piano teacher with a grey head, and your hands getting it wrong.
-
-You pass one room where the wall clock moves at outside speed. A minute for a minute. Useless, when you have a year.
+Night one. A town at dawn. A paper sun racing the sky. A bakery job. A winter. A piano teacher with a grey head, and a back room full of radios and lamps in pieces. You help. You've got time.
 
 > SCENE: The same keys, your hands sure, eyes shut. The teacher nods. Cut: the hatch opens. The stairs. The flat's kitchen, `morning`: a kettle, a fridge, rain on the window, your flatmate over a bowl of cereal.
 
-Day three hundred, in there. Your hands get it right.
+Day three hundred in there. Your hands get it right.
 
 > MOOD: morning
 
 Flatmate: So my brother...
 
-> HOLD: 5 s. Performed. You sit, lift a flat piece of cardboard from the recycling with piano keys drawn on it in pen, lay it on the table, shut your eyes and play. A real piano sounds under the picture. Her spoon stops; then she taps the bowl in time. You miss a note, she catches the rhythm, and you find the ending together. She slides the last piece of toast to your side. You open your eyes, expecting applause.
+> HOLD: 5 s. Performed. You sit, lift a flat piece of cardboard from the recycling with piano keys drawn on it in pen, lay it on the table, shut your eyes and play. A real piano sounds under the picture. Her spoon stops mid-air; milk drips off it. She taps the bowl in time. You find the ending with a flourish and open your eyes, chin up, waiting for applause.
 
 Flatmate: Since when?
 
-> SCENE: Insert: a paper calendar in a cave, a man with a lamp, a run of pages torn out and fluttering away. Then back to your face at the table, the smile going.
+> BUBBLE: You: Morning, Haruko.
 
-Michel Siffre came out of a cave with no clock 25 days behind the calendar (c16).
+Flatmate: Who's Haruko?
 
-You've come up the other way, with a year extra. You wanted applause. You got a question.
+> SCENE: Insert: the baker in the teal headscarf, waving from the inside town. Then a paper calendar in a cave, a man with a lamp, a run of pages torn out and fluttering away. Back to the table: her brows up, your grin stuck in place.
 
-For you, 'since when' was a year ago. And her week, the one you were in, you can't find.
+Haruko runs the bakery. In there. Michel Siffre came out of a cave with no clock, after about two months, 25 days behind the calendar (c16). You've come out the other way: a year ahead, and a year out of date.
 
-But you'll fix the week. You've got all the time in the world.
+You wanted applause. You got a question and a wrong name. Fine. You've got all the time in the world.
 
-## [02:24] Seven Years a Week
+## [02:26] Seven Years a Week
 
 > MOOD: night
-> SCENE: The hatch, the counter, five fast cuts, each inside then out: a wok on fire in the inside town, then the flat's kitchen, your flatmate pushing away a plate of something fancy with her nose wrinkled; a library with you asleep on a stack, then a paper note on your pillow, unread, sliding off it; a blackboard of letters; another blackboard, another alphabet; then her face at the table asking something, and your mouth open with no word. Each cut, the counter flutters to 365 and the wall clock ticks once.
+> SCENE: Fast cuts, inside then out, each ending on the counter fluttering to 365 and the wall clock ticking once: a wok on fire in the inside town; the flat's kitchen, a plate of eggs slid in front of her.
 
-Night two, you learn to cook, and make her the breakfast she told you yesterday she hates. Night three, the inside town's whole library, and not the note she left on your pillow. Night four, a language. Night five, another. When she asks how you slept, the word you need is in neither.
+Night two, you learn to cook. You make her eggs.
+
+Flatmate: I hate eggs.
+
+> SCENE: She pushes the plate back with one finger. Cut inside: you at a newsagent's stand, every paper on it the same yellowed sheet; the town square, a crowd in waistcoats shouting over that one sheet while the counter-sun blurs above them; one trader holding it up like scripture.
+
+She told you yesterday. For you, a year ago. Night three, you go in for the lottery numbers. Here's the thing. The town knows nothing you don't. Its newest newspaper is whatever the last sleeper read before bed. Inside, the stock market is a year of very clever people arguing about last Tuesday.
+
+> SCENE: A blackboard of letters; another, another alphabet; a third; a fourth. A drawn stack of four paper flags on the hatch door, then a tape measure of class hours unrolling beside them.
+
+So, nights four to seven: languages. The hard ones take about 2,200 class hours for native English speakers at the US diplomats' school (c26). You've had four whole years. Four languages, at a working level.
 
 > TAG: NIGHT 7
 
-Night seven. One week in, and seven years old in there.
+> SCENE: The hotel lobby at midnight. A coach's headlights through the glass. Forty guests pour in with suitcases, four clusters, four flags on their luggage tags. You alone at the desk. Your boss frozen on the stairs with a coffee.
 
-> SCENE: A drawn stack of four paper flags on the hatch door, then a tape measure of class hours unrolling beside them.
+Midnight. A coach party. Forty guests, four languages, one desk, and you.
 
-The hard ones take about 2,200 class hours at the US diplomats' school (c26). You've had seven years of evenings. Four languages, at a working level.
+> HOLD: 4 s. Performed. You check them in, bowing left, bowing right, switching language mid-bow, sliding four keys at once down the counter like a card dealer. The hall of guests applauds. One drops a coin on the desk. Your boss's coffee tips and he doesn't notice.
+
+Guest: Is he real?
 
 > MOOD: morning
-> SCENE: The flat's door, a keypad. Your finger over it. It presses, stops. Presses, stops. Over-the-shoulder: the four blank keys.
+> SCENE: The flat's door, a keypad. Your finger over it. It presses, stops. Presses, stops. Over-the-shoulder: the four blank keys; behind them, faint, four other keypads flash and fade.
 
-You come home and can't open the door.
+Bigger than the piano. Then you go home and can't open the door.
 
-The code. Four digits, last typed seven years ago. Your time.
+> SCENE: Insert: a drawer of paper cards; a new card slides in and an old one slides out the back and falls. Then a stack of 365 new cards dropped on one old one, which shoots out and skids across the floor.
 
-> SCENE: Insert: a drawer of paper cards; a new card slides in and an old one slides out the back and falls. Then a stack of 365 new cards dropped on one old one.
-
-Sleep is when the brain files the day (c14). And one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13).
-
-A year of new. Every night. Last night never stood a chance.
+The code. Four digits you typed yesterday. For you, a year ago. Sleep is when the brain files the day (c14), and one small, famous experiment, in 1924, decided that forgetting is mostly the new rubbing out the old (c13). A year of new, every night. Last night never stood a chance.
 
 > SCENE: The door opens from inside. Your flatmate in her apron, toast in hand, steps back to let you in, already talking. You stand in the hall with your mouth slightly open.
 
 Flatmate: Right. So my brother...
 
-And you can't remember how it starts.
+And you can't remember how it starts. Problem one: you're not forgetting in there. You're forgetting out here.
 
 > MOOD: night
-> SCENE: The hall. Your boss at the desk, watching the counter on your hatch flutter, a price card in his hand. He crosses out the number and writes a new one. Cut: the street outside the hotel at midnight, a queue down the pavement under the lamps. At the head of it, a grey-headed figure, lids already heavy.
+> SCENE: The hall. Your boss at the desk, watching the counter on your hatch flutter, a price card in his hand. He crosses out the number and writes a new one, then crosses that out too. Cut: the street outside the hotel at midnight, a queue down the pavement under the lamps. At the head of it, a grey-headed old sleeper, lids already heavy, a pillow under his arm.
 
 Your boss has been watching the counter.
 
 Boss: Triple.
 
-By midnight there's a queue down the street. And here's problem one. You're not forgetting the inside. You're forgetting out here.
+By midnight there's a queue down the street.
 
-## [03:25] The City Plugs In
+## [03:52] The City Plugs In
 
 > MOOD: night
-> SCENE: A thousand hatches on the hotel's tiers flutter to 365 at once, a card storm with one last click. Then the city in fast paper cuts, one per use, each two to three seconds. An exam hall: a student in uniform at a desk with a year's revision stacked behind her as a paper tower. A notice stamped on the hall door.
+> SCENE: A thousand hatches on the hotel's tiers flutter to 365 at once, a card storm with one last click. The queue outside runs down the street, round the corner and out of frame towards drawn cranes. Then the city in fast paper cuts, one per use. An exam hall: a student in uniform at a desk with a year's revision stacked behind her as a paper tower. A notice stamped on the hall door.
 
-Your boss sells every coil before dawn. By the end of the week, the whole city is plugging in.
+Your boss sells every coil before dawn. By the end of the week, the whole city is plugging in, and your hotel has a waiting list to the harbour.
 
 A student plugs in the night before the exam and sits it with a year of revision. Next morning, the exam board bans sleeping the night before.
 
 Student: Define sleeping.
 
-> SCENE: An operating room: a surgeon's hands over the same drawn patient ten thousand times in a flicker. Then the door opens and a nurse holds up a scan with a fresh stamp on it. The surgeon's gloved hands stop.
+> SCENE: An operating room: a surgeon's hands over the same drawn patient ten thousand times in a flicker, her lids heavy, her stance perfect. The door opens and a nurse holds up a scan with a fresh stamp on it. The gloved hands stop.
 
-A surgeon rehearses one operation ten thousand times by breakfast. But the scan waiting outside is eight hours newer. The perfect rehearsal is already wrong.
+Why not become a surgeon in a week? One tries. She rehearses one operation ten thousand times by breakfast. But the town only knows what the sleepers brought in, and the scan waiting outside is eight hours newer.
+
+Nurse: New scan.
+
+Surgeon: Newer than what?
 
 > SCENE: An office at dawn: a desk, a report a foot thick dropped on it, a boss in a tie not looking up from a thicker one.
 
 'On my desk by morning' now means a year's work. Every boss means it. By Friday, that's the minimum, and nobody's impressed.
 
-> SCENE: A courtroom bench. A judge with a gavel, a prisoner in the dock. Cut: the prisoner walks out of a pod hatch, grey-eyed, bows to the court.
-
-Then the courts.
-
-Judge: Three nights.
-
-The prisoner expected a long weekend. He walks out three years older, grey-eyed, and thanks the court.
-
-> SCENE: A wedding aisle. The bride walks it slowly, calm, lids heavy; the groom at the altar bounces on his toes, fresh. She takes his hand like someone meeting an old friend.
-
-A bride plugs in the night before and thinks it over for a year. She still says yes. Now she's known the groom a year longer than he's known her.
-
-Bride: I do. Still.
-
+> MOOD: day
 > SCENE: A classroom. A row of kids in caps and uniform, slumped like commuters, one with his arms folded and his lids heavy, a teacher at the board with chalk.
 
 Schools ban it under sixteen. The kids plug in anyway, and turn up to class as forty-year-olds in uniform.
@@ -184,226 +182,222 @@ Kid: Miss. We've done this.
 
 Teacher: Sit down.
 
+> SCENE: A wedding aisle, then three more in quick cuts, every bride the same. The bride walks it slowly, calm, lids heavy; the groom at the altar bounces on his toes, fresh. She takes his hand like someone meeting an old friend.
+
+Every wedding in the city: the bride plugs in the night before and thinks it over for a year.
+
+Bride: I do. Still.
+
+Then the courts.
+
+> SCENE: A courtroom bench. A judge with a gavel, a prisoner in the dock. Cut: the prisoner walks out of a pod hatch, grey-eyed, bows to the court, then turns and tries to climb back in; a guard pulls him out by the ankles.
+
+Judge: Three nights.
+
+The prisoner expected a long weekend. He walks out three years older, grey-eyed, and thanks the court. He asks to stay in. Nobody gets to. The alarm's out here. So is his bladder.
+
 > MOOD: morning
-> SCENE: The silent morning train, wide, the picture only this premise can show. A paper carriage sliding past the window light, every seat full, every face a year older in mind: lids heavy, nobody on a phone, nobody talking, the only motion the carriage sway. Side by side on one bench, a couple: she stares at the floor with her jaw set; he looks out of the window, calm, having forgiven her a year ago. On the end seat, the grey-headed old sleeper from the head of the queue, lids heavier than anyone's, hands folded, a bench poster over his head of the hotel's price board. At the far carriage end, standing, the stranger: crimson head, long coat, the one face not yawning. Ambience: the rail rhythm with no chatter.
+> SCENE: The silent morning train, wide, the picture only this premise can show. A paper carriage sliding past the window light, every seat full, every face a year older in mind: lids heavy, chins up, tiny satisfied smiles, nobody on a phone, the only motion the carriage sway. A kid in school cap with a briefcase on his knees. Side by side on one bench, a couple: she stares at the floor with her jaw set; he looks out of the window, serene, a thick paper book in his lap with a drawn heart on the cover. On the end seat, the grey-headed old sleeper from the queue, lids heavier than anyone's. Ambience: the rail rhythm with no chatter.
 
-The morning train. Every face a year older in mind. Nobody talks. Two people who argued at dinner sit side by side. Only one is still angry. Only one plugged in.
+The morning train. Every face a year older in mind, and smug about it. Nobody on a phone. They've read everything. Two people who argued at dinner sit side by side. Only one is still angry. The other forgave her a year ago and has written a book about it.
 
-> HOLD: 3 s. The carriage sways. The old sleeper's lids drop another notch. The angry one's hand lies an inch from the calm one's and doesn't move. The stranger watches them. The rail rhythm, and nothing else.
+> HOLD: 3 s. The carriage sways. He turns a page. She glances at the book, sees the heart, and her jaw sets harder. The kid with the briefcase checks a drawn pocket watch. The old sleeper's lids drop another notch.
+
+> MOOD: dusk
+> SCENE: The inside town from above, the counter-sun blurring: paper roofs spreading to the edge of the frame as new streets draw themselves, and every face from the montage walking its lanes: the student, the surgeon, the bride, the kids.
 
 And all of them went into the same town you did. Inside is filling up.
 
-## [04:50] The Cold Apology
+## [05:40] Staff Last
 
-> MOOD: lamp
-> SCENE: The kitchen, one lamp over the table, rain, one dripping tap. Your flatmate at the table, arms folded, eyes red. You in the doorway in last night's scarf. An insert: last night, before the pod, two paper figures at this table, a rent bill between them, two mouths open. Then your face now, blank, searching.
+> MOOD: morning
+> SCENE: The lobby. A traveller at the desk fans out a paper fan of nine flags. You hold up four fingers. The traveller looks at the fingers, then at you.
 
-But outside, last night is still waiting for you. Before you plugged in, a row about the rent. For her it's fresh. For you it's a year cold, and half gone.
+Then a traveller checks in. In nine languages.
 
-> BUBBLE: You: Sorry about last night.
+Traveller: Only four?
 
-> HOLD: 3 s. Performed. She looks at you a long moment. Her head tilts. She unfolds her arms and puts both hands flat on the table.
+> SCENE: Your boss at the desk over his price card, now a column of drawings: a coin, a car, a flat, a street, each crossed out for the next. He looks up at the three teal coils hanging by your chair.
 
-Flatmate: Which part?
+A year's work is the minimum now. Your head start lasted exactly as long as the crate. And your boss has been doing sums. A cable is worth a car. Then a flat. Then a street.
 
-She looks at you like you're reading it off a card. You are.
+Boss: Staff last.
 
-> SCENE: Insert: a paper figure dropping into a net, a stopwatch beside it, a second hand stamped longer for the faller than for the watcher. Then two memory cards side by side: hers thick, yours a blank, with a year of inside weather stacked on top of the blank.
+> HOLD: 3 s. Performed. He holds out his hand. You hand over two coils. The hand stays out. You hand over the third. He hangs all three on a hook behind the desk, snaps a padlock on it and pats it. You sit back down in your chair, facing the hook.
 
-People dropped 31 metres into a net later judged their own fall 36% longer than other people's (c18). A moment is as long as the memory it leaves.
+He's not wrong. Out here, you're the guy who can juggle.
 
-Her night left her a whole argument. Yours left you nothing, with a year of someone else's weather on top.
+You could quit. Then you lose the hatch too. He has the only cables in the city, padlocked to a hook you can see from your chair.
 
-Yesterday was a year ago.
+> MOOD: night
+> SCENE: You at the desk, chin sinking to your chest. A paper inset: a fortnight of inside sky, the counter-sun crossing fourteen times. You jerk awake, mouth open, a drawn stave of music pouring out of it. Your boss leans in from the stairs and slaps a tag on the back of your chair.
 
-> SCENE: She gets up and leaves the lamp to you. The tap drips. Through the doorway, the stairs down to the hall, the glow of the hatches.
+So you nap at the desk. A twenty-minute nap is about two weeks in there. You wake up humming a whole opera.
 
-You tell yourself the flat is still where you live. Is it?
+Boss: No naps.
 
-## [05:34] Night Thirty
+> TAG: NO NAPS
+
+> SCENE: The hall, wide, from your chair: a thousand porthole lamps, a thousand counters blurring. You, alone, awake, with a kettle and a rota.
+
+Problem two. A thousand people in this hall are living a year tonight. You're doing eight hours and the rota.
+
+## [06:33] Night Thirty
 
 > MOOD: dusk
-> SCENE: The inside town at dusk, a street of thousands, market noise sped up, the counter-sun blurring above. A paper tally draws itself on the sky: eight hours against 8,760, thirty times, the eight-hour strips a thin line beside a wall of year strips.
-
-You thought the pods were the dream and the flat was the life. Count it.
+> SCENE: The inside town at dusk, a street of thousands, market noise sped up. A paper tally draws itself on the sky: eight-hour strips a thin line beside a wall of year strips, thirty of them.
 
 > TAG: NIGHT 30
 
-Night thirty. After a month of plugging in, almost every hour you've lived happened in there (c03).
+Count it anyway. Thirty nights. Thirty years in there, one month out here. And the town has the whole city in it now.
 
-> SCENE: Three cuts inside: you and two friends grey at the temples on a bench you've clearly shared for years; a street worn smooth where you walk; a small grave with a paper flower. Then the flat's kitchen through a window at dusk, small and far, your flatmate's shape at the table.
+> SCENE: The inside town's post office: a letter arrives and a book goes back out. A paper fashion parade changes hats a dozen times across one blurred sun. A grandparent inside says a word and a child rolls their eyes.
 
-In there you have friends of twenty years. A street you've walked ten thousand times. A grave you visit.
-
-Out here, you see your flatmate for a few hours a decade. Your decade.
-
-> SCENE: The inside town's post office: a letter arrives and a book goes back. A paper fashion parade changes hats a dozen times across one blurred sun. A grandparent inside says a word and a child rolls their eyes.
-
-And the town has the whole city in it now. An email you get at six is answered at seven, after a year's thought, and the answer is a book.
-
-A fashion lasts a century in one outside afternoon. The word everyone says on Monday night is a grandparent's word by Wednesday.
-
-Here's problem two. In there, you're twenty years deep in people. Out here, you're a month behind on one.
-
-> SCENE: The kitchen calendar, a date circled in her pen, a small drawn cake. Your eyes on it from the doorway.
-
-And her birthday's coming. You've got a year to think of a present.
-
-## [06:38] It Was Yesterday
-
-> MOOD: night
-> SCENE: You in the pod, the cable in, the calendar page folded in your fist. The inside year in four cuts: blossom; the bakery; a friend's wedding, you raising a glass; snow to the knee.
-
-You plug in with the present on your mind. Spring. The bakery. A friend's wedding. A hard winter.
+An email you get at six is answered at seven, after a year's thought, and the answer is a book. A fashion lasts a century in one outside afternoon. The word everyone says on Monday night is a grandparent's word by Wednesday.
 
 > MOOD: lamp
-> SCENE: The hatch opens. The stairs. The kitchen, the fridge hum alone: on the table a small cake with one candle burnt down to the plate, the wax pooled. Your flatmate in her coat, bag on her shoulder, keys in her hand, leaving for the day shift.
+> SCENE: Three in the morning. The night desk, one lamp. You with your chin on your hand, the NO NAPS tag behind you. Your flatmate comes down the stairs in her apron with two mugs, puts one in front of you and sits on the desk.
 
-The alarm.
+Three in the morning. The only two people in the city having a normal night.
 
-> HOLD: 4 s. Performed. You stop in the doorway. You look at the cake. She looks at your empty hands. Neither of you moves. The fridge hums.
+Flatmate: So. My brother.
 
-Flatmate: It was yesterday.
+> HOLD: 4 s. Performed. She tells it, hands going, the mop propped beside her. You listen, for once. Somewhere in the middle you laugh, once, and she points at you: told you. The wall clock moves at its one speed over both of you.
 
-> BUBBLE: You: Tell you tomo...
+You finally hear the middle. It's a terrible story. It takes four minutes. You've been putting it off for thirty years.
 
-> SCENE: Your bubble breaks off, half drawn. Your mouth shuts. She doesn't slam the door. She closes it quietly, which is worse. You and the cake.
+> SCENE: Your eyes slide off her to the desk lamp. Its cord. The kettle. Its lead. Then to the taped-over socket under your old hatch. A small smile.
 
-You had a year to think of a present. A year is a long time. That's the whole trouble with a year.
+She gets to the kettle. You look at its lead, and remember the back room.
 
-> SCENE: Night. The hall. Your hand on the cable. You don't look at the stairs.
+## [07:23] The Kettle Lead
 
-And you go back in that night. Of course you do. In there, nobody's angry with you.
+> MOOD: night
+> SCENE: Inserts: the teacher's back room, radios and lamps in pieces; you at the night desk a month ago, one of the boss's coils in your hands, turning the plug over under the lamp; inside, you and the teacher over a long paper drawing of the plug's insides, the counter-sun crossing the window again and again while the drawing grows.
 
-## [07:06] The Timeline
+Your boss knows about the piano and the languages. He doesn't know about the radios. You've had his cable in your hands every night for a month. In there, you spent a year drawing it from memory with a man who fixes lamps. It's a lamp cord with opinions.
+
+> SCENE: The price card on the desk, the street drawing circled. Your pay slip beside it: a drawing of a desk.
+
+Why not just buy one? A cable costs a street. You earn a desk.
+
+> SCENE: The hall, empty but for a thousand sleepers behind their hatches. You unplug the desk lamp. You unplug the kettle. You peel the tape off the spare socket under your old hatch. Close on your hands: wire, a knife, two cords twisted into one.
+
+Next night shift. The desk lamp's cord. The kettle lead. The taped-over spare socket under your old hatch.
+
+> SCENE: The stairs. Two shoes, a tie, descending. Your hands speed up. At the top of the stairs your flatmate appears behind him and lays her mop across the doorway like a barrier.
+
+Footsteps on the stairs.
+
+Flatmate: Sir. So my brother, right...
+
+Boss: Not now.
+
+Flatmate: He bought a kettle.
+
+> SCENE: Your boss stops on the third stair, caught between the story and the hall. Over his shoulder, past the banister, you with a homemade plug in one hand and the last strand of wire in your teeth. She counts the seconds on her fingers behind her back.
+
+He's stuck. She can do four minutes. You need two. Your hands have had thirty years.
+
+> HOLD: 9 s. The one wordless peak. You push the homemade plug into the spare socket. Nothing. One flap of the counter twitches. You climb into the pod; the door swings down. Your boss steps past the mop. The counter starts to flutter, 001, 002, a card storm in slow motion, the music down to a floor and the film's one planned silence, the hall's thousand portholes glowing round this one hatch and your boss's face lit crimson by it. Dissolve: the wedge of dawn from the high window crosses the floor, and the counter clicks: 365. The door swings up. You sit half out, lids heavy, the grin from the opening, a year older. Your boss stands exactly where he stood, tie loose, mouth open, a cold coffee in his hand; your flatmate is asleep on the stairs behind him, the mop over her shoulder like a rifle.
+
+> BUBBLE: You: Staff first.
+
+> SCENE: Inset: the inside town square, you on a bakery crate with the long paper drawing held up, the teacher beside you; a crowd of every face from the montage copying it onto paper, the counter-sun crossing above. Then a thousand paper heads, each glowing, crossing the hatch lips of the hall at once.
+
+And that year inside? You spent it teaching. Every sleeper in the town, the whole design, from a kettle lead and a lamp cord. Only what's in your head comes back. A design is in your head.
 
 > MOOD: morning
-> SCENE: The hall at dawn, a wedge of light from the high window. The counter on your hatch. A paper portrait of a very old woman beside a tally of years; your tally passes hers and keeps going. Then a rent envelope on the desk.
+> SCENE: The city in fast cuts: a hatch opening and a sleeper climbing out holding up their own lamp cord; a shop wall of empty kettle hooks; a shopkeeper shrugging; a queue of people carrying kettles into the hotel and leaving without them; your boss's crate on the pavement, the price card crossed out eleven times down to a drawing of a kettle.
+
+By morning, the whole city wakes up knowing how to build one. By lunch, there isn't a kettle lead left in the city. By dinner, a cable costs a kettle. Your boss's crate goes out on the pavement with a price card crossed out eleven times.
+
+> SCENE: Three paper flags over three drawn parliaments; a kettle stamped with a crimson cross under each; the cross peeled off; a row of ministers on a bench with their lids heavy and small smug smiles.
+
+By the weekend, three governments ban kettles. By Monday, they un-ban them. The ministers plugged in.
+
+## [08:53] Tomorrow
+
+> MOOD: morning
+> SCENE: The hall at dawn, a wedge of light from the high window. The counter on your hatch. A paper portrait of a very old woman beside a tally of years; your tally passes hers and keeps going. Then the rota on the desk, your name's line drawn in every night.
 
 > TAG: NIGHT 123
 
-Night one hundred and twenty-three. You've lived longer than anyone whose life has ever been verified: Jeanne Calment, 122 years and 164 days (c27). And you still pay rent on the same flat.
+Night one hundred and twenty-three. You've outlived the longest verified human life (c27). And you're still on the night shift.
 
-> SCENE: A paper timeline unrolls along the hall floor from your pod, backwards, under both tiers of hatches, the counters fluttering above it. The camera walks it. A stamp at a thousand years: a page of Old English letters, unreadable.
+> SCENE: A paper timeline unrolls along the hall floor from your pod, out of the doors, down the street and off into the dark between the drawn cranes, the counters fluttering above it. The camera walks it. A stamp at a thousand years: a page of Old English letters, unreadable.
 
-Ten years of nights is more than three and a half thousand years lived. Unroll it.
+Keep this up ten years and you'll have lived more than three and a half thousand. Unroll it. English from about a thousand years ago, the English of Beowulf, can't be read today without study (c28). Keep going.
 
-About a thousand years back, the English of Beowulf. No English speaker today can read it without study (c28).
+> SCENE: The timeline runs off into the dark. Two paper figures of you at either end of it, the near one young, the far one a shape, each with an open mouth and a bubble with nothing in it. Your boss steps into the near one's frame holding out the rota.
 
-Keep going. Past every language you could ever read.
+The one who climbs out of that pod won't understand a word the one who climbed in said. You won't understand you. Your boss will still want the rota.
 
-> SCENE: The timeline runs off the end of the hall into the dark. Two paper figures of you at either end of it, the near one young, the far one a shape, each with an open mouth and no bubble.
+> SCENE: The city from above at dawn: a thousand hatches clicking to 365 on every roof; a bridge drawing itself across the harbour in one cut; a passer-by walking under it without looking up.
 
-The one who climbs out of that pod would not understand one word the one who climbed in said. You wouldn't understand you.
+And the city? Every night now, it lives a year. It designs in a week what used to take a century. Nobody's impressed by that either.
 
-> SCENE: The far end of the timeline. One small figure standing beside it at the start, apron, mop: your flatmate, at the only point on it she can reach.
+> SCENE: The hall. You half out of your pod, stretching. The hatch next to yours, which has been dark all film, clicks to 365.
 
-And that's problem three. There's one person who knows what you were like before. And you're losing her by arithmetic.
+Then the hatch next to yours opens.
 
-## [07:54] Her Offer
+> HOLD: 4 s. Performed. Your flatmate climbs out of the hatch beside yours, apron on, lids heavy, a year older, a small sly grin exactly like yours at the opening. You open your mouth, a hand already up to start telling her something. She picks up her mop.
 
-> MOOD: night
-> SCENE: The hall, vent hum. Your pod open, you sitting in it, the cable in your hand. Footsteps on the stairs: your flatmate comes down into the hall for the first time, apron off, and stands by the open hatch. She holds out her hand, palm up, for a cable.
+> BUBBLE: You: So, last night...
 
-> HOLD: 4 s. Performed. Her hand stays out. You look at it, then at her face, and for one second your brows lift. Then you shake your head, slowly, once. Her hand doesn't drop.
+Flatmate: Tell me tomorrow.
 
-Flatmate: I'll come too.
+> SCENE: The last image: the two of you half out of neighbouring pods, her grin, your mouth open, your bubble half drawn. Behind you both, on the desk, the kettle with no lead.
 
-> SCENE: A paper inset over the hatch: the inside town, forty years of faces round a table, and a small lilac figure at the door with a suitcase, nobody turning round. Then one face does: the piano teacher, grey head, at the head of the table, looking straight out of the inset at you.
-
-Nobody comes with you. Remember that. If she plugs in tonight she doesn't arrive beside you. She arrives a newcomer in year forty-one of your life, where you have forty years of people she's never met. You'd be the stranger. And she'd start losing out here the way you have. Her brother's story. Her door code. Her.
-
-Piano teacher: Stay.
-
-Or you unplug, age at her speed, and lose forty years of friends who are more of your life than she is.
-
-In there, a thousand years. Out here, one of her.
-
-> SCENE: You put your hand on the plug. Close on your face: you look at her hand, and you push the plug in.
-
-One last year. To say goodbye to forty years of people.
-
-Flatmate: I'll be here.
-
-> HOLD: 3 s. Performed. The hatch door comes down. Her open hand, palm up, stays in the frame in the narrowing gap until the door closes on it. The counter flutters. The wall clock ticks once. She stands there with her hand still out.
-
-## [08:36] The Slow Room
-
-> MOOD: lamp
-> SCENE: Inside, the oldest quarter of the town, the sky's counter blurring above. You walk past a feast hall, lit and loud, without going in. A queue of grey heads, lids heavy, winds down a street and round a corner to one plain door with one window.
-
-Your last year. You go looking for the oldest sleepers, the most nights of anyone, to say goodbye. They aren't at the feasts.
-
-They're in a queue. Down a street, round a corner, for a door.
-
-> SCENE: Through the one window: a bench under a wall clock whose hand moves at ordinary speed. Outside the window, on the sky, the counter. Beside the door, on a bench, the grey-headed old sleeper from the train, lids nearly shut, a paper ticket in his hand with a year's worth of flaps on it.
-
-One room. One window. One clock. Time in there runs at the old speed, a day for a day. And the queue to sit in it for an hour is a year long.
-
-Old sleeper: Tomorrow's too far.
-
-> HOLD: 9 s. The one wordless peak. The door opens. The old sleeper and the one beside him go in and sit on the bench under the window. The clock's hand moves at ordinary speed. Outside the window the sky's counter, which has blurred through every inside scene, turns one flap with a single click, the rule device stopping. One of the two starts a story, hands moving; the other only listens, head turned. The music drops to one held line and the film's one planned silence. The camera pulls back along the queue, slow, until the door is a single lit square at the end of a thousand bowed heads, and you one of them.
-
-You were told you'd never run out of time in there. You did. Not hours. Hers.
-
-> SCENE: A paper tally over the queue: a strip stamped 200 hours, folded a thousand times to a sliver the width of twelve minutes, laid against a drawn kitchen clock at seven in the evening.
-
-Out there a close friend takes more than 200 hours together (c23). In here, that's about twelve minutes of her evening.
-
-Forty years of friends, for a few of her evenings.
-
-The oldest minds in the world are queueing for a room where a minute costs a minute.
-
-> SCENE: Close on your face in the queue. Then you turn, step out of the line, and walk back the way you came, past a thousand bowed heads, the counter blurring on above you.
-
-They're queueing for a room that runs at her speed. You've got one. It's upstairs. It's free.
-
-## [09:44] Tell Me Now
-
-> MOOD: morning
-> SCENE: The hatch opens. The counter on it is dark. You pull the plug out, coil the cable, and hang it on the hook by the desk. The stairs. The kitchen: kettle, rain stopped, birds. Your flatmate at the table with her tea. She doesn't look up.
-
-This morning, the alarm means the same thing to both of you.
-
-Flatmate: So... my brother...
-
-> BUBBLE: You: Tell me now.
-
-> HOLD: 4 s. Performed. She looks up. She looks at you for a long moment, the way you looked at her on night one. Then her hands come off the cup and start moving, and she tells it. You pull the chair round and sit, elbows on the table, your face a foot from hers. We never hear a word of it.
-
-For once, tomorrow gets nothing.
-
-> SCENE: The last image: the two of you at the table, her hands mid-story, your eyes on her. Through the doorway behind her, down the stairs, the cable coiled on its hook and the dark counter on your hatch.
-
-Tomorrow someone will say 'tell me tomorrow'. Hear how far away that is.
+Tomorrow's a year away. For once, it isn't yours.
 
 > SCENE: The hall doorway at the foot of the stairs. Your boss steps into it, grinning, a new coil of cable in both hands. On its end, two plugs. Cut before your face.
 
 Boss: Two plugs.
 
-So, would you plug in? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
+So, who gets your second plug? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
 
 > HOLD: 4 s. End card: like, subscribe and comment tags in the left two-thirds; the right third quiet.
 
 ## Word count
 
-About 1,456 spoken words (narrator plus character lines): 9:24 at 155 words a minute. Holds: 12, about 47 s (about 8% of the runtime, raised from the template's 5% for the performed scenes): the skit 3 s, 3 s and 3 s; the piano 4 s; the train 3 s; the apology 3 s; the birthday 4 s; her offer 4 s and 3 s; the slow room 9 s, the one wordless peak and the longest; "tell me now" 4 s; the end card 4 s. Plus the 3 s title card ident. Raw runtime about 10:15; about 9:30 at the channel's 1.1x tempo. The skit runs about 10 s before the first narrator line; the thumbnail's full situation (hatch open, counter on 365, your old-eyed stare at your unchanged flatmate) is on screen at about 0:06 and she finishes her sentence after it (blocker #2). The title question at about 0:15. The rule in three spoken lines, with the flagged limit "nobody out here comes with you. Remember that." Eight performed moments where the narrator stops and the characters act and speak: the skit (three holds, three lines), the cardboard piano ("Since when?"), the train (wordless), the apology ("Which part?"), the birthday ("It was yesterday."), her offer ("I'll come too." / "I'll be here."), the slow room ("Tomorrow's too far." and the peak), and "tell me now". Uses of the power, each with a gap: the piano (applause expected, a question got), the languages (four at a working level, and no door code), the row (an apology read off a card), the student (banned), the surgeon (an eight-hour-old scan), the desk (a year's work is the minimum), the judge (three nights, three years), the bride (she knows him a year longer), the kids (forty-year-olds in uniform), the train (only one still angry), the present (a year to think, "it was yesterday"), the last year (a queue, not a feast). The silent morning train is a `> SCENE:` at about 4:30 (blocker #8), before the midpoint of about 5:08, and the grey-headed old sleeper is seeded at the head of the midnight queue at about 3:20 and in the carriage at 4:30 before his bench at 8:50; the last new person is the teacher at about 4:25 (about 43%). The stranger: standing at the carriage end on the train, the one face not yawning. The running gag returns seven times: "So my brother, right..." (0:02), "So my brother..." (1:45), "Right. So my brother..." (3:05), the apology morning (she doesn't start it), "Tell you tomo..." (6:55), "Tomorrow's too far." (9:00) and the two in the slow room, "So... my brother..." and "Tell me now" (9:50). Plants and payoffs: "Remember that" (0:35) breaks her offer (8:05) and turns the slow room (9:35); "time is the one thing you'll never run out of" (0:38) is broken word for word at 9:30 (check #10); the counter at 365 (0:05) is dark at 9:45; her hand out for a cable (8:00) is in the frame as the hatch closes, then her hands telling the story (9:50). The peak carries one spoken number (200 hours, twelve minutes). Dilemma line at about 8:25 (about 82%): "In there, a thousand years. Out here, one of her." The cost lands at 6:38-7:06 (about 65%). Claims spoken: c03, c07, c10, c11, c13, c14, c16, c18, c23, c26, c27, c28; every digit cites its row and each row's note is honoured ("one small, famous experiment"; "about two months", "lost 25 days"; "later judged"; "a working level"; "verified"; a guess by a named economist; the 8,760-into-one-night and the twelve minutes as our arithmetic). Not used: c01, c02, c22 (the cosmonaut line, cut in v3) and c04-c06, c08, c09, c12, c15, c17, c19-c21, c24, c25, c29, c30. Changed from the G1 packet, for the owner: the cold apology now follows the city beat (packet: before it) so the train lands before the midpoint, and its loop becomes "Is it?" into "Count it."; the cosmonaut line moves from the opening to after the piano lands (the room's suggestion); the Osaka line (c01, c02) is not spoken, the hall shows it; the apology's old loop "the whole street is" is dropped. Open loops as questions or "here's the problem" about a minute apart: 0:15, 1:05, 2:20, 3:20, 4:45, 5:30, 6:30, 7:00, 7:50, 8:30, 9:40. Stake jumps: 0:06, 1:50, 3:05, 4:30, 5:25, 6:50, 7:50, 8:30, 9:30. No new rule after halfway. Past 8 minutes the viewer holds two clocked questions: what the oldest minds in the world do with a thousand lifetimes, and whether you come back out; the last line of the film is the first line turned round.
+About 1,440 spoken words (narrator plus character lines; bubbles not counted): 9:17 at 155 words a minute. Holds: 11, about 43 s (about 7% of the runtime): the skit 1 s, 3 s and 3 s; the cardboard piano 5 s; the coach party 4 s; the train 3 s; Staff last 3 s; the three a.m. story 4 s; the kettle lead 9 s, the one wordless peak and the longest; the hatch beside yours 4 s; the end card 4 s. Plus the 3 s title card ident. Raw runtime about 10:05; about 9:15 at the channel's 1.1x tempo. The skit runs about 10 s before the first narrator line; the thumbnail's full situation (hatch open, counter on 365, you juggling three coils with heavy lids and a sly grin, her jaw dropped mid-sentence, the mop sliding) locks at about 0:06, and she finishes her sentence and drops the mop after it. The title question at about 0:15; what you win and lose by 0:30. The rule in three spoken lines, with the flagged limit "You bring back only what's in your head. No things, no news. And once you're in, you stay till the alarm. Remember that." Seven performed moments where the narrator stops and the characters act and speak: the skit, the cardboard piano ("Since when?" / "Who's Haruko?"), the coach party ("Is he real?"), Staff last, the nap ("No naps."), the three a.m. story, the kettle lead (the stall, the peak, "Staff first."), the hatch beside yours ("Tell me tomorrow.").
 
-Changed in v5, from the G2 room's round 3: Siffre "25 days behind the calendar" (he kept none, c16) in one number; the apology opens on "But outside, last night is still waiting for you" so the city beat causes it; Night Thirty says its count in one line and leaves the arithmetic to the picture.
+**#20, escalating set pieces, the world reacting wider each time:** the cardboard piano (your flatmate, a win with a backfire: the wrong name); the eggs (a backfire); the lottery (a backfire); the coach party in four languages (the hotel and forty guests applauding, bigger than the piano); "Triple." and the queue (the street); the student, the surgeon, the office, the courts, the bride, the kids and the train (the city); Staff last (the catch); the kettle lead (a narrow escape and the biggest win); the design in every head by morning (the city), the crate on the pavement (the market), three governments banning kettles (governments).
 
-Changed in v4, from the G2 room's round 2 (review-g2-round1.md): the skit's first hold is 1 s so the thumbnail frame locks at 0:06; Siffre in one number (25 days, c16); "A night out here is a year in there" and "about eight and three-quarter hours" (a year at a thousand times is 8.76 hours, c03: the claims check); "the US diplomats' school" (c26); "This morning, the alarm means the same thing to both of you." replaces a line that said what the shot shows.
+**#21, loopholes closed on screen, each in the scene where it arises:** "why not learn the lottery numbers or the stock market?" (night three: the town knows nothing you don't; its newest newspaper is the last sleeper's); "why not become a doctor in a week?" (the surgeon: the town only knows what the sleepers brought in; the scan outside is eight hours newer); "why not stay in forever?" (the prisoner: the alarm's out here, so is his bladder); "why not just nap or plug in all day?" (Staff last: a twenty-minute nap is about two weeks, you wake up humming an opera, your boss bans naps); "why not just buy one?" (the kettle lead: a cable costs a street, you earn a desk). Left open for the comments: who gets the second plug.
 
-Changed in v3, from the G2 room's round 1 (review-g2-round1.md): "about real speed" (the claims check: c11's squats took longer); a warm shared beat at the piano (she taps the bowl in time and slides you the toast); the boss's sold-out coils turn into the city beat ("therefore", not "and then"); "For once, tomorrow gets nothing." replaces a line that said what the shot shows; the cosmonaut line is cut; "200 hours together"; "about a thousand years back".
+**#22, a laugh in every scene:** the skit (the mop drop; the boss recounting his coils); the rule ("you spent it learning to juggle"); night one ("Who's Haruko?"); seven years a week ("I hate eggs."; the stock market arguing about last Tuesday; "Is he real?"); the city ("Define sleeping."; "Newer than what?"; the bladder; the book about forgiving her; "Miss. We've done this."); Staff last ("Only four?"; "the guy who can juggle"; the opera nap; NO NAPS); night thirty (the grandparent's word; "It's a terrible story."); the kettle lead ("a lamp cord with opinions"; "He bought a kettle."; "Staff first."; "The ministers plugged in."); tomorrow ("Your boss will still want the rota."; "Tell me tomorrow."). The one tender beat: the three a.m. story at about 6:50 to 7:10, about 20 s, warm not sad, with its own laugh, not the peak, and more than two minutes before the end. No sad beat anywhere else; nobody is lost.
 
-Changed in v2, from the G1 room's round-2 notes (review-g1-round1.md #11-#15) and its claims blocker (#1): the stake moves up to just after the title question (about 0:20); the slow room's rule is planted in the first-year montage ("You pass one room where the wall clock moves at outside speed..."), so nothing new arrives after halfway; nights two to five each cost something outside (the breakfast she hates, the unread note, the missing word); "Past writing" is cut (writing is over 5,000 years old); the student and the bride get one year, not a decade; "about twelve minutes"; her offer now costs her outside life too, and the piano teacher asks you to stay. About 1,530 spoken words now: about 9:52 at 155 words a minute.
+**The running gag:** "So my brother, right..." (0:02), "So my brother..." (the piano morning), "Right. So my brother..." (the door), "So. My brother." (three a.m., finally heard), "Sir. So my brother, right..." (the stall that carries the peak), and her "Tell me tomorrow." to you (the close, your own line turned round). Six returns. **Plants and payoffs:** "Staff first." (0:01) breaks to "Staff last." (5:55) and back to your "Staff first." at the peak (check #10); "You've got all the time in the world." (2:20) breaks at "You're doing eight hours and the rota." (6:25); the taped-over spare socket (0:00 scene) and the teacher's back room (1:35) solve the showdown; "only what's in your head" (0:45) is the flagged limit that spreads the design (8:20, check #16); "Tell me tomorrow." (0:03) is hers at 9:40 (check #12). The peak at about 8:05 (about 80%) carries no spoken number; the catch bites at about 5:55 (about 59%); the train, the picture only this premise can show, is a `> SCENE:` at about 4:36, before the midpoint of about 5:02; the last new role is the teacher at about 5:20 (about 52%); the old sleeper is silent at the head of the queue and on the train. No new rule after halfway: the design spreading is the stated limit used. Open loops about a minute apart: 0:15, 1:15, 2:25, 3:50, 4:36, 5:35, 6:28, 7:20, 7:55, 8:50, 9:35. Stake jumps: 0:06, 0:30, 2:15, 3:50, 4:36, 5:55, 7:20, 7:55, 8:35, 9:40, 9:50. Claims spoken: c03 (twice), c07, c10, c11, c13, c14, c16, c26, c27, c28; every digit cites its row and each row's note is honoured ("one small, famous experiment"; "25 days behind the calendar"; "a working level"; "the longest verified human life"; "about a thousand years back"; a guess by a named economist; the 8,760-into-one-night as our arithmetic). Not used: c01, c02 (the hall shows Osaka), c04-c06, c08, c09, c12, c15, c17-c25, c29, c30. Past 8 minutes the viewer holds two clocked questions: what a city that lives a year a night does to itself, and what the dark hatch beside yours is for.
+
+## Changed from v5
+
+- **The key shot and skit (0:00-0:10):** you juggle three coils with heavy lids and a sly grin, her jaw drops, the mop slides out of her hand; was your flat stare at her. Owner 2026-11-13, K17: the power working and someone stunned, never a sad face.
+- **The five lines, `> UNDER:` and the darlings** rewritten for a ride: the desire is to make her jaw drop, the conflict is losing the edge and the boss turning on you, the result is a triumph and a twist. story.md #9, #20, #22; the protected spine loosened 2026-11-12.
+- **The rule's flagged limit:** "you bring back only what's in your head, no things, no news; once you're in, you stay till the alarm" replaces "nobody out here comes with you". #16: the limit now solves the showdown (a design is in your head) and closes two loopholes (news, staying in).
+- **Cut:** the cold apology, the missed birthday, her offer, the slow room, "Tell me now", and the stake line "every year pushes last night with her a year further away". #22 (one tender beat at most, never the peak or the ending), #9 (a person to lose is not the default), #18 (the peak is a triumph). This also removes the chronology slip the room flagged (year forty-one against night one hundred and twenty-three).
+- **Loopholes said and answered on screen:** the lottery and stock market (night three), the surgeon in a week (the city), staying in forever (the prisoner), naps and plugging in all day (Staff last), buying a cable (the kettle lead). #21.
+- **New set pieces:** the coach party checked in in four languages to applause; "Staff last" (the boss padlocks your cables); the kettle-lead cable built on the night shift as the boss comes down the stairs. #20, #9 (the catch is losing the edge and the world turning on you).
+- **The peak:** the homemade plug goes in, the counter flutters and clicks 365, your boss's face, your "Staff first." Eight to ten wordless seconds on a triumph, carried by her stalling with "So my brother, right...". #18. Was the slow-room queue (a loss).
+- **The world reacts widest after the peak:** the design in every sleeper's head by morning, kettle leads sold out, the price falls to a kettle, three governments ban and un-ban kettles. #20 (the news and governments).
+- **The one tender beat:** the three a.m. story at the desk, about 20 s, with a laugh in it. #22. Replaces the birthday and the apology.
+- **The ending:** a bigger consequence (a city that lives a year a night, the timeline, "You won't understand you.") and a twist (she plugged in; "Tell me tomorrow." is hers now), then the two-plug hook. style.md: a twist, a bigger consequence or a cliffhanger, never a goodbye.
+- **The closing question:** "So, who gets your second plug?" points at the open loop of the last shot and is easy to type and argue about; "would you plug in" was a choice the story had already made. taste.md 2026-11-13, #19's form kept.
+- **Calment** in one number-free line ("You've outlived the longest verified human life (c27)"), and the ten years as a projection ("Keep this up ten years and you'll have lived..."): the room's open notes 1 and 3.
+- **The piano teacher repairs radios and lamps** (planted at 1:35), and the spare socket is in the opening scene: the showdown's plants, #16.
+- **The old sleeper** stays, silent, at the head of the queue and on the train; "Tomorrow's too far." is cut with the slow room.
+- **c18 and c23 no longer spoken** (the net fall and the 200 hours served the apology and the slow room); c03 is spoken twice (the rule and night thirty).
+- **say.yaml** directions rewritten: thrilled, smug, gleeful, panicked, deadpan; only the three a.m. story is tender.
+- **Changed in v7, from the room's round 5:** the city ladder now climbs (one student, one hospital, every office, every school, every wedding, the courts, then the whole morning train), story #20; the train lands at about 5:10, just past the midpoint, which the G1 room's #8 note asked to be before it (the ladder wins; the owner's call); "Thirty years in there, one month out here." replaces a line the claims check refused on c03; Siffre "after about two months" (c16); the FSI hours "for native English speakers" (c26); the Old English line in c28's words; "She gets to the kettle. You look at its lead, and remember the back room." makes the turn causal; "Then you lose the hatch too" says the trap; "Tomorrow's a year away. For once, it isn't yours." no longer says what the shot shows (#11). Not taken: the story seat's blocker #2 asks for the G1 thumbnail frame (your flat stare); the owner's K17 (2026-11-13) refuses it, so the key shot and thumbnail change together and go to the owner as a new pair. Not taken: "Tell us below" without like and subscribe; #19 fixes the close.
 
 ## Chapters
 
 - 0:00 Tell Me Tomorrow
-- 0:10 The Rule
-- 1:09 The Piano
-- 2:24 Seven Years a Week
-- 3:25 The City Plugs In
-- 6:38 It Was Yesterday
-- 7:06 The Timeline
-- 8:36 The Slow Room
+- 0:11 The Rule
+- 1:19 Night One
+- 2:26 Seven Years a Week
+- 3:52 The City Plugs In
+- 5:40 Staff Last
+- 7:23 The Kettle Lead
+- 8:53 Tomorrow

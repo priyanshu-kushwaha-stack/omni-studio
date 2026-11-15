@@ -1,13 +1,13 @@
-# Sequel: What If You Took Someone With You?
+# Sequel: What If You Shared a Year Every Night?
 
-**The hook.** The last image of Part 1: your boss in the hall doorway, grinning, a new coil of teal cable in both hands, and on its end, two plugs. "Two plugs." Cut before your face. The film explains nothing.
+**The hook (the last image).** Your boss in the hall doorway, grinning, a new coil of cable in both hands. On its end, two plugs. Your flatmate, a year older, has just told you "Tell me tomorrow."
 
-**The new rule twist.** Two plugs share one pod and one year: two minds, side by side, at a thousand times, for one night. But a night's sleep files one head's worth of year. Every morning the two of you come back with one year split between you: whatever one of you remembers, the other has lost, and neither of you chooses which half. The day counter on the hatch now shows two numbers that never match.
+**The new rule twist.** Two plugs put two sleepers into the same year, the same town, the same house. You come out together. But a shared year shares heads: whatever is in one when the alarm goes is in both. Her brother's story. Your door code. The baker's name. Everything you have ever thought about each other. No things, no news, no privacy. Remember that.
 
 **Five beats.**
 
-1. **The first shared night.** You and your flatmate plug in together. The inside town at dawn, her beside you for the first time. A year of her brother's stories, every one to the end. The alarm. She remembers the spring; you remember the winter. You each have half a year of the other.
-2. **The ledger.** You try to fix it: notebooks, photographs, telling each other the half the other lost. The gap: a told year is a story, not a year, and "tell me tomorrow" comes back from the wrong mouth.
-3. **The town takes sides.** Inside, your forty years of friends know her now, and some of them remember things about her that she doesn't. The old sleeper, back on his bench, has a second line.
-4. **The theft.** Night thirty: she remembers a wedding you were at and you remember none of it. Whose year was it? The dilemma: one plug, and keep your own whole; or two, and keep half of someone who keeps half of you.
-5. **The slow room, for two.** You join the year-long queue together, and sit on the bench under the clock that runs at one speed, where a minute costs a minute and nobody loses a half. The last line turns the first film's: "Tell me now. All of it."
+1. **Night one, together.** You plug in side by side to win back the edge: two heads, two trades, one year. You come out knowing everything she knows, including what she really thinks of the cardboard piano. She knows the same about you. Laugh: you both say "Since when?" at once.
+2. **Stacking.** Couples, bands, rival firms share years. A city of paired minds. The loophole said and closed: "why not share with a genius?" You get their head. They get yours. Nobody famous will plug in with anyone.
+3. **The catch.** Your boss sells a plug to the police. One shared night with a suspect, and the confession is in both heads. He wants you and her to test it.
+4. **The showdown.** You can't keep a secret from a shared head. But you can fill it. Inside, you spend the year learning something so big there's no room left for the thing you're hiding.
+5. **The twist.** The old sleeper from the queue plugs in with a hundred people at once. A hundred heads in one. He climbs out and he is nobody, and everybody, and he knows who gets your second plug.

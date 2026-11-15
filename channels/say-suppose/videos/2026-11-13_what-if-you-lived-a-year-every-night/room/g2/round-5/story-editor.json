@@ -1,0 +1,69 @@
+{
+  "call_id": "42692d19e57f4d04bedf60eedb23e09c",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "The thumbnail's frame, exactly, locked at 0:06.",
+      "why": "Check #2 Confirm the click fails. Packaging shows you gripping the hatch, staring flatly at your flatmate beside the 365 counter; this frame instead gives you a sly grin and three juggling coils.",
+      "fix": "At 0:06, stage the packaging frame exactly: one hand gripping the hatch, heavy lids, flat mouth, eyes fixed on her, and 365 beside your hand. Move the juggling reveal after that hold.",
+      "domain": "story",
+      "line": 30
+    },
+    {
+      "quote": "A bride plugs in the night before and thinks it over for a year.",
+      "why": "Check #20 Escalating set pieces fails. After courts and the citywide train, the montage shrinks back to one bride; several city uses are lateral rather than successively larger.",
+      "fix": "Reorder the ladder as one student, one hospital, every office, every school, the courts, then the full morning train. Cut the bride or turn it into every wedding in the city and place it before the courts.",
+      "domain": "story",
+      "line": 193
+    },
+    {
+      "quote": "She plugged in. Tomorrow's a year away, and for once it isn't yours.",
+      "why": "Check #11 Never say the feeling fails because \u201cShe plugged in\u201d narrates the hatch opening and her altered face, which the shot already shows.",
+      "fix": "Tomorrow's a year away. For once, it isn't yours.",
+      "domain": "story",
+      "line": 351
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 270,
+      "quote": "And somewhere in minute three, you remember the back room.",
+      "fix": "Make the connector causal: \u201cShe gets to the kettle. You see its lead\u2014and remember the back room.\u201d"
+    },
+    {
+      "line": 229,
+      "quote": "You could quit. You could not. He has the only cables in the city, and he's padlocked them to a hook you can see from your chair.",
+      "fix": "Clarify the trap: \u201cYou could quit. Then you lose the staff hatch too. He has the only cables in the city.\u201d"
+    },
+    {
+      "line": 357,
+      "quote": "So, who gets your second plug? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Keep one clean choice: \u201cWho gets your second plug? Tell us below.\u201d Leave like and subscribe to the end-card tags."
+    }
+  ],
+  "keep": [
+    {
+      "line": 43,
+      "quote": "One night for her. One year for you. And you spent it learning to juggle."
+    },
+    {
+      "line": 227,
+      "quote": "He's not wrong. Out here, you're the guy who can juggle."
+    },
+    {
+      "line": 316,
+      "quote": "By the weekend, three governments ban kettles. By Monday, they un-ban them. The ministers plugged in."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "ec492fa254c8bb25b632257c0e7525354f095b15a0cdc0def64a13e10f16ceaa",
+  "draft_sha256": "99eb02637f283191640a74cb22a81ad9c50125b2f2b8988e83bd8c206d71860a"
+}

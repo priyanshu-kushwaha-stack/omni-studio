@@ -1,6 +1,6 @@
-// The City Plugs In, in the hotel: your boss sells every coil off the crate before dawn to a queue; the hall's hatches
-// all flutter at once as the camera pulls back; then the hotel's tiers, a thousand hatches, their strips blurring
-// until one last click, and the prisoner climbing out of a hatch grey-eyed.
+// The City Plugs In, in the hotel: your boss sells every coil off the crate before dawn to a queue (a showman's grin
+// on every sale); then the hotel's tiers, a thousand hatches, their strips blurring in a storm of crimson cards until
+// one last click on 365.
 import { LookContext } from "@whatif/kit/stage/Look";
 import { drift } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
@@ -8,8 +8,8 @@ import { setLook } from "@whatif/kit/sets/common";
 import { STAND, walkPose } from "@whatif/kit/rig/pose";
 import { CRIMSON, INK } from "@whatif/kit/theme";
 import { Counter } from "../parts";
-import { PodHallBack, podHallLights, PODHALL, POD_ONE } from "../sets/PodHall";
-import { BOSS, camAt, linear, mix, noise, PASTELS, ramp } from "../shared";
+import { PodHallBack, podHallLights } from "../sets/PodHall";
+import { BOSS, camAt, linear, mix, noise, PASTELS } from "../shared";
 import { aim, OwnSet, Person, type Body } from "./CityPlugsIn.Kit";
 
 const FLOOR = 960;
@@ -60,16 +60,6 @@ export const SellShot: React.FC<{ frame: number; start: number; end: number }> =
   );
 };
 
-/** Every hatch in the hall flutters at once while the camera pulls back from pod one to the whole hall. */
-export const FlutterShot: React.FC<{ frame: number; start: number; end: number }> = ({ frame, start, end }) => {
-  const cam: Camera = drift(camAt(frame, [[start, PODHALL.cameras.podOne], [end, { x: 960, y: 520, zoom: 0.96 }]]), frame, "cp-fl", 3);
-  return (
-    <LookContext.Provider value={setLook(podHallLights(), "night", cam)}>
-      <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={<PodHallBack cam={cam} frame={frame} flutterAll counter={{ at: start }} />} actors={<></>} />
-    </LookContext.Provider>
-  );
-};
-
 const COLS = 34;
 const ROWS = 15;
 const PW = 110;
@@ -101,6 +91,14 @@ export const ThousandShot: React.FC<{ frame: number; start: number; stop: number
     }
   }
   const cx = x0 + 17 * PW + PW / 2, cy = y0 + 7 * PH + PH / 2;
+  // the card storm: loose crimson flaps blown off the wall while the strips run, none after the click
+  const cards = still ? [] : Array.from({ length: 70 }, (_, i) => {
+    const life = 40;
+    const born = Math.floor(noise(i) * life);
+    const age = ((frame - start + born) % life) / life;
+    const ox = x0 + noise(i + 1) * COLS * PW, oy = y0 + noise(i + 2) * ROWS * PH;
+    return { x: ox + (noise(i + 3) - 0.5) * 900 * age, y: oy - 300 * age + 700 * age * age, r: frame * (6 + noise(i + 4) * 14) + i * 40, s: 1 + noise(i + 5) * 1.5, o: 1 - age };
+  });
   return (
     <OwnSet mood="night" cam={cam} back={<rect x={-3000} y={-2000} width={8000} height={5000} fill="#151a2a" />}>
       <path d={frames.join("")} fill="#262d45" stroke={INK} strokeWidth={4} />
@@ -109,20 +107,11 @@ export const ThousandShot: React.FC<{ frame: number; start: number; stop: number
       <path d={marks.join("")} fill="#f3e9d7" />
       <rect x={cx - PW / 2 + 8} y={cy - PH / 2 + 22} width={PW - 16} height={PH - 26} fill="#262d45" stroke={INK} strokeWidth={4} />
       <Counter frame={frame} x={cx} y={cy - 4} tile={22} at={stop - 36} />
+      {cards.map((c, i) => (
+        <g key={i} transform={`translate(${c.x} ${c.y}) rotate(${c.r}) scale(${c.s})`} opacity={c.o}>
+          <rect x={-9} y={-12} width={18} height={24} rx={3} fill={CRIMSON} stroke="#f3e9d7" strokeWidth={2} />
+        </g>
+      ))}
     </OwnSet>
-  );
-};
-
-/** Three nights served: he climbs out of a hatch, grey-eyed, and bows to the court. */
-export const ReleaseShot: React.FC<{ frame: number; start: number; bow: number; end: number }> = ({ frame, start, bow, end }) => {
-  const cam: Camera = drift(camAt(frame, [[start, { x: 640, y: 700, zoom: 1.7 }], [end, { x: 660, y: 700, zoom: 1.9 }]]), frame, "cp-rel", 3);
-  const out = ramp(frame, start + 4, start + 26);
-  const b = ramp(frame, bow, bow + 12);
-  const body: Body = { x: mix(POD_ONE.x + 140, 760, out), y: FLOOR, scale: 1.1, facing: 1, pose: out < 1 ? walkPose(frame * 0.25) : { ...STAND, lean: 34 * b, armF: [10, 20], armB: [-10, 20] } };
-  return (
-    <LookContext.Provider value={setLook(podHallLights(), "night", cam)}>
-      <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={<PodHallBack cam={cam} frame={frame} door={1} counter={{ value: "365" }} />}
-        actors={<Person body={body} frame={frame} seed={9} temples who={{ head: PASTELS[1], coat: "#8a8a8a", lids: 0.62, brows: "flat", mouth: b > 0 ? "smile" : "flat", look: { x: 1, y: 0.3 } }} />} />
-    </LookContext.Provider>
   );
 };

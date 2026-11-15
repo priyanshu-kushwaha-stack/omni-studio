@@ -10,7 +10,7 @@ import { Stage, type Camera } from "@whatif/kit/stage/Stage";
 import { INK, PAPER } from "@whatif/kit/theme";
 import { TownBack, townLights, TOWN, TOWN_FLOOR } from "../sets/InsideTown";
 import { mix, noise, PASTELS } from "../shared";
-import { aimArm, Person, type Body, type Face } from "./TellMeTomorrow.Kit";
+import { aimArm, headOf, Person, type Body, type Face } from "./TellMeTomorrow.Kit";
 import { BENCH, PIANO_AT, PianoRoom, ROOM_FLOOR } from "./Piano.Parts";
 
 /** A camera target for a point on a set layer at `depth`: the camera centred there sees it centred. */
@@ -53,22 +53,47 @@ export const Walkers: React.FC<{ frame: number; n?: number; y?: number }> = ({ f
   </>
 );
 
-/** The bakery: a counter of loaves on the street, you behind it in a cream apron, kneading; flour puffs. */
-export const Bakery: React.FC<{ frame: number }> = ({ frame }) => {
+/** Haruko's colours: a warm pink head under a teal headscarf, a cream baker's apron. */
+export const HARUKO = { head: "#e6a0a0", scarf: "#1D9A8F", coat: "#efe2c4" } as const;
+
+/** Haruko, the baker inside: a Figure with a teal headscarf tied over her head (knot at the back). */
+export const Haruko: React.FC<{ b: Body; face: Face; frame: number }> = ({ b, face, frame }) => {
+  const h = headOf(b);
+  const s = b.scale;
+  return (
+    <>
+      <Person who={{ head: HARUKO.head, coat: HARUKO.coat }} b={b} face={face} frame={frame} seed={11} />
+      <g transform={`translate(${h.x} ${h.y}) scale(${s * b.facing} ${s}) rotate(${b.pose.tilt})`}>
+        <path d="M-48 -4 A48 48 0 0 1 48 -4 Q46 -22 30 -30 Q0 -44 -30 -30 Q-46 -22 -48 -4Z" fill={HARUKO.scarf} stroke={INK} strokeWidth={4} />
+        <path d="M-46 -6 Q0 -18 46 -6" fill="none" stroke={INK} strokeWidth={3} opacity={0.5} />
+        <path d="M-44 -14 l-24 -6 l6 18 Z M-44 -12 l-20 14 l18 4 Z" fill={HARUKO.scarf} stroke={INK} strokeWidth={3} />
+      </g>
+    </>
+  );
+};
+
+/** The bakery: a counter of loaves on the street, you behind it in a cream apron, kneading, and Haruko beside you;
+ *  flour puffs. `wave`: Haruko alone at the front, waving at the camera (the insert after "Who's Haruko?"). */
+export const Bakery: React.FC<{ frame: number; wave?: boolean }> = ({ frame, wave }) => {
   const knead = Math.sin(frame / 4);
   const you: Body = { x: 920, y: STREET, scale: 1.15, facing: 1, pose: { ...STAND, lean: 14, armF: [70 + knead * 12, 50], armB: [55 - knead * 12, 60] } };
+  const hk: Body = wave
+    ? { x: 960, y: STREET, scale: 1.25, facing: -1, pose: { ...STAND, tilt: Math.sin(frame / 5) * 6, armF: [160 + Math.sin(frame / 3) * 18, 30], armB: [20, 40] } }
+    : { x: 1330, y: STREET, scale: 1.15, facing: -1, pose: { ...STAND, lean: 6, tilt: -6, armF: [80, 60], armB: [30, 60] } };
   return (
     <>
       <rect x={640} y={430} width={600} height={60} fill="#d8344f" stroke={INK} strokeWidth={6} />
       {[0, 1, 2, 3, 4, 5].map((k) => <rect key={k} x={640 + k * 100} y={430} width={50} height={60} fill={PAPER} opacity={0.9} />)}
-      <Person who="you" b={you} face={{ brows: "raised", lids: 0, mouth: "smile", look: { x: 0.6, y: 0.8 } }} frame={frame} coat={PAPER} />
+      {!wave && <Person who="you" b={you} face={{ brows: "raised", lids: 0, mouth: "smile", look: { x: 0.6, y: 0.8 } }} frame={frame} coat={PAPER} />}
+      {!wave && <Haruko b={hk} face={{ brows: "raised", lids: 0.1, mouth: "smile", look: { x: 0.9, y: 0.4 } }} frame={frame} />}
       <rect x={680} y={760} width={520} height={STREET - 760} fill="#a8774f" stroke={INK} strokeWidth={6} />
       <rect x={664} y={744} width={552} height={26} rx={6} fill="#c9935f" stroke={INK} strokeWidth={6} />
       {[0, 1, 2, 3].map((k) => <ellipse key={k} cx={740 + k * 60} cy={726} rx={34} ry={20} fill="#d9a35a" stroke={INK} strokeWidth={4} />)}
-      <ellipse cx={1010 + knead * 6} cy={730} rx={60} ry={22} fill="#efe2c4" stroke={INK} strokeWidth={4} />
-      {[0, 1, 2].map((k) => (
+      {!wave && <ellipse cx={1010 + knead * 6} cy={730} rx={60} ry={22} fill="#efe2c4" stroke={INK} strokeWidth={4} />}
+      {!wave && [0, 1, 2].map((k) => (
         <circle key={k} cx={1010 + noise(Math.floor(frame / 6) + k) * 80 - 40} cy={690 - ((frame + k * 7) % 20) * 3} r={10} fill="#fff" opacity={0.6} />
       ))}
+      {wave && <Haruko b={hk} face={{ brows: "raised", lids: 0, mouth: "open", eyes: 1.1, look: { x: -0.3, y: 0 } }} frame={frame} />}
     </>
   );
 };

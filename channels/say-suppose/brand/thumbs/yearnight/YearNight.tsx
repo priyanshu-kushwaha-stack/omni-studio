@@ -1,8 +1,8 @@
-// "What If You Lived a Year Every Night?" G1 thumbnails (2026-11-13), drawn with the what-if engine's kit: seven in the
-// morning in a hall of sleep pods (a new set, drawn here: two tiers of pod hatches, each with a warm porthole lamp,
-// no lettering anywhere). You sit half out of the open pod at the left, lids heavy, a long stare at your flatmate; the
-// split-flap day counter on the pod frame has stopped on 365 in crimson; your flatmate, mop in hand, is still
-// mid-sentence. A high window lets one wedge of morning onto the far wall. Frame i is candidate i. No AI images.
+// "What If You Lived a Year Every Night?" thumbnails, v2 (2026-11-14, K17), drawn with the what-if engine's kit: a hall
+// of sleep pods (two tiers of pod hatches, each with a warm porthole lamp, no lettering anywhere). You sit half out of
+// the open pod at the left, lids heavy and a sly grin, juggling three coils of teal cable in a perfect cascade; the
+// split-flap day counter on the pod frame has stopped on 365 in crimson; your flatmate, jaw dropped, lets her mop slide
+// out of her hand. A high window lets one wedge of morning onto the far wall. Frame i is candidate i. No AI images.
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { dir, joints, LIMB, STAND, type Pose } from "@whatif/kit/rig/pose";
@@ -120,9 +120,9 @@ const YourPod: React.FC = () => (
   </g>
 );
 
-/** A mop, held upright in the flatmate's back hand. */
-const Mop: React.FC<{ x: number; y: number }> = ({ x, y }) => (
-  <g>
+/** A mop, held in the flatmate's back hand; `tip` degrees as it slides out of her grip. */
+const Mop: React.FC<{ x: number; y: number; tip?: number }> = ({ x, y, tip = 0 }) => (
+  <g transform={`rotate(${tip} ${x} ${y})`}>
     <line x1={x} y1={y - 420} x2={x} y2={y + 420} stroke="#c9915a" strokeWidth={22} strokeLinecap="round" />
     <line x1={x} y1={y - 420} x2={x} y2={y + 420} stroke={INK} strokeWidth={4} opacity={0.5} />
     <path d={`M${x - 90} ${y + 420} Q${x} ${y + 360} ${x + 90} ${y + 420} L${x + 70} ${y + 520} L${x - 70} ${y + 520} Z`} fill="#dcd6c6" stroke={INK} strokeWidth={6} />
@@ -136,8 +136,36 @@ function handAt(x: number, y: number, scale: number, facing: 1 | -1, pose: Pose,
   return { x: x + facing * (sh.x + (a.x + b.x) * LIMB) * scale, y: y + (sh.y + (a.y + b.y) * LIMB) * scale };
 }
 
-/** Mid-sentence: the front hand up and open, the back hand down on the mop. */
-const TALK: Pose = { ...STAND, lean: -3, tilt: -4, armF: [70, 60], armB: [25, 95] };
+/** Stunned: leaning back, the front hand up and open, the back hand letting go of the mop. */
+const TALK: Pose = { ...STAND, lean: 5, tilt: 6, armF: [80, 50], armB: [30, 40] };
+
+/** One coil of the boss's teal cable, a loop with its plug tail. */
+const Coil: React.FC<{ x: number; y: number; r: number; turn: number }> = ({ x, y, r, turn }) => (
+  <g transform={`translate(${x} ${y}) rotate(${turn})`}>
+    {[0, 0.16, 0.32].map((k) => (
+      <ellipse key={k} cx={k * r * 0.3} cy={k * r * 0.2} rx={r} ry={r * 0.82} fill="none" stroke={INK} strokeWidth={r * 0.3} />
+    ))}
+    {[0, 0.16, 0.32].map((k) => (
+      <ellipse key={k} cx={k * r * 0.3} cy={k * r * 0.2} rx={r} ry={r * 0.82} fill="none" stroke={TEAL} strokeWidth={r * 0.16} />
+    ))}
+    <rect x={r * 0.9} y={-r * 0.2} width={r * 0.5} height={r * 0.36} rx={r * 0.08} fill="#d9dde8" stroke={INK} strokeWidth={r * 0.08} />
+  </g>
+);
+
+/** The cascade: three coils in an arc between your hands and the counter, a dotted path over the top. */
+const Cascade: React.FC = () => {
+  const coils = [
+    { x: 770, y: 640, r: 88, turn: -20 },
+    { x: 880, y: 445, r: 92, turn: 15 },
+    { x: 1045, y: 610, r: 88, turn: 40 },
+  ];
+  return (
+    <g>
+      <path d="M1040 520 Q 890 250 770 540" fill="none" stroke={PAPER} strokeWidth={8} strokeDasharray="6 30" strokeLinecap="round" opacity={0.7} />
+      {coils.map((c, i) => <Coil key={i} {...c} />)}
+    </g>
+  );
+};
 
 /** A pool of shadow behind your head inside the pod, so the mustard head stands at 3:1 in greyscale (K4). */
 const Shade: React.FC = () => {
@@ -151,13 +179,14 @@ const Scene: React.FC = () => {
     <g>
       <Hall />
       <Figure x={MATE.x} y={MATE.y} scale={MATE.scale} facing={-1} pose={TALK} head="#c9b4ec" coat="#e9e1cf"
-        brows="raised" lids={0} mouth="open" eyes={1.05} look={{ x: 0.9, y: 0.1 }} />
-      <Mop x={mopHand.x} y={mopHand.y} />
+        brows="raised" lids={0} mouth="o" eyes={1.3} look={{ x: 0.9, y: -0.25 }} />
+      <Mop x={mopHand.x + 40} y={mopHand.y + 60} tip={-24} />
       <YourPod />
       <Shade />
       <Counter />
       <Figure x={HERO.x} y={HERO.y} scale={HERO.scale} pose={HERO.pose} head={MUSTARD} scarf={TEAL} tuft flow={0.05}
-        time={3} brows="flat" lids={0.62} mouth="flat" eyes={0.9} look={HERO.look} />
+        time={3} brows="flat" lids={0.5} mouth="smirk" eyes={0.9} look={HERO.look} />
+      <Cascade />
     </g>
   );
   return (

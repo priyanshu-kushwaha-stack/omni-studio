@@ -1,12 +1,13 @@
 // The film's key shot, staged exactly as the thumbnail frames it (brand/thumbs/yearnight; owner, 2026-11-12: "the
 // thumbnail is the film's strongest picture, and the film stages its key shot exactly as the thumbnail frames it").
-// Seven in the morning in the hall of sleep pods: you, large at the left, sitting half out of your open pod, door
-// swung up, the reading lamp and pillow inside; the crimson day counter on the pod frame; your flatmate right of
-// centre, apron and mop, mid-sentence. Drawn in REF screen coordinates (camera REF: x 960, y 540, zoom 1); push in
+// v2 (2026-11-14, K17: the power in use and someone stunned): the hall of sleep pods; you, large at the left, sitting
+// half out of your open pod, door swung up, the reading lamp and pillow inside, lids heavy and a sly grin, juggling
+// three coils of teal cable in a cascade (`juggle`); the crimson day counter on the pod frame; your flatmate right of
+// centre, apron and mop, her jaw dropping and the mop sliding out of her hand (`stun`, `mopDrop`). Drawn in REF screen coordinates (camera REF: x 960, y 540, zoom 1); push in
 // with a camera of your own. Every switch is a prop, so the skit can play it: the door shut (you inside), the counter
 // fluttering, the stare, her mouth.
 import { Figure } from "@whatif/kit/rig/Figure";
-import { dir, joints, LIMB, SEATED, STAND, type Pose } from "@whatif/kit/rig/pose";
+import { dir, joints, lerpPose, LIMB, SEATED, STAND, type Pose } from "@whatif/kit/rig/pose";
 import type { Brows, Mouth } from "@whatif/kit/rig/Figure";
 import { INK, MUSTARD, TEAL } from "@whatif/kit/theme";
 import { Counter } from "../parts";
@@ -15,13 +16,50 @@ import { FLATMATE, HERO as YOU } from "../shared";
 const LAMP = "#ffc46b";
 const WALL = "#151a2a";
 
-/** You on the lip of your pod, shoulders sunk, the front hand gripping the rim (the thumbnail's HERO). */
+/** You on the lip of your pod, shoulders sunk, the front hand gripping the rim (before the juggling). */
 export const KEY_POSE: Pose = { ...SEATED, lean: 4, tilt: 6, armF: [28, 40], armB: [-6, 30] };
+/** Juggling: both forearms up and out at chest height (the thumbnail's HERO, v2). */
+export const JUGGLE_POSE: Pose = { ...SEATED, lean: 2, tilt: 4, armF: [72, 62], armB: [40, 100] };
 export const KEY_HERO = { x: 470, y: 1694, scale: 4.3 };
 export const KEY_MATE = { x: 1500, y: 1500, scale: 3.1 };
-export const KEY_COUNTER = { x: 975, y: 470, tile: 150 };
+export const KEY_COUNTER = { x: 1210, y: 425, tile: 140 };
 /** Mid-sentence: the front hand up and open, the back hand on the mop. */
 export const TALK: Pose = { ...STAND, lean: -3, tilt: -4, armF: [70, 60], armB: [25, 95] };
+/** Stunned: leaning back, the front hand up and open, the back hand letting go of the mop (the thumbnail, v2). */
+export const STUN: Pose = { ...STAND, lean: 5, tilt: 6, armF: [80, 50], armB: [30, 40] };
+
+/** One coil of the boss's teal cable, a loop with its plug tail. */
+export const Coil: React.FC<{ x: number; y: number; r: number; turn: number }> = ({ x, y, r, turn }) => (
+  <g transform={`translate(${x} ${y}) rotate(${turn})`}>
+    {[0, 0.16, 0.32].map((k) => (
+      <ellipse key={k} cx={k * r * 0.3} cy={k * r * 0.2} rx={r} ry={r * 0.82} fill="none" stroke={INK} strokeWidth={r * 0.3} />
+    ))}
+    {[0, 0.16, 0.32].map((k) => (
+      <ellipse key={k} cx={k * r * 0.3} cy={k * r * 0.2} rx={r} ry={r * 0.82} fill="none" stroke={TEAL} strokeWidth={r * 0.16} />
+    ))}
+    <rect x={r * 0.9} y={-r * 0.2} width={r * 0.5} height={r * 0.36} rx={r * 0.08} fill="#d9dde8" stroke={INK} strokeWidth={r * 0.08} />
+  </g>
+);
+
+/** Three coils in a cascade between your hands (REF coordinates). Each coil runs the arc in 1.2 s, a third apart; at
+ *  `frozen` the coils hold the thumbnail's exact positions. */
+export const Cascade: React.FC<{ frame: number; frozen?: boolean }> = ({ frame, frozen }) => {
+  const still = [
+    { x: 770, y: 640, turn: -20 }, { x: 880, y: 445, turn: 15 }, { x: 1045, y: 610, turn: 40 },
+  ];
+  const at = (p: number) => {
+    // an arc from the left hand (770,660) up to (905,400) and down to the right hand (1045,630), then back low
+    if (p < 0.7) { const t = p / 0.7; return { x: 770 + 275 * t, y: 660 - 520 * t * (1 - t) - 30 * t, turn: -20 + 60 * t }; }
+    const t = (p - 0.7) / 0.3; return { x: 1045 - 275 * t, y: 630 + 30 * t - 40 * Math.sin(Math.PI * t), turn: 40 - 60 * t };
+  };
+  const coils = frozen ? still : [0, 1, 2].map((k) => at(((frame / 36) + k / 3) % 1));
+  return (
+    <g>
+      <path d="M1040 520 Q 890 250 770 540" fill="none" stroke="#efe6d2" strokeWidth={8} strokeDasharray="6 30" strokeLinecap="round" opacity={0.6} />
+      {coils.map((c, i) => <Coil key={i} x={c.x} y={c.y} r={i === 1 ? 92 : 88} turn={c.turn} />)}
+    </g>
+  );
+};
 
 /** A pod hatch in the wall: a rounded frame, a closed door, a warm porthole lamp. */
 const Pod: React.FC<{ x: number; y: number; w: number; h: number; lit: boolean; dim: number }> = ({ x, y, w, h, lit, dim }) => (
@@ -101,9 +139,9 @@ const YourPod: React.FC<{ door: number }> = ({ door }) => (
   </g>
 );
 
-/** A mop, held upright in the flatmate's back hand. */
-const Mop: React.FC<{ x: number; y: number }> = ({ x, y }) => (
-  <g>
+/** A mop, held in the flatmate's back hand; `tip` degrees as it slides out of her grip. */
+const Mop: React.FC<{ x: number; y: number; tip?: number }> = ({ x, y, tip = 0 }) => (
+  <g transform={`rotate(${tip} ${x} ${y})`}>
     <line x1={x} y1={y - 420} x2={x} y2={y + 420} stroke="#c9915a" strokeWidth={22} strokeLinecap="round" />
     <line x1={x} y1={y - 420} x2={x} y2={y + 420} stroke={INK} strokeWidth={4} opacity={0.5} />
     <path d={`M${x - 90} ${y + 420} Q${x} ${y + 360} ${x + 90} ${y + 420} L${x + 70} ${y + 520} L${x - 70} ${y + 520} Z`} fill="#dcd6c6" stroke={INK} strokeWidth={6} />
@@ -135,6 +173,13 @@ export interface KeyShotProps {
   mateMouth?: Mouth;
   mateBrows?: Brows;
   mateLook?: { x: number; y: number };
+  /** You juggle the three coils (v2 key shot); `frozenCoils` holds the thumbnail's exact coil positions. */
+  juggle?: boolean;
+  frozenCoils?: boolean;
+  /** Your flatmate stunned: 0 talking (TALK pose) to 1 stunned (STUN pose, jaw dropped). */
+  stun?: number;
+  /** The mop sliding out of her hand: 0 held, 1 fallen (about 80 degrees). */
+  mopDrop?: number;
   /** The morning wedge from the high window (the thumbnail has it). */
   wedge?: boolean;
   blink?: boolean;
@@ -144,22 +189,27 @@ export interface KeyShotProps {
 export const KeyShot: React.FC<KeyShotProps> = ({
   frame, door = 1, you = true, counter, lids = 0.62, brows = "flat", mouth = "flat", look = { x: 0.95, y: 0.05 },
   mateMouth = "open", mateBrows = "raised", mateLook = { x: 0.9, y: 0.1 }, wedge = true, blink,
+  juggle = false, frozenCoils = false, stun = 0, mopDrop = 0,
 }) => {
-  const mopHand = handAt(KEY_MATE.x, KEY_MATE.y, KEY_MATE.scale, -1, TALK, "armB");
+  const matePose = lerpPose(TALK, STUN, Math.max(0, Math.min(1, stun)));
+  const mopHand = handAt(KEY_MATE.x, KEY_MATE.y, KEY_MATE.scale, -1, matePose, "armB");
+  const tip = -24 * Math.min(1, stun) - 56 * Math.max(0, Math.min(1, mopDrop));
   return (
     <g>
       <Hall wedge={wedge} />
-      <Figure x={KEY_MATE.x} y={KEY_MATE.y} scale={KEY_MATE.scale} facing={-1} pose={TALK} head={FLATMATE.head} coat={FLATMATE.coat}
-        brows={mateBrows} lids={0} mouth={mateMouth} eyes={1.05} look={mateLook} blink={blink} />
-      <Mop x={mopHand.x} y={mopHand.y} />
+      <Figure x={KEY_MATE.x} y={KEY_MATE.y} scale={KEY_MATE.scale} facing={-1} pose={matePose} head={FLATMATE.head} coat={FLATMATE.coat}
+        brows={mateBrows} lids={0} mouth={stun > 0.5 ? "o" : mateMouth} eyes={1.05 + 0.25 * Math.min(1, stun)}
+        look={stun > 0.5 ? { x: 0.9, y: -0.25 } : mateLook} blink={stun > 0.5 ? false : blink} />
+      <Mop x={mopHand.x + 40 * Math.min(1, stun)} y={mopHand.y + 60 * Math.min(1, stun) + 200 * Math.max(0, Math.min(1, mopDrop))} tip={tip} />
       <YourPod door={door} />
       {you && <circle cx={KEY_HERO.x + 46} cy={560} r={198 * 1.6} fill="#000" opacity={0.35} />}
       <Counter frame={frame} x={KEY_COUNTER.x} y={KEY_COUNTER.y} tile={KEY_COUNTER.tile} at={counter?.at}
         value={counter?.value ?? "365"} dark={counter?.dark} />
       {you && (
-        <Figure x={KEY_HERO.x} y={KEY_HERO.y} scale={KEY_HERO.scale} pose={KEY_POSE} head={YOU.head} scarf={YOU.scarf} tuft
+        <Figure x={KEY_HERO.x} y={KEY_HERO.y} scale={KEY_HERO.scale} pose={juggle ? JUGGLE_POSE : KEY_POSE} head={YOU.head} scarf={YOU.scarf} tuft
           flow={0.05} time={frame / 30} brows={brows} lids={lids} mouth={mouth} eyes={0.9} look={look} blink={blink} />
       )}
+      {you && juggle && <Cascade frame={frame} frozen={frozenCoils} />}
     </g>
   );
 };
