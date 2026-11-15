@@ -1,0 +1,69 @@
+{
+  "call_id": "70746381e5034e55a81ec8da59f9dd33",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "overall story": 6,
+    "click confirmation": 2,
+    "escalation": 8,
+    "turn and payoff": 6,
+    "ending": 9,
+    "length: viewers stay past 8:00 for the one-cent countdown and the final Counted payoff": 9
+  },
+  "blockers": [
+    {
+      "quote": "> SCENE: Midnight. Your flat above the bakery, the city lights through the big window, wide. Jonas asleep on the sofa under his coat. Your phone face up on the table: 0,01. Name tags as each first appears: YOU \u00b7 JONAS, your flatmate, pays for your roll every morning.",
+      "why": "Check #2 Confirm the click fails. The first seven seconds show neither Lotte nor the thumbnail\u2019s counter-and-spilling-digits situation; that frame arrives around 3:05.",
+      "fix": "Replace the opening with: \"> SCENE: Day thirty-one, Lotte's counter, the thumbnail's exact frame: you large at left, phone up; its balance peels off as a split-flap ribbon over the counter while Lotte's chalk stops and Jonas stares.\" Make this the story\u2019s present rather than a teaser, folding the earlier doublings into the explanation before proceeding beyond day thirty-one.",
+      "domain": "story",
+      "line": 20
+    },
+    {
+      "quote": "Every night. Whatever's there at midnight, twice by morning. From one cent. And it will not stop.",
+      "why": "Check #10 The turn breaks a line already said fails. The reversal at line 185 claims the money was supposedly taken from nobody, but that claim was never spoken earlier.",
+      "fix": "Replace with: \"Every night. Whatever's there at midnight, twice by morning. From one cent. New money. Taken from no one. And it will not stop.\"",
+      "domain": "story",
+      "line": 35
+    },
+    {
+      "quote": "This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06).",
+      "why": "Check #7 Misconception first fails across lines 212\u2013214: three historical facts and several numbers arrive consecutively, while none lands on you or your person within two lines.",
+      "fix": "Keep only the directly relevant proof here: \"In 1324, Mansa Musa gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06). Before you close the article, Lotte's next flour invoice triples.\" Move the Berlin fact to the chalkboard-price beat and cut the wallpaper fact.",
+      "domain": "story",
+      "line": 212
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 91,
+      "quote": "The sticky note gets a new number.",
+      "fix": "Make the connector causal: \"The trams run free, so the sticky note gets a new number.\""
+    },
+    {
+      "line": 239,
+      "quote": "The sticky note gets its last number.",
+      "fix": "Tie the scale directly to the decision: \"You look from the galaxies to Lotte's dark bakery. The sticky note gets its last number.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 32,
+      "quote": "You always know the number."
+    },
+    {
+      "line": 185,
+      "quote": "It isn't taken from anyone. Except it is. From everyone. A little. Every night."
+    },
+    {
+      "line": 284,
+      "quote": "Zero, doubled, is zero."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "37563910c971e4418b4bfe5211b575ed0e23ea1392e85e074c8186ab5d111f53",
+  "draft_sha256": "445baab9ab0584e61e70642418d4722787ff07defc8ca1bd8d8ee3eea62bf7c8"
+}

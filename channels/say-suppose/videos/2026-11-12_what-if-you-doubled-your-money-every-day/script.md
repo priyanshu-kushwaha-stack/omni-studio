@@ -32,7 +32,7 @@ Two cents. Last night, one. You know that.
 You always know the number.
 
 What if your money doubled every day?
-Every night. Whatever's there at midnight, twice by morning. From one cent. And it will not stop.
+Every night. Whatever's there at midnight, twice by morning. From one cent. New money. Taken from no one. And it will not stop.
 
 Sounds like the best thing that could ever happen to you. Let's see what it costs.
 
@@ -207,13 +207,12 @@ Jonas: Not me.
 
 > CARD: PROBLEM 3 · Whoever holds it makes the bread cost more
 
-> SCENE: Three pictures, one after another: a king on a camel throwing gold in Cairo; a Berlin baker's window in 1923 with a price tag of 200.000.000.000 marks; a wall papered with banknotes.
+> SCENE: Two pictures, one after the other: a king on a camel throwing gold in Cairo; a Berlin baker's window in 1923 with a price tag of 200.000.000.000 marks; then Anna's board.
 
 This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06).
-Right here in Berlin, in 1923, a loaf of bread cost about two hundred billion marks (c01).
-People papered their walls with banknotes (c03).
+Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks (c01). Anna's board is heading the same way.
 
-> CARD: IT'S TRUE · Berlin, 1923: a loaf of bread, about 200 billion marks
+> CARD: IT'S TRUE · Berlin, late 1923: a loaf of bread, about 200 billion marks
 
 > SCENE: Day fifty-two. A TV studio, the anchor at her desk, silent under the narration: BREAKING, a map of Berlin glowing gold.
 
@@ -236,7 +235,7 @@ Never hit zero, and by day two hundred and sixty-seven your account holds more c
 
 > SCENE: Your phone in your hand. You peel off the sticky note and write a new number: STOP AT 0,00.
 
-The sticky note gets its last number.
+You look from the galaxies to Anna's dark bakery. The sticky note gets its last number.
 
 ## [07:15] Exactly Zero
 
@@ -308,4 +307,4 @@ Be honest. If one cent started doubling in your account tonight, which day would
 
 ## Word count, not said
 
-About 1,150 spoken words: narrator lines in single beats, 20 character lines, never more than two in a row (the reference's pattern: one line, one picture, one punch). Places, in order: the flat at midnight, the bakery from across the street, the chessboard and the dune, the kitchen, the street party, every tram in Berlin, the bank, a penthouse over the city, the sea, the football ground, the counter (the thumbnail's frame), a cash machine, the shop app, the share chart, the city's sky full of drones, the back door, the savings book, the whole city lit by phones, Cairo, Berlin 1923, the news studio, the Earth, the universe, the penthouse at night, the bank at night, the night street, the glass door, the counter at dawn: the bakery is home base, about one beat in four. The running prop: the sticky note, STOP AT 1.000 € → 1 MILLION → 1 BILLION → 0,00 (its last number is the rule's exit). The cost is promised at 0:25 ("Let's see what it costs"). Wish-fulfilment from 1:25 to 3:20, then the costs. Real stories as proof: Mansa Musa (c06), Berlin 1923 (c01), the wallpaper (c03). One quiet beat (Anna's savings book, about 15 s, at about 5:15). The peak is a triumph ("Zero, doubled, is zero." / "Counted."), the end a cliffhanger. Claims spoken: c01, c03, c05, c06, c09, c11, c12. The thumbnail's frame lands at about 3:05.
+About 1,150 spoken words: narrator lines in single beats, 20 character lines, never more than two in a row (the reference's pattern: one line, one picture, one punch). Places, in order: the flat at midnight, the bakery from across the street, the chessboard and the dune, the kitchen, the street party, every tram in Berlin, the bank, a penthouse over the city, the sea, the football ground, the counter (the thumbnail's frame), a cash machine, the shop app, the share chart, the city's sky full of drones, the back door, the savings book, the whole city lit by phones, Cairo, Berlin 1923, the news studio, the Earth, the universe, the penthouse at night, the bank at night, the night street, the glass door, the counter at dawn: the bakery is home base, about one beat in four. The running prop: the sticky note, STOP AT 1.000 € → 1 MILLION → 1 BILLION → 0,00 (its last number is the rule's exit). The cost is promised at 0:25 ("Let's see what it costs"). Wish-fulfilment from 1:25 to 3:20, then the costs. Real stories as proof: Mansa Musa (c06), Berlin 1923 (c01). One quiet beat (Anna's savings book, about 15 s, at about 5:15). The peak is a triumph ("Zero, doubled, is zero." / "Counted."), the end a cliffhanger. Claims spoken: c01, c05, c06, c09, c11, c12. The thumbnail's frame lands at about 3:05.

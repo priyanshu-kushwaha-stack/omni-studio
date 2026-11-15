@@ -1,0 +1,50 @@
+{
+  "call_id": "65da12c6a2c34b2cb65cf6c1ba0896ff",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9
+  },
+  "blockers": [
+    {
+      "quote": "Right here in Berlin, in 1923, a loaf of bread cost about two hundred billion marks (c01).",
+      "why": "Overstates the temporal scope of claim c01. The source verbatim quote specifies that bread \"cost around 160 marks at the end of 1922 cost 200 billion marks by late 1923\", and the ledger note explicitly warns \"'late 1923', not a month; 'about'\". Saying \"in 1923\" states a late-year peak as true for the year as a whole.",
+      "fix": "Right here in Berlin, by late 1923, a loaf of bread cost about two hundred billion marks (c01).",
+      "domain": "fact",
+      "line": 213
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 216,
+      "quote": "> CARD: IT'S TRUE \u00b7 Berlin, 1923: a loaf of bread, about 200 billion marks",
+      "fix": "> CARD: IT'S TRUE \u00b7 Berlin, late 1923: a loaf of bread, about 200 billion marks"
+    },
+    {
+      "line": 57,
+      "quote": "By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11).",
+      "fix": "Across all sixty-four squares, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 233,
+      "quote": "Never hit zero, and by day two hundred and sixty-seven your account holds more cents than the estimated number of hydrogen atoms in the observable universe (c12)."
+    },
+    {
+      "line": 212,
+      "quote": "This has happened before. For real. In 1324, a king from Mali, Mansa Musa, gave away so much gold in Cairo that gold stayed cheap there for at least twelve years (c06)."
+    },
+    {
+      "line": 57,
+      "quote": "A king, a chessboard. One grain on the first square, and double on every square after (c05). By the last square, the board owes more wheat than the whole world grows in over a thousand years (c11)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "766e11d727974fd19276a2077902ec7a9a23437409a7d2cb383148c33c7b53c4",
+  "draft_sha256": "445baab9ab0584e61e70642418d4722787ff07defc8ca1bd8d8ee3eea62bf7c8"
+}
