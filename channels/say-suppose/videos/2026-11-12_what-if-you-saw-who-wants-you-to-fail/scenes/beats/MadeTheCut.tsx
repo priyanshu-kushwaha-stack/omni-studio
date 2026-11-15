@@ -263,13 +263,15 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
     hold: camAt(frame, [[k.twoShot, { x: 960, y: 560, zoom: 1.0 }], [k.hug, { x: 900, y: 570, zoom: 1.04 }], [k.you, { x: 760, y: 600, zoom: 1.14 }]]),
     holdYou: camAt(frame, [[cold ? k.you : hpAt(k, 0.26), { x: yh.x + 230, y: yh.y - 60 + bump, zoom: 1.4 }], [cold ? k.three : hpAt(k, 0.62), { x: yh.x + 240, y: yh.y - 60 + bump, zoom: 1.5 }]]),
     holdThree: camAt(frame, [[cold ? k.three : hpAt(k, 0.62), { x: 820, y: 580, zoom: 1.08 }], [k.q, { x: 820, y: 580, zoom: 1.1 }]]),
-    friend: camAt(frame, [[k.friend, closeUp(mh.x - 30, mh.y - 110, 1.5)], [k.number, closeUp(mh.x - 30, mh.y - 120, 1.58)]]),
-    number: camAt(frame, [[k.number, insert(card.x, card.y + 30, 2.0)], [k.knew, insert(card.x, card.y + 30, 2.25)]]),
-    knew: camAt(frame, [[k.knew, closeUp(mh.x - 50, mh.y - 90, 1.45)], [k.cardCU, closeUp(mh.x - 50, mh.y - 90, 1.52)]]),
-    cardCU: camAt(frame, [[k.cardCU, insert(card.x, card.y + 60, 2.1)], [k.air, insert(card.x, card.y + 50, 2.25)]]),
+    // round 21 (owner, before picture lock: no frame zoomed in a lot): lines 4-6 pulled back so both heads stay whole,
+    // your tuft with room above it, and the card whole; the pushes stay, they end wider
+    friend: camAt(frame, [[k.friend, { x: mh.x - 60, y: 600, zoom: 1.22 }], [k.number, { x: mh.x - 60, y: 600, zoom: 1.3 }]]),
+    number: camAt(frame, [[k.number, { x: card.x - 60, y: 590, zoom: 1.4 }], [k.knew, { x: card.x - 60, y: 590, zoom: 1.48 }]]),
+    knew: camAt(frame, [[k.knew, { x: mh.x - 180, y: 605, zoom: 1.36 }], [k.cardCU, { x: mh.x - 180, y: 600, zoom: 1.44 }]]),
+    cardCU: camAt(frame, [[k.cardCU, { x: card.x - 40, y: 595, zoom: 1.4 }], [k.air, { x: card.x - 40, y: 590, zoom: 1.47 }]]),
     // "His arm stays.": the two of you in the hug and, over his head, nothing
     air: camAt(frame, [[k.air, { x: 900, y: 470, zoom: 1.12 }], [k.ots, { x: 900, y: 490, zoom: 1.18 }]]),
-    ots: camAt(frame, [[k.ots, closeUp(yh.x + 170, yh.y - 10 + bump, 1.5)], [k.end, closeUp(yh.x + 150, yh.y - 20 + bump, 1.68)]]),
+    ots: camAt(frame, [[k.ots, closeUp(yh.x + 170, yh.y - 60 + bump, 1.35)], [k.end, closeUp(yh.x + 150, yh.y - 60 + bump, 1.45)]]),
   };
   // the first frames of the thumbnail shot are the thumbnail's frame exactly
   const cam = on === "wide" && frame < k.wide + 2 ? REF : drift(cams[on], frame, "cut", on === "wide" ? 2 : 3);

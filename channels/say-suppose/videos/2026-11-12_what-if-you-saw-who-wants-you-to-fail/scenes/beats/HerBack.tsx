@@ -169,7 +169,8 @@ const HerBackShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     jar: camAt(frame, [[k.jar, insert(HOME.jar.x - 10, 560, 2.7)], [k.doorway, insert(HOME.jar.x - 20, 565, 3.0)]]),
     doorway: camAt(frame, [[k.doorway, { x: 1700, y: 640, zoom: 1.75 }], [k.ots, { x: 1720, y: 640, zoom: 1.9 }]]),
     ots: camAt(frame, [[k.ots, { x: 1740, y: 650, zoom: 2.15 }], [k.back, { x: 1750, y: 650, zoom: 2.3 }]]),
-    back: camAt(frame, [[k.back, closeUp(HER_X + 60, HEAD_Y + 90, 3.2)], [k.holdB, closeUp(HER_X + 60, HEAD_Y + 70, 3.4)]]),
+    // her whole head with room over it, yours whole at the left (owner, before picture lock)
+    back: camAt(frame, [[k.back, { x: HER_X - 30, y: HEAD_Y + 50, zoom: 2.75 }], [k.holdB, { x: HER_X - 25, y: HEAD_Y + 40, zoom: 2.9 }]]),
     you: camAt(frame, [[k.holdB, closeUp(YOU_X + 50, HEAD_Y + 50, 2.4)], [k.two, closeUp(YOU_X + 50, HEAD_Y + 50, 2.55)]]),
     two: camAt(frame, [[k.two, { x: 1680, y: 540, zoom: 1.8 }], [k.rapShot, { x: 1690, y: 535, zoom: 1.88 }]]),
     rap: camAt(frame, [[k.rapShot, { x: 1790, y: 560, zoom: 2.2 }], [k.leave, { x: 1795, y: 555, zoom: 2.3 }]]),

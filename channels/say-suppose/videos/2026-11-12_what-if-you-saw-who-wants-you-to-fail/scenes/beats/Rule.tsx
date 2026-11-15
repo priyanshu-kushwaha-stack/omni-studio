@@ -223,7 +223,8 @@ const ClerkShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame, k, m
     clerk: camAt(frame, [[k.clerk, { x: 1560, y: 640, zoom: 1.7 }], [k.show, { x: 1570, y: 630, zoom: 1.8 }]]),
     show: camAt(frame, [[k.show, { x: 1580, y: 600, zoom: 1.75 }], [k.receipt, { x: 1600, y: 590, zoom: 1.85 }]]),
     receipt: camAt(frame, [[k.receipt, closeUp(ch.x - 40, ch.y - 50, 2.5)], [k.zero, closeUp(ch.x - 40, ch.y - 55, 2.6)]]),
-    zero: camAt(frame, [[k.zero, insert(card.x, card.y + 30, 4.2)], [k.you12, insert(card.x, card.y + 30, 4.5)]]),
+    // the card with the clerk's whole head under it and yours at the left (owner, before picture lock)
+    zero: camAt(frame, [[k.zero, insert(card.x - 60, card.y + 70, 3.0)], [k.you12, insert(card.x - 60, card.y + 70, 3.2)]]),
     you: camAt(frame, [[k.you12, closeUp(yh.x + 30, yh.y, 2.6)], [k.slip, closeUp(yh.x + 30, yh.y, 2.8)]]),
     // "and you're a receipt.": the two of you; he lays the slip on your letter; the grey card folds
     slip: camAt(frame, [[k.slip, { x: 1580, y: 600, zoom: 1.75 }], [k.lie, { x: 1585, y: 610, zoom: 1.85 }]]),

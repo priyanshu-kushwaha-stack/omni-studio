@@ -89,7 +89,8 @@ export const LieShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame,
     push: camAt(frame, [[k.closer - 4, { x: ch.x - 120, y: ch.y - 20, zoom: 2.2 }], [k.flop, { x: ch.x - 140, y: ch.y - 10, zoom: 2.4 }]]),
     flop: camAt(frame, [[k.flop, closeUp(yh.x + 30, yh.y, 2.6)], [k.lieCard, closeUp(yh.x + 30, yh.y + 10, 2.7)]]),
     lieCard: camAt(frame, [[k.lieCard, { x: ch.x - 60, y: ch.y - 120, zoom: 2.2 }], [k.truth, { x: ch.x - 60, y: ch.y - 130, zoom: 2.3 }]]),
-    letter: camAt(frame, [[k.truth, insert(ON_COUNTER.x + 40, ON_COUNTER.y - 50, 4.6)], [k.oneLetter, insert(ON_COUNTER.x + 40, ON_COUNTER.y - 50, 4.9)]]),
+    // the letter between your two whole heads (owner, before picture lock: no heads cut)
+    letter: camAt(frame, [[k.truth, insert(ON_COUNTER.x + 55, ON_COUNTER.y - 95, 3.0)], [k.oneLetter, insert(ON_COUNTER.x + 55, ON_COUNTER.y - 95, 3.2)]]),
     stare: camAt(frame, [[k.oneLetter, { x: 1400, y: 640, zoom: 2.0 }], [k.snacks, { x: 1410, y: 640, zoom: 2.1 }]]),
     snacks: camAt(frame, [[k.snacks, { x: 1690, y: 640, zoom: 2.6 }], [k.cat, { x: 1695, y: 640, zoom: 2.75 }]]),
   };
@@ -183,10 +184,11 @@ export const CatShots: React.FC<{ frame: number; k: T; mood: Mood }> = ({ frame,
   const c = STORE.cat;
   const cams: Record<CatShot, Camera> = {
     crouch: camAt(frame, [[k.cat, { x: 350, y: 760, zoom: 2.1 }], [k.eye, { x: 340, y: 760, zoom: 2.2 }]]),
-    eye: camAt(frame, [[k.eye, insert(c.x + 20, c.y - 120, 3.6)], [k.speak, insert(c.x + 20, c.y - 120, 3.8)]]),
+    // the cat with your whole head at the right (owner, before picture lock)
+    eye: camAt(frame, [[k.eye, insert(c.x + 75, c.y - 125, 3.25)], [k.speak, insert(c.x + 75, c.y - 125, 3.4)]]),
     offer: camAt(frame, [[k.speak, closeUp(yh.x - 60, yh.y + 30, 2.6)], [k.catStare, closeUp(yh.x - 80, yh.y + 30, 2.75)]]),
     swat: camAt(frame, [[k.catStare, { x: (c.x + yh.x) / 2, y: c.y - 110, zoom: 2.6 }], [k.catShut, { x: (c.x + yh.x) / 2 - 10, y: c.y - 110, zoom: 2.7 }]]),
-    cat: camAt(frame, [[k.catShut, insert(c.x + 20, c.y - 120, 3.7)], [k.never, insert(c.x + 20, c.y - 120, 3.9)]]),
+    cat: camAt(frame, [[k.catShut, insert(c.x + 75, c.y - 125, 3.3)], [k.never, insert(c.x + 75, c.y - 125, 3.45)]]),
     you: camAt(frame, [[k.never, closeUp(yh.x - 30, yh.y, 2.8)], [k.phone, closeUp(yh.x - 30, yh.y, 3.0)]]),
   };
   const cam = drift(cams[on], frame, "cat", 2.5);

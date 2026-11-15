@@ -26,7 +26,7 @@ import { camAt, current, lineEnd, mix, ramp, type Beat, type Shot } from "../sha
 import { aimArm, hug, mixArm, Sister, talk, You, type Body, type Face } from "./HerBack.Sister";
 import { EndCard, MinJun } from "./TwoLetters.EndCard";
 import { HisShoulder } from "./TwoLetters.Fridge";
-import { CardOverYou, underCard } from "./TwoLetters.Ending";
+import { CardOverYou, cardOver, underCard } from "./TwoLetters.Ending";
 
 type T = ReturnType<typeof times>;
 
@@ -94,8 +94,9 @@ const JAR_MOUTH = { x: HOME.jar.x + 6, y: HOME.jar.y - 96 };
 /** The kitchen window, drawn tall (to the counter line) over the set's, so it sits in the right third of the closes on
  *  you; the glass is dim even in the morning. */
 const PANE = { x: 470, y: 300, w: 230, h: 560 };
-/** The closes on you: the window's glass on the right third of the frame. */
-const ME_CLOSE = (zoom: number) => underCard(ME_HEAD, ME_HEAD.x + 60, zoom);
+/** The closes on you: the window's glass on the right third of the frame. The bottom third of the (blank) card peeks
+ *  in at the top so the head has room above the tuft (owner, before picture lock: no frame zoomed in a lot). */
+const ME_CLOSE = (zoom: number) => underCard(ME_HEAD, ME_HEAD.x + 60, zoom, cardOver(ME_HEAD).h * 0.32 * zoom);
 
 /** A paintbrush held upright (local coordinates, the hand at 0,0): wood, ferrule, bristles with old teal paint. */
 const Brush: React.FC = () => (
@@ -249,12 +250,12 @@ const TwoShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     sister: camAt(frame, [[k.sister, closeUp(HER_HEAD.x - 40, HER_HEAD.y + 10, 2.1)], [k.jar, closeUp(HER_HEAD.x - 50, HER_HEAD.y + 10, 2.25)]]),
     jar: camAt(frame, [[k.jar, { x: (HOME.jar.x + HER_HEAD.x) / 2, y: HER_HEAD.y + 40, zoom: 2.0 }], [k.two, { x: (HOME.jar.x + HER_HEAD.x) / 2, y: HER_HEAD.y + 20, zoom: 2.1 }]]),
     two: camAt(frame, [[k.two, underCard(ME_HEAD, mid + 40, 1.8)], [k.says[0], underCard(ME_HEAD, mid + 10, 2.0)], [k.youLift, underCard(ME_HEAD, mid, 2.1)]]),
-    lift: camAt(frame, [[k.youLift, ME_CLOSE(2.7)], [k.her, ME_CLOSE(2.9)]]),
+    lift: camAt(frame, [[k.youLift, ME_CLOSE(2.1)], [k.her, ME_CLOSE(2.25)]]),
     her: camAt(frame, [[k.her, { x: HER_HEAD.x - 120, y: HER_HEAD.y + 150, zoom: 1.75 }], [k.hold2, { x: HER_HEAD.x - 120, y: HER_HEAD.y + 140, zoom: 1.85 }]]),
     mj2: camAt(frame, [[k.hold2, closeUp(MJ_HEAD.x + 70, MJ_HEAD.y - 10, 2.4)], [k.youTurn, closeUp(MJ_HEAD.x + 70, MJ_HEAD.y - 10, 2.55)]]),
-    turn: camAt(frame, [[k.youTurn, ME_CLOSE(2.8)], [k.under, ME_CLOSE(3.0)]]),
+    turn: camAt(frame, [[k.youTurn, ME_CLOSE(2.15)], [k.under, ME_CLOSE(2.3)]]),
     under: camAt(frame, [[k.under, underCard(ME_HEAD, mid + 20, 2.1)], [k.honest, underCard(ME_HEAD, mid + 30, 2.25)]]),
-    honest: camAt(frame, [[k.honest, ME_CLOSE(2.6)], [k.card, ME_CLOSE(3.0)]]),
+    honest: camAt(frame, [[k.honest, ME_CLOSE(2.05)], [k.card, ME_CLOSE(2.3)]]),
   };
   const cam = drift(cams[shot], frame, "twoletters", shot === "dawn" || shot === "wide" || shot === "sister" || shot === "jar" ? 3 : 1.5);
   if (shot === "dawn" || shot === "wide" || shot === "sister" || shot === "jar" || shot === "her") {

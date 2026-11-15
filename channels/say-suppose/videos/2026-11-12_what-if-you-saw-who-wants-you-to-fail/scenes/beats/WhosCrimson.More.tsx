@@ -153,9 +153,9 @@ export const BusShot: React.FC<{ frame: number; k: CrimsonTimes; mood: MoodName 
   const womanUp = view === "two" ? ramp(frame, k.busTwo + 6, k.busTwo + 14) : 0;
   const cams: Record<BusView, Camera> = {
     bus: camAt(frame, [[k.bus, { x: 1180, y: 650, zoom: 1.45 }], [k.tryHim, { x: 1220, y: 660, zoom: 1.6 }]]),
-    // his swinging shoes, tilting up to the cap (outside review of v6, 3:39)
-    shoes: camAt(frame, [[k.shoes, { x: KID.x + 60, y: SEAT_TOP + 70, zoom: 3.4 }], [k.shoes + 30, { x: KID.x + 60, y: SEAT_TOP + 62, zoom: 3.4 }],
-      [k.tryHim, { x: kh.x + 20, y: kh.y - 10, zoom: 3.1 }]]),
+    // his swinging shoes (no head in the frame), tilting up to the cap (outside review of v6, 3:39)
+    shoes: camAt(frame, [[k.shoes, { x: KID.x + 60, y: SEAT_TOP + 100, zoom: 3.4 }], [k.shoes + 30, { x: KID.x + 60, y: SEAT_TOP + 94, zoom: 3.4 }],
+      [k.tryHim, { x: kh.x + 60, y: kh.y - 40, zoom: 2.7 }]]), // ends with your head and the woman's whole (owner, before picture lock)
     try: camAt(frame, [[k.tryHim, { x: 1300, y: 690, zoom: 2.0 }], [k.kid, { x: 1300, y: 690, zoom: 2.1 }]]),
     kid: camAt(frame, [[k.kid, closeUp(kh.x + 20, kh.y - 50, 3.0)], [k.kidGrin, closeUp(kh.x + 20, kh.y - 60, 3.1)]]),
     grin: camAt(frame, [[k.kidGrin, closeUp(kh.x + 20, kh.y - 60, 3.2)], [k.busTwo, closeUp(kh.x + 20, kh.y - 60, 3.4)]]),

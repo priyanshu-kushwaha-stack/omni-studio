@@ -65,7 +65,7 @@ export const RevealShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const head = headAt(herX, GATE.jiyoon.y, JS, STAND, -1);
   const cams: Record<typeof shot, Camera> = {
     part: camAt(frame, [[k.part, { x: 1360, y: 740, zoom: 1.6 }], [k.vest, { x: 1330, y: 720, zoom: 2.0 }]]),
-    vest: camAt(frame, [[k.vest, { x: head.x - 10, y: head.y + 150, zoom: 2.7 }], [k.sister, { x: head.x - 10, y: head.y + 140, zoom: 2.85 }]]),
+    vest: camAt(frame, [[k.vest, { x: head.x - 10, y: head.y + 100, zoom: 1.95 }], [k.sister, { x: head.x - 10, y: head.y + 90, zoom: 2.1 }]]),
     sister: camAt(frame, [[k.sister, closeUp(head.x - 50, head.y, 2.5)], [k.box, closeUp(head.x - 50, head.y, 2.65)]]),
   };
   return (

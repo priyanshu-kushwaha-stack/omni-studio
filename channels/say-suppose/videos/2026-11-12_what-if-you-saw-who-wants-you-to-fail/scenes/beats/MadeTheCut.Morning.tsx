@@ -81,7 +81,7 @@ const ClassroomInsert: React.FC<{ frame: number; t: MorningTimes; mood: MoodName
   const himPose: Pose = frame >= b2 ? { ...SEATED, armF: [mix(20, hookArm[0], hook), mix(60, hookArm[1], hook)], armB: [-150, -20], tilt: 8, lean: 6 * hook }
     : { ...SEATED, armB: [-60 + hand, 60], tilt: 4 };
   const cam = drift(frame < b1 ? camAt(frame, [[t.classroom, { x: 770, y: 700, zoom: 2.5 }], [b1, { x: 780, y: 695, zoom: 2.65 }]])
-    : frame < b2 ? camAt(frame, [[b1, { x: yh.x - 20, y: yh.y + 110, zoom: 3.4 }], [b2, { x: yh.x - 20, y: yh.y + 100, zoom: 3.6 }]])
+    : frame < b2 ? camAt(frame, [[b1, { x: yh.x - 20, y: yh.y + 70, zoom: 2.8 }], [b2, { x: yh.x - 20, y: yh.y + 65, zoom: 2.95 }]])
     : camAt(frame, [[b2, { x: 760, y: 690, zoom: 2.3 }], [t.end, { x: 760, y: 680, zoom: 2.4 }]]), frame, "class", 3);
   const options = { ...classroom.defaults, board: "graph" as const };
   const props = { cam, mood, frame, options };

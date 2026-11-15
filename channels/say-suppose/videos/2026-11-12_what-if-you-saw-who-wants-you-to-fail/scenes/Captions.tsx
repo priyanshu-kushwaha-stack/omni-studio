@@ -12,7 +12,7 @@ import { JIYOON, KANG, MINJUN, TAEHO } from "./shared";
 type Item = { line: number; p: number; secs: number; kind: "cast" | "fact" | "title"; head?: string; top: string; sub: string; accent?: string; right?: boolean; high?: boolean };
 
 const ITEMS: Item[] = [
-  { line: 4, p: 0.05, secs: 4, kind: "cast", head: MINJUN.head, top: "MIN-JUN", sub: "best friend since age twelve", right: true }, // the left is his face in the close-up
+  { line: 3, p: 0.2, secs: 3.4, kind: "cast", head: MINJUN.head, top: "MIN-JUN", sub: "best friend since age twelve", right: true }, // v9: in the steps wide, where he waits alone at the bottom of the steps; in the hug both faces fill the frame
   { line: 18, p: 0, secs: 2.6, kind: "cast", head: JIYOON.head, top: "JI-YOON", sub: "big sister · night shifts" },
   { line: 23, p: 0, secs: 4, kind: "cast", head: TAEHO.head, top: "TAE-HO", sub: "the rival" },
   { line: 29, p: 0, secs: 3.5, kind: "cast", head: KANG.head, top: "MS. KANG", sub: "maths teacher" },

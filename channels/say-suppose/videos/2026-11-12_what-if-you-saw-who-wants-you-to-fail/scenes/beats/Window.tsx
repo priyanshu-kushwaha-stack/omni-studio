@@ -147,10 +147,10 @@ function roomCam(frame: number, k: T, shot: string): Camera {
     case "peak":
       return camAt(frame, [[k.peak, { x: 960, y: 470, zoom: 1.0 }], [k.peak + 100, { x: 965, y: 410, zoom: 1.45 }], [k.b105, { x: 990, y: 350, zoom: 1.85 }],
         [k.up, { x: 1040, y: 270, zoom: 2.2 }], [k.yours, { x: YOUR_REFL.x, y: 150, zoom: 2.9 }], [k.yoursEnd, { x: YOUR_REFL.x, y: 140, zoom: 3.0 }],
-        [k.pan[0], { x: 690, y: 420, zoom: 2.2 }], [k.pan[1], { x: 1200, y: 410, zoom: 2.3 }], [k.mjGlass + 8, glassOn(MJ_REFL, 3.6)],
-        [k.mjLand, glassOn(MJ_REFL, 4.2)], [k.close.hug.from, glassOn(MJ_REFL, 4.5)]]);
+        [k.pan[0], { x: 690, y: 420, zoom: 2.2 }], [k.pan[1], { x: 1200, y: 410, zoom: 2.3 }], [k.mjGlass + 8, glassOn(MJ_REFL, 2.5)],
+        [k.mjLand, glassOn(MJ_REFL, 2.65)], [k.close.hug.from, glassOn(MJ_REFL, 2.75)]]);
     default:
-      return camAt(frame, [[k.thGlass, glassOn(TH_REFL, 3.4)], [k.thLand, glassOn(TH_REFL, 4.0)], [k.weather, glassOn(TH_REFL, 4.4)]]);
+      return camAt(frame, [[k.thGlass, glassOn(TH_REFL, 2.45)], [k.thLand, glassOn(TH_REFL, 2.6)], [k.weather, glassOn(TH_REFL, 2.7)]]);
   }
 }
 

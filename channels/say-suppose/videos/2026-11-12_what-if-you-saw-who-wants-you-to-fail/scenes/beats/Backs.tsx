@@ -140,7 +140,7 @@ const ProblemShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 /** "And the rival has been watching.": close on him two rows back; his eyes go from the air over your best friend to
  *  you; the lids narrow; on "watching", the smirk. */
 const RivalWatchShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.rival, closeUp(th.x + 120, th.y - 10, 2.5)], [k.brag, closeUp(th.x + 110, th.y - 10, 2.75)]]), frame, "rival", 2);
+  const cam = drift(camAt(frame, [[k.rival, closeUp(th.x + 100, th.y + 30, 1.95)], [k.brag, closeUp(th.x + 90, th.y + 30, 2.1)]]), frame, "rival", 2);
   const toYou = frame >= k.toYou;
   return (
     <SideClass frame={frame} cam={cam} youSeated={false}
