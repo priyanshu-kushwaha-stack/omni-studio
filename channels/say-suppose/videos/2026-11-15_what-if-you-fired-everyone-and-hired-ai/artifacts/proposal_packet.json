@@ -40,7 +40,7 @@
   ],
   "selected_concept": {
     "concept_id": "A",
-    "rationale": "The writer's recommendation (title A with thumbnail a, WHO EATS?); the owner picks at G1"
+    "rationale": "Owner's pick at G1, 2026-11-16, in chat: \"Pair A + WHO EATS?\". Title A (What If You Fired Everyone and Hired AI?) with thumbnail a (WHO EATS?), the writer's recommendation."
   },
   "production_plan": {
     "pipeline": "studio-whatif",

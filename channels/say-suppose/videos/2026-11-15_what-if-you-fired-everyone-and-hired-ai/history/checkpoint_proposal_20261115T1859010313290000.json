@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-15_what-if-you-fired-everyone-and-hired-ai",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-15T18:59:01.031329+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If You Fired Everyone and Hired AI?",
+          "why_this_works": "The film's own title and the writer's pick; pairs with thumbnail a (WHO EATS?)",
+          "narrative_structure": "story",
+          "visual_approach": "Your diner at night across the road from the car plant (its lit sheds and chimney through the long window): you large at the left, head 34% of the frame height, mustard head, teal scarf, white apron, arms thrown wide, a fan of cash in your raised hand, eyes wide, mouth open, stunned and thrilled; behind the counter four steel robot cooks with screen faces (two happy arcs), each with a burger flipped high off its spatula; a pile of plated burgers nobody is eating along the front counter; four empty teal stools. Three candidates a, b, c differ only in the tag (WHO EATS?, ANYONE?, UH OH.); drawn in code, brand/thumbs/aitrap; K3-K11 pass (thumb-checks.json). The film opens on this frame (0:00-0:08) and stages it again at 4:10",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 550,
+          "hook": "A spatula clang; four steel cooks flip four burgers onto plates nobody takes; you at the left with a fan of cash, forty empty stools, the car plant lit across the road. \"What if you fired everyone and hired AI?\" Then, six weeks earlier: your cook is sick again, and an app you never installed says: hire any job, no wage."
+        },
+        {
+          "id": "B",
+          "title": "What If You Replaced Every Worker With a Robot?",
+          "why_this_works": "Alternative title: every worker, the whole town; pairs with thumbnail b (ANYONE?)",
+          "narrative_structure": "story",
+          "visual_approach": "Your diner at night across the road from the car plant (its lit sheds and chimney through the long window): you large at the left, head 34% of the frame height, mustard head, teal scarf, white apron, arms thrown wide, a fan of cash in your raised hand, eyes wide, mouth open, stunned and thrilled; behind the counter four steel robot cooks with screen faces (two happy arcs), each with a burger flipped high off its spatula; a pile of plated burgers nobody is eating along the front counter; four empty teal stools. Three candidates a, b, c differ only in the tag (WHO EATS?, ANYONE?, UH OH.); drawn in code, brand/thumbs/aitrap; K3-K11 pass (thumb-checks.json). The film opens on this frame (0:00-0:08) and stages it again at 4:10",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 550,
+          "hook": "A spatula clang; four steel cooks flip four burgers onto plates nobody takes; you at the left with a fan of cash, forty empty stools, the car plant lit across the road. \"What if you fired everyone and hired AI?\" Then, six weeks earlier: your cook is sick again, and an app you never installed says: hire any job, no wage."
+        },
+        {
+          "id": "C",
+          "title": "What If You Could Hire a Robot for Any Job?",
+          "why_this_works": "Alternative title: the power as a wish, broadest search term; pairs with thumbnail c (UH OH.)",
+          "narrative_structure": "story",
+          "visual_approach": "Your diner at night across the road from the car plant (its lit sheds and chimney through the long window): you large at the left, head 34% of the frame height, mustard head, teal scarf, white apron, arms thrown wide, a fan of cash in your raised hand, eyes wide, mouth open, stunned and thrilled; behind the counter four steel robot cooks with screen faces (two happy arcs), each with a burger flipped high off its spatula; a pile of plated burgers nobody is eating along the front counter; four empty teal stools. Three candidates a, b, c differ only in the tag (WHO EATS?, ANYONE?, UH OH.); drawn in code, brand/thumbs/aitrap; K3-K11 pass (thumb-checks.json). The film opens on this frame (0:00-0:08) and stages it again at 4:10",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 550,
+          "hook": "A spatula clang; four steel cooks flip four burgers onto plates nobody takes; you at the left with a fan of cash, forty empty stools, the car plant lit across the road. \"What if you fired everyone and hired AI?\" Then, six weeks earlier: your cook is sick again, and an app you never installed says: hire any job, no wage."
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "The writer's recommendation (title A with thumbnail a, WHO EATS?); the owner picks at G1"
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/ai-trap-g1-6b4a83/channels/say-suppose/videos/2026-11-15_what-if-you-fired-everyone-and-hired-ai/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging (G1, 2026-11-15): three titles, three one-variable thumbnails drawn in code (brand/thumbs/aitrap), the beat outline on the template spine opening on the thumbnail's frame then a performed skit; claims.md (28 rows; the paper's six contested) started at G1; one G1 room round (story editor, claims check)"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "script.md, sequel.md and chapters on the template (rules/story.md #1-#22, 155 wpm, about 9 min), exciting not sad; the free local narration (voice B narrator, local cast voices) and a 720p first cut before G2; a score cue per section and an ambience bed per set; the G2 room; omni qc story_script must pass"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Picture lock: cut, key shot (the thumbnail frame), text, music and mix; the paid voice A/B only if the owner asks"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "whatif_narration (local voices)",
+            "operation": "G2 narration and first cut",
+            "estimated_usd": 0,
+            "notes": "Free and local. G1 made no paid provider call: the thumbnails are drawn in code; the writer ran on the owner's Claude subscription (claude -p, one call) and the room used today's capped calls (story editor, claims check)"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    }
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "room": "room-g1.md: shipped round 1, 3 of 16 calls; room evidence ok; story editor 3 blockers proposed for the owner-notes round"
+  }
+}

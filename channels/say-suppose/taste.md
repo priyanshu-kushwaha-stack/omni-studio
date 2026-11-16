@@ -8,6 +8,15 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-16
+
+- **"Pair A + WHO EATS?"** G1 pick on the fired-everyone-and-hired-AI film (your diner across from the car plant):
+  title A, "What If You Fired Everyone and Hired AI?", with tag a ("WHO EATS?"), on the drawn night-diner frame (you
+  with a fan of cash, four robot cooks flipping burgers for forty empty stools). The film's own title and the writer's
+  recommendation. The room's three story blockers (Reuther after the 4:35 turn, answer "who owns the dial?" on screen,
+  no SHOP tile after halfway) and the claims check's three wording fixes go into the G2 script. (fired everyone and
+  hired AI, G1)
+
 ## 2026-11-15
 
 - **"Lets not set this as hard rule because when i watched it previously, it looked fine and it goes video to video

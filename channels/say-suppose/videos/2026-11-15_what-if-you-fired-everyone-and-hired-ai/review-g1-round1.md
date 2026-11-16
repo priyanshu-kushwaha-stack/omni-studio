@@ -58,3 +58,14 @@ line against the draft's own wording and returned no blocker. The ledger is atta
 claims check gets `claims.md`.
 
 None of these is applied yet: by pipeline v2 they merge with the owner's G1 notes into the one owner-notes round.
+
+## The owner's pick (2026-11-16)
+
+"Pair A + WHO EATS?": title A ("What If You Fired Everyone and Hired AI?") with thumbnail a ("WHO EATS?"), the writer's
+recommendation. No other notes. The room's three story blockers and the three claims wordings taken above go into the
+G2 script: the Reuther story moves after the missing-line turn at 4:35; "who owns the dial?" is answered on screen
+before the climax, with a smaller loophole left for the comments; the sequel hook reuses the CUSTOMER machine instead
+of a new SHOP tile; "a tax on the machine itself can", Visa's "pilot trials", "two centuries". The G2 claims check gets
+`claims.md` as an input. Recorded in `taste.md` and in `artifacts/proposal_packet.json` (selected concept A).
+`packaging.md` is unchanged: it is the draft the room reviewed (`room verify` checks its hash). G1 passes only by the
+owner's own `omni approve`.
