@@ -21,7 +21,7 @@ claims: claims.md
 
 > BUBBLE: You: I made it.
 
-> HOLD: 0.2 s. Performed (final_edit qc: the first word within 1 s; the hug plays under the title question). A paper snap: the cream card unfolds over his head and its split-flap digits run down the red side and stop on minus eighty-four, about two seconds in. His arm hooks round your neck, his eyes shut, his grin wide. Your eyes stay open, on the card.
+> HOLD: 2.5 s. Performed, wordless (G4, the owner: "Start of it feels very fast and incomplete"; the opening check is not a hard rule): the hug lands before the title question. A paper snap: the cream card unfolds over his head and its split-flap digits run down the red side and stop on minus eighty-four, about two seconds in. His arm hooks round your neck, his eyes shut, his grin wide. Your eyes stay open, on the card.
 
 > TAG: -84%
 
