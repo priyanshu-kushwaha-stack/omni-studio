@@ -4,15 +4,15 @@
   "pipeline_type": "studio-whatif",
   "stage": "final_edit",
   "status": "awaiting_human",
-  "timestamp": "2026-11-17T14:25:50.886220+00:00",
+  "timestamp": "2026-11-17T16:58:17.864302+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G3 (picture lock) again: cut v10 (12:31, 720p) = the signed v9 with opening B, at the owner's G4 note \"Start of it feels very fast and incomplete\" and pick B: 2.5 s wordless hug before the title question, 1 s more on the hug after it, 1.5 s more on the hundred backs ending on the rival's grin. Nothing after the opening changed; no new voice takes. final_edit qc: loudness -13.8 LUFS / -1.2 dBTP, clicks, similarity pass; opening warns (first word 2.9 s, by the owner's choice). story_script qc passes. Never approved by an agent.",
-    "media": "renders/v10/cut-v10-720p.mp4",
+    "for_owner": "G3 (picture lock) again: cut v11 (12:32, 720p) = v10 (the signed v9 with opening B) plus a new local voice-B take of 'The kid isn't in the race ... the same exam' (4:03), at the owner's note that 'exam' was not spoken clearly (Whisper on the old take: 'exam' 0.45-0.60; new take 1.00). A Whisper pass over all 117 lines found no other unclear word. The take's new timing pushed an end-of-take pop after 'heating's fixed' (6:22) over the clicks threshold: muted 50 ms in mutes.txt. final_edit qc: loudness -13.8 LUFS / -1.2 dBTP, clicks, similarity pass; opening warns by the owner's choice. story_script qc passes. Never approved by an agent.",
+    "media": "renders/v11/cut-v11-720p.mp4",
     "loudness_lufs": -13.8,
     "true_peak_dbtp": -1.2
   }

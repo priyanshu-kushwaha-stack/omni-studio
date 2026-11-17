@@ -412,7 +412,7 @@
     },
     {
       "text": "The kid isn't in the race. The rival is twenty places ahead. Your best friend has the next desk, the same chocolate bar, the same exam.",
-      "say": "[steady, each item a step closer, the last three softer] The kid isn't in the race. The rival is twenty places ahead. Your best friend has the next desk, the same chocolate bar, the same exam.",
+      "say": "[steady, each item a step closer, every word clear to the end, the last word exam landing firm] The kid isn't in the race. The rival is twenty places ahead. Your best friend has the next desk, the same chocolate bar, the same exam.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
