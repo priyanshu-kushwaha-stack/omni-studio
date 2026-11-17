@@ -85,7 +85,7 @@ Sixty seconds. The card folds shut. His arm stays. So does the number.
 
 The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, it shows how your news lands with them.
 
-Plus one hundred means pure joy for you. Minus one hundred means they want you to fail.
+A plus one hundred means pure joy for you. A minus one hundred means they want you to fail.
 
 And it never tells you why.
 
@@ -260,7 +260,7 @@ You take the smaller half. On principle. And his number keeps going down.
 
 Then your maths teacher does the worst thing a teacher can do.
 
-Teacher: Up.
+Teacher: Stand up, now.
 
 The school assembly. Five hundred faces. She wants you to announce it.
 

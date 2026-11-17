@@ -43,8 +43,8 @@ function times(clips: Clip[], start: number, end: number) {
     start,
     end,
     clock: start, // "Eleven.": from the lamp to the clock and the vest on its hook
-    pullOut: at(48, 0.05), // "Home."
-    fridge: at(48, 0.1), // "The letter's already on the fridge"
+    pullOut: at(48, 0.07), // "Home."
+    fridge: at(48, 0.16), // "The letter's already on the fridge"
     jar, // "next to the jar where her paintbrushes have stood for six years"
     lunch: [jar + 16, jar + 34, Math.min(doorway - 4, jar + 74)] as const, // her hand in, the bag taken, out of frame
     doorway, // "She's in the doorway, pulling on her vest."
@@ -162,9 +162,13 @@ const HerBackShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const herHead = mix(FLOOR, FLOOR - 70, away) - 266 * mix(S, S * 0.72, away);
   const cams: Record<View, Camera> = {
     // "Eleven.": from the kitchen lamp across to the clock at eleven and her vest on its hook
-    clock: camAt(frame, [[k.start, { x: HOME.lamp.x, y: HOME.lamp.y + 40, zoom: 2.5 }], [k.start + 8, { x: HOME.lamp.x + 20, y: HOME.lamp.y + 40, zoom: 2.5 }],
+    // G3 (the owner, 2026-11-17: "camera movement should slow down and show watch for a little more time"): the beat
+    // opens 1.5 s before the word (LEADS), a slow pan from the lamp settles on the clock at eleven, holds through
+    // "Eleven.", and drifts to take in her vest; the pull-out to the room is gentler.
+    clock: camAt(frame, [[k.start, { x: HOME.lamp.x, y: HOME.lamp.y + 40, zoom: 2.5 }], [k.start + 6, { x: HOME.lamp.x + 10, y: HOME.lamp.y + 40, zoom: 2.5 }],
+      [k.start + 40, { x: HOME.clock.x + 25, y: HOME.clock.y + 60, zoom: 2.6 }], [k.pullOut - 16, { x: HOME.clock.x + 40, y: HOME.clock.y + 80, zoom: 2.55 }],
       [k.pullOut - 2, { x: 1625, y: 440, zoom: 2.45 }]]),
-    wide: camAt(frame, [[k.pullOut, { x: 1420, y: 560, zoom: 1.35 }], [k.fridge, { x: 1270, y: 570, zoom: 1.1 }]]),
+    wide: camAt(frame, [[k.pullOut, { x: 1420, y: 560, zoom: 1.35 }], [k.fridge, { x: 1300, y: 570, zoom: 1.2 }]]),
     fridge: camAt(frame, [[k.fridge, { x: 1270, y: 620, zoom: 2.2 }], [k.jar, { x: 1250, y: 620, zoom: 2.45 }]]),
     jar: camAt(frame, [[k.jar, insert(HOME.jar.x - 10, 560, 2.7)], [k.doorway, insert(HOME.jar.x - 20, 565, 3.0)]]),
     doorway: camAt(frame, [[k.doorway, { x: 1700, y: 640, zoom: 1.75 }], [k.ots, { x: 1720, y: 640, zoom: 1.9 }]]),

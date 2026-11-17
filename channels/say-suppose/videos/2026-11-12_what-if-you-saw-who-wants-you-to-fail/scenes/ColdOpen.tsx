@@ -46,6 +46,37 @@ export function coldSource(frame: number, cuts: Cut[]): number {
   return cut.src + (frame - cut.from);
 }
 
+/** Frames of the tape rewind that ends the cold open (the owner, 2026-11-17: "Tape rewind sound/shot at 0:18 just
+ *  before the script"): the whole cold open runs backwards at speed, back to the hug, then the platform. timing.yaml's
+ *  air after line 1 grew by the same 0.8 s, so the backs and the rival's grin keep their time. */
+export const REWIND = 24;
+
+/** The cold-open frame to show at `frame`: itself, or in the rewind, the cold open run backwards to its first frame. */
+export function coldFrame(frame: number, end: number): number {
+  const r0 = end - REWIND;
+  if (frame < r0) return frame;
+  const p = (frame - r0) / REWIND;
+  return Math.max(0, Math.round(r0 * (1 - p * p * (3 - 2 * p)))); // eased: spins up, then slows into the stop
+}
+
+/** The rewind's look over the picture: tape tracking bands rolling up, a dimmer, flatter picture, and the rewind mark. */
+export const ColdRewind: React.FC<{ frame: number; end: number }> = ({ frame, end: to }) => {
+  const d = frame - (to - REWIND);
+  if (d < 0 || frame >= to) return null;
+  const bands = [0, 1, 2].map((i) => ((d * 47 + i * 360) % 1080) - 40);
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <AbsoluteFill style={{ background: "#1b1d2a", opacity: 0.22 }} />
+      {bands.map((y, i) => (
+        <div key={i} style={{ position: "absolute", left: 0, right: 0, top: y, height: 26 + i * 10,
+          background: "linear-gradient(#ffffff00, #f4efe2aa 40%, #ffffff55 60%, #ffffff00)" }} />
+      ))}
+      <div style={{ position: "absolute", left: 120, top: 150, color: "#fffaf0", fontFamily: "Inter, sans-serif",
+        fontWeight: 800, fontSize: 64, letterSpacing: -6, textShadow: "0 3px 0 #0006" }}>◀◀</div>
+    </AbsoluteFill>
+  );
+};
+
 /** The cold-open frame the card snaps over him. */
 export function coldSnap(clips: Clip[]): number {
   return WIDE + at(clips, 3, 0.9) - (at(clips, 3, 0.84) - 6);
@@ -60,7 +91,7 @@ export const ColdSound: React.FC<{ cuts: Cut[]; end: number; snap: number }> = (
       <MeterSound at={snap} />
       <MeterSound at={flashes[0].from + 10} soft volume={0.6} />
       <MeterSound at={flashes[1].from + 2} soft volume={0.7} />
-      <Sequence from={to - 4} durationInFrames={16}><Audio src={staticFile("sfx/flutter.wav")} volume={0.4} /></Sequence>
+      <Sequence from={to - REWIND - 2} durationInFrames={27}><Audio src={staticFile("sfx/rewind.wav")} volume={0.55} /></Sequence>
     </>
   );
 };
@@ -71,7 +102,7 @@ export const ColdFlash: React.FC<{ frame: number; cuts: Cut[]; end: number }> = 
   let a = 0;
   for (const m of marks) {
     const d = frame - m;
-    if (d >= 0 && d < 8) a = Math.max(a, (m === to ? 0.95 : 0.55) * (1 - d / 8));
+    if (d >= 0 && d < 8) a = Math.max(a, (m === to ? 0.5 : 0.55) * (1 - d / 8));
   }
   return a > 0 ? <AbsoluteFill style={{ background: "#fffaf0", opacity: a }} /> : null;
 };

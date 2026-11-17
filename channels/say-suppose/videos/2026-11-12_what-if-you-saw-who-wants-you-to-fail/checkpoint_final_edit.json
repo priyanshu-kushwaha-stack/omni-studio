@@ -4,16 +4,16 @@
   "pipeline_type": "studio-whatif",
   "stage": "final_edit",
   "status": "awaiting_human",
-  "timestamp": "2026-11-17T16:58:17.864302+00:00",
+  "timestamp": "2026-11-17T18:34:25.946159+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G3 (picture lock) again: cut v11 (12:32, 720p) = v10 (the signed v9 with opening B) plus a new local voice-B take of 'The kid isn't in the race ... the same exam' (4:03), at the owner's note that 'exam' was not spoken clearly (Whisper on the old take: 'exam' 0.45-0.60; new take 1.00). A Whisper pass over all 117 lines found no other unclear word. The take's new timing pushed an end-of-take pop after 'heating's fixed' (6:22) over the clicks threshold: muted 50 ms in mutes.txt. final_edit qc: loudness -13.8 LUFS / -1.2 dBTP, clicks, similarity pass; opening warns by the owner's choice. story_script qc passes. Never approved by an agent.",
-    "media": "renders/v11/cut-v11-720p.mp4",
-    "loudness_lufs": -13.8,
-    "true_peak_dbtp": -1.2
+    "for_owner": "G3 (picture lock) again: cut v12 (12:35, 720p), the owner's notes on v11: (1) a 0.8 s tape rewind (the cold open run backwards, tracking lines, a rewind mark and sound) before 'It started this morning', with 0.8 s more air so the backs keep their time; (2) new local takes at 4:35, 5:24, 5:53, 12:31, and 1:20 reworded to 'A plus one hundred ... A minus one hundred ...' (a line-initial 'Plus' was swallowed in every take); (3) 'Eleven.': the kitchen opens 1.5 s early, a slow pan settles and holds on the clock at eleven; (4) the teacher's 'Up.' is now 'Stand up, now.' Every changed line checked with Whisper. final_edit qc: loudness -13.7 LUFS / -1.0 dBTP, clicks, similarity pass; opening warns by the owner's choice. story_script qc passes. Never approved by an agent.",
+    "media": "renders/v12/cut-v12-720p.mp4",
+    "loudness_lufs": -13.7,
+    "true_peak_dbtp": -1.0
   }
 }

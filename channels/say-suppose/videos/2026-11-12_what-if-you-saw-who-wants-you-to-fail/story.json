@@ -66,7 +66,7 @@
       "text": "Six weeks before the big exam. A card that shows you who's really racing you. Get caught reading it, and a hundred chairs turn their backs on you.",
       "say": "[quick, building, a trailer read; a grin on the card, the last clause dropped low] Six weeks before the big exam. A card that shows you who's really racing you. Get caught reading it, and a hundred chairs turn their backs on you.",
       "speaker": "narrator",
-      "gapAfterSec": 2.15,
+      "gapAfterSec": 2.95,
       "mood": "night",
       "claims": []
     },
@@ -143,8 +143,8 @@
       "claims": []
     },
     {
-      "text": "Plus one hundred means pure joy for you. Minus one hundred means they want you to fail.",
-      "say": "[plain, a shade colder on the second half] Plus one hundred means pure joy for you. Minus one hundred means they want you to fail.",
+      "text": "A plus one hundred means pure joy for you. A minus one hundred means they want you to fail.",
+      "say": "[plain, clear from the first word, a shade colder on the second half] A plus one hundred means pure joy for you. A minus one hundred means they want you to fail.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
@@ -452,7 +452,7 @@
     },
     {
       "text": "He can't see it. Nobody sees the cards but you. And people don't like to admit being maliciously envious, even to themselves.",
-      "say": "[flat, the laugh gone, then calm and careful] He can't see it. Nobody sees the cards but you. And people don't like to admit being maliciously envious, even to themselves.",
+      "say": "[flat, the laugh gone, then calm and careful, every word crisp to the last] He can't see it. Nobody sees the cards but you. And people don't like to admit being maliciously envious, even to themselves.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -464,7 +464,7 @@
       "text": "So asking is out. You'll have to read them. All of them.",
       "say": "[low, a plan forming, a hook on the last two words] So asking is out. You'll have to read them. All of them.",
       "speaker": "narrator",
-      "gapAfterSec": 0.65,
+      "gapAfterSec": 2.15,
       "mood": "day",
       "claims": []
     },
@@ -512,7 +512,7 @@
     },
     {
       "text": "And here's the gift inside the lie rule. A mock score is true, and there's a new one every week. Fresh ammunition.",
-      "say": "[sly, pleased with yourself, quick on the last two words] And here's the gift inside the lie rule. A mock score is true, and there's a new one every week. Fresh ammunition.",
+      "say": "[sly, pleased with yourself, quick on the last two words, every word crisp to the last] And here's the gift inside the lie rule. A mock score is true, and there's a new one every week. Fresh ammunition.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -560,7 +560,7 @@
     },
     {
       "text": "And every night at the counter:",
-      "say": "[soft, a lead-in] And every night at the counter:",
+      "say": "[soft, a lead-in, every word crisp to the last] And every night at the counter:",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -591,8 +591,8 @@
       "claims": []
     },
     {
-      "text": "Teacher: Up.",
-      "say": "[clipped, no argument] Up.",
+      "text": "Teacher: Stand up, now.",
+      "say": "[brisk, a teacher's order, no argument, every word clear] Stand up, now.",
       "speaker": "Teacher",
       "gapAfterSec": 0.65,
       "mood": "day",
@@ -1004,7 +1004,7 @@
     },
     {
       "text": "Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
-      "say": "[quiet, direct, a small smile on be honest, unhurried] Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "say": "[quiet, direct, a small smile on be honest, unhurried, every word crisp to the last] Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
       "speaker": "narrator",
       "gapAfterSec": 1.3,
       "mood": "morning",

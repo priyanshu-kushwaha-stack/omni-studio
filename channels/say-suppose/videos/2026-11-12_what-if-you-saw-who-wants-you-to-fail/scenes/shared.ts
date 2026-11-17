@@ -20,6 +20,11 @@ export const KANG = { head: "#c9a0d6", coat: "#7a7f8c" } as const;
 /** Everyone else: pastel heads on ink bodies. Pick by index. */
 export const PASTELS = ["#7fa0c4", "#b58fc7", "#7fc29b", "#e6a0a0", "#d9c26a", "#9fc0e0", "#c9a0d6", "#a8c97f"] as const;
 
+/** Wordless lead-ins: beats' line number -> frames its beat (and that beat's sound) opens before the line's first word,
+ *  inside the air timing.yaml puts before it. "Eleven.": the kitchen and the clock at eleven get 1.5 s before the word
+ *  (the owner, 2026-11-17: "camera movement should slow down and show watch for a little more time"). */
+export const LEADS: Record<number, number> = { 48: 45 };
+
 /** Everything a beat needs to know about where it is. */
 export interface Shot {
   frame: number;

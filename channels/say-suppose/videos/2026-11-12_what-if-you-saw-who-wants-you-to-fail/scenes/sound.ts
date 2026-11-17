@@ -6,6 +6,7 @@
  *  narration with no retiming. Each cue starts on its section's first line; each bed on the line where its set comes in. */
 import type { Clip } from "@whatif/kit/timeline";
 import { FPS } from "@whatif/kit/theme";
+import { LEADS } from "./shared";
 
 /** One score cue per section, on the line it starts with; `file` is under assets/music/. */
 const SCORE: { file: string; line: number }[] = [
@@ -51,7 +52,7 @@ const COLD_BED = "street-night";
 
 /** The plan in seconds, from the beats' clips (the cold open's lines left out) and the frame the platform starts on. */
 export function soundPlan(clips: Clip[], totalFrames: number, start = 0): SoundPlan {
-  const at = (i: number) => (i === 0 ? start / FPS : clips[i].from / FPS);
+  const at = (i: number) => (i === 0 ? start / FPS : (clips[i].from - (LEADS[i] ?? 0)) / FPS);
   const end = (i: number) => (clips[i].from + clips[i].frames) / FPS;
   const cues = [...(start > 0 ? [{ file: COLD_SCORE, line: -1 }] : []), ...SCORE];
   const starts = cues.map((c) => (c.line < 0 ? 0 : at(c.line)));

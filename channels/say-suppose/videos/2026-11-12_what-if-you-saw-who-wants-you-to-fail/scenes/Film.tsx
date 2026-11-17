@@ -5,10 +5,10 @@ import { LookContext } from "@whatif/kit/stage/Look";
 import { moodLook, type MoodName } from "@whatif/kit/stage/moods";
 import { Finish } from "@whatif/kit/stage/Stage";
 import { BEATS } from "./beats";
-import { lastIndex, type Shot } from "./shared";
+import { lastIndex, LEADS, type Shot } from "./shared";
 import { Captions } from "./Captions";
 import { soundPlan } from "./sound";
-import { COLD, coldCuts, ColdFlash, ColdSound, coldSnap, coldSource } from "./ColdOpen";
+import { COLD, coldCuts, ColdFlash, coldFrame, ColdRewind, ColdSound, coldSnap, coldSource } from "./ColdOpen";
 
 /** The score's level, the owner's (taste.md 2026-11-08, G5 of the pause-time film): about 26 dB under the voice while
  *  it speaks, rising to about 8 dB under it in the wordless holds. It dips DUCK_IN frames before a line and comes back
@@ -57,10 +57,10 @@ const Picture: React.FC<FilmProps> = ({ timeline, lines: allLines }) => {
   const clips = all.slice(COLD);
   const lines = allLines.slice(COLD);
   const coldEnd = all[COLD - 1].from; // "It started this morning.": the platform
-  const starts = BEATS.map((b) => (b.firstLine === 0 ? coldEnd : clips[b.firstLine].from));
+  const starts = BEATS.map((b) => (b.firstLine === 0 ? coldEnd : clips[b.firstLine].from - (LEADS[b.firstLine] ?? 0)));
   const cuts = coldCuts(all, clips);
   const cold = frame < coldEnd;
-  const src = cold ? coldSource(frame, cuts) : frame;
+  const src = cold ? coldSource(coldFrame(frame, coldEnd), cuts) : frame;
   const index = Math.max(0, lastIndex(starts, (s) => src >= s));
   const beat = BEATS[index];
   const to = starts[index + 1] ?? timeline.totalFrames;
@@ -73,6 +73,7 @@ const Picture: React.FC<FilmProps> = ({ timeline, lines: allLines }) => {
         <beat.Component shot={shot} />
       </LookContext.Provider>
       {!cold && <Captions frame={frame} clips={clips} />}
+      <ColdRewind frame={frame} end={coldEnd} />
       <ColdFlash frame={frame} cuts={cuts} end={coldEnd} />
       <Finish />
     </AbsoluteFill>
