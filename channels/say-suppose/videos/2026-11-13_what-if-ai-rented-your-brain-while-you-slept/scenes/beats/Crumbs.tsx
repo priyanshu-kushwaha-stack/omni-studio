@@ -22,7 +22,6 @@
 //   30    your phone; INSERT the box of squiggly letters, typed; the old newspapers coming out as clean lines
 //   31    the papers riffle faster; the bunk room at night, the band on, the ghost, the coins (the same bargain)
 //   32    the jar a quarter full; your eyes on it; eight coins in; the clock; your eyes on the clock
-import { at6, DEBT, isV6, V6 } from "./V6.Kit";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { dir, joints, LIMB, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
@@ -41,11 +40,11 @@ import { CaptchaPhone, DreamingScientist, HeartOnBench, KnotInsert, Newspapers, 
 import { aimArm, headOf, talk, ThoughtCloud, You, type Body, type Face } from "./Crumbs.Rig";
 import { SHOWER, ShowerStage } from "./Crumbs.Shower";
 import { ChairAgain, chairSpan, TwoBands, twoBandsSpan } from "./V5.Crumbs";
-import { isV5 } from "./V5.Kit";
+import { atV, isV5 } from "./V5.Kit";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number, v6: Clip[]) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const h17 = lineEnd(clips, 17);
@@ -76,7 +75,7 @@ function times(clips: Clip[], start: number, end: number, v6: Clip[]) {
     crumbs: [
       [at(27, 0.16), 0, "squiggle"], [at(27, 0.22), 1, "shoe"], [at(27, 0.37), 1, "bowl"], [at(27, 0.43), 0, "note"],
       [at(27, 0.48), 1, "word"], [at(27, 0.53), 0, "face"],
-      // script v6 review: the same stranger's face, drawn badly the same way, in BOTH columns (nobody remarks on it)
+      // v6 review: the same stranger's face, drawn badly the same way, in BOTH columns (nobody remarks on it)
       [at(27, 0.57), 1, "face"], [at(27, 0.94), 0, "knot"], [at(27, 0.97), 1, "sorry"],
     ] as [number, 0 | 1, CrumbKind][],
     // 28: the page
@@ -90,11 +89,10 @@ function times(clips: Clip[], start: number, end: number, v6: Clip[]) {
     coinsNight: from(33) + 6,
     // 32: the jar and the clock (cut since v3: its one-frame clip would give equal camera keys, so each step is at
     // least a frame after the one before)
-    // G3: on v6 the jar and the clock play across "Problem one. Ninety dollars for eight hours. And everyone on your
-    // street can count." (v6 38), which held one close for 6 s in v6: the jar on "Ninety dollars", eight coins on "eight
-    // hours", the clock on "everyone", your eyes on "can count"
-    ...rising(isV6(v6) ? [at6(v6, V6.problemOne, 0.3), at6(v6, V6.problemOne, 0.4), at6(v6, V6.problemOne, 0.5),
-      at6(v6, V6.problemOne, 0.68), at6(v6, V6.problemOne, 0.86)]
+    // G3, ported to v5 numbering: "keep it" held one close across "Problem one. Ninety dollars for eight hours. So
+    // what's twelve worth?" (v5 50; v1 30-32 collapse onto it). The jar on "$90", your eyes on it, eight coins on "eight
+    // hours", the clock on "So what's", your eyes on "twelve worth?" (the line's word timings).
+    ...rising(isV5(v3) ? [atV(v3, 50, 0.4), atV(v3, 50, 0.52), atV(v3, 50, 0.62), atV(v3, 50, 0.76), atV(v3, 50, 0.87)]
       : [from(32), at(32, 0.26), at(32, 0.45), at(32, 0.79), at(32, 0.9)], ["jar", "eyesJar", "eight", "clock", "eyesClock"] as const),
   };
 }
@@ -244,7 +242,7 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
       you: closeUp(yh.x + 50, yh.y, 2.6),
     };
     return (
-      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k2", 3)} mood={mood} debt={{ amount: DEBT.crumbs }}
+      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k2", 3)} mood={mood}
         you={{ body: you, face: youFace, held, tongue: frame >= k.tongue && frame < k.turn }} brother={{ body: bro, face: broFace, held: spoon }} onTable={page} />
     );
   }
@@ -270,7 +268,7 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
     };
     void sh;
     return (
-      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k4", 3)} mood={mood} debt={{ amount: DEBT.crumbs }}
+      <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k4", 3)} mood={mood}
         you={{ body: standing, face: youFace, held: frame < k.fold ? <SheetBlob /> : undefined, seated: false }}
         brother={{ body: bro, face: broFace, held: frame < k.slip ? spoon : undefined }}
         onTable={proud ? <SheetSquare x={760} /> : null}
@@ -330,7 +328,7 @@ const KitchenShot: React.FC<{ frame: number; k: T; mood: MoodName }> = ({ frame,
     eyesClock: closeUp(yh.x + 40, yh.y - 10, 2.6),
   };
   return (
-    <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k6", 3)} mood={mood} debt={{ amount: DEBT.crumbs }} jar={frame >= k.jar ? jarFill : frame >= k.keep ? 0.25 : null}
+    <KitchenTable frame={frame} cam={drift(cams[shot], frame, "crumbs-k6", 3)} mood={mood} jar={frame >= k.jar ? jarFill : frame >= k.keep ? 0.25 : null}
       clock={clockT} you={{ body: you, face: youFace, held }} brother={{ body: bro, face: broFace, light, two: true, bowl: true }}
       onTable={notebook} extra={<>
         {coins}
@@ -484,7 +482,7 @@ function v5Moment(frame: number, v3: Clip[], mood: MoodName) {
 }
 
 const Crumbs: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to, shot.v6);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   const i = Math.max(17, shot.clips.findIndex((c, n) => n >= 17 && shot.frame < c.from + c.frames + 11));
   const mood = (shot.lines[i]?.mood ?? "morning") as MoodName;
   const kitchenMood: MoodName = mood === "day" ? "morning" : mood;

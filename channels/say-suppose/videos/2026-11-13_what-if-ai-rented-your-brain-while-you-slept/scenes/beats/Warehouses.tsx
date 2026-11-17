@@ -32,7 +32,6 @@ import { BROTHER, camAt, CLERK, current, GHOST, lineEnd, mix, PASTELS, ramp, typ
 import { aimArm, handOf, PaperInsert, Sfx, talk, type Body } from "./NightShift.Rig";
 import { FaceMarks } from "./NightShift.Rooms";
 import { MorningKitchen } from "./Photo.Parts";
-import { DEBT } from "./V6.Kit";
 import { BTABLE, Breakfast, Broker, CapAndBand, ChessSheet, ClipboardSheet, HeldCap, LabelSheet, MapSheet, TableThings } from "./Warehouses.Parts";
 import { atV, isV5, V5 } from "./V5.Kit";
 import { signSpan, VisaSign } from "./V5.Late";
@@ -54,7 +53,7 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const h5 = lineEnd(clips, 69) + 2; // performed: he walks home
   return {
     start, end,
-    // script v6 line 67: each number flips on its word (90, 41, 12 at 0.0, 0.11, 0.32 of the line)
+    // each number flips on its word: "Ninety. Forty-one. Twelve." (0.0, 0.11, 0.32 of the line)
     flaps: [from(62) - 4, at(62, 0.1), at(62, 0.31)] as const, wideTable: at(62, 0.55),
     ...plasma,
     front: from(64) - 2, inside: at(64, 0.24), rows: at(64, 0.62),
@@ -88,7 +87,7 @@ const BreakfastBit: React.FC<{ frame: number; k: T; wide: boolean }> = ({ frame,
     : camAt(frame, [[k.start, insert(BTABLE.band.x, 700, 2.6)], [k.wideTable, insert(BTABLE.band.x, 700, 3.0)]]);
   const glum = { brows: "sad" as const, lids: 0.35 + m * 0.1, mouth: "flat" as const, look: { x: 0.9, y: 0.6 } };
   const scene = (mm: number) => (
-    <MorningKitchen frame={frame} cam={drift(cam, frame, "wh-table", 2)} jarFill={0.95} debt={{ amount: DEBT.crash, was: DEBT.photo }}
+    <MorningKitchen frame={frame} cam={drift(cam, frame, "wh-table", 2)} jarFill={0.95}
       actors={
         <g>
           <Breakfast frame={frame} morning={mm} youFace={glum} broFace={{ ...glum, look: { x: 0.9, y: 0.7 } }} />
@@ -166,7 +165,7 @@ const InsideBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, sh
   const cam: Camera =
     shot === "inside" ? camAt(frame, [[k.inside, { x: 960, y: 560, zoom: 1.02 }], [k.rows, { x: 900, y: 600, zoom: 1.15 }]])
       : shot === "rows" ? camAt(frame, [[k.rows, { x: 760, y: 820, zoom: 1.9 }], [k.chess, { x: 700, y: 800, zoom: 2.1 }]])
-        : shot === "bulk" ? camAt(frame, [[k.bulk, { x: 960, y: 420, zoom: 1.5 }], [k.clerkA, { x: 960, y: 560, zoom: 1.0 }]])
+        : shot === "bulk" ? camAt(frame, [[k.bulk, { x: 960, y: 440, zoom: 1.4 }], [k.clerkA, { x: 960, y: 540, zoom: 1.1 }]]) // v7: slower
           : camAt(frame, [[k.heading, { x: 520, y: 760, zoom: 1.6 }], [k.arrive, { x: 600, y: 780, zoom: 1.85 }]]);
   return (
     <SetScene set={warehouseInside} mood="night" frame={frame} cam={drift(cam, frame, "wh-in", 3)} cast={[]}
@@ -199,7 +198,8 @@ const FrontBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, sho
   let cam: Camera;
   let options: Partial<WarehouseFrontOptions> = FRONT_NIGHT;
   if (shot === "front") {
-    cam = camAt(frame, [[k.front, { x: 1000, y: 560, zoom: 1.0 }], [k.inside, { x: 1080, y: 640, zoom: 1.35 }]]);
+    // v7 (owner, G3 note 3: slow moves under the voice): was 1.0 to 1.35 in 1.4 s
+    cam = camAt(frame, [[k.front, { x: 1000, y: 560, zoom: 1.0 }], [k.inside, { x: 1040, y: 600, zoom: 1.12 }]]);
     actors = <Figure x={C.x} y={C.y} scale={C.scale} facing={-1} head={CLERK.head} coat={CLERK.coat} held={CLIPBOARD} mouth="flat" look={{ x: 0.9, y: 0 }} />;
   } else if (shot === "clerkA" || shot === "clerkB") {
     const A = shot === "clerkA";
@@ -249,7 +249,7 @@ const FrontBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, sho
     const broFace = { brows: "worry" as const, lids: 0.45, mouth: frame >= k.shake[0] ? ("frown" as const) : ("flat" as const), look: { x: 0.9, y: liftT > 0.3 ? -0.5 : 0 } };
     const brHead = headAt(500, WAREHOUSE.floor, 1.15, STAND, 1);
     cam = shot === "arrive"
-      ? camAt(frame, [[k.arrive, { x: 700, y: 620, zoom: 1.25 }], [k.h4, { x: 620, y: 680, zoom: 1.7 }]])
+      ? camAt(frame, [[k.arrive, { x: 690, y: 630, zoom: 1.25 }], [k.h4, { x: 640, y: 670, zoom: 1.42 }]]) // v7: slower (was to 1.7 in 3 s)
       : shot === "brim"
         ? frame < k.lift[0]
           ? camAt(frame, [[k.h4, { x: 600, y: 700, zoom: 1.9 }], [k.lift[0], { x: 600, y: 680, zoom: 2.0 }]])
@@ -296,7 +296,7 @@ const HomeBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, shot
   const brokerX = BRIDGE.lamps[1] + 150;
   const turnHead = ramp(frame, k.broker + 10, k.broker + 30);
   const cam = shot === "home"
-    ? camAt(frame, [[k.home, { x: 1150, y: 680, zoom: 1.5 }], [k.broker, { x: 900, y: 680, zoom: 1.5 }]])
+    ? camAt(frame, [[k.home, { x: 1100, y: 680, zoom: 1.5 }], [k.broker, { x: 960, y: 680, zoom: 1.5 }]]) // v7: a slower pan
     : camAt(frame, [[k.broker, { x: 1350, y: 650, zoom: 1.7 }], [k.end, { x: 1300, y: 640, zoom: 1.85 }]]);
   return (
     <BridgeScene frame={frame} mood="night" cam={drift(cam, frame, "wh-home", 3)} queue={0}

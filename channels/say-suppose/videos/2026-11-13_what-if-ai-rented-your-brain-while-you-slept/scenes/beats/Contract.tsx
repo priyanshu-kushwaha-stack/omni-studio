@@ -30,13 +30,12 @@ import { Coin } from "../parts";
 import { BROTHER, camAt, current, lineEnd, linear, mix, noise, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, Broker, Brother, CrumbPage, headOf, mixArm, Notebook, Pen, talk, WallClock, You, type Body, type Face } from "./Contract.Kit";
 import { isV5, V5 } from "./V5.Kit";
-import { DEBT, DebtNote, isV6, V6 } from "./V6.Kit";
 import { ShoeQuery, shoeSpan } from "./V5.Late";
 
 type T = ReturnType<typeof times>;
 
 /** Every frame the beat uses, from the narration clips (`at(i, p)`: p of the way through line i). */
-function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const hold1 = lineEnd(clips, 74); // performed: the pen to the line; his hand comes down flat
@@ -54,10 +53,6 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]
     start, end,
     contract: at(71, 0.13), coins: at(71, 0.28), year: at(71, 0.44),
     broker: at(71, 0.6), you71: at(71, 0.8),
-    // script v6 line 78, the broker admiring: "Twelve hours a night, six weeks straight. Nobody on this street sleeps deeper."
-    deeper: isV6(v6) ? [v6[V6.deeper].from - 4, lineEnd(v6, V6.deeper)] as const : [from(72) - 8, from(72) - 6] as const,
-    // G3: a cut on "Nobody on this street sleeps deeper." to the two of you across the table (one close held 6 s in v6)
-    deeperTwo: isV6(v6) ? Math.round(v6[V6.deeper].from + v6[V6.deeper].frames * 0.5) : from(72) - 7,
     // 72 (the margin doodle, the forty signatures) was cut in v5: its one-frame clip would put these keys out of order,
     // so they fold into the frames just before 73, strictly increasing
     ...(clips[72].frames > 1 ? {
@@ -160,9 +155,7 @@ function cast(frame: number, k: T) {
   broker.pose.armF = mixArm(aimArm(broker, { x: 1130 - tap * 6, y: TABLE.top - 6 - tap * 12 }), [10, 12], stand);
   broker.pose.armB = mixArm(aimArm(broker, { x: 1250, y: TABLE.top + 4 }), [-8, 10], stand);
   const lookClock = frame >= k.lookClock;
-  const brokerFace: Face = frame >= k.deeper[0] && frame < k.deeper[1] + 8
-    ? { brows: "raised", lids: 0.15, mouth: talk(frame, k.deeper[0] + 4, k.deeper[1], "smile"), eyes: 1.05, look: { x: 0.9, y: 0.25 } }
-    : frame < k.broker
+  const brokerFace: Face = frame < k.broker
     ? { brows: "none", lids: 0.35, mouth: "smirk", eyes: 0.95, look: { x: 0.8, y: 0.2 } }
     : frame < k.hold2
       ? { brows: frame >= k.hold1 ? "raised" : "flat", lids: frame >= k.hold1 ? 0 : 0.4, mouth: frame >= k.hold1 ? "flat" : "smirk", eyes: 1,
@@ -342,8 +335,6 @@ const Table3D: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam
       <g transform={`translate(${PAGE.x} ${PAGE.y}) rotate(${PAGE.tilt})`}>
         <rect x={-PAGE.w / 2 + 14} y={-PAGE.h / 2 + 18} width={PAGE.w} height={PAGE.h} rx={8} fill="#000" opacity={0.3} />
         <rect x={-PAGE.w / 2} y={-PAGE.h / 2} width={PAGE.w} height={PAGE.h} rx={8} fill="#f6ecd6" stroke="#cdbfa6" strokeWidth={3} />
-        {/* script v6: the fridge note on the table beside the contract, the number it clears */}
-        <DebtNote x={-PAGE.w / 2 - 95} y={-PAGE.h / 2 + 230} amount={DEBT.crash} s={1.2} tilt={-8} />
         <rect x={-PAGE.w / 2 + 40} y={-PAGE.h / 2 + 50} width={300} height={22} rx={8} fill="#5a5448" />
         <circle cx={PAGE.w / 2 - 80} cy={-PAGE.h / 2 + 80} r={42} fill={CRIMSON} opacity={0.85} />
         <circle cx={PAGE.w / 2 - 80} cy={-PAGE.h / 2 + 80} r={30} fill="none" stroke="#f6ecd6" strokeWidth={3} opacity={0.7} />
@@ -410,8 +401,11 @@ const ContractShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k,
     const shoe = shoeSpan(v3);
     if (frame >= shoe.from && frame < shoe.to) return <ShoeQuery frame={frame} v3={v3} />;
   }
-  const shot = current(frame, [[k.start, "wide"], [k.contract, "contract"], [k.broker, "broker"], [k.you71, "you71"], [k.deeper[0], "deeper"], [k.deeperTwo, "deeperTwo"], [k.margin, "margin"],
-    [k.you72, "you72"], [k.sigs, "sigs"], [k.close73, "close73"], [k.pen73, "pen73"], [k.closer73, "closer73"], [k.pick, "pick"],
+  // v1 72 (the margin doodle, the signatures) is cut: its shots fold into one-frame slots before 73, so they leave the
+  // cut list (they flashed for 7 frames between "...for a year" and "Sign")
+  const cut72 = k.sigs - k.margin <= 5;
+  const shot = current(frame, [[k.start, "wide"], [k.contract, "contract"], [k.broker, "broker"], [k.you71, "you71"],
+    ...(cut72 ? [] : [[k.margin, "margin"], [k.you72, "you72"], [k.sigs, "sigs"]] as [number, string][]), [k.close73, "close73"], [k.pen73, "pen73"], [k.closer73, "closer73"], [k.pick, "pick"],
     [k.hold1, "hand"], [k.room1, "room1"], [k.notYet[0], "notYet"], [k.hold2, "tip"], [k.side2, "side2"], [k.closes[0], "closes"],
     [k.clock, "clock"]]);
   if (shot === "clock") return <ClockInsert frame={frame} k={k} />;
@@ -419,11 +413,11 @@ const ContractShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k,
   const top = ["contract", "margin", "sigs", "hand", "tip"].includes(shot);
   const cams: Record<string, Camera> = {
     wide: camAt(frame, [[k.start, { x: 1330, y: 600, zoom: 1.12 }], [k.contract, { x: 1300, y: 610, zoom: 1.2 }]]),
-    contract: camAt(frame, [[k.contract, { x: 900, y: 420, zoom: 2.0 }], [k.year, { x: 880, y: 360, zoom: 2.3 }], [k.broker, { x: 900, y: 420, zoom: 1.6 }]]),
+    // v7 (owner, G3 note 3): one slow push onto the contract's terms; it used to pull from 2.3 back to 1.6 in 1.6 s under
+    // the line, just before the cut
+    contract: camAt(frame, [[k.contract, { x: 900, y: 420, zoom: 2.0 }], [k.broker, { x: 885, y: 375, zoom: 2.3 }]]),
     broker: camAt(frame, [[k.broker, closeUp(b.x - 60, b.y + 30, 2.5)], [k.you71, closeUp(b.x - 60, b.y + 30, 2.7)]]),
-    you71: camAt(frame, [[k.you71, closeUp(y.x + 60, y.y + 30, 2.5)], [k.deeper[0], closeUp(y.x + 60, y.y + 30, 2.75)]]),
-    deeper: camAt(frame, [[k.deeper[0], closeUp(b.x - 90, b.y + 50, 2.2)], [k.deeperTwo, closeUp(b.x - 75, b.y + 35, 2.55)]]),
-    deeperTwo: camAt(frame, [[k.deeperTwo, { x: 1180, y: 600, zoom: 1.4 }], [k.margin, { x: 1150, y: 590, zoom: 1.6 }]]),
+    you71: camAt(frame, [[k.you71, closeUp(y.x + 60, y.y + 30, 2.5)], [k.margin, closeUp(y.x + 60, y.y + 30, 2.75)]]),
     margin: camAt(frame, [[k.margin, insert(MARGIN.x - 10, MARGIN.y + 10, 3.4)], [k.cloud, insert(MARGIN.x - 10, MARGIN.y - 20, 3.2)],
       [k.you72, insert(MARGIN.x - 10, MARGIN.y - 50, 3.5)]]),
     you72: camAt(frame, [[k.you72, closeUp(y.x + 70, y.y + 40, 2.6)], [k.sigs, closeUp(y.x + 70, y.y + 40, 2.8)]]),
@@ -458,7 +452,7 @@ const ContractSound: React.FC<{ k: T }> = ({ k }) => (
 );
 
 const Contract: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to, shot.v3, shot.v6);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <ContractShot frame={shot.frame} k={k} v3={shot.v3} />

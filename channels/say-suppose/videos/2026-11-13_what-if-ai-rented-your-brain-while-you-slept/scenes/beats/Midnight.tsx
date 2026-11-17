@@ -8,7 +8,9 @@
 //        top bunk and drops his on top (click); INSERT his foot shuts the drawer.
 //   hold (3 s, performed) three knocks at the front door; you both look at the door; nobody moves; the knocking stops;
 //        steps go down the stairs.
-//   88   you lie down with nothing on your forehead; the jar, as full as it will ever be; your eyes close.
+//   125  (v5) the landing outside your shut door, lit: the grey suit waits; "Nobody opens." he goes down the stairs.
+//   88   you lie down with nothing on your forehead; the jar, as full as it will ever be; "Yours is the only window on
+//        the street not working": the hundred windows at night, every pane lit but yours.
 //   89   the room, wide: nothing above the blanket where the pale second you used to type. Nobody's typing.
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
@@ -24,12 +26,11 @@ import { BunkRoom, BUNK } from "../sets/BunkRoom";
 import { BrotherInBed, brotherLying } from "./Midnight.Brother";
 import { blinking, BROKER, BROTHER, camAt, current, GHOST, lineEnd, mix, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, handAt, headOf, Pen, talk, WallClock, You, type Body, type Face } from "./Contract.Kit";
-import { isV5, V5 } from "./V5.Kit";
-import { at6, isV6, V6 } from "./V6.Kit";
+import { atV, isV5, V5 } from "./V5.Kit";
 
 type T = ReturnType<typeof times>;
 
-function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]) {
+function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
   const from = (i: number) => clips[i].from;
   const at = (i: number, p: number) => Math.round(clips[i].from + clips[i].frames * p);
   const holdA = lineEnd(clips, 87); // performed: the drawer
@@ -45,7 +46,6 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]
   const thursday = bEnd;
   const stepsAt = v5 ? Math.max(lineEnd(v3, V5.thursday) + 4, thursday + 20) : from(88) - 2;
   const lie = Math.max(from(88) - 3, stepsAt + 1);
-  const inS = (p: number) => Math.round(stepsAt + (lie - stepsAt) * p);
   return {
     start, end,
     you86: at(86, 0.22), band86: at(86, 0.5), bro86: at(86, 0.78),
@@ -56,14 +56,18 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[], v6: Clip[]
     scam, scamLine: v5 ? [v3[V5.scam].from, lineEnd(v3, V5.scam)] as const : [scam, scam] as const,
     holdB, knocks: [inB(0.06), inB(0.17), inB(0.28)], look: inB(0.12), youLook: inB(0.42), broLook: inB(0.68),
     thursday, thursdayLine: v5 ? [v3[V5.thursday].from, lineEnd(v3, V5.thursday)] as const : [thursday, thursday] as const,
-    stepsAt, steps: v5 ? [inS(0.1), inS(0.3), inS(0.5), inS(0.7)] : [inB(0.7), inB(0.78), inB(0.86), inB(0.94)],
+    stepsAt,
     lie, jar88: at(88, 0.45), shut88: at(88, 0.66), eyes88: at(88, 0.86),
     wide89: from(89) - 3,
-    // script v6 line 100: the grey suit at your front door, knocking, then leaving; line 101 on "Yours is the only window
-    // on the street not working": the hundred windows at night, every pane lit with a typist but yours
-    ...(isV6(v6) ? {
-      landing: stepsAt, leave: at6(v6, V6.knock, 0.72), windows: at6(v6, V6.window, 0.58),
-    } : { landing: lie - 2, leave: lie - 1, windows: from(89) - 4 }),
+    // v6 review, on v5's lines: "The man in the grey suit, at midnight, for your answer." (v5 125) the landing outside
+    // your shut door, lit, him waiting there; "Nobody opens." he turns and goes down the stairs (the steps follow him).
+    // "Yours is the only window on the street not working." (v5 126 at 0.58) the hundred windows at night, every pane
+    // lit with a typist but yours.
+    ...(v5 ? (() => {
+      const leave = Math.min(lie - 8, Math.max(stepsAt + 20, atV(v3, V5.nobody, 0.72)));
+      const st = (p: number) => Math.round(leave + (lie - leave) * p);
+      return { landing: stepsAt, leave, windows: Math.max(lie + 2, at(88, 0.58)), steps: [st(0.08), st(0.3), st(0.52), st(0.74)] };
+    })() : { landing: lie - 2, leave: lie - 1, windows: from(89) - 4, steps: [inB(0.7), inB(0.78), inB(0.86), inB(0.94)] }),
   };
 }
 
@@ -254,11 +258,11 @@ const LandingSet: React.FC = () => (
 
 /** Script v6 line 100: the landing outside your front door at midnight. The grey suit knocks, waits, and goes. */
 const Landing: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const knock = frame < k.leave && Math.floor((frame - k.landing) / 7) % 2 === 0 && frame - k.landing < 40;
+  // v5's knocks are heard before "Come back Thursday": here he only waits at the shut door, then goes
   const gone = ramp(frame, k.leave, k.leave + 70);
   const x = mix(1240, 2200, gone);
   const pose: Pose = frame < k.leave
-    ? { ...STAND, armF: knock ? [-38, -70] : [-20, -60], armB: [30, 60] }
+    ? { ...STAND, armF: [-20, -60], armB: [30, 60] }
     : walkPose(frame * 0.3);
   const cam = drift(camAt(frame, [[k.landing, { x: 1040, y: 600, zoom: 1.25 }], [k.lie, { x: 1080, y: 590, zoom: 1.4 }]]), frame, "landing", 3);
   const actors = (
@@ -276,7 +280,8 @@ const Landing: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
 const OnlyDark: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const Y = yourWindow();
   const mine = windowIndex(WS.yours.col, WS.yours.row);
-  const cam = camAt(frame, [[k.windows, { x: Y.x + 60, y: Y.y + 20, zoom: 2.3 }], [k.wide89, { x: Y.x + 40, y: Y.y - 30, zoom: 1.55 }]]);
+  // v7 (owner, G3 note 3): a slow push onto your one dark pane (v6 pulled from 2.3 to 1.55 in 3 s under the line)
+  const cam = camAt(frame, [[k.windows, { x: Y.x + 30, y: Y.y - 10, zoom: 1.55 }], [Math.max(k.windows + 1, k.wide89), { x: Y.x + 40, y: Y.y, zoom: 1.78 }]]);
   return <WindowStreetScene frame={frame} mood="night" cam={drift(cam, frame, "onlydark", 3)} onAt={(i) => (i === mine ? 1e9 : -999)} coins={false} />;
 };
 
@@ -316,7 +321,7 @@ const MidnightShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     lie: camAt(frame, [[k.lie, { x: 560, y: 640, zoom: 2.0 }], [k.jar88, { x: 540, y: 650, zoom: 2.15 }]]),
     jar88: camAt(frame, [[k.jar88, { x: BUNK.jar.x + 60, y: BUNK.jar.y - 110, zoom: 2.6 }], [k.shut88, { x: BUNK.jar.x + 60, y: BUNK.jar.y - 110, zoom: 2.8 }]]),
     shut88: camAt(frame, [[k.shut88, { x: 540, y: 640, zoom: 2.2 }], [k.wide89, { x: 560, y: 640, zoom: 2.4 }]]),
-    wide89: camAt(frame, [[k.wide89, { x: 960, y: 560, zoom: 1.25 }], [k.end, { x: 960, y: 540, zoom: 1.0 }]]),
+    wide89: camAt(frame, [[k.wide89, { x: 960, y: 555, zoom: 1.18 }], [k.end, { x: 960, y: 540, zoom: 1.0 }]]), // v7: gentler
   };
   const v = drift(views[shot], frame, "midnight", 3);
   const lying = frame >= k.lie;
@@ -329,12 +334,11 @@ const MidnightSound: React.FC<{ k: T }> = ({ k }) => (
     <Sequence from={k.shut[1] - 2} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.25} /></Sequence>
     {k.knocks.map((f) => <Sequence key={f} from={f} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.75} /></Sequence>)}
     {k.steps.map((f) => <Sequence key={f} from={f} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.12} playbackRate={0.85} /></Sequence>)}
-    {[0, 14, 28].map((d) => <Sequence key={`l${d}`} from={k.landing + 4 + d} durationInFrames={12}><Audio src={staticFile("sfx/knock.wav")} volume={0.6} /></Sequence>)}
   </>
 );
 
 const Midnight: React.FC<{ shot: Shot }> = ({ shot }) => {
-  const k = times(shot.clips, shot.from, shot.to, shot.v3, shot.v6);
+  const k = times(shot.clips, shot.from, shot.to, shot.v3);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <MidnightShot frame={shot.frame} k={k} />

@@ -20,8 +20,7 @@ import { atV, FoldedGhost, gapAfter, V5 } from "./V5.Kit";
 // ------------------------------------------------------------------------------------------------ 58: the news
 
 export function newsSpan(v3: Clip[]) {
-  // script v6 cut noon on the bunk: the news runs on to the shelf of jars ("So you push your nights.")
-  return { from: v3[V5.news].from - 6, to: v3[V5.push].from - 3 };
+  return { from: v3[V5.news].from - 6, to: gapAfter(v3, V5.news) };
 }
 
 const NEWS_WIN = { col: 3, row: 2 };
@@ -66,7 +65,10 @@ export const NewsWindow: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 
   const r = windowAt(NEWS_WIN.col, NEWS_WIN.row);
   const c = { x: r.x + r.w / 2, y: r.y + r.h / 2 };
   const back = atV(v3, V5.news, 0.55);
-  const cam = camAt(frame, [[from, { x: c.x, y: c.y, zoom: 6.4 }], [back, { x: c.x, y: c.y, zoom: 5.6 }], [to, { x: c.x + 120, y: c.y - 30, zoom: 2.2 }]]);
+  // v7 (owner, G3 note 3: slow moves under the voice): a cut on "Nobody's up" to the street of dark windows, then a slow
+  // pull (it pulled from 5.6 to 2.2 in under 2 s)
+  const cam = camAt(frame, [[from, { x: c.x, y: c.y, zoom: 6.4 }], [back - 1, { x: c.x, y: c.y, zoom: 5.8 }],
+    [back, { x: c.x + 80, y: c.y - 20, zoom: 2.7 }], [Math.max(back + 1, to), { x: c.x + 120, y: c.y - 30, zoom: 2.3 }]]);
   return (
     <WindowStreetScene frame={frame} mood="night" cam={drift(cam, frame, "v5-news", 1)} shut={1} sign queue={0}
       actors={<NewsRoom frame={frame} talking={frame < lineEnd(v3, V5.news) + 30} />} />
@@ -76,9 +78,7 @@ export const NewsWindow: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 
 // ------------------------------------------------------------------------------------------------ 59-61: noon
 
 export function noonSpan(v3: Clip[]) {
-  // script v6 cut noon on the bunk (its lines are one-frame placeholders): an empty span, so it never flashes
-  const at = v3[V5.push].from - 3;
-  return { from: at, to: at };
+  return { from: gapAfter(v3, V5.news), to: v3[V5.push].from - 3 };
 }
 
 const Y = BUNK.you;

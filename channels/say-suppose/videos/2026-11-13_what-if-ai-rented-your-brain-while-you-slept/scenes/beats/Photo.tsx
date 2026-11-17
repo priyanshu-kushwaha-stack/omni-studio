@@ -30,7 +30,6 @@ import { GRAD, Scroll } from "../sets/GradHall";
 import { BROTHER, camAt, current, HERO, lineEnd, mix, PASTELS, ramp, type Beat, type Shot } from "../shared";
 import { aimArm, Draw, handOf, PaperInsert, Sfx, talk, type Body } from "./NightShift.Rig";
 import { SIT_UP, SittingYou, youBody, type Face } from "./NightShift.Rooms";
-import { DEBT } from "./V6.Kit";
 import { GradBrother, HallAudience, HallStage, MorningKitchen, PalmBand, PhoneInsert, youInRow } from "./Photo.Parts";
 
 type T = ReturnType<typeof times>;
@@ -224,14 +223,13 @@ const KitchenBit: React.FC<{ frame: number; k: T; shot: Name }> = ({ frame, k, s
   const handY = handOf(you, you.pose.armF);
   return (
     <>
-      <MorningKitchen frame={frame} cam={drift(cam, frame, "photo-kitchen", 3)} debt={{ amount: DEBT.photo, was: DEBT.crumbs }}
+      <MorningKitchen frame={frame} cam={drift(cam, frame, "photo-kitchen", 3)}
         onTable={<g />}
         actors={
           palm ? (
             <g>
               <PalmBand x={1300} y={690} />
-              {/* script v6: $270 is up on "Two hundred and seventy" and stays to the cut */}
-              <PayFlap frame={frame} at={k.palm - 4} x={1300} y={520} value="$270" size={70} settle={4} />
+              <PayFlap frame={frame} at={k.palm + 6} x={1300} y={520} value="$270" size={70} />
             </g>
           ) : (
             <g>

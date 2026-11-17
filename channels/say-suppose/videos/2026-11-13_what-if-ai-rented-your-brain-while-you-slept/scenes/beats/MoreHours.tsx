@@ -73,15 +73,12 @@ function times(clips: Clip[], start: number, end: number, v3: Clip[]) {
     coffee: from(39), sign: from(39) + 8, shut: [at(39, 0.28), at(39, 0.38)] as const, pillow: at(39, 0.44), yours: at(39, 0.72),
     pull: [at(39, 0.8), v5 ? Math.max(at(39, 0.8) + 2, newsSpan(v3).from - 8) : h39 + Math.round((from(40) - h39) * 0.85)] as const,
     stranger: [h39 + 10, v5 ? newsSpan(v3).from : from(40)] as const, hold: h39,
-    shelf: v5 ? v3[V5.push].from - 3 : from(40), clockRuns: v5 ? v3[V5.push].from - 3 : from(40),
-    jars: v5 ? Math.round(v3[V5.push].from + v3[V5.push].frames * 0.72) : at(40, 0.55), // "Your jar becomes a shelf of jars."
+    shelf: v5 ? v3[V5.push].from - 3 : from(40), clockRuns: v5 ? v3[V5.push].from - 3 : from(40), jars: at(40, 0.66), // "becomes a shelf of jars"
     // 41 + hold + 42-43: the cost
     hall: from(41), keys: at(41, 0.21), pockets: at(41, 0.28), atm: at(41, 0.36), keypad: at(41, 0.42), atmFace: at(41, 0.55),
     doors: at(41, 0.67), turn: at(41, 0.86), sit: in41(0.2), broOut: in41(0.3), broWalk: [in41(0.36), in41(0.78)] as const,
     broSit: in41(0.84), thumb: in41(0.9), live: [from(42), lineEnd(clips, 42)] as const, sheepish: lineEnd(clips, 42) - 4,
-    // v1 43 was cut in v6 (a one-frame placeholder): its three shots fold into the beat's last frames, strictly increasing
-    ...(clips[43].frames > 1 ? { last: from(43), lastClose: at(43, 0.39), lastWide: at(43, 0.78) }
-      : { last: end - 3, lastClose: end - 2, lastWide: end - 1 }),
+    last: from(43), lastClose: at(43, 0.39), lastWide: at(43, 0.78),
   };
 }
 
@@ -152,7 +149,8 @@ const ClinicShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const shot = current(frame, [[k.clinic, "wide"], [k.noon, "clock"], [k.nurseOut, "out"]]);
   const lock = (x: number, d: number, ref: number) => (x - ref * (1 - d)) / d;
   const cams: Record<typeof shot, Camera> = {
-    wide: camAt(frame, [[k.clinic, { x: 760, y: 560, zoom: 1.25 }], [k.noon, { x: 640, y: 560, zoom: 1.45 }]]),
+    // v7 (owner, G3 note 3: slow moves under the voice): was 1.25 to 1.45 and a 120 px pan in 2.3 s
+    wide: camAt(frame, [[k.clinic, { x: 740, y: 560, zoom: 1.3 }], [k.noon, { x: 680, y: 560, zoom: 1.42 }]]),
     clock: camAt(frame, [[k.noon, insert(lock(CLINIC.clock.x, 0.86, 960), lock(CLINIC.clock.y, 0.86, 540), 4.0)], [k.nurseOut, insert(lock(CLINIC.clock.x, 0.86, 960), lock(CLINIC.clock.y, 0.86, 540), 4.4)]]),
     out: camAt(frame, [[k.nurseOut, { x: 1100, y: 580, zoom: 1.1 }], [k.office, { x: 1150, y: 580, zoom: 1.15 }]]),
   };
@@ -251,7 +249,7 @@ const CoupleShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const A: Body = { x: ax, y: COUPLE.floor - (inA > 0 ? 40 : 0), scale: 1.1, facing: 1, pose: comeA < 1 || inA > 0 ? walkPose(frame * 0.2 + 1) : STAND };
   if (frame >= k.pass[0] - 6 && frame < k.pass[1] + 6) A.pose = { ...A.pose, armF: [84, 0] };
   const bBack = handAt(B, "back");
-  const band = handed ? null : <Band x={bBack.x} y={bBack.y} scale={0.6} lit={false} />;
+  const band = handed ? null : <Band x={bBack.x} y={bBack.y} scale={0.6} lit />;
   const shot = current(frame, [[k.street, "wide"], [k.couple, "door"], [k.jarNever, "window"]]);
   const cams: Record<typeof shot, Camera> = {
     wide: camAt(frame, [[k.street, { x: 960, y: 560, zoom: 1.0 }], [k.couple, { x: 920, y: 580, zoom: 1.1 }]]),
@@ -265,7 +263,7 @@ const CoupleShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
       {inA < 1 && (
         <g opacity={1 - ramp(frame, k.inside - 8, k.inside)}>
           <Figure x={A.x} y={A.y} scale={A.scale} facing={1} pose={A.pose} head={PASTELS[3]} coat="#9fc0e0" mouth={frame < k.pass[0] ? "o" : "smile"} eyes={0.9} lids={0.5}
-            look={{ x: 1, y: 0 }} blink={blinking(frame, 3)} time={frame} held={handed ? <Band x={0} y={0} scale={0.6} lit={false} /> : undefined} />
+            look={{ x: 1, y: 0 }} blink={blinking(frame, 3)} time={frame} held={handed ? <Band x={0} y={0} scale={0.6} lit /> : undefined} />
         </g>
       )}
       {awayB < 1 && (
@@ -337,7 +335,9 @@ const GranShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
   const cams: Record<typeof shot, Camera> = {
     window: camAt(frame, [[k.gran, { x: 960, y: 520, zoom: 1.3 }], [k.storm, { x: 960, y: 530, zoom: 1.4 }]]),
     storm: { x: G.x + 520, y: G.y + 300, zoom: 2.2 },
-    back: camAt(frame, [[k.outEarn, { x: 960, y: 520, zoom: 1.2 }], [k.finally[0] - 4, { x: 960, y: 500, zoom: 0.58 }]]),
+    // v7 (owner, G3 note 3: slow moves under the voice): a cut to the whole street, then a slow pull (it pulled from 1.2
+    // to 0.58 in 2 s under "out-earns the whole street")
+    back: camAt(frame, [[k.outEarn, { x: 960, y: 510, zoom: 0.7 }], [k.finally[0] - 4, { x: 960, y: 500, zoom: 0.6 }]]),
     face: closeUp(head.x + 40, head.y - 20, 2.6),
   };
   const cam = drift(cams[shot], frame, "more-gran", 3);
@@ -373,9 +373,10 @@ const StreetShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     coffee: camAt(frame, [[k.coffee, { x: 470, y: 830, zoom: 2.6 }], [k.shut[1], { x: 500, y: 830, zoom: 2.4 }]]),
     pillow: camAt(frame, [[k.pillow, { x: 1300, y: 850, zoom: 2.1 }], [k.yours, { x: 1420, y: 850, zoom: 2.0 }]]),
     yours: pullCam(start, final, ramp(frame, k.pull[0], k.pull[1])),
-    // G3: a push from the neighbours' windows onto yours as the jars multiply (one framing held 6 s in v6)
-    shelf: k.jars > k.shelf && k.end > k.jars
-      ? camAt(frame, [[k.shelf, { x: Y.x - 40, y: Y.y - 10, zoom: 3.0 }], [k.jars, { x: Y.x, y: Y.y + 4, zoom: 5.2 }], [k.end, { x: Y.x, y: Y.y + 4, zoom: 6.2 }]])
+    // G3 (the shelf of jars held one framing for 6 s): a slow push from the neighbours' windows onto yours as the jars
+    // multiply, kept calm under the voice (owner, G3 note 3)
+    shelf: k.jars > k.shelf + 1 && k.end > k.jars + 1
+      ? camAt(frame, [[k.shelf, { x: Y.x - 30, y: Y.y - 6, zoom: 3.8 }], [k.jars, { x: Y.x, y: Y.y + 4, zoom: 5.0 }], [k.end, { x: Y.x, y: Y.y + 4, zoom: 5.8 }]])
       : camAt(frame, [[k.shelf, { x: Y.x, y: Y.y + 4, zoom: 5.4 }], [Math.max(k.shelf + 1, k.end), { x: Y.x, y: Y.y + 4, zoom: 6.0 }]]),
   };
   const cam = drift(cams[shot], frame, "more-street", shot === "yours" ? 1 : 2);
@@ -471,7 +472,8 @@ const DoorsShot: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
     two: camAt(frame, [[k.broOut, { x: 660, y: 700, zoom: 1.3 }], [k.live[0], { x: 640, y: 710, zoom: 1.4 }]]),
     live: closeUp((yh.x + bh.x) / 2, bh.y + 40, 2.1),
     you: closeUp(yh.x - 20, yh.y, 2.6),
-    last: camAt(frame, [[k.last, { x: 600, y: 700, zoom: 1.6 }], [k.lastClose, { x: 640, y: 660, zoom: 1.25 }]]),
+    // v7 (owner, G3 note 3: slow moves under the voice): was 1.6 to 1.25 in 2 s
+    last: camAt(frame, [[k.last, { x: 620, y: 680, zoom: 1.4 }], [k.lastClose, { x: 640, y: 660, zoom: 1.28 }]]),
     close: camAt(frame, [[k.lastClose, closeUp(yh.x - 20, yh.y, 2.6)], [k.lastWide, closeUp(yh.x - 20, yh.y, 2.8)]]),
     wide: camAt(frame, [[k.lastWide, { x: 700, y: 640, zoom: 1.3 }], [k.end, { x: 760, y: 600, zoom: 1.1 }]]),
   };

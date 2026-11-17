@@ -4,25 +4,26 @@
   "pipeline_type": "studio-whatif",
   "stage": "final_edit",
   "status": "awaiting_human",
-  "timestamp": "2026-11-15T22:42:03.947112+00:00",
+  "timestamp": "2026-11-17T17:02:43.690884+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {
-    "watch_copy": "renders/g3/g3c-720p.mp4 (git-ignored)",
-    "phone_copy": "renders/g3/g3c-480p-phone.mp4 (git-ignored)",
-    "review_md": "review-g3.md",
+    "watch_copy": "renders/v7/v7-720p.mp4 (git-ignored)",
+    "phone_copy": "renders/v7/v7-480p-phone.mp4 (git-ignored)",
+    "review_md": "review-v7.md",
     "render_recipe": "scenes/render_watch.sh",
     "qc_json": "qc/final_edit.json"
   },
   "style_playbook": "say-suppose",
   "metadata": {
-    "gate": "G3 picture lock",
-    "runtime_s": 647.2,
+    "gate": "G3 picture lock (v7, the final version on v5)",
+    "runtime_s": 790.7,
     "voice": "voice B (owner-locked channel narrator, 2026-11-15); no A/B",
-    "loudness_lufs": -14.2,
+    "loudness_lufs": -14.0,
     "true_peak_dbtp": -1.8,
-    "qc": "final_edit passes loudness, clicks, similarity; opening warning (first word 3.4 s)",
-    "paid_calls": 0
+    "qc": "final_edit passes loudness, clicks, similarity; opening warning (first word 7.4 s, v5's opening)",
+    "paid_calls": 0,
+    "note": "script changed from v6 to v7: G2 (story_script) needs the owner's word again"
   }
 }

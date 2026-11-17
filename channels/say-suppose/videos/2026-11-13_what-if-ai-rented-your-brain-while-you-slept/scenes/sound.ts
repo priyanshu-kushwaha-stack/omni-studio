@@ -12,7 +12,7 @@ import { V1_FROM, V1_TO_V3, V1_TOTAL } from "./remap";
 const SCORE_V1: { file: string; from: number; to: number }[] = [
   { file: "theme-light.mp3", from: 0, to: 13.5 },        // the skit in the clinic: the channel's signal
   { file: "cues/hush.wav", from: 13.5, to: 49.3 },       // Night One: the first rented night
-  { file: "cues/leaflet.wav", from: 49.3, to: 103.7 },   // The Rule: the leaflet
+  { file: "cues/rule-a.wav", from: 49.3, to: 103.7 },    // The Rule: option A, "fine print" (owner, 2026-11-17, on the G3 cut)
   { file: "cues/crumbs.wav", from: 103.7, to: 214.0 },   // Crumbs
   { file: "cues/boom.wav", from: 214.0, to: 294.7 },     // More Hours: the gold rush, then the keys
   { file: "cues/unease.wav", from: 294.7, to: 369.8 },   // The Night Shift
@@ -31,7 +31,7 @@ const PEAK_V1 = { from: 579.1, to: 588.1, floor: 0.1 };
 
 /** Ambience beds (assets/sfx/bed-<name>.wav), each from its start to the next one's. */
 const BEDS_V1: [number, string][] = [
-  [0, "clinic"], [13.5, "kitchen-lamp"], [17, "bunk-night"], // v6: the fridge note replaced the bridge walk here [30, "bunk-morning"], [49.3, "kitchen"],
+  [0, "clinic"], [13.5, "bridge"], [17, "bunk-night"], [30, "bunk-morning"], [49.3, "kitchen"],
   [140, "bridge"], [150, "kitchen"], [214, "bus"], [225, "office"], [240, "street"],
   [294.7, "bunk-night"], [369.8, "hall"], [385, "kitchen"], [414, "kitchen"], [418, "bridge"], [434, "warehouse"], [482.5, "bridge"],
   [487.8, "kitchen-lamp"], [535.5, "bunk-night"], [627.8, "bunk-morning"], [655, "street"],

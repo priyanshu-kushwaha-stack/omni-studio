@@ -62,13 +62,15 @@ export const VisaSign: React.FC<{ frame: number; v3: Clip[] }> = ({ frame, v3 })
   const { from, to } = signSpan(v3);
   const stamp = atV(v3, V5.sign, 0.52);
   const suits = v3[V5.suits].from - 2;
-  const back = atV(v3, V5.suits, 0.4);
   const glance = [atV(v3, V5.suits, 0.5), atV(v3, V5.suits, 0.78)] as const;
   const shot = current(frame, [[from, "sign"], [suits, "suits"]]);
   const cams: Record<typeof shot, Camera> = {
-    // G3: a real push across the 5.6 s (it read as a held frame in v6), from the queue under the sign onto the stamp
-    sign: camAt(frame, [[from, { x: SIGN.x - 60, y: 560, zoom: 1.45 }], [stamp, { x: SIGN.x, y: 470, zoom: 1.85 }], [Math.max(stamp + 1, suits), { x: SIGN.x, y: 440, zoom: 2.1 }]]),
-    suits: camAt(frame, [[suits, { x: SIGN.x, y: 450, zoom: 1.95 }], [back, { x: 1250, y: 610, zoom: 1.28 }], [to, { x: 1240, y: 615, zoom: 1.24 }]]),
+    // G3 (it read as a held frame): a real push across the line, from the queue under the sign onto the stamp; one even
+    // move, slow under the voice (owner, G3 note 3)
+    sign: camAt(frame, [[from, { x: SIGN.x - 30, y: 480, zoom: 1.75 }], [suits, { x: SIGN.x, y: 440, zoom: 2.05 }]]),
+    // v7: a cut to the three suits under the sign, then a slow push (v5 pulled from 1.95 to 1.28 in about a second under
+    // "The three men in grey suits")
+    suits: camAt(frame, [[suits, { x: 1250, y: 600, zoom: 1.32 }], [Math.max(suits + 1, to), { x: 1250, y: 585, zoom: 1.42 }]]),
   };
   const scale = 1.1;
   const looking = frame >= glance[0] && frame < glance[1];

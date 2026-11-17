@@ -42,10 +42,9 @@ export interface Shot {
   from: number;
   /** The frame the next beat starts on. */
   to: number;
-  /** v3's clips in v3 numbering (remap.ts), for a beat rebuilt on v3 lines. Since script v6, a virtual v5 timeline. */
+  /** The clips in v5 numbering (remap.ts): since script v7, a virtual v5 timeline cut from v7's clips, v5 line 24 (cut)
+   *  a one-frame placeholder. Beats rebuilt on v5 lines read this. */
   v3: Clip[];
-  /** Script v6's own clips (story.json numbering), for the moments v6 added. */
-  v6: Clip[];
 }
 
 /** A beat: its component and the pauses (time stopped) it contains, in whole-film frames. */
@@ -59,7 +58,7 @@ export interface Beat {
 }
 
 /** Eased progress from 0 to 1 across a frame range. */
-/** A range a cut line collapsed (script v6: its one-frame placeholder, remap.ts) is a step at `from`, never a crash. */
+/** A range a cut line collapsed (a cut line's one-frame placeholder, remap.ts) is a step at `from`, never a crash. */
 export const ramp = (frame: number, from: number, to: number) =>
   to <= from ? (frame >= from ? 1 : 0)
     : interpolate(frame, [from, to], [0, 1], { easing: Easing.inOut(Easing.cubic), extrapolateLeft: "clamp", extrapolateRight: "clamp" });

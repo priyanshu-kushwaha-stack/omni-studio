@@ -55,6 +55,17 @@ CUES = {
              "light", "quiet night discovery, a soft glowing pad, a slow pulse like a status light, faint data blips, cool wonder"),
     "leaflet": ("0:49-1:44, The Rule: the kitchen, the leaflet drawing itself, the brother's 'still a scam'", 58, 104,
                 "G major", "light", "clean and explanatory, a tidy ticking arpeggio over a light pad, like an interface booting up, neutral and curious"),
+    # v7 (owner, 2026-11-17, on the G3 cut: "Music is not good at all around 1min 24 secs to 2min. That should go with
+    # the story but here feels completely off."): three options for the Rule, to pick by ear. The story there: a deal
+    # too good to be true, read out from a leaflet, the brother's "Still a scam".
+    "rule-a": ("1:22-2:42, The Rule (option A, fine print): the leaflet, the crumbs, the twenty watts, 'Still a scam'", 84,
+               92, "G major", "light", "playful and curious, soft plucked notes over a gentle pad, a light questioning "
+               "melody, a deal that sounds too good to be true, a little wry, not cold"),
+    "rule-b": ("1:22-2:42, The Rule (option B, quiet intrigue)", 84, 80, "E minor", "light", "quiet intrigue, a soft low "
+               "pulse, a small music-box motif with one slightly odd note, a hint of mystery under friendly promises"),
+    "rule-c": ("1:22-2:42, The Rule (option C, the night carried on)", 84, 76, "D major", "light", "quiet and still, the "
+               "same soft glowing pad and slow status-light pulse as the night before, faint data blips, almost "
+               "nothing, so the voice carries"),
     "crumbs": ("1:44-3:34, Crumbs: the shoe, the tune through the wall, the fitted sheet, the bridge word, breakfast "
                "lottery", 114, 116, "C major", "light", "light and odd, small glitchy plucks and bleeps, quirky but cool, curious little anomalies"),
     "boom": ("3:34-4:55, More Hours: the bus nap, the nap room with a till, the street in bed by seven, the keys, the "

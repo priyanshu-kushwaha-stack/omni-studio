@@ -13,7 +13,6 @@ import { INK, MUSTARD, PAPER } from "@whatif/kit/theme";
 import { Jar } from "../parts";
 import { BROTHER, HERO, mix, noise } from "../shared";
 import { Brother, Tongue, You, type Body, type Face } from "./Crumbs.Rig";
-import { FridgeNotes } from "./V6.Kit";
 
 export const TABLE = { from: 610, to: 1280, top: 790, floor: 960, mid: 945 };
 const SEAT_TOP = 850;
@@ -83,17 +82,14 @@ export interface KitchenTableProps {
   onTable?: React.ReactNode;
   /** Drawn last (a bubble, a falling spoon). */
   extra?: React.ReactNode;
-  /** Script v6: the debt note on the fridge (and the graduation flyer beside it), at its story amount. */
-  debt?: { amount: string; was?: string; flyer?: boolean };
 }
 
 /** The kitchen with the breakfast table, lit by the mood. */
-export const KitchenTable: React.FC<KitchenTableProps> = ({ frame, cam, mood, you, brother, jar = null, clock = 1.2, onTable, extra, debt }) => {
+export const KitchenTable: React.FC<KitchenTableProps> = ({ frame, cam, mood, you, brother, jar = null, clock = 1.2, onTable, extra }) => {
   const options = { ...kitchen.defaults, stove: "kettle" as const, steam: 0, counter: ["mug" as const] };
   const props = { cam, mood, frame, options };
   const actors = (
     <>
-      {debt && <FridgeNotes {...debt} />}
       {(!you || you.seated !== false) && <Chair x={YOU_SEAT.x} y={SEAT_TOP} scale={1.1} facing={1} color="#7a5236" />}
       <Chair x={BRO_SEAT.x} y={SEAT_TOP} scale={1.1} facing={-1} color="#7a5236" />
       {you && <You body={you.body} face={you.face} frame={frame} held={you.held} band={you.band} />}
@@ -114,7 +110,7 @@ export const KitchenTable: React.FC<KitchenTableProps> = ({ frame, cam, mood, yo
     <LookContext.Provider value={setLook(kitchen.lights(options), mood, cam)}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }}
         back={<>{kitchen.Back(props)}<Deep cam={cam} depth={0.85}><WallClock x={CLOCK.x} y={CLOCK.y} r={CLOCK.r} t={clock} /></Deep></>}
-        actors={actors} />
+        actors={actors} front={kitchen.Front?.(props)} />
     </LookContext.Provider>
   );
 };

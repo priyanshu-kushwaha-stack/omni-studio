@@ -12,12 +12,12 @@
 //        pass: "This one's for daytime." (his own voice)
 //   hold (2 s, performed) you walk past; he watches you go, the band still held out. (From here the right third of the
 //        frame stays quiet for the end screens.)
-//   95   + hold: the end card: you walking off in the left third of the street; COMMENT, LIKE, SUBSCRIBE in the middle.
+//   95   + hold: the awake street holds to the end, a slow push; COMMENT, LIKE, SUBSCRIBE in one row across the top of the
+//        left two-thirds; the right third stays quiet for the end screens.
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { joints, STAND, walkPose } from "@whatif/kit/rig/pose";
 import { INK } from "@whatif/kit/theme";
-import { street } from "@whatif/kit/sets";
 import { setLook } from "@whatif/kit/sets/common";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";
@@ -154,7 +154,7 @@ const Hall: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam })
   const youOut = frame >= k.out[0] && h.body.x > D.x - D.w / 2 + 30;
   const actors = (
     <>
-      {/* script v6: you peel the labels off, one by one: KEYS as you take your keys, DOOR as you reach the door */}
+      {/* v6 review: you peel the labels off, one by one: KEYS as you take your keys, DOOR as you reach the door */}
       <Peeled frame={frame} at={k.take[0]} x={HALL.hook.x} y={HALL.hook.y - 80} text="KEYS" tilt={-5} />
       <Peeled frame={frame} at={k.walk2[1] - 10} x={D.x} y={470} text="DOOR" tilt={4} />
       <clipPath id="morning-hall-door"><rect x={-1400} y={-800} width={D.x + D.w / 2 + 1400} height={2600} /></clipPath>
@@ -213,32 +213,14 @@ const Steps: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam }
   return <ClinicOutside frame={frame} mood="day" cam={cam} actors={actors} />;
 };
 
-// ------------------------------------------------------------------------------------------------ the end card
-
-const EndCard: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const cam = drift(camAt(frame, [[k.card, { x: 720, y: 620, zoom: 1.1 }], [k.end, { x: 690, y: 620, zoom: 1.14 }]]), frame, "endcard", 3);
-  const p = linear(frame, k.card, k.end);
-  const me: Body = { x: mix(400, 120, p), y: 1010, scale: 1.1, facing: -1, pose: walkPose(frame / 4.6) };
-  const props = { cam, mood: "day" as const, frame, options: { ...street.defaults, auto: false } };
-  return (
-    <AbsoluteFill>
-      <LookContext.Provider value={setLook(street.lights(street.defaults), "day", cam)}>
-        <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={street.Back(props)}
-          actors={<You body={me} face={{ brows: "none", lids: 0.1, mouth: "smile", eyes: 1, look: { x: 1, y: -0.1 } }} frame={frame}
-            held={<Keys x={0} y={0} s={0.7} />} />} front={street.Front?.(props)} />
-      </LookContext.Provider>
-      <EndTags frame={frame} comment={k.comment} like={k.like} subscribe={k.subscribe} />
-    </AbsoluteFill>
-  );
-};
-
 // ------------------------------------------------------------------------------------------------ the cut
 
 const MorningShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, k, v3 }) => {
   const shot = current(frame, [[k.start, "wake"], [k.up, "up"], [k.bridge[0] - 6, "bridge"], [k.smile91, "smile91"], [k.hang, "hang"],
     [k.handShot, "hand"], [k.grinShot, "grin"], [k.drop, "drop"], [k.holdW, "hall"], [k.feel[0], "feel"], [k.tagShot, "tag"],
     [k.doorShot, "door"], [k.clinic, "clinic"], [k.holdP, "pass"], [k.twist, "twist"], [k.card, "card"]]);
-  // script v6: no cut to a walking shot; the awake street holds to the end, the tags over it
+  // v6 review: no cut to a walking shot; the awake street holds to the end with a slow push, the tags over it (G3: the
+  // right third kept quiet for the end screens, the tags across the top of the left two-thirds)
   if (shot === "card") return (
     <AbsoluteFill>
       <DaytimeStreet frame={frame} v3={v3} until={k.end} />

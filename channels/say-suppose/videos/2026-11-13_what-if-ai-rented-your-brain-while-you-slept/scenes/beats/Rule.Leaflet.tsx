@@ -3,9 +3,8 @@
 //   page one   the sleeper and the band; the dotted thread, the pale second you at its desk; coins into a jar; a clock
 //   the link   one laptop, three sleepers threaded to it, a ring round each head; the stamps
 //   crumbs     a spoon with a drop, a speech bubble with a squiggle, a face that isn't yours; a tick
-//   page two   a paper you, the head shaded in, a bulb that glows beside it, then dims
-//   page three a dish of cells wired to a little bat-and-ball game; the bat starts hitting back
-//   page four  (v6) a wardrobe computer, its plug and a spinning coin meter; then a paper you lying flat, its meter at $0
+//   page two   a paper you, the head shaded in, one bulb beside it, lit dim (v7: "about twenty watts, a dim bulb")
+//   page four  a wardrobe computer, its plug and a spinning coin meter; then a paper you lying flat, its meter at $0
 import { interpolate } from "remotion";
 import { setLook } from "@whatif/kit/sets/common";
 import { LookContext } from "@whatif/kit/stage/Look";
@@ -110,9 +109,10 @@ export const PageCrumbs: React.FC<{ frame: number; taste: number; word: number; 
 
 /** Page two: a paper you, the head shaded in from `head` ("Your brain"), a bulb that glows beside it from `bulb` ("about
  *  twenty watts") and dims from `dim` ("unused power"). */
-export const PageTwo: React.FC<{ frame: number; a: number; head: number; bulb: number; dim: number }> = ({ frame, a, head, bulb, dim }) => {
+export const PageTwo: React.FC<{ frame: number; a: number; head: number; bulb: number }> = ({ frame, a, head, bulb }) => {
   const sh = ramp(frame, head, head + 14);
-  const glow = ramp(frame, bulb, bulb + 10) * (1 - ramp(frame, dim, dim + 24) * 0.85);
+  // v7: one dim bulb, lit low on "twenty watts" and held there (never a bright bulb that dims)
+  const glow = 0.32 * ramp(frame, bulb, bulb + 18);
   return (
     <g>
       <circle cx={300} cy={200} r={66} fill="#e6a0a0" opacity={0.8 * sh} />
@@ -125,36 +125,6 @@ export const PageTwo: React.FC<{ frame: number; a: number; head: number; bulb: n
       <circle cx={820} cy={300} r={78} fill={glow > 0.05 ? `rgba(255,227,154,${0.35 + 0.65 * glow})` : "#f3e9d7"} stroke={INK} strokeWidth={6} opacity={frame >= bulb - 12 ? 1 : 0} />
       <Ink d="M790 376 H850 V420 H790 Z M800 440 H840" a={bulb - 10} n={10} />
       {frame >= bulb - 12 && <path d="M800 320 L812 280 L828 320 L840 280" fill="none" stroke={INK} strokeWidth={4} opacity={0.6} />}
-    </g>
-  );
-};
-
-/** Page three: a dish of cells, wired to the old bat-and-ball game; after `better` the bat meets the ball. */
-export const PageThree: React.FC<{ frame: number; a: number; better: number }> = ({ frame, a, better }) => {
-  const box = { x0: 330, x1: 770, y0: 110, y1: 400 };
-  const period = 46;
-  const ph = ((frame - a) % period) / period;
-  const leftward = ph >= 0.5;
-  const bx = leftward ? box.x1 - 20 - (ph - 0.5) * 2 * (box.x1 - box.x0 - 40 + (frame < better ? 60 : 0)) : box.x0 + 20 + ph * 2 * (box.x1 - box.x0 - 40);
-  const by = box.y0 + 30 + Math.abs(Math.sin((frame - a) * 0.07)) * (box.y1 - box.y0 - 60);
-  const batY = frame < better ? box.y0 + 140 + Math.sin(frame * 0.05) * 30 : by;
-  const show = frame >= a + 16;
-  return (
-    <g>
-      <Ink d="M330 580 C330 520 770 520 770 580 C770 640 330 640 330 580 Z" a={a} n={12} />
-      {[0, 1, 2, 3, 4, 5].map((i) => frame >= a + 8 + i * 2 && (
-        <circle key={i} cx={420 + i * 52} cy={575 + (i % 2) * 18} r={9} fill="#e6a0a0" stroke={INK} strokeWidth={3} />
-      ))}
-      <DrawLine d="M550 540 V420" from={a + 10} to={a + 18} color={INK} width={4} dash />
-      <Ink d={`M${box.x0} ${box.y0} H${box.x1} V${box.y1} H${box.x0} Z`} a={a + 6} n={12} />
-      {show && (
-        <g>
-          <rect x={box.x0 + 14} y={box.y0 + 10} width={box.x1 - box.x0 - 28} height={box.y1 - box.y0 - 20} fill="#2f3542" />
-          <rect x={box.x0 + 24} y={batY - 34} width={14} height={68} rx={4} fill="#7ff0e6" />
-          {bx > box.x0 + 14 && <rect x={bx - 9} y={by - 9} width={18} height={18} fill="#f3e9d7" />}
-          <rect x={box.x1 - 22} y={box.y0 + 10} width={8} height={box.y1 - box.y0 - 20} fill="#9aa1ab" />
-        </g>
-      )}
     </g>
   );
 };
@@ -239,8 +209,7 @@ export const LeafletInsert: React.FC<{ frame: number; at: number; cam: Camera; c
     <LookContext.Provider value={setLook([], "morning", cam, { dof: 0 })}>
       <Stage cam={cam} radius={0} origin={{ x: 960, y: 540 }} back={back} actors={(
         <>
-          {/* script v6: no insert opens on blank paper, so the sheet is open on the cut's first frame */}
-          <Sheet frame={frame} at={at - 16} x={SHEET.x} y={SHEET.y} w={SHEET.w} h={SHEET.h} tilt={tilt}>{children}</Sheet>
+          <Sheet frame={frame} at={at} x={SHEET.x} y={SHEET.y} w={SHEET.w} h={SHEET.h} tilt={tilt}>{children}</Sheet>
           {over}
         </>
       )} />
