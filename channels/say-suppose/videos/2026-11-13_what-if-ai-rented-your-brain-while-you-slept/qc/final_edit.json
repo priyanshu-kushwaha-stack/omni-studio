@@ -4,10 +4,10 @@
   "stage": "final_edit",
   "format": "story",
   "pipeline": "studio-whatif",
-  "at": "2026-11-17T17:01:35.540231+00:00",
+  "at": "2026-11-18T04:03:08.601233+00:00",
   "inputs": {
-    "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/renders/v7/v7-720p.mp4",
-    "media_sha256": "5bbd67f5a5190a73f960f43743301d2b4694263dc603a494cb35b68adf01b030",
+    "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/renders/v7/v7b-720p.mp4",
+    "media_sha256": "e710775ba096bd5c2dba0e2abd28f0f9d8488cf20a245c5dff988d95ac261c91",
     "words": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/narration/words.json"
   },
   "checks": [
@@ -17,7 +17,7 @@
       "measured": {
         "integrated_lufs": -14.0,
         "lra_lu": 7.6,
-        "true_peak_dbtp": -1.8
+        "true_peak_dbtp": -1.7
       },
       "target": {
         "integrated_lufs": -14,
@@ -123,79 +123,61 @@
           "rise_db": 17.1
         },
         {
-          "t": 494.58,
+          "t": 498.625,
           "dur": 0.065,
-          "peak_db": -8.2,
-          "rise_db": 17.8
-        },
-        {
-          "t": 497.955,
-          "dur": 0.075,
-          "peak_db": -4.2,
-          "rise_db": 24.2
-        },
-        {
-          "t": 504.89,
-          "dur": 0.05,
-          "peak_db": -5.3,
-          "rise_db": 18.4
-        },
-        {
-          "t": 575.345,
-          "dur": 0.065,
-          "peak_db": -7.3,
+          "peak_db": -4.4,
           "rise_db": 21.3
         },
         {
-          "t": 588.845,
-          "dur": 0.065,
-          "peak_db": -6.0,
-          "rise_db": 17.7
+          "t": 505.56,
+          "dur": 0.03,
+          "peak_db": -5.1,
+          "rise_db": 18.6
         },
         {
-          "t": 588.995,
-          "dur": 0.06,
-          "peak_db": -5.4,
-          "rise_db": 21.0
-        },
-        {
-          "t": 589.29,
-          "dur": 0.035,
-          "peak_db": -6.8,
-          "rise_db": 15.9
-        },
-        {
-          "t": 600.53,
-          "dur": 0.06,
-          "peak_db": -4.2,
-          "rise_db": 21.1
-        },
-        {
-          "t": 607.315,
-          "dur": 0.035,
-          "peak_db": -7.5,
-          "rise_db": 15.1
-        },
-        {
-          "t": 609.78,
-          "dur": 0.04,
-          "peak_db": -8.6,
-          "rise_db": 21.0
-        },
-        {
-          "t": 637.26,
+          "t": 532.78,
           "dur": 0.075,
-          "peak_db": -6.8,
-          "rise_db": 19.6
+          "peak_db": -7.7,
+          "rise_db": 22.2
         },
         {
-          "t": 648.605,
-          "dur": 0.04,
-          "peak_db": -9.7,
-          "rise_db": 18.3
+          "t": 573.075,
+          "dur": 0.06,
+          "peak_db": -7.2,
+          "rise_db": 15.8
+        },
+        {
+          "t": 589.51,
+          "dur": 0.075,
+          "peak_db": -5.6,
+          "rise_db": 21.5
+        },
+        {
+          "t": 589.665,
+          "dur": 0.06,
+          "peak_db": -5.8,
+          "rise_db": 20.3
+        },
+        {
+          "t": 589.795,
+          "dur": 0.05,
+          "peak_db": -6.9,
+          "rise_db": 16.0
+        },
+        {
+          "t": 601.195,
+          "dur": 0.065,
+          "peak_db": -4.5,
+          "rise_db": 22.5
+        },
+        {
+          "t": 672.395,
+          "dur": 0.05,
+          "peak_db": -6.6,
+          "rise_db": 16.6
         }
       ],
-      "seconds": 790.699,
+      "seconds": 791.36,
       "tail": null
     },
     {
@@ -206,7 +188,7 @@
       "problems": [],
       "features": {
         "title": "What If AI Rented Your Brain While You Slept?",
-        "shingles": 1907,
+        "shingles": 1908,
         "thumbnail": false,
         "frames": 300
       }

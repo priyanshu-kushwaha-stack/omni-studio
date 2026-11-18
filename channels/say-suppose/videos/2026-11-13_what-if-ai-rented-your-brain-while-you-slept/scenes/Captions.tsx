@@ -8,13 +8,13 @@ import { interpolate } from "remotion";
 import type { Clip } from "@whatif/kit/timeline";
 import { FONT } from "@whatif/kit/fonts";
 import { FPS, INK, PAPER, TEAL, CRIMSON, MUSTARD } from "@whatif/kit/theme";
-import { BOSS, BRIDGE_WOMAN, BROTHER, CLERK, GRANDMOTHER, NURSE } from "./shared";
+import { BOSS, BROTHER, CLERK, NURSE } from "./shared";
 
 type Item = { line: number; p: number; secs: number; kind: "cast" | "fact"; head?: string; top: string; sub: string; accent?: string };
 
 // Script v7 (2026-11-17): v5's cards in v7 numbering (v5 line n is v7 line n - 1 from v5 line 25), at v6's larger size.
 // Not the grey-suit tag (owner, G3: "not needed", and he isn't the subject while it's up) or the brain-cells IT'S TRUE
-// card (its line is cut). The plasma fact sits on "It's true" (v7 86) and the 2020 card on "In 2020" (v7 112).
+// card (its line is cut). Owner on the v7 cut (2026-11-18): no bridge-woman (3:24) or grandmother (5:06) tag either. The plasma fact sits on "It's true" (v7 86) and the 2020 card on "In 2020" (v7 112).
 const ITEMS: Item[] = [
   { line: 0, p: 0.05, secs: 3.5, kind: "cast", head: NURSE.head, top: "THE NURSE", sub: "takes your plasma, twice a week" },
   { line: 3, p: 0.74, secs: 4.5, kind: "fact", accent: TEAL, top: "SELLING PLASMA", sub: "twice a week" },
@@ -22,12 +22,10 @@ const ITEMS: Item[] = [
   { line: 11, p: 0.0, secs: 3.5, kind: "cast", head: BROTHER.head, top: "YOUR BROTHER", sub: "last year of school · keeps score" },
   { line: 15, p: 0.59, secs: 4.5, kind: "fact", accent: TEAL, top: "THE LEAFLET", sub: "the deal, in writing" },
   { line: 20, p: 0.61, secs: 4.5, kind: "fact", accent: TEAL, top: "CRUMBS", sub: "a taste, a word, a face that isn't yours" },
-  { line: 39, p: 0.0, secs: 3.5, kind: "cast", head: BRIDGE_WOMAN.head, top: "THE WOMAN AT THE BRIDGE", sub: "crosses twice a week to sell plasma" },
   { line: 44, p: 0.6, secs: 4.5, kind: "fact", accent: TEAL, top: "ONE BRAIN, ONE BAND", sub: "a second band pays nothing" },
   { line: 47, p: 0.56, secs: 4.5, kind: "fact", accent: MUSTARD, top: "IT'S TRUE", sub: "a Nobel Prize experiment, first dreamt" },
   { line: 49, p: 0.26, secs: 4.5, kind: "fact", accent: CRIMSON, top: "PROBLEM 1", sub: "ninety dollars for eight hours" },
   { line: 52, p: 0.0, secs: 3.5, kind: "cast", head: BOSS.head, top: "YOUR BOSS", sub: "opens a nap room, with a till" },
-  { line: 55, p: 0.0, secs: 3.5, kind: "cast", head: GRANDMOTHER.head, top: "THE GRANDMOTHER NEXT DOOR", sub: "sleeps eleven hours a night" },
   { line: 67, p: 0.18, secs: 4.5, kind: "fact", accent: TEAL, top: "A THIRD OF YOUR LIFE", sub: "asleep" },
   { line: 75, p: 0.29, secs: 4.5, kind: "fact", accent: CRIMSON, top: "PROBLEM 2", sub: "whatever you lose, you lose alone" },
   { line: 84, p: 0.22, secs: 4.5, kind: "fact", accent: CRIMSON, top: "PROBLEM 3", sub: "the price is about to fall" },

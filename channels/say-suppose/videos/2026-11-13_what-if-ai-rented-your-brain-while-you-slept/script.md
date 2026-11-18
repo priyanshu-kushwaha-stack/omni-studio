@@ -347,12 +347,12 @@ But here's the third problem. Problem three. You weren't the only one who worked
 Ninety. Forty-one. Twelve. Everyone has a band on now.
 
 > MOOD: dusk
-> SCENE: The bridge at dusk: the queue walking in. Insert: a paper map, one country shaded, a pale river running out of it to the rest of the world.
+> SCENE: The bridge at dusk: the queue walking in. Insert (owner, v7 cut): a tube of blood separating, red cells below and the pale plasma on top, labelled; then three bags of plasma, two tagged USA on "two thirds", one WORLD.
 > CARD: IT'S TRUE: the US supplies about two thirds of the world's plasma (on "two thirds")
 
 It's true. The US is one of the few countries that lets companies pay people for plasma (c01).
 
-It supplies about two thirds of the world's (c03).
+It supplies about two thirds of the world's plasma (c03).
 
 People cross that bridge from Mexico to sell theirs, some twice a week (c05).
 

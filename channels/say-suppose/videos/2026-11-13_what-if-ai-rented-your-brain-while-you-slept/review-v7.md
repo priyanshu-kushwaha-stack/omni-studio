@@ -1,3 +1,17 @@
+# v7b: your three notes on the v7 cut (2026-11-18)
+
+- **The cut:** `renders/v7/v7b-720p.mp4`, 13:11, 1280x720; phone copy `renders/v7/v7b-480p-phone.mp4`.
+- **Checks:** `omni qc final_edit` passes loudness (-14.0 LUFS, -1.7 dBTP, LRA 7.6 LU), clicks and similarity; the
+  opening warning is unchanged (v5's cold open). `omni qc story_script` passes on the new line. Cost $0.
+
+| # | Note | What changed |
+|---|---|---|
+| 1 | 3:24, the woman card isn't needed | The bridge-woman tag is gone |
+| 2 | 5:06, not needed either | The grandmother tag is gone. Cast tags left: the nurse, your brother, your boss, the clerk |
+| 3 | 8:16, a better frame for blood and plasma; the line eats the word "plasma" | The US map is replaced by a drawn sheet: a blood tube that separates into red blood and gold plasma, then three plasma bags, two tagged USA and one WORLD, so two thirds read at a glance. The line is now "It supplies about two thirds of the world's plasma." with a new free local take (voice B), checked by transcript: "plasma" is said in full |
+
+The rest of this file is the v7 review; everything in it still holds, except the two cards above.
+
 # v7, the final version: "What If AI Rented Your Brain While You Slept?" (2026-11-17)
 
 **Owner, 2026-11-17, after watching the G3 cut:** "go ahead with v5 and take learning from v7 and then create a final

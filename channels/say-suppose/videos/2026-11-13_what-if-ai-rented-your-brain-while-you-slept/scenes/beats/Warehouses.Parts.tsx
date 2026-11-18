@@ -5,6 +5,7 @@ import { Figure, type FigureProps } from "@whatif/kit/rig/Figure";
 import { HEAD_R, joints, SEATED, seatedY, type Pose } from "@whatif/kit/rig/pose";
 import { Chair } from "@whatif/kit/sets/common";
 import { Laptop } from "@whatif/kit/sets/props";
+import { FONT } from "@whatif/kit/fonts";
 import { INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { Band, BandBox, Coin } from "../parts";
 import { BROKER, BROTHER, GHOST, HERO, linear, mix, PASTELS, ramp } from "../shared";
@@ -94,42 +95,61 @@ export const TableThings: React.FC<{ morning: number }> = ({ morning }) => (
   </g>
 );
 
-// ---------------------------------------------------------------- the map
+// ---------------------------------------------------------------- blood and plasma (was the map)
 
-const CONTINENTS = {
-  na: "M120 170 C180 110 330 100 420 150 C470 180 440 250 400 290 C360 330 330 360 300 420 C270 380 220 360 190 320 C150 280 90 230 120 170Z",
-  sa: "M330 450 C380 440 420 480 410 540 C400 600 360 660 340 700 C320 650 300 600 300 540 C300 500 300 460 330 450Z",
-  eu: "M560 150 C610 120 680 130 700 170 C690 200 650 220 600 220 C570 210 550 180 560 150Z",
-  af: "M580 250 C650 240 710 270 720 330 C730 400 690 470 650 540 C610 500 590 440 570 390 C550 330 550 270 580 250Z",
-  as: "M720 130 C820 90 980 100 1080 150 C1120 190 1080 250 1010 280 C940 310 880 300 820 280 C770 260 720 220 720 130Z",
-  au: "M960 520 C1010 500 1080 510 1090 560 C1080 600 1020 610 980 590 C950 570 940 540 960 520Z",
-};
-/** The shaded country: the United States, as a band across North America's middle. */
-const US = "M150 230 C230 210 360 210 430 230 C430 260 410 290 380 310 C320 320 240 320 190 300 C160 280 150 255 150 230Z";
-const RIVERS = [
-  "M400 270 C460 250 520 210 600 190",
-  "M400 280 C480 300 540 330 620 330",
-  "M330 310 C340 380 350 420 350 480",
-  "M420 260 C560 200 720 160 860 190",
-  "M420 290 C600 380 800 460 990 540",
-];
+/** Script v7, owner on the v7 cut (2026-11-18): "Better frame at 8:16, Blood and Plasma". In place of the map: a tube of
+ *  blood that separates, red cells settling and the pale plasma on top (labelled, as line 3 defined it: "the pale part
+ *  of your blood"); then three plasma bags, and on "two thirds" two of them get a USA tag, the third REST OF WORLD. */
+const RED = "#b3313f";
+const GOLD = "#f1d374";
+const bagPath = (x: number, y: number) =>
+  `M${x + 20} ${y} H${x + 150} Q${x + 170} ${y} ${x + 170} ${y + 20} V${y + 200} Q${x + 170} ${y + 240} ${x + 115} ${y + 250} V${y + 280} H${x + 55} V${y + 250} Q${x} ${y + 240} ${x} ${y + 200} V${y + 20} Q${x} ${y} ${x + 20} ${y}Z`;
 
-/** A paper map: one country shaded, a pale river of plasma running out of it to the rest of the world. No words. */
-export const MapSheet: React.FC<{ frame: number; at: number; flow: readonly [number, number] }> = ({ frame, at, flow }) => (
-  <g transform="translate(40 20)">
-    {Object.values(CONTINENTS).map((d, i) => <Draw key={i} d={d} t={linear(frame, at + 4 + i * 2, at + 22 + i * 2)} w={5} fill="#d9cfb2" />)}
-    <path d={US} fill={MUSTARD} stroke={INK} strokeWidth={4} opacity={ramp(frame, at + 22, at + 32)} />
-    {RIVERS.map((d, i) => {
-      const t = linear(frame, mix(flow[0], flow[1], i / RIVERS.length), mix(flow[0], flow[1], (i + 1.6) / RIVERS.length));
-      return (
-        <g key={i}>
-          <Draw d={d} t={t} w={22} color="#f3dc8f" />
-          {t >= 1 && <path d={d} fill="none" stroke="#fff6cf" strokeWidth={6} strokeDasharray="10 26" strokeDashoffset={-frame * 2} strokeLinecap="round" />}
-        </g>
-      );
-    })}
+const Tag: React.FC<{ x: number; y: number; text: string; color: string; show: number; w: number }> = ({ x, y, text, color, show, w }) => (
+  <g opacity={show} transform={`translate(${x} ${y + (1 - show) * -14}) rotate(-4)`}>
+    <rect x={-w / 2} y={-26} width={w} height={52} rx={8} fill={color} stroke={INK} strokeWidth={4} />
+    <text x={0} y={11} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill={INK} letterSpacing={2}>{text}</text>
   </g>
 );
+
+export const PlasmaSheet: React.FC<{ frame: number; at: number; flow: readonly [number, number] }> = ({ frame, at, flow }) => {
+  // the tube: full of blood on the first frame, the plasma rising out of it over 0.7 s
+  const T = { x: 150, y: 150, w: 110, h: 460 };
+  const sep = ramp(frame, at + 2, at + 22);
+  const plasmaH = T.h * 0.55 * sep;
+  const tag = (i: number) => ramp(frame, mix(flow[0], flow[1], i * 0.3), mix(flow[0], flow[1], i * 0.3) + 8);
+  const bags = [560, 760, 960];
+  return (
+    <g>
+      {/* the tube */}
+      <rect x={T.x} y={T.y} width={T.w} height={T.h} rx={T.w / 2} fill={RED} />
+      <rect x={T.x} y={T.y} width={T.w} height={plasmaH} fill={GOLD} />
+      <rect x={T.x} y={T.y} width={T.w} height={T.h} rx={T.w / 2} fill="none" stroke={INK} strokeWidth={6} />
+      <rect x={T.x - 12} y={T.y - 26} width={T.w + 24} height={34} rx={8} fill="#7d8899" stroke={INK} strokeWidth={5} />
+      <g opacity={sep} fontFamily={FONT} fontWeight={800} fontSize={34} fill={INK}>
+        <path d={`M${T.x + T.w + 18} ${T.y + plasmaH / 2} h46`} stroke={INK} strokeWidth={4} />
+        <text x={T.x + T.w + 74} y={T.y + plasmaH / 2 + 12}>PLASMA</text>
+        <path d={`M${T.x + T.w + 18} ${T.y + T.h * 0.8} h46`} stroke={INK} strokeWidth={4} />
+        <text x={T.x + T.w + 74} y={T.y + T.h * 0.8 + 12}>BLOOD</text>
+      </g>
+      {/* the bags of plasma */}
+      {bags.map((x, i) => {
+        const show = ramp(frame, at + 10 + i * 4, at + 20 + i * 4);
+        return (
+          <g key={i} opacity={show}>
+            <path d={bagPath(x, 220)} fill={GOLD} stroke={INK} strokeWidth={6} />
+            <path d={`M${x + 30} ${250} V${400}`} stroke="#fff6cf" strokeWidth={10} strokeLinecap="round" opacity={0.7} />
+            <circle cx={x + 85} cy={232} r={9} fill={PAPER} stroke={INK} strokeWidth={4} />
+          </g>
+        );
+      })}
+      <Tag x={bags[0] + 85} y={560} text="USA" color={MUSTARD} show={tag(0)} w={130} />
+      <Tag x={bags[1] + 85} y={560} text="USA" color={MUSTARD} show={tag(1)} w={130} />
+      <Tag x={bags[2] + 85} y={560} text="WORLD" color="#d9cfb2" show={tag(2)} w={150} />
+      <path d={`M${bags[0] - 10} 640 H${bags[1] + 180}`} stroke={MUSTARD} strokeWidth={10} strokeLinecap="round" opacity={tag(1)} />
+    </g>
+  );
+};
 
 // ---------------------------------------------------------------- the chess robot, and the cents
 

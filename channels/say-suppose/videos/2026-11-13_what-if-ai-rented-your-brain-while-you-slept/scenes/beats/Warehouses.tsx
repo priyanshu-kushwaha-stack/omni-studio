@@ -32,7 +32,7 @@ import { BROTHER, camAt, CLERK, current, GHOST, lineEnd, mix, PASTELS, ramp, typ
 import { aimArm, handOf, PaperInsert, Sfx, talk, type Body } from "./NightShift.Rig";
 import { FaceMarks } from "./NightShift.Rooms";
 import { MorningKitchen } from "./Photo.Parts";
-import { BTABLE, Breakfast, Broker, CapAndBand, ChessSheet, ClipboardSheet, HeldCap, LabelSheet, MapSheet, TableThings } from "./Warehouses.Parts";
+import { BTABLE, Breakfast, Broker, CapAndBand, ChessSheet, ClipboardSheet, HeldCap, LabelSheet, PlasmaSheet, TableThings } from "./Warehouses.Parts";
 import { atV, isV5, V5 } from "./V5.Kit";
 import { signSpan, VisaSign } from "./V5.Late";
 
@@ -320,7 +320,7 @@ const WarehousesShot: React.FC<{ frame: number; k: T; v3: Clip[] }> = ({ frame, 
   switch (shot) {
     case "flap": case "wideTable": return <BreakfastBit frame={frame} k={k} wide={shot === "wideTable"} />;
     case "bridge": case "cross": case "sleep": return <BridgeBit frame={frame} k={k} shot={shot} />;
-    case "map": return <PaperInsert frame={frame} at={k.map} end={k.cross} table="#3e3348"><MapSheet frame={frame} at={k.map} flow={k.flow} /></PaperInsert>;
+    case "map": return <PaperInsert frame={frame} at={k.map} end={k.cross} table="#3e3348"><PlasmaSheet frame={frame} at={k.map} flow={k.flow} /></PaperInsert>;
     case "inside": case "rows": case "bulk": case "heading": return <InsideBit frame={frame} k={k} shot={shot} />;
     case "chess": return <PaperInsert frame={frame} at={k.chess} end={k.bulk} table="#2e2a3a"><ChessSheet frame={frame} at={k.chess} door={k.door} cents={k.cents} /></PaperInsert>;
     case "clip": return <PaperInsert frame={frame} at={k.clip} end={k.clerkB} table="#2e2a3a" tilt={2}><ClipboardSheet frame={frame} at={k.clip} /></PaperInsert>;
