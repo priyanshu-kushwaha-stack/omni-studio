@@ -27,7 +27,7 @@ functions:
   core/engines/pou/scripts/script_lint.py::lint_script: 84
   core/engines/pou/scripts/short_rigs.py::build: 156
   core/engines/whatif/pipeline/dub_narration.py::main: 74
-  core/engines/whatif/pipeline/mix_narration.py::mix: 73
+  core/engines/whatif/pipeline/mix_narration.py::mix: 66
   core/engines/whatif/pipeline/story.py::build: 77
   core/studio/channels.py::approve_stage: 64
   core/studio/cli.py::main: 129
