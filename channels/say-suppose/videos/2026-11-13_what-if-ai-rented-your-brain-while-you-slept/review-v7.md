@@ -1,3 +1,17 @@
+# v7c: "plasm" or "plasma" (2026-11-18)
+
+**Owner on v7b:** "is it plasm or plasma. Hearing it sounds like just plasm. Maybe a fraction of pause when its finishing
+that sentence."
+
+- **Why it said "plasm":** the take was fine, but the mix cuts each take 0.15 s after the transcript's end of its last
+  word. The transcript ended "plasma" at 2.46 s, while the final "a" ran 2.64-2.76 s, so the cut removed it.
+- **Fix:** a new free local take (voice B, same words) whose final "a" sits inside the kept part; a transcript of the
+  rendered film's audio reads "...two thirds of the world's plasma." The pause after the line is 0.3 s longer (1.45 s).
+  One breath-click mute after "Eleven fifty-eight" (about 11:35) is 90 ms longer, inside the silence between words.
+- **The cut:** `renders/v7/v7c-720p.mp4`, 13:12; phone copy `renders/v7/v7c-480p-phone.mp4`. `omni qc final_edit`
+  passes (-14.0 LUFS, -1.7 dBTP, clicks, similarity; the same opening warning); `omni qc story_script` passes.
+- **Engine gap, recorded with `omni fix`:** the same cut can soften any line that ends on a quiet syllable.
+
 # v7b: your three notes on the v7 cut (2026-11-18)
 
 - **The cut:** `renders/v7/v7b-720p.mp4`, 13:11, 1280x720; phone copy `renders/v7/v7b-480p-phone.mp4`.

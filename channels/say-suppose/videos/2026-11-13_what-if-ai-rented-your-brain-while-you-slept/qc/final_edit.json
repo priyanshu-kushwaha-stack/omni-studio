@@ -4,10 +4,10 @@
   "stage": "final_edit",
   "format": "story",
   "pipeline": "studio-whatif",
-  "at": "2026-11-18T04:03:08.601233+00:00",
+  "at": "2026-11-18T06:02:26.855617+00:00",
   "inputs": {
-    "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/renders/v7/v7b-720p.mp4",
-    "media_sha256": "e710775ba096bd5c2dba0e2abd28f0f9d8488cf20a245c5dff988d95ac261c91",
+    "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/renders/v7/v7c-720p.mp4",
+    "media_sha256": "748640a399b44f0de07448f218418efc18baaacdcd299ac38690e76bc5e85b1c",
     "words": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/narration/words.json"
   },
   "checks": [
@@ -123,61 +123,61 @@
           "rise_db": 17.1
         },
         {
-          "t": 498.625,
+          "t": 498.825,
           "dur": 0.065,
           "peak_db": -4.4,
-          "rise_db": 21.3
+          "rise_db": 21.1
         },
         {
-          "t": 505.56,
+          "t": 505.76,
           "dur": 0.03,
-          "peak_db": -5.1,
-          "rise_db": 18.6
+          "peak_db": -5.3,
+          "rise_db": 18.5
         },
         {
-          "t": 532.78,
-          "dur": 0.075,
-          "peak_db": -7.7,
-          "rise_db": 22.2
+          "t": 532.98,
+          "dur": 0.08,
+          "peak_db": -7.6,
+          "rise_db": 25.9
         },
         {
-          "t": 573.075,
+          "t": 573.275,
           "dur": 0.06,
           "peak_db": -7.2,
           "rise_db": 15.8
         },
         {
-          "t": 589.51,
+          "t": 589.71,
           "dur": 0.075,
           "peak_db": -5.6,
           "rise_db": 21.5
         },
         {
-          "t": 589.665,
+          "t": 589.865,
           "dur": 0.06,
           "peak_db": -5.8,
           "rise_db": 20.3
         },
         {
-          "t": 589.795,
+          "t": 589.995,
           "dur": 0.05,
           "peak_db": -6.9,
           "rise_db": 16.0
         },
         {
-          "t": 601.195,
+          "t": 601.395,
           "dur": 0.065,
           "peak_db": -4.5,
           "rise_db": 22.5
         },
         {
-          "t": 672.395,
+          "t": 672.595,
           "dur": 0.05,
           "peak_db": -6.6,
           "rise_db": 16.6
         }
       ],
-      "seconds": 791.36,
+      "seconds": 791.552,
       "tail": null
     },
     {

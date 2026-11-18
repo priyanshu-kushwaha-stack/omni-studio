@@ -1,0 +1,13 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: medium
+example: '2026-11-13_what-if-ai-rented-your-brain-while-you-slept line 88 (v7b): owner
+  heard ''plasm'' not ''plasma'''
+recorded_at: '2026-11-18T04:14:16.900833+00:00'
+note: 'mix_narration.py cuts each take at whisper''s last-word end + TAIL (0.15 s)
+  with a 60 ms fade. Whisper ends a sentence-final unstressed syllable early (plasma.
+  ended 2.46 s; the final ''a'' ran 2.64-2.76 s), so the cut removed it. Suggest:
+  cut at the take''s own energy end (silencedetect after the last word) rather than
+  the whisper end, or a longer TAIL for the last word. Film fix: a take whose vowel
+  sits inside the cut.'
