@@ -1,0 +1,21 @@
+# Cue sheet, G2 intent (rules/sound.md #1); final spotting at G3. One score cue per section (make_music.py, ACE-Step 1.5,
+# local and free, a channel theme as reference at low strength) and an ambience bed per set (scenes/make_ambience.py),
+# so the music changes with the story (owner, 2026-11-13: "better sound in the video just to break the continuous
+# background music"). scenes/sound.ts places them, anchored to spoken lines. Levels: rules/sound.md #4 (about 26 dB
+# under the voice, about 8 dB under in holds); beds about 30 dB under the voice.
+# Rights (sound #11): theme-light and theme-dark are the channel themes; every cue is made locally by ACE-Step 1.5 with a
+# theme as reference_audio at low strength (U2); beds and effects are synthesised. No paid call.
+beats:
+  - {beat: Who Eats? and The App, intent: hook, music_in: "theme-light from frame 0 (the channel signal)", level: "hold level in the skit", bed: "diner at night, then the diner"}
+  - {beat: The Rule, intent: a new toy, music_in: "cue rule (pizzicato, glockenspiel)", level: "-26 dB under voice", bed: diner}
+  - {beat: Fired, intent: slapstick, music_in: "cue fired (plucked strings, woodblock, bassoon)", level: "-26 dB; the flip-off hold at -8 dB", bed: diner}
+  - {beat: The Plant, intent: momentum, music_in: "cue plant (low ostinato, a metallic tick)", level: "-26 dB", bed: plant}
+  - {beat: The Whole Town, intent: montage, music_in: "cue town (marimba, walking cello)", level: "-26 dB", bed: town}
+  - {beat: Rich, intent: triumph, music_in: "cue rich (string fanfare)", level: "-26 dB", bed: diner}
+  - {beat: The Missing Line, intent: the turn, music_in: "cue turn (felt piano over a low pulse)", level: "-26 dB", bed: "diner at night"}
+  - {beat: Make Them Buy, intent: wry, music_in: "cue buy (staccato strings, sly clarinet)", level: "-26 dB", bed: "diner at night"}
+  - {beat: The Cheque, intent: hope with a turn, music_in: "cue cheque (piano and soft strings)", level: "-26 dB", bed: town}
+  - {beat: Hammers, intent: standoff, music_in: "cue hammers (hard-plucked low strings)", level: "-26 dB", bed: crowd}
+  - {beat: The Dial, intent: climax, music_in: "cue dial (rising ostinato to a warm swell)", music_out: "drops to a floor with one held note across the 10 s wordless peak (sound #3)", level: "-26 dB; the floor about 10% of hold level", bed: diner}
+  - {beat: Stool Four and the end card, intent: signal, music_in: "theme-light", level: "hold level", bed: diner}
+planned_silences: []   # none; the peak is a floor with one note, not silence
