@@ -85,7 +85,7 @@ Sixty seconds. The card folds shut. His arm stays. So does the number.
 
 The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, it shows how your news lands with them.
 
-A plus one hundred means pure joy for you. A minus one hundred means they want you to fail.
+A full one hundred means pure joy for you. And minus one hundred means they want you to fail.
 
 And it never tells you why.
 

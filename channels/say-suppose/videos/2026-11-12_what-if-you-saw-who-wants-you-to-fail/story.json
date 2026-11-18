@@ -143,8 +143,8 @@
       "claims": []
     },
     {
-      "text": "A plus one hundred means pure joy for you. A minus one hundred means they want you to fail.",
-      "say": "[plain, clear from the first word, a shade colder on the second half] A plus one hundred means pure joy for you. A minus one hundred means they want you to fail.",
+      "text": "A full one hundred means pure joy for you. And minus one hundred means they want you to fail.",
+      "say": "[plain and clear, colder on the second half] A full one hundred means pure joy for you. And minus one hundred means they want you to fail.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
