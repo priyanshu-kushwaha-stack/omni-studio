@@ -3,11 +3,11 @@
   "project_id": "2026-11-15_what-if-you-fired-everyone-and-hired-ai",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-16T00:11:22.526676+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-18T14:06:01.619399+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -107,6 +107,12 @@
   "style_playbook": "say-suppose",
   "metadata": {
     "room": "room-g1.md: shipped round 1, 3 of 16 calls; room evidence ok; story editor 3 blockers carried into the G2 script (owner's pick, no other notes)",
-    "owner_pick": "Pair A + WHO EATS? (2026-11-16)"
+    "owner_pick": "Pair A + WHO EATS? (2026-11-16)",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-18T14:06:01.612872+00:00",
+      "via": "omni approve",
+      "proof": "2582e95bfb63a80d735c576087c96c09a51be655f567a32ecdb3fc1203eab9b9"
+    }
   }
 }
