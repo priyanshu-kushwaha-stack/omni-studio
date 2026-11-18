@@ -4,17 +4,17 @@
   "pipeline_type": "studio-whatif",
   "stage": "final_edit",
   "status": "awaiting_human",
-  "timestamp": "2026-11-18T04:53:33.685777+00:00",
+  "timestamp": "2026-11-18T14:41:25.681277+00:00",
   "checkpoint_policy": "guided",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G3 (picture lock) again: cut v13 (12:35, 720p). The owner on v12: '2. at 1:20 still not clear.' This voice swallows the word 'plus' (Whisper 0.18-0.53 in every take and wording), so the line now reads 'A full one hundred means pure joy for you. And minus one hundred means they want you to fail.' (the card still shows +100 in teal); every word 0.63 or higher in the cut. Nothing else changed. final_edit qc: loudness -13.7 LUFS / -1.2 dBTP, clicks, similarity pass; opening warns by the owner's choice. story_script qc passes. Never approved by an agent.",
-    "media": "renders/v13/cut-v13-720p.mp4",
+    "for_owner": "G3 (picture lock) again: cut v14 (12:37, 720p). The owner on v13: 'still the same there is problem at 1:18 to be precise'. At 1:18 the take said 'For sixty seconds, it shows' with 'it' 0.06 s long, so 'it shows' blurred; the line now reads 'For sixty seconds, the card shows how your news lands with them.' in a new local take (every word 0.65+ in Whisper, 'The rule, once' cleaner too). 1:20 keeps v13's 'A full one hundred ... And minus one hundred ...'. The film is 1.5 s longer from here. final_edit qc: loudness -13.7 LUFS / -1.1 dBTP, clicks, similarity pass; opening warns by the owner's choice. story_script qc passes. Never approved by an agent.",
+    "media": "renders/v14/cut-v14-720p.mp4",
     "loudness_lufs": -13.7,
-    "true_peak_dbtp": -1.2,
+    "true_peak_dbtp": -1.1,
     "style_playbook": "say-suppose"
   }
 }

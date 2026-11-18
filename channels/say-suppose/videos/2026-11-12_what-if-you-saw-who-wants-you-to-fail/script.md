@@ -83,7 +83,7 @@ Sixty seconds. The card folds shut. His arm stays. So does the number.
 > MOOD: night
 > SCENE: The title card ident (C), three seconds, cut from the last line. Then the convenience store: fluorescent white against the dark street, the snack shelf, the counter, the clerk behind it, a cat asleep on a crate by the door. Your best friend at the counter with one chocolate bar, snapping it in two along the fold. You by the door, the letter in your hand. On "The rule, once" an insert replays the opening card at -84, then a clean paper scale from plus one hundred to minus one hundred draws itself, red below, teal above.
 
-The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, it shows how your news lands with them.
+The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, the card shows how your news lands with them.
 
 A full one hundred means pure joy for you. And minus one hundred means they want you to fail.
 

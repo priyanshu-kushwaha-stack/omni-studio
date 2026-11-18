@@ -135,8 +135,8 @@
       "claims": []
     },
     {
-      "text": "The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, it shows how your news lands with them.",
-      "say": "[clear, slow, exact, letting each part land] The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, it shows how your news lands with them.",
+      "text": "The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, the card shows how your news lands with them.",
+      "say": "[clear, measured, the number and the card both clear] The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, the card shows how your news lands with them.",
       "speaker": "narrator",
       "gapAfterSec": 0.65,
       "mood": "night",
