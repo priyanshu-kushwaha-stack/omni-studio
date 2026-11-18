@@ -57,6 +57,31 @@ voices:
       Driver: >-
         A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
         his shoulder like a public announcement.
+      # Fired everyone and hired AI (2026-11-15): a diner across the road from a car plant, a small American car town.
+      Marco: >-
+        A young, warm male tenor: a short-order cook in his late twenties. Slightly hoarse, easygoing and quick to laugh,
+        cheeky, a little breathless, a working man's casual American English.
+      Waitress: >-
+        A quick, bright female mezzo: a diner waitress in her thirties. Dry, wry and fast, a pencil-behind-the-ear
+        voice that has heard every excuse, flat American vowels, a smile under the sarcasm.
+      Plant boss: >-
+        A big, booming male baritone: a car-plant boss in his fifties. Confident and loud, a salesman's warmth, quick to
+        laugh at his own jokes, a voice used to talking over machinery.
+      Banker: >-
+        A smooth, precise male tenor: a small-town bank manager in his sixties. Polite, slightly pompous, every
+        consonant crisp, a man pleased to correct you.
+      Mayor: >-
+        A clear, ringing female alto: a small-town mayor in her fifties. Warm and public, a speech-giver's lift on every
+        line, upbeat and a little too sure of herself.
+      Rival: >-
+        A low, gravelly female voice: a diner owner in her sixties across town. Husky, blunt and sardonic, slow and
+        knowing, a smoker's rasp, never impressed.
+      Plumber: >-
+        A deep, slow male bass: a plumber in his forties. Unhurried, stubborn and amused, few words and every one
+        final, a man who knows nobody else can fix the sink.
+      Reporter: >-
+        A bright, fast female soprano: a local TV reporter in her twenties. Eager and clipped, a broadcaster's
+        projection, every question pitched up like a headline.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.

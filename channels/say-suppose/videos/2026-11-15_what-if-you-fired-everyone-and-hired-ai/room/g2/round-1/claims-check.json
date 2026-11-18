@@ -1,0 +1,47 @@
+{
+  "call_id": "9335364090464373ac1bc040dd100759",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 185,
+      "quote": "They did. In 1900 about 41 percent of American workers were on farms. By 2000, under 2 percent (c10). People were still better at something.",
+      "fix": "They did. In 1900 about 41 percent of American workers were on farms, and by 2000, under 2 percent (c10). People were still better at something."
+    },
+    {
+      "line": 276,
+      "quote": "Not a new sum, either. In 1914 Henry Ford doubled his workers' pay to five dollars a day (c16), and wrote later that his own sales depended, in a measure, on the wages he paid (c17).",
+      "fix": "Not a new sum, either. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid (c17)."
+    },
+    {
+      "line": 144,
+      "quote": "In 1865 the economist Jevons wrote that burning coal more efficiently did not cut the coal that got burned. The very contrary (c12). Cheaper means more.",
+      "fix": "In 1865 the economist Jevons wrote that burning coal more efficiently did not cut coal use. The very contrary (c12). Cheaper means more."
+    }
+  ],
+  "keep": [
+    {
+      "line": 262,
+      "quote": "Two economists wrote this sum down this year, Hemenway Falk and Tsoukalas: \"The AI Layoff Trap\" (c01). Each firm keeps the whole saving and bears only a slice of the spending it destroys; the rest lands on its rivals (c02). One model, not yet checked by other economists. Your napkin got there first."
+    },
+    {
+      "line": 228,
+      "quote": "Someone thought so. In 1930 the economist Keynes named it: technological unemployment, jobs lost because we save labour faster than we find new uses for it. A temporary phase, he called it (c07). And in about a hundred years, about now, he guessed, a fifteen-hour week (c08)."
+    },
+    {
+      "line": 433,
+      "quote": "In the two economists' model the usual fixes fail: a basic income, a wage cut, new firms (c05). What can work, in that model, is a tax on the machine itself (c06). Their fix. Your dial. Still unchecked. Checked by Marco."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "e255431aa3cc2b01048d75ca8c94f75ca595438632429cd4f942412d21945f12",
+  "draft_sha256": "7d1911750711004b7a6d1d1068a12466d3148ff5f6c23017e15c69a66e78543e"
+}
