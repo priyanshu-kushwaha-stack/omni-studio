@@ -3,11 +3,11 @@
   "project_id": "2026-11-13_what-if-ai-rented-your-brain-while-you-slept",
   "pipeline_type": "studio-whatif",
   "stage": "final_edit",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-18T06:03:14.546201+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-18T14:27:05.786485+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "watch_copy": "renders/v7/v7c-720p.mp4 (git-ignored)",
     "phone_copy": "renders/v7/v7c-480p-phone.mp4 (git-ignored)",
@@ -24,6 +24,19 @@
     "true_peak_dbtp": -1.7,
     "qc": "final_edit passes loudness (-14.0 LUFS, -1.7 dBTP, LRA 7.6), clicks, similarity; opening warning (first word 7.4 s, v5's opening)",
     "paid_calls": 0,
-    "note": "script changed from v6 to v7: G2 (story_script) needs the owner's word again"
+    "note": "script changed from v6 to v7: G2 (story_script) needs the owner's word again",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-18T14:27:05.730251+00:00",
+      "via": "omni approve",
+      "proof": "5d3ce8548aa7e71de348ae201b6636d6f365d13d12237af6bfa7afd1f07f3af7",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/renders/v7/v7c-720p.mp4",
+        "sha256": "748640a399b44f0de07448f218418efc18baaacdcd299ac38690e76bc5e85b1c",
+        "at": "2026-11-18T14:27:05.730251+00:00",
+        "proof": "8682cd1176a0e0f769d4a0afed7401523615d937ee42b58a2bfd24f757257ce3"
+      },
+      "note": "Owner, 2026-11-18, on v7c: 'looks fine now final cut', then 'Approve G2 and G3'"
+    }
   }
 }
