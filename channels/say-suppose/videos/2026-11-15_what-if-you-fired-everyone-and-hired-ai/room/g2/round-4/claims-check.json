@@ -1,0 +1,62 @@
+{
+  "call_id": "e1453245227144e4a3b5fdf1d61898fa",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "In 2025 Visa said AI agents had already completed real purchases for shoppers, in pilot trials (c28).",
+      "why": "Overstates what c28 supports. The verbatim quote from Visa's release confirms 'hundreds of secure, agent-initiated transactions have now been successfully completed in collaboration with partners across the ecosystem', whereas completing purchases directly for consumers/shoppers was framed as a future milestone for 2026. Stating that agents completed real purchases for shoppers overstates these partner-level transactions.",
+      "fix": "In 2025 Visa said AI agents had already completed transactions in partner pilot trials (c28).",
+      "domain": "fact",
+      "line": 424
+    },
+    {
+      "quote": "You'd think a cheque for everyone, just for living there, is a fairy tale. Alaska has paid its residents one out of oil money every year since 1982, about twelve hundred dollars this year (c19). So you write the town one every month, out of the rent.",
+      "why": "Overstates eligibility scope. The lead-in characterizes the dividend as 'a cheque for everyone, just for living there', but the source note for c19 emphasizes that eligibility requires at least one full calendar year of residency, intent to remain indefinitely, and filing an annual application. It is not paid unconditionally to everyone simply living in Alaska.",
+      "fix": "You'd think a yearly cheque for residents, just for living there, is a fairy tale. Alaska has paid eligible residents one out of oil money every year since 1982, about twelve hundred dollars this year (c19). So you write the town one every month, out of the rent.",
+      "domain": "fact",
+      "line": 322
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 185,
+      "quote": "She's right too. In 1900 about 41 percent of American workers were on farms, and by 2000, under 2 percent (c10).",
+      "fix": "On the big picture, she's right. In 1900 about 41 percent of American workers were on farms, and by 2000, under 2 percent (c10)."
+    },
+    {
+      "line": 226,
+      "quote": "And in about a hundred years, about now, he guessed, a fifteen-hour week (c08).",
+      "fix": "And in about a hundred years, about now, he guessed, a 15-hour week (c08)."
+    },
+    {
+      "line": 322,
+      "quote": "about twelve hundred dollars this year (c19)",
+      "fix": "about $1,200 this year (c19)"
+    }
+  ],
+  "keep": [
+    {
+      "line": 171,
+      "quote": "Most people would guess the cash machines killed the tellers. They didn't. From 1980 to 2010, as cash machines spread across America, teller jobs rose, modestly, from about 500,000 to about 550,000 (c11). The machine counted the cash. It never asked about your mother's hip."
+    },
+    {
+      "line": 226,
+      "quote": "Someone did dream it. In 1930 the economist Keynes named technological unemployment, jobs lost because we save labour faster than we find new uses for it, a temporary phase, he called it (c07)."
+    },
+    {
+      "line": 266,
+      "quote": "Two economists only wrote this sum down this year, Hemenway Falk and Tsoukalas, and called it \"The AI Layoff Trap\" (c01): each firm keeps the whole saving and bears only a slice of the spending it destroys, and the rest lands on its rivals (c02). One model, not yet checked by other economists."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "8191e138dadbf6392037e4b967419b18f35182afc587bfc552f1f21c19ccd383",
+  "draft_sha256": "d1d1040152aa35a6c52ec4561c973515b9c3e475e781d8140f3bb933dcb84dc2"
+}

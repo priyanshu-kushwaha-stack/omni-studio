@@ -1,0 +1,62 @@
+{
+  "call_id": "2d8cfe539d4441228945dcb195aff5e8",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "The two economists' model, this year, ends on the same fix as your napkin: not a basic income, but taxing the machine itself (c05, c06). Still unchecked, except by forty full stools.",
+      "why": "Stating that the model is 'Still unchecked, except by forty full stools' treats the fictional outcome of the invented diner story as empirical verification of a contested preprint model, violating the rule that what you do in the story is never stated as fact and undermining the mandatory caveat for contested rows c05 and c06.",
+      "fix": "The two economists' model, this year, ends on the same fix as your napkin: not a basic income, but taxing the machine itself (c05, c06). Still unchecked.",
+      "domain": "fact",
+      "line": 403
+    },
+    {
+      "quote": "In the model, knowing is not enough, and more competition and better machines make it worse (c03, c04). Still unchecked.",
+      "why": "Row c04's verbatim quote states \"More competition and ``better'' AI amplify the excess\". Substituting 'better machines' overstates and broadens the claim beyond what the paper's AI-specific model supports.",
+      "fix": "In the model, knowing is not enough, and more competition and better AI make it worse (c03, c04). Still unchecked.",
+      "domain": "fact",
+      "line": 286
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 322,
+      "quote": "Alaska has paid its residents one out of oil money every year since 1982, about twelve hundred dollars this year (c19).",
+      "fix": "Alaska has paid its residents one out of oil money every year since 1982, 1,200 dollars this year (c19)."
+    },
+    {
+      "line": 185,
+      "quote": "In 1900 about 41 percent of American workers were on farms, and by 2000, under 2 percent (c10).",
+      "fix": "In 1900, 41 percent of American workers were on farms, and by 2000, under 2 percent (c10)."
+    },
+    {
+      "line": 171,
+      "quote": "From 1980 to 2010, as cash machines spread across America, bank tellers didn't fall. They rose, modestly, from about 500,000 to about 550,000 (c11).",
+      "fix": "From 1980 to 2010, as cash machines spread across America, bank teller jobs didn't fall. They rose, modestly, from about 500,000 to about 550,000 (c11)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 226,
+      "quote": "Someone did dream it. In 1930 the economist Keynes named technological unemployment, jobs lost because we save labour faster than we find new uses for it, a temporary phase, he called it (c07). And in about a hundred years, about now, he guessed, a fifteen-hour week (c08). He meant the work shared out and living standards kept. Here the hours went to the machines, and the pay went to you."
+    },
+    {
+      "line": 270,
+      "quote": "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid, because that money gets spent with storekeepers and distributors (c17)."
+    },
+    {
+      "line": 266,
+      "quote": "Two economists only wrote this sum down this year, Hemenway Falk and Tsoukalas, and called it \"The AI Layoff Trap\" (c01): each firm keeps the whole saving and bears only a slice of the spending it destroys, and the rest lands on its rivals (c02). One model, not yet checked by other economists. Your napkin got there first."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "975dce9dfd679ebf1d11dfe63e41523d5f06718942b8e3e8dc4b4df8534f0982",
+  "draft_sha256": "1607704260762cebf64827c38a645b0a0784ff55291f97a2f4136f6cdecddf33"
+}

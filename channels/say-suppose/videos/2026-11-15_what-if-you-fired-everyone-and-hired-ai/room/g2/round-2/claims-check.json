@@ -1,0 +1,55 @@
+{
+  "call_id": "fffe93e3899243d68fd889c94c1f1c27",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 9
+  },
+  "blockers": [
+    {
+      "quote": "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid (c17). He was buying customers.",
+      "why": "c17 supports that Ford wrote sales depended in a measure on wages paid because distributed wages get spent across storekeepers and distributors, but neither c16 nor c17 supports that Ford was 'buying customers' (the c17 note explicitly cautions: 'He does not say workers buy Fords specifically', and in chapter 10 Ford framed the five-dollar day as a cost-cutting move to reduce turnover). Stating 'He was buying customers' asserts the popular myth as fact and overstates what the row supports.",
+      "fix": "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid, because that money gets spent across storekeepers and distributors (c17).",
+      "domain": "fact",
+      "line": 272
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 324,
+      "quote": "You'd think a cheque for everyone, just for living there, is a fairy tale. Alaska has paid its residents one out of oil money every year since 1982, about twelve hundred dollars this year (c19). So you write the town one every month, out of the rent.",
+      "fix": "You'd think a cheque for everyone, just for living there, is a fairy tale. Alaska has paid its residents one out of oil money every year since 1982, 1,200 dollars this year (c19). So you write the town one every month, out of the rent."
+    },
+    {
+      "line": 426,
+      "quote": "You'd think that was the sequel's fantasy. In 2025 Visa said AI agents had already completed real purchases for shoppers, in pilot trials (c28).",
+      "fix": "You'd think that was the sequel's fantasy. In 2025 Visa says AI agents had already completed real purchases for shoppers, in pilot trials (c28)."
+    },
+    {
+      "line": 228,
+      "quote": "And in about a hundred years, about now, he guessed, a fifteen-hour week (c08). He meant the hours shared out and the pay kept.",
+      "fix": "And in about a hundred years, about now, he guessed, a 15-hour week (c08). He meant the work shared out and living standards kept."
+    }
+  ],
+  "keep": [
+    {
+      "line": 173,
+      "quote": "He's right, and most people would guess wrong. From 1980 to 2010, as cash machines spread across America, bank tellers didn't fall. They rose, modestly, from about 500,000 to about 550,000 (c11). The machine counted the cash. It never asked about your mother's hip."
+    },
+    {
+      "line": 268,
+      "quote": "Two economists only wrote this sum down this year, Hemenway Falk and Tsoukalas, and called it \"The AI Layoff Trap\" (c01): each firm keeps the whole saving and bears only a slice of the spending it destroys, and the rest lands on its rivals (c02). One model, not yet checked by other economists. Your napkin got there first."
+    },
+    {
+      "line": 405,
+      "quote": "The two economists' model, this year, ends on the same fix as your napkin: not a basic income, but taxing the machine itself (c05, c06). Still unchecked, except by forty full stools."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "fbe2fe00706c84d00214e408c4fb4a88e7c68f022042bf8f39d5dc2b177eacbd",
+  "draft_sha256": "da216d7d7a9b860a233a9819232d3d1e5b2d20a9c1ed601bf7d327e0af79cdc9"
+}

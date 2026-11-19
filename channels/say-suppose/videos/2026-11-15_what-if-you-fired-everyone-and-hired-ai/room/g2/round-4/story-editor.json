@@ -1,0 +1,73 @@
+{
+  "call_id": "462c142f213c4a869772613b904fb930",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "hook_and_promise": 9,
+    "causal_story": 8,
+    "one-watch_clarity": 7,
+    "stakes_and_escalation": 8,
+    "climax_and_close": 8
+  },
+  "blockers": [
+    {
+      "quote": "Only you can turn it. So you give away the number: the town writes it, the dial follows the napkin, and you keep the turning.",
+      "why": "Check #21, Close the loopholes on screen: nothing prevents you changing the dial privately later; line 436 explicitly leaves this exploit unanswered.",
+      "fix": "Keep line 388, then add: \u201cMayor: And at three a.m.?\u201d You place the phone in a transparent lockbox; the mayor keeps the key. Add: \u201cOnly your thumb can turn it. Only her key can reach it.\u201d",
+      "domain": "story",
+      "line": 388
+    },
+    {
+      "quote": "So you type CUSTOMER.",
+      "why": "No new power rule after halfway: at 07:25 the app first accepts something that is not a job, contradicting the established \u201cType a job\u201d rule.",
+      "fix": "Replace with: \u201cSo you type MYSTERY SHOPPER. A job, technically.\u201d Rename the later steel customer references accordingly.",
+      "domain": "story",
+      "line": 299
+    },
+    {
+      "quote": "Most people would guess the cash machines killed the tellers. They didn't. From 1980 to 2010, as cash machines spread across America, teller jobs rose, modestly, from about 500,000 to about 550,000 (c11). The machine counted the cash. It never asked about your mother's hip.",
+      "why": "Check #7, Misconception first: four numbers arrive together, breaking the one-number-at-a-time requirement and weakening one-watch clarity. Line 185 repeats the same overload.",
+      "fix": "Replace the statistic with separate beats: \u201cBefore cash machines spread, America had about half a million tellers (c11).\u201d Show the banker nod. \u201cThree decades later? The number had risen modestly, not fallen (c11).\u201d Split line 185 the same way, with one farm figure per reaction beat.",
+      "domain": "story",
+      "line": 171
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 430,
+      "quote": "So, would you have turned the dial? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Ask an unresolved, easy-to-answer question: \u201cWhat number would you write on the napkin? Tell us in the comments.\u201d"
+    },
+    {
+      "line": 226,
+      "quote": "Someone did dream it. In 1930 the economist Keynes named technological unemployment, jobs lost because we save labour faster than we find new uses for it, a temporary phase, he called it (c07). And in about a hundred years, about now, he guessed, a fifteen-hour week (c08). He meant the work shared out and living standards kept. Here the hours went to the machines, and the pay went to you.",
+      "fix": "Cut this paragraph and let \u201cNobody has to. Nobody's allowed to.\u201d lead directly into the sixth-Friday whistle; it preserves the turn while shortening the long first half."
+    },
+    {
+      "line": 380,
+      "quote": "A machine now costs whoever rents it, every week, the three hundred and sixty its worker used to spend at the barber, the garage and the grocer. Fire Marco today and you still keep his four hundred and lose your forty, but the three hundred and sixty goes to the app, to you, and out again as the town's cheque. Every owner feels the whole loss at last, so a machine stays only where it's better, not just cheaper.",
+      "fix": "Split the mechanism across actions: \u201cSet it at three hundred and sixty\u2014the money Marco spent elsewhere.\u201d Show the owner paying the app. \u201cThe app funds the town's cheque. Now firing Marco saves only the forty he spent here.\u201d Then land: \u201cA machine stays only when it's better, not merely cheaper.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 262,
+      "quote": "You didn't fire a cook. You fired a customer who happened to know how to cook."
+    },
+    {
+      "line": 284,
+      "quote": "Everyone in town has done the sum. Everyone got it right. That's the problem."
+    },
+    {
+      "line": 405,
+      "quote": "You're still the richest person in town. You just stopped being its only customer."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f1969ecb78d03f4f9cc98bdd7e181d0ef1d550411ade3f2f0eac66f2a2192eed",
+  "draft_sha256": "d1d1040152aa35a6c52ec4561c973515b9c3e475e781d8140f3bb933dcb84dc2"
+}

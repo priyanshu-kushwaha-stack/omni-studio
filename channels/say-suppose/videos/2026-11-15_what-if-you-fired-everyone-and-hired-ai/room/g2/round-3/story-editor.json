@@ -1,0 +1,71 @@
+{
+  "call_id": "2d1c59ebc6e14fe2a1de3cb6e8209558",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "must_pass_checks": 7,
+    "flow_and_clarity": 8
+  },
+  "blockers": [
+    {
+      "quote": "Only you can turn it. So you give away the number: the town writes it, the dial follows the napkin, and you keep the turning. Every lease says the same thing: turn away from the town's number, and every renter can walk before the next shift.",
+      "why": "Checks #21 and No new power rule after halfway fail. The lease escape first appears during the solution, while the admitted three-in-the-morning exploit remains unresolved on screen.",
+      "fix": "Plant this in line 72's third rule: \"One public dial sets every rent; only you can turn it, but a change frees every renter before the next shift. Remember that.\" Then shorten line 388 to: \"Only you can turn it. So the town writes the number, and you make the public dial follow the napkin.\"",
+      "domain": "story",
+      "line": 388
+    },
+    {
+      "quote": "He's right, and most people would guess wrong. From 1980 to 2010, as cash machines spread across America, bank tellers didn't fall. They rose, modestly, from about 500,000 to about 550,000 (c11). The machine counted the cash. It never asked about your mother's hip.",
+      "why": "Check #7 Misconception first fails: the correct answer is announced before anyone acts on the ATM analogy, and four numbers land together.",
+      "fix": "Replace with: \"He's betting this is another ATM: a machine that changes the job but leaves the teller. That happened before\u2014after ATMs spread, teller jobs rose modestly instead of falling (c11). The machines counted cash. People did everything beyond it.\"",
+      "domain": "story",
+      "line": 171
+    },
+    {
+      "quote": "The mayor hands you a key to the town the size of a loaf. A convoy of your machines pulls out for the next town, and your phone pings so fast it hums.",
+      "why": "Check #11 Never say the feeling fails because the narration simply repeats the complete shot without adding a turn, thought or consequence.",
+      "fix": "Replace with: \"Every truck leaving town makes you richer here\u2014and leaves another town with fewer wages to spend.\"",
+      "domain": "story",
+      "line": 216
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 336,
+      "quote": "Only the plumber and the hairdresser keep any of it, because nobody can type their jobs in. Everyone else sees that, stops waiting for the next cheque, and comes for the machines.",
+      "fix": "Strengthen the therefore: \"The next cheque fills the tills and still leaves everyone jobless. So the line at your table becomes a crowd at your door.\""
+    },
+    {
+      "line": 270,
+      "quote": "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid, because that money gets spent with storekeepers and distributors (c17).",
+      "fix": "After this line, show the plant boss looking from Ford's words to his dark car lot and keeping his phone face up, making the fact ammunition for the refusal that follows."
+    },
+    {
+      "line": 403,
+      "quote": "The two economists' model, this year, ends on the same fix as your napkin: not a basic income, but taxing the machine itself (c05, c06). Still unchecked, except by forty full stools.",
+      "fix": "Move this immediately before the ten-second wordless peak, so the whistle and forty full stools\u2014not an explanatory fact\u2014are the climax's final landing."
+    }
+  ],
+  "keep": [
+    {
+      "line": 28,
+      "quote": "What if you fired everyone and hired AI? Six weeks from now, you're the richest person this town has ever had. And its last customer."
+    },
+    {
+      "line": 262,
+      "quote": "You didn't fire a cook. You fired a customer who happened to know how to cook."
+    },
+    {
+      "line": 284,
+      "quote": "Everyone in town has done the sum. Everyone got it right. That's the problem."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "38079212268134ee0e25a7270ef5584a94efa697a2c71b9ceb1f1350eb17661b",
+  "draft_sha256": "1607704260762cebf64827c38a645b0a0784ff55291f97a2f4136f6cdecddf33"
+}

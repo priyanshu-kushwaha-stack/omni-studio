@@ -1,0 +1,72 @@
+{
+  "call_id": "f8a9caffbee1482ab03907ee06a848c4",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "must_pass_story": 7,
+    "clarity_and_flow": 8,
+    "causal_escalation": 8,
+    "ending": 7
+  },
+  "blockers": [
+    {
+      "quote": "Only you can turn it. So you give away the number: the town writes it, the dial follows the napkin, and you keep the turning, knowing every renter in town would walk the moment you touched it.",
+      "why": "Check #21, close the loopholes on screen: nothing prevents you secretly lowering the dial later; renters would benefit rather than walk.",
+      "fix": "Replace the action and line with the phone locked in a town-hall box requiring three keys held by Marco, the rival and the mayor: \"Only you can turn it. But they decide when you can reach it. The town writes the number; three keys open the box; you turn the dial in public.\"",
+      "domain": "story",
+      "line": 388
+    },
+    {
+      "quote": "> SCENE: The door chimes. The steel customer, the one that paid with your card, back from the truck with a cap on, walks to the till, points at a burger to go and taps a card. Insert on the card: not yours. A colour you've never seen, no name on it. The till pings. Your phone, on the counter beside the till, does not.",
+      "why": "No new power rule after halfway: the machine suddenly possesses independent money, directly reversing the established rule that it can only pay with your card.",
+      "fix": "Keep this as an unanswered sequel possibility: the customer raises the unfamiliar card toward the till, but cut before it touches. Do not let the till ping or the customer receive the burger.",
+      "domain": "story",
+      "line": 420
+    },
+    {
+      "quote": "She's right too. In 1900 about 41 percent of American workers were on farms. A century later, under 2 percent (c10). The new jobs came because people were still better at something. Here, whatever the new job is, somebody types it in.",
+      "why": "Check #7, misconception first: several numbers and the explanation arrive together, violating the one-number-at-a-time requirement and weakening one-watch clarity.",
+      "fix": "Split it around the assistant gag: \"At the start of the last century, about forty-one percent of American workers farmed (c10).\" After the machine appears: \"By its end, under two percent did (c10). New jobs came because people still had something machines could not do. Here, somebody types that job in.\"",
+      "domain": "story",
+      "line": 185
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 430,
+      "quote": "So, would you have turned the dial? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Point the question at the unresolved final image: \"Whose money was on that card? Tell us in the comments.\""
+    },
+    {
+      "line": 199,
+      "quote": "He won't, the hairdresser won't, and everyone else is in the app by Friday.",
+      "fix": "Strengthen the turn: \"He won't. The hairdresser won't. But by Friday, everyone else has rented one of your machines.\""
+    },
+    {
+      "line": 270,
+      "quote": "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid, because that money gets spent with storekeepers and distributors (c17).",
+      "fix": "After the fact, show it causing the next beat: you copy Ford's sales line beneath Marco's missing line, then call the owners' meeting."
+    }
+  ],
+  "keep": [
+    {
+      "line": 28,
+      "quote": "What if you fired everyone and hired AI? Six weeks from now, you're the richest person this town has ever had. And its last customer."
+    },
+    {
+      "line": 262,
+      "quote": "You didn't fire a cook. You fired a customer who happened to know how to cook."
+    },
+    {
+      "line": 405,
+      "quote": "You're still the richest person in town. You just stopped being its only customer."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "782769f3a8f24059f1cbdb284a666c59277373230187e2532925669ce05c85c5",
+  "draft_sha256": "cdf8a5669c97336cd85456c04290ed8676b50123b12eef03db65200eb88b6c39"
+}

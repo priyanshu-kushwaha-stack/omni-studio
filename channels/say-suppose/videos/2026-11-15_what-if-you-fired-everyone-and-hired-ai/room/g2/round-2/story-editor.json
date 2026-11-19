@@ -1,0 +1,67 @@
+{
+  "call_id": "e9d6278c9d7c436c9fba5e77f718a147",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "causal_escalation": 8,
+    "one_watch_clarity": 7,
+    "must_pass_compliance": 6
+  },
+  "blockers": [
+    {
+      "quote": "Only you can turn it. So you give away the number: the town writes it, the dial follows the napkin, and you keep the turning.",
+      "why": "#21 Close the loopholes on screen fails: nothing prevents you changing the dial alone later.",
+      "fix": "Keep the line, then add: \"Every lease says the same thing: turn away from the town's number, and every renter can walk before the next shift.\"",
+      "domain": "story",
+      "line": 390
+    },
+    {
+      "quote": "What if you fired everyone and hired AI?",
+      "why": "#3 Second hook by 0:30 fails: the win and loss do not arrive until line 63, near 0:40.",
+      "fix": "Replace with: \"What if you fired everyone and hired AI? Six weeks from now, you're the richest person this town has ever had. And its last customer.\" Delete line 63 as a duplicate.",
+      "domain": "story",
+      "line": 28
+    },
+    {
+      "quote": "So, who do you think paid for that burger? Tell us in the comments. And if you'd have turned the dial, hit like and subscribe.",
+      "why": "#19 The close fails: this asks for an explanation, not the required closing choice.",
+      "fix": "Replace with: \"So, would you have turned the dial? Tell us in the comments. And if you'd have done the same, hit like and subscribe.\"",
+      "domain": "story",
+      "line": 432
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 338,
+      "quote": "Except at the plumber's and the hairdresser's, it all runs back to you. So the town stops waiting for cheques, and comes for the machines.",
+      "fix": "Make the march causal: \"Only the plumber and hairdresser keep the cheque, because they kept their jobs. When everyone else sees that, they stop waiting for another cheque and march to your diner for the machines.\""
+    },
+    {
+      "line": 376,
+      "quote": "Too far. Dear is only a different trap: no machines, no plant.",
+      "fix": "Use plainer stakes: \"Too far. Make every machine too expensive, and the plant leaves with them.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 264,
+      "quote": "You didn't fire a cook. You fired a customer who happened to know how to cook."
+    },
+    {
+      "line": 286,
+      "quote": "Everyone in town has done the sum. Everyone got it right. That's the problem."
+    },
+    {
+      "line": 307,
+      "quote": "A machine never calls in sick. It never eats the pie, either."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "7a50648d14190b9cc550e2ae5ff7bbaa3a8b062db84d6759f5ae0b69cc75c382",
+  "draft_sha256": "da216d7d7a9b860a233a9819232d3d1e5b2d20a9c1ed601bf7d327e0af79cdc9"
+}

@@ -8,6 +8,16 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-19
+
+- **"Looks fine overall but not flowing in terms of dialogue / narration wise. I think we should make it like people
+  get everything in just one watch they should feel surprised knowing the facts and curious also to what happens
+  next ?"** G2 first-cut review of the fired-everyone-and-hired-AI film (v1.1, 10:13). The picture works; the words
+  don't flow: lines read as clipped fragments, characters react in one word instead of talking to each other, and the
+  narrator and the dialogue don't hand off. The film must be clear in one watch (one idea at a time, set up before it
+  is used), each real fact must land as a surprise (the viewer's guess first, then the fact that flips it), and every
+  section must end pulling the viewer into the next. (fired everyone and hired AI, G2)
+
 ## 2026-11-17 to 2026-11-18 (who-wants-you-to-fail, G3 rounds v10 to v14)
 
 - **Opening B** at G4: the cold open holds 2.5 s before the first word; the opening check's warning is the owner's

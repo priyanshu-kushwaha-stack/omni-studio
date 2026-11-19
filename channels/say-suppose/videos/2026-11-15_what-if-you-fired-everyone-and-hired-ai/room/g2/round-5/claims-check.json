@@ -1,0 +1,48 @@
+{
+  "call_id": "05a19d3ae3044cdcac426b02ff201b30",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 9,
+    "sourcing": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 171,
+      "quote": "As cash machines spread across America, teller jobs rose, modestly, to about 550,000 by 2010 (c11).",
+      "fix": "As cash machines spread across America, teller jobs rose, modestly, from about 500,000 in 1980 to about 550,000 by 2010 (c11)."
+    },
+    {
+      "line": 185,
+      "quote": "She's right too. In 1900 about 41 percent of American workers were on farms. A century later, under 2 percent (c10).",
+      "fix": "She's right on the history. In 1900 about 41 percent of American workers were on farms (c10). By 2000, under 2 percent (c10)."
+    },
+    {
+      "line": 322,
+      "quote": "Alaska has paid its eligible residents one out of oil money every year since 1982, about twelve hundred dollars this year (c19).",
+      "fix": "Alaska has paid its eligible residents one out of oil money every year since 1982, twelve hundred dollars this year (c19)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 226,
+      "quote": "Someone did dream it. In 1930 the economist Keynes named technological unemployment, jobs lost because we save labour faster than we find new uses for it, a temporary phase, he called it (c07). And in about a hundred years, about now, he guessed, a fifteen-hour week (c08). He meant the work shared out and living standards kept. Here the hours went to the machines, and the pay went to you."
+    },
+    {
+      "line": 266,
+      "quote": "Two economists only wrote this sum down this year, Hemenway Falk and Tsoukalas, and called it \"The AI Layoff Trap\" (c01): each firm keeps the whole saving and bears only a slice of the spending it destroys, and the rest lands on its rivals (c02). One model, not yet checked by other economists. Your napkin got there first."
+    },
+    {
+      "line": 270,
+      "quote": "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid, because that money gets spent with storekeepers and distributors (c17)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2ffa016dba6b78b695c07da48c2589b3428e859393d25895f773027bda137ab4",
+  "draft_sha256": "cdf8a5669c97336cd85456c04290ed8676b50123b12eef03db65200eb88b6c39"
+}
