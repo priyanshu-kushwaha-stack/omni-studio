@@ -35,5 +35,12 @@
   },
   "readback_problems": [
     "containsSyntheticMedia reads back None, asked False"
+  ],
+  "captions": [
+    {
+      "language": "en",
+      "file": "subtitles/en.srt",
+      "id": "AUieDaa1Blvv4OB8uw3bQKo879U3XZO_T99xoEaGkUqC"
+    }
   ]
 }
