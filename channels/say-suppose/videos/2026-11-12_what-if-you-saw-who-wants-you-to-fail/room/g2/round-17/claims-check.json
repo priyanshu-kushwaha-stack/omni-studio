@@ -1,0 +1,42 @@
+{
+  "call_id": "ccf2e5c323ec4e89bd44c08da5608af9",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 261,
+      "quote": "And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure (c03).",
+      "fix": "And Seoul lets them teach only until 10 at night. Inspectors have patrolled the streets to make sure (c03)."
+    },
+    {
+      "line": 308,
+      "quote": "Envy comes in two kinds (c07). One pushes you to move up. The other pushes you to pull the other person down (c07).",
+      "fix": "Envy comes in two kinds: one pushes you to move up, the other pushes you to pull the other person down (c07)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 187,
+      "quote": "He can't see it. Nobody sees the cards but you. And people don't like to admit being maliciously envious, even to themselves (c12)."
+    },
+    {
+      "line": 310,
+      "quote": "Minus never proved they wanted you to fail. It only proved your win hurt. In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05)."
+    },
+    {
+      "line": 352,
+      "quote": "It's true. In November 2025, during the English listening test, South Korea stopped its planes taking off and landing for 35 minutes, so their noise wouldn't disturb the students (c02)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "0ecfa914f5c7fabc753fb6714a1db631a753c969bbd0547a03896530c089a387",
+  "draft_sha256": "b6cb6ab8899116eed5583eff0c24874f96a5afdd386955d27f7f9ee3651a8027"
+}

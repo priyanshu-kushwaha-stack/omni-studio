@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "completed",
+  "timestamp": "2026-11-15T08:52:54.487784+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G2 (story lock): script v7 and the narration in voice B, on cut renders/v8/cut-v8-720p.mp4 (12:26). Room rounds 18-19 and the v6 outside review applied (review-g2-round18.md, review-g2-round19.md, review-g2-cursor-v6.md). qc story_script passes; final_edit qc passes on the same cut (loudness, clicks, opening, similarity), so G3 can follow in the same sitting. Never approved by an agent.",
+    "script": "script.md",
+    "claims": "claims.md",
+    "room": "room-g2.md",
+    "cut": "renders/v8/cut-v8-720p.mp4",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-15T08:52:54.440845+00:00",
+      "via": "omni approve",
+      "proof": "1b8fd069fd7515865b86d5b4717c2360484a20134e03b0c849fd646bf4feba12",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-12_what-if-you-saw-who-wants-you-to-fail/renders/v8/cut-v8-720p.mp4",
+        "sha256": "04be198fe5e3bad14f3f30a91887c063a27ca192a0df6229db7be2cb25b99779",
+        "at": "2026-11-15T08:52:54.440845+00:00",
+        "proof": "5b1b0a5adcac60e6030ed8a0f131d963f5360dd9be78630a1fed19c88a58339c"
+      }
+    }
+  }
+}

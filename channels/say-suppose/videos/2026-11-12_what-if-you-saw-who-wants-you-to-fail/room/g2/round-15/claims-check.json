@@ -1,0 +1,44 @@
+{
+  "call_id": "f075c938a3054d61b87e1a3e893ce275",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 10,
+    "claim_grounding": 10,
+    "scope_precision": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 215,
+      "quote": "And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure (c03).",
+      "fix": "And Seoul lets them teach only until 10 at night. Inspectors have patrolled the streets to make sure (c03)."
+    },
+    {
+      "line": 388,
+      "quote": "In studies of regret, the most common is education: about a third of all regrets (c11).",
+      "fix": "In studies of regret, the most common life regret is education: about a third of all regrets (c11)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 295,
+      "quote": "Envy comes in two kinds (c07). One pushes you to move up. The other pushes you to pull the other person down (c07)."
+    },
+    {
+      "line": 380,
+      "quote": "Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours."
+    },
+    {
+      "line": 427,
+      "quote": "At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "83c4779df9312065d5a81a6c9e945176788ba08b2ba7956475b44c28263b8fe8",
+  "draft_sha256": "9abd2722a6cb05564358c34921e01790c1e654d91ad36462d8762f50820dca26"
+}

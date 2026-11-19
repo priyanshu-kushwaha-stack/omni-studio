@@ -57,6 +57,31 @@ voices:
       Driver: >-
         A flat, tired male baritone: a tram driver in his forties. Gravelly, bored and matter-of-fact, speaking over
         his shoulder like a public announcement.
+      # What If You Saw Who Wants You to Fail (2026-11-12): Seoul, a senior's autumn.
+      Min-jun: >-
+        A bright, light male tenor-baritone: a boy of eighteen, your best friend since you were twelve. Quick, warm and
+        easy, a grin in every word, crisp clear diction, every word distinct, casual modern English.
+      Ji-yoon: >-
+        A warm female mezzo: a woman of twenty-four, your older sister, tired from night shifts. Soft and low, gentle
+        and teasing, clear diction, she speaks close and slowly, as if she has all the time in the world for you.
+      Tae-ho: >-
+        A flat, cool male baritone: a boy of eighteen, the class rival. Bored and clipped, half a smirk, never looks up
+        from what he is doing, short words.
+      Teacher: >-
+        A crisp female alto: a maths teacher in her forties. Precise and dry, one word at a time, kind underneath but
+        never says so.
+      Clerk: >-
+        A sleepy male baritone: a convenience-store clerk in his twenties on the night shift. Slow, polite and flat,
+        clear diction under the tiredness.
+      # The platform stranger (owner on v3, 2026-11-13: "Voice definitely some one else"; the doubled-money tram
+      # woman's voice was used for her).
+      Old woman: >-
+        A warm, clear female alto: a kind woman in her seventies on a metro platform, a grandmother. Gentle and
+        unhurried, a smile in the voice, crisp clear diction, every word distinct, standard English with no slang.
+      # The bus kid (saw who wants you to fail v5, 2026-11-14): one line, "What did you win?".
+      Kid: >-
+        A high, bright boy's voice, about six years old, on a bus. Curious and delighted, quick, clear diction,
+        every word distinct, standard English with no slang.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.

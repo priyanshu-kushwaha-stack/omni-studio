@@ -1,0 +1,68 @@
+{
+  "call_id": "cf9df97f3b004698bf5737490b787fa0",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "hook_and_second_hook": 5,
+    "causal_story_chain": 8,
+    "stakes_and_reversal": 9,
+    "ending_and_payoff": 9,
+    "length\u2014unresolved sister relationship sustains attention past 8:00": 8
+  },
+  "blockers": [
+    {
+      "quote": "So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Because your best friend hears everything first. He always has.",
+      "why": "#3 Second hook by 0:30 fails: the draft times the title question at 0:36 and minus eighty-four at 0:31.",
+      "fix": "Replace line 38 with \u201cWhat if good news showed who wants you to fail?\u201d, then cut directly to line 43 and land minus eighty-four before 0:30. Move the scholarship explanation and withheld-news beat after line 52.",
+      "domain": "story",
+      "line": 40
+    },
+    {
+      "quote": "You do.",
+      "why": "#6 Every use has a gap fails at the dock: after already seeing minus sixty-eight, you repeat the power and receive exactly the expected number without a contrary expectation.",
+      "fix": "Before the first dock reading, add: \u201cThe condition is gone. So her number should be too.\u201d Replace line 413 with: \u201cMaybe saying it the way she asks will move it. You do.\u201d Both unchanged readings then break an expectation.",
+      "domain": "story",
+      "line": 413
+    },
+    {
+      "quote": "She holds on. And this time you don't go stiff.",
+      "why": "#11 Never say the feeling fails: the narration captions the embrace and your closing arms, which the shot already shows.",
+      "fix": "Remove this narration. Hold wordlessly on your arms closing until \u201cSay it again...\u201d",
+      "domain": "story",
+      "line": 409
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 392,
+      "quote": "Text her, and never see her colour again. Or take the bus to the warehouse and say it to her face.",
+      "fix": "Give the first option a real virtue: \u201cText her now, before her shift ends, and end her month of waiting. Or make her wait, take the bus, and say it to her face.\u201d"
+    },
+    {
+      "line": 431,
+      "quote": "She's not watching you fail. She's watching the life she handed you walk up the dock with the news. And she wants it in.",
+      "fix": "Before this answer, add the hero's bubble: \u201cWhat hurt?\u201d The letter behind the calendar can answer it at the fridge."
+    }
+  ],
+  "keep": [
+    {
+      "line": 301,
+      "quote": "A card has one colour for every kind of hurt."
+    },
+    {
+      "line": 423,
+      "quote": "She was never outside your lane. She was in it first."
+    },
+    {
+      "line": 446,
+      "quote": "That half-second is the other life, going past."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "1e029cc571cd23f7f07cc6174e44bdc4e22ab40d8dc5e781781053cf5e68d092",
+  "draft_sha256": "0a606b3e8d9a9f24334b1675119490fa464c2150164cb6d6a1f6ee2e12f74929"
+}

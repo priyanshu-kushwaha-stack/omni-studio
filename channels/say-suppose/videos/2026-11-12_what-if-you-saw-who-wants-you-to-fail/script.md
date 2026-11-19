@@ -1,0 +1,462 @@
+# Script: What If You Saw Who Wants You to Fail?
+
+format: story
+status: v6.1, G2 round 18 (2026-11-14): a cold open on the thumbnail's frame, -84 by 0:05, the title question by 0:08, the stakes by 0:20; the platform skit after it word for word. Earlier: G2 round 16 (2026-11-14): set pieces reordered so the scale only climbs (one face, the class, the hall, the street, the country, the window); the street lands at 5:00; the loopholes are closed on screen; a laugh in every scene; the peak is a reveal and a triumph
+claims: claims.md
+
+> SITUATION: Seoul, the street of after-school academies, six weeks before the big exam. Good news, you say out loud, and your best friend hears it first, over half of his chocolate bar at ten at night.
+> DESIRE: To use the card to find out who is really racing you, climb into the top four, and never get caught doing it.
+> CONFLICT: The card never says why, it opens only to a face you can see, and the rival works out that you read people and turns a hundred backs on you.
+> CHANGE: You stop using the card to hunt enemies and start using it to see the race for what it is.
+> RESULT: With the whole class turned to the wall, you read every one of them in the night window, and then a card snaps open over your own head.
+> UNDER: Is the person who wants to beat you your enemy, or your best friend?
+> DARLING: "Zero. Grey. One click. The biggest news of your life, and you're a receipt."
+> DARLING: "He isn't sawing your chair. He's building a ladder. Out of your mistakes. You've been his textbook for two years."
+> DARLING: "A face in a mirror is still a face. The toilets weren't broken. The one card you can't see was always yours."
+
+## [00:00] Cold Open
+
+> MOOD: night
+> SCENE: Cold open on the thumbnail's frame, before anything is explained (G2 round 18, the owner: fix the opening): the academy street at ten, the lit signboard towers. You large at the left, mustard head, teal scarf, holding up the letter with the teal seal, mouth open. Your best friend right of centre, pale-blue head, grinning, his near arm reaching to pull you into the hug. No cast tag yet.
+
+> BUBBLE: You: I made it.
+
+> HOLD: 2.5 s. Performed, wordless (G4, the owner: "Start of it feels very fast and incomplete"; the opening check is not a hard rule): the hug lands before the title question. A paper snap: the cream card unfolds over his head and its split-flap digits run down the red side and stop on minus eighty-four, about two seconds in. His arm hooks round your neck, his eyes shut, his grin wide. Your eyes stay open, on the card.
+
+> TAG: -84%
+
+So what if every piece of good news showed you who wants you to fail?
+
+> SCENE: Three fast flashes of what is coming, about a second and a half each: a classroom of a hundred heads with cards snapping open over them; the academy street at ten with a thousand cards over a thousand heads; a hundred chairs scraping round, a hundred backs, the rival grinning over his shoulder. Then a hard cut to white.
+
+Six weeks before the big exam. A card that shows you who's really racing you. Get caught reading it, and a hundred chairs turn their backs on you.
+
+> SCENE: White to the metro platform at twenty to seven, the departure board fluttering.
+
+It started this morning. With a stranger.
+
+## [00:22] The Platform
+
+> MOOD: morning
+> SCENE: The metro platform, twenty to seven in the morning, nearly empty. A split-flap departure board hangs over the platform; it flutters through its times and clicks. You under it, mustard head, teal scarf, school bag, an envelope with a teal seal in both hands. One other face on the platform: a woman with a shopping bag, grey head, at the yellow line. You tear the seal. A sheet unfolds. You read it. Your mouth opens. You read it again. You look left, right: one face. Hers. You hold the open letter out at her.
+
+> HOLD: 4 s. Performed. The board flutters and clicks overhead. You tear the teal seal with your thumb; the sheet unfolds; your eyes run down it and stop. Your mouth opens. You read it again, closer. You look left: empty platform. Right: her. You hold the letter out at arm's length.
+
+> BUBBLE: You: I made it!
+
+> HOLD: 4 s. Performed. A soft paper snap: a cream card the size of a bus ticket unfolds in the air over her head. A scale is stamped down it, red at the bottom, a grey zero in the middle, teal at the top. Split-flap digits flutter up out of the red, through the zero, into the teal, and click still on plus twenty-two. She never looks up. Your eyes do, and stay there.
+
+> TAG: +22%
+
+Old woman: Oh, congratulations! Your family must be so proud.
+
+> HOLD: 5 s. Performed. You point straight up at the card. She follows your finger: the station roof, a pigeon, nothing. She looks at you, and takes one step sideways along the platform. The train comes in behind her. She boards. You reach up and touch the card: the flaps fold shut with a click under your fingers, and it's gone. The doors close on her face. The train pulls out. You alone on the platform, the letter in one hand, the other hand still up in the empty air. Over your shoulder the departure board flutters once, and clicks.
+
+## [00:11] Made the Cut
+
+> SCENE: Close-up: your hand comes down. The letter, close: the teal seal, a school crest with no lettering. Then one two-second insert: the classroom, your best friend talking at you, your hand flat on the letter inside your jacket, your mouth shut.
+
+That's your scholarship letter. You made the cut. And a card just opened over a stranger, with a number only you can see.
+
+You tell nobody all day. Because your best friend hears everything first. He always has.
+
+> MOOD: night
+> SCENE: The thumbnail's frame, exactly: the academy street at ten, towers of lit signboards behind with no lettering on any of them. You large at the left, mustard head, teal scarf, holding up the letter with the teal seal, mouth open, eyes up and right. Your best friend right of centre, pale-blue head, grinning, one fist up, the near arm reaching to pull you into the hug. On the bubble the rule device: the cream card unfolds over his head with the paper snap, and its split-flap digits flutter down the red side. Close-up on your face, then the card, then his grin. On his first close-up a cast tag writes itself in the lower left, off both faces: MIN-JUN, your best friend since you were twelve.
+
+Ten at night. Extra classes finally let out. And waiting at the bottom of the steps, like every night: your best friend.
+
+> BUBBLE: You: I made it.
+> TAG: -84%
+
+> HOLD: 4 s. Performed. The flaps run down the red side and stop on minus eighty-four. He never looks up at it. His fist pumps once; his near arm hooks round your neck and pulls your face into his shoulder; his eyes shut, his grin wide. Your eyes stay open, over his shoulder, on the card. His free hand thumps your back twice. The flutter, then the click of the last flap.
+
+Because that's your best friend. And that's minus eighty-four.
+
+Min-jun: Knew it. Knew it.
+
+> SCENE: Close-up on the card: the flaps fold shut with a click at sixty seconds. Over-the-shoulder from behind him, his arm still round you, your eyes on the empty air above his head.
+
+Sixty seconds. The card folds shut. His arm stays. So does the number.
+
+## [00:51] The Rule
+
+> MOOD: night
+> SCENE: The title card ident (C), three seconds, cut from the last line. Then the convenience store: fluorescent white against the dark street, the snack shelf, the counter, the clerk behind it, a cat asleep on a crate by the door. Your best friend at the counter with one chocolate bar, snapping it in two along the fold. You by the door, the letter in your hand. On "The rule, once" an insert replays the opening card at -84, then a clean paper scale from plus one hundred to minus one hundred draws itself, red below, teal above.
+
+The rule, once. Say your good news out loud, to someone's face, and a card opens over their head. For sixty seconds, the card shows how your news lands with them.
+
+A full one hundred means pure joy for you. And minus one hundred means they want you to fail.
+
+And it never tells you why.
+
+Min-jun: You want half?
+
+Every night, one chocolate bar, two halves. You take yours. Tonight you watch him chew.
+
+> SCENE: You turn to the counter. The clerk, grey-green head, apron, scanning the bar. You hold the letter up at him. The card snaps open over his head: the flaps don't move. One click. A grey zero.
+
+The only other face in the shop: the clerk.
+
+> BUBBLE: You: I made it.
+> TAG: 0%
+
+Clerk: Receipt?
+
+Zero. Grey. One click. The biggest news of your life, and you're a receipt.
+
+> SCENE: You lean on the counter, letter down, and announce with both arms out. The clerk's card has folded; nothing new opens. Not a snap. He holds out the receipt again.
+
+So you try the obvious cheat. Make something up, and scan the whole world for free.
+
+> BUBBLE: You: I won the lottery!
+
+> HOLD: 3 s. Performed. Arms out, grin wide. Silence. No snap. The clerk blinks once and holds the receipt an inch closer. The cat does not open an eye.
+
+Nothing. A lie opens nothing. The card works on good news that's true, and yours. So you've got exactly one letter, and you're spending it on a man who scans snacks.
+
+> SCENE: You crouch by the crate. The cat opens one eye. You hold the letter at it and your mouth moves. No snap. The cat closes the eye.
+
+The cat on the crate. Nothing. Not even a card. So either a cat isn't a face, or a cat doesn't care. You'll never know.
+
+> SCENE: Insert: your phone, one contact, a peach avatar. Cut to her: the warehouse aisle at night, peach head, work vest, a forklift going by behind her, the phone at her ear. On "You do" you switch to video: her face fills your screen, grinning, the warehouse behind her; you grin back into it. No card opens anywhere, over her or over the screen. Cast tag: JI-YOON, your big sister, six years of night shifts.
+
+Your phone. Your sister. Six years of night shifts at a warehouse to pay for that classroom. You tell her.
+
+Ji-yoon: Say it again.
+
+You do. You even switch on video, so you can see her grin. And nothing opens over a screen.
+
+So. Only out loud. Only to a face you can see. Remember that. It's going to matter.
+
+## [02:00] Who's Red
+
+> MOOD: day
+> SCENE: The school corridor, morning: shoe lockers, the rival, sage head, one foot up, swapping shoes. Cast tag: TAE-HO, the rival, trash talk every morning. You walk straight at him with the letter out. Over-the-shoulder on his head: the card snaps open, the flaps flick to -6 and stop, barely into the red.
+
+Next morning. You've worked it out. Red is for enemies. So you go looking for one.
+
+The rival. Trash-talks you every morning, two years running.
+
+Tae-ho: Still here?
+
+You hold up the letter.
+
+> TAG: -6%
+
+Minus six. He barely looks up.
+
+Tae-ho: Nice. Move.
+
+Two years of trash talk: minus six. You wanted an enemy. You got a receipt with legs.
+
+> SCENE: The classroom: your maths teacher at the board, glasses, red pen. You at her desk with the letter. The card over her head runs up the teal side to +41 and clicks. She doesn't look up from marking. Cast tag: MS. KANG, maths, one word at a time.
+
+Your maths teacher.
+
+> TAG: +41%
+
+Teacher: Good.
+
+One word. And plus forty-one.
+
+> SCENE: The school toilets (the corridor set, a mirror over a sink): your face in the glass, the letter held up to it. Your mouth moves. No snap. Your eyes go to the air above your reflection's head, then above your own.
+
+The mirror in the school toilets. Nothing opens. So a mirror isn't a face. Or the one card you can't see is yours.
+
+> SCENE: Outside the metro station, afternoon: a tour group of eleven, pastel heads, following a guide's flag. You step into their path with the letter up; eleven cards snap open and click to zero in a row. The group flows round you like water round a post.
+
+Outside the station, a tour group. Eleven of them, following a flag. You say it to all eleven.
+
+> TAG: 0%
+
+Eleven cards. Eleven zeros, in a row, like a timetable.
+
+> SCENE: The bus, afternoon: a little kid in a cap beside you, feet swinging. You show him the letter. The card over his cap runs far up the teal side and clicks on +77.
+
+The bus home. A little kid in a cap, feet swinging. You try him.
+
+Kid: What did you win?
+
+> TAG: +77%
+
+Plus seventy-seven. The highest number of the day is a six-year-old who doesn't know what a scholarship is.
+
+> SCENE: The classroom, a top-down insert: two desks side by side, two halves of a chocolate bar on a napkin. On "Problem one" a card writes itself in the lower left: PROBLEM 1. Only the people in your race can hurt at your news.
+
+So a kid gives you everything, your enemy gives you nothing, and your best friend gives you minus eighty-four. Why?
+
+We measure ourselves against people near our own level, not far above or below (c10).
+
+And envy picks someone who started where you did, in a thing that matters to you (c12).
+
+The kid isn't in the race. The rival is twenty places ahead. Your best friend has the next desk, the same chocolate bar, the same exam.
+
+But here's the problem. Problem one: the only people who can bleed at your news are the ones in your lane. Which means the card is useless on strangers, and lethal on friends.
+
+> SCENE: The academy steps at dusk, you and your best friend, bags between your feet. No card is open.
+
+So why not just ask him? You do, on the academy steps.
+
+> BUBBLE: You: There's a number over your head!
+
+> HOLD: 4 s. Performed. You point straight up. He looks up, sees nothing, looks at the sky, then at you, brows up. He pats the top of his own head twice.
+
+Min-jun: What number?
+
+Min-jun: Is it a bug? Get it off.
+
+He can't see it. Nobody sees the cards but you. And people don't like to admit being maliciously envious, even to themselves (c12).
+
+So asking is out. You'll have to read them. All of them.
+
+## [03:40] Her Back
+
+> MOOD: lamp
+> SCENE: The small flat's kitchen, eleven at night, one lamp. The letter taped to the fridge; beside it a jar with her paintbrushes standing in it. Your sister in the doorway with her back to you, pulling on the work vest.
+
+Eleven. Home. The letter's already on the fridge, next to the jar where her paintbrushes have stood for six years. She's in the doorway, pulling on her vest. She doesn't turn round.
+
+Ji-yoon: Say it again.
+
+> HOLD: 3 s. Performed. Your mouth moves; the letter lifts an inch. No snap. Her shoulders shake once: the laugh. She raps the door frame twice with her knuckles and goes.
+
+You say it to her back. Nothing opens. A back is not a face. Your sister has the only unreadable face in Seoul, because she never points it at you.
+
+## [04:00] The Weapon
+
+> MOOD: day
+> SCENE: The classroom over two weeks, a montage that turns at every use. A mock score chalked on the board; you standing to say it aloud; cards snapping open over every head; every time, your eyes go to your best friend's card first, and two rows back the rival notices. Your phone: a group chat, his name swiped out first, then another, then another. A paper sheet: a hundred small heads, four coloured teal, yours fourth, his fifth. On the curve line a card: TOP 4% GET THE TOP GRADE.
+
+The national exam grades on a curve. In most subjects, only the top 4 per cent get the top grade (c01).
+
+So you picture your class. A hundred of you. Four places. You're fourth. He's fifth.
+
+And here's the gift inside the lie rule. A mock score is true, and there's a new one every week. Fresh ammunition.
+
+Two weeks. Each score, you stand up, say it, and read the room.
+
+Teacher: Sit down.
+
+Anyone who goes red: out of the group chat. Him first. No past papers. No notes. Week one, three red. Week two, nine.
+
+> SCENE: The group chat on your phone: your name at the top, a new nickname beside it. The rival, three rows away, pointing at the ceiling with a grin. Then the counter at ten: your best friend holds out the bigger half; the card over his head on -88.
+
+But people notice. You brag, and you stare at the air above their heads. The group chat has a name for you now.
+
+Tae-ho: Weatherman. Cloudy today?
+
+And every night at the counter:
+
+Min-jun: You want half?
+
+You take the smaller half. On principle. And his number keeps going down.
+
+> TAG: -88%
+
+## [04:40] Five Hundred
+
+> MOOD: day
+> SCENE: The school hall: five hundred seated heads in rows, a stage, your maths teacher at the side of it. She points at the microphone. You at the microphone, the letter up. On the bubble five hundred cards snap open in rows like seats: grey in blocks, one row red near the front where your class sits, and one blazing teal at the very back over a janitor with a mop. The camera rises over the hall.
+
+Then your maths teacher does the worst thing a teacher can do.
+
+Teacher: Stand up, now.
+
+The school assembly. Five hundred faces. She wants you to announce it.
+
+> BUBBLE: You: I got the scholarship.
+
+> HOLD: 4 s. Five hundred snaps, rolling back through the hall like a wave. Grey blocks. One red row. One teal at the back. The janitor claps alone.
+
+Five hundred cards. Grey in rows, like seats. One red row: yours. And one blazing teal at the very back: the janitor, who thinks you said the heating's fixed.
+
+## [05:00] A Thousand Cards
+
+> MOOD: night
+> SCENE: The academy street at ten. You on the academy steps, your best friend two steps down with the class by the snack shop. On "every door on the street opens at once" the doors of every building open together and the crowd pours out. You say it on "say it into the crowd", and a thousand cream cards snap open and flap to their numbers: nearly all grey zeros, a scatter of pale teal, a dozen red clustered by the snack shop where your class stands. The camera pulls up and back until the street is a field of cream cards with one red cluster. At the bus stop at the bottom of the frame the stranger, crimson head, long coat, reads a timetable. On the academy facts a card, upper left: ONE NEIGHBOURHOOD. ABOUT 1,000 ACADEMIES. CLOSED BY 10 PM.
+
+Just your class, or all of Seoul? Why not go on the news and scan the whole country? Because a screen isn't a face. Your sister's video call settled that. But a crowd is a thousand faces, and this street has one.
+
+This one neighbourhood in Seoul has about 1,000 after-school academies (c04).
+
+And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure (c03).
+
+So at ten, every door on the street opens at once. A thousand faces. You climb the academy steps and say it into the crowd.
+
+> HOLD: 3 s. The snap, a thousand times, like pigeons going up. The flutter. The street a field of grey zeros, pale teal here and there, a dozen red by the snack shop. The camera keeps rising.
+
+You just told a thousand strangers about your scholarship. Nine hundred and eighty-eight of them would like you to get off the steps.
+
+And every red card points back to your class.
+
+> SCENE: Close-up on your face, lit from below by the signboards. Under one red card: a girl from your row, lilac head, a calculator. Under another: a boy, grey-blue head, laughing. Their cards: -30, -44.
+
+The girl who borrows your calculator. Minus thirty. The boy you walked home with all of first year. Minus forty-four.
+
+So. Red means they want you to fail. And your list was right.
+
+## [05:50] Second
+
+> MOOD: day
+> SCENE: The corridor, the shoe lockers, morning. The rival one foot up. The sheet of a hundred heads: yours now second, his first. You hold up a mock paper. Over his head the card runs to -71.
+
+You climb. Fourth. Third. Second. And the morning you hit second, the rival finally looks up.
+
+Tae-ho: Weather?
+
+> BUBBLE: You: Second place.
+> TAG: -71%
+
+Minus seventy-one. Two years of trash talk gave you minus six. One mock score gave you minus seventy-one. You're in his lane now. Your rival finally hates you. The enemy you went looking for has finally arrived.
+
+> TAG: -91%
+
+And your best friend? Minus ninety-one. Second place, and the reddest card in the room is at the next desk. So what does first cost?
+
+## [06:30] The Ladder
+
+> MOOD: lamp
+> SCENE: The late-night study room: rows of desks with partitions, one lamp each, past midnight. His seat empty, his notebook open under his lamp. Top-down insert: a page in your hand. On the two kinds of envy a card: TWO KINDS OF ENVY. One climbs. One pulls you down.
+
+The late-night study room. Past midnight. His seat's empty, and his notebook's open. You look. Obviously.
+
+> HOLD: 5 s. Performed. Your hand turns the page. Your own wrong answers, copied clean in his handwriting. Beside each, one word, "why?", and under it the right way. Your finger stops on the third. You look at his empty chair, then back down, then you laugh, once, into your hand.
+
+Your mistakes. Every one. Copied out, with a "why?", and the fix.
+
+He isn't sawing your chair. He's building a ladder. Out of your mistakes. You've been his textbook for two years.
+
+Envy comes in two kinds: one pushes you to move up, the other pushes you to pull the other person down (c07).
+
+Minus never proved they wanted you to fail. It only proved your win hurt. In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05).
+
+A card has one colour for every kind of hurt. Which is sweet, until you remember the rival is minus seventy-one, and he does not build ladders.
+
+## [07:10] Backs
+
+> MOOD: day
+> SCENE: The classroom. The rival at the front, arms folded, watching you stand with a paper. Then on "Backs" a hundred chairs scrape round at once: every student faces the wall, the rival last, grinning over his shoulder before he turns. You alone at your desk facing a hundred backs. On "Problem two" a card: PROBLEM 2. No face, no card.
+
+But here's problem two. Every time, you read your best friend first. And the rival has been watching.
+
+Tae-ho: You only brag to faces.
+
+He doesn't know about the cards. He doesn't need to. He's worked out the shape of it: you say your news to a face, and you read something. So he gives the class one word.
+
+Tae-ho: Backs.
+
+> HOLD: 4 s. Performed. You stand with the paper. The scrape of a hundred chairs. A hundred backs. The rival's grin, then his back too. Your paper lowers an inch.
+
+Monday. You stand up with your score. A hundred chairs scrape. A hundred backs.
+
+You wanted to avoid the red ones. Now the whole room is avoiding you, and they don't need to see your face to do it.
+
+No faces. No cards. Your edge is gone, your phone says "removed from group", and the exam is in three weeks.
+
+## [07:50] The Country Holds Its Breath
+
+> MOOD: morning
+> SCENE: The classroom at dusk, the night before: you set your own notebook on his desk, half a chocolate bar on top, and walk out. Then exam morning, eight o'clock, the street outside the exam school gate. A title in the upper left: EXAM MORNING. Students file in; along the railings a crowd of parents. You come up the street.
+
+The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. The bigger half. You're competitive, not a monster. It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.
+
+Exam morning. Outside every exam school, parents crowd the gate to see their kids in. And there in the crowd, straight off the night shift, still in her vest: your sister. With a lunch box packed like the exam lasts a week.
+
+> HOLD: 6 s. Performed. The crowd parts and she's there, vest half zipped, hair flat from the night, a lunch box in both hands. She holds it out. You take it; your fingers touch hers on the handle. Her mouth opens for the words she always says, and shuts without them. She nods once and steps back. The bell.
+
+Neither of you says a word. Nothing opens. Some faces you don't read.
+
+> SCENE: The gate closes. The exam hall from above, rows of heads, headphones on. The city skyline, one paper plane held still in the sky; the empty runway. A fact card, lower left: NOVEMBER 2025, SOUTH KOREA. NO TAKEOFFS, NO LANDINGS: 35 MINUTES. During the English listening test.
+
+The gate closes behind you. And the whole country goes quiet.
+
+It's true. In November 2025, during the English listening test, South Korea stopped its planes taking off and landing for 35 minutes, so their noise wouldn't disturb the students (c02).
+
+> HOLD: 3 s. The paper plane held still; the empty runway; the parents at the gate, not moving. The one sound is a pencil.
+
+A country holds its breath for you. Results come in a month. For a month, you say nothing to anyone.
+
+## [08:45] The Window
+
+> MOOD: day
+> SCENE: Results day, morning, the flat: your phone, three top grades in a column. Your sister asleep on the sofa in her vest, mouth open. You crouch by her face and nudge her shoulder; one eye opens. You hold up the phone and say it. The card snaps open over her and runs all the way up the teal to +100.
+
+Results. Top grade. Top grade. Top grade. The scholarship holds.
+
+And here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). Four seats, a hundred backs, six weeks of war. For a seat that was never in the room.
+
+Your sister's asleep on the sofa after the shift. You nudge her. One eye opens.
+
+> BUBBLE: You: I made it.
+> TAG: +100%
+
+Plus one hundred. Before the other eye even opens.
+
+> MOOD: night
+> SCENE: The academy classroom at half past nine, lights on, the windows black. The class at their desks, phones out with results. The rival stands.
+
+The academy, that night. Everyone has a result. The rival stands up before you can.
+
+Tae-ho: Backs. Go on, weatherman. Say it again.
+
+> SCENE: A hundred chairs scrape round. A hundred backs, facing the windows. Behind the glass, the night: and in the glass, a hundred faces, looking straight at you. Close on your eyes going from the backs to the window. You stand and say it.
+
+A hundred backs. Facing the windows. And it's dark outside, so every window is a mirror. A hundred faces in the glass, all looking your way.
+
+The card never said a face had to be the right way round.
+
+> BUBBLE: You: I made it.
+
+> HOLD: 9 s. The one wordless peak. A hundred snaps, in the glass, backwards: a hundred cards opening over a hundred reflected heads, their digits mirrored, flutter and click. The camera drifts in on the window until the whole frame is reversed cards and reversed faces. Music drops to one line under the flutter. A slow-motion ghost on the flaps.
+
+A face in a mirror is still a face. The toilets weren't broken. The one card you can't see was always yours.
+
+> SCENE: Close on cards in the glass. Most teal, pale to bright. Over your best friend's reflection: -84. Over the rival's: -6.
+
+And the room, in the glass: nearly all teal. Most of them were only ever red at the race, and the race is over.
+
+Your best friend? Minus eighty-four. Still. He's glad for you. He also wants to beat you at everything until you both die. That's your best friend.
+
+> TAG: -84%
+> TAG: -6%
+
+And the rival is back to minus six. Between rivals, that's practically a handshake.
+
+Tae-ho: Weather?
+
+> BUBBLE: You: Clear.
+
+## [10:05] The Door
+
+> MOOD: morning
+> SCENE: The kitchen. Your sister at the fridge; the letter, the jar. The front door: your best friend, grinning, a letter of his own. The dark window of the kitchen behind you. Cut before any number. End card.
+
+Morning. The fridge. Your sister, the jar of brushes, and the door. Your best friend. A letter of his own. For the first time, the good news isn't yours.
+
+Min-jun: I got in!
+
+> HOLD: 4 s. Performed. He holds the letter up the way you held yours. A paper snap sounds above you, out of frame. His grin falters at your face. Your eyes start to lift, then turn to the dark kitchen window behind you. Cut before the glass.
+
+Ji-yoon: Say it again.
+
+> HOLD: 2 s. He does. A second snap, above you. Your head turns to the window. Cut.
+
+Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.
+
+> HOLD: 1 s. End card (cut short, outside review v6): like, subscribe and comment tags in the left two-thirds; the right third quiet.
+
+## Not spoken
+
+About 1,480 spoken words: 9:33 at 155 words a minute. Holds: 18, about 76 s; the peak at the window is the longest at 9 s. Runtime about 10:50; at the channel's 1.1x tempo about 10:00. The one tender beat is the gate (about 20 s, at 8:05, before the last two minutes). Claims spoken: c01, c02, c03, c04, c05, c07, c10, c12. Set pieces and scale, climbing only: one face (the rival, 2:00; the tour group of eleven, 2:50), the class (the curve and the mock-score weapon, 4:00), the hall (five hundred, 4:40), the street (a thousand cards at ten, 5:00; the snap at about 5:20, the picture only this premise can show, before the midpoint), the country (exam day, 8:20), the window (a hundred faces read through glass, 9:20). The street is the confirmation of problem one at full scale: every red card points back to your class (the calculator girl, the boy from first year), and the list from the montage was right; the rival at second (-71), Min-jun at -91 and "So what does first cost?" follow it at 5:50, before the ladder. The "why not go on the news" loophole is closed at 5:00, after the hall. Running gags: "Say it again" (phone, her back, withheld at the gate, in the rival's mouth at the peak, hers at the door); "Weather?" (the group chat, the lockers, the peak); "You want half?" (the store, the smaller half, the chocolate on the notebook). The under-question drives the montage: his name leaves the group chat first (4:20). Flagged limit at 1:55 ("only to a face you can see. Remember that."); it is turned on you at 7:10 and pays off at 9:20. The planted line at 2:40 ("a mirror isn't a face. Or the one card you can't see is yours") is broken at 9:30. The stranger: the bus stop in the thousand-card wide shot. No new rule after halfway; the window answers a question the mirror asked at 2:40. No new person after 60% (the calculator girl and the boy are named at 5:40).
+
+## Chapters
+
+- 0:00 Made the Cut
+- 0:51 The Rule
+- 2:00 Who's Red
+- 4:00 The Weapon
+- 5:00 A Thousand Cards
+- 6:30 The Ladder
+- 7:10 Backs
+- 8:45 The Window
+

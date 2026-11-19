@@ -1,0 +1,69 @@
+{
+  "call_id": "f569b9cd8dfc435ba22f675a084acd6e",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "hook_and_click": 4,
+    "causal_story_chain": 8,
+    "power_escalation": 6,
+    "misconception_and_reversal": 9,
+    "close": 8,
+    "past_8_minutes__results_window_and_unseen_self_card_hold_attention": 9
+  },
+  "blockers": [
+    {
+      "quote": "The metro platform, twenty to seven in the morning, nearly empty.",
+      "why": "Check #2 Confirm the click fails: the first seven seconds show a stranger on a platform, not the thumbnail\u2019s academy-street hug and minus-eighty-four card.",
+      "fix": "Replace the platform opening with the line 43 academy-street scene. Start on Min-jun reaching for the hug, sound the paper snap immediately, and land -84% by 0:07.",
+      "domain": "story",
+      "line": 20
+    },
+    {
+      "quote": "So what if every piece of good news showed you who wants you to fail?",
+      "why": "Check #3 Second hook by 0:30 fails: the title question arrives after the platform setup, and the viewer still does not know the top-four goal or the cost of getting caught.",
+      "fix": "Move this question directly after the -84% reveal, then add by 0:30: \u201cYou need one of four places. The card could show who is racing you. Get caught reading it, and the whole class turns on you.\u201d",
+      "domain": "story",
+      "line": 40
+    },
+    {
+      "quote": "The camera pulls up and back until the street is a field of cream cards with three red ones.",
+      "why": "Check #20 Escalating set pieces fails: the thousand-face spectacle comes before the later hundred-person class and five-hundred-person hall, so the power\u2019s scale contracts after its midpoint image.",
+      "fix": "Resequence the uses as class, hall, then thousand-card street before midpoint; stage Backs and the window payoff academy-wide so the final use exceeds the street in scale as well as cleverness.",
+      "domain": "story",
+      "line": 207
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 244,
+      "quote": "Anyone who goes red: out of the group chat. No past papers. No notes.",
+      "fix": "Show your best friend\u2019s name being removed first; that makes the under-question drive the weapon montage instead of sitting beside it."
+    },
+    {
+      "line": 304,
+      "quote": "Minus never meant they want you to fail. It meant it hurt.",
+      "fix": "Use \u201cMinus never proved they wanted you to fail. It only proved your win hurt.\u201d This preserves the rival/friend ambiguity instead of replacing one absolute with another."
+    }
+  ],
+  "keep": [
+    {
+      "line": 84,
+      "quote": "Zero. Grey. One click. The biggest news of your life, and you're a receipt."
+    },
+    {
+      "line": 300,
+      "quote": "He isn't sawing your chair. He's building a ladder. Out of your mistakes. You've been his textbook for two years."
+    },
+    {
+      "line": 385,
+      "quote": "A face in a mirror is still a face. The toilets weren't broken. The one card you can't see was always yours."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "60232231cebb53ebfc3f98ca9c0ed40d7f4b51edbf8b337f100e5b1b68842fb4",
+  "draft_sha256": "957f6f345968834d2fd3d71b374b71fff40145f545398880f523697b94b856e9"
+}
