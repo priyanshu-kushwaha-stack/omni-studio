@@ -1,0 +1,71 @@
+{
+  "call_id": "29a20f70ab7741b3817a56f000705f2a",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "clarity": 7,
+    "escalation": 8
+  },
+  "blockers": [
+    {
+      "quote": "> HOLD: 4 s. Performed. You hold the phone out to her. She tries the ring with her thumb. It will not move. She tries two thumbs. You take the phone back, lay it on the counter and slide the napkin and the pencil to her instead. She writes a number on the third line. The boss takes the pencil, crosses it out and writes his. The banker writes his. The waitress, the plumber, Marco. The napkin fills with crossings-out until one number stands. You turn the dial to it, and only to it, and take your thumb off.",
+      "why": "#21 Close the loopholes on screen fails. The town chooses the number, but you retain unilateral control; the obvious exploit\u2014turning it back later\u2014is acknowledged in the draft notes and left unanswered.",
+      "fix": "After turning the dial, lock the phone in a timed box at the diner and give one key to Marco and one to the mayor. It can open only when both are present. Keep the planted words about only you being able to turn it.",
+      "domain": "story",
+      "line": 386
+    },
+    {
+      "quote": "The rule is three lines. Type a job, and by the next shift a machine worker is at your door. No wage, no sleep, no mistakes. Hire as many as you like, and rent them to anyone who asks. And the app has one dial, for every machine at once: what a shift costs whoever rents it. Only you can turn it, and the moment you do, any renter can walk away. Remember that.",
+      "why": "#16 A flagged limit that pays off fails because the announced three-line rule runs to five separate instructions before the plant lands.",
+      "fix": "Replace the surrounding rule while preserving the planted words: \"Type a job; by next shift, a machine is at your door\u2014no wage, no sleep, no mistakes. Hire as many as you like, and rent them to anyone. One dial sets every rental price. Only you can turn it, and any renter can walk away. Remember that.\"",
+      "domain": "story",
+      "line": 72
+    },
+    {
+      "quote": "Here's the line you missed. Marco ate here. Say he took home four hundred a week. Forty of it came back over your counter, in coffee and pie. The rest went to the barber, the garage, the grocer and the bar. So when you fired him, you kept four hundred and lost forty. A great deal, for you. The barber, the garage and the grocer lost the rest, and never saw it leave.",
+      "why": "#7 Misconception first fails its one-number-at-a-time requirement at the story's hardest explanation: four hundred and forty are introduced, compared and reused before either lands.",
+      "fix": "Reveal one number per line and picture: \"Marco takes home four hundred a week. / Only forty comes back over your counter. / The other three hundred and sixty keeps the barber, garage, grocer and bar alive. / Fire him, and you keep his wage while everyone else loses his spending.\" Animate the tag sequentially rather than showing all three numbers together.",
+      "domain": "story",
+      "line": 252
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 99,
+      "quote": "> HOLD: 3 s. Performed. Marco squares up beside the cook. Two burgers go up together. The cook's lands dead centre on its bun. Marco's lands on Marco.",
+      "fix": "Beat the obvious robot-versus-human slapstick: have the machine catch Marco's wandering burger too and serve both before Marco's empty spatula comes down."
+    },
+    {
+      "line": 399,
+      "quote": "> HOLD: 10 s. The wordless peak. The whistle. The gate opens and the road fills with overalls crossing. The stools fill one by one, each with a clink. At the grill, Marco beside the steel cook: the cook preps, Marco flips, and his lands on the bun.",
+      "fix": "Let trying carry the peak: Marco's burger lands crooked, but the boss chooses it over the machine's perfect one and takes the first bite."
+    },
+    {
+      "line": 430,
+      "quote": "So, would you have turned the dial? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Ask the unresolved choice instead of one the story already made: \"So who should control the dial\u2014you, the town, or nobody? Tell us in the comments.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 28,
+      "quote": "What if you fired everyone and hired AI? Six weeks from now, you're the richest person this town has ever had. And its last customer."
+    },
+    {
+      "line": 262,
+      "quote": "You didn't fire a cook. You fired a customer who happened to know how to cook."
+    },
+    {
+      "line": 284,
+      "quote": "Everyone in town has done the sum. Everyone got it right. That's the problem."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "6607a77a9a9829d18137e1700fc51f52f7b4f55e09d219dac095c3a0ea8e0b76",
+  "draft_sha256": "913d8695758742da15d2451c51c054b9b09277bc7d988efdc6b87160335ebe8c"
+}

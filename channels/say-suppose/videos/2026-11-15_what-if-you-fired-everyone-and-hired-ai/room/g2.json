@@ -190,15 +190,51 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 6,
+      "draft_sha256": "913d8695758742da15d2451c51c054b9b09277bc7d988efdc6b87160335ebe8c",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "1a93bd4b8d5f45bcae22712e72b213fc",
+          "file": "room/g2/round-6/claims-check.json",
+          "output_sha256": "7750220b54f677240b8154f7b192e4e15d6026e0de1475e9c3e1be2b332ac173",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "29a20f70ab7741b3817a56f000705f2a",
+          "file": "room/g2/round-6/story-editor.json",
+          "output_sha256": "6607a77a9a9829d18137e1700fc51f52f7b4f55e09d219dac095c3a0ea8e0b76",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 5,
-    "artifact_sha256": "cdf8a5669c97336cd85456c04290ed8676b50123b12eef03db65200eb88b6c39"
+    "round": 6,
+    "artifact_sha256": "913d8695758742da15d2451c51c054b9b09277bc7d988efdc6b87160335ebe8c"
   },
-  "calls": 10,
+  "calls": 12,
   "cap": 20,
   "author_cut": {
     "round": 1,

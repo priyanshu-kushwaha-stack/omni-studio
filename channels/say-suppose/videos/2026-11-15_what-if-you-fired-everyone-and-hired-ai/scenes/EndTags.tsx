@@ -79,7 +79,7 @@ export const EndTags: React.FC<{ comment: number }> = ({ comment }) => {
       </Tag>
       <Tag at={comment} x={84} y={256} w={500} tilt={-1.5}>
         <Speech /><Word color={INDIGO}>Comment</Word>
-        <div style={{ fontFamily: JOST, fontWeight: 500, fontSize: 28, color: INK, opacity: 0.85 }}>who paid for the burger?</div>
+        <div style={{ fontFamily: JOST, fontWeight: 500, fontSize: 28, color: INK, opacity: 0.85 }}>would you turn the dial?</div>
       </Tag>
     </>
   );

@@ -1,0 +1,47 @@
+{
+  "call_id": "1a93bd4b8d5f45bcae22712e72b213fc",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 171,
+      "quote": "Most people would guess the cash machines killed the tellers. They didn't. As cash machines spread across America, teller jobs rose, modestly, to about 550,000 by 2010 (c11). The machine counted the cash. It never asked about your mother's hip.",
+      "fix": "Most people would guess the cash machines killed the tellers. They didn't. As cash machines spread across America, teller jobs rose, modestly, from about 500,000 in 1980 to about 550,000 by 2010 (c11). The machine counted the cash. It never asked about your mother's hip."
+    },
+    {
+      "line": 185,
+      "quote": "She's right too. In 1900 about 41 percent of American workers were on farms. A century later, under 2 percent (c10). The new jobs came because people were still better at something. Here, whatever the new job is, somebody types it in.",
+      "fix": "She's right too. In 1900 about 41 percent of American workers were on farms. By 2000, under 2 percent (c10). The new jobs came because people were still better at something. Here, whatever the new job is, somebody types it in."
+    },
+    {
+      "line": 322,
+      "quote": "You'd think a yearly cheque for residents, just for living there, is a fairy tale. Alaska has paid its eligible residents one out of oil money every year since 1982, about twelve hundred dollars this year (c19). So you write the town one every month, out of the rent.",
+      "fix": "You'd think a yearly cheque for residents, just for living there, is a fairy tale. Alaska has paid its eligible residents one out of oil money every year since 1982, about $1,200 this year (c19). So you write the town one every month, out of the rent."
+    }
+  ],
+  "keep": [
+    {
+      "line": 226,
+      "quote": "Someone did dream it. In 1930 the economist Keynes named technological unemployment, jobs lost because we save labour faster than we find new uses for it, a temporary phase, he called it (c07). And in about a hundred years, about now, he guessed, a fifteen-hour week (c08). He meant the work shared out and living standards kept. Here the hours went to the machines, and the pay went to you."
+    },
+    {
+      "line": 266,
+      "quote": "Two economists only wrote this sum down this year, Hemenway Falk and Tsoukalas, and called it \"The AI Layoff Trap\" (c01): each firm keeps the whole saving and bears only a slice of the spending it destroys, and the rest lands on its rivals (c02). One model, not yet checked by other economists. Your napkin got there first."
+    },
+    {
+      "line": 270,
+      "quote": "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid, because that money gets spent with storekeepers and distributors (c17)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "7750220b54f677240b8154f7b192e4e15d6026e0de1475e9c3e1be2b332ac173",
+  "draft_sha256": "913d8695758742da15d2451c51c054b9b09277bc7d988efdc6b87160335ebe8c"
+}

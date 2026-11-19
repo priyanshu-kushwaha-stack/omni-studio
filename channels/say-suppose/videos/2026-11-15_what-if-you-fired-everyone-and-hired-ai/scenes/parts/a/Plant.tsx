@@ -117,3 +117,18 @@ export const ThreeShifts: React.FC<{ t: ShotTime; each: number }> = ({ t, each }
   const mood: MoodName = t.f < each ? "day" : t.f < 2 * each ? "dusk" : "night";
   return <PaintShopShot t={t} mood={mood} painters="robot" count={4} speed={3} push={[1, 1.06]} />;
 };
+
+/** "You'd think fifty machines means fifty fewer painters, and that's that": the boss up on the catwalk, sure of it,
+ *  as the human painters walk out along the floor with their masks in their hands; the machines spray on. */
+export const FewerPainters: React.FC<{ t: ShotTime }> = ({ t }) => {
+  const f = t.f;
+  return (
+    <PaintShopShot t={t} mood="day" painters="robot" count={4} speed={2.2} push={[1, 1.05]}
+      cast={[
+        on("walk1", BOSS, "happy", { behind: true, dx: 120, facing: 1, pose: { ...STAND, tilt: Math.sin(f * 0.3) * 5, armF: [60, 100], armB: [-60, -100] }, look: { x: 0.4, y: 0.6 } }),
+        ...[0, 1, 2].map((i) => on("floorRight", { ...painter(i), wear: [] }, "sad", {
+          dx: 900 - f * 7 + i * 230, facing: -1, held: <MaskInHand s={1.2} />, pose: walkPose(f * 0.3 + i * 1.7), look: { x: 0.6, y: 0.3 },
+        })),
+      ]} />
+  );
+};

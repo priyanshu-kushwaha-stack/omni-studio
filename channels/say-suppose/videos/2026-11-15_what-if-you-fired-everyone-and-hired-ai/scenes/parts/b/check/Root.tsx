@@ -27,13 +27,13 @@ const frameOf = (a: Anchor, { clips }: Timeline, lines: ScriptLine[]) => {
 function framesOf(p: Props): number[] {
   if (p.frames?.length) return p.frames;
   const starts = SHOTS_B.map((s) => frameOf(s.at, p.timeline, p.lines));
-  const end = frameOf(S("So you give the money back."), p.timeline, p.lines);
+  const end = frameOf(S("So you type"), p.timeline, p.lines);
   return starts.map((s, i) => s + Math.floor(((starts[i + 1] ?? end) - s) * 0.6));
 }
 
 const Panel: React.FC<Props & { frame: number; k: number }> = ({ frame, k, timeline, lines }) => {
   const starts = SHOTS_B.map((s) => frameOf(s.at, timeline, lines));
-  const end = frameOf(S("So you give the money back."), timeline, lines);
+  const end = frameOf(S("So you type"), timeline, lines);
   let i = -1;
   for (let j = 0; j < starts.length; j++) if (frame >= starts[j]) i = j;
   if (i < 0 || frame >= end) return null;

@@ -2,15 +2,15 @@
 // machine walking in on the chime and flipping a burger onto a bun, the lunch count, the waitress asking what it eats,
 // Marco running in, the flip-off he loses, the new hires, the firing, the rush with the plant boss on stool four. Each
 // takes the shot time and a few acting switches. World units (REF) for cast and props. No AI images.
-import { runPose, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
+import { reach, runPose, STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import { INK, PAPER } from "@whatif/kit/theme";
 import { BOSS, MARCO, MARCO_COAT, WAITRESS, worker, YOU, type Person } from "../Cast";
 import { DinerShot, on, steelOn, type Face, type Member, type SteelMember } from "../Places";
-import { AppPhone, arc, Burger, Pencil, Plate, PlatedBurger, SmallAppPhone, Spatula, spatulaTip } from "../Props";
+import { AppPhone, arc, Burger, Pencil, Pie, Plate, PlatedBurger, SmallAppPhone, Spatula, spatulaTip } from "../Props";
 import { COOK_POSE, robotHand, SERVE_POSE } from "../Robot";
 import { ease, handAt, mix, ramp, type ShotTime } from "../util";
-import { Buzz, CarKey, ChimeMark, OrderTick, Sparkle } from "./Bits";
+import { Buzz, CarKey, CashFanHeld, ChimeMark, HatInHand, OrderTick, Sparkle } from "./Bits";
 
 const STAFF_Y = 900;
 const COUNTER_TOP = 778;
@@ -150,7 +150,7 @@ export const Shrug: React.FC<{ t: ShotTime }> = ({ t }) => {
 /** Marco runs past the long window on his way in (window camera), his cough cured. */
 export const MarcoRuns: React.FC<{ t: ShotTime }> = ({ t }) => (
   <DinerShot t={t} mood="morning" cam="window" push={[1, 1.03]}
-    options={{ outside: { who: MARCO_COAT, face: { brows: "raised", lids: 0, mouth: "open", eyes: 1.2, look: { x: 0.9, y: 0 } }, x: mix(1720, 380, t.p), pose: runPose(t.f * 0.5), facing: -1 } }} />
+    options={{ outside: { who: { ...MARCO_COAT, held: <Spatula angle={-60} /> }, face: { brows: "raised", lids: 0, mouth: "open", eyes: 1.2, look: { x: 0.9, y: 0 } }, x: mix(1720, 380, t.p), pose: runPose(t.f * 0.5), facing: -1 } }} />
 );
 
 // ---- Fired (day) ---------------------------------------------------------------------------------------------------
@@ -172,7 +172,7 @@ export const MarcoBurstsIn: React.FC<{ t: ShotTime; talkAt: number }> = ({ t, ta
       cast={[
         you("shocked", { look: { x: 0.9, y: 0.3 } }),
         on("floor", MARCO_COAT, f < 22 ? "afraid" : f < talkAt ? "shocked" : "determined", {
-          dx: run * 680, pose: f < 20 ? runPose(f * 0.5) : f >= talkAt + 10 ? { ...POINT, armF: [104, -6] } : { ...STAND, drop: 3 + Math.abs(Math.sin(f * 0.3)) * 3 },
+          dx: run * 680, held: <Spatula angle={f >= talkAt + 10 ? -10 : -60} />, pose: f < 20 ? runPose(f * 0.5) : f >= talkAt + 10 ? { ...POINT, armF: [104, -6] } : { ...STAND, drop: 3 + Math.abs(Math.sin(f * 0.3)) * 3 },
           look: f >= 24 && f < 54 ? { x: (b.x - 1000) / 600, y: -0.9 } : { x: 0.9, y: -0.2 },
         }),
       ]}
@@ -303,13 +303,14 @@ export const Dishwasher: React.FC<{ t: ShotTime }> = ({ t }) => {
 };
 
 /** "It can't even taste it!": Marco, close, spatula jabbing at the cook. */
-export const MarcoRants: React.FC<{ t: ShotTime }> = ({ t }) => {
+export const MarcoRants: React.FC<{ t: ShotTime; hat?: boolean }> = ({ t, hat }) => {
   const f = t.f;
   const jab = Math.sin(f * 0.35) > 0 ? 8 : -6;
   return (
     <DinerShot t={t} mood="day" cam={{ x: 1730, y: 620, zoom: 2.1 }} push={[1, 1.05]} pushAt={{ x: 1100, y: 520 }}
       cast={[on("grill", MARCO, "determined", { behind: true, dx: 60, held: <Spatula angle={-10} />, pose: { ...STAND, lean: -6, armF: [100 + jab, 0] }, look: { x: 0.9, y: -0.1 } })]}
-      steel={[cook(f, true, { dx: -170 })]} />
+      steel={[cook(f, true, { dx: -170 })]}
+      actors={hat ? <Burger x={1814} y={STAFF_Y - 324} s={0.72} rot={-14} /> : undefined} />
   );
 };
 
@@ -348,24 +349,6 @@ export const EmptyHook: React.FC<{ t: ShotTime }> = ({ t }) => {
   );
 };
 
-/** The steel cook alone at the grill, perfect arc after perfect arc (grill camera). */
-export const FlippyGrill: React.FC<{ t: ShotTime }> = ({ t }) => (
-  <DinerShot t={t} mood="day" cam={{ x: 1640, y: 560, zoom: 1.8 }} push={[1, 1.06]}
-    steel={[cook(t.f, true, { flipHeight: 230 })]} />
-);
-
-/** The whole machine crew at work behind the counter. */
-export const Crew: React.FC<{ t: ShotTime }> = ({ t }) => {
-  const f = t.f;
-  const slide = (f * 16) % 900;
-  return (
-    <DinerShot t={t} mood="day" cam={HIRES} push={[1.02, 1.06]} plates="some"
-      steel={[cook(f, true, { dx: -170 }), steelOn("pass", { behind: true, dx: 40, pose: SERVE_POSE, role: "WAITER", frame: f }),
-        steelOn("pass", { behind: true, dx: 280, facing: 1, pose: { ...STAND, armF: [60 + 30 * Math.abs(Math.sin(f * 0.15)), 30] }, role: "DISHES", frame: f })]}
-      actors={<PlatedBurger x={1900 - slide} y={COUNTER_TOP - 12} />} />
-  );
-};
-
 /** "Money out is money out. Simple.": you at the till, pleased, the pencil up. Counter camera. */
 export const Smug: React.FC<{ t: ShotTime }> = ({ t }) => (
   <DinerShot t={t} mood="day" cam="counter" push={[1, 1.05]}
@@ -380,24 +363,25 @@ const lunchSeats = (boss: Face, bossPose?: Pose, bossHeld?: React.ReactNode, bos
 ];
 
 /** The rush: the whistle, the overalls across the road, forty stools fed by the three machines in one chain, the till
- *  pinging; the plant boss on stool four, mouth open; Marco outside the window, still looking for his hat. */
+ *  pinging; the plant boss on stool four, mouth open; Marco by the door, coat on, hat in hand, watching. */
 export const Rush: React.FC<{ t: ShotTime }> = ({ t }) => {
   const f = t.f;
   const slide = (f * 22) % 1500;
   const hatless: Person = { ...MARCO_COAT, wear: [] };
   return (
     <DinerShot t={t} mood="day" plates="some" crowd={1} gate={1} push={[1, 1.05]}
-      options={{ whistle: 1, till: f % 16 < 6 ? 1 : 0, outside: { who: hatless, face: { brows: "worry", lids: 0, mouth: "wobble", eyes: 1, look: { x: f % 40 < 20 ? -0.8 : 0.8, y: 0.4 } }, x: 1330 } }}
-      cast={[you("happy", { pose: { ...STAND, armF: [60, 70] }, look: { x: 0.2, y: 0.6 } }), ...lunchSeats("shocked")]}
+      options={{ whistle: 1, till: f % 16 < 6 ? 1 : 0 }}
+      cast={[you("happy", { pose: { ...STAND, armF: [60, 70] }, look: { x: 0.2, y: 0.6 } }), ...lunchSeats("shocked"),
+        on("door", hatless, "sad", { dx: 30, held: <HatInHand />, pose: { ...STAND, armF: [40, 50] }, look: { x: 0.9, y: f % 50 < 25 ? 0.1 : -0.3 } })]}
       steel={[cook(f), steelOn("pass", { behind: true, pose: SERVE_POSE, role: "WAITER", frame: f }), steelOn("cook3", { behind: true, pose: { ...STAND, armF: [60 + 30 * Math.abs(Math.sin(f * 0.2)), 30] }, role: "DISHES", frame: f })]}
       actors={<PlatedBurger x={1900 - slide} y={COUNTER_TOP - 12} />} />
   );
 };
 
 /** "Where'd you get the cooks?": the boss on stool four, low along the stools. */
-export const BossAsks: React.FC<{ t: ShotTime }> = ({ t }) => (
+export const BossAsks: React.FC<{ t: ShotTime; face?: Face }> = ({ t, face }) => (
   <DinerShot t={t} mood="day" cam="stools" plates="some" push={[1, 1.05]} pushAt={{ x: 760, y: 420 }}
-    cast={lunchSeats(t.f < 10 ? "shocked" : "sceptical", undefined, undefined, { x: -0.8, y: -0.1 })}
+    cast={lunchSeats(face ?? (t.f < 10 ? "shocked" : "sceptical"), undefined, undefined, face ? { x: 0.6, y: -0.5 } : { x: -0.8, y: -0.1 })}
     steel={[steelOn("pass", { behind: true, pose: SERVE_POSE, role: "WAITER", frame: t.f })]} />
 );
 
@@ -408,7 +392,8 @@ export const ShowPhone: React.FC<{ t: ShotTime }> = ({ t }) => {
   return (
     <DinerShot t={t} mood="day" cam="counter" plates="some" push={[1, 1.05]}
       cast={[you("happy", { pose: { ...STAND, armF: [mix(90, 140, ease(ramp(f, 0, 8))), 20] }, held: <SmallAppPhone s={2.2} />, look: { x: 0.9, y: 0 } }),
-        ...lunchSeats(f < 14 ? "sceptical" : "shocked", { ...STAND, armF: [mix(25, 165, up), mix(35, 10, up)], armB: [10, 25], legB: [88, -88], legF: [92, -92] }, up > 0.3 ? <CarKey s={1.3} /> : undefined, { x: -0.9, y: -0.3 })]} />
+        ...lunchSeats(f < 14 ? "sceptical" : "shocked", { ...STAND, armF: [mix(25, 165, up), mix(35, 10, up)], armB: [10, 25], legB: [88, -88], legF: [92, -92] }, up > 0.3 ? <CarKey s={1.3} /> : undefined, { x: -0.9, y: -0.3 }),
+        on("door", { ...MARCO_COAT, wear: [] }, "sad", { dx: 130, held: <HatInHand />, pose: f > 24 ? { ...STAND, armF: reach(34, -48) } : { ...STAND, armF: [40, 50] }, look: { x: 0.9, y: 0 } })]} />
   );
 };
 
@@ -416,3 +401,89 @@ export const ShowPhone: React.FC<{ t: ShotTime }> = ({ t }) => {
 export const PlantView: React.FC<{ t: ShotTime }> = ({ t }) => (
   <DinerShot t={t} mood="day" cam="window" push={[1, 1.12]} pushAt={{ x: 900, y: 360 }} options={{ gate: 0.3 }} />
 );
+
+// ---- v2's exchanges -------------------------------------------------------------------------------------------------
+
+/** The waitress back on the phone to Marco (on speaker, held at her chest), her eyes on the steel cook ("A cook just walked in. A steel one."); you at
+ *  the till. `smirk` from that frame on ("and he's better at it"). Trio camera. */
+export const WaitressCalls: React.FC<{ t: ShotTime; smirk?: number }> = ({ t, smirk = 1e6 }) => (
+  <DinerShot t={t} mood="morning" cam={TRIO} push={[1, 1.05]} pushAt={{ x: 900, y: 520 }}
+    cast={[
+      you("shocked", { look: { x: 0.9, y: -0.2 } }),
+      on("pass", WAITRESS, t.f < smirk ? "shocked" : "happy", { behind: true, facing: 1, held: <DinerPhone />, pose: { ...STAND, armF: [62, 52] }, look: { x: 0.9, y: -0.2 } }),
+    ]}
+    steel={[cook(t.f)]}
+    actors={<PlatedBurger x={1440} y={COUNTER_TOP - 12} />} />
+);
+
+/** Where the overalls get the money: the worker on stool one pays over the counter; the till pings. Counter camera. */
+export const Pays: React.FC<{ t: ShotTime }> = ({ t }) => {
+  const f = t.f;
+  const hand = ease(ramp(f, 4, 16));
+  return (
+    <DinerShot t={t} mood="morning" cam="counter" clock={12} plates="some" push={[1, 1.05]} options={{ till: f > 22 && f < 36 ? 1 : 0 }}
+      cast={[
+        you("happy", { pose: { ...STAND, armF: [mix(30, 84, hand), 20] }, look: { x: 0.9, y: 0.2 } }),
+        ...[1, 2, 3].map((n, k) => on(`stool${n}`, worker(k), k === 0 ? "happy" : "neutral", k === 0
+          ? { pose: { ...STAND, armF: [mix(30, 92, hand), mix(40, 0, hand)], armB: [10, 25], legB: [88, -88], legF: [92, -92] }, held: <CashFanHeld />, look: { x: 0.9, y: -0.2 } }
+          : { look: { x: 0.6, y: -0.3 } })),
+      ]}
+      steel={[cook(f)]} />
+  );
+};
+
+/** It never buys a slice of your pie: you hold a slice out to the steel cook; it beams and keeps its hands down. */
+export const PieOffer: React.FC<{ t: ShotTime }> = ({ t }) => {
+  const f = t.f;
+  const out = ease(ramp(f, 2, 14)) * (1 - ease(ramp(f, 60, 74)));
+  return (
+    <DinerShot t={t} mood="morning" cam={{ x: 800, y: 640, zoom: 1.7 }} push={[1, 1.04]}
+      cast={[you(f < 60 ? "happy" : "sceptical", { pose: { ...STAND, armF: [mix(30, 92, out), mix(50, 0, out)] }, held: <Pie x={46} y={-14} s={1.05} slice />, look: { x: 0.9, y: -0.2 } })]}
+      steel={[steelOn("till", { behind: true, dx: 320, facing: -1, pose: STAND, frame: f })]} />
+  );
+};
+
+const FLOOR_TALK: Camera = { x: 1300, y: 640, zoom: 1.4 };
+
+/** "That's my grill." / "It was your grill on Mondays.": Marco in front of the counter with his spatula; the waitress
+ *  behind it, a thumb back at the steel cook; `speaker` gets the push and the acting. */
+export const GrillTalk: React.FC<{ t: ShotTime; speaker: "marco" | "waitress"; thumb?: number }> = ({ t, speaker, thumb = 1e6 }) => {
+  const f = t.f;
+  const marco = speaker === "marco";
+  return (
+    <DinerShot t={t} mood="day" cam={FLOOR_TALK} push={[1, 1.05]} pushAt={marco ? { x: 560, y: 520 } : { x: 880, y: 460 }}
+      cast={[
+        on("floor", MARCO_COAT, marco ? "determined" : "sad", {
+          dx: 680, held: <Spatula angle={marco ? -70 : 30} />, pose: marco ? { ...STAND, armF: [150, 10] } : { ...STAND, armF: [40, 30] }, look: { x: 0.9, y: -0.4 },
+        }),
+        on("pass", WAITRESS, marco ? "sceptical" : "happy", {
+          behind: true, dx: 150, pose: f >= thumb ? { ...STAND, armB: [-100, -10] } : STAND, look: f >= thumb ? { x: -0.7, y: 0 } : { x: 0.8, y: 0.3 },
+        }),
+      ]}
+      steel={[cook(f)]} />
+  );
+};
+
+/** "Marco. It's on your hat.": the waitress points; Marco, burger on his hat, looks up at it. */
+export const OnYourHat: React.FC<{ t: ShotTime }> = ({ t }) => (
+  <DinerShot t={t} mood="day" cam={HIRES} push={[1, 1.05]} pushAt={{ x: 1400, y: 460 }}
+    cast={[
+      on("pass", WAITRESS, "sceptical", { behind: true, dx: 40, facing: 1, pose: { ...STAND, armF: [128, 4] }, look: { x: 0.9, y: -0.3 } }),
+      on("grill", MARCO, t.f < 20 ? "sad" : "afraid", { behind: true, dx: 60, held: <Spatula angle={30} />, pose: { ...STAND, armF: [40, 30] }, look: { x: -0.2, y: -1 } }),
+    ]}
+    steel={[cook(t.f, true, { dx: -170 })]}
+    actors={<Burger x={1814} y={STAFF_Y - 324} s={0.72} rot={-14} />} />
+);
+
+/** "Don't show him.": Marco by the door, hat in hand, begging you; you at the till with the phone already out. */
+export const MarcoPleads: React.FC<{ t: ShotTime }> = ({ t }) => {
+  const f = t.f;
+  const beg = Math.sin(f * 0.4) * 8;
+  return (
+    <DinerShot t={t} mood="day" cam="door" plates="some" push={[1, 1.05]} pushAt={{ x: 600, y: 480 }}
+      cast={[
+        on("door", { ...MARCO_COAT, wear: [] }, "afraid", { dx: 90, held: <HatInHand />, pose: { ...STAND, lean: 6, armF: [96 + beg, -20], armB: [70, -30] }, look: { x: 0.9, y: 0 } }),
+        you("happy", { phone: true, pose: { ...STAND, armF: [70, 60] }, facing: -1, look: { x: 0.9, y: 0.1 } }),
+      ]} />
+  );
+};

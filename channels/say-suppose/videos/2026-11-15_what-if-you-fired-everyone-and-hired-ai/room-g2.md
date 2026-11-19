@@ -1,7 +1,7 @@
 # Room report, G2 (story_script)
 
-Shipped: round 5 (cdf8a5669c97) (shipped by the owner-notes rule (no judge))
-Calls: 10 of 20
+Shipped: round 6 (913d86957587) (shipped by the owner-notes rule (no judge))
+Calls: 12 of 20
 
 ## Author's cut
 
@@ -17,17 +17,17 @@ What review cost the voice: 346 lines changed; spine lines changed: none; keep l
 
 Owner first: round 1's draft went to the owner at 2026-11-18T15:07:56+00:00
 
-## Open notes in round 5
+## Open notes in round 6
 
 - claims check keep, line 226: "Someone did dream it. In 1930 the economist Keynes named technological unemployment, jobs lost because we save labour faster than we find new uses for it, a temporary phase, he called it (c07). And in about a hundred years, about now, he guessed, a fifteen-hour week (c08). He meant the work shared out and living standards kept. Here the hours went to the machines, and the pay went to you."
 - claims check keep, line 266: "Two economists only wrote this sum down this year, Hemenway Falk and Tsoukalas, and called it "The AI Layoff Trap" (c01): each firm keeps the whole saving and bears only a slice of the spending it destroys, and the rest lands on its rivals (c02). One model, not yet checked by other economists. Your napkin got there first."
 - claims check keep, line 270: "You'd think a boss who doubled his workers' pay had lost his mind. In 1914 Henry Ford announced a five-dollar day, doubling his workers' pay (c16), and wrote later that his own sales depended, in a measure, on the wages he paid, because that money gets spent with storekeepers and distributors (c17)."
-- story editor (story) blocker, line 388: "Only you can turn it. So you give away the number: the town writes it, the dial follows the napkin, and you keep the turning, knowing every renter in town would walk the moment you touched it.". Check #21, close the loopholes on screen: nothing prevents you secretly lowering the dial later; renters would benefit rather than walk. Fix: Replace the action and line with the phone locked in a town-hall box requiring three keys held by Marco, the rival and the mayor: "Only you can turn it. But they decide when you can reach it. The town writes the number; three keys open the box; you turn the dial in public."
-- story editor (story) blocker, line 420: "> SCENE: The door chimes. The steel customer, the one that paid with your card, back from the truck with a cap on, walks to the till, points at a burger to go and taps a card. Insert on the card: not yours. A colour you've never seen, no name on it. The till pings. Your phone, on the counter beside the till, does not.". No new power rule after halfway: the machine suddenly possesses independent money, directly reversing the established rule that it can only pay with your card. Fix: Keep this as an unanswered sequel possibility: the customer raises the unfamiliar card toward the till, but cut before it touches. Do not let the till ping or the customer receive the burger.
-- story editor (story) blocker, line 185: "She's right too. In 1900 about 41 percent of American workers were on farms. A century later, under 2 percent (c10). The new jobs came because people were still better at something. Here, whatever the new job is, somebody types it in.". Check #7, misconception first: several numbers and the explanation arrive together, violating the one-number-at-a-time requirement and weakening one-watch clarity. Fix: Split it around the assistant gag: "At the start of the last century, about forty-one percent of American workers farmed (c10)." After the machine appears: "By its end, under two percent did (c10). New jobs came because people still had something machines could not do. Here, somebody types that job in."
+- story editor (story) blocker, line 386: "> HOLD: 4 s. Performed. You hold the phone out to her. She tries the ring with her thumb. It will not move. She tries two thumbs. You take the phone back, lay it on the counter and slide the napkin and the pencil to her instead. She writes a number on the third line. The boss takes the pencil, crosses it out and writes his. The banker writes his. The waitress, the plumber, Marco. The napkin fills with crossings-out until one number stands. You turn the dial to it, and only to it, and take your thumb off.". #21 Close the loopholes on screen fails. The town chooses the number, but you retain unilateral control; the obvious exploit—turning it back later—is acknowledged in the draft notes and left unanswered. Fix: After turning the dial, lock the phone in a timed box at the diner and give one key to Marco and one to the mayor. It can open only when both are present. Keep the planted words about only you being able to turn it.
+- story editor (story) blocker, line 72: "The rule is three lines. Type a job, and by the next shift a machine worker is at your door. No wage, no sleep, no mistakes. Hire as many as you like, and rent them to anyone who asks. And the app has one dial, for every machine at once: what a shift costs whoever rents it. Only you can turn it, and the moment you do, any renter can walk away. Remember that.". #16 A flagged limit that pays off fails because the announced three-line rule runs to five separate instructions before the plant lands. Fix: Replace the surrounding rule while preserving the planted words: "Type a job; by next shift, a machine is at your door—no wage, no sleep, no mistakes. Hire as many as you like, and rent them to anyone. One dial sets every rental price. Only you can turn it, and any renter can walk away. Remember that."
+- story editor (story) blocker, line 252: "Here's the line you missed. Marco ate here. Say he took home four hundred a week. Forty of it came back over your counter, in coffee and pie. The rest went to the barber, the garage, the grocer and the bar. So when you fired him, you kept four hundred and lost forty. A great deal, for you. The barber, the garage and the grocer lost the rest, and never saw it leave.". #7 Misconception first fails its one-number-at-a-time requirement at the story's hardest explanation: four hundred and forty are introduced, compared and reused before either lands. Fix: Reveal one number per line and picture: "Marco takes home four hundred a week. / Only forty comes back over your counter. / The other three hundred and sixty keeps the barber, garage, grocer and bar alive. / Fire him, and you keep his wage while everyone else loses his spending." Animate the tag sequentially rather than showing all three numbers together.
 - story editor keep, line 28: "What if you fired everyone and hired AI? Six weeks from now, you're the richest person this town has ever had. And its last customer."
 - story editor keep, line 262: "You didn't fire a cook. You fired a customer who happened to know how to cook."
-- story editor keep, line 405: "You're still the richest person in town. You just stopped being its only customer."
+- story editor keep, line 284: "Everyone in town has done the sum. Everyone got it right. That's the problem."
 
 ## Rounds
 
@@ -38,4 +38,5 @@ Owner first: round 1's draft went to the owner at 2026-11-18T15:07:56+00:00
 | 3 | ok | 2/2 | 5 | - |
 | 4 | ok | 2/2 | 5 | - |
 | 5 | ok | 2/2 | 3 | - |
+| 6 | ok | 2/2 | 3 | - |
 

@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-15_what-if-you-fired-everyone-and-hired-ai",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-19T01:32:29.135647+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "script": "script.md v1.1 (Fable 5.1 v1 with the G1 room's six notes, tightened from 11:59 voiced); sequel.md; say.yaml",
+    "review": "review-g2-round1.md (the script, the narration, room round 1 with proposed handling, the first cut)",
+    "claims": "claims.md; spoken: c01, c02, c03, c04, c05, c06, c07, c08, c10, c11, c12, c13, c16, c17, c18, c19, c22, c23, c26, c28",
+    "narration": "free local: voice B narrator and eight new character voices (voices.yaml); 104 lines, 10:13; mutes.txt (4); line 89 take low-passed at 6 kHz",
+    "room": "room-g2.md: shipped round 1, 2 of 16 calls; claims 0 blockers, story 3 (the dial loophole is the owner's call)",
+    "first_cut": "renders/firstcut/firstcut-720p.mp4 (git-ignored), 1280x720, 10:13, -20.2 LUFS",
+    "qc": "omni qc story_script on the cut: claims ok, clicks ok",
+    "awaiting": "the owner's cut review (script, narration, picture, music notes at once), then omni approve by the owner only"
+  }
+}

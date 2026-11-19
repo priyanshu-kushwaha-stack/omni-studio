@@ -11,19 +11,16 @@ import { act, CounterTop, Hand, mix, ramp, Thumb } from "./kit";
 /** Your napkin: two lines of the sum and the third, the missing line. */
 export const NAPKIN_TEXT = "...and he ate here";
 
-/** The dial's price for a value, in the app's whole dollars (the bottom is the "$90 a shift" you set at the start; the
- *  top is dear). Story numbers, not statistics. */
-export const priceAt = (v: number) => Math.round((90 * Math.pow(2000 / 90, Math.max(0, v - 0.05) / 0.95)) / 10) * 10;
-/** The dial value that shows a price. */
-export const valueFor = (price: number) => 0.05 + (0.95 * Math.log(price / 90)) / Math.log(2000 / 90);
-export const readout = (v: number) => {
-  const p = priceAt(v);
-  return p < 1000 ? `$${p} A SHIFT` : `$${p}/SHIFT`;
-};
-/** Where the dial sits: at the bottom (cheap), on your napkin's line, and on the town's number. */
+/** What a machine costs a week at a dial value (story numbers in plain words, like part A's "CHEAP"): the bottom reads
+ *  CHEAP, the top TOO DEAR, and in between the weekly price, three hundred and sixty on the napkin's line. */
+export const priceAt = (v: number) => Math.round((30 * Math.pow(2400 / 30, Math.max(0, v - 0.05) / 0.95)) / 10) * 10;
+/** The dial value that shows a weekly price. */
+export const valueFor = (price: number) => 0.05 + (0.95 * Math.log(price / 30)) / Math.log(2400 / 30);
+export const readout = (v: number) => (v < 0.09 ? "CHEAP" : v > 0.96 ? "TOO DEAR" : `${priceAt(v)} A WEEK`);
+/** Where the dial sits: at the bottom (cheap), on your napkin's line (360 a week), and on the town's number (the same). */
 export const DIAL_LOW = 0.05;
-export const DIAL_NAPKIN = valueFor(610);
-export const DIAL_TOWN = valueFor(650);
+export const DIAL_NAPKIN = valueFor(360);
+export const DIAL_TOWN = DIAL_NAPKIN;
 
 /** The phone and the napkin side by side on the counter. `value` the dial; `thumb` your thumb on the ring; `glow` lights
  *  the napkin's third line (the dial stopping on it); `slide` 0..1 brings both in from the bottom (laid down);
@@ -87,12 +84,12 @@ export const MayorThumbs: React.FC<{ f: number; v: number }> = ({ f, v }) => {
 /** One person's go at the town's number: who (their skin and sleeve for the hand, their ink) and what they write. */
 export interface Writer { skin: string; sleeve: string; ink: string; text: string }
 export const WRITERS: Writer[] = [
-  { skin: "#a9c4a0", sleeve: "#3b4a5a", ink: "#3f6f3a", text: "$400" },
-  { skin: "#8fa3b8", sleeve: "#2f3242", ink: "#2f3242", text: "$300" },
-  { skin: "#c3b1e1", sleeve: "#4a4a6a", ink: "#6a4fa0", text: "$700" },
-  { skin: "#f6c09a", sleeve: "#e58f9a", ink: "#c0567a", text: "$600" },
-  { skin: "#c8a2e8", sleeve: "#4f6d8a", ink: "#7a3fa0", text: "$520" },
-  { skin: "#a9d4ec", sleeve: "#e6ecef", ink: "#2f6f9f", text: "$650" },
+  { skin: "#a9c4a0", sleeve: "#3b4a5a", ink: "#3f6f3a", text: "300" },
+  { skin: "#8fa3b8", sleeve: "#2f3242", ink: "#2f3242", text: "200" },
+  { skin: "#c3b1e1", sleeve: "#4a4a6a", ink: "#6a4fa0", text: "500" },
+  { skin: "#f6c09a", sleeve: "#e58f9a", ink: "#c0567a", text: "400" },
+  { skin: "#c8a2e8", sleeve: "#4f6d8a", ink: "#7a3fa0", text: "380" },
+  { skin: "#a9d4ec", sleeve: "#e6ecef", ink: "#2f6f9f", text: "360" },
 ];
 const SLOTS = [[-215, 80], [-70, 80], [75, 80], [-215, 180], [-70, 180], [92, 192]] as const;
 const FROM = [200, 240, 300, 120, 60, 90];

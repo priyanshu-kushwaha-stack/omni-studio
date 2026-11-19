@@ -30,7 +30,7 @@ export const ORATE: Pose = { ...STAND, lean: -3, armF: [125, 15], armB: [-20, 20
 export const HAT_IN_HANDS: Pose = { ...STAND, tilt: 10, armF: [35, 55], armB: [35, 55] };
 export const ARMS_UP: Pose = { ...STAND, lean: -4, tilt: -6, armF: [155, 20], armB: [-155, -20] };
 export const pat = (f: number): Pose => ({ ...STAND, armF: [28, -20 + 26 * Math.max(0, Math.sin(f * 0.7))], armB: [-8, 10] });
-const nod = (f: number, p: Pose = STAND): Pose => ({ ...p, tilt: p.tilt + 7 * Math.max(0, Math.sin(f * 0.32)) });
+export const nod = (f: number, p: Pose = STAND): Pose => ({ ...p, tilt: p.tilt + 7 * Math.max(0, Math.sin(f * 0.32)) });
 
 /** A hard hat held in the hands (Marco's, the week he is let go). */
 const HeldHat: ReactNode = (
@@ -40,7 +40,7 @@ const HeldHat: ReactNode = (
   </g>
 );
 
-const without = (p: Person, kind: string): Person => ({ ...p, wear: (p.wear ?? []).filter((w) => w.kind !== kind) });
+export const without = (p: Person, kind: string): Person => ({ ...p, wear: (p.wear ?? []).filter((w) => w.kind !== kind) });
 
 // ---- The diner with part B's extras ----------------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ export const OverDiner: React.FC<{ t: ShotTime; mood: "day" | "dusk" | "night" |
     cast={cast ?? [on("till", YOU, "neutral", { behind: true })]} overlay={card} push={[1.02, 1.08]} />
 );
 
-const OverSquare: React.FC<{ t: ShotTime; mood: "day" | "dusk" | "night"; card: ReactNode; convoy?: boolean }> = ({ t, mood, card, convoy }) => (
+export const OverSquare: React.FC<{ t: ShotTime; mood: "day" | "dusk" | "night"; card: ReactNode; convoy?: boolean }> = ({ t, mood, card, convoy }) => (
   <Place t={t} set={square} mood={mood} cam="wide" options={{ convoy: convoy ? -400 + t.f * 7 : null, bunting: mood === "dusk" }} dim={0.5} overlay={card}
     cast={[on("steps", MAYOR, "happy"), on("near", YOU, "happy")]} push={[1.02, 1.08]} />
 );
@@ -115,7 +115,7 @@ export const LastWage: React.FC<{ t: ShotTime }> = ({ t }) => {
 
 // ---- The banker -------------------------------------------------------------------------------------------------------
 
-const lunch = (from: number, to: number, skip: number[] = []): Member[] =>
+export const lunch = (from: number, to: number, skip: number[] = []): Member[] =>
   Array.from({ length: to - from + 1 }, (_, k) => from + k).filter((i) => !skip.includes(i)).map((i) => on(`stool${i}`, worker(i + 1), i % 3 ? "happy" : "neutral"));
 
 /** The bank manager walks in at the door, looking round at the steel cooks: who built this kitchen? */
@@ -185,7 +185,7 @@ export const MayorSpeaks: React.FC<{ t: ShotTime }> = ({ t }) => (
 
 export const FarmsOverSquare: React.FC<{ t: ShotTime }> = ({ t }) => <OverSquare t={t} mood="day" card={<FarmsCard f={t.f} />} />;
 export const TellersOverDiner: React.FC<{ t: ShotTime }> = ({ t }) => (
-  <OverDiner t={t} mood="day" card={<TellersCard f={t.f} />} cast={[on("stool6", BANKER, "happy"), on("till", YOU, "neutral", { behind: true })]} />
+  <OverDiner t={t} mood="day" card={<TellersCard f={t.f} only2010 />} cast={[on("stool6", BANKER, "happy"), on("till", YOU, "neutral", { behind: true })]} />
 );
 
 /** The mayor types MAYOR'S ASSISTANT into your phone with one finger. */
@@ -239,8 +239,8 @@ export const RentIn: React.FC<{ t: ShotTime }> = ({ t }) => (
     actors={<NoteFly from={{ x: 1300, y: 500 }} to={{ x: DINER.till.x, y: DINER.till.y - 60 }} u={ramp(t.f, 0, 14)} />} push={[1, 1.05]} />
 );
 
-export const Napkins: React.FC<{ t: ShotTime; lines?: number }> = ({ t, lines }) => (
-  <OverDiner t={t} mood={lines === 3 ? "night" : "day"} cam="counter" card={<NapkinFan f={t.f} lines={lines} fanAt={lines === 3 ? 18 : 60} />} options={{ lamps: lines === 3 ? "all" : "auto" }} />
+export const Napkins: React.FC<{ t: ShotTime; lines?: number; fanAt?: number }> = ({ t, lines, fanAt }) => (
+  <OverDiner t={t} mood={lines === 3 ? "night" : "day"} cam="counter" card={<NapkinFan f={t.f} lines={lines} fanAt={fanAt ?? (lines === 3 ? 18 : 60)} />} options={{ lamps: lines === 3 ? "all" : "auto" }} />
 );
 
 /** The plumber by his van pushes your phone back with one finger. */
@@ -340,7 +340,7 @@ export const SomeoneThought: React.FC<{ t: ShotTime; pat?: boolean }> = ({ t, pa
   );
 };
 
-export const KeynesOne: React.FC<{ t: ShotTime }> = ({ t }) => <OverSquare t={t} mood="dusk" convoy card={<KeynesBars f={t.f} />} />;
+export const KeynesOne: React.FC<{ t: ShotTime; catchAt?: number }> = ({ t, catchAt }) => <OverSquare t={t} mood="dusk" convoy card={<KeynesBars f={t.f} catchAt={catchAt} />} />;
 export const KeynesTwo: React.FC<{ t: ShotTime }> = ({ t }) => <OverSquare t={t} mood="dusk" convoy card={<FifteenHours f={t.f} />} />;
 export const WhereItWent: React.FC<{ t: ShotTime; turn: number; toYou: number }> = ({ t, turn, toYou }) => (
   <OverSquare t={t} mood="dusk" convoy card={<HoursAndPay f={t.f} turn={turn} toYou={toYou} />} />

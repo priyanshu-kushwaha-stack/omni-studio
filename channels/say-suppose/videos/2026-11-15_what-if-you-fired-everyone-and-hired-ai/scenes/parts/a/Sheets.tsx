@@ -1,12 +1,12 @@
-// Part A's paper pieces: the rule drawn on paper beside the app phone (three rows, one per spoken rule line), the
-// Jevons diagram (a coal fire, CHEAPER, more fires), the napkins on a counter or a desk (yours, then the boss's in his
-// own hand, the same line missing from both), and your pillow at night with the phone pinging under it. Screen pixels.
+// Part A's paper pieces: the rule drawn on paper beside the app phone (three rows, one per spoken rule step), the
+// napkins on a counter or a desk (yours, then the boss's in his own hand; `missingAt` can mark the line missing from
+// both), and your pillow at night with the phone pinging under it. Screen pixels.
 // No AI images.
 import type { ReactNode } from "react";
 import { AbsoluteFill } from "remotion";
 import { walkPose } from "@whatif/kit/rig/pose";
 import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
-import { AppPhone, Dial, Napkin, STEEL_DARK } from "../Props";
+import { AppPhone, Dial, Napkin } from "../Props";
 import { Robot } from "../Robot";
 import { ease, mix, Paper, ramp, type ShotTime } from "../util";
 import { Caption } from "./Bits";
@@ -164,47 +164,6 @@ export const RuleBoard: React.FC<{ t: ShotTime; step: 0 | 1 | 2 | 3; bg: ReactNo
             {step >= 1 && <RowHire f={rowF(1)} y={rows[0]} />}
             {step >= 2 && <RowRent f={rowF(2)} y={rows[1]} />}
             {step >= 3 && <RowDial f={rowF(3)} y={rows[2]} value={value} />}
-          </Paper>
-        </svg>
-      </AbsoluteFill>
-    </AbsoluteFill>
-  );
-};
-
-// ---- Jevons ----------------------------------------------------------------------------------------------------------
-
-/** A coal fire in a grate, flames breathing gently on `f` (scale, no line boil). */
-const Fire: React.FC<{ x: number; y: number; s?: number; f: number; seed?: number }> = ({ x, y, s = 1, f, seed = 0 }) => {
-  const b = 1 + 0.06 * Math.sin(f * 0.22 + seed * 1.7);
-  return (
-    <g transform={`translate(${x} ${y}) scale(${s})`}>
-      <g transform={`scale(1 ${b})`}>
-        <path d="M-70 0 Q-80 -80 -30 -120 Q-34 -70 -6 -60 Q-10 -140 40 -170 Q30 -100 70 -70 Q86 -30 70 0 Z" fill="#f08a3a" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
-        <path d="M-40 0 Q-46 -50 -12 -76 Q-8 -40 14 -40 Q14 -90 40 -100 Q36 -50 50 -30 Q56 -10 46 0 Z" fill={MUSTARD} />
-      </g>
-      {[-50, -16, 18, 52].map((cx, i) => <ellipse key={cx} cx={cx} cy={-4 - (i % 2) * 6} rx={22} ry={14} fill="#2b2d33" stroke={INK} strokeWidth={3} />)}
-      <rect x={-96} y={0} width={192} height={18} rx={4} fill={STEEL_DARK} stroke={INK} strokeWidth={4} />
-      {[-70, -30, 10, 50].map((bx) => <rect key={bx} x={bx} y={18} width={14} height={40} fill={STEEL_DARK} stroke={INK} strokeWidth={3} />)}
-    </g>
-  );
-};
-
-/** 1865, Jevons: a coal fire, an arrow marked CHEAPER, then more fires, not fewer. Over the hall, dimmed. */
-export const JevonsSheet: React.FC<{ t: ShotTime; bg: ReactNode }> = ({ t, bg }) => {
-  const f = t.f;
-  const spots = Array.from({ length: 9 }, (_, i) => ({ x: 930 + (i % 3) * 170, y: 250 + Math.floor(i / 3) * 190 }));
-  return (
-    <AbsoluteFill>
-      {bg}
-      <AbsoluteFill>
-        <svg width={1920} height={1080}>
-          <Paper f={f} x={960} y={610} w={1400} h={760} rot={-1}>
-            <Pop x={230} y={520} k={pop(f, 4, 12)}><Fire x={0} y={0} s={1.3} f={f} /></Pop>
-            <Arrow x1={420} x2={760} y={420} k={ramp(f, 100, 124)} w={10} />
-            {f >= 108 && <g opacity={ramp(f, 108, 118)}><Caption x={590} y={380} text="CHEAPER" size={54} color={TEAL} rot={-2} /></g>}
-            {spots.map((p, i) => (
-              <Pop key={i} x={p.x} y={p.y + 70} k={pop(f, 140 + i * 13, 7)}><Fire x={0} y={0} s={0.62} f={f} seed={i + 1} /></Pop>
-            ))}
           </Paper>
         </svg>
       </AbsoluteFill>

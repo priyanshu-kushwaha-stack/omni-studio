@@ -33,7 +33,7 @@ const pop = (f: number, at: number) => ease(ramp(f, at, at + 6));
 // ---- The Whole Town ------------------------------------------------------------------------------------------------
 
 /** 1980 and 2010: two columns of paper tellers, the second a little taller, while cash machines spread along the top. */
-export const TellersCard: React.FC<{ f: number }> = ({ f }) => (
+export const TellersCard: React.FC<{ f: number; only2010?: boolean }> = ({ f, only2010 }) => (
   <Paper f={f} w={1300} h={700} y={610}>
     {Array.from({ length: 12 }, (_, i) => (
       <g key={i} opacity={pop(f, 30 + i * 10)} transform={`translate(${90 + i * 100} 90) scale(0.8)`}>
@@ -47,14 +47,14 @@ export const TellersCard: React.FC<{ f: number }> = ({ f }) => (
       return Array.from({ length: n }, (_, i) => {
         const r = Math.floor(i / 4);
         const c = i % 4;
-        return <Mini key={`${col}-${i}`} x={(col ? 770 : 270) + c * 88} y={600 - r * 112} s={0.34} head={WORKER_HEADS[(i + col) % 10]} coat="#4a4a6a" k={pop(f, (col ? 120 : 20) + i * 6)} />;
+        return <Mini key={`${col}-${i}`} x={(col ? 770 : 270) + c * 88} y={600 - r * 112} s={0.34} head={WORKER_HEADS[(i + col) % 10]} coat="#4a4a6a" k={pop(f, (col ? (only2010 ? 64 : 120) : 20) + i * (only2010 && col ? 5 : 6))} />;
       });
     })}
     <Label x={400} y={672} k={pop(f, 15)}>1980</Label>
-    <Label x={900} y={672} k={pop(f, 115)}>2010</Label>
-    <Label x={400} y={240} size={38} k={pop(f, 220)}>about 500,000</Label>
-    <Label x={900} y={180} size={38} k={pop(f, 250)}>about 550,000</Label>
-    <path d="M560 300 L740 240" stroke={TEAL} strokeWidth={8} strokeLinecap="round" opacity={pop(f, 260)} />
+    <Label x={900} y={672} k={pop(f, only2010 ? 60 : 115)}>2010</Label>
+    {!only2010 && <Label x={400} y={240} size={38} k={pop(f, 220)}>about 500,000</Label>}
+    {only2010 ? <Label x={1170} y={330} size={34} k={pop(f, 144)}>about 550,000</Label> : <Label x={900} y={180} size={38} k={pop(f, 250)}>about 550,000</Label>}
+    <path d="M560 300 L740 240" stroke={TEAL} strokeWidth={8} strokeLinecap="round" opacity={pop(f, only2010 ? 150 : 260)} />
   </Paper>
 );
 
@@ -93,9 +93,9 @@ export const FarmsCard: React.FC<{ f: number }> = ({ f }) => {
 
 /** Keynes, 1930: machines save labour (a bar that climbs fast) faster than new uses for it are found (a bar that climbs
  *  slowly); people wait in the gap; then the slow bar catches up (a temporary phase). */
-export const KeynesBars: React.FC<{ f: number }> = ({ f }) => {
+export const KeynesBars: React.FC<{ f: number; catchAt?: number }> = ({ f, catchAt = 210 }) => {
   const a = 420 * ease(ramp(f, 10, 170));
-  const catchUp = ease(ramp(f, 210, 260));
+  const catchUp = ease(ramp(f, catchAt, catchAt + 50));
   const b = mix(240 * ease(ramp(f, 30, 200)), 420, catchUp);
   const gap = Math.max(0, a - b);
   const waiting = Math.round(gap / 36);
@@ -284,14 +284,27 @@ export const FordNote: React.FC<{ f: number }> = ({ f }) => {
   return (
     <g style={{ filter: "sepia(0.35)" }}>
       <Paper f={f} w={1300} h={700} y={610}>
-        <g transform={`translate(650 ${mix(330, 330, grab) + away * 520})`}>
+        <g transform={`translate(650 ${330 + away * 900})`}>
           <Banknote old s={1.7} amount="$5" rot={-4 + away * 10} />
         </g>
-        <g transform={`translate(${720} ${mix(980, 470, grab) + away * 520})`}>
+        <g transform={`translate(${720} ${mix(980, 470, grab) + away * 900})`}>
           <rect x={-60} y={0} width={120} height={600} rx={24} fill={OVERALLS} stroke={INK} strokeWidth={6} />
           <rect x={-56} y={-70} width={112} height={90} rx={34} fill="#a9d4ec" stroke={INK} strokeWidth={5} />
         </g>
         <OldCar x={mix(1700, 760, ease(ramp(f, 120, 170)))} y={640} s={1.3} />
+        {[0, 1, 2].map((i) => {
+          const k = ease(ramp(f, 178 + i * 10, 190 + i * 10));
+          const coin = ease(ramp(f, 186 + i * 10, 206 + i * 10));
+          const x = 760 + i * 190;
+          return (
+            <g key={i} opacity={k}>
+              <rect x={x - 70} y={130} width={140} height={110} fill={["#e6a0a0", "#9fd8a8", "#9fc0e0"][i]} stroke={INK} strokeWidth={5} />
+              <path d={`M${x - 80} 130 L${x - 66} 100 H${x + 66} L${x + 80} 130Z`} fill={PAPER} stroke={INK} strokeWidth={5} />
+              <rect x={x - 46} y={156} width={56} height={44} fill="#fff1c6" stroke={INK} strokeWidth={4} />
+              {coin > 0 && coin < 1 && <circle cx={mix(470, x, coin)} cy={mix(500, 200, coin) - 120 * coin * (1 - coin)} r={22} fill={MUSTARD} stroke={INK} strokeWidth={4} />}
+            </g>
+          );
+        })}
         <g opacity={ramp(f, 160, 175)}>
           <Figure x={420} y={650} scale={0.85} head="#a9d4ec" coat={OVERALLS} cap="#4a3a2a" facing={1} mouth="smile" brows="raised" look={{ x: 0.8, y: 0 }}
             pose={{ ...STAND, armF: [70, 20] }} />

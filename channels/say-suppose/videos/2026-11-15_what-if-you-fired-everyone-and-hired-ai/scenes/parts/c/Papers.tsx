@@ -210,8 +210,23 @@ export const PigouSheet: React.FC<{ t: ShotTime }> = ({ t }) => {
 
 /** The model's fixes: a basic income, a wage cut, new firms, each crossed out in turn; then a tax on the machine itself
  *  (a dial tag hung on a steel figure) that stays. `stage` 0 = the three fail, 1 = the machine's tag. */
-export const FixesSheet: React.FC<{ t: ShotTime; stage: 0 | 1 }> = ({ t, stage }) => {
+export const FixesSheet: React.FC<{ t: ShotTime; stage: 0 | 1; one?: boolean }> = ({ t, stage, one }) => {
   const cross = (at: number) => act(t.f, at, at + 10);
+  if (stage === 0 && one) {
+    // not a basic income: the one cheque for everyone, crossed out
+    const c = cross(14);
+    return (
+      <Sheet t={t}>
+        <g transform="translate(750 380)"><Cheque s={1.3} rot={-4} signed={1} /></g>
+        {c > 0 && (
+          <g stroke={CRIMSON} strokeWidth={26} strokeLinecap="round">
+            <line x1={430} y1={170} x2={430 + 640 * Math.min(1, c * 2)} y2={170 + 420 * Math.min(1, c * 2)} />
+            {c > 0.5 && <line x1={1070} y1={170} x2={1070 - 640 * (c - 0.5) * 2} y2={170 + 420 * (c - 0.5) * 2} />}
+          </g>
+        )}
+      </Sheet>
+    );
+  }
   if (stage === 0) {
     const ats = [40, 80, 125];
     return (

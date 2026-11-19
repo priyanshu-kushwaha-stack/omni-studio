@@ -64,17 +64,29 @@ export const TillCash: React.FC<{ t: ShotTime }> = ({ t }) => {
 
 /** The cheque table in the square: you behind it signing; the mayor first in line, her steel assistant behind her
  *  holding her sash straight; the town in a line behind them. */
-export const ChequeTable: React.FC<{ t: ShotTime }> = ({ t }) => {
+export const ChequeTable: React.FC<{ t: ShotTime; focus?: "write" | "doubt" | "mayor" | "rival" }> = ({ t, focus = "write" }) => {
   const f = t.f;
-  const sign = ramp(f, 8, 40);
-  const give = act(f, 44, 60);
-  const taken = f > 62;
-  const queue: Member[] = [2, 3, 4, 5, 6].map((q, i) => on(`q${q}`, i % 2 ? townsfolk(i + 2) : worker(i + 1), i % 2 ? "happy" : "neutral", { look: { x: 0.8, y: -0.1 } }));
+  const sign = focus === "write" ? ramp(f, 8, 40) : 1;
+  const give = focus === "write" ? act(f, 44, 60) : 0;
+  const taken = focus === "mayor" || focus === "rival" || (focus === "write" && f > 62);
+  const queue: Member[] = [2, 4, 5, 6].map((q, i) => on(`q${q}`, i % 2 ? townsfolk(i + 2) : worker(i + 1), i % 2 ? "happy" : "neutral", { look: { x: 0.8, y: -0.1 } }));
+  // the rival in the line: the rent is hers ("Mine.")
+  const rival = on("q3", RIVAL, focus === "rival" ? "sad" : focus === "mayor" ? "worried" : "neutral", {
+    pose: focus === "rival" ? { ...STAND, armF: [30, -105 + 8 * Math.sin(f * 0.3)] } : STAND, look: focus === "rival" ? { x: 0.6, y: 0.2 } : { x: 0.8, y: -0.1 },
+  });
+  const youPose = focus === "doubt" ? { ...SHRUG, armF: [70, 60] as [number, number] } : blend({ ...STAND, armF: [70, 50] }, REACH, give);
+  const youFace: Face = focus === "doubt" ? "sceptical" : focus === "mayor" ? "neutral" : focus === "rival" ? "worried" : sign < 1 ? "determined" : "happy";
+  const mayor = on("q1", MAYOR, focus === "mayor" ? "sceptical" : taken ? "happy" : "neutral", {
+    pose: focus === "mayor" ? { ...STAND, armF: [50, 100 + 10 * Math.sin(f * 0.4)] } : focus === "rival" ? STAND : taken ? wave(f) : blend(STAND, REACH, act(f, 50, 62)),
+    held: taken && focus !== "mayor" ? <Cheque s={0.2} rot={10} /> : undefined, facing: focus === "rival" ? 1 : undefined,
+    look: focus === "mayor" || focus === "rival" ? { x: 0.8, y: 0 } : undefined,
+  });
+  const cam = focus === "mayor" ? { x: 470, y: 720, zoom: 2.0 } : focus === "rival" ? { x: 640, y: 720, zoom: 1.9 } : "table";
   return (
-    <Place t={t} set={town} mood="day" cam="table" options={{ table: true, stack: 1 - 0.1 * ramp(f, 40, 60) }} push={[1, 1.06]}
+    <Place t={t} set={town} mood="day" cam={cam} options={{ table: true, stack: 1 - 0.1 * ramp(f, 40, 60) }} push={focus === "write" ? [1, 1.06] : [1, 1.04]}
       cast={[
-        on("table", YOU, sign < 1 ? "determined" : "happy", { behind: true, pose: blend({ ...STAND, armF: [70, 50] }, REACH, give), held: !taken ? <Cheque s={0.2} rot={-10} signed={sign} /> : undefined, look: { x: 0.8, y: 0.3 } }),
-        on("q1", MAYOR, taken ? "happy" : "neutral", { pose: taken ? wave(f) : blend(STAND, REACH, act(f, 50, 62)), held: taken ? <Cheque s={0.2} rot={10} /> : undefined }),
+        on("table", YOU, youFace, { behind: true, pose: youPose, held: !taken ? <Cheque s={0.2} rot={-10} signed={sign} /> : undefined, look: focus === "doubt" ? { x: 0.3, y: -0.3 } : focus === "rival" ? { x: 0.9, y: 0 } : { x: 0.8, y: 0.3 } }),
+        mayor, rival,
         ...queue,
       ]}
       actors={<Robot x={600} y={1000} scale={0.95} facing={-1} pose={{ ...STAND, armF: [82, 14 + 6 * Math.sin(f * 0.2)] }} frame={f} />} />
@@ -503,8 +515,8 @@ export const TwoBack: React.FC<{ t: ShotTime }> = ({ t }) => {
 };
 
 /** Two cooks flipping, two spots empty, the crowd watching, the grill hot again. */
-export const TwoCooks: React.FC<{ t: ShotTime }> = ({ t }) => (
-  <DinerShot t={t} mood="morning" robots={2} grill="hot" push={[1, 1.05]} cam={{ x: 1000, y: 580, zoom: 1.08 }}
+export const TwoCooks: React.FC<{ t: ShotTime; cam?: Camera }> = ({ t, cam = { x: 1000, y: 580, zoom: 1.08 } }) => (
+  <DinerShot t={t} mood="morning" robots={2} grill="hot" push={[1, 1.05]} cam={cam}
     cast={[on("till", YOU, "relieved", { behind: true, phone: true, pose: { ...STAND, armF: [60, 80] } })]}
     actors={<Extras people={crowd(() => 0, (i) => (i % 2 ? "relieved" : "neutral"), { x: 0.1, y: -0.5 }).map((p) => ({ ...p, who: { ...p.who, wear: (p.who.wear ?? []).filter((w) => w.kind !== "hammer" && w.kind !== "wrench") } }))} frame={t.f} />} />
 );
@@ -604,7 +616,7 @@ export const GateBack: React.FC<{ t: ShotTime }> = ({ t }) => {
  *  and a new human one working the room, you at the till not counting, the boss on stool four with a burger. `cam` and
  *  extras per shot. */
 export const Lunch: React.FC<{ t: ShotTime; cam?: Camera | "wide" | "counter" | "stools" | "grill"; boss?: Partial<Member>; you?: Face; youLook?: { x: number; y: number };
-  marco?: { look?: { x: number; y: number }; up?: boolean }; till?: number; phone?: boolean; actors?: React.ReactNode; push?: [number, number]; payer?: boolean;
+  marco?: { look?: { x: number; y: number }; up?: boolean; pose?: Pose; face?: Face }; till?: number; phone?: boolean; actors?: React.ReactNode; push?: [number, number]; payer?: boolean;
   empty?: number[] }> = ({
   t, cam = "wide", boss, you = "happy", youLook, marco, till = 0, phone = true, actors, push = [1, 1.04], payer, empty = [],
 }) => {
@@ -625,8 +637,7 @@ export const Lunch: React.FC<{ t: ShotTime; cam?: Camera | "wide" | "counter" | 
     <DinerShot t={t} mood="day" cam={cam} grill="hot" plates="some" push={push} options={{ phone, till }}
       cast={[
         on("till", YOU, you, { behind: true, look: youLook ?? { x: 0.8, y: 0 } }),
-        on("grill", MARCO, "happy", { behind: true, pose: marco?.up ? { ...STAND, armF: [150, 20] } : { ...STAND, armF: [70 + 50 * swing, 30] }, held: <Spatula angle={marco?.up ? -90 : -20 - 30 * swing} />, look: marco?.look ?? { x: -0.5, y: 0.3 } }),
-        on("pass", { ...worker(7), coat: "#e58f9a", wear: [{ kind: "apron", color: PAPER }] }, "happy", { behind: true, pose: REACH }),
+        on("grill", MARCO, marco?.face ?? "happy", { behind: true, pose: marco?.pose ?? (marco?.up ? { ...STAND, armF: [150, 20] } : { ...STAND, armF: [70 + 50 * swing, 30] }), held: <Spatula angle={marco?.pose ? -10 : marco?.up ? -90 : -20 - 30 * swing} />, look: marco?.look ?? { x: -0.5, y: 0.3 } }),
         { ...on("stool4", BOSS, "happy", { held: <Burger s={0.45} />, pose: { ...SEATED, armF: [50, 90] }, look: { x: 0.6, y: -0.2 } }), ...(boss ?? {}) },
         ...cast,
       ]}
@@ -727,7 +738,7 @@ export const CustomerCross: React.FC<{ t: ShotTime; gate?: boolean; close?: bool
 /** Marco at the grill, spatula up, looking over at you. */
 export const MarcoLooks: React.FC<{ t: ShotTime }> = ({ t }) => <Lunch t={t} cam={{ x: 1820, y: 560, zoom: 1.8 }} marco={{ up: true, look: { x: 0.9, y: 0 } }} push={[1, 1.03]} />;
 /** You at the till, looking at the phone that didn't ping. */
-export const YouLook: React.FC<{ t: ShotTime }> = ({ t }) => <Lunch t={t} cam={{ x: 780, y: 650, zoom: 2.0 }} you="sceptical" youLook={{ x: 0.7, y: 0.8 }} push={[1, 1.03]} />;
+export const YouLook: React.FC<{ t: ShotTime; face?: Face }> = ({ t, face = "sceptical" }) => <Lunch t={t} cam={{ x: 780, y: 650, zoom: 2.0 }} you={face} youLook={{ x: 0.7, y: 0.8 }} push={[1, 1.03]} />;
 /** The boss on stool four turns. */
 export const BossTurns: React.FC<{ t: ShotTime }> = ({ t }) => (
   <Lunch t={t} cam={{ x: 980, y: 720, zoom: 1.9 }} push={[1, 1.03]}

@@ -10,7 +10,7 @@ import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { MARCO_COAT, YOU } from "../Cast";
 import { DinerShot, on, type Face } from "../Places";
-import { AppPhone, type AppPhoneProps, STEEL, STEEL_DARK, STEEL_LIGHT } from "../Props";
+import { AppPhone, type AppPhoneProps, CashFan, STEEL, STEEL_DARK, STEEL_LIGHT } from "../Props";
 import { ease, mix, ramp, type ShotTime } from "../util";
 import { Dressed } from "../Wear";
 
@@ -93,7 +93,7 @@ export const CallerPhone: React.FC<{ t: ShotTime; face?: Face; coughs?: number[]
             <rect x={px - W / 2 + 24} y={py - H / 2 + 24} width={W - 48} height={H - 48} rx={36} fill="#cfe6f2" />
             <g clipPath="url(#caller-screen)">
               <rect x={px - W / 2} y={py - 30} width={W} height={H} fill="#b4d3e4" />
-              <Dressed x={px - 20} y={py + 470} scale={2.1} facing={1} pose={{ ...STAND, armF: [150, 40] }} time={f}
+              <Dressed x={px - 20} y={py + 470} scale={2.1} facing={1} pose={{ ...STAND, armF: [30, 40] }} time={f}
                 {...EXPRESSIONS[face]} {...MARCO_COAT} />
             </g>
             {/* the red hang-up and the speaker button, lit */}
@@ -195,4 +195,34 @@ export const ChimeMark: React.FC<{ x: number; y: number; f: number; at: number; 
 /** A label for a tool: drawn text for small on-paper captions (one word, e.g. CHEAPER). */
 export const Caption: React.FC<{ x: number; y: number; text: string; size?: number; color?: string; rot?: number }> = ({ x, y, text, size = 44, color = INK, rot = 0 }) => (
   <text x={x} y={y} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={size} fill={color} transform={`rotate(${rot} ${x} ${y})`}>{text}</text>
+);
+
+/** Marco's paper hat taken off and held in the hand (gripped at the origin, crown up). */
+export const HatInHand: React.FC<{ s?: number; hard?: boolean }> = ({ s = 1, hard }) => (
+  <g transform={`scale(${s}) translate(0 -6)`}>
+    {hard ? (
+      <g>
+        <path d="M-40 10 Q-38 -40 2 -42 Q42 -40 42 10 Z" fill="#f7d038" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+        <rect x={-50} y={6} width={102} height={10} rx={5} fill="#f7d038" stroke={INK} strokeWidth={4} />
+      </g>
+    ) : (
+      <g>
+        <path d="M-44 10 L44 10 L36 -22 Q0 -40 -36 -22 Z" fill="#fbfbf6" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+        <path d="M-38 0 L38 0" stroke={INK} strokeWidth={3} opacity={0.5} />
+      </g>
+    )}
+  </g>
+);
+
+/** A few notes held out to pay (the thumbnail's cash fan, smaller). */
+export const CashFanHeld: React.FC = () => <CashFan s={1.1} n={3} />;
+
+/** A clipboard held at the chest (the boss at the gate), gripped at the origin. */
+export const Clipboard: React.FC<{ s?: number }> = ({ s = 1 }) => (
+  <g transform={`scale(${s}) rotate(-8)`}>
+    <rect x={-30} y={-80} width={60} height={84} rx={6} fill="#b98a5a" stroke={INK} strokeWidth={4} />
+    <rect x={-22} y={-70} width={44} height={66} fill={PAPER} />
+    {[0, 1, 2, 3].map((i) => <line key={i} x1={-16} y1={-58 + i * 14} x2={14} y2={-58 + i * 14} stroke={INK} strokeWidth={3} opacity={0.5} />)}
+    <rect x={-12} y={-86} width={24} height={12} rx={3} fill={STEEL} stroke={INK} strokeWidth={3} />
+  </g>
 );

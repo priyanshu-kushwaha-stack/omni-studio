@@ -377,7 +377,7 @@ Too far. Make every machine too dear, and the plant leaves with them.
 
 > TAG: 360 a week, per machine.
 
-A machine now costs whoever rents it, every week, the three hundred and sixty its worker used to spend at the barber, the garage and the grocer. Fire Marco today and you still keep his four hundred and lose your forty, but the three hundred and sixty goes to the app, to you, and out again as the town's cheque. Every owner feels the whole loss at last, so a machine stays only where it's better, not just cheaper.
+A machine now costs whoever rents it, every week, its rent plus the three hundred and sixty its worker used to spend at the barber, the garage and the grocer. Fire Marco today and you still keep his four hundred and lose your forty, but the three hundred and sixty goes to the app, to you, and out again as the town's cheque. Every owner feels the whole loss at last, so a machine stays only where it's better, not just cheaper.
 
 > SCENE: The mayor at the counter, sash on, arms folded.
 
