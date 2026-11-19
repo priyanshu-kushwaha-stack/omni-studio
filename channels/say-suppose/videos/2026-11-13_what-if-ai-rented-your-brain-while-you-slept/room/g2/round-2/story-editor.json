@@ -1,0 +1,72 @@
+{
+  "call_id": "300dbb34eeed44a6b4d39a3cbc95ce0e",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "hook": 6,
+    "escalation": 8,
+    "payoff": 8
+  },
+  "blockers": [
+    {
+      "quote": "You feel nothing. But a night you sell is a night your own brain doesn't get.",
+      "why": "Check #3 fails: the loss arrives around 0:55, but the viewer must know what can be won or lost by 0:30.",
+      "fix": "Replace lines 43\u201347 with: \"Twice a week, you sell plasma\u2014the most the law allows (c02)\u2014to keep up with what your family owes. So what if a company rented your brain while you slept? It pays by the hour. But a night you sell is a night your own brain doesn't get.\" Delete the later repeat.",
+      "domain": "story",
+      "line": 65
+    },
+    {
+      "quote": "It's true. The US is one of the few countries that lets companies pay people for plasma (c01), and it supplies about two thirds of the world's (c03). People cross that bridge from Mexico twice a week to sell theirs (c05), because a day's work across the river pays about nine dollars (c22). Now they cross to sleep.",
+      "why": "Check #7 fails: this delivers three quantities at once. The same number-stacking recurs at lines 111 and 444.",
+      "fix": "Replace this passage with: \"It's true. The US supplies about two thirds of the world's plasma (c03). That existing market is why the bands reach this bridge first. Now the same queue crosses to sleep.\" Split line 111 into separate 2022 and five-minute lines; split line 444 into separate 2020, million-computers and billion-billion lines.",
+      "domain": "story",
+      "line": 358
+    },
+    {
+      "quote": "The band came with a leaflet. It sets out the deal.",
+      "why": "Check #16 fails: the rule continues through line 100 instead of taking two or three lines, and its useful limit is not explicitly flagged to remember.",
+      "fix": "Compress lines 86\u2013100 to: \"The band came with a leaflet: wear it to bed, and while you sleep the company runs its work on your brain and pays by the hour.\\nOne company can link many bands, for one big job. But the leaflet promises each brain stays separate. One brain, one band, one jar.\\nYou remember nothing except crumbs\u2014a taste, a word, a face that isn't yours. The leaflet calls them harmless. Remember that.\"",
+      "domain": "story",
+      "line": 86
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 210,
+      "quote": "And you're not the only one counting. The nurse has a band under her cap now, so the clinic shuts at noon. Therefore your boss sees the jar on your desk, and opens a nap room at work. With a till.",
+      "fix": "Make the shared cause explicit: \"Once sleep pays, every waking hour looks expensive. The nurse closes the clinic at noon to sell hers. Your boss sees your jar and opens a nap room\u2014with a till.\""
+    },
+    {
+      "line": 468,
+      "quote": "You remember nothing of your nights. Only the crumbs. And now you know what they were building. You'd rather sit in that chair every Thursday than build it every night.",
+      "fix": "Keep both sides of the dilemma alive until the action: \"The contract clears the debt. The machine clears sleepers. At eleven fifty-eight, the pen is still in one hand and the band in the other.\""
+    },
+    {
+      "line": 457,
+      "quote": "The job the sleepers are paid for is to design the thing that will never need sleepers.",
+      "fix": "Fold this into line 455 to avoid explaining the reveal twice: \"Nobody's built the computer that can do this. Yet. The sleepers' job is to design it.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 233,
+      "quote": "It makes the evening news. Nobody's up to watch it."
+    },
+    {
+      "line": 289,
+      "quote": "Sleep was never nothing. It was the one shift you always worked for yourself."
+    },
+    {
+      "line": 459,
+      "quote": "The biggest idea people ever had together, and nobody was awake for it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "ef970024f3fc8b214b141edf0a9c3acb329ba6e7d25705bc85d8c8e011d57236",
+  "draft_sha256": "982ad041656375295eb43fdeb9866fce35c2244cd64487f1c1366cee3800a300"
+}

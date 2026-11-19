@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-ai-rented-your-brain-while-you-slept",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-15T05:07:38.797597+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "script_md": "script.md",
+    "say_yaml": "say.yaml",
+    "claims_md": "claims.md",
+    "sequel_md": "sequel.md",
+    "story_json": "story.json",
+    "narration_wav": "assets/narration/narration.wav (git-ignored, local voices)",
+    "first_cut": "renders/v6/v6-720p.mp4 (git-ignored)",
+    "review_md": "review-g2-v6.md",
+    "room_md": "room-g2.md",
+    "qc_json": "qc/story_script.json (git-ignored)"
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "gate": "G2 story lock",
+    "draft": "v6 (owner-notes round 4: the Cursor frame-by-frame review)",
+    "runtime_s": 647.2,
+    "runtime_note": "10:47, 113 lines, voice B cloned (cool, warm from Midnight on), the M2 sci-fi score",
+    "room": "not re-run for v6 (owner: judge without the house rules; review-cursor-v5.md); changed facts checked against claims.md",
+    "paid_calls": 0
+  }
+}

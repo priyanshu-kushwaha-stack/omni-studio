@@ -1,0 +1,80 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "round": 1,
+ "pairs": [
+  {
+   "pair": "A",
+   "thumb": "THAT'S ME?",
+   "result": [
+    {
+     "title": "What If AI Rented Your Brain While You Slept?",
+     "chars": 45,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If AI Rented Your Brain While You...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "45 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "B",
+   "thumb": "WORTH IT?",
+   "result": [
+    {
+     "title": "What If You Were Paid to Sleep?",
+     "chars": 31,
+     "score": 98,
+     "issues": [
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "31 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "C",
+   "thumb": "EASY CASH?",
+   "result": [
+    {
+     "title": "What If Your Brain Worked Nights Without You?",
+     "chars": 45,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If Your Brain Worked Nights...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "45 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -82,6 +82,28 @@ voices:
       Kid: >-
         A high, bright boy's voice, about six years old, on a bus. Curious and delighted, quick, clear diction,
         every word distinct, standard English with no slang.
+      # What If AI Rented Your Brain While You Slept? (2026-11-13): El Paso, the clinic, the bunk room.
+      Brother: >-
+        A light, bright male tenor: a boy of about eighteen in his last year of school, the listener's younger
+        brother. Quick, teasing and wry, warm underneath, crisp clear diction, every word distinct, casual modern
+        American English.
+      Nurse: >-
+        A low, brisk female alto: a clinic nurse in her forties at the end of a night shift. Dry and kind, practical,
+        crisp clear diction, every word distinct, standard American English.
+      Broker: >-
+        A smooth male baritone: a salesman in a grey suit in his fifties. Unhurried and friendly, a little too calm,
+        every word a quiet offer, crisp clear diction, every word distinct.
+      Boss: >-
+        A cheerful male baritone: an office boss in his late forties. Hearty and pleased with himself, brisk, a
+        grin in the voice, crisp clear diction, every word distinct.
+      Grandmother: >-
+        A bright female voice, an old soprano: a grandmother in her eighties next door. Delighted with herself, slow
+        and satisfied, clear diction, every word distinct, a light Mexican Spanish accent.
+      # Its one clerk line was voiced as "Clerk" before the fail film's Clerk joined the cast; the take is made and the
+      # film is uploaded. On a rebuild, speak that line as "Door clerk:".
+      Door clerk: >-
+        A flat, deep male baritone: a warehouse door clerk in his thirties. Bored and blunt, short words, crisp clear
+        diction, every word distinct.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.

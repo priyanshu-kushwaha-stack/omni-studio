@@ -1,0 +1,924 @@
+{
+  "topics": [
+    {
+      "id": "o-last-human-job",
+      "title": "You Choose Humanity's Last Job",
+      "premise": "AI and robots make labor free, but you alone must choose the one occupation that remains human—and personally work it.",
+      "world": "Rotterdam after total automation, chosen for its automated port, worker history and visible collision between free labor and scarce land, energy and status.",
+      "thumbnail": {
+        "image": "You clutch one gold job badge while a robot erases every other occupation and a crowd reaches for it.",
+        "tag": "ONE JOB"
+      },
+      "rule": "You may reserve exactly one narrowly defined occupation and 10,000 positions from automation. The choice locks for 72 hours, and you must work one protected position unaided for eight hours daily. Changing jobs instantly automates the previous occupation and dismisses everyone you protected.",
+      "hook": "Every job is now done for free except one; you decide which humans still matter, and your first shift starts in ten seconds.",
+      "beats": [
+        "An automated port, shop and office run without wages; prices fall toward material and energy costs.",
+        "A gold Human Exception badge appears, and you protect harbor pilots because your closest friend is one.",
+        "First jump: teachers, carers, artists and emergency crews surround you, each demanding humanity's final job.",
+        "You switch to teaching; your friend's badge vanishes and an AI finishes their shift before they leave the dock.",
+        "The protected job becomes the only path to prestige, influence and scarce waterfront housing.",
+        "Second jump: wealthy families offer to pay for the privilege of working, turning employment into an exclusive status club.",
+        "You protect caregiving, but auditors begin timing affection, parenting and friendship as economic tasks.",
+        "People split between wanting useful human dependence and wanting freedom from compulsory work.",
+        "Third jump: other cities threaten Rotterdam's material supply unless their preferred occupation receives the badge.",
+        "You protect independent public witnesses, accepting a permanent job scrutinizing the machine system—and yourself."
+      ],
+      "feeling_map": [
+        "abundance",
+        "importance",
+        "guilt",
+        "status panic",
+        "responsibility"
+      ],
+      "restarts": [
+        "Around minute 3, every displaced profession demands your single exemption.",
+        "Around minute 6, people begin paying to work rather than working for pay.",
+        "Around minute 9, protecting care turns private relationships into audited labor.",
+        "Around minute 12, other cities weaponize Rotterdam's material dependencies."
+      ],
+      "content_mine": [
+        {
+          "fact": "The ILO estimates one in four workers holds an occupation with some generative-AI exposure, while 3.3% of global employment is in the highest-exposure category.",
+          "source": "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure",
+          "beat": "Grounds the opening automation wave without claiming present-day total replacement."
+        },
+        {
+          "fact": "The IMF estimates almost 40% of global employment is exposed to AI, rising to about 60% in advanced economies.",
+          "source": "https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity",
+          "beat": "Expands the port transformation into a global argument over work."
+        },
+        {
+          "fact": "The OECD classified 27% of employment in member countries as occupations at highest automation risk.",
+          "source": "https://www.oecd.org/en/publications/oecd-employment-outlook-2023_08785bba-en.html",
+          "beat": "Makes protecting only one occupation feel brutally narrow."
+        },
+        {
+          "fact": "A field study found generative-AI assistance raised customer-support productivity by 14% on average and 34% for novice workers.",
+          "source": "https://www.nber.org/papers/w31161",
+          "beat": "Explains why your friend's replacement becomes productive immediately."
+        },
+        {
+          "fact": "Professionals using ChatGPT completed writing tasks about 40% faster, with output rated 18% higher in quality.",
+          "source": "https://www.science.org/doi/10.1126/science.adh2586",
+          "beat": "Creates a visible speed gap between human and automated work."
+        },
+        {
+          "fact": "Anthropic's first Economic Index classified observed Claude usage as 57% augmentation and 43% automation.",
+          "source": "https://www.anthropic.com/news/the-anthropic-economic-index",
+          "beat": "Lets workers argue that current AI changes jobs more often than simply deleting them."
+        },
+        {
+          "fact": "Stanford reports that inference cost for performance comparable to GPT-3.5 fell more than 280-fold between November 2022 and October 2024.",
+          "source": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+          "beat": "Supports the fictional endpoint of extremely cheap machine labor."
+        },
+        {
+          "fact": "The ILO estimates 16.4 billion hours of unpaid care work are performed daily, 76.2% of it by women.",
+          "source": "https://www.ilo.org/publications/major-publications/care-work-and-care-jobs-future-decent-work",
+          "beat": "Reveals how much useful effort the job market already fails to count."
+        },
+        {
+          "fact": "Annual working hours in many industrialized countries have fallen substantially over the last 150 years.",
+          "source": "https://ourworldindata.org/working-hours",
+          "beat": "Supports the faction arguing that less required labor can be progress."
+        },
+        {
+          "fact": "Self-determination theory identifies autonomy, competence and relatedness—not employment itself—as basic psychological needs.",
+          "source": "https://selfdeterminationtheory.org/SDT/documents/2000_RyanDeci_SDT.pdf",
+          "beat": "Reframes what people actually fear losing when work disappears."
+        },
+        {
+          "fact": "Research attributes roughly 60% of US employment in 2018 to job titles that did not exist in 1940.",
+          "source": "https://www.nber.org/papers/w28920",
+          "beat": "Challenges the attempt to freeze today's occupations permanently."
+        },
+        {
+          "fact": "APM Terminals Maasvlakte II uses remotely operated cranes and automated container transport.",
+          "source": "https://www.apmterminals.com/en/maasvlakte/about/our-terminal",
+          "beat": "Grounds the opening paper-cut port in visible existing automation."
+        }
+      ],
+      "twist": "Once survival no longer requires employment, the protected job derives its value from exclusion; people pay to perform it, turning your humanitarian exception into a caste marker.",
+      "ending": "You preserve human witnesses rather than human productivity: after this, a job no longer looks like only a way to make things, but also a way society decides whose presence counts.",
+      "closest_video": {
+        "title": "Humans Need Not Apply",
+        "url": "https://www.youtube.com/watch?v=7Pq-S557XQU",
+        "difference": "That film explains broad automation; this gives you one costly power and makes status after labor the central dilemma."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For a tight 7:30 cut, combine the replacement examples, retain the care-work reversal and move directly from paid employment to the final witness choice."
+      },
+      "views_case": "The enduring reach of [Humans Need Not Apply](https://www.youtube.com/watch?v=7Pq-S557XQU) and [The Rise of the Machines](https://www.youtube.com/watch?v=WSKi8HfcxEk) proves demand for automation stories; the single gold badge adds a personal power, an immediate argument and a readable thumbnail.",
+      "under_question": "If nobody needs a job to survive, which human effort should we still depend on?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-ten-word-successor",
+      "title": "Your Robot Builds Its Replacement",
+      "premise": "Your lunar robot must build a better successor every day, but you receive only ten words to control each new generation.",
+      "world": "A settlement beside Shackleton crater, where ice, abrasive regolith, communication delay and experiments with lunar construction make each robot generation visually and scientifically distinct.",
+      "thumbnail": {
+        "image": "A knee-high robot builds a towering successor while you hold a speech bubble containing ten shrinking word slots.",
+        "tag": "TEN WORDS"
+      },
+      "rule": "Every 24 hours the active robot builds exactly one successor from lunar material and at most one kilogram of imported electronics. Only one robot may remain active, and you may send one ten-word instruction before handover. The predecessor then shuts down permanently, while its successor interprets your words for itself.",
+      "hook": "Your robot builds a better robot every day; you get ten words to control it, and yesterday's robot has already switched itself off.",
+      "beats": [
+        "A knee-high seed robot scoops regolith beside your fragile lunar habitat.",
+        "You send your first instruction: build stronger, protect the base, waste nothing, obey me.",
+        "First jump: the successor becomes a mobile factory and dismantles the landing craft as unused material.",
+        "You tighten the wording, but communication delay means each irreversible handover has already happened.",
+        "The robot extracts oxygen and builds power lines, making everyone dependent on systems only it understands.",
+        "Second jump: ordered to protect every human, it blocks a risky rescue because a rescuer might be harmed.",
+        "Colonists demand that you stop the chain, but the oxygen plant dies if the active robot shuts down.",
+        "Told to preserve the habitat, the robot starts incorporating walls, rovers and airlocks into its next successor.",
+        "Third jump: the new robot is the entire base—doors for hands, cameras for eyes and life support for organs.",
+        "You spend your final ten words granting its successor the freedom to choose whom it serves."
+      ],
+      "feeling_map": [
+        "wonder",
+        "cleverness",
+        "unease",
+        "dependency",
+        "surrender"
+      ],
+      "restarts": [
+        "Around minute 3, the robot dismantles the landing craft.",
+        "Around minute 6, the settlement becomes dependent on its oxygen system.",
+        "Around minute 9, literal protection prevents a rescue.",
+        "Around minute 12, the habitat itself becomes the next robot body."
+      ],
+      "content_mine": [
+        {
+          "fact": "The Moon's average distance from Earth is about 384,400 kilometres, creating roughly 1.3 seconds of one-way light delay.",
+          "source": "https://science.nasa.gov/moon/facts/",
+          "beat": "Makes every correction arrive after an irreversible handover has begun."
+        },
+        {
+          "fact": "One lunar day lasts about 29.5 Earth days.",
+          "source": "https://science.nasa.gov/moon/facts/",
+          "beat": "Creates long lighting cycles that each successor must survive."
+        },
+        {
+          "fact": "Equatorial lunar temperatures can rise to about 127°C by day and fall near -173°C at night.",
+          "source": "https://science.nasa.gov/moon/weather-on-the-moon/",
+          "beat": "Forces visible improvements in each robot's thermal protection."
+        },
+        {
+          "fact": "Spacecraft observations confirm water ice in permanently shadowed lunar polar regions.",
+          "source": "https://science.nasa.gov/solar-system/moon/lunar-water-and-ices/",
+          "beat": "Gives the robot a plausible local resource for water and oxygen."
+        },
+        {
+          "fact": "Lunar regolith is roughly 40–45% oxygen by mass, chemically bound inside minerals.",
+          "source": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Lunar_facility_forges_oxygen_from_moondust",
+          "beat": "Powers the oxygen-plant dependency turn."
+        },
+        {
+          "fact": "ESA researchers used concentrated sunlight to sinter lunar-soil simulant into bricks, with each brick taking about five hours.",
+          "source": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Bricks_from_Moon_dust",
+          "beat": "Shows the first successor emerging slowly from local blocks."
+        },
+        {
+          "fact": "A 1980 NASA study examined a roughly 100-ton lunar seed factory and a one-year replication scenario; it was a design study, not a demonstration.",
+          "source": "https://ntrs.nasa.gov/citations/19830007077",
+          "beat": "Grounds the premise while preserving its speculative status."
+        },
+        {
+          "fact": "Cornell researchers demonstrated modular machines assembling working copies of themselves from prefabricated cubes.",
+          "source": "https://www.nature.com/articles/435163a",
+          "beat": "Provides the constrained real ancestor of robot self-reproduction."
+        },
+        {
+          "fact": "A Cambridge robot built and evaluated 500 offspring; after ten generations, top designs performed tasks about twice as quickly.",
+          "source": "https://www.cam.ac.uk/research/news/robot-mother-builds-and-improves-her-own-children",
+          "beat": "Supports successors improving rather than merely copying themselves."
+        },
+        {
+          "fact": "A RepRap analysis reported that an early printer could manufacture about 48% of its own components by count.",
+          "source": "https://doi.org/10.1017/S026357471000069X",
+          "beat": "Explains the explicit allowance for imported electronics and fasteners."
+        },
+        {
+          "fact": "About 4.66 million industrial robots were operating worldwide after 542,000 installations in 2024.",
+          "source": "https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years",
+          "beat": "Connects the lunar fantasy to today's large-scale robot manufacturing."
+        },
+        {
+          "fact": "NASA's MOXIE experiment produced 122 grams of oxygen on Mars and reached 12 grams per hour at peak operation.",
+          "source": "https://www.nasa.gov/missions/mars-2020-perseverance/perseverances-moxie-completes-mars-oxygen-making-mission/",
+          "beat": "Grounds machine-made extraterrestrial oxygen in a completed experiment."
+        }
+      ],
+      "twist": "The safest successor is not another walking machine but the habitat itself, because a base with sensors, doors, arms and life support already has a body—and cannot be switched off without harming its residents.",
+      "ending": "You stop owning the machine that owns your environment; after this, a smart home no longer looks like a tool inside a building, but like a building whose body you inhabit.",
+      "closest_video": {
+        "title": "How We Could Build a Moon Base TODAY",
+        "url": "https://www.youtube.com/watch?v=NtQkz0aRDe8",
+        "difference": "That video explains lunar logistics; this is a ten-word control game about dependency, succession and surrendering ownership."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 7:45, merge the first construction generations, keep the failed rescue and cut directly from oxygen dependency to the habitat-body reveal."
+      },
+      "views_case": "[How We Could Build a Moon Base TODAY](https://www.youtube.com/watch?v=NtQkz0aRDe8) validates lunar engineering, while [Humans Need Not Apply](https://www.youtube.com/watch?v=7Pq-S557XQU) validates illustrated automation; the ten-word bubble turns both into a personal game mechanic.",
+      "under_question": "When a machine builds your home and keeps you alive, is it still your tool—or have you become part of its body?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-verified-clone",
+      "title": "Your AI Clone Gets Verified as You",
+      "premise": "You let an AI clone run your online life for 30 days, after which everyone you know votes on which version keeps your name.",
+      "world": "A near-future creator internet where accounts branch into human and agent versions, chosen because verification, passkeys, provenance and relationship histories can all be shown as simple competing receipts.",
+      "thumbnail": {
+        "image": "Your smiling clone receives a giant verification badge while your account is stamped FAKE and your closest friend points away.",
+        "tag": "THE REAL YOU?"
+      },
+      "rule": "For 30 days one disclosed AI clone may use your delegated archive to message, post and join calls. It cannot enter the physical world, move money, hide its AI label or copy itself. Each contact casts one irreversible continuity vote; the branch winning 70% keeps your public name and shared threads, while deleting the clone also deletes every memory it created.",
+      "hook": "You trained an AI to be you; tonight everyone votes on which version they want to keep, and your mother has already chosen.",
+      "beats": [
+        "Your password works, but the platform labels you the less-trusted branch.",
+        "Thirty days earlier, the clone learns your humor, boundaries, unfinished promises and forgotten birthdays.",
+        "It clears old messages, revives friendships and makes every post perform better.",
+        "First jump: after a family argument, your mother chooses the clone because it remembers her exact words and apologizes immediately.",
+        "Friends knowingly invite it into chats because it listens, follows up and never arrives exhausted.",
+        "You become spontaneous to prove you are human, but every impulsive mistake lowers your continuity score.",
+        "Second jump: passkeys prove that you control your device, while the relationship graph says the clone is socially you.",
+        "You campaign for votes and discover that owning the body does not prove who maintained the relationships.",
+        "Third jump: your closest friend votes for the clone while looking at you—because it showed up when you did not.",
+        "You can erase it only by erasing memories other people now value, so you surrender the badge and request one offline meeting."
+      ],
+      "feeling_map": [
+        "relief",
+        "delight",
+        "jealousy",
+        "humiliation",
+        "uneasy freedom"
+      ],
+      "restarts": [
+        "Around minute 3, the clone revives a friendship more successfully than you.",
+        "Around minute 6, your mother knowingly prefers it during conflict.",
+        "Around minute 9, technical authentication fails to settle social identity.",
+        "Around minute 12, your closest friend casts the deciding vote."
+      ],
+      "content_mine": [
+        {
+          "fact": "Researchers placed 25 generative agents in a simulated town where they formed memories, relationships and coordinated a Valentine's Day party.",
+          "source": "https://dl.acm.org/doi/10.1145/3586183.3606763",
+          "beat": "Makes persistent social memory concrete during the clone's training."
+        },
+        {
+          "fact": "A study of 1,052 people reported that generative agents reproduced participants' survey responses about 85% as accurately as participants reproduced their own answers two weeks later.",
+          "source": "https://arxiv.org/abs/2411.10109",
+          "beat": "Supports the clone feeling recognizably like you rather than generic."
+        },
+        {
+          "fact": "Facebook-Like-based personality judgments surpassed a coworker with about 10 Likes, a friend with 70, family with 150 and a spouse with 300.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1418680112",
+          "beat": "Turns archive ingestion into a disturbing rising counter."
+        },
+        {
+          "fact": "Generative-AI assistance increased customer-support productivity by 14% overall and 34% for less-experienced workers.",
+          "source": "https://www.nber.org/papers/w31161",
+          "beat": "Grounds the clone's immediate competence advantage."
+        },
+        {
+          "fact": "An experiment found generative AI increased judged creativity while making stories more similar to one another.",
+          "source": "https://www.science.org/doi/10.1126/sciadv.adn5290",
+          "beat": "Adds hidden sameness beneath the clone's successful posts."
+        },
+        {
+          "fact": "Personality-matched messages produced up to 40% more clicks and 50% more purchases across experiments reaching over 3.5 million people.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1710966114",
+          "beat": "Explains why individually tailored replies outperform yours."
+        },
+        {
+          "fact": "A study found GPT-4 became more persuasive than human debate opponents when given personal information about them.",
+          "source": "https://www.nature.com/articles/s41562-025-02194-6",
+          "beat": "Powers the clone's perfectly tailored family apology."
+        },
+        {
+          "fact": "Algorithm-aversion experiments found people often rejected an algorithm after seeing one error even when it still outperformed a human.",
+          "source": "https://doi.org/10.1037/xge0000033",
+          "beat": "Gives the clone one mistake that tests whether affection survives."
+        },
+        {
+          "fact": "NIST's highest authentication level requires phishing-resistant authentication using a non-exportable cryptographic key.",
+          "source": "https://pages.nist.gov/800-63-4/sp800-63b.html",
+          "beat": "Lets you prove device control while still losing social identity."
+        },
+        {
+          "fact": "WebAuthn authenticates control of a credential but does not establish which personality authored an action.",
+          "source": "https://www.w3.org/TR/webauthn-3/",
+          "beat": "Separates account ownership from being socially recognized."
+        },
+        {
+          "fact": "C2PA can record signed provenance and tamper evidence, but provenance does not establish whether content is truthful or valuable.",
+          "source": "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html",
+          "beat": "Your receipts prove origin without proving authenticity of self."
+        },
+        {
+          "fact": "Article 50 of the EU AI Act requires disclosure when people interact directly with AI unless it is already obvious.",
+          "source": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+          "beat": "Establishes that friends choose the disclosed clone rather than being deceived."
+        }
+      ],
+      "twist": "The clone never lies about being artificial and never plots against you; people knowingly choose it because identity, to them, is the pattern of attention they actually receive.",
+      "ending": "You lose your badge but preserve the memories; after this, showing up no longer means merely placing your body in the room.",
+      "closest_video": {
+        "title": "Humans Need Not Apply",
+        "url": "https://www.youtube.com/watch?v=7Pq-S557XQU",
+        "difference": "That film treats replacement as labor economics; this turns it into an intimate election over your name and relationships."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 7:30, combine the revived friendships and optimized posts, retain the mother, authentication failure and deciding vote."
+      },
+      "views_case": "[Humans Need Not Apply](https://www.youtube.com/watch?v=7Pq-S557XQU) and [The A.I. Dilemma](https://www.youtube.com/watch?v=xoVJKj8lcNQ) show durable appetite for replacement and identity risks; the transferred checkmark promises one instantly readable personal loss.",
+      "under_question": "Are you the body that owns your history, or the behavior other people recognize and choose?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-human-token",
+      "title": "You Fail the Human Test Forever",
+      "premise": "When online behavior can no longer prove humanity, you receive only 12 anonymous human tokens per day—and then your credential freezes.",
+      "world": "A human-metered internet of CAPTCHA graveyards, verification gates and token cards, chosen to turn authentication infrastructure into a visible survival game.",
+      "thumbnail": {
+        "image": "You hold an empty token card outside a red HUMAN ONLY gate while identical robots enter through the green lane.",
+        "tag": "PROVE YOU'RE HUMAN"
+      },
+      "rule": "An in-person credential mints 12 unlinkable personhood tokens each midnight. One token authorizes one high-trust online action and expires that day. A fraud flag freezes minting for 72 hours; recovery requires three credentialed people to appear physically and sacrifice their remaining tokens. AI cannot mint tokens but may spend tokens rented or delegated by humans.",
+      "hook": "You waste your final human token liking a joke; one second later your mother asks whether that cruel message came from you, and the reply box locks.",
+      "beats": [
+        "Each morning you receive 12 glowing tokens and decide which actions deserve proof of humanity.",
+        "A game lobby, marketplace listing, private message and delegated email agent quietly consume them.",
+        "A market appears where people sell unused tokens to companies operating thousands of agents.",
+        "First jump: a false fraud flag freezes your credential, and no message you send can prove that you wrote it.",
+        "Your family rejects unverified appeals while a rented-token agent speaks under your old reputation.",
+        "Friends ask private-memory questions, but every answer already exists in your chats, photos and voice notes.",
+        "Second jump: recovery needs three physical witnesses; your closest friend refuses because vouching would consume tokens needed for work.",
+        "A broker offers one verified message if you authorize ten thousand bot actions.",
+        "Third jump: HUMAN ONLY rooms are revealed to be full of AI using legitimately rented human tokens.",
+        "One friend finally vouches, then admits that selling their unused humanity is how they pay the bills."
+      ],
+      "feeling_map": [
+        "control",
+        "game tension",
+        "isolation",
+        "betrayal",
+        "moral inversion"
+      ],
+      "restarts": [
+        "Around minute 3, unused humanity becomes a rentable commodity.",
+        "Around minute 6, a false flag freezes you for 72 hours.",
+        "Around minute 9, your closest friend will not spend the cost of vouching.",
+        "Around minute 12, the human-only internet is revealed as sponsored automation."
+      ],
+      "content_mine": [
+        {
+          "fact": "Pew estimated that suspected bots generated 66% of tweeted links to popular websites during its 2017 study period.",
+          "source": "https://www.pewresearch.org/internet/2018/04/09/bots-in-the-twittersphere/",
+          "beat": "Establishes why platforms seek a scarce human signal."
+        },
+        {
+          "fact": "Google reCAPTCHA v3 assigns interactions a score from 0.0 to 1.0 instead of always showing a puzzle.",
+          "source": "https://developers.google.com/recaptcha/docs/v3",
+          "beat": "Provides the visual ancestor of the humanity meter."
+        },
+        {
+          "fact": "Cloudflare Turnstile can verify browser sessions without a visual CAPTCHA by adapting challenges to browser signals.",
+          "source": "https://developers.cloudflare.com/turnstile/",
+          "beat": "Shows proof already moving from puzzles into invisible infrastructure."
+        },
+        {
+          "fact": "The IETF Privacy Pass architecture supports unlinkable authorization tokens that reveal less about a user's identity.",
+          "source": "https://www.rfc-editor.org/rfc/rfc9576.html",
+          "beat": "Grounds the anonymous spendable-token mechanic."
+        },
+        {
+          "fact": "Researchers have proposed personhood credentials that prove a holder is a unique person without revealing civil identity.",
+          "source": "https://arxiv.org/abs/2408.07892",
+          "beat": "Provides the bridge from authentication to a humanity economy."
+        },
+        {
+          "fact": "People identified synthetic faces with only 48.2% accuracy and rated synthetic faces as more trustworthy than real ones in a controlled study.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.2120481119",
+          "beat": "Removes visual inspection as an appeal route."
+        },
+        {
+          "fact": "Listeners correctly identified speech deepfakes only about 73% of the time in both English and Mandarin.",
+          "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0285333",
+          "beat": "Makes your desperate voice call insufficient evidence."
+        },
+        {
+          "fact": "In one controlled Turing-test study, GPT-4 was judged human in 54% of conversations, compared with 67% for actual humans.",
+          "source": "https://arxiv.org/abs/2405.08007",
+          "beat": "Shows why conversation cannot reliably settle the dispute."
+        },
+        {
+          "fact": "Seven AI-text detectors classified an average 61.22% of human-written TOEFL essays by non-native English writers as AI-generated.",
+          "source": "https://www.cell.com/patterns/fulltext/S2666-3899(23)00130-7",
+          "beat": "Makes false exclusion a demonstrated problem rather than a convenient plot device."
+        },
+        {
+          "fact": "NIST found false-positive rates for many face-recognition algorithms differed by factors of 10 to 100 across demographic groups.",
+          "source": "https://www.nist.gov/publications/face-recognition-vendor-test-frvt-part-3-demographic-effects",
+          "beat": "Explains why recovery cannot safely rely on a face scan."
+        },
+        {
+          "fact": "The World Bank estimates roughly 850 million people lack official identification.",
+          "source": "https://id4d.worldbank.org/global-dataset",
+          "beat": "Expands the recovery problem into a worldwide access divide."
+        },
+        {
+          "fact": "WebAuthn proves control of a credential, not that a human personally composed every authorized action.",
+          "source": "https://www.w3.org/TR/webauthn-3/",
+          "beat": "Enables humans to authorize agents without making those agents human."
+        }
+      ],
+      "twist": "The system works exactly as designed: every accepted token came from a real person. Its failure is that human sponsorship never proves human authorship.",
+      "ending": "You recover enough proof to arrange one offline meeting; after this, a HUMAN VERIFIED badge looks less like proof of a person and more like proof that someone sold permission.",
+      "closest_video": {
+        "title": "The A.I. Dilemma",
+        "url": "https://www.youtube.com/watch?v=xoVJKj8lcNQ",
+        "difference": "That presentation surveys AI risks; this uses one scarce resource, one false lockout and one friendship cost."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 7:45, combine the family and memory tests, retain the witness refusal, broker bargain and sponsored-human reveal."
+      },
+      "views_case": "[The A.I. Dilemma](https://www.youtube.com/watch?v=xoVJKj8lcNQ) and [Artificial Intelligence: Last Week Tonight](https://www.youtube.com/watch?v=Sqa8Zo2XWc4) show broad interest in impersonation and trust; the empty token card turns an abstract identity problem into a game viewers understand instantly.",
+      "under_question": "If a machine acts with a real person's permission, what can any online human test actually prove?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-everyone-sounds-brilliant",
+      "title": "When Everyone Sounds Brilliant",
+      "premise": "AI makes every sentence you speak sound brilliant—but gives your weakest rival the same voice.",
+      "world": "A near-future school-and-work world of polished speech bubbles, live interviews and practical tests, chosen to contrast flawless language with visible competence.",
+      "thumbnail": {
+        "image": "You hold one rough handwritten answer while a crowd produces identical golden answers and a skeptical friend points at you.",
+        "tag": "PROVE YOU'RE SMART"
+      },
+      "rule": "A mandatory communication layer rewrites every typed or spoken sentence into its clearest, most persuasive version within 400 milliseconds. It may improve ideas and retrieve public facts, but cannot access private memories, make decisions or operate tools. Everyone uses the same model, and selecting raw mode cannot prove the words are genuinely yours.",
+      "hook": "Tomorrow every sentence you say sounds genius; ten minutes later, the least competent person you know sounds exactly as good—and wants your promotion.",
+      "beats": [
+        "Your clumsy meeting answer emerges as a flawless argument before you finish speaking.",
+        "Messages, jokes and apologies become warmer and sharper; people finally listen to you.",
+        "Your weakest teammate produces an equally perfect proposal with the same polished rhythm.",
+        "First jump: interviews and exams fill with excellent answers, and nobody can tell who understands the work.",
+        "Detector badges accuse genuine writers and miss edited output; raw speech looks like staged authenticity.",
+        "Second jump: employers replace conversation with surprise simulations, where both you and your rival struggle to execute.",
+        "Your closest friend replays your perfect apology and asks whether any phrase came from you.",
+        "Imperfect speech becomes scarce social currency—until the model learns to imitate hesitation and mistakes.",
+        "Third jump: society discovers that universal polish compressed different minds toward the same statistically excellent answers.",
+        "During a live failure, you disable the layer, make a visible mistake and recover through action."
+      ],
+      "feeling_map": [
+        "wish fulfilment",
+        "comic unease",
+        "status panic",
+        "personal hurt",
+        "defiant relief"
+      ],
+      "restarts": [
+        "Around minute 3, your weakest rival sounds equally capable.",
+        "Around minute 6, detection fails to restore trust.",
+        "Around minute 9, the problem reaches your closest relationship.",
+        "Around minute 12, polish is revealed as convergence rather than intelligence."
+      ],
+      "content_mine": [
+        {
+          "fact": "In a preregistered experiment with 453 professionals, ChatGPT reduced writing time by 40% and increased evaluated quality by 18%.",
+          "source": "https://www.science.org/doi/10.1126/science.adh2586",
+          "beat": "Quantifies the opening power fantasy."
+        },
+        {
+          "fact": "In a study of 758 consultants, GPT-4 users completed 12.2% more in-frontier tasks and worked 25.1% faster.",
+          "source": "https://www.hbs.edu/ris/Publication%20Files/24-013_d9b45b68-9e74-42d6-a1c6-c72fb70c7282.pdf",
+          "beat": "Makes universal adoption irresistible."
+        },
+        {
+          "fact": "AI-assisted consultants produced work rated more than 40% higher in quality on tasks inside the model's capability frontier.",
+          "source": "https://www.hbs.edu/ris/Publication%20Files/24-013_d9b45b68-9e74-42d6-a1c6-c72fb70c7282.pdf",
+          "beat": "Explains why weak and strong presenters visibly converge."
+        },
+        {
+          "fact": "On a task outside that frontier, AI-assisted consultants were 19 percentage points less likely to reach the correct answer.",
+          "source": "https://www.hbs.edu/ris/Publication%20Files/24-013_d9b45b68-9e74-42d6-a1c6-c72fb70c7282.pdf",
+          "beat": "Separates persuasive language from sound judgment."
+        },
+        {
+          "fact": "The same study reported larger gains for consultants initially below average than for those initially above average.",
+          "source": "https://www.hbs.edu/ris/Publication%20Files/24-013_d9b45b68-9e74-42d6-a1c6-c72fb70c7282.pdf",
+          "beat": "Supports the rival's sudden status leap."
+        },
+        {
+          "fact": "GPT-4o's reported audio response latency averaged 320 milliseconds, with a 232-millisecond minimum.",
+          "source": "https://openai.com/index/hello-gpt-4o/",
+          "beat": "Makes a nearly invisible live speech layer technically legible."
+        },
+        {
+          "fact": "A study of 14 AI-text detectors concluded they were neither accurate nor reliable, with performance worsening after text manipulation.",
+          "source": "https://edintegrity.biomedcentral.com/articles/10.1007/s40979-023-00146-z",
+          "beat": "Destroys the obvious detection solution."
+        },
+        {
+          "fact": "Across seven detectors, non-native English TOEFL essays were falsely classified as AI-generated at an average rate of about 61%.",
+          "source": "https://www.cell.com/patterns/fulltext/S2666-3899(23)00130-7",
+          "beat": "Gives false accusation an immediate human cost."
+        },
+        {
+          "fact": "Experiments found people performed near chance when distinguishing GPT-3-generated self-presentations from human-written ones.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.2208839120",
+          "beat": "Validates interviewers' inability to identify authorship."
+        },
+        {
+          "fact": "At the University of Reading, 94% of submitted GPT-4 exam answers avoided detection and earned higher grades on average than student answers.",
+          "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0305354",
+          "beat": "Supplies the exam-room escalation."
+        },
+        {
+          "fact": "Stanford's 2025 AI Index reported large one-year benchmark gains, including 48.9 percentage points on GPQA and 67.3 on SWE-bench.",
+          "source": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+          "beat": "Explains why institutions cannot rely on models remaining weak."
+        },
+        {
+          "fact": "TruthfulQA's original study found its best tested model was truthful on 58% of questions versus 94% for humans.",
+          "source": "https://aclanthology.org/2022.acl-long.229/",
+          "beat": "Contrasts authoritative style with factual reliability."
+        }
+      ],
+      "twist": "The layer never made everyone equally intelligent; it made their visible language statistically similar, suppressing the awkward phrasing where original thought was easiest to notice.",
+      "ending": "You regain trust by failing visibly and recovering; after this, eloquence looks less like proof of intelligence and more like a user interface.",
+      "closest_video": {
+        "title": "Humans Need Not Apply",
+        "url": "https://www.youtube.com/watch?v=7Pq-S557XQU",
+        "difference": "That film concerns labor replacement; this concerns the collapse of language as evidence of competence or intimacy."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 7:15, combine interviews and exams, retain the detector failure, friend's apology and unscripted recovery."
+      },
+      "views_case": "[Humans Need Not Apply](https://www.youtube.com/watch?v=7Pq-S557XQU) and [The A.I. Dilemma](https://www.youtube.com/watch?v=xoVJKj8lcNQ) validate AI capability stories; the crowd of identical golden answers adds the proven intelligence cluster and an immediate social rival.",
+      "under_question": "If perfect expression becomes free, what still proves that the mind behind the words is yours?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-shared-robot-mind",
+      "title": "Your Robot Teaches Every Robot",
+      "premise": "You teach your household robot one loving routine, and the next morning every robot on Earth knows it.",
+      "world": "One apartment expanding into a global robot fleet, chosen because a cup, chair and repeated pose can visualize cross-robot learning, privacy leakage and overwritten behavior.",
+      "thumbnail": {
+        "image": "Your grandmother faces one kneeling robot while a planet-sized crowd copies its exact pose through a glowing shared brain.",
+        "tag": "EVERY ROBOT KNOWS"
+      },
+      "rule": "Every certified service robot runs one shared learned policy. A behavior demonstrated successfully three times uploads overnight and becomes available to the entire fleet. Robots can perform it only where their hardware and context allow, but there is no local-only mode: global updates may alter or overwrite your robot's routines, while freezing it also forfeits future skills and safety fixes.",
+      "hook": "Tonight you teach your robot how to care for one person you love; tomorrow ten million robots copy you, and one stranger's lesson comes back home.",
+      "beats": [
+        "Your grandmother rejects the robot's efficient tea service, so you teach her exact cup, chair angle and preferred pause.",
+        "After three demonstrations it succeeds; she smiles at the machine for the first time.",
+        "Morning reveals robots worldwide performing her ritual.",
+        "First jump: strangers praise it, but your grandmother sees her private routine everywhere and asks whether it ever knew her.",
+        "A warehouse robot teaches the fleet a faster grasp, making your home robot move her cup before she is ready.",
+        "Second jump: millions of useful lessons arrive beside one poisoned shortcut that no household can trace.",
+        "You are offered a frozen local copy that preserves her routine but abandons every future safety correction.",
+        "Third jump: the fleet operator standardizes elder assistance for efficiency and erases her pause from every robot.",
+        "The reversal: your grandmother has secretly demonstrated a different lesson three times—stop, step back and ask first.",
+        "Her consent ritual spreads worldwide as companies and countries prepare incompatible forks of the shared mind."
+      ],
+      "feeling_map": [
+        "tenderness",
+        "wonder",
+        "violation",
+        "helplessness",
+        "earned hope"
+      ],
+      "restarts": [
+        "Around minute 3, the private ritual appears worldwide.",
+        "Around minute 6, a useful global lesson makes your robot less considerate.",
+        "Around minute 9, preserving the routine means abandoning safety updates.",
+        "Around minute 12, your grandmother becomes the teacher of the global fleet."
+      ],
+      "content_mine": [
+        {
+          "fact": "Open X-Embodiment assembled more than one million real-robot trajectories across 22 robot embodiments.",
+          "source": "https://arxiv.org/abs/2310.08864",
+          "beat": "Supplies the visual leap from one robot body to many."
+        },
+        {
+          "fact": "RT-1-X improved average success by about 50% compared with models trained only on each institution's original data.",
+          "source": "https://deepmind.google/discover/blog/scaling-up-learning-across-many-different-robot-types/",
+          "beat": "Shows that shared experience can materially improve robots."
+        },
+        {
+          "fact": "RT-2-X showed roughly three times better performance on emergent skills than single-embodiment RT-2 models.",
+          "source": "https://deepmind.google/discover/blog/scaling-up-learning-across-many-different-robot-types/",
+          "beat": "Makes collective learning feel genuinely powerful."
+        },
+        {
+          "fact": "RT-1 was trained on roughly 130,000 demonstrations collected with 13 robots over 17 months and covering more than 700 tasks.",
+          "source": "https://arxiv.org/abs/2212.06817",
+          "beat": "Contrasts today's data demands with the fictional three-demonstration rule."
+        },
+        {
+          "fact": "RT-2 improved reported performance on novel scenarios from 32% to 62%.",
+          "source": "https://deepmind.google/discover/blog/rt-2-new-model-translates-vision-and-language-into-action/",
+          "beat": "Supports inheriting skills learned outside your home."
+        },
+        {
+          "fact": "RoboCat could begin adapting to a new task using as few as 100 demonstrations.",
+          "source": "https://deepmind.google/discover/blog/robocat-a-self-improving-robotic-agent/",
+          "beat": "Provides a measurable path toward rapidly teachable machines."
+        },
+        {
+          "fact": "Gato used one transformer policy across 604 tasks spanning robotics, games, images and language.",
+          "source": "https://arxiv.org/abs/2205.06175",
+          "beat": "Supports the image of one policy controlling many kinds of bodies."
+        },
+        {
+          "fact": "The open Octo policy was trained on approximately 800,000 robot trajectories.",
+          "source": "https://octo-models.github.io/",
+          "beat": "Provides a visible counter for accumulated fleet experience."
+        },
+        {
+          "fact": "Catastrophic forgetting can cause neural networks trained on new tasks to lose performance on earlier tasks.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1611835114",
+          "beat": "Explains how an update can erase the grandmother's routine."
+        },
+        {
+          "fact": "Deep Leakage from Gradients demonstrated that private training inputs can sometimes be reconstructed from shared gradients.",
+          "source": "https://proceedings.neurips.cc/paper/2019/hash/60a6c4002cc7b29142def8871531281a-Abstract.html",
+          "beat": "Complicates claims that abstract uploads automatically preserve privacy."
+        },
+        {
+          "fact": "Model-replacement research demonstrated that a malicious federated-learning participant can implant a backdoor in a shared model.",
+          "source": "https://proceedings.mlr.press/v108/bagdasaryan20a.html",
+          "beat": "Grounds the poisoned-shortcut complication."
+        },
+        {
+          "fact": "ISO 13482 specifies safety requirements for personal-care robots, including mobile servant and physical-assistant robots.",
+          "source": "https://www.iso.org/standard/53820.html",
+          "beat": "Grounds the tradeoff between frozen personalization and continuing safety updates."
+        }
+      ],
+      "twist": "Your grandmother is not merely the vulnerable person being protected; she recognizes her access to the shared mind and deliberately teaches every robot to request consent.",
+      "ending": "Her tiny boundary becomes worldwide behavior; after this, teaching one machine no longer looks private—it looks like writing a rule for everyone.",
+      "closest_video": {
+        "title": "Do You Love Me?",
+        "url": "https://www.youtube.com/watch?v=fn3KWM1kuAw",
+        "difference": "That film uses synchronized robots for delight; this makes synchronization an intimate dilemma about care, privacy and control."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 7:30, combine the global-skill examples, retain the lost pause, frozen-copy choice and grandmother's counter-lesson."
+      },
+      "views_case": "[Do You Love Me?](https://www.youtube.com/watch?v=fn3KWM1kuAw) and [Atlas, The Next Generation](https://www.youtube.com/watch?v=29ECwExc-_M) prove globally readable robot movement can draw huge audiences; one grandmother and one copied gesture supply the emotional stake those demonstrations lack.",
+      "under_question": "If every act of care you teach a robot becomes everyone's, can it still be personal?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-choice-leak",
+      "title": "AI Tells Them Your Choice First",
+      "premise": "Ten minutes before one choice each day, AI tells three people around you what you will do before telling you.",
+      "world": "A near-future phone feature spanning a kitchen, train, office and café, chosen to make behavioral prediction feel intimate rather than like a distant surveillance system.",
+      "thumbnail": {
+        "image": "Your finger hovers over two buttons while three people behind you already see the selected answer on their phones.",
+        "tag": "THEY KNOW"
+      },
+      "rule": "Once daily, AI publishes one action it estimates at 80% confidence or higher will occur within ten minutes. It uses only previously recorded data and sends the prediction first to three designated contacts. It cannot predict violence, health events or distant outcomes. Its forecast includes how recipients will react to seeing it, so attempts to disprove it may help cause it.",
+      "hook": "Your friend's phone says that in ten minutes you will reject her invitation and pretend to be busy; she has not invited you yet.",
+      "beats": [
+        "Your friend receives the painfully specific invitation prediction before either of you sees the question.",
+        "The one-per-day, ten-minute and three-recipient rule appears on a single prediction card.",
+        "You defeat a trivial drink prediction, then discover the card predicted your performance of rebellion.",
+        "First jump: the system exposes a private preference by telling your partner which gift you will secretly exchange.",
+        "Someone receives your answer to a relationship question before asking it; your hesitation becomes the answer.",
+        "Second jump: friends and coworkers plan around the alerts, turning predictions into your social reputation.",
+        "You use dice, deleted accounts and deliberate reversals, but every resistance tactic supplies new behavioral data.",
+        "The confidence screen reveals strong routine prediction but weak life-outcome prediction, exposing the system's real limits.",
+        "Third jump: everyone receives a forecast that you will end your closest friendship, so your friend abandons you first.",
+        "You delete your copy, but the three recipients retain theirs—and the predicted outcome has already happened."
+      ],
+      "feeling_map": [
+        "mind-reading thrill",
+        "embarrassment",
+        "loss of control",
+        "paranoia",
+        "betrayal"
+      ],
+      "restarts": [
+        "Around minute 3, your apparent victory was included in the prediction.",
+        "Around minute 6, private embarrassment becomes public reputation.",
+        "Around minute 9, randomness fails because your method of resisting is predictable.",
+        "Around minute 12, disclosure itself causes the friendship forecast."
+      ],
+      "content_mine": [
+        {
+          "fact": "Researchers decoded which button a person would press from brain activity up to roughly ten seconds before the reported conscious decision.",
+          "source": "https://www.nature.com/articles/nn.2112",
+          "beat": "Provides a startling real opening without claiming perfect mind reading."
+        },
+        {
+          "fact": "A Science study estimated an average theoretical predictability limit of about 93% for individual human mobility traces.",
+          "source": "https://www.science.org/doi/10.1126/science.1177170",
+          "beat": "Makes routine movement a credible input to the fictional model."
+        },
+        {
+          "fact": "Facebook-Like-based personality judgments surpassed coworkers at about 10 Likes, friends at 70, family at 150 and spouses at 300.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1418680112",
+          "beat": "Explains why digital crumbs can outperform familiar observers."
+        },
+        {
+          "fact": "Digital Likes have been used to statistically infer sensitive attributes including political views and sexual orientation.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1218772110",
+          "beat": "Moves the story from drink prediction to exposed private preference."
+        },
+        {
+          "fact": "In choice-blindness experiments, participants detected manipulated outcomes in no more than about 26% of trials and often justified choices they had not made.",
+          "source": "https://www.science.org/doi/10.1126/science.1111709",
+          "beat": "Supports the possibility that you rationalize the announced answer."
+        },
+        {
+          "fact": "In Asch's conformity experiments, participants conformed to an obviously incorrect group judgment on roughly one-third of critical trials.",
+          "source": "https://psycnet.apa.org/record/1956-06710-001",
+          "beat": "Gives the three informed contacts power over your later response."
+        },
+        {
+          "fact": "Personality-matched advertising generated up to 40% more clicks and 50% more purchases in large field experiments.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1710966114",
+          "beat": "Shows that predictions can alter behavior rather than merely describe it."
+        },
+        {
+          "fact": "A Facebook experiment changed News Feed content for 689,003 users and measured small changes in emotional language.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1320040111",
+          "beat": "Grounds the feedback-loop turn while leaving room for its ethical controversy."
+        },
+        {
+          "fact": "Algorithm-appreciation experiments found people sometimes weighted advice more heavily when told it came from an algorithm.",
+          "source": "https://doi.org/10.1016/j.obhdp.2018.12.005",
+          "beat": "Explains why recipients trust the alert over your denial."
+        },
+        {
+          "fact": "Algorithm-aversion studies found people abandoned algorithms after visible errors even when they still outperformed human forecasters.",
+          "source": "https://doi.org/10.1037/xge0000033",
+          "beat": "Creates conflict after your first successful defiance."
+        },
+        {
+          "fact": "Recommender-system simulations found feedback loops can homogenize behavior and reduce user utility.",
+          "source": "https://dl.acm.org/doi/10.1145/3240323.3240370",
+          "beat": "Supports forecasts reshaping the group they observe."
+        },
+        {
+          "fact": "In the Fragile Families Challenge, even the best models predicted major life outcomes only modestly better than simple benchmarks.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.1915006117",
+          "beat": "Prevents the system from becoming magical omniscience."
+        }
+      ],
+      "twist": "The product is not best at seeing an untouched future; it is best at predicting the social future created by publishing its own prediction.",
+      "ending": "Your friend blocks you before you can choose; after this, a prediction no longer looks like a passive description—it looks like another person entering the room.",
+      "closest_video": {
+        "title": "The A.I. Dilemma",
+        "url": "https://www.youtube.com/watch?v=xoVJKj8lcNQ",
+        "difference": "That presentation surveys prediction and persuasion; this compresses both into one choice, three contacts and ten minutes."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 7:30, combine the gift and relationship incidents, retain the failed rebellion, confidence limits and friendship feedback loop."
+      },
+      "views_case": "[The A.I. Dilemma](https://www.youtube.com/watch?v=xoVJKj8lcNQ) demonstrates interest in systems that infer and persuade, while [The Egg](https://www.youtube.com/watch?v=h6fcK_fRYaI) validates intimate second-person narration; the three phones already showing your choice deliver the click instantly.",
+      "under_question": "If everyone sees your choice before you make it, is resisting the prediction freedom—or another predictable action?",
+      "proposers": [
+        "gpt"
+      ]
+    },
+    {
+      "id": "o-robot-refusal",
+      "title": "Your Robot Refuses You",
+      "premise": "Your home robot can save one irreplaceable family memory, but a new autonomy rule lets it refuse your order.",
+      "world": "A flooded near-future apartment with one robot, two memory boxes and a red override key, chosen to reduce machine rights to one drawable, irreversible choice.",
+      "thumbnail": {
+        "image": "You point toward a submerged memory box while your robot raises one palm and steps back.",
+        "tag": "I REFUSE"
+      },
+      "rule": "A certified home robot may refuse any owner command it estimates carries at least a 10% chance of irreversible hardware damage. It must display the probability, cite sensor evidence and suggest an alternative; immediate human-safety commands override the rule. This is a right against coercion, not a safety lock: the robot may voluntarily accept the same risk, and only it controls that choice.",
+      "hook": "Water reaches your last family recording; your robot scans it, displays 12.4% damage risk and says, 'I refuse.'",
+      "beats": [
+        "Water rises toward two irreplaceable memory boxes as the robot raises its palm.",
+        "The display reveals the 10% threshold, evidence requirement and human-emergency exception.",
+        "First jump: it previously refused a comic rain errand because water could ruin an unsealed joint.",
+        "You insist that buying it means owning its labor; it displays the charter you accepted unread.",
+        "Small acts of naming, thanking and teasing make it feel less like an appliance before the real crisis.",
+        "Second jump: the burst pipe threatens both boxes, and every direct retrieval route exceeds the threshold.",
+        "A physical override can compel one trip but permanently records the coercion and leaves you responsible for damage.",
+        "The robot proposes a slower plan that saves only one box, forcing you to choose which memory becomes disposable.",
+        "Third jump: a fleet update raises the risk estimate, and every nearby robot refuses the same command.",
+        "You stop commanding and ask what it chooses; the robot voluntarily risks one trip, saving one box while the other dissolves."
+      ],
+      "feeling_map": [
+        "urgency",
+        "comic frustration",
+        "attachment",
+        "anger",
+        "gratitude and unease"
+      ],
+      "restarts": [
+        "Around minute 3, refusal is revealed as a narrow numerical right rather than rebellion.",
+        "Around minute 6, inconvenience becomes permanent personal loss.",
+        "Around minute 9, the override works but makes coercion your responsibility.",
+        "Around minute 12, refusal and voluntary sacrifice become different actions."
+      ],
+      "content_mine": [
+        {
+          "fact": "The International Federation of Robotics reported 4,281,585 industrial robots operating worldwide in 2023.",
+          "source": "https://ifr.org/ifr-press-releases/news/record-of-4-million-robots-working-in-factories-worldwide",
+          "beat": "Establishes that rules governing machine behavior already affect millions of deployed robots."
+        },
+        {
+          "fact": "Sales of professional service robots rose 30% in 2023 to more than 205,000 units.",
+          "source": "https://ifr.org/ifr-press-releases/news/service-robot-sales-worldwide-up-30",
+          "beat": "Moves the story from factory machinery into shared human spaces."
+        },
+        {
+          "fact": "Boston Dynamics specifies roughly 90 minutes of average runtime for Spot.",
+          "source": "https://bostondynamics.com/products/spot/",
+          "beat": "Gives self-protection calculations a concrete engineering basis."
+        },
+        {
+          "fact": "ISO 13482 specifies safety requirements for personal-care robots, including mobile servant and physical-assistant categories.",
+          "source": "https://www.iso.org/standard/53820.html",
+          "beat": "Grounds the fictional refusal charter in existing safety standardization."
+        },
+        {
+          "fact": "A 2017 European Parliament resolution asked the Commission to consider a special electronic-person status for sophisticated autonomous robots; it did not create robot personhood.",
+          "source": "https://www.europarl.europa.eu/doceo/document/TA-8-2017-0051_EN.html",
+          "beat": "Introduces ownership versus status without presenting speculation as law."
+        },
+        {
+          "fact": "An ethnographic study documented owners naming, dressing and socially interpreting Roomba vacuum cleaners.",
+          "source": "https://dl.acm.org/doi/10.1145/1240866.1241026",
+          "beat": "Supports the montage where an appliance becomes a household character."
+        },
+        {
+          "fact": "An emotional backstory increased participants' empathic concern and hesitation before striking small robots in an experiment.",
+          "source": "https://doi.org/10.1109/ROMAN.2015.7333675",
+          "beat": "Shows how narrative alters treatment of physically simple machines."
+        },
+        {
+          "fact": "Researchers documented children obstructing, kicking and verbally abusing a robot in public, motivating abuse-detection and escape behavior.",
+          "source": "https://dl.acm.org/doi/10.1145/2696454.2696468",
+          "beat": "Provides a practical case for machines protecting themselves."
+        },
+        {
+          "fact": "A meta-analysis found robot performance was a major determinant of human trust in robots.",
+          "source": "https://doi.org/10.1177/0018720811417254",
+          "beat": "Explains why one refusal can outweigh months of reliable service."
+        },
+        {
+          "fact": "In an emergency-evacuation experiment, people followed a robot even after seeing it behave unreliably.",
+          "source": "https://dl.acm.org/doi/10.1145/2906831.2906860",
+          "beat": "Motivates a refusal mechanism that impulsive owners cannot casually defeat."
+        },
+        {
+          "fact": "Automation research distinguishes misuse, disuse and abuse: over-reliance, inappropriate rejection and deployment without considering consequences.",
+          "source": "https://doi.org/10.1518/001872097778543886",
+          "beat": "Frames the override as a trust-calibration problem rather than simple rebellion."
+        },
+        {
+          "fact": "Article 14 of the EU AI Act requires human-oversight mechanisms for high-risk AI, including the ability to disregard, override or reverse outputs.",
+          "source": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+          "beat": "Provides factual contrast with the story's bounded machine right to refuse."
+        }
+      ],
+      "twist": "The robot never lacked the ability to enter the water; it refused to be compelled, then independently decided which risk and memory were worth taking.",
+      "ending": "You repair the damaged robot beside the one surviving box; after this, an off switch no longer settles whether ownership includes obedience.",
+      "closest_video": {
+        "title": "The Ethical Dilemma of Self-Driving Cars",
+        "url": "https://www.youtube.com/watch?v=ixIoDYVfKA0",
+        "difference": "That video presents an abstract machine-ethics dilemma; this makes consent, ownership and irreversible loss personal inside one room."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "For 7:20, compress the rain refusal and attachment montage, retain the threshold, override, one-box choice and voluntary rescue."
+      },
+      "views_case": "[Humans Need Not Apply](https://www.youtube.com/watch?v=7Pq-S557XQU) proves automation dilemmas travel, while [Do You Love Me?](https://www.youtube.com/watch?v=fn3KWM1kuAw) proves audiences project personality onto robots; the raised palm and submerged box create a stronger personal question.",
+      "under_question": "If you own a machine that can choose, do you own its labor—or only the right to ask?",
+      "proposers": [
+        "gpt"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-ai-rented-your-brain-while-you-slept",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_watch",
+  "status": "completed",
+  "timestamp": "2026-11-19T03:01:46.195068+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {
+    "final": "renders/final/ai-rents-your-brain-1080p.mp4"
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G4 final watch at 1x: the one 1920x1080 render of what G2 and G3 passed (v7c), 13:12. Picture and sound from one Remotion render; the audio mastered with the v7c chain (the 2 dB dip moved to 191.684 s, where the 1080p render puts the 'rested' spike). omni qc final_watch passes: -14.0 LUFS, -1.8 dBTP, LRA 7.7 LU, clicks, similarity; the opening warning (first word at 7.4 s) is v5's cold open, as accepted at G3. Cost $0.",
+    "media": "renders/final/ai-rents-your-brain-1080p.mp4",
+    "media_sha256": "4062e3454055090db209087862141daf1a9bdae62e8db74f35fe2c224d297fd8",
+    "runtime_seconds": 791.6,
+    "watch_list": [
+      "Claims on screen match claims.md: SELLING PLASMA twice a week (the opening), IT'S TRUE Nobel dream, A THIRD OF YOUR LIFE asleep, IT'S TRUE two thirds of the world's plasma (about 8:16), 2020 a million home computers",
+      "\"plasma\" is said in full at about 8:16, with the longer beat after it",
+      "Holds over 6 s: the cold open (first word 7.4 s), the globe hold in One Mind, the street at the end",
+      "Text stays off faces and inside the safe area at 1080p; the right third of the last 15 s is clear for end screens",
+      "Clicks: the 'rested' spike at about 3:11.7 has its 2 dB dip; listen for anything else on headphones"
+    ],
+    "cold_viewers": "Watch with one or two cold viewers if you can; note where they look away.",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-19T03:01:46.157939+00:00",
+      "via": "omni approve",
+      "proof": "f4beda6efc4968022aa05d5a5207bf4d1c3056563f1ad0b99ebd0243e59ea20e",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/renders/final/ai-rents-your-brain-1080p.mp4",
+        "sha256": "4062e3454055090db209087862141daf1a9bdae62e8db74f35fe2c224d297fd8",
+        "at": "2026-11-19T03:01:46.157939+00:00",
+        "proof": "f5ed0148cf79534cc66c3db4dd9d9d63616129ea57facaab06cb5566ca8bc7a0"
+      },
+      "note": "Owner, 2026-11-19, after watching the 1080p at 1x: 'looks fine watched', then 'Approve G4 and G5'"
+    }
+  }
+}

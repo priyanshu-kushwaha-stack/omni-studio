@@ -1,0 +1,54 @@
+# Private upload request for `omni upload` (G5). Agents never upload; the owner runs --run and makes it public by hand.
+file: renders/final/ai-rents-your-brain-1080p.mp4
+thumbnail: renders/packaging/thumb-a.jpg   # G1 pair A: thumbnail a, THAT'S ME? (2026-11-13)
+captions:   # from the script (core/engines/whatif/pipeline/subtitles.py), not speech recognition
+  en: subtitles/en.srt
+title: What If AI Rented Your Brain While You Slept?
+description: |-
+  A thin band on your forehead. While you sleep, a company rents your brain, and every morning it pays you by the hour. Night one pays ninety dollars. What's the catch?
+
+  So, would you rent your nights? Tell us in the comments. The best what-ifs become videos.
+
+  Chapters
+  0:00 The Chair
+  1:21 The Rule
+  2:27 Crumbs
+  4:26 More Hours
+  6:12 The Night Shift
+  8:05 The Warehouses
+  9:30 The Contract
+  10:10 One Mind
+
+  The band is made up. The facts are real:
+  - The US lets companies pay people for their blood plasma: ProPublica (2019)
+    https://www.propublica.org/article/pharmaceutical-companies-are-luring-mexicans-across-the-u.s.-border-to-donate-blood-plasma
+  - US rules allow plasma twice in any seven days, at least two days apart: 21 CFR 640.65
+    https://www.ecfr.gov/current/title-21/chapter-I/subchapter-F/part-640/subpart-G/section-640.65
+  - About two thirds of the world's plasma comes from the US: NPR Planet Money (2021)
+    https://www.npr.org/2021/05/21/999241523/another-shortage-caused-by-the-pandemic-blood-plasma
+  - People cross into El Paso to sell plasma, some twice a week, where a typical worker across the river made about $9 a day (2019): ProPublica
+    https://www.propublica.org/article/pharmaceutical-companies-are-luring-mexicans-across-the-u.s.-border-to-donate-blood-plasma
+  - The brain is about 2% of body weight and uses about 20% of its energy, about 20 watts: Raichle and Gusnard, PNAS (2002); NIST
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC124895/
+  - We spend about a third of our lives asleep: NIH NINDS
+    https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep
+  - In mice, the space between brain cells grows about 60% in sleep and waste is washed out faster: Xie et al., Science (2013)
+    https://europepmc.org/article/MED/24136970
+  - In animals, the brain replays the day's activity in sleep, faster than real time: Rasch and Born, Physiological Reviews (2013)
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC3768102/
+  - Mechanical Turk (2005) paid a few cents a task and was named after an 18th-century chess "robot" with a hidden human: CNBC (2026)
+    https://www.cnbc.com/2026/08/25/amazon-service-that-jeff-bezos-called-artificial-ai-is-shutting-down.html
+  - In 2020, over a million volunteers' computers formed what Folding@home's scientists called the first exascale computer: Zimmerman et al., Nature Chemistry (2021)
+    https://europepmc.org/article/MED/34031561
+  - Otto Loewi's Nobel Prize experiment came to him in a dream: McCoy and Tan, Singapore Medical Journal (2014)
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC4291908/
+  - More than a third of American adults don't get enough sleep: CDC (2016)
+    https://archive.cdc.gov/www_cdc_gov/media/releases/2016/p0215-enough-sleep.html
+
+  Narrated with an AI voice. Music made with AI. Animated in code.
+tags: [what if, AI, sleep, brain, rent your brain, plasma, future of work, animated story, say suppose]
+made_for_kids: false
+# Altered or synthetic content: false, as on pause-time (owner confirmed there, 2026-11-08): the disclosure is for realistic
+# content a viewer could mistake for real people, places or events; this is a stylised cartoon with a fictional narrator.
+# The owner confirms it for this film at G5.
+contains_synthetic_media: false
