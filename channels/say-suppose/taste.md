@@ -8,6 +8,21 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-17 to 2026-11-18 (who-wants-you-to-fail, G3 rounds v10 to v14)
+
+- **Opening B** at G4: the cold open holds 2.5 s before the first word; the opening check's warning is the owner's
+  choice. (`checkpoint_final_edit.json` history, v10)
+- **Every word must be heard.** "the word exam itself is not spoken", "ammunition not clear", "count..er not clear",
+  "at 1:20 still not clear", "problem at 1:18 to be precise". Check every line of the cut with speech recognition
+  before the owner hears it, and listen for short words that blur ("it shows": a 0.06 s "it"). The local narrator
+  swallows a sentence-initial "plus" or "minus" and the word "plus" anywhere: write around it ("A full one
+  hundred ... And minus one hundred ..."), and give a pronoun a noun ("the card shows"). A direction change re-rolls
+  the take; roll three and keep the best.
+- **A tape rewind (picture and sound) before the story starts,** after the cold open. (v12)
+- **Hold the key prop:** "camera movement should slow down and show watch for a little more time" on "Eleven.": the
+  kitchen opens 1.5 s early and the camera settles on the clock. (v12)
+- **A teacher's line must read as a teacher's order:** "Up." became "Stand up, now." (v12)
+
 ## 2026-11-16
 
 - **"Pair A + WHO EATS?"** G1 pick on the fired-everyone-and-hired-AI film (your diner across from the car plant):

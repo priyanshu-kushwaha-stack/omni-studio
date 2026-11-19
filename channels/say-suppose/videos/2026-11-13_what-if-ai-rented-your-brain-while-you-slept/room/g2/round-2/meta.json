@@ -1,0 +1,16 @@
+{
+  "round": 2,
+  "draft_sha256": "982ad041656375295eb43fdeb9866fce35c2244cd64487f1c1366cee3800a300",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": true,
+  "owner_note": [
+    "most of the videos we made so far are emotional sort of ... I want exciting stuff.",
+    "I want to make it a SciFi thing but not very emotional thing. Emotional part should come only at the end where it is teaching a lesson."
+  ],
+  "kind": "script",
+  "linted_at": "2026-11-14T03:38:10+00:00"
+}

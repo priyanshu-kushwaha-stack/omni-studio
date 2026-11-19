@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-15T11:00:57.924168+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G3 (picture lock): cut v9 (12:26, 720p): cut v8 with the 16 over-zoomed shots pulled back (every face head-and-shoulders or wider, heads whole; the window shows the glass and panes) and the MIN-JUN tag moved to the steps wide, at the owner's note before picture lock. Narration in voice B; mix master +1.6 dB, narration +4.9 dB. final_edit qc passes: loudness -13.7 LUFS / -1.1 dBTP, clicks, opening, similarity; story_script qc passes. Never approved by an agent.",
+    "media": "renders/v9/cut-v9-720p.mp4",
+    "loudness_lufs": -13.7,
+    "true_peak_dbtp": -1.1
+  }
+}

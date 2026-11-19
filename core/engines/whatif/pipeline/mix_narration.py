@@ -7,16 +7,21 @@ Reads <video>/assets/narration/props.json (written by build.ts) and its tightene
 <video>/narration/words.json (every word with its time in the whole track), which `omni qc <slug> <video> narration`
 reads by default. The narration/ folder is git-ignored.
 
-Clicks (core/studio/rules/no-audio-clicks.md): every take is faded 10 ms in and cut TAIL seconds after its last word
-with a FADE_OUT fade, which removes end-of-take pops. A burst between words inside a take (a breath click) is muted
-with --mute as take number @ seconds into that take : length, so a mute stays on its click when timing moves the take;
-without --mute, the list in <video>/mutes.txt is used. Mutes are measured on the takes at normal speed; a line spoken
-at a tempo (props "tempo", or the line's own) has its mutes scaled to match.
+Clicks (core/studio/rules/no-audio-clicks.md): every take is faded 10 ms in and cut TAIL seconds after its voice
+stops, with a FADE_OUT fade, which removes end-of-take pops. The voice's end is read from the take (silencedetect), not
+from Whisper: Whisper ends a soft sentence-final syllable early ("plasma." ended at 2.46 s while its "a" ran to 2.76 s,
+2026-11-18), and cutting there chopped the word. Whisper's last word end is the floor and the fallback.
+
+A burst between words inside a take (a breath click) is muted with --mute as take number @ seconds into that take :
+length, so a mute stays on its click when timing moves the take; without --mute, the list in <video>/mutes.txt is used.
+Mutes are measured on the takes at normal speed; a line spoken at a tempo (props "tempo", or the line's own) has its
+mutes scaled to match.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -27,6 +32,51 @@ TAIL = 0.15
 FADE_OUT = 0.06
 # Margin around a mute: take starts snap to whole frames (1/30 s), so a click can move by up to 33 ms.
 MUTE_PAD = 0.04
+
+
+def seconds(path: Path) -> float:
+    return float(
+        subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout
+    )
+
+
+def voice_end(path: Path, duration: float) -> float:
+    """Seconds to where the take's sound stops: the start of the silence that runs to its end (ffmpeg 8 closes that
+    silence at the end of the file; older ffmpeg leaves it open). duration when sound runs to the end, 0 when ffmpeg
+    cannot read the take."""
+    run = subprocess.run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-nostats",
+            "-i",
+            str(path),
+            "-af",
+            "silencedetect=n=-40dB:d=0.12",
+            "-f",
+            "null",
+            "-",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if run.returncode:
+        return 0.0
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", run.stderr)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", run.stderr)]
+    if starts and (len(starts) > len(ends) or ends[-1] >= duration - 0.01):
+        return starts[-1]
+    return duration
+
+
+def cut_at(path: Path, last_word_end: float, duration: float) -> float:
+    """Where to cut a take: TAIL after its voice stops, never before Whisper's last word ends, capped at the take."""
+    return min(duration, max(last_word_end, voice_end(path, duration)) + TAIL)
 
 
 def at_tempo(mute: list[tuple[int, float, float]], lines: list[dict], tempo: float) -> list[tuple[int, float, float]]:
@@ -51,16 +101,9 @@ def mix(video: Path, mute: list[tuple[int, float, float]] = ()) -> tuple[Path, P
     for i, clip in enumerate(timeline["clips"]):
         path = takes.parent / clip["file"]
         start = clip["from"] / FPS
-        dur = float(
-            subprocess.run(
-                ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
-                capture_output=True,
-                text=True,
-                check=True,
-            ).stdout
-        )
+        dur = seconds(path)
         take_words = json.loads(Path(f"{path}.words.json").read_text(encoding="utf-8"))
-        end = min(dur, (take_words[-1]["end"] if take_words else dur) + TAIL)
+        end = cut_at(path, take_words[-1]["end"] if take_words else dur, dur)
         inputs += ["-i", str(path)]
         ms = round(start * 1000)
         chains.append(

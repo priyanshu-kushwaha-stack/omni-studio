@@ -1,0 +1,15 @@
+{
+  "round": 16,
+  "draft_sha256": "957f6f345968834d2fd3d71b374b71fff40145f545398880f523697b94b856e9",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": true,
+  "owner_note": [
+    "most of the videos we made so far are emotional sort of ... I want exciting stuff."
+  ],
+  "kind": "script",
+  "linted_at": "2026-11-14T04:14:36+00:00"
+}

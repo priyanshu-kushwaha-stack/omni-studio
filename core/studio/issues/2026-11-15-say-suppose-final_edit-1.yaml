@@ -1,0 +1,9 @@
+channel: say-suppose
+format: story
+stage: final_edit
+severity: medium
+example: 'Owner 2026-11-15: the opening check (first word within 1 s) must not be
+  a hard rule; a wordless cold open on the thumbnail''s frame looked fine on saw who
+  wants you to fail (4.4 s). Make opening a warning in final_edit/final_watch/publish_prep
+  (studio-whatif.yaml metadata.studio_checks, checks.py), not a gate blocker.'
+recorded_at: '2026-11-15T09:05:18.378532+00:00'

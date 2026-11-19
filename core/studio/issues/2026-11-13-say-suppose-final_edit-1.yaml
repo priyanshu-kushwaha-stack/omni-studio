@@ -1,0 +1,10 @@
+channel: say-suppose
+format: story
+stage: final_edit
+severity: low
+example: '2026-11-13_what-if-ai-rented-your-brain-while-you-slept: the brother wears
+  a cap; Figure lids>0 paints eyelid rects in the head colour over the cap''s brim'
+recorded_at: '2026-11-12T23:45:33.166038+00:00'
+note: 'kit rig/Figure.tsx: eyelids are drawn as head-coloured rects, so on a capped
+  (or hatted) figure they show as head-coloured patches over the cap. Builders set
+  lids=0 on capped figures as a workaround. Fix: clip the lid rects to the head circle.'

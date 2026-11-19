@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-ai-rented-your-brain-while-you-slept",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "completed",
+  "timestamp": "2026-11-15T17:55:03.144545+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {
+    "script_md": "script.md",
+    "say_yaml": "say.yaml",
+    "claims_md": "claims.md",
+    "sequel_md": "sequel.md",
+    "story_json": "story.json",
+    "narration_wav": "assets/narration/narration.wav (git-ignored, local voices)",
+    "first_cut": "renders/v6/v6-720p.mp4 (git-ignored)",
+    "review_md": "review-g2-v6.md",
+    "room_md": "room-g2.md",
+    "qc_json": "qc/story_script.json (git-ignored)"
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "gate": "G2 story lock",
+    "draft": "v6 (owner-notes round 4: the Cursor frame-by-frame review)",
+    "runtime_s": 647.2,
+    "runtime_note": "10:47, 113 lines, voice B cloned (cool, warm from Midnight on), the M2 sci-fi score",
+    "room": "not re-run for v6 (owner: judge without the house rules; review-cursor-v5.md); changed facts checked against claims.md",
+    "paid_calls": 0,
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-15T17:55:03.106344+00:00",
+      "via": "omni approve",
+      "proof": "f6f4c9d2990c53953d7dec054c1429ad4564156b7252d8d3c4b09e86316f9c08",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/narration/narration.wav",
+        "sha256": "3c25dc3690cb4843f0342b0f91381f5983251ecbe9135c03fbac8584be23592b",
+        "at": "2026-11-15T17:55:03.106344+00:00",
+        "proof": "38d968a5f8fdfaa38c1cbf2ef37db933e1a0d162acda870967874c27d0f1c514"
+      },
+      "note": "Owner, 2026-11-15: 'Lets approve G2 and move forward' (v6, 10:47, local voice B)"
+    }
+  }
+}

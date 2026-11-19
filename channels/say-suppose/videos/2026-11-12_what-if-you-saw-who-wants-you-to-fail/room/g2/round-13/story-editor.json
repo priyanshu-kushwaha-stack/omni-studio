@@ -1,0 +1,65 @@
+{
+  "call_id": "aee7553369604a8f91ed11d4b6a5dfb9",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_must_pass": 7,
+    "causal_chain": 8,
+    "earned_stakes_and_payoff": 9,
+    "length \u2014 viewers stay past 8:00 for the unresolved sister rupture, exam result, and face-to-face choice": 9
+  },
+  "blockers": [
+    {
+      "quote": "So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Because your best friend hears everything first. He always has.",
+      "why": "#3 Second hook by 0:30 fails: the title question arrives around 0:36, after the required window.",
+      "fix": "At 00:11 replace lines 38\u201340 with: \u201cYou made the cut. So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Your best friend always hears first.\u201d Keep the -84 reveal by 00:30.",
+      "domain": "story",
+      "line": 40
+    },
+    {
+      "quote": "She holds on. And this time you don't go stiff.",
+      "why": "#11 Never say the feeling fails: the narration describes the embrace already visible at the emotional peak.",
+      "fix": "The number is the same. Your choice isn't.",
+      "domain": "story",
+      "line": 409
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 22,
+      "quote": "You tear the teal seal with your thumb; the sheet unfolds; your eyes run down it and stop.",
+      "fix": "Put \u201cI made it!\u201d over the sheet unfolding within the first second, then let the performed reaction continue wordlessly."
+    },
+    {
+      "line": 369,
+      "quote": "Results come in a month. For a month, you say nothing to anyone.",
+      "fix": "Replace with: \u201cFor the month before results, you say nothing good. No news. No cards.\u201d"
+    },
+    {
+      "line": 427,
+      "quote": "At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+      "fix": "Cut this post-peak analogy; the two letters and abandoned brushes already reveal why her joy hurts."
+    }
+  ],
+  "keep": [
+    {
+      "line": 291,
+      "quote": "You stopped helping him. He never stopped helping you."
+    },
+    {
+      "line": 301,
+      "quote": "A card has one colour for every kind of hurt."
+    },
+    {
+      "line": 423,
+      "quote": "She was never outside your lane. She was in it first."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "24bcb42209f0aeb63c2001155f37aae2428408d086d5fe0e01c52b01eb9f3748",
+  "draft_sha256": "db22cf78844099405270046434ab64396e88fba8e0412d0faf8522237ccbb4f6"
+}
