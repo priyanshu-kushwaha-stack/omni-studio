@@ -3,11 +3,11 @@
   "project_id": "2026-11-13_what-if-ai-rented-your-brain-while-you-slept",
   "pipeline_type": "studio-whatif",
   "stage": "final_watch",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-18T17:56:54.789419+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-19T03:01:46.195068+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "final": "renders/final/ai-rents-your-brain-1080p.mp4"
   },
@@ -24,6 +24,19 @@
       "Text stays off faces and inside the safe area at 1080p; the right third of the last 15 s is clear for end screens",
       "Clicks: the 'rested' spike at about 3:11.7 has its 2 dB dip; listen for anything else on headphones"
     ],
-    "cold_viewers": "Watch with one or two cold viewers if you can; note where they look away."
+    "cold_viewers": "Watch with one or two cold viewers if you can; note where they look away.",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-19T03:01:46.157939+00:00",
+      "via": "omni approve",
+      "proof": "f4beda6efc4968022aa05d5a5207bf4d1c3056563f1ad0b99ebd0243e59ea20e",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-rented-your-brain-while-you-slept/renders/final/ai-rents-your-brain-1080p.mp4",
+        "sha256": "4062e3454055090db209087862141daf1a9bdae62e8db74f35fe2c224d297fd8",
+        "at": "2026-11-19T03:01:46.157939+00:00",
+        "proof": "f5ed0148cf79534cc66c3db4dd9d9d63616129ea57facaab06cb5566ca8bc7a0"
+      },
+      "note": "Owner, 2026-11-19, after watching the 1080p at 1x: 'looks fine watched', then 'Approve G4 and G5'"
+    }
   }
 }
