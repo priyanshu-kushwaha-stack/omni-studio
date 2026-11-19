@@ -16,10 +16,16 @@ const FilmSound: React.FC<FilmProps> = (props) => (
   </SoundOnly.Provider>
 );
 
+/** The picture alone, with no audio elements mounted: the muted picture pass. With the film's 22 looping cues and
+ *  beds mounted, a long muted render stalled on a frame that renders in 3 s alone (three passes, frames 1082-4228). */
+const FilmPicture: React.FC<FilmProps> = (props) => <Film {...props} pictureOnly />;
+
 /** Render with --props=<video>/assets/narration/props.json --public-dir=<video>/assets. */
 export const Root: React.FC = () => (
   <>
     <Composition id="RoughCut" component={Film} defaultProps={placeholder} calculateMetadata={calculateMetadata}
+      durationInFrames={60} fps={FPS} width={WIDTH} height={HEIGHT} />
+    <Composition id="RoughCutPicture" component={FilmPicture} defaultProps={placeholder} calculateMetadata={calculateMetadata}
       durationInFrames={60} fps={FPS} width={WIDTH} height={HEIGHT} />
     <Composition id="RoughCutSound" component={FilmSound} defaultProps={placeholder} calculateMetadata={calculateMetadata}
       durationInFrames={60} fps={FPS} width={WIDTH} height={HEIGHT} />

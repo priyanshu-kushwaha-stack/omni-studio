@@ -105,7 +105,7 @@ const Placed: React.FC<{ src: string; from: number; to: number; lead: number; fa
   );
 };
 
-export const Film: React.FC<FilmProps> = (props) => {
+export const Film: React.FC<FilmProps & { pictureOnly?: boolean }> = ({ pictureOnly, ...props }) => {
   const { timeline, lines } = props;
   const { clips, totalFrames } = timeline;
   if (!clips.length) return <AbsoluteFill style={{ background: "#000" }} />;
@@ -137,15 +137,17 @@ export const Film: React.FC<FilmProps> = (props) => {
       <Sequence from={endAt} durationInFrames={Math.max(1, totalFrames - endAt)}>
         <EndTags comment={30} />
       </Sequence>
-      <Audio src={staticFile("narration/narration.wav")} />
-      {SCORE.map((c, i) => (
+      {!pictureOnly && <Audio src={staticFile("narration/narration.wav")} />}
+      {!pictureOnly && SCORE.map((c, i) => (
         <Placed key={`s${i}`} src={`music/${c.file}`} from={i === 0 ? 0 : scoreAt[i]} to={scoreAt[i + 1] ?? totalFrames + FPS}
           lead={FPS} fade={Math.round(1.5 * FPS)} total={totalFrames} gain={score} />
       ))}
-      <Sequence from={peak[0]} durationInFrames={Math.max(1, peak[1] - peak[0] + 3 * FPS)}>
-        <Audio src={staticFile("sfx/peak-note.wav")} volume={0.07} />
-      </Sequence>
-      {BEDS.map((b, i) => (
+      {!pictureOnly && (
+        <Sequence from={peak[0]} durationInFrames={Math.max(1, peak[1] - peak[0] + 3 * FPS)}>
+          <Audio src={staticFile("sfx/peak-note.wav")} volume={0.07} />
+        </Sequence>
+      )}
+      {!pictureOnly && BEDS.map((b, i) => (
         <Placed key={`b${i}`} src={`sfx/bed-${b.name}.wav`} from={i === 0 ? 0 : bedAt[i]} to={bedAt[i + 1] ?? totalFrames + FPS}
           lead={Math.round(0.5 * FPS)} fade={Math.round(0.8 * FPS)} total={totalFrames} gain={bed} />
       ))}

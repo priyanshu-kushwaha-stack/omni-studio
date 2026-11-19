@@ -51,3 +51,32 @@ last customer.", the first darling, and "You're still the richest person in town
 customer."; the claims check's paper line, the Keynes line and the model's-fix line.
 
 None of these is applied yet: by pipeline v2 they merge with the owner's G2 notes into the one owner-notes round.
+
+## The 720p first cut
+
+`renders/firstcut/firstcut-720p.mp4` (git-ignored): 1280x720, 10:13, -20.2 LUFS. `omni qc story_script` on the cut
+passes (claims, clicks). Everything is drawn in code with the what-if kit; no AI images, no paid call.
+
+- **Sets.** A new diner set (`scenes/sets/Diner.tsx`: five moods, seven cameras, robots, plates, the plant through the
+  long window, the overalls crossing at the whistle), the paint shop, and part B's and C's own town sets (the plant
+  gate, the square, the bank hall, the street with the salon, the bar's string quartet and the plant). The opening is
+  the thumbnail's frame as a live shot (`scenes/parts/KeyShot.tsx`), and it is the thumbnail at frame 0.
+- **Shots.** 210, in three parts built in parallel (`scenes/shots/a.tsx`, `b.tsx`, `c.tsx`), each anchored to a spoken
+  line by its opening words, so a re-voiced line re-times the cut. Cards for every "it's true" fact (sources stay in the
+  description); cast tags on first appearance; the napkin gag throughout; the 10 s wordless peak at the whistle as one
+  long take.
+- **Sound.** A score cue per section, made locally with ACE-Step 1.5 (`make_music.py`, `cues.yaml`), the channel theme
+  at the open and the close, an ambience bed per set (`scenes/make_ambience.py`), the peak's floor and one held note.
+- **Render.** Two whole picture passes stalled on a single frame each (frames 4228 and 1157) though every such frame
+  renders in about 3 s alone; the cause was the 22 looping audio elements mounted in the muted picture pass. The picture
+  now renders from `RoughCutPicture` (the film with no audio elements; `RoughCutSound` is the sound pass) in 2,000-frame
+  chunks, joined losslessly, then muxed with the tools' limiter. `whatif_render` has no per-frame timeout input:
+  recorded as `core/studio/issues/2026-11-19-say-suppose-story_script-1.yaml`.
+
+Known rough spots, for picture lock unless you flag them: the "Cheap." bubble has no tail; the mayor's sash reads as a
+stripe from the side; a garage robot under a car reads roughly; the night gate shot is dark. The plumber's cast tag line
+("fixes his own pipes") is the builder's, not the script's.
+
+**For the owner.** Watch the cut once with the script and give every note at once (script, narration, picture, music).
+Also: the dial loophole (keep it open for the comments, or close it with three keys). Your notes and the room's go into
+one notes round; G2 passes only by your own `omni approve`.

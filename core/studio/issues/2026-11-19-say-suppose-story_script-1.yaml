@@ -1,0 +1,12 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: medium
+example: '2026-11-15_what-if-you-fired-everyone-and-hired-ai: whatif_render mode=picture
+  failed after 21 min at frame 4228 (Remotion''s 120 s per-frame timeout) while the
+  Mac was loaded; the same frame renders in 6.6 s from a bundle when idle'
+recorded_at: '2026-11-18T19:26:15.750014+00:00'
+note: whatif_render has no timeout input for Remotion's --timeout (delayRender per
+  frame), so a loaded machine can fail a whole picture pass on one slow frame and
+  the render has to be redone by hand. Add a frame_timeout_ms input (default e.g.
+  600000) passed as --timeout to render and still.
