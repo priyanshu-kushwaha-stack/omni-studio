@@ -10,61 +10,25 @@ a line-by-line report. Media under dub/<lang>/ is git-ignored.
 Fitting, line by line: a take starts at its English line's start. It may start up to EARLY s sooner when the line
 before has finished, so a long line borrows from the gap before it, and it starts later when the line before still
 runs. If it would still run more than LATE_OK s into the next line's start, it is sped up, at most MAX_SPEEDUP. Every
-take gets the English track's edges (mix_narration.py): 10 ms fade in, cut TAIL s after the voice stops, FADE_OUT out.
-The voice's end is read from the audio (silencedetect), not words.json: Whisper's Hindi word times stop early on
-most takes (46 of 62 Arthur takes, 2026-11-08), and cutting there chops real words.
+take gets the English track's edges and cut (mix_narration.py: TAIL, FADE_OUT, cut_at): 10 ms fade in, cut TAIL s
+after the voice stops, FADE_OUT out. The voice's end is read from the audio (silencedetect); words.json is only the
+floor: Whisper's Hindi word times stop early on most takes (46 of 62 Arthur takes, 2026-11-08), and cutting there
+chops real words. It imports mix_narration from its own folder.
 """
 
 from __future__ import annotations
 
 import json
-import re
 import subprocess
 import sys
 from pathlib import Path
 
-FPS = 30
+from mix_narration import FADE_OUT, FPS, cut_at, seconds
+
 EARLY = 0.6
 GAP = 0.15
 LATE_OK = 0.3
 MAX_SPEEDUP = 1.15
-TAIL = 0.15
-FADE_OUT = 0.06
-
-
-def voice_end(path: Path) -> float:
-    """Seconds to where the take's sound stops: the start of a trailing silence, or the file's end."""
-    log = subprocess.run(
-        [
-            "ffmpeg",
-            "-hide_banner",
-            "-nostats",
-            "-i",
-            str(path),
-            "-af",
-            "silencedetect=n=-40dB:d=0.12",
-            "-f",
-            "null",
-            "-",
-        ],
-        capture_output=True,
-        text=True,
-    ).stderr
-    total = seconds(path)
-    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", log)]
-    ends = re.findall(r"silence_end: ([\d.]+)", log)
-    return starts[-1] if starts and len(starts) > len(ends) else total
-
-
-def seconds(path: Path) -> float:
-    return float(
-        subprocess.run(
-            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
-            capture_output=True,
-            text=True,
-            check=True,
-        ).stdout
-    )
 
 
 def plan(en_starts: list[float], durations: list[float], total: float) -> list[tuple[float, float]]:
@@ -83,6 +47,13 @@ def plan(en_starts: list[float], durations: list[float], total: float) -> list[t
     return out
 
 
+def take(f: Path) -> tuple[float, list[dict]]:
+    """A take's length once cut where the voice stops (mix_narration.cut_at), and its Whisper words."""
+    words = json.loads(Path(f"{f}.words.json").read_text(encoding="utf-8"))
+    dur = seconds(f)
+    return cut_at(f, words[-1]["end"] if words else dur, dur), words
+
+
 def main(video: Path, dub: Path, lang: str, keep: set[int]) -> Path:
     en_props = json.loads((video / "assets" / "narration" / "props.json").read_text(encoding="utf-8"))
     timeline = en_props["timeline"]
@@ -94,16 +65,13 @@ def main(video: Path, dub: Path, lang: str, keep: set[int]) -> Path:
             files.append(video / "assets" / clip["file"])
         else:
             files.append(dub / Path(next(dub_clips)["file"]).name)
-    takes = []
-    for f in files:
-        words = json.loads(Path(f"{f}.words.json").read_text(encoding="utf-8"))
-        takes.append((f, min(seconds(f), voice_end(f) + TAIL), words))
-    placed = plan([c["from"] / FPS for c in en_clips], [d for _, d, _ in takes], total)
+    takes = [take(f) for f in files]
+    placed = plan([c["from"] / FPS for c in en_clips], [d for d, _ in takes], total)
 
     out = video / "dub" / lang
     out.mkdir(parents=True, exist_ok=True)
     inputs, chains, words_out, report, placed_out = [], [], [], [], []
-    for i, ((f, d, words), (start, speed)) in enumerate(zip(takes, placed)):
+    for i, (f, (d, words), (start, speed)) in enumerate(zip(files, takes, placed)):
         inputs += ["-i", str(f)]
         tempo = f",atempo={speed}" if speed > 1 else ""
         length = d / speed
