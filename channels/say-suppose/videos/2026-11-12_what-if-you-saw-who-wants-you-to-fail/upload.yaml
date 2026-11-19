@@ -1,5 +1,5 @@
 # Private upload request for `omni upload` (publish_prep, G5). Agents never upload; the owner runs --run and makes it public by hand.
-file: renders/final/film-1080p.mp4   # 12:26, the same cut as renders/v9/cut-v9-720p.mp4 (signed at G3)
+file: renders/final/film-1080p.mp4   # 12:37, the same cut as renders/v14/cut-v14-720p.mp4 (signed at G3)
 thumbnail: renders/packaging/thumb-a.png   # G1 pair A, the owner's pick 2026-11-12 ("A + NOT HIM."); 1.85 MiB PNG, under the 2 MiB limit
 captions:   # from the script (core/engines/whatif/pipeline/subtitles.py), not speech recognition
   en: subtitles/en.srt
@@ -11,13 +11,13 @@ description: |-
 
   Chapters
   0:00 Made the cut
-  1:06 The rule
-  2:32 Who's red
-  4:59 The weapon
-  6:18 A thousand cards
-  7:46 The ladder
-  8:35 Backs
-  10:20 The window
+  1:11 The rule
+  2:39 Who's red
+  5:09 The weapon
+  6:28 A thousand cards
+  7:56 The ladder
+  8:46 Backs
+  10:31 The window
 
   The card is made up. The facts are real:
   - On Korea's college entrance exam, most subjects are graded on a curve, and the top grade goes to the top 4 per cent:

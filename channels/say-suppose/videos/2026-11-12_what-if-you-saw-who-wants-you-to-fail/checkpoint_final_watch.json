@@ -4,16 +4,17 @@
   "pipeline_type": "studio-whatif",
   "stage": "final_watch",
   "status": "awaiting_human",
-  "timestamp": "2026-11-15T19:57:31.772435+00:00",
-  "checkpoint_policy": "manual_all",
+  "timestamp": "2026-11-19T03:15:11.748706+00:00",
+  "checkpoint_policy": "guided",
   "human_approval_required": true,
   "human_approved": false,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "for_owner": "G4 (final watch): the one 1920x1080 render of the code and narration G3 approved on cut v9, 12:26, rendered whole with whatif_render quality=final (never stitched or muxed). final_watch qc passes: loudness -13.7 LUFS / -1.1 dBTP, clicks, similarity, opening. Watch at 1x with one or two cold viewers. Never approved by an agent.",
+    "for_owner": "G4 (final watch): the one 1920x1080 render of the code and narration G3 approved on cut v14 (signed 2026-11-18), 12:37, rendered whole (never stitched or muxed): whatif_render quality=final's own command (Remotion RoughCut, then the limiter pass), run by hand with --timeout=600000 --concurrency=3 under caffeinate after five runs stalled while the Mac idled overnight (omni fix 2026-11-19-say-suppose-final_watch-1). final_watch qc: loudness -13.7 LUFS / -1.3 dBTP, clicks, similarity pass; opening warns by the owner's choice (opening B). Chapters, subtitles and publish.md follow the v14 timeline. Watch at 1x with one or two cold viewers. Never approved by an agent.",
     "media": "renders/final/film-1080p.mp4",
     "loudness_lufs": -13.7,
-    "true_peak_dbtp": -1.1
+    "true_peak_dbtp": -1.3,
+    "style_playbook": "say-suppose"
   }
 }
