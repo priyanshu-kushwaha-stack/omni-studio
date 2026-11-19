@@ -10,6 +10,11 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-19
 
+- **"The video looks more like plain 2D other people those who are creating similar videos they have black characters
+  and they are looking like better 3D in real"** On the v2 cut of the fired-everyone film. The paper-cut 2D look
+  (the channel's look since 2026-11-06) reads as plain next to similar what-if channels, whose characters are black
+  and rendered in 3D that looks real. A picture note, for this film and possibly the channel: the look is to be decided
+  from rendered options (references first), not described. (fired everyone and hired AI, G2)
 - **"Looks fine overall but not flowing in terms of dialogue / narration wise. I think we should make it like people
   get everything in just one watch they should feel surprised knowing the facts and curious also to what happens
   next ?"** G2 first-cut review of the fired-everyone-and-hired-AI film (v1.1, 10:13). The picture works; the words
