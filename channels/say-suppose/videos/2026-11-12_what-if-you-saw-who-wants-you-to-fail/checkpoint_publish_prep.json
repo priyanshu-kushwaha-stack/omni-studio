@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
+  "pipeline_type": "studio-whatif",
+  "stage": "publish_prep",
+  "status": "completed",
+  "timestamp": "2026-11-19T03:32:15.255958+00:00",
+  "checkpoint_policy": "guided",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G5 (publish): upload.yaml for the 1080p film G4 approved (renders/final/film-1080p.mp4, 12:37). The owner's G5 answers 2026-11-19: AI label no (contains_synthetic_media false), c01 source The Korea Times 2026-08-06 in place of the prep guide, the pinned comment as drafted, the tags as drafted. publish_prep qc passes (claims, loudness, clicks, similarity, upload_request, deliverable); opening warns by the owner's choice. omni approve publish_prep signs the file's sha256 and the metadata digest; any later change to title, description, tags, category, language or the kids/AI answers needs a new approval. Upload is private, by the owner's --run only; the public flip is by hand in YouTube Studio. Never approved by an agent.",
+    "media": "renders/final/film-1080p.mp4",
+    "style_playbook": "say-suppose",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-19T03:32:15.203021+00:00",
+      "via": "omni approve",
+      "proof": "da93904750c39853dff06b5355fc2f0f1ffe57f7e23c3a22056f3d0f9c2401b1",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-12_what-if-you-saw-who-wants-you-to-fail/renders/final/film-1080p.mp4",
+        "sha256": "13396351872fca0679e26d21a13eeea0995356d6c8e0ecdb7676b4ec43fdfec0",
+        "at": "2026-11-19T03:32:15.203021+00:00",
+        "metadata_sha256": "f72485285d5175a36a4ca800d854671b338673595eb7a3c3615adaea87916082",
+        "proof": "1794a5e8f5876dd2769cb87d2c1f29f43543bdb1ff13f5b9f0ba2673632abed2"
+      }
+    }
+  }
+}

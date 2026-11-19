@@ -1,0 +1,64 @@
+{
+  "call_id": "6e97806fa9dd46e89150921013dfed7c",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 7
+  },
+  "blockers": [
+    {
+      "quote": "Last year, the country grounded its flights for the English listening test. For thirty-five minutes, no plane crosses the sky while you listen (c02).",
+      "why": "Overstates claim c02. The verbatim quote supports rescheduling a total of 140 flights from 1:05 to 1:40 pm, not grounding all flights across the country or that no plane crosses the sky (commercial overflights at cruising altitude are not cleared from airspace; only takeoffs and landings are paused).",
+      "fix": "Last year, the country rescheduled about 140 flights for the English listening test. For thirty-five minutes, takeoffs and landings hold while you listen (c02).",
+      "domain": "fact",
+      "line": 273
+    },
+    {
+      "quote": "At the 1992 Olympics, bronze medallists looked happier than silver (c08).",
+      "why": "The claim that bronze medallists looked happier than silver at the 1992 Olympics is not supported by the verbatim quote for c08 in claims.md, which quotes only the counterfactual comparison mechanism (\"the most compelling counterfactual alternative for the silver medalist is winning the gold, whereas for the bronze medalist it is finishing without a medal.\").",
+      "fix": "Needs a source in the verbatim quote for the 1992 Olympic podium happiness finding, or cut to what the quote supports: \"Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).\"",
+      "domain": "fact",
+      "line": 341
+    },
+    {
+      "quote": "Across eleven studies, the most common regret of a life is education, about a third of all regrets (c11).",
+      "why": "The specific count \"Across eleven studies\" is not supported by the verbatim quote in claims.md, which quotes only: \"Education is the number one life regret, accounting for 32.2% of all reported regrets.\"",
+      "fix": "The most common regret of a life is education, about a third of all regrets (c11).",
+      "domain": "fact",
+      "line": 310
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 277,
+      "quote": "The market opens late.",
+      "fix": "The stock market opens an hour late (c02)."
+    },
+    {
+      "line": 250,
+      "quote": "Couples whose partner meets good news with enthusiasm report more intimacy and satisfaction (c09).",
+      "fix": "Couples where one partner meets good news with enthusiasm report more intimacy and satisfaction (c09)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 117,
+      "quote": "And people don't like to admit being maliciously envious, even to themselves (c12)."
+    },
+    {
+      "line": 215,
+      "quote": "In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05)."
+    },
+    {
+      "line": 294,
+      "quote": "Out there the curve is the whole country's: in most subjects, the top four per cent of everyone who sat it (c01)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "9bae7c0c92fc1c95e405557ad3c36e025981c68c4dafaaa4d0f4f144c3f3c854",
+  "draft_sha256": "16676c5fa63173b033fc43d1a4613425eb425d5c0634a21d3c1eca1e8173cdb4"
+}

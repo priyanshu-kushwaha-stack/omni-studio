@@ -1,0 +1,65 @@
+{
+  "call_id": "b07dc50bdd9041168265790a627ffe02",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story structure": 8,
+    "causality": 8,
+    "earned stakes": 9,
+    "ending": 7
+  },
+  "blockers": [
+    {
+      "quote": "> HOLD: 4 s. He says it and grins. Your eyes lift to the empty air over your own head. Nothing opens. You look back at him. Cut before your answer.",
+      "why": "Check #19 (The close) fails: nothing opens and his face does not change, so the promised sequel hook never appears.",
+      "fix": "> HOLD: 4 s. He says it and grins. A paper snap sounds above you. His grin falters. Your eyes lift, but you can't see above your own head. Cut before your answer.",
+      "domain": "story",
+      "line": 352
+    },
+    {
+      "quote": "Across 11 studies, the most common regret of a life is education, about a third of all regrets (c11).",
+      "why": "Check #7 (Misconception first) fails its one-number-at-a-time requirement by presenting both eleven studies and one third together.",
+      "fix": "Education is the most common life regret, accounting for about a third of reported regrets (c11).",
+      "domain": "story",
+      "line": 290
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 203,
+      "quote": "He isn't sawing your chair. He's climbing.",
+      "fix": "He wants your place. But every page is built to make you harder to beat, not easier to pull down."
+    },
+    {
+      "line": 327,
+      "quote": "At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+      "fix": "Move this immediately before the nine-second hold at line 319, so the fact sets up the peak instead of interrupting its aftermath."
+    },
+    {
+      "line": 354,
+      "quote": "So, would you still say it to her face? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Would you still say it to her face? Tell us in the comments."
+    }
+  ],
+  "keep": [
+    {
+      "line": 211,
+      "quote": "A card has one colour for every kind of hurt."
+    },
+    {
+      "line": 323,
+      "quote": "She was never outside your lane. She was in it first."
+    },
+    {
+      "line": 348,
+      "quote": "That half-second is the other life, going past."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f1cdf5de8404cdd641560006f30309d493d21e31117e17cc7ebe6a88250f2c80",
+  "draft_sha256": "53d22303ca932f22cadf970a5feb4a2dcb62a6ad9c22f3980c663afcd969edba"
+}

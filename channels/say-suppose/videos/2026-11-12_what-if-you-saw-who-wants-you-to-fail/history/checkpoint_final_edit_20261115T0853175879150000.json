@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-15T08:53:17.587915+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G3 (picture lock): cut v8, the same cut G2 was signed on (12:26, 720p): the picture from the v6 outside review (round 19), the narration in voice B (the A/B: the owner picked B from four free local narrators; no paid voice), the score and beds as in the film, mix master +1.6 dB and narration +4.9 dB. final_edit qc passes: loudness -13.7 LUFS / -1.1 dBTP, clicks, opening (first word 0.6 s), similarity. Never approved by an agent.",
+    "media": "renders/v8/cut-v8-720p.mp4",
+    "loudness_lufs": -13.7,
+    "true_peak_dbtp": -1.1
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "call_id": "e6f695b4735e433bb5116beff0187786",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five_lines_and_scene_function": 9,
+    "causality_and_misconception": 8,
+    "earned_stakes_and_change": 9,
+    "opening_and_second_hook": 5,
+    "midpoint_reversal": 5,
+    "pacing_and_restarts": 6,
+    "ending_and_close": 9,
+    "world_follows_the_idea": 10
+  },
+  "blockers": [
+    {
+      "quote": "So what if every piece of good news showed you who wants you to fail? You tell nobody all day. Because your best friend hears everything first. He always has.",
+      "why": "Check #3, Second hook by 0:30: the timing note places the title question around 0:36, after its required window; the viewer also lacks a stated personal loss by 0:30.",
+      "fix": "Replace lines 38-40 at 00:11 with: \u201cWhat if good news showed who wants you to fail? This is your scholarship letter. And the first person you could lose is your best friend.\u201d",
+      "domain": "story",
+      "line": 40
+    },
+    {
+      "quote": "Minus never meant they want you to fail. It meant it hurt.",
+      "why": "No new power rule after the halfway point: the power's true meaning arrives around 7:05, well after halfway in either stated runtime.",
+      "fix": "Compress and reorder the front tests so A Thousand Cards begins around 3:45, follow it with one consequential exclusion montage, and land this notebook revelation by about 5:15. Reallocate the saved duration after the turn to the damaged relationships.",
+      "domain": "story",
+      "line": 297
+    },
+    {
+      "quote": "The cost and the dilemma sit later than the template's shares because the owner's note C front-loads the tests; the story seat should say whether that holds.",
+      "why": "Check #14, A restart every ~3 minutes: it does not hold. The back half is denser than the front; the sister cost lands around 67\u201374% and the notebook choice around 83\u201392%, stacking both after the late rule reversal.",
+      "fix": "After moving the notebook turn forward, place the sister's -68 reveal near 60% and the notebook gift near 75\u201380%. Trim or relocate the c11 and c08 explanations so the loading-dock choice remains the final peak.",
+      "domain": "story",
+      "line": 460
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 211,
+      "quote": "Minus six for the rival. So maybe a bigger crowd will show you who really wants you to fail.",
+      "fix": "Replace with: \u201cMaybe minus eighty-four is everywhere. Or maybe it belongs only to the people beside you. A bigger crowd can tell you which.\u201d"
+    },
+    {
+      "line": 427,
+      "quote": "At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+      "fix": "Move this fact to the bus ride before the loading dock, tied to your fear of her number; leave the embrace after line 423 uninterrupted."
+    },
+    {
+      "line": 460,
+      "quote": "Runtime about 11:50; at the channel's 1.1x tempo about 10:45.",
+      "fix": "Add: \u201cFelt reason past 8:00: her unexplained -68 remains open, and the viewer stays to see whether you choose your sister over the card before the final card turns on you.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 301,
+      "quote": "A card has one colour for every kind of hurt."
+    },
+    {
+      "line": 423,
+      "quote": "She was never outside your lane. She was in it first."
+    },
+    {
+      "line": 446,
+      "quote": "That half-second is the other life, going past."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "623c4aff6f5e3602d91ae5393a162f92d2d7a955471f0476512b874ceb00581f",
+  "draft_sha256": "9abd2722a6cb05564358c34921e01790c1e654d91ad36462d8762f50820dca26"
+}

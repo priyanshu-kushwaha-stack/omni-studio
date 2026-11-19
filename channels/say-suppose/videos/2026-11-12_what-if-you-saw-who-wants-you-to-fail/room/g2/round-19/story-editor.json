@@ -1,0 +1,74 @@
+{
+  "call_id": "ec85c8116d4946ffa22b8f50f6c08109",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "hook_and_promise": 10,
+    "causal_story": 8,
+    "power_escalation": 9,
+    "reversal_and_payoff": 9,
+    "ending": 7,
+    "must_pass_readiness": 8
+  },
+  "blockers": [
+    {
+      "quote": "A hundred backs. Facing the windows. And it's dark outside, so every window is a mirror. A hundred faces in the glass, all looking your way.",
+      "why": "Check #11 Never say the feeling: this narrates exactly what line 402 already shows, weakening the visual discovery.",
+      "fix": "Replace with: \"He found the limit. You find the loophole.\"",
+      "domain": "story",
+      "line": 404
+    },
+    {
+      "quote": "Now it's his news. Your turn to be the friend. Be honest: what number would open over your head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "why": "Check #12 Leave fast: the first two sentences summarize the reversal, and the spoken subscription request drags past the cliffhanger.",
+      "fix": "Replace with: \"Be honest: what number opens over your head? Tell us in the comments.\"",
+      "domain": "story",
+      "line": 444
+    },
+    {
+      "quote": "> HOLD: 4 s. Performed. A paper snap: the cream card unfolds over his head and its split-flap digits run down the red side and stop on minus eighty-four, five seconds in. His arm hooks round your neck, his eyes shut, his grin wide. Your eyes stay open, on the card.",
+      "why": "Check #22 A laugh in every scene: the cold open has surprise and tension but no performed laugh.",
+      "fix": "Replace with: \"> HOLD: 4 s. Performed. A paper snap: the cream card unfolds over his head and its split-flap digits run down the red side and stop on minus eighty-four, five seconds in. His arm hooks round your neck; the half chocolate bar in his fist stamps a brown square onto your cheek. His eyes shut, grin wide. You feel the smear, but your eyes stay on the card.\"",
+      "domain": "story",
+      "line": 24
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 55,
+      "quote": "## [00:11] Made the Cut",
+      "fix": "Replace with \"## [00:39] Made the Cut\" and recalculate every later chapter stamp from the added cold open; the current timeline moves backwards after [00:22]."
+    },
+    {
+      "line": 217,
+      "quote": "Eleven. Home. The letter's already on the fridge, next to the jar where her paintbrushes have stood for six years. She's in the doorway, pulling on her vest. She doesn't turn round.",
+      "fix": "Make the transition causal: \"But one face matters more than the hundred. Eleven. Home. The letter's already on the fridge. Your sister is in the doorway, pulling on her vest. She doesn't turn round.\""
+    },
+    {
+      "line": 331,
+      "quote": "Minus never proved they wanted you to fail. It only proved your win hurt. In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05).",
+      "fix": "Cut the brain-scan sentence and move directly from \"It only proved your win hurt\" to the card's one-colour limitation, preserving the momentum of the notebook reveal."
+    }
+  ],
+  "keep": [
+    {
+      "line": 105,
+      "quote": "Zero. Grey. One click. The biggest news of your life, and you're a receipt."
+    },
+    {
+      "line": 327,
+      "quote": "He isn't sawing your chair. He's building a ladder. Out of your mistakes. You've been his textbook for two years."
+    },
+    {
+      "line": 412,
+      "quote": "A face in a mirror is still a face. The toilets weren't broken. The one card you can't see was always yours."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "29d0e7e5d2ca064386d46e4e4c1053eaa29dad232d7130ee6fc5b1318e18538d",
+  "draft_sha256": "27324b4772fc4a7672626ec5c2668c6309f71cdeafdabd2fbedad8cba4b56ef2"
+}

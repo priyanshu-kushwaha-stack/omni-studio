@@ -1,0 +1,37 @@
+{
+  "call_id": "e35a25cdaeef4770b699a1d8809bc6b0",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 215,
+      "quote": "And Seoul lets them teach only until ten at night. Inspectors have patrolled the streets to make sure (c03).",
+      "fix": "And Seoul lets them teach only until 10 at night. Inspectors have patrolled the streets to make sure (c03)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 299,
+      "quote": "In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05)."
+    },
+    {
+      "line": 380,
+      "quote": "Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours."
+    },
+    {
+      "line": 427,
+      "quote": "At the 1992 Summer Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "ec894ff3cf0ca1c0a1a85c595949e8595bcbbc23439d542452ebf89adb69c94c",
+  "draft_sha256": "0a606b3e8d9a9f24334b1675119490fa464c2150164cb6d6a1f6ee2e12f74929"
+}

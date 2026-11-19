@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "completed",
+  "timestamp": "2026-11-15T17:07:14.607429+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G3 (picture lock): cut v9 (12:26, 720p): cut v8 with the 16 over-zoomed shots pulled back (every face head-and-shoulders or wider, heads whole; the window shows the glass and panes) and the MIN-JUN tag moved to the steps wide, at the owner's note before picture lock. Narration in voice B; mix master +1.6 dB, narration +4.9 dB. final_edit qc passes: loudness -13.7 LUFS / -1.1 dBTP, clicks, opening, similarity; story_script qc passes. Never approved by an agent.",
+    "media": "renders/v9/cut-v9-720p.mp4",
+    "loudness_lufs": -13.7,
+    "true_peak_dbtp": -1.1,
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-15T17:07:14.564662+00:00",
+      "via": "omni approve",
+      "proof": "cd56aec28e485a6389aeeb836c194073d1a928dcdeba912a85e7f71060b60c1e",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-12_what-if-you-saw-who-wants-you-to-fail/renders/v9/cut-v9-720p.mp4",
+        "sha256": "8775a85c4f005836d4817fa8766340e508d7103512b2062bd42aa8e1fed8d058",
+        "at": "2026-11-15T17:07:14.564662+00:00",
+        "proof": "44bcf7e597dfbd34673972ec8f6c49acbe696d1fe6f7f23e2c088bcc5963dde7"
+      }
+    }
+  }
+}

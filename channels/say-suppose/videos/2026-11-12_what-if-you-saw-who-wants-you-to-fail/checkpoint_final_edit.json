@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-12_what-if-you-saw-who-wants-you-to-fail",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "completed",
+  "timestamp": "2026-11-18T14:45:17.793864+00:00",
+  "checkpoint_policy": "guided",
+  "human_approval_required": true,
+  "human_approved": true,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "for_owner": "G3 (picture lock) again: cut v14 (12:37, 720p). The owner on v13: 'still the same there is problem at 1:18 to be precise'. At 1:18 the take said 'For sixty seconds, it shows' with 'it' 0.06 s long, so 'it shows' blurred; the line now reads 'For sixty seconds, the card shows how your news lands with them.' in a new local take (every word 0.65+ in Whisper, 'The rule, once' cleaner too). 1:20 keeps v13's 'A full one hundred ... And minus one hundred ...'. The film is 1.5 s longer from here. final_edit qc: loudness -13.7 LUFS / -1.1 dBTP, clicks, similarity pass; opening warns by the owner's choice. story_script qc passes. Never approved by an agent.",
+    "media": "renders/v14/cut-v14-720p.mp4",
+    "loudness_lufs": -13.7,
+    "true_peak_dbtp": -1.1,
+    "style_playbook": "say-suppose",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-18T14:45:17.756807+00:00",
+      "via": "omni approve",
+      "proof": "907c6bf091c4a628e2b9505da3294397f07a1618254a6b40c08275ffc0ba4328",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-12_what-if-you-saw-who-wants-you-to-fail/renders/v14/cut-v14-720p.mp4",
+        "sha256": "7dd17296a94bca28ac04d71687a644f48f0186b29ea03dbf045f5cc2ecf5d38e",
+        "at": "2026-11-18T14:45:17.756807+00:00",
+        "proof": "442e2da2165db71aa60dc4b8ca7457472823e55960159bb599e66177c68026fd"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+channel: say-suppose
+format: story
+stage: story_script
+severity: low
+example: "script.md line 'Ms. Kang: Good.' was voiced by the narrator: story.py SPEAKER_RE\
+  \ ([A-Z][\\w'\u2019-]*...) has no '.', so 'Ms.'/'Mr.'/'Dr.' prefixes fall through\
+  \ to the narrator silently"
+recorded_at: '2026-11-12T15:41:00.966884+00:00'
+note: 'Renamed the prefix to ''Teacher'' in this film. Fix: allow a full stop in SPEAKER_RE
+  (e.g. ''Ms. Kang''), or warn when a line starts with a title-like ''Ms./Mr./Dr.
+  Name:''.'
