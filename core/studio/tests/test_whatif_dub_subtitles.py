@@ -5,19 +5,26 @@ from __future__ import annotations
 import importlib.util
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 REAL_ROOT = Path(__file__).resolve().parents[3]
+PIPELINE = REAL_ROOT / "core/engines/whatif/pipeline"
+# dub_narration imports mix_narration as a sibling, as it does when run as a script from its folder.
+if str(PIPELINE) not in sys.path:
+    sys.path.insert(0, str(PIPELINE))
 
 
 def _load(name):
-    spec = importlib.util.spec_from_file_location(name, REAL_ROOT / f"core/engines/whatif/pipeline/{name}.py")
+    spec = importlib.util.spec_from_file_location(name, PIPELINE / f"{name}.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
 
 dub = _load("dub_narration")
+mix = importlib.import_module("mix_narration")  # the instance dub_narration imported
 subs = _load("subtitles")
 
 
@@ -31,6 +38,27 @@ def test_a_long_take_borrows_the_gap_before_it_then_speeds_up_at_most_the_cap():
     tight = dub.plan([0.0, 3.0, 4.0], [2.8, 3.0, 1.0], 6.0)
     assert tight[1][1] == dub.MAX_SPEEDUP  # still runs over: sped up, never past the cap
     assert tight[1][0] >= 2.8 + dub.GAP  # and never before the previous take has finished
+
+
+def test_a_dub_take_with_trailing_silence_is_cut_tail_after_its_voice_not_at_its_file_end(tmp_path):
+    # ffmpeg 8 closes a take's trailing silence with a silence_end at the file's end; the dub's own copy of
+    # voice_end took that as "no trailing silence" and kept every Hindi take to its file end.
+    video, takes = tmp_path / "v", tmp_path / "takes"
+    (video / "assets" / "narration").mkdir(parents=True)
+    takes.mkdir()
+    voice, length = 1.0, 2.5
+    subprocess.run(
+        ["ffmpeg", "-v", "error", "-f", "lavfi", "-i", f"sine=f=220:d={voice}", "-af", f"apad=whole_dur={length}"]
+        + ["-ar", "48000", str(takes / "t0.wav")],
+        check=True,
+    )
+    (takes / "t0.wav.words.json").write_text(json.dumps([{"word": "नमस्ते", "start": 0.0, "end": 0.6}]))
+    (takes / "props.json").write_text(json.dumps({"timeline": {"clips": [{"file": "narration/t0.wav"}]}}))
+    en = {"timeline": {"clips": [{"from": 0}], "totalFrames": 4 * dub.FPS}}
+    (video / "assets" / "narration" / "props.json").write_text(json.dumps(en))
+    dub.main(video, takes, "hi", set())
+    end = json.loads((video / "dub" / "hi" / "placed.json").read_text())[0]["end"]
+    assert voice + mix.TAIL - 0.01 <= end <= voice + mix.TAIL + 0.05 < length
 
 
 def _cues(srt):
