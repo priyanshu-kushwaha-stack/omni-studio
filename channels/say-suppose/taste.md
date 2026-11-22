@@ -8,6 +8,13 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-22
+
+- **"A, black figures"**, then **"but this is also not good fully. Need more options to make it look good to the eyes
+  of the people."** On the 3D look test (Blender: A black figures, B our colours, A by day, a 5 s clip of A). The
+  direction is A, black figures; the execution isn't there yet. Show more rendered options within A, judged on
+  appeal to viewers, before anything is built out. (fired everyone and hired AI, look test)
+
 ## 2026-11-19
 
 - **"The video looks more like plain 2D other people those who are creating similar videos they have black characters
