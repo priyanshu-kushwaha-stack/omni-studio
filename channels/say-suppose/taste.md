@@ -8,6 +8,14 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-23
+
+- **"make the story more explainable complete story ... whereever not clear"** (G2 v2 cut of the AI-predicts film).
+  Every rule of the world is said once in plain words before it pays off: what the tag is, what the rate number means
+  (a hundred is full price), what red means. Every cause is said: why a character's money runs out, why a card goes
+  blank, what the twist means. Clever lines may stay, but each is followed by the plain version. (`review-g2-round3.md`
+  of `videos/2026-11-13_what-if-ai-predicted-every-choice-you-make/`)
+
 ## 2026-11-15
 
 - **"Lets not set this as hard rule because when i watched it previously, it looked fine and it goes video to video

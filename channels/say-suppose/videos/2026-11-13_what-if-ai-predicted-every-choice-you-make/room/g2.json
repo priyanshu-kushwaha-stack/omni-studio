@@ -152,21 +152,57 @@
       "judge": null,
       "owner_notes": true,
       "candidate": true
+    },
+    {
+      "round": 5,
+      "draft_sha256": "de24ef96bd31aabb74ad6a0bf7f1630e8b684e9f6e8fbf0f6d8ee9bb31e709aa",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "87de9b98dfce464791bf0598c3a8fda3",
+          "file": "room/g2/round-5/claims-check.json",
+          "output_sha256": "cd4cb6d4ff4ac96c64099bc3ae950529de51c1ed375e7c618c91d57184460f11",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "fa5371fb72cc4e9a844d9ee742096352",
+          "file": "room/g2/round-5/story-editor.json",
+          "output_sha256": "d2b6c826cc42a4ec65b4ba499cb0f72610097b54e79a841033e7e6e6bab886f9",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 4,
-    "artifact_sha256": "2a1c07f1de79811766a6f413c78e015fd05771010cc8ef82a28f263095fd66c1"
+    "round": 5,
+    "artifact_sha256": "de24ef96bd31aabb74ad6a0bf7f1630e8b684e9f6e8fbf0f6d8ee9bb31e709aa"
   },
-  "calls": 8,
-  "cap": 20,
+  "calls": 10,
+  "cap": 24,
   "author_cut": {
     "round": 1,
     "draft_sha256": "227c78de1425c50b3cb6cd3a933e97859713ed524ae218b86c50e06d7c0fda64",
     "cost": {
-      "lines_changed": 436,
+      "lines_changed": 446,
       "header_changed": [
         "SITUATION",
         "DESIRE",
@@ -175,7 +211,9 @@
       ],
       "keep_lost": [
         "Drivers tracked by their insurer for a discount braked hard about a fifth less often within six months (c17). The watching changed the driving.",
-        "In 2008 (c04), brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen (c04). The guess was right about sixty times in a hundred (c05). A coin gets fifty."
+        "In 2008 (c04), brain scans could guess whether a person would press a left or a right button a few seconds before they felt they'd chosen (c04). The guess was right about sixty times in a hundred (c05). A coin gets fifty.",
+        "When scientists watched people choose where real charity money would go, the famous early brain signal was missing (c06).",
+        "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him."
       ]
     }
   },

@@ -1,0 +1,72 @@
+{
+  "call_id": "fa5371fb72cc4e9a844d9ee742096352",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "causality": 7,
+    "stakes_and_payoff": 9,
+    "ending": 8
+  },
+  "blockers": [
+    {
+      "quote": "He's broke, and his rent just doubled. That's all the machine sees: a broke man next to a cash box.",
+      "why": "No new power rule after the halfway point: this first reveals that the machine generalizes from circumstances, whereas the opening rule says it knows choices this person already made. The late rule makes the accusation feel arbitrary.",
+      "fix": "Plant the capability before halfway, during the pickpocket sequence: \u201cIt has never seen him take a wallet. It has seen this setup before.\u201d Then replace this line with: \u201cIt sees the same setup again: trouble, a cash box, a familiar reach.\u201d",
+      "domain": "story",
+      "line": 375
+    },
+    {
+      "quote": "Two red tags. You broke yours, and he did the opposite of his. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.",
+      "why": "Check #11, Never say the feeling: the narration repeats every action already visible in the shot instead of turning its meaning.",
+      "fix": "Replace with: \u201cFor the first time, one choice makes the whole city less predictable.\u201d",
+      "domain": "story",
+      "line": 454
+    },
+    {
+      "quote": "A hundred and sixty teams once tried to predict how children's lives would turn out (c24). Thousands of facts on every family (c24). The best guesses were only slightly better than a simple one from four facts (c24). People are hard to predict. Unless they're paid to be.",
+      "why": "Check #13, Every fact moves the story: after the board reversal and insurer evidence, this second study repeats the conclusion without causing another beat or changing the feeling, delaying the denouement.",
+      "fix": "Cut this fact and its scene; move directly from the reversed board to \u201cIt never got better at seeing you.\u201d",
+      "domain": "story",
+      "line": 477
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 216,
+      "quote": "Now the whole city is reading tags. The penalty kick. Tag says left, keeper goes left.",
+      "fix": "Strengthen the montage's causal connector: \u201cOnce a tag can spoil a trick, it can spoil a match. Penalty kick. Tag says left; keeper goes left.\u201d"
+    },
+    {
+      "line": 240,
+      "quote": "The morning train. Forty heads. Forty tags, the same three words. Nobody looks out of the window.",
+      "fix": "Make the image press the under-question personally: have the friend point out the sunrise while you obey LOOKS AT PHONE and miss it."
+    },
+    {
+      "line": 341,
+      "quote": "Friend: Machine's drunk.",
+      "fix": "Use the running gag as a sharper callback: \u201cFriend: It liked me yesterday.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 121,
+      "quote": "Trying to be random is a pattern."
+    },
+    {
+      "line": 244,
+      "quote": "To live cheap here, you have to be easy to guess. So here's problem two: the cheapest people in this city never surprise anyone."
+    },
+    {
+      "line": 448,
+      "quote": "You can't steal what you've just been handed. And the machine had no card for that."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "d2b6c826cc42a4ec65b4ba499cb0f72610097b54e79a841033e7e6e6bab886f9",
+  "draft_sha256": "de24ef96bd31aabb74ad6a0bf7f1630e8b684e9f6e8fbf0f6d8ee9bb31e709aa"
+}

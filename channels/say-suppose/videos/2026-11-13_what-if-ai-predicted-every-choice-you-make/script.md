@@ -1,7 +1,7 @@
 # Script: What If AI Predicted Every Choice You Make?
 
 format: story
-status: v2, G2 draft (2026-11-14): exciting not sad (owner, 2026-11-13)
+status: v3, G2 draft (2026-11-23): clarity pass, "make the story more explainable, complete story, wherever not clear" (owner, 2026-11-23); v2 exciting not sad (owner, 2026-11-13)
 claims: claims.md
 
 > SITUATION: Closing time at a food court in Singapore, where you and your best friend count the box and he holds out his hand for the key, and you hold it out over his palm and pocket it, every night, as a joke. Tonight a tag drops over every head in the city saying what each person will do next, and the coffee next door is half price for doing it.
@@ -40,17 +40,17 @@ Coffee seller: Half.
 
 > SCENE: Close on your face under your teal card, eyes on the price board. Then his, pointing at his own card with the cup.
 
-So what if an AI predicted every choice you make, and paid you every time it was right?
+So what if an AI predicted every choice you make, and your life got cheaper every time you did what it predicted?
 
 > SCENE: Insert: the lamppost outside the court, a split-flap rate board under the teal lamp, YOUR RATE 100, a small teal arrow and a small crimson arrow beside it. Then a quick flash of a card buzzing crimson over a stranger's head across the court, every face near him turning.
 
 > TAG: YOUR RATE 100
 
-Obey your tag, and your rent halves. Break it, and it goes crimson where every head can see, and your prices climb.
+That card over your head is your tag: what you'll do next. Do it, and your rent can fall to half. Don't, and your tag goes red where everyone can see it, and your prices climb.
 
 > SCENE: Three quick inserts of the same counter on three other nights, the lamp warmer each time: the coins dropping into the tin, his open hand, your key held out over it and pulled back. Then tonight: the two teal ticks over your heads.
 
-Closing time. A food court in Singapore. Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.
+Closing time. A food court in Singapore. You and your best friend run this stall. Every night you count the cash box. Every night he holds out his hand for the key, like he's going to run off with the money. Every night you hold it over his palm, and pocket it. The oldest joke you two have. Tonight the joke came with a number.
 
 > SCENE: Heads around the court tilt up at their own cards, one after another, like a wave, and every card ticks teal in turn.
 
@@ -63,13 +63,13 @@ And here's the thing. It's right ninety-nine times in a hundred. About everybody
 > MOOD: night
 > SCENE: The walk home: a covered walkway, lampposts every twenty paces, each with a teal lamp and a split-flap rate board. Your best friend beside you, humming. The tags over you hang from each lamp you pass and hand over to the next with a flap. On "Over every head" an insert of the card: the forecast line, the split-flap percentage. On "every lamppost" the camera tilts up the post to the lamp.
 
-Over every head, a tag. What you'll do in the next ten seconds, and how sure the city is. It watches from every lamppost.
+Here's how it works. Over every head, a tag: what you'll do in the next ten seconds, and how sure it is. The city watches from every lamppost.
 
-Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.
+Under each lamp, a board with your rate. A hundred is full price. Fifty is half. Do what your tag says, and your rate drops. Your coffee, your fare, your rent, all cheaper. It knows you. Ninety-nine times in a hundred, it knows you.
 
 > SCENE: An insert: your own card going crimson for one frame with a dull buzz, the rate board flapping up one notch, then back to teal. On "Remember that" a close-up of your face, half lit.
 
-Break it, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.
+Go against your tag, and it turns red, and your rate climbs. Red means trouble, and everyone can see it. One more thing. It only knows the choices you've already made. It has never seen you do something new. Remember that.
 
 > SCENE: Your best friend jumps, grabs his card and rips it off its thread: a paper tear. He holds it up, triumphant. The next lamp drops a fresh one over him with a flap before he lands.
 
@@ -94,7 +94,7 @@ Friend: It likes me.
 
 Nobody here finds a price on a choice strange. This city has billed drivers for its busiest roads by time of day since 1998 (c30).
 
-Tomorrow you'll find out which way yours moves.
+Your rate starts at a hundred. Tomorrow you'll find out which way it moves.
 
 ## [01:35] Random
 
@@ -103,16 +103,16 @@ Tomorrow you'll find out which way yours moves.
 
 Morning. You've worked it out. It guesses. So guess wrong.
 
-> HOLD: 6 s. Performed. Your card: RAISES RIGHT 71%. You raise your left hand. Buzz, crimson. The card flaps: RAISES LEFT 88%. You freeze with the hand half up. Buzz. FREEZES 93%. You stick out your tongue at it. Buzz. TONGUE 79%. You put both hands flat on the sink and stare. Buzz. STARES 95%. With every buzz the little board clatters upward: 100, 108, 117, 125. Your tongue goes back in.
+> HOLD: 6 s. Performed. Your card: RAISES RIGHT 71%. You raise your left hand. Buzz, crimson. The card flaps to its next guess: LOWERS HAND 88%. You freeze with the hand half up. Buzz, crimson. Next guess: FREEZES 93%. You stick out your tongue at it. Buzz, crimson. Next: TONGUE IN 79%. You put both hands flat on the sink instead. Buzz, crimson. With every buzz the little board clatters upward: 100, 108, 117, 125. You stare at the card. It flaps: STARES 95%. Tick, teal. It's caught up.
 
 > TAG: RAISES RIGHT 71%
-> TAG: RAISES LEFT 88%
+> TAG: LOWERS HAND 88%
 > TAG: FREEZES 93%
-> TAG: TONGUE 79%
+> TAG: TONGUE IN 79%
 > TAG: STARES 95%
 > TAG: YOUR RATE 125
 
-Four reds. Up twenty-five before breakfast.
+You beat it four times. Four reds, and every red costs you. Your rate's up a quarter, before breakfast. And on the fifth try, it's caught up.
 
 > SCENE: A paper diagram over the mirror: two keys, F and D, and a line of guesses drawing itself above a line of presses, matching seven times in ten. Your face under it, toothpaste at the corner of your mouth.
 
@@ -137,18 +137,18 @@ Fine. Let a coin choose.
 
 Friend: It's in my head.
 
-A coin can't choose for you. You still choose to flip it. And it saw you reach.
+A coin is random. Reaching for it isn't. The tag doesn't guess the coin. It guesses him, reaching for it again.
 
 > SCENE: Wide of the court filling for lunch: a hundred cards on a hundred threads, nearly all teal, ticking like a clock shop. You at your counter, eyes up, not on the customers but on the cards over the queue.
 
-Problem one. Being random costs money. So you stop fighting your tag. And start reading everyone else's.
+Problem one. Fighting your tag costs money, and it learns how you fight. So you stop fighting yours. And start reading everyone else's.
 
 ## [02:28] Your Stall
 
 > MOOD: day
 > SCENE: The lunch queue at your stall. Over the first three heads: ORDERS NOODLES 92%, ORDERS RICE 88%, CHANGES MIND 81%. You don't look at a single face. You plate noodles and slide the plate across the steel before the first man opens his mouth.
 
-Lunch. You read the queue before it orders.
+Lunch. You read the tags over the queue, and serve each plate before they ask.
 
 > TAG: ORDERS NOODLES 92%
 > TAG: ORDERS RICE 88%
@@ -158,26 +158,26 @@ Lunch. You read the queue before it orders.
 
 Coffee seller: Show-off.
 
-Nobody waits. Nobody orders. The queue doubles by the weekend, and the court next door is reading tags too.
+Nobody waits. Their tags come true, yours comes true, and your rate drops. The queue doubles by the weekend, and the court next door starts reading tags too.
 
 > SCENE: The landlord, grey head, tie, hands your best friend an envelope. Your best friend tears it open, reads, and the card over him flaps HIGH-FIVES 98% a second before his hand comes up. You slap it. Tick.
 
 > TAG: HIGH-FIVES 98%
 
-The landlord's letter.
+The landlord's letter. A low rate means low rent.
 
 Landlord: Keep it up.
 
 Friend: Half!
 
-Half rent. And a thought you can't put down. If you can read their tags, you can read anyone's.
+Half rent on the stall. And a thought you can't put down. If you can read your customers' tags, you can read anyone's.
 
 ## [02:54] The City Plays
 
 > MOOD: day
 > SCENE: The train platform. A man in a hood, grey head, close behind a woman with a bag. You, two steps away, see the card over him buzz and go crimson: TAKES WALLET 97%. The first crimson the city has seen.
 
-The platform. A hood behind a woman's bag, and the first crimson the city has seen.
+The platform. A hood behind a woman's bag, and a red tag: takes wallet. The first time the city has forecast a crime.
 
 > TAG: TAKES WALLET 97%
 
@@ -185,17 +185,17 @@ The platform. A hood behind a woman's bag, and the first crimson the city has se
 
 Pickpocket: I didn't touch it.
 
-Call the police? For what. He hasn't done anything. That's the point of a forecast.
+Call the police? He hasn't done anything yet. A forecast isn't a crime.
 
 > SCENE: The train doors slide shut on him with a hiss. Later, at the coffee stall, the coffee seller looks up at his pale crimson card and turns her back. Later still, the platform at dusk: the pickpocket against a pillar, hands in his pockets, his card teal: STANDS STILL 99%, a woman with a bag asleep on the bench right beside him.
 
-Every head turns anyway. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.
+Every head turns anyway. Doors shut on him. The coffee seller won't pour. A red tag is a verdict everyone can read, and nobody asks for the trial. By the weekend he's afraid to move at all. His tag says stands still. Safest man on the platform.
 
 > TAG: STANDS STILL 99%
 
 > SCENE: The platform, the next morning. The kid with the cap, pale blue head, playing rock-paper-scissors with the man beside him for the seat by the door. The kid throws rock and wins, fist in the air. The card over him flaps: ROCK AGAIN 83%. The man reads it, throws paper, wins. Rock again. Paper again. His cap comes off in his hand.
 
-The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again.
+The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again. So the man beside him throws paper, every time.
 
 > TAG: ROCK AGAIN 83%
 
@@ -209,19 +209,19 @@ Magician: Pick a card.
 
 > TAG: PALMS THE QUEEN 99%
 
-His tag says which card. By lunch, no act.
+His tag says where the queen is hiding. Nobody stays for a trick they've already seen. By lunch, no act.
 
 > SCENE: A television in the corner of the court: a penalty kick, the striker's card KICKS LEFT 91%, the keeper already diving left. In the stands, every head reading the card. Then a betting shop window: the odds board clatters to a line of ones.
 
-The whole city tries your trick. The penalty kick. Tag says left, keeper goes left.
+Now the whole city is reading tags. The penalty kick. Tag says left, keeper goes left.
 
 > TAG: KICKS LEFT 91%
 
-Bet on it? Everyone can read the tag. The bookie read it first, and pays a dollar for a dollar.
+Bet on it? Everyone can read the tag, so everyone bets the same way. The bookie read it first, and pays back only what you put in.
 
 > SCENE: A quick row of three strikers, three tags, three saves, and a scoreboard of zeros. The newsreader on the screen, navy head, over a graphic of a league table full of nils.
 
-Soon every striker obeys, and nobody scores.
+Kick against your tag and your rate climbs, so every striker obeys. Every keeper reads it. Nobody scores.
 
 Newsreader: Another nil-nil.
 
@@ -241,7 +241,7 @@ The morning train. Forty heads. Forty tags, the same three words. Nobody looks o
 
 > HOLD: 3 s. The forty cards tick together. The fare board clatters to 1.80. Outside the window a sunrise over the towers, and no face turned to it.
 
-But here's the problem. Problem two: the cheapest people in this city never surprise anyone.
+To live cheap here, you have to be easy to guess. So here's problem two: the cheapest people in this city never surprise anyone.
 
 ## [04:16] Boring Pays
 
@@ -286,13 +286,13 @@ Quiet all week. Then tonight, the landlord impression. The napkin tie.
 
 Friend: It knows the bit.
 
-That's what the discount costs. Not money.
+He stops doing his bits. What's a joke when the tag says it first? That's what the discount really costs. Not money. Surprises.
 
 > SCENE: The lamppost outside, the board: CITY SCORE 99.5. The teal lamp over it, steady.
 
 > TAG: CITY SCORE 99.5
 
-And the board outside says ninety-nine point five now. It's getting better. Or something is.
+And the city's board, how often the tags come true, says ninety-nine point five now. Every week it's right more often. Is it getting smarter? Hold that thought.
 
 ## [05:06] Sixty Per Cent
 
@@ -309,19 +309,19 @@ In 2008 (c04), brain scans could guess whether a person would press a left or a 
 
 > TAG: WIPES COUNTER 99%
 
-Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?
+Sixty. And the tag over you says ninety-nine. So where does the rest come from? Keep that question. We'll answer it.
 
 > SCENE: Your best friend's rate board on his pillar, clattering up a notch: HIS RATE 118. Insert: the landlord's envelope in his hand, and his face reading it, not smiling. Then him at the back of the stall, eyes on the tin box, longer than they should be.
 
 > TAG: HIS RATE 118
 
-And your best friend's board never came down after the coin. Up. Up again. He's been staring at the box all week.
+And your best friend never stopped fighting his tag. The coin. The torn tags. The jokes he wouldn't drop. Every red cost him. His rate climbs, and his rent with it. He's been staring at the cash box all week.
 
 Friend: Machine hates me.
 
 > SCENE: Closing, the next night. The box. His hand, flat on the counter, not yet out. Your eyes on it.
 
-Tomorrow his hand comes out, like every night. And the tag over it won't be a joke.
+Tomorrow his hand comes out for the key, like every night. And this time the tag won't think it's a joke.
 
 ## [05:46] Red
 
@@ -342,7 +342,7 @@ Friend: Machine's drunk.
 
 > SCENE: Close on your hand putting the key in your pocket. Your face, not looking at him. His face, looking at your pocket.
 
-You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.
+His tag says he'll take the key, for real. Seventy-one per cent sure. You've put that key in your pocket a thousand times as a joke. Tonight it's the first time you've locked something away from him.
 
 > MOOD: morning
 > SCENE: The coffee stall, a comic chase in three quick cuts. He reaches for the iced coffee; the card over him flaps, REACHES 71%, and the coffee seller slides the cup away along the steel with a scrape. He reaches the other way; she slides it back. He fakes left and grabs right; she is already holding it over her head, eyes on his card, not on him.
@@ -359,7 +359,7 @@ His coffee's gone. His rent doubles. And the whole platform would rather sit nex
 
 Pickpocket: Plenty of room, everyone.
 
-But the tag doesn't say thief. It says seventy-one. And you're about to learn who gets a seventy-one.
+But the tag doesn't say thief. It says seventy-one. So who gets a red tag like that?
 
 > MOOD: dusk
 > SCENE: The food court, a paper diagram over the tables: two rows of small heads, a crimson flag stamped over some in each row, almost twice as many in one row as the other.
@@ -372,7 +372,7 @@ And a crowd of strangers online, given two lines about each defendant, predicted
 
 > SCENE: Your best friend at the back of the stall, the crimson card over him, wiping a tray. Faces at the nearest tables turn toward the card and away.
 
-It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.
+He's broke, and his rent just doubled. That's all the machine sees: a broke man next to a cash box. It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.
 
 > SCENE: Three closings in one dissolve: his card at 71, then 80, then 88, deeper crimson each time. The tables nearest your stall empty one by one. Over you: COUNTS BOX 97%. You pick up an iced coffee instead and walk it to the back.
 
@@ -380,7 +380,7 @@ It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two
 > TAG: TAKES THE KEY 88%
 > TAG: COUNTS BOX 97%
 
-Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box.
+Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box, alone. You don't.
 
 > HOLD: 4 s. Performed. You set the cup down on the tray in front of him with a clack and sit on the crate beside him. Your card buzzes crimson over your head; your rate board clatters up a notch. He looks at the cup. He looks at your card. He looks at you.
 
@@ -404,7 +404,7 @@ Closing. The last customers gone. The coffee seller's phone is already up. Becau
 
 > SCENE: A fast paper strip of every card you've ever confirmed: PAYS, TAKES THE SIX-TEN, WIPES COUNTER, POCKETS KEY, POCKETS KEY, POCKETS KEY. Then the diagram from before, the head in profile, and the early signal line going flat.
 
-Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing (c06).
+Everything it ever got right about you was small. A coffee, a train, a key. When scientists watched people make a choice that mattered, where real charity money went, the early brain signal they used to predict small choices was missing (c06).
 
 It has never seen you choose something that mattered. And you're about to.
 
@@ -414,11 +414,11 @@ A month of half price. What did you stop doing for it?
 
 > SCENE: Your hand in your pocket, on the key. His hands flat on the lid. The two cards over you, one crimson, one teal.
 
-Pocket the key, and the city's right, and your rent stays half. Hold it out, and your tag goes crimson in front of everyone. And so, maybe, does your money.
+Pocket the key, and your tag comes true, and your rent stays half. His tag says he'll take the box. So what if you just give it to him? Hand him the key, and your tag goes red in front of everyone. And your rent goes back to full.
 
 > SCENE: Your hand comes out of your pocket with the key in it.
 
-Remember that? It has never seen a choice you've never made. So make one.
+Remember? It only knows what you've done before. So do something you've never done.
 
 ## [07:30] The Key
 
@@ -435,7 +435,7 @@ Ninety-four.
 
 > TAG: (blank)
 
-The first blank card the city has ever made.
+The first blank card the city has ever made. His tag said he'd steal the box. Now it says nothing.
 
 Friend: I was going to.
 
@@ -451,14 +451,14 @@ You can't steal what you've just been handed. And the machine had no card for th
 
 > TAG: CITY SCORE 99.4
 
-Two crimson cards. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.
+Two red tags. You broke yours, and he did the opposite of his. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.
 
 ## [08:10] The Board
 
 > MOOD: night
 > SCENE: The lamppost outside the court. The two of you under it, the open box between you on the ground, two crimson cards. The rate board, CITY SCORE 99.4. On "No." a close-up of your face looking up at the board.
 
-It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.
+It knows you. Ninety-nine times in a hundred, it knows you. That's what everyone thought. But it was never reading you. You were reading it, and doing what it said.
 
 > SCENE: A paper diagram on the lamppost: a car, a small box on its dashboard with a teal light, a brake pedal; a tally of hard brakes, then the same tally six months on, a fifth shorter.
 
@@ -470,11 +470,11 @@ An economist put it in 1975 (c18): lean on a number to control people, and the n
 
 > SCENE: The rate board. Your best friend reaches up and spins the split-flaps backwards with his finger, like a calendar: 99.4, 93, 84, 71. The teal lamp dims a shade with each flap back. Your faces, lit less each time.
 
-Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.
+Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten. It didn't get smarter. You got easier to guess, because being easy to guess made you cheaper. That's where the rest came from. You.
 
 > SCENE: A paper diagram: a hundred and sixty small desks, a mountain of paper on each; beside them one desk with four cards on it; two bars drawn above, almost the same height.
 
-A hundred and sixty teams once tried to predict how children's lives would turn out (c24). Thousands of facts on every family (c24). The best guesses were only slightly better than a simple one from four facts (c24).
+A hundred and sixty teams once tried to predict how children's lives would turn out (c24). Thousands of facts on every family (c24). The best guesses were only slightly better than a simple one from four facts (c24). People are hard to predict. Unless they're paid to be.
 
 > SCENE: The board at 71. Then the worker's ladder, still against the lamppost from the first night. Then your own card over you, crimson, UNPREDICTABLE, and you not looking at it.
 
@@ -497,7 +497,7 @@ A city of teal lights. Under every one, someone doing what the card says. And on
 
 Newsreader: A blank forecast, filmed at a food court.
 
-By breakfast, your one surprise is the city's newest half-price trick.
+By breakfast, everyone's copying you. Hand over a key, and save half.
 
 > HOLD: 4 s. Performed. The first man holds his key out to you, grinning. The card over him flaps, ticks teal: HANDS OVER KEY 97%. His rate board clatters down. Behind him the coffee seller slides him a half-price coffee across the steel without being asked. Your best friend watches the queue with his arms folded.
 
@@ -505,7 +505,7 @@ By breakfast, your one surprise is the city's newest half-price trick.
 
 Friend: That was ours.
 
-By lunch the city has a card for it. Of course it does. It watched a thousand people do it.
+By lunch the tags predict that too: hands over key. It watched a thousand people do it. Your surprise is just another habit now.
 
 > SCENE: The television: the newsreader over the city's board, back at 99.5.
 
@@ -519,7 +519,7 @@ Newsreader: Confidence is back to ninety-nine.
 
 Landlord: Full rent.
 
-Your tag, crimson for thirty days.
+Your tags stay red. Red means full price.
 
 Coffee seller: Full price. Same?
 
@@ -528,7 +528,7 @@ Coffee seller: Full price. Same?
 > TAG: LOOKS AT PHONE 99%
 > TAG: NOSY 99%
 
-The train. Two red tags in the middle, and every head sneaking a look.
+The train. Two red tags in the middle, paying full fare, and every head sneaking a look.
 
 > HOLD: 5 s. Performed. His hand slides into frame, palm up, open, the grin already there. You drop the key into it without lifting your eyes from the window: a small clink in his palm. His fingers close. He grins at the side of your face. Over you both, two crimson cards, and neither of you looks up.
 
@@ -542,7 +542,7 @@ You never look up.
 
 > SCENE: The last image: the kid's blank card on its thread, the teal lamps blinking past behind it, your crimson card at the top edge of the frame.
 
-And the city hasn't noticed yet.
+Except one. The kid with the cap. Nothing on his card. Whatever he does next, the machine can't guess it. And the city hasn't noticed yet.
 
 So, would you pay full price to make your card go blank? Tell us in the comments. And if you would, hit like and subscribe.
 

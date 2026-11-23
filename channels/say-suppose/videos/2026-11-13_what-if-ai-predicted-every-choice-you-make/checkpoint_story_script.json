@@ -11,11 +11,30 @@
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
-    "script": "script.md v2 (Claude Fable 5.1), exciting not sad (owner 2026-11-13), 13 sections, 114 lines; say.yaml; sequel.md; changes-v2.md",
-    "room": "room-g2.md: owner-notes rounds 2-4 (verify ok on the final script); claims check 0 blockers in every round; story editor notes taken or sent to the owner (review-g2-round2.md)",
-    "first_cut": "renders/firstcut/firstcut-720p.mp4 (git-ignored), 1280x720, 624.4 s, narrator voice B and designed character voices, all local and free; nothing paid",
-    "qc": "story_script on the cut: claims PASS, clicks PASS",
+    "script": {
+      "path": "script.md",
+      "version": "v3 clarity pass (owner, 2026-11-23)",
+      "sha256": "de24ef96bd31aabb74ad6a0bf7f1630e8b684e9f6e8fbf0f6d8ee9bb31e709aa",
+      "changes": "review-g2-round3.md",
+      "story_read": "story-read-v3.md"
+    },
+    "room": {
+      "rounds": 5,
+      "report": "room-g2.md",
+      "verify": "room evidence ok",
+      "round5": "claims 0 blockers; story editor 3 blockers, open for the owner (review-g2-round3.md)"
+    },
+    "first_cut": {
+      "path": "renders/firstcut/firstcut-720p.mp4",
+      "size": "1280x720",
+      "duration_s": 744.5,
+      "voices": "free local; narrator voice B",
+      "previous": "renders/firstcut-v2/"
+    },
+    "qc": {
+      "story_script": "claims PASS, clicks PASS on the v3 cut (2026-11-23)"
+    },
     "packaging_change": "thumbnail K17 fix proposed (faces, key 2.3x) with TRUST HIM? and TRUST ME? for the owner to pick",
-    "awaiting": "the owner's G2 read of the v2 cut"
+    "awaiting": "The owner watches the v3 cut. Agents never approve."
   }
 }

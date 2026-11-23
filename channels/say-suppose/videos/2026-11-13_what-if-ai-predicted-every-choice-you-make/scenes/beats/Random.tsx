@@ -5,8 +5,8 @@
 //
 //   16   the mirror: your face, toothbrush, RAISES RIGHT 71% dropping over you on a thread from the teal lamp over the
 //        glass, the small board 100 in the corner; "So guess wrong": you lift your chin at the card
-//   hold you raise your left hand: buzz, crimson, 108; RAISES LEFT 88%; you freeze, hand half up: buzz, 117; FREEZES 93%;
-//        tongue out: buzz, 121; TONGUE 79%; both hands flat on the basin, staring: buzz, 125; STARES 95%, tick; the
+//   hold you raise your left hand: buzz, crimson, 108; LOWERS HAND 88%; you freeze, hand half up: buzz, 117; FREEZES 93%;
+//        tongue out: buzz, 121; TONGUE IN 79%; both hands flat on the basin, staring: buzz, 125; STARES 95%, tick; the
 //        tongue goes back in
 //   17   "Four reds. Up twenty-five": the board on 125 (YOUR RATE 125)
 //   18   a paper sheet over the mirror, one sentence at a time: the keys F and D and the program's guesses; seven of ten
@@ -67,13 +67,13 @@ function times(clips: LineClip[], to: number) {
     right: h(0.02), // RAISES RIGHT 71%
     raiseLeft: h(0.12),
     red1: h(0.17),
-    left: h(0.25), // RAISES LEFT 88%
+    left: h(0.25), // LOWERS HAND 88%
     freeze: h(0.3),
     red2: h(0.36),
     freezes: h(0.43), // FREEZES 93%
     tongue: h(0.5),
     red3: h(0.55),
-    tongueTag: h(0.62), // TONGUE 79%
+    tongueTag: h(0.62), // TONGUE IN 79%
     flat: h(0.68),
     red4: h(0.74),
     stares: h(0.81), // STARES 95%
@@ -99,9 +99,9 @@ function mirrorTags(k: T): TagKey[] {
   const red = (at: number, text: string, pct: number): TagKey => ({ at, text, pct, state: "crimson" });
   return [
     n(k.card, "RAISES RIGHT", 71), red(k.red1, "RAISES RIGHT", 71),
-    n(k.left, "RAISES LEFT", 88), red(k.red2, "RAISES LEFT", 88),
+    n(k.left, "LOWERS HAND", 88), red(k.red2, "LOWERS HAND", 88),
     n(k.freezes, "FREEZES", 93), red(k.red3, "FREEZES", 93),
-    n(k.tongueTag, "TONGUE", 79), red(k.red4, "TONGUE", 79),
+    n(k.tongueTag, "TONGUE IN", 79), red(k.red4, "TONGUE IN", 79),
     n(k.stares, "STARES", 95), { at: k.staresTick, text: "STARES", pct: 95, state: "tick" },
   ];
 }

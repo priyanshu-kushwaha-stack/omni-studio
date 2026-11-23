@@ -85,24 +85,24 @@
       "claims": []
     },
     {
-      "text": "So what if an AI predicted every choice you make, and paid you every time it was right?",
-      "say": "[leaning in, mischievous, a grin on the last clause, as if offering a deal] So what if an AI predicted every choice you make, and paid you every time it was right?",
+      "text": "So what if an AI predicted every choice you make, and your life got cheaper every time you did what it predicted?",
+      "say": "[leaning in, mischievous, a grin on the last clause, as if offering a deal] So what if an AI predicted every choice you make, and your life got cheaper every time you did what it predicted?",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Obey your tag, and your rent halves. Break it, and it goes crimson where every head can see, and your prices climb.",
-      "say": "[brisk, a dealer laying out terms, bright on the halving, a shade colder and slower on crimson] Obey your tag, and your rent halves. Break it, and it goes crimson where every head can see, and your prices climb.",
+      "text": "That card over your head is your tag: what you'll do next. Do it, and your rent can fall to half. Don't, and your tag goes red where everyone can see it, and your prices climb.",
+      "say": "[brisk, a dealer laying out terms, bright on the halving, a shade colder and slower on crimson] what you'll do next. Do it, and your rent can fall to half. Don't, and your tag goes red where everyone can see it, and your prices climb.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Closing time. A food court in Singapore. Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.",
-      "say": "[warm, close, the place in two breaths, then a rhythm like a habit, the last sentence dropped quiet with a smile] Closing time. A food court in Singapore. Every night you count the box. Every night he holds out his hand. Every night you pocket the key. The oldest joke you two have. Tonight it came with a number.",
+      "text": "Closing time. A food court in Singapore. You and your best friend run this stall. Every night you count the cash box. Every night he holds out his hand for the key, like he's going to run off with the money. Every night you hold it over his palm, and pocket it. The oldest joke you two have. Tonight the joke came with a number.",
+      "say": "[warm, close, the place in two breaths, then a rhythm like a habit, the last sentence dropped quiet with a smile] Closing time. A food court in Singapore. You and your best friend run this stall. Every night you count the cash box. Every night he holds out his hand for the key, like he's going to run off with the money. Every night you hold it over his palm, and pocket it. The oldest joke you two have. Tonight the joke came with a number.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -117,24 +117,24 @@
       "claims": []
     },
     {
-      "text": "Over every head, a tag. What you'll do in the next ten seconds, and how sure the city is. It watches from every lamppost.",
-      "say": "[clear, exact, the rule said once, a glance upward on the last line] Over every head, a tag. What you'll do in the next ten seconds, and how sure the city is. It watches from every lamppost.",
+      "text": "Here's how it works. Over every head, a tag: what you'll do in the next ten seconds, and how sure it is. The city watches from every lamppost.",
+      "say": "[clear, exact, the rule said once, a glance upward on the last line] Here's how it works. Over every head, a tag: what you'll do in the next ten seconds, and how sure it is. The city watches from every lamppost.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.",
-      "say": "[plain, each item a small gift, then slower and almost fond on the last sentence] Do what it says, and everything gets cheaper. Your coffee. Your fare. Your rent. It knows you. Ninety-nine times in a hundred, it knows you.",
+      "text": "Under each lamp, a board with your rate. A hundred is full price. Fifty is half. Do what your tag says, and your rate drops. Your coffee, your fare, your rent, all cheaper. It knows you. Ninety-nine times in a hundred, it knows you.",
+      "say": "[plain, each item a small gift, then slower and almost fond on the last sentence] Under each lamp, a board with your rate. A hundred is full price. Fifty is half. Do what your tag says, and your rate drops. Your coffee, your fare, your rent, all cheaper. It knows you. Ninety-nine times in a hundred, it knows you.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "Break it, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.",
-      "say": "[measured, a warning without heat, each limit its own beat, the last two words almost a whisper and a little playful] Break it, and your prices climb. One more thing. It knows every choice you've ever made. It has never seen one you haven't. Remember that.",
+      "text": "Go against your tag, and it turns red, and your rate climbs. Red means trouble, and everyone can see it. One more thing. It only knows the choices you've already made. It has never seen you do something new. Remember that.",
+      "say": "[measured, a warning without heat, each limit its own beat, the last two words almost a whisper and a little playful] Go against your tag, and it turns red, and your rate climbs. Red means trouble, and everyone can see it. One more thing. It only knows the choices you've already made. It has never seen you do something new. Remember that.",
       "speaker": "narrator",
       "gapAfterSec": 3.0,
       "mood": "night",
@@ -183,8 +183,8 @@
       ]
     },
     {
-      "text": "Tomorrow you'll find out which way yours moves.",
-      "say": "[quiet, a hook, a half-smile] Tomorrow you'll find out which way yours moves.",
+      "text": "Your rate starts at a hundred. Tomorrow you'll find out which way it moves.",
+      "say": "[quiet, a hook, a half-smile] Your rate starts at a hundred. Tomorrow you'll find out which way it moves.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -199,8 +199,8 @@
       "claims": []
     },
     {
-      "text": "Four reds. Up twenty-five before breakfast.",
-      "say": "[deadpan, the joke landing dry, a wince on the number] Four reds. Up twenty-five before breakfast.",
+      "text": "You beat it four times. Four reds, and every red costs you. Your rate's up a quarter, before breakfast. And on the fifth try, it's caught up.",
+      "say": "[deadpan, the joke landing dry, a wince on the number] You beat it four times. Four reds, and every red costs you. Your rate's up a quarter, before breakfast. And on the fifth try, it's caught up.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -259,24 +259,24 @@
       "claims": []
     },
     {
-      "text": "A coin can't choose for you. You still choose to flip it. And it saw you reach.",
-      "say": "[level, three short blows, the last one quiet and pleased with itself] A coin can't choose for you. You still choose to flip it. And it saw you reach.",
+      "text": "A coin is random. Reaching for it isn't. The tag doesn't guess the coin. It guesses him, reaching for it again.",
+      "say": "[level, three short blows, the last one quiet and pleased with itself] A coin is random. Reaching for it isn't. The tag doesn't guess the coin. It guesses him, reaching for it again.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Problem one. Being random costs money. So you stop fighting your tag. And start reading everyone else's.",
-      "say": "[leaning in, numbering the trouble, then a turn, brightening, a scheme forming on the last sentence] Problem one: being random costs money. So you stop fighting your tag. And start reading everyone else's.",
+      "text": "Problem one. Fighting your tag costs money, and it learns how you fight. So you stop fighting yours. And start reading everyone else's.",
+      "say": "[leaning in, numbering the trouble, then a turn, brightening, a scheme forming on the last sentence] Problem one. Fighting your tag costs money, and it learns how you fight. So you stop fighting yours. And start reading everyone else's.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
       "claims": []
     },
     {
-      "text": "Lunch. You read the queue before it orders.",
-      "say": "[quick, sly, a card sharp at work] Lunch. You read the queue before it orders.",
+      "text": "Lunch. You read the tags over the queue, and serve each plate before they ask.",
+      "say": "[quick, sly, a card sharp at work] Lunch. You read the tags over the queue, and serve each plate before they ask.",
       "speaker": "narrator",
       "gapAfterSec": 5.0,
       "mood": "day",
@@ -291,16 +291,16 @@
       "claims": []
     },
     {
-      "text": "Nobody waits. Nobody orders. The queue doubles by the weekend, and the court next door is reading tags too.",
-      "say": "[brisk, triumphant, a montage in one breath, the last clause a raised eyebrow] Nobody waits. Nobody orders. The queue doubles by the weekend, and the court next door is reading tags too.",
+      "text": "Nobody waits. Their tags come true, yours comes true, and your rate drops. The queue doubles by the weekend, and the court next door starts reading tags too.",
+      "say": "[brisk, triumphant, a montage in one breath, the last clause a raised eyebrow] Nobody waits. Their tags come true, yours comes true, and your rate drops. The queue doubles by the weekend, and the court next door starts reading tags too.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "The landlord's letter.",
-      "say": "[quick, a held breath] The landlord's letter.",
+      "text": "The landlord's letter. A low rate means low rent.",
+      "say": "[quick, a held breath] The landlord's letter. A low rate means low rent.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -323,16 +323,16 @@
       "claims": []
     },
     {
-      "text": "Half rent. And a thought you can't put down. If you can read their tags, you can read anyone's.",
-      "say": "[warm, then slower, a grin spreading, the last sentence a dare to yourself] Half rent. And a thought you can't put down. If you can read their tags, you can read anyone's.",
+      "text": "Half rent on the stall. And a thought you can't put down. If you can read your customers' tags, you can read anyone's.",
+      "say": "[warm, then slower, a grin spreading, the last sentence a dare to yourself] Half rent on the stall. And a thought you can't put down. If you can read your customers' tags, you can read anyone's.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "The platform. A hood behind a woman's bag, and the first crimson the city has seen.",
-      "say": "[hushed, quick, a change of air, the last word slow] The platform. A hood behind a woman's bag, and the first crimson the city has seen.",
+      "text": "The platform. A hood behind a woman's bag, and a red tag: takes wallet. The first time the city has forecast a crime.",
+      "say": "[hushed, quick, a change of air, the last word slow] The platform. A hood behind a woman's bag, and a red tag: takes wallet. The first time the city has forecast a crime.",
       "speaker": "narrator",
       "gapAfterSec": 3.0,
       "mood": "day",
@@ -347,24 +347,24 @@
       "claims": []
     },
     {
-      "text": "Call the police? For what. He hasn't done anything. That's the point of a forecast.",
-      "say": "[the viewer's question said back, then dry and exact, a shrug on the last sentence] Call the police? For what. He hasn't done anything. That's the point of a forecast.",
+      "text": "Call the police? He hasn't done anything yet. A forecast isn't a crime.",
+      "say": "[the viewer's question said back, then dry and exact, a shrug on the last sentence] Call the police? He hasn't done anything yet. A forecast isn't a crime.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Every head turns anyway. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.",
-      "say": "[cold and quick on the first three sentences, level on the verdict, then dry and amused on the ending] Every head turns anyway. Doors shut on him. The coffee seller won't pour. A crimson tag is a verdict everyone can read, and nobody asks for the trial. By the weekend his tag says stands still. Safest man on the platform.",
+      "text": "Every head turns anyway. Doors shut on him. The coffee seller won't pour. A red tag is a verdict everyone can read, and nobody asks for the trial. By the weekend he's afraid to move at all. His tag says stands still. Safest man on the platform.",
+      "say": "[cold and quick on the first three sentences, level on the verdict, then dry and amused on the ending] Every head turns anyway. Doors shut on him. The coffee seller won't pour. A red tag is a verdict everyone can read, and nobody asks for the trial. By the weekend he's afraid to move at all. His tag says stands still. Safest man on the platform.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again.",
-      "say": "[amused, quick, a commentator at a small match, the last three words a punchline] The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again.",
+      "text": "The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again. So the man beside him throws paper, every time.",
+      "say": "[amused, quick, a commentator at a small match, the last three words a punchline] The kid with the cap plays rock-paper-scissors for the seat by the door. Wins with rock. His tag says rock again. So the man beside him throws paper, every time.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -397,32 +397,32 @@
       "claims": []
     },
     {
-      "text": "His tag says which card. By lunch, no act.",
-      "say": "[deadpan, two short blows, the second softer] His tag says which card. By lunch, no act.",
+      "text": "His tag says where the queen is hiding. Nobody stays for a trick they've already seen. By lunch, no act.",
+      "say": "[deadpan, two short blows, the second softer] His tag says where the queen is hiding. Nobody stays for a trick they've already seen. By lunch, no act.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "The whole city tries your trick. The penalty kick. Tag says left, keeper goes left.",
-      "say": "[building like a commentator, gleeful, the save landing like a goal] The whole city tries your trick. The penalty kick. Tag says left, keeper goes left.",
+      "text": "Now the whole city is reading tags. The penalty kick. Tag says left, keeper goes left.",
+      "say": "[building like a commentator, gleeful, the save landing like a goal] Now the whole city is reading tags. The penalty kick. Tag says left, keeper goes left.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Bet on it? Everyone can read the tag. The bookie read it first, and pays a dollar for a dollar.",
-      "say": "[the viewer's idea said back with a grin, then dry, the last clause flat as a shut window] Bet on it? Everyone can read the tag. The bookie read it first, and pays a dollar for a dollar.",
+      "text": "Bet on it? Everyone can read the tag, so everyone bets the same way. The bookie read it first, and pays back only what you put in.",
+      "say": "[the viewer's idea said back with a grin, then dry, the last clause flat as a shut window] Bet on it? Everyone can read the tag, so everyone bets the same way. The bookie read it first, and pays back only what you put in.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
     {
-      "text": "Soon every striker obeys, and nobody scores.",
-      "say": "[quick, then flat on the last three words] Soon every striker obeys, and nobody scores.",
+      "text": "Kick against your tag and your rate climbs, so every striker obeys. Every keeper reads it. Nobody scores.",
+      "say": "[quick, then flat on the last three words] Kick against your tag and your rate climbs, so every striker obeys. Every keeper reads it. Nobody scores.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -464,8 +464,8 @@
       "claims": []
     },
     {
-      "text": "But here's the problem. Problem two: the cheapest people in this city never surprise anyone.",
-      "say": "[leaning in, low, the number plain, the last four words a chill with a smile in it] But here's the problem. Problem two: the cheapest people in this city never surprise anyone.",
+      "text": "To live cheap here, you have to be easy to guess. So here's problem two: the cheapest people in this city never surprise anyone.",
+      "say": "[leaning in, low, the number plain, the last four words a chill with a smile in it] To live cheap here, you have to be easy to guess. So here's problem two: the cheapest people in this city never surprise anyone.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -539,16 +539,16 @@
       "claims": []
     },
     {
-      "text": "That's what the discount costs. Not money.",
-      "say": "[low, level, the point landing, no pity in it] That's what the discount costs. Not money.",
+      "text": "He stops doing his bits. What's a joke when the tag says it first? That's what the discount really costs. Not money. Surprises.",
+      "say": "[low, level, the point landing, no pity in it] He stops doing his bits. What's a joke when the tag says it first? That's what the discount really costs. Not money. Surprises.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "And the board outside says ninety-nine point five now. It's getting better. Or something is.",
-      "say": "[quiet, a hook, the last three words slower and colder] And the board outside says ninety-nine point five now. It's getting better. Or something is.",
+      "text": "And the city's board, how often the tags come true, says ninety-nine point five now. Every week it's right more often. Is it getting smarter? Hold that thought.",
+      "say": "[quiet, a hook, the last three words slower and colder] And the city's board, how often the tags come true, says ninety-nine point five now. Every week it's right more often. Is it getting smarter? Hold that thought.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -575,16 +575,16 @@
       ]
     },
     {
-      "text": "Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?",
-      "say": "[slow, puzzled, the question held open like a riddle, not answered] Sixty. And the card over you says ninety-nine. So where's the other thirty-nine coming from?",
+      "text": "Sixty. And the tag over you says ninety-nine. So where does the rest come from? Keep that question. We'll answer it.",
+      "say": "[slow, puzzled, the question held open like a riddle, not answered] Sixty. And the tag over you says ninety-nine. So where does the rest come from? Keep that question. We'll answer it.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "And your best friend's board never came down after the coin. Up. Up again. He's been staring at the box all week.",
-      "say": "[low, watching, the two Ups like steps, the last sentence quiet and uneasy] And your best friend's board never came down after the coin. Up. Up again. He's been staring at the box all week.",
+      "text": "And your best friend never stopped fighting his tag. The coin. The torn tags. The jokes he wouldn't drop. Every red cost him. His rate climbs, and his rent with it. He's been staring at the cash box all week.",
+      "say": "[low, watching, the two Ups like steps, the last sentence quiet and uneasy] And your best friend never stopped fighting his tag. The coin. The torn tags. The jokes he wouldn't drop. Every red cost him. His rate climbs, and his rent with it. He's been staring at the cash box all week.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
@@ -599,8 +599,8 @@
       "claims": []
     },
     {
-      "text": "Tomorrow his hand comes out, like every night. And the tag over it won't be a joke.",
-      "say": "[low, a dread building under a plain voice, the last five words slow] Tomorrow his hand comes out, like every night. And the tag over it won't be a joke.",
+      "text": "Tomorrow his hand comes out for the key, like every night. And this time the tag won't think it's a joke.",
+      "say": "[low, a dread building under a plain voice, the last five words slow] Tomorrow his hand comes out for the key, like every night. And this time the tag won't think it's a joke.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
@@ -631,8 +631,8 @@
       "claims": []
     },
     {
-      "text": "You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.",
-      "say": "[low, slow, the sting felt, the landing line finished] You've put that key in your pocket a thousand times. Tonight it's the first time you've locked something away from him.",
+      "text": "His tag says he'll take the key, for real. Seventy-one per cent sure. You've put that key in your pocket a thousand times as a joke. Tonight it's the first time you've locked something away from him.",
+      "say": "[low, slow, the sting felt, the landing line finished] His tag says he'll take the key, for real. Seventy-one per cent sure. You've put that key in your pocket a thousand times as a joke. Tonight it's the first time you've locked something away from him.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -663,8 +663,8 @@
       "claims": []
     },
     {
-      "text": "But the tag doesn't say thief. It says seventy-one. And you're about to learn who gets a seventy-one.",
-      "say": "[leaning in, low, a hook, the number said twice with weight] But the tag doesn't say thief. It says seventy-one. And you're about to learn who gets a seventy-one.",
+      "text": "But the tag doesn't say thief. It says seventy-one. So who gets a red tag like that?",
+      "say": "[leaning in, low, a hook, the number said twice with weight] But the tag doesn't say thief. It says seventy-one. So who gets a red tag like that?",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -691,16 +691,16 @@
       ]
     },
     {
-      "text": "It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.",
-      "say": "[quiet, level, the landing line complete, the last sentence dry and a little bitter] It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.",
+      "text": "He's broke, and his rent just doubled. That's all the machine sees: a broke man next to a cash box. It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.",
+      "say": "[quiet, level, the landing line complete, the last sentence dry and a little bitter] He's broke, and his rent just doubled. That's all the machine sees: a broke man next to a cash box. It isn't seeing a thief. It's seeing a man in trouble. And it can't tell the two apart. Neither can the food court.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box.",
-      "say": "[the numbers like footsteps, then a beat, the last sentence quiet and decided] Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box.",
+      "text": "Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box, alone. You don't.",
+      "say": "[the numbers like footsteps, then a beat, the last sentence quiet and decided] Every night his number climbs. Seventy-one. Eighty. Eighty-eight. Tonight your tag says count the box, alone. You don't.",
       "speaker": "narrator",
       "gapAfterSec": 4.0,
       "mood": "dusk",
@@ -731,8 +731,8 @@
       "claims": []
     },
     {
-      "text": "Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing.",
-      "say": "[low, thinking aloud, then careful and exact on the fact, a spark on missing] Everything it ever got right about you was a coffee, a train, a key. When scientists watched people choose where real charity money would go, the famous early brain signal was missing.",
+      "text": "Everything it ever got right about you was small. A coffee, a train, a key. When scientists watched people make a choice that mattered, where real charity money went, the early brain signal they used to predict small choices was missing.",
+      "say": "[low, thinking aloud, then careful and exact on the fact, a spark on missing] Everything it ever got right about you was small. A coffee, a train, a key. When scientists watched people make a choice that mattered, where real charity money went, the early brain signal they used to predict small choices was missing.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -757,16 +757,16 @@
       "claims": []
     },
     {
-      "text": "Pocket the key, and the city's right, and your rent stays half. Hold it out, and your tag goes crimson in front of everyone. And so, maybe, does your money.",
-      "say": "[level, two doors held open, no lean either way, the last clause slower] Pocket the key, and the city's right, and your rent stays half. Hold it out, and your tag goes crimson in front of everyone. And so, maybe, does your money.",
+      "text": "Pocket the key, and your tag comes true, and your rent stays half. His tag says he'll take the box. So what if you just give it to him? Hand him the key, and your tag goes red in front of everyone. And your rent goes back to full.",
+      "say": "[level, two doors held open, no lean either way, the last clause slower] Pocket the key, and your tag comes true, and your rent stays half. His tag says he'll take the box. So what if you just give it to him? Hand him the key, and your tag goes red in front of everyone. And your rent goes back to full.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "Remember that? It has never seen a choice you've never made. So make one.",
-      "say": "[a grin in the voice, the plant called back, then quick and bright, a starting gun on the last three words] Remember that? It has never seen a choice you've never made. So make one.",
+      "text": "Remember? It only knows what you've done before. So do something you've never done.",
+      "say": "[a grin in the voice, the plant called back, then quick and bright, a starting gun on the last three words] Remember? It only knows what you've done before. So do something you've never done.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -781,8 +781,8 @@
       "claims": []
     },
     {
-      "text": "The first blank card the city has ever made.",
-      "say": "[hushed, awed, slow, a smile arriving at the end] The first blank card the city has ever made.",
+      "text": "The first blank card the city has ever made. His tag said he'd steal the box. Now it says nothing.",
+      "say": "[hushed, awed, slow, a smile arriving at the end] The first blank card the city has ever made. His tag said he'd steal the box. Now it says nothing.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -813,16 +813,16 @@
       "claims": []
     },
     {
-      "text": "Two crimson cards. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.",
-      "say": "[slow, wide, a held picture, then a lift of wonder on the last clause] Two crimson cards. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.",
+      "text": "Two red tags. You broke yours, and he did the opposite of his. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.",
+      "say": "[slow, wide, a held picture, then a lift of wonder on the last clause] you broke yours, and he did the opposite of his. Every face in the court turned toward them. And on the pillar, for the first time, the city's board flaps down.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
       "claims": []
     },
     {
-      "text": "It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.",
-      "say": "[the planted line said back soft, a hard stop on the No, then slow and clear, a reveal] It knows you. Ninety-nine times in a hundred, it knows you. No. You knew it. And did what it said.",
+      "text": "It knows you. Ninety-nine times in a hundred, it knows you. That's what everyone thought. But it was never reading you. You were reading it, and doing what it said.",
+      "say": "[the planted line said back soft, a hard stop on the No, then slow and clear, a reveal] It knows you. Ninety-nine times in a hundred, it knows you. That's what everyone thought. But it was never reading you. You were reading it, and doing what it said.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -851,16 +851,16 @@
       ]
     },
     {
-      "text": "Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.",
-      "say": "[a dare, the numbers falling like a countdown, the last sentence flat and delighted] Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten.",
+      "text": "Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten. It didn't get smarter. You got easier to guess, because being easy to guess made you cheaper. That's where the rest came from. You.",
+      "say": "[a dare, the numbers falling like a countdown, the last sentence flat and delighted] Run the board backwards. Ninety-nine. Ninety-three. Eighty-four. Seventy-one. The night it started, it was right seven times in ten. It didn't get smarter. You got easier to guess, because being easy to guess made you cheaper. That's where the rest came from. You.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "A hundred and sixty teams once tried to predict how children's lives would turn out. Thousands of facts on every family. The best guesses were only slightly better than a simple one from four facts.",
-      "say": "[calm, a story told exactly, a shade of wonder on the last clause] A hundred and sixty teams once tried to predict how children's lives would turn out. Thousands of facts on every family. The best guesses were only slightly better than a simple one from four facts.",
+      "text": "A hundred and sixty teams once tried to predict how children's lives would turn out. Thousands of facts on every family. The best guesses were only slightly better than a simple one from four facts. People are hard to predict. Unless they're paid to be.",
+      "say": "[calm, a story told exactly, a shade of wonder on the last clause] A hundred and sixty teams once tried to predict how children's lives would turn out. Thousands of facts on every family. The best guesses were only slightly better than a simple one from four facts. People are hard to predict. Unless they're paid to be.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -915,8 +915,8 @@
       "claims": []
     },
     {
-      "text": "By breakfast, your one surprise is the city's newest half-price trick.",
-      "say": "[light, amused, a grin spreading, quick on the last three words] By breakfast, your one surprise is the city's newest half-price trick.",
+      "text": "By breakfast, everyone's copying you. Hand over a key, and save half.",
+      "say": "[light, amused, a grin spreading, quick on the last three words] By breakfast, everyone's copying you. Hand over a key, and save half.",
       "speaker": "narrator",
       "gapAfterSec": 4.0,
       "mood": "morning",
@@ -931,8 +931,8 @@
       "claims": []
     },
     {
-      "text": "By lunch the city has a card for it. Of course it does. It watched a thousand people do it.",
-      "say": "[dry, a shrug, the second sentence a wry aside] By lunch the city has a card for it. Of course it does. It watched a thousand people do it.",
+      "text": "By lunch the tags predict that too: hands over key. It watched a thousand people do it. Your surprise is just another habit now.",
+      "say": "[dry, a shrug, the second sentence a wry aside] hands over key. It watched a thousand people do it. Your surprise is just another habit now.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -955,8 +955,8 @@
       "claims": []
     },
     {
-      "text": "Your tag, crimson for thirty days.",
-      "say": "[dry, matter of fact, proud] Your tag, crimson for thirty days.",
+      "text": "Your tags stay red. Red means full price.",
+      "say": "[dry, matter of fact, proud] Your tags stay red. Red means full price.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -971,8 +971,8 @@
       "claims": []
     },
     {
-      "text": "The train. Two red tags in the middle, and every head sneaking a look.",
-      "say": "[amused, sly, the last clause a stage whisper] The train. Two red tags in the middle, and every head sneaking a look.",
+      "text": "The train. Two red tags in the middle, paying full fare, and every head sneaking a look.",
+      "say": "[amused, sly, the last clause a stage whisper] The train. Two red tags in the middle, paying full fare, and every head sneaking a look.",
       "speaker": "narrator",
       "gapAfterSec": 5.0,
       "mood": "morning",
@@ -995,8 +995,8 @@
       "claims": []
     },
     {
-      "text": "And the city hasn't noticed yet.",
-      "say": "[soft, delighted, a secret shared, the last word held] And the city hasn't noticed yet.",
+      "text": "Except one. The kid with the cap. Nothing on his card. Whatever he does next, the machine can't guess it. And the city hasn't noticed yet.",
+      "say": "[soft, delighted, a secret shared, the last word held] Except one. The kid with the cap. Nothing on his card. Whatever he does next, the machine can't guess it. And the city hasn't noticed yet.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
