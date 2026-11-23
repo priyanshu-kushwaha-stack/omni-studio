@@ -3,11 +3,11 @@
   "project_id": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
   "pipeline_type": "studio-whatif",
   "stage": "story_script",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-15T22:33:39.029881+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-23T13:11:06.878929+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
@@ -35,6 +35,19 @@
       "story_script": "claims PASS, clicks PASS on the v3 cut (2026-11-23)"
     },
     "packaging_change": "thumbnail K17 fix proposed (faces, key 2.3x) with TRUST HIM? and TRUST ME? for the owner to pick",
-    "awaiting": "The owner watches the v3 cut. Agents never approve."
+    "awaiting": "The owner watches the v3 cut. Agents never approve.",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-23T13:11:06.836499+00:00",
+      "via": "omni approve",
+      "proof": "1169a25af4b018c47ea23547250fb7b79a9b46113f05bac0c86a4d5e883a2984",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-predicted-every-choice-you-make/renders/firstcut/firstcut-720p.mp4",
+        "sha256": "1af68bc27253ad6c299fd09882e3f5f79256a893fe7ce515d874018818ec9157",
+        "at": "2026-11-23T13:11:06.836499+00:00",
+        "proof": "61fe441203f0231dea61ce0059c4bd24a4bfe37c333c1d647d573d0b7392a13b"
+      },
+      "note": "Owner approved the v3 clarity cut (12:24) as is, 2026-11-23"
+    }
   }
 }

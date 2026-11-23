@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-15T22:33:39.029881+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "script": {
+      "path": "script.md",
+      "version": "v3 clarity pass (owner, 2026-11-23)",
+      "sha256": "de24ef96bd31aabb74ad6a0bf7f1630e8b684e9f6e8fbf0f6d8ee9bb31e709aa",
+      "changes": "review-g2-round3.md",
+      "story_read": "story-read-v3.md"
+    },
+    "room": {
+      "rounds": 5,
+      "report": "room-g2.md",
+      "verify": "room evidence ok",
+      "round5": "claims 0 blockers; story editor 3 blockers, open for the owner (review-g2-round3.md)"
+    },
+    "first_cut": {
+      "path": "renders/firstcut/firstcut-720p.mp4",
+      "size": "1280x720",
+      "duration_s": 744.5,
+      "voices": "free local; narrator voice B",
+      "previous": "renders/firstcut-v2/"
+    },
+    "qc": {
+      "story_script": "claims PASS, clicks PASS on the v3 cut (2026-11-23)"
+    },
+    "packaging_change": "thumbnail K17 fix proposed (faces, key 2.3x) with TRUST HIM? and TRUST ME? for the owner to pick",
+    "awaiting": "The owner watches the v3 cut. Agents never approve."
+  }
+}
