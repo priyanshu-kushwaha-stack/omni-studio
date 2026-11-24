@@ -1,0 +1,84 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "round": 1,
+ "note": "pair A has no tag; the counter's 47 is the thumbnail's only text",
+ "pairs": [
+  {
+   "pair": "A",
+   "thumb": "(none: 47)",
+   "result": [
+    {
+     "title": "What If You Could See Everyone's Lies Today?",
+     "chars": 44,
+     "score": 80,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Could See Everyone's Lies...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "44 characters, inside the 60-character desktop cut",
+      "open question in the title"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "B",
+   "thumb": "BY 9AM?",
+   "result": [
+    {
+     "title": "What If You Saw How Many Lies Everyone Told?",
+     "chars": 44,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If You Saw How Many Lies Everyone...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "44 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "C",
+   "thumb": "SINCE MIDNIGHT?",
+   "result": [
+    {
+     "title": "What If a Lie Counter Floated Over Every Head?",
+     "chars": 46,
+     "score": 84,
+     "issues": [
+      [
+       "mobile",
+       "a mobile feed shows about \"What If a Lie Counter Floated Over...\" - check the subject survives"
+      ],
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "46 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  }
+ ]
+}

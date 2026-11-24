@@ -1,0 +1,16 @@
+{
+  "call_id": "c306f7626af94e78826657fa855a0f64",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "failed",
+  "scores": {},
+  "blockers": [],
+  "suggestions": [],
+  "keep": [],
+  "error": "cursor-agent exited 1",
+  "trimmed": {},
+  "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "draft_sha256": "b3ee4026f0414391fde1eafaa53ed3ace2ffb1568b5d64e30e0ce5456afbe2a3"
+}

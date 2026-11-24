@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "created_at": "2026-11-24T12:25:58.361139+00:00",
+  "project_id": "2026-11-24_what-if-you-could-see-how-many-times-everyone-lied-today",
+  "title": "What If You Could See How Many Times Everyone Lied Today?",
+  "pipeline_type": "studio-whatif",
+  "style_playbook": "say-suppose",
+  "channel": "say-suppose",
+  "format": "story"
+}
