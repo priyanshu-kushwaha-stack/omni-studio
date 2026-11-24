@@ -1,0 +1,47 @@
+{
+  "call_id": "452774ebc46d44a79fc57bb945a7a7a3",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "factual_accuracy": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 55,
+      "quote": "Card, 2:58: in one study, most children aged three to eight who were told not to peek at a toy did, and lied about it; lying shows up around age two to three (c16, c08).",
+      "fix": "Card, 2:58: in developmental studies, most children aged three to eight who were told not to peek at a toy did, and lied about it, while lying first shows up around age two to three (c16, c08)."
+    },
+    {
+      "line": 10,
+      "quote": "You expect a city lit up like a scoreboard, because you have heard you are lied to a hundred times a day. You get a city of dim zeros and ones, and a handful of heads blazing in the dozens: the five percent, and one of them is your boss.",
+      "fix": "You expect a city lit up like a scoreboard, because you have heard you are lied to a hundred times a day (c12). You get a city of dim zeros and ones, and a handful of heads blazing in the dozens: the five percent (c03, c04), and one of them is your boss."
+    },
+    {
+      "line": 54,
+      "quote": "Card, 1:58: in one 1996 diary study, adults from the community reported about one lie a day, students about two (c01).",
+      "fix": "Card, 1:58: across two 1996 diary studies, adults from the community reported about one lie a day, students about two (c01)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 59,
+      "quote": "Card, 5:40: a 2012 press release claimed the nose warms when you lie; a 2017 study with thermal cameras found nose temperature tended to fall (c13, c18). [flat] \"Nobody's nose is a counter.\""
+    },
+    {
+      "line": 60,
+      "quote": "Card, 6:25: in 2003 a National Research Council report found little scientific basis for expecting a polygraph to be extremely accurate, though specific-incident tests do better than chance (c09)."
+    },
+    {
+      "line": 56,
+      "quote": "Card, 4:00: untrained people tell lies from truths about fifty-four percent of the time; they catch about forty-seven percent of lies and believe about sixty-one percent of truths (c06). [dry] \"Everyone else is a coin flip that wants to believe you.\""
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "e26f4895f13f47ca48da6ac2ed9b56725012797f093b38cd6ef67c4112fe8cf9",
+  "draft_sha256": "b2eace56b3c3b2e1158377239a6216076679015455c6ca515b6a5ea731a0d8d4"
+}

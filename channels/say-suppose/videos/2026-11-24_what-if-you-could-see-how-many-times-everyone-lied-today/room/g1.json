@@ -1,0 +1,108 @@
+{
+  "gate": "g1",
+  "stage": "proposal",
+  "channel": "say-suppose",
+  "writer_family": "anthropic",
+  "writer": "claude-fable-5-1",
+  "required_roles": [
+    "story",
+    "fact"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "draft_sha256": "b3ee4026f0414391fde1eafaa53ed3ace2ffb1568b5d64e30e0ce5456afbe2a3",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "50e9cb73d1064ae287cb47ea80ecf084",
+          "file": "room/g1/round-1/claims-check.json",
+          "output_sha256": "a9ce3dce58e617c2e2e6302dc1618ad4481964f0686012f7bae14e8ba6813253",
+          "blockers": 1
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "832a2d6193604525a223ac44063fd444",
+          "file": "room/g1/round-1/story-editor.json",
+          "output_sha256": "7545140afb7a4898dac9a6d85ac0972572debfadf8490739d1451c2839d6bf5b",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": false,
+      "candidate": false
+    },
+    {
+      "round": 2,
+      "draft_sha256": "b2eace56b3c3b2e1158377239a6216076679015455c6ca515b6a5ea731a0d8d4",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "452774ebc46d44a79fc57bb945a7a7a3",
+          "file": "room/g1/round-2/claims-check.json",
+          "output_sha256": "e26f4895f13f47ca48da6ac2ed9b56725012797f093b38cd6ef67c4112fe8cf9",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "ab6311b3b3ca49ac96827a7b91b38af6",
+          "file": "room/g1/round-2/story-editor.json",
+          "output_sha256": "2cbac3c81424a3e4bc2872d404a50095b94ff42b47f7b0ee0c157a463e0f99f4",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
+    }
+  ],
+  "skipped_rounds": [],
+  "malformed_verdicts": [],
+  "shipped": {
+    "round": 2,
+    "artifact_sha256": "b2eace56b3c3b2e1158377239a6216076679015455c6ca515b6a5ea731a0d8d4"
+  },
+  "calls": 8,
+  "cap": 16,
+  "author_cut": {
+    "round": 1,
+    "draft_sha256": "b3ee4026f0414391fde1eafaa53ed3ace2ffb1568b5d64e30e0ce5456afbe2a3",
+    "cost": {
+      "lines_changed": 20,
+      "header_changed": [],
+      "keep_lost": [
+        "Card, 1:22: in a US national survey of a thousand adults, about sixty percent reported no lies in the past day, and about half of all lies came from about five percent of people; the average, near one and a half to two, is pulled up by a few (c03, c04)."
+      ]
+    }
+  },
+  "presented": {
+    "draft_sha256": "b3ee4026f0414391fde1eafaa53ed3ace2ffb1568b5d64e30e0ce5456afbe2a3",
+    "at": "2026-11-24T13:13:20+00:00"
+  }
+}

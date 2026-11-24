@@ -4,7 +4,7 @@
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
   "status": "awaiting_human",
-  "timestamp": "2026-11-24T19:33:14.049003+00:00",
+  "timestamp": "2026-11-24T19:42:13.050193+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
@@ -106,7 +106,7 @@
   },
   "style_playbook": "say-suppose",
   "metadata": {
-    "room": "round 1 seats failed: cursor-agent [unavailable] (Cursor and GitHub unreachable from this network, 2026-11-24); one re-run per seat left",
+    "room": "shipped round 2 (owner-notes round applying the room's notes): claims 0 blockers; story editor 3 blockers carried to G2; verify ok; similar ok",
     "writer": "claude-fable-5-1",
     "brief": "channel analysis 2026-11-23 targets, this film only",
     "owner_pick": {

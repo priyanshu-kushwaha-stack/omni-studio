@@ -1,16 +1,55 @@
 {
-  "call_id": "15335011b42e4d0c92646490741e4940",
+  "call_id": "50e9cb73d1064ae287cb47ea80ecf084",
   "seat": "claims check",
   "role": "fact",
   "model": "gemini-3.8-flash-high",
   "family": "google",
-  "status": "failed",
-  "scores": {},
-  "blockers": [],
-  "suggestions": [],
-  "keep": [],
-  "error": "cursor-agent exited 1",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "Card, 4:52: the diary study found people lied least in email (c11). \"Turns out, when they have to write it down, they mostly don't.\"",
+      "why": "The spoken line states as fact that when people write things down they 'mostly don't' lie, citing c11. This contradicts c11's verbatim quote, which explicitly states that 'lying rates in face-to-face and instant messaging interactions were approximately equal' and only found that participants lied 'least in email'. Texting (instant messaging) showed equal lie rates to spoken conversation, and email was only the lowest-frequency medium, not a medium where people 'mostly don't' lie. In the story, written lies do not register simply because of the counter's arbitrary premise rule (it only counts spoken words), as proven when the leader's written statement later clicks 14 times when read aloud.",
+      "fix": "Card, 4:52: the diary study found people lied least in email and most on the phone (c11). \"Turns out, typed lies don't click\u2014the counter only listens to mouths.\"",
+      "domain": "fact",
+      "line": 58
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 10,
+      "quote": "because the average person can't tell a lie from the truth better than a coin flip.",
+      "fix": "because the average untrained person can barely tell a lie from the truth better than a coin flip, right about fifty-four percent of the time (c06)."
+    },
+    {
+      "line": 25,
+      "quote": "The small lie, and the data says they're all small.",
+      "fix": "The small lie, and the data says they're almost all small (c07)."
+    },
+    {
+      "line": 53,
+      "quote": "\"You've heard it. You're lied to ten, two hundred times a day.\"",
+      "fix": "\"You've heard it. You're lied to ten to two hundred times a day.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 53,
+      "quote": "Card, 1:22: in a US national survey of a thousand adults, about sixty percent reported no lies in the past day, and about half of all lies came from about five percent of people; the average, near one and a half to two, is pulled up by a few (c03, c04)."
+    },
+    {
+      "line": 56,
+      "quote": "Card, 3:32: in one study of students, about sixty percent lied at least once in a ten-minute chat with a stranger, two to three lies on average; some had been told to make a good impression (c05)."
+    },
+    {
+      "line": 59,
+      "quote": "Card, 5:40: a 2012 press release claimed the nose warms when you lie; a 2017 study with thermal cameras found nose temperature tended to fall (c13, c18). [flat] \"Nobody's nose is a counter.\""
+    }
+  ],
+  "error": "",
   "trimmed": {},
-  "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "output_sha256": "a9ce3dce58e617c2e2e6302dc1618ad4481964f0686012f7bae14e8ba6813253",
   "draft_sha256": "b3ee4026f0414391fde1eafaa53ed3ace2ffb1568b5d64e30e0ce5456afbe2a3"
 }

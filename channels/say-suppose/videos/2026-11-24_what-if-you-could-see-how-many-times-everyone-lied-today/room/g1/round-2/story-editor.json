@@ -1,0 +1,71 @@
+{
+  "call_id": "ab6311b3b3ca49ac96827a7b91b38af6",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "causality": 7,
+    "premise_payoff": 8
+  },
+  "blockers": [
+    {
+      "quote": "Flatmate: \"Nine?\"",
+      "why": "No new power rule after the halfway point: another person can suddenly see a counter, although the opening says only you can. Calling it unexplained does not stop it being a new rule.",
+      "fix": "Before the midpoint, replace \"Your own you can't see.\" with \"Your own you can't see. And the sight can spread\u2014but you don't know how.\" Keep \"Nine?\" as the payoff.",
+      "domain": "story",
+      "line": 63
+    },
+    {
+      "quote": "The stranger in the front row, 8:05, no counter at all.",
+      "why": "No new person after 60%: the stranger first appears more than eight minutes into a 9:50 film.",
+      "fix": "Plant the crimson-coated stranger crossing a stadium aisle at 4:15, with the space above their head hidden by the railing; reveal the missing counter at 8:05.",
+      "domain": "story",
+      "line": 62
+    },
+    {
+      "quote": "Card, 4:00: untrained people tell lies from truths about fifty-four percent of the time; they catch about forty-seven percent of lies and believe about sixty-one percent of truths (c06).",
+      "why": "Check #7 fails because three numbers land at once.",
+      "fix": "Replace with: \"Card, 4:00: untrained people tell lies from truths about fifty-four percent of the time (c06).\" Keep the narrator's coin-flip line and cut the other two figures.",
+      "domain": "story",
+      "line": 56
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 63,
+      "quote": "You laugh and don't say it",
+      "fix": "Make the habit change explicit: the flatmate asks \"You okay?\"; you begin a \"Fine\" bubble, erase it, and answer \"Not really\" before he looks above your head."
+    },
+    {
+      "line": 55,
+      "quote": "and on Friday there's a card game.",
+      "fix": "Make the next beat causal: \"By Friday your friends have heard. They invite you to poker to prove you cannot really see a bluff.\""
+    },
+    {
+      "line": 63,
+      "quote": "8:40-9:50 | Nine (the close; the kitchen, `morning`)",
+      "fix": "Compress the close to roughly forty seconds: dishes, the changed response, \"Nine?\", one comment question, cut."
+    }
+  ],
+  "keep": [
+    {
+      "line": 40,
+      "quote": "The city isn't lying to you. The city is mostly fine. The five percent has a corner office."
+    },
+    {
+      "line": 42,
+      "quote": "Read it out loud. For the people who can't see."
+    },
+    {
+      "line": 63,
+      "quote": "Flatmate: \"Nine?\""
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2cbac3c81424a3e4bc2872d404a50095b94ff42b47f7b0ee0c157a463e0f99f4",
+  "draft_sha256": "b2eace56b3c3b2e1158377239a6216076679015455c6ca515b6a5ea731a0d8d4"
+}
