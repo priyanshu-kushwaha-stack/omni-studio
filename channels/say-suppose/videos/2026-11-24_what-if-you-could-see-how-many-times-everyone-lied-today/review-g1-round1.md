@@ -59,3 +59,11 @@ the owner-notes round, as the room skill says.
 
 `checkpoint_proposal.json`: awaiting_human. Only the owner passes G1, with `omni approve`. Not pushed yet, because
 GitHub is unreachable from this network. It is committed locally on `claude/lies-counter-g1`.
+
+## The owner's pick (2026-11-25)
+
+The owner clicked "Pair a (47 alone)", interrupted, then wrote: **"GO with B."** So the pick is pair B: title B,
+"What If You Saw How Many Lies Everyone Told?", with thumbnail b, "BY 9AM?". It is recorded in the proposal packet
+(`selected_concept`) and in the checkpoint's `metadata.owner_pick`. `packaging.md` is unchanged and still shows the
+writer's recommendation (pair a). G1 stays awaiting_human until the owner's own `omni approve`. No `taste.md` entry
+was written, because the owner asked for no changes to channel files in this session.

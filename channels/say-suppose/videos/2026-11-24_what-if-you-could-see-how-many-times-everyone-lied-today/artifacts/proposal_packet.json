@@ -39,8 +39,8 @@
     }
   ],
   "selected_concept": {
-    "concept_id": "A",
-    "rationale": "Writer's recommendation (pair a: title A with the 47 alone); awaiting the owner's pick at G1"
+    "concept_id": "B",
+    "rationale": "Owner's pick at G1, 2026-11-25, in chat: \"GO with B.\" (after first clicking \"Pair a (47 alone)\" and interrupting). Title B (What If You Saw How Many Lies Everyone Told?) with thumbnail b (BY 9AM?)."
   },
   "production_plan": {
     "pipeline": "studio-whatif",

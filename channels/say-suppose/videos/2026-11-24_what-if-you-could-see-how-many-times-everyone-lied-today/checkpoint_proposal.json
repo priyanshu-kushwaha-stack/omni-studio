@@ -4,7 +4,7 @@
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
   "status": "awaiting_human",
-  "timestamp": "2026-11-24T13:24:18.723427+00:00",
+  "timestamp": "2026-11-24T19:33:14.049003+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
   "human_approved": false,
@@ -50,8 +50,8 @@
         }
       ],
       "selected_concept": {
-        "concept_id": "A",
-        "rationale": "Writer's recommendation (pair a: title A with the 47 alone); awaiting the owner's pick at G1"
+        "concept_id": "B",
+        "rationale": "Owner's pick at G1, 2026-11-25, in chat: \"GO with B.\" (after first clicking \"Pair a (47 alone)\" and interrupting). Title B (What If You Saw How Many Lies Everyone Told?) with thumbnail b (BY 9AM?)."
       },
       "production_plan": {
         "pipeline": "studio-whatif",
@@ -108,6 +108,13 @@
   "metadata": {
     "room": "round 1 seats failed: cursor-agent [unavailable] (Cursor and GitHub unreachable from this network, 2026-11-24); one re-run per seat left",
     "writer": "claude-fable-5-1",
-    "brief": "channel analysis 2026-11-23 targets, this film only"
+    "brief": "channel analysis 2026-11-23 targets, this film only",
+    "owner_pick": {
+      "pair": "B",
+      "title": "What If You Saw How Many Lies Everyone Told?",
+      "thumbnail": "b (BY 9AM?)",
+      "said": "GO with B.",
+      "at": "2026-11-25"
+    }
   }
 }
