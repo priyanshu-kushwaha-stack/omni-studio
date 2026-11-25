@@ -68,3 +68,18 @@ Round 1 had fact blockers, so it is not a candidate. The applied draft goes into
 owner's notes on the first cut (one merged list, owner notes first), as `rounds: 1` allows.
 
 **Re-voice:** 14 takes (the changed lines only); 10:28 with the holds; qc claims and clicks pass (mutes re-indexed).
+
+## Drop 2: the first cut (2026-11-25)
+
+- Fourteen beats drawn in code by three subagents in parallel, on the kit's library sets (kitchen, street, bus,
+  office-desk, canteen, tv-studio, stadium, phone) and sets drawn for this film (the thumbnail's meeting room, the
+  rule's hallway, the garage, stairwell and restaurant, the stadium bowl, the debate studio). Cards (from `> CARD:`)
+  and the counter's clicks (from the holds that say "click") are generated from script.md.
+- Sound: the channel's local cues and beds from the fail and AI-rents films (no new music; this film's score is quoted
+  at picture lock). The click is about 14 dB under the voice.
+- Script changes made for the cut: the landlord's click got a 1 s hold; the rival's phone clip shows no counter
+  ("Nothing over his head. Not on a screen."); "Flatmate: What?" became "What is it?" because the local model looped
+  the single word ("What? What? What? What?", then "waaahhh" on a re-take).
+- Watch copy: `renders/g2/lies-cut-v1-720p.mp4`, 1280x720, 10:20, -13.8 LUFS integrated, -1.2 dBFS peak.
+- Known first-cut gaps, for picture lock: cast colours differ a little between beats drawn by different agents; the
+  peak readout stops at 100 where the script says 102; the PROBLEM 3 card brushes the rival's counter on the monitor.
