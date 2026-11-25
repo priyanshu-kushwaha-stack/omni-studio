@@ -68,7 +68,8 @@ def test_say_suppose_uses_studio_whatif():
     assert config.budget_usd_per_video == 5
     assert config.loudness["story"].integrated_lufs == -14
     voices = yaml.safe_load((channel.dir / config.voices).read_text())["voices"]
-    assert voices["narrator"]["voice_id"] == "30fc8796-ceb6-4a66-b3a7-4a145ef7f346"
+    # The paid narrator is Luc (owner, 2026-11-25: "go ahead with Luc."); Arthur was rejected the day before.
+    assert voices["narrator"]["voice_id"] == "04e867c7-9e41-5cff-80d3-5284e74d7bd1"
 
 
 # --- the script gate on a dummy channel ---
