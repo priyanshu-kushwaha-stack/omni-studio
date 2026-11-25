@@ -177,8 +177,8 @@
       "claims": []
     },
     {
-      "text": "Flatmate: What?",
-      "say": "[the flatmate, easy, puzzled, one word, a shrug in it] What?",
+      "text": "Flatmate: What is it?",
+      "say": "[easy and puzzled, mouth half full, a small rise on it] What is it?",
       "speaker": "Flatmate",
       "gapAfterSec": 2.0,
       "mood": "morning",
@@ -511,7 +511,7 @@
       "text": "Landlord: Heating's fixed Monday.",
       "say": "[the landlord, brisk, keys jangling, already turning away] Heating's fixed Monday.",
       "speaker": "Landlord",
-      "gapAfterSec": 0.35,
+      "gapAfterSec": 1.0,
       "mood": "day",
       "claims": []
     },

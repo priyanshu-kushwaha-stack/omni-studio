@@ -41,7 +41,7 @@ Flatmate: Morning. I did the dishes.
 
 > HOLD: 3 s. Performed. A soft click. A small glowing 1 blinks on over his head. You look at the sink: the tower of plates. You look back at the 1. He eats his cereal.
 
-Flatmate: What?
+Flatmate: What is it?
 
 > BUBBLE (you): Nothing.
 
@@ -197,6 +197,8 @@ Mechanic two: You'll need a new gearbox.
 > SCENE: Your stairwell. The landlord, taupe head, keys, a 2 over him; below him the kid downstairs, lilac head, cap, chocolate to the ears, a 2.
 
 Landlord: Heating's fixed Monday.
+
+> HOLD: 1 s. Performed. Click. 3. He jingles his keys.
 
 You hold the rent.
 
@@ -366,7 +368,7 @@ Leader: As I wrote in my statement.
 
 Zero, in the flesh. His challenger, across the square: four. She's doing well.
 
-> SCENE: Your phone buzzing: a clip of the man in the white coat on television, a thermal camera on his shoulder, a 62 over him.
+> SCENE: Your phone buzzing: a clip of the man in the white coat on television, a thermal camera on his shoulder; over a screen, no counter.
 
 But then someone on television says he can do what you do.
 
