@@ -3,11 +3,11 @@
   "project_id": "2026-11-24_what-if-you-could-see-how-many-times-everyone-lied-today",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-24T19:42:13.050193+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-25T08:03:17.303583+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -115,6 +115,12 @@
       "thumbnail": "b (BY 9AM?)",
       "said": "GO with B.",
       "at": "2026-11-25"
+    },
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-25T08:03:17.292532+00:00",
+      "via": "omni approve",
+      "proof": "0b7135fb12cc87fbdbe6f2aa4b1175064aa7c247f5c55c288e3f0eb7a7696bea"
     }
   }
 }

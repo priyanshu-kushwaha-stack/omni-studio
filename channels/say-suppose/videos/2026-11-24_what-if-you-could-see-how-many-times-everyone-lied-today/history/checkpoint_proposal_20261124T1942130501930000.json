@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-24_what-if-you-could-see-how-many-times-everyone-lied-today",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-24T19:42:13.050193+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If You Could See Everyone's Lies Today?",
+          "why_this_works": "The owner's topic, shortened to 44 characters (K16); the writer's pick; pairs with thumbnail a (the 47 alone)",
+          "narrative_structure": "story",
+          "visual_approach": "The Monday meeting room, blinds down, projector off: the only light a glowing 47 over your boss's head, lighting his grin from above (grey-blue head, tie, hand on heart); you large at the left, head 37.5% of the frame height, mustard head, teal scarf, mug halfway to your open mouth, eyes wide, stunned. Three candidates differ only in the tag: a none (the 47 alone), b BY 9AM?, c SINCE MIDNIGHT?; drawn in code, brand/thumbs/lies; K3, K4 (4.89:1), K5, K8, K9, K11 pass (thumb-checks.json). The film opens on this frame (0:00-0:07)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 590,
+          "hook": "A soft click; the meeting room dark but for a glowing 47 over your boss's head as he says, hand on heart, \"I fought for every one of these bonuses.\" Click: 48. \"What if you could see how many times everyone lied today?\" Then, that morning: your flatmate says he did the dishes, and a 1 blinks on over his head."
+        },
+        {
+          "id": "B",
+          "title": "What If You Saw How Many Lies Everyone Told?",
+          "why_this_works": "Keeps the owner's \"how many\"; pairs with thumbnail b (BY 9AM?)",
+          "narrative_structure": "story",
+          "visual_approach": "The Monday meeting room, blinds down, projector off: the only light a glowing 47 over your boss's head, lighting his grin from above (grey-blue head, tie, hand on heart); you large at the left, head 37.5% of the frame height, mustard head, teal scarf, mug halfway to your open mouth, eyes wide, stunned. Three candidates differ only in the tag: a none (the 47 alone), b BY 9AM?, c SINCE MIDNIGHT?; drawn in code, brand/thumbs/lies; K3, K4 (4.89:1), K5, K8, K9, K11 pass (thumb-checks.json). The film opens on this frame (0:00-0:07)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 590,
+          "hook": "A soft click; the meeting room dark but for a glowing 47 over your boss's head as he says, hand on heart, \"I fought for every one of these bonuses.\" Click: 48. \"What if you could see how many times everyone lied today?\" Then, that morning: your flatmate says he did the dishes, and a 1 blinks on over his head."
+        },
+        {
+          "id": "C",
+          "title": "What If a Lie Counter Floated Over Every Head?",
+          "why_this_works": "The premise as the picture; pairs with thumbnail c (SINCE MIDNIGHT?)",
+          "narrative_structure": "story",
+          "visual_approach": "The Monday meeting room, blinds down, projector off: the only light a glowing 47 over your boss's head, lighting his grin from above (grey-blue head, tie, hand on heart); you large at the left, head 37.5% of the frame height, mustard head, teal scarf, mug halfway to your open mouth, eyes wide, stunned. Three candidates differ only in the tag: a none (the 47 alone), b BY 9AM?, c SINCE MIDNIGHT?; drawn in code, brand/thumbs/lies; K3, K4 (4.89:1), K5, K8, K9, K11 pass (thumb-checks.json). The film opens on this frame (0:00-0:07)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "anyone, worldwide (owner, 2026-11-11: no viewer persona)",
+          "target_duration_seconds": 590,
+          "hook": "A soft click; the meeting room dark but for a glowing 47 over your boss's head as he says, hand on heart, \"I fought for every one of these bonuses.\" Click: 48. \"What if you could see how many times everyone lied today?\" Then, that morning: your flatmate says he did the dishes, and a 1 blinks on over his head."
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "B",
+        "rationale": "Owner's pick at G1, 2026-11-25, in chat: \"GO with B.\" (after first clicking \"Pair a (47 alone)\" and interrupting). Title B (What If You Saw How Many Lies Everyone Told?) with thumbnail b (BY 9AM?)."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/hungry-shamir-d8a012/channels/say-suppose/videos/2026-11-24_what-if-you-could-see-how-many-times-everyone-lied-today/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging (G1, 2026-11-24): three titles, three one-variable thumbnails drawn in code (brand/thumbs/lies), the beat outline opening on the thumbnail's frame then a performed skit; claims.md (18 rows) started at G1; the brief carries the 2026-11-23 channel analysis's targets for this film only (no rule changed)"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "script.md on the template (rules/story.md), 9-10:30 at 155 wpm, exciting not sad, the counter on every head and a corner readout; free local narration (voice B) and a 720p first cut before G2; omni qc story_script must pass"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "Picture lock: cut, key shot (the thumbnail frame), text, music and mix"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "whatif_narration (local voices)",
+            "operation": "G2 narration and first cut",
+            "estimated_usd": 0,
+            "notes": "Free and local. G1 made no paid provider call: thumbnails drawn in code; the writer ran on the owner's Claude subscription (claude -p, one call); research by a subagent on public pages"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    }
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "room": "shipped round 2 (owner-notes round applying the room's notes): claims 0 blockers; story editor 3 blockers carried to G2; verify ok; similar ok",
+    "writer": "claude-fable-5-1",
+    "brief": "channel analysis 2026-11-23 targets, this film only",
+    "owner_pick": {
+      "pair": "B",
+      "title": "What If You Saw How Many Lies Everyone Told?",
+      "thumbnail": "b (BY 9AM?)",
+      "said": "GO with B.",
+      "at": "2026-11-25"
+    }
+  }
+}
