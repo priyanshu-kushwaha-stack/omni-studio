@@ -3,17 +3,30 @@
   "project_id": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
   "pipeline_type": "studio-whatif",
   "stage": "final_edit",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-25T11:02:35.978436+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-25T11:06:19.307827+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {},
   "style_playbook": "say-suppose",
   "metadata": {
     "cut": "renders/final-edit/final-edit-720p.mp4 (git-ignored), 1280x720, 12:24: the v3 picture approved at G2, sound mastered by scenes/master.py",
     "voice": "voice B, free and local; owner 2026-11-25: finish with voice B, no spend (Luc is the channel paid voice for later)",
     "qc": "final_edit: loudness PASS (-14.3 LUFS, -2.2 dBTP), clicks PASS, similarity PASS, opening WARN (first word 2.4 s)",
-    "awaiting": "the owner G3 watch; notes go in review-g3-round1.md"
+    "awaiting": "the owner G3 watch; notes go in review-g3-round1.md",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-25T11:06:19.268492+00:00",
+      "via": "omni approve",
+      "proof": "c01a84d28ac906cba2545ca38252253ce65029d96447865415f3ef880a4827cb",
+      "media": {
+        "media": "channels/say-suppose/videos/2026-11-13_what-if-ai-predicted-every-choice-you-make/renders/final-edit/final-edit-720p.mp4",
+        "sha256": "844572a15981273e9a5cae75f29ef45540938364522c19c84ec8396503807d5a",
+        "at": "2026-11-25T11:06:19.268492+00:00",
+        "proof": "0655881c0b8a3732287c9a1e5a813adf6017685de2eaa2a05e28afb43a77fd33"
+      },
+      "note": "Owner, 2026-11-25: \"Approve G3\" after the watch of renders/final-edit/final-edit-720p.mp4 (v3 picture, voice B, mastered -14.3 LUFS)."
+    }
   }
 }

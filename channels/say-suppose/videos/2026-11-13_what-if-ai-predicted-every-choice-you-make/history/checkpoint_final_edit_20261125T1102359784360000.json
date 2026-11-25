@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_edit",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-25T11:02:35.978436+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "cut": "renders/final-edit/final-edit-720p.mp4 (git-ignored), 1280x720, 12:24: the v3 picture approved at G2, sound mastered by scenes/master.py",
+    "voice": "voice B, free and local; owner 2026-11-25: finish with voice B, no spend (Luc is the channel paid voice for later)",
+    "qc": "final_edit: loudness PASS (-14.3 LUFS, -2.2 dBTP), clicks PASS, similarity PASS, opening WARN (first word 2.4 s)",
+    "awaiting": "the owner G3 watch; notes go in review-g3-round1.md"
+  }
+}
