@@ -8,6 +8,13 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-25
+
+- **"go ahead with Luc."** The channel's paid narrator is Luc, an ElevenLabs v4 preset on Higgsfield. The owner chose him
+  from a script-line A/B (two lines each, matched loudness) against Bram, Julian, Lucy and the free voice B. The day
+  before, the owner said "not Arthur. I think we should look for some other voice for this channel." (`voices.yaml`;
+  the AI-predicts film's `renders/voice-auditions/`, git-ignored)
+
 ## 2026-11-23
 
 - **"make the story more explainable complete story ... whereever not clear"** (G2 v2 cut of the AI-predicts film).
