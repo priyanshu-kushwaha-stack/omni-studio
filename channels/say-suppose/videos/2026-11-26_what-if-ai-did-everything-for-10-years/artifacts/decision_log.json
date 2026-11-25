@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-26_what-if-ai-did-everything-for-10-years",
+  "decisions": [
+    {
+      "decision_id": "d-001",
+      "stage": "proposal",
+      "category": "render_runtime_selection",
+      "subject": "Composition runtime",
+      "options_considered": [
+        {
+          "option_id": "external",
+          "label": "Blender (built in code) for the picture, the what-if engine's Remotion film for timeline, sound, tags and end card",
+          "score": 0.9,
+          "reason": "The owner chose the A4 cinematic 3D look (2026-11-25) and a whole film in 3D; the engine keeps the narration timing, mix and checks"
+        },
+        {
+          "option_id": "engine-2d",
+          "label": "The channel's paper-cut engine alone (core/engines/whatif)",
+          "score": 0.3,
+          "reason": "The channel's earlier look",
+          "rejected_because": "The owner called it plain 2D next to similar channels (2026-11-19) and picked 3D"
+        },
+        {
+          "option_id": "remotion",
+          "label": "Remotion or HyperFrames through video_compose",
+          "score": 0.2,
+          "reason": "Stock scene types",
+          "rejected_because": "Neither renders 3D figures or the cue timeline"
+        }
+      ],
+      "selected": "external",
+      "reason": "Proposed to the owner at G1 with the alternatives in one line each (packaging.md, Runtime)",
+      "confidence": 0.85
+    }
+  ]
+}

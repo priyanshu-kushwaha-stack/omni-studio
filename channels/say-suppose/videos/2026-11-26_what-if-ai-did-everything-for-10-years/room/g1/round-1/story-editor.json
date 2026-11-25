@@ -1,0 +1,75 @@
+{
+  "call_id": "78808754fa494ebf9b34e291f8538d03",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 9,
+    "hook and click confirmation": 6,
+    "causal story chain": 8,
+    "misconception and fact turns": 6,
+    "stakes and payoff": 9,
+    "escalation": 8,
+    "close": 9
+  },
+  "blockers": [
+    {
+      "quote": "Every step into this trap is a smart decision.",
+      "why": "Check #3, Second hook by 0:30: the opening names a vague trap, but the concrete gain and loss do not arrive until about 1:05.",
+      "fix": "Replace the opening narration with: \"Echo can do every job in your life. For ten years, it saves you time\u2014and quietly takes away the skill that keeps this city alive. Say, suppose, you let it handle everything.\"",
+      "domain": "story",
+      "line": 48
+    },
+    {
+      "quote": "Two escalators side by side, one up, one down; they look the same; you stepped on one years ago.",
+      "why": "Check #8, A picture only this premise can show: the image occurs before midpoint, but it is not named in a `> SCENE:` line; the draft's only such line is the post-midpoint thumbnail scene.",
+      "fix": "Add before the Year 6 beat: `> SCENE: Two identical escalators cross: you descend while Echo signs for you; Dana rises while arguing with the same Echo, both pairs of lenses glowing together.`",
+      "domain": "story",
+      "line": 52
+    },
+    {
+      "quote": "One study followed them. Homework scores up 18 percent (c04). Homework done in forty-five minutes instead of sixty-four (c05).",
+      "why": "Check #7, Misconception first: multiple figures arrive together before any one result lands on you, violating the one-number-at-a-time test.",
+      "fix": "Replace the run with: \"Echo: \u2018They finished homework faster.\u2019 Then the closed-book monthly exam: down 20 percent against their own old average (c06). You look at the pump report you signed and still cannot explain pump three.\" Cut the other spoken figures or move them off the story beat.",
+      "domain": "story",
+      "line": 50
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 51,
+      "quote": "You kept your job. Remember that too.",
+      "fix": "Make the causal bridge explicit: \"Therefore, for three years, every station sends its judgment to you\u2014and you send each one straight to Echo.\""
+    },
+    {
+      "line": 52,
+      "quote": "Which one are you on?",
+      "fix": "Give the dilemma two defensible answers: `Dana: \"Job, or skill?\"` You keep signing to protect the job, but repair the tap yourself to protect the skill."
+    },
+    {
+      "line": 28,
+      "quote": "The stranger. Hidden once, at 5:20, at the back of the voting hall: a long crimson coat, the only figure in the room with no ring in their eyes.",
+      "fix": "Cut the stranger from the cast and voting hall unless their missing ring causes a choice, reveal or later payoff."
+    }
+  ],
+  "keep": [
+    {
+      "line": 38,
+      "quote": "You signed it. You never wrote it. Those used to be the same thing."
+    },
+    {
+      "line": 39,
+      "quote": "Everyone made the smart move. Together, it was a terrible one."
+    },
+    {
+      "line": 54,
+      "quote": "Chief: \"That's decoration.\" You: \"It's a valve.\""
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "2ece7372e2880881139480fa6c95be1ea4e83b322606f728631d2c3d99040e28",
+  "draft_sha256": "a419d96f834019166d8bcd8323c488a0740042d562c5667f6a5f31d405741e0c"
+}

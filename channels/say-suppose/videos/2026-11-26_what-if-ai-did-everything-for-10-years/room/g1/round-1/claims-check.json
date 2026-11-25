@@ -1,0 +1,49 @@
+{
+  "call_id": "352f4756f99b40b58348aa3fab7c2b85",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 9,
+    "claims_accuracy": 9,
+    "caveat_discipline": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 50,
+      "quote": "One study followed them. Homework scores up 18 percent (c04). Homework done in forty-five minutes instead of sixty-four (c05).",
+      "fix": "One study followed them (c03). Homework scores up 18 percent (c04). Homework done in forty-five minutes instead of sixty-four (c05)."
+    },
+    {
+      "line": 55,
+      "quote": "Fifty-two programmers learned a brand new tool. Half had AI. On the test afterwards, the AI group scored about 50 percent. The group without it, 67 (c15).",
+      "fix": "Fifty-two programmers learned a brand new tool. Half had AI. On the test afterwards, the AI group scored about 50 percent. The group without it, about 67 percent (c15)."
+    },
+    {
+      "line": 50,
+      "quote": "Then the monthly exams. Closed book. No AI in the room. Within six months, down 20 percent, against their own old average (c06).",
+      "fix": "Then the monthly exams. Closed book. No AI in the room. After six months, down 20 percent, against their own old average (c06)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 53,
+      "quote": "A group of researchers argue this is the real risk. No robot army. No evil machine. A slow handover of one small decision at a time, until people aren't steering (c13). They argue it; nobody has measured it."
+    },
+    {
+      "line": 51,
+      "quote": "They tried Dana's fixes in the model. Retraining. A basic income. Knowing about it. None of them stopped the race (c10). One thing did: a tax on the automation itself (c11)."
+    },
+    {
+      "line": 52,
+      "quote": "An economist modelled a line. Start above it and you keep climbing. Start below it and you slide toward using AI for everything (c12). Two researchers at MIT built their own model and found the same split: the skilled get sharper, the rest lose the skill (c02). Both groups hold the same machine."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "bcc19aa1f5266a6dcba753ae0732cd783b991a8eedf9335e3034e8ef7736a4dd",
+  "draft_sha256": "a419d96f834019166d8bcd8323c488a0740042d562c5667f6a5f31d405741e0c"
+}

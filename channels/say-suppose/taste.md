@@ -8,6 +8,22 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-26
+
+- **"lets go with story along these lines. Evaluate and let me know what you think about this ?"** then **"Replace
+  the diner film"**. The owner's handover (`videos/2026-11-26_what-if-ai-did-everything-for-10-years/handover/HANDOVER.md`):
+  "What If AI Did Everything for 10 Years?", you hand everything to an AI called Echo in 2041 and live through one
+  research-backed "AI trap" per act (the crutch, homework, layoffs, the skill split, the slow handover), then a solar
+  blackout where your one hard habit saves the city's water. It replaces the fired-everyone film (shelved, not deleted,
+  `SHELVED.md` there). The session's evaluation, given before the pick: keep the premise, arc and pictures; add dialogue
+  (Echo, the coworker, a friend, the plant crew) instead of mostly narration; plant the "one hard thing a day" promise
+  at the Year 1 glitch; make the water plant your job from Year 1; about five papers, each fact a surprise; give you
+  stakes in Year 3; make the blackout's valve a manual bypass. The figures are checked before G1 (the Anthropic study is
+  67% without AI, not 65). A4 3D stays the look.
+- **"Whole film in 3D"** (2026-11-25, on the fired-everyone film; carried to its replacement), with the story locked
+  first ("Lock the story first"), 3D for this film only ("This film only for now"), and a pilot before the rest
+  ("Pilot first, then the rest").
+
 ## 2026-11-25
 
 - **"A4, cinematic"** From look test round 2 (four styles of the black-figure look: A1 polished toy, A2 toon, A3 clay,

@@ -1,0 +1,73 @@
+{
+ "tool": "~/.claude/skills/yt-package/title.py",
+ "round": 1,
+ "pairs": [
+  {
+   "pair": "A",
+   "thumb": "TOO LATE?",
+   "result": [
+    {
+     "title": "What If AI Did Everything for 10 Years?",
+     "chars": 39,
+     "score": 100,
+     "issues": [
+      [
+       "vague",
+       "everything - swap for a number, a name or a date"
+      ]
+     ],
+     "good": [
+      "39 characters, inside the 60-character desktop cut",
+      "carries a concrete figure (10)",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "B",
+   "thumb": "NOBODY NOTICED",
+   "result": [
+    {
+     "title": "What If You Let AI Run Your Life?",
+     "chars": 33,
+     "score": 98,
+     "issues": [
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "33 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  },
+  {
+   "pair": "C",
+   "thumb": "ECHO?",
+   "result": [
+    {
+     "title": "What If You Never Had to Think Again?",
+     "chars": 37,
+     "score": 98,
+     "issues": [
+      [
+       "no-number",
+       "no number, date or name - the most reliable single fix"
+      ]
+     ],
+     "good": [
+      "37 characters, inside the 60-character desktop cut",
+      "open question in the title",
+      "thumbnail and title carry different words"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,132 @@
+{
+ "rules": "channels/say-suppose/rules/thumbnails.md",
+ "measured_by": "channels/say-suppose/brand/thumbs/check.py",
+ "candidates": [
+  {
+   "id": "a",
+   "variable": "the tag",
+   "value": "TOO LATE?",
+   "tag": "TOO LATE?",
+   "stake": null,
+   "K3": {
+    "head_height_pct": 33.5,
+    "pass": true
+   },
+   "K4": {
+    "head_lum": 0.3,
+    "ring_lum": 0.418,
+    "ratio": 1.34,
+    "pass": false
+   },
+   "K5": {
+    "words": 2,
+    "cap_height_pct": 12.3,
+    "tag_contrast": 8.4,
+    "pass": true
+   },
+   "K8": {
+    "pointers": 0,
+    "pass": true
+   },
+   "K9": {
+    "colourfulness": 65.1,
+    "mean_lum": 0.355,
+    "pass": true
+   },
+   "K10": {
+    "edge_lum": 0.326,
+    "edge_vs_white": 2.79,
+    "edge_vs_dark": 6.86,
+    "note": "edge contrast only; 'found first' is the K1/K2 cold read"
+   },
+   "K11": {
+    "keys_in_badge_zone": [],
+    "pass": true
+   }
+  },
+  {
+   "id": "b",
+   "variable": "the tag",
+   "value": "NOBODY NOTICED",
+   "tag": "NOBODY NOTICED",
+   "stake": null,
+   "K3": {
+    "head_height_pct": 33.5,
+    "pass": true
+   },
+   "K4": {
+    "head_lum": 0.3,
+    "ring_lum": 0.413,
+    "ratio": 1.32,
+    "pass": false
+   },
+   "K5": {
+    "words": 2,
+    "cap_height_pct": 12.3,
+    "tag_contrast": 8.4,
+    "pass": true
+   },
+   "K8": {
+    "pointers": 0,
+    "pass": true
+   },
+   "K9": {
+    "colourfulness": 72.3,
+    "mean_lum": 0.318,
+    "pass": true
+   },
+   "K10": {
+    "edge_lum": 0.334,
+    "edge_vs_white": 2.73,
+    "edge_vs_dark": 7.02,
+    "note": "edge contrast only; 'found first' is the K1/K2 cold read"
+   },
+   "K11": {
+    "keys_in_badge_zone": [],
+    "pass": true
+   }
+  },
+  {
+   "id": "c",
+   "variable": "the tag",
+   "value": "ECHO?",
+   "tag": "ECHO?",
+   "stake": null,
+   "K3": {
+    "head_height_pct": 33.5,
+    "pass": true
+   },
+   "K4": {
+    "head_lum": 0.3,
+    "ring_lum": 0.418,
+    "ratio": 1.34,
+    "pass": false
+   },
+   "K5": {
+    "words": 1,
+    "cap_height_pct": 12.3,
+    "tag_contrast": 8.4,
+    "pass": true
+   },
+   "K8": {
+    "pointers": 0,
+    "pass": true
+   },
+   "K9": {
+    "colourfulness": 63.2,
+    "mean_lum": 0.365,
+    "pass": true
+   },
+   "K10": {
+    "edge_lum": 0.345,
+    "edge_vs_white": 2.66,
+    "edge_vs_dark": 7.21,
+    "note": "edge contrast only; 'found first' is the K1/K2 cold read"
+   },
+   "K11": {
+    "keys_in_badge_zone": [],
+    "pass": true
+   }
+  }
+ ]
+}
