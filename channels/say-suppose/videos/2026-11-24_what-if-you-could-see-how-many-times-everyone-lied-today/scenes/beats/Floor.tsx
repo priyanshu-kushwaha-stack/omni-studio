@@ -1,12 +1,12 @@
-// Beat "The Floor" (script.md ## [01:50] The Floor).
+// Beat "The Floor" (script.md ## [01:32] The Floor).
 //   - the meeting (sets/MeetingRoom.tsx), the frame played on: fourteen heads round the table, nodding; the boss
 //     raises his mug, "Nobody's losing their desk."; click, 49; the table brightens; everyone claps; you clap once, late;
 //   - the blinds go up on the open-plan floor (library `office-desk`, day): rows of heads with their counters; the
 //     stand-up at the whiteboard, you at the edge with your mug; "Nearly done." "Sent it Friday." "Printer's broken.";
 //     click, click, click; the printer drops a warm page; three heads turn; the readout 212;
-//   - the boss in his glass cabin, 50; the boss's desk: bubble "Say it again?"; "Sent it Friday." click, 51; he winks;
-//     his screen: the proposal still in Drafts; you wait at his desk, arms folded, until he sends it himself;
-//   - your desk phone rings, THANK YOU; across the floor the boss, baffled, a thumbs up; click, 52.
+//   - "villains": the boss in his glass cabin on the phone, click, 50; "the printer's broken": the printer again;
+//   - the boss's desk, the 50 over him: bubble "Say it again?"; "Sent it Friday." click, 51; he winks; his screen: the
+//     proposal still in Drafts; you wait at his desk, arms folded, until he sends it himself; at lunch, your own desk.
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { SEATED, STAND } from "@whatif/kit/rig/pose";
@@ -19,7 +19,7 @@ import { FONT } from "@whatif/kit/fonts";
 import { INK, PAPER } from "@whatif/kit/theme";
 import { BOSS, camAt, current, GLOW, HERO, linear, PASTELS, ramp, type Beat, type Shot } from "../shared";
 import { Counter, Readout } from "../parts/Counter";
-import { aim, Bubble, Clicks, handWorld, headWorld, HeroMug, Lanyard, onScreen, PaperTag, Person, talk, type Placed } from "../parts/FrameKit";
+import { aim, Bubble, Clicks, handWorld, headWorld, HeroMug, Lanyard, onScreen, Person, talk, type Placed } from "../parts/FrameKit";
 import { BOSS_POSE, meetingRoom, MeetingScene, SEATS, Seated } from "../sets/MeetingRoom";
 
 function times(shot: Shot) {
@@ -34,10 +34,9 @@ function times(shot: Shot) {
     man: [L("Desk man: Sent it Friday"), E("Desk man: Sent it Friday")] as const,
     printer: [L("Printer man: Printer's broken"), printerEnd] as const,
     ticks: [printerEnd + 6, printerEnd + 18, printerEnd + 30], page: printerEnd + 36, turn: printerEnd + 58,
-    floor: L("Two hundred and twelve"), carrying: L("Your boss is carrying"), tick50: L("Your boss is carrying", 0.75),
-    villains: L("You expected villains"), proposal: L("The proposal he"), askEnd: E("The proposal he"), sent, tick51: sent[1] + 10,
+    floor: Math.min(printerEnd + 66, L("You expected villains") - 12),
+    carrying: L("You expected villains"), tick50: L("You expected villains", 0.3), villains: L("You expected villains", 0.42), proposal: L("The proposal he"), askEnd: E("The proposal he"), sent, tick51: sent[1] + 10,
     drafts: L("Fifty-one."), fold: L("Fifty-one.", 0.45), send: L("Fifty-one.", 0.85),
-    client: L("The client calls"), thanks: L("The client calls", 0.12), credit: L("The client calls", 0.45), tick52: L("The client calls", 0.84),
     lunch: L("At lunch you find out"), end: shot.to,
   };
 }
@@ -94,7 +93,6 @@ const Meeting: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam
 
 // ---- the open-plan floor ----
 
-const DESK_TOP = 760;
 const CABIN = 1560;
 
 /** Far rows of heads over the cubicles, each with its counter: zeros and ones, a few threes. */
@@ -181,35 +179,24 @@ const BossScreen: React.FC<{ x: number; y: number; w: number; h: number; sent: b
   </g>
 );
 
-const DeskPhone: React.FC<{ frame: number; ring: boolean }> = ({ frame, ring }) => {
-  const shake = ring ? Math.sin(frame * 2.2) * 5 : 0;
-  return (
-    <g transform={`rotate(${shake} 960 ${DESK_TOP})`}>
-      <rect x={900} y={DESK_TOP - 40} width={120} height={40} rx={8} fill="#3b3e47" stroke={INK} strokeWidth={4} />
-      <path d={`M890 ${DESK_TOP - 44} q70 -40 140 0`} fill="none" stroke="#3b3e47" strokeWidth={22} strokeLinecap="round" />
-      {ring && [0, 1].map((i) => <path key={i} d={`M${1040 + i * 18} ${DESK_TOP - 80 - i * 10} q16 20 0 40`} fill="none" stroke={INK} strokeWidth={4} opacity={(frame + i * 4) % 12 < 8 ? 0.8 : 0.2} />)}
-    </g>
-  );
-};
-
 const Office: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam }) => {
-  const atDesk = frame >= k.client;
+  const atDesk = frame >= k.lunch;
   const lines = [k.woman, k.man, k.printer];
   const turned = frame >= k.turn && frame < k.floor + 30;
-  // the boss: in his cabin (on the phone), behind his desk, out for coffee, at the cabin door with a thumbs up
+  // the boss: in his cabin (on the phone), behind his desk, at the cabin door at lunch
   // he stays behind his desk, right of his screen, and in the end clicks send himself (you never touch his computer)
-  const bossX = frame < k.proposal ? 1820 : frame < k.client ? 2200 : 1720;
+  const bossX = frame < k.proposal ? 1820 : frame < k.lunch ? 2200 : 1720;
   const base: Placed = { x: bossX, y: 940, scale: 1.1, facing: -1, pose: STAND };
   const reach = linear(frame, k.send - 14, k.send - 2) * (1 - linear(frame, k.send + 16, k.send + 26));
-  const bossPose = frame >= k.credit ? { ...STAND, armF: [150, 30] as [number, number] }
+  const bossPose = frame >= k.lunch ? STAND
     : frame < k.proposal ? { ...STAND, armF: [150, 120] as [number, number] }
       : reach > 0 ? { ...STAND, lean: 8 * reach, armF: aim(base, { x: 2200 - (2200 - 2089) * reach, y: 600 + 78 * reach }) } : STAND;
   const boss: Placed = { ...base, pose: bossPose };
   const bh = headWorld(boss);
   const wink = frame >= k.tick51 + 10 && frame < k.tick51 + 34;
   // you: at the stand-up's edge, at the boss's desk, at his screen, at your own desk
-  const youX = frame < k.proposal ? 1010 : frame < k.fold ? 1660 : frame < k.client ? 1660 + linear(frame, k.fold, k.fold + 24) * 80 : 780;
-  const folded = frame >= k.fold && frame < k.client;
+  const youX = frame < k.proposal ? 1010 : frame < k.fold ? 1660 : frame < k.lunch ? 1660 + linear(frame, k.fold, k.fold + 24) * 80 : 780;
+  const folded = frame >= k.fold && frame < k.lunch;
   const you: Placed = atDesk ? { x: 780, y: 850 + 2 * 56 * 1.1, scale: 1.1, facing: 1, pose: { ...SEATED, armF: [80, 40] } }
     : { x: youX, y: 960, scale: 1.15, facing: frame < k.proposal ? -1 : 1, pose: folded ? { ...STAND, armF: [70, 115], armB: [60, 120] } : { ...STAND, armF: [40, 90] } };
   const yh = handWorld(you);
@@ -232,12 +219,11 @@ const Office: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam 
           {/* the boss's monitor on his cabin desk */}
           <BossScreen x={1910} y={560} w={230} h={150} sent={frame >= k.send} />
           <Figure x={boss.x} y={boss.y} scale={boss.scale} facing={boss.facing} pose={boss.pose} head={BOSS.head} coat={BOSS.coat} tie={BOSS.tie} time={frame}
-            mouth={talk(frame, k.sent[0], k.sent[1], frame >= k.credit ? "o" : "smile")} brows={frame >= k.credit ? "raised" : "none"} lids={wink ? 0.85 : 0}
+            mouth={talk(frame, k.sent[0], k.sent[1], "smile")} lids={wink ? 0.85 : 0}
             look={{ x: 0.8, y: 0 }} />
-          <Counter x={bh.x} y={bh.y - bh.r - 44} base={49} ticks={[k.tick50, k.tick51, k.tick52]} frame={frame} size={54} id="office-boss" />
-          <DeskPhone frame={frame} ring={frame >= k.client && frame < k.thanks + 30} />
+          <Counter x={bh.x} y={bh.y - bh.r - 44} base={49} ticks={[k.tick50, k.tick51]} frame={frame} size={54} id="office-boss" />
           <Figure x={you.x} y={you.y} scale={you.scale} facing={you.facing} pose={you.pose} head={HERO.head} scarf={HERO.scarf} tuft time={frame}
-            brows={frame >= k.tick52 ? "flat" : "none"} lids={frame >= k.proposal && frame < k.client ? 0.45 : 0.15} mouth={frame >= k.send + 4 && frame < k.client ? "smirk" : "flat"}
+            lids={frame >= k.proposal && frame < k.lunch ? 0.45 : 0.15} mouth={frame >= k.send + 4 && frame < k.lunch ? "smirk" : "flat"}
             look={youLook} />
           <Lanyard f={you} />
           {!atDesk && !folded && <HeroMug x={yh.x} y={yh.y} scale={you.scale} tilt={6} steam={false} />}
@@ -248,8 +234,7 @@ const Office: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, cam 
 
 function officeCam(frame: number, k: T): Camera {
   const shot = current(frame, [[k.blinds, "wide"], [k.woman[0], "standup"], [k.printer[0], "printer"], [k.floor, "floor"], [k.carrying, "cabin"],
-    [k.villains, "printer2"], [k.proposal, "desk"], [k.tick51 + 20, "screen"], [k.drafts, "desk2"], [k.send - 12, "screen2"], [k.client, "phone"],
-    [k.credit, "across"], [k.lunch, "lunch"]] as [number, string][]);
+    [k.villains, "printer2"], [k.proposal, "desk"], [k.tick51 + 20, "screen"], [k.drafts, "desk2"], [k.send - 12, "screen2"], [k.lunch, "lunch"]] as [number, string][]);
   switch (shot) {
     case "wide": return camAt(frame, [[k.blinds, { x: 800, y: 560, zoom: 0.85 }], [k.woman[0], { x: 700, y: 580, zoom: 1.0 }]]);
     case "standup": return camAt(frame, [[k.woman[0], { x: 480, y: 640, zoom: 1.5 }], [k.man[0], { x: 600, y: 640, zoom: 1.6 }], [k.printer[0], { x: 640, y: 640, zoom: 1.6 }]]);
@@ -260,9 +245,7 @@ function officeCam(frame: number, k: T): Camera {
     case "desk": return camAt(frame, [[k.proposal, { x: 1840, y: 620, zoom: 1.5 }], [k.tick51, { x: 1880, y: 600, zoom: 1.7 }]]);
     case "screen": return camAt(frame, [[k.tick51 + 20, { x: 2075, y: 610, zoom: 3.5 }], [k.drafts, { x: 2075, y: 615, zoom: 3.7 }]]);
     case "desk2": return camAt(frame, [[k.drafts, { x: 1880, y: 610, zoom: 1.6 }], [k.send, { x: 1960, y: 610, zoom: 1.8 }]]);
-    case "screen2": return camAt(frame, [[k.send - 12, { x: 2075, y: 610, zoom: 3.5 }], [k.client, { x: 2075, y: 615, zoom: 3.7 }]]);
-    case "phone": return camAt(frame, [[k.client, { x: 900, y: 640, zoom: 2.0 }], [k.credit, { x: 920, y: 640, zoom: 2.15 }]]);
-    case "across": return camAt(frame, [[k.credit, { x: 1250, y: 600, zoom: 1.15 }], [k.lunch, { x: 1250, y: 590, zoom: 1.2 }]]);
+    case "screen2": return camAt(frame, [[k.send - 12, { x: 2075, y: 610, zoom: 3.5 }], [k.lunch, { x: 2075, y: 615, zoom: 3.7 }]]);
     default: return camAt(frame, [[k.lunch, { x: 900, y: 600, zoom: 1.4 }], [k.end, { x: 860, y: 580, zoom: 1.6 }]]);
   }
 }
@@ -285,17 +268,14 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   const meetCam = drift(camAt(frame, [[k.start, { x: 960, y: 580, zoom: 1.4 }], [k.tick49, { x: 1000, y: 570, zoom: 1.45 }], [k.coffee, closeUp(1370, 560, 2.3)], [k.blinds, closeUp(1370, 545, 2.5)]]), frame, "fm", 2);
   const oc = drift(officeCam(frame, k), frame, "fo", 2);
   const you = onScreen(oc, { x: 1660, y: 960 - 300 * 1.15 });
-  const phone = onScreen(oc, { x: 1000, y: DESK_TOP - 90 });
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {inMeeting ? <Meeting frame={frame} k={k} cam={meetCam} /> : <Office frame={frame} k={k} cam={oc} />}
       <Blinds frame={frame} at={k.blinds} />
       <Readout label="EVERYONE YOU CAN SEE" value={212} frame={frame} on={k.floor} off={k.proposal} />
       <Bubble frame={frame} at={k.askEnd + 2} until={k.sent[0] + 10} x={you.x + 20} y={you.y - 10} text="Say it again?" />
-      <PaperTag frame={frame} at={k.thanks} until={k.credit} text="THANK YOU" x={Math.min(1500, phone.x + 60)} y={Math.max(150, phone.y - 220)} size={60} tilt={4} />
-      <Clicks at={[k.tick49, ...k.ticks, k.tick50, k.tick51, k.tick52]} volume={0.5} />
+      <Clicks at={[k.tick49, ...k.ticks, k.tick50, k.tick51]} volume={0.5} />
       <Sequence from={k.page - 8} durationInFrames={40}><Audio src={staticFile("sfx/typing.wav")} volume={0.25} /></Sequence>
-      <Sequence from={k.client} durationInFrames={60}><Audio src={staticFile("sfx/chime.wav")} volume={0.3} /></Sequence>
     </AbsoluteFill>
   );
 };

@@ -1,0 +1,50 @@
+{
+  "call_id": "d82d4b672e594be9b11f45ac25d09eb3",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 8
+  },
+  "blockers": [
+    {
+      "quote": "Untrained, people tell a lie from the truth about 54% of the time (c06). Everyone else is a coin flip that wants to believe you.",
+      "why": "Row c06 establishes that untrained judges average 54% accuracy (barely above a 50% coin flip) and exhibit a truth bias by judging 61% of truths as nondeceptive and 47% of lies as deceptive. The line overstates and distorts the finding by separating untrained people from a supposed 'everyone else' who are a coin flip, and by attributing an active intent ('wants to believe you') to an aggregate truth-bias baseline.",
+      "fix": "Untrained, people tell a lie from the truth about 54% of the time (c06)\u2014barely above a coin flip, leaning toward believing.",
+      "domain": "fact",
+      "line": 235
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 92,
+      "quote": "A 2011 talk said you're lied to 10 to 200 times a day (c12).",
+      "fix": "A 2011 talk said you may be lied to 10 to 200 times a day (c12)."
+    },
+    {
+      "line": 106,
+      "quote": "> CARD: ABOUT 5% TELL HALF THE LIES (c03, c04) (on \"5%\")",
+      "fix": "> CARD: ABOUT 5% TELL ALMOST HALF THE LIES (c03, c04) (on \"5%\")"
+    }
+  ],
+  "keep": [
+    {
+      "line": 108,
+      "quote": "In one US survey, most people reported no lies at all that day, and almost half of all the lies came from about 5% of people (c03, c04)."
+    },
+    {
+      "line": 270,
+      "quote": "Sixty thousand people. Almost all of them zeros and ones. In one big study, almost 90% of lies were little white lies (c15). Frost, not fire."
+    },
+    {
+      "line": 92,
+      "quote": "A 2011 talk said you're lied to 10 to 200 times a day (c12)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f34b294e18037f029e9ee305fb84060ac8280c15627fa1b52318aaef4807cb76",
+  "draft_sha256": "0599bba01531cc119f0d0198815c83fed341d7ac351da6d99cfa939d21607f51"
+}

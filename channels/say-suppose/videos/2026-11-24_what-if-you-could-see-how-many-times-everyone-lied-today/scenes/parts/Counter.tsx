@@ -67,16 +67,17 @@ export const Counter: React.FC<CounterProps> = ({ x, y, base, ticks = [], frame,
   );
 };
 
-/** The corner readout that climbs as the world widens: a label and a number, top right, inside the safe area. HTML over
- *  the picture (screen space). */
+/** The corner readout that climbs as the world widens. Look C (owner, 2026-11-25): one small pill in the top-left
+ *  corner, the way Ifverse shows LEVEL 1, never a box over the picture. HTML over the picture (screen space). */
 export const Readout: React.FC<{ label: string; value: number; frame: number; on: number; off?: number }> = ({ label, value, frame, on, off }) => {
   const a = interpolate(frame, [on, on + 10, (off ?? 1e9) - 10, off ?? 1e9], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   if (a <= 0) return null;
+  const short = label.replace(/^EVERYONE YOU CAN SEE$/, "LIES YOU CAN SEE");
   return (
-    <div style={{ position: "absolute", right: 120, top: 130, opacity: a, background: INK, color: PAPER, fontFamily: FONT,
-      border: `5px solid ${GLOW}`, borderRadius: 16, padding: "12px 24px", textAlign: "right", boxShadow: "0 8px 0 rgba(0,0,0,.3)" }}>
-      <div style={{ fontWeight: 800, fontSize: 30, letterSpacing: 3, color: GLOW }}>{label}</div>
-      <div style={{ fontWeight: 800, fontSize: 64, lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>{value.toLocaleString("en-US")}</div>
+    <div style={{ position: "absolute", left: 110, top: 60, opacity: a, background: "rgba(14,12,10,.72)", color: PAPER, fontFamily: FONT,
+      border: `2px solid ${GLOW}99`, borderRadius: 40, padding: "8px 20px", fontWeight: 800, fontSize: 30, letterSpacing: 2,
+      fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
+      {short} · <span style={{ color: GLOW }}>{value.toLocaleString("en-US")}</span>
     </div>
   );
 };

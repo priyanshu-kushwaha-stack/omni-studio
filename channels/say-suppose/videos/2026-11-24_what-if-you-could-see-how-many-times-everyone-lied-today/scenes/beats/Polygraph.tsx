@@ -1,4 +1,4 @@
-// The Polygraph and the Dishes [06:35] (G2 first cut). The studio: the polygraph rolls in on its trolley and is wired to
+// The Polygraph and the Dishes [05:25] (G2 first cut). The studio: the polygraph rolls in on its trolley and is wired to
 // the rival's fingers, his own thermal camera on him (his nose orange on the big screen), a test subject on a stool
 // reading twenty statements, the scoreboard YOU / POLYGRAPH / RIVAL counting to 20 / 13 / 11 while the rival sweats.
 // The host shakes your hand: the job; on "Dodge a direct challenge" she points up at the big screen, a CLOSING
@@ -34,8 +34,8 @@ const Studio: React.FC<{ shot: Shot }> = ({ shot }) => {
   const S1 = shot.at("Twenty out of twenty");
   const polyHi = wordAt(shot, "Twenty out of twenty", "The polygraph");
   const rivalHi = wordAt(shot, "Twenty out of twenty", "The rival");
-  const J = shot.at("You get the job");
-  const dodge = wordAt(shot, "You get the job", "Dodge");
+  const J = shot.at("Live fact-checker");
+  const dodge = wordAt(shot, "Live fact-checker", "Dodge");
   const mid = Math.round(mix(S0, S1, 0.5));
   const view = current<View>(f, [[shot.from, "machine"], [S0, "rig"], [mid, "board"], [rivalHi, "sweat"], [J, "job"], [dodge, "rules"]]);
 
@@ -114,8 +114,8 @@ const Dishes: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = shot.frame;
   const K = shot.at("Flatmate: You never");
   const K2 = shot.at("Flatmate: You'd had");
-  const C = shot.at("People tell");
-  const W0 = shot.end("People tell") - 10;
+  const C = shot.end("Flatmate: You'd had") + 2;
+  const W0 = C + 4;
   const W1 = shot.at("Flatmate: Still counts") + 15;
   const SC = shot.at("Flatmate: Still counts");
   const OUT = shot.at("Still counts. And");

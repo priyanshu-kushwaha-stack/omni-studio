@@ -1,0 +1,68 @@
+{
+  "call_id": "5de036de601c4fc1a0a03a1f27249f3e",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine and payoff": 9,
+    "causal beat chain": 7,
+    "escalation": 9,
+    "must-pass compliance": 7,
+    "ending": 7
+  },
+  "blockers": [
+    {
+      "quote": "And tonight, the whole city is in one room.",
+      "why": "#5 But / therefore: the stadium arrives as an \u201cand then\u201d spectacle rather than a consequence of the screen limitation.",
+      "fix": "Replace with: \u201cNot on a screen. Only in the room. So you go to the biggest room in the city.\u201d",
+      "domain": "story",
+      "line": 244
+    },
+    {
+      "quote": "Over every head you can see, a counter: lies since midnight.",
+      "why": "#16 A flagged limit that pays off: the rule runs for four spoken lines, past the three-line maximum.",
+      "fix": "Replace lines 63\u201367 with two lines: \u201cOver every head: lies spoken since midnight. It clicks on a lie and resets at midnight.\u201d / \u201cJokes and honest mistakes don't count.\u201d Keep the planted line 69 unchanged as the third line.",
+      "domain": "story",
+      "line": 63
+    },
+    {
+      "quote": "The sink is full. You laugh, and you don't say a word.",
+      "why": "#11 Never say the feeling and #12 Leave fast: this repeats the performed shot, while the final image lacks the required real-world residue.",
+      "fix": "Replace with: \u201cTomorrow, when you say you're fine, listen for the click.\u201d Keep line 481, then shorten line 483 to: \u201cWould you want to see your own number? Tell us.\u201d",
+      "domain": "story",
+      "line": 473
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 150,
+      "quote": "Fifty-one. It's still in his drafts. You wait at his desk until he sends it.",
+      "fix": "Let the win turn against you: he sends the proposal, then removes your name before it leaves. That gives the beat a value loss and motivates taking the power outside work."
+    },
+    {
+      "line": 258,
+      "quote": "Can this spread? You don't know. You don't know how you got it.",
+      "fix": "Tie the question directly to the planted stranger: \u201cSomeone else is counting the box exactly as you are. Maybe the power isn't yours alone.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 110,
+      "quote": "The city isn't lying to you. The city is mostly fine. The few who are have a corner office."
+    },
+    {
+      "line": 414,
+      "quote": "Host: Read it out loud. For the people who can't see."
+    },
+    {
+      "line": 481,
+      "quote": "That's nine. And he's the honest one."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "ef0e7dd8b2396658f874c769e03651875d97b3cb5ca1c6aae438e77c2a7f815a",
+  "draft_sha256": "0599bba01531cc119f0d0198815c83fed341d7ac351da6d99cfa939d21607f51"
+}

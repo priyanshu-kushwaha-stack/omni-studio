@@ -1,4 +1,4 @@
-// Nine [09:04] (G2 first cut): the morning kitchen, the opening turned round: you at the table with your mug, your phone
+// Nine [07:20] (G2 first cut): the morning kitchen, the opening turned round: you at the table with your mug, your phone
 // face down, not looking at anyone's head. Your phone, face up: the boss's "You OK?"; you type "Fine", hold over send,
 // erase it letter by letter, type "Not really", send. Your flatmate in the doorway, dressing gown, spoon: "Morning. I did
 // the dishes." Click, 1; behind him the sink, full; you laugh into your mug. He squints at the air over your head and

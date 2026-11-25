@@ -1,6 +1,6 @@
-// The Rival [05:58] (G2 first cut): the evening studio. The rival, sage head, white coat, beside his thermal camera, a 62
-// over him and your face in heat colours on the big screen; he clicks to 63 and pats the camera. The thermal insert: the
-// nose warms (2012), then cools (2017). The host walks you both to two stools with the camera between you ("Say it out
+// The Rival [04:55] (G2 first cut): the evening studio. The rival, sage head, white coat, beside his thermal camera, a 62
+// over him and your face in heat colours on the big screen; he clicks to 63 and pats the camera. The thermal insert on
+// "Nobody's nose is a counter": the nose warms, then cools. The host walks you both to two stools with the camera between you ("Say it out
 // loud."); he says he has never lied, 64, the audience laughs, his camera swings round and his own nose glows orange;
 // "Zero.", 65; the host turns to you and nothing comes out ("I can't see mine."); the audience laughs at the wrong one;
 // problem two: a slow push on the empty place over your head.
@@ -23,7 +23,7 @@ const AUD = [3, 7, 2, 5, 11, 4, 6, 9, 1];
 const WARM = "#ff7a1a";
 const COOL = "#3d7bff";
 
-type View = "open" | "screen" | "smug" | "walk" | "two" | "laugh" | "host" | "zero" | "you" | "wrong" | "problem";
+type View = "open" | "screen" | "walk" | "two" | "laugh" | "host" | "zero" | "you" | "wrong" | "problem";
 
 /** Where everyone stands at frame f: before the walk, standing apart; after it, on the stools. */
 function blocking(f: number, B: number, R1: number) {
@@ -43,11 +43,10 @@ function blocking(f: number, B: number, R1: number) {
 
 const RivalBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = shot.frame;
-  const t63 = shot.end("Rival: The nose") + 12;
-  const A = shot.at("A 2012");
-  const cool = wordAt(shot, "A 2012", "found");
-  const N = shot.at("Nobody's");
-  const B = shot.at("But he's got");
+  const t63 = shot.end("Rival: A liar's nose") + 12;
+  const A = shot.at("Nobody's nose");
+  const cool = wordAt(shot, "Nobody's nose", "is a counter");
+  const B = shot.at("The host puts you");
   const R1 = shot.at("Rival: I have never");
   const t64 = shot.end("Rival: I have never") + 10;
   const H = shot.at("Host: And how many");
@@ -56,7 +55,7 @@ const RivalBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
   const turn = t65 + 16;
   const L = shot.at("The audience laughs");
   const P = shot.at("Problem two");
-  const view = current<View>(f, [[shot.from, "open"], [A, "screen"], [N, "smug"], [B, "walk"], [R1, "two"], [t64 - 2, "laugh"],
+  const view = current<View>(f, [[shot.from, "open"], [A, "screen"], [B, "walk"], [R1, "two"], [t64 - 2, "laugh"],
     [H, "host"], [Z, "zero"], [turn, "you"], [L, "wrong"], [P, "problem"]]);
 
   const at = blocking(f, B, R1);
@@ -70,7 +69,7 @@ const RivalBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
   const rivalPose: Pose = f < B
     ? { ...at.rival.pose, armF: [mix(9, 78, pat) + Math.sin(f / 3) * 8 * pat, mix(10, 30, pat)] }
     : { ...at.rival.pose, tilt: f >= R1 && f < t64 + 30 ? -8 : 0, armF: f >= Z && f < t65 + 20 ? [120, -30] : at.rival.pose.armF };
-  const rivalTalks = (f >= shot.at("Rival: The nose") && f < shot.end("Rival: The nose")) || (f >= R1 && f < t64 - 10) || (f >= Z && f < t65 - 10);
+  const rivalTalks = (f >= shot.at("Rival: A liar's nose") && f < shot.end("Rival: A liar's nose")) || (f >= R1 && f < t64 - 10) || (f >= Z && f < t65 - 10);
   const rivalFace: Partial<Face> = rivalTalks
     ? { brows: "raised", lids: 0.3, mouth: "open", eyes: 1, look: { x: 0.9, y: -0.2 } }
     : swing > 0.5 && f < H ? { brows: "worry", lids: 0, mouth: "flat", eyes: 1.15, look: { x: 0.8, y: -0.5 } }
@@ -95,8 +94,7 @@ const RivalBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
   const cam = drift((() => {
     switch (view) {
       case "open": return camAt(f, [[shot.from, { x: 880, y: 560, zoom: 1.12 }], [A, { x: 800, y: 600, zoom: 1.3 }]]);
-      case "screen": return camAt(f, [[A, { x: 960, y: 290, zoom: 1.95 }], [N, { x: 960, y: 296, zoom: 2.1 }]]);
-      case "smug": return camAt(f, [[N, { x: 820, y: 640, zoom: 1.55 }], [B, { x: 800, y: 640, zoom: 1.65 }]]);
+      case "screen": return camAt(f, [[A, { x: 960, y: 290, zoom: 1.95 }], [B, { x: 960, y: 296, zoom: 2.1 }]]);
       case "walk": return camAt(f, [[B, { x: 1020, y: 600, zoom: 1.06 }], [R1, { x: 960, y: 620, zoom: 1.18 }]]);
       case "two": return camAt(f, [[R1, { x: 960, y: 640, zoom: 1.38 }], [t64, { x: 960, y: 630, zoom: 1.5 }]]);
       case "laugh": return camAt(f, [[t64, { x: 960, y: 600, zoom: 1.0 }], [H, { x: 960, y: 600, zoom: 1.05 }]]);
@@ -125,7 +123,7 @@ const RivalBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
       {(view === "laugh" || view === "wrong" || view === "walk") && (
         <AudienceBacks from={120} to={1800} y={1075} n={9} frame={f} laugh={laugh} counts={AUD} seed={3} />
       )}
-      <Bubble frame={f} at={shot.at("But he's got", 0.7)} until={R1 + 24} x={yourHead.x + 10} y={yourHead.y - yourHead.r - 60} text="Say it out loud." size={40} />
+      <Bubble frame={f} at={shot.at("The host puts you", 0.5)} until={R1 + 24} x={yourHead.x + 10} y={yourHead.y - yourHead.r - 60} text="Say it out loud." size={40} />
       <Bubble frame={f} at={turn + 30} until={P} x={yourHead.x + 10} y={yourHead.y - yourHead.r - 60} text="I can't see mine." size={40} />
       {view === "problem" && (
         <rect x={yourHead.x - 62} y={yourHead.y - yourHead.r - 150} width={124} height={92} rx={22} fill="none" stroke={PAPER}
@@ -137,4 +135,4 @@ const RivalBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
 };
 
 /** Rival: the thermal camera, the nose that cools, the stools, 62 to 65, and the one number you can't see. */
-export const rival: Beat = { id: "Rival", first: "Rival: The nose warms", lead: 0.3, Component: RivalBeat };
+export const rival: Beat = { id: "Rival", first: "Rival: A liar's nose", lead: 0.3, Component: RivalBeat };

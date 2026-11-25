@@ -1,10 +1,11 @@
 // The script's `> CARD:` lines on screen (cardData.ts, made from script.md by make_cards.py): each on its cue words, one at
-// a time, in the lower left inside YouTube's safe area (core/studio/rules/text-placement.md), off the faces. A card
-// whose top line is "PROBLEM n" or "THE RULE" sits upper left, where the lower picture is busy.
+// a time. Look C (owner, 2026-11-25: "show it as a card in the bottom very short"): a fact is a short dark tag centred at
+// the bottom inside YouTube's safe area (core/studio/rules/text-placement.md), off the faces; a "PROBLEM n" card is a
+// small pill upper left, the way Ifverse keeps one small HUD in a corner.
 import { interpolate } from "remotion";
 import type { Clip, ScriptLine } from "@whatif/kit/timeline";
 import { FONT } from "@whatif/kit/fonts";
-import { CRIMSON, FPS, INK, PAPER, TEAL } from "@whatif/kit/theme";
+import { CRIMSON, FPS, PAPER, TEAL } from "@whatif/kit/theme";
 import { CARDS, type CardItem } from "./cardData";
 import { findLine } from "./shared";
 
@@ -13,18 +14,22 @@ const OUT = 10;
 
 const Card: React.FC<{ item: CardItem; t: number; total: number }> = ({ item, t, total }) => {
   const shown = interpolate(t, [0, IN, total - OUT, total], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const slide = interpolate(t, [0, IN], [-40, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const rise = interpolate(t, [0, IN], [18, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const problem = /^PROBLEM|^THE RULE|^LIMIT/.test(item.top);
-  const pos = problem ? { left: 120, top: 150 } : { left: 120, bottom: 190 };
-  return (
-    <div style={{ position: "absolute", ...pos, opacity: shown, transform: `translateX(${slide}px) rotate(-1.5deg)`, display: "flex",
-      alignItems: "center", gap: 22, background: PAPER, color: INK, fontFamily: FONT, padding: "18px 30px 18px 22px", borderRadius: 12,
-      boxShadow: "0 8px 0 rgba(30,20,10,.28)", maxWidth: 1240 }}>
-      <div style={{ width: 12, alignSelf: "stretch", borderRadius: 6, background: problem ? CRIMSON : TEAL, flexShrink: 0 }} />
-      <div>
-        <div style={{ fontWeight: 800, fontSize: item.sub ? 60 : 68, letterSpacing: 3, lineHeight: 1.05 }}>{item.top}</div>
-        {item.sub && <div style={{ fontWeight: 800, fontSize: 46, opacity: 0.9, marginTop: 6, lineHeight: 1.2 }}>{item.sub}</div>}
+  const box: React.CSSProperties = { position: "absolute", opacity: shown, fontFamily: FONT, color: PAPER, fontWeight: 800,
+    background: "rgba(14,12,10,.78)", borderRadius: 12, whiteSpace: "nowrap" };
+  if (problem) {
+    return (
+      <div style={{ ...box, left: 110, top: 110, transform: `translateY(${-rise}px)`, padding: "10px 24px", fontSize: 34, letterSpacing: 2,
+        border: `3px solid ${CRIMSON}` }}>
+        {item.top}{item.sub ? <span style={{ opacity: 0.85, letterSpacing: 1 }}>{` · ${item.sub}`}</span> : null}
       </div>
+    );
+  }
+  return (
+    <div style={{ ...box, left: "50%", bottom: 120, transform: `translate(-50%, ${rise}px)`, padding: "12px 30px", fontSize: 40,
+      letterSpacing: 2, borderBottom: `4px solid ${TEAL}` }}>
+      {item.top}
     </div>
   );
 };

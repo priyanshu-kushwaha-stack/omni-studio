@@ -1,0 +1,37 @@
+{
+  "call_id": "6b0fa00379de48ad88914210acc35013",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 106,
+      "quote": "In one US survey, most people reported no lies at all that day, and almost half of all the lies came from about 5% of people (c03, c04).",
+      "fix": "In one US survey, about 60% of people reported no lies at all that day, and almost half of all the lies came from about 5% of people (c03, c04)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 90,
+      "quote": "A 2011 talk said you may be lied to 10 to 200 times a day (c12)."
+    },
+    {
+      "line": 106,
+      "quote": "In one US survey, most people reported no lies at all that day, and almost half of all the lies came from about 5% of people (c03, c04)."
+    },
+    {
+      "line": 233,
+      "quote": "Untrained, people tell a lie from the truth about 54% of the time (c06). A coin flip that leans toward believing."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "62201057a079e50a95aec595dbb9a4c4fb3ac99ee92bf5e1c7d5d1d26c621417",
+  "draft_sha256": "94825a68119da26a1b4335310f3b6b7733db742154eb6c62b8fd65e4ecb8f633"
+}

@@ -1,4 +1,4 @@
-// Beat "Ten Out of Ten" (script.md ## [03:27]): Friday poker at a flat's kitchen table at night (bluffs click, the
+// Beat "Ten Out of Ten" (script.md ## [02:50]): Friday poker at a flat's kitchen table at night (bluffs click, the
 // all-in clicks, you push your stack blind, he folds, the guest films), the lost watch (four heads, one click, a watch
 // out of a coat pocket), the clip spinning on your phone and the morning show calling, then the studio by day: ten
 // strangers, four clicks, the host's ten ticks against the floor team's five, "Ten out of ten", and the studio monitor
@@ -27,7 +27,7 @@ const RIVAL = { head: "#9cb89a", coat: "#f4f4ef" } as const;
 
 function cues(shot: Shot) {
   const { at, end } = shot;
-  const poker = at("Friday. Poker night.");
+  const poker = at("Poker night.");
   const allIn = at("Player: I've got a flush.");
   const allInE = end("Player: I've got a flush.");
   const quiet = at("Except the quiet one.");
@@ -37,18 +37,18 @@ function cues(shot: Shot) {
   const hold = (p: number) => Math.round(allInE + (quiet - allInE) * p);
   const aHold = (p: number) => Math.round(acesE + (take - acesE) * p);
   const glowE = end("A glow over a head");
-  const watch = at("Someone's lost a watch");
+  const watch = at("Four questions. One click.");
   const wHold = (p: number) => Math.round(glowE + (watch - glowE) * p);
   const clipE = end("The clip's everywhere");
   const host = at("Host: Ten out of ten.");
   const sHold = (p: number) => Math.round(clipE + (host - clipE) * p);
   return {
-    poker, bluffs: [0.42, 0.52, 0.62, 0.72, 0.82].map((p) => at("Friday. Poker night.", p)), allIn, allInE,
+    poker, bluffs: [0.34, 0.46, 0.58, 0.7, 0.82].map((p) => at("Poker night.", p)), allIn, allInE,
     clickAll: allInE + 4, push: [hold(0.12), hold(0.42)] as const, fold: hold(0.5), groan: hold(0.56), film: hold(0.66), take,
     quiet, aces, acesE, youFold: aHold(0.08), reveal: aHold(0.3), laugh: aHold(0.45), lose: [aHold(0.4), aHold(0.85)] as const,
-    study: at("In one study of students"), police: at("Guest: Why not take"), policeE: end("Guest: Why not take"),
+    rake: at("You take the table", 0.6), police: at("Guest: Why not take"), policeE: end("Guest: Why not take"),
     glow: at("A glow over a head"), glowE, point: [0, 1, 2, 3].map((i) => wHold(0.04 + i * 0.22)), watch,
-    pocket: at("Someone's lost a watch", 0.35), hand: at("Someone's lost a watch", 0.6),
+    pocket: at("Four questions. One click.", 0.35), hand: at("Four questions. One click.", 0.6),
     clip: at("The clip's everywhere"), calls: at("The clip's everywhere", 0.55), clipE,
     studio: clipE, sHold, host, hostE: end("Host: Ten out of ten."), untrained: at("Untrained, people"),
     leader: at("Leader: I have never"), leaderE: end("Leader: I have never"), nothing: at("Nothing over his head"),
@@ -116,7 +116,7 @@ const Poker: React.FC<{ frame: number; k: K }> = ({ frame, k }) => {
     [k.film - 2, { x: 860, y: 640, zoom: 1.35 }], [k.film + 2, { x: 520, y: 640, zoom: 2.3 }], [k.quiet - 2, { x: 470, y: 640, zoom: 2.7 }],
     [k.quiet, { x: 1110, y: 620, zoom: 1.75 }], [k.acesE + 2, { x: 1110, y: 620, zoom: 1.8 }], [k.youFold, { x: 960, y: 640, zoom: 1.3 }],
     [k.take - 2, { x: 1000, y: 640, zoom: 1.35 }],
-    [k.take, { x: 980, y: 620, zoom: 1.08 }], [k.study + 40, { x: 1060, y: 610, zoom: 1.2 }],
+    [k.take, { x: 980, y: 620, zoom: 1.08 }], [k.rake, { x: 1060, y: 610, zoom: 1.2 }],
     [k.police - 2, { x: 1060, y: 610, zoom: 1.2 }], [k.police, { x: 1300, y: 600, zoom: 1.55 }],
     [k.glow, { x: 760, y: 620, zoom: 1.5 }],
   ]);
@@ -417,4 +417,4 @@ const Component: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const tenOutOfTen: Beat = { id: "TenOutOfTen", first: "Friday. Poker night.", lead: 0.3, Component };
+export const tenOutOfTen: Beat = { id: "TenOutOfTen", first: "Poker night.", lead: 0.3, Component };

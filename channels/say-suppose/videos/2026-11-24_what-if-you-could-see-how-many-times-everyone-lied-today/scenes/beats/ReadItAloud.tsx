@@ -1,4 +1,4 @@
-// Read It Aloud [08:05] (G2 first cut): the host reads your card into her microphone; the leader laughs, the challenger
+// Read It Aloud [06:35] (G2 first cut): the host reads your card into her microphone; the leader laughs, the challenger
 // nods ("Go on. Read it."); he laughs, looks at the clock, reads. Line one: nothing. Line two: click, 1. The wordless peak
 // (10 s): his counter climbs line by line to 14, the glow spreading down his face, his grin fixed, the readout to 102;
 // the crimson stranger in the front row counts on their fingers in step with you. You write fast; the host reads the

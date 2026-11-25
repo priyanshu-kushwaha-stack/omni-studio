@@ -10,13 +10,13 @@ import { findLine } from "./shared";
 const SCORE: [string, string][] = [
   ["Boss: I fought", "theme-dark-thin.wav"],     // the frame: the channel's dark signal under the 47
   ["Leader: And I have never", "cues/crumbs.wav"], // the kitchen skit, the rule: comic
-  ["You've heard it.", "cues/wonder.wav"],        // zeros on the street and the bus
+  ["A 2011 talk", "cues/wonder.wav"],             // zeros on the street and the bus
   ["Boss: Nobody's losing", "cues/hunt.wav"],     // the floor, set piece one
-  ["Lunch. Your car's", "cues/boom.wav"],         // say it again: mechanics, landlord, kid, the date
-  ["Friday. Poker night.", "cues/crowd.wav"],     // poker, the clip, the morning show
+  ["Lunch. Your car's", "cues/boom.wav"],         // say it again: mechanics, the date
+  ["Poker night.", "cues/crowd.wav"],             // poker, the clip, the morning show
   ["Two rows down.", "cues/awe.wav"],             // the stadium
   ["Tuesday. The floor's", "cues/unease.wav"],    // everybody texts
-  ["Rival: The nose warms", "cues/market.wav"],   // the rival
+  ["Rival: A liar's nose", "cues/market.wav"],   // the rival
   ["So the network brings", "cues/hunt.wav"],     // the polygraph
   ["Flatmate: You never used", "cues/home.wav"],  // the dishes, the one tender beat
   ["Thursday. Eight o'clock.", "cues/dread.wav"], // the statement
@@ -27,11 +27,11 @@ const SCORE: [string, string][] = [
 
 /** [first words of the line its set comes in on, bed name under assets/sfx/bed-<name>.wav]. */
 const BEDS: [string, string][] = [
-  ["Boss: I fought", "office"], ["Leader: And I have never", "kitchen"], ["You've heard it.", "street-day"],
-  ["The bus. Forty heads.", "bus"], ["In the same survey", "office"], ["Lunch. Your car's", "street"],
-  ["Landlord: Heating's", "hall"], ["Dusk. A first date.", "store"], ["Friday. Poker night.", "home"],
+  ["Boss: I fought", "office"], ["Leader: And I have never", "kitchen"], ["A 2011 talk", "street-day"],
+  ["The bus. Forty heads.", "bus"], ["In one US survey", "office"], ["Lunch. Your car's", "street"],
+  ["Dusk. A first date.", "store"], ["Poker night.", "home"],
   ["Host: Ten out of ten.", "hall"], ["Two rows down.", "dock"], ["Tuesday. The floor's", "office"],
-  ["The leader's team learns", "street-day"], ["Rival: The nose warms", "hall"], ["Flatmate: You never used", "kitchen-lamp"],
+  ["Rival: A liar's nose", "hall"], ["Flatmate: You never used", "kitchen-lamp"],
   ["Thursday. Eight o'clock.", "hall"], ["Morning. Interviews", "kitchen"],
 ];
 

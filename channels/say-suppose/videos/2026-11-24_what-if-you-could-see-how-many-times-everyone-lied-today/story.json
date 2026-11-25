@@ -62,18 +62,6 @@
       "voiceId": "94f44da16cef041f",
       "describe": "A smooth, gruff male baritone: a garage mechanic in his forties. Grave and confident, a salesman's sigh, clear diction, every word distinct."
     },
-    "Landlord": {
-      "model": "local:qwen3-design",
-      "voiceType": "design",
-      "voiceId": "c12791f40cff076e",
-      "describe": "A hurried male baritone: a landlord in his sixties on the stairs with his keys. Brisk and evasive, already leaving, clear diction, every word distinct."
-    },
-    "Kid": {
-      "model": "local:qwen3-design",
-      "voiceType": "design",
-      "voiceId": "4e6544515e040f2a",
-      "describe": "A high, bright boy's voice, about six years old, on a bus. Curious and delighted, quick, clear diction, every word distinct, standard English with no slang."
-    },
     "Date": {
       "model": "local:qwen3-design",
       "voiceType": "design",
@@ -217,16 +205,8 @@
       "claims": []
     },
     {
-      "text": "It clicks the instant a lie leaves their mouth. Resets at midnight.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on instant, a full stop's pause, then plain on Resets] It clicks the instant a lie leaves their mouth. Resets at midnight.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "A lie is something said to be believed, that the speaker knows is false. Jokes don't count. Being wrong doesn't count.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, step by step, a stress on believed and knows, the two short sentences crisp] A lie is something said to be believed, that the speaker knows is false. Jokes don't count. Being wrong doesn't count.",
+      "text": "It clicks the instant a lie leaves their mouth. Jokes and honest mistakes don't count.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on instant, a full stop's pause, then crisp on Jokes and honest mistakes] It clicks the instant a lie leaves their mouth. Jokes and honest mistakes don't count.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -249,8 +229,8 @@
       "claims": []
     },
     {
-      "text": "Your own? The mirror: nothing. The phone camera: nothing. The kettle: nothing, and a very large nose.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a question, then three tries each flatter than the last, dry and amused on the nose] Your own? The mirror: nothing. The phone camera: nothing. The kettle: nothing, and a very large nose.",
+      "text": "Your own? The mirror: nothing. The kettle: nothing, and a very large nose.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a question, then two tries each flatter than the last, dry and amused on the nose] Your own? The mirror: nothing. The kettle: nothing, and a very large nose.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "morning",
@@ -281,8 +261,8 @@
       "claims": []
     },
     {
-      "text": "You've heard it. You're lied to 10 to 200 times a day. A 2011 talk said so. It named no study.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on ten to two hundred, a pause after said so, the last sentence flat and dry] You've heard it. You're lied to ten to two hundred times a day. A twenty eleven talk said so. It named no study.",
+      "text": "A 2011 talk said you may be lied to 10 to 200 times a day.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a little sceptical, a stress on ten to two hundred] A twenty eleven talk said you may be lied to ten to two hundred times a day.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -291,8 +271,8 @@
       ]
     },
     {
-      "text": "The bus. Forty heads. Thirty-two zeros. Six ones. And one man on the phone.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; counted, each short phrase its own beat, a pause before And one man] The bus. Forty heads. Thirty-two zeros. Six ones. And one man on the phone.",
+      "text": "The bus. Forty heads. Nearly all zeros. And one man on the phone.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; counted, each short phrase its own beat, a pause before And one man] The bus. Forty heads. Nearly all zeros. And one man on the phone.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -307,26 +287,6 @@
       "claims": []
     },
     {
-      "text": "A diary study found people lied most on the phone and least in email.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on phone and on email] A diary study found people lied most on the phone and least in email.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c11"
-      ]
-    },
-    {
-      "text": "In a US national survey, about 60% reported no lies at all in the past day.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on sixty percent and on no lies] In a U.S. national survey, about sixty percent reported no lies at all in the past day.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c03"
-      ]
-    },
-    {
       "text": "Who's doing the lying?",
       "say": "[cool, even, precise sci-fi narration, curious not sentimental; a real question, a stress on who] Who's doing the lying?",
       "speaker": "narrator",
@@ -335,8 +295,8 @@
       "claims": []
     },
     {
-      "text": "In the same survey, almost half of all the lies came from about 5% of people.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, a stress on half, a pause before about five percent] In the same survey, almost half of all the lies came from about five percent of people.",
+      "text": "In one US survey, most people reported no lies at all that day, and almost half of all the lies came from about 5% of people.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on no lies, a pause before and almost half, slow on about five percent] In one U.S. survey, most people reported no lies at all that day, and almost half of all the lies came from about five percent of people.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "lamp",
@@ -387,7 +347,7 @@
     },
     {
       "text": "Desk man: Sent it Friday.",
-      "say": "[a second colleague, brisk and sure, three words] Sent it Friday.",
+      "say": "[a second colleague, brisk and sure, three words] Sent it. Friday.",
       "speaker": "Desk man",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -398,24 +358,6 @@
       "say": "[a third colleague, flat, a little too quick] Printer's broken.",
       "speaker": "Printer man",
       "gapAfterSec": 3.0,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Two hundred and twelve, on one floor. In two diary studies from 1996, adults reported about 1 lie a day.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after floor, a stress on one lie] Two hundred and twelve, on one floor. In two diary studies from nineteen ninety-six, adults reported about one lie a day.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c01"
-      ]
-    },
-    {
-      "text": "Your boss is carrying it.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a stress on carrying] Your boss is carrying it.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
     },
@@ -446,14 +388,6 @@
     {
       "text": "Fifty-one. It's still in his drafts. You wait at his desk until he sends it.",
       "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a pause after Fifty-one, a stress on still and on wait] Fifty-one. It's still in his drafts. You wait at his desk until he sends it.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "The client calls to say thanks. The boss takes the credit. Click. Fifty-two.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, then Click as its own beat, the number dry] The client calls to say thanks. The boss takes the credit. Click. Fifty-two.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -508,40 +442,6 @@
       "claims": []
     },
     {
-      "text": "Landlord: Heating's fixed Monday.",
-      "say": "[the landlord, brisk, keys jangling, already turning away] Heating's fixed Monday.",
-      "speaker": "Landlord",
-      "gapAfterSec": 1.0,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "You hold the rent.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; four words, a stress on hold] You hold the rent.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Kid: Didn't eat it.",
-      "say": "[a three-year-old, mouth full of chocolate, solemn and certain] Didn't eat it.",
-      "speaker": "Kid",
-      "gapAfterSec": 2.0,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Three years old, and on the board. In one study, most children aged 3 to 8 who were told not to peek at a toy peeked, then lied about it.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a pause after board, a stress on peeked and on lied] Three years old, and on the board. In one study, most children aged three to eight who were told not to peek at a toy, peeked. Then lied about it.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c16"
-      ]
-    },
-    {
       "text": "Dusk. A first date. His profile photo, on your phone. Not the man in the chair.",
       "say": "[cool, even, precise sci-fi narration, curious not sentimental; short beats, a pause after phone, dry on the last sentence] Dusk. A first date. His profile photo, on your phone. Not the man in the chair.",
       "speaker": "narrator",
@@ -554,25 +454,6 @@
       "say": "[the date, sitting up straighter, casual but a shade too quick] Six one.",
       "speaker": "Date",
       "gapAfterSec": 2.0,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "In one study of online daters, 81% were off on height, weight or age. Usually by a little.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on eighty-one, a small smile on a little] In one study of online daters, eighty-one percent were off on height, weight or age. Usually by a little.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": [
-        "c07",
-        "c07"
-      ]
-    },
-    {
-      "text": "He's lying by two inches. Feels like everybody's lying by two inches.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, amused] He's lying by two inches. Feels like everybody's lying by two inches.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
@@ -593,16 +474,16 @@
       "claims": []
     },
     {
-      "text": "Dinner's fine. Really. And Friday, there's a card game.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a lean on fine, a pause, Really dry, then light on the card game] Dinner's fine. Really. And Friday, there's a card game.",
+      "text": "Dinner's fine. Really. So on Friday, you find a game where everybody lies.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a beat after Really, a small grin on everybody lies] Dinner's fine. Really. So on Friday, you find a game where everybody lies.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
       "claims": []
     },
     {
-      "text": "Friday. Poker night. Everybody bluffs. Everybody clicks.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; four short beats, the last two matched] Friday. Poker night. Everybody bluffs. Everybody clicks.",
+      "text": "Poker night. Everybody bluffs. Everybody clicks.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; three quick beats, amused on clicks] Poker night. Everybody bluffs. Everybody clicks.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -641,17 +522,6 @@
       "claims": []
     },
     {
-      "text": "In one study of students, about 60% lied at least once in a short chat with a stranger. Some had been told to make a good impression.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on sixty percent and on stranger, a pause before Some] In one study of students, about sixty percent lied at least once in a short chat with a stranger. Some had been told to make a good impression.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": [
-        "c05",
-        "c05"
-      ]
-    },
-    {
       "text": "Guest: Why not take it to the police?",
       "say": "[a party guest, half joking, impressed, a stress on police] Why not take it to the police?",
       "speaker": "Guest",
@@ -668,8 +538,8 @@
       "claims": []
     },
     {
-      "text": "Someone's lost a watch. Four questions. One click. One coat pocket.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; counted, each short phrase its own beat] Someone's lost a watch. Four questions. One click. One coat pocket.",
+      "text": "Four questions. One click. One coat pocket.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; three crisp beats, dry on coat pocket] Four questions. One click. One coat pocket.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -679,7 +549,7 @@
       "text": "The clip's everywhere by Sunday. Monday, a morning show calls.",
       "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a pause after Sunday] The clip's everywhere by Sunday. Monday, a morning show calls.",
       "speaker": "narrator",
-      "gapAfterSec": 6.0,
+      "gapAfterSec": 5.0,
       "mood": "night",
       "claims": []
     },
@@ -692,8 +562,8 @@
       "claims": []
     },
     {
-      "text": "Untrained, people tell a lie from the truth about 54% of the time. Everyone else is a coin flip that wants to believe you.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on fifty-four percent, a pause, then slower, a stress on wants to believe you] Untrained, people tell a lie from the truth about fifty-four percent of the time. Everyone else is a coin flip that wants to believe you.",
+      "text": "Untrained, people tell a lie from the truth about 54% of the time. A coin flip that leans toward believing.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on fifty-four percent, a pause, dry on leans toward believing] Untrained, people tell a lie from the truth about fifty-four percent of the time. A coin flip that leans toward believing.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -718,10 +588,10 @@
       "claims": []
     },
     {
-      "text": "And tonight, the whole city is in one room.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after tonight, slow on one room] And tonight, the whole city is in one room.",
+      "text": "So tonight, you go to the biggest room in the city.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a lift, a stress on biggest, slow on the last words] So tonight, you go to the biggest room in the city.",
       "speaker": "narrator",
-      "gapAfterSec": 6.0,
+      "gapAfterSec": 5.0,
       "mood": "day",
       "claims": []
     },
@@ -758,26 +628,8 @@
       "claims": []
     },
     {
-      "text": "Sixty thousand people. Almost all of them zeros and ones.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; slow, a stress on Sixty thousand, a pause, a stress on almost all] Sixty thousand people. Almost all of them zeros and ones.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": []
-    },
-    {
-      "text": "In another large study, most people lied rarely. A few prolific liars told most of the lies.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a pause after study, a stress on rarely, then few] In another large study, most people lied rarely. A few prolific liars told most of the lies.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": [
-        "c17"
-      ]
-    },
-    {
-      "text": "And almost 90% of lies were little white lies. Frost, not fire.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on ninety percent, a pause, the last three words slow and separate] And almost ninety percent of lies were little white lies. Frost, not fire.",
+      "text": "Sixty thousand people. Almost all of them zeros and ones. In one big study, almost 90% of lies were little white lies. Frost, not fire.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; hushed and wide, a pause after people, plain on the study, then slow and quiet on Frost, not fire] Sixty thousand people. Almost all of them zeros and ones. In one big study, almost ninety percent of lies were little white lies. Frost, not fire.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -802,38 +654,12 @@
       "claims": []
     },
     {
-      "text": "Tuesday. The floor's silent. Everyone's texting.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; three short beats, a stress on silent] Tuesday. The floor's silent. Everyone's texting.",
+      "text": "Tuesday. The floor's silent. Everyone's texting. No click.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; quiet, each phrase its own beat, flat on No click] Tuesday. The floor's silent. Everyone's texting. No click.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": []
-    },
-    {
-      "text": "No click.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; two words, flat] No click.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "Just write it down, you were about to type. They did.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on write it down, a pause, the last two words dry] Just write it down, you were about to type. They did.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": []
-    },
-    {
-      "text": "A diary study found people lied least in email, but about as often in instant messages as face to face.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on least, a pause after email, a stress on as often] A diary study found people lied least in email, but about as often in instant messages as face to face.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "day",
-      "claims": [
-        "c11"
-      ]
     },
     {
       "text": "They didn't stop lying. The counter just can't hear a keyboard.",
@@ -844,8 +670,8 @@
       "claims": []
     },
     {
-      "text": "Nobody sits with you at lunch. Your date texts: \"It's not you.\" No click. No counter. No idea.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; quiet, the quoted words flat, then three short beats, the last one slower] Nobody sits with you at lunch. Your date texts: \"It's not you.\" No click. No counter. No idea.",
+      "text": "At lunch, your team texts each other. From the same table.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry and amused, a pause before From the same table] At lunch, your team texts each other. From the same table.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -868,67 +694,32 @@
       "claims": []
     },
     {
-      "text": "The leader's team learns from the city. Press conference: a written statement, no questions.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a stress on learns, a pause before a written statement, no questions flat] The leader's team learns from the city. Press conference: a written statement, no questions.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "Leader: As I wrote in my statement.",
-      "say": "As I wrote in my statement.",
-      "speaker": "Leader",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
-      "text": "Zero, in the flesh. His challenger, across the square: four. She's doing well.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after Zero, dry, four landed, the last sentence light and warm] Zero, in the flesh. His challenger, across the square: four. She's doing well.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "dusk",
-      "claims": []
-    },
-    {
       "text": "But then someone on television says he can do what you do.",
       "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after then, a stress on he and on you] But then someone on television says he can do what you do.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
-      "mood": "dusk",
+      "mood": "day",
       "claims": []
     },
     {
-      "text": "Rival: The nose warms when you lie. I've read noses for twenty years.",
-      "say": "[the rival, pompous, patting his camera, a stress on warms and twenty years] The nose warms when you lie. I've read noses for twenty years.",
+      "text": "Rival: A liar's nose always gives them away. I've read noses for twenty years.",
+      "say": "[the rival, pompous and slow, pleased with himself, a stress on always and on twenty years] A liar's nose always gives them away. I've read noses for twenty years.",
       "speaker": "Rival",
       "gapAfterSec": 2.0,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "A 2012 press release claimed the nose warms when you lie. A 2017 study with thermal cameras found it tended to cool.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on press release, a pause, a stress on cool] A twenty twelve press release claimed the nose warms when you lie. A twenty seventeen study with thermal cameras found it tended to cool.",
-      "speaker": "narrator",
-      "gapAfterSec": 0.35,
-      "mood": "night",
-      "claims": [
-        "c13",
-        "c18"
-      ]
-    },
-    {
       "text": "Nobody's nose is a counter.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; flat, a small stress on Nobody's] Nobody's nose is a counter.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a light stress on counter] Nobody's nose is a counter.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "But he's got a machine, and you've got a face. The host puts you side by side.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on machine and on face, a pause, plain on the last sentence] But he's got a machine, and you've got a face. The host puts you side by side.",
+      "text": "The host puts you side by side.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a small lift on side by side] The host puts you side by side.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -975,15 +766,12 @@
       "claims": []
     },
     {
-      "text": "So the network brings in a machine. In 2003, a National Research Council report found little scientific basis for expecting a polygraph to be extremely accurate, though specific-incident tests do beat chance.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on little scientific basis, a pause before though, the last clause fair and even] So the network brings in a machine. In two thousand and three, a National Research Council report found little scientific basis for expecting a polygraph to be extremely accurate, though specific-incident tests do beat chance.",
+      "text": "So the network brings in a polygraph. Beat it, and the debate is yours.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry on polygraph, a pause, then a lift on the debate is yours] So the network brings in a polygraph. Beat it, and the debate is yours.",
       "speaker": "narrator",
       "gapAfterSec": 3.0,
       "mood": "night",
-      "claims": [
-        "c09",
-        "c09"
-      ]
+      "claims": []
     },
     {
       "text": "Twenty out of twenty. The polygraph, thirteen. The rival, eleven, sweating under his own camera.",
@@ -994,8 +782,8 @@
       "claims": []
     },
     {
-      "text": "You get the job. Live fact-checker at Thursday's debate. Dodge a direct challenge there, and you lose your closing.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; brisk, a pause after job, a stress on dodge and on closing] You get the job. Live fact-checker at Thursday's debate. Dodge a direct challenge there, and you lose your closing.",
+      "text": "Live fact-checker at Thursday's debate. Dodge a direct challenge there, and you lose your closing.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on Live, slower on the rule, a stress on lose] Live fact-checker at Thursday's debate. Dodge a direct challenge there, and you lose your closing.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -1013,20 +801,9 @@
       "text": "Flatmate: You'd had a bad week.",
       "say": "[the flatmate, warm, quiet, a shrug, a stress on bad week] You'd had a bad week.",
       "speaker": "Flatmate",
-      "gapAfterSec": 0.35,
-      "mood": "lamp",
-      "claims": []
-    },
-    {
-      "text": "People tell fewer lies per conversation to those they're closer to. And more of the lies told to close friends are kind ones.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on closer to, a pause, a softening on kind ones] People tell fewer lies per conversation to those they're closer to. And more of the lies told to close friends are kind ones.",
-      "speaker": "narrator",
       "gapAfterSec": 3.0,
       "mood": "lamp",
-      "claims": [
-        "c14",
-        "c14"
-      ]
+      "claims": []
     },
     {
       "text": "Flatmate: Still counts, though?",
@@ -1053,8 +830,8 @@
       "claims": []
     },
     {
-      "text": "The challenger's on six by the first break. Six. She's doing well.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, Six alone and dry, the last sentence light and warm] The challenger's on six by the first break. Six. She's doing well.",
+      "text": "The challenger's on six by the first break.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on six] The challenger's on six by the first break.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -1296,15 +1073,7 @@
       "text": "Flatmate: Morning. I did the dishes.",
       "say": "[the flatmate, easy and warm, spoon up, a pause after Morning, offhand on the dishes] Morning. I did the dishes.",
       "speaker": "Flatmate",
-      "gapAfterSec": 2.0,
-      "mood": "morning",
-      "claims": []
-    },
-    {
-      "text": "The sink is full. You laugh, and you don't say a word.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; warm for once, a pause after laugh, slow on the last words] The sink is full. You laugh, and you don't say a word.",
-      "speaker": "narrator",
-      "gapAfterSec": 3.0,
+      "gapAfterSec": 5.0,
       "mood": "morning",
       "claims": []
     },
@@ -1325,8 +1094,16 @@
       "claims": []
     },
     {
-      "text": "So, would you want to see the number over your own head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; the question asked honestly, a pause, then plain and quick on the asks] So, would you want to see the number over your own head? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "text": "Tomorrow, when you say you're fine, listen for the click.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; quiet and close, a pause after fine, slow and soft on listen for the click] Tomorrow, when you say you're fine, listen for the click.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Would you want to see your own number? Tell us in the comments.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a real question, warm, light on the second sentence] Would you want to see your own number? Tell us in the comments.",
       "speaker": "narrator",
       "gapAfterSec": 4.0,
       "mood": "morning",
@@ -1335,20 +1112,10 @@
   ],
   "sources": {
     "c12": "https://www.ted.com/talks/pamela_meyer_how_to_spot_a_liar/transcript",
-    "c11": "https://doi.org/10.1145/985692.985709",
     "c03": "https://doi.org/10.1111/j.1468-2958.2009.01366.x",
     "c04": "https://gwern.net/doc/psychology/2021-serota.pdf",
-    "c01": "https://pubmed.ncbi.nlm.nih.gov/8656340/",
-    "c16": "https://pubmed.ncbi.nlm.nih.gov/18717895/",
-    "c07": "https://www.cl.cam.ac.uk/events/shb/2009/hancock2.pdf",
-    "c05": "https://www.sciencedaily.com/releases/2002/06/020611070813.htm",
     "c06": "https://pubmed.ncbi.nlm.nih.gov/16859438/",
-    "c17": "https://doi.org/10.1080/03637751.2021.1985153",
-    "c15": "https://doi.org/10.1080/03637751.2021.1985153",
-    "c13": "https://www.sciencedaily.com/releases/2012/12/121203081834.htm",
-    "c18": "https://pubmed.ncbi.nlm.nih.gov/28714186/",
-    "c09": "https://www.nationalacademies.org/read/10420/chapter/2",
-    "c14": "https://doi.org/10.1037/0022-3514.74.1.63"
+    "c15": "https://doi.org/10.1080/03637751.2021.1985153"
   },
   "cues": {}
 }

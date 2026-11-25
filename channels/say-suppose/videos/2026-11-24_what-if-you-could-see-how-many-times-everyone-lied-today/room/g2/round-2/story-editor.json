@@ -1,0 +1,69 @@
+{
+  "call_id": "893155055d4f44a7b87ebbe93cab1201",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "That's nine. And he's the honest one.",
+      "why": "Check #12 Leave fast fails: this explains the final image after \u201cNine?\u201d already landed the twist.",
+      "fix": "Delete this line and cut directly from \u201cNine?\u201d to the closing question.",
+      "domain": "story",
+      "line": 482
+    },
+    {
+      "quote": "Dinner's fine. Really. And Friday, there's a card game.",
+      "why": "Check #5 But / therefore fails: the poker scene arrives as \u201cand then,\u201d without being caused by the date beat.",
+      "fix": "Replace with: \u201cDinner's fine. Really. But now ordinary lies feel too small. By Friday, you're looking for a table built on them.\u201d",
+      "domain": "story",
+      "line": 193
+    },
+    {
+      "quote": "Nobody sits with you at lunch.",
+      "why": "Check #22 A laugh in every scene fails: this creates a second sad beat before the tender dishes scene, with no laugh.",
+      "fix": "Replace the canteen and empty-floor passage with colleagues crowded around one table, silently texting one another across the same bowl. One asks, \u201cYou okay?\u201d You answer \u201cFine.\u201d Nothing clicks over you; she types back \u201cGREAT.\u201d",
+      "domain": "story",
+      "line": 291
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 347,
+      "quote": "So the network brings in a polygraph.",
+      "fix": "Give the repeat test a value turn: \u201cBeat the machine, and Thursday's debate is yours.\u201d Then move immediately to the scores."
+    },
+    {
+      "line": 256,
+      "quote": "Two rows down. Someone counting the box on their fingers. The way you do.",
+      "fix": "Have the stranger briefly point from the directors' counters to their own bare head before vanishing, strengthening the plant for another person seeing counters."
+    },
+    {
+      "line": 181,
+      "quote": "Date: Six one.",
+      "fix": "Replace the familiar height gag with a less expected status lie, such as \u201cI cooked this,\u201d followed by a click and a delivery receipt stuck beneath the plate."
+    }
+  ],
+  "keep": [
+    {
+      "line": 110,
+      "quote": "The city isn't lying to you. The city is mostly fine. The few who are have a corner office."
+    },
+    {
+      "line": 216,
+      "quote": "A glow over a head isn't evidence. But a click tells you where the truth isn't."
+    },
+    {
+      "line": 415,
+      "quote": "Host: Read it out loud. For the people who can't see."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "89b4146b1d6ce7c9bbff0a8eca1d191e8019531f61bd00a473c2a5fa519f6c4a",
+  "draft_sha256": "715202c2c5eadd447124cddc159fa85ee697f1b90ff0ab660c99a65225cc3865"
+}

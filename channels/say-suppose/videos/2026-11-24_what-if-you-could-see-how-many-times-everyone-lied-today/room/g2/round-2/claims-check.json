@@ -1,0 +1,69 @@
+{
+  "call_id": "a097752455484422b81b7c11d7e7a6b1",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 6
+  },
+  "blockers": [
+    {
+      "quote": "One 2017 study found it tended to cool (c18). Nobody's nose is a counter.",
+      "why": "Row c18 is marked contested because findings on thermal lie detection are unsettled, and claims.md explicitly instructs 'Do not state a direction (c13, c18)'. Stating that the nose tended to cool asserts a direction as fact and fails to explain why the row is contested (contradicting earlier claims of warming).",
+      "fix": "Some claims say the nose warms, but one 2017 study found it tended to cool (c18)\u2014the science is unsettled. Nobody's nose is a counter.",
+      "domain": "fact",
+      "line": 317
+    },
+    {
+      "quote": "In one US survey, almost half of all the lies came from about 5% of people (c03, c04).",
+      "why": "The misconception stated in line 92 is that you are lied to 10 to 200 times a day (c12). Stating only that 5% of people tell half of all lies does not break that high-frequency belief; the key finding supported by c03 that refutes the misconception is that about 60% of people reported zero lies in the past day (verbatim quote: 'Sixty percent of subjects report telling no lies at all'). Omitting this leaves the wrong belief unbroken.",
+      "fix": "In one US survey, about 60% of people reported telling no lies at all, and almost half of all the lies came from about 5% of people (c03, c04).",
+      "domain": "fact",
+      "line": 108
+    },
+    {
+      "quote": "Rival: The nose warms when you lie. I've read noses for twenty years.",
+      "why": "'The nose warms when you lie' speaks the contested 2012 Granada press release finding from row c13 without citing its row inline (c13). Spoken claims about the real world must cite their row, and claims.md notes c13 is contested and warns not to state a direction.",
+      "fix": "Rival: A liar's nose always gives them away. I've read noses for twenty years.",
+      "domain": "fact",
+      "line": 312
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 315,
+      "quote": "> CARD: THE NOSE MAY COOL (c18) (on \"cool\")",
+      "fix": "> CARD: NOSE TEMPERATURE UNSETTLED (c18) (on \"cool\")"
+    },
+    {
+      "line": 268,
+      "quote": "> CARD: 90% WHITE LIES (c15) (on \"white lies\")",
+      "fix": "> CARD: ALMOST 90% WHITE LIES (c15) (on \"white lies\")"
+    },
+    {
+      "line": 106,
+      "quote": "> CARD: 5% TELL HALF THE LIES (c03, c04) (on \"5%\")",
+      "fix": "> CARD: ABOUT 5% TELL HALF THE LIES (c03, c04) (on \"5%\")"
+    }
+  ],
+  "keep": [
+    {
+      "line": 235,
+      "quote": "Untrained, people tell a lie from the truth about 54% of the time (c06). Everyone else is a coin flip that wants to believe you."
+    },
+    {
+      "line": 270,
+      "quote": "Sixty thousand people. Almost all of them zeros and ones. In one big study, almost 90% of lies were little white lies (c15). Frost, not fire."
+    },
+    {
+      "line": 92,
+      "quote": "A 2011 talk said you're lied to 10 to 200 times a day (c12)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "5581b73bd9fa27110f33a140b95081516f3ce8cc1c89d46c7166d2573f66f809",
+  "draft_sha256": "715202c2c5eadd447124cddc159fa85ee697f1b90ff0ab660c99a65225cc3865"
+}

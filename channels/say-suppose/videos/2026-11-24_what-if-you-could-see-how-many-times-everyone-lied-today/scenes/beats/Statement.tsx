@@ -1,4 +1,4 @@
-// The Statement [07:19] (G2 first cut): Thursday, the debate studio, the clock at eight. The leader at his lectern with
+// The Statement [06:00] (G2 first cut): Thursday, the debate studio, the clock at eight. The leader at his lectern with
 // his sheet of paper and a 0; the challenger clicking to 6; you at the desk beside the host; the front row from behind,
 // one crimson head in a long coat with no counter at all; EVERYONE YOU CAN SEE: 88. Every question gets "As I wrote in
 // my statement." Zero, zero, zero: the 0 pulses. The studio monitor, split: the rival (70) pointing at the leader's cool
@@ -141,7 +141,7 @@ const StatementBeat: React.FC<{ shot: Shot }> = ({ shot }) => {
         <circle cx={leaderHead.x} cy={leaderHead.y - leaderHead.r - 64} r={60 + ring * 70} fill="none" stroke={GLOW} strokeWidth={8 * (1 - ring)} opacity={1 - ring} />
       )}
       <Person id="st-challenger" who={CHALLENGER} x={CHALLENGER_X} y={D_FLOOR} scale={S} facing={-1} pose={{ ...STAND, armF: [55, 50] }} face={challengerFace}
-        frame={f} seed={7} count={{ base: 4, ticks: [shot.at("The challenger's", 0.12), shot.at("The challenger's", 0.42)] }} />
+        frame={f} seed={7} count={{ base: 4, ticks: [shot.at("The challenger's", 0.18), shot.at("The challenger's", 0.64)] }} />
       <Person id="st-host" who={HOST} x={HOST_X} y={seatedY(SEAT_TOP, S)} scale={S} facing={-1} pose={{ ...SEATED, armF: [45, 50] }} face={hostFace}
         frame={f} seed={4} count={{ base: 2 }} earpiece />
       <Person id="st-you" who={HERO} x={YOU_X} y={seatedY(SEAT_TOP, S)} scale={S} facing={-1} pose={youPose} face={youFace} frame={f} seed={1} count={null} />

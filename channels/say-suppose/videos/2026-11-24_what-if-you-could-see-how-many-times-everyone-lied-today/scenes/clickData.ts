@@ -53,20 +53,6 @@ export const CLICKS: ClickItem[] = [
     "soft": false
   },
   {
-    "after": "Landlord: Heating's fixed Monday.",
-    "at": [
-      0.2
-    ],
-    "soft": false
-  },
-  {
-    "after": "Kid: Didn't eat it.",
-    "at": [
-      0.2
-    ],
-    "soft": false
-  },
-  {
     "after": "Date: Six one.",
     "at": [
       0.2
@@ -99,9 +85,9 @@ export const CLICKS: ClickItem[] = [
     "after": "The clip's everywhere by Sunday. Monday, a morning show call",
     "at": [
       0.2,
-      1.25,
-      2.3,
-      3.35
+      1.07,
+      1.95,
+      2.83
     ],
     "soft": false
   },
@@ -112,7 +98,7 @@ export const CLICKS: ClickItem[] = [
     ]
   },
   {
-    "after": "Rival: The nose warms when you lie. I've read noses for twen",
+    "after": "Rival: A liar's nose always gives them away. I've read noses",
     "at": [
       0.2
     ],

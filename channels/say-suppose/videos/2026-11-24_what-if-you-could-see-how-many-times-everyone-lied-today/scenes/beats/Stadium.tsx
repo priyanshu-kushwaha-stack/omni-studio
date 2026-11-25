@@ -1,9 +1,10 @@
-// Beat "The Stadium" (script.md ## [04:29]): the picture only this premise can show. The wordless rise (its 6 s hold
+// Beat "The Stadium" (script.md ## [03:48]): the picture only this premise can show. The wordless rise (its 5 s hold
 // opens the beat: lead 6.6 s): from your seat up out of the stands until the whole bowl is below, sixty thousand dim
 // plates like frost, the floodlights going off, the directors' box a bonfire of double digits, the readout climbing to
 // 41,300. Then two rows down the crimson stranger counting the box on their fingers, the space over their head behind
 // a railing; the crowd stands for a corner and the coat is gone. The striker goes down; his counter flares crimson and
-// clicks. Back to the bowl for the diary study (a few prolific liars: the box), and to you as the city turns to look.
+// clicks. Back to the bowl for the big study (the box's fire, then the frost of white lies), and to you as the city
+// turns to look.
 import { AbsoluteFill } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { SIT, STAND, type Pose } from "@whatif/kit/rig/pose";
@@ -25,8 +26,8 @@ function cues(shot: Shot) {
     start: shot.from, upFrom: shot.from + 12, cross: Math.round(mix(shot.from, two, 0.3)), upTo: two - 14, two,
     spread: at("Can this spread?"), spreadE, lean: spreadE + 4, stand: Math.round(mix(spreadE, striker, 0.35)),
     sit: Math.round(mix(spreadE, striker, 0.8)), striker, strikerE: end("Striker: He got me!"), click: at("Click."),
-    sixty: at("Sixty thousand people"), diary: at("In another large study"), prolific: at("In another large study", 0.5),
-    white: at("And almost 90%"), frost: at("And almost 90%", 0.7), stop: at("You stop watching the pitch"), box: at("You stop watching the pitch", 0.5),
+    sixty: at("Sixty thousand people"), diary: at("Sixty thousand people", 0.42), prolific: at("Sixty thousand people", 0.6),
+    white: at("Sixty thousand people", 0.72), frost: at("Sixty thousand people", 0.86), stop: at("You stop watching the pitch"), box: at("You stop watching the pitch", 0.5),
     problem: at("Problem one."), end: shot.to,
   };
 }

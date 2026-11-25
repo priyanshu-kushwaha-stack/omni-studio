@@ -5,7 +5,7 @@
 //     digit, "Resets" sweeps the clock hand and drops it to 0; page two: what counts (said, spoken) and what doesn't
 //     (jokes, being wrong, typed, written);
 //   - the hallway: three inserts of your mouth as you pass your flatmate, tags FINE, NEARLY THERE, LOVE IT;
-//   - the mirror, the phone camera, the kettle (your nose enormous): nothing over your head; "in your eyes": a glint;
+//   - the mirror, the kettle (your nose enormous): nothing over your head; "in your eyes": a glint;
 //   - the front door: your hand on the latch, the lanyard swinging, the door opens on the light.
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { evolvePath } from "@remotion/paths";
@@ -20,7 +20,7 @@ import { camAt, current, findLine, GLOW, HERO, linear, makeShot, ramp, type Beat
 import { Counter } from "../parts/Counter";
 import { aim, Clicks, counterOver, FLATMATE, headWorld, Lanyard, PaperTag, popAt, type Placed } from "../parts/FrameKit";
 import { KitchenScene, MATE_HEAD, type KitchenState } from "../parts/ClickKitchen";
-import { HALL, HallScene, KettleScene, MirrorScene, PhoneScene } from "../sets/RuleFlat";
+import { HALL, HallScene, KettleScene, MirrorScene } from "../sets/RuleFlat";
 import { ClickPicture } from "./Click";
 
 function times(shot: Shot) {
@@ -30,13 +30,13 @@ function times(shot: Shot) {
     ident: shot.from, open,
     over: Math.max(open + 4, L("Over every head")),
     clicks: L("It clicks the instant", 0.1), resets: L("It clicks the instant", 0.62),
-    page2: L("A lie is something"), said: L("A lie is something", 0.05), joke: L("A lie is something", 0.62), wrong: L("A lie is something", 0.8),
+    page2: L("Jokes don't count"), said: L("Jokes don't count", 0.02), joke: L("Jokes don't count", 0.1), wrong: L("Jokes don't count", 0.45),
     spoken: L("It counts what's spoken", 0.08), typed: L("It counts what's spoken", 0.36), written: L("It counts what's spoken", 0.58),
     remember: L("It counts what's spoken", 0.8),
     hall: L("You say three things"), fine: L("You say three things", 0.4), nearly: L("You say three things", 0.49), love: L("You say three things", 0.6),
     never: L("You say three things", 0.7),
-    own: L("Your own? The mirror"), mirror: L("Your own? The mirror", 0.1), phone: L("Your own? The mirror", 0.36), kettle: L("Your own? The mirror", 0.62),
-    nose: L("Your own? The mirror", 0.85),
+    own: L("Your own? The mirror"), mirror: L("Your own? The mirror", 0.1), kettle: L("Your own? The mirror", 0.42),
+    nose: L("Your own? The mirror", 0.8),
     eyes: L("It isn't on your head"), glint: L("It isn't on your head", 0.7),
     know: L("You don't need to see"), door: L("You step outside"), swing: L("You step outside", 0.45),
     end: shot.to,
@@ -209,13 +209,12 @@ function hallCam(frame: number, k: T): Camera {
 }
 
 const Picture: React.FC<{ frame: number; k: T }> = ({ frame, k }) => {
-  const shot = current(frame, [[k.ident, "flat"], [k.hall, "hall"], [k.mirror, "mirror"], [k.phone, "phone"], [k.kettle, "kettle"],
+  const shot = current(frame, [[k.ident, "flat"], [k.hall, "hall"], [k.mirror, "mirror"], [k.kettle, "kettle"],
     [k.eyes, "eyes"], [k.know, "know"], [k.door, "door"]] as [number, string][]);
   switch (shot) {
     case "flat": return <KitchenScene frame={frame} cam={drift(camAt(frame, [[k.open, FLAT_CAM], [k.hall, { ...FLAT_CAM, x: FLAT_CAM.x + 20, zoom: 1.68 }]]), frame, "flat", 2)} s={flatState(frame)} />;
     case "hall": return <Hallway frame={frame} k={k} cam={drift(hallCam(frame, k), frame, "hall", 2)} lookUp={frame >= k.own} />;
-    case "mirror": return <MirrorScene frame={frame} look={{ x: 0.1, y: -1 }} cam={drift(camAt(frame, [[k.mirror, { x: 960, y: 480, zoom: 1.2 }], [k.phone, { x: 960, y: 440, zoom: 1.35 }]]), frame, "m", 2)} />;
-    case "phone": return <PhoneScene frame={frame} look={{ x: 0, y: -1 }} cam={drift(camAt(frame, [[k.phone, { x: 960, y: 520, zoom: 1.0 }], [k.kettle, { x: 960, y: 480, zoom: 1.12 }]]), frame, "p", 2)} />;
+    case "mirror": return <MirrorScene frame={frame} look={{ x: 0.1, y: -1 }} cam={drift(camAt(frame, [[k.mirror, { x: 960, y: 480, zoom: 1.2 }], [k.kettle, { x: 960, y: 440, zoom: 1.35 }]]), frame, "m", 2)} />;
     case "kettle": return <KettleScene frame={frame} nose={1 + ramp(frame, k.nose, k.nose + 10) * 1.4} cam={drift(camAt(frame, [[k.kettle, { x: 960, y: 560, zoom: 1.0 }], [k.eyes, { x: 960, y: 600, zoom: 1.15 }]]), frame, "k", 2)} />;
     case "eyes": return <MirrorScene frame={frame} look={{ x: 0, y: 0 }} glint={ramp(frame, k.glint, k.glint + 8)} cam={camAt(frame, [[k.eyes, { x: 960, y: 560, zoom: 2.0 }], [k.know, { x: 960, y: 590, zoom: 2.6 }]])} />;
     case "know": return <FrontDoor frame={frame} k={k} cam={drift(camAt(frame, [[k.know, { x: 1000, y: 600, zoom: 1.3 }], [k.door, { x: 1200, y: 590, zoom: 1.45 }]]), frame, "kn", 2)} />;

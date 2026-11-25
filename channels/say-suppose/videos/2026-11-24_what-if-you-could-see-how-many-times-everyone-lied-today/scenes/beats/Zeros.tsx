@@ -1,9 +1,8 @@
-// Beat "Zeros" (script.md ## [01:08] Zeros).
+// Beat "Zeros" (script.md ## [01:00] Zeros).
 //   - your street (library `street`, day): a postman, a jogger, a woman with a pram, each with a dim 0, one 1; the
 //     camera pulls out on the street in full; your face falls, then your eyebrows go up;
-//   - the bus (library `bus`): a pan down forty heads (thirty-two 0, six 1) to the mint man at the back on the phone, 9;
-//     "Nearly there, love." click, 10; he puts his feet up; the bus stops at a red light; the readout EVERYONE YOU CAN
-//     SEE: 19;
+//   - the bus (library `bus`): a pan down forty heads (nearly all 0) to the mint man at the back on the phone, 9;
+//     "Nearly there, love." click, 10; he puts his feet up; the bus stops at a red light; the camera pulls out on the bus;
 //   - "Who's doing the lying?" office doors; they swing open on the meeting room, the 47 blazing over the boss.
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
@@ -16,7 +15,7 @@ import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";
 import { CRIMSON, INK } from "@whatif/kit/theme";
 import { BOSS, camAt, current, GLOW, HERO, linear, PASTELS, ramp, type Beat, type Shot } from "../shared";
-import { Counter, Readout } from "../parts/Counter";
+import { Counter } from "../parts/Counter";
 import { BUS_MAN, Clicks, headWorld, Lanyard, Person, talk, type Placed } from "../parts/FrameKit";
 import { BOSS_POSE, meetingRoom, MeetingScene } from "../sets/MeetingRoom";
 
@@ -24,10 +23,10 @@ function times(shot: Shot) {
   const L = (p: string, s = 0) => shot.at(p, s);
   const busMan = [L("Bus man: Nearly there"), shot.end("Bus man: Nearly there")] as const;
   return {
-    start: shot.from, full: L("You've heard it.", 0.5), falls: L("You've heard it.", 0.72), brows: L("You've heard it.", 0.9),
+    start: shot.from, full: L("A 2011 talk", 0.5), falls: L("A 2011 talk", 0.72), brows: L("A 2011 talk", 0.9),
     bus: L("The bus. Forty heads"), heads: L("The bus. Forty heads", 0.12), phone: L("The bus. Forty heads", 0.74), busMan,
-    tick: busMan[1] + 8, feet: busMan[1] + 22, diary: L("A diary study"), survey: L("In a US national survey"), who: L("Who's doing the lying"),
-    doors: L("In the same survey"), city: L("The city isn't lying"), office: L("The city isn't lying", 0.8), meeting: L("And he's about to run"),
+    tick: busMan[1] + 8, feet: busMan[1] + 22, who: L("Who's doing the lying"),
+    doors: L("In one US survey"), city: L("The city isn't lying"), office: L("The city isn't lying", 0.8), meeting: L("And he's about to run"),
     end: shot.to,
   };
 }
@@ -131,8 +130,8 @@ const BusInside: React.FC<{ frame: number; k: T; cam: Camera }> = ({ frame, k, c
 function busCam(frame: number, k: T): Camera {
   return camAt(frame, [
     [k.bus, { x: -300, y: 560, zoom: 1.15 }], [k.heads, { x: 100, y: 560, zoom: 1.0 }], [k.phone, { x: 1900, y: 560, zoom: 1.0 }],
-    [k.busMan[0], closeUp(BUS_MAN_X - 200, 620, 1.9)], [k.diary, closeUp(BUS_MAN_X - 260, 620, 1.75)],
-    [k.survey, { x: 1100, y: 560, zoom: 0.72 }], [k.who, { x: 1150, y: 560, zoom: 0.7 }],
+    [k.busMan[0], closeUp(BUS_MAN_X - 200, 620, 1.9)], [k.feet, closeUp(BUS_MAN_X - 260, 620, 1.75)],
+    [k.who, { x: 1150, y: 560, zoom: 0.7 }],
   ]);
 }
 
@@ -185,7 +184,6 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
       {part === "bus" && <BusInside frame={frame} k={k} cam={drift(busCam(frame, k), frame, "zbus", 2)} />}
       {(part === "doors" || part === "meeting") && <Meeting frame={frame} k={k} cam={meetCam} />}
       {(part === "doors" || part === "meeting") && <Doors frame={frame} k={k} />}
-      <Readout label="EVERYONE YOU CAN SEE" value={19} frame={frame} on={k.survey} off={k.who} />
       <Clicks at={[k.tick]} volume={0.5} />
       <Sequence from={k.doors} durationInFrames={30}><Audio src={staticFile("sfx/whoosh.wav")} volume={0.35} /></Sequence>
       <Sequence from={k.bus} durationInFrames={60}><Audio src={staticFile("sfx/bus.wav")} volume={0.25} /></Sequence>
@@ -193,4 +191,4 @@ const Scene: React.FC<{ shot: Shot }> = ({ shot }) => {
   );
 };
 
-export const zeros: Beat = { id: "Zeros", first: "You've heard it.", lead: 0.3, Component: Scene };
+export const zeros: Beat = { id: "Zeros", first: "A 2011 talk", lead: 0.3, Component: Scene };
