@@ -1,0 +1,79 @@
+{
+  "channel": "say-suppose",
+  "video": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
+  "youtube_video_id": "D1Zr-AkkwFc",
+  "requested": {
+    "title": "What If AI Predicted Every Choice You Make?",
+    "description": "A lamp goes up over a food court in Singapore, and a tag drops over every head: what that person will do next, and how sure the city is. Do what your tag says, and your life gets cheaper. Your coffee, your fare, your rent. Then your best friend's tag turns red.\n\nWould you pay full price to make your card go blank? Tell us in the comments.\n\nChapters\n0:00 The Lamp\n1:50 Random\n2:48 Your Stall\n3:19 The City Plays\n5:06 Boring Pays\n6:53 Red\n9:10 The Key\n11:17 The Queue\n\nThe tags are made up. The research is real:\n- Typing \"at random\", people were guessed right 70 to 80 per cent of the time: Scott Aaronson, PHYS771 Lecture 18\n  https://www.scottaaronson.com/democritus/lec18.html\n- Rock-paper-scissors winners tend to play the same move again: Wang, Xu and Zhou, Scientific Reports (2014)\n  https://doi.org/10.1038/srep05830\n- Where a person will be is, in principle, predictable up to 93 per cent of the time: Song et al., Science (2010)\n  https://doi.org/10.1126/science.1177170\n- Hanoi's 1902 rat-tail bounty and the rat farms it bred: Michael Vann on Freakonomics Radio\n  https://freakonomics.com/podcast/the-cobra-effect-2/\n- Brain scans guessed a left-or-right button press seconds early: Soon et al., Nature Neuroscience (2008)\n  https://doi.org/10.1038/nn.2112\n- ...and were right about 60 per cent of the time: Lages and Jaworska, Frontiers in Psychology (2012)\n  https://doi.org/10.3389/fpsyg.2012.00056\n- The early brain signal was missing when the choice was real charity money: Maoz et al., eLife (2019)\n  https://doi.org/10.7554/eLife.39787\n- A court risk score wrongly flagged Black defendants at almost twice the rate of white defendants: ProPublica (2016)\n  https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing\n- Strangers given two lines per defendant predicted as well as the software: Dressel and Farid, Science Advances (2018)\n  https://europepmc.org/article/PMC/PMC5777393\n- Drivers tracked for a discount braked hard about a fifth less often: Soleymanian, Weinberg and Zhu, Marketing Science (2019)\n  https://pubsonline.informs.org/doi/10.1287/mksc.2018.1126\n- Lean on a number to control people, and it stops behaving: Charles Goodhart (1975)\n  https://en.wikipedia.org/wiki/Goodhart%27s_law\n- 160 teams barely beat a simple four-fact guess at predicting children's lives: Salganik et al., PNAS (2020)\n  https://www.pure.ed.ac.uk/ws/files/142847984/1915006117.full.pdf\n- A false belief can make itself true: Robert K. Merton, \"The Self-Fulfilling Prophecy\" (1948)\n  https://eclass.uowm.gr/modules/document/file.php/NURED263/Merton%20The%20Self-Fulfilling%20Prophecy%201948%20Antioch%20Review.pdf\n- Singapore has priced its busiest roads electronically since 1998: Land Transport Authority\n  https://www.lta.gov.sg/content/ltagov/en/who_we_are/our_work/road.html\n\nNarrated with an AI voice. Animated in code.",
+    "tags": [
+      "what if",
+      "AI prediction",
+      "predict every choice",
+      "free will",
+      "self-fulfilling prophecy",
+      "Goodhart's law",
+      "animated story",
+      "say suppose"
+    ],
+    "categoryId": "27",
+    "language": "en",
+    "privacyStatus": "private",
+    "madeForKids": false,
+    "containsSyntheticMedia": false
+  },
+  "readback": {
+    "found": true,
+    "id": "D1Zr-AkkwFc",
+    "channelId": "UC_Ve59ry_JYiX8sUaSOV8sQ",
+    "privacyStatus": "private",
+    "publishAt": null,
+    "selfDeclaredMadeForKids": false,
+    "madeForKids": false,
+    "containsSyntheticMedia": null
+  },
+  "readback_problems": [
+    "containsSyntheticMedia reads back None, asked False"
+  ],
+  "thumbnail": {
+    "file": "renders/packaging/thumb-a.png",
+    "served": {
+      "default": {
+        "url": "https://i9.ytimg.com/vi/D1Zr-AkkwFc/default.jpg?sqp=CIyhnNgG&rs=AOn4CLAnMs1uj7CadGT1lLUmNk5cH_CzCw",
+        "width": 120,
+        "height": 90
+      },
+      "medium": {
+        "url": "https://i9.ytimg.com/vi/D1Zr-AkkwFc/mqdefault.jpg?sqp=CIyhnNgG&rs=AOn4CLBTTDGYFHEsc69tr5YGvDcV3wS_JQ",
+        "width": 320,
+        "height": 180
+      },
+      "high": {
+        "url": "https://i9.ytimg.com/vi/D1Zr-AkkwFc/hqdefault.jpg?sqp=CIyhnNgG&rs=AOn4CLAYDnJEAt7kM_Y_pGpOKB8xPxINRQ",
+        "width": 480,
+        "height": 360
+      },
+      "standard": {
+        "url": "https://i9.ytimg.com/vi/D1Zr-AkkwFc/sddefault.jpg?sqp=CIyhnNgG&rs=AOn4CLAXmc2EbSJwJMrr8NcT12AmbhYBow",
+        "width": 640,
+        "height": 480
+      },
+      "maxres": {
+        "url": "https://i9.ytimg.com/vi/D1Zr-AkkwFc/maxresdefault.jpg?sqp=CIyhnNgG&rs=AOn4CLB3Qs7tfjOvpkGKVp4EQEUO9XwfiA",
+        "width": 1280,
+        "height": 720
+      },
+      "fhd": {
+        "url": "https://i9.ytimg.com/vi/D1Zr-AkkwFc/fhddefault.jpg?sqp=CIyhnNgG&rs=AOn4CLD4ezryyGYJWNOC9VvV4AS57c0XyA",
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  },
+  "captions": [
+    {
+      "language": "en",
+      "file": "subtitles/en.srt",
+      "id": "AUieDaafi4p-Y6jjupiEXAfqaicbVaPf1SE_XyBbrGI0"
+    }
+  ]
+}
