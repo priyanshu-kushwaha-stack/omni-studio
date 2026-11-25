@@ -362,7 +362,7 @@ Zero, in the flesh. His challenger, across the square: four. She's doing well.
 
 > SCENE: Your phone buzzing: a clip of the man in the white coat on television, a thermal camera on his shoulder, a 62 over him.
 
-And then someone on television says he can do what you do.
+But then someone on television says he can do what you do.
 
 ## [05:58] The Rival
 
