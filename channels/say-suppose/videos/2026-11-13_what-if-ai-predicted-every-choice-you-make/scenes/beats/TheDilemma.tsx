@@ -16,7 +16,8 @@
 //       "So make one.": the counter in the thumbnail's geometry, the key coming up in your hand, your eyes going to
 //       him with a small mischievous smile; the next beat (The Key) opens on the thumbnail's wide frame with the key on
 //       your open palm, a cut on the action
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { STAND, lerpPose, type Pose } from "@whatif/kit/rig/pose";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import { Stage, type Camera } from "@whatif/kit/stage/Stage";

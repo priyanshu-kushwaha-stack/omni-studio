@@ -10,7 +10,8 @@
 //   29-31  the landlord's envelope; "Keep it up."; the tear; HIGH-FIVES 98% a second before the hand comes up; "Half!";
 //          the slap, tick
 //   32     you close, grinning; on "anyone's" your eyes slide out over the court
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { BoardSounds, TagSounds } from "../device";
 import { current, type Beat, type Shot as ShotT } from "../shared";
 import { Landlord, Thought } from "./YourStall.Landlord";

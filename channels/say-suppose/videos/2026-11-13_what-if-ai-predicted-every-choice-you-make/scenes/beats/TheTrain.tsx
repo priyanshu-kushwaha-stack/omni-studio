@@ -15,7 +15,8 @@
 //   108   your phone (library phone set): a video playing, another queued under it, your thumb over the screen
 //   109   the thumb, the screen, the crimson card at the top; then the 4 s end card: like, subscribe and comment tags
 //         in the left two-thirds, the right third quiet
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { SEATED, STAND, type Pose } from "@whatif/kit/rig/pose";
 import { HandPhone, metroCoach, phone } from "@whatif/kit/sets";

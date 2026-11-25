@@ -25,7 +25,8 @@
 //   25   the court filling for lunch, a card over every head, nearly all teal, ticking; a pan across the tables; "So you
 //        stop fighting your tag. And start reading everyone else's.": you at your counter, eyes up on the cards over the
 //        queue, a sly smile
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, type Pose } from "@whatif/kit/rig/pose";
 import { setLook } from "@whatif/kit/sets/common";

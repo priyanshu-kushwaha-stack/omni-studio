@@ -23,7 +23,8 @@
 //       Red.Crate (HOLD 4 s, performed, the one tender beat: the cup set down with a clack, you sit on the crate, your
 //       card buzzes crimson, YOUR RATE 55 to 60; he looks at the cup, your card, you; 78 "That cost you." with a
 //       crooked grin and the cup raised to your crimson card), and line 79's calendar, box, envelopes and tease
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND } from "@whatif/kit/rig/pose";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";

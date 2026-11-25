@@ -1,0 +1,58 @@
+# Private upload request for `omni upload` (G5). Agents never upload; the owner runs --run and makes it public by hand.
+# Drafted 2026-11-25 while the G4 render ran; the owner's G5 approval signs the file and this metadata.
+file: renders/final/final-1080p.mp4
+thumbnail: renders/packaging/thumb-a.png   # the G1 pick, "TRUST HIM?" (pair a); thumb-b.png is "TRUST ME?", the owner's call
+captions:   # from the script (core/engines/whatif/pipeline/subtitles.py), not speech recognition
+  en: subtitles/en.srt
+title: What If AI Predicted Every Choice You Make?
+description: |-
+  A lamp goes up over a food court in Singapore, and a tag drops over every head: what that person will do next, and how sure the city is. Do what your tag says, and your life gets cheaper. Your coffee, your fare, your rent. Then your best friend's tag turns red.
+
+  Would you pay full price to make your card go blank? Tell us in the comments.
+
+  Chapters
+  0:00 The Lamp
+  1:50 Random
+  2:48 Your Stall
+  3:19 The City Plays
+  5:06 Boring Pays
+  6:53 Red
+  9:10 The Key
+  11:17 The Queue
+
+  The tags are made up. The research is real:
+  - Typing "at random", people were guessed right 70 to 80 per cent of the time: Scott Aaronson, PHYS771 Lecture 18
+    https://www.scottaaronson.com/democritus/lec18.html
+  - Rock-paper-scissors winners tend to play the same move again: Wang, Xu and Zhou, Scientific Reports (2014)
+    https://doi.org/10.1038/srep05830
+  - Where a person will be is, in principle, predictable up to 93 per cent of the time: Song et al., Science (2010)
+    https://doi.org/10.1126/science.1177170
+  - Hanoi's 1902 rat-tail bounty and the rat farms it bred: Michael Vann on Freakonomics Radio
+    https://freakonomics.com/podcast/the-cobra-effect-2/
+  - Brain scans guessed a left-or-right button press seconds early: Soon et al., Nature Neuroscience (2008)
+    https://doi.org/10.1038/nn.2112
+  - ...and were right about 60 per cent of the time: Lages and Jaworska, Frontiers in Psychology (2012)
+    https://doi.org/10.3389/fpsyg.2012.00056
+  - The early brain signal was missing when the choice was real charity money: Maoz et al., eLife (2019)
+    https://doi.org/10.7554/eLife.39787
+  - A court risk score wrongly flagged Black defendants at almost twice the rate of white defendants: ProPublica (2016)
+    https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing
+  - Strangers given two lines per defendant predicted as well as the software: Dressel and Farid, Science Advances (2018)
+    https://europepmc.org/article/PMC/PMC5777393
+  - Drivers tracked for a discount braked hard about a fifth less often: Soleymanian, Weinberg and Zhu, Marketing Science (2019)
+    https://pubsonline.informs.org/doi/10.1287/mksc.2018.1126
+  - Lean on a number to control people, and it stops behaving: Charles Goodhart (1975)
+    https://en.wikipedia.org/wiki/Goodhart%27s_law
+  - 160 teams barely beat a simple four-fact guess at predicting children's lives: Salganik et al., PNAS (2020)
+    https://www.pure.ed.ac.uk/ws/files/142847984/1915006117.full.pdf
+  - A false belief can make itself true: Robert K. Merton, "The Self-Fulfilling Prophecy" (1948)
+    https://eclass.uowm.gr/modules/document/file.php/NURED263/Merton%20The%20Self-Fulfilling%20Prophecy%201948%20Antioch%20Review.pdf
+  - Singapore has priced its busiest roads electronically since 1998: Land Transport Authority
+    https://www.lta.gov.sg/content/ltagov/en/who_we_are/our_work/road.html
+
+  Narrated with an AI voice. Animated in code.
+tags: [what if, AI prediction, predict every choice, free will, self-fulfilling prophecy, Goodhart's law, animated story, say suppose]
+made_for_kids: false
+# Altered or synthetic content: false, the owner's answer for this channel's stylised paper-cut cartoons with a fictional
+# narrator (pause-time, 2026-11-08: "Yes, keep no"). Confirm at G5.
+contains_synthetic_media: false

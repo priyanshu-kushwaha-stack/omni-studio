@@ -11,7 +11,8 @@
 //     { at: k.tick, text: "POCKETS KEY", pct: 91, state: "tick" },
 //   ]} />
 //   ...outside the Stage: <TagSounds keys={sameKeys} />
-import { Audio, interpolate, Sequence, staticFile } from "remotion";
+import { interpolate, Sequence, staticFile } from "remotion";
+import { Audio } from "./master";
 import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, INK, PAPER, TEAL } from "@whatif/kit/theme";
 import { pop } from "./kit";

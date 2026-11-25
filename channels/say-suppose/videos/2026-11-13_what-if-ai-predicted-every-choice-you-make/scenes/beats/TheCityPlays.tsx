@@ -18,7 +18,8 @@
 //   46-47  you on the platform, TAKES THE SIX-TEN 98%; the paper map, the route worn thick, 93; the train, 6:10, tick
 //   48-49  the forty-phone train (TheCityPlays.Train): LOOKS AT PHONE 99% forty times, the fare board 2.10 to 1.80, and
 //          the stranger at the far end with no phone and no card
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { BoardSounds, TagSounds } from "../device";
 import { current, type Beat, type Shot as ShotT } from "../shared";
 import { BettingShop } from "./TheCityPlays.Bookie";

@@ -20,7 +20,8 @@
 //   14   the gantry over the main road, a price lit on it, cars under it, the price stepping up with the hour; "by time of
 //        day since 1998": a paper sheet, a clock and a day's price curve drawing itself, 1998
 //   15   your lamppost at the corner: YOUR RATE 100, a crimson arrow up and a teal arrow down beside it
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND, walkPose, type Pose } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";

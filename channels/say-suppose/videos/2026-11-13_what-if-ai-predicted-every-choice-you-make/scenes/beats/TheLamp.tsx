@@ -12,7 +12,8 @@
 //             flaps PAYS 97%; he pays, still staring up; her board clatters 3.00 to 1.50; he looks at the board, at her
 //   1         "Half?" (his own voice)
 //   2         "Half." (the coffee seller's own voice), close on her
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { STAND, type Pose } from "@whatif/kit/rig/pose";
 import { closeUp, drift } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";

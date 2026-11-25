@@ -12,7 +12,8 @@
 //   64  "Machine hates me." (his own voice): deadpan, a thumb jabbed at the board; the board flutters on 118 as if it
 //       answered; a double take; you snort into your hand (the laugh)
 //   65  the next night's closing: the box, his hand flat on the counter, not yet out; your eyes on it
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { STAND, type Pose } from "@whatif/kit/rig/pose";
 import { closeUp, drift, insert } from "@whatif/kit/stage/shots";
 import type { Camera } from "@whatif/kit/stage/Stage";

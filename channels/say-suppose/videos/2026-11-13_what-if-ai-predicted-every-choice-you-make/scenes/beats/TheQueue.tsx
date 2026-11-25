@@ -26,7 +26,8 @@
 //         card, teal lamps blinking past; he catches you looking, and winks
 //   113   the close, over the last image: his blank card, the teal lamps, your crimson card at the top edge; then the 4 s
 //         end card: like, subscribe and comment tags in the left two-thirds, the right third quiet
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { SEATED, STAND } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { setLook } from "@whatif/kit/sets/common";

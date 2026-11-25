@@ -21,7 +21,8 @@
 //   90    the two of you grinning under two crimson cards; his card close
 //   91    the high wide of the court (TheKey.Court): two crimson cards under one lamp, every face turned to them, every
 //         other card teal; on the pillar the city's board flaps down for the first time: CITY SCORE 99.4
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { Audio } from "../master";
 import { type Pose } from "@whatif/kit/rig/pose";
 import { LookContext } from "@whatif/kit/stage/Look";
 import { setLook, REF } from "@whatif/kit/sets/common";

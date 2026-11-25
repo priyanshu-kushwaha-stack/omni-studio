@@ -1,4 +1,5 @@
-import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { Audio } from "./master";
 import type { ScriptLine, Timeline } from "@whatif/kit/timeline";
 import { FPS } from "@whatif/kit/theme";
 import { LookContext } from "@whatif/kit/stage/Look";
@@ -68,6 +69,16 @@ function window(f: number, from: number, to: number, fade: number): number {
   return Math.max(0, Math.min(1, rise, (to - f) / fade));
 }
 
+/** The master (master.tsx) pushed one consonant over the clicks check's step limit: the "t" of the Pickpocket's
+ *  "I didn't touch it." at 211.85-211.88 s, a sharp burst inside the take. It needs only a few per cent less, so the
+ *  narration dips 3 dB across it, easing in and out over a frame each side. A frame's volume reaches the mix about two
+ *  frames late (measured on the audio pass, 2026-11-25), so the dip's frames sit that much before the burst. */
+const DIP_FRAMES = [6352, 6355];
+function consonantDip(f: number): number {
+  const [a, b] = DIP_FRAMES;
+  return f >= a && f <= b ? 0.7 : f === a - 1 || f === b + 1 ? 0.85 : 1;
+}
+
 /** The dock's peak: the score sinks to PEAK.floor across it, over a second each way. */
 function peakDip(f: number): number {
   const a = PEAK.from * FPS;
@@ -102,7 +113,7 @@ export const Film: React.FC<FilmProps> = (props) => {
     <AbsoluteFill style={{ background: "#000" }}>
       <Picture {...props} />
       {/* The cleaned narration (mix_narration.py): takes trimmed after the last word, faded, click mutes applied. */}
-      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} />}
+      {props.narration !== false && <Audio src={staticFile("narration/narration.wav")} volume={consonantDip} />}
       {SCORE.map((c, i) => (
         <Placed key={`s${i}`} src={`music/${c.file}`} from={c.from} to={i === SCORE.length - 1 ? total + 1 : c.to}
           lead={SCORE_LEAD} fade={SCORE_FADE} total={totalFrames} gain={score} />
