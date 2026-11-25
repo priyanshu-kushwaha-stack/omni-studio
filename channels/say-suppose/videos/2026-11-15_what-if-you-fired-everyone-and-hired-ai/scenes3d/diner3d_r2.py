@@ -7,6 +7,10 @@ Arguments (after "--"):
     --style  toy | toon | clay | cine   A1 polished toy, A2 toon/cel, A3 clay/stop-motion, A4 cinematic
     --shot   opening | day | charsheet  the night opening, the day mid shot, or a character line-up for design checks
     --res    WxH (default 1280x720)     --samples N     --out file.png     --save file.blend
+    --frames A B                        opening only: render frames A..B (24 fps) as PNGs into --out, a folder
+
+Round 3 (owner picked A4, 2026-11-25) refined cine in place: chubby fingers, a mustard that holds under warm light,
+haze only behind the people at night, a contrastier day with brick and slate depths, and the opening animated.
 
 Everything is built in code from primitives and procedural shader nodes: no downloaded models, no image textures,
 no AI images. Faces are held expressions (no lip-sync, no wobble). Round 1 (diner3d.py) is unchanged.
@@ -17,6 +21,8 @@ import math
 import random
 import sys
 import warnings
+
+import os
 
 import bmesh
 import bpy
@@ -34,6 +40,7 @@ def parse_args():
     p.add_argument("--samples", type=int, default=64)
     p.add_argument("--out", required=True)
     p.add_argument("--save", default=None)
+    p.add_argument("--frames", type=int, nargs=2, default=None, help="render this frame range (24 fps) as PNGs into --out, a folder")
     return p.parse_args(argv)
 
 
@@ -1000,17 +1007,17 @@ def hand(J, name, side, sk, wr):
     s = 1 if side == "L" else -1
     wr = empty(f"{name}_handroot_{side}", wr, (0, 0, 0))
     wr.scale = (1.4, 1.4, 1.4)
-    sphere(f"{name}_palm_{side}", 0.045, sk, wr, (0, 0, -0.045), scale=(0.7, 1.0, 1.05), segs=28, ink=0.004)
-    for i, y in enumerate((-0.022, 0.0, 0.022)):
-        fa = J[f"f{i}a_{side}"] = empty(f"{name}_f{i}a_{side}", wr, (0, y, -0.083), (0, 0, 0), mode="YXZ")
-        L1 = 0.03 if i != 1 else 0.034
-        limb(f"{name}_f{i}1_{side}", 0.0175, 0.0165, L1, sk, fa, ink=0.003, segs=16)
+    sphere(f"{name}_palm_{side}", 0.05, sk, wr, (0, 0, -0.045), scale=(0.78, 1.0, 1.0), segs=28, ink=0.004)
+    for i, y in enumerate((-0.025, 0.0, 0.025)):
+        fa = J[f"f{i}a_{side}"] = empty(f"{name}_f{i}a_{side}", wr, (0, y, -0.08), (0, 0, 0), mode="YXZ")
+        L1 = 0.025 if i != 1 else 0.028
+        limb(f"{name}_f{i}1_{side}", 0.0215, 0.0205, L1, sk, fa, ink=0.003, segs=16)
         fb = J[f"f{i}b_{side}"] = empty(f"{name}_f{i}b_{side}", fa, (0, 0, -L1), mode="YXZ")
-        limb(f"{name}_f{i}2_{side}", 0.0165, 0.0145, 0.024, sk, fb, ink=0.003, segs=16)
-    ta = J[f"tha_{side}"] = empty(f"{name}_tha_{side}", wr, (-s * 0.012, -0.036, -0.03), (0, 0, 0), mode="YXZ")
-    limb(f"{name}_th1_{side}", 0.017, 0.015, 0.028, sk, ta, ink=0.003, segs=16)
-    tb = J[f"thb_{side}"] = empty(f"{name}_thb_{side}", ta, (0, 0, -0.028), mode="YXZ")
-    limb(f"{name}_th2_{side}", 0.015, 0.012, 0.022, sk, tb, ink=0.003, segs=16)
+        limb(f"{name}_f{i}2_{side}", 0.0205, 0.019, 0.017, sk, fb, ink=0.003, segs=16)
+    ta = J[f"tha_{side}"] = empty(f"{name}_tha_{side}", wr, (-s * 0.012, -0.038, -0.032), (0, 0, 0), mode="YXZ")
+    limb(f"{name}_th1_{side}", 0.021, 0.019, 0.024, sk, ta, ink=0.003, segs=16)
+    tb = J[f"thb_{side}"] = empty(f"{name}_thb_{side}", ta, (0, 0, -0.024), mode="YXZ")
+    limb(f"{name}_th2_{side}", 0.019, 0.017, 0.016, sk, tb, ink=0.003, segs=16)
     J["grip_" + side] = empty(f"{name}_grip_{side}", wr, (-s * 0.035, 0, -0.085))
     pose_hand(J, side, 0.25, 0.2)
 
@@ -1447,7 +1454,7 @@ def build_outside(day):
     cr.elements[0].position = 0.47
     cr.elements[0].color = srgb("#F4E6CF" if day else "#8C5E86")
     cr.elements[1].position = 0.75
-    cr.elements[1].color = srgb("#6FA8DC" if day else "#16204A")
+    cr.elements[1].color = srgb("#4F93D6" if day else "#16204A")
     e = cr.elements.new(0.55)
     e.color = srgb("#BFDDF2" if day else "#3E4A8C")
     em = nt.nodes.new("ShaderNodeEmission")
@@ -1484,9 +1491,9 @@ def build_outside(day):
     for z in (0.3, 1.0, 1.7):
         cyl(f"frail{z}", 0.02, 48, post, None, (0, 15.0, z), rot=(0, 90, 0), segs=8, ink=None)
     # plant in three depths
-    wall_n = M("shed_near", "#C88E62" if day else "#6A5049", "paint", tex=("brick", "#B77E55" if day else "#5D4540"))
-    wall_m = M("shed_mid", "#BE9A7C" if day else "#4F4252", "paint")
-    wall_f = M("shed_far", "#B7AAA0" if day else "#3A3650", "paint")
+    wall_n = M("shed_near", "#A65A3E" if day else "#6A5049", "paint", tex=("brick", "#8A4630" if day else "#5D4540"))
+    wall_m = M("shed_mid", "#7D8A99" if day else "#4F4252", "paint")
+    wall_f = M("shed_far", "#A7B7C9" if day else "#3A3650", "paint")
     roofm = M("shed_roof", "#8E6448" if day else "#352B2E", "paint")
     win_on = M_emit("win_on", "#FFC062", 9.0)
     win_cool = M_emit("win_cool", "#BFE0FF", 6.0)
@@ -1628,11 +1635,11 @@ def setup_render():
         pass
     vs = sc.view_settings
     vs.view_transform = "AgX"
-    vs.look = "AgX - Punchy" if STYLE in ("toy", "clay") else ("AgX - Base Contrast" if STYLE == "cine" else "None")
+    vs.look = "AgX - Punchy" if STYLE in ("toy", "clay") else (("AgX - Medium High Contrast" if MOOD == "day" else "AgX - Base Contrast") if STYLE == "cine" else "None")
     if STYLE == "toon":
         vs.view_transform = "Standard"
         vs.look = "None"
-    vs.exposure = (-0.6 if STYLE == "cine" else -0.35) if MOOD == "day" and STYLE != "toon" else 0.0
+    vs.exposure = (-0.4 if STYLE == "cine" else -0.35) if MOOD == "day" and STYLE != "toon" else 0.0
     sc.render.image_settings.file_format = "PNG"
     sc.render.image_settings.color_mode = "RGB"
     world = bpy.data.worlds.new("world")
@@ -1688,7 +1695,7 @@ def compositor():
     haze = srgb("#C8D6E4") if MOOD == "day" else srgb("#4E5288")
     mf = tree.nodes.new("ShaderNodeMath")
     mf.operation = "MULTIPLY"
-    mf.inputs[1].default_value = 0.55 if MOOD == "day" else 0.45
+    mf.inputs[1].default_value = (0.3 if STYLE == "cine" else 0.55) if MOOD == "day" else 0.45
     tree.links.new(rl.outputs["Mist"], mf.inputs[0])
     img = _mix(tree, "MIX", mf.outputs[0], img, haze)
     gl = tree.nodes.new("CompositorNodeGlare")
@@ -1708,12 +1715,12 @@ def compositor():
         # lift towards teal, gain towards warm
         named = {s.name: s for s in cols}
         if "Lift" in named:
-            named["Lift"].default_value = (0.9, 1.0, 1.08, 1)
+            named["Lift"].default_value = (0.93, 0.99, 1.05, 1)
         if "Gain" in named:
-            named["Gain"].default_value = (1.12, 1.0, 0.86, 1)
+            named["Gain"].default_value = (1.05, 1.0, 0.94, 1)
         img = [s for s in cb.outputs if s.enabled][0]
     hs = tree.nodes.new("CompositorNodeHueSat")
-    hs.inputs["Saturation"].default_value = {"toy": 1.12, "toon": 1.08, "clay": 1.2, "cine": 1.0}[STYLE]
+    hs.inputs["Saturation"].default_value = {"toy": 1.12, "toon": 1.08, "clay": 1.2, "cine": 1.1}[STYLE]
     tree.links.new(img, hs.inputs["Image"])
     img = hs.outputs["Image"]
     # vignette
@@ -1761,12 +1768,12 @@ def haze_box():
     m = bpy.data.materials.new("haze")
     nt, out = _nodes(m)
     vol = nt.nodes.new("ShaderNodeVolumePrincipled")
-    vol.inputs["Density"].default_value = 0.09 if MOOD == "night" else 0.035
+    vol.inputs["Density"].default_value = 0.11 if MOOD == "night" else 0.025
     vol.inputs["Anisotropy"].default_value = 0.55
     vol.inputs["Color"].default_value = (1, 1, 1, 1)
     nt.links.new(vol.outputs[0], out.inputs["Volume"])
     if MOOD == "night":
-        b = rbox("haze_box", (15.8, 9.0, 3.85), 0, m, None, (0, -1.9, 1.95), ink=None)
+        b = rbox("haze_box", (15.8, 4.1, 3.85), 0, m, None, (0, 0.55, 1.95), ink=None)
     else:
         b = rbox("haze_box", (15.8, 2.4, 3.85), 0, m, None, (0, 1.4, 1.95), ink=None)
     b.visible_shadow = False
@@ -1792,7 +1799,7 @@ def ink_pass():
 
 # ============================================================================ casts and shots
 
-YOU = dict(top="#F5C42C", cuff="#DDA51A", pants=PAL["navy"], shoes=PAL["crimson"], hood=True, apron=True, scarf=PAL["teal"], hair="tuft")
+YOU = dict(top="#E2B30E", cuff="#BF940A", pants=PAL["navy"], shoes=PAL["crimson"], hood=True, apron=True, scarf=PAL["teal"], hair="tuft")
 MARCO = dict(top="#6F8FB3", cuff="#5C7A9C", pants="#3B4252", shoes="#2B2B2B", sleeves="short", collar=True, apron=True, paper_hat=True)
 WAITRESS = dict(top=PAL["peach"] if "peach" in PAL else "#F4A987", pants="#3A2E3A", shoes=PAL["crimson"], sleeves="short", collar=True, skirt=PAL["crimson"], waist_apron=True, hair="bob_bun", pencil=True)
 CUST1 = dict(top="#7F93B0", cuff="#6B7E99", pants="#2E3440", shoes="#5A3B2A", collar=True, cap=PAL["crimson"])
@@ -1806,7 +1813,7 @@ def lights_common(day, key_target, rim_target):
         add_light("key", "SUN", (0, 0, 10), 3.2 if day else 2.4, "#FFF1DE" if day else "#FFD6A8", 0.05, target=(key_target[0] + 0.6, key_target[1] + 0.8, key_target[2] - 1.0))
         add_light("fill", "AREA", (key_target[0] + 3, key_target[1] - 4, 2.0), 180, "#C9D8FF", 4, target=key_target, shadow=False)
         return
-    warm = "#FFE2C2"
+    warm = "#FFEBD6" if STYLE == "cine" else "#FFE2C2"
     rimc = "#7FD8FF" if not day else "#FFE7C2"
     if STYLE == "clay":
         rimc = "#FFC58A"
@@ -1834,8 +1841,9 @@ def build_opening():
         r["head"].rotation_euler = Euler((-8 * D2R, 0, (-6 + 3 * i) * D2R))
         sp, bl = spatula(f"spat{i}", r["grip_L"], (0, 0, 0), (180, 0, 0))
         bpy.context.view_layer.update()
-        bp = bl.matrix_world.translation
-        burger(f"fly{i}", None, (bp.x + 0.02, bp.y - 0.02, bp.z + 0.38 + 0.07 * (i % 2)), rot=(-28 + 18 * i, 12 * (i - 1.5), 0))
+        bp = bl.matrix_world.translation.copy()
+        fb = burger(f"fly{i}", None, (bp.x + 0.02, bp.y - 0.02, bp.z + 0.38 + 0.07 * (i % 2)), rot=(-28 + 18 * i, 12 * (i - 1.5), 0))
+        r["fly"], r["blade_rest"] = fb, bp
     rnd = random.Random(5)
     for i, x in enumerate(xs + [0.25]):
         for j, (dx, dy) in enumerate(((-0.22, -0.2), (0.2, -0.12))):
@@ -1850,7 +1858,7 @@ def build_opening():
     arm(you, "L", abduct=128, flex=18, elbow=28, elbow_up=22, wrist=(0, 10, 0))
     arm(you, "R", abduct=132, flex=14, elbow=22, elbow_up=25, wrist=(0, 10, 0))
     pose_hand(you, "L", 0.65, 0.65)
-    pose_hand(you, "R", 0.18, 0.15, spread=1.1)
+    pose_hand(you, "R", 0.38, 0.35, spread=0.6)
     look(you, nod=-6, tilt=-4, lean=-5)
     leg(you, "L", abduct=5)
     leg(you, "R", abduct=5)
@@ -1864,8 +1872,64 @@ def build_opening():
     if STYLE == "cine":
         add_light("moon_shafts", "SUN", (0, 30, 20), 2.2, "#8FB0FF", 0.005, target=(-0.8, -3.5, -1.0), volume=2.5)
     fstop = {"toy": 2.8, "toon": None, "clay": 0.9, "cine": 1.8}[STYLE]
-    camera((1.05, -4.35, 1.2), (1.25, 1.0, 1.42), lens=30, fstop=fstop, focus=you["headmesh"], shift=(0.0, 0.0))
-    return you
+    cam = camera((1.05, -4.35, 1.2), (1.25, 1.0, 1.42), lens=30, fstop=fstop, focus=you["headmesh"], shift=(0.0, 0.0))
+    return dict(you=you, robots=robots, cam=cam)
+
+
+def _ease(t):
+    return t * t * (3 - 2 * t)
+
+
+def animate_opening(S, f0, f1):
+    """Five seconds of life for the opening: a slow push-in, you bouncing with the cash, the robots flipping burgers.
+    Camera moves and poses only (no lip-sync, no wobble)."""
+    you, robots, cam = S["you"], S["robots"], S["cam"]
+    fps = 24
+    for f in range(f0, f1 + 1, 2):
+        t = (f - f0) / fps
+        w = math.sin(2 * math.pi * 0.55 * t)
+        arm(you, "L", abduct=128 + 6 * w, flex=18, elbow=28 - 6 * w, elbow_up=22, wrist=(0, 10 + 8 * w, 0))
+        arm(you, "R", abduct=132 - 5 * w, flex=14, elbow=22 + 5 * w, elbow_up=25, wrist=(0, 10 - 6 * w, 0))
+        look(you, nod=-6 + 2.5 * abs(w), tilt=-4 + 5 * w, lean=-5, lean_side=2.5 * w)
+        for j in ("sh_L", "sh_R", "el_L", "el_R", "wr_L", "wr_R", "head", "spine"):
+            you[j].keyframe_insert("rotation_euler", frame=f)
+    period = 44
+    for i, r in enumerate(robots):
+        fb, bp = r["fly"], r["blade_rest"]
+        phase = 9 * i
+        for f in range(f0, f1 + 1):
+            k = (f - f0 + phase) % period
+            flight = 30
+            if k < flight:
+                u = k / flight
+                z = bp.z + 0.03 + 4 * (0.46 + 0.05 * (i % 2)) * u * (1 - u)
+                rot = 360 * _ease(u)
+                sq = 1.0
+            else:
+                z = bp.z + 0.03
+                rot = 0.0
+                kk = k - flight
+                sq = 1.0 - 0.16 * math.exp(-kk / 2.5) * math.cos(kk * 1.1)
+            fb.location = (bp.x + 0.01, bp.y - 0.01, z)
+            fb.rotation_euler = Euler((rot * D2R, 0, 12 * (i - 1.5) * D2R))
+            fb.scale = (1 / math.sqrt(sq), 1 / math.sqrt(sq), sq)
+            for prop in ("location", "rotation_euler", "scale"):
+                fb.keyframe_insert(prop, frame=f)
+            # the flick: the arm snaps up at launch and settles to catch
+            flick = 14 * math.exp(-k / 3.0) if k < flight else -6 * math.exp(-(k - flight) / 4.0)
+            arm(r, "L", abduct=14, flex=150 + flick, elbow=25, wrist=(-30 - flick, 0, 0))
+            for j in ("sh_L", "wr_L"):
+                r[j].keyframe_insert("rotation_euler", frame=f)
+            r["head"].rotation_euler = Euler(((-8 - 5 * math.exp(-k / 6.0)) * D2R, 0, (-6 + 3 * i) * D2R))
+            r["head"].keyframe_insert("rotation_euler", frame=f)
+    p0, p1 = Vector((1.05, -4.35, 1.2)), Vector((0.98, -3.8, 1.25))
+    t0, t1 = Vector((1.25, 1.0, 1.42)), Vector((1.12, 1.0, 1.4))
+    for f in range(f0, f1 + 1):
+        e = _ease((f - f0) / (f1 - f0))
+        cam.location = p0.lerp(p1, e)
+        cam.rotation_euler = (t0.lerp(t1, e) - cam.location).to_track_quat("-Z", "Y").to_euler()
+        cam.keyframe_insert("location", frame=f)
+        cam.keyframe_insert("rotation_euler", frame=f)
 
 
 def neon_cup():
@@ -1947,7 +2011,7 @@ def build_day():
     arm(c2, "L", abduct=10, flex=70, elbow=95)
     arm(c2, "R", abduct=10, flex=50, elbow=60)
     pose_hand(c2, "L", 0.7, 0.6)
-    look(c2, turn=-80, nod=-4)
+    look(c2, turn=60, nod=-4)
     build_face(c2["headmesh"], c2["R"], "happy", gaze=(-0.5, 0.1), iris=IRIS["cust2"])
     burger("cust2_burger", c2["grip_L"], (0, 0.0, -0.02), rot=(90, 0, 0), s=0.9)
     for x, y in ((2.4, -0.18), (0.0, -0.18)):
@@ -1957,7 +2021,7 @@ def build_day():
     torus("cup_handle", 0.025, 0.007, M("cup", "#FCFBF7", "ceramic"), None, (2.155, -0.25, ctop + 0.05), rot=(90, 0, 0))
     lights_common(True, (0.8, 1.2, 1.25), (0.9, 1.3, 1.2))
     if STYLE == "cine":
-        add_light("sun", "SUN", (-20, 30, 12), 7.0, "#FFE2B0", 0.01, target=(1.5, -2.0, 0.2), volume=1.4)
+        add_light("sun", "SUN", (-20, 30, 12), 6.0, "#FFE2B0", 0.01, target=(1.5, -2.0, 0.2), volume=0.8)
     else:
         add_light("sun", "SUN", (0, 30, 20), 4.0, "#FFEBCC", 0.02, target=(-2.5, -0.5, -1.5))
     add_light("window_sky", "AREA", (0.5, 2.4, 2.3), 240 if STYLE != "cine" else 150, "#DDEBFF", 7, target=(0.5, -1.0, 1.0), shadow=False)
@@ -2010,7 +2074,9 @@ def main():
     COL = sc.collection
     setup_render()
     if ARGS.shot == "opening":
-        build_opening()
+        S = build_opening()
+        if ARGS.frames:
+            animate_opening(S, *ARGS.frames)
     elif ARGS.shot == "day":
         build_day()
     else:
@@ -2021,6 +2087,14 @@ def main():
     ink_pass()
     if ARGS.save:
         bpy.ops.wm.save_as_mainfile(filepath=ARGS.save)
+    if ARGS.frames:
+        sc.render.fps = 24
+        sc.frame_start, sc.frame_end = ARGS.frames
+        os.makedirs(ARGS.out, exist_ok=True)
+        sc.render.filepath = os.path.join(ARGS.out, "f_####")
+        bpy.ops.render.render(animation=True)
+        print("DONE", ARGS.out)
+        return
     sc.frame_set(1)
     sc.render.filepath = ARGS.out
     bpy.ops.render.render(write_still=True)

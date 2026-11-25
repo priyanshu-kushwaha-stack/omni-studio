@@ -8,6 +8,14 @@ Precedence (quality spine, invariant 8): `CLAUDE.md` and the gates first, then f
 note here, then `rules/`, then the shared rules. A note here never overrides a gate, a banned tool or the paid-call
 rule. Where two notes disagree, the newer one wins.
 
+## 2026-11-25
+
+- **"A4, cinematic"** From look test round 2 (four styles of the black-figure look: A1 polished toy, A2 toon, A3 clay,
+  A4 cinematic; `renders/look3d/r2/sheet.jpg`). The look is A4: satin black figures, haze with light shafts through it,
+  a film grade, shallow focus. Its round-2 weak spots (the day frame washed out, the mustard hoodie turning peach under
+  warm light, claw-like hands) are fixed before anything is built out. The scope (the whole film, key moments, or from
+  the next film) is still open. (fired everyone and hired AI, look test)
+
 ## 2026-11-22
 
 - **"A, black figures"**, then **"but this is also not good fully. Need more options to make it look good to the eyes

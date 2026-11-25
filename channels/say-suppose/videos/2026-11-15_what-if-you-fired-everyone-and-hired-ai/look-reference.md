@@ -36,3 +36,22 @@ Free and local, drawn in code, no AI images: Blender 5.2.3 (installed via Homebr
 be pinned in `core/lock.yaml` before production use), scenes built by Python scripts, rendered with Eevee (fast, real
 light, soft shadows, bloom, depth of field), the rim outline as an inverted-hull or Freestyle line. The look test
 renders the film's opening frame (the thumbnail's moment) in two or three options for the owner to pick from.
+
+## The pick: A4, cinematic (owner, 2026-11-25)
+
+From round 2's four styles (`scenes3d/diner3d_r2.py --style toy|toon|clay|cine`) the owner picked A4: satin black
+figures, haze with light shafts, a film grade, shallow focus. Round 3 refined A4 in the same script (`--style cine`):
+
+- **Hands:** a fuller palm and shorter, chubbier fingers; the open hand relaxed (round 2's read as claws).
+- **The hoodie:** a mustard with more green in it (`#E2B30E`), a near-neutral key light and a milder warm gain, so it
+  stays mustard under the diner's warm lamps (round 2's turned peach, then orange).
+- **Night haze:** only behind the people, so faces are crisp and the depth carries the lamp cones and moon shafts.
+- **Day:** a contrastier look (AgX Medium High Contrast), less veil, brick, slate and haze-blue depths for the plant
+  instead of one beige wall, a bluer sky; the near customer turned to the robot (no half face at the frame edge).
+- **Motion:** `--frames A B` renders the opening animated: a slow push-in, you bouncing with the cash, the robots
+  flicking and catching their burgers (poses and camera only; no lip-sync, no wobble). Eevee renders a 720p frame in a
+  few seconds here, so a 5 s clip takes minutes.
+
+Renders (git-ignored): `renders/look3d/r3/a4-opening.png`, `a4-day.png`, `before-after.jpg`, `a4-opening-clip.mp4`.
+Blender 5.2.3 is not yet pinned in `core/lock.yaml`; pin it before production use. The scope (the whole film in 3D,
+key moments only, or from the next film) is the owner's call.
