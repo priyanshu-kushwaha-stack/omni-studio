@@ -4,9 +4,9 @@ export const CARDS: CardItem[] = [
   {
     "line": "In one US survey, most people reported no lies at all that d",
     "cue": "5%",
-    "top": "ABOUT 5% TELL HALF THE LIES",
+    "top": "ABOUT 5% TELL ALMOST HALF THE LIES",
     "sub": "",
-    "secs": 3.8
+    "secs": 4.3
   },
   {
     "line": "Untrained, people tell a lie from the truth about 54% of the",

@@ -1,4 +1,5 @@
 set -e
+# Seeds: 100+row, except tv-morning (seed 43) and debate-night (seed 51), re-rolled because people appeared in them.
 M=/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.venv-media/bin/mflux-generate-flux2
 STY="Soft 2D vector illustration background plate for an animated explainer, painted storybook animation style like a hand-made animated film background, smooth flat gradients, simplified shapes, soft painted light and glow, gentle atmospheric depth, not photorealistic, not a 3D render, no people, no characters, no text, muted harmonious palette, eye-level wide view with open floor space in the middle, 16:9"
 i=0

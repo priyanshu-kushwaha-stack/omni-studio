@@ -1,8 +1,8 @@
-// Screen-space pieces for "Nine" (Nine.tsx): your phone with the boss's "You OK?" (you type "Fine", erase it letter by
-// letter, type "Not really", send), and the end card: the morning kitchen window in the left two-thirds with the two of
+// Screen-space pieces for "Nine" (Nine.tsx), look C (the painted kitchen plate, soft, behind both): your phone with
+// the boss's "You OK?" (you type "Fine", erase it letter by letter, type "Not really", send), and the end card: the morning kitchen window in the left two-thirds with the two of
 // you as paper cutouts (his 1, your 9), the LIKE / SUBSCRIBE / COMMENT paper tags stamping in; the right third dark and
 // empty for YouTube's end screens (after the fail film's TwoLetters.EndCard). No AI images.
-import { AbsoluteFill, spring } from "remotion";
+import { AbsoluteFill, Img, spring, staticFile } from "remotion";
 import { FONT } from "@whatif/kit/fonts";
 import { CRIMSON, FPS, INK, MUSTARD, PAPER, TEAL } from "@whatif/kit/theme";
 import { BOSS, GLOW, mix, ramp } from "../shared";
@@ -35,11 +35,11 @@ export const PhoneInsert: React.FC<{ frame: number; from: number; to: number }> 
   const thumb = d.hover ? { x: left + W - 70, y: top + 610 } : { x: left + 120 + ((frame * 37) % 280), y: top + 720 + ((frame * 13) % 90) };
   const sentPop = d.sent ? spring({ frame: frame - Math.round(from + (to - from) * 0.92), fps: FPS, config: { damping: 12, stiffness: 200 } }) : 0;
   return (
-    <AbsoluteFill style={{ background: "#cfe0d2" }}>
-      <svg width={1920} height={1080}>
-        <rect width={1920} height={1080} fill="#d6e8d8" />
-        <rect x={0} y={760} width={1920} height={400} fill="#b9895f" />
-        <rect x={0} y={750} width={1920} height={24} fill="#8a5c3b" />
+    <AbsoluteFill style={{ background: "#2a1d15" }}>
+      {/* look C: the painted kitchen behind the phone, very soft (the table top and the window) */}
+      <Img src={staticFile("plates/kitchen-morning.png")} style={{ position: "absolute", width: 1920 * 2.4, height: 1080 * 2.4, left: -1150, top: -1250,
+        filter: "blur(22px) brightness(0.92)" }} />
+      <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
         <g>
           <rect x={left - 20} y={top - 20} width={W + 40} height={H + 40} rx={60} fill="#1b1d24" />
           <rect x={left} y={top} width={W} height={H} rx={44} fill="#f4f6f8" />
@@ -139,9 +139,15 @@ export const EndCard: React.FC<{ frame: number; from: number; comment: number; l
             <stop offset="1" stopColor="#cfe8ee" />
           </linearGradient>
         </defs>
-        <rect x={130} y={130} width={1060} height={800} rx={10} fill="url(#end-sky)" stroke="#e8e2d2" strokeWidth={22} />
-        <circle cx={980} cy={300} r={80} fill="#fff4c8" opacity={0.9} />
-        <line x1={660} y1={130} x2={660} y2={930} stroke="#e8e2d2" strokeWidth={16} />
+        {/* look C: the painted kitchen window, soft, in place of a drawn one */}
+        <clipPath id="end-win"><rect x={130} y={130} width={1060} height={800} rx={10} /></clipPath>
+        <g clipPath="url(#end-win)">
+          <rect x={130} y={130} width={1060} height={800} fill="url(#end-sky)" />
+          <image href={staticFile("plates/kitchen-morning.png")} x={-260} y={-120} width={1920 * 1.15} height={1080 * 1.15} preserveAspectRatio="xMidYMid slice"
+            style={{ filter: "blur(10px) brightness(0.95)" }} />
+          <rect x={130} y={130} width={1060} height={800} fill="#0d1120" opacity={0.18} />
+        </g>
+        <rect x={130} y={130} width={1060} height={800} rx={10} fill="none" stroke="#e8e2d2" strokeWidth={22} />
         <g transform={`translate(0 ${drop})`}>
           <Cutout x={400} y={920} h={420} head={FLATMATE.head} body={FLATMATE.coat} />
           <Cutout x={600} y={920} h={410} head={MUSTARD} body={INK} scarf={TEAL} tuft />

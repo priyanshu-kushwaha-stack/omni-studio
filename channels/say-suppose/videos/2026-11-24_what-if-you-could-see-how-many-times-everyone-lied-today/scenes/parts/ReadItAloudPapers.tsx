@@ -1,6 +1,7 @@
 // The morning after (ReadItAloud.tsx): newspapers spinning up over the studio with their paper-tag headlines (no
-// numbers), then your face on a front page, mug in hand, held up by someone reading it. Screen pixels. No AI images.
-import { AbsoluteFill, spring } from "remotion";
+// numbers), then your face on a front page, mug in hand, held up by someone reading it in the soft morning kitchen
+// (the kitchen-morning plate, blurred). Screen pixels. No AI images.
+import { AbsoluteFill, Img, spring, staticFile } from "remotion";
 import { Figure } from "@whatif/kit/rig/Figure";
 import { STAND } from "@whatif/kit/rig/pose";
 import { FONT } from "@whatif/kit/fonts";
@@ -63,10 +64,11 @@ export const FrontPage: React.FC<{ frame: number; from: number; to: number }> = 
   const w = 980, h = 820;
   return (
     <AbsoluteFill style={{ background: "#e9dcc4" }}>
-      <svg width={1920} height={1080}>
-        {/* a morning kitchen wall, soft behind the paper */}
-        <rect width={1920} height={1080} fill="#d6e8d8" />
-        <rect x={120} y={140} width={360} height={300} fill="#ffe2b0" stroke="#e8e2d2" strokeWidth={14} />
+      {/* the morning kitchen (the painted plate), soft behind the paper */}
+      <AbsoluteFill style={{ filter: "blur(16px) brightness(0.92)" }}>
+        <Img src={staticFile("plates/kitchen-morning.png")} style={{ width: 1920, height: 1080, objectFit: "cover", transform: `scale(${1.3 + (z - 1)})` }} />
+      </AbsoluteFill>
+      <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
         <g transform={`translate(960 ${mix(1500, 560, up)}) scale(${z}) rotate(${mix(6, -1.5, up)})`}>
           <rect x={-w / 2 + 16} y={-h / 2 + 20} width={w} height={h} fill="#000" opacity={0.3} />
           <rect x={-w / 2} y={-h / 2} width={w} height={h} fill="#efe8d8" stroke={INK} strokeWidth={6} />

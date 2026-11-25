@@ -290,7 +290,7 @@ export const Scoreboard: React.FC<{ x: number; y: number; scores: [number, numbe
 );
 
 /** A row of studio audience seen from behind (backs of heads and shoulders) along y `y`, each with a small counter;
- *  `laugh` bounces them. `skip` leaves seats empty. */
+ *  `laugh` bounces them. `empty` leaves seats empty (the painted seat shows). */
 export const AudienceBacks: React.FC<{ from: number; to: number; y: number; n: number; frame: number; laugh?: number; r?: number;
   counts: number[]; stranger?: number; empty?: number[]; seed?: number; counterSize?: number }> = ({
   from, to, y, n, frame, laugh = 0, r = 54, counts, stranger = -1, empty = [], seed = 0, counterSize = 34,
@@ -298,7 +298,7 @@ export const AudienceBacks: React.FC<{ from: number; to: number; y: number; n: n
   <g>
     {Array.from({ length: n }, (_, i) => {
       const x = from + ((to - from) * (i + 0.5)) / n + Math.sin(i * 7 + seed) * 12;
-      if (empty.includes(i)) return <rect key={i} x={x - r * 1.1} y={y + r * 0.5} width={r * 2.2} height={r * 2} rx={14} fill="#7a2232" stroke={INK} strokeWidth={5} />;
+      if (empty.includes(i)) return null;
       const bob = -Math.abs(Math.sin((frame + i * 5) / 3.2)) * 10 * laugh;
       const isStranger = i === stranger;
       const head = isStranger ? "#D8344F" : ["#7fa0c4", "#b58fc7", "#7fc29b", "#e6a0a0", "#d9c26a", "#9fc0e0", "#c9a0d6", "#a8c97f"][(i + seed) % 8];

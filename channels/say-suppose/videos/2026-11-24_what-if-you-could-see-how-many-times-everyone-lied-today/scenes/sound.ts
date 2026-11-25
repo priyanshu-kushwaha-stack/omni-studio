@@ -22,7 +22,7 @@ const SCORE: [string, string][] = [
   ["Thursday. Eight o'clock.", "cues/dread.wav"], // the statement
   ["Host: Read it out loud.", "cues/resolve.wav"],// read it aloud
   ["Morning. Interviews", "cues/dawn.wav"],       // nine
-  ["So, would you want", "theme-light.mp3"],      // the end card: the signal again
+  ["Tomorrow, when you say", "theme-light.mp3"],      // the end card: the signal again
 ];
 
 /** [first words of the line its set comes in on, bed name under assets/sfx/bed-<name>.wav]. */
