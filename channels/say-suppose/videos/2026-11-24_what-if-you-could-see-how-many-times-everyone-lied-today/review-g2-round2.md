@@ -57,3 +57,17 @@ near-photographic and were re-rolled with "not photorealistic, not a 3D render" 
 out with a person at the desk and was re-rolled with seed 300+i). The characters, counters and props stay code
 puppets. `scenes/parts/Plate.tsx` puts a plate behind the Stage, blurs it as the camera closes in, and lights the
 actors with a warm rim. The beats are reframed around close-ups and over-the-shoulder shots.
+
+## Drop: the v2 cut (2026-11-26)
+
+- Fourteen beats restyled by three subagents in parallel to one brief (plates through `PlateScene`, close-ups and
+  over-the-shoulder shots for over half of each beat, counters' light on faces, no new text). Visible ticks now sit on
+  clickData's click frames.
+- Watch copy: `renders/g2/lies-cut-v2-720p.mp4`, 1280x720, 8:05, -14.0 LUFS integrated, -1.3 dBFS peak. Sheet:
+  `renders/g2/sheet-v2.jpg`.
+- Known gaps, for picture lock: the office floor's far workers read as heads over the monitors; the bus shows 14
+  riders, not forty, and they face sideways (no back view on the rig); the restaurant's next-table man sits off his
+  painted chair; the hallway pass overlaps two heads for half a second; the Nine bookend's flatmate is near your size;
+  the stadium close-ups clip a few neighbours' counters; seated feet hang a little above the painted stool rungs; the
+  microphone pull in the Statement hold is skipped (the gooseneck is painted). Music is still the channel's local cues
+  from earlier films.
