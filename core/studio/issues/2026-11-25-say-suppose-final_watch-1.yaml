@@ -1,0 +1,12 @@
+channel: say-suppose
+format: story
+stage: final_watch
+severity: medium
+example: '2026-11-13_what-if-ai-predicted-every-choice-you-make: the v3 mix rendered
+  at -20.2 LUFS; qc final_edit failed loudness (target -14)'
+recorded_at: '2026-11-25T11:37:32.661430+00:00'
+note: 'whatif_render only limits peaks (alimiter 0.84) and never brings the mix to
+  the channel''s loudness.story target, so a quiet mix fails final_edit and final_watch.
+  The film worked around it in its own code (scenes/master.tsx, a +6 dB gain on every
+  Audio). Wanted: the render''s limiter step measures and gains to channel.yaml loudness.story,
+  a two-pass loudnorm with the true-peak ceiling'
