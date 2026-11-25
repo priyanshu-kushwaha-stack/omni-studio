@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-13_what-if-ai-predicted-every-choice-you-make",
+  "pipeline_type": "studio-whatif",
+  "stage": "final_watch",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-25T13:07:37.808486+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "render": "renders/final/final-1080p.mp4 (git-ignored), 1920x1080, 12:24.6, 484 MB, sha256 9d38064d6ae1b4df08d53604fc164bff38cfb1656b236c3626a143ad0ae8f84f: one whatif_render final full render, no mux; the master gain is in scenes/master.tsx",
+    "voice": "voice B, free and local (owner 2026-11-25: finish with voice B, no spend)",
+    "qc": "final_watch: loudness PASS (-14.3 LUFS, -1.20 dBTP, LRA 6.2), clicks PASS, similarity PASS, opening WARN (first word 2.4 s, accepted at G2 and G3)",
+    "awaiting": "the owner G4 watch at 1x, with cold viewers; notes go in review-g4-round1.md"
+  }
+}
