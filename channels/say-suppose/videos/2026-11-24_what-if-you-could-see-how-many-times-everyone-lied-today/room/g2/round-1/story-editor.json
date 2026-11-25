@@ -1,0 +1,73 @@
+{
+  "call_id": "202a2cb895e3421cac0a65c4863ce77b",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "hook": 9,
+    "causality": 7,
+    "escalation": 9,
+    "payoff": 8
+  },
+  "blockers": [
+    {
+      "quote": "Host: If it's true, reading it costs you nothing. Thirty seconds, or you forfeit your closing.",
+      "why": "Check #16 fails: the unplanted forfeit rule forces the leader into the climax.",
+      "fix": "Plant the rule at line 417: \u201cYou get the job. Live fact-checker at Thursday's debate, where dodging a direct challenge costs your closing.\u201d",
+      "domain": "story",
+      "line": 485
+    },
+    {
+      "quote": "Player: All in.",
+      "why": "Check #21 fails: \u201cAll in\u201d is true once the chips move, so the established counter cannot click merely because the bet is a bluff.",
+      "fix": "Replace the exchange with an explicit claim: \u201cPlayer: Pocket aces.\u201d No click. You fold; he reveals two aces. The unexpected honest player supplies the gap required by check #6.",
+      "domain": "story",
+      "line": 241
+    },
+    {
+      "quote": "Of 80 online daters, 81% were off on at least one of height, weight or age (c07). Usually by a little: under an inch of height, on average (c07).",
+      "why": "Check #7 fails by presenting several numbers at once. The same overload recurs at lines 151, 208, 249 and 309.",
+      "fix": "Replace with: \u201cIn one study, most online daters were off on height, weight or age\u2014usually only slightly (c07).\u201d Give lines 151, 208, 249 and 309 the same one-number-at-a-time pass.",
+      "domain": "story",
+      "line": 220
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 167,
+      "quote": "Fifty-one. It's in his drafts. You send it while he gets coffee.",
+      "fix": "Have you bubble \u201cSend it now?\u201d and make the boss send it himself; your clever pressure then causes the client call without unauthorized access doing the work."
+    },
+    {
+      "line": 293,
+      "quote": "Two rows down. Someone counting the box on their fingers. The way you do.",
+      "fix": "Cut \u201cThe way you do.\u201d Let the concealed counter and synchronized fingers plant the spread without explaining the final twist."
+    },
+    {
+      "line": 315,
+      "quote": "A whole city, mostly fine. And a few people doing all the lying for everyone.",
+      "fix": "Turn the conclusion into your next action: \u201cYou stop watching the pitch. You watch the box.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 122,
+      "quote": "The city isn't lying to you. The city is mostly fine. The few who are have a corner office."
+    },
+    {
+      "line": 399,
+      "quote": "The audience laughs at the wrong one."
+    },
+    {
+      "line": 536,
+      "quote": "Typed lies don't count. You erase it anyway."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "7ce79ff3579342cfefa84c09ce29deba10247d612315f1f4a40899d0c4225e3a",
+  "draft_sha256": "e4572a253e67ad94b366621040588a7f7a5052c10abedca2e215171a471513dc"
+}

@@ -54,6 +54,8 @@ CAST = {
     "every word distinct.",
     "Player": "A low, steady male bass: a poker player in his forties pushing his chips in. Cool and slow, a "
     "deliberate bluff, clear diction, every word distinct.",
+    "Quiet player": "A flat, quiet male baritone: a poker player in his sixties who never smiles. Calm and dry, almost "
+    "bored, few words, clear diction, every word distinct.",
     "Guest": "A curious female mezzo: a party guest in her twenties holding up her phone. Bright and earnest, clear "
     "diction, every word distinct.",
     "Striker": "A loud male tenor: a footballer in his twenties on the ground. Outraged and theatrical, shouting, clear "

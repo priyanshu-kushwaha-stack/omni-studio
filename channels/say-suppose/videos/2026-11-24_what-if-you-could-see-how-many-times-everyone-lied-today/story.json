@@ -98,6 +98,12 @@
       "voiceId": "d19efac4bc890557",
       "describe": "A low, steady male bass: a poker player in his forties pushing his chips in. Cool and slow, a deliberate bluff, clear diction, every word distinct."
     },
+    "Quiet player": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "7035dd17e352fbe7",
+      "describe": "A flat, quiet male baritone: a poker player in his sixties who never smiles. Calm and dry, almost bored, few words, clear diction, every word distinct."
+    },
     "Guest": {
       "model": "local:qwen3-design",
       "voiceType": "design",
@@ -311,8 +317,8 @@
       ]
     },
     {
-      "text": "In a US national survey of 1,000 adults, about 60% reported no lies at all in the past day.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, a stress on sixty percent and on no lies at all] In a US national survey of one thousand adults, about sixty percent reported no lies at all in the past day.",
+      "text": "In a US national survey, about 60% reported no lies at all in the past day.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on sixty percent and on no lies] In a U.S. national survey, about sixty percent reported no lies at all in the past day.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -396,8 +402,8 @@
       "claims": []
     },
     {
-      "text": "Two hundred and twelve, on one floor. In 2 diary studies from 1996, adults from the community reported about 1 lie a day. Students, about 2.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on one floor, a pause, then plain and clear, a stress on about one lie a day, the last beat short] Two hundred and twelve, on one floor. In two diary studies from nineteen ninety-six, adults from the community reported about one lie a day. Students, about two.",
+      "text": "Two hundred and twelve, on one floor. In two diary studies from 1996, adults reported about 1 lie a day.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after floor, a stress on one lie] Two hundred and twelve, on one floor. In two diary studies from nineteen ninety-six, adults reported about one lie a day.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -438,8 +444,8 @@
       "claims": []
     },
     {
-      "text": "Fifty-one. It's in his drafts. You send it while he gets coffee.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; counted, a pause after drafts, the last sentence light and quick] Fifty-one. It's in his drafts. You send it while he gets coffee.",
+      "text": "Fifty-one. It's still in his drafts. You wait at his desk until he sends it.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a pause after Fifty-one, a stress on still and on wait] Fifty-one. It's still in his drafts. You wait at his desk until he sends it.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
@@ -526,14 +532,13 @@
       "claims": []
     },
     {
-      "text": "Three years old, and on the board. In developmental studies, most children aged 3 to 8 who were told not to peek at a toy peeked, then lied about it. It starts around age 2 to 3.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; amused on the first sentence, then plain and clear, a pause before then lied, the last sentence flat] Three years old, and on the board. In developmental studies, most children aged three to eight who were told not to peek at a toy peeked, then lied about it. It starts around age two to three.",
+      "text": "Three years old, and on the board. In one study, most children aged 3 to 8 who were told not to peek at a toy peeked, then lied about it.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a pause after board, a stress on peeked and on lied] Three years old, and on the board. In one study, most children aged three to eight who were told not to peek at a toy, peeked. Then lied about it.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "day",
       "claims": [
-        "c16",
-        "c08"
+        "c16"
       ]
     },
     {
@@ -553,8 +558,8 @@
       "claims": []
     },
     {
-      "text": "Of 80 online daters, 81% were off on at least one of height, weight or age. Usually by a little: under an inch of height, on average.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, a stress on eighty-one percent, a pause before Usually, a softening on by a little] Of eighty online daters, eighty-one percent were off on at least one of height, weight or age. Usually by a little: under an inch of height, on average.",
+      "text": "In one study of online daters, 81% were off on height, weight or age. Usually by a little.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on eighty-one, a small smile on a little] In one study of online daters, eighty-one percent were off on height, weight or age. Usually by a little.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
@@ -564,8 +569,8 @@
       ]
     },
     {
-      "text": "He's lying by two inches. Everybody's lying by two inches.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a stress on two inches both times, a shrug on Everybody's] He's lying by two inches. Everybody's lying by two inches.",
+      "text": "He's lying by two inches. Feels like everybody's lying by two inches.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, amused] He's lying by two inches. Feels like everybody's lying by two inches.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "dusk",
@@ -604,24 +609,40 @@
       "claims": []
     },
     {
-      "text": "Player: All in.",
-      "say": "[a poker player, steady, trying to sound steady, two words] All in.",
+      "text": "Player: I've got a flush.",
+      "say": "[cool and slow, a deliberate bluff, a small pause before flush] I've got a flush.",
       "speaker": "Player",
       "gapAfterSec": 3.0,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "You take the table in an hour. Nobody will deal to you again.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a pause after hour, a stress on again] You take the table in an hour. Nobody will deal to you again.",
+      "text": "Except the quiet one.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; dry, a small turn on quiet] Except the quiet one.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": []
     },
     {
-      "text": "In one study of students, about 60% lied at least once in a 10-minute chat with a stranger. Some had been told to make a good impression.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, a stress on sixty percent and at least once, the last sentence flat] In one study of students, about sixty percent lied at least once in a ten-minute chat with a stranger. Some had been told to make a good impression.",
+      "text": "Quiet player: Pocket aces.",
+      "say": "[flat and calm, almost bored, no smile] Pocket aces.",
+      "speaker": "Quiet player",
+      "gapAfterSec": 2.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You take the table in an hour anyway. Nobody will deal to you again.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; brisk, a stress on anyway, a pause before Nobody] You take the table in an hour anyway. Nobody will deal to you again.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "In one study of students, about 60% lied at least once in a short chat with a stranger. Some had been told to make a good impression.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a stress on sixty percent and on stranger, a pause before Some] In one study of students, about sixty percent lied at least once in a short chat with a stranger. Some had been told to make a good impression.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -745,13 +766,12 @@
       "claims": []
     },
     {
-      "text": "632 people kept a diary of their lies for 91 days. Most lied rarely. A few prolific liars told most of the lies.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; clear, a stress on ninety-one days, a pause, a stress on rarely, slow on a few prolific liars] Six hundred and thirty-two people kept a diary of their lies for ninety-one days. Most lied rarely. A few prolific liars told most of the lies.",
+      "text": "In another large study, most people lied rarely. A few prolific liars told most of the lies.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a pause after study, a stress on rarely, then few] In another large study, most people lied rarely. A few prolific liars told most of the lies.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
       "claims": [
-        "c15",
         "c17"
       ]
     },
@@ -766,8 +786,8 @@
       ]
     },
     {
-      "text": "A whole city, mostly fine. And a few people doing all the lying for everyone.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; a pause after fine, a stress on few and on all] A whole city, mostly fine. And a few people doing all the lying for everyone.",
+      "text": "You stop watching the pitch. You watch the box.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; quiet, a pause between the sentences, a stress on box] You stop watching the pitch. You watch the box.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -974,8 +994,8 @@
       "claims": []
     },
     {
-      "text": "You get the job. Live fact-checker at Thursday's debate. The whole country watching.",
-      "say": "[cool, even, precise sci-fi narration, curious not sentimental; plain, a pause after debate, slow on the whole country] You get the job. Live fact-checker at Thursday's debate. The whole country watching.",
+      "text": "You get the job. Live fact-checker at Thursday's debate. Dodge a direct challenge there, and you lose your closing.",
+      "say": "[cool, even, precise sci-fi narration, curious not sentimental; brisk, a pause after job, a stress on dodge and on closing] You get the job. Live fact-checker at Thursday's debate. Dodge a direct challenge there, and you lose your closing.",
       "speaker": "narrator",
       "gapAfterSec": 0.35,
       "mood": "night",
@@ -1320,12 +1340,11 @@
     "c04": "https://gwern.net/doc/psychology/2021-serota.pdf",
     "c01": "https://pubmed.ncbi.nlm.nih.gov/8656340/",
     "c16": "https://pubmed.ncbi.nlm.nih.gov/18717895/",
-    "c08": "https://doi.org/10.1037/a0031409",
     "c07": "https://www.cl.cam.ac.uk/events/shb/2009/hancock2.pdf",
     "c05": "https://www.sciencedaily.com/releases/2002/06/020611070813.htm",
     "c06": "https://pubmed.ncbi.nlm.nih.gov/16859438/",
-    "c15": "https://doi.org/10.1080/03637751.2021.1985153",
     "c17": "https://doi.org/10.1080/03637751.2021.1985153",
+    "c15": "https://doi.org/10.1080/03637751.2021.1985153",
     "c13": "https://www.sciencedaily.com/releases/2012/12/121203081834.htm",
     "c18": "https://pubmed.ncbi.nlm.nih.gov/28714186/",
     "c09": "https://www.nationalacademies.org/read/10420/chapter/2",

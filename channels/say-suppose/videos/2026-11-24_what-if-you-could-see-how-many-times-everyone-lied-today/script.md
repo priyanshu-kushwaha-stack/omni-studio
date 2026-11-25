@@ -109,7 +109,7 @@ A diary study found people lied most on the phone and least in email (c11).
 > TAG: EVERYONE YOU CAN SEE: 19
 > CARD: ABOUT 60% REPORTED NO LIES IN THE PAST DAY (c03) (on "60%")
 
-In a US national survey of 1,000 adults, about 60% reported no lies at all in the past day (c03).
+In a US national survey, about 60% reported no lies at all in the past day (c03).
 
 Who's doing the lying?
 
@@ -148,7 +148,7 @@ Printer man: Printer's broken.
 > TAG: EVERYONE YOU CAN SEE: 212
 > CARD: 1996: ADULTS REPORTED ABOUT 1 LIE A DAY (c01) (on "about 1 lie")
 
-Two hundred and twelve, on one floor. In 2 diary studies from 1996, adults from the community reported about 1 lie a day. Students, about 2 (c01).
+Two hundred and twelve, on one floor. In two diary studies from 1996, adults reported about 1 lie a day (c01).
 
 Your boss is carrying it.
 
@@ -164,7 +164,7 @@ Boss: Sent it Friday.
 
 > HOLD: 2 s. Performed. Click. 51. He winks. You look past him at his screen: the proposal, sitting in Drafts.
 
-Fifty-one. It's in his drafts. You send it while he gets coffee.
+Fifty-one. It's still in his drafts. You wait at his desk until he sends it.
 
 > SCENE: Your desk phone ringing; a tiny paper client bubble, THANK YOU; across the floor the boss, baffled, giving you a thumbs up.
 
@@ -205,7 +205,7 @@ Kid: Didn't eat it.
 > HOLD: 2 s. Performed. Click. 3. He licks a finger. His mum looks at you, then at him.
 > CARD: TOLD NOT TO PEEK, AGES 3 TO 8: MOST PEEKED, THEN LIED (c16) (on "then lied")
 
-Three years old, and on the board. In developmental studies, most children aged 3 to 8 who were told not to peek at a toy peeked, then lied about it (c16). It starts around age 2 to 3 (c08).
+Three years old, and on the board. In one study, most children aged 3 to 8 who were told not to peek at a toy peeked, then lied about it (c16).
 
 > MOOD: dusk
 > SCENE: A restaurant. Your date, lavender head, across the table, a 0 over him; your phone on the table shows his profile photo, a head taller than the man in the chair.
@@ -217,9 +217,9 @@ Date: Six one.
 > HOLD: 2 s. Performed. Click. 1. You look at the photo, at him, at the 1. He sits up straighter.
 > CARD: 81% OFF ON HEIGHT, WEIGHT OR AGE (c07) (on "81%")
 
-Of 80 online daters, 81% were off on at least one of height, weight or age (c07). Usually by a little: under an inch of height, on average (c07).
+In one study of online daters, 81% were off on height, weight or age (c07). Usually by a little (c07).
 
-He's lying by two inches. Everybody's lying by two inches.
+He's lying by two inches. Feels like everybody's lying by two inches.
 
 > SCENE: The next table: a woman, 0, and her date, 0, glasses raised.
 
@@ -238,15 +238,21 @@ Dinner's fine. Really. And Friday, there's a card game.
 
 Friday. Poker night. Everybody bluffs. Everybody clicks.
 
-Player: All in.
+Player: I've got a flush.
 
 > HOLD: 3 s. Performed. Click. You push your whole stack in without looking at your cards. He folds. The table groans. The guest's phone zooms in on your face.
 
-You take the table in an hour. Nobody will deal to you again.
+Except the quiet one.
 
-> CARD: ABOUT 60% LIED AT LEAST ONCE IN A 10-MINUTE CHAT (c05) (on "60% lied")
+Quiet player: Pocket aces.
 
-In one study of students, about 60% lied at least once in a 10-minute chat with a stranger (c05). Some had been told to make a good impression (c05).
+> HOLD: 2 s. Performed. No click. You fold at once. He turns over two aces. The table laughs.
+
+You take the table in an hour anyway. Nobody will deal to you again.
+
+> CARD: ABOUT 60% LIED IN A SHORT CHAT WITH A STRANGER (c05) (on "60% lied")
+
+In one study of students, about 60% lied at least once in a short chat with a stranger (c05). Some had been told to make a good impression (c05).
 
 Guest: Why not take it to the police?
 
@@ -306,13 +312,13 @@ Click.
 
 Sixty thousand people. Almost all of them zeros and ones.
 
-632 people kept a diary of their lies for 91 days (c15). Most lied rarely. A few prolific liars told most of the lies (c17).
+In another large study, most people lied rarely. A few prolific liars told most of the lies (c17).
 
 > CARD: ALMOST 90% OF LIES WERE LITTLE WHITE LIES (c15) (on "white lies")
 
 And almost 90% of lies were little white lies (c15). Frost, not fire.
 
-A whole city, mostly fine. And a few people doing all the lying for everyone.
+You stop watching the pitch. You watch the box.
 
 > CARD: PROBLEM 1: the city knows about you (on "Problem one")
 
@@ -414,7 +420,7 @@ So the network brings in a machine. In 2003, a National Research Council report 
 
 Twenty out of twenty. The polygraph, thirteen. The rival, eleven, sweating under his own camera.
 
-You get the job. Live fact-checker at Thursday's debate. The whole country watching.
+You get the job. Live fact-checker at Thursday's debate. Dodge a direct challenge there, and you lose your closing.
 
 > MOOD: lamp
 > SCENE: The kitchen, one lamp. Your flatmate at the sink in his dressing gown, the 1 over him; you in the doorway, lanyard still on.

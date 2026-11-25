@@ -1,0 +1,69 @@
+{
+  "call_id": "7e9942340d15450f803571581a77a54f",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 7
+  },
+  "blockers": [
+    {
+      "quote": "632 people kept a diary of their lies for 91 days (c15).",
+      "why": "Row c15 verbatim quote ('Across participants, lying comprised 7% of total communication and almost 90% of all lies were little white lies.') contains neither the participant count '632' nor '91 days', nor does it support that participants 'kept a diary' (c15 was a communication tracking study, while diary studies were c01 and c11). Stating spoken digits 632 and 91 and claiming a diary format exceeds what the row's verbatim quote supports.",
+      "fix": "In another large study, most people lied rarely. A few prolific liars told most of the lies (c17).",
+      "domain": "fact",
+      "line": 309
+    },
+    {
+      "quote": "In developmental studies, most children aged 3 to 8 who were told not to peek at a toy peeked, then lied about it (c16).",
+      "why": "Scope overstatement. Row c16 covers a single study (Talwar & Lee 2008: 'Children (3-8 years) were told not to peek at a toy. Most children peeked and later lied about peeking.'). Generalizing the single experiment cited in c16 to 'In developmental studies' plural overstates the scope beyond what the source supports.",
+      "fix": "In one study, most children aged 3 to 8 who were told not to peek at a toy peeked, then lied about it (c16).",
+      "domain": "fact",
+      "line": 208
+    },
+    {
+      "quote": "In a US national survey of 1,000 adults, about 60% reported no lies at all in the past day (c03).",
+      "why": "Row c03 verbatim quote ('Sixty percent of subjects report telling no lies at all, and almost half of all lies are told by only 5% of subjects') does not contain the spoken digit '1,000' (and row c04 notes N = 998). The approved row claim in claims.md was 'In a US national survey, about 60% of people said they had told no lies in the past day...'. Speaking the digit '1,000' exceeds what the row's verbatim quote supports.",
+      "fix": "In a US national survey, about 60% reported no lies at all in the past day (c03).",
+      "domain": "fact",
+      "line": 112
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 208,
+      "quote": "It starts around age 2 to 3 (c08).",
+      "fix": "Lying shows up around age 2 to 3 (c08)."
+    },
+    {
+      "line": 222,
+      "quote": "He's lying by two inches. Everybody's lying by two inches.",
+      "fix": "He's lying by two inches. Feels like everybody's lying by two inches."
+    },
+    {
+      "line": 151,
+      "quote": "In 2 diary studies from 1996, adults from the community reported about 1 lie a day. Students, about 2 (c01).",
+      "fix": "In two diary studies from 1996, adults from the community reported about 1 lie a day. Students, about 2 (c01)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 94,
+      "quote": "You've heard it. You're lied to 10 to 200 times a day. A 2011 talk said so. It named no study (c12)."
+    },
+    {
+      "line": 272,
+      "quote": "Untrained, people tell a lie from the truth about 54% of the time (c06). Everyone else is a coin flip that wants to believe you."
+    },
+    {
+      "line": 411,
+      "quote": "So the network brings in a machine. In 2003, a National Research Council report found little scientific basis for expecting a polygraph to be extremely accurate (c09), though specific-incident tests do beat chance (c09)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "ea93c4bd8d149f5510b99f5fd7d6cd071d737c09ee601a7e9777d05d755ef8ab",
+  "draft_sha256": "e4572a253e67ad94b366621040588a7f7a5052c10abedca2e215171a471513dc"
+}
