@@ -1,5 +1,7 @@
 # Say Suppose: video format
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 Draft for the owner's review, 2026-11-06. It covers the long-form format, the channel files that record it, the
 pipeline it runs through, and the first video up to the script gate. The engine that renders it is a separate job.
 

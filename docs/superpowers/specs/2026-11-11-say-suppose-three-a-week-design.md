@@ -1,5 +1,7 @@
 # Say Suppose: three films a week on a locked template
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 Owner, 2026-11-11: "ok aligned lets do it your recommended way", after the competitor decode
 (five what-if channels at 0.9-12.7M views in about a month; growth from volume on one locked template, sequels on
 breakouts, a personal power with a social stake) and the script research (the 10-step spine, about 159 words a minute).

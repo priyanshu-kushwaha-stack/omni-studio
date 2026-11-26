@@ -1,5 +1,7 @@
 # Say Suppose: the next phase (time, cadence, story, slate)
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 For the owner's review, 2026-11-09. Planned with the owner on 2026-11-08 and 09, one decision at a time; every
 section below was approved as it was presented. It covers how to make each video faster, how to reach one video a
 day, the rules for picking and writing a what-if, how topics are chosen, and the next ten videos.
