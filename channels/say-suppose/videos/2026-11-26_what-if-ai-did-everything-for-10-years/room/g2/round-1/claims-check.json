@@ -1,0 +1,69 @@
+{
+  "call_id": "a6fe0eb05dfd45ae9db79f9042e5f872",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "fact": 7
+  },
+  "blockers": [
+    {
+      "quote": "Two researchers at MIT built their own model and found the same split (c01). The skilled get sharper. The rest lose the skill (c02).",
+      "why": "Row c01's verbatim quote is \"AI use can leave the worker worse off than with no AI\". That quote does not support \"found the same split\" (which belongs to c02). Line 256 misattributes c02's finding to c01 while completely omitting c01's actual finding that leaning on AI can leave workers worse off than with no AI at all.",
+      "fix": "Two researchers at MIT built a model where leaning on AI can leave workers worse off than with no AI (c01). In their model, the skilled get sharper, while the rest lose the skill (c02).",
+      "domain": "fact",
+      "line": 256
+    },
+    {
+      "quote": "Each company keeps the whole saving from a layoff and bears only a slice of the spending it destroys. The rest lands on its rivals (c09).",
+      "why": "Row c09 is a contested theoretical model result (arXiv preprint 2603.20617), not an empirical measurement. The sentence asserts the dynamic as an unconditioned real-world fact without the required caveat stating that this occurs within the model.",
+      "fix": "In their model, each company keeps the whole saving from a layoff and bears only a slice of the spending it destroys. The rest lands on its rivals (c09).",
+      "domain": "fact",
+      "line": 211
+    },
+    {
+      "quote": "Homework scores, up 18 percent (c04).",
+      "why": "Row c04's verbatim quote is \"Their homework scores rose by 18% relative to the pre-adoption mean.\" Stating \"Homework scores, up 18 percent\" overstates the finding as a general increase by omitting the baseline comparison (\"against their own old average\"), unlike the accurate qualification used for c06 in line 112.",
+      "fix": "Homework scores, up 18 percent against their own old average (c04).",
+      "domain": "fact",
+      "line": 102
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 102,
+      "quote": "One study followed them, and at first Echo's right.",
+      "fix": "One study followed them (c03), and at first Echo's right."
+    },
+    {
+      "line": 401,
+      "quote": "On the test afterwards, the AI group scored about 50 percent. The group without it, 67 (c15).",
+      "fix": "On the test afterwards, the AI group scored about 50 percent. The group without it, 67 percent (c15)."
+    },
+    {
+      "line": 403,
+      "quote": "The ones who asked it to explain why scored 65 or more. The ones who handed over the coding, under 40 (c16).",
+      "fix": "The ones who asked it to explain why scored 65 percent or more. The ones who handed over the coding, under 40 percent (c16)."
+    }
+  ],
+  "keep": [
+    {
+      "line": 112,
+      "quote": "Then the monthly exams. Closed book. No AI in the room. Within six months, down 20 percent, against their own old average (c06)."
+    },
+    {
+      "line": 213,
+      "quote": "They tried Dana's fixes in the model. Retraining. A basic income. Just knowing about it. None of them stopped the race (c10). One thing did. A tax on the automation itself (c11). One model says so. Nobody has measured it."
+    },
+    {
+      "line": 321,
+      "quote": "A group of researchers argue this is the real risk (c13). No robot army. No evil machine. A slow handover of one small decision at a time, until people aren't steering. They argue it. Nobody has measured it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "bd4ac3b0998ca8dd482862cae98eac5a6cdd37f8aba7b49869210bad8ada3450",
+  "draft_sha256": "54fee540463a4e06f850bc1727f231cdd12ff54c14598a7557253b31b99a6fdf"
+}

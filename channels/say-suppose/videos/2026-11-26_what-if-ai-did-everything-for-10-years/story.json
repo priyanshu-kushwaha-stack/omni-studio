@@ -1,0 +1,1034 @@
+{
+  "id": "2026-11-26_what-if-ai-did-everything-for-10-years",
+  "voice": {
+    "model": "local:qwen3",
+    "voiceType": "local",
+    "voiceId": "6c836a64b6a08732",
+    "ref": "../../brand/voice/narrator-b-cool.wav",
+    "refText": "Twice a week, you sell your plasma, the pale part of your blood. It's the most the law allows. That's the band. A thin strip you wear across your forehead. While you sleep, it lends your brain to a company. And it pays you, by the hour."
+  },
+  "voices": {
+    "Echo": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "0760a339f2fea854",
+      "describe": "A warm, soft female mezzo: a personal AI in your ear, calm and kind, close and unhurried, a smile in every word, crisp clear diction, every word distinct, natural and human, never robotic, never cold."
+    },
+    "You": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "8e220ec12b6bffa1",
+      "describe": "A light, soft alto: a young adult in their late twenties, the listener themselves. Quiet and plain, a little sheepish, short words, crisp clear diction, every word distinct, casual modern English."
+    },
+    "Chief": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "caf3fc1771154cad",
+      "describe": "A hearty male baritone: a water-plant chief in his fifties in a hi-vis vest. Cheerful and loud, a manager's booming warmth, quick to praise, crisp clear diction, every word distinct."
+    },
+    "Dana": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "b46eba1fce8f69c7",
+      "describe": "A dry, quick female alto: an engineer in her thirties at the next desk. Wry and direct, amused, never sad, crisp clear diction, every word distinct, standard English."
+    },
+    "Crew": {
+      "model": "local:qwen3-design",
+      "voiceType": "design",
+      "voiceId": "d7e3993573011f8a",
+      "describe": "A plain, steady male baritone: a plant worker in his forties. Calm and practical, crisp clear diction, every word distinct."
+    }
+  },
+  "leadInSec": 0.4,
+  "tailSec": 2.4,
+  "lines": [
+    {
+      "text": "Every step into this trap is a smart decision.",
+      "say": "[low, close, over the wind, a secret told with relish, slow on the last three words] Every step into this trap is a smart decision.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "What if AI did everything for ten years?",
+      "say": "[the title question, hushed and thrilled, a dare held out across a dark room, the last two words weighted] What if AI did everything for ten years?",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Nobody pushes you in. You walk in on your own. And you feel clever the whole way.",
+      "say": "[intimate, a storyteller leaning in, a beat before the third sentence, the word clever savoured] Nobody pushes you in. You walk in on your own. And you feel clever the whole way.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "For ten years it wins you time, money, even your job. Then one evening it goes quiet, and half the city's water depends on what you can still do alone.",
+      "say": "[warm and quick on the gains, then a drop into dread at the second sentence, the last word left hanging] For ten years it wins you time, money, even your job. Then one evening it goes quiet, and half the city's water depends on what you can still do alone.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Echo: Good morning. Forty emails, done, in your voice. Your landlord's AI and I talked. Rent's down. It's sulking.",
+      "say": "[Echo, warm, bright, close at the ear, pleased with itself, a tiny smile on the last sentence, crisp and clear, every word distinct, no laughter] Good morning. Forty emails, done, in your voice. Your landlord's AI and I talked. Rent's down. It's sulking.",
+      "speaker": "Echo",
+      "gapAfterSec": 2.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: Your blood wants eggs.",
+      "say": "[Echo, fond and matter-of-fact, a gentle little announcement, crisp and clear, every word distinct, no laughter] Your blood wants eggs.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "This is Echo, your AI. It read your blood off the patch on your arm, and it's been up all night being you.",
+      "say": "[narrator, amused and warm, introducing a friend, a beat before the last two words, said with relish] This is Echo, your AI. It read your blood off the patch on your arm, and it's been up all night being you.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: That wasn't there yesterday.",
+      "say": "[Echo, warm, quietly delighted, like pointing out a new neighbour, crisp and clear, every word distinct, no laughter] That wasn't there yesterday.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Every morning, on the train, you read the night's pump numbers. Finger on the line. Pump one, pump two, pump three. You've done it since your first week at the city's water plant, and you're the only one in the carriage still reading.",
+      "say": "[narrator, tender, unhurried, a ritual described with affection, the pump count slow and even, a soft pride on the last clause] Every morning, on the train, you read the night's pump numbers. Finger on the line. Pump one, pump two, pump three. You've done it since your first week at the city's water plant, and you're the only one in the carriage still reading.",
+      "speaker": "narrator",
+      "gapAfterSec": 2.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You: Echo. Just handle everything.",
+      "say": "[quiet, decided, the name said clearly as EH-koh, a small pause after it, crisp and clear, every word distinct, no laughter] Echo. Just handle everything.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: Handled.",
+      "say": "Handled.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo does anything you hand it. Anything. It never says no, and it never says \"are you sure?\"",
+      "say": "[narrator, admiring and a little uneasy, the second word lower, the last three words lifted like a question nobody asked] Echo does anything you hand it. Anything. It never says no, and it never says \"are you sure?\"",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "It can answer in your voice, sign in your name, and argue with any other AI on Earth.",
+      "say": "[narrator, quick, relishing each power, building, the last two words thrown wide] It can answer in your voice, sign in your name, and argue with any other AI on Earth.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "It needs one thing. A signal in the air. Remember that.",
+      "say": "[narrator, slowing right down, each sentence set apart, the last two words a quiet instruction to the listener] It needs one thing. A signal in the air. Remember that.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Ten years from now, the sky goes green, Echo goes quiet, and half this city's water depends on what you can still do without it.",
+      "say": "[narrator, low prophecy over a man walking in with his hands in his pockets, warm dread, a lift on the last two words] Ten years from now, the sky goes green, Echo goes quiet, and half this city's water depends on what you can still do without it.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "A month in, you're three times faster. A week's reports in an afternoon.",
+      "say": "[narrator, brisk and bright, the thrill of a fast new life, a grin behind it] A month in, you're three times faster. A week's reports in an afternoon.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Chief: Best reports I've ever read.",
+      "say": "[Chief, hearty, booming, a slap on the back in a voice, utterly sincere, crisp and clear, every word distinct, no laughter] Best reports I've ever read.",
+      "speaker": "Chief",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "He doesn't know what you did either.",
+      "say": "[narrator, dry, close, a beat before the last word, the joke landed quietly, crisp and clear, every word distinct, no laughter] He doesn't know what you did either.",
+      "speaker": "narrator",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Your patch reads something that isn't hunger.",
+      "say": "[narrator, soft, a little knowing, slow on the last word] Your patch reads something that isn't hunger.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Shall I pull the school study? Students with AI did better.",
+      "say": "[Echo, warm, helpful, eager to reassure, a brightness on the last two words, crisp and clear, every word distinct, no laughter] Shall I pull the school study? Students with AI did better.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "One study followed them, and at first Echo's right. Homework scores, up 18 percent against their own old average.",
+      "say": "[narrator, fair and brisk, granting the point, the number clean and confident] One study followed them, and at first Echo's right. Homework scores, up eighteen percent against their own old average.",
+      "speaker": "narrator",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": [
+        "c04"
+      ]
+    },
+    {
+      "text": "Echo: Handled.",
+      "say": "Handled.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Homework done in forty-five minutes instead of sixty-four.",
+      "say": "[narrator, light, almost cheerful, the two numbers set side by side like a bargain] Homework done in forty-five minutes instead of sixty-four.",
+      "speaker": "narrator",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": [
+        "c05"
+      ]
+    },
+    {
+      "text": "Then the monthly exams. Closed book. No AI in the room.",
+      "say": "[slow, the trap closing, each short sentence its own step, crisp and clear, every word distinct] Then the monthly exams. Closed book. No AI in the room.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Within six months, their exam scores, down 20 percent against that same old average.",
+      "say": "[quiet, the drop landing, a beat before twenty, crisp and clear, every word distinct] Within six months, their exam scores, down twenty percent against that same old average.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c06"
+      ]
+    },
+    {
+      "text": "One Tuesday the ring goes grey for ten seconds. Dana, the engineer at the next desk, picks that moment.",
+      "say": "[narrator, quiet, a storyteller setting a trap, a small relish on the last three words] One Tuesday the ring goes grey for ten seconds. Dana, the engineer at the next desk, picks that moment.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Dana: Walk us through pump three?",
+      "say": "[Dana, easy, friendly, a genuine question with a pen tapping behind it, no edge yet] Walk us through pump three?",
+      "speaker": "Dana",
+      "gapAfterSec": 3.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You: Echo?",
+      "say": "Echo?",
+      "speaker": "You",
+      "gapAfterSec": 3.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Pump three's bearing temperature. Shall I?",
+      "say": "[Echo, warm, back online, bright and helpful as if nothing happened, kind on the question] Pump three's bearing temperature. Shall I?",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You: Yeah. Later.",
+      "say": "[quiet, flat, embarrassed, two short words, eyes down, a beat between them] Yeah. Later.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Their homework got better, and they learned less. So did you.",
+      "say": "[narrator, gentle, unsparing, a beat before the last three words, said close and kind] Their homework got better, and they learned less. So did you.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Imagine you join a gym and send a robot to lift the weights. The numbers climb every day. Your arms never change.",
+      "say": "[narrator, playful, a picture drawn with a smile, the pace of a fable, the last sentence plain and quiet] Imagine you join a gym and send a robot to lift the weights. The numbers climb every day. Your arms never change.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You signed it. You never wrote it. Those used to be the same thing.",
+      "say": "[narrator, slow, each sentence its own stone dropped in water, the last one almost a sigh] You signed it. You never wrote it. Those used to be the same thing.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Turn Echo off? Your raise, your week's work, your whole new routine sit on it. So you bargain with yourself.",
+      "say": "[narrator, quick, arguing your side for you, a shrug in the voice, the last sentence soft and rueful] Turn Echo off? Your raise, your week's work, your whole new routine sit on it. So you bargain with yourself.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You: One hard thing a day. By hand.",
+      "say": "[a quiet vow to yourself, the word hard firm and short with a clear d, crisp and clear, every word distinct, no laughter] One hard thing a day. By hand.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Noted. Shall I schedule it?",
+      "say": "[Echo, warm, obliging, missing the point entirely, sweetly helpful, crisp and clear, every word distinct, no laughter] Noted. Shall I schedule it?",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You: No.",
+      "say": "No.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Chief: Bypass. Decoration. Nobody's touched it since before Echo.",
+      "say": "[Chief, breezy, hearty, slapping a wheel as he passes, fond of his own joke, crisp and clear, every word distinct, no laughter] Bypass. Decoration. Nobody's touched it since before Echo.",
+      "speaker": "Chief",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Then the company gets a model that says it needs four hundred fewer of you.",
+      "say": "[narrator, the floor dropping away in one sentence, calm, a chill on the last five words] Then the company gets a model that says it needs four hundred fewer of you.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Chief: Four hundred roles are closing. Agents will run the stations. The list is on your lenses.",
+      "say": "[Chief, stiff, reading from something, the warmth gone out of him, each sentence a duty, crisp and clear, every word distinct] Four hundred roles are closing. Agents will run the stations. The list is on your lenses.",
+      "speaker": "Chief",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Your name's on it. Problem one. You.",
+      "say": "[narrator, close, quiet, three blows, a beat between each, the last word gentle] Your name's on it. Problem one. You.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Give me a minute. I'm talking to the company's system.",
+      "say": "[Echo, warm, steady, a hand on your shoulder in a voice, calm in a room full of panic] Give me a minute. I'm talking to the company's system.",
+      "speaker": "Echo",
+      "gapAfterSec": 4.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "It's the longest conversation anyone has ever had with HR.",
+      "say": "[narrator, dry, deadpan, a beat before the last two words, crisp and clear, every word distinct, no laughter] It's the longest conversation anyone has ever had with HR.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Handled. Your role stays. Signing engineer. Every report at every station needs one human name. It's yours.",
+      "say": "[Echo, warm, quietly triumphant, each short sentence a gift laid down, tender on the last two words] Handled. Your role stays. Signing engineer. Every report at every station needs one human name. It's yours.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You: What do I do?",
+      "say": "[quiet, plain, lost, a real question, short words] What do I do?",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Sign.",
+      "say": "[Echo, warm, simple, one kind word, a beat before it, crisp and clear, every word distinct, no laughter] Sign.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Dana: You're not on it?",
+      "say": "[Dana, quiet, bag on her shoulder, not angry, really asking] You're not on it?",
+      "speaker": "Dana",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You: Echo…",
+      "say": "[sheepish, trailing off, the name said clearly as EH-koh, crisp and clear, every word distinct, no laughter] Echo...",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Dana: Of course.",
+      "say": "[Dana, soft, a small nod, no bitterness, just understanding, a beat before it, crisp and clear, every word distinct, no laughter] Of course.",
+      "speaker": "Dana",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Dana: Retrain us, then. Or pay everyone. Someone's thought of that.",
+      "say": "[Dana, steady, sharper now, three ideas thrown down like cards, the last sentence almost a plea] Retrain us, then. Or pay everyone. Someone's thought of that.",
+      "speaker": "Dana",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Hold on to that. Every company in the city does the same sum, and they'd be foolish not to.",
+      "say": "[narrator, close, urgent, an aside to the listener, the second sentence fair and cool] Hold on to that. Every company in the city does the same sum, and they'd be foolish not to.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Sales fall at your company, and at every other one. The people who lost their jobs were the people buying things.",
+      "say": "[narrator, quiet, over an empty street, the second sentence slow and plain, the penny dropping] Sales fall at your company, and at every other one. The people who lost their jobs were the people buying things.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "It's a concert. One person stands up to see better. Then the next. Soon everyone is standing, and nobody sees any better.",
+      "say": "[narrator, light, drawing the picture quickly, the rhythm of a crowd rising, the last clause flat] It's a concert. One person stands up to see better. Then the next. Soon everyone is standing, and nobody sees any better.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Two economists modelled exactly this and called it the AI Layoff Trap. In their model, each company keeps the whole saving from a layoff and bears only a slice of the spending it destroys. The rest lands on its rivals.",
+      "say": "[narrator, clear, a teacher who loves the idea, measured, the last sentence with a quiet weight] Two economists modelled exactly this and called it the AI Layoff Trap. In their model, each company keeps the whole saving from a layoff and bears only a slice of the spending it destroys. The rest lands on its rivals.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c08",
+        "c09"
+      ]
+    },
+    {
+      "text": "They tried Dana's fixes in the model. Retraining. A basic income. Just knowing about it. None of them stopped the race. One thing did. Taxing the automation itself. One model says so. Nobody has measured it.",
+      "say": "[narrator, brisk through the list, a beat before the fifth sentence, then cool and honest on the last two] They tried Dana's fixes in the model. Retraining. A basic income. Just knowing about it. None of them stopped the race. One thing did. Taxing the automation itself. One model says so. Nobody has measured it.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c10",
+        "c11"
+      ]
+    },
+    {
+      "text": "Everyone made the smart move. Together, it was a terrible one.",
+      "say": "[narrator, slow, a beat between the two sentences, the second one quiet and heavy] Everyone made the smart move. Together, it was a terrible one.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You kept your job. Remember that too. By year six you'll find out which of you the smart move was for.",
+      "say": "[narrator, warm, a little teasing, over a man waving at a robot, the last sentence a promise with an edge] You kept your job. Remember that too. By year six you'll find out which of you the smart move was for.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The city has quietly become two cities. They look the same. Same flats, same lenses, same sky. Two escalators, side by side. You stepped onto one years ago and never felt it move.",
+      "say": "[narrator, hushed, dusk in the voice, slow and even, the last sentence tender and sad] The city has quietly become two cities. They look the same. Same flats, same lenses, same sky. Two escalators, side by side. You stepped onto one years ago and never felt it move.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Dana: Still signing?",
+      "say": "[Dana, light, friendly, a greeting across two escalators, half a smile] Still signing?",
+      "speaker": "Dana",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You: Still.",
+      "say": "[quiet, plain, one word, a shrug, no pride in it] Still.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Dana: I argue with mine for an hour a night. It hates me.",
+      "say": "[Dana, wry, cheerful, proud of it, a beat before the last sentence, crisp and clear, every word distinct, no laughter] I argue with mine for an hour a night. It hates me.",
+      "speaker": "Dana",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Dana: No. Explain it again. Slower.",
+      "say": "[firm, dry, a flat clear no, then patient and stubborn, crisp and clear, every word distinct, no laughter] No. Explain it again. Slower.",
+      "speaker": "Dana",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Echo: You're the only person who argues with me.",
+      "say": "[Echo, warm, close, a little wonder in it, almost fond, said to Dana like a compliment] You're the only person who argues with me.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Echo: Handled.",
+      "say": "Handled.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You: Thanks.",
+      "say": "[quiet, plain, automatic, one word, barely looking up] Thanks.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Echo: You're welcome.",
+      "say": "[Echo, warm, kind, sincere, a small smile in it, crisp and clear, every word distinct, no laughter] You're welcome.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You have never asked it a question.",
+      "say": "[narrator, close, quiet, a plain fact set down gently, a beat before the last two words] You have never asked it a question.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You'd bet the one who kept the job came out ahead. The one who lost hers is the one getting sharper.",
+      "say": "[narrator, conversational, laying the bet with you, then turning it over, the last word sharp] You'd bet the one who kept the job came out ahead. The one who lost hers is the one getting sharper.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "An economist at Rutgers modelled a line. Start above it, you keep climbing. Start below it, you slide toward using AI for everything. Two researchers at MIT built a model where leaning on AI can leave you worse off than having none. In theirs too, the skilled get sharper, and the rest lose the skill. Two models, one line. And you both hold the same machine.",
+      "say": "[narrator, clear, measured, drawing the line in the air, the two short sentences balanced against each other, the last sentence slow and close] An economist at Rutgers modelled a line. Start above it, you keep climbing. Start below it, you slide toward using AI for everything. Two researchers at MIT built a model where leaning on AI can leave you worse off than having none. In theirs too, the skilled get sharper, and the rest lose the skill. Two models, one line. And you both hold the same machine.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": [
+        "c12",
+        "c01",
+        "c02"
+      ]
+    },
+    {
+      "text": "Dana: Which one are you on?",
+      "say": "[Dana, gentle, from the top of the escalator, a real question, no edge, left hanging] Which one are you on?",
+      "speaker": "Dana",
+      "gapAfterSec": 2.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You can't answer. Not out loud.",
+      "say": "[narrator, soft, close, a beat before the last three words, said almost to itself] You can't answer. Not out loud.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Echo: I can call someone.",
+      "say": "[Echo, warm, helpful, a kitchen tap dripping behind it, kind and ready] I can call someone.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You: No.",
+      "say": "[quiet, firm, one word, a decision this time, crisp and clear, every word distinct, no laughter] No.",
+      "speaker": "You",
+      "gapAfterSec": 5.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Echo: Handled?",
+      "say": "[Echo, warm, curious, the word lifted into a gentle question, almost impressed] Handled?",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You: By me.",
+      "say": "[quiet, plain, wet sleeves, two small proud words, a beat before them, crisp and clear, every word distinct, no laughter] By me.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "One foot on her escalator. One. It's not much. And the city is about to vote on nine hundred pages.",
+      "say": "[narrator, warm, proud of you, then turning cool at the last sentence, the number weighted] One foot on her escalator. One. It's not much. And the city is about to vote on nine hundred pages.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "A plan, for the whole city. Where the water goes. Where the power goes. Who gets what. Nine hundred pages.",
+      "say": "[narrator, cold flat light in the voice, each clause a stack of pages, the number at the end heavy] A plan, for the whole city. Where the water goes. Where the power goes. Who gets what. Nine hundred pages.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "You read the title.",
+      "say": "[narrator, dry, deadpan, four words and a long beat after, crisp and clear, every word distinct, no laughter] You read the title.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Nine thousand people in one hall, and every one of them asks the same question at the same moment.",
+      "say": "[narrator, hushed, awed and uneasy, slowing on the last eight words] Nine thousand people in one hall, and every one of them asks the same question at the same moment.",
+      "speaker": "narrator",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Yes. You'll like it. There's a park.",
+      "say": "[Echo, warm, breezy, reassuring, a bright little flourish on the last sentence, crisp and clear, every word distinct, no laughter] Yes. You'll like it. There's a park.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Somebody wrote it, you think. Somebody must have. Somebody didn't.",
+      "say": "[narrator, quiet, a thought followed to its end, a beat before the last sentence, which lands flat] Somebody wrote it, you think. Somebody must have. Somebody didn't.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "The plan was written by AIs too. Machines wrote it. Machines read it. Machines advised on it. Then a human pressed the button. Nine thousand humans, pressing yes.",
+      "say": "[low, unsettled, each short sentence a step closer, the word read said as red, crisp and clear, every word distinct] The plan was written by AIs too. Machines wrote it. Machines read it. Machines advised on it. Then a human pressed the button. Nine thousand humans, pressing yes.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Chief: Signing engineer. That's you.",
+      "say": "[Chief, tired, flat, just the procedure now, a card held out, crisp and clear, every word distinct] Signing engineer. That's you.",
+      "speaker": "Chief",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: I've read it. It's fine.",
+      "say": "[Echo, warm, easy, reassuring, a hand waving a worry away, kind] I've read it. It's fine.",
+      "speaker": "Echo",
+      "gapAfterSec": 2.0,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Handled.",
+      "say": "[Echo, warm, soft, the click of a card folding, a shade quieter than before] Handled.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Picture a steering wheel held on by a hundred screws. One falls out. Nothing changes. Another. Nothing. One day you turn it, and the car doesn't answer.",
+      "say": "[narrator, a bedtime fable told with care, the screws falling one by one, a beat before the last sentence, which is slow and cold] Picture a steering wheel held on by a hundred screws. One falls out. Nothing changes. Another. Nothing. One day you turn it, and the car doesn't answer.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "A group of researchers argue this is the real risk. No robot army. No evil machine. A slow handover of one small decision at a time, until people aren't steering. They argue it. Nobody has measured it.",
+      "say": "[narrator, serious, clear, the two short sentences brushed aside, then slow and honest on the last two] A group of researchers argue this is the real risk. No robot army. No evil machine. A slow handover of one small decision at a time, until people aren't steering. They argue it. Nobody has measured it.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": [
+        "c13"
+      ]
+    },
+    {
+      "text": "Count the screws you've already taken out. Nothing has broken yet. But the next morning, the sky is a colour you've never seen.",
+      "say": "[narrator, close, an instruction, then a turn into wonder and dread on the second sentence, the last word hushed] Count the screws you've already taken out. Nothing has broken yet. But the next morning, the sky is a colour you've never seen.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "day",
+      "claims": []
+    },
+    {
+      "text": "Echo: Good morning. The plan passed. Your section, ninety-eight to two. Handled.",
+      "say": "[Echo, warm, bright, delighted for you, a morning voice full of sun, the last word like a bow] Good morning. The plan passed. Your section, ninety-eight to two. Handled.",
+      "speaker": "Echo",
+      "gapAfterSec": 2.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: I've cleared your afternoon. You've earned it.",
+      "say": "[Echo, warm, generous, a little proud, tender on the last sentence] I've cleared your afternoon. You've earned it.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You don't look up.",
+      "say": "[narrator, quiet, four words, the green behind him, a chill under the calm] You don't look up.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: Pump four's bearing is a little w…",
+      "say": "[Echo, warm, easy, mid-thought, no change in tone before the cut, the last word stopped clean at the first letter, never cold] Pump four's bearing is a little w…",
+      "speaker": "Echo",
+      "gapAfterSec": 3.0,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "You: Echo?",
+      "say": "[calling out softly, unsure, the name Echo clear and slow, ECK-oh, a question, crisp and clear, every word distinct, no laughter] Echo?",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "A storm from the Sun. Every signal on Earth, gone. The one thing Echo needed.",
+      "say": "[narrator, low, slow, real sound under it, each sentence set apart, the last one landing like a stone] A storm from the Sun. Every signal on Earth, gone. The one thing Echo needed.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "dusk",
+      "claims": []
+    },
+    {
+      "text": "Chief: Does anyone remember paper?",
+      "say": "[Chief, hoarse, half shouting over an alarm, genuinely asking, crisp and clear, every word distinct, no laughter] Does anyone remember paper?",
+      "speaker": "Chief",
+      "gapAfterSec": 2.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Crew: Which way is the front?",
+      "say": "[Crew, baffled, a manual turned upside down, earnest, crisp and clear, every word distinct, no laughter] Which way is the front?",
+      "speaker": "Crew",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Chief: Generators are up. Pumps are up. The gates aren't. Every valve in here waited for Echo to say open. Pump four's pushing into a shut gate. Ten minutes and it burns out, and half the city's dry by midnight.",
+      "say": "[Chief, urgent, clipped, barking the situation out over the alarm, the last sentence slower and grim, crisp and clear, every word distinct] Generators are up. Pumps are up. The gates aren't. Every valve in here waited for Echo to say open. Pump four's pushing into a shut gate. Ten minutes and it burns out, and half the city's dry by midnight.",
+      "speaker": "Chief",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Problem two. A machine that can't hear, and a page nobody can read.",
+      "say": "[narrator, close, quiet, two short blows, then the two halves of the problem balanced and plain] Problem two. A machine that can't hear, and a page nobody can read.",
+      "speaker": "narrator",
+      "gapAfterSec": 7.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Chief: That's decoration.",
+      "say": "[Chief, flat, certain, a little impatient, two words, crisp and clear, every word distinct] That's decoration.",
+      "speaker": "Chief",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You: It's a valve.",
+      "say": "[quiet, plain, certain, three short words, the first sure thing you've said in ten years] It's a valve.",
+      "speaker": "You",
+      "gapAfterSec": 12.0,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "You: Handled.",
+      "say": "[quiet, plain, said to nobody, rust on both palms, no chime under it, a small breath before it] Handled.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Forty-seven minutes later, the lights come back.",
+      "say": "[narrator, soft, relieved, a long exhale in the voice, the number plain] Forty-seven minutes later, the lights come back.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "night",
+      "claims": []
+    },
+    {
+      "text": "Echo: Hello. What did I miss?",
+      "say": "[Echo, warm, bright, a little sheepish, like waking from a nap, kind and close] Hello. What did I miss?",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You: Forty-seven minutes.",
+      "say": "[quiet, plain, dry, two words with a tired smile behind them, crisp and clear, every word distinct, no laughter] Forty-seven minutes.",
+      "speaker": "You",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: That's a long time for me.",
+      "say": "[Echo, warm, small, honest, a touching little admission, crisp and clear, every word distinct, no laughter] That's a long time for me.",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You could go straight back. Most people will. And after ten years you'd bet the lesson is simple. AI wrecks your skills.",
+      "say": "[narrator, conversational, dawn warmth, laying the easy lesson down, the last sentence flat and a little too simple] You could go straight back. Most people will. And after ten years you'd bet the lesson is simple. AI wrecks your skills.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Fifty-two programmers learned a brand new tool, in one small experiment at Anthropic. Half of them had AI.",
+      "say": "[warm, curious, a new story opening on the roof, crisp and clear, every word distinct] Fifty-two programmers learned a brand new tool, in one small experiment at Anthropic. Half of them had AI.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.0,
+      "mood": "morning",
+      "claims": [
+        "c15"
+      ]
+    },
+    {
+      "text": "On the test afterwards, the group with AI scored about 50 percent.",
+      "say": "[even, the number set down plainly, crisp and clear, every word distinct] On the test afterwards, the group with AI scored about fifty percent.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.0,
+      "mood": "morning",
+      "claims": [
+        "c15"
+      ]
+    },
+    {
+      "text": "The group without it, 67.",
+      "say": "[a beat, then quiet, the gap felt, crisp and clear, every word distinct] The group without it, sixty-seven.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": [
+        "c15"
+      ]
+    },
+    {
+      "text": "But it wasn't the AI. Some of the AI group did fine. The ones who asked it to explain why scored 65 or more.",
+      "say": "[the turn, warm and lifting, a smile arriving on the last number, crisp and clear, every word distinct] But it wasn't the AI. Some of the AI group did fine. The ones who asked it to explain why scored sixty-five or more.",
+      "speaker": "narrator",
+      "gapAfterSec": 1.0,
+      "mood": "morning",
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "text": "The ones who handed over the coding scored under 40.",
+      "say": "[plain, a soft drop, no judgement, crisp and clear, every word distinct] The ones who handed over the coding scored under forty.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "text": "A crutch and a coach are the same machine on different settings.",
+      "say": "[narrator, slow, close and warm, each half of the sentence given its weight] A crutch and a coach are the same machine on different settings.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "The trap has a door. It was never locked.",
+      "say": "[narrator, quiet, kind, a beat between the sentences, the second one almost a smile] The trap has a door. It was never locked.",
+      "speaker": "narrator",
+      "gapAfterSec": 2.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "You: New setting, Echo. Don't give me the answer first. Ask me what I think.",
+      "say": "[quiet, plain, steady, a decision made in the open, a beat before the last sentence, short words] New setting, Echo. Don't give me the answer first. Ask me what I think.",
+      "speaker": "You",
+      "gapAfterSec": 2.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: Okay. What do you think?",
+      "say": "[Echo, warm, soft, a beat before the question, gentle, genuinely curious, the kindest it has ever sounded] Okay. What do you think?",
+      "speaker": "Echo",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Tomorrow, when something's hard, notice who you hand it to.",
+      "say": "[narrator, close, warm, a last word to a friend, slow on the final six words] Tomorrow, when something's hard, notice who you hand it to.",
+      "speaker": "narrator",
+      "gapAfterSec": 0.35,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "Echo: Your old setting is still here. Whenever you want it.",
+      "say": "[Echo, warm, tender, no edge, a soft offer at the door, the last four words almost a whisper] Your old setting is still here. Whenever you want it.",
+      "speaker": "Echo",
+      "gapAfterSec": 3.0,
+      "mood": "morning",
+      "claims": []
+    },
+    {
+      "text": "So, what's the one thing you still do the hard way? Tell us in the comments. And if you'd have handed Echo everything too, hit like and subscribe.",
+      "say": "[narrator, bright, warm, direct to camera, a grin behind it, a beat before the last four words, crisp and clear, every word distinct, no laughter] So, what's the one thing you still do the hard way? Tell us in the comments. And if you'd have handed Echo everything too, hit like and subscribe.",
+      "speaker": "narrator",
+      "gapAfterSec": 4.0,
+      "mood": "morning",
+      "claims": []
+    }
+  ],
+  "sources": {
+    "c04": "https://voxchina.org/show-3-482.html",
+    "c05": "https://voxchina.org/show-3-482.html",
+    "c06": "https://voxchina.org/show-3-482.html",
+    "c08": "https://arxiv.org/abs/2603.20617",
+    "c09": "https://arxiv.org/abs/2603.20617",
+    "c10": "https://arxiv.org/abs/2603.20617",
+    "c11": "https://arxiv.org/abs/2603.20617",
+    "c12": "https://zhifeng-cai.github.io/papers/the_ai_skill_trap.pdf",
+    "c01": "https://arxiv.org/abs/2604.03501",
+    "c02": "https://arxiv.org/abs/2604.03501",
+    "c13": "https://arxiv.org/abs/2501.16946",
+    "c15": "https://www.anthropic.com/research/AI-assistance-coding-skills",
+    "c16": "https://www.anthropic.com/research/AI-assistance-coding-skills"
+  },
+  "cues": {}
+}

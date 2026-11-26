@@ -1,0 +1,73 @@
+{
+  "call_id": "f33e5574113844ab8bbe1fb868347db0",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "five-line spine": 9,
+    "cause and effect": 7,
+    "fact delivery": 6,
+    "stakes and payoffs": 9,
+    "close": 8
+  },
+  "blockers": [
+    {
+      "quote": "Fifty-two programmers learned a brand new tool, in one small experiment at Anthropic (c15). Half had AI. On the test afterwards, the AI group scored about 50 percent. The group without it, 67 (c15).",
+      "why": "Check #7 fails: this stacks three numbers before any result lands on you; line 403 stacks two more, and line 112 similarly combines six months with 20 percent.",
+      "fix": "Separate each number with your choice on screen: \u201cFifty-two programmers learned a new tool in a small Anthropic experiment (c15).\u201d Your hand approaches OLD SETTING. \u201cWith AI: about 50 percent.\u201d Your hand stops. \u201cWithout it: 67.\u201d You select EXPLAIN WHY. \u201cAsk conceptual questions: 65 or more (c16).\u201d The ANSWER FOR ME option appears. \u201cHand over the coding: under 40.\u201d Likewise split line 112 into \u201cSix months later.\u201d followed by your meeting-room action, then \u201cClosed-book scores: down 20 percent against their old average (c06).\u201d",
+      "domain": "story",
+      "line": 401
+    },
+    {
+      "quote": "Count the screws you've already taken out. And the next morning, the sky is a colour you've never seen.",
+      "why": "Check #5 fails: the decisive handoff and the solar event are joined as \u201cand then,\u201d although the storm should test the weakness created by the handoff.",
+      "fix": "Replace with: \u201cNothing has broken yet. But the next morning, the sky is a colour you've never seen.\u201d",
+      "domain": "story",
+      "line": 323
+    },
+    {
+      "quote": "> SCENE: The back of the hall, one row behind the last. A figure in a long crimson coat, the only eyes in the room with no ring. The camera passes and does not come back.",
+      "why": "The no-new-person-after-60% check fails: the stranger first appears after roughly 6:00 in a 9:50 film.",
+      "fix": "Plant the crimson-coated stranger at the far end of the train in line 57, stepping off as your rings turn cyan; line 301 then becomes the stranger's return, not an introduction.",
+      "domain": "story",
+      "line": 301
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 136,
+      "quote": "Imagine you join a gym and send a robot to lift the weights. The numbers climb every day. Your arms never change.",
+      "fix": "Replace the generic gym analogy with this premise-specific turn: \u201cThe reports get better. Your finger stops knowing where pump three is.\u201d Show the finger stall on the plant diagram before line 138."
+    },
+    {
+      "line": 264,
+      "quote": "You can't answer. Not out loud.",
+      "fix": "Replace with \u201cThe question follows you home.\u201d This makes Dana's question cause the wrench attempt instead of merely captioning your silence."
+    },
+    {
+      "line": 407,
+      "quote": "The trap has a door. It was never locked.",
+      "fix": "Replace with \u201cYou don't have to switch Echo off. You have to make it wait.\u201d This directly causes the new setting and better answers the under-question."
+    }
+  ],
+  "keep": [
+    {
+      "line": 177,
+      "quote": "It's the longest conversation anyone has ever had with HR."
+    },
+    {
+      "line": 248,
+      "quote": "You have never asked it a question."
+    },
+    {
+      "line": 297,
+      "quote": "Somebody wrote it, you think. Somebody must have. Somebody didn't."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "28b3d962597064b028d006d90aa638bfea6117d6452e801b2a235e06642e395c",
+  "draft_sha256": "54fee540463a4e06f850bc1727f231cdd12ff54c14598a7557253b31b99a6fdf"
+}

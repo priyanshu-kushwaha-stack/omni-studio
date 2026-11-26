@@ -45,10 +45,11 @@ def parse_args():
     p.add_argument("--head-json", default=None)
     p.add_argument("--res", default="1280x720")
     p.add_argument("--samples", type=int, default=64)
-    p.add_argument("--out", required=True)
+    p.add_argument("--out", default=None)
     p.add_argument("--save", default=None)
     p.add_argument("--frames", type=int, nargs=2, default=None, help="render this frame range (24 fps) as PNGs into --out, a folder")
-    return p.parse_args(argv)
+    # parse_known_args: reel3d.py imports this module as a library and passes its own arguments
+    return p.parse_known_args(argv)[0]
 
 
 ARGS = parse_args()
@@ -474,7 +475,7 @@ def M_ink(thickness_color=PAL["ink"]):
 
 
 def link(ob):
-    COL.objects.link(ob)
+    (COL or bpy.context.scene.collection).objects.link(ob)
     return ob
 
 
@@ -2184,7 +2185,10 @@ def aurora(day_off=0.0):
         ob.visible_shadow = False
 
 
-def city41():
+SKY41 = {"morning": ("#F6C48A", "#6FA6DC", 0.5), "day": ("#D3E7F5", "#5A9BD8", 0.35), "dusk": ("#F08E64", "#2E3470", 1.6), "night": (None, None, 3.0)}
+
+
+def city41(mood="night"):
     """Towers with lit windows, drones in tidy lanes, a tower being printed (its top half a lattice)."""
     win = bpy.data.materials.new("tower_windows")
     nt, out = _nodes(win)
@@ -2211,7 +2215,7 @@ def city41():
     b.inputs["Base Color"].default_value = srgb("#1A2236")
     b.inputs["Roughness"].default_value = 0.4
     nt.links.new(br.outputs["Color"], b.inputs["Emission Color"])
-    b.inputs["Emission Strength"].default_value = 3.0
+    b.inputs["Emission Strength"].default_value = SKY41.get(mood, SKY41["night"])[2]
     nt.links.new(b.outputs[0], out.inputs["Surface"])
     rnd = random.Random(41)
     for i in range(26):
@@ -2243,11 +2247,12 @@ def city41():
     ssp = snt.nodes.new("ShaderNodeSeparateXYZ")
     snt.links.new(stc.outputs["Generated"], ssp.inputs[0])
     sr = snt.nodes.new("ShaderNodeValToRGB")
-    sr.color_ramp.elements[0].position, sr.color_ramp.elements[0].color = 0.0, srgb("#1B3E4C" if THUMB else "#2C6B78")
-    sr.color_ramp.elements[1].position, sr.color_ramp.elements[1].color = 0.6, srgb("#050A1C" if THUMB else "#0B1433")
+    h0, h1, _e = SKY41.get(mood, SKY41["night"])
+    sr.color_ramp.elements[0].position, sr.color_ramp.elements[0].color = 0.0, srgb(h0 or ("#1B3E4C" if THUMB else "#2C6B78"))
+    sr.color_ramp.elements[1].position, sr.color_ramp.elements[1].color = 0.6, srgb(h1 or ("#050A1C" if THUMB else "#0B1433"))
     snt.links.new(ssp.outputs["Z"], sr.inputs[0])
     sem = snt.nodes.new("ShaderNodeEmission")
-    sem.inputs["Strength"].default_value = 1.0
+    sem.inputs["Strength"].default_value = 1.0 if mood in ("dusk", "night") else 2.5
     snt.links.new(sr.outputs[0], sem.inputs[0])
     snt.links.new(sem.outputs[0], sout.inputs["Surface"])
     bd = rbox("sky41", (600, 1, 200), 0, sky, None, (20, 160, 60), ink=None)
@@ -2576,4 +2581,5 @@ def main():
     print("DONE", ARGS.out)
 
 
-main()
+if __name__ == "__main__":
+    main()

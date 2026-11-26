@@ -129,6 +129,23 @@ voices:
       Reporter: >-
         A bright, fast female soprano: a local TV reporter in her twenties. Eager and clipped, a broadcaster's
         projection, every question pitched up like a headline.
+      # What If AI Did Everything for 10 Years? (2026-11-26): 2041, your flat, the water plant. Echo never turns cold
+      # (the owner's handover): its voice stays warm from the first line to the last.
+      Echo: >-
+        A warm, soft female mezzo: a personal AI in your ear, calm and kind, close and unhurried, a smile in every word,
+        crisp clear diction, every word distinct, natural and human, never robotic, never cold.
+      You: >-
+        A light, soft alto: a young adult in their late twenties, the listener themselves. Quiet and plain, a little
+        sheepish, short words, crisp clear diction, every word distinct, casual modern English.
+      Dana: >-
+        A dry, quick female alto: an engineer in her thirties at the next desk. Wry and direct, amused, never sad, crisp
+        clear diction, every word distinct, standard English.
+      Chief: >-
+        A hearty male baritone: a water-plant chief in his fifties in a hi-vis vest. Cheerful and loud, a manager's
+        booming warmth, quick to praise, crisp clear diction, every word distinct.
+      Crew: >-
+        A plain, steady male baritone: a plant worker in his forties. Calm and practical, crisp clear diction, every word
+        distinct.
     stock:
       woman: A clear, warm female voice, a woman in her forties. Mezzo, natural and conversational.
       man: A plain, steady male baritone, a man in his forties. Natural and conversational.
