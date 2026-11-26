@@ -94,7 +94,10 @@ a hand-edited checkpoint is refused. Never call `write_checkpoint` with `human_a
 | G6 | Final watch at 1x, with cold viewers | |
 | G7 | Publish: upload private first; the public flip is by hand in YouTube Studio | |
 
-Say Suppose makes three films a week on a locked template (owner, 2026-11-11;
+**Say Suppose is restarting from scratch (owner, 2026-11-26; `channels/say-suppose/RESTART.md`):** the template, the
+three-a-week cadence and the first-cut process below are archived v1. No pipeline work until a pilot clears the owner's
+bar. The gates and every rule on this page still bind. Archived v1 process:
+Say Suppose made three films a week on a locked template (owner, 2026-11-11;
 `docs/superpowers/specs/2026-11-11-say-suppose-three-a-week-design.md`): G1 packets are passed in batches of three,
 and on a template film one cut review lets the owner sign G2 and G3 in the same sitting; each gate is still the
 owner's own `omni approve`. The local voice ships unless the owner asks for the paid A/B.

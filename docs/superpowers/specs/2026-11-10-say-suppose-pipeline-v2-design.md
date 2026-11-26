@@ -1,5 +1,7 @@
 # Say Suppose: pipeline v2, a creative director's redesign
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 For the owner's review, 2026-11-10. A plan only: no code, config, rules or skill was changed, no paid call was made and
 no gate was touched. Every change below waits for the owner's yes, one decision at a time (the list is at the end).
 The same plan as a page, with the rooms-and-stages diagram: https://claude.ai/code/artifact/e0d504a4-c431-4330-8e2f-13c5dba58135

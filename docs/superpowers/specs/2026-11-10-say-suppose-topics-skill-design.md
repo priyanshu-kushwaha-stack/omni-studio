@@ -1,5 +1,7 @@
 # Say Suppose: a topic skill, and craft lessons for every stage
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 Owner, 2026-11-10: "create a skill for that in the repo which can be invoked anytime and that skill should spawn ...
 Agents those who would be generating Ideas", "give the complete brief about the video ... Can it be made an exciting
 15 minute long video ... so that ... we are able to atleast create a 6-8 min video from it", "rated based on the content

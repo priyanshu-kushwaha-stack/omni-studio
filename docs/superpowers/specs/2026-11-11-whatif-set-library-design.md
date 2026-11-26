@@ -1,5 +1,7 @@
 # What-if set library (Say Suppose)
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 2026-11-11. Follows `2026-11-11-say-suppose-three-a-week-design.md` §5: three films a week need most sets ready-made.
 Building 40-70 scenes from scratch was the slowest step per film.
 
