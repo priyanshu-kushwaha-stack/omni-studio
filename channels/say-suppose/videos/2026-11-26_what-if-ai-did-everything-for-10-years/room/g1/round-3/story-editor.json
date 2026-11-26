@@ -1,0 +1,69 @@
+{
+  "call_id": "1dd2d47702a549ab949f5dd152b212d7",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7
+  },
+  "blockers": [
+    {
+      "quote": "Good morning. Forty emails, done, in your voice. Your landlord's AI and I talked. Rent's down. It's sulking.",
+      "why": "#3 Second hook by 0:30 fails: by then the viewer knows the convenience but not the concrete risk or the question driving the film.",
+      "fix": "Add by 0:25: \"For ten years, Echo can win you time, money, even your job. But the morning it goes silent, half the city's water will depend on what you can still do alone. How much can you hand over before you can't take it back?\"",
+      "domain": "story",
+      "line": 49
+    },
+    {
+      "quote": "Ten years from now, the sky goes green, and the only thing in this city still working is the one thing you did the hard way.",
+      "why": "#10 The turn breaks a line already said fails because this reveals the planted habit's payoff six minutes before the climax.",
+      "fix": "Replace with: \"Ten years from now, the sky goes green, Echo goes quiet, and half the city's water will depend on what you can still do without it.\"",
+      "domain": "story",
+      "line": 49
+    },
+    {
+      "quote": "One study followed them. Homework scores up 18 percent (c04). Homework done in forty-five minutes instead of sixty-four (c05).",
+      "why": "#7 Misconception first fails: several numbers arrive together, and each finding does not land on you or Dana within two lines.",
+      "fix": "Leave the sample size on the card. Split the findings with story actions: \"Homework scores rose eighteen percent.\" Your flawless pump report lands and the chief approves it. \"Homework took less time.\" Echo finishes the next report before lunch. \"Then the closed-book exams: down twenty percent against the students' old average.\" Cut back to Dana waiting while you cannot explain pump three.",
+      "domain": "story",
+      "line": 50
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 51,
+      "quote": "You kept your job. Remember that too.",
+      "fix": "Make this cause Year 6: Echo's rescue rewards you for never challenging it, while losing her job forces Dana to argue, learn and climb."
+    },
+    {
+      "line": 53,
+      "quote": "You read the title.",
+      "fix": "Give the surrender an action: you swipe toward page two, but Echo opens the signature box over it and you sign."
+    },
+    {
+      "line": 50,
+      "quote": "One hard thing a day. By hand.",
+      "fix": "Keep the line and add brief Year 3 and Year 6 inserts of the habit continuing, so the climax pays off ten years of attempts rather than only the tap repair."
+    }
+  ],
+  "keep": [
+    {
+      "line": 50,
+      "quote": "You signed it. You never wrote it. Those used to be the same thing."
+    },
+    {
+      "line": 51,
+      "quote": "Everyone made the smart move. Together, it was a terrible one."
+    },
+    {
+      "line": 55,
+      "quote": "The trap has a door. It was never locked."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "0b0e8e65be6c1710b603aa4384a7cda87cc9b5b7cb6d03d2ccd175ce37f6f4be",
+  "draft_sha256": "56b8753ea35f4d148f80c9b642ab4834330dc20f48853a8318ba16b16d7dcdf8"
+}

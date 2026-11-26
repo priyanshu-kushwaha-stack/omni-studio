@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-26_what-if-ai-did-everything-for-10-years",
+  "pipeline_type": "studio-whatif",
+  "stage": "proposal",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-26T03:39:49.634936+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {
+    "proposal_packet": {
+      "version": "1.0",
+      "concept_options": [
+        {
+          "id": "A",
+          "title": "What If AI Did Everything for 10 Years?",
+          "why_this_works": "The owner's own title and the writer's pick; pairs with thumbnail a (TOO LATE?)",
+          "narrative_structure": "story",
+          "visual_approach": "Round 2, the owner's pick (picture 3, 2026-11-26): a 3D render in the A4 look, Cycles (scenes3d/film3d.py --shot thumb4): your flat in 2041; you large at the left, head 47% of the frame height, a matte black figure in the mustard hoodie and teal scarf, scared, eyes wide, one hand up, one lens ring still cyan and the other flickering red; through the long window, out of focus, the storm sky in green rays, the city's lights out, and a drone with a coffee mug dropping out of the air. Tag TOO LATE? top left (brand/thumbs/tenyears). K3, K5, K8, K9, K10, K11 pass; K4 1.4:1 as measured (the white eyes), black skin alone 4.8:1 (thumb-checks.json). Round 1 (one delighted picture, three tags) is in git history. The cold open shows this frame by 0:30 (K13)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "10 to 40 years old, smart, has never read an economics paper (the owner's handover)",
+          "target_duration_seconds": 550,
+          "hook": "A skyline with every light off; \"Every step into this trap is a smart decision.\" Cut to your perfect flat in 2041, lenses glowing, the sky going green behind you. \"Say, suppose, you let AI do everything for ten years.\" Then ten years earlier: \"Echo, just handle everything.\" \"Handled.\""
+        },
+        {
+          "id": "B",
+          "title": "What If You Let AI Run Your Life?",
+          "why_this_works": "The owner's backup title; pairs with thumbnail b (NOBODY NOTICED)",
+          "narrative_structure": "story",
+          "visual_approach": "Round 2, the owner's pick (picture 3, 2026-11-26): a 3D render in the A4 look, Cycles (scenes3d/film3d.py --shot thumb4): your flat in 2041; you large at the left, head 47% of the frame height, a matte black figure in the mustard hoodie and teal scarf, scared, eyes wide, one hand up, one lens ring still cyan and the other flickering red; through the long window, out of focus, the storm sky in green rays, the city's lights out, and a drone with a coffee mug dropping out of the air. Tag TOO LATE? top left (brand/thumbs/tenyears). K3, K5, K8, K9, K10, K11 pass; K4 1.4:1 as measured (the white eyes), black skin alone 4.8:1 (thumb-checks.json). Round 1 (one delighted picture, three tags) is in git history. The cold open shows this frame by 0:30 (K13)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "10 to 40 years old, smart, has never read an economics paper (the owner's handover)",
+          "target_duration_seconds": 550,
+          "hook": "A skyline with every light off; \"Every step into this trap is a smart decision.\" Cut to your perfect flat in 2041, lenses glowing, the sky going green behind you. \"Say, suppose, you let AI do everything for ten years.\" Then ten years earlier: \"Echo, just handle everything.\" \"Handled.\""
+        },
+        {
+          "id": "C",
+          "title": "What If You Never Had to Think Again?",
+          "why_this_works": "The writer's title: the wish underneath, broadest search; pairs with thumbnail c (ECHO?)",
+          "narrative_structure": "story",
+          "visual_approach": "Round 2, the owner's pick (picture 3, 2026-11-26): a 3D render in the A4 look, Cycles (scenes3d/film3d.py --shot thumb4): your flat in 2041; you large at the left, head 47% of the frame height, a matte black figure in the mustard hoodie and teal scarf, scared, eyes wide, one hand up, one lens ring still cyan and the other flickering red; through the long window, out of focus, the storm sky in green rays, the city's lights out, and a drone with a coffee mug dropping out of the air. Tag TOO LATE? top left (brand/thumbs/tenyears). K3, K5, K8, K9, K10, K11 pass; K4 1.4:1 as measured (the white eyes), black skin alone 4.8:1 (thumb-checks.json). Round 1 (one delighted picture, three tags) is in git history. The cold open shows this frame by 0:30 (K13)",
+          "suggested_playbook": "say-suppose",
+          "target_platform": "youtube",
+          "target_audience": "10 to 40 years old, smart, has never read an economics paper (the owner's handover)",
+          "target_duration_seconds": 550,
+          "hook": "A skyline with every light off; \"Every step into this trap is a smart decision.\" Cut to your perfect flat in 2041, lenses glowing, the sky going green behind you. \"Say, suppose, you let AI do everything for ten years.\" Then ten years earlier: \"Echo, just handle everything.\" \"Handled.\""
+        }
+      ],
+      "selected_concept": {
+        "concept_id": "A",
+        "rationale": "Owner's pick at G1, 2026-11-26, in chat: \"lets go with Pair A + TOO LATE\" and, from thumbnail round 2, \"3, the lens fails\". Title A (What If AI Did Everything for 10 Years?) with TOO LATE? on picture 3."
+      },
+      "production_plan": {
+        "pipeline": "studio-whatif",
+        "playbook": "say-suppose",
+        "render_runtime": "external",
+        "decision_log_ref": "/Users/priyanshu.kushwaha/Exploration/projects/omni-studio/.claude/worktrees/ai-trap-g1-6b4a83/channels/say-suppose/videos/2026-11-26_what-if-ai-did-everything-for-10-years/decision_log.json",
+        "stages": [
+          {
+            "stage": "proposal",
+            "tools": [],
+            "approach": "Packaging (G1, 2026-11-26) from the owner's handover and the session's evaluation: three titles, three one-variable thumbnails rendered in 3D (A4), the beat outline; claims.md (16 rows) started at G1; one G1 room round (story editor, claims check)"
+          },
+          {
+            "stage": "story_script",
+            "tools": [],
+            "approach": "script.md on the template (rules/story.md, 155 wpm, about 9 min); the free local narration (voice B narrator, a warm local voice for Echo, local cast voices) and a first cut before G2; the story locked by the owner before the 3D build; the G2 room; omni qc story_script must pass"
+          },
+          {
+            "stage": "final_edit",
+            "tools": [],
+            "approach": "The 3D film: a 40 s pilot (the frame and 2041) for the owner first, then every section; picture lock with music and mix"
+          },
+          {
+            "stage": "final_watch",
+            "tools": [],
+            "approach": "The owner watches at 1x with cold viewers"
+          },
+          {
+            "stage": "publish_prep",
+            "tools": [],
+            "approach": "publish.md and upload.yaml; private upload only when the owner asks"
+          }
+        ]
+      },
+      "cost_estimate": {
+        "total_estimated_usd": 0,
+        "budget_cap_usd": 5,
+        "budget_verdict": "within_budget",
+        "line_items": [
+          {
+            "tool": "Blender (local) and whatif_narration (local voices)",
+            "operation": "3D picture and G2 narration",
+            "estimated_usd": 0,
+            "notes": "Free and local. G1 made no paid provider call: the thumbnails are rendered in Blender; the writer ran on the owner's Claude subscription (claude -p, one call) and the room used today's capped calls (story editor, claims check)"
+          }
+        ]
+      },
+      "approval": {
+        "status": "pending"
+      }
+    }
+  },
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "room": "room-g1.md: shipped round 1, 2 of 16 calls; claims check 0 blockers; story editor 3 blockers (second hook by 0:30, the escalators as a SCENE line, one number at a time in Year 1) carried into the G2 script; thumbnails round 2 on the owner's note",
+    "owner_pick": "Pair A + TOO LATE? on picture 3, the lens fails (2026-11-26)"
+  }
+}

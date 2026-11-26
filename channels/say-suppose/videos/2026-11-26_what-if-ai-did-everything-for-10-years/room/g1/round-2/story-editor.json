@@ -1,0 +1,73 @@
+{
+  "call_id": "f22b9bfd4a434cd496d5aa210805b470",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story_structure": 8,
+    "hook_and_click": 5,
+    "causality": 7,
+    "stakes_and_payoffs": 8,
+    "ending": 9
+  },
+  "blockers": [
+    {
+      "quote": "you large at the left in the mustard hoodie and teal scarf, one hand at your temple, the cyan ring on both eyes, delighted at the faint cards in the air",
+      "why": "Check #2 Confirm the click fails. The selected thumbnail shows the scared face, red failing lens and falling drone, but the first seven seconds still show the superseded delighted frame.",
+      "fix": "Replace the 0:05 frame with the owner\u2019s selected picture exactly: your scared close-up, one lens ring red, a drone falling, and the dark city beneath the green sky.",
+      "domain": "story",
+      "line": 48
+    },
+    {
+      "quote": "Two escalators side by side, one up, one down; they look the same; you stepped on one years ago.",
+      "why": "Check #8 fails because the premise-specific picture is not named in a > SCENE: line before the midpoint; the only such line is the later thumbnail scene at 6:00.",
+      "fix": "Add before this beat: \"> SCENE: Two identical escalators cross before the midpoint: Dana rises while you descend, both wearing the same lenses beside matching flats.\"",
+      "domain": "story",
+      "line": 52
+    },
+    {
+      "quote": "You: \"One hard thing a day. By hand.\"",
+      "why": "Check #21 Close the loopholes fails. The obvious response to the glitch is to turn off full handling, but the story skips that choice; the Year 3 job threat arrives too late to explain why you continue now.",
+      "fix": "Immediately before the promise add: \"Turn Echo off? Your raise, your week\u2019s work, your whole new routine now depend on it. So you bargain with yourself.\" Keep the planted promise unchanged after it.",
+      "domain": "story",
+      "line": 50
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 53,
+      "quote": "The viewer's guess: someone wrote it.",
+      "fix": "Make the misconception specific and spoken: \"You assume a room of people wrote it and Echo only made the summary.\" Then reveal that AIs wrote the plan too."
+    },
+    {
+      "line": 55,
+      "quote": "The trap has a door. It was never locked.",
+      "fix": "Cut this summary and let the new-setting exchange demonstrate the way out."
+    },
+    {
+      "line": 28,
+      "quote": "The stranger. Hidden once, at 5:20, at the back of the voting hall: a long crimson coat, the only figure in the room with no ring in their eyes.",
+      "fix": "Cut the stranger shot unless their lack of lenses changes the vote beat or answers a loophole."
+    }
+  ],
+  "keep": [
+    {
+      "line": 38,
+      "quote": "You signed it. You never wrote it. Those used to be the same thing."
+    },
+    {
+      "line": 39,
+      "quote": "Everyone made the smart move. Together, it was a terrible one."
+    },
+    {
+      "line": 40,
+      "quote": "A crutch and a coach are the same machine on different settings."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "e92756b60a1083b554c272ef9336101fd5a96fa9faf610d69832119bc0ec1977",
+  "draft_sha256": "3d741f07f6ddc7ca35b138bec89cb179bdac52ce0552a59d1684e7d003b93bef"
+}

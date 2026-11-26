@@ -1,0 +1,47 @@
+{
+  "call_id": "f3d944dcc6214f68aa9fd76f57f80a59",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 9
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 50,
+      "quote": "Homework scores up 18 percent (c04).",
+      "fix": "Homework scores up 18 percent against their own earlier average (c04)."
+    },
+    {
+      "line": 51,
+      "quote": "One thing did: a tax on the automation itself (c11).",
+      "fix": "In the model, one thing did: a tax on the automation itself (c11)."
+    },
+    {
+      "line": 16,
+      "quote": "and two researchers at MIT found the same split in their own model (c01, c02)",
+      "fix": "and two researchers at MIT found the same split in their own model (c02)"
+    }
+  ],
+  "keep": [
+    {
+      "line": 50,
+      "quote": "Then the monthly exams. Closed book. No AI in the room. Within six months, down 20 percent, against their own old average (c06)."
+    },
+    {
+      "line": 50,
+      "quote": "Homework done in forty-five minutes instead of sixty-four (c05)."
+    },
+    {
+      "line": 53,
+      "quote": "A group of researchers argue this is the real risk. No robot army. No evil machine. A slow handover of one small decision at a time, until people aren't steering (c13). They argue it; nobody has measured it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "e7b5e55b3c7948c3ca84527e2e22fa93637762f9c1c1a645f2269ae5e71b8603",
+  "draft_sha256": "56b8753ea35f4d148f80c9b642ab4834330dc20f48853a8318ba16b16d7dcdf8"
+}

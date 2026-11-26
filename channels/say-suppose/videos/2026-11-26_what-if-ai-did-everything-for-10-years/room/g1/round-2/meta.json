@@ -1,0 +1,16 @@
+{
+  "round": 2,
+  "draft_sha256": "3d741f07f6ddc7ca35b138bec89cb179bdac52ce0552a59d1684e7d003b93bef",
+  "lint": {
+    "ok": true,
+    "problems": [],
+    "warnings": []
+  },
+  "owner_notes": true,
+  "owner_note": [
+    "lets go with Pair A + TOO LATE but i am not very satisfied with the Thumbnail overall given the quality of thumbnail other people are creating.",
+    "3, the lens fails"
+  ],
+  "kind": "packaging",
+  "linted_at": "2026-11-26T03:41:01+00:00"
+}

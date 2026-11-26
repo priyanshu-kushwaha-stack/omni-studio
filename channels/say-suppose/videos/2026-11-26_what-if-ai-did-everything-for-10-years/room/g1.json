@@ -44,21 +44,93 @@
       "judge": null,
       "owner_notes": false,
       "candidate": true
+    },
+    {
+      "round": 2,
+      "draft_sha256": "3d741f07f6ddc7ca35b138bec89cb179bdac52ce0552a59d1684e7d003b93bef",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "f9d2fccf5f6a4c0a9b5af3356af0e2f9",
+          "file": "room/g1/round-2/claims-check.json",
+          "output_sha256": "8abffbcae72f2700896fa715ddf649dacb0c9e9cb46d2adac4be7515f41bdddc",
+          "blockers": 1
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "f22b9bfd4a434cd496d5aa210805b470",
+          "file": "room/g1/round-2/story-editor.json",
+          "output_sha256": "e92756b60a1083b554c272ef9336101fd5a96fa9faf610d69832119bc0ec1977",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": false
+    },
+    {
+      "round": 3,
+      "draft_sha256": "56b8753ea35f4d148f80c9b642ab4834330dc20f48853a8318ba16b16d7dcdf8",
+      "lint": {
+        "ok": true,
+        "problems": [],
+        "warnings": []
+      },
+      "verdicts": [
+        {
+          "seat": "claims check",
+          "role": "fact",
+          "model": "gemini-3.8-flash-high",
+          "family": "google",
+          "status": "ok",
+          "call_id": "f3d944dcc6214f68aa9fd76f57f80a59",
+          "file": "room/g1/round-3/claims-check.json",
+          "output_sha256": "e7b5e55b3c7948c3ca84527e2e22fa93637762f9c1c1a645f2269ae5e71b8603",
+          "blockers": 0
+        },
+        {
+          "seat": "story editor",
+          "role": "story",
+          "model": "gpt-5.6-sol-high",
+          "family": "openai",
+          "status": "ok",
+          "call_id": "1dd2d47702a549ab949f5dd152b212d7",
+          "file": "room/g1/round-3/story-editor.json",
+          "output_sha256": "0b0e8e65be6c1710b603aa4384a7cda87cc9b5b7cb6d03d2ccd175ce37f6f4be",
+          "blockers": 3
+        }
+      ],
+      "judge": null,
+      "owner_notes": true,
+      "candidate": true
     }
   ],
   "skipped_rounds": [],
   "malformed_verdicts": [],
   "shipped": {
-    "round": 1,
-    "artifact_sha256": "a419d96f834019166d8bcd8323c488a0740042d562c5667f6a5f31d405741e0c"
+    "round": 3,
+    "artifact_sha256": "56b8753ea35f4d148f80c9b642ab4834330dc20f48853a8318ba16b16d7dcdf8"
   },
-  "calls": 2,
-  "cap": 16,
+  "calls": 6,
+  "cap": 24,
   "author_cut": {
     "round": 1,
     "draft_sha256": "a419d96f834019166d8bcd8323c488a0740042d562c5667f6a5f31d405741e0c",
     "cost": {
-      "lines_changed": 0,
+      "lines_changed": 25,
       "header_changed": [],
       "keep_lost": []
     }

@@ -10,6 +10,11 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-26
 
+- **"3, the lens fails"** From thumbnail round 2 (three 3D pictures with TOO LATE?, rebuilt toward One Small If's
+  standard: matte black heads, heads at 40-47% of the frame, one visual gag, a storm sky, Cycles). The G1 pair: title A,
+  "What If AI Did Everything for 10 Years?", with "TOO LATE?" on picture 3: your scared face, one lens ring red, a drone
+  dropping out of the air, the city dark under the green sky. The film must show this moment by 0:30 (K13). (ten
+  years, G1)
 - **"lets go with Pair A + TOO LATE but i am not very satisfied with the Thumbnail overall given the quality of
   thumbnail other people are creating."** G1 pick on the ten-years film: title A, "What If AI Did Everything for 10
   Years?", with tag a ("TOO LATE?"). The picture itself (the 3D flat, lenses glowing, the green sky behind) is below the

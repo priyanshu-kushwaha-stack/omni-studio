@@ -1,0 +1,55 @@
+{
+  "call_id": "f9d2fccf5f6a4c0a9b5af3356af0e2f9",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 8
+  },
+  "blockers": [
+    {
+      "quote": "The viewer's guess: the people with AI learned more.",
+      "why": "Straw man misconception. After five acts showing students failing exams, mass layoffs, worker deskilling, and water plant staff unable to read a manual, no viewer believes programmers using AI learned more. The actual misconception the viewer holds by minute 8 is that using AI inevitably makes you dumber or destroys skills, which c15 and c16 break by demonstrating that outcome depends entirely on cognitive engagement versus passive handoff.",
+      "fix": "Stage the genuine misconception: 'The viewer's guess: using AI inevitably destroys your skills.' Then flip it with the findings of c15 and c16: deskilling only occurred among those who handed over the coding (under 40%), whereas those who used AI to explain concepts scored 65% or more, preserving learning alongside the non-AI group's 67%.",
+      "domain": "fact",
+      "line": 55
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 50,
+      "quote": "Homework scores up 18 percent (c04).",
+      "fix": "Homework scores up 18 percent against their own earlier average (c04)."
+    },
+    {
+      "line": 51,
+      "quote": "One thing did: a tax on the automation itself (c11).",
+      "fix": "In the model, one thing did: a tax on the automation itself (c11)."
+    },
+    {
+      "line": 16,
+      "quote": "and two researchers at MIT found the same split in their own model (c01, c02)",
+      "fix": "and two researchers at MIT found the same split in their own model (c02)"
+    }
+  ],
+  "keep": [
+    {
+      "line": 50,
+      "quote": "Then the monthly exams. Closed book. No AI in the room. Within six months, down 20 percent, against their own old average (c06)."
+    },
+    {
+      "line": 50,
+      "quote": "Homework done in forty-five minutes instead of sixty-four (c05)."
+    },
+    {
+      "line": 53,
+      "quote": "A group of researchers argue this is the real risk. No robot army. No evil machine. A slow handover of one small decision at a time, until people aren't steering (c13). They argue it; nobody has measured it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "8abffbcae72f2700896fa715ddf649dacb0c9e9cb46d2adac4be7515f41bdddc",
+  "draft_sha256": "3d741f07f6ddc7ca35b138bec89cb179bdac52ce0552a59d1684e7d003b93bef"
+}
