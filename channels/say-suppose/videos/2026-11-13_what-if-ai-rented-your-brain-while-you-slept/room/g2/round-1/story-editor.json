@@ -1,0 +1,69 @@
+{
+  "call_id": "dee3ef265416411d88d66cbdb089c72a",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8
+  },
+  "blockers": [
+    {
+      "quote": "But here's the problem. Problem one. Ninety dollars for eight hours. So what's twelve worth?",
+      "why": "Check #17 Pull every minute fails: the draft's own timing leaves about 125 seconds between the stake jumps at 1:56 and 4:01.",
+      "fix": "After line 132, replace lines 134-148 with: \u201cSleeping brains do real work. Normally, you keep it. But here's problem one. Ninety dollars for eight hours. So what's twelve worth?\u201d",
+      "domain": "story",
+      "line": 148
+    },
+    {
+      "quote": "Why would anyone want a sleeping brain? The leaflet again. Your brain is about two per cent of you and burns about twenty per cent of your energy, about twenty watts (c10). And tonight nobody's using them.",
+      "why": "Check #7 Misconception first fails its one-number-at-a-time rule. The same clustering recurs at lines 210, 220 and 282.",
+      "fix": "Replace with: \u201cWhy would anyone want a sleeping brain? It burns about twenty watts (c10). The leaflet calls that unused power.\u201d Give lines 210, 220 and 282 only one number each, dropping secondary figures rather than stacking them.",
+      "domain": "story",
+      "line": 79
+    },
+    {
+      "quote": "So a night is worth twelve dollars, and he can't even sell that. And that's when the man in the grey suit comes back.",
+      "why": "Check #5 But / therefore fails: the broker's return is joined to the rejection as an \u2018and then,\u2019 with no causal or contrasting connector.",
+      "fix": "Replace with: \u201cSo a night is worth twelve dollars, and he can't even sell that. But one offer hasn't fallen. The man in the grey suit comes back.\u201d",
+      "domain": "story",
+      "line": 307
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 112,
+      "quote": "Morning four. You fold a fitted sheet into a perfect square. His spoon hits the floor.",
+      "fix": "Beat the familiar fitted-sheet gag with a second turn: \u201cMorning four. You fold a fitted sheet into a perfect square. He opens it. You've folded his cap inside.\u201d"
+    },
+    {
+      "line": 318,
+      "quote": "Somebody has tried to buy the night before. Before the 2021 Super Bowl, America's biggest football night, a beer company ran a film meant to put its beer into people's dreams (c07). About forty sleep and dream scientists signed an open letter against it (c08).",
+      "fix": "Cut this aside and spend the time on the live dilemma: the broker turns the contract to the signature line while the clock ticks and your brother reads over your shoulder."
+    },
+    {
+      "line": 414,
+      "quote": "So, would you rent your nights? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Make the closing question preserve the dilemma: \u201cSo: clear the debt, or keep your nights? Tell us which. Then hit like and subscribe.\u201d"
+    }
+  ],
+  "keep": [
+    {
+      "line": 216,
+      "quote": "Sleep was never nothing. It was the one shift you always worked for yourself."
+    },
+    {
+      "line": 322,
+      "quote": "Sign, and nobody in this house sits in that chair again. Don't, and it's Thursday forever. You can't sleep on it. Sleeping is the job."
+    },
+    {
+      "line": 369,
+      "quote": "The biggest idea people ever had together, and nobody was awake for it."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "b3b349a89e7e5b394710a570f7f01cfa9c7a8c337f439c41f44dcf25bb5315e4",
+  "draft_sha256": "1b3380d6a806fe9b1ecc91e6910437e96ad556d4bced5c1375b0fa36425ae48b"
+}

@@ -1,0 +1,70 @@
+{
+  "call_id": "cf06cd6c996f4956850db99255a66ba9",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 7,
+    "length \u2014 earned past 8:00 by the price crash, contract clock and shared-mind reveal": 8
+  },
+  "blockers": [
+    {
+      "quote": "So what if a company could rent your brain while you slept?",
+      "why": "#3 Second hook by 0:30 fails. The question follows a 21-second opening, and the loss is withheld until about 0:55.",
+      "fix": "Compress the opening action so the ghost and coin appear by second 2, then narrate: \"What if AI rented your brain while you slept? Clear the debt. But your brain loses every paid night.\"",
+      "domain": "story",
+      "line": 47
+    },
+    {
+      "quote": "It's true. The US is one of the few countries that lets companies pay people for plasma (c01).",
+      "why": "#7 Misconception first and #13 Every fact moves the story fail. Several border statistics follow while you and your brother disappear from the beat.",
+      "fix": "Replace lines 358-364 with: \"> CARD: 2019. The bridge woman passes you again, carrying a pillow. A typical worker across the river made about nine dollars a day (c22). She sees your morning payout, nods toward the warehouse, and joins the queue while you watch.\"",
+      "domain": "story",
+      "line": 358
+    },
+    {
+      "quote": "Therefore sleeping for money is a day job. So the couple across the street sleep in shifts, and their jar never stops. And the empty warehouse by the bridge fills with cots, and a clerk with a clipboard stands at its door.",
+      "why": "#5 But / therefore and #6 Every use has a gap fail. The couple gets exactly the expected result, then the warehouse arrives as an \"and then.\"",
+      "fix": "Replace with: \"Therefore sleeping for money becomes a day job. The couple across the street set alarms for perfect shifts. But every handoff wakes them both; by dawn, one coin. The warehouse solves that with separate cots and a clerk at the door.\"",
+      "domain": "story",
+      "line": 216
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 210,
+      "quote": "And you're not the only one counting. The nurse has a band under her cap now, so the clinic shuts at noon. Therefore your boss sees the jar on your desk, and opens a nap room at work. With a till.",
+      "fix": "Make the connector causal: \"The nurse's band closes the clinic at noon. Your boss catches you renting a nap at your desk, sees the coins, and therefore opens a nap room. With a till.\""
+    },
+    {
+      "line": 456,
+      "quote": "> HOLD: 9 s. The one wordless peak, played as wonder.",
+      "fix": "Move this hold after line 469 and let the globe's joined threads resolve into the machine, so the wordless peak carries the ultimate reveal."
+    },
+    {
+      "line": 536,
+      "quote": "So, would you rent your nights? Tell us in the comments. And if you'd have done the same, hit like and subscribe.",
+      "fix": "Point the question at the unresolved daytime twist: \"Nights or days\u2014which would you rent first? Tell us in the comments. And if you'd have done the same, hit like and subscribe.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 289,
+      "quote": "Sleep was never nothing. It was the one shift you always worked for yourself."
+    },
+    {
+      "line": 469,
+      "quote": "The job the sleepers are paid for is to design the thing that will never need sleepers."
+    },
+    {
+      "line": 488,
+      "quote": "Brother: Come back Thursday."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "b0ae8f2f86edf1aebb5e7443f8767b38a039e356351e3784b4980aead14c95d5",
+  "draft_sha256": "891f6f1ee8c0affce6a3d6a3874fa32d95e8bb4bebd4179979e17b6fabbb6b3f"
+}

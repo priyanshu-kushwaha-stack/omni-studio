@@ -1,0 +1,73 @@
+{
+  "call_id": "8bca3ef02ee643ad998c1dcef29c699f",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8,
+    "hook": 6,
+    "causality": 8,
+    "escalation": 9,
+    "payoff": 8
+  },
+  "blockers": [
+    {
+      "quote": "You feel nothing. But a night you sell is a night your own brain doesn't get.",
+      "why": "Check #3, Second hook by 0:30: the draft's timing note places this loss at about 0:55, so the opening shows the reward without establishing what is at risk by 0:30.",
+      "fix": "Move the cost directly after line 34: \"You get paid for every hour. But every hour you sell is a night your own brain doesn't get.\" Remove line 65 afterward.",
+      "domain": "story",
+      "line": 65
+    },
+    {
+      "quote": "The band came with a leaflet. It sets out the deal.",
+      "why": "Check #16, A flagged limit that pays off: the rule runs across seven spoken lines and never explicitly flags the crumbs for recall.",
+      "fix": "Compress lines 86-100 to three rule lines: \"The leaflet says: wear the band to bed, and while you sleep the company rents your brain and pays by the hour.\" / \"One company can link many bands, for one big job. But the leaflet promises each brain stays separate. One brain, one band, one jar.\" / \"You remember none of the work\u2014only crumbs: a taste, a word, a face that isn't yours. It calls them harmless. Remember that.\"",
+      "domain": "story",
+      "line": 86
+    },
+    {
+      "quote": "So what's the job? The crumbs fit together. Into a drawing. And the drawing is a machine.",
+      "why": "Check #18, A running gag that carries the peak: the globe and machine reveal are the named peak, but the four-time \"What'd you get?\" gag does not participate in it.",
+      "fix": "Immediately before this line, insert: \"Brother: What'd we get?\" Then let the drawing becoming a machine answer him.",
+      "domain": "story",
+      "line": 460
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 216,
+      "quote": "Therefore sleeping for money is a day job. So the couple across the street sleep in shifts, and their jar never stops. And the empty warehouse by the bridge fills with cots, and a clerk with a clipboard stands at its door.",
+      "fix": "Replace the announced connectors with the causal turn: \"The nap room proves sleep can be sold twice: once to the company, once to the boss. Across the street, a couple starts sleeping in shifts, and their jar never stops. By the bridge, an empty warehouse starts filling with cots.\""
+    },
+    {
+      "line": 146,
+      "quote": "Morning four. You fold a fitted sheet into a perfect square. Nobody can fold a fitted sheet. His spoon hits the floor.",
+      "fix": "Beat the familiar fitted-sheet gag with a backfire: \"Morning four. You fold a fitted sheet into a perfect square. Then one wrong corner ties the whole bed into a knot. His spoon hits the floor.\""
+    },
+    {
+      "line": 478,
+      "quote": "You remember nothing of your nights. Only the crumbs. And now you know what they were building. You'd rather sit in that chair every Thursday than build it every night.",
+      "fix": "Let the drawer reveal the decision instead of announcing it: \"You remember nothing of your nights. Only the crumbs. At eleven fifty-eight, the contract finally costs more than the chair.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 233,
+      "quote": "It makes the evening news. Nobody's up to watch it."
+    },
+    {
+      "line": 335,
+      "quote": "Brother: Fine. I'll fail something. You can come to the retake."
+    },
+    {
+      "line": 486,
+      "quote": "Brother: Come back Thursday."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "6c143939f2e4298d4649d1e964646a9255e6d1f2e65df42fbdf7a5b53c40c1bc",
+  "draft_sha256": "c96e7e6ca77af71a1a9573c35cdbfaaa35ece4613b66cf2b5f76bad31ba21250"
+}

@@ -1,0 +1,13 @@
+channel: say-suppose
+format: story
+stage: publish_prep
+severity: medium
+example: '2026-11-13_what-if-ai-predicted-every-choice-you-make (D1Zr-AkkwFc) and
+  2026-11-06_pause-time (-si5nCzgQl8): containsSyntheticMedia reads back None, asked
+  False; omni upload --run printed REFUSED and skipped the thumbnail and captions'
+recorded_at: '2026-11-26T12:25:54.511782+00:00'
+note: 'The YouTube API leaves status.containsSyntheticMedia out when it is false,
+  so the read-back sees None. omni upload treats that as a mismatch and stops before
+  the thumbnail and caption steps; both films then needed --thumbnail-only and --captions-only
+  by hand. Wanted: treat a missing field as false when false was asked, and still
+  set the thumbnail and captions.'

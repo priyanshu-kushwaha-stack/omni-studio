@@ -1,0 +1,72 @@
+{
+  "call_id": "761a970dce9d454ebf27975c1cc94a32",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story structure": 8,
+    "hook": 7,
+    "causal momentum": 8,
+    "emotional payoff": 9
+  },
+  "blockers": [
+    {
+      "quote": "By 0:18 the title question: what if you could see who wants you to fail?",
+      "why": "Check #3 fails: the title's promise arrives after the required ~0:15 window.",
+      "fix": "Move the title question to 0:10, then land \u201cBecause that's your best friend. And that's minus eighty-four.\u201d by 0:14.",
+      "domain": "story",
+      "line": 43
+    },
+    {
+      "quote": "The narrator says it once: whenever you share good news, or say what you're going for, a paper meter from plus one hundred to minus one hundred opens above everyone who hears, each time you say it, for sixty seconds, then shuts.",
+      "why": "Check #16 fails: the rule, meaning, ambiguity and flagged limit require more than three spoken lines.",
+      "fix": "Use three lines: \u201cSay good news\u2014or what you're going for\u2014out loud to a face, and for sixty seconds a meter opens from plus one hundred to minus one hundred.\u201d / \u201cPlus one hundred: pure joy for you. Minus one hundred: they want you to fail.\u201d / \u201cIt never says why; calls, texts and posts open nothing. Remember that.\u201d",
+      "domain": "story",
+      "line": 44
+    },
+    {
+      "quote": "Exam day: last year the country grounded flights for thirty-five minutes during the English listening test (c02), a paper plane held still over the halls; about a hundred and forty flights rescheduled, the stock market an hour late, police motorbikes rushing late students to the gates (c02).",
+      "why": "Check #7 fails: thirty-five minutes, one hundred and forty flights and an hour arrive together instead of one number breaking the belief.",
+      "fix": "Replace with: \u201cFor thirty-five minutes, no plane crosses the sky while you listen (c02).\u201d Show the market and police visually without narrating their numbers.",
+      "domain": "story",
+      "line": 51
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 47,
+      "quote": "You stand on the academy steps and say it into the crowd.",
+      "fix": "Make this a deliberate consequence of Tae-ho's minus six: you announce from the steps to test whether distance from your lane makes the numbers fade."
+    },
+    {
+      "line": 48,
+      "quote": "Lonely, and winning",
+      "fix": "Replace the named feeling with the picture: \u201cYour score reaches the top. Min-jun's chair beside you stays empty.\u201d"
+    },
+    {
+      "line": 53,
+      "quote": "At the 1992 Olympics, bronze medallists looked happier than silver: silver thinks of the gold it nearly won, bronze of nearly winning nothing (c08). Across eleven studies, the most common regret of a life is education, about a third of all regrets (c11).",
+      "fix": "Cut the bronze comparison and move the education-regret fact onto the bus ride; let the letter and brushes carry the dock revelation without a two-fact explanation after the peak."
+    }
+  ],
+  "keep": [
+    {
+      "line": 49,
+      "quote": "A tag has one colour for every kind of hurt."
+    },
+    {
+      "line": 52,
+      "quote": "A text would open nothing. You could keep her forever on a screen."
+    },
+    {
+      "line": 53,
+      "quote": "You said nobody outside your lane bleeds. She was never outside your lane. She was in it first."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "d4177c2d0aeab6278e0078bf5e95309e210be5ac4aec7b0e359cc645bbe4e971",
+  "draft_sha256": "17e83f717ab4e27557c42aa1f7d3cdc2d8fb49489f36737d33b498d81ac466f9"
+}

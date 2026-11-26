@@ -1,0 +1,47 @@
+{
+  "call_id": "f825b2c3f7284e9698a2f8af1c82a6eb",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "facts": 10
+  },
+  "blockers": [],
+  "suggestions": [
+    {
+      "line": 327,
+      "quote": "At the 1992 Olympics, bronze medallists looked happier than silver (c08). Silver thinks of the gold it nearly won. Bronze thinks of nearly winning nothing (c08).",
+      "fix": "At the 1992 Olympics, bronze medallists looked happier than silver medallists (c08). Silver thinks of the gold they nearly won. Bronze thinks of nearly winning nothing (c08)."
+    },
+    {
+      "line": 261,
+      "quote": "Last year, the country grounded its planes for 35 minutes during the English listening test (c02). This year, you're the one listening.",
+      "fix": "Last year, the country grounded flights for 35 minutes during the English listening test (c02). This year, you're the one listening."
+    },
+    {
+      "line": 360,
+      "quote": "Claims spoken: c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12.",
+      "fix": "Claims spoken: c01, c02, c03, c04, c05, c06, c07, c08, c10, c11, c12."
+    }
+  ],
+  "keep": [
+    {
+      "line": 115,
+      "quote": "And people don't like to admit being maliciously envious, even to themselves (c12)."
+    },
+    {
+      "line": 209,
+      "quote": "In one brain-scan study, envying a peer who did better at something that mattered came with activity in a region also active in pain (c05)."
+    },
+    {
+      "line": 284,
+      "quote": "Here's what you had backwards. You treated the four per cent like four places in a room. But in most subjects, it's the top 4 per cent of everyone in the country who sat it (c01). His grade never cost you yours."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "3e5571d6ec1d549e245bc8b6daa6fcc6f6c30a8f301d845d748c5bb1f89f85c6",
+  "draft_sha256": "e811367ce6768f7a4b178b8679c4456ff7290eac3f14906d4f34f66fcc743aad"
+}

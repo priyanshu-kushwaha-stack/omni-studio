@@ -1,0 +1,71 @@
+{
+  "call_id": "68b0dc29ab194689a90069a9a585d38a",
+  "seat": "claims check",
+  "role": "fact",
+  "model": "gemini-3.8-flash-high",
+  "family": "google",
+  "status": "ok",
+  "scores": {
+    "claim_accuracy": 8,
+    "scope_precision": 7,
+    "source_fidelity": 8
+  },
+  "blockers": [
+    {
+      "quote": "In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster (c12). Sleep is when your brain takes the trash out. Yours hasn't in a month.",
+      "why": "Claim c12 (Xie et al. 2013) demonstrated interstitial space expansion and waste clearance in live mice under sleep or anesthesia. While the opening sentence correctly narrows the finding to mice, the following sentence drops the species scope and states as an unqualified fact for human brains that 'Sleep is when your brain takes the trash out.' Per fact-checking rules, a source about one species cannot be stated as general without caveat (compare line 287's proper qualification 'If yours does the same' for rat replay).",
+      "fix": "In mice, the spaces between brain cells open up by about sixty per cent during sleep, and the waste washes out faster (c12). If human brains do the same, sleep is when your brain takes the trash out. Yours hasn't in a month.",
+      "domain": "fact",
+      "line": 277
+    },
+    {
+      "quote": "Twice in seven days, you sell your plasma, the pale part of your blood. It's the most the law allows (c02).",
+      "why": "Claim c02 cites 21 CFR 640.65(b)(8), which is a United States federal regulation. In v5, the setting was removed from the spoken opening narration, leaving 'the most the law allows' as an unqualified general claim about law worldwide. Because paid plasma donation is prohibited or restricted differently in most other countries (as noted in c01), the quote supports only US law.",
+      "fix": "Twice in seven days, you sell your plasma, the pale part of your blood. It's the most US law allows (c02).",
+      "domain": "fact",
+      "line": 43
+    },
+    {
+      "quote": "Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too (c05).",
+      "why": "The woman at the bridge is an invented story character ('Bridge woman: Not mine.'), not Genesis from ProPublica. Citing (c05) for an invented character's story action violates the rule that what happens in the story is never stated as a cited fact. The real-world finding that Mexican citizens cross into El Paso to donate plasma is properly spoken and cited at line 362.",
+      "fix": "Morning five. You know the word for bridge in a language you've never heard. So you try it on the woman at the bridge, the one who crosses twice a week to sell her plasma too.",
+      "domain": "fact",
+      "line": 163
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 109,
+      "quote": "> CARD: IT'S TRUE: 2022, brain cells in a dish got better at a video game (on \"It's true\")",
+      "fix": "> CARD: IT'S TRUE: 2022, brain cells in a dish began to get better at a video game (on \"It's true\")"
+    },
+    {
+      "line": 360,
+      "quote": "It supplies about two thirds of the world's (c03).",
+      "fix": "It supplies about two thirds of the world's plasma (c03)."
+    },
+    {
+      "line": 106,
+      "quote": "Your brain burns about twenty watts (c10). At night, the leaflet calls that unused power.",
+      "fix": "Your brain uses about twenty watts (c10). At night, the leaflet calls that unused power."
+    }
+  ],
+  "keep": [
+    {
+      "line": 111,
+      "quote": "It's true. In 2022, brain cells in a dish, wired to the old bat-and-ball video game, began to get better at it within five minutes (c19). So a whole brain for eight hours is a bargain."
+    },
+    {
+      "line": 283,
+      "quote": "In rats, the day's activity replays in sleep, faster than real time (c14)."
+    },
+    {
+      "line": 452,
+      "quote": "The scientists behind it say it became the first computer to pass a billion billion sums a second (c18)."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "a0e8667955a03b5be513c37683ba77584886d4485a0065fce873de34a60eead3",
+  "draft_sha256": "891f6f1ee8c0affce6a3d6a3874fa32d95e8bb4bebd4179979e17b6fabbb6b3f"
+}

@@ -1,0 +1,69 @@
+{
+  "call_id": "246bbcaaa70c4a9ab954295229f4423d",
+  "seat": "story editor",
+  "role": "story",
+  "model": "gpt-5.6-sol-high",
+  "family": "openai",
+  "status": "ok",
+  "scores": {
+    "story": 8
+  },
+  "blockers": [
+    {
+      "quote": "> HOLD: 4 s. Performed. The board flutters and clicks overhead. You tear the teal seal with your thumb; the sheet unfolds; your eyes run down it and stop. Your mouth opens. You read it again, closer. You look left: empty platform. Right: her. You hold the letter out at arm's length.",
+      "why": "Check #2 Confirm the click fails: the opening spends more than seven seconds on the stranger, while the thumbnail situation is Min-jun beneath -84.",
+      "fix": "Compress the discovery to three seconds: seal tears and +22 snaps at 0:00, cut to Min-jun by 0:03, and land the thumbnail's -84 frame by 0:07. Move the stranger's reaction after that or cut it.",
+      "domain": "story",
+      "line": 22
+    },
+    {
+      "quote": "Your sister's asleep on the sofa after the shift. A sleeping face is still a face.",
+      "why": "No new power rule after halfway fails: sleeping faces working is first established at 8:45.",
+      "fix": "Wake her before using the power. Replace lines 367-372 with: \"Your sister's asleep after the shift. You touch her shoulder. One eye opens. You hold up the result. / You: I made it. / Plus one hundred. Before the other eye opens.\"",
+      "domain": "story",
+      "line": 367
+    },
+    {
+      "quote": "Just your class, or all of Seoul? Why not go on the news and scan the whole country? Because a camera isn't a face. Your sister's phone settled that. But a crowd is a thousand faces, and this street has one.",
+      "why": "Check #21 Close the loopholes on screen fails: the earlier scene shows an audio call with the phone at her ear, so it does not settle the obvious video-call or livestream exploit.",
+      "fix": "At line 100, make it a live video call with her face filling the screen. Replace line 106 with: \"You switch on video. Her face fills the glass. Nothing opens. A live image is not a face.\"",
+      "domain": "story",
+      "line": 257
+    }
+  ],
+  "suggestions": [
+    {
+      "line": 275,
+      "quote": "So. Red means they want you to fail. And your list was right.",
+      "fix": "Make the next climb causal: \"Every red card points back to your class. So you trust the list enough to cut harder.\""
+    },
+    {
+      "line": 340,
+      "quote": "The night before, you leave your own notebook on his desk. Every mistake you made this year, and the fix. Half a chocolate bar on top. If he's building a ladder, he can have the good wood.",
+      "fix": "State the price of trying: \"It might cost you first place. You leave it anyway. If he's building a ladder, he can have the good wood.\""
+    },
+    {
+      "line": 395,
+      "quote": "And the room, in the glass: teal. Nearly all of it. They were only ever red at the race, and the race is over.",
+      "fix": "Preserve Min-jun as the exception: \"And the room, in the glass: nearly all teal. Most of them were red only while this race was alive.\""
+    }
+  ],
+  "keep": [
+    {
+      "line": 84,
+      "quote": "Zero. Grey. One click. The biggest news of your life, and you're a receipt."
+    },
+    {
+      "line": 306,
+      "quote": "He isn't sawing your chair. He's building a ladder. Out of your mistakes. You've been his textbook for two years."
+    },
+    {
+      "line": 391,
+      "quote": "A face in a mirror is still a face. The toilets weren't broken. The one card you can't see was always yours."
+    }
+  ],
+  "error": "",
+  "trimmed": {},
+  "output_sha256": "f6ecfcd8512ac10f5c5588477d93fda34cb5a42b87f9b9c311efd974d21a7c6c",
+  "draft_sha256": "b6cb6ab8899116eed5583eff0c24874f96a5afdd386955d27f7f9ee3651a8027"
+}
