@@ -3,11 +3,11 @@
   "project_id": "2026-11-26_what-if-ai-did-everything-for-10-years",
   "pipeline_type": "studio-whatif",
   "stage": "proposal",
-  "status": "awaiting_human",
-  "timestamp": "2026-11-26T03:51:25.092288+00:00",
+  "status": "completed",
+  "timestamp": "2026-11-26T05:40:40.428439+00:00",
   "checkpoint_policy": "manual_all",
   "human_approval_required": true,
-  "human_approved": false,
+  "human_approved": true,
   "artifacts": {
     "proposal_packet": {
       "version": "1.0",
@@ -107,6 +107,12 @@
   "style_playbook": "say-suppose",
   "metadata": {
     "room": "room-g1.md: shipped round 3 by the owner-notes rule, 6 of 24 calls, room evidence ok; claims check 0 blockers (round 2's straw-man guess fixed); story editor 3 notes carried into the G2 script (second hook by 0:25, don't reveal the habit's payoff in the 2041 stakes line, one number at a time in Year 1)",
-    "owner_pick": "Pair A + TOO LATE? on picture 3, the lens fails (2026-11-26)"
+    "owner_pick": "Pair A + TOO LATE? on picture 3, the lens fails (2026-11-26)",
+    "approval": {
+      "by": "priyanshu.kushwaha",
+      "at": "2026-11-26T05:40:40.421422+00:00",
+      "via": "omni approve",
+      "proof": "9bc0568cf9927a2359027a9fe2a371cdae30ecc4e31f634383fce021ef6ada96"
+    }
   }
 }
