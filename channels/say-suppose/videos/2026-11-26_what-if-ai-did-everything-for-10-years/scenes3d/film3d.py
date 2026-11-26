@@ -40,7 +40,8 @@ def parse_args():
     argv = sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else []
     p = argparse.ArgumentParser()
     p.add_argument("--style", default="cine", choices=["toy", "toon", "clay", "cine"])
-    p.add_argument("--shot", default="thumb", choices=["opening", "day", "charsheet", "thumb"])
+    p.add_argument("--shot", default="thumb", choices=["opening", "day", "charsheet", "thumb", "thumb2", "thumb3", "thumb4"])
+    p.add_argument("--engine", default="eevee", choices=["eevee", "cycles"])
     p.add_argument("--head-json", default=None)
     p.add_argument("--res", default="1280x720")
     p.add_argument("--samples", type=int, default=64)
@@ -53,6 +54,7 @@ def parse_args():
 ARGS = parse_args()
 STYLE = ARGS.style
 MOOD = "day" if ARGS.shot == "day" else "night"
+THUMB = ARGS.shot.startswith("thumb") and ARGS.shot != "thumb"
 D2R = math.pi / 180.0
 random.seed(7)
 COL = None
@@ -96,6 +98,8 @@ PAL = {
     "cash_dark": "#3D8B4C",
     "ink": "#17131C",
 }
+if THUMB:
+    PAL["skin"] = "#0A0909"
 
 # ============================================================================ materials (style-aware)
 
@@ -231,8 +235,8 @@ def _wear(nt, co, sock, amount, scale=3.0):
 
 KIND_PBR = {
     # kind: roughness, metallic, coat, sheen, subsurface, spec
-    "skin": (0.42, 0.0, 0.0, 0.12, 0.12, 0.45),
-    "cloth": (0.8, 0.0, 0.0, 0.3, 0.0, 0.3),
+    "skin": (0.42, 0.0, 0.0, 0.12, 0.12, 0.45) if not THUMB else (0.62, 0.0, 0.0, 0.0, 0.0, 0.22),
+    "cloth": (0.8, 0.0, 0.0, 0.3, 0.0, 0.3) if not THUMB else (0.72, 0.0, 0.0, 0.0, 0.0, 0.32),
     "plastic": (0.32, 0.0, 0.25, 0.0, 0.0, 0.5),
     "satin": (0.45, 0.0, 0.1, 0.2, 0.0, 0.45),
     "metal": (0.3, 0.75, 0.25, 0.0, 0.0, 0.5),
@@ -871,6 +875,11 @@ def face_features(expr, gaze=(0.0, 0.0), iris_col="#6A4530"):
             eye(s, 0.245, 0.3, cv=-0.02, iris=0.15, pupil=0.08)
             brow(s, [(0.16, 0.42), (0.32, 0.5), (0.47, 0.46)], 0.085, 0.04)
         mouth_open(0.23, -0.4, 0.08, 0.25, teeth=0.05)
+    elif expr == "scared":
+        for s in (1, -1):
+            eye(s, 0.255, 0.31, cv=-0.02, iris=0.12, pupil=0.055)
+            brow(s, [(0.13, 0.52), (0.3, 0.5), (0.47, 0.43)], 0.085, 0.04)
+        mouth_open(0.17, -0.42, -0.06, 0.2, teeth=0.05, tongue=False)
     elif expr == "joy":
         for s in (1, -1):
             eye(s, 0.23, 0.28, cv=-0.02, clips=[(0, -1, 0.17)], iris=0.16, pupil=0.085)
@@ -1624,6 +1633,19 @@ def camera(loc, target, lens, fstop=None, focus=None, shift=(0, 0)):
 def setup_render():
     sc = bpy.context.scene
     sc.render.engine = "BLENDER_EEVEE"
+    if ARGS.engine == "cycles":
+        sc.render.engine = "CYCLES"
+        sc.cycles.samples = ARGS.samples
+        sc.cycles.use_denoising = True
+        try:
+            prefs = bpy.context.preferences.addons["cycles"].preferences
+            prefs.compute_device_type = "METAL"
+            prefs.get_devices()
+            for d in prefs.devices:
+                d.use = True
+            sc.cycles.device = "GPU"
+        except Exception as e:
+            print("cycles gpu fallback", e)
     w, h = (int(x) for x in ARGS.res.split("x"))
     sc.render.resolution_x, sc.render.resolution_y = w, h
     sc.render.resolution_percentage = 100
@@ -1646,6 +1668,10 @@ def setup_render():
         vs.view_transform = "Standard"
         vs.look = "None"
     vs.exposure = (-0.4 if STYLE == "cine" else -0.35) if MOOD == "day" and STYLE != "toon" else 0.0
+    if THUMB:
+        # AgX with the light halved: the clothes sit in the midtones, where AgX keeps the brand colours saturated
+        vs.look = "AgX - Punchy"
+        vs.exposure = 0.0
     sc.render.image_settings.file_format = "PNG"
     sc.render.image_settings.color_mode = "RGB"
     world = bpy.data.worlds.new("world")
@@ -1701,7 +1727,7 @@ def compositor():
     haze = srgb("#C8D6E4") if MOOD == "day" else srgb("#4E5288")
     mf = tree.nodes.new("ShaderNodeMath")
     mf.operation = "MULTIPLY"
-    mf.inputs[1].default_value = (0.3 if STYLE == "cine" else 0.55) if MOOD == "day" else (0.04 if ARGS.shot == "thumb" else 0.45)
+    mf.inputs[1].default_value = (0.3 if STYLE == "cine" else 0.55) if MOOD == "day" else (0.04 if ARGS.shot.startswith("thumb") else 0.45)
     tree.links.new(rl.outputs["Mist"], mf.inputs[0])
     img = _mix(tree, "MIX", mf.outputs[0], img, haze)
     gl = tree.nodes.new("CompositorNodeGlare")
@@ -1710,7 +1736,7 @@ def compositor():
     except Exception:
         pass
     gl.inputs["Threshold"].default_value = 1.4 if STYLE != "toon" else 1.8
-    gl.inputs["Strength"].default_value = {"toy": 0.45, "toon": 0.25, "clay": 0.35, "cine": 0.7}[STYLE] * (1.0 if MOOD == "night" else 0.6) * (0.35 if ARGS.shot == "thumb" else 1.0)
+    gl.inputs["Strength"].default_value = {"toy": 0.45, "toon": 0.25, "clay": 0.35, "cine": 0.7}[STYLE] * (1.0 if MOOD == "night" else 0.6) * (0.35 if ARGS.shot.startswith("thumb") else 1.0)
     gl.inputs["Size"].default_value = 0.7
     tree.links.new(img, gl.inputs["Image"])
     img = gl.outputs["Image"]
@@ -1726,7 +1752,7 @@ def compositor():
             named["Gain"].default_value = (1.05, 1.0, 0.94, 1)
         img = [s for s in cb.outputs if s.enabled][0]
     hs = tree.nodes.new("CompositorNodeHueSat")
-    hs.inputs["Saturation"].default_value = {"toy": 1.12, "toon": 1.08, "clay": 1.2, "cine": 1.1}[STYLE]
+    hs.inputs["Saturation"].default_value = 1.2 if THUMB else {"toy": 1.12, "toon": 1.08, "clay": 1.2, "cine": 1.1}[STYLE]
     tree.links.new(img, hs.inputs["Image"])
     img = hs.outputs["Image"]
     # vignette
@@ -1741,7 +1767,7 @@ def compositor():
     except Exception:
         pass
     tree.links.new(el.outputs[0], bl.inputs["Image"])
-    vk = {"toy": 0.25, "toon": 0.12, "clay": 0.3, "cine": 0.45}[STYLE]
+    vk = 0.18 if THUMB else {"toy": 0.25, "toon": 0.12, "clay": 0.3, "cine": 0.45}[STYLE]
     mr = tree.nodes.new("ShaderNodeMapRange")
     mr.inputs["To Min"].default_value = 1.0 - vk
     tree.links.new(bl.outputs[0], mr.inputs["Value"])
@@ -2074,13 +2100,14 @@ def build_charsheet():
 
 # ============================================================================ 2041: the flat (the G1 thumbnail)
 
-YOU41 = dict(YOU, apron=False)
+YOU41 = dict(YOU, apron=False, top="#E8AE00", cuff="#BF8C00")
 
 
-def lens_rings(head, R, a=0.245, b=0.3, cv=-0.02):
+def lens_rings(head, R, a=0.245, b=0.3, cv=-0.02, colors=("#7FF3FF", "#7FF3FF")):
     """Echo's contact lenses: a thin glowing ring round each eye and a tiny read-out dot, lifted off the face."""
-    glow = M_emit("lens_glow", "#7FF3FF", 3.0)
     for s in (1, -1):
+        col = colors[0] if s == 1 else colors[1]
+        glow = M_emit("lens_glow" + col, col, 3.0)
         ce = (s * 0.335, cv)
         pts = [(ce[0] + (a + 0.035) * math.cos(t * 2 * math.pi / 48), ce[1] + (b + 0.035) * math.sin(t * 2 * math.pi / 48)) for t in range(49)]
         vs, fs = ribbon2d(pts, [0.028] * len(pts), caps=False)
@@ -2216,8 +2243,8 @@ def city41():
     ssp = snt.nodes.new("ShaderNodeSeparateXYZ")
     snt.links.new(stc.outputs["Generated"], ssp.inputs[0])
     sr = snt.nodes.new("ShaderNodeValToRGB")
-    sr.color_ramp.elements[0].position, sr.color_ramp.elements[0].color = 0.0, srgb("#2C6B78")
-    sr.color_ramp.elements[1].position, sr.color_ramp.elements[1].color = 0.6, srgb("#0B1433")
+    sr.color_ramp.elements[0].position, sr.color_ramp.elements[0].color = 0.0, srgb("#1B3E4C" if THUMB else "#2C6B78")
+    sr.color_ramp.elements[1].position, sr.color_ramp.elements[1].color = 0.6, srgb("#050A1C" if THUMB else "#0B1433")
     snt.links.new(ssp.outputs["Z"], sr.inputs[0])
     sem = snt.nodes.new("ShaderNodeEmission")
     sem.inputs["Strength"].default_value = 1.0
@@ -2317,6 +2344,199 @@ def head_on_screen(you, cam, path):
 
 
 
+# ============================================================================ G1 thumbnails, round 2 (the owner: "not very satisfied")
+
+
+def drone(name, loc, rot=(0, 0, 0), s=1.0, carry=None):
+    """A home drone: a white rounded body, four rotor arms with blurred discs, a cyan light band, a small claw."""
+    shell = M("drone_shell", "#F4F4F2", "glossy")
+    dark = M("drone_dark", "#2B2F36", "satin")
+    blur = M("rotor_blur", "#DDE6EE", "glass", alpha=0.18)
+    band = M_emit("drone_band", "#5FE6FF", 6.0)
+    root = empty(name, None, loc, rot)
+    root.scale = (s, s, s)
+    rbox(f"{name}_body", (0.22, 0.22, 0.08), 0.04, shell, root, ink=0.004)
+    rbox(f"{name}_band", (0.226, 0.226, 0.012), 0.04, band, root, (0, 0, 0.0), ink=None)
+    for k in range(4):
+        a = (45 + 90 * k) * D2R
+        x, y = 0.2 * math.cos(a), 0.2 * math.sin(a)
+        rbox(f"{name}_arm{k}", (0.2, 0.025, 0.02), 0.01, dark, root, (x * 0.5, y * 0.5, 0.0), rot=(0, 0, 45 + 90 * k), ink=None)
+        cyl(f"{name}_motor{k}", 0.022, 0.03, dark, root, (x, y, 0.02), segs=16, ink=None)
+        cyl(f"{name}_disc{k}", 0.1, 0.003, blur, root, (x, y, 0.04), segs=32, ink=None)
+    eye = sphere(f"{name}_eye", 0.03, M_emit("drone_eye", "#5FE6FF", 8.0), root, (0, -0.112, 0.0), scale=(1, 0.4, 1), ink=None)
+    del eye
+    if carry == "mug":
+        cyl(f"{name}_claw", 0.008, 0.12, dark, root, (0, 0, -0.08), segs=8, ink=None)
+        lathe(f"{name}_mug", smooth_prof([(0.0, 0.0), (0.05, 0.0), (0.056, 0.05), (0.056, 0.11), (0.0, 0.11)], 3), M("mug", PAL["crimson"], "ceramic"), root, (0, 0, -0.26), segs=24)
+        sphere(f"{name}_coffee", 0.05, M("coffee", "#4A2A18", "glossy"), root, (0, 0, -0.152), scale=(1, 1, 0.08), ink=None)
+    elif carry == "toast":
+        cyl(f"{name}_claw", 0.008, 0.1, dark, root, (0, 0, -0.07), segs=8, ink=None)
+        cyl(f"{name}_plate", 0.12, 0.012, M("plate41", "#FBFAF6", "ceramic"), root, (0, 0, -0.13), segs=32, ink=0.003)
+        rbox(f"{name}_toast", (0.11, 0.1, 0.025), 0.02, M("toast", "#D8963E", "plastic"), root, (0, 0, -0.11), rot=(0, 0, 20), ink=0.003)
+        sphere(f"{name}_egg", 0.045, M("egg_white", "#FFFDF6", "glossy"), root, (0.04, 0.03, -0.1), scale=(1, 1, 0.25), ink=None)
+        sphere(f"{name}_yolk", 0.02, M("yolk", "#FFB000", "glossy"), root, (0.04, 0.03, -0.092), scale=(1, 1, 0.6), ink=None)
+    return root
+
+
+def vivid_aurora():
+    """A fuller storm sky for the thumbnails: green curtains with a magenta crown, bright at the hem."""
+    m = bpy.data.materials.new("aurora_v")
+    nt, out = _nodes(m)
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    sep = nt.nodes.new("ShaderNodeSeparateXYZ")
+    nt.links.new(tc.outputs["Generated"], sep.inputs[0])
+    ramp = nt.nodes.new("ShaderNodeValToRGB")
+    cr = ramp.color_ramp
+    cr.elements[0].position, cr.elements[0].color = 0.0, (0, 0, 0, 1)
+    cr.elements[1].position, cr.elements[1].color = 1.0, (0, 0, 0, 1)
+    for pos, col in ((0.04, (0.2, 1.0, 0.35, 1)), (0.2, (0.05, 0.9, 0.3, 1)), (0.55, (0.04, 0.45, 0.35, 1)), (0.8, (0.45, 0.05, 0.5, 1))):
+        e = cr.elements.new(pos)
+        e.color = col
+    nt.links.new(sep.outputs["Z"], ramp.inputs[0])
+    noise = nt.nodes.new("ShaderNodeTexNoise")
+    noise.inputs["Scale"].default_value = 5.0
+    noise.inputs["Detail"].default_value = 4.0
+    mp = nt.nodes.new("ShaderNodeMapping")
+    mp.inputs["Scale"].default_value = (16.0, 1.0, 0.1)
+    nt.links.new(tc.outputs["Generated"], mp.inputs[0])
+    nt.links.new(mp.outputs[0], noise.inputs["Vector"])
+    thr = nt.nodes.new("ShaderNodeValToRGB")
+    thr.color_ramp.elements[0].position, thr.color_ramp.elements[0].color = 0.42, (0, 0, 0, 1)
+    thr.color_ramp.elements[1].position, thr.color_ramp.elements[1].color = 0.66, (1, 1, 1, 1)
+    nt.links.new(noise.outputs["Fac"], thr.inputs[0])
+    gam = nt.nodes.new("ShaderNodeMath")
+    gam.operation = "MULTIPLY"
+    gam.inputs[1].default_value = 1.0
+    nt.links.new(thr.outputs[0], gam.inputs[0])
+    mul = nt.nodes.new("ShaderNodeMixRGB")
+    mul.blend_type = "MULTIPLY"
+    mul.inputs[0].default_value = 1.0
+    nt.links.new(ramp.outputs[0], mul.inputs[1])
+    nt.links.new(gam.outputs[0], mul.inputs[2])
+    em = nt.nodes.new("ShaderNodeEmission")
+    em.inputs["Strength"].default_value = 10.0
+    nt.links.new(mul.outputs[0], em.inputs[0])
+    tr = nt.nodes.new("ShaderNodeBsdfTransparent")
+    add = nt.nodes.new("ShaderNodeAddShader")
+    nt.links.new(em.outputs[0], add.inputs[0])
+    nt.links.new(tr.outputs[0], add.inputs[1])
+    nt.links.new(add.outputs[0], out.inputs["Surface"])
+    m.surface_render_method = "BLENDED"
+    for k, (x, y, z, w, h, ph) in enumerate(((5, 95, 4, 70, 45, 0.0), (40, 125, 7, 80, 50, 1.7), (75, 105, 3, 70, 40, 3.1))):
+        bm = bmesh.new()
+        nu, nv = 90, 8
+        vs = []
+        for j in range(nv + 1):
+            row = []
+            for i in range(nu + 1):
+                u = i / nu
+                yy = 7.0 * math.sin(u * 6.0 + ph) + 3.5 * math.sin(u * 15.0 + ph * 2)
+                hem = 4.0 * math.sin(u * 3.5 + ph * 1.3) + 1.5 * math.sin(u * 9.0 + ph)
+                row.append(bm.verts.new((x + (u - 0.5) * w, y + yy, z + hem + j / nv * h)))
+            vs.append(row)
+        for j in range(nv):
+            for i in range(nu):
+                bm.faces.new((vs[j][i], vs[j][i + 1], vs[j + 1][i + 1], vs[j + 1][i]))
+        ob = mesh_obj(f"aurora_v{k}", bm, m, None, smooth=True, ink=None)
+        ob.visible_shadow = False
+
+
+def city_lights_out(fraction=0.5):
+    """Turn a share of the skyline dark (the storm reaching the city), from the left."""
+    off = M("tower_off", "#151A26", "satin")
+    towers = sorted([o for o in bpy.data.objects if o.name.startswith("tower")], key=lambda o: o.location.x)
+    for o in towers[: int(len(towers) * fraction)]:
+        o.data.materials.clear()
+        o.data.materials.append(off)
+
+
+def _thumb_lights(head_target, key_energy=320):
+    key_energy *= 0.45
+    add_light("key", "AREA", (head_target[0] - 1.1, head_target[1] - 1.7, head_target[2] + 0.9), key_energy, "#FFF7EE", 1.6, target=head_target)
+    add_light("fill", "AREA", (head_target[0] + 1.5, head_target[1] - 1.4, head_target[2]), 30, "#DDF4FF", 2.0, target=head_target, shadow=False)
+    # the aurora's green on the far side of the head: the rim that cuts the black out of the background
+    add_light("rim_green", "AREA", (head_target[0] + 0.9, head_target[1] + 1.2, head_target[2] + 0.4), 160, "#9CFFC0", 0.4, target=head_target, shadow=False)
+    add_light("rim_warm", "AREA", (head_target[0] - 1.0, head_target[1] + 1.0, head_target[2] + 0.6), 160, "#FFE6C8", 0.4, target=head_target, shadow=False)
+    add_light("room", "AREA", (0.5, 0.3, 2.9), 120, "#FFE9CC", 6.0, target=(0.5, 0.3, 0.0))
+    add_light("wall_wash", "AREA", (-1.2, 1.0, 2.6), 110, "#FFF1DE", 3.0, target=(-1.2, 3.4, 1.5), shadow=False)
+
+
+def build_thumb2():
+    """Option 1, the same moment closer and brighter: you, head about half the frame, delighted, lenses glowing; a
+    drone hands you coffee; the window behind is all storm sky, green over the city."""
+    flat41()
+    city41()
+    vivid_aurora()
+    you = person("you", YOU41, loc=(0.0, 0.0, 0.0), facing=-14)
+    build_face(you["headmesh"], you["R"], "joy", gaze=(0.6, 0.3), iris=IRIS["you"])
+    lens_rings(you["headmesh"], you["R"], a=0.23, b=0.28)
+    arm(you, "R", abduct=30, flex=95, elbow=125, elbow_up=10, wrist=(0, -20, 0))
+    pose_hand(you, "R", 0.35, 0.3, spread=0.7)
+    arm(you, "L", abduct=35, flex=55, elbow=60, wrist=(0, 10, 0))
+    pose_hand(you, "L", 0.5, 0.45, spread=0.8)
+    look(you, nod=-6, tilt=6, turn=10, lean=-3)
+    drone("drone_mug", (0.55, -0.35, 1.38), rot=(0, 0, -20), s=1.0, carry="mug")
+    drone("drone_far", (1.6, 1.6, 1.9), rot=(8, 0, 30), s=0.9, carry="toast")
+    holo_panel("holo1", (0.82, 0.05, 1.62), (0, 0, -18), 0.38, 0.24)
+    _thumb_lights((0.0, 0.0, 1.2))
+    cam = camera((0.38, -1.75, 1.25), (0.72, 3.4, 1.3), lens=34, fstop=4.0, focus=you["headmesh"], shift=(0.0, 0.03))
+    return dict(you=you, cam=cam)
+
+
+def build_thumb3():
+    """Option 2, the whole power in one gag: you sprawled on the sofa, feet up, smug, lenses glowing, three drones
+    serving coffee, breakfast and a card; through the window behind, the storm sky and half the city already dark."""
+    flat41()
+    city41()
+    vivid_aurora()
+    city_lights_out(0.45)
+    teal = M("sofa_teal", PAL["teal"], "cloth")
+    sx0, sy0 = 0.3, 0.9
+    rbox("sofa2_seat", (2.4, 0.95, 0.42), 0.14, teal, None, (sx0, sy0, 0.3), ink=0.005)
+    rbox("sofa2_back", (2.4, 0.3, 0.85), 0.14, teal, None, (sx0, sy0 + 0.55, 0.66), rot=(-12, 0, 0), ink=0.005)
+    for s2 in (-1, 1):
+        rbox(f"sofa2_arm{s2}", (0.28, 0.95, 0.62), 0.12, teal, None, (sx0 + s2 * 1.2, sy0, 0.42), ink=0.005)
+    rbox("cushion", (0.5, 0.18, 0.4), 0.12, M("cushion", PAL["mustard"], "cloth"), None, (sx0 + 0.95, sy0 + 0.25, 0.75), rot=(-15, 0, -20), ink=0.004)
+    you = person("you", YOU41, loc=(sx0 - 0.25, sy0 - 0.05, 0.15), facing=-8)
+    you["root"].rotation_euler = Euler((-14 * D2R, 0, -8 * D2R))
+    sit(you)
+    build_face(you["headmesh"], you["R"], "sly", gaze=(0.35, 0.35), iris=IRIS["you"])
+    lens_rings(you["headmesh"], you["R"], a=0.22, b=0.27)
+    arm(you, "L", abduct=82, flex=-8, elbow=18, wrist=(0, 10, 0))
+    pose_hand(you, "L", 0.3, 0.3, spread=1.0)
+    arm(you, "R", abduct=18, flex=38, elbow=70)
+    pose_hand(you, "R", 0.5, 0.45)
+    look(you, nod=8, tilt=-8, turn=10, lean=-6)
+    drone("drone_mug", (0.6, 0.45, 1.25), rot=(0, 0, -15), carry="mug")
+    drone("drone_toast", (-0.65, 0.35, 1.2), rot=(0, 0, 25), carry="toast")
+    drone("drone_card", (0.55, 0.6, 1.75), rot=(0, 0, -10))
+    holo_panel("holo_card", (0.55, 0.55, 1.52), (0, 0, -8), 0.36, 0.22)
+    holo_panel("holo_side", (1.25, 0.6, 1.25), (0, 0, -25), 0.3, 0.2, lines=3)
+    _thumb_lights((sx0 - 0.25, sy0 - 0.3, 1.0), key_energy=360)
+    cam = camera((0.38, -0.6, 1.18), (0.2, 3.4, 1.0), lens=30, fstop=4.5, focus=you["headmesh"], shift=(0.0, 0.02))
+    return dict(you=you, cam=cam)
+
+
+def build_thumb4():
+    """Option 3, the moment it fails: your face fills the frame, one lens ring still cyan, the other flickering red, eyes
+    wide; behind you, out of focus, the storm sky and a drone dropping out of the air."""
+    flat41()
+    city41()
+    vivid_aurora()
+    city_lights_out(0.7)
+    you = person("you", YOU41, loc=(0.0, 0.0, 0.0), facing=-10)
+    build_face(you["headmesh"], you["R"], "scared", gaze=(0.0, 0.1), iris=IRIS["you"])
+    lens_rings(you["headmesh"], you["R"], a=0.26, b=0.31, colors=("#7FF3FF", "#FF3B4E"))
+    arm(you, "R", abduct=30, flex=100, elbow=130, elbow_up=10, wrist=(0, -20, 0))
+    pose_hand(you, "R", 0.2, 0.25, spread=1.2)
+    look(you, nod=-2, tilt=-5, turn=-4, lean=2)
+    drone("drone_fall", (1.1, 1.8, 1.55), rot=(35, 20, 60), s=1.0, carry="mug")
+    _thumb_lights((0.0, 0.0, 1.2), key_energy=260)
+    cam = camera((0.32, -1.8, 1.22), (0.68, 3.4, 1.3), lens=36, fstop=3.2, focus=you["headmesh"], shift=(0.0, 0.03))
+    return dict(you=you, cam=cam)
+
+
+
 def main():
     global COL
     sc = bpy.context.scene
@@ -2330,8 +2550,8 @@ def main():
             animate_opening(S, *ARGS.frames)
     elif ARGS.shot == "day":
         build_day()
-    elif ARGS.shot == "thumb":
-        T = build_thumb()
+    elif ARGS.shot.startswith("thumb"):
+        T = {"thumb": build_thumb, "thumb2": build_thumb2, "thumb3": build_thumb3, "thumb4": build_thumb4}[ARGS.shot]()
         if ARGS.head_json:
             head_on_screen(T["you"], T["cam"], ARGS.head_json)
     else:

@@ -3,19 +3,19 @@
  "measured_by": "channels/say-suppose/brand/thumbs/check.py",
  "candidates": [
   {
-   "id": "a",
-   "variable": "the tag",
-   "value": "TOO LATE?",
+   "id": "1",
+   "variable": "the picture",
+   "value": "close-up, a drone brings coffee",
    "tag": "TOO LATE?",
    "stake": null,
    "K3": {
-    "head_height_pct": 33.5,
+    "head_height_pct": 44.5,
     "pass": true
    },
    "K4": {
-    "head_lum": 0.3,
-    "ring_lum": 0.418,
-    "ratio": 1.34,
+    "head_lum": 0.171,
+    "ring_lum": 0.323,
+    "ratio": 1.68,
     "pass": false
    },
    "K5": {
@@ -29,14 +29,14 @@
     "pass": true
    },
    "K9": {
-    "colourfulness": 65.1,
-    "mean_lum": 0.355,
+    "colourfulness": 69.9,
+    "mean_lum": 0.316,
     "pass": true
    },
    "K10": {
-    "edge_lum": 0.326,
-    "edge_vs_white": 2.79,
-    "edge_vs_dark": 6.86,
+    "edge_lum": 0.358,
+    "edge_vs_white": 2.57,
+    "edge_vs_dark": 7.46,
     "note": "edge contrast only; 'found first' is the K1/K2 cold read"
    },
    "K11": {
@@ -45,19 +45,19 @@
    }
   },
   {
-   "id": "b",
-   "variable": "the tag",
-   "value": "NOBODY NOTICED",
-   "tag": "NOBODY NOTICED",
+   "id": "2",
+   "variable": "the picture",
+   "value": "lounging, drones serve you",
+   "tag": "TOO LATE?",
    "stake": null,
    "K3": {
-    "head_height_pct": 33.5,
+    "head_height_pct": 39.8,
     "pass": true
    },
    "K4": {
-    "head_lum": 0.3,
-    "ring_lum": 0.413,
-    "ratio": 1.32,
+    "head_lum": 0.204,
+    "ring_lum": 0.437,
+    "ratio": 1.92,
     "pass": false
    },
    "K5": {
@@ -71,14 +71,14 @@
     "pass": true
    },
    "K9": {
-    "colourfulness": 72.3,
-    "mean_lum": 0.318,
+    "colourfulness": 77.8,
+    "mean_lum": 0.386,
     "pass": true
    },
    "K10": {
-    "edge_lum": 0.334,
-    "edge_vs_white": 2.73,
-    "edge_vs_dark": 7.02,
+    "edge_lum": 0.385,
+    "edge_vs_white": 2.42,
+    "edge_vs_dark": 7.94,
     "note": "edge contrast only; 'found first' is the K1/K2 cold read"
    },
    "K11": {
@@ -87,23 +87,23 @@
    }
   },
   {
-   "id": "c",
-   "variable": "the tag",
-   "value": "ECHO?",
-   "tag": "ECHO?",
+   "id": "3",
+   "variable": "the picture",
+   "value": "the lens fails, a drone drops",
+   "tag": "TOO LATE?",
    "stake": null,
    "K3": {
-    "head_height_pct": 33.5,
+    "head_height_pct": 47.4,
     "pass": true
    },
    "K4": {
-    "head_lum": 0.3,
-    "ring_lum": 0.418,
-    "ratio": 1.34,
+    "head_lum": 0.199,
+    "ring_lum": 0.307,
+    "ratio": 1.43,
     "pass": false
    },
    "K5": {
-    "words": 1,
+    "words": 2,
     "cap_height_pct": 12.3,
     "tag_contrast": 8.4,
     "pass": true
@@ -113,14 +113,14 @@
     "pass": true
    },
    "K9": {
-    "colourfulness": 63.2,
-    "mean_lum": 0.365,
+    "colourfulness": 70.5,
+    "mean_lum": 0.304,
     "pass": true
    },
    "K10": {
-    "edge_lum": 0.345,
-    "edge_vs_white": 2.66,
-    "edge_vs_dark": 7.21,
+    "edge_lum": 0.367,
+    "edge_vs_white": 2.52,
+    "edge_vs_dark": 7.62,
     "note": "edge contrast only; 'found first' is the K1/K2 cold read"
    },
    "K11": {

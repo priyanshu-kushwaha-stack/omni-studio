@@ -10,6 +10,11 @@ rule. Where two notes disagree, the newer one wins.
 
 ## 2026-11-26
 
+- **"lets go with Pair A + TOO LATE but i am not very satisfied with the Thumbnail overall given the quality of
+  thumbnail other people are creating."** G1 pick on the ten-years film: title A, "What If AI Did Everything for 10
+  Years?", with tag a ("TOO LATE?"). The picture itself (the 3D flat, lenses glowing, the green sky behind) is below the
+  bar set by similar channels: rebuild it to their standard and show rendered options before G1 is passed. (ten years,
+  G1)
 - **"lets go with story along these lines. Evaluate and let me know what you think about this ?"** then **"Replace
   the diner film"**. The owner's handover (`videos/2026-11-26_what-if-ai-did-everything-for-10-years/handover/HANDOVER.md`):
   "What If AI Did Everything for 10 Years?", you hand everything to an AI called Echo in 2041 and live through one
