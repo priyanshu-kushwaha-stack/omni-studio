@@ -35,6 +35,9 @@ _ap.add_argument("--res", default="1600x900")
 _ap.add_argument("--samples", type=int, default=96)
 _ap.add_argument("--engine", default="cycles", choices=["cycles", "eevee"])
 _ap.add_argument("--list", action="store_true")
+_ap.add_argument("--skip-existing", action="store_true")
+_ap.add_argument("--device", default="cpu", choices=["cpu", "gpu"])
+_ap.add_argument("--threads", type=int, default=6)
 RA = _ap.parse_args(_argv)
 
 # film3d reads its own arguments at import: give it the round-2 thumbnail look the owner accepted.
@@ -182,6 +185,26 @@ def reset():
     F.COL = bpy.context.scene.collection
 
 
+def gpu_only():
+    """film3d enables every Cycles device, the CPU on all cores included, which pegged the Mac at load 87. Cap
+    Blender's threads at --threads. --device cpu (the default) renders on those threads only: the Metal kernel
+    compile crashed in this sandbox (NSURL nil path, Blender 5.2.3). --device gpu keeps Metal and drops the CPU."""
+    sc = bpy.context.scene
+    sc.render.threads_mode = "FIXED"
+    sc.render.threads = RA.threads
+    if sc.render.engine != "CYCLES":
+        return
+    if RA.device == "cpu":
+        sc.cycles.device = "CPU"
+        return
+    try:
+        prefs = bpy.context.preferences.addons["cycles"].preferences
+        for d in prefs.devices:
+            d.use = d.type != "CPU"
+    except Exception as e:
+        print("gpu_only", e)
+
+
 def build_set(name, mood):
     mod = importlib.import_module(f"sets3d.{name}")
     return mod.build(mood) or {}
@@ -192,6 +215,7 @@ def render_shot(shot, out_dir):
     mood = shot.get("mood", "day")
     F.MOOD = "day" if mood in ("morning", "day") else "night"
     F.setup_render()
+    gpu_only()
     marks = build_set(shot["set"], mood)
     js = {}
     for c in shot.get("cast", []):
@@ -225,12 +249,15 @@ def all_shots():
 def main():
     os.makedirs(RA.out, exist_ok=True)
     only = set(RA.only.split(",")) if RA.only else None
-    shots = [(sec, s) for sec, s in all_shots() if (not RA.section or sec == RA.section) and (not only or s["id"] in only)]
+    # entries without a set (cards, drawn pictures, tags) are drawn in 2D by the Remotion reel
+    shots = [(sec, s) for sec, s in all_shots() if s.get("set") and (not RA.section or sec == RA.section) and (not only or s["id"] in only)]
     if RA.list:
         for sec, s in shots:
             print(sec, s["id"], s["set"], s.get("mood"))
         return
     for _sec, s in shots:
+        if RA.skip_existing and os.path.exists(os.path.join(RA.out, f"{s['id']}.png")):
+            continue
         render_shot(s, RA.out)
     print("DONE", len(shots))
 

@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "project_id": "2026-11-26_what-if-ai-did-everything-for-10-years",
+  "pipeline_type": "studio-whatif",
+  "stage": "story_script",
+  "status": "awaiting_human",
+  "timestamp": "2026-11-26T13:29:52.415437+00:00",
+  "checkpoint_policy": "manual_all",
+  "human_approval_required": true,
+  "human_approved": false,
+  "artifacts": {},
+  "style_playbook": "say-suppose",
+  "metadata": {
+    "script": "script.md v1.1 (Fable 5.1 v1 plus the G2 room round 1's fact fixes: c01/c02 MIT wording, c04, c09, c11, the Anthropic beat one number at a time); sequel.md; say.yaml (113 keys, 118 lines)",
+    "claims": "claims.md, 16 rows c01-c16; c12, c15, c16 quotes re-copied at G2",
+    "narration": "free local: voice B narrator, Echo, You, Dana, Chief, Crew (Qwen3, cached per line); 118 lines, 9:55; every take checked by speech recognition (You's 'Echo?' at line 27 misheard by Whisper, the same take passes at line 92); mutes.txt (6)",
+    "room": "room-g2.md round 1: not shipped (fact blockers, fixed in v1.1); the owner-notes round 2 runs on the owner's review notes",
+    "first_cut": "renders/reel/reel-720p.mp4 (git-ignored): the 3D story reel the owner chose, 1280x720, 9:56; 211 Eevee stills built in code from the film's own sets and cast (scenes3d/sets3d, shots/a-d), camera moves and cuts in Remotion (reel/), music beds, wind and the narration",
+    "qc": "omni qc story_script on the narration: claims ok, clicks ok",
+    "open_for_the_owner": "the voice for 'you' (the first time you speaks aloud); the IdentC title card is left out of the reel; the 3D production build (Cycles) comes after story lock",
+    "awaiting": "the owner's reel review, then omni approve by the owner only"
+  }
+}
