@@ -1,5 +1,10 @@
 # Say Suppose topics, 2026-11-27
 
+## Picked (owner, 2026-11-27)
+
+- **What If Only 100 People Could Ever See You?** (f-only-100-people-see-you): the premise for the restart pilot.
+
+
 Ranked by total (content first). The owner picks three.
 
 ## 1. What If Only 100 People Could Ever See You? — 81/100

@@ -54,6 +54,14 @@ whatif_engine:
   react: 18.3.1
   dev: [typescript 5.9.3, vitest 2.1.9, tsx 4.23.15]
   calls: higgsfield CLI 1.1.23 (narration quotes and takes; paid, owner-approved only)
+pilot_remotion:
+  # channels/say-suppose/pilot/only-100/remotion (2026-11-27): the restart pilot's three looks. Exact versions; install
+  # with `pnpm install` in that folder (its pnpm-lock.yaml then pins the tree). Remotion matches the what-if engine.
+  remotion: 4.0.484          # remotion, @remotion/cli, @remotion/three
+  react: 18.3.1
+  three: 0.169.0
+  react_three_fiber: 8.17.10
+  dev: [typescript 5.6.3, "@types/react 18.3.12", "@types/three 0.169.0"]
 yt_dlp:
   # Used once, 2026-11-06, for the Say Suppose reference study; YouTube blocked it and the owner supplied the files.
   # Installed with uv into the git-ignored .tools/yt-dlp venv, outside the studio's two venvs.
