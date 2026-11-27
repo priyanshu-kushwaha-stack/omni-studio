@@ -2,9 +2,7 @@ import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {describe, expect, it} from 'vitest';
 import {ShotView, FilmFrame, shotActs, Z_FLOOR, filmMetadata, EMPTY_FILM} from '../src/index';
-import type {FilmData, ShotData, Shot} from '../src/index';
-import castJson from '../../../../../channels/say-suppose/library/cast/cast.json';
-import station from '../../../../../channels/say-suppose/library/sets/station/set.json';
+import type {ShotData, Shot} from '../src/index';
 
 const film = {
   film: 't', fps: 30, size: [1280, 720], duration: 6, audio: 'audio/mix.wav', beats: [],
@@ -21,14 +19,8 @@ describe('ShotView', () => {
   });
 });
 
-// A real film: the library's station set and cast, as sheetcheck.emit writes them.
-const real: FilmData = {
-  film: 'r', fps: 30, size: [1280, 720], duration: 20, audio: 'audio/mix.wav', beats: [], props: {},
-  cast: castJson as never, crowd: {salary: (castJson as never as Record<string, never>).salary}, sets: {station: station as never}, shots: [],
-};
-const html = (shot: Partial<ShotData>, t: number, f: FilmData = real) =>
-  renderToStaticMarkup(<ShotView shot={{id: 'x', from: 0, to: 6, type: 'wide', ...shot} as ShotData} film={f} t={t} />);
-const setShot = {set: 'station', angle: 'wide'};
+import {real, html, setShot} from './helpers';
+
 
 describe('ShotView camera (W3)', () => {
   it('lifts the zoom to the floor so drift and pan still move', () => {

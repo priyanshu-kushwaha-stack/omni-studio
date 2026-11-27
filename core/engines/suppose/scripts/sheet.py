@@ -26,6 +26,18 @@ shots:
     hold: "the joke lands"      # required reason for a shot whose longest unchanged stretch is over 5 s
     custom: S2                  # optional: a hand-built shot exported from custom/*.tsx
 ```
+
+Optional fields the renderer reads (sheetcheck accepts them without comment):
+
+- `labels[].x`, `y` (data/pill corner, dim start, callout dot), `x2`, `y2` (dim end), `lx`, `ly` (callout label);
+  also `title`, `unit`, `accent`, `source`.
+- `text` on a `title` shot (the words) or an `end` shot (the closing question).
+- `badge` on a `freeze` shot: the corner stamp shown while the picture is held.
+- `rim: true`: rim-light the cast with the set angle's key light.
+- `atmosphere: dust` (or `{kind, seed, strength}`): drifting air over the shot.
+- `letterbox: scope`: scope bars.
+- `mood`: the grade, one of warm | cool | void | blueprint.
+- Act fields: `dir` (1 right, -1 left), `prop`, `from: [x, y]` (where a walk, run or stop starts), `to` (end time).
 """
 
 from pathlib import Path
@@ -40,6 +52,7 @@ MOVES = ("push", "pull", "drift", "pan", "roll", "shake", "crane", "track", "sti
 ACTS = (
     "idle", "walkIn", "walkOut", "stop", "wave", "point", "shout", "lookAt", "react", "hold", "turn", "run",
     "reach", "shrug", "cheer", "armsCrossed", "explain", "handOff",
+    "look", "talk", "nod", "shakeHead", "think", "facepalm", "cower", "walk",
 )  # fmt: skip
 MOODS = (
     "neutral", "smile", "happy", "joy", "surprised", "shocked", "scared", "worried", "nervous", "angry",

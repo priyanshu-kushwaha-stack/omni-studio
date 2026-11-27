@@ -40,6 +40,20 @@ def test_a_clean_sheet_passes():
     assert warns == []
 
 
+def test_renderer_only_optional_fields_pass_silently():
+    extras = {
+        "labels": [{"kind": "callout", "text": "x", "at": 1, "x": 1, "y": 2, "x2": 3, "y2": 4, "lx": 5, "ly": 6}],
+        "rim": True,
+        "atmosphere": "dust",
+        "letterbox": "scope",
+        "mood": "cool",
+        "badge": "FREEZE",
+        "text": "hello",
+    }
+    s = sheet(shot(1, 0, 3, **extras), shot(2, 3, 6, type="freeze", badge="B"), shot(3, 6, 9, type="title", text="T"))
+    assert chk.check(s, LIB, []) == ([], [])
+
+
 def test_unknown_references_fail():
     bad = [
         (shot(1, 0, 3, set="moon"), "unknown set"),

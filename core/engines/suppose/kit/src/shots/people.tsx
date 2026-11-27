@@ -4,7 +4,7 @@ import type {Act} from '../actions/acts';
 import {poseAt} from '../actions/index';
 import {Crowd} from '../film/Crowd';
 import {hAtFor, type SetAngle} from '../film/Set';
-import {Person, strideAt} from '../rig/Person';
+import {Person, strideAt, type PersonPose} from '../rig/Person';
 import {Shadow} from '../rig/Puppet';
 import {SCARF_H, personH} from '../rig/scale';
 import type {CastMember} from '../rig/types';
@@ -33,17 +33,32 @@ export const scaleFor = (angle: SetAngle, m: CastMember, y: number, hero?: CastM
 
 const seedOf = (who: string, i: number) => [...who].reduce((s, c) => s + c.charCodeAt(0), i * 17);
 
+const MIN_SCALE = 0.03; // a member above the horizon (hAt <= 0) is drawn this small, tagged, not mirrored or dropped
+
+const Tag: React.FC<{x: number; y: number; text: string}> = ({x, y, text}) => (
+  <div style={{position: 'absolute', left: x, top: y - 40, transform: 'translateX(-50%)', whiteSpace: 'nowrap', font: '700 22px sans-serif', color: '#fff', background: '#d9435b', padding: '2px 10px', borderRadius: 8}}>{text}</div>
+);
+
 const Member: React.FC<{c: CastIn; i: number; m: CastMember; angle: SetAngle; shot: ShotData; film: FilmData; t: number; rim?: RimSpec}> = ({c, i, m, angle, shot, film, t, rim}) => {
   const [x, y] = c.at;
-  const s = scaleFor(angle, m, y, film.cast.scarf);
+  const above = hAtFor(angle, SCARF_H)(y) <= 0;
+  const s = Math.max(MIN_SCALE, scaleFor(angle, m, y, film.cast.scarf));
   const base = m.roles.some((r) => HERO_ROLES.includes(r)) ? {big: true} : {};
   const acts = shotActs(c.acts ?? [{act: 'idle'}], shot.from);
-  const {pose, dx} = poseAt(acts, t - shot.from, base, c.seed ?? seedOf(c.who, i), {torsoH: m.torso.h, stride: strideAt(m, s)});
+  const rig = {torsoH: m.torso.h, stride: strideAt(m, s)};
+  let pose: PersonPose, dx = 0, bad = above ? `${c.who}: above the horizon` : '';
+  try {
+    ({pose, dx} = poseAt(acts, t - shot.from, base, c.seed ?? seedOf(c.who, i), rig));
+  } catch (e) { // a bad act never fails the frame: base pose and a visible tag naming it
+    pose = base;
+    bad = `${c.who}: ${(/unknown act "([^"]*)"/.exec(String(e)) ?? [])[1] ?? 'bad act'}`;
+  }
   const cx = x + dx;
   return (
     <>
       <Shadow x={cx} y={y} w={m.torso.w * s * 1.4} />
       <Person parts={m} x={cx - (m.torso.w * s) / 2} y={y} s={s} p={pose} rim={rim} />
+      {bad && <Tag x={cx} y={y - personH(m) * s} text={`? ${bad}`} />}
     </>
   );
 };

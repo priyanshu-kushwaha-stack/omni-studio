@@ -35,10 +35,10 @@ const travel = (tau: number, T: number, v: number, acc: number, dec: number) => 
   const u = tau - (T - D);
   return {dist: v * (A / 2 + T - D - A + u - (u * u) / (2 * D)), speed: 1 - u / D};
 };
-const stroll = (t: number, a: Act, stride: number, x0: (total: number, dir: number) => number, acc: number, dec: number): ActOut => {
+const stroll = (t: number, a: Act, stride: number, x0: (total: number, dir: number) => number, acc: number, dec: number, cadence = CADENCE): ActOut => {
   const at = a.at ?? 0, dir = a.dir ?? 1;
   const T = (a.to ?? Infinity) - at;
-  const v = stride * CADENCE;
+  const v = stride * cadence;
   const {dist, speed} = travel(Math.min(T, Math.max(0, t - at)), T, v, acc, dec);
   const total = travel(T, T, v, acc, dec).dist;
   return {x: x0(total, dir) + dir * dist, phase: (dist / stride) * TAU, walk: t < at ? 0 : speed, dir};
@@ -50,10 +50,31 @@ export const walkOut = (t: number, a: Act, stride: number) => stroll(t, a, strid
 // A walk from `from` that starts and stops in place.
 export const walk = (t: number, a: Act, stride: number) => stroll(t, a, stride, () => a.from?.[0] ?? 0, 0.3, 0.35);
 
+// Stops a walk: slows from full stride to standing over 0.3 s from `at` (give `from` = where the walk had got to).
+export const stop = (t: number, a: Act, stride: number) => stroll(t, {...a, to: (a.at ?? 0) + 0.3}, stride, () => a.from?.[0] ?? 0, 0, 0.3);
+// A run: a walk with a faster cadence and a longer stride, leaning into it as it gathers speed.
+const RUN = {stride: 1.35, cadence: 1.7, lean: 8};
+export const run = (t: number, a: Act, stride: number): ActOut => {
+  const w = stroll(t, a, stride * RUN.stride, () => a.from?.[0] ?? 0, 0.3, 0.35, RUN.cadence);
+  return {...w, lean: RUN.lean * (w.walk ?? 0) * (a.dir ?? 1)};
+};
+const reachArm = (a: Act) => ((a.dir ?? 1) > 0 ? {armR: arm(112, 114)} : {armL: arm(112, 114)});
+// One hand out then back over `len` s (a half sine), the other hanging; the prop rides the hand while it is out.
+const HANDOFF_LEN = 1.6;
+export const handOff = (t: number, a: Act): ActOut => {
+  const len = a.to !== undefined ? a.to - (a.at ?? 0) : HANDOFF_LEN;
+  const k = Math.sin(Math.PI * Math.min(1, since(t, a) / len));
+  const out = arm(10 + 80 * k, 14 + 90 * k);
+  return (a.dir ?? 1) > 0 ? {armR: out, armRFront: k > 0.05} : {armL: out};
+};
+const explainArm = (d: number, phase: number) => arm(32 + 9 * Math.sin(TAU * d + phase), 72 + 14 * Math.sin(TAU * d + phase + 0.8));
+const look: ActDef = {fn: (_t, a) => ({pupil: [(a.dir ?? 1) * 0.7, 0], turn: (a.dir ?? 1) * 0.25})};
+
 export const ACTS: Record<string, ActDef> = {
   idle: {fn: () => ({})}, // blink and breath: poseAt always runs them underneath
   react: {fn: (_t, a, c) => faceFor(a.mood ?? 'neutral', c.base), fade: 0.2},
-  look: {fn: (_t, a) => ({pupil: [(a.dir ?? 1) * 0.7, 0], turn: (a.dir ?? 1) * 0.25})},
+  look,
+  lookAt: look,
   turn: {fn: (_t, a) => ({turn: (a.dir ?? 1) * 0.8}), fade: 0.35},
   talk: {fn: talk},
   wave: {fn: wave, len: 2},
@@ -72,4 +93,11 @@ export const ACTS: Record<string, ActDef> = {
   walkIn: {fn: (t, a, c) => walkIn(t, a, c.rig.stride), fade: 0, early: true},
   walkOut: {fn: (t, a, c) => walkOut(t, a, c.rig.stride), fade: 0},
   walk: {fn: (t, a, c) => walk(t, a, c.rig.stride), fade: 0, early: true},
+  stop: {fn: (t, a, c) => stop(t, a, c.rig.stride), fade: 0},
+  run: {fn: (t, a, c) => run(t, a, c.rig.stride), fade: 0, early: true},
+  shout: {fn: (_t, a) => ({mouth: 0.9, open: 1.15, browLift: 24, smile: -0.3, lean: 5 * (a.dir ?? 1), headDip: -4, armL: arm(35, 42), armR: arm(35, 42)})},
+  reach: {fn: (_t, a) => ({...reachArm(a), lean: 4 * (a.dir ?? 1)})},
+  armsCrossed: {fn: () => ({armL: arm(22, 125), armR: arm(22, 125), armRFront: true, headDip: 2})},
+  explain: {fn: (t, a) => ({armL: explainArm(since(t, a), Math.PI), armR: explainArm(since(t, a), 0), headTilt: 2 * Math.sin(TAU * 0.5 * since(t, a))})},
+  handOff: {fn: handOff, len: HANDOFF_LEN, fade: 0.15},
 };
