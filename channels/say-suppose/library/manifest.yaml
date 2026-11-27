@@ -445,7 +445,7 @@ files:
   prompt: set-plate.md
 - path: sets/station/high.png
   sha256: d29b6a64023cf65dfbae583f67c1b4176bf5dfa60e16e23bd11c3d7fe4821566
-  job: unknown
+  job: f256053f-2f7a-45a8-a859-0151269ade72
   prompt: set-plate.md
 - path: sets/station/wide.png
   sha256: 2663d819fa42f144b1bcce5d4a31030498fd1acc67425196e240f18242eeac91
