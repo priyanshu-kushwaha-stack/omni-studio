@@ -50,6 +50,7 @@ NUMBER_WORDS = {
     "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "thirty", "forty",
     "fifty", "sixty", "seventy", "eighty", "ninety", "hundred", "thousand", "million", "billion", "half", "quarter",
 }  # fmt: skip
+HERO = "scarf"  # always available; emit keeps it in the cast
 NO_SET = {"data", "blueprint", "title", "end", "custom"}
 EPS = 0.02
 

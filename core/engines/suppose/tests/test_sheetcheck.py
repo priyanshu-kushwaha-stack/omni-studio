@@ -1,3 +1,4 @@
+import json
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -36,21 +37,25 @@ def test_a_clean_sheet_passes():
     s = sheet(shot(1, 0, 3, type="wide"), shot(2, 3, 6, type="face"))
     fails, warns = chk.check(s, LIB, [])
     assert fails == []
+    assert warns == []
 
 
 def test_unknown_references_fail():
     bad = [
-        shot(1, 0, 3, set="moon"),
-        shot(1, 0, 3, angle="low"),
-        shot(1, 0, 3, type="dolly"),
-        shot(1, 0, 3, cast=[{"who": "bob", "at": [0, 0], "acts": [{"act": "idle"}]}]),
-        shot(1, 0, 3, cast=[{"who": "scarf", "at": [0, 0], "acts": [{"act": "flip"}]}]),
-        shot(1, 0, 3, cast=[{"who": "scarf", "at": [0, 0], "acts": [{"act": "react", "mood": "meh"}]}]),
-        shot(1, 0, 3, custom="S9"),
+        (shot(1, 0, 3, set="moon"), "unknown set"),
+        (shot(1, 0, 3, angle="low"), "no angle"),
+        (shot(1, 0, 3, type="dolly"), "unknown type"),
+        (shot(1, 0, 3, cast=[{"who": "bob", "at": [0, 0], "acts": [{"act": "idle"}]}]), "unknown character"),
+        (shot(1, 0, 3, cast=[{"who": "scarf", "at": [0, 0], "acts": [{"act": "flip"}]}]), "unknown action"),
+        (
+            shot(1, 0, 3, cast=[{"who": "scarf", "at": [0, 0], "acts": [{"act": "react", "mood": "meh"}]}]),
+            "unknown mood",
+        ),
+        (shot(1, 0, 3, custom="S9"), "unknown custom"),
     ]
-    for b in bad:
+    for b, msg in bad:
         fails, _ = chk.check(sheet(b), LIB, [])
-        assert fails, b
+        assert any(msg in f for f in fails), (b, fails)
 
 
 def test_gaps_overlaps_and_no_acting_fail():
@@ -80,3 +85,85 @@ def test_warnings_hold_repeat_readout_and_spoken_number():
 def test_custom_shots_need_no_set_and_known_customs_pass():
     s = sheet({"id": "s1", "from": 0, "to": 3, "type": "custom", "custom": "S2"})
     assert chk.check(s, LIB, [], customs={"S2"})[0] == []
+
+
+def test_any_type_with_a_custom_name_needs_no_set():
+    s = sheet({"id": "s1", "from": 0, "to": 3, "type": "wide", "custom": "S2"})
+    assert chk.check(s, LIB, [], customs={"S2"})[0] == []
+
+
+def test_custom_type_without_a_name_fails():
+    s = sheet({"id": "s1", "from": 0, "to": 3, "type": "custom"})
+    assert any("custom" in f for f in chk.check(s, LIB, [])[0])
+
+
+def test_structural_fails_never_crash():
+    ok = shot(1, 0, 3)
+
+    def only(s, text):
+        fails, warns = chk.check(s, LIB, [])
+        assert fails
+        assert any(text in f for f in fails), (text, fails)
+        assert warns == []
+
+    for key in ("film", "fps", "size"):
+        s = sheet(ok)
+        del s[key]
+        only(s, key)
+    only(sheet(), "shots")
+    for key in ("id", "from", "to"):
+        bad = {k: v for k, v in ok.items() if k != key}
+        only(sheet(bad), key)
+    only(sheet(shot(1, 3, 3)), "s1")
+    only(sheet(shot(1, 0, 3, lines=[{"at": 1.0}])), "who")
+    only(sheet(shot(1, 3, 6), shot(2, 0, 3)), "order")
+
+
+def test_emit_writes_exactly_the_key_set(tmp_path):
+    lib = SimpleNamespace(
+        cast={"scarf": {}, "kenji": {}, "pal": {"roles": ["crowd"]}},
+        sets=LIB.sets,
+        props=LIB.props,
+    )
+    s = sheet(shot(1, 0, 3))
+    del s["beats"]
+    out = chk.emit(s, lib, tmp_path / "film.json")
+    data = json.loads(out.read_text())
+    assert set(data) == {"film", "fps", "size", "beats", "shots", "audio", "duration", "cast", "crowd", "sets", "props"}
+    assert data["beats"] == []
+    assert set(data["crowd"]) == {"pal"}
+    assert set(data["cast"]) == {"scarf"}
+
+
+def test_a_data_shot_with_no_cast_passes():
+    s = sheet({"id": "s1", "from": 0, "to": 3, "type": "data"})
+    assert chk.check(s, LIB, []) == ([], [])
+
+
+def test_more_than_four_in_focus_warns():
+    cast = [{"who": "scarf", "at": [0, 0], "acts": [{"act": "idle"}]} for _ in range(5)]
+    warns = chk.check(sheet(shot(1, 0, 3, cast=cast)), LIB, [])[1]
+    assert any("more than four" in w for w in warns)
+
+
+def test_shot_mix_warns_on_a_long_all_wide_sheet():
+    shots = [shot(i, i * 10, i * 10 + 10, type="wide") for i in range(13)]
+    shots = [s | {"camera": {"move": "drift"}} for s in shots]
+    warns = chk.check(sheet(*shots), LIB, [])[1]
+    assert any("shot mix" in w for w in warns)
+
+
+def test_hyphenated_spoken_number_counts():
+    words = [{"word": " twenty-five", "start": 6.1, "end": 6.5}]
+    s = sheet(shot(1, 0, 4), shot(2, 4, 8, type="face"))
+    assert any("twenty" in w for w in chk.check(s, LIB, words)[1])
+
+
+def test_cli_reports_missing_and_malformed_inputs(tmp_path, capsys):
+    assert chk.main([str(tmp_path)]) == 2
+    assert "shots.yaml" in capsys.readouterr().err
+    (tmp_path / "shots.yaml").write_text("film: t\n")
+    (tmp_path / "audio").mkdir()
+    (tmp_path / "audio" / "narration.words.json").write_text("{nope")
+    assert chk.main([str(tmp_path)]) == 2
+    assert "narration.words.json" in capsys.readouterr().err

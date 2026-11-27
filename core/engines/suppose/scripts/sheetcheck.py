@@ -10,7 +10,9 @@ import re
 import sys
 from pathlib import Path
 
-from sheet import ACTS, EPS, MIX, MOODS, MOVES, NO_SET, NUMBER_WORDS, SHOT_TYPES, load_sheet
+import yaml
+
+from sheet import ACTS, EPS, HERO, MIX, MOODS, MOVES, NO_SET, NUMBER_WORDS, SHOT_TYPES, load_sheet
 
 STANDALONE = {"data", "blueprint", "title", "end"}
 
@@ -19,9 +21,12 @@ def _refs(s: dict, lib, customs: set[str]) -> list[str]:
     sid, out = s.get("id", "?"), []
     if s.get("type") not in SHOT_TYPES:
         out.append(f"{sid}: unknown type {s.get('type')!r}")
-    if s.get("custom") and s["custom"] not in customs:
-        out.append(f"{sid}: unknown custom shot {s['custom']!r}")
-    if s.get("type") not in NO_SET:
+    custom = s.get("custom")
+    if custom and custom not in customs:
+        out.append(f"{sid}: unknown custom shot {custom!r}")
+    if s.get("type") == "custom" and not custom:
+        out.append(f"{sid}: type custom needs a custom: name")
+    if s.get("type") not in NO_SET and not custom:
         st = lib.sets.get(s.get("set"))
         if st is None:
             out.append(f"{sid}: unknown set {s.get('set')!r}")
@@ -101,9 +106,9 @@ def _warns(sheet: dict, words: list[dict]) -> list[str]:
     for s in shots:
         out += _shot_warns(s, sheet.get("beats", []))
     out += [
-        f"{a['id']}, {b['id']}: same type {a['type']} twice in a row (W1)"
+        f"{a['id']}, {b['id']}: same type {a.get('type')} twice in a row (W1)"
         for a, b in zip(shots, shots[1:], strict=False)
-        if a["type"] == b["type"] and a["type"] != "custom"
+        if a.get("type") == b.get("type") and a.get("type") != "custom"
     ]
     return out + _mix_warns(shots) + _number_warns(shots, words)
 
@@ -114,7 +119,7 @@ def _mix_warns(shots: list[dict]) -> list[str]:
         return []
     out = []
     for t, share in MIX.items():
-        have = sum(s["to"] - s["from"] for s in shots if s["type"] == t) / total
+        have = sum(s["to"] - s["from"] for s in shots if s.get("type") == t) / total
         if abs(have - share) > max(0.06, share * 0.6):
             out.append(f"shot mix: {t} is {have:.0%} of the film, aim for about {share:.0%} (W1)")
     return out
@@ -125,27 +130,65 @@ def _number_warns(shots: list[dict], words: list[dict]) -> list[str]:
     shown += [(s["readout"]["at"] - 0.6, s["to"]) for s in shots if s.get("readout")]
     out = []
     for w in words:
-        token = re.sub(r"[^a-z]", "", w["word"].lower())
-        if token in NUMBER_WORDS - {"one", "half", "quarter"} and not any(a <= w["start"] <= b for a, b in shown):
+        tokens = [re.sub(r"[^a-z]", "", part) for part in w["word"].lower().split("-")]
+        token = next((x for x in tokens if x in NUMBER_WORDS - {"one", "half", "quarter"}), None)
+        if token and not any(a <= w["start"] <= b for a, b in shown):
             out.append(f"spoken number '{token}' at {w['start']:.1f} s is not on screen (W5)")
     return out
 
 
-def check(sheet: dict, lib, words: list[dict], customs: set[str] = frozenset()) -> tuple[list[str], list[str]]:
-    shots = sheet.get("shots", [])
+def _shot_struct(i: int, s: dict) -> list[str]:
+    label = f"shot {i + 1} ({s['id']})" if s.get("id") else f"shot {i + 1}"
+    out = [f"{label}: missing {k}" for k in ("id", "from", "to") if k not in s]
+    if "from" in s and "to" in s and s["from"] >= s["to"]:
+        out.append(f"{label}: from {s['from']} is not before to {s['to']}")
+    out += [f"{label}: line {j + 1} has no who" for j, ln in enumerate(s.get("lines", [])) if "who" not in ln]
+    return out
+
+
+def _structure(sheet: dict) -> list[str]:
+    out = [f"sheet is missing {k}" for k in ("film", "fps", "size") if k not in sheet]
+    shots = sheet.get("shots")
+    if not shots:
+        return [*out, "sheet has no shots"]
+    for i, s in enumerate(shots):
+        out += _shot_struct(i, s)
+    if out:
+        return out
+    for i, (a, b) in enumerate(zip(shots, shots[1:], strict=False)):
+        if b["from"] < a["from"]:
+            out.append(f"shots out of time order: shot {i + 2} ({b['id']}) starts before shot {i + 1} ({a['id']})")
+    return out
+
+
+def check_all(sheet: dict, lib, words: list[dict], customs: set[str] = frozenset()) -> tuple[list[str], list[str]]:
+    """FAILs and warnings; warnings are computed whenever the sheet is structurally sound."""
+    if fails := _structure(sheet):
+        return fails, []
+    shots = sheet["shots"]
     fails = _timeline(shots)
     for s in shots:
         fails += _refs(s, lib, set(customs)) + _cast(s, lib)
-    return fails, _warns(sheet, words) if not fails else []
+    return fails, _warns(sheet, words)
+
+
+def check(sheet: dict, lib, words: list[dict], customs: set[str] = frozenset()) -> tuple[list[str], list[str]]:
+    fails, warns = check_all(sheet, lib, words, customs)
+    return fails, [] if fails else warns
 
 
 def emit(sheet: dict, lib, out: Path) -> Path:
-    used_sets = {s["set"] for s in sheet["shots"] if s.get("set")}
-    used_cast = {c["who"] for s in sheet["shots"] for c in s.get("cast", [])} | {"scarf"}
+    shots = sheet["shots"]
+    used_sets = {s["set"] for s in shots if s.get("set")}
+    used_cast = {c["who"] for s in shots for c in s.get("cast", [])} | {HERO}
     data = {
-        **{k: sheet[k] for k in ("film", "fps", "size", "beats", "shots")},
+        "film": sheet.get("film", ""),
+        "fps": sheet.get("fps", 30),
+        "size": sheet.get("size", [1280, 720]),
+        "beats": sheet.get("beats", []),
+        "shots": shots,
         "audio": sheet.get("audio", "audio/mix.wav"),
-        "duration": max(s["to"] for s in sheet["shots"]),
+        "duration": max(s["to"] for s in shots),
         "cast": {k: v for k, v in lib.cast.items() if k in used_cast},
         "crowd": {k: v for k, v in lib.cast.items() if "crowd" in v.get("roles", [])},
         "sets": {k: v for k, v in lib.sets.items() if k in used_sets},
@@ -162,17 +205,36 @@ def customs_in(video: Path) -> set[str]:
     return names
 
 
+def _load_inputs(video: Path) -> tuple[dict, list[dict]]:
+    sheet = load_sheet(video / "shots.yaml")
+    if not isinstance(sheet, dict):
+        raise ValueError("shots.yaml is not a mapping")
+    words_path = video / "audio" / "narration.words.json"
+    words = json.loads(words_path.read_text(encoding="utf-8")) if words_path.is_file() else []
+    return sheet, words
+
+
 def main(argv: list[str]) -> int:
+    video = Path(argv[0]).resolve()
+    try:
+        sheet, words = _load_inputs(video)
+    except FileNotFoundError as e:
+        print(f"sheetcheck: cannot read {Path(e.filename).name}: not found", file=sys.stderr)
+        return 2
+    except json.JSONDecodeError as e:
+        print(f"sheetcheck: narration.words.json is malformed: {e}", file=sys.stderr)
+        return 2
+    except (ValueError, yaml.YAMLError) as e:
+        print(f"sheetcheck: shots.yaml is unreadable: {' '.join(str(e).split())}", file=sys.stderr)
+        return 2
     from library import Library
 
-    video = Path(argv[0]).resolve()
-    sheet = load_sheet(video / "shots.yaml")
-    words_path = video / "audio" / "narration.words.json"
-    words = json.loads(words_path.read_text()) if words_path.is_file() else []
     lib = Library.for_channel("say-suppose")
-    fails, warns = check(sheet, lib, words, customs_in(video))
-    for line in [*(f"FAIL {f}" for f in fails), *(f"WARN {w}" for w in warns)]:
+    fails, warns = check_all(sheet, lib, words, customs_in(video))
+    for line in [*(f"FAIL {f}" for f in fails), *(f"WARN {w}" for w in ([] if fails else warns))]:
         print(line)
+    if fails and warns:
+        print(f"{len(warns)} warning(s) hidden until the FAILs are fixed")
     if not fails and "--emit" in argv:
         print(emit(sheet, lib, video / "film.json"))
     return 1 if fails else 0
