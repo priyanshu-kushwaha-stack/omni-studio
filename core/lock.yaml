@@ -62,6 +62,11 @@ pilot_remotion:
   three: 0.169.0
   react_three_fiber: 8.17.10
   dev: [typescript 5.6.3, "@types/react 18.3.12", "@types/three 0.169.0"]
+suppose_kit:
+  # core/engines/suppose/kit (2026-11-27): the Say Suppose film kit. Exact versions; pnpm-lock.yaml pins the tree.
+  remotion: 4.0.484          # remotion, @remotion/cli, @remotion/google-fonts
+  react: 18.3.1
+  dev: [typescript 5.6.3, "@types/react 18.3.12", "@types/node 22.10.2", vitest 2.1.8]
 yt_dlp:
   # Used once, 2026-11-06, for the Say Suppose reference study; YouTube blocked it and the owner supplied the files.
   # Installed with uv into the git-ignored .tools/yt-dlp venv, outside the studio's two venvs.
