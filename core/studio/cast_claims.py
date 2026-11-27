@@ -24,6 +24,17 @@ def _norm(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(text).lower()).strip()
 
 
+def covers(claim: str, row: str) -> bool:
+    """A ledger row covers a cast-pass claim when it holds at least 80% of the claim's words (whole words, not
+    substrings). Claims under three words must equal the row, so "speed" is never covered by any row about speed."""
+    c, r = claim.split(), row.split()
+    if not c or not r:
+        return False
+    if len(c) < 3:
+        return c == r
+    return len(set(c) & set(r)) >= 0.8 * len(set(c))
+
+
 def _fail(*problems: str) -> dict:
     return {"check": NAME, "ok": False, "problems": list(problems)}
 
@@ -44,7 +55,7 @@ def check(folder: Path) -> dict:
     problems = []
     for entry in wanted:
         text = _norm(entry.get("claim", "") if isinstance(entry, dict) else entry)
-        if not text or not any(text in h or (h and h in text) for h in have):
+        if not text or not any(covers(text, h) for h in have):
             n = entry.get("n", "?") if isinstance(entry, dict) else "?"
             problems.append(f"{cast_pass.name}: sentence {n} claim has no row in {ledger.name}: {str(entry)[:90]}")
     return {"check": NAME, "ok": not problems, "problems": problems}

@@ -103,3 +103,11 @@ def test_timewarp_cli_writes_film_luc_json(tmp_path):
     assert out == video / "film-luc.json"
     assert json.loads(out.read_text())["shots"][0]["to"] == pytest.approx(4.0)
     assert json.loads((video / "film.json").read_text())["duration"] == 6.0
+
+
+def test_warp_film_moves_the_shake_impact():
+    old = {"cues": [{"line": "a", "start": 0.4, "end": 3.5}]}
+    new = {"cues": [{"line": "a", "start": 0.4, "end": 4.0}]}
+    k = timewarp.knots(old, new, old_end=5.0)
+    film = {"duration": 5.0, "beats": [], "shots": [{"from": 0, "to": 5.0, "camera": {"move": "shake", "at": 3.5}}]}
+    assert timewarp.warp_film(film, k)["shots"][0]["camera"]["at"] == 4.0

@@ -48,6 +48,8 @@ def _shot_times(shot: dict, w) -> None:
                     item[key] = round(w(item[key]), 4)
     if shot.get("readout"):
         shot["readout"]["at"] = round(w(shot["readout"]["at"]), 4)
+    if "at" in shot.get("camera", {}):
+        shot["camera"]["at"] = round(w(shot["camera"]["at"]), 4)
 
 
 def warp_film(film: dict, k: tuple[list[float], list[float]]) -> dict:

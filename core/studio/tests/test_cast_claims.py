@@ -55,3 +55,15 @@ def test_no_ledger_fails_clearly(tmp_path):
 def test_empty_claims_list_fails(tmp_path):
     out = cast_claims.check(video(tmp_path, []))
     assert not out["ok"] and "no claims" in out["problems"][0]
+
+
+def test_covers_needs_whole_words_and_most_of_the_claim():
+    from studio.cast_claims import covers
+
+    assert not covers("speed", "the speed of light is fast")
+    assert not covers("light is fast", "ten")
+    assert covers(
+        "light travels three hundred thousand km a second", "light travels three hundred thousand km a second in vacuum"
+    )
+    assert not covers("light travels three hundred thousand km a second", "sound travels three hundred metres a second")
+    assert covers("ten", "ten")
