@@ -7,7 +7,8 @@ risk_class: B                   # A | B | C. Original code-drawn art and a prese
 made_for_kids: false
 # Format name -> OpenMontage pipeline in core/openmontage/pipeline_defs/.
 formats:
-  story: studio-whatif            # No length cap (style.md), 16:9, five owner gates (2026-11-10). Shorts get their own pipeline later (style.md)
+  story: studio-whatif            # v1, archived (RESTART.md); tests read it. Five owner gates (2026-11-10)
+  film: studio-suppose            # the film kit (spec 2026-11-27): five owner gates, about 7 minutes
 playbook: say-suppose              # Loads by name through styles/custom/say-suppose.yaml.
 voices: voices.yaml             # Relative to this folder.
 music:
@@ -20,6 +21,7 @@ review_level: full              # full | standard | light. Recorded only: gates 
 upload_token_path: ~/.config/omni-studio/youtube/say-suppose.token   # The owner creates the OAuth token before the first real upload.
 loudness:                       # Format name -> mix targets, checked before the edit and final-watch gates.
   story: {integrated_lufs: -14, tolerance_lu: 1, true_peak_dbtp_max: -1, lra_lu_max: 11}
+  film: {integrated_lufs: -16, tolerance_lu: 1, true_peak_dbtp_max: -1.5, lra_lu_max: 11}
 upload:                         # omni upload defaults. Privacy is always private.
   contains_synthetic_media: null  # true | false. null: every video answers it in its upload.yaml.
   category_id: "27"

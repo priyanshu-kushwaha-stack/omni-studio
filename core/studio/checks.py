@@ -35,6 +35,7 @@ ROOT = Path(__file__).resolve().parents[2]
 ENGINE = ROOT / "core" / "engines" / "pou" / "scripts"
 KNOWN = ("claims", "no_quiz_boards", "loudness", "clicks", "opening", "similarity", "upload_request")
 MEDIA_CHECKS = {"loudness", "clicks", "opening", "similarity"}
+WORD_NUMBER_PIPELINES = ("studio-whatif", "studio-suppose")
 PUBLISH_STAGE = "publish_prep"
 WATCH_STAGE = "final_watch"
 LEGACY_UPLOAD_STAGE = "upload"  # media proof stage name for `omni approve-upload` (videos with no pipeline)
@@ -121,8 +122,9 @@ def run_check(
     if name == "claims":
         from studio import claims
 
-        # What-if stories invent their premise numbers ("ten seconds", "day twelve"): only digits need a source.
-        return claims.check(folder, number_words=pipeline != "studio-whatif").as_dict()
+        # What-if stories and Say Suppose films invent their premise numbers ("ten seconds", "day twelve"), and films
+        # write every number in words (scriptcheck.py): only digits need a source.
+        return claims.check(folder, number_words=pipeline not in WORD_NUMBER_PIPELINES).as_dict()
     if name == "no_quiz_boards":
         script = folder / "script.md"
         if not script.is_file():

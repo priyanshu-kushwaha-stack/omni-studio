@@ -62,7 +62,7 @@ def test_studio_whatif_is_code_drawn_with_no_lip_sync_or_boil():
 def test_say_suppose_uses_studio_whatif():
     channel = channels.load_channel("say-suppose")
     config = channel.config
-    assert config.formats == {"story": "studio-whatif"}
+    assert config.formats == {"story": "studio-whatif", "film": "studio-suppose"}  # film kit, 2026-11-27
     assert config.cadence == "daily" and config.status == "draft"
     # Owner, 2026-11-07: "Set the channel budget so it allows narration".
     assert config.budget_usd_per_video == 5
