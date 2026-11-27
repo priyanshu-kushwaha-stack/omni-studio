@@ -16,8 +16,18 @@ class SizeMismatch(ValueError):
     pass
 
 
+def load_rgb(p: Path) -> Image.Image:
+    """RGB image; transparency is composited onto neutral mid-grey so it never reads as black."""
+    im = Image.open(p)
+    if im.mode in ("RGBA", "LA", "PA") or (im.mode == "P" and "transparency" in im.info):
+        im = im.convert("RGBA")
+        base = Image.new("RGBA", im.size, (128, 128, 128, 255))
+        return Image.alpha_composite(base, im).convert("RGB")
+    return im.convert("RGB")
+
+
 def _load(p: Path) -> np.ndarray:
-    return np.asarray(Image.open(p).convert("RGB"), dtype=np.float64)
+    return np.asarray(load_rgb(p), dtype=np.float64)
 
 
 def mean_abs_diff(a: Path, b: Path) -> float:

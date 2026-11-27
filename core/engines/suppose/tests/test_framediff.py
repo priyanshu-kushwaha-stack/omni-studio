@@ -40,3 +40,9 @@ def test_cli_refuses_mismatched_sizes(tmp_path, capsys):
     assert "10x10" in capsys.readouterr().err
     with pytest.raises(framediff.SizeMismatch):
         framediff.mean_abs_diff(Path(a) / "f1.png", Path(b) / "f1.png")
+
+
+def test_transparent_pixels_composite_onto_mid_grey(tmp_path):
+    Image.fromarray(np.zeros((4, 4, 4), np.uint8)).save(tmp_path / "t.png")  # RGBA, fully transparent black
+    Image.fromarray(np.full((4, 4, 3), 128, np.uint8)).save(tmp_path / "g.png")
+    assert framediff.mean_abs_diff(tmp_path / "t.png", tmp_path / "g.png") == 0

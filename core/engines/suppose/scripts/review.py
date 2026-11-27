@@ -17,8 +17,8 @@ import sys
 from pathlib import Path
 
 import yaml
-from PIL import Image
 
+import framediff
 import scriptcheck
 
 STAGES = ("proposal", "story_script", "final_edit", "final_watch", "publish_prep")
@@ -85,7 +85,7 @@ def _list(items: list, cls: str = "") -> str:
 
 
 def _data_uri(p: Path, width: int = 360) -> str:
-    im = Image.open(p).convert("RGB")
+    im = framediff.load_rgb(p)
     im = im.resize((width, max(1, round(im.height * width / im.width))))
     buf = io.BytesIO()
     im.save(buf, "JPEG", quality=70)
@@ -106,26 +106,33 @@ def _cut(video: Path) -> str:
 def _cue_times(video: Path) -> dict[int, float]:
     for name in ("cues_luc.json", "cues_b.json"):
         data = _json(video / "audio" / name)
-        if data:
-            out = {}
-            for c in data.get("cues", []):
-                m = re.match(r"(\d+)", str(c.get("line", "")))
-                if m:
-                    out[int(m.group(1))] = float(c.get("start", 0))
-            return out
+        if not isinstance(data, dict):
+            continue
+        out = {}
+        for c in data.get("cues") or []:
+            m = re.match(r"(\d+)", str(c.get("line", ""))) if isinstance(c, dict) else None
+            if m:
+                out[int(m.group(1))] = float(c.get("start", 0))
+        return out
     return {}
 
 
-def _script_lines(video: Path) -> str:
+def _cast_rows(video: Path) -> list[str]:
     cp = _yaml(video / "cast-pass.yaml")
     times = _cue_times(video)
-    if isinstance(cp, dict) and cp.get("lines"):
-        rows = []
-        for ln in cp["lines"]:
-            t = times.get(int(ln.get("n", 0)))
-            stamp = f'<span class="t">{fmt_time(t)}</span>' if t is not None else ""
-            who = esc(ln.get("speaker", ""))
-            rows.append(f"{stamp}<b>{who}</b> {esc(ln.get('text', ''))}")
+    rows = []
+    for ln in (cp.get("lines") if isinstance(cp, dict) else None) or []:
+        if not isinstance(ln, dict) or not isinstance(ln.get("n"), int):
+            continue
+        t = times.get(ln["n"])
+        stamp = f'<span class="t">{fmt_time(t)}</span>' if t is not None else ""
+        rows.append(f"{stamp}<b>{esc(ln.get('speaker', ''))}</b> {esc(ln.get('text', ''))}")
+    return rows
+
+
+def _script_lines(video: Path) -> str:
+    rows = _cast_rows(video)
+    if rows:
         return _list(rows)
     p = video / "script.md"
     return f"<p>{esc(scriptcheck.extract(p.read_text(encoding='utf-8')))}</p>" if p.is_file() else ""
@@ -145,17 +152,15 @@ def _script_metrics(video: Path) -> str:
     return f"<table>{rows}</table>" + _list(notes)
 
 
-def _sheet_warns(video: Path) -> str:
+def _sheet_warns(video: Path, channel: str) -> str:
     if not (video / "shots.yaml").is_file():
         return ""
     import sheetcheck
     from library import Library
 
     try:
-        sheet, words = sheetcheck._load_inputs(video)
-        fails, warns = sheetcheck.check_all(
-            sheet, Library.for_channel("say-suppose"), words, sheetcheck.customs_in(video)
-        )
+        sheet, words = sheetcheck.load_inputs(video)
+        fails, warns = sheetcheck.check_all(sheet, Library.for_channel(channel), words, sheetcheck.customs_in(video))
     except Exception as e:  # a half-written sheet must not stop the page
         return f'<p class="bad">shots.yaml could not be checked: {esc(" ".join(str(e).split()))}</p>'
     items = [f'<span class="bad">FAIL {esc(f)}</span>' for f in fails] + [
@@ -164,35 +169,25 @@ def _sheet_warns(video: Path) -> str:
     return _list(items) or '<p class="mut">No sheet warnings.</p>'
 
 
-def _find(d, key: str):
-    if isinstance(d, dict):
-        if key in d:
-            return d[key]
-        for v in d.values():
-            r = _find(v, key)
-            if r is not None:
-                return r
-    elif isinstance(d, list):
-        for v in d:
-            r = _find(v, key)
-            if r is not None:
-                return r
-    return None
-
-
 def _qc(video: Path, stage: str) -> str:
+    """`omni qc` writes {checks: [{check: "loudness", measured: {integrated_lufs, true_peak_dbtp}},
+    {check: "clicks", problems: [...], in_word_bursts}]} (core/studio/checks.py, qc/loudness.py, qc/clicks.py)."""
     data = _json(video / "qc" / f"{stage}.json")
-    if data is None:
-        return ""
+    checks = (
+        {c.get("check"): c for c in (data or {}).get("checks", []) if isinstance(c, dict)}
+        if isinstance(data, dict)
+        else {}
+    )
+    measured = (checks.get("loudness") or {}).get("measured") or {}
     rows = []
-    for label, key in (
-        ("Integrated loudness (LUFS)", "integrated_lufs"),
-        ("True peak (dBTP)", "true_peak_dbtp"),
-        ("Clicks", "clicks"),
-    ):
-        v = _find(data, key)
-        if v is not None:
-            rows.append(f"<tr><th>{esc(label)}</th><td>{esc(len(v) if isinstance(v, list) else v)}</td></tr>")
+    for label, key in (("Integrated loudness (LUFS)", "integrated_lufs"), ("True peak (dBTP)", "true_peak_dbtp")):
+        if measured.get(key) is not None:
+            rows.append(f"<tr><th>{esc(label)}</th><td>{esc(measured[key])}</td></tr>")
+    clicks = checks.get("clicks")
+    if clicks:
+        found = clicks.get("problems") or []
+        rows.append(f"<tr><th>Clicks</th><td>{esc(len(found))}</td></tr>")
+        rows += [f'<tr><td colspan="2" class="bad">{esc(p)}</td></tr>' for p in found]
     return f"<table>{''.join(rows)}</table>" if rows else ""
 
 
@@ -213,15 +208,15 @@ def _notes(video: Path) -> str:
     return _list([f'<label><input type="checkbox"> {esc(i)}</label>' for i in items if i], "todo")
 
 
-def _benchmarks(video: Path) -> list[Path]:
+def _benchmarks(video: Path, channel: str) -> list[Path]:
     for parent in [video, *video.parents]:
-        d = parent / "channels" / "say-suppose" / "analytics" / "benchmark-thumbs"
+        d = parent / "channels" / channel / "analytics" / "benchmark-thumbs"
         if d.is_dir():
             return sorted(d.glob("*.png")) + sorted(d.glob("*.jpg"))
     return []
 
 
-def _feed(video: Path) -> str:
+def _feed(video: Path, channel: str) -> str:
     ours = sorted((video / "art").glob("thumb_*.png")) if (video / "art").is_dir() else []
     if not ours:
         return ""
@@ -231,30 +226,80 @@ def _feed(video: Path) -> str:
     ]
     figs += [
         f'<figure><img src="{_data_uri(p)}" alt="benchmark"><figcaption class="mut">benchmark</figcaption></figure>'
-        for p in _benchmarks(video)
+        for p in _benchmarks(video, channel)
     ]
     return f'<div class="feed">{"".join(figs)}</div>'
 
 
+LABELS = ("TITLE", "ALT TITLES", "SYNOPSIS", "CHARACTERS", "RULE", "OUTLINE", "PLANTED", "CHOICE", "FACTS")
+_LABEL = re.compile(r"^(" + "|".join(LABELS) + r"):[ \t]*(.*)$")
+
+
+def parse_outline(text: str) -> dict[str, str]:
+    """Split the raw answer to channels/say-suppose/prompts/outline.md on its labelled blocks."""
+    blocks: dict[str, list[str]] = {}
+    cur = None
+    for line in text.splitlines():
+        m = _LABEL.match(line)
+        if m:
+            cur = m.group(1)
+            blocks.setdefault(cur, []).append(m.group(2))
+        elif cur:
+            blocks[cur].append(line)
+    return {k: "\n".join(v).strip() for k, v in blocks.items() if "\n".join(v).strip()}
+
+
+def _items(block: str) -> list[str]:
+    return [re.sub(r"^(?:[-*]|\d+[.)])\s+", "", ln.strip()) for ln in block.splitlines() if ln.strip()]
+
+
+def _characters(block: str) -> str:
+    rows = []
+    for ln in block.splitlines():
+        if "|" in ln:
+            cells = [c.strip() for c in ln.split("|")]
+            cells += [""] * (4 - len(cells))
+            rows.append("<tr>" + "".join(f"<td>{esc(c)}</td>" for c in cells[:3] + [" | ".join(cells[3:])]) + "</tr>")
+    head = "".join(f"<th>{h}</th>" for h in ("Role", "Id", "Signature", "Headwear"))
+    return f"<table><tr>{head}</tr>{''.join(rows)}</table>" if rows else ""
+
+
+def _outline_list(block: str) -> str:
+    steps: list[tuple[str, list[str]]] = []
+    for ln in block.splitlines():
+        sub = re.match(r"\s*(\d+\.\d+)[.)]?\s+(.*)", ln)
+        top = re.match(r"\s*(\d+)[.)]?\s+(.*)", ln)
+        if sub and steps:
+            steps[-1][1].append(f"{esc(sub.group(1))} {esc(sub.group(2))}")
+        elif top:
+            steps.append((f"{esc(top.group(1))} {esc(top.group(2))}", []))
+        elif ln.strip() and steps:
+            steps[-1] = (steps[-1][0] + " " + esc(ln.strip()), steps[-1][1])
+    return _list([head + (_list(subs) if subs else "") for head, subs in steps])
+
+
+def _read_outline(video: Path) -> dict[str, str]:
+    p = video / "outline.md"
+    return parse_outline(p.read_text(encoding="utf-8")) if p.is_file() else {}
+
+
 def _packaging(video: Path) -> str:
-    pk = _yaml(video / "packaging.yaml") or {}
-    if not isinstance(pk, dict):
-        pk = {}
+    ob = _read_outline(video)
     parts = []
-    if pk.get("title"):
-        parts.append(f"<p><b>{esc(pk['title'])}</b></p>")
-    for key, label in (("alt_titles", "Alternative titles"), ("characters", "Characters"), ("outline", "Outline")):
-        v = pk.get(key)
-        if v:
-            items = v if isinstance(v, list) else [v]
-            parts.append(
-                f"<h3>{esc(label)}</h3>"
-                + _list(
-                    [esc(i if not isinstance(i, dict) else ", ".join(f"{k}: {x}" for k, x in i.items())) for i in items]
-                )
-            )
-    if pk.get("synopsis"):
-        parts.append(f"<h3>Synopsis</h3><p>{esc(pk['synopsis'])}</p>")
+    if ob.get("TITLE"):
+        parts.append(f"<p><b>{esc(ob['TITLE'])}</b></p>")
+    for key, label, render in (
+        ("ALT TITLES", "Alternative titles", lambda b: _list([esc(i) for i in _items(b)])),
+        ("SYNOPSIS", "Synopsis", lambda b: f"<p>{esc(b)}</p>"),
+        ("CHARACTERS", "Characters", _characters),
+        ("RULE", "Rule", lambda b: f"<p>{esc(b)}</p>"),
+        ("OUTLINE", "Outline", _outline_list),
+        ("PLANTED", "Planted", lambda b: f"<p>{esc(b)}</p>"),
+        ("CHOICE", "Choice", lambda b: f"<p>{esc(b)}</p>"),
+        ("FACTS", "Facts", lambda b: _list([esc(i) for i in _items(b)])),
+    ):
+        if ob.get(key):
+            parts.append(f"<h3>{esc(label)}</h3>{render(ob[key])}")
     art = _yaml(video / "art.yaml")
     if isinstance(art, dict):
         items = art.get("items") or art.get("art") or []
@@ -270,26 +315,37 @@ def _packaging(video: Path) -> str:
 
 
 def _title(video: Path) -> str:
-    pk = _yaml(video / "packaging.yaml")
-    if isinstance(pk, dict) and pk.get("title"):
-        return str(pk["title"])
+    if _read_outline(video).get("TITLE"):
+        return _read_outline(video)["TITLE"].splitlines()[0]
     p = video / "script.md"
     m = re.match(r"\s*TOPIC:\s*(.+?)\s*SCRIPT:", p.read_text(encoding="utf-8")) if p.is_file() else None
     return m.group(1) if m else video.name
+
+
+def channel_of(video: Path) -> str:
+    """The slug in `channels/<slug>/videos/<id>`; say-suppose when the path does not say."""
+    parts = Path(video).resolve().parts
+    for i in range(len(parts) - 3):
+        if parts[i] == "channels" and parts[i + 2] == "videos":
+            return parts[i + 1]
+    return "say-suppose"
+
+
+RENDER_TIME = "render time per film minute: not available (studio.jobs report has no JSON output)"
 
 
 def build(video: Path, stage: str) -> Path:
     video = Path(video)
     if stage not in STAGES:
         raise ValueError(f"unknown stage {stage!r}; expected one of {', '.join(STAGES)}")
-    title = _title(video)
+    title, channel = _title(video), channel_of(video)
     parts = [_section("The cut", _cut(video)), _section("Script", _script_lines(video))]
     if stage == "proposal":
-        parts += [_section("Packaging", _packaging(video)), _section("Thumbnail feed", _feed(video))]
+        parts += [_section("Packaging", _packaging(video)), _section("Thumbnail feed", _feed(video, channel))]
     parts += [
         _section("Script metrics", _script_metrics(video)),
-        _section("Sheet warnings", _sheet_warns(video)),
-        _section("QC", _qc(video, stage)),
+        _section("Sheet warnings", _sheet_warns(video, channel)),
+        _section("QC", _qc(video, stage) + f'<p class="mut">{esc(RENDER_TIME)}</p>'),
         _checklists(),
         _section("Owner notes", _notes(video)),
     ]

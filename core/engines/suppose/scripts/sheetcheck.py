@@ -205,7 +205,7 @@ def customs_in(video: Path) -> set[str]:
     return names
 
 
-def _load_inputs(video: Path) -> tuple[dict, list[dict]]:
+def load_inputs(video: Path) -> tuple[dict, list[dict]]:
     sheet = load_sheet(video / "shots.yaml")
     if not isinstance(sheet, dict):
         raise ValueError("shots.yaml is not a mapping")
@@ -217,7 +217,7 @@ def _load_inputs(video: Path) -> tuple[dict, list[dict]]:
 def main(argv: list[str]) -> int:
     video = Path(argv[0]).resolve()
     try:
-        sheet, words = _load_inputs(video)
+        sheet, words = load_inputs(video)
     except FileNotFoundError as e:
         print(f"sheetcheck: cannot read {Path(e.filename).name}: not found", file=sys.stderr)
         return 2
