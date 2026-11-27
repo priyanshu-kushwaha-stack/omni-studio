@@ -22,3 +22,11 @@ The plates come from local FLUX: `mflux-generate-flux2 --model flux2-klein-4b --
 - `plate2.png`, seed 72: "Close view of an empty Tokyo station concourse background, a large glowing amber departures board and yellow exit sign on the wall, shallow depth of field, soft bokeh lights, painterly illustrated animation background, gouache texture, warm light, no people, empty"
 
 Plate 1 shows JR logos. Paint them out (or drop "JR" from the prompt) before anything ships.
+
+## Cut-out pass (`CutoutC`, 2026-11-27)
+
+The owner's call: paint the set and character parts with Higgsfield, then animate them ourselves. GPT Image 2.6 (high, 2K,
+16:9), 8 credits, owner-approved. Jobs: set wide `2ecb2081`, set close `dd9ba780`, Scarf parts `54b08435` (Scarf
+reference media `fbbbe6fa-44a1-46b6-a5dd-06e1a045da3b`), man parts `fc31b762`. `../cutout/slice.py <sheet> <out>
+<prefix>` cuts a sheet into `public/cut/<prefix>_<n>.png`. Joints and timing are in `src/CutoutC.tsx`, and the rig is
+in `src/Puppet.tsx`.
