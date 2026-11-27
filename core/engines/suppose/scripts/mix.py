@@ -1,0 +1,105 @@
+"""Mix a Say Suppose film: narration, a ducked score, set ambience, sheet sound effects and label blips, faded edges,
+then ffmpeg loudnorm to -16 LUFS / -1.5 dBTP (spec; the pilot's pilot_mix.py, generalised).
+
+python mix.py <video_dir> [score.wav]   (reads film.json and audio/narration.wav; writes audio/mix.wav)
+"""
+
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+import numpy as np
+from scipy import signal
+from scipy.io import wavfile
+
+from sfx import SR, SYNTHS, blip, murmur, place
+from timewarp import warp
+
+
+def _load(path: Path, n: int) -> np.ndarray:
+    sr, x = wavfile.read(path)
+    x = x.astype(np.float64)
+    x = x.mean(axis=1) if x.ndim > 1 else x
+    x /= 32768.0 if np.abs(x).max() > 2 else 1.0
+    if sr != SR:
+        x = signal.resample_poly(x, SR, sr)
+    out = np.zeros(n)
+    out[: min(n, len(x))] = x[:n]
+    return out
+
+
+def _ducked_score(path: Path, voice: np.ndarray) -> np.ndarray:
+    m = _load(path, len(voice))
+    m /= np.abs(m).max() + 1e-9
+    rms = np.sqrt(signal.lfilter(*signal.butter(1, 3, fs=SR), voice**2).clip(0))
+    gain = 1 - 0.6 * signal.lfilter(*signal.butter(1, 2, fs=SR), np.clip(rms / 0.02, 0, 1))
+    return m * gain
+
+
+def _events(film: dict, k):
+    t = (lambda x: warp(x, k)) if k else (lambda x: x)
+    for s in film["shots"]:
+        for e in s.get("sfx", []):
+            yield SYNTHS[e["name"]](), t(e["at"]), e.get("gain", 0.1)
+        for lb in s.get("labels", []):
+            yield blip(), t(lb["at"]), 0.05
+
+
+def raw_bus(narr: Path, score: Path | None, film: dict, warp_k=None) -> np.ndarray:
+    n = int(film["duration"] * SR)
+    voice = _load(narr, n)
+    bus = voice.copy()
+    rng = np.random.default_rng(7)
+    sets = film.get("sets") or {}
+    on = [(s["from"], s["to"]) for s in film["shots"] if (sets.get(s.get("set")) or {}).get("ambience") == "murmur"]
+    if on:
+        quiet = [(s["from"], s["to"]) for s in film["shots"] if s.get("type") in {"insert", "data"}]
+        amb = murmur(rng, film["duration"], quiet)
+        mask = np.zeros(n)
+        for a, b in on:
+            mask[int(a * SR) : int(b * SR)] = 1
+        bus += amb * signal.lfilter(*signal.butter(1, 4, fs=SR), mask) * 0.045
+    if score:
+        bus += _ducked_score(score, voice) * 0.16
+    for sound, at, gain in _events(film, warp_k):
+        place(bus, sound, at, gain)
+    peak = np.abs(bus).max()
+    return bus / peak * 0.89 if peak > 0.89 else bus
+
+
+def mix(narr: Path, score: Path | None, film: dict, out: Path, warp_k=None) -> Path:
+    bus = raw_bus(narr, score, film, warp_k)
+    raw = out.with_suffix(".raw.wav")
+    wavfile.write(raw, SR, (np.stack([bus, bus], axis=1) * 32767).astype(np.int16))
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-v",
+            "error",
+            "-y",
+            "-i",
+            str(raw),
+            "-af",
+            "loudnorm=I=-16:TP=-1.5:LRA=11",
+            "-ar",
+            str(SR),
+            str(out),
+        ],
+        check=True,
+    )
+    raw.unlink()
+    return out
+
+
+def main(argv: list[str]) -> None:
+    video = Path(argv[0]).resolve()
+    film = json.loads((video / "film.json").read_text())
+    score = Path(argv[1]) if len(argv) > 1 else None
+    print(mix(video / "audio" / "narration.wav", score, film, video / "audio" / "mix.wav"))
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
