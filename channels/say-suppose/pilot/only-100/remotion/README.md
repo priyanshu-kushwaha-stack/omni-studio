@@ -41,3 +41,13 @@ is `src/Person.tsx`, and piece sizes are in `src/castData.ts`. The extra cast (K
 job `5e61bd0b` (2 credits), sliced into `public/cut3/`. Shot times follow whisper word times on `narr_a.wav`. The sound is
 local: `../audio/pilot_mix.py <narr_a.wav> <raw.wav>`, then `ffmpeg -af loudnorm=I=-16:TP=-1.5:LRA=11` writes
 `public/pilot_mix.wav`. Rendering takes 43 s on the Mac with `--queue render`.
+
+## Pilot v2 (owner notes, 2026-11-27)
+
+- Narration in Luc (Higgsfield ElevenLabs v4 preset `04e867c7-9e41-5cff-80d3-5284e74d7bd1`), one job per line. Every
+  take's whisper transcript matched the script. Takes are trimmed of silence and stitched by `../audio/stitch.py` into
+  `../audio/cues_luc.json` (70 s). The score is ElevenLabs Music v2.5 (job `71870626`, 60 s), stretched with
+  `atempo=0.8467` and ducked under the voice. The mix is `pilot_mix.py <narr> <score> cues_a.json cues_luc.json <out>`.
+- `src/timewarp.ts` maps film time onto the voice B timeline the shots were written on, so every action stays on its word.
+- Walkers turn three-quarters toward where they go (`turn` in `Person.tsx` and `Cast2.tsx`), and the rule-one selfie
+  phone is raised beside her face.

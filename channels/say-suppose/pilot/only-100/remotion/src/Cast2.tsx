@@ -59,7 +59,7 @@ export const Scarf2: React.FC<{x: number; y: number; s: number; p: ScarfCutPose}
 
 export type ManCutPose = {
   phase: number; walk: number; lean: number; headTilt: number; headDip: number;
-  pupil: [number, number]; lid: number; rice: Arm; free: number;
+  pupil: [number, number]; lid: number; rice: Arm; free: number; turn?: number;
 };
 
 export const Man2: React.FC<{x: number; y: number; s: number; p: ManCutPose}> = ({x, y, s, p}) => {
@@ -67,10 +67,11 @@ export const Man2: React.FC<{x: number; y: number; s: number; p: ManCutPose}> = 
   const thigh = (o: number) => Math.sin(ph + o) * 14 * w;
   const shin = (o: number) => -Math.max(0, Math.sin(ph + o + 1.3)) * 30 * w;
   const bob = -Math.abs(Math.cos(ph)) * 14 * w;
-  const eye = (cx: number) => <ellipse cx={cx + p.pupil[0] * 10} cy={322 + p.pupil[1] * 10} rx={14} ry={18 * (1 - p.lid) + 2} fill="#1b1414" />;
+  const turn = p.turn ?? 0;
+  const eye = (cx: number) => <ellipse cx={cx + turn * 26 + p.pupil[0] * 10} cy={322 + p.pupil[1] * 10} rx={14} ry={18 * (1 - p.lid) + 2} fill="#1b1414" />;
   return (
     <div style={{position: 'absolute', left: x, top: y, transform: `scale(${s})`, transformOrigin: '0 0'}}>
-      <div style={{position: 'absolute', transformOrigin: '0 0', transform: `rotate(${p.lean}deg) translateY(${bob}px)`}}>
+      <div style={{position: 'absolute', transformOrigin: '0 0', transform: `rotate(${p.lean + turn * 3 * w}deg) translateY(${bob}px) scaleX(${1 - 0.16 * Math.abs(turn)})`}}>
         <Part src={c('m_torso')} w={460} h={646} pivot={[230, 632]} at={[0, -600]}>
           <Part src={c('m_thighR')} w={127} h={285} pivot={[63, 22]} at={[318, 618]} rot={thigh(Math.PI)} z={-2}>
             <Part src={c('m_shinR')} w={174} h={375} pivot={[62, 16]} at={[63, 262]} rot={shin(Math.PI)} z={-1} />
@@ -81,13 +82,13 @@ export const Man2: React.FC<{x: number; y: number; s: number; p: ManCutPose}> = 
           <Part src={c('m_uarmR')} w={147} h={418} pivot={[70, 36]} at={[412, 104]} rot={out(p.free, 1)} z={-1}>
             <Part src={c('m_farmR')} w={145} h={510} pivot={[72, 30]} at={[72, 390]} rot={out(5 + 5 * w, 1)} z={-1} />
           </Part>
-          <Part src={c('m_head')} w={481} h={538} pivot={[240, 520]} at={[230, 40 + p.headDip]} rot={p.headTilt} z={1}>
+          <Part src={c('m_head')} w={481} h={538} pivot={[240, 520]} at={[230 + turn * 32, 40 + p.headDip]} rot={p.headTilt} z={1}>
             <Face w={481} h={538}>
               {eye(190)}
               {eye(292)}
               <g stroke="#2a1d18" strokeWidth={11} strokeLinecap="round">
-                <line x1={160} y1={272} x2={218} y2={276} />
-                <line x1={264} y1={276} x2={322} y2={272} />
+                <line x1={160 + turn * 26} y1={272} x2={218 + turn * 26} y2={276} />
+                <line x1={264 + turn * 26} y1={276} x2={322 + turn * 26} y2={272} />
               </g>
             </Face>
           </Part>

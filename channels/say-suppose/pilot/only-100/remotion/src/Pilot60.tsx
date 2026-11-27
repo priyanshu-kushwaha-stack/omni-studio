@@ -10,9 +10,10 @@ import {Scarf2, Man2} from './Cast2';
 import {scarfAt, manAt} from './CutoutC';
 import {Person} from './Person';
 import {KENJI, WOMAN, GREY} from './castData';
+import {toOld, FILM_SECONDS} from './timewarp';
 import {camStyle, SetImg, scarfRest, Crowd, Readout, Phone, RuleCard, Title, BoardDots, FONT, GREEN} from './FilmParts';
 
-export const PILOT_SECONDS = 59.5;
+export const PILOT_SECONDS = Math.ceil(FILM_SECONDS * 10) / 10;
 
 type Shot = {from: number; to: number; C: React.FC<{t: number; l: number}>};
 
@@ -90,7 +91,7 @@ const S4: Shot['C'] = ({t, l}) => {
       <Shadow x={440} y={652} w={200} />
       <Shadow x={man.x} y={652} w={200} />
       <Scarf2 x={440} y={652} s={0.28} p={{...sp, browLift: sp.browLift * 0.8, browSad: sp.browSad * 0.8}} />
-      <Man2 x={man.x} y={652} s={0.27} p={man.p} />
+      <Man2 x={man.x} y={652} s={0.27} p={{...man.p, turn: -man.p.walk}} />
     </Close>
   );
 };
@@ -108,7 +109,7 @@ const S5: Shot['C'] = ({t, l}) => {
       <Shadow x={440} y={652} w={200} />
       <Shadow x={mx} y={652} w={200} />
       <Scarf2 x={440} y={652} s={0.28} p={p} />
-      <Man2 x={mx} y={652} s={0.27} p={{...end, phase, walk: walk * keys(l, [[2.6, 1], [2.8, 1]]), headDip: 0, pupil: [0.6, -0.2], rice: {a: 4 + Math.sin(phase) * 8 * walk, f: -138 + 140 * walk}}} />
+      <Man2 x={mx} y={652} s={0.27} p={{...end, phase, walk: walk * keys(l, [[2.6, 1], [2.8, 1]]), headDip: 0, pupil: [0.6, -0.2], turn: walk, rice: {a: 4 + Math.sin(phase) * 8 * walk, f: -138 + 140 * walk}}} />
     </Close>
   );
 };
@@ -197,8 +198,13 @@ const S11: Shot['C'] = ({t, l}) => {
   const phoneUp = keys(t, [[44.3, 0], [44.9, 1, BACK]]);
   const wave = keys(t, [[46.2, 0], [46.5, 1, BACK], [48.2, 1], [48.5, 0]]);
   const inset = keys(t, [[49.5, 0], [49.85, 1, BACK]]);
+  const sa = 20 + 30 * phoneUp, sf = -228 * phoneUp; // right arm: upper out, forearm folded up
   const phoneNode = (
-    <div style={{width: 260, height: 460, borderRadius: 40, background: '#121219', transform: 'translate(-130px,-430px)', boxShadow: '0 0 0 10px #2b2d38'}} />
+    <div style={{position: 'absolute', transform: `rotate(${sa + sf}deg) translate(-70px, -225px)`, transformOrigin: '0 0'}}>
+      <div style={{width: 150, height: 270, borderRadius: 26, background: 'linear-gradient(160deg, #3a3d4c, #16171f)', boxShadow: '0 0 0 6px #2b2d38, 0 10px 24px rgba(0,0,0,.4)'}}>
+        <div style={{position: 'absolute', left: 18, top: 18, width: 34, height: 34, borderRadius: '50%', background: '#0b0b10', boxShadow: '0 0 0 4px #4a4d5c'}} />
+      </div>
+    </div>
   );
   const p = scarfRest(t, {armR: {a: 6 + 120 * wave, f: 30 * wave + Math.sin(t * 12) * 18 * wave}, pupil: [0.8, -0.2], browLift: 12 * wave, browSad: keys(t, [[48.6, 0], [49.0, 16]]), lid: blinkAt(t, [44.0, 47.4])});
   return (
@@ -207,7 +213,7 @@ const S11: Shot['C'] = ({t, l}) => {
         <Shadow x={470} y={652} w={200} />
         <Shadow x={760} y={652} w={190} />
         <Scarf2 x={470} y={652} s={0.28} p={p} />
-        <Person parts={WOMAN} x={760} y={652} s={0.31} p={{armR: {a: 20 + 40 * phoneUp, f: -150 * phoneUp}, holdR: phoneNode, pupil: [0.3, -0.5 * phoneUp], lid: blinkAt(t, [45.5, 48.0])}} />
+        <Person parts={WOMAN} x={760} y={652} s={0.31} p={{armR: {a: sa, f: sf}, holdR: phoneNode, armRFront: phoneUp > 0.05, pupil: [0.25, -0.35 * phoneUp], lid: blinkAt(t, [45.5, 48.0])}} />
       </Close>
       <RuleCard t={t} t0={45.1} n="ONE" text="Not on your list? You don't exist to them." />
       {inset > 0 && (
@@ -272,12 +278,12 @@ const SHOTS: Shot[] = [
   {from: 0, to: 3.77, C: S1}, {from: 3.77, to: 4.95, C: S2}, {from: 4.95, to: 10.5, C: S3}, {from: 10.5, to: 16.75, C: S4},
   {from: 16.75, to: 19.6, C: S5}, {from: 19.6, to: 24.1, C: S6}, {from: 24.1, to: 32.05, C: S7}, {from: 32.05, to: 33.2, C: S8},
   {from: 33.2, to: 39.3, C: S9}, {from: 39.3, to: 42.9, C: S10}, {from: 42.9, to: 50.9, C: S11}, {from: 50.9, to: 53.8, C: S12},
-  {from: 53.8, to: 56.95, C: S13}, {from: 56.95, to: PILOT_SECONDS + 1, C: S14},
+  {from: 53.8, to: 56.95, C: S13}, {from: 56.95, to: 999, C: S14},
 ];
 
 export const Pilot60: React.FC = () => {
   const frame = useCurrentFrame();
-  const t = frame / FPS;
+  const t = toOld(frame / FPS); // shots are timed on the voice B timeline; see timewarp.ts
   const shot = SHOTS.find((s) => t >= s.from && t < s.to) ?? SHOTS[SHOTS.length - 1];
   const C = shot.C;
   return (
@@ -285,7 +291,7 @@ export const Pilot60: React.FC = () => {
       <C t={t} l={t - shot.from} />
       {shot.C === S3 && <FactPill t={t} />}
       {t < 59.05 && <Grade frame={frame} />}
-      <Audio src={staticFile('pilot_mix.wav')} />
+      <Audio src={staticFile('pilot_mix_luc.wav')} />
     </AbsoluteFill>
   );
 };
