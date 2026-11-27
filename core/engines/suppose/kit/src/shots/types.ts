@@ -1,5 +1,6 @@
 // film.json as sheetcheck.emit writes it (format: core/engines/suppose/scripts/sheet.py), and the type a hand-built
-// shot exports: `export const S2: Shot = ({t, l, film}) => ...` in videos/<id>/remotion/custom/*.tsx.
+// shot exports: `export const S2: Shot = ({t, l, film}) => ...` in videos/<id>/custom/Shots.tsx (or a sibling file it
+// imports), which the film's entry videos/<id>/remotion/index.ts imports as `../custom/Shots`.
 //
 // Time: every `at` and `to` in a shot (acts, labels, lines, sfx, readout) is on the narration timeline, in film seconds,
 // like the shot's own `from` and `to`; sheetcheck's hold check compares act `at` against `from`/`to` on that clock.
@@ -16,8 +17,9 @@ export type CastIn = {who: string; at: [number, number]; acts?: Act[]; focus?: b
 export type CrowdIn = {band: string; n: number; speed: number; seed?: number; kinds?: string[]}; // kinds: cast ids, weighted by repeats
 
 // Labels (W5). Positions are optional; each kind has a default spot clear of the pill and the readout.
+export const LABEL_KINDS = ['data', 'dim', 'callout', 'pill'] as const; // sheet.py LABEL_KINDS (vocab.test.ts)
 export type LabelIn = {
-  kind: 'data' | 'dim' | 'callout' | 'pill';
+  kind: (typeof LABEL_KINDS)[number];
   text: string;
   says?: string;
   at: number;
@@ -69,7 +71,9 @@ export type FilmData = {
   crowd: Record<string, CastMember>; // library cast with the crowd role
   sets: Record<string, SetData>;
   props: Record<string, unknown>;
+  warp?: {old: number[]; new: number[]}; // film-luc.json only (timewarp.py): knots, voice B seconds -> final seconds
 };
 
-// t: film seconds; l: seconds into the shot.
+// t: film seconds; l: seconds into the shot. A custom shot always gets voice B (sheet) seconds: on film-luc.json
+// FilmFrame unwarps t and the shot's start through `warp`, so a body written against shots.yaml times stays in sync.
 export type Shot = React.FC<{t: number; l: number; film: FilmData}>;

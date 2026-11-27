@@ -3,7 +3,7 @@
 import {readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {describe, expect, it} from 'vitest';
-import {ACTS, MOOD_FACE, poseAt} from '../src/index';
+import {ACTS, GRADE_MOODS, LABEL_KINDS, MOOD_FACE, poseAt} from '../src/index';
 import {camAt} from '../src/toolkit/camera';
 import {html, setShot} from './helpers';
 
@@ -15,7 +15,7 @@ const tuple = (name: string): string[] => {
   expect(items.length, `${name} parsed empty`).toBeGreaterThan(0);
   return items;
 };
-const [SHEET_ACTS, MOODS, MOVES, SHOT_TYPES] = ['ACTS', 'MOODS', 'MOVES', 'SHOT_TYPES'].map(tuple);
+const [SHEET_ACTS, MOODS, MOVES, SHOT_TYPES, GRADES, SHEET_LABELS] = ['ACTS', 'MOODS', 'MOVES', 'SHOT_TYPES', 'GRADES', 'LABEL_KINDS'].map(tuple);
 
 describe('sheet.py and the kit share one vocabulary', () => {
   it('every sheet act is a kit act, and every kit act is on the sheet', () => {
@@ -34,6 +34,10 @@ describe('sheet.py and the kit share one vocabulary', () => {
   it('every sheet mood has a face', () => {
     expect(MOODS.filter((m) => !(m in MOOD_FACE))).toEqual([]);
     expect(Object.keys(MOOD_FACE).filter((m) => !MOODS.includes(m))).toEqual([]);
+  });
+  it('the sheet grades and label kinds are the kit\'s (sfx names are checked against mix.py in Python)', () => {
+    expect([...GRADES].sort()).toEqual([...GRADE_MOODS].sort());
+    expect([...SHEET_LABELS].sort()).toEqual([...LABEL_KINDS].sort());
   });
   it('every sheet camera move is handled by camAt', () => {
     for (const move of MOVES) expect(() => camAt({move}, 0.5, 1), move).not.toThrow();

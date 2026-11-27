@@ -1,7 +1,7 @@
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {describe, expect, it} from 'vitest';
-import {ShotView, FilmFrame, shotActs, Z_FLOOR, filmMetadata, EMPTY_FILM} from '../src/index';
+import {ShotView, FilmFrame, shotActs, Z_FLOOR, filmMetadata, EMPTY_FILM, unwarp} from '../src/index';
 import type {ShotData, Shot} from '../src/index';
 
 const film = {
@@ -99,6 +99,25 @@ describe('FilmFrame', () => {
   });
   it('shows a placeholder naming a custom shot that is missing', () => {
     expect(frame(7 * 30)).toContain('Gone');
+  });
+  it('on film-luc.json, unwarps t and the shot start so a custom shot keeps the voice B clock', () => {
+    // timewarp.py knots: voice B 0, 3, 6, 9 -> final 0, 4, 8, 12. The warped sheet puts S2 at 4-8 final seconds.
+    const warp = {old: [0, 3, 6, 9], new: [0, 4, 8, 12]};
+    const luc = [{...shots[0], from: 0, to: 4}, {...shots[1], from: 4, to: 8}] as ShotData[];
+    const at = (f: number) => renderToStaticMarkup(<FilmFrame {...real} shots={luc} duration={12} warp={warp} customs={{S2}} frame={f} />);
+    expect(at(6 * 30)).toContain('custom t=4.5 l=1.5'); // final 6 s = voice B 4.5 s, 1.5 s into S2 (which starts at 3)
+  });
+});
+
+describe('unwarp', () => {
+  const warp = {old: [0, 0.4, 3.5, 6], new: [0, 0.4, 4, 6.5]};
+  it('maps final seconds back to voice B seconds between knots, and is the identity with no warp', () => {
+    expect(unwarp(4, warp)).toBeCloseTo(3.5);
+    expect(unwarp(2.2, warp)).toBeCloseTo(0.4 + (1.8 / 3.6) * 3.1);
+    expect(unwarp(5, undefined)).toBe(5);
+  });
+  it('runs 1:1 past the last knot, as the pilot toOld did', () => {
+    expect(unwarp(7.5, warp)).toBeCloseTo(7);
   });
 });
 

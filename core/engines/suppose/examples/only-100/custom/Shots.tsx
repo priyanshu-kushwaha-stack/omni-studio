@@ -1,6 +1,6 @@
 // The pilot's hand-built shots (pilot v8 Pilot60.tsx), every one but S1, S3a and S3b, which shots.yaml draws as sheet
-// shots. Each body is the pilot's, on the old (voice B) timeline; onOld (FilmParts.tsx) maps the kit's film time onto
-// it through the pilot's warp and hands the body its cast from film.json. Changes from Pilot60.tsx: imports, the
+// shots. Each body is the pilot's, on the old (voice B) timeline, which is the clock the kit gives custom shots
+// (FilmFrame unwarps through film-luc.json's warp); onOld (FilmParts.tsx) hands the body its cast from film.json. Changes from Pilot60.tsx: imports, the
 // usePilot()/useHeads() lines that read the cast, manK(c, s), and the local View/clampF now come from the kit.
 import React from 'react';
 import {keys, LIN, OUT, BACK, IO, drift, blinkAt, Shadow, Part, Person, View, Readout, RuleCard, Title, FONT, SCARF_H, MAN_H, PEER, personH, W, H} from '@suppose/kit';

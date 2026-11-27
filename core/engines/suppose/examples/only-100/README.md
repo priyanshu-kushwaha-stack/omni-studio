@@ -14,7 +14,7 @@ with v8. The pilot folder is the frozen reference and is not touched.
   the cast (`usePilot()` / `useHeads()`); Pilot60's local `View` and `clampF` are the kit's (identical code).
 - `custom/FilmParts.tsx`: the pilot-only parts (Phone, LIST, BoardDots, scarfRest, fadeIn from FilmParts.tsx;
   scarfAt, manAt from CutoutC.tsx; the pose types from Cast2.tsx; Scarf4, Man4, RiceBall and the face helpers from
-  Cast4.tsx), the pilot's time warp, and `onOld`, which turns a pilot shot body into a kit `Shot`.
+  Cast4.tsx), and `onOld`, which turns a pilot shot body into a kit `Shot` that reads its cast from film.json.
 - `index.ts`: `registerRoot(filmRoot(shots))`.
 
 Cast and art come from film.json, not from castV4.ts: Scarf is `film.cast.scarf` (the pilot's SCARFC pieces), Kenji
@@ -35,8 +35,9 @@ The pilot is written on the voice B timeline and plays on Luc's narration: `Pilo
 2. `scripts/timewarp.py` writes `film-luc.json` with every shot, act and label time warped through the pilot's cue
    sheets (`audio/cues_a.json` -> `audio/cues_luc.json`); those knots are the same as `timewarp.ts`'s. The kit's
    `Film` picks shots on Luc's clock from these warped times.
-3. Custom shots are wrapped in `onOld` (FilmParts.tsx): it maps the kit's film time back with the pilot's own
-   `toOld` (same knots), and the shot's start the same way, so each body gets the pilot's `t` and `l`.
+3. `film-luc.json` also carries those knots (`warp: {old, new}`), and the kit's `FilmFrame` unwarps `t` and the
+   shot's start through them for every custom shot, so each body gets the pilot's `t` and `l` (what the pilot's own
+   `toOld` gave it). `onOld` (FilmParts.tsx) only hands the body its cast.
 4. Sheet shots run on Luc's clock (their act and label times were warped in step 2). Crowds walk on film time, so
    their positions differ slightly from v8, which walked them on the old clock.
 

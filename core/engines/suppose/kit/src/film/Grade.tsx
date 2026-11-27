@@ -10,6 +10,8 @@ const WASH: Record<GradeMood, string> = {
   void: 'linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.12))',
   blueprint: 'linear-gradient(180deg, rgba(20,40,90,.25), rgba(20,40,90,.25))',
 };
+export const GRADE_MOODS = Object.keys(WASH) as GradeMood[]; // sheet.py GRADES (vocab.test.ts)
+
 const VIGNETTE: Record<GradeMood, string> = {
   warm: 'radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(10,8,20,.55) 100%)',
   cool: 'radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(10,8,20,.55) 100%)',
