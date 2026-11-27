@@ -32,28 +32,30 @@ export type PersonPose = {
 
 const P = (n: number, m: number) => [n, m] as [number, number];
 
-type Joints = {pivotY: number; hipY: number; legX: [number, number]; shL: [number, number]; shR: [number, number]; neckY: number; armK: number; elbow: number};
+type Joints = {pivotY: number; hipY: number; legX: [number, number]; shL: [number, number]; shR: [number, number]; neckY: number; armK: number; armKw: number; elbow: number};
 const joints = (parts: Parts): Joints => {
   const {torso, uarmL, uarmR, thighL} = parts;
   if (parts.hip === undefined || !parts.sh) {
-    return {pivotY: torso.h * 0.97, hipY: torso.h * 0.95, legX: [torso.w * 0.32, torso.w * 0.68], shL: P(torso.w * 0.13, torso.h * 0.17), shR: P(torso.w * 0.87, torso.h * 0.17), neckY: torso.h * 0.07, armK: 1, elbow: 0.92};
+    return {pivotY: torso.h * 0.97, hipY: torso.h * 0.95, legX: [torso.w * 0.32, torso.w * 0.68], shL: P(torso.w * 0.13, torso.h * 0.17), shR: P(torso.w * 0.87, torso.h * 0.17), neckY: torso.h * 0.07, armK: 1, armKw: 1, elbow: 0.92};
   }
   const hy = torso.h * parts.hip;
   const off = thighL.w * 0.5;
-  // Arms are sized from the body: a hanging hand reaches about a third of the way down the thigh (owner, 2026-11-27:
-  // the sheets drew arms that reached the knee). Shrink a little, then overlap the elbow more.
-  const reach = hy - thighL.h * 0.06 + thighL.h * 0.5 - torso.h * 0.16;
+  // Arms are sized from the body: a hanging hand reaches the waist (owner, 2026-11-27). The elbow stays a real joint
+  // near the end of the upper arm, so the arm bends in two parts; pieces are shortened more than they are thinned.
+  const reach = hy - thighL.h * 0.06 + thighL.h * 0.12 - torso.h * 0.16;
   const farmL = parts.farmL;
-  const armK = Math.min(1, Math.max(0.74, reach / (uarmL.h * 0.5 + farmL.h * 0.93)));
-  const elbow = Math.min(0.92, Math.max(0.3, (reach / armK - farmL.h * 0.93) / uarmL.h));
+  const elbow = 0.86;
+  const armK = Math.min(1, reach / (uarmL.h * elbow + farmL.h * 0.93));
+  const armKw = Math.min(1, Math.max(armK, 0.8));
   return {
     armK,
+    armKw,
     elbow,
     pivotY: hy,
     hipY: hy - thighL.h * 0.06,
     legX: [torso.w / 2 - off, torso.w / 2 + off],
-    shL: P(torso.w * parts.sh[0] + uarmL.w * armK * 0.32, torso.h * 0.16),
-    shR: P(torso.w * parts.sh[1] - uarmR.w * armK * 0.32, torso.h * 0.16),
+    shL: P(torso.w * parts.sh[0] + uarmL.w * armKw * 0.32, torso.h * 0.16),
+    shR: P(torso.w * parts.sh[1] - uarmR.w * armKw * 0.32, torso.h * 0.16),
     neckY: torso.h * 0.05,
   };
 };
@@ -136,12 +138,14 @@ export const Person: React.FC<{parts: Parts; x: number; y: number; s: number; p:
   const bob = -Math.abs(Math.cos(ph)) * 0.03 * torso.h * w + (p.bob ?? 0);
   const legLen = thighL.h * 0.86 + shinL.h * 0.95;
   const swing = Math.sin(ph) * 18 * w;
-  const aL = p.armL ?? {a: 6 + swing, f: 6};
-  const aR = p.armR ?? {a: 6 - swing, f: 6};
+  // Rest: arms hang along the sides with a slight elbow bend. Walking: the forearm bends and lags the swing (two parts).
+  const bend = (o: number) => -5 - 18 * w * (0.5 + 0.5 * Math.sin(ph + o - 0.8));
+  const aL = p.armL ?? {a: 8 + swing, f: bend(0)};
+  const aR = p.armR ?? {a: 8 - swing, f: bend(Math.PI)};
   const turn = p.turn ?? dir * w; // walkers turn toward where they go
   const ak = j.armK;
   const front = parts.hip !== undefined ? 2 : -1; // v4 bodies: arms lie over the torso, as in a front-view cut-out
-  const [ua, fa, ub, fb] = [uarmL, farmL, uarmR, farmR].map((q) => ({src: q.src, w: q.w * ak, h: q.h * ak}));
+  const [ua, fa, ub, fb] = [uarmL, farmL, uarmR, farmR].map((q) => ({src: q.src, w: q.w * j.armKw, h: q.h * ak}));
   const squash = 1 - 0.16 * Math.abs(turn);
   return (
     <div style={{position: 'absolute', left: x, top: y, transform: `scale(${s})`, transformOrigin: '0 0', filter}}>

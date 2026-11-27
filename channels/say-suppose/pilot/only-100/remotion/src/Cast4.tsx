@@ -57,7 +57,7 @@ export const Man4: React.FC<{x: number; y: number; s: number; p: ManCutPose}> = 
       p={{
         phase: p.phase, walk: p.walk, dir: turn > 0.05 ? 1 : -1, lean: p.lean, headTilt: p.headTilt,
         headDip: p.headDip * (SALARY.head.h / 538), pupil: p.pupil, lid: p.lid, turn,
-        armL: p.rice, holdL: <RiceBall rot={-(p.rice.a + p.rice.f)} />, armR: {a: p.free, f: 5 + 5 * p.walk},
+        armL: p.rice, holdL: <RiceBall rot={-(p.rice.a + p.rice.f)} />, armR: {a: p.free + 2, f: -5 - 14 * p.walk},
       }}
     />
   );

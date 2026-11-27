@@ -41,7 +41,7 @@ export const SetImg: React.FC<{which: 'wide' | 'close' | 'high'; blur?: number}>
 // Scarf at rest, with overrides.
 export const scarfRest = (t: number, o: Partial<ScarfCutPose> = {}): ScarfCutPose => ({
   lean: 0, headTilt: 0, open: 1, lid: 0, pupil: [0, 0], browLift: 0, browSad: 0,
-  armL: {a: 6, f: 0}, armR: {a: 6, f: 0}, tail: Math.sin(t * 1.7) * 4, sweat: 0, bob: Math.sin(t * 2.1) * 4, ...o,
+  armL: {a: 6, f: -6}, armR: {a: 6, f: -6}, tail: Math.sin(t * 1.7) * 4, sweat: 0, bob: Math.sin(t * 2.1) * 4, ...o,
 });
 
 // Weighted so the loud yellow backpacker and the green-overall worker (green is Scarf's colour) stay rare.
