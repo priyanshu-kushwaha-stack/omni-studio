@@ -52,3 +52,33 @@ def test_every_expected_prompt_exists():
     have = {p.stem for p in prompt_files()}
     missing = [n for n in EXPECTED if n not in have]
     assert not missing, f"prompt files still to write: {missing}"
+
+
+def _text(name: str) -> str:
+    return (PROMPTS / f"{name}.md").read_text(encoding="utf-8")
+
+
+def test_topic_prompt_keeps_the_owner_rules_and_the_overrides():
+    t = _text("topic")
+    for must in [
+        "Generate 35 new video titles",
+        "What If You Had [extreme amount of a trait]?",
+        "What If [a unit of everyday experience] Felt Like [extreme]?",
+        "What If Your [body or brain ability] Was [N]x [Faster / Stronger / Sharper / Slower]?",
+        "no more than one in every five titles",
+        "It must carry a whole video",
+        "Length: 6–8 words",
+        "Benchmark titles",
+        "up to five titles outside",
+        "{{made_titles}}",
+    ]:
+        assert must in t, must
+    assert "The channel's real titles" not in t
+
+
+def test_topic_skill_uses_the_prompt_and_retires_the_room():
+    skill = (ROOT / ".claude" / "skills" / "say-suppose-topics" / "SKILL.md").read_text(encoding="utf-8")
+    assert "channels/say-suppose/prompts/topic.md" in skill
+    assert "35" in skill
+    for gone in ["Gemini", "GPT-5.6", "scores them blind"]:
+        assert gone not in skill
