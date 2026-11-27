@@ -33,3 +33,11 @@ in `src/Puppet.tsx`.
 
 Refined (`CutoutC2`): both puppets come from one parts sheet (GPT Image job `603bfb4f`, 2 credits, with the Scarf reference and the
 wide set as style references), so they share one style. Pieces go in `public/cut2/` under readable names, and the rig is in `src/Cast2.tsx`.
+
+## The 60 s pilot (`Pilot60`, 2026-11-27)
+
+Script A, voice B, 14 shots in `src/Pilot60.tsx` and building blocks in `src/FilmParts.tsx`. The generic cut-out person
+is `src/Person.tsx`, and piece sizes are in `src/castData.ts`. The extra cast (Kenji and two commuters) is GPT Image
+job `5e61bd0b` (2 credits), sliced into `public/cut3/`. Shot times follow whisper word times on `narr_a.wav`. The sound is
+local: `../audio/pilot_mix.py <narr_a.wav> <raw.wav>`, then `ffmpeg -af loudnorm=I=-16:TP=-1.5:LRA=11` writes
+`public/pilot_mix.wav`. Rendering takes 43 s on the Mac with `--queue render`.
