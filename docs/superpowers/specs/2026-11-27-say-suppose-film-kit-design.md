@@ -7,9 +7,9 @@ started by this work.
 ## Why
 
 On 2026-11-27 the owner passed pilot v8 as clearing the bar beside Awaken and YOUniverse. The pilot is 60 s with 14
-shots, each built by hand in `Pilot60.tsx` (386 lines). A Say Suppose film is designed around **8–12 minutes** (owner,
-2026-11-27): about 120–170 shots and 8–12 sets. Building every shot by hand would be ten times the pilot's code per
-film, so the pilot's parts become a shared kit, and most shots become lines in a shot sheet.
+shots, each built by hand in `Pilot60.tsx` (386 lines). A Say Suppose script is **900–1,050 words** (owner, 2026-11-27, from
+the master script prompt), about 7 minutes in Luc's pace (141 words a minute in the pilot): about 90–110 shots and 5–8
+sets. Building every shot by hand would be seven times the pilot's code per film, so the pilot's parts become a shared kit, and most shots become lines in a shot sheet.
 
 The nine learnings (`docs/research/2026-11-27-say-suppose-learnings.md`) stay the brief for every film. Every rule in
 CLAUDE.md still binds: the owner passes every gate, no paid call without the owner's OK, renders go through
@@ -17,7 +17,8 @@ CLAUDE.md still binds: the owner passes every gate, no paid call without the own
 
 ## Decisions (owner, 2026-11-27)
 
-1. Films are designed around 8–12 minutes. L4 still holds: no padding, a film runs as long as its story needs.
+1. **Scripts run 900–1,050 words** (never under 800 or over 1,100), about 7 minutes. This replaces the 8–12 minute
+   design. No padding: a short script gets another consequence beat or a deeper climax, never filler.
 2. **Art is approved at G1.** The G1 packet carries the list of new sets and characters with its credit quote; the
    owner's G1 approval OKs that spend. The first cut is then made in the real look. Narration stays voice B (free) and
    the score stays a library cue until after G2.
@@ -41,6 +42,15 @@ CLAUDE.md still binds: the owner passes every gate, no paid call without the own
    shot carries a `hold:` reason; a warning never blocks a render or a gate.
 10. **Thumbnails get their own skill.** The L2 rules and the thumbnail prompts live in a thumbnail skill (see Prompts
     and skills), not in the kit.
+11. **Body and mind first.** The main lane is one human ability or perception of the viewer's own, pushed to an
+    extreme and walked through with real science. A strong "what if you" outside it (like the pilot's "only 100
+    people could ever see you") can still be picked.
+12. **The hero is never named.** Scarf is always "you". Side characters call him "dude", "mate" or a nickname, never a
+    name that fixes a gender, age or country (L7.5). This overrides the script prompt's "Your name is Max".
+13. **Topics come from one prompt.** One model runs `prompts/topic.md` and returns 35 titles; the owner picks. This
+    replaces the three-model idea room and its blind scorer.
+14. **The master prompts are the base.** The owner's topic and script prompts (2026-11-27) are the starting text of
+    `prompts/topic.md` and `prompts/script.md`, adapted only where a decision above overrides them.
 
 ## What is shared and what each film adds
 
@@ -116,20 +126,21 @@ names of `studio-whatif`, so `omni approve`, the stage checks, the media proofs 
 Its stage skills are new files, `skills/studio/studio-suppose-*.md`. The v1 format `story: studio-whatif` stays in
 `channel.yaml` because tests read it.
 
-1. **Topic.** The `say-suppose-topics` room runs with L1 as hard rules ("What if you…", one picturable frame, a number
-   or status payoff, 37–49 characters, the click test). The owner picks the premise.
+1. **Topic.** The topic skill runs `prompts/topic.md` and returns 35 titles (Decision 13). The owner picks the
+   premise.
 2. **G1 packet** (`proposal`):
    - the title and 3 thumbnails made by the thumbnail skill (GPT Image 2.6 with Scarf as the reference, caption and
      number set in code in the channel typeface), shown in a phone feed mock beside benchmark thumbnails;
    - the five lines and `> UNDER:` the stage already asks for;
-   - a 12-beat outline in the L4 shape: cold open with one absurd detail, title by about 0:50, at most 3 rules, the
-     power escalating, a dilemma promised early, a climax choice that costs something, a callback, a twist into a
-     possible Part 2, one question to the viewer;
+   - an outline in the script prompt's ten-step arc (see Prompts and skills): the cold open, the one rule that limits
+     the power, the consequence beats, the hidden cost, the heart and its planted detail, the crisis and its either/or,
+     the resolution, whether "Is any of this real?" is used, the sting;
    - the art list from `art.yaml`, with the total credit quote.
 
    **G1**: the owner passes the packaging and OKs the art spend.
 3. **After G1, two tracks at once:**
-   - Words: the full script (L3 narrator to "you", short character lines every 15–20 s), the claims ledger, then
+   - Words: the full script from `prompts/script.md`, checked by `scriptcheck.py`; the cast pass
+     (`prompts/cast-pass.md`) tags the character lines and lists the claims for the ledger; then
      voice B narration and the character lines in their own free voices, local. The owner reads the script and
      listens to the track. Their notes are applied before animation starts.
    - Art: the approved GPT Image calls, then `slice.py`, `rig.py` and a rig check sheet for each new character.
@@ -173,6 +184,24 @@ what has worked instead of rewriting prompts each time.
 - **Prompt library: `channels/say-suppose/prompts/`.** One file per kind of call, each with the model and settings, the
   prompt template with its blanks (place, character, premise prop), the reference media to attach, and the pilot job
   it came from:
+  - `topic.md`: the owner's master topic prompt. Kept: the three title formats ("You Had [amount]", "[unit] Felt
+    Like [extreme]", "Your [ability] Was [N]x [Faster…]"), "What If" and a question mark, one change only, a round
+    dramatic number, understood in under two seconds, Title Case, 6–8 words, a curious and awed tone with no bait
+    words, at most one ladder variant in five, and the "must carry a whole video" test. Adapted: the lane is body and
+    mind first (Decision 11); the example titles are labelled as benchmark titles, not ours, and "no repeats" covers
+    every title of the ten benchmark channels;
+  - `script.md`: the owner's master script prompt. Kept: 900–1,050 words; one paragraph of spoken text; character
+    lines inline, no speaker names; numbers in words, metric units; second person, present tense; the voice targets;
+    the ten-step arc (cold open, baseline and rule and title question, consequence montage, hidden cost, the heart with
+    a planted detail, crisis and an either/or choice, resolution where the hero picks people, an optional "Is any of
+    this real?", sting, CTA); the small cast; one signature line; at least five real facts and nothing invented; the
+    series rules for a Part 2. Adapted: the hero is never named (Decision 12); the sample paragraph of "the channel's
+    own words" is replaced by a passage from our own pilot, so we never imitate a benchmark's sentences;
+  - `cast-pass.md`: run on the finished script. It returns the same text with each character line tagged with its
+    speaker and the cast library character who plays them, for the free character voices (Decision 8), and lists
+    every factual claim for the claims ledger. The spoken text does not change;
+  - `shots.md`: turns the script into the first draft of `shots.yaml`, sentence by sentence: set, angle, camera, who
+    acts and how, readout changes, holds with their reasons;
   - `set-plate.md`: a painted set in style A (GPT Image 2.6, high, 2K, 16:9), one per angle;
   - `parts-sheet.md`: a character parts sheet in the cast's layout, so `rig.py` can map it;
   - `cast-lineup.md`: a new character in the style A lineup, before its parts sheet;
@@ -188,10 +217,16 @@ what has worked instead of rewriting prompts each time.
   number; a premise number as a glowing label in the world, the same readout as the film; a caption that adds the
   stake or the emotion and never repeats the title; three variants checked at feed size beside the benchmark; a note
   to the owner to run Test & Compare after upload.
+- **Script check: `core/engines/suppose/scripts/scriptcheck.py`.** Measures every draft before the owner reads it,
+  against the script prompt's targets: 900–1,050 words (fails under 800 or over 1,100); about 4–5 words a sentence,
+  about half at four words or fewer, almost none past fifteen; 18–25 ellipses; 15–20 questions; about seven "you" or
+  "your" per 100 words; numbers written in words (years excepted); no speaker labels, quotation-mark dialogue,
+  headings or stage directions; the hero never given a name. Word count and format fail; the voice targets warn, and
+  the numbers go on the review page.
 - **Stage skills: `skills/studio/studio-suppose-*.md`.** One per gate, each naming the prompts and kit tools its stage
   uses.
-- **Topic skill.** `say-suppose-topics` already exists; it gets the L1 rules as hard constraints if it does not carry
-  them yet.
+- **Topic skill.** `.claude/skills/say-suppose-topics/` is rewritten around `prompts/topic.md`: one model, 35 titles,
+  the owner picks. The three-model room and the blind scorer are retired (Decision 13).
 
 ## Learnings checklist
 
@@ -199,13 +234,13 @@ Where each learning (`docs/research/2026-11-27-say-suppose-learnings.md`) is app
 
 | Learning | Applied in |
 |---|---|
-| L1 premise and title | Topic skill and the G1 packet: "What if you…", one frame, a payoff, 37–49 characters, the click test |
+| L1 premise and title | Topic prompt: "What If…?", one change to the viewer, a round dramatic number, 6–8 words, the three title formats, the click test; body and mind first (Decision 11) |
 | L2 thumbnail | Thumbnail skill. GPT Image 2.6 only (Decision 5 overrides L2.1) |
 | L3 voice | Script stage: narrator to "you"; Luc after G2 (Decision 7); character lines in free local voices (Decision 8) |
-| L4 script | The 12-beat outline at G1 and the script stage; no padding; facts in the claims ledger, cut where they distract |
+| L4 script | Script prompt's ten-step arc, outlined at G1; 900–1,050 words, no padding; facts in the claims ledger, cut where they distract |
 | L5 one number | One `Readout` design in the kit; changes only on story beats (`sheetcheck` warns); the same readout in the thumbnail; never forced |
 | L6 look | Kit and library keep one look; the five-quality checklist on every review page; render time measured |
-| L7 "you" | Scarf fixed in the cast library, with one signature attitude carried in every film and thumbnail |
+| L7 "you" | Scarf fixed in the cast library, never named (Decision 12), with one signature attitude carried in every film and thumbnail |
 | L8 pacing | `sheetcheck`: every shot has a character acting; holds over 5 s warn unless given a reason (Decision 9). BigFace keeps its mouth (Decision 6); no lip-sync |
 | L9 series and sign-off | Twist into a Part 2 in the outline; source line under fact pills; full sources in the description from the claims ledger at G5; one closing line tying like and subscribe to the climax choice |
 
@@ -216,15 +251,15 @@ v4 preset) about 0.006 credits a character; ElevenLabs Music v2.5 about 0.145 cr
 
 | Item | Credits |
 |---|---|
-| New sets: about 4 places × 2 angles, plus retakes | 16–24 |
+| New sets: 3–4 places × 2 angles, plus retakes | 12–20 |
 | New characters: 1–2 parts sheets | 2–6 |
 | Thumbnails: 3, plus a second round | 6–12 |
-| Luc narration: about 9,000 characters, ×1.4 for retakes | about 75 |
-| Score: 3–4 cues of 60–90 s | 30–50 |
-| **Typical 10-minute film** | **about 130–170** |
+| Luc narration: about 6,000 characters (1,000 words), ×1.4 for retakes | about 50 |
+| Score: 2–3 cues of 60–90 s | 20–40 |
+| **Typical 7-minute film** | **about 90–130** |
 
-The first film costs more, about 200–250, because the library holds only the station. At the 2026-11-27 balance of
-1,731 credits that is roughly 9–11 films. Every one of these is still announced with tool, model and cost and run
+The first film costs more, about 150–190, because the library holds only the station. At the 2026-11-27 balance of
+1,731 credits that is roughly 13–17 films. Every one of these is still announced with tool, model and cost and run
 only on the owner's OK; the G1 approval covers the listed art.
 
 ## Errors
