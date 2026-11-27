@@ -42,10 +42,10 @@ const joints = (parts: Parts): Joints => {
   const off = thighL.w * 0.5;
   // Arms are sized from the body: a hanging hand reaches the waist (owner, 2026-11-27). The elbow stays a real joint
   // near the end of the upper arm, so the arm bends in two parts; pieces are shortened more than they are thinned.
-  const reach = (hy - thighL.h * 0.06 + thighL.h * 0.12 - torso.h * 0.16) * 1.2; // owner: 20% longer than the waist cut
+  const reach = (hy - thighL.h * 0.06 + thighL.h * 0.12 - torso.h * 0.16) * 1.44; // owner: 20% longer than the waist cut, then 20% more (v8)
   const farmL = parts.farmL;
   const elbow = 0.86;
-  const armK = Math.min(1, reach / (uarmL.h * elbow + farmL.h * 0.93));
+  const armK = Math.min(1.25, reach / (uarmL.h * elbow + farmL.h * 0.93));
   const armKw = Math.min(1, Math.max(armK, 0.8));
   return {
     armK,
