@@ -64,10 +64,19 @@ Set up like the Professor of Us engine (`core/engines/pou/`), so `make test` cov
   - `rig/`: `Person` (from `Person.tsx`), `Puppet`, `BigFace`, the joints with the v8 arms (reach ×1.44 of the waist
     cut, elbow at 0.86), `strideAt`, and the cast scale (`personH`, `PEER` 0.88, Scarf sets the scale).
   - `film/`: `Cam` and `View` with the edge clamp, `Crowd` (height at depth per set, feet never slide, kinds and tints),
-    one `Readout` design (L5), fact pills with an optional source line (L9), rule cards, the title, grade and grain.
+    one `Readout` design (L5), fact pills with an optional source line (L9), rule cards, the title, grade and grain,
+    and the workflow toolkit (W3–W7 below): camera roll and shake, `Rim` (a rim light from the set's key-light side),
+    far-limb depth shading, `Atmosphere` (dust motes, rain, fog bands, god rays, lens streaks, stars), `Foreground`
+    (a soft blurred near layer), `Letterbox` (scope bars for drama beats), `FreezeFrame` (time-stop with a flash, a
+    cool tint, hanging particles and a corner badge), `Afterimage` (speed trails), data graphics (`DataCard` with a
+    counter and curve, `Compare` bars, `Dimension` arrows, `Callout` labels, `Meter`, `Badge`, `Blueprint` diagrams)
+    and `EndScreen` (the closing question in serif italic, a comment bubble, a subscribe pill, the cast lined up).
   - `actions/`: functions that return a pose over time. The first set: `walkIn`, `walkOut`, `stop`, `wave`, `point`,
-    `shout`, `lookAt`, `react(mood)` (neutral, smug, shocked, worried, proud, sad), `hold(prop)`, `turn`, `idle`
-    (blink, breathe, drift).
+    `shout`, `lookAt`, `react(mood)`, `hold(prop)`, `turn`, `idle` (a blink every 2.5–4 s, breathing, drift), plus
+    `run`, `reach`, `shrug`, `cheer`, `armsCrossed`, `explain` (one arm out) and `handOff`. The moods are the
+    workflow's named set (W2): neutral, smile, happy, joy, surprised, shocked, scared, worried, nervous, angry,
+    determined, sad, cry, smirk, sleepy, thinking, confused, awe, each mapped onto BigFace for Scarf and onto the
+    eyes and brows of the rest of the cast.
   - `shots/`: the shot-sheet renderer. It reads a film's `shots.yaml`, builds each shot from a library set, the cast
     and actions, and slots in custom shots by id from the film's `custom/` folder.
 - **`scripts/`** (Python, under the code-health gates):
@@ -132,6 +141,8 @@ Its stage skills are new files, `skills/studio/studio-suppose-*.md`. The v1 form
    - the title and 3 thumbnails made by the thumbnail skill (GPT Image 2.6 with Scarf as the reference, caption and
      number set in code in the channel typeface), shown in a phone feed mock beside benchmark thumbnails;
    - the five lines and `> UNDER:` the stage already asks for;
+   - three alternative titles, a one-paragraph synopsis, and the character reference: every cast member in the film
+     with their role and signature item (W10);
    - an outline in the script prompt's ten-step arc (see Prompts and skills): the cold open, the one rule that limits
      the power, the consequence beats, the hidden cost, the heart and its planted detail, the crisis and its either/or,
      the resolution, whether "Is any of this real?" is used, the sting;
@@ -200,13 +211,21 @@ what has worked instead of rewriting prompts each time.
   - `cast-pass.md`: run on the finished script. It returns the same text with each character line tagged with its
     speaker and the cast library character who plays them, for the free character voices (Decision 8), and lists
     every factual claim for the claims ledger. The spoken text does not change;
-  - `shots.md`: turns the script into the first draft of `shots.yaml`, sentence by sentence: set, angle, camera, who
-    acts and how, readout changes, holds with their reasons;
-  - `set-plate.md`: a painted set in style A (GPT Image 2.6, high, 2K, 16:9), one per angle;
+  - `shots.md`: turns the script into the first draft of `shots.yaml`. It first splits the narration into beats of
+    about 13 words (never more than 15, about 6 s each), then gives each beat a shot type from the vocabulary (W1),
+    a set and angle, a camera move, who is in frame and what each does, the expression change on the beat word, any
+    number to show on screen, readout changes, the mood of the light, and holds with their reasons;
+  - `set-plate.md`: a painted set in style A (GPT Image 2.6, high, 2K, 16:9), one per angle. Self-contained every
+    time, ending in a fixed style A footer and negatives (W8): no people, no text, no logos; one strong visible light
+    source; 60–75% of the frame in dark mid-tones with 1–3 bright accents; a bright area where the characters will
+    stand; depth layers from far to near; walls, floor and sky painted past the frame edge so camera moves never
+    show an edge;
   - `parts-sheet.md`: a character parts sheet in the cast's layout, so `rig.py` can map it;
   - `cast-lineup.md`: a new character in the style A lineup, before its parts sheet;
   - `thumbnail.md`: the thumbnail art (used by the thumbnail skill);
-  - `narration.md`: how Luc is directed (storyteller, never documentary, one job per line);
+  - `narration.md`: how Luc is directed, one job per line: a warm, clear storyteller, conversational and slightly awed,
+    natural pauses at ellipses, weight on contrast words and numbers, emotional moments a little slower, never
+    robotic, shouty or documentary (W9);
   - `character-voice.md`: the Qwen3 VoiceDesign description for a character's voice;
   - `score.md`: the ElevenLabs Music brief for a film's cues.
 
@@ -228,6 +247,56 @@ what has worked instead of rewriting prompts each time.
 - **Topic skill.** `.claude/skills/say-suppose-topics/` is rewritten around `prompts/topic.md`: one model, 35 titles,
   the owner picks. The three-model room and the blind scorer are retired (Decision 13).
 
+## Learnings from the "What If animation" workflow
+
+The owner's final input (2026-11-27): a third-party guide with a manual and an agentic master prompt for this genre.
+Its visual rules describe a dark-ink stick-figure look; ours stays style A (painted cut-outs, colour Scarf, BigFace)
+as it cleared the bar. What we take is the film craft, translated to our kit:
+
+- **W1 Shot vocabulary.** Every film mixes, in about these shares: establishing wide 10% (opens each new place, small
+  figures, slow push-in), medium two-shot 25%, over-the-shoulder 10% (a big blurred near figure, the other sharp),
+  giant face close-up 10–15% (reactions and "you" moments, the place blurred and darker behind), insert or macro 10%
+  (a hand, a phone screen, a watch), top-down or diagram 5%, one to three freeze-frames, plus data cards, blueprint
+  diagrams, the title card and the end screen. Never the same type twice in a row. Compose on thirds; only the giant
+  close-up is centred.
+- **W2 Acting on the beat.** Expressions change on the word that earns them, from the named set (see `actions/`).
+  Everyone blinks every 2.5–4 s and breathes, so nobody is frozen. Talking is shown by expression, head and hands;
+  there is no lip-sync and the narrator never has a mouth on screen.
+- **W3 Camera never fully still.** Every shot has a push-in, a lateral drift, a pull-out for a reveal, a slight roll
+  for unease or a shake for an impact. Moves stay inside one set; a hard cut is a change of place.
+- **W4 A populated world.** Most scenes have two or three characters. When the narration mentions someone reacting,
+  speaking or watching, they are in frame with a visible reaction. No more than about four characters in focus;
+  background crowds are fine. Everyone has ground contact and a contact shadow.
+- **W5 Every spoken number on screen.** A number or measurement the narrator says appears as it is spoken, at most
+  one or two short labels at once, popped in with a bouncy scale and a soft blip, faded before the cut. Gold for key
+  numbers, coral for alarming ones, cream for labels, blueprint blue for diagrams. The premise number stays the one
+  `Readout` (L5); other numbers use the data graphics. Science segments and "Is any of this real?" use the
+  `Blueprint` look: a navy grid, light-blue line art, gold highlights, labels on the words.
+- **W6 The cast system.** Each recurring character keeps one signature item and colour for the whole film, chosen to
+  differ in garment type and headwear so they read at small sizes. Scarf's colour is never used on anyone else.
+  Crowd extras carry no signature colour (the existing desaturated tints). Children stand at 0.72 of adult height.
+  New characters are made from roles (best friend, scientist, skeptic, authority, kid, antagonist) in
+  `prompts/cast-lineup.md`, each with one signature item.
+- **W7 Light, depth and atmosphere.** One key light per set with a visible source and its spill. Characters get a rim
+  light on the side facing that source (`Rim`, from the set's key-light direction in `set.json`) and far limbs a
+  touch darker. Most medium shots have something soft in the foreground. Nearly every shot has atmosphere (dust,
+  rain, fog, god rays, lens streaks, stars). The mood follows the beat: tense goes darker and cooler, tender or
+  triumphant goes warm, explanation goes to the dark void or blueprint. Scope letterbox bars (2.39:1) animate in for
+  the title, freeze-frames, the climax and intense close-ups; other shots keep the v8 full frame.
+- **W8 Self-contained image prompts.** Every GPT Image prompt describes everything from scratch, never "same as
+  before", and ends with the fixed style A footer and its negatives. A character in a parts sheet or thumbnail is
+  re-described in full each time, with the reference image attached.
+- **W9 Narration direction.** The voice instruction above goes into `prompts/narration.md`.
+- **W10 The G1 packet.** Title plus three alternatives, a one-paragraph synopsis and the character reference.
+- **W11 Look check before the full cut.** The cold open (about 30 s) renders first at 720p, and the agent checks it
+  against W1–W7 and the five qualities (L6.2) before rendering the whole film. Not an owner step.
+- **W12 Quality checklists.** Each prompt ends with its own checklist, and the model fixes any failure before
+  answering. `scriptcheck.py` and `sheetcheck.py` re-check the measurable items.
+
+Not taken: per-clip AI image and video generation (we animate locally and reuse sets), the 35-clip cap, the aspect
+question (16:9), the "no approval step" rule (our gates stand), the stick-figure character design and its colours,
+and the third-party render plugin.
+
 ## Learnings checklist
 
 Where each learning (`docs/research/2026-11-27-say-suppose-learnings.md`) is applied, with the owner's overrides.
@@ -243,6 +312,7 @@ Where each learning (`docs/research/2026-11-27-say-suppose-learnings.md`) is app
 | L7 "you" | Scarf fixed in the cast library, never named (Decision 12), with one signature attitude carried in every film and thumbnail |
 | L8 pacing | `sheetcheck`: every shot has a character acting; holds over 5 s warn unless given a reason (Decision 9). BigFace keeps its mouth (Decision 6); no lip-sync |
 | L9 series and sign-off | Twist into a Part 2 in the outline; source line under fact pills; full sources in the description from the claims ledger at G5; one closing line tying like and subscribe to the climax choice |
+| W1–W12 workflow | Kit toolkit and actions, `prompts/shots.md`, `prompts/set-plate.md`, `prompts/narration.md`, `sheetcheck.py`, the G1 packet and the cold-open look check |
 
 ## Credits per film
 
@@ -270,8 +340,10 @@ only on the owner's OK; the G1 approval covers the listed art.
 - **A shot sheet that does not build:** `sheetcheck.py` runs before any render and fails on an unknown set, angle,
   character, prop, action or custom id; overlapping or gapped shot times; a shot past the narration's end; a camera
   move outside the set's bounds; a shot where no character acts (a camera move over a still set is a slide, L8.3).
-  It warns, without failing, on a hold over 5 s that has no `hold:` reason, and on a readout change that is not on a
-  marked story beat (L5.2).
+  It also fails on a character line whose speaker is not in frame (W4). It warns, without failing, on a hold over
+  5 s that has no `hold:` reason; a readout change that is not on a marked story beat (L5.2); two shots in a row of
+  the same type; a shot mix far from the vocabulary's proportions (W1); more than four characters in focus; and a
+  number the narrator says that does not appear on screen (W5).
 - **A take that does not match the script:** the take is trimmed or retaken (a retake beyond the quote needs an OK).
 - **The render queue is held:** `studio.jobs` waits; with `--no-wait` it exits 75 and the session says who holds it.
 - **A library file that changed or is missing:** the manifest's sha256 check fails before render, and the file is
