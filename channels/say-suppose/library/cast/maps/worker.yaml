@@ -1,0 +1,7 @@
+id: worker
+sheet: s4
+# head, torso, uarmL, farmL, uarmR, farmR, thighL, shinL, thighR, shinR (an int, "<n>top" or "<n>flip")
+pieces: [11, 12, 13, 17, 14, 18, 15, 20, 16, 21]
+hip: 0.9
+roles: [crowd, worker]
+signature: "green cap, cream shirt with rolled sleeves, green overall bib"

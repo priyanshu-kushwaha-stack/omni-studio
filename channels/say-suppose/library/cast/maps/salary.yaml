@@ -1,0 +1,7 @@
+id: salary
+sheet: s1
+# head, torso, uarmL, farmL, uarmR, farmR, thighL, shinL, thighR, shinR (an int, "<n>top" or "<n>flip")
+pieces: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+hip: 0.86
+roles: [crowd, salaryman]
+signature: "messy black hair, grey-blue suit, red tie, brown satchel across the chest"

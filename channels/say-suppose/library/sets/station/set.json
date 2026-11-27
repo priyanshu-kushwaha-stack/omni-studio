@@ -1,0 +1,10 @@
+{
+  "id": "station",
+  "place": "Shinjuku-style station concourse at rush hour",
+  "ambience": "murmur",
+  "angles": {
+    "wide":  {"plate": "sets/station/wide.png",  "scarf": {"x": 640, "y": 600, "s": 0.2},   "h": {"horizon": 430, "at": 600},  "crowd": {"back": [470, 596], "front": [606, 650]}, "clear": [500, 780, 560, 700], "bounds": {"zmax": 2.0}, "key": {"side": "left", "color": "#ffd9a0"}},
+    "high":  {"plate": "sets/station/high.png",  "scarf": {"x": 640, "y": 470, "s": 0.133}, "h": {"horizon": -150, "at": 470}, "crowd": {"back": [205, 466], "front": [474, 670]}, "clear": [500, 780, 395, 545], "bounds": {"zmax": 2.0}, "key": {"side": "top", "color": "#ffe6b8"}},
+    "close": {"plate": "sets/station/close.png", "scarf": {"x": 640, "y": 652, "s": 0.28},  "h": {"fixed": 0.92},              "crowd": {"back": [612, 622]},                        "clear": [500, 780],           "bounds": {"zmax": 2.6}, "key": {"side": "left", "color": "#ffd9a0"}}
+  }
+}
