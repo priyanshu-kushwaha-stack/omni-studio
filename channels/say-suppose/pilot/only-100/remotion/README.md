@@ -81,3 +81,7 @@ local: `../audio/pilot_mix.py <narr_a.wav> <raw.wav>`, then `ffmpeg -af loudnorm
   smiles, frowns or opens); `Scarf4` maps the old ScarfCutPose moods onto it.
 - Scarf is in full colour (parts sheet job `f56184eb`, 2 credits, owner OK) as `SCARFC`; the faded one stays as
   `SCARF_FADED` in `Cast4.tsx`. The rice ball is held at the mouth; the selfie uses her own phone piece.
+
+## Pilot v8: cleared the bar (owner, 2026-11-27)
+
+The owner passed v8 as clearing the bar beside Awaken and YOUniverse. Arms reach mid-thigh (`reach` ×1.44 in `Person.tsx`) and keep a real elbow. This build is the quality reference for the restarted channel. It is a pilot, not a pipeline video: no gate was passed.
