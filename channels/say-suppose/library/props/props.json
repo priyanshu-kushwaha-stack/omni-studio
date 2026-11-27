@@ -1,0 +1,42 @@
+{
+ "rice": {
+  "src": "props/rice.png",
+  "w": 257,
+  "h": 232
+ },
+ "bag": {
+  "src": "props/bag.png",
+  "w": 261,
+  "h": 544
+ },
+ "phone": {
+  "src": "props/phone.png",
+  "w": 123,
+  "h": 215
+ },
+ "backpack": {
+  "src": "props/backpack.png",
+  "w": 340,
+  "h": 451
+ },
+ "cane": {
+  "src": "props/cane.png",
+  "w": 114,
+  "h": 558
+ },
+ "tote": {
+  "src": "props/tote.png",
+  "w": 253,
+  "h": 414
+ },
+ "pack": {
+  "src": "props/pack.png",
+  "w": 413,
+  "h": 534
+ },
+ "box": {
+  "src": "props/box.png",
+  "w": 349,
+  "h": 336
+ }
+}

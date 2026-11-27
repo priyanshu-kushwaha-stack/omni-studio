@@ -1,5 +1,7 @@
 # What-if engine: bringing the paper-cut rig into omni-studio
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 2026-11-06. The owner chose to do this in the Say Suppose session ("Do it here"), approved the shape below, then
 adopted the reference study's quality rules ("Adopt all", `docs/research/2026-11-06-say-suppose-reference-study.md`),
 which add the lighting, acting, shot and sound pieces listed under "Quality layer".

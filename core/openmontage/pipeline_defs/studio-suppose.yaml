@@ -1,0 +1,130 @@
+# omni-studio pipeline (new file, see core/PATCHES.md). Say Suppose films on the film kit
+# (docs/superpowers/specs/2026-11-27-say-suppose-film-kit-design.md): painted sets and cut-out rigged characters from
+# the channel library, timed by a shot sheet and rendered by the kit (core/engines/suppose/kit, `filmRoot`) through
+# the engine scripts in core/engines/suppose/scripts. Renders come from the kit, not video_compose, so render_runtime
+# is "external" and no stage lists OpenMontage tools. No lip-sync, no line-boil.
+#
+# Every stage is a human gate. Agents write status awaiting_human and stop; only `omni approve` passes a gate
+# (lib/studio_approval.py). Gate -> stage, the five stage names of studio-whatif so omni approve, the stage checks,
+# the media proofs and the signed upload work unchanged:
+# G1 proposal (packaging: title, three thumbnails, outline, and the art list with its credit quote; the owner's G1
+# approval OKs that art spend), G2 story_script (story lock on a 720p first cut: script, voice B narration and the
+# free local character voices), G3 final_edit (picture lock: Luc narration, time warp, final score, 1080p),
+# G4 final_watch, G5 publish_prep.
+#
+# Paid calls, each only after the owner's OK with tool, model and cost stated: Higgsfield GPT Image 2.6 (2 credits an
+# image; art approved at G1), Luc through elevenlabs_v4 (only after G2), ElevenLabs Music (after G2, quoted).
+# Voice B and the character voices (Qwen3 VoiceDesign) are local and free.
+name: studio-suppose
+version: "1.0"
+description: >
+  Say Suppose films on the film kit: one what-if per film, told in second person with the side characters speaking in
+  their own voices. 900-1,050 word scripts, about 7 minutes, 16:9. Every real-world claim is cited in claims.md.
+  Five owner gates, G1-G5.
+category: custom
+stability: beta
+default_checkpoint_policy: manual_all
+
+extensions:
+  custom_scripts: true
+  custom_playbooks: true
+  custom_skills: true
+  custom_tools: true
+
+required_skills:
+  - studio/studio-suppose-proposal
+  - studio/studio-suppose-script
+  - studio/studio-suppose-edit
+  - studio/studio-suppose-final-watch
+  - studio/studio-suppose-publish
+  - meta/checkpoint-protocol
+
+compatible_playbooks:
+  recommended:
+    - say-suppose
+  custom_allowed: true
+
+# Automated checks per stage: `omni qc` runs them, `omni approve` re-runs them before it signs (core/studio/checks.py).
+# The same as studio-whatif. studio_warnings run and are reported (WARN) but never block a gate.
+metadata:
+  target_seconds: 420
+  min_seconds: 330
+  max_seconds: 510
+  studio_checks:
+    story_script: [claims, cast_claims, clicks]
+    final_edit: [loudness, clicks, similarity]
+    final_watch: [loudness, clicks, similarity]
+    publish_prep: [claims, cast_claims, loudness, clicks, similarity, upload_request]
+  studio_warnings:
+    final_edit: [opening]
+    final_watch: [opening]
+    publish_prep: [opening]
+
+stages:
+  - name: proposal
+    skill: studio/studio-suppose-proposal
+    produces:
+      - proposal_packet
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G1 packet, the title and three alternatives, synopsis, characters with their signature items, the ten-step outline
+      - Three thumbnails in a phone feed mock beside benchmark thumbnails; title and thumbnail read as one promise
+      - The art list from art.yaml with its total credit quote; the owner's G1 approval OKs that art spend
+    success_criteria:
+      - outline.md is the raw answer to prompts/outline.md with every labelled block
+      - Three thumbnails in art/, art.yaml with the art list and its credit quote, the G1 review page published
+      - Schema-valid proposal_packet with render_runtime external
+
+  - name: story_script
+    skill: studio/studio-suppose-script
+    required_artifacts_in:
+      - proposal_packet
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G2 story lock on the 720p first cut, with the script, voice B narration and the free character voices
+      - The owner's script read and listen applied before animation started
+      - Every real-world claim cites a claims.md row; no paid call beyond the art G1 approved
+    success_criteria:
+      - script.md from prompts/script.md passes scriptcheck.py; shots.yaml passes sheetcheck.py
+      - The cold-open look check done (W1-W7, L6.2); a 1280x720 cut of the whole film in render/
+      - omni qc ... story_script passes (claims, cast_claims, clicks); the G2 review page published
+
+  - name: final_edit
+    skill: studio/studio-suppose-edit
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G3 picture lock, Luc narration (paid, quoted, only after G2) with every take checked against the script
+      - The time warp applied, so the film plays on Luc time; the final score (paid and quoted) or a library cue
+      - Every G2 note applied, or a one-line reason why not; a 1920x1080 render
+    success_criteria:
+      - omni qc final_edit passes (loudness, clicks, similarity); an opening WARN is the owner's call
+
+  - name: final_watch
+    skill: studio/studio-suppose-final-watch
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G4 the owner watches at 1x, with cold viewers
+    success_criteria:
+      - Every G4 watch item answered by the owner; omni qc final_watch passes
+
+  - name: publish_prep
+    skill: studio/studio-suppose-publish
+    produces: []
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - G5 publish sheet and upload.yaml complete (kids and AI disclosure answered); private first
+    success_criteria:
+      - publish.md and upload.yaml written; omni upload prints a private dry run; nothing uploaded by an agent

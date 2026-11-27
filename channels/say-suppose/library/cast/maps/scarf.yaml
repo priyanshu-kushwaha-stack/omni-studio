@@ -1,0 +1,7 @@
+id: scarf
+sheet: s5
+# head, torso, uarmL, farmL, uarmR, farmR, thighL, shinL, thighR, shinR (an int, "<n>top" or "<n>flip")
+pieces: [0, 1, 2, 6, 3, 7, 4, 8, 5, 9]
+hip: 0.5
+roles: [hero]
+signature: "Scarf's full-colour scarf; this colour is never used on anyone else"

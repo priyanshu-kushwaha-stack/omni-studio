@@ -1,5 +1,7 @@
 # Say Suppose: review on a first cut, five gates, small rooms
 
+> **Superseded (2026-11-26):** Say Suppose is restarting from scratch; this is the archived v1 design. See `channels/say-suppose/RESTART.md`.
+
 Owner, 2026-11-10: "When the script is coming to me for review it should come with narration also ... done using
 locally available tools. When things are finalised then we will use ElevenLabs audio finally in the video ... and that
 too if it actually improves quality." Then: "lets generate first cut of video as well ... first cut is shown with first

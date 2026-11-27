@@ -1,0 +1,96 @@
+# Pilot v8, "What if only 100 people could ever see you?", rebuilt on the kit (Task 17, the kit's acceptance test).
+# Times are the pilot's: seconds on the voice B timeline (Pilot60.tsx SHOTS). The render plays them on Luc's
+# narration: scripts/timewarp.py writes film-luc.json from film.json with the pilot's cue sheets (see README.md).
+# S1, S3a and S3b are sheet shots; every other shot is the pilot's own code in custom/Shots.tsx.
+film: pilot-only-100
+fps: 30
+size: [1280, 720]
+audio: audio/mix.wav
+beats:
+  - {at: 0.4, name: busiest station}
+  - {at: 3.77, name: hello}
+  - {at: 10.5, name: rice ball}
+  - {at: 19.55, name: the list}
+  - {at: 39.2, name: title}
+  - {at: 42.95, name: rule one}
+  - {at: 50.85, name: rule two}
+  - {at: 53.87, name: rule three}
+# The pilot's crowd mix (FilmParts.tsx KINDS): weighted so the yellow backpacker and the green-overall worker stay rare.
+crowd_mix: &mix [salary, office, student, gent, gran, salary, office, student, gran, gent, salary, packer, gran, worker]
+shots:
+  # High angle: "the busiest train station on Earth". Pilot: High, z 1.0 -> 1.3, crowd 22 + 16, his eyes roam.
+  - id: S1
+    from: 0.0
+    to: 3.77
+    type: wide
+    set: station
+    angle: high
+    camera: {move: push, z: [1.0, 1.3], focus: [640, 420]}
+    cast:
+      - who: scarf
+        at: [640, 470]
+        acts:
+          - {act: idle}
+          - {act: lookAt, dir: 1, at: 0.2, to: 2.1}
+          - {act: lookAt, dir: -1, at: 2.24}
+    crowd:
+      - {band: back, n: 22, speed: 95, seed: 0, kinds: *mix}
+      - {band: front, n: 16, speed: 114, seed: 100, kinds: *mix}
+  - {id: S2, from: 3.77, to: 4.95, type: custom, custom: S2}
+  # High angle, pulling back as the river of people thickens (dense 1.5). The fact pill runs on into S3b.
+  - id: S3a
+    from: 4.95
+    to: 7.0
+    type: wide
+    set: station
+    angle: high
+    camera: {move: pull, z: [1.12, 1.32], focus: [640, 420]}
+    cast:
+      - who: scarf
+        at: [640, 470]
+        acts:
+          - {act: idle}
+          - {act: lookAt, dir: 1, at: 4.95, to: 5.75}
+          - {act: lookAt, dir: -1, at: 5.89}
+    crowd:
+      - {band: back, n: 33, speed: 150, seed: 0, kinds: *mix}
+      - {band: front, n: 24, speed: 180, seed: 100, kinds: *mix}
+    labels:
+      - {kind: pill, text: "≈ 3,500,000", unit: people / day, source: "Shinjuku Station, Tokyo · busiest on Earth", says: three and a half million, at: 6.0, to: 10.1}
+  # Ground-level wide: "not one turns around". Worried from 7.0, eyes still roaming.
+  - id: S3b
+    from: 7.0
+    to: 10.5
+    type: wide
+    set: station
+    angle: wide
+    camera: {move: push, z: [1.05, 1.22], focus: [640, 500]}
+    cast:
+      - who: scarf
+        at: [640, 600]
+        acts:
+          - {act: idle}
+          - {act: react, mood: worried, at: 7.0}
+          - {act: lookAt, dir: -1, at: 7.0, to: 7.7}
+          - {act: lookAt, dir: 1, at: 7.85, to: 9.7}
+          - {act: lookAt, dir: -1, at: 9.82}
+    crowd:
+      - {band: back, n: 21, speed: 170, seed: 200, kinds: *mix}
+      - {band: front, n: 12, speed: 170, seed: 300, kinds: *mix}
+    labels:
+      - {kind: pill, text: "≈ 3,500,000", unit: people / day, source: "Shinjuku Station, Tokyo · busiest on Earth", says: three and a half million, at: 6.0, to: 10.1}
+  - {id: S4a, from: 10.5, to: 12.0, type: custom, custom: S4a}
+  - {id: S4b, from: 12.0, to: 13.3, type: custom, custom: S4b}
+  - {id: S4c, from: 13.3, to: 14.8, type: custom, custom: S4c}
+  - {id: S4d, from: 14.8, to: 16.75, type: custom, custom: S4d}
+  - {id: S5, from: 16.75, to: 19.6, type: custom, custom: S5}
+  - {id: S6, from: 19.6, to: 24.1, type: custom, custom: S6}
+  - {id: S7, from: 24.1, to: 32.05, type: custom, custom: S7}
+  - {id: S8, from: 32.05, to: 33.2, type: custom, custom: S8}
+  - {id: S9, from: 33.2, to: 39.3, type: custom, custom: S9}
+  - {id: S10, from: 39.3, to: 42.9, type: custom, custom: S10}
+  - {id: S11, from: 42.9, to: 50.9, type: custom, custom: S11}
+  - {id: S12, from: 50.9, to: 53.8, type: custom, custom: S12}
+  - {id: S13, from: 53.8, to: 56.95, type: custom, custom: S13}
+  # The pilot's last shot runs to its 69.9 s comp; 59.56 on this timeline warps to 69.899 s (2097 frames, as v8).
+  - {id: S14, from: 56.95, to: 59.56, type: custom, custom: S14}
