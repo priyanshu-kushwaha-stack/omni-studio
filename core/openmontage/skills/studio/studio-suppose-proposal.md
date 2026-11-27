@@ -14,6 +14,11 @@ the repo root. `<video>` is `channels/say-suppose/videos/<id>`.
 
 ## Do
 
+0. **Fresh worktree setup (once per checkout).** A worktree has no virtualenv: link the main checkout's,
+   `ln -s "$(git worktree list --porcelain | head -1 | cut -d' ' -f2-)/.venv" .venv` (git-ignored), and run Python as
+   `PYTHONPATH="$PWD/core/openmontage:$PWD/core" .venv/bin/python ...`. `.venv-media` (local voices) and the library
+   images are used from the main checkout automatically (`library.media_root`). In `core/engines/suppose/kit` run
+   `pnpm install --frozen-lockfile` once (versions pinned in `core/lock.yaml`).
 1. `.venv/bin/omni new-video say-suppose "<title>" --format film`, and export the `OPENMONTAGE_PROJECTS_DIR` line it
    prints.
 2. **Outline.** Fill `channels/say-suppose/prompts/outline.md`: `{{title}}`, `{{series_context}}` ("standalone", or
@@ -30,6 +35,23 @@ the repo root. `<video>` is `channels/say-suppose/videos/<id>`.
    (one plate per angle, `prompts/set-plate.md`), character (`prompts/cast-lineup.md`, then `prompts/parts-sheet.md`)
    and prop, each with its filled prompt and references, and the total credit quote (GPT Image 2.6 at 2 credits an
    image). Reuse the library before asking for new art. The owner's G1 approval OKs exactly this spend and no more.
+   `review.py` reads exactly these keys (`items`, each item's `name`, and `quote`); any other names leave the G1 page
+   with an empty art list and a "No credit quote" warning:
+
+   ```yaml
+   quote: "6 credits: 3 images x 2 (GPT Image 2.6)"   # the total; shown on the G1 page
+   items:
+     - {name: "station set (library, wide and high)", kind: reuse}
+     - {name: "scarf (library)", kind: reuse}
+     - name: "cellar, wide plate"
+       kind: set                 # set | cast | prop | reuse
+       prompt: set-plate.md      # the prompt file it fills
+       filled: "<the filled prompt, word for word>"
+       refs: [2ecb2081-44cd-4d71-bf7f-5ef855371405]   # reference images or jobs
+       images: 1
+       credits: 2
+       job: null                 # the Higgsfield job id, written at story_script step 5
+   ```
 5. **Review page.** `.venv/bin/python core/engines/suppose/scripts/review.py <video> proposal` writes
    `<video>/review/proposal.html`; publish it as an Artifact and give the owner the link.
 6. Write a schema-valid `proposal_packet`. **Render runtime:** this pipeline renders with the film kit

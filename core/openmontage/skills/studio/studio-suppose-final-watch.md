@@ -6,27 +6,35 @@ omni-studio skill for the `studio-suppose` pipeline. Paths, `$ROOT`, `$V` and `<
 **Reads:** the 1080p render G3 (picture lock) approved, `claims.md`. **Writes:** `qc/final_watch.json`,
 `channels/say-suppose/taste.md` lines, the `final_watch` checkpoint.
 
-0. **G3 is passed, so the film's art joins the library.** Only now, and only for a film the owner passed. From `$ROOT`,
-   with `V=channels/say-suppose/videos/<id>` and `L=channels/say-suppose/library`:
+0. **G3 is passed, so the film's art and voices join the library.** Only now, and only for a film the owner passed.
+   The library is split: its JSON (maps, `cast.json`, `set.json`, `manifest.yaml`) is tracked in this checkout (`$L`),
+   its images are git-ignored and live once in the main checkout (`$LM`, `library.media_root`), so every worktree
+   renders from the same files. From `$ROOT`, with `V=channels/say-suppose/videos/<id>`:
 
    ```sh
-   mkdir -p $L/cast/pieces $L/cast/maps && mv $V/art/cast/pieces/* $L/cast/pieces/ && mv $V/art/cast/maps/* $L/cast/maps/
-   for d in $V/art/sets/*/; do mv "$d" $L/sets/; done; rm -f $V/art/cast/cast.json
-   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/rig.py $L
+   L=channels/say-suppose/library
+   LM=$(PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "from library import media_root; print(media_root('say-suppose'))")
+   mkdir -p $LM/cast/pieces $L/cast/maps && mv $V/art/cast/pieces/* $LM/cast/pieces/ && mv $V/art/cast/maps/* $L/cast/maps/
+   for d in $V/art/sets/*/; do s=$(basename "$d"); mkdir -p $L/sets/$s $LM/sets/$s; mv "$d"set.json $L/sets/$s/; mv "$d"* $LM/sets/$s/; done
+   rm -f $V/art/cast/cast.json
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/voices.py --to-maps $V $L
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/rig.py $L --pieces $LM/cast/pieces
    ```
 
-   (skip the lines for art the film did not make). Maps and `set.json` files move with the pieces, and `rig.py` rebuilds
-   `$L/cast/cast.json` from every map. A new prop goes into `$L/props/props.json` by hand. Then record each moved
-   file with its Higgsfield job id and prompt name from `art.yaml`, one call per file:
+   (skip the lines for art the film did not make; when this checkout is the main checkout, `$LM` is `$L`).
+   `voices.py --to-maps` writes each `<video>/voices.yaml` entry into its map as `voice: {desc, seed}` (a library
+   character or one the film made), and `rig.py` rebuilds `$L/cast/cast.json` from every map, voices included. A new
+   prop goes into `$L/props/props.json` by hand, its image into `$LM/props/`. Then record each moved image with its
+   Higgsfield job id and prompt name from `art.yaml`, one call per file:
 
    ```sh
-   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys; from pathlib import Path; from library import Library; Library.for_channel('say-suppose').add(Path(sys.argv[1]).resolve(), job=sys.argv[2], prompt=sys.argv[3])" $L/cast/pieces/<file>.png <job-id> <prompt-name>
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys; from pathlib import Path; from library import Library; Library.for_channel('say-suppose').add(Path(sys.argv[1]).resolve(), job=sys.argv[2], prompt=sys.argv[3])" $LM/cast/pieces/<file>.png <job-id> <prompt-name>
    ```
 
    and check `PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "from library import Library; print(Library.for_channel('say-suppose').verify())"` prints `[]`.
-   The files stay out of git (images); `manifest.yaml`, the maps, `cast.json` and the `set.json` files are committed
-   with the film. Re-stage the public dir afterwards (`studio-suppose-edit` step 7); the render is unchanged because
-   the library now supplies what the video's `art/` supplied.
+   The images stay out of git; `manifest.yaml`, the maps, `cast.json` and the `set.json` files are committed with the
+   film. Re-stage the public dir afterwards (`studio-suppose-edit` step 7); the render is unchanged because the
+   library now supplies what the video's `art/` supplied.
 1. **The file the owner watches.** Use `<video>/render/film-1080p.mp4` as G3 approved it. If anything changed since
    G3, re-render it once from `core/engines/suppose/kit` the way `studio-suppose-edit` step 7 does (`--step
    final-watch`, `--queue render`, `--scale=1.5`). Never stitch or mux the final-watch file by hand: G4's media proof

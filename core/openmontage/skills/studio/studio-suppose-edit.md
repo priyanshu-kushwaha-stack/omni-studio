@@ -7,7 +7,8 @@ his timing, the final score goes in and the owner's G2 notes are applied (spec 2
 **Gate:** G3, stage `final_edit`.
 **Reads:** `cast-pass.yaml`, `audio/takes/`, `audio/cues_b.json`, `shots.yaml`, `film.json`, `review/notes.md`,
 `prompts/narration.md`, `prompts/score.md`.
-**Writes:** `audio/luc/` takes and their whisper transcripts, `audio/narration_luc.wav`, `audio/cues_luc.json`, `film-luc.json` (the warped film), `audio/mix.wav`, `render/film-1080p.mp4`, `review/final_edit.html`, the `final_edit` checkpoint.
+**Writes:** `audio/luc/` takes and their whisper transcripts, `audio/narration_luc.wav`, `audio/cues_luc.json`,
+`audio/narration_luc.words.json`, `film-luc.json` (the warped film), `audio/mix.wav`, `render/film-1080p.mp4`, `review/final_edit.html`, the `final_edit` checkpoint.
 
 ## Steps
 
@@ -26,6 +27,12 @@ his timing, the final score goes in and the owner's G2 notes are applied (spec 2
    PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys,yaml; from pathlib import Path; from stitch import stitch, gap_after; v=Path(sys.argv[1]); L=yaml.safe_load((v/'cast-pass.yaml').read_text())['lines']; stitch([(f\"{l['n']:03d}_{l['speaker']}\", v/'audio'/('luc' if l['speaker']=='narrator' else 'takes')/f\"{l['n']:03d}_{l['speaker']}.wav\", gap_after(l['text'], l['speaker'], i==len(L)-1)) for i,l in enumerate(L)], v/'audio/narration_luc.wav', v/'audio/cues_luc.json')" $V
    ```
 
+   Then the final track's words, for the G3 clicks and `opening` checks (the same local transcribe `voices.py` runs):
+
+   ```sh
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys; from pathlib import Path; import voices; w=Path(sys.argv[1])/'audio'/'narration_luc.wav'; voices.words([w]); voices.write_words(w, w.with_name('narration_luc.words.json'))" $V
+   ```
+
 4. **Time warp.** `shots.yaml` and `film.json` stay on voice B time; the film plays on Luc time:
 
    ```sh
@@ -40,7 +47,9 @@ his timing, the final score goes in and the owner's G2 notes are applied (spec 2
    PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/mix.py $V <score.wav> --luc
    ```
 
-   which reads `film-luc.json` and `audio/narration_luc.wav` and writes `audio/mix.wav`. After the owner's notes
+   which reads `film-luc.json` and `audio/narration_luc.wav` and writes `audio/mix.wav`. Custom shots need nothing:
+   `film-luc.json` carries the knots (`warp`), and the kit unwarps time for custom shots, so their bodies keep the
+   voice B times they were written against. After the owner's notes
    change `shots.yaml`, re-run `sheetcheck.py --emit`, then this step again.
 5. **Final score.** Either a library cue from `channels/say-suppose/library/scores/` that fits, or a new score per
    `prompts/score.md` (Higgsfield ElevenLabs Music, about 0.145 credits a second): quote it, wait for the owner's OK,
@@ -55,7 +64,8 @@ his timing, the final score goes in and the owner's G2 notes are applied (spec 2
    ```
 
    (the sheet is laid out at 1280x720; `--scale=1.5` gives 1920x1080).
-8. **QC and review.** `.venv/bin/omni qc say-suppose <id> final_edit --media <video>/render/film-1080p.mp4` must pass
+8. **QC and review.** `.venv/bin/omni qc say-suppose <id> final_edit --media <video>/render/film-1080p.mp4 --words
+   <video>/audio/narration_luc.words.json` must pass
    (loudness at the `film` target, clicks, similarity); an `opening` WARN is the owner's call.
    `.venv/bin/python core/engines/suppose/scripts/review.py <video> final_edit`; publish the page. Write the
    `final_edit` checkpoint with `status: awaiting_human` and stop; only the owner passes the gate, with

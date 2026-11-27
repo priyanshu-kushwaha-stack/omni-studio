@@ -1,7 +1,8 @@
 # set-plate
 Model: Higgsfield gpt_image_2_6, quality high, resolution 2k, aspect 16:9 (paid, 2 credits a plate, owner OK first);
 reference: the station wide plate job 2ecb2081-44cd-4d71-bf7f-5ef855371405 as style reference
-Used by: core/openmontage/skills/studio/studio-suppose-edit.md (sets for a film, one plate per angle)
+Used by: core/openmontage/skills/studio/studio-suppose-proposal.md step 4 (quoted in art.yaml) and
+studio-suppose-script.md step 5 (sets for a film, one plate per angle)
 Source: pilot jobs 2ecb2081 (wide), dd9ba780 (close) and f256053f (the v3 high plate, made with 2ecb2081 as its
 reference), read back from Higgsfield on 2026-11-27; spec "Prompts and skills" and W7, W8
 
@@ -46,3 +47,25 @@ photorealism, no 3D render. No text, no letters, no numbers, no labels, no logos
   the light source is in frame; a stage area is clear.
 - After slicing, the agent measures `set.json` (floor line, horizon, key-light direction for `Rim`).
 - One plate per angle; the wide plate of a new place is attached as the style reference for its close and high plates.
+
+## set.json field guide
+After the plates are made, measure `<video>/art/sets/<set>/set.json` by hand on the 1280x720 frame (the plate is drawn
+60 px wider each side and 40 px taller, so measure on the plate scaled to that). The library's `station` set is the
+model. Per angle, under `angles.<angle>`:
+
+- `plate`: `sets/<set>/<angle>.png` (library-relative; the video's art resolves there until G3).
+- `scarf: {x, y, s}`: Scarf's mark, feet at `(x, y)` in frame pixels, and his scale `s` there (the pilot's station:
+  wide 0.2, high 0.133, close 0.28). Everyone else is sized to match him at their depth.
+- `h`: how height falls off with depth. `{horizon, at}`: the horizon's y (may be negative on a high angle, off the
+  top of the frame) and the y where a person is Scarf's height (usually `scarf.y`); a figure's height scales with
+  `(y - horizon) / (at - horizon)`. `{fixed: k}` for a flat close plate with no depth: everyone is `k` of a peer at
+  Scarf's scale.
+- `crowd: {<band>: [y0, y1]}`: the floor strips crowds walk in, by name (`back`, `front`; `front` draws over the
+  cast). A sheet's `crowd[].band` must be one of these names.
+- `clear: [x0, x1, y0?, y1?]`: the box kept empty of back-band walkers around the subject (x only, or x and y).
+- `bounds: {zmax}`: the furthest the camera may zoom before the plate's painted edge shows; sheetcheck fails a
+  `camera.z` past it.
+- `key: {side, color}`: the key light's side (`left`, `right`, `top`) and colour, for `rim: true`.
+- `parallax`: how far the plate layer moves against the people, default 0.6; 1 for a top-down plate the crowd walks on.
+
+At the set's top level: `id`, `place` (one line) and `ambience` (`murmur` for a crowd bed, or leave it out).

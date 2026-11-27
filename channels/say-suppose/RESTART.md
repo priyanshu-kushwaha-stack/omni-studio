@@ -45,6 +45,12 @@ plan: `docs/superpowers/plans/2026-11-27-say-suppose-film-kit.md`.
 - Prompts: `channels/say-suppose/prompts/` (the owner's master prompts are kept verbatim in `prompts/sources/`).
 - Skills: `.claude/skills/say-suppose-topics` (one prompt, 35 titles) and `.claude/skills/say-suppose-thumbnails`.
 - Art library: `channels/say-suppose/library/` (manifest and JSON in git; images git-ignored), seeded from the pilot.
+  The images live once, in the main checkout's `channels/say-suppose/library/` (`library.media_root`; copied there
+  2026-11-27), and every worktree renders from them; `Library.stage` stops and names any that are missing. Never
+  delete that folder: `manifest.yaml` has each file's Higgsfield job to fetch it again.
+- Fresh worktree: `ln -s <main checkout>/.venv .venv`, run Python as `PYTHONPATH="$PWD/core/openmontage:$PWD/core"
+  .venv/bin/python`, and `pnpm install --frozen-lockfile` in `core/engines/suppose/kit` once (`.venv-media` and the
+  library images come from the main checkout).
 - Engine: `core/engines/suppose/` (`scripts/` Python tools, `kit/` Remotion kit, `examples/only-100/` the pilot rebuilt
   on the kit as its acceptance test).
 - Pipeline: `studio-suppose`, format `film` in `channel.yaml`, the same five owner gates.

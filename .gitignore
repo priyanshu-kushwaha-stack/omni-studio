@@ -54,11 +54,15 @@ channels/*/videos/*/room/raw/
 .room-canary
 
 # Say Suppose film media stays local (images, audio, staged public dir, renders, review pages embed images).
-# Tracked: outline.md, script.md, shots.yaml, film.json, cast-pass.yaml, claims.md, art.yaml, upload.yaml,
-# custom/*.tsx, remotion/index.ts and review/notes.md.
+# Tracked: outline.md, script.md, shots.yaml, cast-pass.yaml, voices.yaml, claims.md, art.yaml, upload.yaml,
+# custom/*.tsx, remotion/index.ts and review/notes.md. film.json and film-luc.json are regenerated (sheetcheck --emit,
+# timewarp.py) and embed library data, so they are not tracked (the only-100 example likewise).
 channels/say-suppose/videos/*/art/
 channels/say-suppose/videos/*/public/
 channels/say-suppose/videos/*/render/
 channels/say-suppose/videos/*/audio/
 channels/say-suppose/videos/*/review/*.html
+channels/say-suppose/videos/*/film.json
 channels/say-suppose/videos/*/film-luc.json
+core/engines/suppose/examples/only-100/film.json
+core/engines/suppose/examples/only-100/film-luc.json

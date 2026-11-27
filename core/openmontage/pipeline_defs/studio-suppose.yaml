@@ -92,7 +92,7 @@ stages:
     success_criteria:
       - script.md from prompts/script.md passes scriptcheck.py; shots.yaml passes sheetcheck.py
       - The cold-open look check done (W1-W7, L6.2); a 1280x720 cut of the whole film in render/
-      - omni qc ... story_script passes (claims, clicks); the G2 review page published
+      - omni qc ... story_script passes (claims, cast_claims, clicks); the G2 review page published
 
   - name: final_edit
     skill: studio/studio-suppose-edit

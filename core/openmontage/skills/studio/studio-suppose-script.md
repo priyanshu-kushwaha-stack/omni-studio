@@ -12,7 +12,7 @@ moves it into the library).
 **Reads:** `<video>/outline.md` (G1), `art.yaml` (G1), the channel library, `prompts/script.md`, `cast-pass.md`,
 `set-plate.md`, `parts-sheet.md`, `cast-lineup.md`, `character-voice.md`, `shots.md`.
 **Writes:** `script.md`, `cast-pass.yaml`, `claims.md`, `audio/` (takes, `narration.wav`, `cues_b.json`,
-`narration.words.json`, `mix.wav`), new art under `art/` (`art/cast/`, `art/sets/`), `shots.yaml`, `custom/Shots.tsx`, `remotion/index.ts`, `film.json`, `render/`,
+`narration.words.json`, `mix.wav`, `sweep/`), `voices.yaml`, new art under `art/` (`art/cast/`, `art/sets/`), `shots.yaml`, `custom/Shots.tsx`, `remotion/index.ts`, `film.json`, `render/`,
 `review/story_script.html`, the `story_script` checkpoint.
 
 **Paid calls:** only the art G1 approved, as quoted in `art.yaml`. Anything beyond it (a retake, an extra set) needs
@@ -32,11 +32,30 @@ Qwen3 (VoiceDesign for characters) and free. Luc comes after G2 (`studio-suppose
    if not, redo the pass, never edit the script to fit. Add every `claims` entry to `<video>/claims.md` (id, source URL fetched and read this session, verbatim quote,
    status), copying the entry's `claim` text into the ledger's claim cell word for word: the `cast_claims` check
    matches each cast-pass claim to a ledger row by that text, and fails for any real figure with no row. Numbers stay in words in the script.
-4. **Voices (free).** A new character with no voice in the cast library gets one from `prompts/character-voice.md`.
-   Then `.venv/bin/python core/engines/suppose/scripts/voices.py <video>`: voice B for the narrator, each character in
-   their own voice; it writes `audio/takes/`, `audio/narration.wav`, `audio/cues_b.json` and
-   `audio/narration.words.json`. The owner reads the script and listens to the track (not a gate). Apply their notes;
-   if any words changed, re-run steps 2-4.
+4. **Voices (free, local).** Every character who speaks needs a voice `{desc, seed}`. `voices.py` takes it from the
+   library cast (a map's `voice:`) and, over that, from `<video>/voices.yaml`, which this step writes and which wins:
+
+   ```yaml
+   # <video>/voices.yaml: character id -> voice (prompts/character-voice.md)
+   kenji: {desc: "A relaxed male baritone: a man of about thirty, the hero's best friend since school. Warm and a little husky, quick and playful, clear diction, natural pace, casual modern English.", seed: 23}
+   ```
+
+   For each speaking character with no voice yet (a new character, or a library one whose map has no `voice:`): fill
+   `prompts/character-voice.md` and write its `desc` into `voices.yaml` with no seed. Then sweep three seeds of the
+   free local Qwen3 VoiceDesign (`local_tts.py`'s `qwen3-design`, no paid call) on that character's first line:
+
+   ```sh
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/voices.py --sweep $V <id>
+   ```
+
+   It writes `$V/audio/sweep/<id>_seed11.wav`, `_seed23.wav`, `_seed37.wav` (other seeds: add them after `<id>`).
+   Listen, pick the one that sounds like the character and stays apart from the narrator and the rest of the cast, and
+   write its number as `seed:` in `voices.yaml` (sweep again with new seeds if none fits). Then
+   `PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/voices.py $V`: voice B for
+   the narrator, each character in their own voice; it writes `audio/takes/`, `audio/narration.wav`,
+   `audio/cues_b.json` and `audio/narration.words.json`. The owner reads the script and listens to the track (not a
+   gate). Apply their notes; if any words changed, re-run steps 2-4. `voices.yaml` is committed with the film; at G3
+   its entries move into the cast maps (`studio-suppose-final-watch` step 0).
 5. **Art (approved at G1), kept local to the video.** Run the approved GPT Image 2.6 calls from `art.yaml` with
    `prompts/set-plate.md`, `prompts/cast-lineup.md` and `prompts/parts-sheet.md`, exactly as quoted, and save the
    images under `<video>/art/`. Nothing goes into the channel library yet: the library only takes a film's art after
@@ -45,13 +64,15 @@ Qwen3 (VoiceDesign for characters) and free. Luc comes after G2 (`studio-suppose
    the library uses, under `<video>/art/`:
 
    ```sh
-   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/slice.py <parts-sheet.png> $V/art/cast/pieces <prefix>
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/slice.py <parts-sheet.png> $V/art/cast/pieces <id>
    # write its map $V/art/cast/maps/<id>.yaml (as the maps in channels/say-suppose/library/cast/maps/)
    PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/rig.py $V/art
    PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/rig.py --check $V/art <id> $V/art/cast/<id>-check.png
    ```
 
-   `rig.py` writes `$V/art/cast/cast.json` (srcs stay library-relative, `cast/pieces/<name>.png`). The check sheet lays
+   The prefix is the new character's id (and its map's `sheet:`); `slice.py` refuses one the library already uses (a
+   cast id, a map's sheet such as `s1`-`s5`, or existing pieces), since the video's pieces would override the
+   library's. `rig.py` writes `$V/art/cast/cast.json` (srcs stay library-relative, `cast/pieces/<name>.png`). The check sheet lays
    out the ten pieces with their names and an assembled rest pose; look at it, and fix the map, before animating.
    Measure each new set into `$V/art/sets/<set>/set.json` (the library's `station` set is the model). `sheetcheck.py`,
    `voices.py`, `review.py` and `Library.stage` all read `<video>/art/cast/` and `<video>/art/sets/` on top of the
@@ -70,8 +91,13 @@ Qwen3 (VoiceDesign for characters) and free. Luc comes after G2 (`studio-suppose
 
    Keep `registerRoot(...)` written out in this file: the Remotion CLI refuses an entry file whose text lacks the word.
 
+   Write custom shot bodies against the voice B times in `shots.yaml` (`t` is film seconds, `l` seconds into the shot).
+   They stay on that clock after G3: `film-luc.json` carries the time warp and the kit unwarps `t` and the shot's start
+   for every custom shot, so never convert times inside a custom shot.
+
    Then `.venv/bin/python core/engines/suppose/scripts/sheetcheck.py <video> --emit` until it prints no FAIL; it writes
-   `<video>/film.json`.
+   `<video>/film.json` (git-ignored: regenerate it, never edit it). The last shot must end with the narration
+   (`audio/cues_b.json`): past the end, or more than 0.5 s short, is a FAIL.
 7. **Mix and render.** `.venv/bin/python core/engines/suppose/scripts/mix.py <video> <library score wav>` (a temp
    score from `channels/say-suppose/library/scores/`; with none that fits, leave the score out and say so on the review
    page) writes `audio/mix.wav` at -16 LUFS. Stage the public dir (library plus the video's own art and audio):

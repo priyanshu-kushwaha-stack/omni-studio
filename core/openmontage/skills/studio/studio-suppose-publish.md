@@ -11,10 +11,11 @@ omni-studio skill for the `studio-suppose` pipeline. `<video>` is `channels/say-
    altered-content answer (the art is AI-made: GPT Image 2.6, and the narration is a synthetic voice), and the pinned
    comment: the film's either/or choice (`CHOICE:` in `outline.md`) asked as a question.
 2. **Thumbnail.** Convert the thumbnail the owner picked at G1 (`art/thumb_<k>.png`) to
-   `<video>/art/thumbnail.jpg`, a 1280x720 JPG under 2 MB (YouTube's limit; `omni upload` refuses a larger file):
+   `<video>/art/thumbnail.jpg`, a 1280x720 JPG under 2 MB (YouTube's limit; `omni upload` refuses a larger file). The
+   aspect ratio is kept: a picture that is not 16:9 is centre-cropped to it, never stretched:
 
    ```sh
-   .venv/bin/python -c "import sys,io; from PIL import Image; im=Image.open(sys.argv[1]).convert('RGB').resize((1280,720)); enc=lambda q:(lambda f:(im.save(f,'JPEG',quality=q),f.getvalue())[1])(io.BytesIO()); open(sys.argv[2],'wb').write(next(d for d in map(enc,(92,85,78,70,60,45)) if len(d)<2_000_000))" $V/art/thumb_<k>.png $V/art/thumbnail.jpg
+   .venv/bin/python -c "import sys,io; from PIL import Image, ImageOps; im=ImageOps.fit(Image.open(sys.argv[1]).convert('RGB'), (1280,720), Image.LANCZOS); enc=lambda q:(lambda f:(im.save(f,'JPEG',quality=q),f.getvalue())[1])(io.BytesIO()); open(sys.argv[2],'wb').write(next(d for d in map(enc,(92,85,78,70,60,45)) if len(d)<2_000_000))" $V/art/thumb_<k>.png $V/art/thumbnail.jpg
    ```
 
    (it keeps the first JPG quality, from 92 down, that comes in under 2 MB). The file stays in the git-ignored `art/` (images are not committed): `omni upload` reads it

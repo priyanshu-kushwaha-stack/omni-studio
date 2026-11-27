@@ -18,5 +18,20 @@ Rules (L2, L5):
   feed size before the owner sees them.
 - After upload, remind the owner to run YouTube's Test & Compare with the three variants.
 
-Steps: fill the prompt three times (vary `{{emotion}}` or the composition); generate after the OK; set captions with
-the kit's `Thumb` composition (`core/engines/suppose/kit`, Part B); build the feed mock page; show the owner.
+Steps: fill the prompt three times (vary `{{emotion}}` or the composition); generate after the OK and save the raw
+images as `<video>/art/thumb_raw_<k>.png`; set captions with the kit's `Thumb` still (`core/engines/suppose/kit`,
+Part B); build the feed mock page; show the owner.
+
+Captions, from the repo root (`$ROOT`), with `V` the video's absolute path and `<id>` its id. Stage a public dir (the
+library plus the video's `art/`), then render each still through the render queue, one at a time:
+
+```sh
+PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys; from pathlib import Path; from library import Library; Library.for_channel('say-suppose').stage(Path(sys.argv[1]), Path(sys.argv[1]) / 'public')" $V
+cd core/engines/suppose/kit
+$ROOT/.venv/bin/python -m studio.jobs run --step thumb-1 --channel say-suppose --video <id> --queue render -- \
+  npx remotion still src/entry.tsx Thumb $V/art/thumb_1.png --public-dir=$V/public \
+  --props='{"art": "art/thumb_raw_1.png", "caption": "<two to four words>", "number": "<the premise number, or omit>"}'
+```
+
+Repeat for `thumb_2` and `thumb_3`. The stills are 1280x720; the review page and the publish step read
+`art/thumb_<k>.png`. Images stay out of git.

@@ -22,7 +22,7 @@ is `student`, the selfie woman `office`, Mr. Okada `gent`, the rice-ball man `sa
 library's crowd-role cast); the rice ball and phone are `film.props`; set plates are `film.sets.station`. The library
 pieces and plates are byte-identical to the pilot's `public/cut4` and `public/cut` files (sha1 checked).
 
-film.json and film-luc.json are not committed: they are generated from shots.yaml and the library in two commands
+film.json and film-luc.json are not committed (git-ignored, here and in every video folder): they are generated from shots.yaml and the library in two commands
 (below), embed the library's cast data and would go stale when the library changes.
 
 ## Time base

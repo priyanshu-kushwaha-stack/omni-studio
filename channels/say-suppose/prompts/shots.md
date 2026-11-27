@@ -34,6 +34,11 @@ and posture; there is no lip-sync.
 7. Light follows the beat: warm for tender or triumphant, cool for tense, void or blueprint for explanation. Scope
    letterbox for the title, freezes, the climax and intense close-ups.
 8. Something meaningful changes about every 4-5 s. A longer hold needs a hold: reason.
+9. Sound effects use only these names: tick, thump, blip, glide, whoosh. Labels are data, dim, callout or pill. Crowd
+   bands are the ones the set's angle lists, and the camera zoom never passes the angle's zmax.
+10. A walk, run or stop that follows another move gives `from: [x, y]`, where the figure is; without it the figure
+    starts back at its cast mark and the pose jumps.
+11. The last shot ends when the narration ends (its last line's end plus the closing pause).
 
 Narration: {{lines}}
 Sets: {{sets}}
@@ -44,5 +49,6 @@ Answer with only the YAML, in the format documented in core/engines/suppose/scri
 ```
 
 ## Checklist
-- The agent runs `sheetcheck.py <video_dir>` and fixes every FAIL.
+- The agent runs `sheetcheck.py <video_dir>` and fixes every FAIL (it fails unknown sfx names, label kinds, moods,
+  crowd bands, zooms past the set's bounds, and a last shot that ends past the narration or more than 0.5 s short).
 - WARNs are reviewed and either fixed or given a reason (a `hold:` line, a beat moved).
