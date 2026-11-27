@@ -1,6 +1,10 @@
 // Piece sizes for the generic cut-out people (generated from public/cut3 and public/cut2; see cutout/slice.py).
 export type Piece = {src: string; w: number; h: number};
-export type Parts = Record<'head' | 'torso' | 'uarmL' | 'uarmR' | 'farmL' | 'farmR' | 'thighL' | 'thighR' | 'shinL' | 'shinR', Piece>;
+export type Parts = Record<'head' | 'torso' | 'uarmL' | 'uarmR' | 'farmL' | 'farmR' | 'thighL' | 'thighR' | 'shinL' | 'shinR', Piece> & {
+  hip?: number; // where the thighs meet the torso, as a fraction of its height (long coats sit low)
+  sh?: [number, number]; // torso edges at shoulder height, fractions of its width
+  face?: [number, number, number]; // face centre x, y and width, fractions of the head
+};
 
 export const KENJI: Parts = {
   head: {src: 'cut3/k_head.png', w: 423, h: 449},

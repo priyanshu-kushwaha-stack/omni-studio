@@ -62,3 +62,13 @@ local: `../audio/pilot_mix.py <narr_a.wav> <raw.wav>`, then `ffmpeg -af loudnorm
 - Shots are framed to their beat with `Cam` (zoom on a point): a close-up on the shout, the rice ball brushing your nose,
   his eyes drifting to the board, a low angle for 99/100, a close-up as the stranger's face goes blank. The focus is
   clamped so a push never shows past the plate. Audio and the time warp are unchanged from v2.
+
+## Pilot v4 (owner, 2026-11-27: new cast, tall Scarf)
+
+- Lineup A (GPT Image 2.6, job `ca00753c`) set the style; Scarf is the faded-grey tall version (job `658b292d`, variation
+  3). Four parts sheets (jobs `aae0e723`, `f24defdd`, `fcedb67b`, `1ffdcdc8`) were sliced with `cutout/slice.py` into
+  `public/cut4/`, and `cutout/rig4.py` names the pieces, splits the two three-leg sheets and measures hips, shoulders and
+  the face into `src/castV4.ts`.
+- `Person.tsx` reads those measurements (long coats hang over the thighs), and now has brows, a mouth and a left-hand
+  prop. `Cast4.tsx` puts Scarf and the rice man on Person with the old pose types and scale, so the film code is
+  unchanged. Other adults are `PEER` 0.88 of Scarf's height. `CastTest4` is the rig check.

@@ -5,15 +5,16 @@ import {Img, staticFile} from 'remotion';
 import {W, H} from './timing';
 import {keys, BACK, OUT, IO, LIN} from './rig';
 import {Person, strideAt} from './Person';
-import {WOMAN, GREY, RICEMAN, type Parts} from './castData';
+import type {Parts} from './castData';
+import {SALARY, OFFICE, STUDENT, GENT, GRAN, PACKER, WORKER} from './castV4';
 import {rnd} from './People2D';
 import type {ScarfCutPose} from './Cast2';
 
 // Natural puppet heights in piece pixels (feet to top of head), used to size everyone to Scarf.
 export const SCARF_H = 1357;
 export const MAN_H = 1712;
-export const personH = (p: Parts) => p.thighL.h * 0.86 + p.shinL.h * 0.95 + p.torso.h * 0.9 + p.head.h * 0.95;
-export const PEER = 1.06; // other adults stand about 6% taller than Scarf
+export const personH = (p: Parts) => p.thighL.h * 0.86 + p.shinL.h * 0.95 + p.torso.h * (p.hip ?? 0.9) + p.head.h * 0.95;
+export const PEER = 0.88; // v4: Scarf is the tall one; other adults stand about 0.88 of his height
 
 // A camera that frames point (fx, fy) at zoom z; k < 1 is a farther layer (parallax).
 export const Cam: React.FC<{z: number; fx: number; fy: number; k?: number; children: React.ReactNode}> = ({z, fx, fy, k = 1, children}) => {
@@ -43,7 +44,7 @@ export const scarfRest = (t: number, o: Partial<ScarfCutPose> = {}): ScarfCutPos
   armL: {a: 6, f: 0}, armR: {a: 6, f: 0}, tail: Math.sin(t * 1.7) * 4, sweat: 0, bob: Math.sin(t * 2.1) * 4, ...o,
 });
 
-const KINDS: Parts[] = [WOMAN, GREY, RICEMAN];
+const KINDS: Parts[] = [SALARY, OFFICE, STUDENT, GENT, GRAN, PACKER, WORKER];
 const TINTS = ['none', 'brightness(0.9)', 'saturate(0.8)', 'brightness(1.06) saturate(0.9)', 'sepia(0.2)'];
 
 // Commuters walking across the floor of a set. Depth from y: farther = smaller and softer. Feet never slide.

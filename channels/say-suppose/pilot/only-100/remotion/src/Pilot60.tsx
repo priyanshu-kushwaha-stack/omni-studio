@@ -8,10 +8,11 @@ import {FPS, W, H} from './timing';
 import {keys, LIN, OUT, BACK, IO, drift, blinkAt} from './rig';
 import {Shadow, Part} from './Puppet';
 import {Grade, FactPill} from './Overlays';
-import {Scarf2, Man2} from './Cast2';
+import {Scarf4, Man4, scarfFaceY, manFaceY, manK} from './Cast4';
 import {scarfAt, manAt} from './CutoutC';
 import {Person} from './Person';
-import {KENJI, WOMAN, GREY, type Parts} from './castData';
+import type {Parts} from './castData';
+import {STUDENT as KENJI, OFFICE as WOMAN, GENT as GREY, SALARY, PROPS} from './castV4';
 import {toOld, FILM_SECONDS} from './timewarp';
 import {Cam, SetImg, scarfRest, Crowd, Readout, Phone, RuleCard, Title, BoardDots, FONT, SCARF_H, MAN_H, PEER, personH} from './FilmParts';
 
@@ -25,9 +26,9 @@ const SC_S = 0.28;
 const PEER_PX = SCARF_H * SC_S * PEER;
 const MAN_S = PEER_PX / MAN_H;
 const pS = (p: Parts) => PEER_PX / personH(p);
-const headY = (p: Parts) => FEET - PEER_PX + p.head.h * 0.5 * pS(p);
-const SC_HEAD = FEET - (SCARF_H - 243) * SC_S; // Scarf's head centre on the close set
-const MAN_HEAD = FEET - (MAN_H - 270) * MAN_S;
+const headY = (p: Parts) => FEET - PEER_PX + p.head.h * (p.face?.[1] ?? 0.5) * pS(p);
+const SC_HEAD = scarfFaceY(FEET, SC_S); // Scarf's face centre on the close set
+const MAN_HEAD = manFaceY(FEET, MAN_S);
 
 const WIDE_SC_S = 0.2; // ground-level wide: Scarf at (640, 600)
 const wideH = (y: number) => PEER * SCARF_H * WIDE_SC_S * ((y - 430) / (600 - 430));
@@ -54,13 +55,14 @@ const High: React.FC<{t: number; z: number; fy?: number; speed: number; dense: n
   return (
     <View z={z} fx={640 + drift(t, 4)} fy={fy} k={1} bg={<SetImg which="high" />}>
       <Crowd t={t} n={Math.round(22 * dense)} seed={0} y0={205} y1={466} hAt={highH} speed={speed} clear={empty} />
+      <div style={{position: 'absolute', left: 640 - 170, top: 470 - 70, width: 340, height: 140, borderRadius: '50%', background: 'radial-gradient(closest-side, rgba(255,236,190,.42), rgba(255,236,190,0))'}} />
       <Shadow x={640} y={470} w={80} />
       {scarf}
       <Crowd t={t} n={Math.round(16 * dense)} seed={100} y0={474} y1={670} hAt={highH} speed={speed * 1.2} clear={empty} />
     </View>
   );
 };
-const scarfHigh = (t: number, o = {}) => <Scarf2 x={640} y={470} s={HIGH_SC_S} p={scarfRest(t, o)} />;
+const scarfHigh = (t: number, o = {}) => <Scarf4 x={640} y={470} s={HIGH_SC_S} p={scarfRest(t, o)} />;
 
 const Wide: React.FC<{t: number; z: number; fx?: number; fy?: number; speed: number; dense: number; you?: React.ReactNode; clear?: [number, number, number?, number?]}> = ({t, z, fx = 640, fy = 470, speed, dense, you, clear = [500, 780, 560, 700]}) => (
   <View z={z} fx={fx + drift(t, 3)} fy={fy} bg={<SetImg which="wide" />}>
@@ -70,7 +72,7 @@ const Wide: React.FC<{t: number; z: number; fx?: number; fy?: number; speed: num
     <Crowd t={t} n={Math.round(8 * dense)} seed={300} y0={606} y1={650} hAt={wideH} speed={speed} clear={clear} />
   </View>
 );
-const scarfWide = (t: number, o = {}) => <Scarf2 x={640} y={600} s={WIDE_SC_S} p={scarfRest(t, o)} />;
+const scarfWide = (t: number, o = {}) => <Scarf4 x={640} y={600} s={WIDE_SC_S} p={scarfRest(t, o)} />;
 
 const Close: React.FC<{t: number; z: number; fx: number; fy: number; blur?: number; children: React.ReactNode}> = ({t, z, fx, fy, blur = 1.5, children}) => (
   <View z={z} fx={fx + drift(t, 2)} fy={fy + drift(t, 1.4, 3)} k={0.5} bg={<SetImg which="close" blur={blur} />}>{children}</View>
@@ -88,7 +90,7 @@ const S2: Shot['C'] = ({t, l}) => {
     <Close t={t} z={lerpT(l, 0, 1.2, 1.75, 1.95, OUT)} fx={640} fy={SC_HEAD + 40} blur={3}>
       <Crowd t={t} n={6} seed={400} y0={612} y1={622} hAt={closeH} speed={150} clear={[500, 780]} />
       <Shadow x={640} y={FEET} w={200} />
-      <Scarf2 x={640} y={FEET} s={SC_S} p={p} />
+      <Scarf4 x={640} y={FEET} s={SC_S} p={p} />
       <svg width={W} height={H} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
         {[0, 0.22, 0.44].map((dd) => {
           const k = (l - 0.08 - dd) / 0.7;
@@ -118,8 +120,8 @@ const twoShot = (l: number) => {
     <>
       <Shadow x={440} y={FEET} w={190} />
       <Shadow x={man.x + MAN_DX} y={FEET} w={180} />
-      <Scarf2 x={440} y={FEET} s={SC_S} p={{...sp, browLift: sp.browLift * 0.8, browSad: sp.browSad * 0.8}} />
-      <Man2 x={man.x + MAN_DX} y={FEET} s={MAN_S} p={{...man.p, turn: -man.p.walk}} />
+      <Scarf4 x={440} y={FEET} s={SC_S} p={{...sp, browLift: sp.browLift * 0.8, browSad: sp.browSad * 0.8}} />
+      <Man4 x={man.x + MAN_DX} y={FEET} s={MAN_S} p={{...man.p, turn: -man.p.walk}} />
     </>
   );
 };
@@ -130,9 +132,9 @@ const S4a: Shot['C'] = ({t, l}) => (
 
 // Close-up: the rice ball slides in from the right and brushes your nose.
 const RiceIn: React.FC<{x: number; y: number}> = ({x, y}) => (
-  <div style={{position: 'absolute', left: x, top: y, transform: `scale(${MAN_S})`, transformOrigin: '0 0'}}>
-    <Part src="cut2/m_farmL.png" w={146} h={509} pivot={[73, 470]} at={[0, 0]} rot={90} />
-    <Part src="cut2/m_rice.png" w={214} h={191} pivot={[107, 120]} at={[-30, 0]} z={2} />
+  <div style={{position: 'absolute', left: x, top: y, transform: `scale(${manK(MAN_S)})`, transformOrigin: '0 0'}}>
+    <Part src={SALARY.farmL.src} w={SALARY.farmL.w} h={SALARY.farmL.h} pivot={[SALARY.farmL.w / 2, SALARY.farmL.h * 0.88]} at={[0, 0]} rot={90} />
+    <Part src={PROPS.rice.src} w={PROPS.rice.w} h={PROPS.rice.h} pivot={[PROPS.rice.w * 0.6, PROPS.rice.h * 0.5]} at={[0, 0]} z={2} />
   </div>
 );
 const S4b: Shot['C'] = ({t, l}) => {
@@ -148,7 +150,7 @@ const S4b: Shot['C'] = ({t, l}) => {
   };
   return (
     <Close t={t} z={lerpT(l, 0, 1.3, 2.45, 2.6, LIN)} fx={495} fy={SC_HEAD + 8} blur={4}>
-      <Scarf2 x={440} y={FEET} s={SC_S} p={p} />
+      <Scarf4 x={440} y={FEET} s={SC_S} p={p} />
       <RiceIn x={hx} y={SC_HEAD + 12} />
     </Close>
   );
@@ -159,7 +161,7 @@ const S4c: Shot['C'] = ({t, l}) => {
   const man = manAt(l + 2.8, 160);
   return (
     <Close t={t} z={lerpT(l, 0, 1.5, 2.3, 2.45, LIN)} fx={man.x + MAN_DX} fy={MAN_HEAD + 30} blur={4}>
-      <Man2 x={man.x + MAN_DX} y={FEET} s={MAN_S} p={man.p} />
+      <Man4 x={man.x + MAN_DX} y={FEET} s={MAN_S} p={man.p} />
     </Close>
   );
 };
@@ -180,8 +182,8 @@ const S5: Shot['C'] = ({t, l}) => {
       <Crowd t={t} n={5} seed={500} y0={600} y1={615} hAt={closeH} speed={130} clear={[330, 560]} />
       <Shadow x={440} y={FEET} w={190} />
       <Shadow x={mx} y={FEET} w={180} />
-      <Scarf2 x={440} y={FEET} s={SC_S} p={p} />
-      <Man2 x={mx} y={FEET} s={MAN_S} p={{...end, phase, walk, headDip: 0, pupil: [0.6, -0.2], turn: walk, rice: {a: 4 + Math.sin(phase) * 8 * walk, f: -138 + 140 * walk}}} />
+      <Scarf4 x={440} y={FEET} s={SC_S} p={p} />
+      <Man4 x={mx} y={FEET} s={MAN_S} p={{...end, phase, walk, headDip: 0, pupil: [0.6, -0.2], turn: walk, rice: {a: 4 + Math.sin(phase) * 8 * walk, f: -138 + 140 * walk}}} />
     </Close>
   );
 };
@@ -197,7 +199,7 @@ const S6: Shot['C'] = ({t, l}) => {
     <>
       <div style={{position: 'absolute', inset: 0, transformOrigin: '50% 0%', transform: `scale(${1.35 * (1 + (z - 1) * 0.5)})`}}><SetImg which="close" blur={3.5} /></div>
       <div style={{position: 'absolute', inset: 0, transformOrigin: '50% 100%', transform: `scale(${z})`}}>
-        <Scarf2 x={640} y={900} s={0.44} p={p} />
+        <Scarf4 x={640} y={900} s={0.44} p={p} />
         <div style={{position: 'absolute', inset: 0, transform: `scale(${pulse})`, transformOrigin: '640px 120px'}}>
           <Readout x={640} y={120} t={t} t0={20.15} />
         </div>
@@ -253,7 +255,7 @@ const S9: Shot['C'] = ({t}) => {
       <BoardDots t={t} t0={34.4} tOff={36.6} />
       <Shadow x={440} y={FEET} w={190} />
       <Shadow x={kx} y={FEET} w={170} />
-      <Scarf2 x={440} y={FEET} s={SC_S} p={p} />
+      <Scarf4 x={440} y={FEET} s={SC_S} p={p} />
       <Person parts={KENJI} x={kx} y={FEET} s={pS(KENJI)} p={{phase: ((1350 - kx) / 150) * Math.PI * 2, walk: kw, pupil: [kw ? -0.8 : -0.3 - 0.5 * (1 - up), -0.9 * up], armR: kenjiWave(t, keys(t, [[33.2, 0.7], [34.4, 0.7], [34.7, 0]]))}} />
     </Close>
   );
@@ -287,14 +289,14 @@ const S11: Shot['C'] = ({t}) => {
       <Close t={t} z={keys(t, [[42.9, 1.12], [49.4, 1.2], [49.9, 1.32, OUT]])} fx={keys(t, [[49.4, 610], [49.9, 650]])} fy={420}>
         <Shadow x={480} y={FEET} w={190} />
         <Shadow x={740} y={FEET} w={180} />
-        <Scarf2 x={480} y={FEET} s={SC_S} p={p} />
+        <Scarf4 x={480} y={FEET} s={SC_S} p={p} />
         <Person parts={WOMAN} x={740} y={FEET} s={pS(WOMAN)} p={{armR: {a: sa, f: sf}, holdR: phoneNode, armRFront: phoneUp > 0.05, pupil: [0.25, -0.35 * phoneUp], lid: blinkAt(t, [45.5, 48.0])}} />
       </Close>
       <RuleCard t={t} t0={45.1} n="ONE" text="Not on your list? You don't exist to them." />
       {inset > 0 && (
         <div style={{position: 'absolute', right: 70, top: 120, width: 250, height: 440, borderRadius: 30, overflow: 'hidden', boxShadow: `0 0 0 8px #17171f, 0 20px 50px rgba(0,0,0,.5)`, transform: `scale(${inset})`, transformOrigin: 'top right'}}>
           <div style={{position: 'absolute', left: -560, top: -60, width: W, height: H}}><SetImg which="close" /></div>
-          <Person parts={WOMAN} x={125} y={880} s={0.62} p={{pupil: [0, 0], lid: 0.35}} />
+          <Person parts={WOMAN} x={125} y={880} s={0.62 * 1340 / personH(WOMAN)} p={{pupil: [0, 0], lid: 0.35}} />
           <div style={{position: 'absolute', left: 0, right: 0, bottom: 14, textAlign: 'center', fontFamily: FONT, fontWeight: 800, color: '#fff', fontSize: 18, textShadow: '0 2px 6px #000'}}>her photo</div>
         </div>
       )}
@@ -327,7 +329,7 @@ const S13: Shot['C'] = ({t}) => {
       <Close t={t} z={z} fx={cu ? 760 : 600} fy={cu ? headY(GREY) + 20 : 420} blur={cu ? 4 : 1.5}>
         <Shadow x={440} y={FEET} w={190} />
         <Shadow x={gx} y={FEET} w={180} />
-        <Scarf2 x={440} y={FEET} s={SC_S} p={p} />
+        <Scarf4 x={440} y={FEET} s={SC_S} p={p} />
         <Person parts={GREY} x={gx} y={FEET} s={pS(GREY)} p={{eyes: blank, pupil: [-0.8, 0], phase: ((gx - 760) / 150) * Math.PI * 2, walk: gw, dir: 1, armL: blank > 0.5 ? {a: 25, f: 60 + Math.sin(t * 10) * 15} : undefined}} />
       </Close>
       <div style={{position: 'absolute', right: 60, top: 60, width: 300, padding: '12px 16px', borderRadius: 18, background: 'rgba(15,16,22,.9)', fontFamily: FONT, color: '#fff', fontSize: 24, fontWeight: 700, display: 'flex', gap: 12, alignItems: 'center', opacity: keys(t, [[54.0, 0], [54.3, 1]])}}>
