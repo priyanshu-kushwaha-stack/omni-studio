@@ -75,3 +75,9 @@ Same pictures and timings.
 
 "You" is **B · Scarf**: a black round head, round white eyes with pupils, a long green scarf (#2fbf71) and a charcoal
 coat. Drawn in `characters/characters.js`; every look and thumbnail uses it.
+
+## Thumbnail (owner, 2026-11-27)
+
+**WHY HER?** (round 2, g1) leads the pilot: an empty circle around you in a grey ghost crowd, one girl in red at the
+edge, `99/100` over your head. The owner called all three round-2 thumbnails good and this one the best. SHE FORGOT ME.
+and I'M #100?! are kept for later films or a Part 2. Sources: `thumbs/README.md`.
