@@ -117,6 +117,7 @@ const FaceMarks: React.FC<{parts: Parts; p: PersonPose; turn: number}> = ({parts
   const lift = ((p.browLift ?? 0) / 30) * er * 1.4, sad = ((p.browSad ?? 0) / 25) * er * 1.2;
   const by = ey - er * (v4 ? 2.1 : 2.3) - lift;
   const mo = p.mouth ?? 0;
+  const arc = !!p.mouthArc && !!p.smile; // an arc replaces the small resting mouth
   return (
     <g opacity={p.eyes ?? 1}>
       {[-1, 1].map((k) => (
@@ -125,8 +126,8 @@ const FaceMarks: React.FC<{parts: Parts; p: PersonPose; turn: number}> = ({parts
       <g stroke="#2a1d18" strokeWidth={er * 0.55} strokeLinecap="round" fill="none">
         <line x1={cx - ex * 1.55 + fx} y1={by} x2={cx - ex * 0.5 + fx} y2={by - sad + er * 0.1} />
         <line x1={cx + ex * 0.5 + fx} y1={by - sad + er * 0.1} x2={cx + ex * 1.55 + fx} y2={by} />
-        {v4 && (mo > 0.3 ? <ellipse cx={cx + fx} cy={ey + er * 3.3} rx={er * 0.6} ry={er * 0.8 * mo} fill="#5a2a24" stroke="none" /> : <path d={`M${cx + fx - er * 0.9} ${ey + er * 3} q${er * 0.9} ${er * 0.7} ${er * 1.8} 0`} strokeWidth={er * 0.4} />)}
-        {p.mouthArc && p.smile !== undefined && p.smile !== 0 && <path data-mouth-arc="" d={`M${cx + fx - er * 1.1} ${ey + er * 3.3} Q${cx + fx} ${ey + er * 3.3 + p.smile * er * 1.4} ${cx + fx + er * 1.1} ${ey + er * 3.3}`} strokeWidth={er * 0.4} />}
+        {v4 && (mo > 0.3 ? <ellipse cx={cx + fx} cy={ey + er * 3.3} rx={er * 0.6} ry={er * 0.8 * mo} fill="#5a2a24" stroke="none" /> : arc ? null : <path d={`M${cx + fx - er * 0.9} ${ey + er * 3} q${er * 0.9} ${er * 0.7} ${er * 1.8} 0`} strokeWidth={er * 0.4} />)}
+        {arc && <path data-mouth-arc="" d={`M${cx + fx - er * 1.1} ${ey + er * 3.3} Q${cx + fx} ${ey + er * 3.3 + (p.smile ?? 0) * er * 1.4} ${cx + fx + er * 1.1} ${ey + er * 3.3}`} strokeWidth={er * 0.4} />}
       </g>
     </g>
   );

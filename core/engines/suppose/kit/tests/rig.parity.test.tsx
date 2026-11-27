@@ -49,4 +49,13 @@ describe('opt-in mouth arc on supporting cast', () => {
   it('mouthArc without a smile draws nothing extra', () => {
     expect(render({mouthArc: true})).toBe(render({}));
   });
+  it('a v4 part shows one mouth: the arc replaces the resting mouth, smile 0 keeps it', () => {
+    const count = (m: string) => (m.match(/<path/g) ?? []).length;
+    const rest = render({});
+    const withArc = render({mouthArc: true, smile: 0.6});
+    expect(arcs(withArc)).toHaveLength(1);
+    expect(count(withArc)).toBe(count(rest));
+    expect(render({mouthArc: true, smile: 0})).toBe(rest);
+    expect(arcs(rest)).toHaveLength(0);
+  });
 });
