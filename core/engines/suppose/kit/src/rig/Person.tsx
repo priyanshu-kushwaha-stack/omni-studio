@@ -22,6 +22,7 @@ export type PersonPose = {
   mouth?: number; // 0 small smile .. 1 open "o"
   big?: boolean; // emoji-style face: large eyes with whites, thick brows, a mouth that smiles or frowns (Scarf)
   smile?: number; // -1 frown .. 1 smile, with big
+  mouthArc?: boolean; // opt in: FaceMarks also draws a small smile or frown arc from `smile`
   bob?: number; // extra vertical bob, torso pixels
   armL?: {a: number; f: number};
   armR?: {a: number; f: number};
@@ -125,6 +126,7 @@ const FaceMarks: React.FC<{parts: Parts; p: PersonPose; turn: number}> = ({parts
         <line x1={cx - ex * 1.55 + fx} y1={by} x2={cx - ex * 0.5 + fx} y2={by - sad + er * 0.1} />
         <line x1={cx + ex * 0.5 + fx} y1={by - sad + er * 0.1} x2={cx + ex * 1.55 + fx} y2={by} />
         {v4 && (mo > 0.3 ? <ellipse cx={cx + fx} cy={ey + er * 3.3} rx={er * 0.6} ry={er * 0.8 * mo} fill="#5a2a24" stroke="none" /> : <path d={`M${cx + fx - er * 0.9} ${ey + er * 3} q${er * 0.9} ${er * 0.7} ${er * 1.8} 0`} strokeWidth={er * 0.4} />)}
+        {p.mouthArc && p.smile !== undefined && p.smile !== 0 && <path data-mouth-arc="" d={`M${cx + fx - er * 1.1} ${ey + er * 3.3} Q${cx + fx} ${ey + er * 3.3 + p.smile * er * 1.4} ${cx + fx + er * 1.1} ${ey + er * 3.3}`} strokeWidth={er * 0.4} />}
       </g>
     </g>
   );

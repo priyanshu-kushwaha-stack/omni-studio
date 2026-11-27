@@ -6,11 +6,13 @@ const MOODS = ['neutral','smile','happy','joy','surprised','shocked','scared','w
 describe('actions', () => {
   it('maps all eighteen moods', () => expect(Object.keys(MOOD_FACE).sort()).toEqual([...MOODS].sort()));
   it('blinks every 2.5 to 4 s', () => {
-    const closed = Array.from({length: 600}, (_, i) => i / 30).filter((t) => (poseAt([{act: 'idle'}], t, {}, 3).pose.lid ?? 0) > 0.9);
-    const starts = closed.filter((t, i) => i === 0 || t - closed[i - 1] > 0.2);
-    const gaps = starts.slice(1).map((t, i) => t - starts[i]);
-    expect(gaps.length).toBeGreaterThan(3);
-    gaps.forEach((g) => { expect(g).toBeGreaterThanOrEqual(2.5); expect(g).toBeLessThanOrEqual(4.01); });
+    for (let seed = 0; seed < 40; seed++) {
+      const closed = Array.from({length: 600}, (_, i) => i / 30).filter((t) => (poseAt([{act: 'idle'}], t, {}, seed).pose.lid ?? 0) > 0.9);
+      const starts = closed.filter((t, i) => i === 0 || t - closed[i - 1] > 0.2);
+      const gaps = starts.slice(1).map((t, i) => t - starts[i]);
+      expect(gaps.length, `seed ${seed}`).toBeGreaterThan(3);
+      gaps.forEach((g) => { expect(g, `seed ${seed}`).toBeGreaterThanOrEqual(2.5); expect(g, `seed ${seed}`).toBeLessThanOrEqual(4.01); });
+    }
   });
   it('a react changes the face from its time on', () => {
     const acts = [{act: 'idle'}, {act: 'react', mood: 'shocked' as const, at: 1}];
@@ -49,6 +51,13 @@ describe('actions', () => {
     expect(p.smile).toBe(0.6);
     expect(p.mouth ?? 0).toBe(0); // shocked's open mouth does not leak into the smirk
   });
+  it('acts apply in order of time, whatever the list order', () => {
+    const acts = [{act: 'react', mood: 'smirk' as const, at: 2.1}, {act: 'react', mood: 'shocked' as const, at: 1}];
+    const p = poseAt(acts, 2.5).pose;
+    expect(p.smile).toBe(0.6);
+    expect(p.mouth ?? 0).toBe(0);
+  });
+  it('the action library opts in to mouth arcs', () => expect(poseAt([], 0).pose.mouthArc).toBe(true));
   it('a wave raises the right arm and swings the forearm, then lets it go', () => {
     const acts = [{act: 'wave', at: 1, to: 3}];
     const up = [1.5, 1.6, 1.7].map((t) => poseAt(acts, t).pose.armR!);

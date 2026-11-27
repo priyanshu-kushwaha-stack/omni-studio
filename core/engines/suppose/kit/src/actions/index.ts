@@ -63,10 +63,11 @@ const blend = (prev: PersonPose, out: Partial<PersonPose>, w: number): PersonPos
 
 export const poseAt = (acts: Act[], t: number, base: Partial<PersonPose> = {}, seed = 0, rig: {torsoH?: number; stride?: number} = {}) => {
   const r = {torsoH: rig.torsoH ?? 600, stride: rig.stride ?? 120};
-  let pose: PersonPose = {...base};
+  let pose: PersonPose = {...base, mouthArc: true};
   let dx = 0;
   let prop: string | undefined;
-  for (const a of acts) {
+  const ordered = acts.map((a, i) => [a, i] as const).sort(([a, i], [b, j]) => (a.at ?? 0) - (b.at ?? 0) || i - j);
+  for (const [a] of ordered) {
     const def = ACTS[a.act];
     if (!def) throw new Error(`unknown act "${a.act}" (known: ${Object.keys(ACTS).join(', ')})`);
     const w = a.act === 'idle' ? 0 : weight(def, a, t);
