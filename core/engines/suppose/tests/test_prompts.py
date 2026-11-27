@@ -82,3 +82,31 @@ def test_topic_skill_uses_the_prompt_and_retires_the_room():
     assert "35" in skill
     for gone in ["Gemini", "GPT-5.6", "scores them blind"]:
         assert gone not in skill
+
+
+def test_script_prompt_keeps_the_owner_rules_and_the_overrides():
+    t = _text("script")
+    for must in [
+        "900–1,050 words",
+        "Never under 800, never over 1,100",
+        "ONE continuous paragraph",
+        "eighteen to twenty-five",
+        "Fifteen to twenty questions",
+        "about seven times per hundred words",
+        "The hero is never named",
+        "Dude! Your door hates me!",
+        "{{outline}}",
+        "You're standing in the middle of the busiest train station on Earth.",
+    ]:
+        assert must in t, must
+    for gone in ['"Your name is Max."', "Leo! Your door hates me!", "A fly buzzes past your face."]:
+        assert gone not in t, gone
+
+
+def test_outline_cast_pass_and_narration_prompts():
+    outline = _text("outline")
+    assert all(k in outline for k in ["ALT TITLES:", "SYNOPSIS:", "CHARACTERS:", "RULE:", "PLANTED:", "CHOICE:"])
+    cp = _text("cast-pass")
+    assert "speaker" in cp and "claims" in cp and "unchanged" in cp
+    n = _text("narration")
+    assert "Luc" in n and "ellipses" in n and "never robotic" in n
