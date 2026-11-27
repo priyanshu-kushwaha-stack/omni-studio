@@ -1,0 +1,7 @@
+id: office
+sheet: s2
+# head, torso, uarmL, farmL, uarmR, farmR, thighL, shinL, thighR, shinR (an int, "<n>top" or "<n>flip")
+pieces: [0, 1, 2, 7, 3, 8, "4top", 9, "5top", "9flip"]
+hip: 0.62
+roles: [crowd, office-worker]
+signature: "brown bob with pearl earrings, camel coat over a cream turtleneck"

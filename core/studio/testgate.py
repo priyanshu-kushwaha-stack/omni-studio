@@ -39,7 +39,14 @@ from pathlib import Path
 from typing import Callable, Iterable, Optional
 
 VIDEO_RE = re.compile(r"^channels/([^/]+)/videos/([^/]+)/")
-TEST_DIRS = ("core/studio/tests", "core/engines/pou/tests", "core/engines/whatif/tests", "core/openmontage/tests")
+TEST_DIRS = (
+    "core/studio/tests",
+    "core/engines/pou/tests",
+    "core/engines/whatif/tests",
+    "core/engines/suppose/tests",
+    "core/engines/suppose/kit/tests",
+    "core/openmontage/tests",
+)
 TEST_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".json", ".yaml", ".yml"}
 CACHE_NAME = "omni-test-pass"
 BASE = "origin/main"
@@ -267,6 +274,13 @@ def default_suites(root: Path) -> list[Suite]:
             "whatif",
             str(root / "core/engines/whatif"),
             "test -d node_modules || { echo \"core/engines/whatif: run 'pnpm install --frozen-lockfile' "
+            'there first" >&2; exit 1; }; npx vitest run && npx tsc --noEmit',
+        ),
+        Suite("suppose", str(root), f"{py} -m pytest core/engines/suppose/tests -q -p no:cacheprovider"),
+        Suite(
+            "suppose-kit",
+            str(root / "core/engines/suppose/kit"),
+            "test -d node_modules || { echo \"core/engines/suppose/kit: run 'pnpm install --frozen-lockfile' "
             'there first" >&2; exit 1; }; npx vitest run && npx tsc --noEmit',
         ),
     ]

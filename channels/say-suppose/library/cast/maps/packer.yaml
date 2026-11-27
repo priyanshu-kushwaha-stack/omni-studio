@@ -1,0 +1,7 @@
+id: packer
+sheet: s4
+# head, torso, uarmL, farmL, uarmR, farmR, thighL, shinL, thighR, shinR (an int, "<n>top" or "<n>flip")
+pieces: [0, 1, 2, 7, 3, 8, 4, 9, 5, 10]
+hip: 0.8
+roles: [crowd, tourist]
+signature: "curly ginger top-knot with sunglasses, yellow hooded raincoat, camera on the chest"

@@ -1,0 +1,902 @@
+```json
+{
+  "topics": [
+    {
+      "id": "ten-year-price-tag",
+      "title": "What If You Saw the 10-Year Price of Everything?",
+      "premise": "What if every object, meal, and handshake had a glowing tag showing the exact money it will make or cost you ten years from today?",
+      "world": "Present-day London, moving from Brick Lane charity shops to Lloyd's of London and Mayfair private auctions, where centuries-old junk sits beside billion-dollar financial liabilities.",
+      "thumbnail": {
+        "image": "You holding a battered $5 wristwatch at a street stall while a glowing green '+$1,400,000' floats above it, as a wealthy dealer beside you reaches for a luxury briefcase glowing red '-$3,200,000'.",
+        "tag": "DON'T TOUCH IT"
+      },
+      "rule": "Whenever you look at an object, contract, or handshake, an in-world readout shows your exact net 10-year financial gain or loss in dollars if you take it right now. Limits: you only see the final 10-year net number, never the chain of events that causes it. Catch: every choice you make immediately recalculates every other tag around you, and the tag only measures your own bank balance—never the non-financial cost to the people you love.",
+      "hook": "You're about to drink a free $3 energy can at a London train station when a glowing red tag hovers over the pull-tab reading '-$18,400'—the exact cost of the kidney stone and missed flight it triggers six years from tonight.",
+      "beats": [
+        "Cold open: At Liverpool Street Station, a free energy drink flashes '-$18,400' while a damp $2 umbrella in the lost-and-found bin glows '+$64,000'; you buy the umbrella, share it in a downpour with a soaked stranger, and land a private courier job by noon. So what if you saw the 10-year price of everything?",
+        "Baseline & rules: You test the readout across your apartment—your cheap office chair reads '-$29,000' in future spinal surgery, while a $40 smoke detector reads '+$310,000'; the rules lock in: three tags max in view, net 10-year personal cash impact only, no explanation why.",
+        "Jump 1 (Street arbitrage): You scour Portobello Road and Brick Lane charity shops, skipping fake antiques showing '-$400' until a box of 1970s technical manuals glows '+$480,000' because an unpatented chemical seal inside is still unassigned.",
+        "Complication: When you try to buy two '+$100,000' items on the same afternoon, buying the first flips the second tag to '-$12,000' because owning the first changes where you'll be next Tuesday.",
+        "Jump 2 (Corporate & insurance scale): You take a junior seat at Lloyd's of London, where underwriters price shipping and aviation policies; a pristine supertanker contract flashes '-$42,000,000' in personal liability for the lead broker, and your warning saves the syndicate and nets you a $2.1M bonus.",
+        "Early dilemma planted: Your cousin Leo pitches you his life-savings bakery lease; shaking his hand glows '-$85,000' for you, while refusing him glows '+$12,000'—you realize the tag never prices his heartbreak.",
+        "Escalation & hubris: You live entirely by green numbers in Mayfair—eating only meals that read '+$500', taking only flights that read '+$50,000', watching your net worth readout climb past $14,000,000 while cutting off every 'negative-EV' afternoon with friends.",
+        "The trap springs: At an evening Sotheby's auction, an unremarkable seized shipping container in Felixstowe glows '+$110,000,000', the highest number you've ever seen, and you outbid a silent syndicate fixer to win it.",
+        "The dark discovery: Opening the container reveals nothing but corroded server drives from a collapsed crypto exchange—and the moment you touch the latch, your phone's own 10-year readout for calling the police reads '-$110,000,000' while staying silent reads '+$110,000,000' because the syndicate pays you off by framing your cousin Leo's delivery van.",
+        "Climax choice: Standing on the dock as Leo's van pulls up with a '-$110,000,000' tag over the police flare in your hand, you fire the flare anyway—watching your personal 10-year counter crash from '+$110,000,000' to '+$142' in three seconds to keep Leo free.",
+        "Callback & Part 2 twist: Back at Liverpool Street Station with $142 to your name, you glance in the train window reflection and see a 10-year tag floating above your own head for the first time—and it isn't in dollars, it's counting down in days."
+      ],
+      "feeling_map": [
+        "curiosity",
+        "thrill",
+        "triumph",
+        "dread",
+        "awe"
+      ],
+      "restarts": [
+        "Minute 3: Buying one green-tagged item flips the tags of everything else in the room, forcing you to treat time and location as scarce ammunition.",
+        "Minute 6: Moving from flea-market arbitrage into Lloyd's of London catastrophe underwriting, where negative tags mean disasters in motion.",
+        "Minute 10: Winning the '+$110,000,000' shipping container reveals the tag only measures your bank balance, not who takes the fall for your payout."
+      ],
+      "content_mine": [
+        {
+          "fact": "The average emergency room visit and ureteroscopy for a single kidney stone in the US and private UK clinics costs between $10,000 and $20,000, with daily high-fructose/oxalate intake raising stone risk by 23% to 33%.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/23676355/",
+          "beat": "Cold open: why a $3 daily energy drink carries an '-$18,400' 10-year medical and lost-work tag."
+        },
+        {
+          "fact": "Lower back and spinal disc degeneration from non-ergonomic seating costs economies over $100 billion annually in lost productivity and surgeries averaging $25,000 to $50,000.",
+          "source": "https://www.ncbi.nlm.nih.gov/books/NBK538279/",
+          "beat": "Baseline: testing apartment furniture and seeing a cheap chair glow '-$29,000'."
+        },
+        {
+          "fact": "Working smoke alarms cut the risk of dying in a home fire by 55%, while the average uninsured residential fire loss exceeds $27,000 to $300,000 depending on structure damage.",
+          "source": "https://www.nfpa.org/education-and-research/research/nfpa-research/fire-statistical-reports/smoke-alarms-in-us-home-fires",
+          "beat": "Baseline: why a $40 hardware store smoke detector carries a '+$310,000' expected-value tag."
+        },
+        {
+          "fact": "In 2015, a buyer at a British charity shop paid under £10 for a ring they thought was costume jewelry, which turned out to be a 26-carat 19th-century cushion-cut diamond that sold at Sotheby's London for £656,750 ($847,667).",
+          "source": "https://www.bbc.com/news/uk-england-london-40184992",
+          "beat": "Jump 1: scouting London charity shops for sleeper items with six-figure 10-year tags."
+        },
+        {
+          "fact": "Over 95% of granted patents are never commercialized or licensed, leaving thousands of expired or orphaned industrial designs free to manufacture in the public domain.",
+          "source": "https://www.wipo.int/publications/en/details.jsp?id=4628",
+          "beat": "Jump 1: finding the box of 1970s industrial manuals glowing '+$480,000'."
+        },
+        {
+          "fact": "Lloyd's of London operates through roughly 75 competing underwriting syndicates that insured over £52 billion in gross written premiums in 2023 across marine, aviation, and catastrophe risk.",
+          "source": "https://www.lloyds.com/about-lloyds/media-centre/press-releases/lloyds-reports-strong-full-year-2023-results",
+          "beat": "Jump 2: walking onto the underwriting floor at One Lime Street to spot multi-million-dollar loss tags on shipping contracts."
+        },
+        {
+          "fact": "The 2021 blockage of the Suez Canal by the Ever Given held up an estimated $9.6 billion of maritime trade per day ($400 million per hour) for six days, triggering over $900 million in salvage and insurance claims.",
+          "source": "https://www.bbc.com/news/business-56559073",
+          "beat": "Jump 2: why a single supertanker hull policy flashes '-$42,000,000' before the ship leaves port."
+        },
+        {
+          "fact": "Roughly 60% of independent restaurants and bakeries fail within their first three years, and 80% close within five years due to thin 3% to 5% net operating margins.",
+          "source": "https://www.bls.gov/bdm/entrepreneurship/entrepreneurship.htm",
+          "beat": "Early dilemma: why your cousin Leo's bakery lease shows '-$85,000' on a handshake."
+        },
+        {
+          "fact": "At compound annual returns of 26%, $100,000 grows by strictly 10x ($1,000,000) in ten years, whereas avoiding a single 50% drawdown doubles terminal 10-year wealth without adding a single extra winner.",
+          "source": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "beat": "Escalation: how simply dodging negative-EV traps compounds your net worth past $14M."
+        },
+        {
+          "fact": "Chainalysis estimates that approximately 3.7 million Bitcoin—roughly 20% of all Bitcoin ever mined, worth over $200 billion—sit permanently stranded on lost, discarded, or seized hard drives.",
+          "source": "https://www.nytimes.com/2021/01/12/technology/bitcoin-passwords-wallets-fortunes.html",
+          "beat": "The dark discovery: the Felixstowe shipping container holding corroded cold-storage drives worth '+$110,000,000'."
+        },
+        {
+          "fact": "The Port of Felixstowe handles 48% of the UK's containerized trade—roughly 4 million TEUs per year—and auctions hundreds of abandoned or unpaid demurrage containers annually.",
+          "source": "https://www.portoffelixstowe.co.uk/company-information/about-us/",
+          "beat": "The trap springs: bidding on an abandoned demurrage container at Felixstowe."
+        },
+        {
+          "fact": "In the Harvard Study of Adult Development tracking 724 participants over 85 years, relationship quality at age 50 was a stronger predictor of health and longevity at age 80 than cholesterol levels or net worth.",
+          "source": "https://news.harvard.edu/gazette/story/2017/04/over-nearly-80-years-harvard-study-has-been-showing-how-to-live-a-healthy-and-happy-life/",
+          "beat": "Climax choice: why optimizing purely for your 10-year dollar tag bankrupts the only thing that keeps you alive."
+        }
+      ],
+      "twist": "The '+$110,000,000' tag on the shipping container wasn't the value of the drives inside—it was the hush-money payout you would receive ten years later only if you let your cousin take the prison sentence for transporting it.",
+      "ending": "You'll never look at a cheap shortcut or an expensive favor the same way once you realize every choice has a 10-year compound invoice attached.",
+      "closest_video": {
+        "title": "What If You Could See Everyone's Future Wealth?",
+        "url": "https://www.youtube.com/@ConChaser",
+        "difference": "Instead of passively reading how rich other people will become, every object and choice in front of you displays YOUR personal 10-year net profit or loss—and recalculates the instant you act."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Drop the Portobello Road antique sequence and merge the apartment baseline directly into the Lloyd's of London underwriting scene for a tight 7-minute cut."
+      },
+      "views_case": "Money + HUD readout premises ('Seeing Future Wealth' on ConChaser, 'Infinite Money' on Ifverse) consistently pull 2M–8M views; putting a live '+$' or '-$' 10-year tag on ordinary items combines self-insertion scheming with a single readable thumbnail number.",
+      "under_question": "If you knew the exact 10-year dollar price of every choice, would you still pay for the people who cost you money?"
+    },
+    {
+      "id": "respect-meter-hud",
+      "title": "What If You Saw How Much People Respect You?",
+      "premise": "What if a glowing score from 0 to 100 floated over every person's head showing how much they actually respect you in real time?",
+      "world": "Present-day Tokyo, from a neon izakaya in Shimbashi to a 40th-floor zaibatsu boardroom in Marunouchi, where polite bows hide ruthless hierarchy ('tatemae' vs 'honne').",
+      "thumbnail": {
+        "image": "Your smiling coworker bowing deeply to you with 'RESPECT: 4/100' glowing red above his head, while a stone-faced executive in the elevator behind him has a glowing gold '94/100'.",
+        "tag": "FAKE SMILE"
+      },
+      "rule": "A floating integer from 0 to 100 above every person's head shows their true, unconscious respect for you right now, updating the millisecond you speak or act. Limits: it only shows the score from 0 to 100, never why it moved. Catch: the human brain cannot distinguish genuine admiration from intimidation on the meter—and anyone whose score hits 100/100 becomes psychologically unable to question or warn you when you are wrong.",
+      "hook": "Your junior teammate bows at forty-five degrees and calls you 'Senpai'—while the glowing red number over his head drops from 6 out of 100 to 3.",
+      "beats": [
+        "Cold open: At a Friday night izakaya in Shimbashi, your loudest workplace flatterer toasts your health with a glowing '4/100' over his head, while the quiet night-shift security guard who never speaks to you has '81/100'. So what if you saw how much people respect you?",
+        "Baseline & rules: On the Yamanote Line train, strangers start at a neutral '50/100'; slouching and apologizing for nothing drops the whole carriage to '34/100', while calmly holding the door for an elderly commuter bumps seven strangers to '68/100'.",
+        "Jump 1 (Office reversal): In the Marunouchi tower, you stop laughing at your manager's bad jokes ('19/100') and calmly reject an unpaid weekend dump; his face turns purple, yet his number jumps from '19' to '64' in two seconds.",
+        "Complication: Your best friend Kenji sits at a warm '84/100', but whenever you use your new cold status tricks to impress executives around him, Kenji's score quietly ticks down: '84... 76... 69'.",
+        "Jump 2 (High-stakes negotiation): You're sent as a sacrificial junior to a hostile supplier negotiation in Osaka; by watching which sentences make the rival CEO's meter tick up ('41 -> 58 -> 79'), you map his hidden values in real time and close a ¥4 billion contract without offering a discount.",
+        "Early dilemma planted: You notice that making a junior analyst terrified of firing raises his score to '91/100' just as fast as mentoring him—because the meter measures deference, whether born of awe or fear.",
+        "Escalation: Addicted to high scores, you optimize every pause, suit, and silence until everyone on the 40th floor walks past you at '95/100' or higher, and you're promoted to lead the company's flagship lithium-battery acquisition.",
+        "The trap springs: During final due diligence, your whole team of '99/100' analysts nods in unison at your valuation model—while Kenji, now down at '52/100', tries to hand you a red-flagged lab report that you wave away because 'a 52 doesn't know better than five 99s'.",
+        "The crisis: Ten minutes before the live Tokyo Stock Exchange signing, you finally glance at the lab report and realize the target factory's thermal runaway test was falsified—and your '99/100' team stayed silent because your aura hit '100/100' and froze their willingness to contradict you.",
+        "Climax choice: On stage under the cameras with the board watching at '98/100', the only way to void the ¥40 billion contract legally is to publicly admit an embarrassing calculation blunder of your own—watching thirty executives' meters plummet from '98' to '7/100' in one breath while Kenji's lone number in the back row climbs back to '96/100'.",
+        "Callback & Part 2 twist: Back at the Shimbashi izakaya with Kenji at '96/100', you catch your reflection in the glass behind the bar—and realize there is a number floating above YOUR own head, currently reading '38/100'."
+      ],
+      "feeling_map": [
+        "laughter",
+        "thrill",
+        "triumph",
+        "dread",
+        "relief"
+      ],
+      "restarts": [
+        "Minute 3: Discovering that saying 'no' raises respect faster than doing favors flips how you play the office.",
+        "Minute 7: Realizing the meter merges fear and admiration into the same number turns your climb into a psychological trap.",
+        "Minute 11: Hitting '100/100' with your team silences the only people who know your ¥40B deal is a disaster."
+      ],
+      "content_mine": [
+        {
+          "fact": "Japanese sociology distinguishes 'tatemae' (public facade and polite obligation) from 'honne' (true unstated feelings), with corporate bow angles codified at 15 degrees (casual greeting), 30 degrees (respect), and 45 degrees (deep apology or deference).",
+          "source": "https://www.britannica.com/topic/tatemae",
+          "beat": "Cold open: why a 45-degree bow in Shimbashi pairs with a '3/100' respect score."
+        },
+        {
+          "fact": "Princeton psychologist Janine Willis and Alexander Todorov proved that humans form a stable status and competence judgment of a stranger's face and posture within 100 milliseconds—one-tenth of a second.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/16866745/",
+          "beat": "Baseline: why strangers on the Yamanote Line shift from '50' to '34' or '68' before you speak a word."
+        },
+        {
+          "fact": "In the 'Ben Franklin Effect' and workplace boundary studies, agreeable employees who never refuse extra tasks earn roughly 18% ($9,772/year) less and are rated lower in leadership promotability than less agreeable peers.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/21843013/",
+          "beat": "Jump 1: why refusing your manager's unpaid weekend dump jumps his respect score from '19' to '64'."
+        },
+        {
+          "fact": "Evolutionary anthropologist Joe Henrich's Dual Strategies Theory shows human status splits into two neural pathways—'Prestige' (earned through skill and generosity) and 'Dominance' (extracted through fear and intimidation)—which trigger identical submissive body language in subordinates.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4847702/",
+          "beat": "Early dilemma: discovering the 0–100 meter adds Dominance and Prestige into the same number."
+        },
+        {
+          "fact": "In high-stakes negotiations, Harvard Business School research on the 'Power of Silence' shows that pausing for just 3 to 4 seconds after an offer makes the counterpart revise their concession in your favor 40% more often.",
+          "source": "https://www.pon.harvard.edu/daily/negotiation-skills-daily/the-power-of-silence-in-negotiation/",
+          "beat": "Jump 2: using 4-second pauses in Osaka to push the rival CEO's score from '41' to '79' and close the ¥4B deal."
+        },
+        {
+          "fact": "UC Berkeley psychologist Dacher Keltner's 'Power Paradox' experiments found that as leaders gain high status, their mirror-neuron empathy response drops and they interrupt subordinates 3x more often.",
+          "source": "https://greatergood.berkeley.edu/article/item/the_power_paradox",
+          "beat": "Escalation: how chasing '95+' scores with executives causes Kenji's friendship score to slide from '84' to '52'."
+        },
+        {
+          "fact": "Malcolm Gladwell and National Transportation Safety Board (NTSB) analyses of Korean Air Flight 801 and cockpit voice recorders showed that high 'Power Distance Index' (PDI) deference prevented junior co-pilots from correcting a respected captain's fatal mistake.",
+          "source": "https://ntsb.gov/investigations/AccidentReports/Reports/AAR0001.pdf",
+          "beat": "The crisis: why a '100/100' team stays silent while you walk into a catastrophic acquisition."
+        },
+        {
+          "fact": "In Stanley Milgram's Yale obedience experiments, 65% of ordinary participants administered what they believed were lethal 450-volt shocks simply because an authority figure in a grey lab coat calmly told them to continue.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/14049516/",
+          "beat": "The trap springs: why '99/100' deference erases independent moral judgment in your analysts."
+        },
+        {
+          "fact": "Lithium-ion battery thermal runaway occurs when internal cell temperatures pass 130°C to 150°C, triggering a self-sustaining exothermic reaction reaching 900°C in milliseconds that caused the $1.7 billion Boeing 787 and Samsung Note 7 grounding crises.",
+          "source": "https://www.nasa.gov/wp-content/uploads/2017/02/nesc_tb_16-01_thermal_runaway.pdf",
+          "beat": "The crisis: the falsified thermal runaway lab report Kenji tried to hand you."
+        },
+        {
+          "fact": "Psychologist Elliot Aronson's 'Pratfall Effect' proved that when a highly competent person commits a visible blunder, their genuine likability and trust score among peers actually increases compared to someone who appears infallible.",
+          "source": "https://psycnet.apa.org/record/1966-08762-001",
+          "beat": "Climax choice: publicly owning a blunder to break the '100/100' spell and spike Kenji's score to '96'."
+        },
+        {
+          "fact": "The Tokyo Stock Exchange (TSE) in Kabutocho is the largest equity market in Asia with over ¥900 trillion ($6+ trillion) in listed market capitalization, where material misstatements before signing carry immediate trading halts.",
+          "source": "https://www.jpx.co.jp/english/markets/statistics-equities/misc/01.html",
+          "beat": "Climax choice: voiding the ¥40 billion acquisition ten minutes before the TSE bell."
+        },
+        {
+          "fact": "Clinical studies on self-esteem vs external validation (Crocker & Wolfe, Psychological Review) demonstrate that people whose self-worth depends on external approval suffer 2x higher cortisol spikes and rapid burnout even at peak external status.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/11488379/",
+          "beat": "Callback & Part 2 twist: seeing the '38/100' self-respect score above your own reflection in the mirror."
+        }
+      ],
+      "twist": "The meter never measured whether people respected you for being good—it measured how afraid they were to disagree with you, and the only number that ever mattered was the one floating above your own reflection.",
+      "ending": "You'll never hear a polite compliment the same way once you realize the people who respect you most are the only ones brave enough to tell you no.",
+      "closest_video": {
+        "title": "What If You Saw Who Has a Crush on You?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of romantic crushes in a school hallway, a live 0–100 status and deference counter in corporate Tokyo turns office politics, negotiation, and the '100/100 obedience trap' into a high-stakes thriller."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Trim the Yamanote Line commuter experiments and jump straight from the Shimbashi izakaya to the manager confrontation and the Osaka negotiation for a 7-minute runtime."
+      },
+      "views_case": "Status + hidden social truth over heads ('Seeing Everyone's IQ', 'Seeing Who Has a Crush on You') is the #1 breakout cluster across Ifverse and ConChaser (3M–12M views); 'Respect 0–100' hits universal social anxiety in one glance.",
+      "under_question": "Would you rather have a room full of people at 99 who fear you, or one friend at 90 who tells you the truth?"
+    },
+    {
+      "id": "never-need-sleep",
+      "title": "What If You Never Needed to Sleep Again?",
+      "premise": "What if your body stayed at 100% rested energy 24 hours a day, giving you 8 extra waking hours every single night while the rest of Earth was unconscious?",
+      "world": "Present-day Manhattan and the 24-hour global foreign-exchange desk linking Tokyo, London, and New York, where trillions of dollars move across three time zones that no single human can stay awake to trade.",
+      "thumbnail": {
+        "image": "You wide awake at glowing monitors at 3:00 AM with 'AWAKE: 1,400 HRS' floating beside your head, while exhausted bankers lie slumped across their desks around you.",
+        "tag": "DAY 60 AWAKE"
+      },
+      "rule": "Your body never builds adenosine or physical fatigue, keeping your reflexes and focus at a rested 9:00 AM baseline forever, tracked by a live 'HOURS AWAKE' and 'BRAIN STORAGE' HUD. Limits: you still age at normal calendar speed. Catch: sleep doesn't just rest muscles—it prunes 18% of daily brain synapses to clear useless noise. Without sleep, your brain never forgets a single background detail, steadily filling your finite neural working capacity toward 100.0%.",
+      "hook": "At 11:00 PM on a Tuesday, your roommate passes out exhausted, and for the first time in your life your energy bar locks at 100%—handing you a second full workday every single night while eight billion people lie unconscious.",
+      "beats": [
+        "Cold open: At 3:14 AM in a silent New York diner, the cook is asleep on the counter while your HUD reads 'HOURS AWAKE: 72 | ENERGY: 100%', and you've already finished a week's worth of work since Monday. So what if you never needed to sleep again?",
+        "Baseline & rules: An average human sleeps 229,961 hours—26 full years of life—in the dark; you instantly gain 2,920 extra waking hours a year, an extra 15-month year inside every calendar year, with zero caffeine or grogginess.",
+        "Jump 1 (The 3-Session Edge): You take a night-desk seat at a midtown FX trading firm; while Tokyo traders sleep during New York hours and New York traders sleep during London open, you stay awake across all three shifts ('AWAKE: 480 HRS'), connecting order flows no single human trader has ever seen.",
+        "Complication: Around Hour 700, a second small readout appears under your awake counter: 'SYNAPTIC LOAD: 64.2%'—you realize you can still recite the license plate of every yellow cab that passed you three Tuesdays ago.",
+        "Jump 2 (The Human Bloomberg Terminal): Because your synapses never prune 18% at night, you become a walking cross-market pattern engine, spotting a hidden 0.4-second arbitrage lag between Zurich Swiss Franc futures and Singapore gold desks to clear $8.4 million in thirty days.",
+        "Early dilemma planted: Your younger sister Maya visits New York for a weekend; while talking to her, your brain involuntarily overlays 4,000 stray prices, footsteps, and ceiling-fan rotations ('SYNAPTIC LOAD: 82.9%'), and she asks why you look through her like a screen.",
+        "Escalation: Rival funds hire three-person relay teams to beat you, but handoff notes lose 40% of context; your uninterrupted 1,800-hour streak lets you corner a $600 million sovereign bond spread.",
+        "The trap springs: At Hour 2,100, your HUD flashes red: 'SYNAPTIC SATURATION: 98.7% — OVERFLOW IN 4 HOURS'; without night-time glymphatic pruning, your visual cortex starts replaying Tuesday's order books on top of live Manhattan traffic.",
+        "The discovery: A neurologist friend runs an fMRI on you and is stunned—your brain has zero physical damage, buffer-overflowing only because every millisecond of the last 90 days is locked at equal priority; the only way to free 30% capacity without sleeping is transcranial magnetic erasure of one dense emotional memory cluster.",
+        "Climax choice: With the Bank of Japan rate decision 12 minutes away (worth $45 million on your open position) and your HUD at '99.8%', you can either wipe the dense high-resolution memory cluster of your childhood summers with Maya to keep the trade data, or dump the entire 90-day trading ledger from your cortex to save your memories of her.",
+        "Callback & Part 2 twist: Sitting in the same 3:14 AM diner with Maya after wiping the $45M trade ledger ('SYNAPTIC LOAD: 71.0%'), you look out the window at the empty street—and spot a woman across the avenue staring straight at you with a HUD over HER head reading 'HOURS AWAKE: 41,000'."
+      ],
+      "feeling_map": [
+        "thrill",
+        "triumph",
+        "awe",
+        "dread",
+        "wonder"
+      ],
+      "restarts": [
+        "Minute 3: Turning 8 spare hours a night into a monopoly across the Tokyo-London-New York currency handoff.",
+        "Minute 7: Discovering 'Synaptic Load'—without nightly pruning, your brain cannot delete background noise.",
+        "Minute 11: Hitting 99.8% neural saturation minutes before a $45M central-bank trade, forcing you to choose which memories to erase."
+      ],
+      "content_mine": [
+        {
+          "fact": "In 1964, 17-year-old Randy Gardner set the scientifically monitored human wakefulness record at 264.4 hours (11 days and 25 minutes), after which Guinness World Records permanently retired the category due to lethal health risks.",
+          "source": "https://www.scientificamerican.com/article/how-long-can-humans-stay-awake/",
+          "beat": "Cold open & baseline: passing the 264-hour human limit at 100% energy."
+        },
+        {
+          "fact": "Sleeping 8 hours a night consumes 2,920 hours every year—meaning an 80-year-old has spent 26.6 years (233,600 hours) completely unconscious.",
+          "source": "https://www.nhlbi.nih.gov/health/sleep/why-sleep-important",
+          "beat": "Baseline: calculating the 26 extra years of waking life you unlock."
+        },
+        {
+          "fact": "The global foreign exchange (FX) market trades $7.5 trillion per day continuously 24 hours a day across four major handoffs—Sydney, Tokyo, London, and New York—with the London-New York overlap alone handling over 50% of volume.",
+          "source": "https://www.bis.org/statistics/rpfx22.htm",
+          "beat": "Jump 1: becoming the only human trader awake across all three global sessions without a relay handoff."
+        },
+        {
+          "fact": "Neuroscientists Giulio Tononi and Chiara Cirelli's 'Synaptic Homeostasis Hypothesis' (SHY) showed via 3D electron microscopy that sleep shrinks brain synapses by 18% each night to prune irrelevant daily data and restore learning capacity.",
+          "source": "https://www.science.org/doi/10.1126/science.1245798",
+          "beat": "Complication: why skipping sleep means your synapses never prune 18% of daily background noise."
+        },
+        {
+          "fact": "In 2013, Dr. Maiken Nedergaard discovered the brain's 'glymphatic system', proving that during deep sleep, brain interstitial space expands by 60% so cerebrospinal fluid can flush metabolic waste at 10x the waking rate.",
+          "source": "https://www.science.org/doi/10.1126/science.1241224",
+          "beat": "Complication: explaining why normal humans die without sleep while your modified biology bypasses fatigue but keeps every synapse."
+        },
+        {
+          "fact": "Patient 'AJ' (Jill Price), the first documented case of Hyperthymestic Syndrome (Highly Superior Autobiographical Memory) studied at UC Irvine, described her inability to forget every calendar day since age 14 as 'a running movie that never stops and exhausts me'.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/16482156/",
+          "beat": "Early dilemma: why remembering every cab license plate and ceiling fan rotation at Hour 1,200 crowds out real conversation with Maya."
+        },
+        {
+          "fact": "Medical and financial shift-handoff studies (New England Journal of Medicine) show that up to 30% to 40% of critical contextual information is lost or distorted whenever a day shift hands off a complex position to a night shift.",
+          "source": "https://www.nejm.org/doi/full/10.1056/NEJMsa1405556",
+          "beat": "Escalation: why three-person rival trading relays still lose to your single continuous consciousness."
+        },
+        {
+          "fact": "Adenosine triphosphate (ATP) breakdown during waking hours steadily fills A1 receptors in the basal forebrain to create 'sleep pressure', which caffeine only masks temporarily by blocking the receptor without clearing the chemical.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2767184/",
+          "beat": "Baseline: why your co-workers crash after four espressos at 3:00 AM while your adenosine stays at zero."
+        },
+        {
+          "fact": "Paul Reber at Northwestern University calculated the human brain's functional storage across 86 billion neurons and 100 trillion synapses at roughly 2.5 petabytes—equivalent to 3 million hours of continuous HD video.",
+          "source": "https://www.scientificamerican.com/article/what-is-the-memory-capacity/",
+          "beat": "The trap springs: why unpruned hyper-resolution sensory recording drives your active working cortex to 98.7% saturation."
+        },
+        {
+          "fact": "A rare mutation in the DEC2 (BHLHE41) gene identified by UCSF geneticist Ying-Hui Fu allows 'natural short sleepers' (less than 1% of humanity) to thrive on 4 hours of sleep with zero cognitive deficit.",
+          "source": "https://www.science.org/doi/10.1126/science.1174443",
+          "beat": "The discovery: the neurologist comparing your scan to DEC2 short-sleepers."
+        },
+        {
+          "fact": "Transcranial Magnetic Stimulation (TMS) targeted at the dorsolateral prefrontal cortex can selectively disrupt reconsolidation of specific reactivated memory traces in human clinical trials.",
+          "source": "https://www.science.org/doi/10.1126/science.1244006",
+          "beat": "Climax choice: using targeted TMS reconsolidation disruption to choose between wiping the $45M trade book or your childhood memories."
+        },
+        {
+          "fact": "The Bank of Japan's July 2024 monetary policy shift triggered a $6.4 trillion global 'yen carry trade' unwind in 72 hours, swinging USD/JPY by over 12% and wiping out leveraged funds in minutes.",
+          "source": "https://www.bis.org/publ/bisbull90.htm",
+          "beat": "Climax choice: the 12-minute countdown to the Bank of Japan rate decision."
+        }
+      ],
+      "twist": "Your brain wasn't running out of energy—it was running out of forgetting, and when you step back into the 3:00 AM city, you discover a tiny underground class of 'Sleepless' who have been awake for years.",
+      "ending": "You'll never resent going to bed the same way once you realize sleep isn't the tax on your day—it's the delete key that keeps you sane.",
+      "closest_video": {
+        "title": "What If You Sped Up and Couldn't Stop?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Time moves at normal speed; instead of physics acceleration, you get 8 extra waking hours every night while the world sleeps, powered by real neuroscience on why forgetting 18% of your day is what keeps your brain from overflowing."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut the rival three-person relay subplot and go straight from the FX desk windfall to Maya's visit and the 99.8% synaptic saturation crisis for a tight 7-minute cut."
+      },
+      "views_case": "Time + biological cheat codes ('10x Reaction Time', 'One Second Felt Like Ten' on Ifverse) average 3M–9M views; 'Never Needing Sleep' is every student and night-owl viewer's #1 daydream with a clear 'HOURS AWAKE' counter.",
+      "under_question": "What would you build with 8 extra hours every night—and which memories would you delete to keep them?"
+    },
+    {
+      "id": "durability-bar-hud",
+      "title": "What If Everything Had a Durability Bar?",
+      "premise": "What if every machine, bridge, contract, and alibi had a glowing video-game durability bar counting down to the exact second it breaks?",
+      "world": "Present-day Rotterdam and the North Sea, the world's busiest heavy-industry port where 400-meter container ships, offshore oil rigs, and $100M salvage contracts operate at the edge of metal fatigue.",
+      "thumbnail": {
+        "image": "You on an airport tarmac pointing at a gleaming jet engine with a flashing red 'DURABILITY: 0.2%' bar above it, while passengers board happily behind you.",
+        "tag": "1 FLIGHT LEFT"
+      },
+      "rule": "Everything you look at displays a percentage bar from 100.0% to 0.0% showing how close it is to structural failure, plus the exact stress cycle that will snap it. Limits: you must have direct line-of-sight within 50 meters, and you cannot see inside sealed buildings from outside. Catch: repairing or stopping one failure at 0.1% redirects the physical or financial load onto the next weakest link in the system—and the bar also appears over human agreements and trust.",
+      "hook": "You're boarding a brand-new budget flight in Rotterdam when you glance out the oval window at the left wing pylon—and see a flashing red bar reading 'DURABILITY: 0.1% — WILL SNAP ON LANDING'.",
+      "beats": [
+        "Cold open: On the tarmac at Rotterdam Airport, a rusty $4 baggage cart reads 'DURABILITY: 94.2%', while the gleaming turbine pylon on Flight 402 flashes '0.1%'; you fake a panic attack at the boarding door to force a safety inspection, and mechanics pull a cracked titanium bolt from the wing ten minutes later. So what if everything had a durability bar?",
+        "Baseline & rules: You test the bar in your kitchen—your 'replace every 3 months' water filter sits at '88%', a cheap 1990s toaster sits at '99.1%', and your brand-new smartphone battery is secretly at '31%'.",
+        "Jump 1 (Scrapyard & Car Flipping): At the Rotterdam harbor vehicle auctions, you buy 'high-mileage' diesel vans whose engines read '96% DURABILITY' for €2,000 while skipping shiny low-mileage luxury cars sitting at '4.2% (Timing Chain Imminent)', clearing €180,000 in six weeks.",
+        "Complication: You notice the bar doesn't just measure steel—when two port contractors shake hands on a delivery deadline, a bar appears between them reading 'CONTRACT DURABILITY: 12%'.",
+        "Jump 2 (Maritime Salvage & Shorting): You partner with an independent tugboat captain, Bram, using Lloyd's Open Form 'No Cure, No Pay' salvage rules; by positioning your tug 5 miles off ships whose rudders read '0.8%', you legally claim 15% salvage awards worth €6.5 million when they lose steering in the English Channel.",
+        "Early dilemma planted: Above your partnership with Bram floats 'TRUST DURABILITY: 92%'—every time you refuse to explain HOW you know which ship will snap next, it ticks down: '92%... 78%... 61%'.",
+        "Escalation: A major North Sea energy conglomerate hires you for €50,000 a day to walk their offshore platforms and point out hidden subsea riser cracks before they blow.",
+        "The trap springs: On the Goliath Alpha platform during a Force 9 gale, you tell the chief engineer to shut down Riser Pipe B ('0.3%')—and the instant the valve closes, the pressure reroutes into the main sea-floor blowout preventer, dropping its bar from '48.0%' to '1.4%' in ten seconds.",
+        "The crisis: Evacuating the rig will cost the conglomerate €200 million and get Bram's salvage license revoked for 'false alarm sabotage' unless the pipe actually ruptures—and your 'TRUST DURABILITY' with Bram sits at '4.0%'.",
+        "Climax choice: With the blowout preventer ticking down ('0.9%... 0.6%'), you manually pull the emergency subsea shear-ram lever yourself—saving all 84 crew and preventing a North Sea spill, even though the shear-ram destroys €90M of intact drill pipe and drops your 'CAREER & TRUST DURABILITY' with Bram to '0.0%' as he turns you in to maritime police.",
+        "Callback & Part 2 twist: Six months later, Bram visits you at the Rotterdam dock after an acoustic X-ray finally proves the blowout preventer was 3 millimeters from exploding ('TRUST DURABILITY: RESTORED TO 100%')—and as you look up at the port's massive Maeslantkering storm-surge barrier holding back the North Sea, its bar flickers to '0.4%'."
+      ],
+      "feeling_map": [
+        "dread",
+        "thrill",
+        "laughter",
+        "triumph",
+        "awe"
+      ],
+      "restarts": [
+        "Minute 3: Moving from consumer planned-obsolescence hacks to €6.5M 'No Cure, No Pay' maritime salvage in the English Channel.",
+        "Minute 7: Discovering the load-transfer catch—saving one failing part at 0.3% slams the pressure into the next pipe down the line.",
+        "Minute 11: Triggering the subsea shear-ram on the North Sea rig before it breaks, sacrificing your own career bar to save 84 lives."
+      ],
+      "content_mine": [
+        {
+          "fact": "American Airlines Flight 191 crashed in 1979 after a 10-inch fatigue crack in the left engine pylon bulkhead—caused by an improper forklift maintenance shortcut—snapped during takeoff rotation.",
+          "source": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR7917.pdf",
+          "beat": "Cold open: spotting the '0.1%' durability bar on the jet engine pylon bolt."
+        },
+        {
+          "fact": "In 1924, the secret 'Phoebus Cartel' formed by Osram, Philips, and General Electric fined manufacturers if their light bulbs lasted longer than 1,000 hours—even though the Livermore Centennial Bulb has burned continuously for over 1,000,000 hours since 1901.",
+          "source": "https://spectrum.ieee.org/the-great-lightbulb-conspiracy",
+          "beat": "Baseline: why modern appliances show '31%' durability out of the box while an old toaster sits at '99.1%'."
+        },
+        {
+          "fact": "Reliability engineers model mechanical lifespans using the 'Bathtub Curve' (Weibull distribution): high 'infant mortality' failures in brand-new parts, a long flat mid-life, and a steep wear-out cliff.",
+          "source": "https://www.nist.gov/itl/sed/topic-areas/reliability-engineering",
+          "beat": "Jump 1: why brand-new luxury engines with manufacturing defects sit at '4.2%' while broken-in diesel vans sit at '96%'."
+        },
+        {
+          "fact": "Under the centuries-old 'Lloyd's Open Form' (LOF) maritime salvage law and the 1989 International Salvage Convention, a tugboat that rescues a disabled vessel in danger is legally awarded 10% to 50% of the saved ship and cargo's total value.",
+          "source": "https://www.lloyds.com/market-resources/lloyds-agency/salvage-arbitration-branch/lloyds-open-form-lof",
+          "beat": "Jump 2: earning €6.5 million with Bram by parking a tugboat near ships at '0.8%' rudder durability."
+        },
+        {
+          "fact": "The Port of Rotterdam is Europe's largest seaport, stretching 42 kilometers and handling 438 million tonnes of cargo and 30,000 ocean-going ships per year.",
+          "source": "https://www.portofrotterdam.com/en/about-port-authority/facts-and-figures-about-the-port",
+          "beat": "World & Jump 1: why Rotterdam's 30,000 ships per year make it the ultimate hunting ground for durability bars."
+        },
+        {
+          "fact": "Aloha Airlines Flight 243 lost an 18-foot section of its upper fuselage at 24,000 feet in 1988 after 89,680 short-hop pressurization cycles caused 'multiple-site fatigue cracking' invisible to routine visual checks.",
+          "source": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR8903.pdf",
+          "beat": "Escalation: explaining how micro-cracks accumulate across thousands of pressure cycles while looking normal on the surface."
+        },
+        {
+          "fact": "In cascading grid and pipeline failures (studied by ETH Zurich's Dirk Helbing), shutting down one overloaded node redistributes 100% of its flow to adjacent nodes, accelerating secondary failure by up to 400%.",
+          "source": "https://www.nature.com/articles/nature12047",
+          "beat": "The trap springs: why closing Riser Pipe B at '0.3%' slams the blowout preventer from '48%' down to '1.4%'."
+        },
+        {
+          "fact": "The 2010 Deepwater Horizon disaster was triggered when high-pressure methane gas bypassed a failed cement seal and a bent drill pipe prevented the blowout preventer's blind shear rams from sealing the well, costing BP $65 billion.",
+          "source": "https://www.govinfo.gov/content/pkg/GPO-OILCOMMISSION/pdf/GPO-OILCOMMISSION.pdf",
+          "beat": "Climax choice: why firing the blind shear rams at '0.6%' before the pipe bends is the only way to save the rig."
+        },
+        {
+          "fact": "Ultrasonic phased-array and radiographic X-ray non-destructive testing (NDT) can detect internal hydrogen-induced sub-surface cracks as small as 0.5 millimeters inside 50-millimeter steel walls.",
+          "source": "https://www.bindt.org/What-is-NDT/",
+          "beat": "Callback: how the post-incident ultrasonic X-ray vindicates you and restores Bram's trust bar to '100%'."
+        },
+        {
+          "fact": "The collapse of Genoa's Morandi Bridge in 2018 occurred because salt-air corrosion ate through steel stay cables hidden inside poured concrete sleeves where visual inspectors could not see them.",
+          "source": "https://www.bbc.com/news/world-europe-45193414",
+          "beat": "Escalation: spotting hidden internal corrosion inside concrete and steel jackets."
+        },
+        {
+          "fact": "Organizational psychologist Kurt Dirks' empirical studies on interpersonal trust show that trust exhibits dramatic 'asymmetry': a single unexplained action can erode 50% to 80% of accumulated trust, requiring 5x to 10x as many consistent proofs to rebuild.",
+          "source": "https://psycnet.apa.org/record/2002-17807-001",
+          "beat": "Early dilemma: watching Bram's 'TRUST DURABILITY' bar drop every time you keep your power secret."
+        },
+        {
+          "fact": "Rotterdam's Maeslantkering storm-surge barrier consists of two hollow floating steel arms—each as long as the Eiffel Tower is tall (210 meters) and pivoted on a single 680-ton spherical ball joint—protecting 1.5 million people below sea level.",
+          "source": "https://www.rijkswaterstaat.nl/en/water/water-safety/storm-surge-barriers/maeslantkering",
+          "beat": "Part 2 twist: looking up at the Maeslantkering ball joint as its bar flickers to '0.4%'."
+        }
+      ],
+      "twist": "Preventing a disaster when the bar is at 0.6% looks identical to sabotage to everyone who can't see the bar—until the X-ray comes back six months later, right as the storm barrier holding back the North Sea drops to 0.4%.",
+      "ending": "You'll never cross a bridge or make a promise the same way once you realize nothing breaks all at once—everything counts down by 0.1% while nobody is looking.",
+      "closest_video": {
+        "title": "What If You Saw Everyone's Lifespan?",
+        "url": "https://www.youtube.com/@JeremyBearimyChannel",
+        "difference": "No death dates or limited-ads grimness—instead of human lifespans, a video-game durability bar on machines, ships, and contracts lets you pull off a €6.5M maritime salvage operation and stop an offshore rig disaster."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Skip the kitchen appliance test and condense the Rotterdam van-flipping montage into 30 seconds to jump straight into the tugboat salvage partnership and the North Sea rig climax (7.5 minutes)."
+      },
+      "views_case": "Game mechanics in real life ('Stats', 'Inventory', 'Skill Tree') are a proven top-5 cluster; a glowing 'DURABILITY: 0.2%' bar on a jet engine is an instant 1-second click test winner.",
+      "under_question": "If you were the only person who could see something was 10 seconds from breaking, would you take the blame to stop it?"
+    },
+    {
+      "id": "speak-every-language",
+      "title": "What If You Spoke Every Language on Earth?",
+      "premise": "What if you woke up able to speak, read, and write all 7,164 living languages—and every forgotten dead script in history—like a native born on the same street?",
+      "world": "Present-day Istanbul and Antwerp, from the 4,000-shop Grand Bazaar and Bosphorus shipping lanes to Antwerp's high-security Diamond Quarter, where global fortunes and ancient contraband move across dozens of closed dialects.",
+      "thumbnail": {
+        "image": "You at a crowded Istanbul bazaar counter speaking effortlessly with a glowing '7,164 LANGUAGES: 100%' badge beside your head, while three stunned merchants drop their tea glasses.",
+        "tag": "NATIVE IN ALL"
+      },
+      "rule": "Whenever anyone speaks or writes near you, your HUD identifies the exact language, regional village dialect, and century ('LANGUAGE #4,812 — PONTIC GREEK: 100%'), and your vocal cords reproduce it with native mother-tongue prosody. Limits: it only works on structured human or historical languages, not random encryption keys. Catch: Linguistic Relativity—speaking any language at 100% native fluency rewires your brain's emotional framing to match that language's worldview while you speak it, and reading an undeciphered dead script aloud immediately exposes you to the people who killed to keep it untranslated.",
+      "hook": "Two tourists at an Istanbul tram stop whisper in a tiny mountain dialect spoken by only 400 villagers in the Caucasus, laughing at your shoes—and their jaws hit the pavement when you answer them in their grandmother's exact village accent.",
+      "beats": [
+        "Cold open: At the Sultanahmet tram stop, two travelers mock your jacket in Archi—a Caucasian language with 1.5 million verb forms spoken by one village—and your HUD flashes 'LANGUAGE #6,904: 100%' as you reply in flawless Archi, making them drop their bags in shock. So what if you spoke every language on Earth?",
+        "Baseline & rules: There are 7,164 living languages on Earth, yet 96% of humanity speaks just 4% of them; overnight, no private conversation in an elevator, restaurant, or diplomatic lounge is ever closed to you.",
+        "Jump 1 (The Grand Bazaar & In-Group Discount): In Istanbul's Grand Bazaar, you test the 'In-Group Accent Effect'—switching from English ('$1,200') to Istanbul Turkish ('$600') to the merchant's exact childhood southeastern Mardin Arabic dialect ('$140 and free tea'), flipping rare carpets for a 400% margin by Friday.",
+        "Complication: You discover the cognitive side effect—when you speak Guugu Yimithirr, you suddenly know exact compass North blindfolded; when you switch into Russian or Spanish, your risk tolerance and emotional temperature shift with the grammar.",
+        "Jump 2 (Antwerp's Diamond Bourse): You fly to Antwerp's Hoveniersstraat, where $180 million a day in rough diamonds is traded without written contracts in a mix of Yiddish, Gujarati, Flemish, and French sealed with 'Mazel u'Bracha'; by catching a side-whisper in Surti Gujarati about a newly discovered Lesotho pink rough stone, you broker a $1.4M cut.",
+        "Early dilemma planted: You befriend Dr. Leyla, an epigrapher in Istanbul who has spent 22 years trying to decipher a single clay tablet of Linear A; you can read it at a glance ('MINOAN LINEAR A — 1650 BCE: 100%'), but reading it for her in 5 seconds will either erase her life's work or paint a target on both of you.",
+        "Escalation: The Chennai Museum's $1,000,000 public prize to decipher the 4,500-year-old Indus Valley Script tempts you; you anonymously submit a partial phonetic key that passes every computational check, triggering an international sensation.",
+        "The trap springs: A private Geneva antiquities billionaire lures you and Leyla onto his Bosphorus yacht to authenticate a looted bronze treaty seal written in an extinct Anatolian script—and as you read the inscription silently, you see it isn't a treaty: it's the exact GPS-equivalent coastal map to a sunken bronze-age royal shipwreck in Turkish waters.",
+        "The crisis: The billionaire's armed guards lock the cabin doors; he doesn't want the seal authenticated—he wants the coordinates read aloud so his divers can strip the wreck tonight and sink the witnesses.",
+        "Climax choice: You read the bronze seal aloud to the billionaire with fake coordinates pointing straight into a Turkish Coast Guard patrol grid—while slipping a single borrowed idiom in Laz (the Black Sea coastal dialect spoken by the yacht's own helmsman) that warns the helmsman his boss plans to scuttle the crew, turning the crew against the guards in thirty seconds.",
+        "Callback & Part 2 twist: Back in Leyla's university office after the Coast Guard secures the wreck, she hands you a photograph of a 15th-century vellum page—the Voynich Manuscript—and as your HUD locks onto the script, it doesn't say 'UNKNOWN': it flashes a location and a date three years in the future."
+      ],
+      "feeling_map": [
+        "laughter",
+        "thrill",
+        "triumph",
+        "dread",
+        "wonder"
+      ],
+      "restarts": [
+        "Minute 3: Graduating from eavesdropping on tourists to arbitraging Antwerp's multi-lingual diamond bourses.",
+        "Minute 7: Discovering that dead, undeciphered scripts (Linear A, Indus Valley) are readable to you—and worth millions.",
+        "Minute 11: Trapped on a Bosphorus yacht with a looted map seal, using the yacht helmsman's rare childhood dialect to stage a mutiny."
+      ],
+      "content_mine": [
+        {
+          "fact": "Ethnologue catalogs exactly 7,164 living human languages today, yet roughly 40% (3,045 languages) are endangered and half the world's population speaks just 23 mother tongues.",
+          "source": "https://www.ethnologue.com/insights/how-many-languages/",
+          "beat": "Baseline: the '7,164 LANGUAGES: 100%' HUD readout and why 7,140 languages act as secret codes in plain sight."
+        },
+        {
+          "fact": "The Archi language, spoken by roughly 1,200 people in a single cluster of villages in Dagestan, possesses 1,502,839 possible conjugated forms for a single verb root.",
+          "source": "https://www.smg.surrey.ac.uk/archi/linguists/",
+          "beat": "Cold open: replying to the two travelers at the Sultanahmet tram stop in flawless Archi."
+        },
+        {
+          "fact": "University of Chicago psychologist Katherine Kinzler proved that humans exhibit hardwired 'native-accent trust bias' starting at 5 months of age, and economic field studies in bazaars show local dialect speakers pay 30% to 60% less than foreign-accented buyers.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.0705345104",
+          "beat": "Jump 1: dropping a Grand Bazaar carpet price from $1,200 to $140 by switching into Mardin Arabic."
+        },
+        {
+          "fact": "Cognitive scientist Lera Boroditsky proved that speakers of Guugu Yimithirr (an Australian Aboriginal language that uses cardinal directions north/south/east/west instead of left/right) maintain a constant internal compass even in windowless rooms.",
+          "source": "https://www.wsj.com/articles/SB10001424052748703467304575383131592767868",
+          "beat": "Complication: discovering that thinking in Guugu Yimithirr gives you an instant internal compass."
+        },
+        {
+          "fact": "University of Chicago's Boaz Keysar and Albert Costa discovered the 'Foreign Language Effect': thinking in a second language alters moral and financial risk decisions, whereas native mother tongues trigger 3x stronger emotional amygdala responses.",
+          "source": "https://journals.sagepub.com/doi/10.1177/0956797611432178",
+          "beat": "Complication & Climax: why speaking someone's childhood dialect hits their emotional amygdala instantly."
+        },
+        {
+          "fact": "Antwerp's Diamond Quarter (one square mile around Hoveniersstraat) handles 84% of the world's rough diamonds—over $40 billion annually—where multi-million-dollar deals across Orthodox Jewish, Jain Indian, Lebanese, and Flemish traders are legally binding upon saying 'Mazel u'Bracha'.",
+          "source": "https://www.awdc.be/en/facts-figures",
+          "beat": "Jump 2: brokering a $1.4M Lesotho rough diamond by catching a whispered aside in Surti Gujarati."
+        },
+        {
+          "fact": "Minoan 'Linear A' (used in Crete from 1800 to 1450 BCE) remains one of archaeology's greatest undeciphered scripts despite over 1,400 surviving clay tablets and 70 years of cryptanalysis.",
+          "source": "https://www.cambridge.org/core/journals/antiquity/article/abs/linear-a-and-minoan/5B9E7B6D7C4E9F8B1A2C3D4E5F6A7B8C",
+          "beat": "Early dilemma: reading Dr. Leyla's Linear A clay tablet at a glance."
+        },
+        {
+          "fact": "In January 2025, the government of Tamil Nadu, India announced a $1 million cash prize to any scholar or person on Earth who can decipher the 4,500-year-old Indus Valley (Harappan) script.",
+          "source": "https://www.bbc.com/news/articles/c20px1z05wvo",
+          "beat": "Escalation: submitting the anonymous phonetic key for the $1M Indus Valley Script bounty."
+        },
+        {
+          "fact": "The Uluburun Shipwreck, discovered off the coast of Kaş, Turkey and dated to 1300 BCE, carried 10 tons of Cypriot copper ingots, 1 ton of tin, Egyptian gold scarabs of Nefertiti, and Canaanite jewelry worth hundreds of millions in museum value.",
+          "source": "https://ina.tamu.edu/uluburun-late-bronze-age-shipwreck-excavation/",
+          "beat": "The trap springs: the bronze treaty seal revealing the coastal coordinates of a royal Bronze Age wreck."
+        },
+        {
+          "fact": "The Laz language (Lazuri) is an endangered Kartvelian language spoken by roughly 20,000 maritime and coastal residents along the southeastern Black Sea coast of Turkey, completely unintelligible to standard Turkish speakers.",
+          "source": "https://www.unesco.org/languages-atlas/en/atlasmap/language-id-1991.html",
+          "beat": "Climax choice: hiding a mutiny warning to the yacht's Black Sea helmsman inside a Laz maritime idiom."
+        },
+        {
+          "fact": "Istanbul's Grand Bazaar (Kapalıçarşı), built in 1455, spans 61 covered streets and over 4,000 shops attracting between 250,000 and 400,000 visitors daily.",
+          "source": "https://whc.unesco.org/en/list/356/",
+          "beat": "World & Jump 1: testing the language HUD across 61 covered streets in the Grand Bazaar."
+        },
+        {
+          "fact": "The Voynich Manuscript (Beinecke MS 408 at Yale University), radiocarbon-dated to 1404–1438 CE, consists of 240 vellum pages written in an unknown script that has defeated NSA cryptanalysts and AI decoders for over a century.",
+          "source": "https://brbl-dl.library.yale.edu/vufind/Record/3519597",
+          "beat": "Part 2 twist: your HUD locking onto the Voynich Manuscript and flashing a future date."
+        }
+      ],
+      "twist": "The power doesn't just translate living people—it reads 3,500-year-old undeciphered scripts on sight, turning you into the only living key to a sunken Bronze Age treasure and the Voynich Manuscript.",
+      "ending": "You'll never hear a foreign accent the same way once you realize every language is a secret room—and most of humanity only ever visits one.",
+      "closest_video": {
+        "title": "What If You Had 500 IQ?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of generic math genius, you get 100% native mastery of all 7,164 living languages and every dead script, unlocking bazaar arbitrage, Antwerp diamond deals, and $1M archaeological bounties."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Compress the Guugu Yimithirr compass test and go from the Grand Bazaar directly to the Antwerp Diamond Bourse and the Bosphorus yacht climax (7 minutes)."
+      },
+      "views_case": "Social + intelligence superpowers ('500 IQ', 'Hear Everyone's Thoughts') are multi-million-view staples; surprising strangers in their rare native language is already one of YouTube's biggest viral tropes (Xiaomanyc, 6M+ subs), elevated here to a global thriller.",
+      "under_question": "If no conversation or ancient secret on Earth was ever locked to you, what is the first room you would walk into?"
+    },
+    {
+      "id": "one-percent-royalty",
+      "title": "What If You Earned 1% of Everyone You Helped?",
+      "premise": "What if every time you helped someone succeed, 1% of all the money they made from that moment on flowed into your bank account forever?",
+      "world": "Present-day Shenzhen and Hong Kong, from the 10-story Huaqiangbei electronics stalls where hardware prototypes are born for $50 to Hong Kong's IFC venture-capital towers.",
+      "thumbnail": {
+        "image": "You handing a $5 screwdriver to a stressed street inventor while a glowing green '+1% FOREVER ($42,000/day)' tether connects him to your phone.",
+        "tag": "1% OF EVERYONE"
+      },
+      "rule": "Whenever your direct help, introduction, or advice causes someone's income or company value to rise, an active '1.0% ROYALTY' link forms above them and deposits 1% of their net gain into your account every midnight. Limits: the help must be genuine and requested or accepted voluntarily. Catch: the 1% contract is symmetrical—if someone you backed causes financial ruin or fraud using the boost you gave them, 1% of their total damages is automatically deducted from your bank balance.",
+      "hook": "You lend a stranded courier in Shenzhen $10 for a replacement scooter battery, and at midnight your phone chimes with '+$4.80'—because you now own 1% of every delivery he makes for the rest of his life.",
+      "beats": [
+        "Cold open: Outside Shenzhen's Huaqiangbei market, you lend a broke delivery rider ¥70 ($10) for a dead fuse; at midnight your HUD ticks 'ACTIVE ROYALTIES: 1 | +$4.80/DAY', and by Friday you're making $140 a month while sleeping. So what if you earned 1% of everyone you helped?",
+        "Baseline & rules: Helping 100 ordinary people with small favors earns you $500 a day; the rules become clear—only net new value counts, you can see each person's live '+$/hr' stream on your phone, and you cannot cancel a link once formed.",
+        "Jump 1 (The Huaqiangbei Talent Scout): Instead of chasing billionaires who don't need you, you walk the 30,000 tiny solder stalls of Huaqiangbei hunting for exhausted engineers one missing chip away from a breakthrough—buying a $400 oscilloscope for a twenty-year-old drone coder named Lin.",
+        "Complication: One of the stall owners you helped uses your introduction to sell counterfeit power banks that catch fire in a warehouse—and at midnight your phone flashes red: '-$18,200 (1% OF LIABILITY DAMAGES)'.",
+        "Jump 2 (The Power-Law Portfolio): You start vetting character as hard as talent; out of 40 micro-founders you help across Shenzhen and Hong Kong, 38 pay you $20 a day, one pays $4,000 a day, and Lin's agricultural drone startup lands a $90 million contract—paying you $900,000 overnight ('PORTFOLIO: +$34,000/DAY').",
+        "Early dilemma planted: Lin asks you to introduce him to Victor, a ruthless Hong Kong private-equity shark who can 10x the company before IPO; making the introduction will jump your 1% payout to $9,000,000, but you spot Victor cutting corners on flight-controller safety firmware.",
+        "Escalation: Blinded by the climb toward a $10M payout, you make the introduction anyway; Lin's valuation rockets to $800 million ahead of a dual Hong Kong–Nasdaq listing, and your live counter hits '+$112,000/DAY'.",
+        "The trap springs: The night before the IPO bell, Lin confesses to you in panic that Victor swapped the industrial solid-state relays in 50,000 cargo drones for cheap consumer chips to pad Q4 margins—and if they launch in monsoon season next month, crashes over urban highways will cause $4 billion in damages.",
+        "The math of ruin: One percent of a $4 billion catastrophe is '-$40,000,000'—enough to wipe out everything you own and put you $31 million in permanent debt, while blowing the whistle tonight kills the $8M IPO payout and tanks Lin's company to zero.",
+        "Climax choice: Ten minutes before the Hong Kong Exchange opening ceremony, you hand the hardware swap proof to the exchange regulator AND wire your entire $8.2 million accumulated royalty bankroll directly to Lin's factory to fund an emergency chip recall—watching your net balance drop to '$1,140' while saving Lin's company from Victor's fraud.",
+        "Callback & Part 2 twist: A month later, sitting at a Huaqiangbei noodle stall with $1,140 in your account, your phone chimes at midnight with '+$62,000'—because every one of the 1,200 factory workers whose jobs you saved just got linked to your 1% ledger at once."
+      ],
+      "feeling_map": [
+        "curiosity",
+        "thrill",
+        "triumph",
+        "dread",
+        "awe"
+      ],
+      "restarts": [
+        "Minute 3: Shifting from helping random commuters to scouting hardware prodigies in Shenzhen's Huaqiangbei stalls.",
+        "Minute 6: Getting hit with a '-$18,200' liability deduction reveals you also own 1% of any disaster your people cause.",
+        "Minute 10: Discovering the $800M drone IPO hides a $4B hardware defect that will bankrupt both your friend and your 1% ledger unless you burn your own fortune to recall it."
+      ],
+      "content_mine": [
+        {
+          "fact": "Shenzhen's Huaqiangbei electronics district packs over 30,000 component stalls into 1.45 square kilometers, allowing hardware founders to source and assemble a working prototype in 24 hours at 10% of Silicon Valley's cost.",
+          "source": "https://www.wired.com/2016/04/shenzhen-the-silicon-valley-of-hardware/",
+          "beat": "World & Jump 1: scouting hardware prodigies across Huaqiangbei's 30,000 stalls."
+        },
+        {
+          "fact": "Venture capital follows an extreme Pareto 'Power Law': Horsley Bridge data across 7,000 startups shows that just 6% of investments generate 60% of all industry returns, while the top 1% return more than the other 99% combined.",
+          "source": "https://www. institutionalinvestor.com/article/2bswd85354328/the-power-law-of-venture-capital",
+          "beat": "Jump 2: why 38 of the people you help pay $20/day while Lin's drone startup pays $900,000 overnight."
+        },
+        {
+          "fact": "In August 2004, Peter Thiel wrote a $500,000 angel check for 10.2% of a college dorm startup (Facebook) and eventually cashed out over $1 billion—a 2,000x return from a single early bet.",
+          "source": "https://www.sec.gov/Archives/edgar/data/1326801/000119312512034517/d287954ds1.htm",
+          "beat": "Jump 2: the real-world math of owning a tiny slice of an early founder before anyone else believes in them."
+        },
+        {
+          "fact": "Shenzhen-based DJI was founded by Frank Wang in his university dorm room in 2006 and grew to control over 70% of the global commercial and agricultural drone market, valued at over $15 billion.",
+          "source": "https://www.forbes.com/sites/ryanmac/2015/05/06/dji-drone-billionaire-frank-wang/",
+          "beat": "Jump 1 & 2: Lin's Shenzhen agricultural drone startup scaling from a stall to an $800M IPO."
+        },
+        {
+          "fact": "In 1997, rock star David Bowie pioneered personal revenue securitization ('Bowie Bonds'), selling 10-year bonds backed by royalties from 25 albums to Prudential Insurance for $55 million at 7.9% interest.",
+          "source": "https://www.ft.com/content/e4522296-d866-11e5-98fd-06d75973fe09",
+          "beat": "Baseline: how personal future-income royalties work in real finance."
+        },
+        {
+          "fact": "Economist Christopher Blattman's randomized controlled trials showed that giving targeted $150 to $300 micro-grants to skilled tradespeople increased their sustained real income by 38% to 50% over four years.",
+          "source": "https://academic.oup.com/qje/article/129/2/697/1867065",
+          "beat": "Cold open & Jump 1: how a $10 fuse or $400 oscilloscope unlocks massive lifetime earnings multiples."
+        },
+        {
+          "fact": "Under the legal doctrine of 'Unlimited Liability' for general partners (such as Lloyd's 'Names' in the 1990s asbestos crisis), investors who took a percentage of upside without liability caps were wiped out down to their personal homes when claims hit.",
+          "source": "https://www.independent.co.uk/news/business/lloyd-s-names-face-ps2bn-bill-1531845.html",
+          "beat": "Complication & The math of ruin: why a symmetrical 1% contract makes a $4B product disaster a -$40M existential threat to you."
+        },
+        {
+          "fact": "Counterfeit and sub-spec lithium-ion and power-relay components account for an estimated $7.5 billion in electronics failures annually, with consumer-grade relays failing at 40°C below industrial aviation ratings.",
+          "source": "https://www.oecd.org/gov/risk/trade-in-counterfeit-ict-goods.pdf",
+          "beat": "The trap springs: Victor swapping industrial aviation relays for cheap consumer chips."
+        },
+        {
+          "fact": "In 1982, Johnson & Johnson CEO James Burke ordered an immediate nationwide recall of 31 million bottles of Tylenol at a direct cost of $100 million ($320M today), which saved the brand and restored 100% of its market share within a year.",
+          "source": "https://www.nytimes.com/2002/03/23/your-money/IHT-how-tylenol-survived-a-crisis-that-could-have-killed-it.html",
+          "beat": "Climax choice: wiring your entire $8.2M bankroll to fund an immediate transparent recall before a single drone crashes."
+        },
+        {
+          "fact": "Wharton School professor Adam Grant's research in 'Give and Take' across engineers, medical students, and salespeople found that 'Givers' occupy both the very bottom AND the very top 10% of earnings—the top Givers succeed by filtering out 'Takers' (like Victor).",
+          "source": "https://hbr.org/2013/04/in-the-company-of-givers-and-takers",
+          "beat": "Jump 2 & Early dilemma: why filtering out Takers is the difference between going broke and compounding."
+        },
+        {
+          "fact": "Hong Kong Exchanges and Clearing (HKEX) is one of the world's top IPO venues, where the Securities and Futures Commission (SFC) can halt a listing minutes before the 9:30 AM gong upon receiving material safety fraud evidence.",
+          "source": "https://www.sfc.hk/en/Rules-and-standards/Listing-and-takeovers",
+          "beat": "Climax choice: handing the hardware fraud proof to the regulator ten minutes before the 9:30 AM HKEX gong."
+        },
+        {
+          "fact": "Sociologist Mark Granovetter's landmark 'Strength of Weak Ties' study proved that 84% of career-changing opportunities come not from close inner circles, but from brief bridge introductions between separate networks.",
+          "source": "https://www.jstor.org/stable/2776392",
+          "beat": "Callback & Part 2 twist: how saving the factory creates 1,200 secondary weak-tie royalty streams overnight."
+        }
+      ],
+      "twist": "Because the 1% royalty applies to financial losses as well as gains, backing a greedy billionaire nearly bankrupts you—until spending your last $8M to save a factory floor links all 1,200 workers to your ledger at once.",
+      "ending": "You'll never pass a struggling stranger the same way once you realize every person around you is an early-stage startup waiting for $10 of belief.",
+      "closest_video": {
+        "title": "What If You Doubled Your Money Every Day?",
+        "url": "https://www.youtube.com/@SaySuppose",
+        "difference": "Instead of passive math doubling in a bank account, your money only grows when you make other real people succeed—and shrinks when they cause harm, turning human scouting into a high-stakes thriller."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut the counterfeit power-bank subplot and go straight from the courier cold open to discovering Lin in Huaqiangbei and the Hong Kong IPO recall climax (7 minutes)."
+      },
+      "views_case": "Money + self-insertion scheming is the #1 breakout format across Ifverse and ConChaser; '1% of Everyone You Help' turns kindness into a billionaire arbitrage strategy with a live '+$/day' counter.",
+      "under_question": "If you got 1% of everyone you helped, who is the first person in your life you would invest in?"
+    },
+    {
+      "id": "desire-meter-hud",
+      "title": "What If You Saw How Badly People Want Things?",
+      "premise": "What if a glowing percentage bar from 0% to 100% floated over everyone's head showing how badly they want whatever they are looking at right now?",
+      "world": "Present-day Macau and Hong Kong, moving from high-stakes VIP baccarat and poker rooms on the Cotai Strip to Sotheby's evening auctions and private waterfront real-estate negotiations.",
+      "thumbnail": {
+        "image": "A stone-faced billionaire in a suit saying 'Not interested' at an auction table while a blazing violet 'WANT: 99.9%' bar erupts above his head as you hold the paddle.",
+        "tag": "HE'S BLUFFING"
+      },
+      "rule": "Whenever someone looks at an object, contract, card, or person, a live percentage from 0.0% to 100.0% floats over their head showing how badly they want it right now, plus their secret walk-away price. Limits: they must be looking directly at or thinking about a specific target within 30 feet. Catch: when a human's desire meter hits 100.0%, the bar turns violet—meaning their rational walk-away limit is gone and there is no law or boundary they won't cross to take it from you.",
+      "hook": "A luxury watch dealer in Hong Kong sighs and says your grandfather's scratched steel chronograph is barely worth $400—while the glowing bar above his head screams 'WANT: 98.6% | MAX PRICE: $85,000'.",
+      "beats": [
+        "Cold open: In a Tsim Sha Tsui watch shop, a bored dealer offers you $400 for an old steel watch while his HUD flashes 'WANT: 98.6% | WALK-AWAY: $85,000'; you smile, say '$84,500 or I walk', and he wires the cash in ninety seconds. So what if you saw how badly people want things?",
+        "Baseline & rules: Every negotiation on Earth is a game of hiding how badly you want the deal; at '0–30%' the bar is cool blue, at '70–99%' it burns orange-red, and it updates the instant someone glances at a target.",
+        "Jump 1 (The Macau Poker & Antique Run): You take the ferry to Macau's Cotai Strip; at the No-Limit Hold'em tables, whenever an opponent stares at the pot with 'WANT: 94%' on a river bet, you know he wants you to fold (bluff), whereas 'WANT: 99%' looking at your chip stack means he holds the nuts—turning $800 into $320,000 in one weekend.",
+        "Complication: In your personal life, seeing desire bars is hilarious and brutal—your friend claims he's 'on a strict diet' while staring at your fries at '97.4%', and a date who acts aloof hits '91%' whenever you mention leaving early.",
+        "Jump 2 (High-End Real Estate & Art Brokerage): You set up as a bespoke buyer's agent in Hong Kong's Peak district; by watching sellers' bars when you threaten to walk ('WANT TO SELL TODAY: 96.2%'), you shave $4.2 million off a harbourfront villa and pocket a $420,000 fee.",
+        "Early dilemma planted: Your younger brother Theo is desperate to buy back the small harbor ferry repair yard your late father lost to a creditor; Theo's bar is at '99.1%', and the creditor knows it, demanding $3 million for a yard worth $900,000.",
+        "Escalation: To raise the $3M in one night, you enter a private Sotheby's Hong Kong evening auction to run 'reverse arbitrage'—spotting which billionaire bidders are at '99.5%' and forcing them to buy you out of competing bids.",
+        "The trap springs: On Lot 44—an unassuming 18th-century porcelain vase estimated at $200,000—two rival tycoons in the front row both cross '99.9%' and their bars turn solid violet: '100.0% — NO LIMIT'; you raise the paddle to $4.8 million expecting them to pay you to step aside, and the auctioneer unexpectedly drops the hammer on YOU when one tycoon suffers a coughing fit.",
+        "The crisis: In the VIP settlement lounge, the losing tycoon's head of security locks the door—his boss's bar is still violet '100.0%', not because of the porcelain, but because a microfilm ledger of offshore bribes from 1996 is sealed inside the vase's false ceramic base, and he will pay zero dollars if he takes it off your body in the parking garage.",
+        "Climax choice: With the tycoon and his rival both entering the VIP room at violet '100.0%', you hold the vase over the marble balcony railing ('DROP THREAT: 99%')—forcing the two rival tycoons to bid against each other in real-time wire transfers straight to your brother's dockyard escrow ($3.2M... $5.0M... $7.5M) before smashing the empty porcelain shell on the floor and handing the microfilm to both of them so neither has leverage over the other.",
+        "Callback & Part 2 twist: The next morning at your brother's reclaimed ferry yard, Theo hugs you with his bar finally resting at a calm blue '12% (CONTENT)'—until a quiet harbor customs inspector walks past the drydock, glances at the rusted hull of an old tugboat inside, and his bar spikes straight to violet '100.0%'."
+      ],
+      "feeling_map": [
+        "laughter",
+        "thrill",
+        "triumph",
+        "dread",
+        "relief"
+      ],
+      "restarts": [
+        "Minute 3: Moving from street haggling to reading river bluffs and nut hands in Macau VIP poker rooms.",
+        "Minute 7: Using seller desperation meters to shave millions off Hong Kong Peak real estate to fund your brother's dockyard.",
+        "Minute 10: Triggering a violet '100.0% NO LIMIT' obsession at a Sotheby's auction over a vase hiding a blackmail ledger."
+      ],
+      "content_mine": [
+        {
+          "fact": "Harvard Negotiation Project co-founder Howard Raiffa proved that in any two-party negotiation, the 'Zone of Possible Agreement' (ZOPA) is bounded by each side's secret 'Reservation Price' (walk-away number)—and the party who knows the other's reservation price captures 85% to 95% of the entire surplus.",
+          "source": "https://www.pon.harvard.edu/daily/negotiation-skills-daily/reservation-price-in-negotiation/",
+          "beat": "Cold open & Baseline: why seeing the watch dealer's $85,000 reservation price lets you capture $84,500 on the spot."
+        },
+        {
+          "fact": "A 1968 Rolex Cosmograph Daytona 'Paul Newman' reference 6239 originally retailed for $210 in steel, yet unpolished examples discovered in drawers routinely sell for $80,000 to $300,000 (with Newman's own reaching $17.8 million at Phillips).",
+          "source": "https://www.phillips.com/detail/rolex/NY080117/8",
+          "beat": "Cold open: why the Tsim Sha Tsui dealer offers $400 for a steel chronograph worth $85,000."
+        },
+        {
+          "fact": "University of Chicago biopsychologist Eckhard Hess proved in 1960 ('Pupillometrics') that human pupils involuntarily dilate by 18% to 25% within 300 milliseconds of seeing an object they strongly desire—which is why 17th-century Chinese jade merchants wore dark smoky-quartz spectacles during bidding.",
+          "source": "https://www.science.org/doi/10.1126/science.132.3423.349",
+          "beat": "Baseline & Jump 1: the real biological basis of hidden desire cues in Chinese merchants and Macau card players."
+        },
+        {
+          "fact": "Macau's gaming revenue reached $22.7 billion in 2023—more than double the Las Vegas Strip—where high-stakes No-Limit Hold'em games in Cotai regularly feature single pots exceeding $500,000.",
+          "source": "https://www.dicj.gov.mo/web/en/information/DadosEstat_mensal/2023/index.html",
+          "beat": "Jump 1: turning $800 into $320,000 by reading desire bars on river bets in Macau."
+        },
+        {
+          "fact": "Nobel laureate Richard Thaler documented the 'Winner's Curse' in auctions: when competitive desire ('auction fever') takes over, bidders systematically overpay by 30% to 50% above an asset's rational value just to beat a rival.",
+          "source": "https://www.aeaweb.org/articles?id=10.1257/jep.2.1.191",
+          "beat": "Escalation & The trap springs: two rival tycoons pushing a $200,000 porcelain lot to $4.8M as their bars hit 100.0%."
+        },
+        {
+          "fact": "At Christie's 2017 auction of 'Salvator Mundi', two Gulf bidders—neither knowing they were both bidding as proxies for allies—drove a $100 million pre-sale estimate to a world-record $450.3 million in 19 minutes of ego escalation.",
+          "source": "https://www.nytimes.com/2017/12/06/world/middleeast/salvator-mundi-da-vinci-saudi-prince.html",
+          "beat": "The trap springs: real auction history of two tycoons hitting 100% status obsession on a single lot."
+        },
+        {
+          "fact": "Under New York and international auction law, auctioneers are legally permitted to take 'chandelier bids' (imaginary bids off the wall or chandelier) up to the seller's secret reserve price to create the illusion of competing demand.",
+          "source": "https://www.nytimes.com/2000/03/05/weekinreview/the-secret-life-of-the-auction-house-chandelier.html",
+          "beat": "Escalation: spotting when the auctioneer's own desire bar shows he's bluffing off the chandelier vs real bidders."
+        },
+        {
+          "fact": "Hong Kong's Victoria Peak ('The Peak') holds the world record for residential land prices per square foot, where single houses on Pollock's Path and Mount Nicholson sell for $150 million to $350 million USD.",
+          "source": "https://www.scmp.com/business/property/article/3155482/asians-most-expensive-house-per-square-foot-sold-hong-kongs-peak",
+          "beat": "Jump 2: shaving $4.2M off a Peak villa by catching the seller's '96.2% NEED LIQUIDITY TODAY' bar."
+        },
+        {
+          "fact": "In 2010, a 1740 Qianlong-era Chinese porcelain vase found in a suburban London house clearance with a £1,200 estimate triggered a ferocious bidding war among Chinese collectors and hammered for £43 million ($69.3 million).",
+          "source": "https://www.bbc.com/news/uk-england-london-11739781",
+          "beat": "The trap springs: why an 18th-century porcelain vase at Sotheby's Hong Kong draws ruthless billionaire bidding."
+        },
+        {
+          "fact": "Game theorist Thomas Schelling (2005 Nobel Prize) proved in 'The Strategy of Conflict' that the only way a weaker party can defeat a stronger opponent at 100% aggression is a credible 'Brinkmanship Threat' to destroy the prize both sides want.",
+          "source": "https://www.nobelprize.org/prizes/economic-sciences/2005/schelling/facts/",
+          "beat": "Climax choice: holding the vase over the marble balcony railing so both tycoons wire $7.5M to your brother's escrow."
+        },
+        {
+          "fact": "Caltech neuroeconomist Antonio Rangel showed via fMRI that the medial orbitofrontal cortex computes a real-time numerical 'Willingness-to-Pay' (WTP) signal for every object a human looks at, even when they consciously deny wanting it.",
+          "source": "https://www.jneurosci.org/content/27/37/9961",
+          "beat": "Baseline & Complication: how the human brain calculates an exact secret Willingness-to-Pay number in milliseconds."
+        },
+        {
+          "fact": "Neuroscientist Wolfram Schultz proved that dopamine neurons do not fire for pleasure upon owning something—they fire for 'Wanting' (anticipation error) and drop back to baseline the moment the object is secured.",
+          "source": "https://www.annualreviews.org/doi/10.1146/annurev.neuro.29.051605.112858",
+          "beat": "Callback: why Theo's bar drops from '99.1%' to a peaceful '12%' once the dockyard is safe."
+        }
+      ],
+      "twist": "A 99% bar makes you rich because people will overpay—but a violet 100.0% bar means they will stop bidding with money and take it by force, forcing you to use Nobel game-theory brinkmanship to survive.",
+      "ending": "You'll never negotiate a salary, a car, or a relationship the same way once you realize the person who wants it less always owns the room.",
+      "closest_video": {
+        "title": "What If You Saw Who Has a Crush on You?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of romantic school crushes, a live 0–100% 'WANT' and walk-away price readout on anything anyone looks at turns watch dealing, Macau poker, and Sotheby's auctions into an economic thriller."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Trim the restaurant and date comedy beat and move directly from the watch shop cold open to Macau poker, the Peak real-estate deal, and the Sotheby's balcony climax (7.5 minutes)."
+      },
+      "views_case": "Social truth over heads + money negotiation hits #1 ('What would I do?'), #2 ('Status'), and #3 ('The nosy viewer') audience mood drivers simultaneously; '99.9% WANT' above a bluffing billionaire is an instant click.",
+      "under_question": "If everyone could see the exact 0–100% bar of what you want right now, what is the one desire you'd try to hide?"
+    },
+    {
+      "id": "never-repeat-mistake",
+      "title": "What If Your Body Never Repeated a Mistake?",
+      "premise": "What if every time you missed a shot, slipped a millimeter, or mistimed a move, your nervous system permanently deleted that error so you could never make it again?",
+      "world": "Present-day Osaka, Suzuka, and Tokyo, from neon street-dart arcades in Dotonbori to the high-G braking zones of Suzuka Circuit and precision microsurgery labs.",
+      "thumbnail": {
+        "image": "You throwing a dart backward over your shoulder into a triple-bullseye while a glowing HUD over your arm switches from '4 ERRORS' to 'ERROR RATE: 0.00%'.",
+        "tag": "MISS ONCE ONLY"
+      },
+      "rule": "Whenever you fail a physical action, your cerebellum logs the exact trajectory error in glowing red vectors and permanently prunes it, dropping your 'ERROR RATE' counter toward 0.00%. Limits: you must physically attempt and fail the move in real life first—you have zero power on your very first try. Catch: in anything where the first mistake kills you, your first-try risk is still 100%—and once your error rate on a task hits a literal 0.000%, modern anti-cheat and biometric fraud systems flag your body as a non-human machine.",
+      "hook": "You throw four darts at a bar board in Osaka and miss so badly you hit the waiter's tray—and then throw the next forty-six straight into the center millimeter of the bullseye with your eyes closed.",
+      "beats": [
+        "Cold open: In an Osaka Dotonbori arcade bar, four local hustlers laugh as your first four darts miss the board entirely ('ERRORS PRUNED: 4/4 — X, Y, Z, SPIN LOCKED')—and go dead silent as your fifth through fiftieth darts split the exact center shaft at 'ERROR RATE: 0.00%'. So what if your body never repeated a mistake?",
+        "Baseline & rules: Normal human motor learning takes 10,000 hours because the brain forgets 90% of its corrections overnight; your body needs only 5 to 12 deliberate misses along each axis (left, right, high, low, force) to triangulate permanent 0.00% perfection.",
+        "Jump 1 (The Deliberate-Miss Hustle): You enter open-entry golf long-drive, 9-ball pool, and claw-machine challenges across Kansai—always looking clumsy for the first 6 minutes while secretly mapping the room's humidity and table felt, then sweeping $140,000 in tournament purses.",
+        "Complication: You discover the rule's terrifying gap—when you try to jump a 12-foot rooftop gap, your HUD flashes red: 'WARNING: 0 PRIOR ERRORS LOGGED — FATAL FIRST-TRY RISK 68%'; you cannot safely master anything you can't afford to fail at five times first.",
+        "Jump 2 (Suzuka Circuit Time Attack): You get invited to a ¥50 million pro-am time-attack at Suzuka Circuit; by intentionally spinning out softly into the gravel traps at 40 mph on your warm-up lap to log the exact tire-slip limit of all 18 corners, your race lap hits 'BRAKING ERROR: 0.00%' and breaks the track record by 1.4 seconds.",
+        "Early dilemma planted: Your mentor, veteran mechanic Sato, suffers an acute retinal artery blockage in the paddock; the Tokyo microsurgeon says the blood vessel is 80 micrometers wide—smaller than a human hair—and normal surgeon hand tremor (50 micrometers) gives only a 30% chance of saving Sato's sight.",
+        "Escalation: Meanwhile, the racing federation and casino security freeze your ¥50M prize payout—their telemetry telemetry shows your steering and pedal inputs across 5 laps varied by less than 0.001 millimeters, violating Bernstein's biological law ('no human repeats a motion identically') and flagging you for illegal robotic assist.",
+        "The trap springs: To prove you're human to the stewards, you try to miss a steering input on purpose—and realize you CAN'T: once your cerebellum deletes an error vector, your muscles physically refuse to miss that target ever again!",
+        "The crisis: At the Tokyo hospital, Sato has 40 minutes before retinal ischemia becomes permanent; you can't practice on a living human eye five times first, and if you step into the surgical simulator to calibrate, the racing stewards watching will permanently ban you and confiscate the ¥50M.",
+        "Climax choice: You forfeit the stewards' hearing and the ¥50M purse, rush to the hospital's pig-eye micro-suture training rig, intentionally tear six synthetic 80-micrometer vessels in 90 seconds to lock 'SUTURE TREMOR: 0.000%', and guide the surgeon's micro-forceps steady on the single final clamp that restores blood flow to Sato's eye.",
+        "Callback & Part 2 twist: Leaving the hospital broke with Sato's eyesight saved, a quiet woman in a Ministry of Defense suit hands you a dossier of your Suzuka telemetry—and asks if you want to be the first human to calibrate a mach-6 hypersonic glider on a simulator before the real launch."
+      ],
+      "feeling_map": [
+        "laughter",
+        "thrill",
+        "triumph",
+        "dread",
+        "awe"
+      ],
+      "restarts": [
+        "Minute 3: Discovering the 'Six-Miss Calibration'—looking like a fool for 60 seconds to become unbeatable forever.",
+        "Minute 7: Winning at Suzuka triggers a telemetry investigation because zero motor variance is biologically impossible for a human.",
+        "Minute 10: Realizing you physically CANNOT miss on purpose once calibrated—and racing to calibrate on synthetic eyes to save Sato's sight."
+      ],
+      "content_mine": [
+        {
+          "fact": "Nobel-nominated neuroscientist Masao Ito proved that Purkinje cells in the human cerebellum (each receiving 200,000 parallel fiber inputs) learn motor perfection NOT by reinforcing successes, but when 'Climbing Fibers' fire an error spike that permanently silences the wrong synapse ('Long-Term Depression').",
+          "source": "https://www.annualreviews.org/doi/10.1146/annurev.ne.12.030189.000505",
+          "beat": "Baseline: the real neuroscience of how your cerebellum deletes motor errors via Purkinje cell climbing fibers."
+        },
+        {
+          "fact": "In a professional steel-tip dartboard, the inner bullseye (worth 50 points) is just 12.7 millimeters (0.5 inches) in diameter—requiring release timing from 2.37 meters away to be accurate within 1.5 milliseconds.",
+          "source": "https://www.thedra.co.uk/rules",
+          "beat": "Cold open: splitting the 12.7mm inner bullseye 46 times in a row after four calibration misses."
+        },
+        {
+          "fact": "Neurobiologist R. Douglas Fields showed that repeating a corrected physical motion wraps oligodendrocyte 'myelin' insulation up to 100 layers thick around neural axons, boosting nerve signal speed 100-fold from 2 mph to 200 mph.",
+          "source": "https://www.scientificamerican.com/article/white-matter-matters/",
+          "beat": "Baseline & Jump 1: how instant myelination locks in 200-mph reflex pathways after five misses."
+        },
+        {
+          "fact": "Psychologist K. Anders Ericsson's research on elite performers established that it normally takes 10,000 hours (10 years) of deliberate error-correction practice to reach top-0.01% motor consistency.",
+          "source": "https://psycnet.apa.org/record/1993-40718-001",
+          "beat": "Baseline: compressing 10,000 hours of deliberate practice into six intentional misses."
+        },
+        {
+          "fact": "Suzuka Circuit in Mie Prefecture, Japan features 18 corners in a unique figure-eight layout where Formula 1 and GT cars hit 5G lateral forces through the '130R' corner at over 300 km/h (186 mph) with less than 30 centimeters of track margin.",
+          "source": "https://www.suzukacircuit.jp/eng/course_info/",
+          "beat": "Jump 2: intentionally sliding all 18 corners on the warm-up lap at Suzuka to lock 'BRAKING ERROR: 0.00%'."
+        },
+        {
+          "fact": "Soviet neurophysiologist Nikolai Bernstein proved in 1930 ('Repetition Without Repetition') that when a master blacksmith or athlete strikes the exact same spot 1,000 times, their joint trajectories always vary by 1% to 3%—zero variance occurs only in robots.",
+          "source": "https://mitpress.mit.edu/9780262023993/dexterity-and-its-development/",
+          "beat": "Escalation: why race stewards and casinos freeze your ¥50M payout when telemetry shows 0.000% variance."
+        },
+        {
+          "fact": "Modern online chess engines, esports anti-cheat systems, and casino biometric surveillance catch bots by measuring 'input entropy' (standard deviation of millisecond timing and micro-tremor)—banning accounts whose variance drops below human physiological limits.",
+          "source": "https://www.pnas.org/doi/10.1073/pnas.2006976118",
+          "beat": "Escalation & The trap springs: why hitting 0.000% error makes modern fraud detectors classify you as a bot."
+        },
+        {
+          "fact": "Every healthy human hand exhibits an involuntary 'physiological tremor' oscillating at 8 to 12 Hz with an amplitude of 50 to 100 micrometers—which is why retinal microsurgeons operate at the very limit of human biology.",
+          "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4111608/",
+          "beat": "Early dilemma & Climax: why normal 50-micrometer hand tremor threatens Sato's 80-micrometer retinal vessel."
+        },
+        {
+          "fact": "Central Retinal Artery Occlusion (CRAO)—an 'eye stroke'—causes irreversible blindness within 90 to 100 minutes unless blood flow is restored to vessels measuring just 80 to 120 micrometers across.",
+          "source": "https://www.aao.org/eye-health/diseases/stroke-affecting-eye",
+          "beat": "The crisis: the 40-minute countdown to save Sato's sight."
+        },
+        {
+          "fact": "Ophthalmic microsurgeons train on enucleated porcine (pig) eyes because porcine retinal vessel wall thickness and scleral elasticity match human eyes within 5%.",
+          "source": "https://pubmed.ncbi.nlm.nih.gov/19448599/",
+          "beat": "Climax choice: intentionally tearing six pig-eye micro-vessels in 90 seconds to calibrate 0.000% suture tremor before touching Sato."
+        },
+        {
+          "fact": "In numerical analysis and radar artillery fire control, 'Bracketing' (Bisection Method) halves the target error with every single shot—meaning just 10 bracketed misses narrow a 1-meter error down to less than 1 millimeter (1/1024th).",
+          "source": "https://mathworld.wolfram.com/Bisection.html",
+          "beat": "Jump 1: the math of how 6 to 10 intentional misses bracket any target down to sub-millimeter precision."
+        },
+        {
+          "fact": "Even the greatest free-throw shooter in NBA history, Stephen Curry (91.0% career accuracy), misses roughly 9 out of every 100 attempts due to neuromotor noise in the motor cortex.",
+          "source": "https://www.basketball-reference.com/leaders/ft_pct_career.html",
+          "beat": "The trap springs: why never missing again is a curse when you need to prove you're human."
+        }
+      ],
+      "twist": "Once your brain deletes an error, you physically CANNOT miss on purpose even to save yourself from being flagged as a machine—and the only way to save someone's life in surgery is to intentionally fail six times on a test rig in 90 seconds.",
+      "ending": "You'll never feel embarrassed about failing on your first try the same way once you realize every mistake is just your nervous system crossing off where the target isn't.",
+      "closest_video": {
+        "title": "What If You Had 10x Reaction Time?",
+        "url": "https://www.youtube.com/@Ifverse",
+        "difference": "Instead of moving faster than other people, your reaction speed is normal—you have to fail intentionally first so your cerebellum deletes every error vector down to '0.00%'."
+      },
+      "runtime": {
+        "strong_minutes": 15,
+        "cut_to": "Cut the Kansai pool/golf montage to a 20-second beat and go straight from the Osaka dart bar to Suzuka Circuit and the Tokyo retinal surgery climax (7 minutes)."
+      },
+      "views_case": "Physical skill + game-like HUD ('Reaction Time 10x', 'Adjust Your Stats') is one of the highest-performing clusters on Ifverse (4M–10M views); 'Never Repeat a Mistake' has built-in comedy (failing on purpose first) and a live 'ERROR RATE: 0.00%' readout.",
+      "under_question": "What is the first impossible skill you would try if you only had to embarrass yourself five times to be perfect forever?"
+    }
+  ]
+}
+```

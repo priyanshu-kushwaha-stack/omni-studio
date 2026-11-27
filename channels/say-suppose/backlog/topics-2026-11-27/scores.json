@@ -1,0 +1,676 @@
+{
+ "scores": [
+  {
+   "id": "t01",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "Moving a room's attention is a social power with a clean 1%-to-100% frame, but 'attention' is less visceral than money or feelings."
+    },
+    "content": {
+     "score": 7,
+     "reason": "A dozen solid psych findings (spotlight effect, social facilitation, herding) that each drive a beat without lecturing."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Status cluster with a readable crowd-turns thumbnail; 'ALL EYES' at a glance, but not a hard-number title hook."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "Remote theft, choking reversal and the 2,400,000-viewer expansion give a Part 2; the % readout lives on screen; costly choice is the surrendered solo."
+    },
+    "buildable": {
+     "score": 7,
+     "reason": "Heads turning and a glowing % are easy in flat 2D; large crowds and a stage are the only load."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "Your terrified friend sings to phones, you press once, and every head in the hall snaps to her.",
+   "merged": []
+  },
+  {
+   "id": "t02",
+   "scores": {
+    "excitement": {
+     "score": 5,
+     "reason": "The 5/0, 4/1, 3/2 split is fiddly and can't be pictured as one frame; VIP access feels picked for the world, not the idea."
+    },
+    "content": {
+     "score": 6,
+     "reason": "Cannes accreditation facts are real but logistical; they explain doors rather than move emotions."
+    },
+    "views": {
+     "score": 4,
+     "reason": "Festival badges are a niche status signal; 'LEVEL 5' doesn't read without the rule."
+    },
+    "engine": {
+     "score": 6,
+     "reason": "Daily reallocation keeps choices coming and the audit twist opens Part 2, but escalation is mostly paperwork."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Scanners turning red/green are simple; red carpets and galas need many extras."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "Your scanner turns red as your sibling's turns green, 60 seconds before their only buyer walks in.",
+   "merged": []
+  },
+  {
+   "id": "t03",
+   "scores": {
+    "excitement": {
+     "score": 8,
+     "reason": "Kindness turned into a lifetime +$/day royalty is a clear, original money daydream with a moral sting."
+    },
+    "content": {
+     "score": 8,
+     "reason": "Rich mine: power-law VC returns, Thiel's Facebook check, Bowie Bonds, Lloyd's unlimited liability; each one moves a beat."
+    },
+    "views": {
+     "score": 8,
+     "reason": "Money cluster with a live counter; '1% OF EVERYONE' reads instantly, though the tag is long for a thumbnail."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "Symmetrical liability catch, rising stakes and the 1,200-worker Part 2 twist; one natural number (+$/day) changes at every beat."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "The counter and courier scene are easy, but markets, drones, an IPO floor and a recall spread across many sets."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "The night before the IPO, your counter shows -$40,000,000 if the drones fly, and you wire away your $8.2M.",
+   "merged": []
+  },
+  {
+   "id": "t04",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "Universal daydream with a strong fresh catch (running out of forgetting), but 'never sleep' is a well-worn what-if."
+    },
+    "content": {
+     "score": 8,
+     "reason": "Gardner's record, synaptic homeostasis, glymphatics, hyperthymesia and FX sessions are strong and story-serving."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Proven speed/time interest and a clear 'HOURS AWAKE' counter, but the topic is crowded among rival channels."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "Synaptic-load bar is a great on-screen number; the memory-wipe choice costs; the 41,000-hour stranger opens Part 2."
+    },
+    "buildable": {
+     "score": 7,
+     "reason": "3 AM diner and trading desk are simple; the overflow visuals need care."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "At 99.8% synaptic load with a BoJ decision 12 minutes out, you choose between the $45M ledger and your summers with Maya.",
+   "merged": []
+  },
+  {
+   "id": "t05",
+   "scores": {
+    "excitement": {
+     "score": 8,
+     "reason": "'Your vote is always 51%' is one line, original, with a public status payoff and a funny cold open."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Landsgemeinde, Arrow's theorem, two-thirds rules and the 1-in-60-million baseline serve the rules; several items still need verifying."
+    },
+    "views": {
+     "score": 6,
+     "reason": "Status and scheming with a hard number, but voting is not a breakout cluster and must stay out of real politics."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "Can't-abstain and the two-thirds counter-move force real choices; 51% vs 66.7% lives on screen; a second 51 opens Part 2."
+    },
+    "buildable": {
+     "score": 8,
+     "reason": "A square of raised hands and a scoreboard are ideal for simple round-head characters."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "Six thousand hands go up for yes, you scratch your ear, and the teller announces no wins, 51 to 49.",
+   "merged": []
+  },
+  {
+   "id": "t06",
+   "scores": {
+    "excitement": {
+     "score": 8,
+     "reason": "Being a stranger to your own family every midnight is a sharp social premise with a laugh and an ache, 'KNOWN BY: 0'."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Molaison, Claparede, Clive Wearing and mere exposure give the 'bodies remember' turn real weight."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Sits between secret feelings and time loops with a strong frying-pan thumbnail; close in spirit to the 'everyone forgets you' story trope."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "The KNOWN BY counter resets nightly, infinite retries create schemes, and KNOWN BY: 1 is a clean Part 2 hook."
+    },
+    "buildable": {
+     "score": 8,
+     "reason": "A kitchen, a cake, a frying pan and a counter are simple to stage."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "Birthday cake in hand, you walk into your own kitchen and your mother lifts a frying pan under your photo.",
+   "merged": []
+  },
+  {
+   "id": "t07",
+   "scores": {
+    "excitement": {
+     "score": 5,
+     "reason": "Clever tactical physics, but a sumo density power is spectacle without a social stake, and sumo is picked by world."
+    },
+    "content": {
+     "score": 6,
+     "reason": "Basic physics (inertia, momentum, friction) plus sumo rules; correct but thin on surprises."
+    },
+    "views": {
+     "score": 5,
+     "reason": "840 KG is a hard number, yet the strength cluster and sumo setting are less proven."
+    },
+    "engine": {
+     "score": 6,
+     "reason": "Rebound debt and baiting create matches and the mentor finale; limited reach beyond the ring."
+    },
+    "buildable": {
+     "score": 7,
+     "reason": "Two wrestlers, a ring and a glowing scale are easy."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "The rival sidesteps your 840 KG charge and pushes your seven-kilogram rebound out of the ring.",
+   "merged": []
+  },
+  {
+   "id": "t08",
+   "scores": {
+    "excitement": {
+     "score": 8,
+     "reason": "A respect score over every head, flatterer at 4 and quiet guard at 81, is a sharp secret-feelings premise with a social sting."
+    },
+    "content": {
+     "score": 8,
+     "reason": "Tatemae/honne, Keltner's power paradox, Korean Air 801 and the pratfall effect each drive a beat."
+    },
+    "views": {
+     "score": 8,
+     "reason": "Numbers-over-heads is a proven breakout frame; 'FAKE SMILE' with a 4/100 bow reads at a glance; close to the genre's see-everyone's-X films."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "Respect as fear catch, 99s who can't warn you, a costly public admission, and your own 38/100 for Part 2."
+    },
+    "buildable": {
+     "score": 8,
+     "reason": "Floating numbers over simple characters in an office and izakaya are ideal for the format."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "On stage at the signing you admit your own blunder; thirty meters drop from 98 to 7 while Kenji's climbs to 96.",
+   "merged": []
+  },
+  {
+   "id": "t09",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "Seeing how badly people want things plus walk-away prices is a fun money power, but the violet-100% heist turn drifts from the daydream."
+    },
+    "content": {
+     "score": 8,
+     "reason": "Raiffa's ZOPA, pupillometry, Winner's Curse, Salvator Mundi and Schelling are strong."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Money and secret feelings with a 'HE'S BLUFFING' thumbnail; reads quickly."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "Violet bars escalate danger and the customs inspector opens Part 2; WANT % lives on screen."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Watch shop is simple; casinos, an auction, a yacht-like lounge and a balcony standoff are heavier."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "A dealer offers $400 for your grandfather's watch while his bar reads WANT 98.6%, MAX $85,000.",
+   "merged": []
+  },
+  {
+   "id": "t10",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "A durability bar on everything is a clean game-mechanic frame with a strong plane-wing hook; the social stake comes late."
+    },
+    "content": {
+     "score": 8,
+     "reason": "Flight 191, Aloha 243, Phoebus cartel, Lloyd's Open Form and Deepwater Horizon are rich, vivid material."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Game-mechanic cluster and '1 FLIGHT LEFT' thumbnail work at a glance."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "Load-redirect catch, trust bars and the storm-barrier twist keep scaling; the % is a natural on-screen number."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "The airport and car scenes are easy; the offshore rig in a gale and the ships are heavy."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "You fake a panic attack at the boarding door because the wing pylon reads 0.1%, and mechanics pull a cracked bolt.",
+   "merged": []
+  },
+  {
+   "id": "t11",
+   "scores": {
+    "excitement": {
+     "score": 9,
+     "reason": "'Second best at everything, never first' is one line, original, funny and painful, with a social stake in every field."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Bolt vs Gay, silver-vs-bronze happiness, Poulidor, Aldrin, Wallace and Avis serve the story; a few figures need verifying."
+    },
+    "views": {
+     "score": 8,
+     "reason": "Rank/game cluster with a fresh twist; 'NEVER FIRST' over a silver-laden podium reads instantly."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "#2 IN: N THINGS counter climbs, coaching Dre costs your selection, and #1-at-something plus a second #2 open Part 2."
+    },
+    "buildable": {
+     "score": 8,
+     "reason": "Podiums, races and a #2 readout are simple for round-head characters."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "You coach your injured cousin to win the final and publicly become the one who lost.",
+   "merged": []
+  },
+  {
+   "id": "t12",
+   "scores": {
+    "excitement": {
+     "score": 4,
+     "reason": "Banked kinetic energy for track cycling is technical and narrow; no one-frame social payoff."
+    },
+    "content": {
+     "score": 6,
+     "reason": "Correct physics and track rules, but they explain rather than surprise."
+    },
+    "views": {
+     "score": 4,
+     "reason": "Niche sport and 'BANKED SPEED' don't read at a glance."
+    },
+    "engine": {
+     "score": 5,
+     "reason": "Leakage and rival baiting create tactics; the gauge-transfer Part 2 is modest."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Bikes on a banked track are doable but repetitive."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "The exchange fails and you spend 60 kJ to save your teammate, winning by 0.02 s with an empty gauge.",
+   "merged": []
+  },
+  {
+   "id": "t13",
+   "scores": {
+    "excitement": {
+     "score": 6,
+     "reason": "A halving timer is a clean game hook, but it's a contest format rather than a personal power you'd daydream about."
+    },
+    "content": {
+     "score": 6,
+     "reason": "Records (cubing, climbing, pit stops) mark each level, mostly as trivia."
+    },
+    "views": {
+     "score": 6,
+     "reason": "Speed/game-mechanic cluster with a 0.117 SEC thumbnail; close to game-show challenge videos."
+    },
+    "engine": {
+     "score": 6,
+     "reason": "Each level halves visibly and VERSUS MODE opens Part 2; the arc is about giving credit away."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Stations, a board and a button are easy, but many different tasks need staging."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "The board reads 0.117 s and the finger on the button turns out to be your friend's.",
+   "merged": []
+  },
+  {
+   "id": "t14",
+   "scores": {
+    "excitement": {
+     "score": 6,
+     "reason": "Always winning an auction but still owing the bill is a nice irony; once-a-day freeze is less instantly desirable."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Buyer's premium, guarantees, irrevocable bids and the seven-day rule give real mechanics."
+    },
+    "views": {
+     "score": 6,
+     "reason": "Money cluster with '$59.8M DUE'; a fair but not standout frame."
+    },
+    "engine": {
+     "score": 6,
+     "reason": "Debt clock escalates and the company sale opens Part 2; the arc leans on finance plumbing."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Auction rooms are simple; paperwork-driven beats are hard to show."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "You freeze a $47M sale for your family portrait and the invoice snaps to $59.8M DUE.",
+   "merged": []
+  },
+  {
+   "id": "t15",
+   "scores": {
+    "excitement": {
+     "score": 8,
+     "reason": "Knowing everything for 60 seconds and keeping only what you write is original, mysterious and in the intelligence cluster."
+    },
+    "content": {
+     "score": 8,
+     "reason": "39 bits/s speech, steno 225 wpm, Shannon, Fermat's margin and Porlock serve the bottleneck idea well."
+    },
+    "views": {
+     "score": 8,
+     "reason": "Intelligence cluster with a ticking clock thumbnail ('7 SECONDS LEFT')."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "Notes from the minute-you, the 212-part proof, and 'someone else has a minute' make a strong Part 2."
+    },
+    "buildable": {
+     "score": 7,
+     "reason": "Arm notes and a clock are easy; the inner 'knowing everything' needs a visual idea."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "You wake with your own handwriting up your arm: DON'T TRUST THE LANDLORD. BUY EGGS.",
+   "merged": []
+  },
+  {
+   "id": "t16",
+   "scores": {
+    "excitement": {
+     "score": 8,
+     "reason": "A life difficulty slider with rewards scaled to it is a clean game-mechanic daydream with a social cost."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Flow, Yerkes-Dodson, the 85% rule, IKEA effect and the grounded planes of Suneung serve the beats."
+    },
+    "views": {
+     "score": 8,
+     "reason": "Game-mechanics cluster; 'EASY MODE' with feet on the desk reads instantly."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "Conserved difficulty, locked 10 and the slider moving to 11 give a strong Part 2; the slider value lives on screen."
+    },
+    "buildable": {
+     "score": 7,
+     "reason": "An exam hall and a floating slider are simple; the conserved-luck montage needs care."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "On exam day you slide to 10 so everyone around you gets the easiest test of their lives.",
+   "merged": []
+  },
+  {
+   "id": "t17",
+   "scores": {
+    "excitement": {
+     "score": 5,
+     "reason": "A score doubled by copiers is abstract; the daydream (being imitated) is weak."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Imitation and contagion studies are solid and story-serving."
+    },
+    "views": {
+     "score": 5,
+     "reason": "×1,048,576 is a hard number but 'COPY ME' doesn't say what you get."
+    },
+    "engine": {
+     "score": 6,
+     "reason": "Doubling chain and the default-action countdown work; the arc is about influence ethics."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Umbrella crowds are doable but crowd-heavy."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "One stranger copies your confession, not your gesture, and the board hits ×1,048,576.",
+   "merged": []
+  },
+  {
+   "id": "t18",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "Rumors that become true at 100 believers is a clever power with literal-genie wording risk."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Illusory truth, herding and false-news spread studies support the beats."
+    },
+    "views": {
+     "score": 6,
+     "reason": "Secret-power appeal, but the 99/100 thumbnail and festival setting need explaining."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "12-word wording, rivals reinterpreting and the unstarted counter give escalation and Part 2."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Festival stages and a phone counter are doable; abstract belief is hard to show."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "At 99/100 believers, you replace 'I'm the secret headliner' with a rumor crediting your friend.",
+   "merged": []
+  },
+  {
+   "id": "t19",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "Speaking every language is a classic daydream with a great tram-stop reaction, but it is a familiar what-if."
+    },
+    "content": {
+     "score": 8,
+     "reason": "Archi, Guugu Yimithirr, the foreign-language effect, Antwerp's bourse, Linear A and Uluburun are vivid."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Proven 'every language' interest with a strong reaction thumbnail; crowded topic."
+    },
+    "engine": {
+     "score": 6,
+     "reason": "Drifts into a yacht heist; the Voynich future-date twist works but the arc is loose."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "The bazaar and tram are easy; a yacht standoff and scripts are heavier."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "Two tourists mock your shoes in a 400-speaker village dialect and you answer in their grandmother's accent.",
+   "merged": []
+  },
+  {
+   "id": "t20",
+   "scores": {
+    "excitement": {
+     "score": 9,
+     "reason": "Only 100 people can see you and you choose who: one line, one frame, a personal power with a painful social stake."
+    },
+    "content": {
+     "score": 7,
+     "reason": "Dunbar layers, the 600-acquaintance estimate, the door study and Cyberball serve the story without distracting."
+    },
+    "views": {
+     "score": 8,
+     "reason": "Secret social power with '100 / 100' and a crowd flowing past you; strong at a glance."
+    },
+    "engine": {
+     "score": 9,
+     "reason": "Daily swap forces costly choices (grandmother in slot 1), slots become currency, and the girl's list twist opens Part 2."
+    },
+    "buildable": {
+     "score": 8,
+     "reason": "A crowd that ignores one figure and a counter is very simple in flat 2D."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "The girl on the platform holds up her own list: you are number 100, added this morning.",
+   "merged": []
+  },
+  {
+   "id": "t21",
+   "scores": {
+    "excitement": {
+     "score": 8,
+     "reason": "Taking one second from everyone for 259 years is a huge hard number with a real moral question."
+    },
+    "content": {
+     "score": 8,
+     "reason": "8.2 billion seconds math, leap-second outages, chronostasis and Flash Crash all serve beats."
+    },
+    "views": {
+     "score": 8,
+     "reason": "Time cluster with '259 YEARS' and a frozen street; time-stop is familiar but the number is fresh."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "Machines catch the stumble and your seconds go missing; the dial lives on screen; the arc is solid."
+    },
+    "buildable": {
+     "score": 7,
+     "reason": "A frozen street and hanging soup are simple; the decades-alone montage is heavier."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "Investigators at the door, 11 minutes left on the dial, and one more press would steal a second from Noé's cup final.",
+   "merged": []
+  },
+  {
+   "id": "t22",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "A 10-year price tag on everything is a sharp money daydream, but close to existing future-wealth films."
+    },
+    "content": {
+     "score": 6,
+     "reason": "Several stats are loose or shaky; the London material is decent but uneven."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Money cluster with a green/red price thumbnail."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "Recalculating tags and the days countdown over your head give escalation and Part 2."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Tags are easy; Lloyd's, auctions and a container dock add sets."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "On the dock you fire the flare anyway and your 10-year counter crashes from +$110,000,000 to +$142.",
+   "merged": []
+  },
+  {
+   "id": "t23",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "Keeping one object from each dream is whimsical and original, with a strong trophy cold open."
+    },
+    "content": {
+     "score": 7,
+     "reason": "REM, lucid-dream proofs, Dali's key and McCartney's 'Yesterday' serve the training arc."
+    },
+    "views": {
+     "score": 6,
+     "reason": "Dreams are not a breakout cluster; 'IT'S REAL' reads but needs context."
+    },
+    "engine": {
+     "score": 8,
+     "reason": "Dream-logic objects, nightmares that leak and the exchange twist give strong escalation and Part 2."
+    },
+    "buildable": {
+     "score": 7,
+     "reason": "Impossible objects and a bedroom are easy; dream worlds need a look."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "You wake gripping a trophy for a sport that doesn't exist, engraved with next Thursday's date.",
+   "merged": []
+  },
+  {
+   "id": "t24",
+   "scores": {
+    "excitement": {
+     "score": 7,
+     "reason": "Never repeating a mistake is a satisfying skill power with a great darts hook, but it's a perfect-aim fantasy."
+    },
+    "content": {
+     "score": 8,
+     "reason": "Ito's cerebellum, Bernstein's repetition, tremor, CRAO and pig-eye training are strong."
+    },
+    "views": {
+     "score": 7,
+     "reason": "Skill/game cluster with a backward-dart thumbnail; reads quickly."
+    },
+    "engine": {
+     "score": 7,
+     "reason": "Can't-miss-on-purpose catch and the surgery choice cost something; a hypersonic Part 2."
+    },
+    "buildable": {
+     "score": 6,
+     "reason": "Darts are easy; Suzuka racing and microsurgery are heavier."
+    }
+   },
+   "copies_trending": false,
+   "best_moment": "Your first four darts hit the waiter's tray; the next forty-six split the bullseye with your eyes closed.",
+   "merged": []
+  }
+ ]
+}

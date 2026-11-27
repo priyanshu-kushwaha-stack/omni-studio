@@ -32,6 +32,8 @@ list after each `make upstream-pull`. Base: upstream `d21f5d4`.
 | `skills/studio/studio-short-*.md` | One stage skill per gate for Shorts |
 | `pipeline_defs/studio-whatif.yaml` | Seven owner gates G1-G7 for Say Suppose's second-person what-if stories; `metadata.studio_checks`, and `metadata.studio_warnings` (`opening`: reported, never blocks); names the `whatif_*` tools |
 | `skills/studio/studio-whatif-*.md` | One stage skill per gate for what-if stories |
+| `pipeline_defs/studio-suppose.yaml` | Five owner gates G1-G5 for Say Suppose films on the film kit (the five stage names of `studio-whatif`); `metadata.studio_checks` as studio-whatif's plus `cast_claims` at story_script and publish_prep, and the same `metadata.studio_warnings`; no OpenMontage tools (the kit renders, `render_runtime: external`) |
+| `skills/studio/studio-suppose-*.md` | One stage skill per gate for film-kit films: the prompts in `channels/say-suppose/prompts/` and the scripts in `core/engines/suppose/scripts/` in order |
 | `tools/studio/studio_whatif_tools.py` | `whatif_story`, `whatif_narration`, `whatif_render`, `whatif_stills`: the what-if engine (`core/engines/whatif`) by subprocess, auto-discovered. `whatif_narration` passes a credit cap only with the owner's approval |
 | `skills/studio/studio-room.md` | The quality room loop for G1 packaging and G2 script (`python -m studio.room`, `core/studio/room/`): lint, seats, judge, report, verify |
 

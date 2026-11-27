@@ -1,0 +1,15 @@
+{
+  "name": "suppose-kit",
+  "private": true,
+  "type": "module",
+  "description": "Say Suppose film kit: the pilot v8 cut-out rig, film parts, actions, toolkit and shot-sheet renderer (spec docs/superpowers/specs/2026-11-27-say-suppose-film-kit-design.md). Versions pinned in core/lock.yaml suppose_kit.",
+  "scripts": {"test": "vitest run", "typecheck": "tsc --noEmit", "studio": "remotion studio src/entry.tsx"},
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "@remotion/google-fonts": "4.0.484",
+    "remotion": "4.0.484",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {"@types/node": "22.10.2", "@types/react": "18.3.12", "typescript": "5.6.3", "vitest": "2.1.8"}
+}

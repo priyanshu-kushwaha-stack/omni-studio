@@ -1,0 +1,7 @@
+id: student
+sheet: s2
+# head, torso, uarmL, farmL, uarmR, farmR, thighL, shinL, thighR, shinR (an int, "<n>top" or "<n>flip")
+pieces: [11, 12, 13, 14, 15, 16, "17top", 18, "19top", "18flip"]
+hip: 0.86
+roles: [crowd, student]
+signature: "spiky black hair, navy high-collar school jacket with gold buttons"

@@ -1,0 +1,621 @@
+{
+ "gent": {
+  "head": {
+   "src": "cast/pieces/s3_0.png",
+   "w": 339,
+   "h": 399
+  },
+  "torso": {
+   "src": "cast/pieces/s3_1.png",
+   "w": 343,
+   "h": 641
+  },
+  "uarmL": {
+   "src": "cast/pieces/s3_2.png",
+   "w": 131,
+   "h": 410
+  },
+  "farmL": {
+   "src": "cast/pieces/s3_7.png",
+   "w": 120,
+   "h": 410
+  },
+  "uarmR": {
+   "src": "cast/pieces/s3_3.png",
+   "w": 133,
+   "h": 409
+  },
+  "farmR": {
+   "src": "cast/pieces/s3_8.png",
+   "w": 119,
+   "h": 410
+  },
+  "thighL": {
+   "src": "cast/pieces/s3_4.png",
+   "w": 134,
+   "h": 391
+  },
+  "shinL": {
+   "src": "cast/pieces/s3_9.png",
+   "w": 140,
+   "h": 405
+  },
+  "thighR": {
+   "src": "cast/pieces/s3_5.png",
+   "w": 134,
+   "h": 392
+  },
+  "shinR": {
+   "src": "cast/pieces/s3_10.png",
+   "w": 154,
+   "h": 405
+  },
+  "hip": 0.5,
+  "sh": [
+   0.143,
+   0.869
+  ],
+  "face": [
+   0.559,
+   0.468,
+   0.649
+  ],
+  "roles": [
+   "crowd",
+   "elder"
+  ],
+  "signature": "grey swept hair, round glasses and moustache, grey overcoat, brown knit muffler",
+  "voice": null,
+  "height": 1420.56
+ },
+ "gran": {
+  "head": {
+   "src": "cast/pieces/s3_12.png",
+   "w": 391,
+   "h": 376
+  },
+  "torso": {
+   "src": "cast/pieces/s3_11.png",
+   "w": 381,
+   "h": 598
+  },
+  "uarmL": {
+   "src": "cast/pieces/s3_13.png",
+   "w": 137,
+   "h": 368
+  },
+  "farmL": {
+   "src": "cast/pieces/s3_14.png",
+   "w": 124,
+   "h": 373
+  },
+  "uarmR": {
+   "src": "cast/pieces/s3_15.png",
+   "w": 135,
+   "h": 369
+  },
+  "farmR": {
+   "src": "cast/pieces/s3_16.png",
+   "w": 122,
+   "h": 371
+  },
+  "thighL": {
+   "src": "cast/pieces/s3_17.png",
+   "w": 138,
+   "h": 344
+  },
+  "shinL": {
+   "src": "cast/pieces/s3_18.png",
+   "w": 135,
+   "h": 366
+  },
+  "thighR": {
+   "src": "cast/pieces/s3_19.png",
+   "w": 139,
+   "h": 344
+  },
+  "shinR": {
+   "src": "cast/pieces/s3_20.png",
+   "w": 139,
+   "h": 368
+  },
+  "hip": 0.55,
+  "sh": [
+   0.152,
+   0.853
+  ],
+  "face": [
+   0.6,
+   0.508,
+   0.596
+  ],
+  "roles": [
+   "crowd",
+   "elder"
+  ],
+  "signature": "grey bun and round glasses, plum cardigan over a floral blouse, brown skirt",
+  "voice": null,
+  "height": 1329.64
+ },
+ "office": {
+  "head": {
+   "src": "cast/pieces/s2_0.png",
+   "w": 353,
+   "h": 353
+  },
+  "torso": {
+   "src": "cast/pieces/s2_1.png",
+   "w": 315,
+   "h": 618
+  },
+  "uarmL": {
+   "src": "cast/pieces/s2_2.png",
+   "w": 138,
+   "h": 367
+  },
+  "farmL": {
+   "src": "cast/pieces/s2_7.png",
+   "w": 104,
+   "h": 356
+  },
+  "uarmR": {
+   "src": "cast/pieces/s2_3.png",
+   "w": 138,
+   "h": 367
+  },
+  "farmR": {
+   "src": "cast/pieces/s2_8.png",
+   "w": 103,
+   "h": 352
+  },
+  "thighL": {
+   "src": "cast/pieces/office_thighL.png",
+   "w": 136,
+   "h": 283
+  },
+  "shinL": {
+   "src": "cast/pieces/s2_9.png",
+   "w": 108,
+   "h": 374
+  },
+  "thighR": {
+   "src": "cast/pieces/office_thighR.png",
+   "w": 144,
+   "h": 281
+  },
+  "shinR": {
+   "src": "cast/pieces/office_shinR.png",
+   "w": 108,
+   "h": 374
+  },
+  "hip": 0.62,
+  "sh": [
+   0.133,
+   0.87
+  ],
+  "face": [
+   0.56,
+   0.553,
+   0.541
+  ],
+  "roles": [
+   "crowd",
+   "office-worker"
+  ],
+  "signature": "brown bob with pearl earrings, camel coat over a cream turtleneck",
+  "voice": null,
+  "height": 1317.19
+ },
+ "packer": {
+  "head": {
+   "src": "cast/pieces/s4_0.png",
+   "w": 434,
+   "h": 465
+  },
+  "torso": {
+   "src": "cast/pieces/s4_1.png",
+   "w": 367,
+   "h": 594
+  },
+  "uarmL": {
+   "src": "cast/pieces/s4_2.png",
+   "w": 174,
+   "h": 316
+  },
+  "farmL": {
+   "src": "cast/pieces/s4_7.png",
+   "w": 115,
+   "h": 287
+  },
+  "uarmR": {
+   "src": "cast/pieces/s4_3.png",
+   "w": 171,
+   "h": 316
+  },
+  "farmR": {
+   "src": "cast/pieces/s4_8.png",
+   "w": 112,
+   "h": 287
+  },
+  "thighL": {
+   "src": "cast/pieces/s4_4.png",
+   "w": 181,
+   "h": 368
+  },
+  "shinL": {
+   "src": "cast/pieces/s4_9.png",
+   "w": 149,
+   "h": 322
+  },
+  "thighR": {
+   "src": "cast/pieces/s4_5.png",
+   "w": 181,
+   "h": 368
+  },
+  "shinR": {
+   "src": "cast/pieces/s4_10.png",
+   "w": 148,
+   "h": 322
+  },
+  "hip": 0.8,
+  "sh": [
+   0.185,
+   0.823
+  ],
+  "face": [
+   0.614,
+   0.595,
+   0.498
+  ],
+  "roles": [
+   "crowd",
+   "tourist"
+  ],
+  "signature": "curly ginger top-knot with sunglasses, yellow hooded raincoat, camera on the chest",
+  "voice": null,
+  "height": 1539.33
+ },
+ "salary": {
+  "head": {
+   "src": "cast/pieces/s1_10.png",
+   "w": 315,
+   "h": 403
+  },
+  "torso": {
+   "src": "cast/pieces/s1_11.png",
+   "w": 369,
+   "h": 532
+  },
+  "uarmL": {
+   "src": "cast/pieces/s1_12.png",
+   "w": 117,
+   "h": 372
+  },
+  "farmL": {
+   "src": "cast/pieces/s1_13.png",
+   "w": 112,
+   "h": 383
+  },
+  "uarmR": {
+   "src": "cast/pieces/s1_14.png",
+   "w": 122,
+   "h": 376
+  },
+  "farmR": {
+   "src": "cast/pieces/s1_15.png",
+   "w": 115,
+   "h": 389
+  },
+  "thighL": {
+   "src": "cast/pieces/s1_16.png",
+   "w": 122,
+   "h": 346
+  },
+  "shinL": {
+   "src": "cast/pieces/s1_17.png",
+   "w": 146,
+   "h": 399
+  },
+  "thighR": {
+   "src": "cast/pieces/s1_18.png",
+   "w": 122,
+   "h": 344
+  },
+  "shinR": {
+   "src": "cast/pieces/s1_19.png",
+   "w": 158,
+   "h": 398
+  },
+  "hip": 0.86,
+  "sh": [
+   0.154,
+   0.878
+  ],
+  "face": [
+   0.544,
+   0.606,
+   0.632
+  ],
+  "roles": [
+   "crowd",
+   "salaryman"
+  ],
+  "signature": "messy black hair, grey-blue suit, red tie, brown satchel across the chest",
+  "voice": null,
+  "height": 1516.9799999999998
+ },
+ "scarf-faded": {
+  "head": {
+   "src": "cast/pieces/s1_0.png",
+   "w": 347,
+   "h": 423
+  },
+  "torso": {
+   "src": "cast/pieces/s1_1.png",
+   "w": 412,
+   "h": 665
+  },
+  "uarmL": {
+   "src": "cast/pieces/s1_2.png",
+   "w": 133,
+   "h": 407
+  },
+  "farmL": {
+   "src": "cast/pieces/s1_6.png",
+   "w": 118,
+   "h": 420
+  },
+  "uarmR": {
+   "src": "cast/pieces/s1_3.png",
+   "w": 135,
+   "h": 407
+  },
+  "farmR": {
+   "src": "cast/pieces/s1_7.png",
+   "w": 119,
+   "h": 419
+  },
+  "thighL": {
+   "src": "cast/pieces/s1_4.png",
+   "w": 124,
+   "h": 382
+  },
+  "shinL": {
+   "src": "cast/pieces/s1_8.png",
+   "w": 151,
+   "h": 452
+  },
+  "thighR": {
+   "src": "cast/pieces/s1_5.png",
+   "w": 124,
+   "h": 382
+  },
+  "shinR": {
+   "src": "cast/pieces/s1_9.png",
+   "w": 158,
+   "h": 452
+  },
+  "hip": 0.52,
+  "sh": [
+   0.214,
+   0.806
+  ],
+  "face": [
+   0.572,
+   0.615,
+   0.539
+  ],
+  "roles": [
+   "hero-alt"
+  ],
+  "signature": "Scarf in faded grey, the tall pre-colour version",
+  "voice": null,
+  "height": 1505.57
+ },
+ "scarf": {
+  "head": {
+   "src": "cast/pieces/s5_0.png",
+   "w": 378,
+   "h": 487
+  },
+  "torso": {
+   "src": "cast/pieces/s5_1.png",
+   "w": 456,
+   "h": 773
+  },
+  "uarmL": {
+   "src": "cast/pieces/s5_2.png",
+   "w": 150,
+   "h": 476
+  },
+  "farmL": {
+   "src": "cast/pieces/s5_6.png",
+   "w": 147,
+   "h": 509
+  },
+  "uarmR": {
+   "src": "cast/pieces/s5_3.png",
+   "w": 154,
+   "h": 480
+  },
+  "farmR": {
+   "src": "cast/pieces/s5_7.png",
+   "w": 150,
+   "h": 509
+  },
+  "thighL": {
+   "src": "cast/pieces/s5_4.png",
+   "w": 145,
+   "h": 467
+  },
+  "shinL": {
+   "src": "cast/pieces/s5_8.png",
+   "w": 186,
+   "h": 532
+  },
+  "thighR": {
+   "src": "cast/pieces/s5_5.png",
+   "w": 147,
+   "h": 467
+  },
+  "shinR": {
+   "src": "cast/pieces/s5_9.png",
+   "w": 189,
+   "h": 532
+  },
+  "hip": 0.5,
+  "sh": [
+   0.206,
+   0.8
+  ],
+  "face": [
+   0.559,
+   0.604,
+   0.553
+  ],
+  "roles": [
+   "hero"
+  ],
+  "signature": "Scarf's full-colour scarf; this colour is never used on anyone else",
+  "voice": null,
+  "height": 1756.17
+ },
+ "student": {
+  "head": {
+   "src": "cast/pieces/s2_11.png",
+   "w": 354,
+   "h": 403
+  },
+  "torso": {
+   "src": "cast/pieces/s2_12.png",
+   "w": 330,
+   "h": 507
+  },
+  "uarmL": {
+   "src": "cast/pieces/s2_13.png",
+   "w": 124,
+   "h": 350
+  },
+  "farmL": {
+   "src": "cast/pieces/s2_14.png",
+   "w": 103,
+   "h": 356
+  },
+  "uarmR": {
+   "src": "cast/pieces/s2_15.png",
+   "w": 126,
+   "h": 354
+  },
+  "farmR": {
+   "src": "cast/pieces/s2_16.png",
+   "w": 104,
+   "h": 354
+  },
+  "thighL": {
+   "src": "cast/pieces/student_thighL.png",
+   "w": 139,
+   "h": 267
+  },
+  "shinL": {
+   "src": "cast/pieces/s2_18.png",
+   "w": 119,
+   "h": 358
+  },
+  "thighR": {
+   "src": "cast/pieces/student_thighR.png",
+   "w": 140,
+   "h": 267
+  },
+  "shinR": {
+   "src": "cast/pieces/student_shinR.png",
+   "w": 119,
+   "h": 358
+  },
+  "hip": 0.86,
+  "sh": [
+   0.142,
+   0.855
+  ],
+  "face": [
+   0.534,
+   0.633,
+   0.61
+  ],
+  "roles": [
+   "crowd",
+   "student"
+  ],
+  "signature": "spiky black hair, navy high-collar school jacket with gold buttons",
+  "voice": null,
+  "height": 1388.59
+ },
+ "worker": {
+  "head": {
+   "src": "cast/pieces/s4_11.png",
+   "w": 359,
+   "h": 447
+  },
+  "torso": {
+   "src": "cast/pieces/s4_12.png",
+   "w": 442,
+   "h": 551
+  },
+  "uarmL": {
+   "src": "cast/pieces/s4_13.png",
+   "w": 175,
+   "h": 283
+  },
+  "farmL": {
+   "src": "cast/pieces/s4_17.png",
+   "w": 121,
+   "h": 276
+  },
+  "uarmR": {
+   "src": "cast/pieces/s4_14.png",
+   "w": 175,
+   "h": 283
+  },
+  "farmR": {
+   "src": "cast/pieces/s4_18.png",
+   "w": 119,
+   "h": 275
+  },
+  "thighL": {
+   "src": "cast/pieces/s4_15.png",
+   "w": 190,
+   "h": 363
+  },
+  "shinL": {
+   "src": "cast/pieces/s4_20.png",
+   "w": 160,
+   "h": 274
+  },
+  "thighR": {
+   "src": "cast/pieces/s4_16.png",
+   "w": 194,
+   "h": 363
+  },
+  "shinR": {
+   "src": "cast/pieces/s4_21.png",
+   "w": 167,
+   "h": 274
+  },
+  "hip": 0.9,
+  "sh": [
+   0.195,
+   0.812
+  ],
+  "face": [
+   0.545,
+   0.555,
+   0.669
+  ],
+  "roles": [
+   "crowd",
+   "worker"
+  ],
+  "signature": "green cap, cream shirt with rolled sleeves, green overall bib",
+  "voice": null,
+  "height": 1493.0300000000002
+ }
+}
