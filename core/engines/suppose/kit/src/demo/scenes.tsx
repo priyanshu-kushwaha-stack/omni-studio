@@ -9,7 +9,7 @@ import {Atmosphere} from '../toolkit/Atmosphere';
 import {Foreground} from '../toolkit/Foreground';
 import {DataCard} from '../toolkit/Data';
 import {Person} from '../rig/Person';
-import {Actor, CAST, KINDS, STATION, Shot, scaleAt} from './stage';
+import {Actor, CAST, KINDS, STATION, Shot, scaleAt, scarfScale} from './stage';
 
 export type Beat = {lt: number; l: number};
 const {wide, high, close} = STATION;
@@ -26,7 +26,7 @@ export const PushRim: React.FC<Beat> = ({lt, l}) => (
   <>
     <Shot cam={camAt({move: 'push', z: [1.05, 1.4], focus: [640, 500]}, l, lt)} bg={<SetPlate angle={wide} />}>
       <WideCrowd t={lt} />
-      <Actor parts={scarf} x={640} y={600} s={wide.scarf.s} t={lt} base={BIG} seed={1} rim={wide.key} farShade={0.15}
+      <Actor parts={scarf} x={640} y={600} s={scarfScale(wide)} t={lt} base={BIG} seed={1} rim={wide.key} farShade={0.15}
         acts={[{act: 'idle'}, {act: 'react', mood: 'smile', at: 1.5}, {act: 'look', dir: -1, at: 2.6}]} />
     </Shot>
     <Atmosphere kind="dust" t={lt} seed={3} />
@@ -40,7 +40,7 @@ export const TwoShot: React.FC<Beat> = ({lt, l}) => {
     <>
       <Shot cam={camAt({move: 'drift', z: [1.55, 1.55], focus: [650, 500], amount: 10}, l, lt)} bg={<SetPlate angle={wide} blur={2} />}>
         <WideCrowd t={lt + 4} />
-        <Actor parts={scarf} x={590} y={600} s={wide.scarf.s} t={lt} base={BIG} seed={1} rim={wide.key}
+        <Actor parts={scarf} x={590} y={600} s={scarfScale(wide)} t={lt} base={BIG} seed={1} rim={wide.key}
           acts={[{act: 'talk', at: 0.2, to: 1.6}, {act: 'react', mood: 'smirk', at: 2.1}, {act: 'look', dir: 1, at: 1.8}]} />
         <Actor parts={CAST.salary} x={720} y={sy} s={s} t={lt} seed={5} rim={wide.key} farShade={0.15}
           acts={[{act: 'walkIn', at: 0, to: 1.3, dir: -1}, {act: 'react', mood: 'shocked', at: 1.5}, {act: 'cower', at: 1.6}]} />
@@ -73,7 +73,7 @@ export const DataBeat: React.FC<Beat> = ({lt, l}) => (
   <>
     <Shot cam={camAt({move: 'pan', z: [1.2, 1.2], focus: [520, 380], to: [760, 380]}, l, lt)} bg={<SetPlate angle={high} />}>
       <Crowd t={lt} n={26} seed={400} y0={205} y1={466} hAt={hAtFor(high, SCARF_H)} speed={120} kinds={KINDS} />
-      <Actor parts={scarf} x={640} y={470} s={high.scarf.s} t={lt} base={BIG} seed={1} acts={[{act: 'look', dir: 1, at: 0.5}]} />
+      <Actor parts={scarf} x={640} y={470} s={scarfScale(high)} t={lt} base={BIG} seed={1} acts={[{act: 'look', dir: 1, at: 0.5}]} />
     </Shot>
     <Atmosphere kind="dust" t={lt} seed={8} strength={0.7} />
     <DataCard t={lt} at={0.4} to={2.9} title="people / day" value={3500000} />

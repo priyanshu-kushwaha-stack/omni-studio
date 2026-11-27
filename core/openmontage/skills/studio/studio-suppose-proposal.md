@@ -33,7 +33,7 @@ the repo root. `<video>` is `channels/say-suppose/videos/<id>`.
 5. **Review page.** `.venv/bin/python core/engines/suppose/scripts/review.py <video> proposal` writes
    `<video>/review/proposal.html`; publish it as an Artifact and give the owner the link.
 6. Write a schema-valid `proposal_packet`. **Render runtime:** this pipeline renders with the film kit
-   (`core/engines/suppose/kit`, `registerFilm`), not `video_compose`, so set `render_runtime: "external"`. Do not
+   (`core/engines/suppose/kit`, `filmRoot`), not `video_compose`, so set `render_runtime: "external"`. Do not
    silently assume it: present the alternatives to the owner in one line each (Remotion or hyperframes through
    `video_compose`, versus the kit), say why the kit is the default here (the library's sets and rigged cast, shots
    timed to the narration's words), and log the choice in `decision_log` with category `render_runtime_selection`.

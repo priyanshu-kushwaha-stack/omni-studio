@@ -102,7 +102,7 @@ describe('FilmFrame', () => {
   });
 });
 
-describe('registerFilm', () => {
+describe('filmRoot metadata', () => {
   it('takes length, rate and size from the film props', async () => {
     const m = await filmMetadata({props: {...EMPTY_FILM, duration: 6.01, fps: 30, size: [1920, 1080]}} as never);
     expect(m).toEqual({durationInFrames: 181, fps: 30, width: 1920, height: 1080});

@@ -76,7 +76,7 @@ def test_stage_skills_name_their_prompts_and_tools():
         k in text["script"]
         for k in ["prompts/script.md", "scriptcheck.py", "cast-pass.md", "sheetcheck.py", "voices.py", "cold open"]
     )
-    assert "registerFilm" in text["script"] and "--queue render" in text["script"]
+    assert "filmRoot" in text["script"] and "--queue render" in text["script"]
     assert "prompts/narration.md" in text["edit"] and "timewarp" in text["edit"]
     for name, body in text.items():
         assert "awaiting_human" in body and "only the owner passes" in body, name

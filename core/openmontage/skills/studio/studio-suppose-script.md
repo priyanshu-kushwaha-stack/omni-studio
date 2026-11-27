@@ -62,10 +62,13 @@ Qwen3 (VoiceDesign for characters) and free. Luc comes after G2 (`studio-suppose
    files in `custom/`), and the film's entry `<video>/remotion/index.ts`:
 
    ```ts
-   import {registerFilm} from '@suppose/kit';
+   import {registerRoot} from 'remotion';
+   import {filmRoot} from '@suppose/kit';
    import * as shots from '../custom/Shots';
-   registerFilm(shots);
+   registerRoot(filmRoot(shots));
    ```
+
+   Keep `registerRoot(...)` written out in this file: the Remotion CLI refuses an entry file whose text lacks the word.
 
    Then `.venv/bin/python core/engines/suppose/scripts/sheetcheck.py <video> --emit` until it prints no FAIL; it writes
    `<video>/film.json`.

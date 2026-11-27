@@ -10,6 +10,7 @@ import {Person, strideAt} from '../rig/Person';
 import {Shadow} from '../rig/Puppet';
 import {personH, SCARF_H} from '../rig/scale';
 import {View} from '../film/Cam';
+import {scaleFor} from '../shots/people';
 import {hAtFor, type SetAngle} from '../film/Set';
 import {poseAt, type Act} from '../actions/index';
 import type {RimSpec} from '../toolkit/Rim';
@@ -23,6 +24,10 @@ export const KINDS: Parts[] = ['salary', 'office', 'student', 'gent', 'gran', 's
 // Scarf on his mark uses angle.scarf.s.
 export const scaleAt = (angle: SetAngle, parts: Parts, y: number) => hAtFor(angle, SCARF_H)(y) / personH(parts);
 
+// Scarf's scale on an angle: the renderer's own scaleFor (the set's legacy s at SCARF_H, shrunk or grown with depth
+// from his mark), so the demo draws him as the film does. y defaults to his mark.
+export const scarfScale = (angle: SetAngle, y: number = angle.scarf.y) => scaleFor(angle, CAST.scarf, y);
+
 // A puppet acting from a list of acts; (x, y) is the centre of its feet on its mark.
 export const Actor: React.FC<{parts: Parts; x: number; y: number; s: number; t: number; acts: Act[]; seed?: number; base?: Partial<PersonPose>; rim?: RimSpec; farShade?: number; shadow?: boolean}> = ({
   parts, x, y, s, t, acts, seed = 0, base = {}, rim, farShade, shadow = true,
@@ -32,7 +37,7 @@ export const Actor: React.FC<{parts: Parts; x: number; y: number; s: number; t: 
   return (
     <>
       {shadow && <Shadow x={cx} y={y} w={parts.torso.w * s * 1.4} />}
-      <Person parts={parts} x={cx - (parts.torso.w * s) / 2} y={y} s={s} p={pose} rim={rim} farShade={farShade} />
+      <Person parts={parts} x={cx} y={y} s={s} p={pose} rim={rim} farShade={farShade} />
     </>
   );
 };

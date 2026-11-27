@@ -8,7 +8,7 @@ import {Blueprint, BpLine} from '../toolkit/Blueprint';
 import {Badge, Callout, Dimension} from '../toolkit/Data';
 import {EndScreen} from '../toolkit/EndScreen';
 import {Cam} from '../film/Cam';
-import {Actor, CAST, STATION, Shot, scaleAt} from './stage';
+import {Actor, CAST, STATION, Shot, scaleAt, scarfScale} from './stage';
 import type {Beat} from './scenes';
 
 const {wide} = STATION;
@@ -21,7 +21,7 @@ export const Freeze: React.FC<Beat> = ({lt}) => {
   const tf = Math.min(lt, FREEZE); // the action stops at the freeze
   const cam = camAt({move: 'shake', z: [1.3, 1.3], focus: [640, 500], at: FREEZE, amount: 14}, 0, lt);
   const scarfAt = (t: number) => (
-    <Actor parts={scarf} x={560} y={600} s={wide.scarf.s} t={t} base={BIG} seed={1} rim={wide.key}
+    <Actor parts={scarf} x={560} y={600} s={scarfScale(wide)} t={t} base={BIG} seed={1} rim={wide.key}
       acts={[{act: 'walk', at: 0, to: 3, from: [-160, 600], dir: 1}, {act: 'react', mood: 'determined', at: 0}]} />
   );
   return (
@@ -58,7 +58,7 @@ export const End: React.FC<Beat> = ({lt}) => {
       {line.map(([k, x], i) => (
         <Actor key={k} parts={CAST[k]} x={x} y={700} s={scaleAt(wide, CAST[k], 600) * 1.6} t={lt} seed={10 + i} acts={[{act: 'react', mood: 'happy', at: 0.6 + i * 0.15}]} />
       ))}
-      <Actor parts={scarf} x={650} y={705} s={wide.scarf.s * 1.6} t={lt} base={BIG} seed={1} acts={[{act: 'react', mood: 'joy', at: 1}, {act: 'wave', at: 1.2, to: 3}]} />
+      <Actor parts={scarf} x={650} y={705} s={scarfScale(wide) * 1.6} t={lt} base={BIG} seed={1} acts={[{act: 'react', mood: 'joy', at: 1}, {act: 'wave', at: 1.2, to: 3}]} />
     </>
   );
   return <EndScreen t={lt} question="Would you still want to be one of the 100?" cast={cast} />;

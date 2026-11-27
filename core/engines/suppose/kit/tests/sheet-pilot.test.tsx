@@ -47,3 +47,17 @@ describe('plate parallax', () => {
     expect(layers()[0]).not.toBe(layers()[1]);
   });
 });
+
+describe('toolkit demo Scarf', () => {
+  it('is drawn at the renderer scale for the same angle and mark', async () => {
+    const {scarfScale} = await import('../src/demo/stage');
+    expect(scarfScale(wide)).toBeCloseTo(scaleFor(wide, cast.scarf, wide.scarf.y), 9);
+    expect(scarfScale(high)).toBeCloseTo(scaleFor(high, cast.scarf, high.scarf.y), 9);
+    expect(personH(cast.scarf) * scarfScale(wide)).toBeCloseTo(SCARF_H * wide.scarf.s, 6);
+  });
+  it('the demo Actor is centred on its mark, like the renderer', async () => {
+    const {Actor, CAST} = await import('../src/demo/stage');
+    const out = renderToStaticMarkup(<Actor parts={CAST.scarf} x={640} y={600} s={0.5} t={0} acts={[{act: 'idle'}]} />);
+    expect(out).toMatch(/left:640px;top:600px;transform:scale\(/);
+  });
+});

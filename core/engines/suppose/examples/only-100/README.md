@@ -15,7 +15,7 @@ with v8. The pilot folder is the frozen reference and is not touched.
 - `custom/FilmParts.tsx`: the pilot-only parts (Phone, LIST, BoardDots, scarfRest, fadeIn from FilmParts.tsx;
   scarfAt, manAt from CutoutC.tsx; the pose types from Cast2.tsx; Scarf4, Man4, RiceBall and the face helpers from
   Cast4.tsx), the pilot's time warp, and `onOld`, which turns a pilot shot body into a kit `Shot`.
-- `index.ts`: `registerFilm(shots)`.
+- `index.ts`: `registerRoot(filmRoot(shots))`.
 
 Cast and art come from film.json, not from castV4.ts: Scarf is `film.cast.scarf` (the pilot's SCARFC pieces), Kenji
 is `student`, the selfie woman `office`, Mr. Okada `gent`, the rice-ball man `salary` (all in `film.crowd`, the

@@ -1,6 +1,6 @@
 # omni-studio pipeline (new file, see core/PATCHES.md). Say Suppose films on the film kit
 # (docs/superpowers/specs/2026-11-27-say-suppose-film-kit-design.md): painted sets and cut-out rigged characters from
-# the channel library, timed by a shot sheet and rendered by the kit (core/engines/suppose/kit, `registerFilm`) through
+# the channel library, timed by a shot sheet and rendered by the kit (core/engines/suppose/kit, `filmRoot`) through
 # the engine scripts in core/engines/suppose/scripts. Renders come from the kit, not video_compose, so render_runtime
 # is "external" and no stage lists OpenMontage tools. No lip-sync, no line-boil.
 #

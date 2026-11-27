@@ -1,8 +1,10 @@
 // A film's Remotion entry: videos/<id>/remotion/index.ts is
-//   import {registerFilm} from '@suppose/kit'; import * as shots from './custom/Shots'; registerFilm(shots);
+//   import {registerRoot} from 'remotion'; import {filmRoot} from '@suppose/kit'; import * as shots from './custom/Shots';
+//   registerRoot(filmRoot(shots));
+// registerRoot stays in the entry file itself: the Remotion CLI refuses an entry whose text lacks the word.
 // and the render passes film.json as the input props; length, rate and size come from it.
 import React from 'react';
-import {Composition, registerRoot, type CalculateMetadataFunction} from 'remotion';
+import {Composition, type CalculateMetadataFunction} from 'remotion';
 import {Film} from './Film';
 import type {FilmData, Shot} from './types';
 
@@ -26,5 +28,3 @@ export const filmRoot = (customs: Record<string, unknown>): React.FC => {
   const FilmWithShots: React.FC<FilmData> = (p) => <Film {...p} customs={shots} />;
   return () => <Composition id="Film" component={FilmWithShots} defaultProps={EMPTY_FILM} calculateMetadata={filmMetadata} />;
 };
-
-export const registerFilm = (customs: Record<string, unknown> = {}) => registerRoot(filmRoot(customs));
