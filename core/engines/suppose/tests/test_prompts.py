@@ -111,3 +111,24 @@ def test_outline_cast_pass_and_narration_prompts():
     assert "speaker" in cp and "claims" in cp and "unchanged" in cp_prompt
     n = _text("narration")
     assert "Luc" in n and "ellipses" in n and "never robotic" in n
+
+
+FOOTER = re.compile(r"<!-- style-a-footer -->(.*?)<!-- /style-a-footer -->", re.S)
+
+
+def test_style_a_footer_is_identical_in_every_image_prompt():
+    footers = {n: FOOTER.search(_text(n)) for n in ["set-plate", "parts-sheet", "cast-lineup", "thumbnail"]}
+    assert all(footers.values()), [n for n, f in footers.items() if not f]
+    assert len({f.group(1).strip() for f in footers.values()}) == 1
+
+
+def test_set_plate_carries_the_w_rules():
+    t = _text("set-plate")
+    for must in ["no people", "no text", "one strong light source", "60–75%", "past the frame edge", "gpt_image_2_6"]:
+        assert must in t, must
+
+
+def test_thumbnail_skill_holds_the_l2_rules():
+    skill = (ROOT / ".claude" / "skills" / "say-suppose-thumbnails" / "SKILL.md").read_text(encoding="utf-8")
+    for must in ["170 px", "never repeats the title", "Test & Compare", "prompts/thumbnail.md", "2 credits"]:
+        assert must in skill, must
