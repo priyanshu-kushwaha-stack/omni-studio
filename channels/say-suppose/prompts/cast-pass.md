@@ -21,6 +21,12 @@ claims:
   - {n: <sentence number>, claim: "<the real-world fact stated, in plain words>"}
 A sentence is a character line only when a character says it aloud; everything else is narrator. List every
 real-world number, record, mechanism or named study as a claim; story events are not claims.
+Answer with the YAML document only: no code fence, no commentary.
+Copy each sentence exactly as written; joined with single spaces, the `text` values must equal the script exactly
+(the text unchanged).
+The hero ("you") is never a speaker: lines the hero says aloud are `narrator`.
+A character marked `new` in CHARACTERS uses a lower-case id made from their role (e.g. `mentor`) until the cast
+library gives them one.
 
 ## Checklist
 - The joined `text` values equal the script exactly, the text unchanged (the agent checks this with code).

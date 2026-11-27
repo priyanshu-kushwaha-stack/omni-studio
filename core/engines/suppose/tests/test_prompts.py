@@ -107,6 +107,7 @@ def test_outline_cast_pass_and_narration_prompts():
     outline = _text("outline")
     assert all(k in outline for k in ["ALT TITLES:", "SYNOPSIS:", "CHARACTERS:", "RULE:", "PLANTED:", "CHOICE:"])
     cp = _text("cast-pass")
-    assert "speaker" in cp and "claims" in cp and "unchanged" in cp
+    cp_prompt = cp.split("## Prompt")[1].split("## Checklist")[0]
+    assert "speaker" in cp and "claims" in cp and "unchanged" in cp_prompt
     n = _text("narration")
     assert "Luc" in n and "ellipses" in n and "never robotic" in n
