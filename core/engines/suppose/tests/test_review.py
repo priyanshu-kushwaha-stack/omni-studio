@@ -133,4 +133,13 @@ def test_user_strings_are_escaped_and_proposal_embeds_small_thumbs(tmp_path):
     assert "data:image/jpeg;base64," in html and "4 credits" in html and "-16.1" in html and "-1.5" in html
     assert "click/pop at 1.2 s" in html
     assert out.stat().st_size < 60_000
+    assert "No credit quote" not in html
+
+
+def test_proposal_warns_when_the_art_quote_is_missing(tmp_path):
+    v = video(tmp_path)
+    (v / "outline.md").write_text("TITLE: T\n")
+    assert "No credit quote" in review.build(v, "proposal").read_text()
+    (v / "art.yaml").write_text(yaml.safe_dump({"sets": ["cellar"], "total_credits": 4}))
+    assert "No credit quote" in review.build(v, "proposal").read_text()
     assert "data:image/jpeg" not in review.build(v, "story_script").read_text()

@@ -13,15 +13,15 @@ shots:
     type: wide                  # one of SHOT_TYPES
     set: station                # library set id (not needed for data, blueprint, title, end)
     angle: high                 # an angle of that set
-    camera: {move: push, z: [1.0, 1.3], focus: [640, 420]}
-    mood: warm                  # warm | cool | void | blueprint (W7)
+    camera: {move: push, z: [1.0, 1.3], focus: [640, 420]}   # z never past the angle's bounds.zmax (set.json)
+    mood: warm                  # one of GRADES: warm | cool | void | blueprint (W7)
     cast:
       - {who: scarf, at: [640, 470], acts: [{act: idle}, {act: react, mood: worried, at: 2.1}]}
-    crowd: [{band: back, n: 22, speed: 95, seed: 0}]
+    crowd: [{band: back, n: 22, speed: 95, seed: 0}]     # band: a key of the angle's `crowd` in set.json
     lines: [{who: kenji, at: 37.2}]           # character lines in this shot; the speaker must be in cast
-    labels: [{kind: data, text: "≈ 3,500,000", says: "three and a half million", at: 6.0, to: 9.6}]
+    labels: [{kind: data, text: "≈ 3,500,000", says: "three and a half million", at: 6.0, to: 9.6}]  # LABEL_KINDS
     readout: {text: "99 / 100", at: 23.2}
-    sfx: [{name: whoosh, at: 23.2, gain: 0.06}]
+    sfx: [{name: whoosh, at: 23.2, gain: 0.06}]  # name: one of SFX (tick | thump | blip | glide | whoosh)
     letterbox: scope            # optional (W7)
     hold: "the joke lands"      # required reason for a shot whose longest unchanged stretch is over 5 s
     custom: S2                  # optional: a hand-built shot exported from custom/*.tsx
@@ -40,6 +40,11 @@ Optional fields the renderer reads (sheetcheck accepts them without comment):
 - `crowd[].kinds`: cast ids for that band in weighted order (repeat an id to make it common); default every
   crowd-role member. A set angle's `parallax` (set.json, default 0.6) is the plate layer's depth; 1 for a top-down plate.
 - Act fields: `dir` (1 right, -1 left), `prop`, `from: [x, y]` (where a walk, run or stop starts), `to` (end time).
+  Leave out `from` on a walk, run or stop and the figure starts at its cast mark, so the pose jumps when it follows
+  another move; give the previous move's end position.
+
+The last shot's `to` is the narration's end (audio/cues_b.json `duration`): sheetcheck fails a sheet that runs past it
+or stops more than 0.5 s short.
 """
 
 from pathlib import Path
@@ -60,6 +65,9 @@ MOODS = (
     "neutral", "smile", "happy", "joy", "surprised", "shocked", "scared", "worried", "nervous", "angry",
     "determined", "sad", "cry", "smirk", "sleepy", "thinking", "confused", "awe",
 )  # fmt: skip
+GRADES = ("warm", "cool", "void", "blueprint")  # shot `mood`: the kit's GradeMood
+LABEL_KINDS = ("data", "dim", "callout", "pill")  # the kit's LabelIn kind
+SFX = ("tick", "thump", "blip", "glide", "whoosh")  # sfx.SYNTHS, the sounds mix.py can make
 NUMBER_WORDS = {
     "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
     "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "thirty", "forty",

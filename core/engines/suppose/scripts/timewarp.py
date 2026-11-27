@@ -1,7 +1,9 @@
 """Film time on the voice B timeline <-> film time on the final narration (pilot timewarp.ts, in Python).
 
 python timewarp.py <video_dir> --from cues_b.json --to cues_luc.json
-    writes <video_dir>/film-luc.json: film.json with every time mapped from the --from cues to the --to cues.
+    writes <video_dir>/film-luc.json: film.json with every time mapped from the --from cues to the --to cues, plus
+    `warp: {old: [...], new: [...]}`, the knots (voice B seconds -> final seconds). The kit's FilmFrame unwarps `t`
+    and `shot.from` through them for custom shots, so a custom shot always runs on the voice B (sheet) clock.
     Cue paths are relative to <video_dir> unless absolute (e.g. audio/cues_b.json).
 """
 
@@ -16,6 +18,11 @@ import numpy as np
 
 
 def knots(old: dict, new: dict, old_end: float) -> tuple[list[float], list[float]]:
+    if len(old["cues"]) != len(new["cues"]):
+        raise SystemExit(
+            f"the cue sheets have different line counts ({len(old['cues'])} voice B lines, {len(new['cues'])} final"
+            " lines): re-make the final narration from the same cast-pass.yaml, one take per line, before warping"
+        )
     o, n = [0.0], [0.0]
     for a, b in zip(old["cues"], new["cues"], strict=True):
         o += [a["start"], a["end"]]
@@ -65,6 +72,7 @@ def warp_film(film: dict, k: tuple[list[float], list[float]]) -> dict:
     for beat in out.get("beats", []):
         beat["at"] = round(w(beat["at"]), 4)
     out["duration"] = round(w(out["duration"]), 4)
+    out["warp"] = {"old": [round(x, 4) for x in k[0]], "new": [round(x, 4) for x in k[1]]}
     return out
 
 

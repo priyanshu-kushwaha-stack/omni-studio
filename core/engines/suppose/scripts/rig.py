@@ -2,7 +2,10 @@
 a map file per character replaces the hard-coded cast). Faces and shoulders are measured, never overridden: on the
 pilot's sheets the measurement reproduces castV4.ts exactly (test_seeded_cast_matches_the_pilot).
 
-python rig.py <library_dir>   (maps in <library_dir>/cast/maps/*.yaml, pieces in <library_dir>/cast/pieces/)
+python rig.py <library_dir> [--pieces <dir>]
+    maps in <library_dir>/cast/maps/*.yaml, pieces in <library_dir>/cast/pieces/ unless --pieces names another folder
+    (the channel library's pieces live in the main checkout: `library.media_root(slug)/cast/pieces`). Each map's
+    optional `voice: {desc, seed}` is carried into cast.json.
 python rig.py --check <library_or_art_dir> <id> <out.png>
     one PNG: the character's ten pieces with their names, and an assembled rest pose (every piece at its joint, as
     the kit's Person.tsx places it) to look at before animating. The dir holds cast/cast.json and cast/pieces/.
@@ -152,12 +155,13 @@ def check_sheet(root: Path, char: str, out: Path) -> Path:
     return Path(out)
 
 
-def main(library_dir: str) -> None:
+def main(library_dir: str, pieces_dir: str | None = None) -> None:
     lib = Path(library_dir)
+    pieces = Path(pieces_dir) if pieces_dir else lib / "cast" / "pieces"
     cast = {}
     for mp in sorted((lib / "cast" / "maps").glob("*.yaml")):
         cid = yaml.safe_load(mp.read_text())["id"]
-        cast[cid] = rig_character(mp, lib / "cast" / "pieces")
+        cast[cid] = rig_character(mp, pieces)
     (lib / "cast" / "cast.json").write_text(json.dumps(cast, indent=1) + "\n")
     print(f"{len(cast)} characters -> {lib / 'cast' / 'cast.json'}")
 
@@ -166,4 +170,4 @@ if __name__ == "__main__":
     if sys.argv[1] == "--check":
         print(check_sheet(Path(sys.argv[2]), sys.argv[3], Path(sys.argv[4])))
     else:
-        main(sys.argv[1])
+        main(sys.argv[1], sys.argv[sys.argv.index("--pieces") + 1] if "--pieces" in sys.argv else None)

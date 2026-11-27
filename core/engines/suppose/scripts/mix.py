@@ -1,5 +1,5 @@
 """Mix a Say Suppose film: narration, a ducked score, set ambience, sheet sound effects and label blips, faded edges,
-then ffmpeg loudnorm to -16 LUFS / -1.5 dBTP (spec; the pilot's pilot_mix.py, generalised).
+then ffmpeg loudnorm to -16 LUFS / -2.0 dBTP, a 0.5 dB margin under the channel's -1.5 ceiling for the AAC encode (spec; the pilot's pilot_mix.py, generalised).
 
 python mix.py <video_dir> [score.wav] [--luc]
     reads film.json and audio/narration.wav and writes audio/mix.wav; with --luc it reads the warped film-luc.json
@@ -75,7 +75,7 @@ def raw_bus(narr: Path, score: Path | None, film: dict, warp_k=None) -> np.ndarr
 
 def _loudnorm(raw: Path, out: Path) -> None:
     """Two-pass loudnorm: measure, then apply linearly with the measured values (48 kHz stereo out)."""
-    base = "loudnorm=I=-16:TP=-1.5:LRA=11"
+    base = "loudnorm=I=-16:TP=-2.0:LRA=11"
     first = subprocess.run(
         ["ffmpeg", "-hide_banner", "-nostats", "-i", str(raw), "-af", f"{base}:print_format=json", "-f", "null", "-"],
         check=True,

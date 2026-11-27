@@ -139,3 +139,39 @@ def test_for_channel_with_a_video_adds_its_local_cast_and_sets(tmp_path, monkeyp
     assert set(lib.cast) == {"scarf", "mentor"} and lib.cast["scarf"]["roles"] == ["new"]  # the video's entry wins
     assert set(lib.sets) == {"station", "cellar"}
     assert library.Library.for_channel("x", tmp_path / "none").cast == plain.cast
+
+
+def test_media_come_from_the_main_checkout(tmp_path, monkeypatch):
+    monkeypatch.setenv("OMNI_MAIN", str(tmp_path / "main"))
+    assert library.media_root("x") == tmp_path / "main" / "channels" / "x" / "library"
+    monkeypatch.setattr(library, "REPO", tmp_path / "repo")
+    lib = library.Library.for_channel("x")
+    assert lib.root == tmp_path / "repo" / "channels" / "x" / "library" and lib.media == library.media_root("x")
+
+
+def test_stage_links_media_from_the_media_root_and_verifies_there(tmp_path):
+    root = make_lib(tmp_path / "json")
+    media = tmp_path / "media"
+    (media / "sets" / "station").mkdir(parents=True)
+    (media / "sets" / "station" / "wide.png").write_bytes(b"main-png")
+    lib = library.Library(root, media)
+    lib.add(media / "sets" / "station" / "wide.png", job="j", prompt="set-plate.md")
+    assert lib.verify() == []
+    out = lib.stage(tmp_path / "v", tmp_path / "public")
+    assert (out / "sets" / "station" / "wide.png").read_bytes() == b"main-png"
+
+
+def test_stage_stops_and_names_missing_media(tmp_path):
+    root = make_lib(tmp_path / "json")
+    (root / "manifest.yaml").write_text(
+        yaml.safe_dump({"files": [{"path": "cast/pieces/s1_0.png", "sha256": "x", "job": "j1"}]})
+    )
+    with pytest.raises(SystemExit, match="s1_0.png"):
+        library.Library(root, tmp_path / "media").stage(tmp_path / "v", tmp_path / "public")
+
+
+def test_stage_stops_on_a_dangling_link(tmp_path):
+    root = make_lib(tmp_path / "lib")
+    (root / "props" / "gone.png").symlink_to(tmp_path / "nowhere.png")  # media linked from a folder since removed
+    with pytest.raises(SystemExit, match="gone.png"):
+        library.Library(root).stage(tmp_path / "v", tmp_path / "public")

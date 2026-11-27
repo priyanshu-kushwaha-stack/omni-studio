@@ -12,7 +12,12 @@ from pathlib import Path
 
 import yaml
 
-from sheet import ACTS, EPS, HERO, MIX, MOODS, MOVES, NO_SET, NUMBER_WORDS, SHOT_TYPES, load_sheet
+from sfx import SYNTHS
+from sheet import (
+    ACTS, EPS, GRADES, HERO, LABEL_KINDS, MIX, MOODS, MOVES, NO_SET, NUMBER_WORDS, SHOT_TYPES, load_sheet,
+)  # fmt: skip
+
+SHORT = 0.5  # the last shot may end this much before the narration does (film.duration still covers it)
 
 STANDALONE = {"data", "blueprint", "title", "end"}
 
@@ -27,14 +32,44 @@ def _refs(s: dict, lib, customs: set[str]) -> list[str]:
     if s.get("type") == "custom" and not custom:
         out.append(f"{sid}: type custom needs a custom: name")
     if s.get("type") not in NO_SET and not custom:
-        st = lib.sets.get(s.get("set"))
-        if st is None:
-            out.append(f"{sid}: unknown set {s.get('set')!r}")
-        elif s.get("angle") not in st["angles"]:
-            out.append(f"{sid}: set {s['set']} has no angle {s.get('angle')!r}")
+        out += _set_fails(s, lib)
     cam = s.get("camera", {})
     if cam and cam.get("move") not in MOVES:
         out.append(f"{sid}: unknown camera move {cam.get('move')!r}")
+    if s.get("mood") is not None and s["mood"] not in GRADES:
+        out.append(f"{sid}: unknown mood {s['mood']!r} (one of {', '.join(GRADES)})")
+    out += [
+        f"{sid}: unknown label kind {lb.get('kind')!r}"
+        for lb in s.get("labels", [])
+        if lb.get("kind") not in LABEL_KINDS
+    ]
+    out += [
+        f"{sid}: unknown sfx {e.get('name')!r} (one of {', '.join(SYNTHS)})"
+        for e in s.get("sfx", [])
+        if e.get("name") not in SYNTHS
+    ]
+    return out
+
+
+def _set_fails(s: dict, lib) -> list[str]:
+    """The set and angle exist; the camera stays inside the angle's bounds; crowd bands are the angle's."""
+    sid, st = s.get("id", "?"), lib.sets.get(s.get("set"))
+    if st is None:
+        return [f"{sid}: unknown set {s.get('set')!r}"]
+    angle = st["angles"].get(s.get("angle"))
+    if angle is None:
+        return [f"{sid}: set {s['set']} has no angle {s.get('angle')!r}"]
+    out = []
+    zmax = (angle.get("bounds") or {}).get("zmax")
+    z = (s.get("camera") or {}).get("z") or []
+    if zmax is not None and any(v > zmax + 1e-9 for v in z):
+        out.append(f"{sid}: camera zoom {max(z)} is past {s['set']}/{s['angle']} bounds (zmax {zmax})")
+    bands = angle.get("crowd") or {}
+    out += [
+        f"{sid}: {s['set']}/{s['angle']} has no crowd band {c.get('band')!r} (has {', '.join(bands) or 'none'})"
+        for c in s.get("crowd", [])
+        if c.get("band") not in bands
+    ]
     return out
 
 
@@ -161,23 +196,40 @@ def _structure(sheet: dict) -> list[str]:
     return out
 
 
-def check_all(sheet: dict, lib, words: list[dict], customs: set[str] = frozenset()) -> tuple[list[str], list[str]]:
-    """FAILs and warnings; warnings are computed whenever the sheet is structurally sound."""
+def _length(shots: list[dict], narration: float | None) -> list[str]:
+    """The last shot ends with the narration (audio/cues_b.json duration): not past it, not more than SHORT before."""
+    if narration is None:
+        return []
+    end = max(s["to"] for s in shots)
+    if end > narration + EPS:
+        return [f"the last shot ends at {end} s, past the narration's end ({narration} s)"]
+    if end < narration - SHORT:
+        return [f"the last shot ends at {end} s, {narration - end:.2f} s before the narration does ({narration} s)"]
+    return []
+
+
+def check_all(
+    sheet: dict, lib, words: list[dict], customs: set[str] = frozenset(), narration: float | None = None
+) -> tuple[list[str], list[str]]:
+    """FAILs and warnings; warnings are computed whenever the sheet is structurally sound. `narration` is the
+    narration's length in seconds (narration_length); None skips the length check."""
     if fails := _structure(sheet):
         return fails, []
     shots = sheet["shots"]
-    fails = _timeline(shots)
+    fails = _timeline(shots) + _length(shots, narration)
     for s in shots:
         fails += _refs(s, lib, set(customs)) + _cast(s, lib)
     return fails, _warns(sheet, words)
 
 
-def check(sheet: dict, lib, words: list[dict], customs: set[str] = frozenset()) -> tuple[list[str], list[str]]:
-    fails, warns = check_all(sheet, lib, words, customs)
+def check(
+    sheet: dict, lib, words: list[dict], customs: set[str] = frozenset(), narration: float | None = None
+) -> tuple[list[str], list[str]]:
+    fails, warns = check_all(sheet, lib, words, customs, narration)
     return fails, [] if fails else warns
 
 
-def emit(sheet: dict, lib, out: Path) -> Path:
+def emit(sheet: dict, lib, out: Path, narration: float | None = None) -> Path:
     shots = sheet["shots"]
     used_sets = {s["set"] for s in shots if s.get("set")}
     used_cast = {c["who"] for s in shots for c in s.get("cast", [])} | {HERO}
@@ -188,7 +240,7 @@ def emit(sheet: dict, lib, out: Path) -> Path:
         "beats": sheet.get("beats", []),
         "shots": shots,
         "audio": sheet.get("audio", "audio/mix.wav"),
-        "duration": max((s["to"] for s in shots), default=0),
+        "duration": max([s["to"] for s in shots] + [narration or 0]),  # covers the narration, never cuts it off
         "cast": {k: v for k, v in lib.cast.items() if k in used_cast},
         "crowd": {k: v for k, v in lib.cast.items() if "crowd" in v.get("roles", [])},
         "sets": {k: v for k, v in lib.sets.items() if k in used_sets},
@@ -203,6 +255,12 @@ def customs_in(video: Path) -> set[str]:
     for f in (video / "custom").glob("*.tsx"):
         names |= set(re.findall(r"export const (\w+)\s*:\s*Shot", f.read_text(encoding="utf-8")))
     return names
+
+
+def narration_length(video: Path) -> float | None:
+    """audio/cues_b.json's duration (voices.py / stitch.py: the whole voice B track), or None before voices exist."""
+    p = Path(video) / "audio" / "cues_b.json"
+    return float(json.loads(p.read_text(encoding="utf-8"))["duration"]) if p.is_file() else None
 
 
 def load_inputs(video: Path) -> tuple[dict, list[dict]]:
@@ -230,13 +288,16 @@ def main(argv: list[str]) -> int:
     from library import Library
 
     lib = Library.for_channel("say-suppose", video)
-    fails, warns = check_all(sheet, lib, words, customs_in(video))
+    narration = narration_length(video)
+    fails, warns = check_all(sheet, lib, words, customs_in(video), narration)
+    if narration is None:
+        warns.append("no audio/cues_b.json: the sheet's length is not checked against the narration")
     for line in [*(f"FAIL {f}" for f in fails), *(f"WARN {w}" for w in ([] if fails else warns))]:
         print(line)
     if fails and warns:
         print(f"{len(warns)} warning(s) hidden until the FAILs are fixed")
     if not fails and "--emit" in argv:
-        print(emit(sheet, lib, video / "film.json"))
+        print(emit(sheet, lib, video / "film.json", narration))
     return 1 if fails else 0
 
 

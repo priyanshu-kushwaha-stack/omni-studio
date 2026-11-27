@@ -161,7 +161,11 @@ def _sheet_warns(video: Path, channel: str) -> str:
     try:
         sheet, words = sheetcheck.load_inputs(video)
         fails, warns = sheetcheck.check_all(
-            sheet, Library.for_channel(channel, video), words, sheetcheck.customs_in(video)
+            sheet,
+            Library.for_channel(channel, video),
+            words,
+            sheetcheck.customs_in(video),
+            sheetcheck.narration_length(video),
         )
     except Exception as e:  # a half-written sheet must not stop the page
         return f'<p class="bad">shots.yaml could not be checked: {esc(" ".join(str(e).split()))}</p>'
@@ -303,6 +307,11 @@ def _packaging(video: Path) -> str:
         if ob.get(key):
             parts.append(f"<h3>{esc(label)}</h3>{render(ob[key])}")
     art = _yaml(video / "art.yaml")
+    if not isinstance(art, dict) or art.get("quote") is None:
+        parts.append(
+            '<p class="warn"><b>No credit quote:</b> art.yaml is missing or has no <code>quote:</code>, so this page'
+            " shows no art spend for G1 to approve (studio-suppose-proposal step 4).</p>"
+        )
     if isinstance(art, dict):
         items = art.get("items") or art.get("art") or []
         parts.append(

@@ -109,6 +109,21 @@ def test_mix_removes_raw_file_when_ffmpeg_fails(tmp_path, monkeypatch):
     assert not list(tmp_path.glob("*.raw.wav"))
 
 
+def test_loudnorm_targets_minus_2_dbtp_under_the_channel_ceiling(tmp_path, monkeypatch):
+    """-2.0 dBTP leaves 0.5 dB under channel.yaml's -1.5 for the AAC encode to overshoot into."""
+    calls = []
+    measured = '{"input_i": "-20", "input_tp": "-3", "input_lra": "5", "input_thresh": "-30", "target_offset": "0"}'
+
+    def fake(cmd, **k):
+        calls.append(cmd)
+        return subprocess.CompletedProcess(cmd, 0, "", measured)
+
+    monkeypatch.setattr(mix.subprocess, "run", fake)
+    mix._loudnorm(tmp_path / "raw.wav", tmp_path / "out.wav")
+    filters = [c[c.index("-af") + 1] for c in calls]
+    assert all("I=-16:TP=-2.0:" in f for f in filters) and "measured_TP=-3" in filters[1]
+
+
 def test_raw_bus_edges_are_faded(tmp_path):
     f = film()
     f["sets"] = {}

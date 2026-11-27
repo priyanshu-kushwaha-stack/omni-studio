@@ -2,6 +2,10 @@
 
 Usage: python slice.py <sheet.png> <out_dir> <prefix>
 
+The prefix is the new character's id (its map's `sheet:`). A prefix the channel library already uses (a cast id, a
+map's sheet, or pieces named <prefix>_*) is refused: the video's pieces would override the library's at stage and
+overwrite them at G3.
+
 White-background sheets are keyed by distance from white; sheets that already carry alpha keep it, with the faint
 glow halo (alpha < 100) dropped. Each connected blob bigger than 2000 px becomes <prefix>_<n>.png, numbered in reading
 order (top row left to right, then the next row). pieces.json records each piece's crop box in sheet pixels.
@@ -12,6 +16,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import yaml
 from PIL import Image
 from scipy import ndimage
 
@@ -54,7 +59,23 @@ def slice_sheet(sheet: Path, out_dir: Path, prefix: str) -> list[dict]:
     return meta
 
 
+def prefix_taken(prefix: str, lib) -> str | None:
+    """Why `prefix` is already the library's, or None when it is free."""
+    if prefix in lib.cast:
+        return f"cast id {prefix!r}"
+    for mp in sorted((lib.root / "cast" / "maps").glob("*.yaml")):
+        if str((yaml.safe_load(mp.read_text()) or {}).get("sheet")) == prefix:
+            return f"the sheet of {mp.name}"
+    taken = sorted((lib.media / "cast" / "pieces").glob(f"{prefix}_*.png"))
+    return f"pieces such as {taken[0].name}" if taken else None
+
+
 def main(sheet: str, out_dir: str, prefix: str) -> None:
+    from library import Library
+
+    why = prefix_taken(prefix, Library.for_channel("say-suppose"))
+    if why:
+        raise SystemExit(f"prefix {prefix!r} is already the library's ({why}); use the new character's id")
     meta = slice_sheet(Path(sheet), Path(out_dir), prefix)
     print(f"{len(meta)} pieces -> {out_dir}")
 

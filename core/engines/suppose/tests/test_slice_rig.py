@@ -103,3 +103,32 @@ def test_check_sheet_names_a_missing_character(tmp_path):
     root = _rigged_dir(tmp_path)
     with pytest.raises(SystemExit, match="nobody"):
         rig.check_sheet(root, "nobody", tmp_path / "c.png")
+
+
+def test_a_prefix_the_library_uses_is_refused(tmp_path):
+    from types import SimpleNamespace
+
+    root, media = tmp_path / "lib", tmp_path / "media"
+    (root / "cast" / "maps").mkdir(parents=True)
+    (root / "cast" / "maps" / "scarf.yaml").write_text("id: scarf\nsheet: s5\n")
+    (media / "cast" / "pieces").mkdir(parents=True)
+    (media / "cast" / "pieces" / "s1_0.png").write_bytes(b"x")
+    lib = SimpleNamespace(cast={"scarf": {}}, root=root, media=media)
+    assert "cast id" in slicer.prefix_taken("scarf", lib)
+    assert "scarf.yaml" in slicer.prefix_taken("s5", lib)
+    assert "s1_0.png" in slicer.prefix_taken("s1", lib)
+    assert slicer.prefix_taken("mia", lib) is None
+
+
+def test_rig_main_reads_pieces_from_another_folder(tmp_path):
+    import json
+
+    slicer.slice_sheet(sheet(tmp_path / "s.png"), tmp_path / "media" / "cast" / "pieces", "t")
+    maps = tmp_path / "lib" / "cast" / "maps"
+    maps.mkdir(parents=True)
+    voice = {"desc": "A relaxed male baritone", "seed": 23}
+    (maps / "t.yaml").write_text(
+        yaml.safe_dump({"id": "tee", "sheet": "t", "pieces": list(range(10)), "hip": 0.6, "voice": voice})
+    )
+    rig.main(str(tmp_path / "lib"), str(tmp_path / "media" / "cast" / "pieces"))
+    assert json.loads((tmp_path / "lib" / "cast" / "cast.json").read_text())["tee"]["voice"] == voice

@@ -111,3 +111,17 @@ def test_warp_film_moves_the_shake_impact():
     k = timewarp.knots(old, new, old_end=5.0)
     film = {"duration": 5.0, "beats": [], "shots": [{"from": 0, "to": 5.0, "camera": {"move": "shake", "at": 3.5}}]}
     assert timewarp.warp_film(film, k)["shots"][0]["camera"]["at"] == 4.0
+
+
+def test_film_luc_carries_the_knots_so_custom_shots_can_unwarp():
+    k = timewarp.knots(CUES_B, CUES_LUC, 6.0)
+    out = timewarp.warp_film(small_film(), k)
+    assert out["warp"] == {"old": [0.0, 0.4, 3.5, 3.8, 4.6, 6.0], "new": [0.0, 0.4, 4.0, 4.3, 5.2, 6.6]}
+    for s in out["shots"]:  # every warped shot start unwarps to its sheet time
+        assert timewarp.unwarp(s["from"], (out["warp"]["old"], out["warp"]["new"])) in (0.0, pytest.approx(3.5))
+
+
+def test_cue_sheets_with_different_line_counts_are_refused_clearly():
+    short = {"cues": CUES_LUC["cues"][:1]}
+    with pytest.raises(SystemExit, match="different line counts \\(2 voice B lines, 1 final"):
+        timewarp.knots(CUES_B, short, 6.0)

@@ -1,37 +1,61 @@
 """Free local voices for a film: voice B narration (a Qwen3 clone) and each character's own designed voice
-(Qwen3 VoiceDesign, one seed per character from the cast library), through the what-if engine's local_tts.py.
+(Qwen3 VoiceDesign, one seed per character), through the what-if engine's local_tts.py. All local, no paid call.
 
 python voices.py <video_dir>   (reads cast-pass.yaml; writes audio/takes/, audio/narration.wav, cues and words)
+python voices.py --to-maps <video_dir> <library_dir>
+    at G3: writes each <video_dir>/voices.yaml entry into <library_dir>/cast/maps/<id>.yaml as `voice: {desc, seed}`
+    (rig.py then carries it into cast.json).
+python voices.py --sweep <video_dir> <id> [seed seed seed]
+    three takes of the character's first cast-pass line (or a stock line), one per seed (default 11 23 37), to
+    audio/sweep/<id>_seed<N>.wav, from the `desc` in <video_dir>/voices.yaml; pick one by ear and write its `seed`.
+
+A character's voice is `{desc, seed}`: from the library cast (cast.json `voice`, carried from the map file's `voice:`
+by rig.py), overlaid by <video_dir>/voices.yaml (`{<id>: {desc, seed}}`, the video's entry wins). At G3 the
+voices.yaml entries move into the cast map files (studio-suppose-final-watch step 0).
 """
 
 from __future__ import annotations
 
 import json
-import os
 import subprocess
 import sys
 from pathlib import Path
 
 import yaml
 
+from library import Library, main_checkout
+
 REPO = Path(__file__).resolve().parents[4]
 WHATIF = REPO / "core" / "engines" / "whatif" / "pipeline"
 VOICE_DIR = Path("channels") / "say-suppose" / "brand" / "voice"
+SWEEP_SEEDS = (11, 23, 37)
+STOCK_LINE = "Wait. You mean every single one of them? Okay. Okay, I can live with that."
 
 
-def main_checkout() -> Path:
-    """The main checkout (it holds .venv-media and the git-ignored voice files): OMNI_MAIN, else the first worktree."""
-    env = os.environ.get("OMNI_MAIN")
-    if env:
-        return Path(env)
-    out = subprocess.run(
-        ["git", "-C", str(REPO), "worktree", "list", "--porcelain"], capture_output=True, text=True, check=True
-    ).stdout
-    return Path(out.split("\n")[0].removeprefix("worktree "))
+def voice_table(cast: dict, video: Path) -> dict[str, dict]:
+    """{id: {desc, seed}}: the cast library's voices, overlaid by the video's voices.yaml (its entry wins)."""
+    table = {cid: c["voice"] for cid, c in cast.items() if c.get("voice")}
+    p = Path(video) / "voices.yaml"
+    local = (yaml.safe_load(p.read_text(encoding="utf-8")) or {}) if p.is_file() else {}
+    if not isinstance(local, dict):
+        raise SystemExit(f"{p}: expected a mapping of character id -> {{desc, seed}}")
+    table.update(local)
+    return table
 
 
-def jobs(lines: list[dict], cast: dict, narrator_ref: Path, narrator_text: str, out_dir: Path) -> dict:
-    """The local_tts.py spec: qwen3 clone for narrator lines, qwen3-design (instruct + seed) for characters."""
+def _voice(voices: dict, who: str, need_seed: bool = True) -> dict:
+    v = voices.get(who) or {}
+    if not v.get("desc") or (need_seed and v.get("seed") is None):
+        raise SystemExit(
+            f"{who} has no voice: add `{who}: {{desc: ..., seed: N}}` to <video>/voices.yaml (desc from"
+            " prompts/character-voice.md, seed from `voices.py --sweep`)"
+        )
+    return v
+
+
+def jobs(lines: list[dict], voices: dict, narrator_ref: Path, narrator_text: str, out_dir: Path) -> dict:
+    """The local_tts.py spec: qwen3 clone for narrator lines, qwen3-design (instruct + seed) for characters.
+    `voices` is voice_table's {id: {desc, seed}}."""
     out = []
     for ln in lines:
         path = str(Path(out_dir) / f"{ln['n']:03d}_{ln['speaker']}.wav")
@@ -46,11 +70,7 @@ def jobs(lines: list[dict], cast: dict, narrator_ref: Path, narrator_text: str, 
                 }
             )
             continue
-        voice = cast.get(ln["speaker"], {}).get("voice")
-        if not voice:
-            raise SystemExit(
-                f"{ln['speaker']} has no voice in the cast library; design one with prompts/character-voice.md"
-            )
+        voice = _voice(voices, ln["speaker"])
         out.append(
             {
                 "engine": "qwen3-design",
@@ -61,6 +81,67 @@ def jobs(lines: list[dict], cast: dict, narrator_ref: Path, narrator_text: str, 
             }
         )
     return {"jobs": out}
+
+
+def sweep_jobs(who: str, voices: dict, text: str, seeds, out_dir: Path) -> dict:
+    """Three (or more) qwen3-design takes of one line, one per seed, for picking a character's seed by ear."""
+    desc = _voice(voices, who, need_seed=False)["desc"]
+    return {
+        "jobs": [
+            {
+                "engine": "qwen3-design",
+                "text": text,
+                "out": str(Path(out_dir) / f"{who}_seed{int(s)}.wav"),
+                "instruct": desc,
+                "seed": int(s),
+            }
+            for s in seeds
+        ]
+    }
+
+
+def sweep(video_dir: str, who: str, seeds: list[str]) -> Path:
+    video = Path(video_dir).resolve()
+    voices = voice_table(Library.for_channel("say-suppose", video).cast, video)
+    cp = video / "cast-pass.yaml"
+    lines = (yaml.safe_load(cp.read_text()) or {}).get("lines", []) if cp.is_file() else []
+    text = next((ln["text"] for ln in lines if ln.get("speaker") == who), STOCK_LINE)
+    out_dir = video / "audio" / "sweep"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    spec = sweep_jobs(who, voices, text, [int(s) for s in seeds] or SWEEP_SEEDS, out_dir)
+    (out_dir / f"{who}_spec.json").write_text(json.dumps(spec, indent=1))
+    run(out_dir / f"{who}_spec.json")
+    return out_dir
+
+
+def set_map_voice(map_path: Path, voice: dict) -> None:
+    """Replace (or add) the map file's top-level `voice:` with {desc, seed}; every other line, comments too, stays."""
+    keep, skipping = [], False
+    for line in Path(map_path).read_text(encoding="utf-8").splitlines():
+        if line.startswith("voice:"):
+            skipping = True
+            continue
+        if skipping and line[:1] in (" ", "\t"):
+            continue
+        skipping = False
+        keep.append(line)
+    flow = yaml.safe_dump(
+        {"voice": {"desc": voice["desc"], "seed": int(voice["seed"])}}, default_flow_style=None, width=1000
+    )
+    Path(map_path).write_text("\n".join([*keep, flow.strip()]) + "\n", encoding="utf-8")
+
+
+def to_maps(video_dir: str, library_dir: str) -> list[Path]:
+    video, maps = Path(video_dir), Path(library_dir) / "cast" / "maps"
+    local = voice_table({}, video)
+    missing = [cid for cid in local if not (maps / f"{cid}.yaml").is_file()]
+    if missing:
+        raise SystemExit(f"no cast map for {', '.join(missing)} in {maps}; move the video's maps in first")
+    done = []
+    for cid in local:
+        set_map_voice(maps / f"{cid}.yaml", _voice(local, cid))
+        done.append(maps / f"{cid}.yaml")
+    return done
 
 
 def _media_py() -> str:
@@ -87,7 +168,6 @@ def write_words(wav: Path, out: Path) -> None:
 
 
 def main(video_dir: str) -> None:
-    from library import Library
     from stitch import gap_after, stitch
 
     video = Path(video_dir).resolve()
@@ -100,8 +180,8 @@ def main(video_dir: str) -> None:
     lines = yaml.safe_load((video / "cast-pass.yaml").read_text())["lines"]
     takes_dir = video / "audio" / "takes"
     takes_dir.mkdir(parents=True, exist_ok=True)
-    cast = Library.for_channel("say-suppose", video).cast
-    spec = jobs(lines, cast, voice / "narrator-b-cool.wav", ref_txt.read_text().strip(), takes_dir)
+    voices = voice_table(Library.for_channel("say-suppose", video).cast, video)
+    spec = jobs(lines, voices, voice / "narrator-b-cool.wav", ref_txt.read_text().strip(), takes_dir)
     (takes_dir / "spec.json").write_text(json.dumps(spec, indent=1))
     run(takes_dir / "spec.json")
     takes = [
@@ -120,4 +200,9 @@ def main(video_dir: str) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    if sys.argv[1] == "--to-maps":
+        print("\n".join(map(str, to_maps(sys.argv[2], sys.argv[3]))))
+    elif sys.argv[1] == "--sweep":
+        print(sweep(sys.argv[2], sys.argv[3], sys.argv[4:]))
+    else:
+        main(sys.argv[1])

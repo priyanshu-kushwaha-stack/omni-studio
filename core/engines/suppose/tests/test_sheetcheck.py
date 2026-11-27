@@ -186,3 +186,51 @@ def test_cli_reports_missing_and_malformed_inputs(tmp_path, capsys):
 def test_emit_on_empty_shots_does_not_crash(tmp_path):
     out = chk.emit({"film": "t", "fps": 30, "size": [1280, 720], "shots": []}, LIB, tmp_path / "f.json")
     assert '"duration": 0' in out.read_text()
+
+
+def test_sfx_label_kind_mood_crowd_band_and_camera_bounds_fail():
+    crowd_lib = SimpleNamespace(
+        cast=LIB.cast,
+        sets={"station": {"angles": {"wide": {"bounds": {"zmax": 2.0}, "crowd": {"back": [470, 596]}}}}},
+        props=LIB.props,
+    )
+    bad = [
+        (shot(1, 0, 3, sfx=[{"name": "boom", "at": 1}]), "unknown sfx 'boom'"),
+        (shot(1, 0, 3, labels=[{"kind": "banner", "text": "x", "at": 1}]), "unknown label kind"),
+        (shot(1, 0, 3, mood="sunny"), "unknown mood 'sunny'"),
+        (shot(1, 0, 3, crowd=[{"band": "middle", "n": 5, "speed": 90}]), "no crowd band 'middle'"),
+        (shot(1, 0, 3, camera={"move": "push", "z": [1.0, 2.4]}), "past station/wide bounds"),
+    ]
+    for b, msg in bad:
+        fails, _ = chk.check(sheet(b), crowd_lib, [])
+        assert any(msg in f for f in fails), (b, fails)
+    good = shot(1, 0, 3, sfx=[{"name": "whoosh", "at": 1}], crowd=[{"band": "back", "n": 5, "speed": 90}])
+    good["camera"] = {"move": "push", "z": [1.0, 2.0]}
+    assert chk.check(sheet(good), crowd_lib, [])[0] == []
+
+
+def test_sheet_vocab_matches_what_mix_can_make():
+    import sfx
+    import sheet as vocab
+
+    assert vocab.SFX == tuple(sfx.SYNTHS)
+
+
+def test_last_shot_must_end_with_the_narration():
+    s = sheet(shot(1, 0, 3), shot(2, 3, 6, type="face"))
+    assert chk.check(s, LIB, [], narration=6.2) == ([], [])
+    assert any("past the narration" in f for f in chk.check(s, LIB, [], narration=5.5)[0])
+    assert any("before the narration" in f for f in chk.check(s, LIB, [], narration=6.8)[0])
+    assert chk.check(s, LIB, [], narration=None)[0] == []
+
+
+def test_emit_duration_covers_the_narration(tmp_path):
+    out = chk.emit(sheet(shot(1, 0, 3)), LIB, tmp_path / "film.json", narration=3.4)
+    assert json.loads(out.read_text())["duration"] == 3.4
+
+
+def test_cli_reads_the_narration_length_from_cues_b(tmp_path):
+    (tmp_path / "audio").mkdir()
+    (tmp_path / "audio" / "cues_b.json").write_text(json.dumps({"duration": 7.25, "cues": []}))
+    assert chk.narration_length(tmp_path) == 7.25
+    assert chk.narration_length(tmp_path / "none") is None
