@@ -22,10 +22,20 @@ def test_five_owner_gates_and_skills():
         assert (OM / "skills" / f"{skill}.md").is_file(), skill
 
 
-def test_checks_match_studio_whatif():
+def test_checks_are_studio_whatifs_plus_cast_claims():
+    """studio-suppose has whatif's checks, plus cast_claims at story_script and publish_prep (real figures stay cited)."""
     for stage in STAGES:
-        assert checks.stage_checks("studio-suppose", stage) == checks.stage_checks("studio-whatif", stage)
+        extra = ["cast_claims"] if stage in ("story_script", "publish_prep") else []
+        got = checks.stage_checks("studio-suppose", stage)
+        assert sorted(got) == sorted(checks.stage_checks("studio-whatif", stage) + extra)
         assert checks.stage_warnings("studio-suppose", stage) == checks.stage_warnings("studio-whatif", stage)
+    assert "cast_claims" not in sum((checks.stage_checks("studio-whatif", s) for s in STAGES), [])
+
+
+def test_run_check_dispatches_cast_claims(tmp_path, monkeypatch):
+    monkeypatch.setattr(checks.channels, "video_dir", lambda ch, vid: tmp_path)
+    out = checks.run_check("cast_claims", object(), "v", "film", "studio-suppose", None, None)
+    assert out["check"] == "cast_claims" and not out["ok"] and "cast-pass.yaml is missing" in out["problems"][0]
 
 
 def test_story_numbers_in_words_need_no_claim_id(tmp_path, monkeypatch):

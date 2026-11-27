@@ -74,3 +74,32 @@ def test_top_and_flip_refs_make_derived_pieces(tmp_path):
     full = Image.open(tmp_path / "pieces" / "t_7.png")
     assert e["thighL"]["h"] == int(full.height * 0.52)
     assert e["shinR"]["src"].endswith("x_shinR.png")
+
+
+def _rigged_dir(tmp_path):
+    import json
+
+    slicer.slice_sheet(sheet(tmp_path / "s.png"), tmp_path / "cast" / "pieces", "t")
+    m = tmp_path / "t.yaml"
+    m.write_text(yaml.safe_dump({"id": "tester", "sheet": "t", "pieces": list(range(10)), "hip": 0.6}))
+    entry = rig.rig_character(m, tmp_path / "cast" / "pieces")
+    (tmp_path / "cast" / "cast.json").write_text(json.dumps({"tester": entry}))
+    return tmp_path
+
+
+def test_check_sheet_lays_out_ten_pieces_and_a_rest_pose(tmp_path):
+    root = _rigged_dir(tmp_path)
+    out = rig.check_sheet(root, "tester", tmp_path / "check.png")
+    im = Image.open(out)
+    assert im.size == (rig.CHECK_W, rig.CHECK_H) and im.size == (1320, 860)
+    # the assembled pose is drawn in its half, the pieces row in the top band
+    assert im.crop((0, rig.CELL_H, rig.CHECK_W, rig.CHECK_H)).convert("L").getextrema()[0] < 250
+    assert im.crop((0, 0, rig.CHECK_W, rig.CELL_H)).convert("L").getextrema()[0] < 250
+
+
+def test_check_sheet_names_a_missing_character(tmp_path):
+    import pytest
+
+    root = _rigged_dir(tmp_path)
+    with pytest.raises(SystemExit, match="nobody"):
+        rig.check_sheet(root, "nobody", tmp_path / "c.png")

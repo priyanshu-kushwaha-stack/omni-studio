@@ -9,6 +9,7 @@ but never hold a gate: the owner judges them film by film (studio-whatif `openin
 
 Checks:
   claims          claims ledger complete, a source per factual claim (studio/claims.py)
+  cast_claims     every claim in cast-pass.yaml has a claims ledger row (Say Suppose; studio/cast_claims.py)
   no_quiz_boards  script_lint.py item 27 (owner rule 2026-11-06)
   loudness        integrated LUFS, true peak and LRA against channel.yaml loudness.<format> (qc/loudness.py)
   clicks          audio_check.py bursts and steps; on Shorts also the 2.4 s fade-out tail (qc/clicks.py)
@@ -33,7 +34,7 @@ from studio.channels import ChannelError
 
 ROOT = Path(__file__).resolve().parents[2]
 ENGINE = ROOT / "core" / "engines" / "pou" / "scripts"
-KNOWN = ("claims", "no_quiz_boards", "loudness", "clicks", "opening", "similarity", "upload_request")
+KNOWN = ("claims", "cast_claims", "no_quiz_boards", "loudness", "clicks", "opening", "similarity", "upload_request")
 MEDIA_CHECKS = {"loudness", "clicks", "opening", "similarity"}
 WORD_NUMBER_PIPELINES = ("studio-whatif", "studio-suppose")
 PUBLISH_STAGE = "publish_prep"
@@ -125,6 +126,10 @@ def run_check(
         # What-if stories and Say Suppose films invent their premise numbers ("ten seconds", "day twelve"), and films
         # write every number in words (scriptcheck.py): only digits need a source.
         return claims.check(folder, number_words=pipeline not in WORD_NUMBER_PIPELINES).as_dict()
+    if name == "cast_claims":
+        from studio import cast_claims
+
+        return cast_claims.check(folder)
     if name == "no_quiz_boards":
         script = folder / "script.md"
         if not script.is_file():

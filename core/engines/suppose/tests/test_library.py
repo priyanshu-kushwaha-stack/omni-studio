@@ -94,3 +94,48 @@ def test_seeded_cast_matches_the_pilot():
 @MEDIA
 def test_seeded_library_verifies():
     assert library.Library(LIB).verify() == []
+
+
+def test_stage_overlays_video_cast_and_sets_over_the_library(tmp_path):
+    """Pieces made in <video>/art/cast and sets in <video>/art/sets resolve at the library-relative srcs film.json uses."""
+    root = make_lib(tmp_path / "lib")
+    (root / "cast" / "pieces").mkdir()
+    (root / "cast" / "pieces" / "old.png").write_bytes(b"lib-old")
+    (root / "cast" / "pieces" / "same.png").write_bytes(b"lib-same")
+    video = tmp_path / "v"
+    (video / "art" / "cast" / "pieces").mkdir(parents=True)
+    (video / "art" / "cast" / "pieces" / "new.png").write_bytes(b"new")
+    (video / "art" / "cast" / "pieces" / "same.png").write_bytes(b"video-same")
+    (video / "art" / "sets" / "cellar").mkdir(parents=True)
+    (video / "art" / "sets" / "cellar" / "wide.png").write_bytes(b"cellar")
+    out = library.Library(root).stage(video, tmp_path / "public")
+    assert (out / "cast" / "pieces" / "old.png").read_bytes() == b"lib-old"
+    assert (out / "cast" / "pieces" / "new.png").read_bytes() == b"new"
+    assert (out / "cast" / "pieces" / "same.png").read_bytes() == b"video-same"  # the video's file wins
+    assert (out / "sets" / "cellar" / "wide.png").read_bytes() == b"cellar"
+    assert (out / "sets" / "station" / "wide.png").read_bytes() == b"png"
+    assert (out / "props").is_symlink() and not (out / "cast").is_symlink()
+    assert (root / "cast" / "pieces" / "same.png").read_bytes() == b"lib-same"  # the library is untouched
+    library.Library(root).stage(video, out)  # re-staging is safe
+    assert (out / "cast" / "pieces" / "new.png").read_bytes() == b"new"
+
+
+def test_for_channel_with_a_video_adds_its_local_cast_and_sets(tmp_path, monkeypatch):
+    root = make_lib(tmp_path / "lib")
+    monkeypatch.setattr(library, "REPO", tmp_path / "repo")
+    lib_dir = tmp_path / "repo" / "channels" / "x" / "library"
+    lib_dir.parent.mkdir(parents=True)
+    root.rename(lib_dir)
+    video = tmp_path / "v"
+    (video / "art" / "cast").mkdir(parents=True)
+    (video / "art" / "cast" / "cast.json").write_text(
+        json.dumps({"mentor": {"roles": ["guide"]}, "scarf": {"roles": ["new"]}})
+    )
+    (video / "art" / "sets" / "cellar").mkdir(parents=True)
+    (video / "art" / "sets" / "cellar" / "set.json").write_text(json.dumps({"id": "cellar", "angles": {"wide": {}}}))
+    plain = library.Library.for_channel("x")
+    lib = library.Library.for_channel("x", video)
+    assert set(plain.cast) == {"scarf"} and "cellar" not in plain.sets
+    assert set(lib.cast) == {"scarf", "mentor"} and lib.cast["scarf"]["roles"] == ["new"]  # the video's entry wins
+    assert set(lib.sets) == {"station", "cellar"}
+    assert library.Library.for_channel("x", tmp_path / "none").cast == plain.cast

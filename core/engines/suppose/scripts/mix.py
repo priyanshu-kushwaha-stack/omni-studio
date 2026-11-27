@@ -1,7 +1,9 @@
 """Mix a Say Suppose film: narration, a ducked score, set ambience, sheet sound effects and label blips, faded edges,
 then ffmpeg loudnorm to -16 LUFS / -1.5 dBTP (spec; the pilot's pilot_mix.py, generalised).
 
-python mix.py <video_dir> [score.wav]   (reads film.json and audio/narration.wav; writes audio/mix.wav)
+python mix.py <video_dir> [score.wav] [--luc]
+    reads film.json and audio/narration.wav and writes audio/mix.wav; with --luc it reads the warped film-luc.json
+    (timewarp.py) and audio/narration_luc.wav instead, so the film's times are already on the final narration.
 """
 
 from __future__ import annotations
@@ -101,10 +103,13 @@ def mix(narr: Path, score: Path | None, film: dict, out: Path, warp_k=None) -> P
 
 
 def main(argv: list[str]) -> None:
-    video = Path(argv[0]).resolve()
-    film = json.loads((video / "film.json").read_text())
-    score = Path(argv[1]) if len(argv) > 1 else None
-    print(mix(video / "audio" / "narration.wav", score, film, video / "audio" / "mix.wav"))
+    luc = "--luc" in argv
+    args = [a for a in argv if a != "--luc"]
+    video = Path(args[0]).resolve()
+    film = json.loads((video / ("film-luc.json" if luc else "film.json")).read_text())
+    score = Path(args[1]) if len(args) > 1 else None
+    narration = video / "audio" / ("narration_luc.wav" if luc else "narration.wav")
+    print(mix(narration, score, film, video / "audio" / "mix.wav"))
 
 
 if __name__ == "__main__":

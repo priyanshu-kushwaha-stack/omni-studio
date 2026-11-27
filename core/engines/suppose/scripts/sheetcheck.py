@@ -229,7 +229,7 @@ def main(argv: list[str]) -> int:
         return 2
     from library import Library
 
-    lib = Library.for_channel("say-suppose")
+    lib = Library.for_channel("say-suppose", video)
     fails, warns = check_all(sheet, lib, words, customs_in(video))
     for line in [*(f"FAIL {f}" for f in fails), *(f"WARN {w}" for w in ([] if fails else warns))]:
         print(line)

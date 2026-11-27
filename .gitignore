@@ -52,3 +52,13 @@ channels/*/page/crops/
 channels/*/videos/*/room/raw/
 # Quality room: the live canary written by the sandbox check
 .room-canary
+
+# Say Suppose film media stays local (images, audio, staged public dir, renders, review pages embed images).
+# Tracked: outline.md, script.md, shots.yaml, film.json, cast-pass.yaml, claims.md, art.yaml, upload.yaml,
+# custom/*.tsx, remotion/index.ts and review/notes.md.
+channels/say-suppose/videos/*/art/
+channels/say-suppose/videos/*/public/
+channels/say-suppose/videos/*/render/
+channels/say-suppose/videos/*/audio/
+channels/say-suppose/videos/*/review/*.html
+channels/say-suppose/videos/*/film-luc.json

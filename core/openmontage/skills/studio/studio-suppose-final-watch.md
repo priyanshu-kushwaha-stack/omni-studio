@@ -6,6 +6,27 @@ omni-studio skill for the `studio-suppose` pipeline. Paths, `$ROOT`, `$V` and `<
 **Reads:** the 1080p render G3 (picture lock) approved, `claims.md`. **Writes:** `qc/final_watch.json`,
 `channels/say-suppose/taste.md` lines, the `final_watch` checkpoint.
 
+0. **G3 is passed, so the film's art joins the library.** Only now, and only for a film the owner passed. From `$ROOT`,
+   with `V=channels/say-suppose/videos/<id>` and `L=channels/say-suppose/library`:
+
+   ```sh
+   mkdir -p $L/cast/pieces $L/cast/maps && mv $V/art/cast/pieces/* $L/cast/pieces/ && mv $V/art/cast/maps/* $L/cast/maps/
+   for d in $V/art/sets/*/; do mv "$d" $L/sets/; done; rm -f $V/art/cast/cast.json
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/rig.py $L
+   ```
+
+   (skip the lines for art the film did not make). Maps and `set.json` files move with the pieces, and `rig.py` rebuilds
+   `$L/cast/cast.json` from every map. A new prop goes into `$L/props/props.json` by hand. Then record each moved
+   file with its Higgsfield job id and prompt name from `art.yaml`, one call per file:
+
+   ```sh
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys; from pathlib import Path; from library import Library; Library.for_channel('say-suppose').add(Path(sys.argv[1]).resolve(), job=sys.argv[2], prompt=sys.argv[3])" $L/cast/pieces/<file>.png <job-id> <prompt-name>
+   ```
+
+   and check `PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "from library import Library; print(Library.for_channel('say-suppose').verify())"` prints `[]`.
+   The files stay out of git (images); `manifest.yaml`, the maps, `cast.json` and the `set.json` files are committed
+   with the film. Re-stage the public dir afterwards (`studio-suppose-edit` step 7); the render is unchanged because
+   the library now supplies what the video's `art/` supplied.
 1. **The file the owner watches.** Use `<video>/render/film-1080p.mp4` as G3 approved it. If anything changed since
    G3, re-render it once from `core/engines/suppose/kit` the way `studio-suppose-edit` step 7 does (`--step
    final-watch`, `--queue render`, `--scale=1.5`). Never stitch or mux the final-watch file by hand: G4's media proof

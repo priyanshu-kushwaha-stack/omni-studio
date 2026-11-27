@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 from pathlib import Path
 
 import yaml
@@ -26,8 +27,19 @@ class Library:
         self.scores = self._json("scores/scores.json")
 
     @classmethod
-    def for_channel(cls, slug: str) -> "Library":
-        return cls(REPO / "channels" / slug / "library")
+    def for_channel(cls, slug: str, video: Path | None = None) -> "Library":
+        """The channel library; with `video`, the cast and sets that video made in its art/ are added (the video's
+        entry wins), the same overlay `stage` gives the renderer, until G3 moves them into the library."""
+        lib = cls(REPO / "channels" / slug / "library")
+        if video is not None:
+            art = Path(video) / "art"
+            lib.cast.update(lib._json_at(art / "cast" / "cast.json"))
+            lib.sets.update({p.parent.name: json.loads(p.read_text()) for p in sorted(art.glob("sets/*/set.json"))})
+        return lib
+
+    @staticmethod
+    def _json_at(p: Path) -> dict:
+        return json.loads(p.read_text()) if p.is_file() else {}
 
     def _json(self, rel: str) -> dict:
         p = self.root / rel
@@ -56,12 +68,36 @@ class Library:
         (self.root / "manifest.yaml").write_text(yaml.safe_dump(m, sort_keys=False))
 
     def stage(self, video: Path, out: Path) -> Path:
+        """Link the library and the video's art/ and audio/ into `out` for a render (--public-dir). A video's own
+        `art/cast/...` and `art/sets/...` merge over the library's cast/ and sets/ (the video's file wins, the
+        library is never touched), so film.json's library-relative srcs resolve before G3 moves the art in."""
         out.mkdir(parents=True, exist_ok=True)
+        video = Path(video)
         links = {d: self.root / d for d in ("cast", "sets", "props", "scores")}
-        links.update({d: Path(video) / d for d in ("art", "audio") if (Path(video) / d).exists()})
+        links.update({d: video / d for d in ("art", "audio") if (video / d).exists()})
         for name, target in links.items():
-            link = out / name
-            if link.is_symlink() or link.exists():
-                link.unlink()
-            os.symlink(target.resolve(), link)
+            _clear(out / name)
+            overlay = video / "art" / name
+            if name in ("cast", "sets") and overlay.is_dir():
+                _merge(out / name, target, overlay)
+            else:
+                os.symlink(target.resolve(), out / name)
         return out
+
+
+def _clear(path: Path) -> None:
+    if path.is_symlink() or path.is_file():
+        path.unlink()
+    elif path.is_dir():
+        shutil.rmtree(path)
+
+
+def _merge(dst: Path, *sources: Path) -> None:
+    """A real directory tree at `dst` with one symlink per file; later sources override earlier ones."""
+    for src in sources:
+        for f in sorted(p for p in src.resolve().rglob("*") if p.is_file()):
+            link = dst / f.relative_to(src.resolve())
+            link.parent.mkdir(parents=True, exist_ok=True)
+            if link.is_symlink():
+                link.unlink()
+            os.symlink(f, link)

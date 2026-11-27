@@ -51,10 +51,10 @@ metadata:
   min_seconds: 330
   max_seconds: 510
   studio_checks:
-    story_script: [claims, clicks]
+    story_script: [claims, cast_claims, clicks]
     final_edit: [loudness, clicks, similarity]
     final_watch: [loudness, clicks, similarity]
-    publish_prep: [claims, loudness, clicks, similarity, upload_request]
+    publish_prep: [claims, cast_claims, loudness, clicks, similarity, upload_request]
   studio_warnings:
     final_edit: [opening]
     final_watch: [opening]

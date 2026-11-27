@@ -7,8 +7,7 @@ his timing, the final score goes in and the owner's G2 notes are applied (spec 2
 **Gate:** G3, stage `final_edit`.
 **Reads:** `cast-pass.yaml`, `audio/takes/`, `audio/cues_b.json`, `shots.yaml`, `film.json`, `review/notes.md`,
 `prompts/narration.md`, `prompts/score.md`.
-**Writes:** `audio/luc/` takes and their whisper transcripts, `audio/narration_luc.wav`, `audio/cues_luc.json`, the
-warped `film.json`, `audio/mix.wav`, `render/film-1080p.mp4`, `review/final_edit.html`, the `final_edit` checkpoint.
+**Writes:** `audio/luc/` takes and their whisper transcripts, `audio/narration_luc.wav`, `audio/cues_luc.json`, `film-luc.json` (the warped film), `audio/mix.wav`, `render/film-1080p.mp4`, `review/final_edit.html`, the `final_edit` checkpoint.
 
 ## Steps
 
@@ -20,25 +19,39 @@ warped `film.json`, `audio/mix.wav`, `render/film-1080p.mp4`, `review/final_edit
    main checkout's `.venv-media`, as `voices.py` runs it): the transcript must equal the line. Luc can repeat
    phrases: trim the take, or retake it; a retake beyond the quote needs its own OK. Character lines keep their free
    local takes from `audio/takes/`.
-3. **Stitch.** Stitch the takes in script order with `stitch.stitch(takes, <video>/audio/narration_luc.wav,
-   <video>/audio/cues_luc.json)` and `stitch.gap_after` (`core/engines/suppose/scripts/stitch.py`, as `voices.py`
-   calls them); never by hand.
-4. **Time warp.** `shots.yaml` stays on voice B time; the film plays on Luc time. Build the knots with
-   `timewarp.knots(cues_b, cues_luc, <voice B duration>)` (`core/engines/suppose/scripts/timewarp.py`), warp every
-   shot's start and end and every action time with `timewarp.warp` into the `film.json` the render reads, and mix
-   with `mix.mix(<video>/audio/narration_luc.wav, score, film, <video>/audio/mix.wav, warp_k=k)`
-   (`core/engines/suppose/scripts/mix.py`). Where a step has no command-line tool, run the module functions from a
-   one-off script outside the engine, and record the need with `omni fix`.
+3. **Stitch.** In script order, narrator lines from `audio/luc/<NNN>_narrator.wav` and character lines from their
+   free takes `audio/takes/<NNN>_<speaker>.wav` (the names `voices.py` wrote); never by hand:
+
+   ```sh
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys,yaml; from pathlib import Path; from stitch import stitch, gap_after; v=Path(sys.argv[1]); L=yaml.safe_load((v/'cast-pass.yaml').read_text())['lines']; stitch([(f\"{l['n']:03d}_{l['speaker']}\", v/'audio'/('luc' if l['speaker']=='narrator' else 'takes')/f\"{l['n']:03d}_{l['speaker']}.wav\", gap_after(l['text'], l['speaker'], i==len(L)-1)) for i,l in enumerate(L)], v/'audio/narration_luc.wav', v/'audio/cues_luc.json')" $V
+   ```
+
+4. **Time warp.** `shots.yaml` and `film.json` stay on voice B time; the film plays on Luc time:
+
+   ```sh
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/timewarp.py $V --from audio/cues_b.json --to audio/cues_luc.json
+   ```
+
+   It writes `$V/film-luc.json`: every time in `film.json` (shot from/to, beats, act at/to, label at/to, line, readout
+   and sfx at, duration) mapped through the line cues. Mix on it, with the final score from step 5 (omit the score
+   path for none):
+
+   ```sh
+   PYTHONPATH=core/engines/suppose/scripts .venv/bin/python core/engines/suppose/scripts/mix.py $V <score.wav> --luc
+   ```
+
+   which reads `film-luc.json` and `audio/narration_luc.wav` and writes `audio/mix.wav`. After the owner's notes
+   change `shots.yaml`, re-run `sheetcheck.py --emit`, then this step again.
 5. **Final score.** Either a library cue from `channels/say-suppose/library/scores/` that fits, or a new score per
    `prompts/score.md` (Higgsfield ElevenLabs Music, about 0.145 credits a second): quote it, wait for the owner's OK,
-   then generate. Re-mix with the score.
+   then generate. Re-run the mix of step 4 with that score.
 6. **Notes.** Apply every G2 note in `review/notes.md`, or say in one line why not.
-7. **1080p render.** Re-stage the public dir (`Library.stage`), then from `core/engines/suppose/kit`:
+7. **1080p render.** Re-stage the public dir (`PYTHONPATH=core/engines/suppose/scripts .venv/bin/python -c "import sys; from pathlib import Path; from library import Library; Library.for_channel('say-suppose').stage(Path(sys.argv[1]), Path(sys.argv[1]) / 'public')" $V`), then from `core/engines/suppose/kit`:
 
    ```sh
    $ROOT/.venv/bin/python -m studio.jobs run --step final-edit --channel say-suppose --video <id> --queue render -- \
      npx remotion render $V/remotion/index.ts Film $V/render/film-1080p.mp4 \
-     --props=$V/film.json --public-dir=$V/public --scale=1.5
+     --props=$V/film-luc.json --public-dir=$V/public --scale=1.5
    ```
 
    (the sheet is laid out at 1280x720; `--scale=1.5` gives 1920x1080).

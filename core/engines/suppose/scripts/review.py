@@ -160,7 +160,9 @@ def _sheet_warns(video: Path, channel: str) -> str:
 
     try:
         sheet, words = sheetcheck.load_inputs(video)
-        fails, warns = sheetcheck.check_all(sheet, Library.for_channel(channel), words, sheetcheck.customs_in(video))
+        fails, warns = sheetcheck.check_all(
+            sheet, Library.for_channel(channel, video), words, sheetcheck.customs_in(video)
+        )
     except Exception as e:  # a half-written sheet must not stop the page
         return f'<p class="bad">shots.yaml could not be checked: {esc(" ".join(str(e).split()))}</p>'
     items = [f'<span class="bad">FAIL {esc(f)}</span>' for f in fails] + [

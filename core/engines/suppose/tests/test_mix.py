@@ -193,3 +193,13 @@ def test_raw_bus_survives_data_shot_without_set(tmp_path):
     f["sets"] = {}
     bus = mix.raw_bus(voice(tmp_path, 4.0), None, f, warp_k=None)
     assert len(bus) == 4 * sfx.SR
+
+
+def test_cli_luc_reads_the_warped_film_and_luc_narration(tmp_path, monkeypatch):
+    (tmp_path / "film.json").write_text('{"duration": 1}')
+    (tmp_path / "film-luc.json").write_text('{"duration": 2}')
+    seen = []
+    monkeypatch.setattr(mix, "mix", lambda narr, score, film, out, warp_k=None: seen.append((narr.name, film)) or out)
+    mix.main([str(tmp_path), "--luc"])
+    mix.main([str(tmp_path)])
+    assert seen == [("narration_luc.wav", {"duration": 2}), ("narration.wav", {"duration": 1})]

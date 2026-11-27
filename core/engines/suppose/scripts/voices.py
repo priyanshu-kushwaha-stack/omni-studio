@@ -100,7 +100,7 @@ def main(video_dir: str) -> None:
     lines = yaml.safe_load((video / "cast-pass.yaml").read_text())["lines"]
     takes_dir = video / "audio" / "takes"
     takes_dir.mkdir(parents=True, exist_ok=True)
-    cast = Library.for_channel("say-suppose").cast
+    cast = Library.for_channel("say-suppose", video).cast
     spec = jobs(lines, cast, voice / "narrator-b-cool.wav", ref_txt.read_text().strip(), takes_dir)
     (takes_dir / "spec.json").write_text(json.dumps(spec, indent=1))
     run(takes_dir / "spec.json")
