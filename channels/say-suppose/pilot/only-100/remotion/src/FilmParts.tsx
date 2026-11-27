@@ -9,6 +9,20 @@ import {WOMAN, GREY, RICEMAN, type Parts} from './castData';
 import {rnd} from './People2D';
 import type {ScarfCutPose} from './Cast2';
 
+// Natural puppet heights in piece pixels (feet to top of head), used to size everyone to Scarf.
+export const SCARF_H = 1357;
+export const MAN_H = 1712;
+export const personH = (p: Parts) => p.thighL.h * 0.86 + p.shinL.h * 0.95 + p.torso.h * 0.9 + p.head.h * 0.95;
+export const PEER = 1.06; // other adults stand about 6% taller than Scarf
+
+// A camera that frames point (fx, fy) at zoom z; k < 1 is a farther layer (parallax).
+export const Cam: React.FC<{z: number; fx: number; fy: number; k?: number; children: React.ReactNode}> = ({z, fx, fy, k = 1, children}) => {
+  const zz = 1 + (z - 1) * k;
+  const x = W / 2 - (W / 2 + (fx - W / 2) * k) * zz;
+  const y = H / 2 - (H / 2 + (fy - H / 2) * k) * zz;
+  return <div style={{position: 'absolute', inset: 0, transformOrigin: '0 0', transform: `translate(${x}px, ${y}px) scale(${zz})`}}>{children}</div>;
+};
+
 export const FONT = "'Avenir Next', 'Helvetica Neue', Arial, sans-serif";
 export const GREEN = '#2fbf71';
 export const AMBER = '#ffb347';
@@ -19,7 +33,7 @@ export const camStyle = (s: number, cx: number, cy: number, k: number, origin = 
   transform: `scale(${1 + (s - 1) * k}) translate(${-cx * k}px, ${-cy * k}px)`,
 });
 
-export const SetImg: React.FC<{which: 'wide' | 'close'; blur?: number}> = ({which, blur = 0}) => (
+export const SetImg: React.FC<{which: 'wide' | 'close' | 'high'; blur?: number}> = ({which, blur = 0}) => (
   <Img src={staticFile(`cut/set_${which}.png`)} style={{position: 'absolute', left: -60, top: -40, width: W + 120, height: H + 70, filter: blur ? `blur(${blur}px)` : undefined}} />
 );
 
@@ -33,17 +47,18 @@ const KINDS: Parts[] = [WOMAN, GREY, RICEMAN];
 const TINTS = ['none', 'brightness(0.9)', 'saturate(0.8)', 'brightness(1.06) saturate(0.9)', 'sepia(0.2)'];
 
 // Commuters walking across the floor of a set. Depth from y: farther = smaller and softer. Feet never slide.
-export const Crowd: React.FC<{t: number; n: number; seed: number; y0: number; y1: number; s0: number; s1: number; speed: number; clear?: [number, number]; front?: boolean}> = ({
-  t, n, seed, y0, y1, s0, s1, speed, clear, front,
+// hAt(y) = on-screen height (px) of a person whose feet are at y, so everyone matches Scarf at the same depth.
+export const Crowd: React.FC<{t: number; n: number; seed: number; y0: number; y1: number; hAt: (y: number) => number; speed: number; clear?: [number, number, number?, number?]; front?: boolean; look?: number}> = ({
+  t, n, seed, y0, y1, hAt, speed, clear, front, look,
 }) => {
   const span = W + 500;
   const people = Array.from({length: n}).map((_, k) => {
     const i = k + seed;
     const y = y0 + rnd(i, 3) * (y1 - y0);
-    const s = s0 + ((y - y0) / Math.max(1, y1 - y0)) * (s1 - s0);
     const parts = KINDS[Math.floor(rnd(i, 4) * KINDS.length)];
+    const s = (hAt(y) * (0.96 + rnd(i, 5) * 0.12)) / personH(parts);
     const dir: 1 | -1 = rnd(i, 7) > 0.5 ? 1 : -1;
-    const v = speed * (0.75 + rnd(i, 8) * 0.5) * (s / s1);
+    const v = speed * (0.75 + rnd(i, 8) * 0.5) * (hAt(y) / hAt(y1));
     const x = ((((rnd(i, 9) * span + dir * v * t) % span) + span) % span) - 250;
     const phase = ((v * t) / strideAt(parts, s)) * Math.PI * 2 + i;
     return {i, x, y, s, parts, dir, phase};
@@ -52,12 +67,12 @@ export const Crowd: React.FC<{t: number; n: number; seed: number; y0: number; y1
   return (
     <>
       {people.map((q) => {
-        if (clear && q.x > clear[0] && q.x < clear[1] && !front) return null;
+        if (clear && !front && q.x > clear[0] && q.x < clear[1] && q.y > (clear[2] ?? -1e9) && q.y < (clear[3] ?? 1e9)) return null;
         const far = (q.y - y0) / Math.max(1, y1 - y0);
         const blur = front ? 10 : far < 0.3 ? 1.6 : 0;
         const tint = TINTS[Math.floor(rnd(q.i, 11) * TINTS.length)];
         const filter = [tint === 'none' ? '' : tint, blur ? `blur(${blur}px)` : ''].join(' ').trim() || undefined;
-        return <Person key={q.i} parts={q.parts} x={q.x} y={q.y} s={q.s} filter={filter} p={{phase: q.phase, walk: 1, dir: q.dir, pupil: [q.dir * 0.6, 0]}} />;
+        return <Person key={q.i} parts={q.parts} x={q.x} y={q.y} s={q.s} filter={filter} p={{phase: q.phase, walk: 1, dir: q.dir, pupil: [q.dir * 0.6, look ?? 0]}} />;
       })}
     </>
   );

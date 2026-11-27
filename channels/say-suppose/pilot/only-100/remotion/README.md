@@ -51,3 +51,14 @@ local: `../audio/pilot_mix.py <narr_a.wav> <raw.wav>`, then `ffmpeg -af loudnorm
 - `src/timewarp.ts` maps film time onto the voice B timeline the shots were written on, so every action stays on its word.
 - Walkers turn three-quarters toward where they go (`turn` in `Person.tsx` and `Cast2.tsx`), and the rule-one selfie
   phone is raised beside her face.
+
+## Pilot v3 (owner note, 2026-11-27: sizes and camera)
+
+- One scale for the cast: Scarf sets it, and every other adult stands `PEER` (1.06) times his height at the same depth
+  (`FilmParts.tsx`: `SCARF_H`, `MAN_H`, `personH`). Crowds take a height-at-depth function (`hAt`) per set instead of
+  fixed scales, and the nearest walkers stop short of the lens so nobody towers over Scarf.
+- A new painted plate, `public/cut/set_high.png` (GPT Image 2.6, 2 credits, owner OK), gives a high angle: Scarf alone
+  in an empty circle in the crowd, used for the open, "busiest station" and the title.
+- Shots are framed to their beat with `Cam` (zoom on a point): a close-up on the shout, the rice ball brushing your nose,
+  his eyes drifting to the board, a low angle for 99/100, a close-up as the stranger's face goes blank. The focus is
+  clamped so a push never shows past the plate. Audio and the time warp are unchanged from v2.
