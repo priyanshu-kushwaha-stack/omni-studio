@@ -9,28 +9,29 @@ import timewarp  # noqa: E402
 
 
 def _audio():
-    """stitch needs soundfile, which lives in .venv-media only (the core .venv skips these tests)."""
-    np = pytest.importorskip("numpy")
-    sf = pytest.importorskip("soundfile")
+    """numpy, scipy's wavfile and the stitch module (all in the core .venv)."""
+    import numpy as np
+    from scipy.io import wavfile
+
     import stitch
 
-    return np, sf, stitch
+    return np, wavfile, stitch
 
 
 def tone(path: Path, secs: float) -> Path:
-    np, sf, _ = _audio()
+    np, wavfile, _ = _audio()
     t = np.arange(int(secs * 44100)) / 44100
-    sf.write(path, 0.5 * np.sin(2 * np.pi * 220 * t), 44100)
+    wavfile.write(path, 44100, (0.5 * np.sin(2 * np.pi * 220 * t)).astype("float32"))
     return path
 
 
 def test_stitch_places_lines_with_gaps_and_fades(tmp_path):
-    np, sf, stitch = _audio()
+    np, wavfile, stitch = _audio()
     takes = [("n1", tone(tmp_path / "a.wav", 1.0), 0.25), ("k1", tone(tmp_path / "b.wav", 0.5), 1.2)]
     cues = stitch.stitch(takes, tmp_path / "t.wav", tmp_path / "c.json")
     assert cues["cues"][0] == {"line": "n1", "start": 0.4, "end": 1.4}
     assert cues["cues"][1]["start"] == pytest.approx(1.65)
-    y, sr = sf.read(tmp_path / "t.wav")
+    sr, y = wavfile.read(tmp_path / "t.wav")
     assert sr == 44100 and abs(np.abs(y).max() - 10 ** (-1 / 20)) < 1e-3
     i = int(0.4 * sr)
     assert abs(y[i]) < 0.01  # faded edge, no click
