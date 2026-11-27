@@ -208,6 +208,9 @@ what has worked instead of rewriting prompts each time.
     this real?", sting, CTA); the small cast; one signature line; at least five real facts and nothing invented; the
     series rules for a Part 2. Adapted: the hero is never named (Decision 12); the sample paragraph of "the channel's
     own words" is replaced by a passage from our own pilot, so we never imitate a benchmark's sentences;
+  - `outline.md`: the G1 words for a picked title: three alternative titles, a one-paragraph synopsis, two to four
+    side characters with their signature items, the one rule, the ten-step outline with the planted detail and the
+    either/or choice, and five real facts (W10). `script.md` follows this outline after G1;
   - `cast-pass.md`: run on the finished script. It returns the same text with each character line tagged with its
     speaker and the cast library character who plays them, for the free character voices (Decision 8), and lists
     every factual claim for the claims ledger. The spoken text does not change;
