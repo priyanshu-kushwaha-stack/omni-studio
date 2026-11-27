@@ -15,15 +15,15 @@ import numpy as np
 from scipy import signal
 from scipy.io import wavfile
 
-from sfx import SR, SYNTHS, blip, murmur, place
+from sfx import SR, SYNTHS, blip, env, murmur, place
 from timewarp import warp
+from wav import to_float
 
 
 def _load(path: Path, n: int) -> np.ndarray:
     sr, x = wavfile.read(path)
-    x = x.astype(np.float64)
+    x = to_float(x)
     x = x.mean(axis=1) if x.ndim > 1 else x
-    x /= 32768.0 if np.abs(x).max() > 2 else 1.0
     if sr != SR:
         x = signal.resample_poly(x, SR, sr)
     out = np.zeros(n)
@@ -66,31 +66,37 @@ def raw_bus(narr: Path, score: Path | None, film: dict, warp_k=None) -> np.ndarr
         bus += _ducked_score(score, voice) * 0.16
     for sound, at, gain in _events(film, warp_k):
         place(bus, sound, at, gain)
+    bus *= env(n)
     peak = np.abs(bus).max()
     return bus / peak * 0.89 if peak > 0.89 else bus
+
+
+def _loudnorm(raw: Path, out: Path) -> None:
+    """Two-pass loudnorm: measure, then apply linearly with the measured values (48 kHz stereo out)."""
+    base = "loudnorm=I=-16:TP=-1.5:LRA=11"
+    first = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-nostats", "-i", str(raw), "-af", f"{base}:print_format=json", "-f", "null", "-"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    m = json.JSONDecoder().raw_decode(first.stderr[first.stderr.rindex("{") :])[0]
+    measured = (
+        f"{base}:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}"
+        f":measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true"
+    )
+    cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-af", measured, "-ar", str(SR), "-ac", "2", str(out)]
+    subprocess.run(cmd, check=True)
 
 
 def mix(narr: Path, score: Path | None, film: dict, out: Path, warp_k=None) -> Path:
     bus = raw_bus(narr, score, film, warp_k)
     raw = out.with_suffix(".raw.wav")
-    wavfile.write(raw, SR, (np.stack([bus, bus], axis=1) * 32767).astype(np.int16))
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-v",
-            "error",
-            "-y",
-            "-i",
-            str(raw),
-            "-af",
-            "loudnorm=I=-16:TP=-1.5:LRA=11",
-            "-ar",
-            str(SR),
-            str(out),
-        ],
-        check=True,
-    )
-    raw.unlink()
+    try:
+        wavfile.write(raw, SR, (np.stack([bus, bus], axis=1) * 32767).astype(np.int16))
+        _loudnorm(raw, out)
+    finally:
+        raw.unlink(missing_ok=True)
     return out
 
 

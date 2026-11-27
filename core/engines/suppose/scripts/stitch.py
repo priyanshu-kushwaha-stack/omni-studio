@@ -14,6 +14,8 @@ import numpy as np
 from scipy.io import wavfile
 from scipy.signal import resample_poly
 
+from wav import to_float
+
 SR = 44100
 FADE = int(0.012 * SR)
 LEAD = 0.4
@@ -21,11 +23,7 @@ LEAD = 0.4
 
 def load(path: Path) -> np.ndarray:
     sr, data = wavfile.read(path)
-    if data.dtype.kind in "iu":
-        info = np.iinfo(data.dtype)
-        mid = 0 if data.dtype.kind == "i" else (info.max + 1) / 2
-        data = (data.astype("float64") - mid) / (info.max + 1 - mid)
-    data = np.asarray(data, dtype="float64")
+    data = to_float(data)
     mono = (data.mean(axis=1) if data.ndim > 1 else data).astype("float32")
     if sr != SR:
         g = gcd(SR, int(sr))

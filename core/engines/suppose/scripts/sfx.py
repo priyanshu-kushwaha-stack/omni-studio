@@ -19,10 +19,18 @@ def env(n: int, fade: float = 0.012) -> np.ndarray:
 
 
 def place(bus: np.ndarray, sound: np.ndarray, at: float, gain: float) -> None:
+    """Add a faded sound at `at` seconds. A negative start is clipped to 0; a tail past the bus end gets a fade."""
     i = int(at * SR)
-    j = min(len(bus), i + len(sound))
-    if i < len(bus):
-        bus[i:j] += sound[: j - i] * env(len(sound))[: j - i] * gain
+    sound = sound * env(len(sound))
+    if i < 0:
+        sound, i = sound[-i:], 0
+    if i >= len(bus) or len(sound) == 0:
+        return
+    seg = sound[: len(bus) - i].copy()
+    if len(seg) < len(sound):
+        k = min(len(seg), int(0.012 * SR))
+        seg[len(seg) - k :] *= np.linspace(1, 0, k)
+    bus[i : i + len(seg)] += seg * gain
 
 
 def tick(freq: float = 1300, dur: float = 0.05) -> np.ndarray:
