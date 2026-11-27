@@ -167,3 +167,8 @@ def test_cli_reports_missing_and_malformed_inputs(tmp_path, capsys):
     (tmp_path / "audio" / "narration.words.json").write_text("{nope")
     assert chk.main([str(tmp_path)]) == 2
     assert "narration.words.json" in capsys.readouterr().err
+
+
+def test_emit_on_empty_shots_does_not_crash(tmp_path):
+    out = chk.emit({"film": "t", "fps": 30, "size": [1280, 720], "shots": []}, LIB, tmp_path / "f.json")
+    assert '"duration": 0' in out.read_text()

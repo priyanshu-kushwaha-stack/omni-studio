@@ -188,7 +188,7 @@ def emit(sheet: dict, lib, out: Path) -> Path:
         "beats": sheet.get("beats", []),
         "shots": shots,
         "audio": sheet.get("audio", "audio/mix.wav"),
-        "duration": max(s["to"] for s in shots),
+        "duration": max((s["to"] for s in shots), default=0),
         "cast": {k: v for k, v in lib.cast.items() if k in used_cast},
         "crowd": {k: v for k, v in lib.cast.items() if "crowd" in v.get("roles", [])},
         "sets": {k: v for k, v in lib.sets.items() if k in used_sets},
