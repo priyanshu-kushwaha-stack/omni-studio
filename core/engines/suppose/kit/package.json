@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "description": "Say Suppose film kit: the pilot v8 cut-out rig, film parts, actions, toolkit and shot-sheet renderer (spec docs/superpowers/specs/2026-11-27-say-suppose-film-kit-design.md). Versions pinned in core/lock.yaml suppose_kit.",
-  "scripts": {"test": "vitest run", "typecheck": "tsc --noEmit", "studio": "remotion studio src/index.ts"},
+  "scripts": {"test": "vitest run", "typecheck": "tsc --noEmit", "studio": "remotion studio src/entry.tsx"},
   "dependencies": {
     "@remotion/cli": "4.0.484",
     "@remotion/google-fonts": "4.0.484",
