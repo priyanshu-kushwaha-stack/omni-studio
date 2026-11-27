@@ -71,7 +71,10 @@ Set up like the Professor of Us engine (`core/engines/pou/`), so `make test` cov
 - `props/`: props cut from parts sheets (the rice ball, the phone).
 
 Images and audio stay out of git. A committed `manifest.yaml` records each file's Higgsfield job id, prompt, reference
-media and sha256, so a fresh clone can fetch them again and a changed file is caught.
+media and sha256, so a fresh clone can fetch them again and a changed file is caught. The pilot's painted pieces,
+plates and audio exist today only in the git-ignored `remotion/public/` of the worktree
+`.claude/worktrees/youtube-channel-optimization-6473b3`; the library is seeded by copying them from there (never
+committing them) and recording each in the manifest.
 
 ### Each film: `channels/say-suppose/videos/<id>/`
 
