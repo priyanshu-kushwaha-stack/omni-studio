@@ -1,0 +1,938 @@
+{
+ "topics": [
+  {
+   "id": "o-control-attention",
+   "title": "What If You Controlled Everyone's Attention?",
+   "premise": "What if you could move 100% of a room's attention onto any person you chose?",
+   "world": "A livestreamed international talent final, where spotlights, applause, rankings and millions of remote viewers make attention visible and consequential.",
+   "thumbnail": {
+    "image": "You aim a battered remote as an entire audience turns toward one stunned performer beneath a glowing 100%.",
+    "tag": "ALL EYES"
+   },
+   "rule": "Point at one visible person and transfer up to 100% of the surrounding attention to them. Attention cannot create approval or talent, only scrutiny. Every minute at 100% makes the remote's range expand.",
+   "hook": "Your best friend sings while everyone checks their phones\u2014then you press one button, 1% becomes 100%, and every head snaps toward her.",
+   "beats": [
+    "Your own introduction receives 0%, proving the remote measures real attention rather than politeness.",
+    "You give your terrified friend 100%; she finds her voice and wins the room.",
+    "Her score follows her backstage, turning one performance into instant status.",
+    "Consequence jump one: concentrated scrutiny makes her choke during a harder song and blame you.",
+    "You hide by placing 100% on a rival while changing the stage in plain sight.",
+    "The rival gets every eye but no affection, separating visibility from belonging.",
+    "Consequence jump two: contestants steal the remote and trade attention like a weapon.",
+    "You can keep 100% for your final solo or return it to the friend whose confidence you damaged.",
+    "You surrender your spotlight; the audience joins her chorus and she wins.",
+    "Consequence jump three: the display stops showing 100% and reads 2,400,000 VIEWERS\u2014the livestream is now inside the remote's range."
+   ],
+   "feeling_map": [
+    "Invisible frustration",
+    "Giddy control",
+    "Shared triumph",
+    "Pressure",
+    "Costly generosity",
+    "Awe"
+   ],
+   "restarts": [
+    "Your friend's triumph becomes a choking hazard.",
+    "The rival proves attention is not affection.",
+    "The power expands from one auditorium to millions of screens."
+   ],
+   "content_mine": [
+    {
+     "fact": "People systematically overestimate how much others notice their appearance and mistakes, known as the spotlight effect.",
+     "source": "https://doi.org/10.1037/0022-3514.78.2.211",
+     "beat": "Your embarrassing entrance feels enormous even though the remote reads 0%."
+    },
+    {
+     "fact": "Another person's gaze can redirect attention even when gaze direction predicts nothing useful.",
+     "source": "https://doi.org/10.3758/BF03208827",
+     "beat": "The first click produces a wave of turning heads."
+    },
+    {
+     "fact": "Direct eye contact can increase arousal and self-awareness.",
+     "source": "https://doi.org/10.3389/fpsyg.2018.01587",
+     "beat": "Your friend's posture changes when the entire room looks directly at her."
+    },
+    {
+     "fact": "An audience can improve well-learned actions while impairing difficult or unfamiliar ones.",
+     "source": "https://doi.org/10.1126/science.149.3681.269",
+     "beat": "A rehearsed chorus succeeds, but a new arrangement collapses."
+    },
+    {
+     "fact": "A large meta-analysis confirmed that task difficulty changes whether observers help or hurt performance.",
+     "source": "https://doi.org/10.1037/0033-2909.94.2.265",
+     "beat": "You discover that 100% attention is useful only at the right moment."
+    },
+    {
+     "fact": "Pressure and self-conscious monitoring can disrupt practiced performance.",
+     "source": "https://doi.org/10.1037/0022-3514.46.3.610",
+     "beat": "Your friend consciously controls every note and freezes."
+    },
+    {
+     "fact": "Social impact increases with the strength, immediacy and number of observers.",
+     "source": "https://doi.org/10.1037/0003-066X.36.4.343",
+     "beat": "The power becomes overwhelming when it reaches the packed final."
+    },
+    {
+     "fact": "Increasing the number of people staring upward caused progressively more passersby to stop and look.",
+     "source": "https://doi.org/10.1037/h0028070",
+     "beat": "A few redirected spectators organically recruit the rest of the crowd."
+    },
+    {
+     "fact": "One artificial positive rating caused lasting positive herding in later ratings.",
+     "source": "https://doi.org/10.1126/science.1240466",
+     "beat": "The visible attention leader becomes the expected winner."
+    },
+    {
+     "fact": "Popularity information made success more unequal and less predictable in an experimental music market.",
+     "source": "https://doi.org/10.1126/science.1121066",
+     "beat": "Early attention overwhelms differences in performance quality."
+    },
+    {
+     "fact": "People concentrating on a demanding task can miss a highly visible unexpected event.",
+     "source": "https://doi.org/10.1068/p281059",
+     "beat": "You alter the stage while every eye is fixed on the rival."
+    },
+    {
+     "fact": "Applause spreads through local social influence as nearby people begin and stop clapping together.",
+     "source": "https://doi.org/10.1098/rsif.2013.0436",
+     "beat": "One clap becomes the synchronized climax."
+    }
+   ],
+   "twist": "The remote controls attention through cameras too, so one televised use has made you capable of redirecting millions of people.",
+   "ending": "You learn that attention is neither talent nor love\u2014it is an amplifier. Then someone watching remotely turns toward you before you press anything.",
+   "closest_video": {
+    "title": "The Science of Awkwardness",
+    "url": "https://www.youtube.com/watch?v=o268qbb_0BM",
+    "difference": "It explains perceived scrutiny; this story makes scrutiny transferable, measurable and socially weaponized."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The 60-second pilot keeps the first transfer, choking reversal, surrendered final and livestream expansion; a 6\u20138 minute cut compresses the remote theft."
+   },
+   "views_case": "Secret-feeling and status videos prove viewers want hidden social power; this adds the readable 1%-to-100% transformation and the scheming of a game mechanic. Comparable curiosity channels include https://www.youtube.com/@Vsauce and https://www.youtube.com/@jubilee.",
+   "under_question": "If everyone is looking at you, have you gained power\u2014or only pressure?",
+   "proposers": [
+    "gpt"
+   ]
+  },
+  {
+   "id": "o-rumor-comes-true",
+   "title": "What If You Could Make One Rumor Come True?",
+   "premise": "What if any rumor you started became reality when exactly 100 people believed it?",
+   "world": "A livestreamed rookie music festival in Seoul, where fan groups, rankings and recommendation feeds can turn a backstage whisper into visible status within hours.",
+   "thumbnail": {
+    "image": "You hold a phone reading SECRET HEADLINER while a famous rival stares at the glowing BELIEVERS 99/100 counter.",
+    "tag": "ONE MORE"
+   },
+   "rule": "Once each day you may state one claim of no more than 12 words. If 100 distinct people genuinely believe it before midnight, reality changes in the smallest literal way that makes it true. You cannot reverse it, and reality exploits ambiguous wording.",
+   "hook": "Your phone says 99/100 believers, the festival's real headliner is walking onstage, and your best friend asks whether one final lie would make you replace her.",
+   "beats": [
+    "An accidental rumor that Booth 7 has free coffee reaches 100 and a surprise sponsor immediately arrives.",
+    "You test the rule by making an unknown friend's song 'the festival's most requested track.'",
+    "The counter stalls at 43 until visible popularity convinces strangers that everyone else already knows it.",
+    "At 100, the song genuinely tops requests and your friend becomes the breakout act.",
+    "Consequence jump one: your rumor that your own show is sold out becomes true by cancelling another stage and diverting its crowd.",
+    "A rival recognizes the 12-word mechanic and deliberately repeats your claims with misleading interpretations.",
+    "Consequence jump two: brands, fans and performers begin trading belief, making a rumor more valuable than the work beneath it.",
+    "You seed 'the rival admits the truth live,' expecting a confession; reality instead makes her reveal your power.",
+    "A final rumor\u2014'you are tonight's secret headliner'\u2014reaches 99/100.",
+    "You can persuade your best friend and take the stage, or replace it with a rumor crediting her as the songwriter behind the festival's hit.",
+    "You choose her; the crowd sings her chorus while your own status disappears.",
+    "Consequence jump three: afterward, an unstarted counter appears over you\u201499/100 people already believe a rumor that you never created."
+   ],
+   "feeling_map": [
+    "Playful disbelief",
+    "Clever triumph",
+    "Status intoxication",
+    "Paranoia",
+    "Costly reveal",
+    "Mind-boggling uncertainty"
+   ],
+   "restarts": [
+    "A harmless rumor unexpectedly rewrites a commercial decision.",
+    "Literal wording turns your sold-out success against another performer.",
+    "A counter appears for a rumor you did not start."
+   ],
+   "content_mine": [
+    {
+     "fact": "False news spread farther, faster, deeper and more broadly than true news in a study of approximately 126,000 Twitter stories.",
+     "source": "https://doi.org/10.1126/science.aap9559",
+     "beat": "The rival's sensational accusation outruns your careful correction."
+    },
+    {
+     "fact": "Popularity information made cultural-market outcomes more unequal and unpredictable.",
+     "source": "https://doi.org/10.1126/science.1121066",
+     "beat": "An early believer lead turns one unknown song into the expected hit."
+    },
+    {
+     "fact": "One artificial positive vote produced lasting positive herding in later ratings.",
+     "source": "https://doi.org/10.1126/science.1240466",
+     "beat": "You manufacture the first visible signs of demand."
+    },
+    {
+     "fact": "Repeated statements can feel truer merely because they become easier to process.",
+     "source": "https://doi.org/10.1016/S0022-5371(77)80012-1",
+     "beat": "Festival screens repeat the rumor until doubters begin accepting it."
+    },
+    {
+     "fact": "Prior knowledge does not always protect people from repetition-driven illusory truth.",
+     "source": "https://doi.org/10.1037/xge0000098",
+     "beat": "Even insiders begin believing a claim they initially knew was false."
+    },
+    {
+     "fact": "Misleading information introduced after an event can alter eyewitness memory.",
+     "source": "https://doi.org/10.1016/S0022-5371(78)90314-5",
+     "beat": "Fans remember the rival announcing something she never said."
+    },
+    {
+     "fact": "Behavior spread farther and faster through clustered networks than random networks in a controlled experiment.",
+     "source": "https://doi.org/10.1126/science.1185231",
+     "beat": "You target connected fan groups rather than isolated strangers."
+    },
+    {
+     "fact": "A 61-million-person Facebook experiment found that social messages influenced real-world voting behavior, especially through close friends.",
+     "source": "https://doi.org/10.1038/nature11421",
+     "beat": "Your best friend's belief becomes more influential than a celebrity endorsement."
+    },
+    {
+     "fact": "Changing emotional content in feeds shifted the emotional language users subsequently posted.",
+     "source": "https://doi.org/10.1073/pnas.1320040111",
+     "beat": "An anxious rumor changes the mood of the entire festival feed."
+    },
+    {
+     "fact": "Larger groups staring upward attracted more passersby to imitate them.",
+     "source": "https://doi.org/10.1037/h0028070",
+     "beat": "A staged cluster creates the visible crowd that supplies later believers."
+    },
+    {
+     "fact": "Bank-run models show how rational people can create the feared outcome by acting on expectations that others will withdraw.",
+     "source": "https://doi.org/10.1086/261155",
+     "beat": "A rumor about ticket scarcity causes the shortage it predicts."
+    },
+    {
+     "fact": "TikTok says interactions such as viewing, sharing and commenting influence recommendation.",
+     "source": "https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you",
+     "beat": "The rival converts angry corrections into additional distribution."
+    }
+   ],
+   "twist": "The power may not belong only to you: the unexplained 99/100 counter suggests somebody else has started a reality-changing rumor about your identity.",
+   "ending": "You stop treating belief as evidence of truth\u2014then discover that belief may still be powerful enough to manufacture truth.",
+   "closest_video": {
+    "title": "How False News Can Spread",
+    "url": "https://www.youtube.com/watch?v=cSKGa_7XJkg",
+    "difference": "It explains misinformation; this premise makes belief a literal countdown and forces you to choose which claim deserves reality."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The pilot uses the coffee test, breakout song, 99/100 dilemma and unexplained final counter; the longer cut retains the wording traps and rival."
+   },
+   "views_case": "It combines the proven secret-social-truth lane with a glowing 99/100 game counter. The immediate question\u2014what rumor would you make true?\u2014invites schemes and comments while the literal-wording catch prevents effortless wish fulfilment.",
+   "under_question": "If enough people believe something, how different is it from being true?",
+   "proposers": [
+    "gpt"
+   ]
+  },
+  {
+   "id": "o-halving-countdown",
+   "title": "Your Countdown Halves Every Time You Win",
+   "premise": "What if every challenge you won halved your next timer, from 60 seconds to 0.117 seconds at Level 10?",
+   "world": "A global speed tournament combining puzzles, gaming, climbing and pit-crew stations, where records and preparation strategies make each halving visibly stranger.",
+   "thumbnail": {
+    "image": "Your terrified face reflected in a red start button beneath a glowing 0.117 SEC.",
+    "tag": "LEVEL 10"
+   },
+   "rule": "You see each task before saying go and may prepare without a timer. Level 1 gives 60 seconds; each victory halves the next limit. Whoever physically completes the task receives the public rank, even if you designed the solution.",
+   "hook": "The board reads 0.117 seconds, a finger hovers over the final button, and the host says a human cannot deliberately react that fast.",
+   "beats": [
+    "Cold open at Level 10 with the identity of the waiting finger hidden.",
+    "You clear a 60-second sorting task through planning rather than speed.",
+    "At 30 and 15 seconds, eliminating choices becomes more useful than moving faster.",
+    "Real cube, chess and climbing records make the early levels barely possible.",
+    "Consequence jump one: below four seconds, individual talent fails and you choreograph a team.",
+    "Your charismatic teammate receives the applause while you become the invisible strategist.",
+    "A rival studies your preparation and forces last-second task changes.",
+    "Consequence jump two: at 0.234 seconds, a sponsor offers you WORLD #1 if you exclude your teammate.",
+    "Level 10 reveals its task: make another contestant beat you.",
+    "You can preserve your status by refusing or hand your teammate the prepared trigger.",
+    "You say go; the cold-open finger is revealed as your friend's, and they finish in 0.117 seconds.",
+    "Consequence jump three: the board credits you as architect, unlocks VERSUS MODE and halves the timer again to 0.058 seconds."
+   ],
+   "feeling_map": [
+    "Impossibility",
+    "Playful mastery",
+    "Panic",
+    "Jealousy",
+    "Cathartic sacrifice",
+    "Competitive dread"
+   ],
+   "restarts": [
+    "The timer drops below elite sporting records.",
+    "Preparation becomes the real power.",
+    "The final task can only be completed by voluntarily losing."
+   ],
+   "content_mine": [
+    {
+     "fact": "Repeated halving takes 60 seconds to 0.1171875 seconds by Level 10.",
+     "source": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-3-geometric-sequences-and-series",
+     "beat": "Makes the final number mathematically inevitable from the opening rule."
+    },
+    {
+     "fact": "People have identified briefly presented images after exposures as short as 13 milliseconds.",
+     "source": "https://news.mit.edu/2014/in-the-blink-of-an-eye-0116",
+     "beat": "Separates seeing the final signal from physically responding to it."
+    },
+    {
+     "fact": "Elite sprint rules treat reactions under 0.100 seconds as false starts.",
+     "source": "https://olympics.com/en/news/false-start-sprint-rules-track-field-athletics",
+     "beat": "Places 0.117 seconds just above athletics' anticipation threshold."
+    },
+    {
+     "fact": "World Cube Association rules permit 15 seconds of inspection before a solve.",
+     "source": "https://www.worldcubeassociation.org/regulations/",
+     "beat": "Creates a round where preparation is visibly more valuable than motion."
+    },
+    {
+     "fact": "Official cube records include solves below four seconds.",
+     "source": "https://www.worldcubeassociation.org/results/records",
+     "beat": "Grounds the 3.75-second level in a real discipline."
+    },
+    {
+     "fact": "FIDE blitz formats impose very short total thinking times and may add small increments per move.",
+     "source": "https://handbook.fide.com/chapter/E012023",
+     "beat": "Supports a round won by reducing decisions rather than moving pieces faster."
+    },
+    {
+     "fact": "Official speed-climbing records are tracked below five seconds.",
+     "source": "https://www.ifsc-climbing.org/world-records",
+     "beat": "Provides a vertical challenge near the middle of the halving ladder."
+    },
+    {
+     "fact": "The men's 100-metre world record is 9.58 seconds.",
+     "source": "https://worldathletics.org/records/all-time-toplists/sprints/100-metres/outdoor/men/senior",
+     "beat": "Shows why later rounds cannot simply demand faster running."
+    },
+    {
+     "fact": "McLaren recorded a 1.80-second Formula One pit stop in 2023.",
+     "source": "https://www.mclaren.com/racing/formula-1/2023/qatar-grand-prix/fastest-pit-stop-world-record/",
+     "beat": "Inspires the shift from individual speed to rehearsed teamwork."
+    },
+    {
+     "fact": "Games Done Quick turned timed completion into a spectator format and major charity fundraiser.",
+     "source": "https://gamesdonequick.com/about",
+     "beat": "Grounds the tournament's commentators, audience and status."
+    },
+    {
+     "fact": "Choice-response time increases with the number of possible alternatives.",
+     "source": "https://doi.org/10.1080/17470215208416600",
+     "beat": "You improve by reducing every teammate to one predetermined response."
+    },
+    {
+     "fact": "Pressure can disrupt skilled performance by redirecting attention toward normally automatic processes.",
+     "source": "https://doi.org/10.1037/0022-3514.86.1.5",
+     "beat": "Your teammate fails until you simplify the final action."
+    }
+   ],
+   "twist": "The fastest challenge is not testing reaction time; it tests whether you can surrender the status you spent nine levels earning.",
+   "ending": "The opening finger wins WORLD #1 for your friend, but your strategy unlocks an even faster two-player mode.",
+   "closest_video": {
+    "title": "$456,000 Squid Game In Real Life!",
+    "url": "https://www.youtube.com/watch?v=0e3GPea1Tyg",
+    "difference": "It uses unrelated elimination games; this story has one mathematical escalation and a final victory achievable only through losing."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The pilot shows 60, 15, 1.875 and 0.117 seconds; a 6\u20138 minute version combines Levels 4\u20137 into one team-training sequence."
+   },
+   "views_case": "Countdowns and rank ladders read instantly on a phone. The next halving creates a recurring curiosity gap, while WORLD #1 supplies the same status appeal as IQ and wealth rankings without copying their powers.",
+   "under_question": "Are you still the winner when your best move is letting somebody else finish?",
+   "proposers": [
+    "gpt"
+   ]
+  },
+  {
+   "id": "o-copy-score",
+   "title": "Every Person You Inspire Doubles Your Score",
+   "premise": "What if every stranger who copied your last action doubled your public score from 1 to 1,048,576?",
+   "world": "A citywide creator festival where schools, brands and performers compete on a live influence board, making imitation, recommendation feeds and crowd behavior visible.",
+   "thumbnail": {
+    "image": "You raise one red umbrella while a stunned crowd copies you beneath a glowing \u00d71,048,576.",
+    "tag": "COPY ME"
+   },
+   "rule": "Touching the red umbrella begins a 60-second combo. Every unique stranger who genuinely repeats your chosen action doubles the score. Paid, coerced or automated copies invalidate the round.",
+   "hook": "Half a million points glow over your head as thousands raise red umbrellas\u2014and you whisper, 'Please don't copy what I do next.'",
+   "beats": [
+    "An accidental umbrella spin earns the first copy and changes \u00d71 to \u00d72.",
+    "Simple visible gestures outperform complicated instructions.",
+    "A cleanup gesture reaches \u00d71,024 and rescues your school's arts program.",
+    "Consequence jump one: your new status makes you treat friends as multipliers.",
+    "A creator friend uses clustered seed groups to accelerate each chain.",
+    "A rival's destructive prank spreads faster than your useful actions.",
+    "Consequence jump two: a sponsor offers captain status at \u00d71,048,576 if your final action promotes its humiliating challenge.",
+    "At \u00d7524,288, one more copy will unlock automatic citywide distribution.",
+    "You can perform the irresistible prank or confess that some early copies were coordinated.",
+    "You reject the sponsor and ask the crowd not to copy you.",
+    "One stranger copies your confession rather than your gesture, reaching \u00d71,048,576.",
+    "Consequence jump three: every screen starts a 60-second countdown for you to choose tomorrow's default action."
+   ],
+   "feeling_map": [
+    "Awe",
+    "Playful discovery",
+    "Intoxicating validation",
+    "Loss of control",
+    "Public courage",
+    "Anxious power"
+   ],
+   "restarts": [
+    "Twenty copies are revealed to exceed one million points.",
+    "A harmful prank outruns a useful action.",
+    "The final copy repeats your confession instead of the umbrella movement."
+   ],
+   "content_mine": [
+    {
+     "fact": "Twenty doublings from 1 produce 1,048,576.",
+     "source": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/13-3-geometric-sequences-and-series",
+     "beat": "Creates the million-point promise using only twenty people."
+    },
+    {
+     "fact": "Larger groups staring upward attracted substantially more imitation from pedestrians.",
+     "source": "https://doi.org/10.1037/h0028070",
+     "beat": "A tiny seed group recruits the surrounding crowd."
+    },
+    {
+     "fact": "Experiments found unconscious mimicry of behaviors such as foot shaking and face touching.",
+     "source": "https://doi.org/10.1037/0022-3514.76.6.893",
+     "beat": "The first copies occur before you understand the power."
+    },
+    {
+     "fact": "Asch's experiments showed that people sometimes echoed a group's clearly incorrect judgment.",
+     "source": "https://www.britannica.com/biography/Solomon-Asch",
+     "beat": "The rival proves that obviously bad actions can still spread."
+    },
+    {
+     "fact": "Social influence increased inequality and unpredictability in an experimental music market.",
+     "source": "https://doi.org/10.1126/science.1121066",
+     "beat": "An early lead lets the rival overtake better ideas."
+    },
+    {
+     "fact": "Behavior spread farther and faster through clustered networks than random networks.",
+     "source": "https://doi.org/10.1126/science.1185231",
+     "beat": "Your friend seeds connected groups rather than isolated strangers."
+    },
+    {
+     "fact": "A 61-million-person experiment found that social messages influenced real-world behavior, especially through close friends.",
+     "source": "https://doi.org/10.1038/nature11421",
+     "beat": "Your friends risk their reputations to start the useful chain."
+    },
+    {
+     "fact": "Changing emotional feed content shifted the emotional language users subsequently posted.",
+     "source": "https://doi.org/10.1073/pnas.1320040111",
+     "beat": "The rival's angry challenge changes the entire festival mood."
+    },
+    {
+     "fact": "Hotel guests responded more strongly to truthful social-norm messages describing what other guests did.",
+     "source": "https://doi.org/10.1086/586910",
+     "beat": "A visible '1,000 people already joined' message accelerates cleanup."
+    },
+    {
+     "fact": "People who moved synchronously subsequently cooperated more than asynchronous groups.",
+     "source": "https://doi.org/10.1111/j.1467-9280.2009.02434.x",
+     "beat": "The umbrella sequence emotionally unites the crowd."
+    },
+    {
+     "fact": "The Ice Bucket Challenge raised $115 million for the ALS Association in 2014.",
+     "source": "https://www.als.org/ibc",
+     "beat": "Proves that one copied action can create a major material result."
+    },
+    {
+     "fact": "False stories spread farther and faster than true stories in a large Twitter study.",
+     "source": "https://doi.org/10.1126/science.aap9559",
+     "beat": "The rival's spectacular prank outruns your useful campaign."
+    }
+   ],
+   "twist": "The system recognizes copied principles, not merely copied movements, so one stranger repeating your costly honesty completes the combo.",
+   "ending": "Influence stops meaning how many people imitate your pose and starts meaning what you make imitation normal.",
+   "closest_video": {
+    "title": "First Follower: Leadership Lessons",
+    "url": "https://www.youtube.com/watch?v=fW8amMCVAJQ",
+    "difference": "It observes a real crowd forming; this premise adds exponential status, adversarial chains and responsibility for the next action."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The pilot runs from \u00d71 through the first viral chain to the copied confession; the longer cut preserves the rival and sponsor."
+   },
+   "views_case": "The crowd, umbrella and seven-digit counter communicate the premise silently. Viral imitation already powers videos such as https://www.youtube.com/watch?v=9bZkp7q19f0, while the doubling rule supplies a game engine and comment-ready dilemma.",
+   "under_question": "If people copy you, are you responsible for what spreads beyond your intention?",
+   "proposers": [
+    "gpt"
+   ]
+  },
+  {
+   "id": "o-vip-levels",
+   "title": "What If You Controlled Every VIP List?",
+   "premise": "What if every 24 hours you could divide five VIP levels between yourself and one other person?",
+   "world": "Opening weekend at the Cannes Film Festival and March\u00e9 du Film, where badges, invitations and queue priority visibly decide who reaches buyers and premieres.",
+   "thumbnail": {
+    "image": "Your anxious face holds a glowing LEVEL 5 badge while your filmmaker sibling's scanner flashes LEVEL 0.",
+    "tag": "LEVEL 5"
+   },
+   "rule": "Choose one person every 24 hours. Their access plus yours must equal five: 5/0, 4/1 or 3/2. Every official scanner accepts the allocation, but access cannot make anyone inside listen or help.",
+   "hook": "Your badge reads Level 5, your sibling's reads 0, and the only buyer who might fund their film enters a premiere in 60 seconds.",
+   "beats": [
+    "You transfer four levels; their scanner turns green while yours turns red.",
+    "Rewind to discovering that a 3/2 split admits both of you through restricted doors.",
+    "You must choose your dream producer's gala or your sibling's only buyer meeting.",
+    "You choose the sibling and are removed publicly from the carpet.",
+    "Consequence jump one: a rival takes your empty seat and turns your rejection into the festival's status joke.",
+    "At reset, you pair with the rival and select 5/0, locking them outside.",
+    "Consequence jump two: their cancelled meeting threatens projects and junior workers who had no role in the rivalry.",
+    "An executive offers to finance you if you remain Level 5 through the closing gala.",
+    "Your sibling simultaneously needs Level 4 to sign before their buyer leaves.",
+    "You choose 1/4, surrendering your meeting and public comeback.",
+    "Consequence jump three: an audit detects the impossible changes and deletes both identities from the festival.",
+    "Your humiliating removal footage is mistaken for a brilliant short film; buyers want it, and the badge relights with OSCAR ACCESS 0/5."
+   ],
+   "feeling_map": [
+    "Exclusive wish fulfilment",
+    "Playful scheming",
+    "Humiliation",
+    "Revenge",
+    "Guilt",
+    "Creative triumph"
+   ],
+   "restarts": [
+    "Level 5 still cannot guarantee that anyone listens.",
+    "Using 5/0 against the rival harms innocent workers.",
+    "The Level 1 humiliation becomes more valuable than VIP access."
+   ],
+   "content_mine": [
+    {
+     "fact": "Cannes separates festival, film-professional, market and press accreditation.",
+     "source": "https://www.festival-cannes.com/en/take-part/accreditations/",
+     "beat": "Establishes that access has several real layers."
+    },
+    {
+     "fact": "Festival accreditations are personal and non-transferable.",
+     "source": "https://www.festival-cannes.com/en/take-part/accreditations/",
+     "beat": "Makes a magically changing identity trigger the audit."
+    },
+    {
+     "fact": "Accreditation does not automatically guarantee a seat at major screenings.",
+     "source": "https://www.festival-cannes.com/en/take-part/accreditations/",
+     "beat": "Prevents Level 5 from solving every problem."
+    },
+    {
+     "fact": "Press access is prioritized by professional need and media category.",
+     "source": "https://www.festival-cannes.com/en/press/press-accreditation/",
+     "beat": "Grounds the rival's disappearing privileges."
+    },
+    {
+     "fact": "The March\u00e9 du Film reports more than 15,000 participants from roughly 140 countries.",
+     "source": "https://www.marchedufilm.com/about-us/",
+     "beat": "Expands one badge decision into an international network."
+    },
+    {
+     "fact": "The market promotes approximately 4,000 films and projects and around 1,500 screenings.",
+     "source": "https://www.marchedufilm.com/about-us/",
+     "beat": "Supplies repeated buyers, screenings and competing opportunities."
+    },
+    {
+     "fact": "The Grand Auditorium Louis Lumi\u00e8re holds approximately 2,300 people.",
+     "source": "https://en.palaisdesfestivals.com/palais-events/our-spaces/",
+     "beat": "Makes your single empty gala seat visually tangible."
+    },
+    {
+     "fact": "Competition feature films must satisfy duration, premiere and prior-distribution restrictions.",
+     "source": "https://www.festival-cannes.com/en/take-part/submit-a-film/",
+     "beat": "Explains why the sibling cannot simply find another equivalent premiere."
+    },
+    {
+     "fact": "Cannes short-film competition entries may not exceed 15 minutes including credits.",
+     "source": "https://www.festival-cannes.com/en/take-part/submit-a-film/",
+     "beat": "Makes the accidental rejection film a plausible project."
+    },
+    {
+     "fact": "The first Cannes festival was held in 1946, while the Palme d'Or name arrived in 1955.",
+     "source": "https://www.britannica.com/art/Cannes-film-festival",
+     "beat": "Adds historical weight when Level 5 first opens the gala."
+    },
+    {
+     "fact": "The modern Palme uses 18-carat Fairmined-certified gold and a rock-crystal base.",
+     "source": "https://www.chopard.com/en-intl/our-commitments/the-journey-to-sustainable-luxury/the-palme-d-or.html",
+     "beat": "Provides a concrete closing-gala object rather than generic luxury."
+    },
+    {
+     "fact": "Identical scarce objects have been valued more highly than plentiful ones in experiments.",
+     "source": "https://doi.org/10.1016/S0022-1031(75)80016-X",
+     "beat": "Explains why everyone begins obsessing over the single Level 5."
+    }
+   ],
+   "twist": "The moment when the system publicly rejected you becomes the creative work buyers value, while perfect access produced nothing memorable.",
+   "ending": "You lose Cannes status but gain a project\u2014and a new five-point allocation for a larger gatekeeping system.",
+   "closest_video": {
+    "title": "Inventing Anna | Official Trailer",
+    "url": "https://www.youtube.com/watch?v=65xa8TG2G8o",
+    "difference": "That story concerns status fraud; this gives you a legitimate but zero-sum access power and a daily relationship choice."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The pilot uses the red-green scanner reversal, the sibling's meeting and the accidental-film twist; a shorter full cut removes one revenge allocation."
+   },
+   "views_case": "VIP status is instantly readable worldwide, and the 5/0 badge works like a game stat. Unlike generic wealth fantasy, every gain visibly excludes someone the viewer knows.",
+   "under_question": "Does status reveal talent, or merely decide who gets a chance to display it?",
+   "proposers": [
+    "gpt"
+   ]
+  },
+  {
+   "id": "o-winning-bid",
+   "title": "What If You Could Force One Winning Bid?",
+   "premise": "What if once every 24 hours you could make your current auction bid win, but still had seven days to pay?",
+   "world": "New York's contemporary-art evening auctions, where premiums, reserves, guarantees, collateral and provenance make guaranteed victory dangerously expensive.",
+   "thumbnail": {
+    "image": "Your shocked face holds an auction paddle beneath a glowing $59.8M DUE.",
+    "tag": "YOU WON"
+   },
+   "rule": "Once every 24 hours, raising your paddle freezes bidding for 60 seconds and makes the hammer fall on your offer. Premiums, taxes and fees still apply, and full payment remains due within seven days.",
+   "hook": "You freeze a $47 million auction, every billionaire stops bidding, and the invoice immediately jumps to $59.8M DUE.",
+   "beats": [
+    "Cold open as the hammer falls and a seven-day payment clock begins.",
+    "You discover the power by winning an $800 archive box at a charity auction.",
+    "One object inside resells for $2,300, suggesting the power can create profit.",
+    "You choose a fashionable $180,000 painting instead of saving the daily use for a family portrait.",
+    "Consequence jump one: premiums, tax, transport and insurance push the invoice above $230,000.",
+    "The expected buyer disappears while payment remains due.",
+    "You use financing and an irrevocable-bid arrangement to reach a major evening sale.",
+    "Consequence jump two: a rival learns your reset time and runs the family portrait from $18 million to $47 million.",
+    "You secretly pledge the family home and trigger the freeze.",
+    "Consequence jump three: a restitution claim blocks delivery while debt and interest continue.",
+    "The cheap archive contains records suggesting manipulated bidding above the reserve.",
+    "You expose the scheme, save the home and surrender the portrait\u2014then receive a sealed auction for ONE COMPANY, STARTING BID $1."
+   ],
+   "feeling_map": [
+    "Giddy arbitrage",
+    "Invoice shock",
+    "Status intoxication",
+    "Panic",
+    "Moral pressure",
+    "Clever release"
+   ],
+   "restarts": [
+    "Winning adds tens of thousands in invisible costs.",
+    "A rival weaponizes your known reset time.",
+    "The cheapest purchase defeats the most expensive invoice."
+   ],
+   "content_mine": [
+    {
+     "fact": "The hammer price excludes buyer's premium, applicable taxes and other charges.",
+     "source": "https://www.christies.com/buying-services/buying-guide/financial-information",
+     "beat": "Creates the first invoice shock."
+    },
+    {
+     "fact": "Major auction houses use tiered buyer's-premium rates.",
+     "source": "https://help.sothebys.com/en/support/solutions/articles/44002475404-buyer-s-premium-and-overhead-premium",
+     "beat": "Makes the glowing total change nonlinearly as bids rise."
+    },
+    {
+     "fact": "Christie's conditions generally require purchased lots to be paid for within seven calendar days.",
+     "source": "https://www.christies.com/about-us/terms-and-conditions/buying-at-christies",
+     "beat": "Supplies the master countdown."
+    },
+    {
+     "fact": "A reserve is confidential and ordinarily set at or below the low estimate.",
+     "source": "https://www.sothebys.com/en/glossary",
+     "beat": "Creates strategy around the earliest useful freeze point."
+    },
+    {
+     "fact": "Auctioneers may bid on the seller's behalf up to the reserve.",
+     "source": "https://www.christies.com/about-us/terms-and-conditions/buying-at-christies",
+     "beat": "Separates lawful house bidding from the alleged manipulation."
+    },
+    {
+     "fact": "A house guarantee promises a consignor a minimum return even when bidding falls short.",
+     "source": "https://www.sothebys.com/en/glossary",
+     "beat": "Gives the rival seller another financial motive."
+    },
+    {
+     "fact": "An irrevocable bidder commits in advance and may receive a fee or share of upside.",
+     "source": "https://www.sothebys.com/en/glossary",
+     "beat": "Powers your financing scheme into the evening sale."
+    },
+    {
+     "fact": "Possession and risk do not necessarily transfer at the same moment as the winning bid.",
+     "source": "https://www.christies.com/about-us/terms-and-conditions/buying-at-christies",
+     "beat": "You owe millions without receiving the portrait."
+    },
+    {
+     "fact": "New York City's combined state and local sales-tax rate is 8.875%.",
+     "source": "https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/sales_tax_rates_additional_sales_taxes_and_fees.htm",
+     "beat": "Adds a precise jump to the invoice."
+    },
+    {
+     "fact": "The 2024 global art market was estimated at approximately $57.5 billion.",
+     "source": "https://www.artbasel.com/about/initiatives/the-art-market",
+     "beat": "Grounds the lender's confidence and the scale of the market."
+    },
+    {
+     "fact": "Leonardo's Salvator Mundi sold for $450.3 million including premium in 2017.",
+     "source": "https://www.christies.com/en/stories/leonardo-and-post-war-results-new-york-759b82e3a9324505b91c79e2d611b2f2",
+     "beat": "Shows that a $47 million climax remains within real auction scale."
+    },
+    {
+     "fact": "The winner's curse describes auction winners overpaying when estimates are uncertain.",
+     "source": "https://doi.org/10.1257/jep.2.1.191",
+     "beat": "Turns guaranteed victory into the central danger."
+    }
+   ],
+   "twist": "The supposedly worthless first purchase contains the only evidence capable of defeating the giant invoice.",
+   "ending": "You discover that winning and profiting are opposite skills\u2014just before the power expands from objects to ownership of a company.",
+   "closest_video": {
+    "title": "I Gave People $1,000,000 But Only 1 Minute",
+    "url": "https://www.youtube.com/watch?v=LeYsRMZFUq0",
+    "difference": "That video removes financial downside; this premise makes every victorious bid create a real obligation."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The pilot ends on $59.8M DUE; a 6\u20138 minute version keeps the cheap-box setup, fee shock, rival escalation and evidence reveal."
+   },
+   "views_case": "The paddle, 60-second freeze and giant red invoice are readable instantly. It uses the proven money cluster while reversing the infinite-money fantasy: the power guarantees winning, never affordability.",
+   "under_question": "Is guaranteed victory still power when winning forces you to pay the real price?",
+   "proposers": [
+    "gpt"
+   ]
+  },
+  {
+   "id": "o-density-dial",
+   "title": "What If You Could Change Your Own Density?",
+   "premise": "What if you could dial your 70-kilogram body up to 840 kilograms for five seconds without changing size?",
+   "world": "A 15-day Grand Sumo tournament in Tokyo, where mass, balance, rank and a mentor rivalry make the power tactical rather than generic spectacle.",
+   "thumbnail": {
+    "image": "Your small body stands on a ceremonial scale glowing 840 KG while a giant opponent recoils.",
+    "tag": "840 KG"
+   },
+   "rule": "You may set both inertial and gravitational mass from 7 to 840 kilograms for five seconds while size and strength remain unchanged. Every kilogram-second above 70 creates an equal below-70 rebound within 30 seconds.",
+   "hook": "The championship scale reads 840 KG, but the wrestler opposite you is your mentor\u2014and they already know exactly when you will become seven.",
+   "beats": [
+    "Cold open on a championship playoff with the dial at 840 KG.",
+    "Rewind to an accidental 280-kilogram practice shove.",
+    "A 140-kilogram opening charge defeats larger wrestlers and raises your rank.",
+    "Your mentor is proud while a rival says the number is winning for you.",
+    "Consequence jump one: the rival sidesteps 840 kilograms and pushes your automatic seven-kilogram rebound out.",
+    "You learn that greater mass also creates inertia that opponents can redirect.",
+    "You retrain around short 90-to-140-kilogram pulses, foot placement and leverage.",
+    "Consequence jump two: opponents watch the public counter and bait every change.",
+    "You and your mentor finish tied, creating a playoff for the title.",
+    "You can maximize the dial and risk the predictable rebound or trust technique at 140.",
+    "You stop at 140, survive the sidestep and win by balance.",
+    "Consequence jump three: the final scale returns to 70, but your mentor reveals that another wrestler can change density too."
+   ],
+   "feeling_map": [
+    "Impossible power",
+    "Status rush",
+    "Humiliation",
+    "Earned mastery",
+    "Respectful tension",
+    "Triumph"
+   ],
+   "restarts": [
+    "Maximum density causes a seven-kilogram rebound.",
+    "The rival proves density is not strength.",
+    "The final opponent is the mentor who taught you restraint."
+   ],
+   "content_mine": [
+    {
+     "fact": "Professional sumo has no weight divisions.",
+     "source": "https://www.britannica.com/sports/sumo-wrestling",
+     "beat": "Makes a lightweight density-shifter immediately disruptive."
+    },
+    {
+     "fact": "Grand Sumo's hierarchy and promotion system make every win a visible status climb.",
+     "source": "https://www.sumo.or.jp/EnSumo/",
+     "beat": "Turns early victories into social and material consequences."
+    },
+    {
+     "fact": "The banzuke formally ranks every professional wrestler.",
+     "source": "https://www.sumo.or.jp/EnSumoDataRikishi/banzuke/",
+     "beat": "Supplies the persistent rank ladder."
+    },
+    {
+     "fact": "Grand Sumo tournaments run for 15 days.",
+     "source": "https://www.sumo.or.jp/EnTicket/year_schedule/",
+     "beat": "Provides a natural escalating win-loss structure."
+    },
+    {
+     "fact": "A wrestler normally loses by touching outside the ring or touching down with anything except the soles of the feet.",
+     "source": "https://web-japan.org/factsheet/en/pdf/e23_sumo.pdf",
+     "beat": "Makes a seven-kilogram rebound instantly dangerous."
+    },
+    {
+     "fact": "Density is mass divided by volume.",
+     "source": "https://www.britannica.com/science/density",
+     "beat": "Explains the unchanged-size scale transformation."
+    },
+    {
+     "fact": "Inertia increases with mass.",
+     "source": "https://www.britannica.com/science/inertia",
+     "beat": "Reveals why maximum density impairs redirection."
+    },
+    {
+     "fact": "Linear momentum equals mass multiplied by velocity.",
+     "source": "https://openstax.org/books/physics/pages/8-1-linear-momentum-force-and-impulse",
+     "beat": "Explains the devastating but redirectable opening charge."
+    },
+    {
+     "fact": "Impulse changes momentum over a period of contact.",
+     "source": "https://openstax.org/books/physics/pages/8-2-impulse",
+     "beat": "Makes collision timing central to the rival's counter."
+    },
+    {
+     "fact": "In introductory models, maximum static friction rises with normal force.",
+     "source": "https://openstax.org/books/physics/pages/6-2-friction",
+     "beat": "Shows why extra weight can improve pushing traction."
+    },
+    {
+     "fact": "Torque depends on applied force and lever arm.",
+     "source": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
+     "beat": "Allows stance and hip position to defeat greater mass."
+    },
+    {
+     "fact": "Pressure equals force divided by area.",
+     "source": "https://www.britannica.com/science/pressure",
+     "beat": "The unchanged feet visibly crack the clay at 840 kilograms."
+    }
+   ],
+   "twist": "Maximum density looks like the power's ultimate form, but it maximizes inertia, predictability and rebound debt too.",
+   "ending": "The championship is won when you stop chasing the largest number\u2014then a second 840 KG reading appears in the tunnel.",
+   "closest_video": {
+    "title": "What If Humans Were as Strong as Ants?",
+    "url": "https://whatifshow.com/what-if-humans-were-as-strong-as-ants/",
+    "difference": "That is generic strength scaling; this separates mass from strength and builds counterplay through real sumo physics."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The pilot uses the 840 KG reveal, seven-kilogram defeat and 140 KG final choice; a shorter full cut compresses the rank climb."
+   },
+   "views_case": "The 70-to-840 KG transformation reads in one frame and creates a status climb, rival and tactical catch. It offers superhero-scale power without copying generic super-strength.",
+   "under_question": "If an unfair edge can deliver status, what restraint proves you deserve it?",
+   "proposers": [
+    "gpt"
+   ]
+  },
+  {
+   "id": "o-kinetic-bank",
+   "title": "What If Your Body Could Bank Kinetic Energy?",
+   "premise": "What if your body could store 100 kilojoules whenever you slowed down and release it through one explosive sprint?",
+   "world": "An Olympic velodrome team-sprint campaign, where timed exchanges make stored energy useful only if you choose when\u2014and for whom\u2014to spend it.",
+   "thumbnail": {
+    "image": "Your straining face hangs over one track bike whose frame glows 100 kJ.",
+    "tag": "BANKED SPEED"
+   },
+   "rule": "You capture mechanical energy from your own deceleration instead of losing it as heat. Capacity is 100 kJ, leakage is 5% per minute, and release must pass through your own muscles or pedals.",
+   "hook": "Your gauge reads 100 kJ before the Olympic final, but a teammate misses the exchange\u2014spend 60 now to rescue them or save everything for your record lap.",
+   "beats": [
+    "Cold open on the missed exchange and a full 100 kJ gauge.",
+    "Rewind to braking after training and watching the counter rise instead of the bike heating.",
+    "Tests establish the capacity, leakage and own-motion limits.",
+    "A 20 kJ release produces an extraordinary split and earns you the final-rider position.",
+    "Consequence jump one: your veteran teammate resents becoming the setup for your highlight.",
+    "A rival studies exactly when your gauge rises and falls.",
+    "You discover that drag, cadence and grip prevent stored energy from becoming unlimited speed.",
+    "Consequence jump two: the rival forces an early effort and lets leakage erase part of your bank.",
+    "A sponsor promises an individual 5,000-watt headline if you save the full charge.",
+    "The final exchange fails; spending 60 kJ now will restore formation but destroy that record attempt.",
+    "You spend it on the teammate and win gold by 0.02 seconds with an empty gauge.",
+    "Consequence jump three: the timing system reveals the 'lost' energy transferred into the teammate's gauge, opening a two-person Part 2."
+   ],
+   "feeling_map": [
+    "Speed fantasy",
+    "Satisfying experimentation",
+    "Status rush",
+    "Team fracture",
+    "Costly commitment",
+    "Narrow triumph"
+   ],
+   "restarts": [
+    "The first 20 kJ release produces elite speed.",
+    "Aerodynamic drag imposes a diminishing-return ceiling.",
+    "The full bank must be spent before the hero's showcase lap."
+   ],
+   "content_mine": [
+    {
+     "fact": "Kinetic energy equals one-half mass times velocity squared.",
+     "source": "https://openstax.org/books/university-physics-volume-1/pages/7-2-kinetic-energy",
+     "beat": "Makes speed changes fill the bank nonlinearly."
+    },
+    {
+     "fact": "Power is energy divided by time, so releasing 100 kJ over 20 seconds equals 5,000 watts.",
+     "source": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+     "beat": "Creates the sponsor's headline number."
+    },
+    {
+     "fact": "Energy transformed by resistive forces commonly becomes thermal energy.",
+     "source": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy",
+     "beat": "Defines what the fictional ability captures."
+    },
+    {
+     "fact": "Aerodynamic drag is proportional to air density, area, drag coefficient and velocity squared.",
+     "source": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/drag-equation/",
+     "beat": "Creates the first hard ceiling on extra speed."
+    },
+    {
+     "fact": "Because power equals force times velocity, overcoming aerodynamic drag requires power that grows approximately with velocity cubed.",
+     "source": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+     "beat": "Explains why each additional kilometre per hour costs disproportionately more."
+    },
+    {
+     "fact": "Track team sprint uses a standing start and ordered lead changes.",
+     "source": "https://olympics.com/en/news/track-cycling-rules-velodrome-events-how-it-works-olympics",
+     "beat": "Makes every release affect teammates immediately."
+    },
+    {
+     "fact": "Track bicycles use fixed gears and typically lack conventional brakes.",
+     "source": "https://usacycling.org/article/track-cycling-101",
+     "beat": "Turns slowing and cadence management into visible tactics."
+    },
+    {
+     "fact": "Banked turns redirect velocity through centripetal acceleration.",
+     "source": "https://openstax.org/books/university-physics-volume-1/pages/6-2-centripetal-acceleration",
+     "beat": "Makes line choice matter during the final 0.02-second margin."
+    },
+    {
+     "fact": "Cycling performance can be modeled from aerodynamic drag, rolling resistance, gradient and acceleration.",
+     "source": "https://doi.org/10.1152/jappl.1998.85.1.148",
+     "beat": "Lets the rival predict where your stored energy will matter."
+    },
+    {
+     "fact": "Elite sprint cycling has a measurable torque-power-cadence relationship.",
+     "source": "https://doi.org/10.1249/01.mss.0000170098.73009.8c",
+     "beat": "Creates a delivery bottleneck even with magical energy available."
+    },
+    {
+     "fact": "Tendons naturally store and return elastic strain energy.",
+     "source": "https://doi.org/10.1038/265114a0",
+     "beat": "Provides a real biological seed for the fictional power."
+    },
+    {
+     "fact": "Supercapacitors enable rapid charging and discharging but store less total energy than many batteries.",
+     "source": "https://www.energy.gov/science/doe-explainssupercapacitors",
+     "beat": "Gives the coach a useful analogy for the 100 kJ cap."
+    }
+   ],
+   "twist": "The bank stores energy, not unlimited speed; drag and cadence turn a godlike number into a tactical resource whose best use may be another person's recovery.",
+   "ending": "The winning image is not your 5,000-watt lap but the empty 0 kJ gauge beside three names on the gold-medal board.",
+   "closest_video": {
+    "title": "What If You Had Super Speed?",
+    "url": "https://whatifshow.com/what-if-you-had-super-speed/",
+    "difference": "This is earned, leaking energy rather than permanent speed or altered time, and every release creates a team decision."
+   },
+   "runtime": {
+    "strong_minutes": 15,
+    "cut_to": "The pilot keeps the full gauge, missed exchange, 60 kJ decision and 0.02-second victory; a 6\u20138 minute version trims laboratory calibration."
+   },
+   "views_case": "It combines the proven super-speed fantasy with a money-like bank balance and a changing 100 kJ readout. The bike, gauge and teammate make the social stake clear in one frame.",
+   "under_question": "Is peak performance the biggest number you can post, or the energy you spend when others depend on you?",
+   "proposers": [
+    "gpt"
+   ]
+  }
+ ]
+}

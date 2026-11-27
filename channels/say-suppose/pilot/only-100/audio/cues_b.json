@@ -1,0 +1,70 @@
+{
+ "duration": 59.79,
+ "cues": [
+  {
+   "line": "b_n01",
+   "start": 0.4,
+   "end": 4.24
+  },
+  {
+   "line": "you_hello",
+   "start": 4.49,
+   "end": 5.37
+  },
+  {
+   "line": "b_n02",
+   "start": 5.67,
+   "end": 11.11
+  },
+  {
+   "line": "b_n03",
+   "start": 11.46,
+   "end": 18.5
+  },
+  {
+   "line": "b_n04",
+   "start": 18.9,
+   "end": 21.22
+  },
+  {
+   "line": "b_n05",
+   "start": 21.47,
+   "end": 25.31
+  },
+  {
+   "line": "b_n06",
+   "start": 25.71,
+   "end": 33.71
+  },
+  {
+   "line": "kenji_late",
+   "start": 33.96,
+   "end": 34.68
+  },
+  {
+   "line": "b_n07",
+   "start": 34.98,
+   "end": 41.7
+  },
+  {
+   "line": "b_n08",
+   "start": 42.4,
+   "end": 45.36
+  },
+  {
+   "line": "b_n09",
+   "start": 45.91,
+   "end": 52.39
+  },
+  {
+   "line": "b_n10",
+   "start": 52.69,
+   "end": 55.01
+  },
+  {
+   "line": "b_n11",
+   "start": 55.31,
+   "end": 58.59
+  }
+ ]
+}

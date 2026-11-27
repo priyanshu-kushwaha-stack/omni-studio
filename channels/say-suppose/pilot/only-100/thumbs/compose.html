@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@800;900&display=swap">
+<style>body{margin:0}.t{position:relative;width:1280px;height:720px;overflow:hidden;font-family:Rubik,sans-serif}
+.t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cap{position:absolute;font-weight:900;line-height:.92;color:#fff;-webkit-text-stroke:0;paint-order:stroke;text-shadow:0 0 0 #000,
+ 6px 6px 0 #000,-6px 6px 0 #000,6px -6px 0 #000,-6px -6px 0 #000,0 8px 0 #000,0 -8px 0 #000,8px 0 0 #000,-8px 0 0 #000,0 14px 26px rgba(0,0,0,.6)}
+.g{color:#7df9c6}
+.label{position:absolute;padding:10px 26px;border-radius:40px;background:rgba(8,20,24,.78);border:4px solid #7df9c6;color:#7df9c6;font-weight:900;font-size:64px;box-shadow:0 0 28px 6px rgba(125,249,198,.65),inset 0 0 18px rgba(125,249,198,.35)}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,transparent 55%,rgba(0,0,0,.45))}
+</style></head><body>
+<div class="t" id="t"></div>
+<script>
+const v=location.hash.slice(1);
+const T={
+ v1:`<img src="v1_s42.png"><div class="vig"></div><div class="label" style="left:528px;top:16px">99/100</div>
+     <div class="cap" style="left:44px;top:470px;font-size:132px">WHO'S<br><span class="g">#100?</span></div>`,
+ v2:`<img src="v2_s42.png"><div class="vig"></div>
+     <div class="cap" style="left:760px;top:24px;font-size:94px;text-align:right;width:490px">HE CAN'T<br><span class="g">SEE ME.</span></div>`,
+ v3:`<img src="v3_s42.png"><div class="vig"></div>
+     <div class="cap" style="left:26px;top:300px;font-size:84px">CUT<br><span class="g">GRANDMA?</span></div>
+     <div class="label" style="left:860px;top:30px;font-size:52px">100/100</div>`
+};
+document.getElementById('t').innerHTML=T[v];
+</script></body></html>
