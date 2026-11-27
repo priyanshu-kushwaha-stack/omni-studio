@@ -20,7 +20,10 @@ YEAR = re.compile(r"^(1[5-9]|20)\d\d$")
 FORMAT = [
     (re.compile(r"(^|\s)[A-Z][A-Z .']{1,20}:\s"), "speaker label"),
     (re.compile(r"[\"“”]"), "double quotes around dialogue"),
-    (re.compile(r"\[[^\]]*\]|\(\s*(camera|cut to|music|sfx|scene:|pause|beat)\b[^)]*\)", re.I), "stage direction"),
+    (
+        re.compile(r"\[[^\]]*\]|\(\s*(?:(?:camera|cut to|music|sfx|pause|beat)\b|scene:)[^)]*\)", re.I),
+        "stage direction",
+    ),
     (re.compile(r"(^|\s)#{1,6}\s|\*\*?[^*]+\*|\n\s*[-*] "), "markdown"),
 ]
 

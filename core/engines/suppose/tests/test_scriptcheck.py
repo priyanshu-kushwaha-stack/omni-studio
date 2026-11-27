@@ -83,3 +83,8 @@ def test_stage_directions_need_a_direction_word():
     assert not fails
     fails, _ = sc.check(script_of(950) + " You run (camera pushes in).")
     assert any("stage direction" in f for f in fails)
+
+
+def test_scene_heading_parenthetical_fails():
+    fails, _ = sc.check(script_of(950) + " (Scene: kitchen)")
+    assert any("stage direction" in f for f in fails)
