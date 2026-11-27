@@ -124,8 +124,10 @@ def test_style_a_footer_is_identical_in_every_image_prompt():
 
 def test_set_plate_carries_the_w_rules():
     t = _text("set-plate")
-    for must in ["no people", "no text", "one strong light source", "60–75%", "past the frame edge", "gpt_image_2_6"]:
-        assert must in t, must
+    assert "gpt_image_2_6" in t
+    prompt = t.split("## Prompt", 1)[1].split("## Checklist", 1)[0]
+    for must in ["no people", "no text", "one strong light source", "60–75%", "past the frame edge"]:
+        assert must in prompt, must
 
 
 def test_thumbnail_skill_holds_the_l2_rules():

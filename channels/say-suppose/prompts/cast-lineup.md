@@ -1,11 +1,14 @@
 # cast-lineup
 Model: Higgsfield gpt_image_2_6, quality high, resolution 2k, aspect 16:9 (paid, 2 credits, owner OK first);
-references: colour Scarf (design sheet job 658b292d-2448-44a9-a3d9-6ab874837336, variation 2, and its parts sheet
-job f56184eb-a23c-483f-a87d-ab566dda3fa2) and lineup A job ca00753c-98fa-4cd5-8a16-68d4257a0236
+references, in this order: 1 = the colour Scarf design sheet job 658b292d-2448-44a9-a3d9-6ab874837336 (use only its
+variation 2), 2 = lineup A job ca00753c-98fa-4cd5-8a16-68d4257a0236 (style and cast reference)
 Used by: core/openmontage/skills/studio/studio-suppose-edit.md (a new cast member, before its parts sheet)
 Source: pilot jobs ca00753c (lineup A) and 658b292d (tall Scarf design sheet), read back from Higgsfield on
 2026-11-27; spec W6, W8. The brief named Scarf media fbbbe6fa-44a1-46b6-a5dd-06e1a045da3b, but that upload is the
 round black-headed Scarf from before pilot v4; the approved Scarf is the tall colour one above, so attach those.
+The parts sheet f56184eb is not attached: it is disassembled pieces, not a whole figure. The qualifier "the SECOND
+variation, in FULL warm colour (not faded, not grey)" is the approved wording of job f56184eb; the head-ratio cue is
+from lineup job ca00753c.
 
 ## Inputs
 - {{role}}: the role and person, in full (best friend, scientist, skeptic, authority, kid, antagonist), with age,
@@ -16,16 +19,19 @@ round black-headed Scarf from before pilot v4; the approved Scarf is the tall co
 - {{headwear}}: the headwear or hair that sets the silhouette apart (for example "a backwards yellow cap")
 
 ## Prompt
-Character lineup sheet for a 2D cut-out animated short. Match the soft painted storybook style of the reference
-lineup exactly (rounded shapes, gentle shading, clean outlines, warm light). Plain white background, no scenery.
+Character lineup sheet for a 2D cut-out animated short.
+Reference 1: the character design sheet (job 658b292d); Reference 2: the lineup sheet (job ca00753c). Match the soft
+painted storybook style of the references exactly (rounded shapes, gentle shading, clean outlines, warm light). Plain white background, no scenery.
 Draw, left to right, evenly spaced, full body, front three-quarter view, arms hanging slightly away from the body,
 legs slightly apart, nothing overlapping:
-first, for scale, the main character from the first reference: a TALL, lean young man, about 1 to 6 head-to-body,
+first, for scale, the main character from Reference 1: the tall young man, the SECOND variation only, in FULL warm
+colour (not faded, not grey), ignoring the other variations and the other figures on that sheet: a TALL, lean young man, about 1 to 6 head-to-body,
 long legs, narrow shoulders, slightly slouched shy posture, natural warm skin tone, messy black hair, big gentle
 eyes, a long dark charcoal coat, dark trousers, grey-white sneakers and a long bright green knitted scarf;
 then the new character: {{role}}, wearing {{signature}} as the one signature item, with {{headwear}}. An adult
-stands about 0.88 of the main character's height; a child stands 0.72 of an adult's height. Simple expressive face
-with dot eyes and small eyebrows, a silhouette and hairstyle clearly different from the main character's.
+stands about 0.88 of the main character's height; a child stands 0.72 of an adult's height. Appealing, friendly cartoon
+proportions with slightly large heads and rounded chunky shapes like the rest of the cast (Reference 2). Simple
+expressive face with dot eyes and small eyebrows, a silhouette and hairstyle clearly different from the main character's.
 
 <!-- style-a-footer -->
 Style A footer: soft painted storybook 2D illustration in the style of a premium YouTube animation, matching the

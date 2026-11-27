@@ -19,7 +19,8 @@ reference), read back from Higgsfield on 2026-11-27; spec "Prompts and skills" a
 
 ## Prompt
 Background plate for a 2D animated film, in exactly the same painted style, palette and light as the reference
-station image. {{place}}. Camera: {{angle}}.
+station image. Take only the painting style, palette and light from the reference, never its place, objects or
+layout. {{place}}. Camera: {{angle}}.
 An empty painted set: absolutely no people, no characters, no text, no letters, no logos and no signage lettering
 anywhere; signs and boards carry only abstract unreadable glyphs or icons.
 Light: one strong light source that is visible in frame, {{light}}, with its glow and its spill across the walls and
