@@ -21,7 +21,7 @@ export const STATION = stationJson.angles as unknown as Record<'wide' | 'high' |
 export const KINDS: Parts[] = ['salary', 'office', 'student', 'gent', 'gran', 'salary', 'office', 'packer', 'gran', 'worker'].map((k) => CAST[k]);
 
 // Scale for a cast member whose feet are at y on an angle, matched to Scarf at the same depth.
-// Scarf on his mark uses angle.scarf.s.
+// Scarf himself: use scarfScale below.
 export const scaleAt = (angle: SetAngle, parts: Parts, y: number) => hAtFor(angle, SCARF_H)(y) / personH(parts);
 
 // Scarf's scale on an angle: the renderer's own scaleFor (the set's legacy s at SCARF_H, shrunk or grown with depth

@@ -36,3 +36,17 @@ These files are **v1**. They stay only because shared studio code and tests read
 - **`style.md`, `cast.md`, `brand/`, `rules/`, `voices.yaml`, `room.yaml`, `backlog/`, `audience.md`:** the v1 look, cast, idents, craft rules, voices, topic room and topic history. Reuse only what the restart re-approves.
 
 The four public videos (pause time, AI rents your brain, who wants you to fail, AI predicts every choice) are the owner's to keep or set private in YouTube Studio.
+
+## Film kit (2026-11-27)
+
+The look of pilot v8 is now a repeatable way to make every film. Spec: `docs/superpowers/specs/2026-11-27-say-suppose-film-kit-design.md`;
+plan: `docs/superpowers/plans/2026-11-27-say-suppose-film-kit.md`.
+
+- Prompts: `channels/say-suppose/prompts/` (the owner's master prompts are kept verbatim in `prompts/sources/`).
+- Skills: `.claude/skills/say-suppose-topics` (one prompt, 35 titles) and `.claude/skills/say-suppose-thumbnails`.
+- Art library: `channels/say-suppose/library/` (manifest and JSON in git; images git-ignored), seeded from the pilot.
+- Engine: `core/engines/suppose/` (`scripts/` Python tools, `kit/` Remotion kit, `examples/only-100/` the pilot rebuilt
+  on the kit as its acceptance test).
+- Pipeline: `studio-suppose`, format `film` in `channel.yaml`, the same five owner gates.
+
+The first real film starts in its own session with the topic skill. Nothing in the kit passes a gate or spends credits.
