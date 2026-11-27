@@ -10,7 +10,10 @@
     "types": ["node"],
     "noEmit": true,
     "baseUrl": ".",
-    "paths": { "@suppose/kit": ["src/index.ts"], "@suppose/kit/*": ["src/*"] }
+    "paths": {
+      "@suppose/kit": ["src/index.ts"], "@suppose/kit/*": ["src/*"],
+      "react": ["node_modules/@types/react"], "react/*": ["node_modules/@types/react/*"], "remotion": ["node_modules/remotion"]
+    }
   },
   "include": ["src", "tests", "../examples", "remotion.config.ts", "vitest.config.ts"]
 }
