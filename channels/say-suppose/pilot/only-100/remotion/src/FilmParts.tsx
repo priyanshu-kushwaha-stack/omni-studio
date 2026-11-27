@@ -44,7 +44,8 @@ export const scarfRest = (t: number, o: Partial<ScarfCutPose> = {}): ScarfCutPos
   armL: {a: 6, f: 0}, armR: {a: 6, f: 0}, tail: Math.sin(t * 1.7) * 4, sweat: 0, bob: Math.sin(t * 2.1) * 4, ...o,
 });
 
-const KINDS: Parts[] = [SALARY, OFFICE, STUDENT, GENT, GRAN, PACKER, WORKER];
+// Weighted so the loud yellow backpacker and the green-overall worker (green is Scarf's colour) stay rare.
+const KINDS: Parts[] = [SALARY, OFFICE, STUDENT, GENT, GRAN, SALARY, OFFICE, STUDENT, GRAN, GENT, SALARY, PACKER, GRAN, WORKER];
 const TINTS = ['none', 'brightness(0.9)', 'saturate(0.8)', 'brightness(1.06) saturate(0.9)', 'sepia(0.2)'];
 
 // Commuters walking across the floor of a set. Depth from y: farther = smaller and softer. Feet never slide.
@@ -56,7 +57,7 @@ export const Crowd: React.FC<{t: number; n: number; seed: number; y0: number; y1
   const people = Array.from({length: n}).map((_, k) => {
     const i = k + seed;
     const y = y0 + rnd(i, 3) * (y1 - y0);
-    const parts = KINDS[Math.floor(rnd(i, 4) * KINDS.length)];
+    const parts = KINDS[(i * 3) % KINDS.length]; // stride 3 never lands on the same kind twice in a row
     const s = (hAt(y) * (0.96 + rnd(i, 5) * 0.12)) / personH(parts);
     const dir: 1 | -1 = rnd(i, 7) > 0.5 ? 1 : -1;
     const v = speed * (0.75 + rnd(i, 8) * 0.5) * (hAt(y) / hAt(y1));

@@ -132,7 +132,9 @@ const S4a: Shot['C'] = ({t, l}) => (
 
 // Close-up: the rice ball slides in from the right and brushes your nose.
 const RiceIn: React.FC<{x: number; y: number}> = ({x, y}) => (
-  <div style={{position: 'absolute', left: x, top: y, transform: `scale(${manK(MAN_S)})`, transformOrigin: '0 0'}}>
+  // His arm is nearer the lens than you are, so it is drawn larger and reaches in from beyond the frame edge.
+  <div style={{position: 'absolute', left: x, top: y, transform: `scale(${manK(MAN_S) * 1.8})`, transformOrigin: '0 0'}}>
+    <Part src={SALARY.uarmL.src} w={SALARY.uarmL.w} h={SALARY.uarmL.h} pivot={[SALARY.uarmL.w / 2, SALARY.uarmL.h * 0.9]} at={[SALARY.farmL.h * 0.8, 0]} rot={90} z={-1} />
     <Part src={SALARY.farmL.src} w={SALARY.farmL.w} h={SALARY.farmL.h} pivot={[SALARY.farmL.w / 2, SALARY.farmL.h * 0.88]} at={[0, 0]} rot={90} />
     <Part src={PROPS.rice.src} w={PROPS.rice.w} h={PROPS.rice.h} pivot={[PROPS.rice.w * 0.6, PROPS.rice.h * 0.5]} at={[0, 0]} z={2} />
   </div>
@@ -179,7 +181,7 @@ const S5: Shot['C'] = ({t, l}) => {
   const p = scarfRest(t, {browSad: 22 * slump, browLift: 4, pupil: [keys(l, [[0, 0.9], [1.6, 0.2]]), 0.4 * slump], open: 0.95, lean: -2 * slump, headTilt: -5 * slump, armL: {a: 2, f: 0}, armR: {a: 2, f: 0}, lid: 0.25 * slump + blinkAt(l, [1.9])});
   return (
     <Close t={t} z={lerpT(l, 0.6, 2.7, 1.15, 1.85)} fx={keys(l, [[0.6, 560], [2.7, 450]])} fy={keys(l, [[0.6, 430], [2.7, SC_HEAD + 40]])}>
-      <Crowd t={t} n={5} seed={500} y0={600} y1={615} hAt={closeH} speed={130} clear={[330, 560]} />
+      <Crowd t={t} n={3} seed={500} y0={600} y1={615} hAt={closeH} speed={130} clear={[330, 560]} />
       <Shadow x={440} y={FEET} w={190} />
       <Shadow x={mx} y={FEET} w={180} />
       <Scarf4 x={440} y={FEET} s={SC_S} p={p} />
@@ -199,7 +201,7 @@ const S6: Shot['C'] = ({t, l}) => {
     <>
       <div style={{position: 'absolute', inset: 0, transformOrigin: '50% 0%', transform: `scale(${1.35 * (1 + (z - 1) * 0.5)})`}}><SetImg which="close" blur={3.5} /></div>
       <div style={{position: 'absolute', inset: 0, transformOrigin: '50% 100%', transform: `scale(${z})`}}>
-        <Scarf4 x={640} y={900} s={0.44} p={p} />
+        <Scarf4 x={640} y={930} s={0.52} p={p} />
         <div style={{position: 'absolute', inset: 0, transform: `scale(${pulse})`, transformOrigin: '640px 120px'}}>
           <Readout x={640} y={120} t={t} t0={20.15} />
         </div>
@@ -213,7 +215,7 @@ const PhoneShot: React.FC<{t: number; scroll: number; hi?: number; z?: number; e
   <>
     <div style={{position: 'absolute', inset: 0}}><SetImg which="close" blur={10} /></div>
     <div style={{position: 'absolute', inset: 0, background: 'rgba(20,14,30,.35)'}} />
-    <div style={{position: 'absolute', inset: 0, transformOrigin: '50% 45%', transform: `translateY(${Math.sin(t * 1.3) * 3}px) scale(${z})`}}>
+    <div style={{position: 'absolute', inset: 0, transformOrigin: '50% 45%', transform: `translateY(${Math.sin(t * 1.3) * 3}px) rotate(${Math.sin(t * 0.5) * 1.2}deg) scale(${z})`}}>
       <Phone t={t} scroll={scroll} hi={hi} {...phone} />
     </div>
     {extra}
@@ -223,11 +225,11 @@ const PhoneShot: React.FC<{t: number; scroll: number; hi?: number; z?: number; e
 const S7: Shot['C'] = ({t}) => {
   const scroll = keys(t, [[24.1, 0], [28.72, 0], [29.1, 42, IO], [30.44, 42], [30.85, 91, IO]]);
   const hi = t > 30.9 ? 99 : t > 28.98 ? 46 : t > 27.94 ? 2 : t > 25.58 ? 0 : undefined;
-  const z = keys(t, [[24.1, 1.0], [25.6, 1.06], [30.9, 1.06], [31.6, 1.16, OUT]]);
+  const z = keys(t, [[24.1, 1.0], [30.9, 1.1, LIN], [31.6, 1.2, OUT]]);
   return <PhoneShot t={t} scroll={scroll} hi={hi} z={z} />;
 };
 
-const kenjiWave = (t: number, k: number) => ({a: 40 + 110 * k, f: 40 * k + Math.sin(t * 12) * 18 * k});
+const kenjiWave = (t: number, k: number) => ({a: 6 + 144 * k, f: 4 + 36 * k + Math.sin(t * 12) * 18 * k});
 
 // Kenji across the hall, the only face turned toward you.
 const S8: Shot['C'] = ({t, l}) => {
@@ -330,7 +332,7 @@ const S13: Shot['C'] = ({t}) => {
         <Shadow x={440} y={FEET} w={190} />
         <Shadow x={gx} y={FEET} w={180} />
         <Scarf4 x={440} y={FEET} s={SC_S} p={p} />
-        <Person parts={GREY} x={gx} y={FEET} s={pS(GREY)} p={{eyes: blank, pupil: [-0.8, 0], phase: ((gx - 760) / 150) * Math.PI * 2, walk: gw, dir: 1, armL: blank > 0.5 ? {a: 25, f: 60 + Math.sin(t * 10) * 15} : undefined}} />
+        <Person parts={GREY} x={gx} y={FEET} s={pS(GREY)} p={{eyes: blank, pupil: [-0.8, 0], phase: ((gx - 760) / 150) * Math.PI * 2, walk: gw, dir: 1, armL: {a: 4 + 21 * blank, f: 4 + (56 + Math.sin(t * 10) * 15) * blank}}} />
       </Close>
       <div style={{position: 'absolute', right: 60, top: 60, width: 300, padding: '12px 16px', borderRadius: 18, background: 'rgba(15,16,22,.9)', fontFamily: FONT, color: '#fff', fontSize: 24, fontWeight: 700, display: 'flex', gap: 12, alignItems: 'center', opacity: keys(t, [[54.0, 0], [54.3, 1]])}}>
         <span style={{color: '#8d8aa3', fontSize: 20}}>63</span>
