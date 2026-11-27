@@ -19,6 +19,8 @@ export type PersonPose = {
   browLift?: number; // 0..30
   browSad?: number; // 0..25, inner ends up
   mouth?: number; // 0 small smile .. 1 open "o"
+  big?: boolean; // emoji-style face: large eyes with whites, thick brows, a mouth that smiles or frowns (Scarf)
+  smile?: number; // -1 frown .. 1 smile, with big
   bob?: number; // extra vertical bob, torso pixels
   armL?: {a: number; f: number};
   armR?: {a: number; f: number};
@@ -30,22 +32,72 @@ export type PersonPose = {
 
 const P = (n: number, m: number) => [n, m] as [number, number];
 
-type Joints = {pivotY: number; hipY: number; legX: [number, number]; shL: [number, number]; shR: [number, number]; neckY: number};
+type Joints = {pivotY: number; hipY: number; legX: [number, number]; shL: [number, number]; shR: [number, number]; neckY: number; armK: number; elbow: number};
 const joints = (parts: Parts): Joints => {
   const {torso, uarmL, uarmR, thighL} = parts;
   if (parts.hip === undefined || !parts.sh) {
-    return {pivotY: torso.h * 0.97, hipY: torso.h * 0.95, legX: [torso.w * 0.32, torso.w * 0.68], shL: P(torso.w * 0.13, torso.h * 0.17), shR: P(torso.w * 0.87, torso.h * 0.17), neckY: torso.h * 0.07};
+    return {pivotY: torso.h * 0.97, hipY: torso.h * 0.95, legX: [torso.w * 0.32, torso.w * 0.68], shL: P(torso.w * 0.13, torso.h * 0.17), shR: P(torso.w * 0.87, torso.h * 0.17), neckY: torso.h * 0.07, armK: 1, elbow: 0.92};
   }
   const hy = torso.h * parts.hip;
   const off = thighL.w * 0.5;
+  // Arms are sized from the body: a hanging hand reaches about a third of the way down the thigh (owner, 2026-11-27:
+  // the sheets drew arms that reached the knee). Shrink a little, then overlap the elbow more.
+  const reach = hy - thighL.h * 0.06 + thighL.h * 0.5 - torso.h * 0.16;
+  const farmL = parts.farmL;
+  const armK = Math.min(1, Math.max(0.74, reach / (uarmL.h * 0.5 + farmL.h * 0.93)));
+  const elbow = Math.min(0.92, Math.max(0.3, (reach / armK - farmL.h * 0.93) / uarmL.h));
   return {
+    armK,
+    elbow,
     pivotY: hy,
     hipY: hy - thighL.h * 0.06,
     legX: [torso.w / 2 - off, torso.w / 2 + off],
-    shL: P(torso.w * parts.sh[0] + uarmL.w * 0.42, torso.h * 0.14),
-    shR: P(torso.w * parts.sh[1] - uarmR.w * 0.42, torso.h * 0.14),
+    shL: P(torso.w * parts.sh[0] + uarmL.w * armK * 0.32, torso.h * 0.16),
+    shR: P(torso.w * parts.sh[1] - uarmR.w * armK * 0.32, torso.h * 0.16),
     neckY: torso.h * 0.05,
   };
+};
+
+const BigFace: React.FC<{parts: Parts; p: PersonPose; turn: number}> = ({parts, p, turn}) => {
+  const {head} = parts;
+  const [fcx, fcy, fw] = parts.face ?? [0.5, 0.6, 0.5];
+  const cx = head.w * fcx + turn * head.w * fw * 0.12, ey = head.h * fcy - head.h * 0.02;
+  const er = head.h * 0.075 * (p.open ?? 1);
+  const ex = head.w * fw * 0.22;
+  const pu = p.pupil ?? [0, 0];
+  const lid = p.lid ?? 0;
+  const sm = p.smile ?? 0.3;
+  const happyShut = lid > 0.35 && sm > 0.5; // proud: eyes close into ^ ^
+  const lift = ((p.browLift ?? 0) / 30) * er * 0.9, sad = ((p.browSad ?? 0) / 25) * er * 0.9;
+  const ink = '#241a1c';
+  const mo = p.mouth ?? 0;
+  const my = ey + er * 2.3, mw = er * (0.85 + 0.25 * Math.abs(sm));
+  return (
+    <g opacity={p.eyes ?? 1}>
+      {sm > 0.45 && [-1, 1].map((k) => <ellipse key={`b${k}`} cx={cx + k * ex * 1.65} cy={ey + er * 1.35} rx={er * 0.55} ry={er * 0.3} fill="#f08a8a" opacity={0.35 * (sm - 0.45) * 2} />)}
+      {[-1, 1].map((k) => {
+        const x = cx + k * ex;
+        if (happyShut) return <path key={k} d={`M${x - er * 0.75} ${ey + er * 0.2} q${er * 0.75} ${-er * 1.1} ${er * 1.5} 0`} stroke={ink} strokeWidth={er * 0.28} fill="none" strokeLinecap="round" />;
+        const ry = er * Math.max(0.12, 1 - lid);
+        return (
+          <g key={k}>
+            <ellipse cx={x} cy={ey + (er - ry) * 0.6} rx={er * 0.82} ry={ry} fill="#fbf8f2" stroke={ink} strokeWidth={er * 0.12} />
+            {ry > er * 0.3 && <circle cx={x + pu[0] * er * 0.32} cy={ey + pu[1] * er * 0.32 + (er - ry) * 0.6} r={Math.min(er * 0.5, ry * 0.75)} fill={ink} />}
+            {ry > er * 0.3 && <circle cx={x + pu[0] * er * 0.32 + er * 0.16} cy={ey + pu[1] * er * 0.32 - er * 0.18} r={er * 0.13} fill="#fff" />}
+          </g>
+        );
+      })}
+      <g stroke={ink} strokeWidth={er * 0.3} strokeLinecap="round" fill="none">
+        <line x1={cx - ex - er * 0.8} y1={ey - er * 1.45 - lift + sad * 0.2} x2={cx - ex + er * 0.7} y2={ey - er * 1.5 - lift - sad} />
+        <line x1={cx + ex - er * 0.7} y1={ey - er * 1.5 - lift - sad} x2={cx + ex + er * 0.8} y2={ey - er * 1.45 - lift + sad * 0.2} />
+        {mo > 0.25 ? (
+          <ellipse cx={cx} cy={my + er * 0.2} rx={er * (0.45 + 0.2 * mo)} ry={er * 0.75 * mo} fill="#5a2a2a" strokeWidth={er * 0.18} />
+        ) : (
+          <path d={`M${cx - mw} ${my} Q${cx} ${my + sm * er * 1.1} ${cx + mw} ${my}`} strokeWidth={er * 0.24} />
+        )}
+      </g>
+    </g>
+  );
 };
 
 const FaceMarks: React.FC<{parts: Parts; p: PersonPose; turn: number}> = ({parts, p, turn}) => {
@@ -84,9 +136,12 @@ export const Person: React.FC<{parts: Parts; x: number; y: number; s: number; p:
   const bob = -Math.abs(Math.cos(ph)) * 0.03 * torso.h * w + (p.bob ?? 0);
   const legLen = thighL.h * 0.86 + shinL.h * 0.95;
   const swing = Math.sin(ph) * 18 * w;
-  const aL = p.armL ?? {a: 4 + swing, f: 4};
-  const aR = p.armR ?? {a: 4 - swing, f: 4};
+  const aL = p.armL ?? {a: 6 + swing, f: 6};
+  const aR = p.armR ?? {a: 6 - swing, f: 6};
   const turn = p.turn ?? dir * w; // walkers turn toward where they go
+  const ak = j.armK;
+  const front = parts.hip !== undefined ? 2 : -1; // v4 bodies: arms lie over the torso, as in a front-view cut-out
+  const [ua, fa, ub, fb] = [uarmL, farmL, uarmR, farmR].map((q) => ({src: q.src, w: q.w * ak, h: q.h * ak}));
   const squash = 1 - 0.16 * Math.abs(turn);
   return (
     <div style={{position: 'absolute', left: x, top: y, transform: `scale(${s})`, transformOrigin: '0 0', filter}}>
@@ -98,19 +153,19 @@ export const Person: React.FC<{parts: Parts; x: number; y: number; s: number; p:
           <Part src={thighL.src} w={thighL.w} h={thighL.h} pivot={P(thighL.w / 2, thighL.h * 0.08)} at={P(j.legX[0], j.hipY)} rot={thigh(0)} z={-1}>
             <Part src={shinL.src} w={shinL.w} h={shinL.h} pivot={P(shinL.w * 0.55, shinL.h * 0.05)} at={P(thighL.w / 2, thighL.h * 0.93)} rot={shin(0)} z={-1} />
           </Part>
-          <Part src={uarmL.src} w={uarmL.w} h={uarmL.h} pivot={P(uarmL.w / 2, uarmL.h * 0.08)} at={j.shL} rot={out(aL.a, -1)} z={-1}>
-            <Part src={farmL.src} w={farmL.w} h={farmL.h} pivot={P(farmL.w / 2, farmL.h * 0.07)} at={P(uarmL.w / 2, uarmL.h * 0.92)} rot={out(aL.f, -1)} z={-1}>
-              {p.holdL && <div style={{position: 'absolute', left: farmL.w / 2, top: farmL.h * 0.86, zIndex: 3}}>{p.holdL}</div>}
+          <Part src={ua.src} w={ua.w} h={ua.h} pivot={P(ua.w / 2, ua.h * 0.12)} at={j.shL} rot={out(aL.a, -1)} z={front} clipTop={front > 0 ? 0.09 : 0}>
+            <Part src={fa.src} w={fa.w} h={fa.h} pivot={P(fa.w / 2, fa.h * 0.07)} at={P(ua.w / 2, ua.h * j.elbow)} rot={out(aL.f, -1)} z={-1}>
+              {p.holdL && <div style={{position: 'absolute', left: fa.w / 2, top: fa.h * 0.86, zIndex: 3}}>{p.holdL}</div>}
             </Part>
           </Part>
-          <Part src={uarmR.src} w={uarmR.w} h={uarmR.h} pivot={P(uarmR.w / 2, uarmR.h * 0.08)} at={j.shR} rot={out(aR.a, 1)} z={p.armRFront ? 3 : -1}>
-            <Part src={farmR.src} w={farmR.w} h={farmR.h} pivot={P(farmR.w / 2, farmR.h * 0.07)} at={P(uarmR.w / 2, uarmR.h * 0.92)} rot={out(aR.f, 1)} z={p.armRFront ? 1 : -1}>
-              {p.holdR && <div style={{position: 'absolute', left: farmR.w / 2, top: farmR.h * 0.86, zIndex: 3}}>{p.holdR}</div>}
+          <Part src={ub.src} w={ub.w} h={ub.h} pivot={P(ub.w / 2, ub.h * 0.12)} at={j.shR} rot={out(aR.a, 1)} z={p.armRFront ? 3 : front} clipTop={front > 0 ? 0.09 : 0}>
+            <Part src={fb.src} w={fb.w} h={fb.h} pivot={P(fb.w / 2, fb.h * 0.07)} at={P(ub.w / 2, ub.h * j.elbow)} rot={out(aR.f, 1)} z={p.armRFront ? 1 : -1}>
+              {p.holdR && <div style={{position: 'absolute', left: fb.w / 2, top: fb.h * 0.86, zIndex: 3}}>{p.holdR}</div>}
             </Part>
           </Part>
           <Part src={head.src} w={head.w} h={head.h} pivot={P(head.w / 2, head.h * 0.95)} at={P(torso.w / 2 + turn * torso.w * 0.07, j.neckY + (p.headDip ?? 0))} rot={p.headTilt ?? 0} z={1}>
             <Face w={head.w} h={head.h}>
-              <FaceMarks parts={parts} p={p} turn={turn} />
+              {p.big ? <BigFace parts={parts} p={p} turn={turn} /> : <FaceMarks parts={parts} p={p} turn={turn} />}
             </Face>
           </Part>
         </Part>

@@ -72,3 +72,12 @@ local: `../audio/pilot_mix.py <narr_a.wav> <raw.wav>`, then `ffmpeg -af loudnorm
 - `Person.tsx` reads those measurements (long coats hang over the thighs), and now has brows, a mouth and a left-hand
   prop. `Cast4.tsx` puts Scarf and the rice man on Person with the old pose types and scale, so the film code is
   unchanged. Other adults are `PEER` 0.88 of Scarf's height. `CastTest4` is the rig check.
+
+## Pilot v5 (owner notes, 2026-11-27)
+
+- Arms: `Person` sizes each v4 character's arms from the body (a hanging hand reaches a third to half way down the
+  thigh), lays them over the torso, and clips the pale joint cap off the upper arm (`Part clipTop`).
+- Scarf's face: `big` in PersonPose draws an emoji-style face (eyes with whites and pupils, thick brows, a mouth that
+  smiles, frowns or opens); `Scarf4` maps the old ScarfCutPose moods onto it.
+- Scarf is in full colour (parts sheet job `f56184eb`, 2 credits, owner OK) as `SCARFC`; the faded one stays as
+  `SCARF_FADED` in `Cast4.tsx`. The rice ball is held at the mouth; the selfie uses her own phone piece.

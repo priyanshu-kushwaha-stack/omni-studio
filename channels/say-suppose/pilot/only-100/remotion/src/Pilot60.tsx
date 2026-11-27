@@ -55,7 +55,7 @@ const High: React.FC<{t: number; z: number; fy?: number; speed: number; dense: n
   return (
     <View z={z} fx={640 + drift(t, 4)} fy={fy} k={1} bg={<SetImg which="high" />}>
       <Crowd t={t} n={Math.round(22 * dense)} seed={0} y0={205} y1={466} hAt={highH} speed={speed} clear={empty} />
-      <div style={{position: 'absolute', left: 640 - 170, top: 470 - 70, width: 340, height: 140, borderRadius: '50%', background: 'radial-gradient(closest-side, rgba(255,236,190,.42), rgba(255,236,190,0))'}} />
+      <div style={{position: 'absolute', left: 640 - 170, top: 470 - 70, width: 340, height: 140, borderRadius: '50%', background: 'radial-gradient(closest-side, rgba(255,240,200,.62), rgba(255,240,200,0))'}} />
       <Shadow x={640} y={470} w={80} />
       {scarf}
       <Crowd t={t} n={Math.round(16 * dense)} seed={100} y0={474} y1={670} hAt={highH} speed={speed * 1.2} clear={empty} />
@@ -277,12 +277,11 @@ const S11: Shot['C'] = ({t}) => {
   const phoneUp = keys(t, [[44.3, 0], [44.9, 1, BACK]]);
   const wave = keys(t, [[46.2, 0], [46.5, 1, BACK], [48.2, 1], [48.5, 0]]);
   const inset = keys(t, [[49.5, 0], [49.85, 1, BACK]]);
-  const sa = 20 + 30 * phoneUp, sf = -228 * phoneUp; // right arm: upper out, forearm folded up
+  // Selfie: upper arm raised out to her side, forearm up, her own phone (from her parts sheet) upright in the hand.
+  const sa = 20 + 105 * phoneUp, sf = 15 + 35 * phoneUp;
   const phoneNode = (
-    <div style={{position: 'absolute', transform: `rotate(${sa + sf}deg) translate(-70px, -225px)`, transformOrigin: '0 0'}}>
-      <div style={{width: 150, height: 270, borderRadius: 26, background: 'linear-gradient(160deg, #3a3d4c, #16171f)', boxShadow: '0 0 0 6px #2b2d38, 0 10px 24px rgba(0,0,0,.4)'}}>
-        <div style={{position: 'absolute', left: 18, top: 18, width: 34, height: 34, borderRadius: '50%', background: '#0b0b10', boxShadow: '0 0 0 4px #4a4d5c'}} />
-      </div>
+    <div style={{position: 'absolute', transform: `rotate(${sa + sf}deg) translate(${-PROPS.phone.w / 2}px, ${-PROPS.phone.h * 0.75}px)`, transformOrigin: '0 0'}}>
+      <Part src={PROPS.phone.src} w={PROPS.phone.w} h={PROPS.phone.h} pivot={[0, 0]} at={[0, 0]} />
     </div>
   );
   const p = scarfRest(t, {armR: {a: 6 + 120 * wave, f: 30 * wave + Math.sin(t * 12) * 18 * wave}, pupil: [0.8, -0.2], browLift: 12 * wave, browSad: keys(t, [[48.6, 0], [49.0, 16]]), lid: blinkAt(t, [44.0, 47.4])});

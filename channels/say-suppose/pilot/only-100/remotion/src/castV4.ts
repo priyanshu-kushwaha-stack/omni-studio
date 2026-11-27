@@ -12,7 +12,21 @@ export const SCARF: Parts = {
   shinL: {src: 'cut4/s1_8.png', w: 151, h: 452},
   thighR: {src: 'cut4/s1_5.png', w: 124, h: 382},
   shinR: {src: 'cut4/s1_9.png', w: 158, h: 452},
-  hip: 0.52, sh: [0.248, 0.782], face: [0.572, 0.615, 0.539],
+  hip: 0.52, sh: [0.214, 0.806], face: [0.572, 0.615, 0.539],
+};
+
+export const SCARFC: Parts = {
+  head: {src: 'cut4/s5_0.png', w: 378, h: 487},
+  torso: {src: 'cut4/s5_1.png', w: 456, h: 773},
+  uarmL: {src: 'cut4/s5_2.png', w: 150, h: 476},
+  farmL: {src: 'cut4/s5_6.png', w: 147, h: 509},
+  uarmR: {src: 'cut4/s5_3.png', w: 154, h: 480},
+  farmR: {src: 'cut4/s5_7.png', w: 150, h: 509},
+  thighL: {src: 'cut4/s5_4.png', w: 145, h: 467},
+  shinL: {src: 'cut4/s5_8.png', w: 186, h: 532},
+  thighR: {src: 'cut4/s5_5.png', w: 147, h: 467},
+  shinR: {src: 'cut4/s5_9.png', w: 189, h: 532},
+  hip: 0.5, sh: [0.206, 0.8], face: [0.559, 0.604, 0.553],
 };
 
 export const SALARY: Parts = {
@@ -26,7 +40,7 @@ export const SALARY: Parts = {
   shinL: {src: 'cut4/s1_17.png', w: 146, h: 399},
   thighR: {src: 'cut4/s1_18.png', w: 122, h: 344},
   shinR: {src: 'cut4/s1_19.png', w: 158, h: 398},
-  hip: 0.86, sh: [0.217, 0.829], face: [0.544, 0.606, 0.632],
+  hip: 0.86, sh: [0.154, 0.878], face: [0.544, 0.606, 0.632],
 };
 
 export const OFFICE: Parts = {
@@ -40,7 +54,7 @@ export const OFFICE: Parts = {
   shinL: {src: 'cut4/s2_9.png', w: 108, h: 374},
   thighR: {src: 'cut4/office_thighR.png', w: 144, h: 281},
   shinR: {src: 'cut4/office_shinR.png', w: 108, h: 374},
-  hip: 0.62, sh: [0.184, 0.822], face: [0.56, 0.553, 0.541],
+  hip: 0.62, sh: [0.133, 0.87], face: [0.56, 0.553, 0.541],
 };
 
 export const STUDENT: Parts = {
@@ -54,7 +68,7 @@ export const STUDENT: Parts = {
   shinL: {src: 'cut4/s2_18.png', w: 119, h: 358},
   thighR: {src: 'cut4/student_thighR.png', w: 140, h: 267},
   shinR: {src: 'cut4/student_shinR.png', w: 119, h: 358},
-  hip: 0.86, sh: [0.239, 0.761], face: [0.534, 0.633, 0.61],
+  hip: 0.86, sh: [0.142, 0.855], face: [0.534, 0.633, 0.61],
 };
 
 export const GENT: Parts = {
@@ -68,7 +82,7 @@ export const GENT: Parts = {
   shinL: {src: 'cut4/s3_9.png', w: 140, h: 405},
   thighR: {src: 'cut4/s3_5.png', w: 134, h: 392},
   shinR: {src: 'cut4/s3_10.png', w: 154, h: 405},
-  hip: 0.5, sh: [0.283, 0.752], face: [0.559, 0.468, 0.649],
+  hip: 0.5, sh: [0.143, 0.869], face: [0.559, 0.468, 0.649],
 };
 
 export const GRAN: Parts = {
@@ -82,7 +96,7 @@ export const GRAN: Parts = {
   shinL: {src: 'cut4/s3_18.png', w: 135, h: 366},
   thighR: {src: 'cut4/s3_19.png', w: 139, h: 344},
   shinR: {src: 'cut4/s3_20.png', w: 139, h: 368},
-  hip: 0.55, sh: [0.241, 0.766], face: [0.6, 0.508, 0.596],
+  hip: 0.55, sh: [0.152, 0.853], face: [0.6, 0.508, 0.596],
 };
 
 export const PACKER: Parts = {
@@ -96,7 +110,7 @@ export const PACKER: Parts = {
   shinL: {src: 'cut4/s4_9.png', w: 149, h: 322},
   thighR: {src: 'cut4/s4_5.png', w: 181, h: 368},
   shinR: {src: 'cut4/s4_10.png', w: 148, h: 322},
-  hip: 0.8, sh: [0.196, 0.812], face: [0.614, 0.595, 0.498],
+  hip: 0.8, sh: [0.185, 0.823], face: [0.614, 0.595, 0.498],
 };
 
 export const WORKER: Parts = {
@@ -110,7 +124,7 @@ export const WORKER: Parts = {
   shinL: {src: 'cut4/s4_20.png', w: 160, h: 274},
   thighR: {src: 'cut4/s4_16.png', w: 194, h: 363},
   shinR: {src: 'cut4/s4_21.png', w: 167, h: 274},
-  hip: 0.9, sh: [0.324, 0.688], face: [0.545, 0.555, 0.669],
+  hip: 0.9, sh: [0.195, 0.812], face: [0.545, 0.555, 0.669],
 };
 
 export const PROPS = {

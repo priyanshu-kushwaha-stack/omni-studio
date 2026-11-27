@@ -12,10 +12,11 @@ type PartProps = {
   at: [number, number];
   rot?: number;
   z?: number;
+  clipTop?: number; // hide this fraction of the piece's top (a joint cap that would show)
   children?: React.ReactNode;
 };
 
-export const Part: React.FC<PartProps> = ({src, w, h, pivot, at, rot = 0, z = 0, children}) => (
+export const Part: React.FC<PartProps> = ({src, w, h, pivot, at, rot = 0, z = 0, clipTop = 0, children}) => (
   <div
     style={{
       position: 'absolute',
@@ -28,7 +29,7 @@ export const Part: React.FC<PartProps> = ({src, w, h, pivot, at, rot = 0, z = 0,
       transform: `rotate(${rot}deg)`,
     }}
   >
-    <Img src={staticFile(src.includes("/") ? src : `cut/${src}`)} style={{position: 'absolute', inset: 0, width: w, height: h, zIndex: 0}} />
+    <Img src={staticFile(src.includes("/") ? src : `cut/${src}`)} style={{position: 'absolute', inset: 0, width: w, height: h, zIndex: 0, clipPath: clipTop ? `inset(${clipTop * 100}% 0 0 0)` : undefined}} />
     {children}
   </div>
 );

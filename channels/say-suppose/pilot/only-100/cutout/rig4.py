@@ -14,6 +14,7 @@ from PIL import Image
 # sheet, then piece numbers: head, torso, uarmL, farmL, uarmR, farmR, thighL, shinL, thighR, shinR
 CAST = {
     "SCARF": (1, [0, 1, 2, 6, 3, 7, 4, 8, 5, 9], 0.52),
+    "SCARFC": (5, [0, 1, 2, 6, 3, 7, 4, 8, 5, 9], 0.5),  # full-colour Scarf (owner, 2026-11-27)
     "SALARY": (1, [10, 11, 12, 13, 14, 15, 16, 17, 18, 19], 0.86),
     "OFFICE": (2, [0, 1, 2, 7, 3, 8, "4top", 9, "5top", "9flip"], 0.62),
     "STUDENT": (2, [11, 12, 13, 14, 15, 16, "17top", 18, "19top", "18flip"], 0.86),
@@ -57,7 +58,7 @@ def face(head: Image.Image) -> list[float]:
 def shoulders(torso: Image.Image) -> list[float]:
     al = np.array(torso.convert("RGBA"))[..., 3]
     h, w = al.shape
-    row = np.nonzero(al[int(h * 0.12)] > 128)[0]
+    row = np.nonzero(al[int(h * 0.2)] > 128)[0]
     return [round(row.min() / w, 3), round(row.max() / w, 3)]
 
 

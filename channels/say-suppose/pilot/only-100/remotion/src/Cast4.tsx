@@ -6,7 +6,11 @@ import {Part} from './Puppet';
 import {Person} from './Person';
 import type {Parts} from './castData';
 import type {ScarfCutPose, ManCutPose} from './Cast2';
-import {SCARF, SALARY, PROPS} from './castV4';
+import {SCARF as SCARF_FADED, SCARFC, SALARY, PROPS} from './castV4';
+
+// Scarf's look: full colour since the owner's note (2026-11-27: 'I liked the colors more'); SCARF_FADED is the grey one.
+export const SCARF = SCARFC;
+export {SCARF_FADED};
 import {SCARF_H, MAN_H, personH} from './FilmParts';
 
 const kOf = (parts: Parts, legacyH: number, s: number) => (s * legacyH) / personH(parts);
@@ -27,15 +31,17 @@ export const Scarf4: React.FC<{x: number; y: number; s: number; p: ScarfCutPose}
     y={y}
     s={kOf(SCARF, SCARF_H, s)}
     p={{
-      lean: p.lean, headTilt: p.headTilt, pupil: p.pupil, lid: p.lid, open: 0.85 + 0.15 * p.open,
+      lean: p.lean, headTilt: p.headTilt, pupil: p.pupil, lid: p.lid, open: 0.8 + 0.2 * p.open, big: true,
+      smile: Math.max(-1, Math.min(1, 0.35 + p.lid * 1.4 - (p.browSad / 25) * 1.4 + (p.browLift / 30) * 0.15)),
       browLift: p.browLift, browSad: p.browSad, mouth: Math.max(0, (p.open - 1.05) * 3), bob: p.bob * 2,
       armL: p.armL, armR: p.armR, turn: 0,
     }}
   />
 );
 
-export const RiceBall: React.FC<{rot?: number}> = ({rot = 0}) => (
-  <div style={{position: 'absolute', transform: `rotate(${rot}deg) translate(${-PROPS.rice.w / 2}px, ${-PROPS.rice.h * 0.35}px)`, transformOrigin: '0 0'}}>
+// Held in the fingers, below the hand, so it sits at his mouth rather than over his face.
+export const RiceBall: React.FC<{rot?: number; k?: number}> = ({rot = 0, k = 0.62}) => (
+  <div style={{position: 'absolute', transform: `rotate(${rot}deg) scale(${k}) translate(${-PROPS.rice.w / 2}px, ${PROPS.rice.h * 0.05}px)`, transformOrigin: '0 0'}}>
     <Part src={PROPS.rice.src} w={PROPS.rice.w} h={PROPS.rice.h} pivot={[0, 0]} at={[0, 0]} />
   </div>
 );
