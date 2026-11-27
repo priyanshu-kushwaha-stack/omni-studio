@@ -4,6 +4,7 @@
 import React from 'react';
 import {Part, Face, out} from './Puppet';
 import type {Parts} from './types';
+import {rimFilter, type RimSpec} from '../toolkit/Rim';
 
 export type PersonPose = {
   phase?: number; // walk cycle, radians
@@ -129,7 +130,7 @@ const FaceMarks: React.FC<{parts: Parts; p: PersonPose; turn: number}> = ({parts
   );
 };
 
-export const Person: React.FC<{parts: Parts; x: number; y: number; s: number; p: PersonPose; filter?: string; rim?: {side: 'left' | 'right' | 'top'; color: string}; farShade?: number}> = ({parts, x, y, s, p, filter}) => {
+export const Person: React.FC<{parts: Parts; x: number; y: number; s: number; p: PersonPose; filter?: string; rim?: RimSpec; farShade?: number}> = ({parts, x, y, s, p, filter, rim, farShade}) => {
   const {head, torso, uarmL, uarmR, farmL, farmR, thighL, thighR, shinL, shinR} = parts;
   const j = joints(parts);
   const w = p.walk ?? 0, ph = p.phase ?? 0, dir = p.dir ?? -1;
@@ -147,22 +148,27 @@ export const Person: React.FC<{parts: Parts; x: number; y: number; s: number; p:
   const front = parts.hip !== undefined ? 2 : -1; // v4 bodies: arms lie over the torso, as in a front-view cut-out
   const [ua, fa, ub, fb] = [uarmL, farmL, uarmR, farmR].map((q) => ({src: q.src, w: q.w * j.armKw, h: q.h * ak}));
   const squash = 1 - 0.16 * Math.abs(turn);
+  // W7, both off by default: a rim on the lit side, and the far leg and far arm a touch darker. The far side is the
+  // screen-right one (its thigh already sits behind) unless the puppet turns to face screen left.
+  const shade = farShade ? `brightness(${1 - farShade})` : undefined;
+  const [farL, farR] = turn < 0 ? [shade, undefined] : [undefined, shade];
+  const look = [filter, rim && rimFilter(rim)].filter(Boolean).join(' ') || undefined;
   return (
-    <div style={{position: 'absolute', left: x, top: y, transform: `scale(${s})`, transformOrigin: '0 0', filter}}>
+    <div style={{position: 'absolute', left: x, top: y, transform: `scale(${s})`, transformOrigin: '0 0', filter: look}}>
       <div style={{position: 'absolute', transformOrigin: '0 0', transform: `rotate(${(p.lean ?? 0) + turn * 3 * w}deg) translateY(${bob}px) scaleX(${squash})`}}>
         <Part src={torso.src} w={torso.w} h={torso.h} pivot={P(torso.w / 2, j.pivotY)} at={P(0, -legLen)}>
-          <Part src={thighR.src} w={thighR.w} h={thighR.h} pivot={P(thighR.w / 2, thighR.h * 0.08)} at={P(j.legX[1], j.hipY)} rot={thigh(Math.PI)} z={-2}>
+          <Part src={thighR.src} w={thighR.w} h={thighR.h} pivot={P(thighR.w / 2, thighR.h * 0.08)} at={P(j.legX[1], j.hipY)} rot={thigh(Math.PI)} z={-2} filter={shade}>
             <Part src={shinR.src} w={shinR.w} h={shinR.h} pivot={P(shinR.w * 0.45, shinR.h * 0.05)} at={P(thighR.w / 2, thighR.h * 0.93)} rot={shin(Math.PI)} z={-1} />
           </Part>
           <Part src={thighL.src} w={thighL.w} h={thighL.h} pivot={P(thighL.w / 2, thighL.h * 0.08)} at={P(j.legX[0], j.hipY)} rot={thigh(0)} z={-1}>
             <Part src={shinL.src} w={shinL.w} h={shinL.h} pivot={P(shinL.w * 0.55, shinL.h * 0.05)} at={P(thighL.w / 2, thighL.h * 0.93)} rot={shin(0)} z={-1} />
           </Part>
-          <Part src={ua.src} w={ua.w} h={ua.h} pivot={P(ua.w / 2, ua.h * 0.12)} at={j.shL} rot={out(aL.a, -1)} z={front} clipTop={front > 0 ? 0.09 : 0}>
+          <Part src={ua.src} w={ua.w} h={ua.h} pivot={P(ua.w / 2, ua.h * 0.12)} at={j.shL} rot={out(aL.a, -1)} z={front} clipTop={front > 0 ? 0.09 : 0} filter={farL}>
             <Part src={fa.src} w={fa.w} h={fa.h} pivot={P(fa.w / 2, fa.h * 0.07)} at={P(ua.w / 2, ua.h * j.elbow)} rot={out(aL.f, -1)} z={-1}>
               {p.holdL && <div style={{position: 'absolute', left: fa.w / 2, top: fa.h * 0.86, zIndex: 3}}>{p.holdL}</div>}
             </Part>
           </Part>
-          <Part src={ub.src} w={ub.w} h={ub.h} pivot={P(ub.w / 2, ub.h * 0.12)} at={j.shR} rot={out(aR.a, 1)} z={p.armRFront ? 3 : front} clipTop={front > 0 ? 0.09 : 0}>
+          <Part src={ub.src} w={ub.w} h={ub.h} pivot={P(ub.w / 2, ub.h * 0.12)} at={j.shR} rot={out(aR.a, 1)} z={p.armRFront ? 3 : front} clipTop={front > 0 ? 0.09 : 0} filter={farR}>
             <Part src={fb.src} w={fb.w} h={fb.h} pivot={P(fb.w / 2, fb.h * 0.07)} at={P(ub.w / 2, ub.h * j.elbow)} rot={out(aR.f, 1)} z={p.armRFront ? 1 : -1}>
               {p.holdR && <div style={{position: 'absolute', left: fb.w / 2, top: fb.h * 0.86, zIndex: 3}}>{p.holdR}</div>}
             </Part>

@@ -1,9 +1,6 @@
 import React from 'react';
 import {keys, BACK} from '../rig/keys';
-
-// Task 13 moves these to toolkit/palette.ts.
-export const FONT = "'Avenir Next', 'Helvetica Neue', Arial, sans-serif";
-export const GREEN = '#2fbf71';
+import {FONT, GREEN} from '../toolkit/palette';
 
 export const RuleCard: React.FC<{t: number; t0: number; n: string; text: string}> = ({t, t0, n, text}) => {
   const k = keys(t, [[t0, 0], [t0 + 0.45, 1, BACK]]);

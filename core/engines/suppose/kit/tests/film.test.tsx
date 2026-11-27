@@ -72,4 +72,18 @@ describe('film parts', () => {
     expect(html(<SetPlate angle={angles.wide} blur={3} />)).toContain('blur(3px)');
     expect(html(<View z={1.2} fx={640} fy={360} bg={<b />}><i /></View>)).toContain('<b></b>');
   });
+  it('fact pill shows a coloured unit as the pilot did', () => {
+    const src = 'Shinjuku Station, Tokyo · busiest on Earth';
+    for (const t of [6.2, 8, 9.85]) {
+      expect(html(<FactPill t={t} t0={6} t1={10.1} text="≈ 3,500,000" unit="people / day" source={src} />)).toBe(html(<PilotFactPill t={t} />));
+    }
+    expect(html(<FactPill t={8} t0={6} t1={10.1} text="a" unit="b" accent="#ffc24a" />)).toContain('color:#ffc24a');
+    expect(html(<FactPill t={8} t0={6} t1={10.1} text="a" />)).not.toContain('<span');
+  });
+  it('dark grade moods darken with multiply; warm and cool stay on screen', () => {
+    expect(html(<Grade frame={1} mood="void" />)).toContain('mix-blend-mode:multiply');
+    expect(html(<Grade frame={1} mood="blueprint" />)).toContain('mix-blend-mode:multiply');
+    expect(html(<Grade frame={1} mood="warm" />)).toContain('mix-blend-mode:screen');
+    expect(html(<Grade frame={1} mood="cool" />)).toContain('mix-blend-mode:screen');
+  });
 });

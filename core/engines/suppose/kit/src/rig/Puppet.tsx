@@ -13,10 +13,11 @@ type PartProps = {
   rot?: number;
   z?: number;
   clipTop?: number; // hide this fraction of the piece's top (a joint cap that would show)
+  filter?: string; // CSS filter on the piece and everything hung on it (far-limb shade)
   children?: React.ReactNode;
 };
 
-export const Part: React.FC<PartProps> = ({src, w, h, pivot, at, rot = 0, z = 0, clipTop = 0, children}) => (
+export const Part: React.FC<PartProps> = ({src, w, h, pivot, at, rot = 0, z = 0, clipTop = 0, filter, children}) => (
   <div
     style={{
       position: 'absolute',
@@ -27,6 +28,7 @@ export const Part: React.FC<PartProps> = ({src, w, h, pivot, at, rot = 0, z = 0,
       zIndex: z,
       transformOrigin: `${pivot[0]}px ${pivot[1]}px`,
       transform: `rotate(${rot}deg)`,
+      filter,
     }}
   >
     <Img src={staticFile(src)} style={{position: 'absolute', inset: 0, width: w, height: h, zIndex: 0, clipPath: clipTop ? `inset(${clipTop * 100}% 0 0 0)` : undefined}} />

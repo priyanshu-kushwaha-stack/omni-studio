@@ -1,7 +1,7 @@
 import React from 'react';
 import {interpolate, Easing} from 'remotion';
 import {keys, BACK, OUT} from '../rig/keys';
-import {FONT, GREEN} from './Cards';
+import {FONT, GREEN} from '../toolkit/palette';
 
 // The glowing readout over your head.
 export const Readout: React.FC<{x: number; y: number; t: number; t0: number; text?: string}> = ({x, y, t, t0, text = '99 / 100'}) => {
@@ -20,12 +20,16 @@ const lerp = (t: number, a: number, b: number, v0: number, v1: number) =>
   interpolate(t, [a, b], [v0, v1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: ease});
 
 // The fact pill: fades in over 0.4 s from t0, out over the last 0.5 s before t1.
-export const FactPill: React.FC<{t: number; t0: number; t1: number; text: string; source?: string}> = ({t, t0, t1, text, source}) => {
+// `unit` follows the number in `accent` (green by default), as in the pilot: "≈ 3,500,000 people / day".
+export const FactPill: React.FC<{t: number; t0: number; t1: number; text: string; unit?: string; accent?: string; source?: string}> = ({t, t0, t1, text, unit, accent = GREEN, source}) => {
   const a = lerp(t, t0, t0 + 0.4, 0, 1) * lerp(t, t1 - 0.5, t1, 1, 0);
   if (a <= 0) return null;
   return (
     <div style={{position: 'absolute', left: 70, top: 540, opacity: a, transform: `translateY(${(1 - a) * 12}px)`, fontFamily: 'Inter, sans-serif'}}>
-      <div style={{background: 'rgba(12,16,28,.82)', border: `2px solid ${GREEN}`, borderRadius: 40, padding: '10px 22px', color: '#fff', fontSize: 30, fontWeight: 800}}>{text}</div>
+      <div style={{background: 'rgba(12,16,28,.82)', border: `2px solid ${GREEN}`, borderRadius: 40, padding: '10px 22px', color: '#fff', fontSize: 30, fontWeight: 800}}>
+        {unit ? `${text} ` : text}
+        {unit && <span style={{color: accent}}>{unit}</span>}
+      </div>
       {source && <div style={{color: 'rgba(255,255,255,.6)', fontSize: 14, marginTop: 6, marginLeft: 22}}>{source}</div>}
     </div>
   );
