@@ -13,7 +13,7 @@ import type {GradeMood} from '../film/Grade';
 import type {AtmosphereKind} from '../toolkit/Atmosphere';
 
 export type CastIn = {who: string; at: [number, number]; acts?: Act[]; focus?: boolean; seed?: number};
-export type CrowdIn = {band: string; n: number; speed: number; seed?: number};
+export type CrowdIn = {band: string; n: number; speed: number; seed?: number; kinds?: string[]}; // kinds: cast ids, weighted by repeats
 
 // Labels (W5). Positions are optional; each kind has a default spot clear of the pill and the readout.
 export type LabelIn = {

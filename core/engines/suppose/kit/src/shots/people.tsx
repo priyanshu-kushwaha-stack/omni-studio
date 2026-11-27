@@ -19,14 +19,15 @@ export const shotActs = (acts: Act[], from: number): Act[] =>
   acts.map((a) => ({...a, at: a.at === undefined ? undefined : a.at - from, to: a.to === undefined ? undefined : a.to - from}));
 
 // Scarf (and his alternates) at the set's own scale for him, shrunk or grown with depth from his mark; everyone else
-// at PEER of Scarf at that depth (hAtFor), children at CHILD of that.
-export const scaleFor = (angle: SetAngle, m: CastMember, y: number, hero?: CastMember) => {
+// at PEER of Scarf at that depth (hAtFor), children at CHILD of that. angle.scarf.s is the pilot's legacy scale: Scarf
+// stands SCARF_H * s px tall on his mark (pilot Cast4.tsx), whatever his pieces' own height, and so does any
+// alternate, so the two always match.
+export const scaleFor = (angle: SetAngle, m: CastMember, y: number) => {
   const hAt = hAtFor(angle, SCARF_H);
   if (m.roles.some((r) => HERO_ROLES.includes(r))) {
     const mark = hAt(angle.scarf.y);
     const depth = mark > 0 ? hAt(y) / mark : 1;
-    const match = hero ? personH(hero) / personH(m) : 1;
-    return angle.scarf.s * depth * match;
+    return (angle.scarf.s * SCARF_H * depth) / personH(m);
   }
   return (hAt(y) / personH(m)) * (m.roles.includes('child') ? CHILD : 1);
 };
@@ -42,7 +43,7 @@ const Tag: React.FC<{x: number; y: number; text: string}> = ({x, y, text}) => (
 const Member: React.FC<{c: CastIn; i: number; m: CastMember; angle: SetAngle; shot: ShotData; film: FilmData; t: number; rim?: RimSpec}> = ({c, i, m, angle, shot, film, t, rim}) => {
   const [x, y] = c.at;
   const above = hAtFor(angle, SCARF_H)(y) <= 0;
-  const s = Math.max(MIN_SCALE, scaleFor(angle, m, y, film.cast.scarf));
+  const s = Math.max(MIN_SCALE, scaleFor(angle, m, y));
   const base = m.roles.some((r) => HERO_ROLES.includes(r)) ? {big: true} : {};
   const acts = shotActs(c.acts ?? [{act: 'idle'}], shot.from);
   const rig = {torsoH: m.torso.h, stride: strideAt(m, s)};
@@ -57,19 +58,25 @@ const Member: React.FC<{c: CastIn; i: number; m: CastMember; angle: SetAngle; sh
   return (
     <>
       <Shadow x={cx} y={y} w={m.torso.w * s * 1.4} />
-      <Person parts={m} x={cx - (m.torso.w * s) / 2} y={y} s={s} p={pose} rim={rim} />
+      <Person parts={m} x={cx} y={y} s={s} p={pose} rim={rim} />
       {bad && <Tag x={cx} y={y - personH(m) * s} text={`? ${bad}`} />}
     </>
   );
 };
 
+// A band's people: its `kinds` (cast ids, in weighted order: repeat an id to make it common), or every crowd-role
+// member of film.crowd. An id missing from the film is skipped.
+export const crowdKinds = (film: FilmData, ids?: string[]): CastMember[] =>
+  ids ? ids.map((id) => film.crowd?.[id] ?? film.cast?.[id]).filter((m): m is CastMember => !!m) : Object.values(film.crowd ?? {});
+
 // Back bands, then the cast from far to near, then the front band. A cast member missing from film.cast draws nothing.
 export const People: React.FC<{shot: ShotData; film: FilmData; angle: SetAngle; t: number}> = ({shot, film, angle, t}) => {
-  const kinds = Object.values(film.crowd ?? {});
   const hAt = hAtFor(angle, SCARF_H);
   const clear = angle.clear as [number, number, number?, number?] | undefined;
   const band = (front: boolean) =>
-    (shot.crowd ?? []).filter((b) => (b.band === 'front') === front && angle.crowd?.[b.band] && kinds.length).map((b, i) => {
+    (shot.crowd ?? []).filter((b) => (b.band === 'front') === front && angle.crowd?.[b.band]).map((b, i) => {
+      const kinds = crowdKinds(film, b.kinds);
+      if (!kinds.length) return null;
       const [y0, y1] = angle.crowd![b.band];
       return <Crowd key={`${b.band}-${i}`} t={t} n={b.n} seed={b.seed ?? i * 100} y0={y0} y1={y1} hAt={hAt} speed={b.speed} kinds={kinds} clear={clear} />;
     });

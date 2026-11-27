@@ -37,6 +37,8 @@ Optional fields the renderer reads (sheetcheck accepts them without comment):
 - `atmosphere: dust` (or `{kind, seed, strength}`): drifting air over the shot.
 - `letterbox: scope`: scope bars.
 - `mood`: the grade, one of warm | cool | void | blueprint.
+- `crowd[].kinds`: cast ids for that band in weighted order (repeat an id to make it common); default every
+  crowd-role member. A set angle's `parallax` (set.json, default 0.6) is the plate layer's depth; 1 for a top-down plate.
 - Act fields: `dir` (1 right, -1 left), `prop`, `from: [x, y]` (where a walk, run or stop starts), `to` (end time).
 """
 

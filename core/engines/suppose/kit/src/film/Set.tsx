@@ -12,6 +12,7 @@ export type SetAngle = {
   clear?: number[];
   bounds?: {zmax: number};
   key?: {side: 'left' | 'right' | 'top'; color: string};
+  parallax?: number; // depth of the plate layer against the people (default 0.6); 1 for a top-down plate the crowd walks on
 };
 
 // On-screen height (px) of a peer whose feet are at y, so everyone matches Scarf at the same depth.

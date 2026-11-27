@@ -1,4 +1,4 @@
-// One shot of a film from its sheet entry. A set shot is the plate on the parallax layer (k 0.6) and the people on the
+// One shot of a film from its sheet entry. A set shot is the plate on the parallax layer (the angle's `parallax`, default 0.6) and the people on the
 // near one, through the shot's camera; then labels, readout, atmosphere and scope bars in screen space. Shots without a
 // set draw their toolkit frame full screen. The grade is Film's, so custom shots get it too.
 import React from 'react';
@@ -24,7 +24,7 @@ const SetScene: React.FC<{shot: ShotData; film: FilmData; angle: SetAngle; t: nu
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: '#000'}}>
       <AbsoluteFill style={{transform: `rotate(${cam.roll}deg) scale(${1 + Math.abs(cam.roll) * 0.03})`}}>
-        <View z={z} fx={cam.fx} fy={cam.fy} bg={<SetPlate angle={angle} />}>
+        <View z={z} fx={cam.fx} fy={cam.fy} k={angle.parallax} bg={<SetPlate angle={angle} />}>
           <People shot={shot} film={film} angle={angle} t={t} />
         </View>
       </AbsoluteFill>
