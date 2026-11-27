@@ -30,3 +30,6 @@ The owner's call: paint the set and character parts with Higgsfield, then animat
 reference media `fbbbe6fa-44a1-46b6-a5dd-06e1a045da3b`), man parts `fc31b762`. `../cutout/slice.py <sheet> <out>
 <prefix>` cuts a sheet into `public/cut/<prefix>_<n>.png`. Joints and timing are in `src/CutoutC.tsx`, and the rig is
 in `src/Puppet.tsx`.
+
+Refined (`CutoutC2`): both puppets come from one parts sheet (GPT Image job `603bfb4f`, 2 credits, with the Scarf reference and the
+wide set as style references), so they share one style. Pieces go in `public/cut2/` under readable names, and the rig is in `src/Cast2.tsx`.

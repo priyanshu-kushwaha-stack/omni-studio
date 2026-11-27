@@ -5,6 +5,7 @@ import {LookA} from './LookA';
 import {LookB} from './LookB';
 import {MotionC, MOTION_SECONDS} from './MotionC';
 import {CutoutC} from './CutoutC';
+import {CutoutC2} from './CutoutC2';
 
 export const Root: React.FC = () => (
   <>
@@ -13,5 +14,6 @@ export const Root: React.FC = () => (
     <Composition id="LookC" component={LookA} defaultProps={{plate: true}} durationInFrames={TEST_SECONDS * FPS} fps={FPS} width={W} height={H} />
     <Composition id="MotionC" component={MotionC} durationInFrames={Math.round(MOTION_SECONDS * FPS)} fps={FPS} width={W} height={H} />
     <Composition id="CutoutC" component={CutoutC} durationInFrames={Math.round(MOTION_SECONDS * FPS)} fps={FPS} width={W} height={H} />
+    <Composition id="CutoutC2" component={CutoutC2} durationInFrames={Math.round(MOTION_SECONDS * FPS)} fps={FPS} width={W} height={H} />
   </>
 );

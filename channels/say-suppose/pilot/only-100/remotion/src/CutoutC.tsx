@@ -103,7 +103,7 @@ const ManCut: React.FC<{x: number; y: number; s: number; p: ManCutPose}> = ({x, 
 
 const SCARF_LEAN: Key[] = [[0.85, 0], [1.02, -4, OUT], [1.5, -1.5], [4.0, -1.5], [4.15, -3], [4.55, 6, BACK], [5.25, 6], [5.7, 0]];
 
-const scarfAt = (l: number): ScarfCutPose => {
+export const scarfAt = (l: number): ScarfCutPose => {
   const lean = keys(l, SCARF_LEAN);
   const wave = l > 4.45 && l < 5.25 ? Math.sin((l - 4.45) * 14) * 22 * Math.sin(((l - 4.45) / 0.8) * Math.PI) : 0;
   return {
@@ -129,11 +129,11 @@ const scarfAt = (l: number): ScarfCutPose => {
 };
 
 const STRIDE = 150; // screen px the man covers per full walk cycle at his scale
-const manAt = (l: number) => {
+export const manAt = (l: number, stride = STRIDE) => {
   const x = keys(l, [[0, 1120], [0.8, 860, LIN], [1.2, 770, OUT]]);
   const walk = keys(l, [[0, 1], [0.85, 1], [1.2, 0, OUT]]);
   const chew = l > 2.0 ? Math.abs(Math.sin(l * 10)) * 6 : 0;
-  const phase = ((1120 - x) / STRIDE) * Math.PI * 2;
+  const phase = ((1120 - x) / stride) * Math.PI * 2;
   return {
     x,
     p: {

@@ -28,7 +28,7 @@ export const Part: React.FC<PartProps> = ({src, w, h, pivot, at, rot = 0, z = 0,
       transform: `rotate(${rot}deg)`,
     }}
   >
-    <Img src={staticFile(`cut/${src}`)} style={{position: 'absolute', inset: 0, width: w, height: h, zIndex: 0}} />
+    <Img src={staticFile(src.includes("/") ? src : `cut/${src}`)} style={{position: 'absolute', inset: 0, width: w, height: h, zIndex: 0}} />
     {children}
   </div>
 );
