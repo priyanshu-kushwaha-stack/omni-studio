@@ -8,6 +8,7 @@ directions or markdown; numbers in words; the hero unnamed) fail. The voice targ
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -19,7 +20,7 @@ YEAR = re.compile(r"^(1[5-9]|20)\d\d$")
 FORMAT = [
     (re.compile(r"(^|\s)[A-Z][A-Z .']{1,20}:\s"), "speaker label"),
     (re.compile(r"[\"“”]"), "double quotes around dialogue"),
-    (re.compile(r"\[[^\]]*\]|\([^)]*(camera|cut|music|sfx|scene)[^)]*\)", re.I), "stage direction"),
+    (re.compile(r"\[[^\]]*\]|\(\s*(camera|cut to|music|sfx|scene:|pause|beat)\b[^)]*\)", re.I), "stage direction"),
     (re.compile(r"(^|\s)#{1,6}\s|\*\*?[^*]+\*|\n\s*[-*] "), "markdown"),
 ]
 
@@ -38,7 +39,7 @@ def metrics(script: str) -> dict:
     words = script.split()
     lens = [len(s.split()) for s in sents] or [0]
     you = sum(1 for w in words if re.sub(r"\W", "", w.lower()) in {"you", "your", "youre", "yours"})
-    digits = [d for d in re.findall(r"\d[\d,.]*", script) if not YEAR.match(d)]
+    digits = [d for d in re.findall(r"\d+(?:[,.]\d+)*", script) if not YEAR.match(d)]
     return {
         "words": len(words),
         "sentences": len(sents),
@@ -57,7 +58,10 @@ def _format_fails(script: str, hero_names: tuple[str, ...]) -> list[str]:
     if "\n\n" in script.strip():
         fails.append("format: more than one paragraph")
     for name in hero_names:
-        if re.search(rf"\b(your name is|you're|call you)\s+{re.escape(name)}\b", script, re.I):
+        n = re.escape(name)
+        said = rf"\b(your name is|you're|call you)\s+{n}\b"
+        addressed = rf"(?:^|[.!?]\s+){n}\s*[!,]"
+        if re.search(said, script, re.I) or re.search(addressed, script):
             fails.append(f"hero named: {name}")
     return fails
 
@@ -89,9 +93,14 @@ def check(script: str, hero_names: tuple[str, ...] = ()) -> tuple[list[str], lis
 
 
 def main(argv: list[str]) -> int:
-    script = extract(Path(argv[0]).read_text(encoding="utf-8"))
-    fails, warns = check(script)
-    if "--json" in argv:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("script")
+    ap.add_argument("--json", action="store_true")
+    ap.add_argument("--hero", action="append", default=[], metavar="NAME", help="hero name that must not appear")
+    args = ap.parse_args(argv)
+    script = extract(Path(args.script).read_text(encoding="utf-8"))
+    fails, warns = check(script, hero_names=tuple(args.hero))
+    if args.json:
         print(json.dumps({"metrics": metrics(script), "fails": fails, "warns": warns}, indent=1))
     else:
         for line in [*(f"FAIL {f}" for f in fails), *(f"WARN {w}" for w in warns)]:

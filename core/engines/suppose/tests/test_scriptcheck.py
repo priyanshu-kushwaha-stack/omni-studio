@@ -52,3 +52,34 @@ def test_voice_targets_only_warn():
     fails, warns = sc.check(flat)
     assert not fails
     assert any("ellipses" in w for w in warns) and any("questions" in w for w in warns)
+
+
+def test_years_before_punctuation_are_not_digits():
+    for line in ["It happened in 2007.", "Born in 1999, you ran."]:
+        fails, _ = sc.check(script_of(950) + " " + line)
+        assert not any("numbers" in f for f in fails), line
+    for line in ["You ran 42 laps.", "It cost 3,500 yen."]:
+        fails, _ = sc.check(script_of(950) + " " + line)
+        assert any("numbers" in f for f in fails), line
+
+
+def test_hero_name_as_direct_address_fails():
+    for line in ["Max! Your door hates me!", "Max, look."]:
+        fails, _ = sc.check(script_of(950) + " " + line, hero_names=("Max",))
+        assert any("named" in f for f in fails), line
+    fails, _ = sc.check(script_of(950), hero_names=("Max",))
+    assert not fails
+
+
+def test_cli_hero_flag(tmp_path):
+    p = tmp_path / "s.md"
+    p.write_text("SCRIPT: " + script_of(950) + " Max, look.", encoding="utf-8")
+    assert sc.main([str(p), "--hero", "Max"]) == 1
+    assert sc.main([str(p)]) == 0
+
+
+def test_stage_directions_need_a_direction_word():
+    fails, _ = sc.check(script_of(950) + " It is (a scene you know).")
+    assert not fails
+    fails, _ = sc.check(script_of(950) + " You run (camera pushes in).")
+    assert any("stage direction" in f for f in fails)
